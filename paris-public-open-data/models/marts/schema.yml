@@ -1,0 +1,16 @@
+# Marts models documentation and tests
+# Marts contain business-logic transformations and are the final models
+# consumed by BI tools and analysts
+
+version: 2
+
+models: []
+  # Add your mart models here, for example:
+  # - name: dim_locations
+  #   description: "Dimension table for Paris locations"
+  #   columns:
+  #     - name: location_id
+  #       description: "Unique identifier for the location"
+  #       tests:
+  #         - unique
+  #         - not_null

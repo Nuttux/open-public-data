@@ -1,0 +1,29 @@
+# dbt
+target/
+dbt_packages/
+logs/
+.user.yml
+
+# Python
+__pycache__/
+*.py[cod]
+.env
+.venv/
+venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Credentials - NEVER commit these
+**/service-account*.json
+**/credentials*.json
+*.pem
+*.key
+**/open-data-france-*.json

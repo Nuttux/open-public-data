@@ -1,0 +1,20 @@
+# Credentials - NEVER commit these
+open-data-france-*.json
+*.pem
+*.key
+
+# dbt
+target/
+dbt_packages/
+logs/
+
+# Python
+__pycache__/
+*.py[cod]
+.env
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db

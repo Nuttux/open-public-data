@@ -1,0 +1,9 @@
+# Staging models documentation and tests
+version: 2
+
+models:
+  - name: stg_placeholder
+    description: "Placeholder staging model - replace with actual models"
+    columns:
+      - name: placeholder
+        description: "Placeholder column"
