@@ -10,8 +10,8 @@ paris_public_open_data:
     dev:
       type: bigquery
       method: service-account
-      keyfile: /Users/theotortorici/Documents/customer-repos/open-public-data/open-data-france-31f8d5896632.json
-      project: open-data-france
+      keyfile: /Users/theotortorici/Documents/customer-repos/open-public-data/open-data-france-484717-68f33f082f1f.json
+      project: open-data-france-484717
       dataset: paris_open_data_dev
       threads: 4
       timeout_seconds: 300
@@ -22,11 +22,11 @@ paris_public_open_data:
     prod:
       type: bigquery
       method: service-account
-      project: open-data-france  # <-- REPLACE with your GCP project ID
+      project: open-data-france-484717
       dataset: paris_open_data_prod
       threads: 4
       timeout_seconds: 300
       location: EU
       priority: interactive
       retries: 1
-      keyfile: /Users/theotortorici/Documents/customer-repos/open-public-data/open-data-france-31f8d5896632.json
+      keyfile: /Users/theotortorici/Documents/customer-repos/open-public-data/open-data-france-484717-68f33f082f1f.json

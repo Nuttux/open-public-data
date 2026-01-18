@@ -7,7 +7,7 @@ version: 2
 sources:
   - name: raw_paris_data
     description: "Raw Paris Open Data loaded into BigQuery"
-    database: open-data-france  # <-- REPLACE with your GCP project ID
+    database: open-data-france-484717  # <-- REPLACE with your GCP project ID
     schema: raw  # The dataset where raw data is loaded
     tables:
       - name: placeholder_table
