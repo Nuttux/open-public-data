@@ -1,8 +1,11 @@
 'use client';
 
 /**
- * Composant StatsCards - Affiche les KPIs principaux du budget
- * Design dark avec accent de couleurs
+ * Composant StatsCards - KPIs du budget avec terminologie claire
+ * 
+ * Note: Le "solde" est renommé pour être plus clair :
+ * - Positif = "Équilibre budgétaire" (pas vraiment un excédent car inclut emprunts)
+ * - Négatif = "Déficit de trésorerie"
  */
 
 import { formatEuroCompact } from '@/lib/formatters';
@@ -15,19 +18,22 @@ interface StatsCardsProps {
 }
 
 export default function StatsCards({ recettes, depenses, solde, year }: StatsCardsProps) {
-  const isExcedent = solde >= 0;
+  const isPositif = solde >= 0;
   
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-      {/* Recettes */}
+      {/* Recettes totales */}
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-5">
         <div className="flex items-center justify-between">
           <div>
             <p className="text-xs font-medium text-slate-400 uppercase tracking-wider">
-              Recettes {year}
+              Recettes totales {year}
             </p>
             <p className="mt-1 text-2xl font-bold text-emerald-400">
               {formatEuroCompact(recettes)}
+            </p>
+            <p className="text-xs text-slate-500 mt-1">
+              y.c. emprunts
             </p>
           </div>
           <div className="p-2.5 bg-emerald-500/10 rounded-lg">
@@ -38,15 +44,18 @@ export default function StatsCards({ recettes, depenses, solde, year }: StatsCar
         </div>
       </div>
 
-      {/* Dépenses */}
+      {/* Dépenses totales */}
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-5">
         <div className="flex items-center justify-between">
           <div>
             <p className="text-xs font-medium text-slate-400 uppercase tracking-wider">
-              Dépenses {year}
+              Dépenses totales {year}
             </p>
             <p className="mt-1 text-2xl font-bold text-blue-400">
               {formatEuroCompact(depenses)}
+            </p>
+            <p className="text-xs text-slate-500 mt-1">
+              y.c. remboursement dette
             </p>
           </div>
           <div className="p-2.5 bg-blue-500/10 rounded-lg">
@@ -57,22 +66,25 @@ export default function StatsCards({ recettes, depenses, solde, year }: StatsCar
         </div>
       </div>
 
-      {/* Solde */}
+      {/* Équilibre budgétaire */}
       <div className={`bg-slate-800/50 backdrop-blur rounded-xl border p-5 ${
-        isExcedent ? 'border-emerald-500/30' : 'border-red-500/30'
+        isPositif ? 'border-slate-700/50' : 'border-red-500/30'
       }`}>
         <div className="flex items-center justify-between">
           <div>
             <p className="text-xs font-medium text-slate-400 uppercase tracking-wider">
-              {isExcedent ? 'Excédent' : 'Déficit'} {year}
+              Équilibre {year}
             </p>
-            <p className={`mt-1 text-2xl font-bold ${isExcedent ? 'text-emerald-400' : 'text-red-400'}`}>
-              {isExcedent ? '+' : ''}{formatEuroCompact(solde)}
+            <p className={`mt-1 text-2xl font-bold ${isPositif ? 'text-slate-300' : 'text-red-400'}`}>
+              {isPositif ? '+' : ''}{formatEuroCompact(solde)}
+            </p>
+            <p className="text-xs text-slate-500 mt-1">
+              recettes - dépenses
             </p>
           </div>
-          <div className={`p-2.5 rounded-lg ${isExcedent ? 'bg-emerald-500/10' : 'bg-red-500/10'}`}>
-            {isExcedent ? (
-              <svg className="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className={`p-2.5 rounded-lg ${isPositif ? 'bg-slate-700/50' : 'bg-red-500/10'}`}>
+            {isPositif ? (
+              <svg className="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             ) : (

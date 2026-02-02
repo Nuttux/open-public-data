@@ -1,13 +1,12 @@
 'use client';
 
 /**
- * Composant BudgetSankey - Visualisation Sankey interactive du budget
+ * Composant BudgetSankey - Visualisation Sankey du budget
  * 
  * FEATURES:
- * - Orientation verticale pour meilleure lisibilité des labels
- * - Dark theme avec couleurs distinctes par groupe
- * - Click sur les nœuds ET les liens pour drill-down
- * - Labels avec montants
+ * - Layout horizontal avec marges pour labels lisibles
+ * - Emprunts/Dette séparés du flux principal (financement)
+ * - Click pour drill-down
  */
 
 import { useCallback, useMemo } from 'react';
@@ -53,9 +52,20 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
     return Math.max(data.totals.recettes, data.totals.depenses);
   }, [data.totals]);
 
-  // Associe les couleurs aux nœuds
+  // Calcul des montants d'emprunts et dette pour les afficher séparément
+  const financingInfo = useMemo(() => {
+    const empruntsLink = data.links.find(l => l.source === 'Emprunts');
+    const detteLink = data.links.find(l => l.target === 'Dette');
+    return {
+      emprunts: empruntsLink?.value || 0,
+      dette: detteLink?.value || 0,
+    };
+  }, [data.links]);
+
   const getNodeColor = useCallback((name: string, category: string) => {
     if (category === 'central') return '#a855f7';
+    if (name === 'Emprunts') return '#f59e0b'; // Orange warning
+    if (name === 'Dette') return '#fbbf24';
     if (category === 'revenue') {
       return REVENUE_COLORS[name] || REVENUE_COLORS['default'];
     }
@@ -64,12 +74,6 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
     }
     return '#64748b';
   }, []);
-
-  // Trouve la valeur d'un nœud pour l'afficher dans le label
-  const getNodeValue = useCallback((nodeName: string): number => {
-    const link = data.links.find(l => l.source === nodeName || l.target === nodeName);
-    return link?.value || 0;
-  }, [data.links]);
 
   // Prépare les données pour ECharts
   const chartData = useMemo(() => {
@@ -92,7 +96,7 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
     return { nodes, links };
   }, [data, getNodeColor]);
 
-  // Options du graphique - mode VERTICAL pour meilleure lisibilité
+  // Options du graphique - HORIZONTAL avec marges pour labels
   const option: EChartsOption = useMemo(() => ({
     backgroundColor: 'transparent',
     tooltip: {
@@ -112,16 +116,26 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
         
         if (p.dataType === 'node') {
           const percentage = calculatePercentage(p.value, totalBudget);
-          const emoji = p.data.category === 'revenue' ? '📈' : p.data.category === 'expense' ? '📉' : '🏛️';
-          const label = p.data.category === 'revenue' ? 'Recette' : p.data.category === 'expense' ? 'Dépense' : 'Budget';
+          let emoji = '📊';
+          let label = 'Budget';
+          
+          if (p.data.category === 'revenue') {
+            emoji = p.name === 'Emprunts' ? '🏦' : '📈';
+            label = p.name === 'Emprunts' ? 'Financement' : 'Recette';
+          } else if (p.data.category === 'expense') {
+            emoji = p.name === 'Dette' ? '💳' : '📉';
+            label = p.name === 'Dette' ? 'Remboursement' : 'Dépense';
+          } else {
+            emoji = '🏛️';
+          }
           
           return `
             <div style="padding: 12px; max-width: 280px;">
-              <div style="font-weight: 600; margin-bottom: 8px; word-wrap: break-word;">${p.name}</div>
+              <div style="font-weight: 600; margin-bottom: 8px;">${p.name}</div>
               <div style="color: #94a3b8; font-size: 12px; margin-bottom: 4px;">${emoji} ${label}</div>
               <div style="font-size: 22px; font-weight: 700; color: #10b981;">${formatEuroCompact(p.value)}</div>
               <div style="color: #94a3b8; font-size: 12px;">${formatPercent(percentage)} du budget</div>
-              ${p.data.category !== 'central' ? '<div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #334155; color: #60a5fa; font-size: 12px; font-weight: 500;">👆 Cliquez pour explorer</div>' : ''}
+              ${p.data.category !== 'central' ? '<div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #334155; color: #60a5fa; font-size: 12px;">👆 Cliquez pour le détail</div>' : ''}
             </div>
           `;
         }
@@ -129,13 +143,11 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
         if (p.dataType === 'edge') {
           const percentage = calculatePercentage(p.value, totalBudget);
           return `
-            <div style="padding: 12px; max-width: 280px;">
+            <div style="padding: 12px;">
               <div style="font-weight: 600; margin-bottom: 8px;">
-                <span style="color: #10b981;">${p.data.source}</span>
-                <span style="color: #64748b;"> → </span>
-                <span style="color: #3b82f6;">${p.data.target}</span>
+                ${p.data.source} → ${p.data.target}
               </div>
-              <div style="font-size: 22px; font-weight: 700; color: #f59e0b;">${formatEuroCompact(p.value)}</div>
+              <div style="font-size: 20px; font-weight: 700; color: #f59e0b;">${formatEuroCompact(p.value)}</div>
               <div style="color: #94a3b8; font-size: 12px;">${formatPercent(percentage)} du budget</div>
             </div>
           `;
@@ -143,13 +155,6 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
         
         return '';
       },
-    },
-    // Grid pour laisser de la place aux labels
-    grid: {
-      left: '15%',
-      right: '15%',
-      top: '5%',
-      bottom: '5%',
     },
     series: [
       {
@@ -160,15 +165,15 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
           lineStyle: { opacity: 0.7 },
         },
         nodeAlign: 'justify',
-        orient: 'vertical',  // VERTICAL pour labels lisibles
+        orient: 'horizontal',
+        left: 180,      // Espace pour labels gauche
+        right: 200,     // Espace pour labels droite  
+        top: 20,
+        bottom: 20,
         nodeWidth: 20,
-        nodeGap: 12,
+        nodeGap: 10,
         layoutIterations: 32,
         draggable: true,
-        left: '5%',
-        right: '5%',
-        top: 80,
-        bottom: 30,
         data: chartData.nodes,
         links: chartData.links,
         lineStyle: {
@@ -178,39 +183,22 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
         },
         label: {
           show: true,
-          fontSize: 11,
+          fontSize: 12,
           color: '#e2e8f0',
           fontWeight: 500,
-          padding: [4, 8],
-          backgroundColor: 'rgba(15, 23, 42, 0.7)',
-          borderRadius: 4,
-          formatter: (params: { name: string }) => {
-            const value = getNodeValue(params.name);
+          formatter: (params: { name: string; value?: number }) => {
             if (params.name === 'Budget Paris') {
-              return `{title|${params.name}}\n{amount|${formatEuroCompact(totalBudget)}}`;
+              return params.name;
             }
-            return `{name|${params.name}}\n{value|${formatEuroCompact(value)}}`;
+            // Affiche nom + montant
+            const value = params.value || 0;
+            return `${params.name}\n{small|${formatEuroCompact(value)}}`;
           },
           rich: {
-            title: {
-              fontSize: 13,
-              fontWeight: 700,
-              color: '#a855f7',
-              padding: [0, 0, 2, 0],
-            },
-            amount: {
-              fontSize: 11,
-              color: '#cbd5e1',
-            },
-            name: {
-              fontSize: 11,
-              fontWeight: 600,
-              color: '#e2e8f0',
-              padding: [0, 0, 2, 0],
-            },
-            value: {
+            small: {
               fontSize: 10,
               color: '#94a3b8',
+              lineHeight: 16,
             },
           },
         },
@@ -218,22 +206,22 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
           {
             depth: 0,
             lineStyle: { color: 'source', opacity: 0.4 },
-            label: { position: 'top' },
+            label: { position: 'left', align: 'right', padding: [0, 10, 0, 0] },
           },
           {
             depth: 1,
             lineStyle: { color: 'source', opacity: 0.4 },
-            label: { position: 'right' },
+            label: { position: 'inside', color: '#fff', fontSize: 11 },
           },
           {
             depth: 2,
             lineStyle: { color: 'source', opacity: 0.4 },
-            label: { position: 'bottom' },
+            label: { position: 'right', align: 'left', padding: [0, 0, 0, 10] },
           },
         ],
       },
     ],
-  }), [chartData, totalBudget, getNodeValue]);
+  }), [chartData, totalBudget]);
 
   // Gestion du clic
   const handleChartClick = useCallback((params: { 
@@ -256,6 +244,12 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
     }
   }, [onNodeClick]);
 
+  // Calculs pour la vue "réalité économique"
+  const recettesHorsEmprunts = data.totals.recettes - financingInfo.emprunts;
+  const depensesHorsDette = data.totals.depenses - financingInfo.dette;
+  const besoinFinancement = depensesHorsDette - recettesHorsEmprunts;
+  const variationDette = financingInfo.emprunts - financingInfo.dette;
+
   return (
     <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6">
       <div className="mb-4">
@@ -263,31 +257,69 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
           Flux budgétaires {data.year}
         </h2>
         <p className="text-sm text-slate-400 mt-1">
-          Cliquez sur une catégorie pour explorer le détail • Glissez pour réorganiser
+          Cliquez sur une catégorie pour explorer le détail
         </p>
       </div>
-      
+
+      {/* Indicateurs économiques clarifiés */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4 text-sm">
+        <div className="bg-emerald-500/10 rounded-lg p-3 border border-emerald-500/20">
+          <div className="text-emerald-400 text-xs font-medium">Recettes propres</div>
+          <div className="text-emerald-300 font-bold">{formatEuroCompact(recettesHorsEmprunts)}</div>
+          <div className="text-slate-500 text-xs">hors emprunts</div>
+        </div>
+        <div className="bg-blue-500/10 rounded-lg p-3 border border-blue-500/20">
+          <div className="text-blue-400 text-xs font-medium">Dépenses</div>
+          <div className="text-blue-300 font-bold">{formatEuroCompact(depensesHorsDette)}</div>
+          <div className="text-slate-500 text-xs">hors remb. dette</div>
+        </div>
+        <div className={`rounded-lg p-3 border ${besoinFinancement > 0 ? 'bg-amber-500/10 border-amber-500/20' : 'bg-emerald-500/10 border-emerald-500/20'}`}>
+          <div className={`text-xs font-medium ${besoinFinancement > 0 ? 'text-amber-400' : 'text-emerald-400'}`}>
+            {besoinFinancement > 0 ? '⚠️ Besoin financement' : '✅ Capacité épargne'}
+          </div>
+          <div className={`font-bold ${besoinFinancement > 0 ? 'text-amber-300' : 'text-emerald-300'}`}>
+            {formatEuroCompact(Math.abs(besoinFinancement))}
+          </div>
+          <div className="text-slate-500 text-xs">dépenses - recettes</div>
+        </div>
+        <div className={`rounded-lg p-3 border ${variationDette > 0 ? 'bg-red-500/10 border-red-500/20' : 'bg-green-500/10 border-green-500/20'}`}>
+          <div className={`text-xs font-medium ${variationDette > 0 ? 'text-red-400' : 'text-green-400'}`}>
+            {variationDette > 0 ? '📈 Dette en hausse' : '📉 Dette en baisse'}
+          </div>
+          <div className={`font-bold ${variationDette > 0 ? 'text-red-300' : 'text-green-300'}`}>
+            {variationDette > 0 ? '+' : ''}{formatEuroCompact(variationDette)}
+          </div>
+          <div className="text-slate-500 text-xs">emprunts - remb.</div>
+        </div>
+      </div>
+
       {/* Légende */}
-      <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 mb-2 text-xs">
+      <div className="flex flex-wrap items-center gap-x-6 gap-y-1 mb-2 text-xs border-t border-slate-700/50 pt-3">
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
-          <span className="text-slate-300">Recettes</span>
-          <span className="text-emerald-400 font-semibold ml-1">{formatEuroCompact(data.totals.recettes)}</span>
+          <div className="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
+          <span className="text-slate-400">Recettes</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full bg-purple-500"></div>
-          <span className="text-slate-300">Budget</span>
+          <div className="w-2.5 h-2.5 rounded-full bg-amber-500"></div>
+          <span className="text-slate-400">Emprunts (financement)</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full bg-blue-500"></div>
-          <span className="text-slate-300">Dépenses</span>
-          <span className="text-blue-400 font-semibold ml-1">{formatEuroCompact(data.totals.depenses)}</span>
+          <div className="w-2.5 h-2.5 rounded-full bg-purple-500"></div>
+          <span className="text-slate-400">Budget</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-2.5 h-2.5 rounded-full bg-blue-500"></div>
+          <span className="text-slate-400">Dépenses</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+          <span className="text-slate-400">Remb. dette</span>
         </div>
       </div>
 
       <ReactECharts
         option={option}
-        style={{ height: '700px', width: '100%' }}
+        style={{ height: '550px', width: '100%' }}
         onEvents={{
           click: handleChartClick,
         }}
