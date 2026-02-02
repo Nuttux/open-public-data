@@ -281,6 +281,7 @@ export default function Home() {
               depenses={budgetData.totals.depenses}
               solde={budgetData.totals.solde}
               year={selectedYear}
+              emprunts={budgetData.links.find(l => l.source === 'Emprunts')?.value || 0}
             />
 
             <BudgetSankey

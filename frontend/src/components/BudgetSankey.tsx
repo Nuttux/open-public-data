@@ -244,57 +244,32 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
     }
   }, [onNodeClick]);
 
-  // Calculs pour la vue "réalité économique"
-  const recettesHorsEmprunts = data.totals.recettes - financingInfo.emprunts;
-  const depensesHorsDette = data.totals.depenses - financingInfo.dette;
-  const besoinFinancement = depensesHorsDette - recettesHorsEmprunts;
+  // Calcul variation dette pour légende
   const variationDette = financingInfo.emprunts - financingInfo.dette;
 
   return (
     <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6">
-      <div className="mb-4">
-        <h2 className="text-lg font-semibold text-slate-100">
-          Flux budgétaires {data.year}
-        </h2>
-        <p className="text-sm text-slate-400 mt-1">
-          Cliquez sur une catégorie pour explorer le détail
-        </p>
-      </div>
-
-      {/* Indicateurs économiques clarifiés */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4 text-sm">
-        <div className="bg-emerald-500/10 rounded-lg p-3 border border-emerald-500/20">
-          <div className="text-emerald-400 text-xs font-medium">Recettes propres</div>
-          <div className="text-emerald-300 font-bold">{formatEuroCompact(recettesHorsEmprunts)}</div>
-          <div className="text-slate-500 text-xs">hors emprunts</div>
+      <div className="flex items-center justify-between mb-4">
+        <div>
+          <h2 className="text-lg font-semibold text-slate-100">
+            Flux budgétaires {data.year}
+          </h2>
+          <p className="text-sm text-slate-400 mt-1">
+            Cliquez sur une catégorie pour explorer le détail
+          </p>
         </div>
-        <div className="bg-blue-500/10 rounded-lg p-3 border border-blue-500/20">
-          <div className="text-blue-400 text-xs font-medium">Dépenses</div>
-          <div className="text-blue-300 font-bold">{formatEuroCompact(depensesHorsDette)}</div>
-          <div className="text-slate-500 text-xs">hors remb. dette</div>
-        </div>
-        <div className={`rounded-lg p-3 border ${besoinFinancement > 0 ? 'bg-amber-500/10 border-amber-500/20' : 'bg-emerald-500/10 border-emerald-500/20'}`}>
-          <div className={`text-xs font-medium ${besoinFinancement > 0 ? 'text-amber-400' : 'text-emerald-400'}`}>
-            {besoinFinancement > 0 ? '⚠️ Besoin financement' : '✅ Capacité épargne'}
-          </div>
-          <div className={`font-bold ${besoinFinancement > 0 ? 'text-amber-300' : 'text-emerald-300'}`}>
-            {formatEuroCompact(Math.abs(besoinFinancement))}
-          </div>
-          <div className="text-slate-500 text-xs">dépenses - recettes</div>
-        </div>
-        <div className={`rounded-lg p-3 border ${variationDette > 0 ? 'bg-red-500/10 border-red-500/20' : 'bg-green-500/10 border-green-500/20'}`}>
-          <div className={`text-xs font-medium ${variationDette > 0 ? 'text-red-400' : 'text-green-400'}`}>
-            {variationDette > 0 ? '📈 Dette en hausse' : '📉 Dette en baisse'}
-          </div>
-          <div className={`font-bold ${variationDette > 0 ? 'text-red-300' : 'text-green-300'}`}>
-            {variationDette > 0 ? '+' : ''}{formatEuroCompact(variationDette)}
-          </div>
-          <div className="text-slate-500 text-xs">emprunts - remb.</div>
+        {/* Indicateur variation dette */}
+        <div className={`px-3 py-2 rounded-lg text-sm ${
+          variationDette > 0 ? 'bg-red-500/10 border border-red-500/30' : 'bg-green-500/10 border border-green-500/30'
+        }`}>
+          <span className={variationDette > 0 ? 'text-red-400' : 'text-green-400'}>
+            {variationDette > 0 ? '📈 Dette +' : '📉 Dette '}{formatEuroCompact(variationDette)}
+          </span>
         </div>
       </div>
 
       {/* Légende */}
-      <div className="flex flex-wrap items-center gap-x-6 gap-y-1 mb-2 text-xs border-t border-slate-700/50 pt-3">
+      <div className="flex flex-wrap items-center gap-x-6 gap-y-1 mb-3 text-xs">
         <div className="flex items-center gap-2">
           <div className="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
           <span className="text-slate-400">Recettes</span>
