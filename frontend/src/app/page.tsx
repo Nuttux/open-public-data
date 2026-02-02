@@ -293,6 +293,7 @@ export default function Home() {
               <DrilldownPanel
                 title={currentDrilldown.title}
                 category={currentDrilldown.category}
+                parentCategory={breadcrumbs[0]}
                 items={currentDrilldown.items}
                 breadcrumbs={breadcrumbs}
                 currentLevel={drilldown?.currentLevel || 0}

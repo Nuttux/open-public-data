@@ -4,21 +4,22 @@
  * Composant DrilldownPanel - Navigation multi-niveaux dans le budget
  * 
  * FEATURES:
- * - Breadcrumbs cliquables pour remonter
- * - Bouton retour bien visible
- * - Indication claire si drill-down possible
- * - Barres cliquables avec cursor pointer
+ * - Couleur des barres = couleur de la catégorie Sankey
+ * - Textes responsifs (troncature intelligente)
+ * - Navigation claire (retour, breadcrumbs)
  */
 
 import { useMemo } from 'react';
 import ReactECharts from 'echarts-for-react';
 import type { EChartsOption } from 'echarts';
 import { formatEuroCompact, formatPercent, calculatePercentage } from '@/lib/formatters';
+import { getCategoryColor, lightenColor } from '@/lib/colors';
 import type { DrilldownItem } from '@/lib/formatters';
 
 interface DrilldownPanelProps {
   title: string;
   category: 'revenue' | 'expense';
+  parentCategory?: string;  // Nom de la catégorie parent (pour la couleur)
   items: DrilldownItem[];
   breadcrumbs?: string[];
   currentLevel?: number;
@@ -30,6 +31,7 @@ interface DrilldownPanelProps {
 export default function DrilldownPanel({ 
   title, 
   category, 
+  parentCategory,
   items, 
   breadcrumbs = [],
   currentLevel = 0,
@@ -50,12 +52,26 @@ export default function DrilldownPanel({
     const others = sorted.slice(19);
     const othersTotal = others.reduce((sum, item) => sum + item.value, 0);
     
-    return [...top19, { name: `Autres (${others.length} postes)`, value: othersTotal }];
+    return [...top19, { name: `Autres (${others.length})`, value: othersTotal }];
   }, [items]);
 
-  const barColor = category === 'revenue' ? '#10b981' : '#3b82f6';
-  const hoverColor = category === 'revenue' ? '#34d399' : '#60a5fa';
+  // Couleur basée sur la catégorie parent du Sankey
+  const categoryName = parentCategory || breadcrumbs[0] || title;
+  const barColor = getCategoryColor(categoryName, category);
+  const hoverColor = lightenColor(barColor, 15);
   const canDrillDown = !!onItemClick;
+
+  // Tronque le texte intelligemment
+  const truncateText = (text: string, maxLen: number): string => {
+    if (text.length <= maxLen) return text;
+    // Coupe au dernier espace avant maxLen
+    const truncated = text.substring(0, maxLen);
+    const lastSpace = truncated.lastIndexOf(' ');
+    if (lastSpace > maxLen * 0.6) {
+      return truncated.substring(0, lastSpace) + '...';
+    }
+    return truncated + '...';
+  };
 
   const option: EChartsOption = useMemo(() => ({
     backgroundColor: 'transparent',
@@ -66,26 +82,28 @@ export default function DrilldownPanel({
       borderColor: '#334155',
       borderRadius: 8,
       textStyle: { color: '#e2e8f0' },
+      confine: true,
       formatter: (params: unknown) => {
-        const p = params as Array<{ name: string; value: number }>;
+        const p = params as Array<{ name: string; value: number; dataIndex: number }>;
         if (!p || !p[0]) return '';
-        const item = p[0];
+        const idx = displayItems.length - 1 - p[0].dataIndex;
+        const item = displayItems[idx];
         const percentage = calculatePercentage(item.value, total);
         return `
-          <div style="padding: 10px;">
-            <div style="font-weight: 600; margin-bottom: 6px; max-width: 300px; word-wrap: break-word;">${item.name}</div>
-            <div style="font-size: 18px; font-weight: 700; color: ${barColor};">${formatEuroCompact(item.value)}</div>
-            <div style="color: #94a3b8; font-size: 12px;">${formatPercent(percentage)} de cette catégorie</div>
-            ${canDrillDown ? '<div style="margin-top: 8px; color: #60a5fa; font-size: 11px;">👆 Cliquez pour explorer</div>' : ''}
+          <div style="padding: 10px; max-width: 300px;">
+            <div style="font-weight: 600; margin-bottom: 6px; word-wrap: break-word; line-height: 1.3;">${item.name}</div>
+            <div style="font-size: 20px; font-weight: 700; color: ${barColor};">${formatEuroCompact(item.value)}</div>
+            <div style="color: #94a3b8; font-size: 12px;">${formatPercent(percentage)} de ${categoryName}</div>
+            ${canDrillDown && !item.name.startsWith('Autres') ? '<div style="margin-top: 8px; color: #60a5fa; font-size: 11px;">👆 Cliquez pour explorer</div>' : ''}
           </div>
         `;
       },
     },
     grid: {
-      left: '3%',
-      right: '15%',
-      bottom: '3%',
-      top: '3%',
+      left: 10,
+      right: 80,
+      bottom: 10,
+      top: 10,
       containLabel: true,
     },
     xAxis: {
@@ -95,22 +113,20 @@ export default function DrilldownPanel({
         fontSize: 10,
         color: '#94a3b8',
       },
-      axisLine: { lineStyle: { color: '#334155' } },
+      axisLine: { show: false },
       splitLine: { lineStyle: { color: '#334155', opacity: 0.3 } },
     },
     yAxis: {
       type: 'category',
-      data: displayItems.map(item => {
-        const name = item.name;
-        return name.length > 45 ? name.substring(0, 42) + '...' : name;
-      }).reverse(),
+      data: displayItems.map(item => truncateText(item.name, 35)).reverse(),
       axisLabel: {
         fontSize: 11,
         color: '#cbd5e1',
-        width: 280,
+        width: 220,
         overflow: 'truncate',
       },
-      axisLine: { lineStyle: { color: '#334155' } },
+      axisLine: { show: false },
+      axisTick: { show: false },
     },
     series: [
       {
@@ -121,6 +137,7 @@ export default function DrilldownPanel({
           borderRadius: [0, 4, 4, 0],
         },
         cursor: canDrillDown ? 'pointer' : 'default',
+        barMaxWidth: 28,
         label: {
           show: true,
           position: 'right',
@@ -129,7 +146,8 @@ export default function DrilldownPanel({
             const value = Array.isArray(p.value) ? p.value[0] : p.value;
             return formatEuroCompact(value);
           },
-          fontSize: 10,
+          fontSize: 11,
+          fontWeight: 500,
           color: '#94a3b8',
         },
         emphasis: {
@@ -139,45 +157,48 @@ export default function DrilldownPanel({
         },
       },
     ],
-  }), [displayItems, total, barColor, hoverColor, canDrillDown]);
+  }), [displayItems, total, barColor, hoverColor, canDrillDown, categoryName, truncateText]);
 
   const handleChartClick = (params: { dataIndex?: number }) => {
     if (typeof params.dataIndex === 'number' && onItemClick) {
       const reversedIndex = displayItems.length - 1 - params.dataIndex;
       const item = displayItems[reversedIndex];
-      if (item && !item.name.startsWith('Autres (')) {
+      if (item && !item.name.startsWith('Autres')) {
         onItemClick(item);
       }
     }
   };
 
-  const accentBorder = category === 'revenue' ? 'border-emerald-500/40' : 'border-blue-500/40';
-  const accentBg = category === 'revenue' ? 'bg-emerald-500/10' : 'bg-blue-500/10';
-  const accentText = category === 'revenue' ? 'text-emerald-400' : 'text-blue-400';
+  // Style basé sur la couleur de la catégorie
+  const borderStyle = { borderColor: barColor + '60' };
+  const bgStyle = { backgroundColor: barColor + '15' };
 
   return (
-    <div className={`bg-slate-800/50 backdrop-blur rounded-xl border-2 ${accentBorder} p-6 mt-6`}>
+    <div 
+      className="bg-slate-800/50 backdrop-blur rounded-xl border-2 p-4 sm:p-6 mt-6"
+      style={borderStyle}
+    >
       {/* Header avec navigation */}
-      <div className="flex items-start justify-between mb-4">
-        <div className="flex-1">
+      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-4">
+        <div className="flex-1 min-w-0">
           {/* Bouton retour + Breadcrumbs */}
-          <div className="flex items-center gap-2 mb-3">
+          <div className="flex flex-wrap items-center gap-2 mb-3">
             <button
               onClick={currentLevel > 0 ? () => onBreadcrumbClick?.(currentLevel - 1) : onClose}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-700/50 hover:bg-slate-700 rounded-lg text-sm text-slate-300 hover:text-white transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-700/50 hover:bg-slate-700 rounded-lg text-sm text-slate-300 hover:text-white transition-colors shrink-0"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
-              {currentLevel > 0 ? 'Retour' : 'Fermer'}
+              <span className="hidden sm:inline">{currentLevel > 0 ? 'Retour' : 'Fermer'}</span>
             </button>
             
             {/* Breadcrumbs */}
             {breadcrumbs.length > 0 && (
-              <nav className="flex items-center gap-1 text-sm flex-wrap">
+              <nav className="flex items-center gap-1 text-sm overflow-x-auto">
                 <button
                   onClick={onClose}
-                  className="text-slate-500 hover:text-slate-300 transition-colors"
+                  className="text-slate-500 hover:text-slate-300 transition-colors whitespace-nowrap"
                 >
                   Sankey
                 </button>
@@ -187,13 +208,13 @@ export default function DrilldownPanel({
                     {idx < currentLevel ? (
                       <button
                         onClick={() => onBreadcrumbClick?.(idx)}
-                        className="text-slate-400 hover:text-slate-200 transition-colors"
+                        className="text-slate-400 hover:text-slate-200 transition-colors whitespace-nowrap"
                       >
-                        {crumb}
+                        {crumb.length > 20 ? crumb.substring(0, 18) + '...' : crumb}
                       </button>
                     ) : (
-                      <span className={`font-medium ${accentText}`}>
-                        {crumb}
+                      <span className="font-medium whitespace-nowrap" style={{ color: barColor }}>
+                        {crumb.length > 20 ? crumb.substring(0, 18) + '...' : crumb}
                       </span>
                     )}
                   </span>
@@ -202,12 +223,17 @@ export default function DrilldownPanel({
             )}
           </div>
           
-          {/* Titre avec badge */}
-          <div className="flex items-center gap-3">
-            <div className={`px-3 py-1 rounded-full text-sm font-medium ${accentBg} ${accentText}`}>
-              {category === 'revenue' ? '📈 Recette' : '📉 Dépense'}
+          {/* Titre avec badge coloré */}
+          <div className="flex flex-wrap items-center gap-2">
+            <div 
+              className="px-3 py-1 rounded-full text-sm font-medium"
+              style={bgStyle}
+            >
+              <span style={{ color: barColor }}>
+                {category === 'revenue' ? '📈 Recette' : '📉 Dépense'}
+              </span>
             </div>
-            <h3 className="text-xl font-semibold text-slate-100">
+            <h3 className="text-lg sm:text-xl font-semibold text-slate-100 break-words">
               {title}
             </h3>
           </div>
@@ -215,7 +241,7 @@ export default function DrilldownPanel({
         
         <button
           onClick={onClose}
-          className="p-2 hover:bg-slate-700 rounded-lg transition-colors"
+          className="p-2 hover:bg-slate-700 rounded-lg transition-colors self-start shrink-0"
           title="Fermer"
         >
           <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -224,16 +250,16 @@ export default function DrilldownPanel({
         </button>
       </div>
 
-      {/* Summary box */}
-      <div className={`rounded-lg p-4 mb-4 ${accentBg}`}>
+      {/* Summary box avec couleur */}
+      <div className="rounded-lg p-4 mb-4" style={bgStyle}>
         <div className="flex items-center justify-between">
           <div>
             <span className="text-slate-300 font-medium">Total</span>
             <p className="text-sm text-slate-500">
-              {items.length} postes budgétaires
+              {items.length} postes
             </p>
           </div>
-          <span className={`text-2xl font-bold ${accentText}`}>
+          <span className="text-2xl font-bold" style={{ color: barColor }}>
             {formatEuroCompact(total)}
           </span>
         </div>
@@ -241,10 +267,10 @@ export default function DrilldownPanel({
 
       {/* Hint drill-down */}
       {canDrillDown && (
-        <div className="flex items-center gap-2 mb-3 px-3 py-2 bg-blue-500/10 rounded-lg border border-blue-500/20">
+        <div className="flex items-center gap-2 mb-3 px-3 py-2 bg-slate-700/30 rounded-lg text-sm">
           <span className="text-blue-400">🔍</span>
-          <span className="text-sm text-blue-300">
-            Cliquez sur une barre pour explorer le détail
+          <span className="text-slate-400">
+            Cliquez sur une barre pour explorer
           </span>
         </div>
       )}
@@ -252,7 +278,7 @@ export default function DrilldownPanel({
       {/* Chart */}
       <ReactECharts
         option={option}
-        style={{ height: `${Math.max(400, displayItems.length * 32)}px`, width: '100%' }}
+        style={{ height: `${Math.max(350, displayItems.length * 30)}px`, width: '100%' }}
         opts={{ renderer: 'canvas' }}
         onEvents={{
           click: handleChartClick,
