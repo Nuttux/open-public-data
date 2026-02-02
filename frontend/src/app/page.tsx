@@ -3,11 +3,11 @@
 /**
  * Page principale du Dashboard Budget Paris
  * 
- * Ce composant orchestre l'affichage du tableau de bord avec:
- * - Sélecteur d'année
+ * FEATURES:
+ * - Sélecteur d'année (2019-2024)
  * - Cartes KPI (recettes, dépenses, solde)
- * - Graphique Sankey interactif
- * - Panel de drill-down pour les détails
+ * - Graphique Sankey interactif vertical
+ * - Drill-down multi-niveaux avec breadcrumbs
  * 
  * Les données sont chargées depuis les fichiers JSON statiques
  * générés par le script d'export Python.
@@ -21,12 +21,20 @@ import DrilldownPanel from '@/components/DrilldownPanel';
 import type { BudgetData, BudgetIndex, DrilldownItem } from '@/lib/formatters';
 
 /**
- * État du drill-down (quand l'utilisateur clique sur un nœud)
+ * Niveau de navigation dans le drill-down
  */
-interface DrilldownState {
+interface DrilldownLevel {
   title: string;
   category: 'revenue' | 'expense';
   items: DrilldownItem[];
+}
+
+/**
+ * État complet du drill-down avec historique de navigation
+ */
+interface DrilldownState {
+  levels: DrilldownLevel[];  // Stack de niveaux (breadcrumb)
+  currentLevel: number;       // Index du niveau actuel
 }
 
 export default function Home() {
@@ -93,24 +101,79 @@ export default function Home() {
   }, [index, selectedYear]);
 
   /**
-   * Gère le clic sur un nœud du Sankey pour afficher le drill-down
+   * Gère le clic sur un nœud du Sankey - ouvre le premier niveau de drill-down
    */
   const handleNodeClick = useCallback((nodeName: string, category: 'revenue' | 'expense') => {
     if (!budgetData) return;
     
-    // Récupère les données de drill-down
     const items = category === 'revenue' 
       ? budgetData.drilldown?.revenue?.[nodeName]
       : budgetData.drilldown?.expenses?.[nodeName];
     
     if (items && items.length > 0) {
       setDrilldown({
-        title: nodeName,
-        category,
-        items,
+        levels: [{
+          title: nodeName,
+          category,
+          items,
+        }],
+        currentLevel: 0,
       });
     }
   }, [budgetData]);
+
+  /**
+   * Gère le clic sur un item du drill-down - descend d'un niveau
+   */
+  const handleDrilldownItemClick = useCallback((item: DrilldownItem) => {
+    if (!drilldown) return;
+    
+    // Parse le nom pour extraire la sous-catégorie
+    // Format: "Category: Detail" ou juste "Detail"
+    const parts = item.name.split(': ');
+    const subCategory = parts.length > 1 ? parts[1] : parts[0];
+    
+    // Cherche des sous-items qui commencent par cette sous-catégorie
+    const currentItems = drilldown.levels[drilldown.currentLevel].items;
+    const subItems = currentItems.filter(i => {
+      const iParts = i.name.split(': ');
+      if (iParts.length <= 1) return false;
+      return iParts[0] === subCategory || i.name.startsWith(subCategory + ':');
+    });
+    
+    // Si on trouve des sous-items, on descend d'un niveau
+    if (subItems.length > 0 && subItems.length < currentItems.length) {
+      const category = drilldown.levels[drilldown.currentLevel].category;
+      setDrilldown(prev => {
+        if (!prev) return null;
+        const newLevels = [...prev.levels.slice(0, prev.currentLevel + 1), {
+          title: subCategory,
+          category,
+          items: subItems.map(si => ({
+            name: si.name.replace(`${subCategory}: `, ''),
+            value: si.value,
+          })),
+        }];
+        return {
+          levels: newLevels,
+          currentLevel: newLevels.length - 1,
+        };
+      });
+    }
+  }, [drilldown]);
+
+  /**
+   * Navigue vers un niveau spécifique du breadcrumb
+   */
+  const handleBreadcrumbClick = useCallback((levelIndex: number) => {
+    setDrilldown(prev => {
+      if (!prev) return null;
+      return {
+        levels: prev.levels.slice(0, levelIndex + 1),
+        currentLevel: levelIndex,
+      };
+    });
+  }, []);
 
   /**
    * Ferme le panneau de drill-down
@@ -130,6 +193,10 @@ export default function Home() {
       </div>
     );
   }
+
+  // Données du niveau de drill-down actuel
+  const currentDrilldown = drilldown ? drilldown.levels[drilldown.currentLevel] : null;
+  const breadcrumbs = drilldown?.levels.map(l => l.title) || [];
 
   return (
     <main className="min-h-screen">
@@ -171,13 +238,11 @@ export default function Home() {
         {/* État de chargement */}
         {isLoading ? (
           <div className="space-y-6">
-            {/* Skeleton pour les cartes */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {[1, 2, 3].map((i) => (
                 <div key={i} className="bg-slate-800/50 rounded-xl p-5 h-24 skeleton" />
               ))}
             </div>
-            {/* Skeleton pour le graphique */}
             <div className="bg-slate-800/50 rounded-xl p-6 h-[700px] skeleton" />
           </div>
         ) : budgetData ? (
@@ -196,19 +261,23 @@ export default function Home() {
               onNodeClick={handleNodeClick}
             />
 
-            {/* Panneau de drill-down conditionnel */}
-            {drilldown && (
+            {/* Panneau de drill-down avec breadcrumbs */}
+            {currentDrilldown && (
               <DrilldownPanel
-                title={drilldown.title}
-                category={drilldown.category}
-                items={drilldown.items}
+                title={currentDrilldown.title}
+                category={currentDrilldown.category}
+                items={currentDrilldown.items}
+                breadcrumbs={breadcrumbs}
+                currentLevel={drilldown?.currentLevel || 0}
                 onClose={handleCloseDrilldown}
+                onBreadcrumbClick={handleBreadcrumbClick}
+                onItemClick={handleDrilldownItemClick}
               />
             )}
           </>
         ) : null}
 
-        {/* Footer avec source des données */}
+        {/* Footer */}
         <footer className="mt-8 pt-6 border-t border-slate-800">
           <p className="text-xs text-slate-500 text-center">
             Données: Open Data Paris - Comptes administratifs budgets principaux (M57)
