@@ -156,7 +156,8 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
           fontSize: 12,
           color: '#e2e8f0',
           fontWeight: 500,
-          formatter: (params: { name: string; value?: number }) => {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          formatter: (params: any) => {
             if (params.name === 'Budget Paris') {
               return params.name;
             }
