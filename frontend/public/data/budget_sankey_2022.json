@@ -1,0 +1,1304 @@
+{
+  "year": 2022,
+  "totals": {
+    "recettes": 10879276817.529999,
+    "depenses": 10699641826.98,
+    "solde": 179634990.54999924
+  },
+  "nodes": [
+    {
+      "name": "Autres Recettes",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations État",
+      "category": "revenue"
+    },
+    {
+      "name": "Emprunts et Dette",
+      "category": "revenue"
+    },
+    {
+      "name": "Fiscalité Directe",
+      "category": "revenue"
+    },
+    {
+      "name": "Fiscalité Indirecte",
+      "category": "revenue"
+    },
+    {
+      "name": "Budget Paris",
+      "category": "central"
+    },
+    {
+      "name": "Administration Générale",
+      "category": "expense"
+    },
+    {
+      "name": "Aménagement et Logement",
+      "category": "expense"
+    },
+    {
+      "name": "Culture, Sport et Loisirs",
+      "category": "expense"
+    },
+    {
+      "name": "Enseignement et Formation",
+      "category": "expense"
+    },
+    {
+      "name": "Santé et Action Sociale",
+      "category": "expense"
+    },
+    {
+      "name": "Sécurité et Salubrité",
+      "category": "expense"
+    }
+  ],
+  "links": [
+    {
+      "source": "Autres Recettes",
+      "target": "Budget Paris",
+      "value": 2881428270.529999
+    },
+    {
+      "source": "Dotations État",
+      "target": "Budget Paris",
+      "value": 225021063.98000002
+    },
+    {
+      "source": "Emprunts et Dette",
+      "target": "Budget Paris",
+      "value": 1363833541.15
+    },
+    {
+      "source": "Fiscalité Directe",
+      "target": "Budget Paris",
+      "value": 3605148485.0
+    },
+    {
+      "source": "Fiscalité Indirecte",
+      "target": "Budget Paris",
+      "value": 2803845456.87
+    },
+    {
+      "source": "Budget Paris",
+      "target": "Enseignement et Formation",
+      "value": 849575984.17
+    },
+    {
+      "source": "Budget Paris",
+      "target": "Culture, Sport et Loisirs",
+      "value": 3230513440.319997
+    },
+    {
+      "source": "Budget Paris",
+      "target": "Santé et Action Sociale",
+      "value": 1060353289.63
+    },
+    {
+      "source": "Budget Paris",
+      "target": "Aménagement et Logement",
+      "value": 1890427176.5899992
+    },
+    {
+      "source": "Budget Paris",
+      "target": "Sécurité et Salubrité",
+      "value": 435589305.63999987
+    },
+    {
+      "source": "Budget Paris",
+      "target": "Administration Générale",
+      "value": 3233182630.630003
+    }
+  ],
+  "drilldown": {
+    "revenue": {
+      "Autres Recettes": [
+        {
+          "name": "Taxe d'enlèvement des ordures ménagères et assimilées",
+          "value": 513337238.0
+        },
+        {
+          "name": "Redevances versées par les fermiers et concessionnaires",
+          "value": 475305148.90000004
+        },
+        {
+          "name": "TICPE - LRL",
+          "value": 246590009.0
+        },
+        {
+          "name": "Sécurité sociale et organismes mutualistes",
+          "value": 207040297.56
+        },
+        {
+          "name": "Redevance de stationnement",
+          "value": 180351404.1
+        },
+        {
+          "name": "Forfait de post-stationnement",
+          "value": 158733375.64
+        },
+        {
+          "name": "Autres produits divers de gestion courante-Autres",
+          "value": 122097987.51
+        },
+        {
+          "name": "Taxe de balayage",
+          "value": 106082834.33
+        },
+        {
+          "name": "Revenus des immeubles",
+          "value": 93562224.12000002
+        },
+        {
+          "name": "Subventions (actifs amortissables) - État et établissementsnationaux",
+          "value": 90052494.87
+        },
+        {
+          "name": "Redevances et droits des services à caractère social",
+          "value": 74926596.25
+        },
+        {
+          "name": "Droits de stationnement et de location sur la voie publique",
+          "value": 73356973.80000001
+        },
+        {
+          "name": "Produits des cessions d'immobilisation",
+          "value": 61152403.48
+        },
+        {
+          "name": "Autres (Participations État)",
+          "value": 34293621.61
+        },
+        {
+          "name": "Redevances et droits des services périscolaires et d’enseignement",
+          "value": 33469558.23
+        },
+        {
+          "name": "Recouvrements sur bénéficiaire, tiers-payants et successions",
+          "value": 26399711.96
+        },
+        {
+          "name": "Subventions (actifs non amortissables) - Autres",
+          "value": 26352520.61
+        },
+        {
+          "name": "Autres prestations de services",
+          "value": 20987832.290000003
+        },
+        {
+          "name": "Abonnement ou redevance pour enlèvement des déchets industriels et commerciaux",
+          "value": 17882632.31
+        },
+        {
+          "name": "Remboursements de frais - par des tiers",
+          "value": 15997472.06
+        },
+        {
+          "name": "Dotation versée au titre de la Conférence des financeurs - Part prévention",
+          "value": 14495610.629999999
+        },
+        {
+          "name": "Dotation versée au titre de la PCH",
+          "value": 14394317.91
+        },
+        {
+          "name": "Autres redevances et recettes diverses",
+          "value": 13977212.14
+        },
+        {
+          "name": "Dotation versée au titre de l’APA",
+          "value": 13360822.91
+        },
+        {
+          "name": "Redevances et droits des services à caractère culturel",
+          "value": 12497835.5
+        },
+        {
+          "name": "Fonds de mobilisation départemental pour l’insertion",
+          "value": 12406150.0
+        },
+        {
+          "name": "Autres produits financiers - Autres",
+          "value": 11804224.02
+        },
+        {
+          "name": "Fonds social européen",
+          "value": 11514240.71
+        },
+        {
+          "name": "Produits de participations",
+          "value": 11353678.06
+        },
+        {
+          "name": "Taxe d’aménagement",
+          "value": 9387091.22
+        },
+        {
+          "name": "Redevances et droits des services à caractère sportif",
+          "value": 9375646.469999999
+        },
+        {
+          "name": "Subventions aux organismes publics - Organismes publics divers - Bâtiments et installations",
+          "value": 8783232.0
+        },
+        {
+          "name": "Concession dans les cimetières (produit net)",
+          "value": 8709536.1
+        },
+        {
+          "name": "Remboursements de frais - par les budgets annexes et les régies",
+          "value": 8064640.0
+        },
+        {
+          "name": "Etat et établissement nationaux",
+          "value": 7972720.35
+        },
+        {
+          "name": "Recouvrements sur départements et autres collectivités publiques",
+          "value": 7950008.7
+        },
+        {
+          "name": "Participations - Autres organismes - Autres",
+          "value": 7914874.930000001
+        },
+        {
+          "name": "Autres droits de stationnement et de location",
+          "value": 7696484.63
+        },
+        {
+          "name": "Recouvrements des indus d’insertion et d’aide sociale - RSA- Allocations forfaitaires",
+          "value": 7577906.43
+        },
+        {
+          "name": "Recouvrements sur autres redevables",
+          "value": 6524972.31
+        },
+        {
+          "name": "Mise à disposition de personnel facturée - aux autres organismes",
+          "value": 6132011.609999999
+        },
+        {
+          "name": "Fonds affectés (amortissable) -  Dotation départementale d'équipement des collèges",
+          "value": 5772056.0
+        },
+        {
+          "name": "Autres (Dotations versées par la CNSA)",
+          "value": 5679798.0
+        },
+        {
+          "name": "Recouvrements sur Sécurité Sociale et organismes mutualistes",
+          "value": 5621779.600000001
+        },
+        {
+          "name": "Redevance d’occupation du domaine public de la collectivitéunique",
+          "value": 5257547.35
+        },
+        {
+          "name": "Redevances pour appareils distributeurs d'essence",
+          "value": 5198496.05
+        },
+        {
+          "name": "Participations - Régions",
+          "value": 4090761.09
+        },
+        {
+          "name": "Remboursements sur charges de Sécurité Sociale et de prévoyance",
+          "value": 4045590.0100000002
+        },
+        {
+          "name": "Recouvrements des indus d’insertion et d’aide sociale - APA",
+          "value": 3914545.09
+        },
+        {
+          "name": "Autres marchandises",
+          "value": 3645827.87
+        },
+        {
+          "name": "Recouvrements des indus d’insertion et d’aide sociale - PCH",
+          "value": 3602539.48
+        },
+        {
+          "name": "Subventions (actifs non amortissables) - Régions",
+          "value": 3159384.42
+        },
+        {
+          "name": "Compte de tiers Voirie",
+          "value": 3155590.54
+        },
+        {
+          "name": "Participation des familles au titre de la restauration et de l’hébergement scolaires",
+          "value": 2928368.6
+        },
+        {
+          "name": "Subventions aux personnes de droit privé - Bâtiments et installations",
+          "value": 2579575.61
+        },
+        {
+          "name": "Dons et legs en capital",
+          "value": 2391456.61
+        },
+        {
+          "name": "Taxe d’aménagement – part départementale",
+          "value": 2238308.02
+        },
+        {
+          "name": "Dotation versée au titre des MDPH",
+          "value": 1870000.0
+        },
+        {
+          "name": "EP Musées - Bourdelle - Modernisation des toitures",
+          "value": 1819300.99
+        },
+        {
+          "name": "Compte de tiers voirie",
+          "value": 1774465.87
+        },
+        {
+          "name": "Participations des bénéficiaires d'une mesure d'accompagnement social personnalisé",
+          "value": 1774318.81
+        },
+        {
+          "name": "Dotation versée au titre de la Conférence des financeurs - Part autonomie",
+          "value": 1759159.2
+        },
+        {
+          "name": "Dédits et pénalités perçus",
+          "value": 1431410.48
+        },
+        {
+          "name": "EP Musées - Musée Carnavalet",
+          "value": 1398149.61
+        },
+        {
+          "name": "Droits de stationnement et de location sur le domaine public portuaire et fluvial",
+          "value": 1382561.39
+        },
+        {
+          "name": "Mandats annulés (sur exercices antérieurs) ou atteints par la déchéance quadriennale",
+          "value": 1155489.85
+        },
+        {
+          "name": "Agencements et aménagements de terrains",
+          "value": 1121213.04
+        },
+        {
+          "name": "Participations - Départements",
+          "value": 1094372.73
+        },
+        {
+          "name": "Remboursements sur rémunérations du personnel",
+          "value": 1088591.5
+        },
+        {
+          "name": "Subventions (actifs non amortissables) - Autres établissements publics locaux",
+          "value": 1084152.46
+        },
+        {
+          "name": "Travaux",
+          "value": 1012612.89
+        },
+        {
+          "name": "Autres fonds européens",
+          "value": 864382.27
+        },
+        {
+          "name": "Autres produits d'activités annexes (abonnements et vente d'ouvrages...)",
+          "value": 836570.75
+        },
+        {
+          "name": "Droits de ports et de navigation (autres que stationnement et location)",
+          "value": 739595.79
+        },
+        {
+          "name": "Installations, matériel et outillage techniques",
+          "value": 638882.09
+        },
+        {
+          "name": "EP Musées - Galliera - Création de salles",
+          "value": 614437.34
+        },
+        {
+          "name": "Dotation de soutien à l'investissement des        départements",
+          "value": 471549.36
+        },
+        {
+          "name": "Constructions",
+          "value": 426399.33999999997
+        },
+        {
+          "name": "Libéralités reçues",
+          "value": 347656.75
+        },
+        {
+          "name": "Locations diverses (autres qu'immeubles)",
+          "value": 343995.5
+        },
+        {
+          "name": "EP Musées Victor Hugo - Réaménagement partiel",
+          "value": 310243.37
+        },
+        {
+          "name": "Dotation de soutien à l'investissement            des départements",
+          "value": 308368.58
+        },
+        {
+          "name": "Fonds d'appui aux politiques d'insertion",
+          "value": 293280.0
+        },
+        {
+          "name": "Dotation de soutien à l'investissement local",
+          "value": 290350.0
+        },
+        {
+          "name": "Produits des autres immobilisations financières – encaissésà l’échéance",
+          "value": 287250.62
+        },
+        {
+          "name": "Études",
+          "value": 280000.0
+        },
+        {
+          "name": "Droits de place",
+          "value": 171325.94
+        },
+        {
+          "name": "Remboursements de frais - par le GFP de rattachement",
+          "value": 124500.0
+        },
+        {
+          "name": "Salubrite publique DLH",
+          "value": 119663.18
+        },
+        {
+          "name": "Mise à disposition de personnel facturée au GFP derattachement",
+          "value": 107245.0
+        },
+        {
+          "name": "Ecole du Breuil",
+          "value": 97883.09
+        },
+        {
+          "name": "Recouvrement sur créances admises en non valeur",
+          "value": 97652.45
+        },
+        {
+          "name": "Bâtiments culturels et sportifs",
+          "value": 94407.6
+        },
+        {
+          "name": "Immeubles de rapport",
+          "value": 86459.3
+        },
+        {
+          "name": "Participations - Autres communes",
+          "value": 84504.96
+        },
+        {
+          "name": "EP Musées - déménagement du musée de la Libération",
+          "value": 67028.59
+        },
+        {
+          "name": "Frais d'études",
+          "value": 61523.64
+        },
+        {
+          "name": "Redevances et droits des services à caractère de loisirs",
+          "value": 54101.44
+        },
+        {
+          "name": "Terrains bâtis",
+          "value": 40460.4
+        },
+        {
+          "name": "Operation Mac Donald",
+          "value": 33145.73
+        },
+        {
+          "name": "EP Musees - restructuration partielle du Musée",
+          "value": 27166.11
+        },
+        {
+          "name": "Syndicat Cloître Saint Merri",
+          "value": 26618.05
+        },
+        {
+          "name": "Autres agencements et aménagements",
+          "value": 23261.879999999997
+        },
+        {
+          "name": "Autres",
+          "value": 22255.35
+        },
+        {
+          "name": "Régions",
+          "value": 18830.0
+        },
+        {
+          "name": "Autres constructions",
+          "value": 17410.03
+        },
+        {
+          "name": "Biens historiques et culturels mobiliers – biens  sous-jacents",
+          "value": 16832.14
+        },
+        {
+          "name": "Recouvrements des indus d’insertion et d’aide sociale - RMI",
+          "value": 14357.41
+        },
+        {
+          "name": "Redevances funéraires",
+          "value": 13800.0
+        },
+        {
+          "name": "Dépenses ultérieures immobilisées",
+          "value": 9925.21
+        },
+        {
+          "name": "Subventions aux personnes de droit privé - Biens mobiliers,matériel et études",
+          "value": 7219.719999999999
+        },
+        {
+          "name": "Projet CPE 140",
+          "value": 7011.58
+        },
+        {
+          "name": "Subventions (actifs amortissables) - GFP de rattachement",
+          "value": 5760.0
+        },
+        {
+          "name": "Avances versées sur commandes d'immobilisations corporelles",
+          "value": 3334.0
+        },
+        {
+          "name": "Recouvrements des indus d’insertion et d’aide sociale - Autres",
+          "value": 2412.85
+        },
+        {
+          "name": "Rabais, remises et ristournes obtenus sur autres services extérieurs",
+          "value": 1800.0
+        },
+        {
+          "name": "Subventions aux organismes publics - Organismes publics divers - Biens mobiliers, matériel et études",
+          "value": 1779.86
+        },
+        {
+          "name": "Taxes funéraires",
+          "value": 924.04
+        },
+        {
+          "name": "Autres produits",
+          "value": 725.0
+        },
+        {
+          "name": "Menus produits forestiers",
+          "value": 300.0
+        },
+        {
+          "name": "Revenus des valeurs mobilières de placement",
+          "value": 277.33
+        },
+        {
+          "name": "Autres impôts et taxes spécifiques liés à des activités de services",
+          "value": 266.95
+        },
+        {
+          "name": "Autres immobilisations corporelles",
+          "value": 163.52
+        }
+      ],
+      "Dotations État": [
+        {
+          "name": "F.C.T.V.A.",
+          "value": 86171914.91
+        },
+        {
+          "name": "Dotations",
+          "value": 42000000.0
+        },
+        {
+          "name": "État - Compensation au titre de la Contribution Économique Territoriale (CVAE et CFE)",
+          "value": 25016625.0
+        },
+        {
+          "name": "DGD des communes et EPCI - DGD",
+          "value": 15836599.15
+        },
+        {
+          "name": "État - Compensation au titre des exonérations de taxes foncières",
+          "value": 14954677.0
+        },
+        {
+          "name": "FCTVA",
+          "value": 10806002.14
+        },
+        {
+          "name": "Frais de gestion de la taxe foncière sur les propriétés bâties",
+          "value": 9818914.0
+        },
+        {
+          "name": "Attributions sur le versement représentatif d’impôt sur lescercles et maisons de jeux",
+          "value": 9207357.25
+        },
+        {
+          "name": "Autres attributions de péréquation et de compensation – autres",
+          "value": 5324381.16
+        },
+        {
+          "name": "Excédents de fonctionnement capitalisés",
+          "value": 2559803.15
+        },
+        {
+          "name": "Dotation pour les titres sécurisés",
+          "value": 1655290.0
+        },
+        {
+          "name": "Compensation pour perte de taxe additionnelle aux droits d'enregistrement ou la taxe de publicité fo",
+          "value": 1025326.0
+        },
+        {
+          "name": "Fonds affectés (non amortissable) - Amendes de radars automatiques et amendes de police",
+          "value": 533183.0
+        },
+        {
+          "name": "Dotation spéciale au titre des instituteurs (DSI)",
+          "value": 70200.0
+        },
+        {
+          "name": "DGF - Représentants syndicaux",
+          "value": 40791.22
+        }
+      ],
+      "Emprunts et Dette": [
+        {
+          "name": "Emprunts obligataires remboursables in fine",
+          "value": 852583820.0
+        },
+        {
+          "name": "Autres dettes - Autres organismes et particuliers",
+          "value": 345688132.82
+        },
+        {
+          "name": "Créances sur des particuliers et autres personnes de droit privé",
+          "value": 159810045.11
+        },
+        {
+          "name": "Dépôts et cautionnements versés",
+          "value": 5161813.79
+        },
+        {
+          "name": "Avances remboursables",
+          "value": 355323.51
+        },
+        {
+          "name": "Autres prêts",
+          "value": 89935.51
+        },
+        {
+          "name": "Autres établissements publics",
+          "value": 64181.64
+        },
+        {
+          "name": "Dépôts et cautionnements reçus",
+          "value": 56195.7
+        },
+        {
+          "name": "Communes membres du GFP",
+          "value": 24093.07
+        }
+      ],
+      "Fiscalité Directe": [
+        {
+          "name": "Taxes foncières et dTaxes foncières et d'habitation",
+          "value": 1618419774.0
+        },
+        {
+          "name": "Attribution de compensation",
+          "value": 978463518.0
+        },
+        {
+          "name": "Cotisation sur la valeur ajoutée des entreprises",
+          "value": 514793856.0
+        },
+        {
+          "name": "Attribution de compensation CVAE – Département – Région",
+          "value": 475293963.0
+        },
+        {
+          "name": "Autres contributions directes",
+          "value": 14582369.0
+        },
+        {
+          "name": "Imposition forfaitaire sur les entreprises de réseaux",
+          "value": 3595005.0
+        }
+      ],
+      "Fiscalité Indirecte": [
+        {
+          "name": "Taxe départementale de publicité foncière et droit départemental d'enregistrement",
+          "value": 1353231887.5
+        },
+        {
+          "name": "Fraction compensatoire de la TFPB et de la taxe d’habitation sur les résidences principales",
+          "value": 748496918.0
+        },
+        {
+          "name": "Taxe communale additionnelle aux droits de mutation ou à lataxe de publicité foncière",
+          "value": 374033061.39
+        },
+        {
+          "name": "Taxe de séjour",
+          "value": 90028300.73
+        },
+        {
+          "name": "Taxe sur la consommation finale d'électricité",
+          "value": 84989673.46
+        },
+        {
+          "name": "Taxe sur les conventions d’assurance",
+          "value": 84287491.72
+        },
+        {
+          "name": "Taxe additionnelle à la taxe de séjour",
+          "value": 22624755.09
+        },
+        {
+          "name": "Taxe départementale additionnelle à certains droits d'enregistrement",
+          "value": 18340649.41
+        },
+        {
+          "name": "TICPE - LRL",
+          "value": 15946264.73
+        },
+        {
+          "name": "Taxe locale sur la publicité extérieure",
+          "value": 8696232.12
+        },
+        {
+          "name": "Impôt sur les cercles et maisons de jeux",
+          "value": 2461452.88
+        },
+        {
+          "name": "Reversement du prélèvement sur les jeux et les paris hippiques",
+          "value": 708769.84
+        }
+      ]
+    },
+    "expenses": {
+      "Enseignement et Formation": [
+        {
+          "name": "Écoles primaires",
+          "value": 217424771.72
+        },
+        {
+          "name": "Écoles maternelles",
+          "value": 174698822.46
+        },
+        {
+          "name": "Hébergt resto scolaire",
+          "value": 99856363.26
+        },
+        {
+          "name": "Classes regroupées",
+          "value": 91691454.72999999
+        },
+        {
+          "name": "Collèges",
+          "value": 82697363.86
+        },
+        {
+          "name": "Services communs",
+          "value": 63780694.3
+        },
+        {
+          "name": "Enseignement supérieur",
+          "value": 54195337.85999999
+        },
+        {
+          "name": "Apprentissage",
+          "value": 21022525.13
+        },
+        {
+          "name": "Autre serv annexe enseign",
+          "value": 16889869.91
+        },
+        {
+          "name": "Classes de découverte",
+          "value": 7762819.840000001
+        },
+        {
+          "name": "Cités scolaires",
+          "value": 6873026.58
+        },
+        {
+          "name": "Autres",
+          "value": 6732046.069999999
+        },
+        {
+          "name": "Lycées publics",
+          "value": 5950888.45
+        }
+      ],
+      "Culture, Sport et Loisirs": [
+        {
+          "name": "Crèches et garderies",
+          "value": 426541430.78
+        },
+        {
+          "name": "Autre intervention social",
+          "value": 420880138.27000004
+        },
+        {
+          "name": "Aide sociale à l'enfance",
+          "value": 415055446.23
+        },
+        {
+          "name": "RSA allocations",
+          "value": 399630764.13
+        },
+        {
+          "name": "Personnes handicapées",
+          "value": 272455819.39
+        },
+        {
+          "name": "Manifestations sportives",
+          "value": 111939990.77000001
+        },
+        {
+          "name": "Activité art action manif",
+          "value": 106501783.69
+        },
+        {
+          "name": "Services communs",
+          "value": 98888445.83
+        },
+        {
+          "name": "Théâtre spectable vivant",
+          "value": 92980516.91
+        },
+        {
+          "name": "Salles de sport, gymnases",
+          "value": 85537218.89000002
+        },
+        {
+          "name": "Autre action en faveur",
+          "value": 85165921.84
+        },
+        {
+          "name": "APA à domicile",
+          "value": 82176748.47
+        },
+        {
+          "name": "Bibliothèque, médiathèque",
+          "value": 72967140.72999999
+        },
+        {
+          "name": "Piscines",
+          "value": 72401101.53
+        },
+        {
+          "name": "Musées",
+          "value": 65261806.37
+        },
+        {
+          "name": "Personnes en difficulté",
+          "value": 49143987.97
+        },
+        {
+          "name": "Autres actions vie social",
+          "value": 44792774.08
+        },
+        {
+          "name": "PMI et planif familiale",
+          "value": 44488180.599999994
+        },
+        {
+          "name": "Patrimoine",
+          "value": 43632960.3
+        },
+        {
+          "name": "Prév et éducation santé",
+          "value": 35177371.27
+        },
+        {
+          "name": "Disp autre étab sanitaire",
+          "value": 26791454.61
+        },
+        {
+          "name": "APA versé établissemnt",
+          "value": 23101421.71
+        },
+        {
+          "name": "Insertion sociale",
+          "value": 21685866.45
+        },
+        {
+          "name": "Autr action petite enfanc",
+          "value": 19958527.24
+        },
+        {
+          "name": "APA versé bénéf établisem",
+          "value": 17387892.68
+        },
+        {
+          "name": "Insertion professionnelle",
+          "value": 14927972.29
+        },
+        {
+          "name": "Dépenses de structure",
+          "value": 13525726.470000003
+        },
+        {
+          "name": "Stades",
+          "value": 12557083.739999998
+        },
+        {
+          "name": "Centres de loisirs",
+          "value": 8765807.36
+        },
+        {
+          "name": "Autres activités pour les",
+          "value": 8350964.88
+        },
+        {
+          "name": "Ciné - salle spectacle",
+          "value": 7876971.6899999995
+        },
+        {
+          "name": "Autre équip sport loisirs",
+          "value": 5790610.470000001
+        },
+        {
+          "name": "Aides à la famille",
+          "value": 5487926.48
+        },
+        {
+          "name": "Colonies de vacances",
+          "value": 5306390.669999999
+        },
+        {
+          "name": "Autre action prévention",
+          "value": 4089022.85
+        },
+        {
+          "name": "Services d'archives",
+          "value": 3990318.7600000002
+        },
+        {
+          "name": "Egalité femmes hommes",
+          "value": 2443774.9899999998
+        },
+        {
+          "name": "Forfait autonomie",
+          "value": 1915726.74
+        },
+        {
+          "name": "Santé",
+          "value": 522980.13
+        },
+        {
+          "name": "Autres dépenses RSA",
+          "value": 192610.0
+        },
+        {
+          "name": "Multi accueil",
+          "value": 170530.06
+        },
+        {
+          "name": "Éval des dépenses engagée",
+          "value": 54312.0
+        }
+      ],
+      "Santé et Action Sociale": [
+        {
+          "name": "Logement social",
+          "value": 327931660.7099999
+        },
+        {
+          "name": "Réserves Foncières",
+          "value": 287803125.39000005
+        },
+        {
+          "name": "Espaces verts urbains",
+          "value": 137028330.02999997
+        },
+        {
+          "name": "Services communs",
+          "value": 65938851.65
+        },
+        {
+          "name": "Éclairage public",
+          "value": 60949951.86000001
+        },
+        {
+          "name": "Opérations d’aménagement",
+          "value": 59713696.24999999
+        },
+        {
+          "name": "Aide au secteur locatif",
+          "value": 20058184.230000004
+        },
+        {
+          "name": "Insertion éco sociale",
+          "value": 18887349.759999998
+        },
+        {
+          "name": "Parc privé collectivité",
+          "value": 14723717.13
+        },
+        {
+          "name": "Autres",
+          "value": 12417247.03
+        },
+        {
+          "name": "Industrie,commerce artisa",
+          "value": 11220417.23
+        },
+        {
+          "name": "Recherche et innovation",
+          "value": 10804881.39
+        },
+        {
+          "name": "Politique de la ville",
+          "value": 7841770.02
+        },
+        {
+          "name": "Autres actions d’aménagem",
+          "value": 7030567.2
+        },
+        {
+          "name": "Développement touristique",
+          "value": 5556556.01
+        },
+        {
+          "name": "Autres actions",
+          "value": 5256773.77
+        },
+        {
+          "name": "Struct d'anim et dev éco",
+          "value": 4086901.24
+        },
+        {
+          "name": "Rayonnement et attractivi",
+          "value": 1660174.5000000002
+        },
+        {
+          "name": "Aire d’accueil des gens d",
+          "value": 515503.87
+        },
+        {
+          "name": "Techno de l'info et comm",
+          "value": 360794.15
+        },
+        {
+          "name": "Aide accession propriété",
+          "value": 311868.52
+        },
+        {
+          "name": "Électrification",
+          "value": 254967.69
+        }
+      ],
+      "Aménagement et Logement": [
+        {
+          "name": "Autres transports",
+          "value": 426418569.35
+        },
+        {
+          "name": "Ser com collecte propreté",
+          "value": 327922744.95
+        },
+        {
+          "name": "Voirie communale",
+          "value": 219627648.00000003
+        },
+        {
+          "name": "Réseau chaleur et froid",
+          "value": 192752750.84
+        },
+        {
+          "name": "Transport ferroviaire",
+          "value": 137258281.70999998
+        },
+        {
+          "name": "Services communs",
+          "value": 131073654.82000002
+        },
+        {
+          "name": "Tri, valo et trait déchet",
+          "value": 125747774.91000001
+        },
+        {
+          "name": "Collecte des déchets",
+          "value": 91417173.98
+        },
+        {
+          "name": "Propreté urbaine",
+          "value": 63091500.75
+        },
+        {
+          "name": "Transport sur route",
+          "value": 45367391.91000001
+        },
+        {
+          "name": "Circulations douces",
+          "value": 32217416.240000006
+        },
+        {
+          "name": "Actions transversales",
+          "value": 26366748.420000006
+        },
+        {
+          "name": "Eaux pluviales",
+          "value": 18182000.0
+        },
+        {
+          "name": "Halte fluv autre infra fl",
+          "value": 17087065.789999995
+        },
+        {
+          "name": "Équipements de voirie",
+          "value": 9325358.04
+        },
+        {
+          "name": "Politique de l'air",
+          "value": 8652517.45
+        },
+        {
+          "name": "Prés patri nat gest risk",
+          "value": 4619131.71
+        },
+        {
+          "name": "Lutte contre inondation",
+          "value": 4329145.48
+        },
+        {
+          "name": "Assainissement",
+          "value": 3385048.5999999996
+        },
+        {
+          "name": "Sécurité routière",
+          "value": 2867366.0700000008
+        },
+        {
+          "name": "Gare autre infra ferrovia",
+          "value": 1319098.02
+        },
+        {
+          "name": "Autres actions",
+          "value": 587967.11
+        },
+        {
+          "name": "Politique de l'eau",
+          "value": 263420.49
+        },
+        {
+          "name": "Act prév sensibilisation",
+          "value": 257379.11000000002
+        },
+        {
+          "name": "Fret routier",
+          "value": 157041.28999999998
+        },
+        {
+          "name": "Viabilité hiv aléa climat",
+          "value": 102084.05
+        },
+        {
+          "name": "Énergie photovoltaïque",
+          "value": 30897.5
+        }
+      ],
+      "Sécurité et Salubrité": [
+        {
+          "name": "Police, sécurité, justice",
+          "value": 161648301.4
+        },
+        {
+          "name": "Autre int prot bien pers",
+          "value": 138268893.54
+        },
+        {
+          "name": "Incendie et secours",
+          "value": 113141960.9
+        },
+        {
+          "name": "Services communs",
+          "value": 16728003.800000003
+        },
+        {
+          "name": "Hygiène salubrité publiqu",
+          "value": 5802145.999999999
+        }
+      ],
+      "Administration Générale": [
+        {
+          "name": "Opérations non ventilable",
+          "value": 2257125583.6
+        },
+        {
+          "name": "Adm générale collectivité",
+          "value": 528167216.47000015
+        },
+        {
+          "name": "Autres instances",
+          "value": 212835256.67000002
+        },
+        {
+          "name": "Personnel non ventilé",
+          "value": 59903028.980000004
+        },
+        {
+          "name": "Assemblée délibérante",
+          "value": 49631031.82
+        },
+        {
+          "name": "Autres moyens généraux",
+          "value": 35787228.79
+        },
+        {
+          "name": "Cimetière pompe funèbre",
+          "value": 29566071.870000005
+        },
+        {
+          "name": "Admin général Etat",
+          "value": 23746998.819999993
+        },
+        {
+          "name": "Info, communication, pub",
+          "value": 15869928.2
+        },
+        {
+          "name": "Aide aux associations",
+          "value": 8252607.169999999
+        },
+        {
+          "name": "Actions relevant sub glob",
+          "value": 3807568.0
+        },
+        {
+          "name": "Autres actions",
+          "value": 3162409.2000000007
+        },
+        {
+          "name": "Fêtes et cérémonies",
+          "value": 2795041.1899999995
+        },
+        {
+          "name": "Aide publique dvllpement",
+          "value": 1723231.98
+        },
+        {
+          "name": "Actions interrégionales",
+          "value": 545441.6400000001
+        },
+        {
+          "name": "FSE",
+          "value": 263986.23
+        }
+      ]
+    }
+  },
+  "byEntity": []
+}
