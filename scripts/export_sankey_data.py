@@ -8,6 +8,11 @@ Each year gets its own file with:
 - Aggregated expenses grouped by category
 - Drill-down data for detailed views
 
+Paris uses a FUNCTIONAL budget presentation with chapter codes:
+- 940-943: Fiscalité & Opérations financières
+- 930-939: Fonctionnement par fonction (Social, Éducation, etc.)
+- 900-908: Investissement par fonction
+
 Usage:
     python scripts/export_sankey_data.py
 
@@ -28,45 +33,115 @@ DATASET_ID = "paris_open_data_dev"
 TABLE_ID = "comptes_administratifs_budgets_principaux_a_partir_de_2019_m57_ville_departement"
 OUTPUT_DIR = Path(__file__).parent.parent / "frontend" / "public" / "data"
 
-# Revenue grouping based on M57 classification
-REVENUE_GROUPS = {
-    "Fiscalité Directe": [
-        "IMPOSITIONS DIRECTES",
-        "TAXES FONCIERES",
-        "IMPOTS LOCAUX",
-    ],
-    "Fiscalité Indirecte": [
-        "AUTRES IMPÔTS ET TAXES", 
-        "DROITS DE MUTATION",
-        "PUBLICITE FONCIERE",
-    ],
-    "Dotations État": [
-        "DOTATIONS ET PARTICIPATIONS",
-        "DGF",
-        "COMPENSATIONS",
-    ],
-    "Recettes des Services": [
-        "PRODUITS DES SERVICES",
-        "PRESTATIONS",
-        "REDEVANCES",
-    ],
-    "Emprunts et Dette": [
-        "EMPRUNTS",
-        "DETTE",
-    ],
-    "Autres Recettes": [],  # Catch-all
+# =============================================================================
+# CLASSIFICATION BASED ON PARIS CHAPTER CODES
+# =============================================================================
+# Paris uses functional chapter codes (not M57 nature codes)
+# Codes starting with 9xx = Fonctionnement, 0xx = Investissement
+
+# Revenue classification based on chapter code
+REVENUE_CHAPTER_MAP = {
+    # Fiscalité
+    "940": "Fiscalité Directe",       # IMPOSITIONS DIRECTES
+    "941": "Fiscalité Indirecte",     # AUTRES IMPÔTS ET TAXES
+    "921": "Fiscalité Indirecte",     # TAXES NON AFFECTÉES
+    
+    # Dotations de l'État
+    "922": "Dotations État",          # DOTATIONS ET PARTICIPATIONS (fonct)
+    "942": "Dotations État",          # DOTATIONS ET PARTICIPATIONS (invest)
+    
+    # Dette et Opérations financières
+    "923": "Emprunts & Dette",        # DETTES ET OPÉRATIONS FINANCIÈRES
+    "943": "Opérations Financières",  # OPÉRATIONS FINANCIÈRES
+    
+    # Recettes fonctionnelles (revenus liés aux services publics)
+    "930": "Services Généraux",       # SERVICES GÉNÉRAUX
+    "9305": "Fonds Européens",        # GESTION DES FONDS EUROPÉENS
+    "931": "Sécurité",                # SÉCURITÉ
+    "932": "Éducation",               # ENSEIGNEMENT
+    "933": "Culture & Sport",         # CULTURE, VIE SOCIALE, SPORTS
+    "934": "Action Sociale",          # SANTÉ ET ACTION SOCIALE
+    "9343": "APA",                    # Allocation Personnes Âgées
+    "9344": "RSA",                    # Revenu de Solidarité Active
+    "935": "Aménagement",             # AMÉNAGEMENT DES TERRITOIRES
+    "936": "Action Économique",       # ACTION ÉCONOMIQUE
+    "937": "Environnement",           # ENVIRONNEMENT
+    "938": "Transports",              # TRANSPORTS
+    
+    # Investissement (recettes = subventions d'équipement, cessions, etc.)
+    "900": "Invest. Services",        # Services généraux invest
+    "901": "Invest. Sécurité",
+    "902": "Invest. Éducation",
+    "903": "Invest. Culture",
+    "904": "Invest. Social",
+    "905": "Invest. Aménagement",
+    "906": "Invest. Économie",
+    "907": "Invest. Environnement",
+    "908": "Invest. Transports",
 }
 
-# Expense grouping based on function codes
+# Expense classification (same chapter codes)
+EXPENSE_CHAPTER_MAP = {
+    # Opérations financières
+    "940": "Reversements Fiscaux",    # Reversements aux collectivités
+    "941": "Charges Fiscales",        # Charges liées aux impôts
+    "923": "Remboursement Dette",     # Remboursement emprunts
+    "943": "Opérations Financières",
+    
+    # Fonctionnement par politique publique
+    "930": "Administration",          # SERVICES GÉNÉRAUX
+    "9305": "Fonds Européens",
+    "931": "Sécurité",                # SÉCURITÉ
+    "932": "Éducation",               # ENSEIGNEMENT
+    "933": "Culture & Sport",         # CULTURE, VIE SOCIALE, SPORTS
+    "934": "Action Sociale",          # SANTÉ ET ACTION SOCIALE
+    "9343": "APA",
+    "9344": "RSA",
+    "935": "Aménagement",             # AMÉNAGEMENT DES TERRITOIRES
+    "936": "Action Économique",
+    "937": "Environnement",           # ENVIRONNEMENT
+    "938": "Transports",              # TRANSPORTS
+    "922": "Participations",          # Dotations versées
+    "942": "Subventions Équipement",
+    
+    # Investissement par politique
+    "900": "Invest. Administration",
+    "901": "Invest. Sécurité",
+    "902": "Invest. Éducation",
+    "903": "Invest. Culture",
+    "904": "Invest. Social",
+    "905": "Invest. Aménagement",
+    "906": "Invest. Économie",
+    "907": "Invest. Environnement",
+    "908": "Invest. Transports",
+}
+
+# Regroupement pour simplifier le Sankey (moins de nodes)
+REVENUE_GROUPS = {
+    # Grandes catégories de recettes
+    "Impôts & Taxes": ["Fiscalité Directe", "Fiscalité Indirecte"],
+    "Dotations & Subventions": ["Dotations État", "Fonds Européens"],
+    "Emprunts": ["Emprunts & Dette", "Opérations Financières"],
+    "Services Publics": ["Services Généraux", "Sécurité", "Éducation", "Culture & Sport", 
+                         "Action Sociale", "APA", "RSA", "Aménagement", "Action Économique",
+                         "Environnement", "Transports"],
+    "Investissement": ["Invest. Services", "Invest. Sécurité", "Invest. Éducation",
+                       "Invest. Culture", "Invest. Social", "Invest. Aménagement",
+                       "Invest. Économie", "Invest. Environnement", "Invest. Transports"],
+}
+
 EXPENSE_GROUPS = {
-    "Administration Générale": ["0"],
-    "Sécurité et Salubrité": ["1"],
-    "Enseignement et Formation": ["2"],
-    "Culture, Sport et Loisirs": ["3", "4"],
-    "Santé et Action Sociale": ["5", "6"],
-    "Aménagement et Logement": ["7", "8"],
-    "Action Économique": ["9"],
-    "Autres": [],
+    # Grandes catégories de dépenses
+    "Personnel & Admin": ["Administration", "Reversements Fiscaux", "Charges Fiscales", "Fonds Européens"],
+    "Éducation": ["Éducation", "Invest. Éducation"],
+    "Action Sociale": ["Action Sociale", "APA", "RSA", "Invest. Social"],
+    "Culture & Sport": ["Culture & Sport", "Invest. Culture"],
+    "Sécurité": ["Sécurité", "Invest. Sécurité"],
+    "Aménagement & Logement": ["Aménagement", "Invest. Aménagement", "Invest. Administration"],
+    "Environnement": ["Environnement", "Invest. Environnement"],
+    "Transports": ["Transports", "Invest. Transports"],
+    "Économie": ["Action Économique", "Invest. Économie", "Participations", "Subventions Équipement"],
+    "Dette": ["Remboursement Dette", "Opérations Financières"],
 }
 
 
@@ -74,7 +149,6 @@ def get_bigquery_client():
     """Initialize BigQuery client with credentials."""
     creds_path = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
     if not creds_path:
-        # Try common locations
         possible_paths = [
             Path.home() / "Downloads" / "open-data-france-484717-68f33f082f1f.json",
             Path.home() / ".config" / "gcloud" / "application_default_credentials.json",
@@ -91,26 +165,13 @@ def get_bigquery_client():
 
 def query_budget_data(client, year: int) -> list[dict]:
     """
-    Query budget data for a specific year from BigQuery.
-    
-    Column mapping from source table:
-    - exercice_comptable -> year
-    - sens_depense_recette -> sens_flux ('Dépense' or 'Recette')
-    - chapitre_niveau_vote_texte_descriptif -> chapitre_libelle
-    - chapitre_budgetaire_cle -> chapitre_code
-    - fonction_cle -> fonction_code
-    - fonction_texte -> fonction_libelle
-    - nature_budgetaire_texte -> nature_libelle
-    - mandate_titre_apres_regul -> montant
-    - type_d_operation_r_o_i_m -> type_operation ('R'=Réel)
+    Query budget data aggregated by chapter for a specific year.
     """
     query = f"""
     SELECT 
-        sens_depense_recette as sens_flux,
+        sens_depense_recette as sens,
         chapitre_budgetaire_cle as chapitre_code,
         chapitre_niveau_vote_texte_descriptif as chapitre_libelle,
-        COALESCE(fonction_cle, '0') as fonction_code,
-        fonction_texte as fonction_libelle,
         nature_budgetaire_texte as nature_libelle,
         SUM(mandate_titre_apres_regul) as montant
     FROM `{PROJECT_ID}.{DATASET_ID}.{TABLE_ID}`
@@ -120,9 +181,7 @@ def query_budget_data(client, year: int) -> list[dict]:
     GROUP BY 
         sens_depense_recette, 
         chapitre_budgetaire_cle,
-        chapitre_niveau_vote_texte_descriptif, 
-        fonction_cle,
-        fonction_texte,
+        chapitre_niveau_vote_texte_descriptif,
         nature_budgetaire_texte
     HAVING SUM(mandate_titre_apres_regul) > 0
     """
@@ -132,98 +191,104 @@ def query_budget_data(client, year: int) -> list[dict]:
     return [dict(row) for row in results]
 
 
-def classify_revenue(chapitre_libelle: str) -> str:
-    """Classify a revenue item into a display group."""
-    upper = chapitre_libelle.upper() if chapitre_libelle else ""
-    
-    for group, keywords in REVENUE_GROUPS.items():
-        for keyword in keywords:
-            if keyword in upper:
-                return group
-    
-    return "Autres Recettes"
-
-
-def classify_expense(fonction_code: str) -> str:
-    """Classify an expense item based on function code."""
-    if not fonction_code:
+def classify_by_chapter(chapitre_code: str, chapter_map: dict) -> str:
+    """
+    Classify based on chapter code, trying longest match first.
+    E.g., '9344' matches before '934'
+    """
+    if not chapitre_code:
         return "Autres"
     
-    first_digit = fonction_code[0] if fonction_code else "0"
+    # Try exact match first, then progressively shorter prefixes
+    for length in range(len(chapitre_code), 0, -1):
+        prefix = chapitre_code[:length]
+        if prefix in chapter_map:
+            return chapter_map[prefix]
     
-    for group, codes in EXPENSE_GROUPS.items():
-        if first_digit in codes:
+    return "Autres"
+
+
+def get_group(category: str, group_map: dict) -> str:
+    """Find which group a category belongs to."""
+    for group, categories in group_map.items():
+        if category in categories:
             return group
-    
     return "Autres"
 
 
 def build_sankey_data(records: list[dict], year: int) -> dict:
     """
     Transform raw budget records into Sankey chart format.
-    
-    Returns:
-    {
-        "year": 2024,
-        "totals": {"recettes": ..., "depenses": ..., "solde": ...},
-        "nodes": [...],
-        "links": [...],
-        "drilldown": {"revenue": {...}, "expenses": {...}},
-        "byEntity": [...]
-    }
+    Uses two levels: detailed category and grouped display.
     """
-    # Aggregate by group
-    revenue_totals = defaultdict(float)
-    expense_totals = defaultdict(float)
+    # Level 1: Detailed by chapter
+    revenue_by_chapter = defaultdict(float)
+    expense_by_chapter = defaultdict(float)
     
-    # Drill-down data (detailed breakdown within each group)
+    # Drill-down data (by nature within each chapter)
     revenue_drilldown = defaultdict(lambda: defaultdict(float))
     expense_drilldown = defaultdict(lambda: defaultdict(float))
     
     for record in records:
         montant = float(record.get("montant", 0))
-        sens = record.get("sens_flux", "")
+        sens = record.get("sens", "")
+        chapitre_code = record.get("chapitre_code", "")
+        chapitre_libelle = record.get("chapitre_libelle", "")
+        nature_libelle = record.get("nature_libelle", "") or chapitre_libelle or "Non spécifié"
         
-        if "Recette" in sens:
-            group = classify_revenue(record.get("chapitre_libelle", ""))
-            revenue_totals[group] += montant
+        if "Recettes" in sens:
+            category = classify_by_chapter(chapitre_code, REVENUE_CHAPTER_MAP)
+            revenue_by_chapter[category] += montant
+            revenue_drilldown[category][nature_libelle] += montant
             
-            # Drill-down by nature_libelle
-            detail_name = record.get("nature_libelle") or record.get("chapitre_libelle") or "Autre"
-            revenue_drilldown[group][detail_name] += montant
-            
-        elif "Dépense" in sens:
-            group = classify_expense(record.get("fonction_code", ""))
-            expense_totals[group] += montant
-            
-            # Drill-down by fonction_libelle
-            detail_name = record.get("fonction_libelle") or record.get("chapitre_libelle") or "Autre"
-            expense_drilldown[group][detail_name] += montant
+        elif "Dépenses" in sens:
+            category = classify_by_chapter(chapitre_code, EXPENSE_CHAPTER_MAP)
+            expense_by_chapter[category] += montant
+            expense_drilldown[category][nature_libelle] += montant
+    
+    # Level 2: Group into display categories
+    revenue_grouped = defaultdict(float)
+    expense_grouped = defaultdict(float)
+    
+    # Also track which detailed categories feed into each group (for drill-down)
+    revenue_group_drilldown = defaultdict(lambda: defaultdict(float))
+    expense_group_drilldown = defaultdict(lambda: defaultdict(float))
+    
+    for category, amount in revenue_by_chapter.items():
+        group = get_group(category, REVENUE_GROUPS)
+        revenue_grouped[group] += amount
+        # Add chapter-level items to group drilldown
+        for detail, detail_amount in revenue_drilldown[category].items():
+            revenue_group_drilldown[group][f"{category}: {detail}"] += detail_amount
+    
+    for category, amount in expense_by_chapter.items():
+        group = get_group(category, EXPENSE_GROUPS)
+        expense_grouped[group] += amount
+        for detail, detail_amount in expense_drilldown[category].items():
+            expense_group_drilldown[group][f"{category}: {detail}"] += detail_amount
     
     # Calculate totals
-    total_recettes = sum(revenue_totals.values())
-    total_depenses = sum(expense_totals.values())
+    total_recettes = sum(revenue_grouped.values())
+    total_depenses = sum(expense_grouped.values())
     solde = total_recettes - total_depenses
     
-    # Build nodes list
+    # Build nodes (using grouped categories for cleaner display)
     nodes = []
     
-    # Revenue nodes (left side)
-    for name in sorted(revenue_totals.keys()):
-        nodes.append({"name": name, "category": "revenue"})
+    for name in sorted(revenue_grouped.keys()):
+        if revenue_grouped[name] > 0:
+            nodes.append({"name": name, "category": "revenue"})
     
-    # Central node
     nodes.append({"name": "Budget Paris", "category": "central"})
     
-    # Expense nodes (right side)
-    for name in sorted(expense_totals.keys()):
-        nodes.append({"name": name, "category": "expense"})
+    for name in sorted(expense_grouped.keys()):
+        if expense_grouped[name] > 0:
+            nodes.append({"name": name, "category": "expense"})
     
     # Build links
     links = []
     
-    # Revenue -> Central
-    for name, value in revenue_totals.items():
+    for name, value in revenue_grouped.items():
         if value > 0:
             links.append({
                 "source": name,
@@ -231,8 +296,7 @@ def build_sankey_data(records: list[dict], year: int) -> dict:
                 "value": value
             })
     
-    # Central -> Expenses
-    for name, value in expense_totals.items():
+    for name, value in expense_grouped.items():
         if value > 0:
             links.append({
                 "source": "Budget Paris",
@@ -246,19 +310,19 @@ def build_sankey_data(records: list[dict], year: int) -> dict:
         "expenses": {}
     }
     
-    for group, items in revenue_drilldown.items():
+    for group, items in revenue_group_drilldown.items():
         drilldown["revenue"][group] = [
             {"name": name, "value": value}
             for name, value in sorted(items.items(), key=lambda x: -x[1])
             if value > 0
-        ]
+        ][:50]  # Limit to top 50 items
     
-    for group, items in expense_drilldown.items():
+    for group, items in expense_group_drilldown.items():
         drilldown["expenses"][group] = [
             {"name": name, "value": value}
             for name, value in sorted(items.items(), key=lambda x: -x[1])
             if value > 0
-        ]
+        ][:50]
     
     return {
         "year": year,
@@ -270,7 +334,7 @@ def build_sankey_data(records: list[dict], year: int) -> dict:
         "nodes": nodes,
         "links": links,
         "drilldown": drilldown,
-        "byEntity": []  # Could add entity breakdown if needed
+        "byEntity": []
     }
 
 
@@ -282,6 +346,11 @@ def export_year(client, year: int) -> dict:
     print(f"  Found {len(records)} records")
     
     sankey_data = build_sankey_data(records, year)
+    
+    # Print summary
+    print(f"  Recettes: {sankey_data['totals']['recettes']/1e9:.2f} Md€")
+    print(f"  Dépenses: {sankey_data['totals']['depenses']/1e9:.2f} Md€")
+    print(f"  Solde: {sankey_data['totals']['solde']/1e9:.2f} Md€")
     
     # Write to file
     output_file = OUTPUT_DIR / f"budget_sankey_{year}.json"
@@ -300,7 +369,6 @@ def export_year(client, year: int) -> dict:
 
 def export_index(summaries: list[dict]):
     """Export the index file with available years and summary data."""
-    # Sort by year descending
     summaries.sort(key=lambda x: x["year"], reverse=True)
     
     index = {
@@ -322,16 +390,11 @@ def main():
     print("Paris Budget Sankey Data Export")
     print("=" * 60)
     
-    # Ensure output directory exists
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    
-    # Initialize client
     client = get_bigquery_client()
     
-    # Years to export (M57 format starts 2019)
     years = [2024, 2023, 2022, 2021, 2020, 2019]
     
-    # Export each year
     summaries = []
     for year in years:
         try:
@@ -340,7 +403,6 @@ def main():
         except Exception as e:
             print(f"  ✗ Error processing {year}: {e}")
     
-    # Export index
     if summaries:
         export_index(summaries)
     

@@ -23,38 +23,28 @@ interface BudgetSankeyProps {
 
 // Couleurs par groupe de recettes (tons verts/cyans pour les revenus)
 const REVENUE_COLORS: Record<string, string> = {
-  'Fiscalité Directe': '#10b981',      // Emerald
-  'Fiscalité Indirecte': '#14b8a6',    // Teal
-  'Fiscalité Environnementale': '#22c55e', // Green
-  'Dotations État': '#06b6d4',          // Cyan
-  'Recettes des Services': '#0ea5e9',   // Sky
-  'Revenus du Patrimoine': '#8b5cf6',   // Violet
-  'Emprunts et Dette': '#f59e0b',       // Amber (warning color for debt)
-  'Subventions Reçues': '#6366f1',      // Indigo
-  'Transferts Sociaux': '#ec4899',      // Pink
-  'Recettes Transports': '#84cc16',     // Lime
-  'Autres Recettes': '#64748b',         // Slate
-  // Fallback for old data
-  'IMPOSITIONS DIRECTES': '#10b981',
-  'AUTRES IMPÔTS ET TAXES': '#14b8a6',
-  'DOTATIONS ET PARTICIPATIONS': '#06b6d4',
-  'ENVIRONNEMENT': '#22c55e',
-  'TRANSPORTS': '#84cc16',
+  'Impôts & Taxes': '#10b981',           // Emerald - largest revenue source
+  'Services Publics': '#0ea5e9',         // Sky - fees from public services
+  'Dotations & Subventions': '#06b6d4',  // Cyan - state transfers
+  'Emprunts': '#f59e0b',                 // Amber - borrowing (⚠️ creates debt)
+  'Investissement': '#8b5cf6',           // Violet - investment revenues
+  'Autres': '#64748b',                   // Slate
   'default': '#64748b',
 };
 
-// Couleurs par catégorie de dépenses (tons bleus/violets)
+// Couleurs par catégorie de dépenses (tons bleus/roses)
 const EXPENSE_COLORS: Record<string, string> = {
-  'Administration Générale': '#3b82f6',      // Blue
-  'Santé et Action Sociale': '#ec4899',      // Pink
-  'Enseignement et Formation': '#8b5cf6',    // Violet
-  'Culture, Sport et Loisirs': '#f59e0b',    // Amber
-  'Sécurité et Salubrité': '#ef4444',        // Red
-  'Aménagement et Logement': '#06b6d4',      // Cyan
-  'Transports': '#84cc16',                   // Lime
-  'Environnement': '#22c55e',                // Green
-  'Action Économique': '#f97316',            // Orange
-  'Autres': '#64748b',                       // Slate
+  'Action Sociale': '#ec4899',           // Pink - social programs (RSA, APA)
+  'Personnel & Admin': '#3b82f6',        // Blue - administration
+  'Éducation': '#8b5cf6',                // Violet - schools
+  'Culture & Sport': '#f59e0b',          // Amber
+  'Sécurité': '#ef4444',                 // Red
+  'Aménagement & Logement': '#06b6d4',   // Cyan - urban planning, housing
+  'Transports': '#84cc16',               // Lime
+  'Environnement': '#22c55e',            // Green
+  'Économie': '#f97316',                 // Orange
+  'Dette': '#fbbf24',                    // Yellow - debt repayment
+  'Autres': '#64748b',                   // Slate
   'default': '#64748b',
 };
 
