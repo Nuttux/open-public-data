@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: int_budget_arrondissements_m57
+    description: |
+      Budget des mairies d'arrondissement filtré pour la période M57 (2019+).
+      Ce filtre assure la cohérence avec les données du budget central qui ne sont
+      disponibles qu'à partir de 2019. À terme, un mapping des anciennes normes
+      permettra d'inclure les données antérieures.
+    columns:
+      - name: annee
+        description: "Exercice comptable (>= 2019)"
+        tests:
+          - not_null
+      - name: cle_technique
+        description: "Clé unique générée par hachage"
+        tests:
+          - unique
+          - not_null
+
+  - name: int_budget_central_m57
+    description: |
+      Budget de la mairie centrale (Ville de Paris + Département) filtré pour M57.
+      Exclut les dotations aux arrondissements (nature 74872) pour éviter le double
+      comptage lors de la consolidation.
+    columns:
+      - name: annee
+        description: "Exercice comptable (>= 2019)"
+        tests:
+          - not_null
+      - name: cle_technique
+        description: "Clé unique générée par hachage"
+        tests:
+          - unique
+          - not_null

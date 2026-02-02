@@ -1,20 +1,24 @@
-# Credentials - NEVER commit these
-open-data-france-*.json
-*.pem
-*.key
+# Dependencies
+node_modules/
+.venv/
+__pycache__/
+*.pyc
 
-# dbt
+# Build outputs
+.next/
 target/
 dbt_packages/
 logs/
 
-# Python
-__pycache__/
-*.py[cod]
-.env
-.venv/
-venv/
+# IDE
+.idea/
+.vscode/
 
 # OS
 .DS_Store
-Thumbs.db
+*.swp
+
+# Env
+.env
+.env.local
+*.json.bak
