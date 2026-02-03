@@ -1,0 +1,122 @@
+[
+  {
+    "code": 1,
+    "nom": "1er arrondissement",
+    "totalLogements": 877,
+    "nbProgrammes": 72
+  },
+  {
+    "code": 2,
+    "nom": "2ème arrondissement",
+    "totalLogements": 658,
+    "nbProgrammes": 57
+  },
+  {
+    "code": 3,
+    "nom": "3ème arrondissement",
+    "totalLogements": 1336,
+    "nbProgrammes": 90
+  },
+  {
+    "code": 4,
+    "nom": "4ème arrondissement",
+    "totalLogements": 1677,
+    "nbProgrammes": 98
+  },
+  {
+    "code": 5,
+    "nom": "5ème arrondissement",
+    "totalLogements": 2194,
+    "nbProgrammes": 86
+  },
+  {
+    "code": 6,
+    "nom": "6ème arrondissement",
+    "totalLogements": 920,
+    "nbProgrammes": 52
+  },
+  {
+    "code": 7,
+    "nom": "7ème arrondissement",
+    "totalLogements": 805,
+    "nbProgrammes": 29
+  },
+  {
+    "code": 8,
+    "nom": "8ème arrondissement",
+    "totalLogements": 926,
+    "nbProgrammes": 46
+  },
+  {
+    "code": 9,
+    "nom": "9ème arrondissement",
+    "totalLogements": 2097,
+    "nbProgrammes": 121
+  },
+  {
+    "code": 10,
+    "nom": "10ème arrondissement",
+    "totalLogements": 4859,
+    "nbProgrammes": 225
+  },
+  {
+    "code": 11,
+    "nom": "11ème arrondissement",
+    "totalLogements": 6665,
+    "nbProgrammes": 294
+  },
+  {
+    "code": 12,
+    "nom": "12ème arrondissement",
+    "totalLogements": 11816,
+    "nbProgrammes": 289
+  },
+  {
+    "code": 13,
+    "nom": "13ème arrondissement",
+    "totalLogements": 15700,
+    "nbProgrammes": 364
+  },
+  {
+    "code": 14,
+    "nom": "14ème arrondissement",
+    "totalLogements": 9005,
+    "nbProgrammes": 221
+  },
+  {
+    "code": 15,
+    "nom": "15ème arrondissement",
+    "totalLogements": 12855,
+    "nbProgrammes": 386
+  },
+  {
+    "code": 16,
+    "nom": "16ème arrondissement",
+    "totalLogements": 4834,
+    "nbProgrammes": 139
+  },
+  {
+    "code": 17,
+    "nom": "17ème arrondissement",
+    "totalLogements": 9913,
+    "nbProgrammes": 282
+  },
+  {
+    "code": 18,
+    "nom": "18ème arrondissement",
+    "totalLogements": 12401,
+    "nbProgrammes": 520
+  },
+  {
+    "code": 19,
+    "nom": "19ème arrondissement",
+    "totalLogements": 12170,
+    "nbProgrammes": 309
+  },
+  {
+    "code": 20,
+    "nom": "20ème arrondissement",
+    "totalLogements": 14836,
+    "nbProgrammes": 494
+  }
+]

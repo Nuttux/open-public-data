@@ -1,0 +1,5988 @@
+{
+  "year": 2023,
+  "total": 201549104,
+  "count": 353,
+  "geolocated": 350,
+  "data": [
+    {
+      "id": "2023_06518",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION D'ACTION SOCIALE EN FAVEUR DES PERSONNELS DE LA VILLE DE PARIS ET DU DEPARTEMENT DE PARIS ASPP",
+      "siret": "32385721900097",
+      "objet": "Subvention d'exploitation",
+      "montant": 12377000,
+      "direction": "DRH",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.87074,
+        "lon": 2.343155
+      },
+      "adresse": "21 RUE D'UZES 75002 PARIS",
+      "codePostal": "75002",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03618",
+      "annee": 2023,
+      "beneficiaire": "THEATRE MUSICAL DE PARIS",
+      "siret": "31669616000019",
+      "objet": "Acompte 2023 DAC",
+      "montant": 7660000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.857845,
+        "lon": 2.345636
+      },
+      "adresse": "2 RUE EDOUARD COLONNE 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_08925",
+      "annee": 2023,
+      "beneficiaire": "THEATRE MUSICAL DE PARIS",
+      "siret": "31669616000019",
+      "objet": "Fonctionnement 2023",
+      "montant": 7660000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.857845,
+        "lon": 2.345636
+      },
+      "adresse": "2 RUE EDOUARD COLONNE 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02333",
+      "annee": 2023,
+      "beneficiaire": "ABC PUERICULTURE",
+      "siret": "34482479200032",
+      "objet": "Budget 2023 crèches",
+      "montant": 7039864,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.852284,
+        "lon": 2.274995
+      },
+      "adresse": "9 RUE JEAN DE LA FONTAINE 75016 PARIS",
+      "codePostal": "75016",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_07579",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION POUR LA GESTION DES OEUVRES SOCIALES DES PERSONNELS DES ADMINISTRATIONS PARISIENNES AGOSPAP",
+      "siret": "32385717700279",
+      "objet": "Fonctionnement Ville 2023",
+      "montant": 6742586,
+      "direction": "DRH",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.895862,
+        "lon": 2.38219
+      },
+      "adresse": "32 RUE DE CAMBRAI 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04707",
+      "annee": 2023,
+      "beneficiaire": "THEATRE DE LA VILLE",
+      "siret": "77566172100024",
+      "objet": "Subvention de fonctionnement 2023",
+      "montant": 6575000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.857346,
+        "lon": 2.34779
+      },
+      "adresse": "ANGL 16 Q DE GESVRES 2 PLACE DU CHATELET 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02503",
+      "annee": 2023,
+      "beneficiaire": "CRESCENDO",
+      "siret": "78481011100251",
+      "objet": "Subvention de fonctionnement 2023 Crescendo",
+      "montant": 5789262,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.862478,
+        "lon": 2.367835
+      },
+      "adresse": "102 C RUE AMELOT 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03620",
+      "annee": 2023,
+      "beneficiaire": "THEATRE DE LA VILLE",
+      "siret": "77566172100024",
+      "objet": "Acompte 2023 DAC",
+      "montant": 5575000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.857346,
+        "lon": 2.34779
+      },
+      "adresse": "ANGL 16 Q DE GESVRES 2 PLACE DU CHATELET 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_00281",
+      "annee": 2023,
+      "beneficiaire": "ATELIER PARISIEN D'URBANISME APUR",
+      "siret": "78423753900068",
+      "objet": "Subvention partenariale Ville de Paris en fonctionnement 2023",
+      "montant": 4919700,
+      "direction": "DU",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.825563,
+        "lon": 2.38353
+      },
+      "adresse": "5EME ETAGE 15 RUE JEAN-BAPTISTE BERLIER 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_09326",
+      "annee": 2023,
+      "beneficiaire": "FORUM DES IMAGES",
+      "siret": "33212365200023",
+      "objet": "Subvention annuelle de fonctionnement du Forum des images",
+      "montant": 4500000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.86196,
+        "lon": 2.346687
+      },
+      "adresse": "FORUM DES HALLES PORTE SAINT-EUSTACHE 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_00133",
+      "annee": 2023,
+      "beneficiaire": "OFFICE DU TOURISME ET DES CONGRES DE PARIS OTCP",
+      "siret": "77567137300220",
+      "objet": "Subvention de fonctionnement de l'Office du tourisme et des congrès de Paris",
+      "montant": 4300000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.863979,
+        "lon": 2.355134
+      },
+      "adresse": "76 RUE BEAUBOURG 75003 PARIS",
+      "codePostal": "75003",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02838",
+      "annee": 2023,
+      "beneficiaire": "LA MAISON KANGOUROU",
+      "siret": "45234009400203",
+      "objet": "FONCTIONNEMENT 2023",
+      "montant": 3767817,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.869209,
+        "lon": 2.360352
+      },
+      "adresse": "10 RUE DE LANCRY 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02655",
+      "annee": 2023,
+      "beneficiaire": "MISSION LOCALE DE PARIS",
+      "siret": "53132862300149",
+      "objet": "Subvention de fonctionnement",
+      "montant": 3270000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.889595,
+        "lon": 2.363068
+      },
+      "adresse": "22 RUE PAJOL 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_00858",
+      "annee": 2023,
+      "beneficiaire": "LA MAISON DES BOUT'CHOU",
+      "siret": "35118614300175",
+      "objet": "Subvention de fonctionnement 2023",
+      "montant": 2812098,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.844295,
+        "lon": 2.331113
+      },
+      "adresse": "12 RUE VAVIN 75006 PARIS",
+      "codePostal": "75006",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03516",
+      "annee": 2023,
+      "beneficiaire": "ORCHESTRE DE CHAMBRE DE PARIS",
+      "siret": "31390568900078",
+      "objet": "Subvention de fonctionnement (complément de prix) 2023",
+      "montant": 2325000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.889311,
+        "lon": 2.393824
+      },
+      "adresse": "221 AVENUE JEAN JAURES 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03633",
+      "annee": 2023,
+      "beneficiaire": "ORCHESTRE DE CHAMBRE DE PARIS",
+      "siret": "31390568900078",
+      "objet": "Acompte 2023 DAC",
+      "montant": 2275000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.889311,
+        "lon": 2.393824
+      },
+      "adresse": "221 AVENUE JEAN JAURES 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06723",
+      "annee": 2023,
+      "beneficiaire": "ENFANT PRESENT",
+      "siret": "39027802600047",
+      "objet": "financement des Etablissements : crèches préventives Enfant Présent Paris",
+      "montant": 2077820,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.86644,
+        "lon": 2.405173
+      },
+      "adresse": "15 RUE DES MONTIBOEUFS 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_00245",
+      "annee": 2023,
+      "beneficiaire": "PAVILLON DE L'ARSENAL CENTRE D'INFORMATION DE DOCUMENTATION ET D'EXPOSITION D'URBANISME ET D'ARCHITECTURE DE PARIS ET DE LA METROPOLE PARISIENNE",
+      "siret": "34462055400016",
+      "objet": "Subvention d'équilibre 2023",
+      "montant": 2074867,
+      "direction": "DU",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.850688,
+        "lon": 2.362387
+      },
+      "adresse": "21 BOULEVARD MORLAND 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02854",
+      "annee": 2023,
+      "beneficiaire": "CROIX ROUGE FRANCAISE",
+      "siret": "77567227221138",
+      "objet": "EAJE BP 2023",
+      "montant": 1877918,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.827226,
+        "lon": 2.314209
+      },
+      "adresse": "SITE CROIX ROUGE 98 RUE DIDOT 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02651",
+      "annee": 2023,
+      "beneficiaire": "ENVOLUDIA",
+      "siret": "77573329800332",
+      "objet": "Fonctionnement courant de l'association pour 2023",
+      "montant": 1814947,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.854579,
+        "lon": 2.417068
+      },
+      "adresse": "261 RUE DE PARIS 93100 MONTREUIL",
+      "codePostal": "93100",
+      "commune": "MONTREUIL"
+    },
+    {
+      "id": "2023_04812",
+      "annee": 2023,
+      "beneficiaire": "PARIS ATELIERS",
+      "siret": "31293687500078",
+      "objet": "Subvention d'exploitation 2023",
+      "montant": 1745000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.850017,
+        "lon": 2.369748
+      },
+      "adresse": "7 RUE BISCORNET 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03631",
+      "annee": 2023,
+      "beneficiaire": "PARIS ATELIERS",
+      "siret": "31293687500078",
+      "objet": "Acompte 2023 DAC",
+      "montant": 1745000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.850017,
+        "lon": 2.369748
+      },
+      "adresse": "7 RUE BISCORNET 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02444",
+      "annee": 2023,
+      "beneficiaire": "UNION DEPARTEMENTALE DES ASSOCIATIONS FAMILIALES DE PARIS",
+      "siret": "78441204100013",
+      "objet": "Accueil du jeune enfant (onze structures) avec convention pluriannuelle d'objectifs.",
+      "montant": 1651157,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.878496,
+        "lon": 2.337741
+      },
+      "adresse": "28 PLACE SAINT-GEORGES 75009 PARIS",
+      "codePostal": "75009",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02849",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION POUR LE SOUTIEN DU THEATRE PRIVE",
+      "siret": "78439642600032",
+      "objet": "Fonctionnement et activités de l'Association pour 2023",
+      "montant": 1561500,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.875465,
+        "lon": 2.316343
+      },
+      "adresse": "48 RUE DE LABORDE 75008 PARIS",
+      "codePostal": "75008",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03646",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION POUR LE SOUTIEN DU THEATRE PRIVE",
+      "siret": "78439642600032",
+      "objet": "Acompte 2023 DAC",
+      "montant": 1561500,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.875465,
+        "lon": 2.316343
+      },
+      "adresse": "48 RUE DE LABORDE 75008 PARIS",
+      "codePostal": "75008",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_10634",
+      "annee": 2023,
+      "beneficiaire": "ENSEMBLE PARIS EMPLOI COMPETENCES",
+      "siret": "48338140600048",
+      "objet": "« CONVENTION PLURIANNUELLE D¿OBJECTIFS 2024-2026 »",
+      "montant": 1525500,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.885529,
+        "lon": 2.390137
+      },
+      "adresse": "18 RUE GOUBET 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02569",
+      "annee": 2023,
+      "beneficiaire": "FORUM DES IMAGES",
+      "siret": "33212365200023",
+      "objet": "Subvention annuelle de fonctionnement du Forum des images",
+      "montant": 1500000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.86196,
+        "lon": 2.346687
+      },
+      "adresse": "FORUM DES HALLES PORTE SAINT-EUSTACHE 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06707",
+      "annee": 2023,
+      "beneficiaire": "THEATRE DE LA VILLE",
+      "siret": "77566172100024",
+      "objet": "Rééquipement du Théâtre de la Ville -Troisième acompte",
+      "montant": 1500000,
+      "direction": "DAC",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.857346,
+        "lon": 2.34779
+      },
+      "adresse": "ANGL 16 Q DE GESVRES 2 PLACE DU CHATELET 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03630",
+      "annee": 2023,
+      "beneficiaire": "PARIS AUDIO VISUEL MEP",
+      "siret": "31373068100043",
+      "objet": "Acompte 2023 DAC",
+      "montant": 1430245,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.854893,
+        "lon": 2.359078
+      },
+      "adresse": "5 RUE DE FOURCY 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05070",
+      "annee": 2023,
+      "beneficiaire": "PARIS AUDIO VISUEL MEP",
+      "siret": "31373068100043",
+      "objet": "Soutien projet associatif 2023 en fonctionnement",
+      "montant": 1430245,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.854893,
+        "lon": 2.359078
+      },
+      "adresse": "5 RUE DE FOURCY 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02072",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION POUR L'ACCUEIL DE TOUS LES ENFANTS APATE",
+      "siret": "38448701300037",
+      "objet": "BUDGETS PREVISIONNELS 2023",
+      "montant": 1347840,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.851264,
+        "lon": 2.393891
+      },
+      "adresse": "27 AVENUE PHILIPPE-AUGUSTE 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_00078",
+      "annee": 2023,
+      "beneficiaire": "SOCIETE DE RETRAITES DES CONSEILLERS MUNICIPAUX DE PARIS ET DES CONSEILLERS GENERAUX DE LA SEINE",
+      "siret": "53067796200017",
+      "objet": "Subvention avec convention avec la société de retraite des conseillers municipaux de Paris (4e).",
+      "montant": 1270000,
+      "direction": "DDCT",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.856586,
+        "lon": 2.353225
+      },
+      "adresse": "PLACE DE L' HOTEL DE VILLE 5 RUE DE LOBAU 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_08474",
+      "annee": 2023,
+      "beneficiaire": "PARIS ET COMPAGNIE",
+      "siret": "40895436000033",
+      "objet": "Paris&Co fonctionnement 2023",
+      "montant": 1190000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.894069,
+        "lon": 2.35423
+      },
+      "adresse": "48 RUE RENE CLAIR 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_08199",
+      "annee": 2023,
+      "beneficiaire": "EMMAUS SOLIDARITE",
+      "siret": "31723624800017",
+      "objet": "Accueil de jour dans les Espaces SolidaritéInsertion (ESI)",
+      "montant": 1152745,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.860017,
+        "lon": 2.345244
+      },
+      "adresse": "32 RUE DES BOURDONNAIS 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02974",
+      "annee": 2023,
+      "beneficiaire": "MUSEE D'ART ET D'HISTOIRE DU JUDAISME",
+      "siret": "34843510800017",
+      "objet": "Subvention de fonctionnement pour le musée d'art et d'histoire du judaïsme pour l'année 2023",
+      "montant": 1119402,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.860956,
+        "lon": 2.355617
+      },
+      "adresse": "HOTEL ST AIGNAN 71 RUE DU TEMPLE 75003 PARIS",
+      "codePostal": "75003",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_00077",
+      "annee": 2023,
+      "beneficiaire": "SOCIETE DE RETRAITE DES CONSEILLERS MUNICIPAUX DE PARIS",
+      "siret": "42200633800012",
+      "objet": "Subvention avec convention avec la société de retraite des conseillers municipaux de Paris (4e).",
+      "montant": 1070000,
+      "direction": "DDCT",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.85663,
+        "lon": 2.351459
+      },
+      "adresse": "PL HOTEL VILLE ESP LIBERATION 75004 PARIS 04",
+      "codePostal": "75004",
+      "commune": "PARIS 04"
+    },
+    {
+      "id": "2023_03846",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION INTERNATIONALE DES MAIRES ET RESPONSABLES DES CAPITALES ET METROPOLES PARTIELLEMENT OU ENTIEREMENT FRANCOPHONES AIMF",
+      "siret": "31935615000015",
+      "objet": "Subvention 2023",
+      "montant": 1050000,
+      "direction": "DGRI",
+      "nature": "Investissement"
+    },
+    {
+      "id": "2023_03636",
+      "annee": 2023,
+      "beneficiaire": "MUSEE D'ART ET D'HISTOIRE DU JUDAISME",
+      "siret": "34843510800017",
+      "objet": "Acompte 2023 DAC",
+      "montant": 1019403,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.860956,
+        "lon": 2.355617
+      },
+      "adresse": "HOTEL ST AIGNAN 71 RUE DU TEMPLE 75003 PARIS",
+      "codePostal": "75003",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06145",
+      "annee": 2023,
+      "beneficiaire": "CRECHE GAN MENAHEM",
+      "siret": "34830108600024",
+      "objet": "Subvention de fonctionnement 2023",
+      "montant": 924707,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.894543,
+        "lon": 2.365982
+      },
+      "adresse": "2 RUE TRISTAN TZARA 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04034",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION AURORE",
+      "siret": "77568497003594",
+      "objet": "Fonctionnement Espace d'accueil et de repos à Porte de la Chapelle",
+      "montant": 913299,
+      "direction": "DSP",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.84261,
+        "lon": 2.31629
+      },
+      "adresse": "SIEGE 31 RUE FALGUIERE 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04992",
+      "annee": 2023,
+      "beneficiaire": "CENTRE D'ACTION SOCIALE PROTESTANT DANS LA REGION PARISIENNE",
+      "siret": "31873216100035",
+      "objet": "Prevention sociale",
+      "montant": 835000,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.842892,
+        "lon": 2.399655
+      },
+      "adresse": "CASP 20 RUE SANTERRE 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06420",
+      "annee": 2023,
+      "beneficiaire": "EMMAUS SOLIDARITE",
+      "siret": "31723624800017",
+      "objet": "Accueil de jour (AJ) Aboukir",
+      "montant": 806216,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.860017,
+        "lon": 2.345244
+      },
+      "adresse": "32 RUE DES BOURDONNAIS 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02634",
+      "annee": 2023,
+      "beneficiaire": "ESPEREM",
+      "siret": "77573009600127",
+      "objet": "SUBVENTION PARIS 2023 CRECHES ESPEREM",
+      "montant": 795948,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.849463,
+        "lon": 2.322802
+      },
+      "adresse": "83 RUE DE SEVRES 75006 PARIS",
+      "codePostal": "75006",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_00200",
+      "annee": 2023,
+      "beneficiaire": "ENSEMBLE PARIS EMPLOI COMPETENCES",
+      "siret": "48338140600048",
+      "objet": "Convention Pluriannuelle d'Objectifs EPEC 2023",
+      "montant": 777500,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.885529,
+        "lon": 2.390137
+      },
+      "adresse": "18 RUE GOUBET 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_08625",
+      "annee": 2023,
+      "beneficiaire": "LES APACHES DES VIGNOLES",
+      "siret": "44532684600034",
+      "objet": "Financement de la nouvelle crèche \"Les Apaches des Vignoles\"",
+      "montant": 773840,
+      "direction": "DFPE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.855038,
+        "lon": 2.40132
+      },
+      "adresse": "60 RUE DES VIGNOLES 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04076",
+      "annee": 2023,
+      "beneficiaire": "FRANCE TERRE D'ASILE FTDA",
+      "siret": "78454750700433",
+      "objet": "Maraude-Migrants 75",
+      "montant": 712703,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.892128,
+        "lon": 2.362175
+      },
+      "adresse": "24 RUE MARC SEGUIN 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04385",
+      "annee": 2023,
+      "beneficiaire": "THEATRE SILVIA MONFORT",
+      "siret": "38772311700017",
+      "objet": "SUBVENTION DE FONCTIONNEMENT",
+      "montant": 710000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.830303,
+        "lon": 2.301819
+      },
+      "adresse": "106 RUE BRANCION 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03507",
+      "annee": 2023,
+      "beneficiaire": "INSTITUT DES CULTURES D'ISLAM (ICI)",
+      "siret": "52225251900015",
+      "objet": "Subvention d'exploitation 2023",
+      "montant": 700000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.887787,
+        "lon": 2.353435
+      },
+      "adresse": "19 AU 23 19 RUE LEON 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05442",
+      "annee": 2023,
+      "beneficiaire": "CENTRE RÉGIONAL DE COORDINATION DES DÉPISTAGES DES CANCERS D'ILE DE FRANCE \"CRCDC-IDF\"",
+      "siret": "84415499700127",
+      "objet": "SUBVENTION D'INTERET GENERAL POUR LE DEPISTAGE ORGANISE DES CANCERS DE LA POPULATION PARISIENNE",
+      "montant": 700000,
+      "direction": "DSP",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.85276,
+        "lon": 2.292768
+      },
+      "adresse": "28 RUE DESAIX 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03942",
+      "annee": 2023,
+      "beneficiaire": "GROUPE D'OEUVRES SOCIALES DE BELLEVILLE",
+      "siret": "77569575200011",
+      "objet": "GOSB BUDGETS 2023",
+      "montant": 694544,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.875394,
+        "lon": 2.391695
+      },
+      "adresse": "162 RUE DE BELLEVILLE 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03615",
+      "annee": 2023,
+      "beneficiaire": "THEATRE SILVIA MONFORT",
+      "siret": "38772311700017",
+      "objet": "Acompte 2023 DAC",
+      "montant": 685000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.830303,
+        "lon": 2.301819
+      },
+      "adresse": "106 RUE BRANCION 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_08516",
+      "annee": 2023,
+      "beneficiaire": "OHEL ESTHER",
+      "siret": "43382029700011",
+      "objet": "TRAVAUX POUR LA CREATION D UN MULTI ACCEUIL POUR LE RELOGEMENT DE LA HG RUE MURGER",
+      "montant": 658484,
+      "direction": "DFPE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.878881,
+        "lon": 2.375592
+      },
+      "adresse": "4 A 8 4 RUE HENRI MURGER 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02528",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION GAN YAEL CRECHE ET JARDIN D'ENFANTS",
+      "siret": "31982198900013",
+      "objet": "BP 2023 EAJE SUBV. FONCTIONNEMENT",
+      "montant": 657192,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.890379,
+        "lon": 2.385889
+      },
+      "adresse": "CRECHE COLLECTIVE 29 RUE DE THIONVILLE 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03670",
+      "annee": 2023,
+      "beneficiaire": "INSTITUT DES CULTURES D'ISLAM (ICI)",
+      "siret": "52225251900015",
+      "objet": "Acompte 2023 DAC",
+      "montant": 650000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.887787,
+        "lon": 2.353435
+      },
+      "adresse": "19 AU 23 19 RUE LEON 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_01904",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION INSTITUT D'ETUDES AVANCEES DE PARIS (IEA DE PARIS)",
+      "siret": "53005653000039",
+      "objet": "Subvention de fonctionnement et d'équipement 2023. Convention Institut d'Etudes Avancées de Paris",
+      "montant": 645750,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.851698,
+        "lon": 2.359062
+      },
+      "adresse": "HOTEL DE LAUZUN 17 QUAI D'ANJOU 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06901",
+      "annee": 2023,
+      "beneficiaire": "ESPACE 19",
+      "siret": "32228389600056",
+      "objet": "DSOL CPO Interdirections",
+      "montant": 603588,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.895716,
+        "lon": 2.374611
+      },
+      "adresse": "6 RUE HENRI VERNEUIL 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_10641",
+      "annee": 2023,
+      "beneficiaire": "ABC PUERICULTURE",
+      "siret": "34482479200032",
+      "objet": "Demande subvention exceptionnelle",
+      "montant": 600000,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.852284,
+        "lon": 2.274995
+      },
+      "adresse": "9 RUE JEAN DE LA FONTAINE 75016 PARIS",
+      "codePostal": "75016",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_00282",
+      "annee": 2023,
+      "beneficiaire": "ATELIER PARISIEN D'URBANISME APUR",
+      "siret": "78423753900068",
+      "objet": "Subvention partenariale Ville de Paris en investissement 2023",
+      "montant": 600000,
+      "direction": "DU",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.825563,
+        "lon": 2.38353
+      },
+      "adresse": "5EME ETAGE 15 RUE JEAN-BAPTISTE BERLIER 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02544",
+      "annee": 2023,
+      "beneficiaire": "INSTITUT D'ETUDES DE RECHERCHES DE FORMATION EN ACTION SOCIALE",
+      "siret": "77566475800049",
+      "objet": "FONCTIONNEMENT 2023",
+      "montant": 599434,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.840527,
+        "lon": 2.302446
+      },
+      "adresse": "25 A 29 25 RUE DU GENERAL BEURET 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_08505",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION INTERNATIONALE DES MAIRES ET RESPONSABLES DES CAPITALES ET METROPOLES PARTIELLEMENT OU ENTIEREMENT FRANCOPHONES AIMF",
+      "siret": "31935615000015",
+      "objet": "Subvention 2023",
+      "montant": 583000,
+      "direction": "DGRI",
+      "nature": "Fonctionnement"
+    },
+    {
+      "id": "2023_04761",
+      "annee": 2023,
+      "beneficiaire": "LA PLACE, CENTRE CULTUREL HIPHOP",
+      "siret": "80289090500028",
+      "objet": "Fonctionnement 2023",
+      "montant": 570000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.861819,
+        "lon": 2.347644
+      },
+      "adresse": "10 PASSAGE DE LA CANOPEE 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04485",
+      "annee": 2023,
+      "beneficiaire": "AGENCE PARISIENNE DU CLIMAT (APC)",
+      "siret": "52800732100011",
+      "objet": "SUBVENTION DE FONCTIONNEMENT - DTEC/DLH/DU 2021/2023",
+      "montant": 540400,
+      "direction": "DLH",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.833505,
+        "lon": 2.386307
+      },
+      "adresse": "PAVILLON DU LAC PARC DE BERCY 3 RUE FRANCOIS TRUFFAUT 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02532",
+      "annee": 2023,
+      "beneficiaire": "CENTRE ISRAELITE DE MONTMARTRE",
+      "siret": "78475659500012",
+      "objet": "SUBVENTION DE FONCTIONNEMENT 2023",
+      "montant": 540225,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.887385,
+        "lon": 2.344638
+      },
+      "adresse": "16 RUE LAMARCK 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04343",
+      "annee": 2023,
+      "beneficiaire": "LES PLATEAUX SAUVAGES",
+      "siret": "82349520500010",
+      "objet": "FONCTIONNEMENT 2023",
+      "montant": 535000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.867853,
+        "lon": 2.389335
+      },
+      "adresse": "5 RUE DES PLATRIERES 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03092",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION DEPARTEMENTALE D'INFORMATION SUR LE LOGEMENT DE PARIS.ADIL 75.",
+      "siret": "31548372700048",
+      "objet": "Information juridique, financière et fiscale sur le logement des Parisiens",
+      "montant": 516000,
+      "direction": "DLH",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.84092,
+        "lon": 2.326148
+      },
+      "adresse": "46 B BOULEVARD EDGAR QUINET 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03644",
+      "annee": 2023,
+      "beneficiaire": "LES PLATEAUX SAUVAGES",
+      "siret": "82349520500010",
+      "objet": "Acompte 2023 DAC",
+      "montant": 515000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.867853,
+        "lon": 2.389335
+      },
+      "adresse": "5 RUE DES PLATRIERES 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02243",
+      "annee": 2023,
+      "beneficiaire": "PARIS ET COMPAGNIE",
+      "siret": "40895436000033",
+      "objet": "Paris&Co fonctionnement 2023",
+      "montant": 510000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.894069,
+        "lon": 2.35423
+      },
+      "adresse": "48 RUE RENE CLAIR 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2022_07727",
+      "annee": 2023,
+      "beneficiaire": "AGECA ASSOCIATION POUR LA GESTION D'UN CENTRE D'ANIMATION CULTURELLE",
+      "siret": "30048530700015",
+      "objet": "Favoriser l'économie sociale, solidaire et circulaire. Projet lauréat au Budget Participatif 2021",
+      "montant": 500000,
+      "direction": "DDCT",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.856003,
+        "lon": 2.392208
+      },
+      "adresse": "177 RUE DE CHARONNE 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_09150",
+      "annee": 2023,
+      "beneficiaire": "UNION CHRETIENNE DE JEUNES FILLES",
+      "siret": "77566961700018",
+      "objet": "Lauréat du Budget Participatif 2022 : Réinventer la maison pour tous \"YMCA\" de la rue de Trévise",
+      "montant": 500000,
+      "direction": "DDCT",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.879639,
+        "lon": 2.318635
+      },
+      "adresse": "22 RUE DE NAPLES 75008 PARIS",
+      "codePostal": "75008",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04515",
+      "annee": 2023,
+      "beneficiaire": "LE THEATRE PARIS-VILLETTE",
+      "siret": "43353723000040",
+      "objet": "Fonctionnement 2023",
+      "montant": 500000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.888952,
+        "lon": 2.392454
+      },
+      "adresse": "211 AVENUE JEAN JAURES 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2024_00619",
+      "annee": 2023,
+      "beneficiaire": "THEATRE DE LA VILLE",
+      "siret": "77566172100024",
+      "objet": "Subvention complémentaire 2023",
+      "montant": 500000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.857346,
+        "lon": 2.34779
+      },
+      "adresse": "ANGL 16 Q DE GESVRES 2 PLACE DU CHATELET 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_08213",
+      "annee": 2023,
+      "beneficiaire": "PARIS INITIATIVES ENTREPRISES",
+      "siret": "34802705300043",
+      "objet": "dotation au fonds de Prêts Patients",
+      "montant": 500000,
+      "direction": "DAE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.878386,
+        "lon": 2.315877
+      },
+      "adresse": "68 BOULEVARD MALESHERBES 75008 PARIS",
+      "codePostal": "75008",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03658",
+      "annee": 2023,
+      "beneficiaire": "LA PLACE, CENTRE CULTUREL HIPHOP",
+      "siret": "80289090500028",
+      "objet": "Acompte 2023 DAC",
+      "montant": 500000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.861819,
+        "lon": 2.347644
+      },
+      "adresse": "10 PASSAGE DE LA CANOPEE 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_07470",
+      "annee": 2023,
+      "beneficiaire": "COALLIA",
+      "siret": "77568030900611",
+      "objet": "COSA LIMA VILLE DE PARIS",
+      "montant": 489124,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.847248,
+        "lon": 2.389037
+      },
+      "adresse": "16 AU 18 16 COUR SAINT-ELOI 75012 PARIS 12",
+      "codePostal": "75012",
+      "commune": "PARIS 12"
+    },
+    {
+      "id": "2023_04409",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION DES PARENTS D'ELEVES DES JARDINS D'ENFANTS FRANCO ALLEMANDS AJEFA",
+      "siret": "30098452300013",
+      "objet": "SUBVENTION DE FONCTIONNEMENT 2023",
+      "montant": 485540,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.874626,
+        "lon": 2.359019
+      },
+      "adresse": "134 RUE DU FAUBOURG SAINT-MARTIN 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03642",
+      "annee": 2023,
+      "beneficiaire": "MAISON DE LA POESIE",
+      "siret": "32590961200054",
+      "objet": "Acompte 2023 DAC",
+      "montant": 485000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.86218,
+        "lon": 2.351844
+      },
+      "adresse": "157 RUE SAINT-MARTIN 75003 PARIS",
+      "codePostal": "75003",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04219",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION PARISIENNE POUR L'ANIMATION CULTURELLE ET SPORTIVE",
+      "siret": "78454742400092",
+      "objet": "SUBVENTION DE FONCTIONNEMENT 2023",
+      "montant": 485000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.827622,
+        "lon": 2.377256
+      },
+      "adresse": "30 RUE DU CHEVALERET 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04053",
+      "annee": 2023,
+      "beneficiaire": "MAISON DE LA POESIE",
+      "siret": "32590961200054",
+      "objet": "Subvention de fonctionnement 2023",
+      "montant": 485000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.86218,
+        "lon": 2.351844
+      },
+      "adresse": "157 RUE SAINT-MARTIN 75003 PARIS",
+      "codePostal": "75003",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03616",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION PARISIENNE POUR L'ANIMATION CULTURELLE ET SPORTIVE",
+      "siret": "78454742400092",
+      "objet": "Acompte 2023 DAC",
+      "montant": 475000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.827622,
+        "lon": 2.377256
+      },
+      "adresse": "30 RUE DU CHEVALERET 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03035",
+      "annee": 2023,
+      "beneficiaire": "EMMAÜS DEFI -FONDATEUR ABBE PIERRE",
+      "siret": "49486785600069",
+      "objet": "IAEBESC 2023",
+      "montant": 470000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.889535,
+        "lon": 2.37191
+      },
+      "adresse": "6 RUE ARCHEREAU 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05567",
+      "annee": 2023,
+      "beneficiaire": "PARIS UNIVERSITE CLUB",
+      "siret": "78425962400020",
+      "objet": "Convention d'objectif d'aide au fonctionnement entre la ville de Paris et le Paris Université Club",
+      "montant": 460000,
+      "direction": "DJS",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.818109,
+        "lon": 2.344456
+      },
+      "adresse": "STADE CHARLETY 17 AVENUE PIERRE DE COUBERTIN 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_10644",
+      "annee": 2023,
+      "beneficiaire": "CRESCENDO",
+      "siret": "78481011100251",
+      "objet": "Demande subvention exceptionnelle",
+      "montant": 450000,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.862478,
+        "lon": 2.367835
+      },
+      "adresse": "102 C RUE AMELOT 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03651",
+      "annee": 2023,
+      "beneficiaire": "LE THEATRE PARIS-VILLETTE",
+      "siret": "43353723000040",
+      "objet": "Acompte 2023 DAC",
+      "montant": 450000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.888952,
+        "lon": 2.392454
+      },
+      "adresse": "211 AVENUE JEAN JAURES 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_07138",
+      "annee": 2023,
+      "beneficiaire": "SOLIHA GRAND PARIS",
+      "siret": "78433713100014",
+      "objet": "1er versement -Convention pluriannuelle d'objectifs entre la Ville de Paris et Soliha Grand Paris",
+      "montant": 431568,
+      "direction": "DLH",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.872786,
+        "lon": 2.326256
+      },
+      "adresse": "PACTE DE PARIS 29 RUE TRONCHET 75008 PARIS",
+      "codePostal": "75008",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06757",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION DU FESTIVAL D'AUTOMNE A PARIS",
+      "siret": "78439645900041",
+      "objet": "Festival d'Automne à Paris 2023",
+      "montant": 429600,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.861188,
+        "lon": 2.340468
+      },
+      "adresse": "156 RUE DE RIVOLI 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04708",
+      "annee": 2023,
+      "beneficiaire": "THEATRE PARIS 14",
+      "siret": "35377356700014",
+      "objet": "Subvention de fonctionnement 2023",
+      "montant": 408500,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.825896,
+        "lon": 2.306846
+      },
+      "adresse": "20 AVENUE MARC SANGNIER 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_00221",
+      "annee": 2023,
+      "beneficiaire": "ECOLE DE LA 2E CHANCE DE PARIS \"E2C PARIS\"",
+      "siret": "49300518500050",
+      "objet": "E2C Paris - Ecole de la 2e Chance de Paris",
+      "montant": 400000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.887541,
+        "lon": 2.366997
+      },
+      "adresse": "47 RUE D'AUBERVILLIERS 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_10643",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION POUR L'ACCUEIL DE TOUS LES ENFANTS APATE",
+      "siret": "38448701300037",
+      "objet": "Demande subvention exceptionnelle",
+      "montant": 400000,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.851264,
+        "lon": 2.393891
+      },
+      "adresse": "27 AVENUE PHILIPPE-AUGUSTE 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_08944",
+      "annee": 2023,
+      "beneficiaire": "CRECHE GAN MENAHEM",
+      "siret": "34830108600024",
+      "objet": "Subvention d'investissement. Création d'une crèche collective de 39 enfants - GAN ZALMI -75016 Paris",
+      "montant": 400000,
+      "direction": "DFPE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.894543,
+        "lon": 2.365982
+      },
+      "adresse": "2 RUE TRISTAN TZARA 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02539",
+      "annee": 2023,
+      "beneficiaire": "FONDATION  MAISON DES CHAMPS DE SAINT FRANCOIS D ASSISE",
+      "siret": "77569476300068",
+      "objet": "Subvention de fonctionnement Crèche Sinte-Lucie",
+      "montant": 394552,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.87327,
+        "lon": 2.381529
+      },
+      "adresse": "55 RUE DE BELLEVILLE 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02540",
+      "annee": 2023,
+      "beneficiaire": "FRANCE HORIZON",
+      "siret": "77566670400975",
+      "objet": "Subvention de fonctionnement 2022Horizon Clichy143 avenue de Clichy75017 Paris",
+      "montant": 394142,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.877719,
+        "lon": 2.36971
+      },
+      "adresse": "5 PLACE DU COLONEL FABIEN 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06148",
+      "annee": 2023,
+      "beneficiaire": "EXPERIMENTATION TERRITORIALE CONTRE LE CHOMAGE DE LONGUE DUREE (ETCLD)",
+      "siret": "82262630500046",
+      "objet": "Contribution au développement de l'emploi 2022- Paris 13-Paris 19 Rosa Parks-Paris 18 Chapelle Nord",
+      "montant": 393253,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 47.19582,
+        "lon": -1.569685
+      },
+      "adresse": "7 RUE LESCHAUD 44400 REZE",
+      "codePostal": "44400",
+      "commune": "REZE"
+    },
+    {
+      "id": "2023_03716",
+      "annee": 2023,
+      "beneficiaire": "L'ETE PARISIEN",
+      "siret": "37978422600050",
+      "objet": "SUBVENTION DE FONCTIONNEMENT",
+      "montant": 392500,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.830303,
+        "lon": 2.301819
+      },
+      "adresse": "106 RUE BRANCION 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03664",
+      "annee": 2023,
+      "beneficiaire": "L'ETE PARISIEN",
+      "siret": "37978422600050",
+      "objet": "Acompte 2023 DAC",
+      "montant": 392500,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.830303,
+        "lon": 2.301819
+      },
+      "adresse": "106 RUE BRANCION 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_10628",
+      "annee": 2023,
+      "beneficiaire": "PARIS INITIATIVES ENTREPRISES",
+      "siret": "34802705300043",
+      "objet": "Dotation au fond de prêts Patients",
+      "montant": 390500,
+      "direction": "DAE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.878386,
+        "lon": 2.315877
+      },
+      "adresse": "68 BOULEVARD MALESHERBES 75008 PARIS",
+      "codePostal": "75008",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02566",
+      "annee": 2023,
+      "beneficiaire": "ESTRELIA",
+      "siret": "34878236800032",
+      "objet": "BP 2023 de la CRECHE FAMILIALE",
+      "montant": 385390,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.883257,
+        "lon": 2.36004
+      },
+      "adresse": "10 RUE PERDONNET 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03643",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION DU FESTIVAL D'AUTOMNE A PARIS",
+      "siret": "78439645900041",
+      "objet": "Acompte 2023 DAC",
+      "montant": 379600,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.861188,
+        "lon": 2.340468
+      },
+      "adresse": "156 RUE DE RIVOLI 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02685",
+      "annee": 2023,
+      "beneficiaire": "CRECHE LAIQUE QUARTIER SAINT FARGEAU",
+      "siret": "78480818000011",
+      "objet": "subvention 2023",
+      "montant": 376062,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.873717,
+        "lon": 2.399092
+      },
+      "adresse": "33 RUE DU TELEGRAPHE 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05376",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION INTERDEPARTEMENTALE POUR LA GESTION DU RESEAU AUTOMATIQUE DE SURVEILLANCE DE LA POLLUTION ATMOSPHERIQUE ET D'ALERTE EN REGION D'ILE DE FRANCE AIRPARIF",
+      "siret": "31646523600032",
+      "objet": "Subvention générale de Fonctionnement 2023",
+      "montant": 376000,
+      "direction": "DTEC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.848962,
+        "lon": 2.36528
+      },
+      "adresse": "7 RUE CRILLON 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_08206",
+      "annee": 2023,
+      "beneficiaire": "PARIS INITIATIVES ENTREPRISES",
+      "siret": "34802705300043",
+      "objet": "Subvention de fonctionnement 2023",
+      "montant": 370000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.878386,
+        "lon": 2.315877
+      },
+      "adresse": "68 BOULEVARD MALESHERBES 75008 PARIS",
+      "codePostal": "75008",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06401",
+      "annee": 2023,
+      "beneficiaire": "EMMAUS SOLIDARITE",
+      "siret": "31723624800017",
+      "objet": "Maison des réfugiés",
+      "montant": 368000,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.860017,
+        "lon": 2.345244
+      },
+      "adresse": "32 RUE DES BOURDONNAIS 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02485",
+      "annee": 2023,
+      "beneficiaire": "UNION DEPARTEMENTALE DES ASSOCIATIONS FAMILIALES DE PARIS",
+      "siret": "78441204100013",
+      "objet": "Etablissement d'accueil du jeune enfant de Blanche.Emprunt immobilier",
+      "montant": 357108,
+      "direction": "DFPE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.878496,
+        "lon": 2.337741
+      },
+      "adresse": "28 PLACE SAINT-GEORGES 75009 PARIS",
+      "codePostal": "75009",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03640",
+      "annee": 2023,
+      "beneficiaire": "MAISON DU GESTE ET DE L'IMAGE CENTRE DE RECHERCHE ET D'EDUCATION ARTISTIQUE",
+      "siret": "32867933700035",
+      "objet": "Acompte 2023 DAC",
+      "montant": 355000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.860539,
+        "lon": 2.348593
+      },
+      "adresse": "42 RUE SAINT-DENIS 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04350",
+      "annee": 2023,
+      "beneficiaire": "MAISON DU GESTE ET DE L'IMAGE CENTRE DE RECHERCHE ET D'EDUCATION ARTISTIQUE",
+      "siret": "32867933700035",
+      "objet": "SUBVENTION DE FONCTIONNEMENT",
+      "montant": 355000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.860539,
+        "lon": 2.348593
+      },
+      "adresse": "42 RUE SAINT-DENIS 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_10646",
+      "annee": 2023,
+      "beneficiaire": "GROUPE D'OEUVRES SOCIALES DE BELLEVILLE",
+      "siret": "77569575200011",
+      "objet": "Demande subvention exceptionnelle",
+      "montant": 350000,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.875394,
+        "lon": 2.391695
+      },
+      "adresse": "162 RUE DE BELLEVILLE 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06538",
+      "annee": 2023,
+      "beneficiaire": "HOME SWEET MÔMES",
+      "siret": "79423083900019",
+      "objet": "INVESTISSEMENT MPV OUVERTURE D'UN CAFE DES ENFANTS A LA GOUTTE D'OR",
+      "montant": 350000,
+      "direction": "DDCT",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.885789,
+        "lon": 2.355302
+      },
+      "adresse": "SALLE SAINT BRUNO 9 RUE SAINT-BRUNO 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06406",
+      "annee": 2023,
+      "beneficiaire": "MAIA  AUTISME",
+      "siret": "49948317000035",
+      "objet": "Demande de subvention dans le Projet Adulte6 places adultes en CAJM8 places adultes en FAM",
+      "montant": 350000,
+      "direction": "DSOL",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.843855,
+        "lon": 2.405359
+      },
+      "adresse": "47-49 47 AVENUE DU DOCTEUR ARNOLD NETTER 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04664",
+      "annee": 2023,
+      "beneficiaire": "PARCOURS D'INSERTION FLES DE PARIS",
+      "siret": "45057704400024",
+      "objet": "Accompagnement des SIAE et formation des salariés en contrat aidé",
+      "montant": 350000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.866402,
+        "lon": 2.363412
+      },
+      "adresse": "19 RUE BERANGER 75003 PARIS",
+      "codePostal": "75003",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05464",
+      "annee": 2023,
+      "beneficiaire": "LES CANAUX",
+      "siret": "82868623800019",
+      "objet": "Subvention 2023",
+      "montant": 340000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.884656,
+        "lon": 2.370645
+      },
+      "adresse": "6 QUAI DE LA SEINE 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03312",
+      "annee": 2023,
+      "beneficiaire": "MAISON DE LA CONVERSATION",
+      "siret": "89203455400014",
+      "objet": "La rue de la conversation_BP 2021 : Des lieux solidaires et culturels dans les quartiers populaires",
+      "montant": 340000,
+      "direction": "DDCT",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.900194,
+        "lon": 2.337178
+      },
+      "adresse": "10 RUE MAURICE GRIMAUD 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06402",
+      "annee": 2023,
+      "beneficiaire": "EMMAUS SOLIDARITE",
+      "siret": "31723624800017",
+      "objet": "CHU MIGRANTS IVRY",
+      "montant": 333418,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.860017,
+        "lon": 2.345244
+      },
+      "adresse": "32 RUE DES BOURDONNAIS 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_10119",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION AURORE",
+      "siret": "77568497003594",
+      "objet": "Investissement Espace d'accueil et de repos à Porte de la Chapelle",
+      "montant": 320000,
+      "direction": "DSP",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.84261,
+        "lon": 2.31629
+      },
+      "adresse": "SIEGE 31 RUE FALGUIERE 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03006",
+      "annee": 2023,
+      "beneficiaire": "OEUVRES DE LA MIE DE PAIN",
+      "siret": "77568219800053",
+      "objet": "La Mie de Pain. L'Arche d'Avenirs.Espace solidarité insertion.Subvention de fonctionnement.",
+      "montant": 320000,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.825047,
+        "lon": 2.351624
+      },
+      "adresse": "18 RUE CHARLES FOURIER 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06778",
+      "annee": 2023,
+      "beneficiaire": "LE RELAIS 59",
+      "siret": "32079817600022",
+      "objet": "CPO DSOL Dotation globale 2023",
+      "montant": 319068,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.845507,
+        "lon": 2.375146
+      },
+      "adresse": "1 RUE HECTOR MALOT 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03617",
+      "annee": 2023,
+      "beneficiaire": "THEATRE PARIS 14",
+      "siret": "35377356700014",
+      "objet": "Acompte 2023 DAC",
+      "montant": 318500,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.825896,
+        "lon": 2.306846
+      },
+      "adresse": "20 AVENUE MARC SANGNIER 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_11075",
+      "annee": 2023,
+      "beneficiaire": "SOLIHA GRAND PARIS",
+      "siret": "78433713100014",
+      "objet": "Solde -Convention pluriannuelle d'objectifs entre la Ville de Paris et Soliha Grand Paris",
+      "montant": 317432,
+      "direction": "DLH",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.872786,
+        "lon": 2.326256
+      },
+      "adresse": "PACTE DE PARIS 29 RUE TRONCHET 75008 PARIS",
+      "codePostal": "75008",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_10652",
+      "annee": 2023,
+      "beneficiaire": "UNION DEPARTEMENTALE DES ASSOCIATIONS FAMILIALES DE PARIS",
+      "siret": "78441204100013",
+      "objet": "Demande subvention exceptionnelle",
+      "montant": 315000,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.878496,
+        "lon": 2.337741
+      },
+      "adresse": "28 PLACE SAINT-GEORGES 75009 PARIS",
+      "codePostal": "75009",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06400",
+      "annee": 2023,
+      "beneficiaire": "EMMAUS SOLIDARITE",
+      "siret": "31723624800017",
+      "objet": "Le Kiosque",
+      "montant": 307897,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.860017,
+        "lon": 2.345244
+      },
+      "adresse": "32 RUE DES BOURDONNAIS 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06426",
+      "annee": 2023,
+      "beneficiaire": "URGENCE JEUNES",
+      "siret": "40878410600069",
+      "objet": "Accueil et hébergement Jeunes Lycéens",
+      "montant": 304993,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.83498,
+        "lon": 2.302307
+      },
+      "adresse": "6-8 6 RUE DE CRONSTADT 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03815",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION GAN YOSSEF CRECHE ET JARDIN D'ENFANTS",
+      "siret": "33973557300026",
+      "objet": "SUBVENTIONS 2023  1 CF",
+      "montant": 304185,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.869928,
+        "lon": 2.388881
+      },
+      "adresse": "15-17 15 RUE DE LA MARE 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06888",
+      "annee": 2023,
+      "beneficiaire": "LE PICOULET - MISSION POPULAIRE XIE",
+      "siret": "32582665900022",
+      "objet": "DSOL CPO Interdirections",
+      "montant": 301758,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.868351,
+        "lon": 2.374245
+      },
+      "adresse": "59 RUE DE LA FONTAINE AU ROI 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06659",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION POUR LE LOGEMENT DES JEUNES TRAVAILLEURS ALJT",
+      "siret": "77566643100322",
+      "objet": "Demande d'une subvention de fonctionnement au titre de la jeunesse",
+      "montant": 301500,
+      "direction": "DJS",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.888467,
+        "lon": 2.38603
+      },
+      "adresse": "ALJT SIEGE 21 RUE DES ARDENNES 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_09054",
+      "annee": 2023,
+      "beneficiaire": "LA CHORBA",
+      "siret": "43041135500026",
+      "objet": "Subvention pluriannuelle au titre des activités historiques d'aide alimentaire de La Chorba",
+      "montant": 300000,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.834044,
+        "lon": 2.403323
+      },
+      "adresse": "87 BOULEVARD PONIATOWSKI 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2024_00515",
+      "annee": 2023,
+      "beneficiaire": "MAISON DES ADOLESCENTS ROBERT-DEBRE GCSMS",
+      "siret": "53814297700023",
+      "objet": "Fonctionnement de la Maison des Adolescents R Debré et de son antenne dans le 18ème arrondissement.",
+      "montant": 300000,
+      "direction": "DSP",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.879456,
+        "lon": 2.401817
+      },
+      "adresse": "8 AV PORTE PRE ST GERVAIS 75019 PARIS 19",
+      "codePostal": "75019",
+      "commune": "PARIS 19"
+    },
+    {
+      "id": "2023_06510",
+      "annee": 2023,
+      "beneficiaire": "MOTIVEA",
+      "siret": "81825348600026",
+      "objet": "BP 2021 : Aménagements ludiques et sportifs pour les quartiers populaires FIT¿TRUCK",
+      "montant": 300000,
+      "direction": "DDCT",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.890069,
+        "lon": 2.347335
+      },
+      "adresse": "15 PASSAGE RAMEY 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_10642",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION DES PARENTS D'ELEVES DES JARDINS D'ENFANTS FRANCO ALLEMANDS AJEFA",
+      "siret": "30098452300013",
+      "objet": "Demande subvention exceptionnelle",
+      "montant": 300000,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.874626,
+        "lon": 2.359019
+      },
+      "adresse": "134 RUE DU FAUBOURG SAINT-MARTIN 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02536",
+      "annee": 2023,
+      "beneficiaire": "ESPACE 19",
+      "siret": "32228389600056",
+      "objet": "Etablissements d'accueil du Jeune Enfant Espace 19 Riquet , Espace 19 Cambrai, Espace 19 Ourcq",
+      "montant": 286652,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.895716,
+        "lon": 2.374611
+      },
+      "adresse": "6 RUE HENRI VERNEUIL 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02565",
+      "annee": 2023,
+      "beneficiaire": "ESTRELIA",
+      "siret": "34878236800032",
+      "objet": "BP 2023 de l'EQUIPE PSYCHO SOCIALE de l'HMEEP",
+      "montant": 286000,
+      "direction": "DSP",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.883257,
+        "lon": 2.36004
+      },
+      "adresse": "10 RUE PERDONNET 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_08966",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION AURORE",
+      "siret": "77568497003594",
+      "objet": "ESI CLOS FEUQUIERES",
+      "montant": 285745,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.84261,
+        "lon": 2.31629
+      },
+      "adresse": "SIEGE 31 RUE FALGUIERE 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_10694",
+      "annee": 2023,
+      "beneficiaire": "CENTRE D'ACTION SOCIALE PROTESTANT DANS LA REGION PARISIENNE",
+      "siret": "31873216100035",
+      "objet": "MISA Bourg-la-Reine",
+      "montant": 280000,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.842892,
+        "lon": 2.399655
+      },
+      "adresse": "CASP 20 RUE SANTERRE 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04186",
+      "annee": 2023,
+      "beneficiaire": "LA MAISON BLEUE ¿ PORTE MONTMARTRE",
+      "siret": "79394484400026",
+      "objet": "dotation centres sociaux DASES/SEPLEX",
+      "montant": 279906,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.89989,
+        "lon": 2.336155
+      },
+      "adresse": "24 AVENUE DE LA PORTE DE MONTMARTRE 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04796",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION AURORE",
+      "siret": "77568497003594",
+      "objet": "Subvention 2023 CHS KEPES",
+      "montant": 278500,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.84261,
+        "lon": 2.31629
+      },
+      "adresse": "SIEGE 31 RUE FALGUIERE 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06315",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION FRANCO ASIATIQUE POUR L'ENFANCE  AFAPE",
+      "siret": "48262306300013",
+      "objet": "Crèche Franco Asiatique Bellot",
+      "montant": 277364,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.872162,
+        "lon": 2.373266
+      },
+      "adresse": "10 RUE DU BUISSON SAINT-LOUIS 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_09089",
+      "annee": 2023,
+      "beneficiaire": "CRECHE GAN MENAHEM",
+      "siret": "34830108600024",
+      "objet": "Subvention de fonctionnement - Crèche GAN ZALMI.Ouverte le 16/11/202211-13 rue Henri Heine - 750",
+      "montant": 276677,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.894543,
+        "lon": 2.365982
+      },
+      "adresse": "2 RUE TRISTAN TZARA 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06898",
+      "annee": 2023,
+      "beneficiaire": "CEFIA (CENTRE SOCIAL DES EPINETTES FAMILLE INSERTION ACCUEIL)",
+      "siret": "39999069600037",
+      "objet": "Dotation globale inter direction CS2021/DSOL-SEPLEX",
+      "montant": 263658,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.895056,
+        "lon": 2.317715
+      },
+      "adresse": "102 RUE DE LA JONQUIERE 75017 PARIS",
+      "codePostal": "75017",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06336",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION AURORE",
+      "siret": "77568497003594",
+      "objet": "LA HALTE FEMMES",
+      "montant": 260440,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.84261,
+        "lon": 2.31629
+      },
+      "adresse": "SIEGE 31 RUE FALGUIERE 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05927",
+      "annee": 2023,
+      "beneficiaire": "EMMAUS SOLIDARITE",
+      "siret": "31723624800017",
+      "objet": "Dispositif des Premières Heures - EMMAUS Solidarité",
+      "montant": 260000,
+      "direction": "DAE",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.860017,
+        "lon": 2.345244
+      },
+      "adresse": "32 RUE DES BOURDONNAIS 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_08725",
+      "annee": 2023,
+      "beneficiaire": "OEUVRES HOSPITALIERES FRANCAISES DE L'ORDRE DE MALTE (ORDRE DE MALTE FRANCE)",
+      "siret": "30980220500505",
+      "objet": "Lauréat du Budget Participatif 2022 : Bagagerie et consultations médicales dans le 18ème ».",
+      "montant": 260000,
+      "direction": "DSOL",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.84028,
+        "lon": 2.308698
+      },
+      "adresse": "42 RUE DES VOLONTAIRES 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_07323",
+      "annee": 2023,
+      "beneficiaire": "CENTRE D'ACTION SOCIALE PROTESTANT DANS LA REGION PARISIENNE",
+      "siret": "31873216100035",
+      "objet": "ESI MAISON DANS LA RUE",
+      "montant": 259257,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.842892,
+        "lon": 2.399655
+      },
+      "adresse": "CASP 20 RUE SANTERRE 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_10149",
+      "annee": 2023,
+      "beneficiaire": "MISSION LOCALE DE PARIS",
+      "siret": "53132862300149",
+      "objet": "Dynamique d¿Insertion Professionnelle",
+      "montant": 257812,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.889595,
+        "lon": 2.363068
+      },
+      "adresse": "22 RUE PAJOL 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02498",
+      "annee": 2023,
+      "beneficiaire": "ABC PUERICULTURE",
+      "siret": "34482479200032",
+      "objet": "RPE 2023 (Petit Jardin et Petit Bus)",
+      "montant": 255343,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.852284,
+        "lon": 2.274995
+      },
+      "adresse": "9 RUE JEAN DE LA FONTAINE 75016 PARIS",
+      "codePostal": "75016",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_08191",
+      "annee": 2023,
+      "beneficiaire": "EMMAUS SOLIDARITE",
+      "siret": "31723624800017",
+      "objet": "Les Maraudes d'Emmaüs Solidarité",
+      "montant": 254892,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.860017,
+        "lon": 2.345244
+      },
+      "adresse": "32 RUE DES BOURDONNAIS 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_07363",
+      "annee": 2023,
+      "beneficiaire": "CENTRE D'ACTION SOCIALE PROTESTANT DANS LA REGION PARISIENNE",
+      "siret": "31873216100035",
+      "objet": "ESI FAMILLE BONNE NOUVELLE",
+      "montant": 251613,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.842892,
+        "lon": 2.399655
+      },
+      "adresse": "CASP 20 RUE SANTERRE 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_10780",
+      "annee": 2023,
+      "beneficiaire": "LA MAISON DES BOUT'CHOU",
+      "siret": "35118614300175",
+      "objet": "Demande subvention exceptionnelle",
+      "montant": 250000,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.844295,
+        "lon": 2.331113
+      },
+      "adresse": "12 RUE VAVIN 75006 PARIS",
+      "codePostal": "75006",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_10614",
+      "annee": 2023,
+      "beneficiaire": "ENSEMBLE PARIS EMPLOI COMPETENCES",
+      "siret": "48338140600048",
+      "objet": "« ALLER-VERS L¿EMPLOI DANS LES QUARTIERS »",
+      "montant": 250000,
+      "direction": "DAE",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.885529,
+        "lon": 2.390137
+      },
+      "adresse": "18 RUE GOUBET 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_10209",
+      "annee": 2023,
+      "beneficiaire": "VERS PARIS SANS SIDA",
+      "siret": "82377240500044",
+      "objet": "Mise en œuvre de la stratégie vers Paris sans Sida",
+      "montant": 250000,
+      "direction": "DSP",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.869514,
+        "lon": 2.354599
+      },
+      "adresse": "2 BOULEVARD DE STRASBOURG 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_00224",
+      "annee": 2023,
+      "beneficiaire": "CARREFOURS POUR L'EMPLOI, ARMÉES/COLLECTIVITÉS/ENTREPRISES",
+      "siret": "43294548300035",
+      "objet": "SALONS PARISIENS POUR L'EMPLOI 2023",
+      "montant": 250000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.853989,
+        "lon": 2.305537
+      },
+      "adresse": "ECOLE MILITAIRE 1 PLACE JOFFRE 75007 PARIS",
+      "codePostal": "75007",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_07461",
+      "annee": 2023,
+      "beneficiaire": "LINKEE FRANCE (L.)",
+      "siret": "83763453400023",
+      "objet": "Lauréat du Budget Participatif du 20ème : Equiper les associations d¿alimentation durable",
+      "montant": 250000,
+      "direction": "DSOL",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.874795,
+        "lon": 2.389272
+      },
+      "adresse": "7 RUE DU JOURDAIN 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_10557",
+      "annee": 2023,
+      "beneficiaire": "AGRIPARIS SEINE",
+      "siret": "92392391600012",
+      "objet": "Fonctionnement de l'association AgriParis Seine",
+      "montant": 250000,
+      "direction": "DEVE",
+      "nature": "Fonctionnement"
+    },
+    {
+      "id": "2023_05636",
+      "annee": 2023,
+      "beneficiaire": "LA GOUTTE DE LAIT SAINT LEON",
+      "siret": "78461542900049",
+      "objet": "subvention fonctionnement PF",
+      "montant": 249166,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.850778,
+        "lon": 2.295884
+      },
+      "adresse": "37 RUE DUPLEIX 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02570",
+      "annee": 2023,
+      "beneficiaire": "FORUM DES IMAGES",
+      "siret": "33212365200023",
+      "objet": "Subvention d'investissement du Forum des images 2023",
+      "montant": 249000,
+      "direction": "DAE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.86196,
+        "lon": 2.346687
+      },
+      "adresse": "FORUM DES HALLES PORTE SAINT-EUSTACHE 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05804",
+      "annee": 2023,
+      "beneficiaire": "LA MAISON DES BOUT'CHOU",
+      "siret": "35118614300175",
+      "objet": "Demande de financement Breteuil Ségur",
+      "montant": 248699,
+      "direction": "DFPE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.844295,
+        "lon": 2.331113
+      },
+      "adresse": "12 RUE VAVIN 75006 PARIS",
+      "codePostal": "75006",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06926",
+      "annee": 2023,
+      "beneficiaire": "RELAIS MENILMONTANT",
+      "siret": "30900121200047",
+      "objet": "DSOL CPO Inter directions",
+      "montant": 246257,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.873289,
+        "lon": 2.391256
+      },
+      "adresse": "70 RUE DES RIGOLES 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06656",
+      "annee": 2023,
+      "beneficiaire": "BAGAGERIE SOLIDAIRE 14",
+      "siret": "85357359000017",
+      "objet": "Budget complémentaire pour finir le projet Troubadour",
+      "montant": 245000,
+      "direction": "DSOL",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.835592,
+        "lon": 2.325821
+      },
+      "adresse": "22 RUE DEPARCIEUX 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06891",
+      "annee": 2023,
+      "beneficiaire": "LEO LAGRANGE NORD - ILE-DE-FRANCE",
+      "siret": "31661982400931",
+      "objet": "Dotation globale CS 2023 DSOL/SEPLEX",
+      "montant": 244376,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 49.892262,
+        "lon": 2.303174
+      },
+      "adresse": "27 RUE DE L'AMIRAL COURBET 80000 AMIENS",
+      "codePostal": "80000",
+      "commune": "AMIENS"
+    },
+    {
+      "id": "2023_06884",
+      "annee": 2023,
+      "beneficiaire": "CENTRE D'ACTION SOCIALE PROTESTANT DANS LA REGION PARISIENNE",
+      "siret": "31873216100035",
+      "objet": "CENTRE SOCIAL",
+      "montant": 244081,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.842892,
+        "lon": 2.399655
+      },
+      "adresse": "CASP 20 RUE SANTERRE 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06338",
+      "annee": 2023,
+      "beneficiaire": "FRANCE HORIZON",
+      "siret": "77566670400975",
+      "objet": "Subvention d'équipement / Crèche rue Haxo",
+      "montant": 241662,
+      "direction": "DFPE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.877719,
+        "lon": 2.36971
+      },
+      "adresse": "5 PLACE DU COLONEL FABIEN 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06897",
+      "annee": 2023,
+      "beneficiaire": "FOYER DE GRENELLE",
+      "siret": "38233811900011",
+      "objet": "DOTATION GLOBALE CS 2021 / DATES SEPLEX",
+      "montant": 238457,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.847977,
+        "lon": 2.297832
+      },
+      "adresse": "17 RUE DE L'AVRE 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06889",
+      "annee": 2023,
+      "beneficiaire": "SOLIDARITE ROQUETTE",
+      "siret": "39984846400018",
+      "objet": "DOTATION GLOBALE 2021 / DSOL-SEPLEX",
+      "montant": 236703,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.855632,
+        "lon": 2.374496
+      },
+      "adresse": "MME MICHON ANNE 47 RUE DE LA ROQUETTE 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_11083",
+      "annee": 2023,
+      "beneficiaire": "SOCIETE PHILANTHROPIQUE",
+      "siret": "77566653000016",
+      "objet": "Demande de subvention de fonctionnement ESI 2023",
+      "montant": 236627,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.858829,
+        "lon": 2.323517
+      },
+      "adresse": "15 RUE DE BELLECHASSE 75007 PARIS",
+      "codePostal": "75007",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_09027",
+      "annee": 2023,
+      "beneficiaire": "MISSION LOCALE DE PARIS",
+      "siret": "53132862300149",
+      "objet": "LUTTE CONTRE LE DECROCHAGE INSTITUTIONNEL DES JEUNES",
+      "montant": 236488,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.889595,
+        "lon": 2.363068
+      },
+      "adresse": "22 RUE PAJOL 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04702",
+      "annee": 2023,
+      "beneficiaire": "THEATRE DE LA MARIONNETTE A PARIS",
+      "siret": "34112346100046",
+      "objet": "Demande de subvention de fonctionnement 2023 pour Le Mouffetard - Centre national de la Marionnette",
+      "montant": 235000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.842211,
+        "lon": 2.349834
+      },
+      "adresse": "73 RUE MOUFFETARD 75005 PARIS",
+      "codePostal": "75005",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_08432",
+      "annee": 2023,
+      "beneficiaire": "AIDES",
+      "siret": "34949617400047",
+      "objet": "Lutte contre le VIH/SIDA et les hépatites Actions de prévention et de soutien",
+      "montant": 235000,
+      "direction": "DSP",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.892039,
+        "lon": 2.398566
+      },
+      "adresse": "TOUR ESSOR 14 RUE SCANDICCI 93500 PANTIN",
+      "codePostal": "93500",
+      "commune": "PANTIN"
+    },
+    {
+      "id": "2023_06900",
+      "annee": 2023,
+      "beneficiaire": "L'ECOLE NORMALE SOCIALE",
+      "siret": "30903277900022",
+      "objet": "Dotation globale CS 2023 / DSOL SEPLEX",
+      "montant": 227558,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.891188,
+        "lon": 2.365203
+      },
+      "adresse": "2 RUE DE TORCY 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06927",
+      "annee": 2023,
+      "beneficiaire": "DUMAS REUNION",
+      "siret": "48463084300023",
+      "objet": "Conventions 2021-2023 :e subventions sur Paris asso21-2023",
+      "montant": 226717,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.854464,
+        "lon": 2.402911
+      },
+      "adresse": "65 RUE DES HAIES 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_00354",
+      "annee": 2023,
+      "beneficiaire": "LE STADE FRANCAIS",
+      "siret": "30299790300026",
+      "objet": "Subvention d'objectif d'aide au fonctionnement",
+      "montant": 225000,
+      "direction": "DJS",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.838918,
+        "lon": 2.251869
+      },
+      "adresse": "2 RUE DU CDT GUILBAUD 75016 PARIS 16",
+      "codePostal": "75016",
+      "commune": "PARIS 16"
+    },
+    {
+      "id": "2023_03621",
+      "annee": 2023,
+      "beneficiaire": "THEATRE DE LA MARIONNETTE A PARIS",
+      "siret": "34112346100046",
+      "objet": "Acompte 2023 DAC",
+      "montant": 225000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.842211,
+        "lon": 2.349834
+      },
+      "adresse": "73 RUE MOUFFETARD 75005 PARIS",
+      "codePostal": "75005",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02466",
+      "annee": 2023,
+      "beneficiaire": "CENTRE D'ACTIONS LOCALES DU XVIIIEME",
+      "siret": "32591060200011",
+      "objet": "BP 2023",
+      "montant": 223471,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.894523,
+        "lon": 2.329919
+      },
+      "adresse": "1 RUE FIRMIN GEMIER 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03002",
+      "annee": 2023,
+      "beneficiaire": "INTERFACE FORMATION",
+      "siret": "40218568000020",
+      "objet": "IAE BESC",
+      "montant": 223000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.889069,
+        "lon": 2.348432
+      },
+      "adresse": "41 RUE LABAT 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_10262",
+      "annee": 2023,
+      "beneficiaire": "LA CHORBA",
+      "siret": "43041135500026",
+      "objet": "Été 2023",
+      "montant": 222094,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.834044,
+        "lon": 2.403323
+      },
+      "adresse": "87 BOULEVARD PONIATOWSKI 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06919",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION BELLE VILLE ABV",
+      "siret": "42210748200016",
+      "objet": "Dotation globale CS 2023/Dsol-SEPLEX",
+      "montant": 221462,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.873844,
+        "lon": 2.377514
+      },
+      "adresse": "17 RUE JULES ROMAINS 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03436",
+      "annee": 2023,
+      "beneficiaire": "ECODAIR",
+      "siret": "45231025300029",
+      "objet": "Demande de subvention 2023 ¿ Financement du développement de la structure",
+      "montant": 220000,
+      "direction": "DAE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.895599,
+        "lon": 2.370466
+      },
+      "adresse": "CAP 18 73 RUE DE L'EVANGILE 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_10368",
+      "annee": 2023,
+      "beneficiaire": "COMITE CHAMPS ELYSEES",
+      "siret": "39848487300037",
+      "objet": "Illuminations de l'avenue des Champs-Elysées",
+      "montant": 220000,
+      "direction": "DAE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.869965,
+        "lon": 2.308164
+      },
+      "adresse": "34 AVENUE DES CHAMPS ELYSEES 75008 PARIS",
+      "codePostal": "75008",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03027",
+      "annee": 2023,
+      "beneficiaire": "13 POUR TOUS",
+      "siret": "48905531900029",
+      "objet": "demande CPO 2023 DESOL animation globale",
+      "montant": 219755,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.821252,
+        "lon": 2.364572
+      },
+      "adresse": "4 PLACE DE VENETIE 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02985",
+      "annee": 2023,
+      "beneficiaire": "ACCUEIL GOUTTE D'OR",
+      "siret": "40864600800057",
+      "objet": "Dotation centres sociaux - DASES",
+      "montant": 215200,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.887907,
+        "lon": 2.354307
+      },
+      "adresse": "26 RUE DE LAGHOUAT 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04513",
+      "annee": 2023,
+      "beneficiaire": "LE BAL",
+      "siret": "49396355700027",
+      "objet": "SUBVENTION ANNUELLE -ASSOCIATION LE BAL -VILLE DE PARIS - EXERCICE 22-23",
+      "montant": 215000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.885304,
+        "lon": 2.327219
+      },
+      "adresse": "IMMEUBLE LE BAL 6 IMPASSE DE LA DEFENSE 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05637",
+      "annee": 2023,
+      "beneficiaire": "LA GOUTTE DE LAIT SAINT LEON",
+      "siret": "78461542900049",
+      "objet": "Subvention fonctionnement Petit George",
+      "montant": 210203,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.850778,
+        "lon": 2.295884
+      },
+      "adresse": "37 RUE DUPLEIX 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02692",
+      "annee": 2023,
+      "beneficiaire": "ESPACE 19",
+      "siret": "32228389600056",
+      "objet": "Gestion et animation de l'espace ludique dédié aux familles \"EspaceLudo\" - Halle Secrétan - Paris 19",
+      "montant": 210000,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.895716,
+        "lon": 2.374611
+      },
+      "adresse": "6 RUE HENRI VERNEUIL 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_01821",
+      "annee": 2023,
+      "beneficiaire": "IRAEC - INSTITUT DE RECHERCHE APPLIQUEE POUR L'ENFANT ET LE COUPLE",
+      "siret": "30583930000020",
+      "objet": "Accueil des parents et enfants de 0 à 6 ans5 jours par semaine",
+      "montant": 210000,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.893069,
+        "lon": 2.330202
+      },
+      "adresse": "41 RUE JOSEPH DE MAISTRE 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2024_00067",
+      "annee": 2023,
+      "beneficiaire": "L'ACCÉLÉRATEUR PARISIEN D'INNOVATION LOCALE POUR L'EMPLOI",
+      "siret": "89919168800014",
+      "objet": "Soutenir et accélérer la mise en œuvre de l'expérimentation TZCLD à Paris",
+      "montant": 210000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.89064,
+        "lon": 2.375617
+      },
+      "adresse": "C/O PROJETS-19 9 RUE MATHIS 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02980",
+      "annee": 2023,
+      "beneficiaire": "OZAR HATORAH PARIS 13 CRÈCHE",
+      "siret": "83290339700012",
+      "objet": "FONCTIONNEMENT 2023",
+      "montant": 203524,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.833541,
+        "lon": 2.348751
+      },
+      "adresse": "31 RUE DES CORDELIERES 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02479",
+      "annee": 2023,
+      "beneficiaire": "LA PASSERELLE",
+      "siret": "37974428700044",
+      "objet": "Subvention de fonctionnement 2023",
+      "montant": 203343,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.824339,
+        "lon": 2.347659
+      },
+      "adresse": "42 RUE DE LA COLONIE 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06885",
+      "annee": 2023,
+      "beneficiaire": "CARREFOUR ECHANGES RENCONTRES INSERTION SAINT EUSTACHE CERISE",
+      "siret": "79120122100011",
+      "objet": "Dotation globale CS 2021 DASES/SEPLEX",
+      "montant": 202986,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.864616,
+        "lon": 2.346831
+      },
+      "adresse": "46 RUE MONTORGUEIL 75002 PARIS",
+      "codePostal": "75002",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_08563",
+      "annee": 2023,
+      "beneficiaire": "HALTE AIDE AUX FEMMES BATTUES",
+      "siret": "33367645000021",
+      "objet": "ESPACE SOLIDARITÉ INSERTION",
+      "montant": 202966,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.854636,
+        "lon": 2.411901
+      },
+      "adresse": "14 RUE MENDELSSOHN 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03045",
+      "annee": 2023,
+      "beneficiaire": "OEUVRES DE LA MIE DE PAIN",
+      "siret": "77568219800053",
+      "objet": "IAE BESC",
+      "montant": 202000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.825047,
+        "lon": 2.351624
+      },
+      "adresse": "18 RUE CHARLES FOURIER 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04043",
+      "annee": 2023,
+      "beneficiaire": "AUX CAPTIFS LA LIBERATION",
+      "siret": "32591041200080",
+      "objet": "Espace solidarité insertion \"Chez Monsieur Vincent\" subvention de fonctionnement 2023",
+      "montant": 200060,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.861695,
+        "lon": 2.377027
+      },
+      "adresse": "33 AVENUE PARMENTIER 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2022_08811",
+      "annee": 2023,
+      "beneficiaire": "PUC RUGBY",
+      "siret": "39901545200010",
+      "objet": "Convention de fonctionnement VDP/PUC RUGBY",
+      "montant": 200000,
+      "direction": "DJS",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.818109,
+        "lon": 2.344456
+      },
+      "adresse": "17 AVENUE PIERRE DE COUBERTIN 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_10690",
+      "annee": 2023,
+      "beneficiaire": "LA PETITE LILI",
+      "siret": "89762675000029",
+      "objet": "Création du Bouillon Lavoisier au 98 quai de la Rapée",
+      "montant": 200000,
+      "direction": "DAE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 43.299095,
+        "lon": 5.371591
+      },
+      "adresse": "1 PLACE SADI CARNOT 13002 MARSEILLE",
+      "codePostal": "13002",
+      "commune": "MARSEILLE"
+    },
+    {
+      "id": "2023_08310",
+      "annee": 2023,
+      "beneficiaire": "EMILE ET ROSA",
+      "siret": "90407696500014",
+      "objet": "Le café solidaire à but d'emploi d'Emile et Rosa",
+      "montant": 200000,
+      "direction": "DAE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.899019,
+        "lon": 2.377817
+      },
+      "adresse": "154 BOULEVARD MACDONALD 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03671",
+      "annee": 2023,
+      "beneficiaire": "HALLE SAINT PIERRE",
+      "siret": "33457081900014",
+      "objet": "Acompte 2023 DAC",
+      "montant": 200000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.885014,
+        "lon": 2.344306
+      },
+      "adresse": "2 RUE RONSARD 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06453",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION INITIATIVES RENCONTRES ET SOLIDARITE 10EME AIRES 10EME",
+      "siret": "34058420000026",
+      "objet": "Travaux  centre social Aires 10 suite au projet \"Refaire Place du Village\" Budget participatif",
+      "montant": 200000,
+      "direction": "DSOL",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.871758,
+        "lon": 2.372477
+      },
+      "adresse": "2 RUE DU BUISSON SAINT-LOUIS 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2024_03051",
+      "annee": 2023,
+      "beneficiaire": "CENTRE D'ETUDES ET DE MEMOIRE DU JUDAISME",
+      "siret": "53849128300015",
+      "objet": "Securité, Protection et Prévention",
+      "montant": 200000,
+      "direction": "DPMP",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.88788302886248,
+        "lon": 2.294767943573444
+      },
+      "adresse": "10 PLACE DE JERUSALEM 75017 PARIS",
+      "codePostal": "75017",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_11038",
+      "annee": 2023,
+      "beneficiaire": "FONDS SOCIAL JUIF UNIFIE FSJU",
+      "siret": "77567220700153",
+      "objet": "urgence sécurité antisémitisme",
+      "montant": 200000,
+      "direction": "DPMP",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.837954,
+        "lon": 2.34788
+      },
+      "adresse": "39 RUE BROCA 75005 PARIS",
+      "codePostal": "75005",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02245",
+      "annee": 2023,
+      "beneficiaire": "PARIS ET COMPAGNIE",
+      "siret": "40895436000033",
+      "objet": "Budget investissements 2023 - Paris&Co",
+      "montant": 200000,
+      "direction": "DAE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.894069,
+        "lon": 2.35423
+      },
+      "adresse": "48 RUE RENE CLAIR 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04146",
+      "annee": 2023,
+      "beneficiaire": "COUP DE MAIN",
+      "siret": "41190781900022",
+      "objet": "Déployer un projet global d'insertion pour les familles migrantes intracommunautaires -TOTI IMPREUNA",
+      "montant": 200000,
+      "direction": "DSOL",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.89928,
+        "lon": 2.396625
+      },
+      "adresse": "31 AVENUE EDOUARD VAILLANT 93500 PANTIN",
+      "codePostal": "93500",
+      "commune": "PANTIN"
+    },
+    {
+      "id": "2023_08184",
+      "annee": 2023,
+      "beneficiaire": "SOLIDARITE CHRETIENNE DES BATIGNOLLES",
+      "siret": "80783777800016",
+      "objet": "Aménagement d'une bagagerie solidaire dans le 17ème arrondissement",
+      "montant": 200000,
+      "direction": "DSOL",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.882774,
+        "lon": 2.322723
+      },
+      "adresse": "44 BOULEVARD DES BATIGNOLLES 75017 PARIS",
+      "codePostal": "75017",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06921",
+      "annee": 2023,
+      "beneficiaire": "ARCHIPELIA",
+      "siret": "43300654100026",
+      "objet": "DSOL CPO Interdirections",
+      "montant": 199842,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.872123,
+        "lon": 2.387022
+      },
+      "adresse": "17 A 23 17 RUE DES ENVIERGES 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06902",
+      "annee": 2023,
+      "beneficiaire": "CRESCENDO",
+      "siret": "78481011100251",
+      "objet": "DSOL CPO Interdirections.",
+      "montant": 199294,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.862478,
+        "lon": 2.367835
+      },
+      "adresse": "102 C RUE AMELOT 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06886",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION INITIATIVES RENCONTRES ET SOLIDARITE 10EME AIRES 10EME",
+      "siret": "34058420000026",
+      "objet": "DSOL CPO Interdirections",
+      "montant": 199261,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.871758,
+        "lon": 2.372477
+      },
+      "adresse": "2 RUE DU BUISSON SAINT-LOUIS 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02542",
+      "annee": 2023,
+      "beneficiaire": "FRANCE HORIZON",
+      "siret": "77566670400975",
+      "objet": "Subvention de fonctionnement 2023Les Kyklos1 avenue Claude Vellefaux75010 Paris",
+      "montant": 198245,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.877719,
+        "lon": 2.36971
+      },
+      "adresse": "5 PLACE DU COLONEL FABIEN 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02806",
+      "annee": 2023,
+      "beneficiaire": "CITES CARITAS",
+      "siret": "35330523800175",
+      "objet": "L'île aux enfants - 42, rue Orfila Paris (20e)",
+      "montant": 198027,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.867088,
+        "lon": 2.398162
+      },
+      "adresse": "72 RUE ORFILA 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06903",
+      "annee": 2023,
+      "beneficiaire": "AOCSA LA 20E CHAISE",
+      "siret": "49080435800037",
+      "objet": "DSOL CPO Interdirections",
+      "montant": 197754,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.864891,
+        "lon": 2.389828
+      },
+      "adresse": "38 RUE DES AMANDIERS 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06929",
+      "annee": 2023,
+      "beneficiaire": "SOLEIL BLAISE",
+      "siret": "48155472300033",
+      "objet": "DSOL CPO Interdirections",
+      "montant": 196674,
+      "direction": "DSOL",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.859243,
+        "lon": 2.408538
+      },
+      "adresse": "7 SQUARE VITRUVE 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02664",
+      "annee": 2023,
+      "beneficiaire": "LE FIGUIER",
+      "siret": "34119424900015",
+      "objet": "BUDGET 2023",
+      "montant": 196665,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.852796,
+        "lon": 2.360474
+      },
+      "adresse": "6 RUE DE L'AVE MARIA 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04502",
+      "annee": 2023,
+      "beneficiaire": "L'ETOILE DU NORD",
+      "siret": "32618492600011",
+      "objet": "Subvention de fonctionnement du théâtre deL'étoile du nord 2023",
+      "montant": 195000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.895559,
+        "lon": 2.332942
+      },
+      "adresse": "16 RUE GEORGETTE AGUTTE 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03662",
+      "annee": 2023,
+      "beneficiaire": "L'ETOILE DU NORD",
+      "siret": "32618492600011",
+      "objet": "Acompte 2023 DAC",
+      "montant": 195000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.895559,
+        "lon": 2.332942
+      },
+      "adresse": "16 RUE GEORGETTE AGUTTE 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_09175",
+      "annee": 2023,
+      "beneficiaire": "EMMAUS SOLIDARITE",
+      "siret": "31723624800017",
+      "objet": "Financement travaux Halte femmes Marie du 20ème",
+      "montant": 195000,
+      "direction": "DSOL",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.860017,
+        "lon": 2.345244
+      },
+      "adresse": "32 RUE DES BOURDONNAIS 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03787",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION CRECHE AVENIR",
+      "siret": "33973531800018",
+      "objet": "SUBVENTION 2023",
+      "montant": 194337,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.890379,
+        "lon": 2.385889
+      },
+      "adresse": "29 RUE DE THIONVILLE 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_09133",
+      "annee": 2023,
+      "beneficiaire": "LA PAUSE DU 6EME",
+      "siret": "90234236900011",
+      "objet": "Bagagerie solidaire paris 6è",
+      "montant": 192200,
+      "direction": "DSOL",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.845559,
+        "lon": 2.31954
+      },
+      "adresse": "21 BOULEVARD DU MONTPARNASSE 75006 PARIS",
+      "codePostal": "75006",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05649",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION FRANCO ASIATIQUE POUR L'ENFANCE  AFAPE",
+      "siret": "48262306300013",
+      "objet": "Crèche Franco Chinoise Toudic",
+      "montant": 190887,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.872162,
+        "lon": 2.373266
+      },
+      "adresse": "10 RUE DU BUISSON SAINT-LOUIS 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02924",
+      "annee": 2023,
+      "beneficiaire": "LES RESTAURANTS DU COEUR LES RELAIS DU COEUR DE PARIS",
+      "siret": "42334329200011",
+      "objet": "Aide alimentaire 2023",
+      "montant": 190000,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.83078,
+        "lon": 2.365569
+      },
+      "adresse": "6 RUE JEAN SEBASTIEN BACH 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06920",
+      "annee": 2023,
+      "beneficiaire": "DANUBE SOCIAL ET CULTUREL ADSC",
+      "siret": "44992042000022",
+      "objet": "DSOL CPO Interdirections",
+      "montant": 189607,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.882764,
+        "lon": 2.393935
+      },
+      "adresse": "49 B RUE DU GENERAL BRUNET 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03142",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION REGIONALE POUR L'INSERTION ECONOMIQUE ET SOCIALE",
+      "siret": "42156728000027",
+      "objet": "DAE-BESC : Chantier Service en Gares Parisiennes",
+      "montant": 188000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.638587,
+        "lon": 2.342211
+      },
+      "adresse": "1 RUE ANNE FRANK 91700 SAINTE-GENEVIEVE-DES-BOIS",
+      "codePostal": "91700",
+      "commune": "SAINTE-GENEVIEVE-DES-BOIS"
+    },
+    {
+      "id": "2023_02495",
+      "annee": 2023,
+      "beneficiaire": "ACTIONS ET RESSOURCES POUR L'INCLUSION SOCIALE PAR LE SOIN ET L'EDUCATION (A.R.I.S.S.E)",
+      "siret": "33246803200070",
+      "objet": "PETIT PRINCE LUMIERE -demande de subventions 2023",
+      "montant": 187591,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.774994,
+        "lon": 2.161443
+      },
+      "adresse": "10 CHEMIN DE LA BUTTE AU BEURRE 78350 JOUY-EN-JOSAS",
+      "codePostal": "78350",
+      "commune": "JOUY-EN-JOSAS"
+    },
+    {
+      "id": "2023_02695",
+      "annee": 2023,
+      "beneficiaire": "OEUVRE DE SECOURS AUX ENFANTS",
+      "siret": "77568133100176",
+      "objet": "Fonctionnement de la Maison des Sources",
+      "montant": 184762,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.871274,
+        "lon": 2.374546
+      },
+      "adresse": "117 RUE DU FAUBOURG DU TEMPLE 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04866",
+      "annee": 2023,
+      "beneficiaire": "FONDS SOCIAL JUIF UNIFIE FSJU",
+      "siret": "77567220700153",
+      "objet": "spcj",
+      "montant": 180000,
+      "direction": "DPMP",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.837954,
+        "lon": 2.34788
+      },
+      "adresse": "39 RUE BROCA 75005 PARIS",
+      "codePostal": "75005",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03708",
+      "annee": 2023,
+      "beneficiaire": "HALLE SAINT PIERRE",
+      "siret": "33457081900014",
+      "objet": "Subventionnement de fonctionnement",
+      "montant": 180000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.885014,
+        "lon": 2.344306
+      },
+      "adresse": "2 RUE RONSARD 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02568",
+      "annee": 2023,
+      "beneficiaire": "ESTRELIA",
+      "siret": "34878236800032",
+      "objet": "BP 2023 DE LA CRÈCHE LIBELLULE ET PAPILLON",
+      "montant": 179784,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.883257,
+        "lon": 2.36004
+      },
+      "adresse": "10 RUE PERDONNET 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03304",
+      "annee": 2023,
+      "beneficiaire": "LA CHOUINE",
+      "siret": "32826524400025",
+      "objet": "Subvention de fonctionnement 2023",
+      "montant": 177540,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.892699,
+        "lon": 2.349632
+      },
+      "adresse": "7-8 7 SQUARE ORNANO 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06887",
+      "annee": 2023,
+      "beneficiaire": "LE PARI'S DES FAUBOURGS",
+      "siret": "44062157100023",
+      "objet": "DSOL CPO Interdirections",
+      "montant": 176758,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.875846,
+        "lon": 2.354301
+      },
+      "adresse": "12 RUE LEON SCHWARTZENBERG 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02757",
+      "annee": 2023,
+      "beneficiaire": "CARREFOUR 14",
+      "siret": "43367170800041",
+      "objet": "DASES CPO Interdirections",
+      "montant": 175548,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.826966,
+        "lon": 2.312374
+      },
+      "adresse": "15 RUE DES MARINIERS 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05635",
+      "annee": 2023,
+      "beneficiaire": "LA GOUTTE DE LAIT SAINT LEON",
+      "siret": "78461542900049",
+      "objet": "Subvention de fonctionnement MASL",
+      "montant": 175039,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.850778,
+        "lon": 2.295884
+      },
+      "adresse": "37 RUE DUPLEIX 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03865",
+      "annee": 2023,
+      "beneficiaire": "SAFE",
+      "siret": "38005237300012",
+      "objet": "Gestion des automates, analyse des drogues consommation et création d'outils de RDR",
+      "montant": 175000,
+      "direction": "DSP",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.886563,
+        "lon": 2.296704
+      },
+      "adresse": "63 BOULEVARD BERTHIER 75017 PARIS",
+      "codePostal": "75017",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05002",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION LES CROCOS CRECHE PARENTALE",
+      "siret": "32965532800030",
+      "objet": "Subvention 2023 - Crèche parentale les crocos",
+      "montant": 174769,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.838719,
+        "lon": 2.397324
+      },
+      "adresse": "180 AVENUE DAUMESNIL 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02676",
+      "annee": 2023,
+      "beneficiaire": "LE DAUPHIN BLEU",
+      "siret": "35029993900032",
+      "objet": "BUDGET PREVISIONNEL 2023-Le Dauphin Bleu",
+      "montant": 174208,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.897216,
+        "lon": 2.329553
+      },
+      "adresse": "81-83 81 RUE VAUVENARGUES 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03267",
+      "annee": 2023,
+      "beneficiaire": "ETUDES ET CHANTIERS ILE DE FRANCE",
+      "siret": "44066204700057",
+      "objet": "IAE BESC",
+      "montant": 173000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.61533,
+        "lon": 2.437295
+      },
+      "adresse": "1 RUE DE L'ORGE 91000 EVRY-COURCOURONNES",
+      "codePostal": "91000",
+      "commune": "EVRY-COURCOURONNES"
+    },
+    {
+      "id": "2023_08648",
+      "annee": 2023,
+      "beneficiaire": "RESEAU MÔM'ARTRE",
+      "siret": "50996337700130",
+      "objet": "CPO DFPE Môm'artre Paris Complément  2023",
+      "montant": 173000,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.892078,
+        "lon": 2.375363
+      },
+      "adresse": "204 RUE DE CRIMEE 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06899",
+      "annee": 2023,
+      "beneficiaire": "CENTRE SOCIAL ET CULTUREL PORTE POUCHET",
+      "siret": "84244656900027",
+      "objet": "Dotation globale CS 2023 DSOL/SEPLEX",
+      "montant": 171358,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.899151,
+        "lon": 2.320685
+      },
+      "adresse": "5 BOULEVARD DU BOIS LE PRETRE 75017 PARIS",
+      "codePostal": "75017",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05564",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION POUR LE DROIT À L'INITIATIVE ÉCONOMIQUE",
+      "siret": "35221687302852",
+      "objet": "Rendre la création d¿entreprise accessible à tous les parisiens",
+      "montant": 169000,
+      "direction": "DAE",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.888644,
+        "lon": 2.385915
+      },
+      "adresse": "23 RUE DES ARDENNES 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05319",
+      "annee": 2023,
+      "beneficiaire": "ABC PUERICULTURE",
+      "siret": "34482479200032",
+      "objet": "Budget 2023 crèchesstructure multi-accueil Labie9, rue Labie (17è)",
+      "montant": 167845,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.852284,
+        "lon": 2.274995
+      },
+      "adresse": "9 RUE JEAN DE LA FONTAINE 75016 PARIS",
+      "codePostal": "75016",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06918",
+      "annee": 2023,
+      "beneficiaire": "ROSA-PARKS (PARIS)",
+      "siret": "80884349400028",
+      "objet": "Dotation globale CS 2023 DSOL/SEPLEX",
+      "montant": 167258,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.898458,
+        "lon": 2.371478
+      },
+      "adresse": "219 BOULEVARD MACDONALD 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02505",
+      "annee": 2023,
+      "beneficiaire": "LA PLANETE DES ENFANTS",
+      "siret": "48442110200027",
+      "objet": "demande de subvention de fonctionnement-Les Etoiles De Philidor",
+      "montant": 165068,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.830559,
+        "lon": 2.324413
+      },
+      "adresse": "6 VILLA MODERNE 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06684",
+      "annee": 2023,
+      "beneficiaire": "CENTRE DU LOGEMENT DES JEUNES TRAVAILLEURS ETUDIANTS ET STAGIAIRES CLJT",
+      "siret": "77569699000206",
+      "objet": "SUBVENTION FONCTIONNEMENT 2023",
+      "montant": 164700,
+      "direction": "DJS",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.834233,
+        "lon": 2.368105
+      },
+      "adresse": "140 RUE DU CHEVALERET 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06890",
+      "annee": 2023,
+      "beneficiaire": "MAISON 13 SOLIDAIRE",
+      "siret": "78881042200022",
+      "objet": "Dotation globale CS 2023 DSOL/SEPLEX",
+      "montant": 164558,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.821435,
+        "lon": 2.34826
+      },
+      "adresse": "13 RUE ANNIE GIRARDOT 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03484",
+      "annee": 2023,
+      "beneficiaire": "OHEL ESTHER",
+      "siret": "43382029700011",
+      "objet": "BP 2023",
+      "montant": 164419,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.878881,
+        "lon": 2.375592
+      },
+      "adresse": "4 A 8 4 RUE HENRI MURGER 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03913",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION PETITE ENFANCE ET PARENTALITE LA MAISON VERTE",
+      "siret": "31541065400026",
+      "objet": "Subvention fonctionnement 2023",
+      "montant": 164000,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.844998,
+        "lon": 2.298546
+      },
+      "adresse": "13 RUE MEILHAC 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02926",
+      "annee": 2023,
+      "beneficiaire": "LES RESTAURANTS DU COEUR LES RELAIS DU COEUR DE PARIS",
+      "siret": "42334329200011",
+      "objet": "Gardiennage général 2023 du site de la Villette lors de la distribution de repas.",
+      "montant": 163325,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.83078,
+        "lon": 2.365569
+      },
+      "adresse": "6 RUE JEAN SEBASTIEN BACH 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03263",
+      "annee": 2023,
+      "beneficiaire": "EMMAUS ALTERNATIVES",
+      "siret": "38238754600106",
+      "objet": "IAE BESC",
+      "montant": 160000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.869755,
+        "lon": 2.465174
+      },
+      "adresse": "260 RUE DE ROSNY 93100 MONTREUIL",
+      "codePostal": "93100",
+      "commune": "MONTREUIL"
+    },
+    {
+      "id": "2023_00396",
+      "annee": 2023,
+      "beneficiaire": "MAISON DE L'EUROPE DE PARIS CENTRE DE RENCONTRES INTERNATIONALES",
+      "siret": "78418016800030",
+      "objet": "Subvention au projet de la Maison de l'Europe de Paris sur la promotion de la citoyenneté européenne",
+      "montant": 160000,
+      "direction": "DGRI",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.846327,
+        "lon": 2.272874
+      },
+      "adresse": "77 AVENUE DE VERSAILLES 75016 PARIS",
+      "codePostal": "75016",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_00533",
+      "annee": 2023,
+      "beneficiaire": "COMITE DEPARTEMENTAL OLYMPIQUE ET SPORTIF DE PARIS CDOS DE PARIS",
+      "siret": "34502176000037",
+      "objet": "REDUC'SPORT 2023",
+      "montant": 160000,
+      "direction": "DJS",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.8562,
+        "lon": 2.290234
+      },
+      "adresse": "91 QUAI JACQUES CHIRAC 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02377",
+      "annee": 2023,
+      "beneficiaire": "LEO LAGRANGE NORD - ILE-DE-FRANCE",
+      "siret": "31661982400931",
+      "objet": "SUBVENTION 2023 MA LES PETITS LEO NEY",
+      "montant": 157031,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 49.892262,
+        "lon": 2.303174
+      },
+      "adresse": "27 RUE DE L'AMIRAL COURBET 80000 AMIENS",
+      "codePostal": "80000",
+      "commune": "AMIENS"
+    },
+    {
+      "id": "2023_02585",
+      "annee": 2023,
+      "beneficiaire": "LA PLANETE DES ENFANTS",
+      "siret": "48442110200027",
+      "objet": "Les Fraises des Bois",
+      "montant": 156944,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.830559,
+        "lon": 2.324413
+      },
+      "adresse": "6 VILLA MODERNE 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05838",
+      "annee": 2023,
+      "beneficiaire": "ACIDULES ET A CROQUER",
+      "siret": "32733670700036",
+      "objet": "demande de versement prioritaire - subvention de fonctionnement 2023",
+      "montant": 156356,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.895895,
+        "lon": 2.345296
+      },
+      "adresse": "70 B RUE CHAMPIONNET 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04264",
+      "annee": 2023,
+      "beneficiaire": "ATELIER DE PARIS CAROLYN CARLSON",
+      "siret": "39864093800021",
+      "objet": "Subvention de fonctionnement 2023",
+      "montant": 155000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.835062,
+        "lon": 2.450645
+      },
+      "adresse": "CARTOUCHERIE ROUTE DU CHAMP DE MANOEUVRES 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02693",
+      "annee": 2023,
+      "beneficiaire": "OEUVRE DE SECOURS AUX ENFANTS",
+      "siret": "77568133100176",
+      "objet": "LAEP MOBILE ESI BONNE NOUVELLE THOREL",
+      "montant": 154000,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.871274,
+        "lon": 2.374546
+      },
+      "adresse": "117 RUE DU FAUBOURG DU TEMPLE 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05313",
+      "annee": 2023,
+      "beneficiaire": "LA CHORBA",
+      "siret": "43041135500026",
+      "objet": "Distribution de repas chauds au restaurant de l¿Hôtel de Ville pour un public en grande précarité",
+      "montant": 150985,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.834044,
+        "lon": 2.403323
+      },
+      "adresse": "87 BOULEVARD PONIATOWSKI 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_07220",
+      "annee": 2023,
+      "beneficiaire": "LA MAISON KANGOUROU",
+      "siret": "45234009400203",
+      "objet": "La Maison Kangourou",
+      "montant": 150000,
+      "direction": "DFPE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.869209,
+        "lon": 2.360352
+      },
+      "adresse": "10 RUE DE LANCRY 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05702",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION SOLIDARITE SIDA",
+      "siret": "39861308300045",
+      "objet": "Festival SOLIDAYS 2023",
+      "montant": 150000,
+      "direction": "DSP",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.859751,
+        "lon": 2.379289
+      },
+      "adresse": "16 B AVENUE PARMENTIER 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_00458",
+      "annee": 2023,
+      "beneficiaire": "PARIS 13 ATLETICO",
+      "siret": "42002748400021",
+      "objet": "SUBVENTION ANNUELLE 2023",
+      "montant": 150000,
+      "direction": "DJS",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.82261,
+        "lon": 2.377554
+      },
+      "adresse": "1 AVENUE BOUTROUX 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_00001",
+      "annee": 2023,
+      "beneficiaire": "ARS LONGA",
+      "siret": "42100214800052",
+      "objet": "Subvention pour la mise en place d'une formation en ligne ouverte à tous ou MOOC",
+      "montant": 150000,
+      "direction": "DAE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.863529,
+        "lon": 2.372543
+      },
+      "adresse": "42 RUE DE LA FOLIE-MERICOURT 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02086",
+      "annee": 2023,
+      "beneficiaire": "BASILIADE",
+      "siret": "40084047600115",
+      "objet": "Les CHU La Maison Femmes Et Enfants (F&ES) du territoire parisien",
+      "montant": 150000,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.857192,
+        "lon": 2.369332
+      },
+      "adresse": "6 RUE DU CHEMIN VERT 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06517",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION D'ACTION SOCIALE EN FAVEUR DES PERSONNELS DE LA VILLE DE PARIS ET DU DEPARTEMENT DE PARIS ASPP",
+      "siret": "32385721900097",
+      "objet": "Subvention d'investissement",
+      "montant": 150000,
+      "direction": "DRH",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.87074,
+        "lon": 2.343155
+      },
+      "adresse": "21 RUE D'UZES 75002 PARIS",
+      "codePostal": "75002",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_08504",
+      "annee": 2023,
+      "beneficiaire": "THEATRE DE LA VILLE",
+      "siret": "77566172100024",
+      "objet": "PROJET D'EDUCATION ARTISTIQUE DANS LE CADRE DES TAP 2023-2024",
+      "montant": 150000,
+      "direction": "DAC",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.857346,
+        "lon": 2.34779
+      },
+      "adresse": "ANGL 16 Q DE GESVRES 2 PLACE DU CHATELET 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_08926",
+      "annee": 2023,
+      "beneficiaire": "THEATRE MUSICAL DE PARIS",
+      "siret": "31669616000019",
+      "objet": "Equipement 2023",
+      "montant": 150000,
+      "direction": "DAC",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.857845,
+        "lon": 2.345636
+      },
+      "adresse": "2 RUE EDOUARD COLONNE 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "X",
+      "annee": 2023,
+      "beneficiaire": "COMITE PARALYMPIQUE ET SPORTIF Français CPSF",
+      "siret": "50860787600028",
+      "objet": "Convention d'exécution CPSF-Ville",
+      "montant": 150000,
+      "direction": "SG",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.833925,
+        "lon": 2.454596
+      },
+      "adresse": "INSEP 11 AVENUE DU TREMBLAY 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05942",
+      "annee": 2023,
+      "beneficiaire": "AGIR SOIGNER EDUQUER INSERER",
+      "siret": "77558122600724",
+      "objet": "réhabilitation du bâtiment situé 20 Rue Madame",
+      "montant": 150000,
+      "direction": "DSOL",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 43.551911,
+        "lon": 1.487085
+      },
+      "adresse": "PARC TECHNO DU CANAL 4 AVENUE DE L’EUROPE 31520 RAMONVILLE-SAINT-AGNE",
+      "codePostal": "31520",
+      "commune": "RAMONVILLE-SAINT-AGNE"
+    },
+    {
+      "id": "2023_02606",
+      "annee": 2023,
+      "beneficiaire": "FEDERATION DES CRECHES GRIBOUILLE",
+      "siret": "44849623200019",
+      "objet": "demande de subvention de fonctionnement 2023",
+      "montant": 149352,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 49.451092,
+        "lon": 1.080212
+      },
+      "adresse": "46 RUE THOMAS DUBOSC 76000 ROUEN",
+      "codePostal": "76000",
+      "commune": "ROUEN"
+    },
+    {
+      "id": "2023_05924",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION AURORE",
+      "siret": "77568497003594",
+      "objet": "Dispositif Jeunes Lycéens",
+      "montant": 148945,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.84261,
+        "lon": 2.31629
+      },
+      "adresse": "SIEGE 31 RUE FALGUIERE 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_10296",
+      "annee": 2023,
+      "beneficiaire": "LES RESTAURANTS DU COEUR LES RELAIS DU COEUR DE PARIS",
+      "siret": "42334329200011",
+      "objet": "Soutien exceptionnel inflation",
+      "montant": 148000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.83078,
+        "lon": 2.365569
+      },
+      "adresse": "6 RUE JEAN SEBASTIEN BACH 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05906",
+      "annee": 2023,
+      "beneficiaire": "LA CHORBA",
+      "siret": "43041135500026",
+      "objet": "DPH 2023",
+      "montant": 148000,
+      "direction": "DAE",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.834044,
+        "lon": 2.403323
+      },
+      "adresse": "87 BOULEVARD PONIATOWSKI 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04950",
+      "annee": 2023,
+      "beneficiaire": "INSTITUTIONS GANONE YAD",
+      "siret": "39419135700018",
+      "objet": "SUBVENTION DE FONCTIONNEMENTCRECHE COLLECTIVE",
+      "montant": 147439,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.855999,
+        "lon": 2.360517
+      },
+      "adresse": "10 RUE PAVEE 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_07052",
+      "annee": 2023,
+      "beneficiaire": "DE L'INFANS A L'ENFANT",
+      "siret": "48208866300026",
+      "objet": "SUBVENTION 2023 : FONCTIONNEMENT LAEP LA BABILLO ET QUIDITQUOI",
+      "montant": 146344,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.894593,
+        "lon": 2.352433
+      },
+      "adresse": "48 B RUE BOINOD 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02793",
+      "annee": 2023,
+      "beneficiaire": "LES ATELIERS POUR LES PETITS",
+      "siret": "31562930300027",
+      "objet": "demande subvention de fonctionnement 2023",
+      "montant": 145751,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.886349,
+        "lon": 2.336232
+      },
+      "adresse": "26 RUE DURANTIN 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_10279",
+      "annee": 2023,
+      "beneficiaire": "CITES CARITAS",
+      "siret": "35330523800175",
+      "objet": "Mise à l¿abri familles ¿ Go sport",
+      "montant": 145728,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.867088,
+        "lon": 2.398162
+      },
+      "adresse": "72 RUE ORFILA 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02465",
+      "annee": 2023,
+      "beneficiaire": "ATELIER BERLIOZ ADPS",
+      "siret": "34153916100016",
+      "objet": "Fonctionnement 2023",
+      "montant": 145354,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.883428,
+        "lon": 2.330737
+      },
+      "adresse": "18 B RUE DE BRUXELLES 75009 PARIS",
+      "codePostal": "75009",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05617",
+      "annee": 2023,
+      "beneficiaire": "PIMMS MÉDIATION PARIS",
+      "siret": "47805699700016",
+      "objet": "Soutien au fonctionnement PIMMS Médiation Paris",
+      "montant": 145000,
+      "direction": "DDCT",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.840488,
+        "lon": 2.392507
+      },
+      "adresse": "2E ETAGE 181 AVENUE DAUMESNIL 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04838",
+      "annee": 2023,
+      "beneficiaire": "ESPOIR CENTRES FAMILIAUX DE JEUNES",
+      "siret": "77567869100327",
+      "objet": "La ferme du jardin d'Eole",
+      "montant": 143000,
+      "direction": "DPMP",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.870497,
+        "lon": 2.39401
+      },
+      "adresse": "282 RUE DES PYRENEES 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02637",
+      "annee": 2023,
+      "beneficiaire": "ESPACE 19",
+      "siret": "32228389600056",
+      "objet": "Etablissements d'accueil du Jeune Enfant Espace 19 Cambrai",
+      "montant": 141804,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.895716,
+        "lon": 2.374611
+      },
+      "adresse": "6 RUE HENRI VERNEUIL 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02462",
+      "annee": 2023,
+      "beneficiaire": "ARTHUR ET MARINE",
+      "siret": "47772890100018",
+      "objet": "fonctionnement 2023-Nieuport",
+      "montant": 141768,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.825078,
+        "lon": 2.371454
+      },
+      "adresse": "6 VILLA NIEUPORT 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02574",
+      "annee": 2023,
+      "beneficiaire": "LES ENFANCES",
+      "siret": "38786360800015",
+      "objet": "Fonctionnement 2023",
+      "montant": 141363,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.894832,
+        "lon": 2.360109
+      },
+      "adresse": "33 RUE BOUCRY 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_00206",
+      "annee": 2023,
+      "beneficiaire": "PROTECTION CIVILE PARIS SEINE (PCPS)",
+      "siret": "41803746100047",
+      "objet": "Formations et initiations aux premiers secours pour les publics parisiens défavorisés",
+      "montant": 140400,
+      "direction": "DSP",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.840129,
+        "lon": 2.302838
+      },
+      "adresse": "244 RUE DE VAUGIRARD 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03836",
+      "annee": 2023,
+      "beneficiaire": "CROIX ROUGE FRANCAISE",
+      "siret": "77567227221138",
+      "objet": "DSOL / SDILE - Accompagnement des 16-26 ans en grande difficulté d¿insertion",
+      "montant": 140000,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.827226,
+        "lon": 2.314209
+      },
+      "adresse": "SITE CROIX ROUGE 98 RUE DIDOT 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2024_02728",
+      "annee": 2023,
+      "beneficiaire": "FORUM DES IMAGES",
+      "siret": "33212365200023",
+      "objet": "2023 DASCO 147 - Académie du Climat ¿ Subvention de fonctionnement (140 000 €) et avenant à convention avec l¿association Forum des images (1er) dans le cadre du projet TUMO Paris 4 - École du Climat ¿ Académie du Climat",
+      "montant": 140000,
+      "direction": "DASCO",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.86196,
+        "lon": 2.346687
+      },
+      "adresse": "FORUM DES HALLES PORTE SAINT-EUSTACHE 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02857",
+      "annee": 2023,
+      "beneficiaire": "JEUNESSE LOUBAVITCH OU BETH LOUBAVITCH",
+      "siret": "78441431000010",
+      "objet": "SUBVENTION FONCTIONNEMENT EAJE",
+      "montant": 139923,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.876606,
+        "lon": 2.343469
+      },
+      "adresse": "8 RUE LAMARTINE 75009 PARIS",
+      "codePostal": "75009",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02580",
+      "annee": 2023,
+      "beneficiaire": "UNE NOUVELLE IDÉE DE LA CRECHE PARIS (U.N.I.C PARIS)",
+      "siret": "82822702500040",
+      "objet": "Demande de financement du Multi-Accueil Baobab",
+      "montant": 138694,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.874192,
+        "lon": 2.352997
+      },
+      "adresse": "CHEZ AGAPI 15 RUE MARTEL 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03432",
+      "annee": 2023,
+      "beneficiaire": "CRESCENDO",
+      "siret": "78481011100251",
+      "objet": "Chantiers d'insertions IAE ACI (AH/AEJE/AEJE CAP)IAE BESC",
+      "montant": 137000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.862478,
+        "lon": 2.367835
+      },
+      "adresse": "102 C RUE AMELOT 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05531",
+      "annee": 2023,
+      "beneficiaire": "HORS LA RUE",
+      "siret": "43991448200047",
+      "objet": "Repérage et accompagnement des enfants et adolescents en danger vers le droit commun",
+      "montant": 136193,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.855756,
+        "lon": 2.429476
+      },
+      "adresse": "70 RUE DOUY DELCUPE 93100 MONTREUIL",
+      "codePostal": "93100",
+      "commune": "MONTREUIL"
+    },
+    {
+      "id": "2023_02520",
+      "annee": 2023,
+      "beneficiaire": "SOLIDARITE ROQUETTE",
+      "siret": "39984846400018",
+      "objet": "Fonctionnement 2023 : \" Multi accueil les Pitchouns \"",
+      "montant": 135978,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.855632,
+        "lon": 2.374496
+      },
+      "adresse": "MME MICHON ANNE 47 RUE DE LA ROQUETTE 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_07475",
+      "annee": 2023,
+      "beneficiaire": "CENTRE COROT ENTRAIDE D'AUTEUIL",
+      "siret": "34226673100013",
+      "objet": "Projet Accueil Jeunes",
+      "montant": 135000,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.847116,
+        "lon": 2.270127
+      },
+      "adresse": "4 RUE COROT 75016 PARIS",
+      "codePostal": "75016",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03647",
+      "annee": 2023,
+      "beneficiaire": "ATELIER DE PARIS CAROLYN CARLSON",
+      "siret": "39864093800021",
+      "objet": "Acompte 2023 DAC",
+      "montant": 135000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.835062,
+        "lon": 2.450645
+      },
+      "adresse": "CARTOUCHERIE ROUTE DU CHAMP DE MANOEUVRES 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03056",
+      "annee": 2023,
+      "beneficiaire": "BABILLAGES",
+      "siret": "32079827500030",
+      "objet": "fonctionnement courant de l'association",
+      "montant": 134531,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.853229,
+        "lon": 2.389652
+      },
+      "adresse": "10 IMPASSE DELEPINE 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_11092",
+      "annee": 2023,
+      "beneficiaire": "ESPACES",
+      "siret": "39924109000063",
+      "objet": "Régul 23-insertion par l'entretien de la PC",
+      "montant": 133042,
+      "direction": "DEVE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.813442,
+        "lon": 2.192525
+      },
+      "adresse": "855 AVENUE ROGER SALENGRO 92370 CHAVILLE",
+      "codePostal": "92370",
+      "commune": "CHAVILLE"
+    },
+    {
+      "id": "2023_02494",
+      "annee": 2023,
+      "beneficiaire": "LEO LAGRANGE NORD - ILE-DE-FRANCE",
+      "siret": "31661982400931",
+      "objet": "SUBVENTION 2023 MA BAUDELIQUE",
+      "montant": 132820,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 49.892262,
+        "lon": 2.303174
+      },
+      "adresse": "27 RUE DE L'AMIRAL COURBET 80000 AMIENS",
+      "codePostal": "80000",
+      "commune": "AMIENS"
+    },
+    {
+      "id": "2023_02586",
+      "annee": 2023,
+      "beneficiaire": "LA PLANETE DES ENFANTS",
+      "siret": "48442110200027",
+      "objet": "La Villa des Enfants",
+      "montant": 131782,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.830559,
+        "lon": 2.324413
+      },
+      "adresse": "6 VILLA MODERNE 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02597",
+      "annee": 2023,
+      "beneficiaire": "OZAR HATORAH PARIS 11 CRECHE",
+      "siret": "83125231700019",
+      "objet": "BP 2023",
+      "montant": 130652,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.870594,
+        "lon": 2.377859
+      },
+      "adresse": "40 RUE DE L'ORILLON 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05923",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION AURORE",
+      "siret": "77568497003594",
+      "objet": "MARAUDE EST",
+      "montant": 130495,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.84261,
+        "lon": 2.31629
+      },
+      "adresse": "SIEGE 31 RUE FALGUIERE 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03161",
+      "annee": 2023,
+      "beneficiaire": "ARTEMISIA PEINTURE COULEUR DECOR PEINT ARTEMISIA",
+      "siret": "42081677900029",
+      "objet": "IAE BESC",
+      "montant": 130000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.88609,
+        "lon": 2.367224
+      },
+      "adresse": "9 B RUE BELLOT 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04484",
+      "annee": 2023,
+      "beneficiaire": "AGENCE PARISIENNE DU CLIMAT (APC)",
+      "siret": "52800732100011",
+      "objet": "SUBVENTION DE FONCTIONNEMENT - DTEC/DLH/DU 2021/2023",
+      "montant": 130000,
+      "direction": "DTEC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.833505,
+        "lon": 2.386307
+      },
+      "adresse": "PAVILLON DU LAC PARC DE BERCY 3 RUE FRANCOIS TRUFFAUT 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02109",
+      "annee": 2023,
+      "beneficiaire": "ECOLE DES PARENTS ET DES EDUCATEURS D'ILE-DE-FRANCE",
+      "siret": "78471870200037",
+      "objet": "LAEP Maison Ouverte / Ecole des Parents & des Educateurs d'Ile de France",
+      "montant": 130000,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.8549,
+        "lon": 2.38345
+      },
+      "adresse": "5 IMPASSE BON SECOURS 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_01859",
+      "annee": 2023,
+      "beneficiaire": "DISTRICT PARISIEN DE FOOTBALL",
+      "siret": "89203125300024",
+      "objet": "District parisien de Footballgestion du football sur le territoire Parisien",
+      "montant": 130000,
+      "direction": "DJS",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.820932,
+        "lon": 2.373463
+      },
+      "adresse": "6 AVENUE JOSEPH BEDIER 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06446",
+      "annee": 2023,
+      "beneficiaire": "LA JOANNAISE DU GROS CAILLOU",
+      "siret": "78430881900027",
+      "objet": "Fonctionnement courant de l¿association pour l¿année 2023",
+      "montant": 129882,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.859891,
+        "lon": 2.304587
+      },
+      "adresse": "11 RUE PIERRE VILLEY 75007 PARIS",
+      "codePostal": "75007",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02541",
+      "annee": 2023,
+      "beneficiaire": "FRANCE HORIZON",
+      "siret": "77566670400975",
+      "objet": "Subvention de fonctionnement 2023Les Petits Printemps56 Avenue Jean Moulin75014 Paris",
+      "montant": 129807,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.877719,
+        "lon": 2.36971
+      },
+      "adresse": "5 PLACE DU COLONEL FABIEN 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06622",
+      "annee": 2023,
+      "beneficiaire": "INSTITUT DES CULTURES D'ISLAM (ICI)",
+      "siret": "52225251900015",
+      "objet": "Mise en conformité du Système de Sécurité Incendie de l¿Institut des Cultures d¿Islam",
+      "montant": 129374,
+      "direction": "DAC",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.887787,
+        "lon": 2.353435
+      },
+      "adresse": "19 AU 23 19 RUE LEON 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02663",
+      "annee": 2023,
+      "beneficiaire": "LE DAUPHIN BLEU",
+      "siret": "35029993900032",
+      "objet": "BUDGET PREVISIONNEL 2023-Petit Dauphin",
+      "montant": 128193,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.897216,
+        "lon": 2.329553
+      },
+      "adresse": "81-83 81 RUE VAUVENARGUES 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02942",
+      "annee": 2023,
+      "beneficiaire": "L'ARBRE BLEU",
+      "siret": "38411101900012",
+      "objet": "Financement fonctionnement LAEP l'arbre bleu BP 2023",
+      "montant": 127606,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.886001,
+        "lon": 2.3507
+      },
+      "adresse": "52 RUE POLONCEAU 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03075",
+      "annee": 2023,
+      "beneficiaire": "LES RESTAURANTS DU COEUR LES RELAIS DU COEUR DE PARIS",
+      "siret": "42334329200011",
+      "objet": "IAE-BESC 2023",
+      "montant": 127000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.83078,
+        "lon": 2.365569
+      },
+      "adresse": "6 RUE JEAN SEBASTIEN BACH 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05584",
+      "annee": 2023,
+      "beneficiaire": "CROIX ROUGE FRANCAISE",
+      "siret": "77567227221138",
+      "objet": "Evaluation sociale et accompagnement social des ménages hébergés à l'hôtel par la Ville de Paris",
+      "montant": 126431,
+      "direction": "DSOL",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.827226,
+        "lon": 2.314209
+      },
+      "adresse": "SITE CROIX ROUGE 98 RUE DIDOT 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05840",
+      "annee": 2023,
+      "beneficiaire": "OEUVRES DE LA MIE DE PAIN",
+      "siret": "77568219800053",
+      "objet": "DPH 2023",
+      "montant": 126000,
+      "direction": "DAE",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.825047,
+        "lon": 2.351624
+      },
+      "adresse": "18 RUE CHARLES FOURIER 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04414",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION POUR LE DEVELOPPEMENT DE LA DANSE A PARIS",
+      "siret": "43929038800032",
+      "objet": "Subvention de fonctionnement ADDP 2023",
+      "montant": 125000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.85473,
+        "lon": 2.356399
+      },
+      "adresse": "ADDDP MICADANSES 20 RUE GEOFFROY L'ASNIER 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_08321",
+      "annee": 2023,
+      "beneficiaire": "CROIX ROUGE FRANCAISE",
+      "siret": "77567227221138",
+      "objet": "subvention de fonctionnement de formation",
+      "montant": 125000,
+      "direction": "DSP",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.827226,
+        "lon": 2.314209
+      },
+      "adresse": "SITE CROIX ROUGE 98 RUE DIDOT 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03667",
+      "annee": 2023,
+      "beneficiaire": "INTERNATIONAL VISUAL THEATRE IVT",
+      "siret": "32418249200037",
+      "objet": "Acompte 2023 DAC",
+      "montant": 125000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.881432,
+        "lon": 2.333126
+      },
+      "adresse": "7 CITE CHAPTAL 75009 PARIS",
+      "codePostal": "75009",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05159",
+      "annee": 2023,
+      "beneficiaire": "FONDS SOLIDARITE SIDA AFRIQUE",
+      "siret": "49122604900014",
+      "objet": "Programme d'autonomisation d'associations de lutte contre le sida en Afrique",
+      "montant": 125000,
+      "direction": "DGRI",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.859751,
+        "lon": 2.379289
+      },
+      "adresse": "A L ATTENTION DE JEAN-PIERRE FOURNIER 16 B AVENUE PARMENTIER 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_10650",
+      "annee": 2023,
+      "beneficiaire": "LEO LAGRANGE NORD - ILE-DE-FRANCE",
+      "siret": "31661982400931",
+      "objet": "Demande subvention exceptionnelle",
+      "montant": 125000,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 49.892262,
+        "lon": 2.303174
+      },
+      "adresse": "27 RUE DE L'AMIRAL COURBET 80000 AMIENS",
+      "codePostal": "80000",
+      "commune": "AMIENS"
+    },
+    {
+      "id": "2023_02987",
+      "annee": 2023,
+      "beneficiaire": "COUP DE MAIN",
+      "siret": "41190781900022",
+      "objet": "IAE BESC",
+      "montant": 125000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.89928,
+        "lon": 2.396625
+      },
+      "adresse": "31 AVENUE EDOUARD VAILLANT 93500 PANTIN",
+      "codePostal": "93500",
+      "commune": "PANTIN"
+    },
+    {
+      "id": "2023_03826",
+      "annee": 2023,
+      "beneficiaire": "INTERNATIONAL VISUAL THEATRE IVT",
+      "siret": "32418249200037",
+      "objet": "Demande de subvention de fonctionnement 2023 dans le cadre de la convention triennale 2021-2023",
+      "montant": 125000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.881432,
+        "lon": 2.333126
+      },
+      "adresse": "7 CITE CHAPTAL 75009 PARIS",
+      "codePostal": "75009",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_10778",
+      "annee": 2023,
+      "beneficiaire": "LA GOUTTE DE LAIT SAINT LEON",
+      "siret": "78461542900049",
+      "objet": "Demande subvention exceptionnelle",
+      "montant": 125000,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.850778,
+        "lon": 2.295884
+      },
+      "adresse": "37 RUE DUPLEIX 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_11077",
+      "annee": 2023,
+      "beneficiaire": "MISSION LOCALE DE PARIS",
+      "siret": "53132862300149",
+      "objet": "Subvention de fonctionnement",
+      "montant": 125000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.889595,
+        "lon": 2.363068
+      },
+      "adresse": "22 RUE PAJOL 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02639",
+      "annee": 2023,
+      "beneficiaire": "ARTHUR ET MARINE",
+      "siret": "47772890100018",
+      "objet": "fonctionnement 2023-Christiani",
+      "montant": 124912,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.825078,
+        "lon": 2.371454
+      },
+      "adresse": "6 VILLA NIEUPORT 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03157",
+      "annee": 2023,
+      "beneficiaire": "ESPOIR 18",
+      "siret": "45057218500038",
+      "objet": "CPO DSOL - Subvention de fonctionnement",
+      "montant": 124500,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.889841,
+        "lon": 2.353461
+      },
+      "adresse": "44 RUE LEON 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02908",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION NATIONALE DE READAPTATION SOCIALE",
+      "siret": "77565950100057",
+      "objet": "Permanence Accueil Jeunes",
+      "montant": 124000,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.858204,
+        "lon": 2.34655
+      },
+      "adresse": "18 AVENUE VICTORIA 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04746",
+      "annee": 2023,
+      "beneficiaire": "ARCHIPELIA",
+      "siret": "43300654100026",
+      "objet": "BUDGET 2023 crèche multi accueil",
+      "montant": 123019,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.872123,
+        "lon": 2.387022
+      },
+      "adresse": "17 A 23 17 RUE DES ENVIERGES 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02563",
+      "annee": 2023,
+      "beneficiaire": "ESTRELIA",
+      "siret": "34878236800032",
+      "objet": "BP 2023 LAEP COQUELICOT",
+      "montant": 122426,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.883257,
+        "lon": 2.36004
+      },
+      "adresse": "10 RUE PERDONNET 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02638",
+      "annee": 2023,
+      "beneficiaire": "ESPACE 19",
+      "siret": "32228389600056",
+      "objet": "Etablissements d'accueil du Jeune Enfant Espace 19 Ourcq",
+      "montant": 120854,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.895716,
+        "lon": 2.374611
+      },
+      "adresse": "6 RUE HENRI VERNEUIL 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02551",
+      "annee": 2023,
+      "beneficiaire": "RELAIS MENILMONTANT",
+      "siret": "30900121200047",
+      "objet": "Subvention de fonctionnement 2023  Petite enfance Crèche Multi-accueils \"le petit Relais\"",
+      "montant": 120334,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.873289,
+        "lon": 2.391256
+      },
+      "adresse": "70 RUE DES RIGOLES 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_09779",
+      "annee": 2023,
+      "beneficiaire": "LINKEE FRANCE (L.)",
+      "siret": "83763453400023",
+      "objet": "Pérennisation du dispositif de soutien alimentaire à la vie étudiante/2023AAE",
+      "montant": 120000,
+      "direction": "DAE",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.874795,
+        "lon": 2.389272
+      },
+      "adresse": "7 RUE DU JOURDAIN 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05304",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION AURORE",
+      "siret": "77568497003594",
+      "objet": "PHC/IAE 23",
+      "montant": 120000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.84261,
+        "lon": 2.31629
+      },
+      "adresse": "SIEGE 31 RUE FALGUIERE 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05026",
+      "annee": 2023,
+      "beneficiaire": "CARTON PLEIN 75",
+      "siret": "75232961500039",
+      "objet": "PHC/IAE",
+      "montant": 120000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.8959,
+        "lon": 2.353156
+      },
+      "adresse": "132 RUE DES POISSONNIERS 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05461",
+      "annee": 2023,
+      "beneficiaire": "FEDERATION DES ACTEURS DE LA SOLIDARITE ILE-DE-FRANCE",
+      "siret": "38434214300060",
+      "objet": "animation des acteurs de la précarité Paris",
+      "montant": 120000,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.858392,
+        "lon": 2.43466
+      },
+      "adresse": "30 BOULEVARD DE CHANZY 93100 MONTREUIL",
+      "codePostal": "93100",
+      "commune": "MONTREUIL"
+    },
+    {
+      "id": "2023_11082",
+      "annee": 2023,
+      "beneficiaire": "INSTITUT KURDE DE PARIS",
+      "siret": "32744679500012",
+      "objet": "Demande de subvention 2023 pour l'Institut kurde de Paris",
+      "montant": 120000,
+      "direction": "DGRI",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.877612,
+        "lon": 2.350954
+      },
+      "adresse": "106 RUE LA FAYETTE 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "X",
+      "annee": 2023,
+      "beneficiaire": "COMITE NATIONAL OLYMPIQUE ET SPORTIF Français",
+      "siret": "78435427600023",
+      "objet": "Transformations olympiques",
+      "montant": 120000,
+      "direction": "SG",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.818855,
+        "lon": 2.344666
+      },
+      "adresse": "1 AVENUE PIERRE DE COUBERTIN 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02502",
+      "annee": 2023,
+      "beneficiaire": "COMITE LOCAL POUR LE LOGEMENT AUTONOME DES JEUNES DE PARIS CLLAJ DE PARIS",
+      "siret": "42961145200047",
+      "objet": "Favoriser l¿accès à un logement autonome des jeunes parisiens de moins de 30 ans",
+      "montant": 120000,
+      "direction": "DJS",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.855576,
+        "lon": 2.392963
+      },
+      "adresse": "6 RUE ROBERT ET SONIA DELAUNAY 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04124",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION CITE-THEATRE",
+      "siret": "82095968200023",
+      "objet": "Aide au fonctionnement 2023",
+      "montant": 120000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.820234,
+        "lon": 2.338189
+      },
+      "adresse": "21 BOULEVARD JOURDAN 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03625",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION POUR LE DEVELOPPEMENT DE LA DANSE A PARIS",
+      "siret": "43929038800032",
+      "objet": "Acompte 2023 DAC",
+      "montant": 120000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.85473,
+        "lon": 2.356399
+      },
+      "adresse": "ADDDP MICADANSES 20 RUE GEOFFROY L'ASNIER 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2022_08142",
+      "annee": 2023,
+      "beneficiaire": "MSP VINCENT AURIOL",
+      "siret": "90788472000018",
+      "objet": "Financement travaux MSP Vincent Auriol",
+      "montant": 120000,
+      "direction": "DSP",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.842744,
+        "lon": 2.363532
+      },
+      "adresse": "6 BOULEVARD DE L'HOPITAL 75005 PARIS",
+      "codePostal": "75005",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_00381",
+      "annee": 2023,
+      "beneficiaire": "CENTRE D'ACCUEIL  ET DE MEDIATION RELATIONNELLE EDUCATIVE ET SOCIALE - C.A.M.R.E.S.",
+      "siret": "40318426000012",
+      "objet": "Accueil de jour",
+      "montant": 120000,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.873995,
+        "lon": 2.359166
+      },
+      "adresse": "11 PASSAGE DUBAIL 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05342",
+      "annee": 2023,
+      "beneficiaire": "LE MOULIN BLEU",
+      "siret": "44831946700016",
+      "objet": "Fonctionnement courant pour l'association Le Moulin Bleu crèche parentale",
+      "montant": 118748,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.843174,
+        "lon": 2.396965
+      },
+      "adresse": "60 B RUE DE PICPUS 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02832",
+      "annee": 2023,
+      "beneficiaire": "LES 19EME RUGISSANTS",
+      "siret": "48037819900024",
+      "objet": "Subvention de fonctionnement",
+      "montant": 118615,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.883623,
+        "lon": 2.386277
+      },
+      "adresse": "8 ALLEE DARIUS MILHAUD 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02471",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION  POUR L'AIDE AUX MERES DE FAMILLE",
+      "siret": "78431366000010",
+      "objet": "Budget prévisionnel 2023",
+      "montant": 118605,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.851952,
+        "lon": 2.324893
+      },
+      "adresse": "12 RUE CHOMEL 75007 PARIS",
+      "codePostal": "75007",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05305",
+      "annee": 2023,
+      "beneficiaire": "AU TEMPS DU JEU",
+      "siret": "88990882800011",
+      "objet": "dfpe-fonctionnement de la ludothèque Denise Garon",
+      "montant": 118000,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.833514,
+        "lon": 2.366378
+      },
+      "adresse": "LUDOTHEQUE DENISE GARON 8 SQUARE DUNOIS 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03706",
+      "annee": 2023,
+      "beneficiaire": "L'ASSOCIATION POUR LA DIVERSITE CULTURELLE ET SOCIALE L'ENFANCE EN COULEURS",
+      "siret": "52098716500021",
+      "objet": "Fonctionnement 2023",
+      "montant": 117339,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.863205,
+        "lon": 2.379747
+      },
+      "adresse": "6 RUE GUILLAUME BERTRAND 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03657",
+      "annee": 2023,
+      "beneficiaire": "LE BAL",
+      "siret": "49396355700027",
+      "objet": "Acompte 2023 DAC",
+      "montant": 115000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.885304,
+        "lon": 2.327219
+      },
+      "adresse": "IMMEUBLE LE BAL 6 IMPASSE DE LA DEFENSE 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2024_00106",
+      "annee": 2023,
+      "beneficiaire": "OPERATEUR DE COMPETENCES DES ENTREPRISES DE PROXIMITE",
+      "siret": "87903689500016",
+      "objet": "Sas tremplin vers l'emploi et l'alternance",
+      "montant": 115000,
+      "direction": "DAE",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.863295,
+        "lon": 2.341263
+      },
+      "adresse": "4 RUE DU COLONEL DRIANT 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05124",
+      "annee": 2023,
+      "beneficiaire": "SIDACTION",
+      "siret": "39894554300021",
+      "objet": "Lutte contre le VIH pédiatrique au Burundi (Paris sida sud)",
+      "montant": 115000,
+      "direction": "DGRI",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.880712,
+        "lon": 2.364863
+      },
+      "adresse": "6EME ETAGE 228 RUE DU FAUBOURG SAINT-MARTIN 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_05160",
+      "annee": 2023,
+      "beneficiaire": "FONDS SOLIDARITE SIDA AFRIQUE",
+      "siret": "49122604900014",
+      "objet": "\"ACCESS\" - 3 centres de santé sexuelle communautaire en région MENA",
+      "montant": 115000,
+      "direction": "DGRI",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.859751,
+        "lon": 2.379289
+      },
+      "adresse": "A L ATTENTION DE JEAN-PIERRE FOURNIER 16 B AVENUE PARMENTIER 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_10307",
+      "annee": 2023,
+      "beneficiaire": "AU TEMPS DU JEU",
+      "siret": "88990882800011",
+      "objet": "Fonctionnement de la ludothèque Nautilude du 11e",
+      "montant": 115000,
+      "direction": "DFPE",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.833514,
+        "lon": 2.366378
+      },
+      "adresse": "LUDOTHEQUE DENISE GARON 8 SQUARE DUNOIS 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_10433",
+      "annee": 2023,
+      "beneficiaire": "YOTI PARIS",
+      "siret": "92381102000018",
+      "objet": "Ouverture d'un atelier de reconditionnement/IVT",
+      "montant": 115000,
+      "direction": "DAE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.827928,
+        "lon": 2.328257
+      },
+      "adresse": "48 RUE D'ALESIA 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03788",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION CRECHE GAN ESTHER AGE",
+      "siret": "37848041200014",
+      "objet": "SUBVENTION",
+      "montant": 114879,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.888485,
+        "lon": 2.38192
+      },
+      "adresse": "14 RUE DE THIONVILLE 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02327",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION LE CLUB DES PETITS GAVROCHES",
+      "siret": "32133736200024",
+      "objet": "subvention 2023",
+      "montant": 114040,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.871604,
+        "lon": 2.364257
+      },
+      "adresse": "33 RUE BEAUREPAIRE 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02511",
+      "annee": 2023,
+      "beneficiaire": "PIROUETT",
+      "siret": "39892681600016",
+      "objet": "FONCTIONNEMENT 2023 CRECHE PARENTALE PIROUETT",
+      "montant": 111265,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.83108,
+        "lon": 2.342444
+      },
+      "adresse": "147 BOULEVARD AUGUSTE BLANQUI 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_04514",
+      "annee": 2023,
+      "beneficiaire": "LE THEATRE PARIS-VILLETTE",
+      "siret": "43353723000040",
+      "objet": "Equipement 2023",
+      "montant": 110000,
+      "direction": "DAC",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.888952,
+        "lon": 2.392454
+      },
+      "adresse": "211 AVENUE JEAN JAURES 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03639",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION CITE-THEATRE",
+      "siret": "82095968200023",
+      "objet": "Acompte 2023 DAC",
+      "montant": 110000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.820234,
+        "lon": 2.338189
+      },
+      "adresse": "21 BOULEVARD JOURDAN 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03895",
+      "annee": 2023,
+      "beneficiaire": "FAITESLE9 - ASSOCIATION D'ANIMATION LOCALE ET SOLIDAIRE DU 9E",
+      "siret": "80530489600014",
+      "objet": "Subvention d'investissement : rénovation et protection de deux fresques murales",
+      "montant": 110000,
+      "direction": "DAC",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.872268,
+        "lon": 2.327331
+      },
+      "adresse": "35 RUE GODOT DE MAUROY 75009 PARIS",
+      "codePostal": "75009",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_07681",
+      "annee": 2023,
+      "beneficiaire": "GROUPE SOS SOLIDARITES",
+      "siret": "34106240400478",
+      "objet": "faciliter l'accès aux droits des publics migrants",
+      "montant": 110000,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.862478,
+        "lon": 2.367835
+      },
+      "adresse": "102 C RUE AMELOT 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02587",
+      "annee": 2023,
+      "beneficiaire": "LES POUSSINS D'ANNAM",
+      "siret": "34934969600097",
+      "objet": "FONCTIONNEMENT 2023",
+      "montant": 109883,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.867589,
+        "lon": 2.3913
+      },
+      "adresse": "52 RUE DE LA BIDASSOA 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_06421",
+      "annee": 2023,
+      "beneficiaire": "FRANCE TERRE D'ASILE FTDA",
+      "siret": "78454750700433",
+      "objet": "\"Le Kiosque\" - Lieu d'accueil etd'orientation situé dans le 10èmearrondissement de Paris",
+      "montant": 109440,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.892128,
+        "lon": 2.362175
+      },
+      "adresse": "24 RUE MARC SEGUIN 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02973",
+      "annee": 2023,
+      "beneficiaire": "MEDIATION-INSERTION-FORMATION",
+      "siret": "52467428000010",
+      "objet": "IAE BESC",
+      "montant": 108000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.894832,
+        "lon": 2.360109
+      },
+      "adresse": "33 RUE BOUCRY 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_02575",
+      "annee": 2023,
+      "beneficiaire": "LES PIEDS TENDRES",
+      "siret": "34850721100012",
+      "objet": "Demande de Subventions 2023",
+      "montant": 107405,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.84602,
+        "lon": 2.381563
+      },
+      "adresse": "NUM VOIE 010-012 10 PASSAGE ABEL LEBLANC 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_09985",
+      "annee": 2023,
+      "beneficiaire": "CENTRE D'ACTION SOCIALE PROTESTANT DANS LA REGION PARISIENNE",
+      "siret": "31873216100035",
+      "objet": "PREVENTION INSERTION",
+      "montant": 107400,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.842892,
+        "lon": 2.399655
+      },
+      "adresse": "CASP 20 RUE SANTERRE 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_07214",
+      "annee": 2023,
+      "beneficiaire": "COMPAGNONS DE LA NUIT",
+      "siret": "31716567800028",
+      "objet": "La Moquette - Compagnons de la nuit",
+      "montant": 107000,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.845647,
+        "lon": 2.341534
+      },
+      "adresse": "15 RUE GAY-LUSSAC 75005 PARIS",
+      "codePostal": "75005",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03139",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION AURORE",
+      "siret": "77568497003594",
+      "objet": "IAE BESC",
+      "montant": 106500,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.84261,
+        "lon": 2.31629
+      },
+      "adresse": "SIEGE 31 RUE FALGUIERE 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_08091",
+      "annee": 2023,
+      "beneficiaire": "ASSOCIATION TRAVAIL ET VIE",
+      "siret": "32589466500117",
+      "objet": "Aide au déménagement d'un atelier d'insertion blanchisserie - Investissement",
+      "montant": 105000,
+      "direction": "DAE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.896641,
+        "lon": 2.370134
+      },
+      "adresse": "BOITE AUX LETTRES 112 189 RUE D'AUBERVILLIERS 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_03823",
+      "annee": 2023,
+      "beneficiaire": "GROUPE SOS SOLIDARITES",
+      "siret": "34106240400478",
+      "objet": "Espace de repos du Sleep In (Plan Crack)",
+      "montant": 105000,
+      "direction": "DSP",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.862478,
+        "lon": 2.367835
+      },
+      "adresse": "102 C RUE AMELOT 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2023_09132",
+      "annee": 2023,
+      "beneficiaire": "FEDERATION DES CENTRES SOCIAUX ET SOCIOCULTURELS DE PARIS (FCS 75)",
+      "siret": "39100034600042",
+      "objet": "Soutien à la FCS75 dans le cadre de la convention tripartite Ville de Paris, CAF, FCS75",
+      "montant": 105000,
+      "direction": "DSOL",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.890904,
+        "lon": 2.374143
+      },
+      "adresse": "23 RUE MATHIS 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    }
+  ]
+}

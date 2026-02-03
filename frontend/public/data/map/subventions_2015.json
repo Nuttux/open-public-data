@@ -1,0 +1,6253 @@
+{
+  "year": 2015,
+  "total": 222726140,
+  "count": 369,
+  "geolocated": 365,
+  "data": [
+    {
+      "id": "2015_01835",
+      "annee": 2015,
+      "beneficiaire": "THEATRE MUSICAL DE PARIS",
+      "siret": "31669616000019",
+      "objet": "Théâtre du Châtelet: subvention d'équilibre 2015",
+      "montant": 16246000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.857845,
+        "lon": 2.345636
+      },
+      "adresse": "2 RUE EDOUARD COLONNE 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01836",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION DU THÉÂTRE DE LA VILLE",
+      "siret": "77566172100024",
+      "objet": "fonctionnement 2015",
+      "montant": 10900000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.857346,
+        "lon": 2.34779
+      },
+      "adresse": "ANGL 16 Q DE GESVRES 2 PLACE DU CHATELET 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_06992",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION D'ACTION SOCIALE EN FAVEUR DES PERSONNELS DE LA VILLE DE PARIS ET DU DÉPARTEMENT DE PARIS",
+      "siret": "32385721900097",
+      "objet": "subvention 2015 -Fonctionnement en délégation SIMPA-BP 2014 DFA25Met 26M",
+      "montant": 10270100,
+      "direction": "DRH",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.87074,
+        "lon": 2.343155
+      },
+      "adresse": "21 RUE D'UZES 75002 PARIS",
+      "codePostal": "75002",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00592",
+      "annee": 2015,
+      "beneficiaire": "PHILHARMONIE DE PARIS",
+      "siret": "49287771700024",
+      "objet": "Remboursement de l'emprunt garanti par la Ville de Paris (annuité 2015)",
+      "montant": 8058579,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.888952,
+        "lon": 2.392454
+      },
+      "adresse": "211 AV JEAN JAURES 75019 PARIS 19",
+      "codePostal": "75019",
+      "commune": "PARIS 19"
+    },
+    {
+      "id": "2015_07000",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION POUR LA GESTION DES OEUVRES SOCIALES DU PERSONNEL DES ADMINISTRATIONS PARISIENNES",
+      "siret": "32385717700279",
+      "objet": "Régularisation subventions 2015 en délégation SIMPA-BP 2014 DFA 25M et 26M",
+      "montant": 8039538,
+      "direction": "DRH",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.895862,
+        "lon": 2.38219
+      },
+      "adresse": "32 RUE DE CAMBRAI 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_06701",
+      "annee": 2015,
+      "beneficiaire": "PHILHARMONIE DE PARIS",
+      "siret": "49287771700024",
+      "objet": "remboursement de l'emprunt contracté avec la garantie de la Ville",
+      "montant": 7599654,
+      "direction": "DAC",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.888952,
+        "lon": 2.392454
+      },
+      "adresse": "211 AV JEAN JAURES 75019 PARIS 19",
+      "codePostal": "75019",
+      "commune": "PARIS 19"
+    },
+    {
+      "id": "2015_04563",
+      "annee": 2015,
+      "beneficiaire": "OFFICE DU TOURISME ET DES CONGRÈS DE PARIS",
+      "siret": "77567137300154",
+      "objet": "fonctionnement",
+      "montant": 6640000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.863979,
+        "lon": 2.355134
+      },
+      "adresse": "76 RUE BEAUBOURG 75003 PARIS",
+      "codePostal": "75003",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00168",
+      "annee": 2015,
+      "beneficiaire": "PHILHARMONIE DE PARIS",
+      "siret": "49287771700024",
+      "objet": "fonctionnement",
+      "montant": 6000000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.888952,
+        "lon": 2.392454
+      },
+      "adresse": "211 AV JEAN JAURES 75019 PARIS 19",
+      "codePostal": "75019",
+      "commune": "PARIS 19"
+    },
+    {
+      "id": "2015_04566",
+      "annee": 2015,
+      "beneficiaire": "FORUM DES IMAGES",
+      "siret": "33212365200023",
+      "objet": "fonctionnement et festival Cinéma Clair de Lune",
+      "montant": 5947000,
+      "direction": "DAC",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.86196,
+        "lon": 2.346687
+      },
+      "adresse": "FORUM DES HALLES PORTE SAINT-EUSTACHE 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00340",
+      "annee": 2015,
+      "beneficiaire": "ATELIER PARISIEN D'URBANISME",
+      "siret": "78423753900043",
+      "objet": "fonctionnement - Ville de Paris",
+      "montant": 5687000,
+      "direction": "DU",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.825563,
+        "lon": 2.38353
+      },
+      "adresse": "5EME ETAGE 15 RUE JEAN-BAPTISTE BERLIER 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00611",
+      "annee": 2015,
+      "beneficiaire": "ORCHESTRE DE PARIS",
+      "siret": "77567064900067",
+      "objet": "Saison de concert à la Philharmonie, notamment",
+      "montant": 5603200,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.892099,
+        "lon": 2.394786
+      },
+      "adresse": "191 BOULEVARD SERURIER 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01580",
+      "annee": 2015,
+      "beneficiaire": "ORCHESTRE DE CHAMBRE DE PARIS",
+      "siret": "31390568900078",
+      "objet": "fonctionnement",
+      "montant": 4580000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.889311,
+        "lon": 2.393824
+      },
+      "adresse": "221 AVENUE JEAN JAURES 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01782",
+      "annee": 2015,
+      "beneficiaire": "PARIS ATELIERS",
+      "siret": "31293687500078",
+      "objet": "Fonctionnement",
+      "montant": 3940000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.850017,
+        "lon": 2.369748
+      },
+      "adresse": "7 RUE BISCORNET 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_03768",
+      "annee": 2015,
+      "beneficiaire": "PARIS AUDIOVISUEL - MAISON EUROPÉENNE DE LA PHOTOGRAPHIE",
+      "siret": "31373068100043",
+      "objet": "fonctionnement",
+      "montant": 3575490,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.854893,
+        "lon": 2.359078
+      },
+      "adresse": "5 RUE DE FOURCY 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00293",
+      "annee": 2015,
+      "beneficiaire": "MISSION LOCALE DE PARIS",
+      "siret": "53132862300073",
+      "objet": "fonctionnement",
+      "montant": 3070000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.889595,
+        "lon": 2.363068
+      },
+      "adresse": "22 RUE PAJOL 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01334",
+      "annee": 2015,
+      "beneficiaire": "PARIS ET COMPAGNIE",
+      "siret": "40895436000033",
+      "objet": "fonctionnement 2015",
+      "montant": 3050000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.894069,
+        "lon": 2.35423
+      },
+      "adresse": "48 RUE RENE CLAIR 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01790",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION POUR LE SOUTIEN DU THÉÂTRE PRIVÉ",
+      "siret": "78439642600032",
+      "objet": "Fonctionnement 2015",
+      "montant": 2723000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.875465,
+        "lon": 2.316343
+      },
+      "adresse": "48 RUE DE LABORDE 75008 PARIS",
+      "codePostal": "75008",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00100",
+      "annee": 2015,
+      "beneficiaire": "PAVILLON DE L'ARSENAL - CENTRE D'INFORMATION, DE DOCUMENTATION ET D'EXPOSITIONS D'URBANISME ET D'ARCHITECTURE DE PARIS ET DE LA MÉTROPOLE PARISIENNE",
+      "siret": "34462055400016",
+      "objet": "fonctionnement",
+      "montant": 2337000,
+      "direction": "DU",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.850688,
+        "lon": 2.362387
+      },
+      "adresse": "21 BOULEVARD MORLAND 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00106",
+      "annee": 2015,
+      "beneficiaire": "SOCIÉTÉ DE RETRAITE DES CONSEILLERS MUNICIPAUX DE PARIS ET DES CONSEILLERS GÉNÉRAUX DE LA SEINE",
+      "siret": "53067796200017",
+      "objet": "fonctionnement 2015",
+      "montant": 2110000,
+      "direction": "DDCT",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.856586,
+        "lon": 2.353225
+      },
+      "adresse": "PLACE DE L' HOTEL DE VILLE 5 RUE DE LOBAU 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00107",
+      "annee": 2015,
+      "beneficiaire": "SOCIÉTÉ DE RETRAITE DES CONSEILLERS MUNICIPAUX DE PARIS",
+      "siret": "42200633800012",
+      "objet": "fonctionnement",
+      "montant": 1692000,
+      "direction": "DDCT",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.85663,
+        "lon": 2.351459
+      },
+      "adresse": "PL HOTEL VILLE ESP LIBERATION 75004 PARIS 04",
+      "codePostal": "75004",
+      "commune": "PARIS 04"
+    },
+    {
+      "id": "2015_07751",
+      "annee": 2015,
+      "beneficiaire": "CROIX ROUGE FRANCAISE (NATIONALE)",
+      "siret": "77567227221138",
+      "objet": "Equipement et investissement MA Ernest May-",
+      "montant": 1398871,
+      "direction": "DFPE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.827226,
+        "lon": 2.314209
+      },
+      "adresse": "SITE CROIX ROUGE 98 RUE DIDOT 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_08545",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION D'ACTION SOCIALE EN FAVEUR DES PERSONNELS DE LA VILLE DE PARIS ET DU DÉPARTEMENT DE PARIS",
+      "siret": "32385721900097",
+      "objet": "Rénovation et mise aux normes restaurant Schoelcher-2015 DRH 73",
+      "montant": 1360000,
+      "direction": "DRH",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.87074,
+        "lon": 2.343155
+      },
+      "adresse": "21 RUE D'UZES 75002 PARIS",
+      "codePostal": "75002",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01914",
+      "annee": 2015,
+      "beneficiaire": "INSTITUT DES CULTURES D'ISLAM",
+      "siret": "52225251900015",
+      "objet": "fonctionnement",
+      "montant": 1300000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.887787,
+        "lon": 2.353435
+      },
+      "adresse": "19 AU 23 19 RUE LEON 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_03007",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION INTERNATIONALE DES MAIRES ET RESPONSABLES DES CAPITALES ET MÉTROPOLES PARTIELLEMENT OU ENTIÈREMENT FRANCOPHONES",
+      "siret": "31935615000031",
+      "objet": "fonctionnement 2015",
+      "montant": 1300000,
+      "direction": "DGRI",
+      "nature": "Fonctionnement"
+    },
+    {
+      "id": "2015_04793",
+      "annee": 2015,
+      "beneficiaire": "FRANCE TERRE D'ASILE - FTDA",
+      "siret": "78454750700433",
+      "objet": "DATMIE - Dispositif de mise à l¿abri de mineurs isolés étrangers",
+      "montant": 1270000,
+      "direction": "DASES",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.892128,
+        "lon": 2.362175
+      },
+      "adresse": "24 RUE MARC SEGUIN 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_02540",
+      "annee": 2015,
+      "beneficiaire": "THÉÂTRE SILVIA MONFORT",
+      "siret": "38772311700017",
+      "objet": "fonctionnement",
+      "montant": 1250000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.830303,
+        "lon": 2.301819
+      },
+      "adresse": "106 RUE BRANCION 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00097",
+      "annee": 2015,
+      "beneficiaire": "ENSEMBLE PARIS EMPLOI COMPÉTENCES",
+      "siret": "48338140600048",
+      "objet": "fonctionnement",
+      "montant": 1250000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.885529,
+        "lon": 2.390137
+      },
+      "adresse": "18 RUE GOUBET 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_06426",
+      "annee": 2015,
+      "beneficiaire": "FONDATION OEUVRE DE LA CROIX SAINT-SIMON",
+      "siret": "78480968300013",
+      "objet": "création d'une crèche de 64 berceaux \"Le Ballon Rouge\" 9 rue Delaître - 75020",
+      "montant": 1177600,
+      "direction": "DFPE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.878208,
+        "lon": 2.382497
+      },
+      "adresse": "35 RUE DU PLATEAU 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_06994",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION D'ACTION SOCIALE EN FAVEUR DES PERSONNELS DE LA VILLE DE PARIS ET DU DÉPARTEMENT DE PARIS",
+      "siret": "32385721900097",
+      "objet": "subvention 2015 -Fonctionnement en délégation SIMPA-BP-2014 DFA 11G",
+      "montant": 1132900,
+      "direction": "DRH",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.87074,
+        "lon": 2.343155
+      },
+      "adresse": "21 RUE D'UZES 75002 PARIS",
+      "codePostal": "75002",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00270",
+      "annee": 2015,
+      "beneficiaire": "SOLIHA PARIS.HAUTS DE SEINE.VAL D'OISE",
+      "siret": "78433713100014",
+      "objet": "Convention pluriannuelle d'objectifs",
+      "montant": 1107774,
+      "direction": "DLH",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.872786,
+        "lon": 2.326256
+      },
+      "adresse": "PACTE DE PARIS 29 RUE TRONCHET 75008 PARIS",
+      "codePostal": "75008",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_04842",
+      "annee": 2015,
+      "beneficiaire": "MUSÉE D'ART ET D'HISTOIRE DU JUDAÏSME",
+      "siret": "34843510800017",
+      "objet": "fonctionnement 2015",
+      "montant": 1019402,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.860956,
+        "lon": 2.355617
+      },
+      "adresse": "HOTEL ST AIGNAN 71 RUE DU TEMPLE 75003 PARIS",
+      "codePostal": "75003",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_07356",
+      "annee": 2015,
+      "beneficiaire": "FONDATION OEUVRE DE LA CROIX SAINT-SIMON",
+      "siret": "78480968300013",
+      "objet": "Création d'une crèche de 65 berceaux 10 rue André Theuriet (Paris 15e)",
+      "montant": 1001000,
+      "direction": "DFPE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.878208,
+        "lon": 2.382497
+      },
+      "adresse": "35 RUE DU PLATEAU 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_07571",
+      "annee": 2015,
+      "beneficiaire": "FAC-HABITAT",
+      "siret": "34414895200254",
+      "objet": "Maison Internationale de Séjourpour jeunes touristes à revenus modestes",
+      "montant": 1000000,
+      "direction": "DAE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 43.491435,
+        "lon": 5.371294
+      },
+      "adresse": "TERTIA II POLE ACT MILLES RUE CHARLES DUCHESNE 13080 AIX-EN-PROVENCE",
+      "codePostal": "13080",
+      "commune": "AIX-EN-PROVENCE"
+    },
+    {
+      "id": "2015_07001",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION POUR LA GESTION DES OEUVRES SOCIALES DU PERSONNEL DES ADMINISTRATIONS PARISIENNES",
+      "siret": "32385717700279",
+      "objet": "Régularisation subventions 2015 en délégation SIMPA-BP 2014 DFA 11G",
+      "montant": 984300,
+      "direction": "DRH",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.895862,
+        "lon": 2.38219
+      },
+      "adresse": "32 RUE DE CAMBRAI 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01830",
+      "annee": 2015,
+      "beneficiaire": "MAISON DE LA POESIE",
+      "siret": "32590961200047",
+      "objet": "fonctionnement  Maison de la Poésie",
+      "montant": 970000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.86218,
+        "lon": 2.351844
+      },
+      "adresse": "157 RUE SAINT-MARTIN 75003 PARIS",
+      "codePostal": "75003",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_04696",
+      "annee": 2015,
+      "beneficiaire": "UNION DÉPARTEMENTALE DES ASSOCIATIONS FAMILIALES DE PARIS",
+      "siret": "78441204100013",
+      "objet": "Lotissement Saussure création d'une structure 40 places",
+      "montant": 927469,
+      "direction": "DFPE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.878496,
+        "lon": 2.337741
+      },
+      "adresse": "28 PLACE SAINT-GEORGES 75009 PARIS",
+      "codePostal": "75009",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_04898",
+      "annee": 2015,
+      "beneficiaire": "PUC VOLLEY BALL",
+      "siret": "38897859500030",
+      "objet": "fonctionnement",
+      "montant": 926000,
+      "direction": "DJS",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.818109,
+        "lon": 2.344456
+      },
+      "adresse": "17 AVENUE PIERRE DE COUBERTIN 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01816",
+      "annee": 2015,
+      "beneficiaire": "LA MAISON DES BOUT'CHOU",
+      "siret": "35118614300175",
+      "objet": "FONCTIONNEMENT 2015 CC La maison enchantée  av. René Coty 75014",
+      "montant": 911437,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.844295,
+        "lon": 2.331113
+      },
+      "adresse": "12 RUE VAVIN 75006 PARIS",
+      "codePostal": "75006",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01637",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION INSTITUT D'ÉTUDES AVANCÉES DE PARIS",
+      "siret": "53005653000039",
+      "objet": "Fonctionnement",
+      "montant": 900000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.851698,
+        "lon": 2.359062
+      },
+      "adresse": "HOTEL DE LAUZUN 17 QUAI D'ANJOU 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_04828",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION POUR LE DEPISTAGE DES CANCERS A PARIS",
+      "siret": "44456153400025",
+      "objet": "Dépistage des cancers à Paris",
+      "montant": 866627,
+      "direction": "DASES",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.864388,
+        "lon": 2.355357
+      },
+      "adresse": "82 RUE BEAUBOURG 75003 PARIS",
+      "codePostal": "75003",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00957",
+      "annee": 2015,
+      "beneficiaire": "FONDATION OEUVRE DE LA CROIX SAINT-SIMON",
+      "siret": "78480968300013",
+      "objet": "Crèche Familiale Beaugrenelle",
+      "montant": 814902,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.878208,
+        "lon": 2.382497
+      },
+      "adresse": "35 RUE DU PLATEAU 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01330",
+      "annee": 2015,
+      "beneficiaire": "MAISON DU GESTE ET DE L'IMAGE - CENTRE DE RECHERCHE ET D'ÉDUCATION ARTISTIQUE",
+      "siret": "32867933700035",
+      "objet": "fonctionnement",
+      "montant": 810000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.860539,
+        "lon": 2.348593
+      },
+      "adresse": "42 RUE SAINT-DENIS 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01766",
+      "annee": 2015,
+      "beneficiaire": "L'ETE PARISIEN",
+      "siret": "37978422600043",
+      "objet": "Festival Paris quartier d'été - Edition 2015",
+      "montant": 800000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.830303,
+        "lon": 2.301819
+      },
+      "adresse": "106 RUE BRANCION 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01858",
+      "annee": 2015,
+      "beneficiaire": "FESTIVAL D'AUTOMNE À PARIS",
+      "siret": "78439645900041",
+      "objet": "fonctionnement 2015",
+      "montant": 759200,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.861188,
+        "lon": 2.340468
+      },
+      "adresse": "156 RUE DE RIVOLI 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00341",
+      "annee": 2015,
+      "beneficiaire": "ATELIER PARISIEN D'URBANISME",
+      "siret": "78423753900043",
+      "objet": "fonctionnement - Département de Paris",
+      "montant": 759000,
+      "direction": "DU",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.825563,
+        "lon": 2.38353
+      },
+      "adresse": "5EME ETAGE 15 RUE JEAN-BAPTISTE BERLIER 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00782",
+      "annee": 2015,
+      "beneficiaire": "ENVOLUDIA",
+      "siret": "77573329800183",
+      "objet": "Création crèche Bambini 64 berceaux",
+      "montant": 754472,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.854579,
+        "lon": 2.417068
+      },
+      "adresse": "261 RUE DE PARIS 93100 MONTREUIL",
+      "codePostal": "93100",
+      "commune": "MONTREUIL"
+    },
+    {
+      "id": "2015_05664",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION DEPARTEMENTALE D'INFORMATION SUR LE LOGEMENT",
+      "siret": "31548372700048",
+      "objet": "fonctionnement",
+      "montant": 752000,
+      "direction": "DLH",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.84092,
+        "lon": 2.326148
+      },
+      "adresse": "46 B BOULEVARD EDGAR QUINET 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_08546",
+      "annee": 2015,
+      "beneficiaire": "STADE FRANCAIS",
+      "siret": "30299790300026",
+      "objet": "Convention d'objectifs et d'aide au fonctionnement saison sportive 2015_2016",
+      "montant": 750000,
+      "direction": "DJS",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.838918,
+        "lon": 2.251869
+      },
+      "adresse": "2 RUE DU CDT GUILBAUD 75016 PARIS 16",
+      "codePostal": "75016",
+      "commune": "PARIS 16"
+    },
+    {
+      "id": "2015_01150",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION PARISIENNE POUR L'ANIMATION CULTURELLE ET SPORTIVE",
+      "siret": "78454742400043",
+      "objet": "fonctionnement 2015",
+      "montant": 731000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.827622,
+        "lon": 2.377256
+      },
+      "adresse": "30 RUE DU CHEVALERET 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01896",
+      "annee": 2015,
+      "beneficiaire": "LE THEATRE PARIS VILLETTE",
+      "siret": "43353723000040",
+      "objet": "Fonctionnement",
+      "montant": 700000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.888952,
+        "lon": 2.392454
+      },
+      "adresse": "211 AVENUE JEAN JAURES 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_08543",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION D'ACTION SOCIALE EN FAVEUR DES PERSONNELS DE LA VILLE DE PARIS ET DU DÉPARTEMENT DE PARIS",
+      "siret": "32385721900097",
+      "objet": "Subvention exceptionnelle-Modification droits d'entrée et fermeture Rungis-2015 DRH 38",
+      "montant": 663750,
+      "direction": "DRH",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.87074,
+        "lon": 2.343155
+      },
+      "adresse": "21 RUE D'UZES 75002 PARIS",
+      "codePostal": "75002",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01548",
+      "annee": 2015,
+      "beneficiaire": "CITÉ INTERNATIONALE DES ARTS",
+      "siret": "78424396600016",
+      "objet": "Résidence d'artistes et développement des actions culturelles",
+      "montant": 649173,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.853913,
+        "lon": 2.357203
+      },
+      "adresse": "18 RUE DE L'HOTEL DE VILLE 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00698",
+      "annee": 2015,
+      "beneficiaire": "OEUVRE NOUVELLE DES CRECHES PARISIENNES",
+      "siret": "77569140500036",
+      "objet": "Multi-accueil André Rousseau",
+      "montant": 607133,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.841254,
+        "lon": 2.26108
+      },
+      "adresse": "22 B RUE CLAUDE LORRAIN 75016 PARIS 16",
+      "codePostal": "75016",
+      "commune": "PARIS 16"
+    },
+    {
+      "id": "2015_04792",
+      "annee": 2015,
+      "beneficiaire": "FRANCE TERRE D'ASILE - FTDA",
+      "siret": "78454750700433",
+      "objet": "PAOMIE - Permanence d¿accueil et d¿orientation des Mineurs isolés étrangers à Paris",
+      "montant": 605000,
+      "direction": "DASES",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.892128,
+        "lon": 2.362175
+      },
+      "adresse": "24 RUE MARC SEGUIN 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00947",
+      "annee": 2015,
+      "beneficiaire": "CRESCENDO",
+      "siret": "78481011100350",
+      "objet": "Multi_accueil_Gavroche",
+      "montant": 583298,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.862478,
+        "lon": 2.367835
+      },
+      "adresse": "102 C RUE AMELOT 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00854",
+      "annee": 2015,
+      "beneficiaire": "GROUPE D'OEUVRES SOCIALES DE BELLEVILLE",
+      "siret": "77569575200011",
+      "objet": "CRECHE COLLECTIVE 66 BERCEAUX- Les Passerelles - 4/6 RUE DES MONTIBEOUFS",
+      "montant": 581862,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.875394,
+        "lon": 2.391695
+      },
+      "adresse": "162 RUE DE BELLEVILLE 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00797",
+      "annee": 2015,
+      "beneficiaire": "ABC PUÉRICULTURE",
+      "siret": "34482479200032",
+      "objet": "14e Ours multi accueil",
+      "montant": 575921,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.852284,
+        "lon": 2.274995
+      },
+      "adresse": "9 RUE JEAN DE LA FONTAINE 75016 PARIS",
+      "codePostal": "75016",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00956",
+      "annee": 2015,
+      "beneficiaire": "FONDATION OEUVRE DE LA CROIX SAINT-SIMON",
+      "siret": "78480968300013",
+      "objet": "Crèche Familiale Clavel",
+      "montant": 552215,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.878208,
+        "lon": 2.382497
+      },
+      "adresse": "35 RUE DU PLATEAU 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01154",
+      "annee": 2015,
+      "beneficiaire": "CARAMEL",
+      "siret": "42984735300019",
+      "objet": "Crèches en appartements, Paris 12e et 19e",
+      "montant": 542434,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.835643,
+        "lon": 2.396653
+      },
+      "adresse": "48 RUE DE WATTIGNIES 75012 PARIS 12",
+      "codePostal": "75012",
+      "commune": "PARIS 12"
+    },
+    {
+      "id": "2015_01591",
+      "annee": 2015,
+      "beneficiaire": "THÉÂTRE PARIS 14",
+      "siret": "35377356700014",
+      "objet": "fonctionnement 2015",
+      "montant": 542000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.825896,
+        "lon": 2.306846
+      },
+      "adresse": "20 AVENUE MARC SANGNIER 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00949",
+      "annee": 2015,
+      "beneficiaire": "CRESCENDO",
+      "siret": "78481011100350",
+      "objet": "Creche_Bellevue",
+      "montant": 532300,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.862478,
+        "lon": 2.367835
+      },
+      "adresse": "102 C RUE AMELOT 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01921",
+      "annee": 2015,
+      "beneficiaire": "ENFANT PRESENT",
+      "siret": "39027802600047",
+      "objet": "CRECHE FAMILIALE MARCADET,",
+      "montant": 523448,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.86644,
+        "lon": 2.405173
+      },
+      "adresse": "15 RUE DES MONTIBOEUFS 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_06454",
+      "annee": 2015,
+      "beneficiaire": "GRENADINE ET MENTHE À L'EAU",
+      "siret": "33397643900047",
+      "objet": "transfert et l'agrandissement de la crèche",
+      "montant": 514100,
+      "direction": "DFPE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.876093,
+        "lon": 2.397831
+      },
+      "adresse": "9 RUE DU DOCTEUR POTAIN 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01920",
+      "annee": 2015,
+      "beneficiaire": "ENFANT PRESENT",
+      "siret": "39027802600047",
+      "objet": "CRECHE FAMILIALE GOURDAULT,",
+      "montant": 511380,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.86644,
+        "lon": 2.405173
+      },
+      "adresse": "15 RUE DES MONTIBOEUFS 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00875",
+      "annee": 2015,
+      "beneficiaire": "MAISON DES CHAMPS DE SAINT FRANCOIS D'ASSISE",
+      "siret": "77569476300050",
+      "objet": "fonctionnement de la Crèche Sainte-Lucie",
+      "montant": 497608,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.87327,
+        "lon": 2.381529
+      },
+      "adresse": "55 RUE DE BELLEVILLE 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00948",
+      "annee": 2015,
+      "beneficiaire": "CRESCENDO",
+      "siret": "78481011100350",
+      "objet": "Multi_accueil_Les_Robinsons",
+      "montant": 497432,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.862478,
+        "lon": 2.367835
+      },
+      "adresse": "102 C RUE AMELOT 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00963",
+      "annee": 2015,
+      "beneficiaire": "FONDATION OEUVRE DE LA CROIX SAINT-SIMON",
+      "siret": "78480968300013",
+      "objet": "Crèche Collective Framboise",
+      "montant": 489653,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.878208,
+        "lon": 2.382497
+      },
+      "adresse": "35 RUE DU PLATEAU 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01028",
+      "annee": 2015,
+      "beneficiaire": "FONDATION OEUVRE DE LA CROIX SAINT-SIMON",
+      "siret": "78480968300013",
+      "objet": "Crèche collective Père Lachaise",
+      "montant": 489305,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.878208,
+        "lon": 2.382497
+      },
+      "adresse": "35 RUE DU PLATEAU 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_07392",
+      "annee": 2015,
+      "beneficiaire": "FONDATION OEUVRE DE LA CROIX SAINT-SIMON",
+      "siret": "78480968300013",
+      "objet": "Création d'une structure multi-accueil de 35 places118-122 boulevard de Charonne (Paris 20ème)",
+      "montant": 487000,
+      "direction": "DFPE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.878208,
+        "lon": 2.382497
+      },
+      "adresse": "35 RUE DU PLATEAU 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01246",
+      "annee": 2015,
+      "beneficiaire": "ILE AUX ENFANTS",
+      "siret": "79960685000011",
+      "objet": "Fonctionnement",
+      "montant": 484415,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.85074,
+        "lon": 2.273932
+      },
+      "adresse": "14 AVENUE THEOPHILE GAUTIER 75016 PARIS",
+      "codePostal": "75016",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_05027",
+      "annee": 2015,
+      "beneficiaire": "HALLE SAINT PIERRE",
+      "siret": "33457081900014",
+      "objet": "FONCTIONNEMENT",
+      "montant": 470000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.885014,
+        "lon": 2.344306
+      },
+      "adresse": "2 RUE RONSARD 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01669",
+      "annee": 2015,
+      "beneficiaire": "CROIX ROUGE FRANCAISE (NATIONALE)",
+      "siret": "77567227221138",
+      "objet": "Saint Pierre du Gros Caillou\" 182, rue de Grenelle",
+      "montant": 465084,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.827226,
+        "lon": 2.314209
+      },
+      "adresse": "SITE CROIX ROUGE 98 RUE DIDOT 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01136",
+      "annee": 2015,
+      "beneficiaire": "LA MAISON KANGOUROU",
+      "siret": "45234009400203",
+      "objet": "Picpus   36 Rue de Picpus",
+      "montant": 456000,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.869209,
+        "lon": 2.360352
+      },
+      "adresse": "10 RUE DE LANCRY 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00798",
+      "annee": 2015,
+      "beneficiaire": "ABC PUÉRICULTURE",
+      "siret": "34482479200032",
+      "objet": "Au Bonheur des Ours multi accueil",
+      "montant": 453036,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.852284,
+        "lon": 2.274995
+      },
+      "adresse": "9 RUE JEAN DE LA FONTAINE 75016 PARIS",
+      "codePostal": "75016",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_08068",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION DU THÉÂTRE DE LA VILLE",
+      "siret": "77566172100024",
+      "objet": "Subvention pour l'équipement de l'Espace Cardin",
+      "montant": 450000,
+      "direction": "DAC",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.857346,
+        "lon": 2.34779
+      },
+      "adresse": "ANGL 16 Q DE GESVRES 2 PLACE DU CHATELET 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01829",
+      "annee": 2015,
+      "beneficiaire": "THEATRE DE LA MARIONNETTE A PARIS",
+      "siret": "34112346100046",
+      "objet": "fonctionnement",
+      "montant": 450000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.842211,
+        "lon": 2.349834
+      },
+      "adresse": "73 RUE MOUFFETARD 75005 PARIS",
+      "codePostal": "75005",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00845",
+      "annee": 2015,
+      "beneficiaire": "CRÈCHE LAÏQUE DU QUARTIER SAINT-FARGEAU",
+      "siret": "78480818000011",
+      "objet": "fonctionnement 2015",
+      "montant": 445332,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.873717,
+        "lon": 2.399092
+      },
+      "adresse": "33 RUE DU TELEGRAPHE 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01106",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION GAN YOSSEF",
+      "siret": "33973557300026",
+      "objet": "FONCTIONNENT crèche familiale",
+      "montant": 433613,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.869928,
+        "lon": 2.388881
+      },
+      "adresse": "15-17 15 RUE DE LA MARE 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_07279",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION INTERNATIONALE DES MAIRES ET RESPONSABLES DES CAPITALES ET MÉTROPOLES PARTIELLEMENT OU ENTIÈREMENT FRANCOPHONES",
+      "siret": "31935615000031",
+      "objet": "Solde subvention 2015",
+      "montant": 433000,
+      "direction": "DGRI",
+      "nature": "Fonctionnement"
+    },
+    {
+      "id": "2015_03250",
+      "annee": 2015,
+      "beneficiaire": "BOUTIQUE DE GESTION PARIS ILE DE FRANCE",
+      "siret": "32250551200044",
+      "objet": "Accompagnement des bénéficiaires du RSA socle",
+      "montant": 430000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.841839,
+        "lon": 2.390309
+      },
+      "adresse": "36 ALLEE VIVALDI 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_07671",
+      "annee": 2015,
+      "beneficiaire": "MOSAÏQUE L'ATELIER DES ENFANTS",
+      "siret": "34002532900012",
+      "objet": "transfert de la halte-garderie au 21 rue de la Folie Méricourt en structure multi accueil",
+      "montant": 425484,
+      "direction": "DFPE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.86485,
+        "lon": 2.371232
+      },
+      "adresse": "RUE DE LA FOLIE-MERICOURT 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_02613",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION INTERDÉPARTEMENTALE POUR LA GESTION DU RÉSEAU AUTOMATIQUE DE SURVEILLANCE MESURE DE LA POLLUTION ATMOSPHÉRIQUE, ET D'ALERTE EN RÉGION ILE DE FRANCE",
+      "siret": "31646523600032",
+      "objet": "fonctionnement",
+      "montant": 424501,
+      "direction": "DEVE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.848962,
+        "lon": 2.36528
+      },
+      "adresse": "7 RUE CRILLON 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_05245",
+      "annee": 2015,
+      "beneficiaire": "PARIS UNIVERSITE CLUB - CITE INTERNATIONALE UNIVERSITAIRE DE PARIS",
+      "siret": "78425962400020",
+      "objet": "Convention d'objectif",
+      "montant": 424500,
+      "direction": "DJS",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.818109,
+        "lon": 2.344456
+      },
+      "adresse": "STADE CHARLETY 17 AVENUE PIERRE DE COUBERTIN 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_07009",
+      "annee": 2015,
+      "beneficiaire": "PARCOURS D'INSERTION - FLES DE PARIS",
+      "siret": "45057704400024",
+      "objet": "fonctionnement",
+      "montant": 420000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.866402,
+        "lon": 2.363412
+      },
+      "adresse": "19 RUE BERANGER 75003 PARIS",
+      "codePostal": "75003",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01811",
+      "annee": 2015,
+      "beneficiaire": "LA MAISON DES BOUT'CHOU",
+      "siret": "35118614300175",
+      "objet": "FONCTIONNEMENT 2015 CC Boutchou2 passage Chanvin 75013",
+      "montant": 402118,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.844295,
+        "lon": 2.331113
+      },
+      "adresse": "12 RUE VAVIN 75006 PARIS",
+      "codePostal": "75006",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_08554",
+      "annee": 2015,
+      "beneficiaire": "PARIS ET COMPAGNIE",
+      "siret": "40895436000033",
+      "objet": "investissement 2015",
+      "montant": 400000,
+      "direction": "DAE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.894069,
+        "lon": 2.35423
+      },
+      "adresse": "48 RUE RENE CLAIR 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00289",
+      "annee": 2015,
+      "beneficiaire": "ECOLE DE LA 2E CHANCE DE PARIS",
+      "siret": "49300518500050",
+      "objet": "fonctionnement",
+      "montant": 400000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.887541,
+        "lon": 2.366997
+      },
+      "adresse": "47 RUE D'AUBERVILLIERS 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_07528",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION COS",
+      "siret": "77565757000377",
+      "objet": "Equipements EHPAD JACQUES BARROT 16 rue Gilbert Cesbron",
+      "montant": 400000,
+      "direction": "DASES",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.865885,
+        "lon": 2.352569
+      },
+      "adresse": "88-90 88 BOULEVARD DE SEBASTOPOL 75003 PARIS",
+      "codePostal": "75003",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_04816",
+      "annee": 2015,
+      "beneficiaire": "LA PLACE - CENTRE CULTUREL HIPHOP",
+      "siret": "80289090500010",
+      "objet": "fonctionnement",
+      "montant": 400000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.861819,
+        "lon": 2.347644
+      },
+      "adresse": "10 PASSAGE DE LA CANOPEE 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01092",
+      "annee": 2015,
+      "beneficiaire": "LE LIVRE POUR L'INSERTION ET LE REFUS DE L'EXCLUSION",
+      "siret": "42060014000032",
+      "objet": "Dans les centres de PMI, des séances de lecture individualisée avec les enfants et les parents.",
+      "montant": 392700,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.894473,
+        "lon": 2.373813
+      },
+      "adresse": "APPT N°3050 69 RUE CURIAL 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_07581",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION OLGA SPITZER",
+      "siret": "77565772900437",
+      "objet": "AP ARCHEREAU. Activité de médiation familiale, gestion d'un espace rencontre et organisation de visi",
+      "montant": 390000,
+      "direction": "DFPE",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.872724,
+        "lon": 2.352179
+      },
+      "adresse": "9 COUR DES PETITES ECURIES 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00952",
+      "annee": 2015,
+      "beneficiaire": "FONDATION OEUVRE DE LA CROIX SAINT-SIMON",
+      "siret": "78480968300013",
+      "objet": "Multi Accueil Hippocampe",
+      "montant": 389178,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.878208,
+        "lon": 2.382497
+      },
+      "adresse": "35 RUE DU PLATEAU 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00859",
+      "annee": 2015,
+      "beneficiaire": "INSTITUT D'ETUDES, DE RECHERCHE, DE FORMATION EN ACTION SOCIALE",
+      "siret": "77566475800049",
+      "objet": "Crèche FOURCADE",
+      "montant": 388840,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.840527,
+        "lon": 2.302446
+      },
+      "adresse": "25 A 29 25 RUE DU GENERAL BEURET 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00954",
+      "annee": 2015,
+      "beneficiaire": "FONDATION OEUVRE DE LA CROIX SAINT-SIMON",
+      "siret": "78480968300013",
+      "objet": "Multi Accueil La Souris Verte",
+      "montant": 380696,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.878208,
+        "lon": 2.382497
+      },
+      "adresse": "35 RUE DU PLATEAU 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00801",
+      "annee": 2015,
+      "beneficiaire": "ABC PUÉRICULTURE",
+      "siret": "34482479200032",
+      "objet": "Crèche A. Chérioux multi accueil",
+      "montant": 380520,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.852284,
+        "lon": 2.274995
+      },
+      "adresse": "9 RUE JEAN DE LA FONTAINE 75016 PARIS",
+      "codePostal": "75016",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00807",
+      "annee": 2015,
+      "beneficiaire": "ABC PUÉRICULTURE",
+      "siret": "34482479200032",
+      "objet": "Lagon des Ours multi accueil",
+      "montant": 378336,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.852284,
+        "lon": 2.274995
+      },
+      "adresse": "9 RUE JEAN DE LA FONTAINE 75016 PARIS",
+      "codePostal": "75016",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00693",
+      "annee": 2015,
+      "beneficiaire": "OEUVRE NOUVELLE DES CRECHES PARISIENNES",
+      "siret": "77569140500036",
+      "objet": "Crèche collective du 16ème",
+      "montant": 374714,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.841254,
+        "lon": 2.26108
+      },
+      "adresse": "22 B RUE CLAUDE LORRAIN 75016 PARIS 16",
+      "codePostal": "75016",
+      "commune": "PARIS 16"
+    },
+    {
+      "id": "2015_01411",
+      "annee": 2015,
+      "beneficiaire": "L'ETOILE DU NORD",
+      "siret": "32618492600011",
+      "objet": "fonctionnement incluant l'art pour grandir et les résidences",
+      "montant": 360000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.895559,
+        "lon": 2.332942
+      },
+      "adresse": "16 RUE GEORGETTE AGUTTE 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2016_00155",
+      "annee": 2015,
+      "beneficiaire": "AURORE (DAWN)",
+      "siret": "77568497000384",
+      "objet": "Carré des biffins",
+      "montant": 360000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.84261,
+        "lon": 2.31629
+      },
+      "adresse": "SIEGE 31 RUE FALGUIERE 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_07140",
+      "annee": 2015,
+      "beneficiaire": "PARIS INITIATIVE ENTREPRISE",
+      "siret": "34802705300043",
+      "objet": "Dotation au fonds de prêts d'honneur de Paris Initiative Entreprise",
+      "montant": 350000,
+      "direction": "DAE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.878386,
+        "lon": 2.315877
+      },
+      "adresse": "68 BOULEVARD MALESHERBES 75008 PARIS",
+      "codePostal": "75008",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01332",
+      "annee": 2015,
+      "beneficiaire": "BIBLIOCITÉ",
+      "siret": "33411238000038",
+      "objet": "Fonctionnement 2015",
+      "montant": 350000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.82763,
+        "lon": 2.371929
+      },
+      "adresse": "66 RUE CANTAGREL 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01026",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION DES CITÉS DU SECOURS CATHOLIQUE",
+      "siret": "35330523800175",
+      "objet": "Action parentalité.",
+      "montant": 350000,
+      "direction": "DASES",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.867088,
+        "lon": 2.398162
+      },
+      "adresse": "72 RUE ORFILA 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00855",
+      "annee": 2015,
+      "beneficiaire": "GROUPE D'OEUVRES SOCIALES DE BELLEVILLE",
+      "siret": "77569575200011",
+      "objet": "CRECHE COLLECTIVE 80 BERCEAUX - Françoise Lagrange 27/29 LEVERT",
+      "montant": 340538,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.875394,
+        "lon": 2.391695
+      },
+      "adresse": "162 RUE DE BELLEVILLE 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01918",
+      "annee": 2015,
+      "beneficiaire": "ENFANT PRESENT",
+      "siret": "39027802600047",
+      "objet": "CRECHE FAMILIALE PANOYAUX,",
+      "montant": 332572,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.86644,
+        "lon": 2.405173
+      },
+      "adresse": "15 RUE DES MONTIBOEUFS 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_04974",
+      "annee": 2015,
+      "beneficiaire": "FONDATION VOIR ET ENTENDRE",
+      "siret": "49834089200013",
+      "objet": "ACCOMPAGNEMENT DES ENTREPRISES INNOVANTES",
+      "montant": 330000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.850171,
+        "lon": 2.372782
+      },
+      "adresse": "INSTITUT DE LA VISION 17 RUE MOREAU 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00944",
+      "annee": 2015,
+      "beneficiaire": "CRESCENDO",
+      "siret": "78481011100350",
+      "objet": "Creche_Globe-Trotteurs",
+      "montant": 320737,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.862478,
+        "lon": 2.367835
+      },
+      "adresse": "102 C RUE AMELOT 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00960",
+      "annee": 2015,
+      "beneficiaire": "FONDATION OEUVRE DE LA CROIX SAINT-SIMON",
+      "siret": "78480968300013",
+      "objet": "Les Petits Gailhard",
+      "montant": 320553,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.878208,
+        "lon": 2.382497
+      },
+      "adresse": "35 RUE DU PLATEAU 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_06265",
+      "annee": 2015,
+      "beneficiaire": "MISSION LOCALE DE PARIS",
+      "siret": "53132862300073",
+      "objet": "Complément fonctionnement 2015",
+      "montant": 320000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.889595,
+        "lon": 2.363068
+      },
+      "adresse": "22 RUE PAJOL 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_02359",
+      "annee": 2015,
+      "beneficiaire": "UNION DÉPARTEMENTALE DES ASSOCIATIONS FAMILIALES DE PARIS",
+      "siret": "78441204100013",
+      "objet": "rue Blanche 9ème",
+      "montant": 317921,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.878496,
+        "lon": 2.337741
+      },
+      "adresse": "28 PLACE SAINT-GEORGES 75009 PARIS",
+      "codePostal": "75009",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01133",
+      "annee": 2015,
+      "beneficiaire": "LA MAISON KANGOUROU",
+      "siret": "45234009400203",
+      "objet": "Auriol   211 bd Vincent Auriol",
+      "montant": 316757,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.869209,
+        "lon": 2.360352
+      },
+      "adresse": "10 RUE DE LANCRY 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01668",
+      "annee": 2015,
+      "beneficiaire": "CROIX ROUGE FRANCAISE (NATIONALE)",
+      "siret": "77567227221138",
+      "objet": "\"Charles Fénelon\" 18, rue Charles Divry",
+      "montant": 311767,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.827226,
+        "lon": 2.314209
+      },
+      "adresse": "SITE CROIX ROUGE 98 RUE DIDOT 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_05089",
+      "annee": 2015,
+      "beneficiaire": "RESEAU ENTREPRENDRE PARIS",
+      "siret": "45100338800035",
+      "objet": "40.000 € fonctionnement et 270.000 € fonds prêt d'honneur",
+      "montant": 310000,
+      "direction": "DAE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.874865,
+        "lon": 2.325607
+      },
+      "adresse": "1ER ETAGE 8 RUE DE L'ISLY 75008 PARIS",
+      "codePostal": "75008",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_03045",
+      "annee": 2015,
+      "beneficiaire": "GAN MENAHEM",
+      "siret": "34830108600024",
+      "objet": "JARDIN D'ENFANTS SINAI",
+      "montant": 304728,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.894543,
+        "lon": 2.365982
+      },
+      "adresse": "2 RUE TRISTAN TZARA 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00694",
+      "annee": 2015,
+      "beneficiaire": "OEUVRE NOUVELLE DES CRECHES PARISIENNES",
+      "siret": "77569140500036",
+      "objet": "Crèche collective du Point du Jour",
+      "montant": 303781,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.841254,
+        "lon": 2.26108
+      },
+      "adresse": "22 B RUE CLAUDE LORRAIN 75016 PARIS 16",
+      "codePostal": "75016",
+      "commune": "PARIS 16"
+    },
+    {
+      "id": "2015_05412",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION POUR LE LOGEMENT DES JEUNES TRAVAILLEURS ALJT",
+      "siret": "77566643100322",
+      "objet": "FONCTIONNEMENT",
+      "montant": 302600,
+      "direction": "DJS",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.888467,
+        "lon": 2.38603
+      },
+      "adresse": "ALJT SIEGE 21 RUE DES ARDENNES 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00816",
+      "annee": 2015,
+      "beneficiaire": "ACCUEIL, RÉINSERTION SOCIALE DES PERSONNES ET DES FAMILLES OEUVRE DES GARES - LAFAYETTE », DITE « ARFOG-LAFAYETTE \"",
+      "siret": "77568111700112",
+      "objet": "crèche bizot",
+      "montant": 301503,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.823802,
+        "lon": 2.410255
+      },
+      "adresse": "94 RUE DE PARIS 94220 CHARENTON-LE-PONT",
+      "codePostal": "94220",
+      "commune": "CHARENTON-LE-PONT"
+    },
+    {
+      "id": "2015_02901",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION POUR L'ACCUEIL DE TOUS LES ENFANTS",
+      "siret": "38448701300037",
+      "objet": "Caverne d'Ali BABA:27.29 avenue Philippe AUGUSTE-",
+      "montant": 300426,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.851264,
+        "lon": 2.393891
+      },
+      "adresse": "27 AVENUE PHILIPPE-AUGUSTE 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_06295",
+      "annee": 2015,
+      "beneficiaire": "FORUM DES IMAGES",
+      "siret": "33212365200023",
+      "objet": "équipement",
+      "montant": 300000,
+      "direction": "DAC",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.86196,
+        "lon": 2.346687
+      },
+      "adresse": "FORUM DES HALLES PORTE SAINT-EUSTACHE 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_04686",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION DU THÉÂTRE DE LA VILLE",
+      "siret": "77566172100024",
+      "objet": "équipement 2015",
+      "montant": 300000,
+      "direction": "DAC",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.857346,
+        "lon": 2.34779
+      },
+      "adresse": "ANGL 16 Q DE GESVRES 2 PLACE DU CHATELET 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_06993",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION D'ACTION SOCIALE EN FAVEUR DES PERSONNELS DE LA VILLE DE PARIS ET DU DÉPARTEMENT DE PARIS",
+      "siret": "32385721900097",
+      "objet": "subvention 2015 -Investissement en délégation SIMPA-BP-2014 DFA 26M",
+      "montant": 300000,
+      "direction": "DRH",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.87074,
+        "lon": 2.343155
+      },
+      "adresse": "21 RUE D'UZES 75002 PARIS",
+      "codePostal": "75002",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_07416",
+      "annee": 2015,
+      "beneficiaire": "THEATRE MUSICAL DE PARIS",
+      "siret": "31669616000019",
+      "objet": "Subvention d'équipement 2015",
+      "montant": 300000,
+      "direction": "DAC",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.857845,
+        "lon": 2.345636
+      },
+      "adresse": "2 RUE EDOUARD COLONNE 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_06965",
+      "annee": 2015,
+      "beneficiaire": "PARIS INITIATIVE ENTREPRISE",
+      "siret": "34802705300043",
+      "objet": "fonctionnement",
+      "montant": 300000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.878386,
+        "lon": 2.315877
+      },
+      "adresse": "68 BOULEVARD MALESHERBES 75008 PARIS",
+      "codePostal": "75008",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00943",
+      "annee": 2015,
+      "beneficiaire": "CRESCENDO",
+      "siret": "78481011100350",
+      "objet": "Multu_accueil_Charivari",
+      "montant": 297219,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.862478,
+        "lon": 2.367835
+      },
+      "adresse": "102 C RUE AMELOT 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00810",
+      "annee": 2015,
+      "beneficiaire": "ABC PUÉRICULTURE",
+      "siret": "34482479200032",
+      "objet": "Quai des Ours multi accueil",
+      "montant": 293904,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.852284,
+        "lon": 2.274995
+      },
+      "adresse": "9 RUE JEAN DE LA FONTAINE 75016 PARIS",
+      "codePostal": "75016",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00923",
+      "annee": 2015,
+      "beneficiaire": "CENTRE ISRAELITE DE MONTMARTRE",
+      "siret": "78475659500012",
+      "objet": "CRECHE ISRAELITE DE PARIS 16 RUE LAMARCK",
+      "montant": 292247,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.887385,
+        "lon": 2.344638
+      },
+      "adresse": "16 RUE LAMARCK 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_06949",
+      "annee": 2015,
+      "beneficiaire": "UNIS CITE",
+      "siret": "39819156900000",
+      "objet": "Développer une mission de Service Civique sur la thématique touristique à Paris",
+      "montant": 290000,
+      "direction": "DAE",
+      "nature": "Fonctionnement"
+    },
+    {
+      "id": "2015_00184",
+      "annee": 2015,
+      "beneficiaire": "CARREFOURS POUR L'EMPLOI ARMÉES COLLECTIVITÉS ENTREPRISES",
+      "siret": "43294548300035",
+      "objet": "FORUMS DE RECRUTEMENT 2015",
+      "montant": 290000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.853989,
+        "lon": 2.305537
+      },
+      "adresse": "ECOLE MILITAIRE 1 PLACE JOFFRE 75007 PARIS",
+      "codePostal": "75007",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01666",
+      "annee": 2015,
+      "beneficiaire": "CROIX ROUGE FRANCAISE (NATIONALE)",
+      "siret": "77567227221138",
+      "objet": "\"Gabriel de Mun\" 41, rue Lucien Sampaix",
+      "montant": 289154,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.827226,
+        "lon": 2.314209
+      },
+      "adresse": "SITE CROIX ROUGE 98 RUE DIDOT 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_03004",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION GAN YAEL CRECHE ET JARDIN D ENFANTS",
+      "siret": "31982198900013",
+      "objet": "FONCTIONNEMENT CRECHE FAMILIALE",
+      "montant": 288804,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.890379,
+        "lon": 2.385889
+      },
+      "adresse": "CRECHE COLLECTIVE 29 RUE DE THIONVILLE 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00216",
+      "annee": 2015,
+      "beneficiaire": "BOUTIQUE DE GESTION PARIS ILE DE FRANCE",
+      "siret": "32250551200044",
+      "objet": "Appui à la création d'entreprise (Cité des métiers, MDEE 10, mairies, couveuse BGE PaRIF)",
+      "montant": 288800,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.841839,
+        "lon": 2.390309
+      },
+      "adresse": "36 ALLEE VIVALDI 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_04756",
+      "annee": 2015,
+      "beneficiaire": "ESTRELIA",
+      "siret": "34878236800032",
+      "objet": "fonctionnement de l'hôpital de jour mère enfant",
+      "montant": 288787,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.883257,
+        "lon": 2.36004
+      },
+      "adresse": "10 RUE PERDONNET 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_07185",
+      "annee": 2015,
+      "beneficiaire": "EMMAUS SOLIDARITE",
+      "siret": "31723624800017",
+      "objet": "Accueil de jour \"Le Kiosque\"",
+      "montant": 284000,
+      "direction": "DASES",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.860017,
+        "lon": 2.345244
+      },
+      "adresse": "32 RUE DES BOURDONNAIS 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01815",
+      "annee": 2015,
+      "beneficiaire": "LA MAISON DES BOUT'CHOU",
+      "siret": "35118614300175",
+      "objet": "FONCTIONNEMENT 2015 MA Les couleurs du temps bld St Jacques 75014",
+      "montant": 282859,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.844295,
+        "lon": 2.331113
+      },
+      "adresse": "12 RUE VAVIN 75006 PARIS",
+      "codePostal": "75006",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01428",
+      "annee": 2015,
+      "beneficiaire": "MAISON DE L'EUROPE DE PARIS CENTRE DE RENCONTRES INTERNATIONALES",
+      "siret": "78418016800030",
+      "objet": "fonctionnement et compensatrice du loyer dans le cadre de la convention pluriannuelle",
+      "montant": 280000,
+      "direction": "DGRI",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.846327,
+        "lon": 2.272874
+      },
+      "adresse": "77 AVENUE DE VERSAILLES 75016 PARIS",
+      "codePostal": "75016",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01400",
+      "annee": 2015,
+      "beneficiaire": "NOUVEAU THEATRE DE NOVEMBRE",
+      "siret": "37902082900022",
+      "objet": "fonctionnement pour la Vingtième Théâtre",
+      "montant": 280000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.867888,
+        "lon": 2.38947
+      },
+      "adresse": "7 RUE DES PLATRIERES 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_02367",
+      "annee": 2015,
+      "beneficiaire": "UNION DÉPARTEMENTALE DES ASSOCIATIONS FAMILIALES DE PARIS",
+      "siret": "78441204100013",
+      "objet": "Acquisition des locaux du 11 bis rue Blanche",
+      "montant": 279391,
+      "direction": "DFPE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.878496,
+        "lon": 2.337741
+      },
+      "adresse": "28 PLACE SAINT-GEORGES 75009 PARIS",
+      "codePostal": "75009",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01908",
+      "annee": 2015,
+      "beneficiaire": "FONDATION CASIP - COJASOR",
+      "siret": "42921211100018",
+      "objet": "SUBVENTION DE FONCTIONNEMENT POUR NOTRE HALTE GARDERIE",
+      "montant": 278131,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.869789,
+        "lon": 2.3807
+      },
+      "adresse": "8 RUE DE PALI-KAO 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_07127",
+      "annee": 2015,
+      "beneficiaire": "OEUVRE NOUVELLE DES CRECHES PARISIENNES",
+      "siret": "77569140500036",
+      "objet": "Crèche collective saint Sébastien",
+      "montant": 277522,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.841254,
+        "lon": 2.26108
+      },
+      "adresse": "22 B RUE CLAUDE LORRAIN 75016 PARIS 16",
+      "codePostal": "75016",
+      "commune": "PARIS 16"
+    },
+    {
+      "id": "2015_00784",
+      "annee": 2015,
+      "beneficiaire": "ENVOLUDIA",
+      "siret": "77573329800183",
+      "objet": "Halte garderie Ram Dam",
+      "montant": 276164,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.854579,
+        "lon": 2.417068
+      },
+      "adresse": "261 RUE DE PARIS 93100 MONTREUIL",
+      "codePostal": "93100",
+      "commune": "MONTREUIL"
+    },
+    {
+      "id": "2015_00328",
+      "annee": 2015,
+      "beneficiaire": "AGENCE PARISIENNE DU CLIMAT",
+      "siret": "52800732100011",
+      "objet": "mise en oeuvre du Plan climat énergie de Paris",
+      "montant": 275000,
+      "direction": "DEVE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.833505,
+        "lon": 2.386307
+      },
+      "adresse": "PAVILLON DU LAC PARC DE BERCY 3 RUE FRANCOIS TRUFFAUT 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_07717",
+      "annee": 2015,
+      "beneficiaire": "COORDINATION TOXICOMANIES",
+      "siret": "43533315800028",
+      "objet": "Médiation sociale et animation territoriale sur les problèmes liés aux drogues",
+      "montant": 272000,
+      "direction": "DASES",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.889233,
+        "lon": 2.345373
+      },
+      "adresse": "46 RUE CUSTINE 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00813",
+      "annee": 2015,
+      "beneficiaire": "ABC PUÉRICULTURE",
+      "siret": "34482479200032",
+      "objet": "Crèche Violet multi accueil",
+      "montant": 271827,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.852284,
+        "lon": 2.274995
+      },
+      "adresse": "9 RUE JEAN DE LA FONTAINE 75016 PARIS",
+      "codePostal": "75016",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00965",
+      "annee": 2015,
+      "beneficiaire": "FONDATION OEUVRE DE LA CROIX SAINT-SIMON",
+      "siret": "78480968300013",
+      "objet": "Multi Accueil Sainte Amélie",
+      "montant": 271634,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.878208,
+        "lon": 2.382497
+      },
+      "adresse": "35 RUE DU PLATEAU 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_06498",
+      "annee": 2015,
+      "beneficiaire": "COUP DE MAIN",
+      "siret": "41190781900022",
+      "objet": "Maraude d'intervention sociale auprès de familles roumaines",
+      "montant": 269406,
+      "direction": "DASES",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.89928,
+        "lon": 2.396625
+      },
+      "adresse": "31 AVENUE EDOUARD VAILLANT 93500 PANTIN",
+      "codePostal": "93500",
+      "commune": "PANTIN"
+    },
+    {
+      "id": "2015_07824",
+      "annee": 2015,
+      "beneficiaire": "COUP DE MAIN",
+      "siret": "41190781900022",
+      "objet": "HEBERGEMENT ACCOMPAGNE 2015\"TOUS DEBOUTS\"",
+      "montant": 269245,
+      "direction": "DASES",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.89928,
+        "lon": 2.396625
+      },
+      "adresse": "31 AVENUE EDOUARD VAILLANT 93500 PANTIN",
+      "codePostal": "93500",
+      "commune": "PANTIN"
+    },
+    {
+      "id": "2015_01667",
+      "annee": 2015,
+      "beneficiaire": "CROIX ROUGE FRANCAISE (NATIONALE)",
+      "siret": "77567227221138",
+      "objet": "\"Marie Ernest May\" 54, Cité des Fleurs",
+      "montant": 267742,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.827226,
+        "lon": 2.314209
+      },
+      "adresse": "SITE CROIX ROUGE 98 RUE DIDOT 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00667",
+      "annee": 2015,
+      "beneficiaire": "OEUVRE NOUVELLE DES CRECHES PARISIENNES",
+      "siret": "77569140500036",
+      "objet": "Crèche collective du Mail",
+      "montant": 265365,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.841254,
+        "lon": 2.26108
+      },
+      "adresse": "22 B RUE CLAUDE LORRAIN 75016 PARIS 16",
+      "codePostal": "75016",
+      "commune": "PARIS 16"
+    },
+    {
+      "id": "2015_00962",
+      "annee": 2015,
+      "beneficiaire": "FONDATION OEUVRE DE LA CROIX SAINT-SIMON",
+      "siret": "78480968300013",
+      "objet": "Crèche Collective Bethléem",
+      "montant": 264488,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.878208,
+        "lon": 2.382497
+      },
+      "adresse": "35 RUE DU PLATEAU 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_02904",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION POUR L'ACCUEIL DE TOUS LES ENFANTS",
+      "siret": "38448701300037",
+      "objet": "Ecole GULLIVER 59.61 rue des Pirogues de Bercy",
+      "montant": 264384,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.851264,
+        "lon": 2.393891
+      },
+      "adresse": "27 AVENUE PHILIPPE-AUGUSTE 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01130",
+      "annee": 2015,
+      "beneficiaire": "LA MAISON KANGOUROU",
+      "siret": "45234009400203",
+      "objet": "Hauteville   50 rue d'Hauteville",
+      "montant": 262398,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.869209,
+        "lon": 2.360352
+      },
+      "adresse": "10 RUE DE LANCRY 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00327",
+      "annee": 2015,
+      "beneficiaire": "AGENCE PARISIENNE DU CLIMAT",
+      "siret": "52800732100011",
+      "objet": "mise en oeuvre du Plan climat énergie de Paris",
+      "montant": 260000,
+      "direction": "DLH",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.833505,
+        "lon": 2.386307
+      },
+      "adresse": "PAVILLON DU LAC PARC DE BERCY 3 RUE FRANCOIS TRUFFAUT 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00695",
+      "annee": 2015,
+      "beneficiaire": "OEUVRE NOUVELLE DES CRECHES PARISIENNES",
+      "siret": "77569140500036",
+      "objet": "Crèche collective Saint Ambroise",
+      "montant": 259547,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.841254,
+        "lon": 2.26108
+      },
+      "adresse": "22 B RUE CLAUDE LORRAIN 75016 PARIS 16",
+      "codePostal": "75016",
+      "commune": "PARIS 16"
+    },
+    {
+      "id": "2015_01129",
+      "annee": 2015,
+      "beneficiaire": "LA MAISON KANGOUROU",
+      "siret": "45234009400203",
+      "objet": "Chevreuil   30 rue Victor Chevreuil",
+      "montant": 257361,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.869209,
+        "lon": 2.360352
+      },
+      "adresse": "10 RUE DE LANCRY 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01797",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION POUR LE DÉVELOPPEMENT DE LA DANSE À PARIS",
+      "siret": "43929038800032",
+      "objet": "fonctionnement",
+      "montant": 255000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.85473,
+        "lon": 2.356399
+      },
+      "adresse": "ADDDP MICADANSES 20 RUE GEOFFROY L'ASNIER 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00783",
+      "annee": 2015,
+      "beneficiaire": "ENVOLUDIA",
+      "siret": "77573329800183",
+      "objet": "Halte garderie Le Chalet",
+      "montant": 254583,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.854579,
+        "lon": 2.417068
+      },
+      "adresse": "261 RUE DE PARIS 93100 MONTREUIL",
+      "codePostal": "93100",
+      "commune": "MONTREUIL"
+    },
+    {
+      "id": "2015_02368",
+      "annee": 2015,
+      "beneficiaire": "ABC PUÉRICULTURE",
+      "siret": "34482479200032",
+      "objet": "Extension crèche multiaccueil 14e Ours",
+      "montant": 253273,
+      "direction": "DFPE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.852284,
+        "lon": 2.274995
+      },
+      "adresse": "9 RUE JEAN DE LA FONTAINE 75016 PARIS",
+      "codePostal": "75016",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_06791",
+      "annee": 2015,
+      "beneficiaire": "ARC 75 ----INVALIDE SUITE À FUSION AVEC LES ÉQUIPES D'AMITIÉ",
+      "siret": "31799229500012",
+      "objet": "convention triennale",
+      "montant": 250157,
+      "direction": "DASES",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.852295,
+        "lon": 2.355124
+      },
+      "adresse": "57 RUE SAINT LOUIS EN L'ILE 75004 PARIS 4",
+      "codePostal": "75004",
+      "commune": "PARIS 4"
+    },
+    {
+      "id": "2015_04843",
+      "annee": 2015,
+      "beneficiaire": "COMITÉ CHAMPS-ELYSÉES",
+      "siret": "39848487300011",
+      "objet": "Passage de 2014 à 2015 sur les Champs-Elysées",
+      "montant": 250000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.869965,
+        "lon": 2.308164
+      },
+      "adresse": "34 AVENUE DES CHAMPS ELYSEES 75008 PARIS",
+      "codePostal": "75008",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01621",
+      "annee": 2015,
+      "beneficiaire": "AIDES",
+      "siret": "34949617400047",
+      "objet": "lutte contre le VIH/sida et les hépatites virales à Paris",
+      "montant": 250000,
+      "direction": "DASES",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.892039,
+        "lon": 2.398566
+      },
+      "adresse": "TOUR ESSOR 14 RUE SCANDICCI 93500 PANTIN",
+      "codePostal": "93500",
+      "commune": "PANTIN"
+    },
+    {
+      "id": "2015_00380",
+      "annee": 2015,
+      "beneficiaire": "CONSEIL D'ARCHITECTURE, D'URBANISME ET DE L'ENVIRONNEMENT DE PARIS",
+      "siret": "32564612300027",
+      "objet": "Fonctionnement annuelle - Année 2015",
+      "montant": 250000,
+      "direction": "DU",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.847681,
+        "lon": 2.370532
+      },
+      "adresse": "37 AVENUE LEDRU-ROLLIN 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2016_00429",
+      "annee": 2015,
+      "beneficiaire": "CONSEIL D'ARCHITECTURE, D'URBANISME ET DE L'ENVIRONNEMENT DE PARIS",
+      "siret": "32564612300027",
+      "objet": "fonctionnement",
+      "montant": 250000,
+      "direction": "DU",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.847681,
+        "lon": 2.370532
+      },
+      "adresse": "37 AVENUE LEDRU-ROLLIN 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00866",
+      "annee": 2015,
+      "beneficiaire": "LE DAUPHIN BLEU",
+      "siret": "35029993900024",
+      "objet": "Crèche Le Dauphin Bleu, 81 Rue Vauvenargues",
+      "montant": 249640,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.897216,
+        "lon": 2.329553
+      },
+      "adresse": "81-83 81 RUE VAUVENARGUES 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_07459",
+      "annee": 2015,
+      "beneficiaire": "ESPACE 19",
+      "siret": "32228389600049",
+      "objet": "Projet d'animation et de gestion d'un espace dédié aux familles - Halle Secretan Paris 19ème",
+      "montant": 246000,
+      "direction": "DFPE",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.895716,
+        "lon": 2.374611
+      },
+      "adresse": "6 RUE HENRI VERNEUIL 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01155",
+      "annee": 2015,
+      "beneficiaire": "CARAMEL",
+      "siret": "42984735300019",
+      "objet": "Maison des ours 9, rue fernand foureau Paris 12e",
+      "montant": 243271,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.835643,
+        "lon": 2.396653
+      },
+      "adresse": "48 RUE DE WATTIGNIES 75012 PARIS 12",
+      "codePostal": "75012",
+      "commune": "PARIS 12"
+    },
+    {
+      "id": "2015_00964",
+      "annee": 2015,
+      "beneficiaire": "FONDATION OEUVRE DE LA CROIX SAINT-SIMON",
+      "siret": "78480968300013",
+      "objet": "Multi Accueil La Providence",
+      "montant": 241108,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.878208,
+        "lon": 2.382497
+      },
+      "adresse": "35 RUE DU PLATEAU 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_05535",
+      "annee": 2015,
+      "beneficiaire": "ORGANISATION PANAFRICAINE DE LUTTE POUR LA SANTÉ",
+      "siret": "38901539700018",
+      "objet": "Renforcement de la Prise en charge sanitaire de la mère et de l¿enfant dans 4 Pays",
+      "montant": 240000,
+      "direction": "DGRI",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.850774,
+        "lon": 2.341185
+      },
+      "adresse": "015 A 021 15 RUE DE L'ECOLE DE MEDECINE 75006 PARIS",
+      "codePostal": "75006",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_05386",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION POUR LE DROIT À L'INITIATIVE ÉCONOMIQUE",
+      "siret": "35221687301565",
+      "objet": "Favoriser l'insertion des bénéficiaires du RSA Parisiens exclus du système bancaire",
+      "montant": 240000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.888644,
+        "lon": 2.385915
+      },
+      "adresse": "23 RUE DES ARDENNES 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00858",
+      "annee": 2015,
+      "beneficiaire": "INSTITUT D'ETUDES, DE RECHERCHE, DE FORMATION EN ACTION SOCIALE",
+      "siret": "77566475800049",
+      "objet": "Crèche FIRMIN MARBEAU",
+      "montant": 238857,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.840527,
+        "lon": 2.302446
+      },
+      "adresse": "25 A 29 25 RUE DU GENERAL BEURET 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_05284",
+      "annee": 2015,
+      "beneficiaire": "LA CHORBA",
+      "siret": "43041135500026",
+      "objet": "fonctionnement",
+      "montant": 237300,
+      "direction": "DASES",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.834044,
+        "lon": 2.403323
+      },
+      "adresse": "87 BOULEVARD PONIATOWSKI 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_02990",
+      "annee": 2015,
+      "beneficiaire": "INTERNATIONAL VISUAL THEATRE",
+      "siret": "32418249200037",
+      "objet": "fonctionnement -",
+      "montant": 237000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.881432,
+        "lon": 2.333126
+      },
+      "adresse": "7 CITE CHAPTAL 75009 PARIS",
+      "codePostal": "75009",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00950",
+      "annee": 2015,
+      "beneficiaire": "CROIX ROUGE FRANCAISE (NATIONALE)",
+      "siret": "77567227221138",
+      "objet": "\"La Butte aux Cailles\" 42, rue Vandrezanne",
+      "montant": 233756,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.827226,
+        "lon": 2.314209
+      },
+      "adresse": "SITE CROIX ROUGE 98 RUE DIDOT 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00785",
+      "annee": 2015,
+      "beneficiaire": "ENVOLUDIA",
+      "siret": "77573329800183",
+      "objet": "Halte garderie Trotte Lapins",
+      "montant": 233215,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.854579,
+        "lon": 2.417068
+      },
+      "adresse": "261 RUE DE PARIS 93100 MONTREUIL",
+      "codePostal": "93100",
+      "commune": "MONTREUIL"
+    },
+    {
+      "id": "2015_00939",
+      "annee": 2015,
+      "beneficiaire": "CRESCENDO",
+      "siret": "78481011100350",
+      "objet": "Multi_accueil_Lutins_de_la_Plaine",
+      "montant": 230621,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.862478,
+        "lon": 2.367835
+      },
+      "adresse": "102 C RUE AMELOT 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00958",
+      "annee": 2015,
+      "beneficiaire": "FONDATION OEUVRE DE LA CROIX SAINT-SIMON",
+      "siret": "78480968300013",
+      "objet": "Crèche Familiale Sainte Amélie",
+      "montant": 229824,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.878208,
+        "lon": 2.382497
+      },
+      "adresse": "35 RUE DU PLATEAU 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01820",
+      "annee": 2015,
+      "beneficiaire": "LA MAISON DES BOUT'CHOU",
+      "siret": "35118614300175",
+      "objet": "FONCTIONNEMENT 2015 MA Le temps de l'enfance rue Dulac 75015",
+      "montant": 227759,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.844295,
+        "lon": 2.331113
+      },
+      "adresse": "12 RUE VAVIN 75006 PARIS",
+      "codePostal": "75006",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01135",
+      "annee": 2015,
+      "beneficiaire": "LA MAISON KANGOUROU",
+      "siret": "45234009400203",
+      "objet": "Ourcq   13 Rue de l'Ourcq",
+      "montant": 226592,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.869209,
+        "lon": 2.360352
+      },
+      "adresse": "10 RUE DE LANCRY 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_02157",
+      "annee": 2015,
+      "beneficiaire": "ATELIER DE PARIS-CAROLYN CARLSON",
+      "siret": "39864093800021",
+      "objet": "fonctionnement",
+      "montant": 225000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.835062,
+        "lon": 2.450645
+      },
+      "adresse": "CARTOUCHERIE ROUTE DU CHAMP DE MANOEUVRES 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_05356",
+      "annee": 2015,
+      "beneficiaire": "STADE FRANCAIS",
+      "siret": "30299790300026",
+      "objet": "Convention d'objectifs et d'aide au fonctionnement",
+      "montant": 224500,
+      "direction": "DJS",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.838918,
+        "lon": 2.251869
+      },
+      "adresse": "2 RUE DU CDT GUILBAUD 75016 PARIS 16",
+      "codePostal": "75016",
+      "commune": "PARIS 16"
+    },
+    {
+      "id": "2015_00955",
+      "annee": 2015,
+      "beneficiaire": "FONDATION OEUVRE DE LA CROIX SAINT-SIMON",
+      "siret": "78480968300013",
+      "objet": "Multi Accueil Clavel",
+      "montant": 222134,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.878208,
+        "lon": 2.382497
+      },
+      "adresse": "35 RUE DU PLATEAU 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_06186",
+      "annee": 2015,
+      "beneficiaire": "SIDACTION",
+      "siret": "39894554300021",
+      "objet": "Paris Sida Sud Burundi 2016 - 2018",
+      "montant": 220000,
+      "direction": "DGRI",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.880712,
+        "lon": 2.364863
+      },
+      "adresse": "6EME ETAGE 228 RUE DU FAUBOURG SAINT-MARTIN 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2014_07030",
+      "annee": 2015,
+      "beneficiaire": "COMITÉ CHAMPS-ELYSÉES",
+      "siret": "39848487300011",
+      "objet": "Illuminations 2014 des Champs-Elysées",
+      "montant": 220000,
+      "direction": "DAE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.869965,
+        "lon": 2.308164
+      },
+      "adresse": "34 AVENUE DES CHAMPS ELYSEES 75008 PARIS",
+      "codePostal": "75008",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01795",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION FAMILIALE CATHOLIQUE DE SAINT HONORE D'EYLAU",
+      "siret": "78467006900037",
+      "objet": "fonctionnement",
+      "montant": 216749,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.867718,
+        "lon": 2.283941
+      },
+      "adresse": "18 RUE MESNIL 75016 PARIS",
+      "codePostal": "75016",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00800",
+      "annee": 2015,
+      "beneficiaire": "ABC PUÉRICULTURE",
+      "siret": "34482479200032",
+      "objet": "Calinours multi accueil",
+      "montant": 215086,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.852284,
+        "lon": 2.274995
+      },
+      "adresse": "9 RUE JEAN DE LA FONTAINE 75016 PARIS",
+      "codePostal": "75016",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_07335",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION FRATELI",
+      "siret": "49406541000040",
+      "objet": "Projet d¿Espace de travail collaboratif et communautaire étudiant & entreprenant porté par Frateli",
+      "montant": 215000,
+      "direction": "DAE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.874174,
+        "lon": 2.335685
+      },
+      "adresse": "43 RUE DE PROVENCE 75009 PARIS 9",
+      "codePostal": "75009",
+      "commune": "PARIS 9"
+    },
+    {
+      "id": "2015_00805",
+      "annee": 2015,
+      "beneficiaire": "ABC PUÉRICULTURE",
+      "siret": "34482479200032",
+      "objet": "Grandours multi accueil",
+      "montant": 211307,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.852284,
+        "lon": 2.274995
+      },
+      "adresse": "9 RUE JEAN DE LA FONTAINE 75016 PARIS",
+      "codePostal": "75016",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_05439",
+      "annee": 2015,
+      "beneficiaire": "CENTRE DU LOGEMENT DES JEUNES TRAVAILLEURS, ETUDIANTS ET STAGIAIRES -  (CLJT)",
+      "siret": "77569699000156",
+      "objet": "fonctionnement",
+      "montant": 210700,
+      "direction": "DJS",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.834233,
+        "lon": 2.368105
+      },
+      "adresse": "140 RUE DU CHEVALERET 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01916",
+      "annee": 2015,
+      "beneficiaire": "INSTITUT DE RECHERCHE APPLIQUÉE POUR L'ENFANT ET LE COUPLE",
+      "siret": "30583930000020",
+      "objet": "Accueil des parents et enfants de 0 à 6 ans / 5 jours par semaine",
+      "montant": 210000,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.893069,
+        "lon": 2.330202
+      },
+      "adresse": "41 RUE JOSEPH DE MAISTRE 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00942",
+      "annee": 2015,
+      "beneficiaire": "CRESCENDO",
+      "siret": "78481011100350",
+      "objet": "Halte_garderie_123_Soleil",
+      "montant": 209398,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.862478,
+        "lon": 2.367835
+      },
+      "adresse": "102 C RUE AMELOT 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00804",
+      "annee": 2015,
+      "beneficiaire": "ABC PUÉRICULTURE",
+      "siret": "34482479200032",
+      "objet": "La Fabrique des Ours multi accueil",
+      "montant": 207845,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.852284,
+        "lon": 2.274995
+      },
+      "adresse": "9 RUE JEAN DE LA FONTAINE 75016 PARIS",
+      "codePostal": "75016",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00812",
+      "annee": 2015,
+      "beneficiaire": "ABC PUÉRICULTURE",
+      "siret": "34482479200032",
+      "objet": "Temps des Ours multi accueil",
+      "montant": 206687,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.852284,
+        "lon": 2.274995
+      },
+      "adresse": "9 RUE JEAN DE LA FONTAINE 75016 PARIS",
+      "codePostal": "75016",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01814",
+      "annee": 2015,
+      "beneficiaire": "LA MAISON DES BOUT'CHOU",
+      "siret": "35118614300175",
+      "objet": "FONCTIONNEMENT 2015 MA D'ici et d'ailleurs av. Claude Regaud 75013",
+      "montant": 206454,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.844295,
+        "lon": 2.331113
+      },
+      "adresse": "12 RUE VAVIN 75006 PARIS",
+      "codePostal": "75006",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00961",
+      "annee": 2015,
+      "beneficiaire": "FONDATION OEUVRE DE LA CROIX SAINT-SIMON",
+      "siret": "78480968300013",
+      "objet": "Tambour et Trompette",
+      "montant": 205996,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.878208,
+        "lon": 2.382497
+      },
+      "adresse": "35 RUE DU PLATEAU 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01132",
+      "annee": 2015,
+      "beneficiaire": "LA MAISON KANGOUROU",
+      "siret": "45234009400203",
+      "objet": "Lafayette   30 rue Saint-Quentin",
+      "montant": 205686,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.869209,
+        "lon": 2.360352
+      },
+      "adresse": "10 RUE DE LANCRY 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01029",
+      "annee": 2015,
+      "beneficiaire": "FONDATION OEUVRE DE LA CROIX SAINT-SIMON",
+      "siret": "78480968300013",
+      "objet": "Halte-garderie Champs de Mars",
+      "montant": 205671,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.878208,
+        "lon": 2.382497
+      },
+      "adresse": "35 RUE DU PLATEAU 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01128",
+      "annee": 2015,
+      "beneficiaire": "LA MAISON KANGOUROU",
+      "siret": "45234009400203",
+      "objet": "Saussure   156 bis rue de Saussure",
+      "montant": 202752,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.869209,
+        "lon": 2.360352
+      },
+      "adresse": "10 RUE DE LANCRY 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00806",
+      "annee": 2015,
+      "beneficiaire": "ABC PUÉRICULTURE",
+      "siret": "34482479200032",
+      "objet": "Histoire d'Ours multi accueil",
+      "montant": 202250,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.852284,
+        "lon": 2.274995
+      },
+      "adresse": "9 RUE JEAN DE LA FONTAINE 75016 PARIS",
+      "codePostal": "75016",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01103",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION DES CITÉS DU SECOURS CATHOLIQUE",
+      "siret": "35330523800175",
+      "objet": "Fonctionnement Crèche Familiale Cité St Martin",
+      "montant": 201961,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.867088,
+        "lon": 2.398162
+      },
+      "adresse": "72 RUE ORFILA 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01054",
+      "annee": 2015,
+      "beneficiaire": "OZAR HATORAH LE TRESOR DE LA LOI",
+      "siret": "77567877400222",
+      "objet": "FONCTIONNEMENT 13e",
+      "montant": 200823,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.833541,
+        "lon": 2.348751
+      },
+      "adresse": "31 RUE DES CORDELIERES 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2014_07788",
+      "annee": 2015,
+      "beneficiaire": "INTER-AIDE",
+      "siret": "31906037200038",
+      "objet": "Mozambique - en cours",
+      "montant": 200000,
+      "direction": "DGRI",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.8073,
+        "lon": 2.129102
+      },
+      "adresse": "44 RUE DE LA PAROISSE 78000 VERSAILLES",
+      "codePostal": "78000",
+      "commune": "VERSAILLES"
+    },
+    {
+      "id": "2015_07449",
+      "annee": 2015,
+      "beneficiaire": "LA PLACE - CENTRE CULTUREL HIPHOP",
+      "siret": "80289090500010",
+      "objet": "ÉQUIPEMENT",
+      "montant": 200000,
+      "direction": "DAC",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.861819,
+        "lon": 2.347644
+      },
+      "adresse": "10 PASSAGE DE LA CANOPEE 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_07306",
+      "annee": 2015,
+      "beneficiaire": "ROBOT LAB",
+      "siret": "81151660800015",
+      "objet": "AMI Coworking",
+      "montant": 200000,
+      "direction": "DAE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.847925,
+        "lon": 2.305719
+      },
+      "adresse": "130 AVENUE DE SUFFREN 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_06978",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION MARIE-THERESE",
+      "siret": "77572670600010",
+      "objet": "Ouverture d'un nouveau centre de santé dans le 18ème arrondissement de Paris",
+      "montant": 200000,
+      "direction": "DASES",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.82155,
+        "lon": 2.309202
+      },
+      "adresse": "51 RUE GAMBETTA 92240 MALAKOFF",
+      "codePostal": "92240",
+      "commune": "MALAKOFF"
+    },
+    {
+      "id": "2015_05004",
+      "annee": 2015,
+      "beneficiaire": "INCUBATEUR AU FÉMININ PARIS PIONNIERES",
+      "siret": "45274028500047",
+      "objet": "fonctionnement",
+      "montant": 200000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.868251,
+        "lon": 2.345608
+      },
+      "adresse": "6 RUE DU SENTIER 75002 PARIS",
+      "codePostal": "75002",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01776",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION LA DALLE AUX CHAPS",
+      "siret": "53381287100028",
+      "objet": "fonctionnement",
+      "montant": 200000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.877775,
+        "lon": 2.408938
+      },
+      "adresse": "PLACE DU MAQUIS DU VERCORS 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01737",
+      "annee": 2015,
+      "beneficiaire": "MUSIQUE SACRÉE À NOTRE-DAME DE PARIS",
+      "siret": "38291565000016",
+      "objet": "fonctionnement",
+      "montant": 200000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.849429,
+        "lon": 2.350998
+      },
+      "adresse": "39 BOULEVARD SAINT-GERMAIN 75005 PARIS",
+      "codePostal": "75005",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01471",
+      "annee": 2015,
+      "beneficiaire": "EAU VIVE",
+      "siret": "31420886900086",
+      "objet": "AAP SEA Sanyia Kagni ¿ Burkina Faso",
+      "montant": 200000,
+      "direction": "DGRI",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.870079,
+        "lon": 2.438232
+      },
+      "adresse": "27 RUE LEON LOISEAU 93100 MONTREUIL",
+      "codePostal": "93100",
+      "commune": "MONTREUIL"
+    },
+    {
+      "id": "2015_01781",
+      "annee": 2015,
+      "beneficiaire": "LE MUSEE EN HERBE",
+      "siret": "31142870000034",
+      "objet": "fonctionnement",
+      "montant": 200000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.860146,
+        "lon": 2.342132
+      },
+      "adresse": "23 RUE DE L'ARBRE SEC 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_05216",
+      "annee": 2015,
+      "beneficiaire": "LA PLACE - CENTRE CULTUREL HIPHOP",
+      "siret": "80289090500010",
+      "objet": "ÉQUIPEMENT",
+      "montant": 200000,
+      "direction": "DAE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.861819,
+        "lon": 2.347644
+      },
+      "adresse": "10 PASSAGE DE LA CANOPEE 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00566",
+      "annee": 2015,
+      "beneficiaire": "MÉMORIAL DE LA SHOAH",
+      "siret": "78424378400013",
+      "objet": "fonctionnement",
+      "montant": 200000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.854851,
+        "lon": 2.356314
+      },
+      "adresse": "17 RUE GEOFFROY L'ASNIER 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00697",
+      "annee": 2015,
+      "beneficiaire": "OEUVRE NOUVELLE DES CRECHES PARISIENNES",
+      "siret": "77569140500036",
+      "objet": "Crèche collective Brancion",
+      "montant": 199824,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.841254,
+        "lon": 2.26108
+      },
+      "adresse": "22 B RUE CLAUDE LORRAIN 75016 PARIS 16",
+      "codePostal": "75016",
+      "commune": "PARIS 16"
+    },
+    {
+      "id": "2015_00808",
+      "annee": 2015,
+      "beneficiaire": "ABC PUÉRICULTURE",
+      "siret": "34482479200032",
+      "objet": "Nuage d'Ours multi accueil",
+      "montant": 199665,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.852284,
+        "lon": 2.274995
+      },
+      "adresse": "9 RUE JEAN DE LA FONTAINE 75016 PARIS",
+      "codePostal": "75016",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_03003",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION GAN YAEL CRECHE ET JARDIN D ENFANTS",
+      "siret": "31982198900013",
+      "objet": "FONCTIONNEMENT  CRECHE COLLECTIVE",
+      "montant": 198503,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.890379,
+        "lon": 2.385889
+      },
+      "adresse": "CRECHE COLLECTIVE 29 RUE DE THIONVILLE 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_08227",
+      "annee": 2015,
+      "beneficiaire": "ENSEMBLE PARIS EMPLOI COMPÉTENCES",
+      "siret": "48338140600048",
+      "objet": "CONSTITUTION DE FONDS",
+      "montant": 197120,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.885529,
+        "lon": 2.390137
+      },
+      "adresse": "18 RUE GOUBET 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_03044",
+      "annee": 2015,
+      "beneficiaire": "GAN MENAHEM",
+      "siret": "34830108600024",
+      "objet": "Crèche LEA FRANKFORTER",
+      "montant": 196259,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.894543,
+        "lon": 2.365982
+      },
+      "adresse": "2 RUE TRISTAN TZARA 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00475",
+      "annee": 2015,
+      "beneficiaire": "CENTRE D'ACTIONS LOCALES DU XVIIIÈME",
+      "siret": "32591060200011",
+      "objet": "Fonctionnement 2015",
+      "montant": 196248,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.894523,
+        "lon": 2.329919
+      },
+      "adresse": "1 RUE FIRMIN GEMIER 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00696",
+      "annee": 2015,
+      "beneficiaire": "OEUVRE NOUVELLE DES CRECHES PARISIENNES",
+      "siret": "77569140500036",
+      "objet": "Crèche collective du Petit Moulin",
+      "montant": 195138,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.841254,
+        "lon": 2.26108
+      },
+      "adresse": "22 B RUE CLAUDE LORRAIN 75016 PARIS 16",
+      "codePostal": "75016",
+      "commune": "PARIS 16"
+    },
+    {
+      "id": "2015_00647",
+      "annee": 2015,
+      "beneficiaire": "ESTRELIA",
+      "siret": "34878236800032",
+      "objet": "CRECHE FAMILIALE",
+      "montant": 191560,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.883257,
+        "lon": 2.36004
+      },
+      "adresse": "10 RUE PERDONNET 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00822",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION LE FIGUIER",
+      "siret": "34119424900015",
+      "objet": "Fonctionnement",
+      "montant": 190666,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.852796,
+        "lon": 2.360474
+      },
+      "adresse": "6 RUE DE L'AVE MARIA 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_06982",
+      "annee": 2015,
+      "beneficiaire": "COUP DE MAIN",
+      "siret": "41190781900022",
+      "objet": "fonctionnement RECYCLERIE PARIS",
+      "montant": 190000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.89928,
+        "lon": 2.396625
+      },
+      "adresse": "31 AVENUE EDOUARD VAILLANT 93500 PANTIN",
+      "codePostal": "93500",
+      "commune": "PANTIN"
+    },
+    {
+      "id": "2015_04818",
+      "annee": 2015,
+      "beneficiaire": "PUC RUGBY",
+      "siret": "39901545200010",
+      "objet": "Convention VDP-PUC RUGBY",
+      "montant": 190000,
+      "direction": "DJS",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.818109,
+        "lon": 2.344456
+      },
+      "adresse": "17 AVENUE PIERRE DE COUBERTIN 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01516",
+      "annee": 2015,
+      "beneficiaire": "BÉTONSALON",
+      "siret": "48957504300034",
+      "objet": "fonctionnement",
+      "montant": 190000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.829462,
+        "lon": 2.381826
+      },
+      "adresse": "9 ESPLANADE PIERRE VIDAL-NAQUET 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00130",
+      "annee": 2015,
+      "beneficiaire": "OFFICE CENTRAL DE LA COOPERATION A L ECOLE DE PARIS",
+      "siret": "39333748000031",
+      "objet": "classes à PAC et voyages & projets pédagogiques",
+      "montant": 190000,
+      "direction": "DASCO",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.843914,
+        "lon": 2.316088
+      },
+      "adresse": "149 RUE DE VAUGIRARD 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_06983",
+      "annee": 2015,
+      "beneficiaire": "PARIS ATELIERS",
+      "siret": "31293687500078",
+      "objet": "INVESTISSEMENTS",
+      "montant": 188900,
+      "direction": "DAC",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.850017,
+        "lon": 2.369748
+      },
+      "adresse": "7 RUE BISCORNET 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2014_00027",
+      "annee": 2015,
+      "beneficiaire": "FONDATION SANTE DES ETUDIANTS DE FRANCE",
+      "siret": "77568300600016",
+      "objet": "subvention d'équipement du foyer d'hébergement pour étudiants handicapés physiques dépendants",
+      "montant": 188000,
+      "direction": "DASES",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.822074,
+        "lon": 2.33468
+      },
+      "adresse": "8 RUE EMILE DEUTSCH DE LA MEURTHE 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_04997",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION FRANCO-ASIATIQUE POUR L'ENFANCE",
+      "siret": "48262306300013",
+      "objet": "fonctionnement Bellot",
+      "montant": 187764,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.872162,
+        "lon": 2.373266
+      },
+      "adresse": "10 RUE DU BUISSON SAINT-LOUIS 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00818",
+      "annee": 2015,
+      "beneficiaire": "ACCUEIL, RÉINSERTION SOCIALE DES PERSONNES ET DES FAMILLES OEUVRE DES GARES - LAFAYETTE », DITE « ARFOG-LAFAYETTE \"",
+      "siret": "77568111700112",
+      "objet": "crèche Sèvres",
+      "montant": 187606,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.823802,
+        "lon": 2.410255
+      },
+      "adresse": "94 RUE DE PARIS 94220 CHARENTON-LE-PONT",
+      "codePostal": "94220",
+      "commune": "CHARENTON-LE-PONT"
+    },
+    {
+      "id": "2015_01823",
+      "annee": 2015,
+      "beneficiaire": "LA MAISON DES BOUT'CHOU",
+      "siret": "35118614300175",
+      "objet": "FONCTIONNEMENT 2015 MA Le moulin en herbe rue des Meuniers 75012",
+      "montant": 187547,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.844295,
+        "lon": 2.331113
+      },
+      "adresse": "12 RUE VAVIN 75006 PARIS",
+      "codePostal": "75006",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01214",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION POUR LE DEVELOPPEMENT DE LA PRESCOLARISATION",
+      "siret": "34153916100016",
+      "objet": "FONCTIONNEMENT 2015",
+      "montant": 187431,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.883428,
+        "lon": 2.330737
+      },
+      "adresse": "18 B RUE DE BRUXELLES 75009 PARIS",
+      "codePostal": "75009",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01131",
+      "annee": 2015,
+      "beneficiaire": "LA MAISON KANGOUROU",
+      "siret": "45234009400203",
+      "objet": "Roussel   2 rue Albert Roussel",
+      "montant": 186779,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.869209,
+        "lon": 2.360352
+      },
+      "adresse": "10 RUE DE LANCRY 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00938",
+      "annee": 2015,
+      "beneficiaire": "CRESCENDO",
+      "siret": "78481011100350",
+      "objet": "Halte_garderie_Fontarabie",
+      "montant": 186180,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.862478,
+        "lon": 2.367835
+      },
+      "adresse": "102 C RUE AMELOT 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01394",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION LA PASSERELLE",
+      "siret": "37974428700044",
+      "objet": "fonctionnement 2015",
+      "montant": 183995,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.824339,
+        "lon": 2.347659
+      },
+      "adresse": "42 RUE DE LA COLONIE 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_03047",
+      "annee": 2015,
+      "beneficiaire": "GAN MENAHEM",
+      "siret": "34830108600024",
+      "objet": "Crèche GAN KITOV",
+      "montant": 183740,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.894543,
+        "lon": 2.365982
+      },
+      "adresse": "2 RUE TRISTAN TZARA 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01126",
+      "annee": 2015,
+      "beneficiaire": "LA MAISON KANGOUROU",
+      "siret": "45234009400203",
+      "objet": "Jacquemont   12 rue Jacquemont",
+      "montant": 181665,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.869209,
+        "lon": 2.360352
+      },
+      "adresse": "10 RUE DE LANCRY 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_06197",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION DES PERSONNELS SPORTIFS DES ADMINISTRATIONS PARISIENNES DE LA VILLE DE PARIS APSAP",
+      "siret": "77566270300023",
+      "objet": "FONCTIONNEMENT",
+      "montant": 181000,
+      "direction": "DJS",
+      "nature": "Fonctionnement"
+    },
+    {
+      "id": "2015_07774",
+      "annee": 2015,
+      "beneficiaire": "ACCUEIL, RÉINSERTION SOCIALE DES PERSONNES ET DES FAMILLES OEUVRE DES GARES - LAFAYETTE », DITE « ARFOG-LAFAYETTE \"",
+      "siret": "77568111700112",
+      "objet": "FSE PLVP",
+      "montant": 180321,
+      "direction": "DFA",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.823802,
+        "lon": 2.410255
+      },
+      "adresse": "94 RUE DE PARIS 94220 CHARENTON-LE-PONT",
+      "codePostal": "94220",
+      "commune": "CHARENTON-LE-PONT"
+    },
+    {
+      "id": "2015_05215",
+      "annee": 2015,
+      "beneficiaire": "FONDS RÉGIONAL D'ART CONTEMPORAIN ILE-DE-FRANCE (FRAC ILE-DE-FRANCE/LE PLATEAU)",
+      "siret": "32966567300037",
+      "objet": "fonctionnement 2015",
+      "montant": 180000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.896786986039814,
+        "lon": 2.4324760564573333
+      },
+      "adresse": "43 RUE DE LA COMMUNE DE PARIS 93230 ROMAINVILLE",
+      "codePostal": "93230",
+      "commune": "ROMAINVILLE"
+    },
+    {
+      "id": "2015_07995",
+      "annee": 2015,
+      "beneficiaire": "FONDS SOCIAL JUIF UNIFIE",
+      "siret": "77567220700153",
+      "objet": "Programme de mise en sécurisation des bâtiments Pragramme d'aide aux victimes d'actes antisémites",
+      "montant": 180000,
+      "direction": "DPSP",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.837954,
+        "lon": 2.34788
+      },
+      "adresse": "39 RUE BROCA 75005 PARIS",
+      "codePostal": "75005",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_06273",
+      "annee": 2015,
+      "beneficiaire": "BÉTONSALON",
+      "siret": "48957504300034",
+      "objet": "investissement pour \"La Villa Vassilieff\" et site 13ème",
+      "montant": 180000,
+      "direction": "DAC",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.829462,
+        "lon": 2.381826
+      },
+      "adresse": "9 ESPLANADE PIERRE VIDAL-NAQUET 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00945",
+      "annee": 2015,
+      "beneficiaire": "CRESCENDO",
+      "siret": "78481011100350",
+      "objet": "Creche_Les_Enfants_Dabord",
+      "montant": 179177,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.862478,
+        "lon": 2.367835
+      },
+      "adresse": "102 C RUE AMELOT 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_04959",
+      "annee": 2015,
+      "beneficiaire": "SOLIDARITE SIDA",
+      "siret": "39861308300045",
+      "objet": "Festival Solidays 2015",
+      "montant": 177000,
+      "direction": "DASES",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.859751,
+        "lon": 2.379289
+      },
+      "adresse": "16 B AVENUE PARMENTIER 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_06811",
+      "annee": 2015,
+      "beneficiaire": "CROIX ROUGE FRANCAISE (NATIONALE)",
+      "siret": "77567227221138",
+      "objet": "Rénovation et restructuration du centre de santé Haxo",
+      "montant": 176000,
+      "direction": "DASES",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.827226,
+        "lon": 2.314209
+      },
+      "adresse": "SITE CROIX ROUGE 98 RUE DIDOT 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00802",
+      "annee": 2015,
+      "beneficiaire": "ABC PUÉRICULTURE",
+      "siret": "34482479200032",
+      "objet": "Cité des Ours multi accueil",
+      "montant": 175651,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.852284,
+        "lon": 2.274995
+      },
+      "adresse": "9 RUE JEAN DE LA FONTAINE 75016 PARIS",
+      "codePostal": "75016",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_05062",
+      "annee": 2015,
+      "beneficiaire": "AGORANOV",
+      "siret": "43341799500035",
+      "objet": "Programme d'accompagnement de l'incubateur Agoranov",
+      "montant": 175000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.846121,
+        "lon": 2.328168
+      },
+      "adresse": "96 B BOULEVARD RASPAIL 75006 PARIS",
+      "codePostal": "75006",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_02064",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION PETITE ENFANCE ET PARENTALITÉ - MAISON VERTE",
+      "siret": "31541065400026",
+      "objet": "Subvention de fonctionnement de l'APEP la Maison Verte",
+      "montant": 175000,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.844998,
+        "lon": 2.298546
+      },
+      "adresse": "13 RUE MEILHAC 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_02450",
+      "annee": 2015,
+      "beneficiaire": "INSTITUT D'EDUCATION ET DES PRATIQUES CITOYENNES (IEPC)",
+      "siret": "43444766000185",
+      "objet": "Fonctionnement 2015",
+      "montant": 174957,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.910016,
+        "lon": 2.379862
+      },
+      "adresse": "59 RUE DE LA COMMUNE DE PARIS 93300 AUBERVILLIERS",
+      "codePostal": "93300",
+      "commune": "AUBERVILLIERS"
+    },
+    {
+      "id": "2015_02365",
+      "annee": 2015,
+      "beneficiaire": "UNION DÉPARTEMENTALE DES ASSOCIATIONS FAMILIALES DE PARIS",
+      "siret": "78441204100013",
+      "objet": "rue Cardinet 17ème",
+      "montant": 173921,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.878496,
+        "lon": 2.337741
+      },
+      "adresse": "28 PLACE SAINT-GEORGES 75009 PARIS",
+      "codePostal": "75009",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00623",
+      "annee": 2015,
+      "beneficiaire": "LA GOUTTE DE LAIT SAINT LEON",
+      "siret": "78461542900049",
+      "objet": "Fonctionnement EAJE multi-accueil Petit George, 9, rue GB Shaw, 75015 Paris",
+      "montant": 173473,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.850778,
+        "lon": 2.295884
+      },
+      "adresse": "37 RUE DUPLEIX 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00946",
+      "annee": 2015,
+      "beneficiaire": "CRESCENDO",
+      "siret": "78481011100350",
+      "objet": "Creche_Enfance_et_Decouvertes",
+      "montant": 173223,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.862478,
+        "lon": 2.367835
+      },
+      "adresse": "102 C RUE AMELOT 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00799",
+      "annee": 2015,
+      "beneficiaire": "ABC PUÉRICULTURE",
+      "siret": "34482479200032",
+      "objet": "Au Fil des Ours multi accueil",
+      "montant": 172722,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.852284,
+        "lon": 2.274995
+      },
+      "adresse": "9 RUE JEAN DE LA FONTAINE 75016 PARIS",
+      "codePostal": "75016",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01104",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION DES CITÉS DU SECOURS CATHOLIQUE",
+      "siret": "35330523800175",
+      "objet": "Fonctionnement crèche collective",
+      "montant": 170791,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.867088,
+        "lon": 2.398162
+      },
+      "adresse": "72 RUE ORFILA 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_06157",
+      "annee": 2015,
+      "beneficiaire": "CROIX ROUGE FRANCAISE (NATIONALE)",
+      "siret": "77567227221138",
+      "objet": "CTA de Brazzaville (Congo), au CTA et l'UNIV de Bangui et à la PTPE à Berberati (RCA)",
+      "montant": 170000,
+      "direction": "DGRI",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.827226,
+        "lon": 2.314209
+      },
+      "adresse": "SITE CROIX ROUGE 98 RUE DIDOT 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01550",
+      "annee": 2015,
+      "beneficiaire": "ERDA",
+      "siret": "39196151300085",
+      "objet": "Fonctionnement",
+      "montant": 170000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.870966,
+        "lon": 2.321435
+      },
+      "adresse": "23 RUE D'ANJOU 75008 PARIS",
+      "codePostal": "75008",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_08046",
+      "annee": 2015,
+      "beneficiaire": "LA PLACE - CENTRE CULTUREL HIPHOP",
+      "siret": "80289090500010",
+      "objet": "ÉQUIPEMENT (réévalué)",
+      "montant": 170000,
+      "direction": "DAC",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.861819,
+        "lon": 2.347644
+      },
+      "adresse": "10 PASSAGE DE LA CANOPEE 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00936",
+      "annee": 2015,
+      "beneficiaire": "CRESCENDO",
+      "siret": "78481011100350",
+      "objet": "Halte_garderie_Champerret",
+      "montant": 169354,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.862478,
+        "lon": 2.367835
+      },
+      "adresse": "102 C RUE AMELOT 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01863",
+      "annee": 2015,
+      "beneficiaire": "FONDATION DE ROTHSCHILD",
+      "siret": "77568109100010",
+      "objet": "fonctionnement",
+      "montant": 168402,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.84202,
+        "lon": 2.397968
+      },
+      "adresse": "76 RUE DE PICPUS 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01030",
+      "annee": 2015,
+      "beneficiaire": "FONDATION OEUVRE DE LA CROIX SAINT-SIMON",
+      "siret": "78480968300013",
+      "objet": "Halte-garderie Jardin du Luxembourg",
+      "montant": 168206,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.878208,
+        "lon": 2.382497
+      },
+      "adresse": "35 RUE DU PLATEAU 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_07440",
+      "annee": 2015,
+      "beneficiaire": "AURORE (DAWN)",
+      "siret": "77568497000384",
+      "objet": "Maraude Ouest",
+      "montant": 167580,
+      "direction": "DASES",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.84261,
+        "lon": 2.31629
+      },
+      "adresse": "SIEGE 31 RUE FALGUIERE 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_07349",
+      "annee": 2015,
+      "beneficiaire": "FONDATION OEUVRE DE LA CROIX SAINT-SIMON",
+      "siret": "78480968300013",
+      "objet": "PMI Croix Saint-Simon - 119 rue d'Avron (Paris 20e) - Travaux de restructuration",
+      "montant": 166000,
+      "direction": "DFPE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.878208,
+        "lon": 2.382497
+      },
+      "adresse": "35 RUE DU PLATEAU 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_02914",
+      "annee": 2015,
+      "beneficiaire": "ENFANCES AU CINEMA",
+      "siret": "48154244700026",
+      "objet": "FONCTIONNEMENT",
+      "montant": 165000,
+      "direction": "DAC",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.831646,
+        "lon": 2.329884
+      },
+      "adresse": "34 AVENUE DU GENERAL LECLERC 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01127",
+      "annee": 2015,
+      "beneficiaire": "LA MAISON KANGOUROU",
+      "siret": "45234009400203",
+      "objet": "Chapelle   96 bd de la Chapelle",
+      "montant": 164678,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.869209,
+        "lon": 2.360352
+      },
+      "adresse": "10 RUE DE LANCRY 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_07137",
+      "annee": 2015,
+      "beneficiaire": "DEVE COWORKING",
+      "siret": "81145574000027",
+      "objet": "AMI Coworking",
+      "montant": 163000,
+      "direction": "DAE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.827914,
+        "lon": 2.355409
+      },
+      "adresse": "13 RUE VANDREZANNE 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_02907",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION POUR L'ACCUEIL DE TOUS LES ENFANTS",
+      "siret": "38448701300037",
+      "objet": "Crèche BALOO (anciennement MOWGLI PAJOL) 6 rue Pajol",
+      "montant": 162896,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.851264,
+        "lon": 2.393891
+      },
+      "adresse": "27 AVENUE PHILIPPE-AUGUSTE 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01825",
+      "annee": 2015,
+      "beneficiaire": "LA MAISON DES BOUT'CHOU",
+      "siret": "35118614300175",
+      "objet": "FONCTIONNEMENT 2015 MA Sur un air de polka rue Adolphe Mille 75019",
+      "montant": 162079,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.844295,
+        "lon": 2.331113
+      },
+      "adresse": "12 RUE VAVIN 75006 PARIS",
+      "codePostal": "75006",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_03046",
+      "annee": 2015,
+      "beneficiaire": "GAN MENAHEM",
+      "siret": "34830108600024",
+      "objet": "Crèche HEIKHAL MENAHEM",
+      "montant": 161577,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.894543,
+        "lon": 2.365982
+      },
+      "adresse": "2 RUE TRISTAN TZARA 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00803",
+      "annee": 2015,
+      "beneficiaire": "ABC PUÉRICULTURE",
+      "siret": "34482479200032",
+      "objet": "Coquinours multi accueil",
+      "montant": 161411,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.852284,
+        "lon": 2.274995
+      },
+      "adresse": "9 RUE JEAN DE LA FONTAINE 75016 PARIS",
+      "codePostal": "75016",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00809",
+      "annee": 2015,
+      "beneficiaire": "ABC PUÉRICULTURE",
+      "siret": "34482479200032",
+      "objet": "Oursons multi accueil",
+      "montant": 161379,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.852284,
+        "lon": 2.274995
+      },
+      "adresse": "9 RUE JEAN DE LA FONTAINE 75016 PARIS",
+      "codePostal": "75016",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01134",
+      "annee": 2015,
+      "beneficiaire": "LA MAISON KANGOUROU",
+      "siret": "45234009400203",
+      "objet": "Valmy   143 quai de Valmy",
+      "montant": 160923,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.869209,
+        "lon": 2.360352
+      },
+      "adresse": "10 RUE DE LANCRY 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00941",
+      "annee": 2015,
+      "beneficiaire": "CRESCENDO",
+      "siret": "78481011100350",
+      "objet": "Multi_accueil_Saint_Roch",
+      "montant": 160256,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.862478,
+        "lon": 2.367835
+      },
+      "adresse": "102 C RUE AMELOT 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_05064",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION INCUBATEUR PARIS BIOTECH SANTE",
+      "siret": "43496931700016",
+      "objet": "PARIS BIOTECH SANTE INCUBATEUR ET PEPINIERE EN SANTE HUMAINE",
+      "montant": 160000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.851906,
+        "lon": 2.340105
+      },
+      "adresse": "85 BOULEVARD SAINT-GERMAIN 75006 PARIS",
+      "codePostal": "75006",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00621",
+      "annee": 2015,
+      "beneficiaire": "COMITE DEPARTEMENTAL OLYMPIQUE ET SPORTIF DE PARIS - (CDOS DE PARIS)",
+      "siret": "34502176000037",
+      "objet": "REDUC-SPORT 2015",
+      "montant": 160000,
+      "direction": "DJS",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.8562,
+        "lon": 2.290234
+      },
+      "adresse": "91 QUAI JACQUES CHIRAC 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_08176",
+      "annee": 2015,
+      "beneficiaire": "RESTAURANTS DU COEUR DE PARIS LES RELAIS DU COEUR DE PARIS",
+      "siret": "42334329200011",
+      "objet": "Subvention de fonctionnement Campagne de Distribution Alimentaire 2015-2016",
+      "montant": 160000,
+      "direction": "DASES",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.83078,
+        "lon": 2.365569
+      },
+      "adresse": "6 RUE JEAN SEBASTIEN BACH 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_02505",
+      "annee": 2015,
+      "beneficiaire": "CENTRE EPINETTES FAMILLE INSERTION ACCUEIL CEFIA",
+      "siret": "39999069600037",
+      "objet": "HALTE GARDERIE 2015",
+      "montant": 159770,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.895056,
+        "lon": 2.317715
+      },
+      "adresse": "102 RUE DE LA JONQUIERE 75017 PARIS",
+      "codePostal": "75017",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00856",
+      "annee": 2015,
+      "beneficiaire": "GROUPE D'OEUVRES SOCIALES DE BELLEVILLE",
+      "siret": "77569575200011",
+      "objet": "MULTIACCUEIL - 20 PLACES - 162 RUE DE BELLEVILLE",
+      "montant": 158791,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.875394,
+        "lon": 2.391695
+      },
+      "adresse": "162 RUE DE BELLEVILLE 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00624",
+      "annee": 2015,
+      "beneficiaire": "LA GOUTTE DE LAIT SAINT LEON",
+      "siret": "78461542900049",
+      "objet": "Fonctionnement 2015 EAJE multi-accueil Saint Léon, 37, rue Dupleix, 75015 Paris",
+      "montant": 158698,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.850778,
+        "lon": 2.295884
+      },
+      "adresse": "37 RUE DUPLEIX 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_02534",
+      "annee": 2015,
+      "beneficiaire": "ENVOLUDIA",
+      "siret": "77573329800183",
+      "objet": "équipement Crèche les Bambini",
+      "montant": 158447,
+      "direction": "DFPE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.854579,
+        "lon": 2.417068
+      },
+      "adresse": "261 RUE DE PARIS 93100 MONTREUIL",
+      "codePostal": "93100",
+      "commune": "MONTREUIL"
+    },
+    {
+      "id": "2015_00937",
+      "annee": 2015,
+      "beneficiaire": "CRESCENDO",
+      "siret": "78481011100350",
+      "objet": "Multi_accueil_Toboggan",
+      "montant": 158435,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.862478,
+        "lon": 2.367835
+      },
+      "adresse": "102 C RUE AMELOT 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01819",
+      "annee": 2015,
+      "beneficiaire": "LA MAISON DES BOUT'CHOU",
+      "siret": "35118614300175",
+      "objet": "FONCTIONNEMENT 2015 MA Les p'tits bonheurs allée des Eiders 75019",
+      "montant": 157122,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.844295,
+        "lon": 2.331113
+      },
+      "adresse": "12 RUE VAVIN 75006 PARIS",
+      "codePostal": "75006",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00959",
+      "annee": 2015,
+      "beneficiaire": "FONDATION OEUVRE DE LA CROIX SAINT-SIMON",
+      "siret": "78480968300013",
+      "objet": "Multi-Accueil La Môme",
+      "montant": 156121,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.878208,
+        "lon": 2.382497
+      },
+      "adresse": "35 RUE DU PLATEAU 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00933",
+      "annee": 2015,
+      "beneficiaire": "CRESCENDO",
+      "siret": "78481011100350",
+      "objet": "Halte_garderie_Belleville",
+      "montant": 154946,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.862478,
+        "lon": 2.367835
+      },
+      "adresse": "102 C RUE AMELOT 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_05211",
+      "annee": 2015,
+      "beneficiaire": "CENTRE D'ACTION SOCIALE PROTESTANT DANS LA REGION PARISIENNE",
+      "siret": "31873216100035",
+      "objet": "FONCTIONNEMENT 2015 - MULTIACCUEILLA CLAIRIERE - CASP",
+      "montant": 154430,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.842892,
+        "lon": 2.399655
+      },
+      "adresse": "CASP 20 RUE SANTERRE 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01826",
+      "annee": 2015,
+      "beneficiaire": "LA MAISON DES BOUT'CHOU",
+      "siret": "35118614300175",
+      "objet": "FONCTIONNEMENT 2015 MA Trois p'tits tours rue Colette Magny 75019",
+      "montant": 153833,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.844295,
+        "lon": 2.331113
+      },
+      "adresse": "12 RUE VAVIN 75006 PARIS",
+      "codePostal": "75006",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01139",
+      "annee": 2015,
+      "beneficiaire": "OEUVRE DE LA CHAUSSÉE DU MAINE - CEASIL  (OCM-CEASIL)",
+      "siret": "78461538700015",
+      "objet": "Halte-garderie Fonctionnement 2015",
+      "montant": 152032,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.839051,
+        "lon": 2.310229
+      },
+      "adresse": "4 RUE ELISABETH VIGEE-LEBRUN 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_02449",
+      "annee": 2015,
+      "beneficiaire": "L'ARBRE BLEU",
+      "siret": "38411101900012",
+      "objet": "Subvention de fonctionnement",
+      "montant": 151474,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.886001,
+        "lon": 2.3507
+      },
+      "adresse": "52 RUE POLONCEAU 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_02499",
+      "annee": 2015,
+      "beneficiaire": "OEUVRE DE SECOURS AUX ENFANTS (OSE)",
+      "siret": "77568133100176",
+      "objet": "Fonctionnement \"La maison des sources\"",
+      "montant": 150618,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.871274,
+        "lon": 2.374546
+      },
+      "adresse": "117 RUE DU FAUBOURG DU TEMPLE 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01463",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION MORIJA",
+      "siret": "49186042500017",
+      "objet": "AAP  SEA - Programme WASH ColibriAssociation Morija",
+      "montant": 150000,
+      "direction": "DGRI",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 46.395161,
+        "lon": 6.591654
+      },
+      "adresse": "9 AVENUE DES MELEZES 74500 EVIAN-LES-BAINS",
+      "codePostal": "74500",
+      "commune": "EVIAN-LES-BAINS"
+    },
+    {
+      "id": "2015_06455",
+      "annee": 2015,
+      "beneficiaire": "PARIS ET COMPAGNIE",
+      "siret": "40895436000033",
+      "objet": "projets Sport & Tourisme & Euro 2016",
+      "montant": 150000,
+      "direction": "DAE",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.894069,
+        "lon": 2.35423
+      },
+      "adresse": "48 RUE RENE CLAIR 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01584",
+      "annee": 2015,
+      "beneficiaire": "ORCHESTRE DES CONCERTS LAMOUREUX",
+      "siret": "78434003600044",
+      "objet": "Fonctionnement",
+      "montant": 150000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.867263,
+        "lon": 2.392843
+      },
+      "adresse": "8 RUE BOYER 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00796",
+      "annee": 2015,
+      "beneficiaire": "GCSMS MAISON DES ADOLESCENTS R.DEBRÉ",
+      "siret": "53814297700023",
+      "objet": "Subvention de fonctionnement pour la Maison des Adolescents R debré",
+      "montant": 150000,
+      "direction": "DASES",
+      "nature": "Non précisée",
+      "coordinates": {
+        "lat": 48.879456,
+        "lon": 2.401817
+      },
+      "adresse": "8 AV PORTE PRE ST GERVAIS 75019 PARIS 19",
+      "codePostal": "75019",
+      "commune": "PARIS 19"
+    },
+    {
+      "id": "2015_01837",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION DES CONCERTS PASDELOUP",
+      "siret": "78434004400030",
+      "objet": "Demande de subvention Bureau de la musique 2015",
+      "montant": 150000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.831314,
+        "lon": 2.337519
+      },
+      "adresse": "20 RUE DAREAU 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_07736",
+      "annee": 2015,
+      "beneficiaire": "ECOLE DE LA 2E CHANCE DE PARIS",
+      "siret": "49300518500050",
+      "objet": "Repositionner l'E2C sur son cœur de métier",
+      "montant": 150000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.887541,
+        "lon": 2.366997
+      },
+      "adresse": "47 RUE D'AUBERVILLIERS 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_07902",
+      "annee": 2015,
+      "beneficiaire": "LE MUSEE EN HERBE",
+      "siret": "31142870000034",
+      "objet": "Demande de subvention d¿investissement pour aménagement des nouveaux locaux",
+      "montant": 150000,
+      "direction": "DAC",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.860146,
+        "lon": 2.342132
+      },
+      "adresse": "23 RUE DE L'ARBRE SEC 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_05180",
+      "annee": 2015,
+      "beneficiaire": "AGENCE PARISIENNE DU CLIMAT",
+      "siret": "52800732100011",
+      "objet": "complément de fonctionnement",
+      "montant": 150000,
+      "direction": "DEVE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.833505,
+        "lon": 2.386307
+      },
+      "adresse": "PAVILLON DU LAC PARC DE BERCY 3 RUE FRANCOIS TRUFFAUT 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_08132",
+      "annee": 2015,
+      "beneficiaire": "FORUM DES IMAGES",
+      "siret": "33212365200023",
+      "objet": "REMPLACEMENT DE LA BILLETTERIE DU FORUM DES IMAGES",
+      "montant": 150000,
+      "direction": "DAC",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.86196,
+        "lon": 2.346687
+      },
+      "adresse": "FORUM DES HALLES PORTE SAINT-EUSTACHE 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01482",
+      "annee": 2015,
+      "beneficiaire": "INITIATIVE DEVELOPPEMENT",
+      "siret": "39459802300023",
+      "objet": "AAP SEA - Amélioration de l'accès à l'eau et à l'assainissement de 2 communes - Haïti",
+      "montant": 149805,
+      "direction": "DGRI",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 46.583475,
+        "lon": 0.323742
+      },
+      "adresse": "29 RUE LADMIRAULT 86000 POITIERS",
+      "codePostal": "86000",
+      "commune": "POITIERS"
+    },
+    {
+      "id": "2015_02871",
+      "annee": 2015,
+      "beneficiaire": "HALTE ENFANTINE \"LES POUSSINS D'ANNAM\"",
+      "siret": "34934969600022",
+      "objet": "FONCTIONNEMENT",
+      "montant": 149402,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.867589,
+        "lon": 2.3913
+      },
+      "adresse": "52 RUE DE LA BIDASSOA 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_08555",
+      "annee": 2015,
+      "beneficiaire": "CAP DIGITAL PARIS REGION",
+      "siret": "48974929100030",
+      "objet": "Subvention investissement",
+      "montant": 147756,
+      "direction": "DAE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.879987,
+        "lon": 2.36535
+      },
+      "adresse": "14 RUE ALEXANDRE PARODI 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00817",
+      "annee": 2015,
+      "beneficiaire": "ACCUEIL, RÉINSERTION SOCIALE DES PERSONNES ET DES FAMILLES OEUVRE DES GARES - LAFAYETTE », DITE « ARFOG-LAFAYETTE \"",
+      "siret": "77568111700112",
+      "objet": "crèche Lafayette",
+      "montant": 146193,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.823802,
+        "lon": 2.410255
+      },
+      "adresse": "94 RUE DE PARIS 94220 CHARENTON-LE-PONT",
+      "codePostal": "94220",
+      "commune": "CHARENTON-LE-PONT"
+    },
+    {
+      "id": "2015_01922",
+      "annee": 2015,
+      "beneficiaire": "ENFANT PRESENT",
+      "siret": "39027802600047",
+      "objet": "CRECHE COLLECTIVE MARCADET,",
+      "montant": 145277,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.86644,
+        "lon": 2.405173
+      },
+      "adresse": "15 RUE DES MONTIBOEUFS 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00076",
+      "annee": 2015,
+      "beneficiaire": "COMITÉ LOCAL POUR LE LOGEMENT AUTONOME DES JEUNES DE PARIS",
+      "siret": "42961145200047",
+      "objet": "fonctionnement",
+      "montant": 145000,
+      "direction": "DJS",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.855576,
+        "lon": 2.392963
+      },
+      "adresse": "6 RUE ROBERT ET SONIA DELAUNAY 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00924",
+      "annee": 2015,
+      "beneficiaire": "CENTRE ISRAELITE DE MONTMARTRE",
+      "siret": "78475659500012",
+      "objet": "CRECHE MARCEL BLEUSTEIN-BLANCHET",
+      "montant": 144222,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.887385,
+        "lon": 2.344638
+      },
+      "adresse": "16 RUE LAMARCK 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_02468",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION POUR LA DIVERSITÉ CULTURELLE ET SOCIALE \"L'ENFANCE EN COULEURS\"",
+      "siret": "52098716500021",
+      "objet": "Fonctionnement 2015",
+      "montant": 143704,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.863205,
+        "lon": 2.379747
+      },
+      "adresse": "6 RUE GUILLAUME BERTRAND 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_05307",
+      "annee": 2015,
+      "beneficiaire": "LES PETITS DU CANARD",
+      "siret": "38362087900023",
+      "objet": "crèche MARTIN 220, rue Saint Martin",
+      "montant": 142523,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.865281,
+        "lon": 2.362193
+      },
+      "adresse": "10 RUE DUPETIT-THOUARS 75003 PARIS",
+      "codePostal": "75003",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00935",
+      "annee": 2015,
+      "beneficiaire": "CRESCENDO",
+      "siret": "78481011100350",
+      "objet": "Multi_accueil_Souris_Verte",
+      "montant": 141704,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.862478,
+        "lon": 2.367835
+      },
+      "adresse": "102 C RUE AMELOT 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00610",
+      "annee": 2015,
+      "beneficiaire": "LES CROCOS CRECHE PARENTALE",
+      "siret": "32965532800022",
+      "objet": "Fonctionnement 2015",
+      "montant": 140729,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.838719,
+        "lon": 2.397324
+      },
+      "adresse": "180 AVENUE DAUMESNIL 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_08152",
+      "annee": 2015,
+      "beneficiaire": "EMMAUS SOLIDARITE",
+      "siret": "31723624800017",
+      "objet": "Mission Migrants",
+      "montant": 140263,
+      "direction": "DASES",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.860017,
+        "lon": 2.345244
+      },
+      "adresse": "32 RUE DES BOURDONNAIS 75001 PARIS",
+      "codePostal": "75001",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_06177",
+      "annee": 2015,
+      "beneficiaire": "MÉDECINS DU MONDE",
+      "siret": "32101874900127",
+      "objet": "Lutte contre le VIH/sida et les hépatites chez les usagers de drogue, Nairobi, Kenya",
+      "montant": 140000,
+      "direction": "DGRI",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.906202,
+        "lon": 2.358907
+      },
+      "adresse": "84 AVENUE DU PRESIDENT WILSON 93210 SAINT-DENIS",
+      "codePostal": "93210",
+      "commune": "SAINT-DENIS"
+    },
+    {
+      "id": "2015_08556",
+      "annee": 2015,
+      "beneficiaire": "ASTECH PARIS-REGION",
+      "siret": "50075994900018",
+      "objet": "Demande de soutien à la gouvernance du Pole ASTech Paris Région / investissement",
+      "montant": 139620,
+      "direction": "DAE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.944046,
+        "lon": 2.431555
+      },
+      "adresse": "1 ALLEE DE BRUXELLES AEROPORT DE PARIS LE BOURG 93350 LE BOURGET",
+      "codePostal": "93350",
+      "commune": "LE BOURGET"
+    },
+    {
+      "id": "2015_03017",
+      "annee": 2015,
+      "beneficiaire": "ESPACE 19",
+      "siret": "32228389600049",
+      "objet": "Multiaccueil Espace 19 Riquet",
+      "montant": 139570,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.895716,
+        "lon": 2.374611
+      },
+      "adresse": "6 RUE HENRI VERNEUIL 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00743",
+      "annee": 2015,
+      "beneficiaire": "INSTITUTIONS GANONE YAD",
+      "siret": "39419135700018",
+      "objet": "FONCTIONNEMENT",
+      "montant": 138856,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.855999,
+        "lon": 2.360517
+      },
+      "adresse": "10 RUE PAVEE 75004 PARIS",
+      "codePostal": "75004",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00765",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION AIDE AUX MÈRES DE FAMILLE",
+      "siret": "78431366000010",
+      "objet": "Fonctionnement HG",
+      "montant": 135360,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.851952,
+        "lon": 2.324893
+      },
+      "adresse": "12 RUE CHOMEL 75007 PARIS",
+      "codePostal": "75007",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00622",
+      "annee": 2015,
+      "beneficiaire": "LA GOUTTE DE LAIT SAINT LEON",
+      "siret": "78461542900049",
+      "objet": "Fonctionnement 2015 EAJE multi-accueil Petit François, 18, rue Edgar Faure, 75015 Paris",
+      "montant": 135055,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.850778,
+        "lon": 2.295884
+      },
+      "adresse": "37 RUE DUPLEIX 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_04945",
+      "annee": 2015,
+      "beneficiaire": "ATELIER PARISIEN D'URBANISME",
+      "siret": "78423753900043",
+      "objet": "Étude sur les besoins en matière de revitalisation commerciale Diagnostic du territoire parisien",
+      "montant": 135000,
+      "direction": "DAE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.825563,
+        "lon": 2.38353
+      },
+      "adresse": "5EME ETAGE 15 RUE JEAN-BAPTISTE BERLIER 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00934",
+      "annee": 2015,
+      "beneficiaire": "CRESCENDO",
+      "siret": "78481011100350",
+      "objet": "Halde_garderie_Meli_Melo",
+      "montant": 134928,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.862478,
+        "lon": 2.367835
+      },
+      "adresse": "102 C RUE AMELOT 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00625",
+      "annee": 2015,
+      "beneficiaire": "LA GOUTTE DE LAIT SAINT LEON",
+      "siret": "78461542900049",
+      "objet": "Fonctionnement 2015 EAJE halte-garderie, 14, rue Edgar Faure, 75015 Paris.",
+      "montant": 134092,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.850778,
+        "lon": 2.295884
+      },
+      "adresse": "37 RUE DUPLEIX 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01670",
+      "annee": 2015,
+      "beneficiaire": "CROIX ROUGE FRANCAISE (NATIONALE)",
+      "siret": "77567227221138",
+      "objet": "\"Le Parnassium\" 20, rue Labrouste",
+      "montant": 132768,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.827226,
+        "lon": 2.314209
+      },
+      "adresse": "SITE CROIX ROUGE 98 RUE DIDOT 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_02458",
+      "annee": 2015,
+      "beneficiaire": "PARLER A D'AUTRES",
+      "siret": "48102744900026",
+      "objet": "fonctionnement 2015 pour le LAEP \"Les p'tits, les grands\"",
+      "montant": 131517,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.873436,
+        "lon": 2.344671
+      },
+      "adresse": "5 RUE DE LA BOULE ROUGE 75009 PARIS",
+      "codePostal": "75009",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01813",
+      "annee": 2015,
+      "beneficiaire": "LA MAISON DES BOUT'CHOU",
+      "siret": "35118614300175",
+      "objet": "FONCTIONNEMENT 2015 CC Crèche Saint Jacques rue Fbg St Jacques 75014",
+      "montant": 130925,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.844295,
+        "lon": 2.331113
+      },
+      "adresse": "12 RUE VAVIN 75006 PARIS",
+      "codePostal": "75006",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01405",
+      "annee": 2015,
+      "beneficiaire": "ENSEMBLE INTERCONTEMPORAIN",
+      "siret": "30666486300033",
+      "objet": "fonctionnement",
+      "montant": 130000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.889377,
+        "lon": 2.394072
+      },
+      "adresse": "223 AVENUE JEAN JAURES 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01614",
+      "annee": 2015,
+      "beneficiaire": "LE RELAIS ILE DE FRANCE",
+      "siret": "44263388900039",
+      "objet": "fonctionnement",
+      "montant": 129901,
+      "direction": "DASES",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.894522,
+        "lon": 2.338172
+      },
+      "adresse": "15 RUE DU POLE NORD 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00819",
+      "annee": 2015,
+      "beneficiaire": "ACIDULÉS ET À CROQUER",
+      "siret": "32733670700036",
+      "objet": "fonctionnement",
+      "montant": 128380,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.895895,
+        "lon": 2.345296
+      },
+      "adresse": "70 B RUE CHAMPIONNET 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01328",
+      "annee": 2015,
+      "beneficiaire": "LES FRAISES DES BOIS",
+      "siret": "44245590300025",
+      "objet": "fonctionnement",
+      "montant": 128334,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.853737,
+        "lon": 2.374616
+      },
+      "adresse": "8 PASSAGE DES TAILLANDIERS 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_02046",
+      "annee": 2015,
+      "beneficiaire": "LES MÉTAMORPHOSES SINGULIÈRES",
+      "siret": "47997233300013",
+      "objet": "Fonctionnement 2015",
+      "montant": 127000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.880077,
+        "lon": 2.33727
+      },
+      "adresse": "17 RUE HENRY MONNIER 75009 PARIS 9",
+      "codePostal": "75009",
+      "commune": "PARIS 9"
+    },
+    {
+      "id": "2015_00921",
+      "annee": 2015,
+      "beneficiaire": "AU RENDEZ VOUS DES BOUT CHOU",
+      "siret": "33048945100014",
+      "objet": "fonctionnement 2015",
+      "montant": 125386,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.843178,
+        "lon": 2.299933
+      },
+      "adresse": "52 RUE DE L AMIRAL ROUSSIN 75015 PARIS 15",
+      "codePostal": "75015",
+      "commune": "PARIS 15"
+    },
+    {
+      "id": "2015_04603",
+      "annee": 2015,
+      "beneficiaire": "ARAIGNÉE GENTILLE",
+      "siret": "32854216200024",
+      "objet": "Fonctionnement 2015",
+      "montant": 125342,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.892507,
+        "lon": 2.349626
+      },
+      "adresse": "6 SQUARE ORNANO 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_07603",
+      "annee": 2015,
+      "beneficiaire": "AKAMADE",
+      "siret": "81222982100010",
+      "objet": "AMI Coworking étudiants - entrepreneurs",
+      "montant": 125000,
+      "direction": "DAE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.888132,
+        "lon": 2.362432
+      },
+      "adresse": "12 ESPLANADE NATHALIE SARRAUTE 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_06169",
+      "annee": 2015,
+      "beneficiaire": "FONDS SOLIDARITÉ SIDA AFRIQUE",
+      "siret": "49122604900014",
+      "objet": "fonctionnement",
+      "montant": 125000,
+      "direction": "DGRI",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.859751,
+        "lon": 2.379289
+      },
+      "adresse": "A L ATTENTION DE JEAN-PIERRE FOURNIER 16 B AVENUE PARMENTIER 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00523",
+      "annee": 2015,
+      "beneficiaire": "LA COUR DES NOUES",
+      "siret": "31142718100020",
+      "objet": "Fonctionnement 2015",
+      "montant": 124477,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.854534,
+        "lon": 2.382491
+      },
+      "adresse": "6 RUE RICHARD LENOIR 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00221",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION GÉNÉRALE DES FAMILLES DE PARIS 12",
+      "siret": "31889394800014",
+      "objet": "Fonctionnement 2015",
+      "montant": 123633,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.846197,
+        "lon": 2.38629
+      },
+      "adresse": "30 RUE ERARD 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01841",
+      "annee": 2015,
+      "beneficiaire": "ECOLE DES PARENTS ET DES EDUCATEURS D'ILE DE FRANCE",
+      "siret": "78471870200037",
+      "objet": "LAEP La Maison Ouverte",
+      "montant": 122238,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.8549,
+        "lon": 2.38345
+      },
+      "adresse": "5 IMPASSE BON SECOURS 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_05374",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION SCIENCE TECHNOLOGIE SOCIÉTÉ",
+      "siret": "32810007800059",
+      "objet": "Subvention ASTS 2015 pour l¿EPN des Olympiades,13ème arrddt et l'EPN Porte de Montreuil, 20ème arddt",
+      "montant": 122000,
+      "direction": "DDCT",
+      "nature": "Projet",
+      "coordinates": {
+        "lat": 48.829191,
+        "lon": 2.361102
+      },
+      "adresse": "54 AVENUE EDISON 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00986",
+      "annee": 2015,
+      "beneficiaire": "LE REPAIRE DES LUTINS",
+      "siret": "38422607200013",
+      "objet": "Fonctionnement 2015",
+      "montant": 121041,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.863269,
+        "lon": 2.412694
+      },
+      "adresse": "19 RUE HENRI DUVERNOIS 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_02906",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION POUR L'ACCUEIL DE TOUS LES ENFANTS",
+      "siret": "38448701300037",
+      "objet": "Crèche MOWGLI 10 RUE dieu",
+      "montant": 120393,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.851264,
+        "lon": 2.393891
+      },
+      "adresse": "27 AVENUE PHILIPPE-AUGUSTE 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_05191",
+      "annee": 2015,
+      "beneficiaire": "CONFLUENCES",
+      "siret": "31788348600035",
+      "objet": "Fonctionnement",
+      "montant": 120000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.85786,
+        "lon": 2.392446
+      },
+      "adresse": "190 BOULEVARD DE CHARONNE 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_05484",
+      "annee": 2015,
+      "beneficiaire": "LE BAL",
+      "siret": "49396355700027",
+      "objet": "subvention de fonctionnement année 2015",
+      "montant": 120000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.885304,
+        "lon": 2.327219
+      },
+      "adresse": "IMMEUBLE LE BAL 6 IMPASSE DE LA DEFENSE 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01864",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION LA MAISON OUVERTE",
+      "siret": "32450071900020",
+      "objet": "fonctionnement du théâtre Dunois",
+      "montant": 120000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.832818,
+        "lon": 2.370745
+      },
+      "adresse": "108 RUE DU CHEVALERET 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_06775",
+      "annee": 2015,
+      "beneficiaire": "CLUB DES FRANÇAIS VOLANTS DE PARIS",
+      "siret": "31827651600024",
+      "objet": "FONCTIONNEMENT",
+      "montant": 120000,
+      "direction": "DJS",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.839223,
+        "lon": 2.37777
+      },
+      "adresse": "POPB 8 BOULEVARD DE BERCY 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01049",
+      "annee": 2015,
+      "beneficiaire": "LE MOULIN BLEU",
+      "siret": "44831946700016",
+      "objet": "Fonctionnement 2015",
+      "montant": 119619,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.843174,
+        "lon": 2.396965
+      },
+      "adresse": "60 B RUE DE PICPUS 75012 PARIS",
+      "codePostal": "75012",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_02988",
+      "annee": 2015,
+      "beneficiaire": "FAMILLE ET CITÉ",
+      "siret": "78457961700035",
+      "objet": "fonctionnement multi accueil Binet",
+      "montant": 118815,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.845491,
+        "lon": 2.294457
+      },
+      "adresse": "70 B RUE DU COMMERCE 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01919",
+      "annee": 2015,
+      "beneficiaire": "ENFANT PRESENT",
+      "siret": "39027802600047",
+      "objet": "CRECHE COLLECTIVE PANOYAUX,",
+      "montant": 118440,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.86644,
+        "lon": 2.405173
+      },
+      "adresse": "15 RUE DES MONTIBOEUFS 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01340",
+      "annee": 2015,
+      "beneficiaire": "11EME EVENEMENTS",
+      "siret": "41866385200022",
+      "objet": "Organisation du FESTIVAL ONZE BOUGE 2015",
+      "montant": 117000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.861266,
+        "lon": 2.378502
+      },
+      "adresse": "MAISON DES ASSO DU 11E 8 RUE DU GENERAL RENAULT 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00644",
+      "annee": 2015,
+      "beneficiaire": "ESTRELIA",
+      "siret": "34878236800032",
+      "objet": "CRECHE LIBELLULE ET PAPILLON",
+      "montant": 116045,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.883257,
+        "lon": 2.36004
+      },
+      "adresse": "10 RUE PERDONNET 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_07122",
+      "annee": 2015,
+      "beneficiaire": "INNOVATION FACTORY",
+      "siret": "79856979400026",
+      "objet": "AMI COWORKING",
+      "montant": 116000,
+      "direction": "DAE",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.827586,
+        "lon": 2.314743
+      },
+      "adresse": "96 RUE DIDOT 75014 PARIS",
+      "codePostal": "75014",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_03534",
+      "annee": 2015,
+      "beneficiaire": "LA JOANNAISE DU GROS CAILLOU",
+      "siret": "78430881900027",
+      "objet": "Fonctionnement 2015",
+      "montant": 114064,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.859891,
+        "lon": 2.304587
+      },
+      "adresse": "11 RUE PIERRE VILLEY 75007 PARIS",
+      "codePostal": "75007",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_04791",
+      "annee": 2015,
+      "beneficiaire": "FRANCE TERRE D'ASILE - FTDA",
+      "siret": "78454750700433",
+      "objet": "\"Le Kiosque\" - Lieu d'accueil et d'orientation situé dans le 10ème arrondissement de Paris",
+      "montant": 114000,
+      "direction": "DASES",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.892128,
+        "lon": 2.362175
+      },
+      "adresse": "24 RUE MARC SEGUIN 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01023",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION CRÈCHE AVENIR",
+      "siret": "33973531800026",
+      "objet": "FONCTIONNEMENT",
+      "montant": 113727,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.890379,
+        "lon": 2.385889
+      },
+      "adresse": "29 RUE DE THIONVILLE 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_02384",
+      "annee": 2015,
+      "beneficiaire": "DE L'INFANS A L'ENFANT",
+      "siret": "48208866300026",
+      "objet": "fonctionnement",
+      "montant": 112500,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.894593,
+        "lon": 2.352433
+      },
+      "adresse": "48 B RUE BOINOD 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_04784",
+      "annee": 2015,
+      "beneficiaire": "SAFE",
+      "siret": "39506543600044",
+      "objet": "réduction des risques sexuels et réduction des risques chez les usagers de drogues par automates",
+      "montant": 111600,
+      "direction": "DASES",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.829645,
+        "lon": 2.292539
+      },
+      "adresse": "11 AVENUE DE LA PORTE DE LA PLAINE 75015 PARIS",
+      "codePostal": "75015",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_02466",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION GRIBOUILLE ALESIA",
+      "siret": "44849623200027",
+      "objet": "FONCTIONNEMENT 2015",
+      "montant": 111205,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 49.451092,
+        "lon": 1.080212
+      },
+      "adresse": "46 RUE THOMAS DUBOSC 76000 ROUEN",
+      "codePostal": "76000",
+      "commune": "ROUEN"
+    },
+    {
+      "id": "2015_04834",
+      "annee": 2015,
+      "beneficiaire": "RESEAU MOM'ARTRE",
+      "siret": "50996337700130",
+      "objet": "fonctionnement",
+      "montant": 111000,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.892078,
+        "lon": 2.375363
+      },
+      "adresse": "204 RUE DE CRIMEE 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00505",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION SAINTE AGNES",
+      "siret": "78431455100010",
+      "objet": "fonctionnement 2015",
+      "montant": 110770,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.849869,
+        "lon": 2.316773
+      },
+      "adresse": "23 RUE OUDINOT 75007 PARIS",
+      "codePostal": "75007",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_02905",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION POUR L'ACCUEIL DE TOUS LES ENFANTS",
+      "siret": "38448701300037",
+      "objet": "DAGOBERT 30 rue Erard",
+      "montant": 110505,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.851264,
+        "lon": 2.393891
+      },
+      "adresse": "27 AVENUE PHILIPPE-AUGUSTE 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_05111",
+      "annee": 2015,
+      "beneficiaire": "CAP DIGITAL PARIS REGION",
+      "siret": "48974929100030",
+      "objet": "fonctionnement",
+      "montant": 110000,
+      "direction": "DAE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.879987,
+        "lon": 2.36535
+      },
+      "adresse": "14 RUE ALEXANDRE PARODI 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01158",
+      "annee": 2015,
+      "beneficiaire": "CENTRE LESBIEN, GAY, BI ET TRANS DE PARIS ET D'ÎLE-DE-FRANCE",
+      "siret": "39394317000034",
+      "objet": "Convention triennale 2015-2017",
+      "montant": 110000,
+      "direction": "DDCT",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.863029,
+        "lon": 2.3543
+      },
+      "adresse": "61/63 61 RUE BEAUBOURG 75003 PARIS",
+      "codePostal": "75003",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01568",
+      "annee": 2015,
+      "beneficiaire": "LA CASERNE ÉPHÉMÈRE",
+      "siret": "42447742000022",
+      "objet": "Subvention annuelle de fonctionnement 2015",
+      "montant": 110000,
+      "direction": "DAC",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.880598,
+        "lon": 2.366228
+      },
+      "adresse": "24 RUE LOUIS BLANC 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_06322",
+      "annee": 2015,
+      "beneficiaire": "LE KIOSQUE INFOS SIDA ET TOXICOMANIE",
+      "siret": "39072518200047",
+      "objet": "ACTIONS DE PREVENTION DES CONDUITES A RISQUES EN MILIEU FESTIF - PROGRAMME FETEZ CLAIRS",
+      "montant": 110000,
+      "direction": "DASES",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.862478,
+        "lon": 2.367835
+      },
+      "adresse": "102 C RUE AMELOT 75011 PARIS",
+      "codePostal": "75011",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01099",
+      "annee": 2015,
+      "beneficiaire": "\"JE.TU.IL...\"",
+      "siret": "32344887800013",
+      "objet": "fonctionnement",
+      "montant": 110000,
+      "direction": "DDCT",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.856989,
+        "lon": 2.301435
+      },
+      "adresse": "65 AVENUE DE LA BOURDONNAIS 75007 PARIS",
+      "codePostal": "75007",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01693",
+      "annee": 2015,
+      "beneficiaire": "COMITE DE PARIS DE LA LIGUE NATIONALE CONTRE LE CANCER",
+      "siret": "78467198400044",
+      "objet": "La lutte contre le cancer par le soutien des malades et les actions de prévention",
+      "montant": 110000,
+      "direction": "DASES",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.8299,
+        "lon": 2.346731
+      },
+      "adresse": "89 BOULEVARD AUGUSTE BLANQUI 75013 PARIS",
+      "codePostal": "75013",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01113",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION GAN YOSSEF",
+      "siret": "33973557300026",
+      "objet": "FONCTIONNENT crèche collective",
+      "montant": 108430,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.869928,
+        "lon": 2.388881
+      },
+      "adresse": "15-17 15 RUE DE LA MARE 75020 PARIS",
+      "codePostal": "75020",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_05301",
+      "annee": 2015,
+      "beneficiaire": "LES PETITS DU CANARD",
+      "siret": "38362087900023",
+      "objet": "crèche CHARLOT 10, rue Dupetit Thouars",
+      "montant": 107993,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.865281,
+        "lon": 2.362193
+      },
+      "adresse": "10 RUE DUPETIT-THOUARS 75003 PARIS",
+      "codePostal": "75003",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00648",
+      "annee": 2015,
+      "beneficiaire": "ESTRELIA",
+      "siret": "34878236800032",
+      "objet": "CRECHE CLUB DES 3ZANS",
+      "montant": 107804,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.883257,
+        "lon": 2.36004
+      },
+      "adresse": "10 RUE PERDONNET 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00840",
+      "annee": 2015,
+      "beneficiaire": "CLUB DES PETITS GAVROCHES",
+      "siret": "32133736200024",
+      "objet": "foctionnement",
+      "montant": 107687,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.871604,
+        "lon": 2.364257
+      },
+      "adresse": "33 RUE BEAUREPAIRE 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_08257",
+      "annee": 2015,
+      "beneficiaire": "LA BAGAGERIE COEUR DU CINQ",
+      "siret": "81403315500015",
+      "objet": "Travaux d'aménagement de la Bagagerie Coeur du Cinq",
+      "montant": 107590,
+      "direction": "DASES",
+      "nature": "Investissement",
+      "coordinates": {
+        "lat": 48.841314,
+        "lon": 2.353483
+      },
+      "adresse": "24 RUE DAUBENTON 75005 PARIS",
+      "codePostal": "75005",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_04998",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION FRANCO-ASIATIQUE POUR L'ENFANCE",
+      "siret": "48262306300013",
+      "objet": "fonctionnement toudic",
+      "montant": 107547,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.872162,
+        "lon": 2.373266
+      },
+      "adresse": "10 RUE DU BUISSON SAINT-LOUIS 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_03006",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION GAN YAEL CRECHE ET JARDIN D ENFANTS",
+      "siret": "31982198900013",
+      "objet": "FONCTIONNEMENT JARDIN D ENFANTS",
+      "montant": 107166,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.890379,
+        "lon": 2.385889
+      },
+      "adresse": "CRECHE COLLECTIVE 29 RUE DE THIONVILLE 75019 PARIS",
+      "codePostal": "75019",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01439",
+      "annee": 2015,
+      "beneficiaire": "SOCIETE MATERNELLE LA NOUVELLE ETOILE DES ENFANTS DE FRANCE",
+      "siret": "77566322200120",
+      "objet": "fonctionnement",
+      "montant": 107100,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.850014,
+        "lon": 2.352841
+      },
+      "adresse": "3 RUE COCHIN 75005 PARIS",
+      "codePostal": "75005",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00649",
+      "annee": 2015,
+      "beneficiaire": "ESTRELIA",
+      "siret": "34878236800032",
+      "objet": "LAEP COQUELICOT",
+      "montant": 105660,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.883257,
+        "lon": 2.36004
+      },
+      "adresse": "10 RUE PERDONNET 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00717",
+      "annee": 2015,
+      "beneficiaire": "ACCUEIL GOUTTE D'OR",
+      "siret": "40864600800057",
+      "objet": "Fonctionnement 2015",
+      "montant": 105573,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.887907,
+        "lon": 2.354307
+      },
+      "adresse": "26 RUE DE LAGHOUAT 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_01292",
+      "annee": 2015,
+      "beneficiaire": "ASSOCIATION DES PARENTS D'ELEVES DES JARDINS D'ENFANTS FRANCO ALLEMANDS- (AJEFA)",
+      "siret": "30098452300013",
+      "objet": "21 MULTI ACCUEIL (21 MA) - 21 rue Lucien SAMPAIX",
+      "montant": 105449,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.874626,
+        "lon": 2.359019
+      },
+      "adresse": "134 RUE DU FAUBOURG SAINT-MARTIN 75010 PARIS",
+      "codePostal": "75010",
+      "commune": "PARIS"
+    },
+    {
+      "id": "2015_00865",
+      "annee": 2015,
+      "beneficiaire": "LE DAUPHIN BLEU",
+      "siret": "35029993900024",
+      "objet": "Crèche Le Petit Dauphin, 34 Rue des Cloÿs",
+      "montant": 105362,
+      "direction": "DFPE",
+      "nature": "Fonctionnement",
+      "coordinates": {
+        "lat": 48.897216,
+        "lon": 2.329553
+      },
+      "adresse": "81-83 81 RUE VAUVENARGUES 75018 PARIS",
+      "codePostal": "75018",
+      "commune": "PARIS"
+    }
+  ]
+}

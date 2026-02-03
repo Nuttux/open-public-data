@@ -6,11 +6,13 @@
  * - Google Inter font loaded via Next.js font optimization
  * - Global CSS styles
  * - Metadata for SEO
+ * - Navigation globale
  */
 
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
 
 /**
  * Inter font configuration
@@ -28,7 +30,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Budget Paris - Tableau de bord interactif",
   description:
-    "Visualisation interactive des finances de la Ville de Paris. Explorez les recettes et dépenses budgétaires avec des graphiques Sankey détaillés.",
+    "Visualisation interactive des finances de la Ville de Paris. Explorez les recettes et dépenses budgétaires avec des graphiques Sankey et une carte interactive.",
   keywords: [
     "Paris",
     "budget",
@@ -36,6 +38,9 @@ export const metadata: Metadata = {
     "open data",
     "visualisation",
     "Sankey",
+    "carte",
+    "subventions",
+    "logements sociaux",
   ],
   authors: [{ name: "Paris Budget Dashboard" }],
   openGraph: {
@@ -57,7 +62,7 @@ export const viewport: Viewport = {
 
 /**
  * Root layout wrapper
- * Applies font class and dark theme to entire application
+ * Applies font class, dark theme, and navigation to entire application
  */
 export default function RootLayout({
   children,
@@ -66,7 +71,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className="dark">
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} font-sans antialiased bg-slate-950 text-slate-100`}>
+        <Navbar />
         {children}
       </body>
     </html>
