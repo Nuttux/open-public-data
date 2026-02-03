@@ -352,12 +352,17 @@ def export_year(client, year: int) -> dict:
     print(f"  Dépenses: {sankey_data['totals']['depenses']/1e9:.2f} Md€")
     print(f"  Solde: {sankey_data['totals']['solde']/1e9:.2f} Md€")
     
-    # Write to file
+    # Write main file (total = all data, which is M57 Ville consolidated)
     output_file = OUTPUT_DIR / f"budget_sankey_{year}.json"
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(sankey_data, f, ensure_ascii=False, indent=2)
-    
     print(f"  ✓ Wrote {output_file}")
+    
+    # Also write as "_centrale" (same data since M57 Ville is the central budget)
+    output_file_centrale = OUTPUT_DIR / f"budget_sankey_centrale_{year}.json"
+    with open(output_file_centrale, "w", encoding="utf-8") as f:
+        json.dump(sankey_data, f, ensure_ascii=False, indent=2)
+    print(f"  ✓ Wrote {output_file_centrale}")
     
     return {
         "year": year,

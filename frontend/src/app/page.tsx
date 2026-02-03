@@ -5,6 +5,7 @@
  * 
  * FEATURES:
  * - Sélecteur d'année (2019-2024)
+ * - Sélecteur d'entité (Total, Centrale, Arrondissements)
  * - Cartes KPI avec vision économique claire
  * - Graphique Sankey interactif
  * - Drill-down multi-niveaux avec navigation par préfixe
@@ -12,6 +13,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import YearSelector from '@/components/YearSelector';
+import EntitySelector, { type BudgetEntity } from '@/components/EntitySelector';
 import StatsCards from '@/components/StatsCards';
 import BudgetSankey from '@/components/BudgetSankey';
 import DrilldownPanel from '@/components/DrilldownPanel';
@@ -39,6 +41,7 @@ interface DrilldownState {
 export default function Home() {
   const [index, setIndex] = useState<BudgetIndex | null>(null);
   const [selectedYear, setSelectedYear] = useState<number>(2024);
+  const [selectedEntity, setSelectedEntity] = useState<BudgetEntity>('total');
   const [budgetData, setBudgetData] = useState<BudgetData | null>(null);
   const [drilldown, setDrilldown] = useState<DrilldownState | null>(null);
   
@@ -69,10 +72,17 @@ export default function Home() {
       setIsLoading(true);
       setDrilldown(null);
       
+      // Construct file path based on entity
+      // total = budget_sankey_YYYY.json (existing)
+      // centrale = budget_sankey_centrale_YYYY.json
+      // arrondissements = budget_sankey_arrondissements_YYYY.json
+      const suffix = selectedEntity === 'total' ? '' : `_${selectedEntity}`;
+      const filename = `/data/budget_sankey${suffix}_${selectedYear}.json`;
+      
       try {
-        const response = await fetch(`/data/budget_sankey_${selectedYear}.json`);
+        const response = await fetch(filename);
         if (!response.ok) {
-          throw new Error(`Données ${selectedYear} non disponibles`);
+          throw new Error(`Données ${selectedYear} non disponibles pour ce périmètre`);
         }
         
         const data: BudgetData = await response.json();
@@ -87,7 +97,7 @@ export default function Home() {
       }
     }
     loadBudgetData();
-  }, [index, selectedYear]);
+  }, [index, selectedYear, selectedEntity]);
 
   /**
    * Extrait les préfixes uniques des items (partie avant ":")
@@ -246,11 +256,17 @@ export default function Home() {
               </p>
             </div>
             
-            <YearSelector
-              years={index.availableYears}
-              selectedYear={selectedYear}
-              onYearChange={setSelectedYear}
-            />
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+              <EntitySelector
+                selectedEntity={selectedEntity}
+                onEntityChange={setSelectedEntity}
+              />
+              <YearSelector
+                years={index.availableYears}
+                selectedYear={selectedYear}
+                onYearChange={setSelectedYear}
+              />
+            </div>
           </div>
         </div>
       </header>
