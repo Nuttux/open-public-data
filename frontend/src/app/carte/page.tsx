@@ -309,7 +309,9 @@ export default function CartePage() {
               <div className="bg-slate-800/30 rounded-lg p-3 border border-slate-700/30">
                 <p className="text-xs text-slate-500">Logements financés</p>
                 <p className="text-lg font-bold text-emerald-400">
-                  {formatNumber(stats.logements.total)}
+                  {stats.logements.total >= 1000 
+                    ? `${(stats.logements.total / 1000).toFixed(0)}k`
+                    : formatNumber(stats.logements.total)}
                 </p>
               </div>
               <div className="bg-slate-800/30 rounded-lg p-3 border border-slate-700/30">

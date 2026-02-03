@@ -89,26 +89,34 @@ interface ParisMapProps {
 
 /**
  * Calcule le rayon d'un cercle en fonction du montant
+ * Tailles équilibrées entre les différents types de données
  */
 function getCircleRadius(montant: number, type: 'subvention' | 'logement' | 'autorisation'): number {
   if (type === 'logement') {
-    return Math.max(5, Math.min(30, Math.sqrt(montant) * 2));
+    // Logements: basé sur nb logements (5-100+)
+    if (montant < 10) return 4;
+    if (montant < 30) return 6;
+    if (montant < 50) return 8;
+    if (montant < 100) return 10;
+    if (montant < 200) return 12;
+    return 14;
   }
   if (type === 'autorisation') {
-    // Autorisations: montants plus grands
-    if (montant < 100000) return 5;
-    if (montant < 500000) return 8;
-    if (montant < 1000000) return 12;
-    if (montant < 5000000) return 16;
-    return 20;
+    // Autorisations: montants en € (souvent 100k-10M)
+    if (montant < 50000) return 5;
+    if (montant < 200000) return 7;
+    if (montant < 500000) return 9;
+    if (montant < 1000000) return 11;
+    if (montant < 5000000) return 13;
+    return 15;
   }
-  // Pour subventions
-  if (montant < 5000) return 5;
-  if (montant < 20000) return 8;
-  if (montant < 50000) return 12;
-  if (montant < 100000) return 16;
-  if (montant < 500000) return 22;
-  return 30;
+  // Subventions: montants en € (souvent 1k-500k)
+  if (montant < 5000) return 4;
+  if (montant < 20000) return 6;
+  if (montant < 50000) return 8;
+  if (montant < 100000) return 10;
+  if (montant < 300000) return 12;
+  return 14;
 }
 
 /**
@@ -303,18 +311,21 @@ export default function ParisMap({
             pathOptions={{
               color: '#f59e0b',
               fillColor: '#f59e0b',
-              fillOpacity: 0.5,
+              fillOpacity: 0.6,
               weight: 1,
             }}
           >
-            <Popup>
-              <div className="min-w-[220px]">
+            <Popup maxWidth={350}>
+              <div className="min-w-[280px] max-w-[320px]">
                 <h3 className="font-bold text-slate-900 mb-1 text-sm leading-tight">{ap.apTexte}</h3>
                 <p className="text-xl font-bold text-amber-600 mb-2">
                   {formatEuroCompact(ap.montant)}
                 </p>
-                <div className="text-xs text-slate-600 space-y-1">
-                  <p><strong>Mission:</strong> {ap.missionTexte}</p>
+                <div className="text-xs text-slate-600 space-y-1.5">
+                  <p className="leading-snug">
+                    <strong>Mission:</strong>{' '}
+                    <span className="text-slate-700">{ap.missionTexte}</span>
+                  </p>
                   {ap.thematique && (
                     <p>
                       <strong>Thématique:</strong>{' '}
@@ -322,9 +333,16 @@ export default function ParisMap({
                       {THEMATIQUE_LABELS[ap.thematique as ThematiqueSubvention]?.label || ap.thematique}
                     </p>
                   )}
-                  <p><strong>Direction:</strong> {ap.directionTexte}</p>
+                  <p>
+                    <strong>Direction:</strong>{' '}
+                    <span title={ap.directionCode}>{ap.directionTexte || getDirectionName(ap.directionCode)}</span>
+                  </p>
                   <p><strong>Année:</strong> {ap.annee}</p>
-                  <p><strong>Arrondissement:</strong> {ap.arrondissement}ème</p>
+                  <p>
+                    <strong>Localisation:</strong>{' '}
+                    {ap.arrondissement}ème arrondissement
+                    <span className="text-slate-400 text-[10px] ml-1">(approximatif)</span>
+                  </p>
                 </div>
               </div>
             </Popup>
