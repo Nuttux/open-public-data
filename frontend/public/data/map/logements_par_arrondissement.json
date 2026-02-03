@@ -2,121 +2,161 @@
   {
     "code": 1,
     "nom": "1er arrondissement",
+    "population": 15939,
     "totalLogements": 877,
-    "nbProgrammes": 72
+    "nbProgrammes": 72,
+    "logementsPerCapita": 55.02
   },
   {
     "code": 2,
     "nom": "2ème arrondissement",
+    "population": 20900,
     "totalLogements": 658,
-    "nbProgrammes": 57
+    "nbProgrammes": 57,
+    "logementsPerCapita": 31.48
   },
   {
     "code": 3,
     "nom": "3ème arrondissement",
+    "population": 33000,
     "totalLogements": 1336,
-    "nbProgrammes": 90
+    "nbProgrammes": 90,
+    "logementsPerCapita": 40.48
   },
   {
     "code": 4,
     "nom": "4ème arrondissement",
+    "population": 28088,
     "totalLogements": 1677,
-    "nbProgrammes": 98
+    "nbProgrammes": 98,
+    "logementsPerCapita": 59.71
   },
   {
     "code": 5,
     "nom": "5ème arrondissement",
+    "population": 56882,
     "totalLogements": 2194,
-    "nbProgrammes": 86
+    "nbProgrammes": 86,
+    "logementsPerCapita": 38.57
   },
   {
     "code": 6,
     "nom": "6ème arrondissement",
+    "population": 40005,
     "totalLogements": 920,
-    "nbProgrammes": 52
+    "nbProgrammes": 52,
+    "logementsPerCapita": 23.0
   },
   {
     "code": 7,
     "nom": "7ème arrondissement",
+    "population": 48354,
     "totalLogements": 805,
-    "nbProgrammes": 29
+    "nbProgrammes": 29,
+    "logementsPerCapita": 16.65
   },
   {
     "code": 8,
     "nom": "8ème arrondissement",
+    "population": 35016,
     "totalLogements": 926,
-    "nbProgrammes": 46
+    "nbProgrammes": 46,
+    "logementsPerCapita": 26.45
   },
   {
     "code": 9,
     "nom": "9ème arrondissement",
+    "population": 59835,
     "totalLogements": 2097,
-    "nbProgrammes": 121
+    "nbProgrammes": 121,
+    "logementsPerCapita": 35.05
   },
   {
     "code": 10,
     "nom": "10ème arrondissement",
+    "population": 83459,
     "totalLogements": 4859,
-    "nbProgrammes": 225
+    "nbProgrammes": 225,
+    "logementsPerCapita": 58.22
   },
   {
     "code": 11,
     "nom": "11ème arrondissement",
+    "population": 142583,
     "totalLogements": 6665,
-    "nbProgrammes": 294
+    "nbProgrammes": 294,
+    "logementsPerCapita": 46.74
   },
   {
     "code": 12,
     "nom": "12ème arrondissement",
+    "population": 139867,
     "totalLogements": 11816,
-    "nbProgrammes": 289
+    "nbProgrammes": 289,
+    "logementsPerCapita": 84.48
   },
   {
     "code": 13,
     "nom": "13ème arrondissement",
+    "population": 178350,
     "totalLogements": 15700,
-    "nbProgrammes": 364
+    "nbProgrammes": 364,
+    "logementsPerCapita": 88.03
   },
   {
     "code": 14,
     "nom": "14ème arrondissement",
+    "population": 134382,
     "totalLogements": 9005,
-    "nbProgrammes": 221
+    "nbProgrammes": 221,
+    "logementsPerCapita": 67.01
   },
   {
     "code": 15,
     "nom": "15ème arrondissement",
+    "population": 227746,
     "totalLogements": 12855,
-    "nbProgrammes": 386
+    "nbProgrammes": 386,
+    "logementsPerCapita": 56.44
   },
   {
     "code": 16,
     "nom": "16ème arrondissement",
+    "population": 165062,
     "totalLogements": 4834,
-    "nbProgrammes": 139
+    "nbProgrammes": 139,
+    "logementsPerCapita": 29.29
   },
   {
     "code": 17,
     "nom": "17ème arrondissement",
+    "population": 166518,
     "totalLogements": 9913,
-    "nbProgrammes": 282
+    "nbProgrammes": 282,
+    "logementsPerCapita": 59.53
   },
   {
     "code": 18,
     "nom": "18ème arrondissement",
+    "population": 191531,
     "totalLogements": 12401,
-    "nbProgrammes": 520
+    "nbProgrammes": 520,
+    "logementsPerCapita": 64.75
   },
   {
     "code": 19,
     "nom": "19ème arrondissement",
+    "population": 182952,
     "totalLogements": 12170,
-    "nbProgrammes": 309
+    "nbProgrammes": 309,
+    "logementsPerCapita": 66.52
   },
   {
     "code": 20,
     "nom": "20ème arrondissement",
+    "population": 187642,
     "totalLogements": 14836,
-    "nbProgrammes": 494
+    "nbProgrammes": 494,
+    "logementsPerCapita": 79.07
   }
 ]

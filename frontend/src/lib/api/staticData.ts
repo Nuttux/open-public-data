@@ -8,10 +8,28 @@
 import type { 
   Subvention, 
   LogementSocial, 
-  ArrondissementStats 
+  ArrondissementStats,
+  AutorisationProgramme,
 } from '../types/map';
 
 const BASE_PATH = '/data/map';
+
+/**
+ * Index des subventions avec thématiques
+ */
+interface SubventionsIndex {
+  availableYears: number[];
+  thematiques: string[];
+}
+
+/**
+ * Index des autorisations de programmes
+ */
+interface AutorisationsIndex {
+  availableYears: number[];
+  thematiques: string[];
+  missions: string[];
+}
 
 /**
  * Cache en mémoire pour les données chargées
@@ -20,7 +38,10 @@ const dataCache: {
   logements?: LogementSocial[];
   logementsParArr?: ArrondissementStats[];
   subventions?: Record<number, Subvention[]>;
-  subventionsIndex?: { availableYears: number[] };
+  subventionsIndex?: SubventionsIndex;
+  autorisations?: Record<number, AutorisationProgramme[]>;
+  autorisationsIndex?: AutorisationsIndex;
+  arrondissementsStats?: ArrondissementStats[];
 } = {};
 
 /**
@@ -84,22 +105,48 @@ export async function loadLogementsParArrondissement(): Promise<ArrondissementSt
 }
 
 /**
- * Charge l'index des années disponibles pour les subventions
+ * Charge l'index des subventions (années et thématiques)
  */
-export async function loadSubventionsIndex(): Promise<number[]> {
+export async function loadSubventionsIndex(): Promise<SubventionsIndex> {
   if (dataCache.subventionsIndex) {
-    return dataCache.subventionsIndex.availableYears;
+    return dataCache.subventionsIndex;
   }
 
   try {
-    const data = await loadJson<{ availableYears: number[] }>(
+    const data = await loadJson<SubventionsIndex>(
       `${BASE_PATH}/subventions_index.json`
     );
     dataCache.subventionsIndex = data;
-    return data.availableYears;
+    return data;
   } catch {
     // Fallback si le fichier n'existe pas encore
-    return [2024, 2023, 2022, 2021, 2020, 2019];
+    return {
+      availableYears: [2024, 2023, 2022, 2021, 2020, 2019],
+      thematiques: [],
+    };
+  }
+}
+
+/**
+ * Charge l'index des autorisations de programmes
+ */
+export async function loadAutorisationsIndex(): Promise<AutorisationsIndex> {
+  if (dataCache.autorisationsIndex) {
+    return dataCache.autorisationsIndex;
+  }
+
+  try {
+    const data = await loadJson<AutorisationsIndex>(
+      `${BASE_PATH}/autorisations_index.json`
+    );
+    dataCache.autorisationsIndex = data;
+    return data;
+  } catch {
+    return {
+      availableYears: [2024, 2023, 2022, 2021, 2020, 2019, 2018],
+      thematiques: [],
+      missions: [],
+    };
   }
 }
 
@@ -139,20 +186,69 @@ export async function loadArrondissementsGeoJSON(): Promise<GeoJSON.FeatureColle
 }
 
 /**
+ * Charge les stats combinées par arrondissement
+ */
+export async function loadArrondissementsStats(): Promise<ArrondissementStats[]> {
+  if (dataCache.arrondissementsStats) {
+    return dataCache.arrondissementsStats;
+  }
+
+  try {
+    const data = await loadJson<ArrondissementStats[]>(
+      `${BASE_PATH}/arrondissements_stats.json`
+    );
+    dataCache.arrondissementsStats = data;
+    return data;
+  } catch {
+    // Fallback: charger les logements par arrondissement
+    return loadLogementsParArrondissement();
+  }
+}
+
+/**
+ * Charge les autorisations de programmes pour une année
+ */
+export async function loadAutorisationsForYear(year: number): Promise<AutorisationProgramme[]> {
+  if (dataCache.autorisations?.[year]) {
+    return dataCache.autorisations[year];
+  }
+
+  try {
+    const data = await loadJson<{
+      year: number;
+      total: number;
+      count: number;
+      data: AutorisationProgramme[];
+    }>(`${BASE_PATH}/autorisations_${year}.json`);
+
+    if (!dataCache.autorisations) {
+      dataCache.autorisations = {};
+    }
+    dataCache.autorisations[year] = data.data;
+    return data.data;
+  } catch {
+    console.warn(`Autorisations for ${year} not found`);
+    return [];
+  }
+}
+
+/**
  * Précharge toutes les données pour éviter les waterfalls
  */
 export async function preloadAllMapData(): Promise<{
   logements: LogementSocial[];
-  logementsParArr: ArrondissementStats[];
-  availableYears: number[];
+  arrondissementsStats: ArrondissementStats[];
+  subventionsIndex: SubventionsIndex;
+  autorisationsIndex: AutorisationsIndex;
 }> {
-  const [logements, logementsParArr, availableYears] = await Promise.all([
+  const [logements, arrondissementsStats, subventionsIndex, autorisationsIndex] = await Promise.all([
     loadLogementsSociaux(),
-    loadLogementsParArrondissement(),
+    loadArrondissementsStats(),
     loadSubventionsIndex(),
+    loadAutorisationsIndex(),
   ]);
 
-  return { logements, logementsParArr, availableYears };
+  return { logements, arrondissementsStats, subventionsIndex, autorisationsIndex };
 }
 
 /**

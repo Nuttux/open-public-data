@@ -29,12 +29,14 @@ export interface Subvention {
   montant: number;
   direction: string;
   nature: string;
+  thematique?: string;
   secteurs?: string[];
   // Géolocalisation (enrichie via API entreprises)
   coordinates?: GeoPoint;
   adresse?: string;
   codePostal?: string;
   commune?: string;
+  arrondissement?: number;
 }
 
 /**
@@ -64,25 +66,22 @@ export interface LogementSocial {
  */
 export interface AutorisationProgramme {
   id: string;
-  exercice: number;
+  annee: number;
   budget: string;
-  mission: string;
+  missionCode: string;
   missionTexte: string;
   activite: string;
   directionCode: string;
   directionTexte: string;
   apCode: string;
-  apTexte: string;      // Texte descriptif pour extraction LLM
-  natureCode: string;
+  apTexte: string;      // Texte descriptif pour extraction d'arrondissement
   natureTexte: string;
-  domaineCode: string;
   domaineTexte: string;
   montant: number;
-  // Géolocalisation (extraite par LLM)
+  thematique: string;
+  // Géolocalisation (extraite du texte)
   coordinates?: GeoPoint;
-  adresseExtraite?: string;
-  arrondissementExtrait?: number;
-  localisationType?: 'exact' | 'arrondissement' | 'paris' | 'inconnu';
+  arrondissement?: number;
 }
 
 /**
@@ -104,16 +103,19 @@ export interface Arrondissement {
 export interface ArrondissementStats {
   code: number;
   nom: string;
+  population?: number;      // Population INSEE
+  // Subventions
   totalSubventions: number;
   nbSubventions: number;
+  subventionsPerCapita?: number;  // € par habitant
+  // Logements
   totalLogements: number;
   nbProgrammesLogement: number;
+  logementsPerCapita?: number;    // Logements pour 1000 hab
+  // Investissements (autorisations de programmes)
   totalInvestissement: number;
   nbAutorisations: number;
-  population?: number;      // Pour calcul per capita
-  // Ratios calculés
-  subventionsPerCapita?: number;
-  logementsPerCapita?: number;
+  investissementPerCapita?: number;  // € par habitant
 }
 
 /**

@@ -240,20 +240,19 @@ export async function fetchAutorisationsProgrammes(
 
   const data: AutorisationProgramme[] = response.results.map((r, index) => ({
     id: `${r.exercice_comptable}-${r.autorisation_de_programme_cle}-${index}`,
-    exercice: parseInt(r.exercice_comptable, 10),
+    annee: parseInt(r.exercice_comptable, 10),
     budget: r.budget,
-    mission: r.mission_ap_cle,
+    missionCode: r.mission_ap_cle,
     missionTexte: r.mission_ap_texte || '',
     activite: r.activite_ap || '',
     directionCode: r.direction_gestionnaire_cle || '',
     directionTexte: r.direction_gestionnaire_texte || '',
     apCode: r.autorisation_de_programme_cle,
     apTexte: r.autorisation_de_programme_texte || '',
-    natureCode: r.nature_budgetaire_cle || '',
     natureTexte: r.nature_budgetaire_texte || '',
-    domaineCode: r.domaine_fonctionnel_rubrique_reglementaire_cle || '',
     domaineTexte: r.domaine_fonctionnel_rubrique_reglementaire_texte || '',
     montant: r.mandate_titre_apres_regul || 0,
+    thematique: 'autre', // Sera enrichi par le script d'export
   }));
 
   return { data, total: response.total_count };

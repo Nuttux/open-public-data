@@ -5,10 +5,10 @@
  * 
  * FEATURES:
  * - Carte interactive de Paris avec Leaflet
- * - Layer Subventions (géolocalisées via SIRET)
- * - Layer Logements sociaux (déjà géolocalisés)
- * - Filtres par année et type de données
- * - Progression de géolocalisation en temps réel
+ * - Mode Points: subventions, logements sociaux
+ * - Mode Choroplèthe: données per capita par arrondissement
+ * - Filtres par année, thématique
+ * - Hyperliens vers sources de données
  */
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
@@ -17,11 +17,13 @@ import MapFilters from '@/components/map/MapFilters';
 import type { Subvention, LogementSocial, MapLayerType, ArrondissementStats } from '@/lib/types/map';
 import { 
   loadLogementsSociaux,
-  loadLogementsParArrondissement,
+  loadArrondissementsStats,
   loadSubventionsIndex,
   loadSubventionsForYear,
 } from '@/lib/api/staticData';
 import { formatEuroCompact } from '@/lib/formatters';
+import { getDirectionName } from '@/lib/constants/directions';
+import { DATA_SOURCES } from '@/lib/constants/arrondissements';
 
 /**
  * Import dynamique de la carte (Leaflet nécessite window)
@@ -42,15 +44,21 @@ const ParisMap = dynamic(
 );
 
 export default function CartePage() {
-  // État des données
+  // État des filtres
   const [availableYears, setAvailableYears] = useState<number[]>([2024, 2023, 2022, 2021, 2020, 2019]);
   const [selectedYear, setSelectedYear] = useState<number>(2024);
-  const [activeLayers, setActiveLayers] = useState<MapLayerType[]>(['logements', 'choropleth-subventions']);
+  const [activeLayers, setActiveLayers] = useState<MapLayerType[]>(['subventions', 'logements']);
+  const [availableThematiques, setAvailableThematiques] = useState<string[]>([]);
+  const [selectedThematiques, setSelectedThematiques] = useState<string[]>([]);
+  
+  // Mode choroplèthe
+  const [showChoropleth, setShowChoropleth] = useState(false);
+  const [choroplethMetric, setChoroplethMetric] = useState<'subventions' | 'logements' | 'investissements'>('logements');
   
   // Données (chargées depuis fichiers statiques)
   const [subventions, setSubventions] = useState<Subvention[]>([]);
   const [logements, setLogements] = useState<LogementSocial[]>([]);
-  const [logementsParArr, setLogementsParArr] = useState<ArrondissementStats[]>([]);
+  const [arrondissementsStats, setArrondissementsStats] = useState<ArrondissementStats[]>([]);
   
   // État de chargement
   const [isLoadingData, setIsLoadingData] = useState(true);
@@ -68,19 +76,20 @@ export default function CartePage() {
       setError(null);
       
       try {
-        // Charger toutes les données statiques en parallèle
-        const [logementsData, logementsArrData, yearsData] = await Promise.all([
+        const [logementsData, arrStats, subIndex] = await Promise.all([
           loadLogementsSociaux(),
-          loadLogementsParArrondissement(),
+          loadArrondissementsStats(),
           loadSubventionsIndex(),
         ]);
         
         setLogements(logementsData);
-        setLogementsParArr(logementsArrData);
-        setAvailableYears(yearsData);
+        setArrondissementsStats(arrStats);
+        setAvailableYears(subIndex.availableYears);
+        setAvailableThematiques(subIndex.thematiques || []);
+        setSelectedThematiques(subIndex.thematiques || []);
         
-        if (yearsData.length > 0) {
-          setSelectedYear(yearsData[0]);
+        if (subIndex.availableYears.length > 0) {
+          setSelectedYear(subIndex.availableYears[0]);
         }
       } catch (err) {
         console.error('Erreur chargement données initiales:', err);
@@ -98,7 +107,7 @@ export default function CartePage() {
    */
   useEffect(() => {
     async function loadYearData() {
-      if (!activeLayers.includes('subventions')) {
+      if (!activeLayers.includes('subventions') && !showChoropleth) {
         return;
       }
       
@@ -112,18 +121,28 @@ export default function CartePage() {
     }
     
     loadYearData();
-  }, [selectedYear, activeLayers]);
+  }, [selectedYear, activeLayers, showChoropleth]);
+
+  /**
+   * Subventions filtrées par thématique
+   */
+  const filteredSubventions = useMemo(() => {
+    if (selectedThematiques.length === 0 || selectedThematiques.length === availableThematiques.length) {
+      return subventions;
+    }
+    return subventions.filter(s => s.thematique && selectedThematiques.includes(s.thematique));
+  }, [subventions, selectedThematiques, availableThematiques]);
 
   /**
    * Statistiques calculées
    */
   const stats = useMemo(() => {
-    const geolocatedSubs = subventions.filter(s => s.coordinates);
+    const geolocatedSubs = filteredSubventions.filter(s => s.coordinates);
     
     return {
       subventions: {
-        count: subventions.length,
-        total: subventions.reduce((sum, s) => sum + s.montant, 0),
+        count: filteredSubventions.length,
+        total: filteredSubventions.reduce((sum, s) => sum + s.montant, 0),
         geolocated: geolocatedSubs.length,
       },
       logements: {
@@ -131,44 +150,7 @@ export default function CartePage() {
         total: logements.reduce((sum, l) => sum + l.nbLogements, 0),
       },
     };
-  }, [subventions, logements]);
-
-  /**
-   * Stats par arrondissement pour la carte choroplèthe
-   * Utilise les données pré-calculées
-   */
-  const arrondissementStats = useMemo((): ArrondissementStats[] => {
-    // Si on a les données pré-calculées, les utiliser
-    if (logementsParArr.length > 0) {
-      return logementsParArr;
-    }
-    
-    // Sinon calculer à partir des logements (fallback)
-    const logementsByArr: Record<number, { total: number; count: number }> = {};
-    logements.forEach(l => {
-      if (!logementsByArr[l.arrondissement]) {
-        logementsByArr[l.arrondissement] = { total: 0, count: 0 };
-      }
-      logementsByArr[l.arrondissement].total += l.nbLogements;
-      logementsByArr[l.arrondissement].count += 1;
-    });
-
-    return Array.from({ length: 20 }, (_, i) => {
-      const code = i + 1;
-      const logStats = logementsByArr[code] || { total: 0, count: 0 };
-      
-      return {
-        code,
-        nom: `${code}${code === 1 ? 'er' : 'ème'} arrondissement`,
-        totalSubventions: 0,
-        nbSubventions: 0,
-        totalLogements: logStats.total,
-        nbProgrammesLogement: logStats.count,
-        totalInvestissement: 0,
-        nbAutorisations: 0,
-      };
-    });
-  }, [logements, logementsParArr]);
+  }, [filteredSubventions, logements]);
 
   /**
    * Gestion du clic sur un marqueur
@@ -214,24 +196,66 @@ export default function CartePage() {
               onYearChange={setSelectedYear}
               activeLayers={activeLayers}
               onLayersChange={setActiveLayers}
+              availableThematiques={availableThematiques}
+              selectedThematiques={selectedThematiques}
+              onThematiquesChange={setSelectedThematiques}
+              showChoropleth={showChoropleth}
+              onChoroplethChange={setShowChoropleth}
+              choroplethMetric={choroplethMetric}
+              onChoroplethMetricChange={setChoroplethMetric}
               isLoading={isLoadingData}
               stats={stats}
             />
 
-            {/* Info box */}
+            {/* Info box avec sources */}
             <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/30">
               <h3 className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
-                <span>ℹ️</span>
-                À propos des données
+                <span>📚</span>
+                Sources des données
               </h3>
               <div className="text-xs text-slate-400 space-y-2">
                 <p>
-                  <strong className="text-purple-400">Subventions:</strong> Données Paris Open Data, 
-                  géolocalisées via l&apos;API entreprises (SIRET).
+                  <a 
+                    href={DATA_SOURCES.subventions.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-purple-400 hover:text-purple-300 underline"
+                  >
+                    Subventions aux associations
+                  </a>
+                  {' '}(Paris Open Data)
                 </p>
                 <p>
-                  <strong className="text-emerald-400">Logements:</strong> Programmes financés 
-                  depuis 2001, coordonnées fournies par Paris.
+                  <a 
+                    href={DATA_SOURCES.logementsSociaux.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-emerald-400 hover:text-emerald-300 underline"
+                  >
+                    Logements sociaux financés
+                  </a>
+                  {' '}(Paris Open Data)
+                </p>
+                <p>
+                  <a 
+                    href={DATA_SOURCES.siretGeoloc.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-400 hover:text-blue-300 underline"
+                  >
+                    Géolocalisation SIRET
+                  </a>
+                  {' '}(API Entreprises)
+                </p>
+                <p>
+                  <a 
+                    href={DATA_SOURCES.population.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-amber-400 hover:text-amber-300 underline"
+                  >
+                    Population INSEE 2021
+                  </a>
                 </p>
               </div>
             </div>
@@ -242,13 +266,13 @@ export default function CartePage() {
             <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 overflow-hidden">
               <div className="h-[600px]">
                 <ParisMap
-                  subventions={subventions}
+                  subventions={filteredSubventions}
                   logements={logements}
-                  arrondissementStats={arrondissementStats}
-                  showSubventions={activeLayers.includes('subventions')}
-                  showLogements={activeLayers.includes('logements')}
-                  showChoropleth={activeLayers.includes('choropleth-subventions')}
-                  choroplethMetric="logements"
+                  arrondissementStats={arrondissementsStats}
+                  showSubventions={!showChoropleth && activeLayers.includes('subventions')}
+                  showLogements={!showChoropleth && activeLayers.includes('logements')}
+                  showChoropleth={showChoropleth}
+                  choroplethMetric={choroplethMetric}
                   onMarkerClick={handleMarkerClick}
                   selectedId={selectedId}
                   isLoading={isLoadingData}
@@ -273,7 +297,7 @@ export default function CartePage() {
               <div className="bg-slate-800/30 rounded-lg p-3 border border-slate-700/30">
                 <p className="text-xs text-slate-500">Programmes logement</p>
                 <p className="text-lg font-bold text-emerald-400">
-                  {stats.logements.count}
+                  {stats.logements.count.toLocaleString('fr-FR')}
                 </p>
               </div>
               <div className="bg-slate-800/30 rounded-lg p-3 border border-slate-700/30">
@@ -286,12 +310,21 @@ export default function CartePage() {
           </div>
         </div>
 
-        {/* Footer */}
+        {/* Footer avec sources */}
         <footer className="mt-8 pt-6 border-t border-slate-800">
           <p className="text-xs text-slate-500 text-center">
-            Données: Open Data Paris + API Recherche Entreprises (entreprises.api.gouv.fr)
-            <br />
-            Géolocalisation limitée à 100 SIRET pour les performances
+            Données:{' '}
+            <a href={DATA_SOURCES.subventions.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-400">
+              Open Data Paris
+            </a>
+            {' '}+{' '}
+            <a href={DATA_SOURCES.siretGeoloc.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-400">
+              API Recherche Entreprises
+            </a>
+            {' '}+{' '}
+            <a href={DATA_SOURCES.population.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-400">
+              INSEE
+            </a>
           </p>
         </footer>
       </div>

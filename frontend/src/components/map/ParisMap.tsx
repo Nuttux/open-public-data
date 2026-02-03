@@ -17,6 +17,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import type { Subvention, LogementSocial, GeoPoint, ArrondissementStats } from '@/lib/types/map';
 import { formatEuroCompact } from '@/lib/formatters';
+import { getDirectionName, THEMATIQUE_LABELS, type ThematiqueSubvention } from '@/lib/constants/directions';
 import ChoroplethLayer, { ChoroplethLegend, type ChoroplethMetric } from './ChoroplethLayer';
 
 /**
@@ -173,13 +174,23 @@ export default function ParisMap({
             }}
           >
             <Popup>
-              <div className="min-w-[200px]">
+              <div className="min-w-[220px]">
                 <h3 className="font-bold text-slate-900 mb-1">{sub.beneficiaire}</h3>
                 <p className="text-2xl font-bold text-purple-600 mb-2">
                   {formatEuroCompact(sub.montant)}
                 </p>
                 <div className="text-xs text-slate-600 space-y-1">
-                  <p><strong>Direction:</strong> {sub.direction}</p>
+                  <p>
+                    <strong>Direction:</strong>{' '}
+                    <span title={sub.direction}>{getDirectionName(sub.direction)}</span>
+                  </p>
+                  {sub.thematique && (
+                    <p>
+                      <strong>Thématique:</strong>{' '}
+                      {THEMATIQUE_LABELS[sub.thematique as ThematiqueSubvention]?.icon || '📋'}{' '}
+                      {THEMATIQUE_LABELS[sub.thematique as ThematiqueSubvention]?.label || sub.thematique}
+                    </p>
+                  )}
                   <p><strong>Nature:</strong> {sub.nature}</p>
                   <p><strong>Objet:</strong> {sub.objet}</p>
                   {sub.adresse && <p><strong>Adresse:</strong> {sub.adresse}</p>}

@@ -1,0 +1,162 @@
+[
+  {
+    "code": 1,
+    "nom": "1er arrondissement",
+    "population": 15939,
+    "totalSubventions": 357697465,
+    "nbSubventions": 389,
+    "subventionsPerCapita": 22441.65
+  },
+  {
+    "code": 2,
+    "nom": "2ème arrondissement",
+    "population": 20900,
+    "totalSubventions": 181403953,
+    "nbSubventions": 108,
+    "subventionsPerCapita": 8679.61
+  },
+  {
+    "code": 3,
+    "nom": "3ème arrondissement",
+    "population": 33000,
+    "totalSubventions": 135926529,
+    "nbSubventions": 213,
+    "subventionsPerCapita": 4118.99
+  },
+  {
+    "code": 4,
+    "nom": "4ème arrondissement",
+    "population": 28088,
+    "totalSubventions": 316780192,
+    "nbSubventions": 353,
+    "subventionsPerCapita": 11278.13
+  },
+  {
+    "code": 5,
+    "nom": "5ème arrondissement",
+    "population": 56882,
+    "totalSubventions": 14976254,
+    "nbSubventions": 120,
+    "subventionsPerCapita": 263.29
+  },
+  {
+    "code": 6,
+    "nom": "6ème arrondissement",
+    "population": 40005,
+    "totalSubventions": 50686628,
+    "nbSubventions": 226,
+    "subventionsPerCapita": 1267.01
+  },
+  {
+    "code": 7,
+    "nom": "7ème arrondissement",
+    "population": 48354,
+    "totalSubventions": 12457821,
+    "nbSubventions": 92,
+    "subventionsPerCapita": 257.64
+  },
+  {
+    "code": 8,
+    "nom": "8ème arrondissement",
+    "population": 35016,
+    "totalSubventions": 88854685,
+    "nbSubventions": 229,
+    "subventionsPerCapita": 2537.55
+  },
+  {
+    "code": 9,
+    "nom": "9ème arrondissement",
+    "population": 59835,
+    "totalSubventions": 42856461,
+    "nbSubventions": 275,
+    "subventionsPerCapita": 716.24
+  },
+  {
+    "code": 10,
+    "nom": "10ème arrondissement",
+    "population": 83459,
+    "totalSubventions": 106797624,
+    "nbSubventions": 624,
+    "subventionsPerCapita": 1279.64
+  },
+  {
+    "code": 11,
+    "nom": "11ème arrondissement",
+    "population": 142583,
+    "totalSubventions": 150178150,
+    "nbSubventions": 918,
+    "subventionsPerCapita": 1053.27
+  },
+  {
+    "code": 12,
+    "nom": "12ème arrondissement",
+    "population": 139867,
+    "totalSubventions": 142134704,
+    "nbSubventions": 596,
+    "subventionsPerCapita": 1016.21
+  },
+  {
+    "code": 13,
+    "nom": "13ème arrondissement",
+    "population": 178350,
+    "totalSubventions": 168756469,
+    "nbSubventions": 661,
+    "subventionsPerCapita": 946.21
+  },
+  {
+    "code": 14,
+    "nom": "14ème arrondissement",
+    "population": 134382,
+    "totalSubventions": 77737112,
+    "nbSubventions": 479,
+    "subventionsPerCapita": 578.48
+  },
+  {
+    "code": 15,
+    "nom": "15ème arrondissement",
+    "population": 227746,
+    "totalSubventions": 122126635,
+    "nbSubventions": 676,
+    "subventionsPerCapita": 536.24
+  },
+  {
+    "code": 16,
+    "nom": "16ème arrondissement",
+    "population": 165062,
+    "totalSubventions": 110666507,
+    "nbSubventions": 341,
+    "subventionsPerCapita": 670.45
+  },
+  {
+    "code": 17,
+    "nom": "17ème arrondissement",
+    "population": 166518,
+    "totalSubventions": 10951376,
+    "nbSubventions": 97,
+    "subventionsPerCapita": 65.77
+  },
+  {
+    "code": 18,
+    "nom": "18ème arrondissement",
+    "population": 191531,
+    "totalSubventions": 213438118,
+    "nbSubventions": 924,
+    "subventionsPerCapita": 1114.38
+  },
+  {
+    "code": 19,
+    "nom": "19ème arrondissement",
+    "population": 182952,
+    "totalSubventions": 435846348,
+    "nbSubventions": 1035,
+    "subventionsPerCapita": 2382.3
+  },
+  {
+    "code": 20,
+    "nom": "20ème arrondissement",
+    "population": 187642,
+    "totalSubventions": 121506077,
+    "nbSubventions": 761,
+    "subventionsPerCapita": 647.54
+  }
+]

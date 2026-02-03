@@ -1,0 +1,162 @@
+[
+  {
+    "code": 1,
+    "nom": "1er arrondissement",
+    "population": 15939,
+    "totalInvestissement": 49125028.34000003,
+    "nbAutorisations": 125,
+    "investissementPerCapita": 3082.06
+  },
+  {
+    "code": 2,
+    "nom": "2ème arrondissement",
+    "population": 20900,
+    "totalInvestissement": 4564217.420000002,
+    "nbAutorisations": 66,
+    "investissementPerCapita": 218.38
+  },
+  {
+    "code": 3,
+    "nom": "3ème arrondissement",
+    "population": 33000,
+    "totalInvestissement": 3908344.8000000007,
+    "nbAutorisations": 44,
+    "investissementPerCapita": 118.43
+  },
+  {
+    "code": 4,
+    "nom": "4ème arrondissement",
+    "population": 28088,
+    "totalInvestissement": 19952080.35,
+    "nbAutorisations": 103,
+    "investissementPerCapita": 710.34
+  },
+  {
+    "code": 5,
+    "nom": "5ème arrondissement",
+    "population": 56882,
+    "totalInvestissement": 570466.98,
+    "nbAutorisations": 24,
+    "investissementPerCapita": 10.03
+  },
+  {
+    "code": 6,
+    "nom": "6ème arrondissement",
+    "population": 40005,
+    "totalInvestissement": 5066251.099999999,
+    "nbAutorisations": 35,
+    "investissementPerCapita": 126.64
+  },
+  {
+    "code": 7,
+    "nom": "7ème arrondissement",
+    "population": 48354,
+    "totalInvestissement": 490529.85,
+    "nbAutorisations": 27,
+    "investissementPerCapita": 10.14
+  },
+  {
+    "code": 8,
+    "nom": "8ème arrondissement",
+    "population": 35016,
+    "totalInvestissement": 21664961.099999998,
+    "nbAutorisations": 41,
+    "investissementPerCapita": 618.72
+  },
+  {
+    "code": 9,
+    "nom": "9ème arrondissement",
+    "population": 59835,
+    "totalInvestissement": 5961343.449999999,
+    "nbAutorisations": 63,
+    "investissementPerCapita": 99.63
+  },
+  {
+    "code": 10,
+    "nom": "10ème arrondissement",
+    "population": 83459,
+    "totalInvestissement": 10864091.229999997,
+    "nbAutorisations": 87,
+    "investissementPerCapita": 130.17
+  },
+  {
+    "code": 11,
+    "nom": "11ème arrondissement",
+    "population": 142583,
+    "totalInvestissement": 15515787.389999999,
+    "nbAutorisations": 100,
+    "investissementPerCapita": 108.82
+  },
+  {
+    "code": 12,
+    "nom": "12ème arrondissement",
+    "population": 139867,
+    "totalInvestissement": 17917966.300000012,
+    "nbAutorisations": 151,
+    "investissementPerCapita": 128.11
+  },
+  {
+    "code": 13,
+    "nom": "13ème arrondissement",
+    "population": 178350,
+    "totalInvestissement": 35102437.59999999,
+    "nbAutorisations": 162,
+    "investissementPerCapita": 196.82
+  },
+  {
+    "code": 14,
+    "nom": "14ème arrondissement",
+    "population": 134382,
+    "totalInvestissement": 25712427.41,
+    "nbAutorisations": 111,
+    "investissementPerCapita": 191.34
+  },
+  {
+    "code": 15,
+    "nom": "15ème arrondissement",
+    "population": 227746,
+    "totalInvestissement": 26389282.160000008,
+    "nbAutorisations": 134,
+    "investissementPerCapita": 115.87
+  },
+  {
+    "code": 16,
+    "nom": "16ème arrondissement",
+    "population": 165062,
+    "totalInvestissement": 4022474.67,
+    "nbAutorisations": 54,
+    "investissementPerCapita": 24.37
+  },
+  {
+    "code": 17,
+    "nom": "17ème arrondissement",
+    "population": 166518,
+    "totalInvestissement": 24788966.549999986,
+    "nbAutorisations": 95,
+    "investissementPerCapita": 148.87
+  },
+  {
+    "code": 18,
+    "nom": "18ème arrondissement",
+    "population": 191531,
+    "totalInvestissement": 50810341.89999999,
+    "nbAutorisations": 216,
+    "investissementPerCapita": 265.29
+  },
+  {
+    "code": 19,
+    "nom": "19ème arrondissement",
+    "population": 182952,
+    "totalInvestissement": 12072711.4,
+    "nbAutorisations": 134,
+    "investissementPerCapita": 65.99
+  },
+  {
+    "code": 20,
+    "nom": "20ème arrondissement",
+    "population": 187642,
+    "totalInvestissement": 36090763.650000036,
+    "nbAutorisations": 179,
+    "investissementPerCapita": 192.34
+  }
+]
