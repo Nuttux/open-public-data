@@ -8,39 +8,6 @@
     2019
   ],
   "latestYear": 2024,
-  "entities": {
-    "total": {
-      "years": [
-        2024,
-        2023,
-        2022,
-        2021,
-        2020,
-        2019
-      ],
-      "label": "Budget Total"
-    },
-    "centrale": {
-      "years": [
-        2024,
-        2023,
-        2022,
-        2021,
-        2020,
-        2019
-      ],
-      "label": "Mairie Centrale"
-    },
-    "arrondissements": {
-      "years": [
-        2022,
-        2021,
-        2020,
-        2019
-      ],
-      "label": "Arrondissements"
-    }
-  },
   "summary": [
     {
       "year": 2024,

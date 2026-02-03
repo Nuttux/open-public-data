@@ -5,7 +5,6 @@
  * 
  * FEATURES:
  * - Sélecteur d'année (2019-2024)
- * - Sélecteur d'entité (Total, Centrale, Arrondissements)
  * - Cartes KPI avec vision économique claire
  * - Graphique Sankey interactif
  * - Drill-down multi-niveaux avec navigation par préfixe
@@ -13,7 +12,6 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import YearSelector from '@/components/YearSelector';
-import EntitySelector, { type BudgetEntity } from '@/components/EntitySelector';
 import StatsCards from '@/components/StatsCards';
 import BudgetSankey from '@/components/BudgetSankey';
 import DrilldownPanel from '@/components/DrilldownPanel';
@@ -26,7 +24,7 @@ interface DrilldownLevel {
   title: string;
   category: 'revenue' | 'expense';
   items: DrilldownItem[];
-  prefix?: string;  // Préfixe utilisé pour filtrer ce niveau
+  prefix?: string;
 }
 
 /**
@@ -35,13 +33,12 @@ interface DrilldownLevel {
 interface DrilldownState {
   levels: DrilldownLevel[];
   currentLevel: number;
-  originalItems: DrilldownItem[];  // Items originaux pour drill-down
+  originalItems: DrilldownItem[];
 }
 
 export default function Home() {
   const [index, setIndex] = useState<BudgetIndex | null>(null);
   const [selectedYear, setSelectedYear] = useState<number>(2024);
-  const [selectedEntity, setSelectedEntity] = useState<BudgetEntity>('total');
   const [budgetData, setBudgetData] = useState<BudgetData | null>(null);
   const [drilldown, setDrilldown] = useState<DrilldownState | null>(null);
   
@@ -65,20 +62,6 @@ export default function Home() {
     loadIndex();
   }, []);
 
-  // Adjust year when entity changes (if current year not available for new entity)
-  useEffect(() => {
-    if (!index) return;
-    
-    const entityYears = index.entities[selectedEntity]?.years || index.availableYears;
-    if (!entityYears.includes(selectedYear)) {
-      // Switch to latest available year for this entity
-      setSelectedYear(entityYears[0]);
-    }
-  }, [selectedEntity, index, selectedYear]);
-
-  // Get years available for current entity
-  const availableYears = index?.entities[selectedEntity]?.years || index?.availableYears || [];
-
   useEffect(() => {
     async function loadBudgetData() {
       if (!index) return;
@@ -86,17 +69,10 @@ export default function Home() {
       setIsLoading(true);
       setDrilldown(null);
       
-      // Construct file path based on entity
-      // total = budget_sankey_YYYY.json (existing)
-      // centrale = budget_sankey_centrale_YYYY.json
-      // arrondissements = budget_sankey_arrondissements_YYYY.json
-      const suffix = selectedEntity === 'total' ? '' : `_${selectedEntity}`;
-      const filename = `/data/budget_sankey${suffix}_${selectedYear}.json`;
-      
       try {
-        const response = await fetch(filename);
+        const response = await fetch(`/data/budget_sankey_${selectedYear}.json`);
         if (!response.ok) {
-          throw new Error(`Données ${selectedYear} non disponibles pour ce périmètre`);
+          throw new Error(`Données ${selectedYear} non disponibles`);
         }
         
         const data: BudgetData = await response.json();
@@ -111,11 +87,8 @@ export default function Home() {
       }
     }
     loadBudgetData();
-  }, [index, selectedYear, selectedEntity]);
+  }, [index, selectedYear]);
 
-  /**
-   * Extrait les préfixes uniques des items (partie avant ":")
-   */
   const extractPrefixes = useCallback((items: DrilldownItem[]): string[] => {
     const prefixes = new Set<string>();
     items.forEach(item => {
@@ -127,9 +100,6 @@ export default function Home() {
     return Array.from(prefixes);
   }, []);
 
-  /**
-   * Groupe les items par leur préfixe pour affichage niveau 1
-   */
   const groupByPrefix = useCallback((items: DrilldownItem[]): DrilldownItem[] => {
     const groups: Record<string, number> = {};
     const ungrouped: DrilldownItem[] = [];
@@ -151,9 +121,6 @@ export default function Home() {
     return [...grouped, ...ungrouped];
   }, []);
 
-  /**
-   * Gère le clic sur un nœud du Sankey - niveau 1
-   */
   const handleNodeClick = useCallback((nodeName: string, category: 'revenue' | 'expense') => {
     if (!budgetData) return;
     
@@ -162,10 +129,7 @@ export default function Home() {
       : budgetData.drilldown?.expenses?.[nodeName];
     
     if (items && items.length > 0) {
-      // Vérifie si les items ont des préfixes (pour groupage)
       const prefixes = extractPrefixes(items);
-      
-      // Si des préfixes existent, groupe par préfixe pour niveau 1
       const displayItems = prefixes.length > 1 ? groupByPrefix(items) : items;
       
       setDrilldown({
@@ -180,28 +144,21 @@ export default function Home() {
     }
   }, [budgetData, extractPrefixes, groupByPrefix]);
 
-  /**
-   * Gère le clic sur un item du drill-down - descend au niveau 2
-   */
   const handleDrilldownItemClick = useCallback((item: DrilldownItem) => {
     if (!drilldown) return;
     
     const { originalItems, levels, currentLevel } = drilldown;
     const category = levels[currentLevel].category;
     
-    // Cherche les items qui commencent par ce préfixe
     const prefix = item.name;
     const subItems = originalItems.filter(i => {
-      // Item commence par "Prefix: "
       return i.name.startsWith(prefix + ':');
     }).map(i => ({
-      // Retire le préfixe pour l'affichage
       name: i.name.substring(prefix.length + 1).trim(),
       value: i.value,
     }));
     
     if (subItems.length > 0) {
-      // Descend au niveau 2
       setDrilldown(prev => {
         if (!prev) return null;
         return {
@@ -218,9 +175,6 @@ export default function Home() {
     }
   }, [drilldown]);
 
-  /**
-   * Navigue vers un niveau spécifique
-   */
   const handleBreadcrumbClick = useCallback((levelIndex: number) => {
     setDrilldown(prev => {
       if (!prev) return null;
@@ -249,8 +203,6 @@ export default function Home() {
 
   const currentDrilldown = drilldown ? drilldown.levels[drilldown.currentLevel] : null;
   const breadcrumbs = drilldown?.levels.map(l => l.title) || [];
-  
-  // Vérifie si drill-down niveau 2 est possible
   const canDrillDeeper = currentDrilldown 
     ? drilldown?.originalItems.some(i => i.name.startsWith(currentDrilldown.items[0]?.name + ':'))
     : false;
@@ -270,17 +222,11 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-              <EntitySelector
-                selectedEntity={selectedEntity}
-                onEntityChange={setSelectedEntity}
-              />
-              <YearSelector
-                years={availableYears}
-                selectedYear={selectedYear}
-                onYearChange={setSelectedYear}
-              />
-            </div>
+            <YearSelector
+              years={index.availableYears}
+              selectedYear={selectedYear}
+              onYearChange={setSelectedYear}
+            />
           </div>
         </div>
       </header>
