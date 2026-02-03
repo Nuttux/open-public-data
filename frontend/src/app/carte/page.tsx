@@ -5,7 +5,7 @@
  * 
  * FEATURES:
  * - Carte interactive de Paris avec Leaflet
- * - Mode Points: subventions, logements sociaux
+ * - Mode Points: subventions, logements sociaux, autorisations de programmes
  * - Mode Choroplèthe: données per capita par arrondissement
  * - Filtres par année, thématique
  * 
@@ -20,12 +20,14 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import dynamic from 'next/dynamic';
 import MapFilters from '@/components/map/MapFilters';
-import type { Subvention, LogementSocial, MapLayerType, ArrondissementStats } from '@/lib/types/map';
+import type { Subvention, LogementSocial, MapLayerType, ArrondissementStats, AutorisationProgramme } from '@/lib/types/map';
 import { 
   loadLogementsSociaux,
   loadArrondissementsStats,
   loadSubventionsIndex,
   loadSubventionsForYear,
+  loadAutorisationsIndex,
+  loadAutorisationsForYear,
 } from '@/lib/api/staticData';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { DATA_SOURCES } from '@/lib/constants/arrondissements';
@@ -53,8 +55,14 @@ export default function CartePage() {
   const [availableYears, setAvailableYears] = useState<number[]>([2024, 2023, 2022, 2021, 2020, 2019]);
   const [selectedYear, setSelectedYear] = useState<number>(2024);
   const [activeLayers, setActiveLayers] = useState<MapLayerType[]>(['subventions', 'logements']);
+  
+  // Thématiques subventions
   const [availableThematiques, setAvailableThematiques] = useState<string[]>([]);
   const [selectedThematiques, setSelectedThematiques] = useState<string[]>([]);
+  
+  // Thématiques autorisations
+  const [availableThematiquesAP, setAvailableThematiquesAP] = useState<string[]>([]);
+  const [selectedThematiquesAP, setSelectedThematiquesAP] = useState<string[]>([]);
   
   // Mode choroplèthe
   const [showChoropleth, setShowChoropleth] = useState(false);
@@ -63,6 +71,7 @@ export default function CartePage() {
   // Données (chargées depuis fichiers statiques)
   const [subventions, setSubventions] = useState<Subvention[]>([]);
   const [logements, setLogements] = useState<LogementSocial[]>([]);
+  const [autorisations, setAutorisations] = useState<AutorisationProgramme[]>([]);
   const [arrondissementsStats, setArrondissementsStats] = useState<ArrondissementStats[]>([]);
   
   // État de chargement
@@ -81,17 +90,24 @@ export default function CartePage() {
       setError(null);
       
       try {
-        const [logementsData, arrStats, subIndex] = await Promise.all([
+        const [logementsData, arrStats, subIndex, apIndex] = await Promise.all([
           loadLogementsSociaux(),
           loadArrondissementsStats(),
           loadSubventionsIndex(),
+          loadAutorisationsIndex(),
         ]);
         
         setLogements(logementsData);
         setArrondissementsStats(arrStats);
+        
+        // Subventions
         setAvailableYears(subIndex.availableYears);
         setAvailableThematiques(subIndex.thematiques || []);
         setSelectedThematiques(subIndex.thematiques || []);
+        
+        // Autorisations
+        setAvailableThematiquesAP(apIndex.thematiques || []);
+        setSelectedThematiquesAP(apIndex.thematiques || []);
         
         if (subIndex.availableYears.length > 0) {
           setSelectedYear(subIndex.availableYears[0]);
@@ -129,6 +145,29 @@ export default function CartePage() {
   }, [selectedYear, activeLayers, showChoropleth]);
 
   /**
+   * Charger les autorisations quand l'année change
+   */
+  useEffect(() => {
+    async function loadAutorisationsData() {
+      if (!activeLayers.includes('autorisations') && !showChoropleth) {
+        return;
+      }
+      
+      try {
+        // Les autorisations sont disponibles 2018-2022
+        const apYear = Math.min(Math.max(selectedYear, 2018), 2022);
+        const apData = await loadAutorisationsForYear(apYear);
+        setAutorisations(apData);
+      } catch (err) {
+        console.warn(`Pas de données autorisations`);
+        setAutorisations([]);
+      }
+    }
+    
+    loadAutorisationsData();
+  }, [selectedYear, activeLayers, showChoropleth]);
+
+  /**
    * Subventions filtrées par thématique
    */
   const filteredSubventions = useMemo(() => {
@@ -139,10 +178,21 @@ export default function CartePage() {
   }, [subventions, selectedThematiques, availableThematiques]);
 
   /**
+   * Autorisations filtrées par thématique
+   */
+  const filteredAutorisations = useMemo(() => {
+    if (selectedThematiquesAP.length === 0 || selectedThematiquesAP.length === availableThematiquesAP.length) {
+      return autorisations;
+    }
+    return autorisations.filter(a => a.thematique && selectedThematiquesAP.includes(a.thematique));
+  }, [autorisations, selectedThematiquesAP, availableThematiquesAP]);
+
+  /**
    * Statistiques calculées
    */
   const stats = useMemo(() => {
     const geolocatedSubs = filteredSubventions.filter(s => s.coordinates);
+    const geolocatedAPs = filteredAutorisations.filter(a => a.arrondissement);
     
     return {
       subventions: {
@@ -154,8 +204,13 @@ export default function CartePage() {
         count: logements.length,
         total: logements.reduce((sum, l) => sum + l.nbLogements, 0),
       },
+      autorisations: {
+        count: filteredAutorisations.length,
+        total: filteredAutorisations.reduce((sum, a) => sum + a.montant, 0),
+        geolocated: geolocatedAPs.length,
+      },
     };
-  }, [filteredSubventions, logements]);
+  }, [filteredSubventions, logements, filteredAutorisations]);
 
   /**
    * Gestion du clic sur un marqueur
@@ -175,7 +230,7 @@ export default function CartePage() {
               Carte Paris
             </h1>
             <p className="text-sm text-slate-400 mt-1">
-              Vue géographique des subventions et logements sociaux
+              Vue géographique des subventions, logements sociaux et investissements
             </p>
           </div>
         </div>
@@ -204,6 +259,9 @@ export default function CartePage() {
               availableThematiques={availableThematiques}
               selectedThematiques={selectedThematiques}
               onThematiquesChange={setSelectedThematiques}
+              availableThematiquesAP={availableThematiquesAP}
+              selectedThematiquesAP={selectedThematiquesAP}
+              onThematiquesAPChange={setSelectedThematiquesAP}
               showChoropleth={showChoropleth}
               onChoroplethChange={setShowChoropleth}
               choroplethMetric={choroplethMetric}
@@ -220,9 +278,11 @@ export default function CartePage() {
                 <ParisMap
                   subventions={filteredSubventions}
                   logements={logements}
+                  autorisations={filteredAutorisations}
                   arrondissementStats={arrondissementsStats}
                   showSubventions={!showChoropleth && activeLayers.includes('subventions')}
                   showLogements={!showChoropleth && activeLayers.includes('logements')}
+                  showAutorisations={!showChoropleth && activeLayers.includes('autorisations')}
                   showChoropleth={showChoropleth}
                   choroplethMetric={choroplethMetric}
                   onMarkerClick={handleMarkerClick}
@@ -241,21 +301,21 @@ export default function CartePage() {
                 </p>
               </div>
               <div className="bg-slate-800/30 rounded-lg p-3 border border-slate-700/30">
-                <p className="text-xs text-slate-500">Montant total</p>
+                <p className="text-xs text-slate-500">Montant subventions</p>
                 <p className="text-lg font-bold text-purple-400">
                   {formatEuroCompact(stats.subventions.total)}
-                </p>
-              </div>
-              <div className="bg-slate-800/30 rounded-lg p-3 border border-slate-700/30">
-                <p className="text-xs text-slate-500">Programmes logement</p>
-                <p className="text-lg font-bold text-emerald-400">
-                  {formatNumber(stats.logements.count)}
                 </p>
               </div>
               <div className="bg-slate-800/30 rounded-lg p-3 border border-slate-700/30">
                 <p className="text-xs text-slate-500">Logements financés</p>
                 <p className="text-lg font-bold text-emerald-400">
                   {formatNumber(stats.logements.total)}
+                </p>
+              </div>
+              <div className="bg-slate-800/30 rounded-lg p-3 border border-slate-700/30">
+                <p className="text-xs text-slate-500">Investissements</p>
+                <p className="text-lg font-bold text-amber-400">
+                  {formatEuroCompact(stats.autorisations.total)}
                 </p>
               </div>
             </div>

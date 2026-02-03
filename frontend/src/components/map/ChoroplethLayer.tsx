@@ -8,7 +8,7 @@
  * - Logements pour 1000 habitants
  * - Investissements par habitant
  * 
- * Source données: /data/map/arrondissements.geojson (Paris OpenData)
+ * Utilise le 90e percentile pour éviter que les outliers écrasent les couleurs.
  */
 
 import { useEffect, useState, useCallback, useMemo } from 'react';
@@ -37,17 +37,29 @@ interface ChoroplethLayerProps {
  * Palette de couleurs pour la choroplèthe (du plus clair au plus foncé)
  */
 const COLOR_SCALES: Record<ChoroplethMetric, string[]> = {
-  subventions: ['#f3e8ff', '#d8b4fe', '#a855f7', '#7c3aed', '#5b21b6'],
-  logements: ['#d1fae5', '#6ee7b7', '#10b981', '#059669', '#047857'],
-  investissements: ['#fef3c7', '#fcd34d', '#f59e0b', '#d97706', '#b45309'],
+  subventions: ['#faf5ff', '#e9d5ff', '#c084fc', '#a855f7', '#7c3aed'],
+  logements: ['#ecfdf5', '#a7f3d0', '#34d399', '#10b981', '#047857'],
+  investissements: ['#fffbeb', '#fde68a', '#fbbf24', '#f59e0b', '#b45309'],
 };
 
 /**
- * Calcule la couleur en fonction de la valeur et des seuils
+ * Calcule le percentile d'un tableau de valeurs
  */
-function getColor(value: number, max: number, scale: string[]): string {
-  if (max === 0) return scale[0];
-  const ratio = value / max;
+function percentile(values: number[], p: number): number {
+  if (values.length === 0) return 0;
+  const sorted = [...values].sort((a, b) => a - b);
+  const index = Math.ceil((p / 100) * sorted.length) - 1;
+  return sorted[Math.max(0, index)];
+}
+
+/**
+ * Calcule la couleur en fonction de la valeur normalisée
+ */
+function getColor(value: number, maxValue: number, scale: string[]): string {
+  if (maxValue === 0 || value === 0) return scale[0];
+  // Clamp la valeur entre 0 et maxValue
+  const clampedValue = Math.min(value, maxValue);
+  const ratio = clampedValue / maxValue;
   const index = Math.min(Math.floor(ratio * scale.length), scale.length - 1);
   return scale[index];
 }
@@ -96,17 +108,17 @@ export default function ChoroplethLayer({
   }, [stats]);
 
   /**
-   * Calcule la valeur max per capita pour la normalisation des couleurs
+   * Calcule le max en utilisant le 90e percentile pour éviter les outliers
    */
   const maxValue = useMemo(() => {
-    return stats.reduce((max, s) => {
-      const value = metric === 'subventions' 
-        ? (s.subventionsPerCapita || 0)
-        : metric === 'logements' 
-          ? (s.logementsPerCapita || 0)
-          : (s.investissementPerCapita || 0);
-      return Math.max(max, value);
-    }, 0);
+    const values = stats.map(s => {
+      if (metric === 'subventions') return s.subventionsPerCapita || 0;
+      if (metric === 'logements') return s.logementsPerCapita || 0;
+      return s.investissementPerCapita || 0;
+    }).filter(v => v > 0);
+    
+    // Utiliser le 90e percentile pour éviter que les outliers écrasent tout
+    return percentile(values, 90);
   }, [stats, metric]);
 
   /**
@@ -115,7 +127,6 @@ export default function ChoroplethLayer({
   const getFeatureStyle = useCallback((code: number): PathOptions => {
     const arrStats = statsMap.get(code);
     
-    // Utiliser les valeurs per capita pour la coloration
     const value = arrStats 
       ? (metric === 'subventions' 
           ? (arrStats.subventionsPerCapita || 0)
@@ -153,7 +164,6 @@ export default function ChoroplethLayer({
     const nom = feature.properties?.l_ar || `${code}ème`;
     const arrStats = statsMap.get(code);
 
-    // Popup avec les stats incluant population et per capita
     const population = arrStats?.population || 0;
     const popupContent = `
       <div style="min-width: 220px; padding: 8px; font-family: system-ui, sans-serif;">
@@ -183,10 +193,8 @@ export default function ChoroplethLayer({
       maxWidth: 300,
     });
 
-    // Style par défaut pour cet arrondissement
     const defaultStyle = getFeatureStyle(code);
 
-    // Événements hover - utiliser le style par défaut sauvegardé
     layer.on({
       mouseover: (e) => {
         const target = e.target;
@@ -199,7 +207,6 @@ export default function ChoroplethLayer({
       },
       mouseout: (e) => {
         const target = e.target;
-        // Restaurer le style par défaut
         target.setStyle(defaultStyle);
       },
       click: () => {
@@ -212,8 +219,7 @@ export default function ChoroplethLayer({
     return null;
   }
 
-  // Clé unique pour forcer le re-render quand metric ou stats changent
-  const geoJsonKey = `choropleth-${metric}-${stats.length}-${maxValue}`;
+  const geoJsonKey = `choropleth-${metric}-${stats.length}-${maxValue.toFixed(0)}`;
 
   return (
     <GeoJSON
@@ -223,6 +229,23 @@ export default function ChoroplethLayer({
       onEachFeature={onEachFeature as (feature: Feature<Geometry, unknown>, layer: Layer) => void}
     />
   );
+}
+
+/**
+ * Formate un nombre pour la légende de manière lisible
+ */
+function formatLegendValue(value: number, metric: ChoroplethMetric): string {
+  if (metric === 'logements') {
+    // Logements pour 1000 hab - afficher tel quel
+    if (value >= 100) return Math.round(value).toString();
+    if (value >= 10) return value.toFixed(0);
+    return value.toFixed(1);
+  }
+  // Subventions et investissements en €/hab
+  if (value >= 1000) {
+    return `${(value / 1000).toFixed(1).replace('.', ',')}k`;
+  }
+  return Math.round(value).toString();
 }
 
 /**
@@ -237,31 +260,18 @@ export function ChoroplethLegend({
 }) {
   const scale = COLOR_SCALES[metric];
   
-  // Formater les labels selon la métrique avec des unités lisibles
-  const formatLabel = (value: number) => {
-    if (metric === 'logements') {
-      if (value >= 100) return `${Math.round(value)}`;
-      return value.toFixed(1);
-    }
-    // Pour subventions et investissements (€/hab)
-    if (value >= 1000) {
-      return `${(value / 1000).toFixed(1)}k€`;
-    }
-    return `${Math.round(value)}€`;
-  };
-  
   const labels = [
     '0',
-    formatLabel(maxValue * 0.25),
-    formatLabel(maxValue * 0.5),
-    formatLabel(maxValue * 0.75),
-    formatLabel(maxValue),
+    formatLegendValue(maxValue * 0.25, metric),
+    formatLegendValue(maxValue * 0.5, metric),
+    formatLegendValue(maxValue * 0.75, metric),
+    formatLegendValue(maxValue, metric) + '+',
   ];
   
   const metricLabels: Record<ChoroplethMetric, string> = {
-    subventions: '€ / habitant',
+    subventions: '€ / hab',
     logements: '/ 1000 hab',
-    investissements: '€ / habitant',
+    investissements: '€ / hab',
   };
 
   return (
@@ -269,14 +279,14 @@ export function ChoroplethLegend({
       <h4 className="text-xs font-semibold text-slate-300 mb-2">
         {metricLabels[metric]}
       </h4>
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-0.5">
         {scale.map((color, i) => (
           <div key={i} className="flex flex-col items-center">
             <div 
-              className="w-6 h-4 rounded-sm"
+              className="w-8 h-4 first:rounded-l last:rounded-r"
               style={{ backgroundColor: color }}
             />
-            <span className="text-[10px] text-slate-500 mt-1">
+            <span className="text-[9px] text-slate-400 mt-1 whitespace-nowrap">
               {labels[i]}
             </span>
           </div>

@@ -37,6 +37,12 @@ const LAYER_OPTIONS: LayerOption[] = [
     icon: '🏠',
     color: 'bg-emerald-500',
   },
+  {
+    id: 'autorisations',
+    label: 'Investissements',
+    icon: '📋',
+    color: 'bg-amber-500',
+  },
 ];
 
 /**
@@ -54,10 +60,14 @@ interface MapFiltersProps {
   onYearChange: (year: number) => void;
   activeLayers: MapLayerType[];
   onLayersChange: (layers: MapLayerType[]) => void;
-  // Thématiques
+  // Thématiques subventions
   availableThematiques: string[];
   selectedThematiques: string[];
   onThematiquesChange: (thematiques: string[]) => void;
+  // Thématiques autorisations
+  availableThematiquesAP?: string[];
+  selectedThematiquesAP?: string[];
+  onThematiquesAPChange?: (thematiques: string[]) => void;
   // Choroplèthe
   showChoropleth: boolean;
   onChoroplethChange: (show: boolean) => void;
@@ -68,6 +78,7 @@ interface MapFiltersProps {
   stats?: {
     subventions: LayerStats;
     logements: LayerStats;
+    autorisations?: LayerStats;
   };
 }
 
@@ -80,6 +91,9 @@ export default function MapFilters({
   availableThematiques,
   selectedThematiques,
   onThematiquesChange,
+  availableThematiquesAP = [],
+  selectedThematiquesAP = [],
+  onThematiquesAPChange,
   showChoropleth,
   onChoroplethChange,
   choroplethMetric,
@@ -123,6 +137,28 @@ export default function MapFilters({
   };
 
   const subventionsActive = activeLayers.includes('subventions');
+  const autorisationsActive = activeLayers.includes('autorisations');
+
+  /**
+   * Toggle une thématique AP
+   */
+  const toggleThematiqueAP = (thematique: string) => {
+    if (!onThematiquesAPChange) return;
+    if (selectedThematiquesAP.includes(thematique)) {
+      onThematiquesAPChange(selectedThematiquesAP.filter(t => t !== thematique));
+    } else {
+      onThematiquesAPChange([...selectedThematiquesAP, thematique]);
+    }
+  };
+
+  const toggleAllThematiquesAP = () => {
+    if (!onThematiquesAPChange) return;
+    if (selectedThematiquesAP.length === availableThematiquesAP.length) {
+      onThematiquesAPChange([]);
+    } else {
+      onThematiquesAPChange([...availableThematiquesAP]);
+    }
+  };
 
   return (
     <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 overflow-hidden">
@@ -218,7 +254,11 @@ export default function MapFilters({
               <div className="space-y-2">
                 {LAYER_OPTIONS.map((layer) => {
                   const isActive = activeLayers.includes(layer.id);
-                  const layerStats = layer.id === 'subventions' ? stats?.subventions : stats?.logements;
+                  const layerStats = layer.id === 'subventions' 
+                    ? stats?.subventions 
+                    : layer.id === 'logements' 
+                      ? stats?.logements 
+                      : stats?.autorisations;
                   
                   return (
                     <div key={layer.id}>
@@ -248,6 +288,8 @@ export default function MapFilters({
                             <div className="text-xs text-slate-500 mt-0.5">
                               {layer.id === 'subventions' && layerStats.geolocated !== undefined ? (
                                 <>{layerStats.geolocated} / {layerStats.count} géolocalisés</>
+                              ) : layer.id === 'autorisations' && layerStats.geolocated !== undefined ? (
+                                <>{layerStats.geolocated} / {layerStats.count} localisés</>
                               ) : (
                                 <>{layerStats.count.toLocaleString('fr-FR')} programmes</>
                               )}
@@ -295,6 +337,46 @@ export default function MapFilters({
                           </div>
                         </div>
                       )}
+
+                      {/* Thématiques nested sous Autorisations */}
+                      {layer.id === 'autorisations' && isActive && availableThematiquesAP.length > 0 && onThematiquesAPChange && (
+                        <div className="ml-4 mt-2 pl-3 border-l-2 border-amber-700/50">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-xs font-medium text-slate-400">Par thématique</span>
+                            <button
+                              onClick={toggleAllThematiquesAP}
+                              className="text-xs text-amber-400 hover:text-amber-300"
+                            >
+                              {selectedThematiquesAP.length === availableThematiquesAP.length ? 'Aucun' : 'Tous'}
+                            </button>
+                          </div>
+                          <div className="space-y-1 max-h-40 overflow-y-auto pr-1">
+                            {availableThematiquesAP.map((thematique) => {
+                              const info = THEMATIQUE_LABELS[thematique as ThematiqueSubvention];
+                              const isSelected = selectedThematiquesAP.includes(thematique);
+                              
+                              return (
+                                <button
+                                  key={thematique}
+                                  onClick={() => toggleThematiqueAP(thematique)}
+                                  className={`
+                                    w-full flex items-center gap-2 px-2 py-1 rounded text-xs text-left
+                                    ${isSelected ? 'bg-amber-500/20 text-slate-200' : 'text-slate-400 hover:bg-slate-700/30'}
+                                  `}
+                                >
+                                  <span className={`w-3 h-3 rounded-sm border flex items-center justify-center text-[8px] ${
+                                    isSelected ? 'bg-amber-500 border-amber-500 text-white' : 'border-slate-500'
+                                  }`}>
+                                    {isSelected && '✓'}
+                                  </span>
+                                  <span>{info?.icon || '📋'}</span>
+                                  <span className="truncate">{info?.label || thematique}</span>
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   );
                 })}
@@ -319,6 +401,14 @@ export default function MapFilters({
                     🏠 Logements:{' '}
                     <span className="text-emerald-400 font-medium">
                       {stats.logements.total.toLocaleString('fr-FR')}
+                    </span>
+                  </p>
+                )}
+                {autorisationsActive && stats.autorisations && (
+                  <p>
+                    📋 Invest.:{' '}
+                    <span className="text-amber-400 font-medium">
+                      {(stats.autorisations.total / 1_000_000).toFixed(1).replace('.', ',')} M€
                     </span>
                   </p>
                 )}

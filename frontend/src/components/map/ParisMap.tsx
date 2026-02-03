@@ -4,18 +4,18 @@
  * Composant ParisMap - Carte interactive de Paris
  * 
  * Utilise react-leaflet pour afficher:
- * - Points: subventions, logements sociaux
+ * - Points: subventions, logements sociaux, autorisations de programmes
  * - Polygones: arrondissements (choroplèthe)
  * 
  * Note: Ce composant doit être importé dynamiquement (next/dynamic)
  * car Leaflet nécessite window (SSR incompatible)
  */
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { MapContainer, TileLayer, CircleMarker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import type { Subvention, LogementSocial, GeoPoint, ArrondissementStats } from '@/lib/types/map';
+import type { Subvention, LogementSocial, GeoPoint, ArrondissementStats, AutorisationProgramme } from '@/lib/types/map';
 import { formatEuroCompact } from '@/lib/formatters';
 import { getDirectionName, THEMATIQUE_LABELS, type ThematiqueSubvention } from '@/lib/constants/directions';
 import ChoroplethLayer, { ChoroplethLegend, type ChoroplethMetric } from './ChoroplethLayer';
@@ -25,6 +25,33 @@ import ChoroplethLayer, { ChoroplethLegend, type ChoroplethMetric } from './Chor
  */
 const PARIS_CENTER: GeoPoint = { lat: 48.8566, lon: 2.3522 };
 const DEFAULT_ZOOM = 12;
+
+/**
+ * Centroïdes approximatifs des arrondissements de Paris
+ * Pour placer les autorisations de programmes dont on connaît l'arrondissement
+ */
+const ARRONDISSEMENT_CENTROIDS: Record<number, GeoPoint> = {
+  1:  { lat: 48.8603, lon: 2.3470 },
+  2:  { lat: 48.8679, lon: 2.3423 },
+  3:  { lat: 48.8638, lon: 2.3612 },
+  4:  { lat: 48.8546, lon: 2.3575 },
+  5:  { lat: 48.8449, lon: 2.3498 },
+  6:  { lat: 48.8490, lon: 2.3328 },
+  7:  { lat: 48.8566, lon: 2.3123 },
+  8:  { lat: 48.8744, lon: 2.3108 },
+  9:  { lat: 48.8764, lon: 2.3375 },
+  10: { lat: 48.8758, lon: 2.3609 },
+  11: { lat: 48.8592, lon: 2.3792 },
+  12: { lat: 48.8396, lon: 2.3876 },
+  13: { lat: 48.8322, lon: 2.3561 },
+  14: { lat: 48.8286, lon: 2.3257 },
+  15: { lat: 48.8421, lon: 2.2920 },
+  16: { lat: 48.8637, lon: 2.2769 },
+  17: { lat: 48.8864, lon: 2.3053 },
+  18: { lat: 48.8914, lon: 2.3443 },
+  19: { lat: 48.8848, lon: 2.3822 },
+  20: { lat: 48.8638, lon: 2.3984 },
+};
 
 /**
  * Fix pour les icônes Leaflet avec Next.js
@@ -47,9 +74,11 @@ L.Marker.prototype.options.icon = defaultIcon;
 interface ParisMapProps {
   subventions?: Subvention[];
   logements?: LogementSocial[];
+  autorisations?: AutorisationProgramme[];
   arrondissementStats?: ArrondissementStats[];
   showSubventions?: boolean;
   showLogements?: boolean;
+  showAutorisations?: boolean;
   showChoropleth?: boolean;
   choroplethMetric?: ChoroplethMetric;
   onMarkerClick?: (type: 'subvention' | 'logement', id: string) => void;
@@ -61,12 +90,19 @@ interface ParisMapProps {
 /**
  * Calcule le rayon d'un cercle en fonction du montant
  */
-function getCircleRadius(montant: number, type: 'subvention' | 'logement'): number {
+function getCircleRadius(montant: number, type: 'subvention' | 'logement' | 'autorisation'): number {
   if (type === 'logement') {
-    // Pour logements: basé sur le nombre de logements (déjà passé en montant)
     return Math.max(5, Math.min(30, Math.sqrt(montant) * 2));
   }
-  // Pour subventions: basé sur le montant
+  if (type === 'autorisation') {
+    // Autorisations: montants plus grands
+    if (montant < 100000) return 5;
+    if (montant < 500000) return 8;
+    if (montant < 1000000) return 12;
+    if (montant < 5000000) return 16;
+    return 20;
+  }
+  // Pour subventions
   if (montant < 5000) return 5;
   if (montant < 20000) return 8;
   if (montant < 50000) return 12;
@@ -96,9 +132,11 @@ function MapController({ center, zoom }: { center?: GeoPoint; zoom?: number }) {
 export default function ParisMap({
   subventions = [],
   logements = [],
+  autorisations = [],
   arrondissementStats = [],
   showSubventions = true,
   showLogements = true,
+  showAutorisations = false,
   showChoropleth = false,
   choroplethMetric = 'subventions',
   onMarkerClick,
@@ -110,16 +148,32 @@ export default function ParisMap({
 
   // Les subventions avec coordonnées
   const geoSubventions = subventions.filter(s => s.coordinates);
+  
+  // Les autorisations avec arrondissement connu
+  const geoAutorisations = useMemo(() => {
+    return autorisations
+      .filter(a => a.arrondissement && ARRONDISSEMENT_CENTROIDS[a.arrondissement])
+      .map(a => ({
+        ...a,
+        // Ajouter un petit offset aléatoire pour éviter que tous les points se superposent
+        coordinates: {
+          lat: ARRONDISSEMENT_CENTROIDS[a.arrondissement!].lat + (Math.random() - 0.5) * 0.008,
+          lon: ARRONDISSEMENT_CENTROIDS[a.arrondissement!].lon + (Math.random() - 0.5) * 0.008,
+        },
+      }));
+  }, [autorisations]);
 
-  // Calcul du max pour la légende choroplèthe
-  const maxChoroplethValue = arrondissementStats.reduce((max, s) => {
-    const value = choroplethMetric === 'subventions' 
-      ? s.totalSubventions 
-      : choroplethMetric === 'logements' 
-        ? s.totalLogements 
-        : s.totalInvestissement;
-    return Math.max(max, value);
-  }, 0);
+  // Calcul du max pour la légende choroplèthe (utilise percentile dans ChoroplethLayer)
+  const maxChoroplethValue = useMemo(() => {
+    return arrondissementStats.reduce((max, s) => {
+      const value = choroplethMetric === 'subventions' 
+        ? (s.subventionsPerCapita || 0)
+        : choroplethMetric === 'logements' 
+          ? (s.logementsPerCapita || 0)
+          : (s.investissementPerCapita || 0);
+      return Math.max(max, value);
+    }, 0);
+  }, [arrondissementStats, choroplethMetric]);
   
   return (
     <div className="relative w-full h-full min-h-[500px] rounded-xl overflow-hidden">
@@ -239,26 +293,71 @@ export default function ParisMap({
             </Popup>
           </CircleMarker>
         ))}
+
+        {/* Layer Autorisations de programmes */}
+        {showAutorisations && mapReady && geoAutorisations.map((ap) => (
+          <CircleMarker
+            key={`ap-${ap.id}`}
+            center={[ap.coordinates.lat, ap.coordinates.lon]}
+            radius={getCircleRadius(ap.montant, 'autorisation')}
+            pathOptions={{
+              color: '#f59e0b',
+              fillColor: '#f59e0b',
+              fillOpacity: 0.5,
+              weight: 1,
+            }}
+          >
+            <Popup>
+              <div className="min-w-[220px]">
+                <h3 className="font-bold text-slate-900 mb-1 text-sm leading-tight">{ap.apTexte}</h3>
+                <p className="text-xl font-bold text-amber-600 mb-2">
+                  {formatEuroCompact(ap.montant)}
+                </p>
+                <div className="text-xs text-slate-600 space-y-1">
+                  <p><strong>Mission:</strong> {ap.missionTexte}</p>
+                  {ap.thematique && (
+                    <p>
+                      <strong>Thématique:</strong>{' '}
+                      {THEMATIQUE_LABELS[ap.thematique as ThematiqueSubvention]?.icon || '📋'}{' '}
+                      {THEMATIQUE_LABELS[ap.thematique as ThematiqueSubvention]?.label || ap.thematique}
+                    </p>
+                  )}
+                  <p><strong>Direction:</strong> {ap.directionTexte}</p>
+                  <p><strong>Année:</strong> {ap.annee}</p>
+                  <p><strong>Arrondissement:</strong> {ap.arrondissement}ème</p>
+                </div>
+              </div>
+            </Popup>
+          </CircleMarker>
+        ))}
       </MapContainer>
 
       {/* Légende points */}
-      <div className="absolute bottom-4 left-4 bg-slate-900/90 backdrop-blur rounded-lg p-3 z-[1000]">
-        <h4 className="text-xs font-semibold text-slate-300 mb-2">Légende</h4>
-        <div className="space-y-1.5 text-xs">
-          {showSubventions && (
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-purple-500" />
-              <span className="text-slate-400">Subventions ({geoSubventions.length})</span>
-            </div>
-          )}
-          {showLogements && (
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-emerald-500" />
-              <span className="text-slate-400">Logements sociaux ({logements.length})</span>
-            </div>
-          )}
+      {!showChoropleth && (
+        <div className="absolute bottom-4 left-4 bg-slate-900/90 backdrop-blur rounded-lg p-3 z-[1000]">
+          <h4 className="text-xs font-semibold text-slate-300 mb-2">Légende</h4>
+          <div className="space-y-1.5 text-xs">
+            {showSubventions && (
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-purple-500" />
+                <span className="text-slate-400">Subventions ({geoSubventions.length})</span>
+              </div>
+            )}
+            {showLogements && (
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-emerald-500" />
+                <span className="text-slate-400">Logements ({logements.length})</span>
+              </div>
+            )}
+            {showAutorisations && (
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-amber-500" />
+                <span className="text-slate-400">Investissements ({geoAutorisations.length})</span>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Légende choroplèthe */}
       {showChoropleth && arrondissementStats.length > 0 && (
