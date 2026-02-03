@@ -6,14 +6,13 @@
  * Permet de filtrer:
  * - Par année
  * - Par type de données (subventions, logements, autorisations)
- * - Par thématique (culture, sport, social, etc.)
+ * - Par thématique (sous subventions)
  * - Mode choroplèthe (per capita par arrondissement)
  */
 
 import { useState } from 'react';
 import type { MapLayerType } from '@/lib/types/map';
 import { THEMATIQUE_LABELS, type ThematiqueSubvention } from '@/lib/constants/directions';
-import { DATA_SOURCES } from '@/lib/constants/arrondissements';
 
 /**
  * Configuration d'un layer de données
@@ -23,8 +22,6 @@ interface LayerOption {
   label: string;
   icon: string;
   color: string;
-  description: string;
-  sourceUrl: string;
 }
 
 const LAYER_OPTIONS: LayerOption[] = [
@@ -33,16 +30,12 @@ const LAYER_OPTIONS: LayerOption[] = [
     label: 'Subventions',
     icon: '💰',
     color: 'bg-purple-500',
-    description: 'Subventions aux associations',
-    sourceUrl: DATA_SOURCES.subventions.url,
   },
   {
     id: 'logements',
     label: 'Logements sociaux',
     icon: '🏠',
     color: 'bg-emerald-500',
-    description: 'Programmes de logements sociaux',
-    sourceUrl: DATA_SOURCES.logementsSociaux.url,
   },
 ];
 
@@ -95,7 +88,6 @@ export default function MapFilters({
   stats,
 }: MapFiltersProps) {
   const [isExpanded, setIsExpanded] = useState(true);
-  const [showThematiques, setShowThematiques] = useState(false);
 
   /**
    * Toggle un layer
@@ -129,6 +121,8 @@ export default function MapFilters({
       onThematiquesChange([...availableThematiques]);
     }
   };
+
+  const subventionsActive = activeLayers.includes('subventions');
 
   return (
     <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 overflow-hidden">
@@ -227,7 +221,7 @@ export default function MapFilters({
                   const layerStats = layer.id === 'subventions' ? stats?.subventions : stats?.logements;
                   
                   return (
-                    <div key={layer.id} className="space-y-1">
+                    <div key={layer.id}>
                       <button
                         onClick={() => toggleLayer(layer.id)}
                         disabled={isLoading}
@@ -255,21 +249,52 @@ export default function MapFilters({
                               {layer.id === 'subventions' && layerStats.geolocated !== undefined ? (
                                 <>{layerStats.geolocated} / {layerStats.count} géolocalisés</>
                               ) : (
-                                <>{layerStats.count} programmes</>
+                                <>{layerStats.count.toLocaleString('fr-FR')} programmes</>
                               )}
                             </div>
                           )}
                         </div>
                       </button>
-                      {/* Lien source */}
-                      <a
-                        href={layer.sourceUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block text-xs text-purple-400 hover:text-purple-300 pl-10"
-                      >
-                        📎 Voir la source
-                      </a>
+
+                      {/* Thématiques nested sous Subventions */}
+                      {layer.id === 'subventions' && isActive && availableThematiques.length > 0 && (
+                        <div className="ml-4 mt-2 pl-3 border-l-2 border-slate-700">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-xs font-medium text-slate-400">Par thématique</span>
+                            <button
+                              onClick={toggleAllThematiques}
+                              className="text-xs text-purple-400 hover:text-purple-300"
+                            >
+                              {selectedThematiques.length === availableThematiques.length ? 'Aucun' : 'Tous'}
+                            </button>
+                          </div>
+                          <div className="space-y-1 max-h-40 overflow-y-auto pr-1">
+                            {availableThematiques.map((thematique) => {
+                              const info = THEMATIQUE_LABELS[thematique as ThematiqueSubvention];
+                              const isSelected = selectedThematiques.includes(thematique);
+                              
+                              return (
+                                <button
+                                  key={thematique}
+                                  onClick={() => toggleThematique(thematique)}
+                                  className={`
+                                    w-full flex items-center gap-2 px-2 py-1 rounded text-xs text-left
+                                    ${isSelected ? 'bg-purple-500/20 text-slate-200' : 'text-slate-400 hover:bg-slate-700/30'}
+                                  `}
+                                >
+                                  <span className={`w-3 h-3 rounded-sm border flex items-center justify-center text-[8px] ${
+                                    isSelected ? 'bg-purple-500 border-purple-500 text-white' : 'border-slate-500'
+                                  }`}>
+                                    {isSelected && '✓'}
+                                  </span>
+                                  <span>{info?.icon || '📋'}</span>
+                                  <span className="truncate">{info?.label || thematique}</span>
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   );
                 })}
@@ -277,66 +302,21 @@ export default function MapFilters({
             </div>
           )}
 
-          {/* Filtres par thématique */}
-          {!showChoropleth && activeLayers.includes('subventions') && availableThematiques.length > 0 && (
-            <div>
-              <button
-                onClick={() => setShowThematiques(!showThematiques)}
-                className="w-full flex items-center justify-between text-xs font-medium text-slate-400 mb-2"
-              >
-                <span>Filtrer par thématique</span>
-                <span className={`transition-transform ${showThematiques ? 'rotate-180' : ''}`}>▼</span>
-              </button>
-              
-              {showThematiques && (
-                <div className="space-y-1 max-h-48 overflow-y-auto">
-                  <button
-                    onClick={toggleAllThematiques}
-                    className="w-full text-left px-2 py-1 text-xs text-purple-400 hover:text-purple-300"
-                  >
-                    {selectedThematiques.length === availableThematiques.length ? '☐ Tout désélectionner' : '☑ Tout sélectionner'}
-                  </button>
-                  {availableThematiques.map((thematique) => {
-                    const info = THEMATIQUE_LABELS[thematique as ThematiqueSubvention];
-                    const isSelected = selectedThematiques.includes(thematique);
-                    
-                    return (
-                      <button
-                        key={thematique}
-                        onClick={() => toggleThematique(thematique)}
-                        className={`
-                          w-full flex items-center gap-2 px-2 py-1.5 rounded text-xs
-                          ${isSelected ? 'bg-slate-700/50 text-slate-200' : 'text-slate-400 hover:bg-slate-700/30'}
-                        `}
-                      >
-                        <span className={`w-3 h-3 rounded border ${isSelected ? 'bg-purple-500 border-purple-500' : 'border-slate-500'}`}>
-                          {isSelected && <span className="text-white text-[8px] flex items-center justify-center">✓</span>}
-                        </span>
-                        <span>{info?.icon || '📋'}</span>
-                        <span>{info?.label || thematique}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
-          )}
-
           {/* Stats rapides */}
-          {stats && (
+          {stats && !showChoropleth && (
             <div className="pt-3 border-t border-slate-700/50">
               <div className="text-xs text-slate-500 space-y-1">
-                {activeLayers.includes('subventions') && stats.subventions && (
+                {subventionsActive && stats.subventions && (
                   <p>
-                    💰 Total subventions:{' '}
+                    💰 Total:{' '}
                     <span className="text-purple-400 font-medium">
-                      {(stats.subventions.total / 1_000_000).toFixed(1)} M€
+                      {(stats.subventions.total / 1_000_000).toFixed(1).replace('.', ',')} M€
                     </span>
                   </p>
                 )}
                 {activeLayers.includes('logements') && stats.logements && (
                   <p>
-                    🏠 Total logements:{' '}
+                    🏠 Logements:{' '}
                     <span className="text-emerald-400 font-medium">
                       {stats.logements.total.toLocaleString('fr-FR')}
                     </span>

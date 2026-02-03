@@ -53,6 +53,40 @@ export function formatPercent(value: number): string {
 }
 
 /**
+ * Formate un nombre avec séparateurs français
+ * @param value - Nombre à formater
+ * @param decimals - Nombre de décimales (défaut: 0)
+ * @returns Chaîne formatée (ex: "1 234 567")
+ */
+export function formatNumber(value: number, decimals: number = 0): string {
+  return new Intl.NumberFormat('fr-FR', {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  }).format(value);
+}
+
+/**
+ * Formate un nombre de manière compacte (K, M, Md)
+ * @param value - Nombre à formater
+ * @returns Chaîne formatée (ex: "1,2 M")
+ */
+export function formatNumberCompact(value: number): string {
+  const absValue = Math.abs(value);
+  const sign = value < 0 ? '-' : '';
+  
+  if (absValue >= 1_000_000_000) {
+    return `${sign}${(absValue / 1_000_000_000).toFixed(1).replace('.', ',')} Md`;
+  }
+  if (absValue >= 1_000_000) {
+    return `${sign}${(absValue / 1_000_000).toFixed(1).replace('.', ',')} M`;
+  }
+  if (absValue >= 1_000) {
+    return `${sign}${(absValue / 1_000).toFixed(1).replace('.', ',')} k`;
+  }
+  return `${sign}${absValue.toFixed(0)}`;
+}
+
+/**
  * Calcule le pourcentage d'un montant par rapport à un total
  * @param part - Montant partiel
  * @param total - Montant total

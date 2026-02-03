@@ -8,7 +8,13 @@
  * - Mode Points: subventions, logements sociaux
  * - Mode Choroplèthe: données per capita par arrondissement
  * - Filtres par année, thématique
- * - Hyperliens vers sources de données
+ * 
+ * SOURCES:
+ * - Subventions: opendata.paris.fr/subventions-associations-votees-
+ * - Logements: opendata.paris.fr/logements-sociaux-finances-a-paris
+ * - Investissements: opendata.paris.fr/comptes-administratifs-autorisations-de-programmes-*
+ * - Géoloc SIRET: recherche-entreprises.api.gouv.fr
+ * - Population: INSEE 2021
  */
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
@@ -21,8 +27,7 @@ import {
   loadSubventionsIndex,
   loadSubventionsForYear,
 } from '@/lib/api/staticData';
-import { formatEuroCompact } from '@/lib/formatters';
-import { getDirectionName } from '@/lib/constants/directions';
+import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { DATA_SOURCES } from '@/lib/constants/arrondissements';
 
 /**
@@ -189,7 +194,7 @@ export default function CartePage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           {/* Sidebar filtres */}
-          <div className="lg:col-span-1 space-y-4">
+          <div className="lg:col-span-1">
             <MapFilters
               availableYears={availableYears}
               selectedYear={selectedYear}
@@ -206,59 +211,6 @@ export default function CartePage() {
               isLoading={isLoadingData}
               stats={stats}
             />
-
-            {/* Info box avec sources */}
-            <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/30">
-              <h3 className="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2">
-                <span>📚</span>
-                Sources des données
-              </h3>
-              <div className="text-xs text-slate-400 space-y-2">
-                <p>
-                  <a 
-                    href={DATA_SOURCES.subventions.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-purple-400 hover:text-purple-300 underline"
-                  >
-                    Subventions aux associations
-                  </a>
-                  {' '}(Paris Open Data)
-                </p>
-                <p>
-                  <a 
-                    href={DATA_SOURCES.logementsSociaux.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-emerald-400 hover:text-emerald-300 underline"
-                  >
-                    Logements sociaux financés
-                  </a>
-                  {' '}(Paris Open Data)
-                </p>
-                <p>
-                  <a 
-                    href={DATA_SOURCES.siretGeoloc.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-400 hover:text-blue-300 underline"
-                  >
-                    Géolocalisation SIRET
-                  </a>
-                  {' '}(API Entreprises)
-                </p>
-                <p>
-                  <a 
-                    href={DATA_SOURCES.population.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-amber-400 hover:text-amber-300 underline"
-                  >
-                    Population INSEE 2021
-                  </a>
-                </p>
-              </div>
-            </div>
           </div>
 
           {/* Carte */}
@@ -285,7 +237,7 @@ export default function CartePage() {
               <div className="bg-slate-800/30 rounded-lg p-3 border border-slate-700/30">
                 <p className="text-xs text-slate-500">Subventions affichées</p>
                 <p className="text-lg font-bold text-purple-400">
-                  {stats.subventions.geolocated}
+                  {formatNumber(stats.subventions.geolocated)}
                 </p>
               </div>
               <div className="bg-slate-800/30 rounded-lg p-3 border border-slate-700/30">
@@ -297,13 +249,13 @@ export default function CartePage() {
               <div className="bg-slate-800/30 rounded-lg p-3 border border-slate-700/30">
                 <p className="text-xs text-slate-500">Programmes logement</p>
                 <p className="text-lg font-bold text-emerald-400">
-                  {stats.logements.count.toLocaleString('fr-FR')}
+                  {formatNumber(stats.logements.count)}
                 </p>
               </div>
               <div className="bg-slate-800/30 rounded-lg p-3 border border-slate-700/30">
                 <p className="text-xs text-slate-500">Logements financés</p>
                 <p className="text-lg font-bold text-emerald-400">
-                  {stats.logements.total.toLocaleString('fr-FR')}
+                  {formatNumber(stats.logements.total)}
                 </p>
               </div>
             </div>
@@ -312,19 +264,88 @@ export default function CartePage() {
 
         {/* Footer avec sources */}
         <footer className="mt-8 pt-6 border-t border-slate-800">
-          <p className="text-xs text-slate-500 text-center">
-            Données:{' '}
-            <a href={DATA_SOURCES.subventions.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-400">
-              Open Data Paris
-            </a>
-            {' '}+{' '}
-            <a href={DATA_SOURCES.siretGeoloc.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-400">
-              API Recherche Entreprises
-            </a>
-            {' '}+{' '}
-            <a href={DATA_SOURCES.population.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-slate-400">
-              INSEE
-            </a>
+          <div className="mb-4">
+            <h3 className="text-sm font-semibold text-slate-400 mb-3 flex items-center gap-2">
+              <span>📚</span>
+              Sources des données
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+              <a 
+                href={DATA_SOURCES.subventions.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-2 p-2 rounded bg-slate-800/30 hover:bg-slate-800/50 transition-colors"
+              >
+                <span className="text-purple-400">💰</span>
+                <div>
+                  <p className="text-slate-300 font-medium">{DATA_SOURCES.subventions.nom}</p>
+                  <p className="text-slate-500">{DATA_SOURCES.subventions.description}</p>
+                </div>
+              </a>
+              <a 
+                href={DATA_SOURCES.logementsSociaux.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-2 p-2 rounded bg-slate-800/30 hover:bg-slate-800/50 transition-colors"
+              >
+                <span className="text-emerald-400">🏠</span>
+                <div>
+                  <p className="text-slate-300 font-medium">{DATA_SOURCES.logementsSociaux.nom}</p>
+                  <p className="text-slate-500">{DATA_SOURCES.logementsSociaux.description}</p>
+                </div>
+              </a>
+              <a 
+                href={DATA_SOURCES.autorisationsProgrammes.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-2 p-2 rounded bg-slate-800/30 hover:bg-slate-800/50 transition-colors"
+              >
+                <span className="text-amber-400">📋</span>
+                <div>
+                  <p className="text-slate-300 font-medium">{DATA_SOURCES.autorisationsProgrammes.nom}</p>
+                  <p className="text-slate-500">{DATA_SOURCES.autorisationsProgrammes.description}</p>
+                </div>
+              </a>
+              <a 
+                href={DATA_SOURCES.siretGeoloc.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-2 p-2 rounded bg-slate-800/30 hover:bg-slate-800/50 transition-colors"
+              >
+                <span className="text-blue-400">📍</span>
+                <div>
+                  <p className="text-slate-300 font-medium">{DATA_SOURCES.siretGeoloc.nom}</p>
+                  <p className="text-slate-500">{DATA_SOURCES.siretGeoloc.description}</p>
+                </div>
+              </a>
+              <a 
+                href={DATA_SOURCES.population.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-2 p-2 rounded bg-slate-800/30 hover:bg-slate-800/50 transition-colors"
+              >
+                <span className="text-cyan-400">👥</span>
+                <div>
+                  <p className="text-slate-300 font-medium">{DATA_SOURCES.population.nom}</p>
+                  <p className="text-slate-500">{DATA_SOURCES.population.description}</p>
+                </div>
+              </a>
+              <a 
+                href={DATA_SOURCES.arrondissements.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-2 p-2 rounded bg-slate-800/30 hover:bg-slate-800/50 transition-colors"
+              >
+                <span className="text-slate-400">🗺️</span>
+                <div>
+                  <p className="text-slate-300 font-medium">{DATA_SOURCES.arrondissements.nom}</p>
+                  <p className="text-slate-500">{DATA_SOURCES.arrondissements.description}</p>
+                </div>
+              </a>
+            </div>
+          </div>
+          <p className="text-xs text-slate-600 text-center">
+            Toutes les données proviennent de sources publiques et sont mises à jour périodiquement.
           </p>
         </footer>
       </div>

@@ -3,20 +3,20 @@
 /**
  * Composant ChoroplethLayer - Carte choroplèthe des arrondissements
  * 
- * Affiche les arrondissements de Paris colorés selon une métrique:
- * - Total des subventions
- * - Nombre de logements sociaux
- * - Investissements
+ * Affiche les arrondissements de Paris colorés selon une métrique per capita:
+ * - Subventions par habitant
+ * - Logements pour 1000 habitants
+ * - Investissements par habitant
  * 
- * Les polygones sont récupérés depuis l'API Paris OpenData
+ * Source données: /data/map/arrondissements.geojson (Paris OpenData)
  */
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 import { GeoJSON, useMap } from 'react-leaflet';
 import type { Feature, FeatureCollection, Geometry } from 'geojson';
 import type { PathOptions, Layer } from 'leaflet';
 import type { ArrondissementStats } from '@/lib/types/map';
-import { formatEuroCompact } from '@/lib/formatters';
+import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 
 /**
  * Type de métrique pour la coloration
@@ -87,32 +87,33 @@ export default function ChoroplethLayer({
   }, []);
 
   /**
+   * Map des stats par code d'arrondissement pour accès rapide
+   */
+  const statsMap = useMemo(() => {
+    const map = new Map<number, ArrondissementStats>();
+    stats.forEach(s => map.set(s.code, s));
+    return map;
+  }, [stats]);
+
+  /**
    * Calcule la valeur max per capita pour la normalisation des couleurs
    */
-  const maxValue = stats.reduce((max, s) => {
-    const value = metric === 'subventions' 
-      ? (s.subventionsPerCapita || 0)
-      : metric === 'logements' 
-        ? (s.logementsPerCapita || 0)
-        : (s.investissementPerCapita || 0);
-    return Math.max(max, value);
-  }, 0);
+  const maxValue = useMemo(() => {
+    return stats.reduce((max, s) => {
+      const value = metric === 'subventions' 
+        ? (s.subventionsPerCapita || 0)
+        : metric === 'logements' 
+          ? (s.logementsPerCapita || 0)
+          : (s.investissementPerCapita || 0);
+      return Math.max(max, value);
+    }, 0);
+  }, [stats, metric]);
 
   /**
-   * Récupère les stats d'un arrondissement par son code
+   * Génère le style pour une feature
    */
-  const getStatsForArrondissement = (code: number): ArrondissementStats | undefined => {
-    return stats.find(s => s.code === code);
-  };
-
-  /**
-   * Style d'un polygone selon les stats per capita
-   */
-  const style = (feature: Feature<Geometry, { c_ar: number }> | undefined): PathOptions => {
-    if (!feature) return {};
-    
-    const code = feature.properties?.c_ar;
-    const arrStats = getStatsForArrondissement(code);
+  const getFeatureStyle = useCallback((code: number): PathOptions => {
+    const arrStats = statsMap.get(code);
     
     // Utiliser les valeurs per capita pour la coloration
     const value = arrStats 
@@ -130,73 +131,93 @@ export default function ChoroplethLayer({
       color: '#334155',
       fillOpacity: opacity,
     };
-  };
+  }, [statsMap, metric, maxValue, opacity]);
+
+  /**
+   * Style d'un polygone
+   */
+  const style = useCallback((feature: Feature<Geometry, { c_ar: number }> | undefined): PathOptions => {
+    if (!feature) return {};
+    const code = feature.properties?.c_ar;
+    return getFeatureStyle(code);
+  }, [getFeatureStyle]);
 
   /**
    * Gestion des événements sur chaque feature
    */
-  const onEachFeature = (
+  const onEachFeature = useCallback((
     feature: Feature<Geometry, { c_ar: number; l_ar: string }>,
     layer: Layer
   ) => {
     const code = feature.properties?.c_ar;
     const nom = feature.properties?.l_ar || `${code}ème`;
-    const arrStats = getStatsForArrondissement(code);
+    const arrStats = statsMap.get(code);
 
     // Popup avec les stats incluant population et per capita
     const population = arrStats?.population || 0;
     const popupContent = `
-      <div style="min-width: 220px; padding: 8px;">
-        <h3 style="font-weight: bold; margin-bottom: 4px; font-size: 14px;">${nom}</h3>
-        <p style="font-size: 11px; color: #94a3b8; margin-bottom: 8px;">Population: ${population.toLocaleString('fr-FR')} hab.</p>
+      <div style="min-width: 220px; padding: 8px; font-family: system-ui, sans-serif;">
+        <h3 style="font-weight: bold; margin-bottom: 4px; font-size: 14px; color: #f1f5f9;">${nom}</h3>
+        <p style="font-size: 11px; color: #94a3b8; margin-bottom: 8px;">Population: ${formatNumber(population)} hab.</p>
         ${arrStats ? `
-          <div style="font-size: 12px; color: #e2e8f0; border-top: 1px solid #334155; padding-top: 8px;">
-            <p style="margin-bottom: 4px;">
+          <div style="font-size: 12px; color: #e2e8f0; border-top: 1px solid #475569; padding-top: 8px;">
+            <p style="margin-bottom: 6px;">
               <strong style="color: #a855f7;">💰 Subventions:</strong> ${formatEuroCompact(arrStats.totalSubventions || 0)}
-              <br/><span style="color: #94a3b8; font-size: 11px;">${(arrStats.subventionsPerCapita || 0).toFixed(0)} €/hab</span>
+              <br/><span style="color: #94a3b8; font-size: 11px;">${formatNumber(arrStats.subventionsPerCapita || 0)} €/hab</span>
             </p>
-            <p style="margin-bottom: 4px;">
-              <strong style="color: #10b981;">🏠 Logements:</strong> ${(arrStats.totalLogements || 0).toLocaleString('fr-FR')}
-              <br/><span style="color: #94a3b8; font-size: 11px;">${(arrStats.logementsPerCapita || 0).toFixed(1)} pour 1000 hab</span>
+            <p style="margin-bottom: 6px;">
+              <strong style="color: #10b981;">🏠 Logements:</strong> ${formatNumber(arrStats.totalLogements || 0)}
+              <br/><span style="color: #94a3b8; font-size: 11px;">${(arrStats.logementsPerCapita || 0).toFixed(1)} / 1000 hab</span>
             </p>
             <p>
               <strong style="color: #f59e0b;">📋 Investissements:</strong> ${formatEuroCompact(arrStats.totalInvestissement || 0)}
-              <br/><span style="color: #94a3b8; font-size: 11px;">${(arrStats.investissementPerCapita || 0).toFixed(0)} €/hab</span>
+              <br/><span style="color: #94a3b8; font-size: 11px;">${formatNumber(arrStats.investissementPerCapita || 0)} €/hab</span>
             </p>
           </div>
         ` : '<p style="color: #94a3b8; font-size: 12px;">Pas de données</p>'}
       </div>
     `;
     
-    layer.bindPopup(popupContent);
+    layer.bindPopup(popupContent, {
+      className: 'custom-popup',
+      maxWidth: 300,
+    });
 
-    // Événements hover
+    // Style par défaut pour cet arrondissement
+    const defaultStyle = getFeatureStyle(code);
+
+    // Événements hover - utiliser le style par défaut sauvegardé
     layer.on({
       mouseover: (e) => {
         const target = e.target;
         target.setStyle({
           weight: 3,
-          color: '#f59e0b',
-          fillOpacity: 0.9,
+          color: '#fbbf24',
+          fillOpacity: 0.85,
         });
         target.bringToFront();
       },
       mouseout: (e) => {
         const target = e.target;
-        target.setStyle(style(feature));
+        // Restaurer le style par défaut
+        target.setStyle(defaultStyle);
       },
       click: () => {
         onArrondissementClick?.(code);
       },
     });
-  };
+  }, [statsMap, getFeatureStyle, onArrondissementClick]);
 
   if (isLoading || !geoData) {
     return null;
   }
 
+  // Clé unique pour forcer le re-render quand metric ou stats changent
+  const geoJsonKey = `choropleth-${metric}-${stats.length}-${maxValue}`;
+
   return (
     <GeoJSON
+      key={geoJsonKey}
       data={geoData}
       style={style as (feature: Feature<Geometry, unknown> | undefined) => PathOptions}
       onEachFeature={onEachFeature as (feature: Feature<Geometry, unknown>, layer: Layer) => void}
@@ -216,12 +237,17 @@ export function ChoroplethLegend({
 }) {
   const scale = COLOR_SCALES[metric];
   
-  // Formater les labels selon la métrique
+  // Formater les labels selon la métrique avec des unités lisibles
   const formatLabel = (value: number) => {
     if (metric === 'logements') {
+      if (value >= 100) return `${Math.round(value)}`;
       return value.toFixed(1);
     }
-    return `${value.toFixed(0)}€`;
+    // Pour subventions et investissements (€/hab)
+    if (value >= 1000) {
+      return `${(value / 1000).toFixed(1)}k€`;
+    }
+    return `${Math.round(value)}€`;
   };
   
   const labels = [
@@ -233,9 +259,9 @@ export function ChoroplethLegend({
   ];
   
   const metricLabels: Record<ChoroplethMetric, string> = {
-    subventions: '€ subventions / hab',
-    logements: 'Logements / 1000 hab',
-    investissements: '€ invest. / hab',
+    subventions: '€ / habitant',
+    logements: '/ 1000 hab',
+    investissements: '€ / habitant',
   };
 
   return (

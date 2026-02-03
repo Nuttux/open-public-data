@@ -73,36 +73,48 @@ export const POPULATION_PAR_ARRONDISSEMENT: Record<number, number> = Object.from
 
 /**
  * URLs des sources de données pour l'auditabilité
+ * 
+ * Note: On utilise "subventions-associations-votees" car il contient:
+ * - Le numéro SIRET (permet la géolocalisation)
+ * - La direction (permet l'assignation de thématique)
+ * - Le détail par dossier
+ * 
+ * L'autre dataset "subventions-versees-annexe-compte-administratif" 
+ * n'a pas ces champs et ne permet pas la visualisation cartographique.
  */
 export const DATA_SOURCES = {
   population: {
-    nom: 'INSEE - Recensement de la population 2021',
+    nom: 'INSEE - Recensement 2021',
     url: 'https://www.insee.fr/fr/statistiques/2011101?geo=COM-75056',
-    dateAcces: '2024-01',
+    description: 'Population légale par arrondissement',
   },
   subventions: {
-    nom: 'Paris Open Data - Subventions aux associations votées',
+    nom: 'Subventions aux associations votées',
     url: 'https://opendata.paris.fr/explore/dataset/subventions-associations-votees-/',
-    api: 'https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/subventions-associations-votees-/records',
+    description: 'Subventions votées avec SIRET et direction',
+    api: 'subventions-associations-votees-',
   },
   logementsSociaux: {
-    nom: 'Paris Open Data - Logements sociaux financés à Paris',
+    nom: 'Logements sociaux financés',
     url: 'https://opendata.paris.fr/explore/dataset/logements-sociaux-finances-a-paris/',
-    api: 'https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/logements-sociaux-finances-a-paris/records',
+    description: 'Programmes de logements sociaux depuis 2001',
+    api: 'logements-sociaux-finances-a-paris',
   },
   arrondissements: {
-    nom: 'Paris Open Data - Arrondissements',
+    nom: 'Arrondissements (GeoJSON)',
     url: 'https://opendata.paris.fr/explore/dataset/arrondissements/',
-    api: 'https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/arrondissements/exports/geojson',
+    description: 'Polygones des 20 arrondissements',
+    api: 'arrondissements',
   },
   autorisationsProgrammes: {
-    nom: 'Paris Open Data - Autorisations de Programmes',
+    nom: 'Autorisations de programmes',
     url: 'https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/',
-    api: 'https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/records',
+    description: 'Investissements par programme depuis 2018',
+    api: 'comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de',
   },
   siretGeoloc: {
-    nom: 'API Recherche Entreprises - Géolocalisation SIRET',
+    nom: 'API Recherche Entreprises',
     url: 'https://recherche-entreprises.api.gouv.fr/',
-    documentation: 'https://www.data.gouv.fr/fr/dataservices/api-recherche-dentreprises/',
+    description: 'Géolocalisation des SIRET',
   },
 };
