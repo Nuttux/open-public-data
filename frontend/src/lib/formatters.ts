@@ -101,6 +101,11 @@ export interface BudgetData {
 export interface BudgetIndex {
   availableYears: number[];
   latestYear: number;
+  entities: {
+    total: { years: number[]; label: string };
+    centrale: { years: number[]; label: string };
+    arrondissements: { years: number[]; label: string };
+  };
   summary: {
     year: number;
     recettes: number;

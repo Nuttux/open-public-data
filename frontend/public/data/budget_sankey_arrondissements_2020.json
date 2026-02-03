@@ -1,0 +1,284 @@
+{
+  "year": 2020,
+  "totals": {
+    "recettes": 143002188.95999998,
+    "depenses": 133229078.02000007,
+    "solde": 9773110.939999908
+  },
+  "nodes": [
+    {
+      "name": "Dotation d'investiss",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations et partici",
+      "category": "revenue"
+    },
+    {
+      "name": "Arrondissements",
+      "category": "central"
+    },
+    {
+      "name": "CHARGES A CARACTERE",
+      "category": "expense"
+    },
+    {
+      "name": "Dotation d'investiss",
+      "category": "expense"
+    }
+  ],
+  "links": [
+    {
+      "source": "Dotation d'investiss",
+      "target": "Arrondissements",
+      "value": 5110428.140000001
+    },
+    {
+      "source": "Dotations et partici",
+      "target": "Arrondissements",
+      "value": 137891760.82
+    },
+    {
+      "source": "Arrondissements",
+      "target": "CHARGES A CARACTERE",
+      "value": 128668997.05000007
+    },
+    {
+      "source": "Arrondissements",
+      "target": "Dotation d'investiss",
+      "value": 4560080.97
+    }
+  ],
+  "drilldown": {
+    "revenue": {
+      "Dotation d'investiss": [
+        {
+          "name": "Dotation d'investissement recue",
+          "value": 5110428.140000001
+        }
+      ],
+      "Dotations et partici": [
+        {
+          "name": "Dotation de gestion locale reçue",
+          "value": 125712094.02000001
+        },
+        {
+          "name": "Dotation d’animation locale reçue",
+          "value": 12179666.8
+        }
+      ]
+    },
+    "expenses": {
+      "CHARGES A CARACTERE": [
+        {
+          "name": "Contrats de prestations de services",
+          "value": 35002003.45000001
+        },
+        {
+          "name": "Énergie - Électricité",
+          "value": 17074404.71
+        },
+        {
+          "name": "Frais de nettoyage des locaux",
+          "value": 12289998.16
+        },
+        {
+          "name": "Chauffage urbain",
+          "value": 7087596.409999996
+        },
+        {
+          "name": "Bâtiments publics",
+          "value": 6201195.449999999
+        },
+        {
+          "name": "Alimentation",
+          "value": 6007433.569999999
+        },
+        {
+          "name": "Eau et assainissement",
+          "value": 5481216.35
+        },
+        {
+          "name": "Locations immobilières",
+          "value": 4968573.4
+        },
+        {
+          "name": "Fournitures scolaires",
+          "value": 4674689.110000001
+        },
+        {
+          "name": "Fournitures de petit équipement",
+          "value": 4655183.570000001
+        },
+        {
+          "name": "Maintenance",
+          "value": 2638535.2299999986
+        },
+        {
+          "name": "Autres services exterieurs - Divers - Autres",
+          "value": 2467234.650000001
+        },
+        {
+          "name": "Autres matières et fournitures",
+          "value": 2422524.6599999997
+        },
+        {
+          "name": "Autres fournitures non stockées",
+          "value": 2328968.17
+        },
+        {
+          "name": "Terrains",
+          "value": 2022735.88
+        },
+        {
+          "name": "Locations mobilières - Matériel roulant",
+          "value": 1978539.7300000002
+        },
+        {
+          "name": "Fournitures d’entretien",
+          "value": 1859589.27
+        },
+        {
+          "name": "Charges locatives et de copropriété",
+          "value": 1546779.96
+        },
+        {
+          "name": "Frais d'affranchissement",
+          "value": 1317270.4400000002
+        },
+        {
+          "name": "Fêtes et cérémonies",
+          "value": 1291048.3000000005
+        },
+        {
+          "name": "Fournitures administratives",
+          "value": 928905.63
+        },
+        {
+          "name": "Réceptions",
+          "value": 794171.8899999999
+        },
+        {
+          "name": "Catalogues et imprimés et publications",
+          "value": 725107.0799999998
+        },
+        {
+          "name": "Frais de gardiennage",
+          "value": 509290.0299999999
+        },
+        {
+          "name": "Transports de biens",
+          "value": 496177.39
+        },
+        {
+          "name": "Entretien et réparations sur biens mobiliers - Autres biens",
+          "value": 495380.26
+        },
+        {
+          "name": "Locations mobilières - Autres",
+          "value": 400491.18000000005
+        },
+        {
+          "name": "Réseaux",
+          "value": 292646.1
+        },
+        {
+          "name": "Documentation générale et technique",
+          "value": 194854.41
+        },
+        {
+          "name": "Foires et expositions",
+          "value": 179410.18
+        }
+      ],
+      "Dotation d'investiss": [
+        {
+          "name": "Dotation d'investissement versee",
+          "value": 4560080.97
+        }
+      ]
+    }
+  },
+  "byEntity": [
+    {
+      "name": "Mairie 19ème",
+      "value": 31418819.830000013
+    },
+    {
+      "name": "Mairie 13ème",
+      "value": 30442880.389999997
+    },
+    {
+      "name": "Mairie 20ème",
+      "value": 27917379.509999994
+    },
+    {
+      "name": "Mairie 18ème",
+      "value": 24651947.400000006
+    },
+    {
+      "name": "Mairie 15ème",
+      "value": 24209686.689999998
+    },
+    {
+      "name": "Mairie 12ème",
+      "value": 21129567.829999987
+    },
+    {
+      "name": "Mairie 17ème",
+      "value": 19185838.0
+    },
+    {
+      "name": "Mairie 11ème",
+      "value": 16395943.95
+    },
+    {
+      "name": "Mairie 14ème",
+      "value": 15178674.999999993
+    },
+    {
+      "name": "Mairie 10ème",
+      "value": 15167683.849999994
+    },
+    {
+      "name": "Mairie 16ème",
+      "value": 11460357.12
+    },
+    {
+      "name": "Mairie 9ème",
+      "value": 10573741.920000002
+    },
+    {
+      "name": "Mairie 5ème",
+      "value": 10241533.279999996
+    },
+    {
+      "name": "Mairie 6ème",
+      "value": 5271737.45
+    },
+    {
+      "name": "Mairie 8ème",
+      "value": 4488162.230000001
+    },
+    {
+      "name": "Mairie 7ème",
+      "value": 4322972.609999999
+    },
+    {
+      "name": "Mairie 4ème",
+      "value": 1581102.8799999992
+    },
+    {
+      "name": "Mairie 3ème",
+      "value": 1083275.9999999995
+    },
+    {
+      "name": "Mairie 1er",
+      "value": 776443.4199999996
+    },
+    {
+      "name": "Mairie 2ème",
+      "value": 733517.6200000002
+    }
+  ]
+}

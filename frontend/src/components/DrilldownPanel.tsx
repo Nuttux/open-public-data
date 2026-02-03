@@ -234,8 +234,8 @@ export default function DrilldownPanel({
               </span>
             </div>
             <h3 className="text-lg sm:text-xl font-semibold text-slate-100 break-words">
-              {title}
-            </h3>
+            {title}
+          </h3>
           </div>
         </div>
         

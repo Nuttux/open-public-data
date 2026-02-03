@@ -65,6 +65,20 @@ export default function Home() {
     loadIndex();
   }, []);
 
+  // Adjust year when entity changes (if current year not available for new entity)
+  useEffect(() => {
+    if (!index) return;
+    
+    const entityYears = index.entities[selectedEntity]?.years || index.availableYears;
+    if (!entityYears.includes(selectedYear)) {
+      // Switch to latest available year for this entity
+      setSelectedYear(entityYears[0]);
+    }
+  }, [selectedEntity, index, selectedYear]);
+
+  // Get years available for current entity
+  const availableYears = index?.entities[selectedEntity]?.years || index?.availableYears || [];
+
   useEffect(() => {
     async function loadBudgetData() {
       if (!index) return;
@@ -262,7 +276,7 @@ export default function Home() {
                 onEntityChange={setSelectedEntity}
               />
               <YearSelector
-                years={index.availableYears}
+                years={availableYears}
                 selectedYear={selectedYear}
                 onYearChange={setSelectedYear}
               />

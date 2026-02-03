@@ -15,7 +15,7 @@ interface EntitySelectorProps {
 const ENTITIES: { value: BudgetEntity; label: string; icon: string; available: boolean }[] = [
   { value: 'total', label: 'Budget Total', icon: '🏛️', available: true },
   { value: 'centrale', label: 'Mairie Centrale', icon: '🏢', available: true },
-  { value: 'arrondissements', label: 'Arrondissements', icon: '🗺️', available: false },
+  { value: 'arrondissements', label: 'Arrondissements', icon: '🗺️', available: true },
 ];
 
 export default function EntitySelector({ selectedEntity, onEntityChange }: EntitySelectorProps) {

@@ -219,12 +219,12 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
     <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4 sm:p-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
         <div>
-          <h2 className="text-lg font-semibold text-slate-100">
-            Flux budgétaires {data.year}
-          </h2>
-          <p className="text-sm text-slate-400 mt-1">
+        <h2 className="text-lg font-semibold text-slate-100">
+          Flux budgétaires {data.year}
+        </h2>
+        <p className="text-sm text-slate-400 mt-1">
             Cliquez sur une catégorie pour explorer
-          </p>
+        </p>
         </div>
         <div className={`px-3 py-2 rounded-lg text-sm ${
           variationDette > 0 ? 'bg-red-500/10 border border-red-500/30' : 'bg-green-500/10 border border-green-500/30'
@@ -234,7 +234,7 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
           </span>
         </div>
       </div>
-
+      
       {/* Légende responsive */}
       <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-3 text-xs">
         <div className="flex items-center gap-1.5">
