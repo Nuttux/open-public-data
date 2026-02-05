@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-02-06T00:00:44.644886",
-  "source": "mart_evolution_budget",
+  "generated_at": "2026-02-06T00:23:16.813445",
+  "source": "mart_evolution_budget + core_budget",
   "description": "Données d'évolution du budget de Paris avec métriques financières",
   "definitions": {
     "solde_comptable": "Recettes totales - Dépenses totales (équilibre technique)",
@@ -173,126 +173,119 @@
     },
     "depenses": [
       {
-        "thematique": "Autre",
-        "montant_debut": 4078633921.459996,
-        "montant_fin": 4569275991.879998,
-        "variation_euros": 490642070.420002,
-        "variation_pct": 12.0
-      },
-      {
-        "thematique": "Social - Petite enfance",
+        "label": "Social - Petite enfance",
         "montant_debut": 1581071460.2600002,
         "montant_fin": 1859860579.1500013,
         "variation_euros": 278789118.89000106,
         "variation_pct": 17.6
       },
       {
-        "thematique": "Économie",
+        "label": "Économie",
         "montant_debut": 46511362.23,
         "montant_fin": 202935241.74999997,
         "variation_euros": 156423879.51999998,
         "variation_pct": 336.3
       },
       {
-        "thematique": "Environnement",
+        "label": "Environnement",
         "montant_debut": 660091017.72,
         "montant_fin": 803544065.5299993,
         "variation_euros": 143453047.80999923,
         "variation_pct": 21.7
       },
       {
-        "thematique": "Administration",
+        "label": "Administration",
         "montant_debut": 790011000.6400005,
         "montant_fin": 908250026.4300004,
         "variation_euros": 118239025.78999996,
         "variation_pct": 15.0
       },
       {
-        "thematique": "Sécurité",
+        "label": "Sécurité",
         "montant_debut": 389347066.54999995,
         "montant_fin": 480387531.34,
         "variation_euros": 91040464.79000002,
         "variation_pct": 23.4
       },
       {
-        "thematique": "Sport",
+        "label": "Sport",
         "montant_debut": 153778997.54999998,
         "montant_fin": 239942023.4300001,
         "variation_euros": 86163025.88000011,
         "variation_pct": 56.0
       },
       {
-        "thematique": "Transport - Mobilités",
+        "label": "Transport - Mobilités",
         "montant_debut": 452007672.3,
         "montant_fin": 525223690.65000004,
         "variation_euros": 73216018.35000002,
         "variation_pct": 16.2
       },
       {
-        "thematique": "Éducation",
+        "label": "Éducation",
         "montant_debut": 225046742.90999994,
         "montant_fin": 286106822.39,
         "variation_euros": 61060079.48000005,
         "variation_pct": 27.1
       },
       {
-        "thematique": "Éducation - Écoles",
+        "label": "Éducation - Écoles",
         "montant_debut": 422887252.96,
         "montant_fin": 472661836.74,
         "variation_euros": 49774583.78000003,
         "variation_pct": 11.8
       },
       {
-        "thematique": "Transport",
+        "label": "Transport",
         "montant_debut": 158990145.92999998,
         "montant_fin": 201581960.07000014,
         "variation_euros": 42591814.140000165,
         "variation_pct": 26.8
       },
       {
-        "thematique": "Urbanisme",
+        "label": "Urbanisme",
         "montant_debut": 53351795.55000001,
         "montant_fin": 86128050.25999996,
         "variation_euros": 32776254.70999995,
         "variation_pct": 61.4
       },
       {
-        "thematique": "Urbanisme - Aménagement",
+        "label": "Urbanisme - Aménagement",
         "montant_debut": 184156767.20000005,
         "montant_fin": 206241660.4,
         "variation_euros": 22084893.19999996,
         "variation_pct": 12.0
       },
       {
-        "thematique": "Culture",
+        "label": "Culture",
         "montant_debut": 310230464.77,
         "montant_fin": 330460573.47,
         "variation_euros": 20230108.700000048,
         "variation_pct": 6.5
       },
       {
-        "thematique": "Culture & Sport",
+        "label": "Culture & Sport",
         "montant_debut": 104129605.26,
         "montant_fin": 119539062.65,
         "variation_euros": 15409457.39,
         "variation_pct": 14.8
       },
       {
-        "thematique": "Social - Solidarité",
+        "label": "Social - Solidarité",
         "montant_debut": 106821951.31,
         "montant_fin": 117556542.06999995,
         "variation_euros": 10734590.759999946,
         "variation_pct": 10.0
       },
       {
-        "thematique": "Éducation - Collèges",
+        "label": "Éducation - Collèges",
         "montant_debut": 80422803.49000002,
         "montant_fin": 76016978.49,
         "variation_euros": -4405825.00000003,
         "variation_pct": -5.5
       },
       {
-        "thematique": "Urbanisme - Logement",
+        "label": "Urbanisme - Logement",
         "montant_debut": 8825513.21,
         "montant_fin": 9014981.049999999,
         "variation_euros": 189467.839999998,
@@ -301,131 +294,44 @@
     ],
     "recettes": [
       {
-        "thematique": "Autre",
-        "montant_debut": 7518802287.469997,
-        "montant_fin": 8994029032.679998,
-        "variation_euros": 1475226745.210001,
-        "variation_pct": 19.6
+        "label": "Emprunts",
+        "montant_debut": 543109025.1600001,
+        "montant_fin": 1216891802.3600001,
+        "variation_euros": 673782777.2,
+        "variation_pct": 124.1
       },
       {
-        "thematique": "Économie",
-        "montant_debut": 67556009.44999999,
-        "montant_fin": 344066661.4899999,
-        "variation_euros": 276510652.0399999,
-        "variation_pct": 409.3
-      },
-      {
-        "thematique": "Urbanisme",
-        "montant_debut": 264818507.64999998,
-        "montant_fin": 83694426.64,
-        "variation_euros": -181124081.01,
-        "variation_pct": -68.4
-      },
-      {
-        "thematique": "Transport",
-        "montant_debut": 330350039.48,
-        "montant_fin": 462609783.5799999,
-        "variation_euros": 132259744.0999999,
-        "variation_pct": 40.0
-      },
-      {
-        "thematique": "Environnement",
-        "montant_debut": 710963748.8400002,
-        "montant_fin": 828733947.46,
-        "variation_euros": 117770198.61999989,
-        "variation_pct": 16.6
-      },
-      {
-        "thematique": "Administration",
-        "montant_debut": 184041867.18999997,
-        "montant_fin": 247119284.89,
-        "variation_euros": 63077417.70000002,
-        "variation_pct": 34.3
-      },
-      {
-        "thematique": "Urbanisme - Aménagement",
-        "montant_debut": 50467406.61,
-        "montant_fin": 8572344.67,
-        "variation_euros": -41895061.94,
-        "variation_pct": -83.0
-      },
-      {
-        "thematique": "Sport",
-        "montant_debut": 43158857.13,
-        "montant_fin": 73668618.86,
-        "variation_euros": 30509761.729999997,
-        "variation_pct": 70.7
-      },
-      {
-        "thematique": "Éducation",
-        "montant_debut": 40392273.14,
-        "montant_fin": 56418085.67,
-        "variation_euros": 16025812.530000001,
-        "variation_pct": 39.7
-      },
-      {
-        "thematique": "Culture & Sport",
-        "montant_debut": 48039915.93,
-        "montant_fin": 35469831.580000006,
-        "variation_euros": -12570084.349999994,
-        "variation_pct": -26.2
-      },
-      {
-        "thematique": "Éducation - Écoles",
-        "montant_debut": 4351000.41,
-        "montant_fin": 16661420.440000001,
-        "variation_euros": 12310420.030000001,
-        "variation_pct": 282.9
-      },
-      {
-        "thematique": "Transport - Mobilités",
-        "montant_debut": 9569208.46,
-        "montant_fin": 539774.1499999999,
-        "variation_euros": -9029434.31,
-        "variation_pct": -94.4
-      },
-      {
-        "thematique": "Social - Solidarité",
-        "montant_debut": 14396969.91,
-        "montant_fin": 20475154.64,
-        "variation_euros": 6078184.73,
-        "variation_pct": 42.2
-      },
-      {
-        "thematique": "Social - Petite enfance",
-        "montant_debut": 329914181.87000006,
-        "montant_fin": 335391470.98999995,
-        "variation_euros": 5477289.119999886,
-        "variation_pct": 1.7
-      },
-      {
-        "thematique": "Culture",
-        "montant_debut": 16496006.7,
-        "montant_fin": 18191243.18,
-        "variation_euros": 1695236.4800000004,
+        "label": "Impôts & Taxes",
+        "montant_debut": 6064038907.1,
+        "montant_fin": 6691013766.15,
+        "variation_euros": 626974859.0499992,
         "variation_pct": 10.3
       },
       {
-        "thematique": "Urbanisme - Logement",
-        "montant_debut": 596562.5,
-        "montant_fin": 6250.0,
-        "variation_euros": -590312.5,
-        "variation_pct": -99.0
+        "label": "Services Publics",
+        "montant_debut": 2390777004.7700005,
+        "montant_fin": 2840894891.0099998,
+        "variation_euros": 450117886.2399993,
+        "variation_pct": 18.8
       },
       {
-        "thematique": "Sécurité",
-        "montant_debut": 1687889.57,
-        "montant_fin": 1143622.94,
-        "variation_euros": -544266.6300000001,
-        "variation_pct": -32.2
+        "label": "Dotations État",
+        "montant_debut": 463727810.98999995,
+        "montant_fin": 627370147.8,
+        "variation_euros": 163642336.81,
+        "variation_pct": 35.3
       },
       {
-        "thematique": "Éducation - Collèges",
-        "montant_debut": 272421.63,
-        "montant_fin": 0,
-        "variation_euros": -272421.63,
-        "variation_pct": -100.0
+        "label": "Cessions & Investissement",
+        "montant_debut": 174222405.92000002,
+        "montant_fin": 150620346.54,
+        "variation_euros": -23602059.380000025,
+        "variation_pct": -13.5
       }
-    ]
+    ],
+    "classifications": {
+      "depenses": "par thématique (destination des dépenses)",
+      "recettes": "par source (origine des recettes)"
+    }
   }
 }

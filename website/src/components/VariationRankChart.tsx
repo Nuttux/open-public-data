@@ -1,22 +1,27 @@
 'use client';
 
 /**
- * VariationRankChart - Bar chart bidirectionnel des variations budgétaires
+ * VariationRankChart - Bar charts bidirectionnels des variations budgétaires (Option B: empilés)
  * 
- * Affiche les postes qui ont le plus augmenté/diminué sur une période (ex: 2019→2024)
+ * Affiche DEUX charts empilés verticalement:
+ * - DÉPENSES: par thématique (où va l'argent: Social, Éducation, Transport...)
+ * - RECETTES: par source (d'où vient l'argent: Impôts, Emprunts, Dotations...)
+ * 
+ * Cette distinction est importante car les classifications sont différentes:
+ * - Pour les dépenses, on veut savoir "où" l'argent est dépensé
+ * - Pour les recettes, on veut savoir "d'où" l'argent vient
  * 
  * Features:
  * - Barres horizontales triées par variation absolue
  * - Couleur verte pour hausse, rouge pour baisse
  * - Labels avec montant € et pourcentage %
- * - Toggle Dépenses/Recettes
  * - Responsive
  * 
  * Props:
  * - data: Structure variations_6ans du JSON evolution_budget.json
  */
 
-import { useState, useMemo } from 'react';
+import { useMemo } from 'react';
 import ReactECharts from 'echarts-for-react';
 import type { EChartsOption } from 'echarts';
 import { formatEuroCompact } from '@/lib/formatters';
@@ -24,7 +29,7 @@ import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 
 /** Structure d'un poste avec variation */
 export interface VariationItem {
-  thematique: string;
+  label: string;  // Thématique pour dépenses, Source pour recettes
   montant_debut: number;
   montant_fin: number;
   variation_euros: number;
@@ -39,15 +44,17 @@ export interface VariationsData {
   };
   depenses: VariationItem[];
   recettes: VariationItem[];
+  classifications?: {
+    depenses: string;
+    recettes: string;
+  };
 }
 
 interface VariationRankChartProps {
   /** Données de variation */
   data: VariationsData;
-  /** Nombre maximum de postes à afficher */
+  /** Nombre maximum de postes à afficher par chart */
   maxItems?: number;
-  /** Hauteur du graphique */
-  height?: number;
 }
 
 /**
@@ -62,46 +69,47 @@ function formatVariation(value: number): string {
   return `${sign}${millions.toFixed(0)} M€`;
 }
 
-export default function VariationRankChart({
-  data,
-  maxItems = 10,
-  height = 400,
-}: VariationRankChartProps) {
-  const isMobile = useIsMobile(BREAKPOINTS.md);
-  const [viewType, setViewType] = useState<'depenses' | 'recettes'>('depenses');
+/**
+ * Single variation bar chart
+ */
+interface SingleChartProps {
+  items: VariationItem[];
+  periode: { debut: number; fin: number };
+  isMobile: boolean;
+  title: string;
+  subtitle: string;
+  icon: string;
+  accentColor: string;
+}
 
-  // Filtrer "Autre" et limiter le nombre d'items
-  const filteredData = useMemo(() => {
-    const items = viewType === 'depenses' ? data.depenses : data.recettes;
-    return items
-      .filter(item => item.thematique !== 'Autre')
-      .slice(0, maxItems);
-  }, [data, viewType, maxItems]);
-
+function SingleVariationChart({ 
+  items, 
+  periode, 
+  isMobile, 
+  title, 
+  subtitle, 
+  icon,
+  accentColor,
+}: SingleChartProps) {
   // Séparer hausses et baisses pour le tri visuel
-  const { hausses, baisses } = useMemo(() => {
-    const h = filteredData.filter(item => item.variation_euros >= 0)
-      .sort((a, b) => b.variation_euros - a.variation_euros);
-    const b = filteredData.filter(item => item.variation_euros < 0)
-      .sort((a, b) => a.variation_euros - b.variation_euros);
-    return { hausses: h, baisses: b };
-  }, [filteredData]);
-
-  // Combiner: hausses en haut, baisses en bas
   const sortedData = useMemo(() => {
+    const hausses = items.filter(item => item.variation_euros >= 0)
+      .sort((a, b) => b.variation_euros - a.variation_euros);
+    const baisses = items.filter(item => item.variation_euros < 0)
+      .sort((a, b) => a.variation_euros - b.variation_euros);
     return [...hausses, ...baisses];
-  }, [hausses, baisses]);
+  }, [items]);
 
   // Hauteur adaptative basée sur le nombre d'items
   const chartHeight = useMemo(() => {
-    const itemHeight = isMobile ? 35 : 40;
-    const minHeight = 200;
-    const computed = sortedData.length * itemHeight + 80;
-    return Math.max(minHeight, Math.min(height, computed));
-  }, [sortedData.length, isMobile, height]);
+    const itemHeight = isMobile ? 32 : 36;
+    const minHeight = 150;
+    const computed = sortedData.length * itemHeight + 40;
+    return Math.max(minHeight, computed);
+  }, [sortedData.length, isMobile]);
 
   const option: EChartsOption = useMemo(() => {
-    const categories = sortedData.map(d => d.thematique);
+    const categories = sortedData.map(d => d.label);
     const values = sortedData.map(d => d.variation_euros);
     const pcts = sortedData.map(d => d.variation_pct);
 
@@ -118,20 +126,20 @@ export default function VariationRankChart({
         borderWidth: 1,
         textStyle: { color: '#f1f5f9', fontSize: isMobile ? 11 : 12 },
         formatter: (params: unknown) => {
-          const items = params as Array<{ name: string; value: number; dataIndex: number }>;
-          if (!items?.length) return '';
+          const paramsArray = params as Array<{ name: string; value: number; dataIndex: number }>;
+          if (!paramsArray?.length) return '';
           
-          const item = sortedData[items[0].dataIndex];
+          const item = sortedData[paramsArray[0].dataIndex];
           const color = item.variation_euros >= 0 ? '#10b981' : '#ef4444';
           
           return `
-            <div style="font-weight: 600; margin-bottom: 6px;">${item.thematique}</div>
+            <div style="font-weight: 600; margin-bottom: 6px;">${item.label}</div>
             <div style="display: flex; justify-content: space-between; gap: 20px;">
-              <span>${data.periode.debut}:</span>
+              <span>${periode.debut}:</span>
               <span>${formatEuroCompact(item.montant_debut)}</span>
             </div>
             <div style="display: flex; justify-content: space-between; gap: 20px;">
-              <span>${data.periode.fin}:</span>
+              <span>${periode.fin}:</span>
               <span>${formatEuroCompact(item.montant_fin)}</span>
             </div>
             <div style="border-top: 1px solid rgba(148,163,184,0.3); margin-top: 6px; padding-top: 6px;">
@@ -145,8 +153,8 @@ export default function VariationRankChart({
       grid: {
         left: isMobile ? '5%' : '3%',
         right: isMobile ? '15%' : '12%',
-        top: 10,
-        bottom: 10,
+        top: 5,
+        bottom: 5,
         containLabel: true,
       },
       xAxis: {
@@ -169,7 +177,7 @@ export default function VariationRankChart({
         axisLabel: {
           color: '#94a3b8',
           fontSize: isMobile ? 10 : 12,
-          width: isMobile ? 100 : 150,
+          width: isMobile ? 90 : 140,
           overflow: 'truncate',
           ellipsis: '...',
         },
@@ -177,7 +185,7 @@ export default function VariationRankChart({
       series: [
         {
           type: 'bar',
-          data: values.map((val, idx) => ({
+          data: values.map((val) => ({
             value: val,
             itemStyle: {
               color: val >= 0 
@@ -192,7 +200,7 @@ export default function VariationRankChart({
               borderRadius: val >= 0 ? [0, 4, 4, 0] : [4, 0, 0, 4],
             },
           })),
-          barMaxWidth: isMobile ? 20 : 24,
+          barMaxWidth: isMobile ? 18 : 22,
           label: {
             show: true,
             position: 'right',
@@ -216,49 +224,70 @@ export default function VariationRankChart({
       animationDuration: 600,
       animationEasing: 'cubicOut',
     };
-  }, [sortedData, data.periode, isMobile]);
+  }, [sortedData, periode, isMobile]);
+
+  if (sortedData.length === 0) {
+    return null;
+  }
 
   return (
-    <div className="w-full">
-      {/* Header avec toggle */}
-      <div className="flex items-center justify-between mb-4">
+    <div className="mb-6">
+      {/* Section header */}
+      <div className="flex items-center gap-2 mb-2">
+        <span className={`w-1.5 h-8 rounded-full bg-${accentColor}-500`}></span>
         <div>
-          <h3 className="text-lg font-semibold text-slate-100 flex items-center gap-2">
-            <span>📊</span>
-            Évolution {data.periode.debut} → {data.periode.fin}
-          </h3>
-          <p className="text-sm text-slate-400">
-            Postes qui ont le plus évolué sur 6 ans
-          </p>
-        </div>
-        
-        {/* Toggle Dépenses/Recettes */}
-        <div className="inline-flex rounded-lg bg-slate-700/50 p-0.5 border border-slate-600/50">
-          <button
-            onClick={() => setViewType('depenses')}
-            className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
-              viewType === 'depenses'
-                ? 'bg-purple-500 text-white'
-                : 'text-slate-400 hover:text-slate-200'
-            }`}
-          >
-            Dépenses
-          </button>
-          <button
-            onClick={() => setViewType('recettes')}
-            className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
-              viewType === 'recettes'
-                ? 'bg-emerald-500 text-white'
-                : 'text-slate-400 hover:text-slate-200'
-            }`}
-          >
-            Recettes
-          </button>
+          <h4 className="text-sm font-semibold text-slate-200 flex items-center gap-2">
+            <span>{icon}</span>
+            {title}
+          </h4>
+          <p className="text-xs text-slate-500">{subtitle}</p>
         </div>
       </div>
 
-      {/* Légende */}
-      <div className="flex items-center gap-4 mb-2 text-xs text-slate-400">
+      {/* Chart */}
+      <ReactECharts
+        option={option}
+        style={{ height: `${chartHeight}px`, width: '100%' }}
+        opts={{ renderer: 'canvas' }}
+      />
+    </div>
+  );
+}
+
+export default function VariationRankChart({
+  data,
+  maxItems = 8,
+}: VariationRankChartProps) {
+  const isMobile = useIsMobile(BREAKPOINTS.md);
+
+  // Filter out "Autre"/"Autres" and limit items
+  const filteredDepenses = useMemo(() => {
+    return data.depenses
+      .filter(item => item.label !== 'Autre' && item.label !== 'Autres')
+      .slice(0, maxItems);
+  }, [data.depenses, maxItems]);
+
+  const filteredRecettes = useMemo(() => {
+    return data.recettes
+      .filter(item => item.label !== 'Autre' && item.label !== 'Autres')
+      .slice(0, maxItems);
+  }, [data.recettes, maxItems]);
+
+  return (
+    <div className="w-full">
+      {/* Main header */}
+      <div className="mb-4">
+        <h3 className="text-lg font-semibold text-slate-100 flex items-center gap-2">
+          <span>📊</span>
+          Évolution {data.periode.debut} → {data.periode.fin}
+        </h3>
+        <p className="text-sm text-slate-400">
+          Où l&apos;argent est dépensé et d&apos;où il vient — postes qui ont le plus évolué
+        </p>
+      </div>
+
+      {/* Légende globale */}
+      <div className="flex items-center gap-4 mb-4 text-xs text-slate-400">
         <div className="flex items-center gap-1.5">
           <span className="w-3 h-3 rounded bg-emerald-500"></span>
           <span>Hausse</span>
@@ -269,16 +298,34 @@ export default function VariationRankChart({
         </div>
       </div>
 
-      {/* Chart */}
-      <ReactECharts
-        option={option}
-        style={{ height: `${chartHeight}px`, width: '100%' }}
-        opts={{ renderer: 'canvas' }}
+      {/* DÉPENSES Chart */}
+      <SingleVariationChart
+        items={filteredDepenses}
+        periode={data.periode}
+        isMobile={isMobile}
+        title="Dépenses — par destination"
+        subtitle="Où l'argent est dépensé (Social, Éducation, Transport...)"
+        icon="📉"
+        accentColor="purple"
+      />
+
+      {/* Séparateur */}
+      <div className="border-t border-slate-700/50 my-4"></div>
+
+      {/* RECETTES Chart */}
+      <SingleVariationChart
+        items={filteredRecettes}
+        periode={data.periode}
+        isMobile={isMobile}
+        title="Recettes — par source"
+        subtitle="D'où vient l'argent (Impôts, Emprunts, Dotations...)"
+        icon="📈"
+        accentColor="emerald"
       />
 
       {/* Note */}
       <p className="text-xs text-slate-500 mt-2">
-        * Hors catégorie &quot;Autre&quot; (agrégat de postes mineurs)
+        * Hors catégories &quot;Autre&quot; (agrégats de postes mineurs)
       </p>
     </div>
   );

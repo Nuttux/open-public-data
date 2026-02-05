@@ -328,8 +328,7 @@ export default function EvolutionPage() {
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6 mb-6">
             <VariationRankChart 
               data={rawData.variations_6ans}
-              maxItems={12}
-              height={500}
+              maxItems={8}
             />
           </div>
         )}
