@@ -1,0 +1,169 @@
+{
+  "generated_at": "2026-02-05T23:28:37.591098",
+  "source": "mart_evolution_budget",
+  "description": "Données d'évolution du budget de Paris avec métriques financières",
+  "definitions": {
+    "solde_comptable": "Recettes totales - Dépenses totales (équilibre technique)",
+    "recettes_propres": "Recettes totales - Emprunts (ressources réelles)",
+    "surplus_deficit": "Recettes propres - Dépenses (santé financière réelle)",
+    "epargne_brute": "Recettes fonct. - Dépenses fonct. (capacité d'autofinancement)"
+  },
+  "years": [
+    {
+      "year": 2024,
+      "totals": {
+        "recettes": 11526790953.86,
+        "depenses": 11494727617.749994,
+        "recettes_propres": 10355176531.92,
+        "surplus_deficit": -1139551085.8299942,
+        "emprunts": 1171614421.9400005,
+        "solde_comptable": 32063336.110006332
+      },
+      "sections": {
+        "fonctionnement": {
+          "recettes": 9674394697.589994,
+          "depenses": 9377286107.329975
+        },
+        "investissement": {
+          "recettes": 1852396256.2699995,
+          "depenses": 2117441510.420001
+        }
+      },
+      "variations": {
+        "depenses_pct": 5.99,
+        "recettes_pct": 6.78
+      },
+      "epargne_brute": 297108590.2600193
+    },
+    {
+      "year": 2023,
+      "totals": {
+        "recettes": 10794784361.800003,
+        "depenses": 10845342218.919987,
+        "recettes_propres": 9893580522.540003,
+        "surplus_deficit": -951761696.3799839,
+        "emprunts": 901203839.2600002,
+        "solde_comptable": -50557857.11998367
+      },
+      "sections": {
+        "fonctionnement": {
+          "recettes": 9613898441.369997,
+          "depenses": 8783230171.23999
+        },
+        "investissement": {
+          "recettes": 1180885920.4300003,
+          "depenses": 2062112047.6799994
+        }
+      },
+      "variations": {
+        "depenses_pct": 1.36,
+        "recettes_pct": -0.78
+      },
+      "epargne_brute": 830668270.1300068
+    },
+    {
+      "year": 2022,
+      "totals": {
+        "recettes": 10879276817.530014,
+        "depenses": 10699641826.979994,
+        "recettes_propres": 9680948669.010014,
+        "surplus_deficit": -1018693157.9699802,
+        "emprunts": 1198328148.5200005,
+        "solde_comptable": 179634990.55002022
+      },
+      "sections": {
+        "fonctionnement": {
+          "recettes": 9213526602.06,
+          "depenses": 8707247518.399984
+        },
+        "investissement": {
+          "recettes": 1665750215.4699976,
+          "depenses": 1992394308.58
+        }
+      },
+      "variations": {
+        "depenses_pct": 6.73,
+        "recettes_pct": 8.89
+      },
+      "epargne_brute": 506279083.6600151
+    },
+    {
+      "year": 2021,
+      "totals": {
+        "recettes": 9990941483.72999,
+        "depenses": 10025231536.399986,
+        "recettes_propres": 9036554852.019989,
+        "surplus_deficit": -988676684.3799973,
+        "emprunts": 954386631.710001,
+        "solde_comptable": -34290052.66999626
+      },
+      "sections": {
+        "fonctionnement": {
+          "recettes": 8696329870.999992,
+          "depenses": 8300634976.550005
+        },
+        "investissement": {
+          "recettes": 1294611612.7300005,
+          "depenses": 1724596559.8500001
+        }
+      },
+      "variations": {
+        "depenses_pct": 0.85,
+        "recettes_pct": -5.01
+      },
+      "epargne_brute": 395694894.4499874
+    },
+    {
+      "year": 2020,
+      "totals": {
+        "recettes": 10517970419.059994,
+        "depenses": 9940645002.63999,
+        "recettes_propres": 9375928832.869993,
+        "surplus_deficit": -564716169.7699966,
+        "emprunts": 1142041586.1900005,
+        "solde_comptable": 577325416.4200039
+      },
+      "sections": {
+        "fonctionnement": {
+          "recettes": 8293183874.729996,
+          "depenses": 8247029246.92999
+        },
+        "investissement": {
+          "recettes": 2224786544.3300004,
+          "depenses": 1693615755.7099996
+        }
+      },
+      "variations": {
+        "depenses_pct": 1.37,
+        "recettes_pct": 9.15
+      },
+      "epargne_brute": 46154627.80000591
+    },
+    {
+      "year": 2019,
+      "totals": {
+        "recettes": 9635875153.94,
+        "depenses": 9806315541.299984,
+        "recettes_propres": 9237237750.11,
+        "surplus_deficit": -569077791.1899834,
+        "emprunts": 398637403.8299999,
+        "solde_comptable": -170440387.35998344
+      },
+      "sections": {
+        "fonctionnement": {
+          "recettes": 8635313000.190006,
+          "depenses": 7952277591.669999
+        },
+        "investissement": {
+          "recettes": 1000562153.7499996,
+          "depenses": 1854037949.6300008
+        }
+      },
+      "variations": {
+        "depenses_pct": null,
+        "recettes_pct": null
+      },
+      "epargne_brute": 683035408.5200071
+    }
+  ]
+}
