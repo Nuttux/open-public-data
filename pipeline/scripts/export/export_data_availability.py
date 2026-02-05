@@ -9,9 +9,9 @@ Usage:
     python scripts/export_data_availability.py
 
 Output:
-    frontend/public/data/data_availability.json
+    website/public/data/data_availability.json
 
-Ce fichier permet au frontend d'afficher des warnings appropriés
+Ce fichier permet au website d'afficher des warnings appropriés
 quand des données sont manquantes ou incomplètes.
 """
 
@@ -23,7 +23,7 @@ from google.cloud import bigquery
 # Configuration
 PROJECT_ID = "open-data-france-484717"
 DATASET = "dbt_paris"
-OUTPUT_PATH = Path(__file__).parent.parent / "frontend" / "public" / "data" / "data_availability.json"
+OUTPUT_PATH = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data" / "data_availability.json"
 
 
 def check_budget_availability(client: bigquery.Client) -> dict:

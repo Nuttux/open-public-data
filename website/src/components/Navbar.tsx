@@ -4,9 +4,12 @@
  * Composant Navbar - Navigation globale du dashboard
  * 
  * Permet de naviguer entre:
+ * - Landing (présentation du projet)
  * - Dashboard Sankey (page principale)
+ * - Évolution temporelle
  * - Subventions (treemap + table bénéficiaires)
  * - Carte interactive (investissements, logements)
+ * - Blog (articles et analyses)
  */
 
 import Link from 'next/link';
@@ -18,6 +21,12 @@ import { usePathname } from 'next/navigation';
 const navLinks = [
   {
     href: '/',
+    label: 'Accueil',
+    icon: '🏠',
+    description: 'Présentation du projet',
+  },
+  {
+    href: '/budget',
     label: 'Budget',
     icon: '📊',
     description: 'Flux budgétaires (Sankey)',
@@ -40,6 +49,12 @@ const navLinks = [
     icon: '🗺️',
     description: 'Vue géographique',
   },
+  {
+    href: '/blog',
+    label: 'Blog',
+    icon: '📝',
+    description: 'Articles et analyses',
+  },
 ];
 
 export default function Navbar() {
@@ -56,9 +71,9 @@ export default function Navbar() {
           >
             <span className="text-2xl">🏛️</span>
             <div>
-              <h1 className="text-lg font-bold text-slate-100">Budget Paris</h1>
+              <h1 className="text-lg font-bold text-slate-100">Données Lumières</h1>
               <p className="text-xs text-slate-400 hidden sm:block">
-                Open Data Dashboard
+                Open Data pour la démocratie
               </p>
             </div>
           </Link>
