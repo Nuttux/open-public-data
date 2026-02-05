@@ -20,7 +20,13 @@ const navLinks = [
     href: '/',
     label: 'Budget',
     icon: '📊',
-    description: 'Flux budgétaires',
+    description: 'Flux budgétaires (Sankey)',
+  },
+  {
+    href: '/evolution',
+    label: 'Évolution',
+    icon: '📈',
+    description: 'Analyse temporelle',
   },
   {
     href: '/subventions',
