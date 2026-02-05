@@ -23,44 +23,44 @@
     {
       "year": 2024,
       "dataStatus": "PARTIEL",
-      "recettes": 12000297230.789999,
-      "depenses": 15331706483.2,
-      "solde": -3331409252.4100018
+      "recettes": 11526790953.859999,
+      "depenses": 11494727617.750002,
+      "solde": 32063336.109996796
     },
     {
       "year": 2023,
       "dataStatus": "PARTIEL",
-      "recettes": 11263409249.9,
-      "depenses": 14478892062.690002,
-      "solde": -3215482812.790003
+      "recettes": 10794784361.8,
+      "depenses": 10845342218.92,
+      "solde": -50557857.12000084
     },
     {
       "year": 2022,
       "dataStatus": "COMPLET",
-      "recettes": 11331269626.93,
-      "depenses": 14170566210.789995,
-      "solde": -2839296583.859995
+      "recettes": 10879276817.53,
+      "depenses": 10699641826.979998,
+      "solde": 179634990.55000305
     },
     {
       "year": 2021,
       "dataStatus": "COMPLET",
-      "recettes": 10414704948.439999,
-      "depenses": 13371486809.489996,
-      "solde": -2956781861.0499973
+      "recettes": 9990941483.73,
+      "depenses": 10025231536.4,
+      "solde": -34290052.67000008
     },
     {
       "year": 2020,
       "dataStatus": "COMPLET",
-      "recettes": 10896605512.79,
-      "depenses": 13353274714.200003,
-      "solde": -2456669201.4100018
+      "recettes": 10517970419.06,
+      "depenses": 9940645002.640003,
+      "solde": 577325416.4199963
     },
     {
       "year": 2019,
       "dataStatus": "COMPLET",
-      "recettes": 10105097769.16,
-      "depenses": 13106518424.35,
-      "solde": -3001420655.1900005
+      "recettes": 9635875153.94,
+      "depenses": 9806315541.300001,
+      "solde": -170440387.3600006
     }
   ]
 }

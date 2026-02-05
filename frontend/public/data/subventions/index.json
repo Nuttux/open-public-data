@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-05T17:20:06.388903",
+  "generated_at": "2026-02-05T19:11:23.788990",
   "source": "dbt marts (mart_subventions_treemap, mart_subventions_beneficiaires)",
   "available_years": [
     2024,
@@ -10,47 +10,47 @@
   ],
   "totals_by_year": {
     "2024": {
-      "montant_total": 3035773282.0,
-      "nb_subventions": 8647
+      "montant_total": 1353488225.0,
+      "nb_subventions": 5977
     },
     "2023": {
-      "montant_total": 2290344288.0,
-      "nb_subventions": 7406
+      "montant_total": 1201008578.0,
+      "nb_subventions": 5167
     },
     "2022": {
-      "montant_total": 2478217001.0,
-      "nb_subventions": 7496
+      "montant_total": 1167565895.0,
+      "nb_subventions": 5336
     },
     "2019": {
-      "montant_total": 2771692073.0,
-      "nb_subventions": 14170
+      "montant_total": 1304037463.0,
+      "nb_subventions": 12093
     },
     "2018": {
-      "montant_total": 2085525117.0,
-      "nb_subventions": 12496
+      "montant_total": 1241346409.0,
+      "nb_subventions": 10266
     }
   },
   "filters": {
     "thematiques": [
-      "Culture",
       "Social - Solidarité",
-      "Social - Petite enfance",
       "Urbanisme - Logement",
-      "Administration",
+      "Culture",
       "Éducation",
-      "Sport",
       "Social",
-      "Économie",
       "Transport",
+      "Administration",
+      "Sport",
       "Logement",
+      "Social - Petite enfance",
+      "Économie",
       "Culture & Sport",
+      "Autre",
       "Non classifié",
       "Environnement",
-      "International",
-      "Transport - Voirie",
       "Santé",
+      "International",
       "Sécurité",
-      "Autre"
+      "Transport - Voirie"
     ],
     "natures_juridiques": [
       "Associations",
@@ -70,25 +70,25 @@
       "DAC",
       "DDCT",
       "DJS",
-      "DSOL",
       "DAE",
+      "DSOL",
       "DFPE",
       "DASES",
-      "DSP",
-      "DGRI",
-      "DPMP",
       "DASCO",
+      "DGRI",
       "DEVE",
-      "DPSP",
+      "DSP",
       "DPE",
       "DVD",
+      "DPMP",
+      "DPSP",
       "DGOM",
       "DTEC",
-      "SG",
-      "DLH",
       "DILT",
-      "DAJ",
-      "DU"
+      "DLH",
+      "SG",
+      "DU",
+      "DAJ"
     ]
   }
 }

@@ -14951,25 +14951,6 @@
       "confiance": 1.0
     },
     {
-      "id": "2021-1705037-20421",
-      "annee": 2021,
-      "apCode": "1705037",
-      "apTexte": "PLUS DE NATURE EN VILLE",
-      "missionCode": "V90012",
-      "missionLibelle": "BUDGET PARTICIPATIF",
-      "directionCode": "23",
-      "direction": "DEVE",
-      "montant": 1500.0,
-      "thematique": "democratie",
-      "arrondissement": null,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": null,
-      "confiance": 0.0
-    },
-    {
       "id": "2021-1604552-2031",
       "annee": 2021,
       "apCode": "1604552",
@@ -14987,6 +14968,25 @@
       "nomLieu": null,
       "sourceGeo": "llm",
       "confiance": 0.9
+    },
+    {
+      "id": "2021-1705037-20421",
+      "annee": 2021,
+      "apCode": "1705037",
+      "apTexte": "PLUS DE NATURE EN VILLE",
+      "missionCode": "V90012",
+      "missionLibelle": "BUDGET PARTICIPATIF",
+      "directionCode": "23",
+      "direction": "DEVE",
+      "montant": 1500.0,
+      "thematique": "democratie",
+      "arrondissement": null,
+      "adresse": null,
+      "latitude": null,
+      "longitude": null,
+      "nomLieu": null,
+      "sourceGeo": null,
+      "confiance": 0.0
     },
     {
       "id": "2021-1688316-2313",

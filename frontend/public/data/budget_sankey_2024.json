@@ -8,9 +8,9 @@
     "arrondissements": false
   },
   "totals": {
-    "recettes": 12000297230.789999,
-    "depenses": 15331706483.2,
-    "solde": -3331409252.4100018
+    "recettes": 11526790953.859999,
+    "depenses": 11494727617.750002,
+    "solde": 32063336.109996796
   },
   "nodes": [
     {
@@ -101,7 +101,7 @@
     {
       "source": "Services Publics",
       "target": "Budget Paris",
-      "value": 3314401167.9399996
+      "value": 2840894891.0099998
     },
     {
       "source": "Investissement",
@@ -131,7 +131,7 @@
     {
       "source": "Budget Paris",
       "target": "Aménagement & Logement",
-      "value": 1484265932.4199998
+      "value": 1269009290.9700003
     },
     {
       "source": "Budget Paris",
@@ -141,17 +141,17 @@
     {
       "source": "Budget Paris",
       "target": "Éducation",
-      "value": 1483895249.8200014
+      "value": 935216434.5899992
     },
     {
       "source": "Budget Paris",
       "target": "Culture & Sport",
-      "value": 1463028370.619999
+      "value": 892625773.7199996
     },
     {
       "source": "Budget Paris",
       "target": "Action Sociale",
-      "value": 4629824248.59
+      "value": 2652407127.3700013
     },
     {
       "source": "Budget Paris",
@@ -161,7 +161,7 @@
     {
       "source": "Budget Paris",
       "target": "Transports",
-      "value": 1487138151.34
+      "value": 961914460.6900008
     }
   ],
   "drilldown": {
@@ -354,10 +354,6 @@
           "value": 558279220.0
         },
         {
-          "name": "Action Sociale: Sécurité sociale et organismes mutualistes",
-          "value": 321223455.48
-        },
-        {
           "name": "RSA: TICPE - LRL",
           "value": 246590009.0
         },
@@ -378,8 +374,8 @@
           "value": 161678275.75
         },
         {
-          "name": "Action Sociale: Redevances et droits des services à caractère social",
-          "value": 136907419.6
+          "name": "Action Sociale: Sécurité sociale et organismes mutualistes",
+          "value": 160611727.73999998
         },
         {
           "name": "Action Économique: Taxe de séjour",
@@ -390,12 +386,12 @@
           "value": 104447246.24
         },
         {
-          "name": "Culture & Sport: Revenus des immeubles",
-          "value": 91665141.87999998
-        },
-        {
           "name": "Environnement: Autres produits divers de gestion courante-Autres",
           "value": 75502617.9
+        },
+        {
+          "name": "Action Sociale: Redevances et droits des services à caractère social",
+          "value": 68453709.8
         },
         {
           "name": "Action Économique: Droits de stationnement et de location sur la voie publique",
@@ -407,27 +403,15 @@
         },
         {
           "name": "Aménagement: Revenus des immeubles",
-          "value": 52340529.980000004
-        },
-        {
-          "name": "Action Sociale: Recouvrements sur bénéficiaire, tiers-payants et successions",
-          "value": 49529958.53999999
+          "value": 52024931.56
         },
         {
           "name": "Transports: Redevances versées par les fermiers et concessionnaires",
           "value": 47736128.26
         },
         {
-          "name": "Action Sociale: Dotation versée au titre de la PCH",
-          "value": 41617028.94
-        },
-        {
-          "name": "Action Sociale: Dotation versée au titre de la Conférence des financeurs - Part prévention",
-          "value": 40631095.22
-        },
-        {
-          "name": "Action Sociale: Recouvrements sur départements et autres collectivités publiques",
-          "value": 39431586.66
+          "name": "Culture & Sport: Revenus des immeubles",
+          "value": 45833342.69
         },
         {
           "name": "Éducation: Sécurité sociale et organismes mutualistes",
@@ -442,32 +426,28 @@
           "value": 29982915.42
         },
         {
-          "name": "Éducation: Participations - Etat - autres",
-          "value": 29096796.389999997
-        },
-        {
-          "name": "Action Sociale: Participations - Etat - autres",
-          "value": 28634037.779999997
+          "name": "Aménagement: Produits des cessions d'immobilisation",
+          "value": 26780418.0
         },
         {
           "name": "Culture & Sport: Redevances et droits des services périscolaires et d’enseignement",
-          "value": 27597902.93
+          "value": 26031915.650000002
         },
         {
-          "name": "Aménagement: Produits des cessions d'immobilisation",
-          "value": 26827118.0
+          "name": "Action Sociale: Recouvrements sur bénéficiaire, tiers-payants et successions",
+          "value": 24764979.27
         },
         {
-          "name": "Culture & Sport: Redevances et droits des services à caractère culturel",
-          "value": 24828018.1
+          "name": "Action Sociale: Dotation versée au titre de la PCH",
+          "value": 20808514.47
         },
         {
-          "name": "Culture & Sport: Autres produits divers de gestion courante-Autres",
-          "value": 20836268.1
+          "name": "Action Sociale: Dotation versée au titre de la Conférence des financeurs - Part prévention",
+          "value": 20315547.61
         },
         {
-          "name": "Culture & Sport: Redevances et droits des services à caractère sportif",
-          "value": 20621709.58
+          "name": "Action Sociale: Recouvrements sur départements et autres collectivités publiques",
+          "value": 19715793.33
         },
         {
           "name": "Environnement: Abonnement ou redevance pour enlèvement des déchets industriels et commerciaux",
@@ -475,23 +455,27 @@
         },
         {
           "name": "Transports: Autres",
-          "value": 19156808.28
+          "value": 18626506.32
         },
         {
           "name": "Transports: Droits de stationnement et de location sur la voie publique",
           "value": 18281518.85
         },
         {
+          "name": "Éducation: Participations - Etat - autres",
+          "value": 17204271.51
+        },
+        {
+          "name": "Action Sociale: Participations - Etat - autres",
+          "value": 14317018.89
+        },
+        {
+          "name": "Culture & Sport: Redevances et droits des services à caractère culturel",
+          "value": 12414009.05
+        },
+        {
           "name": "RSA: Fonds de mobilisation départemental pour l’insertion",
           "value": 12258325.0
-        },
-        {
-          "name": "Action Sociale: Recouvrements sur Sécurité Sociale et organismes mutualistes",
-          "value": 12146456.04
-        },
-        {
-          "name": "Action Sociale: Recouvrements sur autres redevables",
-          "value": 12146148.34
         },
         {
           "name": "Éducation: Redevances et droits des services périscolaires et d’enseignement",
@@ -502,12 +486,12 @@
           "value": 10639697.819999998
         },
         {
-          "name": "Action Sociale: Autres (Dotations versées par la CNSA)",
-          "value": 10553970.0
+          "name": "Culture & Sport: Autres produits divers de gestion courante-Autres",
+          "value": 10460438.870000001
         },
         {
-          "name": "Culture & Sport: Redevances versées par les fermiers et concessionnaires",
-          "value": 10401960.51
+          "name": "Culture & Sport: Redevances et droits des services à caractère sportif",
+          "value": 10310854.79
         },
         {
           "name": "RSA: Recouvrements des indus d’insertion et d’aide sociale - RSA- Allocations forfaitaires",
@@ -515,19 +499,11 @@
         },
         {
           "name": "Culture & Sport: Sécurité sociale et organismes mutualistes",
-          "value": 9930323.78
-        },
-        {
-          "name": "Aménagement: Autres produits divers de gestion courante-Autres",
-          "value": 8823601.88
+          "value": 9919191.579999998
         },
         {
           "name": "Services Généraux: Concession dans les cimetières (produit net)",
           "value": 8744722.12
-        },
-        {
-          "name": "Éducation: Remboursements de frais - par des tiers",
-          "value": 8161535.779999999
         },
         {
           "name": "Environnement: non dotés de la personnalité morale",
@@ -538,16 +514,40 @@
           "value": 7546731.859999999
         },
         {
-          "name": "Culture & Sport: Autres redevances et recettes diverses",
-          "value": 7370933.840000001
+          "name": "Aménagement: Autres produits divers de gestion courante-Autres",
+          "value": 6362012.249999999
         },
         {
           "name": "Transports: Redevances pour appareils distributeurs d'essence",
           "value": 6306474.53
         },
         {
+          "name": "Action Sociale: Recouvrements sur Sécurité Sociale et organismes mutualistes",
+          "value": 6073228.02
+        },
+        {
+          "name": "Action Sociale: Recouvrements sur autres redevables",
+          "value": 6073074.17
+        },
+        {
           "name": "Transports: Autres droits de stationnement et de location",
           "value": 5796331.96
+        },
+        {
+          "name": "Culture & Sport: Redevances versées par les fermiers et concessionnaires",
+          "value": 5519371.01
+        },
+        {
+          "name": "Action Sociale: Autres (Dotations versées par la CNSA)",
+          "value": 5276985.0
+        },
+        {
+          "name": "APA: Recouvrements des indus d’insertion et d’aide sociale - APA",
+          "value": 4242540.34
+        },
+        {
+          "name": "Éducation: Remboursements de frais - par des tiers",
+          "value": 4089150.48
         }
       ],
       "Investissement": [
@@ -1248,24 +1248,16 @@
           "value": 158222775.09999996
         },
         {
-          "name": "Aménagement: Personnel titulaire - Rémunération principale",
-          "value": 149731045.20999995
-        },
-        {
           "name": "Invest. Aménagement: Subventions aux personnes de droit privé - Bâtiments et installations",
           "value": 115693804.86
         },
         {
+          "name": "Aménagement: Personnel titulaire - Rémunération principale",
+          "value": 85365081.22000001
+        },
+        {
           "name": "Invest. Aménagement: Terrains bâtis",
           "value": 65828253.67
-        },
-        {
-          "name": "Aménagement: Personnel titulaire - Autres indemnités",
-          "value": 62948926.61000001
-        },
-        {
-          "name": "Aménagement: Cotisations aux caisses de retraite",
-          "value": 50358562.07000001
         },
         {
           "name": "Invest. Aménagement: Bâtiments et installations                        Organismes publics divers",
@@ -1280,8 +1272,8 @@
           "value": 41081413.440000005
         },
         {
-          "name": "Aménagement: Voiries",
-          "value": 38266600.72
+          "name": "Aménagement: Personnel titulaire - Autres indemnités",
+          "value": 36779675.07
         },
         {
           "name": "Invest. Administration: Constructions",
@@ -1292,16 +1284,8 @@
           "value": 34258077.0
         },
         {
-          "name": "Aménagement: Énergie - Électricité",
-          "value": 30898328.33
-        },
-        {
-          "name": "Aménagement: Subventions de fonctionnement aux personnes, aux associations et aux autres organismes de droit privé - Autres personnes de droit privé",
-          "value": 28075681.619999997
-        },
-        {
-          "name": "Aménagement: Cotisations à l'U.R.S.S.A.F.",
-          "value": 28048257.700000003
+          "name": "Aménagement: Cotisations aux caisses de retraite",
+          "value": 28718642.900000002
         },
         {
           "name": "Invest. Aménagement: Autres agencements et aménagements",
@@ -1312,20 +1296,28 @@
           "value": 19378738.28
         },
         {
+          "name": "Aménagement: Voiries",
+          "value": 19134348.31
+        },
+        {
           "name": "Invest. Aménagement: Avances versées sur commandes d'immobilisations   corporelles",
           "value": 16432167.450000001
         },
         {
-          "name": "Aménagement: Personnel non titulaire - Rémunérations",
-          "value": 15956227.609999998
+          "name": "Aménagement: Cotisations à l'U.R.S.S.A.F.",
+          "value": 15936318.310000002
         },
         {
-          "name": "Aménagement: Contrats de prestations de services",
-          "value": 15052295.229999999
+          "name": "Aménagement: Énergie - Électricité",
+          "value": 15800876.489999998
+        },
+        {
+          "name": "Aménagement: Subventions de fonctionnement aux personnes, aux associations et aux autres organismes de droit privé - Autres personnes de droit privé",
+          "value": 15189390.809999999
         },
         {
           "name": "Aménagement: Autres charges diverses de gestion courante - Autres",
-          "value": 14385868.35
+          "value": 14258914.6
         },
         {
           "name": "Invest. Aménagement: Constructions",
@@ -1340,8 +1332,16 @@
           "value": 11283282.130000003
         },
         {
+          "name": "Aménagement: Contrats de prestations de services",
+          "value": 10986786.509999998
+        },
+        {
           "name": "Invest. Aménagement: Frais d’études",
           "value": 9601447.779999997
+        },
+        {
+          "name": "Aménagement: Personnel non titulaire - Rémunérations",
+          "value": 8854829.65
         },
         {
           "name": "Invest. Aménagement: Agencements et aménagements de terrains",
@@ -1352,16 +1352,8 @@
           "value": 8491134.72
         },
         {
-          "name": "Aménagement: Locations mobilières - Matériel roulant",
-          "value": 7525955.38
-        },
-        {
           "name": "Invest. Administration: Subventions aux personnes de droit privé - Bâtiments et installations",
           "value": 7419661.18
-        },
-        {
-          "name": "Aménagement: Eau et assainissement",
-          "value": 7023579.470000001
         },
         {
           "name": "Invest. Administration: Autres agencements et aménagements",
@@ -1384,48 +1376,36 @@
           "value": 6148317.039999999
         },
         {
-          "name": "Aménagement: Terrains",
-          "value": 6141103.96
-        },
-        {
-          "name": "Aménagement: Personnel non titulaire - Primes et autres indemnités",
-          "value": 5888476.29
-        },
-        {
-          "name": "Aménagement: Personnel titulaire - Supplément familial de traitement et indemnité de résidence",
-          "value": 5763918.920000001
-        },
-        {
-          "name": "Aménagement: Versement de transport",
-          "value": 5447540.040000001
-        },
-        {
-          "name": "Aménagement: Autres impôts, taxes et versements assimilés (autres organismes)",
-          "value": 4641321.92
-        },
-        {
-          "name": "Aménagement: Fournitures de petit équipement",
-          "value": 4246785.22
-        },
-        {
           "name": "Invest. Administration: Autres",
           "value": 3974699.7700000005
         },
         {
-          "name": "Aménagement: Maintenance",
-          "value": 3542723.9499999997
+          "name": "Aménagement: Eau et assainissement",
+          "value": 3957597.16
         },
         {
-          "name": "Aménagement: Autres services exterieurs - Divers - Autres",
-          "value": 3475758.2000000007
+          "name": "Aménagement: Locations mobilières - Matériel roulant",
+          "value": 3794086.56
+        },
+        {
+          "name": "Aménagement: Personnel non titulaire - Primes et autres indemnités",
+          "value": 3416987.719999999
         },
         {
           "name": "Invest. Administration: Autres immobilisations corporelles",
           "value": 3381496.0300000003
         },
         {
-          "name": "Aménagement: Autres (Autres charges de personnel)",
-          "value": 3282287.9899999998
+          "name": "Aménagement: Personnel titulaire - Supplément familial de traitement et indemnité de résidence",
+          "value": 3289188.58
+        },
+        {
+          "name": "Aménagement: Terrains",
+          "value": 3145437.24
+        },
+        {
+          "name": "Aménagement: Versement de transport",
+          "value": 3101835.9399999995
         },
         {
           "name": "Invest. Administration: Subventions aux personnes de droit privé - Biens mobiliers,matériel et études",
@@ -1438,6 +1418,26 @@
         {
           "name": "Invest. Administration: Restauration des collections et œuvres d'art",
           "value": 2617771.07
+        },
+        {
+          "name": "Invest. Administration: Autres matériels de bureau et mobiliers",
+          "value": 2543036.9400000004
+        },
+        {
+          "name": "Aménagement: Maintenance",
+          "value": 2398375.25
+        },
+        {
+          "name": "Aménagement: Autres impôts, taxes et versements assimilés (autres organismes)",
+          "value": 2320660.96
+        },
+        {
+          "name": "Aménagement: Taxes foncières",
+          "value": 2190188.65
+        },
+        {
+          "name": "Invest. Aménagement: Louvres illuminations",
+          "value": 2158670.72
         }
       ],
       "Sécurité": [
@@ -1645,159 +1645,147 @@
       "Éducation": [
         {
           "name": "Éducation: Personnel titulaire - Rémunération principale",
-          "value": 362294387.7700001
-        },
-        {
-          "name": "Éducation: Autre personnel extérieur",
-          "value": 149628796.09
-        },
-        {
-          "name": "Éducation: Cotisations aux caisses de retraite",
-          "value": 130341355.15
-        },
-        {
-          "name": "Éducation: Cotisations à l'U.R.S.S.A.F.",
-          "value": 125250672.56
+          "value": 197863970.71999997
         },
         {
           "name": "Éducation: Subventions de fonctionnement aux organismes publics - Caisses des écoles",
           "value": 125141298.02
         },
         {
-          "name": "Éducation: Personnel titulaire - Autres indemnités",
-          "value": 89059642.49
+          "name": "Éducation: Autre personnel extérieur",
+          "value": 78841624.87
         },
         {
-          "name": "Éducation: Personnel non titulaire - Rémunérations",
-          "value": 80238015.61000003
+          "name": "Éducation: Cotisations aux caisses de retraite",
+          "value": 71088651.45
         },
         {
-          "name": "Éducation: Autres contributions obligatoires",
-          "value": 68478261.21000001
+          "name": "Éducation: Cotisations à l'U.R.S.S.A.F.",
+          "value": 67969072.1
         },
         {
           "name": "Invest. Éducation: Constructions",
           "value": 63983335.68999999
         },
         {
+          "name": "Éducation: Personnel titulaire - Autres indemnités",
+          "value": 50907005.09
+        },
+        {
+          "name": "Éducation: Personnel non titulaire - Rémunérations",
+          "value": 46574522.349999994
+        },
+        {
+          "name": "Éducation: Autres contributions obligatoires",
+          "value": 34272209.61
+        },
+        {
           "name": "Éducation: Dotation de fonctionnement des collèges - Établissements privés",
-          "value": 43386303.42
-        },
-        {
-          "name": "Éducation: Dotation de fonctionnement des collèges - Établissements publics",
-          "value": 33065512.63
-        },
-        {
-          "name": "Éducation: Versement de transport",
-          "value": 19235938.639999993
+          "value": 21693151.71
         },
         {
           "name": "Éducation: Subventions de fonctionnement aux organismes publics - Organismes publics divers",
           "value": 17782600.0
         },
         {
-          "name": "Éducation: Personnel non titulaire - Primes et autres indemnités",
-          "value": 17133919.169999998
-        },
-        {
-          "name": "Éducation: Personnel titulaire - Supplément familial de traitement et indemnité de résidence",
-          "value": 15858064.999999996
+          "name": "Éducation: Dotation de fonctionnement des collèges - Établissements publics",
+          "value": 16837644.63
         },
         {
           "name": "Éducation: Achats de prestations de services (autres que terrains à aménager)",
-          "value": 14497027.65
+          "value": 14480171.190000001
         },
         {
-          "name": "Éducation: Autres (Autres charges de personnel)",
-          "value": 11107879.379999995
+          "name": "Éducation: Versement de transport",
+          "value": 10456206.5
         },
         {
-          "name": "Éducation: Subventions de fonctionnement aux organismes publics - Établissements et services rattachés - à caractère administratif",
-          "value": 10400000.0
-        },
-        {
-          "name": "Éducation: Bâtiments publics",
-          "value": 10182551.740000002
+          "name": "Éducation: Personnel non titulaire - Primes et autres indemnités",
+          "value": 9860143.72
         },
         {
           "name": "Éducation: Rémunérations des apprentis",
           "value": 8873631.45
         },
         {
+          "name": "Éducation: Personnel titulaire - Supplément familial de traitement et indemnité de résidence",
+          "value": 8618178.109999998
+        },
+        {
           "name": "Invest. Éducation: Subventions d'équipement versées",
           "value": 6600000.0
+        },
+        {
+          "name": "Éducation: Autres (Autres charges de personnel)",
+          "value": 6155779.409999999
         },
         {
           "name": "Invest. Éducation: Subventions aux organismes publics - Organismes publics divers - Biens mobiliers, matériel et études",
           "value": 6150000.0
         },
         {
-          "name": "Éducation: Contrats de prestations de services",
-          "value": 5566972.61
-        },
-        {
           "name": "Invest. Éducation: Frais d’études",
           "value": 5377101.17
+        },
+        {
+          "name": "Éducation: Subventions de fonctionnement aux organismes publics - Établissements et services rattachés - à caractère administratif",
+          "value": 5200000.0
+        },
+        {
+          "name": "Éducation: Bâtiments publics",
+          "value": 5184461.9
         },
         {
           "name": "Éducation: Versements à des organismes de formation",
           "value": 5131751.03
         },
         {
-          "name": "Éducation: Subventions de fonctionnement aux personnes, aux associations et aux autres organismes de droit privé - Autres personnes de droit privé",
-          "value": 5045044.82
-        },
-        {
           "name": "Éducation: Autres charges diverses de gestion courante - Autres",
-          "value": 4463220.890000001
+          "value": 4443005.670000001
         },
         {
-          "name": "Éducation: Supplément familial de traitement et indemnité de résidence",
-          "value": 4428790.960000001
-        },
-        {
-          "name": "Éducation: Autres impôts locaux",
-          "value": 3945211.62
+          "name": "Éducation: Subventions de fonctionnement aux personnes, aux associations et aux autres organismes de droit privé - Autres personnes de droit privé",
+          "value": 3960279.16
         },
         {
           "name": "Invest. Éducation: Agencements et aménagements de terrains",
           "value": 3860393.7800000003
         },
         {
+          "name": "Éducation: Contrats de prestations de services",
+          "value": 3555766.25
+        },
+        {
           "name": "Invest. Éducation: Subventions aux établissements scolaires publics -Biens mobiliers, matériel et études",
           "value": 3151126.0
         },
         {
-          "name": "Éducation: Cotisations versées au F.N.A.L.",
-          "value": 3029352.2399999998
-        },
-        {
-          "name": "Éducation: Personnel titulaire - NBI",
-          "value": 2805449.849999999
+          "name": "Éducation: Supplément familial de traitement et indemnité de résidence",
+          "value": 2560319.6599999997
         },
         {
           "name": "Éducation: Subventions de fonctionnement aux organismes publics - Autres établissements publics locaux",
-          "value": 2415200.0
-        },
-        {
-          "name": "Éducation: Études et recherches",
-          "value": 2314123.22
-        },
-        {
-          "name": "Éducation: Maintenance",
-          "value": 2157699.01
+          "value": 2365200.0
         },
         {
           "name": "Invest. Éducation: Autre matériel informatique",
           "value": 2091200.95
         },
         {
+          "name": "Éducation: Autres impôts locaux",
+          "value": 1972605.81
+        },
+        {
           "name": "Invest. Éducation: Autres",
           "value": 1716530.3099999998
         },
         {
-          "name": "Éducation: Fournitures scolaires",
-          "value": 1450104.4000000001
+          "name": "Éducation: Cotisations versées au F.N.A.L.",
+          "value": 1646689.31
+        },
+        {
+          "name": "Éducation: Personnel titulaire - NBI",
+          "value": 1507501.03
         },
         {
           "name": "Invest. Éducation: Avances versées sur commandes d'immobilisations   corporelles",
@@ -1808,6 +1796,14 @@
           "value": 1320195.58
         },
         {
+          "name": "Éducation: Études et recherches",
+          "value": 1226662.23
+        },
+        {
+          "name": "Éducation: Maintenance",
+          "value": 1114242.6
+        },
+        {
           "name": "Éducation: Transports collectifs du personnel",
           "value": 1057309.2
         },
@@ -1816,16 +1812,12 @@
           "value": 937510.25
         },
         {
-          "name": "Éducation: Fournitures de petit équipement",
-          "value": 928030.7300000001
-        },
-        {
           "name": "Invest. Éducation: Subventions aux établissements scolaires publics -Bâtimentset installations",
           "value": 857967.0
         },
         {
-          "name": "Éducation: Locations immobilières",
-          "value": 836055.51
+          "name": "Éducation: Fournitures scolaires",
+          "value": 777829.9400000001
         },
         {
           "name": "Invest. Éducation: Autres immobilisations corporelles",
@@ -1836,206 +1828,186 @@
           "value": 725169.37
         },
         {
-          "name": "Éducation: Taxes foncières",
-          "value": 697418.0
+          "name": "Invest. Éducation: Biens mobiliers, matériel et études",
+          "value": 671627.89
         },
         {
-          "name": "Éducation: Charges locatives et de copropriété",
-          "value": 693668.45
+          "name": "Éducation: Locations immobilières",
+          "value": 592078.21
+        },
+        {
+          "name": "Éducation: Fournitures de petit équipement",
+          "value": 572514.81
+        },
+        {
+          "name": "Invest. Éducation: Autres agencements et aménagements",
+          "value": 564425.34
         }
       ],
       "Culture & Sport": [
         {
           "name": "Culture & Sport: Personnel titulaire - Rémunération principale",
-          "value": 271849902.38
+          "value": 156519111.38000003
         },
         {
           "name": "Culture & Sport: Subventions de fonctionnement aux personnes, aux associations et aux autres organismes de droit privé - Autres personnes de droit privé",
-          "value": 186268405.56
-        },
-        {
-          "name": "Culture & Sport: Contrats de prestations de services",
-          "value": 177095738.32000005
-        },
-        {
-          "name": "Culture & Sport: Subventions de fonctionnement aux organismes publics - Établissements et services rattachés - à caractère administratif",
-          "value": 112400000.0
-        },
-        {
-          "name": "Culture & Sport: Personnel titulaire - Autres indemnités",
-          "value": 93651233.94
-        },
-        {
-          "name": "Culture & Sport: Cotisations aux caisses de retraite",
-          "value": 92987595.15999998
+          "value": 95921425.28
         },
         {
           "name": "Invest. Culture: Constructions",
           "value": 91499169.80000001
         },
         {
-          "name": "Culture & Sport: Cotisations à l'U.R.S.S.A.F.",
-          "value": 59880147.11
+          "name": "Culture & Sport: Contrats de prestations de services",
+          "value": 89441010.77
         },
         {
-          "name": "Culture & Sport: Personnel non titulaire - Rémunérations",
-          "value": 36823420.10000001
+          "name": "Culture & Sport: Subventions de fonctionnement aux organismes publics - Établissements et services rattachés - à caractère administratif",
+          "value": 56200000.0
+        },
+        {
+          "name": "Culture & Sport: Personnel titulaire - Autres indemnités",
+          "value": 56021497.81
+        },
+        {
+          "name": "Culture & Sport: Cotisations aux caisses de retraite",
+          "value": 53517707.09000001
+        },
+        {
+          "name": "Culture & Sport: Cotisations à l'U.R.S.S.A.F.",
+          "value": 34086313.8
         },
         {
           "name": "Invest. Culture: Subventions d'équipement versées",
           "value": 31054372.0
         },
         {
-          "name": "Culture & Sport: Subventions de fonctionnement aux organismes publics - Organismes publics divers",
-          "value": 29642600.5
-        },
-        {
-          "name": "Culture & Sport: Autre personnel extérieur",
-          "value": 28741203.71
-        },
-        {
-          "name": "Culture & Sport: Subventions de fonctionnement aux organismes publics - Autres établissements publics locaux",
-          "value": 27986000.0
-        },
-        {
           "name": "Invest. Culture: Restauration des collections et œuvres d'art",
           "value": 26632797.919999998
+        },
+        {
+          "name": "Culture & Sport: Personnel non titulaire - Rémunérations",
+          "value": 21212923.930000003
         },
         {
           "name": "Invest. Culture: Installation, matériel et outillages techniques",
           "value": 16928580.22
         },
         {
+          "name": "Culture & Sport: Autre personnel extérieur",
+          "value": 14884557.110000001
+        },
+        {
+          "name": "Culture & Sport: Subventions de fonctionnement aux organismes publics - Organismes publics divers",
+          "value": 14821300.25
+        },
+        {
+          "name": "Culture & Sport: Subventions de fonctionnement aux organismes publics - Autres établissements publics locaux",
+          "value": 13993000.0
+        },
+        {
           "name": "Culture & Sport: Achats de prestations de services (autres que terrains à aménager)",
-          "value": 15255905.280000001
-        },
-        {
-          "name": "Culture & Sport: Personnel titulaire - Supplément familial de traitement et indemnité de résidence",
-          "value": 11206606.500000002
-        },
-        {
-          "name": "Culture & Sport: Versement de transport",
-          "value": 10846481.890000004
-        },
-        {
-          "name": "Culture & Sport: Personnel non titulaire - Primes et autres indemnités",
-          "value": 8801177.730000002
+          "value": 11423176.08
         },
         {
           "name": "Invest. Culture: Frais d’études",
           "value": 8423803.620000001
         },
         {
-          "name": "Culture & Sport: Remboursements de frais - A des tiers",
-          "value": 8329510.29
-        },
-        {
           "name": "Invest. Culture: Subventions aux organismes publics - EPL et services rattachés - à caractère administratif - Bâtiments et installations",
           "value": 6487989.45
         },
         {
-          "name": "Culture & Sport: Frais de gardiennage",
-          "value": 6256744.55
+          "name": "Culture & Sport: Personnel titulaire - Supplément familial de traitement et indemnité de résidence",
+          "value": 6439693.82
+        },
+        {
+          "name": "Culture & Sport: Versement de transport",
+          "value": 6206846.8900000015
         },
         {
           "name": "Invest. Culture: Autres",
           "value": 6201466.610000002
         },
         {
-          "name": "Culture & Sport: Autres impôts locaux",
-          "value": 6071068.2
+          "name": "Culture & Sport: Personnel non titulaire - Primes et autres indemnités",
+          "value": 5409341.710000001
         },
         {
-          "name": "Culture & Sport: Participations -  Organismes de regroupement",
-          "value": 5754627.0
-        },
-        {
-          "name": "Culture & Sport: Bâtiments publics",
-          "value": 5676476.16
+          "name": "Culture & Sport: Remboursements de frais - A des tiers",
+          "value": 4169751.4299999997
         },
         {
           "name": "Culture & Sport: Autres (Autres charges de personnel)",
-          "value": 5669802.039999999
+          "value": 3291370.9400000004
         },
         {
-          "name": "Culture & Sport: Locations immobilières",
-          "value": 5084335.96
+          "name": "Culture & Sport: Frais de gardiennage",
+          "value": 3177479.51
         },
         {
-          "name": "Culture & Sport: Maintenance",
-          "value": 4379846.91
-        },
-        {
-          "name": "Culture & Sport: Eau et assainissement",
-          "value": 4085440.59
-        },
-        {
-          "name": "Culture & Sport: Catalogues et imprimés",
-          "value": 3871792.65
-        },
-        {
-          "name": "Culture & Sport: Fournitures de petit équipement",
-          "value": 3779121.380000001
+          "name": "Culture & Sport: Autres impôts locaux",
+          "value": 3165231.3
         },
         {
           "name": "Culture & Sport: Transports collectifs du personnel",
-          "value": 3703689.16
+          "value": 2946734.83
         },
         {
-          "name": "Culture & Sport: Taxes foncières",
-          "value": 3164882.8800000004
+          "name": "Culture & Sport: Bâtiments publics",
+          "value": 2881004.17
+        },
+        {
+          "name": "Culture & Sport: Participations -  Organismes de regroupement",
+          "value": 2877313.5
         },
         {
           "name": "Invest. Culture: Avances versées sur commandes d'immobilisations   corporelles",
           "value": 2657863.0700000003
         },
         {
-          "name": "Culture & Sport: Habillement et vêtements de travail",
-          "value": 2520200.15
+          "name": "Culture & Sport: Locations immobilières",
+          "value": 2564160.06
         },
         {
           "name": "Invest. Culture: Subventions aux personnes de droit privé - Bâtiments et installations",
           "value": 2262350.8
         },
         {
-          "name": "Culture & Sport: Terrains",
-          "value": 2137635.72
+          "name": "Culture & Sport: Fournitures de petit équipement",
+          "value": 2253907.54
         },
         {
-          "name": "Culture & Sport: Personnel titulaire - NBI",
-          "value": 2087914.87
+          "name": "Culture & Sport: Maintenance",
+          "value": 2216913.3299999996
         },
         {
-          "name": "Culture & Sport: Autres services exterieurs - Divers - Autres",
-          "value": 2064292.75
+          "name": "Culture & Sport: Catalogues et imprimés",
+          "value": 2100982.38
+        },
+        {
+          "name": "Culture & Sport: Eau et assainissement",
+          "value": 2065136.22
         },
         {
           "name": "Invest. Culture: Subventions aux personnes de droit privé - Biens mobiliers,matériel et études",
           "value": 1955866.51
         },
         {
-          "name": "Culture & Sport: Livres, disques, cassettes ... (bibliothèques et médiathèques)",
-          "value": 1719342.9400000002
+          "name": "Culture & Sport: Taxes foncières",
+          "value": 1593978.94
         },
         {
-          "name": "Culture & Sport: Cotisations versées au F.N.A.L.",
-          "value": 1707722.399999999
+          "name": "Culture & Sport: Personnel titulaire - NBI",
+          "value": 1376424.77
         },
         {
-          "name": "Culture & Sport: Études et recherches",
-          "value": 1567290.92
-        },
-        {
-          "name": "Culture & Sport: Charges locatives et de copropriété",
-          "value": 1473829.8000000003
-        },
-        {
-          "name": "Culture & Sport: Supplément familial de traitement et indemnité de résidence",
-          "value": 1281914.5100000005
+          "name": "Culture & Sport: Habillement et vêtements de travail",
+          "value": 1266438.4899999998
         },
         {
           "name": "Culture & Sport: Fournitures scolaires",
-          "value": 1230305.74
+          "value": 1169918.0
         },
         {
           "name": "Invest. Culture: Autres matériels de bureau et mobiliers",
@@ -2044,112 +2016,120 @@
         {
           "name": "Invest. Culture: Autres agencements et aménagements",
           "value": 1153893.68
+        },
+        {
+          "name": "Culture & Sport: Terrains",
+          "value": 1135083.36
+        },
+        {
+          "name": "Culture & Sport: Autres services exterieurs - Divers - Autres",
+          "value": 1094725.98
+        },
+        {
+          "name": "Culture & Sport: Cotisations versées au F.N.A.L.",
+          "value": 977225.4100000001
+        },
+        {
+          "name": "Invest. Culture: Autres immobilisations incorporelles",
+          "value": 906950.8600000001
+        },
+        {
+          "name": "Culture & Sport: Locations mobilières - Matériel roulant",
+          "value": 886721.7499999999
+        },
+        {
+          "name": "Culture & Sport: Livres, disques, cassettes ... (bibliothèques et médiathèques)",
+          "value": 859800.13
+        },
+        {
+          "name": "Invest. Culture: Bâtiments culturels et sportifs",
+          "value": 804788.0599999999
         }
       ],
       "Action Sociale": [
         {
           "name": "Action Sociale: Subventions de fonctionnement aux organismes publics - Établissements et services rattachés - à caractère administratif",
-          "value": 827856000.0
-        },
-        {
-          "name": "Action Sociale: Personnel titulaire - Rémunération principale",
-          "value": 484187217.75999993
+          "value": 413928000.0
         },
         {
           "name": "RSA: RSA - Versements pour allocations forfaitaires",
           "value": 377669671.59
         },
         {
+          "name": "Action Sociale: Personnel titulaire - Rémunération principale",
+          "value": 242093608.87999997
+        },
+        {
           "name": "Action Sociale: Frais de séjour en établissements et services pour adultes handicapés",
-          "value": 316602070.08
+          "value": 158301035.04
         },
         {
           "name": "Action Sociale: Subventions de fonctionnement aux personnes, aux associations et aux autres organismes de droit privé - Autres personnes de droit privé",
-          "value": 226744040.22000003
+          "value": 113372020.11000001
         },
         {
           "name": "Action Sociale: Maisons d’enfants à caractère social",
-          "value": 223838421.88
+          "value": 111919210.94
         },
         {
           "name": "Action Sociale: Cotisations aux caisses de retraite",
-          "value": 165819814.35999998
+          "value": 82909907.17999999
         },
         {
           "name": "Action Sociale: Personnel titulaire - Autres indemnités",
-          "value": 165629639.64
+          "value": 82814819.82
         },
         {
           "name": "Action Sociale: Frais de séjour en établissements pour personnes  âgées",
-          "value": 164203593.5
+          "value": 82101796.75
         },
         {
           "name": "Action Sociale: Allocations - Prestation de compensation du handicap – plusde 20 ans",
-          "value": 149739479.38
+          "value": 74869739.69
         },
         {
           "name": "Action Sociale: Frais de séjour en établissements et services de l’aide sociale à l’enfance - Autres",
-          "value": 140207795.86
+          "value": 70103897.93
         },
         {
           "name": "Action Sociale: Autres participations",
-          "value": 114322098.94
+          "value": 57161049.47
         },
         {
           "name": "Action Sociale: Contrats de prestations de services",
-          "value": 113333407.36
+          "value": 56666703.68000001
         },
         {
           "name": "Action Sociale: Foyers de l’enfance, centres et hôtels maternels",
-          "value": 111925739.06
+          "value": 55962869.53
         },
         {
           "name": "Action Sociale: Cotisations à l'U.R.S.S.A.F.",
-          "value": 101977930.16000001
-        },
-        {
-          "name": "Action Sociale: Services d’aide éducative en milieu ouvert et à domicile",
-          "value": 83869571.84
-        },
-        {
-          "name": "Action Sociale: Contributions à des fonds - Autres contributions",
-          "value": 65578111.239999995
-        },
-        {
-          "name": "Action Sociale: Prévention spécialisée",
-          "value": 58373038.78
-        },
-        {
-          "name": "Action Sociale: Accueil familial",
-          "value": 50965545.58
+          "value": 50988965.080000006
         },
         {
           "name": "APA: APA",
           "value": 49157033.02
         },
         {
-          "name": "Action Sociale: Personnel non titulaire - Rémunérations",
-          "value": 48313759.86
-        },
-        {
-          "name": "Action Sociale: Secours d’urgence",
-          "value": 46602362.0
+          "name": "Action Sociale: Services d’aide éducative en milieu ouvert et à domicile",
+          "value": 41934785.92
         },
         {
           "name": "APA: APA à domicile versée au bénéficiaire",
           "value": 39869296.48
         },
         {
-          "name": "Action Sociale: Assistantes maternelles - Rémunération principale",
-          "value": 36584675.44
+          "name": "Action Sociale: Contributions à des fonds - Autres contributions",
+          "value": 32789055.62
         },
         {
           "name": "Invest. Social: Constructions",
           "value": 32468621.959999997
         },
         {
-          "name": "Action Sociale: Allocation compensatrice tierce personne",
-          "value": 28034689.12
+          "name": "Action Sociale: Prévention spécialisée",
+          "value": 29186519.39
         },
         {
           "name": "RSA: RSA - Versements pour allocations forfaitaires majorées",
@@ -2160,32 +2140,32 @@
           "value": 27271212.97
         },
         {
-          "name": "Action Sociale: Personnel titulaire - Supplément familial de traitement et indemnité de résidence",
-          "value": 21788792.020000007
+          "name": "Action Sociale: Accueil familial",
+          "value": 25482772.79
         },
         {
-          "name": "Action Sociale: Versement de transport",
-          "value": 18059366.520000003
+          "name": "Action Sociale: Personnel non titulaire - Rémunérations",
+          "value": 24156879.93
+        },
+        {
+          "name": "Action Sociale: Secours d’urgence",
+          "value": 23301181.0
+        },
+        {
+          "name": "Action Sociale: Assistantes maternelles - Rémunération principale",
+          "value": 18292337.72
         },
         {
           "name": "APA: APA versée au bénéficiaire en établissement",
           "value": 17922406.99
         },
         {
-          "name": "Action Sociale: Lieux de vie et d’accueil",
-          "value": 17624008.44
-        },
-        {
-          "name": "Action Sociale: Assistantes maternelles - Autres indemnités",
-          "value": 17383626.0
-        },
-        {
           "name": "Invest. Social: Installation, matériel et outillages techniques",
           "value": 16676004.190000001
         },
         {
-          "name": "Action Sociale: Allocations - Prestation de compensation du handicap – moins de 20 ans",
-          "value": 13693844.76
+          "name": "Action Sociale: Allocation compensatrice tierce personne",
+          "value": 14017344.56
         },
         {
           "name": "RSA: Subventions de fonctionnement aux personnes, aux associations et aux autres organismes de droit privé - Autres personnes de droit privé",
@@ -2196,32 +2176,28 @@
           "value": 11410248.4
         },
         {
-          "name": "Action Sociale: Personnel non titulaire - Primes et autres indemnités",
-          "value": 10827839.959999999
+          "name": "Action Sociale: Personnel titulaire - Supplément familial de traitement et indemnité de résidence",
+          "value": 10894396.01
         },
         {
-          "name": "Action Sociale: Autres (Autres charges de personnel)",
-          "value": 10752894.94
-        },
-        {
-          "name": "Action Sociale: Foyers de jeunes travailleurs",
-          "value": 9559526.56
+          "name": "Action Sociale: Versement de transport",
+          "value": 9029683.260000002
         },
         {
           "name": "RSA: Contrats de prestations de services",
           "value": 8957819.490000002
         },
         {
-          "name": "Action Sociale: Allocations - Famille et enfance",
-          "value": 7972429.42
+          "name": "Action Sociale: Lieux de vie et d’accueil",
+          "value": 8812004.22
         },
         {
-          "name": "Action Sociale: Honoraires médicaux et paramédicaux",
-          "value": 7860743.66
+          "name": "Action Sociale: Assistantes maternelles - Autres indemnités",
+          "value": 8691813.0
         },
         {
-          "name": "Action Sociale: Frais périscolaires",
-          "value": 7074824.5
+          "name": "Action Sociale: Allocations - Prestation de compensation du handicap – moins de 20 ans",
+          "value": 6846922.38
         },
         {
           "name": "RSA: Personnel titulaire - Rémunération principale",
@@ -2232,20 +2208,44 @@
           "value": 6409922.08
         },
         {
-          "name": "Action Sociale: Autre personnel extérieur",
-          "value": 5320314.459999998
+          "name": "Action Sociale: Personnel non titulaire - Primes et autres indemnités",
+          "value": 5413919.9799999995
         },
         {
-          "name": "Action Sociale: Autres (Aides à la personne)",
-          "value": 5052510.7
+          "name": "Action Sociale: Autres (Autres charges de personnel)",
+          "value": 5376447.470000001
         },
         {
-          "name": "Action Sociale: Remboursements de frais - A des tiers",
-          "value": 4667122.46
+          "name": "Action Sociale: Foyers de jeunes travailleurs",
+          "value": 4779763.28
         },
         {
-          "name": "Action Sociale: Allocations - Personnes âgées",
-          "value": 4640934.8
+          "name": "Invest. Social: Frais d’études",
+          "value": 3996905.82
+        },
+        {
+          "name": "Action Sociale: Allocations - Famille et enfance",
+          "value": 3986214.71
+        },
+        {
+          "name": "Action Sociale: Honoraires médicaux et paramédicaux",
+          "value": 3930371.83
+        },
+        {
+          "name": "Action Sociale: Frais périscolaires",
+          "value": 3537412.25
+        },
+        {
+          "name": "Invest. Social: Subventions d'équipement versées",
+          "value": 3409519.33
+        },
+        {
+          "name": "Invest. Social: Autres matériels de bureau et mobiliers",
+          "value": 3107475.2299999995
+        },
+        {
+          "name": "RSA: Contrat d'accompagnement dans l'emploi",
+          "value": 2852779.52
         }
       ],
       "Environnement": [
@@ -2453,23 +2453,15 @@
       "Transports": [
         {
           "name": "Transports: Autres contributions obligatoires",
-          "value": 910659882.82
+          "value": 455348240.01
         },
         {
           "name": "Invest. Transports: Installation, matériel et outillages techniques",
           "value": 163583935.68
         },
         {
-          "name": "Transports: Aides",
-          "value": 61908098.0
-        },
-        {
           "name": "Transports: Contrats de prestations de services",
-          "value": 61682475.95999999
-        },
-        {
-          "name": "Transports: Subventions de fonctionnement aux organismes publics - Établissements et services rattachés - à caractère administratif",
-          "value": 46932196.78
+          "value": 55859821.20999999
         },
         {
           "name": "Invest. Transports: Subventions d'équipement versées",
@@ -2477,15 +2469,23 @@
         },
         {
           "name": "Transports: Personnel titulaire - Rémunération principale",
-          "value": 37512331.599999994
+          "value": 35983450.059999995
         },
         {
           "name": "Transports: Voiries",
           "value": 32228874.98
         },
         {
+          "name": "Transports: Aides",
+          "value": 30954049.0
+        },
+        {
+          "name": "Transports: Subventions de fonctionnement aux organismes publics - Établissements et services rattachés - à caractère administratif",
+          "value": 23466098.39
+        },
+        {
           "name": "Transports: Personnel titulaire - Autres indemnités",
-          "value": 18494625.720000003
+          "value": 17628227.48
         },
         {
           "name": "Transports: Taxes foncières",
@@ -2493,11 +2493,7 @@
         },
         {
           "name": "Transports: Cotisations aux caisses de retraite",
-          "value": 12509793.989999998
-        },
-        {
-          "name": "Transports: Subventions de fonctionnement aux organismes publics - Organismes publics divers",
-          "value": 10152866.96
+          "value": 11982554.379999999
         },
         {
           "name": "Invest. Transports: Bâtiments et installations",
@@ -2509,7 +2505,11 @@
         },
         {
           "name": "Transports: Cotisations à l'U.R.S.S.A.F.",
-          "value": 6385872.539999999
+          "value": 6018411.9799999995
+        },
+        {
+          "name": "Transports: Subventions de fonctionnement aux organismes publics - Organismes publics divers",
+          "value": 5076433.48
         },
         {
           "name": "Transports: Remboursements de frais - A des tiers",
@@ -2529,11 +2529,11 @@
         },
         {
           "name": "Transports: Autres charges diverses de gestion courante - Autres",
-          "value": 2653417.51
+          "value": 2652953.33
         },
         {
           "name": "Transports: Personnel non titulaire - Rémunérations",
-          "value": 2486524.26
+          "value": 2129812.0500000003
         },
         {
           "name": "Transports: Locations mobilières - Matériel roulant",
@@ -2552,12 +2552,12 @@
           "value": 1529325.48
         },
         {
-          "name": "Transports: Personnel titulaire - Supplément familial de traitement et indemnité de résidence",
-          "value": 1495494.6
-        },
-        {
           "name": "Transports: Services bancaires et assimilés",
           "value": 1452032.94
+        },
+        {
+          "name": "Transports: Personnel titulaire - Supplément familial de traitement et indemnité de résidence",
+          "value": 1433413.62
         },
         {
           "name": "Invest. Transports: Autre matériel informatique",
@@ -2573,19 +2573,11 @@
         },
         {
           "name": "Transports: Versement de transport",
-          "value": 1267080.6099999999
-        },
-        {
-          "name": "Transports: Autres participations",
-          "value": 1157506.88
+          "value": 1202209.7999999998
         },
         {
           "name": "Transports: Fournitures de petit équipement",
           "value": 1020711.45
-        },
-        {
-          "name": "Transports: Personnel non titulaire - Primes et autres indemnités",
-          "value": 1007752.29
         },
         {
           "name": "Transports: Locations immobilières",
@@ -2600,16 +2592,24 @@
           "value": 907484.73
         },
         {
+          "name": "Transports: Personnel non titulaire - Primes et autres indemnités",
+          "value": 852879.99
+        },
+        {
           "name": "Transports: Frais de gardiennage",
           "value": 729654.01
         },
         {
           "name": "Transports: Autres (Autres charges de personnel)",
-          "value": 702582.2
+          "value": 667532.83
         },
         {
           "name": "Invest. Transports: Autres installations, matériel et outillage techniques",
           "value": 604492.6799999999
+        },
+        {
+          "name": "Transports: Autres participations",
+          "value": 578753.44
         },
         {
           "name": "Transports: Terrains",
@@ -2649,7 +2649,7 @@
         },
         {
           "name": "Transports: Personnel titulaire - NBI",
-          "value": 268951.88
+          "value": 261485.58000000002
         }
       ]
     }
@@ -2759,87 +2759,87 @@
     },
     "Aménagement & Logement": {
       "Fonctionnement": {
-        "total": 516641333.1599998,
+        "total": 301384691.71,
         "items": [
           {
             "name": "Aménagement: Personnel titulaire - Rémunération principale",
-            "value": 149731045.20999995
+            "value": 85365081.22000001
           },
           {
             "name": "Aménagement: Personnel titulaire - Autres indemnités",
-            "value": 62948926.61000001
+            "value": 36779675.07
           },
           {
             "name": "Aménagement: Cotisations aux caisses de retraite",
-            "value": 50358562.07000001
+            "value": 28718642.900000002
           },
           {
             "name": "Aménagement: Voiries",
-            "value": 38266600.72
-          },
-          {
-            "name": "Aménagement: Énergie - Électricité",
-            "value": 30898328.33
-          },
-          {
-            "name": "Aménagement: Subventions de fonctionnement aux personnes, aux associations et aux autres organismes de droit privé - Autres personnes de droit privé",
-            "value": 28075681.619999997
+            "value": 19134348.31
           },
           {
             "name": "Aménagement: Cotisations à l'U.R.S.S.A.F.",
-            "value": 28048257.700000003
+            "value": 15936318.310000002
           },
           {
-            "name": "Aménagement: Personnel non titulaire - Rémunérations",
-            "value": 15956227.609999998
+            "name": "Aménagement: Énergie - Électricité",
+            "value": 15800876.489999998
           },
           {
-            "name": "Aménagement: Contrats de prestations de services",
-            "value": 15052295.229999999
+            "name": "Aménagement: Subventions de fonctionnement aux personnes, aux associations et aux autres organismes de droit privé - Autres personnes de droit privé",
+            "value": 15189390.809999999
           },
           {
             "name": "Aménagement: Autres charges diverses de gestion courante - Autres",
-            "value": 14385868.35
+            "value": 14258914.6
           },
           {
-            "name": "Aménagement: Locations mobilières - Matériel roulant",
-            "value": 7525955.38
+            "name": "Aménagement: Contrats de prestations de services",
+            "value": 10986786.509999998
+          },
+          {
+            "name": "Aménagement: Personnel non titulaire - Rémunérations",
+            "value": 8854829.65
           },
           {
             "name": "Aménagement: Eau et assainissement",
-            "value": 7023579.470000001
+            "value": 3957597.16
           },
           {
-            "name": "Aménagement: Terrains",
-            "value": 6141103.96
+            "name": "Aménagement: Locations mobilières - Matériel roulant",
+            "value": 3794086.56
           },
           {
             "name": "Aménagement: Personnel non titulaire - Primes et autres indemnités",
-            "value": 5888476.29
+            "value": 3416987.719999999
           },
           {
             "name": "Aménagement: Personnel titulaire - Supplément familial de traitement et indemnité de résidence",
-            "value": 5763918.920000001
+            "value": 3289188.58
+          },
+          {
+            "name": "Aménagement: Terrains",
+            "value": 3145437.24
           },
           {
             "name": "Aménagement: Versement de transport",
-            "value": 5447540.040000001
-          },
-          {
-            "name": "Aménagement: Autres impôts, taxes et versements assimilés (autres organismes)",
-            "value": 4641321.92
-          },
-          {
-            "name": "Aménagement: Fournitures de petit équipement",
-            "value": 4246785.22
+            "value": 3101835.9399999995
           },
           {
             "name": "Aménagement: Maintenance",
-            "value": 3542723.9499999997
+            "value": 2398375.25
           },
           {
-            "name": "Aménagement: Autres services exterieurs - Divers - Autres",
-            "value": 3475758.2000000007
+            "name": "Aménagement: Autres impôts, taxes et versements assimilés (autres organismes)",
+            "value": 2320660.96
+          },
+          {
+            "name": "Aménagement: Taxes foncières",
+            "value": 2190188.65
+          },
+          {
+            "name": "Aménagement: Fournitures de petit équipement",
+            "value": 2133692.06
           }
         ]
       },
@@ -3075,87 +3075,87 @@
     },
     "Éducation": {
       "Fonctionnement": {
-        "total": 1383464452.8500004,
+        "total": 834785637.6199999,
         "items": [
           {
             "name": "Éducation: Personnel titulaire - Rémunération principale",
-            "value": 362294387.7700001
-          },
-          {
-            "name": "Éducation: Autre personnel extérieur",
-            "value": 149628796.09
-          },
-          {
-            "name": "Éducation: Cotisations aux caisses de retraite",
-            "value": 130341355.15
-          },
-          {
-            "name": "Éducation: Cotisations à l'U.R.S.S.A.F.",
-            "value": 125250672.56
+            "value": 197863970.71999997
           },
           {
             "name": "Éducation: Subventions de fonctionnement aux organismes publics - Caisses des écoles",
             "value": 125141298.02
           },
           {
+            "name": "Éducation: Autre personnel extérieur",
+            "value": 78841624.87
+          },
+          {
+            "name": "Éducation: Cotisations aux caisses de retraite",
+            "value": 71088651.45
+          },
+          {
+            "name": "Éducation: Cotisations à l'U.R.S.S.A.F.",
+            "value": 67969072.1
+          },
+          {
             "name": "Éducation: Personnel titulaire - Autres indemnités",
-            "value": 89059642.49
+            "value": 50907005.09
           },
           {
             "name": "Éducation: Personnel non titulaire - Rémunérations",
-            "value": 80238015.61000003
+            "value": 46574522.349999994
           },
           {
             "name": "Éducation: Autres contributions obligatoires",
-            "value": 68478261.21000001
+            "value": 34272209.61
           },
           {
             "name": "Éducation: Dotation de fonctionnement des collèges - Établissements privés",
-            "value": 43386303.42
-          },
-          {
-            "name": "Éducation: Dotation de fonctionnement des collèges - Établissements publics",
-            "value": 33065512.63
-          },
-          {
-            "name": "Éducation: Versement de transport",
-            "value": 19235938.639999993
+            "value": 21693151.71
           },
           {
             "name": "Éducation: Subventions de fonctionnement aux organismes publics - Organismes publics divers",
             "value": 17782600.0
           },
           {
-            "name": "Éducation: Personnel non titulaire - Primes et autres indemnités",
-            "value": 17133919.169999998
-          },
-          {
-            "name": "Éducation: Personnel titulaire - Supplément familial de traitement et indemnité de résidence",
-            "value": 15858064.999999996
+            "name": "Éducation: Dotation de fonctionnement des collèges - Établissements publics",
+            "value": 16837644.63
           },
           {
             "name": "Éducation: Achats de prestations de services (autres que terrains à aménager)",
-            "value": 14497027.65
+            "value": 14480171.190000001
           },
           {
-            "name": "Éducation: Autres (Autres charges de personnel)",
-            "value": 11107879.379999995
+            "name": "Éducation: Versement de transport",
+            "value": 10456206.5
           },
           {
-            "name": "Éducation: Subventions de fonctionnement aux organismes publics - Établissements et services rattachés - à caractère administratif",
-            "value": 10400000.0
-          },
-          {
-            "name": "Éducation: Bâtiments publics",
-            "value": 10182551.740000002
+            "name": "Éducation: Personnel non titulaire - Primes et autres indemnités",
+            "value": 9860143.72
           },
           {
             "name": "Éducation: Rémunérations des apprentis",
             "value": 8873631.45
           },
           {
-            "name": "Éducation: Contrats de prestations de services",
-            "value": 5566972.61
+            "name": "Éducation: Personnel titulaire - Supplément familial de traitement et indemnité de résidence",
+            "value": 8618178.109999998
+          },
+          {
+            "name": "Éducation: Autres (Autres charges de personnel)",
+            "value": 6155779.409999999
+          },
+          {
+            "name": "Éducation: Subventions de fonctionnement aux organismes publics - Établissements et services rattachés - à caractère administratif",
+            "value": 5200000.0
+          },
+          {
+            "name": "Éducation: Bâtiments publics",
+            "value": 5184461.9
+          },
+          {
+            "name": "Éducation: Versements à des organismes de formation",
+            "value": 5131751.03
           }
         ]
       },
@@ -3247,87 +3247,87 @@
     },
     "Culture & Sport": {
       "Fonctionnement": {
-        "total": 1260344256.4500003,
+        "total": 689941659.55,
         "items": [
           {
             "name": "Culture & Sport: Personnel titulaire - Rémunération principale",
-            "value": 271849902.38
+            "value": 156519111.38000003
           },
           {
             "name": "Culture & Sport: Subventions de fonctionnement aux personnes, aux associations et aux autres organismes de droit privé - Autres personnes de droit privé",
-            "value": 186268405.56
+            "value": 95921425.28
           },
           {
             "name": "Culture & Sport: Contrats de prestations de services",
-            "value": 177095738.32000005
+            "value": 89441010.77
           },
           {
             "name": "Culture & Sport: Subventions de fonctionnement aux organismes publics - Établissements et services rattachés - à caractère administratif",
-            "value": 112400000.0
+            "value": 56200000.0
           },
           {
             "name": "Culture & Sport: Personnel titulaire - Autres indemnités",
-            "value": 93651233.94
+            "value": 56021497.81
           },
           {
             "name": "Culture & Sport: Cotisations aux caisses de retraite",
-            "value": 92987595.15999998
+            "value": 53517707.09000001
           },
           {
             "name": "Culture & Sport: Cotisations à l'U.R.S.S.A.F.",
-            "value": 59880147.11
+            "value": 34086313.8
           },
           {
             "name": "Culture & Sport: Personnel non titulaire - Rémunérations",
-            "value": 36823420.10000001
-          },
-          {
-            "name": "Culture & Sport: Subventions de fonctionnement aux organismes publics - Organismes publics divers",
-            "value": 29642600.5
+            "value": 21212923.930000003
           },
           {
             "name": "Culture & Sport: Autre personnel extérieur",
-            "value": 28741203.71
+            "value": 14884557.110000001
+          },
+          {
+            "name": "Culture & Sport: Subventions de fonctionnement aux organismes publics - Organismes publics divers",
+            "value": 14821300.25
           },
           {
             "name": "Culture & Sport: Subventions de fonctionnement aux organismes publics - Autres établissements publics locaux",
-            "value": 27986000.0
+            "value": 13993000.0
           },
           {
             "name": "Culture & Sport: Achats de prestations de services (autres que terrains à aménager)",
-            "value": 15255905.280000001
+            "value": 11423176.08
           },
           {
             "name": "Culture & Sport: Personnel titulaire - Supplément familial de traitement et indemnité de résidence",
-            "value": 11206606.500000002
+            "value": 6439693.82
           },
           {
             "name": "Culture & Sport: Versement de transport",
-            "value": 10846481.890000004
+            "value": 6206846.8900000015
           },
           {
             "name": "Culture & Sport: Personnel non titulaire - Primes et autres indemnités",
-            "value": 8801177.730000002
+            "value": 5409341.710000001
           },
           {
             "name": "Culture & Sport: Remboursements de frais - A des tiers",
-            "value": 8329510.29
+            "value": 4169751.4299999997
+          },
+          {
+            "name": "Culture & Sport: Autres (Autres charges de personnel)",
+            "value": 3291370.9400000004
           },
           {
             "name": "Culture & Sport: Frais de gardiennage",
-            "value": 6256744.55
+            "value": 3177479.51
           },
           {
             "name": "Culture & Sport: Autres impôts locaux",
-            "value": 6071068.2
+            "value": 3165231.3
           },
           {
-            "name": "Culture & Sport: Participations -  Organismes de regroupement",
-            "value": 5754627.0
-          },
-          {
-            "name": "Culture & Sport: Bâtiments publics",
-            "value": 5676476.16
+            "name": "Culture & Sport: Transports collectifs du personnel",
+            "value": 2946734.83
           }
         ]
       },
@@ -3419,87 +3419,87 @@
     },
     "Action Sociale": {
       "Fonctionnement": {
-        "total": 4555804870.229998,
+        "total": 2578387749.01,
         "items": [
           {
             "name": "Action Sociale: Subventions de fonctionnement aux organismes publics - Établissements et services rattachés - à caractère administratif",
-            "value": 827856000.0
-          },
-          {
-            "name": "Action Sociale: Personnel titulaire - Rémunération principale",
-            "value": 484187217.75999993
+            "value": 413928000.0
           },
           {
             "name": "RSA: RSA - Versements pour allocations forfaitaires",
             "value": 377669671.59
           },
           {
+            "name": "Action Sociale: Personnel titulaire - Rémunération principale",
+            "value": 242093608.87999997
+          },
+          {
             "name": "Action Sociale: Frais de séjour en établissements et services pour adultes handicapés",
-            "value": 316602070.08
+            "value": 158301035.04
           },
           {
             "name": "Action Sociale: Subventions de fonctionnement aux personnes, aux associations et aux autres organismes de droit privé - Autres personnes de droit privé",
-            "value": 226744040.22000003
+            "value": 113372020.11000001
           },
           {
             "name": "Action Sociale: Maisons d’enfants à caractère social",
-            "value": 223838421.88
+            "value": 111919210.94
           },
           {
             "name": "Action Sociale: Cotisations aux caisses de retraite",
-            "value": 165819814.35999998
+            "value": 82909907.17999999
           },
           {
             "name": "Action Sociale: Personnel titulaire - Autres indemnités",
-            "value": 165629639.64
+            "value": 82814819.82
           },
           {
             "name": "Action Sociale: Frais de séjour en établissements pour personnes  âgées",
-            "value": 164203593.5
+            "value": 82101796.75
           },
           {
             "name": "Action Sociale: Allocations - Prestation de compensation du handicap – plusde 20 ans",
-            "value": 149739479.38
+            "value": 74869739.69
           },
           {
             "name": "Action Sociale: Frais de séjour en établissements et services de l’aide sociale à l’enfance - Autres",
-            "value": 140207795.86
+            "value": 70103897.93
           },
           {
             "name": "Action Sociale: Autres participations",
-            "value": 114322098.94
+            "value": 57161049.47
           },
           {
             "name": "Action Sociale: Contrats de prestations de services",
-            "value": 113333407.36
+            "value": 56666703.68000001
           },
           {
             "name": "Action Sociale: Foyers de l’enfance, centres et hôtels maternels",
-            "value": 111925739.06
+            "value": 55962869.53
           },
           {
             "name": "Action Sociale: Cotisations à l'U.R.S.S.A.F.",
-            "value": 101977930.16000001
-          },
-          {
-            "name": "Action Sociale: Services d’aide éducative en milieu ouvert et à domicile",
-            "value": 83869571.84
-          },
-          {
-            "name": "Action Sociale: Contributions à des fonds - Autres contributions",
-            "value": 65578111.239999995
-          },
-          {
-            "name": "Action Sociale: Prévention spécialisée",
-            "value": 58373038.78
-          },
-          {
-            "name": "Action Sociale: Accueil familial",
-            "value": 50965545.58
+            "value": 50988965.080000006
           },
           {
             "name": "APA: APA",
             "value": 49157033.02
+          },
+          {
+            "name": "Action Sociale: Services d’aide éducative en milieu ouvert et à domicile",
+            "value": 41934785.92
+          },
+          {
+            "name": "APA: APA à domicile versée au bénéficiaire",
+            "value": 39869296.48
+          },
+          {
+            "name": "Action Sociale: Contributions à des fonds - Autres contributions",
+            "value": 32789055.62
+          },
+          {
+            "name": "Action Sociale: Prévention spécialisée",
+            "value": 29186519.39
           }
         ]
       },
@@ -3935,35 +3935,35 @@
     },
     "Transports": {
       "Fonctionnement": {
-        "total": 1252029341.3700004,
+        "total": 726805650.72,
         "items": [
           {
             "name": "Transports: Autres contributions obligatoires",
-            "value": 910659882.82
-          },
-          {
-            "name": "Transports: Aides",
-            "value": 61908098.0
+            "value": 455348240.01
           },
           {
             "name": "Transports: Contrats de prestations de services",
-            "value": 61682475.95999999
-          },
-          {
-            "name": "Transports: Subventions de fonctionnement aux organismes publics - Établissements et services rattachés - à caractère administratif",
-            "value": 46932196.78
+            "value": 55859821.20999999
           },
           {
             "name": "Transports: Personnel titulaire - Rémunération principale",
-            "value": 37512331.599999994
+            "value": 35983450.059999995
           },
           {
             "name": "Transports: Voiries",
             "value": 32228874.98
           },
           {
+            "name": "Transports: Aides",
+            "value": 30954049.0
+          },
+          {
+            "name": "Transports: Subventions de fonctionnement aux organismes publics - Établissements et services rattachés - à caractère administratif",
+            "value": 23466098.39
+          },
+          {
             "name": "Transports: Personnel titulaire - Autres indemnités",
-            "value": 18494625.720000003
+            "value": 17628227.48
           },
           {
             "name": "Transports: Taxes foncières",
@@ -3971,15 +3971,15 @@
           },
           {
             "name": "Transports: Cotisations aux caisses de retraite",
-            "value": 12509793.989999998
-          },
-          {
-            "name": "Transports: Subventions de fonctionnement aux organismes publics - Organismes publics divers",
-            "value": 10152866.96
+            "value": 11982554.379999999
           },
           {
             "name": "Transports: Cotisations à l'U.R.S.S.A.F.",
-            "value": 6385872.539999999
+            "value": 6018411.9799999995
+          },
+          {
+            "name": "Transports: Subventions de fonctionnement aux organismes publics - Organismes publics divers",
+            "value": 5076433.48
           },
           {
             "name": "Transports: Remboursements de frais - A des tiers",
@@ -3995,11 +3995,11 @@
           },
           {
             "name": "Transports: Autres charges diverses de gestion courante - Autres",
-            "value": 2653417.51
+            "value": 2652953.33
           },
           {
             "name": "Transports: Personnel non titulaire - Rémunérations",
-            "value": 2486524.26
+            "value": 2129812.0500000003
           },
           {
             "name": "Transports: Locations mobilières - Matériel roulant",
@@ -4010,12 +4010,12 @@
             "value": 1919395.7500000002
           },
           {
-            "name": "Transports: Personnel titulaire - Supplément familial de traitement et indemnité de résidence",
-            "value": 1495494.6
-          },
-          {
             "name": "Transports: Services bancaires et assimilés",
             "value": 1452032.94
+          },
+          {
+            "name": "Transports: Personnel titulaire - Supplément familial de traitement et indemnité de résidence",
+            "value": 1433413.62
           }
         ]
       },
