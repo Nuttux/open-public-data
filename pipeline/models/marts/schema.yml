@@ -188,6 +188,40 @@ models:
         description: "Nombre de lignes budgétaires agrégées"
 
   # ===========================================================================
+  # BUDGET PAR NATURE (DONUT DRILL-DOWN)
+  # ===========================================================================
+  - name: mart_budget_nature
+    description: |
+      Agrégation croisée Nature × Thématique pour visualisation donut avec drill-down.
+      Niveau 1: répartition par nature (Personnel, Subventions, Achats, etc.)
+      Niveau 2: répartition par thématique au sein de chaque nature.
+      
+      Utilisé par: export_budget_nature.py → budget_nature_{year}.json
+    config:
+      materialized: view
+    columns:
+      - name: niveau
+        description: "Niveau d'agrégation: niveau_1 (par nature) ou niveau_2 (nature × thématique)"
+        tests:
+          - not_null
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: nature
+        description: "Catégorie de flux (ode_categorie_flux): Personnel, Subventions, Achats, etc."
+        tests:
+          - not_null
+      - name: thematique
+        description: "Thématique (ode_thematique) - NULL pour niveau_1"
+      - name: montant
+        description: "Montant total (€)"
+        tests:
+          - not_null
+      - name: nb_lignes
+        description: "Nombre de lignes budgétaires agrégées"
+
+  # ===========================================================================
   # CONCENTRATION (PARETO)
   # ===========================================================================
   - name: mart_concentration

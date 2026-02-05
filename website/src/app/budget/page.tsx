@@ -15,6 +15,7 @@ import { useState, useEffect, useCallback } from 'react';
 import YearSelector from '@/components/YearSelector';
 import StatsCards from '@/components/StatsCards';
 import BudgetSankey from '@/components/BudgetSankey';
+import NatureDonut, { type BudgetNatureData } from '@/components/NatureDonut';
 import DrilldownPanel from '@/components/DrilldownPanel';
 import type { BudgetData, BudgetIndex, DrilldownItem, DataStatus } from '@/lib/formatters';
 
@@ -100,6 +101,7 @@ export default function Home() {
   const [index, setIndex] = useState<BudgetIndex | null>(null);
   const [selectedYear, setSelectedYear] = useState<number>(2024);
   const [budgetData, setBudgetData] = useState<BudgetData | null>(null);
+  const [natureData, setNatureData] = useState<BudgetNatureData | null>(null);
   const [drilldown, setDrilldown] = useState<DrilldownState | null>(null);
   
   const [isLoading, setIsLoading] = useState(true);
@@ -130,18 +132,33 @@ export default function Home() {
       setDrilldown(null);
       
       try {
-        const response = await fetch(`/data/budget_sankey_${selectedYear}.json`);
-        if (!response.ok) {
+        // Charger les données Sankey et Nature en parallèle
+        const [sankeyResponse, natureResponse] = await Promise.all([
+          fetch(`/data/budget_sankey_${selectedYear}.json`),
+          fetch(`/data/budget_nature_${selectedYear}.json`).catch(() => null),
+        ]);
+        
+        if (!sankeyResponse.ok) {
           throw new Error(`Données ${selectedYear} non disponibles`);
         }
         
-        const data: BudgetData = await response.json();
+        const data: BudgetData = await sankeyResponse.json();
         setBudgetData(data);
+        
+        // Nature data est optionnel (peut ne pas exister pour les anciennes années)
+        if (natureResponse?.ok) {
+          const nature: BudgetNatureData = await natureResponse.json();
+          setNatureData(nature);
+        } else {
+          setNatureData(null);
+        }
+        
         setError(null);
       } catch (err) {
         setError(`Erreur lors du chargement des données ${selectedYear}`);
         console.error('Error loading budget data:', err);
         setBudgetData(null);
+        setNatureData(null);
       } finally {
         setIsLoading(false);
       }
@@ -333,6 +350,22 @@ export default function Home() {
               data={budgetData}
               onNodeClick={handleNodeClick}
             />
+
+            {/* Donut par nature de dépense */}
+            {natureData && (
+              <div className="mt-6 bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6">
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="text-lg">🍩</span>
+                  <h3 className="text-lg font-semibold text-slate-100">
+                    Répartition par nature de dépense
+                  </h3>
+                </div>
+                <p className="text-sm text-slate-400 mb-4">
+                  Comment sont ventilées les dépenses : personnel, investissements, subventions...
+                </p>
+                <NatureDonut data={natureData} height={350} />
+              </div>
+            )}
 
             {currentDrilldown && (
               <DrilldownPanel
