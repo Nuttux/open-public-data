@@ -24,7 +24,7 @@ import time
 from pathlib import Path
 
 # Ajouter le dossier scripts au path pour importer utils
-sys.path.insert(0, str(Path(__file__).parent))
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from utils.logger import Logger
 
 

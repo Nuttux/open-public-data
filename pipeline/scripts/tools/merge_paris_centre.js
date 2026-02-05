@@ -8,7 +8,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const INPUT_PATH = path.join(__dirname, '../frontend/public/data/map/arrondissements.geojson');
+const INPUT_PATH = path.join(__dirname, '../../../website/public/data/map/arrondissements.geojson');
 
 // Simple polygon union using array concatenation (for MultiPolygon)
 function mergePolygons(features) {

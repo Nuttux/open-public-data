@@ -10,7 +10,7 @@ Exporte les données suivantes depuis les tables dbt (BigQuery) vers des fichier
 Usage:
     python scripts/export_map_data.py
 
-Les fichiers sont créés dans frontend/public/data/map/
+Les fichiers sont créés dans website/public/data/map/
 """
 
 import json
@@ -22,7 +22,7 @@ from google.cloud import bigquery
 # Configuration
 PROJECT_ID = "open-data-france-484717"
 DATASET = "dbt_paris_analytics"
-OUTPUT_DIR = Path(__file__).parent.parent / "frontend" / "public" / "data" / "map"
+OUTPUT_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data" / "map"
 
 # Population par arrondissement (INSEE 2021)
 POPULATION = {
@@ -383,7 +383,7 @@ def export_stats_arrondissements(client, investissements_by_year, logements_by_y
 def main():
     """Point d'entrée principal."""
     import sys
-    sys.path.insert(0, str(Path(__file__).parent))
+    sys.path.insert(0, str(Path(__file__).parent.parent))
     from utils.logger import Logger
     
     log = Logger("export_map")

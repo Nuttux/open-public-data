@@ -20,13 +20,13 @@ import { usePathname } from 'next/navigation';
  */
 const navLinks = [
   {
-    href: '/landing',
+    href: '/',
     label: 'Accueil',
     icon: '🏠',
     description: 'Présentation du projet',
   },
   {
-    href: '/',
+    href: '/budget',
     label: 'Budget',
     icon: '📊',
     description: 'Flux budgétaires (Sankey)',
@@ -66,7 +66,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo / Titre */}
           <Link 
-            href="/landing" 
+            href="/" 
             className="flex items-center gap-3 hover:opacity-80 transition-opacity"
           >
             <span className="text-2xl">🏛️</span>
