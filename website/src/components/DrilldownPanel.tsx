@@ -9,6 +9,7 @@
  * - Navigation claire (retour, breadcrumbs)
  * - Mini donut pour split Fonctionnement/Investissement
  * - Filtrage par section budgétaire
+ * - Responsive: barres adaptées mobile, tooltips confinés, navigation empilée
  */
 
 import { useMemo, useState, useCallback } from 'react';
@@ -17,6 +18,7 @@ import type { EChartsOption } from 'echarts';
 import { formatEuroCompact, formatPercent, calculatePercentage } from '@/lib/formatters';
 import { getCategoryColor, lightenColor } from '@/lib/colors';
 import type { DrilldownItem, SectionBreakdown } from '@/lib/formatters';
+import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 
 /** Type pour les sections budgétaires */
 type BudgetSection = 'all' | 'Fonctionnement' | 'Investissement';
@@ -47,6 +49,8 @@ export default function DrilldownPanel({
   onBreadcrumbClick,
   onItemClick,
 }: DrilldownPanelProps) {
+  const isMobile = useIsMobile(BREAKPOINTS.md);
+  
   // State for section filtering
   const [selectedSection, setSelectedSection] = useState<BudgetSection>('all');
   
@@ -187,6 +191,10 @@ export default function DrilldownPanel({
     return truncated + '...';
   }, []);
 
+  // Longueur de troncature adaptée à l'écran
+  const maxTextLen = isMobile ? 22 : 35;
+  const labelWidth = isMobile ? 140 : 220;
+
   const option: EChartsOption = useMemo(() => ({
     backgroundColor: 'transparent',
     tooltip: {
@@ -195,7 +203,7 @@ export default function DrilldownPanel({
       backgroundColor: '#1e293b',
       borderColor: '#334155',
       borderRadius: 8,
-      textStyle: { color: '#e2e8f0' },
+      textStyle: { color: '#e2e8f0', fontSize: isMobile ? 11 : 12 },
       confine: true,
       formatter: (params: unknown) => {
         const p = params as Array<{ name: string; value: number; dataIndex: number }>;
@@ -204,18 +212,18 @@ export default function DrilldownPanel({
         const item = displayItems[idx];
         const percentage = calculatePercentage(item.value, total);
         return `
-          <div style="padding: 10px; max-width: 300px;">
-            <div style="font-weight: 600; margin-bottom: 6px; word-wrap: break-word; line-height: 1.3;">${item.name}</div>
-            <div style="font-size: 20px; font-weight: 700; color: ${barColor};">${formatEuroCompact(item.value)}</div>
-            <div style="color: #94a3b8; font-size: 12px;">${formatPercent(percentage)} de ${categoryName}</div>
-            ${canDrillDown && !item.name.startsWith('Autres') ? '<div style="margin-top: 8px; color: #60a5fa; font-size: 11px;">👆 Cliquez pour explorer</div>' : ''}
+          <div style="padding: ${isMobile ? '8px' : '10px'}; max-width: ${isMobile ? '240px' : '300px'};">
+            <div style="font-weight: 600; margin-bottom: 4px; word-wrap: break-word; line-height: 1.3; font-size: ${isMobile ? '12px' : '14px'};">${item.name}</div>
+            <div style="font-size: ${isMobile ? '16px' : '20px'}; font-weight: 700; color: ${barColor};">${formatEuroCompact(item.value)}</div>
+            <div style="color: #94a3b8; font-size: ${isMobile ? '10px' : '12px'};">${formatPercent(percentage)} de ${categoryName}</div>
+            ${canDrillDown && !item.name.startsWith('Autres') ? `<div style="margin-top: 6px; color: #60a5fa; font-size: ${isMobile ? '10px' : '11px'};">👆 ${isMobile ? 'Tap pour explorer' : 'Cliquez pour explorer'}</div>` : ''}
           </div>
         `;
       },
     },
     grid: {
-      left: 10,
-      right: 80,
+      left: isMobile ? 5 : 10,
+      right: isMobile ? 60 : 80,
       bottom: 10,
       top: 10,
       containLabel: true,
@@ -224,7 +232,7 @@ export default function DrilldownPanel({
       type: 'value',
       axisLabel: {
         formatter: (value: number) => formatEuroCompact(value),
-        fontSize: 10,
+        fontSize: isMobile ? 9 : 10,
         color: '#94a3b8',
       },
       axisLine: { show: false },
@@ -232,11 +240,11 @@ export default function DrilldownPanel({
     },
     yAxis: {
       type: 'category',
-      data: displayItems.map(item => truncateText(item.name, 35)).reverse(),
+      data: displayItems.map(item => truncateText(item.name, maxTextLen)).reverse(),
       axisLabel: {
-        fontSize: 11,
+        fontSize: isMobile ? 10 : 11,
         color: '#cbd5e1',
-        width: 220,
+        width: labelWidth,
         overflow: 'truncate',
       },
       axisLine: { show: false },
@@ -251,7 +259,7 @@ export default function DrilldownPanel({
           borderRadius: [0, 4, 4, 0],
         },
         cursor: canDrillDown ? 'pointer' : 'default',
-        barMaxWidth: 28,
+        barMaxWidth: isMobile ? 24 : 28,
         label: {
           show: true,
           position: 'right',
@@ -260,7 +268,7 @@ export default function DrilldownPanel({
             const value = Array.isArray(p.value) ? p.value[0] : p.value;
             return formatEuroCompact(value);
           },
-          fontSize: 11,
+          fontSize: isMobile ? 9 : 11,
           fontWeight: 500,
           color: '#94a3b8',
         },
@@ -271,7 +279,7 @@ export default function DrilldownPanel({
         },
       },
     ],
-  }), [displayItems, total, barColor, hoverColor, canDrillDown, categoryName, truncateText]);
+  }), [displayItems, total, barColor, hoverColor, canDrillDown, categoryName, truncateText, isMobile, maxTextLen, labelWidth]);
 
   const handleChartClick = (params: { dataIndex?: number }) => {
     if (typeof params.dataIndex === 'number' && onItemClick) {
@@ -497,7 +505,10 @@ export default function DrilldownPanel({
       {displayItems.length > 0 ? (
         <ReactECharts
           option={option}
-          style={{ height: `${Math.max(350, displayItems.length * 30)}px`, width: '100%' }}
+          style={{ 
+            height: `${Math.max(isMobile ? 280 : 350, displayItems.length * (isMobile ? 26 : 30))}px`, 
+            width: '100%' 
+          }}
           opts={{ renderer: 'canvas' }}
           onEvents={{
             click: handleChartClick,

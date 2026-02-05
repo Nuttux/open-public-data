@@ -10,13 +10,14 @@
  * - Courbes Recettes et Dépenses
  * - Axe Y en milliards d'euros
  * - Tooltip avec détails
- * - Responsive
+ * - Responsive: légende en haut sur mobile, symboles plus grands pour touch
  */
 
 import { useMemo } from 'react';
 import ReactECharts from 'echarts-for-react';
 import type { EChartsOption } from 'echarts';
 import { formatEuroCompact } from '@/lib/formatters';
+import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 
 export interface YearlyBudget {
   year: number;
@@ -44,12 +45,21 @@ function formatBillions(value: number): string {
   return `${billions.toFixed(1)} Md€`;
 }
 
+/**
+ * Formate en milliards version courte pour mobile
+ */
+function formatBillionsMobile(value: number): string {
+  const billions = value / 1_000_000_000;
+  return `${billions.toFixed(0)}Md`;
+}
+
 export default function EvolutionChart({
   data,
   height = 350,
   selectedYear,
   onYearClick,
 }: EvolutionChartProps) {
+  const isMobile = useIsMobile(BREAKPOINTS.md);
   // Trier par année
   const sortedData = useMemo(() => {
     return [...data].sort((a, b) => a.year - b.year);
@@ -59,6 +69,9 @@ export default function EvolutionChart({
   const recettes = sortedData.map(d => d.recettes);
   const depenses = sortedData.map(d => d.depenses);
 
+  // Hauteur adaptative
+  const chartHeight = isMobile ? Math.min(height, 280) : height;
+
   const option: EChartsOption = useMemo(() => ({
     backgroundColor: 'transparent',
     tooltip: {
@@ -66,9 +79,10 @@ export default function EvolutionChart({
       backgroundColor: 'rgba(15, 23, 42, 0.95)',
       borderColor: 'rgba(148, 163, 184, 0.2)',
       borderWidth: 1,
+      confine: true, // Keep within bounds on mobile
       textStyle: {
         color: '#f1f5f9',
-        fontSize: 12,
+        fontSize: isMobile ? 11 : 12,
       },
       formatter: (params: unknown) => {
         const items = params as Array<{
@@ -82,13 +96,13 @@ export default function EvolutionChart({
         const year = items[0].name;
         const yearData = sortedData.find(d => d.year.toString() === year);
         
-        let html = `<div style="font-weight: 600; margin-bottom: 8px;">${year}</div>`;
+        let html = `<div style="font-weight: 600; margin-bottom: 6px; font-size: ${isMobile ? '13px' : '14px'};">${year}</div>`;
         
         items.forEach(item => {
           html += `
-            <div style="display: flex; justify-content: space-between; gap: 16px; margin: 4px 0;">
-              <span style="display: flex; align-items: center; gap: 6px;">
-                <span style="width: 10px; height: 10px; border-radius: 50%; background: ${item.color};"></span>
+            <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '10px' : '16px'}; margin: 3px 0; font-size: ${isMobile ? '11px' : '12px'};">
+              <span style="display: flex; align-items: center; gap: 4px;">
+                <span style="width: 8px; height: 8px; border-radius: 50%; background: ${item.color};"></span>
                 ${item.seriesName}
               </span>
               <span style="font-weight: 500;">${formatEuroCompact(item.value)}</span>
@@ -99,8 +113,8 @@ export default function EvolutionChart({
         if (yearData) {
           const soldeColor = yearData.solde >= 0 ? '#10b981' : '#ef4444';
           html += `
-            <div style="border-top: 1px solid rgba(148, 163, 184, 0.2); margin-top: 8px; padding-top: 8px;">
-              <div style="display: flex; justify-content: space-between; gap: 16px;">
+            <div style="border-top: 1px solid rgba(148, 163, 184, 0.2); margin-top: 6px; padding-top: 6px;">
+              <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '10px' : '16px'}; font-size: ${isMobile ? '11px' : '12px'};">
                 <span>Solde</span>
                 <span style="font-weight: 600; color: ${soldeColor};">
                   ${yearData.solde >= 0 ? '+' : ''}${formatEuroCompact(yearData.solde)}
@@ -115,20 +129,21 @@ export default function EvolutionChart({
     },
     legend: {
       data: ['Recettes', 'Dépenses'],
-      bottom: 0,
+      // Mobile: légende en haut, Desktop: en bas
+      ...(isMobile ? { top: 0 } : { bottom: 0 }),
       textStyle: {
         color: '#94a3b8',
-        fontSize: 12,
+        fontSize: isMobile ? 11 : 12,
       },
-      itemWidth: 20,
-      itemHeight: 10,
-      itemGap: 20,
+      itemWidth: isMobile ? 16 : 20,
+      itemHeight: isMobile ? 8 : 10,
+      itemGap: isMobile ? 12 : 20,
     },
     grid: {
-      left: '3%',
-      right: '4%',
-      top: '10%',
-      bottom: '15%',
+      left: isMobile ? '2%' : '3%',
+      right: isMobile ? '3%' : '4%',
+      top: isMobile ? '18%' : '10%',
+      bottom: isMobile ? '8%' : '15%',
       containLabel: true,
     },
     xAxis: {
@@ -139,8 +154,10 @@ export default function EvolutionChart({
       },
       axisLabel: {
         color: '#94a3b8',
-        fontSize: 12,
+        fontSize: isMobile ? 10 : 12,
         fontWeight: 500,
+        // Rotation sur mobile si beaucoup d'années
+        rotate: isMobile && years.length > 5 ? 45 : 0,
       },
       axisTick: { show: false },
     },
@@ -149,8 +166,8 @@ export default function EvolutionChart({
       axisLine: { show: false },
       axisLabel: {
         color: '#64748b',
-        fontSize: 11,
-        formatter: (value: number) => formatBillions(value),
+        fontSize: isMobile ? 9 : 11,
+        formatter: (value: number) => isMobile ? formatBillionsMobile(value) : formatBillions(value),
       },
       splitLine: {
         lineStyle: {
@@ -166,9 +183,9 @@ export default function EvolutionChart({
         data: recettes,
         smooth: true,
         symbol: 'circle',
-        symbolSize: 8,
+        symbolSize: isMobile ? 10 : 8, // Plus grand pour touch
         lineStyle: {
-          width: 3,
+          width: isMobile ? 2.5 : 3,
           color: '#10b981',
         },
         itemStyle: {
@@ -196,9 +213,9 @@ export default function EvolutionChart({
         data: depenses,
         smooth: true,
         symbol: 'circle',
-        symbolSize: 8,
+        symbolSize: isMobile ? 10 : 8, // Plus grand pour touch
         lineStyle: {
-          width: 3,
+          width: isMobile ? 2.5 : 3,
           color: '#a855f7',
         },
         itemStyle: {
@@ -222,9 +239,9 @@ export default function EvolutionChart({
       },
     ],
     animation: true,
-    animationDuration: 800,
+    animationDuration: isMobile ? 500 : 800, // Plus rapide sur mobile
     animationEasing: 'cubicOut',
-  }), [years, recettes, depenses, sortedData]);
+  }), [years, recettes, depenses, sortedData, isMobile]);
 
   // Gestion du clic sur un point
   const handleClick = (params: { name?: string }) => {
@@ -237,7 +254,7 @@ export default function EvolutionChart({
     <div className="w-full">
       <ReactECharts
         option={option}
-        style={{ height: `${height}px`, width: '100%' }}
+        style={{ height: `${chartHeight}px`, width: '100%' }}
         opts={{ renderer: 'canvas' }}
         onEvents={{ click: handleClick }}
       />
