@@ -2,7 +2,7 @@
 """
 Script d'export des données subventions depuis BigQuery vers JSON.
 
-Exporte les données depuis les marts dbt pour le frontend:
+Exporte les données depuis les marts dbt pour le website:
 - subventions/treemap_{year}.json : Données pour visualisation treemap
 - subventions/beneficiaires_{year}.json : Liste filtrée de bénéficiaires
 - subventions/index.json : Index des années disponibles et métadonnées filtres
@@ -27,7 +27,7 @@ from google.cloud import bigquery
 # Configuration
 PROJECT_ID = "open-data-france-484717"
 DATASET = "dbt_paris"
-OUTPUT_DIR = Path(__file__).parent.parent / "frontend" / "public" / "data" / "subventions"
+OUTPUT_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data" / "subventions"
 
 
 def fetch_treemap_data(client: bigquery.Client, year: int = None) -> list:
@@ -271,7 +271,7 @@ def export_beneficiaires_year(client: bigquery.Client, year: int, limit: int = 5
 def main():
     """Point d'entrée principal."""
     import sys
-    sys.path.insert(0, str(Path(__file__).parent))
+    sys.path.insert(0, str(Path(__file__).parent.parent))
     from utils.logger import Logger
     
     parser = argparse.ArgumentParser(description="Export données subventions depuis dbt")

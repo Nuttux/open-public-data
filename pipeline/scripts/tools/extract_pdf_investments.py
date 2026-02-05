@@ -24,7 +24,7 @@ Usage:
     python scripts/extract_pdf_investments.py --validate
 
 Output:
-    - frontend/public/data/map/investissements_localises_{year}.json
+    - website/public/data/map/investissements_localises_{year}.json
     - paris-public-open-data/seeds/seed_pdf_investissements.csv
 """
 
@@ -47,7 +47,7 @@ import requests
 # =============================================================================
 
 PROJECT_ROOT = Path(__file__).parent.parent
-OUTPUT_DIR = PROJECT_ROOT / "frontend" / "public" / "data" / "map"
+OUTPUT_DIR = PROJECT_ROOT / "website" / "public" / "data" / "map"
 SEEDS_DIR = PROJECT_ROOT / "paris-public-open-data" / "seeds"
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")

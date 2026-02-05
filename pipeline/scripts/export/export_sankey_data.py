@@ -20,8 +20,8 @@ Usage:
     python scripts/export_sankey_data.py
 
 Output:
-    frontend/public/data/budget_sankey_{year}.json
-    frontend/public/data/budget_index.json
+    website/public/data/budget_sankey_{year}.json
+    website/public/data/budget_index.json
 """
 
 import csv
@@ -36,7 +36,7 @@ PROJECT_ID = "open-data-france-484717"
 DATASET_ID = "dbt_paris"  # Base dataset (staging, intermediate, analytics)
 RAW_DATASET = "raw"       # Dataset for raw OpenData Paris tables
 TABLE_ID = "ca_budget_principal"  # Main budget table in raw
-OUTPUT_DIR = Path(__file__).parent.parent / "frontend" / "public" / "data"
+OUTPUT_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data"
 SEEDS_DIR = Path(__file__).parent.parent / "paris-public-open-data" / "seeds"
 
 YEARS = [2024, 2023, 2022, 2021, 2020, 2019]
@@ -300,13 +300,18 @@ def get_data_availability(year: int) -> dict:
 
 
 def get_bigquery_client():
-    """Initialize BigQuery client with credentials."""
+    """Initialize BigQuery client with credentials.
+    
+    Credentials are loaded from (in order of priority):
+    1. GOOGLE_APPLICATION_CREDENTIALS env var
+    2. gcloud default credentials (~/.config/gcloud/application_default_credentials.json)
+    3. Local credentials.json in pipeline folder
+    """
     creds_path = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
     if not creds_path:
         possible_paths = [
-            Path.home() / "Downloads" / "open-data-france-484717-68f33f082f1f.json",
             Path.home() / ".config" / "gcloud" / "application_default_credentials.json",
-            Path(__file__).parent.parent / "credentials.json",
+            Path(__file__).parent.parent.parent / "credentials.json",
         ]
         for p in possible_paths:
             if p.exists():
@@ -608,7 +613,7 @@ def main():
     """Main entry point."""
     # Import logger
     import sys
-    sys.path.insert(0, str(Path(__file__).parent))
+    sys.path.insert(0, str(Path(__file__).parent.parent))
     from utils.logger import Logger
     
     log = Logger("export_sankey")

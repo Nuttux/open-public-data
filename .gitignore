@@ -1,25 +1,12 @@
-# Dependencies
-node_modules/
-.venv/
-__pycache__/
-*.pyc
-
-# Build outputs
-.next/
-target/
-dbt_packages/
-logs/
-
-# IDE
-.idea/
-.vscode/
-
-# OS
-.DS_Store
-*.swp
-
-# Env
+# Env & Secrets
 .env
 .env.local
+.env.*
+credentials.json
+*-credentials.json
+service-account*.json
+*.pem
+*.key
+
+# Temp files
 *.json.bak
-*.csv
