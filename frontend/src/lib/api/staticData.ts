@@ -275,7 +275,7 @@ export async function loadArrondissementsStats(): Promise<ArrondissementStats[]>
     }>(`${BASE_PATH}/arrondissements_stats.json`);
 
     // Transformer vers le format ArrondissementStats
-    const stats: ArrondissementStats[] = rawData.data.map(d => ({
+    const rawStats: ArrondissementStats[] = rawData.data.map(d => ({
       code: d.arrondissement,
       nom: `${d.arrondissement}${d.arrondissement === 1 ? 'er' : 'ème'} Ardt`,
       population: d.population,
@@ -292,6 +292,35 @@ export async function loadArrondissementsStats(): Promise<ArrondissementStats[]>
       nbAutorisations: d.investissements.count,
       investissementPerCapita: d.investissementsParHabitant,
     }));
+
+    // Agréger arrondissements 1-4 en "Paris Centre" (code 0)
+    const arr1to4 = rawStats.filter(s => s.code >= 1 && s.code <= 4);
+    const parisCentre: ArrondissementStats = {
+      code: 0,
+      nom: 'Paris Centre',
+      population: arr1to4.reduce((sum, s) => sum + s.population, 0),
+      totalSubventions: arr1to4.reduce((sum, s) => sum + s.totalSubventions, 0),
+      nbSubventions: arr1to4.reduce((sum, s) => sum + s.nbSubventions, 0),
+      subventionsPerCapita: 0,
+      totalLogements: arr1to4.reduce((sum, s) => sum + s.totalLogements, 0),
+      nbProgrammesLogement: arr1to4.reduce((sum, s) => sum + s.nbProgrammesLogement, 0),
+      logementsPerCapita: 0,
+      totalInvestissement: arr1to4.reduce((sum, s) => sum + s.totalInvestissement, 0),
+      nbAutorisations: arr1to4.reduce((sum, s) => sum + s.nbAutorisations, 0),
+      investissementPerCapita: 0,
+    };
+    // Calculer les ratios per capita
+    if (parisCentre.population > 0) {
+      parisCentre.subventionsPerCapita = parisCentre.totalSubventions / parisCentre.population;
+      parisCentre.logementsPerCapita = (parisCentre.totalLogements / parisCentre.population) * 1000;
+      parisCentre.investissementPerCapita = parisCentre.totalInvestissement / parisCentre.population;
+    }
+
+    // Filtrer les arrondissements 1-4 et ajouter Paris Centre au début
+    const stats = [
+      parisCentre,
+      ...rawStats.filter(s => s.code >= 5),
+    ];
 
     dataCache.arrondissementsStats = stats;
     return stats;

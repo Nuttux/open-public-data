@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-02-03T12:00:00",
+  "datasets": {
+    "budget": {
+      "dataset": "budget",
+      "description": "Budget principal Ville de Paris",
+      "source": "OpenData Paris - Budget Mairie Centrale",
+      "available_years": [2018, 2019, 2020, 2021, 2022, 2023, 2024],
+      "warnings": {}
+    },
+    "subventions": {
+      "dataset": "subventions",
+      "description": "Subventions aux associations",
+      "source": "OpenData Paris - Subventions associations votées",
+      "available_years": [2018, 2019, 2022, 2023, 2024],
+      "complete_years": [2018, 2019, 2022, 2023, 2024],
+      "incomplete_years": [2020, 2021],
+      "warnings": {
+        "2020": {
+          "severity": "error",
+          "message": "Données 2020 incomplètes : détail des bénéficiaires absent de la source OpenData.",
+          "impact": "Treemap et table bénéficiaires non disponibles pour cette année."
+        },
+        "2021": {
+          "severity": "error",
+          "message": "Données 2021 incomplètes : détail des bénéficiaires absent de la source OpenData.",
+          "impact": "Treemap et table bénéficiaires non disponibles pour cette année."
+        }
+      }
+    },
+    "ap_projets": {
+      "dataset": "ap_projets",
+      "description": "Autorisations de Programme (investissements)",
+      "source": "OpenData Paris - Investissements",
+      "available_years": [2019, 2020, 2021, 2022],
+      "coverage": {
+        "pct_geolocalises": 43.08,
+        "note": "43% des projets ont un arrondissement identifié via extraction regex ou LLM"
+      },
+      "warnings": {
+        "2023": {
+          "severity": "warning",
+          "message": "Données 2023 non encore publiées par OpenData Paris.",
+          "impact": "Carte des investissements incomplète pour cette année."
+        },
+        "2024": {
+          "severity": "warning",
+          "message": "Données 2024 non encore publiées par OpenData Paris.",
+          "impact": "Carte des investissements incomplète pour cette année."
+        }
+      }
+    },
+    "logements": {
+      "dataset": "logements",
+      "description": "Logements sociaux financés",
+      "source": "OpenData Paris - Logements sociaux",
+      "available_years": [2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023],
+      "coverage": {
+        "pct_geolocalises": 99.9,
+        "note": "Données déjà géolocalisées dans la source OpenData"
+      },
+      "warnings": {}
+    }
+  },
+  "global_warnings": [
+    {
+      "type": "paris_centre",
+      "message": "Les arrondissements 1-4 sont agrégés en 'Paris Centre' depuis 2020.",
+      "affects": ["budget", "subventions", "ap_projets", "logements"]
+    }
+  ],
+  "quality_notes": {
+    "thematique_classification": {
+      "method": "Pattern matching (74%) + LLM Gemini (21%) + Mapping directions (4.5%)",
+      "coverage": "99.5% des subventions classifiées"
+    },
+    "entity_deduplication": {
+      "method": "Mapping manuel des variantes (ex: CASVP)",
+      "file": "seed_mapping_entites.csv"
+    }
+  }
+}
