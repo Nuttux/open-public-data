@@ -145,7 +145,10 @@ export default function CartePage() {
   }, [selectedYear, activeLayers, showChoropleth]);
 
   /**
-   * Charger les autorisations quand l'année change
+   * Charger les autorisations/investissements quand l'année change
+   * 
+   * Note: Pour 2023+, charge depuis investissements_localises (PDF)
+   * Pour 2018-2022, charge depuis autorisations (OpenData API)
    */
   useEffect(() => {
     async function loadAutorisationsData() {
@@ -154,12 +157,12 @@ export default function CartePage() {
       }
       
       try {
-        // Les autorisations sont disponibles 2018-2022
-        const apYear = Math.min(Math.max(selectedYear, 2018), 2022);
-        const apData = await loadAutorisationsForYear(apYear);
+        // Charger les données pour l'année sélectionnée
+        // Le loader gère automatiquement la source (API ou PDF)
+        const apData = await loadAutorisationsForYear(selectedYear);
         setAutorisations(apData);
       } catch (err) {
-        console.warn(`Pas de données autorisations`);
+        console.warn(`Pas de données autorisations pour ${selectedYear}`);
         setAutorisations([]);
       }
     }

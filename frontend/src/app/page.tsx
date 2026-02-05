@@ -5,6 +5,7 @@
  * 
  * FEATURES:
  * - Sélecteur d'année (2019-2024)
+ * - Indicateur de complétude des données (COMPLET/PARTIEL)
  * - Cartes KPI avec vision économique claire
  * - Graphique Sankey interactif
  * - Drill-down multi-niveaux avec navigation par préfixe
@@ -15,7 +16,66 @@ import YearSelector from '@/components/YearSelector';
 import StatsCards from '@/components/StatsCards';
 import BudgetSankey from '@/components/BudgetSankey';
 import DrilldownPanel from '@/components/DrilldownPanel';
-import type { BudgetData, BudgetIndex, DrilldownItem } from '@/lib/formatters';
+import type { BudgetData, BudgetIndex, DrilldownItem, DataStatus } from '@/lib/formatters';
+
+/**
+ * Composant d'indicateur de statut des données
+ */
+function DataStatusBadge({ 
+  status, 
+  availability 
+}: { 
+  status?: DataStatus; 
+  availability?: BudgetData['dataAvailability'];
+}) {
+  if (!status) return null;
+  
+  const statusConfig: Record<DataStatus, { label: string; color: string; icon: string }> = {
+    'COMPLET': { label: 'Données complètes', color: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30', icon: '✓' },
+    'PARTIEL': { label: 'Données partielles', color: 'bg-amber-500/20 text-amber-400 border-amber-500/30', icon: '◐' },
+    'BUDGET_SEUL': { label: 'Budget uniquement', color: 'bg-orange-500/20 text-orange-400 border-orange-500/30', icon: '○' },
+    'INCONNU': { label: 'Statut inconnu', color: 'bg-slate-500/20 text-slate-400 border-slate-500/30', icon: '?' },
+  };
+  
+  const config = statusConfig[status] || statusConfig['INCONNU'];
+  
+  // Build tooltip with details
+  const missingItems: string[] = [];
+  if (availability) {
+    if (!availability.autorisations) missingItems.push('Autorisations de programmes');
+    if (!availability.arrondissements) missingItems.push('Budgets arrondissements');
+    if (!availability.subventions) missingItems.push('Subventions');
+  }
+  
+  return (
+    <div className="group relative inline-flex items-center">
+      <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border ${config.color}`}>
+        <span>{config.icon}</span>
+        {config.label}
+      </span>
+      
+      {/* Tooltip with details */}
+      {missingItems.length > 0 && (
+        <div className="absolute left-0 top-full mt-1 z-50 hidden group-hover:block">
+          <div className="bg-slate-800 border border-slate-700 rounded-lg p-3 shadow-xl min-w-[200px]">
+            <p className="text-xs text-slate-300 font-medium mb-2">Sources manquantes :</p>
+            <ul className="text-xs text-slate-400 space-y-1">
+              {missingItems.map((item, i) => (
+                <li key={i} className="flex items-center gap-1.5">
+                  <span className="text-amber-400">•</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p className="text-xs text-slate-500 mt-2 pt-2 border-t border-slate-700">
+              Les données manquantes ne sont pas encore publiées par Paris Open Data.
+            </p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 /**
  * Niveau de navigation dans le drill-down
@@ -214,9 +274,18 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <h2 className="text-xl font-bold text-slate-100">
-                Flux budgétaires
-              </h2>
+              <div className="flex items-center gap-3">
+                <h2 className="text-xl font-bold text-slate-100">
+                  Flux budgétaires
+                </h2>
+                {/* Data status indicator */}
+                {budgetData && (
+                  <DataStatusBadge 
+                    status={budgetData.dataStatus} 
+                    availability={budgetData.dataAvailability}
+                  />
+                )}
+              </div>
               <p className="text-sm text-slate-400 mt-1">
                 Tableau de bord des finances publiques parisiennes
               </p>
@@ -271,6 +340,11 @@ export default function Home() {
                 category={currentDrilldown.category}
                 parentCategory={breadcrumbs[0]}
                 items={currentDrilldown.items}
+                sectionData={
+                  currentDrilldown.category === 'expense' && drilldown?.currentLevel === 0
+                    ? budgetData.bySection?.[currentDrilldown.title]
+                    : undefined
+                }
                 breadcrumbs={breadcrumbs}
                 currentLevel={drilldown?.currentLevel || 0}
                 onClose={handleCloseDrilldown}
@@ -282,11 +356,17 @@ export default function Home() {
         ) : null}
 
         <footer className="mt-8 pt-6 border-t border-slate-800">
-          <p className="text-xs text-slate-500 text-center">
-            Données: Open Data Paris - Comptes administratifs budgets principaux (M57)
-            <br />
-            Dernière mise à jour: {index.latestYear}
-          </p>
+          <div className="text-xs text-slate-500 text-center space-y-1">
+            <p>
+              Données: Open Data Paris - Comptes administratifs budgets principaux (M57)
+            </p>
+            <p>
+              Années complètes: {index.completeYears?.join(', ') || 'N/A'}
+              {index.partialYears && index.partialYears.length > 0 && (
+                <span className="ml-2">| Partielles: {index.partialYears.join(', ')}</span>
+              )}
+            </p>
+          </div>
         </footer>
       </div>
     </main>

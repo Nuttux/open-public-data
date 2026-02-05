@@ -1,0 +1,210 @@
+# =============================================================================
+# Schema: Staging Layer
+#
+# Documentation et tests pour les modèles staging.
+# Convention: colonnes standardisées en français, filtres qualité appliqués.
+# =============================================================================
+
+version: 2
+
+models:
+  # ===========================================================================
+  # BUDGET PRINCIPAL - Source de vérité
+  # ===========================================================================
+  - name: stg_budget_principal
+    description: |
+      Budget principal de la Ville de Paris (Compte Administratif exécuté).
+      SOURCE DE VÉRITÉ pour les totaux budgétaires.
+      
+      Filtres appliqués:
+      - type_operation = 'Réel' (exclut 'Pour Ordre')
+      - montant > 0
+      
+      Années: 2019-2024
+    columns:
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: section
+        description: "Section: Investissement ou Fonctionnement"
+        tests:
+          - accepted_values:
+              values: ['Investissement', 'Fonctionnement']
+      - name: sens_flux
+        description: "Dépense ou Recette"
+        tests:
+          - accepted_values:
+              values: ['Dépense', 'Recette']
+      - name: chapitre_code
+        description: "Code chapitre M57"
+      - name: nature_code
+        description: "Code nature comptable (clé de jointure)"
+      - name: fonction_code
+        description: "Code fonction (clé de jointure)"
+      - name: montant
+        description: "Montant mandaté après régularisation (€)"
+        tests:
+          - not_null
+
+  # ===========================================================================
+  # AP PROJETS - Investissements nommés
+  # ===========================================================================
+  - name: stg_ap_projets
+    description: |
+      Autorisations de Programmes exécutées - Projets d'investissement.
+      Contient les projets physiques (piscines, écoles, parcs...).
+      
+      Filtres appliqués:
+      - type_operation = 'Réel'
+      - sens_flux = 'Dépense'
+      - montant > 0
+      
+      Années: 2018-2022
+      ⚠️ Représente ~10% du budget d'investissement total
+    columns:
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: ap_code
+        description: "Code AP unique"
+      - name: ap_texte
+        description: "Description du projet (contient souvent l'adresse)"
+      - name: direction
+        description: "Direction gestionnaire (DJS, DEVE, DVD...)"
+      - name: nature_code
+        description: "Code nature comptable (clé de jointure avec budget)"
+      - name: fonction_code
+        description: "Code fonction (clé de jointure avec budget)"
+      - name: arrondissement_regex
+        description: "Arrondissement extrait par regex (1-20 ou NULL)"
+      - name: montant
+        description: "Montant mandaté (€)"
+        tests:
+          - not_null
+
+  # ===========================================================================
+  # SUBVENTIONS ALL - Toutes subventions versées
+  # ===========================================================================
+  - name: stg_subventions_all
+    description: |
+      Toutes les subventions versées (Annexe Compte Administratif).
+      Inclut associations, entreprises, établissements publics.
+      
+      ⚠️ 2020-2021: noms bénéficiaires = NULL (données non publiées)
+      
+      Années: 2018-2024
+    columns:
+      - name: annee
+        description: "Année fiscale (extraite de 'publication')"
+        tests:
+          - not_null
+      - name: beneficiaire
+        description: "Nom du bénéficiaire (NULL en 2020-2021)"
+      - name: beneficiaire_normalise
+        description: "Nom normalisé pour jointures (majuscules, sans articles)"
+      - name: categorie
+        description: "Catégorie (droit privé, droit public)"
+      - name: nature_juridique
+        description: "Nature juridique (Associations, Entreprises, État...)"
+      - name: montant
+        description: "Montant de la subvention (€)"
+        tests:
+          - not_null
+      - name: donnees_disponibles
+        description: "FALSE si données incomplètes (2020-2021)"
+        tests:
+          - not_null
+
+  # ===========================================================================
+  # ASSOCIATIONS - Détail avec SIRET
+  # ===========================================================================
+  - name: stg_associations
+    description: |
+      Subventions aux associations avec SIRET et direction.
+      Utilisé pour enrichir stg_subventions_all via jointure sur
+      (beneficiaire_normalise, annee).
+      
+      Contient:
+      - SIRET (pour géolocalisation via API)
+      - Direction (pour classification thématique)
+      - Objet de la subvention
+      
+      Années: 2013-2025
+    columns:
+      - name: annee
+        description: "Année budgétaire"
+        tests:
+          - not_null
+      - name: beneficiaire
+        description: "Nom du bénéficiaire"
+      - name: beneficiaire_normalise
+        description: "Nom normalisé (même logique que stg_subventions_all)"
+      - name: siret
+        description: "SIRET 14 caractères (clé pour géolocalisation)"
+      - name: direction
+        description: "Direction responsable (DAC, DJS, DASES...)"
+      - name: objet
+        description: "Objet de la subvention"
+      - name: montant
+        description: "Montant voté (€)"
+        tests:
+          - not_null
+
+  # ===========================================================================
+  # LOGEMENTS SOCIAUX - Déjà géolocalisés
+  # ===========================================================================
+  - name: stg_logements_sociaux
+    description: |
+      Programmes de logements sociaux financés à Paris.
+      Déjà géolocalisés dans la source (geo_point_2d).
+      
+      ~4k lignes
+    columns:
+      - name: id_livraison
+        description: "Identifiant unique du programme"
+      - name: annee
+        description: "Année de financement"
+      - name: adresse
+        description: "Adresse du programme"
+      - name: arrondissement
+        description: "Numéro d'arrondissement (1-20)"
+      - name: latitude
+        description: "Latitude GPS"
+      - name: longitude
+        description: "Longitude GPS"
+      - name: bailleur
+        description: "Nom du bailleur social"
+      - name: nb_logements
+        description: "Nombre total de logements financés"
+
+  # ===========================================================================
+  # MARCHÉS PUBLICS - Contexte (non sommable)
+  # ===========================================================================
+  - name: stg_marches_publics
+    description: |
+      Marchés publics de la collectivité parisienne.
+      
+      ⚠️ ATTENTION: montant_min/max sont des ENVELOPPES PLURIANNUELLES.
+      NE PAS SOMMER comme dépense annuelle !
+      Usage: contexte uniquement.
+      
+      Années: 2013-2024
+    columns:
+      - name: annee
+        description: "Année de notification"
+      - name: numero_marche
+        description: "Numéro du marché"
+      - name: objet
+        description: "Objet du marché"
+      - name: nature
+        description: "Nature (travaux, services, fournitures)"
+      - name: fournisseur_nom
+        description: "Nom du titulaire"
+      - name: fournisseur_siret
+        description: "SIRET du titulaire"
+      - name: montant_min
+        description: "Montant minimum (ENVELOPPE - ne pas sommer)"
+      - name: montant_max
+        description: "Montant maximum (ENVELOPPE - ne pas sommer)"

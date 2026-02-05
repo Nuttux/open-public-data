@@ -20,8 +20,15 @@ export interface ArrondissementInfo {
 /**
  * Population par arrondissement (INSEE 2021)
  * Total Paris: 2 133 111 habitants
+ * 
+ * NOTE: Depuis 2020, les arrondissements 1-4 sont fusionnés en "Paris Centre".
+ * Dans les données, code=0 représente Paris Centre.
+ * Les codes 1-4 sont conservés pour compatibilité historique.
  */
 export const ARRONDISSEMENTS: ArrondissementInfo[] = [
+  // Paris Centre (fusion des 1-4 depuis 2020)
+  { code: 0,  nom: 'Centre', nomComplet: 'Paris Centre (1-4)', population: 97927, superficie: 5.59, densite: 17518, codeINSEE: '75056' },
+  // Arrondissements historiques (avant fusion)
   { code: 1,  nom: '1er',   nomComplet: '1er arrondissement',   population: 15939,  superficie: 1.83, densite: 8711,  codeINSEE: '75101' },
   { code: 2,  nom: '2ème',  nomComplet: '2ème arrondissement',  population: 20900,  superficie: 0.99, densite: 21111, codeINSEE: '75102' },
   { code: 3,  nom: '3ème',  nomComplet: '3ème arrondissement',  population: 33000,  superficie: 1.17, densite: 28205, codeINSEE: '75103' },
@@ -50,10 +57,32 @@ export const ARRONDISSEMENTS: ArrondissementInfo[] = [
 export const PARIS_POPULATION_TOTAL = ARRONDISSEMENTS.reduce((sum, arr) => sum + arr.population, 0);
 
 /**
- * Récupère les infos d'un arrondissement par son code (1-20)
+ * Normalise un code arrondissement (1-4 → 0 pour Paris Centre)
  */
-export function getArrondissementInfo(code: number): ArrondissementInfo | undefined {
-  return ARRONDISSEMENTS.find(arr => arr.code === code);
+export function normalizeArrondissement(code: number | null | undefined): number {
+  if (code === null || code === undefined) return 0;
+  if (code >= 1 && code <= 4) return 0;  // Paris Centre
+  return code;
+}
+
+/**
+ * Récupère les infos d'un arrondissement par son code
+ * @param code Code arrondissement (0=Centre, 5-20)
+ * @param normalize Si true, normalise 1-4 vers Centre (0)
+ */
+export function getArrondissementInfo(code: number, normalize: boolean = true): ArrondissementInfo | undefined {
+  const normalizedCode = normalize ? normalizeArrondissement(code) : code;
+  return ARRONDISSEMENTS.find(arr => arr.code === normalizedCode);
+}
+
+/**
+ * Récupère le nom d'un arrondissement
+ */
+export function getArrondissementName(code: number | null | undefined): string {
+  if (code === null || code === undefined || code === 0) return 'Paris Centre';
+  if (code >= 1 && code <= 4) return 'Paris Centre';
+  const arr = ARRONDISSEMENTS.find(a => a.code === code);
+  return arr?.nom || `${code}ème`;
 }
 
 /**

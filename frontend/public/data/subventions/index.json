@@ -1,0 +1,94 @@
+{
+  "generated_at": "2026-02-05T17:20:06.388903",
+  "source": "dbt marts (mart_subventions_treemap, mart_subventions_beneficiaires)",
+  "available_years": [
+    2024,
+    2023,
+    2022,
+    2019,
+    2018
+  ],
+  "totals_by_year": {
+    "2024": {
+      "montant_total": 3035773282.0,
+      "nb_subventions": 8647
+    },
+    "2023": {
+      "montant_total": 2290344288.0,
+      "nb_subventions": 7406
+    },
+    "2022": {
+      "montant_total": 2478217001.0,
+      "nb_subventions": 7496
+    },
+    "2019": {
+      "montant_total": 2771692073.0,
+      "nb_subventions": 14170
+    },
+    "2018": {
+      "montant_total": 2085525117.0,
+      "nb_subventions": 12496
+    }
+  },
+  "filters": {
+    "thematiques": [
+      "Culture",
+      "Social - Solidarité",
+      "Social - Petite enfance",
+      "Urbanisme - Logement",
+      "Administration",
+      "Éducation",
+      "Sport",
+      "Social",
+      "Économie",
+      "Transport",
+      "Logement",
+      "Culture & Sport",
+      "Non classifié",
+      "Environnement",
+      "International",
+      "Transport - Voirie",
+      "Santé",
+      "Sécurité",
+      "Autre"
+    ],
+    "natures_juridiques": [
+      "Associations",
+      "Autres",
+      "Autres personnes de droit privé",
+      "Autres personnes de droit public",
+      "Communes",
+      "Département",
+      "Entreprises",
+      "Etablissements de droit public",
+      "Etablissements publics",
+      "Etat",
+      "Personnes physiques",
+      "Régions"
+    ],
+    "directions": [
+      "DAC",
+      "DDCT",
+      "DJS",
+      "DSOL",
+      "DAE",
+      "DFPE",
+      "DASES",
+      "DSP",
+      "DGRI",
+      "DPMP",
+      "DASCO",
+      "DEVE",
+      "DPSP",
+      "DPE",
+      "DVD",
+      "DGOM",
+      "DTEC",
+      "SG",
+      "DLH",
+      "DILT",
+      "DAJ",
+      "DU"
+    ]
+  }
+}

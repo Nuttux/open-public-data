@@ -1,0 +1,148 @@
+# =============================================================================
+# Projet dbt : Paris Public Open Data
+# 
+# Ce projet transforme les données brutes du budget de Paris (BigQuery)
+# en tables analytiques prêtes pour la visualisation.
+# =============================================================================
+
+name: 'paris_public_open_data'
+version: '1.0.0'
+config-version: 2
+
+# Répertoire racine du projet
+profile: 'paris_open_data'
+
+# Chemins des fichiers dbt
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+# Cible des fichiers compilés
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# =============================================================================
+# Configuration des seeds (référentiels et caches d'enrichissement)
+#
+# Types de seeds:
+# - seed_mapping_*: Mappings statiques (manuels)
+# - seed_cache_*: Caches d'enrichissement (peuplés par scripts Python)
+# =============================================================================
+seeds:
+  paris_public_open_data:
+    +schema: seeds
+    
+    # -------------------------------------------------------------------------
+    # Mapping thématiques (chapitre/fonction → thématique dashboard)
+    # -------------------------------------------------------------------------
+    seed_mapping_thematiques:
+      +column_types:
+        chapitre_code: STRING
+        fonction_prefix: STRING
+        thematique: STRING
+    
+    # -------------------------------------------------------------------------
+    # Mapping directions (direction → thématique)
+    # -------------------------------------------------------------------------
+    seed_mapping_directions:
+      +column_types:
+        direction: STRING
+        thematique: STRING
+        libelle_complet: STRING
+    
+    # -------------------------------------------------------------------------
+    # Mapping bénéficiaires (pattern regex → thématique pour drill-down Sankey)
+    # -------------------------------------------------------------------------
+    seed_mapping_beneficiaires:
+      +column_types:
+        pattern: STRING
+        thematique: STRING
+        sous_categorie: STRING
+        priorite: INT64
+    
+    # -------------------------------------------------------------------------
+    # Lieux connus (géolocalisation manuelle des équipements parisiens)
+    # -------------------------------------------------------------------------
+    seed_lieux_connus:
+      +column_types:
+        pattern_match: STRING
+        nom_complet: STRING
+        adresse: STRING
+        arrondissement: INT64
+        latitude: FLOAT64
+        longitude: FLOAT64
+    
+    # -------------------------------------------------------------------------
+    # Cache AP → Géoloc (peuplé par enrich_geo_ap_llm.py)
+    # -------------------------------------------------------------------------
+    seed_cache_geo_ap:
+      +column_types:
+        ap_code: STRING
+        ode_arrondissement: INT64
+        ode_adresse: STRING
+        ode_nom_lieu: STRING
+        ode_latitude: FLOAT64
+        ode_longitude: FLOAT64
+        ode_confiance: FLOAT64
+        ode_date_recherche: STRING
+        ode_source: STRING
+    
+    # -------------------------------------------------------------------------
+    # Cache Bénéficiaire → Thématique (peuplé par enrich_thematique_llm.py)
+    # -------------------------------------------------------------------------
+    seed_cache_thematique_beneficiaires:
+      +column_types:
+        beneficiaire_normalise: STRING
+        ode_thematique: STRING
+        ode_sous_categorie: STRING
+        ode_confiance: FLOAT64
+        ode_date_recherche: STRING
+        ode_source: STRING
+
+# =============================================================================
+# Configuration des modèles par couche
+# =============================================================================
+models:
+  paris_public_open_data:
+    # -------------------------------------------------------------------------
+    # Staging : Vues de nettoyage et typage
+    # -------------------------------------------------------------------------
+    staging:
+      +materialized: view
+      +schema: staging
+      +tags: ['staging']
+    
+    # -------------------------------------------------------------------------
+    # Intermediate : Tables intermédiaires avec logique métier
+    # -------------------------------------------------------------------------
+    intermediate:
+      +materialized: table
+      +schema: intermediate
+      +tags: ['intermediate']
+    
+    # -------------------------------------------------------------------------
+    # Core / Analytics : Tables finales dénormalisées (OBT)
+    # -------------------------------------------------------------------------
+    core:
+      +materialized: table
+      +schema: analytics
+      +tags: ['analytics', 'core']
+
+# =============================================================================
+# Variables globales du projet
+# =============================================================================
+vars:
+  # Année de début pour les données M57 (nouvelle norme comptable)
+  annee_debut_m57: 2019
+  
+  # Filtre par défaut pour les opérations réelles
+  type_operation_reel: ['Réel', 'R']
+  
+  # Activation des caches d'enrichissement (mettre à true après enrichissement)
+  use_llm_cache_ap: false       # Cache LLM pour géoloc AP
+  use_llm_cache_theme: false    # Cache LLM pour thématiques subventions
+  use_lieux_connus: true        # Mapping manuel des lieux connus

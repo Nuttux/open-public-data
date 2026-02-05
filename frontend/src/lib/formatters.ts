@@ -116,8 +116,47 @@ export interface DrilldownItem {
   value: number;
 }
 
+/**
+ * Structure for section breakdown (Fonctionnement vs Investissement)
+ * within an expense group
+ */
+export interface SectionData {
+  total: number;
+  items: DrilldownItem[];
+}
+
+/**
+ * Section breakdown for an expense group
+ */
+export interface SectionBreakdown {
+  Fonctionnement?: SectionData;
+  Investissement?: SectionData;
+}
+
+/**
+ * Data availability status
+ * - COMPLET: All data sources available (budget + subventions + AP/CP + arrondissements)
+ * - PARTIEL: Some sources missing (usually AP/CP or arrondissements for recent years)
+ * - BUDGET_SEUL: Only main budget available
+ */
+export type DataStatus = 'COMPLET' | 'PARTIEL' | 'BUDGET_SEUL' | 'INCONNU';
+
+/**
+ * Data availability details per source
+ */
+export interface DataAvailability {
+  budget: boolean;
+  subventions: boolean;
+  autorisations: boolean;
+  arrondissements: boolean;
+}
+
 export interface BudgetData {
   year: number;
+  /** Data completeness status */
+  dataStatus?: DataStatus;
+  /** Detailed availability per source */
+  dataAvailability?: DataAvailability;
   totals: {
     recettes: number;
     depenses: number;
@@ -129,16 +168,27 @@ export interface BudgetData {
     revenue: Record<string, DrilldownItem[]>;
     expenses: Record<string, DrilldownItem[]>;
   };
+  /** Section breakdown (Fonct/Invest) per expense group */
+  bySection?: Record<string, SectionBreakdown>;
   byEntity: { name: string; value: number }[];
+}
+
+export interface BudgetIndexSummary {
+  year: number;
+  dataStatus?: DataStatus;
+  recettes: number;
+  depenses: number;
+  solde: number;
 }
 
 export interface BudgetIndex {
   availableYears: number[];
   latestYear: number;
-  summary: {
-    year: number;
-    recettes: number;
-    depenses: number;
-    solde: number;
-  }[];
+  /** Latest year with complete data */
+  latestCompleteYear?: number;
+  /** Years with complete data */
+  completeYears?: number[];
+  /** Years with partial data */
+  partialYears?: number[];
+  summary: BudgetIndexSummary[];
 }

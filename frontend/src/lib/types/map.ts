@@ -62,7 +62,9 @@ export interface LogementSocial {
 
 /**
  * Autorisation de programme (investissement)
- * Source: opendata.paris.fr - comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de
+ * 
+ * Source: dbt core_ap_projets (enrichi par LLM pour géolocalisation)
+ * Les champs ode_* sont enrichis par le pipeline d'enrichissement
  */
 export interface AutorisationProgramme {
   id: string;
@@ -74,14 +76,19 @@ export interface AutorisationProgramme {
   directionCode: string;
   directionTexte: string;
   apCode: string;
-  apTexte: string;      // Texte descriptif pour extraction d'arrondissement
+  apTexte: string;      // Texte descriptif du projet
   natureTexte: string;
   domaineTexte: string;
   montant: number;
   thematique: string;
-  // Géolocalisation (extraite du texte)
-  coordinates?: GeoPoint;
+  
+  // Géolocalisation (enrichie par LLM ou regex)
   arrondissement?: number;
+  adresse?: string;           // Adresse enrichie par LLM
+  latitude?: number;          // Latitude (si géocodé)
+  longitude?: number;         // Longitude (si géocodé)
+  nomLieu?: string;           // Nom du lieu (école, piscine, etc.)
+  coordinates?: GeoPoint;     // Legacy: point géographique
 }
 
 /**

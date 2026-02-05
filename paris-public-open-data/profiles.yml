@@ -1,0 +1,39 @@
+# =============================================================================
+# Profil dbt : Configuration de connexion BigQuery
+# 
+# Ce fichier configure la connexion au dataset BigQuery contenant
+# les données brutes du budget de Paris.
+#
+# IMPORTANT: Ce fichier peut être copié vers ~/.dbt/profiles.yml
+# pour une utilisation locale, ou utilisé tel quel si dbt est
+# configuré pour lire les profils depuis le répertoire du projet.
+# =============================================================================
+
+paris_open_data:
+  target: dev
+  outputs:
+    # -------------------------------------------------------------------------
+    # Environnement de développement
+    # -------------------------------------------------------------------------
+    dev:
+      type: bigquery
+      method: oauth
+      project: open-data-france-484717
+      dataset: dbt_paris  # Base dataset pour dbt (raw = données OpenData non modifiées)
+      location: EU
+      threads: 4
+      timeout_seconds: 300
+      priority: interactive
+    
+    # -------------------------------------------------------------------------
+    # Environnement de production (optionnel)
+    # -------------------------------------------------------------------------
+    prod:
+      type: bigquery
+      method: oauth
+      project: open-data-france-484717
+      dataset: paris_open_data_prod
+      location: EU
+      threads: 4
+      timeout_seconds: 300
+      priority: interactive

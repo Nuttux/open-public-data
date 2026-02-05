@@ -1,0 +1,17 @@
+{
+  "years": [
+    2022,
+    2021,
+    2020,
+    2019,
+    2018
+  ],
+  "totalRecords": 7155,
+  "totalMontant": 2090939194.75,
+  "coverage": {
+    "withArrondissement": 2953,
+    "withCoords": 94,
+    "montantLocalise": 900860574.73,
+    "pourcentageLocalise": 43.1
+  }
+}

@@ -1,0 +1,225 @@
+{
+  "year": 2020,
+  "data": [
+    {
+      "arrondissement": 1,
+      "investissements": {
+        "total": 5124725.709999998,
+        "count": 30
+      },
+      "logements": {
+        "total": 1,
+        "count": 1
+      }
+    },
+    {
+      "arrondissement": 2,
+      "investissements": {
+        "total": 1414021.8399999996,
+        "count": 14
+      },
+      "logements": {
+        "total": 4,
+        "count": 1
+      }
+    },
+    {
+      "arrondissement": 3,
+      "investissements": {
+        "total": 4453666.029999999,
+        "count": 17
+      },
+      "logements": {
+        "total": 40,
+        "count": 1
+      }
+    },
+    {
+      "arrondissement": 4,
+      "investissements": {
+        "total": 5433842.47,
+        "count": 30
+      },
+      "logements": {
+        "total": 83,
+        "count": 2
+      }
+    },
+    {
+      "arrondissement": 5,
+      "investissements": {
+        "total": 9531057.16,
+        "count": 21
+      },
+      "logements": {
+        "total": 592,
+        "count": 3
+      }
+    },
+    {
+      "arrondissement": 6,
+      "investissements": {
+        "total": 616093.1000000002,
+        "count": 12
+      },
+      "logements": {
+        "total": 0,
+        "count": 0
+      }
+    },
+    {
+      "arrondissement": 7,
+      "investissements": {
+        "total": 38208.06,
+        "count": 7
+      },
+      "logements": {
+        "total": 15,
+        "count": 2
+      }
+    },
+    {
+      "arrondissement": 8,
+      "investissements": {
+        "total": 2898709.5100000002,
+        "count": 13
+      },
+      "logements": {
+        "total": 1,
+        "count": 1
+      }
+    },
+    {
+      "arrondissement": 9,
+      "investissements": {
+        "total": 887743.1600000001,
+        "count": 16
+      },
+      "logements": {
+        "total": 68,
+        "count": 4
+      }
+    },
+    {
+      "arrondissement": 10,
+      "investissements": {
+        "total": 4194689.680000001,
+        "count": 23
+      },
+      "logements": {
+        "total": 88,
+        "count": 7
+      }
+    },
+    {
+      "arrondissement": 11,
+      "investissements": {
+        "total": 6366151.599999998,
+        "count": 25
+      },
+      "logements": {
+        "total": 292,
+        "count": 8
+      }
+    },
+    {
+      "arrondissement": 12,
+      "investissements": {
+        "total": 4116802.620000001,
+        "count": 42
+      },
+      "logements": {
+        "total": 215,
+        "count": 9
+      }
+    },
+    {
+      "arrondissement": 13,
+      "investissements": {
+        "total": 10539202.53,
+        "count": 53
+      },
+      "logements": {
+        "total": 47,
+        "count": 17
+      }
+    },
+    {
+      "arrondissement": 14,
+      "investissements": {
+        "total": 10051973.700000007,
+        "count": 41
+      },
+      "logements": {
+        "total": 154,
+        "count": 10
+      }
+    },
+    {
+      "arrondissement": 15,
+      "investissements": {
+        "total": 10218171.86,
+        "count": 56
+      },
+      "logements": {
+        "total": 263,
+        "count": 6
+      }
+    },
+    {
+      "arrondissement": 16,
+      "investissements": {
+        "total": 7439668.119999996,
+        "count": 34
+      },
+      "logements": {
+        "total": 104,
+        "count": 8
+      }
+    },
+    {
+      "arrondissement": 17,
+      "investissements": {
+        "total": 8995432.93,
+        "count": 37
+      },
+      "logements": {
+        "total": 552,
+        "count": 16
+      }
+    },
+    {
+      "arrondissement": 18,
+      "investissements": {
+        "total": 14754633.330000002,
+        "count": 62
+      },
+      "logements": {
+        "total": 135,
+        "count": 8
+      }
+    },
+    {
+      "arrondissement": 19,
+      "investissements": {
+        "total": 14536428.94,
+        "count": 47
+      },
+      "logements": {
+        "total": 107,
+        "count": 6
+      }
+    },
+    {
+      "arrondissement": 20,
+      "investissements": {
+        "total": 4421448.690000001,
+        "count": 50
+      },
+      "logements": {
+        "total": 147,
+        "count": 13
+      }
+    }
+  ]
+}

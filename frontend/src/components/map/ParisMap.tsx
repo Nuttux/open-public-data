@@ -29,8 +29,13 @@ const DEFAULT_ZOOM = 12;
 /**
  * Centroïdes approximatifs des arrondissements de Paris
  * Pour placer les autorisations de programmes dont on connaît l'arrondissement
+ * 
+ * Note: 0 = Paris Centre (fusion des 1-4 depuis 2020)
  */
 const ARRONDISSEMENT_CENTROIDS: Record<number, GeoPoint> = {
+  // Paris Centre (fusion 1-4)
+  0:  { lat: 48.8566, lon: 2.3470 },
+  // Arrondissements individuels (gardés pour données historiques)
   1:  { lat: 48.8603, lon: 2.3470 },
   2:  { lat: 48.8679, lon: 2.3423 },
   3:  { lat: 48.8638, lon: 2.3612 },
@@ -220,9 +225,9 @@ export default function ParisMap({
         )}
 
         {/* Layer Subventions */}
-        {showSubventions && mapReady && geoSubventions.map((sub) => (
+        {showSubventions && mapReady && geoSubventions.map((sub, index) => (
           <CircleMarker
-            key={`sub-${sub.id}`}
+            key={`sub-${sub.id}-${index}`}
             center={[sub.coordinates!.lat, sub.coordinates!.lon]}
             radius={getCircleRadius(sub.montant, 'subvention')}
             pathOptions={{
@@ -264,9 +269,9 @@ export default function ParisMap({
         ))}
 
         {/* Layer Logements Sociaux */}
-        {showLogements && mapReady && logements.map((log) => (
+        {showLogements && mapReady && logements.map((log, index) => (
           <CircleMarker
-            key={`log-${log.id}`}
+            key={`log-${log.id}-${index}`}
             center={[log.coordinates.lat, log.coordinates.lon]}
             radius={getCircleRadius(log.nbLogements, 'logement')}
             pathOptions={{
@@ -303,9 +308,9 @@ export default function ParisMap({
         ))}
 
         {/* Layer Autorisations de programmes */}
-        {showAutorisations && mapReady && geoAutorisations.map((ap) => (
+        {showAutorisations && mapReady && geoAutorisations.map((ap, index) => (
           <CircleMarker
-            key={`ap-${ap.id}`}
+            key={`ap-${ap.id}-${index}`}
             center={[ap.coordinates.lat, ap.coordinates.lon]}
             radius={getCircleRadius(ap.montant, 'autorisation')}
             pathOptions={{

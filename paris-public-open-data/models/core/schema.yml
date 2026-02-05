@@ -1,0 +1,143 @@
+# =============================================================================
+# Schema: Core Layer (OBT - One Big Table)
+#
+# Tables dénormalisées prêtes pour analyse et export
+# =============================================================================
+
+version: 2
+
+models:
+  # ===========================================================================
+  # BUDGET PRINCIPAL
+  # ===========================================================================
+  - name: core_budget
+    description: |
+      Budget principal Ville de Paris (OBT).
+      Source de vérité pour les totaux macro.
+      
+      Grain: (annee, section, chapitre_code, nature_code, fonction_code, sens_flux)
+      
+      Enrichissements:
+      - ode_thematique: thématique dashboard (mapping chapitre/fonction)
+      - ode_categorie_flux: catégorie comptable (Personnel, Subventions, etc.)
+    config:
+      materialized: table
+    columns:
+      - name: annee
+        description: "Année fiscale (2019-2024)"
+        tests:
+          - not_null
+      - name: sens_flux
+        description: "Dépense ou Recette"
+        tests:
+          - accepted_values:
+              values: ['Dépense', 'Recette']
+      - name: montant
+        description: "Montant mandaté/titré (€)"
+        tests:
+          - not_null
+      - name: ode_thematique
+        description: "Thématique dashboard (Administration, Éducation, etc.)"
+      - name: ode_categorie_flux
+        description: "Catégorie comptable (Personnel, Subventions, etc.)"
+      - name: cle_technique
+        description: "Clé technique unique"
+        tests:
+          - not_null
+
+  # ===========================================================================
+  # SUBVENTIONS
+  # ===========================================================================
+  - name: core_subventions
+    description: |
+      Subventions aux associations et autres bénéficiaires (OBT).
+      
+      Grain: (cle_technique) ou (annee, beneficiaire_normalise, collectivite)
+      
+      Enrichissements:
+      - siret: 14 chars (association ou API recherche)
+      - direction: direction municipale responsable
+      - ode_thematique: classification (pattern/direction/llm/default)
+      - ode_arrondissement, ode_latitude/longitude: géolocalisation via SIRET
+    config:
+      materialized: table
+    columns:
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: beneficiaire_normalise
+        description: "Nom bénéficiaire normalisé"
+      - name: montant
+        description: "Montant de la subvention (€)"
+        tests:
+          - not_null
+      - name: siret
+        description: "SIRET 14 chars si disponible"
+      - name: ode_thematique
+        description: "Thématique classifiée"
+      - name: ode_arrondissement
+        description: "Arrondissement (1-20) si géolocalisé"
+
+  # ===========================================================================
+  # AP PROJETS
+  # ===========================================================================
+  - name: core_ap_projets
+    description: |
+      Projets d'investissement (Autorisations de Programme) (OBT).
+      
+      Grain: (annee, ap_code)
+      
+      Enrichissements:
+      - ode_arrondissement: arrondissement (regex/lieu_connu/llm)
+      - ode_type_equipement: type d'équipement (piscine, école, etc.)
+      - ode_adresse, ode_latitude/longitude: géolocalisation
+      - ode_confiance: score de confiance (1.0 pour regex/lieu, variable pour llm)
+    config:
+      materialized: table
+    columns:
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: ap_code
+        description: "Code AP unique"
+      - name: montant
+        description: "Montant mandaté (€)"
+        tests:
+          - not_null
+      - name: ode_arrondissement
+        description: "Arrondissement (1-20) si localisé"
+      - name: ode_type_equipement
+        description: "Type d'équipement (piscine, equipement_sportif, etc.)"
+
+  # ===========================================================================
+  # LOGEMENTS SOCIAUX
+  # ===========================================================================
+  - name: core_logements_sociaux
+    description: |
+      Programmes de logements sociaux financés (OBT).
+      Déjà géolocalisés dans la source (geo_point_2d).
+      
+      Grain: (id_livraison)
+    config:
+      materialized: table
+    columns:
+      - name: id_livraison
+        description: "Identifiant unique programme"
+        tests:
+          - not_null
+      - name: annee
+        description: "Année de livraison"
+      - name: arrondissement
+        description: "Arrondissement (1-20)"
+      - name: latitude
+        description: "Latitude GPS"
+        tests:
+          - not_null
+      - name: longitude
+        description: "Longitude GPS"
+        tests:
+          - not_null
+      - name: nb_logements
+        description: "Nombre total de logements"

@@ -1,282 +1,332 @@
-[
-  {
-    "code": 1,
-    "nom": "1er arrondissement",
-    "population": 15939,
-    "totalSubventions": 357697465,
-    "nbSubventions": 389,
-    "subventionsPerCapita": 22441.65,
-    "totalLogements": 877,
-    "nbProgrammesLogement": 72,
-    "logementsPerCapita": 55.02,
-    "totalInvestissement": 49125028.34000003,
-    "nbAutorisations": 125,
-    "investissementPerCapita": 3082.06
+{
+  "years": [
+    2024,
+    2023,
+    2022,
+    2021,
+    2020,
+    2019,
+    2018,
+    2017,
+    2016,
+    2015,
+    2014,
+    2013,
+    2012,
+    2011,
+    2010,
+    2009,
+    2008,
+    2007,
+    2006,
+    2005,
+    2004,
+    2003,
+    2002,
+    2001
+  ],
+  "population": {
+    "1": 15939,
+    "2": 20900,
+    "3": 33000,
+    "4": 28088,
+    "5": 56882,
+    "6": 40005,
+    "7": 48354,
+    "8": 35016,
+    "9": 59835,
+    "10": 83459,
+    "11": 142583,
+    "12": 139867,
+    "13": 178350,
+    "14": 134382,
+    "15": 227746,
+    "16": 165062,
+    "17": 166518,
+    "18": 191531,
+    "19": 182952,
+    "20": 187642
   },
-  {
-    "code": 2,
-    "nom": "2ème arrondissement",
-    "population": 20900,
-    "totalSubventions": 181403953,
-    "nbSubventions": 108,
-    "subventionsPerCapita": 8679.61,
-    "totalLogements": 658,
-    "nbProgrammesLogement": 57,
-    "logementsPerCapita": 31.48,
-    "totalInvestissement": 4564217.420000002,
-    "nbAutorisations": 66,
-    "investissementPerCapita": 218.38
-  },
-  {
-    "code": 3,
-    "nom": "3ème arrondissement",
-    "population": 33000,
-    "totalSubventions": 135926529,
-    "nbSubventions": 213,
-    "subventionsPerCapita": 4118.99,
-    "totalLogements": 1336,
-    "nbProgrammesLogement": 90,
-    "logementsPerCapita": 40.48,
-    "totalInvestissement": 3908344.8000000007,
-    "nbAutorisations": 44,
-    "investissementPerCapita": 118.43
-  },
-  {
-    "code": 4,
-    "nom": "4ème arrondissement",
-    "population": 28088,
-    "totalSubventions": 316780192,
-    "nbSubventions": 353,
-    "subventionsPerCapita": 11278.13,
-    "totalLogements": 1677,
-    "nbProgrammesLogement": 98,
-    "logementsPerCapita": 59.71,
-    "totalInvestissement": 19952080.35,
-    "nbAutorisations": 103,
-    "investissementPerCapita": 710.34
-  },
-  {
-    "code": 5,
-    "nom": "5ème arrondissement",
-    "population": 56882,
-    "totalSubventions": 14976254,
-    "nbSubventions": 120,
-    "subventionsPerCapita": 263.29,
-    "totalLogements": 2194,
-    "nbProgrammesLogement": 86,
-    "logementsPerCapita": 38.57,
-    "totalInvestissement": 570466.98,
-    "nbAutorisations": 24,
-    "investissementPerCapita": 10.03
-  },
-  {
-    "code": 6,
-    "nom": "6ème arrondissement",
-    "population": 40005,
-    "totalSubventions": 50686628,
-    "nbSubventions": 226,
-    "subventionsPerCapita": 1267.01,
-    "totalLogements": 920,
-    "nbProgrammesLogement": 52,
-    "logementsPerCapita": 23.0,
-    "totalInvestissement": 5066251.099999999,
-    "nbAutorisations": 35,
-    "investissementPerCapita": 126.64
-  },
-  {
-    "code": 7,
-    "nom": "7ème arrondissement",
-    "population": 48354,
-    "totalSubventions": 12457821,
-    "nbSubventions": 92,
-    "subventionsPerCapita": 257.64,
-    "totalLogements": 805,
-    "nbProgrammesLogement": 29,
-    "logementsPerCapita": 16.65,
-    "totalInvestissement": 490529.85,
-    "nbAutorisations": 27,
-    "investissementPerCapita": 10.14
-  },
-  {
-    "code": 8,
-    "nom": "8ème arrondissement",
-    "population": 35016,
-    "totalSubventions": 88854685,
-    "nbSubventions": 229,
-    "subventionsPerCapita": 2537.55,
-    "totalLogements": 926,
-    "nbProgrammesLogement": 46,
-    "logementsPerCapita": 26.45,
-    "totalInvestissement": 21664961.099999998,
-    "nbAutorisations": 41,
-    "investissementPerCapita": 618.72
-  },
-  {
-    "code": 9,
-    "nom": "9ème arrondissement",
-    "population": 59835,
-    "totalSubventions": 42856461,
-    "nbSubventions": 275,
-    "subventionsPerCapita": 716.24,
-    "totalLogements": 2097,
-    "nbProgrammesLogement": 121,
-    "logementsPerCapita": 35.05,
-    "totalInvestissement": 5961343.449999999,
-    "nbAutorisations": 63,
-    "investissementPerCapita": 99.63
-  },
-  {
-    "code": 10,
-    "nom": "10ème arrondissement",
-    "population": 83459,
-    "totalSubventions": 106797624,
-    "nbSubventions": 624,
-    "subventionsPerCapita": 1279.64,
-    "totalLogements": 4859,
-    "nbProgrammesLogement": 225,
-    "logementsPerCapita": 58.22,
-    "totalInvestissement": 10864091.229999997,
-    "nbAutorisations": 87,
-    "investissementPerCapita": 130.17
-  },
-  {
-    "code": 11,
-    "nom": "11ème arrondissement",
-    "population": 142583,
-    "totalSubventions": 150178150,
-    "nbSubventions": 918,
-    "subventionsPerCapita": 1053.27,
-    "totalLogements": 6665,
-    "nbProgrammesLogement": 294,
-    "logementsPerCapita": 46.74,
-    "totalInvestissement": 15515787.389999999,
-    "nbAutorisations": 100,
-    "investissementPerCapita": 108.82
-  },
-  {
-    "code": 12,
-    "nom": "12ème arrondissement",
-    "population": 139867,
-    "totalSubventions": 142134704,
-    "nbSubventions": 596,
-    "subventionsPerCapita": 1016.21,
-    "totalLogements": 11816,
-    "nbProgrammesLogement": 289,
-    "logementsPerCapita": 84.48,
-    "totalInvestissement": 17917966.300000012,
-    "nbAutorisations": 151,
-    "investissementPerCapita": 128.11
-  },
-  {
-    "code": 13,
-    "nom": "13ème arrondissement",
-    "population": 178350,
-    "totalSubventions": 168756469,
-    "nbSubventions": 661,
-    "subventionsPerCapita": 946.21,
-    "totalLogements": 15700,
-    "nbProgrammesLogement": 364,
-    "logementsPerCapita": 88.03,
-    "totalInvestissement": 35102437.59999999,
-    "nbAutorisations": 162,
-    "investissementPerCapita": 196.82
-  },
-  {
-    "code": 14,
-    "nom": "14ème arrondissement",
-    "population": 134382,
-    "totalSubventions": 77737112,
-    "nbSubventions": 479,
-    "subventionsPerCapita": 578.48,
-    "totalLogements": 9005,
-    "nbProgrammesLogement": 221,
-    "logementsPerCapita": 67.01,
-    "totalInvestissement": 25712427.41,
-    "nbAutorisations": 111,
-    "investissementPerCapita": 191.34
-  },
-  {
-    "code": 15,
-    "nom": "15ème arrondissement",
-    "population": 227746,
-    "totalSubventions": 122126635,
-    "nbSubventions": 676,
-    "subventionsPerCapita": 536.24,
-    "totalLogements": 12855,
-    "nbProgrammesLogement": 386,
-    "logementsPerCapita": 56.44,
-    "totalInvestissement": 26389282.160000008,
-    "nbAutorisations": 134,
-    "investissementPerCapita": 115.87
-  },
-  {
-    "code": 16,
-    "nom": "16ème arrondissement",
-    "population": 165062,
-    "totalSubventions": 110666507,
-    "nbSubventions": 341,
-    "subventionsPerCapita": 670.45,
-    "totalLogements": 4834,
-    "nbProgrammesLogement": 139,
-    "logementsPerCapita": 29.29,
-    "totalInvestissement": 4022474.67,
-    "nbAutorisations": 54,
-    "investissementPerCapita": 24.37
-  },
-  {
-    "code": 17,
-    "nom": "17ème arrondissement",
-    "population": 166518,
-    "totalSubventions": 10951376,
-    "nbSubventions": 97,
-    "subventionsPerCapita": 65.77,
-    "totalLogements": 9913,
-    "nbProgrammesLogement": 282,
-    "logementsPerCapita": 59.53,
-    "totalInvestissement": 24788966.549999986,
-    "nbAutorisations": 95,
-    "investissementPerCapita": 148.87
-  },
-  {
-    "code": 18,
-    "nom": "18ème arrondissement",
-    "population": 191531,
-    "totalSubventions": 213438118,
-    "nbSubventions": 924,
-    "subventionsPerCapita": 1114.38,
-    "totalLogements": 12401,
-    "nbProgrammesLogement": 520,
-    "logementsPerCapita": 64.75,
-    "totalInvestissement": 50810341.89999999,
-    "nbAutorisations": 216,
-    "investissementPerCapita": 265.29
-  },
-  {
-    "code": 19,
-    "nom": "19ème arrondissement",
-    "population": 182952,
-    "totalSubventions": 435846348,
-    "nbSubventions": 1035,
-    "subventionsPerCapita": 2382.3,
-    "totalLogements": 12170,
-    "nbProgrammesLogement": 309,
-    "logementsPerCapita": 66.52,
-    "totalInvestissement": 12072711.4,
-    "nbAutorisations": 134,
-    "investissementPerCapita": 65.99
-  },
-  {
-    "code": 20,
-    "nom": "20ème arrondissement",
-    "population": 187642,
-    "totalSubventions": 121506077,
-    "nbSubventions": 761,
-    "subventionsPerCapita": 647.54,
-    "totalLogements": 14836,
-    "nbProgrammesLogement": 494,
-    "logementsPerCapita": 79.07,
-    "totalInvestissement": 36090763.650000036,
-    "nbAutorisations": 179,
-    "investissementPerCapita": 192.34
-  }
-]
+  "data": [
+    {
+      "arrondissement": 1,
+      "population": 15939,
+      "investissements": {
+        "total": 113127564.76999995,
+        "count": 148
+      },
+      "logements": {
+        "total": 877,
+        "count": 72
+      },
+      "investissementsParHabitant": 7097.53,
+      "logementsParHabitant": 55.02
+    },
+    {
+      "arrondissement": 2,
+      "population": 20900,
+      "investissements": {
+        "total": 4551045.330000001,
+        "count": 65
+      },
+      "logements": {
+        "total": 658,
+        "count": 57
+      },
+      "investissementsParHabitant": 217.75,
+      "logementsParHabitant": 31.48
+    },
+    {
+      "arrondissement": 3,
+      "population": 33000,
+      "investissements": {
+        "total": 40755372.19000002,
+        "count": 68
+      },
+      "logements": {
+        "total": 1336,
+        "count": 90
+      },
+      "investissementsParHabitant": 1235.01,
+      "logementsParHabitant": 40.48
+    },
+    {
+      "arrondissement": 4,
+      "population": 28088,
+      "investissements": {
+        "total": 44548094.559999995,
+        "count": 145
+      },
+      "logements": {
+        "total": 1677,
+        "count": 98
+      },
+      "investissementsParHabitant": 1586.02,
+      "logementsParHabitant": 59.71
+    },
+    {
+      "arrondissement": 5,
+      "population": 56882,
+      "investissements": {
+        "total": 44504174.199999996,
+        "count": 99
+      },
+      "logements": {
+        "total": 2194,
+        "count": 86
+      },
+      "investissementsParHabitant": 782.39,
+      "logementsParHabitant": 38.57
+    },
+    {
+      "arrondissement": 6,
+      "population": 40005,
+      "investissements": {
+        "total": 12022996.479999997,
+        "count": 63
+      },
+      "logements": {
+        "total": 920,
+        "count": 52
+      },
+      "investissementsParHabitant": 300.54,
+      "logementsParHabitant": 23.0
+    },
+    {
+      "arrondissement": 7,
+      "population": 48354,
+      "investissements": {
+        "total": 490529.85,
+        "count": 27
+      },
+      "logements": {
+        "total": 805,
+        "count": 29
+      },
+      "investissementsParHabitant": 10.14,
+      "logementsParHabitant": 16.65
+    },
+    {
+      "arrondissement": 8,
+      "population": 35016,
+      "investissements": {
+        "total": 20764375.239999995,
+        "count": 65
+      },
+      "logements": {
+        "total": 926,
+        "count": 46
+      },
+      "investissementsParHabitant": 593.0,
+      "logementsParHabitant": 26.45
+    },
+    {
+      "arrondissement": 9,
+      "population": 59835,
+      "investissements": {
+        "total": 7260576.09,
+        "count": 73
+      },
+      "logements": {
+        "total": 2097,
+        "count": 121
+      },
+      "investissementsParHabitant": 121.34,
+      "logementsParHabitant": 35.05
+    },
+    {
+      "arrondissement": 10,
+      "population": 83459,
+      "investissements": {
+        "total": 13295360.209999995,
+        "count": 104
+      },
+      "logements": {
+        "total": 4859,
+        "count": 225
+      },
+      "investissementsParHabitant": 159.3,
+      "logementsParHabitant": 58.22
+    },
+    {
+      "arrondissement": 11,
+      "population": 142583,
+      "investissements": {
+        "total": 24093371.13,
+        "count": 124
+      },
+      "logements": {
+        "total": 6665,
+        "count": 294
+      },
+      "investissementsParHabitant": 168.98,
+      "logementsParHabitant": 46.74
+    },
+    {
+      "arrondissement": 12,
+      "population": 139867,
+      "investissements": {
+        "total": 31100181.62000001,
+        "count": 215
+      },
+      "logements": {
+        "total": 11816,
+        "count": 289
+      },
+      "investissementsParHabitant": 222.36,
+      "logementsParHabitant": 84.48
+    },
+    {
+      "arrondissement": 13,
+      "population": 178350,
+      "investissements": {
+        "total": 54001110.72999998,
+        "count": 237
+      },
+      "logements": {
+        "total": 15700,
+        "count": 364
+      },
+      "investissementsParHabitant": 302.78,
+      "logementsParHabitant": 88.03
+    },
+    {
+      "arrondissement": 14,
+      "population": 134382,
+      "investissements": {
+        "total": 79761035.89,
+        "count": 191
+      },
+      "logements": {
+        "total": 9005,
+        "count": 221
+      },
+      "investissementsParHabitant": 593.54,
+      "logementsParHabitant": 67.01
+    },
+    {
+      "arrondissement": 15,
+      "population": 227746,
+      "investissements": {
+        "total": 49879134.789999984,
+        "count": 206
+      },
+      "logements": {
+        "total": 12855,
+        "count": 386
+      },
+      "investissementsParHabitant": 219.01,
+      "logementsParHabitant": 56.44
+    },
+    {
+      "arrondissement": 16,
+      "population": 165062,
+      "investissements": {
+        "total": 39277329.78000004,
+        "count": 165
+      },
+      "logements": {
+        "total": 4834,
+        "count": 139
+      },
+      "investissementsParHabitant": 237.96,
+      "logementsParHabitant": 29.29
+    },
+    {
+      "arrondissement": 17,
+      "population": 166518,
+      "investissements": {
+        "total": 92759694.3,
+        "count": 210
+      },
+      "logements": {
+        "total": 9913,
+        "count": 282
+      },
+      "investissementsParHabitant": 557.06,
+      "logementsParHabitant": 59.53
+    },
+    {
+      "arrondissement": 18,
+      "population": 191531,
+      "investissements": {
+        "total": 96437740.30000004,
+        "count": 305
+      },
+      "logements": {
+        "total": 12401,
+        "count": 520
+      },
+      "investissementsParHabitant": 503.51,
+      "logementsParHabitant": 64.75
+    },
+    {
+      "arrondissement": 19,
+      "population": 182952,
+      "investissements": {
+        "total": 79057728.06000005,
+        "count": 217
+      },
+      "logements": {
+        "total": 12170,
+        "count": 309
+      },
+      "investissementsParHabitant": 432.12,
+      "logementsParHabitant": 66.52
+    },
+    {
+      "arrondissement": 20,
+      "population": 187642,
+      "investissements": {
+        "total": 53173159.209999986,
+        "count": 226
+      },
+      "logements": {
+        "total": 14836,
+        "count": 494
+      },
+      "investissementsParHabitant": 283.38,
+      "logementsParHabitant": 79.07
+    }
+  ]
+}

@@ -1,0 +1,254 @@
+# Project Rules - Paris Budget Dashboard
+
+> Dashboard interactif de visualisation du budget de la Ville de Paris.
+> Stack: Next.js 16 (App Router) + dbt + BigQuery
+
+---
+
+## 1. Development Philosophy
+
+- **Precision over Refactoring:** Never perform a total refactor of a file unless explicitly requested. Changes must be proportional to the specific request.
+- **Flat Modeling (OBT):** Prioritize "One Big Table" (OBT) design for analytics. Avoid normalization. The goal is wide, denormalized tables for final analysis.
+- **Static Data First:** For the frontend, prefer pre-computed JSON files (`/public/data/`) over live API calls for budget data. This ensures fast loading and offline capability.
+
+---
+
+## 2. dbt & SQL Standards
+
+### Language Policy
+- Use **standard French** for all column names, table names, and documentation within SQL/dbt code.
+
+### Naming Conventions
+- **Raw tables (BigQuery):** `{dataset_name}` as uploaded (snake_case, no accents)
+- **Staging models:** `stg_{table_name}.sql` — cleaning, typing, renaming to standard French
+- **Intermediate models:** `int_{domain}_{description}.sql` — filtering, business logic
+- **Analytics models:** `analytics_{domain}_complet.sql` — the final wide OBT table
+
+### Standard Column Names
+| Column | Description |
+|--------|-------------|
+| `annee` | Fiscal year (INTEGER) |
+| `montant` | Amount in Euros (FLOAT64, always positive) |
+| `sens_flux` | 'Dépense' or 'Recette' |
+| `nature_code` / `nature_libelle` | Accounting nature (M57) |
+| `fonction_code` / `fonction_libelle` | Functional destination |
+| `chapitre_code` / `chapitre_libelle` | Budget chapter |
+| `entite_budgetaire` | Entity name (e.g., "Ville de Paris", "Mairie 10ème") |
+| `cle_technique` | Technical primary key (composite) |
+| `arrondissement` | District number (1-20) when applicable |
+
+### SQL Style
+- UPPERCASE for SQL keywords (SELECT, FROM, WHERE, etc.)
+- 4-space indentation
+- Trailing commas
+- Use CTEs for readability, not subqueries
+- Use `SAFE_CAST` for type conversions from raw data
+
+### Modeling Layers
+```
+raw (BigQuery) → staging (Views) → intermediate (Tables) → analytics (Wide OBT)
+```
+
+---
+
+## 3. Documentation & Quality
+
+- **YAML Coverage:** Every new model must be documented in a `schema.yml` file with French descriptions for the table and its primary columns.
+- **Testing:** Every model must have at least `unique` and `not_null` tests on its technical primary key.
+- **Comments:** Explain the "why" behind complex business logic or specific budget code filters in the SQL files.
+
+---
+
+## 4. BigQuery Specifics
+
+- Project: `open-data-france-484717`
+- Dataset raw: `raw` (tables sources)
+- Dataset dbt: configurable via `profiles.yml`
+- Use backticks (`) for project or dataset names containing special characters
+- Ensure monetary fields are typed as `FLOAT64` or `NUMERIC`
+- Use `SAFE_CAST` to handle potential typing errors from raw source data
+
+---
+
+## 5. Data Inventory & Strategy (The Truth Source)
+
+*Do not guess file purposes. Follow this mapping strictly.*
+
+### Tables disponibles dans `raw`
+
+| Table BigQuery | Modèle staging | Layer | Description |
+|----------------|----------------|-------|-------------|
+| `budget_mairie_centrale` | `stg_budget_mairie_centrale` | Macro | **SOURCE DE VÉRITÉ** - Budget principal Ville+Département |
+| `budget_arrondissements` | `stg_budget_arrondissements` | Macro | États spéciaux - Gestion locale par maires d'arrondissement |
+| `bilan_comptable` | (à créer) | Macro | Bilan actif/passif annuel |
+| `investissements` | `stg_investissements` | Map | AP/CP - Projets physiques (piscines, écoles, parcs) |
+| `associations` | `stg_associations` | Map | Subventions détaillées avec SIRET et direction |
+| `subventions` | (simplifié) | Map | Vue simplifiée des subventions (publication légale) |
+| `logements_sociaux` | `stg_logements_sociaux` | Map | Logements sociaux - DÉJÀ GÉOLOCALISÉ (geo_point_2d) |
+| `marches_publics` | `stg_marches_publics` | Context | Marchés publics - ⚠️ NE PAS SOMMER les montants |
+
+### A. The "Macro" Layer (Finance)
+
+| Table | Colonnes clés | Role |
+|-------|--------------|------|
+| `budget_mairie_centrale` | `exercice_comptable`, `sens_depense_recette`, `type_d_operation_r_o_i_m`, `chapitre_*`, `nature_*`, `mandate_titre_apres_regul` | **Truth Source** for totals |
+| `budget_arrondissements` | idem + `arrondissement` | Budget local par arrondissement |
+| `bilan_comptable` | `exercice_comptable`, `actif_passif`, `poste`, `detail`, `brut`, `net` | État patrimonial |
+
+### B. The "Map" Layer (Geographic Objects)
+
+| Table | Colonnes clés | Strategy |
+|-------|--------------|----------|
+| `investissements` | `autorisation_de_programme_texte`, `mission_ap_texte`, `mandate_titre_apres_regul` | Regex extraction d'arrondissement depuis `ap_texte` |
+| `associations` | `nom_beneficiaire`, `numero_siret` (FLOAT→STRING), `montant_vote`, `direction` | SIRET pour géolocalisation via API entreprises |
+| `logements_sociaux` | `geo_point_2d`, `arrondissement`, `nombre_total_de_logements_finances` | Déjà géolocalisé |
+
+### C. The "Context" Layer
+
+| Table | Colonnes clés | Warning |
+|-------|--------------|---------|
+| `marches_publics` | `objet_du_marche`, `fournisseur_*`, `montant_min`, `montant_max` | **ENVELOPPES PLURIANNUELLES** - Ne pas sommer |
+
+---
+
+## 6. Critical Business Logic (Guardrails)
+
+*Public accounting is prone to massive double-counting. Strictly follow these rules.*
+
+### A. The "Real Money" Filter
+- **Rule:** We only analyze REALIZED spending (`Type d'opération` = 'Réel' / 'R')
+- **Logic:** Exclude 'Pour Ordre' (internal accounting writings)
+- **Exceptions:**
+  - Do not apply this filter to `Subventions` or `Marchés` files (columns don't exist)
+  - For `Local Budget` (Etats Spéciaux), include 'Réel' AND 'Non affecté' if contextually relevant
+
+### B. Anti-Double Counting (The Cascade)
+- **Consolidated View:** When summing Central + Local budgets, EXCLUDE lines related to "Dotations aux arrondissements" from the Central file. Only count the final spend in the Local file.
+- **Detail View:** Never add `Subventions` file to `Budget Principal` to get a total. Subventions are a *subset* (zoom) of the budget, not an addition.
+
+### C. Investment Specifics (AP/CP)
+- **Column:** Use `Mandaté / Titré après régul.` for the annual spend
+- **Ban:** Do NOT sum `Montant AP` (this is the multi-year envelope, not the cash spent this year)
+
+---
+
+## 7. Geocoding & Enrichment Strategy
+
+### A. The Subvention Join
+- **Method:** `LEFT JOIN` between *Subventions (Flow)* and *Directory (Ref)* on `Nom_Beneficiaire`
+- **Cleaning:** Must slugify names (remove "L'", "ASSOCIATION", spaces) before joining
+- **Output:** Retrieve SIRET. In a later Python step, this SIRET will call `api-adresse.data.gouv.fr`
+
+### B. The Investment Parsing (AP/CP)
+- **Level 1 (Regex):** Extract specific patterns like "750XX" or "(12E)" from the project text
+- **Level 2 (LLM Context):** For projects without explicit addresses (e.g. "Gymnase Japy"), we will eventually use an LLM to infer the district or address
+- **Level 3 (Fallback):** If no location found, flag as `non_localisable` (do not drop the financial row)
+
+---
+
+## 8. Frontend Standards (Next.js / React)
+
+### Tech Stack
+- **Framework:** Next.js 16 (App Router)
+- **Styling:** Tailwind CSS v4
+- **Charts:** ECharts (via `echarts-for-react`)
+- **Maps:** Leaflet (via `react-leaflet`)
+- **Language:** TypeScript (strict mode)
+
+### Architecture
+```
+src/
+├── app/                    # App Router pages
+│   ├── page.tsx           # Home (Sankey budget)
+│   ├── carte/page.tsx     # Map view
+│   └── layout.tsx         # Root layout
+├── components/            # Reusable UI components
+│   ├── BudgetSankey.tsx
+│   ├── map/               # Map-specific components
+│   └── ...
+├── lib/                   # Utilities & types
+│   ├── api/              # Data fetching
+│   ├── constants/        # Static mappings
+│   ├── types/            # TypeScript interfaces
+│   ├── colors.ts         # Color palettes
+│   └── formatters.ts     # Number/currency formatting
+public/
+└── data/                  # Pre-computed JSON (from dbt/scripts)
+    ├── budget_sankey_{year}.json
+    ├── budget_index.json
+    └── map/
+        ├── subventions_{year}.json
+        ├── autorisations_{year}.json
+        └── arrondissements.geojson
+```
+
+### Component Guidelines
+- **'use client'** directive required for interactive components (charts, maps)
+- **Props typing:** Always define explicit TypeScript interfaces for props
+- **JSDoc comments:** Document component purpose, features, and usage
+- **Formatting:** Use `formatEuroCompact()` from `@/lib/formatters` for all monetary values
+- **Colors:** Use predefined palettes from `@/lib/colors.ts`, never hardcode colors inline
+
+### Data Flow
+1. **Static JSON** in `/public/data/` is pre-generated by Python scripts from dbt outputs
+2. **Components** fetch JSON via `fetch('/data/...')` or static imports
+3. **No direct BigQuery calls** from the frontend — all data is pre-computed
+
+### Styling Rules
+- **Dark theme** by default (slate-800/900 backgrounds)
+- **Responsive:** Mobile-first, use `sm:`, `md:`, `lg:` breakpoints
+- **Cards:** Use `bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50`
+- **Text colors:**
+  - Primary: `text-slate-100`
+  - Secondary: `text-slate-400`
+  - Accent: `text-emerald-400` (positive), `text-red-400` (negative)
+
+### French Language in UI
+- All user-facing text must be in French
+- Use proper French number formatting (space as thousands separator)
+- Date format: "2024" for years, "Janvier 2024" for months
+
+---
+
+## 9. Environment & Dependencies
+
+### Python (dbt, scripts)
+- **Virtual Environment:** Always use the `.venv` located at the root for Python operations
+- **Dependency Management:** All new Python libraries MUST be added to `requirements.txt`
+- **dbt Packages:** Always run `dbt deps` after modifying `packages.yml`
+
+### Node.js (frontend)
+- **Package Manager:** npm (use `package-lock.json`)
+- **Node version:** 20+
+- **Commands:**
+  - `npm run dev` — Development server
+  - `npm run build` — Production build
+  - `npm run lint` — ESLint check
+
+---
+
+## 10. Export Pipeline (dbt → JSON → Frontend)
+
+### Workflow
+```
+1. dbt run (BigQuery)         → analytics_*_complet tables
+2. Python export scripts      → JSON files in /public/data/
+3. npm run build              → Static Next.js site
+```
+
+### Export Scripts
+- `scripts/export_sankey_data.py` — Budget Sankey visualization
+- `scripts/export_map_data.py` — Map data (subventions, investments, housing)
+
+### JSON File Conventions
+- **Index files:** `{domain}_index.json` — lists available years and metadata
+- **Year files:** `{domain}_{year}.json` — data for a specific year
+- **Aggregations:** `{domain}_par_arrondissement.json` — stats by district
+
+---
+
+## 11. Git & Collaboration
+
+- **Commits:** French commit messages preferred, concise and descriptive
+- **Branches:** `main` for production, feature branches for development
+- **No secrets:** Never commit `.env`, credentials, or API keys

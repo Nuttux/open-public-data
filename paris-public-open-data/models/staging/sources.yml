@@ -1,0 +1,235 @@
+# =============================================================================
+# Sources : Tables raw BigQuery - Paris Open Data
+#
+# Dataset: raw (open-data-france-484717.raw)
+# Tables synchronisées via scripts/sync_opendata.py
+#
+# CONVENTION DE NOMMAGE:
+#   Table raw = dataset_id OpenData en snake_case (aucune abréviation)
+#
+# ARCHITECTURE (6 sources essentielles):
+# - budget_principal: Budget exécuté (SOURCE DE VÉRITÉ macro)
+# - ap_projets: AP Exécutés (projets nommés)
+# - subventions: Annexe CA - Toutes subventions versées
+# - associations: Subventions associations (avec SIRET)
+# - logements_sociaux: Logements (déjà géolocalisés)
+# - marches_publics: Marchés publics (contexte, non sommable)
+# =============================================================================
+
+version: 2
+
+sources:
+  - name: paris_raw
+    description: "Données brutes du budget de Paris (OpenData Paris)"
+    database: open-data-france-484717
+    schema: raw
+    
+    tables:
+      # =========================================================================
+      # BUDGET PRINCIPAL - Source de vérité pour les totaux
+      # =========================================================================
+      
+      - name: comptes_administratifs_budgets_principaux_a_partir_de_2019_m57_ville_departement
+        description: |
+          Budget principal de la Ville de Paris (Ville + Département).
+          Compte Administratif = Budget EXÉCUTÉ (dépenses réelles).
+          Norme comptable M57 à partir de 2019.
+          C'est la SOURCE DE VÉRITÉ pour les totaux globaux.
+          
+          ~25k lignes, années 2019-2024
+        columns:
+          - name: exercice_comptable
+            description: "Année fiscale (INTEGER)"
+          - name: section_budgetaire_i_f
+            description: "'I' = Investissement, 'F' = Fonctionnement"
+          - name: sens_depense_recette
+            description: "'Dépenses' ou 'Recettes'"
+          - name: type_d_operation_r_o_i_m
+            description: "'Réel', 'Pour Ordre', 'Mixte'"
+          - name: chapitre_budgetaire_cle
+            description: "Code chapitre M57 (STRING)"
+          - name: chapitre_niveau_vote_texte_descriptif
+            description: "Libellé du chapitre"
+          - name: nature_budgetaire_cle
+            description: "Code nature comptable (STRING)"
+          - name: nature_budgetaire_texte
+            description: "Libellé nature"
+          - name: fonction_cle
+            description: "Code fonction (STRING)"
+          - name: fonction_texte
+            description: "Libellé fonction"
+          - name: mandate_titre_apres_regul
+            description: "Montant mandaté après régularisation (FLOAT)"
+
+      # =========================================================================
+      # INVESTISSEMENTS (AP/CP) - Projets physiques nommés
+      # =========================================================================
+      
+      - name: comptes_administratifs_autorisations_de_programmes_a_partir_de_2018_m57_ville_de
+        description: |
+          Autorisations de Programmes EXÉCUTÉES (Compte Administratif).
+          Contient les projets d'équipement (piscines, écoles, parcs...) avec:
+          - Mission et direction gestionnaire
+          - Description détaillée du projet (souvent avec adresse/arrondissement)
+          - Codes nature et fonction budgétaires
+          
+          ATTENTION: Représente ~10% du budget d'investissement total.
+          ~7k lignes, années 2018-2022
+        columns:
+          - name: exercice_comptable
+            description: "Année fiscale (INTEGER)"
+          - name: budget
+            description: "Type de budget"
+          - name: section_budgetaire_i_f
+            description: "Section : I=Investissement, F=Fonctionnement"
+          - name: sens_depense_recette
+            description: "Direction du flux ('Dépenses' ou 'Recettes')"
+          - name: type_d_operation_r_o_i_m
+            description: "Type : R=Réel, O=Ordre, I=Interne, M=Mixte"
+          - name: mission_ap_cle
+            description: "Code de la mission AP"
+          - name: mission_ap_texte
+            description: "Libellé de la mission (ex: BPA - PISCINES)"
+          - name: direction_gestionnaire_cle
+            description: "Code direction gestionnaire"
+          - name: direction_gestionnaire_texte
+            description: "Nom de la direction (ex: DJS, DEVE, DVD)"
+          - name: autorisation_de_programme_cle
+            description: "Code AP unique"
+          - name: autorisation_de_programme_texte
+            description: "Description du projet - CONTIENT SOUVENT L'ADRESSE"
+          - name: nature_budgetaire_cle
+            description: "Code nature comptable"
+          - name: domaine_fonctionnel_rubrique_reglementaire_cle
+            description: "Code fonction"
+          - name: mandate_titre_apres_regul
+            description: "Montant mandaté après régul (FLOAT) - MONTANT EXÉCUTÉ"
+
+      # =========================================================================
+      # SUBVENTIONS - Détail des bénéficiaires
+      # =========================================================================
+      
+      - name: subventions_versees_annexe_compte_administratif_a_partir_de_2018
+        description: |
+          Annexe Compte Administratif - TOUTES subventions versées.
+          Inclut associations, entreprises, établissements publics.
+          Sans SIRET, mais avec catégorie et nature juridique.
+          
+          ~47k lignes, années 2018-2024
+          ⚠️ 2020-2021: noms bénéficiaires = NULL
+        columns:
+          - name: publication
+            description: "Période de publication ('CA 2023', '2024')"
+          - name: collectivite
+            description: "Collectivité versante (Commune ou Département)"
+          - name: categorie_du_beneficiaire
+            description: "Catégorie (Personnes de droit privé, public)"
+          - name: nature_juridique_du_beneficiaire
+            description: "Nature juridique (Associations, Entreprises, État...)"
+          - name: nom_de_l_organisme_beneficiaire
+            description: "Nom du bénéficiaire (NULL en 2020-2021)"
+          - name: montant_de_la_subvention
+            description: "Montant versé (FLOAT)"
+          - name: prestations_en_nature
+            description: "Prestations en nature (FLOAT)"
+
+      - name: subventions_associations_votees
+        description: |
+          Subventions aux ASSOCIATIONS uniquement (détaillé avec SIRET).
+          Contient SIRET pour géolocalisation via API Entreprises.
+          
+          ~102k lignes, années 2013-2025
+        columns:
+          - name: numero_de_dossier
+            description: "Identifiant unique du dossier"
+          - name: annee_budgetaire
+            description: "Année de la subvention (INTEGER)"
+          - name: nom_beneficiaire
+            description: "Nom du bénéficiaire"
+          - name: numero_siret
+            description: "SIRET du bénéficiaire (FLOAT - doit être LPAD à 14 chars)"
+          - name: objet_du_dossier
+            description: "Objet de la subvention"
+          - name: montant_vote
+            description: "Montant voté (INTEGER)"
+          - name: direction
+            description: "Direction municipale responsable (DAC, DJS, DASES...)"
+          - name: nature_de_la_subvention
+            description: "Nature de la subvention"
+          - name: secteurs_d_activites_definies_par_l_association
+            description: "Secteurs d'activité de l'association"
+
+      # =========================================================================
+      # DONNÉES GÉOLOCALISÉES
+      # =========================================================================
+      
+      - name: logements_sociaux_finances_a_paris
+        description: |
+          Programmes de logements sociaux financés à Paris.
+          DÉJÀ GÉOLOCALISÉ (geo_point_2d disponible).
+          
+          ~4k lignes
+        columns:
+          - name: identifiant_livraison
+            description: "ID unique du programme"
+          - name: adresse_du_programme
+            description: "Adresse complète"
+          - name: code_postal
+            description: "Code postal"
+          - name: annee_du_financement_agrement
+            description: "Année de financement (INTEGER)"
+          - name: bailleur_social
+            description: "Nom du bailleur"
+          - name: nombre_total_de_logements_finances
+            description: "Nombre total de logements (INTEGER)"
+          - name: dont_nombre_de_logements_pla_i
+            description: "Dont PLAI (très social)"
+          - name: dont_nombre_de_logements_plus
+            description: "Dont PLUS (social)"
+          - name: dont_nombre_de_logements_pls
+            description: "Dont PLS (intermédiaire)"
+          - name: mode_de_realisation
+            description: "Mode de réalisation"
+          - name: arrondissement
+            description: "Numéro d'arrondissement (INTEGER)"
+          - name: nature_de_programme
+            description: "Nature du programme"
+          - name: geo_point_2d
+            description: "Point GPS lat,lon (JSON STRING)"
+
+      # =========================================================================
+      # CONTEXTE - Ne pas sommer avec le budget
+      # =========================================================================
+      
+      - name: liste_des_marches_de_la_collectivite_parisienne
+        description: |
+          Marchés publics de la collectivité parisienne.
+          ATTENTION: montant_min/max sont des ENVELOPPES PLURIANNUELLES.
+          NE PAS SOMMER comme dépense annuelle !
+          
+          ~17k lignes, années 2013-2024
+        columns:
+          - name: annee_de_notification
+            description: "Année de notification (INTEGER)"
+          - name: numero_marche
+            description: "Numéro du marché"
+          - name: objet_du_marche
+            description: "Objet du marché"
+          - name: nature_du_marche
+            description: "Nature (travaux, services, fournitures)"
+          - name: fournisseur_nom
+            description: "Nom du titulaire"
+          - name: fournisseur_siret
+            description: "SIRET du titulaire"
+          - name: fournisseur_code_postal
+            description: "Code postal du titulaire"
+          - name: fournisseur_ville
+            description: "Ville du titulaire"
+          - name: montant_min
+            description: "Montant minimum (FLOAT) - ENVELOPPE PLURIANNUELLE"
+          - name: montant_max
+            description: "Montant maximum (FLOAT) - ENVELOPPE PLURIANNUELLE"
+          - name: date_de_notification
+            description: "Date de notification"
+          - name: duree_du_marche_en_jours
+            description: "Durée en jours (INTEGER)"

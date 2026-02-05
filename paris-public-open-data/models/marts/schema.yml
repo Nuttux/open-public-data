@@ -1,16 +1,228 @@
-# Marts models documentation and tests
-# Marts contain business-logic transformations and are the final models
-# consumed by BI tools and analysts
+# =============================================================================
+# Schema: Marts Layer
+#
+# Vues optimisées pour le frontend (export JSON)
+# =============================================================================
 
 version: 2
 
-models: []
-  # Add your mart models here, for example:
-  # - name: dim_locations
-  #   description: "Dimension table for Paris locations"
-  #   columns:
-  #     - name: location_id
-  #       description: "Unique identifier for the location"
-  #       tests:
-  #         - unique
-  #         - not_null
+models:
+  # ===========================================================================
+  # SANKEY BUDGET
+  # ===========================================================================
+  - name: mart_sankey
+    description: |
+      Données agrégées pour le diagramme Sankey du budget.
+      Liens: catégorie_flux → thématique avec montants.
+      
+      Utilisé par: export_sankey_data.py → budget_sankey_{year}.json
+    config:
+      materialized: view
+    columns:
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: source
+        description: "Noeud source (catégorie de flux)"
+        tests:
+          - not_null
+      - name: target
+        description: "Noeud cible (thématique)"
+        tests:
+          - not_null
+      - name: montant_total
+        description: "Montant total du lien (€)"
+        tests:
+          - not_null
+      - name: pct_total
+        description: "Pourcentage du total annuel"
+
+  # ===========================================================================
+  # SUBVENTIONS TREEMAP
+  # ===========================================================================
+  - name: mart_subventions_treemap
+    description: |
+      Agrégation des subventions par thématique pour visualisation treemap.
+      PAS DE GÉOLOCALISATION - les subventions vont à des organisations, pas des lieux.
+      
+      Utilisé par: export_subventions_data.py → subventions/treemap_{year}.json
+    config:
+      materialized: view
+    columns:
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: thematique
+        description: "Thématique (Social, Culture & Sport, etc.)"
+        tests:
+          - not_null
+      - name: nb_beneficiaires
+        description: "Nombre de bénéficiaires uniques"
+      - name: montant_total
+        description: "Montant total (€)"
+        tests:
+          - not_null
+      - name: pct_total
+        description: "Pourcentage du total annuel"
+
+  # ===========================================================================
+  # SUBVENTIONS BÉNÉFICIAIRES
+  # ===========================================================================
+  - name: mart_subventions_beneficiaires
+    description: |
+      Liste des bénéficiaires pour table filtrable.
+      Colonnes de filtrage: thematique, nature_juridique, direction, secteurs_activite.
+      
+      Utilisé par: export_subventions_data.py → subventions/beneficiaires_{year}.json
+    config:
+      materialized: view
+    columns:
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: beneficiaire
+        description: "Nom du bénéficiaire"
+      - name: thematique
+        description: "Thématique classifiée (ode_thematique)"
+      - name: nature_juridique
+        description: "Type d'organisation (Association, Entreprise, etc.)"
+      - name: direction
+        description: "Direction municipale responsable"
+      - name: secteurs_activite
+        description: "Secteurs d'activité déclarés"
+      - name: montant_total
+        description: "Montant total (€)"
+        tests:
+          - not_null
+
+  # ===========================================================================
+  # CARTE INVESTISSEMENTS
+  # ===========================================================================
+  - name: mart_carte_investissements
+    description: |
+      Projets d'investissement (AP) localisés pour la carte.
+      Filtrés: avec arrondissement au minimum.
+      
+      Utilisé par: export_map_data.py → map/investissements_{year}.json
+    config:
+      materialized: view
+    columns:
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: ap_code
+        description: "Code AP unique"
+      - name: arrondissement
+        description: "Arrondissement (1-20)"
+        tests:
+          - not_null
+      - name: montant_total
+        description: "Montant total investissement (€)"
+        tests:
+          - not_null
+
+  # ===========================================================================
+  # STATS ARRONDISSEMENTS
+  # ===========================================================================
+  - name: mart_stats_arrondissements
+    description: |
+      Statistiques agrégées par arrondissement.
+      Combine: investissements et logements sociaux.
+      Note: Les subventions ne sont plus incluses (pas de géolocalisation).
+      
+      Utilisé par: export_map_data.py → map/arrondissements_stats.json
+    config:
+      materialized: view
+    columns:
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: arrondissement
+        description: "Arrondissement (1-20)"
+        tests:
+          - not_null
+      - name: montant_investissements
+        description: "Total investissements localisés (€)"
+      - name: nb_logements_finances
+        description: "Nombre de logements sociaux financés"
+
+  # ===========================================================================
+  # ÉVOLUTION BUDGET
+  # ===========================================================================
+  - name: mart_evolution_budget
+    description: |
+      Agrégations temporelles du budget pour graphiques d'évolution.
+      Vues disponibles: par_sens (recette/dépense), par_thematique (macro).
+      Inclut: variations annuelles en pourcentage.
+      
+      Utilisé par: frontend → graphiques évolution YoY
+    config:
+      materialized: view
+    columns:
+      - name: vue
+        description: "Type de vue: par_sens ou par_thematique"
+        tests:
+          - not_null
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: sens_flux
+        description: "Dépense ou Recette"
+        tests:
+          - not_null
+      - name: thematique_macro
+        description: "Thématique macro (Personnel, Subventions, Investissement, etc.)"
+      - name: montant_total
+        description: "Montant total (€)"
+        tests:
+          - not_null
+      - name: variation_pct
+        description: "Variation par rapport à l'année précédente (%)"
+      - name: nb_lignes
+        description: "Nombre de lignes budgétaires agrégées"
+
+  # ===========================================================================
+  # CONCENTRATION (PARETO)
+  # ===========================================================================
+  - name: mart_concentration
+    description: |
+      Analyse Pareto de la concentration des dépenses.
+      Domaines: subventions (par bénéficiaire), investissements (par programme AP).
+      Métriques: rang, % cumulé, segment (top_80/top_95/reste).
+      
+      Utilisé par: frontend → graphique Pareto + KPIs concentration
+    config:
+      materialized: view
+    columns:
+      - name: domaine
+        description: "Domaine d'analyse: subventions ou investissements"
+        tests:
+          - not_null
+      - name: rang
+        description: "Position dans le classement (1 = plus gros montant)"
+        tests:
+          - not_null
+      - name: entite
+        description: "Nom du bénéficiaire ou du programme AP"
+        tests:
+          - not_null
+      - name: thematique
+        description: "Thématique classifiée"
+      - name: type_organisme
+        description: "Type: public, association, entreprise, personne_physique, autre"
+      - name: montant_total
+        description: "Montant total cumulé (€)"
+        tests:
+          - not_null
+      - name: pct_cumule
+        description: "Pourcentage cumulé (pour courbe Pareto)"
+      - name: pct_part
+        description: "Part de cette entité dans le total (%)"
+      - name: segment_pareto
+        description: "Segment: top_80, top_95, ou reste"

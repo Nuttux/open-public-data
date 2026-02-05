@@ -1,0 +1,27 @@
+# Paris Budget Dashboard - Python Dependencies
+# Usage: pip install -r requirements.txt
+
+# dbt for BigQuery
+dbt-bigquery>=1.7.0
+
+# BigQuery client (for export scripts)
+google-cloud-bigquery>=3.0.0
+pandas>=2.0.0
+pyarrow>=14.0.0  # Required for BigQuery DataFrame operations
+
+# API calls (for enrichment scripts)
+requests>=2.28.0
+
+# LLM enrichment (Gemini - nouveau SDK)
+google-genai>=1.0.0
+
+# PDF extraction for budget annexes
+pymupdf>=1.24.0
+pdfplumber>=0.10.0
+
+# Optional: Better PDF rendering (requires poppler system package)
+# pdf2image>=1.16.0
+
+# Optional: Alternative LLM providers
+# openai>=1.0.0
+# anthropic>=0.18.0
