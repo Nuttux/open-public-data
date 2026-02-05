@@ -34,16 +34,17 @@ import { DATA_SOURCES } from '@/lib/constants/arrondissements';
 
 /**
  * Import dynamique de la carte (Leaflet nécessite window)
+ * Responsive: hauteur adaptée mobile/desktop
  */
 const ParisMap = dynamic(
   () => import('@/components/map/ParisMap'),
   { 
     ssr: false,
     loading: () => (
-      <div className="w-full h-[600px] bg-slate-800/50 rounded-xl flex items-center justify-center">
+      <div className="w-full h-[400px] sm:h-[500px] lg:h-[600px] bg-slate-800/50 rounded-xl flex items-center justify-center">
         <div className="text-center">
-          <div className="w-10 h-10 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-          <p className="text-slate-400 text-sm">Chargement de la carte...</p>
+          <div className="w-8 h-8 sm:w-10 sm:h-10 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
+          <p className="text-slate-400 text-xs sm:text-sm">Chargement de la carte...</p>
         </div>
       </div>
     ),
@@ -275,10 +276,10 @@ export default function CartePage() {
             />
           </div>
 
-          {/* Carte */}
+          {/* Carte - hauteur responsive */}
           <div className="lg:col-span-3">
             <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 overflow-hidden">
-              <div className="h-[600px]">
+              <div className="h-[400px] sm:h-[500px] lg:h-[600px]">
                 <ParisMap
                   subventions={filteredSubventions}
                   logements={logements}

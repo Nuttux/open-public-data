@@ -24,6 +24,7 @@ type ViewMode = 'fonction' | 'nature';
 
 /**
  * Segmented Control pour basculer entre les vues
+ * Responsive: plus compact sur mobile
  */
 function ViewToggle({ 
   value, 
@@ -35,34 +36,36 @@ function ViewToggle({
   hasNatureData: boolean;
 }) {
   return (
-    <div className="inline-flex rounded-lg bg-slate-800/80 p-1 border border-slate-700/50">
+    <div className="inline-flex rounded-lg bg-slate-800/80 p-0.5 sm:p-1 border border-slate-700/50">
       <button
         onClick={() => onChange('fonction')}
         className={`
-          px-4 py-2 rounded-md text-sm font-medium transition-all duration-200
+          px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-md text-xs sm:text-sm font-medium transition-all duration-200
           ${value === 'fonction' 
             ? 'bg-purple-500 text-white shadow-lg shadow-purple-500/25' 
-            : 'text-slate-400 hover:text-slate-200'
+            : 'text-slate-400 hover:text-slate-200 active:bg-slate-700/50'
           }
         `}
       >
-        Par fonction
+        <span className="sm:hidden">Fonction</span>
+        <span className="hidden sm:inline">Par fonction</span>
       </button>
       <button
         onClick={() => onChange('nature')}
         disabled={!hasNatureData}
         className={`
-          px-4 py-2 rounded-md text-sm font-medium transition-all duration-200
+          px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-md text-xs sm:text-sm font-medium transition-all duration-200
           ${value === 'nature' 
             ? 'bg-purple-500 text-white shadow-lg shadow-purple-500/25' 
             : hasNatureData 
-              ? 'text-slate-400 hover:text-slate-200'
+              ? 'text-slate-400 hover:text-slate-200 active:bg-slate-700/50'
               : 'text-slate-600 cursor-not-allowed'
           }
         `}
         title={!hasNatureData ? 'Données non disponibles pour cette année' : undefined}
       >
-        Par nature
+        <span className="sm:hidden">Nature</span>
+        <span className="hidden sm:inline">Par nature</span>
       </button>
     </div>
   );

@@ -7,8 +7,9 @@
  * - Niveau 1: Répartition par nature (Personnel, Subventions, etc.)
  * - Niveau 2 (drill-down): Répartition par thématique au sein d'une nature
  * - Animation fluide entre niveaux
- * - Responsive: légende en bas sur mobile, latérale sur desktop
+ * - Responsive: légende en bas, tailles adaptées mobile
  * - Total affiché au centre du donut
+ * - Touch-friendly: zones de tap agrandies sur mobile
  * 
  * PROPS:
  * - data: Données du fichier budget_nature_{year}.json
@@ -21,6 +22,7 @@ import ReactECharts from 'echarts-for-react';
 import type { EChartsOption } from 'echarts';
 import { formatEuroCompact } from '@/lib/formatters';
 import { getNatureColor, getThematiqueColor } from '@/lib/colors';
+import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 
 // Types pour les données
 interface NatureItem {
@@ -57,6 +59,11 @@ export default function NatureDonut({
   height = 400,
   onDrillDown 
 }: NatureDonutProps) {
+  const isMobile = useIsMobile(BREAKPOINTS.md);
+  
+  // Hauteur adaptative
+  const chartHeight = isMobile ? Math.min(height, 320) : height;
+  
   // État: nature sélectionnée pour drill-down (null = niveau 1)
   const [selectedNature, setSelectedNature] = useState<string | null>(null);
 
@@ -110,7 +117,7 @@ export default function NatureDonut({
     onDrillDown?.(null);
   }, [onDrillDown]);
 
-  // Options ECharts
+  // Options ECharts - responsive
   const option: EChartsOption = useMemo(() => ({
     backgroundColor: 'transparent',
     
@@ -119,35 +126,37 @@ export default function NatureDonut({
       backgroundColor: 'rgba(15, 23, 42, 0.95)',
       borderColor: 'rgba(148, 163, 184, 0.2)',
       borderWidth: 1,
+      confine: true,
       textStyle: {
         color: '#f1f5f9',
-        fontSize: 12,
+        fontSize: isMobile ? 11 : 12,
       },
       formatter: (params: unknown) => {
         const p = params as { name: string; value: number; data: { pct: number } };
         return `
-          <div style="font-weight: 600; margin-bottom: 4px;">${p.name}</div>
-          <div style="display: flex; justify-content: space-between; gap: 16px;">
+          <div style="font-weight: 600; margin-bottom: 4px; font-size: ${isMobile ? '12px' : '14px'};">${p.name}</div>
+          <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '10px' : '16px'}; font-size: ${isMobile ? '11px' : '12px'};">
             <span>Montant:</span>
             <span style="font-weight: 500;">${formatEuroCompact(p.value)}</span>
           </div>
-          <div style="display: flex; justify-content: space-between; gap: 16px;">
+          <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '10px' : '16px'}; font-size: ${isMobile ? '11px' : '12px'};">
             <span>Part:</span>
             <span style="font-weight: 500;">${p.data.pct.toFixed(1)}%</span>
           </div>
+          ${!selectedNature ? `<div style="margin-top: 6px; color: #60a5fa; font-size: ${isMobile ? '10px' : '11px'};">👆 ${isMobile ? 'Tap pour détail' : 'Cliquez pour détail'}</div>` : ''}
         `;
       },
     },
 
-    // Total au centre
+    // Total au centre - tailles adaptatives
     graphic: [
       {
         type: 'text',
         left: 'center',
-        top: '42%',
+        top: isMobile ? '40%' : '42%',
         style: {
           text: formatEuroCompact(currentData.total),
-          fontSize: 24,
+          fontSize: isMobile ? 18 : 24,
           fontWeight: 'bold',
           fill: '#f1f5f9',
           textAlign: 'center',
@@ -156,10 +165,10 @@ export default function NatureDonut({
       {
         type: 'text',
         left: 'center',
-        top: '52%',
+        top: isMobile ? '50%' : '52%',
         style: {
           text: selectedNature ? 'dans cette catégorie' : 'Total dépenses',
-          fontSize: 12,
+          fontSize: isMobile ? 10 : 12,
           fill: '#94a3b8',
           textAlign: 'center',
         },
@@ -170,22 +179,22 @@ export default function NatureDonut({
       {
         name: currentData.title,
         type: 'pie',
-        radius: ['50%', '75%'], // Donut
+        radius: isMobile ? ['45%', '70%'] : ['50%', '75%'], // Donut légèrement plus petit sur mobile
         center: ['50%', '50%'],
         avoidLabelOverlap: true,
         itemStyle: {
-          borderRadius: 6,
+          borderRadius: isMobile ? 4 : 6,
           borderColor: '#1e293b',
-          borderWidth: 2,
+          borderWidth: isMobile ? 1 : 2,
         },
         label: {
           show: false, // Labels cachés, on utilise la légende
         },
         emphasis: {
           scale: true,
-          scaleSize: 8,
+          scaleSize: isMobile ? 6 : 8,
           itemStyle: {
-            shadowBlur: 20,
+            shadowBlur: isMobile ? 10 : 20,
             shadowColor: 'rgba(0, 0, 0, 0.3)',
           },
         },
@@ -197,20 +206,20 @@ export default function NatureDonut({
         })),
         animationType: 'scale',
         animationEasing: 'elasticOut',
-        animationDuration: 400,
+        animationDuration: isMobile ? 300 : 400,
       },
     ],
-  }), [currentData, selectedNature]);
+  }), [currentData, selectedNature, isMobile]);
 
   return (
     <div className="w-full">
-      {/* Header avec titre et bouton retour */}
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-2">
+      {/* Header avec titre et bouton retour - responsive */}
+      <div className="flex items-center justify-between mb-3 sm:mb-4">
+        <div className="flex items-center gap-2 min-w-0">
           {selectedNature && (
             <button
               onClick={handleBack}
-              className="p-1.5 rounded-lg bg-slate-700/50 hover:bg-slate-700 transition-colors"
+              className="p-1.5 sm:p-2 rounded-lg bg-slate-700/50 hover:bg-slate-700 active:bg-slate-600 transition-colors flex-shrink-0"
               aria-label="Retour"
             >
               <svg className="w-4 h-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -218,55 +227,55 @@ export default function NatureDonut({
               </svg>
             </button>
           )}
-          <h3 className="text-sm font-medium text-slate-300">
+          <h3 className="text-xs sm:text-sm font-medium text-slate-300 truncate">
             {selectedNature ? (
               <>
-                <span className="text-slate-500">Nature →</span> {selectedNature}
+                <span className="text-slate-500 hidden sm:inline">Nature →</span> {selectedNature}
               </>
             ) : (
-              'Cliquez sur une catégorie pour voir le détail'
+              isMobile ? 'Appuyez pour explorer' : 'Cliquez sur une catégorie pour voir le détail'
             )}
           </h3>
         </div>
       </div>
 
-      {/* Chart */}
+      {/* Chart - hauteur adaptative */}
       <ReactECharts
         option={option}
-        style={{ height: `${height}px`, width: '100%' }}
+        style={{ height: `${chartHeight}px`, width: '100%' }}
         opts={{ renderer: 'canvas' }}
         onEvents={{ click: handleClick }}
       />
 
-      {/* Légende responsive */}
-      <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
-        {currentData.items.slice(0, 8).map((item) => (
+      {/* Légende responsive - 2 colonnes sur mobile, plus sur desktop */}
+      <div className="mt-3 sm:mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-1.5 sm:gap-2">
+        {currentData.items.slice(0, isMobile ? 6 : 8).map((item) => (
           <button
             key={item.name}
             onClick={() => !selectedNature && handleClick({ name: item.name })}
             className={`
-              flex items-center gap-2 p-2 rounded-lg text-left transition-colors
-              ${!selectedNature ? 'hover:bg-slate-700/50 cursor-pointer' : 'cursor-default'}
+              flex items-center gap-1.5 sm:gap-2 p-1.5 sm:p-2 rounded-lg text-left transition-colors
+              ${!selectedNature ? 'hover:bg-slate-700/50 active:bg-slate-700 cursor-pointer' : 'cursor-default'}
             `}
           >
             <span
-              className="w-3 h-3 rounded-full flex-shrink-0"
+              className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full flex-shrink-0"
               style={{ backgroundColor: item.color }}
             />
-            <span className="text-xs text-slate-300 truncate flex-1">
+            <span className="text-[10px] sm:text-xs text-slate-300 truncate flex-1">
               {item.name}
             </span>
-            <span className="text-xs text-slate-500 font-medium">
+            <span className="text-[10px] sm:text-xs text-slate-500 font-medium">
               {item.pct.toFixed(0)}%
             </span>
           </button>
         ))}
       </div>
 
-      {/* Afficher "et X autres" si plus de 8 items */}
-      {currentData.items.length > 8 && (
-        <p className="text-xs text-slate-500 mt-2 text-center">
-          et {currentData.items.length - 8} autres catégories
+      {/* Afficher "et X autres" si plus d'items que visibles */}
+      {currentData.items.length > (isMobile ? 6 : 8) && (
+        <p className="text-[10px] sm:text-xs text-slate-500 mt-2 text-center">
+          et {currentData.items.length - (isMobile ? 6 : 8)} autres catégories
         </p>
       )}
     </div>
