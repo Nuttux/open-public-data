@@ -127,6 +127,78 @@ def fetch_evolution_data(client: bigquery.Client) -> dict:
     return data
 
 
+def calculate_variations_6ans(par_thematique: list) -> dict:
+    """
+    Calculate 6-year variation (2019 → 2024) for each thematique.
+    
+    Returns:
+    {
+        "periode": {"debut": 2019, "fin": 2024},
+        "depenses": [
+            {"thematique": "Personnel", "montant_debut": X, "montant_fin": Y, "variation_euros": Z, "variation_pct": W},
+            ...
+        ],
+        "recettes": [...]
+    }
+    
+    Sorted by variation_euros (positive first for depenses, to show biggest increases)
+    """
+    # Group by (sens_flux, thematique) and find first/last year values
+    from collections import defaultdict
+    
+    # Structure: {(sens_flux, thematique): {annee: montant}}
+    by_poste = defaultdict(dict)
+    
+    for row in par_thematique:
+        key = (row["sens_flux"], row["thematique"])
+        by_poste[key][row["annee"]] = row["montant"]
+    
+    # Find min and max years
+    all_years = set()
+    for row in par_thematique:
+        all_years.add(row["annee"])
+    
+    if not all_years:
+        return {"periode": {}, "depenses": [], "recettes": []}
+    
+    annee_debut = min(all_years)
+    annee_fin = max(all_years)
+    
+    # Calculate variations
+    depenses = []
+    recettes = []
+    
+    for (sens_flux, thematique), montants_par_annee in by_poste.items():
+        montant_debut = montants_par_annee.get(annee_debut, 0)
+        montant_fin = montants_par_annee.get(annee_fin, 0)
+        
+        variation_euros = montant_fin - montant_debut
+        variation_pct = ((montant_fin / montant_debut) - 1) * 100 if montant_debut > 0 else 0
+        
+        item = {
+            "thematique": thematique,
+            "montant_debut": montant_debut,
+            "montant_fin": montant_fin,
+            "variation_euros": variation_euros,
+            "variation_pct": round(variation_pct, 1)
+        }
+        
+        if sens_flux == "Dépense":
+            depenses.append(item)
+        else:
+            recettes.append(item)
+    
+    # Sort: by absolute variation (biggest changes first)
+    depenses.sort(key=lambda x: abs(x["variation_euros"]), reverse=True)
+    recettes.sort(key=lambda x: abs(x["variation_euros"]), reverse=True)
+    
+    return {
+        "periode": {"debut": annee_debut, "fin": annee_fin},
+        "depenses": depenses,
+        "recettes": recettes
+    }
+
+
 def transform_for_frontend(raw_data: dict) -> dict:
     """
     Transform raw data into frontend-friendly structure.
@@ -213,6 +285,9 @@ def transform_for_frontend(raw_data: dict) -> dict:
     # Sort by year descending
     sorted_years = sorted(years_data.values(), key=lambda x: x["year"], reverse=True)
     
+    # Calculate 6-year variation by thematique
+    variations_6ans = calculate_variations_6ans(raw_data["par_thematique"])
+    
     result = {
         "generated_at": datetime.now().isoformat(),
         "source": "mart_evolution_budget",
@@ -223,10 +298,13 @@ def transform_for_frontend(raw_data: dict) -> dict:
             "surplus_deficit": "Recettes propres - Dépenses (santé financière réelle)",
             "epargne_brute": "Recettes fonct. - Dépenses fonct. (capacité d'autofinancement)"
         },
-        "years": sorted_years
+        "years": sorted_years,
+        "variations_6ans": variations_6ans
     }
     
     logger.info(f"  - {len(sorted_years)} years processed")
+    logger.info(f"  - {len(variations_6ans['depenses'])} postes dépenses avec variation")
+    logger.info(f"  - {len(variations_6ans['recettes'])} postes recettes avec variation")
     
     return result
 

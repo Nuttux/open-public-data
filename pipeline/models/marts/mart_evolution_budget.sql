@@ -25,17 +25,8 @@ WITH budget_base AS (
         chapitre_libelle,
         nature_code,
         montant,
-        -- Mapping chapitre → thématique macro
-        CASE
-            WHEN chapitre_code IN ('011', '012', '014') THEN 'Personnel'
-            WHEN chapitre_code IN ('65', '657') THEN 'Subventions'
-            WHEN chapitre_code IN ('66', '67') THEN 'Charges financières'
-            WHEN chapitre_code IN ('20', '21', '23') THEN 'Investissement'
-            WHEN chapitre_code LIKE '9%' THEN 'Opérations patrimoniales'
-            WHEN chapitre_code IN ('73', '74', '75') THEN 'Fiscalité & Dotations'
-            WHEN chapitre_code IN ('70', '71') THEN 'Produits services'
-            ELSE 'Autres'
-        END AS thematique_macro,
+        -- Utiliser ode_thematique du core_budget (mapping correct chapitre → thématique)
+        ode_thematique AS thematique_macro,
         -- Flag emprunts (nature 16x = emprunts reçus)
         CASE WHEN nature_code LIKE '16%' AND sens_flux = 'Recette' THEN TRUE ELSE FALSE END AS est_emprunt
     FROM {{ ref('core_budget') }}
