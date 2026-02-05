@@ -548,30 +548,79 @@ function useDataQuality(dataset: string, year: number) {
 
 ## 7. Design system
 
-### 7.1 Couleurs (lib/colors.ts)
+### 7.1 Principe fondamental
+
+> **RÈGLE D'OR: Une couleur = Un concept, partout dans l'app.**
+
+Exemple: "Éducation" est TOUJOURS bleu (#3b82f6), que ce soit dans le Sankey, le Treemap, ou la carte.
+
+### 7.2 Système de couleurs (lib/colors.ts)
+
+#### Palette de base (Tailwind CSS)
+
+| Nom | Hex | Usage principal |
+|-----|-----|-----------------|
+| blue | `#3b82f6` | Éducation, Personnel |
+| purple | `#a855f7` | Culture, Subventions |
+| pink | `#ec4899` | Social, Transferts |
+| red | `#ef4444` | Sécurité, Déficit |
+| orange | `#f97316` | Économie |
+| amber | `#f59e0b` | Transports, Finance |
+| yellow | `#eab308` | Dette |
+| green | `#22c55e` | Environnement |
+| emerald | `#10b981` | Recettes (positif) |
+| cyan | `#06b6d4` | Urbanisme, Achats |
+| slate | `#64748b` | Administration, Neutre |
+
+#### Thématiques (Fonctions budgétaires)
+
+Ces couleurs sont utilisées PARTOUT où on affiche des thématiques:
+- Sankey (catégories de dépenses)
+- Subventions (treemap, bénéficiaires)
+- Drill-down panels
+- Carte (markers, popups)
+
+| Thématique | Couleur | Hex | Emoji |
+|------------|---------|-----|-------|
+| Éducation | Blue | `#3b82f6` | 🎓 |
+| Culture & Sport | Purple | `#a855f7` | 🎭 |
+| Action Sociale | Pink | `#ec4899` | 💝 |
+| Sécurité | Red | `#ef4444` | 🚨 |
+| Transports | Amber | `#f59e0b` | 🚇 |
+| Environnement | Green | `#22c55e` | 🌿 |
+| Aménagement & Logement | Cyan | `#06b6d4` | 🏗️ |
+| Économie | Orange | `#f97316` | 💼 |
+| Santé | Teal | `#14b8a6` | 🏥 |
+| Administration | Slate | `#64748b` | 🏛️ |
+| Dette | Yellow | `#eab308` | 💳 |
+
+#### Natures (Types de dépense comptable)
+
+Dimension différente des thématiques, utilisée dans le donut par nature.
+
+| Nature | Couleur | Hex |
+|--------|---------|-----|
+| Personnel | Blue | `#3b82f6` |
+| Transferts sociaux | Pink | `#ec4899` |
+| Subventions | Purple | `#a855f7` |
+| Achats | Cyan | `#06b6d4` |
+| Immobilisations | Green | `#22c55e` |
+| Charges financières | Amber | `#f59e0b` |
+| Remboursement dette | Yellow | `#eab308` |
+
+#### Flux budgétaires
+
+| Concept | Couleur | Hex |
+|---------|---------|-----|
+| Recettes | Emerald | `#10b981` |
+| Dépenses | Purple | `#a855f7` |
+| Solde positif | Emerald | `#10b981` |
+| Solde négatif | Red | `#ef4444` |
+| Emprunts | Amber | `#f59e0b` |
+
+#### Statuts qualité
 
 ```typescript
-// Thématiques subventions
-export const THEMATIQUE_COLORS: Record<string, string> = {
-  'Social': '#ef4444',
-  'Social - Solidarité': '#dc2626',
-  'Social - Petite enfance': '#f87171',
-  'Culture': '#a855f7',
-  'Culture & Sport': '#9333ea',
-  'Éducation': '#3b82f6',
-  'Sport': '#22c55e',
-  'Transport': '#f59e0b',
-  'Logement': '#06b6d4',
-  'Urbanisme - Logement': '#0891b2',
-  'Économie': '#ec4899',
-  'Environnement': '#84cc16',
-  'Administration': '#64748b',
-  'Santé': '#14b8a6',
-  'Sécurité': '#f97316',
-  'Non classifié': '#94a3b8',
-};
-
-// Statuts qualité
 export const STATUS_COLORS = {
   complete: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
   partial: 'bg-amber-500/20 text-amber-400 border-amber-500/30',
@@ -579,7 +628,7 @@ export const STATUS_COLORS = {
 };
 ```
 
-### 7.2 Styles communs
+### 7.4 Styles communs
 
 ```css
 /* Card standard */
@@ -601,7 +650,9 @@ export const STATUS_COLORS = {
 }
 ```
 
-### 7.3 Responsive breakpoints
+### 7.5 Responsive design
+
+#### Breakpoints
 
 | Breakpoint | Usage |
 |------------|-------|
@@ -609,6 +660,21 @@ export const STATUS_COLORS = {
 | `md:` (768px) | Tablet |
 | `lg:` (1024px) | Desktop |
 | `xl:` (1280px) | Large desktop |
+
+#### Stratégie par composant
+
+| Composant | Mobile | Desktop |
+|-----------|--------|---------|
+| Donut/Pie | Tap drill-down, légende en bas | Hover, légende latérale |
+| Line/Bar charts | Responsive, scroll horizontal si besoin | Complet |
+| Sankey | Treemap ou liste interactive | Sankey complet |
+| Map | Touch gestures, popup simplifié | Hover, panel latéral |
+
+#### Interactions
+
+- **Desktop**: hover pour détails, tooltips, légendes latérales
+- **Mobile**: tap pour détails, drawers/modals, légendes en bas
+- **Animations**: 300ms max, respecter `prefers-reduced-motion`
 
 ---
 

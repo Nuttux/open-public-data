@@ -1,0 +1,839 @@
+{
+  "year": 2024,
+  "generated_at": "2026-02-05T22:40:11.980043",
+  "total_depenses": 11494727617.75,
+  "nb_natures": 17,
+  "niveau_1": [
+    {
+      "nature": "Personnel",
+      "montant": 2617313882.83,
+      "pct": 22.8
+    },
+    {
+      "nature": "Reversements péréquation",
+      "montant": 1772070663.69,
+      "pct": 15.4
+    },
+    {
+      "nature": "Transferts sociaux",
+      "montant": 1302027835.0,
+      "pct": 11.3
+    },
+    {
+      "nature": "Contributions obligatoires",
+      "montant": 1036769473.31,
+      "pct": 9.0
+    },
+    {
+      "nature": "Subventions (fonctionnement)",
+      "montant": 990763722.51,
+      "pct": 8.6
+    },
+    {
+      "nature": "Immobilisations en cours",
+      "montant": 954838467.8,
+      "pct": 8.3
+    },
+    {
+      "nature": "Services extérieurs",
+      "montant": 674070583.14,
+      "pct": 5.9
+    },
+    {
+      "nature": "Immobilisations corporelles",
+      "montant": 473028155.13,
+      "pct": 4.1
+    },
+    {
+      "nature": "Remboursement dette",
+      "montant": 325618114.96,
+      "pct": 2.8
+    },
+    {
+      "nature": "Autre",
+      "montant": 264025675.24,
+      "pct": 2.3
+    },
+    {
+      "nature": "Subventions (investissement)",
+      "montant": 231546188.52,
+      "pct": 2.0
+    },
+    {
+      "nature": "Autres services",
+      "montant": 211354015.47,
+      "pct": 1.8
+    },
+    {
+      "nature": "Charges financières",
+      "montant": 204227369.58,
+      "pct": 1.8
+    },
+    {
+      "nature": "Achats",
+      "montant": 193348703.74,
+      "pct": 1.7
+    },
+    {
+      "nature": "Dotations arrondissements",
+      "montant": 166805381.36,
+      "pct": 1.5
+    },
+    {
+      "nature": "Études",
+      "montant": 55091547.47,
+      "pct": 0.5
+    },
+    {
+      "nature": "Dotations et participations",
+      "montant": 21827838.0,
+      "pct": 0.2
+    }
+  ],
+  "niveau_2": {
+    "Reversements péréquation": [
+      {
+        "thematique": "Autre",
+        "montant": 1620997732.99,
+        "pct": 91.5
+      },
+      {
+        "thematique": "Économie",
+        "montant": 151072930.7,
+        "pct": 8.5
+      }
+    ],
+    "Immobilisations en cours": [
+      {
+        "thematique": "Autre",
+        "montant": 954838467.8,
+        "pct": 100.0
+      }
+    ],
+    "Transferts sociaux": [
+      {
+        "thematique": "Social - Petite enfance",
+        "montant": 722821950.93,
+        "pct": 55.5
+      },
+      {
+        "thematique": "Autre",
+        "montant": 545806274.06,
+        "pct": 41.9
+      },
+      {
+        "thematique": "Transport - Mobilités",
+        "montant": 30954049.0,
+        "pct": 2.4
+      },
+      {
+        "thematique": "Administration",
+        "montant": 1771713.45,
+        "pct": 0.1
+      },
+      {
+        "thematique": "Éducation",
+        "montant": 273877.0,
+        "pct": 0.0
+      },
+      {
+        "thematique": "Économie",
+        "montant": 201000.0,
+        "pct": 0.0
+      },
+      {
+        "thematique": "Culture",
+        "montant": 67000.0,
+        "pct": 0.0
+      },
+      {
+        "thematique": "Culture & Sport",
+        "montant": 64336.4,
+        "pct": 0.0
+      },
+      {
+        "thematique": "Urbanisme",
+        "montant": 55000.0,
+        "pct": 0.0
+      },
+      {
+        "thematique": "Sport",
+        "montant": 9244.16,
+        "pct": 0.0
+      },
+      {
+        "thematique": "Social - Solidarité",
+        "montant": 3390.0,
+        "pct": 0.0
+      }
+    ],
+    "Subventions (fonctionnement)": [
+      {
+        "thematique": "Social - Petite enfance",
+        "montant": 520737163.11,
+        "pct": 52.6
+      },
+      {
+        "thematique": "Culture",
+        "montant": 158951653.25,
+        "pct": 16.0
+      },
+      {
+        "thematique": "Éducation",
+        "montant": 148114611.52,
+        "pct": 14.9
+      },
+      {
+        "thematique": "Économie",
+        "montant": 35666524.29,
+        "pct": 3.6
+      },
+      {
+        "thematique": "Transport - Mobilités",
+        "montant": 28542531.87,
+        "pct": 2.9
+      },
+      {
+        "thematique": "Administration",
+        "montant": 28335806.78,
+        "pct": 2.9
+      },
+      {
+        "thematique": "Sport",
+        "montant": 16409627.28,
+        "pct": 1.7
+      },
+      {
+        "thematique": "Autre",
+        "montant": 13952578.07,
+        "pct": 1.4
+      },
+      {
+        "thematique": "Urbanisme - Aménagement",
+        "montant": 8187683.0,
+        "pct": 0.8
+      },
+      {
+        "thematique": "Social - Solidarité",
+        "montant": 6857500.0,
+        "pct": 0.7
+      },
+      {
+        "thematique": "Culture & Sport",
+        "montant": 5574445.0,
+        "pct": 0.6
+      },
+      {
+        "thematique": "Éducation - Collèges",
+        "montant": 5250000.0,
+        "pct": 0.5
+      },
+      {
+        "thematique": "Urbanisme - Logement",
+        "montant": 4698607.81,
+        "pct": 0.5
+      },
+      {
+        "thematique": "Urbanisme",
+        "montant": 2603100.0,
+        "pct": 0.3
+      },
+      {
+        "thematique": "Sécurité",
+        "montant": 2286917.0,
+        "pct": 0.2
+      },
+      {
+        "thematique": "Environnement",
+        "montant": 2200610.67,
+        "pct": 0.2
+      },
+      {
+        "thematique": "Transport",
+        "montant": 1309597.2,
+        "pct": 0.1
+      },
+      {
+        "thematique": "Éducation - Écoles",
+        "montant": 1084765.66,
+        "pct": 0.1
+      }
+    ],
+    "Immobilisations corporelles": [
+      {
+        "thematique": "Autre",
+        "montant": 473028155.13,
+        "pct": 100.0
+      }
+    ],
+    "Contributions obligatoires": [
+      {
+        "thematique": "Transport - Mobilités",
+        "montant": 455890396.25,
+        "pct": 44.0
+      },
+      {
+        "thematique": "Sécurité",
+        "montant": 267438267.63,
+        "pct": 25.8
+      },
+      {
+        "thematique": "Environnement",
+        "montant": 132662946.31,
+        "pct": 12.8
+      },
+      {
+        "thematique": "Social - Petite enfance",
+        "montant": 81906402.3,
+        "pct": 7.9
+      },
+      {
+        "thematique": "Éducation - Collèges",
+        "montant": 37921019.71,
+        "pct": 3.7
+      },
+      {
+        "thematique": "Éducation - Écoles",
+        "montant": 34208157.5,
+        "pct": 3.3
+      },
+      {
+        "thematique": "Autre",
+        "montant": 14263027.92,
+        "pct": 1.4
+      },
+      {
+        "thematique": "Social - Solidarité",
+        "montant": 8043702.79,
+        "pct": 0.8
+      },
+      {
+        "thematique": "Sport",
+        "montant": 2877313.5,
+        "pct": 0.3
+      },
+      {
+        "thematique": "Administration",
+        "montant": 806734.64,
+        "pct": 0.1
+      },
+      {
+        "thematique": "Éducation",
+        "montant": 675934.64,
+        "pct": 0.1
+      },
+      {
+        "thematique": "Transport",
+        "montant": 74243.7,
+        "pct": 0.0
+      },
+      {
+        "thematique": "Urbanisme",
+        "montant": 1326.42,
+        "pct": 0.0
+      }
+    ],
+    "Personnel": [
+      {
+        "thematique": "Social - Petite enfance",
+        "montant": 448357063.22,
+        "pct": 17.1
+      },
+      {
+        "thematique": "Administration",
+        "montant": 420197772.97,
+        "pct": 16.1
+      },
+      {
+        "thematique": "Environnement",
+        "montant": 368138290.19,
+        "pct": 14.1
+      },
+      {
+        "thematique": "Éducation - Écoles",
+        "montant": 346949017.55,
+        "pct": 13.3
+      },
+      {
+        "thematique": "Sécurité",
+        "montant": 189322241.74,
+        "pct": 7.2
+      },
+      {
+        "thematique": "Culture",
+        "montant": 136605442.51,
+        "pct": 5.2
+      },
+      {
+        "thematique": "Urbanisme - Aménagement",
+        "montant": 134319513.49,
+        "pct": 5.1
+      },
+      {
+        "thematique": "Sport",
+        "montant": 109034281.55,
+        "pct": 4.2
+      },
+      {
+        "thematique": "Éducation",
+        "montant": 96809881.0,
+        "pct": 3.7
+      },
+      {
+        "thematique": "Culture & Sport",
+        "montant": 92988204.8,
+        "pct": 3.6
+      },
+      {
+        "thematique": "Social - Solidarité",
+        "montant": 89131425.36,
+        "pct": 3.4
+      },
+      {
+        "thematique": "Transport",
+        "montant": 73115993.23,
+        "pct": 2.8
+      },
+      {
+        "thematique": "Urbanisme",
+        "montant": 46836185.89,
+        "pct": 1.8
+      },
+      {
+        "thematique": "Éducation - Collèges",
+        "montant": 28536486.05,
+        "pct": 1.1
+      },
+      {
+        "thematique": "Autre",
+        "montant": 17111633.84,
+        "pct": 0.7
+      },
+      {
+        "thematique": "Économie",
+        "montant": 12012996.77,
+        "pct": 0.5
+      },
+      {
+        "thematique": "Urbanisme - Logement",
+        "montant": 3929774.01,
+        "pct": 0.2
+      },
+      {
+        "thematique": "Transport - Mobilités",
+        "montant": 3917678.66,
+        "pct": 0.1
+      }
+    ],
+    "Remboursement dette": [
+      {
+        "thematique": "Autre",
+        "montant": 325618114.96,
+        "pct": 100.0
+      }
+    ],
+    "Subventions (investissement)": [
+      {
+        "thematique": "Autre",
+        "montant": 231546188.52,
+        "pct": 100.0
+      }
+    ],
+    "Charges financières": [
+      {
+        "thematique": "Autre",
+        "montant": 204227369.58,
+        "pct": 100.0
+      }
+    ],
+    "Services extérieurs": [
+      {
+        "thematique": "Environnement",
+        "montant": 186708975.76,
+        "pct": 27.7
+      },
+      {
+        "thematique": "Administration",
+        "montant": 148268021.66,
+        "pct": 22.0
+      },
+      {
+        "thematique": "Transport",
+        "montant": 88260119.39,
+        "pct": 13.1
+      },
+      {
+        "thematique": "Sport",
+        "montant": 83197826.04,
+        "pct": 12.3
+      },
+      {
+        "thematique": "Social - Petite enfance",
+        "montant": 61725443.13,
+        "pct": 9.2
+      },
+      {
+        "thematique": "Urbanisme - Aménagement",
+        "montant": 32663741.16,
+        "pct": 4.8
+      },
+      {
+        "thematique": "Culture",
+        "montant": 15893987.47,
+        "pct": 2.4
+      },
+      {
+        "thematique": "Urbanisme",
+        "montant": 11965375.5,
+        "pct": 1.8
+      },
+      {
+        "thematique": "Autre",
+        "montant": 9090561.73,
+        "pct": 1.3
+      },
+      {
+        "thematique": "Éducation",
+        "montant": 7870960.12,
+        "pct": 1.2
+      },
+      {
+        "thematique": "Éducation - Écoles",
+        "montant": 7837550.44,
+        "pct": 1.2
+      },
+      {
+        "thematique": "Transport - Mobilités",
+        "montant": 5822654.75,
+        "pct": 0.9
+      },
+      {
+        "thematique": "Sécurité",
+        "montant": 5006525.31,
+        "pct": 0.7
+      },
+      {
+        "thematique": "Culture & Sport",
+        "montant": 3575082.61,
+        "pct": 0.5
+      },
+      {
+        "thematique": "Social - Solidarité",
+        "montant": 2093632.88,
+        "pct": 0.3
+      },
+      {
+        "thematique": "Économie",
+        "montant": 1988721.67,
+        "pct": 0.3
+      },
+      {
+        "thematique": "Éducation - Collèges",
+        "montant": 1936957.57,
+        "pct": 0.3
+      },
+      {
+        "thematique": "Urbanisme - Logement",
+        "montant": 164445.95,
+        "pct": 0.0
+      }
+    ],
+    "Dotations arrondissements": [
+      {
+        "thematique": "Administration",
+        "montant": 166805381.36,
+        "pct": 100.0
+      }
+    ],
+    "Achats": [
+      {
+        "thematique": "Environnement",
+        "montant": 103382391.39,
+        "pct": 53.5
+      },
+      {
+        "thematique": "Urbanisme - Aménagement",
+        "montant": 22166173.18,
+        "pct": 11.5
+      },
+      {
+        "thematique": "Administration",
+        "montant": 18407067.39,
+        "pct": 9.5
+      },
+      {
+        "thematique": "Éducation",
+        "montant": 15242049.86,
+        "pct": 7.9
+      },
+      {
+        "thematique": "Culture & Sport",
+        "montant": 10419555.21,
+        "pct": 5.4
+      },
+      {
+        "thematique": "Sport",
+        "montant": 8508365.27,
+        "pct": 4.4
+      },
+      {
+        "thematique": "Social - Solidarité",
+        "montant": 4451682.9,
+        "pct": 2.3
+      },
+      {
+        "thematique": "Transport",
+        "montant": 3635196.95,
+        "pct": 1.9
+      },
+      {
+        "thematique": "Culture",
+        "montant": 2226555.28,
+        "pct": 1.2
+      },
+      {
+        "thematique": "Urbanisme",
+        "montant": 1948036.32,
+        "pct": 1.0
+      },
+      {
+        "thematique": "Sécurité",
+        "montant": 868985.34,
+        "pct": 0.4
+      },
+      {
+        "thematique": "Social - Petite enfance",
+        "montant": 767932.85,
+        "pct": 0.4
+      },
+      {
+        "thematique": "Éducation - Écoles",
+        "montant": 724825.23,
+        "pct": 0.4
+      },
+      {
+        "thematique": "Éducation - Collèges",
+        "montant": 363375.77,
+        "pct": 0.2
+      },
+      {
+        "thematique": "Économie",
+        "montant": 203979.68,
+        "pct": 0.1
+      },
+      {
+        "thematique": "Autre",
+        "montant": 22884.56,
+        "pct": 0.0
+      },
+      {
+        "thematique": "Urbanisme - Logement",
+        "montant": 8933.86,
+        "pct": 0.0
+      },
+      {
+        "thematique": "Transport - Mobilités",
+        "montant": 712.7,
+        "pct": 0.0
+      }
+    ],
+    "Autre": [
+      {
+        "thematique": "Autre",
+        "montant": 81330013.15,
+        "pct": 30.8
+      },
+      {
+        "thematique": "Administration",
+        "montant": 75079953.16,
+        "pct": 28.4
+      },
+      {
+        "thematique": "Transport",
+        "montant": 24686511.3,
+        "pct": 9.4
+      },
+      {
+        "thematique": "Urbanisme",
+        "montant": 18120077.57,
+        "pct": 6.9
+      },
+      {
+        "thematique": "Éducation - Écoles",
+        "montant": 11889373.78,
+        "pct": 4.5
+      },
+      {
+        "thematique": "Social - Petite enfance",
+        "montant": 11760270.51,
+        "pct": 4.5
+      },
+      {
+        "thematique": "Environnement",
+        "montant": 8692302.08,
+        "pct": 3.3
+      },
+      {
+        "thematique": "Éducation",
+        "montant": 7301243.55,
+        "pct": 2.8
+      },
+      {
+        "thematique": "Urbanisme - Aménagement",
+        "montant": 6064493.45,
+        "pct": 2.3
+      },
+      {
+        "thematique": "Sport",
+        "montant": 5965576.99,
+        "pct": 2.3
+      },
+      {
+        "thematique": "Culture",
+        "montant": 4311377.14,
+        "pct": 1.6
+      },
+      {
+        "thematique": "Sécurité",
+        "montant": 3318009.72,
+        "pct": 1.3
+      },
+      {
+        "thematique": "Culture & Sport",
+        "montant": 2348783.14,
+        "pct": 0.9
+      },
+      {
+        "thematique": "Social - Solidarité",
+        "montant": 2099004.92,
+        "pct": 0.8
+      },
+      {
+        "thematique": "Éducation - Collèges",
+        "montant": 626753.75,
+        "pct": 0.2
+      },
+      {
+        "thematique": "Économie",
+        "montant": 263738.7,
+        "pct": 0.1
+      },
+      {
+        "thematique": "Urbanisme - Logement",
+        "montant": 92369.21,
+        "pct": 0.0
+      },
+      {
+        "thematique": "Transport - Mobilités",
+        "montant": 75823.12,
+        "pct": 0.0
+      }
+    ],
+    "Autres services": [
+      {
+        "thematique": "Éducation - Écoles",
+        "montant": 69968146.58,
+        "pct": 33.1
+      },
+      {
+        "thematique": "Administration",
+        "montant": 48577575.02,
+        "pct": 23.0
+      },
+      {
+        "thematique": "Sport",
+        "montant": 13939788.64,
+        "pct": 6.6
+      },
+      {
+        "thematique": "Culture",
+        "montant": 12404557.82,
+        "pct": 5.9
+      },
+      {
+        "thematique": "Sécurité",
+        "montant": 12146584.6,
+        "pct": 5.7
+      },
+      {
+        "thematique": "Social - Petite enfance",
+        "montant": 11784353.1,
+        "pct": 5.6
+      },
+      {
+        "thematique": "Transport",
+        "montant": 10500298.3,
+        "pct": 5.0
+      },
+      {
+        "thematique": "Éducation",
+        "montant": 9818264.7,
+        "pct": 4.6
+      },
+      {
+        "thematique": "Social - Solidarité",
+        "montant": 4876203.22,
+        "pct": 2.3
+      },
+      {
+        "thematique": "Urbanisme",
+        "montant": 4598948.56,
+        "pct": 2.2
+      },
+      {
+        "thematique": "Culture & Sport",
+        "montant": 4568655.49,
+        "pct": 2.2
+      },
+      {
+        "thematique": "Urbanisme - Aménagement",
+        "montant": 2840056.12,
+        "pct": 1.3
+      },
+      {
+        "thematique": "Environnement",
+        "montant": 1758549.13,
+        "pct": 0.8
+      },
+      {
+        "thematique": "Économie",
+        "montant": 1525349.94,
+        "pct": 0.7
+      },
+      {
+        "thematique": "Éducation - Collèges",
+        "montant": 1382385.64,
+        "pct": 0.7
+      },
+      {
+        "thematique": "Autre",
+        "montant": 523604.1,
+        "pct": 0.2
+      },
+      {
+        "thematique": "Urbanisme - Logement",
+        "montant": 120850.21,
+        "pct": 0.1
+      },
+      {
+        "thematique": "Transport - Mobilités",
+        "montant": 19844.3,
+        "pct": 0.0
+      }
+    ],
+    "Études": [
+      {
+        "thematique": "Autre",
+        "montant": 55091547.47,
+        "pct": 100.0
+      }
+    ],
+    "Dotations et participations": [
+      {
+        "thematique": "Autre",
+        "montant": 21827838.0,
+        "pct": 100.0
+      }
+    ]
+  }
+}
