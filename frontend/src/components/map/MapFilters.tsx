@@ -24,13 +24,9 @@ interface LayerOption {
   color: string;
 }
 
+// Note: Subventions retirées car l'adresse du siège ne reflète pas où l'action est menée
+// Voir page /subventions pour l'exploration par bénéficiaire
 const LAYER_OPTIONS: LayerOption[] = [
-  {
-    id: 'subventions',
-    label: 'Subventions',
-    icon: '💰',
-    color: 'bg-purple-500',
-  },
   {
     id: 'logements',
     label: 'Logements sociaux',
@@ -238,7 +234,6 @@ export default function MapFilters({
                 onChange={(e) => onChoroplethMetricChange(e.target.value as 'subventions' | 'logements' | 'investissements')}
                 className="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-500"
               >
-                <option value="subventions">💰 Subventions / hab</option>
                 <option value="logements">🏠 Logements / 1000 hab</option>
                 <option value="investissements">📋 Investissements / hab</option>
               </select>

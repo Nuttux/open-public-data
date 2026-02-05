@@ -100,22 +100,11 @@ export default function ChoroplethLayer({
 
   /**
    * Map des stats par code d'arrondissement pour accès rapide
-   * Note: Les arrondissements 1-4 sont mappés vers Paris Centre (code 0)
+   * Note: Le GeoJSON a maintenant Paris Centre (code 0) comme feature unique
    */
   const statsMap = useMemo(() => {
     const map = new Map<number, ArrondissementStats>();
     stats.forEach(s => map.set(s.code, s));
-    
-    // Si on a Paris Centre (code 0), mapper aussi les codes 1-4 vers ces stats
-    const parisCentre = map.get(0);
-    if (parisCentre) {
-      [1, 2, 3, 4].forEach(code => {
-        if (!map.has(code)) {
-          map.set(code, parisCentre);
-        }
-      });
-    }
-    
     return map;
   }, [stats]);
 
@@ -173,11 +162,7 @@ export default function ChoroplethLayer({
     layer: Layer
   ) => {
     const code = feature.properties?.c_ar;
-    // Afficher "Paris Centre" pour les arrondissements 1-4
-    const isParisCentre = code >= 1 && code <= 4;
-    const nom = isParisCentre 
-      ? `Paris Centre (${feature.properties?.l_ar || code + 'ème'})`
-      : (feature.properties?.l_ar || `${code}ème`);
+    const nom = feature.properties?.l_ar || (code === 0 ? 'Paris Centre' : `${code}ème`);
     const arrStats = statsMap.get(code);
 
     const population = arrStats?.population || 0;

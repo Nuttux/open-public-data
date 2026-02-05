@@ -54,9 +54,10 @@ export default function CartePage() {
   // État des filtres
   const [availableYears, setAvailableYears] = useState<number[]>([2024, 2023, 2022, 2021, 2020, 2019]);
   const [selectedYear, setSelectedYear] = useState<number>(2024);
-  const [activeLayers, setActiveLayers] = useState<MapLayerType[]>(['subventions', 'logements']);
+  // Note: subventions retirées car l'adresse du siège ne reflète pas où l'action est menée
+  const [activeLayers, setActiveLayers] = useState<MapLayerType[]>(['logements', 'autorisations']);
   
-  // Thématiques subventions
+  // Thématiques subventions (conservé pour compatibilité mais non utilisé)
   const [availableThematiques, setAvailableThematiques] = useState<string[]>([]);
   const [selectedThematiques, setSelectedThematiques] = useState<string[]>([]);
   
@@ -233,7 +234,7 @@ export default function CartePage() {
               Carte Paris
             </h1>
             <p className="text-sm text-slate-400 mt-1">
-              Vue géographique des subventions, logements sociaux et investissements
+              Logements sociaux financés et investissements par arrondissement
             </p>
           </div>
         </div>
