@@ -53,6 +53,9 @@ SELECT
     -- Flag contribution en nature
     ode_contribution_nature,
     
+    -- Nom canonique pour agrégation (déduplication CASP, etc.)
+    ode_beneficiaire_canonique,
+    
     -- Métadonnées
     CURRENT_TIMESTAMP() AS _dbt_updated_at
 

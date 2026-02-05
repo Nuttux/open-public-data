@@ -60,7 +60,8 @@ cleaned AS (
         ABS(SAFE_CAST(mandate_titre_apres_regul AS FLOAT64)) AS montant,
         
         -- =====================================================================
-        -- CLÉ TECHNIQUE
+        -- CLÉ TECHNIQUE (inclut nature_libelle pour unicité)
+        -- Certaines lignes ont même code mais libellé différent (ex: FNGIR vs Péréquation)
         -- =====================================================================
         CONCAT(
             SAFE_CAST(exercice_comptable AS STRING), '-',
@@ -68,7 +69,9 @@ cleaned AS (
             CASE WHEN UPPER(sens_depense_recette) LIKE '%DÉPENSE%' THEN 'D' ELSE 'R' END, '-',
             COALESCE(SAFE_CAST(chapitre_budgetaire_cle AS STRING), '000'), '-',
             COALESCE(SAFE_CAST(nature_budgetaire_cle AS STRING), '000'), '-',
-            COALESCE(SAFE_CAST(fonction_cle AS STRING), '000')
+            COALESCE(SAFE_CAST(fonction_cle AS STRING), '000'), '-',
+            -- Hash du libellé pour différencier lignes avec même code
+            SUBSTR(TO_HEX(MD5(COALESCE(nature_budgetaire_texte, ''))), 1, 8)
         ) AS cle_technique
         
     FROM source

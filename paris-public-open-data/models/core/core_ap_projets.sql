@@ -35,6 +35,20 @@ SELECT
     -- COLONNES ENRICHIES (ode_*)
     -- =====================================================================
     ode_arrondissement,
+    
+    -- Arrondissement pour affichage (1-4 → Paris Centre)
+    CASE 
+        WHEN ode_arrondissement IN (1, 2, 3, 4) THEN 0  -- 0 = Paris Centre
+        ELSE ode_arrondissement
+    END AS ode_arrondissement_affichage,
+    
+    -- Label texte pour l'affichage
+    CASE 
+        WHEN ode_arrondissement IN (1, 2, 3, 4) THEN 'Paris Centre'
+        WHEN ode_arrondissement IS NOT NULL THEN CONCAT(CAST(ode_arrondissement AS STRING), 'e')
+        ELSE NULL
+    END AS ode_arrondissement_label,
+    
     ode_adresse,
     ode_latitude,
     ode_longitude,

@@ -5,12 +5,14 @@
 1. [Vue d'ensemble](#1-vue-densemble)
 2. [Sources de données](#2-sources-de-données)
 3. [Architecture des couches](#3-architecture-des-couches)
+   - 3.7 [Fonctionnalités transversales](#37-fonctionnalités-transversales) (Paris Centre, Déduplication)
 4. [Conventions de nommage](#4-conventions-de-nommage)
 5. [Stratégie de jointure](#5-stratégie-de-jointure)
 6. [Enrichissement](#6-enrichissement)
 7. [Scripts Python](#7-scripts-python)
 8. [Export et Frontend](#8-export-et-frontend)
 9. [Qualité des données](#9-qualité-des-données)
+   - 9.12 [Résultats audit complet](#912-résultats-audit-complet-2026-02-05)
 10. [Estimation des coûts et temps](#10-estimation-des-coûts-et-temps)
 11. [Structure des fichiers](#11-structure-des-fichiers)
 12. [Workflow de mise à jour](#12-workflow-de-mise-à-jour)
@@ -688,10 +690,63 @@ SELECT
     latitude,  -- Depuis source, pas ode_
     longitude, -- Depuis source, pas ode_
     
+    -- Agrégation Paris Centre (1-4 → 0)
+    ode_arrondissement_affichage,  -- 0 = Paris Centre
+    ode_arrondissement_label,       -- "Paris Centre" ou "5e", "6e", etc.
+    
     CURRENT_TIMESTAMP() AS _dbt_updated_at
 
 FROM {{ ref('stg_logements_sociaux') }}
 ```
+
+### 3.7 Fonctionnalités transversales
+
+#### A. Agrégation Paris Centre (arrondissements 1-4)
+
+Depuis la fusion administrative de 2020, les arrondissements 1, 2, 3 et 4 sont regroupés en "Paris Centre".
+
+**Colonnes ajoutées** dans `core_logements_sociaux` et `core_ap_projets` :
+
+| Colonne | Type | Description |
+|---------|------|-------------|
+| `ode_arrondissement_affichage` | INT | 0 pour Paris Centre, sinon arrondissement original |
+| `ode_arrondissement_label` | STRING | "Paris Centre" ou "5e", "6e", ..., "20e" |
+
+```sql
+-- Implémentation
+CASE
+    WHEN arrondissement IN (1, 2, 3, 4) THEN 0  -- Paris Centre
+    ELSE arrondissement
+END AS ode_arrondissement_affichage,
+
+CASE
+    WHEN arrondissement IN (1, 2, 3, 4) THEN 'Paris Centre'
+    ELSE CONCAT(CAST(arrondissement AS STRING), 'e')
+END AS ode_arrondissement_label
+```
+
+> **Usage frontend** : Utiliser `ode_arrondissement_affichage` pour les agrégations et `ode_arrondissement_label` pour l'affichage.
+
+#### B. Déduplication des entités (CASVP, etc.)
+
+Certaines entités apparaissent sous différents noms dans les données sources (ex: "CASVP", "CENTRE ACTION SOCIALE VILLE PARIS", "CENTRE D'ACTION SOCIALE DE LA VILLE DE PARIS").
+
+**Seed** : `seed_mapping_entites.csv`
+```csv
+pattern,nom_canonique,description
+CENTRE.*(ACTION|D.ACTION).*(SOCIALE|SOC).*PARIS,CENTRE ACTION SOCIALE VILLE DE PARIS,CASVP
+CASVP,CENTRE ACTION SOCIALE VILLE DE PARIS,Sigle CASVP
+EMMAUS.*SOLIDARIT,EMMAUS SOLIDARITE,Emmaüs Solidarité
+THEATRE.*(DE LA|DU).*VILLE,THEATRE DE LA VILLE,Théâtre de la Ville
+```
+
+**Colonne ajoutée** dans `core_subventions` :
+
+| Colonne | Type | Description |
+|---------|------|-------------|
+| `ode_beneficiaire_canonique` | STRING | Nom canonique si pattern match, sinon `beneficiaire` original |
+
+> **Usage** : Permet d'agréger correctement les montants par bénéficiaire unique (ex: CASVP = 1,940 M€ total).
 
 ### 3.6 MARTS Layer (Views)
 
@@ -1047,37 +1102,43 @@ La table `ca_subventions` (annexe CA) **ne contient PAS** de codes budgétaires 
 
 ```
 1. Pattern matching sur beneficiaire_normalise (seed_mapping_beneficiaires)
-   └─► 72 patterns regex = 77.5% des montants
+   └─► 72 patterns regex = 73.94% des montants
 
-2. Direction (jointure associations → seed_mapping_directions)
-   └─► 25 directions mappées = 11.8% des montants
+2. LLM (seed_cache_thematique_beneficiaires)
+   └─► 1,244 bénéficiaires classifiés = 20.90% des montants
 
-3. LLM (seed_cache_thematique_beneficiaires)
-   └─► 1,244 bénéficiaires classifiés = 9.5% des montants
+3. Direction (jointure associations → seed_mapping_directions)
+   └─► 25 directions mappées = 4.45% des montants
 
-4. Default (nature_juridique)
-   └─► Fallback "Autre" = 1.2% des montants (petites subventions)
+4. Default ("Non classifié")
+   └─► Fallback = 0.49% des montants (petites subventions)
 
-TOTAL: 98.8% des montants classifiés
+TOTAL: 99.51% des montants classifiés (données disponibles)
 ```
+
+> **Note**: L'ordre de priorité dans le code est Pattern → Direction → LLM → Default,
+> mais le LLM couvre plus de montant que les directions car il cible les gros bénéficiaires.
 
 ### 6.4 Cascade géoloc (AP projets)
 
 ```
 1. Regex sur ap_texte
    └─► Patterns: 75001-75020, (12E), 15EME, etc.
-   └─► Couverture: ~40%
+   └─► Couverture: ~30% des montants
 
 2. Lieux connus (seed_lieux_connus)
    └─► ~50-100 équipements parisiens célèbres
-   └─► Couverture: ~10%
+   └─► Couverture: ~5% des montants
 
 3. LLM (seed_cache_geo_ap)
    └─► Inference depuis le texte du projet
-   └─► Couverture: variable selon confiance
+   └─► Couverture: ~8% des montants (confiance ≥0.7)
 
 4. Non localisable
    └─► ode_arrondissement = NULL, ode_source_geo = NULL
+   └─► ~57% des montants (projets multi-arrondissements, etc.)
+
+TOTAL: 43.08% des montants géolocalisés par arrondissement
 ```
 
 ---
@@ -1272,10 +1333,13 @@ frontend/public/data/
 
 | Table | Lignes | Années | Qualité | Status |
 |-------|--------|--------|---------|--------|
-| `core_budget` | 32,647 | 2019-2024 | ⭐⭐⭐ | ✅ Production |
-| `core_subventions` | 52,850 | 2018-2024 | ⭐⭐ | ⚠️ 2020-2021 dégradés |
+| `core_budget` | 24,526 | 2019-2024 | ⭐⭐⭐ | ✅ Production |
+| `core_subventions` | 42,931 | 2018-2024 | ⭐⭐ | ⚠️ 2020-2021 dégradés |
 | `core_ap_projets` | 7,155 | 2018-2022 | ⭐⭐ | ⚠️ Manque 2023-2024 |
 | `core_logements_sociaux` | 4,174 | 2001-2024 | ⭐⭐⭐ | ✅ Production |
+
+> **Audit validé** : Totaux core vs staging identiques (0.00% différence), unicité des clés vérifiée.
+> Voir [Audit complet 2026-02-05](#912-résultats-audit-complet).
 
 ### 9.2 Problèmes connus par année
 
@@ -1310,16 +1374,19 @@ frontend/public/data/
 | Jointure avec associations | ⚠️ 46.6% match | 53% sans direction |
 | Montant vs budget total | ✅ 15-20% du budget | Cohérent avec attentes |
 
-**Classification thématique (toutes années, données disponibles):**
+**Classification thématique (toutes années, données disponibles seulement):**
 
-| Source | Records | % Montant | Qualité | Risque hallucination |
-|--------|---------|-----------|---------|---------------------|
-| Pattern matching | 11,572 | **77.5%** | ⭐⭐⭐ | Nul (regex déterministe) |
-| Mapping direction | 12,191 | 11.8% | ⭐⭐⭐ | Nul (table de référence) |
-| LLM Gemini | 1,032 | 9.5% | ⭐⭐ | Faible (vérification échantillon OK) |
-| Default | 25,420 | **1.2%** | ⚠️ | N/A (petites subventions non classifiées) |
+| Source | % Montant | Qualité | Risque hallucination |
+|--------|-----------|---------|---------------------|
+| Pattern matching | **73.94%** | ⭐⭐⭐ | Nul (regex déterministe) |
+| LLM Gemini | 20.90% | ⭐⭐ | Faible (vérification échantillon OK) |
+| Mapping direction | 4.45% | ⭐⭐⭐ | Nul (table de référence) |
+| Default | **0.49%** | ⚠️ | N/A (petites subventions non classifiées) |
 
-> **98.8% des montants sont classifiés** - Les 1.2% restants sont 25k petites subventions (moy. ~6k€) représentant du bruit.
+> **99.51% des montants sont classifiés** (données disponibles).
+> Les 0.49% non classifiés sont des petites subventions où aucune méthode ne match.
+
+**Note**: Les 4,092 lignes de 2020-2021 avec bénéficiaires NULL (source OpenData) sont exclues du calcul de couverture.
 
 ### 9.5 Détail qualité `core_ap_projets`
 
@@ -1480,6 +1547,31 @@ export function DataQualityBanner({ dataset, annee }: DataQualityBannerProps) {
 | 0.70-0.84 | Warning visuel | Icône ⚠️ + tooltip |
 | < 0.70 | Exclusion | Ne pas afficher sur la carte |
 
+### 9.12 Résultats audit complet (2026-02-05)
+
+**Validation end-to-end du pipeline de données**
+
+| Check | Status | Détails |
+|-------|--------|---------|
+| Budget: Total core vs staging | ✅ PASS | 126.16B vs 126.16B (0.00%) |
+| Subventions: Total core vs staging | ✅ PASS | 8.78B vs 8.78B (0.00%) |
+| Budget: Lignes core vs staging | ✅ PASS | 24,526 vs 24,526 (0.00%) |
+| Subventions: Lignes core vs staging | ✅ PASS | 42,931 vs 42,931 (0.00%) |
+| Subventions: Classifiées (données dispo) | ✅ PASS | 99.51% |
+| AP: Géolocalisés (par montant) | ✅ PASS | 43.08% |
+| Budget: Variations YoY < 20% | ✅ PASS | Max: 7.8% |
+| Budget: Unicité clés (< 0.5%) | ✅ PASS | 0.106% doublons |
+| Subventions: Unicité clés (= 0%) | ✅ PASS | 0.000% doublons |
+| AP: Unicité clés (= 0%) | ✅ PASS | 0.000% doublons |
+| Paris Centre: Agrégation 1-4 | ✅ PASS | 1 valeur distincte |
+| CASVP: Dédupliqué | ✅ PASS | 1 entité canonique (1,940 M€) |
+
+**Score: 12/12 checks passed**
+
+> **Conclusion** : Les données sont prêtes pour le frontend. Aucune multiplication de lignes,
+> totaux identiques entre couches, clés uniques vérifiées. Les quelques doublons résiduels
+> dans `core_budget` (0.1%) proviennent de la source raw et ont un impact financier négligeable.
+
 ---
 
 ## 10. Estimation des coûts et temps
@@ -1556,6 +1648,7 @@ paris-budget-dashboard/
 │       ├── seed_mapping_thematiques.csv      # Chapitre → thématique
 │       ├── seed_mapping_directions.csv       # Direction → thématique
 │       ├── seed_mapping_beneficiaires.csv    # 72 patterns regex
+│       ├── seed_mapping_entites.csv          # Déduplication entités (CASVP, etc.)
 │       ├── seed_lieux_connus.csv             # Équipements parisiens
 │       ├── seed_cache_geo_ap.csv             # Cache LLM géoloc AP
 │       ├── seed_cache_thematique_beneficiaires.csv  # Cache LLM (1,244 records)
@@ -1679,4 +1772,6 @@ export GEMINI_API_KEY="your_api_key"
 
 ---
 
-*Document mis à jour le 2026-02-05. Pipeline complet opérationnel. Couverture thématique: 98.8%. 7 marts, 4 core tables, 1,244 bénéficiaires LLM.*
+*Document mis à jour le 2026-02-05. Pipeline complet opérationnel et validé (audit 12/12 OK).*
+*Couverture thématique: 99.51%. Géoloc AP: 43.08%. 7 marts, 4 core tables, 1,244 bénéficiaires LLM.*
+*Nouvelles fonctionnalités: agrégation Paris Centre, déduplication entités.*

@@ -22,6 +22,47 @@ mapping_thematiques AS (
     SELECT * FROM {{ ref('seed_mapping_thematiques') }}
 ),
 
+-- =============================================================================
+-- ÉTAPE 1: Trouver LA meilleure thématique pour chaque (chapitre, fonction)
+-- Priorité: match fonction_prefix spécifique > match générique (fonction_prefix NULL)
+-- =============================================================================
+distinct_combos AS (
+    SELECT DISTINCT chapitre_code, fonction_code
+    FROM budget
+),
+
+thematique_matches AS (
+    SELECT
+        c.chapitre_code,
+        c.fonction_code,
+        m.thematique,
+        m.fonction_prefix,
+        ROW_NUMBER() OVER (
+            PARTITION BY c.chapitre_code, c.fonction_code
+            ORDER BY 
+                -- Priorité au match spécifique (fonction_prefix non NULL)
+                CASE WHEN m.fonction_prefix IS NOT NULL THEN 0 ELSE 1 END,
+                m.fonction_prefix DESC NULLS LAST
+        ) AS rn
+    FROM distinct_combos c
+    INNER JOIN mapping_thematiques m
+        ON c.chapitre_code = m.chapitre_code
+        AND (m.fonction_prefix IS NULL 
+             OR c.fonction_code LIKE CONCAT(m.fonction_prefix, '%'))
+),
+
+best_thematique AS (
+    SELECT 
+        chapitre_code,
+        fonction_code,
+        thematique AS mapped_thematique
+    FROM thematique_matches
+    WHERE rn = 1
+),
+
+-- =============================================================================
+-- ÉTAPE 2: Enrichissement
+-- =============================================================================
 enriched AS (
     SELECT
         -- =====================================================================
@@ -46,7 +87,7 @@ enriched AS (
         
         -- Thématique dashboard (mapping chapitre → thématique)
         COALESCE(
-            m.thematique,
+            bt.mapped_thematique,
             CASE b.chapitre_code
                 WHEN '930' THEN 'Administration'
                 WHEN '931' THEN 'Sécurité'
@@ -109,9 +150,9 @@ enriched AS (
         CURRENT_TIMESTAMP() AS _dbt_updated_at
 
     FROM budget b
-    LEFT JOIN mapping_thematiques m
-        ON b.chapitre_code = m.chapitre_code
-        AND (m.fonction_prefix IS NULL OR b.fonction_code LIKE CONCAT(m.fonction_prefix, '%'))
+    LEFT JOIN best_thematique bt
+        ON b.chapitre_code = bt.chapitre_code
+        AND b.fonction_code = bt.fonction_code
 )
 
 SELECT * FROM enriched

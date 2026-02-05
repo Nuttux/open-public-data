@@ -11,8 +11,9 @@
 --   1. JOIN associations → siret, direction, objet (métadonnées utiles pour filtres)
 --   2. Cascade thématique: pattern → direction → LLM → default
 --   3. Type d'organisme: public / association / entreprise / personne_physique / autre
+--   4. Nom canonique: déduplication entités (CASP, etc.)
 --
--- Output: ~53k lignes enrichies
+-- Output: ~43k lignes enrichies (identique au staging - pas de multiplication)
 -- =============================================================================
 
 WITH subventions AS (
@@ -37,109 +38,135 @@ cache_thematique AS (
     SELECT * FROM {{ ref('seed_cache_thematique_beneficiaires') }}
 ),
 
--- =============================================================================
--- ÉTAPE 1: JOIN avec associations (siret, direction, objet)
--- Jointure sur (beneficiaire_normalise, annee)
--- =============================================================================
-joined_associations AS (
-    SELECT
-        s.*,
-        a.siret AS siret,
-        a.direction,
-        a.objet,
-        a.secteurs_activite
-    FROM subventions s
-    LEFT JOIN associations a
-        ON s.beneficiaire_normalise = a.beneficiaire_normalise
-        AND s.annee = a.annee
+-- Mapping entités (déduplication CASP et similaires)
+mapping_entites AS (
+    SELECT * FROM {{ ref('seed_mapping_entites') }}
 ),
 
 -- =============================================================================
--- ÉTAPE 2: Classification thématique (cascade) + type d'organisme
--- Priorité: 1.Pattern → 2.Direction → 3.LLM cache → 4.Default
+-- ÉTAPE 1: DEDUPLICATE associations for JOIN
+-- On garde UNE ligne par (beneficiaire_normalise, annee) - priorité au dossier
+-- avec le plus gros montant (représente mieux l'activité principale)
 -- =============================================================================
-with_thematique AS (
+associations_dedup AS (
     SELECT
-        j.*,
-        
-        -- Thématique via cascade
-        COALESCE(
-            -- Priorité 1: Pattern matching sur nom bénéficiaire
-            mp.thematique,
-            -- Priorité 2: Mapping direction
-            md.thematique,
-            -- Priorité 3: Cache LLM
-            ct.ode_thematique,
-            -- Priorité 4: Default basé sur catégorie subvention + nature juridique
-            CASE 
-                WHEN j.categorie LIKE '%culture%' OR j.categorie LIKE '%spectacle%' THEN 'Culture'
-                WHEN j.categorie LIKE '%sport%' THEN 'Sport'
-                WHEN j.categorie LIKE '%social%' OR j.categorie LIKE '%solidarit%' THEN 'Social'
-                WHEN j.categorie LIKE '%education%' OR j.categorie LIKE '%scolaire%' THEN 'Éducation'
-                WHEN j.categorie LIKE '%environnement%' OR j.categorie LIKE '%ecolog%' THEN 'Environnement'
-                WHEN j.nature_juridique = 'Entreprises' THEN 'Économie'
-                WHEN j.nature_juridique = 'Établissements publics' THEN 'Administration'
-                ELSE 'Non classifié'
-            END
-        ) AS ode_thematique,
-        
-        -- Sous-catégorie
-        COALESCE(mp.sous_categorie, ct.ode_sous_categorie) AS ode_sous_categorie,
-        
-        -- Source de la thématique (pour debug/audit)
-        CASE
-            WHEN mp.thematique IS NOT NULL THEN 'pattern'
-            WHEN md.thematique IS NOT NULL THEN 'direction'
-            WHEN ct.ode_thematique IS NOT NULL THEN 'llm'
-            ELSE 'default'
-        END AS ode_source_thematique,
-        
-        -- Type d'organisme (pour segmentation UI)
-        CASE j.nature_juridique
-            -- Organismes publics
-            WHEN 'Etablissements publics' THEN 'public'
-            WHEN 'Etablissements de droit public' THEN 'public'
-            WHEN 'Etat' THEN 'public'
-            WHEN 'Communes' THEN 'public'
-            WHEN 'Département' THEN 'public'
-            WHEN 'Régions' THEN 'public'
-            WHEN 'Autres personnes de droit public' THEN 'public'
-            -- Associations
-            WHEN 'Associations' THEN 'association'
-            -- Entreprises (dont ESS)
-            WHEN 'Entreprises' THEN 'entreprise'
-            -- Personnes physiques (artistes, sportifs, etc.)
-            WHEN 'Personnes physiques' THEN 'personne_physique'
-            -- Autres privés
-            WHEN 'Autres personnes de droit privé' THEN 'prive_autre'
-            WHEN 'Autres' THEN 'autre'
-            -- Non renseigné
-            ELSE 'non_renseigne'
-        END AS ode_type_organisme,
-        
-        -- Flag: contribution en nature (vs numéraire)
-        CASE 
-            WHEN j.prestations_nature IS NOT NULL 
-                 AND j.prestations_nature > 0 
-            THEN TRUE 
-            ELSE FALSE 
-        END AS ode_contribution_nature
-        
-    FROM joined_associations j
-    -- Pattern matching: on prend le pattern avec la plus haute priorité
-    LEFT JOIN (
-        SELECT 
-            pattern,
-            thematique,
-            sous_categorie,
-            priorite,
-            ROW_NUMBER() OVER (PARTITION BY pattern ORDER BY priorite) as rn
-        FROM mapping_beneficiaires
-    ) mp ON REGEXP_CONTAINS(j.beneficiaire_normalise, mp.pattern) AND mp.rn = 1
-    LEFT JOIN mapping_directions md ON j.direction = md.direction
-    LEFT JOIN cache_thematique ct ON j.beneficiaire_normalise = ct.beneficiaire_normalise
+        beneficiaire_normalise,
+        annee,
+        siret,
+        direction,
+        objet,
+        secteurs_activite,
+        ROW_NUMBER() OVER (
+            PARTITION BY beneficiaire_normalise, annee 
+            ORDER BY montant DESC
+        ) AS rn
+    FROM associations
+),
+
+associations_unique AS (
+    SELECT 
+        beneficiaire_normalise,
+        annee,
+        siret,
+        direction,
+        objet,
+        secteurs_activite
+    FROM associations_dedup
+    WHERE rn = 1
+),
+
+-- =============================================================================
+-- ÉTAPE 2: Pattern matching pour thématique
+-- Cross join puis ROW_NUMBER pour trouver le meilleur pattern par bénéficiaire
+-- =============================================================================
+distinct_beneficiaires AS (
+    SELECT DISTINCT beneficiaire_normalise
+    FROM subventions
+    WHERE beneficiaire_normalise IS NOT NULL
+),
+
+pattern_matches AS (
+    SELECT
+        b.beneficiaire_normalise,
+        m.thematique,
+        m.sous_categorie,
+        m.priorite,
+        ROW_NUMBER() OVER (
+            PARTITION BY b.beneficiaire_normalise 
+            ORDER BY m.priorite ASC
+        ) AS rn
+    FROM distinct_beneficiaires b
+    CROSS JOIN mapping_beneficiaires m
+    WHERE REGEXP_CONTAINS(b.beneficiaire_normalise, m.pattern)
+),
+
+best_pattern AS (
+    SELECT 
+        beneficiaire_normalise,
+        thematique AS pattern_thematique,
+        sous_categorie AS pattern_sous_categorie
+    FROM pattern_matches
+    WHERE rn = 1
+),
+
+-- =============================================================================
+-- ÉTAPE 3: Entity canonicalization (CASP, etc.)
+-- =============================================================================
+entity_matches AS (
+    SELECT
+        b.beneficiaire_normalise,
+        e.nom_canonique,
+        LENGTH(e.pattern) AS pattern_length,
+        ROW_NUMBER() OVER (
+            PARTITION BY b.beneficiaire_normalise 
+            ORDER BY LENGTH(e.pattern) DESC
+        ) AS rn
+    FROM distinct_beneficiaires b
+    CROSS JOIN mapping_entites e
+    WHERE REGEXP_CONTAINS(b.beneficiaire_normalise, e.pattern)
+),
+
+best_entity AS (
+    SELECT 
+        beneficiaire_normalise,
+        nom_canonique
+    FROM entity_matches
+    WHERE rn = 1
+),
+
+-- =============================================================================
+-- ÉTAPE 4: JOIN avec associations dédupliquées + enrichissements
+-- =============================================================================
+joined AS (
+    SELECT
+        s.*,
+        a.siret,
+        a.direction,
+        a.objet,
+        a.secteurs_activite,
+        bp.pattern_thematique,
+        bp.pattern_sous_categorie,
+        md.thematique AS direction_thematique,
+        ct.ode_thematique AS llm_thematique,
+        ct.ode_sous_categorie AS llm_sous_categorie,
+        be.nom_canonique AS matched_nom_canonique
+    FROM subventions s
+    LEFT JOIN associations_unique a
+        ON s.beneficiaire_normalise = a.beneficiaire_normalise
+        AND s.annee = a.annee
+    LEFT JOIN best_pattern bp
+        ON s.beneficiaire_normalise = bp.beneficiaire_normalise
+    LEFT JOIN mapping_directions md 
+        ON a.direction = md.direction
+    LEFT JOIN cache_thematique ct 
+        ON s.beneficiaire_normalise = ct.beneficiaire_normalise
+    LEFT JOIN best_entity be
+        ON s.beneficiaire_normalise = be.beneficiaire_normalise
 )
 
+-- =============================================================================
+-- ÉTAPE 5: Calcul final des colonnes enrichies
+-- =============================================================================
 SELECT
     -- Colonnes originales
     annee,
@@ -159,11 +186,63 @@ SELECT
     objet,
     secteurs_activite,
     
-    -- Colonnes enrichies (ode_*)
-    ode_thematique,
-    ode_sous_categorie,
-    ode_source_thematique,
-    ode_type_organisme,
-    ode_contribution_nature
+    -- =========================================================================
+    -- COLONNES ENRICHIES (ode_*)
+    -- =========================================================================
+    
+    -- Thématique via cascade
+    COALESCE(
+        pattern_thematique,
+        direction_thematique,
+        llm_thematique,
+        CASE 
+            WHEN categorie LIKE '%culture%' OR categorie LIKE '%spectacle%' THEN 'Culture'
+            WHEN categorie LIKE '%sport%' THEN 'Sport'
+            WHEN categorie LIKE '%social%' OR categorie LIKE '%solidarit%' THEN 'Social'
+            WHEN categorie LIKE '%education%' OR categorie LIKE '%scolaire%' THEN 'Éducation'
+            WHEN categorie LIKE '%environnement%' OR categorie LIKE '%ecolog%' THEN 'Environnement'
+            WHEN nature_juridique = 'Entreprises' THEN 'Économie'
+            WHEN nature_juridique = 'Établissements publics' THEN 'Administration'
+            ELSE 'Non classifié'
+        END
+    ) AS ode_thematique,
+    
+    -- Sous-catégorie
+    COALESCE(pattern_sous_categorie, llm_sous_categorie) AS ode_sous_categorie,
+    
+    -- Source de la thématique (pour debug/audit)
+    CASE
+        WHEN pattern_thematique IS NOT NULL THEN 'pattern'
+        WHEN direction_thematique IS NOT NULL THEN 'direction'
+        WHEN llm_thematique IS NOT NULL THEN 'llm'
+        ELSE 'default'
+    END AS ode_source_thematique,
+    
+    -- Type d'organisme (pour segmentation UI)
+    CASE nature_juridique
+        WHEN 'Etablissements publics' THEN 'public'
+        WHEN 'Etablissements de droit public' THEN 'public'
+        WHEN 'Etat' THEN 'public'
+        WHEN 'Communes' THEN 'public'
+        WHEN 'Département' THEN 'public'
+        WHEN 'Régions' THEN 'public'
+        WHEN 'Autres personnes de droit public' THEN 'public'
+        WHEN 'Associations' THEN 'association'
+        WHEN 'Entreprises' THEN 'entreprise'
+        WHEN 'Personnes physiques' THEN 'personne_physique'
+        WHEN 'Autres personnes de droit privé' THEN 'prive_autre'
+        WHEN 'Autres' THEN 'autre'
+        ELSE 'non_renseigne'
+    END AS ode_type_organisme,
+    
+    -- Flag: contribution en nature (vs numéraire)
+    CASE 
+        WHEN prestations_nature IS NOT NULL AND prestations_nature > 0 
+        THEN TRUE 
+        ELSE FALSE 
+    END AS ode_contribution_nature,
+    
+    -- Nom canonique pour agrégation (déduplication CASP, etc.)
+    COALESCE(matched_nom_canonique, beneficiaire_normalise) AS ode_beneficiaire_canonique
 
-FROM with_thematique
+FROM joined

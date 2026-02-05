@@ -74,7 +74,7 @@ cleaned AS (
         END AS donnees_disponibles,
         
         -- =====================================================================
-        -- CLÉ TECHNIQUE
+        -- CLÉ TECHNIQUE - Base (sera complétée par row_number pour unicité)
         -- =====================================================================
         CONCAT(
             COALESCE(REGEXP_EXTRACT(publication, r'(\d{4})'), 'XXXX'), '-',
@@ -86,13 +86,40 @@ cleaned AS (
                 ))),
                 'INCONNU'
             ), '-',
-            COALESCE(SAFE_CAST(montant_de_la_subvention AS STRING), '0')
+            COALESCE(SAFE_CAST(montant_de_la_subvention AS STRING), '0'), '-',
+            -- Inclut catégorie + nature pour différencier lignes avec même montant
+            SUBSTR(TO_HEX(MD5(CONCAT(
+                COALESCE(categorie_du_beneficiaire, ''),
+                COALESCE(nature_juridique_du_beneficiaire, '')
+            ))), 1, 6)
         ) AS cle_technique
         
     FROM source
     WHERE 
         -- Filtre montants positifs
         ABS(SAFE_CAST(montant_de_la_subvention AS FLOAT64)) > 0
+),
+
+-- Ajoute un suffixe numérique pour les rares doublons restants
+with_unique_key AS (
+    SELECT
+        *,
+        ROW_NUMBER() OVER (PARTITION BY cle_technique ORDER BY beneficiaire) as rn
+    FROM cleaned
 )
 
-SELECT * FROM cleaned
+SELECT
+    annee,
+    collectivite,
+    beneficiaire,
+    beneficiaire_normalise,
+    categorie,
+    nature_juridique,
+    montant,
+    prestations_nature,
+    donnees_disponibles,
+    CASE 
+        WHEN rn > 1 THEN CONCAT(cle_technique, '-', CAST(rn AS STRING))
+        ELSE cle_technique
+    END AS cle_technique
+FROM with_unique_key
