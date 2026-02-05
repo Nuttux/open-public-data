@@ -26,6 +26,8 @@ export interface SubventionFilters {
   thematique: string | null;
   /** Montant minimum */
   montantMin: number;
+  /** Montant maximum (0 = pas de max) */
+  montantMax: number;
 }
 
 /**
@@ -37,7 +39,21 @@ export const DEFAULT_FILTERS: SubventionFilters = {
   directions: [],
   thematique: null,
   montantMin: 0,
+  montantMax: 0,
 };
+
+/**
+ * Plages de montants prédéfinies (min, max, label)
+ * max = 0 signifie "pas de limite"
+ */
+export const MONTANT_RANGES = [
+  { min: 0, max: 0, label: 'Tous les montants' },
+  { min: 0, max: 100000, label: 'Moins de 100 k€' },
+  { min: 100000, max: 1000000, label: '100 k€ à 1 M€' },
+  { min: 1000000, max: 10000000, label: '1 M€ à 10 M€' },
+  { min: 10000000, max: 100000000, label: '10 M€ à 100 M€' },
+  { min: 100000000, max: 0, label: 'Plus de 100 M€' },
+];
 
 /**
  * Mapping nature juridique → type organisme simplifié
@@ -126,12 +142,13 @@ export default function SubventionsFilters({
   /**
    * Nombre de filtres actifs
    */
+  // Compter les filtres actifs (plage de montant compte si min ou max sont modifiés)
   const activeFiltersCount = [
     filters.search ? 1 : 0,
     filters.typesOrganisme.length > 0 ? 1 : 0,
     filters.directions.length > 0 ? 1 : 0,
     filters.thematique ? 1 : 0,
-    filters.montantMin > 0 ? 1 : 0,
+    (filters.montantMin > 0 || filters.montantMax > 0) ? 1 : 0,
   ].reduce((a, b) => a + b, 0);
 
   return (
@@ -217,21 +234,27 @@ export default function SubventionsFilters({
             </div>
           )}
 
-          {/* Montant minimum */}
+          {/* Plage de montant */}
           <div>
             <label className="block text-xs font-medium text-slate-400 mb-1.5">
-              Montant minimum
+              Plage de montant
             </label>
             <select
-              value={filters.montantMin}
-              onChange={(e) => updateFilter('montantMin', Number(e.target.value))}
+              value={`${filters.montantMin}-${filters.montantMax}`}
+              onChange={(e) => {
+                const [min, max] = e.target.value.split('-').map(Number);
+                onFiltersChange({ ...filters, montantMin: min, montantMax: max });
+              }}
               className="w-full px-3 py-2 bg-slate-900/50 border border-slate-700 rounded-lg text-sm text-slate-100 focus:outline-none focus:border-purple-500 transition-colors"
             >
-              <option value={0}>Tous les montants</option>
-              <option value={10000}>Plus de 10 000 €</option>
-              <option value={100000}>Plus de 100 000 €</option>
-              <option value={1000000}>Plus de 1 M€</option>
-              <option value={10000000}>Plus de 10 M€</option>
+              {MONTANT_RANGES.map((range) => (
+                <option 
+                  key={`${range.min}-${range.max}`} 
+                  value={`${range.min}-${range.max}`}
+                >
+                  {range.label}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -268,9 +291,12 @@ export default function SubventionsFilters({
 
           {/* Stats */}
           {stats && (
-            <div className="pt-2 border-t border-slate-700/50 text-xs text-slate-500">
+            <div className="pt-2 border-t border-slate-700/50 text-xs text-slate-500 space-y-0.5">
+              <p className="font-medium text-slate-400">
+                {stats.filtered.toLocaleString('fr-FR')} affichés
+              </p>
               <p>
-                {stats.filtered.toLocaleString('fr-FR')} / {stats.total.toLocaleString('fr-FR')} bénéficiaires
+                sur top {stats.total.toLocaleString('fr-FR')} bénéficiaires
               </p>
             </div>
           )}

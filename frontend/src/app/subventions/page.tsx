@@ -219,8 +219,12 @@ export default function SubventionsPage() {
       );
     }
     
+    // Filtre plage de montant
     if (filters.montantMin > 0) {
       filtered = filtered.filter(b => b.montant_total >= filters.montantMin);
+    }
+    if (filters.montantMax > 0) {
+      filtered = filtered.filter(b => b.montant_total <= filters.montantMax);
     }
     
     const montantFiltered = filtered.reduce((sum, b) => sum + b.montant_total, 0);
@@ -295,30 +299,68 @@ export default function SubventionsPage() {
           </div>
         )}
 
-        {/* Stats rapides */}
+        {/* Info sur la couverture des données */}
+        <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-3 mb-4 flex items-start gap-2">
+          <span className="text-blue-400 mt-0.5">ℹ️</span>
+          <div className="text-sm text-blue-300">
+            <p>
+              <strong>Couverture :</strong> Cette page présente les <strong>top {stats.total} bénéficiaires</strong> par montant, 
+              couvrant <strong>{treemapData?.total_montant && stats.montantTotal 
+                ? `~${((stats.montantTotal / treemapData.total_montant) * 100).toFixed(0)}%` 
+                : '~97%'}</strong> du total des subventions versées.
+            </p>
+            <p className="text-xs text-blue-400/70 mt-1">
+              Note : Les années 2020 et 2021 ne sont pas disponibles (données bénéficiaires absentes de la source OpenData Paris).
+            </p>
+          </div>
+        </div>
+
+        {/* Stats rapides - Affiche le total de l'année + stats filtrées */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+          {/* Total année (fixe) */}
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-500 uppercase tracking-wide">Total subventions</p>
+            <p className="text-xs text-slate-500 uppercase tracking-wide">Total {selectedYear}</p>
             <p className="text-2xl font-bold text-slate-100 mt-1">
               {formatEuroCompact(treemapData?.total_montant || 0)}
             </p>
-          </div>
-          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-500 uppercase tracking-wide">Bénéficiaires</p>
-            <p className="text-2xl font-bold text-slate-100 mt-1">
-              {formatNumber(stats.total)}
+            <p className="text-xs text-slate-500 mt-1">
+              {formatNumber(index.totals_by_year[String(selectedYear)]?.nb_subventions || 0)} subventions
             </p>
           </div>
+          
+          {/* Montant filtré */}
+                      <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
+                        <p className="text-xs text-slate-500 uppercase tracking-wide">Montant affiché</p>
+                        <p className="text-2xl font-bold text-purple-400 mt-1">
+                          {formatEuroCompact(stats.montantFiltered)}
+                        </p>
+                        <p className="text-xs text-slate-500 mt-1">
+                          {stats.montantFiltered > 0 && treemapData?.total_montant 
+                            ? `${((stats.montantFiltered / treemapData.total_montant) * 100).toFixed(0)}% des subventions versées`
+                            : '-'
+                          }
+                        </p>
+                      </div>
+          
+          {/* Bénéficiaires affichés */}
+          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
+            <p className="text-xs text-slate-500 uppercase tracking-wide">Bénéficiaires affichés</p>
+            <p className="text-2xl font-bold text-purple-400 mt-1">
+              {formatNumber(stats.filtered)}
+            </p>
+            <p className="text-xs text-slate-500 mt-1">
+              sur {formatNumber(stats.total)} top bénéficiaires
+            </p>
+          </div>
+          
+          {/* Thématiques */}
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
             <p className="text-xs text-slate-500 uppercase tracking-wide">Thématiques</p>
             <p className="text-2xl font-bold text-slate-100 mt-1">
-              {treemapData?.nb_thematiques || 0}
+              {filters.thematique ? 1 : (treemapData?.nb_thematiques || 0)}
             </p>
-          </div>
-          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-500 uppercase tracking-wide">Filtrés</p>
-            <p className="text-2xl font-bold text-purple-400 mt-1">
-              {formatNumber(stats.filtered)}
+            <p className="text-xs text-slate-500 mt-1">
+              {filters.thematique ? `Filtre: ${filters.thematique}` : 'Toutes'}
             </p>
           </div>
         </div>
@@ -358,7 +400,10 @@ export default function SubventionsPage() {
             <div>
               <h3 className="text-lg font-semibold text-slate-100 mb-4 flex items-center gap-2">
                 <span>📋</span>
-                Top bénéficiaires
+                Top {formatNumber(stats.total)} bénéficiaires
+                <span className="text-sm font-normal text-slate-400">
+                  (par montant total de subventions)
+                </span>
               </h3>
               <SubventionsTable
                 data={beneficiaires}

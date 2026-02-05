@@ -126,9 +126,12 @@ export default function SubventionsTable({
       );
     }
 
-    // Filtre montant minimum
+    // Filtre plage de montant
     if (filters.montantMin > 0) {
       result = result.filter(b => b.montant_total >= filters.montantMin);
+    }
+    if (filters.montantMax > 0) {
+      result = result.filter(b => b.montant_total <= filters.montantMax);
     }
 
     return result;
@@ -246,10 +249,10 @@ export default function SubventionsTable({
       <div className="px-4 py-3 border-b border-slate-700/50 flex items-center justify-between">
         <div>
           <h3 className="font-medium text-slate-100">
-            {formatNumber(sortedData.length)} bénéficiaire{sortedData.length > 1 ? 's' : ''}
+            {formatNumber(sortedData.length)} bénéficiaire{sortedData.length > 1 ? 's' : ''} affiché{sortedData.length > 1 ? 's' : ''}
           </h3>
           <p className="text-xs text-slate-500">
-            Total: {formatEuroCompact(sortedData.reduce((sum, b) => sum + b.montant_total, 0))}
+            Montant total affiché: {formatEuroCompact(sortedData.reduce((sum, b) => sum + b.montant_total, 0))}
           </p>
         </div>
         
