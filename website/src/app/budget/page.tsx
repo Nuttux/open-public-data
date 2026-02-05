@@ -20,10 +20,15 @@ import DrilldownPanel from '@/components/DrilldownPanel';
 import type { BudgetData, BudgetIndex, DrilldownItem, DataStatus } from '@/lib/formatters';
 
 /** Type de vue pour le toggle */
-type ViewMode = 'fonction' | 'nature';
+type ViewMode = 'flux' | 'depenses';
 
 /**
  * Segmented Control pour basculer entre les vues
+ * 
+ * Vues disponibles:
+ * - Flux budgétaires: Sankey montrant sources → destinations (fonction)
+ * - Types de dépenses: Donut montrant la répartition par nature comptable
+ * 
  * Responsive: plus compact sur mobile
  */
 function ViewToggle({ 
@@ -38,24 +43,24 @@ function ViewToggle({
   return (
     <div className="inline-flex rounded-lg bg-slate-800/80 p-0.5 sm:p-1 border border-slate-700/50">
       <button
-        onClick={() => onChange('fonction')}
+        onClick={() => onChange('flux')}
         className={`
           px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-md text-xs sm:text-sm font-medium transition-all duration-200
-          ${value === 'fonction' 
+          ${value === 'flux' 
             ? 'bg-purple-500 text-white shadow-lg shadow-purple-500/25' 
             : 'text-slate-400 hover:text-slate-200 active:bg-slate-700/50'
           }
         `}
       >
-        <span className="sm:hidden">Fonction</span>
-        <span className="hidden sm:inline">Par fonction</span>
+        <span className="sm:hidden">Flux</span>
+        <span className="hidden sm:inline">Flux budgétaires</span>
       </button>
       <button
-        onClick={() => onChange('nature')}
+        onClick={() => onChange('depenses')}
         disabled={!hasNatureData}
         className={`
           px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-md text-xs sm:text-sm font-medium transition-all duration-200
-          ${value === 'nature' 
+          ${value === 'depenses' 
             ? 'bg-purple-500 text-white shadow-lg shadow-purple-500/25' 
             : hasNatureData 
               ? 'text-slate-400 hover:text-slate-200 active:bg-slate-700/50'
@@ -64,8 +69,8 @@ function ViewToggle({
         `}
         title={!hasNatureData ? 'Données non disponibles pour cette année' : undefined}
       >
-        <span className="sm:hidden">Nature</span>
-        <span className="hidden sm:inline">Par nature</span>
+        <span className="sm:hidden">Dépenses</span>
+        <span className="hidden sm:inline">Types de dépenses</span>
       </button>
     </div>
   );
@@ -155,7 +160,7 @@ export default function Home() {
   const [budgetData, setBudgetData] = useState<BudgetData | null>(null);
   const [natureData, setNatureData] = useState<BudgetNatureData | null>(null);
   const [drilldown, setDrilldown] = useState<DrilldownState | null>(null);
-  const [viewMode, setViewMode] = useState<ViewMode>('fonction');
+  const [viewMode, setViewMode] = useState<ViewMode>('flux');
   
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -413,15 +418,15 @@ export default function Home() {
                 hasNatureData={!!natureData}
               />
               <p className="text-xs text-slate-500 hidden sm:block">
-                {viewMode === 'fonction' 
-                  ? 'Où va l\'argent (éducation, culture, social...)' 
-                  : 'Comment il est dépensé (personnel, investissements...)'
+                {viewMode === 'flux' 
+                  ? 'D\'où vient l\'argent et où va-t-il (éducation, social...)' 
+                  : 'Comment est-il dépensé (personnel, subventions, investissements...)'
                 }
               </p>
             </div>
 
-            {/* Vue Par Fonction: Sankey */}
-            {viewMode === 'fonction' && (
+            {/* Vue Flux budgétaires: Sankey */}
+            {viewMode === 'flux' && (
               <>
                 <BudgetSankey
                   data={budgetData}
@@ -449,27 +454,30 @@ export default function Home() {
               </>
             )}
 
-            {/* Vue Par Nature: Donut */}
-            {viewMode === 'nature' && natureData && (
+            {/* Vue Types de dépenses: Donut */}
+            {viewMode === 'depenses' && natureData && (
               <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-lg">🍩</span>
                   <h3 className="text-lg font-semibold text-slate-100">
-                    Répartition par nature de dépense
+                    Répartition par type de dépense
                   </h3>
                 </div>
-                <p className="text-sm text-slate-400 mb-4">
-                  Cliquez sur une catégorie pour voir le détail par thématique
+                <p className="text-sm text-slate-400 mb-1">
+                  Cliquez sur une catégorie pour voir le détail
+                </p>
+                <p className="text-xs text-slate-500 mb-4">
+                  Classification comptable : personnel, subventions, investissements, etc.
                 </p>
                 <NatureDonut data={natureData} height={400} />
               </div>
             )}
 
-            {/* Fallback si pas de données nature */}
-            {viewMode === 'nature' && !natureData && (
+            {/* Fallback si pas de données dépenses */}
+            {viewMode === 'depenses' && !natureData && (
               <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-12 text-center">
                 <p className="text-slate-400">
-                  Données par nature non disponibles pour {selectedYear}
+                  Données par type de dépense non disponibles pour {selectedYear}
                 </p>
               </div>
             )}
