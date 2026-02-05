@@ -5,10 +5,10 @@
  * 
  * FEATURES:
  * - Sélecteur d'année (2019-2024)
+ * - Toggle vue: Par fonction (Sankey) / Par nature (Donut)
  * - Indicateur de complétude des données (COMPLET/PARTIEL)
  * - Cartes KPI avec vision économique claire
- * - Graphique Sankey interactif
- * - Drill-down multi-niveaux avec navigation par préfixe
+ * - Drill-down multi-niveaux
  */
 
 import { useState, useEffect, useCallback } from 'react';
@@ -18,6 +18,55 @@ import BudgetSankey from '@/components/BudgetSankey';
 import NatureDonut, { type BudgetNatureData } from '@/components/NatureDonut';
 import DrilldownPanel from '@/components/DrilldownPanel';
 import type { BudgetData, BudgetIndex, DrilldownItem, DataStatus } from '@/lib/formatters';
+
+/** Type de vue pour le toggle */
+type ViewMode = 'fonction' | 'nature';
+
+/**
+ * Segmented Control pour basculer entre les vues
+ */
+function ViewToggle({ 
+  value, 
+  onChange,
+  hasNatureData 
+}: { 
+  value: ViewMode; 
+  onChange: (mode: ViewMode) => void;
+  hasNatureData: boolean;
+}) {
+  return (
+    <div className="inline-flex rounded-lg bg-slate-800/80 p-1 border border-slate-700/50">
+      <button
+        onClick={() => onChange('fonction')}
+        className={`
+          px-4 py-2 rounded-md text-sm font-medium transition-all duration-200
+          ${value === 'fonction' 
+            ? 'bg-purple-500 text-white shadow-lg shadow-purple-500/25' 
+            : 'text-slate-400 hover:text-slate-200'
+          }
+        `}
+      >
+        Par fonction
+      </button>
+      <button
+        onClick={() => onChange('nature')}
+        disabled={!hasNatureData}
+        className={`
+          px-4 py-2 rounded-md text-sm font-medium transition-all duration-200
+          ${value === 'nature' 
+            ? 'bg-purple-500 text-white shadow-lg shadow-purple-500/25' 
+            : hasNatureData 
+              ? 'text-slate-400 hover:text-slate-200'
+              : 'text-slate-600 cursor-not-allowed'
+          }
+        `}
+        title={!hasNatureData ? 'Données non disponibles pour cette année' : undefined}
+      >
+        Par nature
+      </button>
+    </div>
+  );
+}
 
 /**
  * Composant d'indicateur de statut des données
@@ -103,9 +152,16 @@ export default function Home() {
   const [budgetData, setBudgetData] = useState<BudgetData | null>(null);
   const [natureData, setNatureData] = useState<BudgetNatureData | null>(null);
   const [drilldown, setDrilldown] = useState<DrilldownState | null>(null);
+  const [viewMode, setViewMode] = useState<ViewMode>('fonction');
   
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  // Gérer le changement de vue (reset drilldown)
+  const handleViewChange = useCallback((mode: ViewMode) => {
+    setViewMode(mode);
+    setDrilldown(null); // Reset drilldown when switching views
+  }, []);
 
   useEffect(() => {
     async function loadIndex() {
@@ -346,44 +402,73 @@ export default function Home() {
               emprunts={budgetData.links.find(l => l.source === 'Emprunts')?.value || 0}
             />
 
-            <BudgetSankey
-              data={budgetData}
-              onNodeClick={handleNodeClick}
-            />
+            {/* Toggle Vue */}
+            <div className="flex items-center justify-between mb-4">
+              <ViewToggle 
+                value={viewMode} 
+                onChange={handleViewChange}
+                hasNatureData={!!natureData}
+              />
+              <p className="text-xs text-slate-500 hidden sm:block">
+                {viewMode === 'fonction' 
+                  ? 'Où va l\'argent (éducation, culture, social...)' 
+                  : 'Comment il est dépensé (personnel, investissements...)'
+                }
+              </p>
+            </div>
 
-            {/* Donut par nature de dépense */}
-            {natureData && (
-              <div className="mt-6 bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6">
-                <div className="flex items-center gap-2 mb-4">
+            {/* Vue Par Fonction: Sankey */}
+            {viewMode === 'fonction' && (
+              <>
+                <BudgetSankey
+                  data={budgetData}
+                  onNodeClick={handleNodeClick}
+                />
+
+                {currentDrilldown && (
+                  <DrilldownPanel
+                    title={currentDrilldown.title}
+                    category={currentDrilldown.category}
+                    parentCategory={breadcrumbs[0]}
+                    items={currentDrilldown.items}
+                    sectionData={
+                      currentDrilldown.category === 'expense' && drilldown?.currentLevel === 0
+                        ? budgetData.bySection?.[currentDrilldown.title]
+                        : undefined
+                    }
+                    breadcrumbs={breadcrumbs}
+                    currentLevel={drilldown?.currentLevel || 0}
+                    onClose={handleCloseDrilldown}
+                    onBreadcrumbClick={handleBreadcrumbClick}
+                    onItemClick={canDrillDeeper || (drilldown?.currentLevel === 0) ? handleDrilldownItemClick : undefined}
+                  />
+                )}
+              </>
+            )}
+
+            {/* Vue Par Nature: Donut */}
+            {viewMode === 'nature' && natureData && (
+              <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6">
+                <div className="flex items-center gap-2 mb-2">
                   <span className="text-lg">🍩</span>
                   <h3 className="text-lg font-semibold text-slate-100">
                     Répartition par nature de dépense
                   </h3>
                 </div>
                 <p className="text-sm text-slate-400 mb-4">
-                  Comment sont ventilées les dépenses : personnel, investissements, subventions...
+                  Cliquez sur une catégorie pour voir le détail par thématique
                 </p>
-                <NatureDonut data={natureData} height={350} />
+                <NatureDonut data={natureData} height={400} />
               </div>
             )}
 
-            {currentDrilldown && (
-              <DrilldownPanel
-                title={currentDrilldown.title}
-                category={currentDrilldown.category}
-                parentCategory={breadcrumbs[0]}
-                items={currentDrilldown.items}
-                sectionData={
-                  currentDrilldown.category === 'expense' && drilldown?.currentLevel === 0
-                    ? budgetData.bySection?.[currentDrilldown.title]
-                    : undefined
-                }
-                breadcrumbs={breadcrumbs}
-                currentLevel={drilldown?.currentLevel || 0}
-                onClose={handleCloseDrilldown}
-                onBreadcrumbClick={handleBreadcrumbClick}
-                onItemClick={canDrillDeeper || (drilldown?.currentLevel === 0) ? handleDrilldownItemClick : undefined}
-              />
+            {/* Fallback si pas de données nature */}
+            {viewMode === 'nature' && !natureData && (
+              <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-12 text-center">
+                <p className="text-slate-400">
+                  Données par nature non disponibles pour {selectedYear}
+                </p>
+              </div>
             )}
           </>
         ) : null}
