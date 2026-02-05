@@ -606,38 +606,52 @@ def export_index(summaries: list[dict]):
 
 def main():
     """Main entry point."""
-    print("=" * 60)
-    print("Paris Budget Sankey Data Export")
-    print("=" * 60)
+    # Import logger
+    import sys
+    sys.path.insert(0, str(Path(__file__).parent))
+    from utils.logger import Logger
     
+    log = Logger("export_sankey")
+    log.header("Export Budget Sankey → JSON")
+    
+    log.info("Création dossier de sortie", extra=str(OUTPUT_DIR))
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     
     # Load LLM enrichments (for reference, not heavily used now)
+    log.section("Chargement enrichissements LLM")
     llm_enrichments = load_llm_enrichments()
     
     # Initialize BigQuery client
+    log.section("Connexion BigQuery")
+    log.info("Initialisation client", extra=PROJECT_ID)
     client = get_bigquery_client()
+    log.success("Connecté à BigQuery")
     
+    log.section(f"Export des {len(YEARS)} années")
     summaries = []
-    for year in YEARS:
+    for i, year in enumerate(YEARS, 1):
+        log.progress(i, len(YEARS), f"Année {year}")
         try:
             summary = export_year(client, year, llm_enrichments)
             summaries.append(summary)
+            log.success(f"Année {year} exportée", extra=f"{summary['recettes']/1e9:.2f} Md€ recettes")
         except Exception as e:
-            print(f"  ✗ Error processing {year}: {e}")
+            log.error(f"Erreur année {year}", extra=str(e))
             import traceback
             traceback.print_exc()
     
     if summaries:
+        log.section("Génération de l'index")
         export_index(summaries)
+        log.success("Index créé", extra="budget_index.json")
     
-    print("\n" + "=" * 60)
-    print(f"Export complete! {len(summaries)} years exported.")
-    print("=" * 60)
-    print("\nData status legend:")
-    print("  COMPLET: Budget + Subventions + AP/CP + Arrondissements")
-    print("  PARTIEL: Budget + Subventions (missing some sources)")
-    print("  BUDGET_SEUL: Only main budget available")
+    log.summary()
+    
+    # Légende
+    print("Légende statuts:")
+    print("  COMPLET  = Budget + Subventions + AP/CP + Arrondissements")
+    print("  PARTIEL  = Budget + Subventions (sources manquantes)")
+    print("  BUDGET_SEUL = Budget principal uniquement")
 
 
 if __name__ == "__main__":

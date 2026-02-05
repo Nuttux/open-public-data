@@ -270,37 +270,43 @@ def export_beneficiaires_year(client: bigquery.Client, year: int, limit: int = 5
 
 def main():
     """Point d'entrée principal."""
+    import sys
+    sys.path.insert(0, str(Path(__file__).parent))
+    from utils.logger import Logger
+    
     parser = argparse.ArgumentParser(description="Export données subventions depuis dbt")
     parser.add_argument('--year', type=int, help="Année spécifique (sinon toutes)")
     parser.add_argument('--limit', type=int, default=500, 
                        help="Limite de bénéficiaires par année")
     args = parser.parse_args()
     
-    print("=" * 60)
-    print("📊 Export des données subventions (dbt → JSON)")
-    print("=" * 60)
+    log = Logger("export_subventions")
+    log.header("Export Subventions → JSON")
     
     # Créer le dossier de sortie
+    log.info("Dossier de sortie", extra=str(OUTPUT_DIR))
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    print(f"Dossier: {OUTPUT_DIR}\n")
     
     # Client BigQuery
+    log.section("Connexion BigQuery")
     client = bigquery.Client(project=PROJECT_ID)
+    log.success("Connecté", extra=PROJECT_ID)
     
     # Index
+    log.section("Génération de l'index")
     index = export_index(client)
     years = [args.year] if args.year else index["available_years"]
-    
-    print()
+    log.success("Index créé", extra=f"{len(years)} années disponibles")
     
     # Export par année
-    for year in years:
+    log.section(f"Export des données ({len(years)} années)")
+    for i, year in enumerate(years, 1):
+        log.progress(i, len(years), f"Année {year}")
         export_treemap_year(client, year)
         export_beneficiaires_year(client, year, args.limit)
+        log.success(f"Année {year}", extra=f"treemap + {args.limit} bénéficiaires")
     
-    print("\n" + "=" * 60)
-    print("✅ Export subventions terminé!")
-    print("=" * 60)
+    log.summary()
 
 
 if __name__ == "__main__":

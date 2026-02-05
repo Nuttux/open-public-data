@@ -382,25 +382,36 @@ def export_stats_arrondissements(client, investissements_by_year, logements_by_y
 
 def main():
     """Point d'entrée principal."""
-    print("=" * 60)
-    print("EXPORT DONNÉES CARTE - Paris Budget Dashboard")
-    print("=" * 60)
+    import sys
+    sys.path.insert(0, str(Path(__file__).parent))
+    from utils.logger import Logger
+    
+    log = Logger("export_map")
+    log.header("Export Données Carte → JSON")
     
     # Créer le répertoire de sortie
+    log.info("Dossier de sortie", extra=str(OUTPUT_DIR))
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     
     # Client BigQuery
+    log.section("Connexion BigQuery")
     client = get_client()
+    log.success("Connecté", extra=PROJECT_ID)
     
     # Export des données
+    log.section("Export investissements (AP)")
     investissements = export_investissements(client)
-    logements = export_logements_sociaux(client)
-    export_stats_arrondissements(client, investissements, logements)
+    log.success("Investissements exportés", extra=f"{sum(len(v) for v in investissements.values())} projets")
     
-    print("\n" + "=" * 60)
-    print("✅ Export terminé!")
-    print(f"   Fichiers dans: {OUTPUT_DIR}")
-    print("=" * 60)
+    log.section("Export logements sociaux")
+    logements = export_logements_sociaux(client)
+    log.success("Logements exportés", extra=f"{sum(len(v) for v in logements.values())} livraisons")
+    
+    log.section("Stats par arrondissement")
+    export_stats_arrondissements(client, investissements, logements)
+    log.success("Stats arrondissements exportées")
+    
+    log.summary()
 
 
 if __name__ == "__main__":
