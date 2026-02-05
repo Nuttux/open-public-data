@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Website — Données Lumières
 
-## Getting Started
+> Next.js 16 (App Router) + Tailwind + ECharts + Leaflet
 
-First, run the development server:
+## 🚀 Démarrage
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# → http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📁 Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+website/
+├── src/app/
+│   ├── page.tsx            # Landing (/)
+│   ├── budget/page.tsx     # Sankey (/budget)
+│   ├── evolution/page.tsx  # Charts temporels
+│   ├── subventions/page.tsx# Treemap + table
+│   ├── carte/page.tsx      # Map interactive
+│   └── blog/               # Articles MDX
+├── content/blog/           # Fichiers .mdx
+└── public/data/            # JSON (généré par pipeline)
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🎨 Stack
 
-## Learn More
+- **Framework** : Next.js 16 (Turbopack)
+- **Styling** : Tailwind CSS v4
+- **Charts** : ECharts via `echarts-for-react`
+- **Maps** : Leaflet via `react-leaflet`
+- **Blog** : MDX avec `next-mdx-remote`
 
-To learn more about Next.js, take a look at the following resources:
+## 📊 Données
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Les JSON dans `public/data/` sont générés par le pipeline :
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+cd ../pipeline
+python scripts/export/export_all.py
+```
 
-## Deploy on Vercel
+## 🛠️ Commandes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run dev       # Dev server
+npm run build     # Build production
+npm run lint      # ESLint
+```

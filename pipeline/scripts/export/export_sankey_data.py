@@ -300,13 +300,18 @@ def get_data_availability(year: int) -> dict:
 
 
 def get_bigquery_client():
-    """Initialize BigQuery client with credentials."""
+    """Initialize BigQuery client with credentials.
+    
+    Credentials are loaded from (in order of priority):
+    1. GOOGLE_APPLICATION_CREDENTIALS env var
+    2. gcloud default credentials (~/.config/gcloud/application_default_credentials.json)
+    3. Local credentials.json in pipeline folder
+    """
     creds_path = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
     if not creds_path:
         possible_paths = [
-            Path.home() / "Downloads" / "open-data-france-484717-68f33f082f1f.json",
             Path.home() / ".config" / "gcloud" / "application_default_credentials.json",
-            Path(__file__).parent.parent / "credentials.json",
+            Path(__file__).parent.parent.parent / "credentials.json",
         ]
         for p in possible_paths:
             if p.exists():
