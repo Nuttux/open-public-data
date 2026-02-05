@@ -1,7 +1,37 @@
 /**
  * Color definitions for budget categories
- * Shared between Sankey and Drilldown components
+ * Shared between Sankey, Drilldown, and Subventions components
  */
+
+// Couleurs par thématique de subventions
+export const THEMATIQUE_COLORS: Record<string, string> = {
+  'Culture': '#a855f7',                  // Purple
+  'Culture & Sport': '#9333ea',          // Purple darker
+  'Social': '#ef4444',                   // Red
+  'Social - Solidarité': '#dc2626',      // Red darker
+  'Social - Petite enfance': '#f87171',  // Red lighter
+  'Éducation': '#3b82f6',                // Blue
+  'Sport': '#22c55e',                    // Green
+  'Transport': '#f59e0b',                // Amber
+  'Transport - Voirie': '#d97706',       // Amber darker
+  'Logement': '#06b6d4',                 // Cyan
+  'Urbanisme - Logement': '#0891b2',     // Cyan darker
+  'Économie': '#ec4899',                 // Pink
+  'Environnement': '#84cc16',            // Lime
+  'Administration': '#64748b',           // Slate
+  'Santé': '#14b8a6',                    // Teal
+  'Sécurité': '#f97316',                 // Orange
+  'International': '#8b5cf6',            // Violet
+  'Non classifié': '#94a3b8',            // Slate light
+  'Autre': '#6b7280',                    // Gray
+};
+
+/**
+ * Get color for a thematique
+ */
+export function getThematiqueColor(thematique: string): string {
+  return THEMATIQUE_COLORS[thematique] || THEMATIQUE_COLORS['Autre'];
+}
 
 // Couleurs par groupe de recettes
 export const REVENUE_COLORS: Record<string, string> = {

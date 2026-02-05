@@ -5,7 +5,8 @@
  * 
  * Permet de naviguer entre:
  * - Dashboard Sankey (page principale)
- * - Carte interactive (subventions, logements, etc.)
+ * - Subventions (treemap + table bénéficiaires)
+ * - Carte interactive (investissements, logements)
  */
 
 import Link from 'next/link';
@@ -20,6 +21,12 @@ const navLinks = [
     label: 'Budget',
     icon: '📊',
     description: 'Flux budgétaires',
+  },
+  {
+    href: '/subventions',
+    label: 'Subventions',
+    icon: '💰',
+    description: 'Bénéficiaires par thématique',
   },
   {
     href: '/carte',
