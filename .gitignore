@@ -10,3 +10,11 @@ service-account*.json
 
 # Temp files
 *.json.bak
+
+# Vercel
+.vercel
+
+# Node / Next.js
+node_modules/
+.next/
+out/
