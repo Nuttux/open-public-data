@@ -78,12 +78,13 @@ export default function EvolutionPage() {
         const data: EvolutionBudgetData = await response.json();
         setRawData(data);
 
-        // Transformer pour EvolutionChart (Recettes/Dépenses)
+        // Transformer pour EvolutionChart et YoyCards
+        // On utilise recettes_propres (hors emprunts) pour refléter la santé financière réelle
         const chartData: YearlyBudget[] = data.years.map(y => ({
           year: y.year,
-          recettes: y.totals.recettes,
+          recettes: y.totals.recettes_propres,  // Recettes PROPRES (hors emprunts)
           depenses: y.totals.depenses,
-          // Utiliser surplus/déficit comme "solde" pour la santé financière réelle
+          // Surplus/déficit = recettes propres - dépenses
           solde: y.totals.surplus_deficit,
         }));
         setBudgetData(chartData);
