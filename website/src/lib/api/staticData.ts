@@ -24,18 +24,20 @@ interface SubventionsIndex {
 
 /**
  * Index des investissements (AP)
- * Nouveau format unifié depuis dbt core_ap_projets
+ * Format fusionné: PDF Investissements Localisés + BigQuery OpenData
  */
-interface InvestissementsIndex {
-  years: number[];
-  totalRecords: number;
-  totalMontant: number;
-  coverage: {
-    withArrondissement: number;
-    withCoords: number;
-    montantLocalise: number;
-    pourcentageLocalise: number;
-  };
+interface InvestissementsCompletIndex {
+  availableYears: number[];
+  source: string;
+  lastUpdate: string;
+  yearStats: Record<string, {
+    pdf_projets: number;
+    pdf_total: number;
+    bq_added: number;
+    bq_added_total: number;
+    total_projets: number;
+    total_montant: number;
+  }>;
 }
 
 /**
@@ -55,8 +57,8 @@ const dataCache: {
   logementsParArr?: ArrondissementStats[];
   subventions?: Record<number, Subvention[]>;
   subventionsIndex?: SubventionsIndex;
-  investissements?: Record<number, AutorisationProgramme[]>;
-  investissementsIndex?: InvestissementsIndex;
+  investissementsComplet?: Record<number, AutorisationProgramme[]>;
+  investissementsCompletIndex?: InvestissementsCompletIndex;
   autorisations?: Record<number, AutorisationProgramme[]>;
   autorisationsIndex?: AutorisationsIndex;
   arrondissementsStats?: ArrondissementStats[];
@@ -148,8 +150,8 @@ export async function loadSubventionsIndex(): Promise<SubventionsIndex> {
 /**
  * Charge l'index des investissements (AP)
  * 
- * Utilise le nouveau format unifié depuis dbt core_ap_projets
- * qui contient toutes les années avec les données enrichies par LLM
+ * Utilise le format fusionné: PDF Investissements Localisés + BigQuery OpenData
+ * Fichier: investissements_complet_index.json
  */
 export async function loadAutorisationsIndex(): Promise<AutorisationsIndex> {
   if (dataCache.autorisationsIndex) {
@@ -157,16 +159,16 @@ export async function loadAutorisationsIndex(): Promise<AutorisationsIndex> {
   }
 
   try {
-    // Charger le nouvel index unifié des investissements
-    const investData = await loadJson<InvestissementsIndex>(
-      `${BASE_PATH}/investissements_index.json`
+    // Charger le nouvel index fusionné (investissements_complet)
+    const investCompletData = await loadJson<InvestissementsCompletIndex>(
+      `${BASE_PATH}/investissements_complet_index.json`
     ).catch(() => null);
     
-    if (investData) {
-      dataCache.investissementsIndex = investData;
+    if (investCompletData) {
+      dataCache.investissementsCompletIndex = investCompletData;
       
       const result: AutorisationsIndex = {
-        availableYears: investData.years,
+        availableYears: investCompletData.availableYears,
         thematiques: [
           'education', 'sport', 'culture', 'environnement', 
           'mobilite', 'logement', 'social', 'democratie', 'urbanisme', 'autre'
@@ -178,15 +180,15 @@ export async function loadAutorisationsIndex(): Promise<AutorisationsIndex> {
       return result;
     }
     
-    // Fallback: ancien format (autorisations + investissements_localises)
-    const autorisationsData = await loadJson<AutorisationsIndex>(
-      `${BASE_PATH}/autorisations_index.json`
-    ).catch(() => ({ availableYears: [], thematiques: [], missions: [] }));
-    
+    // Fallback: ancien format (investissements_localises ou autorisations)
     const investLocalisesData = await loadJson<{
       availableYears: number[];
       source: string;
     }>(`${BASE_PATH}/investissements_localises_index.json`).catch(() => ({ availableYears: [] }));
+    
+    const autorisationsData = await loadJson<AutorisationsIndex>(
+      `${BASE_PATH}/autorisations_index.json`
+    ).catch(() => ({ availableYears: [], thematiques: [], missions: [] }));
     
     const allYears = [...new Set([
       ...investLocalisesData.availableYears,
@@ -206,7 +208,7 @@ export async function loadAutorisationsIndex(): Promise<AutorisationsIndex> {
     return result;
   } catch {
     return {
-      availableYears: [2022, 2021, 2020, 2019, 2018],
+      availableYears: [2024, 2023, 2022, 2021, 2020, 2019, 2018],
       thematiques: [],
       missions: [],
     };
@@ -342,137 +344,108 @@ export async function loadArrondissementsStats(): Promise<ArrondissementStats[]>
 /**
  * Charge les investissements (AP) pour une année
  * 
- * Utilise le nouveau format unifié depuis dbt core_ap_projets
- * avec données enrichies par LLM (arrondissement, adresse, thématique)
+ * Utilise le format fusionné: PDF Investissements Localisés + BigQuery OpenData
+ * Fichier: investissements_complet_{year}.json
+ * 
+ * Inclut les coordonnées géographiques précises (lat/lon) quand disponibles
  */
 export async function loadAutorisationsForYear(year: number): Promise<AutorisationProgramme[]> {
   // Check cache
-  if (dataCache.investissements?.[year]) {
-    return dataCache.investissements[year];
+  if (dataCache.investissementsComplet?.[year]) {
+    return dataCache.investissementsComplet[year];
   }
   if (dataCache.autorisations?.[year]) {
     return dataCache.autorisations[year];
   }
 
   try {
-    // Essayer d'abord le nouveau format unifié (investissements_*.json)
+    // Charger depuis investissements_complet_{year}.json (format fusionné)
     const rawData = await loadJson<{
       year: number;
-      total: number;
-      count: number;
-      withArrondissement: number;
-      withCoords: number;
-      parThematique: Record<string, { total: number; count: number }>;
-      parArrondissement: Record<string, { total: number; count: number }>;
+      source: string;
+      methodology: string;
+      generated_at: string;
+      stats: {
+        pdf_projets: number;
+        pdf_total: number;
+        bq_added: number;
+        bq_added_total: number;
+        total_projets: number;
+        total_montant: number;
+        geo_rate: number;
+        precise_geo_rate: number;
+        geo_breakdown: Record<string, number>;
+      };
       data: Array<{
         id: string;
         annee: number;
-        apCode: string;
-        apTexte: string;
-        missionCode: string;
-        missionLibelle: string;
-        directionCode: string;
-        direction: string;
+        arrondissement: number;
+        chapitre_code: string;
+        chapitre_libelle: string;
+        nom_projet: string;
         montant: number;
-        thematique: string;
-        arrondissement: number | null;
-        adresse: string | null;
-        latitude: number | null;
-        longitude: number | null;
-        nomLieu: string | null;
-        sourceGeo: string | null;
-        confiance: number | null;
+        type_ap: string;
+        confidence: number;
+        source_page?: number;
+        source_pdf?: string;
+        date_extraction?: string;
+        source: string;
+        // Géolocalisation
+        lat?: number;
+        lon?: number;
+        geo_source?: string;  // api_numero, api_rue, api_lieu, lieu_connu, knowledge, centroid, none
+        geo_score?: number;
+        geo_label?: string;
       }>;
-    }>(`${BASE_PATH}/investissements_${year}.json`);
+    }>(`${BASE_PATH}/investissements_complet_${year}.json`);
 
     // Transformer vers le format AutorisationProgramme
     const data: AutorisationProgramme[] = rawData.data.map(item => ({
       id: item.id,
       annee: item.annee,
       budget: 'Ville de Paris',
-      missionCode: item.missionCode || '',
-      missionTexte: item.missionLibelle || '',
-      activite: '',
-      directionCode: item.directionCode || '',
-      directionTexte: item.direction || '',
-      apCode: item.apCode || '',
-      apTexte: item.apTexte || '',
-      natureTexte: '',
-      domaineTexte: item.missionLibelle || '',
+      missionCode: item.chapitre_code || '',
+      missionTexte: item.chapitre_libelle || '',
+      activite: item.type_ap || '',
+      directionCode: '',
+      directionTexte: '',
+      apCode: item.id,
+      apTexte: item.nom_projet,
+      natureTexte: item.type_ap || '',
+      domaineTexte: item.chapitre_libelle || '',
       montant: item.montant,
-      thematique: item.thematique || 'autre',
-      arrondissement: item.arrondissement || undefined,
-      // Nouvelles propriétés enrichies par LLM
-      adresse: item.adresse || undefined,
-      latitude: item.latitude || undefined,
-      longitude: item.longitude || undefined,
-      nomLieu: item.nomLieu || undefined,
+      thematique: mapChapitreToThematique(item.chapitre_libelle),
+      arrondissement: item.arrondissement > 0 ? item.arrondissement : undefined,
+      // Géolocalisation précise (nouveau format)
+      latitude: item.lat,
+      longitude: item.lon,
+      adresse: item.geo_label,
+      nomLieu: item.nom_projet,
+      // Métadonnées de qualité géo (pour affichage)
+      geoSource: item.geo_source,
+      geoScore: item.geo_score,
     }));
 
-    if (!dataCache.investissements) {
-      dataCache.investissements = {};
+    if (!dataCache.investissementsComplet) {
+      dataCache.investissementsComplet = {};
     }
-    dataCache.investissements[year] = data;
+    dataCache.investissementsComplet[year] = data;
     return data;
   } catch {
-    // Fallback: ancien format (autorisations_*.json ou investissements_localises_*.json)
+    // Fallback: ancien format (autorisations_*.json)
     try {
-      if (year >= 2023) {
-        const rawData = await loadJson<{
-          year: number;
-          stats: { projets_extraits: number; total_extrait: number };
-          data: Array<{
-            id: string;
-            annee: number;
-            arrondissement: number;
-            chapitre_code: string;
-            chapitre_libelle: string;
-            nom_projet: string;
-            montant: number;
-            type_ap: string;
-            confidence: number;
-            source_page: number;
-            source_pdf: string;
-          }>;
-        }>(`${BASE_PATH}/investissements_localises_${year}.json`);
+      const rawData = await loadJson<{
+        year: number;
+        total: number;
+        count: number;
+        data: AutorisationProgramme[];
+      }>(`${BASE_PATH}/autorisations_${year}.json`);
 
-        const data = rawData.data.map(item => ({
-          id: item.id,
-          annee: item.annee,
-          budget: 'Ville de Paris',
-          missionCode: item.chapitre_code || '',
-          missionTexte: item.chapitre_libelle || '',
-          activite: item.type_ap || '',
-          directionCode: '',
-          directionTexte: '',
-          apCode: item.id,
-          apTexte: item.nom_projet,
-          natureTexte: item.type_ap || '',
-          domaineTexte: item.chapitre_libelle || '',
-          montant: item.montant,
-          thematique: mapChapitreToThematique(item.chapitre_libelle),
-          arrondissement: item.arrondissement > 0 ? item.arrondissement : undefined,
-        }));
-
-        if (!dataCache.autorisations) {
-          dataCache.autorisations = {};
-        }
-        dataCache.autorisations[year] = data;
-        return data;
-      } else {
-        const rawData = await loadJson<{
-          year: number;
-          total: number;
-          count: number;
-          data: AutorisationProgramme[];
-        }>(`${BASE_PATH}/autorisations_${year}.json`);
-
-        if (!dataCache.autorisations) {
-          dataCache.autorisations = {};
-        }
-        dataCache.autorisations[year] = rawData.data;
-        return rawData.data;
+      if (!dataCache.autorisations) {
+        dataCache.autorisations = {};
       }
+      dataCache.autorisations[year] = rawData.data;
+      return rawData.data;
     } catch (err) {
       console.warn(`Investissements for ${year} not found:`, err);
       return [];
@@ -543,8 +516,8 @@ export function clearDataCache(): void {
   delete dataCache.logementsParArr;
   delete dataCache.subventions;
   delete dataCache.subventionsIndex;
-  delete dataCache.investissements;
-  delete dataCache.investissementsIndex;
+  delete dataCache.investissementsComplet;
+  delete dataCache.investissementsCompletIndex;
   delete dataCache.autorisations;
   delete dataCache.autorisationsIndex;
   delete dataCache.arrondissementsStats;
