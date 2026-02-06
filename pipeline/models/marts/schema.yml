@@ -222,6 +222,44 @@ models:
         description: "Nombre de lignes budgétaires agrégées"
 
   # ===========================================================================
+  # BILAN SANKEY (ÉTAT PATRIMONIAL)
+  # ===========================================================================
+  - name: mart_bilan_sankey
+    description: |
+      Agrégation du bilan comptable pour visualisation Sankey.
+      Structure: Actif (gauche) → Patrimoine Paris (centre) ← Passif (droite)
+      Inclut: KPIs financiers (ratio endettement, fonds propres, etc.)
+      
+      Utilisé par: export_bilan_data.py → bilan_sankey_{year}.json
+    config:
+      materialized: view
+    columns:
+      - name: vue
+        description: "Type de vue: summary"
+        tests:
+          - not_null
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: total_actif_net
+        description: "Total Actif Net (€)"
+        tests:
+          - not_null
+      - name: total_passif_net
+        description: "Total Passif Net (€)"
+        tests:
+          - not_null
+      - name: fonds_propres
+        description: "Fonds propres (€)"
+      - name: dette_totale
+        description: "Dette totale (financière + non financière) (€)"
+      - name: ratio_endettement
+        description: "Ratio dette / fonds propres"
+      - name: pct_fonds_propres
+        description: "Part des fonds propres dans le passif (%)"
+
+  # ===========================================================================
   # CONCENTRATION (PARETO)
   # ===========================================================================
   - name: mart_concentration
