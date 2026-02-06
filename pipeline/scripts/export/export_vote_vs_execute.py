@@ -10,7 +10,9 @@ Queries the mart_vote_vs_execute model to generate JSON files for the
 - Detail by thematique
 
 Coverage:
-  - Comparison possible: 2023-2024 (both Vote PDF + Execute CSV exist)
+  - Comparison possible: 2019-2024 (both Vote + Execute exist)
+    * 2019: Vote from OpenData CSV
+    * 2020-2024: Vote from PDFs éditique BG
   - Vote-only (forecast): 2025-2026
 
 Output:

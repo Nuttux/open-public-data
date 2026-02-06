@@ -1,20 +1,21 @@
 -- =============================================================================
 -- Core: Budget Voté (OBT) - Entité séparée du budget exécuté
 --
--- Source: stg_pdf_budget_vote + seed_mapping_thematiques
+-- Source: stg_pdf_budget_vote + stg_budget_vote + seed_mapping_thematiques
 -- Description: Budget PRÉVISIONNEL voté par le Conseil de Paris.
 --              Même structure et enrichissements que core_budget (CA),
 --              mais entité conceptuellement différente.
 --
 -- ARCHITECTURE:
 --   core_budget      = Exécuté (CA) = source de vérité = 2019-2024
---   core_budget_vote = Voté (BP)    = prévisionnel     = 2023-2026 (PDF)
+--   core_budget_vote = Voté (BP)    = prévisionnel     = 2019-2026
 --   mart_vote_vs_execute = JOIN des deux pour comparaison
 --
--- Sources:
---   - stg_pdf_budget_vote: données extraites des PDFs éditique BG (2023-2026)
+-- Sources (consolidées):
+--   - stg_pdf_budget_vote: données extraites des PDFs éditique BG (2020-2026)
 --     Inclut les opérations ventilées (90x/93x) ET non ventilées (92x/94x)
---   - TODO: consolider avec stg_budget_vote (CSV OpenData 2019-2021) via INT
+--   - stg_budget_vote: CSV OpenData Paris (2019 uniquement)
+--     Les années 2020-2021 OpenData sont redondantes avec les PDFs → exclues
 --
 -- Grain: (annee, section, chapitre_code, nature_code, fonction_code, sens_flux)
 -- Une ligne = une combinaison budgétaire unique (budget voté)
@@ -24,11 +25,42 @@
 --     Les chapitres non-ventilés (92x/94x) ont des thématiques fiscales dédiées
 --   - ode_categorie_flux: catégorie comptable (Personnel, Subventions, etc.)
 --
--- Output: ~7,200 lignes, années 2023-2026
+-- Output: ~18,000 lignes, années 2019-2026
 -- =============================================================================
 
-WITH budget AS (
+WITH pdf_data AS (
+    -- PDFs éditique BG: 2020-2026 (source la plus complète pour ces années)
     SELECT * FROM {{ ref('stg_pdf_budget_vote') }}
+),
+
+opendata_2019 AS (
+    -- CSV OpenData: 2019 uniquement (seule source pour cette année)
+    -- Filtré à 2019 pour éviter les doublons avec les PDFs 2020-2021
+    SELECT
+        annee,
+        section,
+        sens_flux,
+        type_operation,
+        chapitre_code,
+        chapitre_libelle,
+        nature_code,
+        nature_libelle,
+        fonction_code,
+        fonction_libelle,
+        montant,
+        cle_technique,
+        -- Métadonnées source (pas de page/pdf pour les données OpenData)
+        CAST(NULL AS INT64) AS source_page,
+        'opendata-csv' AS source_pdf
+    FROM {{ ref('stg_budget_vote') }}
+    WHERE annee = 2019
+),
+
+budget AS (
+    -- Consolidation : PDF 2020-2026 + OpenData 2019
+    SELECT * FROM pdf_data
+    UNION ALL
+    SELECT * FROM opendata_2019
 ),
 
 mapping_thematiques AS (

@@ -415,7 +415,7 @@ function EstimationSummary({
       <div className="bg-amber-900/20 border border-amber-700/30 rounded-lg p-3 mb-4">
         <p className="text-xs text-amber-300">
           Ces estimations sont basées sur le taux d&apos;exécution moyen
-          historique (2023-2024). Le budget voté est un plafond, pas une
+          historique (2019-2024, 6 années). Le budget voté est un plafond, pas une
           prédiction exacte.
         </p>
       </div>
@@ -642,7 +642,7 @@ function DetailThematiqueTable({ data }: { data: DetailThematique[] }) {
         Détail par thématique (dépenses)
       </h3>
       <p className="text-xs text-slate-400 mb-4">
-        Moyenne sur les années comparables (2023-2024). Cliquez sur une colonne
+        Moyenne sur les années comparables (2019-2024). Cliquez sur une colonne
         pour trier.
       </p>
 
@@ -849,8 +849,8 @@ export default function PrevisionPage() {
             <p>
               <strong className="text-slate-300">Source Budget Voté :</strong>{' '}
               Extraction automatisée des PDFs Éditique BG (Budget Général) publiés
-              par la Ville de Paris. Section « Présentation croisée » uniquement
-              (chapitres fonctionnels 900-908 et 930-938).
+              par la Ville de Paris (2020-2026) + CSV Open Data (2019). Chapitres
+              fonctionnels ventilés (900-908, 930-938) et non ventilés (92x, 94x).
             </p>
             <p>
               <strong className="text-slate-300">Source Budget Exécuté :</strong>{' '}
@@ -863,7 +863,7 @@ export default function PrevisionPage() {
               >
                 Open Data Paris
               </a>
-              , filtrés sur les opérations réelles.
+              , filtrés sur les opérations réelles (2019-2024).
             </p>
             <p>
               <strong className="text-slate-300">Périmètre :</strong>{' '}
@@ -872,7 +872,7 @@ export default function PrevisionPage() {
             <p>
               <strong className="text-slate-300">Estimations :</strong>{' '}
               Calculées en appliquant le taux d&apos;exécution moyen historique
-              (2023-2024) au montant voté. Ce sont des indicateurs, pas des
+              (2019-2024, 6 années) au montant voté. Ce sont des indicateurs, pas des
               prédictions certaines.
             </p>
           </div>
