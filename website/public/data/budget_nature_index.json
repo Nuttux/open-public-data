@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-02-05T22:40:11.978747",
+  "source": "dbt mart (mart_budget_nature)",
+  "description": "Répartition du budget par nature de dépense avec drill-down par thématique",
+  "available_years": [
+    2024,
+    2023,
+    2022,
+    2021,
+    2020,
+    2019
+  ],
+  "totals_by_year": {
+    "2024": 11494727617.749998,
+    "2023": 10845342218.920002,
+    "2022": 10699641826.980001,
+    "2021": 10025231536.399998,
+    "2020": 9940645002.640001,
+    "2019": 9806315541.3
+  },
+  "natures": [
+    "Personnel",
+    "Reversements péréquation",
+    "Transferts sociaux",
+    "Contributions obligatoires",
+    "Subventions (fonctionnement)",
+    "Immobilisations en cours",
+    "Services extérieurs",
+    "Immobilisations corporelles",
+    "Subventions (investissement)",
+    "Remboursement dette",
+    "Autre",
+    "Autres services",
+    "Achats",
+    "Charges financières",
+    "Dotations arrondissements",
+    "Études",
+    "Dotations et participations"
+  ]
+}

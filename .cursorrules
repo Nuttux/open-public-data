@@ -32,6 +32,21 @@ docs/              # Architecture docs
 - French UI text, French number formatting
 - Dark theme (slate-800/900)
 
+## Responsive Design Strategy
+
+- **Approche mixte** : Responsive CSS par défaut, layouts séparés si nécessaire
+- **Breakpoints** : mobile (<768px), tablet (768-1024px), desktop (>1024px)
+- **Interactions** : hover (desktop) → tap (mobile), tooltips → drawers/modals
+- **Animations** : 300ms max, respecter `prefers-reduced-motion`
+
+### Par composant :
+| Type | Mobile | Desktop |
+|------|--------|---------|
+| Donut/Pie | Tap drill-down, légende bas | Hover, légende latérale |
+| Line/Bar charts | Responsive, scroll horizontal si besoin | Complet |
+| Sankey | Treemap ou liste interactive | Sankey complet |
+| Map | Touch gestures, popup simplifié | Hover, panel latéral |
+
 ## Commands
 - dbt: `cd pipeline && dbt run`
 - Export: `python pipeline/scripts/export/export_all.py`

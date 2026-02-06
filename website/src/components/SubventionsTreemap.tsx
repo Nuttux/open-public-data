@@ -8,6 +8,7 @@
  * - Taille proportionnelle au montant
  * - Tooltips avec détails (montant, %, nb bénéficiaires)
  * - Click pour filtrer la table associée
+ * - Responsive: hauteur adaptative, labels optimisés pour mobile
  * 
  * Utilise ECharts pour le rendu.
  */
@@ -17,6 +18,7 @@ import ReactECharts from 'echarts-for-react';
 import type { EChartsOption } from 'echarts';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { getThematiqueColor } from '@/lib/colors';
+import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 
 /**
  * Données d'une thématique pour le treemap
@@ -57,6 +59,11 @@ export default function SubventionsTreemap({
   selectedThematique,
   height = 400,
 }: SubventionsTreemapProps) {
+  const isMobile = useIsMobile(BREAKPOINTS.md);
+
+  // Hauteur adaptative
+  const chartHeight = isMobile ? Math.min(height, 300) : height;
+
   /**
    * Transformer les données pour ECharts
    */
@@ -90,10 +97,11 @@ export default function SubventionsTreemap({
       backgroundColor: '#1e293b',
       borderColor: '#334155',
       borderRadius: 8,
-      padding: [12, 16],
+      padding: isMobile ? [8, 12] : [12, 16],
+      confine: true, // Reste dans les limites sur mobile
       textStyle: {
         color: '#e2e8f0',
-        fontSize: 13,
+        fontSize: isMobile ? 11 : 13,
       },
       formatter: (params: unknown) => {
         const p = params as {
@@ -103,25 +111,21 @@ export default function SubventionsTreemap({
         };
         
         return `
-          <div style="font-weight: 600; margin-bottom: 8px; font-size: 14px;">
+          <div style="font-weight: 600; margin-bottom: 6px; font-size: ${isMobile ? '12px' : '14px'};">
             ${p.name}
           </div>
-          <div style="display: flex; flex-direction: column; gap: 4px;">
-            <div style="display: flex; justify-content: space-between; gap: 24px;">
+          <div style="display: flex; flex-direction: column; gap: 3px; font-size: ${isMobile ? '11px' : '12px'};">
+            <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '12px' : '24px'};">
               <span style="color: #94a3b8;">Montant</span>
               <span style="font-weight: 500;">${formatEuroCompact(p.value)}</span>
             </div>
-            <div style="display: flex; justify-content: space-between; gap: 24px;">
+            <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '12px' : '24px'};">
               <span style="color: #94a3b8;">Part du total</span>
               <span style="font-weight: 500;">${p.data.pct.toFixed(1)}%</span>
             </div>
-            <div style="display: flex; justify-content: space-between; gap: 24px;">
+            <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '12px' : '24px'};">
               <span style="color: #94a3b8;">Bénéficiaires</span>
               <span style="font-weight: 500;">${formatNumber(p.data.nbBeneficiaires)}</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; gap: 24px;">
-              <span style="color: #94a3b8;">Subventions</span>
-              <span style="font-weight: 500;">${formatNumber(p.data.nbSubventions)}</span>
             </div>
           </div>
         `;
@@ -146,20 +150,25 @@ export default function SubventionsTreemap({
           show: false,
         },
         
-        // Labels
+        // Labels adaptatifs
         label: {
           show: true,
           formatter: (params: unknown) => {
             const p = params as { name: string; data: { pct: number } };
-            // N'afficher le label que si la case est assez grande
-            if (p.data.pct < 2) return '';
-            return `${p.name}\n${p.data.pct.toFixed(1)}%`;
+            // Seuil plus élevé sur mobile (cases plus petites)
+            const threshold = isMobile ? 4 : 2;
+            if (p.data.pct < threshold) return '';
+            // Sur mobile, nom tronqué si nécessaire
+            const displayName = isMobile && p.name.length > 10 
+              ? p.name.substring(0, 9) + '…' 
+              : p.name;
+            return `${displayName}\n${p.data.pct.toFixed(0)}%`;
           },
-          fontSize: 12,
+          fontSize: isMobile ? 10 : 12,
           fontWeight: 500,
           color: '#fff',
           textShadowColor: 'rgba(0,0,0,0.5)',
-          textShadowBlur: 4,
+          textShadowBlur: isMobile ? 3 : 4,
         },
         
         // Upper label (nom seulement pour petites cases)
@@ -172,19 +181,19 @@ export default function SubventionsTreemap({
           {
             itemStyle: {
               borderColor: '#1e293b',
-              borderWidth: 2,
-              gapWidth: 2,
+              borderWidth: isMobile ? 1 : 2,
+              gapWidth: isMobile ? 1 : 2,
             },
           },
         ],
         
         // Animation
         animation: true,
-        animationDuration: 500,
+        animationDuration: isMobile ? 300 : 500,
         animationEasing: 'cubicOut',
       },
     ],
-  }), [chartData]);
+  }), [chartData, isMobile]);
 
   /**
    * Gestion du clic
@@ -203,30 +212,30 @@ export default function SubventionsTreemap({
 
   return (
     <div className="w-full">
-      {/* Header avec total */}
-      <div className="flex items-center justify-between mb-4">
+      {/* Header avec total - responsive */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4 mb-4">
         <div>
-          <h3 className="text-lg font-semibold text-slate-100">
+          <h3 className="text-base sm:text-lg font-semibold text-slate-100">
             Répartition par thématique
           </h3>
-          <p className="text-sm text-slate-400">
-            Cliquez sur une thématique pour filtrer la table
+          <p className="text-xs sm:text-sm text-slate-400">
+            {isMobile ? 'Appuyez pour filtrer' : 'Cliquez sur une thématique pour filtrer la table'}
           </p>
         </div>
-        <div className="text-right">
-          <p className="text-2xl font-bold text-slate-100">
+        <div className="text-left sm:text-right">
+          <p className="text-xl sm:text-2xl font-bold text-slate-100">
             {formatEuroCompact(data.total_montant)}
           </p>
-          <p className="text-sm text-slate-400">
+          <p className="text-xs sm:text-sm text-slate-400">
             {formatNumber(data.nb_thematiques)} thématiques
           </p>
         </div>
       </div>
 
-      {/* Treemap */}
+      {/* Treemap - hauteur adaptative */}
       <div 
         className="bg-slate-800/30 rounded-xl border border-slate-700/50 overflow-hidden"
-        style={{ height }}
+        style={{ height: chartHeight }}
       >
         <ReactECharts
           option={option}
@@ -238,13 +247,13 @@ export default function SubventionsTreemap({
         />
       </div>
 
-      {/* Indicateur de sélection */}
+      {/* Indicateur de sélection - responsive */}
       {selectedThematique && (
-        <div className="mt-3 flex items-center gap-2">
-          <span className="text-sm text-slate-400">Filtre actif :</span>
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          <span className="text-xs sm:text-sm text-slate-400">Filtre actif :</span>
           <button
             onClick={() => onThematiqueClick?.(null)}
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium bg-purple-500/20 text-purple-300 border border-purple-500/30 hover:bg-purple-500/30 transition-colors"
+            className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-purple-500/20 text-purple-300 border border-purple-500/30 hover:bg-purple-500/30 active:bg-purple-500/40 transition-colors"
           >
             {selectedThematique}
             <span className="text-purple-400">×</span>
