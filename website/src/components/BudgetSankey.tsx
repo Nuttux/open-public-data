@@ -4,24 +4,138 @@
  * Composant BudgetSankey - Visualisation Sankey du budget
  * 
  * FEATURES:
- * - Layout horizontal avec marges pour labels lisibles
+ * - Layout horizontal avec marges adaptatives (mobile/desktop)
+ * - Vue simplifiée sur mobile (barres horizontales)
  * - Emprunts/Dette visuellement distincts
  * - Click pour drill-down
+ * - Responsive: ajuste automatiquement la taille et les marges
  */
 
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo, useState, useEffect } from 'react';
 import ReactECharts from 'echarts-for-react';
 import type { EChartsOption } from 'echarts';
 import { formatEuroCompact, formatPercent, calculatePercentage } from '@/lib/formatters';
 import { REVENUE_COLORS, EXPENSE_COLORS } from '@/lib/colors';
 import type { BudgetData } from '@/lib/formatters';
+import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 
 interface BudgetSankeyProps {
   data: BudgetData;
   onNodeClick?: (nodeName: string, category: 'revenue' | 'expense') => void;
 }
 
+/**
+ * Vue mobile simplifiée - Barres horizontales interactives
+ */
+function MobileBudgetView({ data, onNodeClick }: BudgetSankeyProps) {
+  const totalBudget = Math.max(data.totals.recettes, data.totals.depenses);
+  
+  // Séparer recettes et dépenses
+  const revenues = data.nodes
+    .filter(n => n.category === 'revenue')
+    .map(n => ({
+      name: n.name,
+      value: data.links.find(l => l.source === n.name)?.value || 0,
+    }))
+    .sort((a, b) => b.value - a.value);
+  
+  const expenses = data.nodes
+    .filter(n => n.category === 'expense')
+    .map(n => ({
+      name: n.name,
+      value: data.links.find(l => l.target === n.name)?.value || 0,
+    }))
+    .sort((a, b) => b.value - a.value);
+  
+  const maxValue = Math.max(
+    ...revenues.map(r => r.value),
+    ...expenses.map(e => e.value)
+  );
+
+  return (
+    <div className="space-y-6">
+      {/* Recettes */}
+      <div>
+        <h3 className="text-sm font-medium text-slate-300 mb-3 flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-emerald-500" />
+          Recettes
+        </h3>
+        <div className="space-y-2">
+          {revenues.map((item) => (
+            <button
+              key={item.name}
+              onClick={() => onNodeClick?.(item.name, 'revenue')}
+              className="w-full text-left group"
+            >
+              <div className="flex items-center justify-between text-xs mb-1">
+                <span className="text-slate-300 group-hover:text-white transition-colors truncate pr-2">
+                  {item.name}
+                </span>
+                <span className="text-emerald-400 font-medium whitespace-nowrap">
+                  {formatEuroCompact(item.value)}
+                </span>
+              </div>
+              <div className="h-6 bg-slate-700/50 rounded overflow-hidden">
+                <div
+                  className="h-full rounded transition-all duration-300 group-hover:opacity-80"
+                  style={{
+                    width: `${(item.value / maxValue) * 100}%`,
+                    backgroundColor: REVENUE_COLORS[item.name] || '#10b981',
+                  }}
+                />
+              </div>
+              <div className="text-[10px] text-slate-500 mt-0.5">
+                {formatPercent(calculatePercentage(item.value, totalBudget))} du budget
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Dépenses */}
+      <div>
+        <h3 className="text-sm font-medium text-slate-300 mb-3 flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-blue-500" />
+          Dépenses
+        </h3>
+        <div className="space-y-2">
+          {expenses.map((item) => (
+            <button
+              key={item.name}
+              onClick={() => onNodeClick?.(item.name, 'expense')}
+              className="w-full text-left group"
+            >
+              <div className="flex items-center justify-between text-xs mb-1">
+                <span className="text-slate-300 group-hover:text-white transition-colors truncate pr-2">
+                  {item.name}
+                </span>
+                <span className="text-blue-400 font-medium whitespace-nowrap">
+                  {formatEuroCompact(item.value)}
+                </span>
+              </div>
+              <div className="h-6 bg-slate-700/50 rounded overflow-hidden">
+                <div
+                  className="h-full rounded transition-all duration-300 group-hover:opacity-80"
+                  style={{
+                    width: `${(item.value / maxValue) * 100}%`,
+                    backgroundColor: EXPENSE_COLORS[item.name] || '#3b82f6',
+                  }}
+                />
+              </div>
+              <div className="text-[10px] text-slate-500 mt-0.5">
+                {formatPercent(calculatePercentage(item.value, totalBudget))} du budget
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
+  const isMobile = useIsMobile(BREAKPOINTS.md);
+  const isSmallTablet = useIsMobile(BREAKPOINTS.lg);
   const totalBudget = useMemo(() => {
     return Math.max(data.totals.recettes, data.totals.depenses);
   }, [data.totals]);
@@ -67,6 +181,19 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
     return { nodes, links };
   }, [data, getNodeColor]);
 
+  // Marges adaptatives selon la taille de l'écran
+  const chartMargins = useMemo(() => {
+    if (isSmallTablet) {
+      return { left: 100, right: 120, top: 15, bottom: 15 };
+    }
+    return { left: 180, right: 200, top: 20, bottom: 20 };
+  }, [isSmallTablet]);
+
+  // Hauteur adaptative
+  const chartHeight = useMemo(() => {
+    return isSmallTablet ? 450 : 550;
+  }, [isSmallTablet]);
+
   const option: EChartsOption = useMemo(() => ({
     backgroundColor: 'transparent',
     tooltip: {
@@ -76,6 +203,7 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
       borderColor: '#334155',
       borderRadius: 8,
       textStyle: { color: '#e2e8f0' },
+      confine: true, // Keep tooltip within chart bounds (important for mobile)
       formatter: (params: unknown) => {
         const p = params as {
           dataType: string;
@@ -100,12 +228,12 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
           }
           
           return `
-            <div style="padding: 12px; max-width: 280px;">
-              <div style="font-weight: 600; margin-bottom: 8px;">${p.name}</div>
-              <div style="color: #94a3b8; font-size: 12px; margin-bottom: 4px;">${emoji} ${label}</div>
-              <div style="font-size: 22px; font-weight: 700; color: #10b981;">${formatEuroCompact(p.value)}</div>
-              <div style="color: #94a3b8; font-size: 12px;">${formatPercent(percentage)} du budget</div>
-              ${p.data.category !== 'central' ? '<div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #334155; color: #60a5fa; font-size: 12px;">👆 Cliquez pour le détail</div>' : ''}
+            <div style="padding: 8px; max-width: 240px;">
+              <div style="font-weight: 600; margin-bottom: 6px;">${p.name}</div>
+              <div style="color: #94a3b8; font-size: 11px; margin-bottom: 4px;">${emoji} ${label}</div>
+              <div style="font-size: 18px; font-weight: 700; color: #10b981;">${formatEuroCompact(p.value)}</div>
+              <div style="color: #94a3b8; font-size: 11px;">${formatPercent(percentage)} du budget</div>
+              ${p.data.category !== 'central' ? '<div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #334155; color: #60a5fa; font-size: 11px;">👆 Tap pour détail</div>' : ''}
             </div>
           `;
         }
@@ -113,12 +241,12 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
         if (p.dataType === 'edge') {
           const percentage = calculatePercentage(p.value, totalBudget);
           return `
-            <div style="padding: 12px;">
-              <div style="font-weight: 600; margin-bottom: 8px;">
+            <div style="padding: 8px;">
+              <div style="font-weight: 600; margin-bottom: 6px; font-size: 13px;">
                 ${p.data.source} → ${p.data.target}
               </div>
-              <div style="font-size: 20px; font-weight: 700; color: #f59e0b;">${formatEuroCompact(p.value)}</div>
-              <div style="color: #94a3b8; font-size: 12px;">${formatPercent(percentage)} du budget</div>
+              <div style="font-size: 16px; font-weight: 700; color: #f59e0b;">${formatEuroCompact(p.value)}</div>
+              <div style="color: #94a3b8; font-size: 11px;">${formatPercent(percentage)} du budget</div>
             </div>
           `;
         }
@@ -136,12 +264,12 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
         },
         nodeAlign: 'justify',
         orient: 'horizontal',
-        left: 180,
-        right: 200,
-        top: 20,
-        bottom: 20,
-        nodeWidth: 20,
-        nodeGap: 10,
+        left: chartMargins.left,
+        right: chartMargins.right,
+        top: chartMargins.top,
+        bottom: chartMargins.bottom,
+        nodeWidth: isSmallTablet ? 16 : 20,
+        nodeGap: isSmallTablet ? 8 : 10,
         layoutIterations: 32,
         draggable: true,
         data: chartData.nodes,
@@ -153,7 +281,7 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
         },
         label: {
           show: true,
-          fontSize: 12,
+          fontSize: isSmallTablet ? 10 : 12,
           color: '#e2e8f0',
           fontWeight: 500,
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -162,13 +290,17 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
               return params.name;
             }
             const value = params.value || 0;
-            return `${params.name}\n{small|${formatEuroCompact(value)}}`;
+            // Sur tablette, nom tronqué si trop long
+            const displayName = isSmallTablet && params.name.length > 12 
+              ? params.name.substring(0, 11) + '…' 
+              : params.name;
+            return `${displayName}\n{small|${formatEuroCompact(value)}}`;
           },
           rich: {
             small: {
-              fontSize: 10,
+              fontSize: isSmallTablet ? 9 : 10,
               color: '#94a3b8',
-              lineHeight: 16,
+              lineHeight: isSmallTablet ? 14 : 16,
             },
           },
         },
@@ -176,22 +308,22 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
           {
             depth: 0,
             lineStyle: { color: 'source', opacity: 0.4 },
-            label: { position: 'left', align: 'right', padding: [0, 10, 0, 0] },
+            label: { position: 'left', align: 'right', padding: [0, isSmallTablet ? 5 : 10, 0, 0] },
           },
           {
             depth: 1,
             lineStyle: { color: 'source', opacity: 0.4 },
-            label: { position: 'inside', color: '#fff', fontSize: 11 },
+            label: { position: 'inside', color: '#fff', fontSize: isSmallTablet ? 10 : 11 },
           },
           {
             depth: 2,
             lineStyle: { color: 'source', opacity: 0.4 },
-            label: { position: 'right', align: 'left', padding: [0, 0, 0, 10] },
+            label: { position: 'right', align: 'left', padding: [0, 0, 0, isSmallTablet ? 5 : 10] },
           },
         ],
       },
     ],
-  }), [chartData, totalBudget]);
+  }), [chartData, totalBudget, chartMargins, isSmallTablet]);
 
   const handleChartClick = useCallback((params: { 
     dataType?: string; 
@@ -217,16 +349,17 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
 
   return (
     <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4 sm:p-6">
+      {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
         <div>
-        <h2 className="text-lg font-semibold text-slate-100">
-          Flux budgétaires {data.year}
-        </h2>
-        <p className="text-sm text-slate-400 mt-1">
-            Cliquez sur une catégorie pour explorer
-        </p>
+          <h2 className="text-base sm:text-lg font-semibold text-slate-100">
+            Flux budgétaires {data.year}
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+            {isMobile ? 'Appuyez pour explorer' : 'Cliquez sur une catégorie pour explorer'}
+          </p>
         </div>
-        <div className={`px-3 py-2 rounded-lg text-sm ${
+        <div className={`px-3 py-2 rounded-lg text-xs sm:text-sm ${
           variationDette > 0 ? 'bg-red-500/10 border border-red-500/30' : 'bg-green-500/10 border border-green-500/30'
         }`}>
           <span className={variationDette > 0 ? 'text-red-400' : 'text-green-400'}>
@@ -234,39 +367,46 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
           </span>
         </div>
       </div>
-      
-      {/* Légende responsive */}
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-3 text-xs">
-        <div className="flex items-center gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
-          <span className="text-slate-400">Recettes</span>
-        </div>
-        <div className="flex items-center gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-amber-500"></div>
-          <span className="text-slate-400">Emprunts</span>
-        </div>
-        <div className="flex items-center gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-purple-500"></div>
-          <span className="text-slate-400">Budget</span>
-        </div>
-        <div className="flex items-center gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-blue-500"></div>
-          <span className="text-slate-400">Dépenses</span>
-        </div>
-        <div className="flex items-center gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
-          <span className="text-slate-400">Dette</span>
-        </div>
-      </div>
 
-      <ReactECharts
-        option={option}
-        style={{ height: '550px', width: '100%' }}
-        onEvents={{
-          click: handleChartClick,
-        }}
-        opts={{ renderer: 'canvas' }}
-      />
+      {/* Mobile: Vue simplifiée en barres */}
+      {isMobile ? (
+        <MobileBudgetView data={data} onNodeClick={onNodeClick} />
+      ) : (
+        <>
+          {/* Desktop/Tablet: Sankey avec légende */}
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-3 text-xs">
+            <div className="flex items-center gap-1.5">
+              <div className="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
+              <span className="text-slate-400">Recettes</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <div className="w-2.5 h-2.5 rounded-full bg-amber-500"></div>
+              <span className="text-slate-400">Emprunts</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <div className="w-2.5 h-2.5 rounded-full bg-purple-500"></div>
+              <span className="text-slate-400">Budget</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <div className="w-2.5 h-2.5 rounded-full bg-blue-500"></div>
+              <span className="text-slate-400">Dépenses</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <div className="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+              <span className="text-slate-400">Dette</span>
+            </div>
+          </div>
+
+          <ReactECharts
+            option={option}
+            style={{ height: `${chartHeight}px`, width: '100%' }}
+            onEvents={{
+              click: handleChartClick,
+            }}
+            opts={{ renderer: 'canvas' }}
+          />
+        </>
+      )}
     </div>
   );
 }

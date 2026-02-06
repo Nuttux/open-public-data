@@ -5,88 +5,114 @@
  * 
  * Features:
  * - Graphique d'évolution Recettes/Dépenses sur plusieurs années
+ * - Graphique santé financière (épargne brute, surplus/déficit)
  * - Cartes KPI avec variations Year-over-Year
  * - Sélecteur d'année pour focus
  * 
  * Sources:
- * - Fichiers budget_sankey_{year}.json (totaux)
+ * - evolution_budget.json (agrégé depuis mart_evolution_budget)
+ * 
+ * Concepts budgétaires:
+ * - Solde comptable = Recettes - Dépenses (équilibre technique, ~0)
+ * - Surplus/Déficit = Recettes propres (hors emprunts) - Dépenses (santé réelle)
+ * - Épargne brute = Recettes fonct. - Dépenses fonct. (capacité autofinancement)
  */
 
 import { useState, useEffect, useMemo } from 'react';
 import EvolutionChart, { type YearlyBudget } from '@/components/EvolutionChart';
+import FinancialHealthChart, { type FinancialYearData } from '@/components/FinancialHealthChart';
 import YoyCards from '@/components/YoyCards';
 import DataQualityBanner from '@/components/DataQualityBanner';
 import { formatEuroCompact } from '@/lib/formatters';
 
 /**
- * Structure des données budget sankey
+ * Structure des données evolution_budget.json
  */
-interface BudgetSankeyData {
-  year: number;
-  totals: {
-    recettes: number;
-    depenses: number;
-    solde: number;
-  };
+interface EvolutionBudgetData {
+  generated_at: string;
+  definitions: Record<string, string>;
+  years: Array<{
+    year: number;
+    totals: {
+      recettes: number;
+      depenses: number;
+      solde_comptable: number;
+      recettes_propres: number;
+      surplus_deficit: number;
+      emprunts: number;
+    };
+    epargne_brute: number;
+    sections: {
+      fonctionnement: { recettes: number; depenses: number };
+      investissement: { recettes: number; depenses: number };
+    };
+    variations?: {
+      recettes_pct?: number | null;
+      depenses_pct?: number | null;
+    };
+  }>;
 }
-
-/**
- * Années disponibles pour le budget
- */
-const AVAILABLE_YEARS = [2024, 2023, 2022, 2021, 2020, 2019];
 
 export default function EvolutionPage() {
   const [budgetData, setBudgetData] = useState<YearlyBudget[]>([]);
+  const [financialData, setFinancialData] = useState<FinancialYearData[]>([]);
+  const [rawData, setRawData] = useState<EvolutionBudgetData | null>(null);
   const [selectedYear, setSelectedYear] = useState<number>(2024);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   /**
-   * Charger les données de tous les fichiers budget_sankey
+   * Charger les données depuis evolution_budget.json
    */
   useEffect(() => {
-    async function loadAllBudgetData() {
+    async function loadEvolutionData() {
       setIsLoading(true);
       setError(null);
 
       try {
-        const results = await Promise.all(
-          AVAILABLE_YEARS.map(async (year) => {
-            try {
-              const response = await fetch(`/data/budget_sankey_${year}.json`);
-              if (!response.ok) return null;
-              const data: BudgetSankeyData = await response.json();
-              return {
-                year: data.year,
-                recettes: data.totals.recettes,
-                depenses: data.totals.depenses,
-                solde: data.totals.solde,
-              };
-            } catch {
-              console.warn(`Données budget ${year} non disponibles`);
-              return null;
-            }
-          })
-        );
+        const response = await fetch('/data/evolution_budget.json');
+        if (!response.ok) {
+          throw new Error('Fichier evolution_budget.json non trouvé');
+        }
+        
+        const data: EvolutionBudgetData = await response.json();
+        setRawData(data);
 
-        // Filtrer les années sans données
-        const validData = results.filter((d): d is YearlyBudget => d !== null);
-        setBudgetData(validData);
+        // Transformer pour EvolutionChart et YoyCards
+        // On utilise recettes_propres (hors emprunts) pour refléter la santé financière réelle
+        const chartData: YearlyBudget[] = data.years.map(y => ({
+          year: y.year,
+          recettes: y.totals.recettes_propres,  // Recettes PROPRES (hors emprunts)
+          depenses: y.totals.depenses,
+          // Surplus/déficit = recettes propres - dépenses
+          solde: y.totals.surplus_deficit,
+        }));
+        setBudgetData(chartData);
 
-        // Sélectionner l'année la plus récente avec données
-        if (validData.length > 0) {
-          const maxYear = Math.max(...validData.map(d => d.year));
+        // Transformer pour FinancialHealthChart (Épargne brute, Surplus/Déficit)
+        const healthData: FinancialYearData[] = data.years.map(y => ({
+          year: y.year,
+          epargne_brute: y.epargne_brute,
+          surplus_deficit: y.totals.surplus_deficit,
+          recettes_propres: y.totals.recettes_propres,
+          emprunts: y.totals.emprunts,
+        }));
+        setFinancialData(healthData);
+
+        // Sélectionner l'année la plus récente
+        if (data.years.length > 0) {
+          const maxYear = Math.max(...data.years.map(y => y.year));
           setSelectedYear(maxYear);
         }
       } catch (err) {
-        console.error('Erreur chargement données budget:', err);
+        console.error('Erreur chargement données évolution:', err);
         setError('Impossible de charger les données budgétaires.');
       } finally {
         setIsLoading(false);
       }
     }
 
-    loadAllBudgetData();
+    loadEvolutionData();
   }, []);
 
   // Données de l'année sélectionnée
@@ -99,6 +125,11 @@ export default function EvolutionPage() {
     return budgetData.find(d => d.year === selectedYear - 1);
   }, [budgetData, selectedYear]);
 
+  // Données financières de l'année sélectionnée
+  const currentFinancialData = useMemo(() => {
+    return rawData?.years.find(y => y.year === selectedYear);
+  }, [rawData, selectedYear]);
+
   // Calcul des stats globales
   const globalStats = useMemo(() => {
     if (budgetData.length === 0) return null;
@@ -109,15 +140,16 @@ export default function EvolutionPage() {
 
     const avgRecettes = budgetData.reduce((sum, d) => sum + d.recettes, 0) / budgetData.length;
     const avgDepenses = budgetData.reduce((sum, d) => sum + d.depenses, 0) / budgetData.length;
+    const avgEpargneBrute = financialData.reduce((sum, d) => sum + d.epargne_brute, 0) / financialData.length;
 
     // CAGR (Compound Annual Growth Rate) des dépenses
     const firstYear = budgetData.find(d => d.year === minYear);
     const lastYear = budgetData.find(d => d.year === maxYear);
     let cagr = 0;
     if (firstYear && lastYear && lastYear.depenses > 0 && firstYear.depenses > 0) {
-      const years = maxYear - minYear;
-      if (years > 0) {
-        cagr = (Math.pow(lastYear.depenses / firstYear.depenses, 1 / years) - 1) * 100;
+      const nbYears = maxYear - minYear;
+      if (nbYears > 0) {
+        cagr = (Math.pow(lastYear.depenses / firstYear.depenses, 1 / nbYears) - 1) * 100;
       }
     }
 
@@ -127,9 +159,10 @@ export default function EvolutionPage() {
       nbYears: budgetData.length,
       avgRecettes,
       avgDepenses,
+      avgEpargneBrute,
       cagr,
     };
-  }, [budgetData]);
+  }, [budgetData, financialData]);
 
   if (isLoading) {
     return (
@@ -203,11 +236,49 @@ export default function EvolutionPage() {
           </div>
         )}
 
-        {/* Graphique d'évolution */}
+        {/* Métriques santé financière de l'année */}
+        {currentFinancialData && (
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+            <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-lg">💰</span>
+                <p className="text-xs text-slate-500 uppercase tracking-wide">Épargne brute</p>
+              </div>
+              <p className={`text-2xl font-bold ${currentFinancialData.epargne_brute >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                {currentFinancialData.epargne_brute >= 0 ? '+' : ''}{formatEuroCompact(currentFinancialData.epargne_brute)}
+              </p>
+              <p className="text-xs text-slate-400 mt-1">Capacité d&apos;autofinancement</p>
+            </div>
+            
+            <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-lg">📊</span>
+                <p className="text-xs text-slate-500 uppercase tracking-wide">Surplus/Déficit financier</p>
+              </div>
+              <p className={`text-2xl font-bold ${currentFinancialData.totals.surplus_deficit >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                {currentFinancialData.totals.surplus_deficit >= 0 ? '+' : ''}{formatEuroCompact(currentFinancialData.totals.surplus_deficit)}
+              </p>
+              <p className="text-xs text-slate-400 mt-1">Hors emprunts ({formatEuroCompact(currentFinancialData.totals.emprunts)})</p>
+            </div>
+            
+            <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-lg">⚖️</span>
+                <p className="text-xs text-slate-500 uppercase tracking-wide">Solde comptable</p>
+              </div>
+              <p className={`text-2xl font-bold ${currentFinancialData.totals.solde_comptable >= 0 ? 'text-slate-300' : 'text-slate-400'}`}>
+                {currentFinancialData.totals.solde_comptable >= 0 ? '+' : ''}{formatEuroCompact(currentFinancialData.totals.solde_comptable)}
+              </p>
+              <p className="text-xs text-slate-400 mt-1">Équilibre technique</p>
+            </div>
+          </div>
+        )}
+
+        {/* Graphique d'évolution Recettes/Dépenses */}
         <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6 mb-6">
           <h2 className="text-lg font-semibold text-slate-100 mb-4 flex items-center gap-2">
-            <span>📊</span>
-            Recettes et Dépenses
+            <span>📈</span>
+            Évolution Recettes et Dépenses
           </h2>
           <EvolutionChart 
             data={budgetData} 
@@ -217,6 +288,39 @@ export default function EvolutionPage() {
           />
         </div>
 
+        {/* Graphique santé financière */}
+        {financialData.length > 0 && (
+          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6 mb-6">
+            <h2 className="text-lg font-semibold text-slate-100 mb-2 flex items-center gap-2">
+              <span>💹</span>
+              Santé Financière
+            </h2>
+            <p className="text-sm text-slate-400 mb-4">
+              Épargne brute (capacité d&apos;autofinancement) et Surplus/Déficit financier (hors emprunts)
+            </p>
+            <FinancialHealthChart 
+              data={financialData} 
+              selectedYear={selectedYear}
+              onYearClick={setSelectedYear}
+              height={350}
+            />
+            
+            {/* Légende explicative */}
+            <div className="mt-4 pt-4 border-t border-slate-700/50 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-400">
+              <div>
+                <span className="inline-block w-3 h-3 rounded bg-green-500 mr-2 align-middle"></span>
+                <strong className="text-slate-300">Épargne brute</strong> = Recettes fonctionnement − Dépenses fonctionnement. 
+                Mesure la capacité à générer des ressources pour investir.
+              </div>
+              <div>
+                <span className="inline-block w-3 h-3 rounded bg-orange-500 mr-2 align-middle"></span>
+                <strong className="text-slate-300">Surplus/Déficit</strong> = Recettes propres − Dépenses (emprunts exclus). 
+                Mesure la santé financière réelle.
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Stats globales */}
         {globalStats && (
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6">
@@ -225,7 +329,7 @@ export default function EvolutionPage() {
               Statistiques sur la période
             </h2>
             
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
               <div>
                 <p className="text-xs text-slate-500 uppercase tracking-wide">Période</p>
                 <p className="text-xl font-bold text-slate-100">
@@ -237,7 +341,7 @@ export default function EvolutionPage() {
               </div>
               
               <div>
-                <p className="text-xs text-slate-500 uppercase tracking-wide">Moyenne Recettes</p>
+                <p className="text-xs text-slate-500 uppercase tracking-wide">Moy. Recettes</p>
                 <p className="text-xl font-bold text-emerald-400">
                   {formatEuroCompact(globalStats.avgRecettes)}
                 </p>
@@ -245,9 +349,17 @@ export default function EvolutionPage() {
               </div>
               
               <div>
-                <p className="text-xs text-slate-500 uppercase tracking-wide">Moyenne Dépenses</p>
+                <p className="text-xs text-slate-500 uppercase tracking-wide">Moy. Dépenses</p>
                 <p className="text-xl font-bold text-purple-400">
                   {formatEuroCompact(globalStats.avgDepenses)}
+                </p>
+                <p className="text-xs text-slate-400 mt-1">par an</p>
+              </div>
+              
+              <div>
+                <p className="text-xs text-slate-500 uppercase tracking-wide">Moy. Épargne brute</p>
+                <p className={`text-xl font-bold ${globalStats.avgEpargneBrute >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                  {formatEuroCompact(globalStats.avgEpargneBrute)}
                 </p>
                 <p className="text-xs text-slate-400 mt-1">par an</p>
               </div>
