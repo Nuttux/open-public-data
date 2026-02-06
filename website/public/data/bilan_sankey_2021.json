@@ -1,0 +1,401 @@
+{
+  "year": 2021,
+  "generated_at": "2026-02-06T03:03:37.194395",
+  "totals": {
+    "actif_net": 45378090893.270004,
+    "passif_net": 45461997282.71001,
+    "ecart_equilibre": 83906389.44000244,
+    "fonds_propres": 35790964457.94001,
+    "dette_totale": 9020618516.43,
+    "dettes_financieres": 8426225369.62,
+    "dettes_non_financieres": 594393146.8100001,
+    "provisions": 39183844.75
+  },
+  "kpis": {
+    "ratio_endettement": 0.252,
+    "pct_fonds_propres": 78.7,
+    "pct_dette_financiere": 18.5
+  },
+  "nodes": [
+    {
+      "name": "Actif circulant",
+      "category": "actif"
+    },
+    {
+      "name": "Actif immobilisé",
+      "category": "actif"
+    },
+    {
+      "name": "Comptes de régularisation (Actif)",
+      "category": "actif"
+    },
+    {
+      "name": "Trésorerie (Actif)",
+      "category": "actif"
+    },
+    {
+      "name": "Patrimoine Paris",
+      "category": "central"
+    },
+    {
+      "name": "Comptes de régularisation (Passif)",
+      "category": "passif"
+    },
+    {
+      "name": "Dettes financières",
+      "category": "passif"
+    },
+    {
+      "name": "Dettes non financières",
+      "category": "passif"
+    },
+    {
+      "name": "Fonds propres",
+      "category": "passif"
+    },
+    {
+      "name": "Provisions pour risques et charges",
+      "category": "passif"
+    },
+    {
+      "name": "Trésorerie (Passif)",
+      "category": "passif"
+    }
+  ],
+  "links": [
+    {
+      "source": "Actif circulant",
+      "target": "Patrimoine Paris",
+      "value": 1008232784.04
+    },
+    {
+      "source": "Actif immobilisé",
+      "target": "Patrimoine Paris",
+      "value": 44121042836.270004
+    },
+    {
+      "source": "Comptes de régularisation (Actif)",
+      "target": "Patrimoine Paris",
+      "value": 76162710.72
+    },
+    {
+      "source": "Trésorerie (Actif)",
+      "target": "Patrimoine Paris",
+      "value": 172652562.24
+    },
+    {
+      "source": "Patrimoine Paris",
+      "target": "Comptes de régularisation (Passif)",
+      "value": 37230463.59
+    },
+    {
+      "source": "Patrimoine Paris",
+      "target": "Dettes financières",
+      "value": 8426225369.62
+    },
+    {
+      "source": "Patrimoine Paris",
+      "target": "Dettes non financières",
+      "value": 594393146.8100001
+    },
+    {
+      "source": "Patrimoine Paris",
+      "target": "Fonds propres",
+      "value": 35790964457.94001
+    },
+    {
+      "source": "Patrimoine Paris",
+      "target": "Provisions pour risques et charges",
+      "value": 39183844.75
+    },
+    {
+      "source": "Patrimoine Paris",
+      "target": "Trésorerie (Passif)",
+      "value": 574000000.0
+    }
+  ],
+  "drilldown": {
+    "actif": {
+      "Actif circulant": [
+        {
+          "name": "Créances correspondant à des opérations pour compte de tiers",
+          "value": 390600227.02,
+          "brut": 390600227.02,
+          "amort": 0
+        },
+        {
+          "name": "Créances sur les redevables et comptes rattachés",
+          "value": 250602633.34,
+          "brut": 359047060.34,
+          "amort": 108444427.0
+        },
+        {
+          "name": "Créances sur les autres débiteurs",
+          "value": 201977110.63,
+          "brut": 201977110.63,
+          "amort": 0
+        },
+        {
+          "name": "Créances sur budgets annexes",
+          "value": 63381862.28,
+          "brut": 63381862.28,
+          "amort": 0
+        },
+        {
+          "name": "Charges constatées d'avance",
+          "value": 58477636.3,
+          "brut": 58477636.3,
+          "amort": 0
+        },
+        {
+          "name": "Créances sur des entités publiques, des organismes internationaux et la Commission européenne",
+          "value": 43193314.47,
+          "brut": 43193314.47,
+          "amort": 0
+        }
+      ],
+      "Actif immobilisé": [
+        {
+          "name": "Droits de retour relatifs aux biens mis à disposition ou affectés",
+          "value": 11339819676.82,
+          "brut": 11339819676.82,
+          "amort": 0
+        },
+        {
+          "name": "Constructions",
+          "value": 10814195936.65,
+          "brut": 11012695730.09,
+          "amort": 198499793.44
+        },
+        {
+          "name": "Terrains",
+          "value": 8531295079.84,
+          "brut": 8531295079.84,
+          "amort": 0
+        },
+        {
+          "name": "Réseaux et installations de voirie",
+          "value": 5256244967.77,
+          "brut": 5256244967.77,
+          "amort": 0
+        },
+        {
+          "name": "Subventions d'investissement versées",
+          "value": 3518414698.63,
+          "brut": 5775465091.36,
+          "amort": 2257050392.73
+        },
+        {
+          "name": "Immobilisations mises en concessions ou affermées",
+          "value": 1102690149.66,
+          "brut": 1102690149.66,
+          "amort": 0
+        },
+        {
+          "name": "Immobilisations corporelles en cours",
+          "value": 974044999.11,
+          "brut": 974044999.11,
+          "amort": 0
+        },
+        {
+          "name": "Réseaux divers",
+          "value": 816745999.0,
+          "brut": 816745999.0,
+          "amort": 0
+        },
+        {
+          "name": "Autres immobilisations incorporelles",
+          "value": 751741879.5600001,
+          "brut": 1336919955.5300002,
+          "amort": 585178075.97
+        },
+        {
+          "name": "Immobilisations financières",
+          "value": 739349984.12,
+          "brut": 758290440.48,
+          "amort": 18940456.36
+        },
+        {
+          "name": "Installations techniques, agencements et matériel",
+          "value": 222631360.57,
+          "brut": 369454135.58,
+          "amort": 146822775.01
+        },
+        {
+          "name": "Immobilisations incorporelles en cours",
+          "value": 53868104.54,
+          "brut": 53868104.54,
+          "amort": 0
+        }
+      ],
+      "Comptes de régularisation (Actif)": [
+        {
+          "name": "Comptes de régularisation (dont primes de remboursement des obligations)",
+          "value": 76162710.72,
+          "brut": 76162710.72,
+          "amort": 0
+        }
+      ],
+      "Trésorerie (Actif)": [
+        {
+          "name": "Disponibilités",
+          "value": 172652562.24,
+          "brut": 172652562.24,
+          "amort": 0
+        }
+      ]
+    },
+    "passif": {
+      "Comptes de régularisation (Passif)": [
+        {
+          "name": "Comptes de régularisation",
+          "value": 37230463.59,
+          "brut": 37230463.59,
+          "amort": 0
+        }
+      ],
+      "Dettes financières": [
+        {
+          "name": "Emprunts obligataires",
+          "value": 5971193978.8,
+          "brut": 5971193978.8,
+          "amort": 0
+        },
+        {
+          "name": "Dettes financières et autres emprunts",
+          "value": 1324851022.1,
+          "brut": 1324851022.1,
+          "amort": 0
+        },
+        {
+          "name": "Emprunts souscrits auprès des établissements de crédit",
+          "value": 1130180368.72,
+          "brut": 1130180368.72,
+          "amort": 0
+        }
+      ],
+      "Dettes non financières": [
+        {
+          "name": "Dettes correspondant à des opérations pour compte de tiers",
+          "value": 376618441.09,
+          "brut": 376618441.09,
+          "amort": 0
+        },
+        {
+          "name": "Dettes fournisseurs et comptes rattachés",
+          "value": 73089251.03,
+          "brut": 73089251.03,
+          "amort": 0
+        },
+        {
+          "name": "Produits constatés d'avance",
+          "value": 58477636.3,
+          "brut": 58477636.3,
+          "amort": 0
+        },
+        {
+          "name": "Dettes sur budgets annexes",
+          "value": 36979764.49,
+          "brut": 36979764.49,
+          "amort": 0
+        },
+        {
+          "name": "Dettes fiscales et sociales",
+          "value": 25915134.95,
+          "brut": 25915134.95,
+          "amort": 0
+        },
+        {
+          "name": "Autres dettes non financières",
+          "value": 23228909.37,
+          "brut": 23228909.37,
+          "amort": 0
+        },
+        {
+          "name": "Fonds gérés par la collectivité",
+          "value": 84009.58,
+          "brut": 84009.58,
+          "amort": 0
+        }
+      ],
+      "Fonds propres": [
+        {
+          "name": "Réserves",
+          "value": 12155674659.4,
+          "brut": 12155674659.4,
+          "amort": 0
+        },
+        {
+          "name": "Apports non rattachés a un actif déterminé - Dotations",
+          "value": 11987220585.35,
+          "brut": 11987220585.35,
+          "amort": 0
+        },
+        {
+          "name": "Apports non rattachés a un actif déterminé - Fonds globalisés",
+          "value": 4692619567.47,
+          "brut": 4692619567.47,
+          "amort": 0
+        },
+        {
+          "name": "Neutralisations et régularisation",
+          "value": 3177157982.16,
+          "brut": 3177157982.16,
+          "amort": 0
+        },
+        {
+          "name": "Subventions d'investissement - Rattachées à un actif non amortissable",
+          "value": 2615456161.56,
+          "brut": 2615456161.56,
+          "amort": 0
+        },
+        {
+          "name": "Droits de l'affectant et du remettant",
+          "value": 752037585.3,
+          "brut": 752037585.3,
+          "amort": 0
+        },
+        {
+          "name": "Subventions d'investissement - Rattachées à un actif amortissable",
+          "value": 323501718.43,
+          "brut": 323501718.43,
+          "amort": 0
+        },
+        {
+          "name": "Résultat de l'exercice",
+          "value": 44512997.87,
+          "brut": 44512997.87,
+          "amort": 0
+        },
+        {
+          "name": "Report à nouveau",
+          "value": 41953194.72,
+          "brut": 41953194.72,
+          "amort": 0
+        },
+        {
+          "name": "Droits du concédant et de l'affermant",
+          "value": 830005.68,
+          "brut": 830005.68,
+          "amort": 0
+        }
+      ],
+      "Provisions pour risques et charges": [
+        {
+          "name": "Provisions pour risques",
+          "value": 39183844.75,
+          "brut": 39183844.75,
+          "amort": 0
+        }
+      ],
+      "Trésorerie (Passif)": [
+        {
+          "name": "Autres éléments de trésorerie passive",
+          "value": 574000000.0,
+          "brut": 574000000.0,
+          "amort": 0
+        }
+      ]
+    }
+  }
+}
