@@ -17,9 +17,11 @@
 --
 -- COUVERTURE:
 --   - Comparaison possible: 2019-2024 (les deux sources existent)
+--     * 2019: OpenData CSV
+--     * 2020-2024: PDFs éditique BG (format legacy 2020-2022, croisée 2023-2024)
 --   - Voté seul (prévisionnel): 2025-2026
 --
--- Output: ~500 lignes
+-- Output: ~1,500 lignes
 -- =============================================================================
 
 WITH vote AS (

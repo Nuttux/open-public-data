@@ -41,24 +41,44 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent
 SEEDS_DIR = PROJECT_ROOT / "pipeline" / "seeds"
 CACHE_DIR = PROJECT_ROOT / "pipeline" / "scripts" / ".cache" / "pdfs"
 
-# PDF sources: editique BG (Budget Général) - Part 1 only
-# Part 1 always contains the "Présentation croisée" section
+# PDF sources: editique BG (Budget Général)
+# 2023+: Part 1 contains "Présentation croisée" (standard parser)
+# 2020-2022: Format "Détail par articles" (legacy parser)
 PDF_SOURCES = {
+    2020: {
+        "url": "https://cdn.paris.fr/paris/2025/01/31/bp-2020-editique-bg-avec-est-q1et.pdf",
+        "description": "BP 2020 - Éditique BG avec EST (930 pages)",
+        "format": "legacy",
+    },
+    2021: {
+        "url": "https://cdn.paris.fr/paris/2021/02/04/7afb2a3b598405ef955f947999fcdbd5.pdf",
+        "description": "BP 2021 - Éditique BG avec EST (962 pages)",
+        "format": "legacy",
+    },
+    2022: {
+        "url": "https://cdn.paris.fr/paris/2022/02/17/1654e867ca0ef70cbbab53e821cd9dc0.pdf",
+        "description": "BP 2022 - Éditique BG Partie 1 (224 pages, données chapitres)",
+        "format": "legacy",
+    },
     2023: {
         "url": "https://cdn.paris.fr/paris/2023/02/15/bp-2023-editique-bg_partie01-QLeA.pdf",
         "description": "BP 2023 - Éditique BG Partie 1",
+        "format": "croisee",
     },
     2024: {
         "url": "https://cdn.paris.fr/paris/2024/02/21/1-bp-2024-editique-premierepartie-bg-ZFnH.pdf",
         "description": "BP 2024 - Éditique BG Partie 1",
+        "format": "croisee",
     },
     2025: {
         "url": "https://cdn.paris.fr/paris/2025/01/17/bp-2025-editique-premiere-parite-bg-weCs.pdf",
         "description": "BP 2025 - Éditique BG Partie 1",
+        "format": "croisee",
     },
     2026: {
         "url": "https://cdn.paris.fr/paris/2026/01/21/bp-2026-editique-premiere-partie-bg-bxlu.pdf",
         "description": "BP 2026 - Éditique BG Partie 1",
+        "format": "croisee",
     },
 }
 
@@ -371,6 +391,294 @@ def parse_non_ventilated_page(
 
 
 # =============================================================================
+# Legacy Format (2020-2022): "Vote du Budget - Détail par articles"
+#
+# These older editiques use a different layout:
+#   - Section headers: "SECTION D'INVESTISSEMENT" / "SECTION DE FONCTIONNEMENT"
+#   - Chapter headers: "CHAPITRE 900 – Services généraux" (with sub-function cols)
+#   - Sub-function columns in header: "90-020", "90-021", etc.
+#   - Nature lines with amounts per sub-function column
+#   - DEPENSES / RECETTES markers (same as croisée format)
+#   - "VOTE DU BUDGET" appears in page header
+#   - No "PRESENTATION CROISEE" / "PRESENTATION DETAILLEE" markers
+# =============================================================================
+
+@dataclass
+class LegacyPageInfo:
+    """Metadata for a page in the legacy 'vote du budget' section."""
+    page_idx: int
+    section: str                 # "Investissement" or "Fonctionnement"
+    chapitre_code: str           # e.g. "900", "930"
+    chapitre_libelle: str        # e.g. "Services généraux"
+    is_continuation: bool = False
+
+
+def find_legacy_vote_pages(pdf_path: Path) -> list[LegacyPageInfo]:
+    """
+    Find all pages in the "VOTE DU BUDGET" sections of legacy format PDFs
+    (2020-2022). These contain the ventilated operations (chapters 90x/93x)
+    with sub-function columns, similar to the croisée format but with
+    different page headers.
+
+    Also captures non-ventilated chapters (92x/94x) from the same section.
+
+    Returns sorted list of LegacyPageInfo.
+    """
+    import fitz
+    doc = fitz.open(str(pdf_path))
+
+    labeled_pages = {}
+    # Track section context across pages
+    current_section = None
+
+    for i in range(len(doc)):
+        text = doc[i].get_text()[:1200]
+        upper = text.upper()
+
+        # Detect section boundaries
+        if "INVESTISSEMENT" in upper and ("SECTION" in upper or "CHAPITRE" in upper):
+            if "FONCTIONNEMENT" not in upper[:200]:
+                current_section = "Investissement"
+        if "FONCTIONNEMENT" in upper and ("SECTION" in upper or "CHAPITRE" in upper):
+            if "INVESTISSEMENT" not in upper[:200]:
+                current_section = "Fonctionnement"
+
+        # Must be in a "VOTE DU BUDGET" page or have chapter-like content
+        is_vote_page = "VOTE DU BUDGET" in upper or "VOTE PAR CHAPITRE" in upper
+
+        # Extract chapter code from "CHAPITRE {code} – {libellé}"
+        chap_match = re.search(
+            r'CHAPITRE\s+(\d{3})\s*[–\-]\s*(.+?)(?:\n|$)', text
+        )
+        if not chap_match:
+            # Try alternate format: "Chapitre 900"
+            chap_match = re.search(
+                r'(?:CHAPITRE|Chapitre)\s+(\d{3})\s*[–\-]\s*(.+?)(?:\n|$)',
+                text
+            )
+
+        if chap_match:
+            chapitre_code = chap_match.group(1)
+            chapitre_libelle = chap_match.group(2).strip()
+            # Clean up "(suite N)" suffixes
+            chapitre_libelle = re.sub(
+                r'\s*\(suite\s*\d*\)\s*$', '', chapitre_libelle,
+                flags=re.IGNORECASE
+            )
+
+            # Determine section from chapter prefix if not yet known
+            section = current_section
+            if not section:
+                if chapitre_code.startswith("9") and int(chapitre_code) < 920:
+                    section = "Investissement"
+                elif chapitre_code.startswith("9") and int(chapitre_code) >= 930:
+                    section = "Fonctionnement"
+                elif chapitre_code.startswith("92"):
+                    section = "Investissement"
+                elif chapitre_code.startswith("94"):
+                    section = "Fonctionnement"
+
+            if section:
+                labeled_pages[i] = LegacyPageInfo(
+                    page_idx=i,
+                    section=section,
+                    chapitre_code=chapitre_code,
+                    chapitre_libelle=chapitre_libelle,
+                    is_continuation=False,
+                )
+                continue
+
+        # Check for continuation pages (nature lines + func codes, no chapter header)
+        if is_vote_page or current_section:
+            has_funcs = bool(FUNC_CODE_RE.search(text[:500]))
+            has_natures = bool(NATURE_LINE_RE.search(text))
+
+            if has_funcs and has_natures and i not in labeled_pages:
+                # Find closest preceding labeled page
+                ctx = None
+                for j in range(i - 1, max(0, i - 10), -1):
+                    if j in labeled_pages:
+                        ctx = labeled_pages[j]
+                        break
+
+                if ctx:
+                    labeled_pages[i] = LegacyPageInfo(
+                        page_idx=i,
+                        section=ctx.section,
+                        chapitre_code=ctx.chapitre_code,
+                        chapitre_libelle=ctx.chapitre_libelle,
+                        is_continuation=True,
+                    )
+
+    doc.close()
+
+    pages = sorted(labeled_pages.values(), key=lambda p: p.page_idx)
+    return pages
+
+
+def parse_legacy_page(
+    page_text: str,
+    page_info: LegacyPageInfo,
+    annee: int,
+    pdf_name: str,
+    prev_sens: Optional[str] = None,
+) -> tuple[list[BudgetVoteLine], Optional[str]]:
+    """
+    Parse one page from the legacy format (2020-2022).
+
+    The layout is very similar to the croisée format:
+    - Header has sub-function codes ("90-020", "90-021", etc.)
+    - Nature lines have amounts per sub-function column
+    - DEPENSES / RECETTES markers
+
+    For non-ventilated chapters (92x/94x), there are no function columns —
+    just nature lines with amounts. We delegate to parse_non_ventilated_page
+    via a compatible wrapper.
+
+    Returns:
+        Tuple of (extracted lines, last sens_flux for next page)
+    """
+    if not page_text:
+        return [], prev_sens
+
+    chapitre_code = page_info.chapitre_code
+
+    # Non-ventilated chapters (92x, 94x): simpler format, no function columns
+    if chapitre_code.startswith("92") or chapitre_code.startswith("94"):
+        nv_info = NonVentPageInfo(
+            page_idx=page_info.page_idx,
+            section=page_info.section,
+            chapitre_code=chapitre_code,
+            chapitre_libelle=page_info.chapitre_libelle,
+        )
+        lines = parse_non_ventilated_page(page_text, nv_info, annee, pdf_name)
+        # Detect last sens for continuations
+        last_sens = prev_sens
+        for line in page_text.split("\n"):
+            stripped = line.strip()
+            if re.match(r'^D[EÉ]PENSES', stripped):
+                last_sens = "Dépense"
+            elif re.match(r'^RECETTES', stripped):
+                last_sens = "Recette"
+        return lines, last_sens
+
+    # Ventilated chapters (90x, 93x): use same logic as croisée parser
+    # Create a compatible PageInfo and reuse parse_page_data
+    croisee_info = PageInfo(
+        page_idx=page_info.page_idx,
+        is_continuation=page_info.is_continuation,
+        section=page_info.section,
+        chapitre_ref=f"A1.{chapitre_code}" if page_info.section == "Investissement"
+                     else f"A2.{chapitre_code}",
+        chapitre_code=chapitre_code,
+        chapitre_libelle=page_info.chapitre_libelle,
+    )
+    return parse_page_data(page_text, croisee_info, annee, pdf_name, prev_sens)
+
+
+def extract_year_legacy(
+    year: int, pdf_path: Path, dry_run: bool = False
+) -> list[BudgetVoteLine]:
+    """
+    Extract budget vote data from a legacy-format (2020-2022) PDF.
+
+    Strategy:
+    1. Scan all pages for "VOTE DU BUDGET" + chapter headers
+    2. Parse ventilated pages (90x/93x) with function columns
+    3. Parse non-ventilated pages (92x/94x) without function columns
+
+    Args:
+        year: Budget year
+        pdf_path: Path to the PDF file
+        dry_run: If True, print stats but don't save CSV
+    """
+    pdf_name = pdf_path.name
+
+    print(f"\n{'='*60}")
+    print(f"  BP {year} [LEGACY FORMAT]: {pdf_name}")
+    print(f"{'='*60}")
+
+    # Phase 1: Find all vote pages
+    print(f"  [scan] Recherche pages 'vote du budget' (format legacy)...")
+    pages = find_legacy_vote_pages(pdf_path)
+
+    if not pages:
+        print(f"  [warn] Aucune page trouvee!")
+        return []
+
+    # Stats
+    vent_pages = [p for p in pages
+                  if not p.chapitre_code.startswith("92")
+                  and not p.chapitre_code.startswith("94")]
+    nv_pages = [p for p in pages
+                if p.chapitre_code.startswith("92")
+                or p.chapitre_code.startswith("94")]
+    labeled = sum(1 for p in pages if not p.is_continuation)
+    contin = sum(1 for p in pages if p.is_continuation)
+
+    print(f"  [ok] {len(pages)} pages total: {labeled} etiquetees + {contin} continuations")
+    print(f"       {len(vent_pages)} ventilees (90x/93x) + {len(nv_pages)} non-ventilees (92x/94x)")
+
+    # Show chapitres found
+    chapitres = set()
+    for p in pages:
+        chapitres.add(f"{p.section[:3]}/{p.chapitre_code}")
+    print(f"  [info] Chapitres: {', '.join(sorted(chapitres))}")
+
+    # Phase 2: Extract data
+    import pdfplumber
+    pdf = pdfplumber.open(str(pdf_path))
+    all_lines = []
+    prev_sens = None
+
+    for pi, page_info in enumerate(pages):
+        idx = page_info.page_idx
+        try:
+            page_text = pdf.pages[idx].extract_text()
+            page_lines, prev_sens = parse_legacy_page(
+                page_text, page_info, year, pdf_name, prev_sens
+            )
+            all_lines.extend(page_lines)
+        except Exception as e:
+            print(f"  [warn] Erreur page {idx + 1}: {e}")
+
+        # Reset sens when starting a new labeled page (new chapter)
+        if pi + 1 < len(pages) and not pages[pi + 1].is_continuation:
+            prev_sens = None
+
+    pdf.close()
+
+    # Stats
+    vent_count = sum(1 for l in all_lines
+                     if not l.chapitre_code.startswith("92")
+                     and not l.chapitre_code.startswith("94"))
+    nv_count = sum(1 for l in all_lines
+                   if l.chapitre_code.startswith("92")
+                   or l.chapitre_code.startswith("94"))
+    total_montant = sum(l.montant for l in all_lines)
+    depenses = sum(l.montant for l in all_lines if l.sens_flux == "Dépense")
+    recettes = sum(l.montant for l in all_lines if l.sens_flux == "Recette")
+    nb_chapitres = len(set(l.chapitre_code for l in all_lines))
+    nb_natures = len(set(l.nature_code for l in all_lines))
+    nb_inv = sum(1 for l in all_lines if l.section == "Investissement")
+    nb_fonc = sum(1 for l in all_lines if l.section == "Fonctionnement")
+
+    print(f"\n  === Resultat BP {year} [LEGACY] ===")
+    print(f"  Lignes: {len(all_lines):,} ({nb_inv:,} INV + {nb_fonc:,} FONC)")
+    print(f"    dont {vent_count:,} ventilees + {nv_count:,} non-ventilees")
+    print(f"  Chapitres: {nb_chapitres}, Natures: {nb_natures}")
+    print(f"  Total:     {total_montant / 1e9:.3f} Md EUR")
+    print(f"  Depenses:  {depenses / 1e9:.3f} Md EUR")
+    print(f"  Recettes:  {recettes / 1e9:.3f} Md EUR")
+
+    # Save CSV
+    if not dry_run and all_lines:
+        save_csv(all_lines, year)
+
+    return all_lines
+
+
+# =============================================================================
 # Text-Based Data Extraction (Présentation croisée - ventilated)
 # =============================================================================
 
@@ -607,6 +915,9 @@ def extract_year(year: int, pdf_path: Optional[Path] = None, dry_run: bool = Fal
     """
     Extract all budget vote data for a given year.
 
+    Dispatches to legacy parser (2020-2022) or croisée parser (2023+)
+    based on the PDF_SOURCES format field.
+
     Args:
         year: Budget year (must be in PDF_SOURCES)
         pdf_path: Optional override path (skip download)
@@ -618,7 +929,14 @@ def extract_year(year: int, pdf_path: Optional[Path] = None, dry_run: bool = Fal
             return []
         config = PDF_SOURCES[year]
         pdf_path = download_pdf(config["url"])
-    
+    else:
+        config = PDF_SOURCES.get(year, {})
+
+    # Dispatch to legacy parser for 2020-2022 format
+    pdf_format = config.get("format", "croisee")
+    if pdf_format == "legacy":
+        return extract_year_legacy(year, pdf_path, dry_run)
+
     pdf_name = pdf_path.name
 
     print(f"\n{'='*60}")

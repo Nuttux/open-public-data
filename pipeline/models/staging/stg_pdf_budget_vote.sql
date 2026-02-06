@@ -1,21 +1,31 @@
 -- =============================================================================
 -- Staging: Budget Voté (BP) extrait des PDFs éditique BG
 --
--- Source: seed_pdf_budget_vote_{2023..2026} (extraits par pdfplumber)
+-- Source: seed_pdf_budget_vote_{2020..2026} (extraits par pdfplumber)
 -- Description: Budget PRÉVISIONNEL voté par le Conseil de Paris,
 --              extrait des documents PDF "éditique Budget Général".
 --
 -- ARCHITECTURE:
---   Ce staging UNION ALL les 4 seeds PDF (un par année).
+--   Ce staging UNION ALL les 7 seeds PDF (un par année, 2020-2026).
 --   Un staging = 1 source brute (ici: PDF éditique BG).
---   La consolidation avec le CSV OpenData (2019-2021) se fera en INT.
+--   La consolidation avec le CSV OpenData (2019) se fait dans core_budget_vote.
 --
--- Couverture: 2023-2026 (BP uniquement, pas DM)
+-- Format PDFs:
+--   - 2020-2022: Format "Détail par articles" (legacy, même données)
+--   - 2023-2026: Format "Présentation croisée" (standard)
+--
+-- Couverture: 2020-2026 (BP uniquement, pas DM)
 -- Grain: (annee, section, sens_flux, chapitre_code, nature_code, fonction_code)
--- Output: ~7,700 lignes
+-- Output: ~14,000 lignes
 -- =============================================================================
 
 WITH pdf_union AS (
+    SELECT * FROM {{ ref('seed_pdf_budget_vote_2020') }}
+    UNION ALL
+    SELECT * FROM {{ ref('seed_pdf_budget_vote_2021') }}
+    UNION ALL
+    SELECT * FROM {{ ref('seed_pdf_budget_vote_2022') }}
+    UNION ALL
     SELECT * FROM {{ ref('seed_pdf_budget_vote_2023') }}
     UNION ALL
     SELECT * FROM {{ ref('seed_pdf_budget_vote_2024') }}
