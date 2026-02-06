@@ -21,6 +21,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import EvolutionChart, { type YearlyBudget } from '@/components/EvolutionChart';
 import FinancialHealthChart, { type FinancialYearData } from '@/components/FinancialHealthChart';
+import VariationRankChart, { type VariationsData } from '@/components/VariationRankChart';
 import YoyCards from '@/components/YoyCards';
 import DataQualityBanner from '@/components/DataQualityBanner';
 import { formatEuroCompact } from '@/lib/formatters';
@@ -51,6 +52,7 @@ interface EvolutionBudgetData {
       depenses_pct?: number | null;
     };
   }>;
+  variations_6ans?: VariationsData;
 }
 
 export default function EvolutionPage() {
@@ -318,6 +320,16 @@ export default function EvolutionPage() {
                 Mesure la santé financière réelle.
               </div>
             </div>
+          </div>
+        )}
+
+        {/* Graphique variation par poste sur 6 ans */}
+        {rawData?.variations_6ans && (
+          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6 mb-6">
+            <VariationRankChart 
+              data={rawData.variations_6ans}
+              maxItems={8}
+            />
           </div>
         )}
 

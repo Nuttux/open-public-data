@@ -8,7 +8,8 @@
  * - Dashboard Sankey (page principale)
  * - Évolution temporelle
  * - Subventions (treemap + table bénéficiaires)
- * - Carte interactive (investissements, logements)
+ * - Investissements/Travaux (projets avec toggle liste/carte)
+ * - Carte interactive (logements sociaux)
  * - Blog (articles et analyses)
  */
 
@@ -44,10 +45,16 @@ const navLinks = [
     description: 'Bénéficiaires par thématique',
   },
   {
+    href: '/investissements',
+    label: 'Travaux',
+    icon: '🏗️',
+    description: 'Projets d\'investissement',
+  },
+  {
     href: '/carte',
-    label: 'Carte',
-    icon: '🗺️',
-    description: 'Vue géographique',
+    label: 'Logements',
+    icon: '🏠',
+    description: 'Logements sociaux financés',
   },
   {
     href: '/blog',
