@@ -10,6 +10,10 @@ L'Open Data est une promesse magnifique : la transparence pour tous. Mais si vou
 
 Chez **Paris Budget Dashboard**, notre mission est de transformer ces données brutes en visualisations claires. Mais pour vraiment comprendre où vont vos impôts, il est utile de saisir les deux piliers de la comptabilité publique : le **Budget** (le flux) et le **Bilan** (le patrimoine).
 
+![Diagramme Sankey - Flux budgétaires](/blog/images/placeholder-sankey.png)
+<!-- TODO: Ajouter ici un screenshot du diagramme Sankey global (BudgetSankey.tsx) -->
+*Visualiser 10 milliards d'euros en un coup d'œil : le diagramme de flux du budget.*
+
 Voici le guide de survie pour lire ces fichiers comme un pro.
 
 ## Partie 1 : Le Budget (Le Flux)
@@ -20,7 +24,11 @@ Mais attention, en comptabilité publique (la fameuse norme M57), on ne mélange
 
 ### 1. La Section de Fonctionnement (Le quotidien)
 
-C'est la "vie de tous les jours". Elle paie ce qui est consommé ou utilisé immédiatement.
+C'est la "vie de tous les jours". Elle paie ce qui est consommé ou utilisé immédiatement. En 2024, cela représente environ **9,3 Milliards €** consacrés uniquement à faire tourner la ville.
+
+![Treemap des Subventions](/blog/images/placeholder-treemap.png)
+<!-- TODO: Ajouter ici un screenshot du Treemap des subventions (SubventionsTreemap.tsx) -->
+*La répartition des subventions par thématique : une part importante du fonctionnement.*
 
 *   **Dépenses :** Les salaires des agents (la plus grosse part), l'électricité des réverbères, les repas des cantines, les subventions aux associations.
 *   **Recettes :** La taxe foncière, le stationnement, les dotations de l'État.
@@ -29,7 +37,11 @@ C'est la "vie de tous les jours". Elle paie ce qui est consommé ou utilisé imm
 
 ### 2. La Section d'Investissement (L'avenir)
 
-C'est ce qui construit la ville de demain. Elle paie ce qui reste.
+C'est ce qui construit la ville de demain. Elle paie ce qui reste. L'investissement, ce n'est pas juste une ligne comptable, c'est cette école rue de Tolbiac ou ce gymnase dans le 18ème.
+
+![Carte des investissements](/blog/images/placeholder-map.png)
+<!-- TODO: Ajouter ici un screenshot de la carte des projets d'investissement (InvestissementsMap.tsx) -->
+*Les projets d'investissement géolocalisés dans les arrondissements.*
 
 *   **Dépenses :** Construire une école, rénover une rue, planter un parc, acheter des ordinateurs.
 *   **Recettes :** L'Épargne Brute (venue de la section précédente), les subventions d'équipement, et l'**Emprunt** (la dette).
@@ -45,6 +57,10 @@ C'est ce qui construit la ville de demain. Elle paie ce qui reste.
 ## Partie 2 : Le Bilan (Le Patrimoine)
 
 Si le Budget est le compte courant, le **Bilan** est l'état du patrimoine. C'est une photo prise au 31 décembre de tout ce que Paris possède et de tout ce qu'elle doit.
+
+![Santé Financière - Actif vs Passif](/blog/images/placeholder-bilan.png)
+<!-- TODO: Ajouter ici un screenshot du graphique Actif/Passif ou Dette/Patrimoine (FinancialHealthChart.tsx) -->
+*Comparaison entre ce que la ville possède (Actif) et comment elle le finance (Passif).*
 
 Il a deux côtés qui doivent toujours être égaux (d'où le nom "Balance") :
 
