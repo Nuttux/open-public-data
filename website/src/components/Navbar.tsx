@@ -52,9 +52,9 @@ const navLinks = [
   },
   {
     href: '/carte',
-    label: 'Carte',
-    icon: '🗺️',
-    description: 'Vue géographique (logements)',
+    label: 'Logements',
+    icon: '🏠',
+    description: 'Logements sociaux financés',
   },
   {
     href: '/blog',
