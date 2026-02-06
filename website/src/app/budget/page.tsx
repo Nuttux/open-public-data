@@ -26,7 +26,7 @@ import type { BudgetIndex } from '@/lib/formatters';
 const BUDGET_TABS: Tab[] = [
   { id: 'annuel', label: 'Annuel', icon: '📊' },
   { id: 'tendances', label: 'Tendances', icon: '📈' },
-  { id: 'prevision', label: 'Prévision', icon: '🎯' },
+  { id: 'vote-vs-execute', label: 'Voté vs Exécuté', icon: '🎯' },
 ];
 
 const VALID_TAB_IDS = BUDGET_TABS.map(t => t.id);
@@ -104,7 +104,7 @@ function BudgetPageInner() {
           <BudgetTendancesTab />
         )}
 
-        {activeTab === 'prevision' && (
+        {activeTab === 'vote-vs-execute' && (
           <BudgetPrevisionTab />
         )}
 

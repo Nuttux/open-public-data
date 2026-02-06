@@ -3,9 +3,8 @@
 /**
  * Page /subventions — Bénéficiaires de subventions de la Ville de Paris.
  *
- * Architecture par entité avec 3 tabs :
- * - Annuel (défaut) : Treemap thématique + KPIs
- * - Explorer : Table filtrable des bénéficiaires (filtres latéraux)
+ * Architecture par entité avec 2 tabs :
+ * - Annuel (défaut) : Treemap thématique + KPIs + table filtrable bénéficiaires
  * - Tendances : Évolution des montants et nb bénéficiaires par année
  *
  * Sources : /public/data/subventions/{index,treemap,beneficiaires}.json
@@ -56,7 +55,6 @@ interface BeneficiairesResponse {
 
 const SUBVENTIONS_TABS: Tab[] = [
   { id: 'annuel', label: 'Annuel', icon: '🎨' },
-  { id: 'explorer', label: 'Explorer', icon: '🔍' },
   { id: 'tendances', label: 'Tendances', icon: '📈' },
 ];
 
@@ -84,7 +82,7 @@ const NATURE_TO_TYPE: Record<string, string> = {
 /** Simple evolution chart using index data */
 function SubventionsTendancesContent({ index }: { index: SubventionsIndex }) {
   const years = index.available_years
-    .filter(y => y !== 2020 && y !== 2021) // Exclude years with no data
+    .filter(y => y !== 2020 && y !== 2021)
     .sort((a, b) => a - b);
 
   const totals = years.map(y => ({
@@ -177,6 +175,8 @@ function SubventionsPageInner() {
   const [isLoadingIndex, setIsLoadingIndex] = useState(true);
   const [isLoadingData, setIsLoadingData] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  /** Toggle between treemap overview and beneficiaires table */
+  const [showTable, setShowTable] = useState(false);
 
   // Load index
   useEffect(() => {
@@ -228,6 +228,8 @@ function SubventionsPageInner() {
 
   const handleThematiqueClick = useCallback((thematique: string | null) => {
     setFilters(prev => ({ ...prev, thematique }));
+    // When clicking a treemap tile, switch to table view to show details
+    if (thematique) setShowTable(true);
   }, []);
 
   const availableDirections = useMemo(() => index?.filters?.directions || [], [index]);
@@ -253,6 +255,22 @@ function SubventionsPageInner() {
     const montantFiltered = filtered.reduce((sum, b) => sum + b.montant_total, 0);
     return { total, filtered: filtered.length, montantTotal, montantFiltered };
   }, [beneficiaires, filters]);
+
+  /** Top beneficiary and top thematique */
+  const topKpis = useMemo(() => {
+    if (beneficiaires.length === 0) return null;
+    const sorted = [...beneficiaires].sort((a, b) => b.montant_total - a.montant_total);
+    const topBenef = sorted[0];
+    // Group by thematique for top thematique
+    const themaMap: Record<string, number> = {};
+    beneficiaires.forEach(b => {
+      themaMap[b.thematique] = (themaMap[b.thematique] || 0) + b.montant_total;
+    });
+    const topThema = Object.entries(themaMap).sort(([, a], [, b]) => b - a)[0];
+    // Median subvention
+    const median = sorted.length > 0 ? sorted[Math.floor(sorted.length / 2)].montant_total : 0;
+    return { topBenef, topThema, median };
+  }, [beneficiaires]);
 
   if (isLoadingIndex || !index) {
     return (
@@ -286,7 +304,7 @@ function SubventionsPageInner() {
 
       {/* Tab content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        {/* ── Tab Annuel ── */}
+        {/* ── Tab Annuel (fusionné avec Explorer) ── */}
         {activeTab === 'annuel' && (
           <div>
             <DataQualityBanner dataset="subventions" year={selectedYear} />
@@ -297,8 +315,8 @@ function SubventionsPageInner() {
               </div>
             )}
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+            {/* KPI cards - 2 rows */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
               <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
                 <p className="text-xs text-slate-500 uppercase tracking-wide">Total {selectedYear}</p>
                 <p className="text-2xl font-bold text-slate-100 mt-1">{formatEuroCompact(treemapData?.total_montant || 0)}</p>
@@ -307,65 +325,90 @@ function SubventionsPageInner() {
               <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
                 <p className="text-xs text-slate-500 uppercase tracking-wide">Bénéficiaires</p>
                 <p className="text-2xl font-bold text-purple-400 mt-1">{formatNumber(stats.total)}</p>
-                <p className="text-xs text-slate-500 mt-1">top par montant</p>
+                <p className="text-xs text-slate-500 mt-1">{treemapData?.nb_thematiques || 0} thématiques</p>
               </div>
               <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-                <p className="text-xs text-slate-500 uppercase tracking-wide">Thématiques</p>
-                <p className="text-2xl font-bold text-slate-100 mt-1">{treemapData?.nb_thematiques || 0}</p>
-                <p className="text-xs text-slate-500 mt-1">Toutes</p>
-              </div>
-              <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-                <p className="text-xs text-slate-500 uppercase tracking-wide">Couverture</p>
-                <p className="text-2xl font-bold text-emerald-400 mt-1">
-                  {treemapData?.total_montant && stats.montantTotal ? `~${((stats.montantTotal / treemapData.total_montant) * 100).toFixed(0)}%` : '~97%'}
+                <p className="text-xs text-slate-500 uppercase tracking-wide">Top bénéficiaire</p>
+                <p className="text-lg font-bold text-amber-400 mt-1 truncate" title={topKpis?.topBenef?.beneficiaire}>
+                  {topKpis?.topBenef ? formatEuroCompact(topKpis.topBenef.montant_total) : '—'}
                 </p>
-                <p className="text-xs text-slate-500 mt-1">du total versé</p>
+                <p className="text-xs text-slate-500 mt-1 truncate" title={topKpis?.topBenef?.beneficiaire}>
+                  {topKpis?.topBenef?.beneficiaire?.slice(0, 30) || '—'}
+                </p>
+              </div>
+              <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
+                <p className="text-xs text-slate-500 uppercase tracking-wide">Subvention médiane</p>
+                <p className="text-2xl font-bold text-slate-100 mt-1">{topKpis ? formatEuroCompact(topKpis.median) : '—'}</p>
+                <p className="text-xs text-slate-500 mt-1">montant par bénéficiaire</p>
               </div>
             </div>
 
-            {/* Treemap */}
-            {isLoadingData ? (
-              <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 h-[400px] flex items-center justify-center">
-                <div className="w-8 h-8 border-3 border-purple-500 border-t-transparent rounded-full animate-spin" />
+            {/* View toggle: Treemap / Table */}
+            <div className="flex items-center justify-between mb-4">
+              <div className="inline-flex rounded-lg bg-slate-800/80 p-0.5 sm:p-1 border border-slate-700/50">
+                <button
+                  onClick={() => setShowTable(false)}
+                  className={`px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-md text-xs sm:text-sm font-medium transition-all duration-200
+                    ${!showTable ? 'bg-purple-500 text-white shadow-lg shadow-purple-500/25' : 'text-slate-400 hover:text-slate-200 active:bg-slate-700/50'}
+                  `}
+                >
+                  <span className="sm:hidden">Carte</span>
+                  <span className="hidden sm:inline">Carte thématique</span>
+                </button>
+                <button
+                  onClick={() => setShowTable(true)}
+                  className={`px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-md text-xs sm:text-sm font-medium transition-all duration-200
+                    ${showTable ? 'bg-purple-500 text-white shadow-lg shadow-purple-500/25' : 'text-slate-400 hover:text-slate-200 active:bg-slate-700/50'}
+                  `}
+                >
+                  <span className="sm:hidden">Liste</span>
+                  <span className="hidden sm:inline">Liste bénéficiaires</span>
+                </button>
               </div>
-            ) : treemapData ? (
-              <SubventionsTreemap
-                data={treemapData}
-                onThematiqueClick={handleThematiqueClick}
-                selectedThematique={filters.thematique}
-                height={400}
-              />
-            ) : null}
-          </div>
-        )}
+              {showTable && (
+                <p className="text-xs text-slate-500 hidden sm:block">
+                  {formatNumber(stats.filtered)} bénéficiaires · {formatEuroCompact(stats.montantFiltered)}
+                </p>
+              )}
+            </div>
 
-        {/* ── Tab Explorer ── */}
-        {activeTab === 'explorer' && (
-          <div>
-            <DataQualityBanner dataset="subventions" year={selectedYear} />
+            {/* Treemap view */}
+            {!showTable && (
+              <>
+                {isLoadingData ? (
+                  <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 h-[400px] flex items-center justify-center">
+                    <div className="w-8 h-8 border-3 border-purple-500 border-t-transparent rounded-full animate-spin" />
+                  </div>
+                ) : treemapData ? (
+                  <SubventionsTreemap
+                    data={treemapData}
+                    onThematiqueClick={handleThematiqueClick}
+                    selectedThematique={filters.thematique}
+                    height={400}
+                  />
+                ) : null}
+                <p className="text-xs text-slate-500 mt-2 text-center">
+                  Cliquez sur une thématique pour voir ses bénéficiaires
+                </p>
+              </>
+            )}
 
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-              <div className="lg:col-span-1 space-y-4">
-                <SubventionsFilters
-                  filters={filters}
-                  onFiltersChange={setFilters}
-                  availableDirections={availableDirections}
-                  stats={stats}
-                />
-              </div>
-              <div className="lg:col-span-3">
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold text-slate-100 flex items-center gap-2">
-                    <span>📋</span>
-                    {formatNumber(stats.filtered)} bénéficiaires
-                    <span className="text-sm font-normal text-slate-400">
-                      ({formatEuroCompact(stats.montantFiltered)})
-                    </span>
-                  </h3>
+            {/* Table view with sidebar filters */}
+            {showTable && (
+              <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                <div className="lg:col-span-1 space-y-4">
+                  <SubventionsFilters
+                    filters={filters}
+                    onFiltersChange={setFilters}
+                    availableDirections={availableDirections}
+                    stats={stats}
+                  />
                 </div>
-                <SubventionsTable data={beneficiaires} filters={filters} isLoading={isLoadingData} pageSize={50} />
+                <div className="lg:col-span-3">
+                  <SubventionsTable data={beneficiaires} filters={filters} isLoading={isLoadingData} pageSize={50} />
+                </div>
               </div>
-            </div>
+            )}
           </div>
         )}
 

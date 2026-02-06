@@ -139,7 +139,7 @@ export interface SectionBreakdown {
  * - PARTIEL: Some sources missing (usually AP/CP or arrondissements for recent years)
  * - BUDGET_SEUL: Only main budget available
  */
-export type DataStatus = 'COMPLET' | 'PARTIEL' | 'BUDGET_SEUL' | 'INCONNU';
+export type DataStatus = 'COMPLET' | 'PARTIEL' | 'BUDGET_SEUL' | 'BUDGET_VOTE' | 'INCONNU';
 
 /**
  * Data availability details per source
