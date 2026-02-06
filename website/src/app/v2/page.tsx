@@ -18,23 +18,23 @@ import Link from 'next/link';
 import BudgetSankey from '@/components/BudgetSankey';
 import type { BudgetData } from '@/lib/formatters';
 
-/** Chiffres-clés du budget 2024 (arrondis pour la landing) */
+/** Chiffres-clés du budget 2026 voté (arrondis pour la landing) */
 const KEY_FIGURES = {
-  budgetTotal: '11,5 Md€',
+  budgetTotal: '11,7 Md€',
   depensesFonctionnement: '9,3 Md€',
   investissement: '3,2 Md€',
   nbAssociationsSubventionnees: '6 000+',
-  anneesDonnees: '2019–2024',
+  anneesDonnees: '2019–2026',
 };
 
 export default function LandingPageV2() {
   const [budgetData, setBudgetData] = useState<BudgetData | null>(null);
 
-  /** Charger les données 2024 pour le Sankey de démonstration */
+  /** Charger les données 2026 (budget voté) pour le Sankey de démonstration */
   useEffect(() => {
     async function loadData() {
       try {
-        const response = await fetch('/data/budget_sankey_2024.json');
+        const response = await fetch('/data/budget_sankey_2026.json');
         if (response.ok) {
           const data = await response.json();
           setBudgetData(data);
@@ -52,6 +52,9 @@ export default function LandingPageV2() {
       {/* ============================================
           BANNIÈRE ÉLECTIONS - Ton neutre / civique
           ============================================ */}
+      {/* ============================================
+          BANNIÈRE - Données mises à jour
+          ============================================ */}
       <section className="border-b border-slate-800 bg-slate-900/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
@@ -61,10 +64,10 @@ export default function LandingPageV2() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-blue-400"></span>
                 </span>
-                Municipales 2026
+                Mis à jour
               </span>
               <p className="text-sm text-slate-300">
-                Paris vote en mars. Consultez le bilan financier du mandat.
+                Budget voté 2026 disponible, ainsi que les comptes administratifs 2019–2024.
               </p>
             </div>
             <Link
@@ -110,7 +113,7 @@ export default function LandingPageV2() {
                 href="/evolution"
                 className="w-full sm:w-auto px-7 py-3.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-lg border border-slate-700 hover:border-slate-600 transition-all duration-200"
               >
-                Voir le bilan du mandat
+                Voir l&apos;évolution depuis 2019
               </Link>
             </div>
           </div>
@@ -143,7 +146,7 @@ export default function LandingPageV2() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="mb-6">
             <h2 className="text-lg sm:text-xl font-bold text-slate-200 mb-1">
-              Le trajet de votre argent en 2024
+              Le trajet de votre argent en 2026 <span className="text-sm font-normal text-slate-400">(budget voté)</span>
             </h2>
             <p className="text-sm text-slate-400">
               D&apos;où viennent les recettes et où partent les dépenses, 

@@ -104,10 +104,49 @@ seeds:
         ode_source: STRING
     
     # -------------------------------------------------------------------------
-    # Budget Voté (BP) extrait des PDFs éditique BG (2023-2026)
+    # Budget Voté (BP) extrait des PDFs éditique BG (2020-2026)
     # Peuplé par: extract_pdf_budget_vote.py (pdfplumber)
     # Un fichier par année: seed_pdf_budget_vote_{YYYY}.csv
     # -------------------------------------------------------------------------
+    seed_pdf_budget_vote_2020:
+      +column_types:
+        annee: INT64
+        section: STRING
+        sens_flux: STRING
+        chapitre_code: STRING
+        chapitre_libelle: STRING
+        nature_code: STRING
+        nature_libelle: STRING
+        fonction_code: STRING
+        montant: FLOAT64
+        source_page: INT64
+        source_pdf: STRING
+    seed_pdf_budget_vote_2021:
+      +column_types:
+        annee: INT64
+        section: STRING
+        sens_flux: STRING
+        chapitre_code: STRING
+        chapitre_libelle: STRING
+        nature_code: STRING
+        nature_libelle: STRING
+        fonction_code: STRING
+        montant: FLOAT64
+        source_page: INT64
+        source_pdf: STRING
+    seed_pdf_budget_vote_2022:
+      +column_types:
+        annee: INT64
+        section: STRING
+        sens_flux: STRING
+        chapitre_code: STRING
+        chapitre_libelle: STRING
+        nature_code: STRING
+        nature_libelle: STRING
+        fonction_code: STRING
+        montant: FLOAT64
+        source_page: INT64
+        source_pdf: STRING
     seed_pdf_budget_vote_2023:
       +column_types:
         annee: INT64
