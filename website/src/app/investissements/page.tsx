@@ -57,6 +57,19 @@ const THEMATIQUES = [
   'autre',
 ] as const;
 
+/**
+ * Budget total d'investissement par année (depuis evolution_budget.json)
+ * Utilisé pour calculer le taux de couverture des projets localisables
+ */
+interface BudgetInvestYear {
+  year: number;
+  sections: {
+    investissement: {
+      depenses: number;
+    };
+  };
+}
+
 export default function InvestissementsPage() {
   // État vue (liste ou carte)
   const [viewMode, setViewMode] = useState<'liste' | 'carte'>('liste');
@@ -74,21 +87,39 @@ export default function InvestissementsPage() {
   // Données
   const [projets, setProjets] = useState<AutorisationProgramme[]>([]);
   
+  // Budget total investissement par année (pour calculer couverture)
+  const [budgetInvestByYear, setBudgetInvestByYear] = useState<Record<number, number>>({});
+  
   // État de chargement
   const [isLoadingIndex, setIsLoadingIndex] = useState(true);
   const [isLoadingData, setIsLoadingData] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   /**
-   * Charger l'index au démarrage
+   * Charger l'index et les données de référence au démarrage
    */
   useEffect(() => {
     async function loadIndex() {
       try {
-        const index = await loadAutorisationsIndex();
+        // Charger index projets et budget total en parallèle
+        const [index, evoResponse] = await Promise.all([
+          loadAutorisationsIndex(),
+          fetch('/data/evolution_budget.json'),
+        ]);
+        
         setAvailableYears(index.availableYears);
         if (index.availableYears.length > 0) {
           setSelectedYear(index.availableYears[0]);
+        }
+        
+        // Extraire les dépenses d'investissement pour chaque année
+        if (evoResponse.ok) {
+          const evoData = await evoResponse.json();
+          const budgetMap: Record<number, number> = {};
+          evoData.years?.forEach((y: BudgetInvestYear) => {
+            budgetMap[y.year] = y.sections?.investissement?.depenses || 0;
+          });
+          setBudgetInvestByYear(budgetMap);
         }
       } catch (err) {
         console.error('Error loading index:', err);
@@ -271,6 +302,28 @@ export default function InvestissementsPage() {
             </p>
           </div>
         )}
+
+        {/* Info couverture des données */}
+        <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-3 mb-4 flex items-start gap-2">
+          <span className="text-blue-400 mt-0.5">ℹ️</span>
+          <div className="text-sm text-blue-300">
+            <p>
+              <strong>Couverture :</strong> Cette page présente les <strong>projets localisables</strong> (écoles, 
+              piscines, parcs, voiries...), représentant{' '}
+              <strong>
+                {budgetInvestByYear[selectedYear] && stats.totalMontant > 0
+                  ? `~${((stats.totalMontant / budgetInvestByYear[selectedYear]) * 100).toFixed(0)}%`
+                  : '~10-15%'}
+              </strong>{' '}
+              du budget d&apos;investissement total ({budgetInvestByYear[selectedYear] 
+                ? formatEuroCompact(budgetInvestByYear[selectedYear]) 
+                : '~2 Md€'}).
+            </p>
+            <p className="text-xs text-blue-400/70 mt-1">
+              Le reste comprend: programmes multi-sites, subventions d&apos;équipement, acquisitions citywide, systèmes informatiques.
+            </p>
+          </div>
+        </div>
 
         {/* Stats rapides */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">

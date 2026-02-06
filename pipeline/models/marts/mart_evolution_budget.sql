@@ -12,6 +12,11 @@
 -- Métriques calculées:
 --   - Épargne brute = Recettes fonct. - Dépenses fonct.
 --   - Surplus/Déficit = Recettes propres (hors emprunts) - Dépenses
+--   - Métriques dette:
+--     - Emprunts = nature 16xx recettes (nouveaux emprunts)
+--     - Remboursement principal = nature 16xx dépenses
+--     - Intérêts dette = nature 66xx dépenses
+--     - Variation dette nette = emprunts - remboursement_principal
 --
 -- Output: ~250 lignes (6 ans × ~40 dimensions)
 -- =============================================================================
@@ -27,8 +32,13 @@ WITH budget_base AS (
         montant,
         -- Utiliser ode_thematique du core_budget (mapping correct chapitre → thématique)
         ode_thematique AS thematique_macro,
-        -- Flag emprunts (nature 16x = emprunts reçus)
-        CASE WHEN nature_code LIKE '16%' AND sens_flux = 'Recette' THEN TRUE ELSE FALSE END AS est_emprunt
+        -- Flags pour métriques dette
+        -- Emprunts nouveaux (nature 16x recettes)
+        CASE WHEN nature_code LIKE '16%' AND sens_flux = 'Recette' THEN TRUE ELSE FALSE END AS est_emprunt,
+        -- Remboursement du principal (nature 16x dépenses)
+        CASE WHEN nature_code LIKE '16%' AND sens_flux = 'Dépense' THEN TRUE ELSE FALSE END AS est_remboursement_principal,
+        -- Intérêts de la dette (nature 66x dépenses)
+        CASE WHEN nature_code LIKE '66%' AND sens_flux = 'Dépense' THEN TRUE ELSE FALSE END AS est_interets_dette
     FROM {{ ref('core_budget') }}
 ),
 
@@ -70,7 +80,7 @@ par_section AS (
     GROUP BY 1, 2, 3
 ),
 
--- Calcul épargne brute et surplus financier par année
+-- Calcul épargne brute, surplus financier et métriques dette par année
 metriques_financieres AS (
     SELECT
         annee,
@@ -79,8 +89,10 @@ metriques_financieres AS (
         SUM(CASE WHEN section = 'Fonctionnement' AND sens_flux = 'Dépense' THEN montant ELSE 0 END) AS depenses_fonct,
         SUM(CASE WHEN section = 'Investissement' AND sens_flux = 'Recette' THEN montant ELSE 0 END) AS recettes_invest,
         SUM(CASE WHEN section = 'Investissement' AND sens_flux = 'Dépense' THEN montant ELSE 0 END) AS depenses_invest,
-        -- Emprunts (à soustraire des recettes propres)
+        -- Métriques dette
         SUM(CASE WHEN est_emprunt THEN montant ELSE 0 END) AS emprunts,
+        SUM(CASE WHEN est_remboursement_principal THEN montant ELSE 0 END) AS remboursement_principal,
+        SUM(CASE WHEN est_interets_dette THEN montant ELSE 0 END) AS interets_dette,
         -- Totaux
         SUM(CASE WHEN sens_flux = 'Recette' THEN montant ELSE 0 END) AS recettes_totales,
         SUM(CASE WHEN sens_flux = 'Dépense' THEN montant ELSE 0 END) AS depenses_totales
@@ -95,7 +107,14 @@ metriques_calculees AS (
         depenses_fonct,
         recettes_invest,
         depenses_invest,
+        -- Métriques dette
         emprunts,
+        remboursement_principal,
+        interets_dette,
+        -- Variation dette nette = nouveaux emprunts - remboursement du principal
+        -- Positif = la dette augmente, Négatif = la dette diminue
+        emprunts - remboursement_principal AS variation_dette_nette,
+        -- Totaux
         recettes_totales,
         depenses_totales,
         -- Épargne brute = surplus de fonctionnement
@@ -136,7 +155,11 @@ resultats AS (
         montant_annee_prec,
         NULL AS epargne_brute,
         NULL AS recettes_propres,
-        NULL AS surplus_deficit
+        NULL AS surplus_deficit,
+        NULL AS emprunts,
+        NULL AS remboursement_principal,
+        NULL AS interets_dette,
+        NULL AS variation_dette_nette
     FROM avec_variation
 
     UNION ALL
@@ -154,12 +177,16 @@ resultats AS (
         NULL AS montant_annee_prec,
         NULL AS epargne_brute,
         NULL AS recettes_propres,
-        NULL AS surplus_deficit
+        NULL AS surplus_deficit,
+        NULL AS emprunts,
+        NULL AS remboursement_principal,
+        NULL AS interets_dette,
+        NULL AS variation_dette_nette
     FROM par_section
 
     UNION ALL
 
-    -- Vue 3: Métriques financières calculées
+    -- Vue 3: Métriques financières calculées (incluant dette)
     SELECT
         'metriques' AS vue,
         annee,
@@ -172,7 +199,11 @@ resultats AS (
         NULL AS montant_annee_prec,
         epargne_brute,
         recettes_propres,
-        surplus_deficit
+        surplus_deficit,
+        emprunts,
+        remboursement_principal,
+        interets_dette,
+        variation_dette_nette
     FROM metriques_calculees
 
     UNION ALL
@@ -190,7 +221,11 @@ resultats AS (
         NULL AS montant_annee_prec,
         NULL AS epargne_brute,
         NULL AS recettes_propres,
-        NULL AS surplus_deficit
+        NULL AS surplus_deficit,
+        NULL AS emprunts,
+        NULL AS remboursement_principal,
+        NULL AS interets_dette,
+        NULL AS variation_dette_nette
     FROM par_thematique
 )
 
@@ -207,6 +242,11 @@ SELECT
     epargne_brute,
     recettes_propres,
     surplus_deficit,
+    -- Métriques dette
+    emprunts,
+    remboursement_principal,
+    interets_dette,
+    variation_dette_nette,
     CURRENT_TIMESTAMP() AS _dbt_updated_at
 FROM resultats
 ORDER BY vue, annee, sens_flux, section, thematique_macro

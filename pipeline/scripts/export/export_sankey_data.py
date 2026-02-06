@@ -139,7 +139,7 @@ EXPENSE_GROUPS = {
     "Environnement": ["Environnement", "Invest. Environnement"],
     "Transports": ["Transports", "Invest. Transports"],
     "Économie": ["Action Économique", "Invest. Économie", "Participations", "Subventions Équipement"],
-    "Dette": ["Remboursement Dette", "Opérations Financières"],
+    "Remboursement dette": ["Remboursement Dette", "Opérations Financières"],
 }
 
 # =============================================================================
