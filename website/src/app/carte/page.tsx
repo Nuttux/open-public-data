@@ -194,10 +194,15 @@ export default function CartePage() {
 
   /**
    * Statistiques calculées
+   * 
+   * Pour les investissements:
+   * - precise: a lat/lon précis (api_numero, api_rue, lieu_connu, knowledge)
+   * - geolocated: a au moins un arrondissement (inclut centroid)
    */
   const stats = useMemo(() => {
     const geolocatedSubs = filteredSubventions.filter(s => s.coordinates);
-    const geolocatedAPs = filteredAutorisations.filter(a => a.arrondissement);
+    const geolocatedAPs = filteredAutorisations.filter(a => a.arrondissement || (a.latitude && a.longitude));
+    const preciseAPs = filteredAutorisations.filter(a => a.latitude && a.longitude);
     
     return {
       subventions: {
@@ -213,6 +218,7 @@ export default function CartePage() {
         count: filteredAutorisations.length,
         total: filteredAutorisations.reduce((sum, a) => sum + a.montant, 0),
         geolocated: geolocatedAPs.length,
+        precise: preciseAPs.length,
       },
     };
   }, [filteredSubventions, logements, filteredAutorisations]);
