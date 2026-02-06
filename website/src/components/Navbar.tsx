@@ -49,6 +49,12 @@ const navLinks = [
     description: 'État patrimonial, dette et santé financière',
   },
   {
+    href: '/bilan',
+    label: 'Bilan',
+    icon: '📋',
+    description: 'État patrimonial (Actif/Passif)',
+  },
+  {
     href: '/subventions',
     label: 'Subventions',
     icon: '💰',
