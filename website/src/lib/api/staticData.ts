@@ -48,6 +48,53 @@ interface AutorisationsIndex {
 }
 
 /**
+ * Index du bilan comptable
+ */
+export interface BilanIndex {
+  availableYears: number[];
+  latestYear: number;
+  totals_by_year: Record<number, {
+    actif_net: number;
+    passif_net: number;
+  }>;
+}
+
+/**
+ * Données Sankey du bilan comptable
+ */
+export interface BilanSankeyData {
+  year: number;
+  totals: {
+    actif_net: number;
+    passif_net: number;
+    ecart_equilibre: number;
+    fonds_propres: number;
+    dette_totale: number;
+    dettes_financieres: number;
+    dettes_non_financieres: number;
+    provisions: number;
+  };
+  kpis: {
+    ratio_endettement: number | null;
+    pct_fonds_propres: number;
+    pct_dette_financiere: number;
+  };
+  nodes: Array<{
+    name: string;
+    category: 'actif' | 'central' | 'passif';
+  }>;
+  links: Array<{
+    source: string;
+    target: string;
+    value: number;
+  }>;
+  drilldown: {
+    actif: Record<string, Array<{ name: string; value: number; brut?: number; amort?: number }>>;
+    passif: Record<string, Array<{ name: string; value: number; brut?: number; amort?: number }>>;
+  };
+}
+
+/**
  * Cache en mémoire pour les données chargées
  */
 const dataCache: {
@@ -60,6 +107,8 @@ const dataCache: {
   autorisations?: Record<number, AutorisationProgramme[]>;
   autorisationsIndex?: AutorisationsIndex;
   arrondissementsStats?: ArrondissementStats[];
+  bilanIndex?: BilanIndex;
+  bilanSankey?: Record<number, BilanSankeyData>;
 } = {};
 
 /**
@@ -516,6 +565,58 @@ function mapChapitreToThematique(chapitre: string): string {
   return 'autre';
 }
 
+// =============================================================================
+// BILAN COMPTABLE
+// =============================================================================
+
+/**
+ * Charge l'index du bilan comptable (années disponibles)
+ */
+export async function loadBilanIndex(): Promise<BilanIndex> {
+  if (dataCache.bilanIndex) {
+    return dataCache.bilanIndex;
+  }
+
+  try {
+    const data = await loadJson<BilanIndex>('/data/bilan_index.json');
+    dataCache.bilanIndex = data;
+    return data;
+  } catch {
+    // Fallback si le fichier n'existe pas encore
+    return {
+      availableYears: [2024, 2023, 2022, 2021, 2020, 2019],
+      latestYear: 2024,
+      totals_by_year: {},
+    };
+  }
+}
+
+/**
+ * Charge les données Sankey du bilan pour une année
+ */
+export async function loadBilanSankey(year: number): Promise<BilanSankeyData | null> {
+  if (dataCache.bilanSankey?.[year]) {
+    return dataCache.bilanSankey[year];
+  }
+
+  try {
+    const data = await loadJson<BilanSankeyData>(`/data/bilan_sankey_${year}.json`);
+    
+    if (!dataCache.bilanSankey) {
+      dataCache.bilanSankey = {};
+    }
+    dataCache.bilanSankey[year] = data;
+    return data;
+  } catch (error) {
+    console.warn(`Bilan data for ${year} not found:`, error);
+    return null;
+  }
+}
+
+// =============================================================================
+// PRELOAD & CACHE
+// =============================================================================
+
 /**
  * Précharge toutes les données pour éviter les waterfalls
  */
@@ -548,4 +649,6 @@ export function clearDataCache(): void {
   delete dataCache.autorisations;
   delete dataCache.autorisationsIndex;
   delete dataCache.arrondissementsStats;
+  delete dataCache.bilanIndex;
+  delete dataCache.bilanSankey;
 }
