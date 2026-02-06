@@ -154,6 +154,18 @@ interface DrilldownState {
   originalItems: DrilldownItem[];
 }
 
+/** 
+ * Structure simplifiée des données evolution_budget.json 
+ * (utilisée uniquement pour récupérer les emprunts corrects)
+ */
+interface EvolutionBudgetYear {
+  year: number;
+  totals: {
+    emprunts: number;
+    recettes_propres: number;
+  };
+}
+
 export default function Home() {
   const [index, setIndex] = useState<BudgetIndex | null>(null);
   const [selectedYear, setSelectedYear] = useState<number>(2024);
@@ -161,6 +173,9 @@ export default function Home() {
   const [natureData, setNatureData] = useState<BudgetNatureData | null>(null);
   const [drilldown, setDrilldown] = useState<DrilldownState | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>('flux');
+  
+  // Emprunts corrects (nature 16xx) depuis evolution_budget.json
+  const [empruntsData, setEmpruntsData] = useState<Record<number, number>>({});
   
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -174,12 +189,27 @@ export default function Home() {
   useEffect(() => {
     async function loadIndex() {
       try {
-        const response = await fetch('/data/budget_index.json');
-        if (!response.ok) throw new Error('Impossible de charger l\'index');
+        // Charger index et evolution_budget.json en parallèle
+        const [indexResponse, evoResponse] = await Promise.all([
+          fetch('/data/budget_index.json'),
+          fetch('/data/evolution_budget.json'),
+        ]);
         
-        const data: BudgetIndex = await response.json();
+        if (!indexResponse.ok) throw new Error('Impossible de charger l\'index');
+        
+        const data: BudgetIndex = await indexResponse.json();
         setIndex(data);
         setSelectedYear(data.latestYear);
+        
+        // Extraire les emprunts corrects (nature 16xx) pour chaque année
+        if (evoResponse.ok) {
+          const evoData = await evoResponse.json();
+          const empruntsMap: Record<number, number> = {};
+          evoData.years?.forEach((y: EvolutionBudgetYear) => {
+            empruntsMap[y.year] = y.totals.emprunts;
+          });
+          setEmpruntsData(empruntsMap);
+        }
       } catch (err) {
         setError('Erreur lors du chargement des données');
         console.error('Error loading index:', err);
@@ -407,7 +437,7 @@ export default function Home() {
               depenses={budgetData.totals.depenses}
               solde={budgetData.totals.solde}
               year={selectedYear}
-              emprunts={budgetData.links.find(l => l.source === 'Emprunts')?.value || 0}
+              emprunts={empruntsData[selectedYear] || budgetData.links.find(l => l.source === 'Emprunts')?.value || 0}
             />
 
             {/* Toggle Vue */}

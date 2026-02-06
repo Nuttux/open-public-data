@@ -40,7 +40,11 @@ interface EvolutionBudgetData {
       solde_comptable: number;
       recettes_propres: number;
       surplus_deficit: number;
+      // Métriques dette
       emprunts: number;
+      remboursement_principal: number;
+      interets_dette: number;
+      variation_dette_nette: number;
     };
     epargne_brute: number;
     sections: {
@@ -238,9 +242,10 @@ export default function EvolutionPage() {
           </div>
         )}
 
-        {/* Métriques santé financière de l'année */}
+        {/* Métriques santé financière de l'année (complémentaires aux YoyCards) */}
         {currentFinancialData && (
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+            {/* Épargne brute - capacité d'autofinancement */}
             <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-lg">💰</span>
@@ -252,17 +257,7 @@ export default function EvolutionPage() {
               <p className="text-xs text-slate-400 mt-1">Capacité d&apos;autofinancement</p>
             </div>
             
-            <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-lg">📊</span>
-                <p className="text-xs text-slate-500 uppercase tracking-wide">Surplus/Déficit financier</p>
-              </div>
-              <p className={`text-2xl font-bold ${currentFinancialData.totals.surplus_deficit >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
-                {currentFinancialData.totals.surplus_deficit >= 0 ? '+' : ''}{formatEuroCompact(currentFinancialData.totals.surplus_deficit)}
-              </p>
-              <p className="text-xs text-slate-400 mt-1">Hors emprunts ({formatEuroCompact(currentFinancialData.totals.emprunts)})</p>
-            </div>
-            
+            {/* Solde comptable - équilibre technique */}
             <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-lg">⚖️</span>
@@ -272,6 +267,55 @@ export default function EvolutionPage() {
                 {currentFinancialData.totals.solde_comptable >= 0 ? '+' : ''}{formatEuroCompact(currentFinancialData.totals.solde_comptable)}
               </p>
               <p className="text-xs text-slate-400 mt-1">Équilibre technique</p>
+            </div>
+          </div>
+        )}
+
+        {/* Métriques dette */}
+        {currentFinancialData && (
+          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-amber-500/30 p-4 mb-6">
+            <h3 className="text-sm font-semibold text-slate-200 mb-3 flex items-center gap-2">
+              <span>🏦</span>
+              Gestion de la dette {selectedYear}
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              {/* Emprunts nouveaux */}
+              <div>
+                <p className="text-xs text-slate-500 uppercase tracking-wide">Emprunts</p>
+                <p className="text-xl font-bold text-amber-400 mt-1">
+                  +{formatEuroCompact(currentFinancialData.totals.emprunts)}
+                </p>
+                <p className="text-xs text-slate-500 mt-1">Nouveaux</p>
+              </div>
+              
+              {/* Remboursement principal */}
+              <div>
+                <p className="text-xs text-slate-500 uppercase tracking-wide">Remb. capital</p>
+                <p className="text-xl font-bold text-emerald-400 mt-1">
+                  -{formatEuroCompact(currentFinancialData.totals.remboursement_principal)}
+                </p>
+                <p className="text-xs text-slate-500 mt-1">Principal</p>
+              </div>
+              
+              {/* Intérêts */}
+              <div>
+                <p className="text-xs text-slate-500 uppercase tracking-wide">Intérêts</p>
+                <p className="text-xl font-bold text-red-400 mt-1">
+                  -{formatEuroCompact(currentFinancialData.totals.interets_dette)}
+                </p>
+                <p className="text-xs text-slate-500 mt-1">Coût dette</p>
+              </div>
+              
+              {/* Variation dette nette */}
+              <div>
+                <p className="text-xs text-slate-500 uppercase tracking-wide">Δ Dette nette</p>
+                <p className={`text-xl font-bold mt-1 ${currentFinancialData.totals.variation_dette_nette > 0 ? 'text-red-400' : 'text-emerald-400'}`}>
+                  {currentFinancialData.totals.variation_dette_nette > 0 ? '+' : ''}{formatEuroCompact(currentFinancialData.totals.variation_dette_nette)}
+                </p>
+                <p className="text-xs text-slate-500 mt-1">
+                  {currentFinancialData.totals.variation_dette_nette > 0 ? 'Dette ↑' : 'Dette ↓'}
+                </p>
+              </div>
             </div>
           </div>
         )}

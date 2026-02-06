@@ -54,15 +54,15 @@
       "category": "expense"
     },
     {
-      "name": "Dette",
-      "category": "expense"
-    },
-    {
       "name": "Environnement",
       "category": "expense"
     },
     {
       "name": "Personnel & Admin",
+      "category": "expense"
+    },
+    {
+      "name": "Remboursement dette",
       "category": "expense"
     },
     {
@@ -120,7 +120,7 @@
     },
     {
       "source": "Budget Paris",
-      "target": "Dette",
+      "target": "Remboursement dette",
       "value": 481246404.91
     },
     {
@@ -1178,7 +1178,7 @@
           "value": 24198.08
         }
       ],
-      "Dette": [
+      "Remboursement dette": [
         {
           "name": "Remboursement Dette: Emprunts obligataires remboursables in fine",
           "value": 209715000.0
