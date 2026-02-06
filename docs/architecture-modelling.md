@@ -1116,7 +1116,8 @@ La table `ca_subventions` (annexe CA) **ne contient PAS** de codes budgétaires 
 TOTAL: 99.51% des montants classifiés (données disponibles)
 ```
 
-> **Note**: L'ordre de priorité dans le code est Pattern → Direction → LLM → Default,
+> **Note**: L'ordre de priorité dans le code est 
+Pattern → Direction → LLM → Default,
 > mais le LLM couvre plus de montant que les directions car il cible les gros bénéficiaires.
 
 ### 6.4 Cascade géoloc (AP projets)
@@ -1139,6 +1140,128 @@ TOTAL: 99.51% des montants classifiés (données disponibles)
    └─► ~57% des montants (projets multi-arrondissements, etc.)
 
 TOTAL: 43.08% des montants géolocalisés par arrondissement
+```
+
+### 6.5 Fusion Investissements (PDF + BigQuery)
+
+**Contexte** : Les données d'investissement existent dans deux sources complémentaires :
+
+| Source | Fichier | Contenu | Points forts | Points faibles |
+|--------|---------|---------|--------------|----------------|
+| **PDF "Investissements Localisés"** | `investissements_localises_{year}.json` | Projets localisables par arrondissement | Descriptions détaillées avec adresses (~31% ont une adresse extraite) | Manque gros projets "citywide" (Philharmonie, etc.) |
+| **BigQuery OpenData** | `investissements_{year}.json` | Tous les projets AP | Couverture complète | Noms génériques/tronqués (~9% adresses), doublons |
+
+**Stratégie de fusion** : Utiliser le PDF comme base, compléter avec BigQuery pour les gros projets manquants.
+
+#### Règle d'ajout depuis BigQuery
+
+Un projet BigQuery est ajouté au dataset fusionné si et seulement si :
+
+```python
+# 1. Montant significatif (>500k€)
+montant >= 500_000
+
+# 2. Localisable (arrondissement connu OU lieu iconique)
+AND (
+    arrondissement IS NOT NULL
+    OR est_lieu_iconique(nom)  # Philharmonie, Théâtre de la Ville, etc.
+)
+
+# 3. Pas une subvention générique non localisable
+AND NOT is_subvention_logement_generique(nom)
+
+# 4. Pas déjà présent dans le PDF
+AND NOT already_in_pdf(nom)
+```
+
+#### Lieux iconiques (toujours inclus)
+
+```python
+LIEUX_ICONIQUES = [
+    'philharmonie', 'theatre de la ville', 'opera bastille', 'opera garnier',
+    'tour eiffel', 'notre-dame', 'hotel de ville', 'palais de tokyo',
+    'petit palais', 'grand palais'
+]
+```
+
+#### Patterns exclus (subventions génériques)
+
+```python
+EXCLUSION_PATTERNS = [
+    r'sub.*logement\s*soci',      # SUB EQUIPEMENT LOGEMENT SOCIAL
+    r'subvention.*logement',       # Subventions logement citywide
+]
+```
+
+#### Résultats pour 2022
+
+| Source | Projets | Montant |
+|--------|---------|---------|
+| PDF Investissements Localisés | 446 | 143.58 M€ |
+| **Ajoutés depuis BigQuery** | **13** | **41.28 M€** |
+| **TOTAL fusionné** | **459** | **184.86 M€** |
+
+**Projets ajoutés depuis BigQuery (2022)** :
+
+| Projet | Montant | Arrondissement | Raison |
+|--------|---------|----------------|--------|
+| PHILHARMONIE DE PARIS | 11.00 M€ | 19 | Lieu iconique |
+| THÉÂTRE DE LA VILLE | 9.66 M€ | 4 | Lieu iconique |
+| GPRU BAUDRICOURT 13e | 5.30 M€ | 13 | Avec arrondissement |
+| GPRU ST BLAISE | 4.79 M€ | 20 | Avec arrondissement |
+| ... (9 autres) | ... | ... | ... |
+
+#### Scripts
+
+```bash
+# Fusion PDF + BigQuery pour toutes les années
+python pipeline/scripts/export/merge_investments.py --all
+
+# Géocodage des projets fusionnés
+python pipeline/scripts/export/geocode_investments.py --all
+```
+
+#### Fichiers de sortie
+
+```
+website/public/data/map/
+├── investissements_complet_2022.json    # Données fusionnées
+├── investissements_complet_2023.json
+├── investissements_complet_2024.json
+├── investissements_complet_index.json   # Index avec stats
+└── geo_cache.json                        # Cache API géocodage
+```
+
+#### Structure JSON fusionné
+
+```json
+{
+  "year": 2022,
+  "source": "Fusion PDF + BigQuery",
+  "methodology": "PDF Investissements Localisés + Gros projets BQ (>500k€, localisables)",
+  "stats": {
+    "pdf_projets": 446,
+    "pdf_total": 143580000,
+    "bq_added": 13,
+    "bq_added_total": 41280000,
+    "total_projets": 459,
+    "total_montant": 184860000,
+    "geo_rate": 72.5,
+    "precise_geo_rate": 35.2
+  },
+  "data": [
+    {
+      "nom_projet": "Piscine 19, rue de Pontoise",
+      "montant": 850000,
+      "arrondissement": 5,
+      "source": "PDF",
+      "lat": 48.8498,
+      "lon": 2.3517,
+      "geo_source": "lieu_connu",
+      "geo_score": 1.0
+    }
+  ]
+}
 ```
 
 ---

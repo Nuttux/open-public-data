@@ -162,18 +162,39 @@ export default function ParisMap({
   // Les subventions avec coordonnées
   const geoSubventions = subventions.filter(s => s.coordinates);
   
-  // Les autorisations avec arrondissement connu
+  /**
+   * Autorisations avec coordonnées géographiques
+   * 
+   * Priorité: coordonnées précises (lat/lon) > centroid arrondissement
+   * Les projets sans aucune localisation sont exclus
+   */
   const geoAutorisations = useMemo(() => {
     return autorisations
-      .filter(a => a.arrondissement && ARRONDISSEMENT_CENTROIDS[a.arrondissement])
-      .map(a => ({
-        ...a,
-        // Ajouter un petit offset aléatoire pour éviter que tous les points se superposent
-        coordinates: {
-          lat: ARRONDISSEMENT_CENTROIDS[a.arrondissement!].lat + (Math.random() - 0.5) * 0.008,
-          lon: ARRONDISSEMENT_CENTROIDS[a.arrondissement!].lon + (Math.random() - 0.5) * 0.008,
-        },
-      }));
+      .filter(a => {
+        // A des coordonnées précises OU un arrondissement connu
+        const hasPreciseCoords = a.latitude && a.longitude;
+        const hasArrondissement = a.arrondissement && ARRONDISSEMENT_CENTROIDS[a.arrondissement];
+        return hasPreciseCoords || hasArrondissement;
+      })
+      .map(a => {
+        // Utiliser les coordonnées précises si disponibles
+        if (a.latitude && a.longitude) {
+          return {
+            ...a,
+            coordinates: { lat: a.latitude, lon: a.longitude },
+            isPrecise: true,  // Flag pour affichage différencié
+          };
+        }
+        // Sinon, fallback sur le centroïde de l'arrondissement avec offset aléatoire
+        return {
+          ...a,
+          coordinates: {
+            lat: ARRONDISSEMENT_CENTROIDS[a.arrondissement!].lat + (Math.random() - 0.5) * 0.008,
+            lon: ARRONDISSEMENT_CENTROIDS[a.arrondissement!].lon + (Math.random() - 0.5) * 0.008,
+          },
+          isPrecise: false,
+        };
+      });
   }, [autorisations]);
 
   // Calcul du max pour la légende choroplèthe (utilise percentile dans ChoroplethLayer)
@@ -314,10 +335,13 @@ export default function ParisMap({
             center={[ap.coordinates.lat, ap.coordinates.lon]}
             radius={getCircleRadius(ap.montant, 'autorisation')}
             pathOptions={{
-              color: '#f59e0b',
-              fillColor: '#f59e0b',
-              fillOpacity: 0.6,
-              weight: 1,
+              // Couleur différente selon la précision de la géolocalisation
+              color: ap.isPrecise ? '#f59e0b' : '#fb923c',
+              fillColor: ap.isPrecise ? '#f59e0b' : '#fb923c',
+              fillOpacity: ap.isPrecise ? 0.7 : 0.4,
+              weight: ap.isPrecise ? 2 : 1,
+              // Style pointillé pour les localisations approximatives
+              dashArray: ap.isPrecise ? undefined : '4,4',
             }}
           >
             <Popup maxWidth={350}>
@@ -328,7 +352,7 @@ export default function ParisMap({
                 </p>
                 <div className="text-xs text-slate-600 space-y-1.5">
                   <p className="leading-snug">
-                    <strong>Mission:</strong>{' '}
+                    <strong>Chapitre:</strong>{' '}
                     <span className="text-slate-700">{ap.missionTexte}</span>
                   </p>
                   {ap.thematique && (
@@ -338,16 +362,31 @@ export default function ParisMap({
                       {THEMATIQUE_LABELS[ap.thematique as ThematiqueSubvention]?.label || ap.thematique}
                     </p>
                   )}
-                  <p>
-                    <strong>Direction:</strong>{' '}
-                    <span title={ap.directionCode}>{ap.directionTexte || getDirectionName(ap.directionCode)}</span>
-                  </p>
                   <p><strong>Année:</strong> {ap.annee}</p>
-                  <p>
-                    <strong>Localisation:</strong>{' '}
-                    {ap.arrondissement}ème arrondissement
-                    <span className="text-slate-400 text-[10px] ml-1">(approximatif)</span>
-                  </p>
+                  {/* Localisation avec indicateur de précision */}
+                  <div className="mt-2 pt-2 border-t border-slate-200">
+                    {ap.isPrecise ? (
+                      <>
+                        <p className="flex items-center gap-1">
+                          <span className="text-emerald-500">📍</span>
+                          <strong>Localisation précise</strong>
+                        </p>
+                        {ap.adresse && (
+                          <p className="text-slate-500 ml-5">{ap.adresse}</p>
+                        )}
+                      </>
+                    ) : (
+                      <>
+                        <p className="flex items-center gap-1">
+                          <span className="text-orange-400">📌</span>
+                          <strong>Localisation approximative</strong>
+                        </p>
+                        <p className="text-slate-500 ml-5">
+                          {ap.arrondissement === 0 ? 'Paris Centre' : `${ap.arrondissement}ème arrondissement`}
+                        </p>
+                      </>
+                    )}
+                  </div>
                 </div>
               </div>
             </Popup>
@@ -373,10 +412,20 @@ export default function ParisMap({
               </div>
             )}
             {showAutorisations && (
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-amber-500" />
-                <span className="text-slate-400">Investissements ({geoAutorisations.length})</span>
-              </div>
+              <>
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-amber-500 border-2 border-amber-400" />
+                  <span className="text-slate-400">
+                    Investissements précis ({geoAutorisations.filter(a => a.isPrecise).length})
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-orange-400/50 border border-dashed border-orange-400" />
+                  <span className="text-slate-400">
+                    Approx. ({geoAutorisations.filter(a => !a.isPrecise).length})
+                  </span>
+                </div>
+              </>
             )}
           </div>
         </div>
