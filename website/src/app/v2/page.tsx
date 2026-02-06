@@ -257,7 +257,7 @@ export default function LandingPageV2() {
             </Link>
 
             {/* Question 5 */}
-            <Link href="/bilan" className="group">
+            <Link href="/patrimoine" className="group">
               <div className="h-full p-6 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-cyan-500/30 transition-all duration-200">
                 <p className="text-lg font-semibold text-slate-100 mb-3 group-hover:text-cyan-400 transition-colors">
                   Que possède Paris ?
