@@ -299,21 +299,22 @@ export async function loadArrondissementsStats(): Promise<ArrondissementStats[]>
       code: 0,
       nom: 'Paris Centre',
       population: arr1to4.reduce((sum, s) => sum + (s.population ?? 0), 0),
-      totalSubventions: arr1to4.reduce((sum, s) => sum + s.totalSubventions, 0),
-      nbSubventions: arr1to4.reduce((sum, s) => sum + s.nbSubventions, 0),
+      totalSubventions: arr1to4.reduce((sum, s) => sum + (s.totalSubventions ?? 0), 0),
+      nbSubventions: arr1to4.reduce((sum, s) => sum + (s.nbSubventions ?? 0), 0),
       subventionsPerCapita: 0,
-      totalLogements: arr1to4.reduce((sum, s) => sum + s.totalLogements, 0),
-      nbProgrammesLogement: arr1to4.reduce((sum, s) => sum + s.nbProgrammesLogement, 0),
+      totalLogements: arr1to4.reduce((sum, s) => sum + (s.totalLogements ?? 0), 0),
+      nbProgrammesLogement: arr1to4.reduce((sum, s) => sum + (s.nbProgrammesLogement ?? 0), 0),
       logementsPerCapita: 0,
-      totalInvestissement: arr1to4.reduce((sum, s) => sum + s.totalInvestissement, 0),
-      nbAutorisations: arr1to4.reduce((sum, s) => sum + s.nbAutorisations, 0),
+      totalInvestissement: arr1to4.reduce((sum, s) => sum + (s.totalInvestissement ?? 0), 0),
+      nbAutorisations: arr1to4.reduce((sum, s) => sum + (s.nbAutorisations ?? 0), 0),
       investissementPerCapita: 0,
     };
     // Calculer les ratios per capita
-    if (parisCentre.population > 0) {
-      parisCentre.subventionsPerCapita = parisCentre.totalSubventions / parisCentre.population;
-      parisCentre.logementsPerCapita = (parisCentre.totalLogements / parisCentre.population) * 1000;
-      parisCentre.investissementPerCapita = parisCentre.totalInvestissement / parisCentre.population;
+    const pop = parisCentre.population ?? 0;
+    if (pop > 0) {
+      parisCentre.subventionsPerCapita = parisCentre.totalSubventions / pop;
+      parisCentre.logementsPerCapita = (parisCentre.totalLogements / pop) * 1000;
+      parisCentre.investissementPerCapita = parisCentre.totalInvestissement / pop;
     }
 
     // Filtrer les arrondissements 1-4 et ajouter Paris Centre au début

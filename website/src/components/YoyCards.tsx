@@ -75,10 +75,10 @@ export default function YoyCards({ currentYear, previousYear }: YoyCardsProps) {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-      {/* Recettes */}
+      {/* Recettes Propres (hors emprunts) */}
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-xs text-slate-500 uppercase tracking-wide">Recettes {currentYear.year}</span>
+          <span className="text-xs text-slate-500 uppercase tracking-wide">Recettes propres {currentYear.year}</span>
           {previousYear && (
             <span className="text-xs text-slate-500">vs {previousYear.year}</span>
           )}
@@ -88,7 +88,7 @@ export default function YoyCards({ currentYear, previousYear }: YoyCardsProps) {
         </p>
         <div className="mt-2 flex items-center justify-between">
           <span className="text-xs text-slate-400">
-            {formatNumber(Math.round(currentYear.recettes / 1_000_000))} M€
+            Hors emprunts
           </span>
           <YoyBadge value={yoyRecettes} />
         </div>

@@ -1,3 +1,20 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Build outputs
+.next/
+out/
+build/
+dist/
+target/
+dbt_packages/
+logs/
+
+# Vercel
+.vercel/
+
 # Env & Secrets
 .env
 .env.local
@@ -8,6 +25,15 @@ service-account*.json
 *.pem
 *.key
 
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+*.swp
+*.swo
+
 # Temp files
 *.json.bak
-.vercel/
+*.log

@@ -5,18 +5,76 @@
  * 
  * FEATURES:
  * - Sélecteur d'année (2019-2024)
+ * - Toggle vue: Par fonction (Sankey) / Par nature (Donut)
  * - Indicateur de complétude des données (COMPLET/PARTIEL)
  * - Cartes KPI avec vision économique claire
- * - Graphique Sankey interactif
- * - Drill-down multi-niveaux avec navigation par préfixe
+ * - Drill-down multi-niveaux
  */
 
 import { useState, useEffect, useCallback } from 'react';
 import YearSelector from '@/components/YearSelector';
 import StatsCards from '@/components/StatsCards';
 import BudgetSankey from '@/components/BudgetSankey';
+import NatureDonut, { type BudgetNatureData } from '@/components/NatureDonut';
 import DrilldownPanel from '@/components/DrilldownPanel';
 import type { BudgetData, BudgetIndex, DrilldownItem, DataStatus } from '@/lib/formatters';
+
+/** Type de vue pour le toggle */
+type ViewMode = 'flux' | 'depenses';
+
+/**
+ * Segmented Control pour basculer entre les vues
+ * 
+ * Vues disponibles:
+ * - Flux budgétaires: Sankey montrant sources → destinations (fonction)
+ * - Types de dépenses: Donut montrant la répartition par nature comptable
+ * 
+ * Responsive: plus compact sur mobile
+ */
+function ViewToggle({ 
+  value, 
+  onChange,
+  hasNatureData 
+}: { 
+  value: ViewMode; 
+  onChange: (mode: ViewMode) => void;
+  hasNatureData: boolean;
+}) {
+  return (
+    <div className="inline-flex rounded-lg bg-slate-800/80 p-0.5 sm:p-1 border border-slate-700/50">
+      <button
+        onClick={() => onChange('flux')}
+        className={`
+          px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-md text-xs sm:text-sm font-medium transition-all duration-200
+          ${value === 'flux' 
+            ? 'bg-purple-500 text-white shadow-lg shadow-purple-500/25' 
+            : 'text-slate-400 hover:text-slate-200 active:bg-slate-700/50'
+          }
+        `}
+      >
+        <span className="sm:hidden">Flux</span>
+        <span className="hidden sm:inline">Flux budgétaires</span>
+      </button>
+      <button
+        onClick={() => onChange('depenses')}
+        disabled={!hasNatureData}
+        className={`
+          px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-md text-xs sm:text-sm font-medium transition-all duration-200
+          ${value === 'depenses' 
+            ? 'bg-purple-500 text-white shadow-lg shadow-purple-500/25' 
+            : hasNatureData 
+              ? 'text-slate-400 hover:text-slate-200 active:bg-slate-700/50'
+              : 'text-slate-600 cursor-not-allowed'
+          }
+        `}
+        title={!hasNatureData ? 'Données non disponibles pour cette année' : undefined}
+      >
+        <span className="sm:hidden">Dépenses</span>
+        <span className="hidden sm:inline">Types de dépenses</span>
+      </button>
+    </div>
+  );
+}
 
 /**
  * Composant d'indicateur de statut des données
@@ -100,10 +158,18 @@ export default function Home() {
   const [index, setIndex] = useState<BudgetIndex | null>(null);
   const [selectedYear, setSelectedYear] = useState<number>(2024);
   const [budgetData, setBudgetData] = useState<BudgetData | null>(null);
+  const [natureData, setNatureData] = useState<BudgetNatureData | null>(null);
   const [drilldown, setDrilldown] = useState<DrilldownState | null>(null);
+  const [viewMode, setViewMode] = useState<ViewMode>('flux');
   
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  // Gérer le changement de vue (reset drilldown)
+  const handleViewChange = useCallback((mode: ViewMode) => {
+    setViewMode(mode);
+    setDrilldown(null); // Reset drilldown when switching views
+  }, []);
 
   useEffect(() => {
     async function loadIndex() {
@@ -130,18 +196,33 @@ export default function Home() {
       setDrilldown(null);
       
       try {
-        const response = await fetch(`/data/budget_sankey_${selectedYear}.json`);
-        if (!response.ok) {
+        // Charger les données Sankey et Nature en parallèle
+        const [sankeyResponse, natureResponse] = await Promise.all([
+          fetch(`/data/budget_sankey_${selectedYear}.json`),
+          fetch(`/data/budget_nature_${selectedYear}.json`).catch(() => null),
+        ]);
+        
+        if (!sankeyResponse.ok) {
           throw new Error(`Données ${selectedYear} non disponibles`);
         }
         
-        const data: BudgetData = await response.json();
+        const data: BudgetData = await sankeyResponse.json();
         setBudgetData(data);
+        
+        // Nature data est optionnel (peut ne pas exister pour les anciennes années)
+        if (natureResponse?.ok) {
+          const nature: BudgetNatureData = await natureResponse.json();
+          setNatureData(nature);
+        } else {
+          setNatureData(null);
+        }
+        
         setError(null);
       } catch (err) {
         setError(`Erreur lors du chargement des données ${selectedYear}`);
         console.error('Error loading budget data:', err);
         setBudgetData(null);
+        setNatureData(null);
       } finally {
         setIsLoading(false);
       }
@@ -329,28 +410,76 @@ export default function Home() {
               emprunts={budgetData.links.find(l => l.source === 'Emprunts')?.value || 0}
             />
 
-            <BudgetSankey
-              data={budgetData}
-              onNodeClick={handleNodeClick}
-            />
-
-            {currentDrilldown && (
-              <DrilldownPanel
-                title={currentDrilldown.title}
-                category={currentDrilldown.category}
-                parentCategory={breadcrumbs[0]}
-                items={currentDrilldown.items}
-                sectionData={
-                  currentDrilldown.category === 'expense' && drilldown?.currentLevel === 0
-                    ? budgetData.bySection?.[currentDrilldown.title]
-                    : undefined
-                }
-                breadcrumbs={breadcrumbs}
-                currentLevel={drilldown?.currentLevel || 0}
-                onClose={handleCloseDrilldown}
-                onBreadcrumbClick={handleBreadcrumbClick}
-                onItemClick={canDrillDeeper || (drilldown?.currentLevel === 0) ? handleDrilldownItemClick : undefined}
+            {/* Toggle Vue */}
+            <div className="flex items-center justify-between mb-4">
+              <ViewToggle 
+                value={viewMode} 
+                onChange={handleViewChange}
+                hasNatureData={!!natureData}
               />
+              <p className="text-xs text-slate-500 hidden sm:block">
+                {viewMode === 'flux' 
+                  ? 'D\'où vient l\'argent et où va-t-il (éducation, social...)' 
+                  : 'Comment est-il dépensé (personnel, subventions, investissements...)'
+                }
+              </p>
+            </div>
+
+            {/* Vue Flux budgétaires: Sankey */}
+            {viewMode === 'flux' && (
+              <>
+                <BudgetSankey
+                  data={budgetData}
+                  onNodeClick={handleNodeClick}
+                />
+
+                {currentDrilldown && (
+                  <DrilldownPanel
+                    title={currentDrilldown.title}
+                    category={currentDrilldown.category}
+                    parentCategory={breadcrumbs[0]}
+                    items={currentDrilldown.items}
+                    sectionData={
+                      currentDrilldown.category === 'expense' && drilldown?.currentLevel === 0
+                        ? budgetData.bySection?.[currentDrilldown.title]
+                        : undefined
+                    }
+                    breadcrumbs={breadcrumbs}
+                    currentLevel={drilldown?.currentLevel || 0}
+                    onClose={handleCloseDrilldown}
+                    onBreadcrumbClick={handleBreadcrumbClick}
+                    onItemClick={canDrillDeeper || (drilldown?.currentLevel === 0) ? handleDrilldownItemClick : undefined}
+                  />
+                )}
+              </>
+            )}
+
+            {/* Vue Types de dépenses: Donut */}
+            {viewMode === 'depenses' && natureData && (
+              <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-lg">🍩</span>
+                  <h3 className="text-lg font-semibold text-slate-100">
+                    Répartition par type de dépense
+                  </h3>
+                </div>
+                <p className="text-sm text-slate-400 mb-1">
+                  Cliquez sur une catégorie pour voir le détail
+                </p>
+                <p className="text-xs text-slate-500 mb-4">
+                  Classification comptable : personnel, subventions, investissements, etc.
+                </p>
+                <NatureDonut data={natureData} height={400} />
+              </div>
+            )}
+
+            {/* Fallback si pas de données dépenses */}
+            {viewMode === 'depenses' && !natureData && (
+              <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-12 text-center">
+                <p className="text-slate-400">
+                  Données par type de dépense non disponibles pour {selectedYear}
+                </p>
+              </div>
             )}
           </>
         ) : null}

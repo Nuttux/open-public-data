@@ -59,6 +59,7 @@ def main():
     
     scripts = [
         ("export_sankey_data.py", "Budget Sankey"),
+        ("export_budget_nature.py", "Budget par Nature (Donut)"),
         ("export_subventions_data.py", "Subventions"),
         ("export_map_data.py", "Données Carte"),
     ]
