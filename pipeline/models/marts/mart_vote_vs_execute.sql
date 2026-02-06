@@ -25,20 +25,20 @@
 -- =============================================================================
 
 WITH vote AS (
-    -- Budget Voté (Budget Primitif) - agrégé au grain chapitre + thématique
-    -- NB: on ne groupe PAS par chapitre_libelle ni ode_categorie_flux car
-    -- la casse et les patterns nature diffèrent entre vote (PDF) et exécuté (CSV).
-    -- Le libellé est récupéré séparément via ANY_VALUE.
+    -- Budget Voté (Budget Primitif) - agrégé au grain chapitre
+    -- NB: on agrège par chapitre seulement (pas par ode_thematique) car
+    -- les thématiques peuvent différer entre vote et exécuté.
+    -- La thématique du vote (enrichie manuellement) est utilisée en priorité.
     SELECT
         annee,
         section,
         sens_flux,
         chapitre_code,
         ANY_VALUE(chapitre_libelle) AS chapitre_libelle,
-        ode_thematique,
+        ANY_VALUE(ode_thematique) AS ode_thematique,
         SUM(montant) AS montant_vote
     FROM {{ ref('core_budget_vote') }}
-    GROUP BY annee, section, sens_flux, chapitre_code, ode_thematique
+    GROUP BY annee, section, sens_flux, chapitre_code
 ),
 
 execute AS (
@@ -49,15 +49,16 @@ execute AS (
         sens_flux,
         chapitre_code,
         ANY_VALUE(chapitre_libelle) AS chapitre_libelle,
-        ode_thematique,
+        ANY_VALUE(ode_thematique) AS ode_thematique,
         SUM(montant) AS montant_execute
     FROM {{ ref('core_budget') }}
-    GROUP BY annee, section, sens_flux, chapitre_code, ode_thematique
+    GROUP BY annee, section, sens_flux, chapitre_code
 ),
 
 -- =============================================================================
--- FULL JOIN au grain (annee, section, sens_flux, chapitre, thematique)
--- Toutes les clés du GROUP BY sont dans le JOIN → pas de produit cartésien
+-- FULL JOIN au grain (annee, section, sens_flux, chapitre)
+-- Sans ode_thematique dans le JOIN car les mappings diffèrent entre sources.
+-- La thématique du vote est utilisée en priorité (enrichissement plus complet).
 -- =============================================================================
 combined AS (
     SELECT
@@ -66,6 +67,7 @@ combined AS (
         COALESCE(v.sens_flux, e.sens_flux) AS sens_flux,
         COALESCE(v.chapitre_code, e.chapitre_code) AS chapitre_code,
         COALESCE(v.chapitre_libelle, e.chapitre_libelle) AS chapitre_libelle,
+        -- Priorité à la thématique du vote (mapping plus riche)
         COALESCE(v.ode_thematique, e.ode_thematique) AS ode_thematique,
         
         -- Montants
@@ -91,7 +93,6 @@ combined AS (
         AND v.section = e.section
         AND v.sens_flux = e.sens_flux
         AND v.chapitre_code = e.chapitre_code
-        AND v.ode_thematique = e.ode_thematique
 ),
 
 -- =============================================================================
@@ -102,7 +103,6 @@ taux_historique AS (
         section,
         sens_flux,
         chapitre_code,
-        ode_thematique,
         ROUND(AVG(taux_execution_pct), 2) AS taux_execution_moyen,
         ROUND(STDDEV(taux_execution_pct), 2) AS taux_execution_stddev,
         COUNT(*) AS nb_annees_comparees,
@@ -110,7 +110,7 @@ taux_historique AS (
         MAX(annee) AS derniere_annee
     FROM combined
     WHERE comparaison_possible = TRUE
-    GROUP BY 1, 2, 3, 4
+    GROUP BY 1, 2, 3
 ),
 
 -- =============================================================================
@@ -148,7 +148,6 @@ final AS (
         ON c.section = th.section
         AND c.sens_flux = th.sens_flux
         AND c.chapitre_code = th.chapitre_code
-        AND c.ode_thematique = th.ode_thematique
 )
 
 SELECT * FROM final
