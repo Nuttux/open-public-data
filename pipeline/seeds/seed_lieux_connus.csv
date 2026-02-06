@@ -1,0 +1,106 @@
+pattern_match,nom_complet,adresse,arrondissement,latitude,longitude
+PISCINE PONTOISE,Piscine Pontoise,19 rue de Pontoise,5,48.8498,2.3517
+PISCINE BLOMET,Piscine Blomet,17 rue Blomet,15,48.8421,2.3053
+PISCINE JOSEPHINE BAKER,Piscine Joséphine Baker,Quai François Mauriac,13,48.8336,2.3770
+PISCINE GEORGES HERMANT,Piscine Georges Hermant,8 rue David d'Angers,19,48.8835,2.3925
+PISCINE BUTTE AUX CAILLES,Piscine de la Butte aux Cailles,5 place Paul Verlaine,13,48.8278,2.3513
+GYMNASE JAPY,Gymnase Japy,2 rue Japy,11,48.8533,2.3797
+STADE CHARLETY,Stade Charléty,99 boulevard Kellermann,13,48.8186,2.3478
+STADE JEAN BOUIN,Stade Jean Bouin,20 avenue du Général Sarrail,16,48.8428,2.2532
+PALAIS OMNISPORTS BERCY|ACCOR ARENA,Accor Arena,8 boulevard de Bercy,12,48.8386,2.3788
+PHILHARMONIE,Philharmonie de Paris,221 avenue Jean Jaurès,19,48.8893,2.3936
+THEATRE DE LA VILLE,Théâtre de la Ville,2 place du Châtelet,4,48.8566,2.3472
+THEATRE DU CHATELET,Théâtre du Châtelet,1 place du Châtelet,1,48.8570,2.3472
+OPERA BASTILLE,Opéra Bastille,Place de la Bastille,12,48.8519,2.3697
+OPERA GARNIER|PALAIS GARNIER,Opéra Garnier,Place de l'Opéra,9,48.8720,2.3316
+MUSEE CARNAVALET,Musée Carnavalet,23 rue de Sévigné,3,48.8576,2.3625
+PETIT PALAIS,Petit Palais,Avenue Winston Churchill,8,48.8660,2.3140
+GRAND PALAIS,Grand Palais,3 avenue du Général Eisenhower,8,48.8662,2.3125
+CENTRE POMPIDOU,Centre Pompidou,Place Georges-Pompidou,4,48.8606,2.3522
+FORUM DES HALLES,Forum des Halles,101 Porte Berger,1,48.8620,2.3470
+PARC FLORAL,Parc Floral de Paris,Route de la Pyramide,12,48.8388,2.4456
+JARDIN DES PLANTES,Jardin des Plantes,57 rue Cuvier,5,48.8437,2.3601
+PARC DE LA VILLETTE,Parc de la Villette,211 avenue Jean Jaurès,19,48.8938,2.3900
+PARC DES BUTTES CHAUMONT,Parc des Buttes-Chaumont,1 rue Botzaris,19,48.8809,2.3827
+HOTEL DE VILLE,Hôtel de Ville de Paris,Place de l'Hôtel de Ville,4,48.8566,2.3522
+MAIRIE DU 1ER,Mairie du 1er,4 place du Louvre,1,48.8596,2.3411
+MAIRIE DU 2E,Mairie du 2e,8 rue de la Banque,2,48.8670,2.3400
+MAIRIE DU 3E,Mairie du 3e,2 rue Eugène Spuller,3,48.8638,2.3608
+MAIRIE DU 4E,Mairie du 4e,2 place Baudoyer,4,48.8550,2.3560
+MAIRIE DU 5E,Mairie du 5e,21 place du Panthéon,5,48.8460,2.3464
+MAIRIE DU 6E,Mairie du 6e,78 rue Bonaparte,6,48.8513,2.3343
+MAIRIE DU 7E,Mairie du 7e,116 rue de Grenelle,7,48.8570,2.3200
+MAIRIE DU 8E,Mairie du 8e,3 rue de Lisbonne,8,48.8755,2.3142
+MAIRIE DU 9E,Mairie du 9e,6 rue Drouot,9,48.8739,2.3388
+MAIRIE DU 10E,Mairie du 10e,72 rue du Faubourg Saint-Martin,10,48.8709,2.3595
+MAIRIE DU 11E,Mairie du 11e,Place Léon Blum,11,48.8589,2.3802
+MAIRIE DU 12E,Mairie du 12e,130 avenue Daumesnil,12,48.8418,2.3874
+MAIRIE DU 13E,Mairie du 13e,1 place d'Italie,13,48.8314,2.3556
+MAIRIE DU 14E,Mairie du 14e,2 place Ferdinand Brunot,14,48.8334,2.3270
+MAIRIE DU 15E,Mairie du 15e,31 rue Péclet,15,48.8410,2.3010
+MAIRIE DU 16E,Mairie du 16e,71 avenue Henri Martin,16,48.8640,2.2760
+MAIRIE DU 17E,Mairie du 17e,16-20 rue des Batignolles,17,48.8830,2.3200
+MAIRIE DU 18E,Mairie du 18e,1 place Jules Joffrin,18,48.8920,2.3480
+MAIRIE DU 19E,Mairie du 19e,5-7 place Armand Carrel,19,48.8820,2.3840
+MAIRIE DU 20E,Mairie du 20e,6 place Gambetta,20,48.8636,2.3980
+CITE DES SCIENCES,Cité des Sciences et de l'Industrie,30 avenue Corentin Cariou,19,48.8959,2.3872
+GEODE,La Géode,26 avenue Corentin Cariou,19,48.8951,2.3878
+BIBLIOTHEQUE FRANCOIS MITTERRAND|BNF,Bibliothèque François Mitterrand,Quai François Mauriac,13,48.8336,2.3768
+EGLISE SAINT-EUSTACHE|ST EUSTACHE,Église Saint-Eustache,2 impasse Saint-Eustache,1,48.8629,2.3456
+EGLISE DE LA MADELEINE|SAINTE MADELEINE,Église de la Madeleine,Place de la Madeleine,8,48.8699,2.3252
+EGLISE SAINT-SULPICE|ST SULPICE,Église Saint-Sulpice,Place Saint-Sulpice,6,48.8510,2.3346
+EGLISE SAINT-GERMAIN|ST GERMAIN DES PRES,Église Saint-Germain-des-Prés,3 place Saint-Germain-des-Prés,6,48.8539,2.3340
+EGLISE DE LA TRINITE|TRINITE,Église de la Trinité,Place d'Estienne d'Orves,9,48.8768,2.3327
+EGLISE NOTRE-DAME-DES-VICTOIRES,Église Notre-Dame-des-Victoires,Place des Petits-Pères,2,48.8666,2.3412
+EGLISE SAINT-ROCH|ST ROCH,Église Saint-Roch,296 rue Saint-Honoré,1,48.8641,2.3330
+EGLISE SAINT-GERVAIS|ST GERVAIS,Église Saint-Gervais-Saint-Protais,Place Saint-Gervais,4,48.8547,2.3542
+EGLISE SAINT-PAUL|ST PAUL SAINT-LOUIS,Église Saint-Paul-Saint-Louis,99 rue Saint-Antoine,4,48.8544,2.3612
+EGLISE SAINT-LOUIS EN L'ILE,Église Saint-Louis-en-l'Île,19bis rue Saint-Louis-en-l'Île,4,48.8519,2.3565
+EGLISE SAINTE-ANNE|BUTTE AUX CAILLES,Église Sainte-Anne de la Butte-aux-Cailles,186 rue de Tolbiac,13,48.8270,2.3525
+EGLISE SAINT-PIERRE|MONTROUGE,Église Saint-Pierre de Montrouge,Place Victor et Hélène Basch,14,48.8335,2.3265
+EGLISE NOTRE-DAME-DU-TRAVAIL,Église Notre-Dame-du-Travail,59 rue Vercingétorix,14,48.8339,2.3184
+BASILIQUE DU SACRE-COEUR|SACRE COEUR,Basilique du Sacré-Cœur,35 rue du Chevalier de la Barre,18,48.8867,2.3431
+ZAC SAINT-VINCENT-DE-PAUL|ZAC ST VINCENT,ZAC Saint-Vincent-de-Paul,Rue Méchain,14,48.8372,2.3380
+ZAC CLICHY-BATIGNOLLES,ZAC Clichy-Batignolles,Avenue de Clichy,17,48.8920,2.3180
+ZAC BERCY,ZAC Paris-Bercy,Cours Saint-Émilion,12,48.8330,2.3850
+ZAC PARIS RIVE GAUCHE|RIVE GAUCHE,ZAC Paris Rive Gauche,Avenue de France,13,48.8336,2.3730
+ZAC BRUNESEAU,ZAC Bruneseau,Boulevard du Général Jean Simon,13,48.8210,2.3740
+GPRU ST BLAISE|SAINT-BLAISE,Quartier Saint-Blaise,Rue Saint-Blaise,20,48.8562,2.4087
+GPRU BAUDRICOURT,Quartier Baudricourt,Rue Baudricourt,13,48.8270,2.3635
+GPRU BOISSY-SAINT-LEGER,Quartier Flandre-Aubervilliers,Avenue de Flandre,19,48.8923,2.3730
+PORTE MAILLOT,Porte Maillot,Place de la Porte Maillot,17,48.8779,2.2836
+PORTE DE LA CHAPELLE,Porte de la Chapelle,Avenue de la Porte de la Chapelle,18,48.8989,2.3596
+PORTE DE CLIGNANCOURT,Porte de Clignancourt,Avenue de la Porte de Clignancourt,18,48.8973,2.3453
+PORTE DE MONTREUIL,Porte de Montreuil,Place de la Porte de Montreuil,20,48.8534,2.4109
+PORTE DE VINCENNES,Porte de Vincennes,Place de la Porte de Vincennes,20,48.8476,2.4107
+PORTE DES LILAS,Porte des Lilas,Place du Maquis du Vercors,20,48.8774,2.4065
+PORTE D'ORLEANS,Porte d'Orléans,Place du 25 Août 1944,14,48.8231,2.3252
+PORTE DE VERSAILLES,Porte de Versailles,1 place de la Porte de Versailles,15,48.8326,2.2878
+PORTE DAUPHINE,Porte Dauphine,Avenue Foch,16,48.8715,2.2757
+PORTE DE PANTIN,Porte de Pantin,Avenue de la Porte de Pantin,19,48.8894,2.3933
+PARC ANDRE CITROEN,Parc André Citroën,2 rue Cauchy,15,48.8420,2.2735
+PARC MONCEAU,Parc Monceau,35 boulevard de Courcelles,8,48.8794,2.3090
+PARC MONTSOURIS,Parc Montsouris,2 rue Gazan,14,48.8225,2.3383
+PARC GEORGES BRASSENS,Parc Georges Brassens,2 place Jacques Marette,15,48.8335,2.3012
+JARDIN DU LUXEMBOURG,Jardin du Luxembourg,Rue de Médicis,6,48.8462,2.3371
+JARDIN DES TUILERIES,Jardin des Tuileries,Place de la Concorde,1,48.8634,2.3275
+JARDIN TINO ROSSI,Jardin Tino Rossi,Quai Saint-Bernard,5,48.8481,2.3558
+SQUARE RENE LE GALL,Square René Le Gall,47 rue Corvisart,13,48.8332,2.3506
+CS ELISABETH,Centre Sportif Élisabeth,7 avenue Paul Appell,14,48.8222,2.3245
+CS LOUIS LUMIERE,Centre Sportif Louis Lumière,30 rue Louis Lumière,20,48.8702,2.4045
+CS LADOUMEGUE,Stade Jules Ladoumègue,39 avenue de la Porte de Pantin,19,48.8920,2.3913
+CS BERTRAND DAUVIN,Centre Sportif Bertrand Dauvin,12 rue René Binet,18,48.8971,2.3575
+TEP MOURLON|ANDRE MOURLON,TEP André Mourlon,19 avenue du Général Leclerc,14,48.8287,2.3258
+TEP AMANDIERS,TEP Les Amandiers,Rue des Amandiers,20,48.8662,2.3900
+ARENA 2|ARENA PORTE DE LA CHAPELLE,Arena Porte de la Chapelle,Avenue de la Porte de la Chapelle,18,48.8989,2.3580
+ILOT SAINT-GERMAIN|ST GERMAIN,Îlot Saint-Germain,Rue Saint-Dominique,7,48.8589,2.3125
+CONSERVATOIRE ERIK SATIE,Conservatoire Erik Satie,18 rue des Envierges,20,48.8722,2.3856
+CONSERVATOIRE FRANCIS POULENC,Conservatoire Francis Poulenc,11 rue Jean de la Fontaine,16,48.8548,2.2707
+CONSERVATOIRE GEORGES BIZET,Conservatoire Georges Bizet,54 rue de Rome,8,48.8808,2.3215
+EHPAD JARDIN DES PLANTES,EHPAD Jardin des Plantes,57 rue Cuvier,5,48.8437,2.3601
+MAISON DE L'AIR,Maison de l'air,Parc de Belleville,20,48.8720,2.3850
+PARC PYTHON DUVERNOIS|PYTHON-DUVERNOIS,Parc Python-Duvernois,Avenue de la Porte de Bagnolet,20,48.8620,2.4050
+REINVENTER MONTPARNASSE|GRAND MONTPARNASSE,Réinventer Montparnasse,Place du 18 Juin 1940,14,48.8436,2.3226
+COURS AUBERVILLIERS|ILOT FERTILE,Îlot Fertile Cours d'Aubervilliers,Cours d'Aubervilliers,18,48.8970,2.3650
+TRAMWAY T3|T3 EXTENSION,Tramway T3,Boulevard des Maréchaux,17,48.8867,2.2836
+PETITE CEINTURE,Petite Ceinture,Ancienne voie ferrée,20,48.8600,2.4000
