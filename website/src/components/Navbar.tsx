@@ -39,6 +39,12 @@ const navLinks = [
     description: 'Analyse temporelle',
   },
   {
+    href: '/bilan',
+    label: 'Bilan',
+    icon: '📋',
+    description: 'État patrimonial (Actif/Passif)',
+  },
+  {
     href: '/subventions',
     label: 'Subventions',
     icon: '💰',
