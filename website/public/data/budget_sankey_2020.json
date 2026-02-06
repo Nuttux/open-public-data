@@ -1,5 +1,6 @@
 {
   "year": 2020,
+  "type_budget": "execute",
   "dataStatus": "COMPLET",
   "dataAvailability": {
     "budget": true,

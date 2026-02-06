@@ -7,12 +7,14 @@
  * - Global CSS styles
  * - Metadata for SEO
  * - Navigation globale
+ * - Glossary provider & drawer (contextual budget term definitions)
  */
 
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import GlossaryShell from "@/components/GlossaryShell";
 
 /**
  * Inter font configuration
@@ -53,16 +55,19 @@ export const metadata: Metadata = {
 
 /**
  * Viewport configuration for responsive design
+ * viewportFit: 'cover' enables env(safe-area-inset-*) for iPhone X+ notch/home bar
  */
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  viewportFit: "cover",
   themeColor: "#0f172a",
 };
 
 /**
  * Root layout wrapper
- * Applies font class, dark theme, and navigation to entire application
+ * Applies font class, dark theme, navigation, and glossary provider
+ * to the entire application
  */
 export default function RootLayout({
   children,
@@ -72,8 +77,16 @@ export default function RootLayout({
   return (
     <html lang="fr" className="dark">
       <body className={`${inter.variable} font-sans antialiased bg-slate-950 text-slate-100`}>
-        <Navbar />
-        {children}
+        <GlossaryShell>
+          <Navbar />
+          {/* 
+            pb-20 sur mobile compense la barre de navigation fixe en bas (~56px + safe area).
+            md:pb-0 retire ce padding sur desktop où la nav est en haut.
+          */}
+          <div className="pb-20 md:pb-0">
+            {children}
+          </div>
+        </GlossaryShell>
       </body>
     </html>
   );

@@ -86,10 +86,10 @@ export default function LandingPage() {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
-                href="/"
+                href="/budget"
                 className="w-full sm:w-auto px-8 py-4 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-xl transition-all duration-200 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 hover:-translate-y-0.5"
               >
-                Explorer le Dashboard
+                Explorer le Budget
               </Link>
               <a
                 href="https://github.com/your-org/open-public-data"
@@ -270,7 +270,7 @@ export default function LandingPage() {
                 des politiques publiques. Votez en connaissance de cause.
               </p>
               <Link 
-                href="/"
+                href="/budget"
                 className="text-purple-400 font-medium hover:text-purple-300 transition-colors"
               >
                 Explorer les données →
@@ -335,10 +335,10 @@ export default function LandingPage() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <Link
-              href="/"
+              href="/budget"
               className="w-full sm:w-auto px-8 py-4 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-xl transition-all duration-200 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 hover:-translate-y-0.5"
             >
-              Explorer le Dashboard
+              Explorer le Budget
             </Link>
             <a
               href="https://github.com/your-org/open-public-data"

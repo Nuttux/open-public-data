@@ -151,8 +151,15 @@ export interface DataAvailability {
   arrondissements: boolean;
 }
 
+/** Budget type: executed (CA) or voted (BP) */
+export type BudgetType = 'execute' | 'vote' | 'estime';
+
 export interface BudgetData {
   year: number;
+  /** Whether this is executed budget (CA) or voted budget (BP) */
+  type_budget?: BudgetType;
+  /** Disclaimer for non-executed budget years */
+  disclaimer?: string;
   /** Data completeness status */
   dataStatus?: DataStatus;
   /** Detailed availability per source */
@@ -190,5 +197,11 @@ export interface BudgetIndex {
   completeYears?: number[];
   /** Years with partial data */
   partialYears?: number[];
+  /** Years with voted (non-executed) budget only */
+  votedYears?: number[];
+  /** Map of year → 'execute' | 'vote' */
+  year_types?: Record<string, BudgetType>;
+  /** COVID-affected years (for exclusion in comparisons) */
+  covid_years?: number[];
   summary: BudgetIndexSummary[];
 }

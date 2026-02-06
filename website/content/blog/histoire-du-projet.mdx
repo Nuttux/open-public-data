@@ -1,0 +1,73 @@
+---
+title: "« C'est tout en Open Data, t'inquiète » : l'histoire (un peu galère) de ce projet"
+description: "Pourquoi on a fait ça, comment on s'est battus avec des PDF de 2000 pages, et pourquoi la démocratie a besoin de données propres."
+date: "2026-02-06"
+author: "L'équipe Données Lumières"
+tags: ["transparence", "open-data", "tech", "citoyenneté"]
+readingTime: "5 min"
+---
+
+Tout a commencé par une discussion entre potes, un soir. On se posait des questions bêtes : *"C'est quoi le budget exact des espaces verts dans mon quartier ?"*, *"Est-ce que l'association du coin touche plus ou moins d'argent qu'avant ?"*.
+
+Une amie nous a dit : *"Bah regarde, c'est tout en Open Data, la ville de Paris publie tout. T'as juste à télécharger le fichier."*
+
+Naïvement, on s'est dit : *"Chouette, un petit week-end de code et on fait un dashboard sympa."*
+
+C'était il y a deux mois. 😅
+
+## La réalité du terrain (ou le PDF de la page 1418)
+
+Quand on plonge dans l'Open Data, on s'attend à trouver des tableaux Excel bien rangés, avec des colonnes claires comme "Montant" et "Année".
+
+La réalité, c'est qu'on est tombés sur un véritable parcours du combattant.
+
+Déjà, le portail Open Data de Paris héberge **28 jeux de données** liés au budget et aux finances. Ça semble bien fourni. Sauf que quand on regarde de plus près, **20 d'entre eux n'ont pas été mis à jour depuis 2020 ou 2021**. La dette propre de la ville ? Figée depuis juillet 2019. L'état du personnel ? Décembre 2018. Les budgets votés par arrondissement ? Plus rien depuis 2021. Ce sont des fichiers fantômes : ils ont une URL, une belle fiche descriptive, mais personne ne les alimente.
+
+Et même dans les fichiers qui sont à jour, on a découvert que pour avoir le détail exact de certains investissements, il ne fallait pas regarder le CSV officiel (qui était incomplet), mais aller chercher **l'annexe 5, tome 3, page 1418 d'un PDF scanné**. On exagère à peine.
+
+On a trouvé des "trous dans la raquette" assez fascinants :
+- **2,5 milliards d'euros de subventions** (oui, milliards) versés en 2020 et 2021 dont les bénéficiaires sont simplement... absents des fichiers. On a le montant, mais la colonne "Nom" est vide. Pfiou.
+- **Les investissements détaillés qui s'arrêtent en 2022.** Vous voulez savoir quels projets ont été financés en 2023 ou 2024 ? Dommage, le jeu de données officiel des "Autorisations de Programme" n'a pas été mis à jour. Il faut aller chercher l'info à la main dans les annexes PDF.
+- **Le casse-tête du "Voté" vs "Réalisé".** Pendant longtemps, impossible de comparer facilement ce qui était promis (le Budget Primitif) et ce qui a été réellement dépensé (le Compte Administratif), car les données n'étaient pas publiées dans le même format... quand elles l'étaient.
+- Le problème classique du "double comptage" : si tu additionnes bêtement les lignes du fichier, tu trouves un budget deux fois supérieur à la réalité parce que certaines lignes sont là juste pour l'équilibre comptable ("pour ordre").
+
+## Pas de coupables, juste de la complexité
+
+Attention, ce n'est pas un pamphlet contre l'administration. Au contraire.
+
+En creusant, on a réalisé que derrière ces fichiers un peu chaotiques, il y a des agents territoriaux qui font de leur mieux avec des logiciels de comptabilité qui datent parfois des années 90. Ils doivent respecter des normes légales ultra-complexes (la fameuse nomenclature M57) qui sont faites pour des experts-comptables, pas pour des citoyens.
+
+La loi oblige les villes à publier leurs données. C'est super. Mais la loi ne dit pas forcément qu'elles doivent être *compréhensibles* pour le commun des mortels.
+
+C'est là qu'on intervient.
+
+## Pourquoi on a construit une "usine" à données
+
+On aurait pu baisser les bras. Mais on est convaincus d'une chose : **en démocratie, on a besoin de données pour décider.**
+
+On ne peut pas avoir de débat serein sur la dette, les impôts ou les priorités écologiques si personne n'est d'accord sur les chiffres de base. Ou si les chiffres sont inaccessibles.
+
+Alors on a sorti l'artillerie lourde. On a construit ce qu'on appelle un "pipeline de données" (les geeks appelleront ça de l'ETL avec dbt et Python, mais passons).
+
+Concrètement, notre système :
+1. **Aspire** les données de la ville (CSV, API, et oui, même ces maudits PDF).
+2. **Nettoie** tout ça : on harmonise les noms (le Centre d'Action Sociale de la Ville de Paris apparaît sous 4 noms différents selon les fichiers -- "CASVP", "CENTRE ACTION SOCIALE VILLE PARIS", etc. -- impossible de calculer un total sans les réconcilier), on recolle les morceaux entre les années.
+3. **Enrichit** : on utilise de l'intelligence artificielle pour deviner que "L'ASS SPORTIVE DU 15EME" c'est du Sport, ou que tel projet de crèche se trouve rue de Vaugirard.
+4. **Vérifie** : on a des tests automatiques qui crient si le total ne correspond pas au centime près au budget voté.
+
+Le résultat, c'est ce site. Une tentative de rendre visible l'invisible.
+
+## On a besoin de vous (vraiment)
+
+Ce projet est 100% bénévole, citoyen et open-source. On n'est affiliés à aucun parti, aucune mairie.
+
+Et surtout, c'est loin d'être fini.
+- Il reste des "trous" dans les données (notamment les investissements 2023-2024 qui manquent de détails).
+- Nos algos de classification font parfois des erreurs (si vous voyez une piscine classée dans "Culture", dites-le nous !).
+- On a plein d'idées de visualisations qu'on n'a pas encore eu le temps de coder.
+
+Si vous êtes développeur, data scientist, ou juste un citoyen curieux qui a repéré une erreur, **venez nous aider**. Tout notre code est ouvert sur GitHub.
+
+On veut que ce dashboard appartienne à tout le monde. Pour que la prochaine fois qu'on se pose une question bête en soirée sur le budget de la ville, la réponse soit à portée de clic. 
+
+Transparence, clarté, et un peu de code. C'est notre modeste contribution. 🕯️

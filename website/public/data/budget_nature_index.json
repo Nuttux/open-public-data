@@ -1,8 +1,10 @@
 {
-  "generated_at": "2026-02-05T22:40:11.978747",
+  "generated_at": "2026-02-06T15:21:44.508456",
   "source": "dbt mart (mart_budget_nature)",
   "description": "Répartition du budget par nature de dépense avec drill-down par thématique",
   "available_years": [
+    2026,
+    2025,
     2024,
     2023,
     2022,
@@ -11,6 +13,8 @@
     2019
   ],
   "totals_by_year": {
+    "2026": 11722400172.0,
+    "2025": 12161871777.01,
     "2024": 11494727617.749998,
     "2023": 10845342218.920002,
     "2022": 10699641826.980001,
@@ -26,10 +30,10 @@
     "Subventions (fonctionnement)",
     "Immobilisations en cours",
     "Services extérieurs",
+    "Autre",
     "Immobilisations corporelles",
     "Subventions (investissement)",
     "Remboursement dette",
-    "Autre",
     "Autres services",
     "Achats",
     "Charges financières",

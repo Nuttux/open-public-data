@@ -249,40 +249,41 @@ export default function LogementsSociauxPage() {
           </div>
         )}
 
-        {/* Stats rapides */}
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-6">
-          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-500 uppercase tracking-wide">Total Logements</p>
-            <p className="text-2xl font-bold text-emerald-400 mt-1">
+        {/* Stats rapides — 2 colonnes sur mobile, 5 sur desktop */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 mb-6">
+          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-3 md:p-4">
+            <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-wide">Total Logements</p>
+            <p className="text-xl md:text-2xl font-bold text-emerald-400 mt-1">
               {stats.logements >= 1000 ? `${(stats.logements / 1000).toFixed(0)}k` : formatNumber(stats.logements)}
             </p>
           </div>
-          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-500 uppercase tracking-wide">Programmes</p>
-            <p className="text-2xl font-bold text-slate-100 mt-1">
+          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-3 md:p-4">
+            <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-wide">Programmes</p>
+            <p className="text-xl md:text-2xl font-bold text-slate-100 mt-1">
               {formatNumber(stats.projets)}
             </p>
           </div>
-          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-500 uppercase tracking-wide">PLAI (très social)</p>
-            <p className="text-2xl font-bold text-blue-400 mt-1">
+          {/* Types de logements — sur mobile, utiliser une ligne plus compacte */}
+          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-3 md:p-4">
+            <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-wide">PLAI (très social)</p>
+            <p className="text-xl md:text-2xl font-bold text-blue-400 mt-1">
               {stats.PLAI >= 1000 ? `${(stats.PLAI / 1000).toFixed(0)}k` : formatNumber(stats.PLAI)}
             </p>
-            <p className="text-xs text-slate-500">{stats.logements > 0 ? ((stats.PLAI / stats.logements) * 100).toFixed(0) : 0}%</p>
+            <p className="text-[10px] md:text-xs text-slate-500">{stats.logements > 0 ? ((stats.PLAI / stats.logements) * 100).toFixed(0) : 0}%</p>
           </div>
-          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-500 uppercase tracking-wide">PLUS (social)</p>
-            <p className="text-2xl font-bold text-cyan-400 mt-1">
+          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-3 md:p-4">
+            <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-wide">PLUS (social)</p>
+            <p className="text-xl md:text-2xl font-bold text-cyan-400 mt-1">
               {stats.PLUS >= 1000 ? `${(stats.PLUS / 1000).toFixed(0)}k` : formatNumber(stats.PLUS)}
             </p>
-            <p className="text-xs text-slate-500">{stats.logements > 0 ? ((stats.PLUS / stats.logements) * 100).toFixed(0) : 0}%</p>
+            <p className="text-[10px] md:text-xs text-slate-500">{stats.logements > 0 ? ((stats.PLUS / stats.logements) * 100).toFixed(0) : 0}%</p>
           </div>
-          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-500 uppercase tracking-wide">PLS (intermédiaire)</p>
-            <p className="text-2xl font-bold text-violet-400 mt-1">
+          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-3 md:p-4 col-span-2 sm:col-span-1">
+            <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-wide">PLS (intermédiaire)</p>
+            <p className="text-xl md:text-2xl font-bold text-violet-400 mt-1">
               {stats.PLS >= 1000 ? `${(stats.PLS / 1000).toFixed(0)}k` : formatNumber(stats.PLS)}
             </p>
-            <p className="text-xs text-slate-500">{stats.logements > 0 ? ((stats.PLS / stats.logements) * 100).toFixed(0) : 0}%</p>
+            <p className="text-[10px] md:text-xs text-slate-500">{stats.logements > 0 ? ((stats.PLS / stats.logements) * 100).toFixed(0) : 0}%</p>
           </div>
         </div>
 
@@ -311,21 +312,22 @@ export default function LogementsSociauxPage() {
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-slate-700 bg-slate-800/50">
-                    <th className="text-left px-4 py-3 text-xs font-medium text-slate-400 uppercase tracking-wide w-8">#</th>
-                    <th className="text-left px-4 py-3 text-xs font-medium text-slate-400 uppercase tracking-wide">Bailleur</th>
-                    <th className="text-right px-4 py-3 text-xs font-medium text-slate-400 uppercase tracking-wide">Logements</th>
-                    <th className="text-right px-4 py-3 text-xs font-medium text-slate-400 uppercase tracking-wide">Projets</th>
-                    <th className="text-right px-4 py-3 text-xs font-medium text-slate-400 uppercase tracking-wide">
+                    <th className="text-left px-2 md:px-4 py-3 text-xs font-medium text-slate-400 uppercase tracking-wide w-6 md:w-8">#</th>
+                    <th className="text-left px-2 md:px-4 py-3 text-xs font-medium text-slate-400 uppercase tracking-wide">Bailleur</th>
+                    <th className="text-right px-2 md:px-4 py-3 text-xs font-medium text-slate-400 uppercase tracking-wide">Logements</th>
+                    <th className="text-right px-2 md:px-4 py-3 text-xs font-medium text-slate-400 uppercase tracking-wide">Projets</th>
+                    {/* Colonnes masquées sur mobile pour garder le tableau lisible */}
+                    <th className="hidden lg:table-cell text-right px-4 py-3 text-xs font-medium text-slate-400 uppercase tracking-wide">
                       <span className="text-blue-400">PLAI</span>
                     </th>
-                    <th className="text-right px-4 py-3 text-xs font-medium text-slate-400 uppercase tracking-wide">
+                    <th className="hidden lg:table-cell text-right px-4 py-3 text-xs font-medium text-slate-400 uppercase tracking-wide">
                       <span className="text-cyan-400">PLUS</span>
                     </th>
-                    <th className="text-right px-4 py-3 text-xs font-medium text-slate-400 uppercase tracking-wide">
+                    <th className="hidden lg:table-cell text-right px-4 py-3 text-xs font-medium text-slate-400 uppercase tracking-wide">
                       <span className="text-violet-400">PLS</span>
                     </th>
-                    <th className="text-center px-4 py-3 text-xs font-medium text-slate-400 uppercase tracking-wide">Part</th>
-                    <th className="text-center px-4 py-3 text-xs font-medium text-slate-400 uppercase tracking-wide">Action</th>
+                    <th className="hidden md:table-cell text-center px-4 py-3 text-xs font-medium text-slate-400 uppercase tracking-wide">Part</th>
+                    <th className="hidden md:table-cell text-center px-4 py-3 text-xs font-medium text-slate-400 uppercase tracking-wide">Action</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-700/50">
@@ -338,33 +340,37 @@ export default function LogementsSociauxPage() {
                         key={bailleur.nom}
                         className={`hover:bg-slate-700/30 transition-colors ${isSelected ? 'bg-emerald-900/20' : ''}`}
                       >
-                        <td className="px-4 py-3 text-slate-500 text-sm">{index + 1}</td>
-                        <td className="px-4 py-3">
-                          <p className={`text-sm font-medium ${isSelected ? 'text-emerald-400' : 'text-slate-200'}`}>
+                        <td className="px-2 md:px-4 py-3 text-slate-500 text-sm">{index + 1}</td>
+                        <td className="px-2 md:px-4 py-3">
+                          <p className={`text-xs md:text-sm font-medium ${isSelected ? 'text-emerald-400' : 'text-slate-200'}`}>
                             {bailleur.nom}
                           </p>
-                          <p className="text-xs text-slate-500">
+                          <p className="text-[10px] md:text-xs text-slate-500">
                             {bailleur.arrondissements.length} arrondissement{bailleur.arrondissements.length > 1 ? 's' : ''}
                           </p>
                         </td>
-                        <td className="px-4 py-3 text-right">
-                          <p className="text-sm font-semibold text-emerald-400">
+                        <td className="px-2 md:px-4 py-3 text-right">
+                          <p className="text-xs md:text-sm font-semibold text-emerald-400">
                             {formatNumber(bailleur.nbLogements)}
                           </p>
                         </td>
-                        <td className="px-4 py-3 text-right text-sm text-slate-300">
+                        <td className="px-2 md:px-4 py-3 text-right text-xs md:text-sm text-slate-300">
                           {formatNumber(bailleur.nbProjets)}
                         </td>
-                        <td className="px-4 py-3 text-right text-sm text-blue-400">
+                        {/* PLAI — masqué sur mobile et tablette */}
+                        <td className="hidden lg:table-cell px-4 py-3 text-right text-sm text-blue-400">
                           {formatNumber(bailleur.nbPLAI)}
                         </td>
-                        <td className="px-4 py-3 text-right text-sm text-cyan-400">
+                        {/* PLUS — masqué sur mobile et tablette */}
+                        <td className="hidden lg:table-cell px-4 py-3 text-right text-sm text-cyan-400">
                           {formatNumber(bailleur.nbPLUS)}
                         </td>
-                        <td className="px-4 py-3 text-right text-sm text-violet-400">
+                        {/* PLS — masqué sur mobile et tablette */}
+                        <td className="hidden lg:table-cell px-4 py-3 text-right text-sm text-violet-400">
                           {formatNumber(bailleur.nbPLS)}
                         </td>
-                        <td className="px-4 py-3">
+                        {/* Part — masqué sur mobile */}
+                        <td className="hidden md:table-cell px-4 py-3">
                           <div className="flex items-center justify-center gap-2">
                             <div className="w-16 h-2 bg-slate-700 rounded-full overflow-hidden">
                               <div 
@@ -377,7 +383,8 @@ export default function LogementsSociauxPage() {
                             </span>
                           </div>
                         </td>
-                        <td className="px-4 py-3 text-center">
+                        {/* Action — masqué sur mobile */}
+                        <td className="hidden md:table-cell px-4 py-3 text-center">
                           <button
                             onClick={() => {
                               setSelectedBailleur(isSelected ? null : bailleur.nom);
