@@ -298,7 +298,7 @@ export async function loadArrondissementsStats(): Promise<ArrondissementStats[]>
     const parisCentre: ArrondissementStats = {
       code: 0,
       nom: 'Paris Centre',
-      population: arr1to4.reduce((sum, s) => sum + s.population, 0),
+      population: arr1to4.reduce((sum, s) => sum + (s.population ?? 0), 0),
       totalSubventions: arr1to4.reduce((sum, s) => sum + s.totalSubventions, 0),
       nbSubventions: arr1to4.reduce((sum, s) => sum + s.nbSubventions, 0),
       subventionsPerCapita: 0,

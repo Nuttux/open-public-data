@@ -10,3 +10,4 @@ service-account*.json
 
 # Temp files
 *.json.bak
+.vercel/
