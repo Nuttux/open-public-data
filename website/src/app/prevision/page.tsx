@@ -266,13 +266,13 @@ function ExecutionRateChart({
     const comp = comparisonRates(rates);
     const years = comp.map((r) => String(r.annee));
 
-    // COVID markArea zones
+    // COVID markArea zones (tuple assertion needed for ECharts MarkArea2DDataItemOption)
     const covidZones = COVID_YEARS.filter((y) =>
       comp.some((r) => r.annee === y),
     ).map((y) => [
       { xAxis: String(y), itemStyle: { color: 'rgba(251, 191, 36, 0.06)' } },
       { xAxis: String(y) },
-    ]);
+    ] as [{ xAxis: string; itemStyle: { color: string } }, { xAxis: string }]);
 
     return {
       tooltip: {
