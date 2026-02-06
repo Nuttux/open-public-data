@@ -39,17 +39,23 @@ TABLE_ID = "ca_budget_principal"  # Main budget table in raw
 OUTPUT_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data"
 SEEDS_DIR = Path(__file__).parent.parent / "paris-public-open-data" / "seeds"
 
-YEARS = [2024, 2023, 2022, 2021, 2020, 2019]
+YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020, 2019]
+
+# Years sourced from core_budget_vote (Budget Primitif) instead of core_budget (CA)
+# These are voted/forecast years — not yet executed
+VOTED_YEARS = {2025, 2026}
 
 # Data availability by year (based on sync_opendata.py check)
 # Updated when sync runs
 DATA_AVAILABILITY = {
-    2024: {"status": "PARTIEL", "has_budget": True, "has_subventions": True, "has_autorisations": False, "has_arrondissements": False},
-    2023: {"status": "PARTIEL", "has_budget": True, "has_subventions": True, "has_autorisations": False, "has_arrondissements": True},
-    2022: {"status": "COMPLET", "has_budget": True, "has_subventions": True, "has_autorisations": True, "has_arrondissements": True},
-    2021: {"status": "COMPLET", "has_budget": True, "has_subventions": True, "has_autorisations": True, "has_arrondissements": True},
-    2020: {"status": "COMPLET", "has_budget": True, "has_subventions": True, "has_autorisations": True, "has_arrondissements": True},
-    2019: {"status": "COMPLET", "has_budget": True, "has_subventions": True, "has_autorisations": True, "has_arrondissements": True},
+    2026: {"status": "BUDGET_VOTE", "type_budget": "vote", "has_budget": True, "has_subventions": False, "has_autorisations": False, "has_arrondissements": False},
+    2025: {"status": "BUDGET_VOTE", "type_budget": "vote", "has_budget": True, "has_subventions": False, "has_autorisations": False, "has_arrondissements": False},
+    2024: {"status": "PARTIEL", "type_budget": "execute", "has_budget": True, "has_subventions": True, "has_autorisations": False, "has_arrondissements": False},
+    2023: {"status": "PARTIEL", "type_budget": "execute", "has_budget": True, "has_subventions": True, "has_autorisations": False, "has_arrondissements": True},
+    2022: {"status": "COMPLET", "type_budget": "execute", "has_budget": True, "has_subventions": True, "has_autorisations": True, "has_arrondissements": True},
+    2021: {"status": "COMPLET", "type_budget": "execute", "has_budget": True, "has_subventions": True, "has_autorisations": True, "has_arrondissements": True},
+    2020: {"status": "COMPLET", "type_budget": "execute", "has_budget": True, "has_subventions": True, "has_autorisations": True, "has_arrondissements": True},
+    2019: {"status": "COMPLET", "type_budget": "execute", "has_budget": True, "has_subventions": True, "has_autorisations": True, "has_arrondissements": True},
 }
 
 # =============================================================================
@@ -323,7 +329,21 @@ def get_bigquery_client():
 
 
 def query_budget_data(client, year: int) -> list[dict]:
-    """Query budget data for a specific year from dbt core_budget table."""
+    """
+    Query budget data for a specific year.
+    
+    Uses core_budget_vote for voted years (2025-2026) and core_budget for
+    executed years (2019-2024).
+    """
+    if year in VOTED_YEARS:
+        # Voted budget — source: core_budget_vote (Budget Primitif)
+        table = f"`{PROJECT_ID}.dbt_paris_analytics.core_budget_vote`"
+        print(f"  Querying VOTED budget for {year} (core_budget_vote)...")
+    else:
+        # Executed budget — source: core_budget (Compte Administratif)
+        table = f"`{PROJECT_ID}.dbt_paris_analytics.core_budget`"
+        print(f"  Querying EXECUTED budget for {year} (core_budget)...")
+    
     query = f"""
     SELECT 
         sens_flux as sens,
@@ -331,12 +351,11 @@ def query_budget_data(client, year: int) -> list[dict]:
         chapitre_libelle,
         nature_libelle,
         montant
-    FROM `{PROJECT_ID}.dbt_paris_analytics.core_budget`
+    FROM {table}
     WHERE annee = {year}
       AND montant > 0
     """
     
-    print(f"  Querying data for {year}...")
     results = client.query(query).result()
     return [dict(row) for row in results]
 
@@ -426,37 +445,50 @@ def build_sankey_data(records: list[dict], year: int) -> dict:
     total_depenses = sum(expense_grouped.values())
     solde = total_recettes - total_depenses
     
+    # ECharts Sankey requires unique node names. If the same group name
+    # appears on both revenue and expense sides (e.g. "Autres"), we suffix
+    # with " (R)" / " (D)" to disambiguate.
+    rev_names = {n for n, v in revenue_grouped.items() if v > 0}
+    exp_names = {n for n, v in expense_grouped.items() if v > 0}
+    collisions = rev_names & exp_names
+
+    def rev_display(name: str) -> str:
+        """Revenue node display name (suffixed if collision)."""
+        return f"{name} (R)" if name in collisions else name
+
+    def exp_display(name: str) -> str:
+        """Expense node display name (suffixed if collision)."""
+        return f"{name} (D)" if name in collisions else name
+
     nodes = []
-    for name in sorted(revenue_grouped.keys()):
-        if revenue_grouped[name] > 0:
-            nodes.append({"name": name, "category": "revenue"})
-    
+    for name in sorted(rev_names):
+        nodes.append({"name": rev_display(name), "category": "revenue"})
+
     nodes.append({"name": "Budget Paris", "category": "central"})
-    
-    for name in sorted(expense_grouped.keys()):
-        if expense_grouped[name] > 0:
-            nodes.append({"name": name, "category": "expense"})
-    
+
+    for name in sorted(exp_names):
+        nodes.append({"name": exp_display(name), "category": "expense"})
+
     links = []
     for name, value in revenue_grouped.items():
         if value > 0:
-            links.append({"source": name, "target": "Budget Paris", "value": value})
-    
+            links.append({"source": rev_display(name), "target": "Budget Paris", "value": value})
+
     for name, value in expense_grouped.items():
         if value > 0:
-            links.append({"source": "Budget Paris", "target": name, "value": value})
+            links.append({"source": "Budget Paris", "target": exp_display(name), "value": value})
     
     drilldown = {"revenue": {}, "expenses": {}}
-    
+
     for group, items in revenue_group_drilldown.items():
-        drilldown["revenue"][group] = [
+        drilldown["revenue"][rev_display(group)] = [
             {"name": name, "value": value}
             for name, value in sorted(items.items(), key=lambda x: -x[1])
             if value > 0
         ][:50]
-    
+
     for group, items in expense_group_drilldown.items():
-        drilldown["expenses"][group] = [
+        drilldown["expenses"][exp_display(group)] = [
             {"name": name, "value": value}
             for name, value in sorted(items.items(), key=lambda x: -x[1])
             if value > 0
@@ -468,8 +500,9 @@ def build_sankey_data(records: list[dict], year: int) -> dict:
         group_total = expense_grouped.get(group, 0)
         if group_total <= 0:
             continue
-            
-        by_section[group] = {}
+
+        display_name = exp_display(group)
+        by_section[display_name] = {}
         for section_name, section_data in sections.items():
             if section_data["total"] > 0:
                 # Sort items by value descending, take top 20
@@ -477,8 +510,8 @@ def build_sankey_data(records: list[dict], year: int) -> dict:
                     section_data["items"].items(),
                     key=lambda x: -x[1]
                 )[:20]
-                
-                by_section[group][section_name] = {
+
+                by_section[display_name][section_name] = {
                     "total": section_data["total"],
                     "items": [
                         {"name": name, "value": value}
@@ -488,9 +521,11 @@ def build_sankey_data(records: list[dict], year: int) -> dict:
     
     # Get data availability status
     availability = get_data_availability(year)
+    type_budget = availability.get("type_budget", "execute")
     
-    return {
+    result = {
         "year": year,
+        "type_budget": type_budget,
         "dataStatus": availability.get("status", "INCONNU"),
         "dataAvailability": {
             "budget": availability.get("has_budget", False),
@@ -509,6 +544,15 @@ def build_sankey_data(records: list[dict], year: int) -> dict:
         "bySection": by_section,
         "byEntity": []
     }
+    
+    # Add disclaimer for voted (non-executed) years
+    if type_budget == "vote":
+        result["disclaimer"] = (
+            "Budget prévisionnel voté par le Conseil de Paris (Budget Primitif). "
+            "Les montants réellement exécutés seront disponibles après clôture du Compte Administratif."
+        )
+    
+    return result
 
 
 def export_year(client, year: int, llm_enrichments: dict = None) -> dict:
@@ -553,21 +597,25 @@ def export_year(client, year: int, llm_enrichments: dict = None) -> dict:
             print(f"  Section: Fonct. {pct_fonct:.0f}% ({total_fonct/1e9:.1f} Md€) | "
                   f"Invest. {pct_invest:.0f}% ({total_invest/1e9:.1f} Md€)")
     
-    # Load top beneficiaries and projects for drill-down
-    top_beneficiaires = load_top_beneficiaires(client, year)
-    top_projets = load_top_projets(client, year)
-    
-    # Add drill_down section for contextual examples
-    sankey_data["drill_down"] = {}
-    all_themes = set(list(top_beneficiaires.keys()) + list(top_projets.keys()))
-    for theme in all_themes:
-        sankey_data["drill_down"][theme] = {
-            "top_beneficiaires": top_beneficiaires.get(theme, []),
-            "top_projets": top_projets.get(theme, []),
-        }
-    
-    if sankey_data["drill_down"]:
-        print(f"  📋 Added drill_down data for {len(sankey_data['drill_down'])} themes")
+    # Load top beneficiaries and projects for drill-down (skip for voted years — no CA data)
+    if year not in VOTED_YEARS:
+        top_beneficiaires = load_top_beneficiaires(client, year)
+        top_projets = load_top_projets(client, year)
+        
+        # Add drill_down section for contextual examples
+        sankey_data["drill_down"] = {}
+        all_themes = set(list(top_beneficiaires.keys()) + list(top_projets.keys()))
+        for theme in all_themes:
+            sankey_data["drill_down"][theme] = {
+                "top_beneficiaires": top_beneficiaires.get(theme, []),
+                "top_projets": top_projets.get(theme, []),
+            }
+        
+        if sankey_data["drill_down"]:
+            print(f"  📋 Added drill_down data for {len(sankey_data['drill_down'])} themes")
+    else:
+        sankey_data["drill_down"] = {}
+        print(f"  ℹ️ Voted year — no drill_down data (no CA subventions/projets)")
     
     output_file = OUTPUT_DIR / f"budget_sankey_{year}.json"
     with open(output_file, "w", encoding="utf-8") as f:
@@ -576,6 +624,7 @@ def export_year(client, year: int, llm_enrichments: dict = None) -> dict:
     
     return {
         "year": year,
+        "type_budget": sankey_data.get("type_budget", "execute"),
         "dataStatus": status,
         "recettes": sankey_data["totals"]["recettes"],
         "depenses": sankey_data["totals"]["depenses"],
@@ -584,12 +633,19 @@ def export_year(client, year: int, llm_enrichments: dict = None) -> dict:
 
 
 def export_index(summaries: list[dict]):
-    """Export the index file with available years and data status."""
+    """Export the index file with available years, data status, and budget type metadata."""
     summaries.sort(key=lambda x: x["year"], reverse=True)
     
     # Find years with complete data
     complete_years = [s["year"] for s in summaries if s.get("dataStatus") == "COMPLET"]
     partial_years = [s["year"] for s in summaries if s.get("dataStatus") == "PARTIEL"]
+    voted_years = [s["year"] for s in summaries if s.get("dataStatus") == "BUDGET_VOTE"]
+    
+    # Build year_types map for frontend BudgetTypeBadge
+    year_types = {}
+    for s in summaries:
+        y = s["year"]
+        year_types[str(y)] = "vote" if y in VOTED_YEARS else "execute"
     
     index = {
         "availableYears": [s["year"] for s in summaries],
@@ -597,6 +653,9 @@ def export_index(summaries: list[dict]):
         "latestCompleteYear": complete_years[0] if complete_years else None,
         "completeYears": complete_years,
         "partialYears": partial_years,
+        "votedYears": voted_years,
+        "year_types": year_types,
+        "covid_years": [2020, 2021],
         "summary": summaries
     }
     
@@ -607,6 +666,7 @@ def export_index(summaries: list[dict]):
     print(f"\n✓ Wrote index: {output_file}")
     print(f"  Complete years: {complete_years}")
     print(f"  Partial years: {partial_years}")
+    print(f"  Voted years: {voted_years}")
 
 
 def main():

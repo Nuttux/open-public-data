@@ -41,7 +41,7 @@ from utils.logger import Logger
 
 # Configuration
 PROJECT_ID = "open-data-france-484717"
-DATASET = "dbt_paris"
+DATASET = "dbt_paris_marts"  # Marts dataset (mart_budget_nature lives here)
 OUTPUT_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data"
 
 

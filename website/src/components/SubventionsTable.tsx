@@ -206,7 +206,7 @@ export default function SubventionsTable({
   const SortableHeader = ({ column, label, className = '' }: { column: SortColumn; label: string; className?: string }) => (
     <th
       onClick={() => handleSort(column)}
-      className={`px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wide cursor-pointer hover:text-slate-200 transition-colors ${className}`}
+      className={`px-2 md:px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wide cursor-pointer hover:text-slate-200 transition-colors ${className}`}
     >
       <div className="flex items-center gap-1">
         {label}
@@ -267,12 +267,13 @@ export default function SubventionsTable({
         <table className="w-full">
           <thead className="bg-slate-900/50">
             <tr>
-              <SortableHeader column="beneficiaire" label="Bénéficiaire" className="min-w-[200px]" />
+              <SortableHeader column="beneficiaire" label="Bénéficiaire" className="min-w-[120px] md:min-w-[200px]" />
               <SortableHeader column="thematique" label="Thématique" />
               <SortableHeader column="montant_total" label="Montant" />
-              <SortableHeader column="direction" label="Direction" />
-              <SortableHeader column="nature_juridique" label="Nature" />
-              <th className="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wide">
+              {/* Colonnes masquées sur mobile pour garder le tableau lisible */}
+              <SortableHeader column="direction" label="Direction" className="hidden md:table-cell" />
+              <SortableHeader column="nature_juridique" label="Nature" className="hidden md:table-cell" />
+              <th className="hidden md:table-cell px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wide">
                 Source
               </th>
             </tr>
@@ -287,13 +288,13 @@ export default function SubventionsTable({
                   className="hover:bg-slate-700/20 transition-colors"
                 >
                   {/* Bénéficiaire */}
-                  <td className="px-4 py-3">
-                    <div className="min-w-[200px]">
-                      <p className="font-medium text-slate-100 truncate" title={beneficiaire.beneficiaire}>
+                  <td className="px-2 md:px-4 py-3">
+                    <div className="min-w-[100px] md:min-w-[200px]">
+                      <p className="font-medium text-slate-100 text-xs md:text-sm truncate" title={beneficiaire.beneficiaire}>
                         {beneficiaire.beneficiaire}
                       </p>
                       {beneficiaire.objet_principal && (
-                        <p className="text-xs text-slate-500 truncate mt-0.5" title={beneficiaire.objet_principal}>
+                        <p className="text-[10px] md:text-xs text-slate-500 truncate mt-0.5" title={beneficiaire.objet_principal}>
                           {beneficiaire.objet_principal}
                         </p>
                       )}
@@ -301,9 +302,9 @@ export default function SubventionsTable({
                   </td>
                   
                   {/* Thématique */}
-                  <td className="px-4 py-3">
+                  <td className="px-2 md:px-4 py-3">
                     <span 
-                      className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium"
+                      className="inline-flex items-center px-1.5 md:px-2 py-0.5 rounded text-[10px] md:text-xs font-medium whitespace-nowrap"
                       style={{ 
                         backgroundColor: `${getThematiqueColor(beneficiaire.thematique)}20`,
                         color: getThematiqueColor(beneficiaire.thematique),
@@ -312,40 +313,40 @@ export default function SubventionsTable({
                       {beneficiaire.thematique}
                     </span>
                     {beneficiaire.sous_categorie && (
-                      <p className="text-xs text-slate-500 mt-0.5">
+                      <p className="text-[10px] md:text-xs text-slate-500 mt-0.5">
                         {beneficiaire.sous_categorie}
                       </p>
                     )}
                   </td>
                   
                   {/* Montant */}
-                  <td className="px-4 py-3">
-                    <p className="font-medium text-slate-100 tabular-nums">
+                  <td className="px-2 md:px-4 py-3 text-right">
+                    <p className="font-medium text-slate-100 tabular-nums text-xs md:text-sm">
                       {formatEuroCompact(beneficiaire.montant_total)}
                     </p>
                     {beneficiaire.nb_subventions > 1 && (
-                      <p className="text-xs text-slate-500">
+                      <p className="text-[10px] md:text-xs text-slate-500">
                         {beneficiaire.nb_subventions} subv.
                       </p>
                     )}
                   </td>
                   
-                  {/* Direction */}
-                  <td className="px-4 py-3">
+                  {/* Direction — masqué sur mobile */}
+                  <td className="hidden md:table-cell px-4 py-3">
                     <span className="text-sm text-slate-300">
                       {beneficiaire.direction || '-'}
                     </span>
                   </td>
                   
-                  {/* Nature juridique */}
-                  <td className="px-4 py-3">
+                  {/* Nature juridique — masqué sur mobile */}
+                  <td className="hidden md:table-cell px-4 py-3">
                     <span className="text-sm text-slate-400">
                       {beneficiaire.nature_juridique || '-'}
                     </span>
                   </td>
                   
-                  {/* Source classification */}
-                  <td className="px-4 py-3">
+                  {/* Source classification — masqué sur mobile */}
+                  <td className="hidden md:table-cell px-4 py-3">
                     <span 
                       className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${sourceInfo.color}`}
                       title={`Classifié par: ${beneficiaire.source_thematique}`}

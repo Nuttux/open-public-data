@@ -9,10 +9,14 @@
  * - Solde (surplus/déficit)
  * - Variation vs année précédente (%)
  * - Indicateur visuel hausse/baisse
+ * 
+ * Chaque label dispose d'un GlossaryTip (?) pour expliquer
+ * le terme aux citoyens.
  */
 
 import { useMemo } from 'react';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
+import GlossaryTip from './GlossaryTip';
 import type { YearlyBudget } from './EvolutionChart';
 
 interface YoyCardsProps {
@@ -80,7 +84,7 @@ export default function YoyCards({ currentYear, previousYear }: YoyCardsProps) {
       {/* Recettes Propres (hors emprunts) */}
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-xs text-slate-500 uppercase tracking-wide">Recettes propres {currentYear.year}</span>
+          <span className="text-xs text-slate-500 uppercase tracking-wide">Recettes propres {currentYear.year} <GlossaryTip term="recettes_propres" /></span>
           {previousYear && (
             <span className="text-xs text-slate-500">vs {previousYear.year}</span>
           )}
@@ -99,7 +103,7 @@ export default function YoyCards({ currentYear, previousYear }: YoyCardsProps) {
       {/* Dépenses */}
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-xs text-slate-500 uppercase tracking-wide">Dépenses {currentYear.year}</span>
+          <span className="text-xs text-slate-500 uppercase tracking-wide">Dépenses {currentYear.year} <GlossaryTip term="depenses" /></span>
           {previousYear && (
             <span className="text-xs text-slate-500">vs {previousYear.year}</span>
           )}
@@ -118,7 +122,7 @@ export default function YoyCards({ currentYear, previousYear }: YoyCardsProps) {
       {/* Solde (Surplus/Déficit) */}
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-xs text-slate-500 uppercase tracking-wide">Solde {currentYear.year}</span>
+          <span className="text-xs text-slate-500 uppercase tracking-wide">Solde {currentYear.year} <GlossaryTip term="surplus_deficit" /></span>
           {previousYear && (
             <span className="text-xs text-slate-500">vs {previousYear.year}</span>
           )}

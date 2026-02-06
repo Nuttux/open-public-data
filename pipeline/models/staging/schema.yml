@@ -48,6 +48,50 @@ models:
           - not_null
 
   # ===========================================================================
+  # BUDGET VOTÉ (prévisionnel) - Entité séparée du CA
+  # ===========================================================================
+  - name: stg_budget_vote
+    description: |
+      Budget voté (Budget Primitif) de la Ville de Paris.
+      Entité SÉPARÉE du budget exécuté (stg_budget_principal).
+      
+      Filtres appliqués:
+      - type_operation = 'Réel' (exclut 'Pour Ordre')
+      - type_du_vote LIKE '%budget primitif%' (exclut DM)
+      - montant > 0
+      
+      Différences avec stg_budget_principal:
+      - montant = credits_votes_pmt (pas mandate_titre_apres_regul)
+      - Couverture: 2019-2026 (vs 2019-2024 pour le CA)
+      
+      Années: 2019-2026
+    columns:
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: section
+        description: "Section: Investissement ou Fonctionnement"
+        tests:
+          - accepted_values:
+              values: ['Investissement', 'Fonctionnement']
+      - name: sens_flux
+        description: "Dépense ou Recette"
+        tests:
+          - accepted_values:
+              values: ['Dépense', 'Recette']
+      - name: chapitre_code
+        description: "Code chapitre M57"
+      - name: nature_code
+        description: "Code nature comptable (clé de jointure)"
+      - name: fonction_code
+        description: "Code fonction (clé de jointure)"
+      - name: montant
+        description: "Crédits votés (€) - montant PRÉVISIONNEL"
+        tests:
+          - not_null
+
+  # ===========================================================================
   # AP PROJETS - Investissements nommés
   # ===========================================================================
   - name: stg_ap_projets

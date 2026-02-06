@@ -1,27 +1,16 @@
 {
   "availableYears": [
-    2024,
-    2023
+    2022
   ],
   "source": "Extraction PDF Comptes Administratifs",
-  "lastUpdate": "2026-02-03",
+  "lastUpdate": "2026-02-06",
   "yearStats": {
-    "2024": {
-      "nb_projets": 437,
-      "total_millions": 234.67,
-      "validation": {
-        "total_attendu": 242.0,
-        "total_extrait_millions": 234.67,
-        "ecart_pourcent": 3.03,
-        "valide": true
-      }
-    },
-    "2023": {
-      "nb_projets": 497,
-      "total_millions": 209.92,
+    "2022": {
+      "nb_projets": 446,
+      "total_millions": 143.575901,
       "validation": {
         "total_attendu": null,
-        "total_extrait_millions": 209.92,
+        "total_extrait_millions": 143.575901,
         "ecart_pourcent": null,
         "valide": null
       }

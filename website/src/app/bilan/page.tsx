@@ -14,6 +14,7 @@ import { useState, useEffect, useCallback } from 'react';
 import YearSelector from '@/components/YearSelector';
 import BilanSankey from '@/components/BilanSankey';
 import DrilldownPanel from '@/components/DrilldownPanel';
+import GlossaryTip from '@/components/GlossaryTip';
 import { loadBilanIndex, loadBilanSankey, type BilanIndex, type BilanSankeyData } from '@/lib/api/staticData';
 import { formatEuroCompact, formatPercent } from '@/lib/formatters';
 
@@ -29,7 +30,7 @@ function BilanStatsCards({ data }: { data: BilanSankeyData }) {
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
         <div className="flex items-center gap-2 mb-1">
           <span className="text-blue-400">🏛️</span>
-          <span className="text-xs text-slate-400">Actif Net</span>
+          <span className="text-xs text-slate-400">Actif Net <GlossaryTip term="actif_net" /></span>
         </div>
         <div className="text-xl sm:text-2xl font-bold text-blue-400">
           {formatEuroCompact(totals.actif_net)}
@@ -43,7 +44,7 @@ function BilanStatsCards({ data }: { data: BilanSankeyData }) {
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
         <div className="flex items-center gap-2 mb-1">
           <span className="text-green-400">💰</span>
-          <span className="text-xs text-slate-400">Fonds propres</span>
+          <span className="text-xs text-slate-400">Fonds propres <GlossaryTip term="fonds_propres" /></span>
         </div>
         <div className="text-xl sm:text-2xl font-bold text-green-400">
           {formatEuroCompact(totals.fonds_propres)}
@@ -57,7 +58,7 @@ function BilanStatsCards({ data }: { data: BilanSankeyData }) {
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
         <div className="flex items-center gap-2 mb-1">
           <span className="text-red-400">📋</span>
-          <span className="text-xs text-slate-400">Dette totale</span>
+          <span className="text-xs text-slate-400">Dette totale <GlossaryTip term="dette_totale" /></span>
         </div>
         <div className="text-xl sm:text-2xl font-bold text-red-400">
           {formatEuroCompact(totals.dette_totale)}
@@ -73,7 +74,7 @@ function BilanStatsCards({ data }: { data: BilanSankeyData }) {
           <span className={kpis.ratio_endettement && kpis.ratio_endettement > 1 ? 'text-amber-400' : 'text-emerald-400'}>
             📊
           </span>
-          <span className="text-xs text-slate-400">Ratio endettement</span>
+          <span className="text-xs text-slate-400">Ratio endettement <GlossaryTip term="ratio_endettement" /></span>
         </div>
         <div className={`text-xl sm:text-2xl font-bold ${
           kpis.ratio_endettement && kpis.ratio_endettement > 1 ? 'text-amber-400' : 'text-emerald-400'

@@ -10,10 +10,14 @@
  * 
  * + Indicateur secondaire: Équilibre budgétaire comptable
  * 
+ * Chaque métrique dispose d'un GlossaryTip (?) pour expliquer
+ * le terme aux citoyens (hover desktop, tap mobile).
+ * 
  * Responsive: cartes empilées sur mobile, textes adaptés
  */
 
 import { formatEuroCompact } from '@/lib/formatters';
+import GlossaryTip from './GlossaryTip';
 
 interface StatsCardsProps {
   recettes: number;
@@ -41,6 +45,7 @@ export default function StatsCards({ recettes, depenses, solde, year, emprunts =
             <div className="min-w-0 flex-1">
               <p className="text-[10px] sm:text-xs font-medium text-emerald-400 uppercase tracking-wider">
                 Recettes propres {year}
+                <GlossaryTip term="recettes_propres" />
               </p>
               <p className="mt-1 text-xl sm:text-2xl font-bold text-emerald-400">
                 {formatEuroCompact(recettesPropres)}
@@ -63,6 +68,7 @@ export default function StatsCards({ recettes, depenses, solde, year, emprunts =
             <div className="min-w-0 flex-1">
               <p className="text-[10px] sm:text-xs font-medium text-blue-400 uppercase tracking-wider">
                 Dépenses totales {year}
+                <GlossaryTip term="depenses" />
               </p>
               <p className="mt-1 text-xl sm:text-2xl font-bold text-blue-400">
                 {formatEuroCompact(depenses)}
@@ -89,6 +95,7 @@ export default function StatsCards({ recettes, depenses, solde, year, emprunts =
                 isDeficit ? 'text-red-400' : 'text-green-400'
               }`}>
                 {isDeficit ? '⚠️ Déficit' : '✅ Excédent'} {year}
+                <GlossaryTip term="surplus_deficit" />
               </p>
               <p className={`mt-1 text-xl sm:text-2xl font-bold ${
                 isDeficit ? 'text-red-400' : 'text-green-400'
@@ -120,7 +127,7 @@ export default function StatsCards({ recettes, depenses, solde, year, emprunts =
       <div className="bg-slate-800/30 rounded-lg border border-slate-700/50 px-3 sm:px-4 py-2">
         <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 text-xs sm:text-sm">
           <div className="flex items-center gap-2">
-            <span className="text-slate-500">Équilibre comptable :</span>
+            <span className="text-slate-500">Équilibre comptable <GlossaryTip term="solde_comptable" /> :</span>
             <span className={`font-medium ${solde >= 0 ? 'text-slate-300' : 'text-amber-400'}`}>
               {solde >= 0 ? '+' : ''}{formatEuroCompact(solde)}
             </span>
