@@ -1,0 +1,71 @@
+{
+  "availableYears": [
+    2024,
+    2023,
+    2022,
+    2021,
+    2020,
+    2019,
+    2018
+  ],
+  "source": "Fusion PDF Investissements Localisés + BigQuery",
+  "lastUpdate": "2026-02-06T01:14:39.150516",
+  "yearStats": {
+    "2018": {
+      "pdf_projets": 2457,
+      "pdf_total": 713482986.23,
+      "bq_added": 0,
+      "bq_added_total": 0,
+      "total_projets": 2457,
+      "total_montant": 713482986.23
+    },
+    "2019": {
+      "pdf_projets": 1976,
+      "pdf_total": 613172500.92,
+      "bq_added": 0,
+      "bq_added_total": 0,
+      "total_projets": 1976,
+      "total_montant": 613172500.92
+    },
+    "2020": {
+      "pdf_projets": 1348,
+      "pdf_total": 336422952.57,
+      "bq_added": 0,
+      "bq_added_total": 0,
+      "total_projets": 1348,
+      "total_montant": 336422952.57
+    },
+    "2021": {
+      "pdf_projets": 889,
+      "pdf_total": 259946929.79,
+      "bq_added": 0,
+      "bq_added_total": 0,
+      "total_projets": 889,
+      "total_montant": 259946929.79
+    },
+    "2022": {
+      "pdf_projets": 446,
+      "pdf_total": 143575901.0,
+      "bq_added": 13,
+      "bq_added_total": 41284304.14,
+      "total_projets": 459,
+      "total_montant": 184860205.14
+    },
+    "2023": {
+      "pdf_projets": 497,
+      "pdf_total": 209916001.67,
+      "bq_added": 0,
+      "bq_added_total": 0,
+      "total_projets": 497,
+      "total_montant": 209916001.67
+    },
+    "2024": {
+      "pdf_projets": 437,
+      "pdf_total": 234665835.0,
+      "bq_added": 0,
+      "bq_added_total": 0,
+      "total_projets": 437,
+      "total_montant": 234665835.0
+    }
+  }
+}

@@ -63,8 +63,8 @@ export interface LogementSocial {
 /**
  * Autorisation de programme (investissement)
  * 
- * Source: dbt core_ap_projets (enrichi par LLM pour géolocalisation)
- * Les champs ode_* sont enrichis par le pipeline d'enrichissement
+ * Source: Fusion PDF Investissements Localisés + BigQuery OpenData
+ * Géocodage multi-niveaux: lieux connus, API BAN, centroid arrondissement
  */
 export interface AutorisationProgramme {
   id: string;
@@ -82,13 +82,17 @@ export interface AutorisationProgramme {
   montant: number;
   thematique: string;
   
-  // Géolocalisation (enrichie par LLM ou regex)
+  // Géolocalisation
   arrondissement?: number;
-  adresse?: string;           // Adresse enrichie par LLM
-  latitude?: number;          // Latitude (si géocodé)
-  longitude?: number;         // Longitude (si géocodé)
-  nomLieu?: string;           // Nom du lieu (école, piscine, etc.)
+  adresse?: string;           // Adresse géocodée (geo_label)
+  latitude?: number;          // Latitude précise
+  longitude?: number;         // Longitude précise
+  nomLieu?: string;           // Nom du projet/lieu
   coordinates?: GeoPoint;     // Legacy: point géographique
+  
+  // Métadonnées de qualité géographique
+  geoSource?: string;         // api_numero, api_rue, api_lieu, lieu_connu, knowledge, centroid, none
+  geoScore?: number;          // Score de confiance (0-1)
 }
 
 /**
