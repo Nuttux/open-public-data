@@ -167,7 +167,49 @@ export const EXPENSE_COLORS: Record<string, string> = {
 };
 
 // =============================================================================
-// 7. FONCTIONS UTILITAIRES
+// 7. BILAN COMPTABLE (Actif / Passif)
+// =============================================================================
+
+export const BILAN_ACTIF_COLORS: Record<string, string> = {
+  'Actif immobilisé': PALETTE.blue,
+  'Actif circulant': PALETTE.cyan,
+  'Trésorerie': PALETTE.emerald,
+  'Trésorerie (Actif)': PALETTE.emerald,
+  'Comptes de régularisation': PALETTE.slate,
+  'Comptes de régularisation (Actif)': PALETTE.slate,
+  'Écarts de conversion actif': PALETTE.slateLight,
+};
+
+export const BILAN_PASSIF_COLORS: Record<string, string> = {
+  'Fonds propres': PALETTE.green,
+  'Dettes financières': PALETTE.red,
+  'Dettes non financières': PALETTE.orange,
+  'Provisions pour risques et charges': PALETTE.amber,
+  'Trésorerie (Passif)': PALETTE.teal,
+  'Comptes de régularisation (Passif)': PALETTE.slateLight,
+  'Écarts de conversion passif': PALETTE.slateLight,
+  'Dettes': PALETTE.red,  // Ancienne terminologie
+};
+
+export const BILAN_CENTRAL_COLOR = PALETTE.purple;
+
+/**
+ * Récupère la couleur d'un poste du bilan
+ * @param name - Nom du poste
+ * @param category - 'actif', 'passif' ou 'central'
+ */
+export function getBilanColor(name: string, category: 'actif' | 'passif' | 'central'): string {
+  if (category === 'central') {
+    return BILAN_CENTRAL_COLOR;
+  }
+  if (category === 'actif') {
+    return BILAN_ACTIF_COLORS[name] || PALETTE.slate;
+  }
+  return BILAN_PASSIF_COLORS[name] || PALETTE.slate;
+}
+
+// =============================================================================
+// 8. FONCTIONS UTILITAIRES
 // =============================================================================
 
 /**
