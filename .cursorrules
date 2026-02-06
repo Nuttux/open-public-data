@@ -50,4 +50,8 @@ docs/              # Architecture docs
 ## Commands
 - dbt: `cd pipeline && dbt run`
 - Export: `python pipeline/scripts/export/export_all.py`
-- Website: `cd website && npm run dev`
+- Website: `cd website && npm run dev`## 12. Git Safety
+
+- **⚠️ NEVER push to origin main** without explicit user request
+- Always push to current feature branch (e.g., git push origin theo2)
+- If user says 'push to main', ask for confirmation first
