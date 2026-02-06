@@ -208,3 +208,55 @@ models:
         description: "Montant minimum (ENVELOPPE - ne pas sommer)"
       - name: montant_max
         description: "Montant maximum (ENVELOPPE - ne pas sommer)"
+
+  # ===========================================================================
+  # BILAN COMPTABLE - État patrimonial
+  # ===========================================================================
+  - name: stg_bilan_comptable
+    description: |
+      Bilan comptable (état patrimonial) de la Ville de Paris.
+      Actif et Passif annuels avec valeurs brutes, amortissements et nettes.
+      
+      Nettoyages appliqués:
+      - Normalisation de la casse (MAJUSCULES → Title Case)
+      - Correction orthographique (régularisations → régularisation)
+      - Agrégation des doublons (mêmes année/type/poste/detail)
+      - NULL → 0 (en comptabilité, absence = zéro)
+      
+      Classification analytique ajoutée pour faciliter les agrégations.
+      
+      Années: 2016-2024
+    columns:
+      - name: cle_technique
+        description: "Clé technique unique (année-type-hash_poste-hash_detail)"
+        tests:
+          - unique
+          - not_null
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: type_bilan
+        description: "Type: 'Actif' ou 'Passif'"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Actif', 'Passif']
+      - name: poste
+        description: "Catégorie comptable normalisée (Actif immobilisé, Fonds propres...)"
+        tests:
+          - not_null
+      - name: detail
+        description: "Détail du poste (Terrains, Constructions, Réserves...)"
+      - name: montant_brut
+        description: "Valeur brute avant amortissements (€)"
+      - name: montant_amortissements
+        description: "Montant des amortissements et provisions (€)"
+      - name: montant_net
+        description: "Valeur nette = brut - amortissements (€)"
+      - name: categorie_analytique
+        description: "Classification de haut niveau pour agrégations (Immobilisations corporelles, Fonds propres...)"
+        tests:
+          - not_null
+      - name: nb_lignes_source
+        description: "Nombre de lignes sources agrégées (pour traçabilité)"

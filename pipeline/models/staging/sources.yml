@@ -233,3 +233,30 @@ sources:
             description: "Date de notification"
           - name: duree_du_marche_en_jours
             description: "Durée en jours (INTEGER)"
+
+      # =========================================================================
+      # BILAN COMPTABLE - État patrimonial
+      # =========================================================================
+      
+      - name: bilan_comptable
+        description: |
+          Bilan comptable de la Ville de Paris.
+          État patrimonial annuel (Actif/Passif).
+          Contient les valeurs brutes, amortissements et nettes.
+          
+          ~500 lignes, années 2016-2024
+        columns:
+          - name: Exercice comptable
+            description: "Année fiscale (INTEGER)"
+          - name: Actif/Passif
+            description: "Type: ACTIF ou PASSIF"
+          - name: Poste
+            description: "Catégorie comptable (ACTIF IMMOBILISE, FONDS PROPRES...)"
+          - name: Détail
+            description: "Détail du poste (Terrains, Constructions...)"
+          - name: BRUT
+            description: "Valeur brute (FLOAT)"
+          - name: AMORTISSEMENTS ET PROVISIONS
+            description: "Amortissements et provisions (FLOAT)"
+          - name: NET
+            description: "Valeur nette = BRUT - Amortissements (FLOAT)"
