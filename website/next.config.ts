@@ -5,7 +5,7 @@ import type { NextConfig } from 'next';
  *
  * Redirects map legacy routes to the new entity-based tab architecture:
  *   /evolution  → /budget?tab=tendances
- *   /prevision  → /budget?tab=prevision
+ *   /prevision  → /budget?tab=vote-vs-execute
  *   /bilan      → /patrimoine?tab=annuel
  *   /carte      → /logements?tab=carte
  */
@@ -19,7 +19,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/prevision',
-        destination: '/budget?tab=prevision',
+        destination: '/budget?tab=vote-vs-execute',
         permanent: true,
       },
       {

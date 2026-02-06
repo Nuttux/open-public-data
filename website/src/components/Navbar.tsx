@@ -230,7 +230,7 @@ export default function Navbar() {
                 {isActive && (
                   <span className="absolute top-0 inset-x-2 h-0.5 bg-purple-400 rounded-full" />
                 )}
-                <span className="text-[18px] leading-none">
+                <span className="text-[22px] leading-none">
                   {link.icon}
                 </span>
                 <span

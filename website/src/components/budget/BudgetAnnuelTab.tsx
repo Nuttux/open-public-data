@@ -106,6 +106,7 @@ function DataStatusBadge({
     COMPLET: { label: 'Données complètes', color: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30', icon: '✓' },
     PARTIEL: { label: 'Données partielles', color: 'bg-amber-500/20 text-amber-400 border-amber-500/30', icon: '◐' },
     BUDGET_SEUL: { label: 'Budget uniquement', color: 'bg-orange-500/20 text-orange-400 border-orange-500/30', icon: '○' },
+    BUDGET_VOTE: { label: 'Budget voté (BP)', color: 'bg-orange-500/20 text-orange-400 border-orange-500/30', icon: '📋' },
     INCONNU: { label: 'Statut inconnu', color: 'bg-slate-500/20 text-slate-400 border-slate-500/30', icon: '?' },
   };
 
