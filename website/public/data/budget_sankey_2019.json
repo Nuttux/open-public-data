@@ -1,5 +1,6 @@
 {
   "year": 2019,
+  "type_budget": "execute",
   "dataStatus": "COMPLET",
   "dataAvailability": {
     "budget": true,
@@ -54,15 +55,15 @@
       "category": "expense"
     },
     {
-      "name": "Dette",
-      "category": "expense"
-    },
-    {
       "name": "Environnement",
       "category": "expense"
     },
     {
       "name": "Personnel & Admin",
+      "category": "expense"
+    },
+    {
+      "name": "Remboursement dette",
       "category": "expense"
     },
     {
@@ -120,7 +121,7 @@
     },
     {
       "source": "Budget Paris",
-      "target": "Dette",
+      "target": "Remboursement dette",
       "value": 483172872.34000003
     },
     {
@@ -1170,7 +1171,7 @@
           "value": 35320.009999999995
         }
       ],
-      "Dette": [
+      "Remboursement dette": [
         {
           "name": "Opérations Financières: Intérêts réglés à l’échéance",
           "value": 126479756.89

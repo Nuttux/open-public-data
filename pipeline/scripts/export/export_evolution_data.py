@@ -7,6 +7,7 @@ for the evolution page with:
 - Yearly totals (recettes, dépenses, solde)
 - Section breakdown (Fonctionnement vs Investissement)
 - Financial metrics (épargne brute, surplus/déficit financier)
+- Métriques dette (emprunts, remboursement principal, intérêts, variation nette)
 - 6-year variations:
   - DÉPENSES: par thématique (où va l'argent)
   - RECETTES: par source (d'où vient l'argent)
@@ -18,6 +19,17 @@ Key concepts:
   (santé financière réelle, emprunts exclus)
 - Solde comptable = Recettes totales - Dépenses totales
   (équilibre technique, toujours proche de 0)
+
+Métriques dette (nature codes M57):
+- Emprunts = nature 16xx recettes (nouveaux emprunts reçus)
+- Remboursement principal = nature 16xx dépenses (capital remboursé)
+- Intérêts dette = nature 66xx dépenses (coût du service de la dette)
+- Variation dette nette = Emprunts - Remboursement principal
+  (positif = dette augmente, négatif = dette diminue)
+
+Note: Les emprunts sont classés en "recettes" par la comptabilité publique
+(flux entrant) mais ce n'est PAS une ressource propre - c'est de la dette !
+C'est pourquoi on distingue recettes_propres = recettes - emprunts.
 
 Usage:
     python pipeline/scripts/export/export_evolution_data.py
@@ -135,7 +147,7 @@ def fetch_evolution_data(client: bigquery.Client) -> dict:
     """
     logger.info("Fetching evolution data from BigQuery...")
     
-    # Query for all views
+    # Query for all views (including new debt metrics)
     query = f"""
     SELECT
         vue,
@@ -149,7 +161,12 @@ def fetch_evolution_data(client: bigquery.Client) -> dict:
         montant_annee_prec,
         epargne_brute,
         recettes_propres,
-        surplus_deficit
+        surplus_deficit,
+        -- Métriques dette
+        emprunts,
+        remboursement_principal,
+        interets_dette,
+        variation_dette_nette
     FROM `{PROJECT_ID}.{DATASET_ID}.mart_evolution_budget`
     WHERE annee IN ({','.join(str(y) for y in YEARS)})
     ORDER BY vue, annee, sens_flux, section
@@ -178,6 +195,11 @@ def fetch_evolution_data(client: bigquery.Client) -> dict:
                 "epargne_brute": float(row.epargne_brute) if row.epargne_brute else 0,
                 "recettes_propres": float(row.recettes_propres) if row.recettes_propres else 0,
                 "surplus_deficit": float(row.surplus_deficit) if row.surplus_deficit else 0,
+                # Métriques dette
+                "emprunts": float(row.emprunts) if row.emprunts else 0,
+                "remboursement_principal": float(row.remboursement_principal) if row.remboursement_principal else 0,
+                "interets_dette": float(row.interets_dette) if row.interets_dette else 0,
+                "variation_dette_nette": float(row.variation_dette_nette) if row.variation_dette_nette else 0,
             })
         elif row.vue == "par_section":
             data["par_section"].append({
@@ -442,10 +464,11 @@ def transform_for_frontend(raw_data: dict, revenues_by_source: list) -> dict:
             years_data[year]["epargne_brute"] = row["epargne_brute"]
             years_data[year]["totals"]["recettes_propres"] = row["recettes_propres"]
             years_data[year]["totals"]["surplus_deficit"] = row["surplus_deficit"]
-            # Calculate emprunts
-            years_data[year]["totals"]["emprunts"] = (
-                years_data[year]["totals"]["recettes"] - row["recettes_propres"]
-            )
+            # Métriques dette (depuis dbt, nature codes précis)
+            years_data[year]["totals"]["emprunts"] = row["emprunts"]
+            years_data[year]["totals"]["remboursement_principal"] = row["remboursement_principal"]
+            years_data[year]["totals"]["interets_dette"] = row["interets_dette"]
+            years_data[year]["totals"]["variation_dette_nette"] = row["variation_dette_nette"]
     
     # Process par_section
     for row in raw_data["par_section"]:
@@ -480,7 +503,11 @@ def transform_for_frontend(raw_data: dict, revenues_by_source: list) -> dict:
             "solde_comptable": "Recettes totales - Dépenses totales (équilibre technique)",
             "recettes_propres": "Recettes totales - Emprunts (ressources réelles)",
             "surplus_deficit": "Recettes propres - Dépenses (santé financière réelle)",
-            "epargne_brute": "Recettes fonct. - Dépenses fonct. (capacité d'autofinancement)"
+            "epargne_brute": "Recettes fonct. - Dépenses fonct. (capacité d'autofinancement)",
+            "emprunts": "Nouveaux emprunts reçus (nature 16xx recettes)",
+            "remboursement_principal": "Remboursement du capital de la dette (nature 16xx dépenses)",
+            "interets_dette": "Intérêts payés sur la dette (nature 66xx dépenses)",
+            "variation_dette_nette": "Emprunts - Remboursement principal (+ = dette augmente)"
         },
         "years": sorted_years,
         "variations_6ans": variations_6ans

@@ -1,0 +1,103 @@
+---
+title: "Décrypter les finances de Paris : Budget et Bilan expliqués"
+description: "Comment lire un Budget et un Bilan sans être expert-comptable ? Un guide citoyen pour comprendre les fichiers Open Data de Paris."
+date: "2026-02-06"
+author: "Daniel"
+tags: ["Pédagogie", "Open Data", "Citoyenneté"]
+---
+
+L'Open Data est une promesse magnifique : la transparence pour tous. Mais si vous avez déjà téléchargé le fichier `comptes-administratifs-budgets-principaux-m57-ville.csv` sur Open Data Paris, vous l'avez probablement refermé aussitôt. Des milliers de lignes, des codes cryptiques comme "Chapitre 012" ou "Opération d'ordre", et des colonnes de chiffres à n'en plus finir.
+
+Chez **Paris Budget Dashboard**, notre mission est de transformer ces données brutes en visualisations claires. Mais pour vraiment comprendre où vont vos impôts, il est utile de saisir les deux piliers de la comptabilité publique : le **Budget** (le flux) et le **Bilan** (le patrimoine).
+
+![Diagramme Sankey - Flux budgétaires](/blog/images/placeholder-sankey.png)
+{/* TODO: Ajouter ici un screenshot du diagramme Sankey global (BudgetSankey.tsx) */}
+*Visualiser 10 milliards d'euros en un coup d'œil : le diagramme de flux du budget.*
+
+Voici le guide de survie pour lire ces fichiers comme un pro.
+
+## Partie 1 : Le Budget (Le Flux)
+
+Imaginez le budget comme le compte courant de la Ville pour l'année. Il trace l'argent qui rentre (**Recettes**) et celui qui sort (**Dépenses**).
+
+Mais attention, en comptabilité publique (la fameuse norme M57), on ne mélange pas tout. Il existe deux sections étanches :
+
+### 1. La Section de Fonctionnement (Le quotidien)
+
+C'est la "vie de tous les jours". Elle paie ce qui est consommé ou utilisé immédiatement. En 2024, cela représente environ **9,3 Milliards €** consacrés uniquement à faire tourner la ville.
+
+![Treemap des Subventions](/blog/images/placeholder-treemap.png)
+{/* TODO: Ajouter ici un screenshot du Treemap des subventions (SubventionsTreemap.tsx) */}
+*La répartition des subventions par thématique : une part importante du fonctionnement.*
+
+*   **Dépenses :** Les salaires des agents (la plus grosse part), l'électricité des réverbères, les repas des cantines, les subventions aux associations.
+*   **Recettes :** La taxe foncière, le stationnement, les dotations de l'État.
+
+> **La Règle d'Or :** Une ville *doit* avoir plus de recettes que de dépenses ici. Le surplus s'appelle **l'Épargne Brute**. C'est ce "bénéfice" qui permet ensuite de rembourser la dette et de financer les projets.
+
+### 2. La Section d'Investissement (L'avenir)
+
+C'est ce qui construit la ville de demain. Elle paie ce qui reste. L'investissement, ce n'est pas juste une ligne comptable, c'est cette école rue de Tolbiac ou ce gymnase dans le 18ème.
+
+![Carte des investissements](/blog/images/placeholder-map.png)
+{/* TODO: Ajouter ici un screenshot de la carte des projets d'investissement (InvestissementsMap.tsx) */}
+*Les projets d'investissement géolocalisés dans les arrondissements.*
+
+*   **Dépenses :** Construire une école, rénover une rue, planter un parc, acheter des ordinateurs.
+*   **Recettes :** L'Épargne Brute (venue de la section précédente), les subventions d'équipement, et l'**Emprunt** (la dette).
+
+> **Le piège à éviter :** Dans les fichiers Open Data, vous verrez des lignes marquées "Pour Ordre". Ce sont des écritures comptables fictives (l'argent passe d'une case à l'autre sans quitter la mairie). Sur notre dashboard, nous les filtrons pour ne garder que les **"Mouvements Réels"**.
+
+### Budget Voté vs Compte Administratif
+
+*   **Budget Primitif (BP) :** C'est la *prévision* votée en début d'année (la promesse politique).
+*   **Compte Administratif (CA) :** C'est la *réalité* constatée en fin d'année (la facture réelle).
+*   **Notre choix :** Nous utilisons le **CA**. Nous préférons visualiser ce qui a réellement été dépensé, pas ce qui a été promis.
+
+## Partie 2 : Le Bilan (Le Patrimoine)
+
+Si le Budget est le compte courant, le **Bilan** est l'état du patrimoine. C'est une photo prise au 31 décembre de tout ce que Paris possède et de tout ce qu'elle doit.
+
+![Santé Financière - Actif vs Passif](/blog/images/placeholder-bilan.png)
+{/* TODO: Ajouter ici un screenshot du graphique Actif/Passif ou Dette/Patrimoine (FinancialHealthChart.tsx) */}
+*Comparaison entre ce que la ville possède (Actif) et comment elle le finance (Passif).*
+
+Il a deux côtés qui doivent toujours être égaux (d'où le nom "Balance") :
+
+### 1. L'Actif (Ce que Paris possède)
+
+On parle souvent de la dette, mais on oublie de regarder ce qu'elle a permis d'acquérir. L'Actif liste la valeur de tout le matériel :
+
+*   **Terrains & Constructions :** Les écoles, les mairies d'arrondissement, les gymnases, les piscines.
+*   **Réseaux et Voirie :** La valeur immense des rues, des égouts, des réseaux d'éclairage.
+
+### 2. Le Passif (Comment c'est financé)
+
+C'est l'origine des fonds qui ont permis d'acheter l'Actif.
+
+*   **Fonds Propres :** L'argent que la ville a économisé ou reçu définitivement. C'est généralement la plus grosse part.
+*   **Dettes Financières :** L'argent emprunté aux banques.
+
+> **L'analyse citoyenne :** Une dette élevée n'a pas le même sens si elle fait face à un Actif immense et en bon état (la ville a investi) ou si elle sert à combler des trous. Le Bilan vous donne l'état de santé du "patrimoine" des Parisiens.
+
+## Lexique de survie : Les termes opaques décodés
+
+Quand vous explorerez les fichiers bruts, vous tomberez sur ces termes barbares. Voici votre traducteur :
+
+| Le Terme Opaque | La Traduction Citoyenne | Ce que ça veut dire pour vous |
+| :--- | :--- | :--- |
+| **M57** | Le standard | C'est juste le nom du "règlement comptable" utilisé par Paris depuis 2019. |
+| **AP (Autorisation de Programme)** | L'enveloppe | Une carte cadeau pluriannuelle pour un gros projet (ex: "10M€ pour cette bibliothèque sur 3 ans"). |
+| **CP (Crédits de Paiement)** | Le cash | L'argent réellement sorti de l'enveloppe *cette année-là*. |
+| **Chapitre 012** | La paie | Le code comptable pour les salaires des agents. Souvent le plus gros poste. |
+| **Chapitre 65** | Les aides | Le code des "Charges de gestion courante", c'est là qu'on trouve les subventions. |
+| **Dette** | L'emprunt | Se trouve dans le Bilan sous le nom "Dettes financières". |
+
+## Pourquoi c'est important ?
+
+Pendant des années, ces données étaient publiques mais invisibles, enfouies dans des PDFs de 300 pages ou des fichiers CSV illisibles.
+
+En comprenant la différence entre le **Fonctionnement** (qui doit être à l'équilibre) et l'**Investissement** (qui prépare l'avenir), vous pouvez vous forger une opinion éclairée sur la politique de la ville, basée sur des faits et non des ressenti.
+
+*La ville dépense-t-elle trop en fonctionnement ? Investit-elle assez dans ses infrastructures ?*
+Les réponses sont dans les fichiers. Et maintenant, elles sont aussi sur le dashboard.

@@ -1,21 +1,36 @@
 # ARCHITECTURE FRONTEND - PARIS BUDGET DASHBOARD
 
+> Mis à jour le 2026-02-06. Refonte UX : architecture par entité avec tabs consistants.
+
 ## Table des matières
 
-1. [État actuel](#1-état-actuel)
-2. [Vision cible](#2-vision-cible)
-3. [Pages et navigation](#3-pages-et-navigation)
-4. [Composants](#4-composants)
+1. [Principes UX](#1-principes-ux)
+2. [Architecture par entité](#2-architecture-par-entité)
+3. [Pages et tabs](#3-pages-et-tabs)
+4. [Composants partagés](#4-composants-partagés)
 5. [Gestion des données](#5-gestion-des-données)
-6. [Qualité et warnings](#6-qualité-et-warnings)
-7. [Design system](#7-design-system)
-8. [Roadmap d'implémentation](#8-roadmap-dimplémentation)
+6. [Design system](#6-design-system)
+7. [Roadmap](#7-roadmap)
 
 ---
 
-## 1. État actuel
+## 1. Principes UX
 
-### 1.1 Stack technique
+### 1.1 Objectif
+
+> Permettre à un citoyen parisien de comprendre en 30 secondes où va l'argent de sa ville.
+
+### 1.2 Principes
+
+| Principe | Détail |
+|----------|--------|
+| **Consistance** | Chaque entité suit le même pattern de tabs (Tendances → Annuel → Carte/Explorer) |
+| **Progressive disclosure** | Vue macro → drill-down → détail |
+| **Transparence** | Badge obligatoire sur données non-exécutées (Voté, Estimé), warnings qualité |
+| **Mobile-first** | Responsive, touch-friendly, navigation bottom bar |
+| **Static Data First** | JSON pré-calculés, pas d'API live |
+
+### 1.3 Stack technique
 
 | Technologie | Version | Usage |
 |-------------|---------|-------|
@@ -23,755 +38,345 @@
 | React | 19 | UI Library |
 | TypeScript | 5.x | Typage |
 | Tailwind CSS | 4 | Styling |
-| ECharts | 5.x | Graphiques (Sankey, Treemap) |
+| ECharts | 5.x | Graphiques (Sankey, Treemap, Line, Bar) |
+| echarts-for-react | 3.x | Wrapper React ECharts |
 | Leaflet | 1.9 | Cartes interactives |
-| react-leaflet | 4.x | Wrapper React pour Leaflet |
-
-### 1.2 Structure actuelle
-
-```
-frontend/
-├── src/
-│   ├── app/
-│   │   ├── page.tsx              # ✅ Home - Sankey budget
-│   │   ├── carte/page.tsx        # ✅ Carte - Investissements + Logements
-│   │   └── layout.tsx            # Layout global avec Navbar
-│   │
-│   ├── components/
-│   │   ├── BudgetSankey.tsx      # ✅ Diagramme Sankey ECharts
-│   │   ├── DrilldownPanel.tsx    # ✅ Panel drill-down Sankey
-│   │   ├── StatsCards.tsx        # ✅ Cartes KPI
-│   │   ├── YearSelector.tsx      # ✅ Sélecteur d'année
-│   │   ├── Navbar.tsx            # ✅ Navigation globale
-│   │   └── map/
-│   │       ├── ParisMap.tsx      # ✅ Carte Leaflet
-│   │       ├── MapFilters.tsx    # ✅ Filtres carte
-│   │       └── ChoroplethLayer.tsx # ✅ Choroplèthe
-│   │
-│   ├── lib/
-│   │   ├── api/staticData.ts     # ✅ Loaders JSON statiques
-│   │   ├── colors.ts             # ✅ Palettes de couleurs
-│   │   ├── formatters.ts         # ✅ Formatage montants/nombres
-│   │   ├── types/map.ts          # ✅ Types TypeScript
-│   │   └── constants/            # ✅ Données statiques
-│   │
-├── public/data/                  # ✅ JSON pré-calculés
-│   ├── budget_sankey_{year}.json
-│   ├── subventions/
-│   │   ├── treemap_{year}.json
-│   │   └── beneficiaires_{year}.json
-│   └── map/
-│       ├── investissements_{year}.json
-│       └── logements_{year}.json
-```
-
-### 1.3 Pages existantes
-
-| Route | Nom | Status | Description |
-|-------|-----|--------|-------------|
-| `/` | Budget Sankey | ✅ Fonctionnel | Diagramme flux + drill-down + KPIs |
-| `/carte` | Carte Paris | ✅ Fonctionnel | Investissements AP + Logements sociaux |
-
-### 1.4 Gaps identifiés
-
-| Fonctionnalité | Status | Priorité |
-|----------------|--------|----------|
-| Page Subventions (Treemap + Table) | ❌ Manquant | **P1** |
-| Page Évolution temporelle | ❌ Manquant | P2 |
-| Warnings qualité données | ⚠️ Partiel | **P1** |
-| Paris Centre (arr 1-4 agrégés) | ❌ Manquant | P2 |
-| Filtres avancés subventions | ❌ Manquant | P2 |
-| Export PDF/CSV | ❌ Manquant | P3 |
-| Mode mobile optimisé | ⚠️ Partiel | P3 |
 
 ---
 
-## 2. Vision cible
+## 2. Architecture par entité
 
-### 2.1 Objectif UX
+### 2.1 Problème de l'ancienne architecture
 
-> **"Permettre à un citoyen parisien de comprendre en 30 secondes où va l'argent de sa ville."**
+Les pages étaient organisées par **type de visualisation** (Sankey, Évolution, Carte, Prévision...), ce qui forçait l'utilisateur à naviguer entre 3-4 pages pour comprendre un seul sujet. La dette était dans /evolution, le bilan dans /bilan, etc.
 
-Principes:
-1. **Progressive disclosure** - Vue macro → drill-down détaillé
-2. **Mobile-first** - Responsive, touch-friendly
-3. **Transparence** - Toujours afficher la source et la qualité des données
-4. **Rapidité** - Chargement < 2s, navigation instantanée
+### 2.2 Nouvelle architecture : tabs par entité
 
-### 2.2 Architecture cible (4 pages)
+Chaque entité de données = une page avec des tabs internes suivant un pattern consistant :
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                         NAVBAR                               │
-│  [🏠 Budget]  [💰 Subventions]  [🗺️ Carte]  [📈 Évolution]  │
-└─────────────────────────────────────────────────────────────┘
-                              │
-        ┌─────────────────────┼─────────────────────┐
-        │                     │                     │
-        ▼                     ▼                     ▼
-┌───────────────┐   ┌───────────────┐   ┌───────────────┐
-│   / (Home)    │   │  /subventions │   │    /carte     │
-│               │   │               │   │               │
-│  Sankey +     │   │  Treemap +    │   │  Carte Paris  │
-│  KPIs +       │   │  Table        │   │  (AP + Lgmts) │
-│  Drill-down   │   │  filtrable    │   │               │
-└───────────────┘   └───────────────┘   └───────────────┘
-        │                     │                     │
-        └─────────────────────┼─────────────────────┘
-                              │
-                              ▼
-                    ┌───────────────┐
-                    │  /evolution   │
-                    │               │
-                    │  Charts YoY   │
-                    │  Comparaisons │
-                    └───────────────┘
+Entité
+  ├── Tab "Tendances"     → évolution multi-années, moyennes, variations
+  ├── Tab "Annuel"        → détail d'une année (Sankey, Donut, table...)
+  ├── Tab "Carte"         → seulement si données géolocalisées
+  └── Tab "Explorer"      → table/liste filtrable, search
 ```
+
+### 2.3 Vue d'ensemble
+
+```
+NAVBAR (6 items) :
+  Budget | Patrimoine | Subventions | Investissements | Logements | Blog
+
+/budget            → Tendances | Annuel (2019-2026) | Prévision
+/patrimoine        → Tendances | Annuel
+/subventions       → Tendances | Annuel | Explorer
+/investissements   → Tendances | Annuel | Carte | Explorer
+/logements         → Tendances | Annuel | Carte | Explorer
+/blog              → Articles
+```
+
+### 2.4 Mapping ancien → nouveau
+
+| Ancienne route | Nouvelle destination |
+|---------------|---------------------|
+| `/budget` | `/budget?tab=annuel` |
+| `/evolution` | `/budget?tab=tendances` (redirect) |
+| `/prevision` | `/budget?tab=prevision` (redirect) |
+| `/bilan` | `/patrimoine?tab=annuel` (redirect) |
+| `/carte` | `/logements?tab=carte` (redirect) |
+| `/subventions` | `/subventions` (inchangé) |
+| `/investissements` | `/investissements` (inchangé) |
 
 ---
 
-## 3. Pages et navigation
+## 3. Pages et tabs
 
-### 3.1 Navigation globale (Navbar)
+### 3.1 `/budget` — Budget de la Ville
 
-```tsx
-// Navbar.tsx - Structure cible
-const NAV_ITEMS = [
-  { href: '/', label: 'Budget', icon: '🏠', description: 'Vue d'ensemble' },
-  { href: '/subventions', label: 'Subventions', icon: '💰', description: 'Qui reçoit quoi?' },
-  { href: '/carte', label: 'Carte', icon: '🗺️', description: 'Projets par quartier' },
-  { href: '/evolution', label: 'Évolution', icon: '📈', description: 'Tendances 2019-2024' },
-];
-```
+| Tab | Contenu | Source données |
+|-----|---------|---------------|
+| **Tendances** | Line chart R/D, YoY cards, variations par thématique, filtre plage d'années (hors COVID) | `evolution_budget.json` |
+| **Annuel** | Sankey + Donut + KPIs, sélecteur 2019-2026, disclaimer voté pour 2025-2026 | `budget_sankey_{year}.json` |
+| **Prévision** | Vote vs Exécuté, taux d'exécution, écart ranking, estimations 2025-2026 | `vote_vs_execute.json` |
 
-### 3.2 Page `/` - Budget Sankey (existante)
+**Comportement clé — Annuel 2025-2026** :
+- YearSelector inclut 2025 et 2026
+- Quand année ≥ 2025 : bannière orange + BudgetTypeBadge "Voté" sur tous les montants
+- Texte disclaimer : "Budget prévisionnel. Hors COVID, l'écart-type avec l'exécuté est de ±X%."
+- Les données Sankey proviennent de `core_budget_vote` (mêmes chapitres fonctionnels)
 
-**Objectif**: Comprendre les grands flux (recettes → dépenses)
+**Comportement clé — Prévision** :
+- YearRangeSelector pour choisir les années de comparaison (exclure COVID)
+- EcartRanking filtre dynamiquement selon les années sélectionnées
 
-| Composant | Description | Status |
-|-----------|-------------|--------|
-| YearSelector | Sélection année 2019-2024 | ✅ |
-| DataStatusBadge | Indicateur complétude données | ✅ |
-| StatsCards | KPIs (Recettes, Dépenses, Solde, Emprunts) | ✅ |
-| BudgetSankey | Diagramme Sankey cliquable | ✅ |
-| DrilldownPanel | Détail par catégorie | ✅ |
+### 3.2 `/patrimoine` — État patrimonial & dette
 
-**Améliorations prévues**:
-- [ ] Ajouter lien vers `/subventions` depuis drill-down "Subventions"
-- [ ] Ajouter warning si données partielles
-- [ ] Améliorer responsive mobile
+| Tab | Contenu | Source données |
+|-----|---------|---------------|
+| **Tendances** | Évolution dette (emprunts, remboursement, intérêts), épargne brute, surplus/déficit | `evolution_budget.json` (métriques dette) |
+| **Annuel** | Sankey Actif/Passif + KPIs (actif net, fonds propres, ratio endettement) | `bilan_sankey_{year}.json` |
 
-### 3.3 Page `/subventions` - Treemap + Table (à créer)
+### 3.3 `/subventions` — Bénéficiaires
 
-**Objectif**: Explorer les bénéficiaires de subventions
+| Tab | Contenu | Source données |
+|-----|---------|---------------|
+| **Tendances** | Évolution montant total + nb bénéficiaires par année | À créer (agrégation `subventions/index.json`) |
+| **Annuel** | Treemap par thématique + stats | `subventions/treemap_{year}.json` |
+| **Explorer** | Table filtrable (thématique, direction, nature juridique, recherche) | `subventions/beneficiaires_{year}.json` |
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│  💰 Subventions {année}                    [Sélecteur année] │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │              TREEMAP par thématique                  │   │
-│  │  ┌──────────┐┌─────┐┌───────┐┌────┐                 │   │
-│  │  │  Social  ││Cult.││Éduc.  ││Sprt│                 │   │
-│  │  │  41.8%   ││29.1%││18.5%  ││6.2%│                 │   │
-│  │  └──────────┘└─────┘└───────┘└────┘                 │   │
-│  └─────────────────────────────────────────────────────┘   │
-│                                                             │
-│  ┌──────────────────────────┐                               │
-│  │ FILTRES                  │                               │
-│  │ ☑ Associations           │                               │
-│  │ ☐ Établissements publics │                               │
-│  │ ☐ Entreprises            │                               │
-│  │ ☐ Personnes physiques    │                               │
-│  │ ────────────────────     │                               │
-│  │ Direction: [Toutes    ▼] │                               │
-│  │ Montant min: [________] │                               │
-│  └──────────────────────────┘                               │
-│                                                             │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │  TABLE BÉNÉFICIAIRES                    🔍 Recherche │   │
-│  ├─────────────────────────────────────────────────────┤   │
-│  │  Bénéficiaire          │ Thématique │ Montant │ Dir │   │
-│  │  ──────────────────────│────────────│─────────│─────│   │
-│  │  CASVP                 │ Social     │ 580 M€  │ DASES│  │
-│  │  SAMU SOCIAL           │ Social     │ 45 M€   │ DASES│  │
-│  │  THEATRE DE LA VILLE   │ Culture    │ 6.6 M€  │ DAC │   │
-│  │  ...                   │            │         │     │   │
-│  └─────────────────────────────────────────────────────┘   │
-│                                                             │
-│  ⚠️ Données 2020-2021 incomplètes (bénéficiaires absents)   │
-└─────────────────────────────────────────────────────────────┘
-```
+Pas de tab Carte : les subventions vont à des organisations, pas des lieux.
 
-**Composants requis**:
+### 3.4 `/investissements` — Projets d'investissement (AP)
 
-| Composant | Description | Status |
-|-----------|-------------|--------|
-| SubventionsTreemap | Treemap ECharts par thématique | ❌ À créer |
-| SubventionsFilters | Filtres (type, direction, montant) | ❌ À créer |
-| SubventionsTable | Table triable/filtrable | ❌ À créer |
-| DataQualityBanner | Warning années dégradées | ❌ À créer |
+| Tab | Contenu | Source données |
+|-----|---------|---------------|
+| **Tendances** | Évolution montants AP par thématique/année | À créer |
+| **Annuel** | Top projets, stats par arrondissement | Existant |
+| **Carte** | Carte Leaflet avec markers géolocalisés | Existant |
+| **Explorer** | Table filtrable tous projets | Existant (vue liste) |
 
-**Données JSON utilisées**:
-- `subventions/treemap_{year}.json` - Agrégations par thématique
-- `subventions/beneficiaires_{year}.json` - Liste complète bénéficiaires
+### 3.5 `/logements` — Logements sociaux financés
 
-**Filtres disponibles** (depuis `subventions/index.json`):
-
-| Filtre | Valeurs | Type |
-|--------|---------|------|
-| `thematiques` | Culture, Social, Éducation... (19) | Multi-select chips |
-| `natures_juridiques` | Associations, Entreprises, Établissements publics... | Checkboxes |
-| `directions` | DAC, DASES, DJS... (22) | Dropdown |
-| `montant_min` | 0 - ∞ | Slider/Input |
-
-### 3.4 Page `/carte` - Carte interactive (existante)
-
-**Objectif**: Voir où sont les investissements géographiquement
-
-| Composant | Description | Status |
-|-----------|-------------|--------|
-| ParisMap | Carte Leaflet avec layers | ✅ |
-| MapFilters | Filtres (année, layers, thématiques) | ✅ |
-| ChoroplethLayer | Mode choroplèthe per capita | ✅ |
-
-**Améliorations prévues**:
-- [ ] Ajouter agrégation "Paris Centre" (arr 1-4)
-- [ ] Améliorer popups avec plus d'infos
-- [ ] Ajouter légende dynamique
-
-### 3.5 Page `/evolution` - Tendances temporelles (à créer)
-
-**Objectif**: Comparer les budgets dans le temps
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│  📈 Évolution du budget 2019-2024                           │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │       GRAPHIQUE ÉVOLUTION (Line Chart)              │   │
-│  │                                                      │   │
-│  │  25B€ ─┬──────────────────────────────────────────  │   │
-│  │        │                              ◆ Dépenses    │   │
-│  │  20B€ ─┼─────────◆────◆────◆────◆────◆─────────────  │   │
-│  │        │   ◇────◇────◇────◇────◇────◇ Recettes     │   │
-│  │  15B€ ─┼──────────────────────────────────────────  │   │
-│  │        └────┬────┬────┬────┬────┬────┬─────────────  │   │
-│  │           2019 2020 2021 2022 2023 2024             │   │
-│  └─────────────────────────────────────────────────────┘   │
-│                                                             │
-│  ┌──────────────┐ ┌──────────────┐ ┌──────────────┐        │
-│  │  +6.4% YoY   │ │  21.64 B€    │ │  -3.2 B€     │        │
-│  │  vs 2023    │ │  Dépenses 24  │ │  Solde 2024  │        │
-│  └──────────────┘ └──────────────┘ └──────────────┘        │
-│                                                             │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │  RÉPARTITION PAR THÉMATIQUE (Stacked Bar)           │   │
-│  │                                                      │   │
-│  │  2024 ████████████████████████████████████████████  │   │
-│  │  2023 ██████████████████████████████████████████    │   │
-│  │  2022 ████████████████████████████████████████████  │   │
-│  │       ──────────────────────────────────────────    │   │
-│  │       ■ Social ■ Éduc ■ Culture ■ Transport ■ Autre │   │
-│  └─────────────────────────────────────────────────────┘   │
-└─────────────────────────────────────────────────────────────┘
-```
-
-**Composants requis**:
-
-| Composant | Description | Status |
-|-----------|-------------|--------|
-| EvolutionChart | Line chart Recettes/Dépenses | ❌ À créer |
-| YoyCards | KPIs variations YoY | ❌ À créer |
-| ThematiqueStackedBar | Stacked bar par thématique | ❌ À créer |
-
-**Données nécessaires**:
-- Agrégation depuis `budget_sankey_{year}.json` (tous les fichiers)
-- Ou nouveau fichier `budget_evolution.json` pré-calculé
+| Tab | Contenu | Source données |
+|-----|---------|---------------|
+| **Tendances** | Évolution production logements par année/arrondissement | À créer |
+| **Annuel** | Top bailleurs + stats arrondissement | Existant (ex-`/carte`) |
+| **Carte** | Carte choroplèthe | Existant (ex-`/carte`) |
+| **Explorer** | Table filtrable tous logements | À créer |
 
 ---
 
-## 4. Composants
+## 4. Composants partagés
 
-### 4.1 Composants existants
+### 4.1 Infrastructure tabs
 
-| Composant | Props | Usage |
-|-----------|-------|-------|
-| `YearSelector` | `years`, `selected`, `onChange` | Sélection d'année |
-| `StatsCards` | `recettes`, `depenses`, `solde`, `emprunts` | KPIs |
-| `BudgetSankey` | `data`, `onNodeClick` | Diagramme Sankey |
-| `DrilldownPanel` | `title`, `items`, `breadcrumbs`, `onClose` | Détail drill-down |
-| `ParisMap` | `subventions`, `logements`, `autorisations`, ... | Carte Leaflet |
-| `MapFilters` | `availableYears`, `activeLayers`, ... | Filtres carte |
+| Composant | Description |
+|-----------|-------------|
+| `TabBar` | Segmented control générique. Props: `tabs[]`, `activeTab`, `onChange`. Scroll horizontal mobile si > 4 tabs. |
+| `useTabState(default)` | Hook : state tab actif + sync URL `?tab=xxx` via `useSearchParams()`. Permet liens directs. |
+| `PageHeader` | Header entité : icône + titre + description + badges coverage. |
 
-### 4.2 Composants à créer
+### 4.2 Badges et warnings
 
-#### DataQualityBanner
+| Composant | Description |
+|-----------|-------------|
+| `BudgetTypeBadge` | Badge `Exécuté` (bleu) / `Voté` (orange) / `Estimé` (gris). Apparaît à côté de TOUT montant non-exécuté. |
+| `DataQualityBanner` | Bannière contextuelle (warning/info) selon `data_availability.json`. |
 
-```tsx
-interface DataQualityBannerProps {
-  dataset: 'budget' | 'subventions' | 'ap_projets' | 'logements';
-  annee: number;
-}
+**Règle UX badges** :
+- 2019-2024 exécuté : pas de badge (défaut)
+- 2025-2026 voté : badge orange "Voté" OBLIGATOIRE + bannière disclaimer
+- Estimations : badge gris "Estimé" avec tooltip
 
-// Affiche un warning si données dégradées pour cette année/dataset
-export function DataQualityBanner({ dataset, annee }: DataQualityBannerProps) {
-  // Lit depuis data_availability.json ou constante
-  const warning = getWarning(dataset, annee);
-  if (!warning) return null;
-  
-  return (
-    <div className={cn(
-      "rounded-lg p-3 mb-4",
-      warning.severity === 'error' 
-        ? "bg-red-900/30 border border-red-700/50" 
-        : "bg-yellow-900/30 border border-yellow-700/50"
-    )}>
-      <p className="text-sm">
-        {warning.severity === 'error' ? '❌' : '⚠️'} {warning.message}
-      </p>
-    </div>
-  );
-}
-```
+### 4.3 Sélecteurs
 
-#### SubventionsTreemap
+| Composant | Description |
+|-----------|-------------|
+| `YearSelector` | Sélection d'une année. Étendu à 2019-2026. Indicateur visuel vote/exécuté. |
+| `YearRangeSelector` | Multi-select années pour vues Tendances. Preset "Hors COVID (excl. 2020-2021)". |
 
-```tsx
-interface SubventionsTreemapProps {
-  data: TreemapData;
-  onThematiqueClick?: (thematique: string) => void;
-}
+### 4.4 Composants par domaine
 
-// Treemap ECharts avec drill-down
-export function SubventionsTreemap({ data, onThematiqueClick }: SubventionsTreemapProps) {
-  // Configuration ECharts treemap
-  // Click sur thématique → filtre la table
-}
-```
+**Budget** : `BudgetSankey`, `NatureDonut`, `StatsCards`, `DrilldownPanel`, `EvolutionChart`, `FinancialHealthChart`, `VariationRankChart`, `YoyCards`, `ExecutionRateCards`, `ExecutionRateChart`, `EcartRanking`, `EstimationSummary`, `DetailThematiqueTable`
 
-#### SubventionsTable
+**Patrimoine** : `BilanSankey`, `DetteEvolutionChart` (à créer)
 
-```tsx
-interface SubventionsTableProps {
-  beneficiaires: Beneficiaire[];
-  filters: SubventionFilters;
-  onFiltersChange: (filters: SubventionFilters) => void;
-  onSort: (column: string, direction: 'asc' | 'desc') => void;
-}
+**Subventions** : `SubventionsTreemap`, `SubventionsFilters`, `SubventionsTable`
 
-// Table avec tri, recherche, pagination
-export function SubventionsTable({ ... }: SubventionsTableProps) {
-  // Colonnes: Bénéficiaire, Thématique, Montant, Direction, Nature juridique
-  // Recherche full-text
-  // Tri par colonne
-  // Pagination (50 par page)
-}
-```
+**Carte** : `ParisMap`, `MapFilters`, `ChoroplethLayer`, `InvestissementsMap`, `LogementsSociauxMap`
 
-### 4.3 Hiérarchie des composants
+### 4.5 Hiérarchie des pages
 
 ```
 app/
-├── layout.tsx
-│   └── Navbar
+├── layout.tsx → Navbar (6 items)
 │
-├── page.tsx (Budget)
-│   ├── DataStatusBadge
-│   ├── YearSelector
-│   ├── StatsCards
-│   ├── BudgetSankey
-│   └── DrilldownPanel
+├── budget/page.tsx
+│   ├── TabBar (Tendances | Annuel | Prévision)
+│   ├── [Tendances] EvolutionChart, YoyCards, VariationRankChart, YearRangeSelector
+│   ├── [Annuel]    YearSelector, BudgetTypeBadge, StatsCards, BudgetSankey/NatureDonut
+│   └── [Prévision] ExecutionRateCards, VoteVsExecuteChart, EcartRanking, EstimationSummary
+│
+├── patrimoine/page.tsx
+│   ├── TabBar (Tendances | Annuel)
+│   ├── [Tendances] FinancialHealthChart, DetteEvolutionChart
+│   └── [Annuel]    YearSelector, BilanSankey, BilanStatsCards
 │
 ├── subventions/page.tsx
-│   ├── DataQualityBanner
-│   ├── YearSelector
-│   ├── SubventionsTreemap
-│   ├── SubventionsFilters
-│   └── SubventionsTable
+│   ├── TabBar (Tendances | Annuel | Explorer)
+│   ├── [Tendances] SubventionsEvolutionChart (à créer)
+│   ├── [Annuel]    YearSelector, SubventionsTreemap
+│   └── [Explorer]  YearSelector, SubventionsFilters, SubventionsTable
 │
-├── carte/page.tsx
-│   ├── MapFilters
-│   └── ParisMap
-│       ├── ChoroplethLayer
-│       └── MarkerCluster
+├── investissements/page.tsx
+│   ├── TabBar (Tendances | Annuel | Carte | Explorer)
+│   ├── [Tendances] InvestissementsEvolutionChart (à créer)
+│   ├── [Annuel]    YearSelector, TopProjets, StatsArrondissement
+│   ├── [Carte]     InvestissementsMap
+│   └── [Explorer]  Table filtrable
 │
-└── evolution/page.tsx
-    ├── EvolutionChart
-    ├── YoyCards
-    └── ThematiqueStackedBar
+├── logements/page.tsx
+│   ├── TabBar (Tendances | Annuel | Carte | Explorer)
+│   ├── [Tendances] LogementsEvolutionChart (à créer)
+│   ├── [Annuel]    TopBailleurs, StatsArrondissement
+│   ├── [Carte]     LogementsSociauxMap, ChoroplethLayer
+│   └── [Explorer]  Table filtrable (à créer)
+│
+└── blog/page.tsx
 ```
 
 ---
 
 ## 5. Gestion des données
 
-### 5.1 Principe: Static Data First
-
-**Règle**: Toutes les données viennent de fichiers JSON statiques dans `/public/data/`.
-Pas d'appels API au runtime (sauf géolocalisation SIRET si nécessaire).
-
-### 5.2 Fichiers JSON disponibles
+### 5.1 Fichiers JSON statiques (`/public/data/`)
 
 | Fichier | Taille | Contenu |
 |---------|--------|---------|
-| `budget_index.json` | ~1 KB | Années disponibles, métadonnées |
-| `budget_sankey_{year}.json` | ~50 KB | Nodes + Links Sankey + drilldown |
-| `subventions/index.json` | ~2 KB | Années, filtres disponibles |
+| `budget_index.json` | ~1 KB | Années 2019-2026, `type_par_annee` (execute/vote) |
+| `budget_sankey_{year}.json` | ~50 KB | Nodes + Links Sankey + drilldown, champ `type_budget` |
+| `budget_nature_{year}.json` | ~10 KB | Répartition par nature comptable (Donut) |
+| `evolution_budget.json` | ~30 KB | Totaux, métriques dette, variations par thématique |
+| `vote_vs_execute.json` | ~65 KB | Taux exécution, écart ranking, estimations, détail thématique |
+| `bilan_sankey_{year}.json` | ~30 KB | Actif/Passif pour BilanSankey |
+| `subventions/index.json` | ~2 KB | Années, filtres, totaux |
 | `subventions/treemap_{year}.json` | ~10 KB | Agrégations par thématique |
 | `subventions/beneficiaires_{year}.json` | ~500 KB | Liste complète bénéficiaires |
-| `map/investissements_{year}.json` | ~200 KB | Projets AP géolocalisés |
-| `map/logements_{year}.json` | ~100 KB | Logements sociaux |
-| `map/arrondissements_stats.json` | ~5 KB | Stats per capita par arr |
+| `map/investissements_*.json` | ~200 KB | Projets AP géolocalisés |
+| `map/logements_sociaux.json` | ~100 KB | Logements géolocalisés |
+| `map/arrondissements_stats.json` | ~5 KB | Stats per capita |
+| `data_availability.json` | ~2 KB | Warnings par dataset/année |
 
-### 5.3 Loaders (lib/api/staticData.ts)
+### 5.2 Métadonnées type_budget
 
-```typescript
-// Loaders existants
-export async function loadBudgetIndex(): Promise<BudgetIndex>;
-export async function loadBudgetSankey(year: number): Promise<BudgetData>;
-export async function loadSubventionsIndex(): Promise<SubventionsIndex>;
-export async function loadSubventionsForYear(year: number): Promise<Subvention[]>;
-export async function loadLogementsSociaux(): Promise<LogementSocial[]>;
-export async function loadAutorisationsForYear(year: number): Promise<AutorisationProgramme[]>;
-
-// Loaders à ajouter
-export async function loadSubventionsTreemap(year: number): Promise<TreemapData>;
-export async function loadSubventionsBeneficiaires(year: number): Promise<Beneficiaire[]>;
-export async function loadBudgetEvolution(): Promise<EvolutionData>;
-```
-
-### 5.4 Types TypeScript
-
-```typescript
-// Types existants dans lib/types/map.ts
-export interface Subvention { ... }
-export interface LogementSocial { ... }
-export interface AutorisationProgramme { ... }
-export interface ArrondissementStats { ... }
-
-// Types à ajouter
-export interface TreemapData {
-  annee: number;
-  total: number;
-  thematiques: {
-    id: string;
-    name: string;
-    value: number;
-    pct: number;
-    children?: TreemapData['thematiques'];
-  }[];
-}
-
-export interface Beneficiaire {
-  id: string;
-  nom: string;
-  nomCanonique?: string;  // Nom dédupliqué (CASVP)
-  thematique: string;
-  montant: number;
-  direction?: string;
-  natureJuridique: string;
-  typeOrganisme: 'public' | 'association' | 'entreprise' | 'personne_physique' | 'autre';
-  sourceThematique: 'pattern' | 'direction' | 'llm' | 'default';
-}
-
-export interface EvolutionData {
-  years: number[];
-  recettes: number[];
-  depenses: number[];
-  soldes: number[];
-  byThematique: {
-    [thematique: string]: number[];
-  };
-}
-```
-
----
-
-## 6. Qualité et warnings
-
-### 6.1 Contrat qualité (depuis architecture-modelling.md)
-
-| Condition | Warning à afficher |
-|-----------|-------------------|
-| `annee IN (2020, 2021)` subventions | "⚠️ Données incomplètes : détail bénéficiaires indisponible" |
-| `annee >= 2023` pour AP | "⚠️ Projets d'investissement non disponibles pour cette année" |
-| `sourceThematique = 'default'` | Label "(non classifié)" en italique |
-| `confiance < 0.8` géoloc | "📍 Localisation approximative" |
-| `pct_non_classifie > 30%` | "⚠️ 30% des montants non classifiés" |
-
-### 6.2 Fichier data_availability.json (à créer)
+Chaque JSON avec des montants inclut un champ `type_budget`:
 
 ```json
 {
-  "budget": {
-    "annees_disponibles": [2019, 2020, 2021, 2022, 2023, 2024],
-    "warnings": {}
-  },
-  "subventions": {
-    "annees_disponibles": [2018, 2019, 2020, 2021, 2022, 2023, 2024],
-    "warnings": {
-      "2020": { "severity": "error", "message": "Données bénéficiaires absentes (source)" },
-      "2021": { "severity": "error", "message": "Données bénéficiaires absentes (source)" }
-    }
-  },
-  "ap_projets": {
-    "annees_disponibles": [2018, 2019, 2020, 2021, 2022],
-    "warnings": {
-      "2023": { "severity": "warning", "message": "Données non encore publiées par OpenData" },
-      "2024": { "severity": "warning", "message": "Données non encore publiées par OpenData" }
-    }
-  }
+  "annee": 2025,
+  "type_budget": "vote",
+  "disclaimer": "Budget prévisionnel voté par le Conseil de Paris."
 }
 ```
 
-### 6.3 Implémentation
-
-```tsx
-// Hook pour récupérer les warnings
-function useDataQuality(dataset: string, year: number) {
-  const [availability, setAvailability] = useState<DataAvailability | null>(null);
-  
-  useEffect(() => {
-    fetch('/data/data_availability.json')
-      .then(r => r.json())
-      .then(setAvailability);
-  }, []);
-  
-  return availability?.[dataset]?.warnings?.[year] || null;
-}
-```
+Le frontend lit ce champ pour afficher les badges et disclaimers.
 
 ---
 
-## 7. Design system
+## 6. Design system
 
-### 7.1 Principe fondamental
+### 6.1 Règle fondamentale
 
-> **RÈGLE D'OR: Une couleur = Un concept, partout dans l'app.**
+> **Une couleur = Un concept, partout dans l'app.**
 
-Exemple: "Éducation" est TOUJOURS bleu (#3b82f6), que ce soit dans le Sankey, le Treemap, ou la carte.
+"Éducation" est TOUJOURS bleu (#3b82f6), dans le Sankey, le Treemap, la carte et les tables.
 
-### 7.2 Système de couleurs (lib/colors.ts)
+### 6.2 Palette thématiques
 
-#### Palette de base (Tailwind CSS)
+| Thématique | Couleur | Hex |
+|------------|---------|-----|
+| Éducation | Blue | `#3b82f6` |
+| Culture & Sport | Purple | `#a855f7` |
+| Action Sociale | Pink | `#ec4899` |
+| Sécurité | Red | `#ef4444` |
+| Transports | Amber | `#f59e0b` |
+| Environnement | Green | `#22c55e` |
+| Aménagement | Cyan | `#06b6d4` |
+| Économie | Orange | `#f97316` |
+| Santé | Teal | `#14b8a6` |
+| Administration | Slate | `#64748b` |
+| Dette | Yellow | `#eab308` |
 
-| Nom | Hex | Usage principal |
-|-----|-----|-----------------|
-| blue | `#3b82f6` | Éducation, Personnel |
-| purple | `#a855f7` | Culture, Subventions |
-| pink | `#ec4899` | Social, Transferts |
-| red | `#ef4444` | Sécurité, Déficit |
-| orange | `#f97316` | Économie |
-| amber | `#f59e0b` | Transports, Finance |
-| yellow | `#eab308` | Dette |
-| green | `#22c55e` | Environnement |
-| emerald | `#10b981` | Recettes (positif) |
-| cyan | `#06b6d4` | Urbanisme, Achats |
-| slate | `#64748b` | Administration, Neutre |
+### 6.3 Palette flux et statuts
 
-#### Thématiques (Fonctions budgétaires)
+| Concept | Couleur |
+|---------|---------|
+| Recettes | Emerald `#10b981` |
+| Dépenses | Purple `#a855f7` |
+| Solde positif | Emerald |
+| Solde négatif | Red `#ef4444` |
+| Badge Exécuté | Blue `#3b82f6` |
+| Badge Voté | Orange `#f97316` |
+| Badge Estimé | Slate `#64748b` |
 
-Ces couleurs sont utilisées PARTOUT où on affiche des thématiques:
-- Sankey (catégories de dépenses)
-- Subventions (treemap, bénéficiaires)
-- Drill-down panels
-- Carte (markers, popups)
-
-| Thématique | Couleur | Hex | Emoji |
-|------------|---------|-----|-------|
-| Éducation | Blue | `#3b82f6` | 🎓 |
-| Culture & Sport | Purple | `#a855f7` | 🎭 |
-| Action Sociale | Pink | `#ec4899` | 💝 |
-| Sécurité | Red | `#ef4444` | 🚨 |
-| Transports | Amber | `#f59e0b` | 🚇 |
-| Environnement | Green | `#22c55e` | 🌿 |
-| Aménagement & Logement | Cyan | `#06b6d4` | 🏗️ |
-| Économie | Orange | `#f97316` | 💼 |
-| Santé | Teal | `#14b8a6` | 🏥 |
-| Administration | Slate | `#64748b` | 🏛️ |
-| Dette | Yellow | `#eab308` | 💳 |
-
-#### Natures (Types de dépense comptable)
-
-Dimension différente des thématiques, utilisée dans le donut par nature.
-
-| Nature | Couleur | Hex |
-|--------|---------|-----|
-| Personnel | Blue | `#3b82f6` |
-| Transferts sociaux | Pink | `#ec4899` |
-| Subventions | Purple | `#a855f7` |
-| Achats | Cyan | `#06b6d4` |
-| Immobilisations | Green | `#22c55e` |
-| Charges financières | Amber | `#f59e0b` |
-| Remboursement dette | Yellow | `#eab308` |
-
-#### Flux budgétaires
-
-| Concept | Couleur | Hex |
-|---------|---------|-----|
-| Recettes | Emerald | `#10b981` |
-| Dépenses | Purple | `#a855f7` |
-| Solde positif | Emerald | `#10b981` |
-| Solde négatif | Red | `#ef4444` |
-| Emprunts | Amber | `#f59e0b` |
-
-#### Statuts qualité
-
-```typescript
-export const STATUS_COLORS = {
-  complete: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
-  partial: 'bg-amber-500/20 text-amber-400 border-amber-500/30',
-  missing: 'bg-red-500/20 text-red-400 border-red-500/30',
-};
-```
-
-### 7.4 Styles communs
-
-```css
-/* Card standard */
-.card {
-  @apply bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50;
-}
-
-/* Badge */
-.badge {
-  @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border;
-}
-
-/* Table */
-.table-header {
-  @apply text-xs font-semibold text-slate-400 uppercase tracking-wide;
-}
-.table-row {
-  @apply border-b border-slate-700/50 hover:bg-slate-700/20 transition-colors;
-}
-```
-
-### 7.5 Responsive design
-
-#### Breakpoints
+### 6.4 Responsive
 
 | Breakpoint | Usage |
 |------------|-------|
 | `sm:` (640px) | Mobile landscape |
-| `md:` (768px) | Tablet |
+| `md:` (768px) | Tablet, bascule nav top/bottom |
 | `lg:` (1024px) | Desktop |
-| `xl:` (1280px) | Large desktop |
 
-#### Stratégie par composant
-
-| Composant | Mobile | Desktop |
-|-----------|--------|---------|
-| Donut/Pie | Tap drill-down, légende en bas | Hover, légende latérale |
-| Line/Bar charts | Responsive, scroll horizontal si besoin | Complet |
-| Sankey | Treemap ou liste interactive | Sankey complet |
-| Map | Touch gestures, popup simplifié | Hover, panel latéral |
-
-#### Interactions
-
-- **Desktop**: hover pour détails, tooltips, légendes latérales
-- **Mobile**: tap pour détails, drawers/modals, légendes en bas
-- **Animations**: 300ms max, respecter `prefers-reduced-motion`
+- **Desktop** : hover tooltips, légendes latérales
+- **Mobile** : tap pour détails, drawers/modals, légendes en bas, tabs scroll horizontal
+- **Animations** : 300ms max, respecter `prefers-reduced-motion`
 
 ---
 
-## 8. Roadmap d'implémentation
+## 7. Roadmap
 
-### Phase 1: Subventions (P1)
+> Contexte : Élections municipales Paris 15-22 mars 2026.
 
-**Objectif**: Page `/subventions` complète avec treemap et table
+### Phase 0 — Data Foundation (pipeline) ~2h
 
-| Tâche | Effort | Dépendances |
-|-------|--------|-------------|
-| Créer `SubventionsTreemap.tsx` | ⭐⭐ | ECharts config |
-| Créer `SubventionsFilters.tsx` | ⭐ | - |
-| Créer `SubventionsTable.tsx` | ⭐⭐ | Pagination, tri |
-| Créer `DataQualityBanner.tsx` | ⭐ | data_availability.json |
-| Assembler page `/subventions` | ⭐⭐ | Tous composants |
-| Ajouter à Navbar | ⭐ | - |
+| Tâche | Détail |
+|-------|--------|
+| Exporter Sankey 2025-2026 | `export_sankey_vote.py` → `budget_sankey_2025.json`, `budget_sankey_2026.json` depuis `core_budget_vote` |
+| Ajouter `type_budget` aux JSON | `"type_budget": "execute"` (2019-2024) et `"vote"` (2025-2026) |
+| Mettre à jour `budget_index.json` | Inclure 2025-2026, champ `year_types` |
+| Stats hors-COVID | Taux exécution moyen excluant 2020-2021 dans `vote_vs_execute.json` |
 
-### Phase 2: Qualité & Paris Centre (P1-P2)
+### Phase 1 — Infrastructure Tabs ~1h
 
-| Tâche | Effort | Dépendances |
-|-------|--------|-------------|
-| Générer `data_availability.json` | ⭐ | Script Python |
-| Implémenter warnings dans toutes les pages | ⭐⭐ | DataQualityBanner |
-| Ajouter "Paris Centre" dans carte | ⭐ | GeoJSON modifié |
-| Mettre à jour stats arrondissements | ⭐ | Export script |
+| Tâche | Détail |
+|-------|--------|
+| `TabBar.tsx` | Composant générique, responsive, scroll horizontal mobile |
+| `useTabState(default)` | Hook state + sync `?tab=xxx` URL |
+| `PageHeader.tsx` | Header partagé (icône, titre, badges) |
+| `BudgetTypeBadge.tsx` | Badge Execute/Voté/Estimé |
+| `YearRangeSelector.tsx` | Multi-select années + preset "Hors COVID" |
 
-### Phase 3: Évolution (P2)
+### Phase 2 — Page `/budget` (refonte majeure) ~4h
 
-| Tâche | Effort | Dépendances |
-|-------|--------|-------------|
-| Créer `EvolutionChart.tsx` | ⭐⭐ | ECharts line |
-| Créer `YoyCards.tsx` | ⭐ | - |
-| Créer `ThematiqueStackedBar.tsx` | ⭐⭐ | ECharts stacked |
-| Générer `budget_evolution.json` | ⭐ | Script Python |
-| Assembler page `/evolution` | ⭐⭐ | Tous composants |
+| Tâche | Détail |
+|-------|--------|
+| Tab Tendances | Migrer EvolutionChart, YoyCards, VariationRankChart depuis /evolution |
+| Tab Annuel | Étendre YearSelector à 2025-2026, disclaimer voté, BudgetTypeBadge |
+| Tab Prévision | Migrer composants /prevision, ajouter filtre années (excl. COVID) |
+| Supprimer /evolution, /prevision | Redirections → `/budget?tab=tendances` et `?tab=prevision` |
 
-### Phase 4: Polish (P3)
+### Phase 3 — Page `/patrimoine` ~2h
 
-| Tâche | Effort | Dépendances |
-|-------|--------|-------------|
-| Export PDF (Sankey, Treemap) | ⭐⭐⭐ | html2canvas |
-| Export CSV (Table subventions) | ⭐ | - |
-| Optimiser mobile | ⭐⭐ | - |
-| Tests E2E (Playwright) | ⭐⭐⭐ | - |
-| Documentation utilisateur | ⭐⭐ | - |
+| Tâche | Détail |
+|-------|--------|
+| Tab Tendances | Extraire FinancialHealthChart + dette depuis /evolution |
+| Tab Annuel | Migrer BilanSankey depuis /bilan |
+| Supprimer /bilan | Redirection → `/patrimoine?tab=annuel` |
 
----
+### Phase 4 — Autres entités ~3h
 
-## Annexes
+| Tâche | Détail |
+|-------|--------|
+| /subventions | Ajouter tabs Tendances + Explorer (table = existant, treemap = existant) |
+| /investissements | Consolider avec tab Carte + Explorer, ajouter Tendances |
+| /logements | Restructurer /carte en tabs, ajouter Tendances + Explorer |
+| Supprimer /carte | Redirection → `/logements?tab=carte` |
 
-### A. Commandes utiles
+### Phase 5 — Navigation + Landing ~1h
 
-```bash
-# Développement
-cd frontend && npm run dev
+| Tâche | Détail |
+|-------|--------|
+| Simplifier Navbar | 6 items : Budget, Patrimoine, Subventions, Investissements, Logements, Blog |
+| Redirections Next.js | `/evolution`, `/prevision`, `/bilan`, `/carte` → nouvelles routes |
+| Mettre à jour landing | Adapter questions citoyennes aux nouvelles URLs |
 
-# Build production
-npm run build
+### Calendrier cible
 
-# Lint
-npm run lint
-
-# Générer données (depuis racine projet)
-python scripts/export_sankey_data.py
-python scripts/export_subventions_data.py
-python scripts/export_map_data.py
 ```
-
-### B. Variables d'environnement
-
-```bash
-# frontend/.env.local (optionnel)
-NEXT_PUBLIC_MAP_TILE_URL=https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
+Semaine 1 (6-12 fév)  : Phase 0 + 1 (data + infra) ← ON EST ICI
+Semaine 2 (13-19 fév) : Phase 2 (refonte /budget)
+Semaine 3 (20-26 fév) : Phase 3 + 4 (patrimoine + autres entités)
+Semaine 4 (27 fév-5 mars) : Phase 5 (nav + polish)
+15 mars : Élections Tour 1
 ```
-
-### C. Dépendances NPM
-
-```json
-{
-  "dependencies": {
-    "next": "^16.0.0",
-    "react": "^19.0.0",
-    "echarts": "^5.5.0",
-    "echarts-for-react": "^3.0.2",
-    "leaflet": "^1.9.4",
-    "react-leaflet": "^4.2.1"
-  },
-  "devDependencies": {
-    "typescript": "^5.0.0",
-    "tailwindcss": "^4.0.0",
-    "@types/leaflet": "^1.9.0"
-  }
-}
-```
-
----
-
-*Document créé le 2026-02-05. Architecture frontend pour Paris Budget Dashboard.*
-*Priorités: P1 = Subventions + Qualité, P2 = Évolution + Paris Centre, P3 = Export + Mobile.*

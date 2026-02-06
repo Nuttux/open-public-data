@@ -4,13 +4,19 @@
  * YoyCards - Cartes KPI avec variation Year-over-Year
  * 
  * Affiche les indicateurs clés du budget avec:
- * - Valeur actuelle
+ * - Recettes propres (hors emprunts)
+ * - Dépenses totales
+ * - Solde (surplus/déficit)
  * - Variation vs année précédente (%)
  * - Indicateur visuel hausse/baisse
+ * 
+ * Chaque label dispose d'un GlossaryTip (?) pour expliquer
+ * le terme aux citoyens.
  */
 
 import { useMemo } from 'react';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
+import GlossaryTip from './GlossaryTip';
 import type { YearlyBudget } from './EvolutionChart';
 
 interface YoyCardsProps {
@@ -58,12 +64,12 @@ export default function YoyCards({ currentYear, previousYear }: YoyCardsProps) {
   const yoyRecettes = useMemo(() => {
     if (!previousYear) return null;
     return calculateYoY(currentYear.recettes, previousYear.recettes);
-  }, [currentYear.recettes, previousYear?.recettes]);
+  }, [currentYear.recettes, previousYear]);
 
   const yoyDepenses = useMemo(() => {
     if (!previousYear) return null;
     return calculateYoY(currentYear.depenses, previousYear.depenses);
-  }, [currentYear.depenses, previousYear?.depenses]);
+  }, [currentYear.depenses, previousYear]);
 
   const yoySolde = useMemo(() => {
     if (!previousYear) return null;
@@ -71,14 +77,14 @@ export default function YoyCards({ currentYear, previousYear }: YoyCardsProps) {
     const diff = currentYear.solde - previousYear.solde;
     const pct = (diff / Math.abs(previousYear.solde)) * 100;
     return isFinite(pct) ? pct : null;
-  }, [currentYear.solde, previousYear?.solde]);
+  }, [currentYear.solde, previousYear]);
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
       {/* Recettes Propres (hors emprunts) */}
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-xs text-slate-500 uppercase tracking-wide">Recettes propres {currentYear.year}</span>
+          <span className="text-xs text-slate-500 uppercase tracking-wide">Recettes propres {currentYear.year} <GlossaryTip term="recettes_propres" /></span>
           {previousYear && (
             <span className="text-xs text-slate-500">vs {previousYear.year}</span>
           )}
@@ -97,7 +103,7 @@ export default function YoyCards({ currentYear, previousYear }: YoyCardsProps) {
       {/* Dépenses */}
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-xs text-slate-500 uppercase tracking-wide">Dépenses {currentYear.year}</span>
+          <span className="text-xs text-slate-500 uppercase tracking-wide">Dépenses {currentYear.year} <GlossaryTip term="depenses" /></span>
           {previousYear && (
             <span className="text-xs text-slate-500">vs {previousYear.year}</span>
           )}
@@ -113,26 +119,22 @@ export default function YoyCards({ currentYear, previousYear }: YoyCardsProps) {
         </div>
       </div>
 
-      {/* Solde */}
+      {/* Solde (Surplus/Déficit) */}
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-xs text-slate-500 uppercase tracking-wide">Solde {currentYear.year}</span>
+          <span className="text-xs text-slate-500 uppercase tracking-wide">Solde {currentYear.year} <GlossaryTip term="surplus_deficit" /></span>
           {previousYear && (
             <span className="text-xs text-slate-500">vs {previousYear.year}</span>
           )}
         </div>
         <p className={`text-2xl font-bold ${currentYear.solde >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
-          {currentYear.solde >= 0 ? '+' : ''}{formatEuroCompact(currentYear.solde)}
+          {formatEuroCompact(currentYear.solde)}
         </p>
         <div className="mt-2 flex items-center justify-between">
           <span className="text-xs text-slate-400">
             {currentYear.solde >= 0 ? 'Excédent' : 'Déficit'}
           </span>
-          {yoySolde !== null && (
-            <span className={`text-sm font-medium ${yoySolde > 0 ? 'text-emerald-400' : 'text-red-400'}`}>
-              {yoySolde > 0 ? '↑' : '↓'} {Math.abs(yoySolde).toFixed(1)}%
-            </span>
-          )}
+          <YoyBadge value={yoySolde} />
         </div>
       </div>
     </div>

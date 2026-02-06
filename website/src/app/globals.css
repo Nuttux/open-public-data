@@ -27,9 +27,11 @@
 
 /**
  * Base document styles
+ * overflow-x: hidden empêche le scroll horizontal parasite sur mobile
  */
 html {
   color-scheme: dark;
+  overflow-x: hidden;
 }
 
 body {
@@ -42,6 +44,7 @@ body {
   font-family: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /**
@@ -160,5 +163,19 @@ button {
   }
   100% {
     background-position: -200% 0;
+  }
+}
+
+/**
+ * Fade-in animation for glossary tooltips
+ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

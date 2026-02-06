@@ -1,12 +1,31 @@
 {
-  "generated_at": "2026-02-03T12:00:00",
+  "generated_at": "2026-02-06T18:00:00",
   "datasets": {
     "budget": {
       "dataset": "budget",
       "description": "Budget principal Ville de Paris",
-      "source": "OpenData Paris - Budget Mairie Centrale",
-      "available_years": [2018, 2019, 2020, 2021, 2022, 2023, 2024],
-      "warnings": {}
+      "source": "OpenData Paris (CA) + PDF Budget Primitif (BV)",
+      "available_years": [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026],
+      "type_par_annee": {
+        "2019": "execute", "2020": "execute", "2021": "execute",
+        "2022": "execute", "2023": "execute", "2024": "execute",
+        "2025": "vote", "2026": "vote"
+      },
+      "covid_years": [2020, 2021],
+      "warnings": {
+        "2025": {
+          "severity": "info",
+          "type": "previsionnel",
+          "message": "Budget prévisionnel voté par le Conseil de Paris. Le budget réellement exécuté sera disponible mi-2026.",
+          "impact": "Montants votés, pas nécessairement dépensés."
+        },
+        "2026": {
+          "severity": "info",
+          "type": "previsionnel",
+          "message": "Budget prévisionnel (voté le 16/12/2025). Le budget réellement exécuté sera disponible mi-2027.",
+          "impact": "Montants votés, pas nécessairement dépensés."
+        }
+      }
     },
     "subventions": {
       "dataset": "subventions",
@@ -50,6 +69,29 @@
         }
       }
     },
+    "investissements_localises": {
+      "dataset": "investissements_localises",
+      "description": "Investissements localisés par arrondissement (PDF)",
+      "source": "PDF Investissements Localisés (CA + BP)",
+      "available_years": [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026],
+      "type_par_annee": {
+        "2018": "execute", "2019": "execute", "2020": "execute", "2021": "execute",
+        "2022": "execute", "2023": "execute", "2024": "execute",
+        "2025": "vote", "2026": "vote"
+      },
+      "warnings": {
+        "2025": {
+          "severity": "info",
+          "type": "previsionnel",
+          "message": "Investissements prévus (Budget Primitif 2025). Montants réels disponibles mi-2026."
+        },
+        "2026": {
+          "severity": "info",
+          "type": "previsionnel",
+          "message": "Investissements prévus (Budget Primitif 2026). Montants réels disponibles mi-2027."
+        }
+      }
+    },
     "logements": {
       "dataset": "logements",
       "description": "Logements sociaux financés",
@@ -60,6 +102,14 @@
         "note": "Données déjà géolocalisées dans la source OpenData"
       },
       "warnings": {}
+    },
+    "vote_vs_execute": {
+      "dataset": "vote_vs_execute",
+      "description": "Comparaison Budget Voté vs Budget Exécuté",
+      "source": "mart_vote_vs_execute (core_budget + core_budget_vote)",
+      "annees_comparables": [2023, 2024],
+      "annees_vote_seul": [2025, 2026],
+      "estimation_disponible": [2025, 2026]
     }
   },
   "global_warnings": [

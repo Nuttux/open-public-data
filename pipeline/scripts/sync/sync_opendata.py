@@ -15,8 +15,9 @@ Usage:
     # Lister les sources disponibles
     python scripts/sync_opendata.py --list
 
-Datasets synchronisés (6 sources essentielles):
+Datasets synchronisés (7 sources essentielles):
     - budget_principal: Comptes Administratifs - Budget Principal (exécuté, SOURCE DE VÉRITÉ)
+    - budget_vote: Budgets Votés - Budget Principal (prévisionnel, 2019-2026)
     - ap_projets: Comptes Administratifs - AP Exécutés (projets nommés)
     - subventions: Annexe CA - Subventions versées (tous bénéficiaires)
     - associations: Subventions associations (avec SIRET pour géoloc)
@@ -64,8 +65,9 @@ OPENDATA_API = "https://opendata.paris.fr/api/explore/v2.1"
 #   Exemple: "comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement"
 #         → raw.comptes_administratifs_budgets_principaux_a_partir_de_2019_m57_ville_departement
 #
-# ARCHITECTURE (6 sources essentielles):
-# - budget_principal: Budget exécuté (SOURCE DE VÉRITÉ macro)
+# ARCHITECTURE (7 sources essentielles):
+# - budget_principal: Budget exécuté (SOURCE DE VÉRITÉ macro, CA)
+# - budget_vote: Budget voté (prévisionnel, BP, 2019-2026)
 # - ap_projets: AP Exécutés (projets nommés, ~10% du budget I)
 # - subventions: Annexe CA subventions (tous bénéficiaires)
 # - associations: Subventions associations (avec SIRET pour géoloc)
@@ -113,6 +115,15 @@ DATASETS = {
         "description": "Logements sociaux financés à Paris (géolocalisés)",
         "year_column": "annee_du_financement_agrement",
         "drop_columns": ["geo_shape"],  # Colonnes complexes à supprimer
+    },
+    
+    # =========================================================================
+    # BUDGET VOTÉ (prévisionnel) - Entité séparée du CA
+    # =========================================================================
+    "budget_vote": {
+        "dataset_id": "budgets-votes-principaux-a-partir-de-2019-m57-ville-departement",
+        "description": "Budgets Votés - Budget Principal (Prévisionnel) - M57",
+        "year_column": "exercice_comptable",
     },
     
     # =========================================================================

@@ -2,9 +2,15 @@
 
 /**
  * Landing Page - Données Lumières
- * 
- * Page d'accueil présentant le projet open source de transparence
- * des finances publiques parisiennes.
+ *
+ * Ton journalistique / pédagogique :
+ * - Lead avec les questions citoyennes, pas les features produit
+ * - Chiffres réels en avant-plan immédiat
+ * - Vocabulaire civique (pas SaaS)
+ * - Palette bleu/ambre institutionnelle
+ *
+ * Sections : Banner → Hero → Sankey → Questions citoyennes → Audiences →
+ *            Méthodologie → Budget en 30s → Qui sommes-nous → Footer
  */
 
 import { useState, useEffect } from 'react';
@@ -12,14 +18,23 @@ import Link from 'next/link';
 import BudgetSankey from '@/components/BudgetSankey';
 import type { BudgetData } from '@/lib/formatters';
 
+/** Chiffres-clés du budget 2026 voté (arrondis pour la landing) */
+const KEY_FIGURES = {
+  budgetTotal: '11,7 Md€',
+  depensesFonctionnement: '9,3 Md€',
+  investissement: '3,2 Md€',
+  nbAssociationsSubventionnees: '6 000+',
+  anneesDonnees: '2019–2026',
+};
+
 export default function LandingPage() {
   const [budgetData, setBudgetData] = useState<BudgetData | null>(null);
 
-  // Charger les données 2024 pour le Sankey de démonstration
+  /** Charger les données 2026 (budget voté) pour le Sankey de démonstration */
   useEffect(() => {
     async function loadData() {
       try {
-        const response = await fetch('/data/budget_sankey_2024.json');
+        const response = await fetch('/data/budget_sankey_2026.json');
         if (response.ok) {
           const data = await response.json();
           setBudgetData(data);
@@ -33,262 +48,284 @@ export default function LandingPage() {
 
   return (
     <main className="min-h-screen">
+
       {/* ============================================
-          ELECTION BANNER - HOOK PRINCIPAL
+          BANNIÈRE ÉLECTIONS - Ton neutre / civique
           ============================================ */}
-      <section className="relative bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-red-500/10 border-b border-amber-500/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-          <div className="text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-amber-500/20 rounded-full text-amber-400 text-sm font-semibold mb-4">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+      {/* ============================================
+          BANNIÈRE - Données mises à jour
+          ============================================ */}
+      <section className="border-b border-slate-800 bg-slate-900/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <span className="inline-flex items-center gap-2 px-3 py-1 bg-blue-500/15 rounded-full text-blue-400 text-xs font-medium border border-blue-500/20">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-blue-400"></span>
+                </span>
+                Mis à jour
               </span>
-              Mars 2026
+              <p className="text-sm text-slate-300">
+                Budget voté 2026 disponible, ainsi que les comptes administratifs 2019–2024.
+              </p>
             </div>
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-100 mb-3">
-              Les élections municipales approchent
-            </h1>
-            <p className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto">
-              Fin mars 2026, les Parisiens voteront. Comprenez comment votre ville 
-              a été gérée ces dernières années.
-            </p>
+            <Link
+              href="/budget?tab=tendances"
+              className="text-xs text-blue-400 hover:text-blue-300 font-medium whitespace-nowrap transition-colors"
+            >
+              Voir l&apos;évolution 2019–2024 →
+            </Link>
           </div>
         </div>
       </section>
 
       {/* ============================================
-          HERO SECTION
+          HERO - La question, pas le produit
           ============================================ */}
       <section className="relative overflow-hidden">
-        {/* Background gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-purple-900/20 via-transparent to-transparent pointer-events-none" />
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
-          {/* Hero Content */}
-          <div className="text-center max-w-4xl mx-auto mb-12">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-100 mb-6 leading-tight">
-              Données{' '}
-              <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-amber-400 bg-clip-text text-transparent">
-                Lumières
-              </span>
-            </h2>
-            
-            <p className="text-lg sm:text-xl text-slate-300 mb-4 font-medium">
-              Comprendre les finances publiques de Paris, en toute transparence
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-10">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <p className="text-sm sm:text-base font-medium text-blue-400 mb-4 tracking-wide">
+              Chaque année, Paris dépense
             </p>
-            
-            <p className="text-base text-slate-400 mb-8 max-w-2xl mx-auto">
-              Des visualisations claires, des données modélisées, des pipelines open source. 
-              Parce que vous avez le droit de savoir où va votre argent.
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-slate-50 mb-4 tracking-tight">
+              {KEY_FIGURES.budgetTotal}
+            </h1>
+            <p className="text-xl sm:text-2xl text-slate-300 mb-3 font-medium">
+              Savez-vous où va cet argent ?
+            </p>
+            <p className="text-base sm:text-lg text-slate-400 mb-10 max-w-xl mx-auto leading-relaxed">
+              Données Lumières collecte, modélise et rend lisibles les finances
+              de la Ville de Paris, sans jargon comptable et sans agenda politique
             </p>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            {/* CTAs - vocabulaire citoyen */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link
-                href="/"
-                className="w-full sm:w-auto px-8 py-4 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-xl transition-all duration-200 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 hover:-translate-y-0.5"
+                href="/budget"
+                className="w-full sm:w-auto px-7 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg shadow-blue-600/20 hover:shadow-blue-500/30"
               >
-                Explorer le Dashboard
+                Consulter les comptes
               </Link>
-              <a
-                href="https://github.com/your-org/open-public-data"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto px-8 py-4 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl border border-slate-700 hover:border-slate-600 transition-all duration-200"
+              <Link
+                href="/budget?tab=tendances"
+                className="w-full sm:w-auto px-7 py-3.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-lg border border-slate-700 hover:border-slate-600 transition-all duration-200"
               >
-                Voir sur GitHub
-              </a>
+                Voir l&apos;évolution depuis 2019
+              </Link>
             </div>
           </div>
 
-          {/* Sankey Diagram */}
-          <div className="relative">
-            <div className="absolute -inset-4 bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-amber-500/10 rounded-2xl blur-xl" />
-            <div className="relative">
-              {budgetData ? (
-                <BudgetSankey data={budgetData} />
-              ) : (
-                <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6 h-[600px] flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-12 h-12 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-                    <p className="text-slate-400">Chargement de la visualisation...</p>
-                  </div>
-                </div>
-              )}
-            </div>
+          {/* Source - visible dès le hero */}
+          <div className="flex items-center justify-center gap-4 mb-8 text-xs text-slate-500">
+            <span className="flex items-center gap-1.5">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Sources officielles + enrichissement maison
+            </span>
+            <span className="text-slate-700">·</span>
+            <span className="flex items-center gap-1.5">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+              Pipeline open source
+            </span>
+            <span className="text-slate-700">·</span>
+            <span>{KEY_FIGURES.anneesDonnees}</span>
           </div>
         </div>
       </section>
 
       {/* ============================================
-          PROBLEM SECTION
+          SANKEY - Infographie
           ============================================ */}
-      <section className="py-20 border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-100 mb-6">
-              L&apos;opacité nuit à la démocratie
+      <section className="border-t border-slate-800 bg-slate-900/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+          <div className="mb-6">
+            <h2 className="text-lg sm:text-xl font-bold text-slate-200 mb-1">
+              Le trajet de votre argent en 2026 <span className="text-sm font-normal text-slate-400">(budget voté)</span>
             </h2>
-            <p className="text-lg text-slate-400">
-              Les politiques d&apos;open data publient des données, mais les rendre vraiment 
-              accessibles et compréhensibles reste un défi immense.
+            <p className="text-sm text-slate-400">
+              D&apos;où viennent les recettes et où partent les dépenses,
+              cliquez sur un flux pour explorer le détail
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Pain Point 1 */}
-            <div className="glass-card p-8">
-              <div className="text-red-400 text-sm font-semibold uppercase tracking-wider mb-4">
-                Problème #1
+          {budgetData ? (
+            <BudgetSankey data={budgetData} />
+          ) : (
+            <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6 h-[500px] flex items-center justify-center">
+              <div className="text-center">
+                <div className="w-10 h-10 border-3 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
+                <p className="text-slate-400 text-sm">Chargement de la visualisation...</p>
               </div>
-              <h3 className="text-xl font-bold text-slate-100 mb-4">
-                Données disparates et inutilisables
-              </h3>
-              <p className="text-slate-400">
-                Des fichiers éparpillés dans des formats incompatibles, sans documentation 
-                claire sur leur nature, leurs limitations ou leurs relations.
-              </p>
             </div>
+          )}
 
-            {/* Pain Point 2 */}
-            <div className="glass-card p-8">
-              <div className="text-red-400 text-sm font-semibold uppercase tracking-wider mb-4">
-                Problème #2
-              </div>
-              <h3 className="text-xl font-bold text-slate-100 mb-4">
-                Pas de drill-down possible
-              </h3>
-              <p className="text-slate-400">
-                Des graphiques superficiels sans possibilité d&apos;explorer les détails. 
-                Impossible de comprendre où va précisément chaque euro.
-              </p>
-            </div>
-
-            {/* Pain Point 3 */}
-            <div className="glass-card p-8">
-              <div className="text-red-400 text-sm font-semibold uppercase tracking-wider mb-4">
-                Problème #3
-              </div>
-              <h3 className="text-xl font-bold text-slate-100 mb-4">
-                Un travail titanesque requis
-              </h3>
-              <p className="text-slate-400">
-                Il ne devrait pas falloir être inspecteur de la Cour des Comptes pour 
-                comprendre comment votre ville dépense l&apos;argent public.
-              </p>
-            </div>
+          <div className="mt-4 text-center">
+            <Link
+              href="/budget"
+              className="text-sm text-blue-400 hover:text-blue-300 font-medium transition-colors"
+            >
+              Explorer chaque poste en détail →
+            </Link>
           </div>
         </div>
       </section>
 
       {/* ============================================
-          FEATURES SECTION
+          QUESTIONS CITOYENNES
           ============================================ */}
-      <section className="py-20 border-t border-slate-800 bg-slate-900/50">
+      <section className="py-16 sm:py-20 border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-100 mb-6">
-              Notre solution
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-100 mb-4">
+              Les questions que vous vous posez
             </h2>
-            <p className="text-lg text-slate-400">
-              Une plateforme open source qui transforme les données publiques brutes 
-              en informations accessibles et vérifiables.
+            <p className="text-base text-slate-400">
+              On a épluché 6 ans de comptes administratifs pour y répondre.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <div className="p-8 border border-slate-700/50 rounded-xl bg-slate-800/30 hover:bg-slate-800/50 transition-colors">
-              <h3 className="text-xl font-bold text-slate-100 mb-4">
-                Dashboards interactifs
-              </h3>
-              <p className="text-slate-400 mb-4">
-                Visualisez les flux budgétaires en quelques clics. Explorez chaque 
-                catégorie de dépense et de recette en détail.
-              </p>
-              <p className="text-purple-400 text-sm font-medium">
-                Comprenez où va chaque euro →
-              </p>
-            </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <Link href="/budget" className="group">
+              <div className="h-full p-6 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-blue-500/30 transition-all duration-200">
+                <p className="text-lg font-semibold text-slate-100 mb-3 group-hover:text-blue-400 transition-colors">
+                  Combien coûte le fonctionnement de Paris ?
+                </p>
+                <p className="text-sm text-slate-400 mb-4 leading-relaxed">
+                  {KEY_FIGURES.depensesFonctionnement} par an rien que pour faire tourner
+                  la ville au quotidien : salaires, entretien, cantines, éclairage public
+                </p>
+                <span className="text-xs text-blue-400 font-medium">Flux budgétaires →</span>
+              </div>
+            </Link>
 
-            {/* Feature 2 */}
-            <div className="p-8 border border-slate-700/50 rounded-xl bg-slate-800/30 hover:bg-slate-800/50 transition-colors">
-              <h3 className="text-xl font-bold text-slate-100 mb-4">
-                Pipelines transparents
-              </h3>
-              <p className="text-slate-400 mb-4">
-                Chaque transformation de données est documentée et traçable. 
-                Vous savez exactement d&apos;où viennent les chiffres.
-              </p>
-              <p className="text-emerald-400 text-sm font-medium">
-                Traçabilité = Confiance →
-              </p>
-            </div>
+            <Link href="/subventions" className="group">
+              <div className="h-full p-6 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-amber-500/30 transition-all duration-200">
+                <p className="text-lg font-semibold text-slate-100 mb-3 group-hover:text-amber-400 transition-colors">
+                  Qui reçoit des subventions ?
+                </p>
+                <p className="text-sm text-slate-400 mb-4 leading-relaxed">
+                  Plus de {KEY_FIGURES.nbAssociationsSubventionnees} associations reçoivent de
+                  l&apos;argent de la Ville, classées par thématique et par montant
+                </p>
+                <span className="text-xs text-amber-400 font-medium">Subventions & bénéficiaires →</span>
+              </div>
+            </Link>
 
-            {/* Feature 3 */}
-            <div className="p-8 border border-slate-700/50 rounded-xl bg-slate-800/30 hover:bg-slate-800/50 transition-colors">
-              <h3 className="text-xl font-bold text-slate-100 mb-4">
-                Standards open source
-              </h3>
-              <p className="text-slate-400 mb-4">
-                Réutilisez nos pipelines, contribuez au projet, auditez le code. 
-                Un effort collectif pour la transparence.
-              </p>
-              <p className="text-blue-400 text-sm font-medium">
-                Contribuez sur GitHub →
-              </p>
-            </div>
+            <Link href="/investissements" className="group">
+              <div className="h-full p-6 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-emerald-500/30 transition-all duration-200">
+                <p className="text-lg font-semibold text-slate-100 mb-3 group-hover:text-emerald-400 transition-colors">
+                  Quels travaux dans mon quartier ?
+                </p>
+                <p className="text-sm text-slate-400 mb-4 leading-relaxed">
+                  Écoles, gymnases, voirie : tous les projets d&apos;investissement
+                  géolocalisés, arrondissement par arrondissement
+                </p>
+                <span className="text-xs text-emerald-400 font-medium">Carte des travaux →</span>
+              </div>
+            </Link>
+
+            <Link href="/budget?tab=tendances" className="group">
+              <div className="h-full p-6 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-purple-500/30 transition-all duration-200">
+                <p className="text-lg font-semibold text-slate-100 mb-3 group-hover:text-purple-400 transition-colors">
+                  Le budget augmente-t-il ?
+                </p>
+                <p className="text-sm text-slate-400 mb-4 leading-relaxed">
+                  Recettes, dépenses, variations par poste :
+                  on retrace l&apos;évolution année par année depuis 2019
+                </p>
+                <span className="text-xs text-purple-400 font-medium">Évolution budgétaire →</span>
+              </div>
+            </Link>
+
+            <Link href="/patrimoine" className="group">
+              <div className="h-full p-6 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-cyan-500/30 transition-all duration-200">
+                <p className="text-lg font-semibold text-slate-100 mb-3 group-hover:text-cyan-400 transition-colors">
+                  Que possède Paris et combien doit-elle ?
+                </p>
+                <p className="text-sm text-slate-400 mb-4 leading-relaxed">
+                  Terrains, bâtiments, réseaux : le patrimoine de la ville
+                  face à sa dette, le bilan comptable rendu lisible
+                </p>
+                <span className="text-xs text-cyan-400 font-medium">Bilan actif / passif →</span>
+              </div>
+            </Link>
+
+            <Link href="/budget?tab=vote-vs-execute" className="group">
+              <div className="h-full p-6 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-orange-500/30 transition-all duration-200">
+                <p className="text-lg font-semibold text-slate-100 mb-3 group-hover:text-orange-400 transition-colors">
+                  Le budget voté est-il réellement dépensé ?
+                </p>
+                <p className="text-sm text-slate-400 mb-4 leading-relaxed">
+                  Comparaison entre le budget voté par le Conseil de Paris et
+                  les dépenses réellement exécutées, avec estimation pour 2025-2026
+                </p>
+                <span className="text-xs text-orange-400 font-medium">Voté vs Exécuté →</span>
+              </div>
+            </Link>
+
+            <Link href="/logements" className="group">
+              <div className="h-full p-6 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-rose-500/30 transition-all duration-200">
+                <p className="text-lg font-semibold text-slate-100 mb-3 group-hover:text-rose-400 transition-colors">
+                  Où sont les logements sociaux financés ?
+                </p>
+                <p className="text-sm text-slate-400 mb-4 leading-relaxed">
+                  La carte des logements sociaux financés par la Ville
+                  depuis 2010, avec le détail par arrondissement et par programme
+                </p>
+                <span className="text-xs text-rose-400 font-medium">Carte des logements →</span>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* ============================================
-          AUDIENCES SECTION
+          POUR QUI ? - Section audiences
           ============================================ */}
-      <section className="py-20 border-t border-slate-800">
+      <section className="py-16 sm:py-20 border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-100 mb-6">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-100 mb-4">
               Pour qui ?
             </h2>
-            <p className="text-lg text-slate-400">
-              Une plateforme conçue pour servir tous ceux qui veulent comprendre 
+            <p className="text-base text-slate-400">
+              Une plateforme conçue pour servir tous ceux qui veulent comprendre
               et utiliser les données publiques.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Audience 1: Citoyens */}
-            <div className="glass-card p-8 text-center group hover:border-purple-500/50 transition-colors">
+            {/* Citoyens */}
+            <div className="glass-card p-8 text-center group hover:border-blue-500/50 transition-colors">
               <div className="text-4xl mb-6">🏛️</div>
-              <h3 className="text-xl font-bold text-slate-100 mb-4">
-                Citoyens
-              </h3>
+              <h3 className="text-xl font-bold text-slate-100 mb-4">Citoyens</h3>
               <p className="text-slate-400 mb-6">
-                Comprenez où va votre argent. Soyez plus autonome dans votre compréhension 
+                Comprenez où va votre argent. Soyez plus autonome dans votre compréhension
                 des politiques publiques. Votez en connaissance de cause.
               </p>
-              <Link 
-                href="/"
-                className="text-purple-400 font-medium hover:text-purple-300 transition-colors"
+              <Link
+                href="/budget"
+                className="text-blue-400 font-medium hover:text-blue-300 transition-colors"
               >
                 Explorer les données →
               </Link>
             </div>
 
-            {/* Audience 2: Journalistes */}
+            {/* Journalistes */}
             <div className="glass-card p-8 text-center group hover:border-emerald-500/50 transition-colors">
               <div className="text-4xl mb-6">📰</div>
-              <h3 className="text-xl font-bold text-slate-100 mb-4">
-                Journalistes & Analystes
-              </h3>
+              <h3 className="text-xl font-bold text-slate-100 mb-4">Journalistes & Analystes</h3>
               <p className="text-slate-400 mb-6">
-                Accédez à des données de qualité, déjà modélisées et prêtes à l&apos;emploi. 
+                Accédez à des données de qualité, déjà modélisées et prêtes à l&apos;emploi.
                 Concentrez-vous sur l&apos;analyse, pas sur le nettoyage.
               </p>
-              <a 
-                href="https://github.com/your-org/open-public-data"
+              <a
+                href="https://github.com/Nuttux/open-public-data"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-emerald-400 font-medium hover:text-emerald-300 transition-colors"
@@ -297,21 +334,19 @@ export default function LandingPage() {
               </a>
             </div>
 
-            {/* Audience 3: Institutions */}
-            <div className="glass-card p-8 text-center group hover:border-blue-500/50 transition-colors">
+            {/* Institutions */}
+            <div className="glass-card p-8 text-center group hover:border-amber-500/50 transition-colors">
               <div className="text-4xl mb-6">🏢</div>
-              <h3 className="text-xl font-bold text-slate-100 mb-4">
-                Institutions publiques
-              </h3>
+              <h3 className="text-xl font-bold text-slate-100 mb-4">Institutions publiques</h3>
               <p className="text-slate-400 mb-6">
-                Réutilisez nos pipelines de transformation pour améliorer votre 
+                Réutilisez nos pipelines de transformation pour améliorer votre
                 infrastructure data. Standards et bonnes pratiques inclus.
               </p>
-              <a 
-                href="https://github.com/your-org/open-public-data"
+              <a
+                href="https://github.com/Nuttux/open-public-data"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-400 font-medium hover:text-blue-300 transition-colors"
+                className="text-amber-400 font-medium hover:text-amber-300 transition-colors"
               >
                 Voir la documentation →
               </a>
@@ -321,39 +356,193 @@ export default function LandingPage() {
       </section>
 
       {/* ============================================
-          CTA SECTION
+          SECTION CONFIANCE / MÉTHODOLOGIE
           ============================================ */}
-      <section className="py-20 border-t border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-100 mb-6">
-            Prêt à explorer ?
-          </h2>
-          <p className="text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
-            Découvrez où vont les milliards d&apos;euros du budget parisien. 
-            Contribuez à rendre les données publiques accessibles à tous.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-            <Link
-              href="/"
-              className="w-full sm:w-auto px-8 py-4 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-xl transition-all duration-200 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 hover:-translate-y-0.5"
-            >
-              Explorer le Dashboard
-            </Link>
-            <a
-              href="https://github.com/your-org/open-public-data"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 py-4 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl border border-slate-700 hover:border-slate-600 transition-all duration-200"
-            >
-              Contribuer sur GitHub
-            </a>
+      <section className="py-16 sm:py-20 border-t border-slate-800 bg-slate-900/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-100 mb-4">
+              Pourquoi nous faire confiance ?
+            </h2>
+            <p className="text-base text-slate-400">
+              Beaucoup de sites affichent des chiffres sur les finances publiques,
+              voici pourquoi les nôtres sont vérifiables
+            </p>
           </div>
 
-          {/* Social sharing */}
-          <p className="text-slate-500 text-sm">
-            Partagez avec ceux que ça pourrait intéresser
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="p-6 rounded-xl bg-slate-800/30 border border-slate-700/50">
+              <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-4">
+                <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-semibold text-slate-100 mb-3">Au-delà de l&apos;Open Data</h3>
+              <p className="text-sm text-slate-400 leading-relaxed">
+                On part des <strong className="text-slate-300">Comptes Administratifs</strong> sur{' '}
+                <a href="https://opendata.paris.fr/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">opendata.paris.fr</a>,
+                mais on va plus loin : on extrait les investissements localisés depuis
+                les PDFs du Conseil de Paris, on géolocalise les projets par arrondissement
+                et on classifie les subventions par thématique
+              </p>
+            </div>
+
+            <div className="p-6 rounded-xl bg-slate-800/30 border border-slate-700/50">
+              <div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center mb-4">
+                <svg className="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-semibold text-slate-100 mb-3">Pipeline auditable</h3>
+              <p className="text-sm text-slate-400 leading-relaxed">
+                Chaque étape de transformation, du fichier CSV brut à la visualisation
+                finale, est documentée et reproductible. Si un chiffre vous semble
+                étrange, vous pouvez remonter jusqu&apos;à la source dans{' '}
+                <Link href="/blog" className="text-amber-400 hover:underline">nos articles</Link>
+              </p>
+            </div>
+
+            <div className="p-6 rounded-xl bg-slate-800/30 border border-slate-700/50">
+              <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center mb-4">
+                <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-semibold text-slate-100 mb-3">Code source ouvert</h3>
+              <p className="text-sm text-slate-400 leading-relaxed">
+                Tout le code est sur{' '}
+                <a
+                  href="https://github.com/Nuttux/open-public-data"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-emerald-400 hover:underline"
+                >
+                  GitHub
+                </a>
+                , des scripts d&apos;extraction aux modèles de données.
+                Vous pouvez reproduire chaque résultat ou proposer des améliorations
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================
+          COMPRENDRE EN 30 SECONDES
+          ============================================ */}
+      <section className="py-16 sm:py-20 border-t border-slate-800">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-slate-100 mb-10 text-center">
+            Le budget en 30 secondes
+          </h2>
+
+          <div className="space-y-6">
+            <div className="flex gap-4 sm:gap-6 items-start">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
+                <span className="text-blue-400 font-bold text-sm">1</span>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-slate-100 mb-1">
+                  Le quotidien : {KEY_FIGURES.depensesFonctionnement}/an
+                </h3>
+                <p className="text-sm text-slate-400 leading-relaxed">
+                  Salaires des agents, cantines, éclairage, entretien des rues,
+                  subventions aux associations : c&apos;est ce qu&apos;on appelle
+                  la section de <strong className="text-slate-300">fonctionnement</strong>
+                </p>
+              </div>
+            </div>
+
+            <div className="flex gap-4 sm:gap-6 items-start">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
+                <span className="text-amber-400 font-bold text-sm">2</span>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-slate-100 mb-1">
+                  L&apos;avenir : {KEY_FIGURES.investissement}/an
+                </h3>
+                <p className="text-sm text-slate-400 leading-relaxed">
+                  Construire des écoles, rénover des gymnases, aménager des parcs,
+                  c&apos;est la section d&apos;<strong className="text-slate-300">investissement</strong>,
+                  financée en partie par l&apos;emprunt
+                </p>
+              </div>
+            </div>
+
+            <div className="flex gap-4 sm:gap-6 items-start">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
+                <span className="text-emerald-400 font-bold text-sm">3</span>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-slate-100 mb-1">
+                  La règle d&apos;or
+                </h3>
+                <p className="text-sm text-slate-400 leading-relaxed">
+                  Une ville <strong className="text-slate-300">doit</strong> avoir plus de recettes
+                  que de dépenses en fonctionnement. Le surplus,
+                  l&apos;<strong className="text-slate-300">épargne brute</strong>, c&apos;est ce qui
+                  permet ensuite de financer les projets et de rembourser la dette
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8 text-center">
+            <Link
+              href="/blog"
+              className="text-sm text-blue-400 hover:text-blue-300 font-medium transition-colors"
+            >
+              Lire le guide complet sur le blog →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================
+          QUI SOMMES-NOUS — Mission, pas produit
+          ============================================ */}
+      <section className="py-16 sm:py-20 border-t border-slate-800 bg-slate-900/40">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-slate-100 mb-6">
+            Un projet citoyen, indépendant et bénévole
+          </h2>
+          <p className="text-base sm:text-lg text-slate-400 mb-8 max-w-2xl mx-auto leading-relaxed">
+            Données Lumières est une initiative associative, indépendante de tout parti
+            et de la Mairie. On pense juste que comprendre les comptes de sa ville
+            ne devrait pas nécessiter un diplôme de comptabilité publique
           </p>
+
+          <div className="grid sm:grid-cols-3 gap-6 text-center mb-10">
+            <div>
+              <p className="text-3xl font-bold text-slate-100">8</p>
+              <p className="text-sm text-slate-400 mt-1">années de données</p>
+            </div>
+            <div>
+              <p className="text-3xl font-bold text-slate-100">100%</p>
+              <p className="text-sm text-slate-400 mt-1">open source</p>
+            </div>
+            <div>
+              <p className="text-3xl font-bold text-slate-100">0 €</p>
+              <p className="text-sm text-slate-400 mt-1">d&apos;abonnement</p>
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Link
+              href="/budget"
+              className="w-full sm:w-auto px-7 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg transition-all duration-200"
+            >
+              Consulter les comptes
+            </Link>
+            <a
+              href="https://github.com/Nuttux/open-public-data"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto px-7 py-3.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-lg border border-slate-700 hover:border-slate-600 transition-all duration-200"
+            >
+              Contribuer au projet
+            </a>
+          </div>
         </div>
       </section>
 
@@ -364,18 +553,23 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <span className="text-2xl">🏛️</span>
+              <span className="text-xl">🏛️</span>
               <div>
-                <p className="text-slate-300 font-semibold">Données Lumières</p>
-                <p className="text-xs text-slate-500">Open Data pour la démocratie</p>
+                <p className="text-slate-300 font-semibold text-sm">Données Lumières</p>
+                <p className="text-xs text-slate-500">
+                  Initiative citoyenne pour la transparence des finances publiques
+                </p>
               </div>
             </div>
-            
-            <p className="text-xs text-slate-500 text-center sm:text-right">
-              Projet open source · Données: Open Data Paris
-              <br />
-              Code source disponible sur GitHub
-            </p>
+
+            <div className="text-xs text-slate-500 text-center sm:text-right space-y-0.5">
+              <p>
+                Sources : <a href="https://opendata.paris.fr/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:underline">Open Data Paris</a> · Comptes administratifs M57 · PDFs Conseil de Paris
+              </p>
+              <p>
+                Licence MIT · <a href="https://github.com/Nuttux/open-public-data" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:underline">Code source sur GitHub</a>
+              </p>
+            </div>
           </div>
         </div>
       </footer>

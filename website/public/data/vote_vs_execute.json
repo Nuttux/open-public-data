@@ -1,0 +1,3596 @@
+{
+  "generated_at": "2026-02-06T18:07:37.458907",
+  "source": "mart_vote_vs_execute",
+  "description": "Comparaison Budget Voté (BP) vs Budget Exécuté (CA) de la Ville de Paris. Le Budget Voté provient des PDFs Éditique BG (présentation croisée, opérations ventilées uniquement). Le Budget Exécuté provient du Compte Administratif (Open Data Paris).",
+  "coverage": {
+    "comparison_years": [
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024
+    ],
+    "forecast_years": [
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "note_perimeter": "Les montants couvrent les opérations ventilées par fonction (chapitres 900-908 et 930-938). Les opérations non-ventilées (dette, dotations globales) ne sont pas incluses dans la comparaison."
+  },
+  "definitions": {
+    "taux_execution": "Montant exécuté / Montant voté × 100",
+    "ecart_relatif": "(Exécuté - Voté) / Voté × 100 (positif = sur-exécuté)",
+    "montant_estime": "Montant voté × taux d'exécution moyen historique",
+    "comparaison": "Année où les deux données (vote + exécution) existent",
+    "previsionnel": "Année avec uniquement le Budget Voté (pas encore exécuté)"
+  },
+  "global_rates": [
+    {
+      "annee": 2019,
+      "type": "comparaison",
+      "depenses_vote": 10284249624.0,
+      "depenses_execute": 9806314635.300001,
+      "taux_global": 95.4,
+      "vote_fonct": 8065759819.0,
+      "execute_fonct": 7952277591.67,
+      "taux_fonct": 98.6,
+      "vote_inves": 2218489805.0,
+      "execute_inves": 1854037043.6300004,
+      "taux_inves": 83.6
+    },
+    {
+      "annee": 2020,
+      "type": "comparaison",
+      "depenses_vote": 10519805984.519999,
+      "depenses_execute": 9497180399.480003,
+      "taux_global": 90.3,
+      "vote_fonct": 8168760934.879999,
+      "execute_fonct": 7803564643.770002,
+      "taux_fonct": 95.5,
+      "vote_inves": 2351045049.64,
+      "execute_inves": 1693615755.71,
+      "taux_inves": 72.0
+    },
+    {
+      "annee": 2021,
+      "type": "comparaison",
+      "depenses_vote": 10362786692.56,
+      "depenses_execute": 9555883065.09,
+      "taux_global": 92.2,
+      "vote_fonct": 8233250789.32,
+      "execute_fonct": 7835533536.419999,
+      "taux_fonct": 95.2,
+      "vote_inves": 2129535903.24,
+      "execute_inves": 1720349528.67,
+      "taux_inves": 80.8
+    },
+    {
+      "annee": 2022,
+      "type": "comparaison",
+      "depenses_vote": 11010040495.79,
+      "depenses_execute": 10249357546.579998,
+      "taux_global": 93.1,
+      "vote_fonct": 8601847932.2,
+      "execute_fonct": 8256974806.8899975,
+      "taux_fonct": 96.0,
+      "vote_inves": 2408192563.59,
+      "execute_inves": 1992382739.69,
+      "taux_inves": 82.7
+    },
+    {
+      "annee": 2023,
+      "type": "comparaison",
+      "depenses_vote": 11319002735.0,
+      "depenses_execute": 10391655198.36,
+      "taux_global": 91.8,
+      "vote_fonct": 8828268323.0,
+      "execute_fonct": 8329630427.82,
+      "taux_fonct": 94.4,
+      "vote_inves": 2490734412.0,
+      "execute_inves": 2062024770.5400002,
+      "taux_inves": 82.8
+    },
+    {
+      "annee": 2024,
+      "type": "comparaison",
+      "depenses_vote": 11761308328.84,
+      "depenses_execute": 11037090938.27,
+      "taux_global": 93.8,
+      "vote_fonct": 9351396375.0,
+      "execute_fonct": 8920800313.11,
+      "taux_fonct": 95.4,
+      "vote_inves": 2409911953.84,
+      "execute_inves": 2116290625.16,
+      "taux_inves": 87.8
+    },
+    {
+      "annee": 2025,
+      "type": "previsionnel",
+      "depenses_vote": 12161871777.01,
+      "depenses_execute": null,
+      "taux_global": null,
+      "vote_fonct": 9771277083.0,
+      "execute_fonct": null,
+      "taux_fonct": null,
+      "vote_inves": 2390594694.01,
+      "execute_inves": null,
+      "taux_inves": null
+    },
+    {
+      "annee": 2026,
+      "type": "previsionnel",
+      "depenses_vote": 11722400172.0,
+      "depenses_execute": null,
+      "taux_global": null,
+      "vote_fonct": 9507320920.0,
+      "execute_fonct": null,
+      "taux_fonct": null,
+      "vote_inves": 2215079252.0,
+      "execute_inves": null,
+      "taux_inves": null
+    }
+  ],
+  "ecart_ranking": [
+    {
+      "thematique": "Fiscalité Indirecte",
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": 619.2,
+      "vote_total": 800000.0,
+      "execute_total": 5753745.76,
+      "taux_execution": 719.2,
+      "nb_annees": 2
+    },
+    {
+      "thematique": "Dotations & Participations",
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": 155.9,
+      "vote_total": 755862661.0,
+      "execute_total": 2003865585.4799995,
+      "taux_execution": 265.1,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Administration",
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": 116.0,
+      "vote_total": 10500935.0,
+      "execute_total": 10118552.190000001,
+      "taux_execution": 96.4,
+      "nb_annees": 5
+    },
+    {
+      "thematique": "Urbanisme",
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": 100.1,
+      "vote_total": 523144390.0,
+      "execute_total": 1070272392.1000001,
+      "taux_execution": 204.6,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Fonds Européens",
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": 83.0,
+      "vote_total": 28551903.0,
+      "execute_total": 34687155.36,
+      "taux_execution": 121.5,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Environnement",
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": 65.7,
+      "vote_total": 18406242.0,
+      "execute_total": 29747012.86,
+      "taux_execution": 161.6,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Sécurité",
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": -62.8,
+      "vote_total": 6400000.0,
+      "execute_total": 2244813.65,
+      "taux_execution": 35.1,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Dotations & Participations",
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": -48.7,
+      "vote_total": 2700000.0,
+      "execute_total": 1384911.2,
+      "taux_execution": 51.3,
+      "nb_annees": 1
+    },
+    {
+      "thematique": "Éducation",
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": 47.9,
+      "vote_total": 70787577.92,
+      "execute_total": 87678420.55,
+      "taux_execution": 123.9,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "RSA",
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": -43.4,
+      "vote_total": 3039000.0,
+      "execute_total": 1640593.1599999997,
+      "taux_execution": 54.0,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Social",
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": -38.7,
+      "vote_total": 48066361.58,
+      "execute_total": 27144970.009999998,
+      "taux_execution": 56.5,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Économie",
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": -37.8,
+      "vote_total": 866425.77,
+      "execute_total": 617138.2,
+      "taux_execution": 71.2,
+      "nb_annees": 3
+    },
+    {
+      "thematique": "Économie",
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": 35.0,
+      "vote_total": 324334363.65,
+      "execute_total": 471278515.51,
+      "taux_execution": 145.3,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Transport",
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": 30.0,
+      "vote_total": 84143718.0,
+      "execute_total": 118986925.99,
+      "taux_execution": 141.4,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "APA",
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": 29.6,
+      "vote_total": 115214000.0,
+      "execute_total": 147616469.66000003,
+      "taux_execution": 128.1,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Économie",
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": -26.1,
+      "vote_total": 249412200.0,
+      "execute_total": 185931658.25,
+      "taux_execution": 74.5,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Fonds Européens",
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": -24.9,
+      "vote_total": 4098320.0,
+      "execute_total": 3433584.8699999996,
+      "taux_execution": 83.8,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Sécurité",
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": 24.5,
+      "vote_total": 7499000.0,
+      "execute_total": 9347813.44,
+      "taux_execution": 124.7,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Emprunts & Dette",
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": -23.2,
+      "vote_total": 2983341780.0,
+      "execute_total": 2239586245.27,
+      "taux_execution": 75.1,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Administration",
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": 23.1,
+      "vote_total": 1145397505.33,
+      "execute_total": 1407366505.7200003,
+      "taux_execution": 122.9,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Transport",
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": 22.8,
+      "vote_total": 1019273075.0,
+      "execute_total": 1254416843.9099998,
+      "taux_execution": 123.1,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Dotations & Participations",
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": 22.4,
+      "vote_total": 611271593.27,
+      "execute_total": 716900664.92,
+      "taux_execution": 117.3,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Fiscalité Indirecte",
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": 22.4,
+      "vote_total": 32010000.0,
+      "execute_total": 40224884.88999999,
+      "taux_execution": 125.7,
+      "nb_annees": 5
+    },
+    {
+      "thematique": "Transport",
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": -17.1,
+      "vote_total": 2809805883.34,
+      "execute_total": 2340740992.27,
+      "taux_execution": 83.3,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Opérations Financières",
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": 15.0,
+      "vote_total": 139510414.93,
+      "execute_total": 157797008.96,
+      "taux_execution": 113.1,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Culture & Sport",
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": -12.3,
+      "vote_total": 275740677.24,
+      "execute_total": 226015960.35000002,
+      "taux_execution": 82.0,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Fiscalité Indirecte",
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": 11.8,
+      "vote_total": 1380665768.85,
+      "execute_total": 1515048016.18,
+      "taux_execution": 109.7,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Environnement",
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": -11.3,
+      "vote_total": 443797424.0,
+      "execute_total": 384581270.18000007,
+      "taux_execution": 86.7,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Social",
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": -10.5,
+      "vote_total": 402280846.64,
+      "execute_total": 360099011.26000005,
+      "taux_execution": 89.5,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Dotations & Participations",
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": 9.5,
+      "vote_total": 238973785.0,
+      "execute_total": 239574678.0,
+      "taux_execution": 100.3,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Urbanisme",
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": -8.2,
+      "vote_total": 4347851177.79,
+      "execute_total": 3998569271.61,
+      "taux_execution": 92.0,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Administration",
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": -6.9,
+      "vote_total": 991924831.0,
+      "execute_total": 912259713.4000001,
+      "taux_execution": 92.0,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Sécurité",
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": -6.8,
+      "vote_total": 147775664.0,
+      "execute_total": 138091687.64000002,
+      "taux_execution": 93.4,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Éducation",
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": 5.7,
+      "vote_total": 400314323.0,
+      "execute_total": 409769633.20000005,
+      "taux_execution": 102.4,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Culture & Sport",
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": -4.7,
+      "vote_total": 1311223769.48,
+      "execute_total": 1252316447.5799997,
+      "taux_execution": 95.5,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Urbanisme",
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": -4.6,
+      "vote_total": 482319270.0,
+      "execute_total": 459060556.39,
+      "taux_execution": 95.2,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Administration",
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": -4.4,
+      "vote_total": 5026984735.24,
+      "execute_total": 5104633010.240002,
+      "taux_execution": 101.5,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Culture & Sport",
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": -3.8,
+      "vote_total": 612253753.0,
+      "execute_total": 587485308.26,
+      "taux_execution": 96.0,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Opérations Financières",
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": -3.7,
+      "vote_total": 974188615.0,
+      "execute_total": 937946062.1600001,
+      "taux_execution": 96.3,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Social",
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": -3.3,
+      "vote_total": 2109243080.92,
+      "execute_total": 2036009973.05,
+      "taux_execution": 96.5,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Emprunts & Dette",
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": 2.8,
+      "vote_total": 6162296500.369999,
+      "execute_total": 6201623227.42,
+      "taux_execution": 100.6,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "RSA",
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": 2.5,
+      "vote_total": 402516139.0,
+      "execute_total": 412710615.65999997,
+      "taux_execution": 102.5,
+      "nb_annees": 1
+    },
+    {
+      "thematique": "Transport",
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": 1.9,
+      "vote_total": 3832481382.65,
+      "execute_total": 3905572080.52,
+      "taux_execution": 101.9,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Environnement",
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": 1.6,
+      "vote_total": 4638715261.0,
+      "execute_total": 4719550531.49,
+      "taux_execution": 101.7,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Environnement",
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": 1.5,
+      "vote_total": 4443996778.0,
+      "execute_total": 4515768142.1399975,
+      "taux_execution": 101.6,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Social",
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": 1.4,
+      "vote_total": 10728267681.67,
+      "execute_total": 10876292623.690002,
+      "taux_execution": 101.4,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Éducation",
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": 1.4,
+      "vote_total": 708098607.0,
+      "execute_total": 704069064.1800002,
+      "taux_execution": 99.4,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Économie",
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": 1.3,
+      "vote_total": 714847831.29,
+      "execute_total": 785254443.2699999,
+      "taux_execution": 109.8,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Urbanisme",
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": 1.2,
+      "vote_total": 1585783747.0,
+      "execute_total": 1604219122.7000008,
+      "taux_execution": 101.2,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "RSA",
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": 1.2,
+      "vote_total": 260590009.0,
+      "execute_total": 263804339.62,
+      "taux_execution": 101.2,
+      "nb_annees": 1
+    },
+    {
+      "thematique": "Fiscalité Directe",
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": -1.1,
+      "vote_total": 23848298871.18,
+      "execute_total": 23537303982.0,
+      "taux_execution": 98.7,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Fiscalité Directe",
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": -0.8,
+      "vote_total": 8143419359.940001,
+      "execute_total": 8066275136.92,
+      "taux_execution": 99.1,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Fiscalité Indirecte",
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "ecart_moyen_pct": 0.8,
+      "vote_total": 14502177065.17,
+      "execute_total": 14571884084.96,
+      "taux_execution": 100.5,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "APA",
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": -0.7,
+      "vote_total": 798067886.0,
+      "execute_total": 792257113.3299999,
+      "taux_execution": 99.3,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Sécurité",
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": -0.4,
+      "vote_total": 2514678763.0,
+      "execute_total": 2505237328.77,
+      "taux_execution": 99.6,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Éducation",
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": -0.1,
+      "vote_total": 4559781374.5,
+      "execute_total": 4553775854.209999,
+      "taux_execution": 99.9,
+      "nb_annees": 6
+    },
+    {
+      "thematique": "Culture & Sport",
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "ecart_moyen_pct": 0.1,
+      "vote_total": 3595951933.0,
+      "execute_total": 3594759434.78,
+      "taux_execution": 100.0,
+      "nb_annees": 6
+    }
+  ],
+  "estimation_summary": {
+    "2019": {
+      "annee": 2019,
+      "sections": {
+        "Fonctionnement": {
+          "vote": 140938604,
+          "estime": 0,
+          "taux_estime": 0.0,
+          "nb_postes": 2
+        },
+        "Investissement": {
+          "vote": 5461340,
+          "estime": 0,
+          "taux_estime": 0.0,
+          "nb_postes": 1
+        }
+      },
+      "total_vote": 146399944,
+      "total_estime": 0,
+      "taux_global_estime": 0.0
+    },
+    "2020": {
+      "annee": 2020,
+      "sections": {
+        "Fonctionnement": {
+          "vote": 545910000,
+          "estime": 0,
+          "taux_estime": 0.0,
+          "nb_postes": 1
+        },
+        "Investissement": {
+          "vote": 283020000,
+          "estime": 0,
+          "taux_estime": 0.0,
+          "nb_postes": 2
+        }
+      },
+      "total_vote": 828930000,
+      "total_estime": 0,
+      "taux_global_estime": 0.0
+    },
+    "2021": {
+      "annee": 2021,
+      "sections": {
+        "Fonctionnement": {
+          "vote": 462100000,
+          "estime": 0,
+          "taux_estime": 0.0,
+          "nb_postes": 1
+        },
+        "Investissement": {
+          "vote": 220285392,
+          "estime": 0,
+          "taux_estime": 0.0,
+          "nb_postes": 2
+        }
+      },
+      "total_vote": 682385392,
+      "total_estime": 0,
+      "taux_global_estime": 0.0
+    },
+    "2022": {
+      "annee": 2022,
+      "sections": {
+        "Fonctionnement": {
+          "vote": 469458078,
+          "estime": 0,
+          "taux_estime": 0.0,
+          "nb_postes": 1
+        },
+        "Investissement": {
+          "vote": 332098130,
+          "estime": 0,
+          "taux_estime": 0.0,
+          "nb_postes": 2
+        }
+      },
+      "total_vote": 801556208,
+      "total_estime": 0,
+      "taux_global_estime": 0.0
+    },
+    "2023": {
+      "annee": 2023,
+      "sections": {
+        "Fonctionnement": {
+          "vote": 550378781,
+          "estime": 0,
+          "taux_estime": 0.0,
+          "nb_postes": 1
+        },
+        "Investissement": {
+          "vote": 339032512,
+          "estime": 0,
+          "taux_estime": 0.0,
+          "nb_postes": 2
+        }
+      },
+      "total_vote": 889411293,
+      "total_estime": 0,
+      "taux_global_estime": 0.0
+    },
+    "2024": {
+      "annee": 2024,
+      "sections": {
+        "Fonctionnement": {
+          "vote": 526308078,
+          "estime": 0,
+          "taux_estime": 0.0,
+          "nb_postes": 1
+        },
+        "Investissement": {
+          "vote": 216493938,
+          "estime": 0,
+          "taux_estime": 0.0,
+          "nb_postes": 2
+        }
+      },
+      "total_vote": 742802016,
+      "total_estime": 0,
+      "taux_global_estime": 0.0
+    },
+    "2025": {
+      "annee": 2025,
+      "sections": {
+        "Fonctionnement": {
+          "vote": 9771277083,
+          "estime": 9382158195,
+          "taux_estime": 96.0,
+          "nb_postes": 18
+        },
+        "Investissement": {
+          "vote": 2390594694,
+          "estime": 1951658577,
+          "taux_estime": 81.6,
+          "nb_postes": 15
+        }
+      },
+      "total_vote": 12161871777,
+      "total_estime": 11333816772,
+      "taux_global_estime": 93.2
+    },
+    "2026": {
+      "annee": 2026,
+      "sections": {
+        "Fonctionnement": {
+          "vote": 9507320920,
+          "estime": 9063745445,
+          "taux_estime": 95.3,
+          "nb_postes": 17
+        },
+        "Investissement": {
+          "vote": 2215079252,
+          "estime": 1854788610,
+          "taux_estime": 83.7,
+          "nb_postes": 15
+        }
+      },
+      "total_vote": 11722400172,
+      "total_estime": 10918534055,
+      "taux_global_estime": 93.1
+    }
+  },
+  "estimations": [
+    {
+      "annee": 2019,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Autre",
+      "chapitre_code": "954",
+      "chapitre_libelle": "PRODUIT DES CESSIONS",
+      "montant_vote": 463600000.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2019,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Autre",
+      "chapitre_code": "74",
+      "chapitre_libelle": "Dotations et partici",
+      "montant_vote": 140938617.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2019,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Autre",
+      "chapitre_code": "011",
+      "chapitre_libelle": "CHARGES A CARACTERE",
+      "montant_vote": 140930326.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2019,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Autre",
+      "chapitre_code": "458101",
+      "chapitre_libelle": "Dotation d'investiss",
+      "montant_vote": 5461340.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2019,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Autre",
+      "chapitre_code": "458201",
+      "chapitre_libelle": "Dotation d'investiss",
+      "montant_vote": 5461340.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2019,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Économie",
+      "chapitre_code": "906",
+      "chapitre_libelle": "ACTION ÉCONOMIQUE",
+      "montant_vote": 120000.0,
+      "montant_estime": 74652.0,
+      "taux_execution_moyen": 62.21,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2019,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Autre",
+      "chapitre_code": "65",
+      "chapitre_libelle": "AUTRES CHARGES DE GE",
+      "montant_vote": 8278.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2020,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Social",
+      "chapitre_code": "946",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 545910000.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2020,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Social",
+      "chapitre_code": "946",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 219920000.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2020,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Transferts entre Sections",
+      "chapitre_code": "926",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 219920000.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2020,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Opérations Patrimoniales",
+      "chapitre_code": "925",
+      "chapitre_libelle": "Opérations patrimoniales",
+      "montant_vote": 63100000.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2020,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Opérations Patrimoniales",
+      "chapitre_code": "925",
+      "chapitre_libelle": "Opérations patrimoniales",
+      "montant_vote": 63100000.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2020,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Transferts entre Sections",
+      "chapitre_code": "926",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 10484946.24,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2020,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Économie",
+      "chapitre_code": "906",
+      "chapitre_libelle": "Action économique",
+      "montant_vote": 120000.0,
+      "montant_estime": 74652.0,
+      "taux_execution_moyen": 62.21,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2021,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Social",
+      "chapitre_code": "946",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 462100000.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2021,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Transferts entre Sections",
+      "chapitre_code": "926",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 267130107.27,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2021,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Social",
+      "chapitre_code": "946",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 143595000.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2021,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Transferts entre Sections",
+      "chapitre_code": "926",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 143595000.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2021,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Opérations Patrimoniales",
+      "chapitre_code": "925",
+      "chapitre_libelle": "Opérations patrimoniales",
+      "montant_vote": 76690392.24,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2021,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Opérations Patrimoniales",
+      "chapitre_code": "925",
+      "chapitre_libelle": "Opérations patrimoniales",
+      "montant_vote": 76690392.24,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2022,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Social",
+      "chapitre_code": "946",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 469458077.9,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2022,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Transferts entre Sections",
+      "chapitre_code": "926",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 274130107.27000004,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2022,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Social",
+      "chapitre_code": "946",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 233095000.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2022,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Transferts entre Sections",
+      "chapitre_code": "926",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 233095000.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2022,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Opérations Patrimoniales",
+      "chapitre_code": "925",
+      "chapitre_libelle": "Opérations patrimoniales",
+      "montant_vote": 99003130.32,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2022,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Opérations Patrimoniales",
+      "chapitre_code": "925",
+      "chapitre_libelle": "Opérations patrimoniales",
+      "montant_vote": 99003130.32,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2023,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Social",
+      "chapitre_code": "946",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 550378781.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2023,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Opérations Patrimoniales",
+      "chapitre_code": "925",
+      "chapitre_libelle": "Opérations patrimoniales",
+      "montant_vote": 283400000.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2023,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Transferts entre Sections",
+      "chapitre_code": "926",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 185421112.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2023,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Opérations Patrimoniales",
+      "chapitre_code": "925",
+      "chapitre_libelle": "Opérations patrimoniales",
+      "montant_vote": 98656043.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2023,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Social",
+      "chapitre_code": "946",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 55632512.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2023,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Transferts entre Sections",
+      "chapitre_code": "926",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 55632512.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2024,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Social",
+      "chapitre_code": "946",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 526308078.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2024,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Opérations Patrimoniales",
+      "chapitre_code": "925",
+      "chapitre_libelle": "Opérations patrimoniales",
+      "montant_vote": 179898937.84000003,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2024,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Transferts entre Sections",
+      "chapitre_code": "926",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 50618098.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2024,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Social",
+      "chapitre_code": "946",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 36595000.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2024,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Transferts entre Sections",
+      "chapitre_code": "926",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 36595000.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Fiscalité Directe",
+      "chapitre_code": "940",
+      "chapitre_libelle": "Impositions directes",
+      "montant_vote": 4033456308.0,
+      "montant_estime": 3988684942.9811997,
+      "taux_execution_moyen": 98.89,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Fiscalité Indirecte",
+      "chapitre_code": "941",
+      "chapitre_libelle": "Autres impôts et taxes",
+      "montant_vote": 3089364321.0,
+      "montant_estime": 3113152426.2717,
+      "taux_execution_moyen": 100.77,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Social",
+      "chapitre_code": "934",
+      "chapitre_libelle": "Santé et action sociale (hors APA et RSA/Régularisation de RMI)",
+      "montant_vote": 2030519461.0,
+      "montant_estime": 2058743681.5079,
+      "taux_execution_moyen": 101.39,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Fiscalité Directe",
+      "chapitre_code": "940",
+      "chapitre_libelle": "Impositions directes",
+      "montant_vote": 1341095663.0,
+      "montant_estime": 1329830459.4308,
+      "taux_execution_moyen": 99.16,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Emprunts & Dette",
+      "chapitre_code": "923",
+      "chapitre_libelle": "Dettes et autres opérations financières",
+      "montant_vote": 1161953252.0,
+      "montant_estime": 1194720333.7064,
+      "taux_execution_moyen": 102.82,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Administration",
+      "chapitre_code": "930",
+      "chapitre_libelle": "Services généraux",
+      "montant_vote": 933943188.0,
+      "montant_estime": 948699490.3704,
+      "taux_execution_moyen": 101.58,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Éducation",
+      "chapitre_code": "932",
+      "chapitre_libelle": "Enseignement, formation professionnelle et apprentissage",
+      "montant_vote": 866774779.0,
+      "montant_estime": 865561294.3094001,
+      "taux_execution_moyen": 99.86,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Environnement",
+      "chapitre_code": "937",
+      "chapitre_libelle": "Environnement",
+      "montant_vote": 831942460.0,
+      "montant_estime": 845253539.36,
+      "taux_execution_moyen": 101.6,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Environnement",
+      "chapitre_code": "937",
+      "chapitre_libelle": "Environnement",
+      "montant_vote": 806273907.0,
+      "montant_estime": 818045506.0422,
+      "taux_execution_moyen": 101.46,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Urbanisme",
+      "chapitre_code": "905",
+      "chapitre_libelle": "Aménagement des territoires et habitat",
+      "montant_vote": 782956086.0,
+      "montant_estime": 719066869.3824,
+      "taux_execution_moyen": 91.84,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Transport",
+      "chapitre_code": "938",
+      "chapitre_libelle": "Transports",
+      "montant_vote": 724205927.0,
+      "montant_estime": 737676157.2422,
+      "taux_execution_moyen": 101.86,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Culture & Sport",
+      "chapitre_code": "933",
+      "chapitre_libelle": "Culture, vie sociale, jeunesse, sports et loisirs",
+      "montant_vote": 633856924.0,
+      "montant_estime": 634237238.1544,
+      "taux_execution_moyen": 100.06,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Emprunts & Dette",
+      "chapitre_code": "923",
+      "chapitre_libelle": "Dettes et autres opérations financières",
+      "montant_vote": 556138861.0,
+      "montant_estime": 426947803.5897,
+      "taux_execution_moyen": 76.77,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Social",
+      "chapitre_code": "946",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 498100000.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Sécurité",
+      "chapitre_code": "931",
+      "chapitre_libelle": "Sécurité",
+      "montant_vote": 482052820.0,
+      "montant_estime": 480172814.002,
+      "taux_execution_moyen": 99.61,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "RSA",
+      "chapitre_code": "9344",
+      "chapitre_libelle": "RSA / Régularisations de RMI",
+      "montant_vote": 475157745.0,
+      "montant_estime": 487179235.9485,
+      "taux_execution_moyen": 102.53,
+      "confiance": "basse"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Transport",
+      "chapitre_code": "938",
+      "chapitre_libelle": "Transports",
+      "montant_vote": 467507772.0,
+      "montant_estime": 387563942.98800004,
+      "taux_execution_moyen": 82.9,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Social",
+      "chapitre_code": "934",
+      "chapitre_libelle": "Santé et action sociale (hors APA et RSA/Régularisation de RMI)",
+      "montant_vote": 339453331.0,
+      "montant_estime": 328149535.0777,
+      "taux_execution_moyen": 96.67,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Urbanisme",
+      "chapitre_code": "935",
+      "chapitre_libelle": "Aménagement des territoires et habitat",
+      "montant_vote": 288845310.0,
+      "montant_estime": 292195915.59599996,
+      "taux_execution_moyen": 101.16,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "RSA",
+      "chapitre_code": "9344",
+      "chapitre_libelle": "RSA / Régularisations de RMI",
+      "montant_vote": 266590009.0,
+      "montant_estime": 269869066.1107,
+      "taux_execution_moyen": 101.23,
+      "confiance": "basse"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Administration",
+      "chapitre_code": "930",
+      "chapitre_libelle": "Services généraux",
+      "montant_vote": 241373324.0,
+      "montant_estime": 297106424.5116,
+      "taux_execution_moyen": 123.09,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Fiscalité Indirecte",
+      "chapitre_code": "941",
+      "chapitre_libelle": "Autres impôts et taxes",
+      "montant_vote": 233685271.0,
+      "montant_estime": 261236764.4509,
+      "taux_execution_moyen": 111.79,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Opérations Financières",
+      "chapitre_code": "943",
+      "chapitre_libelle": "Opérations financières",
+      "montant_vote": 224518673.0,
+      "montant_estime": 216301289.5682,
+      "taux_execution_moyen": 96.34,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Économie",
+      "chapitre_code": "936",
+      "chapitre_libelle": "Action économique",
+      "montant_vote": 208885909.0,
+      "montant_estime": 211538760.0443,
+      "taux_execution_moyen": 101.27,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Administration",
+      "chapitre_code": "900",
+      "chapitre_libelle": "Services généraux",
+      "montant_vote": 184176703.0,
+      "montant_estime": 171376422.1415,
+      "taux_execution_moyen": 93.05,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Opérations Patrimoniales",
+      "chapitre_code": "925",
+      "chapitre_libelle": "Opérations patrimoniales",
+      "montant_vote": 184050399.01,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Culture & Sport",
+      "chapitre_code": "903",
+      "chapitre_libelle": "Culture, vie sociale, jeunesse, sports et loisirs",
+      "montant_vote": 158081391.0,
+      "montant_estime": 150619949.3448,
+      "taux_execution_moyen": 95.28,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "APA",
+      "chapitre_code": "9343",
+      "chapitre_libelle": "APA",
+      "montant_vote": 145071217.0,
+      "montant_estime": 144012197.1159,
+      "taux_execution_moyen": 99.27,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Transport",
+      "chapitre_code": "908",
+      "chapitre_libelle": "Transports",
+      "montant_vote": 143878645.0,
+      "montant_estime": 176711751.78899997,
+      "taux_execution_moyen": 122.82,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Culture & Sport",
+      "chapitre_code": "933",
+      "chapitre_libelle": "Culture, vie sociale, jeunesse, sports et loisirs",
+      "montant_vote": 119343044.0,
+      "montant_estime": 114843811.24120001,
+      "taux_execution_moyen": 96.23,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Environnement",
+      "chapitre_code": "907",
+      "chapitre_libelle": "Environnement",
+      "montant_vote": 110233854.0,
+      "montant_estime": 97766405.1126,
+      "taux_execution_moyen": 88.69,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Éducation",
+      "chapitre_code": "902",
+      "chapitre_libelle": "Enseignement, formation professionnelle et apprentissage",
+      "montant_vote": 101865246.0,
+      "montant_estime": 103321919.0178,
+      "taux_execution_moyen": 101.43,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Dotations & Participations",
+      "chapitre_code": "922",
+      "chapitre_libelle": "Dotations et participations",
+      "montant_vote": 100000000.0,
+      "montant_estime": 255910000.0,
+      "taux_execution_moyen": 255.91,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Urbanisme",
+      "chapitre_code": "905",
+      "chapitre_libelle": "Aménagement des territoires et habitat",
+      "montant_vote": 76718478.0,
+      "montant_estime": 73166412.4686,
+      "taux_execution_moyen": 95.37,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Dotations & Participations",
+      "chapitre_code": "942",
+      "chapitre_libelle": "Dotations et participations",
+      "montant_vote": 72935944.0,
+      "montant_estime": 89310063.42800002,
+      "taux_execution_moyen": 122.45,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Social",
+      "chapitre_code": "904",
+      "chapitre_libelle": "Santé et action sociale (hors RSA)",
+      "montant_vote": 71141009.0,
+      "montant_estime": 63671203.055,
+      "taux_execution_moyen": 89.5,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Éducation",
+      "chapitre_code": "932",
+      "chapitre_libelle": "Enseignement, formation professionnelle et apprentissage",
+      "montant_vote": 65626690.0,
+      "montant_estime": 69354285.99200001,
+      "taux_execution_moyen": 105.68,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Urbanisme",
+      "chapitre_code": "935",
+      "chapitre_libelle": "Aménagement des territoires et habitat",
+      "montant_vote": 64282099.0,
+      "montant_estime": 128602767.25940001,
+      "taux_execution_moyen": 200.06,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Économie",
+      "chapitre_code": "936",
+      "chapitre_libelle": "Action économique",
+      "montant_vote": 53445293.0,
+      "montant_estime": 72151145.55,
+      "taux_execution_moyen": 135.0,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Social",
+      "chapitre_code": "946",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 50395000.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Transferts entre Sections",
+      "chapitre_code": "926",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 50395000.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Économie",
+      "chapitre_code": "906",
+      "chapitre_libelle": "Action économique",
+      "montant_vote": 42485000.0,
+      "montant_estime": 26429918.5,
+      "taux_execution_moyen": 62.21,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Dotations & Participations",
+      "chapitre_code": "942",
+      "chapitre_libelle": "Dotations et participations",
+      "montant_vote": 29878394.0,
+      "montant_estime": 32710865.751199998,
+      "taux_execution_moyen": 109.48,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "APA",
+      "chapitre_code": "9343",
+      "chapitre_libelle": "APA",
+      "montant_vote": 26730300.0,
+      "montant_estime": 34637122.74,
+      "taux_execution_moyen": 129.58,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Économie",
+      "chapitre_code": "906",
+      "chapitre_libelle": "Action économique",
+      "montant_vote": 24023500.0,
+      "montant_estime": 17748561.8,
+      "taux_execution_moyen": 73.88,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Sécurité",
+      "chapitre_code": "901",
+      "chapitre_libelle": "Sécurité",
+      "montant_vote": 22954000.0,
+      "montant_estime": 21386241.8,
+      "taux_execution_moyen": 93.17,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Transport",
+      "chapitre_code": "908",
+      "chapitre_libelle": "Transports",
+      "montant_vote": 19647621.0,
+      "montant_estime": 25543872.0621,
+      "taux_execution_moyen": 130.01,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Opérations Financières",
+      "chapitre_code": "943",
+      "chapitre_libelle": "Opérations financières",
+      "montant_vote": 13937696.0,
+      "montant_estime": 16029744.1696,
+      "taux_execution_moyen": 115.01,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Culture & Sport",
+      "chapitre_code": "903",
+      "chapitre_libelle": "Culture, vie sociale, jeunesse, sports et loisirs",
+      "montant_vote": 13667439.000000002,
+      "montant_estime": 11987710.7469,
+      "taux_execution_moyen": 87.71,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Transferts entre Sections",
+      "chapitre_code": "926",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 11714754.41,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Éducation",
+      "chapitre_code": "902",
+      "chapitre_libelle": "Enseignement, formation professionnelle et apprentissage",
+      "montant_vote": 5772000.0,
+      "montant_estime": 8533902.0,
+      "taux_execution_moyen": 147.85,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Social",
+      "chapitre_code": "904",
+      "chapitre_libelle": "Santé et action sociale (hors RSA)",
+      "montant_vote": 5467111.0,
+      "montant_estime": 3350245.6207999997,
+      "taux_execution_moyen": 61.28,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Fiscalité Indirecte",
+      "chapitre_code": "921",
+      "chapitre_libelle": "Taxes non affectées",
+      "montant_vote": 4000000.0,
+      "montant_estime": 4894400.0,
+      "taux_execution_moyen": 122.36,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Administration",
+      "chapitre_code": "944",
+      "chapitre_libelle": "Frais de fonctionnement des groupes d'élus",
+      "montant_vote": 3525685.0,
+      "montant_estime": 3158661.1915,
+      "taux_execution_moyen": 89.59,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Fonds Européens",
+      "chapitre_code": "9305",
+      "chapitre_libelle": "Gestion des fonds européens",
+      "montant_vote": 2500000.0,
+      "montant_estime": 4574500.0,
+      "taux_execution_moyen": 182.98,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Environnement",
+      "chapitre_code": "907",
+      "chapitre_libelle": "Environnement",
+      "montant_vote": 2037400.0,
+      "montant_estime": 3374953.1,
+      "taux_execution_moyen": 165.65,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Sécurité",
+      "chapitre_code": "931",
+      "chapitre_libelle": "Sécurité",
+      "montant_vote": 1282500.0,
+      "montant_estime": 1596584.25,
+      "taux_execution_moyen": 124.49,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Sécurité",
+      "chapitre_code": "901",
+      "chapitre_libelle": "Sécurité",
+      "montant_vote": 1000000.0,
+      "montant_estime": 372000.0,
+      "taux_execution_moyen": 37.2,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Administration",
+      "chapitre_code": "900",
+      "chapitre_libelle": "Services généraux",
+      "montant_vote": 889993.0,
+      "montant_estime": 1922740.8772,
+      "taux_execution_moyen": 216.04,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Fiscalité Indirecte",
+      "chapitre_code": "921",
+      "chapitre_libelle": "Taxes non affectées",
+      "montant_vote": 400000.0,
+      "montant_estime": 2876880.0,
+      "taux_execution_moyen": 719.22,
+      "confiance": "basse"
+    },
+    {
+      "annee": 2025,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Fonds Européens",
+      "chapitre_code": "9305",
+      "chapitre_libelle": "Gestion des fonds européens",
+      "montant_vote": 326826.0,
+      "montant_estime": 245479.0086,
+      "taux_execution_moyen": 75.11,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "RSA",
+      "chapitre_code": "9044",
+      "chapitre_libelle": "RSA",
+      "montant_vote": 200000.0,
+      "montant_estime": 113280.0,
+      "taux_execution_moyen": 56.64,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2025,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Dotations & Participations",
+      "chapitre_code": "922",
+      "chapitre_libelle": "Dotations et participations",
+      "montant_vote": 100000.0,
+      "montant_estime": 51290.0,
+      "taux_execution_moyen": 51.29,
+      "confiance": "basse"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Fiscalité Directe",
+      "chapitre_code": "940",
+      "chapitre_libelle": "Impositions directes",
+      "montant_vote": 4025525112.0,
+      "montant_estime": 3980841783.2567997,
+      "taux_execution_moyen": 98.89,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Fiscalité Indirecte",
+      "chapitre_code": "941",
+      "chapitre_libelle": "Autres impôts et taxes",
+      "montant_vote": 3266985029.0,
+      "montant_estime": 3292140813.7233,
+      "taux_execution_moyen": 100.77,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Social",
+      "chapitre_code": "934",
+      "chapitre_libelle": "Santé et action sociale (hors APA et RSA/Régularisation de RMI)",
+      "montant_vote": 2088714489.0,
+      "montant_estime": 2117747620.3971,
+      "taux_execution_moyen": 101.39,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Fiscalité Directe",
+      "chapitre_code": "940",
+      "chapitre_libelle": "Impositions directes",
+      "montant_vote": 1324023196.0,
+      "montant_estime": 1312901401.1536,
+      "taux_execution_moyen": 99.16,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Administration",
+      "chapitre_code": "930",
+      "chapitre_libelle": "Services généraux",
+      "montant_vote": 942193713.0,
+      "montant_estime": 957080373.6653999,
+      "taux_execution_moyen": 101.58,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Éducation",
+      "chapitre_code": "932",
+      "chapitre_libelle": "Enseignement, formation professionnelle et apprentissage",
+      "montant_vote": 885165418.0,
+      "montant_estime": 883926186.4147999,
+      "taux_execution_moyen": 99.86,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Environnement",
+      "chapitre_code": "937",
+      "chapitre_libelle": "Environnement",
+      "montant_vote": 853078395.0,
+      "montant_estime": 866727649.32,
+      "taux_execution_moyen": 101.6,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2026,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Emprunts & Dette",
+      "chapitre_code": "923",
+      "chapitre_libelle": "Dettes et autres opérations financières",
+      "montant_vote": 833239492.0,
+      "montant_estime": 856736845.6743999,
+      "taux_execution_moyen": 102.82,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Urbanisme",
+      "chapitre_code": "905",
+      "chapitre_libelle": "Aménagement des territoires et habitat",
+      "montant_vote": 831616810.0,
+      "montant_estime": 763756878.3040001,
+      "taux_execution_moyen": 91.84,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Environnement",
+      "chapitre_code": "937",
+      "chapitre_libelle": "Environnement",
+      "montant_vote": 806726458.0,
+      "montant_estime": 818504664.2867999,
+      "taux_execution_moyen": 101.46,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Transport",
+      "chapitre_code": "938",
+      "chapitre_libelle": "Transports",
+      "montant_vote": 737749114.0,
+      "montant_estime": 751471247.5203999,
+      "taux_execution_moyen": 101.86,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Culture & Sport",
+      "chapitre_code": "933",
+      "chapitre_libelle": "Culture, vie sociale, jeunesse, sports et loisirs",
+      "montant_vote": 657974129.0,
+      "montant_estime": 658368913.4774,
+      "taux_execution_moyen": 100.06,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Social",
+      "chapitre_code": "946",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 539970000.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Sécurité",
+      "chapitre_code": "931",
+      "chapitre_libelle": "Sécurité",
+      "montant_vote": 491944935.0,
+      "montant_estime": 490026349.7535,
+      "taux_execution_moyen": 99.61,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Transport",
+      "chapitre_code": "938",
+      "chapitre_libelle": "Transports",
+      "montant_vote": 484016000.0,
+      "montant_estime": 401249264.0,
+      "taux_execution_moyen": 82.9,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Emprunts & Dette",
+      "chapitre_code": "923",
+      "chapitre_libelle": "Dettes et autres opérations financières",
+      "montant_vote": 472367202.0,
+      "montant_estime": 362636300.97540003,
+      "taux_execution_moyen": 76.77,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Social",
+      "chapitre_code": "934",
+      "chapitre_libelle": "Santé et action sociale (hors APA et RSA/Régularisation de RMI)",
+      "montant_vote": 384423082.0,
+      "montant_estime": 371621793.3694,
+      "taux_execution_moyen": 96.67,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Urbanisme",
+      "chapitre_code": "935",
+      "chapitre_libelle": "Aménagement des territoires et habitat",
+      "montant_vote": 317988243.0,
+      "montant_estime": 321676906.6188,
+      "taux_execution_moyen": 101.16,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Fiscalité Indirecte",
+      "chapitre_code": "941",
+      "chapitre_libelle": "Autres impôts et taxes",
+      "montant_vote": 257998698.0,
+      "montant_estime": 288416744.4942,
+      "taux_execution_moyen": 111.79,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Administration",
+      "chapitre_code": "930",
+      "chapitre_libelle": "Services généraux",
+      "montant_vote": 243500988.0,
+      "montant_estime": 299725366.12920004,
+      "taux_execution_moyen": 123.09,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Opérations Financières",
+      "chapitre_code": "943",
+      "chapitre_libelle": "Opérations financières",
+      "montant_vote": 237481173.0,
+      "montant_estime": 228789362.0682,
+      "taux_execution_moyen": 96.34,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Économie",
+      "chapitre_code": "936",
+      "chapitre_libelle": "Action économique",
+      "montant_vote": 216879700.0,
+      "montant_estime": 219634072.19,
+      "taux_execution_moyen": 101.27,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Administration",
+      "chapitre_code": "900",
+      "chapitre_libelle": "Services généraux",
+      "montant_vote": 152262561.0,
+      "montant_estime": 141680313.01049998,
+      "taux_execution_moyen": 93.05,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Dotations & Participations",
+      "chapitre_code": "922",
+      "chapitre_libelle": "Dotations et participations",
+      "montant_vote": 150000000.0,
+      "montant_estime": 383865000.0,
+      "taux_execution_moyen": 255.91,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "APA",
+      "chapitre_code": "9343",
+      "chapitre_libelle": "APA",
+      "montant_vote": 145644121.0,
+      "montant_estime": 144580918.9167,
+      "taux_execution_moyen": 99.27,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2026,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Culture & Sport",
+      "chapitre_code": "903",
+      "chapitre_libelle": "Culture, vie sociale, jeunesse, sports et loisirs",
+      "montant_vote": 136828000.0,
+      "montant_estime": 130369718.4,
+      "taux_execution_moyen": 95.28,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Dotations & Participations",
+      "chapitre_code": "942",
+      "chapitre_libelle": "Dotations et participations",
+      "montant_vote": 135477679.0,
+      "montant_estime": 165892417.93550003,
+      "taux_execution_moyen": 122.45,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Culture & Sport",
+      "chapitre_code": "933",
+      "chapitre_libelle": "Culture, vie sociale, jeunesse, sports et loisirs",
+      "montant_vote": 128948300.0,
+      "montant_estime": 124086949.09,
+      "taux_execution_moyen": 96.23,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Transport",
+      "chapitre_code": "908",
+      "chapitre_libelle": "Transports",
+      "montant_vote": 116415653.0,
+      "montant_estime": 142981705.01459998,
+      "taux_execution_moyen": 122.82,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Urbanisme",
+      "chapitre_code": "905",
+      "chapitre_libelle": "Aménagement des territoires et habitat",
+      "montant_vote": 111450179.0,
+      "montant_estime": 106290035.71230002,
+      "taux_execution_moyen": 95.37,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Environnement",
+      "chapitre_code": "907",
+      "chapitre_libelle": "Environnement",
+      "montant_vote": 111040400.0,
+      "montant_estime": 98481730.76,
+      "taux_execution_moyen": 88.69,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Éducation",
+      "chapitre_code": "902",
+      "chapitre_libelle": "Enseignement, formation professionnelle et apprentissage",
+      "montant_vote": 107043911.0,
+      "montant_estime": 108574638.92730002,
+      "taux_execution_moyen": 101.43,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Opérations Patrimoniales",
+      "chapitre_code": "925",
+      "chapitre_libelle": "Opérations patrimoniales",
+      "montant_vote": 86924000.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Social",
+      "chapitre_code": "946",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 80044826.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2026,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Transferts entre Sections",
+      "chapitre_code": "926",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 80044826.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2026,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Social",
+      "chapitre_code": "904",
+      "chapitre_libelle": "Santé et action sociale (hors RSA)",
+      "montant_vote": 72226000.0,
+      "montant_estime": 64642270.0,
+      "taux_execution_moyen": 89.5,
+      "confiance": "haute"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Éducation",
+      "chapitre_code": "932",
+      "chapitre_libelle": "Enseignement, formation professionnelle et apprentissage",
+      "montant_vote": 68839000.0,
+      "montant_estime": 72749055.2,
+      "taux_execution_moyen": 105.68,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Urbanisme",
+      "chapitre_code": "935",
+      "chapitre_libelle": "Aménagement des territoires et habitat",
+      "montant_vote": 68058000.0,
+      "montant_estime": 136156834.8,
+      "taux_execution_moyen": 200.06,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Économie",
+      "chapitre_code": "936",
+      "chapitre_libelle": "Action économique",
+      "montant_vote": 44559067.0,
+      "montant_estime": 60154740.45,
+      "taux_execution_moyen": 135.0,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "APA",
+      "chapitre_code": "9343",
+      "chapitre_libelle": "APA",
+      "montant_vote": 43348331.0,
+      "montant_estime": 56170767.30980001,
+      "taux_execution_moyen": 129.58,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Économie",
+      "chapitre_code": "906",
+      "chapitre_libelle": "Action économique",
+      "montant_vote": 24965000.0,
+      "montant_estime": 18444142.0,
+      "taux_execution_moyen": 73.88,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Sécurité",
+      "chapitre_code": "901",
+      "chapitre_libelle": "Sécurité",
+      "montant_vote": 22364889.0,
+      "montant_estime": 20837367.0813,
+      "taux_execution_moyen": 93.17,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Dotations & Participations",
+      "chapitre_code": "942",
+      "chapitre_libelle": "Dotations et participations",
+      "montant_vote": 22243394.0,
+      "montant_estime": 24352067.751199998,
+      "taux_execution_moyen": 109.48,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Culture & Sport",
+      "chapitre_code": "903",
+      "chapitre_libelle": "Culture, vie sociale, jeunesse, sports et loisirs",
+      "montant_vote": 18778851.0,
+      "montant_estime": 16470930.212099997,
+      "taux_execution_moyen": 87.71,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Transport",
+      "chapitre_code": "908",
+      "chapitre_libelle": "Transports",
+      "montant_vote": 16236085.0,
+      "montant_estime": 21108534.1085,
+      "taux_execution_moyen": 130.01,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Environnement",
+      "chapitre_code": "907",
+      "chapitre_libelle": "Environnement",
+      "montant_vote": 15792530.0,
+      "montant_estime": 26160325.945,
+      "taux_execution_moyen": 165.65,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Opérations Financières",
+      "chapitre_code": "943",
+      "chapitre_libelle": "Opérations financières",
+      "montant_vote": 12222140.0,
+      "montant_estime": 14056683.214000002,
+      "taux_execution_moyen": 115.01,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Transferts entre Sections",
+      "chapitre_code": "926",
+      "chapitre_libelle": "Transferts entre les sections",
+      "montant_vote": 11350000.0,
+      "montant_estime": null,
+      "taux_execution_moyen": null,
+      "confiance": null
+    },
+    {
+      "annee": 2026,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Éducation",
+      "chapitre_code": "902",
+      "chapitre_libelle": "Enseignement, formation professionnelle et apprentissage",
+      "montant_vote": 8564556.0,
+      "montant_estime": 12662696.045999998,
+      "taux_execution_moyen": 147.85,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Social",
+      "chapitre_code": "904",
+      "chapitre_libelle": "Santé et action sociale (hors RSA)",
+      "montant_vote": 7110873.0,
+      "montant_estime": 4357542.9744,
+      "taux_execution_moyen": 61.28,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Fiscalité Indirecte",
+      "chapitre_code": "921",
+      "chapitre_libelle": "Taxes non affectées",
+      "montant_vote": 4000000.0,
+      "montant_estime": 4894400.0,
+      "taux_execution_moyen": 122.36,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Administration",
+      "chapitre_code": "944",
+      "chapitre_libelle": "Frais de fonctionnement des groupes d'élus",
+      "montant_vote": 3672168.0,
+      "montant_estime": 3289895.3112,
+      "taux_execution_moyen": 89.59,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Sécurité",
+      "chapitre_code": "931",
+      "chapitre_libelle": "Sécurité",
+      "montant_vote": 3382500.0,
+      "montant_estime": 4210874.25,
+      "taux_execution_moyen": 124.49,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Dépense",
+      "thematique": "Fonds Européens",
+      "chapitre_code": "9305",
+      "chapitre_libelle": "Gestion des fonds européens",
+      "montant_vote": 3272604.0,
+      "montant_estime": 2458052.8644,
+      "taux_execution_moyen": 75.11,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Fonctionnement",
+      "sens_flux": "Recette",
+      "thematique": "Fonds Européens",
+      "chapitre_code": "9305",
+      "chapitre_libelle": "Gestion des fonds européens",
+      "montant_vote": 3010000.0,
+      "montant_estime": 5507698.0,
+      "taux_execution_moyen": 182.98,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Administration",
+      "chapitre_code": "900",
+      "chapitre_libelle": "Services généraux",
+      "montant_vote": 973200.0,
+      "montant_estime": 2102501.28,
+      "taux_execution_moyen": 216.04,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Investissement",
+      "sens_flux": "Recette",
+      "thematique": "Sécurité",
+      "chapitre_code": "901",
+      "chapitre_libelle": "Sécurité",
+      "montant_vote": 700000.0,
+      "montant_estime": 260400.00000000003,
+      "taux_execution_moyen": 37.2,
+      "confiance": "moyenne"
+    },
+    {
+      "annee": 2026,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Dotations & Participations",
+      "chapitre_code": "922",
+      "chapitre_libelle": "Dotations et participations",
+      "montant_vote": 500000.0,
+      "montant_estime": 256450.0,
+      "taux_execution_moyen": 51.29,
+      "confiance": "basse"
+    },
+    {
+      "annee": 2026,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "Fiscalité Indirecte",
+      "chapitre_code": "921",
+      "chapitre_libelle": "Taxes non affectées",
+      "montant_vote": 280000.0,
+      "montant_estime": 2013816.0,
+      "taux_execution_moyen": 719.22,
+      "confiance": "basse"
+    },
+    {
+      "annee": 2026,
+      "section": "Investissement",
+      "sens_flux": "Dépense",
+      "thematique": "RSA",
+      "chapitre_code": "9044",
+      "chapitre_libelle": "RSA",
+      "montant_vote": 200000.0,
+      "montant_estime": 113280.0,
+      "taux_execution_moyen": 56.64,
+      "confiance": "moyenne"
+    }
+  ],
+  "detail_thematique": [
+    {
+      "thematique": "Social",
+      "vote_moyen": 1855091421,
+      "execute_moyen": 1872731939,
+      "taux_execution": 101.0,
+      "ecart_moyen": 17640518,
+      "annees_comparees": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "par_annee": [
+        {
+          "annee": 2019,
+          "vote": 1798678818,
+          "execute": 1770027733
+        },
+        {
+          "annee": 2020,
+          "vote": 1764350939,
+          "execute": 1833765666
+        },
+        {
+          "annee": 2021,
+          "vote": 1783970098,
+          "execute": 1778681773
+        },
+        {
+          "annee": 2022,
+          "vote": 1837012449,
+          "execute": 1859625681
+        },
+        {
+          "annee": 2023,
+          "vote": 1921751522,
+          "execute": 1943122576
+        },
+        {
+          "annee": 2024,
+          "vote": 2024784702,
+          "execute": 2051168206
+        }
+      ]
+    },
+    {
+      "thematique": "Fiscalité Directe",
+      "vote_moyen": 1357236560,
+      "execute_moyen": 1344379189,
+      "taux_execution": 99.1,
+      "ecart_moyen": -12857371,
+      "annees_comparees": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "par_annee": [
+        {
+          "annee": 2019,
+          "vote": 1329719517,
+          "execute": 1339523823
+        },
+        {
+          "annee": 2020,
+          "vote": 1341888985,
+          "execute": 1341285956
+        },
+        {
+          "annee": 2021,
+          "vote": 1337124728,
+          "execute": 1352223226
+        },
+        {
+          "annee": 2022,
+          "vote": 1311762874,
+          "execute": 1347001595
+        },
+        {
+          "annee": 2023,
+          "vote": 1366396762,
+          "execute": 1331943694
+        },
+        {
+          "annee": 2024,
+          "vote": 1456526494,
+          "execute": 1354296844
+        }
+      ]
+    },
+    {
+      "thematique": "Administration",
+      "vote_moyen": 1003151594,
+      "execute_moyen": 1002815454,
+      "taux_execution": 100.0,
+      "ecart_moyen": -336140,
+      "annees_comparees": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "par_annee": [
+        {
+          "annee": 2019,
+          "vote": 960497276,
+          "execute": 969870184
+        },
+        {
+          "annee": 2020,
+          "vote": 993817300,
+          "execute": 959044864
+        },
+        {
+          "annee": 2021,
+          "vote": 1013538600,
+          "execute": 1025934977
+        },
+        {
+          "annee": 2022,
+          "vote": 1021205335,
+          "execute": 978836986
+        },
+        {
+          "annee": 2023,
+          "vote": 976486604,
+          "execute": 994850201
+        },
+        {
+          "annee": 2024,
+          "vote": 1053364452,
+          "execute": 1088355511
+        }
+      ]
+    },
+    {
+      "thematique": "Urbanisme",
+      "vote_moyen": 988939154,
+      "execute_moyen": 933798066,
+      "taux_execution": 94.4,
+      "ecart_moyen": -55141088,
+      "annees_comparees": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "par_annee": [
+        {
+          "annee": 2019,
+          "vote": 969894706,
+          "execute": 858605204
+        },
+        {
+          "annee": 2020,
+          "vote": 949642144,
+          "execute": 807566292
+        },
+        {
+          "annee": 2021,
+          "vote": 948036957,
+          "execute": 795631937
+        },
+        {
+          "annee": 2022,
+          "vote": 921148844,
+          "execute": 994720675
+        },
+        {
+          "annee": 2023,
+          "vote": 1023021807,
+          "execute": 1053853949
+        },
+        {
+          "annee": 2024,
+          "vote": 1121890467,
+          "execute": 1092410337
+        }
+      ]
+    },
+    {
+      "thematique": "Éducation",
+      "vote_moyen": 877979997,
+      "execute_moyen": 876307486,
+      "taux_execution": 99.8,
+      "ecart_moyen": -1672511,
+      "annees_comparees": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "par_annee": [
+        {
+          "annee": 2019,
+          "vote": 901994697,
+          "execute": 869023251
+        },
+        {
+          "annee": 2020,
+          "vote": 863678004,
+          "execute": 857190826
+        },
+        {
+          "annee": 2021,
+          "vote": 865409284,
+          "execute": 863947114
+        },
+        {
+          "annee": 2022,
+          "vote": 846684870,
+          "execute": 849575984
+        },
+        {
+          "annee": 2023,
+          "vote": 860423698,
+          "execute": 882891309
+        },
+        {
+          "annee": 2024,
+          "vote": 929689428,
+          "execute": 935216435
+        }
+      ]
+    },
+    {
+      "thematique": "Culture & Sport",
+      "vote_moyen": 817862617,
+      "execute_moyen": 807845980,
+      "taux_execution": 98.8,
+      "ecart_moyen": -10016637,
+      "annees_comparees": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "par_annee": [
+        {
+          "annee": 2019,
+          "vote": 801311298,
+          "execute": 802726694
+        },
+        {
+          "annee": 2020,
+          "vote": 761310217,
+          "execute": 750454708
+        },
+        {
+          "annee": 2021,
+          "vote": 756328362,
+          "execute": 727206452
+        },
+        {
+          "annee": 2022,
+          "vote": 819222957,
+          "execute": 797220732
+        },
+        {
+          "annee": 2023,
+          "vote": 863006454,
+          "execute": 876841522
+        },
+        {
+          "annee": 2024,
+          "vote": 905996414,
+          "execute": 892625774
+        }
+      ]
+    },
+    {
+      "thematique": "Environnement",
+      "vote_moyen": 814632367,
+      "execute_moyen": 816724902,
+      "taux_execution": 100.3,
+      "ecart_moyen": 2092535,
+      "annees_comparees": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "par_annee": [
+        {
+          "annee": 2019,
+          "vote": 726661448,
+          "execute": 707811092
+        },
+        {
+          "annee": 2020,
+          "vote": 719379884,
+          "execute": 730230664
+        },
+        {
+          "annee": 2021,
+          "vote": 719542531,
+          "execute": 727648952
+        },
+        {
+          "annee": 2022,
+          "vote": 947758356,
+          "execute": 981691292
+        },
+        {
+          "annee": 2023,
+          "vote": 854839443,
+          "execute": 836833553
+        },
+        {
+          "annee": 2024,
+          "vote": 919612540,
+          "execute": 916133860
+        }
+      ]
+    },
+    {
+      "thematique": "Transport",
+      "vote_moyen": 808625743,
+      "execute_moyen": 859998154,
+      "taux_execution": 106.4,
+      "ecart_moyen": 51372411,
+      "annees_comparees": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "par_annee": [
+        {
+          "annee": 2019,
+          "vote": 764258547,
+          "execute": 782382655
+        },
+        {
+          "annee": 2020,
+          "vote": 768672998,
+          "execute": 768776336
+        },
+        {
+          "annee": 2021,
+          "vote": 786291735,
+          "execute": 786342569
+        },
+        {
+          "annee": 2022,
+          "vote": 807564920,
+          "execute": 908735885
+        },
+        {
+          "annee": 2023,
+          "vote": 877624709,
+          "execute": 951837019
+        },
+        {
+          "annee": 2024,
+          "vote": 847341549,
+          "execute": 961914461
+        }
+      ]
+    },
+    {
+      "thematique": "Emprunts & Dette",
+      "vote_moyen": 497223630,
+      "execute_moyen": 373264374,
+      "taux_execution": 75.1,
+      "ecart_moyen": -123959256,
+      "annees_comparees": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "par_annee": [
+        {
+          "annee": 2019,
+          "vote": 543140687,
+          "execute": 343140756
+        },
+        {
+          "annee": 2020,
+          "vote": 525792040,
+          "execute": 339759819
+        },
+        {
+          "annee": 2021,
+          "vote": 374803606,
+          "execute": 411123219
+        },
+        {
+          "annee": 2022,
+          "vote": 527530371,
+          "execute": 416965843
+        },
+        {
+          "annee": 2023,
+          "vote": 472969737,
+          "execute": 345387914
+        },
+        {
+          "annee": 2024,
+          "vote": 539105339,
+          "execute": 383208694
+        }
+      ]
+    },
+    {
+      "thematique": "Sécurité",
+      "vote_moyen": 443742404,
+      "execute_moyen": 440554836,
+      "taux_execution": 99.3,
+      "ecart_moyen": -3187568,
+      "annees_comparees": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "par_annee": [
+        {
+          "annee": 2019,
+          "vote": 401124098,
+          "execute": 404819467
+        },
+        {
+          "annee": 2020,
+          "vote": 422471275,
+          "execute": 414950605
+        },
+        {
+          "annee": 2021,
+          "vote": 433734995,
+          "execute": 421440715
+        },
+        {
+          "annee": 2022,
+          "vote": 440448879,
+          "execute": 435589306
+        },
+        {
+          "annee": 2023,
+          "vote": 475242454,
+          "execute": 461519978
+        },
+        {
+          "annee": 2024,
+          "vote": 489432726,
+          "execute": 505008946
+        }
+      ]
+    },
+    {
+      "thematique": "Fiscalité Indirecte",
+      "vote_moyen": 230244295,
+      "execute_moyen": 253466960,
+      "taux_execution": 110.1,
+      "ecart_moyen": 23222666,
+      "annees_comparees": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "par_annee": [
+        {
+          "annee": 2019,
+          "vote": 149861987,
+          "execute": 181438467
+        },
+        {
+          "annee": 2020,
+          "vote": 190087786,
+          "execute": 259487043
+        },
+        {
+          "annee": 2021,
+          "vote": 234794819,
+          "execute": 237972342
+        },
+        {
+          "annee": 2022,
+          "vote": 291586795,
+          "execute": 302249040
+        },
+        {
+          "annee": 2023,
+          "vote": 275771173,
+          "execute": 282147201
+        },
+        {
+          "annee": 2024,
+          "vote": 239363209,
+          "execute": 257507669
+        }
+      ]
+    },
+    {
+      "thematique": "Opérations Financières",
+      "vote_moyen": 162364769,
+      "execute_moyen": 156324344,
+      "taux_execution": 96.3,
+      "ecart_moyen": -6040425,
+      "annees_comparees": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "par_annee": [
+        {
+          "annee": 2019,
+          "vote": 147979172,
+          "execute": 140032116
+        },
+        {
+          "annee": 2020,
+          "vote": 145409172,
+          "execute": 141486586
+        },
+        {
+          "annee": 2021,
+          "vote": 147401720,
+          "execute": 139107212
+        },
+        {
+          "annee": 2022,
+          "vote": 142511720,
+          "execute": 142120686
+        },
+        {
+          "annee": 2023,
+          "vote": 177886636,
+          "execute": 170972093
+        },
+        {
+          "annee": 2024,
+          "vote": 213000195,
+          "execute": 204227370
+        }
+      ]
+    },
+    {
+      "thematique": "APA",
+      "vote_moyen": 133011314,
+      "execute_moyen": 132042852,
+      "taux_execution": 99.3,
+      "ecart_moyen": -968462,
+      "annees_comparees": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "par_annee": [
+        {
+          "annee": 2019,
+          "vote": 138329394,
+          "execute": 134959114
+        },
+        {
+          "annee": 2020,
+          "vote": 132696241,
+          "execute": 125473784
+        },
+        {
+          "annee": 2021,
+          "vote": 122809565,
+          "execute": 124730831
+        },
+        {
+          "annee": 2022,
+          "vote": 132390299,
+          "execute": 123126796
+        },
+        {
+          "annee": 2023,
+          "vote": 134239508,
+          "execute": 139481754
+        },
+        {
+          "annee": 2024,
+          "vote": 137602879,
+          "execute": 144484834
+        }
+      ]
+    },
+    {
+      "thematique": "Économie",
+      "vote_moyen": 95624427,
+      "execute_moyen": 109535029,
+      "taux_execution": 114.5,
+      "ecart_moyen": 13910602,
+      "annees_comparees": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "par_annee": [
+        {
+          "annee": 2019,
+          "vote": 78142942,
+          "execute": 74346794
+        },
+        {
+          "annee": 2020,
+          "vote": 90681648,
+          "execute": 125148694
+        },
+        {
+          "annee": 2021,
+          "vote": 107768507,
+          "execute": 90091622
+        },
+        {
+          "annee": 2022,
+          "vote": 95143731,
+          "execute": 65632614
+        },
+        {
+          "annee": 2023,
+          "vote": 94796288,
+          "execute": 83102356
+        },
+        {
+          "annee": 2024,
+          "vote": 107213448,
+          "execute": 218888093
+        }
+      ]
+    },
+    {
+      "thematique": "RSA",
+      "vote_moyen": 67592523,
+      "execute_moyen": 69058535,
+      "taux_execution": 102.2,
+      "ecart_moyen": 1466012,
+      "annees_comparees": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "par_annee": [
+        {
+          "annee": 2019,
+          "vote": 403655139,
+          "execute": 413342277
+        },
+        {
+          "annee": 2020,
+          "vote": 100000,
+          "execute": 65727
+        },
+        {
+          "annee": 2021,
+          "vote": 600000,
+          "execute": 312342
+        },
+        {
+          "annee": 2022,
+          "vote": 300000,
+          "execute": 267520
+        },
+        {
+          "annee": 2023,
+          "vote": 400000,
+          "execute": 95049
+        },
+        {
+          "annee": 2024,
+          "vote": 500000,
+          "execute": 268294
+        }
+      ]
+    },
+    {
+      "thematique": "Dotations & Participations",
+      "vote_moyen": 40278964,
+      "execute_moyen": 40159932,
+      "taux_execution": 99.7,
+      "ecart_moyen": -119033,
+      "annees_comparees": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "par_annee": [
+        {
+          "annee": 2019,
+          "vote": 21457047,
+          "execute": 12662915
+        },
+        {
+          "annee": 2020,
+          "vote": 19757047,
+          "execute": 41777576
+        },
+        {
+          "annee": 2021,
+          "vote": 47757047,
+          "execute": 73273164
+        },
+        {
+          "annee": 2022,
+          "vote": 65786817,
+          "execute": 45732926
+        },
+        {
+          "annee": 2023,
+          "vote": 54295747,
+          "execute": 36441776
+        },
+        {
+          "annee": 2024,
+          "vote": 32620080,
+          "execute": 31071232
+        }
+      ]
+    },
+    {
+      "thematique": "Fonds Européens",
+      "vote_moyen": 683053,
+      "execute_moyen": 572264,
+      "taux_execution": 83.8,
+      "ecart_moyen": -110789,
+      "annees_comparees": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "par_annee": [
+        {
+          "annee": 2019,
+          "vote": 1142907,
+          "execute": 1602093
+        },
+        {
+          "annee": 2020,
+          "vote": 1140305,
+          "execute": 715252
+        },
+        {
+          "annee": 2021,
+          "vote": 488746,
+          "execute": 214617
+        },
+        {
+          "annee": 2022,
+          "vote": 425071,
+          "execute": 263986
+        },
+        {
+          "annee": 2023,
+          "vote": 438900,
+          "execute": 333254
+        },
+        {
+          "annee": 2024,
+          "vote": 462391,
+          "execute": 304382
+        }
+      ]
+    }
+  ]
+}

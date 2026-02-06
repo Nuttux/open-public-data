@@ -62,6 +62,49 @@ sources:
             description: "Montant mandaté après régularisation (FLOAT)"
 
       # =========================================================================
+      # BUDGET VOTÉ (prévisionnel) - Entité séparée du CA
+      # =========================================================================
+      
+      - name: budgets_votes_principaux_a_partir_de_2019_m57_ville_departement
+        description: |
+          Budget voté (Budget Primitif) de la Ville de Paris.
+          Contient les crédits VOTÉS par le Conseil de Paris (prévisionnel).
+          Entité SÉPARÉE du Compte Administratif (budget exécuté).
+          
+          ⚠️ Dataset STALE sur OpenData Paris (dernière MAJ: 2020-11-25)
+          Couverture: 2019-2021 uniquement.
+          Pour 2022-2026, les BV devront être extraits depuis PDFs.
+          
+          Colonnes DIFFÉRENTES du CA (nommage plus ancien).
+          
+          ~8.6k lignes, années 2019-2021
+        columns:
+          - name: exercice_comptable
+            description: "Année fiscale (TEXT, ex: '2020')"
+          - name: groupe_d_autorisation_i_f
+            description: "'Fonctionnement' ou 'Investissement' (en clair, pas I/F)"
+          - name: sens_depense_recette
+            description: "'Dépenses' ou 'Recettes'"
+          - name: type_d_operation_r_o_i_m
+            description: "'Réel', 'Pour Ordre', 'Mixte'"
+          - name: etape_budgetaire
+            description: "'Budget Primitif' ou 'Budget Suppl.' - type de vote"
+          - name: chapitre_niveau_vote_cle_non_composee
+            description: "Code chapitre M57 (STRING)"
+          - name: chapitre_niveau_vote_texte
+            description: "Libellé du chapitre"
+          - name: nature_reglementaire_cle_non_composee
+            description: "Code nature comptable (STRING)"
+          - name: nature_reglementaire_texte
+            description: "Libellé nature"
+          - name: rubrique_reglementaire_cle
+            description: "Code fonction/rubrique (STRING)"
+          - name: rubrique_reglementaire_texte
+            description: "Libellé fonction/rubrique"
+          - name: budget_vote_pmt
+            description: "Crédits votés (INTEGER, peut être NULL) - montant PRÉVISIONNEL"
+
+      # =========================================================================
       # INVESTISSEMENTS (AP/CP) - Projets physiques nommés
       # =========================================================================
       

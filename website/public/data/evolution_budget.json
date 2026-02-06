@@ -1,12 +1,16 @@
 {
-  "generated_at": "2026-02-06T00:23:16.813445",
+  "generated_at": "2026-02-06T03:00:26.150083",
   "source": "mart_evolution_budget + core_budget",
   "description": "Données d'évolution du budget de Paris avec métriques financières",
   "definitions": {
     "solde_comptable": "Recettes totales - Dépenses totales (équilibre technique)",
     "recettes_propres": "Recettes totales - Emprunts (ressources réelles)",
     "surplus_deficit": "Recettes propres - Dépenses (santé financière réelle)",
-    "epargne_brute": "Recettes fonct. - Dépenses fonct. (capacité d'autofinancement)"
+    "epargne_brute": "Recettes fonct. - Dépenses fonct. (capacité d'autofinancement)",
+    "emprunts": "Nouveaux emprunts reçus (nature 16xx recettes)",
+    "remboursement_principal": "Remboursement du capital de la dette (nature 16xx dépenses)",
+    "interets_dette": "Intérêts payés sur la dette (nature 66xx dépenses)",
+    "variation_dette_nette": "Emprunts - Remboursement principal (+ = dette augmente)"
   },
   "years": [
     {
@@ -16,7 +20,10 @@
         "depenses": 11494727617.749994,
         "recettes_propres": 10355176531.92,
         "surplus_deficit": -1139551085.8299942,
-        "emprunts": 1171614421.9400005,
+        "emprunts": 1171614421.94,
+        "remboursement_principal": 325618114.96,
+        "interets_dette": 204227369.58,
+        "variation_dette_nette": 845996306.98,
         "solde_comptable": 32063336.110006332
       },
       "sections": {
@@ -42,7 +49,10 @@
         "depenses": 10845342218.919987,
         "recettes_propres": 9893580522.540003,
         "surplus_deficit": -951761696.3799839,
-        "emprunts": 901203839.2600002,
+        "emprunts": 901203839.26,
+        "remboursement_principal": 316960687.0,
+        "interets_dette": 170972092.82000002,
+        "variation_dette_nette": 584243152.26,
         "solde_comptable": -50557857.11998367
       },
       "sections": {
@@ -68,7 +78,10 @@
         "depenses": 10699641826.979994,
         "recettes_propres": 9680948669.010014,
         "surplus_deficit": -1018693157.9699802,
-        "emprunts": 1198328148.5200005,
+        "emprunts": 1198328148.52,
+        "remboursement_principal": 331863266.91999996,
+        "interets_dette": 142120686.04999998,
+        "variation_dette_nette": 866464881.6,
         "solde_comptable": 179634990.55002022
       },
       "sections": {
@@ -94,7 +107,10 @@
         "depenses": 10025231536.399986,
         "recettes_propres": 9036554852.019989,
         "surplus_deficit": -988676684.3799973,
-        "emprunts": 954386631.710001,
+        "emprunts": 954386631.71,
+        "remboursement_principal": 280357506.93,
+        "interets_dette": 139107211.62,
+        "variation_dette_nette": 674029124.78,
         "solde_comptable": -34290052.66999626
       },
       "sections": {
@@ -120,7 +136,10 @@
         "depenses": 9940645002.63999,
         "recettes_propres": 9375928832.869993,
         "surplus_deficit": -564716169.7699966,
-        "emprunts": 1142041586.1900005,
+        "emprunts": 1142041586.19,
+        "remboursement_principal": 257336832.14,
+        "interets_dette": 141486585.94,
+        "variation_dette_nette": 884704754.0500001,
         "solde_comptable": 577325416.4200039
       },
       "sections": {
@@ -146,7 +165,10 @@
         "depenses": 9806315541.299984,
         "recettes_propres": 9237237750.11,
         "surplus_deficit": -569077791.1899834,
-        "emprunts": 398637403.8299999,
+        "emprunts": 398637403.83000004,
+        "remboursement_principal": 289333793.30999994,
+        "interets_dette": 140032116.15,
+        "variation_dette_nette": 109303610.5200001,
         "solde_comptable": -170440387.35998344
       },
       "sections": {

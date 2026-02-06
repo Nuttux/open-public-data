@@ -1,5 +1,6 @@
 {
   "year": 2022,
+  "type_budget": "execute",
   "dataStatus": "COMPLET",
   "dataAvailability": {
     "budget": true,
@@ -54,15 +55,15 @@
       "category": "expense"
     },
     {
-      "name": "Dette",
-      "category": "expense"
-    },
-    {
       "name": "Environnement",
       "category": "expense"
     },
     {
       "name": "Personnel & Admin",
+      "category": "expense"
+    },
+    {
+      "name": "Remboursement dette",
       "category": "expense"
     },
     {
@@ -120,7 +121,7 @@
     },
     {
       "source": "Budget Paris",
-      "target": "Dette",
+      "target": "Remboursement dette",
       "value": 559086529.0899999
     },
     {
@@ -1174,7 +1175,7 @@
           "value": 35000.0
         }
       ],
-      "Dette": [
+      "Remboursement dette": [
         {
           "name": "Remboursement Dette: Emprunts obligataires remboursables in fine",
           "value": 240000000.0

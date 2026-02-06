@@ -1,5 +1,7 @@
 {
   "availableYears": [
+    2026,
+    2025,
     2024,
     2023,
     2022,
@@ -7,7 +9,7 @@
     2020,
     2019
   ],
-  "latestYear": 2024,
+  "latestYear": 2026,
   "latestCompleteYear": 2022,
   "completeYears": [
     2022,
@@ -19,9 +21,44 @@
     2024,
     2023
   ],
+  "votedYears": [
+    2026,
+    2025
+  ],
+  "year_types": {
+    "2026": "vote",
+    "2025": "vote",
+    "2024": "execute",
+    "2023": "execute",
+    "2022": "execute",
+    "2021": "execute",
+    "2020": "execute",
+    "2019": "execute"
+  },
+  "covid_years": [
+    2020,
+    2021
+  ],
   "summary": [
     {
+      "year": 2026,
+      "type_budget": "vote",
+      "dataStatus": "BUDGET_VOTE",
+      "recettes": 11195934848.0,
+      "depenses": 11722400172.0,
+      "solde": -526465324.0
+    },
+    {
+      "year": 2025,
+      "type_budget": "vote",
+      "dataStatus": "BUDGET_VOTE",
+      "recettes": 11340959755.41,
+      "depenses": 12161871777.01,
+      "solde": -820912021.6000004
+    },
+    {
       "year": 2024,
+      "type_budget": "execute",
       "dataStatus": "PARTIEL",
       "recettes": 11526790953.859999,
       "depenses": 11494727617.750002,
@@ -29,6 +66,7 @@
     },
     {
       "year": 2023,
+      "type_budget": "execute",
       "dataStatus": "PARTIEL",
       "recettes": 10794784361.8,
       "depenses": 10845342218.92,
@@ -36,6 +74,7 @@
     },
     {
       "year": 2022,
+      "type_budget": "execute",
       "dataStatus": "COMPLET",
       "recettes": 10879276817.53,
       "depenses": 10699641826.979998,
@@ -43,6 +82,7 @@
     },
     {
       "year": 2021,
+      "type_budget": "execute",
       "dataStatus": "COMPLET",
       "recettes": 9990941483.73,
       "depenses": 10025231536.4,
@@ -50,6 +90,7 @@
     },
     {
       "year": 2020,
+      "type_budget": "execute",
       "dataStatus": "COMPLET",
       "recettes": 10517970419.06,
       "depenses": 9940645002.640003,
@@ -57,6 +98,7 @@
     },
     {
       "year": 2019,
+      "type_budget": "execute",
       "dataStatus": "COMPLET",
       "recettes": 9635875153.94,
       "depenses": 9806315541.300001,

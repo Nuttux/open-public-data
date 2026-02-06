@@ -34,6 +34,14 @@ Thumbs.db
 *.swp
 *.swo
 
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Cache / large files
+.cache/
+
 # Temp files
 *.json.bak
 *.log
