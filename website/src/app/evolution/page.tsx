@@ -23,6 +23,7 @@ import EvolutionChart, { type YearlyBudget } from '@/components/EvolutionChart';
 import FinancialHealthChart, { type FinancialYearData } from '@/components/FinancialHealthChart';
 import VariationRankChart, { type VariationsData } from '@/components/VariationRankChart';
 import YoyCards from '@/components/YoyCards';
+import GlossaryTip from '@/components/GlossaryTip';
 import DataQualityBanner from '@/components/DataQualityBanner';
 import { formatEuroCompact } from '@/lib/formatters';
 
@@ -40,7 +41,11 @@ interface EvolutionBudgetData {
       solde_comptable: number;
       recettes_propres: number;
       surplus_deficit: number;
+      // Métriques dette
       emprunts: number;
+      remboursement_principal: number;
+      interets_dette: number;
+      variation_dette_nette: number;
     };
     epargne_brute: number;
     sections: {
@@ -192,12 +197,12 @@ export default function EvolutionPage() {
 
   return (
     <div className="min-h-screen">
-      {/* Header */}
-      <header className="border-b border-slate-700/50 bg-slate-900/50 backdrop-blur sticky top-0 z-10">
+      {/* Header — non-sticky sur mobile (la bottom nav suffit), sticky sur desktop */}
+      <header className="border-b border-slate-700/50 bg-slate-900/50 backdrop-blur md:sticky md:top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div>
-              <h1 className="text-2xl font-bold text-slate-100 flex items-center gap-3">
+              <h1 className="text-xl md:text-2xl font-bold text-slate-100 flex items-center gap-3">
                 <span>📈</span>
                 Évolution du Budget
               </h1>
@@ -238,13 +243,14 @@ export default function EvolutionPage() {
           </div>
         )}
 
-        {/* Métriques santé financière de l'année */}
+        {/* Métriques santé financière de l'année (complémentaires aux YoyCards) */}
         {currentFinancialData && (
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+            {/* Épargne brute - capacité d'autofinancement */}
             <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-lg">💰</span>
-                <p className="text-xs text-slate-500 uppercase tracking-wide">Épargne brute</p>
+                <p className="text-xs text-slate-500 uppercase tracking-wide">Épargne brute <GlossaryTip term="epargne_brute" /></p>
               </div>
               <p className={`text-2xl font-bold ${currentFinancialData.epargne_brute >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
                 {currentFinancialData.epargne_brute >= 0 ? '+' : ''}{formatEuroCompact(currentFinancialData.epargne_brute)}
@@ -252,26 +258,65 @@ export default function EvolutionPage() {
               <p className="text-xs text-slate-400 mt-1">Capacité d&apos;autofinancement</p>
             </div>
             
-            <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-lg">📊</span>
-                <p className="text-xs text-slate-500 uppercase tracking-wide">Surplus/Déficit financier</p>
-              </div>
-              <p className={`text-2xl font-bold ${currentFinancialData.totals.surplus_deficit >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
-                {currentFinancialData.totals.surplus_deficit >= 0 ? '+' : ''}{formatEuroCompact(currentFinancialData.totals.surplus_deficit)}
-              </p>
-              <p className="text-xs text-slate-400 mt-1">Hors emprunts ({formatEuroCompact(currentFinancialData.totals.emprunts)})</p>
-            </div>
-            
+            {/* Solde comptable - équilibre technique */}
             <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-lg">⚖️</span>
-                <p className="text-xs text-slate-500 uppercase tracking-wide">Solde comptable</p>
+                <p className="text-xs text-slate-500 uppercase tracking-wide">Solde comptable <GlossaryTip term="solde_comptable" /></p>
               </div>
               <p className={`text-2xl font-bold ${currentFinancialData.totals.solde_comptable >= 0 ? 'text-slate-300' : 'text-slate-400'}`}>
                 {currentFinancialData.totals.solde_comptable >= 0 ? '+' : ''}{formatEuroCompact(currentFinancialData.totals.solde_comptable)}
               </p>
               <p className="text-xs text-slate-400 mt-1">Équilibre technique</p>
+            </div>
+          </div>
+        )}
+
+        {/* Métriques dette */}
+        {currentFinancialData && (
+          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-amber-500/30 p-4 mb-6">
+            <h3 className="text-sm font-semibold text-slate-200 mb-3 flex items-center gap-2">
+              <span>🏦</span>
+              Gestion de la dette {selectedYear}
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4">
+              {/* Emprunts nouveaux */}
+              <div>
+                <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-wide">Emprunts <GlossaryTip term="emprunts" /></p>
+                <p className="text-lg md:text-xl font-bold text-amber-400 mt-1">
+                  +{formatEuroCompact(currentFinancialData.totals.emprunts)}
+                </p>
+                <p className="text-[10px] md:text-xs text-slate-500 mt-1">Nouveaux</p>
+              </div>
+              
+              {/* Remboursement principal */}
+              <div>
+                <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-wide">Remb. capital <GlossaryTip term="remboursement_principal" /></p>
+                <p className="text-lg md:text-xl font-bold text-emerald-400 mt-1">
+                  -{formatEuroCompact(currentFinancialData.totals.remboursement_principal)}
+                </p>
+                <p className="text-[10px] md:text-xs text-slate-500 mt-1">Principal</p>
+              </div>
+              
+              {/* Intérêts */}
+              <div>
+                <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-wide">Intérêts <GlossaryTip term="interets_dette" /></p>
+                <p className="text-lg md:text-xl font-bold text-red-400 mt-1">
+                  -{formatEuroCompact(currentFinancialData.totals.interets_dette)}
+                </p>
+                <p className="text-[10px] md:text-xs text-slate-500 mt-1">Coût dette</p>
+              </div>
+              
+              {/* Variation dette nette */}
+              <div>
+                <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-wide">Δ Dette nette <GlossaryTip term="variation_dette_nette" /></p>
+                <p className={`text-lg md:text-xl font-bold mt-1 ${currentFinancialData.totals.variation_dette_nette > 0 ? 'text-red-400' : 'text-emerald-400'}`}>
+                  {currentFinancialData.totals.variation_dette_nette > 0 ? '+' : ''}{formatEuroCompact(currentFinancialData.totals.variation_dette_nette)}
+                </p>
+                <p className="text-[10px] md:text-xs text-slate-500 mt-1">
+                  {currentFinancialData.totals.variation_dette_nette > 0 ? 'Dette ↑' : 'Dette ↓'}
+                </p>
+              </div>
             </div>
           </div>
         )}
@@ -341,47 +386,47 @@ export default function EvolutionPage() {
               Statistiques sur la période
             </h2>
             
-            <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
               <div>
-                <p className="text-xs text-slate-500 uppercase tracking-wide">Période</p>
-                <p className="text-xl font-bold text-slate-100">
+                <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-wide">Période</p>
+                <p className="text-lg md:text-xl font-bold text-slate-100">
                   {globalStats.minYear}-{globalStats.maxYear}
                 </p>
-                <p className="text-xs text-slate-400 mt-1">
+                <p className="text-[10px] md:text-xs text-slate-400 mt-1">
                   {globalStats.nbYears} années
                 </p>
               </div>
               
               <div>
-                <p className="text-xs text-slate-500 uppercase tracking-wide">Moy. Recettes</p>
-                <p className="text-xl font-bold text-emerald-400">
+                <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-wide">Moy. Recettes</p>
+                <p className="text-lg md:text-xl font-bold text-emerald-400">
                   {formatEuroCompact(globalStats.avgRecettes)}
                 </p>
-                <p className="text-xs text-slate-400 mt-1">par an</p>
+                <p className="text-[10px] md:text-xs text-slate-400 mt-1">par an</p>
               </div>
               
               <div>
-                <p className="text-xs text-slate-500 uppercase tracking-wide">Moy. Dépenses</p>
-                <p className="text-xl font-bold text-purple-400">
+                <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-wide">Moy. Dépenses</p>
+                <p className="text-lg md:text-xl font-bold text-purple-400">
                   {formatEuroCompact(globalStats.avgDepenses)}
                 </p>
-                <p className="text-xs text-slate-400 mt-1">par an</p>
+                <p className="text-[10px] md:text-xs text-slate-400 mt-1">par an</p>
               </div>
               
               <div>
-                <p className="text-xs text-slate-500 uppercase tracking-wide">Moy. Épargne brute</p>
-                <p className={`text-xl font-bold ${globalStats.avgEpargneBrute >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-wide">Moy. Épargne brute</p>
+                <p className={`text-lg md:text-xl font-bold ${globalStats.avgEpargneBrute >= 0 ? 'text-green-400' : 'text-red-400'}`}>
                   {formatEuroCompact(globalStats.avgEpargneBrute)}
                 </p>
-                <p className="text-xs text-slate-400 mt-1">par an</p>
+                <p className="text-[10px] md:text-xs text-slate-400 mt-1">par an</p>
               </div>
               
-              <div>
-                <p className="text-xs text-slate-500 uppercase tracking-wide">Croissance Dépenses</p>
-                <p className={`text-xl font-bold ${globalStats.cagr > 0 ? 'text-red-400' : 'text-emerald-400'}`}>
+              <div className="col-span-2 sm:col-span-1">
+                <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-wide">Croissance Dépenses</p>
+                <p className={`text-lg md:text-xl font-bold ${globalStats.cagr > 0 ? 'text-red-400' : 'text-emerald-400'}`}>
                   {globalStats.cagr > 0 ? '+' : ''}{globalStats.cagr.toFixed(1)}%
                 </p>
-                <p className="text-xs text-slate-400 mt-1">TCAM (annuel)</p>
+                <p className="text-[10px] md:text-xs text-slate-400 mt-1">TCAM (annuel)</p>
               </div>
             </div>
           </div>

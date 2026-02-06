@@ -46,6 +46,49 @@ models:
           - not_null
 
   # ===========================================================================
+  # BUDGET VOTÉ (prévisionnel) - Entité séparée du CA
+  # ===========================================================================
+  - name: core_budget_vote
+    description: |
+      Budget voté de la Ville de Paris (OBT) - Budget Primitif.
+      Entité SÉPARÉE de core_budget (exécuté).
+      
+      Grain: (annee, section, chapitre_code, nature_code, fonction_code, sens_flux)
+      
+      Enrichissements (même logique que core_budget):
+      - ode_thematique: thématique dashboard (mapping chapitre/fonction)
+      - ode_categorie_flux: catégorie comptable (Personnel, Subventions, etc.)
+      
+      ARCHITECTURE:
+      - core_budget = CA (exécuté) = source de vérité = 2019-2024
+      - core_budget_vote = BV (prévisionnel) = 2019-2026
+      - mart_vote_vs_execute = JOIN des deux
+    config:
+      materialized: table
+    columns:
+      - name: annee
+        description: "Année fiscale (2019-2026)"
+        tests:
+          - not_null
+      - name: sens_flux
+        description: "Dépense ou Recette"
+        tests:
+          - accepted_values:
+              values: ['Dépense', 'Recette']
+      - name: montant
+        description: "Crédits votés (€) - montant PRÉVISIONNEL"
+        tests:
+          - not_null
+      - name: ode_thematique
+        description: "Thématique dashboard (Administration, Éducation, etc.)"
+      - name: ode_categorie_flux
+        description: "Catégorie comptable (Personnel, Subventions, etc.)"
+      - name: cle_technique
+        description: "Clé technique unique (suffixe -BV)"
+        tests:
+          - not_null
+
+  # ===========================================================================
   # SUBVENTIONS
   # ===========================================================================
   - name: core_subventions

@@ -102,6 +102,103 @@ seeds:
         ode_confiance: FLOAT64
         ode_date_recherche: STRING
         ode_source: STRING
+    
+    # -------------------------------------------------------------------------
+    # Budget Voté (BP) extrait des PDFs éditique BG (2020-2026)
+    # Peuplé par: extract_pdf_budget_vote.py (pdfplumber)
+    # Un fichier par année: seed_pdf_budget_vote_{YYYY}.csv
+    # -------------------------------------------------------------------------
+    seed_pdf_budget_vote_2020:
+      +column_types:
+        annee: INT64
+        section: STRING
+        sens_flux: STRING
+        chapitre_code: STRING
+        chapitre_libelle: STRING
+        nature_code: STRING
+        nature_libelle: STRING
+        fonction_code: STRING
+        montant: FLOAT64
+        source_page: INT64
+        source_pdf: STRING
+    seed_pdf_budget_vote_2021:
+      +column_types:
+        annee: INT64
+        section: STRING
+        sens_flux: STRING
+        chapitre_code: STRING
+        chapitre_libelle: STRING
+        nature_code: STRING
+        nature_libelle: STRING
+        fonction_code: STRING
+        montant: FLOAT64
+        source_page: INT64
+        source_pdf: STRING
+    seed_pdf_budget_vote_2022:
+      +column_types:
+        annee: INT64
+        section: STRING
+        sens_flux: STRING
+        chapitre_code: STRING
+        chapitre_libelle: STRING
+        nature_code: STRING
+        nature_libelle: STRING
+        fonction_code: STRING
+        montant: FLOAT64
+        source_page: INT64
+        source_pdf: STRING
+    seed_pdf_budget_vote_2023:
+      +column_types:
+        annee: INT64
+        section: STRING
+        sens_flux: STRING
+        chapitre_code: STRING
+        chapitre_libelle: STRING
+        nature_code: STRING
+        nature_libelle: STRING
+        fonction_code: STRING
+        montant: FLOAT64
+        source_page: INT64
+        source_pdf: STRING
+    seed_pdf_budget_vote_2024:
+      +column_types:
+        annee: INT64
+        section: STRING
+        sens_flux: STRING
+        chapitre_code: STRING
+        chapitre_libelle: STRING
+        nature_code: STRING
+        nature_libelle: STRING
+        fonction_code: STRING
+        montant: FLOAT64
+        source_page: INT64
+        source_pdf: STRING
+    seed_pdf_budget_vote_2025:
+      +column_types:
+        annee: INT64
+        section: STRING
+        sens_flux: STRING
+        chapitre_code: STRING
+        chapitre_libelle: STRING
+        nature_code: STRING
+        nature_libelle: STRING
+        fonction_code: STRING
+        montant: FLOAT64
+        source_page: INT64
+        source_pdf: STRING
+    seed_pdf_budget_vote_2026:
+      +column_types:
+        annee: INT64
+        section: STRING
+        sens_flux: STRING
+        chapitre_code: STRING
+        chapitre_libelle: STRING
+        nature_code: STRING
+        nature_libelle: STRING
+        fonction_code: STRING
+        montant: FLOAT64
+        source_page: INT64
+        source_pdf: STRING
 
 # =============================================================================
 # Configuration des modèles par couche
@@ -131,6 +228,14 @@ models:
       +materialized: table
       +schema: analytics
       +tags: ['analytics', 'core']
+    
+    # -------------------------------------------------------------------------
+    # Marts : Tables agrégées et optimisées pour l'export frontend
+    # -------------------------------------------------------------------------
+    marts:
+      +materialized: table
+      +schema: marts
+      +tags: ['marts']
 
 # =============================================================================
 # Variables globales du projet

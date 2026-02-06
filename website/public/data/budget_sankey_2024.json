@@ -1,5 +1,6 @@
 {
   "year": 2024,
+  "type_budget": "execute",
   "dataStatus": "PARTIEL",
   "dataAvailability": {
     "budget": true,
@@ -54,15 +55,15 @@
       "category": "expense"
     },
     {
-      "name": "Dette",
-      "category": "expense"
-    },
-    {
       "name": "Environnement",
       "category": "expense"
     },
     {
       "name": "Personnel & Admin",
+      "category": "expense"
+    },
+    {
+      "name": "Remboursement dette",
       "category": "expense"
     },
     {
@@ -120,7 +121,7 @@
     },
     {
       "source": "Budget Paris",
-      "target": "Dette",
+      "target": "Remboursement dette",
       "value": 587436063.54
     },
     {
@@ -1158,7 +1159,7 @@
           "value": 40084.340000000004
         }
       ],
-      "Dette": [
+      "Remboursement dette": [
         {
           "name": "Remboursement Dette: Emprunts en euros",
           "value": 208050699.94

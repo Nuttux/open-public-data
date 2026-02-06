@@ -260,6 +260,61 @@ models:
         description: "Part des fonds propres dans le passif (%)"
 
   # ===========================================================================
+  # COMPARAISON VOTÉ vs EXÉCUTÉ
+  # ===========================================================================
+  - name: mart_vote_vs_execute
+    description: |
+      Comparaison du budget voté (BP) vs budget exécuté (CA).
+      JOIN de core_budget (CA) et core_budget_vote (BV).
+      
+      Métriques:
+      - taux_execution_pct: Exécuté / Voté * 100
+      - ecart_absolu, ecart_relatif_pct
+      - montant_estime: estimation pour 2025-2026 via taux historique moyen
+      - confiance_estimation: haute/moyenne/basse
+      
+      Couverture:
+      - Comparaison: 2019-2024 (CA + BV disponibles)
+      - Vote seul: 2025-2026 (BV uniquement, CA pas encore publié)
+      
+      Utilisé par: export_vote_vs_execute.py → vote_vs_execute/*.json
+    config:
+      materialized: view
+    columns:
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: section
+        description: "Investissement ou Fonctionnement"
+        tests:
+          - not_null
+      - name: sens_flux
+        description: "Dépense ou Recette"
+        tests:
+          - not_null
+      - name: chapitre_code
+        description: "Code chapitre M57"
+      - name: montant_vote
+        description: "Montant voté (€) - crédits BP"
+      - name: montant_execute
+        description: "Montant exécuté (€) - mandaté CA"
+      - name: taux_execution_pct
+        description: "Taux d'exécution = Exécuté / Voté * 100"
+      - name: ecart_absolu
+        description: "Écart absolu = Exécuté - Voté (€)"
+      - name: ecart_relatif_pct
+        description: "Écart relatif en % = (Exécuté - Voté) / Voté * 100"
+      - name: comparaison_possible
+        description: "TRUE si les deux sources existent pour cette année"
+      - name: vote_seul
+        description: "TRUE si seul le vote est disponible (2025-2026)"
+      - name: montant_estime
+        description: "Estimation exécution = vote * taux_moyen_historique (pour 2025-2026)"
+      - name: confiance_estimation
+        description: "Confiance: haute, moyenne, basse (basée sur historique)"
+
+  # ===========================================================================
   # CONCENTRATION (PARETO)
   # ===========================================================================
   - name: mart_concentration

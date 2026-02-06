@@ -58,11 +58,14 @@ def main():
     log.header("Export Complet Paris Budget Dashboard")
     
     scripts = [
-        ("export_sankey_data.py", "Budget Sankey"),
+        ("export_sankey_data.py", "Budget Sankey (2019-2026 incl. voté)"),
         ("export_budget_nature.py", "Budget par Nature (Donut)"),
+        ("export_evolution_data.py", "Évolution temporelle"),
         ("export_bilan_data.py", "Bilan Comptable"),
         ("export_subventions_data.py", "Subventions"),
         ("export_map_data.py", "Données Carte"),
+        ("export_vote_vs_execute.py", "Voté vs Exécuté"),
+        ("export_data_availability.py", "Data Availability"),
     ]
     
     log.info(f"Scripts à exécuter: {len(scripts)}")

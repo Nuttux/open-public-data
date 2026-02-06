@@ -46,9 +46,10 @@ import requests
 # Configuration
 # =============================================================================
 
-PROJECT_ROOT = Path(__file__).parent.parent
+# PROJECT_ROOT est la racine du dépôt (paris-budget-dashboard)
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent
 OUTPUT_DIR = PROJECT_ROOT / "website" / "public" / "data" / "map"
-SEEDS_DIR = PROJECT_ROOT / "paris-public-open-data" / "seeds"
+SEEDS_DIR = PROJECT_ROOT / "pipeline" / "seeds"
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 # Utilise gemini-2.5-flash pour l'extraction (bon rapport qualité/quota)
@@ -297,8 +298,11 @@ def extract_page_with_regex(
     is_summary = 'Présentation par type' in page_content or 'Type AP' in page_content
     is_detail = 'Principales opérations' in page_content
     
-    # Pattern pour les montants: "1 234 567,89" ou "1234567.89"
-    amount_pattern = r'([\d\s]+(?:[\d\s]*)[,\.]\d{2})'
+    # Pattern pour les montants: 
+    # - "1 234 567,89" ou "1234567.89" (avec décimales)
+    # - "1 234 567" ou "6 0 629" (sans décimales, espaces variés)
+    # On capture les groupes de chiffres séparés par espaces EN FIN DE LIGNE
+    amount_pattern = r'(\d[\d\s]+\d)(?:[,\.]\d{2})?(?:\s*€?)?$'
     
     if is_summary and not is_detail:
         # Page récapitulative UNIQUEMENT - extraire le total général comme référence
@@ -529,8 +533,15 @@ def identify_il_pages(pages_text: list[tuple[int, str]]) -> list[int]:
         # Vérifier si la page contient des patterns de données
         has_data = any(re.search(p, text, re.IGNORECASE) for p in data_patterns)
         
-        # Vérifier qu'il y a des montants (format: 1 234 567,89 ou 1234567.89)
-        has_amounts = bool(re.search(r'\d[\d\s]{2,}\d[,\.]\d{2}', text))
+        # Vérifier qu'il y a des montants (formats variés: 
+        # - 1 234 567,89 ou 1234567.89 (avec décimales)
+        # - 1 234 567 ou 1234567 (sans décimales, PDF 2022)
+        # - 6 0 629 (espaces bizarres du PDF)
+        has_amounts = bool(
+            re.search(r'\d[\d\s]{2,}\d[,\.]\d{2}', text) or  # Avec décimales
+            re.search(r'\d{1,3}(?:\s\d{3})+', text) or       # Format français normal
+            re.search(r'\d+\s+\d{3}', text)                   # Format avec espaces
+        )
         
         if has_data and has_amounts:
             il_pages.append(page_num)
