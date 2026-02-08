@@ -240,7 +240,7 @@ export default function BilanSankey({ data, onNodeClick }: BilanSankeyProps) {
               <div style="font-weight: 600; margin-bottom: 6px; font-size: 13px;">
                 ${p.data.source} → ${p.data.target}
               </div>
-              <div style="font-size: 16px; font-weight: 700; color: #a855f7;">${formatEuroCompact(p.value)}</div>
+              <div style="font-size: 16px; font-weight: 700; color: #8b5cf6;">${formatEuroCompact(p.value)}</div>
               <div style="color: #94a3b8; font-size: 11px;">${formatPercent(percentage)} du patrimoine</div>
             </div>
           `;

@@ -25,6 +25,7 @@ export const PALETTE = {
   blue: '#3b82f6',       // Tailwind blue-500
   purple: '#a855f7',     // Tailwind purple-500
   pink: '#ec4899',       // Tailwind pink-500
+  rose: '#f43f5e',       // Tailwind rose-500 — Dépenses (intuitif "sortie d'argent")
   red: '#ef4444',        // Tailwind red-500
   orange: '#f97316',     // Tailwind orange-500
   amber: '#f59e0b',      // Tailwind amber-500
@@ -72,12 +73,12 @@ export const THEMATIQUE_COLORS: Record<string, string> = {
   
   // --- Variantes (nuances de la couleur principale) ---
   'Culture': PALETTE.purple,
-  'Sport': PALETTE.violet,                // Variante de Culture
+  'Sport': PALETTE.lime,                  // 🏃 Lime - Activité physique, plein air (distinct de Culture/purple)
   'Social - Solidarité': PALETTE.pink,
   'Social - Petite enfance': '#f472b6',   // Pink lighter
   'Transport - Voirie': '#d97706',        // Amber darker
   'Urbanisme - Logement': '#0891b2',      // Cyan darker
-  'International': PALETTE.violet,
+  'International': PALETTE.sky,           // 🌍 Sky - Ouverture, horizon (distinct de Sport)
   
   // --- Spéciaux ---
   'Dette': PALETTE.yellow,                // 💳 Jaune - Attention (dette)
@@ -125,10 +126,10 @@ export const NATURE_COLORS: Record<string, string> = {
 
 export const FLUX_COLORS = {
   recettes: PALETTE.emerald,    // 📈 Vert = positif, entrée d'argent
-  depenses: PALETTE.purple,     // 📉 Purple = sortie (pas rouge pour éviter "négatif")
+  depenses: PALETTE.rose,       // 📉 Rose = sortie d'argent (intuitif apps bancaires, distinct du rouge "danger")
   solde: {
     positif: PALETTE.emerald,   // Excédent
-    negatif: '#ef4444',         // Déficit (rouge uniquement ici)
+    negatif: PALETTE.red,       // Déficit (rouge = danger)
   },
   emprunts: PALETTE.amber,      // ⚠️ Financement externe
   dette: PALETTE.yellow,        // ⚠️ Remboursement
@@ -191,7 +192,7 @@ export const BILAN_PASSIF_COLORS: Record<string, string> = {
   'Dettes': PALETTE.red,  // Ancienne terminologie
 };
 
-export const BILAN_CENTRAL_COLOR = PALETTE.purple;
+export const BILAN_CENTRAL_COLOR = PALETTE.violet;
 
 /**
  * Récupère la couleur d'un poste du bilan
