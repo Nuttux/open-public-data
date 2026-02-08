@@ -18,6 +18,7 @@ import { useMemo } from 'react';
 import ReactECharts from 'echarts-for-react';
 import type { EChartsOption } from 'echarts';
 import { formatEuroCompact } from '@/lib/formatters';
+import { PALETTE, FLUX_COLORS } from '@/lib/colors';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 
 export interface FinancialYearData {
@@ -108,7 +109,7 @@ export default function FinancialHealthChart({
         let html = `<div style="font-weight: 600; margin-bottom: 8px; font-size: ${isMobile ? '13px' : '14px'};">${year}</div>`;
         
         items.forEach(item => {
-          const valueColor = item.value >= 0 ? '#10b981' : '#ef4444';
+          const valueColor = item.value >= 0 ? FLUX_COLORS.solde.positif : FLUX_COLORS.solde.negatif;
           html += `
             <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '10px' : '20px'}; margin: 4px 0; font-size: ${isMobile ? '11px' : '12px'};">
               <span style="display: flex; align-items: center; gap: 6px;">
@@ -197,8 +198,8 @@ export default function FinancialHealthChart({
             x2: 0,
             y2: 1,
             colorStops: [
-              { offset: 0, color: '#22c55e' },
-              { offset: 1, color: '#15803d' },
+              { offset: 0, color: PALETTE.green },
+              { offset: 1, color: '#15803d' },  // green-700 (darker shade)
             ],
           },
           borderRadius: [4, 4, 0, 0],
@@ -219,13 +220,13 @@ export default function FinancialHealthChart({
         symbolSize: isMobile ? 10 : 8,
         lineStyle: {
           width: isMobile ? 2.5 : 3,
-          color: '#f97316',
+          color: PALETTE.orange,
         },
         itemStyle: {
           color: (params) => {
             // Rouge si négatif, orange si positif
             const value = params.value as number;
-            return value >= 0 ? '#f97316' : '#ef4444';
+            return value >= 0 ? PALETTE.orange : PALETTE.red;
           },
           borderWidth: 2,
           borderColor: '#fff',

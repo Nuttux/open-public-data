@@ -17,6 +17,7 @@ import { useMemo } from 'react';
 import ReactECharts from 'echarts-for-react';
 import type { EChartsOption } from 'echarts';
 import { formatEuroCompact } from '@/lib/formatters';
+import { FLUX_COLORS } from '@/lib/colors';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 
 export interface YearlyBudget {
@@ -111,7 +112,7 @@ export default function EvolutionChart({
         });
         
         if (yearData) {
-          const soldeColor = yearData.solde >= 0 ? '#10b981' : '#ef4444';
+          const soldeColor = yearData.solde >= 0 ? FLUX_COLORS.solde.positif : FLUX_COLORS.solde.negatif;
           html += `
             <div style="border-top: 1px solid rgba(148, 163, 184, 0.2); margin-top: 6px; padding-top: 6px;">
               <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '10px' : '16px'}; font-size: ${isMobile ? '11px' : '12px'};">
@@ -186,10 +187,10 @@ export default function EvolutionChart({
         symbolSize: isMobile ? 10 : 8, // Plus grand pour touch
         lineStyle: {
           width: isMobile ? 2.5 : 3,
-          color: '#10b981',
+          color: FLUX_COLORS.recettes,
         },
         itemStyle: {
-          color: '#10b981',
+          color: FLUX_COLORS.recettes,
           borderWidth: 2,
           borderColor: '#fff',
         },
@@ -216,10 +217,10 @@ export default function EvolutionChart({
         symbolSize: isMobile ? 10 : 8, // Plus grand pour touch
         lineStyle: {
           width: isMobile ? 2.5 : 3,
-          color: '#a855f7',
+          color: FLUX_COLORS.depenses,
         },
         itemStyle: {
-          color: '#a855f7',
+          color: FLUX_COLORS.depenses,
           borderWidth: 2,
           borderColor: '#fff',
         },
@@ -231,8 +232,8 @@ export default function EvolutionChart({
             x2: 0,
             y2: 1,
             colorStops: [
-              { offset: 0, color: 'rgba(168, 85, 247, 0.2)' },
-              { offset: 1, color: 'rgba(168, 85, 247, 0.02)' },
+              { offset: 0, color: 'rgba(244, 63, 94, 0.2)' },
+              { offset: 1, color: 'rgba(244, 63, 94, 0.02)' },
             ],
           },
         },

@@ -25,6 +25,7 @@ import { useMemo } from 'react';
 import ReactECharts from 'echarts-for-react';
 import type { EChartsOption } from 'echarts';
 import { formatEuroCompact } from '@/lib/formatters';
+import { PALETTE } from '@/lib/colors';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 
 /** Structure d'un poste avec variation */
@@ -130,7 +131,7 @@ function SingleVariationChart({
           if (!paramsArray?.length) return '';
           
           const item = sortedData[paramsArray[0].dataIndex];
-          const color = item.variation_euros >= 0 ? '#10b981' : '#ef4444';
+          const color = item.variation_euros >= 0 ? PALETTE.emerald : PALETTE.red;
           
           return `
             <div style="font-weight: 600; margin-bottom: 6px;">${item.label}</div>
@@ -190,12 +191,12 @@ function SingleVariationChart({
             itemStyle: {
               color: val >= 0 
                 ? { type: 'linear', x: 0, y: 0, x2: 1, y2: 0, colorStops: [
-                    { offset: 0, color: '#10b981' },
-                    { offset: 1, color: '#059669' }
+                    { offset: 0, color: PALETTE.emerald },
+                    { offset: 1, color: '#059669' }  // emerald-600 (darker shade)
                   ]}
                 : { type: 'linear', x: 0, y: 0, x2: 1, y2: 0, colorStops: [
-                    { offset: 0, color: '#dc2626' },
-                    { offset: 1, color: '#ef4444' }
+                    { offset: 0, color: '#dc2626' },  // red-600 (darker shade)
+                    { offset: 1, color: PALETTE.red }
                   ]},
               borderRadius: val >= 0 ? [0, 4, 4, 0] : [4, 0, 0, 4],
             },
