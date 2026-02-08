@@ -339,7 +339,6 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
           <StatsCards
             recettes={budgetData.totals.recettes}
             depenses={budgetData.totals.depenses}
-            solde={budgetData.totals.solde}
             year={selectedYear}
             emprunts={empruntsData[selectedYear] || budgetData.links.find(l => l.source === 'Emprunts')?.value || 0}
           />

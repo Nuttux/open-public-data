@@ -8,8 +8,6 @@
  * 2. Dépenses totales
  * 3. Déficit / Excédent (recettes propres - dépenses)
  * 
- * + Indicateur secondaire: Équilibre budgétaire comptable
- * 
  * Chaque métrique dispose d'un GlossaryTip (?) pour expliquer
  * le terme aux citoyens (hover desktop, tap mobile).
  * 
@@ -22,12 +20,11 @@ import GlossaryTip from './GlossaryTip';
 interface StatsCardsProps {
   recettes: number;
   depenses: number;
-  solde: number;
   year: number;
   emprunts?: number;  // Pour calculer recettes propres
 }
 
-export default function StatsCards({ recettes, depenses, solde, year, emprunts = 0 }: StatsCardsProps) {
+export default function StatsCards({ recettes, depenses, year, emprunts = 0 }: StatsCardsProps) {
   // Recettes propres = recettes totales - emprunts
   const recettesPropres = recettes - emprunts;
   
@@ -120,19 +117,6 @@ export default function StatsCards({ recettes, depenses, solde, year, emprunts =
               )}
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Indicateur secondaire - Équilibre budgétaire comptable (responsive) */}
-      <div className="bg-slate-800/30 rounded-lg border border-slate-700/50 px-3 sm:px-4 py-2">
-        <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 text-xs sm:text-sm">
-          <div className="flex items-center gap-2">
-            <span className="text-slate-500">Équilibre comptable <GlossaryTip term="solde_comptable" /> :</span>
-            <span className={`font-medium ${solde >= 0 ? 'text-slate-300' : 'text-amber-400'}`}>
-              {solde >= 0 ? '+' : ''}{formatEuroCompact(solde)}
-            </span>
-          </div>
-          <span className="text-slate-600 text-[10px] sm:text-xs hidden sm:inline">(y.c. emprunts)</span>
         </div>
       </div>
     </div>
