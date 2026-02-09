@@ -1,59 +1,39 @@
 'use client';
 
 /**
- * InvestissementsTendancesTab — Onglet "Tendances" de /investissements (Travaux).
+ * SubventionsTendancesTab — Onglet "Tendances" de /subventions.
  *
- * Un sélecteur de breakdown (Secteur) pilote DEUX charts :
- *   1. Stacked bar chart : dépenses par année, ventilées par la dimension choisie
- *   2. Horizontal bar ranking : variation entre première et dernière année de la plage
+ * Un sélecteur de breakdown (Thématique) pilote DEUX charts :
+ *   1. Stacked bar chart : montant par année, ventilé par la dimension choisie
+ *   2. Horizontal bar ranking : variation entre première et dernière année
  *
- * Le sélecteur de plage d'années (YearRangeSelector) filtre toutes les données.
+ * Même pattern UX que Travaux Tendances et Logements Tendances.
  *
- * Note : la source (Budget Principal CA) ne dispose que d'une dimension (chapitre),
- * donc le breakdown n'a qu'une option ici. La structure est identique aux autres
- * Tendances pour garantir la cohérence UX.
- *
- * Source : /public/data/investissement_tendances.json
+ * Source : /public/data/subventions/index.json + treemap_{year}.json
  */
 
 import { useState, useEffect, useMemo } from 'react';
 import ReactECharts from 'echarts-for-react';
 import type { EChartsOption } from 'echarts';
-import { formatEuroCompact } from '@/lib/formatters';
-import { PALETTE } from '@/lib/colors';
+import { formatEuroCompact, formatNumber } from '@/lib/formatters';
+import { getThematiqueColor, PALETTE } from '@/lib/colors';
 import { useIsMobile } from '@/lib/hooks/useIsMobile';
 import YearRangeSelector from '@/components/YearRangeSelector';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
+// ─── Types ───────────────────────────────────────────────────────────────────
 
-interface ChapitreData { label: string; depenses: number; recettes: number; }
-interface TendancesYear { year: number; depenses_total: number; recettes_total: number; depenses_hors_dette: number; par_chapitre: ChapitreData[]; }
-interface TendancesData { generated_at: string; source: string; note_perimetre: string; years: TendancesYear[]; }
+interface TreemapThematique { thematique: string; montant_total: number; pct_total: number; nb_beneficiaires: number; }
+interface SubventionYearData { year: number; total_montant: number; nb_subventions: number; thematiques: TreemapThematique[]; }
+interface SubventionsIndex { available_years: number[]; totals_by_year: Record<string, { montant_total: number; nb_subventions: number }>; }
 
-type BreakdownDim = 'secteur';
+type BreakdownDim = 'thematique';
 interface BreakdownOption { id: BreakdownDim; label: string; icon: string; }
 
 const BREAKDOWN_OPTIONS: BreakdownOption[] = [
-  { id: 'secteur', label: 'Secteur', icon: '📋' },
+  { id: 'thematique', label: 'Thématique', icon: '🎯' },
 ];
 
-// ─── Colors ───────────────────────────────────────────────────────────────────
-
-const CHAPITRE_COLORS: Record<string, string> = {
-  'Aménagement & Habitat': PALETTE.cyan,
-  'Culture & Sport': PALETTE.purple,
-  'Transports': PALETTE.amber,
-  'Services Généraux': PALETTE.slate,
-  'Enseignement': PALETTE.blue,
-  'Environnement': PALETTE.green,
-  'Santé & Social': PALETTE.pink,
-  'Action Économique': PALETTE.orange,
-  'Sécurité': PALETTE.red,
-  'Rsa': PALETTE.teal,
-};
-function getChapColor(label: string): string { return CHAPITRE_COLORS[label] || PALETTE.gray; }
-
-// ─── Helpers ──────────────────────────────────────────────────────────────────
+// ─── Helpers ─────────────────────────────────────────────────────────────────
 
 function formatVariation(value: number): string {
   const m = value / 1_000_000;
@@ -61,13 +41,13 @@ function formatVariation(value: number): string {
   return Math.abs(m) >= 1000 ? `${s}${(m / 1000).toFixed(1)} Md€` : `${s}${m.toFixed(0)} M€`;
 }
 
-// ─── Component ────────────────────────────────────────────────────────────────
+// ─── Component ───────────────────────────────────────────────────────────────
 
-export default function InvestissementsTendancesTab() {
-  const [data, setData] = useState<TendancesData | null>(null);
-  const [startYear, setStartYear] = useState(2019);
+export default function SubventionsTendancesTab() {
+  const [data, setData] = useState<SubventionYearData[]>([]);
+  const [startYear, setStartYear] = useState(2018);
   const [endYear, setEndYear] = useState(2024);
-  const [breakdown, setBreakdown] = useState<BreakdownDim>('secteur');
+  const [breakdown, setBreakdown] = useState<BreakdownDim>('thematique');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const isMobile = useIsMobile();
@@ -75,36 +55,36 @@ export default function InvestissementsTendancesTab() {
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch('/data/investissement_tendances.json');
-        if (!res.ok) throw new Error('Fichier non trouvé');
-        const json: TendancesData = await res.json();
-        setData(json);
-        if (json.years.length >= 2) {
-          const sorted = [...json.years].sort((a, b) => a.year - b.year);
-          setStartYear(sorted[0].year);
-          setEndYear(sorted[sorted.length - 1].year);
-        }
+        const indexRes = await fetch('/data/subventions/index.json');
+        if (!indexRes.ok) throw new Error('Index non trouvé');
+        const index: SubventionsIndex = await indexRes.json();
+        const years = index.available_years.filter(y => y !== 2020 && y !== 2021).sort((a, b) => a - b);
+        const yearData: SubventionYearData[] = await Promise.all(years.map(async (year) => {
+          try {
+            const res = await fetch(`/data/subventions/treemap_${year}.json`);
+            if (!res.ok) throw new Error();
+            const treemap = await res.json();
+            return { year, total_montant: index.totals_by_year[String(year)]?.montant_total || treemap.total_montant || 0, nb_subventions: index.totals_by_year[String(year)]?.nb_subventions || 0, thematiques: treemap.data || [] };
+          } catch { return { year, total_montant: index.totals_by_year[String(year)]?.montant_total || 0, nb_subventions: index.totals_by_year[String(year)]?.nb_subventions || 0, thematiques: [] }; }
+        }));
+        setData(yearData);
+        if (yearData.length >= 2) { setStartYear(yearData[0].year); setEndYear(yearData[yearData.length - 1].year); }
       } catch (err) { console.error(err); setError('Données de tendances non disponibles'); }
       finally { setIsLoading(false); }
     })();
   }, []);
 
-  const availableYears = useMemo(() => data ? data.years.map(y => y.year).sort((a, b) => a - b) : [], [data]);
-  const filteredYears = useMemo(() => data ? data.years.filter(y => y.year >= startYear && y.year <= endYear).sort((a, b) => a.year - b.year) : [], [data, startYear, endYear]);
+  const availableYears = useMemo(() => data.map(d => d.year).sort((a, b) => a - b), [data]);
+  const filteredYears = useMemo(() => data.filter(d => d.year >= startYear && d.year <= endYear).sort((a, b) => a.year - b.year), [data, startYear, endYear]);
 
-  // ── Aggregation driven by breakdown ──
-  /** Get group key for a chapitre given current breakdown */
-  const getGroupKey = (_chap: ChapitreData): string => _chap.label;
-  const getGroupColor = (key: string, _idx: number): string => getChapColor(key);
+  // ── Groups driven by breakdown ──
+  const getGroupKey = (t: TreemapThematique): string => t.thematique;
+  const getGroupColor = (key: string): string => getThematiqueColor(key);
 
-  /** Ordered groups by total descending */
   const groupsOrdered = useMemo(() => {
     if (filteredYears.length === 0) return [];
     const totals: Record<string, number> = {};
-    for (const y of filteredYears) for (const c of y.par_chapitre) {
-      const k = getGroupKey(c);
-      totals[k] = (totals[k] || 0) + c.depenses;
-    }
+    for (const y of filteredYears) for (const t of y.thematiques) { const k = getGroupKey(t); totals[k] = (totals[k] || 0) + t.montant_total; }
     return Object.entries(totals).sort((a, b) => b[1] - a[1]).map(([l]) => l);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filteredYears, breakdown]);
@@ -113,39 +93,27 @@ export default function InvestissementsTendancesTab() {
   const chartOption = useMemo((): EChartsOption | null => {
     if (filteredYears.length === 0 || groupsOrdered.length === 0) return null;
     const years = filteredYears.map(y => y.year.toString());
-    const series = groupsOrdered.map((label, idx) => ({
-      name: label, type: 'bar' as const, stack: 'invest', barMaxWidth: isMobile ? 40 : 60,
+    const series = groupsOrdered.slice(0, 10).map((label) => ({
+      name: label, type: 'bar' as const, stack: 'subv', barMaxWidth: isMobile ? 40 : 60,
       emphasis: { focus: 'series' as const },
-      itemStyle: { color: getGroupColor(label, idx), borderRadius: 0 },
-      data: filteredYears.map(y => {
-        let val = 0;
-        for (const c of y.par_chapitre) if (getGroupKey(c) === label) val += c.depenses;
-        return val;
-      }),
+      itemStyle: { color: getGroupColor(label), borderRadius: 0 },
+      data: filteredYears.map(y => { let v = 0; for (const t of y.thematiques) if (getGroupKey(t) === label) v += t.montant_total; return v; }),
     }));
     return {
-      tooltip: {
-        trigger: 'axis', backgroundColor: 'rgba(15,23,42,0.95)', borderColor: 'rgba(148,163,184,0.2)',
-        textStyle: { color: '#e2e8f0', fontSize: 12 },
+      tooltip: { trigger: 'axis', backgroundColor: 'rgba(15,23,42,0.95)', borderColor: 'rgba(148,163,184,0.2)', textStyle: { color: '#e2e8f0', fontSize: 12 },
         formatter: (params: unknown) => {
           const items = params as Array<{ seriesName: string; value: number; color: string; dataIndex: number }>;
           if (!items?.length) return '';
-          const yd = filteredYears[items[0].dataIndex];
-          const total = yd?.depenses_hors_dette || 0;
+          const yd = filteredYears[items[0].dataIndex]; const total = yd?.total_montant || 0;
           let h = `<div style="font-weight:600;margin-bottom:6px">${yd?.year} — ${formatEuroCompact(total)}</div>`;
-          for (const it of [...items].sort((a, b) => (b.value || 0) - (a.value || 0))) {
-            if (it.value > 0) {
-              const pct = total > 0 ? ((it.value / total) * 100).toFixed(1) : '0';
-              h += `<div style="display:flex;gap:6px;align-items:center;margin:2px 0"><span style="width:8px;height:8px;border-radius:2px;background:${it.color};flex-shrink:0"></span><span style="flex:1">${it.seriesName}</span><span style="font-weight:500">${formatEuroCompact(it.value)}</span><span style="color:#94a3b8;font-size:11px">(${pct}%)</span></div>`;
-            }
-          }
+          for (const it of [...items].sort((a, b) => (b.value || 0) - (a.value || 0))) { if (it.value > 0) { const pct = total > 0 ? ((it.value / total) * 100).toFixed(1) : '0'; h += `<div style="display:flex;gap:6px;align-items:center;margin:2px 0"><span style="width:8px;height:8px;border-radius:2px;background:${it.color};flex-shrink:0"></span><span style="flex:1">${it.seriesName}</span><span style="font-weight:500">${formatEuroCompact(it.value)}</span><span style="color:#94a3b8;font-size:11px">(${pct}%)</span></div>`; } }
           return h;
         },
       },
       legend: { bottom: 0, left: 'center', textStyle: { color: '#94a3b8', fontSize: 11 }, itemWidth: 12, itemHeight: 12, itemGap: isMobile ? 6 : 12, type: isMobile ? 'scroll' : 'plain' },
       grid: { top: 30, right: isMobile ? 10 : 20, bottom: isMobile ? 80 : 60, left: isMobile ? 10 : 20, containLabel: true },
       xAxis: { type: 'category', data: years, axisLabel: { color: '#94a3b8', fontSize: 12 }, axisLine: { lineStyle: { color: 'rgba(148,163,184,0.2)' } } },
-      yAxis: { type: 'value', axisLabel: { color: '#64748b', fontSize: 11, formatter: (v: number) => `${(v / 1e9).toFixed(1)} Md€` }, splitLine: { lineStyle: { color: 'rgba(148,163,184,0.08)' } } },
+      yAxis: { type: 'value', axisLabel: { color: '#64748b', fontSize: 11, formatter: (v: number) => v >= 1e9 ? `${(v / 1e9).toFixed(1)} Md€` : `${(v / 1e6).toFixed(0)} M€` }, splitLine: { lineStyle: { color: 'rgba(148,163,184,0.08)' } } },
       series,
     };
   }, [filteredYears, groupsOrdered, isMobile, breakdown]);
@@ -153,24 +121,21 @@ export default function InvestissementsTendancesTab() {
   // ── KPIs ──
   const kpis = useMemo(() => {
     if (filteredYears.length < 2) return null;
-    const latest = filteredYears[filteredYears.length - 1];
-    const earliest = filteredYears[0];
-    const prev = filteredYears[filteredYears.length - 2];
-    const yoyPct = prev.depenses_hors_dette > 0 ? ((latest.depenses_hors_dette - prev.depenses_hors_dette) / prev.depenses_hors_dette) * 100 : 0;
-    const periodPct = earliest.depenses_hors_dette > 0 ? ((latest.depenses_hors_dette - earliest.depenses_hors_dette) / earliest.depenses_hors_dette) * 100 : 0;
-    const topSecteur = latest.par_chapitre.reduce((best, c) => c.depenses > (best?.depenses || 0) ? c : best, latest.par_chapitre[0]);
-    return { latestYear: latest.year, earliestYear: earliest.year, latestTotal: latest.depenses_hors_dette, yoyPct, periodPct, topSecteur: topSecteur?.label || '', topSecteurMontant: topSecteur?.depenses || 0, topSecteurPct: latest.depenses_hors_dette > 0 ? (topSecteur?.depenses || 0) / latest.depenses_hors_dette * 100 : 0 };
+    const latest = filteredYears[filteredYears.length - 1]; const earliest = filteredYears[0]; const prev = filteredYears[filteredYears.length - 2];
+    const avg = filteredYears.reduce((s, y) => s + y.total_montant, 0) / filteredYears.length;
+    const yoyPct = prev.total_montant > 0 ? ((latest.total_montant - prev.total_montant) / prev.total_montant) * 100 : 0;
+    const periodPct = earliest.total_montant > 0 ? ((latest.total_montant - earliest.total_montant) / earliest.total_montant) * 100 : 0;
+    return { latestYear: latest.year, earliestYear: earliest.year, latestTotal: latest.total_montant, latestNbSub: latest.nb_subventions, avg, yoyPct, periodPct };
   }, [filteredYears]);
 
-  // ── Variation ranking (same dimension as stacked chart) ──
+  // ── Variation ranking (same dimension) ──
   const variationItems = useMemo(() => {
     if (filteredYears.length < 2) return [];
-    const latest = filteredYears[filteredYears.length - 1];
-    const earliest = filteredYears[0];
-    const items = groupsOrdered.map(label => {
+    const latest = filteredYears[filteredYears.length - 1]; const earliest = filteredYears[0];
+    const items = groupsOrdered.slice(0, 12).map(label => {
       let lv = 0, ev = 0;
-      for (const c of latest.par_chapitre) if (getGroupKey(c) === label) lv += c.depenses;
-      for (const c of earliest.par_chapitre) if (getGroupKey(c) === label) ev += c.depenses;
+      for (const t of latest.thematiques) if (getGroupKey(t) === label) lv += t.montant_total;
+      for (const t of earliest.thematiques) if (getGroupKey(t) === label) ev += t.montant_total;
       const diff = lv - ev;
       return { label, latestVal: lv, earliestVal: ev, diff, diffPct: ev > 0 ? (diff / ev) * 100 : 0 };
     });
@@ -183,9 +148,7 @@ export default function InvestissementsTendancesTab() {
   // ── Variation chart option ──
   const variationChartOption = useMemo((): EChartsOption | null => {
     if (variationItems.length === 0) return null;
-    const cats = variationItems.map(d => d.label);
-    const vals = variationItems.map(d => d.diff);
-    const pcts = variationItems.map(d => d.diffPct);
+    const cats = variationItems.map(d => d.label); const vals = variationItems.map(d => d.diff); const pcts = variationItems.map(d => d.diffPct);
     const mx = Math.max(...vals.map(Math.abs), 1);
     return {
       backgroundColor: 'transparent',
@@ -205,20 +168,19 @@ export default function InvestissementsTendancesTab() {
 
   const variationChartHeight = useMemo(() => Math.max(150, variationItems.length * (isMobile ? 34 : 38) + 20), [variationItems.length, isMobile]);
 
-  if (isLoading) return <div className="flex justify-center py-16"><div className="w-10 h-10 border-4 border-amber-500 border-t-transparent rounded-full animate-spin" /></div>;
-  if (error || !data) return <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6"><div className="text-center py-12"><span className="text-4xl mb-4 block">⚠️</span><p className="text-sm text-slate-400">{error || 'Données non disponibles'}</p></div></div>;
+  if (isLoading) return <div className="flex justify-center py-16"><div className="w-10 h-10 border-4 border-purple-500 border-t-transparent rounded-full animate-spin" /></div>;
+  if (error) return <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6"><div className="text-center py-12"><span className="text-4xl mb-4 block">⚠️</span><p className="text-sm text-slate-400">{error}</p></div></div>;
 
   return (
     <div className="space-y-6">
       {/* ── Header: title + breakdown + year range ── */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="flex items-center gap-3">
-          <h3 className="text-sm font-semibold text-slate-200">Tendances d&apos;investissement</h3>
-          {/* Breakdown selector */}
+          <h3 className="text-sm font-semibold text-slate-200">Tendances des subventions</h3>
           <div className="flex bg-slate-800 rounded-lg border border-slate-700 p-0.5">
             {BREAKDOWN_OPTIONS.map(opt => (
               <button key={opt.id} onClick={() => setBreakdown(opt.id)}
-                className={`px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all flex items-center gap-1 ${breakdown === opt.id ? 'bg-amber-500/20 text-amber-300 shadow-sm' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50'}`}
+                className={`px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all flex items-center gap-1 ${breakdown === opt.id ? 'bg-purple-500/20 text-purple-300 shadow-sm' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50'}`}
               ><span>{opt.icon}</span>{opt.label}</button>
             ))}
           </div>
@@ -226,13 +188,13 @@ export default function InvestissementsTendancesTab() {
         <YearRangeSelector availableYears={availableYears} startYear={startYear} endYear={endYear} onStartYearChange={setStartYear} onEndYearChange={setEndYear} />
       </div>
 
-      {/* ── KPI Cards ── */}
+      {/* ── KPIs ── */}
       {kpis && (
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-500 mb-1">Investissement {kpis.latestYear}</p>
-            <p className="text-xl sm:text-2xl font-bold text-slate-100">{formatEuroCompact(kpis.latestTotal)}</p>
-            <p className="text-xs text-slate-500 mt-1">hors opérations financières</p>
+            <p className="text-xs text-slate-500 mb-1">Subventions {kpis.latestYear}</p>
+            <p className="text-xl sm:text-2xl font-bold text-purple-400">{formatEuroCompact(kpis.latestTotal)}</p>
+            <p className="text-xs text-slate-500 mt-1">{formatNumber(kpis.latestNbSub)} subventions</p>
           </div>
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
             <p className="text-xs text-slate-500 mb-1">Variation annuelle</p>
@@ -245,28 +207,28 @@ export default function InvestissementsTendancesTab() {
             <p className="text-xs text-slate-500 mt-1">sur {filteredYears.length} exercices</p>
           </div>
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-500 mb-1">1er secteur</p>
-            <p className="text-base sm:text-lg font-bold text-slate-100 truncate">{kpis.topSecteur}</p>
-            <p className="text-xs text-slate-500 mt-1">{formatEuroCompact(kpis.topSecteurMontant)} ({kpis.topSecteurPct.toFixed(0)}%)</p>
+            <p className="text-xs text-slate-500 mb-1">Moyenne annuelle</p>
+            <p className="text-xl sm:text-2xl font-bold text-slate-100">{formatEuroCompact(kpis.avg)}</p>
+            <p className="text-xs text-slate-500 mt-1">par an</p>
           </div>
         </div>
       )}
 
       {/* ── Stacked Bar Chart ── */}
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4 sm:p-6">
-        <h3 className="text-sm font-semibold text-slate-200 mb-4">Dépenses d&apos;investissement par {BREAKDOWN_OPTIONS.find(o => o.id === breakdown)?.label.toLowerCase()}</h3>
+        <h3 className="text-sm font-semibold text-slate-200 mb-4">Subventions par {BREAKDOWN_OPTIONS.find(o => o.id === breakdown)?.label.toLowerCase()}</h3>
         {chartOption && <ReactECharts option={chartOption} style={{ height: isMobile ? 320 : 400, width: '100%' }} opts={{ renderer: 'svg' }} />}
-        <p className="text-[10px] text-slate-500 mt-2">Source : Comptes Administratifs — Budget Principal (M57 Ville-Département). Hors opérations de dette et dotations.</p>
+        <p className="text-[10px] text-slate-500 mt-2">Source : Open Data Paris — Subventions associations votées. Données absentes pour 2020-2021.</p>
       </div>
 
       {/* ── Variation Ranking ── */}
       {variationChartOption && kpis && (
         <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4 sm:p-6">
           <div className="flex items-center gap-2 mb-2">
-            <span className="w-1.5 h-8 rounded-full bg-rose-500" />
+            <span className="w-1.5 h-8 rounded-full bg-purple-500" />
             <div>
               <h4 className="text-sm font-semibold text-slate-200">Évolution par {BREAKDOWN_OPTIONS.find(o => o.id === breakdown)?.label.toLowerCase()} ({kpis.earliestYear} → {kpis.latestYear})</h4>
-              <p className="text-xs text-slate-500">Quels {BREAKDOWN_OPTIONS.find(o => o.id === breakdown)?.label.toLowerCase()}s ont le plus évolué</p>
+              <p className="text-xs text-slate-500">Quelles {BREAKDOWN_OPTIONS.find(o => o.id === breakdown)?.label.toLowerCase()}s ont le plus évolué</p>
             </div>
           </div>
           <div className="flex items-center gap-4 mb-3 text-xs text-slate-400">
@@ -281,9 +243,9 @@ export default function InvestissementsTendancesTab() {
       <div className="bg-slate-800/30 rounded-xl border border-slate-700/30 p-4">
         <h4 className="text-xs font-semibold text-slate-400 mb-2 flex items-center gap-1.5"><span>ℹ️</span> À propos de ces données</h4>
         <ul className="text-[11px] text-slate-500 space-y-1.5 list-disc list-inside">
-          <li>Ces tendances proviennent du <strong className="text-slate-400">Budget Principal</strong> (Comptes Administratifs M57), qui reflète les dépenses <em>réellement exécutées</em> chaque année (2019-2024).</li>
-          <li>Les opérations de dette (emprunts, remboursements) et dotations sont exclues pour refléter l&apos;investissement « réel » en équipements et infrastructures.</li>
-          <li>L&apos;onglet « Explorer » utilise une source plus granulaire (Annexe Investissements Localisés + AP OpenData) qui détaille les projets individuels, mais avec un périmètre plus restreint.</li>
+          <li>Les données proviennent des <strong className="text-slate-400">subventions aux associations votées</strong> par le Conseil de Paris.</li>
+          <li>Les années <strong className="text-slate-400">2020 et 2021</strong> ne sont pas disponibles dans la source OpenData.</li>
+          <li>Les montants représentent le top 500 bénéficiaires par année, couvrant plus de 95% du total.</li>
         </ul>
       </div>
     </div>
