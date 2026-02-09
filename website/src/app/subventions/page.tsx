@@ -54,7 +54,7 @@ interface BeneficiairesResponse {
 // ─── Tab definitions ─────────────────────────────────────────────────────────
 
 const SUBVENTIONS_TABS: Tab[] = [
-  { id: 'annuel', label: 'Annuel', icon: '🎨' },
+  { id: 'annuel', label: 'Annuel', icon: '📋' },
   { id: 'tendances', label: 'Tendances', icon: '📈' },
 ];
 
@@ -289,7 +289,6 @@ function SubventionsPageInner() {
       <div className="border-b border-slate-800 bg-slate-900/50 backdrop-blur">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <PageHeader
-            icon="💰"
             title="Subventions"
             description="Explorer les bénéficiaires de subventions par thématique et filtres"
             actions={activeTab !== 'tendances' ? (
@@ -311,7 +310,7 @@ function SubventionsPageInner() {
 
             {error && (
               <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-4 mb-6">
-                <p className="text-red-400 flex items-center gap-2"><span>⚠️</span>{error}</p>
+                <p className="text-red-400 flex items-center gap-2"><span>⚠</span>{error}</p>
               </div>
             )}
 

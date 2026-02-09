@@ -159,7 +159,6 @@ export default function SubventionsFilters({
         className="w-full flex items-center justify-between px-4 py-3 hover:bg-slate-700/30 transition-colors"
       >
         <div className="flex items-center gap-2">
-          <span className="text-lg">🔍</span>
           <span className="font-medium text-slate-100">Filtres</span>
           {activeFiltersCount > 0 && (
             <span className="px-2 py-0.5 text-xs font-medium rounded-full bg-purple-500/20 text-purple-300">

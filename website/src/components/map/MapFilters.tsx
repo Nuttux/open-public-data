@@ -164,7 +164,6 @@ export default function MapFilters({
         className="w-full flex items-center justify-between px-4 py-3 hover:bg-slate-700/30 transition-colors"
       >
         <div className="flex items-center gap-2">
-          <span className="text-lg">⚙️</span>
           <span className="font-semibold text-slate-200">Filtres</span>
         </div>
         <span className={`text-slate-400 transition-transform ${isExpanded ? 'rotate-180' : ''}`}>
@@ -208,7 +207,7 @@ export default function MapFilters({
                     : 'bg-slate-700/50 text-slate-400 hover:bg-slate-700'
                 }`}
               >
-                📍 Points
+                Points
               </button>
               <button
                 onClick={() => onChoroplethChange(true)}
@@ -218,7 +217,7 @@ export default function MapFilters({
                     : 'bg-slate-700/50 text-slate-400 hover:bg-slate-700'
                 }`}
               >
-                🗺️ Par arrdt
+                Par arrdt
               </button>
             </div>
           </div>
@@ -234,8 +233,8 @@ export default function MapFilters({
                 onChange={(e) => onChoroplethMetricChange(e.target.value as 'subventions' | 'logements' | 'investissements')}
                 className="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-500"
               >
-                <option value="logements">🏠 Logements / 1000 hab</option>
-                <option value="investissements">📋 Investissements / hab</option>
+                <option value="logements">Logements / 1000 hab</option>
+                <option value="investissements">Investissements / hab</option>
               </select>
             </div>
           )}
@@ -385,7 +384,7 @@ export default function MapFilters({
               <div className="text-xs text-slate-500 space-y-1">
                 {subventionsActive && stats.subventions && (
                   <p>
-                    💰 Total:{' '}
+                    Total :{' '}
                     <span className="text-purple-400 font-medium">
                       {(stats.subventions.total / 1_000_000).toFixed(1).replace('.', ',')} M€
                     </span>
@@ -393,7 +392,7 @@ export default function MapFilters({
                 )}
                 {activeLayers.includes('logements') && stats.logements && (
                   <p>
-                    🏠 Logements:{' '}
+                    Logements :{' '}
                     <span className="text-emerald-400 font-medium">
                       {stats.logements.total.toLocaleString('fr-FR')}
                     </span>
@@ -401,7 +400,7 @@ export default function MapFilters({
                 )}
                 {autorisationsActive && stats.autorisations && (
                   <p>
-                    📋 Invest.:{' '}
+                    Invest. :{' '}
                     <span className="text-amber-400 font-medium">
                       {(stats.autorisations.total / 1_000_000).toFixed(1).replace('.', ',')} M€
                     </span>

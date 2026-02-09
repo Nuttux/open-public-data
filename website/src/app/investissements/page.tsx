@@ -39,7 +39,7 @@ const InvestissementsMap = dynamic(
 // ─── Tab definitions ─────────────────────────────────────────────────────────
 
 const INVEST_TABS: Tab[] = [
-  { id: 'annuel', label: 'Annuel', icon: '📊' },
+  { id: 'annuel', label: 'Annuel', icon: '📋' },
   { id: 'carte', label: 'Carte', icon: '🗺️' },
   { id: 'explorer', label: 'Explorer', icon: '🔍' },
 ];
@@ -152,11 +152,11 @@ function InvestissementsPageInner() {
   const FiltersSidebar = (
     <div className="space-y-4">
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-        <label className="block text-sm font-medium text-slate-300 mb-2">🔍 Rechercher</label>
+        <label className="block text-sm font-medium text-slate-300 mb-2">Rechercher</label>
         <input type="text" value={searchTerm} onChange={e => setSearchTerm(e.target.value)} placeholder="Nom du projet..." className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-500" />
       </div>
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-        <label className="block text-sm font-medium text-slate-300 mb-2">📍 Arrondissement</label>
+        <label className="block text-sm font-medium text-slate-300 mb-2">Arrondissement</label>
         <select value={selectedArrondissement ?? ''} onChange={e => setSelectedArrondissement(e.target.value ? Number(e.target.value) : null)} className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
           <option value="">Tous</option>
           <option value="0">Paris Centre (1-4)</option>
@@ -164,7 +164,7 @@ function InvestissementsPageInner() {
         </select>
       </div>
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-        <label className="block text-sm font-medium text-slate-300 mb-3">🏷️ Thématiques</label>
+        <label className="block text-sm font-medium text-slate-300 mb-3">Thématiques</label>
         <div className="space-y-2">
           {THEMATIQUES.map(t => {
             const label = THEMATIQUE_LABELS[t as ThematiqueSubvention];
@@ -183,7 +183,7 @@ function InvestissementsPageInner() {
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
         <label className="flex items-center gap-3 cursor-pointer">
           <input type="checkbox" checked={showPreciseOnly} onChange={e => setShowPreciseOnly(e.target.checked)} className="w-4 h-4 rounded border-slate-600 bg-slate-900 text-amber-500 focus:ring-amber-500" />
-          <span className="text-sm text-slate-300">📍 Géoloc précise uniquement</span>
+          <span className="text-sm text-slate-300">Géoloc précise uniquement</span>
         </label>
       </div>
     </div>
@@ -195,7 +195,6 @@ function InvestissementsPageInner() {
       <div className="border-b border-slate-800 bg-slate-900/50 backdrop-blur">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <PageHeader
-            icon="🏗️"
             title="Investissements"
             description="Projets d'équipements publics : écoles, piscines, voiries, parcs..."
             actions={<YearSelector years={availableYears} selectedYear={selectedYear} onYearChange={setSelectedYear} />}
@@ -210,7 +209,7 @@ function InvestissementsPageInner() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {error && (
           <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-4 mb-6">
-            <p className="text-red-400 flex items-center gap-2"><span>⚠️</span>{error}</p>
+            <p className="text-red-400 flex items-center gap-2"><span>⚠</span>{error}</p>
           </div>
         )}
 

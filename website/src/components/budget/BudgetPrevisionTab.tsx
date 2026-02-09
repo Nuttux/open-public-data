@@ -495,26 +495,7 @@ export default function BudgetPrevisionTab() {
       {/* Ecart Ranking */}
       <EcartRanking ranking={data.ecart_ranking} />
 
-      {/* Methodology note */}
-      <div className="bg-slate-900/60 border border-slate-700/30 rounded-xl p-5">
-        <h4 className="text-sm font-semibold text-slate-300 mb-2">Méthodologie et périmètre</h4>
-        <div className="text-xs text-slate-400 space-y-1.5 leading-relaxed">
-          <p>
-            <strong className="text-slate-300">Source Budget Voté :</strong>{' '}
-            Extraction automatisée des PDFs Éditique BG (2020-2026) + CSV Open Data (2019).
-          </p>
-          <p>
-            <strong className="text-slate-300">Source Budget Exécuté :</strong>{' '}
-            Comptes Administratifs{' '}
-            <a href="https://opendata.paris.fr/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">Open Data Paris</a>{' '}
-            (2019-2024).
-          </p>
-          <p>
-            <strong className="text-slate-300">Années COVID :</strong>{' '}
-            2020-2021 montrent une sous-exécution plus marquée, notamment en investissement (gel de projets).
-          </p>
-        </div>
-      </div>
+      {/* TODO: rediscuter comment documenter les sources de données (globalement, pas par page) */}
     </div>
   );
 }

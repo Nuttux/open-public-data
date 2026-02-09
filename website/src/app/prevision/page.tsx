@@ -582,7 +582,6 @@ export default function PrevisionPage() {
       <section className="border-b border-slate-800 bg-slate-900/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
           <div className="flex items-start gap-3 mb-4">
-            <span className="text-3xl">🎯</span>
             <div>
               <h1 className="text-2xl sm:text-3xl font-bold text-slate-100">
                 Prévision budgétaire

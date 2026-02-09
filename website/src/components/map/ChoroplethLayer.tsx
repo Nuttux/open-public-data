@@ -173,15 +173,15 @@ export default function ChoroplethLayer({
         ${arrStats ? `
           <div style="font-size: 12px; color: #e2e8f0; border-top: 1px solid #475569; padding-top: 8px;">
             <p style="margin-bottom: 6px;">
-              <strong style="color: #a855f7;">💰 Subventions:</strong> ${formatEuroCompact(arrStats.totalSubventions || 0)}
+              <strong style="color: #a855f7;">Subventions :</strong> ${formatEuroCompact(arrStats.totalSubventions || 0)}
               <br/><span style="color: #94a3b8; font-size: 11px;">${formatNumber(arrStats.subventionsPerCapita || 0)} €/hab</span>
             </p>
             <p style="margin-bottom: 6px;">
-              <strong style="color: #10b981;">🏠 Logements:</strong> ${formatNumber(arrStats.totalLogements || 0)}
+              <strong style="color: #10b981;">Logements :</strong> ${formatNumber(arrStats.totalLogements || 0)}
               <br/><span style="color: #94a3b8; font-size: 11px;">${(arrStats.logementsPerCapita || 0).toFixed(1)} / 1000 hab</span>
             </p>
             <p>
-              <strong style="color: #f59e0b;">📋 Investissements:</strong> ${formatEuroCompact(arrStats.totalInvestissement || 0)}
+              <strong style="color: #f59e0b;">Investissements :</strong> ${formatEuroCompact(arrStats.totalInvestissement || 0)}
               <br/><span style="color: #94a3b8; font-size: 11px;">${formatNumber(arrStats.investissementPerCapita || 0)} €/hab</span>
             </p>
           </div>

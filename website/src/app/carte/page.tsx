@@ -184,7 +184,7 @@ export default function LogementsSociauxPage() {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
               <h1 className="text-2xl font-bold text-slate-100 flex items-center gap-3">
-                <span className="text-3xl">🏠</span>
+                
                 Logements Sociaux
               </h1>
               <p className="text-sm text-slate-400 mt-1">
@@ -203,7 +203,7 @@ export default function LogementsSociauxPage() {
                       : 'text-slate-400 hover:text-white'
                   }`}
                 >
-                  🏢 Bailleurs
+                  Bailleurs
                 </button>
                 <button
                   onClick={() => setViewMode('carte')}
@@ -213,7 +213,7 @@ export default function LogementsSociauxPage() {
                       : 'text-slate-400 hover:text-white'
                   }`}
                 >
-                  🗺️ Carte
+                  Carte
                 </button>
               </div>
 
@@ -243,7 +243,7 @@ export default function LogementsSociauxPage() {
         {error && (
           <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-4 mb-6">
             <p className="text-red-400 flex items-center gap-2">
-              <span>⚠️</span>
+              <span>⚠</span>
               {error}
             </p>
           </div>
@@ -300,7 +300,7 @@ export default function LogementsSociauxPage() {
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 overflow-hidden">
             <div className="px-4 py-3 border-b border-slate-700">
               <h2 className="text-lg font-semibold text-slate-100 flex items-center gap-2">
-                🏢 Classement des Bailleurs
+                Classement des Bailleurs
                 {selectedArrondissement !== null && (
                   <span className="text-sm font-normal text-slate-400">
                     ({selectedArrondissement === 0 ? 'Paris Centre' : `${selectedArrondissement}ème`})
@@ -417,7 +417,7 @@ export default function LogementsSociauxPage() {
               <div className="flex items-center gap-4">
                 {selectedBailleur && (
                   <div className="flex items-center gap-2 bg-emerald-900/30 border border-emerald-500/30 rounded-lg px-3 py-1.5">
-                    <span className="text-sm text-emerald-400">🏢 {selectedBailleur}</span>
+                    <span className="text-sm text-emerald-400">{selectedBailleur}</span>
                     <button
                       onClick={() => setSelectedBailleur(null)}
                       className="text-emerald-400 hover:text-emerald-300"
@@ -458,7 +458,7 @@ export default function LogementsSociauxPage() {
         {/* Légende types (affichée sous le tableau) */}
         {viewMode === 'bailleurs' && (
           <div className="mt-6 bg-slate-800/30 rounded-lg p-4 border border-slate-700/30">
-            <h3 className="text-sm font-medium text-slate-300 mb-3">📊 Types de logements sociaux</h3>
+            <h3 className="text-sm font-medium text-slate-300 mb-3">Types de logements sociaux</h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
               <div className="flex items-start gap-2">
                 <div className="w-3 h-3 rounded-full bg-blue-400 mt-0.5" />
@@ -488,8 +488,7 @@ export default function LogementsSociauxPage() {
         {/* Footer */}
         <footer className="mt-8 pt-6 border-t border-slate-800">
           <div className="mb-4">
-            <h3 className="text-sm font-semibold text-slate-400 mb-3 flex items-center gap-2">
-              <span>📚</span>
+            <h3 className="text-sm font-semibold text-slate-400 mb-3">
               Sources des données
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
@@ -499,7 +498,7 @@ export default function LogementsSociauxPage() {
                 rel="noopener noreferrer"
                 className="flex items-start gap-2 p-2 rounded bg-slate-800/30 hover:bg-slate-800/50 transition-colors"
               >
-                <span className="text-emerald-400">🏠</span>
+                <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0 mt-1.5"></span>
                 <div>
                   <p className="text-slate-300 font-medium">{DATA_SOURCES.logementsSociaux.nom}</p>
                   <p className="text-slate-500">{DATA_SOURCES.logementsSociaux.description}</p>
@@ -511,7 +510,7 @@ export default function LogementsSociauxPage() {
                 rel="noopener noreferrer"
                 className="flex items-start gap-2 p-2 rounded bg-slate-800/30 hover:bg-slate-800/50 transition-colors"
               >
-                <span className="text-cyan-400">👥</span>
+                <span className="w-2 h-2 rounded-full bg-cyan-400 shrink-0 mt-1.5"></span>
                 <div>
                   <p className="text-slate-300 font-medium">{DATA_SOURCES.population.nom}</p>
                   <p className="text-slate-500">{DATA_SOURCES.population.description}</p>
@@ -523,7 +522,7 @@ export default function LogementsSociauxPage() {
                 rel="noopener noreferrer"
                 className="flex items-start gap-2 p-2 rounded bg-slate-800/30 hover:bg-slate-800/50 transition-colors"
               >
-                <span className="text-slate-400">🗺️</span>
+                <span className="w-2 h-2 rounded-full bg-slate-400 shrink-0 mt-1.5"></span>
                 <div>
                   <p className="text-slate-300 font-medium">{DATA_SOURCES.arrondissements.nom}</p>
                   <p className="text-slate-500">{DATA_SOURCES.arrondissements.description}</p>

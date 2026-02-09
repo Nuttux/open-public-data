@@ -91,7 +91,7 @@ export default function StatsCards({ recettes, depenses, year, emprunts = 0 }: S
               <p className={`text-[10px] sm:text-xs font-medium uppercase tracking-wider ${
                 isDeficit ? 'text-red-400' : 'text-emerald-400'
               }`}>
-                {isDeficit ? '⚠️ Déficit' : '✅ Excédent'} {year}
+                {isDeficit ? 'Déficit' : 'Excédent'} {year}
                 <GlossaryTip term="surplus_deficit" />
               </p>
               <p className={`mt-1 text-xl sm:text-2xl font-bold ${

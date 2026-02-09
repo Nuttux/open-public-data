@@ -231,26 +231,21 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
         
         if (p.dataType === 'node') {
           const percentage = calculatePercentage(p.value, totalBudget);
-          let emoji = '📊';
           let label = 'Budget';
           
           if (p.data.category === 'revenue') {
-            emoji = p.name === 'Emprunts' ? '🏦' : '📈';
             label = p.name === 'Emprunts' ? 'Financement' : 'Recette';
           } else if (p.data.category === 'expense') {
-            emoji = p.name === 'Dette' ? '💳' : '📉';
             label = p.name === 'Dette' ? 'Remboursement' : 'Dépense';
-          } else {
-            emoji = '🏛️';
           }
           
           return `
             <div style="padding: 8px; max-width: 240px;">
               <div style="font-weight: 600; margin-bottom: 6px;">${p.name}</div>
-              <div style="color: #94a3b8; font-size: 11px; margin-bottom: 4px;">${emoji} ${label}</div>
+              <div style="color: #94a3b8; font-size: 11px; margin-bottom: 4px;">${label}</div>
               <div style="font-size: 18px; font-weight: 700; color: #10b981;">${formatEuroCompact(p.value)}</div>
               <div style="color: #94a3b8; font-size: 11px;">${formatPercent(percentage)} du budget</div>
-              ${p.data.category !== 'central' ? '<div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #334155; color: #60a5fa; font-size: 11px;">👆 Tap pour détail</div>' : ''}
+              ${p.data.category !== 'central' ? '<div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #334155; color: #60a5fa; font-size: 11px;">Tap pour détail →</div>' : ''}
             </div>
           `;
         }
@@ -380,7 +375,7 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
           variationDette > 0 ? 'bg-red-500/10 border border-red-500/30' : 'bg-emerald-500/10 border border-emerald-500/30'
         }`}>
           <span className={variationDette > 0 ? 'text-red-400' : 'text-emerald-400'}>
-            {variationDette > 0 ? '📈 Dette +' : '📉 Dette '}{formatEuroCompact(variationDette)}
+            {variationDette > 0 ? 'Dette +' : 'Dette '}{formatEuroCompact(variationDette)}
           </span>
         </div>
       </div>
