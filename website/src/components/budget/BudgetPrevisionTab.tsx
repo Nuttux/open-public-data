@@ -21,6 +21,7 @@ import { useState, useEffect, useMemo } from 'react';
 import ReactECharts from 'echarts-for-react';
 import type { EChartsOption } from 'echarts';
 import { formatEuroCompact } from '@/lib/formatters';
+import { PALETTE } from '@/lib/colors';
 import { useIsMobile } from '@/lib/hooks/useIsMobile';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -186,13 +187,13 @@ function VoteVsExecuteChart({ rates, height = 350 }: { rates: GlobalRate[]; heig
         {
           name: 'Budget Voté (BP)', type: 'bar',
           data: comp.map((r) => r.depenses_vote),
-          itemStyle: { color: '#fb923c', borderRadius: [4, 4, 0, 0] },
+          itemStyle: { color: PALETTE.orange, borderRadius: [4, 4, 0, 0] },
           barGap: '10%', barMaxWidth: 40,
         },
         {
           name: 'Budget Exécuté (CA)', type: 'bar',
           data: comp.map((r) => r.depenses_execute),
-          itemStyle: { color: '#60a5fa', borderRadius: [4, 4, 0, 0] },
+          itemStyle: { color: PALETTE.blue, borderRadius: [4, 4, 0, 0] },
           barMaxWidth: 40,
         },
       ],
@@ -205,8 +206,8 @@ function VoteVsExecuteChart({ rates, height = 350 }: { rates: GlobalRate[]; heig
         Voté vs Exécuté — Dépenses totales
       </h3>
       <p className="text-xs text-slate-400 mb-4">
-        <span className="text-orange-400">Orange</span> = budget voté (BP) ·{' '}
-        <span className="text-blue-400">Bleu</span> = budget exécuté (CA). * = années COVID.
+        <span className="text-orange-400">■ Orange</span> = budget voté (BP) ·{' '}
+        <span className="text-blue-400">■ Bleu</span> = budget exécuté (CA). * = années COVID.
       </p>
       <ReactECharts option={option} style={{ height }} notMerge />
     </div>
@@ -278,8 +279,8 @@ function ExecutionRateChart({ rates, height = 350 }: { rates: GlobalRate[]; heig
         {
           name: 'Global', type: 'line',
           data: comp.map((r) => r.taux_global),
-          lineStyle: { color: '#60a5fa', width: 3 },
-          itemStyle: { color: '#60a5fa' },
+          lineStyle: { color: PALETTE.blue, width: 3 },
+          itemStyle: { color: PALETTE.blue },
           symbolSize: isMobile ? 10 : 8,
           markLine: {
             silent: true,
@@ -292,15 +293,15 @@ function ExecutionRateChart({ rates, height = 350 }: { rates: GlobalRate[]; heig
         {
           name: 'Fonctionnement', type: 'line',
           data: comp.map((r) => r.taux_fonct),
-          lineStyle: { color: '#34d399', width: 2, type: 'dashed' },
-          itemStyle: { color: '#34d399' },
+          lineStyle: { color: PALETTE.emerald, width: 2, type: 'dashed' },
+          itemStyle: { color: PALETTE.emerald },
           symbolSize: isMobile ? 10 : 8,
         },
         {
           name: 'Investissement', type: 'line',
           data: comp.map((r) => r.taux_inves),
-          lineStyle: { color: '#fbbf24', width: 2, type: 'dashed' },
-          itemStyle: { color: '#fbbf24' },
+          lineStyle: { color: PALETTE.amber, width: 2, type: 'dashed' },
+          itemStyle: { color: PALETTE.amber },
           symbolSize: isMobile ? 10 : 8,
         },
       ],
@@ -390,7 +391,7 @@ function EcartRanking({ ranking }: { ranking: EcartRow[] }) {
         data: displayValues.map((v, i) => ({
           value: v,
           itemStyle: {
-            color: rawValues[i] > 0 ? '#f87171' : '#34d399',
+            color: rawValues[i] > 0 ? PALETTE.red : PALETTE.emerald,
             borderRadius: rawValues[i] > 0 ? [0, 4, 4, 0] : [4, 0, 0, 4],
           },
         })),
@@ -480,29 +481,8 @@ export default function BudgetPrevisionTab() {
     );
   }
 
-  const compYears = data.coverage.comparison_years;
-  const forecastOnly = data.coverage.forecast_years.filter(
-    (y) => !compYears.includes(y),
-  );
-
   return (
     <div className="space-y-8">
-      {/* Coverage badges */}
-      <div className="flex flex-wrap gap-2 text-xs">
-        {compYears.length > 0 && (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-blue-500/15 text-blue-400 border border-blue-500/20 rounded-full">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
-            Comparaison : {compYears[0]}-{compYears[compYears.length - 1]}
-          </span>
-        )}
-        {forecastOnly.length > 0 && (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-orange-500/15 text-orange-400 border border-orange-500/20 rounded-full">
-            <span className="w-1.5 h-1.5 rounded-full bg-orange-400" />
-            Prévisionnel : {forecastOnly.join(', ')}
-          </span>
-        )}
-      </div>
-
       {/* KPI Cards */}
       <ExecutionRateCards rates={chronoRates} />
 
@@ -515,26 +495,7 @@ export default function BudgetPrevisionTab() {
       {/* Ecart Ranking */}
       <EcartRanking ranking={data.ecart_ranking} />
 
-      {/* Methodology note */}
-      <div className="bg-slate-900/60 border border-slate-700/30 rounded-xl p-5">
-        <h4 className="text-sm font-semibold text-slate-300 mb-2">Méthodologie et périmètre</h4>
-        <div className="text-xs text-slate-400 space-y-1.5 leading-relaxed">
-          <p>
-            <strong className="text-slate-300">Source Budget Voté :</strong>{' '}
-            Extraction automatisée des PDFs Éditique BG (2020-2026) + CSV Open Data (2019).
-          </p>
-          <p>
-            <strong className="text-slate-300">Source Budget Exécuté :</strong>{' '}
-            Comptes Administratifs{' '}
-            <a href="https://opendata.paris.fr/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">Open Data Paris</a>{' '}
-            (2019-2024).
-          </p>
-          <p>
-            <strong className="text-slate-300">Années COVID :</strong>{' '}
-            2020-2021 montrent une sous-exécution plus marquée, notamment en investissement (gel de projets).
-          </p>
-        </div>
-      </div>
+      {/* TODO: rediscuter comment documenter les sources de données (globalement, pas par page) */}
     </div>
   );
 }

@@ -191,67 +191,67 @@ export default function LandingPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             <Link href="/budget" className="group">
-              <div className="h-full p-6 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-blue-500/30 transition-all duration-200">
-                <p className="text-lg font-semibold text-slate-100 mb-3 group-hover:text-blue-400 transition-colors">
+              <div className="h-full p-6 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-rose-500/30 transition-all duration-200">
+                <p className="text-lg font-semibold text-slate-100 mb-3 group-hover:text-rose-400 transition-colors">
                   Combien coûte le fonctionnement de Paris ?
                 </p>
                 <p className="text-sm text-slate-400 mb-4 leading-relaxed">
                   {KEY_FIGURES.depensesFonctionnement} par an rien que pour faire tourner
                   la ville au quotidien : salaires, entretien, cantines, éclairage public
                 </p>
-                <span className="text-xs text-blue-400 font-medium">Flux budgétaires →</span>
+                <span className="text-xs text-rose-400 font-medium">Flux budgétaires →</span>
               </div>
             </Link>
 
             <Link href="/subventions" className="group">
-              <div className="h-full p-6 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-amber-500/30 transition-all duration-200">
-                <p className="text-lg font-semibold text-slate-100 mb-3 group-hover:text-amber-400 transition-colors">
+              <div className="h-full p-6 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-purple-500/30 transition-all duration-200">
+                <p className="text-lg font-semibold text-slate-100 mb-3 group-hover:text-purple-400 transition-colors">
                   Qui reçoit des subventions ?
                 </p>
                 <p className="text-sm text-slate-400 mb-4 leading-relaxed">
                   Plus de {KEY_FIGURES.nbAssociationsSubventionnees} associations reçoivent de
                   l&apos;argent de la Ville, classées par thématique et par montant
                 </p>
-                <span className="text-xs text-amber-400 font-medium">Subventions & bénéficiaires →</span>
+                <span className="text-xs text-purple-400 font-medium">Subventions & bénéficiaires →</span>
               </div>
             </Link>
 
             <Link href="/investissements" className="group">
-              <div className="h-full p-6 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-emerald-500/30 transition-all duration-200">
-                <p className="text-lg font-semibold text-slate-100 mb-3 group-hover:text-emerald-400 transition-colors">
+              <div className="h-full p-6 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-amber-500/30 transition-all duration-200">
+                <p className="text-lg font-semibold text-slate-100 mb-3 group-hover:text-amber-400 transition-colors">
                   Quels travaux dans mon quartier ?
                 </p>
                 <p className="text-sm text-slate-400 mb-4 leading-relaxed">
                   Écoles, gymnases, voirie : tous les projets d&apos;investissement
                   géolocalisés, arrondissement par arrondissement
                 </p>
-                <span className="text-xs text-emerald-400 font-medium">Carte des travaux →</span>
+                <span className="text-xs text-amber-400 font-medium">Carte des travaux →</span>
               </div>
             </Link>
 
             <Link href="/budget?tab=tendances" className="group">
-              <div className="h-full p-6 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-purple-500/30 transition-all duration-200">
-                <p className="text-lg font-semibold text-slate-100 mb-3 group-hover:text-purple-400 transition-colors">
+              <div className="h-full p-6 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-emerald-500/30 transition-all duration-200">
+                <p className="text-lg font-semibold text-slate-100 mb-3 group-hover:text-emerald-400 transition-colors">
                   Le budget augmente-t-il ?
                 </p>
                 <p className="text-sm text-slate-400 mb-4 leading-relaxed">
                   Recettes, dépenses, variations par poste :
                   on retrace l&apos;évolution année par année depuis 2019
                 </p>
-                <span className="text-xs text-purple-400 font-medium">Évolution budgétaire →</span>
+                <span className="text-xs text-emerald-400 font-medium">Évolution budgétaire →</span>
               </div>
             </Link>
 
             <Link href="/patrimoine" className="group">
-              <div className="h-full p-6 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-cyan-500/30 transition-all duration-200">
-                <p className="text-lg font-semibold text-slate-100 mb-3 group-hover:text-cyan-400 transition-colors">
+              <div className="h-full p-6 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-violet-500/30 transition-all duration-200">
+                <p className="text-lg font-semibold text-slate-100 mb-3 group-hover:text-violet-400 transition-colors">
                   Que possède Paris et combien doit-elle ?
                 </p>
                 <p className="text-sm text-slate-400 mb-4 leading-relaxed">
                   Terrains, bâtiments, réseaux : le patrimoine de la ville
                   face à sa dette, le bilan comptable rendu lisible
                 </p>
-                <span className="text-xs text-cyan-400 font-medium">Bilan actif / passif →</span>
+                <span className="text-xs text-violet-400 font-medium">Bilan actif / passif →</span>
               </div>
             </Link>
 
@@ -269,15 +269,15 @@ export default function LandingPage() {
             </Link>
 
             <Link href="/logements" className="group">
-              <div className="h-full p-6 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-rose-500/30 transition-all duration-200">
-                <p className="text-lg font-semibold text-slate-100 mb-3 group-hover:text-rose-400 transition-colors">
+              <div className="h-full p-6 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-emerald-500/30 transition-all duration-200">
+                <p className="text-lg font-semibold text-slate-100 mb-3 group-hover:text-emerald-400 transition-colors">
                   Où sont les logements sociaux financés ?
                 </p>
                 <p className="text-sm text-slate-400 mb-4 leading-relaxed">
                   La carte des logements sociaux financés par la Ville
                   depuis 2010, avec le détail par arrondissement et par programme
                 </p>
-                <span className="text-xs text-rose-400 font-medium">Carte des logements →</span>
+                <span className="text-xs text-emerald-400 font-medium">Carte des logements →</span>
               </div>
             </Link>
           </div>

@@ -43,6 +43,7 @@ const LOGEMENTS_TABS: Tab[] = [
   { id: 'carte', label: 'Carte', icon: '🗺️' },
 ];
 
+
 const VALID_TAB_IDS = LOGEMENTS_TABS.map(t => t.id);
 
 interface BailleurStats {
@@ -127,7 +128,6 @@ function LogementsPageInner() {
       <div className="border-b border-slate-800 bg-slate-900/50 backdrop-blur">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <PageHeader
-            icon="🏘️"
             title="Logements Sociaux"
             description={`${formatNumber(stats.logements)} logements financés par ${stats.bailleurs} bailleurs`}
             actions={
@@ -151,7 +151,7 @@ function LogementsPageInner() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {error && (
           <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-4 mb-6">
-            <p className="text-red-400 flex items-center gap-2"><span>⚠️</span>{error}</p>
+            <p className="text-red-400 flex items-center gap-2"><span>⚠</span>{error}</p>
           </div>
         )}
 
@@ -188,7 +188,7 @@ function LogementsPageInner() {
             <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 overflow-hidden">
               <div className="px-4 py-3 border-b border-slate-700">
                 <h2 className="text-lg font-semibold text-slate-100 flex items-center gap-2">
-                  🏢 Classement des Bailleurs
+                  Classement des Bailleurs
                   {selectedArrondissement !== null && <span className="text-sm font-normal text-slate-400">({selectedArrondissement === 0 ? 'Paris Centre' : `${selectedArrondissement}ème`})</span>}
                 </h2>
               </div>
@@ -231,7 +231,7 @@ function LogementsPageInner() {
 
             {/* Légende types */}
             <div className="mt-6 bg-slate-800/30 rounded-lg p-4 border border-slate-700/30">
-              <h3 className="text-sm font-medium text-slate-300 mb-3">📊 Types de logements sociaux</h3>
+              <h3 className="text-sm font-medium text-slate-300 mb-3">Types de logements sociaux</h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
                 <div className="flex items-start gap-2"><div className="w-3 h-3 rounded-full bg-blue-400 mt-0.5" /><div><p className="text-slate-300 font-medium">PLAI - Très social</p><p className="text-slate-500">Revenus &lt; 60% du plafond HLM.</p></div></div>
                 <div className="flex items-start gap-2"><div className="w-3 h-3 rounded-full bg-cyan-400 mt-0.5" /><div><p className="text-slate-300 font-medium">PLUS - Social standard</p><p className="text-slate-500">Revenus &lt; 100% du plafond HLM.</p></div></div>
@@ -248,7 +248,7 @@ function LogementsPageInner() {
               <div className="flex items-center gap-4">
                 {selectedBailleur && (
                   <div className="flex items-center gap-2 bg-emerald-900/30 border border-emerald-500/30 rounded-lg px-3 py-1.5">
-                    <span className="text-sm text-emerald-400">🏢 {selectedBailleur}</span>
+                    <span className="text-sm text-emerald-400">{selectedBailleur}</span>
                     <button onClick={() => setSelectedBailleur(null)} className="text-emerald-400 hover:text-emerald-300">✕</button>
                   </div>
                 )}
@@ -267,16 +267,16 @@ function LogementsPageInner() {
         {/* Footer */}
         <footer className="mt-8 pt-6 border-t border-slate-800">
           <div className="mb-4">
-            <h3 className="text-sm font-semibold text-slate-400 mb-3 flex items-center gap-2"><span>📚</span>Sources des données</h3>
+            <h3 className="text-sm font-semibold text-slate-400 mb-3">Sources des données</h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
               <a href={DATA_SOURCES.logementsSociaux.url} target="_blank" rel="noopener noreferrer" className="flex items-start gap-2 p-2 rounded bg-slate-800/30 hover:bg-slate-800/50 transition-colors">
-                <span className="text-emerald-400">🏠</span><div><p className="text-slate-300 font-medium">{DATA_SOURCES.logementsSociaux.nom}</p><p className="text-slate-500">{DATA_SOURCES.logementsSociaux.description}</p></div>
+                <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0 mt-1.5"></span><div><p className="text-slate-300 font-medium">{DATA_SOURCES.logementsSociaux.nom}</p><p className="text-slate-500">{DATA_SOURCES.logementsSociaux.description}</p></div>
               </a>
               <a href={DATA_SOURCES.population.url} target="_blank" rel="noopener noreferrer" className="flex items-start gap-2 p-2 rounded bg-slate-800/30 hover:bg-slate-800/50 transition-colors">
-                <span className="text-cyan-400">👥</span><div><p className="text-slate-300 font-medium">{DATA_SOURCES.population.nom}</p><p className="text-slate-500">{DATA_SOURCES.population.description}</p></div>
+                <span className="w-2 h-2 rounded-full bg-cyan-400 shrink-0 mt-1.5"></span><div><p className="text-slate-300 font-medium">{DATA_SOURCES.population.nom}</p><p className="text-slate-500">{DATA_SOURCES.population.description}</p></div>
               </a>
               <a href={DATA_SOURCES.arrondissements.url} target="_blank" rel="noopener noreferrer" className="flex items-start gap-2 p-2 rounded bg-slate-800/30 hover:bg-slate-800/50 transition-colors">
-                <span className="text-slate-400">🗺️</span><div><p className="text-slate-300 font-medium">{DATA_SOURCES.arrondissements.nom}</p><p className="text-slate-500">{DATA_SOURCES.arrondissements.description}</p></div>
+                <span className="w-2 h-2 rounded-full bg-slate-400 shrink-0 mt-1.5"></span><div><p className="text-slate-300 font-medium">{DATA_SOURCES.arrondissements.nom}</p><p className="text-slate-500">{DATA_SOURCES.arrondissements.description}</p></div>
               </a>
             </div>
           </div>

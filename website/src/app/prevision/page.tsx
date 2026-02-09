@@ -19,6 +19,7 @@ import { useState, useEffect, useMemo } from 'react';
 import ReactECharts from 'echarts-for-react';
 import type { EChartsOption } from 'echarts';
 import { formatEuroCompact } from '@/lib/formatters';
+import { PALETTE } from '@/lib/colors';
 import { useIsMobile } from '@/lib/hooks/useIsMobile';
 
 // =============================================================================
@@ -216,7 +217,7 @@ function VoteVsExecuteChart({
           name: 'Budget Voté (BP)',
           type: 'bar',
           data: comp.map((r) => r.depenses_vote),
-          itemStyle: { color: '#fb923c', borderRadius: [4, 4, 0, 0] },
+          itemStyle: { color: PALETTE.orange, borderRadius: [4, 4, 0, 0] },
           barGap: '10%',
           barMaxWidth: 40,
         },
@@ -224,7 +225,7 @@ function VoteVsExecuteChart({
           name: 'Budget Exécuté (CA)',
           type: 'bar',
           data: comp.map((r) => r.depenses_execute),
-          itemStyle: { color: '#60a5fa', borderRadius: [4, 4, 0, 0] },
+          itemStyle: { color: PALETTE.blue, borderRadius: [4, 4, 0, 0] },
           barMaxWidth: 40,
         },
       ],
@@ -334,8 +335,8 @@ function ExecutionRateChart({
           name: 'Global',
           type: 'line',
           data: comp.map((r) => r.taux_global),
-          lineStyle: { color: '#60a5fa', width: 3 },
-          itemStyle: { color: '#60a5fa' },
+          lineStyle: { color: PALETTE.blue, width: 3 },
+          itemStyle: { color: PALETTE.blue },
           symbolSize: isMobile ? 10 : 8,
           markLine: {
             silent: true,
@@ -356,16 +357,16 @@ function ExecutionRateChart({
           name: 'Fonctionnement',
           type: 'line',
           data: comp.map((r) => r.taux_fonct),
-          lineStyle: { color: '#34d399', width: 2, type: 'dashed' },
-          itemStyle: { color: '#34d399' },
+          lineStyle: { color: PALETTE.emerald, width: 2, type: 'dashed' },
+          itemStyle: { color: PALETTE.emerald },
           symbolSize: isMobile ? 10 : 8,
         },
         {
           name: 'Investissement',
           type: 'line',
           data: comp.map((r) => r.taux_inves),
-          lineStyle: { color: '#fbbf24', width: 2, type: 'dashed' },
-          itemStyle: { color: '#fbbf24' },
+          lineStyle: { color: PALETTE.amber, width: 2, type: 'dashed' },
+          itemStyle: { color: PALETTE.amber },
           symbolSize: isMobile ? 10 : 8,
         },
       ],
@@ -475,7 +476,7 @@ function EcartRanking({ ranking }: { ranking: EcartRow[] }) {
           data: displayValues.map((v, i) => ({
             value: v,
             itemStyle: {
-              color: rawValues[i] > 0 ? '#f87171' : '#34d399',
+              color: rawValues[i] > 0 ? PALETTE.red : PALETTE.emerald,
               borderRadius: rawValues[i] > 0 ? [0, 4, 4, 0] : [4, 0, 0, 4],
             },
           })),
@@ -581,7 +582,6 @@ export default function PrevisionPage() {
       <section className="border-b border-slate-800 bg-slate-900/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
           <div className="flex items-start gap-3 mb-4">
-            <span className="text-3xl">🎯</span>
             <div>
               <h1 className="text-2xl sm:text-3xl font-bold text-slate-100">
                 Prévision budgétaire

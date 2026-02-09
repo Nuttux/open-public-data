@@ -15,7 +15,7 @@ import { useCallback, useMemo, useState, useEffect } from 'react';
 import ReactECharts from 'echarts-for-react';
 import type { EChartsOption } from 'echarts';
 import { formatEuroCompact, formatPercent, calculatePercentage } from '@/lib/formatters';
-import { REVENUE_COLORS, EXPENSE_COLORS } from '@/lib/colors';
+import { REVENUE_COLORS, EXPENSE_COLORS, FLUX_COLORS } from '@/lib/colors';
 import type { BudgetData } from '@/lib/formatters';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 
@@ -52,6 +52,13 @@ function MobileBudgetView({ data, onNodeClick }: BudgetSankeyProps) {
     ...expenses.map(e => e.value)
   );
 
+  /** Chevron indicator — universal "tappable, there's more" signal */
+  const ChevronRight = () => (
+    <svg className="w-4 h-4 text-slate-500 group-active:text-slate-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+    </svg>
+  );
+
   return (
     <div className="space-y-6">
       {/* Recettes */}
@@ -59,25 +66,31 @@ function MobileBudgetView({ data, onNodeClick }: BudgetSankeyProps) {
         <h3 className="text-sm font-medium text-slate-300 mb-3 flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-emerald-500" />
           Recettes
+          <span className="text-[10px] text-slate-500 font-normal ml-1">Appuyez pour détail</span>
         </h3>
         <div className="space-y-2">
-          {revenues.map((item) => (
+          {revenues.map((item, idx) => (
             <button
               key={item.name}
               onClick={() => onNodeClick?.(item.name, 'revenue')}
-              className="w-full text-left group"
+              className={`w-full text-left group active:scale-[0.98] transition-transform duration-150 ${
+                idx === 0 ? 'animate-hint-pulse' : ''
+              }`}
             >
               <div className="flex items-center justify-between text-xs mb-1">
-                <span className="text-slate-300 group-hover:text-white transition-colors truncate pr-2">
+                <span className="text-slate-300 group-active:text-white transition-colors truncate pr-2">
                   {item.name}
                 </span>
-                <span className="text-emerald-400 font-medium whitespace-nowrap">
-                  {formatEuroCompact(item.value)}
-                </span>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-emerald-400 font-medium whitespace-nowrap">
+                    {formatEuroCompact(item.value)}
+                  </span>
+                  <ChevronRight />
+                </div>
               </div>
               <div className="h-6 bg-slate-700/50 rounded overflow-hidden">
                 <div
-                  className="h-full rounded transition-all duration-300 group-hover:opacity-80"
+                  className="h-full rounded transition-all duration-300"
                   style={{
                     width: `${(item.value / maxValue) * 100}%`,
                     backgroundColor: REVENUE_COLORS[item.name] || '#10b981',
@@ -92,30 +105,34 @@ function MobileBudgetView({ data, onNodeClick }: BudgetSankeyProps) {
         </div>
       </div>
 
-      {/* Dépenses */}
+      {/* Dépenses — rose = sortie d'argent (cohérent FLUX_COLORS.depenses) */}
       <div>
         <h3 className="text-sm font-medium text-slate-300 mb-3 flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-blue-500" />
+          <span className="w-2 h-2 rounded-full bg-rose-500" />
           Dépenses
+          <span className="text-[10px] text-slate-500 font-normal ml-1">Appuyez pour détail</span>
         </h3>
         <div className="space-y-2">
           {expenses.map((item) => (
             <button
               key={item.name}
               onClick={() => onNodeClick?.(item.name, 'expense')}
-              className="w-full text-left group"
+              className="w-full text-left group active:scale-[0.98] transition-transform duration-150"
             >
               <div className="flex items-center justify-between text-xs mb-1">
-                <span className="text-slate-300 group-hover:text-white transition-colors truncate pr-2">
+                <span className="text-slate-300 group-active:text-white transition-colors truncate pr-2">
                   {item.name}
                 </span>
-                <span className="text-blue-400 font-medium whitespace-nowrap">
-                  {formatEuroCompact(item.value)}
-                </span>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-rose-400 font-medium whitespace-nowrap">
+                    {formatEuroCompact(item.value)}
+                  </span>
+                  <ChevronRight />
+                </div>
               </div>
               <div className="h-6 bg-slate-700/50 rounded overflow-hidden">
                 <div
-                  className="h-full rounded transition-all duration-300 group-hover:opacity-80"
+                  className="h-full rounded transition-all duration-300"
                   style={{
                     width: `${(item.value / maxValue) * 100}%`,
                     backgroundColor: EXPENSE_COLORS[item.name] || '#3b82f6',
@@ -151,7 +168,7 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
   }, [data.links]);
 
   const getNodeColor = useCallback((name: string, category: string) => {
-    if (category === 'central') return '#a855f7';
+    if (category === 'central') return '#8b5cf6'; // Violet — noeud central distinct des flux
     if (category === 'revenue') {
       return REVENUE_COLORS[name] || '#64748b';
     }
@@ -214,26 +231,21 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
         
         if (p.dataType === 'node') {
           const percentage = calculatePercentage(p.value, totalBudget);
-          let emoji = '📊';
           let label = 'Budget';
           
           if (p.data.category === 'revenue') {
-            emoji = p.name === 'Emprunts' ? '🏦' : '📈';
             label = p.name === 'Emprunts' ? 'Financement' : 'Recette';
           } else if (p.data.category === 'expense') {
-            emoji = p.name === 'Dette' ? '💳' : '📉';
             label = p.name === 'Dette' ? 'Remboursement' : 'Dépense';
-          } else {
-            emoji = '🏛️';
           }
           
           return `
             <div style="padding: 8px; max-width: 240px;">
               <div style="font-weight: 600; margin-bottom: 6px;">${p.name}</div>
-              <div style="color: #94a3b8; font-size: 11px; margin-bottom: 4px;">${emoji} ${label}</div>
+              <div style="color: #94a3b8; font-size: 11px; margin-bottom: 4px;">${label}</div>
               <div style="font-size: 18px; font-weight: 700; color: #10b981;">${formatEuroCompact(p.value)}</div>
               <div style="color: #94a3b8; font-size: 11px;">${formatPercent(percentage)} du budget</div>
-              ${p.data.category !== 'central' ? '<div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #334155; color: #60a5fa; font-size: 11px;">👆 Tap pour détail</div>' : ''}
+              ${p.data.category !== 'central' ? '<div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #334155; color: #60a5fa; font-size: 11px;">Tap pour détail →</div>' : ''}
             </div>
           `;
         }
@@ -245,7 +257,7 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
               <div style="font-weight: 600; margin-bottom: 6px; font-size: 13px;">
                 ${p.data.source} → ${p.data.target}
               </div>
-              <div style="font-size: 16px; font-weight: 700; color: #f59e0b;">${formatEuroCompact(p.value)}</div>
+              <div style="font-size: 16px; font-weight: 700; color: ${FLUX_COLORS.emprunts};">${formatEuroCompact(p.value)}</div>
               <div style="color: #94a3b8; font-size: 11px;">${formatPercent(percentage)} du budget</div>
             </div>
           `;
@@ -360,10 +372,10 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
           </p>
         </div>
         <div className={`px-3 py-2 rounded-lg text-xs sm:text-sm ${
-          variationDette > 0 ? 'bg-red-500/10 border border-red-500/30' : 'bg-green-500/10 border border-green-500/30'
+          variationDette > 0 ? 'bg-red-500/10 border border-red-500/30' : 'bg-emerald-500/10 border border-emerald-500/30'
         }`}>
-          <span className={variationDette > 0 ? 'text-red-400' : 'text-green-400'}>
-            {variationDette > 0 ? '📈 Dette +' : '📉 Dette '}{formatEuroCompact(variationDette)}
+          <span className={variationDette > 0 ? 'text-red-400' : 'text-emerald-400'}>
+            {variationDette > 0 ? 'Dette +' : 'Dette '}{formatEuroCompact(variationDette)}
           </span>
         </div>
       </div>
@@ -374,6 +386,7 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
       ) : (
         <>
           {/* Desktop/Tablet: Sankey avec légende */}
+          {/* Légende — couleurs cohérentes avec FLUX_COLORS */}
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-3 text-xs">
             <div className="flex items-center gap-1.5">
               <div className="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
@@ -384,11 +397,11 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
               <span className="text-slate-400">Emprunts</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <div className="w-2.5 h-2.5 rounded-full bg-purple-500"></div>
+              <div className="w-2.5 h-2.5 rounded-full bg-violet-500"></div>
               <span className="text-slate-400">Budget</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <div className="w-2.5 h-2.5 rounded-full bg-blue-500"></div>
+              <div className="w-2.5 h-2.5 rounded-full bg-rose-500"></div>
               <span className="text-slate-400">Dépenses</span>
             </div>
             <div className="flex items-center gap-1.5">

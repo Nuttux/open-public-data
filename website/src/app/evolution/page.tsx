@@ -186,7 +186,7 @@ export default function EvolutionPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center max-w-md">
-          <p className="text-red-400 text-lg mb-2">❌ {error || 'Aucune donnée disponible'}</p>
+          <p className="text-red-400 text-lg mb-2">{error || 'Aucune donnée disponible'}</p>
           <p className="text-slate-400 text-sm">
             Vérifiez que les fichiers budget_sankey_*.json sont présents dans /public/data/
           </p>
@@ -203,7 +203,6 @@ export default function EvolutionPage() {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div>
               <h1 className="text-xl md:text-2xl font-bold text-slate-100 flex items-center gap-3">
-                <span>📈</span>
                 Évolution du Budget
               </h1>
               <p className="text-sm text-slate-400 mt-1">
@@ -249,7 +248,6 @@ export default function EvolutionPage() {
             {/* Épargne brute - capacité d'autofinancement */}
             <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-lg">💰</span>
                 <p className="text-xs text-slate-500 uppercase tracking-wide">Épargne brute <GlossaryTip term="epargne_brute" /></p>
               </div>
               <p className={`text-2xl font-bold ${currentFinancialData.epargne_brute >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
@@ -261,7 +259,6 @@ export default function EvolutionPage() {
             {/* Solde comptable - équilibre technique */}
             <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-lg">⚖️</span>
                 <p className="text-xs text-slate-500 uppercase tracking-wide">Solde comptable <GlossaryTip term="solde_comptable" /></p>
               </div>
               <p className={`text-2xl font-bold ${currentFinancialData.totals.solde_comptable >= 0 ? 'text-slate-300' : 'text-slate-400'}`}>
@@ -276,7 +273,6 @@ export default function EvolutionPage() {
         {currentFinancialData && (
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-amber-500/30 p-4 mb-6">
             <h3 className="text-sm font-semibold text-slate-200 mb-3 flex items-center gap-2">
-              <span>🏦</span>
               Gestion de la dette {selectedYear}
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4">
@@ -324,7 +320,6 @@ export default function EvolutionPage() {
         {/* Graphique d'évolution Recettes/Dépenses */}
         <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6 mb-6">
           <h2 className="text-lg font-semibold text-slate-100 mb-4 flex items-center gap-2">
-            <span>📈</span>
             Évolution Recettes et Dépenses
           </h2>
           <EvolutionChart 
@@ -339,7 +334,6 @@ export default function EvolutionPage() {
         {financialData.length > 0 && (
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6 mb-6">
             <h2 className="text-lg font-semibold text-slate-100 mb-2 flex items-center gap-2">
-              <span>💹</span>
               Santé Financière
             </h2>
             <p className="text-sm text-slate-400 mb-4">
@@ -382,7 +376,6 @@ export default function EvolutionPage() {
         {globalStats && (
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6">
             <h2 className="text-lg font-semibold text-slate-100 mb-4 flex items-center gap-2">
-              <span>📋</span>
               Statistiques sur la période
             </h2>
             
@@ -407,7 +400,7 @@ export default function EvolutionPage() {
               
               <div>
                 <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-wide">Moy. Dépenses</p>
-                <p className="text-lg md:text-xl font-bold text-purple-400">
+                <p className="text-lg md:text-xl font-bold text-rose-400">
                   {formatEuroCompact(globalStats.avgDepenses)}
                 </p>
                 <p className="text-[10px] md:text-xs text-slate-400 mt-1">par an</p>

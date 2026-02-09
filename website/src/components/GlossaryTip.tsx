@@ -2,8 +2,11 @@
  * GlossaryTip - Icône d'info contextuelle pour les termes budgétaires
  *
  * Desktop : tooltip au hover (rendu dans un portal pour éviter le clipping
- *           par les parents backdrop-blur/overflow)
- * Mobile  : tap ouvre le GlossaryDrawer sur le terme concerné
+ *           par les parents backdrop-blur/overflow). Clic ne fait rien.
+ * Mobile  : tap toggle un tooltip positionné au-dessus du bouton.
+ *           Tap à l'extérieur ou second tap ferme le tooltip.
+ *
+ * Le glossaire complet reste accessible via le bouton dans la Navbar.
  *
  * Usage:
  *   <span>Recettes propres <GlossaryTip term="recettes_propres" /></span>
@@ -11,10 +14,9 @@
 
 'use client';
 
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { GLOSSARY } from '@/lib/glossary';
-import { useGlossary } from '@/lib/glossaryContext';
 import { useIsMobile } from '@/lib/hooks/useIsMobile';
 
 interface GlossaryTipProps {
@@ -27,9 +29,21 @@ const TOOLTIP_WIDTH = 260;
 /** Marge par rapport aux bords de l'écran */
 const VIEWPORT_PADDING = 12;
 
+/**
+ * Calcule la position fixe du tooltip au-dessus d'un élément.
+ * Clampe horizontalement aux bords du viewport.
+ */
+function computeTooltipPos(rect: DOMRect): { top: number; left: number } {
+  let left = rect.left + rect.width / 2 - TOOLTIP_WIDTH / 2;
+  left = Math.max(
+    VIEWPORT_PADDING,
+    Math.min(left, window.innerWidth - TOOLTIP_WIDTH - VIEWPORT_PADDING),
+  );
+  return { top: rect.top - 8, left };
+}
+
 export default function GlossaryTip({ term }: GlossaryTipProps) {
   const definition = GLOSSARY[term];
-  const { openTerm } = useGlossary();
   const isMobile = useIsMobile();
 
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -39,36 +53,59 @@ export default function GlossaryTip({ term }: GlossaryTipProps) {
   if (!definition) return null;
 
   /**
-   * Sur mobile : ouvre le drawer directement.
-   * Sur desktop : le tooltip portal suffit, mais le clic ouvre aussi le drawer
-   * pour les utilisateurs clavier / accessibilité.
+   * Mobile : toggle le tooltip au tap.
+   * Desktop : ne rien faire (le hover suffit).
    */
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    openTerm(term);
+
+    if (!isMobile) return; // desktop — hover handles it
+
+    // Toggle : fermer si déjà ouvert, sinon ouvrir
+    if (tooltipPos) {
+      setTooltipPos(null);
+    } else if (buttonRef.current) {
+      setTooltipPos(computeTooltipPos(buttonRef.current.getBoundingClientRect()));
+    }
   };
 
   /**
-   * Calcule la position fixe du tooltip au-dessus du bouton.
-   * Utilise getBoundingClientRect pour échapper aux stacking contexts.
+   * Desktop hover : affiche le tooltip au survol.
    */
   const showTooltip = useCallback(() => {
     if (isMobile || !buttonRef.current) return;
-    const rect = buttonRef.current.getBoundingClientRect();
-
-    // Centrer horizontalement sur le bouton, clamper aux bords du viewport
-    let left = rect.left + rect.width / 2 - TOOLTIP_WIDTH / 2;
-    left = Math.max(VIEWPORT_PADDING, Math.min(left, window.innerWidth - TOOLTIP_WIDTH - VIEWPORT_PADDING));
-
-    setTooltipPos({
-      top: rect.top - 8, // 8px de marge au-dessus du bouton
-      left,
-    });
+    setTooltipPos(computeTooltipPos(buttonRef.current.getBoundingClientRect()));
   }, [isMobile]);
 
   const hideTooltip = useCallback(() => {
+    if (isMobile) return; // mobile tooltip is dismissed by tap, not mouse
     setTooltipPos(null);
-  }, []);
+  }, [isMobile]);
+
+  /**
+   * Mobile : fermer le tooltip quand on touche en dehors du bouton.
+   */
+  useEffect(() => {
+    if (!isMobile || !tooltipPos) return;
+
+    const handleOutsideTap = (e: TouchEvent | MouseEvent) => {
+      if (buttonRef.current && !buttonRef.current.contains(e.target as Node)) {
+        setTooltipPos(null);
+      }
+    };
+
+    // Délai court pour ne pas capturer le tap qui vient d'ouvrir le tooltip
+    const timer = setTimeout(() => {
+      document.addEventListener('touchstart', handleOutsideTap, { passive: true });
+      document.addEventListener('mousedown', handleOutsideTap);
+    }, 10);
+
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener('touchstart', handleOutsideTap);
+      document.removeEventListener('mousedown', handleOutsideTap);
+    };
+  }, [isMobile, tooltipPos]);
 
   return (
     <>

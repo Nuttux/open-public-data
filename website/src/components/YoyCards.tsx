@@ -1,35 +1,35 @@
 'use client';
 
 /**
- * YoyCards - Cartes KPI avec variation Year-over-Year
- * 
+ * YoyCards - Cartes KPI avec variation entre deux années
+ *
  * Affiche les indicateurs clés du budget avec:
  * - Recettes propres (hors emprunts)
  * - Dépenses totales
- * - Solde (surplus/déficit)
- * - Variation vs année précédente (%)
+ * - Déficit ou Excédent (label direct, pas "Solde")
+ * - Variation entre l'année de début et l'année de fin (%)
  * - Indicateur visuel hausse/baisse
- * 
- * Chaque label dispose d'un GlossaryTip (?) pour expliquer
- * le terme aux citoyens.
+ *
+ * Supporte la comparaison entre deux années quelconques (pas forcément N vs N-1).
+ * Chaque label dispose d'un GlossaryTip (?) pour expliquer le terme aux citoyens.
  */
 
 import { useMemo } from 'react';
-import { formatEuroCompact, formatNumber } from '@/lib/formatters';
+import { formatEuroCompact } from '@/lib/formatters';
 import GlossaryTip from './GlossaryTip';
 import type { YearlyBudget } from './EvolutionChart';
 
 interface YoyCardsProps {
-  /** Données de l'année sélectionnée */
+  /** Données de l'année de fin (affichée en gros) */
   currentYear: YearlyBudget;
-  /** Données de l'année précédente (pour calcul YoY) */
+  /** Données de l'année de début (pour calcul de la variation) */
   previousYear?: YearlyBudget;
 }
 
 /**
- * Calcule la variation en pourcentage
+ * Calcule la variation en pourcentage entre deux valeurs
  */
-function calculateYoY(current: number, previous: number): number | null {
+function calculateVariation(current: number, previous: number): number | null {
   if (previous === 0) return null;
   return ((current - previous) / Math.abs(previous)) * 100;
 }
@@ -37,12 +37,13 @@ function calculateYoY(current: number, previous: number): number | null {
 /**
  * Composant de variation avec flèche et couleur
  */
-function YoyBadge({ 
-  value, 
-  inverse = false 
-}: { 
-  value: number | null; 
-  inverse?: boolean;  // Pour le solde, une hausse vers moins négatif est "bonne"
+function VariationBadge({
+  value,
+  inverse = false,
+}: {
+  value: number | null;
+  /** Pour le solde, une hausse vers moins négatif est "bonne" */
+  inverse?: boolean;
 }) {
   if (value === null) {
     return <span className="text-slate-500 text-xs">N/A</span>;
@@ -61,17 +62,17 @@ function YoyBadge({
 }
 
 export default function YoyCards({ currentYear, previousYear }: YoyCardsProps) {
-  const yoyRecettes = useMemo(() => {
+  const variationRecettes = useMemo(() => {
     if (!previousYear) return null;
-    return calculateYoY(currentYear.recettes, previousYear.recettes);
+    return calculateVariation(currentYear.recettes, previousYear.recettes);
   }, [currentYear.recettes, previousYear]);
 
-  const yoyDepenses = useMemo(() => {
+  const variationDepenses = useMemo(() => {
     if (!previousYear) return null;
-    return calculateYoY(currentYear.depenses, previousYear.depenses);
+    return calculateVariation(currentYear.depenses, previousYear.depenses);
   }, [currentYear.depenses, previousYear]);
 
-  const yoySolde = useMemo(() => {
+  const variationSolde = useMemo(() => {
     if (!previousYear) return null;
     // Pour le solde, on calcule la différence absolue car le signe peut changer
     const diff = currentYear.solde - previousYear.solde;
@@ -79,62 +80,69 @@ export default function YoyCards({ currentYear, previousYear }: YoyCardsProps) {
     return isFinite(pct) ? pct : null;
   }, [currentYear.solde, previousYear]);
 
+  /** Label de comparaison affiché dans les cartes */
+  const vsLabel = previousYear ? `vs ${previousYear.year}` : undefined;
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
       {/* Recettes Propres (hors emprunts) */}
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-xs text-slate-500 uppercase tracking-wide">Recettes propres {currentYear.year} <GlossaryTip term="recettes_propres" /></span>
-          {previousYear && (
-            <span className="text-xs text-slate-500">vs {previousYear.year}</span>
+        <div className="flex items-center justify-between mb-2 gap-2">
+          <span className="text-xs text-slate-500 uppercase tracking-wide whitespace-nowrap">
+            Recettes {currentYear.year} <GlossaryTip term="recettes_propres" />
+          </span>
+          {vsLabel && (
+            <span className="text-xs text-slate-500 whitespace-nowrap flex-shrink-0">{vsLabel}</span>
           )}
         </div>
-        <p className="text-2xl font-bold text-emerald-400">
-          {formatEuroCompact(currentYear.recettes)}
-        </p>
-        <div className="mt-2 flex items-center justify-between">
-          <span className="text-xs text-slate-400">
-            Hors emprunts
-          </span>
-          <YoyBadge value={yoyRecettes} />
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-2xl font-bold text-emerald-400">
+              {formatEuroCompact(currentYear.recettes)}
+            </p>
+            <p className="text-[10px] text-slate-500 mt-0.5">Hors emprunts</p>
+          </div>
+          <VariationBadge value={variationRecettes} />
         </div>
       </div>
 
       {/* Dépenses */}
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-xs text-slate-500 uppercase tracking-wide">Dépenses {currentYear.year} <GlossaryTip term="depenses" /></span>
-          {previousYear && (
-            <span className="text-xs text-slate-500">vs {previousYear.year}</span>
+        <div className="flex items-center justify-between mb-2 gap-2">
+          <span className="text-xs text-slate-500 uppercase tracking-wide whitespace-nowrap">
+            Dépenses {currentYear.year} <GlossaryTip term="depenses" />
+          </span>
+          {vsLabel && (
+            <span className="text-xs text-slate-500 whitespace-nowrap flex-shrink-0">{vsLabel}</span>
           )}
         </div>
-        <p className="text-2xl font-bold text-purple-400">
-          {formatEuroCompact(currentYear.depenses)}
-        </p>
-        <div className="mt-2 flex items-center justify-between">
-          <span className="text-xs text-slate-400">
-            {formatNumber(Math.round(currentYear.depenses / 1_000_000))} M€
-          </span>
-          <YoyBadge value={yoyDepenses} inverse />
+        <div className="flex items-center justify-between">
+          <p className="text-2xl font-bold text-rose-400">
+            {formatEuroCompact(currentYear.depenses)}
+          </p>
+          <VariationBadge value={variationDepenses} inverse />
         </div>
       </div>
 
-      {/* Solde (Surplus/Déficit) */}
-      <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-xs text-slate-500 uppercase tracking-wide">Solde {currentYear.year} <GlossaryTip term="surplus_deficit" /></span>
-          {previousYear && (
-            <span className="text-xs text-slate-500">vs {previousYear.year}</span>
+      {/* Déficit / Excédent — label direct, pas "Solde" */}
+      <div className={`bg-slate-800/50 backdrop-blur rounded-xl border p-4 ${
+        currentYear.solde >= 0 ? 'border-emerald-500/40' : 'border-red-500/40'
+      }`}>
+        <div className="flex items-center justify-between mb-2 gap-2">
+          <span className={`text-xs uppercase tracking-wide whitespace-nowrap ${
+            currentYear.solde >= 0 ? 'text-emerald-400' : 'text-red-400'
+          }`}>
+            {currentYear.solde >= 0 ? 'Excédent' : 'Déficit'} {currentYear.year} <GlossaryTip term="surplus_deficit" />
+          </span>
+          {vsLabel && (
+            <span className="text-xs text-slate-500 whitespace-nowrap flex-shrink-0">{vsLabel}</span>
           )}
         </div>
-        <p className={`text-2xl font-bold ${currentYear.solde >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
-          {formatEuroCompact(currentYear.solde)}
-        </p>
-        <div className="mt-2 flex items-center justify-between">
-          <span className="text-xs text-slate-400">
-            {currentYear.solde >= 0 ? 'Excédent' : 'Déficit'}
-          </span>
-          <YoyBadge value={yoySolde} />
+        <div className="flex items-center justify-between">
+          <p className={`text-2xl font-bold ${currentYear.solde >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+            {formatEuroCompact(Math.abs(currentYear.solde))}
+          </p>
+          <VariationBadge value={variationSolde} />
         </div>
       </div>
     </div>

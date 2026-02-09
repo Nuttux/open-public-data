@@ -81,7 +81,7 @@ export default function DataQualityBanner({
     >
       {/* Icône */}
       <span className="text-lg flex-shrink-0">
-        {isError ? '❌' : '⚠️'}
+        {isError ? '✕' : '⚠'}
       </span>
       
       {/* Contenu */}
