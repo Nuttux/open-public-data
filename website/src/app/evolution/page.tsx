@@ -35,6 +35,8 @@ interface EvolutionBudgetData {
   definitions: Record<string, string>;
   years: Array<{
     year: number;
+    /** "execute" pour budget exécuté (réel), "vote" pour budget voté (prévisionnel) */
+    type_budget?: 'execute' | 'vote';
     totals: {
       recettes: number;
       depenses: number;
@@ -86,13 +88,13 @@ export default function EvolutionPage() {
         setRawData(data);
 
         // Transformer pour EvolutionChart et YoyCards
-        // On utilise recettes_propres (hors emprunts) pour refléter la santé financière réelle
+        // Recettes propres (hors emprunts) — données complètes pour toutes les années
         const chartData: YearlyBudget[] = data.years.map(y => ({
           year: y.year,
-          recettes: y.totals.recettes_propres,  // Recettes PROPRES (hors emprunts)
+          recettes: y.totals.recettes_propres,
           depenses: y.totals.depenses,
-          // Surplus/déficit = recettes propres - dépenses
           solde: y.totals.surplus_deficit,
+          type_budget: y.type_budget,
         }));
         setBudgetData(chartData);
 

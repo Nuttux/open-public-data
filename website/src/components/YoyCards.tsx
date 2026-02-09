@@ -100,7 +100,6 @@ export default function YoyCards({ currentYear, previousYear }: YoyCardsProps) {
             <p className="text-2xl font-bold text-emerald-400">
               {formatEuroCompact(currentYear.recettes)}
             </p>
-            <p className="text-[10px] text-slate-500 mt-0.5">Hors emprunts</p>
           </div>
           <VariationBadge value={variationRecettes} />
         </div>
