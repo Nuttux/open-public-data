@@ -3,9 +3,12 @@
 /**
  * TabBar — Composant générique de navigation par onglets (segmented control).
  *
+ * Design : boîte bordée avec highlight slate/blanc sur l'onglet actif.
+ * Même affordance visuelle que les toggles contextuels (Liste/Carte, Ventilation)
+ * mais en couleur neutre (slate) pour marquer la hiérarchie navigation > contrôle.
+ *
  * - Responsive : scroll horizontal sur mobile si > 4 tabs
  * - Sync avec l'URL via useTabState (côté parent)
- * - Design cohérent dark theme slate
  */
 
 export interface Tab {
@@ -28,7 +31,7 @@ interface TabBarProps {
 export default function TabBar({ tabs, activeTab, onChange, className = '' }: TabBarProps) {
   return (
     <div
-      className={`flex gap-1 overflow-x-auto scrollbar-hide rounded-xl bg-slate-800/60 p-1 border border-slate-700/50 ${className}`}
+      className={`flex overflow-x-auto scrollbar-hide bg-slate-800 rounded-lg border border-slate-700 p-0.5 ${className}`}
       role="tablist"
       aria-label="Navigation par onglets"
     >
@@ -42,12 +45,12 @@ export default function TabBar({ tabs, activeTab, onChange, className = '' }: Ta
             aria-controls={`tabpanel-${tab.id}`}
             onClick={() => onChange(tab.id)}
             className={`
-              flex items-center gap-1.5 whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium
+              flex items-center gap-1.5 whitespace-nowrap px-4 py-2 rounded-md text-sm font-medium
               transition-all duration-200 shrink-0
               ${
                 isActive
-                  ? 'bg-slate-700 text-white shadow-sm'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/40'
+                  ? 'bg-slate-600 text-white shadow-sm'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50'
               }
             `}
           >

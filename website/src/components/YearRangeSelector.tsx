@@ -9,16 +9,20 @@
  *
  * Props:
  * - availableYears: années disponibles dans les données (triées)
+ * - votedYears: ensemble des années avec budget voté (prévisionnel)
  * - startYear / endYear: bornes actuelles
  * - onStartYearChange / onEndYearChange: callbacks
  *
  * Contraintes:
  * - startYear < endYear (le composant filtre les options en conséquence)
+ * - Les années avec budget voté sont annotées d'un astérisque dans le dropdown
  */
 
 interface YearRangeSelectorProps {
   /** Années disponibles dans les données (ordre quelconque) */
   availableYears: number[];
+  /** Années avec budget voté (prévisionnel) — annotées d'un astérisque */
+  votedYears?: Set<number>;
   /** Année de début de la plage */
   startYear: number;
   /** Année de fin de la plage */
@@ -31,6 +35,7 @@ interface YearRangeSelectorProps {
 
 export default function YearRangeSelector({
   availableYears,
+  votedYears,
   startYear,
   endYear,
   onStartYearChange,
@@ -45,37 +50,40 @@ export default function YearRangeSelector({
   /** Options valides pour la fin : toutes sauf la première (doit être > startYear) */
   const endOptions = sortedYears.filter(y => y > startYear);
 
-  return (
-    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
-      {/* Label */}
-      <span className="text-sm text-slate-400 whitespace-nowrap">Période :</span>
+  /** Formatage de l'année avec astérisque si budget voté */
+  const formatYear = (y: number) => votedYears?.has(y) ? `${y} *` : `${y}`;
 
-      {/* Dual selectors */}
-      <div className="flex items-center gap-2">
+  return (
+    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+      {/* Label */}
+      <span className="text-xs text-slate-500 whitespace-nowrap">Période :</span>
+
+      {/* Dual selectors — même boîte bordée que les autres contrôles */}
+      <div className="flex items-center bg-slate-800 rounded-lg border border-slate-700 p-0.5">
         {/* Start year */}
         <select
           value={startYear}
           onChange={(e) => onStartYearChange(parseInt(e.target.value, 10))}
-          className="px-3 py-2 bg-slate-800 border border-slate-700 rounded-lg text-slate-100 text-sm focus:outline-none focus:border-purple-500 transition-colors cursor-pointer"
+          className="bg-transparent px-3 py-1.5 text-slate-100 text-sm font-medium focus:outline-none cursor-pointer"
           aria-label="Année de début"
         >
           {startOptions.map(y => (
-            <option key={y} value={y}>{y}</option>
+            <option key={y} value={y} className="bg-slate-800">{formatYear(y)}</option>
           ))}
         </select>
 
         {/* Arrow separator */}
-        <span className="text-slate-500 text-sm font-medium select-none">→</span>
+        <span className="text-slate-500 text-sm font-medium select-none px-1">→</span>
 
         {/* End year */}
         <select
           value={endYear}
           onChange={(e) => onEndYearChange(parseInt(e.target.value, 10))}
-          className="px-3 py-2 bg-slate-800 border border-slate-700 rounded-lg text-slate-100 text-sm focus:outline-none focus:border-purple-500 transition-colors cursor-pointer"
+          className="bg-transparent px-3 py-1.5 text-slate-100 text-sm font-medium focus:outline-none cursor-pointer"
           aria-label="Année de fin"
         >
           {endOptions.map(y => (
-            <option key={y} value={y}>{y}</option>
+            <option key={y} value={y} className="bg-slate-800">{formatYear(y)}</option>
           ))}
         </select>
       </div>

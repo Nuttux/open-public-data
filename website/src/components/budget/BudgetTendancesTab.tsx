@@ -32,8 +32,12 @@ interface BreakdownsParAnnee {
 interface EvolutionBudgetData {
   generated_at: string;
   definitions: Record<string, string>;
+  /** Mapping année → type de budget ("execute" ou "vote") */
+  year_types?: Record<string, 'execute' | 'vote'>;
   years: Array<{
     year: number;
+    /** "execute" pour budget exécuté (réel), "vote" pour budget voté (prévisionnel) */
+    type_budget?: 'execute' | 'vote';
     totals: {
       recettes: number;
       depenses: number;
@@ -162,11 +166,13 @@ export default function BudgetTendancesTab() {
         setRawData(data);
 
         // Recettes propres (hors emprunts) pour refléter la santé financière réelle
+        // Les données sont complètes pour toutes les années (exécuté + voté)
         const chartData: YearlyBudget[] = data.years.map(y => ({
           year: y.year,
           recettes: y.totals.recettes_propres,
           depenses: y.totals.depenses,
           solde: y.totals.surplus_deficit,
+          type_budget: y.type_budget,
         }));
         setBudgetData(chartData);
 
@@ -191,6 +197,11 @@ export default function BudgetTendancesTab() {
     return budgetData.map(d => d.year).sort((a, b) => a - b);
   }, [budgetData]);
 
+  /** Ensemble des années avec budget voté (prévisionnel) */
+  const votedYears = useMemo(() => {
+    return new Set(budgetData.filter(d => d.type_budget === 'vote').map(d => d.year));
+  }, [budgetData]);
+
   /** Données de l'année de fin (affichée en gros dans les KPI) */
   const endYearData = useMemo(
     () => budgetData.find(d => d.year === endYear),
@@ -207,6 +218,12 @@ export default function BudgetTendancesTab() {
   const filteredBudgetData = useMemo(
     () => budgetData.filter(d => d.year >= startYear && d.year <= endYear),
     [budgetData, startYear, endYear],
+  );
+
+  /** Indique si la plage sélectionnée contient des années avec budget voté (prévisionnel) */
+  const hasVotedYears = useMemo(
+    () => filteredBudgetData.some(d => d.type_budget === 'vote'),
+    [filteredBudgetData],
   );
 
   /** Variations dynamiques calculées à partir de la plage sélectionnée */
@@ -253,6 +270,7 @@ export default function BudgetTendancesTab() {
         </p>
         <YearRangeSelector
           availableYears={availableYears}
+          votedYears={votedYears}
           startYear={startYear}
           endYear={endYear}
           onStartYearChange={setStartYear}
@@ -275,6 +293,13 @@ export default function BudgetTendancesTab() {
           Évolution Recettes et Dépenses
         </h2>
         <EvolutionChart data={filteredBudgetData} height={400} />
+        {/* Footnote pour les années prévisionnelles */}
+        {hasVotedYears && (
+          <p className="text-[11px] text-slate-500 mt-3 flex items-center gap-1.5">
+            <span className="inline-block w-4 border-t border-dashed border-slate-500" />
+            * Budget prévisionnel voté par le Conseil de Paris — montants non définitifs
+          </p>
+        )}
       </div>
 
       {/* Variation par poste — dynamique selon la plage */}

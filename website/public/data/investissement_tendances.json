@@ -1,0 +1,357 @@
+{
+  "generated_at": "2026-02-09T21:13:37.945556",
+  "source": "OpenData Paris — Comptes Administratifs Budgets Principaux (M57)",
+  "dataset_id": "comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement",
+  "description": "Tendances d'investissement réel de la Ville de Paris, par chapitre fonctionnel",
+  "note_perimetre": "Données issues du Budget Principal (CA). Les chapitres 'Dettes et opérations financières' et 'Dotations et participations' sont exclus des dépenses 'hors dette' pour refléter l'investissement réel.",
+  "years": [
+    {
+      "year": 2019,
+      "depenses_total": 1854037949.63,
+      "recettes_total": 1000562153.75,
+      "depenses_hors_dette": 1509511376.24,
+      "par_chapitre": [
+        {
+          "label": "Aménagement & Habitat",
+          "depenses": 612271128.12,
+          "recettes": 90113096.56
+        },
+        {
+          "label": "Culture & Sport",
+          "depenses": 234587626.29,
+          "recettes": 49406424.27
+        },
+        {
+          "label": "Services Généraux",
+          "depenses": 176807444.04,
+          "recettes": 1566525.83
+        },
+        {
+          "label": "Transports",
+          "depenses": 171384836.97,
+          "recettes": 8025281.93
+        },
+        {
+          "label": "Enseignement",
+          "depenses": 140666451.19,
+          "recettes": 15890651.69
+        },
+        {
+          "label": "Santé & Social",
+          "depenses": 82134321.81,
+          "recettes": 6524479.37
+        },
+        {
+          "label": "Environnement",
+          "depenses": 47720074.08,
+          "recettes": 1400202.15
+        },
+        {
+          "label": "Action Économique",
+          "depenses": 27835432.24,
+          "recettes": 0
+        },
+        {
+          "label": "Sécurité",
+          "depenses": 15472400.41,
+          "recettes": 1295744.12
+        },
+        {
+          "label": "Rsa",
+          "depenses": 631661.09,
+          "recettes": 0
+        }
+      ]
+    },
+    {
+      "year": 2020,
+      "depenses_total": 1693615755.71,
+      "recettes_total": 2224786544.33,
+      "depenses_hors_dette": 1353855936.74,
+      "par_chapitre": [
+        {
+          "label": "Aménagement & Habitat",
+          "depenses": 560232872.19,
+          "recettes": 78516887.56
+        },
+        {
+          "label": "Culture & Sport",
+          "depenses": 165320643.72,
+          "recettes": 36756391.29
+        },
+        {
+          "label": "Services Généraux",
+          "depenses": 159096577.04,
+          "recettes": 1859703.91
+        },
+        {
+          "label": "Transports",
+          "depenses": 154486747.99,
+          "recettes": 8742310.1
+        },
+        {
+          "label": "Enseignement",
+          "depenses": 121326534.02,
+          "recettes": 6179607.45
+        },
+        {
+          "label": "Action Économique",
+          "depenses": 64834539.83,
+          "recettes": 0
+        },
+        {
+          "label": "Santé & Social",
+          "depenses": 55527491.1,
+          "recettes": 5054653.81
+        },
+        {
+          "label": "Environnement",
+          "depenses": 53801611.92,
+          "recettes": 12578760.19
+        },
+        {
+          "label": "Sécurité",
+          "depenses": 19163191.62,
+          "recettes": 166116.13
+        },
+        {
+          "label": "Rsa",
+          "depenses": 65727.31,
+          "recettes": 0
+        }
+      ]
+    },
+    {
+      "year": 2021,
+      "depenses_total": 1724596559.85,
+      "recettes_total": 1294611612.73,
+      "depenses_hors_dette": 1309226309.8,
+      "par_chapitre": [
+        {
+          "label": "Aménagement & Habitat",
+          "depenses": 544180858.06,
+          "recettes": 88478762.41
+        },
+        {
+          "label": "Culture & Sport",
+          "depenses": 169784762.78,
+          "recettes": 26425498.89
+        },
+        {
+          "label": "Transports",
+          "depenses": 166102836.67,
+          "recettes": 14411704.96
+        },
+        {
+          "label": "Services Généraux",
+          "depenses": 130769580.55,
+          "recettes": 1600189.42
+        },
+        {
+          "label": "Enseignement",
+          "depenses": 130146616.21,
+          "recettes": 28247660.61
+        },
+        {
+          "label": "Environnement",
+          "depenses": 59904209.68,
+          "recettes": 2870842.46
+        },
+        {
+          "label": "Santé & Social",
+          "depenses": 44293199.85,
+          "recettes": 4274321.48
+        },
+        {
+          "label": "Action Économique",
+          "depenses": 38991919.13,
+          "recettes": 514539.23
+        },
+        {
+          "label": "Sécurité",
+          "depenses": 24739984.67,
+          "recettes": 145692.67
+        },
+        {
+          "label": "Rsa",
+          "depenses": 312342.2,
+          "recettes": 0
+        }
+      ]
+    },
+    {
+      "year": 2022,
+      "depenses_total": 1992394308.58,
+      "recettes_total": 1665750215.47,
+      "depenses_hors_dette": 1575416896.65,
+      "par_chapitre": [
+        {
+          "label": "Aménagement & Habitat",
+          "depenses": 717641209.73,
+          "recettes": 101553221.38
+        },
+        {
+          "label": "Transports",
+          "depenses": 258187226.91,
+          "recettes": 12355644.96
+        },
+        {
+          "label": "Culture & Sport",
+          "depenses": 222096151.62,
+          "recettes": 28853922.04
+        },
+        {
+          "label": "Services Généraux",
+          "depenses": 125105237.82,
+          "recettes": 2804999.23
+        },
+        {
+          "label": "Enseignement",
+          "depenses": 113231093.32,
+          "recettes": 13203105.25
+        },
+        {
+          "label": "Santé & Social",
+          "depenses": 48289266.75,
+          "recettes": 2370126.42
+        },
+        {
+          "label": "Environnement",
+          "depenses": 47361111.96,
+          "recettes": 2219.72
+        },
+        {
+          "label": "Sécurité",
+          "depenses": 24597729.76,
+          "recettes": 119663.18
+        },
+        {
+          "label": "Action Économique",
+          "depenses": 18640348.82,
+          "recettes": 1779.86
+        },
+        {
+          "label": "Rsa",
+          "depenses": 267519.96,
+          "recettes": 0
+        }
+      ]
+    },
+    {
+      "year": 2023,
+      "depenses_total": 2062112047.68,
+      "recettes_total": 1180885920.43,
+      "depenses_hors_dette": 1710933283.79,
+      "par_chapitre": [
+        {
+          "label": "Aménagement & Habitat",
+          "depenses": 773217558.16,
+          "recettes": 61789490.64
+        },
+        {
+          "label": "Transports",
+          "depenses": 269146385.4,
+          "recettes": 22622078.81
+        },
+        {
+          "label": "Culture & Sport",
+          "depenses": 257843149.0,
+          "recettes": 55855554.96
+        },
+        {
+          "label": "Services Généraux",
+          "depenses": 143881920.04,
+          "recettes": 2287133.8
+        },
+        {
+          "label": "Enseignement",
+          "depenses": 98267572.47,
+          "recettes": 18060739.44
+        },
+        {
+          "label": "Environnement",
+          "depenses": 63204468.45,
+          "recettes": 4261810.88
+        },
+        {
+          "label": "Santé & Social",
+          "depenses": 56103647.09,
+          "recettes": 2260407.54
+        },
+        {
+          "label": "Sécurité",
+          "depenses": 29496966.94,
+          "recettes": 241662.76
+        },
+        {
+          "label": "Action Économique",
+          "depenses": 19676567.34,
+          "recettes": 1069700.0
+        },
+        {
+          "label": "Rsa",
+          "depenses": 95048.9,
+          "recettes": 0
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "depenses_total": 2117441510.42,
+      "recettes_total": 1852396256.27,
+      "depenses_hors_dette": 1733031757.95,
+      "par_chapitre": [
+        {
+          "label": "Aménagement & Habitat",
+          "depenses": 791025645.35,
+          "recettes": 38609097.84
+        },
+        {
+          "label": "Transports",
+          "depenses": 235108809.97,
+          "recettes": 52829905.23
+        },
+        {
+          "label": "Culture & Sport",
+          "depenses": 202684114.17,
+          "recettes": 28718168.9
+        },
+        {
+          "label": "Services Généraux",
+          "depenses": 176598953.91,
+          "recettes": 8695605.71
+        },
+        {
+          "label": "Environnement",
+          "depenses": 112589794.09,
+          "recettes": 8633177.46
+        },
+        {
+          "label": "Enseignement",
+          "depenses": 100430796.97,
+          "recettes": 6096656.11
+        },
+        {
+          "label": "Santé & Social",
+          "depenses": 73751084.66,
+          "recettes": 6660981.39
+        },
+        {
+          "label": "Sécurité",
+          "depenses": 24621414.24,
+          "recettes": 275934.79
+        },
+        {
+          "label": "Action Économique",
+          "depenses": 15952850.89,
+          "recettes": 100819.11
+        },
+        {
+          "label": "Rsa",
+          "depenses": 268293.7,
+          "recettes": 0
+        }
+      ]
+    }
+  ]
+}

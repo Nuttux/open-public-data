@@ -14,6 +14,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import FinancialHealthChart, { type FinancialYearData } from '@/components/FinancialHealthChart';
 import DebtRatiosChart, { type DebtRatioYearData } from '@/components/DebtRatiosChart';
+import DebtStockChart, { type DebtStockYearData } from '@/components/DebtStockChart';
 import GlossaryTip from '@/components/GlossaryTip';
 import YearRangeSelector from '@/components/YearRangeSelector';
 import { formatEuroCompact } from '@/lib/formatters';
@@ -22,6 +23,8 @@ import { formatEuroCompact } from '@/lib/formatters';
 
 interface EvolutionYear {
   year: number;
+  /** "execute" pour budget exécuté (réel), "vote" pour budget voté (prévisionnel) */
+  type_budget?: 'execute' | 'vote';
   totals: {
     emprunts: number;
     remboursement_principal: number;
@@ -64,6 +67,7 @@ export default function PatrimoineTendancesTab() {
         if (!res.ok) throw new Error('evolution_budget.json non trouvé');
         const data = await res.json();
 
+        // Toutes les années (exécuté + voté) ont des métriques patrimoine complètes
         const years: EvolutionYear[] = data.years || [];
         setRawYears(years);
 
@@ -117,6 +121,12 @@ export default function PatrimoineTendancesTab() {
     [rawYears],
   );
 
+  /** Années avec budget voté (prévisionnel) — annotées d'un astérisque */
+  const votedYears = useMemo(
+    () => new Set(rawYears.filter(y => y.type_budget === 'vote').map(y => y.year)),
+    [rawYears],
+  );
+
   /** Données de l'année de fin (affichée dans les métriques dette) */
   const endYearRaw = useMemo(
     () => rawYears.find(y => y.year === endYear),
@@ -135,17 +145,62 @@ export default function PatrimoineTendancesTab() {
     [financialData, startYear, endYear],
   );
 
-  /** Données pour le graphique des ratios de dette (filtrées sur la plage) */
+  /**
+   * Données pour le graphique des ratios de dette (filtrées sur la plage).
+   * Pour les années sans bilan réel (budgets votés), on estime l'encours de dette
+   * en partant du dernier bilan connu + emprunts − remboursements cumulés.
+   */
   const filteredDebtRatiosData: DebtRatioYearData[] = useMemo(() => {
-    return rawYears
-      .filter(y => y.year >= startYear && y.year <= endYear && bilanByYear[y.year])
+    // Trier toutes les années chronologiquement pour le calcul cumulatif
+    const sorted = [...rawYears].sort((a, b) => a.year - b.year);
+
+    // Trouver la dernière année avec un bilan réel (ancre de l'estimation)
+    const lastBilanYear = sorted
+      .filter(y => bilanByYear[y.year])
+      .at(-1);
+    const anchorDebt = lastBilanYear ? bilanByYear[lastBilanYear.year].dettes_financieres : 0;
+    const anchorYear = lastBilanYear?.year ?? Infinity;
+
+    // Construire un map year → dettes_financieres (réel ou estimé)
+    const detteMap: Record<number, { value: number; estimated: boolean }> = {};
+    let runningDebt = anchorDebt;
+
+    for (const y of sorted) {
+      if (bilanByYear[y.year]) {
+        // Bilan réel disponible → utiliser la valeur officielle
+        detteMap[y.year] = { value: bilanByYear[y.year].dettes_financieres, estimated: false };
+        runningDebt = bilanByYear[y.year].dettes_financieres;
+      } else if (y.year > anchorYear) {
+        // Pas de bilan → estimer : dette(N) = dette(N-1) + emprunts(N) − remb(N)
+        runningDebt = runningDebt + y.totals.emprunts - y.totals.remboursement_principal;
+        detteMap[y.year] = { value: runningDebt, estimated: true };
+      }
+    }
+
+    return sorted
+      .filter(y => y.year >= startYear && y.year <= endYear && detteMap[y.year])
       .map(y => ({
         year: y.year,
-        dettes_financieres: bilanByYear[y.year].dettes_financieres,
+        dettes_financieres: detteMap[y.year].value,
         epargne_brute: y.epargne_brute,
         recettes_fonctionnement: y.sections.fonctionnement.recettes,
+        estimated: detteMap[y.year].estimated,
       }));
   }, [rawYears, bilanByYear, startYear, endYear]);
+
+  /** Données pour le graphique d'encours de dette (stock) */
+  const debtStockData: DebtStockYearData[] = useMemo(() => {
+    return filteredDebtRatiosData.map(d => {
+      const evo = rawYears.find(y => y.year === d.year);
+      return {
+        year: d.year,
+        dettes_financieres: d.dettes_financieres,
+        estimated: d.estimated,
+        emprunts: evo?.totals.emprunts,
+        remboursement_principal: evo?.totals.remboursement_principal,
+      };
+    });
+  }, [filteredDebtRatiosData, rawYears]);
 
   /** Synthèse cumulée de la dette sur la plage sélectionnée */
   const debtSummary = useMemo(() => {
@@ -207,6 +262,7 @@ export default function PatrimoineTendancesTab() {
         </p>
         <YearRangeSelector
           availableYears={availableYears}
+          votedYears={votedYears}
           startYear={startYear}
           endYear={endYear}
           onStartYearChange={setStartYear}
@@ -219,6 +275,11 @@ export default function PatrimoineTendancesTab() {
         <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-amber-500/30 p-4 mb-6">
           <h3 className="text-sm font-semibold text-slate-200 mb-3 flex items-center gap-2">
             Gestion de la dette {endYear}
+            {votedYears.has(endYear) && (
+              <span className="text-[9px] sm:text-[10px] font-normal text-slate-400 border border-slate-600 rounded px-1 py-0.5">
+                voté *
+              </span>
+            )}
             {startYearRaw && (
               <span className="text-xs font-normal text-slate-500 ml-2">vs {startYear}</span>
             )}
@@ -305,6 +366,20 @@ export default function PatrimoineTendancesTab() {
         </div>
       </div>
 
+      {/* Encours total de dette (stock) */}
+      {debtStockData.length > 0 && (
+        <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6 mb-6">
+          <h2 className="text-lg font-semibold text-slate-100 mb-2 flex items-center gap-2">
+            <span>🏦</span>
+            Encours de la dette
+          </h2>
+          <p className="text-sm text-slate-400 mb-4">
+            Dettes financières totales inscrites au bilan (emprunts long terme)
+          </p>
+          <DebtStockChart data={debtStockData} height={320} />
+        </div>
+      )}
+
       {/* Ratios de soutenabilité de la dette */}
       {filteredDebtRatiosData.length > 0 && (
         <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6 mb-6">
@@ -330,6 +405,9 @@ export default function PatrimoineTendancesTab() {
               <span className="text-red-400">&lt; 8%</span> (fragile).
             </div>
           </div>
+          <p className="text-[10px] text-slate-500 mt-3">
+            Grille d&apos;analyse : Cour des comptes / Chambres régionales des comptes (CRC).
+          </p>
         </div>
       )}
 

@@ -10,6 +10,7 @@
  * 
  * Chaque métrique dispose d'un GlossaryTip (?) pour expliquer
  * le terme aux citoyens (hover desktop, tap mobile).
+ * Pas de sous-titre descriptif sous les montants (design épuré).
  * 
  * Responsive: cartes empilées sur mobile, textes adaptés
  */
@@ -47,9 +48,6 @@ export default function StatsCards({ recettes, depenses, year, emprunts = 0 }: S
               <p className="mt-1 text-xl sm:text-2xl font-bold text-emerald-400">
                 {formatEuroCompact(recettesPropres)}
               </p>
-              <p className="text-[10px] sm:text-xs text-slate-500 mt-1">
-                hors emprunts
-              </p>
             </div>
             <div className="p-2 sm:p-2.5 bg-emerald-500/10 rounded-lg flex-shrink-0 ml-2">
               <svg className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -69,9 +67,6 @@ export default function StatsCards({ recettes, depenses, year, emprunts = 0 }: S
               </p>
               <p className="mt-1 text-xl sm:text-2xl font-bold text-rose-400">
                 {formatEuroCompact(depenses)}
-              </p>
-              <p className="text-[10px] sm:text-xs text-slate-500 mt-1">
-                fonct. + invest.
               </p>
             </div>
             <div className="p-2 sm:p-2.5 bg-rose-500/10 rounded-lg flex-shrink-0 ml-2">
@@ -98,9 +93,6 @@ export default function StatsCards({ recettes, depenses, year, emprunts = 0 }: S
                 isDeficit ? 'text-red-400' : 'text-emerald-400'
               }`}>
                 {formatEuroCompact(Math.abs(deficit))}
-              </p>
-              <p className="text-[10px] sm:text-xs text-slate-500 mt-1">
-                {isDeficit ? 'financé par emprunt' : 'autofinancement'}
               </p>
             </div>
             <div className={`p-2 sm:p-2.5 rounded-lg flex-shrink-0 ml-2 ${
