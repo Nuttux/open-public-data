@@ -57,7 +57,10 @@ PROJECT_ID = "open-data-france-484717"
 DATASET_ID = "dbt_paris"
 OUTPUT_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data"
 
-YEARS = [2024, 2023, 2022, 2021, 2020, 2019]
+YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020, 2019]
+
+# Années dont le budget est voté (prévisionnel) et non exécuté (réel)
+VOTED_YEARS = {2025, 2026}
 
 # =============================================================================
 # REVENUE SOURCE CLASSIFICATION (same as Sankey for consistency)
@@ -147,11 +150,12 @@ def fetch_evolution_data(client: bigquery.Client) -> dict:
     """
     logger.info("Fetching evolution data from BigQuery...")
     
-    # Query for all views (including new debt metrics)
+    # Query for all views (including new debt metrics and type_budget)
     query = f"""
     SELECT
         vue,
         annee,
+        type_budget,
         sens_flux,
         section,
         thematique_macro,
@@ -167,7 +171,7 @@ def fetch_evolution_data(client: bigquery.Client) -> dict:
         remboursement_principal,
         interets_dette,
         variation_dette_nette
-    FROM `{PROJECT_ID}.{DATASET_ID}.mart_evolution_budget`
+    FROM `{PROJECT_ID}.dbt_paris_marts.mart_evolution_budget`
     WHERE annee IN ({','.join(str(y) for y in YEARS)})
     ORDER BY vue, annee, sens_flux, section
     """
@@ -179,9 +183,14 @@ def fetch_evolution_data(client: bigquery.Client) -> dict:
         "metriques": [],      # Métriques financières
         "par_section": [],    # Par section
         "par_thematique": [], # Par thématique (dépenses uniquement)
+        "type_budget_par_annee": {},  # Mapping annee → type_budget ('execute'/'vote')
     }
     
     for row in results:
+        # Capture type_budget for each year (consistent across all views)
+        if row.type_budget and row.annee not in data["type_budget_par_annee"]:
+            data["type_budget_par_annee"][row.annee] = row.type_budget
+        
         if row.vue == "par_sens":
             data["par_annee"].append({
                 "annee": row.annee,
@@ -228,28 +237,39 @@ def fetch_evolution_data(client: bigquery.Client) -> dict:
 
 def fetch_revenues_by_source(client: bigquery.Client) -> list:
     """
-    Fetch revenue data by chapitre_code from core_budget for source classification.
+    Fetch revenue data by chapitre_code for source classification.
     
     This allows us to classify revenues by their SOURCE (Impôts, Emprunts, Dotations...)
     instead of by thematique which is not meaningful for revenues.
     
-    Uses dbt_paris_analytics.core_budget (same as sankey export).
+    Sources:
+    - core_budget (exécuté, 2019-2024) from dbt_paris_analytics
+    - core_budget_vote (voté, 2025-2026) from dbt_paris_analytics
     
     Returns list of dicts with: annee, source, montant
     """
     logger.info("Fetching revenue data by chapter for source classification...")
     
-    # Use dbt_paris_analytics dataset where core_budget is materialized
+    # Use dbt_paris_analytics dataset where core models are materialized
     analytics_dataset = "dbt_paris_analytics"
     
+    # UNION core_budget (exécuté) + core_budget_vote (voté 2025-2026 only)
+    years_str = ','.join(str(y) for y in YEARS)
     query = f"""
-    SELECT
-        annee,
-        chapitre_code,
-        SUM(montant) AS montant
-    FROM `{PROJECT_ID}.{analytics_dataset}.core_budget`
-    WHERE annee IN ({','.join(str(y) for y in YEARS)})
-      AND sens_flux = 'Recette'
+    SELECT annee, chapitre_code, SUM(montant) AS montant
+    FROM (
+        -- Budget exécuté (2019-2024)
+        SELECT annee, chapitre_code, montant
+        FROM `{PROJECT_ID}.{analytics_dataset}.core_budget`
+        WHERE annee IN ({years_str}) AND sens_flux = 'Recette'
+        
+        UNION ALL
+        
+        -- Budget voté (2025-2026 seulement, pour éviter doublons)
+        SELECT annee, chapitre_code, montant
+        FROM `{PROJECT_ID}.{analytics_dataset}.core_budget_vote`
+        WHERE annee > 2024 AND annee IN ({years_str}) AND sens_flux = 'Recette'
+    )
     GROUP BY annee, chapitre_code
     ORDER BY annee, chapitre_code
     """
@@ -522,6 +542,15 @@ def transform_for_frontend(raw_data: dict, revenues_by_source: list) -> dict:
             year_data["totals"]["recettes"] - year_data["totals"]["depenses"]
         )
     
+    # Tag each year with its budget type from mart data (execute vs vote)
+    type_budget_map = raw_data.get("type_budget_par_annee", {})
+    for year_data in years_data.values():
+        yr = year_data["year"]
+        year_data["type_budget"] = type_budget_map.get(yr, "vote" if yr in VOTED_YEARS else "execute")
+    
+    # Build year_types lookup for the frontend
+    year_types = {str(y): type_budget_map.get(y, "vote" if y in VOTED_YEARS else "execute") for y in YEARS}
+    
     # Sort by year descending
     sorted_years = sorted(years_data.values(), key=lambda x: x["year"], reverse=True)
     
@@ -537,6 +566,7 @@ def transform_for_frontend(raw_data: dict, revenues_by_source: list) -> dict:
         "generated_at": datetime.now().isoformat(),
         "source": "mart_evolution_budget + core_budget",
         "description": "Données d'évolution du budget de Paris avec métriques financières",
+        "year_types": year_types,
         "definitions": {
             "solde_comptable": "Recettes totales - Dépenses totales (équilibre technique)",
             "recettes_propres": "Recettes totales - Emprunts (ressources réelles)",

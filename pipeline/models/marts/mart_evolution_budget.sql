@@ -1,7 +1,7 @@
 -- =============================================================================
 -- Mart: Évolution Budget
 --
--- Source: core_budget
+-- Sources: core_budget (exécuté 2019-2024) + core_budget_vote (voté 2025-2026)
 -- Description: Agrégations temporelles du budget pour graphiques d'évolution
 --
 -- Granularités disponibles:
@@ -18,28 +18,80 @@
 --     - Intérêts dette = nature 66xx dépenses
 --     - Variation dette nette = emprunts - remboursement_principal
 --
--- Output: ~250 lignes (6 ans × ~40 dimensions)
+-- ARCHITECTURE:
+--   Les budgets exécutés (CA) sont la source de vérité pour 2019-2024.
+--   Pour 2025-2026, seul le budget voté (BP) est disponible. On utilise
+--   core_budget_vote pour ces années uniquement, afin d'éviter les doublons.
+--   Le champ type_budget distingue 'execute' (CA) de 'vote' (BP).
+--
+-- Output: ~350 lignes (8 ans × ~40 dimensions)
 -- =============================================================================
 
-WITH budget_base AS (
+WITH budget_execute AS (
+    -- Budget exécuté (Compte Administratif) — source de vérité pour 2019-2024
     SELECT
         annee,
-        section,  -- Fonctionnement ou Investissement
+        section,
         sens_flux,
         chapitre_code,
         chapitre_libelle,
         nature_code,
         montant,
-        -- Utiliser ode_thematique du core_budget (mapping correct chapitre → thématique)
         ode_thematique AS thematique_macro,
-        -- Flags pour métriques dette
-        -- Emprunts nouveaux (nature 16x recettes)
-        CASE WHEN nature_code LIKE '16%' AND sens_flux = 'Recette' THEN TRUE ELSE FALSE END AS est_emprunt,
-        -- Remboursement du principal (nature 16x dépenses)
-        CASE WHEN nature_code LIKE '16%' AND sens_flux = 'Dépense' THEN TRUE ELSE FALSE END AS est_remboursement_principal,
-        -- Intérêts de la dette (nature 66x dépenses)
-        CASE WHEN nature_code LIKE '66%' AND sens_flux = 'Dépense' THEN TRUE ELSE FALSE END AS est_interets_dette
+        'execute' AS type_budget
     FROM {{ ref('core_budget') }}
+),
+
+budget_vote AS (
+    -- Budget voté (Budget Primitif) — utilisé pour 2025-2026 uniquement
+    -- (pour éviter les doublons avec core_budget sur 2019-2024)
+    SELECT
+        annee,
+        section,
+        sens_flux,
+        chapitre_code,
+        chapitre_libelle,
+        nature_code,
+        montant,
+        ode_thematique AS thematique_macro,
+        'vote' AS type_budget
+    FROM {{ ref('core_budget_vote') }}
+    WHERE annee > 2024
+),
+
+budget_base AS (
+    SELECT
+        annee,
+        section,
+        sens_flux,
+        chapitre_code,
+        chapitre_libelle,
+        nature_code,
+        montant,
+        thematique_macro,
+        type_budget,
+        -- Flags pour métriques dette
+        CASE WHEN nature_code LIKE '16%' AND sens_flux = 'Recette' THEN TRUE ELSE FALSE END AS est_emprunt,
+        CASE WHEN nature_code LIKE '16%' AND sens_flux = 'Dépense' THEN TRUE ELSE FALSE END AS est_remboursement_principal,
+        CASE WHEN nature_code LIKE '66%' AND sens_flux = 'Dépense' THEN TRUE ELSE FALSE END AS est_interets_dette
+    FROM budget_execute
+
+    UNION ALL
+
+    SELECT
+        annee,
+        section,
+        sens_flux,
+        chapitre_code,
+        chapitre_libelle,
+        nature_code,
+        montant,
+        thematique_macro,
+        type_budget,
+        CASE WHEN nature_code LIKE '16%' AND sens_flux = 'Recette' THEN TRUE ELSE FALSE END AS est_emprunt,
+        CASE WHEN nature_code LIKE '16%' AND sens_flux = 'Dépense' THEN TRUE ELSE FALSE END AS est_remboursement_principal,
+        CASE WHEN nature_code LIKE '66%' AND sens_flux = 'Dépense' THEN TRUE ELSE FALSE END AS est_interets_dette
+    FROM budget_vote
 ),
 
 -- Agrégation par année et sens (totaux globaux)
@@ -47,6 +99,8 @@ par_annee_sens AS (
     SELECT
         annee,
         sens_flux,
+        -- type_budget est le même pour toute une année → MAX suffit
+        MAX(type_budget) AS type_budget,
         SUM(montant) AS montant_total,
         COUNT(*) AS nb_lignes
     FROM budget_base
@@ -58,6 +112,7 @@ avec_variation AS (
     SELECT
         annee,
         sens_flux,
+        type_budget,
         montant_total,
         nb_lignes,
         LAG(montant_total) OVER (PARTITION BY sens_flux ORDER BY annee) AS montant_annee_prec,
@@ -74,6 +129,7 @@ par_section AS (
         annee,
         section,
         sens_flux,
+        MAX(type_budget) AS type_budget,
         SUM(montant) AS montant_total,
         COUNT(*) AS nb_lignes
     FROM budget_base
@@ -84,6 +140,7 @@ par_section AS (
 metriques_financieres AS (
     SELECT
         annee,
+        MAX(type_budget) AS type_budget,
         -- Recettes et dépenses par section
         SUM(CASE WHEN section = 'Fonctionnement' AND sens_flux = 'Recette' THEN montant ELSE 0 END) AS recettes_fonct,
         SUM(CASE WHEN section = 'Fonctionnement' AND sens_flux = 'Dépense' THEN montant ELSE 0 END) AS depenses_fonct,
@@ -103,6 +160,7 @@ metriques_financieres AS (
 metriques_calculees AS (
     SELECT
         annee,
+        type_budget,
         recettes_fonct,
         depenses_fonct,
         recettes_invest,
@@ -134,6 +192,7 @@ par_thematique AS (
         annee,
         sens_flux,
         thematique_macro,
+        MAX(type_budget) AS type_budget,
         SUM(montant) AS montant_total,
         COUNT(*) AS nb_lignes
     FROM budget_base
@@ -146,6 +205,7 @@ resultats AS (
     SELECT
         'par_sens' AS vue,
         annee,
+        type_budget,
         sens_flux,
         NULL AS section,
         NULL AS thematique_macro,
@@ -168,6 +228,7 @@ resultats AS (
     SELECT
         'par_section' AS vue,
         annee,
+        type_budget,
         sens_flux,
         section,
         NULL AS thematique_macro,
@@ -190,6 +251,7 @@ resultats AS (
     SELECT
         'metriques' AS vue,
         annee,
+        type_budget,
         NULL AS sens_flux,
         NULL AS section,
         NULL AS thematique_macro,
@@ -212,6 +274,7 @@ resultats AS (
     SELECT
         'par_thematique' AS vue,
         annee,
+        type_budget,
         sens_flux,
         NULL AS section,
         thematique_macro,
@@ -232,6 +295,7 @@ resultats AS (
 SELECT
     vue,
     annee,
+    type_budget,
     sens_flux,
     section,
     thematique_macro,

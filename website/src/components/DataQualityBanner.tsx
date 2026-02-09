@@ -16,7 +16,7 @@ import { useMemo } from 'react';
  * Configuration des warnings par dataset et année
  * Basé sur l'audit de qualité documenté dans architecture-modelling.md
  */
-const DATA_WARNINGS: Record<string, Record<number, { severity: 'error' | 'warning'; message: string }>> = {
+const DATA_WARNINGS: Record<string, Record<number, { severity: 'error' | 'warning' | 'info'; message: string }>> = {
   subventions: {
     2020: {
       severity: 'error',
@@ -37,7 +37,16 @@ const DATA_WARNINGS: Record<string, Record<number, { severity: 'error' | 'warnin
       message: 'Données 2024 non encore publiées par OpenData Paris.',
     },
   },
-  budget: {},
+  budget: {
+    2025: {
+      severity: 'info',
+      message: 'Budget prévisionnel (voté par le Conseil de Paris) — les montants définitifs seront connus mi-2026.',
+    },
+    2026: {
+      severity: 'info',
+      message: 'Budget prévisionnel (voté par le Conseil de Paris) — les montants définitifs seront connus mi-2027.',
+    },
+  },
   logements: {},
 };
 
@@ -49,6 +58,28 @@ export interface DataQualityBannerProps {
   /** Classes CSS additionnelles */
   className?: string;
 }
+
+/** Styles par niveau de sévérité */
+const SEVERITY_STYLES = {
+  error: {
+    bg: 'bg-red-500/10 border border-red-500/30',
+    text: 'text-red-400',
+    icon: '✕',
+    subtitle: 'Les visualisations peuvent être incomplètes pour cette période.',
+  },
+  warning: {
+    bg: 'bg-amber-500/10 border border-amber-500/30',
+    text: 'text-amber-400',
+    icon: '⚠',
+    subtitle: 'Les visualisations peuvent être incomplètes pour cette période.',
+  },
+  info: {
+    bg: 'bg-blue-500/10 border border-blue-500/30',
+    text: 'text-blue-400',
+    icon: 'ℹ',
+    subtitle: 'Les montants affichés sont des prévisions, pas des dépenses réelles.',
+  },
+} as const;
 
 /**
  * Bandeau d'avertissement sur la qualité des données
@@ -65,32 +96,29 @@ export default function DataQualityBanner({
   // Pas de warning = pas de bandeau
   if (!warning) return null;
 
-  const isError = warning.severity === 'error';
+  const style = SEVERITY_STYLES[warning.severity];
 
   return (
     <div
       className={`
         rounded-lg p-4 mb-4 flex items-start gap-3
-        ${isError 
-          ? 'bg-red-500/10 border border-red-500/30' 
-          : 'bg-amber-500/10 border border-amber-500/30'
-        }
+        ${style.bg}
         ${className}
       `}
       role="alert"
     >
       {/* Icône */}
       <span className="text-lg flex-shrink-0">
-        {isError ? '✕' : '⚠'}
+        {style.icon}
       </span>
       
       {/* Contenu */}
       <div className="flex-1 min-w-0">
-        <p className={`text-sm font-medium ${isError ? 'text-red-400' : 'text-amber-400'}`}>
+        <p className={`text-sm font-medium ${style.text}`}>
           {warning.message}
         </p>
         <p className="text-xs text-slate-500 mt-1">
-          Les visualisations peuvent être incomplètes pour cette période.
+          {style.subtitle}
         </p>
       </div>
     </div>
@@ -102,7 +130,7 @@ export default function DataQualityBanner({
  */
 export function useDataAvailability(dataset: string, year: number): {
   isAvailable: boolean;
-  warning: { severity: 'error' | 'warning'; message: string } | null;
+  warning: { severity: 'error' | 'warning' | 'info'; message: string } | null;
 } {
   const warning = DATA_WARNINGS[dataset]?.[year] || null;
   return {

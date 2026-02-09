@@ -31,6 +31,8 @@ export interface DebtRatioYearData {
   epargne_brute: number;
   /** Recettes de fonctionnement (en €) */
   recettes_fonctionnement: number;
+  /** True si dettes_financieres est estimé (pas de bilan réel) */
+  estimated?: boolean;
 }
 
 interface DebtRatiosChartProps {
@@ -74,6 +76,9 @@ export default function DebtRatiosChart({
   }, [data]);
 
   const years = sortedData.map(d => d.year.toString());
+
+  /** Indique si au moins une année est estimée */
+  const hasEstimated = sortedData.some(d => d.estimated);
 
   /** Durée de désendettement = dettes financières / épargne brute (en années) */
   const durees = useMemo(() => sortedData.map(d => {
@@ -124,8 +129,9 @@ export default function DebtRatiosChart({
               <span style="font-size: 10px; color: #94a3b8;">${qualif}</span>
             </div>
             <div style="border-top: 1px solid rgba(148,163,184,0.2); margin-top: 6px; padding-top: 4px; font-size: 10px; color: #64748b;">
-              Dette : ${formatEuroCompact(d.dettes_financieres)} · Épargne : ${formatEuroCompact(d.epargne_brute)}
+              Dette : ${formatEuroCompact(d.dettes_financieres)}${d.estimated ? ' (est.)' : ''} · Épargne : ${formatEuroCompact(d.epargne_brute)}
             </div>
+            <div style="font-size: 9px; color: #475569; margin-top: 4px;">Réf. : grille CRC / Cour des comptes</div>
           </div>
         `;
       },
@@ -141,7 +147,16 @@ export default function DebtRatiosChart({
       type: 'category',
       data: years,
       axisLine: { lineStyle: { color: '#475569' } },
-      axisLabel: { color: '#94a3b8', fontSize: isMobile ? 10 : 12, fontWeight: 500 },
+      axisLabel: {
+        color: '#94a3b8',
+        fontSize: isMobile ? 10 : 12,
+        fontWeight: 500,
+        formatter: (value: string) => {
+          const yr = parseInt(value, 10);
+          const d = sortedData.find(item => item.year === yr);
+          return d?.estimated ? `${value}*` : value;
+        },
+      },
       axisTick: { show: false },
     },
     yAxis: {
@@ -157,24 +172,29 @@ export default function DebtRatiosChart({
     series: [
       {
         type: 'bar',
-        data: durees.map(d => ({
-          value: Math.min(d, MAX_DURATION_DISPLAY),
-          itemStyle: {
-            color: getDurationColor(d),
-            borderRadius: [3, 3, 0, 0],
-          },
-          // Label au-dessus si tronqué
-          ...(d > MAX_DURATION_DISPLAY ? {
-            label: {
-              show: true,
-              position: 'top' as const,
-              formatter: `${Math.round(d)}a`,
-              fontSize: 9,
-              color: PALETTE.red,
-              fontWeight: 600,
+        data: durees.map((d, i) => {
+          const isEstimated = sortedData[i]?.estimated;
+          return {
+            value: Math.min(d, MAX_DURATION_DISPLAY),
+            itemStyle: {
+              color: getDurationColor(d),
+              opacity: isEstimated ? 0.55 : 1,
+              borderRadius: [3, 3, 0, 0],
+              ...(isEstimated ? { borderColor: '#94a3b8', borderWidth: 1, borderType: 'dashed' as const } : {}),
             },
-          } : {}),
-        })),
+            // Label au-dessus si tronqué
+            ...(d > MAX_DURATION_DISPLAY ? {
+              label: {
+                show: true,
+                position: 'top' as const,
+                formatter: `${Math.round(d)}a`,
+                fontSize: 9,
+                color: PALETTE.red,
+                fontWeight: 600,
+              },
+            } : {}),
+          };
+        }),
         barMaxWidth: isMobile ? 35 : 45,
         // Seuils de référence
         markLine: {
@@ -239,6 +259,7 @@ export default function DebtRatiosChart({
             <div style="border-top: 1px solid rgba(148,163,184,0.2); margin-top: 6px; padding-top: 4px; font-size: 10px; color: #64748b;">
               Épargne : ${formatEuroCompact(d.epargne_brute)} · Rec. fonct. : ${formatEuroCompact(d.recettes_fonctionnement)}
             </div>
+            <div style="font-size: 9px; color: #475569; margin-top: 4px;">Réf. : grille CRC / Cour des comptes</div>
           </div>
         `;
       },
@@ -254,7 +275,16 @@ export default function DebtRatiosChart({
       type: 'category',
       data: years,
       axisLine: { lineStyle: { color: '#475569' } },
-      axisLabel: { color: '#94a3b8', fontSize: isMobile ? 10 : 12, fontWeight: 500 },
+      axisLabel: {
+        color: '#94a3b8',
+        fontSize: isMobile ? 10 : 12,
+        fontWeight: 500,
+        formatter: (value: string) => {
+          const yr = parseInt(value, 10);
+          const d = sortedData.find(item => item.year === yr);
+          return d?.estimated ? `${value}*` : value;
+        },
+      },
       axisTick: { show: false },
     },
     yAxis: {
@@ -273,13 +303,18 @@ export default function DebtRatiosChart({
     series: [
       {
         type: 'bar',
-        data: taux.map(t => ({
-          value: t,
-          itemStyle: {
-            color: getAutofinColor(t),
-            borderRadius: [3, 3, 0, 0],
-          },
-        })),
+        data: taux.map((t, i) => {
+          const isEstimated = sortedData[i]?.estimated;
+          return {
+            value: t,
+            itemStyle: {
+              color: getAutofinColor(t),
+              opacity: isEstimated ? 0.55 : 1,
+              borderRadius: [3, 3, 0, 0],
+              ...(isEstimated ? { borderColor: '#94a3b8', borderWidth: 1, borderType: 'dashed' as const } : {}),
+            },
+          };
+        }),
         barMaxWidth: isMobile ? 35 : 45,
         // Seuils de référence
         markLine: {
@@ -319,6 +354,12 @@ export default function DebtRatiosChart({
         style={{ height: `${singleHeight}px`, width: '100%' }}
         opts={{ renderer: 'canvas' }}
       />
+      {hasEstimated && (
+        <p className="text-[11px] text-slate-500 mt-1 flex items-center gap-1.5">
+          <span className="inline-block w-4 border-t border-dashed border-slate-500" />
+          * Dette estimée : encours 2024 (bilan) +&nbsp;emprunts − remboursements (budget voté)
+        </p>
+      )}
     </div>
   );
 }
