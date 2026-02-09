@@ -12,6 +12,7 @@
  * - Axe Y en milliards d'euros
  * - Tooltip avec détails
  * - Responsive: légende en haut sur mobile, symboles plus grands pour touch
+ * - Pointillés pour les années avec budget voté (prévisionnel)
  */
 
 import { useMemo } from 'react';
@@ -26,6 +27,8 @@ export interface YearlyBudget {
   recettes: number;
   depenses: number;
   solde: number;
+  /** "execute" pour budget exécuté (réel), "vote" pour budget voté (prévisionnel) */
+  type_budget?: 'execute' | 'vote';
 }
 
 interface EvolutionChartProps {
@@ -72,6 +75,43 @@ export default function EvolutionChart({
   const depenses = sortedData.map(d => d.depenses);
   const soldes = sortedData.map(d => d.solde);
 
+  /** Index du premier point "voté" (prévisionnel) — utilisé pour séparer trait plein / pointillé */
+  const firstVotedIdx = useMemo(() => {
+    const idx = sortedData.findIndex(d => d.type_budget === 'vote');
+    return idx >= 0 ? idx : -1;
+  }, [sortedData]);
+
+  /** Indique si le graphique contient des années prévisionnelles */
+  const hasVotedYears = firstVotedIdx >= 0;
+
+  /**
+   * Sépare un tableau de valeurs en deux séries :
+   * - executedValues : valeurs réelles (les points votés sont `null` SAUF le point de jonction)
+   * - votedValues : valeurs votées (les points exécutés sont `null` SAUF le point de jonction)
+   * Le point de jonction (dernier exécuté) apparaît dans les deux pour assurer la continuité.
+   */
+  const splitSeries = useMemo(() => {
+    if (!hasVotedYears) return null;
+
+    // Le point juste avant le premier voté = jonction
+    const junctionIdx = firstVotedIdx - 1;
+
+    const executedRecettes = sortedData.map((d, i) =>
+      i <= junctionIdx ? d.recettes : null
+    );
+    const executedDepenses = sortedData.map((d, i) =>
+      i <= junctionIdx ? d.depenses : null
+    );
+    const votedRecettes = sortedData.map((d, i) =>
+      i >= junctionIdx && d.type_budget === 'vote' || i === junctionIdx ? d.recettes : null
+    );
+    const votedDepenses = sortedData.map((d, i) =>
+      i >= junctionIdx && d.type_budget === 'vote' || i === junctionIdx ? d.depenses : null
+    );
+
+    return { executedRecettes, executedDepenses, votedRecettes, votedDepenses };
+  }, [sortedData, firstVotedIdx, hasVotedYears]);
+
   // Hauteur adaptative
   const chartHeight = isMobile ? Math.min(height, 280) : height;
 
@@ -98,8 +138,14 @@ export default function EvolutionChart({
         
         const year = items[0].name;
         const yearData = sortedData.find(d => d.year.toString() === year);
+        const isVoted = yearData?.type_budget === 'vote';
         
-        let html = `<div style="font-weight: 600; margin-bottom: 6px; font-size: ${isMobile ? '13px' : '14px'};">${year}</div>`;
+        let html = `<div style="font-weight: 600; margin-bottom: 6px; font-size: ${isMobile ? '13px' : '14px'};">`;
+        html += year;
+        if (isVoted) {
+          html += `<span style="font-weight: 400; font-size: 10px; color: #94a3b8; margin-left: 6px; vertical-align: middle; border: 1px solid #475569; border-radius: 3px; padding: 1px 4px;">voté</span>`;
+        }
+        html += `</div>`;
         
         // Afficher Recettes et Dépenses (exclure Déficit car affiché séparément)
         items
@@ -169,6 +215,12 @@ export default function EvolutionChart({
         fontWeight: 500,
         // Rotation sur mobile si beaucoup d'années
         rotate: isMobile && years.length > 5 ? 45 : 0,
+        // Astérisque pour les années avec budget voté
+        formatter: (value: string) => {
+          const yearNum = parseInt(value, 10);
+          const d = sortedData.find(item => item.year === yearNum);
+          return d?.type_budget === 'vote' ? `${value}*` : value;
+        },
       },
       axisTick: { show: false },
     },
@@ -188,13 +240,14 @@ export default function EvolutionChart({
       },
     },
     series: [
+      // ── Recettes (trait plein = exécuté) ──
       {
         name: 'Recettes',
         type: 'line',
-        data: recettes,
+        data: splitSeries ? splitSeries.executedRecettes : recettes,
         smooth: true,
         symbol: 'circle',
-        symbolSize: isMobile ? 10 : 8, // Plus grand pour touch
+        symbolSize: isMobile ? 10 : 8,
         lineStyle: {
           width: isMobile ? 2.5 : 3,
           color: FLUX_COLORS.recettes,
@@ -207,10 +260,7 @@ export default function EvolutionChart({
         areaStyle: {
           color: {
             type: 'linear',
-            x: 0,
-            y: 0,
-            x2: 0,
-            y2: 1,
+            x: 0, y: 0, x2: 0, y2: 1,
             colorStops: [
               { offset: 0, color: 'rgba(16, 185, 129, 0.2)' },
               { offset: 1, color: 'rgba(16, 185, 129, 0.02)' },
@@ -218,13 +268,14 @@ export default function EvolutionChart({
           },
         },
       },
+      // ── Dépenses (trait plein = exécuté) ──
       {
         name: 'Dépenses',
         type: 'line',
-        data: depenses,
+        data: splitSeries ? splitSeries.executedDepenses : depenses,
         smooth: true,
         symbol: 'circle',
-        symbolSize: isMobile ? 10 : 8, // Plus grand pour touch
+        symbolSize: isMobile ? 10 : 8,
         lineStyle: {
           width: isMobile ? 2.5 : 3,
           color: FLUX_COLORS.depenses,
@@ -237,10 +288,7 @@ export default function EvolutionChart({
         areaStyle: {
           color: {
             type: 'linear',
-            x: 0,
-            y: 0,
-            x2: 0,
-            y2: 1,
+            x: 0, y: 0, x2: 0, y2: 1,
             colorStops: [
               { offset: 0, color: 'rgba(244, 63, 94, 0.2)' },
               { offset: 1, color: 'rgba(244, 63, 94, 0.02)' },
@@ -248,29 +296,94 @@ export default function EvolutionChart({
           },
         },
       },
+      // ── Recettes votées (trait pointillé = prévisionnel) ──
+      ...(splitSeries ? [{
+        name: 'Recettes',
+        type: 'line' as const,
+        data: splitSeries.votedRecettes,
+        smooth: true,
+        symbol: 'diamond',
+        symbolSize: isMobile ? 10 : 8,
+        lineStyle: {
+          width: isMobile ? 2.5 : 3,
+          color: FLUX_COLORS.recettes,
+          type: 'dashed' as const,
+        },
+        itemStyle: {
+          color: FLUX_COLORS.recettes,
+          borderWidth: 2,
+          borderColor: '#fff',
+        },
+        areaStyle: {
+          color: {
+            type: 'linear' as const,
+            x: 0, y: 0, x2: 0, y2: 1,
+            colorStops: [
+              { offset: 0, color: 'rgba(16, 185, 129, 0.08)' },
+              { offset: 1, color: 'rgba(16, 185, 129, 0.01)' },
+            ],
+          },
+        },
+      }] : []),
+      // ── Dépenses votées (trait pointillé = prévisionnel) ──
+      ...(splitSeries ? [{
+        name: 'Dépenses',
+        type: 'line' as const,
+        data: splitSeries.votedDepenses,
+        smooth: true,
+        symbol: 'diamond',
+        symbolSize: isMobile ? 10 : 8,
+        lineStyle: {
+          width: isMobile ? 2.5 : 3,
+          color: FLUX_COLORS.depenses,
+          type: 'dashed' as const,
+        },
+        itemStyle: {
+          color: FLUX_COLORS.depenses,
+          borderWidth: 2,
+          borderColor: '#fff',
+        },
+        areaStyle: {
+          color: {
+            type: 'linear' as const,
+            x: 0, y: 0, x2: 0, y2: 1,
+            colorStops: [
+              { offset: 0, color: 'rgba(244, 63, 94, 0.08)' },
+              { offset: 1, color: 'rgba(244, 63, 94, 0.01)' },
+            ],
+          },
+        },
+      }] : []),
+      // ── Barres Déficit / Excédent (fond) ──
       {
         name: 'Déficit',
         type: 'bar',
-        // Couleur de base pour la légende (rouge = déficit, cas dominant)
         itemStyle: {
           color: FLUX_COLORS.solde.negatif,
         },
-        data: soldes.map(s => ({
+        data: soldes.map((s, i) => ({
           value: s,
           itemStyle: {
             color: s >= 0 ? FLUX_COLORS.solde.positif : FLUX_COLORS.solde.negatif,
-            opacity: 0.25,
+            // Opacité réduite pour les années votées
+            opacity: sortedData[i]?.type_budget === 'vote' ? 0.12 : 0.25,
             borderRadius: s >= 0 ? [2, 2, 0, 0] : [0, 0, 2, 2],
+            // Bordure pointillée pour barres votées
+            ...(sortedData[i]?.type_budget === 'vote' ? {
+              borderColor: s >= 0 ? FLUX_COLORS.solde.positif : FLUX_COLORS.solde.negatif,
+              borderWidth: 1,
+              borderType: 'dashed' as const,
+            } : {}),
           },
         })),
         barWidth: isMobile ? '30%' : '40%',
-        z: 0, // Derrière les lignes
+        z: 0,
       },
     ],
     animation: true,
     animationDuration: isMobile ? 500 : 800, // Plus rapide sur mobile
     animationEasing: 'cubicOut',
-  }), [years, recettes, depenses, soldes, sortedData, isMobile]);
+  }), [years, recettes, depenses, soldes, sortedData, isMobile, splitSeries]);
 
   // Gestion du clic sur un point
   const handleClick = (params: { name?: string }) => {

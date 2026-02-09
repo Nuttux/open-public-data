@@ -1,7 +1,8 @@
 # ARCHITECTURE DATA MODELLING - PARIS BUDGET DASHBOARD
 
-> Mis à jour le 2026-02-06. Pipeline complet validé (audit 12/12 OK).
+> Mis à jour le 2026-02-09. Pipeline complet validé (audit 12/12 OK).
 > Nouvelles entités : `core_budget_vote` (2023-2026 PDF), `mart_vote_vs_execute`.
+> Voir aussi : [`data-quality.md`](./data-quality.md) pour les limites, observations et pistes d'amélioration.
 
 ## Table des matières
 
@@ -376,6 +377,7 @@ website/public/data/
 ├── vote_vs_execute.json                  # Taux exécution, ranking écarts, estimations
 ├── bilan_sankey_{year}.json              # Actif/Passif
 ├── data_availability.json                # Warnings par dataset/année
+├── investissement_tendances.json         # Tendances invest. par chapitre (CA BP M57)
 │
 ├── subventions/
 │   ├── index.json                        # Années, filtres, totaux

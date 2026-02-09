@@ -1,0 +1,236 @@
+---
+title: "Open Data Paris vs Données Lumières : ce que vous gagnez (et ce que vous ne trouvez nulle part ailleurs)"
+description: "Le portail Open Data de Paris publie des fichiers bruts. Nous les transformons en réponses. Voici, concrètement, ce qui nous différencie."
+date: "2026-02-09"
+author: "L'équipe Données Lumières"
+tags: ["Open Data", "transparence", "comparatif", "tech"]
+readingTime: "7 min"
+---
+
+On nous pose souvent la question : *"Pourquoi votre site, alors que la Ville de Paris met déjà tout en Open Data ?"*
+
+C'est une excellente question. Et la réponse courte est : **publier des données, ce n'est pas la même chose que les rendre compréhensibles.**
+
+L'Open Data est un droit fondamental. Le portail [opendata.paris.fr](https://opendata.paris.fr) fait un travail essentiel en rendant les fichiers accessibles. Mais entre un fichier CSV de 40 000 lignes et une réponse claire à *"Combien mon arrondissement a-t-il reçu en investissements cette année ?"*, il y a un gouffre.
+
+C'est ce gouffre qu'on essaie de combler. Voici comment.
+
+## 1. Des données brutes vs des données nettoyées
+
+### Ce que vous trouvez sur Open Data Paris
+
+Un fichier CSV du Compte Administratif, c'est ça :
+
+```
+publication,type_operation,section_budgetaire,chapitre_budgetaire,mandate_titre_apres_regul
+"CA 2024","Réel","Fonctionnement","012 - Charges de personnel","2 847 312 456,78"
+"CA 2024","Pour Ordre","Fonctionnement","042 - Opérations d'ordre","1 234 567 890,00"
+```
+
+Si vous additionnez naïvement toutes les lignes, vous obtenez un budget **deux fois supérieur** à la réalité. Pourquoi ? Parce que les lignes "Pour Ordre" sont des écritures comptables internes — l'argent ne quitte jamais la mairie.
+
+### Ce que nous faisons
+
+On filtre automatiquement ces opérations. On ne garde que les **mouvements réels**. On harmonise les noms de colonnes entre les différents jeux de données (le Budget Voté et le Compte Administratif n'utilisent pas les mêmes intitulés). Et on s'assure que le total au centime près correspond aux documents officiels.
+
+**Résultat :** Quand vous voyez "9,3 milliards €" sur notre dashboard, c'est le vrai chiffre. Pas le double.
+
+## 2. Des fichiers isolés vs une vision connectée
+
+### Le problème
+
+Le portail Open Data publie **28 jeux de données** liés aux finances. Mais ils sont tous indépendants : un fichier pour le budget exécuté, un autre pour le budget voté, un troisième pour les subventions, un quatrième pour les investissements... Chacun avec ses propres conventions, ses propres colonnes, ses propres années.
+
+Impossible, en l'état, de répondre à une question aussi simple que : *"La Ville a-t-elle dépensé plus ou moins que ce qu'elle avait promis ?"*
+
+### Ce que nous faisons
+
+On relie tout. Notre pipeline connecte le **Budget Primitif** (ce qui est voté) au **Compte Administratif** (ce qui est réellement dépensé), année par année, poste par poste.
+
+On calcule des **taux d'exécution** : tel chapitre budgétaire est exécuté à 87% en moyenne sur 6 ans. Et on utilise ces tendances historiques pour **estimer** les budgets des années en cours, avec des intervalles de confiance.
+
+Vous ne trouverez ça sur aucun portail gouvernemental.
+
+## 3. Des données figées vs des données vivantes
+
+### Le problème
+
+Voici un fait peu connu : sur les 28 jeux de données financières du portail, **20 n'ont pas été mis à jour depuis 2020 ou 2021**. La dette propre de la ville ? Figée depuis juillet 2019. Les budgets votés par arrondissement ? Plus rien depuis 2021.
+
+Et pour les investissements détaillés (les "Autorisations de Programme"), le fichier s'arrête à 2022. Si vous voulez savoir quels projets ont été financés en 2023 ou 2024, il faut aller chercher l'information dans les **annexes PDF du Compte Administratif** — des documents de plus de 2 000 pages.
+
+### Ce que nous faisons
+
+On va chercher les données là où elles sont. Quand le CSV est incomplet, on parse les PDF avec des outils d'extraction automatique (`pdfplumber`, `PyMuPDF`). On a construit des parseurs spécifiques pour les différents formats de documents budgétaires (format legacy 2020-2022, format croisé 2023-2026).
+
+Notre couverture temporelle : **2019 à 2026**, là où le portail officiel s'arrête souvent à 2021 ou 2022.
+
+## 4. Des codes comptables vs du français
+
+### Le problème
+
+Les données brutes utilisent la nomenclature **M57** — un standard comptable conçu pour les experts-comptables, pas pour les citoyens. Quand vous lisez "Chapitre 012", "Section I/F", ou "Opération d'ordre de transfert entre sections", il faut un dictionnaire.
+
+Et quand vous voulez savoir combien Paris dépense pour l'**éducation** ou la **culture**, bonne chance : les fichiers sont organisés par chapitres comptables (011, 012, 65...), pas par thématiques citoyennes.
+
+### Ce que nous faisons
+
+On traduit. Chaque code comptable est associé à un libellé clair. Et surtout, on a construit un **système de classification thématique** qui regroupe les dépenses par grandes fonctions : Éducation, Culture, Sport, Solidarité, Transition écologique...
+
+Pour les subventions (plus de 40 000 bénéficiaires), on utilise une cascade intelligente :
+
+1. **Reconnaissance de motifs** : des règles qui associent des mots-clés à des thèmes (74% des cas)
+2. **Intelligence artificielle** : un modèle (Gemini) qui analyse le nom et le contexte de l'organisme (21% des cas)
+3. **Rattachement par direction** : on utilise la direction de la mairie qui verse la subvention comme indice (4,5% des cas)
+
+**Résultat :** 99,5% des subventions sont classées par thème. Sur le portail brut : 0%.
+
+## 5. Des tableaux vs des visualisations interactives
+
+### Le problème
+
+L'Open Data vous donne un tableur. À vous de trouver l'histoire dans 40 000 lignes de chiffres.
+
+### Ce que nous faisons
+
+On transforme ces données en **7 types de visualisations** pensées pour des questions citoyennes :
+
+| Visualisation | Question à laquelle elle répond |
+| :--- | :--- |
+| **Sankey (flux)** | Où va l'argent, des recettes aux dépenses ? |
+| **Voté vs Exécuté** | La mairie tient-elle ses promesses budgétaires ? |
+| **Treemap (subventions)** | Quelles associations reçoivent combien, dans quels domaines ? |
+| **Carte des investissements** | Quels projets sont financés dans mon quartier ? |
+| **Évolution temporelle** | Comment les finances évoluent-elles sur 6 ans ? |
+| **Patrimoine (Actif/Passif)** | Quel est l'état de santé financière de la ville ? |
+| **Ratios de dette** | La ville est-elle trop endettée ? |
+
+Chaque visualisation est interactive : survolez un flux pour voir le montant exact, cliquez pour explorer le détail, changez d'année pour comparer.
+
+## 6. Des fichiers anonymes vs des entités réconciliées
+
+### Le problème
+
+Dans les fichiers de subventions, le Centre d'Action Sociale de la Ville de Paris apparaît sous **4 noms différents** selon les années : "CASVP", "CENTRE ACTION SOCIALE VILLE PARIS", "C.A.S.V.P.", "Centre d'Action Sociale de la Ville de Paris". Si vous cherchez le total, vous obtenez 4 résultats partiels au lieu d'un seul chiffre consolidé.
+
+### Ce que nous faisons
+
+On a construit un système de **déduplication d'entités** qui réconcilie les variantes. Le CASVP ? Un seul organisme, 1 940 M€ cumulés. Plus de fragmentation.
+
+## 7. Des coordonnées absentes vs des projets géolocalisés
+
+### Le problème
+
+Les projets d'investissement dans les fichiers bruts ont des descriptions textuelles : *"Travaux de restructuration de l'école élémentaire, 15 rue de Tolbiac"*. Mais aucune coordonnée GPS. Impossible de les placer sur une carte.
+
+### Ce que nous faisons
+
+On a développé un **pipeline de géolocalisation** en cascade :
+
+1. **Extraction regex** : on détecte les adresses dans les descriptions (16,6% des cas)
+2. **Lieux connus** : on associe les noms de bâtiments publics à leurs coordonnées (5,2%)
+3. **IA** : un modèle analyse le texte et propose des coordonnées (21,3%)
+4. **API Adresse** : on vérifie et géocode via l'API gouvernementale
+
+**Résultat :** 43% des projets d'investissement sont placés sur une carte interactive, avec un score de confiance. Sur le portail brut : 0 projet cartographié.
+
+## 8. Pas de recul vs une analyse temporelle
+
+### Le problème
+
+Chaque fichier Open Data est une photo d'une année. Pour comparer 2019 et 2024, il faut télécharger 6 fichiers, harmoniser les colonnes (qui changent d'une année à l'autre), et faire les calculs soi-même.
+
+### Ce que nous faisons
+
+On offre une **vision sur 6 ans** (2019-2024, avec estimations 2025-2026) avec :
+
+- **Variation annuelle (YoY)** : chaque poste budgétaire montre son évolution
+- **Classement des variations** : quels postes ont le plus augmenté ou diminué
+- **Indicateurs de santé financière** : épargne brute, surplus/déficit, dette nette
+- **Détection d'anomalies** : les années COVID (2020-2021) sont signalées
+
+## 9. Aucun avertissement vs une transparence totale
+
+### Le problème
+
+Les fichiers bruts ne vous préviennent pas quand des données manquent. Les 2,5 milliards de subventions sans nom de bénéficiaire en 2020-2021 ? Rien ne le signale. Les investissements qui s'arrêtent en 2022 ? Aucun message d'erreur.
+
+### Ce que nous faisons
+
+On affiche des **bannières de qualité** sur chaque page. Si une année est incomplète, si des données manquent, si un chiffre est estimé plutôt que constaté, vous le savez. On utilise un système de badges :
+
+- 🔵 **Exécuté** : chiffre définitif, constaté par le Compte Administratif
+- 🟠 **Voté** : prévision votée par le Conseil de Paris
+- ⚪ **Estimé** : projection basée sur les tendances historiques
+
+La confiance dans les données commence par l'honnêteté sur leurs limites.
+
+## 10. Une boîte noire vs un pipeline open-source et auditable
+
+### Le problème
+
+Quand un think tank, un journal ou un élu publie un graphique sur le budget de Paris, vous n'avez aucun moyen de vérifier comment il a été produit. Quels fichiers ont été utilisés ? Quels filtres ont été appliqués ? Y a-t-il eu des erreurs de calcul ? Vous devez faire confiance à l'auteur sur parole.
+
+Et même le portail Open Data lui-même : les fichiers sont là, mais comment ont-ils été extraits des systèmes comptables de la ville ? Quels traitements ont été appliqués en amont ? On ne le sait pas.
+
+### Ce que nous faisons
+
+**Tout notre pipeline est open-source, de la première ligne de SQL à la dernière ligne de JavaScript.**
+
+Concrètement, ça veut dire :
+
+- **Le code de collecte** : nos scripts Python qui aspirent les données depuis l'API Open Data Paris et qui parsent les PDF sont publics. Vous pouvez voir exactement quels fichiers on télécharge, et comment.
+- **Le code de transformation** : nos modèles dbt (SQL) sont lisibles par n'importe qui. Chaque filtre, chaque calcul, chaque agrégation est écrit noir sur blanc. Quand on dit "on exclut les opérations Pour Ordre", vous pouvez vérifier la clause `WHERE type_operation = 'Réel'` dans le code.
+- **Le code d'enrichissement** : nos algorithmes de classification thématique, de géolocalisation, de déduplication d'entités — tout est visible. Vous pouvez inspecter chaque règle de pattern matching, chaque prompt envoyé au modèle d'IA.
+- **Le code d'export** : les scripts qui transforment les résultats de nos requêtes en fichiers JSON pour le dashboard sont publics.
+- **Le code du site** : le frontend Next.js, les composants de visualisation, tout.
+
+### Pourquoi c'est fondamental
+
+Ce n'est pas juste une question de transparence technique. C'est une question de **confiance démocratique**.
+
+Quand vous lisez "Paris a dépensé 9,3 milliards en fonctionnement en 2024" sur notre dashboard, vous pouvez :
+
+1. **Remonter le fil** : du chiffre affiché → au fichier JSON → au modèle SQL → à la source brute
+2. **Reproduire le résultat** : cloner le repo, lancer le pipeline, et vérifier que vous obtenez le même chiffre
+3. **Challenger nos choix** : si vous n'êtes pas d'accord avec un filtre ou une classification, ouvrez une issue sur GitHub
+4. **Contribuer** : corriger une erreur, proposer une amélioration, ajouter une visualisation
+
+On a aussi mis en place des **tests automatiques de qualité** : à chaque exécution du pipeline, des vérifications s'assurent que les totaux correspondent, que les années sont complètes, que les classifications couvrent bien 99%+ des données. Ces tests aussi sont publics.
+
+> **Le principe :** Si vous ne pouvez pas vérifier un chiffre, vous ne devriez pas avoir à y croire. Chez nous, vous pouvez vérifier.
+
+C'est la différence entre "faites-nous confiance" et "vérifiez vous-même". En matière de finances publiques, la seconde approche nous semble la seule acceptable.
+
+---
+
+## En résumé
+
+| | Open Data Paris | Données Lumières |
+| :--- | :--- | :--- |
+| **Format** | CSV bruts, PDF | Dashboard interactif |
+| **Double comptage** | Risque si non filtré | Filtré automatiquement |
+| **Thématiques** | Codes comptables M57 | Catégories citoyennes |
+| **Subventions classées** | 0% | 99,5% |
+| **Projets géolocalisés** | 0% | 43% |
+| **Voté vs Exécuté** | Fichiers séparés | Comparaison automatique |
+| **Couverture temporelle** | Variable (souvent arrêtée) | 2019-2026 |
+| **Qualité signalée** | Non | Oui, avec badges |
+| **Entités réconciliées** | Non | Oui |
+| **Pipeline auditable** | Non (boîte noire) | 100% open-source |
+| **Reproductibilité** | N/A | Clone + run = mêmes résultats |
+| **Coût** | Gratuit | Gratuit aussi 😉 |
+
+---
+
+## L'Open Data est la fondation. Nous construisons le bâtiment.
+
+Soyons clairs : **sans l'Open Data, notre projet n'existerait pas.** Le portail de la Ville de Paris fournit la matière première indispensable. C'est un acquis démocratique fondamental qu'il faut défendre et renforcer.
+
+Ce qu'on construit par-dessus, c'est la couche de traduction. Celle qui transforme des fichiers techniques en réponses citoyennes. Celle qui permet à n'importe qui de comprendre en 30 secondes ce que la ville fait de ses 11,7 milliards d'euros.
+
+Notre code est **100% open-source**. Notre pipeline est **100% auditable**. Notre démarche est **100% bénévole**. De la collecte des fichiers bruts jusqu'au pixel affiché sur votre écran, chaque étape est vérifiable, reproductible et contestable.
+
+On espère que d'autres villes, d'autres citoyens, s'empareront de cette approche pour rendre leurs propres données financières lisibles. Le code est là, les méthodes sont documentées, il n'y a qu'à forker.
+
+Parce que la transparence, ce n'est pas juste publier un fichier. C'est s'assurer que quelqu'un peut le lire. Et quand quelqu'un le traduit en graphique, c'est s'assurer que n'importe qui peut vérifier la traduction.
