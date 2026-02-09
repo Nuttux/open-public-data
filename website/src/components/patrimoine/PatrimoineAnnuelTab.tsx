@@ -7,11 +7,12 @@
  * Migré depuis l'ancien /bilan/page.tsx.
  */
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import YearSelector from '@/components/YearSelector';
 import BilanSankey from '@/components/BilanSankey';
 import DrilldownPanel from '@/components/DrilldownPanel';
 import GlossaryTip from '@/components/GlossaryTip';
+import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 import { loadBilanSankey, type BilanSankeyData } from '@/lib/api/staticData';
 import { formatEuroCompact, formatPercent } from '@/lib/formatters';
 
@@ -39,25 +40,25 @@ function BilanStatsCards({ data }: { data: BilanSankeyData }) {
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6">
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
         <div className="flex items-center gap-2 mb-1">
-          <span className="text-blue-400">🏛️</span>
+          <span className="text-emerald-400">●</span>
           <span className="text-xs text-slate-400">Actif Net <GlossaryTip term="actif_net" /></span>
         </div>
-        <div className="text-xl sm:text-2xl font-bold text-blue-400">{formatEuroCompact(totals.actif_net)}</div>
+        <div className="text-xl sm:text-2xl font-bold text-emerald-400">{formatEuroCompact(totals.actif_net)}</div>
         <div className="text-xs text-slate-500 mt-1">Ce que Paris possède</div>
       </div>
 
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
         <div className="flex items-center gap-2 mb-1">
-          <span className="text-green-400">💰</span>
+          <span className="text-blue-400">●</span>
           <span className="text-xs text-slate-400">Fonds propres <GlossaryTip term="fonds_propres" /></span>
         </div>
-        <div className="text-xl sm:text-2xl font-bold text-green-400">{formatEuroCompact(totals.fonds_propres)}</div>
+        <div className="text-xl sm:text-2xl font-bold text-blue-400">{formatEuroCompact(totals.fonds_propres)}</div>
         <div className="text-xs text-slate-500 mt-1">{formatPercent(kpis.pct_fonds_propres)} du passif</div>
       </div>
 
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
         <div className="flex items-center gap-2 mb-1">
-          <span className="text-red-400">📋</span>
+          <span className="text-red-400">●</span>
           <span className="text-xs text-slate-400">Dette totale <GlossaryTip term="dette_totale" /></span>
         </div>
         <div className="text-xl sm:text-2xl font-bold text-red-400">{formatEuroCompact(totals.dette_totale)}</div>
@@ -66,14 +67,14 @@ function BilanStatsCards({ data }: { data: BilanSankeyData }) {
 
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
         <div className="flex items-center gap-2 mb-1">
-          <span className={kpis.ratio_endettement && kpis.ratio_endettement > 1 ? 'text-amber-400' : 'text-emerald-400'}>📊</span>
+          <span className={kpis.ratio_endettement && kpis.ratio_endettement > 1 ? 'text-amber-400' : 'text-emerald-400'}>●</span>
           <span className="text-xs text-slate-400">Ratio endettement <GlossaryTip term="ratio_endettement" /></span>
         </div>
         <div className={`text-xl sm:text-2xl font-bold ${kpis.ratio_endettement && kpis.ratio_endettement > 1 ? 'text-amber-400' : 'text-emerald-400'}`}>
           {kpis.ratio_endettement ? kpis.ratio_endettement.toFixed(2) : 'N/A'}
         </div>
         <div className="text-xs text-slate-500 mt-1">
-          {kpis.ratio_endettement && kpis.ratio_endettement <= 1 ? '✓ Niveau sain' : '⚠️ Dette > Fonds propres'}
+          {kpis.ratio_endettement && kpis.ratio_endettement <= 1 ? '✓ Niveau sain' : '⚠ Dette > Fonds propres'}
         </div>
       </div>
     </div>
@@ -87,6 +88,30 @@ export default function PatrimoineAnnuelTab({ availableYears, selectedYear, onYe
   const [drilldown, setDrilldown] = useState<BilanDrilldownState | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  // Mobile slide-in overlay state (même pattern que BudgetAnnuelTab)
+  const isMobile = useIsMobile(BREAKPOINTS.md);
+  const [mobileSlideVisible, setMobileSlideVisible] = useState(false);
+  const prevDrilldownRef = useRef<BilanDrilldownState | null>(null);
+
+  // Trigger mobile slide-in when drilldown opens
+  useEffect(() => {
+    if (isMobile && drilldown && !prevDrilldownRef.current) {
+      requestAnimationFrame(() => setMobileSlideVisible(true));
+    }
+    if (!drilldown) {
+      setMobileSlideVisible(false);
+    }
+    prevDrilldownRef.current = drilldown;
+  }, [drilldown, isMobile]);
+
+  // Lock body scroll when mobile overlay is visible
+  useEffect(() => {
+    if (isMobile && mobileSlideVisible) {
+      document.body.style.overflow = 'hidden';
+      return () => { document.body.style.overflow = ''; };
+    }
+  }, [isMobile, mobileSlideVisible]);
 
   useEffect(() => {
     async function fetchData() {
@@ -120,7 +145,15 @@ export default function PatrimoineAnnuelTab({ availableYears, selectedYear, onYe
     }
   }, [bilanData]);
 
-  const handleCloseDrilldown = useCallback(() => setDrilldown(null), []);
+  /** Close drilldown — on mobile, animate out first then clear state */
+  const handleCloseDrilldown = useCallback(() => {
+    if (isMobile) {
+      setMobileSlideVisible(false);
+      setTimeout(() => setDrilldown(null), 300);
+    } else {
+      setDrilldown(null);
+    }
+  }, [isMobile]);
 
   return (
     <div>
@@ -131,7 +164,7 @@ export default function PatrimoineAnnuelTab({ availableYears, selectedYear, onYe
 
       {error && (
         <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-4 mb-6">
-          <p className="text-red-400 flex items-center gap-2"><span>⚠️</span>{error}</p>
+          <p className="text-red-400 flex items-center gap-2"><span>⚠</span>{error}</p>
         </div>
       )}
 
@@ -147,7 +180,8 @@ export default function PatrimoineAnnuelTab({ availableYears, selectedYear, onYe
           <BilanStatsCards data={bilanData} />
           <BilanSankey data={bilanData} onNodeClick={handleNodeClick} />
 
-          {drilldown && (
+          {/* Desktop: DrilldownPanel inline below Sankey */}
+          {!isMobile && drilldown && (
             <DrilldownPanel
               title={drilldown.title}
               category={drilldown.category === 'actif' ? 'revenue' : 'expense'}
@@ -160,16 +194,38 @@ export default function PatrimoineAnnuelTab({ availableYears, selectedYear, onYe
             />
           )}
 
+          {/* Mobile: fullscreen slide-in overlay for drilldown */}
+          {isMobile && drilldown && (
+            <div
+              className={`fixed inset-0 z-50 bg-slate-900 overflow-y-auto transition-transform duration-300 ease-out ${
+                mobileSlideVisible ? 'translate-x-0' : 'translate-x-full'
+              }`}
+            >
+              <div className="p-4 pt-safe pb-safe">
+                <DrilldownPanel
+                  title={drilldown.title}
+                  category={drilldown.category === 'actif' ? 'revenue' : 'expense'}
+                  parentCategory={drilldown.category === 'actif' ? 'Actif' : 'Passif'}
+                  items={drilldown.items.map(item => ({ name: item.name, value: item.value }))}
+                  breadcrumbs={[drilldown.category === 'actif' ? 'Actif' : 'Passif', drilldown.title]}
+                  currentLevel={1}
+                  onClose={handleCloseDrilldown}
+                  onBreadcrumbClick={() => {}}
+                />
+              </div>
+            </div>
+          )}
+
           {/* Explication */}
           <div className="mt-6 bg-slate-800/30 rounded-xl border border-slate-700/30 p-4">
-            <h3 className="text-sm font-medium text-slate-300 mb-2">💡 Comprendre le bilan</h3>
+            <h3 className="text-sm font-medium text-slate-300 mb-2">Comprendre le bilan</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-400">
               <div>
-                <p className="font-medium text-blue-400 mb-1">Actif (à gauche)</p>
+                <p className="font-medium text-emerald-400 mb-1">Actif (à gauche)</p>
                 <p>Ce que la Ville possède : bâtiments, équipements, créances, trésorerie...</p>
               </div>
               <div>
-                <p className="font-medium text-green-400 mb-1">Passif (à droite)</p>
+                <p className="font-medium text-blue-400 mb-1">Passif (à droite)</p>
                 <p>Comment c&apos;est financé : fonds propres (épargne) + dettes (emprunts).</p>
               </div>
             </div>

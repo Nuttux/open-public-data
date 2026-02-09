@@ -179,3 +179,63 @@ button {
     transform: translateY(0);
   }
 }
+
+/**
+ * Slide-in animations for mobile drilldown level transitions.
+ * Used in DrilldownPanel for L2↔L3 navigation:
+ * - slide-in-right: entering a deeper level (forward navigation)
+ * - slide-in-left: going back to a higher level (back navigation)
+ */
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(40%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-40%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 300ms ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 300ms ease-out;
+}
+
+/**
+ * Subtle pulse on the first mobile bar to hint interactivity.
+ * Plays once after a short delay, then stops — non-intrusive.
+ */
+@keyframes hint-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; transform: scale(0.99); }
+}
+
+.animate-hint-pulse {
+  animation: hint-pulse 600ms ease-in-out 1s 2;
+}
+
+/**
+ * Safe area padding for fullscreen mobile overlays (notch, home indicator).
+ */
+.pt-safe {
+  padding-top: max(1rem, env(safe-area-inset-top));
+}
+
+.pb-safe {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}

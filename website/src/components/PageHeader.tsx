@@ -5,12 +5,13 @@ import { ReactNode } from 'react';
 /**
  * PageHeader — En-tête partagé pour toutes les pages entité.
  *
- * Affiche : icône + titre + description + badges optionnels (coverage, type_budget, etc.)
+ * Affiche : titre + description + badges optionnels (coverage, type_budget, etc.)
+ * L'icône est optionnelle — on préfère un design texte épuré.
  */
 
 interface PageHeaderProps {
-  /** Icône emoji ou composant */
-  icon: string;
+  /** Icône optionnelle (emoji) — omise pour un design plus clean */
+  icon?: string;
   /** Titre principal (ex: "Budget de la Ville") */
   title: string;
   /** Description courte sous le titre */
@@ -32,7 +33,7 @@ export default function PageHeader({
     <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-3 mb-1">
-          <span className="text-2xl">{icon}</span>
+          {icon && <span className="text-2xl">{icon}</span>}
           <h1 className="text-2xl font-bold text-white tracking-tight">{title}</h1>
         </div>
         {description && (

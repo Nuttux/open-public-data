@@ -4,8 +4,8 @@
  * VariationRankChart - Bar charts bidirectionnels des variations budgétaires (Option B: empilés)
  * 
  * Affiche DEUX charts empilés verticalement:
- * - DÉPENSES: par thématique (où va l'argent: Social, Éducation, Transport...)
  * - RECETTES: par source (d'où vient l'argent: Impôts, Emprunts, Dotations...)
+ * - DÉPENSES: par thématique (où va l'argent: Social, Éducation, Transport...)
  * 
  * Cette distinction est importante car les classifications sont différentes:
  * - Pour les dépenses, on veut savoir "où" l'argent est dépensé
@@ -235,7 +235,12 @@ function SingleVariationChart({
     <div className="mb-6">
       {/* Section header */}
       <div className="flex items-center gap-2 mb-2">
-        <span className={`w-1.5 h-8 rounded-full bg-${accentColor}-500`}></span>
+        {/* Mapping explicite pour que Tailwind détecte les classes au build */}
+        <span className={`w-1.5 h-8 rounded-full ${
+          accentColor === 'emerald' ? 'bg-emerald-500' :
+          accentColor === 'rose' ? 'bg-rose-500' :
+          'bg-slate-500'
+        }`}></span>
         <div>
           <h4 className="text-sm font-semibold text-slate-200 flex items-center gap-2">
             <span>{icon}</span>
@@ -279,11 +284,10 @@ export default function VariationRankChart({
       {/* Main header */}
       <div className="mb-4">
         <h3 className="text-lg font-semibold text-slate-100 flex items-center gap-2">
-          <span>📊</span>
           Évolution {data.periode.debut} → {data.periode.fin}
         </h3>
         <p className="text-sm text-slate-400">
-          Où l&apos;argent est dépensé et d&apos;où il vient — postes qui ont le plus évolué
+          D&apos;où vient l&apos;argent et où il est dépensé — postes qui ont le plus évolué
         </p>
       </div>
 
@@ -299,20 +303,6 @@ export default function VariationRankChart({
         </div>
       </div>
 
-      {/* DÉPENSES Chart */}
-      <SingleVariationChart
-        items={filteredDepenses}
-        periode={data.periode}
-        isMobile={isMobile}
-        title="Dépenses — par destination"
-        subtitle="Où l'argent est dépensé (Social, Éducation, Transport...)"
-        icon="📉"
-        accentColor="purple"
-      />
-
-      {/* Séparateur */}
-      <div className="border-t border-slate-700/50 my-4"></div>
-
       {/* RECETTES Chart */}
       <SingleVariationChart
         items={filteredRecettes}
@@ -320,8 +310,22 @@ export default function VariationRankChart({
         isMobile={isMobile}
         title="Recettes — par source"
         subtitle="D'où vient l'argent (Impôts, Emprunts, Dotations...)"
-        icon="📈"
+        icon=""
         accentColor="emerald"
+      />
+
+      {/* Séparateur */}
+      <div className="border-t border-slate-700/50 my-4"></div>
+
+      {/* DÉPENSES Chart */}
+      <SingleVariationChart
+        items={filteredDepenses}
+        periode={data.periode}
+        isMobile={isMobile}
+        title="Dépenses — par destination"
+        subtitle="Où l'argent est dépensé (Social, Éducation, Transport...)"
+        icon=""
+        accentColor="rose"
       />
 
       {/* Note */}

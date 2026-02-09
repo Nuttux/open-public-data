@@ -171,22 +171,24 @@ export const EXPENSE_COLORS: Record<string, string> = {
 // 7. BILAN COMPTABLE (Actif / Passif)
 // =============================================================================
 
+// Actif = ce que Paris possède → verts (intuitif : vert = richesse, positif)
 export const BILAN_ACTIF_COLORS: Record<string, string> = {
-  'Actif immobilisé': PALETTE.blue,
-  'Actif circulant': PALETTE.cyan,
-  'Trésorerie': PALETTE.emerald,
-  'Trésorerie (Actif)': PALETTE.emerald,
+  'Actif immobilisé': PALETTE.emerald,    // 🏛️ Bâtiments, terrains — vert principal
+  'Actif circulant': PALETTE.teal,        // 💰 Créances, stocks — nuance de vert
+  'Trésorerie': PALETTE.green,            // 💵 Cash — vert franc
+  'Trésorerie (Actif)': PALETTE.green,
   'Comptes de régularisation': PALETTE.slate,
   'Comptes de régularisation (Actif)': PALETTE.slate,
   'Écarts de conversion actif': PALETTE.slateLight,
 };
 
+// Passif = comment c'est financé → bleus (fonds propres) et rouges (dettes)
 export const BILAN_PASSIF_COLORS: Record<string, string> = {
-  'Fonds propres': PALETTE.green,
-  'Dettes financières': PALETTE.red,
-  'Dettes non financières': PALETTE.orange,
-  'Provisions pour risques et charges': PALETTE.amber,
-  'Trésorerie (Passif)': PALETTE.teal,
+  'Fonds propres': PALETTE.blue,          // 🏦 Capitaux propres — bleu neutre (financement, pas un bien)
+  'Dettes financières': PALETTE.red,      // 💳 Emprunts — rouge (à rembourser)
+  'Dettes non financières': PALETTE.orange, // 📋 Fournisseurs — orange
+  'Provisions pour risques et charges': PALETTE.amber, // ⚠️ Provisions — ambre
+  'Trésorerie (Passif)': PALETTE.cyan,    // Trésorerie passive
   'Comptes de régularisation (Passif)': PALETTE.slateLight,
   'Écarts de conversion passif': PALETTE.slateLight,
   'Dettes': PALETTE.red,  // Ancienne terminologie

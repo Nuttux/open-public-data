@@ -12,7 +12,7 @@
  * - Responsive: barres adaptées mobile, tooltips confinés, navigation empilée
  */
 
-import { useMemo, useState, useCallback } from 'react';
+import { useMemo, useState, useCallback, useRef, useEffect } from 'react';
 import ReactECharts from 'echarts-for-react';
 import type { EChartsOption } from 'echarts';
 import { formatEuroCompact, formatPercent, calculatePercentage } from '@/lib/formatters';
@@ -50,6 +50,40 @@ export default function DrilldownPanel({
   onItemClick,
 }: DrilldownPanelProps) {
   const isMobile = useIsMobile(BREAKPOINTS.md);
+
+  // ── Mobile slide animation for level transitions (L2↔L3) ──
+  // Direction: 'forward' = slide left (deeper), 'back' = slide right (back up)
+  const [slideDirection, setSlideDirection] = useState<'forward' | 'back' | null>(null);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const prevLevelRef = useRef(currentLevel);
+
+  useEffect(() => {
+    if (!isMobile || currentLevel === prevLevelRef.current) {
+      prevLevelRef.current = currentLevel;
+      return;
+    }
+    const direction = currentLevel > prevLevelRef.current ? 'forward' : 'back';
+    setSlideDirection(direction);
+    setIsAnimating(true);
+
+    // Remove animation class after transition completes
+    const timer = setTimeout(() => {
+      setIsAnimating(false);
+      setSlideDirection(null);
+    }, 300);
+
+    prevLevelRef.current = currentLevel;
+    return () => clearTimeout(timer);
+  }, [currentLevel, isMobile]);
+
+  // CSS class for the content wrapper during level transition
+  const slideClass = useMemo(() => {
+    if (!isAnimating || !slideDirection) return '';
+    // Use a keyframe-like approach: enter from right (forward) or from left (back)
+    return slideDirection === 'forward'
+      ? 'animate-slide-in-right'
+      : 'animate-slide-in-left';
+  }, [isAnimating, slideDirection]);
   
   // State for section filtering
   const [selectedSection, setSelectedSection] = useState<BudgetSection>('all');
@@ -216,7 +250,7 @@ export default function DrilldownPanel({
             <div style="font-weight: 600; margin-bottom: 4px; word-wrap: break-word; line-height: 1.3; font-size: ${isMobile ? '12px' : '14px'};">${item.name}</div>
             <div style="font-size: ${isMobile ? '16px' : '20px'}; font-weight: 700; color: ${barColor};">${formatEuroCompact(item.value)}</div>
             <div style="color: #94a3b8; font-size: ${isMobile ? '10px' : '12px'};">${formatPercent(percentage)} de ${categoryName}</div>
-            ${canDrillDown && !item.name.startsWith('Autres') ? `<div style="margin-top: 6px; color: #60a5fa; font-size: ${isMobile ? '10px' : '11px'};">👆 ${isMobile ? 'Tap pour explorer' : 'Cliquez pour explorer'}</div>` : ''}
+            ${canDrillDown && !item.name.startsWith('Autres') ? `<div style="margin-top: 6px; color: #60a5fa; font-size: ${isMobile ? '10px' : '11px'};">${isMobile ? 'Tap pour explorer →' : 'Cliquez pour explorer →'}</div>` : ''}
           </div>
         `;
       },
@@ -264,13 +298,30 @@ export default function DrilldownPanel({
           show: true,
           position: 'right',
           formatter: (params: unknown) => {
-            const p = params as { value: number | number[] };
+            const p = params as { value: number | number[]; dataIndex: number };
             const value = Array.isArray(p.value) ? p.value[0] : p.value;
-            return formatEuroCompact(value);
+            const amount = formatEuroCompact(value);
+            // Append chevron › when items are drillable (skip "Autres" group)
+            if (canDrillDown) {
+              const idx = displayItems.length - 1 - p.dataIndex;
+              const item = displayItems[idx];
+              if (item && !item.name.startsWith('Autres')) {
+                return `${amount} {chevron|›}`;
+              }
+            }
+            return amount;
           },
           fontSize: isMobile ? 9 : 11,
           fontWeight: 500,
           color: '#94a3b8',
+          rich: {
+            chevron: {
+              fontSize: isMobile ? 12 : 14,
+              fontWeight: 700,
+              color: '#60a5fa',
+              padding: [0, 0, 0, 2],
+            },
+          },
         },
         emphasis: {
           itemStyle: {
@@ -312,7 +363,7 @@ export default function DrilldownPanel({
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
-              <span className="hidden sm:inline">{currentLevel > 0 ? 'Retour' : 'Fermer'}</span>
+              <span>{currentLevel > 0 ? 'Retour' : 'Fermer'}</span>
             </button>
             
             {/* Breadcrumbs */}
@@ -352,7 +403,7 @@ export default function DrilldownPanel({
               style={bgStyle}
             >
               <span style={{ color: barColor }}>
-                {category === 'revenue' ? '📈 Recette' : '📉 Dépense'}
+                {category === 'revenue' ? 'Recette' : 'Dépense'}
               </span>
             </div>
             <h3 className="text-lg sm:text-xl font-semibold text-slate-100 break-words">
@@ -371,6 +422,9 @@ export default function DrilldownPanel({
           </svg>
         </button>
       </div>
+
+      {/* Animated content wrapper for mobile level transitions */}
+      <div className={isMobile ? slideClass : ''}>
 
       {/* Summary box avec couleur */}
       <div className="rounded-lg p-4 mb-4" style={bgStyle}>
@@ -485,18 +539,17 @@ export default function DrilldownPanel({
           {/* Note about special operations when section totals don't add up to total */}
           {selectedSection === 'all' && sectionTotals.total < total * 0.95 && (
             <div className="mt-3 text-xs text-slate-500 text-center">
-              💡 Certains postes (reversements fiscaux, dette...) sont des opérations spéciales
+              Certains postes (reversements fiscaux, dette...) sont des opérations spéciales
             </div>
           )}
         </div>
       )}
 
-      {/* Hint drill-down */}
+      {/* Hint drill-down — adapté mobile/desktop */}
       {canDrillDown && (
         <div className="flex items-center gap-2 mb-3 px-3 py-2 bg-slate-700/30 rounded-lg text-sm">
-          <span className="text-blue-400">🔍</span>
           <span className="text-slate-400">
-            Cliquez sur une barre pour explorer
+            {isMobile ? 'Appuyez sur une barre pour explorer →' : 'Cliquez sur une barre pour explorer →'}
           </span>
         </div>
       )}
@@ -516,7 +569,6 @@ export default function DrilldownPanel({
         />
       ) : (
         <div className="flex flex-col items-center justify-center py-12 text-center">
-          <div className="text-4xl mb-3">📭</div>
           <p className="text-slate-400">Aucune dépense dans cette section</p>
           <button
             onClick={() => setSelectedSection('all')}
@@ -526,6 +578,8 @@ export default function DrilldownPanel({
           </button>
         </div>
       )}
+
+      </div>{/* End animated content wrapper */}
     </div>
   );
 }
