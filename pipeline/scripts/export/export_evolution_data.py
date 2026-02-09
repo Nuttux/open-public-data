@@ -399,6 +399,40 @@ def calculate_variations_6ans(par_thematique: list, revenues_by_source: list) ->
     }
 
 
+def build_breakdowns_par_annee(par_thematique: list, revenues_by_source: list) -> dict:
+    """
+    Build per-year breakdowns for dynamic year range comparisons on the frontend.
+    
+    Returns:
+    {
+        "depenses_par_thematique": {
+            "Social - Petite enfance": { 2019: 1581071460, 2020: ..., ... },
+            ...
+        },
+        "recettes_par_source": {
+            "Impôts & Taxes": { 2019: 6064038907, 2020: ..., ... },
+            ...
+        }
+    }
+    
+    This allows the frontend to compute variations between any two years.
+    """
+    depenses = defaultdict(dict)
+    for row in par_thematique:
+        if row["sens_flux"] == "Dépense" and row["thematique"] != "Autre":
+            depenses[row["thematique"]][row["annee"]] = row["montant"]
+    
+    recettes = defaultdict(dict)
+    for row in revenues_by_source:
+        if row["source"] != "Autres":
+            recettes[row["source"]][row["annee"]] = row["montant"]
+    
+    return {
+        "depenses_par_thematique": dict(depenses),
+        "recettes_par_source": dict(recettes),
+    }
+
+
 def transform_for_frontend(raw_data: dict, revenues_by_source: list) -> dict:
     """
     Transform raw data into frontend-friendly structure.
@@ -425,9 +459,10 @@ def transform_for_frontend(raw_data: dict, revenues_by_source: list) -> dict:
             },
             ...
         ],
-        "variations_6ans": {
-            "depenses": [...],   # par thématique
-            "recettes": [...]    # par source
+        "variations_6ans": { ... },                 # Pre-computed (kept for backward compat)
+        "breakdowns_par_annee": {                   # NEW: per-year granular data
+            "depenses_par_thematique": { ... },
+            "recettes_par_source": { ... }
         }
     }
     """
@@ -495,6 +530,9 @@ def transform_for_frontend(raw_data: dict, revenues_by_source: list) -> dict:
     # - Recettes: par source (d'où vient l'argent)
     variations_6ans = calculate_variations_6ans(raw_data["par_thematique"], revenues_by_source)
     
+    # Build per-year breakdowns for dynamic year range on the frontend
+    breakdowns_par_annee = build_breakdowns_par_annee(raw_data["par_thematique"], revenues_by_source)
+    
     result = {
         "generated_at": datetime.now().isoformat(),
         "source": "mart_evolution_budget + core_budget",
@@ -510,12 +548,15 @@ def transform_for_frontend(raw_data: dict, revenues_by_source: list) -> dict:
             "variation_dette_nette": "Emprunts - Remboursement principal (+ = dette augmente)"
         },
         "years": sorted_years,
-        "variations_6ans": variations_6ans
+        "variations_6ans": variations_6ans,
+        "breakdowns_par_annee": breakdowns_par_annee
     }
     
     logger.info(f"  - {len(sorted_years)} years processed")
     logger.info(f"  - {len(variations_6ans['depenses'])} postes dépenses (par thématique)")
     logger.info(f"  - {len(variations_6ans['recettes'])} postes recettes (par source)")
+    logger.info(f"  - {len(breakdowns_par_annee['depenses_par_thematique'])} thématiques dépenses (par année)")
+    logger.info(f"  - {len(breakdowns_par_annee['recettes_par_source'])} sources recettes (par année)")
     
     return result
 

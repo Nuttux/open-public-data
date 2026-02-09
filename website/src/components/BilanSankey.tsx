@@ -34,20 +34,25 @@ function MobileBilanView({ data, onNodeClick }: BilanSankeyProps) {
     ...data.links.map(l => l.value)
   );
 
-  const actifNodes = data.nodes.filter(n => n.category === 'actif');
-  const passifNodes = data.nodes.filter(n => n.category === 'passif');
-
   const getValueForNode = (nodeName: string) => {
     const link = data.links.find(l => l.source === nodeName || l.target === nodeName);
     return link?.value || 0;
   };
+
+  // Tri par montant décroissant pour une lecture plus intuitive
+  const actifNodes = data.nodes
+    .filter(n => n.category === 'actif')
+    .sort((a, b) => getValueForNode(b.name) - getValueForNode(a.name));
+  const passifNodes = data.nodes
+    .filter(n => n.category === 'passif')
+    .sort((a, b) => getValueForNode(b.name) - getValueForNode(a.name));
 
   return (
     <div className="grid grid-cols-2 gap-4">
       {/* Actif */}
       <div>
         <h3 className="text-sm font-medium text-slate-300 mb-3 flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-blue-500" />
+          <span className="w-2 h-2 rounded-full bg-emerald-500" />
           Actif
         </h3>
         <div className="space-y-2">
@@ -63,7 +68,7 @@ function MobileBilanView({ data, onNodeClick }: BilanSankeyProps) {
                   <span className="text-slate-300 group-hover:text-white transition-colors truncate pr-2">
                     {node.name}
                   </span>
-                  <span className="text-blue-400 font-medium whitespace-nowrap">
+                  <span className="text-emerald-400 font-medium whitespace-nowrap">
                     {formatEuroCompact(value)}
                   </span>
                 </div>
@@ -85,7 +90,7 @@ function MobileBilanView({ data, onNodeClick }: BilanSankeyProps) {
       {/* Passif */}
       <div>
         <h3 className="text-sm font-medium text-slate-300 mb-3 flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-green-500" />
+          <span className="w-2 h-2 rounded-full bg-blue-500" />
           Passif
         </h3>
         <div className="space-y-2">
@@ -101,7 +106,7 @@ function MobileBilanView({ data, onNodeClick }: BilanSankeyProps) {
                   <span className="text-slate-300 group-hover:text-white transition-colors truncate pr-2">
                     {node.name}
                   </span>
-                  <span className="text-green-400 font-medium whitespace-nowrap">
+                  <span className="text-blue-400 font-medium whitespace-nowrap">
                     {formatEuroCompact(value)}
                   </span>
                 </div>
@@ -209,26 +214,21 @@ export default function BilanSankey({ data, onNodeClick }: BilanSankeyProps) {
         
         if (p.dataType === 'node') {
           const percentage = calculatePercentage(p.value, totalPatrimoine);
-          let emoji = '📊';
           let label = 'Patrimoine';
           
           if (p.data.category === 'actif') {
-            emoji = '🏛️';
             label = 'Actif';
           } else if (p.data.category === 'passif') {
-            emoji = p.name.includes('Fonds') ? '💰' : '📋';
             label = p.name.includes('Fonds') ? 'Capitaux propres' : 'Passif';
-          } else {
-            emoji = '🏛️';
           }
           
           return `
             <div style="padding: 8px; max-width: 260px;">
               <div style="font-weight: 600; margin-bottom: 6px;">${p.name}</div>
-              <div style="color: #94a3b8; font-size: 11px; margin-bottom: 4px;">${emoji} ${label}</div>
+              <div style="color: #94a3b8; font-size: 11px; margin-bottom: 4px;">${label}</div>
               <div style="font-size: 18px; font-weight: 700; color: #10b981;">${formatEuroCompact(p.value)}</div>
               <div style="color: #94a3b8; font-size: 11px;">${formatPercent(percentage)} du patrimoine</div>
-              ${p.data.category !== 'central' ? '<div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #334155; color: #60a5fa; font-size: 11px;">👆 Cliquez pour voir le détail</div>' : ''}
+              ${p.data.category !== 'central' ? '<div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #334155; color: #60a5fa; font-size: 11px;">Cliquez pour voir le détail →</div>' : ''}
             </div>
           `;
         }
@@ -240,7 +240,7 @@ export default function BilanSankey({ data, onNodeClick }: BilanSankeyProps) {
               <div style="font-weight: 600; margin-bottom: 6px; font-size: 13px;">
                 ${p.data.source} → ${p.data.target}
               </div>
-              <div style="font-size: 16px; font-weight: 700; color: #a855f7;">${formatEuroCompact(p.value)}</div>
+              <div style="font-size: 16px; font-weight: 700; color: #8b5cf6;">${formatEuroCompact(p.value)}</div>
               <div style="color: #94a3b8; font-size: 11px;">${formatPercent(percentage)} du patrimoine</div>
             </div>
           `;
@@ -338,9 +338,6 @@ export default function BilanSankey({ data, onNodeClick }: BilanSankeyProps) {
     }
   }, [onNodeClick]);
 
-  // Vérification équilibre Actif = Passif
-  const equilibreOk = data.totals.ecart_equilibre < 1000; // < 1000€ = équilibré
-
   return (
     <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4 sm:p-6">
       {/* Header */}
@@ -353,15 +350,7 @@ export default function BilanSankey({ data, onNodeClick }: BilanSankeyProps) {
             {isMobile ? 'Appuyez pour explorer' : 'Cliquez sur un poste pour voir le détail'}
           </p>
         </div>
-        <div className={`px-3 py-2 rounded-lg text-xs sm:text-sm ${
-          equilibreOk 
-            ? 'bg-green-500/10 border border-green-500/30' 
-            : 'bg-yellow-500/10 border border-yellow-500/30'
-        }`}>
-          <span className={equilibreOk ? 'text-green-400' : 'text-yellow-400'}>
-            {equilibreOk ? '✓ Bilan équilibré' : `⚠️ Écart: ${formatEuroCompact(data.totals.ecart_equilibre)}`}
-          </span>
-        </div>
+        {/* Badge d'équilibre supprimé (info technique non pertinente pour le citoyen) */}
       </div>
 
       {/* Mobile: Vue simplifiée en barres */}
@@ -375,19 +364,19 @@ export default function BilanSankey({ data, onNodeClick }: BilanSankeyProps) {
           {/* Desktop/Tablet: Sankey avec légende */}
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-3 text-xs">
             <div className="flex items-center gap-1.5">
-              <div className="w-2.5 h-2.5 rounded-full bg-blue-500"></div>
+              <div className="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
               <span className="text-slate-400">Actif immobilisé</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <div className="w-2.5 h-2.5 rounded-full bg-cyan-500"></div>
+              <div className="w-2.5 h-2.5 rounded-full bg-teal-500"></div>
               <span className="text-slate-400">Actif circulant</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <div className="w-2.5 h-2.5 rounded-full bg-purple-500"></div>
+              <div className="w-2.5 h-2.5 rounded-full bg-violet-500"></div>
               <span className="text-slate-400">Patrimoine</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+              <div className="w-2.5 h-2.5 rounded-full bg-blue-500"></div>
               <span className="text-slate-400">Fonds propres</span>
             </div>
             <div className="flex items-center gap-1.5">

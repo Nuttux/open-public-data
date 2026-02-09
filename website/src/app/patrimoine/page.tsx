@@ -22,7 +22,7 @@ import { loadBilanIndex, type BilanIndex } from '@/lib/api/staticData';
 
 const PATRIMOINE_TABS: Tab[] = [
   { id: 'annuel', label: 'Annuel', icon: '📋' },
-  { id: 'tendances', label: 'Tendances', icon: '💹' },
+  { id: 'tendances', label: 'Tendances', icon: '📈' },
 ];
 
 const VALID_TAB_IDS = PATRIMOINE_TABS.map(t => t.id);
@@ -67,7 +67,6 @@ function PatrimoinePageInner() {
       <div className="border-b border-slate-800 bg-slate-900/50 backdrop-blur">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <PageHeader
-            icon="📋"
             title="Patrimoine de Paris"
             description="État patrimonial, dette et santé financière de la Ville"
           />

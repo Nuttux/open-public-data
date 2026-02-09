@@ -143,7 +143,7 @@ export default function NatureDonut({
             <span>Part:</span>
             <span style="font-weight: 500;">${p.data.pct.toFixed(1)}%</span>
           </div>
-          ${!selectedNature ? `<div style="margin-top: 6px; color: #60a5fa; font-size: ${isMobile ? '10px' : '11px'};">👆 ${isMobile ? 'Tap pour détail' : 'Cliquez pour détail'}</div>` : ''}
+          ${!selectedNature ? `<div style="margin-top: 6px; color: #60a5fa; font-size: ${isMobile ? '10px' : '11px'};">${isMobile ? 'Tap pour détail →' : 'Cliquez pour détail →'}</div>` : ''}
         `;
       },
     },

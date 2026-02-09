@@ -3,20 +3,31 @@
 /**
  * BudgetTendancesTab — Tab "Tendances" de la page /budget.
  *
- * Contenu : EvolutionChart (recettes vs dépenses), YoyCards, VariationRankChart.
+ * Contenu : YoyCards, EvolutionChart, VariationRankChart.
  * Focalisé sur l'évolution budgétaire pure (pas de dette/patrimoine).
+ *
+ * L'utilisateur choisit une plage d'années (début → fin) via un double sélecteur.
+ * Toutes les métriques, cartes KPI et graphiques se recalculent dynamiquement
+ * en fonction de la période choisie.
  *
  * Les métriques dette/santé financière sont dans PatrimoineTendancesTab.
  */
 
 import { useState, useEffect, useMemo } from 'react';
 import EvolutionChart, { type YearlyBudget } from '@/components/EvolutionChart';
-import VariationRankChart, { type VariationsData } from '@/components/VariationRankChart';
+import VariationRankChart, { type VariationsData, type VariationItem } from '@/components/VariationRankChart';
 import YoyCards from '@/components/YoyCards';
+import YearRangeSelector from '@/components/YearRangeSelector';
 import DataQualityBanner from '@/components/DataQualityBanner';
-import { formatEuroCompact } from '@/lib/formatters';
+
 
 // ─── Types ───────────────────────────────────────────────────────────────────
+
+/** Breakdowns per year for dynamic variation computation */
+interface BreakdownsParAnnee {
+  depenses_par_thematique: Record<string, Record<string, number>>;
+  recettes_par_source: Record<string, Record<string, number>>;
+}
 
 interface EvolutionBudgetData {
   generated_at: string;
@@ -45,6 +56,88 @@ interface EvolutionBudgetData {
     };
   }>;
   variations_6ans?: VariationsData;
+  breakdowns_par_annee?: BreakdownsParAnnee;
+}
+
+// ─── Helpers ─────────────────────────────────────────────────────────────────
+
+/**
+ * Compute dynamic VariationsData between two years from per-year breakdowns.
+ *
+ * Falls back to the pre-computed variations_6ans if breakdowns are unavailable
+ * or don't contain the requested years.
+ */
+function computeDynamicVariations(
+  breakdowns: BreakdownsParAnnee | undefined,
+  startYear: number,
+  endYear: number,
+  fallback?: VariationsData,
+): VariationsData | null {
+  if (!breakdowns) return fallback ?? null;
+
+  const startKey = String(startYear);
+  const endKey = String(endYear);
+
+  // ── Dépenses par thématique ──
+  const depenses: VariationItem[] = [];
+  for (const [label, annees] of Object.entries(breakdowns.depenses_par_thematique)) {
+    const montantDebut = annees[startKey];
+    const montantFin = annees[endKey];
+    if (montantDebut == null || montantFin == null) continue;
+
+    const variationEuros = montantFin - montantDebut;
+    const variationPct = montantDebut !== 0
+      ? Math.round(((montantFin / montantDebut) - 1) * 1000) / 10
+      : 0;
+
+    depenses.push({
+      label,
+      montant_debut: montantDebut,
+      montant_fin: montantFin,
+      variation_euros: variationEuros,
+      variation_pct: variationPct,
+    });
+  }
+
+  // ── Recettes par source ──
+  const recettes: VariationItem[] = [];
+  for (const [label, annees] of Object.entries(breakdowns.recettes_par_source)) {
+    const montantDebut = annees[startKey];
+    const montantFin = annees[endKey];
+    if (montantDebut == null || montantFin == null) continue;
+
+    const variationEuros = montantFin - montantDebut;
+    const variationPct = montantDebut !== 0
+      ? Math.round(((montantFin / montantDebut) - 1) * 1000) / 10
+      : 0;
+
+    recettes.push({
+      label,
+      montant_debut: montantDebut,
+      montant_fin: montantFin,
+      variation_euros: variationEuros,
+      variation_pct: variationPct,
+    });
+  }
+
+  // If we found no data for the requested range, fall back
+  if (depenses.length === 0 && recettes.length === 0) {
+    return fallback ?? null;
+  }
+
+  // Sort by absolute variation (biggest first)
+  depenses.sort((a, b) => Math.abs(b.variation_euros) - Math.abs(a.variation_euros));
+  recettes.sort((a, b) => Math.abs(b.variation_euros) - Math.abs(a.variation_euros));
+
+  return {
+    periode: { debut: startYear, fin: endYear },
+    depenses,
+    recettes,
+    classifications: {
+      depenses: 'par thématique (destination des dépenses)',
+      recettes: 'par source (origine des recettes)',
+    },
+  };
 }
 
 // ─── Main Tab Component ──────────────────────────────────────────────────────
@@ -52,7 +145,8 @@ interface EvolutionBudgetData {
 export default function BudgetTendancesTab() {
   const [budgetData, setBudgetData] = useState<YearlyBudget[]>([]);
   const [rawData, setRawData] = useState<EvolutionBudgetData | null>(null);
-  const [selectedYear, setSelectedYear] = useState<number>(2024);
+  const [startYear, setStartYear] = useState<number>(2019);
+  const [endYear, setEndYear] = useState<number>(2024);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -76,8 +170,11 @@ export default function BudgetTendancesTab() {
         }));
         setBudgetData(chartData);
 
+        // Initialiser la plage sur min/max des données
         if (data.years.length > 0) {
-          setSelectedYear(Math.max(...data.years.map(y => y.year)));
+          const years = data.years.map(y => y.year);
+          setStartYear(Math.min(...years));
+          setEndYear(Math.max(...years));
         }
       } catch (err) {
         console.error('Erreur chargement données évolution:', err);
@@ -89,25 +186,39 @@ export default function BudgetTendancesTab() {
     loadEvolutionData();
   }, []);
 
-  const currentYearData = useMemo(() => budgetData.find(d => d.year === selectedYear), [budgetData, selectedYear]);
-  const previousYearData = useMemo(() => budgetData.find(d => d.year === selectedYear - 1), [budgetData, selectedYear]);
-
-  const globalStats = useMemo(() => {
-    if (budgetData.length === 0) return null;
-    const years = budgetData.map(d => d.year);
-    const minYear = Math.min(...years);
-    const maxYear = Math.max(...years);
-    const avgRecettes = budgetData.reduce((s, d) => s + d.recettes, 0) / budgetData.length;
-    const avgDepenses = budgetData.reduce((s, d) => s + d.depenses, 0) / budgetData.length;
-    const first = budgetData.find(d => d.year === minYear);
-    const last = budgetData.find(d => d.year === maxYear);
-    let cagr = 0;
-    if (first && last && last.depenses > 0 && first.depenses > 0) {
-      const n = maxYear - minYear;
-      if (n > 0) cagr = (Math.pow(last.depenses / first.depenses, 1 / n) - 1) * 100;
-    }
-    return { minYear, maxYear, nbYears: budgetData.length, avgRecettes, avgDepenses, cagr };
+  /** Toutes les années disponibles (pour le sélecteur) */
+  const availableYears = useMemo(() => {
+    return budgetData.map(d => d.year).sort((a, b) => a - b);
   }, [budgetData]);
+
+  /** Données de l'année de fin (affichée en gros dans les KPI) */
+  const endYearData = useMemo(
+    () => budgetData.find(d => d.year === endYear),
+    [budgetData, endYear],
+  );
+
+  /** Données de l'année de début (pour calcul de la variation) */
+  const startYearData = useMemo(
+    () => budgetData.find(d => d.year === startYear),
+    [budgetData, startYear],
+  );
+
+  /** Données filtrées pour le graphique d'évolution (uniquement la plage sélectionnée) */
+  const filteredBudgetData = useMemo(
+    () => budgetData.filter(d => d.year >= startYear && d.year <= endYear),
+    [budgetData, startYear, endYear],
+  );
+
+  /** Variations dynamiques calculées à partir de la plage sélectionnée */
+  const dynamicVariations = useMemo(
+    () => computeDynamicVariations(
+      rawData?.breakdowns_par_annee,
+      startYear,
+      endYear,
+      rawData?.variations_6ans,
+    ),
+    [rawData, startYear, endYear],
+  );
 
   if (isLoading) {
     return (
@@ -124,7 +235,7 @@ export default function BudgetTendancesTab() {
     return (
       <div className="flex items-center justify-center py-20">
         <div className="text-center max-w-md">
-          <p className="text-red-400 text-lg mb-2">❌ {error || 'Aucune donnée disponible'}</p>
+          <p className="text-red-400 text-lg mb-2">{error || 'Aucune donnée disponible'}</p>
           <p className="text-slate-400 text-sm">
             Vérifiez que evolution_budget.json est présent dans /public/data/
           </p>
@@ -135,81 +246,41 @@ export default function BudgetTendancesTab() {
 
   return (
     <div>
-      {/* Year focus selector */}
-      <div className="flex items-center justify-between mb-6">
+      {/* Year range selector */}
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-3">
         <p className="text-sm text-slate-400">
-          Analyse temporelle {globalStats?.minYear}–{globalStats?.maxYear}
+          Analyse temporelle {availableYears[0]}–{availableYears[availableYears.length - 1]}
         </p>
-        <div className="flex items-center gap-3">
-          <span className="text-sm text-slate-400">Année focus :</span>
-          <select
-            value={selectedYear}
-            onChange={(e) => setSelectedYear(parseInt(e.target.value, 10))}
-            className="px-3 py-2 bg-slate-800 border border-slate-700 rounded-lg text-slate-100 text-sm focus:outline-none focus:border-purple-500 transition-colors"
-          >
-            {budgetData.sort((a, b) => b.year - a.year).map(d => (
-              <option key={d.year} value={d.year}>{d.year}</option>
-            ))}
-          </select>
-        </div>
+        <YearRangeSelector
+          availableYears={availableYears}
+          startYear={startYear}
+          endYear={endYear}
+          onStartYearChange={setStartYear}
+          onEndYearChange={setEndYear}
+        />
       </div>
 
-      <DataQualityBanner dataset="budget" year={selectedYear} />
+      <DataQualityBanner dataset="budget" year={endYear} />
 
-      {/* KPI Cards YoY */}
-      {currentYearData && (
+      {/* KPI Cards — comparaison startYear → endYear */}
+      {endYearData && (
         <div className="mb-6">
-          <YoyCards currentYear={currentYearData} previousYear={previousYearData} />
+          <YoyCards currentYear={endYearData} previousYear={startYearData} />
         </div>
       )}
 
-      {/* Graphique évolution Recettes/Dépenses */}
+      {/* Graphique évolution Recettes/Dépenses (plage filtrée) */}
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6 mb-6">
         <h2 className="text-lg font-semibold text-slate-100 mb-4 flex items-center gap-2">
-          <span>📈</span>
           Évolution Recettes et Dépenses
         </h2>
-        <EvolutionChart data={budgetData} selectedYear={selectedYear} onYearClick={setSelectedYear} height={400} />
+        <EvolutionChart data={filteredBudgetData} height={400} />
       </div>
 
-      {/* Variation par poste sur 6 ans */}
-      {rawData?.variations_6ans && (
+      {/* Variation par poste — dynamique selon la plage */}
+      {dynamicVariations && (
         <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6 mb-6">
-          <VariationRankChart data={rawData.variations_6ans} maxItems={8} />
-        </div>
-      )}
-
-      {/* Stats globales */}
-      {globalStats && (
-        <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6">
-          <h2 className="text-lg font-semibold text-slate-100 mb-4 flex items-center gap-2">
-            <span>📋</span>
-            Statistiques sur la période
-          </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4">
-            <div>
-              <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-wide">Période</p>
-              <p className="text-lg md:text-xl font-bold text-slate-100">{globalStats.minYear}–{globalStats.maxYear}</p>
-              <p className="text-[10px] md:text-xs text-slate-400 mt-1">{globalStats.nbYears} années</p>
-            </div>
-            <div>
-              <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-wide">Moy. Recettes</p>
-              <p className="text-lg md:text-xl font-bold text-emerald-400">{formatEuroCompact(globalStats.avgRecettes)}</p>
-              <p className="text-[10px] md:text-xs text-slate-400 mt-1">par an</p>
-            </div>
-            <div>
-              <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-wide">Moy. Dépenses</p>
-              <p className="text-lg md:text-xl font-bold text-purple-400">{formatEuroCompact(globalStats.avgDepenses)}</p>
-              <p className="text-[10px] md:text-xs text-slate-400 mt-1">par an</p>
-            </div>
-            <div>
-              <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-wide">Croissance Dépenses</p>
-              <p className={`text-lg md:text-xl font-bold ${globalStats.cagr > 0 ? 'text-red-400' : 'text-emerald-400'}`}>
-                {globalStats.cagr > 0 ? '+' : ''}{globalStats.cagr.toFixed(1)}%
-              </p>
-              <p className="text-[10px] md:text-xs text-slate-400 mt-1">TCAM (annuel)</p>
-            </div>
-          </div>
+          <VariationRankChart data={dynamicVariations} maxItems={8} />
         </div>
       )}
     </div>

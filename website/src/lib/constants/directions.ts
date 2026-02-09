@@ -2,7 +2,13 @@
  * Dictionnaire des acronymes des directions de la Ville de Paris
  * 
  * Source: https://www.paris.fr/pages/les-directions-de-la-ville-de-paris-2311
+ * 
+ * IMPORTANT: Les couleurs des thématiques sont importées depuis colors.ts
+ * pour garantir la cohérence visuelle sur tout le site.
+ * Ne JAMAIS définir de couleurs en dur ici — utiliser THEMATIQUE_COLORS.
  */
+
+import { THEMATIQUE_COLORS, PALETTE } from '@/lib/colors';
 
 export interface DirectionInfo {
   acronyme: string;
@@ -30,20 +36,21 @@ export type ThematiqueSubvention =
 
 /**
  * Labels lisibles pour les thématiques
+ * Couleurs synchronisées avec THEMATIQUE_COLORS (colors.ts)
  */
 export const THEMATIQUE_LABELS: Record<ThematiqueSubvention, { label: string; icon: string; color: string }> = {
-  culture: { label: 'Culture & Arts', icon: '🎭', color: '#8b5cf6' },
-  sport: { label: 'Sport & Jeunesse', icon: '⚽', color: '#10b981' },
-  social: { label: 'Social & Solidarité', icon: '🤝', color: '#f59e0b' },
-  education: { label: 'Éducation & Petite enfance', icon: '📚', color: '#3b82f6' },
-  environnement: { label: 'Environnement & Espaces verts', icon: '🌳', color: '#22c55e' },
-  economie: { label: 'Économie & Emploi', icon: '💼', color: '#6366f1' },
-  logement: { label: 'Logement & Habitat', icon: '🏠', color: '#ec4899' },
-  urbanisme: { label: 'Urbanisme & Voirie', icon: '🏗️', color: '#64748b' },
-  securite: { label: 'Prévention & Sécurité', icon: '🛡️', color: '#ef4444' },
-  administration: { label: 'Administration', icon: '🏛️', color: '#94a3b8' },
-  international: { label: 'International', icon: '🌍', color: '#0ea5e9' },
-  autre: { label: 'Autre', icon: '📋', color: '#71717a' },
+  culture: { label: 'Culture & Arts', icon: '🎭', color: THEMATIQUE_COLORS['Culture'] },
+  sport: { label: 'Sport & Jeunesse', icon: '⚽', color: THEMATIQUE_COLORS['Sport'] },
+  social: { label: 'Social & Solidarité', icon: '🤝', color: THEMATIQUE_COLORS['Social'] },
+  education: { label: 'Éducation & Petite enfance', icon: '📚', color: THEMATIQUE_COLORS['Éducation'] },
+  environnement: { label: 'Environnement & Espaces verts', icon: '🌳', color: THEMATIQUE_COLORS['Environnement'] },
+  economie: { label: 'Économie & Emploi', icon: '💼', color: THEMATIQUE_COLORS['Économie'] },
+  logement: { label: 'Logement & Habitat', icon: '🏠', color: THEMATIQUE_COLORS['Logement'] },
+  urbanisme: { label: 'Urbanisme & Voirie', icon: '🏗️', color: THEMATIQUE_COLORS['Urbanisme'] },
+  securite: { label: 'Prévention & Sécurité', icon: '🛡️', color: THEMATIQUE_COLORS['Sécurité'] },
+  administration: { label: 'Administration', icon: '🏛️', color: THEMATIQUE_COLORS['Administration'] },
+  international: { label: 'International', icon: '🌍', color: THEMATIQUE_COLORS['International'] },
+  autre: { label: 'Autre', icon: '📋', color: PALETTE.gray },
 };
 
 /**

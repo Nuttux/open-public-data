@@ -8,6 +8,7 @@
  * 
  * Features:
  * - Courbes Recettes et Dépenses
+ * - Barres "Déficit" en fond (vert si excédent, rouge si déficit)
  * - Axe Y en milliards d'euros
  * - Tooltip avec détails
  * - Responsive: légende en haut sur mobile, symboles plus grands pour touch
@@ -17,6 +18,7 @@ import { useMemo } from 'react';
 import ReactECharts from 'echarts-for-react';
 import type { EChartsOption } from 'echarts';
 import { formatEuroCompact } from '@/lib/formatters';
+import { FLUX_COLORS } from '@/lib/colors';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 
 export interface YearlyBudget {
@@ -68,6 +70,7 @@ export default function EvolutionChart({
   const years = sortedData.map(d => d.year.toString());
   const recettes = sortedData.map(d => d.recettes);
   const depenses = sortedData.map(d => d.depenses);
+  const soldes = sortedData.map(d => d.solde);
 
   // Hauteur adaptative
   const chartHeight = isMobile ? Math.min(height, 280) : height;
@@ -98,24 +101,32 @@ export default function EvolutionChart({
         
         let html = `<div style="font-weight: 600; margin-bottom: 6px; font-size: ${isMobile ? '13px' : '14px'};">${year}</div>`;
         
-        items.forEach(item => {
-          html += `
-            <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '10px' : '16px'}; margin: 3px 0; font-size: ${isMobile ? '11px' : '12px'};">
-              <span style="display: flex; align-items: center; gap: 4px;">
-                <span style="width: 8px; height: 8px; border-radius: 50%; background: ${item.color};"></span>
-                ${item.seriesName}
-              </span>
-              <span style="font-weight: 500;">${formatEuroCompact(item.value)}</span>
-            </div>
-          `;
-        });
+        // Afficher Recettes et Dépenses (exclure Déficit car affiché séparément)
+        items
+          .filter(item => item.seriesName !== 'Déficit')
+          .forEach(item => {
+            html += `
+              <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '10px' : '16px'}; margin: 3px 0; font-size: ${isMobile ? '11px' : '12px'};">
+                <span style="display: flex; align-items: center; gap: 4px;">
+                  <span style="width: 8px; height: 8px; border-radius: 50%; background: ${item.color};"></span>
+                  ${item.seriesName}
+                </span>
+                <span style="font-weight: 500;">${formatEuroCompact(item.value)}</span>
+              </div>
+            `;
+          });
         
+        // Ligne séparée pour le déficit/excédent
         if (yearData) {
-          const soldeColor = yearData.solde >= 0 ? '#10b981' : '#ef4444';
+          const soldeColor = yearData.solde >= 0 ? FLUX_COLORS.solde.positif : FLUX_COLORS.solde.negatif;
+          const soldeLabel = yearData.solde >= 0 ? 'Excédent' : 'Déficit';
           html += `
             <div style="border-top: 1px solid rgba(148, 163, 184, 0.2); margin-top: 6px; padding-top: 6px;">
               <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '10px' : '16px'}; font-size: ${isMobile ? '11px' : '12px'};">
-                <span>Solde</span>
+                <span style="display: flex; align-items: center; gap: 4px;">
+                  <span style="width: 8px; height: 4px; border-radius: 1px; background: ${soldeColor};"></span>
+                  ${soldeLabel}
+                </span>
                 <span style="font-weight: 600; color: ${soldeColor};">
                   ${yearData.solde >= 0 ? '+' : ''}${formatEuroCompact(yearData.solde)}
                 </span>
@@ -128,7 +139,7 @@ export default function EvolutionChart({
       },
     },
     legend: {
-      data: ['Recettes', 'Dépenses'],
+      data: ['Recettes', 'Dépenses', 'Déficit'],
       // Mobile: légende en haut, Desktop: en bas
       ...(isMobile ? { top: 0 } : { bottom: 0 }),
       textStyle: {
@@ -186,10 +197,10 @@ export default function EvolutionChart({
         symbolSize: isMobile ? 10 : 8, // Plus grand pour touch
         lineStyle: {
           width: isMobile ? 2.5 : 3,
-          color: '#10b981',
+          color: FLUX_COLORS.recettes,
         },
         itemStyle: {
-          color: '#10b981',
+          color: FLUX_COLORS.recettes,
           borderWidth: 2,
           borderColor: '#fff',
         },
@@ -216,10 +227,10 @@ export default function EvolutionChart({
         symbolSize: isMobile ? 10 : 8, // Plus grand pour touch
         lineStyle: {
           width: isMobile ? 2.5 : 3,
-          color: '#a855f7',
+          color: FLUX_COLORS.depenses,
         },
         itemStyle: {
-          color: '#a855f7',
+          color: FLUX_COLORS.depenses,
           borderWidth: 2,
           borderColor: '#fff',
         },
@@ -231,17 +242,35 @@ export default function EvolutionChart({
             x2: 0,
             y2: 1,
             colorStops: [
-              { offset: 0, color: 'rgba(168, 85, 247, 0.2)' },
-              { offset: 1, color: 'rgba(168, 85, 247, 0.02)' },
+              { offset: 0, color: 'rgba(244, 63, 94, 0.2)' },
+              { offset: 1, color: 'rgba(244, 63, 94, 0.02)' },
             ],
           },
         },
+      },
+      {
+        name: 'Déficit',
+        type: 'bar',
+        // Couleur de base pour la légende (rouge = déficit, cas dominant)
+        itemStyle: {
+          color: FLUX_COLORS.solde.negatif,
+        },
+        data: soldes.map(s => ({
+          value: s,
+          itemStyle: {
+            color: s >= 0 ? FLUX_COLORS.solde.positif : FLUX_COLORS.solde.negatif,
+            opacity: 0.25,
+            borderRadius: s >= 0 ? [2, 2, 0, 0] : [0, 0, 2, 2],
+          },
+        })),
+        barWidth: isMobile ? '30%' : '40%',
+        z: 0, // Derrière les lignes
       },
     ],
     animation: true,
     animationDuration: isMobile ? 500 : 800, // Plus rapide sur mobile
     animationEasing: 'cubicOut',
-  }), [years, recettes, depenses, sortedData, isMobile]);
+  }), [years, recettes, depenses, soldes, sortedData, isMobile]);
 
   // Gestion du clic sur un point
   const handleClick = (params: { name?: string }) => {

@@ -12,13 +12,14 @@
  * - years : liste des années disponibles
  */
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import YearSelector from '@/components/YearSelector';
 import StatsCards from '@/components/StatsCards';
 import BudgetSankey from '@/components/BudgetSankey';
 import NatureDonut, { type BudgetNatureData } from '@/components/NatureDonut';
 import DrilldownPanel from '@/components/DrilldownPanel';
-import BudgetTypeBadge, { getBudgetTypeForYear } from '@/components/BudgetTypeBadge';
+import { getBudgetTypeForYear } from '@/components/BudgetTypeBadge';
+import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 import type { BudgetData, BudgetIndex, DrilldownItem, DataStatus, BudgetType } from '@/lib/formatters';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -92,57 +93,48 @@ function ViewToggle({
   );
 }
 
-/** Badge statut données */
+/**
+ * Badge statut données — affiche le type de budget pour l'année sélectionnée.
+ *
+ * Le dataStatus global peut être "PARTIEL" si d'autres datasets (autorisations,
+ * arrondissements) sont manquants, mais cette page n'utilise que le budget
+ * principal. On se base donc sur `dataAvailability.budget` + `type_budget`
+ * pour afficher le bon statut.
+ */
 function DataStatusBadge({
   status,
   availability,
+  typeBudget,
 }: {
   status?: DataStatus;
   availability?: BudgetData['dataAvailability'];
+  typeBudget?: BudgetData['type_budget'];
 }) {
   if (!status) return null;
 
   const statusConfig: Record<DataStatus, { label: string; color: string; icon: string }> = {
-    COMPLET: { label: 'Données complètes', color: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30', icon: '✓' },
+    COMPLET: { label: 'Budget exécuté', color: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30', icon: '✓' },
     PARTIEL: { label: 'Données partielles', color: 'bg-amber-500/20 text-amber-400 border-amber-500/30', icon: '◐' },
     BUDGET_SEUL: { label: 'Budget uniquement', color: 'bg-orange-500/20 text-orange-400 border-orange-500/30', icon: '○' },
-    BUDGET_VOTE: { label: 'Budget voté (BP)', color: 'bg-orange-500/20 text-orange-400 border-orange-500/30', icon: '📋' },
+    BUDGET_VOTE: { label: 'Budget voté (BP)', color: 'bg-orange-500/20 text-orange-400 border-orange-500/30', icon: '○' },
     INCONNU: { label: 'Statut inconnu', color: 'bg-slate-500/20 text-slate-400 border-slate-500/30', icon: '?' },
   };
 
-  const budgetRelevantMissing: string[] = [];
-  if (availability) {
-    if (!availability.budget) budgetRelevantMissing.push('Budget principal');
-    if (!availability.subventions) budgetRelevantMissing.push('Subventions');
+  // Statut effectif pour cette page : si le budget principal est disponible,
+  // c'est "COMPLET" (exécuté) ou "BUDGET_VOTE" selon le type. Le statut
+  // global PARTIEL (autorisations/arrondissements manquants) n'est pas pertinent ici.
+  let effectiveStatus = status;
+  if (availability?.budget) {
+    effectiveStatus = typeBudget === 'vote' ? 'BUDGET_VOTE' : 'COMPLET';
   }
-
-  const effectiveStatus: DataStatus =
-    availability && availability.budget && availability.subventions ? 'COMPLET' : status;
 
   const config = statusConfig[effectiveStatus] || statusConfig['INCONNU'];
 
   return (
-    <div className="group relative inline-flex items-center">
-      <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border ${config.color}`}>
-        <span>{config.icon}</span>
-        {config.label}
-      </span>
-      {budgetRelevantMissing.length > 0 && (
-        <div className="absolute left-0 top-full mt-1 z-50 hidden group-hover:block">
-          <div className="bg-slate-800 border border-slate-700 rounded-lg p-3 shadow-xl min-w-[200px]">
-            <p className="text-xs text-slate-300 font-medium mb-2">Sources manquantes :</p>
-            <ul className="text-xs text-slate-400 space-y-1">
-              {budgetRelevantMissing.map((item, i) => (
-                <li key={i} className="flex items-center gap-1.5">
-                  <span className="text-amber-400">•</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      )}
-    </div>
+    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border ${config.color}`}>
+      <span>{config.icon}</span>
+      {config.label}
+    </span>
   );
 }
 
@@ -156,6 +148,31 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
   const [empruntsData, setEmpruntsData] = useState<Record<number, number>>({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  // Mobile slide-in overlay state for drilldown L1→L2 transition
+  const isMobile = useIsMobile(BREAKPOINTS.md);
+  const [mobileSlideVisible, setMobileSlideVisible] = useState(false);
+  const prevDrilldownRef = useRef<DrilldownState | null>(null);
+
+  // Trigger mobile slide-in when drilldown opens (L1→L2)
+  useEffect(() => {
+    if (isMobile && drilldown && !prevDrilldownRef.current) {
+      // Drilldown just opened — trigger slide-in with a rAF delay for the transition
+      requestAnimationFrame(() => setMobileSlideVisible(true));
+    }
+    if (!drilldown) {
+      setMobileSlideVisible(false);
+    }
+    prevDrilldownRef.current = drilldown;
+  }, [drilldown, isMobile]);
+
+  // Lock body scroll when mobile overlay is visible
+  useEffect(() => {
+    if (isMobile && mobileSlideVisible) {
+      document.body.style.overflow = 'hidden';
+      return () => { document.body.style.overflow = ''; };
+    }
+  }, [isMobile, mobileSlideVisible]);
 
   // Determine budget type for selected year
   const budgetType: BudgetType | null = getBudgetTypeForYear(
@@ -288,7 +305,16 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
     } : null);
   }, []);
 
-  const handleCloseDrilldown = useCallback(() => setDrilldown(null), []);
+  /** Close drilldown — on mobile, animate out first then clear state */
+  const handleCloseDrilldown = useCallback(() => {
+    if (isMobile) {
+      setMobileSlideVisible(false);
+      // Wait for slide-out animation to finish before removing the panel
+      setTimeout(() => setDrilldown(null), 300);
+    } else {
+      setDrilldown(null);
+    }
+  }, [isMobile]);
 
   // ── Render ───────────────────────────────────────────────────────────────
 
@@ -303,10 +329,14 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
       {/* Year selector + badges */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
         <div className="flex items-center gap-3">
+          {/* Le DataStatusBadge suffit : "Budget exécuté" ou "Budget voté (BP)" */}
           {budgetData && (
-            <DataStatusBadge status={budgetData.dataStatus} availability={budgetData.dataAvailability} />
+            <DataStatusBadge
+              status={budgetData.dataStatus}
+              availability={budgetData.dataAvailability}
+              typeBudget={budgetData.type_budget}
+            />
           )}
-          {budgetType && <BudgetTypeBadge type={budgetType} />}
         </div>
         <YearSelector years={index.availableYears} selectedYear={selectedYear} onYearChange={onYearChange} />
       </div>
@@ -323,7 +353,7 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
 
       {error && (
         <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-4 mb-6">
-          <p className="text-red-400 flex items-center gap-2"><span>⚠️</span>{error}</p>
+          <p className="text-red-400 flex items-center gap-2"><span>⚠</span>{error}</p>
         </div>
       )}
 
@@ -339,7 +369,6 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
           <StatsCards
             recettes={budgetData.totals.recettes}
             depenses={budgetData.totals.depenses}
-            solde={budgetData.totals.solde}
             year={selectedYear}
             emprunts={empruntsData[selectedYear] || budgetData.links.find(l => l.source === 'Emprunts')?.value || 0}
           />
@@ -358,7 +387,9 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
           {viewMode === 'flux' && (
             <>
               <BudgetSankey data={budgetData} onNodeClick={handleNodeClick} />
-              {currentDrilldown && (
+
+              {/* Desktop: DrilldownPanel inline below Sankey */}
+              {!isMobile && currentDrilldown && (
                 <DrilldownPanel
                   title={currentDrilldown.title}
                   category={currentDrilldown.category}
@@ -376,6 +407,34 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
                   onItemClick={canDrillDeeper || (drilldown?.currentLevel === 0) ? handleDrilldownItemClick : undefined}
                 />
               )}
+
+              {/* Mobile: fullscreen slide-in overlay for drilldown */}
+              {isMobile && drilldown && currentDrilldown && (
+                <div
+                  className={`fixed inset-0 z-50 bg-slate-900 overflow-y-auto transition-transform duration-300 ease-out ${
+                    mobileSlideVisible ? 'translate-x-0' : 'translate-x-full'
+                  }`}
+                >
+                  <div className="p-4 pt-safe pb-safe">
+                    <DrilldownPanel
+                      title={currentDrilldown.title}
+                      category={currentDrilldown.category}
+                      parentCategory={breadcrumbs[0]}
+                      items={currentDrilldown.items}
+                      sectionData={
+                        currentDrilldown.category === 'expense' && drilldown?.currentLevel === 0
+                          ? budgetData.bySection?.[currentDrilldown.title]
+                          : undefined
+                      }
+                      breadcrumbs={breadcrumbs}
+                      currentLevel={drilldown?.currentLevel || 0}
+                      onClose={handleCloseDrilldown}
+                      onBreadcrumbClick={handleBreadcrumbClick}
+                      onItemClick={canDrillDeeper || (drilldown?.currentLevel === 0) ? handleDrilldownItemClick : undefined}
+                    />
+                  </div>
+                </div>
+              )}
             </>
           )}
 
@@ -383,7 +442,6 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
           {viewMode === 'depenses' && natureData && (
             <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6">
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-lg">🍩</span>
                 <h3 className="text-lg font-semibold text-slate-100">Répartition par type de dépense</h3>
               </div>
               <p className="text-sm text-slate-400 mb-1">Cliquez sur une catégorie pour voir le détail</p>

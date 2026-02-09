@@ -15,6 +15,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useGlossary } from '@/lib/glossaryContext';
+import { NAV_ICONS } from '@/lib/icons';
 
 /**
  * Configuration des liens de navigation
@@ -33,43 +34,43 @@ const navLinks = [
   {
     href: '/',
     label: 'Accueil',
-    icon: '🏠',
+    icon: NAV_ICONS.accueil,
     description: 'Présentation du projet',
   },
   {
     href: '/budget',
     label: 'Budget',
-    icon: '📊',
+    icon: NAV_ICONS.budget,
     description: 'Budget de Paris — Annuel, Tendances, Prévision',
   },
   {
     href: '/patrimoine',
     label: 'Patrimoine',
-    icon: '📋',
+    icon: NAV_ICONS.patrimoine,
     description: 'État patrimonial, dette et santé financière',
   },
   {
     href: '/subventions',
     label: 'Subventions',
-    icon: '💰',
+    icon: NAV_ICONS.subventions,
     description: 'Bénéficiaires par thématique',
   },
   {
     href: '/investissements',
     label: 'Travaux',
-    icon: '🏗️',
+    icon: NAV_ICONS.investissements,
     description: "Projets d'investissement",
   },
   {
     href: '/logements',
     label: 'Logements',
-    icon: '🏘️',
+    icon: NAV_ICONS.logements,
     description: 'Logements sociaux financés',
   },
   {
     href: '/blog',
     label: 'Blog',
-    icon: '📝',
+    icon: NAV_ICONS.blog,
     description: 'Articles et analyses',
   },
 ];
@@ -134,15 +135,9 @@ export default function Navbar() {
               href="/"
               className="flex items-center gap-3 hover:opacity-80 transition-opacity shrink-0"
             >
-              <span className="text-2xl">🏛️</span>
-              <div>
-                <h1 className="text-lg font-bold text-slate-100">
-                  Données Lumières
-                </h1>
-                <p className="text-xs text-slate-400">
-                  Open Data pour la démocratie
-                </p>
-              </div>
+              <h1 className="text-lg font-bold text-slate-100">
+                Données Lumières
+              </h1>
             </Link>
 
             {/* Liens de navigation desktop */}
@@ -186,7 +181,6 @@ export default function Navbar() {
             href="/"
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
-            <span className="text-xl">🏛️</span>
             <h1 className="text-base font-bold text-slate-100">
               Données Lumières
             </h1>

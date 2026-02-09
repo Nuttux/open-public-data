@@ -38,7 +38,6 @@ export default function BlogPage() {
       <section className="max-w-5xl mx-auto px-6 pb-20">
         {posts.length === 0 ? (
           <div className="text-center py-20">
-            <div className="text-6xl mb-4">📝</div>
             <h2 className="text-2xl font-semibold text-white mb-2">
               Aucun article pour le moment
             </h2>

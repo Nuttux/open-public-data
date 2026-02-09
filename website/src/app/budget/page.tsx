@@ -24,7 +24,7 @@ import type { BudgetIndex } from '@/lib/formatters';
 // ─── Tab definitions ─────────────────────────────────────────────────────────
 
 const BUDGET_TABS: Tab[] = [
-  { id: 'annuel', label: 'Annuel', icon: '📊' },
+  { id: 'annuel', label: 'Annuel', icon: '📋' },
   { id: 'tendances', label: 'Tendances', icon: '📈' },
   { id: 'vote-vs-execute', label: 'Voté vs Exécuté', icon: '🎯' },
 ];
@@ -74,7 +74,6 @@ function BudgetPageInner() {
       <div className="border-b border-slate-800 bg-slate-900/50 backdrop-blur">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <PageHeader
-            icon="🏛️"
             title="Budget de Paris"
             description="Tableau de bord des finances publiques parisiennes — 2019 à 2026"
           />
