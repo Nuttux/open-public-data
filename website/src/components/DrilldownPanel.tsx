@@ -51,14 +51,14 @@ export default function DrilldownPanel({
 }: DrilldownPanelProps) {
   const isMobile = useIsMobile(BREAKPOINTS.md);
 
-  // ── Mobile slide animation for level transitions (L2↔L3) ──
+  // ── Slide animation for level transitions (L2↔L3) ──
   // Direction: 'forward' = slide left (deeper), 'back' = slide right (back up)
   const [slideDirection, setSlideDirection] = useState<'forward' | 'back' | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
   const prevLevelRef = useRef(currentLevel);
 
   useEffect(() => {
-    if (!isMobile || currentLevel === prevLevelRef.current) {
+    if (currentLevel === prevLevelRef.current) {
       prevLevelRef.current = currentLevel;
       return;
     }
@@ -66,7 +66,6 @@ export default function DrilldownPanel({
     setSlideDirection(direction);
     setIsAnimating(true);
 
-    // Remove animation class after transition completes
     const timer = setTimeout(() => {
       setIsAnimating(false);
       setSlideDirection(null);
@@ -74,12 +73,10 @@ export default function DrilldownPanel({
 
     prevLevelRef.current = currentLevel;
     return () => clearTimeout(timer);
-  }, [currentLevel, isMobile]);
+  }, [currentLevel]);
 
-  // CSS class for the content wrapper during level transition
   const slideClass = useMemo(() => {
     if (!isAnimating || !slideDirection) return '';
-    // Use a keyframe-like approach: enter from right (forward) or from left (back)
     return slideDirection === 'forward'
       ? 'animate-slide-in-right'
       : 'animate-slide-in-left';
@@ -423,8 +420,8 @@ export default function DrilldownPanel({
         </button>
       </div>
 
-      {/* Animated content wrapper for mobile level transitions */}
-      <div className={isMobile ? slideClass : ''}>
+      {/* Animated content wrapper for level transitions */}
+      <div className={slideClass}>
 
       {/* Summary box avec couleur */}
       <div className="rounded-lg p-4 mb-4" style={bgStyle}>
