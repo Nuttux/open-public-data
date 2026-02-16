@@ -223,8 +223,8 @@ export default function DrilldownPanel({
   }, []);
 
   // Longueur de troncature adaptée à l'écran
-  const maxTextLen = isMobile ? 22 : 35;
-  const labelWidth = isMobile ? 140 : 220;
+  const maxTextLen = isMobile ? 22 : 50;
+  const labelWidth = isMobile ? 140 : 320;
 
   const option: EChartsOption = useMemo(() => ({
     backgroundColor: 'transparent',
