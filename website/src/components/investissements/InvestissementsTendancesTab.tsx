@@ -9,6 +9,7 @@
 
 import TendancesTab from '@/components/shared/TendancesTab';
 import type { TendancesYear, BreakdownOption } from '@/components/shared/TendancesTab';
+import { formatEuroCompact } from '@/lib/formatters';
 import { PALETTE } from '@/lib/colors';
 
 // ─── Config ──────────────────────────────────────────────────────────────────
@@ -48,6 +49,12 @@ function getGroupColor(label: string): string {
   return CHAPITRE_COLORS[label] || PALETTE.gray;
 }
 
+function formatVariationDiff(value: number): string {
+  const m = value / 1_000_000;
+  const s = value >= 0 ? '+' : '';
+  return Math.abs(m) >= 1000 ? `${s}${(m / 1000).toFixed(1)} Md€` : `${s}${m.toFixed(0)} M€`;
+}
+
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function InvestissementsTendancesTab() {
@@ -56,12 +63,19 @@ export default function InvestissementsTendancesTab() {
       dataUrl="/data/investissement_tendances.json"
       parseData={parseData}
       breakdowns={BREAKDOWNS}
-      getGroupColor={getGroupColor}
+      getGroupColor={(label) => getGroupColor(label)}
       theme="amber"
+      formatValue={formatEuroCompact}
+      tooltipHeader={(year, total) => `${year} — ${formatEuroCompact(total)}`}
+      formatVariationDiff={formatVariationDiff}
       title="Tendances d'investissement"
       kpi1Label={(year) => `Investissement ${year}`}
       kpi1Sub={() => 'hors opérations financières'}
-      kpi4Label={() => '1er secteur'}
+      kpi4={(ctx) => ({
+        label: '1er secteur',
+        value: ctx.topName,
+        sub: `${formatEuroCompact(ctx.topValue)} (${ctx.topPct.toFixed(0)}%)`,
+      })}
       chartTitle={(dim) => `Dépenses d'investissement par ${dim}`}
       variationTitle={(dim) => `Évolution par ${dim}`}
       variationSubtitle={(dim) => `Quels ${dim}s ont le plus évolué`}
