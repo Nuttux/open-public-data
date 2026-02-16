@@ -3,7 +3,7 @@
 /**
  * AnnuelTab — Composant partagé pour les onglets "Annuel" avec treemap.
  *
- * Utilisé par Subventions et Travaux. (Logements a un layout différent sans treemap.)
+ * Utilisé par Subventions et Investissements. (Logements a un layout différent sans treemap.)
  *
  * Pattern :
  *   1. Optional banner (couverture, data quality, etc.)

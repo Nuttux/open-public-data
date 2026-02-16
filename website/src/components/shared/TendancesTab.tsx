@@ -3,7 +3,7 @@
 /**
  * TendancesTab — Composant partagé pour les onglets "Tendances".
  *
- * Utilisé par Subventions, Travaux et Logements.
+ * Utilisé par Subventions, Investissements et Logements.
  * Chaque page passe sa configuration (breakdowns, couleurs, formatters, textes)
  * et soit un dataUrl (fetch) soit des data directes.
  *

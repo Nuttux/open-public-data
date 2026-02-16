@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Page /investissements — Travaux et projets d'équipement de la Ville de Paris.
+ * Page /investissements — Investissements et projets d'équipement de la Ville de Paris.
  *
  * Architecture à 3 onglets :
  *   - Annuel (défaut) : Treemap avec breakdown dynamique + KPIs + table top projets
@@ -16,8 +16,8 @@ import TabBar, { type Tab } from '@/components/TabBar';
 import { useTabState } from '@/lib/hooks/useTabState';
 import PageHeader from '@/components/PageHeader';
 import YearSelector from '@/components/YearSelector';
-import { loadAutorisationsIndex, loadAutorisationsForYear } from '@/lib/api/staticData';
-import type { AutorisationProgramme } from '@/lib/types/map';
+import { loadAutorisationsIndex, loadAutorisationsForYear, loadArrondissementsStats } from '@/lib/api/staticData';
+import type { AutorisationProgramme, ArrondissementStats } from '@/lib/types/map';
 import InvestissementsAnnuelTab from '@/components/investissements/InvestissementsAnnuelTab';
 import InvestissementsExplorerTab from '@/components/investissements/InvestissementsExplorerTab';
 import InvestissementsTendancesTab from '@/components/investissements/InvestissementsTendancesTab';
@@ -45,6 +45,7 @@ function InvestissementsPageInner() {
   const [selectedYear, setSelectedYear] = useState<number>(2024);
   const [projets, setProjets] = useState<AutorisationProgramme[]>([]);
   const [budgetInvestByYear, setBudgetInvestByYear] = useState<Record<number, number>>({});
+  const [arrondissementsStats, setArrondissementsStats] = useState<ArrondissementStats[]>([]);
   const [isLoadingIndex, setIsLoadingIndex] = useState(true);
   const [isLoadingData, setIsLoadingData] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -53,10 +54,12 @@ function InvestissementsPageInner() {
   useEffect(() => {
     async function loadIndex() {
       try {
-        const [index, evoRes] = await Promise.all([
+        const [index, evoRes, arrStats] = await Promise.all([
           loadAutorisationsIndex(),
           fetch('/data/evolution_budget.json'),
+          loadArrondissementsStats(),
         ]);
+        setArrondissementsStats(arrStats);
         setAvailableYears(index.availableYears);
         if (index.availableYears.length > 0) setSelectedYear(index.availableYears[0]);
         if (evoRes.ok) {
@@ -110,7 +113,7 @@ function InvestissementsPageInner() {
       <div className="border-b border-slate-800 bg-slate-900/50 backdrop-blur">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <PageHeader
-            title="Travaux"
+            title="Investissements"
             description="Projets d'équipements publics : écoles, piscines, voiries, parcs..."
             actions={
               activeTab !== 'tendances' ? (
@@ -158,6 +161,7 @@ function InvestissementsPageInner() {
         {activeTab === 'explorer' && (
           <InvestissementsExplorerTab
             projets={projets}
+            arrondissementStats={arrondissementsStats}
             isLoading={isLoadingData}
           />
         )}

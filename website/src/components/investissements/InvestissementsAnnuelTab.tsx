@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * InvestissementsAnnuelTab — Wrapper Travaux pour le composant partagé AnnuelTab.
+ * InvestissementsAnnuelTab — Wrapper Investissements pour le composant partagé AnnuelTab.
  *
  * Breakdown : Thématique, Chapitre, Arrondissement.
  * Table preview : top 30 projets.
@@ -126,7 +126,7 @@ export default function InvestissementsAnnuelTab({
       getGroupKey={getGroupKey}
       getGroupColor={getGroupColor}
       getValue={(p) => p.montant}
-      treemapTitle="Répartition des travaux"
+      treemapTitle="Répartition des investissements"
       tooltipCountLabel="Projets"
       itemLabel="projets"
       columns={COLUMNS}
@@ -136,7 +136,7 @@ export default function InvestissementsAnnuelTab({
       banner={
         stats.coverage ? (
           <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-3 mb-4 text-sm text-blue-300">
-            <strong>Couverture :</strong> Travaux localisables représentant{' '}
+            <strong>Couverture :</strong> Investissements localisables représentant{' '}
             <strong>~{stats.coverage}%</strong>{' '}
             du budget d&apos;investissement ({budgetInvest ? formatEuroCompact(budgetInvest) : '—'}).
           </div>
