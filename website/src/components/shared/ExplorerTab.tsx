@@ -3,10 +3,10 @@
 /**
  * ExplorerTab — Composant partagé pour les onglets "Explorer".
  *
- * Utilisé par Subventions, Travaux et Logements.
+ * Utilisé par Subventions, Investissements et Logements.
  *
  * Pattern :
- *   1. Toolbar : résumé items + toggle Liste/Carte (optionnel)
+ *   1. Toolbar : résumé items + toggle Liste/Carte/Arrondissements
  *   2. Mobile : filtres collapsibles
  *   3. Desktop : sidebar filtres + contenu principal
  *
@@ -41,6 +41,10 @@ const THEME = {
   },
 } as const;
 
+// ─── Types ───────────────────────────────────────────────────────────────────
+
+type ViewMode = 'liste' | 'carte' | 'arrondissements';
+
 // ─── Props ───────────────────────────────────────────────────────────────────
 
 export interface ExplorerTabProps {
@@ -58,8 +62,10 @@ export interface ExplorerTabProps {
   listView: ReactNode;
   /** If provided, shows a Liste/Carte toggle */
   mapView?: ReactNode;
-  /** Default view when map is available (default: 'liste') */
-  defaultView?: 'liste' | 'carte';
+  /** Choropleth by arrondissement — if provided, adds a 3rd "Arrondissements" toggle */
+  arrondissementView?: ReactNode;
+  /** Default view (default: 'liste') */
+  defaultView?: ViewMode;
 
   isLoading: boolean;
 }
@@ -75,6 +81,12 @@ const ListIcon = () => (
 const MapIcon = () => (
   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+  </svg>
+);
+
+const ArrIcon = () => (
+  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
   </svg>
 );
 
@@ -95,22 +107,28 @@ const ChevronIcon = ({ open }: { open: boolean }) => (
 export default function ExplorerTab({
   summaryTitle, theme,
   filterPanel, activeFilterCount, filterLabel,
-  listView, mapView, defaultView = 'liste',
+  listView, mapView, arrondissementView, defaultView = 'liste',
   isLoading,
 }: ExplorerTabProps) {
   const isMobile = useIsMobile(BREAKPOINTS.lg);
-  const [viewMode, setViewMode] = useState<'liste' | 'carte'>(defaultView);
+  const [viewMode, setViewMode] = useState<ViewMode>(defaultView);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const t = THEME[theme];
 
   const hasMap = !!mapView;
+  const hasArr = !!arrondissementView;
+  const hasToggle = hasMap || hasArr;
 
   // ── Content ──
   const ContentView = isLoading ? (
     <div className="h-64 flex items-center justify-center">
       <div className={`w-8 h-8 border-3 ${t.spinner} border-t-transparent rounded-full animate-spin`} />
     </div>
-  ) : (hasMap && viewMode === 'carte') ? mapView : listView;
+  ) : viewMode === 'arrondissements' && hasArr
+    ? arrondissementView
+    : viewMode === 'carte' && hasMap
+      ? mapView
+      : listView;
 
   return (
     <div>
@@ -118,26 +136,38 @@ export default function ExplorerTab({
       <div className="flex items-center justify-between gap-3 mb-4">
         <h3 className="text-lg font-semibold text-slate-100">{summaryTitle}</h3>
 
-        {hasMap && (
+        {hasToggle && (
           <div className="flex items-center gap-2">
             <span className="text-xs text-slate-500 hidden sm:inline">Visualisation :</span>
             <div className="flex bg-slate-800 rounded-lg border border-slate-700 p-0.5">
               <button
                 onClick={() => setViewMode('liste')}
-                className={`px-3 sm:px-4 py-2 rounded-md text-sm font-medium transition-all flex items-center gap-1.5 ${
+                className={`px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium transition-all flex items-center gap-1 sm:gap-1.5 ${
                   viewMode === 'liste' ? t.activeBtn : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50'
                 }`}
               >
                 <ListIcon /> Liste
               </button>
-              <button
-                onClick={() => setViewMode('carte')}
-                className={`px-3 sm:px-4 py-2 rounded-md text-sm font-medium transition-all flex items-center gap-1.5 ${
-                  viewMode === 'carte' ? t.activeBtn : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50'
-                }`}
-              >
-                <MapIcon /> Carte
-              </button>
+              {hasMap && (
+                <button
+                  onClick={() => setViewMode('carte')}
+                  className={`px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium transition-all flex items-center gap-1 sm:gap-1.5 ${
+                    viewMode === 'carte' ? t.activeBtn : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50'
+                  }`}
+                >
+                  <MapIcon /> Carte
+                </button>
+              )}
+              {hasArr && (
+                <button
+                  onClick={() => setViewMode('arrondissements')}
+                  className={`px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium transition-all flex items-center gap-1 sm:gap-1.5 ${
+                    viewMode === 'arrondissements' ? t.activeBtn : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50'
+                  }`}
+                >
+                  <ArrIcon /> <span className="hidden sm:inline">Arrondissements</span><span className="sm:hidden">Arr.</span>
+                </button>
+              )}
             </div>
           </div>
         )}

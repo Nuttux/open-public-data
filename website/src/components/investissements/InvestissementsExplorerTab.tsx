@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * InvestissementsExplorerTab — Wrapper Travaux pour le composant partagé ExplorerTab.
+ * InvestissementsExplorerTab — Wrapper Investissements pour le composant partagé ExplorerTab.
  *
  * Filtres : Recherche, Arrondissement, Thématiques.
  * Vues : Liste paginée (50/page) + Carte Leaflet.
@@ -10,7 +10,7 @@
 import { useState, useMemo } from 'react';
 import dynamic from 'next/dynamic';
 import ExplorerTab from '@/components/shared/ExplorerTab';
-import type { AutorisationProgramme } from '@/lib/types/map';
+import type { AutorisationProgramme, ArrondissementStats } from '@/lib/types/map';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { THEMATIQUE_LABELS, type ThematiqueSubvention } from '@/lib/constants/directions';
 
@@ -39,6 +39,7 @@ const THEMATIQUES = [
 
 interface InvestissementsExplorerTabProps {
   projets: AutorisationProgramme[];
+  arrondissementStats?: ArrondissementStats[];
   isLoading: boolean;
 }
 
@@ -129,7 +130,7 @@ function FilterPanel({
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function InvestissementsExplorerTab({
-  projets, isLoading,
+  projets, arrondissementStats, isLoading,
 }: InvestissementsExplorerTabProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedArrondissement, setSelectedArrondissement] = useState<number | null>(null);
@@ -298,6 +299,16 @@ export default function InvestissementsExplorerTab({
           <InvestissementsMap projets={filteredProjets} isLoading={false} />
         </div>
       }
+      arrondissementView={arrondissementStats && arrondissementStats.length > 0 ? (
+        <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 overflow-hidden" style={{ height: 550 }}>
+          <InvestissementsMap
+            projets={filteredProjets}
+            isLoading={false}
+            showChoropleth
+            arrondissementStats={arrondissementStats}
+          />
+        </div>
+      ) : undefined}
     />
   );
 }

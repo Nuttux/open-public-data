@@ -3,8 +3,8 @@
 /**
  * LogementsExplorerTab — Wrapper Logements pour le composant partagé ExplorerTab.
  *
- * Filtres : Recherche, Bailleur, Arrondissement, Année, Choroplèthe.
- * Vues : Liste (100 premiers) + Carte Leaflet.
+ * Filtres : Recherche, Bailleur, Arrondissement, Année.
+ * Vues : Liste (100 premiers) + Carte (points) + Arrondissements (choroplèthe).
  */
 
 import { useState, useMemo } from 'react';
@@ -34,11 +34,10 @@ interface Filters {
   bailleur: string | null;
   arrondissement: number | null;
   annee: number | null;
-  showChoropleth: boolean;
 }
 
 const DEFAULT_FILTERS: Filters = {
-  search: '', bailleur: null, arrondissement: null, annee: null, showChoropleth: false,
+  search: '', bailleur: null, arrondissement: null, annee: null,
 };
 
 interface LogementsExplorerTabProps {
@@ -125,20 +124,6 @@ function FilterPanel({
             {years.map(y => <option key={y} value={y}>{y}</option>)}
           </select>
         </div>
-
-        {isVertical && (
-          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input
-                type="checkbox"
-                checked={filters.showChoropleth}
-                onChange={e => onFiltersChange({ ...filters, showChoropleth: e.target.checked })}
-                className="w-4 h-4 rounded border-slate-600 bg-slate-900 text-emerald-500 focus:ring-emerald-500"
-              />
-              <span className="text-sm text-slate-300">Vue par habitant (choroplèthe)</span>
-            </label>
-          </div>
-        )}
       </div>
 
       {activeFilterCount > 0 && (
@@ -268,7 +253,17 @@ export default function LogementsExplorerTab({
           <LogementsSociauxMap
             logements={filteredLogements}
             arrondissementStats={arrondissementStats}
-            showChoropleth={filters.showChoropleth}
+            isLoading={isLoading}
+            selectedBailleur={filters.bailleur}
+          />
+        </div>
+      }
+      arrondissementView={
+        <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 overflow-hidden" style={{ height: 600 }}>
+          <LogementsSociauxMap
+            logements={filteredLogements}
+            arrondissementStats={arrondissementStats}
+            showChoropleth
             isLoading={isLoading}
             selectedBailleur={filters.bailleur}
           />

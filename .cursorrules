@@ -32,6 +32,21 @@ docs/              # Architecture docs
 - French UI text, French number formatting
 - Dark theme (slate-800/900)
 
+### Shared Tab Components (website/src/components/shared/)
+Les pages Subventions, Investissements et Logements partagent une architecture 3 onglets (Annuel/Tendances/Explorer) via des composants partagés. Chaque page fournit un **thin wrapper** avec sa config (breakdowns, couleurs, colonnes, filtres).
+
+| Composant partagé | Rôle | Pages |
+|---|---|---|
+| `AnnuelTab.tsx` | Treemap ECharts + breakdown selector + KPI cards + table preview | Subventions, Investissements |
+| `TendancesTab.tsx` | Stacked bar chart + variation ranking + KPIs + year range | Subventions, Investissements, Logements |
+| `ExplorerTab.tsx` | Layout responsive (sidebar filtres / collapsible mobile) + toggle Liste/Carte/Arrondissements | Subventions, Investissements, Logements |
+
+**Pattern** : `shared/XxxTab.tsx` (générique, configurable via props) → `{domain}/XxxTab.tsx` (thin wrapper avec config domaine) → `app/{domain}/page.tsx` (page Next.js).
+
+**Thèmes** : `purple` (Subventions), `amber` (Investissements), `emerald` (Logements).
+
+**Règle** : toute modification UX commune doit être faite dans le composant partagé, pas dupliquée dans chaque wrapper.
+
 ## Responsive Design Strategy
 
 - **Approche mixte** : Responsive CSS par défaut, layouts séparés si nécessaire

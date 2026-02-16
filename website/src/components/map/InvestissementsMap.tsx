@@ -14,9 +14,10 @@ import { useEffect, useState, useMemo } from 'react';
 import { MapContainer, TileLayer, CircleMarker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import type { AutorisationProgramme, GeoPoint } from '@/lib/types/map';
+import type { AutorisationProgramme, ArrondissementStats, GeoPoint } from '@/lib/types/map';
 import { formatEuroCompact } from '@/lib/formatters';
 import { THEMATIQUE_LABELS, type ThematiqueSubvention } from '@/lib/constants/directions';
+import ChoroplethLayer, { ChoroplethLegend } from './ChoroplethLayer';
 
 /**
  * Centre de Paris par défaut
@@ -73,6 +74,8 @@ L.Marker.prototype.options.icon = defaultIcon;
 interface InvestissementsMapProps {
   projets: AutorisationProgramme[];
   isLoading?: boolean;
+  showChoropleth?: boolean;
+  arrondissementStats?: ArrondissementStats[];
 }
 
 /**
@@ -108,6 +111,8 @@ function MapController({ center, zoom }: { center?: GeoPoint; zoom?: number }) {
 export default function InvestissementsMap({
   projets,
   isLoading = false,
+  showChoropleth = false,
+  arrondissementStats = [],
 }: InvestissementsMapProps) {
   const [mapReady, setMapReady] = useState(false);
 
@@ -146,6 +151,12 @@ export default function InvestissementsMap({
   const preciseCount = geoProjets.filter(p => p.isPrecise).length;
   const approxCount = geoProjets.filter(p => !p.isPrecise).length;
 
+  // Max pour la légende choroplèthe
+  const maxChoroplethValue = useMemo(() => {
+    if (!arrondissementStats.length) return 0;
+    return Math.max(...arrondissementStats.map(s => s.investissementPerCapita || 0));
+  }, [arrondissementStats]);
+
   return (
     <div className="relative w-full h-full min-h-[500px]">
       {/* Loading overlay */}
@@ -173,8 +184,16 @@ export default function InvestissementsMap({
 
         <MapController />
 
-        {/* Marqueurs des projets */}
-        {mapReady && geoProjets.map((projet, index) => {
+        {/* Choroplèthe arrondissements */}
+        {showChoropleth && mapReady && arrondissementStats.length > 0 && (
+          <ChoroplethLayer
+            stats={arrondissementStats}
+            metric="investissements"
+          />
+        )}
+
+        {/* Marqueurs des projets (masqués en mode choroplèthe) */}
+        {!showChoropleth && mapReady && geoProjets.map((projet, index) => {
           const themaLabel = THEMATIQUE_LABELS[projet.thematique as ThematiqueSubvention];
           
           return (
@@ -246,29 +265,38 @@ export default function InvestissementsMap({
         })}
       </MapContainer>
 
-      {/* Légende */}
-      <div className="absolute bottom-4 left-4 bg-slate-900/90 backdrop-blur rounded-lg p-3 z-[1000]">
-        <h4 className="text-xs font-semibold text-slate-300 mb-2">Investissements</h4>
-        <div className="space-y-1.5 text-xs">
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-amber-500 border-2 border-amber-400" />
-            <span className="text-slate-400">
-              Précis ({preciseCount})
-            </span>
+      {/* Légende points */}
+      {!showChoropleth && (
+        <div className="absolute bottom-4 left-4 bg-slate-900/90 backdrop-blur rounded-lg p-3 z-[1000]">
+          <h4 className="text-xs font-semibold text-slate-300 mb-2">Investissements</h4>
+          <div className="space-y-1.5 text-xs">
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-amber-500 border-2 border-amber-400" />
+              <span className="text-slate-400">
+                Précis ({preciseCount})
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-orange-400/50 border border-dashed border-orange-400" />
+              <span className="text-slate-400">
+                Approx. ({approxCount})
+              </span>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-orange-400/50 border border-dashed border-orange-400" />
-            <span className="text-slate-400">
-              Approx. ({approxCount})
-            </span>
+          <div className="mt-3 pt-2 border-t border-slate-700">
+            <p className="text-[10px] text-slate-500">
+              Total: {geoProjets.length} projets
+            </p>
           </div>
         </div>
-        <div className="mt-3 pt-2 border-t border-slate-700">
-          <p className="text-[10px] text-slate-500">
-            Total: {geoProjets.length} projets
-          </p>
+      )}
+
+      {/* Légende choroplèthe */}
+      {showChoropleth && arrondissementStats.length > 0 && (
+        <div className="absolute bottom-4 left-4 z-[1000]">
+          <ChoroplethLegend metric="investissements" maxValue={maxChoroplethValue} />
         </div>
-      </div>
+      )}
     </div>
   );
 }

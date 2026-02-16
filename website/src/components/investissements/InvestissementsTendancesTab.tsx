@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * InvestissementsTendancesTab — Wrapper Travaux pour le composant partagé TendancesTab.
+ * InvestissementsTendancesTab — Wrapper Investissements pour le composant partagé TendancesTab.
  *
  * Source : /public/data/investissement_tendances.json
  * Breakdown unique : Secteur (chapitres M57).

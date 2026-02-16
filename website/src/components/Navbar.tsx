@@ -57,7 +57,7 @@ const navLinks = [
   },
   {
     href: '/investissements',
-    label: 'Travaux',
+    label: 'Investissements',
     icon: NAV_ICONS.investissements,
     description: "Projets d'investissement",
   },
