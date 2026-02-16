@@ -314,18 +314,13 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
             const displayName = isSmallTablet && params.name.length > 12
               ? params.name.substring(0, 11) + '…'
               : params.name;
-            return `${displayName} {chevron|›}\n{small|${formatEuroCompact(value)}}`;
+            return `${displayName}\n{small|${formatEuroCompact(value)}}`;
           },
           rich: {
             small: {
               fontSize: isSmallTablet ? 9 : 10,
               color: '#94a3b8',
               lineHeight: isSmallTablet ? 14 : 16,
-            },
-            chevron: {
-              fontSize: isSmallTablet ? 12 : 14,
-              fontWeight: 700,
-              color: '#60a5fa',
             },
           },
         },
