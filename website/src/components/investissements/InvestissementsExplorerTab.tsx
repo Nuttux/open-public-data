@@ -164,6 +164,8 @@ export default function InvestissementsExplorerTab({
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedArrondissement, setSelectedArrondissement] = useState<number | null>(null);
   const [selectedThematiques, setSelectedThematiques] = useState<string[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const PAGE_SIZE = 50;
 
   // ── Filtering ──
   const filteredProjets = useMemo(() => {
@@ -201,27 +203,35 @@ export default function InvestissementsExplorerTab({
     return count;
   }, [searchTerm, selectedArrondissement, selectedThematiques]);
 
-  const toggleThematique = (t: string) =>
+  const toggleThematique = (t: string) => {
     setSelectedThematiques(prev => prev.includes(t) ? prev.filter(x => x !== t) : [...prev, t]);
+    setCurrentPage(1);
+  };
 
   const resetFilters = () => {
     setSearchTerm('');
     setSelectedArrondissement(null);
     setSelectedThematiques([]);
+    setCurrentPage(1);
   };
 
   // ── Shared filter props ──
   const filterProps = {
     searchTerm,
-    onSearchChange: setSearchTerm,
+    onSearchChange: (v: string) => { setSearchTerm(v); setCurrentPage(1); },
     selectedArrondissement,
-    onArrondissementChange: setSelectedArrondissement,
+    onArrondissementChange: (v: number | null) => { setSelectedArrondissement(v); setCurrentPage(1); },
     selectedThematiques,
     onToggleThematique: toggleThematique,
     projets,
     activeFilterCount,
     onReset: resetFilters,
   };
+
+  // ── Pagination ──
+  const totalPages = Math.ceil(sortedProjets.length / PAGE_SIZE);
+  const startIdx = (currentPage - 1) * PAGE_SIZE;
+  const pageItems = sortedProjets.slice(startIdx, startIdx + PAGE_SIZE);
 
   // ── Content (table or map) ──
   const ContentView = isLoading ? (
@@ -241,13 +251,13 @@ export default function InvestissementsExplorerTab({
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-700/50">
-            {sortedProjets.slice(0, 100).map((p, i) => {
+            {pageItems.map((p, i) => {
               const label = THEMATIQUE_LABELS[p.thematique as ThematiqueSubvention];
               return (
                 <tr key={p.id} className="hover:bg-slate-700/30 transition-colors">
                   <td className="px-2 md:px-4 py-3">
                     <div className="flex items-start gap-2">
-                      <span className="text-slate-500 text-xs w-5 shrink-0">{i + 1}</span>
+                      <span className="text-slate-500 text-xs w-5 shrink-0">{startIdx + i + 1}</span>
                       <div className="min-w-0">
                         <p className="text-xs md:text-sm text-slate-200 line-clamp-2">{p.apTexte}</p>
                         <p className="text-[10px] md:text-xs text-slate-500 mt-1">
@@ -277,9 +287,25 @@ export default function InvestissementsExplorerTab({
           </tbody>
         </table>
       </div>
-      {sortedProjets.length > 100 && (
-        <div className="px-4 py-3 border-t border-slate-700 text-center">
-          <p className="text-sm text-slate-500">100 premiers sur {formatNumber(sortedProjets.length)}</p>
+      {totalPages > 1 && (
+        <div className="px-4 py-3 border-t border-slate-700 flex items-center justify-between">
+          <button
+            onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+            disabled={currentPage === 1}
+            className="text-sm text-slate-400 hover:text-slate-200 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+          >
+            ← Précédent
+          </button>
+          <span className="text-sm text-slate-500">
+            Page {currentPage} / {totalPages} · {formatNumber(sortedProjets.length)} projets
+          </span>
+          <button
+            onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+            disabled={currentPage === totalPages}
+            className="text-sm text-slate-400 hover:text-slate-200 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+          >
+            Suivant →
+          </button>
         </div>
       )}
       {sortedProjets.length === 0 && (

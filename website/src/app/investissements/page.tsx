@@ -113,11 +113,13 @@ function InvestissementsPageInner() {
             title="Travaux"
             description="Projets d'équipements publics : écoles, piscines, voiries, parcs..."
             actions={
-              <YearSelector
-                years={availableYears}
-                selectedYear={selectedYear}
-                onYearChange={setSelectedYear}
-              />
+              activeTab !== 'tendances' ? (
+                <YearSelector
+                  years={availableYears}
+                  selectedYear={selectedYear}
+                  onYearChange={setSelectedYear}
+                />
+              ) : undefined
             }
           />
           <div className="mt-5">

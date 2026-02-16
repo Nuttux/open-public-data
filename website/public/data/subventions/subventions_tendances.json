@@ -1,0 +1,932 @@
+{
+  "generated_at": "2026-02-16",
+  "source": "beneficiaires JSON (pipeline BigQuery)",
+  "note_perimetre": "Top 500 bénéficiaires par année, couvrant >95% du total. 2020-2021 absentes.",
+  "years": [
+    {
+      "year": 2018,
+      "total_montant": 1194024265.0,
+      "nb_subventions": 673,
+      "nb_beneficiaires": 500,
+      "par_thematique": [
+        {
+          "label": "Social - Solidarité",
+          "montant": 393014664.0,
+          "count": 44
+        },
+        {
+          "label": "Urbanisme - Logement",
+          "montant": 165201222.0,
+          "count": 16
+        },
+        {
+          "label": "Culture",
+          "montant": 162913869.0,
+          "count": 32
+        },
+        {
+          "label": "Éducation",
+          "montant": 150277052.0,
+          "count": 85
+        },
+        {
+          "label": "Transport",
+          "montant": 73509311.0,
+          "count": 4
+        },
+        {
+          "label": "Sport",
+          "montant": 51521041.0,
+          "count": 104
+        },
+        {
+          "label": "Logement",
+          "montant": 41553217.0,
+          "count": 22
+        },
+        {
+          "label": "Administration",
+          "montant": 41526274.0,
+          "count": 33
+        },
+        {
+          "label": "Social - Petite enfance",
+          "montant": 30781447.0,
+          "count": 36
+        },
+        {
+          "label": "Social",
+          "montant": 29013257.0,
+          "count": 27
+        },
+        {
+          "label": "Culture & Sport",
+          "montant": 22054337.0,
+          "count": 33
+        },
+        {
+          "label": "Économie",
+          "montant": 20157505.0,
+          "count": 30
+        },
+        {
+          "label": "Autre",
+          "montant": 7016008.0,
+          "count": 10
+        },
+        {
+          "label": "Environnement",
+          "montant": 2576215.0,
+          "count": 10
+        },
+        {
+          "label": "Santé",
+          "montant": 2227346.0,
+          "count": 10
+        },
+        {
+          "label": "International",
+          "montant": 681500.0,
+          "count": 4
+        }
+      ],
+      "par_direction": [
+        {
+          "label": "Non renseignée",
+          "montant": 1099184034.0,
+          "count": 383
+        },
+        {
+          "label": "DAC",
+          "montant": 34757332.0,
+          "count": 19
+        },
+        {
+          "label": "DFPE",
+          "montant": 23981945.0,
+          "count": 33
+        },
+        {
+          "label": "DAE",
+          "montant": 15162081.0,
+          "count": 19
+        },
+        {
+          "label": "DASES",
+          "montant": 10996579.0,
+          "count": 29
+        },
+        {
+          "label": "DU",
+          "montant": 6295700.0,
+          "count": 1
+        },
+        {
+          "label": "DJS",
+          "montant": 1345500.0,
+          "count": 4
+        },
+        {
+          "label": "DDCT",
+          "montant": 757601.0,
+          "count": 3
+        },
+        {
+          "label": "DEVE",
+          "montant": 597500.0,
+          "count": 3
+        },
+        {
+          "label": "DGRI",
+          "montant": 495000.0,
+          "count": 3
+        },
+        {
+          "label": "DPSP",
+          "montant": 196500.0,
+          "count": 1
+        },
+        {
+          "label": "SG",
+          "montant": 160000.0,
+          "count": 1
+        },
+        {
+          "label": "DASCO",
+          "montant": 94493.0,
+          "count": 1
+        }
+      ],
+      "par_type_organisme": [
+        {
+          "label": "Établissements publics",
+          "montant": 675895531.0,
+          "count": 99
+        },
+        {
+          "label": "Associations",
+          "montant": 215224186.0,
+          "count": 307
+        },
+        {
+          "label": "Entreprises",
+          "montant": 191844415.0,
+          "count": 43
+        },
+        {
+          "label": "Autres privés",
+          "montant": 111060133.0,
+          "count": 51
+        }
+      ]
+    },
+    {
+      "year": 2019,
+      "total_montant": 1251464709.0,
+      "nb_subventions": 500,
+      "nb_beneficiaires": 500,
+      "par_thematique": [
+        {
+          "label": "Social - Solidarité",
+          "montant": 397483321.0,
+          "count": 43
+        },
+        {
+          "label": "Urbanisme - Logement",
+          "montant": 214222392.0,
+          "count": 15
+        },
+        {
+          "label": "Culture",
+          "montant": 174296672.0,
+          "count": 40
+        },
+        {
+          "label": "Éducation",
+          "montant": 133154312.0,
+          "count": 94
+        },
+        {
+          "label": "Transport",
+          "montant": 76751493.0,
+          "count": 3
+        },
+        {
+          "label": "Administration",
+          "montant": 51704172.0,
+          "count": 35
+        },
+        {
+          "label": "Logement",
+          "montant": 50080810.0,
+          "count": 19
+        },
+        {
+          "label": "Sport",
+          "montant": 46502481.0,
+          "count": 102
+        },
+        {
+          "label": "Social - Petite enfance",
+          "montant": 33694949.0,
+          "count": 38
+        },
+        {
+          "label": "Social",
+          "montant": 29134434.0,
+          "count": 27
+        },
+        {
+          "label": "Économie",
+          "montant": 20241770.0,
+          "count": 25
+        },
+        {
+          "label": "Culture & Sport",
+          "montant": 13430661.0,
+          "count": 27
+        },
+        {
+          "label": "Autre",
+          "montant": 5470175.0,
+          "count": 12
+        },
+        {
+          "label": "Santé",
+          "montant": 2827346.0,
+          "count": 10
+        },
+        {
+          "label": "Environnement",
+          "montant": 1111205.0,
+          "count": 3
+        },
+        {
+          "label": "International",
+          "montant": 1100755.0,
+          "count": 6
+        },
+        {
+          "label": "Sécurité",
+          "montant": 257761.0,
+          "count": 1
+        }
+      ],
+      "par_direction": [
+        {
+          "label": "Non renseignée",
+          "montant": 1129223918.0,
+          "count": 364
+        },
+        {
+          "label": "DAC",
+          "montant": 50235530.0,
+          "count": 28
+        },
+        {
+          "label": "DFPE",
+          "montant": 38657921.0,
+          "count": 38
+        },
+        {
+          "label": "DAE",
+          "montant": 17629538.0,
+          "count": 25
+        },
+        {
+          "label": "DASES",
+          "montant": 11778618.0,
+          "count": 29
+        },
+        {
+          "label": "DJS",
+          "montant": 1967000.0,
+          "count": 6
+        },
+        {
+          "label": "DDCT",
+          "montant": 911344.0,
+          "count": 3
+        },
+        {
+          "label": "DGRI",
+          "montant": 752500.0,
+          "count": 4
+        },
+        {
+          "label": "DASCO",
+          "montant": 188340.0,
+          "count": 2
+        },
+        {
+          "label": "DPSP",
+          "montant": 120000.0,
+          "count": 1
+        }
+      ],
+      "par_type_organisme": [
+        {
+          "label": "Établissements publics",
+          "montant": 609068768.0,
+          "count": 78
+        },
+        {
+          "label": "Entreprises",
+          "montant": 302248125.0,
+          "count": 74
+        },
+        {
+          "label": "Associations",
+          "montant": 220715090.0,
+          "count": 314
+        },
+        {
+          "label": "Autres",
+          "montant": 119333642.0,
+          "count": 33
+        },
+        {
+          "label": "Personnes physiques",
+          "montant": 99084.0,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "year": 2022,
+      "total_montant": 1119803523.0,
+      "nb_subventions": 500,
+      "nb_beneficiaires": 500,
+      "par_thematique": [
+        {
+          "label": "Social",
+          "montant": 399969519.0,
+          "count": 37
+        },
+        {
+          "label": "Urbanisme - Logement",
+          "montant": 162643465.0,
+          "count": 13
+        },
+        {
+          "label": "Culture",
+          "montant": 140087226.0,
+          "count": 41
+        },
+        {
+          "label": "Éducation",
+          "montant": 121175855.0,
+          "count": 55
+        },
+        {
+          "label": "Administration",
+          "montant": 58900117.0,
+          "count": 36
+        },
+        {
+          "label": "Sport",
+          "montant": 48639478.0,
+          "count": 96
+        },
+        {
+          "label": "Transport",
+          "montant": 41208427.0,
+          "count": 7
+        },
+        {
+          "label": "Logement",
+          "montant": 34247596.0,
+          "count": 21
+        },
+        {
+          "label": "Social - Petite enfance",
+          "montant": 32792612.0,
+          "count": 40
+        },
+        {
+          "label": "Social - Solidarité",
+          "montant": 24782318.0,
+          "count": 35
+        },
+        {
+          "label": "Économie",
+          "montant": 20352894.0,
+          "count": 40
+        },
+        {
+          "label": "Culture & Sport",
+          "montant": 18010825.0,
+          "count": 33
+        },
+        {
+          "label": "Autre",
+          "montant": 11414443.0,
+          "count": 20
+        },
+        {
+          "label": "Environnement",
+          "montant": 2426713.0,
+          "count": 8
+        },
+        {
+          "label": "Santé",
+          "montant": 2190380.0,
+          "count": 13
+        },
+        {
+          "label": "International",
+          "montant": 566755.0,
+          "count": 4
+        },
+        {
+          "label": "Sécurité",
+          "montant": 394900.0,
+          "count": 1
+        }
+      ],
+      "par_direction": [
+        {
+          "label": "Non renseignée",
+          "montant": 996986080.0,
+          "count": 355
+        },
+        {
+          "label": "DAC",
+          "montant": 49264396.0,
+          "count": 29
+        },
+        {
+          "label": "DFPE",
+          "montant": 34356031.0,
+          "count": 35
+        },
+        {
+          "label": "DAE",
+          "montant": 22313117.0,
+          "count": 37
+        },
+        {
+          "label": "DSOL",
+          "montant": 8572055.0,
+          "count": 21
+        },
+        {
+          "label": "DSP",
+          "montant": 4480953.0,
+          "count": 5
+        },
+        {
+          "label": "DJS",
+          "montant": 1258850.0,
+          "count": 8
+        },
+        {
+          "label": "DLH",
+          "montant": 863136.0,
+          "count": 1
+        },
+        {
+          "label": "DDCT",
+          "montant": 672022.0,
+          "count": 3
+        },
+        {
+          "label": "DGRI",
+          "montant": 582000.0,
+          "count": 3
+        },
+        {
+          "label": "DILT",
+          "montant": 248203.0,
+          "count": 1
+        },
+        {
+          "label": "DASES",
+          "montant": 107000.0,
+          "count": 1
+        },
+        {
+          "label": "DASCO",
+          "montant": 99680.0,
+          "count": 1
+        }
+      ],
+      "par_type_organisme": [
+        {
+          "label": "Établissements publics",
+          "montant": 702311622.0,
+          "count": 61
+        },
+        {
+          "label": "Associations",
+          "montant": 219970832.0,
+          "count": 345
+        },
+        {
+          "label": "Entreprises",
+          "montant": 191332955.0,
+          "count": 88
+        },
+        {
+          "label": "Personnes physiques",
+          "montant": 4838900.0,
+          "count": 2
+        },
+        {
+          "label": "Autres",
+          "montant": 1349214.0,
+          "count": 4
+        }
+      ]
+    },
+    {
+      "year": 2023,
+      "total_montant": 1153543206.0,
+      "nb_subventions": 500,
+      "nb_beneficiaires": 500,
+      "par_thematique": [
+        {
+          "label": "Social - Solidarité",
+          "montant": 435758004.0,
+          "count": 45
+        },
+        {
+          "label": "Urbanisme - Logement",
+          "montant": 145924908.0,
+          "count": 13
+        },
+        {
+          "label": "Éducation",
+          "montant": 144197424.0,
+          "count": 55
+        },
+        {
+          "label": "Culture",
+          "montant": 139769088.0,
+          "count": 42
+        },
+        {
+          "label": "Administration",
+          "montant": 62874533.0,
+          "count": 47
+        },
+        {
+          "label": "Transport",
+          "montant": 40840657.0,
+          "count": 5
+        },
+        {
+          "label": "Social",
+          "montant": 40713510.0,
+          "count": 56
+        },
+        {
+          "label": "Culture & Sport",
+          "montant": 34949473.0,
+          "count": 39
+        },
+        {
+          "label": "Logement",
+          "montant": 30992827.0,
+          "count": 18
+        },
+        {
+          "label": "Social - Petite enfance",
+          "montant": 30809139.0,
+          "count": 56
+        },
+        {
+          "label": "Économie",
+          "montant": 13828852.0,
+          "count": 32
+        },
+        {
+          "label": "Sport",
+          "montant": 12858773.0,
+          "count": 41
+        },
+        {
+          "label": "Autre",
+          "montant": 7416838.0,
+          "count": 15
+        },
+        {
+          "label": "Environnement",
+          "montant": 6773526.0,
+          "count": 17
+        },
+        {
+          "label": "International",
+          "montant": 2588000.0,
+          "count": 4
+        },
+        {
+          "label": "Santé",
+          "montant": 2141254.0,
+          "count": 13
+        },
+        {
+          "label": "Sécurité",
+          "montant": 1106400.0,
+          "count": 2
+        }
+      ],
+      "par_direction": [
+        {
+          "label": "Non renseignée",
+          "montant": 1043129052.0,
+          "count": 346
+        },
+        {
+          "label": "DAC",
+          "montant": 47947688.0,
+          "count": 25
+        },
+        {
+          "label": "DFPE",
+          "montant": 28726253.0,
+          "count": 46
+        },
+        {
+          "label": "DAE",
+          "montant": 17341459.0,
+          "count": 29
+        },
+        {
+          "label": "DSOL",
+          "montant": 10006639.0,
+          "count": 25
+        },
+        {
+          "label": "DJS",
+          "montant": 1516250.0,
+          "count": 8
+        },
+        {
+          "label": "DDCT",
+          "montant": 1271986.0,
+          "count": 6
+        },
+        {
+          "label": "DLH",
+          "montant": 799000.0,
+          "count": 1
+        },
+        {
+          "label": "DEVE",
+          "montant": 696596.0,
+          "count": 3
+        },
+        {
+          "label": "DSP",
+          "montant": 604659.0,
+          "count": 4
+        },
+        {
+          "label": "DGRI",
+          "montant": 575000.0,
+          "count": 3
+        },
+        {
+          "label": "DILT",
+          "montant": 419554.0,
+          "count": 1
+        },
+        {
+          "label": "DPE",
+          "montant": 328150.0,
+          "count": 1
+        },
+        {
+          "label": "DASCO",
+          "montant": 180920.0,
+          "count": 2
+        }
+      ],
+      "par_type_organisme": [
+        {
+          "label": "Établissements publics",
+          "montant": 695252784.0,
+          "count": 54
+        },
+        {
+          "label": "Associations",
+          "montant": 239720194.0,
+          "count": 355
+        },
+        {
+          "label": "Entreprises",
+          "montant": 181814428.0,
+          "count": 79
+        },
+        {
+          "label": "Autres",
+          "montant": 36226418.0,
+          "count": 11
+        },
+        {
+          "label": "Personnes physiques",
+          "montant": 529382.0,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "total_montant": 1296631351.0,
+      "nb_subventions": 500,
+      "nb_beneficiaires": 500,
+      "par_thematique": [
+        {
+          "label": "Social - Solidarité",
+          "montant": 448182503.0,
+          "count": 37
+        },
+        {
+          "label": "Éducation",
+          "montant": 170924341.0,
+          "count": 53
+        },
+        {
+          "label": "Culture",
+          "montant": 153237255.0,
+          "count": 43
+        },
+        {
+          "label": "Urbanisme - Logement",
+          "montant": 136049010.0,
+          "count": 14
+        },
+        {
+          "label": "Transport",
+          "montant": 80988842.0,
+          "count": 8
+        },
+        {
+          "label": "Administration",
+          "montant": 73075818.0,
+          "count": 41
+        },
+        {
+          "label": "Sport",
+          "montant": 56525390.0,
+          "count": 86
+        },
+        {
+          "label": "Logement",
+          "montant": 48443919.0,
+          "count": 19
+        },
+        {
+          "label": "Social - Petite enfance",
+          "montant": 40083268.0,
+          "count": 47
+        },
+        {
+          "label": "Social",
+          "montant": 33352861.0,
+          "count": 41
+        },
+        {
+          "label": "Économie",
+          "montant": 18013067.0,
+          "count": 39
+        },
+        {
+          "label": "Culture & Sport",
+          "montant": 16682376.0,
+          "count": 25
+        },
+        {
+          "label": "Environnement",
+          "montant": 7703515.0,
+          "count": 14
+        },
+        {
+          "label": "Autre",
+          "montant": 6858065.0,
+          "count": 13
+        },
+        {
+          "label": "International",
+          "montant": 4010943.0,
+          "count": 8
+        },
+        {
+          "label": "Santé",
+          "montant": 2243778.0,
+          "count": 11
+        },
+        {
+          "label": "Sécurité",
+          "montant": 256400.0,
+          "count": 1
+        }
+      ],
+      "par_direction": [
+        {
+          "label": "Non renseignée",
+          "montant": 1155194421.0,
+          "count": 341
+        },
+        {
+          "label": "DAC",
+          "montant": 49092081.0,
+          "count": 29
+        },
+        {
+          "label": "DFPE",
+          "montant": 40514230.0,
+          "count": 39
+        },
+        {
+          "label": "DAE",
+          "montant": 22010723.0,
+          "count": 34
+        },
+        {
+          "label": "DSOL",
+          "montant": 16872831.0,
+          "count": 23
+        },
+        {
+          "label": "DSP",
+          "montant": 4878195.0,
+          "count": 3
+        },
+        {
+          "label": "DDCT",
+          "montant": 2713866.0,
+          "count": 9
+        },
+        {
+          "label": "DJS",
+          "montant": 1431400.0,
+          "count": 7
+        },
+        {
+          "label": "DEVE",
+          "montant": 1262139.0,
+          "count": 4
+        },
+        {
+          "label": "DLH",
+          "montant": 799000.0,
+          "count": 1
+        },
+        {
+          "label": "DGRI",
+          "montant": 729000.0,
+          "count": 4
+        },
+        {
+          "label": "SG",
+          "montant": 300000.0,
+          "count": 1
+        },
+        {
+          "label": "DAJ",
+          "montant": 296750.0,
+          "count": 1
+        },
+        {
+          "label": "DILT",
+          "montant": 223067.0,
+          "count": 1
+        },
+        {
+          "label": "DASCO",
+          "montant": 197648.0,
+          "count": 2
+        },
+        {
+          "label": "DPE",
+          "montant": 116000.0,
+          "count": 1
+        }
+      ],
+      "par_type_organisme": [
+        {
+          "label": "Établissements publics",
+          "montant": 830838412.0,
+          "count": 64
+        },
+        {
+          "label": "Associations",
+          "montant": 241411084.0,
+          "count": 340
+        },
+        {
+          "label": "Entreprises",
+          "montant": 141896028.0,
+          "count": 20
+        },
+        {
+          "label": "Autres",
+          "montant": 82485827.0,
+          "count": 76
+        }
+      ]
+    }
+  ]
+}

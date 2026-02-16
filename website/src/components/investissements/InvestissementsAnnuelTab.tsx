@@ -384,8 +384,10 @@ export default function InvestissementsAnnuelTab({
         )}
       </div>
 
-      {/* Table top projets (filtrée) */}
-      <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 overflow-hidden">
+      {/* Table top projets (filtrée) — avec animation slide-in */}
+      <div
+        className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 overflow-hidden transition-all duration-500 ease-out"
+      >
         <div className="px-4 py-3 border-b border-slate-700 flex items-center justify-between">
           <h3 className="text-lg font-semibold text-slate-100">
             {selectedGroup
