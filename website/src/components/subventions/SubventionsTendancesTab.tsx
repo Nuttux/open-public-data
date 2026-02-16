@@ -10,7 +10,7 @@
 import TendancesTab from '@/components/shared/TendancesTab';
 import type { TendancesYear, BreakdownOption } from '@/components/shared/TendancesTab';
 import { getThematiqueColor, PALETTE } from '@/lib/colors';
-import { formatNumber } from '@/lib/formatters';
+import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 
 // ─── Config ──────────────────────────────────────────────────────────────────
 
@@ -39,7 +39,6 @@ const directionColorMap: Record<string, string> = {};
 function getGroupColor(label: string, dim: string): string {
   if (dim === 'thematique') return getThematiqueColor(label);
   if (dim === 'type_organisme') return TYPE_ORGANISME_COLORS[label] || PALETTE.gray;
-  // direction — stable color per label
   if (!directionColorMap[label]) {
     directionColorMap[label] = DIRECTION_PALETTE[Object.keys(directionColorMap).length % DIRECTION_PALETTE.length];
   }
@@ -68,13 +67,19 @@ function parseData(json: unknown): TendancesYear[] {
   }));
 }
 
-// ─── KPI4 label helpers ──────────────────────────────────────────────────────
+// ─── KPI helpers ─────────────────────────────────────────────────────────────
 
 const KPI4_LABELS: Record<string, string> = {
   thematique: '1re thématique',
   direction: '1re direction',
   type_organisme: '1er type',
 };
+
+function formatVariationDiff(value: number): string {
+  const m = value / 1_000_000;
+  const s = value >= 0 ? '+' : '';
+  return Math.abs(m) >= 1000 ? `${s}${(m / 1000).toFixed(1)} Md€` : `${s}${m.toFixed(0)} M€`;
+}
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
@@ -84,12 +89,19 @@ export default function SubventionsTendancesTab() {
       dataUrl="/data/subventions/subventions_tendances.json"
       parseData={parseData}
       breakdowns={BREAKDOWNS}
-      getGroupColor={getGroupColor}
+      getGroupColor={(label, dim) => getGroupColor(label, dim)}
       theme="purple"
+      formatValue={formatEuroCompact}
+      tooltipHeader={(year, total) => `${year} — ${formatEuroCompact(total)}`}
+      formatVariationDiff={formatVariationDiff}
       title="Tendances des subventions"
       kpi1Label={(year) => `Subventions ${year}`}
       kpi1Sub={(year) => `${formatNumber(year.subCount || 0)} subventions`}
-      kpi4Label={(dim) => KPI4_LABELS[dim] || '1er groupe'}
+      kpi4={(ctx) => ({
+        label: KPI4_LABELS[ctx.breakdown] || '1er groupe',
+        value: ctx.topName,
+        sub: `${formatEuroCompact(ctx.topValue)} (${ctx.topPct.toFixed(0)}%)`,
+      })}
       chartTitle={(dim) => `Subventions par ${dim}`}
       variationTitle={(dim) => `Évolution par ${dim}`}
       variationSubtitle={(dim) => `Quelles ${dim}s ont le plus évolué`}

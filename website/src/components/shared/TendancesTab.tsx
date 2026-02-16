@@ -3,20 +3,21 @@
 /**
  * TendancesTab — Composant partagé pour les onglets "Tendances".
  *
- * Utilisé par Subventions, Travaux (et potentiellement Logements).
- * Chaque page passe sa configuration (breakdowns, couleurs, textes)
- * et une fonction parseData pour normaliser son JSON.
+ * Utilisé par Subventions, Travaux et Logements.
+ * Chaque page passe sa configuration (breakdowns, couleurs, formatters, textes)
+ * et soit un dataUrl (fetch) soit des data directes.
  *
  * Pattern :
- *   1. Stacked bar chart par dimension sélectionnée
- *   2. Horizontal bar ranking : variation entre première et dernière année
- *   3. 4 KPI cards
+ *   1. Breakdown selector + Year range selector
+ *   2. 4 KPI cards (KPI3 et KPI4 customisables)
+ *   3. Stacked bar chart par dimension sélectionnée
+ *   4. Horizontal bar ranking : variation entre première et dernière année
+ *   5. Data quality note
  */
 
 import { useState, useEffect, useMemo } from 'react';
 import ReactECharts from 'echarts-for-react';
 import type { EChartsOption } from 'echarts';
-import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { PALETTE } from '@/lib/colors';
 import { useIsMobile } from '@/lib/hooks/useIsMobile';
 import YearRangeSelector from '@/components/YearRangeSelector';
@@ -38,9 +39,16 @@ export interface BreakdownOption {
   icon: string;
 }
 
+export interface KpiCard {
+  label: string;
+  value: string;
+  valueClass?: string;
+  sub: string;
+}
+
 // ─── Theme ───────────────────────────────────────────────────────────────────
 
-type ThemeColor = 'purple' | 'amber';
+type ThemeColor = 'purple' | 'amber' | 'emerald';
 
 const THEME = {
   purple: {
@@ -55,86 +63,119 @@ const THEME = {
     activeBtn: 'bg-amber-500/20 text-amber-300 shadow-sm',
     variationBar: 'bg-rose-500',
   },
+  emerald: {
+    spinner: 'border-emerald-500',
+    kpi1Value: 'text-emerald-400',
+    activeBtn: 'bg-emerald-500/20 text-emerald-300 shadow-sm',
+    variationBar: 'bg-emerald-500',
+  },
 } as const;
 
 // ─── Props ───────────────────────────────────────────────────────────────────
 
-export interface TendancesTabProps {
-  /** URL to fetch the tendances JSON */
-  dataUrl: string;
-  /** Transform raw JSON into normalized year data */
-  parseData: (json: unknown) => TendancesYear[];
-  /** Available breakdown dimensions */
-  breakdowns: BreakdownOption[];
-  /** Color for a group label in a given dimension */
-  getGroupColor: (label: string, dim: string) => string;
-  /** Theme accent color */
-  theme: ThemeColor;
-  /** Header title, e.g. "Tendances des subventions" */
-  title: string;
-  /** First KPI label, e.g. "Subventions 2024" — receives latest year */
-  kpi1Label: (year: number) => string;
-  /** First KPI sub-text */
-  kpi1Sub?: (year: TendancesYear) => string;
-  /** Fourth KPI label, adapts to breakdown dim — e.g. "1re thématique" */
-  kpi4Label: (dim: string) => string;
-  /** Chart section title — e.g. "Subventions par thématique" */
-  chartTitle: (dimLabel: string) => string;
-  /** Variation section title */
-  variationTitle: (dimLabel: string) => string;
-  /** Variation section subtitle */
-  variationSubtitle: (dimLabel: string) => string;
-  /** Y-axis formatter */
-  yAxisFormatter: (v: number) => string;
-  /** Source note below chart */
-  sourceNote: string;
-  /** Data quality note items (JSX) */
-  qualityNotes: React.ReactNode;
+interface KpiContext {
+  filteredYears: TendancesYear[];
+  earliest: TendancesYear;
+  latest: TendancesYear;
+  breakdown: string;
+  topName: string;
+  topValue: number;
+  topPct: number;
 }
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
+export interface TendancesTabProps {
+  // Data — provide EITHER dataUrl+parseData (fetch) OR data (direct)
+  dataUrl?: string;
+  parseData?: (json: unknown) => TendancesYear[];
+  data?: TendancesYear[];
 
-function formatVariation(value: number): string {
-  const m = value / 1_000_000;
-  const s = value >= 0 ? '+' : '';
-  return Math.abs(m) >= 1000 ? `${s}${(m / 1000).toFixed(1)} Md€` : `${s}${m.toFixed(0)} M€`;
+  // Breakdowns
+  breakdowns: BreakdownOption[];
+  getGroupColor: (label: string, dim: string, idx: number) => string;
+  /** Limit groups shown per dimension (return undefined = no limit) */
+  groupLimit?: (dim: string) => number | undefined;
+
+  // Theme
+  theme: ThemeColor;
+
+  // Value formatting
+  /** Format a value for display (tooltip items, KPI1 default) */
+  formatValue: (v: number) => string;
+  /** Tooltip header line, e.g. "2024 — 1,2 Md€" */
+  tooltipHeader: (year: number, total: number) => string;
+  /** Variation bar label, e.g. "+120 M€" */
+  formatVariationDiff: (diff: number) => string;
+  /** Show % alongside variation diff? (default true) */
+  showVariationPct?: boolean;
+  /** Variation tooltip value formatter (for start/end year values) */
+  formatVariationTooltipValue?: (v: number) => string;
+
+  // Titles
+  title: string;
+  chartTitle: (dimLabel: string) => string;
+  variationTitle: (dimLabel: string) => string;
+  variationSubtitle: (dimLabel: string) => string;
+  yAxisFormatter: (v: number) => string;
+  sourceNote: string;
+  qualityNotes: React.ReactNode;
+
+  // KPIs
+  kpi1Label: (year: number) => string;
+  kpi1Sub?: (year: TendancesYear) => string;
+  /** Override KPI3 (default: period evolution %) */
+  kpi3?: (ctx: KpiContext) => KpiCard;
+  /** Override KPI4 (default: top group from breakdown) */
+  kpi4?: (ctx: KpiContext) => KpiCard;
 }
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function TendancesTab({
-  dataUrl, parseData, breakdowns, getGroupColor, theme,
-  title, kpi1Label, kpi1Sub, kpi4Label,
-  chartTitle, variationTitle, variationSubtitle,
+  dataUrl, parseData, data: directData,
+  breakdowns, getGroupColor, groupLimit,
+  theme,
+  formatValue, tooltipHeader, formatVariationDiff,
+  showVariationPct = true, formatVariationTooltipValue,
+  title, chartTitle, variationTitle, variationSubtitle,
   yAxisFormatter, sourceNote, qualityNotes,
+  kpi1Label, kpi1Sub, kpi3, kpi4,
 }: TendancesTabProps) {
-  const [data, setData] = useState<TendancesYear[]>([]);
+  const [fetchedData, setFetchedData] = useState<TendancesYear[]>([]);
   const [startYear, setStartYear] = useState(2018);
   const [endYear, setEndYear] = useState(2024);
   const [breakdown, setBreakdown] = useState(breakdowns[0].id);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(!directData);
   const [error, setError] = useState<string | null>(null);
   const isMobile = useIsMobile();
   const t = THEME[theme];
 
+  // Use direct data or fetched data
+  const data = directData || fetchedData;
+
+  // Fetch data if dataUrl is provided (skip if direct data)
   useEffect(() => {
+    if (directData) return;
+    if (!dataUrl || !parseData) return;
     (async () => {
       try {
         const res = await fetch(dataUrl);
         if (!res.ok) throw new Error('Fichier non trouvé');
         const json = await res.json();
-        const years = parseData(json);
-        setData(years);
-        if (years.length >= 2) {
-          const sorted = [...years].sort((a, b) => a.year - b.year);
-          setStartYear(sorted[0].year);
-          setEndYear(sorted[sorted.length - 1].year);
-        }
+        setFetchedData(parseData(json));
       } catch (err) { console.error(err); setError('Données de tendances non disponibles'); }
       finally { setIsLoading(false); }
     })();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dataUrl]);
+  }, [dataUrl, !!directData]);
+
+  // Init year range from data
+  useEffect(() => {
+    if (data.length >= 2) {
+      const sorted = [...data].sort((a, b) => a.year - b.year);
+      setStartYear(sorted[0].year);
+      setEndYear(sorted[sorted.length - 1].year);
+    }
+  }, [data]);
 
   const availableYears = useMemo(() => data.map(y => y.year).sort((a, b) => a - b), [data]);
   const filteredYears = useMemo(() => data.filter(y => y.year >= startYear && y.year <= endYear).sort((a, b) => a.year - b.year), [data, startYear, endYear]);
@@ -148,17 +189,19 @@ export default function TendancesTab({
         totals[g.label] = (totals[g.label] || 0) + g.value;
       }
     }
-    return Object.entries(totals).sort((a, b) => b[1] - a[1]).map(([l]) => l);
-  }, [filteredYears, breakdown]);
+    const all = Object.entries(totals).sort((a, b) => b[1] - a[1]).map(([l]) => l);
+    const limit = groupLimit?.(breakdown);
+    return limit ? all.slice(0, limit) : all;
+  }, [filteredYears, breakdown, groupLimit]);
 
   // ── Stacked bar chart ──
   const chartOption = useMemo((): EChartsOption | null => {
     if (filteredYears.length === 0 || groupsOrdered.length === 0) return null;
     const years = filteredYears.map(y => y.year.toString());
-    const series = groupsOrdered.map((label) => ({
+    const series = groupsOrdered.map((label, idx) => ({
       name: label, type: 'bar' as const, stack: 'main', barMaxWidth: isMobile ? 40 : 60,
       emphasis: { focus: 'series' as const },
-      itemStyle: { color: getGroupColor(label, breakdown), borderRadius: 0 },
+      itemStyle: { color: getGroupColor(label, breakdown, idx), borderRadius: 0 },
       data: filteredYears.map(y => {
         let v = 0;
         for (const g of (y.groups[breakdown] || [])) if (g.label === label) v += g.value;
@@ -174,11 +217,11 @@ export default function TendancesTab({
           if (!items?.length) return '';
           const yd = filteredYears[items[0].dataIndex];
           const total = yd?.total || 0;
-          let h = `<div style="font-weight:600;margin-bottom:6px">${yd?.year} — ${formatEuroCompact(total)}</div>`;
+          let h = `<div style="font-weight:600;margin-bottom:6px">${tooltipHeader(yd?.year, total)}</div>`;
           for (const it of [...items].sort((a, b) => (b.value || 0) - (a.value || 0))) {
             if (it.value > 0) {
               const pct = total > 0 ? ((it.value / total) * 100).toFixed(1) : '0';
-              h += `<div style="display:flex;gap:6px;align-items:center;margin:2px 0"><span style="width:8px;height:8px;border-radius:2px;background:${it.color};flex-shrink:0"></span><span style="flex:1">${it.seriesName}</span><span style="font-weight:500">${formatEuroCompact(it.value)}</span><span style="color:#94a3b8;font-size:11px">(${pct}%)</span></div>`;
+              h += `<div style="display:flex;gap:6px;align-items:center;margin:2px 0"><span style="width:8px;height:8px;border-radius:2px;background:${it.color};flex-shrink:0"></span><span style="flex:1">${it.seriesName}</span><span style="font-weight:500">${formatValue(it.value)}</span><span style="color:#94a3b8;font-size:11px">(${pct}%)</span></div>`;
             }
           }
           return h;
@@ -190,10 +233,10 @@ export default function TendancesTab({
       yAxis: { type: 'value', axisLabel: { color: '#64748b', fontSize: 11, formatter: yAxisFormatter }, splitLine: { lineStyle: { color: 'rgba(148,163,184,0.08)' } } },
       series,
     };
-  }, [filteredYears, groupsOrdered, isMobile, breakdown, getGroupColor, yAxisFormatter]);
+  }, [filteredYears, groupsOrdered, isMobile, breakdown, getGroupColor, yAxisFormatter, formatValue, tooltipHeader]);
 
   // ── KPIs ──
-  const kpis = useMemo(() => {
+  const kpiCtx = useMemo(() => {
     if (filteredYears.length < 2) return null;
     const latest = filteredYears[filteredYears.length - 1];
     const earliest = filteredYears[0];
@@ -206,10 +249,10 @@ export default function TendancesTab({
       latestGroups[0]
     );
     return {
-      latest, earliest,
-      yoyPct, periodPct,
+      latest, earliest, prev, yoyPct, periodPct,
+      filteredYears, breakdown,
       topName: topGroup?.label || '',
-      topMontant: topGroup?.value || 0,
+      topValue: topGroup?.value || 0,
       topPct: latest.total > 0 ? (topGroup?.value || 0) / latest.total * 100 : 0,
     };
   }, [filteredYears, breakdown]);
@@ -234,6 +277,7 @@ export default function TendancesTab({
   }, [filteredYears, groupsOrdered, breakdown]);
 
   // ── Variation chart option ──
+  const fmtVarTooltipVal = formatVariationTooltipValue || formatValue;
   const variationChartOption = useMemo((): EChartsOption | null => {
     if (variationItems.length === 0) return null;
     const cats = variationItems.map(d => d.label);
@@ -251,7 +295,7 @@ export default function TendancesTab({
           if (!a?.length) return '';
           const it = variationItems[a[0].dataIndex];
           const c = it.diff >= 0 ? PALETTE.emerald : PALETTE.red;
-          return `<div style="font-weight:600;margin-bottom:6px">${it.label}</div><div style="display:flex;justify-content:space-between;gap:20px"><span>${startYear} :</span><span>${formatEuroCompact(it.earliestVal)}</span></div><div style="display:flex;justify-content:space-between;gap:20px"><span>${endYear} :</span><span>${formatEuroCompact(it.latestVal)}</span></div><div style="border-top:1px solid rgba(148,163,184,0.3);margin-top:6px;padding-top:6px"><span style="color:${c};font-weight:600">${formatVariation(it.diff)} (${it.diffPct >= 0 ? '+' : ''}${it.diffPct.toFixed(1)}%)</span></div>`;
+          return `<div style="font-weight:600;margin-bottom:6px">${it.label}</div><div style="display:flex;justify-content:space-between;gap:20px"><span>${startYear} :</span><span>${fmtVarTooltipVal(it.earliestVal)}</span></div><div style="display:flex;justify-content:space-between;gap:20px"><span>${endYear} :</span><span>${fmtVarTooltipVal(it.latestVal)}</span></div><div style="border-top:1px solid rgba(148,163,184,0.3);margin-top:6px;padding-top:6px"><span style="color:${c};font-weight:600">${formatVariationDiff(it.diff)}${showVariationPct ? ` (${it.diffPct >= 0 ? '+' : ''}${it.diffPct.toFixed(1)}%)` : ''}</span></div>`;
         },
       },
       grid: { left: isMobile ? '5%' : '3%', right: isMobile ? '18%' : '14%', top: 5, bottom: 5, containLabel: true },
@@ -273,18 +317,34 @@ export default function TendancesTab({
           formatter: (pr) => {
             const p = pr as { dataIndex: number; value: number };
             const pct = pcts[p.dataIndex];
-            return isMobile
-              ? `{a|${formatVariation(p.value)}}`
-              : `{a|${formatVariation(p.value)}} {b|(${pct >= 0 ? '+' : ''}${pct.toFixed(1)}%)}`;
+            if (!showVariationPct || isMobile) return `{a|${formatVariationDiff(p.value)}}`;
+            return `{a|${formatVariationDiff(p.value)}} {b|(${pct >= 0 ? '+' : ''}${pct.toFixed(1)}%)}`;
           },
           rich: { a: { color: '#e2e8f0', fontSize: isMobile ? 10 : 11, fontWeight: 500 }, b: { color: '#64748b', fontSize: isMobile ? 9 : 10 } },
         },
       }],
       animation: true, animationDuration: 600, animationEasing: 'cubicOut',
     };
-  }, [variationItems, startYear, endYear, isMobile]);
+  }, [variationItems, startYear, endYear, isMobile, formatVariationDiff, fmtVarTooltipVal, showVariationPct]);
 
   const variationChartHeight = useMemo(() => Math.max(150, variationItems.length * (isMobile ? 34 : 38) + 20), [variationItems.length, isMobile]);
+
+  // ── Default KPI3 / KPI4 ──
+  const defaultKpi3 = kpiCtx ? {
+    label: `Évolution ${kpiCtx.earliest.year}→${kpiCtx.latest.year}`,
+    value: `${kpiCtx.periodPct >= 0 ? '+' : ''}${kpiCtx.periodPct.toFixed(1)}%`,
+    valueClass: kpiCtx.periodPct >= 0 ? 'text-emerald-400' : 'text-red-400',
+    sub: `sur ${filteredYears.length} exercices`,
+  } : null;
+
+  const defaultKpi4 = kpiCtx ? {
+    label: '1er groupe',
+    value: kpiCtx.topName,
+    sub: `${formatValue(kpiCtx.topValue)} (${kpiCtx.topPct.toFixed(0)}%)`,
+  } : null;
+
+  const kpi3Card = kpiCtx ? (kpi3 ? kpi3(kpiCtx) : defaultKpi3) : null;
+  const kpi4Card = kpiCtx ? (kpi4 ? kpi4(kpiCtx) : defaultKpi4) : null;
 
   // ── Loading / Error ──
   if (isLoading) return <div className="flex justify-center py-16"><div className={`w-10 h-10 border-4 ${t.spinner} border-t-transparent rounded-full animate-spin`} /></div>;
@@ -311,28 +371,32 @@ export default function TendancesTab({
       </div>
 
       {/* ── KPIs ── */}
-      {kpis && (
+      {kpiCtx && (
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-500 mb-1">{kpi1Label(kpis.latest.year)}</p>
-            <p className={`text-xl sm:text-2xl font-bold ${t.kpi1Value}`}>{formatEuroCompact(kpis.latest.total)}</p>
-            {kpi1Sub && <p className="text-xs text-slate-500 mt-1">{kpi1Sub(kpis.latest)}</p>}
+            <p className="text-xs text-slate-500 mb-1">{kpi1Label(kpiCtx.latest.year)}</p>
+            <p className={`text-xl sm:text-2xl font-bold ${t.kpi1Value}`}>{formatValue(kpiCtx.latest.total)}</p>
+            {kpi1Sub && <p className="text-xs text-slate-500 mt-1">{kpi1Sub(kpiCtx.latest)}</p>}
           </div>
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
             <p className="text-xs text-slate-500 mb-1">Variation annuelle</p>
-            <p className={`text-xl sm:text-2xl font-bold ${kpis.yoyPct >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>{kpis.yoyPct >= 0 ? '+' : ''}{kpis.yoyPct.toFixed(1)}%</p>
-            <p className="text-xs text-slate-500 mt-1">vs {kpis.latest.year - 1}</p>
+            <p className={`text-xl sm:text-2xl font-bold ${kpiCtx.yoyPct >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>{kpiCtx.yoyPct >= 0 ? '+' : ''}{kpiCtx.yoyPct.toFixed(1)}%</p>
+            <p className="text-xs text-slate-500 mt-1">vs {kpiCtx.latest.year - 1}</p>
           </div>
-          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-500 mb-1">Évolution {kpis.earliest.year}→{kpis.latest.year}</p>
-            <p className={`text-xl sm:text-2xl font-bold ${kpis.periodPct >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>{kpis.periodPct >= 0 ? '+' : ''}{kpis.periodPct.toFixed(1)}%</p>
-            <p className="text-xs text-slate-500 mt-1">sur {filteredYears.length} exercices</p>
-          </div>
-          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-500 mb-1">{kpi4Label(breakdown)}</p>
-            <p className="text-base sm:text-lg font-bold text-slate-100 truncate">{kpis.topName}</p>
-            <p className="text-xs text-slate-500 mt-1">{formatEuroCompact(kpis.topMontant)} ({kpis.topPct.toFixed(0)}%)</p>
-          </div>
+          {kpi3Card && (
+            <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
+              <p className="text-xs text-slate-500 mb-1">{kpi3Card.label}</p>
+              <p className={`text-xl sm:text-2xl font-bold ${kpi3Card.valueClass || 'text-slate-100'}`}>{kpi3Card.value}</p>
+              <p className="text-xs text-slate-500 mt-1">{kpi3Card.sub}</p>
+            </div>
+          )}
+          {kpi4Card && (
+            <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
+              <p className="text-xs text-slate-500 mb-1">{kpi4Card.label}</p>
+              <p className="text-base sm:text-lg font-bold text-slate-100 truncate">{kpi4Card.value}</p>
+              <p className="text-xs text-slate-500 mt-1">{kpi4Card.sub}</p>
+            </div>
+          )}
         </div>
       )}
 
@@ -344,12 +408,12 @@ export default function TendancesTab({
       </div>
 
       {/* ── Variation Ranking ── */}
-      {variationChartOption && kpis && (
+      {variationChartOption && kpiCtx && (
         <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4 sm:p-6">
           <div className="flex items-center gap-2 mb-2">
             <span className={`w-1.5 h-8 rounded-full ${t.variationBar}`} />
             <div>
-              <h4 className="text-sm font-semibold text-slate-200">{variationTitle(currentDimLabel)} ({kpis.earliest.year} → {kpis.latest.year})</h4>
+              <h4 className="text-sm font-semibold text-slate-200">{variationTitle(currentDimLabel)} ({kpiCtx.earliest.year} → {kpiCtx.latest.year})</h4>
               <p className="text-xs text-slate-500">{variationSubtitle(currentDimLabel)}</p>
             </div>
           </div>
