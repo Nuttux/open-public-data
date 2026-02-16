@@ -311,16 +311,21 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
             }
             const value = params.value || 0;
             // Sur tablette, nom tronqué si trop long
-            const displayName = isSmallTablet && params.name.length > 12 
-              ? params.name.substring(0, 11) + '…' 
+            const displayName = isSmallTablet && params.name.length > 12
+              ? params.name.substring(0, 11) + '…'
               : params.name;
-            return `${displayName}\n{small|${formatEuroCompact(value)}}`;
+            return `${displayName} {chevron|›}\n{small|${formatEuroCompact(value)}}`;
           },
           rich: {
             small: {
               fontSize: isSmallTablet ? 9 : 10,
               color: '#94a3b8',
               lineHeight: isSmallTablet ? 14 : 16,
+            },
+            chevron: {
+              fontSize: isSmallTablet ? 12 : 14,
+              fontWeight: 700,
+              color: '#60a5fa',
             },
           },
         },
@@ -375,16 +380,18 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
           <h2 className="text-base sm:text-lg font-semibold text-slate-100">
             Flux budgétaires {data.year}
           </h2>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1 flex items-center gap-1.5">
-            {isMobile ? 'Appuyez pour explorer' : (
-              <>
-                <svg className="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          {isMobile ? (
+            <p className="text-xs text-slate-400 mt-1">Appuyez pour explorer</p>
+          ) : (
+            <div className="flex items-center gap-2 mt-1.5">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-blue-500/15 text-blue-400 border border-blue-500/30">
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
                 </svg>
-                Cliquez sur une catégorie pour explorer le détail
-              </>
-            )}
-          </p>
+                Cliquez sur une catégorie pour voir le détail
+              </span>
+            </div>
+          )}
         </div>
         <div className={`px-3 py-2 rounded-lg text-xs sm:text-sm ${
           variationDette > 0 ? 'bg-red-500/10 border border-red-500/30' : 'bg-emerald-500/10 border border-emerald-500/30'
