@@ -76,15 +76,50 @@ cleaned AS (
         -- =====================================================================
         -- CLÉ TECHNIQUE
         -- =====================================================================
-        COALESCE(id_livraison, 
-            CONCAT(
-                COALESCE(adresse_programme, 'X'), '-',
-                COALESCE(bs, 'X'), '-',
-                COALESCE(annee, 'XXXX')
-            )
+        -- CLÉ TECHNIQUE: id_livraison n'est pas unique — un même programme
+        -- peut avoir plusieurs tranches (nature, mode, nb_logements différents).
+        -- On inclut ces colonnes dans la clé pour différencier les tranches,
+        -- et on déduplique ensuite les vrais doublons source.
+        CONCAT(
+            COALESCE(annee, 'XXXX'), '-',
+            COALESCE(id_livraison,
+                CONCAT(COALESCE(adresse_programme, 'X'), '-', COALESCE(bs, 'X'))
+            ), '-',
+            COALESCE(nature_programme, 'X'), '-',
+            COALESCE(mode_real, 'X'), '-',
+            COALESCE(CAST(nb_logmt_total AS STRING), '0')
         ) AS cle_technique
-        
+
     FROM source
+),
+
+-- Déduplication des vrais doublons source (lignes 100% identiques)
+deduplicated AS (
+    SELECT *,
+        ROW_NUMBER() OVER (
+            PARTITION BY cle_technique
+            ORDER BY id_livraison
+        ) AS _row_num
+    FROM cleaned
 )
 
-SELECT * FROM cleaned
+SELECT
+    id_livraison,
+    annee,
+    adresse,
+    code_postal,
+    arrondissement,
+    latitude,
+    longitude,
+    bailleur,
+    nb_logements,
+    nb_plai,
+    nb_plus,
+    nb_pluscd,
+    nb_pls,
+    nature_programme,
+    mode_realisation,
+    commentaires,
+    cle_technique
+FROM deduplicated
+WHERE _row_num = 1

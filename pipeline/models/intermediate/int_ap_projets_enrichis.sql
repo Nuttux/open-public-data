@@ -30,18 +30,35 @@ cache_geo AS (
 
 -- =============================================================================
 -- ÉTAPE 1: Match avec lieux connus
+-- Le LEFT JOIN regex peut matcher plusieurs lieux pour un même AP
+-- (ex: un pattern trop large qui matche plusieurs textes).
+-- On déduplique en gardant le match le plus spécifique (pattern le plus long).
 -- =============================================================================
-with_lieux AS (
+with_lieux_all AS (
     SELECT
         p.*,
         l.adresse AS adresse_lieu,
         l.arrondissement AS arrondissement_lieu,
         l.latitude AS lat_lieu,
         l.longitude AS lng_lieu,
-        l.nom_complet AS nom_lieu
+        l.nom_complet AS nom_lieu,
+        l.pattern_match AS _pattern_match,
+        ROW_NUMBER() OVER (
+            PARTITION BY p.cle_technique
+            ORDER BY
+                -- Préférer le pattern le plus long (plus spécifique)
+                LENGTH(COALESCE(l.pattern_match, '')) DESC,
+                l.nom_complet ASC
+        ) AS _lieu_rank
     FROM projets p
     LEFT JOIN lieux_connus l
         ON REGEXP_CONTAINS(UPPER(p.ap_texte), UPPER(l.pattern_match))
+),
+
+with_lieux AS (
+    SELECT * EXCEPT(_lieu_rank, _pattern_match)
+    FROM with_lieux_all
+    WHERE _lieu_rank = 1
 ),
 
 -- =============================================================================
