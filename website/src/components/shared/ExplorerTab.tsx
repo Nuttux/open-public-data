@@ -18,7 +18,7 @@ import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 
 // ─── Theme ───────────────────────────────────────────────────────────────────
 
-type ThemeColor = 'purple' | 'amber' | 'emerald';
+type ThemeColor = 'purple' | 'amber' | 'emerald' | 'teal';
 
 const THEME = {
   purple: {
@@ -38,6 +38,12 @@ const THEME = {
     activeBtn: 'bg-emerald-500/20 text-emerald-300 shadow-sm',
     filterOpen: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30',
     filterActive: 'bg-emerald-500/5 text-emerald-300/80 border-emerald-500/20 hover:border-emerald-500/40',
+  },
+  teal: {
+    spinner: 'border-teal-500',
+    activeBtn: 'bg-teal-500/20 text-teal-300 shadow-sm',
+    filterOpen: 'bg-teal-500/10 text-teal-300 border-teal-500/30',
+    filterActive: 'bg-teal-500/5 text-teal-300/80 border-teal-500/20 hover:border-teal-500/40',
   },
 } as const;
 
@@ -66,6 +72,8 @@ export interface ExplorerTabProps {
   arrondissementView?: ReactNode;
   /** Default view (default: 'liste') */
   defaultView?: ViewMode;
+  /** Optional export bar rendered below the toolbar */
+  exportBar?: ReactNode;
 
   isLoading: boolean;
 }
@@ -108,6 +116,7 @@ export default function ExplorerTab({
   summaryTitle, theme,
   filterPanel, activeFilterCount, filterLabel,
   listView, mapView, arrondissementView, defaultView = 'liste',
+  exportBar,
   isLoading,
 }: ExplorerTabProps) {
   const isMobile = useIsMobile(BREAKPOINTS.lg);
@@ -172,6 +181,8 @@ export default function ExplorerTab({
           </div>
         )}
       </div>
+
+      {exportBar && <div className="mb-4">{exportBar}</div>}
 
       {/* ── Mobile : collapsible filters + content ── */}
       {isMobile && (

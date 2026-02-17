@@ -10,8 +10,24 @@
 import { useState, useMemo } from 'react';
 import dynamic from 'next/dynamic';
 import ExplorerTab from '@/components/shared/ExplorerTab';
+import ExportBar from '@/components/shared/ExportBar';
 import type { LogementSocial, ArrondissementStats } from '@/lib/types/map';
 import { formatNumber } from '@/lib/formatters';
+import type { CsvColumn } from '@/lib/export';
+
+const CSV_COLUMNS: CsvColumn<Record<string, unknown>>[] = [
+  { key: 'annee', label: 'Année' },
+  { key: 'adresse', label: 'Adresse' },
+  { key: 'codePostal', label: 'Code postal' },
+  { key: 'arrondissement', label: 'Arrondissement' },
+  { key: 'bailleur', label: 'Bailleur' },
+  { key: 'nbLogements', label: 'Nb logements' },
+  { key: 'nbPLAI', label: 'PLAI' },
+  { key: 'nbPLUS', label: 'PLUS' },
+  { key: 'nbPLS', label: 'PLS' },
+  { key: 'modeRealisation', label: 'Mode réalisation' },
+  { key: 'natureProgramme', label: 'Nature programme' },
+];
 
 // ─── Dynamic import (Leaflet needs window) ───────────────────────────────────
 
@@ -194,6 +210,13 @@ export default function LogementsExplorerTab({
         </>
       }
       filterPanel={(layout) => <FilterPanel {...filterProps} layout={layout} />}
+      exportBar={
+        <ExportBar
+          csvData={filteredLogements as unknown as Record<string, unknown>[]}
+          csvColumns={CSV_COLUMNS}
+          filename="logements_filtres"
+        />
+      }
       listView={
         <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 overflow-hidden">
           <div className="overflow-x-auto">

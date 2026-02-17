@@ -10,9 +10,21 @@
 import { useState, useMemo } from 'react';
 import dynamic from 'next/dynamic';
 import ExplorerTab from '@/components/shared/ExplorerTab';
+import ExportBar from '@/components/shared/ExportBar';
 import type { AutorisationProgramme, ArrondissementStats } from '@/lib/types/map';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { THEMATIQUE_LABELS, type ThematiqueSubvention } from '@/lib/constants/directions';
+import type { CsvColumn } from '@/lib/export';
+
+const CSV_COLUMNS: CsvColumn<Record<string, unknown>>[] = [
+  { key: 'annee', label: 'Année' },
+  { key: 'apTexte', label: 'Projet' },
+  { key: 'thematique', label: 'Thématique' },
+  { key: 'directionTexte', label: 'Direction' },
+  { key: 'montant', label: 'Montant (€)' },
+  { key: 'arrondissement', label: 'Arrondissement' },
+  { key: 'adresse', label: 'Adresse' },
+];
 
 // ─── Dynamic import (Leaflet needs window) ───────────────────────────────────
 
@@ -217,6 +229,13 @@ export default function InvestissementsExplorerTab({
         </>
       }
       filterPanel={(layout) => <FilterPanel {...filterProps} layout={layout} />}
+      exportBar={
+        <ExportBar
+          csvData={filteredProjets as unknown as Record<string, unknown>[]}
+          csvColumns={CSV_COLUMNS}
+          filename="investissements_filtres"
+        />
+      }
       listView={
         <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 overflow-hidden">
           <div className="overflow-x-auto">

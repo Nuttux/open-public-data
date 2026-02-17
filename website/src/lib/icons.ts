@@ -15,10 +15,12 @@
 
 export const NAV_ICONS = {
   accueil: '🏠',
+  synthese: '🎯',
   budget: '📊',
   patrimoine: '🏦',
   subventions: '💰',
   investissements: '🏗️',
+  marches: '🤝',
   logements: '🏘️',
   blog: '📝',
 } as const;

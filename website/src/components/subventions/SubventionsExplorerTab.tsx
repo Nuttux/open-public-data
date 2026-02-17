@@ -9,9 +9,23 @@
 
 import { useState, useMemo } from 'react';
 import ExplorerTab from '@/components/shared/ExplorerTab';
+import ExportBar from '@/components/shared/ExportBar';
 import SubventionsTable, { type Beneficiaire } from '@/components/SubventionsTable';
 import { type SubventionFilters, DEFAULT_FILTERS } from '@/components/SubventionsFilters';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
+import type { CsvColumn } from '@/lib/export';
+
+const CSV_COLUMNS: CsvColumn<Record<string, unknown>>[] = [
+  { key: 'annee', label: 'Année' },
+  { key: 'beneficiaire', label: 'Bénéficiaire' },
+  { key: 'nature_juridique', label: 'Nature juridique' },
+  { key: 'direction', label: 'Direction' },
+  { key: 'thematique', label: 'Thématique' },
+  { key: 'montant_total', label: 'Montant total (€)' },
+  { key: 'nb_subventions', label: 'Nb subventions' },
+  { key: 'objet_principal', label: 'Objet principal' },
+  { key: 'siret', label: 'SIRET' },
+];
 
 // ─── Constants ───────────────────────────────────────────────────────────────
 
@@ -200,6 +214,13 @@ export default function SubventionsExplorerTab({
         </>
       }
       filterPanel={(layout) => <FilterPanel {...filterProps} layout={layout} />}
+      exportBar={
+        <ExportBar
+          csvData={filteredBenefs as unknown as Record<string, unknown>[]}
+          csvColumns={CSV_COLUMNS}
+          filename="subventions_filtrees"
+        />
+      }
       listView={
         <SubventionsTable data={beneficiaires} filters={filters} isLoading={false} pageSize={50} />
       }

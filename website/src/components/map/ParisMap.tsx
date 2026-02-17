@@ -263,7 +263,7 @@ export default function ParisMap({
           >
             <Popup>
               <div className="min-w-[220px]">
-                <h3 className="font-bold text-slate-900 mb-1">{sub.beneficiaire}</h3>
+                <h3 className="font-bold text-slate-100 mb-1">{sub.beneficiaire}</h3>
                 <p className="text-2xl font-bold text-purple-600 mb-2">
                   {formatEuroCompact(sub.montant)}
                 </p>
@@ -307,7 +307,7 @@ export default function ParisMap({
           >
             <Popup>
               <div className="min-w-[200px]">
-                <h3 className="font-bold text-slate-900 mb-1">{log.adresse}</h3>
+                <h3 className="font-bold text-slate-100 mb-1">{log.adresse}</h3>
                 <p className="text-2xl font-bold text-emerald-600 mb-2">
                   {log.nbLogements} logements
                 </p>
@@ -317,7 +317,7 @@ export default function ParisMap({
                   <p><strong>Mode:</strong> {log.modeRealisation}</p>
                   <p><strong>Année:</strong> {log.annee}</p>
                   <p><strong>Arrondissement:</strong> {log.arrondissement}ème</p>
-                  <div className="mt-2 pt-2 border-t border-slate-200">
+                  <div className="mt-2 pt-2 border-t border-slate-700/50">
                     <p>PLAI (très social): {log.nbPLAI}</p>
                     <p>PLUS (social): {log.nbPLUS}</p>
                     <p>PLS (intermédiaire): {log.nbPLS}</p>
@@ -346,7 +346,7 @@ export default function ParisMap({
           >
             <Popup maxWidth={350}>
               <div className="min-w-[280px] max-w-[320px]">
-                <h3 className="font-bold text-slate-900 mb-1 text-sm leading-tight">{ap.apTexte}</h3>
+                <h3 className="font-bold text-slate-100 mb-1 text-sm leading-tight">{ap.apTexte}</h3>
                 <p className="text-xl font-bold text-amber-600 mb-2">
                   {formatEuroCompact(ap.montant)}
                 </p>
@@ -364,7 +364,7 @@ export default function ParisMap({
                   )}
                   <p><strong>Année:</strong> {ap.annee}</p>
                   {/* Localisation avec indicateur de précision */}
-                  <div className="mt-2 pt-2 border-t border-slate-200">
+                  <div className="mt-2 pt-2 border-t border-slate-700/50">
                     {ap.isPrecise ? (
                       <>
                         <p className="flex items-center gap-1">
