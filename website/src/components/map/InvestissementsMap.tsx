@@ -211,7 +211,7 @@ export default function InvestissementsMap({
             >
               <Popup maxWidth={350}>
                 <div className="min-w-[280px] max-w-[320px]">
-                  <h3 className="font-bold text-slate-900 mb-1 text-sm leading-tight">
+                  <h3 className="font-bold text-slate-100 mb-1 text-sm leading-tight">
                     {projet.apTexte}
                   </h3>
                   <p className="text-xl font-bold text-amber-600 mb-2">
@@ -232,7 +232,7 @@ export default function InvestissementsMap({
                     <p><strong>Année:</strong> {projet.annee}</p>
                     
                     {/* Localisation */}
-                    <div className="mt-2 pt-2 border-t border-slate-200">
+                    <div className="mt-2 pt-2 border-t border-slate-700/50">
                       {projet.isPrecise ? (
                         <>
                           <p className="flex items-center gap-1">

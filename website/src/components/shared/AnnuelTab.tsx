@@ -50,7 +50,7 @@ export interface TableColumnDef<T> {
 
 // ─── Theme ───────────────────────────────────────────────────────────────────
 
-type ThemeColor = 'purple' | 'amber' | 'emerald';
+type ThemeColor = 'purple' | 'amber' | 'emerald' | 'teal';
 
 const THEME = {
   purple: {
@@ -83,6 +83,16 @@ const THEME = {
     filterX: 'text-emerald-400',
     valueAccent: 'text-emerald-400',
   },
+  teal: {
+    spinner: 'border-teal-500',
+    activeBtn: 'bg-teal-500/20 text-teal-300 shadow-sm',
+    filterBadgeBg: 'bg-teal-500/20',
+    filterBadgeText: 'text-teal-300',
+    filterBadgeBorder: 'border-teal-500/30',
+    filterBadgeHover: 'hover:bg-teal-500/30',
+    filterX: 'text-teal-400',
+    valueAccent: 'text-teal-400',
+  },
 } as const;
 
 // ─── Props ───────────────────────────────────────────────────────────────────
@@ -106,6 +116,8 @@ export interface AnnuelTabProps<T> {
   treemapTitle: string;
   /** Label for the count in tooltip, e.g. "Projets" or "Bénéficiaires" */
   tooltipCountLabel: string;
+  /** Max groups in treemap per dimension — extras grouped as "Autres" */
+  maxGroups?: (dim: string) => number | undefined;
 
   // KPIs — rendered by the wrapper for full flexibility
   kpiCards: ReactNode;
@@ -128,6 +140,8 @@ export interface AnnuelTabProps<T> {
 
   // Optional banner above KPIs
   banner?: ReactNode;
+  /** Optional export bar (CSV + share link) rendered between KPIs and treemap */
+  exportBar?: ReactNode;
 }
 
 // ─── Aggregation helper ──────────────────────────────────────────────────────
@@ -161,11 +175,11 @@ export function aggregateItems<T>(
 export default function AnnuelTab<T>({
   items, isLoading, theme,
   breakdowns, getGroupKey, getGroupColor, getValue,
-  treemapTitle, tooltipCountLabel,
+  treemapTitle, tooltipCountLabel, maxGroups,
   kpiCards,
   itemLabel, columns, sortItems, getItemKey,
   previewLimit = 30, onNavigateExplorer, formatTotal,
-  banner,
+  banner, exportBar,
 }: AnnuelTabProps<T>) {
   const isMobile = useIsMobile(BREAKPOINTS.md);
   const [breakdown, setBreakdown] = useState(breakdowns[0].id);
@@ -173,16 +187,33 @@ export default function AnnuelTab<T>({
   const t = THEME[theme];
 
   // ── Aggregation ──
-  const groups = useMemo(
-    () => aggregateItems(items, (item) => getGroupKey(item, breakdown), getValue),
-    [items, breakdown, getGroupKey, getValue],
-  );
+  const groups = useMemo(() => {
+    const all = aggregateItems(items, (item) => getGroupKey(item, breakdown), getValue);
+    const limit = maxGroups?.(breakdown);
+    if (!limit || all.length <= limit) return all;
+    const top = all.slice(0, limit);
+    const rest = all.slice(limit);
+    const autresMontant = rest.reduce((s, g) => s + g.montant, 0);
+    const autresCount = rest.reduce((s, g) => s + g.count, 0);
+    const total = all.reduce((s, g) => s + g.montant, 0);
+    top.push({
+      key: 'Autres',
+      montant: autresMontant,
+      count: autresCount,
+      pct: total > 0 ? (autresMontant / total) * 100 : 0,
+    });
+    return top;
+  }, [items, breakdown, getGroupKey, getValue, maxGroups]);
 
   // ── Filtered items ──
+  const topGroupKeys = useMemo(() => new Set(groups.filter(g => g.key !== 'Autres').map(g => g.key)), [groups]);
   const filteredItems = useMemo(() => {
     if (!selectedGroup) return items;
+    if (selectedGroup === 'Autres') {
+      return items.filter(item => !topGroupKeys.has(getGroupKey(item, breakdown)));
+    }
     return items.filter(item => getGroupKey(item, breakdown) === selectedGroup);
-  }, [items, selectedGroup, breakdown, getGroupKey]);
+  }, [items, selectedGroup, breakdown, getGroupKey, topGroupKeys]);
 
   const sortedFiltered = useMemo(
     () => [...filteredItems].sort(sortItems),
@@ -213,25 +244,25 @@ export default function AnnuelTab<T>({
       borderRadius: 8,
       padding: isMobile ? [8, 12] : [12, 16],
       confine: true,
-      textStyle: { color: '#e2e8f0', fontSize: isMobile ? 11 : 13 },
+      textStyle: { color: '#f1f5f9', fontSize: isMobile ? 11 : 13 },
       formatter: (params: unknown) => {
         const p = params as { name: string; value: number; data: { pct: number; count: number } };
         return `
-          <div style="font-weight: 600; margin-bottom: 6px; font-size: ${isMobile ? '12px' : '14px'};">
+          <div style="font-weight: 600; margin-bottom: 6px; font-size: ${isMobile ? '12px' : '14px'}; color: #f1f5f9;">
             ${p.name}
           </div>
           <div style="display: flex; flex-direction: column; gap: 3px; font-size: ${isMobile ? '11px' : '12px'};">
             <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '12px' : '24px'};">
               <span style="color: #94a3b8;">Montant</span>
-              <span style="font-weight: 500;">${formatEuroCompact(p.value)}</span>
+              <span style="font-weight: 500; color: #f1f5f9;">${formatEuroCompact(p.value)}</span>
             </div>
             <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '12px' : '24px'};">
               <span style="color: #94a3b8;">Part du total</span>
-              <span style="font-weight: 500;">${p.data.pct.toFixed(1)}%</span>
+              <span style="font-weight: 500; color: #f1f5f9;">${p.data.pct.toFixed(1)}%</span>
             </div>
             <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '12px' : '24px'};">
               <span style="color: #94a3b8;">${tooltipCountLabel}</span>
-              <span style="font-weight: 500;">${formatNumber(p.data.count)}</span>
+              <span style="font-weight: 500; color: #f1f5f9;">${formatNumber(p.data.count)}</span>
             </div>
           </div>
         `;
@@ -257,13 +288,13 @@ export default function AnnuelTab<T>({
         fontSize: isMobile ? 10 : 12,
         fontWeight: 500,
         color: '#fff',
-        textShadowColor: 'rgba(0,0,0,0.5)',
+        textShadowColor: 'rgba(0,0,0,0.08)',
         textShadowBlur: isMobile ? 3 : 4,
       },
       upperLabel: { show: false },
       levels: [{
         itemStyle: {
-          borderColor: '#1e293b',
+          borderColor: '#0f172a',
           borderWidth: isMobile ? 1 : 2,
           gapWidth: isMobile ? 1 : 2,
         },
@@ -303,6 +334,9 @@ export default function AnnuelTab<T>({
 
       {/* KPI cards */}
       {kpiCards}
+
+      {/* Export bar */}
+      {exportBar}
 
       {/* Treemap with breakdown selector */}
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4 sm:p-6 mb-6">
@@ -384,7 +418,7 @@ export default function AnnuelTab<T>({
             </thead>
             <tbody className="divide-y divide-slate-700/50">
               {sortedFiltered.slice(0, previewLimit).map((item, i) => (
-                <tr key={getItemKey(item, i)} className="hover:bg-slate-700/30 transition-colors">
+                <tr key={getItemKey(item, i)} className={`hover:bg-slate-700/30 transition-colors`}>
                   {columns.map(col => (
                     <td
                       key={col.key}

@@ -49,36 +49,6 @@ export default function LandingPage() {
   return (
     <main className="min-h-screen">
 
-      {/* ============================================
-          BANNIÈRE ÉLECTIONS - Ton neutre / civique
-          ============================================ */}
-      {/* ============================================
-          BANNIÈRE - Données mises à jour
-          ============================================ */}
-      <section className="border-b border-slate-800 bg-slate-900/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
-            <div className="flex items-center gap-3">
-              <span className="inline-flex items-center gap-2 px-3 py-1 bg-blue-500/15 rounded-full text-blue-400 text-xs font-medium border border-blue-500/20">
-                <span className="relative flex h-1.5 w-1.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-blue-400"></span>
-                </span>
-                Mis à jour
-              </span>
-              <p className="text-sm text-slate-300">
-                Budget voté 2026 disponible, ainsi que les comptes administratifs 2019–2024.
-              </p>
-            </div>
-            <Link
-              href="/budget?tab=tendances"
-              className="text-xs text-blue-400 hover:text-blue-300 font-medium whitespace-nowrap transition-colors"
-            >
-              Voir l&apos;évolution 2019–2024 →
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* ============================================
           HERO - La question, pas le produit

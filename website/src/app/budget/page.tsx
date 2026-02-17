@@ -3,10 +3,9 @@
 /**
  * Page /budget — Budget de la Ville de Paris.
  *
- * Architecture par entité avec 3 tabs :
+ * Architecture par entité avec 2 tabs :
  * - Annuel (défaut) : Sankey/Donut + KPIs pour une année donnée
- * - Tendances : Évolution multi-années, YoY, santé financière
- * - Prévision : Voté vs Exécuté, taux d'exécution, estimations
+ * - Tendances : Évolution multi-années, YoY, santé financière + exécution budgétaire
  *
  * Le tab actif est synchronisé avec l'URL via ?tab=xxx (useTabState).
  * Chaque tab encapsule son propre data loading.
@@ -18,7 +17,6 @@ import { useTabState } from '@/lib/hooks/useTabState';
 import PageHeader from '@/components/PageHeader';
 import BudgetAnnuelTab from '@/components/budget/BudgetAnnuelTab';
 import BudgetTendancesTab from '@/components/budget/BudgetTendancesTab';
-import BudgetPrevisionTab from '@/components/budget/BudgetPrevisionTab';
 import type { BudgetIndex } from '@/lib/formatters';
 
 // ─── Tab definitions ─────────────────────────────────────────────────────────
@@ -26,7 +24,6 @@ import type { BudgetIndex } from '@/lib/formatters';
 const BUDGET_TABS: Tab[] = [
   { id: 'annuel', label: 'Annuel', icon: '📋' },
   { id: 'tendances', label: 'Tendances', icon: '📈' },
-  { id: 'vote-vs-execute', label: 'Voté vs Exécuté', icon: '🎯' },
 ];
 
 const VALID_TAB_IDS = BUDGET_TABS.map(t => t.id);
@@ -62,16 +59,16 @@ function BudgetPageInner() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-slate-400">Chargement du tableau de bord...</p>
+          <p className="text-slate-500">Chargement du tableau de bord...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-slate-900">
       {/* Page header */}
-      <div className="border-b border-slate-800 bg-slate-900/50 backdrop-blur">
+      <div className="border-b border-slate-800 bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <PageHeader
             title="Budget de Paris"
@@ -103,12 +100,8 @@ function BudgetPageInner() {
           <BudgetTendancesTab />
         )}
 
-        {activeTab === 'vote-vs-execute' && (
-          <BudgetPrevisionTab />
-        )}
-
         {/* Footer */}
-        <footer className="mt-8 pt-6 border-t border-slate-800">
+        <footer className="mt-8 pt-6 border-t border-slate-700/50">
           <div className="text-xs text-slate-500 text-center space-y-1">
             <p>Données: Open Data Paris — Comptes administratifs budgets principaux (M57)</p>
             <p>

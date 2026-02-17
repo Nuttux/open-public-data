@@ -9,11 +9,24 @@
 
 import { useMemo } from 'react';
 import AnnuelTab from '@/components/shared/AnnuelTab';
+import ExportBar from '@/components/shared/ExportBar';
 import type { BreakdownOption, TableColumnDef } from '@/components/shared/AnnuelTab';
 import DataQualityBanner from '@/components/DataQualityBanner';
 import type { Beneficiaire } from '@/components/SubventionsTable';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { getThematiqueColor, PALETTE } from '@/lib/colors';
+import type { CsvColumn } from '@/lib/export';
+
+const CSV_COLUMNS: CsvColumn<Record<string, unknown>>[] = [
+  { key: 'annee', label: 'Année' },
+  { key: 'beneficiaire', label: 'Bénéficiaire' },
+  { key: 'nature_juridique', label: 'Nature juridique' },
+  { key: 'direction', label: 'Direction' },
+  { key: 'thematique', label: 'Thématique' },
+  { key: 'montant_total', label: 'Montant total (€)' },
+  { key: 'nb_subventions', label: 'Nb subventions' },
+  { key: 'siret', label: 'SIRET' },
+];
 
 // ─── Config ──────────────────────────────────────────────────────────────────
 
@@ -179,6 +192,13 @@ export default function SubventionsAnnuelTab({
             <p className="text-xs text-slate-500 mt-1">{selectedYear}</p>
           </div>
         </div>
+      }
+      exportBar={
+        <ExportBar
+          csvData={beneficiaires as unknown as Record<string, unknown>[]}
+          csvColumns={CSV_COLUMNS}
+          filename="subventions_annuel"
+        />
       }
     />
   );

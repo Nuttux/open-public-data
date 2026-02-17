@@ -9,11 +9,22 @@
 
 import { useMemo } from 'react';
 import AnnuelTab from '@/components/shared/AnnuelTab';
+import ExportBar from '@/components/shared/ExportBar';
 import type { BreakdownOption, TableColumnDef } from '@/components/shared/AnnuelTab';
 import type { AutorisationProgramme } from '@/lib/types/map';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { getThematiqueColor, PALETTE } from '@/lib/colors';
 import { THEMATIQUE_LABELS, type ThematiqueSubvention } from '@/lib/constants/directions';
+import type { CsvColumn } from '@/lib/export';
+
+const CSV_COLUMNS: CsvColumn<Record<string, unknown>>[] = [
+  { key: 'annee', label: 'Année' },
+  { key: 'apTexte', label: 'Projet' },
+  { key: 'thematique', label: 'Thématique' },
+  { key: 'directionTexte', label: 'Direction' },
+  { key: 'montant', label: 'Montant (€)' },
+  { key: 'arrondissement', label: 'Arrondissement' },
+];
 
 // ─── Config ──────────────────────────────────────────────────────────────────
 
@@ -165,6 +176,13 @@ export default function InvestissementsAnnuelTab({
             <p className="text-xs text-slate-500 mt-1">{selectedYear}</p>
           </div>
         </div>
+      }
+      exportBar={
+        <ExportBar
+          csvData={projets as unknown as Record<string, unknown>[]}
+          csvColumns={CSV_COLUMNS}
+          filename="investissements_annuel"
+        />
       }
     />
   );

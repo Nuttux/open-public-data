@@ -15,6 +15,22 @@
 import { useState, useMemo } from 'react';
 import type { LogementSocial } from '@/lib/types/map';
 import { formatNumber } from '@/lib/formatters';
+import ExportBar from '@/components/shared/ExportBar';
+import type { CsvColumn } from '@/lib/export';
+
+const CSV_COLUMNS: CsvColumn<Record<string, unknown>>[] = [
+  { key: 'annee', label: 'Année' },
+  { key: 'adresse', label: 'Adresse' },
+  { key: 'codePostal', label: 'Code postal' },
+  { key: 'arrondissement', label: 'Arrondissement' },
+  { key: 'bailleur', label: 'Bailleur' },
+  { key: 'nbLogements', label: 'Nb logements' },
+  { key: 'nbPLAI', label: 'PLAI' },
+  { key: 'nbPLUS', label: 'PLUS' },
+  { key: 'nbPLS', label: 'PLS' },
+  { key: 'modeRealisation', label: 'Mode réalisation' },
+  { key: 'natureProgramme', label: 'Nature programme' },
+];
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -120,6 +136,11 @@ export default function LogementsAnnuelTab({
 
   return (
     <div>
+      <ExportBar
+        csvData={logements as unknown as Record<string, unknown>[]}
+        csvColumns={CSV_COLUMNS}
+        filename="logements_annuel"
+      />
       {/* KPI cards */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 mb-6">
         <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-3 md:p-4">

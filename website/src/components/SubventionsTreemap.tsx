@@ -180,7 +180,7 @@ export default function SubventionsTreemap({
         levels: [
           {
             itemStyle: {
-              borderColor: '#1e293b',
+              borderColor: '#0f172a',
               borderWidth: isMobile ? 1 : 2,
               gapWidth: isMobile ? 1 : 2,
             },

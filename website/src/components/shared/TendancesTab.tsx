@@ -48,7 +48,7 @@ export interface KpiCard {
 
 // ─── Theme ───────────────────────────────────────────────────────────────────
 
-type ThemeColor = 'purple' | 'amber' | 'emerald';
+type ThemeColor = 'purple' | 'amber' | 'emerald' | 'teal';
 
 const THEME = {
   purple: {
@@ -68,6 +68,12 @@ const THEME = {
     kpi1Value: 'text-emerald-400',
     activeBtn: 'bg-emerald-500/20 text-emerald-300 shadow-sm',
     variationBar: 'bg-emerald-500',
+  },
+  teal: {
+    spinner: 'border-teal-500',
+    kpi1Value: 'text-teal-400',
+    activeBtn: 'bg-teal-500/20 text-teal-300 shadow-sm',
+    variationBar: 'bg-teal-500',
   },
 } as const;
 
@@ -126,6 +132,8 @@ export interface TendancesTabProps {
   kpi3?: (ctx: KpiContext) => KpiCard;
   /** Override KPI4 (default: top group from breakdown) */
   kpi4?: (ctx: KpiContext) => KpiCard;
+  /** CSV export filename (optional, for future export bar) */
+  csvFilename?: string;
 }
 
 // ─── Component ───────────────────────────────────────────────────────────────

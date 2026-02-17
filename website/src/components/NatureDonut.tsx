@@ -184,8 +184,8 @@ export default function NatureDonut({
         avoidLabelOverlap: true,
         itemStyle: {
           borderRadius: isMobile ? 4 : 6,
-          borderColor: '#1e293b',
-          borderWidth: isMobile ? 1 : 2,
+          borderColor: '#0f172a',
+          borderWidth: isMobile ? 2 : 3,
         },
         label: {
           show: false, // Labels cachés, on utilise la légende
