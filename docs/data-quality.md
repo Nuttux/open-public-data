@@ -1,6 +1,6 @@
 # DATA QUALITY — Observations, Limites et Pistes d'Amélioration
 
-> Mis à jour : 2026-02-09
+> Mis à jour : 2026-02-18
 > Ce document recense tous les problèmes, limites et observations liés à la qualité
 > des données du Paris Budget Dashboard. Il sert de tracker pour les décisions prises
 > et les améliorations futures.
@@ -15,6 +15,7 @@
 6. [Patrimoine / Dette — Notes](#6-patrimoine--dette--notes)
 7. [Pistes d'amélioration](#7-pistes-damélioration)
 8. [Décisions prises](#8-décisions-prises)
+9. [Test Suite — Résultats](#9-test-suite--résultats-2026-02-18)
 
 ---
 
@@ -231,6 +232,66 @@ Les seuils de durée de désendettement (< 10 ans = sain, 10-15 = vigilance, > 1
 ### 2026-02-05 — Source des seuils de dette
 
 **Décision** : Ajouter la mention "Réf. : grille CRC / Cour des comptes" dans les tooltips et encarts de la section dette, pour clarifier que les seuils ne sont pas des jugements éditoriaux mais des normes techniques.
+
+---
+
+## 9. Test Suite — Résultats (2026-02-18)
+
+### Vue d'ensemble
+
+| Suite | Tests | Pass | Warn | Fail | Erreur |
+|-------|-------|------|------|------|--------|
+| **dbt test** | 168 | 164 | 4 | 0 | 0 |
+| **JSON validation** | 147 | 147 | 0 | 0 | 0 |
+| **Total** | **315** | **311** | **4** | **0** | **0** |
+
+### dbt tests par catégorie
+
+| Catégorie | Tests | Résultat | Détails |
+|-----------|-------|----------|---------|
+| **1-2. Schema & Accepted Values** | ~95 | ✅ 95 pass | |
+| **3. Referential Integrity** | 7 | ✅ 7 pass | |
+| **4. Accounting Balance** | 7 | ✅ 7 pass | |
+| **5. Row Count & Freshness** | 9 | ✅ 9 pass | |
+| **6. Data Completeness** | 5 | ⚠️ 2 pass, 3 warn | Geocoding AP <40%, thématique subventions <80%, budget thématique <90% |
+| **7. Cross-Layer Consistency** | 6 | ✅ 6 pass | |
+| **8. Anomaly Detection** | 5 | ⚠️ 4 pass, 1 warn | Warn = 25 chapters with execution rate outside 50-200% |
+| **9. Seed Quality** | 6 | ✅ 6 pass | |
+| **Reusable Macros** | 5 | — | Helper macros, not tested directly |
+
+### Corrections appliquées (2026-02-17 → 02-18)
+
+Les 9 fails initiaux ont été résolus par des corrections dans les modèles staging et intermediate :
+
+| Problème | Modèle corrigé | Correction |
+|----------|---------------|------------|
+| `cle_technique` non unique (26 doublons) | `stg_budget_principal` | Agrégation `SUM(montant)` par clé budgétaire — la source contient des sous-lignes de mandats au même grain |
+| `cle_technique` non unique (24 doublons) | `stg_associations` | Hash du bénéficiaire dans la clé + déduplication des paires ligne vide/ligne complète pour le même dossier |
+| `annee` NULL (1 ligne grand total) | `stg_associations` | Filtre `annee_budgetaire IS NOT NULL` |
+| `cle_technique` non unique (7 doublons) | `stg_logements_sociaux` | Inclusion de `nature_programme`, `mode_realisation`, `nb_logements` dans la clé + dédup des vrais doublons source |
+| `sens_flux` et `montant_total` NULL (8 lignes) | `mart_evolution_budget` (schema.yml) | Ajout `where: "vue != 'metriques'"` — ces colonnes sont NULL par conception pour la vue métriques financières |
+| Row multiplication (22 extra rows) | `int_ap_projets_enrichis` + `seed_lieux_connus` | Pattern trop large `ST GERMAIN` retiré du seed + safety net ROW_NUMBER() dans la jointure regex pour garder le match le plus spécifique |
+
+### 4 Warnings détaillés — Qualité attendue
+
+| Test | Seuil | Actuel | Observation |
+|------|-------|--------|-------------|
+| `completeness_geocoding_ap` | ≥40% géolocalisé | <40% | Dépend du cache LLM et lieux connus |
+| `completeness_thematique_subventions` | ≥80% classifié | <80% | Cascade pattern→LLM→direction incomplète |
+| `quality_score_budget_thematique` | ≥90% non-"Autre" | <90% | Mapping thématiques à enrichir |
+| `anomaly_execution_rate` | 50-200% | 25 chapters hors range | Normal pour petits chapitres ou investissements pluriannuels |
+
+### JSON Validation (147 checks)
+
+| Domaine | Checks | Résultat |
+|---------|--------|----------|
+| Budget Sankey (8 years) | 41 | ✅ All pass |
+| Bilan Sankey (6 years) | 31 | ✅ All pass |
+| Evolution Budget (8 years) | 26 | ✅ All pass |
+| Subventions Treemap (5 years) | 16 | ✅ All pass |
+| Budget Nature (8 years) | 24 | ✅ All pass |
+| Vote vs Execute | 1 | ✅ Pass |
+| Cross-File Consistency | 8 | ✅ All pass |
 
 ---
 

@@ -8,6 +8,8 @@
 --   - SIRET: padding à 14 caractères (était FLOAT dans la source)
 --   - Normalisation nom bénéficiaire (pour jointure avec stg_subventions_all)
 --   - Typage: FLOAT64 pour montants
+--   - Déduplication: la source contient des paires (ligne vide + ligne
+--     avec bénéficiaire) pour le même dossier — on garde la plus complète
 --
 -- Output: ~102k lignes, années 2013-2025
 -- =============================================================================
@@ -69,18 +71,54 @@ cleaned AS (
         ABS(SAFE_CAST(montant_vote AS FLOAT64)) AS montant,
         
         -- =====================================================================
-        -- CLÉ TECHNIQUE
+        -- CLÉ TECHNIQUE (inclut hash bénéficiaire pour éviter les collisions
+        -- quand le numéro de dossier est absent ou partagé)
         -- =====================================================================
         CONCAT(
             COALESCE(SAFE_CAST(annee_budgetaire AS STRING), 'XXXX'), '-',
             COALESCE(numero_de_dossier, 'X'), '-',
-            COALESCE(direction, 'X')
+            COALESCE(direction, 'X'), '-',
+            SUBSTR(TO_HEX(MD5(COALESCE(nom_beneficiaire, ''))), 1, 8)
         ) AS cle_technique
         
     FROM source
-    WHERE 
+    WHERE
         -- Filtre montants positifs
         ABS(SAFE_CAST(montant_vote AS FLOAT64)) > 0
+        -- Filtre ligne grand total (annee NULL)
+        AND annee_budgetaire IS NOT NULL
+),
+
+-- =============================================================================
+-- DÉDUPLICATION: la source contient des paires (ligne vide + ligne avec
+-- bénéficiaire) pour le même dossier. On garde la ligne la plus complète
+-- (celle avec un nom de bénéficiaire renseigné).
+-- =============================================================================
+deduplicated AS (
+    SELECT *,
+        ROW_NUMBER() OVER (
+            PARTITION BY annee, dossier_id, direction, CAST(montant AS STRING)
+            ORDER BY
+                -- Préférer la ligne avec bénéficiaire renseigné
+                CASE WHEN beneficiaire IS NOT NULL AND TRIM(beneficiaire) != '' THEN 0 ELSE 1 END,
+                -- En cas d'égalité, préférer celle avec SIRET
+                CASE WHEN siret IS NOT NULL THEN 0 ELSE 1 END
+        ) AS _row_num
+    FROM cleaned
 )
 
-SELECT * FROM cleaned
+SELECT
+    annee,
+    dossier_id,
+    collectivite,
+    beneficiaire,
+    beneficiaire_normalise,
+    siret,
+    direction,
+    objet,
+    nature_subvention,
+    secteurs_activite,
+    montant,
+    cle_technique
+FROM deduplicated
+WHERE _row_num = 1

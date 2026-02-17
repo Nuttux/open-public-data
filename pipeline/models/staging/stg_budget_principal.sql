@@ -9,8 +9,10 @@
 --   - Filtre: montant > 0
 --   - Typage: FLOAT64 pour montants
 --   - Renommage: colonnes standardisées en français
+--   - Agrégation: SUM(montant) par clé budgétaire (la source contient
+--     des sous-lignes de mandats sans identifiant distinct)
 --
--- Output: ~23k lignes (après filtres), années 2019-2024
+-- Output: ~24.5k lignes (après filtres et agrégation), années 2019-2024
 -- =============================================================================
 
 WITH source AS (
@@ -80,6 +82,34 @@ cleaned AS (
         (type_d_operation_r_o_i_m = 'Réel' OR type_d_operation_r_o_i_m = 'R')
         -- Filtre montants positifs
         AND SAFE_CAST(mandate_titre_apres_regul AS FLOAT64) > 0
+),
+
+-- =============================================================================
+-- AGRÉGATION: la source contient des sous-lignes de mandats au même grain
+-- budgétaire (même année/section/flux/chapitre/nature/fonction/libellé)
+-- sans identifiant distinct. On les agrège en sommant les montants.
+-- =============================================================================
+aggregated AS (
+    SELECT
+        annee,
+        section,
+        sens_flux,
+        type_operation,
+        chapitre_code,
+        chapitre_libelle,
+        nature_code,
+        nature_libelle,
+        fonction_code,
+        fonction_libelle,
+        SUM(montant) AS montant,
+        cle_technique
+    FROM cleaned
+    GROUP BY
+        annee, section, sens_flux, type_operation,
+        chapitre_code, chapitre_libelle,
+        nature_code, nature_libelle,
+        fonction_code, fonction_libelle,
+        cle_technique
 )
 
-SELECT * FROM cleaned
+SELECT * FROM aggregated
