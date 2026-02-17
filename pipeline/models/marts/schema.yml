@@ -14,7 +14,7 @@ models:
     description: |
       Données agrégées pour le diagramme Sankey du budget.
       Liens: catégorie_flux → thématique avec montants.
-      
+
       Utilisé par: export_sankey_data.py → budget_sankey_{year}.json
     config:
       materialized: view
@@ -45,7 +45,7 @@ models:
     description: |
       Agrégation des subventions par thématique pour visualisation treemap.
       PAS DE GÉOLOCALISATION - les subventions vont à des organisations, pas des lieux.
-      
+
       Utilisé par: export_subventions_data.py → subventions/treemap_{year}.json
     config:
       materialized: view
@@ -74,7 +74,7 @@ models:
     description: |
       Liste des bénéficiaires pour table filtrable.
       Colonnes de filtrage: thematique, nature_juridique, direction, secteurs_activite.
-      
+
       Utilisé par: export_subventions_data.py → subventions/beneficiaires_{year}.json
     config:
       materialized: view
@@ -105,7 +105,7 @@ models:
     description: |
       Projets d'investissement (AP) localisés pour la carte.
       Filtrés: avec arrondissement au minimum.
-      
+
       Utilisé par: export_map_data.py → map/investissements_{year}.json
     config:
       materialized: view
@@ -133,7 +133,7 @@ models:
       Statistiques agrégées par arrondissement.
       Combine: investissements et logements sociaux.
       Note: Les subventions ne sont plus incluses (pas de géolocalisation).
-      
+
       Utilisé par: export_map_data.py → map/arrondissements_stats.json
     config:
       materialized: view
@@ -157,31 +157,39 @@ models:
   - name: mart_evolution_budget
     description: |
       Agrégations temporelles du budget pour graphiques d'évolution.
-      Vues disponibles: par_sens (recette/dépense), par_thematique (macro).
+      Vues disponibles: par_sens, par_section, metriques, par_thematique.
       Inclut: variations annuelles en pourcentage.
-      
+
       Utilisé par: frontend → graphiques évolution YoY
     config:
       materialized: view
     columns:
       - name: vue
-        description: "Type de vue: par_sens ou par_thematique"
+        description: "Type de vue: par_sens, par_section, metriques, par_thematique"
         tests:
           - not_null
+          - accepted_values:
+              values: ['par_sens', 'par_section', 'metriques', 'par_thematique']
       - name: annee
         description: "Année fiscale"
         tests:
           - not_null
+      - name: type_budget
+        description: "execute (CA) ou vote (BP)"
       - name: sens_flux
-        description: "Dépense ou Recette"
+        description: "Dépense ou Recette (NULL pour vue metriques)"
         tests:
-          - not_null
+          - not_null:
+              config:
+                where: "vue != 'metriques'"
       - name: thematique_macro
         description: "Thématique macro (Personnel, Subventions, Investissement, etc.)"
       - name: montant_total
-        description: "Montant total (€)"
+        description: "Montant total (€, NULL pour vue metriques)"
         tests:
-          - not_null
+          - not_null:
+              config:
+                where: "vue != 'metriques'"
       - name: variation_pct
         description: "Variation par rapport à l'année précédente (%)"
       - name: nb_lignes
@@ -195,7 +203,7 @@ models:
       Agrégation croisée Nature × Thématique pour visualisation donut avec drill-down.
       Niveau 1: répartition par nature (Personnel, Subventions, Achats, etc.)
       Niveau 2: répartition par thématique au sein de chaque nature.
-      
+
       Utilisé par: export_budget_nature.py → budget_nature_{year}.json
     config:
       materialized: view
@@ -204,6 +212,8 @@ models:
         description: "Niveau d'agrégation: niveau_1 (par nature) ou niveau_2 (nature × thématique)"
         tests:
           - not_null
+          - accepted_values:
+              values: ['niveau_1', 'niveau_2']
       - name: annee
         description: "Année fiscale"
         tests:
@@ -218,6 +228,8 @@ models:
         description: "Montant total (€)"
         tests:
           - not_null
+      - name: type_budget
+        description: "execute (CA) ou vote (BP)"
       - name: nb_lignes
         description: "Nombre de lignes budgétaires agrégées"
 
@@ -229,7 +241,7 @@ models:
       Agrégation du bilan comptable pour visualisation Sankey.
       Structure: Actif (gauche) → Patrimoine Paris (centre) ← Passif (droite)
       Inclut: KPIs financiers (ratio endettement, fonds propres, etc.)
-      
+
       Utilisé par: export_bilan_data.py → bilan_sankey_{year}.json
     config:
       materialized: view
@@ -266,17 +278,17 @@ models:
     description: |
       Comparaison du budget voté (BP) vs budget exécuté (CA).
       JOIN de core_budget (CA) et core_budget_vote (BV).
-      
+
       Métriques:
       - taux_execution_pct: Exécuté / Voté * 100
       - ecart_absolu, ecart_relatif_pct
       - montant_estime: estimation pour 2025-2026 via taux historique moyen
       - confiance_estimation: haute/moyenne/basse
-      
+
       Couverture:
       - Comparaison: 2019-2024 (CA + BV disponibles)
       - Vote seul: 2025-2026 (BV uniquement, CA pas encore publié)
-      
+
       Utilisé par: export_vote_vs_execute.py → vote_vs_execute/*.json
     config:
       materialized: view
@@ -289,6 +301,8 @@ models:
         description: "Investissement ou Fonctionnement"
         tests:
           - not_null
+          - accepted_values:
+              values: ['Investissement', 'Fonctionnement']
       - name: sens_flux
         description: "Dépense ou Recette"
         tests:
@@ -309,10 +323,13 @@ models:
         description: "TRUE si les deux sources existent pour cette année"
       - name: vote_seul
         description: "TRUE si seul le vote est disponible (2025-2026)"
-      - name: montant_estime
-        description: "Estimation exécution = vote * taux_moyen_historique (pour 2025-2026)"
       - name: confiance_estimation
         description: "Confiance: haute, moyenne, basse (basée sur historique)"
+        tests:
+          - accepted_values:
+              values: ['haute', 'moyenne', 'basse']
+              config:
+                where: "confiance_estimation IS NOT NULL"
 
   # ===========================================================================
   # CONCENTRATION (PARETO)
@@ -322,7 +339,7 @@ models:
       Analyse Pareto de la concentration des dépenses.
       Domaines: subventions (par bénéficiaire), investissements (par programme AP).
       Métriques: rang, % cumulé, segment (top_80/top_95/reste).
-      
+
       Utilisé par: frontend → graphique Pareto + KPIs concentration
     config:
       materialized: view
@@ -331,6 +348,8 @@ models:
         description: "Domaine d'analyse: subventions ou investissements"
         tests:
           - not_null
+          - accepted_values:
+              values: ['subventions', 'investissements']
       - name: rang
         description: "Position dans le classement (1 = plus gros montant)"
         tests:
@@ -353,3 +372,6 @@ models:
         description: "Part de cette entité dans le total (%)"
       - name: segment_pareto
         description: "Segment: top_80, top_95, ou reste"
+        tests:
+          - accepted_values:
+              values: ['top_80', 'top_95', 'reste']

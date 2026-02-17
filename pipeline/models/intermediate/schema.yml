@@ -13,7 +13,7 @@ models:
   - name: int_subventions_enrichies
     description: |
       Subventions enrichies avec SIRET, direction, géoloc et thématique.
-      
+
       Sources:
       - stg_subventions_all (base)
       - stg_associations (siret, direction, objet via JOIN)
@@ -22,7 +22,7 @@ models:
       - seed_mapping_beneficiaires (thématique par pattern)
       - seed_mapping_directions (thématique par direction)
       - seed_cache_thematique_beneficiaires (thématique LLM)
-      
+
       Enrichissements (ode_*):
       - ode_thematique: cascade pattern → direction → llm → default
       - ode_arrondissement, ode_latitude, ode_longitude: via SIRET
@@ -44,8 +44,18 @@ models:
         description: "Direction responsable (DAC, DJS...)"
       - name: ode_thematique
         description: "Thématique classifiée (pattern/direction/llm/default)"
+        tests:
+          - not_null
       - name: ode_source_thematique
         description: "Source: pattern, direction, llm, default"
+        tests:
+          - accepted_values:
+              values: ['pattern', 'direction', 'llm', 'default']
+      - name: ode_type_organisme
+        description: "Type d'organisme normalisé"
+        tests:
+          - accepted_values:
+              values: ['public', 'association', 'entreprise', 'personne_physique', 'prive_autre', 'autre', 'non_renseigne']
       - name: ode_arrondissement
         description: "Arrondissement (1-20) si géolocalisé"
       - name: ode_latitude
@@ -59,12 +69,12 @@ models:
   - name: int_ap_projets_enrichis
     description: |
       Projets AP enrichis avec géolocalisation et type d'équipement.
-      
+
       Sources:
       - stg_ap_projets (base avec arrondissement_regex)
       - seed_lieux_connus (équipements parisiens)
       - seed_cache_geo_ap (résultats LLM)
-      
+
       Enrichissements (ode_*):
       - ode_arrondissement: cascade regex → lieu_connu → llm
       - ode_adresse, ode_latitude, ode_longitude
@@ -77,6 +87,8 @@ models:
           - not_null
       - name: ap_code
         description: "Code AP unique"
+        tests:
+          - not_null
       - name: ap_texte
         description: "Description du projet"
       - name: montant
@@ -95,5 +107,10 @@ models:
         description: "Type: piscine, equipement_sportif, etc."
       - name: ode_source_geo
         description: "Source: regex, lieu_connu, llm"
+        tests:
+          - accepted_values:
+              values: ['regex', 'lieu_connu', 'llm']
+              config:
+                where: "ode_source_geo IS NOT NULL"
       - name: ode_confiance
         description: "Score de confiance (0-1)"
