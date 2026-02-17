@@ -132,7 +132,7 @@ const COLUMNS: TableColumnDef<MarchePublic>[] = [
   {
     key: 'fournisseur', label: 'Fournisseur', hideOnMobile: true, align: 'left',
     render: (m) => m.is_multiattributaire
-      ? <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-amber-50 text-amber-400">Multi-attr.</span>
+      ? <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-amber-900/30 text-amber-400">Multi-attr.</span>
       : <p className="text-xs text-slate-600 line-clamp-2">{m.fournisseur_nom}</p>,
   },
   {
@@ -219,14 +219,14 @@ export default function MarchesAnnuelTab({
       }
       banner={
         <>
-          <div className="bg-teal-50 border border-teal-500/30 rounded-lg p-3 mb-6">
-            <p className="text-xs text-teal-700/80">
+          <div className="bg-teal-900/30 border border-teal-500/30 rounded-lg p-3 mb-6">
+            <p className="text-xs text-teal-300/80">
               Les montants affichés sont des <strong className="text-teal-200">enveloppes pluriannuelles</strong> (plafonds contractuels), pas des dépenses annuelles. 97% des marchés sont des accords-cadres.
             </p>
           </div>
           {error && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
-              <p className="text-red-600 flex items-center gap-2"><span>⚠</span>{error}</p>
+            <div className="bg-red-900/30 border border-red-500/30 rounded-lg p-4 mb-6">
+              <p className="text-red-400 flex items-center gap-2"><span>⚠</span>{error}</p>
             </div>
           )}
         </>
