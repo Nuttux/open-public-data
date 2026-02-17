@@ -3,6 +3,9 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
+import { ARRONDISSEMENTS } from '@/lib/constants/arrondissements';
+
+const TOTAL_POPULATION = ARRONDISSEMENTS.reduce((s, a) => s + a.population, 0);
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -11,9 +14,10 @@ interface EvolutionYear {
   totals: {
     depenses: number;
     recettes: number;
-    variation_dette_nette: number;
-    remboursement_principal: number;
-    interets_dette: number;
+  };
+  sections: {
+    fonctionnement: { recettes: number; depenses: number };
+    investissement: { recettes: number; depenses: number };
   };
   epargne_brute: number;
   type_budget: string;
@@ -23,8 +27,15 @@ interface SubventionsIndex {
   totals_by_year: Record<string, { montant_total: number; nb_subventions: number }>;
 }
 
+interface LogementRecord {
+  annee: number;
+  nbLogements: number;
+  nbPLAI: number;
+}
+
 interface LogementsData {
   total: number;
+  data: LogementRecord[];
 }
 
 interface MarchesIndex {
@@ -36,8 +47,8 @@ interface TileData {
   value: string;
   sub: string;
   variation: number | null;
-  variationRef?: number;
-  /** true = down is good (dette, depenses) */
+  variationLabel?: string;
+  /** true = down is good (depenses) */
   inverse?: boolean;
   href: string;
   color: string;
@@ -52,11 +63,11 @@ function pctChange(current: number, reference: number): number | null {
 
 function VariationBadge({
   value,
-  refYear = 2020,
+  label,
   inverse = false,
 }: {
   value: number | null;
-  refYear?: number;
+  label?: string;
   inverse?: boolean;
 }) {
   if (value === null) return <span className="text-slate-600 text-xs">—</span>;
@@ -65,8 +76,8 @@ function VariationBadge({
   const arrow = value > 0 ? '↑' : value < 0 ? '↓' : '→';
   return (
     <span className={`text-xs font-medium ${color} flex items-center gap-0.5`}>
-      {arrow} {value > 0 ? '+' : ''}{value.toFixed(1)}%{' '}
-      <span className="text-slate-600 font-normal">vs {refYear}</span>
+      {arrow} {value > 0 ? '+' : ''}{value.toFixed(1)}%
+      {label && <span className="text-slate-600 font-normal ml-0.5">{label}</span>}
     </span>
   );
 }
@@ -88,7 +99,7 @@ function TileGrid({ tiles }: { tiles: TileData[] }) {
             <p className="text-[11px] text-slate-500 truncate">{tile.sub}</p>
             <VariationBadge
               value={tile.variation}
-              refYear={tile.variationRef ?? 2020}
+              label={tile.variationLabel}
               inverse={tile.inverse}
             />
           </div>
@@ -101,7 +112,7 @@ function TileGrid({ tiles }: { tiles: TileData[] }) {
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function KpiTilesSection() {
-  const [financeTiles, setFinanceTiles] = useState<TileData[]>([]);
+  const [budgetTiles, setBudgetTiles] = useState<TileData[]>([]);
   const [activiteTiles, setActiviteTiles] = useState<TileData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -120,104 +131,116 @@ export default function KpiTilesSection() {
         const log = (await logRes.json()) as LogementsData;
         const mar = (await marRes.json()) as MarchesIndex;
 
-        // Latest year (including voted budgets)
+        // ── Budget metrics ────────────────────────────────────────────
         const latest = evo.years[0];
-        const ref2020 = evo.years.find((y) => y.year === 2020);
-
-        // Durée de désendettement : cumulative net debt since 2020 / epargne brute
-        // Uses only executed years to avoid double-counting voted projections
-        const executedSince2020 = evo.years.filter(
-          (y) => y.type_budget === 'execute' && y.year >= 2020,
-        );
-        const cumulativeDette = executedSince2020.reduce(
-          (s, y) => s + y.totals.variation_dette_nette,
-          0,
-        );
-        const dureeDesendettement =
-          latest.epargne_brute > 0 && cumulativeDette > 0
-            ? cumulativeDette / latest.epargne_brute
-            : null;
-
-        // Subventions: latest available year + 2020 as reference (start of mandate)
-        const subYears = Object.keys(sub.totals_by_year).map(Number).sort((a, b) => b - a);
-        const subLatest = sub.totals_by_year[subYears[0]];
-        const subRefYear = 2020;
-        const subRef = sub.totals_by_year[String(subRefYear)] ?? sub.totals_by_year[String(subYears[subYears.length - 1])] ?? null;
-
-        // Marchés: latest available year
-        const marYears = Object.keys(mar.totals_by_year).map(Number).sort((a, b) => b - a);
-        const marLatest = mar.totals_by_year[marYears[0]];
-        const mar2020 = mar.totals_by_year['2020'] ?? null;
-
+        const prev = evo.years.find((y) => y.year === latest.year - 1) || evo.years[1];
         const budgetSuffix = latest.type_budget === 'vote' ? ' (BP)' : '';
 
-        const finances: TileData[] = [
+        // 1. Budget quotidien par habitant
+        const perCapitaDay = latest.totals.depenses / TOTAL_POPULATION / 365;
+        const prevPerCapitaDay = prev
+          ? prev.totals.depenses / TOTAL_POPULATION / 365
+          : null;
+
+        // 2. Investissement (écoles, voirie, équipements…)
+        const investDepenses = latest.sections.investissement.depenses;
+        const investPct = (investDepenses / latest.totals.depenses) * 100;
+        const prevInvest = prev?.sections.investissement.depenses;
+
+        // 3. Épargne brute (capacité d'autofinancement)
+        const epargne = latest.epargne_brute;
+        const prevEpargne = prev?.epargne_brute;
+
+        const budget: TileData[] = [
           {
-            label: `Dépenses ${latest.year}${budgetSuffix}`,
-            value: formatEuroCompact(latest.totals.depenses),
-            sub: latest.type_budget === 'vote' ? 'Budget voté' : 'Budget exécuté',
-            variation: ref2020 ? pctChange(latest.totals.depenses, ref2020.totals.depenses) : null,
+            label: `Votre budget quotidien${budgetSuffix}`,
+            value: `${perCapitaDay.toFixed(1).replace('.', ',')} €/jour`,
+            sub: `par Parisien · ${formatNumber(Math.round(latest.totals.depenses / TOTAL_POPULATION))} €/an`,
+            variation: prevPerCapitaDay ? pctChange(perCapitaDay, prevPerCapitaDay) : null,
+            variationLabel: prev ? `vs ${prev.year}` : undefined,
             inverse: true,
             href: '/budget',
             color: 'border-blue-500/40',
           },
           {
-            label: `Recettes ${latest.year}${budgetSuffix}`,
-            value: formatEuroCompact(latest.totals.recettes),
-            sub: latest.type_budget === 'vote' ? 'Budget voté' : 'Budget exécuté',
-            variation: ref2020 ? pctChange(latest.totals.recettes, ref2020.totals.recettes) : null,
-            href: '/budget',
+            label: `Investissement ${latest.year}${budgetSuffix}`,
+            value: formatEuroCompact(investDepenses),
+            sub: `${investPct.toFixed(0)}% du budget · écoles, voirie, équipements`,
+            variation: prevInvest ? pctChange(investDepenses, prevInvest) : null,
+            variationLabel: prev ? `vs ${prev.year}` : undefined,
+            href: '/investissements',
             color: 'border-emerald-500/40',
           },
           {
-            label: 'Durée de désendettement',
-            value:
-              dureeDesendettement !== null
-                ? `${dureeDesendettement.toFixed(1).replace('.', ',')} ans`
-                : 'Dette réduite',
-            sub: 'Dette nette du mandat / épargne brute',
-            variation: null,
+            label: `Santé financière ${latest.year}${budgetSuffix}`,
+            value: formatEuroCompact(epargne),
+            sub: "Épargne brute · capacité d'autofinancement",
+            variation: prevEpargne ? pctChange(epargne, prevEpargne) : null,
+            variationLabel: prev ? `vs ${prev.year}` : undefined,
             href: '/budget?tab=tendances',
-            color:
-              dureeDesendettement === null || dureeDesendettement < 5
-                ? 'border-emerald-500/40'
-                : dureeDesendettement < 10
-                  ? 'border-amber-500/40'
-                  : 'border-red-500/40',
+            color: epargne > 0 ? 'border-emerald-500/40' : 'border-red-500/40',
           },
         ];
 
+        // ── Activité metrics ──────────────────────────────────────────
+
+        // 4. Subventions / Aides versées
+        const subYears = Object.keys(sub.totals_by_year).map(Number).sort((a, b) => b - a);
+        const subLatest = sub.totals_by_year[subYears[0]];
+        const subPrev = subYears.length > 1 ? sub.totals_by_year[subYears[1]] : null;
+        const montantMoyen = subLatest.montant_total / subLatest.nb_subventions;
+
+        // 5. Logements sociaux — annualisé avec % PLAI
+        const logYears = [...new Set(log.data.map((d) => d.annee))].sort((a, b) => b - a);
+        const latestLogYear = logYears[0];
+        const prevLogYear = logYears[1];
+
+        const logementsLatest = log.data.filter((d) => d.annee === latestLogYear);
+        const nbLogementsYear = logementsLatest.reduce((s, d) => s + d.nbLogements, 0);
+        const nbPLAI = logementsLatest.reduce((s, d) => s + d.nbPLAI, 0);
+        const pctPLAI = nbLogementsYear > 0 ? (nbPLAI / nbLogementsYear) * 100 : 0;
+
+        const logementsPrev = prevLogYear
+          ? log.data.filter((d) => d.annee === prevLogYear)
+          : [];
+        const nbLogementsPrev = logementsPrev.reduce((s, d) => s + d.nbLogements, 0);
+
+        // 6. Marchés publics — nombre de marchés (pas l'enveloppe trompeuse)
+        const marYears = Object.keys(mar.totals_by_year).map(Number).sort((a, b) => b - a);
+        const marLatest = mar.totals_by_year[marYears[0]];
+        const marPrev = marYears.length > 1 ? mar.totals_by_year[marYears[1]] : null;
+
         const activite: TileData[] = [
           {
-            label: `Subventions ${subYears[0]}`,
+            label: `Aides versées ${subYears[0]}`,
             value: formatEuroCompact(subLatest.montant_total),
-            sub: `${formatNumber(subLatest.nb_subventions)} versements`,
-            variation: subRef ? pctChange(subLatest.montant_total, subRef.montant_total) : null,
-            variationRef: subRefYear,
+            sub: `${formatNumber(subLatest.nb_subventions)} versements · moy. ${formatEuroCompact(montantMoyen)}`,
+            variation: subPrev ? pctChange(subLatest.montant_total, subPrev.montant_total) : null,
+            variationLabel: subPrev ? `vs ${subYears[1]}` : undefined,
             href: '/subventions',
             color: 'border-purple-500/40',
           },
           {
-            label: 'Logements sociaux',
-            value: formatNumber(log.total),
-            sub: 'Financés depuis 2010',
-            variation: null,
+            label: `Logements financés ${latestLogYear}`,
+            value: `${formatNumber(nbLogementsYear)} logements`,
+            sub: `dont ${pctPLAI.toFixed(0)}% très sociaux (PLAI)`,
+            variation: nbLogementsPrev > 0 ? pctChange(nbLogementsYear, nbLogementsPrev) : null,
+            variationLabel: nbLogementsPrev > 0 ? `vs ${prevLogYear}` : undefined,
             href: '/logements',
-            color: 'border-emerald-500/40',
+            color: 'border-amber-500/40',
           },
           {
-            label: `Marchés ${marYears[0]}`,
-            value: formatEuroCompact(marLatest.enveloppe_max_totale),
-            sub: `${formatNumber(marLatest.nb_marches)} marchés passés`,
-            variation: mar2020
-              ? pctChange(marLatest.enveloppe_max_totale, mar2020.enveloppe_max_totale)
-              : null,
+            label: `Commande publique ${marYears[0]}`,
+            value: `${formatNumber(marLatest.nb_marches)} marchés`,
+            sub: 'Marchés notifiés dans l\'année',
+            variation: marPrev ? pctChange(marLatest.nb_marches, marPrev.nb_marches) : null,
+            variationLabel: marPrev ? `vs ${marYears[1]}` : undefined,
             href: '/marches-publics',
             color: 'border-teal-500/40',
           },
         ];
 
-        setFinanceTiles(finances);
+        setBudgetTiles(budget);
         setActiviteTiles(activite);
       } catch (err) {
         console.error('KpiTilesSection load error:', err);
@@ -244,17 +267,17 @@ export default function KpiTilesSection() {
     <section className="space-y-6">
       <div>
         <h2 className="text-xl sm:text-2xl font-bold text-slate-100 mb-1">
-          Chiffres clés
+          Paris en un coup d&apos;œil
         </h2>
         <p className="text-sm text-slate-500">
-          Évolution depuis 2020, début du mandat municipal · cliquez pour explorer en détail
+          Cliquez sur un indicateur pour explorer en détail
         </p>
       </div>
 
-      {/* Finances */}
+      {/* Votre budget */}
       <div>
-        <p className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-3">Finances</p>
-        <TileGrid tiles={financeTiles} />
+        <p className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-3">Votre budget</p>
+        <TileGrid tiles={budgetTiles} />
       </div>
 
       {/* Activité */}
