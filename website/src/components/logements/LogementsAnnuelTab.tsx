@@ -146,26 +146,6 @@ interface LogementsAnnuelTabProps {
 export default function LogementsAnnuelTab({
   logements, selectedYear, isLoading, onNavigateExplorer,
 }: LogementsAnnuelTabProps) {
-  const stats = useMemo(() => {
-    const totalLog = logements.reduce((s, l) => s + l.nbLogements, 0);
-    const bailleurs = new Set(logements.map(l => l.bailleur)).size;
-    const arrondissements = new Set(logements.map(l => l.arrondissement)).size;
-    return { projets: logements.length, logements: totalLog, bailleurs, arrondissements };
-  }, [logements]);
-
-  const topBailleur = useMemo(() => {
-    if (logements.length === 0) return null;
-    const map = new Map<string, number>();
-    for (const l of logements) {
-      map.set(l.bailleur, (map.get(l.bailleur) || 0) + l.nbLogements);
-    }
-    let top = { name: '', val: 0 };
-    for (const [name, val] of map) {
-      if (val > top.val) top = { name, val };
-    }
-    return top;
-  }, [logements]);
-
   return (
     <AnnuelTab
       items={logements}
@@ -214,36 +194,7 @@ export default function LogementsAnnuelTab({
           </div>
         </div>
       }
-      kpiCards={
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
-          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-500 uppercase tracking-wide">Total Logements</p>
-            <p className="text-2xl font-bold text-emerald-400 mt-1">
-              {stats.logements >= 1000 ? `${(stats.logements / 1000).toFixed(1)}k` : formatNumber(stats.logements)}
-            </p>
-            <p className="text-xs text-slate-500 mt-1">{formatNumber(stats.projets)} programmes</p>
-          </div>
-          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-500 uppercase tracking-wide">Bailleurs</p>
-            <p className="text-2xl font-bold text-slate-100 mt-1">{formatNumber(stats.bailleurs)}</p>
-            <p className="text-xs text-slate-500 mt-1">{selectedYear}</p>
-          </div>
-          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-500 uppercase tracking-wide">Arrondissements</p>
-            <p className="text-2xl font-bold text-emerald-400 mt-1">{formatNumber(stats.arrondissements)}</p>
-            <p className="text-xs text-slate-500 mt-1">avec programmes</p>
-          </div>
-          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-500 uppercase tracking-wide">Top bailleur</p>
-            <p className="text-lg font-bold text-emerald-400 mt-1">
-              {topBailleur ? formatNumber(topBailleur.val) + ' log.' : '—'}
-            </p>
-            <p className="text-xs text-slate-500 mt-1 truncate" title={topBailleur?.name}>
-              {topBailleur?.name?.slice(0, 30) || '—'}
-            </p>
-          </div>
-        </div>
-      }
+      kpiCards={null}
       exportBar={
         <ExportBar
           csvData={logements as unknown as Record<string, unknown>[]}
