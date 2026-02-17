@@ -116,6 +116,10 @@ export interface AnnuelTabProps<T> {
   treemapTitle: string;
   /** Label for the count in tooltip, e.g. "Projets" or "Bénéficiaires" */
   tooltipCountLabel: string;
+  /** Label for the value in tooltip (default: "Montant") */
+  tooltipValueLabel?: string;
+  /** Format the aggregated value in tooltip (default: formatEuroCompact) */
+  formatValue?: (value: number) => string;
   /** Max groups in treemap per dimension — extras grouped as "Autres" */
   maxGroups?: (dim: string) => number | undefined;
 
@@ -175,7 +179,7 @@ export function aggregateItems<T>(
 export default function AnnuelTab<T>({
   items, isLoading, theme,
   breakdowns, getGroupKey, getGroupColor, getValue,
-  treemapTitle, tooltipCountLabel, maxGroups,
+  treemapTitle, tooltipCountLabel, tooltipValueLabel = 'Montant', formatValue = formatEuroCompact, maxGroups,
   kpiCards,
   itemLabel, columns, sortItems, getItemKey,
   previewLimit = 30, onNavigateExplorer, formatTotal,
@@ -253,8 +257,8 @@ export default function AnnuelTab<T>({
           </div>
           <div style="display: flex; flex-direction: column; gap: 3px; font-size: ${isMobile ? '11px' : '12px'};">
             <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '12px' : '24px'};">
-              <span style="color: #94a3b8;">Montant</span>
-              <span style="font-weight: 500; color: #f1f5f9;">${formatEuroCompact(p.value)}</span>
+              <span style="color: #94a3b8;">${tooltipValueLabel}</span>
+              <span style="font-weight: 500; color: #f1f5f9;">${formatValue(p.value)}</span>
             </div>
             <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '12px' : '24px'};">
               <span style="color: #94a3b8;">Part du total</span>
@@ -303,7 +307,7 @@ export default function AnnuelTab<T>({
       animationDuration: isMobile ? 300 : 500,
       animationEasing: 'cubicOut',
     }],
-  }), [chartData, isMobile, tooltipCountLabel]);
+  }), [chartData, isMobile, tooltipCountLabel, tooltipValueLabel, formatValue]);
 
   const handleTreemapClick = useCallback((params: unknown) => {
     const p = params as { name: string };
@@ -326,7 +330,7 @@ export default function AnnuelTab<T>({
 
   const totalLabel = formatTotal
     ? formatTotal(sortedFiltered)
-    : formatEuroCompact(sortedFiltered.reduce((s, item) => s + getValue(item), 0));
+    : formatValue(sortedFiltered.reduce((s, item) => s + getValue(item), 0));
 
   return (
     <div>
