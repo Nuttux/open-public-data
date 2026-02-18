@@ -95,8 +95,7 @@ export default function KpiTilesSection() {
         const mar = (await marRes.json()) as MarchesIndex;
 
         // ── Budget metrics ────────────────────────────────────────────
-        // Use latest executed year for coherence with activity data (all 2024)
-        const latest = evo.years.find((y) => y.type_budget === 'execute') || evo.years[0];
+        const latest = evo.years[0];
         const budgetSuffix = latest.type_budget === 'vote' ? ' (BP)' : '';
 
         const perCapitaDay = latest.totals.depenses / TOTAL_POPULATION / 365;
