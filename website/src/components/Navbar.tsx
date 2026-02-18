@@ -180,7 +180,7 @@ export default function Navbar() {
                     `}
                     title={link.description}
                   >
-                    <span className="text-base">{link.icon}</span>
+                    <span className="text-[18px] leading-none">{link.icon}</span>
                     <span className="hidden lg:inline">{link.label}</span>
                   </Link>
                 );

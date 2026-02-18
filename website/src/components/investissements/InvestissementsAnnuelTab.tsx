@@ -16,6 +16,7 @@ import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { getThematiqueColor, PALETTE } from '@/lib/colors';
 import { THEMATIQUE_LABELS, type ThematiqueSubvention } from '@/lib/constants/directions';
 import type { CsvColumn } from '@/lib/export';
+import { BREAKDOWN_ICONS } from '@/lib/icons';
 
 const CSV_COLUMNS: CsvColumn<Record<string, unknown>>[] = [
   { key: 'annee', label: 'Année' },
@@ -29,9 +30,9 @@ const CSV_COLUMNS: CsvColumn<Record<string, unknown>>[] = [
 // ─── Config ──────────────────────────────────────────────────────────────────
 
 const BREAKDOWNS: BreakdownOption[] = [
-  { id: 'thematique', label: 'Thématique', icon: '🎯' },
-  { id: 'chapitre', label: 'Chapitre', icon: '📋' },
-  { id: 'arrondissement', label: 'Arrondissement', icon: '📍' },
+  { id: 'thematique', label: 'Thématique', icon: BREAKDOWN_ICONS.thematique },
+  { id: 'chapitre', label: 'Chapitre', icon: BREAKDOWN_ICONS.chapitre },
+  { id: 'arrondissement', label: 'Arrondissement', icon: BREAKDOWN_ICONS.arrondissement },
 ];
 
 const ARR_COLORS = [

@@ -21,6 +21,7 @@ import type { EChartsOption } from 'echarts';
 import { formatEuroCompact } from '@/lib/formatters';
 import { PALETTE } from '@/lib/colors';
 import { useIsMobile } from '@/lib/hooks/useIsMobile';
+import ExportBar from '@/components/shared/ExportBar';
 
 // =============================================================================
 // Types
@@ -549,6 +550,26 @@ export default function PrevisionPage() {
     [data],
   );
 
+  // CSV export data
+  const csvRows = useMemo(() => {
+    if (!data) return [];
+    return [...data.global_rates]
+      .sort((a, b) => a.annee - b.annee)
+      .map(r => ({
+        annee: r.annee,
+        type: r.type,
+        depenses_vote: r.depenses_vote,
+        depenses_execute: r.depenses_execute,
+        taux_global: r.taux_global,
+        vote_fonct: r.vote_fonct,
+        execute_fonct: r.execute_fonct,
+        taux_fonct: r.taux_fonct,
+        vote_inves: r.vote_inves,
+        execute_inves: r.execute_inves,
+        taux_inves: r.taux_inves,
+      })) as unknown as Record<string, unknown>[];
+  }, [data]);
+
   if (isLoading) {
     return (
       <main className="min-h-screen flex items-center justify-center">
@@ -613,6 +634,24 @@ export default function PrevisionPage() {
 
       {/* Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+        <ExportBar
+          csvData={csvRows}
+          csvColumns={[
+            { key: 'annee', label: 'Année' },
+            { key: 'type', label: 'Type' },
+            { key: 'depenses_vote', label: 'Dépenses votées (€)' },
+            { key: 'depenses_execute', label: 'Dépenses exécutées (€)' },
+            { key: 'taux_global', label: 'Taux global (%)' },
+            { key: 'vote_fonct', label: 'Voté fonct. (€)' },
+            { key: 'execute_fonct', label: 'Exécuté fonct. (€)' },
+            { key: 'taux_fonct', label: 'Taux fonct. (%)' },
+            { key: 'vote_inves', label: 'Voté invest. (€)' },
+            { key: 'execute_inves', label: 'Exécuté invest. (€)' },
+            { key: 'taux_inves', label: 'Taux invest. (%)' },
+          ]}
+          filename="prevision_vote_vs_execute"
+        />
+
         {/* KPI Cards */}
         <ExecutionRateCards rates={chronoRates} />
 

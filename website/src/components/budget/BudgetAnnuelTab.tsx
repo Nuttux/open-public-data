@@ -12,12 +12,13 @@
  * - years : liste des années disponibles
  */
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import YearSelector from '@/components/YearSelector';
 import StatsCards from '@/components/StatsCards';
 import BudgetSankey from '@/components/BudgetSankey';
 import NatureDonut, { type BudgetNatureData } from '@/components/NatureDonut';
 import DrilldownPanel from '@/components/DrilldownPanel';
+import ExportBar from '@/components/shared/ExportBar';
 import { getBudgetTypeForYear } from '@/components/BudgetTypeBadge';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 import type { BudgetData, BudgetIndex, DrilldownItem, DataStatus, BudgetType } from '@/lib/formatters';
@@ -324,6 +325,16 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
 
   // ── Render ───────────────────────────────────────────────────────────────
 
+  // ── CSV export data (Sankey links) ──
+  const csvLinks = useMemo(() => {
+    if (!budgetData) return [];
+    return budgetData.links.map(l => ({
+      source: l.source,
+      target: l.target,
+      value: l.value,
+    })) as unknown as Record<string, unknown>[];
+  }, [budgetData]);
+
   const currentDrilldown = drilldown ? drilldown.levels[drilldown.currentLevel] : null;
   const breadcrumbs = drilldown?.levels.map(l => l.title) || [];
   const canDrillDeeper = currentDrilldown
@@ -377,6 +388,16 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
             depenses={budgetData.totals.depenses}
             year={selectedYear}
             emprunts={empruntsData[selectedYear] || budgetData.links.find(l => l.source === 'Emprunts')?.value || 0}
+          />
+
+          <ExportBar
+            csvData={csvLinks}
+            csvColumns={[
+              { key: 'source', label: 'Source' },
+              { key: 'target', label: 'Destination' },
+              { key: 'value', label: 'Montant (€)' },
+            ]}
+            filename={`budget_annuel_${selectedYear}`}
           />
 
           {/* Toggle Vue */}

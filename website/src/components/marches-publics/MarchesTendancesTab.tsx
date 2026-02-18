@@ -11,12 +11,13 @@ import TendancesTab from '@/components/shared/TendancesTab';
 import type { TendancesYear, BreakdownOption } from '@/components/shared/TendancesTab';
 import { PALETTE } from '@/lib/colors';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
+import { BREAKDOWN_ICONS } from '@/lib/icons';
 
 // ─── Config ──────────────────────────────────────────────────────────────────
 
 const BREAKDOWNS: BreakdownOption[] = [
-  { id: 'nature', label: 'Nature', icon: '📋' },
-  { id: 'categorie', label: 'Catégorie', icon: '🏷' },
+  { id: 'nature', label: 'Nature', icon: BREAKDOWN_ICONS.nature },
+  { id: 'categorie', label: 'Catégorie', icon: BREAKDOWN_ICONS.categorie },
 ];
 
 const NATURE_COLORS: Record<string, string> = {

@@ -20,6 +20,7 @@ import type { LogementSocial, ArrondissementStats } from '@/lib/types/map';
 import { loadLogementsSociaux, loadArrondissementsStats } from '@/lib/api/staticData';
 import { formatNumber } from '@/lib/formatters';
 import { DATA_SOURCES } from '@/lib/constants/arrondissements';
+import ExportBar from '@/components/shared/ExportBar';
 
 /**
  * Import dynamique de la carte (Leaflet nécessite window)
@@ -169,6 +170,21 @@ export default function LogementsSociauxPage() {
   }, [filteredLogements, topBailleurs]);
 
   /**
+   * CSV export data (bailleurs)
+   */
+  const csvBailleurs = useMemo(() => {
+    return topBailleurs.map(b => ({
+      nom: b.nom,
+      nb_projets: b.nbProjets,
+      nb_logements: b.nbLogements,
+      nb_PLAI: b.nbPLAI,
+      nb_PLUS: b.nbPLUS,
+      nb_PLS: b.nbPLS,
+      arrondissements: b.arrondissements.sort((a, c) => a - c).join(', '),
+    })) as unknown as Record<string, unknown>[];
+  }, [topBailleurs]);
+
+  /**
    * Liste des arrondissements pour le filtre
    */
   const arrondissements = useMemo(() => {
@@ -248,6 +264,20 @@ export default function LogementsSociauxPage() {
             </p>
           </div>
         )}
+
+        <ExportBar
+          csvData={csvBailleurs}
+          csvColumns={[
+            { key: 'nom', label: 'Bailleur' },
+            { key: 'nb_projets', label: 'Projets' },
+            { key: 'nb_logements', label: 'Logements' },
+            { key: 'nb_PLAI', label: 'PLAI' },
+            { key: 'nb_PLUS', label: 'PLUS' },
+            { key: 'nb_PLS', label: 'PLS' },
+            { key: 'arrondissements', label: 'Arrondissements' },
+          ]}
+          filename="logements_bailleurs"
+        />
 
         {/* Stats rapides — 2 colonnes sur mobile, 5 sur desktop */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 mb-6">

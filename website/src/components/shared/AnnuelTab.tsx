@@ -23,7 +23,7 @@ import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 export interface BreakdownOption {
   id: string;
   label: string;
-  icon: string;
+  icon: ReactNode;
 }
 
 export interface AggregatedGroup {

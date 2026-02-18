@@ -11,6 +11,9 @@
  * - analogy: (optionnel) comparaison avec la vie quotidienne
  */
 
+import type { ReactNode } from 'react';
+import { GLOSSARY_ICONS } from '@/lib/icons';
+
 /** Définition d'un terme du glossaire */
 export interface GlossaryTerm {
   /** Clé unique du terme */
@@ -28,7 +31,7 @@ export interface GlossarySection {
   /** Titre de la section */
   title: string;
   /** Icône de la section */
-  icon: string;
+  icon: ReactNode;
   /** Termes de la section */
   terms: GlossaryTerm[];
 }
@@ -40,7 +43,7 @@ export interface GlossarySection {
 export const GLOSSARY_SECTIONS: GlossarySection[] = [
   {
     title: 'Le budget au quotidien',
-    icon: '💰',
+    icon: GLOSSARY_ICONS.budget,
     terms: [
       {
         key: 'recettes_propres',
@@ -79,7 +82,7 @@ export const GLOSSARY_SECTIONS: GlossarySection[] = [
   },
   {
     title: 'La santé financière',
-    icon: '📊',
+    icon: GLOSSARY_ICONS.sante,
     terms: [
       {
         key: 'epargne_brute',
@@ -107,7 +110,7 @@ export const GLOSSARY_SECTIONS: GlossarySection[] = [
   },
   {
     title: 'La dette',
-    icon: '🏦',
+    icon: GLOSSARY_ICONS.dette,
     terms: [
       {
         key: 'emprunts',
@@ -139,7 +142,7 @@ export const GLOSSARY_SECTIONS: GlossarySection[] = [
   },
   {
     title: 'Le patrimoine (Bilan)',
-    icon: '🏛️',
+    icon: GLOSSARY_ICONS.patrimoine,
     terms: [
       {
         key: 'actif_net',

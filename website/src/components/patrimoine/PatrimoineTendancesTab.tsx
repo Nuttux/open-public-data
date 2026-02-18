@@ -15,9 +15,11 @@ import { useState, useEffect, useMemo } from 'react';
 import FinancialHealthChart, { type FinancialYearData } from '@/components/FinancialHealthChart';
 import DebtRatiosChart, { type DebtRatioYearData } from '@/components/DebtRatiosChart';
 import DebtStockChart, { type DebtStockYearData } from '@/components/DebtStockChart';
+import ExportBar from '@/components/shared/ExportBar';
 import GlossaryTip from '@/components/GlossaryTip';
 import YearRangeSelector from '@/components/YearRangeSelector';
 import { formatEuroCompact } from '@/lib/formatters';
+import { MISC_ICONS } from '@/lib/icons';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -234,6 +236,22 @@ export default function PatrimoineTendancesTab() {
     };
   }, [startYearRaw, endYearRaw]);
 
+  // ── CSV export data ──
+  const csvRows = useMemo(() => {
+    return rawYears
+      .filter(y => y.year >= startYear && y.year <= endYear)
+      .sort((a, b) => a.year - b.year)
+      .map(y => ({
+        year: y.year,
+        epargne_brute: y.epargne_brute,
+        emprunts: y.totals.emprunts,
+        remboursement_principal: y.totals.remboursement_principal,
+        interets_dette: y.totals.interets_dette,
+        variation_dette_nette: y.totals.variation_dette_nette,
+        dettes_financieres: bilanByYear[y.year]?.dettes_financieres ?? '',
+      })) as unknown as Record<string, unknown>[];
+  }, [rawYears, startYear, endYear, bilanByYear]);
+
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-20">
@@ -269,6 +287,20 @@ export default function PatrimoineTendancesTab() {
           onEndYearChange={setEndYear}
         />
       </div>
+
+      <ExportBar
+        csvData={csvRows}
+        csvColumns={[
+          { key: 'year', label: 'Année' },
+          { key: 'epargne_brute', label: 'Épargne brute (€)' },
+          { key: 'emprunts', label: 'Emprunts (€)' },
+          { key: 'remboursement_principal', label: 'Remb. capital (€)' },
+          { key: 'interets_dette', label: 'Intérêts (€)' },
+          { key: 'variation_dette_nette', label: 'Δ Dette nette (€)' },
+          { key: 'dettes_financieres', label: 'Encours dette (€)' },
+        ]}
+        filename={`patrimoine_tendances_${startYear}-${endYear}`}
+      />
 
       {/* Métriques dette de l'année de fin + variation vs année de début */}
       {endYearRaw && (
@@ -370,7 +402,7 @@ export default function PatrimoineTendancesTab() {
       {debtStockData.length > 0 && (
         <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6 mb-6">
           <h2 className="text-lg font-semibold text-slate-100 mb-2 flex items-center gap-2">
-            <span>🏦</span>
+            <span className="text-lg">{MISC_ICONS.debtStock}</span>
             Encours de la dette
           </h2>
           <p className="text-sm text-slate-400 mb-4">
@@ -384,7 +416,7 @@ export default function PatrimoineTendancesTab() {
       {filteredDebtRatiosData.length > 0 && (
         <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6 mb-6">
           <h2 className="text-lg font-semibold text-slate-100 mb-2 flex items-center gap-2">
-            <span>📐</span>
+            <span className="text-lg">{MISC_ICONS.debtRatios}</span>
             Soutenabilité de la dette
           </h2>
           <p className="text-sm text-slate-400 mb-4">

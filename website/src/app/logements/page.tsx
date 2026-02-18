@@ -20,6 +20,7 @@ import type { LogementSocial, ArrondissementStats } from '@/lib/types/map';
 import { loadLogementsSociaux, loadArrondissementsStats } from '@/lib/api/staticData';
 import { formatNumber } from '@/lib/formatters';
 import { DATA_SOURCES } from '@/lib/constants/arrondissements';
+import { TAB_ICONS } from '@/lib/icons';
 import LogementsAnnuelTab from '@/components/logements/LogementsAnnuelTab';
 import LogementsTendancesTab from '@/components/logements/LogementsTendancesTab';
 import LogementsExplorerTab from '@/components/logements/LogementsExplorerTab';
@@ -27,9 +28,9 @@ import LogementsExplorerTab from '@/components/logements/LogementsExplorerTab';
 // ─── Tab definitions ─────────────────────────────────────────────────────────
 
 const LOGEMENTS_TABS: Tab[] = [
-  { id: 'annuel', label: 'Annuel', icon: '📊' },
-  { id: 'tendances', label: 'Tendances', icon: '📈' },
-  { id: 'explorer', label: 'Explorer', icon: '🔍' },
+  { id: 'annuel', label: 'Annuel', icon: TAB_ICONS.annuel },
+  { id: 'tendances', label: 'Tendances', icon: TAB_ICONS.tendances },
+  { id: 'explorer', label: 'Explorer', icon: TAB_ICONS.explorer },
 ];
 
 const VALID_TAB_IDS = LOGEMENTS_TABS.map(t => t.id);

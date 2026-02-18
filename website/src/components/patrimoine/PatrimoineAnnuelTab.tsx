@@ -7,10 +7,11 @@
  * Migré depuis l'ancien /bilan/page.tsx.
  */
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import YearSelector from '@/components/YearSelector';
 import BilanSankey from '@/components/BilanSankey';
 import DrilldownPanel from '@/components/DrilldownPanel';
+import ExportBar from '@/components/shared/ExportBar';
 import GlossaryTip from '@/components/GlossaryTip';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 import { loadBilanSankey, type BilanSankeyData } from '@/lib/api/staticData';
@@ -145,6 +146,16 @@ export default function PatrimoineAnnuelTab({ availableYears, selectedYear, onYe
     }
   }, [bilanData]);
 
+  // ── CSV export data (bilan links) ──
+  const csvLinks = useMemo(() => {
+    if (!bilanData) return [];
+    return bilanData.links.map(l => ({
+      source: l.source,
+      target: l.target,
+      value: l.value,
+    })) as unknown as Record<string, unknown>[];
+  }, [bilanData]);
+
   /** Close drilldown — on mobile, animate out first then clear state */
   const handleCloseDrilldown = useCallback(() => {
     if (isMobile) {
@@ -178,6 +189,17 @@ export default function PatrimoineAnnuelTab({ availableYears, selectedYear, onYe
       ) : bilanData ? (
         <>
           <BilanStatsCards data={bilanData} />
+
+          <ExportBar
+            csvData={csvLinks}
+            csvColumns={[
+              { key: 'source', label: 'Source' },
+              { key: 'target', label: 'Destination' },
+              { key: 'value', label: 'Montant (€)' },
+            ]}
+            filename={`patrimoine_bilan_${selectedYear}`}
+          />
+
           <BilanSankey data={bilanData} onNodeClick={handleNodeClick} />
 
           {/* Desktop: DrilldownPanel inline below Sankey */}

@@ -11,11 +11,12 @@ import TendancesTab from '@/components/shared/TendancesTab';
 import type { TendancesYear, BreakdownOption } from '@/components/shared/TendancesTab';
 import { formatEuroCompact } from '@/lib/formatters';
 import { PALETTE } from '@/lib/colors';
+import { BREAKDOWN_ICONS } from '@/lib/icons';
 
 // ─── Config ──────────────────────────────────────────────────────────────────
 
 const BREAKDOWNS: BreakdownOption[] = [
-  { id: 'secteur', label: 'Secteur', icon: '📋' },
+  { id: 'secteur', label: 'Secteur', icon: BREAKDOWN_ICONS.secteur },
 ];
 
 const CHAPITRE_COLORS: Record<string, string> = {
@@ -80,6 +81,7 @@ export default function InvestissementsTendancesTab() {
       variationTitle={(dim) => `Évolution par ${dim}`}
       variationSubtitle={(dim) => `Quels ${dim}s ont le plus évolué`}
       yAxisFormatter={(v: number) => `${(v / 1e9).toFixed(1)} Md€`}
+      csvFilename="investissements_tendances"
       sourceNote="Source : Comptes Administratifs — Budget Principal (M57 Ville-Département). Hors opérations de dette et dotations."
       qualityNotes={
         <ul className="text-[11px] text-slate-500 space-y-1.5 list-disc list-inside">

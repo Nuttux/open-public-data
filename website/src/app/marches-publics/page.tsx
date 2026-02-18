@@ -24,6 +24,7 @@ import MarchesAnnuelTab from '@/components/marches-publics/MarchesAnnuelTab';
 import MarchesTendancesTab from '@/components/marches-publics/MarchesTendancesTab';
 import MarchesExplorerTab from '@/components/marches-publics/MarchesExplorerTab';
 import type { MarchePublic } from '@/components/MarchesTable';
+import { TAB_ICONS } from '@/lib/icons';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -50,9 +51,9 @@ interface MarchesYearResponse {
 // ─── Tab definitions ─────────────────────────────────────────────────────────
 
 const MARCHES_TABS: Tab[] = [
-  { id: 'annuel', label: 'Annuel', icon: '📊' },
-  { id: 'tendances', label: 'Tendances', icon: '📈' },
-  { id: 'explorer', label: 'Explorer', icon: '🔍' },
+  { id: 'annuel', label: 'Annuel', icon: TAB_ICONS.annuel },
+  { id: 'tendances', label: 'Tendances', icon: TAB_ICONS.tendances },
+  { id: 'explorer', label: 'Explorer', icon: TAB_ICONS.explorer },
 ];
 
 const VALID_TAB_IDS = MARCHES_TABS.map(t => t.id);

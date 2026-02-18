@@ -21,13 +21,14 @@ import type { AutorisationProgramme, ArrondissementStats } from '@/lib/types/map
 import InvestissementsAnnuelTab from '@/components/investissements/InvestissementsAnnuelTab';
 import InvestissementsExplorerTab from '@/components/investissements/InvestissementsExplorerTab';
 import InvestissementsTendancesTab from '@/components/investissements/InvestissementsTendancesTab';
+import { TAB_ICONS } from '@/lib/icons';
 
 // ─── Tab definitions ─────────────────────────────────────────────────────────
 
 const INVEST_TABS: Tab[] = [
-  { id: 'annuel', label: 'Annuel', icon: '📊' },
-  { id: 'tendances', label: 'Tendances', icon: '📈' },
-  { id: 'explorer', label: 'Explorer', icon: '🔍' },
+  { id: 'annuel', label: 'Annuel', icon: TAB_ICONS.annuel },
+  { id: 'tendances', label: 'Tendances', icon: TAB_ICONS.tendances },
+  { id: 'explorer', label: 'Explorer', icon: TAB_ICONS.explorer },
 ];
 
 const VALID_TAB_IDS = INVEST_TABS.map(t => t.id);

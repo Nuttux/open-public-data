@@ -10,9 +10,10 @@
  * - Mode choroplèthe (per capita par arrondissement)
  */
 
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import type { MapLayerType } from '@/lib/types/map';
 import { THEMATIQUE_LABELS, type ThematiqueSubvention } from '@/lib/constants/directions';
+import { MISC_ICONS } from '@/lib/icons';
 
 /**
  * Configuration d'un layer de données
@@ -20,7 +21,7 @@ import { THEMATIQUE_LABELS, type ThematiqueSubvention } from '@/lib/constants/di
 interface LayerOption {
   id: MapLayerType;
   label: string;
-  icon: string;
+  icon: ReactNode;
   color: string;
 }
 
@@ -30,13 +31,13 @@ const LAYER_OPTIONS: LayerOption[] = [
   {
     id: 'logements',
     label: 'Logements sociaux',
-    icon: '🏠',
+    icon: MISC_ICONS.layerLogements,
     color: 'bg-emerald-500',
   },
   {
     id: 'autorisations',
     label: 'Investissements',
-    icon: '📋',
+    icon: MISC_ICONS.layerInvestissements,
     color: 'bg-amber-500',
   },
 ];

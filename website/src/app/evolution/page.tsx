@@ -23,6 +23,7 @@ import EvolutionChart, { type YearlyBudget } from '@/components/EvolutionChart';
 import FinancialHealthChart, { type FinancialYearData } from '@/components/FinancialHealthChart';
 import VariationRankChart, { type VariationsData } from '@/components/VariationRankChart';
 import YoyCards from '@/components/YoyCards';
+import ExportBar from '@/components/shared/ExportBar';
 import GlossaryTip from '@/components/GlossaryTip';
 import DataQualityBanner from '@/components/DataQualityBanner';
 import { formatEuroCompact } from '@/lib/formatters';
@@ -139,6 +140,24 @@ export default function EvolutionPage() {
     return rawData?.years.find(y => y.year === selectedYear);
   }, [rawData, selectedYear]);
 
+  // CSV export data
+  const csvRows = useMemo(() => {
+    if (!rawData) return [];
+    return rawData.years
+      .sort((a, b) => a.year - b.year)
+      .map(y => ({
+        year: y.year,
+        type_budget: y.type_budget || 'execute',
+        recettes_propres: y.totals.recettes_propres,
+        depenses: y.totals.depenses,
+        surplus_deficit: y.totals.surplus_deficit,
+        epargne_brute: y.epargne_brute,
+        emprunts: y.totals.emprunts,
+        remboursement_principal: y.totals.remboursement_principal,
+        interets_dette: y.totals.interets_dette,
+      })) as unknown as Record<string, unknown>[];
+  }, [rawData]);
+
   // Calcul des stats globales
   const globalStats = useMemo(() => {
     if (budgetData.length === 0) return null;
@@ -236,6 +255,22 @@ export default function EvolutionPage() {
       {/* Main content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <DataQualityBanner dataset="budget" year={selectedYear} />
+
+        <ExportBar
+          csvData={csvRows}
+          csvColumns={[
+            { key: 'year', label: 'Année' },
+            { key: 'type_budget', label: 'Type budget' },
+            { key: 'recettes_propres', label: 'Recettes propres (€)' },
+            { key: 'depenses', label: 'Dépenses (€)' },
+            { key: 'surplus_deficit', label: 'Surplus/Déficit (€)' },
+            { key: 'epargne_brute', label: 'Épargne brute (€)' },
+            { key: 'emprunts', label: 'Emprunts (€)' },
+            { key: 'remboursement_principal', label: 'Remb. capital (€)' },
+            { key: 'interets_dette', label: 'Intérêts dette (€)' },
+          ]}
+          filename={`evolution_budget_${globalStats?.minYear}-${globalStats?.maxYear}`}
+        />
 
         {/* Cartes KPI */}
         {currentYearData && (
