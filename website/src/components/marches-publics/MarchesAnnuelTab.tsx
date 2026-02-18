@@ -137,7 +137,7 @@ const COLUMNS: TableColumnDef<MarchePublic>[] = [
       : <p className="text-xs text-slate-400 line-clamp-2">{m.fournisseur_nom}</p>,
   },
   {
-    key: 'montant', label: 'Enveloppe max', align: 'right',
+    key: 'montant', label: 'Montant max', align: 'right',
     render: (m) => <p className="text-xs md:text-sm font-semibold text-teal-400 whitespace-nowrap">{formatEuroCompact(m.montant_max)}</p>,
   },
 ];
@@ -222,7 +222,7 @@ export default function MarchesAnnuelTab({
         <>
           <div className="bg-teal-900/30 border border-teal-500/30 rounded-lg p-3 mb-6">
             <p className="text-xs text-teal-300/80">
-              Les montants affichés sont des <strong className="text-teal-200">enveloppes pluriannuelles</strong> (plafonds contractuels), pas des dépenses annuelles. 97% des marchés sont des accords-cadres.
+              Les montants affichés sont des <strong className="text-teal-200">plafonds sur toute la durée du contrat</strong> (souvent 4 ans), pas des dépenses annuelles. Le montant réellement dépensé est généralement inférieur.
             </p>
           </div>
           {error && (
@@ -235,12 +235,12 @@ export default function MarchesAnnuelTab({
       kpiCards={stats && (
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
           <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-4">
-            <p className="text-xs text-slate-400 uppercase tracking-wide">Enveloppe totale</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">Montant total</p>
             <p className="text-2xl font-bold text-slate-100 mt-1">{formatEuroCompact(stats.totalEnveloppe)}</p>
             <p className="text-xs text-slate-400 mt-1">{formatNumber(stats.total)} marchés notifiés</p>
           </div>
           <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-4">
-            <p className="text-xs text-slate-400 uppercase tracking-wide">Enveloppe médiane</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">Montant médian</p>
             <p className="text-2xl font-bold text-teal-400 mt-1">{formatEuroCompact(stats.median)}</p>
             <p className="text-xs text-slate-400 mt-1">par marché</p>
           </div>
@@ -250,14 +250,14 @@ export default function MarchesAnnuelTab({
             <p className="text-xs text-slate-400 mt-1">par contrat</p>
           </div>
           <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-4">
-            <p className="text-xs text-slate-400 uppercase tracking-wide">Fournisseurs uniques</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">Entreprises différentes</p>
             <p className="text-2xl font-bold text-emerald-400 mt-1">{formatNumber(stats.fournisseursUniques)}</p>
-            <p className="text-xs text-slate-400 mt-1">hors multi-attr.</p>
+            <p className="text-xs text-slate-400 mt-1">fournisseurs distincts</p>
           </div>
           <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-4">
-            <p className="text-xs text-slate-400 uppercase tracking-wide">Multi-attributaires</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">Contrats partagés</p>
             <p className="text-2xl font-bold text-amber-400 mt-1">{stats.tauxMultiAttr.toFixed(0)}%</p>
-            <p className="text-xs text-slate-400 mt-1">des marchés</p>
+            <p className="text-xs text-slate-400 mt-1">avec plusieurs entreprises</p>
           </div>
           <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-4">
             <p className="text-xs text-slate-400 uppercase tracking-wide">Top fournisseur</p>

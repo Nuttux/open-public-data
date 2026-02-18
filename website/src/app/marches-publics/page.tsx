@@ -173,8 +173,8 @@ function MarchesPageInner() {
         {/* Footer */}
         <footer className="mt-8 pt-6 border-t border-slate-700/50">
           <div className="text-xs text-slate-500 text-center space-y-1">
-            <p>Données : Open Data Paris — Liste des marchés de la collectivité parisienne</p>
-            <p>Les montants affichés sont des enveloppes pluriannuelles (plafonds contractuels), pas des dépenses annuelles.</p>
+            <p>Données : Open Data Paris — Marchés publics de la Ville de Paris</p>
+            <p>Les montants affichés sont des plafonds contractuels sur toute la durée du contrat, pas des dépenses annuelles.</p>
           </div>
         </footer>
       </div>

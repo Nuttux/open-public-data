@@ -92,7 +92,7 @@ function FilterPanel({
         )}
 
         <div className={isVertical ? 'bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-4' : 'mt-3'}>
-          <label className="block text-xs font-medium text-slate-500 mb-1.5">Enveloppe</label>
+          <label className="block text-xs font-medium text-slate-500 mb-1.5">Montant</label>
           <select value={`${filters.montantMin}-${filters.montantMax}`}
             onChange={e => { const [min, max] = e.target.value.split('-').map(Number); onFiltersChange({ ...filters, montantMin: min, montantMax: max }); }}
             className="w-full bg-slate-800/30 border border-slate-700/50 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-teal-500"
@@ -156,7 +156,13 @@ export default function MarchesExplorerTab({
   };
 
   return (
-    <ExplorerTab
+    <>
+      <div className="bg-teal-900/30 border border-teal-500/30 rounded-lg p-3 mb-6">
+        <p className="text-xs text-teal-300/80">
+          Les montants affichés sont des <strong className="text-teal-200">plafonds sur toute la durée du contrat</strong> (souvent 4 ans), pas des dépenses annuelles. Le montant réellement dépensé est généralement inférieur.
+        </p>
+      </div>
+      <ExplorerTab
       theme="teal"
       isLoading={isLoading}
       activeFilterCount={activeFilterCount}
@@ -179,5 +185,6 @@ export default function MarchesExplorerTab({
         <MarchesTable data={marches} filters={filters} isLoading={false} pageSize={50} />
       }
     />
+    </>
   );
 }

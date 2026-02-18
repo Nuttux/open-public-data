@@ -96,7 +96,7 @@ export default function KpiTilesSection() {
 
         // ── Budget metrics ────────────────────────────────────────────
         const latest = evo.years[0];
-        const budgetSuffix = latest.type_budget === 'vote' ? ' (BP)' : '';
+        const budgetSuffix = latest.type_budget === 'vote' ? ' (prévisionnel)' : '';
 
         const perCapitaDay = latest.totals.depenses / TOTAL_POPULATION / 365;
         const investDepenses = latest.sections.investissement.depenses;
@@ -115,16 +115,16 @@ export default function KpiTilesSection() {
             color: 'border-blue-500/40',
           },
           {
-            label: `Investissement ${latest.year}${budgetSuffix}`,
+            label: `Grands projets ${latest.year}${budgetSuffix}`,
             value: formatEuroCompact(investDepenses),
             sub: `${investPct.toFixed(0)}% du budget · ${formatNumber(investPerCapita)} €/hab`,
             href: '/investissements',
             color: 'border-emerald-500/40',
           },
           {
-            label: `Santé financière ${latest.year}${budgetSuffix}`,
+            label: `Ce que Paris met de côté ${latest.year}${budgetSuffix}`,
             value: formatEuroCompact(epargne),
-            sub: `Épargne brute · ${epargnePct.toFixed(1)}% des recettes fonct.`,
+            sub: `${epargnePct.toFixed(1)}% des recettes courantes`,
             href: '/budget?tab=tendances',
             color: epargne > 0 ? 'border-emerald-500/40' : 'border-red-500/40',
           },
