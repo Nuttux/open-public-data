@@ -32,12 +32,6 @@ interface SankeyData {
   totals: { depenses: number };
 }
 
-interface EvolutionYear {
-  year: number;
-  type_budget: string;
-  totals: { depenses: number };
-}
-
 // ─── Inner component (needs Suspense for useSearchParams) ────────────────────
 
 function TableauDeBordInner() {
@@ -45,7 +39,6 @@ function TableauDeBordInner() {
   const [sankeyData, setSankeyData] = useState<SankeyData | null>(null);
   const [selectedYear, setSelectedYear] = useState<number>(2024);
   const [isLoading, setIsLoading] = useState(true);
-  const [depenses2020, setDepenses2020] = useState<number | undefined>(undefined);
 
   // Load index
   useEffect(() => {
@@ -53,19 +46,7 @@ function TableauDeBordInner() {
       .then((r) => r.json())
       .then((data: BudgetIndex) => {
         setIndex(data);
-        // Default to latest available year (including voted budgets like 2026 BP)
         if (data.availableYears.length > 0) setSelectedYear(data.availableYears[0]);
-      })
-      .catch(console.error);
-  }, []);
-
-  // Load 2020 reference depenses for per-capita comparison
-  useEffect(() => {
-    fetch('/data/evolution_budget.json')
-      .then((r) => r.json())
-      .then((data: { years: EvolutionYear[] }) => {
-        const y2020 = data.years.find((y) => y.year === 2020 && y.type_budget === 'execute');
-        if (y2020) setDepenses2020(y2020.totals.depenses);
       })
       .catch(console.error);
   }, []);
@@ -117,7 +98,7 @@ function TableauDeBordInner() {
           <div className="w-8 h-8 border-3 border-blue-500 border-t-transparent rounded-full animate-spin" />
         </div>
       ) : sankeyData ? (
-        <PerCapitaSection data={sankeyData} depenses2020={depenses2020} />
+        <PerCapitaSection data={sankeyData} />
       ) : (
         <div className="text-slate-500 text-center py-12">Données non disponibles</div>
       )}

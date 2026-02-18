@@ -49,7 +49,6 @@ interface SankeyData {
 
 interface PerCapitaSectionProps {
   data: SankeyData;
-  depenses2020?: number;
 }
 
 interface ThematiqueRow {
@@ -61,7 +60,7 @@ interface ThematiqueRow {
   color: string;
 }
 
-export default function PerCapitaSection({ data, depenses2020 }: PerCapitaSectionProps) {
+export default function PerCapitaSection({ data }: PerCapitaSectionProps) {
   const isMobile = useIsMobile();
 
   const rows = useMemo<ThematiqueRow[]>(() => {
@@ -86,12 +85,6 @@ export default function PerCapitaSection({ data, depenses2020 }: PerCapitaSectio
     [rows],
   );
   const totalPerDay = totalPerCapita / 365;
-
-  const pctVs2020 = useMemo(() => {
-    if (!depenses2020 || depenses2020 === 0) return null;
-    const totalDepenses = rows.reduce((s, r) => s + r.total, 0);
-    return ((totalDepenses - depenses2020) / depenses2020) * 100;
-  }, [rows, depenses2020]);
 
   const budgetLabel = data.type_budget === 'vote' ? 'budget voté' : 'budget exécuté';
 
@@ -154,11 +147,6 @@ export default function PerCapitaSection({ data, depenses2020 }: PerCapitaSectio
           <p className="text-3xl sm:text-4xl font-extrabold text-slate-100">
             {formatNumber(Math.round(totalPerCapita))} €
           </p>
-          {pctVs2020 !== null && (
-            <p className={`text-xs font-medium mt-1 ${pctVs2020 > 0 ? 'text-red-600' : 'text-emerald-400'}`}>
-              {pctVs2020 > 0 ? '↑' : '↓'} {pctVs2020 > 0 ? '+' : ''}{pctVs2020.toFixed(1)}% vs 2020 (début de mandat)
-            </p>
-          )}
         </div>
         <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-5">
           <p className="text-xs text-slate-500 uppercase tracking-wide mb-1">Par habitant / jour</p>
