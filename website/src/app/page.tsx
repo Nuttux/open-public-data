@@ -18,6 +18,7 @@ import Link from 'next/link';
 import BudgetSankey from '@/components/BudgetSankey';
 import type { BudgetData } from '@/lib/formatters';
 import { MISC_ICONS } from '@/lib/icons';
+import { useTrack } from '@/lib/analyticsContext';
 
 /** Chiffres-clés du budget 2026 voté (arrondis pour la landing) */
 const KEY_FIGURES = {
@@ -30,6 +31,7 @@ const KEY_FIGURES = {
 
 export default function LandingPage() {
   const [budgetData, setBudgetData] = useState<BudgetData | null>(null);
+  const track = useTrack();
 
   /** Charger les données 2026 (budget voté) pour le Sankey de démonstration */
   useEffect(() => {
@@ -75,12 +77,14 @@ export default function LandingPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link
                 href="/budget"
+                onClick={() => track('cta_click', { cta: 'hero_primary', destination: '/budget' })}
                 className="w-full sm:w-auto px-7 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg shadow-blue-600/20 hover:shadow-blue-500/30"
               >
                 Consulter les comptes
               </Link>
               <Link
                 href="/budget?tab=tendances"
+                onClick={() => track('cta_click', { cta: 'hero_secondary', destination: '/budget?tab=tendances' })}
                 className="w-full sm:w-auto px-7 py-3.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-lg border border-slate-700 hover:border-slate-600 transition-all duration-200"
               >
                 Voir l&apos;évolution depuis 2019
@@ -161,7 +165,7 @@ export default function LandingPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <Link href="/budget" className="group">
+            <Link href="/budget" onClick={() => track('cta_click', { cta: 'question_card', destination: '/budget' })} className="group">
               <div className="h-full p-6 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-rose-500/30 transition-all duration-200">
                 <p className="text-lg font-semibold text-slate-100 mb-3 group-hover:text-rose-400 transition-colors">
                   Combien coûte le fonctionnement de Paris ?
@@ -174,7 +178,7 @@ export default function LandingPage() {
               </div>
             </Link>
 
-            <Link href="/subventions" className="group">
+            <Link href="/subventions" onClick={() => track('cta_click', { cta: 'question_card', destination: '/subventions' })} className="group">
               <div className="h-full p-6 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-purple-500/30 transition-all duration-200">
                 <p className="text-lg font-semibold text-slate-100 mb-3 group-hover:text-purple-400 transition-colors">
                   Qui reçoit des subventions ?
@@ -187,7 +191,7 @@ export default function LandingPage() {
               </div>
             </Link>
 
-            <Link href="/investissements" className="group">
+            <Link href="/investissements" onClick={() => track('cta_click', { cta: 'question_card', destination: '/investissements' })} className="group">
               <div className="h-full p-6 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-amber-500/30 transition-all duration-200">
                 <p className="text-lg font-semibold text-slate-100 mb-3 group-hover:text-amber-400 transition-colors">
                   Quels travaux dans mon quartier ?
@@ -200,7 +204,7 @@ export default function LandingPage() {
               </div>
             </Link>
 
-            <Link href="/budget?tab=tendances" className="group">
+            <Link href="/budget?tab=tendances" onClick={() => track('cta_click', { cta: 'question_card', destination: '/budget?tab=tendances' })} className="group">
               <div className="h-full p-6 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-emerald-500/30 transition-all duration-200">
                 <p className="text-lg font-semibold text-slate-100 mb-3 group-hover:text-emerald-400 transition-colors">
                   Le budget augmente-t-il ?
@@ -213,7 +217,7 @@ export default function LandingPage() {
               </div>
             </Link>
 
-            <Link href="/patrimoine" className="group">
+            <Link href="/patrimoine" onClick={() => track('cta_click', { cta: 'question_card', destination: '/patrimoine' })} className="group">
               <div className="h-full p-6 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-violet-500/30 transition-all duration-200">
                 <p className="text-lg font-semibold text-slate-100 mb-3 group-hover:text-violet-400 transition-colors">
                   Que possède Paris et combien doit-elle ?
@@ -226,7 +230,7 @@ export default function LandingPage() {
               </div>
             </Link>
 
-            <Link href="/budget?tab=vote-vs-execute" className="group">
+            <Link href="/budget?tab=vote-vs-execute" onClick={() => track('cta_click', { cta: 'question_card', destination: '/budget?tab=vote-vs-execute' })} className="group">
               <div className="h-full p-6 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-orange-500/30 transition-all duration-200">
                 <p className="text-lg font-semibold text-slate-100 mb-3 group-hover:text-orange-400 transition-colors">
                   Le budget voté est-il réellement dépensé ?
@@ -239,7 +243,7 @@ export default function LandingPage() {
               </div>
             </Link>
 
-            <Link href="/logements" className="group">
+            <Link href="/logements" onClick={() => track('cta_click', { cta: 'question_card', destination: '/logements' })} className="group">
               <div className="h-full p-6 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-emerald-500/30 transition-all duration-200">
                 <p className="text-lg font-semibold text-slate-100 mb-3 group-hover:text-emerald-400 transition-colors">
                   Où sont les logements sociaux financés ?
@@ -299,6 +303,7 @@ export default function LandingPage() {
                 href="https://github.com/Nuttux/france-open-data"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => track('external_link_click', { url: 'https://github.com/Nuttux/france-open-data', text: 'Accéder aux datasets' })}
                 className="text-emerald-400 font-medium hover:text-emerald-300 transition-colors"
               >
                 Accéder aux datasets →
@@ -317,6 +322,7 @@ export default function LandingPage() {
                 href="https://github.com/Nuttux/france-open-data"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => track('external_link_click', { url: 'https://github.com/Nuttux/france-open-data', text: 'Voir la documentation' })}
                 className="text-amber-400 font-medium hover:text-amber-300 transition-colors"
               >
                 Voir la documentation →
@@ -509,6 +515,7 @@ export default function LandingPage() {
               href="https://github.com/Nuttux/france-open-data"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => track('external_link_click', { url: 'https://github.com/Nuttux/france-open-data', text: 'Contribuer au projet' })}
               className="w-full sm:w-auto px-7 py-3.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-lg border border-slate-700 hover:border-slate-600 transition-all duration-200"
             >
               Contribuer au projet

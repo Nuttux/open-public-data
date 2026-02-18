@@ -18,6 +18,8 @@
  * - Les années avec budget voté sont annotées d'un astérisque dans le dropdown
  */
 
+import { useTrack } from '@/lib/analyticsContext';
+
 interface YearRangeSelectorProps {
   /** Années disponibles dans les données (ordre quelconque) */
   availableYears: number[];
@@ -41,6 +43,7 @@ export default function YearRangeSelector({
   onStartYearChange,
   onEndYearChange,
 }: YearRangeSelectorProps) {
+  const track = useTrack();
   /** Années triées croissantes */
   const sortedYears = [...availableYears].sort((a, b) => a - b);
 
@@ -63,7 +66,11 @@ export default function YearRangeSelector({
         {/* Start year */}
         <select
           value={startYear}
-          onChange={(e) => onStartYearChange(parseInt(e.target.value, 10))}
+          onChange={(e) => {
+            const newYear = parseInt(e.target.value, 10);
+            track('year_range_change', { boundary: 'start', from: startYear, to: newYear });
+            onStartYearChange(newYear);
+          }}
           className="bg-transparent px-3 py-1.5 text-slate-100 text-sm font-medium focus:outline-none cursor-pointer"
           aria-label="Année de début"
         >
@@ -78,7 +85,11 @@ export default function YearRangeSelector({
         {/* End year */}
         <select
           value={endYear}
-          onChange={(e) => onEndYearChange(parseInt(e.target.value, 10))}
+          onChange={(e) => {
+            const newYear = parseInt(e.target.value, 10);
+            track('year_range_change', { boundary: 'end', from: endYear, to: newYear });
+            onEndYearChange(newYear);
+          }}
           className="bg-transparent px-3 py-1.5 text-slate-100 text-sm font-medium focus:outline-none cursor-pointer"
           aria-label="Année de fin"
         >

@@ -19,6 +19,7 @@ import { formatEuroCompact, formatPercent, calculatePercentage } from '@/lib/for
 import { getCategoryColor, lightenColor } from '@/lib/colors';
 import type { DrilldownItem, SectionBreakdown } from '@/lib/formatters';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
+import { useTrack } from '@/lib/analyticsContext';
 
 /** Type pour les sections budgétaires */
 type BudgetSection = 'all' | 'Fonctionnement' | 'Investissement';
@@ -50,6 +51,7 @@ export default function DrilldownPanel({
   onItemClick,
 }: DrilldownPanelProps) {
   const isMobile = useIsMobile(BREAKPOINTS.md);
+  const track = useTrack();
 
   // ── Slide animation for level transitions (L2↔L3) ──
   // Direction: 'forward' = slide left (deeper), 'back' = slide right (back up)
@@ -334,6 +336,7 @@ export default function DrilldownPanel({
       const reversedIndex = displayItems.length - 1 - params.dataIndex;
       const item = displayItems[reversedIndex];
       if (item && !item.name.startsWith('Autres')) {
+        track('sankey_drilldown', { item: item.name, level: currentLevel, category });
         onItemClick(item);
       }
     }
@@ -410,7 +413,7 @@ export default function DrilldownPanel({
         </div>
         
         <button
-          onClick={onClose}
+          onClick={() => { track('drilldown_close', { title, level: currentLevel }); onClose(); }}
           className="p-2 hover:bg-slate-700 rounded-lg transition-colors self-start shrink-0"
           title="Fermer"
         >

@@ -18,6 +18,7 @@ import { formatEuroCompact, formatPercent, calculatePercentage } from '@/lib/for
 import { REVENUE_COLORS, EXPENSE_COLORS, FLUX_COLORS } from '@/lib/colors';
 import type { BudgetData } from '@/lib/formatters';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
+import { useTrack } from '@/lib/analyticsContext';
 
 interface BudgetSankeyProps {
   data: BudgetData;
@@ -27,9 +28,9 @@ interface BudgetSankeyProps {
 /**
  * Vue mobile simplifiée - Barres horizontales interactives
  */
-function MobileBudgetView({ data, onNodeClick }: BudgetSankeyProps) {
+function MobileBudgetView({ data, onNodeClick, track }: BudgetSankeyProps & { track: ReturnType<typeof useTrack> }) {
   const totalBudget = Math.max(data.totals.recettes, data.totals.depenses);
-  
+
   // Séparer recettes et dépenses
   const revenues = data.nodes
     .filter(n => n.category === 'revenue')
@@ -38,7 +39,7 @@ function MobileBudgetView({ data, onNodeClick }: BudgetSankeyProps) {
       value: data.links.find(l => l.source === n.name)?.value || 0,
     }))
     .sort((a, b) => b.value - a.value);
-  
+
   const expenses = data.nodes
     .filter(n => n.category === 'expense')
     .map(n => ({
@@ -46,7 +47,7 @@ function MobileBudgetView({ data, onNodeClick }: BudgetSankeyProps) {
       value: data.links.find(l => l.target === n.name)?.value || 0,
     }))
     .sort((a, b) => b.value - a.value);
-  
+
   const maxValue = Math.max(
     ...revenues.map(r => r.value),
     ...expenses.map(e => e.value)
@@ -72,7 +73,10 @@ function MobileBudgetView({ data, onNodeClick }: BudgetSankeyProps) {
           {revenues.map((item, idx) => (
             <button
               key={item.name}
-              onClick={() => onNodeClick?.(item.name, 'revenue')}
+              onClick={() => {
+                track('sankey_node_click', { node: item.name, category: 'revenue', type: 'mobile_bar' });
+                onNodeClick?.(item.name, 'revenue');
+              }}
               className={`w-full text-left group active:scale-[0.98] transition-transform duration-150 ${
                 idx === 0 ? 'animate-hint-pulse' : ''
               }`}
@@ -116,7 +120,10 @@ function MobileBudgetView({ data, onNodeClick }: BudgetSankeyProps) {
           {expenses.map((item) => (
             <button
               key={item.name}
-              onClick={() => onNodeClick?.(item.name, 'expense')}
+              onClick={() => {
+                track('sankey_node_click', { node: item.name, category: 'expense', type: 'mobile_bar' });
+                onNodeClick?.(item.name, 'expense');
+              }}
               className="w-full text-left group active:scale-[0.98] transition-transform duration-150"
             >
               <div className="flex items-center justify-between text-xs mb-1">
@@ -152,6 +159,7 @@ function MobileBudgetView({ data, onNodeClick }: BudgetSankeyProps) {
 
 export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
   const isMobile = useIsMobile(BREAKPOINTS.md);
+  const track = useTrack();
   const isSmallTablet = useIsMobile(BREAKPOINTS.lg);
   const totalBudget = useMemo(() => {
     return Math.max(data.totals.recettes, data.totals.depenses);
@@ -345,25 +353,28 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
     ],
   }), [chartData, totalBudget, chartMargins, isSmallTablet]);
 
-  const handleChartClick = useCallback((params: { 
-    dataType?: string; 
-    name?: string; 
+  const handleChartClick = useCallback((params: {
+    dataType?: string;
+    name?: string;
     data?: { category?: string; source?: string; target?: string };
   }) => {
     if (params.dataType === 'node' && params.name && params.data?.category !== 'central') {
       const category = params.data?.category as 'revenue' | 'expense';
+      track('sankey_node_click', { node: params.name, category, type: 'node' });
       onNodeClick?.(params.name, category);
     }
-    
+
     if (params.dataType === 'edge' && params.data) {
       const { source, target } = params.data;
       if (source === 'Budget Paris' && target) {
+        track('sankey_node_click', { node: target, category: 'expense', type: 'edge' });
         onNodeClick?.(target, 'expense');
       } else if (target === 'Budget Paris' && source) {
+        track('sankey_node_click', { node: source, category: 'revenue', type: 'edge' });
         onNodeClick?.(source, 'revenue');
       }
     }
-  }, [onNodeClick]);
+  }, [onNodeClick, track]);
 
   const variationDette = financingInfo.emprunts - financingInfo.dette;
 
@@ -399,7 +410,7 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
 
       {/* Mobile: Vue simplifiée en barres */}
       {isMobile ? (
-        <MobileBudgetView data={data} onNodeClick={onNodeClick} />
+        <MobileBudgetView data={data} onNodeClick={onNodeClick} track={track} />
       ) : (
         <>
           {/* Desktop/Tablet: Sankey avec légende */}

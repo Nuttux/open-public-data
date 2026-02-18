@@ -14,6 +14,7 @@ import { useState, useMemo, useCallback, useEffect } from 'react';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { getThematiqueColor } from '@/lib/colors';
 import type { SubventionFilters } from './SubventionsFilters';
+import { useTrack } from '@/lib/analyticsContext';
 
 /**
  * Données d'un bénéficiaire
@@ -89,6 +90,7 @@ export default function SubventionsTable({
   const [sortColumn, setSortColumn] = useState<SortColumn>('montant_total');
   const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
   const [currentPage, setCurrentPage] = useState(1);
+  const track = useTrack();
 
   /**
    * Appliquer les filtres
@@ -184,6 +186,8 @@ export default function SubventionsTable({
    * Gestion du tri
    */
   const handleSort = useCallback((column: SortColumn) => {
+    const newDirection = sortColumn === column ? (sortDirection === 'asc' ? 'desc' : 'asc') : 'desc';
+    track('table_sort', { column, direction: newDirection });
     if (sortColumn === column) {
       setSortDirection(d => d === 'asc' ? 'desc' : 'asc');
     } else {
@@ -191,7 +195,7 @@ export default function SubventionsTable({
       setSortDirection('desc');
     }
     setCurrentPage(1);
-  }, [sortColumn]);
+  }, [sortColumn, sortDirection, track]);
 
   /**
    * Reset page quand les filtres changent
@@ -365,7 +369,7 @@ export default function SubventionsTable({
       {totalPages > 1 && (
         <div className="px-4 py-3 border-t border-slate-700/50 flex items-center justify-between">
           <button
-            onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+            onClick={() => { track('table_paginate', { direction: 'prev', page: currentPage - 1 }); setCurrentPage(p => Math.max(1, p - 1)); }}
             disabled={currentPage === 1}
             className="px-3 py-1.5 text-sm font-medium text-slate-300 hover:text-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
@@ -405,7 +409,7 @@ export default function SubventionsTable({
           </div>
           
           <button
-            onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+            onClick={() => { track('table_paginate', { direction: 'next', page: currentPage + 1 }); setCurrentPage(p => Math.min(totalPages, p + 1)); }}
             disabled={currentPage === totalPages}
             className="px-3 py-1.5 text-sm font-medium text-slate-300 hover:text-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >

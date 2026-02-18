@@ -7,13 +7,14 @@
  * Vues : Liste (100 premiers) + Carte (points) + Arrondissements (choroplèthe).
  */
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import ExplorerTab from '@/components/shared/ExplorerTab';
 import ExportBar from '@/components/shared/ExportBar';
 import type { LogementSocial, ArrondissementStats } from '@/lib/types/map';
 import { formatNumber } from '@/lib/formatters';
 import type { CsvColumn } from '@/lib/export';
+import { useTrack } from '@/lib/analyticsContext';
 
 const CSV_COLUMNS: CsvColumn<Record<string, unknown>>[] = [
   { key: 'annee', label: 'Année' },
@@ -158,7 +159,21 @@ function FilterPanel({
 export default function LogementsExplorerTab({
   logements, arrondissementStats, allArrondissements: _allArrondissements, isLoading,
 }: LogementsExplorerTabProps) {
+  const track = useTrack();
   const [filters, setFilters] = useState<Filters>(DEFAULT_FILTERS);
+
+  const handleFiltersChange = useCallback((newFilters: Filters) => {
+    if (newFilters.arrondissement !== filters.arrondissement) {
+      track('filter_change', { filter: 'arrondissement', value: newFilters.arrondissement });
+    } else if (newFilters.bailleur !== filters.bailleur) {
+      track('filter_change', { filter: 'bailleur', value: newFilters.bailleur });
+    } else if (newFilters.annee !== filters.annee) {
+      track('filter_change', { filter: 'annee', value: newFilters.annee });
+    } else if (newFilters.search !== filters.search && newFilters.search.length >= 3) {
+      track('filter_change', { filter: 'search', value: newFilters.search });
+    }
+    setFilters(newFilters);
+  }, [filters, track]);
 
   const filteredLogements = useMemo(() => {
     let result = logements;
@@ -188,10 +203,13 @@ export default function LogementsExplorerTab({
     return count;
   }, [filters]);
 
-  const resetFilters = () => setFilters(DEFAULT_FILTERS);
+  const resetFilters = useCallback(() => {
+    track('filter_reset', { context: 'logements' });
+    setFilters(DEFAULT_FILTERS);
+  }, [track]);
 
   const filterProps = {
-    filters, onFiltersChange: setFilters, logements, activeFilterCount, onReset: resetFilters,
+    filters, onFiltersChange: handleFiltersChange, logements, activeFilterCount, onReset: resetFilters,
   };
 
   return (

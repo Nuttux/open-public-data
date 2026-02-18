@@ -19,6 +19,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { GLOSSARY_SECTIONS, type GlossarySection } from '@/lib/glossary';
 import { useGlossary } from '@/lib/glossaryContext';
 import { useIsMobile } from '@/lib/hooks/useIsMobile';
+import { useTrack } from '@/lib/analyticsContext';
 
 /**
  * Trouve la section contenant un terme donné
@@ -32,6 +33,7 @@ function findSectionIndex(termKey: string): number {
 export default function GlossaryDrawer() {
   const { isOpen, highlightedTerm, close } = useGlossary();
   const isMobile = useIsMobile();
+  const track = useTrack();
   const drawerRef = useRef<HTMLDivElement>(null);
   const highlightRef = useRef<HTMLDivElement>(null);
 
@@ -47,6 +49,7 @@ export default function GlossaryDrawer() {
       if (idx !== -1) {
         setOpenSections(new Set([idx]));
       }
+      track('glossary_term_view', { term: highlightedTerm });
       // Scroll vers le terme après le rendu
       requestAnimationFrame(() => {
         highlightRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -55,20 +58,23 @@ export default function GlossaryDrawer() {
       // Mode glossaire complet : ouvrir toutes les sections
       setOpenSections(new Set(GLOSSARY_SECTIONS.map((_, i) => i)));
     }
-  }, [isOpen, highlightedTerm]);
+  }, [isOpen, highlightedTerm, track]);
 
   /** Toggle une section */
   const toggleSection = useCallback((idx: number) => {
+    const section = GLOSSARY_SECTIONS[idx];
     setOpenSections((prev) => {
       const next = new Set(prev);
-      if (next.has(idx)) {
-        next.delete(idx);
-      } else {
+      const willOpen = !next.has(idx);
+      if (willOpen) {
         next.add(idx);
+      } else {
+        next.delete(idx);
       }
+      track('glossary_section_toggle', { section: section?.title, action: willOpen ? 'open' : 'close' });
       return next;
     });
-  }, []);
+  }, [track]);
 
   /** Fermer avec Escape */
   useEffect(() => {

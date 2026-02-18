@@ -11,6 +11,7 @@
  */
 
 import { useState, useCallback } from 'react';
+import { useTrack } from '@/lib/analyticsContext';
 
 /**
  * État des filtres
@@ -108,6 +109,7 @@ export default function SubventionsFilters({
   stats,
 }: SubventionsFiltersProps) {
   const [isExpanded, setIsExpanded] = useState(true);
+  const track = useTrack();
 
   /**
    * Mise à jour d'un filtre
@@ -116,8 +118,9 @@ export default function SubventionsFilters({
     key: K,
     value: SubventionFilters[K]
   ) => {
+    track('filter_change', { filter: key, value: typeof value === 'string' ? value : JSON.stringify(value) });
     onFiltersChange({ ...filters, [key]: value });
-  }, [filters, onFiltersChange]);
+  }, [filters, onFiltersChange, track]);
 
   /**
    * Toggle un type d'organisme
@@ -136,8 +139,9 @@ export default function SubventionsFilters({
    * Reset tous les filtres
    */
   const resetFilters = useCallback(() => {
+    track('filter_reset', { context: 'subventions' });
     onFiltersChange(DEFAULT_FILTERS);
-  }, [onFiltersChange]);
+  }, [onFiltersChange, track]);
 
   /**
    * Nombre de filtres actifs
