@@ -14,6 +14,7 @@ import type { BreakdownOption, TableColumnDef } from '@/components/shared/Annuel
 import DataQualityBanner from '@/components/DataQualityBanner';
 import type { Beneficiaire } from '@/components/SubventionsTable';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
+import { PARIS_POPULATION_TOTAL } from '@/lib/constants/arrondissements';
 import { getThematiqueColor, PALETTE } from '@/lib/colors';
 import type { CsvColumn } from '@/lib/export';
 import { BREAKDOWN_ICONS } from '@/lib/icons';
@@ -171,7 +172,7 @@ export default function SubventionsAnnuelTab({
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
             <p className="text-xs text-slate-400 uppercase tracking-wide">Montant total</p>
             <p className="text-2xl font-bold text-slate-100 mt-1">{formatEuroCompact(stats.totalMontant)}</p>
-            <p className="text-xs text-slate-400 mt-1">{formatNumber(nbSubventions)} subventions</p>
+            <p className="text-xs text-slate-400 mt-1">{formatNumber(nbSubventions)} subventions · {formatNumber(Math.round(stats.totalMontant / PARIS_POPULATION_TOTAL))} €/hab</p>
           </div>
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
             <p className="text-xs text-slate-400 uppercase tracking-wide">Bénéficiaire médian</p>

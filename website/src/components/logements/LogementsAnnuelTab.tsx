@@ -13,6 +13,7 @@ import ExportBar from '@/components/shared/ExportBar';
 import type { BreakdownOption, TableColumnDef } from '@/components/shared/AnnuelTab';
 import type { LogementSocial } from '@/lib/types/map';
 import { formatNumber } from '@/lib/formatters';
+import { PARIS_POPULATION_TOTAL } from '@/lib/constants/arrondissements';
 import { PALETTE } from '@/lib/colors';
 import type { CsvColumn } from '@/lib/export';
 import { BREAKDOWN_ICONS } from '@/lib/icons';
@@ -147,6 +148,15 @@ interface LogementsAnnuelTabProps {
 export default function LogementsAnnuelTab({
   logements, selectedYear, isLoading, onNavigateExplorer,
 }: LogementsAnnuelTabProps) {
+  const kpiStats = useMemo(() => {
+    const totalLogements = logements.reduce((s, l) => s + l.nbLogements, 0);
+    const totalPLAI = logements.reduce((s, l) => s + (l.nbPLAI || 0), 0);
+    const totalPLUS = logements.reduce((s, l) => s + (l.nbPLUS || 0), 0);
+    const totalPLS = logements.reduce((s, l) => s + (l.nbPLS || 0), 0);
+    const per1000 = (totalLogements / PARIS_POPULATION_TOTAL) * 1000;
+    return { totalLogements, totalPLAI, totalPLUS, totalPLS, per1000 };
+  }, [logements]);
+
   return (
     <AnnuelTab
       items={logements}
@@ -195,7 +205,30 @@ export default function LogementsAnnuelTab({
           </div>
         </div>
       }
-      kpiCards={null}
+      kpiCards={
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
+            <p className="text-xs text-slate-400 uppercase tracking-wide">Logements financés</p>
+            <p className="text-2xl font-bold text-slate-100 mt-1">{formatNumber(kpiStats.totalLogements)}</p>
+            <p className="text-xs text-slate-400 mt-1">{kpiStats.per1000.toFixed(1)} pour 1 000 hab</p>
+          </div>
+          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
+            <p className="text-xs text-slate-400 uppercase tracking-wide">Très sociaux (PLAI)</p>
+            <p className="text-2xl font-bold text-blue-400 mt-1">{formatNumber(kpiStats.totalPLAI)}</p>
+            <p className="text-xs text-slate-400 mt-1">{kpiStats.totalLogements > 0 ? ((kpiStats.totalPLAI / kpiStats.totalLogements) * 100).toFixed(0) : 0}% du total</p>
+          </div>
+          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
+            <p className="text-xs text-slate-400 uppercase tracking-wide">Sociaux (PLUS)</p>
+            <p className="text-2xl font-bold text-cyan-400 mt-1">{formatNumber(kpiStats.totalPLUS)}</p>
+            <p className="text-xs text-slate-400 mt-1">{kpiStats.totalLogements > 0 ? ((kpiStats.totalPLUS / kpiStats.totalLogements) * 100).toFixed(0) : 0}% du total</p>
+          </div>
+          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
+            <p className="text-xs text-slate-400 uppercase tracking-wide">Intermédiaires (PLS)</p>
+            <p className="text-2xl font-bold text-violet-400 mt-1">{formatNumber(kpiStats.totalPLS)}</p>
+            <p className="text-xs text-slate-400 mt-1">{kpiStats.totalLogements > 0 ? ((kpiStats.totalPLS / kpiStats.totalLogements) * 100).toFixed(0) : 0}% du total</p>
+          </div>
+        </div>
+      }
       exportBar={
         <ExportBar
           csvData={logements as unknown as Record<string, unknown>[]}

@@ -13,6 +13,7 @@ import ExportBar from '@/components/shared/ExportBar';
 import type { BreakdownOption, TableColumnDef } from '@/components/shared/AnnuelTab';
 import type { AutorisationProgramme } from '@/lib/types/map';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
+import { PARIS_POPULATION_TOTAL } from '@/lib/constants/arrondissements';
 import { getThematiqueColor, PALETTE } from '@/lib/colors';
 import { THEMATIQUE_LABELS, type ThematiqueSubvention } from '@/lib/constants/directions';
 import type { CsvColumn } from '@/lib/export';
@@ -159,7 +160,12 @@ export default function InvestissementsAnnuelTab({
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
             <p className="text-xs text-slate-400 uppercase tracking-wide">Montant total</p>
             <p className="text-2xl font-bold text-slate-100 mt-1">{formatEuroCompact(stats.totalMontant)}</p>
-            <p className="text-xs text-slate-400 mt-1">{formatNumber(stats.total)} projets</p>
+            <p className="text-xs text-slate-400 mt-1">{formatNumber(stats.total)} projets localisés</p>
+          </div>
+          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
+            <p className="text-xs text-slate-400 uppercase tracking-wide">Budget invest. total</p>
+            <p className="text-2xl font-bold text-amber-400 mt-1">{budgetInvest ? formatEuroCompact(budgetInvest) : '—'}</p>
+            <p className="text-xs text-slate-400 mt-1">{budgetInvest ? `${formatNumber(Math.round(budgetInvest / PARIS_POPULATION_TOTAL))} €/hab` : selectedYear}</p>
           </div>
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
             <p className="text-xs text-slate-400 uppercase tracking-wide">Projet médian</p>
@@ -170,11 +176,6 @@ export default function InvestissementsAnnuelTab({
             <p className="text-xs text-slate-400 uppercase tracking-wide">Top projet</p>
             <p className="text-2xl font-bold text-emerald-400 mt-1">{topKpis ? formatEuroCompact(topKpis.topVal) : '—'}</p>
             <p className="text-xs text-slate-400 mt-1 line-clamp-1">{topKpis?.topName || '—'}</p>
-          </div>
-          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-400 uppercase tracking-wide">Budget invest. total</p>
-            <p className="text-2xl font-bold text-amber-400 mt-1">{budgetInvest ? formatEuroCompact(budgetInvest) : '—'}</p>
-            <p className="text-xs text-slate-400 mt-1">{selectedYear}</p>
           </div>
         </div>
       }

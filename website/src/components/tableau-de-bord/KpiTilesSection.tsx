@@ -101,7 +101,10 @@ export default function KpiTilesSection() {
         const perCapitaDay = latest.totals.depenses / TOTAL_POPULATION / 365;
         const investDepenses = latest.sections.investissement.depenses;
         const investPct = (investDepenses / latest.totals.depenses) * 100;
+        const investPerCapita = Math.round(investDepenses / TOTAL_POPULATION);
         const epargne = latest.epargne_brute;
+        const epargnePct = latest.sections.fonctionnement.recettes > 0
+          ? (epargne / latest.sections.fonctionnement.recettes) * 100 : 0;
 
         const budget: TileData[] = [
           {
@@ -114,14 +117,14 @@ export default function KpiTilesSection() {
           {
             label: `Investissement ${latest.year}${budgetSuffix}`,
             value: formatEuroCompact(investDepenses),
-            sub: `${investPct.toFixed(0)}% du budget · écoles, voirie, équipements`,
+            sub: `${investPct.toFixed(0)}% du budget · ${formatNumber(investPerCapita)} €/hab`,
             href: '/investissements',
             color: 'border-emerald-500/40',
           },
           {
             label: `Santé financière ${latest.year}${budgetSuffix}`,
             value: formatEuroCompact(epargne),
-            sub: "Épargne brute · capacité d'autofinancement",
+            sub: `Épargne brute · ${epargnePct.toFixed(1)}% des recettes fonct.`,
             href: '/budget?tab=tendances',
             color: epargne > 0 ? 'border-emerald-500/40' : 'border-red-500/40',
           },
@@ -132,7 +135,7 @@ export default function KpiTilesSection() {
         // 4. Subventions / Aides versées
         const subYears = Object.keys(sub.totals_by_year).map(Number).sort((a, b) => b - a);
         const subLatest = sub.totals_by_year[subYears[0]];
-        const montantMoyen = subLatest.montant_total / subLatest.nb_subventions;
+        const subPerCapita = Math.round(subLatest.montant_total / TOTAL_POPULATION);
 
         // 5. Logements sociaux — annualisé avec % PLAI
         const logYears = [...new Set(log.data.map((d) => d.annee))].sort((a, b) => b - a);
@@ -141,6 +144,7 @@ export default function KpiTilesSection() {
         const nbLogementsYear = logementsLatest.reduce((s, d) => s + d.nbLogements, 0);
         const nbPLAI = logementsLatest.reduce((s, d) => s + d.nbPLAI, 0);
         const pctPLAI = nbLogementsYear > 0 ? (nbPLAI / nbLogementsYear) * 100 : 0;
+        const logPer1000 = (nbLogementsYear / TOTAL_POPULATION) * 1000;
 
         // 6. Marchés publics
         const marYears = Object.keys(mar.totals_by_year).map(Number).sort((a, b) => b - a);
@@ -148,16 +152,16 @@ export default function KpiTilesSection() {
 
         const activite: TileData[] = [
           {
-            label: `Aides versées ${subYears[0]}`,
+            label: `Subventions ${subYears[0]}`,
             value: formatEuroCompact(subLatest.montant_total),
-            sub: `${formatNumber(subLatest.nb_subventions)} versements · moy. ${formatEuroCompact(montantMoyen)}`,
+            sub: `${formatNumber(subLatest.nb_subventions)} versements · ${formatNumber(subPerCapita)} €/hab`,
             href: '/subventions',
             color: 'border-purple-500/40',
           },
           {
             label: `Logements financés ${latestLogYear}`,
             value: `${formatNumber(nbLogementsYear)} logements`,
-            sub: `dont ${pctPLAI.toFixed(0)}% très sociaux (PLAI)`,
+            sub: `dont ${pctPLAI.toFixed(0)}% très sociaux · ${logPer1000.toFixed(1)} / 1 000 hab`,
             href: '/logements',
             color: 'border-amber-500/40',
           },
