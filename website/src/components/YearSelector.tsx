@@ -8,6 +8,8 @@
  * intégrées dans la même boîte bordée.
  */
 
+import { useTrack } from '@/lib/analyticsContext';
+
 interface YearSelectorProps {
   years: number[];
   selectedYear: number;
@@ -15,6 +17,15 @@ interface YearSelectorProps {
 }
 
 export default function YearSelector({ years, selectedYear, onYearChange }: YearSelectorProps) {
+  const track = useTrack();
+
+  const handleYearChange = (newYear: number) => {
+    if (newYear !== selectedYear) {
+      track('year_change', { from_year: selectedYear, to_year: newYear });
+    }
+    onYearChange(newYear);
+  };
+
   return (
     <div className="flex items-center gap-2">
       <label htmlFor="year-select" className="text-xs text-slate-400 hidden sm:inline">
@@ -24,7 +35,7 @@ export default function YearSelector({ years, selectedYear, onYearChange }: Year
         <select
           id="year-select"
           value={selectedYear}
-          onChange={(e) => onYearChange(Number(e.target.value))}
+          onChange={(e) => handleYearChange(Number(e.target.value))}
           className="bg-transparent px-3 py-1.5 text-slate-100 text-sm font-medium focus:outline-none cursor-pointer appearance-none"
           style={{ backgroundImage: 'none' }}
         >
@@ -45,7 +56,7 @@ export default function YearSelector({ years, selectedYear, onYearChange }: Year
         <button
           onClick={() => {
             const idx = years.indexOf(selectedYear);
-            if (idx < years.length - 1) onYearChange(years[idx + 1]);
+            if (idx < years.length - 1) handleYearChange(years[idx + 1]);
           }}
           disabled={years.indexOf(selectedYear) === years.length - 1}
           className="p-1.5 rounded-md hover:bg-slate-700/50 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
@@ -58,7 +69,7 @@ export default function YearSelector({ years, selectedYear, onYearChange }: Year
         <button
           onClick={() => {
             const idx = years.indexOf(selectedYear);
-            if (idx > 0) onYearChange(years[idx - 1]);
+            if (idx > 0) handleYearChange(years[idx - 1]);
           }}
           disabled={years.indexOf(selectedYear) === 0}
           className="p-1.5 rounded-md hover:bg-slate-700/50 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"

@@ -19,6 +19,7 @@ import type { EChartsOption } from 'echarts';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { getThematiqueColor } from '@/lib/colors';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
+import { useTrack } from '@/lib/analyticsContext';
 
 /**
  * Données d'une thématique pour le treemap
@@ -60,6 +61,7 @@ export default function SubventionsTreemap({
   height = 400,
 }: SubventionsTreemapProps) {
   const isMobile = useIsMobile(BREAKPOINTS.md);
+  const track = useTrack();
 
   // Hauteur adaptative
   const chartHeight = isMobile ? Math.min(height, 300) : height;
@@ -201,14 +203,11 @@ export default function SubventionsTreemap({
   const handleClick = useCallback((params: unknown) => {
     const p = params as { name: string };
     if (onThematiqueClick) {
-      // Si on clique sur la thématique déjà sélectionnée, désélectionner
-      if (selectedThematique === p.name) {
-        onThematiqueClick(null);
-      } else {
-        onThematiqueClick(p.name);
-      }
+      const newValue = selectedThematique === p.name ? null : p.name;
+      track('treemap_click', { thematique: p.name, action: newValue ? 'select' : 'deselect' });
+      onThematiqueClick(newValue);
     }
-  }, [onThematiqueClick, selectedThematique]);
+  }, [onThematiqueClick, selectedThematique, track]);
 
   return (
     <div className="w-full">

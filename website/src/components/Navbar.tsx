@@ -16,6 +16,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useGlossary } from '@/lib/glossaryContext';
 import { NAV_ICONS } from '@/lib/icons';
+import { useTrack } from '@/lib/analyticsContext';
 
 /**
  * Configuration des liens de navigation
@@ -141,6 +142,12 @@ function GlossaryButton({
 export default function Navbar() {
   const pathname = usePathname();
   const { openFull } = useGlossary();
+  const track = useTrack();
+
+  const handleGlossaryOpen = () => {
+    track('glossary_open', { trigger: 'navbar_button' });
+    openFull();
+  };
 
   return (
     <>
@@ -169,6 +176,7 @@ export default function Navbar() {
                   <Link
                     key={link.href}
                     href={link.href}
+                    onClick={() => track('nav_click', { destination: link.href, nav_type: 'desktop_top' })}
                     className={`
                       flex items-center gap-1.5 px-2 lg:px-2.5 py-2 rounded-lg text-xs font-medium
                       transition-all duration-200
@@ -186,7 +194,18 @@ export default function Navbar() {
                 );
               })}
 
-              <GlossaryButton onClick={openFull} className="w-9 h-9 ml-2" />
+              <GlossaryButton onClick={handleGlossaryOpen} className="w-9 h-9 ml-2" />
+
+              <Link
+                href="/confidentialite"
+                className="w-9 h-9 ml-1 flex items-center justify-center rounded-lg border border-slate-700/50 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 transition-all duration-200"
+                title="Politique de confidentialité"
+                aria-label="Politique de confidentialité"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+              </Link>
             </div>
           </div>
         </div>
@@ -207,7 +226,7 @@ export default function Navbar() {
             </h1>
           </Link>
 
-          <GlossaryButton onClick={openFull} className="w-8 h-8" />
+          <GlossaryButton onClick={handleGlossaryOpen} className="w-8 h-8" />
         </div>
       </header>
 
@@ -231,6 +250,7 @@ export default function Navbar() {
                 href={link.href}
                 role="tab"
                 aria-selected={isActive}
+                onClick={() => track('nav_click', { destination: link.href, nav_type: 'mobile_bottom' })}
                 className={`
                   relative flex flex-col items-center justify-center py-2
                   transition-colors duration-200

@@ -21,6 +21,7 @@ import DrilldownPanel from '@/components/DrilldownPanel';
 import ExportBar from '@/components/shared/ExportBar';
 import { getBudgetTypeForYear } from '@/components/BudgetTypeBadge';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
+import { useTrack } from '@/lib/analyticsContext';
 import type { BudgetData, BudgetIndex, DrilldownItem, DataStatus, BudgetType } from '@/lib/formatters';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -142,6 +143,7 @@ function DataStatusBadge({
 // ─── Main Tab Component ──────────────────────────────────────────────────────
 
 export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: BudgetAnnuelTabProps) {
+  const track = useTrack();
   const [budgetData, setBudgetData] = useState<BudgetData | null>(null);
   const [natureData, setNatureData] = useState<BudgetNatureData | null>(null);
   const [drilldown, setDrilldown] = useState<DrilldownState | null>(null);
@@ -189,9 +191,10 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
   );
 
   const handleViewChange = useCallback((mode: ViewMode) => {
+    track('view_toggle', { view: mode, context: 'budget_annuel' });
     setViewMode(mode);
     setDrilldown(null);
-  }, []);
+  }, [track]);
 
   // Load emprunts data (once)
   useEffect(() => {

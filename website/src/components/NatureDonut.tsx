@@ -23,6 +23,7 @@ import type { EChartsOption } from 'echarts';
 import { formatEuroCompact } from '@/lib/formatters';
 import { getNatureColor, getThematiqueColor } from '@/lib/colors';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
+import { useTrack } from '@/lib/analyticsContext';
 
 // Types pour les données
 interface NatureItem {
@@ -60,7 +61,8 @@ export default function NatureDonut({
   onDrillDown 
 }: NatureDonutProps) {
   const isMobile = useIsMobile(BREAKPOINTS.md);
-  
+  const track = useTrack();
+
   // Hauteur adaptative
   const chartHeight = isMobile ? Math.min(height, 320) : height;
   
@@ -105,17 +107,19 @@ export default function NatureDonut({
 
     if (!selectedNature) {
       // On est au niveau 1, drill-down vers niveau 2
+      track('donut_click', { nature: params.name, level: 1, action: 'drilldown' });
       setSelectedNature(params.name);
       onDrillDown?.(params.name);
     }
     // Au niveau 2, on ne fait rien (ou on pourrait ouvrir un détail)
-  }, [selectedNature, onDrillDown]);
+  }, [selectedNature, onDrillDown, track]);
 
   // Retour au niveau 1
   const handleBack = useCallback(() => {
+    track('donut_click', { nature: selectedNature, level: 2, action: 'back' });
     setSelectedNature(null);
     onDrillDown?.(null);
-  }, [onDrillDown]);
+  }, [onDrillDown, selectedNature, track]);
 
   // Options ECharts - responsive
   const option: EChartsOption = useMemo(() => ({

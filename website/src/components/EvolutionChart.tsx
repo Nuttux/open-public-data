@@ -21,6 +21,7 @@ import type { EChartsOption } from 'echarts';
 import { formatEuroCompact } from '@/lib/formatters';
 import { FLUX_COLORS } from '@/lib/colors';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
+import { useTrack } from '@/lib/analyticsContext';
 
 export interface YearlyBudget {
   year: number;
@@ -65,6 +66,7 @@ export default function EvolutionChart({
   onYearClick,
 }: EvolutionChartProps) {
   const isMobile = useIsMobile(BREAKPOINTS.md);
+  const track = useTrack();
   // Trier par année
   const sortedData = useMemo(() => {
     return [...data].sort((a, b) => a.year - b.year);
@@ -388,6 +390,7 @@ export default function EvolutionChart({
   // Gestion du clic sur un point
   const handleClick = (params: { name?: string }) => {
     if (params.name && onYearClick) {
+      track('chart_click', { chart: 'evolution', year: parseInt(params.name, 10) });
       onYearClick(parseInt(params.name, 10));
     }
   };

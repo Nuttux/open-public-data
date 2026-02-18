@@ -11,6 +11,8 @@
  * - Sync avec l'URL via useTabState (côté parent)
  */
 
+import { useTrack } from '@/lib/analyticsContext';
+
 export interface Tab {
   /** Identifiant unique du tab (utilisé dans l'URL ?tab=xxx) */
   id: string;
@@ -29,6 +31,8 @@ interface TabBarProps {
 }
 
 export default function TabBar({ tabs, activeTab, onChange, className = '' }: TabBarProps) {
+  const track = useTrack();
+
   return (
     <div
       className={`flex overflow-x-auto scrollbar-hide bg-slate-800 rounded-lg border border-slate-700 p-0.5 ${className}`}
@@ -43,7 +47,12 @@ export default function TabBar({ tabs, activeTab, onChange, className = '' }: Ta
             role="tab"
             aria-selected={isActive}
             aria-controls={`tabpanel-${tab.id}`}
-            onClick={() => onChange(tab.id)}
+            onClick={() => {
+              if (tab.id !== activeTab) {
+                track('tab_change', { from_tab: activeTab, to_tab: tab.id });
+              }
+              onChange(tab.id);
+            }}
             className={`
               flex items-center gap-1.5 whitespace-nowrap px-4 py-2 rounded-md text-sm font-medium
               transition-all duration-200 shrink-0

@@ -15,6 +15,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import GlossaryShell from "@/components/GlossaryShell";
+import AnalyticsProvider from "@/components/AnalyticsProvider";
 
 /**
  * Inter font configuration
@@ -77,16 +78,18 @@ export default function RootLayout({
   return (
     <html lang="fr" className="dark">
       <body className={`${inter.variable} font-sans antialiased bg-slate-950 text-slate-100`}>
-        <GlossaryShell>
-          <Navbar />
-          {/* 
-            pb-20 sur mobile compense la barre de navigation fixe en bas (~56px + safe area).
-            md:pb-0 retire ce padding sur desktop où la nav est en haut.
-          */}
-          <div className="pb-20 md:pb-0">
-            {children}
-          </div>
-        </GlossaryShell>
+        <AnalyticsProvider>
+          <GlossaryShell>
+            <Navbar />
+            {/*
+              pb-20 sur mobile compense la barre de navigation fixe en bas (~56px + safe area).
+              md:pb-0 retire ce padding sur desktop où la nav est en haut.
+            */}
+            <div className="pb-20 md:pb-0">
+              {children}
+            </div>
+          </GlossaryShell>
+        </AnalyticsProvider>
       </body>
     </html>
   );
