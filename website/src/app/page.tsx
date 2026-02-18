@@ -325,7 +325,7 @@ export default function LandingPage() {
                 Concentrez-vous sur l&apos;analyse, pas sur le nettoyage.
               </p>
               <a
-                href="https://github.com/Nuttux/open-public-data"
+                href="https://github.com/Nuttux/france-open-data"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-emerald-400 font-medium hover:text-emerald-300 transition-colors"
@@ -343,7 +343,7 @@ export default function LandingPage() {
                 infrastructure data. Standards et bonnes pratiques inclus.
               </p>
               <a
-                href="https://github.com/Nuttux/open-public-data"
+                href="https://github.com/Nuttux/france-open-data"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-amber-400 font-medium hover:text-amber-300 transition-colors"
@@ -412,7 +412,7 @@ export default function LandingPage() {
               <p className="text-sm text-slate-400 leading-relaxed">
                 Tout le code est sur{' '}
                 <a
-                  href="https://github.com/Nuttux/open-public-data"
+                  href="https://github.com/Nuttux/france-open-data"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-emerald-400 hover:underline"
@@ -535,7 +535,7 @@ export default function LandingPage() {
               Consulter les comptes
             </Link>
             <a
-              href="https://github.com/Nuttux/open-public-data"
+              href="https://github.com/Nuttux/france-open-data"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-7 py-3.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-lg border border-slate-700 hover:border-slate-600 transition-all duration-200"
@@ -567,7 +567,7 @@ export default function LandingPage() {
                 Sources : <a href="https://opendata.paris.fr/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:underline">Open Data Paris</a> · Comptes administratifs M57 · PDFs Conseil de Paris
               </p>
               <p>
-                Licence MIT · <a href="https://github.com/Nuttux/open-public-data" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:underline">Code source sur GitHub</a>
+                Licence MIT · <a href="https://github.com/Nuttux/france-open-data" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:underline">Code source sur GitHub</a>
               </p>
             </div>
           </div>
