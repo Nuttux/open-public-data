@@ -78,6 +78,27 @@ export const GLOSSARY_SECTIONS: GlossarySection[] = [
         plain:
           'Deux façons de regarder les dépenses. Par fonction = à quoi ça sert (éducation, social…). Par nature = comment c\'est dépensé (personnel, achats, subventions…).',
       },
+      {
+        key: 'budget_vote',
+        label: 'Budget voté (prévisionnel)',
+        plain:
+          'Le budget voté par le Conseil de Paris en début d\'année. C\'est une prévision : combien on prévoit de dépenser et de recevoir.',
+        analogy: 'Comme votre budget mensuel que vous planifiez en début de mois.',
+      },
+      {
+        key: 'budget_execute',
+        label: 'Budget exécuté (réel)',
+        plain:
+          'Ce qui a réellement été dépensé et encaissé en fin d\'année. Souvent différent du voté, surtout pour les grands projets.',
+        analogy: 'Comme vos relevés bancaires à la fin du mois : ce que vous avez vraiment dépensé.',
+      },
+      {
+        key: 'enveloppe_marche',
+        label: 'Enveloppe pluriannuelle',
+        plain:
+          'Le montant maximum qu\'un contrat peut atteindre sur toute sa durée (souvent 4 ans). Ce n\'est pas une dépense annuelle, c\'est un plafond contractuel.',
+        analogy: 'Comme un forfait téléphone sur 2 ans : le montant total du contrat, pas la facture du mois.',
+      },
     ],
   },
   {

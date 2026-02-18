@@ -480,7 +480,10 @@ export default function DrilldownPanel({
               >
                 <div className="flex items-center gap-2">
                   <div className={`w-3 h-3 rounded-full ${sectionTotals.fonctionnement > 0 ? 'bg-blue-500' : 'bg-blue-500/30'}`}></div>
-                  <span className={`text-sm font-medium ${sectionTotals.fonctionnement > 0 ? 'text-slate-200' : 'text-slate-500'}`}>Fonctionnement</span>
+                  <div>
+                    <span className={`text-sm font-medium ${sectionTotals.fonctionnement > 0 ? 'text-slate-200' : 'text-slate-500'}`}>Fonctionnement</span>
+                    <span className={`text-[10px] block ${sectionTotals.fonctionnement > 0 ? 'text-slate-400' : 'text-slate-600'}`}>dépenses courantes</span>
+                  </div>
                 </div>
                 <div className="text-right">
                   <span className={`text-sm font-semibold ${sectionTotals.fonctionnement > 0 ? 'text-blue-400' : 'text-slate-600'}`}>
@@ -493,7 +496,7 @@ export default function DrilldownPanel({
                   )}
                 </div>
               </button>
-              
+
               <button
                 onClick={() => sectionTotals.investissement > 0 && handleSectionClick('Investissement')}
                 disabled={sectionTotals.investissement === 0}
@@ -507,7 +510,10 @@ export default function DrilldownPanel({
               >
                 <div className="flex items-center gap-2">
                   <div className={`w-3 h-3 rounded-full ${sectionTotals.investissement > 0 ? 'bg-amber-500' : 'bg-amber-500/30'}`}></div>
-                  <span className={`text-sm font-medium ${sectionTotals.investissement > 0 ? 'text-slate-200' : 'text-slate-500'}`}>Investissement</span>
+                  <div>
+                    <span className={`text-sm font-medium ${sectionTotals.investissement > 0 ? 'text-slate-200' : 'text-slate-500'}`}>Investissement</span>
+                    <span className={`text-[10px] block ${sectionTotals.investissement > 0 ? 'text-slate-400' : 'text-slate-600'}`}>grands projets</span>
+                  </div>
                 </div>
                 <div className="text-right">
                   <span className={`text-sm font-semibold ${sectionTotals.investissement > 0 ? 'text-amber-400' : 'text-slate-600'}`}>

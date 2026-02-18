@@ -83,12 +83,12 @@ export default function InvestissementsTendancesTab() {
       variationSubtitle={(dim) => `Quels ${dim}s ont le plus évolué`}
       yAxisFormatter={(v: number) => `${(v / 1e9).toFixed(1)} Md€`}
       csvFilename="investissements_tendances"
-      sourceNote="Source : Comptes Administratifs — Budget Principal (M57 Ville-Département). Hors opérations de dette et dotations."
+      sourceNote="Source : Open Data Paris — Comptes annuels de la Ville de Paris. Hors dette et dotations."
       qualityNotes={
         <ul className="text-[11px] text-slate-500 space-y-1.5 list-disc list-inside">
-          <li>Ces tendances proviennent du <strong className="text-slate-400">Budget Principal</strong> (Comptes Administratifs M57), qui reflète les dépenses <em>réellement exécutées</em> chaque année (2019-2024).</li>
-          <li>Les opérations de dette (emprunts, remboursements) et dotations sont exclues pour refléter l&apos;investissement « réel » en équipements et infrastructures.</li>
-          <li>L&apos;onglet « Explorer » utilise une source plus granulaire (Annexe Investissements Localisés + AP OpenData) qui détaille les projets individuels, mais avec un périmètre plus restreint.</li>
+          <li>Ces tendances reflètent les dépenses d&apos;investissement <em>réellement engagées</em> chaque année (2019-2024).</li>
+          <li>Les opérations financières (emprunts, remboursements) sont exclues pour ne montrer que l&apos;investissement concret en équipements et infrastructures.</li>
+          <li>L&apos;onglet « Explorer » utilise une source plus détaillée qui liste les projets individuels avec leur localisation.</li>
         </ul>
       }
     />
