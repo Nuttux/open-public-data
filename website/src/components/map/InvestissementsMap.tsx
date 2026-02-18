@@ -18,6 +18,7 @@ import type { AutorisationProgramme, ArrondissementStats, GeoPoint } from '@/lib
 import { formatEuroCompact } from '@/lib/formatters';
 import { THEMATIQUE_LABELS, type ThematiqueSubvention } from '@/lib/constants/directions';
 import ChoroplethLayer, { ChoroplethLegend } from './ChoroplethLayer';
+import { MISC_ICONS } from '@/lib/icons';
 
 /**
  * Centre de Paris par défaut
@@ -236,7 +237,7 @@ export default function InvestissementsMap({
                       {projet.isPrecise ? (
                         <>
                           <p className="flex items-center gap-1">
-                            <span className="text-emerald-500">📍</span>
+                            <span className="text-emerald-500">{MISC_ICONS.mapPinPrecise}</span>
                             <strong>Localisation précise</strong>
                           </p>
                           {projet.adresse && (
@@ -246,7 +247,7 @@ export default function InvestissementsMap({
                       ) : (
                         <>
                           <p className="flex items-center gap-1">
-                            <span className="text-orange-400">📌</span>
+                            <span className="text-orange-400">{MISC_ICONS.mapPinApprox}</span>
                             <strong>Localisation approximative</strong>
                           </p>
                           <p className="text-slate-500 ml-5">

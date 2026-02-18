@@ -16,6 +16,7 @@ import type { Beneficiaire } from '@/components/SubventionsTable';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { getThematiqueColor, PALETTE } from '@/lib/colors';
 import type { CsvColumn } from '@/lib/export';
+import { BREAKDOWN_ICONS } from '@/lib/icons';
 
 const CSV_COLUMNS: CsvColumn<Record<string, unknown>>[] = [
   { key: 'annee', label: 'Année' },
@@ -31,9 +32,9 @@ const CSV_COLUMNS: CsvColumn<Record<string, unknown>>[] = [
 // ─── Config ──────────────────────────────────────────────────────────────────
 
 const BREAKDOWNS: BreakdownOption[] = [
-  { id: 'thematique', label: 'Thématique', icon: '🎯' },
-  { id: 'direction', label: 'Direction', icon: '🏛' },
-  { id: 'type_organisme', label: 'Type organisme', icon: '👥' },
+  { id: 'thematique', label: 'Thématique', icon: BREAKDOWN_ICONS.thematique },
+  { id: 'direction', label: 'Direction', icon: BREAKDOWN_ICONS.direction },
+  { id: 'type_organisme', label: 'Type organisme', icon: BREAKDOWN_ICONS.type_organisme },
 ];
 
 /** Mapping nature juridique → type organisme simplifié */

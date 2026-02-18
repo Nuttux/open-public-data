@@ -11,13 +11,14 @@ import TendancesTab from '@/components/shared/TendancesTab';
 import type { TendancesYear, BreakdownOption } from '@/components/shared/TendancesTab';
 import { getThematiqueColor, PALETTE } from '@/lib/colors';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
+import { BREAKDOWN_ICONS } from '@/lib/icons';
 
 // ─── Config ──────────────────────────────────────────────────────────────────
 
 const BREAKDOWNS: BreakdownOption[] = [
-  { id: 'thematique', label: 'Thématique', icon: '🎯' },
-  { id: 'direction', label: 'Direction', icon: '🏛' },
-  { id: 'type_organisme', label: 'Type organisme', icon: '👥' },
+  { id: 'thematique', label: 'Thématique', icon: BREAKDOWN_ICONS.thematique },
+  { id: 'direction', label: 'Direction', icon: BREAKDOWN_ICONS.direction },
+  { id: 'type_organisme', label: 'Type organisme', icon: BREAKDOWN_ICONS.type_organisme },
 ];
 
 const TYPE_ORGANISME_COLORS: Record<string, string> = {
@@ -106,6 +107,7 @@ export default function SubventionsTendancesTab() {
       variationTitle={(dim) => `Évolution par ${dim}`}
       variationSubtitle={(dim) => `Quelles ${dim}s ont le plus évolué`}
       yAxisFormatter={(v: number) => v >= 1e9 ? `${(v / 1e9).toFixed(1)} Md€` : `${(v / 1e6).toFixed(0)} M€`}
+      csvFilename="subventions_tendances"
       sourceNote="Source : Open Data Paris — Subventions associations votées. Données absentes pour 2020-2021."
       qualityNotes={
         <ul className="text-[11px] text-slate-500 space-y-1.5 list-disc list-inside">

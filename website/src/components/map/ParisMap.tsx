@@ -19,6 +19,7 @@ import type { Subvention, LogementSocial, GeoPoint, ArrondissementStats, Autoris
 import { formatEuroCompact } from '@/lib/formatters';
 import { getDirectionName, THEMATIQUE_LABELS, type ThematiqueSubvention } from '@/lib/constants/directions';
 import ChoroplethLayer, { ChoroplethLegend, type ChoroplethMetric } from './ChoroplethLayer';
+import { MISC_ICONS } from '@/lib/icons';
 
 /**
  * Centre de Paris par défaut
@@ -368,7 +369,7 @@ export default function ParisMap({
                     {ap.isPrecise ? (
                       <>
                         <p className="flex items-center gap-1">
-                          <span className="text-emerald-500">📍</span>
+                          <span className="text-emerald-500">{MISC_ICONS.mapPinPrecise}</span>
                           <strong>Localisation précise</strong>
                         </p>
                         {ap.adresse && (
@@ -378,7 +379,7 @@ export default function ParisMap({
                     ) : (
                       <>
                         <p className="flex items-center gap-1">
-                          <span className="text-orange-400">📌</span>
+                          <span className="text-orange-400">{MISC_ICONS.mapPinApprox}</span>
                           <strong>Localisation approximative</strong>
                         </p>
                         <p className="text-slate-500 ml-5">

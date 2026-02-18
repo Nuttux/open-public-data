@@ -13,13 +13,14 @@ import type { TendancesYear, BreakdownOption, GroupItem } from '@/components/sha
 import type { LogementSocial } from '@/lib/types/map';
 import { formatNumber } from '@/lib/formatters';
 import { PALETTE } from '@/lib/colors';
+import { BREAKDOWN_ICONS } from '@/lib/icons';
 
 // ─── Config ──────────────────────────────────────────────────────────────────
 
 const BREAKDOWNS: BreakdownOption[] = [
-  { id: 'type', label: 'Type', icon: '🏠' },
-  { id: 'bailleur', label: 'Bailleur', icon: '🏢' },
-  { id: 'arrondissement', label: 'Arrondissement', icon: '📍' },
+  { id: 'type', label: 'Type', icon: BREAKDOWN_ICONS.type },
+  { id: 'bailleur', label: 'Bailleur', icon: BREAKDOWN_ICONS.bailleur },
+  { id: 'arrondissement', label: 'Arrondissement', icon: BREAKDOWN_ICONS.arrondissement },
 ];
 
 const TYPE_COLORS: Record<string, string> = {
@@ -143,6 +144,7 @@ export default function LogementsTendancesTab({ allLogements }: LogementsTendanc
       variationTitle={(dim) => `Évolution par ${dim}`}
       variationSubtitle={(dim) => `Quels ${dim}s ont le plus évolué`}
       yAxisFormatter={(v: number) => formatNumber(v)}
+      csvFilename="logements_tendances"
       sourceNote="Source : Open Data Paris — Logements sociaux financés à Paris."
       qualityNotes={
         <ul className="text-[11px] text-slate-500 space-y-1.5 list-disc list-inside">

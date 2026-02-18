@@ -20,6 +20,7 @@ import SubventionsAnnuelTab from '@/components/subventions/SubventionsAnnuelTab'
 import SubventionsTendancesTab from '@/components/subventions/SubventionsTendancesTab';
 import SubventionsExplorerTab from '@/components/subventions/SubventionsExplorerTab';
 import type { Beneficiaire } from '@/components/SubventionsTable';
+import { TAB_ICONS } from '@/lib/icons';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -46,9 +47,9 @@ interface BeneficiairesResponse {
 // ─── Tab definitions ─────────────────────────────────────────────────────────
 
 const SUBVENTIONS_TABS: Tab[] = [
-  { id: 'annuel', label: 'Annuel', icon: '📊' },
-  { id: 'tendances', label: 'Tendances', icon: '📈' },
-  { id: 'explorer', label: 'Explorer', icon: '🔍' },
+  { id: 'annuel', label: 'Annuel', icon: TAB_ICONS.annuel },
+  { id: 'tendances', label: 'Tendances', icon: TAB_ICONS.tendances },
+  { id: 'explorer', label: 'Explorer', icon: TAB_ICONS.explorer },
 ];
 
 const VALID_TAB_IDS = SUBVENTIONS_TABS.map(t => t.id);

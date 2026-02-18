@@ -18,12 +18,13 @@ import PageHeader from '@/components/PageHeader';
 import BudgetAnnuelTab from '@/components/budget/BudgetAnnuelTab';
 import BudgetTendancesTab from '@/components/budget/BudgetTendancesTab';
 import type { BudgetIndex } from '@/lib/formatters';
+import { TAB_ICONS } from '@/lib/icons';
 
 // ─── Tab definitions ─────────────────────────────────────────────────────────
 
 const BUDGET_TABS: Tab[] = [
-  { id: 'annuel', label: 'Annuel', icon: '📋' },
-  { id: 'tendances', label: 'Tendances', icon: '📈' },
+  { id: 'annuel', label: 'Annuel', icon: TAB_ICONS.annuel },
+  { id: 'tendances', label: 'Tendances', icon: TAB_ICONS.tendances },
 ];
 
 const VALID_TAB_IDS = BUDGET_TABS.map(t => t.id);

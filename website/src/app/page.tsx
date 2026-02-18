@@ -17,6 +17,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import BudgetSankey from '@/components/BudgetSankey';
 import type { BudgetData } from '@/lib/formatters';
+import { MISC_ICONS } from '@/lib/icons';
 
 /** Chiffres-clés du budget 2026 voté (arrondis pour la landing) */
 const KEY_FIGURES = {
@@ -272,7 +273,7 @@ export default function LandingPage() {
           <div className="grid md:grid-cols-3 gap-8">
             {/* Citoyens */}
             <div className="glass-card p-8 text-center group hover:border-blue-500/50 transition-colors">
-              <div className="text-4xl mb-6">🏛️</div>
+              <div className="text-4xl mb-6 text-blue-400">{MISC_ICONS.citizens}</div>
               <h3 className="text-xl font-bold text-slate-100 mb-4">Citoyens</h3>
               <p className="text-slate-400 mb-6">
                 Comprenez où va votre argent. Soyez plus autonome dans votre compréhension
@@ -288,7 +289,7 @@ export default function LandingPage() {
 
             {/* Journalistes */}
             <div className="glass-card p-8 text-center group hover:border-emerald-500/50 transition-colors">
-              <div className="text-4xl mb-6">📰</div>
+              <div className="text-4xl mb-6 text-emerald-400">{MISC_ICONS.journalists}</div>
               <h3 className="text-xl font-bold text-slate-100 mb-4">Journalistes & Analystes</h3>
               <p className="text-slate-400 mb-6">
                 Accédez à des données de qualité, déjà modélisées et prêtes à l&apos;emploi.
@@ -306,7 +307,7 @@ export default function LandingPage() {
 
             {/* Institutions */}
             <div className="glass-card p-8 text-center group hover:border-amber-500/50 transition-colors">
-              <div className="text-4xl mb-6">🏢</div>
+              <div className="text-4xl mb-6 text-amber-400">{MISC_ICONS.institutions}</div>
               <h3 className="text-xl font-bold text-slate-100 mb-4">Institutions publiques</h3>
               <p className="text-slate-400 mb-6">
                 Réutilisez nos pipelines de transformation pour améliorer votre
@@ -523,7 +524,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <span className="text-xl">🏛️</span>
+              <span className="text-xl text-slate-400">{MISC_ICONS.institutions}</span>
               <div>
                 <p className="text-slate-300 font-semibold text-sm">Données Lumières</p>
                 <p className="text-xs text-slate-500">

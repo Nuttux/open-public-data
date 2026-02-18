@@ -18,6 +18,7 @@ import ExportBar from '@/components/shared/ExportBar';
 import type { CsvColumn } from '@/lib/export';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { PALETTE } from '@/lib/colors';
+import { BREAKDOWN_ICONS } from '@/lib/icons';
 
 const CSV_COLUMNS: CsvColumn<Record<string, unknown>>[] = [
   { key: 'numero_marche', label: 'N° marché' },
@@ -35,8 +36,8 @@ const CSV_COLUMNS: CsvColumn<Record<string, unknown>>[] = [
 // ─── Config ──────────────────────────────────────────────────────────────────
 
 const BREAKDOWNS: BreakdownOption[] = [
-  { id: 'nature', label: 'Nature', icon: '📋' },
-  { id: 'categorie', label: 'Catégorie', icon: '🏷' },
+  { id: 'nature', label: 'Nature', icon: BREAKDOWN_ICONS.nature },
+  { id: 'categorie', label: 'Catégorie', icon: BREAKDOWN_ICONS.categorie },
 ];
 
 /** Couleurs fixes par nature de marché */

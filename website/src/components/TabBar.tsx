@@ -16,8 +16,8 @@ export interface Tab {
   id: string;
   /** Label affiché */
   label: string;
-  /** Icône optionnelle (emoji ou composant) */
-  icon?: string;
+  /** Icône optionnelle (Lucide icon ou emoji) */
+  icon?: React.ReactNode;
 }
 
 interface TabBarProps {

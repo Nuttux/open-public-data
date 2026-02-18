@@ -15,12 +15,13 @@
  *   5. Data quality note
  */
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, type ReactNode } from 'react';
 import ReactECharts from 'echarts-for-react';
 import type { EChartsOption } from 'echarts';
 import { PALETTE } from '@/lib/colors';
 import { useIsMobile } from '@/lib/hooks/useIsMobile';
 import YearRangeSelector from '@/components/YearRangeSelector';
+import ExportBar from '@/components/shared/ExportBar';
 
 // ─── Shared Types ────────────────────────────────────────────────────────────
 
@@ -36,7 +37,7 @@ export interface TendancesYear {
 export interface BreakdownOption {
   id: string;
   label: string;
-  icon: string;
+  icon: ReactNode;
 }
 
 export interface KpiCard {
@@ -147,6 +148,7 @@ export default function TendancesTab({
   title, chartTitle, variationTitle, variationSubtitle,
   yAxisFormatter, sourceNote, qualityNotes,
   kpi1Label, kpi1Sub, kpi3, kpi4,
+  csvFilename,
 }: TendancesTabProps) {
   const [fetchedData, setFetchedData] = useState<TendancesYear[]>([]);
   const [startYear, setStartYear] = useState(2018);
@@ -337,6 +339,26 @@ export default function TendancesTab({
 
   const variationChartHeight = useMemo(() => Math.max(150, variationItems.length * (isMobile ? 34 : 38) + 20), [variationItems.length, isMobile]);
 
+  // ── CSV export data ──
+  const { csvRows, csvColumns } = useMemo(() => {
+    if (!csvFilename || filteredYears.length === 0) return { csvRows: [], csvColumns: [] };
+    const cols: { key: string; label: string }[] = [
+      { key: 'year', label: 'Année' },
+      { key: 'total', label: 'Total' },
+      ...groupsOrdered.map(g => ({ key: g, label: g })),
+    ];
+    const rows = filteredYears.map(y => {
+      const row: Record<string, unknown> = { year: y.year, total: y.total };
+      for (const g of groupsOrdered) {
+        let v = 0;
+        for (const item of (y.groups[breakdown] || [])) if (item.label === g) v += item.value;
+        row[g] = v;
+      }
+      return row;
+    });
+    return { csvRows: rows, csvColumns: cols };
+  }, [csvFilename, filteredYears, groupsOrdered, breakdown]);
+
   // ── Default KPI3 / KPI4 ──
   const defaultKpi3 = kpiCtx ? {
     label: `Évolution ${kpiCtx.earliest.year}→${kpiCtx.latest.year}`,
@@ -363,6 +385,15 @@ export default function TendancesTab({
 
   return (
     <div className="space-y-6">
+      {/* ── Export bar ── */}
+      {csvFilename && csvRows.length > 0 && (
+        <ExportBar
+          csvData={csvRows}
+          csvColumns={csvColumns}
+          filename={`${csvFilename}_${startYear}-${endYear}`}
+        />
+      )}
+
       {/* ── Header: title + breakdown + year range ── */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="flex items-center gap-3">

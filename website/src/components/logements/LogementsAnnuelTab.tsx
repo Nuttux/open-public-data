@@ -15,6 +15,7 @@ import type { LogementSocial } from '@/lib/types/map';
 import { formatNumber } from '@/lib/formatters';
 import { PALETTE } from '@/lib/colors';
 import type { CsvColumn } from '@/lib/export';
+import { BREAKDOWN_ICONS } from '@/lib/icons';
 
 const CSV_COLUMNS: CsvColumn<Record<string, unknown>>[] = [
   { key: 'annee', label: 'Année' },
@@ -33,9 +34,9 @@ const CSV_COLUMNS: CsvColumn<Record<string, unknown>>[] = [
 // ─── Config ──────────────────────────────────────────────────────────────────
 
 const BREAKDOWNS: BreakdownOption[] = [
-  { id: 'type', label: 'Type', icon: '🏠' },
-  { id: 'bailleur', label: 'Bailleur', icon: '🏢' },
-  { id: 'arrondissement', label: 'Arrondissement', icon: '📍' },
+  { id: 'type', label: 'Type', icon: BREAKDOWN_ICONS.type },
+  { id: 'bailleur', label: 'Bailleur', icon: BREAKDOWN_ICONS.bailleur },
+  { id: 'arrondissement', label: 'Arrondissement', icon: BREAKDOWN_ICONS.arrondissement },
 ];
 
 const DIM_COLORS = [

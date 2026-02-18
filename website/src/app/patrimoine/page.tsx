@@ -17,12 +17,13 @@ import PageHeader from '@/components/PageHeader';
 import PatrimoineAnnuelTab from '@/components/patrimoine/PatrimoineAnnuelTab';
 import PatrimoineTendancesTab from '@/components/patrimoine/PatrimoineTendancesTab';
 import { loadBilanIndex, type BilanIndex } from '@/lib/api/staticData';
+import { TAB_ICONS } from '@/lib/icons';
 
 // ─── Tab definitions ─────────────────────────────────────────────────────────
 
 const PATRIMOINE_TABS: Tab[] = [
-  { id: 'annuel', label: 'Annuel', icon: '📋' },
-  { id: 'tendances', label: 'Tendances', icon: '📈' },
+  { id: 'annuel', label: 'Annuel', icon: TAB_ICONS.annuel },
+  { id: 'tendances', label: 'Tendances', icon: TAB_ICONS.tendances },
 ];
 
 const VALID_TAB_IDS = PATRIMOINE_TABS.map(t => t.id);
