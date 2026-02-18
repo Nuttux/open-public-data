@@ -17,6 +17,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import BudgetSankey from '@/components/BudgetSankey';
 import type { BudgetData } from '@/lib/formatters';
+import { MISC_ICONS } from '@/lib/icons';
 
 /** Chiffres-clés du budget 2026 voté (arrondis pour la landing) */
 const KEY_FIGURES = {
@@ -521,7 +522,7 @@ export default function LandingPageV2() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <span className="text-xl">🏛️</span>
+              <span className="text-xl text-slate-400">{MISC_ICONS.institutions}</span>
               <div>
                 <p className="text-slate-300 font-semibold text-sm">Données Lumières</p>
                 <p className="text-xs text-slate-500">

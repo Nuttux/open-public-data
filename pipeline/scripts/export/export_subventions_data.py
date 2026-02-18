@@ -268,6 +268,92 @@ def export_beneficiaires_year(client: bigquery.Client, year: int, limit: int = 5
     print(f"    → {output_file.name} ({len(data)} bénéficiaires, {total/1e6:.1f}M€)")
 
 
+NATURE_TO_TYPE = {
+    'Associations': 'Associations',
+    'Etablissements publics': 'Établissements publics',
+    'Etablissements de droit public': 'Établissements publics',
+    'Autres personnes de droit public': 'Établissements publics',
+    'Etat': 'Établissements publics',
+    'Communes': 'Établissements publics',
+    'Département': 'Établissements publics',
+    'Régions': 'Établissements publics',
+    'Entreprises': 'Entreprises',
+    'Autres personnes de droit privé': 'Autres privés',
+    'Personnes physiques': 'Personnes physiques',
+    'Autres': 'Autres',
+}
+
+
+def export_tendances(client: bigquery.Client, years: list, limit: int = 500):
+    """
+    Exporte les données de tendances multi-dimensions.
+
+    Génère subventions_tendances.json avec agrégation par :
+    - Thématique
+    - Direction
+    - Type d'organisme (nature juridique simplifiée)
+    """
+    print("  Tendances multi-dimensions...")
+
+    years_data = []
+    for year in sorted(years):
+        data = fetch_beneficiaires_data(client, year, limit)
+        data = [d for d in data if d["annee"] == year][:limit]
+
+        total_montant = sum(d["montant_total"] for d in data)
+        nb_subventions = sum(d.get("nb_subventions", 1) for d in data)
+
+        # Agrégation par thématique
+        by_thematique = {}
+        for b in data:
+            key = b.get("thematique") or "Non classifié"
+            if key not in by_thematique:
+                by_thematique[key] = {"label": key, "montant": 0, "count": 0}
+            by_thematique[key]["montant"] += b["montant_total"]
+            by_thematique[key]["count"] += 1
+
+        # Agrégation par direction
+        by_direction = {}
+        for b in data:
+            key = b.get("direction") or "Non renseignée"
+            if key not in by_direction:
+                by_direction[key] = {"label": key, "montant": 0, "count": 0}
+            by_direction[key]["montant"] += b["montant_total"]
+            by_direction[key]["count"] += 1
+
+        # Agrégation par type d'organisme
+        by_type = {}
+        for b in data:
+            key = NATURE_TO_TYPE.get(b.get("nature_juridique", ""), "Autres")
+            if key not in by_type:
+                by_type[key] = {"label": key, "montant": 0, "count": 0}
+            by_type[key]["montant"] += b["montant_total"]
+            by_type[key]["count"] += 1
+
+        years_data.append({
+            "year": year,
+            "total_montant": total_montant,
+            "nb_subventions": nb_subventions,
+            "nb_beneficiaires": len(data),
+            "par_thematique": sorted(by_thematique.values(), key=lambda x: -x["montant"]),
+            "par_direction": sorted(by_direction.values(), key=lambda x: -x["montant"]),
+            "par_type_organisme": sorted(by_type.values(), key=lambda x: -x["montant"]),
+        })
+
+    output = {
+        "generated_at": datetime.now().isoformat(),
+        "source": "dbt marts (mart_subventions_beneficiaires)",
+        "note_perimetre": f"Top {limit} bénéficiaires par année, couvrant >95% du total.",
+        "years": years_data,
+    }
+
+    output_file = OUTPUT_DIR / "subventions_tendances.json"
+    with open(output_file, "w", encoding="utf-8") as f:
+        json.dump(output, f, ensure_ascii=False, indent=2)
+
+    print(f"    → {output_file.name} ({len(years_data)} années)")
+
+
 def main():
     """Point d'entrée principal."""
     import sys
@@ -305,7 +391,12 @@ def main():
         export_treemap_year(client, year)
         export_beneficiaires_year(client, year, args.limit)
         log.success(f"Année {year}", extra=f"treemap + {args.limit} bénéficiaires")
-    
+
+    # Tendances multi-dimensions
+    log.section("Export des tendances")
+    export_tendances(client, years, args.limit)
+    log.success("Tendances", extra="thématique + direction + type organisme")
+
     log.summary()
 
 

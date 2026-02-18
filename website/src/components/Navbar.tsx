@@ -34,42 +34,63 @@ const navLinks = [
   {
     href: '/',
     label: 'Accueil',
+    shortLabel: 'Accueil',
     icon: NAV_ICONS.accueil,
     description: 'Présentation du projet',
   },
   {
+    href: '/tableau-de-bord',
+    label: 'Synthèse',
+    shortLabel: 'Synthèse',
+    icon: NAV_ICONS.synthese,
+    description: 'Tableau de bord — KPI et coût par habitant',
+  },
+  {
     href: '/budget',
     label: 'Budget',
+    shortLabel: 'Budget',
     icon: NAV_ICONS.budget,
     description: 'Budget de Paris — Annuel, Tendances, Prévision',
   },
   {
     href: '/patrimoine',
     label: 'Patrimoine',
+    shortLabel: 'Patrim.',
     icon: NAV_ICONS.patrimoine,
     description: 'État patrimonial, dette et santé financière',
   },
   {
     href: '/subventions',
     label: 'Subventions',
+    shortLabel: 'Subven.',
     icon: NAV_ICONS.subventions,
     description: 'Bénéficiaires par thématique',
   },
   {
     href: '/investissements',
-    label: 'Travaux',
+    label: 'Investissements',
+    shortLabel: 'Invest.',
     icon: NAV_ICONS.investissements,
     description: "Projets d'investissement",
   },
   {
+    href: '/marches-publics',
+    label: 'Marchés',
+    shortLabel: 'Marchés',
+    icon: NAV_ICONS.marches,
+    description: 'Marchés publics de la collectivité parisienne',
+  },
+  {
     href: '/logements',
     label: 'Logements',
+    shortLabel: 'Logem.',
     icon: NAV_ICONS.logements,
     description: 'Logements sociaux financés',
   },
   {
     href: '/blog',
     label: 'Blog',
+    shortLabel: 'Blog',
     icon: NAV_ICONS.blog,
     description: 'Articles et analyses',
   },
@@ -92,8 +113,8 @@ function GlossaryButton({
       onClick={onClick}
       className={`
         flex items-center justify-center rounded-lg
-        border border-slate-700/50 text-slate-400
-        hover:text-slate-200 hover:bg-slate-800/50
+        border border-slate-700/50 text-slate-300
+        hover:text-slate-100 hover:bg-slate-800/50
         transition-all duration-200
         ${className}
       `}
@@ -141,7 +162,7 @@ export default function Navbar() {
             </Link>
 
             {/* Liens de navigation desktop */}
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-0.5">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 return (
@@ -149,17 +170,17 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     className={`
-                      flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium
+                      flex items-center gap-1.5 px-2 lg:px-2.5 py-2 rounded-lg text-xs font-medium
                       transition-all duration-200
                       ${
                         isActive
                           ? 'bg-purple-600/20 text-purple-400 border border-purple-500/30'
-                          : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                          : 'text-slate-300 hover:text-slate-100 hover:bg-slate-800/50'
                       }
                     `}
                     title={link.description}
                   >
-                    <span className="text-lg">{link.icon}</span>
+                    <span className="text-[18px] leading-none">{link.icon}</span>
                     <span className="hidden lg:inline">{link.label}</span>
                   </Link>
                 );
@@ -192,7 +213,7 @@ export default function Navbar() {
 
       {/* ═══════════════════════════════════════════════════════════
           MOBILE : Barre de navigation fixe en bas (tab bar)
-          7 onglets avec icône + label compact dans une grille CSS
+          9 onglets avec icône + label compact dans une grille CSS
           Compatible safe-area pour iPhone X+ (home indicator)
           ═══════════════════════════════════════════════════════════ */}
       <nav
@@ -201,7 +222,7 @@ export default function Navbar() {
         aria-label="Navigation principale"
         style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
       >
-        <div className="grid grid-cols-7">
+        <div className="grid grid-cols-9">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -216,7 +237,7 @@ export default function Navbar() {
                   ${
                     isActive
                       ? 'text-purple-400'
-                      : 'text-slate-500 active:text-slate-300'
+                      : 'text-slate-400 active:text-slate-200'
                   }
                 `}
               >
@@ -230,11 +251,11 @@ export default function Navbar() {
                 <span
                   className={`
                     text-[9px] mt-1 leading-tight font-medium
-                    truncate max-w-full px-0.5 text-center
-                    ${isActive ? 'text-purple-400' : 'text-slate-500'}
+                    max-w-full px-0.5 text-center
+                    ${isActive ? 'text-purple-400' : 'text-slate-400'}
                   `}
                 >
-                  {link.label}
+                  {link.shortLabel}
                 </span>
               </Link>
             );

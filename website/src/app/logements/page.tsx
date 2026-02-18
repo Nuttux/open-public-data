@@ -4,7 +4,7 @@
  * Page /logements — Logements sociaux financés à Paris.
  *
  * Architecture à 3 onglets :
- *   - Annuel (défaut) : Stats + classement bailleurs/arrondissements + légende types
+ *   - Annuel (défaut) : Treemap + KPIs + classement programmes (via shared AnnuelTab)
  *   - Tendances : Évolution multi-années (stacked bar PLAI/PLUS/PLS + variation arrondissements)
  *   - Explorer : Liste + Carte avec filtres collapsibles et toggle vue
  *
@@ -15,10 +15,12 @@ import { Suspense, useState, useEffect, useMemo } from 'react';
 import TabBar, { type Tab } from '@/components/TabBar';
 import { useTabState } from '@/lib/hooks/useTabState';
 import PageHeader from '@/components/PageHeader';
+import YearSelector from '@/components/YearSelector';
 import type { LogementSocial, ArrondissementStats } from '@/lib/types/map';
 import { loadLogementsSociaux, loadArrondissementsStats } from '@/lib/api/staticData';
 import { formatNumber } from '@/lib/formatters';
 import { DATA_SOURCES } from '@/lib/constants/arrondissements';
+import { TAB_ICONS } from '@/lib/icons';
 import LogementsAnnuelTab from '@/components/logements/LogementsAnnuelTab';
 import LogementsTendancesTab from '@/components/logements/LogementsTendancesTab';
 import LogementsExplorerTab from '@/components/logements/LogementsExplorerTab';
@@ -26,9 +28,9 @@ import LogementsExplorerTab from '@/components/logements/LogementsExplorerTab';
 // ─── Tab definitions ─────────────────────────────────────────────────────────
 
 const LOGEMENTS_TABS: Tab[] = [
-  { id: 'annuel', label: 'Annuel', icon: '🏢' },
-  { id: 'tendances', label: 'Tendances', icon: '📈' },
-  { id: 'explorer', label: 'Explorer', icon: '🔍' },
+  { id: 'annuel', label: 'Annuel', icon: TAB_ICONS.annuel },
+  { id: 'tendances', label: 'Tendances', icon: TAB_ICONS.tendances },
+  { id: 'explorer', label: 'Explorer', icon: TAB_ICONS.explorer },
 ];
 
 const VALID_TAB_IDS = LOGEMENTS_TABS.map(t => t.id);
@@ -37,9 +39,9 @@ const VALID_TAB_IDS = LOGEMENTS_TABS.map(t => t.id);
 
 function LogementsPageInner() {
   const [activeTab, setActiveTab] = useTabState('annuel', VALID_TAB_IDS);
-  const [logements, setLogements] = useState<LogementSocial[]>([]);
+  const [allLogements, setAllLogements] = useState<LogementSocial[]>([]);
   const [arrondissementsStats, setArrondissementsStats] = useState<ArrondissementStats[]>([]);
-  const [selectedArrondissement, setSelectedArrondissement] = useState<number | null>(null);
+  const [selectedYear, setSelectedYear] = useState<number>(2024);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -49,8 +51,11 @@ function LogementsPageInner() {
       setIsLoading(true);
       try {
         const [log, arr] = await Promise.all([loadLogementsSociaux(), loadArrondissementsStats()]);
-        setLogements(log);
+        setAllLogements(log);
         setArrondissementsStats(arr);
+        // Set most recent year as default
+        const years = [...new Set(log.map(l => l.annee))].sort((a, b) => b - a);
+        if (years.length > 0) setSelectedYear(years[0]);
       } catch (err) {
         console.error('Error:', err);
         setError('Erreur lors du chargement des données');
@@ -61,36 +66,31 @@ function LogementsPageInner() {
     loadData();
   }, []);
 
-  /** Logements filtrés par arrondissement (pour Annuel tab) */
-  const filteredLogements = useMemo(
-    () => selectedArrondissement === null ? logements : logements.filter(l => l.arrondissement === selectedArrondissement),
-    [logements, selectedArrondissement],
+  /** Available years (descending) */
+  const availableYears = useMemo(
+    () => [...new Set(allLogements.map(l => l.annee))].sort((a, b) => b - a),
+    [allLogements],
   );
 
-  /** Stats globaux */
-  const stats = useMemo(() => {
-    const totalLog = filteredLogements.reduce((s, l) => s + l.nbLogements, 0);
-    const totalPLAI = filteredLogements.reduce((s, l) => s + (l.nbPLAI || 0), 0);
-    const totalPLUS = filteredLogements.reduce((s, l) => s + (l.nbPLUS || 0), 0);
-    const totalPLS = filteredLogements.reduce((s, l) => s + (l.nbPLS || 0), 0);
-    const bailleurs = new Set(filteredLogements.map(l => l.bailleur)).size;
-    return { projets: filteredLogements.length, logements: totalLog, PLAI: totalPLAI, PLUS: totalPLUS, PLS: totalPLS, bailleurs };
-  }, [filteredLogements]);
+  /** Logements filtrés par année */
+  const filteredLogements = useMemo(
+    () => allLogements.filter(l => l.annee === selectedYear),
+    [allLogements, selectedYear],
+  );
 
   /** All arrondissement codes */
   const arrondissements = useMemo(
-    () => [...new Set(logements.map(l => l.arrondissement))].sort((a, b) => a - b),
-    [logements],
+    () => [...new Set(allLogements.map(l => l.arrondissement))].sort((a, b) => a - b),
+    [allLogements],
   );
 
-  /** Navigate to Explorer with bailleur selected */
-  const handleViewBailleurOnMap = (bailleur: string) => {
-    // The Explorer tab handles its own bailleur filter
-    void bailleur;
-    setActiveTab('explorer');
-  };
+  /** Stats summary for header */
+  const totalLogements = useMemo(
+    () => filteredLogements.reduce((s, l) => s + l.nbLogements, 0),
+    [filteredLogements],
+  );
 
-  // ── Loading ──
+  // ── Loading state ──
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -106,19 +106,14 @@ function LogementsPageInner() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <PageHeader
             title="Logements Sociaux"
-            description={`${formatNumber(stats.logements)} logements financés par ${stats.bailleurs} bailleurs`}
+            description={`${formatNumber(totalLogements)} logements financés en ${selectedYear}`}
             actions={
-              activeTab === 'annuel' ? (
-                <select
-                  value={selectedArrondissement ?? ''}
-                  onChange={e => setSelectedArrondissement(e.target.value ? Number(e.target.value) : null)}
-                  className="bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-emerald-500"
-                >
-                  <option value="">Tous les arrondissements</option>
-                  {arrondissements.map(a => (
-                    <option key={a} value={a}>{a === 0 ? 'Paris Centre' : `${a}ème`}</option>
-                  ))}
-                </select>
+              activeTab !== 'tendances' ? (
+                <YearSelector
+                  years={availableYears}
+                  selectedYear={selectedYear}
+                  onYearChange={setSelectedYear}
+                />
               ) : undefined
             }
           />
@@ -140,21 +135,21 @@ function LogementsPageInner() {
         {activeTab === 'annuel' && (
           <LogementsAnnuelTab
             logements={filteredLogements}
-            selectedArrondissement={selectedArrondissement}
-            stats={stats}
-            onViewBailleurOnMap={handleViewBailleurOnMap}
+            selectedYear={selectedYear}
+            isLoading={false}
+            onNavigateExplorer={() => setActiveTab('explorer')}
           />
         )}
 
         {/* ── Tab Tendances ── */}
         {activeTab === 'tendances' && (
-          <LogementsTendancesTab allLogements={logements} />
+          <LogementsTendancesTab allLogements={allLogements} />
         )}
 
         {/* ── Tab Explorer ── */}
         {activeTab === 'explorer' && (
           <LogementsExplorerTab
-            logements={logements}
+            logements={filteredLogements}
             arrondissementStats={arrondissementsStats}
             allArrondissements={arrondissements}
             isLoading={isLoading}

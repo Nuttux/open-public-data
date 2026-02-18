@@ -181,11 +181,13 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
   const chartData = useMemo(() => {
     const nodes = data.nodes.map((node) => ({
       name: node.name,
-      itemStyle: { 
+      itemStyle: {
         color: getNodeColor(node.name, node.category),
         borderColor: 'rgba(255,255,255,0.15)',
         borderWidth: 1,
       },
+      // Pointer cursor on clickable nodes (revenue/expense, not central)
+      cursor: node.category !== 'central' ? 'pointer' : 'default',
       category: node.category,
     }));
 
@@ -245,7 +247,7 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
               <div style="color: #94a3b8; font-size: 11px; margin-bottom: 4px;">${label}</div>
               <div style="font-size: 18px; font-weight: 700; color: #10b981;">${formatEuroCompact(p.value)}</div>
               <div style="color: #94a3b8; font-size: 11px;">${formatPercent(percentage)} du budget</div>
-              ${p.data.category !== 'central' ? '<div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #334155; color: #60a5fa; font-size: 11px;">Tap pour détail →</div>' : ''}
+              ${p.data.category !== 'central' ? '<div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #334155; color: #60a5fa; font-size: 11px;">Cliquez pour explorer →</div>' : ''}
             </div>
           `;
         }
@@ -272,6 +274,12 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
         layout: 'none',
         emphasis: {
           focus: 'adjacency',
+          itemStyle: {
+            shadowBlur: 12,
+            shadowColor: 'rgba(96, 165, 250, 0.4)',
+            borderColor: 'rgba(255,255,255,0.4)',
+            borderWidth: 2,
+          },
           lineStyle: { opacity: 0.7 },
         },
         nodeAlign: 'justify',
@@ -303,8 +311,8 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
             }
             const value = params.value || 0;
             // Sur tablette, nom tronqué si trop long
-            const displayName = isSmallTablet && params.name.length > 12 
-              ? params.name.substring(0, 11) + '…' 
+            const displayName = isSmallTablet && params.name.length > 12
+              ? params.name.substring(0, 11) + '…'
               : params.name;
             return `${displayName}\n{small|${formatEuroCompact(value)}}`;
           },
@@ -367,9 +375,18 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
           <h2 className="text-base sm:text-lg font-semibold text-slate-100">
             Flux budgétaires {data.year}
           </h2>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
-            {isMobile ? 'Appuyez pour explorer' : 'Cliquez sur une catégorie pour explorer'}
-          </p>
+          {isMobile ? (
+            <p className="text-xs text-slate-400 mt-1">Appuyez pour explorer</p>
+          ) : (
+            <div className="flex items-center gap-2 mt-1.5">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-blue-500/15 text-blue-400 border border-blue-500/30">
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                </svg>
+                Cliquez sur une catégorie pour voir le détail
+              </span>
+            </div>
+          )}
         </div>
         <div className={`px-3 py-2 rounded-lg text-xs sm:text-sm ${
           variationDette > 0 ? 'bg-red-500/10 border border-red-500/30' : 'bg-emerald-500/10 border border-emerald-500/30'

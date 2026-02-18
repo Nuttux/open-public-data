@@ -12,12 +12,13 @@
  * - years : liste des années disponibles
  */
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import YearSelector from '@/components/YearSelector';
 import StatsCards from '@/components/StatsCards';
 import BudgetSankey from '@/components/BudgetSankey';
 import NatureDonut, { type BudgetNatureData } from '@/components/NatureDonut';
 import DrilldownPanel from '@/components/DrilldownPanel';
+import ExportBar from '@/components/shared/ExportBar';
 import { getBudgetTypeForYear } from '@/components/BudgetTypeBadge';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 import type { BudgetData, BudgetIndex, DrilldownItem, DataStatus, BudgetType } from '@/lib/formatters';
@@ -149,19 +150,26 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Mobile slide-in overlay state for drilldown L1→L2 transition
+  // Slide-in animation state for drilldown transitions
   const isMobile = useIsMobile(BREAKPOINTS.md);
   const [mobileSlideVisible, setMobileSlideVisible] = useState(false);
+  const [desktopSlideVisible, setDesktopSlideVisible] = useState(false);
   const prevDrilldownRef = useRef<DrilldownState | null>(null);
 
-  // Trigger mobile slide-in when drilldown opens (L1→L2)
+  // Trigger slide-in when drilldown opens
   useEffect(() => {
-    if (isMobile && drilldown && !prevDrilldownRef.current) {
-      // Drilldown just opened — trigger slide-in with a rAF delay for the transition
-      requestAnimationFrame(() => setMobileSlideVisible(true));
+    if (drilldown && !prevDrilldownRef.current) {
+      requestAnimationFrame(() => {
+        if (isMobile) {
+          setMobileSlideVisible(true);
+        } else {
+          setDesktopSlideVisible(true);
+        }
+      });
     }
     if (!drilldown) {
       setMobileSlideVisible(false);
+      setDesktopSlideVisible(false);
     }
     prevDrilldownRef.current = drilldown;
   }, [drilldown, isMobile]);
@@ -305,18 +313,27 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
     } : null);
   }, []);
 
-  /** Close drilldown — on mobile, animate out first then clear state */
+  /** Close drilldown — animate out first then clear state */
   const handleCloseDrilldown = useCallback(() => {
     if (isMobile) {
       setMobileSlideVisible(false);
-      // Wait for slide-out animation to finish before removing the panel
-      setTimeout(() => setDrilldown(null), 300);
     } else {
-      setDrilldown(null);
+      setDesktopSlideVisible(false);
     }
+    setTimeout(() => setDrilldown(null), 300);
   }, [isMobile]);
 
   // ── Render ───────────────────────────────────────────────────────────────
+
+  // ── CSV export data (Sankey links) ──
+  const csvLinks = useMemo(() => {
+    if (!budgetData) return [];
+    return budgetData.links.map(l => ({
+      source: l.source,
+      target: l.target,
+      value: l.value,
+    })) as unknown as Record<string, unknown>[];
+  }, [budgetData]);
 
   const currentDrilldown = drilldown ? drilldown.levels[drilldown.currentLevel] : null;
   const breadcrumbs = drilldown?.levels.map(l => l.title) || [];
@@ -373,6 +390,16 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
             emprunts={empruntsData[selectedYear] || budgetData.links.find(l => l.source === 'Emprunts')?.value || 0}
           />
 
+          <ExportBar
+            csvData={csvLinks}
+            csvColumns={[
+              { key: 'source', label: 'Source' },
+              { key: 'target', label: 'Destination' },
+              { key: 'value', label: 'Montant (€)' },
+            ]}
+            filename={`budget_annuel_${selectedYear}`}
+          />
+
           {/* Toggle Vue */}
           <div className="flex items-center justify-between mb-4">
             <ViewToggle value={viewMode} onChange={handleViewChange} hasNatureData={!!natureData} />
@@ -383,56 +410,77 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
             </p>
           </div>
 
-          {/* Vue Flux budgétaires: Sankey */}
+          {/* Vue Flux budgétaires: Sankey + DrilldownPanel avec animation */}
           {viewMode === 'flux' && (
             <>
-              <BudgetSankey data={budgetData} onNodeClick={handleNodeClick} />
-
-              {/* Desktop: DrilldownPanel inline below Sankey */}
-              {!isMobile && currentDrilldown && (
-                <DrilldownPanel
-                  title={currentDrilldown.title}
-                  category={currentDrilldown.category}
-                  parentCategory={breadcrumbs[0]}
-                  items={currentDrilldown.items}
-                  sectionData={
-                    currentDrilldown.category === 'expense' && drilldown?.currentLevel === 0
-                      ? budgetData.bySection?.[currentDrilldown.title]
-                      : undefined
-                  }
-                  breadcrumbs={breadcrumbs}
-                  currentLevel={drilldown?.currentLevel || 0}
-                  onClose={handleCloseDrilldown}
-                  onBreadcrumbClick={handleBreadcrumbClick}
-                  onItemClick={canDrillDeeper || (drilldown?.currentLevel === 0) ? handleDrilldownItemClick : undefined}
-                />
-              )}
-
               {/* Mobile: fullscreen slide-in overlay for drilldown */}
-              {isMobile && drilldown && currentDrilldown && (
-                <div
-                  className={`fixed inset-0 z-50 bg-slate-900 overflow-y-auto transition-transform duration-300 ease-out ${
-                    mobileSlideVisible ? 'translate-x-0' : 'translate-x-full'
-                  }`}
-                >
-                  <div className="p-4 pt-safe pb-safe">
-                    <DrilldownPanel
-                      title={currentDrilldown.title}
-                      category={currentDrilldown.category}
-                      parentCategory={breadcrumbs[0]}
-                      items={currentDrilldown.items}
-                      sectionData={
-                        currentDrilldown.category === 'expense' && drilldown?.currentLevel === 0
-                          ? budgetData.bySection?.[currentDrilldown.title]
-                          : undefined
-                      }
-                      breadcrumbs={breadcrumbs}
-                      currentLevel={drilldown?.currentLevel || 0}
-                      onClose={handleCloseDrilldown}
-                      onBreadcrumbClick={handleBreadcrumbClick}
-                      onItemClick={canDrillDeeper || (drilldown?.currentLevel === 0) ? handleDrilldownItemClick : undefined}
-                    />
+              {isMobile ? (
+                <>
+                  <BudgetSankey data={budgetData} onNodeClick={handleNodeClick} />
+                  {drilldown && currentDrilldown && (
+                    <div
+                      className={`fixed inset-0 z-50 bg-slate-900 overflow-y-auto transition-transform duration-300 ease-out ${
+                        mobileSlideVisible ? 'translate-x-0' : 'translate-x-full'
+                      }`}
+                    >
+                      <div className="p-4 pt-safe pb-safe">
+                        <DrilldownPanel
+                          title={currentDrilldown.title}
+                          category={currentDrilldown.category}
+                          parentCategory={breadcrumbs[0]}
+                          items={currentDrilldown.items}
+                          sectionData={
+                            currentDrilldown.category === 'expense' && drilldown?.currentLevel === 0
+                              ? budgetData.bySection?.[currentDrilldown.title]
+                              : undefined
+                          }
+                          breadcrumbs={breadcrumbs}
+                          currentLevel={drilldown?.currentLevel || 0}
+                          onClose={handleCloseDrilldown}
+                          onBreadcrumbClick={handleBreadcrumbClick}
+                          onItemClick={canDrillDeeper || (drilldown?.currentLevel === 0) ? handleDrilldownItemClick : undefined}
+                        />
+                      </div>
+                    </div>
+                  )}
+                </>
+              ) : (
+                /* Desktop: content swap animation — Sankey slides out, DrilldownPanel slides in */
+                <div className="relative overflow-hidden">
+                  {/* Sankey — slides out left when drilldown is active */}
+                  <div className={`transition-all duration-300 ease-out ${
+                    desktopSlideVisible
+                      ? '-translate-x-full opacity-0 absolute inset-0'
+                      : 'translate-x-0 opacity-100'
+                  }`}>
+                    <BudgetSankey data={budgetData} onNodeClick={handleNodeClick} />
                   </div>
+
+                  {/* DrilldownPanel — slides in from right */}
+                  {drilldown && currentDrilldown && (
+                    <div className={`transition-all duration-300 ease-out ${
+                      desktopSlideVisible
+                        ? 'translate-x-0 opacity-100'
+                        : 'translate-x-full opacity-0 absolute inset-0'
+                    }`}>
+                      <DrilldownPanel
+                        title={currentDrilldown.title}
+                        category={currentDrilldown.category}
+                        parentCategory={breadcrumbs[0]}
+                        items={currentDrilldown.items}
+                        sectionData={
+                          currentDrilldown.category === 'expense' && drilldown?.currentLevel === 0
+                            ? budgetData.bySection?.[currentDrilldown.title]
+                            : undefined
+                        }
+                        breadcrumbs={breadcrumbs}
+                        currentLevel={drilldown?.currentLevel || 0}
+                        onClose={handleCloseDrilldown}
+                        onBreadcrumbClick={handleBreadcrumbClick}
+                        onItemClick={canDrillDeeper || (drilldown?.currentLevel === 0) ? handleDrilldownItemClick : undefined}
+                      />
+                    </div>
+                  )}
                 </div>
               )}
             </>
