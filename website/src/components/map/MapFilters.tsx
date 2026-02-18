@@ -177,7 +177,7 @@ export default function MapFilters({
         <div className="px-4 pb-4 space-y-4">
           {/* Sélecteur d'année */}
           <div>
-            <label className="block text-xs font-medium text-slate-400 mb-2">
+            <label className="block text-xs font-medium text-slate-300 mb-2">
               Année
             </label>
             <select
@@ -196,7 +196,7 @@ export default function MapFilters({
 
           {/* Mode d'affichage */}
           <div>
-            <label className="block text-xs font-medium text-slate-400 mb-2">
+            <label className="block text-xs font-medium text-slate-300 mb-2">
               Mode d&apos;affichage
             </label>
             <div className="flex gap-2">
@@ -205,7 +205,7 @@ export default function MapFilters({
                 className={`flex-1 px-3 py-2 rounded-lg text-sm transition-all ${
                   !showChoropleth
                     ? 'bg-purple-600 text-white'
-                    : 'bg-slate-700/50 text-slate-400 hover:bg-slate-700'
+                    : 'bg-slate-700/50 text-slate-300 hover:bg-slate-700'
                 }`}
               >
                 Points
@@ -215,7 +215,7 @@ export default function MapFilters({
                 className={`flex-1 px-3 py-2 rounded-lg text-sm transition-all ${
                   showChoropleth
                     ? 'bg-purple-600 text-white'
-                    : 'bg-slate-700/50 text-slate-400 hover:bg-slate-700'
+                    : 'bg-slate-700/50 text-slate-300 hover:bg-slate-700'
                 }`}
               >
                 Par arrdt
@@ -226,7 +226,7 @@ export default function MapFilters({
           {/* Métrique choroplèthe */}
           {showChoropleth && (
             <div>
-              <label className="block text-xs font-medium text-slate-400 mb-2">
+              <label className="block text-xs font-medium text-slate-300 mb-2">
                 Métrique (par habitant)
               </label>
               <select
@@ -243,7 +243,7 @@ export default function MapFilters({
           {/* Layers toggle (mode points uniquement) */}
           {!showChoropleth && (
             <div>
-              <label className="block text-xs font-medium text-slate-400 mb-2">
+              <label className="block text-xs font-medium text-slate-300 mb-2">
                 Données affichées
               </label>
               <div className="space-y-2">
@@ -275,12 +275,12 @@ export default function MapFilters({
                         <div className="flex-1">
                           <div className="flex items-center gap-2">
                             <span>{layer.icon}</span>
-                            <span className={isActive ? 'text-slate-200' : 'text-slate-400'}>
+                            <span className={isActive ? 'text-slate-200' : 'text-slate-300'}>
                               {layer.label}
                             </span>
                           </div>
                           {layerStats && (
-                            <div className="text-xs text-slate-500 mt-0.5">
+                            <div className="text-xs text-slate-400 mt-0.5">
                               {layer.id === 'subventions' && layerStats.geolocated !== undefined ? (
                                 <>{layerStats.geolocated} / {layerStats.count} géolocalisés</>
                               ) : layer.id === 'autorisations' && layerStats.geolocated !== undefined ? (
@@ -297,7 +297,7 @@ export default function MapFilters({
                       {layer.id === 'subventions' && isActive && availableThematiques.length > 0 && (
                         <div className="ml-4 mt-2 pl-3 border-l-2 border-slate-700">
                           <div className="flex items-center justify-between mb-2">
-                            <span className="text-xs font-medium text-slate-400">Par thématique</span>
+                            <span className="text-xs font-medium text-slate-300">Par thématique</span>
                             <button
                               onClick={toggleAllThematiques}
                               className="text-xs text-purple-400 hover:text-purple-300"
@@ -316,7 +316,7 @@ export default function MapFilters({
                                   onClick={() => toggleThematique(thematique)}
                                   className={`
                                     w-full flex items-center gap-2 px-2 py-1 rounded text-xs text-left
-                                    ${isSelected ? 'bg-purple-500/20 text-slate-200' : 'text-slate-400 hover:bg-slate-700/30'}
+                                    ${isSelected ? 'bg-purple-500/20 text-slate-200' : 'text-slate-300 hover:bg-slate-700/30'}
                                   `}
                                 >
                                   <span className={`w-3 h-3 rounded-sm border flex items-center justify-center text-[8px] ${
@@ -337,7 +337,7 @@ export default function MapFilters({
                       {layer.id === 'autorisations' && isActive && availableThematiquesAP.length > 0 && onThematiquesAPChange && (
                         <div className="ml-4 mt-2 pl-3 border-l-2 border-amber-700/50">
                           <div className="flex items-center justify-between mb-2">
-                            <span className="text-xs font-medium text-slate-400">Par thématique</span>
+                            <span className="text-xs font-medium text-slate-300">Par thématique</span>
                             <button
                               onClick={toggleAllThematiquesAP}
                               className="text-xs text-amber-400 hover:text-amber-300"
@@ -356,7 +356,7 @@ export default function MapFilters({
                                   onClick={() => toggleThematiqueAP(thematique)}
                                   className={`
                                     w-full flex items-center gap-2 px-2 py-1 rounded text-xs text-left
-                                    ${isSelected ? 'bg-amber-500/20 text-slate-200' : 'text-slate-400 hover:bg-slate-700/30'}
+                                    ${isSelected ? 'bg-amber-500/20 text-slate-200' : 'text-slate-300 hover:bg-slate-700/30'}
                                   `}
                                 >
                                   <span className={`w-3 h-3 rounded-sm border flex items-center justify-center text-[8px] ${
@@ -382,7 +382,7 @@ export default function MapFilters({
           {/* Stats rapides */}
           {stats && !showChoropleth && (
             <div className="pt-3 border-t border-slate-700/50">
-              <div className="text-xs text-slate-500 space-y-1">
+              <div className="text-xs text-slate-400 space-y-1">
                 {subventionsActive && stats.subventions && (
                   <p>
                     Total :{' '}

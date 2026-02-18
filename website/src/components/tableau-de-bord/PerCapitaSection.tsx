@@ -133,7 +133,7 @@ export default function PerCapitaSection({ data }: PerCapitaSectionProps) {
       <h2 className="text-xl sm:text-2xl font-bold text-slate-100 mb-2">
         À quoi sert le budget de Paris ?
       </h2>
-      <p className="text-sm text-slate-500 mb-1">
+      <p className="text-sm text-slate-400 mb-1">
         {data.year} ({budgetLabel}), rapporté à chaque Parisien · Population : {formatNumber(TOTAL_POPULATION)} hab. (INSEE 2023)
       </p>
       <p className="text-xs text-slate-500 mb-6">
@@ -143,13 +143,13 @@ export default function PerCapitaSection({ data }: PerCapitaSectionProps) {
       {/* Hero KPI */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 mb-8">
         <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-5">
-          <p className="text-xs text-slate-500 uppercase tracking-wide mb-1">Par habitant / an</p>
+          <p className="text-xs text-slate-400 uppercase tracking-wide mb-1">Par habitant / an</p>
           <p className="text-3xl sm:text-4xl font-extrabold text-slate-100">
             {formatNumber(Math.round(totalPerCapita))} €
           </p>
         </div>
         <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-5">
-          <p className="text-xs text-slate-500 uppercase tracking-wide mb-1">Par habitant / jour</p>
+          <p className="text-xs text-slate-400 uppercase tracking-wide mb-1">Par habitant / jour</p>
           <p className="text-3xl sm:text-4xl font-extrabold text-blue-600">
             ~{totalPerDay.toFixed(1).replace('.', ',')} €
           </p>
@@ -173,12 +173,12 @@ export default function PerCapitaSection({ data }: PerCapitaSectionProps) {
                 className="w-2.5 h-2.5 rounded-full shrink-0"
                 style={{ backgroundColor: r.color }}
               />
-              <p className="text-xs font-medium text-slate-600 truncate">{r.name}</p>
+              <p className="text-xs font-medium text-slate-400 truncate">{r.name}</p>
             </div>
             <p className="text-lg font-bold text-slate-100">
-              {formatNumber(Math.round(r.perCapita))} €<span className="text-xs font-normal text-slate-500">/an</span>
+              {formatNumber(Math.round(r.perCapita))} €<span className="text-xs font-normal text-slate-400">/an</span>
             </p>
-            <p className="text-[11px] text-slate-500 mt-0.5">
+            <p className="text-[11px] text-slate-400 mt-0.5">
               {r.pct.toFixed(1)}% du budget · {r.perDay.toFixed(2).replace('.', ',')} €/jour
             </p>
           </div>

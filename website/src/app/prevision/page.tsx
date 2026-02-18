@@ -125,7 +125,7 @@ function ExecutionRateCards({ rates }: { rates: GlobalRate[] }) {
           <p className={`text-3xl font-bold ${card.color}`}>
             {card.value !== null ? `${card.value.toFixed(1)}%` : '—'}
           </p>
-          <p className="text-xs text-slate-500 mt-2">{card.sub}</p>
+          <p className="text-xs text-slate-400 mt-2">{card.sub}</p>
         </div>
       ))}
     </div>
@@ -586,7 +586,7 @@ export default function PrevisionPage() {
       <main className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <p className="text-red-400 mb-2">Erreur de chargement</p>
-          <p className="text-slate-500 text-sm">{error}</p>
+          <p className="text-slate-400 text-sm">{error}</p>
         </div>
       </main>
     );

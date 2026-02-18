@@ -162,7 +162,7 @@ export default function MarchesTable({
   const SortableHeader = ({ column, label, className = '' }: { column: SortColumn; label: string; className?: string }) => (
     <th
       onClick={() => handleSort(column)}
-      className={`px-2 md:px-4 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide cursor-pointer hover:text-slate-100 transition-colors ${className}`}
+      className={`px-2 md:px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wide cursor-pointer hover:text-slate-100 transition-colors ${className}`}
     >
       <div className="flex items-center gap-1">
         {label}
@@ -180,7 +180,7 @@ export default function MarchesTable({
       <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-8">
         <div className="flex items-center justify-center gap-3">
           <div className="w-6 h-6 border-2 border-teal-500 border-t-transparent rounded-full animate-spin" />
-          <span className="text-slate-500">Chargement des données...</span>
+          <span className="text-slate-400">Chargement des données...</span>
         </div>
       </div>
     );
@@ -190,8 +190,8 @@ export default function MarchesTable({
     return (
       <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-8">
         <div className="text-center">
-          <p className="text-slate-500">Aucun marché ne correspond aux filtres.</p>
-          <p className="text-sm text-slate-500 mt-1">Essayez de modifier vos critères de recherche.</p>
+          <p className="text-slate-400">Aucun marché ne correspond aux filtres.</p>
+          <p className="text-sm text-slate-400 mt-1">Essayez de modifier vos critères de recherche.</p>
         </div>
       </div>
     );
@@ -205,11 +205,11 @@ export default function MarchesTable({
           <h3 className="font-medium text-slate-100">
             {formatNumber(sortedData.length)} {sortedData.length > 1 ? 'marchés affichés' : 'marché affiché'}
           </h3>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-slate-400">
             Enveloppe max totale : {formatEuroCompact(sortedData.reduce((s, m) => s + m.montant_max, 0))}
           </p>
         </div>
-        <div className="text-sm text-slate-500">
+        <div className="text-sm text-slate-400">
           Page {currentPage} / {totalPages}
         </div>
       </div>
@@ -237,7 +237,7 @@ export default function MarchesTable({
                     <p className="font-medium text-slate-100 text-xs md:text-sm line-clamp-2">
                       {m.categorie_libelle || cleanObjet(m.objet)}
                     </p>
-                    <p className="text-[10px] md:text-xs text-slate-500 mt-0.5 line-clamp-1" title={m.objet}>
+                    <p className="text-[10px] md:text-xs text-slate-400 mt-0.5 line-clamp-1" title={m.objet}>
                       {cleanObjet(m.objet)}
                     </p>
                     <div className="flex items-center gap-1.5 mt-0.5">
@@ -245,7 +245,7 @@ export default function MarchesTable({
                         className="inline-block w-1.5 h-1.5 rounded-full shrink-0"
                         style={{ backgroundColor: NATURE_COLORS[m.nature] || '#64748b' }}
                       />
-                      <span className="text-[10px] text-slate-500">
+                      <span className="text-[10px] text-slate-400">
                         {NATURE_LABELS[m.nature] || m.nature}
                         {m.date_notification && ` · ${new Date(m.date_notification).toLocaleDateString('fr-FR')}`}
                       </span>
@@ -260,7 +260,7 @@ export default function MarchesTable({
                       Multi-attr.
                     </span>
                   ) : (
-                    <p className="text-xs md:text-sm text-slate-600 line-clamp-2" title={m.fournisseur_nom}>
+                    <p className="text-xs md:text-sm text-slate-400 line-clamp-2" title={m.fournisseur_nom}>
                       {m.fournisseur_nom}
                     </p>
                   )}
@@ -272,7 +272,7 @@ export default function MarchesTable({
                     {formatEuroCompact(m.montant_max)}
                   </p>
                   {m.montant_min > 0 && m.montant_min !== m.montant_max && (
-                    <p className="text-[10px] md:text-xs text-slate-500">
+                    <p className="text-[10px] md:text-xs text-slate-400">
                       min {formatEuroCompact(m.montant_min)}
                     </p>
                   )}
@@ -280,7 +280,7 @@ export default function MarchesTable({
 
                 {/* Durée */}
                 <td className="hidden md:table-cell px-4 py-3">
-                  <span className="text-sm text-slate-600">
+                  <span className="text-sm text-slate-400">
                     {formatDuration(m.duree_jours)}
                   </span>
                 </td>
@@ -296,7 +296,7 @@ export default function MarchesTable({
           <button
             onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
             disabled={currentPage === 1}
-            className="px-3 py-1.5 text-sm font-medium text-slate-500 hover:text-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="px-3 py-1.5 text-sm font-medium text-slate-300 hover:text-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             ← Précédent
           </button>
@@ -319,7 +319,7 @@ export default function MarchesTable({
                   className={`w-8 h-8 text-sm font-medium rounded transition-colors ${
                     currentPage === pageNum
                       ? 'bg-teal-50 text-teal-700'
-                      : 'text-slate-500 hover:text-slate-100'
+                      : 'text-slate-300 hover:text-slate-100'
                   }`}
                 >
                   {pageNum}
@@ -330,7 +330,7 @@ export default function MarchesTable({
           <button
             onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
             disabled={currentPage === totalPages}
-            className="px-3 py-1.5 text-sm font-medium text-slate-500 hover:text-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="px-3 py-1.5 text-sm font-medium text-slate-300 hover:text-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             Suivant →
           </button>

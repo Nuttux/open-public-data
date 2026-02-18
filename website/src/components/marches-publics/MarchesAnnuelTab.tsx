@@ -108,12 +108,12 @@ const COLUMNS: TableColumnDef<MarchePublic>[] = [
     key: 'objet', label: 'Marché', align: 'left',
     render: (m, i) => (
       <div className="flex items-start gap-2">
-        <span className="text-slate-500 text-xs w-5 shrink-0 pt-0.5">{i + 1}</span>
+        <span className="text-slate-400 text-xs w-5 shrink-0 pt-0.5">{i + 1}</span>
         <div className="min-w-0">
           <p className="text-xs md:text-sm font-medium text-slate-200 line-clamp-2">
             {m.categorie_libelle || cleanObjet(m.objet)}
           </p>
-          <p className="text-[10px] md:text-xs text-slate-500 mt-0.5 line-clamp-1" title={m.objet}>
+          <p className="text-[10px] md:text-xs text-slate-400 mt-0.5 line-clamp-1" title={m.objet}>
             {cleanObjet(m.objet)}
           </p>
           <div className="flex items-center gap-1.5 mt-1">
@@ -121,7 +121,7 @@ const COLUMNS: TableColumnDef<MarchePublic>[] = [
               className="inline-block w-1.5 h-1.5 rounded-full shrink-0"
               style={{ backgroundColor: NATURE_COLOR_MAP[m.nature] || '#64748b' }}
             />
-            <span className="text-[10px] text-slate-500">
+            <span className="text-[10px] text-slate-400">
               {NATURE_LABELS[m.nature] || m.nature}
               {m.duree_jours ? ` · ${formatDuration(m.duree_jours)}` : ''}
             </span>
@@ -134,7 +134,7 @@ const COLUMNS: TableColumnDef<MarchePublic>[] = [
     key: 'fournisseur', label: 'Fournisseur', hideOnMobile: true, align: 'left',
     render: (m) => m.is_multiattributaire
       ? <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-amber-900/30 text-amber-400">Multi-attr.</span>
-      : <p className="text-xs text-slate-600 line-clamp-2">{m.fournisseur_nom}</p>,
+      : <p className="text-xs text-slate-400 line-clamp-2">{m.fournisseur_nom}</p>,
   },
   {
     key: 'montant', label: 'Enveloppe max', align: 'right',
@@ -235,36 +235,36 @@ export default function MarchesAnnuelTab({
       kpiCards={stats && (
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
           <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-4">
-            <p className="text-xs text-slate-500 uppercase tracking-wide">Enveloppe totale</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">Enveloppe totale</p>
             <p className="text-2xl font-bold text-slate-100 mt-1">{formatEuroCompact(stats.totalEnveloppe)}</p>
-            <p className="text-xs text-slate-500 mt-1">{formatNumber(stats.total)} marchés notifiés</p>
+            <p className="text-xs text-slate-400 mt-1">{formatNumber(stats.total)} marchés notifiés</p>
           </div>
           <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-4">
-            <p className="text-xs text-slate-500 uppercase tracking-wide">Enveloppe médiane</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">Enveloppe médiane</p>
             <p className="text-2xl font-bold text-teal-400 mt-1">{formatEuroCompact(stats.median)}</p>
-            <p className="text-xs text-slate-500 mt-1">par marché</p>
+            <p className="text-xs text-slate-400 mt-1">par marché</p>
           </div>
           <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-4">
-            <p className="text-xs text-slate-500 uppercase tracking-wide">Durée moyenne</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">Durée moyenne</p>
             <p className="text-2xl font-bold text-teal-400 mt-1">{stats.dureeMoyenne ? formatDuration(stats.dureeMoyenne) : '—'}</p>
-            <p className="text-xs text-slate-500 mt-1">par contrat</p>
+            <p className="text-xs text-slate-400 mt-1">par contrat</p>
           </div>
           <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-4">
-            <p className="text-xs text-slate-500 uppercase tracking-wide">Fournisseurs uniques</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">Fournisseurs uniques</p>
             <p className="text-2xl font-bold text-emerald-400 mt-1">{formatNumber(stats.fournisseursUniques)}</p>
-            <p className="text-xs text-slate-500 mt-1">hors multi-attr.</p>
+            <p className="text-xs text-slate-400 mt-1">hors multi-attr.</p>
           </div>
           <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-4">
-            <p className="text-xs text-slate-500 uppercase tracking-wide">Multi-attributaires</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">Multi-attributaires</p>
             <p className="text-2xl font-bold text-amber-400 mt-1">{stats.tauxMultiAttr.toFixed(0)}%</p>
-            <p className="text-xs text-slate-500 mt-1">des marchés</p>
+            <p className="text-xs text-slate-400 mt-1">des marchés</p>
           </div>
           <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-4">
-            <p className="text-xs text-slate-500 uppercase tracking-wide">Top fournisseur</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">Top fournisseur</p>
             <p className="text-lg font-bold text-emerald-400 mt-1 truncate" title={stats.topFournisseurName}>
               {formatEuroCompact(stats.topFournisseurVal)}
             </p>
-            <p className="text-xs text-slate-500 mt-1 truncate" title={stats.topFournisseurName}>
+            <p className="text-xs text-slate-400 mt-1 truncate" title={stats.topFournisseurName}>
               {stats.topFournisseurName.slice(0, 30)}
             </p>
           </div>

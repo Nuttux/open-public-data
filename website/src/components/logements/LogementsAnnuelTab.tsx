@@ -103,10 +103,10 @@ const COLUMNS: TableColumnDef<LogementSocial>[] = [
     key: 'programme', label: 'Programme', align: 'left',
     render: (l, i) => (
       <div className="flex items-start gap-2">
-        <span className="text-slate-500 text-xs w-5 shrink-0">{i + 1}</span>
+        <span className="text-slate-400 text-xs w-5 shrink-0">{i + 1}</span>
         <div className="min-w-0">
           <p className="text-xs md:text-sm text-slate-200 line-clamp-2">{l.adresse}</p>
-          <p className="text-[10px] md:text-xs text-slate-500 mt-1">
+          <p className="text-[10px] md:text-xs text-slate-400 mt-1">
             {l.bailleur}
           </p>
         </div>

@@ -56,7 +56,7 @@ export default function YearRangeSelector({
   return (
     <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
       {/* Label */}
-      <span className="text-xs text-slate-500 whitespace-nowrap">Période :</span>
+      <span className="text-xs text-slate-400 whitespace-nowrap">Période :</span>
 
       {/* Dual selectors — même boîte bordée que les autres contrôles */}
       <div className="flex items-center bg-slate-800 rounded-lg border border-slate-700 p-0.5">
@@ -73,7 +73,7 @@ export default function YearRangeSelector({
         </select>
 
         {/* Arrow separator */}
-        <span className="text-slate-500 text-sm font-medium select-none px-1">→</span>
+        <span className="text-slate-400 text-sm font-medium select-none px-1">→</span>
 
         {/* End year */}
         <select

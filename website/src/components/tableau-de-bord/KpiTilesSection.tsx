@@ -61,11 +61,11 @@ function TileGrid({ tiles }: { tiles: TileData[] }) {
           href={tile.href}
           className={`bg-slate-800/50 backdrop-blur rounded-xl border ${tile.color} p-4 hover:bg-slate-900 transition-all duration-200 group`}
         >
-          <p className="text-[11px] text-slate-500 uppercase tracking-wide mb-1 group-hover:text-slate-500 transition-colors">
+          <p className="text-[11px] text-slate-400 uppercase tracking-wide mb-1 group-hover:text-slate-500 transition-colors">
             {tile.label}
           </p>
           <p className="text-xl font-bold text-slate-100 mb-0.5">{tile.value}</p>
-          <p className="text-[11px] text-slate-500 truncate">{tile.sub}</p>
+          <p className="text-[11px] text-slate-400 truncate">{tile.sub}</p>
         </Link>
       ))}
     </div>
@@ -199,20 +199,20 @@ export default function KpiTilesSection() {
         <h2 className="text-xl sm:text-2xl font-bold text-slate-100 mb-1">
           Paris en un coup d&apos;œil
         </h2>
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-slate-400">
           Cliquez sur un indicateur pour explorer en détail
         </p>
       </div>
 
       {/* Votre budget */}
       <div>
-        <p className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-3">Votre budget</p>
+        <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-3">Votre budget</p>
         <TileGrid tiles={budgetTiles} />
       </div>
 
       {/* Activité */}
       <div>
-        <p className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-3">Activité</p>
+        <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-3">Activité</p>
         <TileGrid tiles={activiteTiles} />
       </div>
     </section>

@@ -378,7 +378,7 @@ export default function TendancesTab({
 
   // ── Loading / Error ──
   if (isLoading) return <div className="flex justify-center py-16"><div className={`w-10 h-10 border-4 ${t.spinner} border-t-transparent rounded-full animate-spin`} /></div>;
-  if (error || data.length === 0) return <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6"><div className="text-center py-12"><span className="text-4xl mb-4 block">⚠️</span><p className="text-sm text-slate-400">{error || 'Données non disponibles'}</p></div></div>;
+  if (error || data.length === 0) return <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6"><div className="text-center py-12"><span className="text-4xl mb-4 block">⚠️</span><p className="text-sm text-slate-300">{error || 'Données non disponibles'}</p></div></div>;
 
   const currentDim = breakdowns.find(o => o.id === breakdown);
   const currentDimLabel = currentDim?.label.toLowerCase() || '';
@@ -401,7 +401,7 @@ export default function TendancesTab({
           <div className="flex bg-slate-800 rounded-lg border border-slate-700 p-0.5">
             {breakdowns.map(opt => (
               <button key={opt.id} onClick={() => setBreakdown(opt.id)}
-                className={`px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-medium transition-all flex items-center gap-1 ${breakdown === opt.id ? t.activeBtn : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50'}`}
+                className={`px-3 sm:px-4 py-2 rounded-md text-sm font-medium transition-all flex items-center gap-1.5 ${breakdown === opt.id ? t.activeBtn : 'text-slate-300 hover:text-slate-100 hover:bg-slate-700/50'}`}
               ><span>{opt.icon}</span><span className={breakdowns.length > 1 ? 'hidden sm:inline' : ''}>{opt.label}</span></button>
             ))}
           </div>
@@ -411,29 +411,29 @@ export default function TendancesTab({
 
       {/* ── KPIs ── */}
       {kpiCtx && (
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-500 mb-1">{kpi1Label(kpiCtx.latest.year)}</p>
-            <p className={`text-xl sm:text-2xl font-bold ${t.kpi1Value}`}>{formatValue(kpiCtx.latest.total)}</p>
-            {kpi1Sub && <p className="text-xs text-slate-500 mt-1">{kpi1Sub(kpiCtx.latest)}</p>}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4 sm:p-5">
+            <p className="text-xs text-slate-400 uppercase tracking-wide mb-1">{kpi1Label(kpiCtx.latest.year)}</p>
+            <p className={`text-2xl font-bold mt-1 ${t.kpi1Value}`}>{formatValue(kpiCtx.latest.total)}</p>
+            {kpi1Sub && <p className="text-xs text-slate-400 mt-1">{kpi1Sub(kpiCtx.latest)}</p>}
           </div>
-          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-500 mb-1">Variation annuelle</p>
-            <p className={`text-xl sm:text-2xl font-bold ${kpiCtx.yoyPct >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>{kpiCtx.yoyPct >= 0 ? '+' : ''}{kpiCtx.yoyPct.toFixed(1)}%</p>
-            <p className="text-xs text-slate-500 mt-1">vs {kpiCtx.latest.year - 1}</p>
+          <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4 sm:p-5">
+            <p className="text-xs text-slate-400 uppercase tracking-wide mb-1">Variation annuelle</p>
+            <p className={`text-2xl font-bold mt-1 ${kpiCtx.yoyPct >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>{kpiCtx.yoyPct >= 0 ? '+' : ''}{kpiCtx.yoyPct.toFixed(1)}%</p>
+            <p className="text-xs text-slate-400 mt-1">vs {kpiCtx.latest.year - 1}</p>
           </div>
           {kpi3Card && (
-            <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-              <p className="text-xs text-slate-500 mb-1">{kpi3Card.label}</p>
-              <p className={`text-xl sm:text-2xl font-bold ${kpi3Card.valueClass || 'text-slate-100'}`}>{kpi3Card.value}</p>
-              <p className="text-xs text-slate-500 mt-1">{kpi3Card.sub}</p>
+            <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4 sm:p-5">
+              <p className="text-xs text-slate-400 uppercase tracking-wide mb-1">{kpi3Card.label}</p>
+              <p className={`text-2xl font-bold mt-1 ${kpi3Card.valueClass || 'text-slate-100'}`}>{kpi3Card.value}</p>
+              <p className="text-xs text-slate-400 mt-1">{kpi3Card.sub}</p>
             </div>
           )}
           {kpi4Card && (
-            <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-              <p className="text-xs text-slate-500 mb-1">{kpi4Card.label}</p>
-              <p className="text-base sm:text-lg font-bold text-slate-100 truncate">{kpi4Card.value}</p>
-              <p className="text-xs text-slate-500 mt-1">{kpi4Card.sub}</p>
+            <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4 sm:p-5">
+              <p className="text-xs text-slate-400 uppercase tracking-wide mb-1">{kpi4Card.label}</p>
+              <p className="text-lg font-bold text-slate-100 mt-1 truncate">{kpi4Card.value}</p>
+              <p className="text-xs text-slate-400 mt-1">{kpi4Card.sub}</p>
             </div>
           )}
         </div>
@@ -453,10 +453,10 @@ export default function TendancesTab({
             <span className={`w-1.5 h-8 rounded-full ${t.variationBar}`} />
             <div>
               <h4 className="text-sm font-semibold text-slate-200">{variationTitle(currentDimLabel)} ({kpiCtx.earliest.year} → {kpiCtx.latest.year})</h4>
-              <p className="text-xs text-slate-500">{variationSubtitle(currentDimLabel)}</p>
+              <p className="text-xs text-slate-400">{variationSubtitle(currentDimLabel)}</p>
             </div>
           </div>
-          <div className="flex items-center gap-4 mb-3 text-xs text-slate-400">
+          <div className="flex items-center gap-4 mb-3 text-xs text-slate-300">
             <div className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-emerald-500" /><span>Hausse</span></div>
             <div className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-red-500" /><span>Baisse</span></div>
           </div>
@@ -466,7 +466,7 @@ export default function TendancesTab({
 
       {/* ── Data Quality Note ── */}
       <div className="bg-slate-800/30 rounded-xl border border-slate-700/30 p-4">
-        <h4 className="text-xs font-semibold text-slate-400 mb-2 flex items-center gap-1.5"><span>ℹ️</span> À propos de ces données</h4>
+        <h4 className="text-xs font-semibold text-slate-300 mb-2 flex items-center gap-1.5"><span>ℹ️</span> À propos de ces données</h4>
         {qualityNotes}
       </div>
     </div>
