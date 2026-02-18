@@ -18,7 +18,7 @@
     "gray-matter": "^4.0.3",
     "leaflet": "^1.9.4",
     "next": "16.1.6",
-    "next-mdx-remote": "^5.0.0",
+    "next-mdx-remote": "^6.0.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-leaflet": "^5.0.0",
