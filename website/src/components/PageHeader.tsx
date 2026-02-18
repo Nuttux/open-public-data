@@ -10,8 +10,8 @@ import { ReactNode } from 'react';
  */
 
 interface PageHeaderProps {
-  /** Icône optionnelle (emoji) — omise pour un design plus clean */
-  icon?: string;
+  /** Icône optionnelle (Lucide icon ou emoji) */
+  icon?: React.ReactNode;
   /** Titre principal (ex: "Budget de la Ville") */
   title: string;
   /** Description courte sous le titre */

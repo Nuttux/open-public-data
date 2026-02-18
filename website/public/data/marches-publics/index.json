@@ -1,0 +1,116 @@
+{
+  "generated_at": "2026-02-16T14:13:07.723821",
+  "source": "OpenData Paris API (bootstrap direct)",
+  "note": "Les montants sont des enveloppes pluriannuelles (plafonds contractuels), pas des dépenses annuelles.",
+  "available_years": [
+    2024,
+    2023,
+    2022,
+    2021,
+    2020,
+    2019,
+    2018,
+    2017,
+    2016,
+    2015,
+    2014,
+    2013
+  ],
+  "totals_by_year": {
+    "2024": {
+      "nb_marches": 1407,
+      "enveloppe_max_totale": 2495665169.6699977
+    },
+    "2023": {
+      "nb_marches": 1335,
+      "enveloppe_max_totale": 2603719521.330001
+    },
+    "2022": {
+      "nb_marches": 1281,
+      "enveloppe_max_totale": 3824590460.8399935
+    },
+    "2021": {
+      "nb_marches": 1570,
+      "enveloppe_max_totale": 5483477436.48991
+    },
+    "2020": {
+      "nb_marches": 1196,
+      "enveloppe_max_totale": 3282280032.529943
+    },
+    "2019": {
+      "nb_marches": 1338,
+      "enveloppe_max_totale": 2302969683.300001
+    },
+    "2018": {
+      "nb_marches": 1458,
+      "enveloppe_max_totale": 2836151932.3100047
+    },
+    "2017": {
+      "nb_marches": 1698,
+      "enveloppe_max_totale": 3465550059.5099964
+    },
+    "2016": {
+      "nb_marches": 1601,
+      "enveloppe_max_totale": 1916840484.300001
+    },
+    "2015": {
+      "nb_marches": 1556,
+      "enveloppe_max_totale": 1538504362.6999986
+    },
+    "2014": {
+      "nb_marches": 1483,
+      "enveloppe_max_totale": 1530498987.8500016
+    },
+    "2013": {
+      "nb_marches": 1714,
+      "enveloppe_max_totale": 1901084589.8700004
+    }
+  },
+  "filters": {
+    "natures": [
+      "FOURNITURE",
+      "SERVICES",
+      "TRAVAUX"
+    ],
+    "categories": [
+      "Travaux d'entretien, préservation équipements publics",
+      "Animation culturelle et de loisirs",
+      "Prestations intellectuelles pour opérations BTP,urbanisme",
+      "Travaux de construction, rénovation équipements publics",
+      "Travaux dans les équipements sportifs",
+      "Maîtrise d'oeuvre BTP",
+      "Services d'actions éducatives scolaires et périscolaires",
+      "Travaux de génie climatique",
+      "Formation : métiers",
+      "Travaux sur lieux de culte, oeuvres d'art, monuments classés",
+      "maintenance de progiciels",
+      "Travaux d'aménagement de voirie",
+      "Etudes à caractère général",
+      "Organisation des services : audit, conseil, contrôle gestion",
+      "Services de centres de vacances et de centres de loisirs",
+      "AMOA BTP,  urbanisme et espace public",
+      "Services annexes pour manifestations et évènements (hors rég",
+      "Travaux d'aménagement d'espaces verts",
+      "Service de qualification et d'insertion professionnelles",
+      "Services de conseils et représentations juridiques",
+      "Impression offset",
+      "travaux de génie civil et ouvrages d'art",
+      "Organisation et promotion des manifestations sportives",
+      "Coordination sécurité et protection santé des travailleurs",
+      "Services d'accueil à la petite enfance",
+      "entretien des espaces verts",
+      "Etudes à caractère scientifique et technologique",
+      "nettoyage vitre et locaux",
+      "Instruments, partitions, matériels musicaux (et maintenance)",
+      "Livres"
+    ],
+    "perimetres": [
+      "M22 ASE",
+      "M4 TAM",
+      "M49 Assainissement",
+      "M57 Département",
+      "M57 MGP",
+      "M57 Ville"
+    ]
+  }
+}

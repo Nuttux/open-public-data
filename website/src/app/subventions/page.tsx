@@ -4,11 +4,11 @@
  * Page /subventions — Bénéficiaires de subventions de la Ville de Paris.
  *
  * Architecture à 3 onglets :
- *   - Annuel (défaut) : Treemap thématique + KPIs + table filtrable bénéficiaires
+ *   - Annuel (défaut) : Treemap avec breakdown dynamique + KPIs + table top bénéficiaires
  *   - Tendances : Évolution multi-années (stacked bar + variation ranking)
- *   - Explorer : Liste + Treemap avec filtres collapsibles et toggle vue
+ *   - Explorer : Liste avec filtres collapsibles
  *
- * Sources : /public/data/subventions/{index,treemap,beneficiaires}.json
+ * Sources : /public/data/subventions/{index,beneficiaires}.json
  */
 
 import { Suspense, useState, useEffect, useMemo } from 'react';
@@ -19,8 +19,8 @@ import YearSelector from '@/components/YearSelector';
 import SubventionsAnnuelTab from '@/components/subventions/SubventionsAnnuelTab';
 import SubventionsTendancesTab from '@/components/subventions/SubventionsTendancesTab';
 import SubventionsExplorerTab from '@/components/subventions/SubventionsExplorerTab';
-import type { TreemapData } from '@/components/SubventionsTreemap';
 import type { Beneficiaire } from '@/components/SubventionsTable';
+import { TAB_ICONS } from '@/lib/icons';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -36,14 +36,6 @@ interface SubventionsIndex {
   };
 }
 
-interface TreemapResponse {
-  year: number;
-  generated_at: string;
-  total_montant: number;
-  nb_thematiques: number;
-  data: TreemapData['data'];
-}
-
 interface BeneficiairesResponse {
   year: number;
   generated_at: string;
@@ -55,9 +47,9 @@ interface BeneficiairesResponse {
 // ─── Tab definitions ─────────────────────────────────────────────────────────
 
 const SUBVENTIONS_TABS: Tab[] = [
-  { id: 'annuel', label: 'Annuel', icon: '📋' },
-  { id: 'tendances', label: 'Tendances', icon: '📈' },
-  { id: 'explorer', label: 'Explorer', icon: '🔍' },
+  { id: 'annuel', label: 'Annuel', icon: TAB_ICONS.annuel },
+  { id: 'tendances', label: 'Tendances', icon: TAB_ICONS.tendances },
+  { id: 'explorer', label: 'Explorer', icon: TAB_ICONS.explorer },
 ];
 
 const VALID_TAB_IDS = SUBVENTIONS_TABS.map(t => t.id);
@@ -68,7 +60,6 @@ function SubventionsPageInner() {
   const [activeTab, setActiveTab] = useTabState('annuel', VALID_TAB_IDS);
   const [index, setIndex] = useState<SubventionsIndex | null>(null);
   const [selectedYear, setSelectedYear] = useState<number>(2024);
-  const [treemapData, setTreemapData] = useState<TreemapData | null>(null);
   const [beneficiaires, setBeneficiaires] = useState<Beneficiaire[]>([]);
   const [isLoadingIndex, setIsLoadingIndex] = useState(true);
   const [isLoadingData, setIsLoadingData] = useState(false);
@@ -93,31 +84,20 @@ function SubventionsPageInner() {
     loadIndex();
   }, []);
 
-  // ── Load year data ──
+  // ── Load year data (beneficiaires only — treemap built client-side) ──
   useEffect(() => {
     async function loadYearData() {
       if (!index) return;
       setIsLoadingData(true);
       setError(null);
       try {
-        const [treemapRes, beneficiairesRes] = await Promise.all([
-          fetch(`/data/subventions/treemap_${selectedYear}.json`),
-          fetch(`/data/subventions/beneficiaires_${selectedYear}.json`),
-        ]);
-        if (!treemapRes.ok || !beneficiairesRes.ok) throw new Error(`Données ${selectedYear} non disponibles`);
-        const treemap: TreemapResponse = await treemapRes.json();
-        const benefs: BeneficiairesResponse = await beneficiairesRes.json();
-        setTreemapData({
-          year: treemap.year,
-          total_montant: treemap.total_montant,
-          nb_thematiques: treemap.nb_thematiques,
-          data: treemap.data,
-        });
+        const res = await fetch(`/data/subventions/beneficiaires_${selectedYear}.json`);
+        if (!res.ok) throw new Error(`Données ${selectedYear} non disponibles`);
+        const benefs: BeneficiairesResponse = await res.json();
         setBeneficiaires(benefs.data);
       } catch (err) {
         console.error(`Error loading data for ${selectedYear}:`, err);
         setError(`Données ${selectedYear} non disponibles`);
-        setTreemapData(null);
         setBeneficiaires([]);
       } finally {
         setIsLoadingData(false);
@@ -139,10 +119,7 @@ function SubventionsPageInner() {
   if (isLoadingIndex || !index) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-12 h-12 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-slate-400">Chargement des subventions...</p>
-        </div>
+        <div className="w-12 h-12 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
       </div>
     );
   }
@@ -177,9 +154,7 @@ function SubventionsPageInner() {
         {activeTab === 'annuel' && (
           <SubventionsAnnuelTab
             selectedYear={selectedYear}
-            treemapData={treemapData}
             beneficiaires={beneficiaires}
-            availableDirections={availableDirections}
             nbSubventions={nbSubventions}
             isLoading={isLoadingData}
             error={error}

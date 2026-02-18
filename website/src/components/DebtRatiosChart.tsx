@@ -120,7 +120,11 @@ export default function DebtRatiosChart({
         const rawDuree = d.epargne_brute > 0 ? d.dettes_financieres / d.epargne_brute : Infinity;
         const dureeLabel = rawDuree > MAX_DURATION_DISPLAY ? `> ${MAX_DURATION_DISPLAY} ans` : `${rawDuree.toFixed(1)} ans`;
         const color = getDurationColor(rawDuree);
-        const qualif = rawDuree <= 7 ? '✅ Sain' : rawDuree <= 12 ? '⚠️ Vigilance' : '🔴 Critique';
+        const qualif = rawDuree <= 7
+          ? '<span style="color:#10b981">● Sain</span>'
+          : rawDuree <= 12
+            ? '<span style="color:#f59e0b">● Vigilance</span>'
+            : '<span style="color:#ef4444">● Critique</span>';
         return `
           <div style="padding: 4px;">
             <div style="font-weight: 600; margin-bottom: 6px;">${items[0].name}</div>
@@ -248,7 +252,11 @@ export default function DebtRatiosChart({
           ? (d.epargne_brute / d.recettes_fonctionnement) * 100
           : 0;
         const color = getAutofinColor(tauxVal);
-        const qualif = tauxVal >= 15 ? '✅ Confortable' : tauxVal >= 8 ? '⚠️ Correct' : '🔴 Fragile';
+        const qualif = tauxVal >= 15
+          ? '<span style="color:#10b981">● Confortable</span>'
+          : tauxVal >= 8
+            ? '<span style="color:#f59e0b">● Correct</span>'
+            : '<span style="color:#ef4444">● Fragile</span>';
         return `
           <div style="padding: 4px;">
             <div style="font-weight: 600; margin-bottom: 6px;">${items[0].name}</div>

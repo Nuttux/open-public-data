@@ -155,7 +155,7 @@ export default function LogementsSociauxMap({
             >
               <Popup>
                 <div className="min-w-[220px]">
-                  <h3 className="font-bold text-slate-900 mb-1 text-sm">{log.adresse}</h3>
+                  <h3 className="font-bold text-slate-100 mb-1 text-sm">{log.adresse}</h3>
                   <p className="text-2xl font-bold text-emerald-600 mb-2">
                     {log.nbLogements} logements
                   </p>
@@ -165,7 +165,7 @@ export default function LogementsSociauxMap({
                     <p><strong>Mode:</strong> {log.modeRealisation}</p>
                     <p><strong>Année:</strong> {log.annee}</p>
                     <p><strong>Arrondissement:</strong> {log.arrondissement === 0 ? 'Centre' : `${log.arrondissement}ème`}</p>
-                    <div className="mt-2 pt-2 border-t border-slate-200">
+                    <div className="mt-2 pt-2 border-t border-slate-700/50">
                       <p className="text-blue-600">PLAI (très social): {log.nbPLAI}</p>
                       <p className="text-cyan-600">PLUS (social): {log.nbPLUS}</p>
                       <p className="text-violet-600">PLS (intermédiaire): {log.nbPLS}</p>

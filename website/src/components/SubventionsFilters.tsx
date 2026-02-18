@@ -166,7 +166,7 @@ export default function SubventionsFilters({
             </span>
           )}
         </div>
-        <span className="text-slate-400">
+        <span className="text-slate-300">
           {isExpanded ? '▼' : '▶'}
         </span>
       </button>
@@ -175,7 +175,7 @@ export default function SubventionsFilters({
         <div className="px-4 pb-4 space-y-4">
           {/* Recherche */}
           <div>
-            <label className="block text-xs font-medium text-slate-400 mb-1.5">
+            <label className="block text-xs font-medium text-slate-300 mb-1.5">
               Rechercher un bénéficiaire
             </label>
             <input
@@ -189,7 +189,7 @@ export default function SubventionsFilters({
 
           {/* Types d'organismes */}
           <div>
-            <label className="block text-xs font-medium text-slate-400 mb-2">
+            <label className="block text-xs font-medium text-slate-300 mb-2">
               Type d'organisme
             </label>
             <div className="flex flex-wrap gap-2">
@@ -201,7 +201,7 @@ export default function SubventionsFilters({
                     px-3 py-1.5 text-xs font-medium rounded-full border transition-colors
                     ${filters.typesOrganisme.includes(type)
                       ? 'bg-purple-500/20 border-purple-500/50 text-purple-300'
-                      : 'bg-slate-700/30 border-slate-600/50 text-slate-400 hover:bg-slate-700/50'
+                      : 'bg-slate-700/30 border-slate-600/50 text-slate-300 hover:bg-slate-700/50'
                     }
                   `}
                 >
@@ -214,7 +214,7 @@ export default function SubventionsFilters({
           {/* Directions */}
           {availableDirections.length > 0 && (
             <div>
-              <label className="block text-xs font-medium text-slate-400 mb-1.5">
+              <label className="block text-xs font-medium text-slate-300 mb-1.5">
                 Direction
               </label>
               <select
@@ -235,7 +235,7 @@ export default function SubventionsFilters({
 
           {/* Plage de montant */}
           <div>
-            <label className="block text-xs font-medium text-slate-400 mb-1.5">
+            <label className="block text-xs font-medium text-slate-300 mb-1.5">
               Plage de montant
             </label>
             <select
@@ -260,7 +260,7 @@ export default function SubventionsFilters({
           {/* Thématique (si sélectionnée depuis treemap) */}
           {filters.thematique && (
             <div>
-              <label className="block text-xs font-medium text-slate-400 mb-1.5">
+              <label className="block text-xs font-medium text-slate-300 mb-1.5">
                 Thématique
               </label>
               <div className="flex items-center gap-2">
@@ -269,7 +269,7 @@ export default function SubventionsFilters({
                 </span>
                 <button
                   onClick={() => updateFilter('thematique', null)}
-                  className="text-slate-400 hover:text-slate-200"
+                  className="text-slate-300 hover:text-slate-100"
                 >
                   ×
                 </button>
@@ -282,7 +282,7 @@ export default function SubventionsFilters({
             <button
               onClick={resetFilters}
               disabled={activeFiltersCount === 0}
-              className="w-full px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="w-full px-3 py-2 text-sm font-medium text-slate-300 hover:text-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               Réinitialiser les filtres
             </button>
@@ -290,7 +290,7 @@ export default function SubventionsFilters({
 
           {/* Stats */}
           {stats && (
-            <div className="pt-2 border-t border-slate-700/50 text-xs text-slate-500 space-y-0.5">
+            <div className="pt-2 border-t border-slate-700/50 text-xs text-slate-400 space-y-0.5">
               <p className="font-medium text-slate-400">
                 {stats.filtered.toLocaleString('fr-FR')} affichés
               </p>

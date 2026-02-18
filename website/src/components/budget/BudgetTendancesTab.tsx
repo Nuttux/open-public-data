@@ -3,14 +3,14 @@
 /**
  * BudgetTendancesTab — Tab "Tendances" de la page /budget.
  *
- * Contenu : YoyCards, EvolutionChart, VariationRankChart.
- * Focalisé sur l'évolution budgétaire pure (pas de dette/patrimoine).
+ * Contenu : YoyCards, EvolutionChart, VariationRankChart + section Exécution budgétaire.
  *
  * L'utilisateur choisit une plage d'années (début → fin) via un double sélecteur.
  * Toutes les métriques, cartes KPI et graphiques se recalculent dynamiquement
  * en fonction de la période choisie.
  *
- * Les métriques dette/santé financière sont dans PatrimoineTendancesTab.
+ * La section "Exécution budgétaire" en bas montre les taux d'exécution
+ * (voté vs exécuté) et les écarts par thématique.
  */
 
 import { useState, useEffect, useMemo } from 'react';
@@ -18,7 +18,9 @@ import EvolutionChart, { type YearlyBudget } from '@/components/EvolutionChart';
 import VariationRankChart, { type VariationsData, type VariationItem } from '@/components/VariationRankChart';
 import YoyCards from '@/components/YoyCards';
 import YearRangeSelector from '@/components/YearRangeSelector';
+import ExportBar from '@/components/shared/ExportBar';
 import DataQualityBanner from '@/components/DataQualityBanner';
+import BudgetExecutionSection from '@/components/budget/BudgetExecutionSection';
 
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -242,7 +244,7 @@ export default function BudgetTendancesTab() {
       <div className="flex items-center justify-center py-20">
         <div className="text-center">
           <div className="w-12 h-12 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-slate-400">Chargement des données...</p>
+          <p className="text-slate-500">Chargement des données...</p>
         </div>
       </div>
     );
@@ -253,7 +255,7 @@ export default function BudgetTendancesTab() {
       <div className="flex items-center justify-center py-20">
         <div className="text-center max-w-md">
           <p className="text-red-400 text-lg mb-2">{error || 'Aucune donnée disponible'}</p>
-          <p className="text-slate-400 text-sm">
+          <p className="text-slate-500 text-sm">
             Vérifiez que evolution_budget.json est présent dans /public/data/
           </p>
         </div>
@@ -265,7 +267,7 @@ export default function BudgetTendancesTab() {
     <div>
       {/* Year range selector */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-3">
-        <p className="text-sm text-slate-400">
+        <p className="text-sm text-slate-500">
           Analyse temporelle {availableYears[0]}–{availableYears[availableYears.length - 1]}
         </p>
         <YearRangeSelector
@@ -280,6 +282,18 @@ export default function BudgetTendancesTab() {
 
       <DataQualityBanner dataset="budget" year={endYear} />
 
+      <ExportBar
+        csvData={filteredBudgetData as unknown as Record<string, unknown>[]}
+        csvColumns={[
+          { key: 'year', label: 'Année' },
+          { key: 'type_budget', label: 'Type budget' },
+          { key: 'recettes', label: 'Recettes propres (€)' },
+          { key: 'depenses', label: 'Dépenses (€)' },
+          { key: 'solde', label: 'Surplus/Déficit (€)' },
+        ]}
+        filename={`budget_evolution_${startYear}-${endYear}`}
+      />
+
       {/* KPI Cards — comparaison startYear → endYear */}
       {endYearData && (
         <div className="mb-6">
@@ -288,7 +302,7 @@ export default function BudgetTendancesTab() {
       )}
 
       {/* Graphique évolution Recettes/Dépenses (plage filtrée) */}
-      <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6 mb-6">
+      <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-6 mb-6">
         <h2 className="text-lg font-semibold text-slate-100 mb-4 flex items-center gap-2">
           Évolution Recettes et Dépenses
         </h2>
@@ -304,10 +318,24 @@ export default function BudgetTendancesTab() {
 
       {/* Variation par poste — dynamique selon la plage */}
       {dynamicVariations && (
-        <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6 mb-6">
+        <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-6 mb-6">
           <VariationRankChart data={dynamicVariations} maxItems={8} />
         </div>
       )}
+
+      {/* ─── Exécution budgétaire (voté vs exécuté) ─── */}
+      <div className="relative mt-10 mb-6">
+        <div className="absolute inset-0 flex items-center" aria-hidden="true">
+          <div className="w-full border-t border-slate-700/50" />
+        </div>
+        <div className="relative flex justify-center">
+          <span className="bg-slate-800/30 px-4 text-sm font-medium text-slate-500">
+            Exécution budgétaire
+          </span>
+        </div>
+      </div>
+
+      <BudgetExecutionSection />
     </div>
   );
 }

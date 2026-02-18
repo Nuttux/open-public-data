@@ -16,8 +16,8 @@ export interface Tab {
   id: string;
   /** Label affiché */
   label: string;
-  /** Icône optionnelle (emoji ou composant) */
-  icon?: string;
+  /** Icône optionnelle (Lucide icon ou emoji) */
+  icon?: React.ReactNode;
 }
 
 interface TabBarProps {
@@ -50,7 +50,7 @@ export default function TabBar({ tabs, activeTab, onChange, className = '' }: Ta
               ${
                 isActive
                   ? 'bg-slate-600 text-white shadow-sm'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50'
+                  : 'text-slate-300 hover:text-slate-100 hover:bg-slate-700/50'
               }
             `}
           >

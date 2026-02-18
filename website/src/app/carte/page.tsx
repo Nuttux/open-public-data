@@ -20,6 +20,7 @@ import type { LogementSocial, ArrondissementStats } from '@/lib/types/map';
 import { loadLogementsSociaux, loadArrondissementsStats } from '@/lib/api/staticData';
 import { formatNumber } from '@/lib/formatters';
 import { DATA_SOURCES } from '@/lib/constants/arrondissements';
+import ExportBar from '@/components/shared/ExportBar';
 
 /**
  * Import dynamique de la carte (Leaflet nécessite window)
@@ -169,6 +170,21 @@ export default function LogementsSociauxPage() {
   }, [filteredLogements, topBailleurs]);
 
   /**
+   * CSV export data (bailleurs)
+   */
+  const csvBailleurs = useMemo(() => {
+    return topBailleurs.map(b => ({
+      nom: b.nom,
+      nb_projets: b.nbProjets,
+      nb_logements: b.nbLogements,
+      nb_PLAI: b.nbPLAI,
+      nb_PLUS: b.nbPLUS,
+      nb_PLS: b.nbPLS,
+      arrondissements: b.arrondissements.sort((a, c) => a - c).join(', '),
+    })) as unknown as Record<string, unknown>[];
+  }, [topBailleurs]);
+
+  /**
    * Liste des arrondissements pour le filtre
    */
   const arrondissements = useMemo(() => {
@@ -200,7 +216,7 @@ export default function LogementsSociauxPage() {
                   className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
                     viewMode === 'bailleurs'
                       ? 'bg-emerald-600 text-white'
-                      : 'text-slate-400 hover:text-white'
+                      : 'text-slate-300 hover:text-white'
                   }`}
                 >
                   Bailleurs
@@ -210,7 +226,7 @@ export default function LogementsSociauxPage() {
                   className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
                     viewMode === 'carte'
                       ? 'bg-emerald-600 text-white'
-                      : 'text-slate-400 hover:text-white'
+                      : 'text-slate-300 hover:text-white'
                   }`}
                 >
                   Carte
@@ -249,41 +265,55 @@ export default function LogementsSociauxPage() {
           </div>
         )}
 
+        <ExportBar
+          csvData={csvBailleurs}
+          csvColumns={[
+            { key: 'nom', label: 'Bailleur' },
+            { key: 'nb_projets', label: 'Projets' },
+            { key: 'nb_logements', label: 'Logements' },
+            { key: 'nb_PLAI', label: 'PLAI' },
+            { key: 'nb_PLUS', label: 'PLUS' },
+            { key: 'nb_PLS', label: 'PLS' },
+            { key: 'arrondissements', label: 'Arrondissements' },
+          ]}
+          filename="logements_bailleurs"
+        />
+
         {/* Stats rapides — 2 colonnes sur mobile, 5 sur desktop */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 mb-6">
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-3 md:p-4">
-            <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-wide">Total Logements</p>
+            <p className="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide">Total Logements</p>
             <p className="text-xl md:text-2xl font-bold text-emerald-400 mt-1">
               {stats.logements >= 1000 ? `${(stats.logements / 1000).toFixed(0)}k` : formatNumber(stats.logements)}
             </p>
           </div>
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-3 md:p-4">
-            <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-wide">Programmes</p>
+            <p className="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide">Programmes</p>
             <p className="text-xl md:text-2xl font-bold text-slate-100 mt-1">
               {formatNumber(stats.projets)}
             </p>
           </div>
           {/* Types de logements — sur mobile, utiliser une ligne plus compacte */}
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-3 md:p-4">
-            <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-wide">PLAI (très social)</p>
+            <p className="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide">PLAI (très social)</p>
             <p className="text-xl md:text-2xl font-bold text-blue-400 mt-1">
               {stats.PLAI >= 1000 ? `${(stats.PLAI / 1000).toFixed(0)}k` : formatNumber(stats.PLAI)}
             </p>
-            <p className="text-[10px] md:text-xs text-slate-500">{stats.logements > 0 ? ((stats.PLAI / stats.logements) * 100).toFixed(0) : 0}%</p>
+            <p className="text-[10px] md:text-xs text-slate-400">{stats.logements > 0 ? ((stats.PLAI / stats.logements) * 100).toFixed(0) : 0}%</p>
           </div>
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-3 md:p-4">
-            <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-wide">PLUS (social)</p>
+            <p className="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide">PLUS (social)</p>
             <p className="text-xl md:text-2xl font-bold text-cyan-400 mt-1">
               {stats.PLUS >= 1000 ? `${(stats.PLUS / 1000).toFixed(0)}k` : formatNumber(stats.PLUS)}
             </p>
-            <p className="text-[10px] md:text-xs text-slate-500">{stats.logements > 0 ? ((stats.PLUS / stats.logements) * 100).toFixed(0) : 0}%</p>
+            <p className="text-[10px] md:text-xs text-slate-400">{stats.logements > 0 ? ((stats.PLUS / stats.logements) * 100).toFixed(0) : 0}%</p>
           </div>
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-3 md:p-4 col-span-2 sm:col-span-1">
-            <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-wide">PLS (intermédiaire)</p>
+            <p className="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide">PLS (intermédiaire)</p>
             <p className="text-xl md:text-2xl font-bold text-violet-400 mt-1">
               {stats.PLS >= 1000 ? `${(stats.PLS / 1000).toFixed(0)}k` : formatNumber(stats.PLS)}
             </p>
-            <p className="text-[10px] md:text-xs text-slate-500">{stats.logements > 0 ? ((stats.PLS / stats.logements) * 100).toFixed(0) : 0}%</p>
+            <p className="text-[10px] md:text-xs text-slate-400">{stats.logements > 0 ? ((stats.PLS / stats.logements) * 100).toFixed(0) : 0}%</p>
           </div>
         </div>
 
@@ -345,7 +375,7 @@ export default function LogementsSociauxPage() {
                           <p className={`text-xs md:text-sm font-medium ${isSelected ? 'text-emerald-400' : 'text-slate-200'}`}>
                             {bailleur.nom}
                           </p>
-                          <p className="text-[10px] md:text-xs text-slate-500">
+                          <p className="text-[10px] md:text-xs text-slate-400">
                             {bailleur.arrondissements.length} arrondissement{bailleur.arrondissements.length > 1 ? 's' : ''}
                           </p>
                         </td>
