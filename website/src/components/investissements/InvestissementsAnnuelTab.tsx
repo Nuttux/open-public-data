@@ -72,10 +72,10 @@ const COLUMNS: TableColumnDef<AutorisationProgramme>[] = [
     key: 'projet', label: 'Projet', align: 'left',
     render: (p, i) => (
       <div className="flex items-start gap-2">
-        <span className="text-slate-500 text-xs w-5 shrink-0">{i + 1}</span>
+        <span className="text-slate-400 text-xs w-5 shrink-0">{i + 1}</span>
         <div className="min-w-0">
           <p className="text-xs md:text-sm text-slate-200 line-clamp-2">{p.apTexte}</p>
-          <p className="text-[10px] md:text-xs text-slate-500 mt-1">
+          <p className="text-[10px] md:text-xs text-slate-400 mt-1">
             {THEMATIQUE_LABELS[p.thematique as ThematiqueSubvention]?.icon || '📋'}{' '}
             {THEMATIQUE_LABELS[p.thematique as ThematiqueSubvention]?.label || p.thematique}
           </p>
@@ -157,24 +157,24 @@ export default function InvestissementsAnnuelTab({
       kpiCards={
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-500 uppercase tracking-wide">Montant total</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">Montant total</p>
             <p className="text-2xl font-bold text-slate-100 mt-1">{formatEuroCompact(stats.totalMontant)}</p>
-            <p className="text-xs text-slate-500 mt-1">{formatNumber(stats.total)} projets</p>
+            <p className="text-xs text-slate-400 mt-1">{formatNumber(stats.total)} projets</p>
           </div>
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-500 uppercase tracking-wide">Projet médian</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">Projet médian</p>
             <p className="text-2xl font-bold text-amber-400 mt-1">{topKpis ? formatEuroCompact(topKpis.median) : '—'}</p>
-            <p className="text-xs text-slate-500 mt-1">montant médian</p>
+            <p className="text-xs text-slate-400 mt-1">montant médian</p>
           </div>
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-500 uppercase tracking-wide">Top projet</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">Top projet</p>
             <p className="text-2xl font-bold text-emerald-400 mt-1">{topKpis ? formatEuroCompact(topKpis.topVal) : '—'}</p>
-            <p className="text-xs text-slate-500 mt-1 line-clamp-1">{topKpis?.topName || '—'}</p>
+            <p className="text-xs text-slate-400 mt-1 line-clamp-1">{topKpis?.topName || '—'}</p>
           </div>
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-500 uppercase tracking-wide">Budget invest. total</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">Budget invest. total</p>
             <p className="text-2xl font-bold text-amber-400 mt-1">{budgetInvest ? formatEuroCompact(budgetInvest) : '—'}</p>
-            <p className="text-xs text-slate-500 mt-1">{selectedYear}</p>
+            <p className="text-xs text-slate-400 mt-1">{selectedYear}</p>
           </div>
         </div>
       }

@@ -113,8 +113,8 @@ function GlossaryButton({
       onClick={onClick}
       className={`
         flex items-center justify-center rounded-lg
-        border border-slate-700/50 text-slate-400
-        hover:text-slate-200 hover:bg-slate-800/50
+        border border-slate-700/50 text-slate-300
+        hover:text-slate-100 hover:bg-slate-800/50
         transition-all duration-200
         ${className}
       `}
@@ -175,7 +175,7 @@ export default function Navbar() {
                       ${
                         isActive
                           ? 'bg-purple-600/20 text-purple-400 border border-purple-500/30'
-                          : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                          : 'text-slate-300 hover:text-slate-100 hover:bg-slate-800/50'
                       }
                     `}
                     title={link.description}
@@ -237,7 +237,7 @@ export default function Navbar() {
                   ${
                     isActive
                       ? 'text-purple-400'
-                      : 'text-slate-500 active:text-slate-300'
+                      : 'text-slate-400 active:text-slate-200'
                   }
                 `}
               >
@@ -252,7 +252,7 @@ export default function Navbar() {
                   className={`
                     text-[9px] mt-1 leading-tight font-medium
                     max-w-full px-0.5 text-center
-                    ${isActive ? 'text-purple-400' : 'text-slate-500'}
+                    ${isActive ? 'text-purple-400' : 'text-slate-400'}
                   `}
                 >
                   {link.shortLabel}

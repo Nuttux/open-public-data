@@ -347,19 +347,19 @@ export default function AnnuelTab<T>({
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
           <div>
             <h3 className="text-base sm:text-lg font-semibold text-slate-100">{treemapTitle}</h3>
-            <p className="text-xs sm:text-sm text-slate-400">
+            <p className="text-xs sm:text-sm text-slate-300">
               {isMobile ? 'Appuyez pour filtrer' : 'Cliquez sur un bloc pour filtrer la table'}
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-xs text-slate-500 hidden sm:inline">Ventilation :</span>
+            <span className="text-xs text-slate-400 hidden sm:inline">Ventilation :</span>
             <div className="flex bg-slate-800 rounded-lg border border-slate-700 p-0.5">
               {breakdowns.map(opt => (
                 <button
                   key={opt.id}
                   onClick={() => handleBreakdownChange(opt.id)}
                   className={`px-2.5 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition-all flex items-center gap-1.5 ${
-                    breakdown === opt.id ? t.activeBtn : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50'
+                    breakdown === opt.id ? t.activeBtn : 'text-slate-300 hover:text-slate-100 hover:bg-slate-700/50'
                   }`}
                 >
                   <span>{opt.icon}</span>
@@ -384,7 +384,7 @@ export default function AnnuelTab<T>({
 
         {selectedGroup && (
           <div className="mt-3 flex flex-wrap items-center gap-2">
-            <span className="text-xs sm:text-sm text-slate-400">Filtre actif :</span>
+            <span className="text-xs sm:text-sm text-slate-300">Filtre actif :</span>
             <button
               onClick={() => setSelectedGroup(null)}
               className={`inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium ${t.filterBadgeBg} ${t.filterBadgeText} border ${t.filterBadgeBorder} ${t.filterBadgeHover} transition-colors`}
@@ -448,7 +448,7 @@ export default function AnnuelTab<T>({
         )}
         {sortedFiltered.length === 0 && (
           <div className="px-4 py-12 text-center">
-            <p className="text-slate-400">Aucun {itemLabel.slice(0, -1)} ne correspond aux filtres</p>
+            <p className="text-slate-300">Aucun {itemLabel.slice(0, -1)} ne correspond aux filtres</p>
           </div>
         )}
       </div>

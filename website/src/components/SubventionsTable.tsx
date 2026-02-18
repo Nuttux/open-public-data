@@ -225,7 +225,7 @@ export default function SubventionsTable({
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-8">
         <div className="flex items-center justify-center gap-3">
           <div className="w-6 h-6 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
-          <span className="text-slate-400">Chargement des données...</span>
+          <span className="text-slate-300">Chargement des données...</span>
         </div>
       </div>
     );
@@ -236,8 +236,8 @@ export default function SubventionsTable({
     return (
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-8">
         <div className="text-center">
-          <p className="text-slate-400">Aucun bénéficiaire ne correspond aux filtres.</p>
-          <p className="text-sm text-slate-500 mt-1">Essayez de modifier vos critères de recherche.</p>
+          <p className="text-slate-300">Aucun bénéficiaire ne correspond aux filtres.</p>
+          <p className="text-sm text-slate-400 mt-1">Essayez de modifier vos critères de recherche.</p>
         </div>
       </div>
     );
@@ -251,7 +251,7 @@ export default function SubventionsTable({
           <h3 className="font-medium text-slate-100">
             {formatNumber(sortedData.length)} bénéficiaire{sortedData.length > 1 ? 's' : ''} affiché{sortedData.length > 1 ? 's' : ''}
           </h3>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-slate-400">
             Montant total affiché: {formatEuroCompact(sortedData.reduce((sum, b) => sum + b.montant_total, 0))}
           </p>
         </div>
@@ -294,7 +294,7 @@ export default function SubventionsTable({
                         {beneficiaire.beneficiaire}
                       </p>
                       {beneficiaire.objet_principal && (
-                        <p className="text-[10px] md:text-xs text-slate-500 truncate mt-0.5" title={beneficiaire.objet_principal}>
+                        <p className="text-[10px] md:text-xs text-slate-400 truncate mt-0.5" title={beneficiaire.objet_principal}>
                           {beneficiaire.objet_principal}
                         </p>
                       )}
@@ -313,7 +313,7 @@ export default function SubventionsTable({
                       {beneficiaire.thematique}
                     </span>
                     {beneficiaire.sous_categorie && (
-                      <p className="text-[10px] md:text-xs text-slate-500 mt-0.5">
+                      <p className="text-[10px] md:text-xs text-slate-400 mt-0.5">
                         {beneficiaire.sous_categorie}
                       </p>
                     )}
@@ -325,7 +325,7 @@ export default function SubventionsTable({
                       {formatEuroCompact(beneficiaire.montant_total)}
                     </p>
                     {beneficiaire.nb_subventions > 1 && (
-                      <p className="text-[10px] md:text-xs text-slate-500">
+                      <p className="text-[10px] md:text-xs text-slate-400">
                         {beneficiaire.nb_subventions} subv.
                       </p>
                     )}
@@ -367,7 +367,7 @@ export default function SubventionsTable({
           <button
             onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
             disabled={currentPage === 1}
-            className="px-3 py-1.5 text-sm font-medium text-slate-400 hover:text-slate-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="px-3 py-1.5 text-sm font-medium text-slate-300 hover:text-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             ← Précédent
           </button>
@@ -394,7 +394,7 @@ export default function SubventionsTable({
                     w-8 h-8 text-sm font-medium rounded transition-colors
                     ${currentPage === pageNum
                       ? 'bg-purple-500/20 text-purple-300'
-                      : 'text-slate-400 hover:text-slate-200'
+                      : 'text-slate-300 hover:text-slate-100'
                     }
                   `}
                 >
@@ -407,7 +407,7 @@ export default function SubventionsTable({
           <button
             onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
             disabled={currentPage === totalPages}
-            className="px-3 py-1.5 text-sm font-medium text-slate-400 hover:text-slate-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="px-3 py-1.5 text-sm font-medium text-slate-300 hover:text-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             Suivant →
           </button>
