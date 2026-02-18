@@ -386,6 +386,63 @@ export default function PatrimoineTendancesTab() {
           Épargne brute (capacité d&apos;autofinancement) et Surplus/Déficit (hors emprunts)
         </p>
         <FinancialHealthChart data={filteredFinancialData} height={350} />
+
+        {/* Métriques de contexte : ratios en % des recettes */}
+        {endYearRaw && (
+          <div className="mt-4 pt-4 border-t border-slate-700/50 grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div>
+              <p className="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide">
+                Surplus/Déficit {endYear}
+              </p>
+              <p className={`text-lg md:text-xl font-bold mt-1 ${endYearRaw.totals.surplus_deficit >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                {endYearRaw.totals.surplus_deficit >= 0 ? '+' : ''}{formatEuroCompact(endYearRaw.totals.surplus_deficit)}
+              </p>
+              <p className="text-[10px] text-slate-400 mt-0.5">
+                {endYearRaw.totals.recettes_propres > 0
+                  ? `${((endYearRaw.totals.surplus_deficit / endYearRaw.totals.recettes_propres) * 100).toFixed(1)}% des recettes propres`
+                  : '—'}
+              </p>
+            </div>
+            <div>
+              <p className="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide">
+                Intérêts de dette {endYear}
+              </p>
+              <p className="text-lg md:text-xl font-bold text-red-400 mt-1">
+                {formatEuroCompact(endYearRaw.totals.interets_dette)}
+              </p>
+              <p className="text-[10px] text-slate-400 mt-0.5">
+                {endYearRaw.sections.fonctionnement.recettes > 0
+                  ? `${((endYearRaw.totals.interets_dette / endYearRaw.sections.fonctionnement.recettes) * 100).toFixed(1)}% des recettes fonct.`
+                  : '—'}
+              </p>
+            </div>
+            <div>
+              <p className="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide">
+                Épargne brute {endYear}
+              </p>
+              <p className={`text-lg md:text-xl font-bold mt-1 ${endYearRaw.epargne_brute >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                {formatEuroCompact(endYearRaw.epargne_brute)}
+              </p>
+              <p className="text-[10px] text-slate-400 mt-0.5">
+                {endYearRaw.sections.fonctionnement.recettes > 0
+                  ? `${((endYearRaw.epargne_brute / endYearRaw.sections.fonctionnement.recettes) * 100).toFixed(1)}% des recettes fonct.`
+                  : '—'}
+              </p>
+            </div>
+            <div>
+              <p className="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide">
+                Recettes propres {endYear}
+              </p>
+              <p className="text-lg md:text-xl font-bold text-slate-100 mt-1">
+                {formatEuroCompact(endYearRaw.totals.recettes_propres)}
+              </p>
+              <p className="text-[10px] text-slate-400 mt-0.5">
+                base de référence
+              </p>
+            </div>
+          </div>
+        )}
+
         <div className="mt-4 pt-4 border-t border-slate-700/50 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-300">
           <div>
             <span className="inline-block w-3 h-3 rounded bg-green-500 mr-2 align-middle" />

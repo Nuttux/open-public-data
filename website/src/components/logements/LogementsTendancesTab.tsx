@@ -12,6 +12,7 @@ import TendancesTab from '@/components/shared/TendancesTab';
 import type { TendancesYear, BreakdownOption, GroupItem } from '@/components/shared/TendancesTab';
 import type { LogementSocial } from '@/lib/types/map';
 import { formatNumber } from '@/lib/formatters';
+import { PARIS_POPULATION_TOTAL } from '@/lib/constants/arrondissements';
 import { PALETTE } from '@/lib/colors';
 import { BREAKDOWN_ICONS } from '@/lib/icons';
 
@@ -123,7 +124,7 @@ export default function LogementsTendancesTab({ allLogements }: LogementsTendanc
       formatVariationTooltipValue={(v) => `${formatNumber(v)} logements`}
       title="Tendances des logements sociaux"
       kpi1Label={(year) => `Production ${year}`}
-      kpi1Sub={() => 'logements'}
+      kpi1Sub={(year) => `${((year.total / PARIS_POPULATION_TOTAL) * 1000).toFixed(1)} pour 1 000 hab`}
       kpi3={(ctx) => {
         const totalCumul = ctx.filteredYears.reduce((s, y) => s + y.total, 0);
         return {

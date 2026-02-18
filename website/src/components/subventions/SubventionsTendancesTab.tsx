@@ -11,6 +11,7 @@ import TendancesTab from '@/components/shared/TendancesTab';
 import type { TendancesYear, BreakdownOption } from '@/components/shared/TendancesTab';
 import { getThematiqueColor, PALETTE } from '@/lib/colors';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
+import { PARIS_POPULATION_TOTAL } from '@/lib/constants/arrondissements';
 import { BREAKDOWN_ICONS } from '@/lib/icons';
 
 // ─── Config ──────────────────────────────────────────────────────────────────
@@ -97,7 +98,7 @@ export default function SubventionsTendancesTab() {
       formatVariationDiff={formatVariationDiff}
       title="Tendances des subventions"
       kpi1Label={(year) => `Subventions ${year}`}
-      kpi1Sub={(year) => `${formatNumber(year.subCount || 0)} subventions`}
+      kpi1Sub={(year) => `${formatNumber(year.subCount || 0)} subventions · ${formatNumber(Math.round(year.total / PARIS_POPULATION_TOTAL))} €/hab`}
       kpi4={(ctx) => ({
         label: KPI4_LABELS[ctx.breakdown] || '1er groupe',
         value: ctx.topName,

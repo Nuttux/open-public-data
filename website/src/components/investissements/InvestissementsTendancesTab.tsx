@@ -9,7 +9,8 @@
 
 import TendancesTab from '@/components/shared/TendancesTab';
 import type { TendancesYear, BreakdownOption } from '@/components/shared/TendancesTab';
-import { formatEuroCompact } from '@/lib/formatters';
+import { formatEuroCompact, formatNumber } from '@/lib/formatters';
+import { PARIS_POPULATION_TOTAL } from '@/lib/constants/arrondissements';
 import { PALETTE } from '@/lib/colors';
 import { BREAKDOWN_ICONS } from '@/lib/icons';
 
@@ -71,7 +72,7 @@ export default function InvestissementsTendancesTab() {
       formatVariationDiff={formatVariationDiff}
       title="Tendances d'investissement"
       kpi1Label={(year) => `Investissement ${year}`}
-      kpi1Sub={() => 'hors opérations financières'}
+      kpi1Sub={(year) => `${formatNumber(Math.round(year.total / PARIS_POPULATION_TOTAL))} €/hab · hors opérations financières`}
       kpi4={(ctx) => ({
         label: '1er secteur',
         value: ctx.topName,
