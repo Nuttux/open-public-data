@@ -1,160 +1,128 @@
 {
   "year": 2019,
-  "generated_at": "2026-02-05T19:11:29.919444",
+  "generated_at": "2026-02-18T16:41:44.331998",
   "total_montant": 1304037463.0,
-  "nb_thematiques": 19,
+  "nb_thematiques": 15,
   "data": [
     {
       "annee": 2019,
       "thematique": "Social - Solidarité",
-      "nb_beneficiaires": 185,
-      "nb_subventions": 186,
-      "montant_total": 400195197.0,
-      "pct_total": 30.69
-    },
-    {
-      "annee": 2019,
-      "thematique": "Urbanisme - Logement",
-      "nb_beneficiaires": 30,
-      "nb_subventions": 31,
-      "montant_total": 214258206.0,
-      "pct_total": 16.43
-    },
-    {
-      "annee": 2019,
-      "thematique": "Culture",
-      "nb_beneficiaires": 337,
-      "nb_subventions": 338,
-      "montant_total": 177674847.0,
-      "pct_total": 13.62
-    },
-    {
-      "annee": 2019,
-      "thematique": "Éducation",
-      "nb_beneficiaires": 260,
-      "nb_subventions": 261,
-      "montant_total": 139536424.0,
-      "pct_total": 10.7
-    },
-    {
-      "annee": 2019,
-      "thematique": "Transport",
-      "nb_beneficiaires": 11,
-      "nb_subventions": 11,
-      "montant_total": 76957073.0,
-      "pct_total": 5.9
-    },
-    {
-      "annee": 2019,
-      "thematique": "Sport",
-      "nb_beneficiaires": 1287,
-      "nb_subventions": 1289,
-      "montant_total": 58547358.0,
-      "pct_total": 4.49
-    },
-    {
-      "annee": 2019,
-      "thematique": "Administration",
-      "nb_beneficiaires": 431,
-      "nb_subventions": 431,
-      "montant_total": 54883176.0,
-      "pct_total": 4.21
+      "nb_beneficiaires": 125,
+      "nb_subventions": 127,
+      "montant_total": 443466092.0,
+      "pct_total": 34.01
     },
     {
       "annee": 2019,
       "thematique": "Logement",
-      "nb_beneficiaires": 28,
-      "nb_subventions": 28,
-      "montant_total": 50387611.0,
-      "pct_total": 3.86
+      "nb_beneficiaires": 37,
+      "nb_subventions": 38,
+      "montant_total": 274337538.0,
+      "pct_total": 21.04
     },
     {
       "annee": 2019,
-      "thematique": "Social - Petite enfance",
-      "nb_beneficiaires": 70,
-      "nb_subventions": 70,
-      "montant_total": 35375860.0,
-      "pct_total": 2.71
+      "thematique": "Culture",
+      "nb_beneficiaires": 363,
+      "nb_subventions": 364,
+      "montant_total": 191985409.0,
+      "pct_total": 14.72
     },
     {
       "annee": 2019,
-      "thematique": "Social",
-      "nb_beneficiaires": 106,
-      "nb_subventions": 107,
-      "montant_total": 31744135.0,
-      "pct_total": 2.43
+      "thematique": "Éducation",
+      "nb_beneficiaires": 251,
+      "nb_subventions": 252,
+      "montant_total": 139905232.0,
+      "pct_total": 10.73
+    },
+    {
+      "annee": 2019,
+      "thematique": "Transport",
+      "nb_beneficiaires": 7,
+      "nb_subventions": 7,
+      "montant_total": 77027567.0,
+      "pct_total": 5.91
     },
     {
       "annee": 2019,
       "thematique": "Économie",
-      "nb_beneficiaires": 668,
-      "nb_subventions": 668,
-      "montant_total": 26645043.0,
-      "pct_total": 2.04
+      "nb_beneficiaires": 832,
+      "nb_subventions": 832,
+      "montant_total": 43835384.0,
+      "pct_total": 3.36
     },
     {
       "annee": 2019,
-      "thematique": "Culture & Sport",
-      "nb_beneficiaires": 125,
-      "nb_subventions": 126,
-      "montant_total": 16409835.0,
-      "pct_total": 1.26
-    },
-    {
-      "annee": 2019,
-      "thematique": "Autre",
-      "nb_beneficiaires": 54,
-      "nb_subventions": 54,
-      "montant_total": 6753708.0,
-      "pct_total": 0.52
+      "thematique": "Social - Petite enfance",
+      "nb_beneficiaires": 96,
+      "nb_subventions": 97,
+      "montant_total": 40800733.0,
+      "pct_total": 3.13
     },
     {
       "annee": 2019,
       "thematique": "Non classifié",
-      "nb_beneficiaires": 8325,
-      "nb_subventions": 8351,
-      "montant_total": 6379436.0,
-      "pct_total": 0.49
+      "nb_beneficiaires": 10026,
+      "nb_subventions": 10054,
+      "montant_total": 28335699.0,
+      "pct_total": 2.17
+    },
+    {
+      "annee": 2019,
+      "thematique": "Sport",
+      "nb_beneficiaires": 199,
+      "nb_subventions": 199,
+      "montant_total": 19990106.0,
+      "pct_total": 1.53
+    },
+    {
+      "annee": 2019,
+      "thematique": "Administration",
+      "nb_beneficiaires": 15,
+      "nb_subventions": 15,
+      "montant_total": 13477753.0,
+      "pct_total": 1.03
+    },
+    {
+      "annee": 2019,
+      "thematique": "Sécurité",
+      "nb_beneficiaires": 2,
+      "nb_subventions": 2,
+      "montant_total": 12686714.0,
+      "pct_total": 0.97
     },
     {
       "annee": 2019,
       "thematique": "Santé",
       "nb_beneficiaires": 30,
       "nb_subventions": 30,
-      "montant_total": 3632239.0,
-      "pct_total": 0.28
-    },
-    {
-      "annee": 2019,
-      "thematique": "Environnement",
-      "nb_beneficiaires": 59,
-      "nb_subventions": 59,
-      "montant_total": 2226667.0,
-      "pct_total": 0.17
+      "montant_total": 12030282.0,
+      "pct_total": 0.92
     },
     {
       "annee": 2019,
       "thematique": "International",
-      "nb_beneficiaires": 33,
-      "nb_subventions": 33,
-      "montant_total": 1682787.0,
-      "pct_total": 0.13
+      "nb_beneficiaires": 34,
+      "nb_subventions": 34,
+      "montant_total": 3883662.0,
+      "pct_total": 0.3
     },
     {
       "annee": 2019,
-      "thematique": "Sécurité",
-      "nb_beneficiaires": 12,
-      "nb_subventions": 12,
-      "montant_total": 442461.0,
-      "pct_total": 0.03
+      "thematique": "Environnement",
+      "nb_beneficiaires": 41,
+      "nb_subventions": 41,
+      "montant_total": 2220292.0,
+      "pct_total": 0.17
     },
     {
       "annee": 2019,
-      "thematique": "Transport - Voirie",
-      "nb_beneficiaires": 8,
-      "nb_subventions": 8,
-      "montant_total": 305400.0,
-      "pct_total": 0.02
+      "thematique": "Autre",
+      "nb_beneficiaires": 1,
+      "nb_subventions": 1,
+      "montant_total": 55000.0,
+      "pct_total": 0
     }
   ]
 }

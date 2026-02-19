@@ -52,14 +52,14 @@
       "arrondissement": 1,
       "population": 15939,
       "investissements": {
-        "total": 113127564.76999995,
-        "count": 148
+        "total": 49002490.690000005,
+        "count": 118
       },
       "logements": {
         "total": 877,
         "count": 72
       },
-      "investissementsParHabitant": 7097.53,
+      "investissementsParHabitant": 3074.38,
       "logementsParHabitant": 55.02
     },
     {
@@ -80,56 +80,56 @@
       "arrondissement": 3,
       "population": 33000,
       "investissements": {
-        "total": 40755372.19000002,
-        "count": 68
+        "total": 37599257.350000024,
+        "count": 50
       },
       "logements": {
         "total": 1336,
         "count": 90
       },
-      "investissementsParHabitant": 1235.01,
+      "investissementsParHabitant": 1139.37,
       "logementsParHabitant": 40.48
     },
     {
       "arrondissement": 4,
       "population": 28088,
       "investissements": {
-        "total": 44548094.559999995,
-        "count": 145
+        "total": 40400736.83999999,
+        "count": 117
       },
       "logements": {
         "total": 1677,
         "count": 98
       },
-      "investissementsParHabitant": 1586.02,
+      "investissementsParHabitant": 1438.36,
       "logementsParHabitant": 59.71
     },
     {
       "arrondissement": 5,
       "population": 56882,
       "investissements": {
-        "total": 44504174.199999996,
-        "count": 99
+        "total": 2713946.9399999995,
+        "count": 32
       },
       "logements": {
         "total": 2194,
         "count": 86
       },
-      "investissementsParHabitant": 782.39,
+      "investissementsParHabitant": 47.71,
       "logementsParHabitant": 38.57
     },
     {
       "arrondissement": 6,
       "population": 40005,
       "investissements": {
-        "total": 12022996.479999997,
-        "count": 63
+        "total": 8501481.279999997,
+        "count": 57
       },
       "logements": {
         "total": 920,
         "count": 52
       },
-      "investissementsParHabitant": 300.54,
+      "investissementsParHabitant": 212.51,
       "logementsParHabitant": 23.0
     },
     {
@@ -150,182 +150,182 @@
       "arrondissement": 8,
       "population": 35016,
       "investissements": {
-        "total": 20764375.239999995,
-        "count": 65
+        "total": 11796999.449999997,
+        "count": 38
       },
       "logements": {
         "total": 926,
         "count": 46
       },
-      "investissementsParHabitant": 593.0,
+      "investissementsParHabitant": 336.9,
       "logementsParHabitant": 26.45
     },
     {
       "arrondissement": 9,
       "population": 59835,
       "investissements": {
-        "total": 7260576.09,
-        "count": 73
+        "total": 5917181.879999998,
+        "count": 60
       },
       "logements": {
         "total": 2097,
         "count": 121
       },
-      "investissementsParHabitant": 121.34,
+      "investissementsParHabitant": 98.89,
       "logementsParHabitant": 35.05
     },
     {
       "arrondissement": 10,
       "population": 83459,
       "investissements": {
-        "total": 13295360.209999995,
-        "count": 104
+        "total": 10854131.229999997,
+        "count": 86
       },
       "logements": {
         "total": 4859,
         "count": 225
       },
-      "investissementsParHabitant": 159.3,
+      "investissementsParHabitant": 130.05,
       "logementsParHabitant": 58.22
     },
     {
       "arrondissement": 11,
       "population": 142583,
       "investissements": {
-        "total": 24093371.13,
-        "count": 124
+        "total": 15025529.509999998,
+        "count": 95
       },
       "logements": {
         "total": 6665,
         "count": 294
       },
-      "investissementsParHabitant": 168.98,
+      "investissementsParHabitant": 105.38,
       "logementsParHabitant": 46.74
     },
     {
       "arrondissement": 12,
       "population": 139867,
       "investissements": {
-        "total": 31100181.62000001,
-        "count": 215
+        "total": 17391781.750000007,
+        "count": 147
       },
       "logements": {
         "total": 11816,
         "count": 289
       },
-      "investissementsParHabitant": 222.36,
+      "investissementsParHabitant": 124.35,
       "logementsParHabitant": 84.48
     },
     {
       "arrondissement": 13,
       "population": 178350,
       "investissements": {
-        "total": 54001110.72999998,
-        "count": 237
+        "total": 35060387.67000002,
+        "count": 159
       },
       "logements": {
         "total": 15700,
         "count": 364
       },
-      "investissementsParHabitant": 302.78,
+      "investissementsParHabitant": 196.58,
       "logementsParHabitant": 88.03
     },
     {
       "arrondissement": 14,
       "population": 134382,
       "investissements": {
-        "total": 79761035.89,
-        "count": 191
+        "total": 22989041.23999999,
+        "count": 119
       },
       "logements": {
         "total": 9005,
         "count": 221
       },
-      "investissementsParHabitant": 593.54,
+      "investissementsParHabitant": 171.07,
       "logementsParHabitant": 67.01
     },
     {
       "arrondissement": 15,
       "population": 227746,
       "investissements": {
-        "total": 49879134.789999984,
-        "count": 206
+        "total": 29675881.189999994,
+        "count": 211
       },
       "logements": {
         "total": 12855,
         "count": 386
       },
-      "investissementsParHabitant": 219.01,
+      "investissementsParHabitant": 130.3,
       "logementsParHabitant": 56.44
     },
     {
       "arrondissement": 16,
       "population": 165062,
       "investissements": {
-        "total": 39277329.78000004,
-        "count": 165
+        "total": 5102188.47,
+        "count": 61
       },
       "logements": {
-        "total": 4834,
-        "count": 139
+        "total": 4833,
+        "count": 138
       },
-      "investissementsParHabitant": 237.96,
-      "logementsParHabitant": 29.29
+      "investissementsParHabitant": 30.91,
+      "logementsParHabitant": 29.28
     },
     {
       "arrondissement": 17,
       "population": 166518,
       "investissements": {
-        "total": 92759694.3,
-        "count": 210
+        "total": 65615199.34000001,
+        "count": 118
       },
       "logements": {
         "total": 9913,
         "count": 282
       },
-      "investissementsParHabitant": 557.06,
+      "investissementsParHabitant": 394.04,
       "logementsParHabitant": 59.53
     },
     {
       "arrondissement": 18,
       "population": 191531,
       "investissements": {
-        "total": 96437740.30000004,
-        "count": 305
+        "total": 47778670.06,
+        "count": 199
       },
       "logements": {
         "total": 12401,
         "count": 520
       },
-      "investissementsParHabitant": 503.51,
+      "investissementsParHabitant": 249.46,
       "logementsParHabitant": 64.75
     },
     {
       "arrondissement": 19,
       "population": 182952,
       "investissements": {
-        "total": 79057728.06000005,
-        "count": 217
+        "total": 62106354.23000002,
+        "count": 142
       },
       "logements": {
         "total": 12170,
         "count": 309
       },
-      "investissementsParHabitant": 432.12,
+      "investissementsParHabitant": 339.47,
       "logementsParHabitant": 66.52
     },
     {
       "arrondissement": 20,
       "population": 187642,
       "investissements": {
-        "total": 53173159.209999986,
-        "count": 226
+        "total": 44476166.55,
+        "count": 200
       },
       "logements": {
         "total": 14836,
         "count": 494
       },
-      "investissementsParHabitant": 283.38,
+      "investissementsParHabitant": 237.03,
       "logementsParHabitant": 79.07
     }
   ]

@@ -7,11 +7,11 @@
     2018
   ],
   "totalRecords": 7155,
-  "totalMontant": 2090939194.75,
+  "totalMontant": 2090939194.7500048,
   "coverage": {
-    "withArrondissement": 2953,
-    "withCoords": 94,
-    "montantLocalise": 900860574.73,
-    "pourcentageLocalise": 43.1
+    "withArrondissement": 2101,
+    "withCoords": 323,
+    "montantLocalise": 517049000.85000026,
+    "pourcentageLocalise": 24.7
   }
 }
