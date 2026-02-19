@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-02-16",
-  "source": "beneficiaires JSON (pipeline BigQuery)",
-  "note_perimetre": "Top 500 bénéficiaires par année, couvrant >95% du total. 2020-2021 absentes.",
+  "generated_at": "2026-02-18T16:41:50.082448",
+  "source": "dbt marts (mart_subventions_beneficiaires)",
+  "note_perimetre": "Top 500 bénéficiaires par année, couvrant >95% du total.",
   "years": [
     {
       "year": 2018,
@@ -11,83 +11,78 @@
       "par_thematique": [
         {
           "label": "Social - Solidarité",
-          "montant": 393014664.0,
-          "count": 44
-        },
-        {
-          "label": "Urbanisme - Logement",
-          "montant": 165201222.0,
-          "count": 16
-        },
-        {
-          "label": "Culture",
-          "montant": 162913869.0,
-          "count": 32
-        },
-        {
-          "label": "Éducation",
-          "montant": 150277052.0,
-          "count": 85
-        },
-        {
-          "label": "Transport",
-          "montant": 73509311.0,
-          "count": 4
-        },
-        {
-          "label": "Sport",
-          "montant": 51521041.0,
-          "count": 104
+          "montant": 424255897.0,
+          "count": 79
         },
         {
           "label": "Logement",
-          "montant": 41553217.0,
-          "count": 22
+          "montant": 221686582.0,
+          "count": 37
         },
         {
-          "label": "Administration",
-          "montant": 41526274.0,
-          "count": 33
+          "label": "Culture",
+          "montant": 180543547.0,
+          "count": 69
+        },
+        {
+          "label": "Éducation",
+          "montant": 151410274.0,
+          "count": 94
+        },
+        {
+          "label": "Transport",
+          "montant": 73630963.0,
+          "count": 5
         },
         {
           "label": "Social - Petite enfance",
-          "montant": 30781447.0,
-          "count": 36
-        },
-        {
-          "label": "Social",
-          "montant": 29013257.0,
-          "count": 27
-        },
-        {
-          "label": "Culture & Sport",
-          "montant": 22054337.0,
-          "count": 33
+          "montant": 37163695.0,
+          "count": 56
         },
         {
           "label": "Économie",
-          "montant": 20157505.0,
-          "count": 30
+          "montant": 33738799.0,
+          "count": 37
         },
         {
-          "label": "Autre",
-          "montant": 7016008.0,
+          "label": "Sport",
+          "montant": 26916183.0,
+          "count": 27
+        },
+        {
+          "label": "Administration",
+          "montant": 16267665.0,
+          "count": 18
+        },
+        {
+          "label": "Sécurité",
+          "montant": 10333249.0,
+          "count": 2
+        },
+        {
+          "label": "Santé",
+          "montant": 6813338.0,
+          "count": 19
+        },
+        {
+          "label": "Non classifié",
+          "montant": 4858132.0,
+          "count": 37
+        },
+        {
+          "label": "International",
+          "montant": 3353500.0,
           "count": 10
         },
         {
           "label": "Environnement",
-          "montant": 2576215.0,
-          "count": 10
+          "montant": 2750691.0,
+          "count": 9
         },
         {
-          "label": "Santé",
-          "montant": 2227346.0,
-          "count": 10
-        },
-        {
-          "label": "International",
-          "montant": 681500.0,
-          "count": 4
+          "label": "Autre",
+          "montant": 301750.0,
+          "count": 1
         }
       ],
       "par_direction": [
@@ -188,88 +183,73 @@
       "par_thematique": [
         {
           "label": "Social - Solidarité",
-          "montant": 397483321.0,
-          "count": 43
-        },
-        {
-          "label": "Urbanisme - Logement",
-          "montant": 214222392.0,
-          "count": 15
-        },
-        {
-          "label": "Culture",
-          "montant": 174296672.0,
-          "count": 40
-        },
-        {
-          "label": "Éducation",
-          "montant": 133154312.0,
-          "count": 94
-        },
-        {
-          "label": "Transport",
-          "montant": 76751493.0,
-          "count": 3
-        },
-        {
-          "label": "Administration",
-          "montant": 51704172.0,
-          "count": 35
+          "montant": 441363200.0,
+          "count": 80
         },
         {
           "label": "Logement",
-          "montant": 50080810.0,
-          "count": 19
+          "montant": 274075597.0,
+          "count": 33
         },
         {
-          "label": "Sport",
-          "montant": 46502481.0,
-          "count": 102
+          "label": "Culture",
+          "montant": 187974963.0,
+          "count": 73
+        },
+        {
+          "label": "Éducation",
+          "montant": 134602337.0,
+          "count": 101
+        },
+        {
+          "label": "Transport",
+          "montant": 76900067.0,
+          "count": 4
         },
         {
           "label": "Social - Petite enfance",
-          "montant": 33694949.0,
-          "count": 38
-        },
-        {
-          "label": "Social",
-          "montant": 29134434.0,
-          "count": 27
+          "montant": 38648733.0,
+          "count": 56
         },
         {
           "label": "Économie",
-          "montant": 20241770.0,
-          "count": 25
+          "montant": 34274635.0,
+          "count": 43
         },
         {
-          "label": "Culture & Sport",
-          "montant": 13430661.0,
-          "count": 27
+          "label": "Sport",
+          "montant": 17317030.0,
+          "count": 26
         },
         {
-          "label": "Autre",
-          "montant": 5470175.0,
-          "count": 12
-        },
-        {
-          "label": "Santé",
-          "montant": 2827346.0,
-          "count": 10
-        },
-        {
-          "label": "Environnement",
-          "montant": 1111205.0,
-          "count": 3
-        },
-        {
-          "label": "International",
-          "montant": 1100755.0,
-          "count": 6
+          "label": "Administration",
+          "montant": 13477753.0,
+          "count": 15
         },
         {
           "label": "Sécurité",
-          "montant": 257761.0,
-          "count": 1
+          "montant": 12686714.0,
+          "count": 2
+        },
+        {
+          "label": "Santé",
+          "montant": 11735774.0,
+          "count": 25
+        },
+        {
+          "label": "International",
+          "montant": 3337755.0,
+          "count": 10
+        },
+        {
+          "label": "Non classifié",
+          "montant": 3263349.0,
+          "count": 27
+        },
+        {
+          "label": "Environnement",
+          "montant": 1806802.0,
+          "count": 5
         }
       ],
       "par_direction": [
@@ -359,89 +339,74 @@
       "nb_beneficiaires": 500,
       "par_thematique": [
         {
-          "label": "Social",
-          "montant": 399969519.0,
-          "count": 37
-        },
-        {
-          "label": "Urbanisme - Logement",
-          "montant": 162643465.0,
-          "count": 13
-        },
-        {
-          "label": "Culture",
-          "montant": 140087226.0,
-          "count": 41
-        },
-        {
-          "label": "Éducation",
-          "montant": 121175855.0,
-          "count": 55
-        },
-        {
-          "label": "Administration",
-          "montant": 58900117.0,
-          "count": 36
-        },
-        {
-          "label": "Sport",
-          "montant": 48639478.0,
+          "label": "Social - Solidarité",
+          "montant": 445066664.0,
           "count": 96
         },
         {
-          "label": "Transport",
-          "montant": 41208427.0,
-          "count": 7
+          "label": "Logement",
+          "montant": 212285671.0,
+          "count": 36
         },
         {
-          "label": "Logement",
-          "montant": 34247596.0,
-          "count": 21
+          "label": "Culture",
+          "montant": 153972999.0,
+          "count": 77
+        },
+        {
+          "label": "Éducation",
+          "montant": 121307729.0,
+          "count": 55
+        },
+        {
+          "label": "Transport",
+          "montant": 45127919.0,
+          "count": 5
         },
         {
           "label": "Social - Petite enfance",
-          "montant": 32792612.0,
-          "count": 40
-        },
-        {
-          "label": "Social - Solidarité",
-          "montant": 24782318.0,
-          "count": 35
+          "montant": 38339381.0,
+          "count": 56
         },
         {
           "label": "Économie",
-          "montant": 20352894.0,
-          "count": 40
-        },
-        {
-          "label": "Culture & Sport",
-          "montant": 18010825.0,
-          "count": 33
-        },
-        {
-          "label": "Autre",
-          "montant": 11414443.0,
-          "count": 20
-        },
-        {
-          "label": "Environnement",
-          "montant": 2426713.0,
-          "count": 8
-        },
-        {
-          "label": "Santé",
-          "montant": 2190380.0,
-          "count": 13
-        },
-        {
-          "label": "International",
-          "montant": 566755.0,
-          "count": 4
+          "montant": 36394388.0,
+          "count": 68
         },
         {
           "label": "Sécurité",
-          "montant": 394900.0,
-          "count": 1
+          "montant": 20574716.0,
+          "count": 2
+        },
+        {
+          "label": "Santé",
+          "montant": 18166264.0,
+          "count": 30
+        },
+        {
+          "label": "Administration",
+          "montant": 11288681.0,
+          "count": 13
+        },
+        {
+          "label": "Sport",
+          "montant": 10228822.0,
+          "count": 28
+        },
+        {
+          "label": "International",
+          "montant": 3044755.0,
+          "count": 10
+        },
+        {
+          "label": "Non classifié",
+          "montant": 2061906.0,
+          "count": 18
+        },
+        {
+          "label": "Environnement",
+          "montant": 1943628.0,
+          "count": 6
         }
       ],
       "par_direction": [
@@ -462,13 +427,13 @@
         },
         {
           "label": "DAE",
-          "montant": 22313117.0,
-          "count": 37
+          "montant": 22433117.0,
+          "count": 38
         },
         {
           "label": "DSOL",
-          "montant": 8572055.0,
-          "count": 21
+          "montant": 8452055.0,
+          "count": 20
         },
         {
           "label": "DSP",
@@ -547,88 +512,78 @@
       "par_thematique": [
         {
           "label": "Social - Solidarité",
-          "montant": 435758004.0,
-          "count": 45
-        },
-        {
-          "label": "Urbanisme - Logement",
-          "montant": 145924908.0,
-          "count": 13
-        },
-        {
-          "label": "Éducation",
-          "montant": 144197424.0,
-          "count": 55
-        },
-        {
-          "label": "Culture",
-          "montant": 139769088.0,
-          "count": 42
-        },
-        {
-          "label": "Administration",
-          "montant": 62874533.0,
-          "count": 47
-        },
-        {
-          "label": "Transport",
-          "montant": 40840657.0,
-          "count": 5
-        },
-        {
-          "label": "Social",
-          "montant": 40713510.0,
-          "count": 56
-        },
-        {
-          "label": "Culture & Sport",
-          "montant": 34949473.0,
-          "count": 39
+          "montant": 477853568.0,
+          "count": 92
         },
         {
           "label": "Logement",
-          "montant": 30992827.0,
-          "count": 18
-        },
-        {
-          "label": "Social - Petite enfance",
-          "montant": 30809139.0,
-          "count": 56
-        },
-        {
-          "label": "Économie",
-          "montant": 13828852.0,
+          "montant": 189385196.0,
           "count": 32
         },
         {
-          "label": "Sport",
-          "montant": 12858773.0,
-          "count": 41
+          "label": "Culture",
+          "montant": 164614188.0,
+          "count": 77
         },
         {
-          "label": "Autre",
-          "montant": 7416838.0,
-          "count": 15
+          "label": "Éducation",
+          "montant": 142571387.0,
+          "count": 50
         },
         {
-          "label": "Environnement",
-          "montant": 6773526.0,
-          "count": 17
+          "label": "Social - Petite enfance",
+          "montant": 44224893.0,
+          "count": 68
         },
         {
-          "label": "International",
-          "montant": 2588000.0,
-          "count": 4
+          "label": "Transport",
+          "montant": 41209177.0,
+          "count": 5
         },
         {
-          "label": "Santé",
-          "montant": 2141254.0,
-          "count": 13
+          "label": "Économie",
+          "montant": 28417966.0,
+          "count": 56
         },
         {
           "label": "Sécurité",
-          "montant": 1106400.0,
+          "montant": 19859465.0,
           "count": 2
+        },
+        {
+          "label": "Sport",
+          "montant": 12664390.0,
+          "count": 29
+        },
+        {
+          "label": "Administration",
+          "montant": 12615488.0,
+          "count": 15
+        },
+        {
+          "label": "Santé",
+          "montant": 6972357.0,
+          "count": 22
+        },
+        {
+          "label": "Environnement",
+          "montant": 5420937.0,
+          "count": 10
+        },
+        {
+          "label": "Non classifié",
+          "montant": 3930495.0,
+          "count": 32
+        },
+        {
+          "label": "International",
+          "montant": 3503699.0,
+          "count": 9
+        },
+        {
+          "label": "Autre",
+          "montant": 300000.0,
+          "count": 1
         }
       ],
       "par_direction": [
@@ -739,88 +694,73 @@
       "par_thematique": [
         {
           "label": "Social - Solidarité",
-          "montant": 448182503.0,
-          "count": 37
-        },
-        {
-          "label": "Éducation",
-          "montant": 170924341.0,
-          "count": 53
-        },
-        {
-          "label": "Culture",
-          "montant": 153237255.0,
-          "count": 43
-        },
-        {
-          "label": "Urbanisme - Logement",
-          "montant": 136049010.0,
-          "count": 14
-        },
-        {
-          "label": "Transport",
-          "montant": 80988842.0,
-          "count": 8
-        },
-        {
-          "label": "Administration",
-          "montant": 73075818.0,
-          "count": 41
-        },
-        {
-          "label": "Sport",
-          "montant": 56525390.0,
-          "count": 86
+          "montant": 503690761.0,
+          "count": 105
         },
         {
           "label": "Logement",
-          "montant": 48443919.0,
-          "count": 19
+          "montant": 206046646.0,
+          "count": 36
         },
         {
-          "label": "Social - Petite enfance",
-          "montant": 40083268.0,
-          "count": 47
+          "label": "Éducation",
+          "montant": 171117557.0,
+          "count": 52
         },
         {
-          "label": "Social",
-          "montant": 33352861.0,
-          "count": 41
+          "label": "Culture",
+          "montant": 170389508.0,
+          "count": 75
         },
         {
-          "label": "Économie",
-          "montant": 18013067.0,
-          "count": 39
-        },
-        {
-          "label": "Culture & Sport",
-          "montant": 16682376.0,
-          "count": 25
-        },
-        {
-          "label": "Environnement",
-          "montant": 7703515.0,
-          "count": 14
-        },
-        {
-          "label": "Autre",
-          "montant": 6858065.0,
-          "count": 13
-        },
-        {
-          "label": "International",
-          "montant": 4010943.0,
+          "label": "Transport",
+          "montant": 80857675.0,
           "count": 8
         },
         {
-          "label": "Santé",
-          "montant": 2243778.0,
-          "count": 11
+          "label": "Social - Petite enfance",
+          "montant": 45615116.0,
+          "count": 63
+        },
+        {
+          "label": "Sport",
+          "montant": 36779250.0,
+          "count": 21
+        },
+        {
+          "label": "Économie",
+          "montant": 30713345.0,
+          "count": 48
         },
         {
           "label": "Sécurité",
-          "montant": 256400.0,
-          "count": 1
+          "montant": 18240824.0,
+          "count": 2
+        },
+        {
+          "label": "Administration",
+          "montant": 11600704.0,
+          "count": 12
+        },
+        {
+          "label": "Santé",
+          "montant": 7043247.0,
+          "count": 19
+        },
+        {
+          "label": "Environnement",
+          "montant": 6454517.0,
+          "count": 12
+        },
+        {
+          "label": "Non classifié",
+          "montant": 4681886.0,
+          "count": 36
+        },
+        {
+          "label": "International",
+          "montant": 3400315.0,
+          "count": 11
         }
       ],
       "par_direction": [

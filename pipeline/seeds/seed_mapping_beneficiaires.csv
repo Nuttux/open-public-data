@@ -1,2 +1,118 @@
 pattern,thematique,sous_categorie,priorite
-"","","",0
+(?i)CASVP|CENTRE D.ACTION SOCIALE.*VILLE.*PARIS,Social - Solidarité,CASVP,1
+(?i)SAMU SOCIAL,Social - Solidarité,Hébergement d'urgence,1
+(?i)EMMAUS|EMMAÜS,Social - Solidarité,Insertion,1
+(?i)\bAURORA\b|(?i)ASSOCIATION AURORE\b,Social - Solidarité,Hébergement d'urgence,1
+(?i)FRANCE TERRE D.ASILE,Social - Solidarité,Aide aux réfugiés,1
+(?i)CROIX[- ]?ROUGE,Social - Solidarité,Aide d'urgence,1
+(?i)SECOURS POPULAIRE,Social - Solidarité,Aide d'urgence,1
+(?i)SECOURS CATHOLIQUE,Social - Solidarité,Aide d'urgence,1
+(?i)RESTOS? DU COEUR,Social - Solidarité,Aide alimentaire,1
+(?i)PRIMO LEVI,Social - Solidarité,Aide aux victimes de torture,1
+(?i)BASILIADE,Social - Solidarité,Accompagnement VIH,1
+(?i)PIERROTS? DE LA NUIT,Social - Solidarité,Médiation nocturne,1
+(?i)PETITS? FRERES? DES PAUVRES,Social - Solidarité,Aide aux personnes âgées,1
+(?i)CASIP.?COJASOR,Social - Solidarité,Action sociale,1
+(?i)COUP DE MAIN,Social - Solidarité,Aide aux migrants,1
+(?i)PIMMS? DE PARIS,Social - Solidarité,Médiation sociale,1
+(?i)PARIS AIDE AUX VICTIMES,Social - Solidarité,Aide aux victimes,1
+(?i)FONDATION DE ROTHSCHILD,Social - Solidarité,Action sociale,1
+(?i)FONDS? SOCIAL JUIF,Social - Solidarité,Action sociale,1
+(?i)FRANCO.?ASIATIQUE.*ENFANCE,Social - Solidarité,Aide à l'enfance,1
+(?i)FONDATION.*ABBE PIERRE|ABBÉ PIERRE,Logement,Lutte contre le mal-logement,1
+(?i)ESTRELIA,Social - Petite enfance,Crèches,1
+(?i)GAN YOSSEF|JARDIN D.ENFANTS,Social - Petite enfance,Crèches,5
+(?i)PARENT.*ELEVE.*JARDIN.*ENFANT,Social - Petite enfance,Parents d'élèves,1
+(?i)PETITE ENFANCE ET PARENTAL,Social - Petite enfance,Parentalité,1
+(?i)FONDATION.*CROIX.*ST.?SIMON|CROIX SAINT.?SIMON,Santé,Soins à domicile,1
+(?i)FONDATION LEOPOLD BELLAN|LEOPOLD BELLAN,Santé,Établissements de santé,1
+(?i)INSTITUT PASTEUR,Santé,Recherche médicale,1
+(?i)AP.?HP|ASSISTANCE PUBLIQUE.*HOPIT,Santé,Hôpitaux,1
+(?i)AMBROISE CROIZAT.*SANTE,Santé,Centre de santé,1
+(?i)KIOSQUE.*SIDA,Santé,Prévention VIH,1
+(?i)FONDATION VOIR ET ENTENDRE,Santé,Recherche sensorielle,1
+(?i)PREVENTION.*ALCOOL.*ADDICT|ANPAA,Santé,Prévention addictions,1
+(?i)FONDS? SOLIDARIT.*SIDA,Santé,Lutte contre le SIDA,1
+(?i)FONDATION SCIENCES MATHEMAT,Éducation,Recherche,1
+(?i)FONDATION.*SCIENCES POLITI|SCIENCES PO,Éducation,Enseignement supérieur,1
+(?i)INSTITUT.*ETUDES AVANCEES,Éducation,Recherche,1
+(?i)INCUBATEUR.*BIOTECH,Économie,Innovation,1
+(?i)JEUNESSE LOUBAVITCH,Éducation,Jeunesse,1
+(?i)SOUTIEN.*THEATRE PRIV,Culture,Spectacle vivant,1
+(?i)HALLE ST.?PIERRE|HALLE SAINT.?PIERRE,Culture,Art contemporain,1
+(?i)MAISON EUROP.*PHOTO|MEP.*MAISON.*PHOTO,Culture,Photographie,1
+(?i)GRANDE HALLE.*VILLETTE|PARC.*GRANDE HALLE,Culture,Lieu culturel,1
+(?i)PAVILLON.*ARSENAL,Culture,Architecture,1
+(?i)MAISON DES METALLOS,Culture,Lieu culturel,1
+(?i)CITE.?THEATRE,Culture,Spectacle vivant,1
+(?i)CINEMAS? INDEPENDANTS,Culture,Cinéma,1
+(?i)CONCERTS? PASDELOUP|PASDELOUP,Culture,Musique,1
+(?i)MEMORIAL.*SHOAH,Culture,Mémorial,1
+(?i)INST.*CULTURES?.*ISLAM,Culture,Établissement culturel,1
+(?i)CENT QUATRE|(?i)\bLE 104\b,Culture,Lieu culturel,1
+(?i)FESTIVAL D.AUTOMNE,Culture,Festival,1
+(?i)MAISON.*GESTE.*IMAGE,Culture,Cinéma,1
+(?i)MENAGERIE.*VERRE,Culture,Danse,1
+(?i)FONDS? REGIONAL.*ART CONTEMPORAI,Culture,Art contemporain,1
+(?i)MUSIQUE SACREE.*NOTRE.?DAME,Culture,Musique,1
+(?i)CENTRE NAT.*MUSIQUE,Culture,Musique,1
+(?i)LIRE A PARIS,Culture,Lecture,1
+(?i)FOND.*CITE INTERNATIONALE.*ARTS?,Culture,Résidences d'artistes,1
+(?i)DRAMATURG.*CONTEMPORAIN,Culture,Théâtre,1
+(?i)MAISON.*PRATIQUES? ARTISTIQUES?.*AMAT,Culture,Arts amateurs,1
+(?i)LA PLACE.*CENTRE CULTUREL|CENTRE CULTUREL HIP.?HOP,Culture,Culture urbaine,1
+(?i)ATELIERS? MEDICIS,Culture,Création artistique,1
+(?i)DEVELOPPEMENT.*DANSE.*PARIS,Culture,Danse,1
+(?i)\bFOOD.*SWEET.*FOOD\b|FOOD.*RUE|FOOD2RUE,Social - Solidarité,Aide alimentaire,1
+(?i)HABITATION CONFORTABLE,Logement,Logement social,1
+(?i)FONCIERE PARIS COMMERCES?,Économie,Commerce,1
+(?i)FONCIERE.*HABITAT.*HUMANISME,Logement,Logement social,1
+(?i)A.?S.?L.? OLYMPIADES|ASL OLYMPIADES,Logement,Copropriété,1
+(?i)LOGEMENT.*JEUNES? TRAVAILLEURS?,Logement,Logement jeunes,1
+(?i)DEPARTEMENT.*INFORMATION.*LOGE,Logement,Information logement,1
+(?i)DROIT.*INITIATIVE ECONOMIQUE|(?i)\bADIE\b,Économie,Microfinance,1
+(?i)CARREFOUR.*EMPLOI,Économie,Emploi,1
+(?i)MAIRES? FRANCOPHO,International,Coopération internationale,1
+(?i)INTERFACE FORMATION,Économie,Insertion par l'activité économique,1
+(?i)\bCFDT\b,Administration,Syndicats,1
+(?i)\bCGT\b,Administration,Syndicats,1
+(?i)FORCE OUVRIERE|\bCGT.FO\b,Administration,Syndicats,1
+(?i)FONDATION TERRE DE LIENS,Environnement,Agriculture,1
+(?i)MESUR.*POLLUT.*ATM|AIRPARIF,Environnement,Qualité de l'air,1
+(?i)REGIE DE QUARTIER.*FONTAINE,Social - Solidarité,Insertion locale,1
+(?i)DROITS?.*FEMMES?.*PARIS,Social - Solidarité,Droits des femmes,1
+(?i)PREVENTION.*SITE.*VILLETTE,Social - Solidarité,Prévention,1
+(?i)UNION.*ASS.*FAMILIAL|UDAF,Social - Solidarité,Soutien familial,5
+(?i)FONDATION NATIONALE.*ARTS GRAPH,Culture,Arts graphiques,1
+(?i)\bSA HLM\b|HABITATION.*LOYER MODERE,Logement,Logement social HLM,1
+(?i)EMMAUS HABITAT,Logement,Logement social,0
+(?i)\bSEQENS\b,Logement,Logement social HLM,1
+(?i)PIERRES ET LUMIERES,Logement,Logement social HLM,1
+(?i)IMMO.*MOULIN VERT.*HAB,Logement,Logement social,1
+(?i)CRECHE|HALTE.?GARDERIE,Social - Petite enfance,Crèches,3
+(?i)ORCHESTRE COLONNE|CONCERTS? COLONNE,Culture,Musique,1
+(?i)ORCHESTRE.*LAMOUREUX|CONCERTS? LAMO,Culture,Musique,1
+(?i)CARREAU DU TEMPLE,Culture,Lieu culturel,1
+(?i)INSERM|INST.*NAT.*SANTE.*RECHERCHE,Santé,Recherche médicale,1
+(?i)CNRS|RECHERCHE SCIENTIFIQUE,Éducation,Recherche,3
+(?i)COLLEGE\b|LYCEE\b|ECOLE\b.*\b(SCHOOL|ELEMENTAIRE|MATERNELLE),Éducation,Établissement scolaire,5
+(?i)\bJUDO\b|\bRUGBY\b|\bHANDBALL\b|\bATHLETISME\b|\bTIR A L.ARC,Sport,Club sportif,3
+(?i)\bPARALYMPIQUE\b,Sport,Comité paralympique,1
+(?i)FEDERATION FRANCAISE DE,Sport,Fédération sportive,3
+(?i)\bCAMILLIENNE\b.*SPORT|RACING MULTI,Sport,Club sportif,1
+(?i)PUC RUGBY,Sport,Club sportif rugby,1
+(?i)PARIS 92\b,Sport,Club de handball féminin,1
+(?i)PROTECTION CIVILE DE PARIS,Sécurité,Protection civile,1
+(?i)SALLE SAINT.?BRUNO,Social - Solidarité,Centre social,1
+(?i)ENERCITIF,Environnement,Énergie citoyenne,1
+(?i)LIGUE.*ENSEIGNEMENT,Éducation,Éducation populaire,1
+(?i)REUSSITE EDUCATIVE,Éducation,Réussite éducative,1
+(?i)FONDATION ETUDIANTE.*VILLE|(?i)\bAFEV\b,Social - Solidarité,Mentorat étudiant,1
+(?i)SANTE MENTALE|PSYCHANALYT|PSYCHOFORM,Santé,Santé mentale,3
+(?i)SANTE.*FEMMES,Santé,Santé des femmes,1
+(?i)LOISIRS? PLURIEL,Social - Solidarité,Loisirs inclusifs handicap,1
+(?i)MSP\b.*\b(AURIOL|SANTE)|MAISON DE SANTE,Santé,Maison de santé,3
+(?i)MADLINE,Logement,Aménagement urbain,1
+(?i)APATE\b,Social - Petite enfance,Aide au travail et à l'enfance,1
+(?i)CHOUINE,Social - Petite enfance,Crèche parentale,1
+(?i)AGIR SOIGNER EDUQUER,Santé,Soins et inclusion,1

@@ -1,9 +1,9 @@
 {
   "year": 2021,
-  "total": 259946929.79,
+  "total": 259946929.79000005,
   "count": 889,
-  "withArrondissement": 464,
-  "withCoords": 15,
+  "withArrondissement": 320,
+  "withCoords": 58,
   "parThematique": {
     "logement": {
       "total": 115607019.13,
@@ -68,84 +68,84 @@
   },
   "parArrondissement": {
     "1": {
-      "total": 2103168.1900000004,
-      "count": 13
+      "total": 940444.0700000002,
+      "count": 7
     },
     "2": {
       "total": 616413.3800000001,
       "count": 9
     },
     "3": {
-      "total": 2020850.2399999998,
-      "count": 10
+      "total": 384669.5500000001,
+      "count": 7
     },
     "4": {
-      "total": 8106849.47,
-      "count": 26
+      "total": 7752402.630000001,
+      "count": 21
     },
     "5": {
-      "total": 5588165.58,
-      "count": 17
+      "total": 1246074.7,
+      "count": 4
     },
     "6": {
-      "total": 929829.4400000001,
-      "count": 12
+      "total": 77439.44,
+      "count": 10
     },
     "7": {
       "total": 48611.5,
       "count": 7
     },
     "8": {
-      "total": 3123903.8700000006,
-      "count": 12
-    },
-    "9": {
-      "total": 636336.04,
+      "total": 2171749.9000000004,
       "count": 8
     },
+    "9": {
+      "total": 120762.56000000003,
+      "count": 6
+    },
     "10": {
-      "total": 2664667.860000001,
-      "count": 18
+      "total": 2469014.95,
+      "count": 16
     },
     "11": {
-      "total": 2979791.6800000006,
-      "count": 19
+      "total": 1477040.9700000004,
+      "count": 15
     },
     "12": {
-      "total": 4473603.229999999,
-      "count": 40
+      "total": 1922814.1600000001,
+      "count": 27
     },
     "13": {
-      "total": 5474279.2299999995,
-      "count": 35
+      "total": 5011256.22,
+      "count": 24
     },
     "14": {
-      "total": 4364934.760000002,
-      "count": 31
+      "total": 1359658.23,
+      "count": 19
     },
     "15": {
-      "total": 8574210.97,
-      "count": 32
+      "total": 2287061.069999999,
+      "count": 33
     },
     "16": {
-      "total": 5535828.929999997,
-      "count": 30
+      "total": 94811.83,
+      "count": 11
     },
     "17": {
-      "total": 8702089.439999998,
-      "count": 32
+      "total": 3792332.9099999997,
+      "count": 18
     },
     "18": {
-      "total": 3230817.670000001,
-      "count": 50
-    },
-    "19": {
-      "total": 13342281.300000003,
+      "total": 1477057.6799999997,
       "count": 32
     },
+    "19": {
+      "total": 10912539.41,
+      "count": 19
+    },
     "20": {
-      "total": 5410105.359999999,
-      "count": 31
+      "total": 5356083.049999999,
+      "count": 27
     }
   },
   "data": [
@@ -166,7 +166,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1603571-20422",
@@ -185,7 +185,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1303571-204182",
@@ -204,7 +204,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1403721-16878",
@@ -242,7 +242,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1203571-20422",
@@ -261,7 +261,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1503881-2315",
@@ -280,7 +280,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1503571-20422",
@@ -299,7 +299,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1503571-204182",
@@ -318,7 +318,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604553-2313",
@@ -356,7 +356,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1403571-20422",
@@ -375,7 +375,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504618-2313",
@@ -394,7 +394,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1103571-204182",
@@ -413,7 +413,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1304497-2313",
@@ -426,13 +426,13 @@
       "direction": "DASCO",
       "montant": 4271043.7,
       "thematique": "autre",
-      "arrondissement": 15,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1103571-20422",
@@ -451,7 +451,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604574-2313",
@@ -470,7 +470,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1203571-204182",
@@ -489,7 +489,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-0803571-204182",
@@ -508,7 +508,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1700779-2315",
@@ -527,7 +527,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604536-2313",
@@ -565,7 +565,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705028-2312",
@@ -603,7 +603,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604837-2315",
@@ -616,13 +616,13 @@
       "direction": "DVD",
       "montant": 2292118.28,
       "thematique": "urbanisme",
-      "arrondissement": 16,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1003571-20422",
@@ -641,7 +641,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1603698-2745",
@@ -660,7 +660,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504086-204181",
@@ -673,13 +673,13 @@
       "direction": "DAE",
       "montant": 2000000.0,
       "thematique": "autre",
-      "arrondissement": 5,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504741-2313",
@@ -692,13 +692,13 @@
       "direction": "DDCT",
       "montant": 1745897.35,
       "thematique": "batiment_administratif",
-      "arrondissement": 17,
-      "adresse": "16-20 Rue des Batignolles",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504626-2313",
@@ -736,7 +736,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504591-2313",
@@ -755,7 +755,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604847-238",
@@ -769,12 +769,12 @@
       "montant": 1493788.88,
       "thematique": "autre",
       "arrondissement": 20,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "adresse": "Rue Saint-Blaise",
+      "latitude": 48.8562,
+      "longitude": 2.4087,
+      "nomLieu": "Quartier Saint-Blaise",
+      "sourceGeo": "lieu_connu",
+      "confiance": 0.95
     },
     {
       "id": "2021-1705077-2313",
@@ -787,13 +787,13 @@
       "direction": "DAC",
       "montant": 1493188.18,
       "thematique": "culture",
-      "arrondissement": 3,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504790-2313",
@@ -806,13 +806,13 @@
       "direction": "DAC",
       "montant": 1436673.62,
       "thematique": "culture",
-      "arrondissement": 11,
-      "adresse": "55 Boulevard de Ménilmontant",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-0903571-204182",
@@ -831,7 +831,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705069-2315",
@@ -844,13 +844,13 @@
       "direction": "DVD",
       "montant": 1378083.23,
       "thematique": "urbanisme",
-      "arrondissement": 19,
-      "adresse": "Porte d'Aubervilliers",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1404481-2313",
@@ -869,7 +869,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1501960-2318",
@@ -882,13 +882,13 @@
       "direction": "DFPE",
       "montant": 1246420.48,
       "thematique": "autre",
-      "arrondissement": 15,
-      "adresse": "Boulevard Lefebvre",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1403982-20415342",
@@ -901,13 +901,13 @@
       "direction": "DVD",
       "montant": 1230328.97,
       "thematique": "autre",
-      "arrondissement": 18,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.8
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604984-20422",
@@ -920,13 +920,13 @@
       "direction": "DAE",
       "montant": 1200000.0,
       "thematique": "logement",
-      "arrondissement": 14,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604955-2315",
@@ -945,7 +945,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504086-238",
@@ -958,13 +958,13 @@
       "direction": "DAE",
       "montant": 1109797.1,
       "thematique": "autre",
-      "arrondissement": 5,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1705076-2313",
@@ -996,13 +996,13 @@
       "direction": "DFPE",
       "montant": 1089000.0,
       "thematique": "autre",
-      "arrondissement": 12,
-      "adresse": "77 Avenue du Docteur Netter / 27 Rue du Rendez-Vous",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504691-2313",
@@ -1034,13 +1034,13 @@
       "direction": "DVD",
       "montant": 1010290.3,
       "thematique": "urbanisme",
-      "arrondissement": 17,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1705079-2316",
@@ -1053,13 +1053,13 @@
       "direction": "DAC",
       "montant": 985021.96,
       "thematique": "culture",
-      "arrondissement": 16,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1403571-20415322",
@@ -1078,7 +1078,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705114-2313",
@@ -1116,7 +1116,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504791-2313",
@@ -1148,13 +1148,13 @@
       "direction": "DDCT",
       "montant": 881549.89,
       "thematique": "batiment_administratif",
-      "arrondissement": 5,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1703879-2315",
@@ -1173,7 +1173,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504193-204182",
@@ -1186,13 +1186,13 @@
       "direction": "DAE",
       "montant": 842640.0,
       "thematique": "autre",
-      "arrondissement": 6,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1601960-2318",
@@ -1249,7 +1249,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704483-2313",
@@ -1262,13 +1262,13 @@
       "direction": "DAC",
       "montant": 750610.07,
       "thematique": "culture",
-      "arrondissement": 19,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1705128-2313",
@@ -1300,13 +1300,13 @@
       "direction": "DAC",
       "montant": 735096.19,
       "thematique": "culture",
-      "arrondissement": 14,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1761315-2315",
@@ -1338,13 +1338,13 @@
       "direction": "DVD",
       "montant": 725300.15,
       "thematique": "urbanisme",
-      "arrondissement": 16,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1704720-2128",
@@ -1363,7 +1363,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704552-2313",
@@ -1376,13 +1376,13 @@
       "direction": "DAC",
       "montant": 714097.56,
       "thematique": "culture",
-      "arrondissement": 1,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1704812-4581992",
@@ -1395,13 +1395,13 @@
       "direction": "DCPA",
       "montant": 710510.88,
       "thematique": "autre",
-      "arrondissement": 16,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1603841-238",
@@ -1439,7 +1439,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1104069-2315",
@@ -1452,13 +1452,13 @@
       "direction": "DVD",
       "montant": 669982.29,
       "thematique": "urbanisme",
-      "arrondissement": 17,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1780001-2313",
@@ -1515,7 +1515,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705078-2313",
@@ -1534,7 +1534,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1503659-2316",
@@ -1547,13 +1547,13 @@
       "direction": "DAC",
       "montant": 627726.21,
       "thematique": "culture",
-      "arrondissement": 8,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504727-2315",
@@ -1572,7 +1572,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1603571-204182",
@@ -1591,7 +1591,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1403571-204182",
@@ -1610,7 +1610,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1761002-2315",
@@ -1629,7 +1629,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704774-2313",
@@ -1648,7 +1648,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604995-2313",
@@ -1667,7 +1667,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1603567-2313",
@@ -1680,13 +1680,13 @@
       "direction": "DPE",
       "montant": 513853.06,
       "thematique": "autre",
-      "arrondissement": 17,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604850-2313",
@@ -1699,13 +1699,13 @@
       "direction": "DASCO",
       "montant": 513760.73,
       "thematique": "autre",
-      "arrondissement": 9,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604104-2313",
@@ -1724,7 +1724,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604667-2315",
@@ -1743,7 +1743,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705127-2312",
@@ -1756,13 +1756,13 @@
       "direction": "DEVE",
       "montant": 506940.03,
       "thematique": "espace_vert",
-      "arrondissement": 17,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1761312-2315",
@@ -1800,7 +1800,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1003571-20415322",
@@ -1819,7 +1819,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1503881-2031",
@@ -1838,7 +1838,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1740314-2313",
@@ -1876,7 +1876,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604918-2313",
@@ -1889,13 +1889,13 @@
       "direction": "DJS",
       "montant": 479112.29,
       "thematique": "sport",
-      "arrondissement": 12,
-      "adresse": "10-12 Rue des Docteurs Dejerine",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1404070-2315",
@@ -1908,13 +1908,13 @@
       "direction": "DVD",
       "montant": 472646.38,
       "thematique": "voirie",
-      "arrondissement": 14,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1705113-2313",
@@ -1927,13 +1927,13 @@
       "direction": "DJS",
       "montant": 452643.36,
       "thematique": "piscine",
-      "arrondissement": 12,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504707-2312",
@@ -1971,7 +1971,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1404341-2315",
@@ -1985,12 +1985,12 @@
       "montant": 405368.95,
       "thematique": "urbanisme",
       "arrondissement": 17,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.7
+      "adresse": "Boulevard des Maréchaux",
+      "latitude": 48.8867,
+      "longitude": 2.2836,
+      "nomLieu": "Tramway T3",
+      "sourceGeo": "lieu_connu",
+      "confiance": 0.95
     },
     {
       "id": "2021-1404536-2031",
@@ -2028,7 +2028,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704626-2313",
@@ -2066,7 +2066,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1503881-238",
@@ -2085,7 +2085,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1004125-2315",
@@ -2104,7 +2104,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705066-2315",
@@ -2117,13 +2117,13 @@
       "direction": "DVD",
       "montant": 370805.01,
       "thematique": "urbanisme",
-      "arrondissement": 15,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604847-2313",
@@ -2137,12 +2137,12 @@
       "montant": 366953.71,
       "thematique": "autre",
       "arrondissement": 20,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "adresse": "Rue Saint-Blaise",
+      "latitude": 48.8562,
+      "longitude": 2.4087,
+      "nomLieu": "Quartier Saint-Blaise",
+      "sourceGeo": "lieu_connu",
+      "confiance": 0.95
     },
     {
       "id": "2021-1705037-2138",
@@ -2161,7 +2161,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1703663-2313",
@@ -2180,7 +2180,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504697-2312",
@@ -2199,7 +2199,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1605010-2318",
@@ -2237,7 +2237,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1761104-2315",
@@ -2256,7 +2256,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604552-2313",
@@ -2269,13 +2269,13 @@
       "direction": "DAC",
       "montant": 331695.44,
       "thematique": "culture",
-      "arrondissement": 1,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604825-2315",
@@ -2294,7 +2294,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504712-2138",
@@ -2308,10 +2308,10 @@
       "montant": 321970.83,
       "thematique": "espace_vert",
       "arrondissement": 2,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
+      "adresse": "2 rue Cauchy",
+      "latitude": 48.842,
+      "longitude": 2.2735,
+      "nomLieu": "Parc André Citroën",
       "sourceGeo": "regex",
       "confiance": 1.0
     },
@@ -2364,13 +2364,13 @@
       "direction": "DAC",
       "montant": 308784.73,
       "thematique": "culture",
-      "arrondissement": 14,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1788313-2313",
@@ -2459,13 +2459,13 @@
       "direction": "DAE",
       "montant": 290000.0,
       "thematique": "autre",
-      "arrondissement": 5,
-      "adresse": "11 Rue Pierre et Marie Curie",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504705-2312",
@@ -2497,13 +2497,13 @@
       "direction": "DFPE",
       "montant": 283140.0,
       "thematique": "autre",
-      "arrondissement": 15,
-      "adresse": "10 Rue Ingénieur Robert Keller",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604812-4581992",
@@ -2516,13 +2516,13 @@
       "direction": "DCPA",
       "montant": 280217.22,
       "thematique": "autre",
-      "arrondissement": 16,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1705045-2313",
@@ -2535,13 +2535,13 @@
       "direction": "DAC",
       "montant": 279688.42,
       "thematique": "culture",
-      "arrondissement": 4,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.95
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604768-2313",
@@ -2555,10 +2555,10 @@
       "montant": 277247.2,
       "thematique": "piscine",
       "arrondissement": 14,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
+      "adresse": "7 avenue Paul Appell",
+      "latitude": 48.8222,
+      "longitude": 2.3245,
+      "nomLieu": "Centre Sportif Élisabeth",
       "sourceGeo": "regex",
       "confiance": 1.0
     },
@@ -2598,7 +2598,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705057-2315",
@@ -2649,13 +2649,13 @@
       "direction": "DAC",
       "montant": 260607.14,
       "thematique": "culture",
-      "arrondissement": 8,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1761317-2315",
@@ -2693,7 +2693,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1404024-2313",
@@ -2706,13 +2706,13 @@
       "direction": "DJS",
       "montant": 255901.08,
       "thematique": "piscine",
-      "arrondissement": 18,
-      "adresse": "13 rue des Amiraux",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604574-2031",
@@ -2731,7 +2731,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705118-2313",
@@ -2750,7 +2750,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705112-2313",
@@ -2769,7 +2769,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1730001-2313",
@@ -2788,7 +2788,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1761310-2315",
@@ -2826,7 +2826,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705114-238",
@@ -2883,7 +2883,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504697-2158",
@@ -2902,7 +2902,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705037-2312",
@@ -2921,7 +2921,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1600401-2031",
@@ -2934,13 +2934,13 @@
       "direction": "DAC",
       "montant": 207635.19,
       "thematique": "culture",
-      "arrondissement": 13,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1704740-2313",
@@ -2959,7 +2959,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1788003-2313",
@@ -2978,7 +2978,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504730-2315",
@@ -3035,7 +3035,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604956-20421",
@@ -3054,7 +3054,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604908-2318",
@@ -3105,13 +3105,13 @@
       "direction": "DVD",
       "montant": 193579.19,
       "thematique": "urbanisme",
-      "arrondissement": 10,
-      "adresse": "RUE LEON SCHWARTZENBERG",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1705039-2324",
@@ -3130,7 +3130,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604771-2313",
@@ -3162,13 +3162,13 @@
       "direction": "DFPE",
       "montant": 186275.34,
       "thematique": "autre",
-      "arrondissement": 12,
-      "adresse": "15-17 Rue Lamblardie",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1700096-21838",
@@ -3187,7 +3187,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1630001-2313",
@@ -3206,7 +3206,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705067-2315",
@@ -3219,13 +3219,13 @@
       "direction": "DVD",
       "montant": 180460.0,
       "thematique": "urbanisme",
-      "arrondissement": 12,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1702278-2318",
@@ -3244,7 +3244,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1503867-2312",
@@ -3263,7 +3263,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604536-238",
@@ -3301,7 +3301,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1304457-2313",
@@ -3314,13 +3314,13 @@
       "direction": "DJS",
       "montant": 173224.7,
       "thematique": "sport",
-      "arrondissement": 17,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1704104-2313",
@@ -3339,7 +3339,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-0903772-2313",
@@ -3377,7 +3377,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705028-2128",
@@ -3434,7 +3434,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604735-4581995",
@@ -3447,13 +3447,13 @@
       "direction": "DCPA",
       "montant": 158334.17,
       "thematique": "equipement_culturel",
-      "arrondissement": 16,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1723320-2315",
@@ -3491,7 +3491,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705082-2313",
@@ -3504,13 +3504,13 @@
       "direction": "DASCO",
       "montant": 157288.24,
       "thematique": "etablissement_scolaire",
-      "arrondissement": 15,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1661310-2315",
@@ -3548,7 +3548,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705037-2128",
@@ -3567,7 +3567,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1702278-2313",
@@ -3586,7 +3586,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705039-2313",
@@ -3605,7 +3605,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1603841-2313",
@@ -3643,7 +3643,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604813-4581989",
@@ -3656,13 +3656,13 @@
       "direction": "DCPA",
       "montant": 142487.9,
       "thematique": "autre",
-      "arrondissement": 15,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1704774-2031",
@@ -3681,7 +3681,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1304454-2313",
@@ -3694,13 +3694,13 @@
       "direction": "DFPE",
       "montant": 141713.51,
       "thematique": "autre",
-      "arrondissement": 17,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1701300-2312",
@@ -3719,7 +3719,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704227-2313",
@@ -3738,7 +3738,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704738-2313",
@@ -3757,7 +3757,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1761319-2315",
@@ -3795,7 +3795,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1403674-2313",
@@ -3809,12 +3809,12 @@
       "montant": 134342.03,
       "thematique": "sport",
       "arrondissement": 20,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "adresse": "Place du Maquis du Vercors",
+      "latitude": 48.8774,
+      "longitude": 2.4065,
+      "nomLieu": "Porte des Lilas",
+      "sourceGeo": "lieu_connu",
+      "confiance": 0.95
     },
     {
       "id": "2021-1604722-2314",
@@ -3827,13 +3827,13 @@
       "direction": "DEVE",
       "montant": 133931.42,
       "thematique": "environnement",
-      "arrondissement": null,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": null,
-      "confiance": 0.0
+      "arrondissement": 15,
+      "adresse": "Ancienne voie ferrée",
+      "latitude": 48.838,
+      "longitude": 2.277,
+      "nomLieu": "Petite Ceinture",
+      "sourceGeo": "lieu_connu",
+      "confiance": 0.95
     },
     {
       "id": "2021-1601313-2316",
@@ -3847,11 +3847,11 @@
       "montant": 125281.99,
       "thematique": "culture",
       "arrondissement": 14,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": "llm",
+      "adresse": "Place Victor et Hélène Basch",
+      "latitude": 48.8335,
+      "longitude": 2.3265,
+      "nomLieu": "Église Saint-Pierre de Montrouge",
+      "sourceGeo": "lieu_connu",
       "confiance": 0.95
     },
     {
@@ -3866,10 +3866,10 @@
       "montant": 124260.86,
       "thematique": "culture",
       "arrondissement": 1,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
+      "adresse": "2 impasse Saint-Eustache",
+      "latitude": 48.8629,
+      "longitude": 2.3456,
+      "nomLieu": "Église Saint-Eustache",
       "sourceGeo": "regex",
       "confiance": 1.0
     },
@@ -3890,7 +3890,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704553-2313",
@@ -3922,13 +3922,13 @@
       "direction": "DEVE",
       "montant": 117741.48,
       "thematique": "environnement",
-      "arrondissement": null,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": null,
-      "confiance": 0.0
+      "arrondissement": 15,
+      "adresse": "Ancienne voie ferrée",
+      "latitude": 48.838,
+      "longitude": 2.277,
+      "nomLieu": "Petite Ceinture",
+      "sourceGeo": "lieu_connu",
+      "confiance": 0.95
     },
     {
       "id": "2021-1004113-2313",
@@ -3941,13 +3941,13 @@
       "direction": "DASCO",
       "montant": 116782.07,
       "thematique": "autre",
-      "arrondissement": 15,
-      "adresse": "99 RUE OLIVIER DE SERRES",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504716-2128",
@@ -3979,13 +3979,13 @@
       "direction": "DVD",
       "montant": 116159.69,
       "thematique": "urbanisme",
-      "arrondissement": 19,
-      "adresse": "Porte d'Aubervilliers",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504618-2158",
@@ -4004,7 +4004,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1602278-2313",
@@ -4023,7 +4023,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604995-2031",
@@ -4042,7 +4042,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1788103-2313",
@@ -4061,7 +4061,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704625-2313",
@@ -4099,7 +4099,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705076-2031",
@@ -4137,7 +4137,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1723004-2128",
@@ -4156,7 +4156,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604908-238",
@@ -4194,7 +4194,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705067-2031",
@@ -4207,13 +4207,13 @@
       "direction": "DVD",
       "montant": 101640.0,
       "thematique": "urbanisme",
-      "arrondissement": 12,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604574-21838",
@@ -4232,7 +4232,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604920-2315",
@@ -4264,13 +4264,13 @@
       "direction": "DVD",
       "montant": 97110.39,
       "thematique": "urbanisme",
-      "arrondissement": 16,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504712-2312",
@@ -4284,10 +4284,10 @@
       "montant": 96766.46,
       "thematique": "espace_vert",
       "arrondissement": 2,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
+      "adresse": "2 rue Cauchy",
+      "latitude": 48.842,
+      "longitude": 2.2735,
+      "nomLieu": "Parc André Citroën",
       "sourceGeo": "regex",
       "confiance": 1.0
     },
@@ -4403,7 +4403,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705077-2316",
@@ -4416,13 +4416,13 @@
       "direction": "DAC",
       "montant": 91338.41,
       "thematique": "culture",
-      "arrondissement": 3,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504627-2313",
@@ -4479,7 +4479,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705036-20422",
@@ -4498,7 +4498,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604825-2158",
@@ -4517,7 +4517,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704910-2313",
@@ -4536,7 +4536,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504839-2315",
@@ -4549,13 +4549,13 @@
       "direction": "DVD",
       "montant": 83936.55,
       "thematique": "urbanisme",
-      "arrondissement": 14,
-      "adresse": "Avenue Général Leclerc",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504798-2031",
@@ -4612,7 +4612,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1700989-2313",
@@ -4631,7 +4631,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704750-2313",
@@ -4669,7 +4669,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705039-20422",
@@ -4688,7 +4688,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1714008-2313",
@@ -4707,7 +4707,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704774-2128",
@@ -4726,7 +4726,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1404534-2313",
@@ -4739,13 +4739,13 @@
       "direction": "DASCO",
       "montant": 80733.67,
       "thematique": "autre",
-      "arrondissement": 18,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604901-21848",
@@ -4758,13 +4758,13 @@
       "direction": "DFPE",
       "montant": 80301.16,
       "thematique": "autre",
-      "arrondissement": 13,
-      "adresse": "66 RUE PASCAL",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1600401-2316",
@@ -4777,13 +4777,13 @@
       "direction": "DAC",
       "montant": 79666.37,
       "thematique": "culture",
-      "arrondissement": 13,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604995-2315",
@@ -4802,7 +4802,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1780312-2313",
@@ -4840,7 +4840,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504701-2031",
@@ -4859,7 +4859,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1761320-2315",
@@ -4897,7 +4897,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1702636-2313",
@@ -4916,7 +4916,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704910-2188",
@@ -4935,7 +4935,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1603567-2031",
@@ -4948,13 +4948,13 @@
       "direction": "DPE",
       "montant": 73115.67,
       "thematique": "autre",
-      "arrondissement": 17,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1404556-2313",
@@ -4973,7 +4973,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504683-2318",
@@ -4986,13 +4986,13 @@
       "direction": "DFPE",
       "montant": 71244.58,
       "thematique": "petite_enfance",
-      "arrondissement": 15,
-      "adresse": "6/8 RUE GANNERON",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504729-2315",
@@ -5043,13 +5043,13 @@
       "direction": "DVD",
       "montant": 68199.57,
       "thematique": "urbanisme",
-      "arrondissement": 16,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504591-2188",
@@ -5068,7 +5068,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504696-2316",
@@ -5087,7 +5087,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604858-2313",
@@ -5100,13 +5100,13 @@
       "direction": "DASCO",
       "montant": 67128.94,
       "thematique": "etablissement_scolaire",
-      "arrondissement": 19,
-      "adresse": "102 rue de la Villette",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1704615-2313",
@@ -5138,13 +5138,13 @@
       "direction": "DVD",
       "montant": 66519.19,
       "thematique": "urbanisme",
-      "arrondissement": 18,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1780001-2031",
@@ -5220,7 +5220,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1788302-2313",
@@ -5271,13 +5271,13 @@
       "direction": "DAC",
       "montant": 63076.5,
       "thematique": "culture",
-      "arrondissement": 8,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504788-2318",
@@ -5334,7 +5334,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1661313-2315",
@@ -5404,13 +5404,13 @@
       "direction": "DASCO",
       "montant": 58438.15,
       "thematique": "autre",
-      "arrondissement": 18,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504696-21611",
@@ -5429,7 +5429,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1702278-21848",
@@ -5448,7 +5448,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1614008-2313",
@@ -5467,7 +5467,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1761303-2315",
@@ -5505,7 +5505,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704909-2318",
@@ -5543,7 +5543,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1202327-2312",
@@ -5556,13 +5556,13 @@
       "direction": "DEVE",
       "montant": 53943.81,
       "thematique": "equipement_sportif",
-      "arrondissement": 17,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604908-2031",
@@ -5600,7 +5600,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704860-2313",
@@ -5632,13 +5632,13 @@
       "direction": "DAC",
       "montant": 51654.1,
       "thematique": "culture",
-      "arrondissement": 3,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604837-238",
@@ -5651,13 +5651,13 @@
       "direction": "DVD",
       "montant": 51371.27,
       "thematique": "urbanisme",
-      "arrondissement": 16,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1500385-2313",
@@ -5670,13 +5670,13 @@
       "direction": "DAC",
       "montant": 51210.52,
       "thematique": "culture",
-      "arrondissement": 1,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1788320-2313",
@@ -5714,7 +5714,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604770-2313",
@@ -5746,13 +5746,13 @@
       "direction": "DEVE",
       "montant": 50564.02,
       "thematique": "environnement",
-      "arrondissement": null,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": null,
-      "confiance": 0.0
+      "arrondissement": 15,
+      "adresse": "Ancienne voie ferrée",
+      "latitude": 48.838,
+      "longitude": 2.277,
+      "nomLieu": "Petite Ceinture",
+      "sourceGeo": "lieu_connu",
+      "confiance": 0.95
     },
     {
       "id": "2021-1704569-2031",
@@ -5771,7 +5771,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1603705-2313",
@@ -5828,7 +5828,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1601313-2313",
@@ -5842,11 +5842,11 @@
       "montant": 48798.23,
       "thematique": "culture",
       "arrondissement": 14,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": "llm",
+      "adresse": "Place Victor et Hélène Basch",
+      "latitude": 48.8335,
+      "longitude": 2.3265,
+      "nomLieu": "Église Saint-Pierre de Montrouge",
+      "sourceGeo": "lieu_connu",
       "confiance": 0.95
     },
     {
@@ -5866,7 +5866,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1003536-2313",
@@ -5879,13 +5879,13 @@
       "direction": "DASCO",
       "montant": 48534.94,
       "thematique": "autre",
-      "arrondissement": 14,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1705114-2031",
@@ -5917,13 +5917,13 @@
       "direction": "DAC",
       "montant": 46454.29,
       "thematique": "culture",
-      "arrondissement": 14,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1004082-2315",
@@ -5942,7 +5942,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1630201-2313",
@@ -5961,7 +5961,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1723311-2312",
@@ -5993,13 +5993,13 @@
       "direction": "DAC",
       "montant": 45422.56,
       "thematique": "culture",
-      "arrondissement": 1,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1788002-21318",
@@ -6018,7 +6018,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705045-2031",
@@ -6031,13 +6031,13 @@
       "direction": "DAC",
       "montant": 44948.56,
       "thematique": "culture",
-      "arrondissement": 4,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.95
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504697-2315",
@@ -6056,7 +6056,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1503867-458181",
@@ -6075,7 +6075,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1761002-2128",
@@ -6094,7 +6094,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1605001-2312",
@@ -6132,7 +6132,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1501300-2312",
@@ -6151,7 +6151,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1304499-2313",
@@ -6164,13 +6164,13 @@
       "direction": "DFPE",
       "montant": 41160.95,
       "thematique": "autre",
-      "arrondissement": 11,
-      "adresse": "27-35 Rue Breguet",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504626-2031",
@@ -6208,7 +6208,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604084-2315",
@@ -6221,13 +6221,13 @@
       "direction": "DVD",
       "montant": 40621.59,
       "thematique": "urbanisme",
-      "arrondissement": 19,
-      "adresse": "RUE AUBERVILLIER",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1714310-2031",
@@ -6284,7 +6284,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504696-2315",
@@ -6303,7 +6303,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504715-2315",
@@ -6341,7 +6341,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1714008-2031",
@@ -6360,7 +6360,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704640-2313",
@@ -6379,7 +6379,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1721316-2313",
@@ -6436,7 +6436,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705128-2031",
@@ -6493,7 +6493,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504718-2312",
@@ -6506,13 +6506,13 @@
       "direction": "DEVE",
       "montant": 37226.14,
       "thematique": "environnement",
-      "arrondissement": 19,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604804-4581994",
@@ -6525,13 +6525,13 @@
       "direction": "DCPA",
       "montant": 37170.75,
       "thematique": "equipement_culturel",
-      "arrondissement": 14,
-      "adresse": "Place Denfert-Rochereau",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604918-2188",
@@ -6544,13 +6544,13 @@
       "direction": "DJS",
       "montant": 37000.0,
       "thematique": "sport",
-      "arrondissement": 12,
-      "adresse": "10-12 Rue des Docteurs Dejerine",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1688319-2313",
@@ -6588,7 +6588,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1605001-2158",
@@ -6626,7 +6626,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1640311-21611",
@@ -6664,7 +6664,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1761310-2158",
@@ -6721,7 +6721,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705037-2328",
@@ -6740,7 +6740,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705086-2031",
@@ -6753,13 +6753,13 @@
       "direction": "DAC",
       "montant": 35138.73,
       "thematique": "culture",
-      "arrondissement": 14,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1723314-2158",
@@ -6835,7 +6835,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1104200-2031",
@@ -6873,7 +6873,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504797-2313",
@@ -6886,13 +6886,13 @@
       "direction": "DFPE",
       "montant": 31022.91,
       "thematique": "petite_enfance",
-      "arrondissement": 20,
-      "adresse": "21/29 Rue La Justice",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1503881-2328",
@@ -6911,7 +6911,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1780313-2313",
@@ -6943,13 +6943,13 @@
       "direction": "DFPE",
       "montant": 30021.45,
       "thematique": "autre",
-      "arrondissement": 13,
-      "adresse": "66 RUE PASCAL",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1704774-2158",
@@ -6968,7 +6968,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504591-2315",
@@ -6987,7 +6987,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604574-2181",
@@ -7006,7 +7006,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1761307-2315",
@@ -7044,7 +7044,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705126-2313",
@@ -7057,13 +7057,13 @@
       "direction": "DEVE",
       "montant": 27513.23,
       "thematique": "environnement",
-      "arrondissement": 16,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1680313-2313",
@@ -7177,7 +7177,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1723310-2313",
@@ -7215,7 +7215,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504086-2031",
@@ -7228,13 +7228,13 @@
       "direction": "DAE",
       "montant": 26191.35,
       "thematique": "autre",
-      "arrondissement": 5,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1723315-2128",
@@ -7272,7 +7272,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704720-2031",
@@ -7291,7 +7291,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1304495-2316",
@@ -7305,12 +7305,12 @@
       "montant": 25855.56,
       "thematique": "culture",
       "arrondissement": 6,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "adresse": "3 place Saint-Germain-des-Prés",
+      "latitude": 48.8539,
+      "longitude": 2.334,
+      "nomLieu": "Église Saint-Germain-des-Prés",
+      "sourceGeo": "lieu_connu",
+      "confiance": 0.95
     },
     {
       "id": "2021-1604872-2313",
@@ -7323,13 +7323,13 @@
       "direction": "DDCT",
       "montant": 25754.27,
       "thematique": "batiment_administratif",
-      "arrondissement": 13,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604926-2315",
@@ -7386,7 +7386,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1788001-2188",
@@ -7405,7 +7405,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1788003-2031",
@@ -7424,7 +7424,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1761320-2188",
@@ -7481,7 +7481,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504712-2128",
@@ -7495,10 +7495,10 @@
       "montant": 24797.27,
       "thematique": "espace_vert",
       "arrondissement": 2,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
+      "adresse": "2 rue Cauchy",
+      "latitude": 48.842,
+      "longitude": 2.2735,
+      "nomLieu": "Parc André Citroën",
       "sourceGeo": "regex",
       "confiance": 1.0
     },
@@ -7519,7 +7519,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604768-2031",
@@ -7533,10 +7533,10 @@
       "montant": 24291.49,
       "thematique": "piscine",
       "arrondissement": 14,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
+      "adresse": "7 avenue Paul Appell",
+      "latitude": 48.8222,
+      "longitude": 2.3245,
+      "nomLieu": "Centre Sportif Élisabeth",
       "sourceGeo": "regex",
       "confiance": 1.0
     },
@@ -7589,13 +7589,13 @@
       "direction": "DFPE",
       "montant": 24154.27,
       "thematique": "petite_enfance",
-      "arrondissement": 15,
-      "adresse": "6/8 RUE GANNERON",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504481-2031",
@@ -7614,7 +7614,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1700404-2313",
@@ -7633,7 +7633,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705037-2031",
@@ -7652,7 +7652,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704104-2031",
@@ -7671,7 +7671,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1603049-2313",
@@ -7722,13 +7722,13 @@
       "direction": "DAC",
       "montant": 22366.47,
       "thematique": "culture",
-      "arrondissement": 11,
-      "adresse": "55 Boulevard de Ménilmontant",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1700779-2031",
@@ -7747,7 +7747,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1723313-2031",
@@ -7785,7 +7785,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504705-2315",
@@ -7817,13 +7817,13 @@
       "direction": "DILT",
       "montant": 21826.81,
       "thematique": "autre",
-      "arrondissement": 4,
-      "adresse": "2-4 Rue Lobau",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604952-2314",
@@ -7836,13 +7836,13 @@
       "direction": "DEVE",
       "montant": 21802.46,
       "thematique": "democratie",
-      "arrondissement": null,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": null,
-      "confiance": 0.0
+      "arrondissement": 15,
+      "adresse": "Ancienne voie ferrée",
+      "latitude": 48.838,
+      "longitude": 2.277,
+      "nomLieu": "Petite Ceinture",
+      "sourceGeo": "lieu_connu",
+      "confiance": 0.95
     },
     {
       "id": "2021-1504684-2313",
@@ -7956,7 +7956,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504684-2031",
@@ -8013,7 +8013,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504719-2312",
@@ -8026,13 +8026,13 @@
       "direction": "DEVE",
       "montant": 20482.57,
       "thematique": "espace_vert",
-      "arrondissement": 20,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504716-2031",
@@ -8108,7 +8108,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705094-2313",
@@ -8146,7 +8146,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1688311-2313",
@@ -8184,7 +8184,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1601313-2031",
@@ -8198,11 +8198,11 @@
       "montant": 19566.19,
       "thematique": "culture",
       "arrondissement": 14,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": "llm",
+      "adresse": "Place Victor et Hélène Basch",
+      "latitude": 48.8335,
+      "longitude": 2.3265,
+      "nomLieu": "Église Saint-Pierre de Montrouge",
+      "sourceGeo": "lieu_connu",
       "confiance": 0.95
     },
     {
@@ -8222,7 +8222,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1703937-2031",
@@ -8260,7 +8260,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504699-2312",
@@ -8279,7 +8279,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1723315-2312",
@@ -8311,13 +8311,13 @@
       "direction": "DEVE",
       "montant": 19000.0,
       "thematique": "environnement",
-      "arrondissement": null,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": null,
-      "confiance": 0.0
+      "arrondissement": 15,
+      "adresse": "Ancienne voie ferrée",
+      "latitude": 48.838,
+      "longitude": 2.277,
+      "nomLieu": "Petite Ceinture",
+      "sourceGeo": "lieu_connu",
+      "confiance": 0.95
     },
     {
       "id": "2021-1640317-2316",
@@ -8349,13 +8349,13 @@
       "direction": "DAC",
       "montant": 18798.04,
       "thematique": "culture",
-      "arrondissement": 1,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1004023-2031",
@@ -8368,13 +8368,13 @@
       "direction": "DJS",
       "montant": 18791.11,
       "thematique": "equipement_sportif",
-      "arrondissement": 14,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604925-2315",
@@ -8425,13 +8425,13 @@
       "direction": "DEVE",
       "montant": 18693.06,
       "thematique": "espace_vert",
-      "arrondissement": 13,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1705037-21538",
@@ -8450,7 +8450,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1761105-2315",
@@ -8469,7 +8469,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704889-2313",
@@ -8488,7 +8488,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1503913-2031",
@@ -8564,7 +8564,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504706-2128",
@@ -8602,7 +8602,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1761313-2315",
@@ -8659,7 +8659,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1602278-2031",
@@ -8678,7 +8678,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1623312-2312",
@@ -8711,12 +8711,12 @@
       "montant": 16850.52,
       "thematique": "culture",
       "arrondissement": 6,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "adresse": "3 place Saint-Germain-des-Prés",
+      "latitude": 48.8539,
+      "longitude": 2.334,
+      "nomLieu": "Église Saint-Germain-des-Prés",
+      "sourceGeo": "lieu_connu",
+      "confiance": 0.95
     },
     {
       "id": "2021-1504722-2145",
@@ -8729,13 +8729,13 @@
       "direction": "DEVE",
       "montant": 16720.39,
       "thematique": "environnement",
-      "arrondissement": null,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": null,
-      "confiance": 0.0
+      "arrondissement": 15,
+      "adresse": "Ancienne voie ferrée",
+      "latitude": 48.838,
+      "longitude": 2.277,
+      "nomLieu": "Petite Ceinture",
+      "sourceGeo": "lieu_connu",
+      "confiance": 0.95
     },
     {
       "id": "2021-1504838-2315",
@@ -8754,7 +8754,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705049-2031",
@@ -8792,7 +8792,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1600401-2313",
@@ -8805,13 +8805,13 @@
       "direction": "DAC",
       "montant": 16340.15,
       "thematique": "culture",
-      "arrondissement": 13,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504751-2315",
@@ -8830,7 +8830,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705069-2031",
@@ -8843,13 +8843,13 @@
       "direction": "DVD",
       "montant": 16060.71,
       "thematique": "urbanisme",
-      "arrondissement": 19,
-      "adresse": "Porte d'Aubervilliers",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1404583-2313",
@@ -8906,7 +8906,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1004023-2313",
@@ -8919,13 +8919,13 @@
       "direction": "DJS",
       "montant": 15832.79,
       "thematique": "equipement_sportif",
-      "arrondissement": 14,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1630001-2318",
@@ -8944,7 +8944,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704085-2313",
@@ -8963,7 +8963,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1404537-2031",
@@ -8995,13 +8995,13 @@
       "direction": "DEVE",
       "montant": 15390.04,
       "thematique": "democratie",
-      "arrondissement": null,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": null,
-      "confiance": 0.0
+      "arrondissement": 15,
+      "adresse": "Ancienne voie ferrée",
+      "latitude": 48.838,
+      "longitude": 2.277,
+      "nomLieu": "Petite Ceinture",
+      "sourceGeo": "lieu_connu",
+      "confiance": 0.95
     },
     {
       "id": "2021-1504751-2158",
@@ -9020,7 +9020,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504618-238",
@@ -9039,7 +9039,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604923-2315",
@@ -9077,7 +9077,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1661320-2315",
@@ -9115,7 +9115,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604950-2312",
@@ -9134,7 +9134,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1404341-204181",
@@ -9148,12 +9148,12 @@
       "montant": 14579.37,
       "thematique": "urbanisme",
       "arrondissement": 17,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.7
+      "adresse": "Boulevard des Maréchaux",
+      "latitude": 48.8867,
+      "longitude": 2.2836,
+      "nomLieu": "Tramway T3",
+      "sourceGeo": "lieu_connu",
+      "confiance": 0.95
     },
     {
       "id": "2021-1604574-2315",
@@ -9172,7 +9172,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604912-21314",
@@ -9243,10 +9243,10 @@
       "montant": 14254.43,
       "thematique": "culture",
       "arrondissement": 9,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
+      "adresse": "Place d'Estienne d'Orves",
+      "latitude": 48.8768,
+      "longitude": 2.3327,
+      "nomLieu": "Église de la Trinité",
       "sourceGeo": "regex",
       "confiance": 1.0
     },
@@ -9286,7 +9286,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504693-2313",
@@ -9305,7 +9305,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504711-2128",
@@ -9337,13 +9337,13 @@
       "direction": "DEVE",
       "montant": 13275.3,
       "thematique": "environnement",
-      "arrondissement": null,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": null,
-      "confiance": 0.0
+      "arrondissement": 15,
+      "adresse": "Ancienne voie ferrée",
+      "latitude": 48.838,
+      "longitude": 2.277,
+      "nomLieu": "Petite Ceinture",
+      "sourceGeo": "lieu_connu",
+      "confiance": 0.95
     },
     {
       "id": "2021-1704569-1328",
@@ -9362,7 +9362,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604951-2313",
@@ -9381,7 +9381,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1623303-2031",
@@ -9438,7 +9438,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1503762-2315",
@@ -9457,7 +9457,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1404399-2313",
@@ -9514,7 +9514,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1740309-2316",
@@ -9547,10 +9547,10 @@
       "montant": 12502.86,
       "thematique": "urbanisme",
       "arrondissement": 17,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
+      "adresse": "Place de la Porte Maillot",
+      "latitude": 48.8779,
+      "longitude": 2.2836,
+      "nomLieu": "Porte Maillot",
       "sourceGeo": "regex",
       "confiance": 1.0
     },
@@ -9565,13 +9565,13 @@
       "direction": "DASCO",
       "montant": 12348.66,
       "thematique": "autre",
-      "arrondissement": 15,
-      "adresse": "99 RUE OLIVIER DE SERRES",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-0903922-2312",
@@ -9584,13 +9584,13 @@
       "direction": "DVD",
       "montant": 12325.41,
       "thematique": "urbanisme",
-      "arrondissement": 18,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1704553-2031",
@@ -9628,7 +9628,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604918-2031",
@@ -9641,13 +9641,13 @@
       "direction": "DJS",
       "montant": 12117.82,
       "thematique": "sport",
-      "arrondissement": 12,
-      "adresse": "10-12 Rue des Docteurs Dejerine",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1688304-2313",
@@ -9704,7 +9704,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504124-2312",
@@ -9717,13 +9717,13 @@
       "direction": "DEVE",
       "montant": 11569.23,
       "thematique": "espace_vert",
-      "arrondissement": 18,
-      "adresse": "122, RUE DES POISSONNIERS",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604515-2313",
@@ -9761,7 +9761,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1603599-2031",
@@ -9799,7 +9799,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1688101-2313",
@@ -9818,7 +9818,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504837-2031",
@@ -9831,13 +9831,13 @@
       "direction": "DVD",
       "montant": 11243.22,
       "thematique": "urbanisme",
-      "arrondissement": 16,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1704824-2313",
@@ -9856,7 +9856,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1630001-21848",
@@ -9875,7 +9875,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504828-45816615",
@@ -9894,7 +9894,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504625-2313",
@@ -9932,7 +9932,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1702636-2031",
@@ -9951,7 +9951,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1614008-2188",
@@ -9970,7 +9970,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604849-2313",
@@ -10002,13 +10002,13 @@
       "direction": "DVD",
       "montant": 10544.88,
       "thematique": "urbanisme",
-      "arrondissement": 19,
-      "adresse": "Porte d'Aubervilliers",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504591-2318",
@@ -10027,7 +10027,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704227-2315",
@@ -10046,7 +10046,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-0903877-2313",
@@ -10097,13 +10097,13 @@
       "direction": "DEVE",
       "montant": 10193.88,
       "thematique": "environnement",
-      "arrondissement": null,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": null,
-      "confiance": 0.0
+      "arrondissement": 15,
+      "adresse": "Ancienne voie ferrée",
+      "latitude": 48.838,
+      "longitude": 2.277,
+      "nomLieu": "Petite Ceinture",
+      "sourceGeo": "lieu_connu",
+      "confiance": 0.95
     },
     {
       "id": "2021-1504495-2316",
@@ -10117,12 +10117,12 @@
       "montant": 10174.49,
       "thematique": "culture",
       "arrondissement": 6,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "adresse": "3 place Saint-Germain-des-Prés",
+      "latitude": 48.8539,
+      "longitude": 2.334,
+      "nomLieu": "Église Saint-Germain-des-Prés",
+      "sourceGeo": "lieu_connu",
+      "confiance": 0.95
     },
     {
       "id": "2021-1704724-2031",
@@ -10135,13 +10135,13 @@
       "direction": "DEVE",
       "montant": 10080.0,
       "thematique": "espace_vert",
-      "arrondissement": 5,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604136-2313",
@@ -10160,7 +10160,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1702077-2313",
@@ -10179,7 +10179,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705098-2313",
@@ -10217,7 +10217,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1721306-2313",
@@ -10249,13 +10249,13 @@
       "direction": "DEVE",
       "montant": 9780.0,
       "thematique": "environnement",
-      "arrondissement": null,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": null,
-      "confiance": 0.0
+      "arrondissement": 15,
+      "adresse": "Ancienne voie ferrée",
+      "latitude": 48.838,
+      "longitude": 2.277,
+      "nomLieu": "Petite Ceinture",
+      "sourceGeo": "lieu_connu",
+      "confiance": 0.95
     },
     {
       "id": "2021-1504193-204181",
@@ -10268,13 +10268,13 @@
       "direction": "DAE",
       "montant": 9750.0,
       "thematique": "autre",
-      "arrondissement": 6,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504791-2316",
@@ -10312,7 +10312,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1761310-2188",
@@ -10350,7 +10350,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1503867-1321",
@@ -10369,7 +10369,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705041-2315",
@@ -10388,7 +10388,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504838-2128",
@@ -10407,7 +10407,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1700667-2313",
@@ -10426,7 +10426,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1723004-2188",
@@ -10445,7 +10445,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504697-2188",
@@ -10464,7 +10464,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704227-2318",
@@ -10483,7 +10483,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-0903888-2318",
@@ -10515,13 +10515,13 @@
       "direction": "DVD",
       "montant": 8913.56,
       "thematique": "urbanisme",
-      "arrondissement": 16,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1623319-2031",
@@ -10592,12 +10592,12 @@
       "montant": 8730.4,
       "thematique": "sport",
       "arrondissement": 20,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "adresse": "Place du Maquis du Vercors",
+      "latitude": 48.8774,
+      "longitude": 2.4065,
+      "nomLieu": "Porte des Lilas",
+      "sourceGeo": "lieu_connu",
+      "confiance": 0.95
     },
     {
       "id": "2021-1704774-2312",
@@ -10616,7 +10616,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705101-2313",
@@ -10635,7 +10635,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1004125-2031",
@@ -10654,7 +10654,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1688316-2031",
@@ -10749,7 +10749,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1700667-2312",
@@ -10768,7 +10768,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704570-2315",
@@ -10787,7 +10787,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604574-2318",
@@ -10806,7 +10806,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604411-2316",
@@ -10863,7 +10863,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1103951-2313",
@@ -10882,7 +10882,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504703-2128",
@@ -10952,13 +10952,13 @@
       "direction": "DFPE",
       "montant": 7690.79,
       "thematique": "petite_enfance",
-      "arrondissement": 17,
-      "adresse": "1 SQUARE ALBAN SATRAGN",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504090-2313",
@@ -10971,13 +10971,13 @@
       "direction": "DAE",
       "montant": 7630.4,
       "thematique": "autre",
-      "arrondissement": 5,
-      "adresse": "11 Rue Pierre et Marie Curie",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504793-2313",
@@ -10990,13 +10990,13 @@
       "direction": "DASCO",
       "montant": 7627.43,
       "thematique": "autre",
-      "arrondissement": 4,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1605005-2315",
@@ -11053,7 +11053,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604939-2315",
@@ -11110,7 +11110,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704740-2031",
@@ -11129,7 +11129,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1723307-2158",
@@ -11180,13 +11180,13 @@
       "direction": "DASCO",
       "montant": 6916.21,
       "thematique": "autre",
-      "arrondissement": 16,
-      "adresse": "Rue Erlanger",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.8
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504691-2031",
@@ -11224,7 +11224,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604774-2313",
@@ -11243,7 +11243,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704774-2314",
@@ -11262,7 +11262,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504717-2031",
@@ -11275,13 +11275,13 @@
       "direction": "DEVE",
       "montant": 6587.06,
       "thematique": "espace_vert",
-      "arrondissement": 18,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504707-2313",
@@ -11313,13 +11313,13 @@
       "direction": "DVD",
       "montant": 6443.65,
       "thematique": "urbanisme",
-      "arrondissement": 17,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1103951-2031",
@@ -11338,7 +11338,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1723311-2031",
@@ -11370,13 +11370,13 @@
       "direction": "DVD",
       "montant": 6334.72,
       "thematique": "urbanisme",
-      "arrondissement": 18,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1304341-2315",
@@ -11389,13 +11389,13 @@
       "direction": "DVD",
       "montant": 6287.23,
       "thematique": "urbanisme",
-      "arrondissement": null,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": null,
-      "confiance": 0.0
+      "arrondissement": 17,
+      "adresse": "Boulevard des Maréchaux",
+      "latitude": 48.8867,
+      "longitude": 2.2836,
+      "nomLieu": "Tramway T3",
+      "sourceGeo": "lieu_connu",
+      "confiance": 0.95
     },
     {
       "id": "2021-1704522-2313",
@@ -11446,13 +11446,13 @@
       "direction": "DEVE",
       "montant": 6167.38,
       "thematique": "equipement_sportif",
-      "arrondissement": 17,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604740-2031",
@@ -11471,7 +11471,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1703304-2313",
@@ -11490,7 +11490,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604935-2031",
@@ -11528,7 +11528,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1688319-2031",
@@ -11561,10 +11561,10 @@
       "montant": 5583.67,
       "thematique": "piscine",
       "arrondissement": 14,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
+      "adresse": "7 avenue Paul Appell",
+      "latitude": 48.8222,
+      "longitude": 2.3245,
+      "nomLieu": "Centre Sportif Élisabeth",
       "sourceGeo": "regex",
       "confiance": 1.0
     },
@@ -11585,7 +11585,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504629-2031",
@@ -11598,13 +11598,13 @@
       "direction": "DAC",
       "montant": 5519.14,
       "thematique": "culture",
-      "arrondissement": 18,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1404577-2313",
@@ -11642,7 +11642,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-0903922-2031",
@@ -11655,13 +11655,13 @@
       "direction": "DVD",
       "montant": 5369.76,
       "thematique": "urbanisme",
-      "arrondissement": 18,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1705118-2032",
@@ -11680,7 +11680,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1703932-2031",
@@ -11699,7 +11699,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705057-2128",
@@ -11775,7 +11775,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504812-4581992",
@@ -11813,7 +11813,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1202327-2128",
@@ -11826,13 +11826,13 @@
       "direction": "DEVE",
       "montant": 5132.67,
       "thematique": "equipement_sportif",
-      "arrondissement": 17,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1200842-2313",
@@ -11845,13 +11845,13 @@
       "direction": "DJS",
       "montant": 5123.1,
       "thematique": "espace_vert",
-      "arrondissement": 16,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1704724-2188",
@@ -11864,13 +11864,13 @@
       "direction": "DEVE",
       "montant": 5051.54,
       "thematique": "espace_vert",
-      "arrondissement": 5,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504838-2031",
@@ -11889,7 +11889,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604876-2313",
@@ -11927,7 +11927,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705097-2031",
@@ -11965,7 +11965,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504085-2313",
@@ -12054,13 +12054,13 @@
       "direction": "DDCT",
       "montant": 4819.41,
       "thematique": "batiment_administratif",
-      "arrondissement": 5,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504721-2312",
@@ -12079,7 +12079,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1655315-2031",
@@ -12117,7 +12117,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1761311-2315",
@@ -12155,7 +12155,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705035-2313",
@@ -12174,7 +12174,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604931-2031",
@@ -12193,7 +12193,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705028-2031",
@@ -12250,7 +12250,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604858-2031",
@@ -12263,13 +12263,13 @@
       "direction": "DASCO",
       "montant": 4606.36,
       "thematique": "etablissement_scolaire",
-      "arrondissement": 19,
-      "adresse": "102 rue de la Villette",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604827-2313",
@@ -12288,7 +12288,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604227-2315",
@@ -12307,7 +12307,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1761002-2158",
@@ -12326,7 +12326,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504682-2031",
@@ -12535,7 +12535,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604942-2315",
@@ -12567,13 +12567,13 @@
       "direction": "DJS",
       "montant": 4241.36,
       "thematique": "sport",
-      "arrondissement": 12,
-      "adresse": "10-12 Rue des Docteurs Dejerine",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504712-2031",
@@ -12587,10 +12587,10 @@
       "montant": 4205.66,
       "thematique": "espace_vert",
       "arrondissement": 2,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
+      "adresse": "2 rue Cauchy",
+      "latitude": 48.842,
+      "longitude": 2.2735,
+      "nomLieu": "Parc André Citroën",
       "sourceGeo": "regex",
       "confiance": 1.0
     },
@@ -12605,13 +12605,13 @@
       "direction": "DEVE",
       "montant": 4166.67,
       "thematique": "espace_vert",
-      "arrondissement": 18,
-      "adresse": "122, RUE DES POISSONNIERS",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1004125-2312",
@@ -12630,7 +12630,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705122-2312",
@@ -12668,7 +12668,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604574-2185",
@@ -12687,7 +12687,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504698-2128",
@@ -12782,7 +12782,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604837-2128",
@@ -12795,13 +12795,13 @@
       "direction": "DVD",
       "montant": 3961.49,
       "thematique": "urbanisme",
-      "arrondissement": 16,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504679-21848",
@@ -12814,13 +12814,13 @@
       "direction": "DFPE",
       "montant": 3951.98,
       "thematique": "autre",
-      "arrondissement": 12,
-      "adresse": "15-17 Rue Lamblardie",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1723320-21538",
@@ -12858,7 +12858,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1501300-2313",
@@ -12877,7 +12877,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1723307-2128",
@@ -12915,7 +12915,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1723004-2315",
@@ -12934,7 +12934,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604720-2128",
@@ -12953,7 +12953,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504837-2188",
@@ -12966,13 +12966,13 @@
       "direction": "DVD",
       "montant": 3621.01,
       "thematique": "urbanisme",
-      "arrondissement": 16,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1704623-2316",
@@ -13005,12 +13005,12 @@
       "montant": 3609.16,
       "thematique": "culture",
       "arrondissement": 6,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "adresse": "3 place Saint-Germain-des-Prés",
+      "latitude": 48.8539,
+      "longitude": 2.334,
+      "nomLieu": "Église Saint-Germain-des-Prés",
+      "sourceGeo": "lieu_connu",
+      "confiance": 0.95
     },
     {
       "id": "2021-1623307-2188",
@@ -13048,7 +13048,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1761307-2031",
@@ -13086,7 +13086,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1204298-2188",
@@ -13099,13 +13099,13 @@
       "direction": "DEVE",
       "montant": 3496.63,
       "thematique": "environnement",
-      "arrondissement": 16,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1705036-2188",
@@ -13124,7 +13124,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604553-2031",
@@ -13181,7 +13181,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705113-2031",
@@ -13194,13 +13194,13 @@
       "direction": "DJS",
       "montant": 3350.02,
       "thematique": "piscine",
-      "arrondissement": 12,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604084-2128",
@@ -13213,13 +13213,13 @@
       "direction": "DVD",
       "montant": 3338.59,
       "thematique": "urbanisme",
-      "arrondissement": 19,
-      "adresse": "RUE AUBERVILLIER",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504721-2031",
@@ -13238,7 +13238,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1688203-2313",
@@ -13257,7 +13257,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1204012-2031",
@@ -13295,7 +13295,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504800-2313",
@@ -13371,7 +13371,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1614312-20422",
@@ -13409,7 +13409,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705106-2031",
@@ -13423,10 +13423,10 @@
       "montant": 3069.53,
       "thematique": "urbanisme",
       "arrondissement": 17,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
+      "adresse": "Place de la Porte Maillot",
+      "latitude": 48.8779,
+      "longitude": 2.2836,
+      "nomLieu": "Porte Maillot",
       "sourceGeo": "regex",
       "confiance": 1.0
     },
@@ -13523,7 +13523,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504770-2313",
@@ -13561,7 +13561,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1404070-2031",
@@ -13574,13 +13574,13 @@
       "direction": "DVD",
       "montant": 2890.07,
       "thematique": "voirie",
-      "arrondissement": 14,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1780320-2313",
@@ -13612,13 +13612,13 @@
       "direction": "DEVE",
       "montant": 2860.0,
       "thematique": "espace_vert",
-      "arrondissement": 5,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1705037-21848",
@@ -13637,7 +13637,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1403674-2031",
@@ -13651,12 +13651,12 @@
       "montant": 2825.04,
       "thematique": "sport",
       "arrondissement": 20,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "adresse": "Place du Maquis du Vercors",
+      "latitude": 48.8774,
+      "longitude": 2.4065,
+      "nomLieu": "Porte des Lilas",
+      "sourceGeo": "lieu_connu",
+      "confiance": 0.95
     },
     {
       "id": "2021-1504718-2031",
@@ -13669,13 +13669,13 @@
       "direction": "DEVE",
       "montant": 2819.52,
       "thematique": "environnement",
-      "arrondissement": 19,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604932-2315",
@@ -13707,13 +13707,13 @@
       "direction": "DVD",
       "montant": 2729.89,
       "thematique": "urbanisme",
-      "arrondissement": 18,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504627-2316",
@@ -13751,7 +13751,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604927-2031",
@@ -13808,7 +13808,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604803-2313",
@@ -13827,7 +13827,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1761104-2031",
@@ -13846,7 +13846,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504790-2316",
@@ -13859,13 +13859,13 @@
       "direction": "DAC",
       "montant": 2549.67,
       "thematique": "culture",
-      "arrondissement": 11,
-      "adresse": "55 Boulevard de Ménilmontant",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604950-2315",
@@ -13884,7 +13884,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504200-2313",
@@ -13897,13 +13897,13 @@
       "direction": "DAE",
       "montant": 2517.78,
       "thematique": "autre",
-      "arrondissement": 5,
-      "adresse": "RUE DESCARTES",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.8
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504682-21848",
@@ -13954,13 +13954,13 @@
       "direction": "DVD",
       "montant": 2445.19,
       "thematique": "urbanisme",
-      "arrondissement": 18,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1004027-2128",
@@ -14093,7 +14093,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604515-2031",
@@ -14125,13 +14125,13 @@
       "direction": "DVD",
       "montant": 2262.71,
       "thematique": "urbanisme",
-      "arrondissement": 19,
-      "adresse": "Porte d'Aubervilliers",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1605001-2188",
@@ -14169,7 +14169,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604920-2031",
@@ -14226,7 +14226,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604184-2315",
@@ -14245,7 +14245,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504840-2128",
@@ -14258,13 +14258,13 @@
       "direction": "DVD",
       "montant": 2073.72,
       "thematique": "urbanisme",
-      "arrondissement": 10,
-      "adresse": "RUE LEON SCHWARTZENBERG",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604943-2313",
@@ -14321,7 +14321,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705035-2188",
@@ -14340,7 +14340,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1723310-2031",
@@ -14378,7 +14378,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1204298-2128",
@@ -14391,13 +14391,13 @@
       "direction": "DEVE",
       "montant": 1964.0,
       "thematique": "environnement",
-      "arrondissement": 16,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504591-21838",
@@ -14416,7 +14416,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1104200-2313",
@@ -14449,10 +14449,10 @@
       "montant": 1926.92,
       "thematique": "culture",
       "arrondissement": 1,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
+      "adresse": "2 impasse Saint-Eustache",
+      "latitude": 48.8629,
+      "longitude": 2.3456,
+      "nomLieu": "Église Saint-Eustache",
       "sourceGeo": "regex",
       "confiance": 1.0
     },
@@ -14473,7 +14473,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705044-2316",
@@ -14487,10 +14487,10 @@
       "montant": 1912.49,
       "thematique": "culture",
       "arrondissement": 1,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
+      "adresse": "2 impasse Saint-Eustache",
+      "latitude": 48.8629,
+      "longitude": 2.3456,
+      "nomLieu": "Église Saint-Eustache",
       "sourceGeo": "regex",
       "confiance": 1.0
     },
@@ -14505,13 +14505,13 @@
       "direction": "DEVE",
       "montant": 1892.26,
       "thematique": "espace_vert",
-      "arrondissement": 18,
-      "adresse": "122, RUE DES POISSONNIERS",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504751-2031",
@@ -14530,7 +14530,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604850-2031",
@@ -14543,13 +14543,13 @@
       "direction": "DASCO",
       "montant": 1812.75,
       "thematique": "autre",
-      "arrondissement": 9,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604876-2031",
@@ -14581,13 +14581,13 @@
       "direction": "DILT",
       "montant": 1800.0,
       "thematique": "autre",
-      "arrondissement": 15,
-      "adresse": "11 Rue du Pré",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1588103-2313",
@@ -14606,7 +14606,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1723304-2312",
@@ -14657,13 +14657,13 @@
       "direction": "DEVE",
       "montant": 1768.47,
       "thematique": "espace_vert",
-      "arrondissement": 13,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604950-2158",
@@ -14682,7 +14682,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504797-2031",
@@ -14695,13 +14695,13 @@
       "direction": "DFPE",
       "montant": 1712.83,
       "thematique": "petite_enfance",
-      "arrondissement": 20,
-      "adresse": "21/29 Rue La Justice",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1614008-2031",
@@ -14720,7 +14720,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1761319-21538",
@@ -14796,7 +14796,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504796-2313",
@@ -14809,13 +14809,13 @@
       "direction": "DFPE",
       "montant": 1632.38,
       "thematique": "petite_enfance",
-      "arrondissement": 18,
-      "adresse": "23/27 Rue de l'Évangile",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1614208-2313",
@@ -14847,13 +14847,13 @@
       "direction": "DASCO",
       "montant": 1619.27,
       "thematique": "autre",
-      "arrondissement": 13,
-      "adresse": "157 Rue de Tolbiac",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1704724-2128",
@@ -14866,13 +14866,13 @@
       "direction": "DEVE",
       "montant": 1574.21,
       "thematique": "espace_vert",
-      "arrondissement": 5,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1404582-2313",
@@ -14929,7 +14929,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1788313-2031",
@@ -14961,13 +14961,13 @@
       "direction": "DAC",
       "montant": 1500.0,
       "thematique": "culture",
-      "arrondissement": 1,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1705037-20421",
@@ -14986,7 +14986,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1688316-2313",
@@ -15019,12 +15019,12 @@
       "montant": 1427.08,
       "thematique": "culture",
       "arrondissement": 6,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "adresse": "3 place Saint-Germain-des-Prés",
+      "latitude": 48.8539,
+      "longitude": 2.334,
+      "nomLieu": "Église Saint-Germain-des-Prés",
+      "sourceGeo": "lieu_connu",
+      "confiance": 0.95
     },
     {
       "id": "2021-1623317-2312",
@@ -15062,7 +15062,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1723320-2158",
@@ -15100,7 +15100,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504690-2031",
@@ -15176,7 +15176,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504629-2313",
@@ -15189,13 +15189,13 @@
       "direction": "DAC",
       "montant": 1193.42,
       "thematique": "culture",
-      "arrondissement": 18,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1404533-2313",
@@ -15214,7 +15214,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1702365-2031",
@@ -15233,7 +15233,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1602278-21838",
@@ -15252,7 +15252,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604952-2031",
@@ -15265,13 +15265,13 @@
       "direction": "DEVE",
       "montant": 1084.02,
       "thematique": "democratie",
-      "arrondissement": null,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": null,
-      "confiance": 0.0
+      "arrondissement": 15,
+      "adresse": "Ancienne voie ferrée",
+      "latitude": 48.838,
+      "longitude": 2.277,
+      "nomLieu": "Petite Ceinture",
+      "sourceGeo": "lieu_connu",
+      "confiance": 0.95
     },
     {
       "id": "2021-1604935-2315",
@@ -15309,7 +15309,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504715-2128",
@@ -15341,13 +15341,13 @@
       "direction": "DEVE",
       "montant": 1033.54,
       "thematique": "espace_vert",
-      "arrondissement": 13,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604574-2158",
@@ -15366,7 +15366,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604859-2318",
@@ -15385,7 +15385,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704532-2313",
@@ -15404,7 +15404,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1623302-2128",
@@ -15461,7 +15461,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1304457-2031",
@@ -15474,13 +15474,13 @@
       "direction": "DJS",
       "montant": 934.66,
       "thematique": "sport",
-      "arrondissement": 17,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1661318-2128",
@@ -15518,7 +15518,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704515-2031",
@@ -15550,13 +15550,13 @@
       "direction": "DEVE",
       "montant": 882.0,
       "thematique": "environnement",
-      "arrondissement": null,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": null,
-      "confiance": 0.0
+      "arrondissement": 15,
+      "adresse": "Ancienne voie ferrée",
+      "latitude": 48.838,
+      "longitude": 2.277,
+      "nomLieu": "Petite Ceinture",
+      "sourceGeo": "lieu_connu",
+      "confiance": 0.95
     },
     {
       "id": "2021-1504704-2128",
@@ -15632,7 +15632,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504823-2315",
@@ -15664,13 +15664,13 @@
       "direction": "DASCO",
       "montant": 804.0,
       "thematique": "autre",
-      "arrondissement": 20,
-      "adresse": "16 RUE JULIEN LACROIX",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604788-2312",
@@ -15689,7 +15689,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1788002-2313",
@@ -15708,7 +15708,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1605000-2313",
@@ -15721,13 +15721,13 @@
       "direction": "DCPA",
       "montant": 744.12,
       "thematique": "culture",
-      "arrondissement": 8,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1761002-2031",
@@ -15746,7 +15746,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1104069-2031",
@@ -15759,13 +15759,13 @@
       "direction": "DVD",
       "montant": 713.89,
       "thematique": "urbanisme",
-      "arrondissement": 17,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1504768-2031",
@@ -15779,10 +15779,10 @@
       "montant": 711.19,
       "thematique": "piscine",
       "arrondissement": 14,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
+      "adresse": "7 avenue Paul Appell",
+      "latitude": 48.8222,
+      "longitude": 2.3245,
+      "nomLieu": "Centre Sportif Élisabeth",
       "sourceGeo": "regex",
       "confiance": 1.0
     },
@@ -15797,13 +15797,13 @@
       "direction": "DASCO",
       "montant": 708.95,
       "thematique": "autre",
-      "arrondissement": 12,
-      "adresse": "Rue de Charolais, Rue de Rambouillet, Rue Bignon",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1705096-2188",
@@ -15822,7 +15822,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1761315-2031",
@@ -15955,7 +15955,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704502-2031",
@@ -15974,7 +15974,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1723316-2313",
@@ -16031,7 +16031,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1503867-2031",
@@ -16050,7 +16050,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1761309-2128",
@@ -16107,7 +16107,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704738-2031",
@@ -16126,7 +16126,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504699-2313",
@@ -16145,7 +16145,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1702278-2188",
@@ -16164,7 +16164,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1701300-2031",
@@ -16183,7 +16183,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1404577-2031",
@@ -16234,13 +16234,13 @@
       "direction": "DILT",
       "montant": 355.62,
       "thematique": "autre",
-      "arrondissement": 4,
-      "adresse": "2-4 Rue Lobau",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-0903772-2031",
@@ -16297,7 +16297,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1661308-2315",
@@ -16354,7 +16354,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-0901938-2313",
@@ -16373,7 +16373,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1604909-2031",
@@ -16405,13 +16405,13 @@
       "direction": "DFPE",
       "montant": 287.95,
       "thematique": "autre",
-      "arrondissement": 12,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1640001-2313",
@@ -16430,7 +16430,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1503867-2188",
@@ -16449,7 +16449,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704483-2031",
@@ -16462,13 +16462,13 @@
       "direction": "DAC",
       "montant": 279.46,
       "thematique": "culture",
-      "arrondissement": 19,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1304495-2031",
@@ -16482,12 +16482,12 @@
       "montant": 268.87,
       "thematique": "culture",
       "arrondissement": 6,
-      "adresse": null,
-      "latitude": null,
-      "longitude": null,
-      "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "adresse": "3 place Saint-Germain-des-Prés",
+      "latitude": 48.8539,
+      "longitude": 2.334,
+      "nomLieu": "Église Saint-Germain-des-Prés",
+      "sourceGeo": "lieu_connu",
+      "confiance": 0.95
     },
     {
       "id": "2021-1604774-2312",
@@ -16506,7 +16506,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504706-2031",
@@ -16544,7 +16544,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504623-2316",
@@ -16639,7 +16639,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1705102-2314",
@@ -16658,7 +16658,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1504710-2313",
@@ -16671,13 +16671,13 @@
       "direction": "DEVE",
       "montant": 190.08,
       "thematique": "espace_vert",
-      "arrondissement": 13,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1304484-4581998",
@@ -16715,7 +16715,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1788103-2031",
@@ -16734,7 +16734,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1723315-2188",
@@ -16772,7 +16772,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1204298-2313",
@@ -16785,13 +16785,13 @@
       "direction": "DEVE",
       "montant": 80.76,
       "thematique": "environnement",
-      "arrondissement": 16,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1604950-2188",
@@ -16810,7 +16810,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-0903922-2128",
@@ -16823,13 +16823,13 @@
       "direction": "DVD",
       "montant": 73.8,
       "thematique": "urbanisme",
-      "arrondissement": 18,
+      "arrondissement": null,
       "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 0.9
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1404567-2315",
@@ -16905,7 +16905,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1704640-2031",
@@ -16924,7 +16924,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1404399-2031",
@@ -16975,13 +16975,13 @@
       "direction": "DAE",
       "montant": 19.2,
       "thematique": "autre",
-      "arrondissement": 5,
-      "adresse": "11 Rue Pierre et Marie Curie",
+      "arrondissement": null,
+      "adresse": null,
       "latitude": null,
       "longitude": null,
       "nomLieu": null,
-      "sourceGeo": "llm",
-      "confiance": 1.0
+      "sourceGeo": null,
+      "confiance": null
     },
     {
       "id": "2021-1503867-2313",
@@ -17000,7 +17000,7 @@
       "longitude": null,
       "nomLieu": null,
       "sourceGeo": null,
-      "confiance": 0.0
+      "confiance": null
     },
     {
       "id": "2021-1740309-2313",

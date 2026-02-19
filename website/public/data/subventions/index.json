@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-05T19:11:23.788990",
+  "generated_at": "2026-02-18T16:41:39.318184",
   "source": "dbt marts (mart_subventions_treemap, mart_subventions_beneficiaires)",
   "available_years": [
     2024,
@@ -33,24 +33,20 @@
   "filters": {
     "thematiques": [
       "Social - Solidarité",
-      "Urbanisme - Logement",
+      "Logement",
       "Culture",
       "Éducation",
-      "Social",
       "Transport",
-      "Administration",
-      "Sport",
-      "Logement",
       "Social - Petite enfance",
       "Économie",
-      "Culture & Sport",
-      "Autre",
       "Non classifié",
-      "Environnement",
-      "Santé",
-      "International",
+      "Sport",
       "Sécurité",
-      "Transport - Voirie"
+      "Administration",
+      "Santé",
+      "Environnement",
+      "International",
+      "Autre"
     ],
     "natures_juridiques": [
       "Associations",
@@ -84,9 +80,9 @@
       "DPSP",
       "DGOM",
       "DTEC",
+      "SG",
       "DILT",
       "DLH",
-      "SG",
       "DU",
       "DAJ"
     ]
