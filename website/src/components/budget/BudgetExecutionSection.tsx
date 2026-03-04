@@ -79,19 +79,19 @@ function ExecutionRateCards({ rates }: { rates: GlobalRate[] }) {
     {
       label: "Taux global d'exécution",
       value: latest.taux_global,
-      sub: `${latest.annee} — Toutes dépenses`,
+      sub: `${latest.annee} — Part du budget prévu réellement dépensée`,
       color: 'text-blue-600',
     },
     {
-      label: 'Fonctionnement',
+      label: 'Dépenses courantes',
       value: latest.taux_fonct,
-      sub: `${formatEuroCompact(latest.execute_fonct || 0)} exécuté / ${formatEuroCompact(latest.vote_fonct)} voté`,
+      sub: `${formatEuroCompact(latest.execute_fonct || 0)} dépensé / ${formatEuroCompact(latest.vote_fonct)} prévu`,
       color: 'text-emerald-600',
     },
     {
-      label: 'Investissement',
+      label: 'Grands projets',
       value: latest.taux_inves,
-      sub: `${formatEuroCompact(latest.execute_inves || 0)} exécuté / ${formatEuroCompact(latest.vote_inves)} voté`,
+      sub: `${formatEuroCompact(latest.execute_inves || 0)} dépensé / ${formatEuroCompact(latest.vote_inves)} prévu`,
       color: 'text-amber-600',
     },
   ];
@@ -149,7 +149,7 @@ function ExecutionRateChart({ rates, height = 350 }: { rates: GlobalRate[]; heig
         },
       },
       legend: {
-        data: ['Global', 'Fonctionnement', 'Investissement'],
+        data: ['Global', 'Courant', 'Grands projets'],
         top: 0,
         textStyle: { color: '#64748b', fontSize: isMobile ? 10 : 12 },
       },
@@ -186,14 +186,14 @@ function ExecutionRateChart({ rates, height = 350 }: { rates: GlobalRate[]; heig
           ...(covidZones.length > 0 ? { markArea: { silent: true, data: covidZones } } : {}),
         },
         {
-          name: 'Fonctionnement', type: 'line',
+          name: 'Courant', type: 'line',
           data: comp.map((r) => r.taux_fonct),
           lineStyle: { color: PALETTE.emerald, width: 2, type: 'dashed' },
           itemStyle: { color: PALETTE.emerald },
           symbolSize: isMobile ? 10 : 8,
         },
         {
-          name: 'Investissement', type: 'line',
+          name: 'Grands projets', type: 'line',
           data: comp.map((r) => r.taux_inves),
           lineStyle: { color: PALETTE.amber, width: 2, type: 'dashed' },
           itemStyle: { color: PALETTE.amber },
@@ -209,8 +209,8 @@ function ExecutionRateChart({ rates, height = 350 }: { rates: GlobalRate[]; heig
         Taux d&apos;exécution par année
       </h3>
       <p className="text-xs text-slate-500 mb-4">
-        100% = budget intégralement exécuté. L&apos;investissement est
-        structurellement sous-exécuté (projets pluriannuels). * = COVID.
+        100% = tout le budget prévu a été dépensé. Les grands projets sont souvent
+        en dessous car ils s&apos;étalent sur plusieurs années. * = année COVID.
       </p>
       <ReactECharts option={option} style={{ height }} notMerge />
     </div>
@@ -309,12 +309,12 @@ function EcartRanking({ ranking }: { ranking: EcartRow[] }) {
   return (
     <div className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-4 sm:p-6">
       <h3 className="text-lg font-semibold text-slate-200 mb-1">
-        Écart moyen Voté → Exécuté par poste
+        Écart moyen entre prévu et réel par poste
       </h3>
       <p className="text-xs text-slate-500 mb-4">
-        <span className="text-red-600">Rouge</span> = sur-exécuté (dépensé plus que prévu) ·{' '}
-        <span className="text-emerald-600">Vert</span> = sous-exécuté.
-        Moyenne 2019-2024, dépenses &gt; 50 M€.
+        <span className="text-red-600">Rouge</span> = dépensé plus que prévu ·{' '}
+        <span className="text-emerald-600">Vert</span> = dépensé moins que prévu.
+        Moyenne 2019-2024, postes &gt; 50 M€.
       </p>
       <ReactECharts option={option} style={{ height: chartHeight }} notMerge />
     </div>

@@ -106,7 +106,7 @@ function TableauDeBordInner() {
       {/* Quick links */}
       <section className="border-t border-slate-700/50 pt-8">
         <p className="text-xs text-slate-500 text-center">
-          Source : Open Data Paris · Comptes administratifs M57 · Population INSEE 2023
+          Source : Open Data Paris · Comptes annuels de la Ville de Paris · Population INSEE 2023
         </p>
       </section>
     </div>

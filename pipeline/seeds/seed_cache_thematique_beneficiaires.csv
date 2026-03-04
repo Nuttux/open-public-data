@@ -1,2 +1,691 @@
 beneficiaire_normalise,ode_thematique,ode_sous_categorie,ode_confiance,ode_date_recherche,ode_source
-"","","",0.0,"",""
+,Autre,,0.0,2026-02-18,llm_claude
+100 ETABLISS CULTUREL SOLIDAIRE,Culture,Réseau d'établissements culturels solidaires,0.85,2026-02-18,llm_claude
+100 ETABLISSEMENT CULTUREL SOLIDAIRE,Culture,Établissement culturel solidaire - accès à la culture,0.85,2026-02-18,llm_claude
+100 ETS CULTUREL SOLIDAIRE,Culture,Établissement culturel et solidaire (Le CENTQUATRE-PARIS),0.85,2026-02-18,llm_claude
+1001 VIES HABITAT,Logement,Bailleur social,0.93,2026-02-18,llm_claude
+13 AVENIR,Social - Solidarité,Association de solidarité et insertion dans le 13e arrondissement,0.5,2026-02-18,llm_claude
+13ONZE15 FRATERNITE ET VERITE,Social - Solidarité,Association des victimes des attentats du 13 novembre 2015,0.85,2026-02-18,llm_claude
+19EME RUGISSANTS,Culture,Compagnie artistique / événements culturels dans le 19e arrondissement,0.75,2026-02-18,llm_claude
+3 S SEJOUR SPORTIF SOLIDAIRE,Sport,Séjours sportifs et solidaires,0.75,2026-02-18,llm_claude
+3F RESIDENCES,Logement,Bailleur social (Groupe 3F),0.92,2026-02-18,llm_claude
+A L ADRESSE DU JEU,Culture,Jeu et ludothèque,0.55,2026-02-18,llm_claude
+A S L OLYMPIADES,Administration,Association syndicale libre (copropriété du 13e),0.97,2026-02-18,llm_claude
+A SUIVRE,Culture,Compagnie ou production artistique,0.45,2026-02-18,llm_claude
+ABC PUERICULTURE,Social - Petite enfance,Puériculture et petite enfance,0.92,2026-02-18,llm_claude
+ABC PUÉRICULTURE,Social - Petite enfance,Puériculture,0.95,2026-02-18,llm_claude
+ACADEMIE FOOTBALL PARIS 18,Sport,Club de football - 18e arrondissement,0.97,2026-02-18,llm_claude
+ACCELER PARISIEN D INNOVATION,Économie,Accélérateur d'innovation parisien,0.9,2026-02-18,llm_claude
+ACCOMPAG GLOBAL CONTRE EXCLUSION,Social - Solidarité,Accompagnement global contre l'exclusion,0.95,2026-02-18,llm_claude
+ACCUEIL GOUTTE D OR,Social - Solidarité,Accueil et insertion des populations du quartier Goutte d'Or,0.9,2026-02-18,llm_claude
+ACP LA MANUFACTURE CHANSON,Culture,Manufacture Chanson - formation et diffusion chanson/musique,0.95,2026-02-18,llm_claude
+ACTION SOCIA PERSON VIL PARISDEP PA,Social - Solidarité,Action sociale - personnes vulnérables (Ville de Paris / Département de Paris),0.9,2026-02-18,llm_claude
+ACTIONS ET RESSOUR POUR L INSERT,Social - Solidarité,Insertion sociale et accompagnement des publics en difficulté,0.9,2026-02-18,llm_claude
+ADDEL,Économie,Association pour le développement économique local,0.55,2026-02-18,llm_claude
+ADOMA,Logement,Hébergement et logement social (ex-Sonacotra),0.9,2026-02-18,llm_claude
+AGCE METRO DES MOBILITES PARTAGEES,Transport,Agence métropolitaine des mobilités partagées,0.9,2026-02-18,llm_claude
+AGENCE D AIDE A LA COOPERATION,International,Coopération internationale et aide au développement,0.85,2026-02-18,llm_claude
+AGENCE NATIONALE DE L HABITAT,Logement,Agence nationale de l'habitat - amélioration du logement,0.95,2026-02-18,llm_claude
+AGENCE PARISIENNE DU CLIMAT,Environnement,Transition écologique et climat,0.95,2026-02-18,llm_claude
+AGOSPAP,Social - Solidarité,Action sociale des personnels de la Ville de Paris et AP-HP,0.8,2026-02-18,llm_claude
+AGRIPARIS SEINE,Environnement,Agriculture urbaine / circuits courts en Île-de-France,0.85,2026-02-18,llm_claude
+AIDE JEUNES HANDIC INTEGR REUSSIE,Social - Solidarité,Aide à l'intégration des jeunes handicapés,0.95,2026-02-18,llm_claude
+AIDES,Santé,Lutte contre le VIH/SIDA et prévention santé,0.93,2026-02-18,llm_claude
+AISON PRATIQUES ARTISTIQUES AMATEU,Culture,Maison des pratiques artistiques amateurs,0.9,2026-02-18,llm_claude
+ALLO MALTRAITANCE PERSONNES AGEES,Social - Solidarité,Lutte contre la maltraitance des personnes âgées,0.95,2026-02-18,llm_claude
+ALTERALIA,Social - Solidarité,Insertion et solidarité,0.5,2026-02-18,llm_claude
+AMICALE MANIN SPORT PARIS EST,Sport,Club sportif amicale Manin Paris Est,0.95,2026-02-18,llm_claude
+ANTIN RESIDENCES SA HABITAT,Logement,Bailleur social / résidences habitat,0.88,2026-02-18,llm_claude
+AOCSA LA 20 EME CHAISE,Culture,Association culturelle / spectacle vivant (théâtre),0.7,2026-02-18,llm_claude
+AOUT SECOURS ALIMENTAIRE,Social - Solidarité,Aide alimentaire d'urgence estivale,0.97,2026-02-18,llm_claude
+APACHES DES VIGNOLES,Culture,"Association culturelle de quartier (Vignoles, 20e)",0.55,2026-02-18,llm_claude
+APASO,Social - Solidarité,Accompagnement social et psychologique (APASO),0.75,2026-02-18,llm_claude
+APATE,Autre,"Association au nom ambigu, activité non identifiable",0.3,2026-02-18,llm_claude
+APATE LA MAISON DAGOBERT,Social - Solidarité,Hébergement d'urgence et aide aux personnes en précarité,0.85,2026-02-18,llm_claude
+ARAIGNEE GENTILLE,Culture,Compagnie de spectacle vivant / arts de la rue,0.6,2026-02-18,llm_claude
+ARBRE BLEU,Social - Petite enfance,Structure petite enfance / crèche associative,0.65,2026-02-18,llm_claude
+ARC EQUIPES D AMITIE ARC EA,Social - Solidarité,"Aide sociale et amitié, insertion",0.7,2026-02-18,llm_claude
+ARC EQUIPES D AMITIE ARCEA,Social - Solidarité,"Équipes d'amitié, lien social et solidarité",0.6,2026-02-18,llm_claude
+ARCAL,Culture,Art lyrique / opéra (ARCAL),0.9,2026-02-18,llm_claude
+ARCAT,Santé,Lutte contre le VIH/SIDA et maladies infectieuses,0.92,2026-02-18,llm_claude
+ARCHIPELIA,Social - Solidarité,Hébergement et accompagnement social,0.7,2026-02-18,llm_claude
+AREMEDIA,Santé,"Prévention santé et réduction des risques (VIH, addictions)",0.85,2026-02-18,llm_claude
+ARES SERVICES,Social - Solidarité,Insertion par l'activité économique - groupe ARES,0.88,2026-02-18,llm_claude
+ARFOG LAFAYETTE,Social - Solidarité,Hébergement et insertion des personnes en difficulté,0.92,2026-02-18,llm_claude
+ARMEE DU SALUT,Social - Solidarité,"Hébergement d'urgence, aide aux sans-abri",0.95,2026-02-18,llm_claude
+ARTEMISIA,Culture,Arts visuels / bande dessinée féminine (association Artémisia),0.75,2026-02-18,llm_claude
+AS PERSONNELS APSAP VP,Sport,Association sportive des personnels de la Ville de Paris (APSAP-VP),0.85,2026-02-18,llm_claude
+ASL 33 51 RUE SAINT BLAISE,Administration,Association syndicale libre - copropriété rue Saint-Blaise,0.95,2026-02-18,llm_claude
+ASS AUTREMONDE,Social - Solidarité,Insertion sociale et solidarité (association Autremonde),0.9,2026-02-18,llm_claude
+ASS FLORIMONT,Social - Solidarité,Association d'aide sociale / hébergement,0.5,2026-02-18,llm_claude
+ASS FONDATION ETUDIANTE POUR LA VIL,Social - Solidarité,Fondation Étudiante pour la Ville (AFEV) - accompagnement solidaire,0.92,2026-02-18,llm_claude
+ASS GAN YAEL CRECHE JARDIN ENF,Social - Petite enfance,Crèche et jardin d'enfants,0.98,2026-02-18,llm_claude
+ASS INITIAT RENC ET SOLID 10,Social - Solidarité,"Association d'initiatives, rencontres et solidarité du 10e arrondissement",0.8,2026-02-18,llm_claude
+ASS L INST D ETUDES AVANCEES PARI,Éducation,Recherche - Institut d'Études Avancées de Paris,0.93,2026-02-18,llm_claude
+ASS LA PASSERELLE,Social - Solidarité,Accompagnement et insertion sociale,0.7,2026-02-18,llm_claude
+ASS LE DAUPHIN BLEU,Social - Petite enfance,Structure d'accueil petite enfance,0.75,2026-02-18,llm_claude
+ASS MIEUX ETRE LOGEMENT ISOLES,Logement,Aide au logement pour personnes isolées,0.85,2026-02-18,llm_claude
+ASS MUSIQUE ET DANSE 20,Culture,Association de musique et danse du 20e arrondissement,0.95,2026-02-18,llm_claude
+ASS PARIS ANIMATION CULT ET SPORT,Culture,Animation culturelle et sportive de proximité (dominante culturelle),0.55,2026-02-18,llm_claude
+ASS POUR DROIT A L INITIATIVE ECONO,Économie,Microfinance et insertion économique (ADIE),0.95,2026-02-18,llm_claude
+ASS PREVENTION ACCUEIL SOUTIEN ORIE,Social - Solidarité,"Prévention, accueil, soutien et orientation des personnes en difficulté",0.9,2026-02-18,llm_claude
+ASS PUC RUGBY,Sport,Club de rugby (Paris Université Club),0.98,2026-02-18,llm_claude
+ASS SAFE,Social - Solidarité,Association SAFE - soutien aux femmes excisées / violences,0.6,2026-02-18,llm_claude
+ASS VOTRE ECOLE CHEZ VOUS,Éducation,Enseignement à domicile pour enfants malades ou handicapés,0.92,2026-02-18,llm_claude
+ASSO ACIDULES ET A CROQUER,Social - Petite enfance,Association liée à l'enfance / activités pour enfants,0.55,2026-02-18,llm_claude
+ASSO AU SERV DES AUTISTES ET LA PED,Santé,Accompagnement des personnes autistes et pédagogie spécialisée,0.72,2026-02-18,llm_claude
+ASSOC CENTRE ALPHA CHOISY,Éducation,Alphabétisation et apprentissage du français - quartier Choisy (13e),0.9,2026-02-18,llm_claude
+ASSOC DEVELOPP DE LA DANSE A PARIS,Culture,Association pour le développement de la danse à Paris,0.95,2026-02-18,llm_claude
+ASSOC NOTRE DAME DE BON SECOURS,Santé,Établissement de santé / centre de soins,0.7,2026-02-18,llm_claude
+ASSOC POUR L AIDE AUX MERES DE FAMI,Social - Solidarité,Aide aux mères de famille en difficulté,0.9,2026-02-18,llm_claude
+ASSOCIAT POUR L INSTITUT D ETUDES,Éducation,Institut d'études et recherche,0.75,2026-02-18,llm_claude
+ASSOCIAT SYNDICALE LIBRE OLYMPIADES,Administration,Association syndicale libre - copropriété Olympiades (13e),0.95,2026-02-18,llm_claude
+ASSOCIATION 11 EME EVENEMENTS,Culture,Événements culturels et festifs dans le 11e arrondissement,0.55,2026-02-18,llm_claude
+ASSOCIATION ACIDULES ET A CROQUER,Social - Petite enfance,Association dédiée aux enfants / activités petite enfance,0.55,2026-02-18,llm_claude
+ASSOCIATION ACTION SOCIALE EN FAVEUR DES PERSONNELS DE LA VILLE DE PARIS ET DU DEPARTEMENT DE PARIS,Social - Solidarité,Action sociale pour les personnels de la Ville de Paris,0.9,2026-02-18,llm_claude
+ASSOCIATION ARTHUR ET MARINE,Social - Solidarité,Association d'aide aux enfants malades ou en situation de handicap,0.65,2026-02-18,llm_claude
+ASSOCIATION ATD QUART MONDE,Social - Solidarité,Lutte contre la grande pauvreté et l'exclusion sociale,0.98,2026-02-18,llm_claude
+ASSOCIATION AUTREMONDE,Social - Solidarité,Aide aux personnes en situation d'exclusion et réfugiés,0.9,2026-02-18,llm_claude
+ASSOCIATION BELLEVILLE CITOYENNE,Social - Solidarité,Association citoyenne de quartier - lien social,0.7,2026-02-18,llm_claude
+ASSOCIATION CENTRE ALPHA CHOISY,Éducation,Alphabétisation et apprentissage du français,0.9,2026-02-18,llm_claude
+ASSOCIATION CRECHE AVENIR,Social - Petite enfance,Crèche associative,0.99,2026-02-18,llm_claude
+ASSOCIATION DE SOUTIEN A FOND,Social - Solidarité,Association de soutien / solidarité (nom tronqué),0.5,2026-02-18,llm_claude
+ASSOCIATION DEDALE,Culture,Art numérique et création contemporaine,0.75,2026-02-18,llm_claude
+ASSOCIATION DEVELOPP DE LA DANSE A PARIS,Culture,Développement de la danse,0.95,2026-02-18,llm_claude
+ASSOCIATION DU STADE FRANCAIS,Sport,Club sportif omnisports (Stade Français),0.97,2026-02-18,llm_claude
+ASSOCIATION ESPACES,Environnement,Association Espaces – insertion par l'écologie urbaine et jardins,0.7,2026-02-18,llm_claude
+ASSOCIATION FLORIMONT,Social - Solidarité,Association de quartier / solidarité locale,0.5,2026-02-18,llm_claude
+ASSOCIATION FRANCOIS XAVIER BAGNOUD,International,Association François-Xavier Bagnoud - aide humanitaire internationale et droits de l'enfant,0.8,2026-02-18,llm_claude
+ASSOCIATION GAN YAEL CRECHE JARDIN ENF,Social - Petite enfance,Crèche et jardin d'enfants,0.97,2026-02-18,llm_claude
+ASSOCIATION GESTION CENTRE ANIMATION CULTUR,Culture,Gestion de centre d'animation culturelle,0.9,2026-02-18,llm_claude
+ASSOCIATION L ILE AUX LANGUE,Éducation,Apprentissage des langues,0.8,2026-02-18,llm_claude
+ASSOCIATION L INST D ETUDES AVANCEES PARI,Éducation,Recherche - Institut d'Études Avancées de Paris,0.93,2026-02-18,llm_claude
+ASSOCIATION LA PASSOCIATIONERELLE,Social - Solidarité,Accompagnement et insertion sociale (nom tronqué/erroné de La Passerelle),0.65,2026-02-18,llm_claude
+ASSOCIATION LE DAUPHIN BLEU,Social - Petite enfance,Structure petite enfance / crèche,0.75,2026-02-18,llm_claude
+ASSOCIATION LE FIGUIER,Social - Solidarité,Association Le Figuier - accueil et insertion sociale,0.6,2026-02-18,llm_claude
+ASSOCIATION LE MOULIN,Culture,Lieu culturel associatif,0.55,2026-02-18,llm_claude
+ASSOCIATION LES ENFANCES,Social - Petite enfance,Enfance et parentalité,0.75,2026-02-18,llm_claude
+ASSOCIATION LES PETITS DU CANARD,Social - Petite enfance,Structure d'accueil petite enfance,0.9,2026-02-18,llm_claude
+ASSOCIATION LES PETITS RIENS,Culture,Compagnie de spectacle vivant / théâtre,0.5,2026-02-18,llm_claude
+ASSOCIATION MARMITE D AFRIQUE,Social - Solidarité,Aide alimentaire et solidarité interculturelle,0.75,2026-02-18,llm_claude
+ASSOCIATION MERKAZ BETH MYRIAM,Social - Solidarité,Association communautaire d'entraide et solidarité,0.6,2026-02-18,llm_claude
+ASSOCIATION MIEUX ETRE LOGEMENT ISOLES,Logement,Aide au logement pour personnes isolées,0.85,2026-02-18,llm_claude
+ASSOCIATION NAT PREVENT ALCOOL ADDICT,Santé,Prévention de l'alcoolisme et des addictions (ANPAA),0.97,2026-02-18,llm_claude
+ASSOCIATION NOTRE DAME DE BON SECOURS,Santé,Établissement de soins / centre de santé,0.75,2026-02-18,llm_claude
+ASSOCIATION OLGA SPITZER,Social - Solidarité,Protection de l'enfance et aide sociale,0.92,2026-02-18,llm_claude
+ASSOCIATION ORCHESTRE CONCERTS LAMO,Culture,Orchestre et concerts - musique classique,0.95,2026-02-18,llm_claude
+ASSOCIATION OZAR HATORAH,Éducation,Réseau d'écoles juives / enseignement confessionnel,0.85,2026-02-18,llm_claude
+ASSOCIATION PARIS ANIMATION CULT ET SPORT,Culture,Animation culturelle et sportive de proximité (dominante culturelle),0.55,2026-02-18,llm_claude
+ASSOCIATION PARRAINS PAR MILLE,Social - Solidarité,Parrainage de proximité pour enfants et familles en difficulté,0.9,2026-02-18,llm_claude
+ASSOCIATION PIROUETT,Social - Petite enfance,Crèche ou structure petite enfance,0.7,2026-02-18,llm_claude
+ASSOCIATION PLUS LOIN,Social - Solidarité,Accompagnement et insertion sociale,0.7,2026-02-18,llm_claude
+ASSOCIATION POUR DEPISTAGE CANCERS,Santé,Dépistage et prévention des cancers,0.98,2026-02-18,llm_claude
+ASSOCIATION POUR DROIT A L INITIATIVE ECONO,Économie,Droit à l'initiative économique - insertion économique,0.9,2026-02-18,llm_claude
+ASSOCIATION POUR INSERTION DES JEUNES,Économie,Insertion professionnelle des jeunes,0.7,2026-02-18,llm_claude
+ASSOCIATION POUR L AIDE AUX MERES DE FAMI,Social - Solidarité,Aide aux mères de famille en difficulté,0.9,2026-02-18,llm_claude
+ASSOCIATION POUR LA PREVENTION L ACCUEIL LE,Social - Solidarité,"Prévention, accueil et accompagnement social (nom tronqué, probablement aide aux personnes en difficulté)",0.75,2026-02-18,llm_claude
+ASSOCIATION PROCESSUS RECHERCHE,Éducation,Association de recherche,0.55,2026-02-18,llm_claude
+ASSOCIATION PUC RUGBY,Sport,Club de rugby universitaire (Paris Université Club),0.99,2026-02-18,llm_claude
+ASSOCIATION REGION INSERTION ECONOMIQUE SOC,Économie,Insertion économique et sociale,0.9,2026-02-18,llm_claude
+ASSOCIATION RELAIS ACCUEIL,Social - Solidarité,Accueil et accompagnement de personnes en difficulté,0.85,2026-02-18,llm_claude
+ASSOCIATION RESEAU TREIZE,Social - Solidarité,Réseau associatif du 13e arrondissement - insertion sociale,0.65,2026-02-18,llm_claude
+ASSOCIATION SAFE,Social - Solidarité,Association SAFE - soutien aux femmes excisées / violences,0.6,2026-02-18,llm_claude
+ASSOCIATION SYNDICALE LIBRE OLYMPIADES,Administration,ASL Olympiades - copropriété du 13e arrondissement,0.97,2026-02-18,llm_claude
+ASSOCIATION TECHNO PLUS,Santé,Réduction des risques en milieu festif (prévention addictions),0.9,2026-02-18,llm_claude
+ASSOCIATION VOTRE ECOLE CHEZ VOUS,Éducation,Enseignement à domicile pour enfants malades ou handicapés,0.92,2026-02-18,llm_claude
+ATELIER BERLIOZ ADPS,Culture,Atelier de pratique musicale / arts - ADPS,0.7,2026-02-18,llm_claude
+ATELIER DE PARIS CAROLYN CARLSON,Culture,Danse contemporaine - Centre chorégraphique,0.97,2026-02-18,llm_claude
+ATELIER DES ARTISTES EN EXIL,Culture,Soutien artistique aux artistes en exil,0.9,2026-02-18,llm_claude
+ATELIER PARISIEN D URBANISME,Administration,APUR - Urbanisme et aménagement du territoire parisien,0.9,2026-02-18,llm_claude
+ATELIERS DE LA DANSE CAROLYN CARLSON,Culture,Danse - compagnie Carolyn Carlson,0.99,2026-02-18,llm_claude
+ATELIERS POUR PETITS,Social - Petite enfance,Ateliers pour jeunes enfants,0.85,2026-02-18,llm_claude
+ATLA,Culture,ATLA - école de musiques actuelles et jazz,0.9,2026-02-18,llm_claude
+AU TEMPS DU JEU,Social - Petite enfance,Au Temps du Jeu - ludothèque / activités ludiques pour enfants,0.55,2026-02-18,llm_claude
+AURORE,Social - Solidarité,"Hébergement d'urgence, insertion, aide aux personnes en précarité",0.95,2026-02-18,llm_claude
+AUTISME EN ILE DE FRANCE,Social - Solidarité,Accompagnement des personnes autistes et de leurs familles,0.92,2026-02-18,llm_claude
+AUTOLIB VELIB METROPOLE,Transport,Mobilité partagée (Autolib/Vélib),0.95,2026-02-18,llm_claude
+AUX CAPTIFS LA LIBERATION,Social - Solidarité,Aide aux personnes en grande exclusion,0.95,2026-02-18,llm_claude
+AXIMO,Logement,Bailleur social / organisme HLM,0.8,2026-02-18,llm_claude
+BABILLAGES,Social - Petite enfance,Structure petite enfance / crèche,0.85,2026-02-18,llm_claude
+BAGAGERIE SOLIDAIRE 14,Social - Solidarité,Consigne solidaire de bagages pour personnes sans-abri (14e),0.95,2026-02-18,llm_claude
+BAL,Culture,Lieu d'exposition photographique et artistique (Le BAL),0.85,2026-02-18,llm_claude
+BALUSTRADE,Culture,Compagnie de spectacle vivant / théâtre,0.7,2026-02-18,llm_claude
+BANQUE POSTALE,Économie,Établissement bancaire / services financiers,0.7,2026-02-18,llm_claude
+BATIGERE EN ILE DE FRANCE,Logement,Bailleur social en Île-de-France,0.92,2026-02-18,llm_claude
+BATIGERE HABITAT,Logement,Logement social et habitat,0.95,2026-02-18,llm_claude
+BATIGERE ILE DE FRANCE SA D HLM,Logement,Bailleur social HLM Île-de-France,0.95,2026-02-18,llm_claude
+BELLEVILLE ASSOCIATION,Culture,Association culturelle et sociale du quartier Belleville,0.45,2026-02-18,llm_claude
+BETONSALON,Culture,Centre d'art contemporain et de recherche,0.9,2026-02-18,llm_claude
+BIMBAMJOB,Économie,Insertion professionnelle des réfugiés,0.85,2026-02-18,llm_claude
+BIS BOUTIQUE SOLIDAIRE,Social - Solidarité,Boutique solidaire / aide vestimentaire et matérielle,0.85,2026-02-18,llm_claude
+BNP PARIBAS,Économie,Établissement bancaire / partenariat financier,0.6,2026-02-18,llm_claude
+BOUFFESQUETAIRES,Culture,Compagnie théâtrale / spectacle vivant,0.75,2026-02-18,llm_claude
+BOURSE DU TRAVAIL DE PARIS,Administration,Bourse du travail – lieu syndical et institutionnel,0.85,2026-02-18,llm_claude
+BOUTIQUES DE GESTION,Économie,Accompagnement à la création d'entreprise,0.9,2026-02-18,llm_claude
+BOUTIQUES DE GESTION PARIS ILE DE F,Économie,Accompagnement à la création d'entreprise et entrepreneuriat,0.95,2026-02-18,llm_claude
+BPIFRANCE,Économie,Banque publique d'investissement - soutien aux entreprises,0.95,2026-02-18,llm_claude
+BPIFRANCE REGIONS,Économie,Financement et soutien aux entreprises,0.92,2026-02-18,llm_claude
+BRASSERIE DE L ETRE,Économie,Brasserie artisanale – entreprise d'insertion ou économie sociale,0.55,2026-02-18,llm_claude
+BUDGET ANNEXE AIDE SOCIALE A L ENFANCE,Social - Solidarité,Aide sociale à l'enfance (budget annexe),0.9,2026-02-18,llm_claude
+BUS DES FEMMES,Social - Solidarité,"Aide aux personnes prostituées, prévention et accompagnement",0.9,2026-02-18,llm_claude
+CAISSE DES ECOLES,Éducation,Caisse des écoles - restauration et activités scolaires,0.9,2026-02-18,llm_claude
+CAISSE DES ECOLES 15EME ARRONDISSEM,Éducation,Caisse des écoles du 15e arrondissement,0.95,2026-02-18,llm_claude
+CAISSE DES ECOLES DU 10E ARRONDISSE,Éducation,Caisse des écoles du 10e arrondissement - restauration et activités scolaires,0.95,2026-02-18,llm_claude
+CAISSE DES ECOLES DU 11E ARRONDISSE,Éducation,Caisse des écoles - restauration et activités scolaires 11e,0.95,2026-02-18,llm_claude
+CAISSE DES ECOLES DU 13E ARRONDISSE,Éducation,Caisse des écoles - restauration et activités scolaires 13e,0.95,2026-02-18,llm_claude
+CAISSE DES ECOLES DU 14E ARRONDISSE,Éducation,Caisse des écoles - restauration et activités scolaires 14e,0.95,2026-02-18,llm_claude
+CAISSE DES ECOLES DU 17E ARRONDISSE,Éducation,Caisse des écoles - restauration et activités scolaires 17e,0.95,2026-02-18,llm_claude
+CAISSE DES ECOLES DU 18E ARRONDISSE,Éducation,Caisse des écoles du 18e arrondissement,0.95,2026-02-18,llm_claude
+CAISSE DES ECOLES DU 2E ARRONDISSEM,Éducation,Caisse des écoles - restauration et activités scolaires,0.95,2026-02-18,llm_claude
+CAISSE DES ECOLES DU 3E ARRONDISSEM,Éducation,Caisse des écoles - restauration et activités scolaires,0.95,2026-02-18,llm_claude
+CAISSE DES ECOLES DU 6E ARRONDISSEM,Éducation,Caisse des écoles du 6e arrondissement (restauration scolaire),0.95,2026-02-18,llm_claude
+CAISSE DES ECOLES DU 7EME ARRONDISS,Éducation,Caisse des écoles du 7e arrondissement (restauration scolaire),0.95,2026-02-18,llm_claude
+CAISSE DES ECOLES DU 8E ARROND,Éducation,Caisse des écoles du 8e arrondissement - restauration scolaire et activités périscolaires,0.95,2026-02-18,llm_claude
+CAISSE DES ECOLES DU 8E ARRONDISSEM,Éducation,Caisse des écoles du 8e arrondissement - restauration scolaire,0.95,2026-02-18,llm_claude
+CAISSE DES ECOLES DU 9E ARRONDISSEM,Éducation,Caisse des écoles du 9e arrondissement - restauration scolaire,0.95,2026-02-18,llm_claude
+CAISSE DES REGLEMENTS PECUNIAIRES,Administration,Caisse de règlements des avocats (CARPA),0.85,2026-02-18,llm_claude
+CAISSE DES REGLEMENTS PECUNIAIRES EFFECTUES PAR LES AVOCATS A LA COUR DE PARIS CARPA,Administration,Caisse de règlements des avocats (CARPA),0.9,2026-02-18,llm_claude
+CAISSE ECOLES 12 EME ARRON PARIS,Éducation,Caisse des écoles du 12e arrondissement - restauration et activités scolaires,0.95,2026-02-18,llm_claude
+CAISSE ECOLES 16 EME ARRON PARIS,Éducation,Caisse des écoles du 16e arrondissement,0.9,2026-02-18,llm_claude
+CAISSE ECOLES 19 EME ARRON PARIS,Éducation,Caisse des écoles du 19e arrondissement,0.95,2026-02-18,llm_claude
+CAISSE ECOLES 1ER ARR PARIS,Éducation,Caisse des écoles du 1er arrondissement,0.95,2026-02-18,llm_claude
+CAISSE ECOLES 20 EME ARRON PARIS,Éducation,Caisse des écoles du 20e arrondissement,0.95,2026-02-18,llm_claude
+CAISSE ECOLES 4 EME ARRONDISSEMENT,Éducation,Caisse des écoles du 4e arrondissement,0.9,2026-02-18,llm_claude
+CAISSE ECOLES 5 EME ARRONDISSEMENT,Éducation,Caisse des écoles du 5e arrondissement,0.9,2026-02-18,llm_claude
+CAISSE REGLEMENT PECUNIAIRES CARPA,Administration,Caisse de règlements des avocats (CARPA),0.9,2026-02-18,llm_claude
+CAISSE REGLEMENTS PECUNIAIRES,Administration,Caisse de règlements pécuniaires - gestion financière institutionnelle,0.8,2026-02-18,llm_claude
+CAMELIA CINEMAS,Culture,Cinéma - exploitation de salles,0.95,2026-02-18,llm_claude
+CANAUX,Économie,Les Canaux - maison des économies solidaires et innovantes,0.85,2026-02-18,llm_claude
+CAP SPORTS ARTS AVENTURES AMITI,Sport,"Association multisports, arts et aventures",0.8,2026-02-18,llm_claude
+CARAMEL,Social - Petite enfance,Structure d'accueil petite enfance / crèche associative,0.55,2026-02-18,llm_claude
+CARTON PLEIN 75,Social - Solidarité,"Carton Plein 75 - insertion par le réemploi de cartons, économie solidaire",0.85,2026-02-18,llm_claude
+CASERNE EPHEMERE,Culture,Lieu de création artistique / ateliers d'artistes,0.9,2026-02-18,llm_claude
+CDC HAB SOCIAL SA HAB LOYER MODERE,Logement,CDC Habitat Social - HLM / logement social,0.95,2026-02-18,llm_claude
+CDC HABITAT,Logement,Bailleur social - Caisse des Dépôts Habitat,0.95,2026-02-18,llm_claude
+CENT D ACTIONS LOCALE DU XVIII,Social - Solidarité,Centre d'actions locales du 18e arrondissement - aide sociale de proximité,0.8,2026-02-18,llm_claude
+CENTR ISRAELITE MONTMARTRE,Social - Solidarité,Centre communautaire israélite - action sociale et cultuelle Montmartre,0.55,2026-02-18,llm_claude
+CENTRE ACTION SOCIALE VILLE PARIS,Social - Solidarité,Action sociale municipale (CASVP),0.95,2026-02-18,llm_claude
+CENTRE ALPHA CHOISY,Éducation,Alphabétisation et apprentissage du français,0.9,2026-02-18,llm_claude
+CENTRE AUDIOVISUEL SIMONE DE BEAUVO,Culture,Centre audiovisuel / cinéma / arts visuels féministes,0.95,2026-02-18,llm_claude
+CENTRE COROT ENTRAIDE D AUTEUIL,Social - Solidarité,Centre d'entraide et solidarité de proximité (Auteuil),0.88,2026-02-18,llm_claude
+CENTRE D ACTION SOCIAL PROTESTANT HUDA L ESQUISE,Social - Solidarité,Hébergement d'urgence (HUDA) et action sociale protestante,0.95,2026-02-18,llm_claude
+CENTRE D ACTION SOCIALE PROTESTANT,Social - Solidarité,"Action sociale, aide aux personnes en difficulté",0.93,2026-02-18,llm_claude
+CENTRE D ACTION SOCIALE PROTESTANT UVRE DE SECOURS AUX ENFANTS,Social - Solidarité,CASP et OSE - aide sociale et protection de l'enfance,0.92,2026-02-18,llm_claude
+CENTRE DE RESSOURCES POUR MINI,Social - Petite enfance,Centre de ressources pour mineurs / petite enfance,0.65,2026-02-18,llm_claude
+CENTRE LESBIEN GAI BI ET TRANS,Social - Solidarité,Centre communautaire LGBT+ / lutte contre les discriminations,0.8,2026-02-18,llm_claude
+CENTRE NATIONAL CHANSON VARIETES JA,Culture,"Centre National de la Chanson, des Variétés et du Jazz (CNV) - nom tronqué",0.98,2026-02-18,llm_claude
+CENTRE NATIONAL CHANSON VARIETES JAZZ,Culture,"Centre National de la Chanson, des Variétés et du Jazz (CNV)",0.98,2026-02-18,llm_claude
+CENTRE REGIONAL DE COORDINATION,Santé,Centre régional de coordination (dépistage cancers / santé publique),0.6,2026-02-18,llm_claude
+CENTRE REGIONAL OEUVRES UNIV SCOLAI,Éducation,CROUS - œuvres universitaires et scolaires,0.95,2026-02-18,llm_claude
+CERCLE DES ESCRIMEURS PARISIENS,Sport,Club d'escrime,0.99,2026-02-18,llm_claude
+CEREP,Santé,Centre de recherche en psychopathologie et psychothérapie,0.7,2026-02-18,llm_claude
+CHAMPIONNET SPORTS,Sport,Club sportif multisports (18e arrondissement),0.95,2026-02-18,llm_claude
+CHAMPS DES POSSIBLES,Social - Solidarité,Insertion sociale et accompagnement,0.5,2026-02-18,llm_claude
+CHANTIER ECOLE ILE DE FRANCE,Économie,Insertion professionnelle par les chantiers-école,0.88,2026-02-18,llm_claude
+CHINOIS DE FRANCE FRANCAIS DE CHINE,Culture,Échanges culturels franco-chinois,0.55,2026-02-18,llm_claude
+CHORBA,Social - Solidarité,Aide alimentaire (distribution de repas),0.9,2026-02-18,llm_claude
+CHOUINE,Autre,Nom insuffisant pour déterminer le domaine d'action,0.3,2026-02-18,llm_claude
+CINELBA SA,Culture,Cinéma / production audiovisuelle,0.85,2026-02-18,llm_claude
+CINEMA CHAPLIN,Culture,Cinéma,0.95,2026-02-18,llm_claude
+CINEMAS 21,Culture,Cinéma - exploitation de salles,0.95,2026-02-18,llm_claude
+CINEPOQUE,Culture,Cinéma / association cinématographique,0.9,2026-02-18,llm_claude
+CITE DE LA MUSIQUE,Culture,Musique - établissement culturel,0.99,2026-02-18,llm_claude
+CITE INTERNAT UNIVERSIT DE PARIS,Éducation,Cité Internationale Universitaire de Paris - hébergement et vie étudiante,0.95,2026-02-18,llm_claude
+CITE INTERNATION UNIVERSITAIRE DE P,Éducation,Cité Internationale Universitaire de Paris - hébergement et vie étudiante,0.85,2026-02-18,llm_claude
+CITE INTERNATIONALE DES ARTS,Culture,Résidences artistiques et arts visuels,0.97,2026-02-18,llm_claude
+CITES CARITAS,Social - Solidarité,Hébergement et accompagnement des personnes en difficulté,0.95,2026-02-18,llm_claude
+CLUB ATHLETIQUE DE PARIS,Sport,Club d'athlétisme parisien,0.95,2026-02-18,llm_claude
+CLUB D ESCRIME TOUR D AUVERGNE,Sport,Club d'escrime,0.99,2026-02-18,llm_claude
+CLUB DES FRANCAIS VOLANTS,Sport,"Club de sports de glace (patinage, hockey)",0.95,2026-02-18,llm_claude
+CLUB DES PETITS GAVROCHES,Sport,Club sportif pour enfants,0.6,2026-02-18,llm_claude
+CNRS,Éducation,Recherche scientifique (Centre National de la Recherche Scientifique),0.95,2026-02-18,llm_claude
+CO P1 SOLIDARITES ETUDIANTES,Social - Solidarité,Solidarités étudiantes - aide alimentaire et sociale,0.85,2026-02-18,llm_claude
+COALITION INTERNATIONALE SIDA,International,Coopération internationale - lutte contre le VIH/SIDA,0.75,2026-02-18,llm_claude
+COALLIA,Social - Solidarité,"Hébergement, insertion, aide aux réfugiés et personnes vulnérables",0.95,2026-02-18,llm_claude
+COALLIA HABITAT,Logement,Hébergement et logement accompagné,0.8,2026-02-18,llm_claude
+COLLECTIF CAFE CULTURE CUISINE,Culture,Collectif culturel (café culture cuisine),0.75,2026-02-18,llm_claude
+COLLECTIF DES VOUTES,Culture,Collectif artistique/culturel (Voûtes - lieu culturel parisien),0.75,2026-02-18,llm_claude
+COLLEGE ALBERTO GIACOMETTI,Éducation,Collège public,0.95,2026-02-18,llm_claude
+COLLEGE CLAUDE CHAPPE,Éducation,Collège public,0.97,2026-02-18,llm_claude
+COLLEGE CLAUDE DEBUSSY,Éducation,Collège public,0.99,2026-02-18,llm_claude
+COLLEGE FRANCOIS VILLON,Éducation,Collège,0.98,2026-02-18,llm_claude
+COLLEGE GUSTAVE FLAUBERT,Éducation,Collège,0.99,2026-02-18,llm_claude
+COLLEGE HECTOR BERLIOZ,Éducation,Collège public,0.99,2026-02-18,llm_claude
+COLLEGE JANSON DE SAILLY,Éducation,Collège public,0.99,2026-02-18,llm_claude
+COLLEGE PIERRE ALVISET,Éducation,Collège Pierre Alviset,0.97,2026-02-18,llm_claude
+COLLEGE THOMAS MANN,Éducation,Collège Thomas Mann,0.97,2026-02-18,llm_claude
+COLOMBBUS,Économie,Insertion professionnelle et entrepreneuriat,0.75,2026-02-18,llm_claude
+COMEDE COMITE SANTE DES EXILES,Santé,Santé des exilés et réfugiés,0.9,2026-02-18,llm_claude
+COMIT LOCAL LE LOGEMENT AUTO JEUNE,Logement,Comité local pour le logement autonome des jeunes,0.9,2026-02-18,llm_claude
+COMIT NAT OLYMPIQ SPORTIF FRAN,Sport,Comité National Olympique et Sportif Français (CNOSF),0.99,2026-02-18,llm_claude
+COMITE ACTION SOCIAL OUTRE MER,Social - Solidarité,Action sociale en faveur des ultramarins,0.9,2026-02-18,llm_claude
+COMITE CHAMPS ELYSEES,Économie,Comité des Champs-Élysées - promotion commerciale et animation,0.85,2026-02-18,llm_claude
+COMITE CONTRE L ESCLAVAGE MODERNE,International,Lutte contre l'esclavage moderne et la traite des êtres humains,0.75,2026-02-18,llm_claude
+COMITE D ORGA DES CHAMP DU MONDE,Sport,Comité d'organisation des championnats du monde,0.8,2026-02-18,llm_claude
+COMITE DE PARIS F S G T,Sport,Fédération Sportive et Gymnique du Travail - comité parisien,0.95,2026-02-18,llm_claude
+COMITE DEP OLYMPIQUE ET SPORTIF DE,Sport,Comité départemental olympique et sportif,0.98,2026-02-18,llm_claude
+COMITE DEPARTEMENTAL,Sport,"Comité départemental sportif (nom tronqué, probablement olympique ou sportif)",0.6,2026-02-18,llm_claude
+COMITE DEPARTEMENTAL PARIS LIGUE CA,Sport,Comité départemental sportif (Ligue contre le cancer ou canoë-kayak),0.7,2026-02-18,llm_claude
+COMITE DU FG SAINT HONORE,Économie,Comité de commerçants du Faubourg Saint-Honoré,0.8,2026-02-18,llm_claude
+COMITE LOCAL D ORGA COUPES MONDE,Sport,Comité local d'organisation des Coupes du Monde,0.92,2026-02-18,llm_claude
+COMMIS ADM BOURSE TRAVAIL,Administration,Commission administrative de la Bourse du Travail,0.88,2026-02-18,llm_claude
+COMPAGNIE A L AFFUT,Culture,Compagnie de spectacle vivant (théâtre/danse),0.92,2026-02-18,llm_claude
+COMPAGNIE DU 20E,Culture,Compagnie théâtrale ou artistique du 20e arrondissement,0.8,2026-02-18,llm_claude
+COMPAGNONS BATISSEURS ILE DE FRANCE,Logement,Auto-réhabilitation et amélioration de l'habitat,0.8,2026-02-18,llm_claude
+COMPAGNONS DE LA NUIT,Social - Solidarité,Aide aux sans-abri et hébergement d'urgence,0.95,2026-02-18,llm_claude
+CONNAITRE PROTEGER NATURE VAL DE SE,Environnement,Protection de la nature dans le Val-de-Seine,0.95,2026-02-18,llm_claude
+CONSEIL DEP DE L ACCES AU DROIT,Administration,Conseil départemental de l'accès au droit - aide juridique,0.85,2026-02-18,llm_claude
+CONSERVATOIRE NATIONAL ARTS ET METI,Éducation,Enseignement supérieur et formation professionnelle (CNAM),0.97,2026-02-18,llm_claude
+CONST ARCHITECT URBAIN ENVIRONNEMEN,Environnement,"Architecture, urbanisme et environnement",0.6,2026-02-18,llm_claude
+COOP MIJOTEE,Économie,Coopérative alimentaire / insertion économique,0.6,2026-02-18,llm_claude
+COOPERATIVE DE RUE ET DE CIRQUE,Culture,Arts du cirque et spectacle vivant,0.9,2026-02-18,llm_claude
+COOPERATIVE DE SANTE RICHERAND,Santé,Coopérative de santé / centre de soins,0.95,2026-02-18,llm_claude
+COUP DE POUCE,Éducation,Association Coup de Pouce - soutien éducatif / accompagnement scolaire,0.65,2026-02-18,llm_claude
+CRAVATE SOLIDARE,Économie,Insertion professionnelle par le don de vêtements et coaching vestimentaire,0.85,2026-02-18,llm_claude
+CRECHE GAN MENAHEM,Social - Petite enfance,Crèche associative,0.97,2026-02-18,llm_claude
+CRECHE LAIQUE ST FARGEAU,Social - Petite enfance,Crèche,0.99,2026-02-18,llm_claude
+CRECHE PARENTALE FARANDOLE,Social - Petite enfance,Crèche parentale,0.99,2026-02-18,llm_claude
+CRECHE PARENTALE LES PETITS LOUPS,Social - Petite enfance,Crèche parentale,0.99,2026-02-18,llm_claude
+CRESCENDO,Social - Petite enfance,Réseau de crèches et établissements petite enfance,0.85,2026-02-18,llm_claude
+CTE FR DE SOUTIEN GK SAVAR BANGLA,International,Coopération internationale / soutien au Bangladesh (Gonoshasthaya Kendra Savar),0.88,2026-02-18,llm_claude
+CTR REGION INFORMATION PREVENTION,Santé,"Centre régional d'information et de prévention (CRIPS) - prévention santé, VIH/SIDA",0.82,2026-02-18,llm_claude
+CTRE ACCU MEDIC REINSER ECON ET SOC,Social - Solidarité,Centre d'accueil médical et de réinsertion économique et sociale,0.85,2026-02-18,llm_claude
+CTRE ETUDES FORMATION D INSERT LANG,Social - Solidarité,Centre d'études et formation pour l'insertion par la langue (public migrant/réfugié),0.8,2026-02-18,llm_claude
+CTRE INTERNATIONAL CREATIONS THEATR,Culture,Créations théâtrales - Centre international,0.95,2026-02-18,llm_claude
+CTRE LOGEME JEUNES,Logement,Centre de logement pour jeunes (FJT/résidence jeunes travailleurs),0.95,2026-02-18,llm_claude
+CTRE LOGEME JEUNES TRAVAI ETUDIA,Logement,Centre de logement pour jeunes travailleurs et étudiants,0.9,2026-02-18,llm_claude
+CTRE NAL DRAMAT CONTEMP THEAT OUV,Culture,Centre national dramatique contemporain - théâtre ouvert,0.97,2026-02-18,llm_claude
+CTRE NAT DE LA RECHERCHE SCIENTIF,Éducation,Recherche scientifique (CNRS),0.95,2026-02-18,llm_claude
+CTRE NAT DE LA RECHERCHE SCIENTIFIQ,Éducation,Recherche scientifique (CNRS),0.95,2026-02-18,llm_claude
+CULTURE DU COEUR PARIS,Culture,Accès à la culture pour les personnes en précarité,0.85,2026-02-18,llm_claude
+CYCLOFFICINE DE PARIS,Transport,Atelier participatif de réparation de vélos / mobilité douce,0.85,2026-02-18,llm_claude
+CYGOGNE,Social - Petite enfance,Structure petite enfance / crèche associative,0.55,2026-02-18,llm_claude
+D UNE LANGUE A L AUTRE DULALA,Éducation,Éducation au plurilinguisme et langues maternelles,0.85,2026-02-18,llm_claude
+D2L,Économie,Insertion économique ou développement local,0.4,2026-02-18,llm_claude
+DADOUN PERE ET FILS,Économie,Commerce / entreprise familiale,0.5,2026-02-18,llm_claude
+DALLE AUX CHAPS,Culture,Compagnie de spectacle vivant / arts de rue,0.55,2026-02-18,llm_claude
+DEBROUILLE COMPAGNIE,Culture,Compagnie de spectacle vivant / théâtre,0.8,2026-02-18,llm_claude
+DEVELOPP DE LA DANSE A PARIS,Culture,Développement de la danse à Paris,0.97,2026-02-18,llm_claude
+DIAGNOSTIC ET TRAJECTOIRES,Social - Solidarité,Diagnostic social et accompagnement de parcours,0.55,2026-02-18,llm_claude
+DIR REG FINANCES PUBLIQUES IDF PARI,Administration,Direction régionale des finances publiques,0.97,2026-02-18,llm_claude
+DISTRICT PARISIEN DE FOOTBALL,Sport,Fédération sportive - football parisien,0.99,2026-02-18,llm_claude
+DIVERS CREANCIERS GRATUITE TITRES TRANSPORT,Transport,Gratuité des titres de transport,0.9,2026-02-18,llm_claude
+DIVERS CULTUR SOC ENFANCE COULEUR,Culture,Activités culturelles et socioculturelles pour l'enfance,0.6,2026-02-18,llm_claude
+DOMREMY BASKET 13,Sport,Club de basket-ball (13e arrondissement),0.99,2026-02-18,llm_claude
+DULAC CINEMAS,Culture,Cinéma / exploitation de salles de cinéma,0.97,2026-02-18,llm_claude
+EAU DE PARIS,Environnement,Régie municipale de l'eau potable,0.8,2026-02-18,llm_claude
+ECOLE CHIEN GUIDE AVEUGLE PARIS REG,Social - Solidarité,Formation de chiens guides pour personnes aveugles / handicap visuel,0.93,2026-02-18,llm_claude
+ECOLE D ECONOMIE DE PARIS,Éducation,Enseignement supérieur et recherche en économie (Paris School of Economics),0.95,2026-02-18,llm_claude
+ECOLE DE LA 2E CHANCE DE PARIS,Éducation,Formation et insertion des jeunes décrocheurs,0.95,2026-02-18,llm_claude
+ECOLE DE LA DEUXIEME CHANCE,Éducation,Formation et insertion des jeunes décrocheurs (E2C),0.95,2026-02-18,llm_claude
+ECOLE DU BREUIL,Éducation,École d'horticulture et de paysage de la Ville de Paris,0.9,2026-02-18,llm_claude
+ECOLE HAUTES ETUDES SCIENCES SOCIAL,Éducation,École des Hautes Études en Sciences Sociales (EHESS),0.99,2026-02-18,llm_claude
+ECOLE NAT SUP DE CHIMIE DE PARIS,Éducation,École nationale supérieure de chimie - enseignement supérieur,0.97,2026-02-18,llm_claude
+ECOLE NORMALE SOCIALE,Éducation,Formation en travail social,0.92,2026-02-18,llm_claude
+ECOLE NORMALE SUPERIEURE,Éducation,Enseignement supérieur et recherche,0.97,2026-02-18,llm_claude
+ECOLE PARENTS EDUCATEURS IDF,Éducation,Soutien à la parentalité et éducation,0.82,2026-02-18,llm_claude
+ECOLE PRATIQUE DES HAUTES ETUDES,Éducation,Enseignement supérieur et recherche,0.95,2026-02-18,llm_claude
+ECOUTE INTERCULT DISPOSIT INTER PSY,Santé,Soutien psychologique interculturel / santé mentale,0.82,2026-02-18,llm_claude
+EFIDIS SA HABITATION LOYER MODERE,Logement,HLM - habitation à loyer modéré,0.99,2026-02-18,llm_claude
+ELECTRICIENS SANS FRONTIERES,International,Coopération internationale – accès à l'énergie dans les pays en développement,0.95,2026-02-18,llm_claude
+ELOGIE SIEMP,Logement,Bailleur social parisien (ex-SIEMP / Elogie),0.97,2026-02-18,llm_claude
+EMBIX,Environnement,Réseaux de chaleur et énergie urbaine,0.6,2026-02-18,llm_claude
+EMILE ET ROSA,Social - Petite enfance,Structure d'accueil petite enfance,0.65,2026-02-18,llm_claude
+ENFANCES AU CINEMA,Culture,Éducation à l'image et cinéma jeune public,0.9,2026-02-18,llm_claude
+ENFANT PRESENT,Social - Petite enfance,Protection de l'enfance / soutien à la parentalité,0.78,2026-02-18,llm_claude
+ENFANTS DE LA GOUTTE D OR,Social - Solidarité,Association d'aide aux enfants et familles du quartier Goutte d'Or (18e),0.85,2026-02-18,llm_claude
+ENFANTS DU CANAL,Social - Solidarité,Aide aux sans-abri et personnes en grande précarité,0.95,2026-02-18,llm_claude
+ENSEMBLE ET SOLIDAIRES UNION NATION,Social - Solidarité,Union nationale d'entraide et de solidarité,0.85,2026-02-18,llm_claude
+ENSEMBLE INTER CONTEMPORAIN,Culture,Ensemble de musique contemporaine (EIC),0.98,2026-02-18,llm_claude
+ENSEMBLE PARIS EMPLOI COMPETENCES,Économie,Insertion professionnelle et emploi,0.9,2026-02-18,llm_claude
+ENTREPRENDRE POUR HUMANISER,Social - Solidarité,Insertion et aide humanitaire,0.7,2026-02-18,llm_claude
+ENTREPRISE SOCIALE POUR L HABITAT,Logement,Bailleur social / entreprise sociale pour l'habitat,0.95,2026-02-18,llm_claude
+ENVOLUDIA,Social - Solidarité,"Accompagnement du handicap (polyhandicap, enfants et adultes)",0.9,2026-02-18,llm_claude
+EPCS CAMPUS CONDORCET,Éducation,Campus universitaire et recherche (Campus Condorcet),0.95,2026-02-18,llm_claude
+ERDA,Culture,Éducation Recherche Développement Artistique,0.75,2026-02-18,llm_claude
+ERDA EDUCAT RECHER DEVEL ARTIST,Culture,Éducation et recherche artistique (ERDA),0.9,2026-02-18,llm_claude
+ERIGERE,Logement,Bailleur social (logement social),0.93,2026-02-18,llm_claude
+ERILIA,Logement,Bailleur social / logement social,0.9,2026-02-18,llm_claude
+ESP CULTURE UNIVERSITAIRE JUIF EURO,Culture,Espace de culture universitaire juif européen,0.8,2026-02-18,llm_claude
+ESPACE 19,Social - Solidarité,Centre social et culturel du 19e arrondissement,0.8,2026-02-18,llm_claude
+ESPACIL HABITAT SA D HABITATIONS,Logement,Société d'habitations / logement social,0.92,2026-02-18,llm_claude
+ESPERANCE SPORTIVE PARISIENNE,Sport,Club sportif parisien,0.95,2026-02-18,llm_claude
+ESPEREM,Social - Solidarité,ESPEREM - association d'insertion et d'hébergement pour personnes en difficulté,0.9,2026-02-18,llm_claude
+ESPOIR CENTRES FAMILIAUX JEUNE,Social - Solidarité,Aide aux familles et jeunes en difficulté,0.85,2026-02-18,llm_claude
+ETE PARISIEN,Culture,Animations et événements estivaux parisiens,0.55,2026-02-18,llm_claude
+ETOILE DU NORD,Culture,Salle de spectacle / théâtre (18e arrondissement),0.85,2026-02-18,llm_claude
+ETS PUB AMENAGEMENT UNIVERSITAIRE I,Éducation,Aménagement universitaire (EPAURIF ou similaire),0.9,2026-02-18,llm_claude
+ETS PUB PAL DECOUVERTE CI SCI INDUS,Culture,Établissement public du Palais de la Découverte - Cité des Sciences et de l'Industrie,0.9,2026-02-18,llm_claude
+ETS PUBLIC PARC GRANDE,Culture,Établissement public du Parc et de la Grande Halle de la Villette,0.95,2026-02-18,llm_claude
+ETUDES ET CHANTIERS ILE DE FRANCE,Économie,Insertion professionnelle par les chantiers,0.8,2026-02-18,llm_claude
+EXPERIMENTATION TERRIT CTRE CHOMAGE,Économie,Expérimentation Territoires Zéro Chômeur de Longue Durée,0.95,2026-02-18,llm_claude
+EXPERIMENTATION TERRITORIALE CONTRE,Économie,Expérimentation territoriale contre le chômage de longue durée (ETCLD / Territoires zéro chômeur),0.9,2026-02-18,llm_claude
+EXTRAMUROS L ASSOCIATION,Environnement,"Réemploi de matériaux, économie circulaire, menuiserie solidaire",0.85,2026-02-18,llm_claude
+FACE PARIS,Économie,Insertion économique et lutte contre les discriminations en entreprise,0.85,2026-02-18,llm_claude
+FED ACTEURS SOLIDARIT ILE DE FRANCE,Social - Solidarité,Fédération des acteurs de la solidarité - lutte contre l'exclusion,0.97,2026-02-18,llm_claude
+FEDER CENTRE SOCIAUX ET SOC CULTUR,Social - Solidarité,Fédération des centres sociaux et socioculturels,0.8,2026-02-18,llm_claude
+FEDER FRANCAISE GYMNASTIQUE,Sport,Fédération Française de Gymnastique,0.99,2026-02-18,llm_claude
+FEDERATION DES CRECHES GRIBOUILLE,Social - Petite enfance,Fédération de crèches,0.99,2026-02-18,llm_claude
+FEDERATION PARIS LIGUE DE L ENSEIGN,Éducation,Éducation populaire - Ligue de l'Enseignement,0.95,2026-02-18,llm_claude
+FIT UNE FEMME UN TOIT,Social - Solidarité,Hébergement et aide aux femmes victimes de violences,0.95,2026-02-18,llm_claude
+FLORA TRISTAN LA REGIE DE QUARTIER,Social - Solidarité,Régie de quartier – insertion et lien social,0.85,2026-02-18,llm_claude
+FONCIERE DE LA VILLE DE PARIS,Logement,Foncière publique / gestion immobilière Ville de Paris,0.85,2026-02-18,llm_claude
+FOND MAISON CHAMPS ST FRAN ASSISE,Social - Solidarité,Fondation Maison des Champs Saint-François d'Assise - hébergement/accueil solidaire,0.75,2026-02-18,llm_claude
+FOND MAISON CHAMPS ST FRANC ASSISE,Social - Solidarité,Fondation Maison des Champs Saint-François d'Assise - hébergement/accueil solidaire,0.8,2026-02-18,llm_claude
+FOND MAISON CHAMPS STFRAN ASSISE,Social - Solidarité,Hébergement et accueil solidaire (Fondation Maison des Champs Saint-François d'Assise),0.8,2026-02-18,llm_claude
+FOND OEUVRE DE LA CROIX ST SIMON,Santé,Fondation Œuvre de la Croix Saint-Simon - soins et accompagnement médico-social,0.82,2026-02-18,llm_claude
+FONDAT ABBE PIERRE LOGEMENT DEFAVOR,Logement,Fondation Abbé Pierre pour le logement des défavorisés,0.98,2026-02-18,llm_claude
+FONDAT MAISON CHAMPS ST FRANC D ASS,Social - Solidarité,Fondation Maison des Champs - hébergement/accueil social (Saint-François d'Assise),0.85,2026-02-18,llm_claude
+FONDATION DE L ARMEE DU SALUT,Social - Solidarité,Hébergement d'urgence et aide aux personnes en difficulté,0.97,2026-02-18,llm_claude
+FONDATION DES PETITS FRERES DES PAU,Social - Solidarité,Accompagnement des personnes âgées isolées,0.95,2026-02-18,llm_claude
+FONDATION L ELAN RETROUVE,Santé,Santé mentale et psychiatrie,0.92,2026-02-18,llm_claude
+FONDATION OEUVRE DE LA CROIX,Social - Solidarité,Œuvre caritative et sociale (Croix Saint-Simon),0.8,2026-02-18,llm_claude
+FONDATION OEUVRE DE LA CROIX ST SIM,Social - Solidarité,Œuvre caritative et sociale (Croix Saint-Simon),0.85,2026-02-18,llm_claude
+FONDATION OLGA SPITZER,Social - Solidarité,Protection de l'enfance et aide sociale à l'enfance,0.92,2026-02-18,llm_claude
+FOOTBALL CLUB DES GOBELINS,Sport,Club de football - quartier des Gobelins,0.97,2026-02-18,llm_claude
+FORUM DES IMAGES,Culture,Cinéma et patrimoine audiovisuel,0.95,2026-02-18,llm_claude
+FRANCAIS LANGUE D ACCUEIL,Social - Solidarité,Apprentissage du français pour migrants et réfugiés,0.9,2026-02-18,llm_claude
+FRANCE HORIZON,Social - Solidarité,"Hébergement, insertion et accompagnement des réfugiés et personnes vulnérables",0.95,2026-02-18,llm_claude
+FREHA,Social - Solidarité,Hébergement et insertion des réfugiés et personnes précaires,0.8,2026-02-18,llm_claude
+GABY SOURIRE,Social - Solidarité,Association d'aide aux enfants malades / solidarité,0.6,2026-02-18,llm_claude
+GAIA PARIS,Environnement,Écologie et biodiversité urbaine,0.55,2026-02-18,llm_claude
+GAN YAEL CRECHE JARDIN ENF,Social - Petite enfance,Crèche et jardin d'enfants,0.98,2026-02-18,llm_claude
+GEST CENTRE ANIMAT CULTUR,Culture,Gestion de centre d'animation culturelle,0.9,2026-02-18,llm_claude
+GIP HASHTAG FRANCE RUGBY 2023,Sport,Organisation de la Coupe du monde de rugby 2023,0.95,2026-02-18,llm_claude
+GOUTTE LAIT SAINT LEON,Social - Petite enfance,Goutte de lait - protection maternelle et infantile,0.9,2026-02-18,llm_claude
+GREEN CLIMATE FUND,International,Fonds international pour le climat - coopération internationale,0.9,2026-02-18,llm_claude
+GROUP EXPLOITANT FORUM HALLES,Économie,Gestion et exploitation du Forum des Halles (centre commercial/espace public),0.65,2026-02-18,llm_claude
+GROUP INTER PUBLIC CAFES CULTURES,Culture,"Cafés-cultures, programmation artistique en cafés et lieux conviviaux",0.9,2026-02-18,llm_claude
+GROUPE HOSPITAL UNIVERSITAIRE PARIS,Santé,Hôpital universitaire (GHU Paris),0.97,2026-02-18,llm_claude
+GROUPE OEUVRES SOCIALES BELLEVILLE,Social - Solidarité,Œuvres sociales et solidarité de quartier,0.9,2026-02-18,llm_claude
+GROUPE SOS SOLIDARITES,Social - Solidarité,"Insertion, hébergement, aide aux personnes vulnérables",0.95,2026-02-18,llm_claude
+GROUPEMENT D AGRICULTURE BIOLOGI,Environnement,Agriculture biologique / promotion du bio,0.9,2026-02-18,llm_claude
+GRPT PARISIEN INTER BAILL SURVEILL,Logement,Groupement parisien inter-bailleurs de surveillance,0.75,2026-02-18,llm_claude
+GRPT PARISIEN INTERBAILL SURVEILL,Administration,Groupement parisien inter-bailleurs de surveillance,0.8,2026-02-18,llm_claude
+GUINGETTE PIRATE,Culture,Lieu culturel festif - guinguette / bar culturel flottant,0.8,2026-02-18,llm_claude
+HALAGE,Environnement,Insertion par le maraîchage et l'entretien d'espaces verts,0.8,2026-02-18,llm_claude
+HAUT COMME 3 POMMES,Social - Petite enfance,Structure d'accueil petite enfance,0.9,2026-02-18,llm_claude
+HENEO,Économie,Entreprise d'insertion ou de services,0.45,2026-02-18,llm_claude
+HOME SWEET MOMES,Social - Petite enfance,Garde d'enfants / crèche / accueil petite enfance,0.85,2026-02-18,llm_claude
+HORS LA RUE,Social - Solidarité,Protection des mineurs étrangers isolés et en errance,0.95,2026-02-18,llm_claude
+ICF LA SABLIERE SA D HLM,Logement,Bailleur social HLM,0.95,2026-02-18,llm_claude
+IERFAS,Éducation,"Institut d'études, recherche et formation",0.6,2026-02-18,llm_claude
+ILE DE FRANCE MOBILITES,Transport,Autorité organisatrice des transports en Île-de-France,0.95,2026-02-18,llm_claude
+IMMOBILIERE 3F,Logement,Bailleur social - logement social,0.95,2026-02-18,llm_claude
+INALCO,Éducation,Institut National des Langues et Civilisations Orientales - enseignement supérieur,0.95,2026-02-18,llm_claude
+INCUBATEUR AU FEMININ,Économie,Incubateur entrepreneuriat féminin,0.9,2026-02-18,llm_claude
+INDIGO STATIONNEMENT SB,Transport,Gestion de stationnement,0.95,2026-02-18,llm_claude
+INFANS A L ENFANT,Social - Petite enfance,Accueil et accompagnement de la petite enfance,0.92,2026-02-18,llm_claude
+INST CERVEAU MOELLE EPINIERE,Santé,Recherche médicale - Institut du Cerveau et de la Moelle Épinière (ICM),0.97,2026-02-18,llm_claude
+INST INTERDEP DU PARC DU TREMBLAY,Sport,Institut interdépartemental du Parc du Tremblay - équipements sportifs,0.75,2026-02-18,llm_claude
+INST NATIONAL SANTE RECHERCHE MEDIC,Santé,INSERM - recherche médicale,0.98,2026-02-18,llm_claude
+INSTITUT CURIE,Santé,Recherche médicale et soins contre le cancer,0.97,2026-02-18,llm_claude
+INSTITUT FRANCAIS,International,Institut Français – coopération culturelle internationale et francophonie,0.8,2026-02-18,llm_claude
+INSTITUT KURDE DE PARIS,Culture,"Institut culturel kurde, promotion de la culture et langue kurdes",0.8,2026-02-18,llm_claude
+INSTITUT NATIONAL DE LA SANTE,Santé,Institut National de la Santé (INSERM ou similaire),0.95,2026-02-18,llm_claude
+INSTITUT PHYSIQUE DU GLOBE,Éducation,Institut de Physique du Globe de Paris - recherche scientifique,0.9,2026-02-18,llm_claude
+INSTITUTIONS GANONE YAD,Éducation,Institution éducative confessionnelle (Ganon / jardin d'enfants),0.65,2026-02-18,llm_claude
+INSTUT RECHERCHE APPLIQUEE ENFANT,Social - Petite enfance,Recherche appliquée sur l'enfant et la parentalité,0.7,2026-02-18,llm_claude
+INTERNATIONAL VISUAL THEATRE,Culture,Théâtre visuel / langue des signes (IVT),0.95,2026-02-18,llm_claude
+JANUS SAS,Autre,Société commerciale (SAS) - activité non identifiable,0.4,2026-02-18,llm_claude
+JETUIL,Social - Solidarité,JETUIL - association d'insertion ou solidarité (nom tronqué probable),0.35,2026-02-18,llm_claude
+JEUNESSE FEU VERT,Social - Solidarité,Prévention et insertion des jeunes,0.9,2026-02-18,llm_claude
+JOANNAISE DU GROS CAILLOU,Sport,Association sportive (pétanque/boules),0.75,2026-02-18,llm_claude
+JOURS HEUREUX,Social - Solidarité,Association d'éducation populaire et séjours solidaires,0.65,2026-02-18,llm_claude
+JUSTICE DEUXIEME CHANCE,Social - Solidarité,Réinsertion et aide aux personnes judiciarisées,0.8,2026-02-18,llm_claude
+KEUR KAMER,Culture,Association culturelle camerounaise,0.6,2026-02-18,llm_claude
+L AGENCE PARISIENNE DU CLIMAT,Environnement,Climat et transition énergétique,0.95,2026-02-18,llm_claude
+L HABITAT SOCIAL FRANCAIS,Logement,Habitat social / logement social,0.9,2026-02-18,llm_claude
+L ILE AUX TRESORS,Social - Petite enfance,Crèche / structure petite enfance,0.7,2026-02-18,llm_claude
+L INST D ETUDES AVANCEES PARI,Éducation,Institut d'études avancées - recherche académique,0.92,2026-02-18,llm_claude
+L UN EST L AUTRE,Social - Solidarité,"Solidarité, lien social, inclusion",0.6,2026-02-18,llm_claude
+LANGUES PLURIELLES,Éducation,Apprentissage du français et des langues,0.85,2026-02-18,llm_claude
+LASER ASSOCIATION,Autre,Association LASER – activité non identifiable avec certitude,0.3,2026-02-18,llm_claude
+LEO LAGRANGE NORD ILE DE FRANCE,Éducation,Éducation populaire et jeunesse (Léo Lagrange),0.8,2026-02-18,llm_claude
+LEO LAGRANGE NORD ILEDEFRANCE,Éducation,"Éducation populaire, animation jeunesse",0.8,2026-02-18,llm_claude
+LEVALLOIS PARIS SAINTCLOUD,Sport,Club sportif (probable club de rugby ou football inter-communes),0.6,2026-02-18,llm_claude
+LIFE FOR PARIS 13 NOVEMBRE 2015,Social - Solidarité,Soutien aux victimes des attentats du 13 novembre 2015,0.95,2026-02-18,llm_claude
+LIGUE FRCAISE DEFENSE DROITS DE L H,Social - Solidarité,Ligue Française de Défense des Droits de l'Homme,0.85,2026-02-18,llm_claude
+LINKEE FRANCE,Social - Solidarité,Aide alimentaire et lutte contre le gaspillage,0.95,2026-02-18,llm_claude
+LINKEE PARIS,Social - Solidarité,Aide alimentaire anti-gaspillage,0.93,2026-02-18,llm_claude
+LOGIREP,Logement,Logement social (bailleur social),0.93,2026-02-18,llm_claude
+LOISIRS PLURIEL DU 19EME,Social - Solidarité,Loisirs pour enfants en situation de handicap dans le 19e,0.8,2026-02-18,llm_claude
+LOISIRS RESIDENTIELS DES MARINIERS,Social - Solidarité,Loisirs et hébergement pour mariniers / gens du voyage,0.6,2026-02-18,llm_claude
+LYCEE DES METIERS BOULLE E S A A,Éducation,"Lycée des métiers (École Boulle, arts appliqués)",0.95,2026-02-18,llm_claude
+LYCEE PROFESSIONNEL THEOPHILE GAUTI,Éducation,Lycée professionnel Théophile Gautier,0.97,2026-02-18,llm_claude
+LYCEE TECHNOLOGIQUE ESTIENNE E S A,Éducation,"Lycée technologique (École Estienne, arts graphiques)",0.92,2026-02-18,llm_claude
+LYCEE TECHNOLOGIQUE ESTIENNE ESA,Éducation,Lycée technologique - École Estienne (arts graphiques),0.95,2026-02-18,llm_claude
+LYCEE TECHNOLOGIQUE MUN DUPERRE ESA,Éducation,Lycée technologique municipal (École Duperré - arts appliqués),0.95,2026-02-18,llm_claude
+MADLINE,Autre,,0.25,2026-02-18,llm_claude
+MAISON BAKHITA,Social - Solidarité,Hébergement et accompagnement de femmes en situation de précarité / réfugiées,0.88,2026-02-18,llm_claude
+MAISON CANAL,Social - Solidarité,Maison de quartier / espace solidaire,0.5,2026-02-18,llm_claude
+MAISON DE L ENFANCE,Social - Petite enfance,Structure d'accueil de la petite enfance / enfance,0.85,2026-02-18,llm_claude
+MAISON DE L EUROPE DE PARIS,International,Promotion de la citoyenneté européenne et affaires européennes,0.85,2026-02-18,llm_claude
+MAISON DE L EUROPE DE PARIS CTRE,International,Affaires européennes et citoyenneté européenne,0.85,2026-02-18,llm_claude
+MAISON DE LA CONVERSATION,Culture,Lien social et échanges culturels / art de la conversation,0.6,2026-02-18,llm_claude
+MAISON DE LA POESIE,Culture,Maison de la Poésie - lieu culturel dédié à la poésie et à la littérature,0.98,2026-02-18,llm_claude
+MAISON DES ADOS ROBERT DEBRE GCSMS,Santé,Maison des adolescents - structure médico-sociale (hôpital Robert Debré),0.85,2026-02-18,llm_claude
+MAISON DES BOUT CHOU,Social - Petite enfance,Structure d'accueil petite enfance,0.92,2026-02-18,llm_claude
+MAISON KANGOUROU,Social - Petite enfance,Garde d'enfants / crèche familiale,0.85,2026-02-18,llm_claude
+MAISON OUVERTE,Social - Petite enfance,Lieu d'accueil enfants-parents / halte-garderie,0.7,2026-02-18,llm_claude
+MAMA,Culture,Art contemporain / lieu culturel,0.7,2026-02-18,llm_claude
+MANUFACTURE,Culture,Lieu de création artistique / spectacle vivant,0.6,2026-02-18,llm_claude
+MEDECINS DU MONDE,International,Aide humanitaire et coopération internationale,0.95,2026-02-18,llm_claude
+MEP MAISON EUROPEENNE,Culture,Maison Européenne de la Photographie - arts visuels / photographie,0.99,2026-02-18,llm_claude
+METRAMOMES,Social - Petite enfance,Structure d'accueil petite enfance (crèche/halte-garderie),0.8,2026-02-18,llm_claude
+MEXICO À PARIS,Culture,Échanges culturels franco-mexicains,0.7,2026-02-18,llm_claude
+MINISTER ENSEI SUPERI RECHER INNOVA,Éducation,"Ministère de l'Enseignement Supérieur, de la Recherche et de l'Innovation",0.99,2026-02-18,llm_claude
+MISSION LOCALE DE PARIS,Économie,Insertion professionnelle des jeunes,0.92,2026-02-18,llm_claude
+MISSION LOCALE PARIS,Économie,Insertion professionnelle des jeunes (Mission Locale),0.88,2026-02-18,llm_claude
+MOTEUR,Social - Solidarité,Insertion et handicap moteur,0.5,2026-02-18,llm_claude
+MOTIVEA,Économie,Insertion professionnelle / accompagnement vers l'emploi,0.5,2026-02-18,llm_claude
+MOULIN BLEU,Culture,Compagnie ou lieu de spectacle vivant,0.6,2026-02-18,llm_claude
+MUSEE D ART ET D HISTOIRE DU JUDAIS,Culture,Musée d'Art et d'Histoire du Judaïsme,0.98,2026-02-18,llm_claude
+MUSEE D ART ET D HISTOIRE DU JUDAISME,Culture,Musée - patrimoine et histoire du judaïsme,0.99,2026-02-18,llm_claude
+MUSEE EN HERBE,Culture,Musée ludique et pédagogique pour enfants,0.92,2026-02-18,llm_claude
+MUSEUM NATIONAL HISTOIRE NATURELLE,Culture,Muséum national d'Histoire naturelle – musée et patrimoine scientifique,0.9,2026-02-18,llm_claude
+MUTUELLE LA MAYOTTE,Social - Petite enfance,Crèche parentale / mutuelle petite enfance,0.6,2026-02-18,llm_claude
+NAT PREVENT ALCOOL ADDICT,Santé,Prévention des addictions à l'alcool (Association Nationale de Prévention en Alcoologie et Addictologie - ANPAA),0.95,2026-02-18,llm_claude
+NATIONALE DE READAPTATION SOCIALE,Social - Solidarité,Réadaptation sociale - insertion et réinsertion,0.85,2026-02-18,llm_claude
+NOUVELLE ETOILE DES ENFANTS DE,Culture,Association d'activités pour enfants (danse/spectacle),0.5,2026-02-18,llm_claude
+NOUVELLE ETOILE DES ENFANTS DE F,Culture,Association culturelle/éducative pour enfants (probablement danse ou spectacle),0.5,2026-02-18,llm_claude
+OBSERV MOND VILLES SUR QUAL AIR GUA,Environnement,Observatoire mondial des villes sur la qualité de l'air (garantie),0.9,2026-02-18,llm_claude
+OBSERVAT LOYERS AGGLO PARISIENNE,Logement,Observatoire des loyers de l'agglomération parisienne,0.9,2026-02-18,llm_claude
+OBSERVATOIRE REGION DU BRUIT EN IDF,Environnement,Bruitparif - Observatoire régional du bruit en Île-de-France,0.85,2026-02-18,llm_claude
+OEUVRE DE LA MIE DE PAIN,Social - Solidarité,Hébergement d'urgence et aide alimentaire,0.95,2026-02-18,llm_claude
+OEUVRE DE SECOURS AUX ENFANTS,Social - Solidarité,Protection de l'enfance et aide humanitaire (OSE),0.95,2026-02-18,llm_claude
+OEUVRE HOSPITALITE TRAVAIL,Social - Solidarité,Hébergement et insertion par le travail,0.8,2026-02-18,llm_claude
+OEUVRES D AVENIR,Social - Solidarité,Œuvres caritatives et solidarité,0.7,2026-02-18,llm_claude
+OEUVRES HOSP FR DE L ORDRE DE MALTE,Social - Solidarité,"Aide humanitaire, hébergement et soins aux personnes vulnérables",0.92,2026-02-18,llm_claude
+OFFICE CENTR COOPERAT ECOLE PARIS,Éducation,Office Central de la Coopération à l'École (OCCE) - coopératives scolaires,0.95,2026-02-18,llm_claude
+OFFICE DE TOURISME ET DES CONGRES P,Économie,Office de tourisme et des congrès de Paris - promotion touristique et économique,0.85,2026-02-18,llm_claude
+OFFICE DE TOURISME ET DES CONGRES PARIS,Économie,Tourisme et promotion économique de Paris,0.9,2026-02-18,llm_claude
+OFFICE TOURISME CONGRES PARIS,Économie,Office du tourisme et des congrès de Paris,0.9,2026-02-18,llm_claude
+OFFICE TOURISME ET CONGRES PARIS,Économie,Office de tourisme et des congrès de Paris,0.88,2026-02-18,llm_claude
+OHEL ESTHER,Social - Petite enfance,Structure d'accueil petite enfance communautaire,0.55,2026-02-18,llm_claude
+OLGA SPITZER,Social - Solidarité,Protection de l'enfance et aide sociale,0.9,2026-02-18,llm_claude
+OPPELIA,Santé,Prévention des addictions et accompagnement médico-social,0.92,2026-02-18,llm_claude
+ORCHESTRE DE CHAMBRE DE PARIS,Culture,Orchestre / musique classique,0.99,2026-02-18,llm_claude
+ORCHESTRE DE PARIS,Culture,Orchestre symphonique,0.99,2026-02-18,llm_claude
+ORGANIS PAN AFRICAINE LUTTE P SANTE,Santé,Organisation panafricaine de lutte pour la santé,0.92,2026-02-18,llm_claude
+OZAR HATORAH PARIS TREIZE CRECHE,Social - Petite enfance,"Crèche associative (réseau Ozar Hatorah, Paris 13e)",0.95,2026-02-18,llm_claude
+PARCOURS INSERTION FLES PARIS,Social - Solidarité,Insertion par l'apprentissage du français (FLE) pour publics migrants,0.9,2026-02-18,llm_claude
+PARIS 13 ATLETICO,Sport,Club sportif (football/athlétisme) du 13e arrondissement,0.95,2026-02-18,llm_claude
+PARIS 2024 COMITE D ORGANISAT DES,Sport,Comité d'organisation des Jeux Olympiques Paris 2024,0.98,2026-02-18,llm_claude
+PARIS 2024 COMITE D ORGANISATION,Sport,Comité d'organisation des Jeux Olympiques Paris 2024,0.99,2026-02-18,llm_claude
+PARIS 92,Sport,Club sportif (football/rugby),0.75,2026-02-18,llm_claude
+PARIS ACASA FUTSAL,Sport,Club de futsal,0.95,2026-02-18,llm_claude
+PARIS ANIMATION CULT ET SPORT,Culture,Animation culturelle et sportive parisienne - dominante culturelle,0.55,2026-02-18,llm_claude
+PARIS ATELIERS,Culture,Ateliers d'arts plastiques et pratiques artistiques,0.95,2026-02-18,llm_claude
+PARIS ATHLE 2020,Sport,Athlétisme,0.95,2026-02-18,llm_claude
+PARIS AUDIO VISUEL MEP,Culture,Maison Européenne de la Photographie - photographie et audiovisuel,0.98,2026-02-18,llm_claude
+PARIS BASKET 18E,Sport,Club de basketball du 18e arrondissement,0.98,2026-02-18,llm_claude
+PARIS BASKETBALL,Sport,Club de basketball professionnel,0.99,2026-02-18,llm_claude
+PARIS CINE,Culture,Cinéma - promotion et diffusion cinématographique,0.9,2026-02-18,llm_claude
+PARIS ET COMPAGNIE,Économie,Paris&Co - agence de développement économique et innovation de Paris,0.9,2026-02-18,llm_claude
+PARIS FOOTBALL CLUB,Sport,Club de football professionnel,0.99,2026-02-18,llm_claude
+PARIS HABITAT OPH,Logement,Office public de l'habitat - logement social,0.97,2026-02-18,llm_claude
+PARIS INITIATIVE ENTREPRISE,Économie,Aide à la création d'entreprise / microfinance,0.95,2026-02-18,llm_claude
+PARIS INITIATIVES ENTREPRISES,Économie,Paris Initiatives Entreprises - microfinance et aide à la création d'entreprise,0.95,2026-02-18,llm_claude
+PARIS MUSEES,Culture,Musées municipaux parisiens,0.99,2026-02-18,llm_claude
+PARIS UNIVERSITE CLUB,Sport,Club sportif universitaire omnisports,0.95,2026-02-18,llm_claude
+PARIS VOLLEY AVENIR,Sport,Club de volley-ball parisien,0.95,2026-02-18,llm_claude
+PARLER A D AUTRES,Santé,Soutien psychologique et écoute - santé mentale,0.6,2026-02-18,llm_claude
+PAROLES VOYAGEUSES,Culture,"Littérature, contes et arts de la parole",0.8,2026-02-18,llm_claude
+PASSERELLE 17 AS POUR LA REGIE,Social - Solidarité,Régie de quartier du 17e - insertion et lien social,0.7,2026-02-18,llm_claude
+PASSERELLE ASSIST AIDANT RESAF,Social - Solidarité,Aide aux aidants familiaux et réseau d'assistance,0.85,2026-02-18,llm_claude
+PAX PROGRES PALLAS,Sport,Club sportif multisports (association sportive parisienne),0.6,2026-02-18,llm_claude
+PETIT BAIN,Culture,Salle de concerts et lieu culturel flottant,0.92,2026-02-18,llm_claude
+PETIT NEY,Culture,Lieu culturel associatif (18e arrondissement),0.8,2026-02-18,llm_claude
+PETITE REINE,Transport,Livraison urbaine à vélo / mobilité douce,0.85,2026-02-18,llm_claude
+PETITE ROCKETTE,Économie,"La Petite Rockette - ressourcerie, réemploi, économie sociale et solidaire",0.75,2026-02-18,llm_claude
+PICOULET MISSION POPULAIRE XIE,Social - Solidarité,Mission populaire évangélique - hébergement et aide sociale,0.8,2026-02-18,llm_claude
+PIEDS TENDRES,Social - Petite enfance,Structure d'accueil petite enfance / crèche associative,0.65,2026-02-18,llm_claude
+PLANETE DES ENFANTS,Social - Petite enfance,Structure d'accueil petite enfance,0.85,2026-02-18,llm_claude
+PLATEAUX SAUVAGES,Culture,Lieu de création artistique (spectacle vivant),0.93,2026-02-18,llm_claude
+POLE SUP ENSEIGNEM ARTISTIQ PARIS,Éducation,Pôle supérieur d'enseignement artistique de Paris (PSPBB),0.85,2026-02-18,llm_claude
+POLYNOTES 75,Culture,Association musicale,0.75,2026-02-18,llm_claude
+POUR L AIDE AUX MERES DE FAMI,Social - Solidarité,Aide aux mères de famille en difficulté,0.9,2026-02-18,llm_claude
+POUSSINS D ANNAM,Social - Petite enfance,Crèche / halte-garderie (Les Poussins d'Annam),0.85,2026-02-18,llm_claude
+PREFECTURE DE POLICE DE PARIS,Sécurité,Préfecture de police de Paris,0.99,2026-02-18,llm_claude
+PRO INSERT,Économie,Insertion professionnelle,0.85,2026-02-18,llm_claude
+PROJETS 19,Social - Solidarité,Association d'insertion et solidarité dans le 19e arrondissement,0.6,2026-02-18,llm_claude
+PROTECTION CIVILE PARIS SEINE,Sécurité,Protection civile - secourisme et prévention,0.9,2026-02-18,llm_claude
+PUC VOLLEY BALL,Sport,Club de volley-ball (Paris Université Club),0.99,2026-02-18,llm_claude
+QUEL UNIVERS INVENTER,Culture,Compagnie de spectacle vivant / création artistique,0.7,2026-02-18,llm_claude
+RATP,Transport,Régie Autonome des Transports Parisiens - transports en commun,0.98,2026-02-18,llm_claude
+RATP HABITAT,Logement,RATP Habitat - bailleur social du groupe RATP,0.93,2026-02-18,llm_claude
+RECTORAT DE L ACADEMIE DE PARIS,Éducation,Rectorat - institution éducative publique,0.98,2026-02-18,llm_claude
+REGIE AUTONOME TRANSPORTS PARISIENS,Transport,RATP - transports en commun parisiens,0.99,2026-02-18,llm_claude
+REGIE DE QUARTIER DU 19E,Social - Solidarité,Régie de quartier - insertion et lien social,0.85,2026-02-18,llm_claude
+REGIE DE QUARTIER PARIS CENTRE,Social - Solidarité,Régie de quartier - insertion et lien social,0.85,2026-02-18,llm_claude
+REGIE ECOLE INGENIEURS VILLE PARIS,Éducation,EIVP - École des Ingénieurs de la Ville de Paris,0.95,2026-02-18,llm_claude
+REGIE ECOLE SUP PHYSIQUE CHIMIE IND,Éducation,École supérieure de physique et chimie industrielles (ESPCI),0.95,2026-02-18,llm_claude
+REGIE IMMOBILIERE DE LA VILLE DE PA,Logement,Régie immobilière de la Ville de Paris (RIVP) - logement social (nom tronqué),0.95,2026-02-18,llm_claude
+REGIE IMMOBILIERE DE LA VILLE DE PARIS,Logement,Régie immobilière de la Ville de Paris (RIVP) - logement social,0.95,2026-02-18,llm_claude
+REGIE IMMOBILIERE DE LA VILLE PARIS,Logement,Gestion immobilière et logement social,0.95,2026-02-18,llm_claude
+REGIE IMMOBILIERE VILLE DE PARIS,Logement,Régie Immobilière de la Ville de Paris - logement social,0.95,2026-02-18,llm_claude
+REHABAIL,Logement,Aide au logement / réhabilitation de logements,0.8,2026-02-18,llm_claude
+RELAIS 59,Social - Solidarité,Centre social et maison de quartier (12e arrondissement),0.88,2026-02-18,llm_claude
+RELAIS MENILMONTANT,Social - Solidarité,Centre social et d'animation de quartier (Ménilmontant),0.75,2026-02-18,llm_claude
+REMG REMISE GRACIEUSE,Administration,Remise gracieuse de créance - procédure administrative,0.6,2026-02-18,llm_claude
+REMISES GRACIEUSES,Administration,Remises gracieuses de dettes/créances,0.85,2026-02-18,llm_claude
+REPUBLIQUE ENFANTS,Social - Petite enfance,Accueil et éducation des jeunes enfants,0.65,2026-02-18,llm_claude
+RES PARIS ATEL VELO PART SOLID,Transport,Atelier vélo participatif et solidaire,0.82,2026-02-18,llm_claude
+RESEAU MOM ARTRE,Social - Petite enfance,Garde d'enfants et soutien à la parentalité,0.93,2026-02-18,llm_claude
+RESOQUARTIER,Social - Solidarité,Réseau de solidarité de quartier / lien social,0.6,2026-02-18,llm_claude
+RESSOURCERIE CREATIVE,Environnement,Ressourcerie - réemploi et économie circulaire créative,0.85,2026-02-18,llm_claude
+RESSOURCES,Social - Solidarité,Association d'insertion / accompagnement social (nom générique),0.45,2026-02-18,llm_claude
+RESTAURANTS DU C UR,Social - Solidarité,Aide alimentaire,0.99,2026-02-18,llm_claude
+RESTAUS DU COEUR LES RELAIS COEUR P,Social - Solidarité,Aide alimentaire - Restos du Cœur relais de Paris,0.97,2026-02-18,llm_claude
+RETRAITE CONSEILLERS MUNICIPAUX PAR,Administration,Caisse de retraite des conseillers municipaux de Paris,0.92,2026-02-18,llm_claude
+REVOIR NOTRE DAME DE PARIS,Culture,Patrimoine - Notre-Dame de Paris,0.9,2026-02-18,llm_claude
+REZOSOCIAL,Social - Solidarité,Aide numérique et sociale pour personnes en précarité,0.85,2026-02-18,llm_claude
+RIVP,Logement,Régie Immobilière de la Ville de Paris - logement social,0.95,2026-02-18,llm_claude
+RÉGIE AUTONOME DES TRANSPORTS PARISIENS,Transport,RATP - Transports en commun parisiens,1.0,2026-02-18,llm_claude
+SA D H L M FRANCE HABITATION,Logement,SA d'HLM - logement social,0.97,2026-02-18,llm_claude
+SA D HLM TOIT ET JOIE,Logement,SA d'HLM Toit et Joie - logement social,0.99,2026-02-18,llm_claude
+SA HLM LOGIS TRANSPORTS,Logement,SA HLM – logement social lié aux transports,0.9,2026-02-18,llm_claude
+SAEM EXPLOITATION STATIONNEM VILLE,Transport,Société d'exploitation de stationnement de la Ville de Paris,0.95,2026-02-18,llm_claude
+SALLE SAINT BRUNO,Culture,Salle Saint-Bruno - espace culturel et associatif (18e),0.75,2026-02-18,llm_claude
+SARL DES AUTEURS REALIS PRODUCT,Culture,Production audiovisuelle / cinéma (SARL des Auteurs Réalisateurs Producteurs),0.9,2026-02-18,llm_claude
+SBC INSERTION,Économie,Insertion professionnelle,0.8,2026-02-18,llm_claude
+SCIC D HLM GAMBETTA,Logement,SCIC d'HLM - logement social coopératif,0.97,2026-02-18,llm_claude
+SCIENCE TECHNOLOGIE ET SOCIETE,Éducation,Diffusion de la culture scientifique et technologique,0.75,2026-02-18,llm_claude
+SCIRE SCIEN CREAT INTERDISC RECH ED,Éducation,Recherche interdisciplinaire en éducation (SCIRE - Sciences Création Interdisciplinaire Recherche Éducation),0.8,2026-02-18,llm_claude
+SDT MIXTE DES PARCS DU TREMBLAY,Sport,Syndicat mixte - gestion de parcs sportifs,0.7,2026-02-18,llm_claude
+SEMAEST,Économie,Société d'économie mixte - commerce et aménagement économique,0.92,2026-02-18,llm_claude
+SEQENS STE A HABITAT LOYER MODERE,Logement,SEQENS - société HLM / habitat à loyer modéré,0.98,2026-02-18,llm_claude
+SEQUENS SOLIDARITES,Social - Solidarité,Accompagnement social et solidarités,0.9,2026-02-18,llm_claude
+SIDACTION,Santé,Lutte contre le VIH/SIDA - prévention et recherche,0.97,2026-02-18,llm_claude
+SIERRA PROD,Culture,Production audiovisuelle / spectacle vivant,0.7,2026-02-18,llm_claude
+SIMPLON CO,Éducation,Formation au numérique et inclusion digitale,0.92,2026-02-18,llm_claude
+SINGA FRANCE,Social - Solidarité,Inclusion des réfugiés et nouveaux arrivants,0.9,2026-02-18,llm_claude
+SIPRHEM STE IMMOB POUR RESIDENCES,Logement,Société immobilière pour résidences,0.85,2026-02-18,llm_claude
+SM AUTOLIB ET VELIB METROPOLE,Transport,Syndicat mixte Autolib' et Vélib' Métropole - mobilité urbaine,0.95,2026-02-18,llm_claude
+SNCF GARES CONNEXIONS,Transport,Gestion de gares et mobilité ferroviaire,0.95,2026-02-18,llm_claude
+SNCF RESEAU,Transport,Infrastructure ferroviaire,0.95,2026-02-18,llm_claude
+SNCF VOYAGEURS,Transport,Transport ferroviaire de voyageurs,0.95,2026-02-18,llm_claude
+SNL PROLOGUES,Logement,Logement social et insertion par le logement,0.9,2026-02-18,llm_claude
+SOC ECONOMIE MIXTE ANIM ECO SCE TER,Économie,SEM d'animation économique et de services aux territoires (SEMAEST),0.92,2026-02-18,llm_claude
+SOC GESTION MAINTENAN AMENAGEM CONS,Administration,Société de gestion et maintenance d'aménagement (copropriété/ASL),0.6,2026-02-18,llm_claude
+SOC PHILANTHROPIQUE,Social - Solidarité,Société philanthropique - aide sociale et solidarité,0.9,2026-02-18,llm_claude
+SOC PUBLIQUE LOCALE CARREAU TEMPLE,Culture,"Gestion du Carreau du Temple, lieu culturel et événementiel parisien",0.9,2026-02-18,llm_claude
+SOC REQUALICATION QUARTIERS ANCIENS,Logement,Société de requalification des quartiers anciens (SOREQA) - réhabilitation habitat,0.9,2026-02-18,llm_claude
+SOC RET CONSE MUN PARIS CONS GEN SE,Administration,Société de retraite des conseillers municipaux de Paris et conseillers généraux de la Seine,0.9,2026-02-18,llm_claude
+SOCIETE D ECONOMIE MIXTE,Économie,Société d'économie mixte - développement économique local,0.6,2026-02-18,llm_claude
+SOLIDARITE CHRETIENNE,Social - Solidarité,Solidarité et entraide d'inspiration chrétienne,0.85,2026-02-18,llm_claude
+SOLIDARITE ROQUETTE,Social - Solidarité,"Solidarité de quartier, aide aux personnes en difficulté",0.8,2026-02-18,llm_claude
+SOLIDARITE SIDA,Santé,Lutte contre le VIH/SIDA,0.95,2026-02-18,llm_claude
+SOLIDARITE THERAPEUT ET INITIATIVES,Santé,Solidarité thérapeutique - prévention et soins,0.85,2026-02-18,llm_claude
+SOLIDEO,Sport,SOLIDEO - Société de livraison des ouvrages olympiques (JO 2024),0.95,2026-02-18,llm_claude
+SOLIHA GRAND PARIS,Logement,Amélioration de l'habitat et lutte contre le mal-logement,0.95,2026-02-18,llm_claude
+SOLIHA PARIS HAUTS DE SEINE VAL D O,Logement,Amélioration de l'habitat et lutte contre le mal-logement (SOLIHA),0.95,2026-02-18,llm_claude
+SORBONNE UNIVERSITE,Éducation,Université,0.98,2026-02-18,llm_claude
+SOS MEDITERRANEE FRANCE,International,Sauvetage en mer / aide aux réfugiés en Méditerranée,0.9,2026-02-18,llm_claude
+SPL PARIS ET METROPOLE AMENAGEMEN,Logement,Aménagement urbain et logement - SPL Paris & Métropole Aménagement,0.8,2026-02-18,llm_claude
+SPLA PARIS BATIGNOLLES AMENAGEMENT,Logement,Société publique locale d'aménagement – ZAC Paris Batignolles,0.8,2026-02-18,llm_claude
+SPORTING CLUB DE PARIS,Sport,Club sportif parisien,0.95,2026-02-18,llm_claude
+SPORTING CLUB UNIVERS FRANCE,Sport,Club sportif,0.95,2026-02-18,llm_claude
+SQUARE BANDE CRECHE PARENTALE,Social - Petite enfance,Crèche parentale,0.99,2026-02-18,llm_claude
+STADE FRANCAIS,Sport,Club omnisports parisien (Stade Français),0.95,2026-02-18,llm_claude
+STADE FRANCAIS PARIS,Sport,"Club sportif omnisports (rugby, etc.)",0.97,2026-02-18,llm_claude
+STADE FRANCAIS PARIS SAINT CLOUD,Sport,Club sportif omnisports - Stade Français Paris Saint-Cloud,0.95,2026-02-18,llm_claude
+STATION C,Économie,Incubateur / startup / innovation,0.9,2026-02-18,llm_claude
+STE DE REQUALICATION DES,Logement,Société de requalification des quartiers / copropriétés dégradées,0.65,2026-02-18,llm_claude
+STE DE RETRAITES CONSEILLERS PA,Administration,Société de retraites des conseillers de Paris,0.88,2026-02-18,llm_claude
+STE ECONOMIE MIXTE PARIS COMMERCE,Économie,Société d'économie mixte - commerce parisien,0.92,2026-02-18,llm_claude
+STE LIVRAISON OUVRAGES OLYMPIQUES,Sport,Société de livraison des ouvrages olympiques (JO 2024),0.9,2026-02-18,llm_claude
+STE REQUALICATION QUARTIER ANCIEN,Logement,Requalification de quartiers anciens / réhabilitation urbaine,0.85,2026-02-18,llm_claude
+STRATA J M PARIS,Culture,Compagnie de théâtre / arts de la scène,0.55,2026-02-18,llm_claude
+SUBVENTIONS TRANSPORTS ET ACQUISITIONS VEHICULES A ASSISTANCE ELECTRIQUE ET TAXIS HYBRIDES,Transport,Subventions pour transports et acquisition de véhicules à assistance électrique et taxis hybrides,0.95,2026-02-18,llm_claude
+SYND COPR 96 BD MASSENA 75013 PARIS,Administration,Syndicat de copropriété - 96 bd Masséna 75013,0.97,2026-02-18,llm_claude
+SYND INTERDEP PARC DES SPORTS,Sport,Syndicat interdépartemental du Parc des Sports - gestion d'équipement sportif,0.9,2026-02-18,llm_claude
+SYND INTERDEP PARC SPORTS CHOISY,Sport,Syndicat interdépartemental - parc des sports de Choisy,0.9,2026-02-18,llm_claude
+SYNDICAT MIXTE AUTOLIB ET VELIB METROPOLE,Transport,Mobilité partagée (Autolib et Vélib Métropole),0.95,2026-02-18,llm_claude
+SYNDICAT MIXTE EAUX DE L AUVEZERE,Environnement,Gestion des eaux / syndicat mixte,0.8,2026-02-18,llm_claude
+SYNDICAT TRANSPORT ILE DE FRANCE,Transport,Syndicat des transports (Île-de-France Mobilités / ex-STIF),0.99,2026-02-18,llm_claude
+TABLE DE CANA,Social - Solidarité,Table de Cana - insertion par l'activité économique et aide alimentaire,0.85,2026-02-18,llm_claude
+TABLE DU RECHO,Social - Solidarité,Aide alimentaire et lien social (La Table du RECHO),0.9,2026-02-18,llm_claude
+TAXICOP,Transport,Service de taxi / mobilité,0.5,2026-02-18,llm_claude
+TEMPS DES RUES,Culture,Arts de rue / spectacle vivant dans l'espace public,0.75,2026-02-18,llm_claude
+TERRA,Autre,Nom trop générique pour classification fiable,0.25,2026-02-18,llm_claude
+THE 42 AGENCY,Culture,Agence de production artistique / événementiel culturel,0.45,2026-02-18,llm_claude
+THEATRE AUX MAINS NUES,Culture,Théâtre de marionnettes,0.95,2026-02-18,llm_claude
+THEATRE DAUNOU,Culture,Théâtre,0.99,2026-02-18,llm_claude
+THEATRE DE LA MARIONNETTE A PARIS,Culture,Théâtre et arts de la marionnette,0.97,2026-02-18,llm_claude
+THEATRE DE LA MARIONNETTE THEATRE MOUFFETARD,Culture,Théâtre de marionnettes - Théâtre Mouffetard,0.98,2026-02-18,llm_claude
+THEATRE DE LA VILLE,Culture,Théâtre,0.99,2026-02-18,llm_claude
+THEATRE DU ROND POINT,Culture,Théâtre du Rond-Point - arts vivants,0.99,2026-02-18,llm_claude
+THEATRE DU SOLEIL,Culture,Théâtre - Compagnie Ariane Mnouchkine,0.99,2026-02-18,llm_claude
+THEATRE MUSICAL DE PARIS,Culture,Théâtre musical (Théâtre du Châtelet),0.97,2026-02-18,llm_claude
+THEATRE PARIS 14,Culture,Théâtre,0.99,2026-02-18,llm_claude
+THEATRE PARIS VILLETTE,Culture,Théâtre,0.98,2026-02-18,llm_claude
+THEATRE SILVIA MONFORT,Culture,Théâtre,0.99,2026-02-18,llm_claude
+THEATRE SYLVIA MONFORT,Culture,Théâtre Sylvia Monfort - salle de spectacle et programmation théâtrale,0.99,2026-02-18,llm_claude
+TOIT ET JOIE,Logement,Bailleur social / logement social,0.9,2026-02-18,llm_claude
+TOWARDS CONSEIL,Économie,Conseil aux entreprises / accompagnement professionnel,0.5,2026-02-18,llm_claude
+TRAVAIL ET PARTAGE,Social - Solidarité,Insertion par le travail et solidarité,0.85,2026-02-18,llm_claude
+TRAVAIL ET VIE,Social - Solidarité,Insertion sociale et professionnelle,0.75,2026-02-18,llm_claude
+TRESORERIE CENTRE ACTION SOCIALE PA,Social - Solidarité,Centre d'action sociale (CASVP - trésorerie),0.92,2026-02-18,llm_claude
+UN TOIT POUR TOI,Social - Solidarité,Hébergement d'urgence / aide au logement pour personnes sans-abri,0.85,2026-02-18,llm_claude
+UNE NOUVELLE IDEE DE LA CRECHE PARI,Social - Petite enfance,Crèche parentale / innovante à Paris,0.95,2026-02-18,llm_claude
+UNION DEPARTEMENTALE DE PARIS CFE C,Administration,Syndicat CFE-CGC - Union départementale de Paris,0.95,2026-02-18,llm_claude
+UNION DEPARTEMENTALE PARIS CFE CGC,Administration,Syndicat CFE-CGC - Union départementale Paris,0.95,2026-02-18,llm_claude
+UNION DEPARTEMENTALE PARIS CFECGC,Administration,Syndicat CFE-CGC - Union départementale Paris,0.95,2026-02-18,llm_claude
+UNION DEPARTEMENTALE UNSA DE PARIS,Administration,Syndicat UNSA - union départementale Paris,0.95,2026-02-18,llm_claude
+UNION DEPARTENTALE SYNDICAT CFTC PA,Administration,Syndicat CFTC - Union départementale Paris,0.97,2026-02-18,llm_claude
+UNION NATIONALE DU SPORT SCOLAIRE,Sport,Sport scolaire - fédération nationale (UNSS),0.92,2026-02-18,llm_claude
+UNION SYNDICALE SOLIDAIRES PARIS,Administration,Syndicat - Union Solidaires Paris,0.95,2026-02-18,llm_claude
+UNIS CITE,Social - Solidarité,Unis-Cité - service civique et engagement solidaire des jeunes,0.9,2026-02-18,llm_claude
+UNIVERSITE DE PARIS,Éducation,Université et recherche,0.99,2026-02-18,llm_claude
+UNIVERSITE GUSTAVE EIFFEL,Éducation,Université / enseignement supérieur et recherche,0.99,2026-02-18,llm_claude
+UNIVERSITE PARIS 1 PANTHEON SORBONN,Éducation,Université Paris 1 Panthéon-Sorbonne,0.99,2026-02-18,llm_claude
+UNIVERSITE PARIS CITE,Éducation,Université Paris Cité - enseignement supérieur et recherche,0.99,2026-02-18,llm_claude
+UNIVERSITE PARIS DIDEROT PARIS 7,Éducation,Université Paris Diderot (Paris 7),0.98,2026-02-18,llm_claude
+UP,Éducation,Université populaire / formation,0.45,2026-02-18,llm_claude
+URGENCE JEUNES,Social - Solidarité,Aide d'urgence pour les jeunes en difficulté,0.85,2026-02-18,llm_claude
+VERS PARIS SANS SIDA,Santé,Lutte contre le VIH/SIDA,0.97,2026-02-18,llm_claude
+VILLE DE BETHLEEM,International,Coopération internationale - jumelage avec Bethléem,0.92,2026-02-18,llm_claude
+VILOGIA SOCIETE ANONYME D HLM,Logement,HLM - logement social,0.98,2026-02-18,llm_claude
+YES WE CAMP,Social - Solidarité,Urbanisme transitoire et inclusion sociale par l'occupation temporaire de lieux,0.65,2026-02-18,llm_claude

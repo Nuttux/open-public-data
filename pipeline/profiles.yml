@@ -17,7 +17,8 @@ paris_open_data:
     # -------------------------------------------------------------------------
     dev:
       type: bigquery
-      method: oauth
+      method: service-account
+      keyfile: "{{ env_var('DBT_KEYFILE', 'service-account.json') }}"
       project: open-data-france-484717
       dataset: dbt_paris  # Base dataset pour dbt (raw = données OpenData non modifiées)
       location: EU

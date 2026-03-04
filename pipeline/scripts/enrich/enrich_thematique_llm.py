@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """
-Classification thématique des bénéficiaires via LLM (Gemini).
-Version optimisée avec batching (20 records/requête) et Pareto (top 500).
+Classification thématique des bénéficiaires via LLM (Claude ou Gemini).
+Version optimisée avec batching et Pareto (top 500).
 
 Prérequis:
-    export GOOGLE_API_KEY=<votre_clé_gemini>
+    Claude:  export ANTHROPIC_API_KEY=<votre_clé>
+    Gemini:  export GOOGLE_API_KEY=<votre_clé>
 
 Usage:
-    python scripts/enrich_thematique_llm.py [--limit N] [--dry-run]
+    python scripts/enrich/enrich_thematique_llm.py [--provider claude] [--limit N] [--dry-run]
 """
 
 import csv
@@ -26,44 +27,62 @@ import requests
 
 PROJECT_ID = "open-data-france-484717"
 DATASET = "dbt_paris_analytics"
-SEED_PATH = Path(__file__).parent.parent / "paris-public-open-data" / "seeds" / "seed_cache_thematique_beneficiaires.csv"
+SEED_PATH = Path(__file__).parent.parent.parent / "seeds" / "seed_cache_thematique_beneficiaires.csv"
 
 GEMINI_API_KEY = os.environ.get("GOOGLE_API_KEY", "")
 GEMINI_MODEL = "gemini-2.5-flash"
 GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent"
 
-BATCH_SIZE = 10  # Réduit pour éviter troncature JSON
+ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
+CLAUDE_MODEL = "claude-opus-4-6"
+
+BATCH_SIZE = 10
 PARETO_LIMIT = 500
 
-PROGRESS_INTERVAL = 10
-
 THEMATIQUES = [
-    "Social", "Éducation", "Culture & Sport", "Environnement",
-    "Transport", "Économie", "Administration", "Santé",
-    "Logement", "Sécurité", "International", "Autre"
+    "Social - Solidarité", "Social - Petite enfance", "Social",
+    "Éducation", "Culture", "Sport",
+    "Environnement", "Transport", "Économie",
+    "Administration", "Santé", "Logement",
+    "Sécurité", "International", "Autre"
 ]
 
 SYSTEM_PROMPT = f"""Tu es un expert en classification des acteurs associatifs et des politiques publiques parisiennes.
-Analyse ces noms de bénéficiaires de subventions et classifie-les selon leur DOMAINE D'ACTION.
+Tu travailles sur les subventions versées par la Ville de Paris.
+Analyse ces noms de bénéficiaires et classifie-les selon leur DOMAINE D'ACTION principal.
 
 THÉMATIQUES AUTORISÉES: {json.dumps(THEMATIQUES, ensure_ascii=False)}
 
-RÈGLES:
-- Associations sportives → "Culture & Sport"
-- Aide sociale, insertion, handicap, personnes âgées → "Social"
-- Théâtre, musique, danse, cinéma, patrimoine → "Culture & Sport"
-- Écologie, jardins, biodiversité → "Environnement"
-- Écoles, formation, jeunesse → "Éducation"
-- Commerce, emploi, startups → "Économie"
-- Syndicats de copropriété, mairies → "Administration"
-- Coopération internationale, solidarité internationale → "International"
+RÈGLES DE CLASSIFICATION:
+- Aide sociale, insertion, handicap, personnes âgées, hébergement d'urgence, réfugiés, aide alimentaire → "Social - Solidarité"
+- Crèches, haltes-garderies, jardins d'enfants, petite enfance, parentalité → "Social - Petite enfance"
+- Aide sociale générale non couverte ci-dessus → "Social"
+- Écoles, universités, formation professionnelle, jeunesse, recherche → "Éducation"
+- Théâtre, musique, danse, cinéma, patrimoine, musées, galeries, festivals culturels, photographie, arts visuels → "Culture"
+- Clubs sportifs, fédérations sportives, événements sportifs, JO → "Sport"
+- Écologie, jardins partagés, biodiversité, qualité de l'air, agriculture urbaine → "Environnement"
+- Transports en commun, mobilité, voirie → "Transport"
+- Commerce, emploi, microfinance, startups, insertion économique → "Économie"
+- Syndicats (CFDT, CGT, FO), copropriétés (ASL), mairies, institutions publiques → "Administration"
+- Hôpitaux, centres de santé, recherche médicale, prévention addictions, VIH/SIDA → "Santé"
+- Logement social, aide au logement, HLM, lutte contre le mal-logement → "Logement"
+- Police, prévention, sécurité → "Sécurité"
+- Coopération internationale, aide au développement, francophonie, affaires européennes → "International"
 - Si vraiment inclassable → "Autre"
+
+PIÈGES À ÉVITER:
+- "Maison Européenne de la Photographie" (MEP) → "Culture" (PAS International)
+- "Parc de la Villette" / "Grande Halle" → "Culture" (c'est un lieu culturel, PAS Environnement)
+- "ASL Olympiades" → "Administration" (c'est une copropriété du 13e, PAS les JO)
+- "FONDATION" ne signifie PAS syndicat → classifier selon l'activité réelle
+- "ASSOCIATION" ne signifie PAS sport → classifier selon l'activité réelle
+- Les noms peuvent être tronqués, utilise le contexte pour deviner l'activité
 
 IMPORTANT: "Associations" n'est PAS une thématique valide. Classifie selon le DOMAINE D'ACTION.
 
 Réponds UNIQUEMENT en JSON valide:
 [
-  {{"id": "...", "thematique": "<une des thématiques>", "sous_categorie": "<ou null>", "confiance": <0-1>}},
+  {{"id": "...", "thematique": "<une des thématiques>", "sous_categorie": "<description courte ou null>", "confiance": <0.0-1.0>}},
   ...
 ]"""
 
@@ -101,7 +120,7 @@ def save_cache(cache: dict):
         'ode_date_recherche',
         'ode_source'
     ]
-    
+
     with open(SEED_PATH, 'w', encoding='utf-8', newline='') as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
@@ -116,17 +135,112 @@ def save_cache(cache: dict):
             })
 
 
-def call_gemini_batch(beneficiaires: list) -> list:
-    """Appelle Gemini avec un batch de bénéficiaires."""
-    if not GEMINI_API_KEY:
-        raise ValueError("GOOGLE_API_KEY non défini")
-    
-    # Construire le prompt
+def _parse_llm_response(text: str) -> list:
+    """Parse la réponse JSON d'un LLM, avec réparation si nécessaire."""
+    # Extraire le JSON des blocs de code markdown
+    if '```json' in text:
+        text = text.split('```json')[1].split('```')[0]
+    elif '```' in text:
+        text = text.split('```')[1].split('```')[0]
+
+    try:
+        results = json.loads(text.strip())
+    except json.JSONDecodeError:
+        # Essayer de réparer le JSON tronqué
+        import re
+        matches = list(re.finditer(r'\{[^{}]+\}', text))
+        if matches:
+            fixed = '[' + ','.join(m.group() for m in matches) + ']'
+            results = json.loads(fixed)
+            print(f"    [RÉPARÉ] Récupéré {len(results)} résultats", flush=True)
+        else:
+            raise
+
+    # Valider et normaliser les résultats
+    for r in results:
+        if 'id' in r:
+            r['id'] = str(r['id'])
+        if r.get('thematique') not in THEMATIQUES:
+            print(f"    [WARN] Thématique inconnue: {r.get('thematique')!r} → Autre", flush=True)
+            r['thematique'] = 'Autre'
+
+    return results
+
+
+def call_claude_batch(beneficiaires: list) -> list:
+    """Appelle Claude avec un batch de bénéficiaires."""
+    if not ANTHROPIC_API_KEY:
+        raise ValueError("ANTHROPIC_API_KEY non défini")
+
     items_text = "\n".join([
         f"- ID: {b['id']}, NOM: {b['nom']}"
         for b in beneficiaires
     ])
-    
+
+    try:
+        payload = {
+            "model": CLAUDE_MODEL,
+            "max_tokens": 8192,
+            "temperature": 0.1,
+            "messages": [{
+                "role": "user",
+                "content": f"{SYSTEM_PROMPT}\n\nBénéficiaires à classifier:\n{items_text}"
+            }]
+        }
+
+        response = requests.post(
+            "https://api.anthropic.com/v1/messages",
+            headers={
+                "x-api-key": ANTHROPIC_API_KEY,
+                "anthropic-version": "2023-06-01",
+                "content-type": "application/json"
+            },
+            json=payload,
+            timeout=120
+        )
+
+        if response.status_code == 429:
+            print("    [RATE LIMIT] Attente 30s...", flush=True)
+            time.sleep(30)
+            response = requests.post(
+                "https://api.anthropic.com/v1/messages",
+                headers={
+                    "x-api-key": ANTHROPIC_API_KEY,
+                    "anthropic-version": "2023-06-01",
+                    "content-type": "application/json"
+                },
+                json=payload,
+                timeout=120
+            )
+
+        if response.status_code != 200:
+            print(f"    [ERREUR API] Status {response.status_code}: {response.text[:200]}", flush=True)
+            return []
+
+        data = response.json()
+        text = data.get('content', [{}])[0].get('text', '')
+        print(f"    [DEBUG] Réponse brute: {text[:150]}...", flush=True)
+
+        return _parse_llm_response(text)
+
+    except json.JSONDecodeError as e:
+        print(f"    [ERREUR JSON] {e}", flush=True)
+        return []
+    except Exception as e:
+        print(f"    [ERREUR] {e}", flush=True)
+        return []
+
+
+def call_gemini_batch(beneficiaires: list) -> list:
+    """Appelle Gemini avec un batch de bénéficiaires."""
+    if not GEMINI_API_KEY:
+        raise ValueError("GOOGLE_API_KEY non défini")
+
+    items_text = "\n".join([
+        f"- ID: {b['id']}, NOM: {b['nom']}"
+        for b in beneficiaires
+    ])
+
     try:
         payload = {
             "contents": [{
@@ -139,13 +253,13 @@ def call_gemini_batch(beneficiaires: list) -> list:
                 "maxOutputTokens": 8192
             }
         }
-        
+
         response = requests.post(
             f"{GEMINI_URL}?key={GEMINI_API_KEY}",
             json=payload,
             timeout=60
         )
-        
+
         if response.status_code == 429:
             print("    [RATE LIMIT] Attente 30s...", flush=True)
             time.sleep(30)
@@ -162,56 +276,23 @@ def call_gemini_batch(beneficiaires: list) -> list:
                     json=payload,
                     timeout=60
                 )
-        
+
         if response.status_code != 200:
             print(f"    [ERREUR API] Status {response.status_code}: {response.text[:200]}", flush=True)
             return []
-        
+
         data = response.json()
         candidates = data.get('candidates', [])
         if not candidates:
             print(f"    [DEBUG] Pas de candidates dans la réponse", flush=True)
             return []
-        
+
         text = candidates[0].get('content', {}).get('parts', [{}])[0].get('text', '')
         print(f"    [DEBUG] Réponse brute: {text[:150]}...", flush=True)
-        
-        if '```json' in text:
-            text = text.split('```json')[1].split('```')[0]
-        elif '```' in text:
-            text = text.split('```')[1].split('```')[0]
-        
-        results = json.loads(text.strip())
-        
-        # Valider et normaliser les résultats
-        for r in results:
-            # Convertir id en string si nécessaire
-            if 'id' in r:
-                r['id'] = str(r['id'])
-            # Valider thématique
-            if r.get('thematique') not in THEMATIQUES:
-                r['thematique'] = 'Associations'
-        
-        return results
-        
+
+        return _parse_llm_response(text)
+
     except json.JSONDecodeError as e:
-        # Essayer de réparer le JSON tronqué
-        try:
-            # Chercher le dernier objet complet
-            import re
-            matches = list(re.finditer(r'\{[^{}]+\}', text))
-            if matches:
-                fixed = '[' + ','.join(m.group() for m in matches) + ']'
-                results = json.loads(fixed)
-                for r in results:
-                    if 'id' in r:
-                        r['id'] = str(r['id'])
-                    if r.get('thematique') not in THEMATIQUES:
-                        r['thematique'] = 'Associations'
-                print(f"    [RÉPARÉ] Récupéré {len(results)} résultats", flush=True)
-                return results
-        except:
-            pass
         print(f"    [ERREUR JSON] {e}", flush=True)
         return []
     except Exception as e:
@@ -222,9 +303,9 @@ def call_gemini_batch(beneficiaires: list) -> list:
 def get_beneficiaires_to_classify(client: bigquery.Client, existing_cache: dict, limit: int = None) -> list:
     """Récupère les bénéficiaires 'default', top N par montant."""
     actual_limit = limit or PARETO_LIMIT
-    
+
     query = f"""
-    SELECT 
+    SELECT
         beneficiaire_normalise,
         SUM(montant) as montant_total
     FROM `{PROJECT_ID}.{DATASET}.core_subventions`
@@ -234,9 +315,9 @@ def get_beneficiaires_to_classify(client: bigquery.Client, existing_cache: dict,
     ORDER BY montant_total DESC
     LIMIT {actual_limit * 2}
     """
-    
+
     results = client.query(query).result()
-    
+
     to_process = []
     for row in results:
         if row.beneficiaire_normalise not in existing_cache:
@@ -246,7 +327,7 @@ def get_beneficiaires_to_classify(client: bigquery.Client, existing_cache: dict,
             })
             if len(to_process) >= actual_limit:
                 break
-    
+
     return to_process
 
 
@@ -258,88 +339,95 @@ def main():
     parser = argparse.ArgumentParser(description="Classification thématique LLM (batch)")
     parser.add_argument('--limit', type=int, help=f"Nombre max (default: {PARETO_LIMIT})")
     parser.add_argument('--dry-run', action='store_true', help="Simulation")
+    parser.add_argument('--provider', choices=['claude', 'gemini'], default='claude',
+                       help="LLM provider (default: claude)")
     args = parser.parse_args()
-    
+
+    provider_label = f"Claude ({CLAUDE_MODEL})" if args.provider == 'claude' else f"Gemini ({GEMINI_MODEL})"
+
     print("=" * 60)
-    print("CLASSIFICATION THÉMATIQUE - LLM Batch (20/req)")
+    print(f"CLASSIFICATION THÉMATIQUE - {provider_label}")
     print("=" * 60)
     print(f"Timestamp: {datetime.now().isoformat()}")
+    print(f"Seed path: {SEED_PATH}")
     print()
-    
-    if not GEMINI_API_KEY and not args.dry_run:
+
+    if args.provider == 'claude' and not ANTHROPIC_API_KEY and not args.dry_run:
+        print("ERREUR: Variable ANTHROPIC_API_KEY non définie")
+        return
+    if args.provider == 'gemini' and not GEMINI_API_KEY and not args.dry_run:
         print("ERREUR: Variable GOOGLE_API_KEY non définie")
         return
-    
+
     cache = load_existing_cache()
     print(f"Cache existant: {len(cache)} bénéficiaires")
-    
+
     client = bigquery.Client(project=PROJECT_ID)
     to_process = get_beneficiaires_to_classify(client, cache, args.limit)
-    
+
     total_montant = sum(b['montant'] for b in to_process)
     print(f"Bénéficiaires à classifier: {len(to_process)} (top par montant)")
     print(f"Montant couvert: {total_montant/1e6:.1f}M€")
     print(f"Batches de {BATCH_SIZE}: {(len(to_process) + BATCH_SIZE - 1) // BATCH_SIZE}")
     print()
-    
+
     if not to_process:
         print("Rien à traiter!")
         return
-    
+
     if args.dry_run:
         print("[DRY-RUN]")
         for b in to_process[:5]:
             print(f"  {b['nom']}: {b['montant']/1e6:.2f}M€")
         return
-    
+
+    call_fn = call_claude_batch if args.provider == 'claude' else call_gemini_batch
+    source_label = f"llm_{args.provider}"
+
     # Traitement par batches
     classified = 0
     errors = 0
     montant_classifie = 0
     start_time = time.time()
-    last_progress = start_time
-    
+
     print("Démarrage...")
     print("-" * 40)
-    
+
     for i in range(0, len(to_process), BATCH_SIZE):
         batch = to_process[i:i+BATCH_SIZE]
         batch_num = (i // BATCH_SIZE) + 1
         total_batches = (len(to_process) + BATCH_SIZE - 1) // BATCH_SIZE
-        
-        print(f"  [Batch {batch_num}/{total_batches}] Appel API...", flush=True)
-        
-        # Préparer avec IDs
+
+        print(f"  [Batch {batch_num}/{total_batches}] Appel API ({args.provider})...", flush=True)
+
         batch_with_ids = [{'id': str(j), 'nom': b['nom']} for j, b in enumerate(batch)]
-        
-        batch_results = call_gemini_batch(batch_with_ids)
-        
-        # Mapper les résultats
+
+        batch_results = call_fn(batch_with_ids)
+
         results_map = {r.get('id'): r for r in batch_results if r.get('id')}
-        
+
         for j, b in enumerate(batch):
             result = results_map.get(str(j))
-            
+
             if result and result.get('thematique'):
                 cache[b['nom']] = {
                     'thematique': result['thematique'],
                     'sous_categorie': result.get('sous_categorie') or '',
                     'confiance': str(result.get('confiance', 0.5)),
                     'date_recherche': datetime.now().strftime('%Y-%m-%d'),
-                    'source': 'llm_gemini'
+                    'source': source_label
                 }
                 classified += 1
                 montant_classifie += b['montant']
             else:
                 errors += 1
-        
-        # Log immédiat du résultat du batch
+
         batch_found = len([r for r in batch_results if r.get('thematique')])
-        print(f"    → {batch_found}/{len(batch)} classifiés | Total: {classified} | {montant_classifie/1e6:.1f}M€", flush=True)
-        
+        print(f"    -> {batch_found}/{len(batch)} classifiés | Total: {classified} | {montant_classifie/1e6:.1f}M€", flush=True)
+
         save_cache(cache)
-        time.sleep(1)  # Rate limiting - Gemini paid tier
-    
+        time.sleep(1)
+
     elapsed = time.time() - start_time
     print("-" * 40)
     print(f"\nTerminé en {elapsed:.1f}s ({elapsed/60:.1f}min)")

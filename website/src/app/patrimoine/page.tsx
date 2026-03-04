@@ -92,7 +92,7 @@ function PatrimoinePageInner() {
         {/* Footer */}
         <footer className="mt-8 pt-6 border-t border-slate-800">
           <div className="text-xs text-slate-500 text-center space-y-1">
-            <p>Données : Open Data Paris — Bilan comptable (M57)</p>
+            <p>Données : Open Data Paris — Bilan patrimonial de la Ville de Paris</p>
             <p>Années disponibles : {index.availableYears?.join(', ') || 'N/A'}</p>
           </div>
         </footer>

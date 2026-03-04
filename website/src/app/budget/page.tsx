@@ -104,14 +104,14 @@ function BudgetPageInner() {
         {/* Footer */}
         <footer className="mt-8 pt-6 border-t border-slate-700/50">
           <div className="text-xs text-slate-500 text-center space-y-1">
-            <p>Données: Open Data Paris — Comptes administratifs budgets principaux (M57)</p>
+            <p>Données : Open Data Paris — Comptes annuels de la Ville de Paris</p>
             <p>
-              Années complètes : {index.completeYears?.join(', ') || 'N/A'}
+              Chiffres réels : {index.completeYears?.join(', ') || 'N/A'}
               {index.partialYears && index.partialYears.length > 0 && (
-                <span className="ml-2">| Partielles : {index.partialYears.join(', ')}</span>
+                <span className="ml-2">| Partiels : {index.partialYears.join(', ')}</span>
               )}
               {index.votedYears && index.votedYears.length > 0 && (
-                <span className="ml-2">| Votées : {index.votedYears.join(', ')}</span>
+                <span className="ml-2">| Prévisionnels : {index.votedYears.join(', ')}</span>
               )}
             </p>
           </div>

@@ -16,10 +16,10 @@
     2011,
     2010
   ],
-  "totalRecords": 4174,
-  "totalLogements": 126544,
+  "totalRecords": 4173,
+  "totalLogements": 126543,
   "coverage": {
-    "withCoords": 4174,
+    "withCoords": 4173,
     "pourcentageCoords": 100.0
   }
 }

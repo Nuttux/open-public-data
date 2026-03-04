@@ -1,160 +1,128 @@
 {
   "year": 2022,
-  "generated_at": "2026-02-05T19:11:28.539596",
+  "generated_at": "2026-02-18T16:41:42.841874",
   "total_montant": 1167565895.0,
-  "nb_thematiques": 19,
+  "nb_thematiques": 15,
   "data": [
     {
       "annee": 2022,
-      "thematique": "Social",
-      "nb_beneficiaires": 116,
-      "nb_subventions": 116,
-      "montant_total": 402382262.0,
-      "pct_total": 34.46
-    },
-    {
-      "annee": 2022,
-      "thematique": "Urbanisme - Logement",
-      "nb_beneficiaires": 26,
-      "nb_subventions": 26,
-      "montant_total": 162701744.0,
-      "pct_total": 13.94
-    },
-    {
-      "annee": 2022,
-      "thematique": "Culture",
-      "nb_beneficiaires": 324,
-      "nb_subventions": 324,
-      "montant_total": 143089937.0,
-      "pct_total": 12.26
-    },
-    {
-      "annee": 2022,
-      "thematique": "Éducation",
-      "nb_beneficiaires": 259,
-      "nb_subventions": 260,
-      "montant_total": 126741422.0,
-      "pct_total": 10.86
-    },
-    {
-      "annee": 2022,
-      "thematique": "Administration",
-      "nb_beneficiaires": 345,
-      "nb_subventions": 345,
-      "montant_total": 62162390.0,
-      "pct_total": 5.32
-    },
-    {
-      "annee": 2022,
-      "thematique": "Sport",
-      "nb_beneficiaires": 960,
-      "nb_subventions": 960,
-      "montant_total": 59587281.0,
-      "pct_total": 5.1
-    },
-    {
-      "annee": 2022,
-      "thematique": "Transport",
-      "nb_beneficiaires": 15,
-      "nb_subventions": 15,
-      "montant_total": 41488062.0,
-      "pct_total": 3.55
+      "thematique": "Social - Solidarité",
+      "nb_beneficiaires": 242,
+      "nb_subventions": 242,
+      "montant_total": 448207376.0,
+      "pct_total": 38.39
     },
     {
       "annee": 2022,
       "thematique": "Logement",
-      "nb_beneficiaires": 27,
-      "nb_subventions": 27,
-      "montant_total": 34418256.0,
-      "pct_total": 2.95
+      "nb_beneficiaires": 39,
+      "nb_subventions": 39,
+      "montant_total": 212400111.0,
+      "pct_total": 18.19
     },
     {
       "annee": 2022,
-      "thematique": "Social - Petite enfance",
-      "nb_beneficiaires": 77,
-      "nb_subventions": 77,
-      "montant_total": 34295052.0,
-      "pct_total": 2.94
+      "thematique": "Culture",
+      "nb_beneficiaires": 341,
+      "nb_subventions": 341,
+      "montant_total": 157378298.0,
+      "pct_total": 13.48
     },
     {
       "annee": 2022,
-      "thematique": "Social - Solidarité",
-      "nb_beneficiaires": 169,
-      "nb_subventions": 169,
-      "montant_total": 27362442.0,
-      "pct_total": 2.34
+      "thematique": "Éducation",
+      "nb_beneficiaires": 248,
+      "nb_subventions": 249,
+      "montant_total": 125824698.0,
+      "pct_total": 10.78
     },
     {
       "annee": 2022,
       "thematique": "Économie",
-      "nb_beneficiaires": 1550,
-      "nb_subventions": 1550,
-      "montant_total": 26806095.0,
-      "pct_total": 2.3
+      "nb_beneficiaires": 1814,
+      "nb_subventions": 1814,
+      "montant_total": 46005334.0,
+      "pct_total": 3.94
     },
     {
       "annee": 2022,
-      "thematique": "Culture & Sport",
-      "nb_beneficiaires": 124,
-      "nb_subventions": 124,
-      "montant_total": 20744648.0,
-      "pct_total": 1.78
+      "thematique": "Transport",
+      "nb_beneficiaires": 10,
+      "nb_subventions": 10,
+      "montant_total": 45352704.0,
+      "pct_total": 3.88
     },
     {
       "annee": 2022,
-      "thematique": "Autre",
-      "nb_beneficiaires": 70,
-      "nb_subventions": 70,
-      "montant_total": 13034941.0,
-      "pct_total": 1.12
+      "thematique": "Social - Petite enfance",
+      "nb_beneficiaires": 101,
+      "nb_subventions": 101,
+      "montant_total": 40160203.0,
+      "pct_total": 3.44
     },
     {
       "annee": 2022,
       "thematique": "Non classifié",
-      "nb_beneficiaires": 1118,
-      "nb_subventions": 1118,
-      "montant_total": 4618271.0,
-      "pct_total": 0.4
-    },
-    {
-      "annee": 2022,
-      "thematique": "Environnement",
-      "nb_beneficiaires": 74,
-      "nb_subventions": 74,
-      "montant_total": 3495500.0,
-      "pct_total": 0.3
-    },
-    {
-      "annee": 2022,
-      "thematique": "Santé",
-      "nb_beneficiaires": 31,
-      "nb_subventions": 31,
-      "montant_total": 2658244.0,
-      "pct_total": 0.23
-    },
-    {
-      "annee": 2022,
-      "thematique": "International",
-      "nb_beneficiaires": 42,
-      "nb_subventions": 42,
-      "montant_total": 1340098.0,
-      "pct_total": 0.11
+      "nb_beneficiaires": 2198,
+      "nb_subventions": 2198,
+      "montant_total": 22954929.0,
+      "pct_total": 1.97
     },
     {
       "annee": 2022,
       "thematique": "Sécurité",
-      "nb_beneficiaires": 3,
-      "nb_subventions": 3,
-      "montant_total": 448900.0,
-      "pct_total": 0.04
+      "nb_beneficiaires": 2,
+      "nb_subventions": 2,
+      "montant_total": 20574716.0,
+      "pct_total": 1.76
     },
     {
       "annee": 2022,
-      "thematique": "Transport - Voirie",
-      "nb_beneficiaires": 5,
-      "nb_subventions": 5,
-      "montant_total": 190350.0,
-      "pct_total": 0.02
+      "thematique": "Santé",
+      "nb_beneficiaires": 55,
+      "nb_subventions": 55,
+      "montant_total": 18580312.0,
+      "pct_total": 1.59
+    },
+    {
+      "annee": 2022,
+      "thematique": "Sport",
+      "nb_beneficiaires": 192,
+      "nb_subventions": 192,
+      "montant_total": 12685221.0,
+      "pct_total": 1.09
+    },
+    {
+      "annee": 2022,
+      "thematique": "Administration",
+      "nb_beneficiaires": 13,
+      "nb_subventions": 13,
+      "montant_total": 11288681.0,
+      "pct_total": 0.97
+    },
+    {
+      "annee": 2022,
+      "thematique": "International",
+      "nb_beneficiaires": 46,
+      "nb_subventions": 46,
+      "montant_total": 3740006.0,
+      "pct_total": 0.32
+    },
+    {
+      "annee": 2022,
+      "thematique": "Environnement",
+      "nb_beneficiaires": 33,
+      "nb_subventions": 33,
+      "montant_total": 2353306.0,
+      "pct_total": 0.2
+    },
+    {
+      "annee": 2022,
+      "thematique": "Autre",
+      "nb_beneficiaires": 1,
+      "nb_subventions": 1,
+      "montant_total": 60000.0,
+      "pct_total": 0.01
     }
   ]
 }
