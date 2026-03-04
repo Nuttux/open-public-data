@@ -1,160 +1,128 @@
 {
   "year": 2018,
-  "generated_at": "2026-02-05T19:11:31.791680",
+  "generated_at": "2026-02-18T16:41:45.624121",
   "total_montant": 1241346409.0,
-  "nb_thematiques": 19,
+  "nb_thematiques": 15,
   "data": [
     {
       "annee": 2018,
       "thematique": "Social - Solidarité",
-      "nb_beneficiaires": 163,
-      "nb_subventions": 221,
-      "montant_total": 395604249.0,
-      "pct_total": 31.87
+      "nb_beneficiaires": 114,
+      "nb_subventions": 169,
+      "montant_total": 425889924.0,
+      "pct_total": 34.31
+    },
+    {
+      "annee": 2018,
+      "thematique": "Logement",
+      "nb_beneficiaires": 39,
+      "nb_subventions": 62,
+      "montant_total": 221832714.0,
+      "pct_total": 17.87
     },
     {
       "annee": 2018,
       "thematique": "Culture",
-      "nb_beneficiaires": 279,
-      "nb_subventions": 299,
-      "montant_total": 165728520.0,
-      "pct_total": 13.35
-    },
-    {
-      "annee": 2018,
-      "thematique": "Urbanisme - Logement",
-      "nb_beneficiaires": 30,
-      "nb_subventions": 39,
-      "montant_total": 165332492.0,
-      "pct_total": 13.32
+      "nb_beneficiaires": 300,
+      "nb_subventions": 336,
+      "montant_total": 183759564.0,
+      "pct_total": 14.8
     },
     {
       "annee": 2018,
       "thematique": "Éducation",
-      "nb_beneficiaires": 250,
-      "nb_subventions": 318,
-      "montant_total": 156461751.0,
+      "nb_beneficiaires": 262,
+      "nb_subventions": 329,
+      "montant_total": 156462246.0,
       "pct_total": 12.6
     },
     {
       "annee": 2018,
       "thematique": "Transport",
-      "nb_beneficiaires": 11,
-      "nb_subventions": 12,
-      "montant_total": 73693924.0,
-      "pct_total": 5.94
-    },
-    {
-      "annee": 2018,
-      "thematique": "Sport",
-      "nb_beneficiaires": 1183,
-      "nb_subventions": 1267,
-      "montant_total": 63219681.0,
-      "pct_total": 5.09
-    },
-    {
-      "annee": 2018,
-      "thematique": "Administration",
-      "nb_beneficiaires": 343,
-      "nb_subventions": 371,
-      "montant_total": 44392785.0,
-      "pct_total": 3.58
-    },
-    {
-      "annee": 2018,
-      "thematique": "Logement",
-      "nb_beneficiaires": 30,
-      "nb_subventions": 45,
-      "montant_total": 41819627.0,
-      "pct_total": 3.37
+      "nb_beneficiaires": 5,
+      "nb_subventions": 6,
+      "montant_total": 73630963.0,
+      "pct_total": 5.93
     },
     {
       "annee": 2018,
       "thematique": "Social - Petite enfance",
-      "nb_beneficiaires": 60,
-      "nb_subventions": 66,
-      "montant_total": 32108595.0,
-      "pct_total": 2.59
-    },
-    {
-      "annee": 2018,
-      "thematique": "Social",
-      "nb_beneficiaires": 91,
-      "nb_subventions": 117,
-      "montant_total": 30964216.0,
-      "pct_total": 2.49
-    },
-    {
-      "annee": 2018,
-      "thematique": "Culture & Sport",
-      "nb_beneficiaires": 120,
-      "nb_subventions": 138,
-      "montant_total": 24578836.0,
-      "pct_total": 1.98
+      "nb_beneficiaires": 88,
+      "nb_subventions": 98,
+      "montant_total": 38889229.0,
+      "pct_total": 3.13
     },
     {
       "annee": 2018,
       "thematique": "Économie",
-      "nb_beneficiaires": 144,
-      "nb_subventions": 170,
-      "montant_total": 23091507.0,
-      "pct_total": 1.86
+      "nb_beneficiaires": 156,
+      "nb_subventions": 190,
+      "montant_total": 36641273.0,
+      "pct_total": 2.95
     },
     {
       "annee": 2018,
       "thematique": "Non classifié",
-      "nb_beneficiaires": 6957,
-      "nb_subventions": 7009,
-      "montant_total": 8461248.0,
-      "pct_total": 0.68
+      "nb_beneficiaires": 8578,
+      "nb_subventions": 8754,
+      "montant_total": 33717245.0,
+      "pct_total": 2.72
     },
     {
       "annee": 2018,
-      "thematique": "Autre",
-      "nb_beneficiaires": 44,
-      "nb_subventions": 47,
-      "montant_total": 8097633.0,
-      "pct_total": 0.65
+      "thematique": "Sport",
+      "nb_beneficiaires": 180,
+      "nb_subventions": 187,
+      "montant_total": 29260231.0,
+      "pct_total": 2.36
+    },
+    {
+      "annee": 2018,
+      "thematique": "Administration",
+      "nb_beneficiaires": 19,
+      "nb_subventions": 22,
+      "montant_total": 16331714.0,
+      "pct_total": 1.32
+    },
+    {
+      "annee": 2018,
+      "thematique": "Sécurité",
+      "nb_beneficiaires": 2,
+      "nb_subventions": 3,
+      "montant_total": 10333249.0,
+      "pct_total": 0.83
     },
     {
       "annee": 2018,
       "thematique": "Santé",
       "nb_beneficiaires": 30,
-      "nb_subventions": 37,
-      "montant_total": 3012498.0,
-      "pct_total": 0.24
-    },
-    {
-      "annee": 2018,
-      "thematique": "Environnement",
-      "nb_beneficiaires": 47,
-      "nb_subventions": 52,
-      "montant_total": 2945872.0,
-      "pct_total": 0.24
+      "nb_subventions": 33,
+      "montant_total": 7321745.0,
+      "pct_total": 0.59
     },
     {
       "annee": 2018,
       "thematique": "International",
-      "nb_beneficiaires": 40,
-      "nb_subventions": 45,
-      "montant_total": 1561975.0,
-      "pct_total": 0.13
+      "nb_beneficiaires": 38,
+      "nb_subventions": 41,
+      "montant_total": 4126675.0,
+      "pct_total": 0.33
     },
     {
       "annee": 2018,
-      "thematique": "Sécurité",
-      "nb_beneficiaires": 11,
-      "nb_subventions": 11,
-      "montant_total": 253000.0,
+      "thematique": "Environnement",
+      "nb_beneficiaires": 31,
+      "nb_subventions": 35,
+      "montant_total": 2847887.0,
+      "pct_total": 0.23
+    },
+    {
+      "annee": 2018,
+      "thematique": "Autre",
+      "nb_beneficiaires": 1,
+      "nb_subventions": 1,
+      "montant_total": 301750.0,
       "pct_total": 0.02
-    },
-    {
-      "annee": 2018,
-      "thematique": "Transport - Voirie",
-      "nb_beneficiaires": 2,
-      "nb_subventions": 2,
-      "montant_total": 18000.0,
-      "pct_total": 0
     }
   ]
 }

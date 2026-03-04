@@ -18,19 +18,19 @@ const BADGE_CONFIG: Record<BudgetType, {
   tooltip: string;
 }> = {
   execute: {
-    label: 'Exécuté',
+    label: 'Réel',
     classes: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
-    tooltip: 'Budget réellement dépensé (Compte Administratif)',
+    tooltip: 'Chiffres réels : ce qui a vraiment été dépensé et encaissé',
   },
   vote: {
-    label: 'Voté',
+    label: 'Prévisionnel',
     classes: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
-    tooltip: 'Budget prévisionnel voté par le Conseil de Paris (Budget Primitif)',
+    tooltip: 'Budget prévisionnel voté par le Conseil de Paris — les montants définitifs seront connus après exécution',
   },
   estime: {
     label: 'Estimé',
     classes: 'bg-slate-500/20 text-slate-400 border-slate-500/30',
-    tooltip: "Estimation basée sur le taux d'exécution historique moyen",
+    tooltip: 'Estimation basée sur les taux de réalisation des années précédentes',
   },
 };
 

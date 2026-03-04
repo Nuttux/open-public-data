@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-06T18:07:37.458907",
+  "generated_at": "2026-02-18T16:42:00.799050",
   "source": "mart_vote_vs_execute",
   "description": "Comparaison Budget Voté (BP) vs Budget Exécuté (CA) de la Ville de Paris. Le Budget Voté provient des PDFs Éditique BG (présentation croisée, opérations ventilées uniquement). Le Budget Exécuté provient du Compte Administratif (Open Data Paris).",
   "coverage": {
@@ -35,23 +35,23 @@
       "annee": 2019,
       "type": "comparaison",
       "depenses_vote": 10284249624.0,
-      "depenses_execute": 9806314635.300001,
+      "depenses_execute": 9806314635.3,
       "taux_global": 95.4,
       "vote_fonct": 8065759819.0,
-      "execute_fonct": 7952277591.67,
+      "execute_fonct": 7952277591.669999,
       "taux_fonct": 98.6,
       "vote_inves": 2218489805.0,
-      "execute_inves": 1854037043.6300004,
+      "execute_inves": 1854037043.63,
       "taux_inves": 83.6
     },
     {
       "annee": 2020,
       "type": "comparaison",
       "depenses_vote": 10519805984.519999,
-      "depenses_execute": 9497180399.480003,
+      "depenses_execute": 9497180399.48,
       "taux_global": 90.3,
       "vote_fonct": 8168760934.879999,
-      "execute_fonct": 7803564643.770002,
+      "execute_fonct": 7803564643.77,
       "taux_fonct": 95.5,
       "vote_inves": 2351045049.64,
       "execute_inves": 1693615755.71,
@@ -64,7 +64,7 @@
       "depenses_execute": 9555883065.09,
       "taux_global": 92.2,
       "vote_fonct": 8233250789.32,
-      "execute_fonct": 7835533536.419999,
+      "execute_fonct": 7835533536.42,
       "taux_fonct": 95.2,
       "vote_inves": 2129535903.24,
       "execute_inves": 1720349528.67,
@@ -74,13 +74,13 @@
       "annee": 2022,
       "type": "comparaison",
       "depenses_vote": 11010040495.79,
-      "depenses_execute": 10249357546.579998,
+      "depenses_execute": 10249357546.58,
       "taux_global": 93.1,
       "vote_fonct": 8601847932.2,
-      "execute_fonct": 8256974806.8899975,
+      "execute_fonct": 8256974806.889999,
       "taux_fonct": 96.0,
       "vote_inves": 2408192563.59,
-      "execute_inves": 1992382739.69,
+      "execute_inves": 1992382739.6900003,
       "taux_inves": 82.7
     },
     {
@@ -93,7 +93,7 @@
       "execute_fonct": 8329630427.82,
       "taux_fonct": 94.4,
       "vote_inves": 2490734412.0,
-      "execute_inves": 2062024770.5400002,
+      "execute_inves": 2062024770.5400004,
       "taux_inves": 82.8
     },
     {
@@ -106,7 +106,7 @@
       "execute_fonct": 8920800313.11,
       "taux_fonct": 95.4,
       "vote_inves": 2409911953.84,
-      "execute_inves": 2116290625.16,
+      "execute_inves": 2116290625.1599998,
       "taux_inves": 87.8
     },
     {
@@ -163,7 +163,7 @@
       "sens_flux": "Recette",
       "ecart_moyen_pct": 116.0,
       "vote_total": 10500935.0,
-      "execute_total": 10118552.190000001,
+      "execute_total": 10118552.19,
       "taux_execution": 96.4,
       "nb_annees": 5
     },
@@ -173,7 +173,7 @@
       "sens_flux": "Recette",
       "ecart_moyen_pct": 100.1,
       "vote_total": 523144390.0,
-      "execute_total": 1070272392.1000001,
+      "execute_total": 1070272392.0999999,
       "taux_execution": 204.6,
       "nb_annees": 6
     },
@@ -273,7 +273,7 @@
       "sens_flux": "Recette",
       "ecart_moyen_pct": 30.0,
       "vote_total": 84143718.0,
-      "execute_total": 118986925.99,
+      "execute_total": 118986925.99000001,
       "taux_execution": 141.4,
       "nb_annees": 6
     },
@@ -293,7 +293,7 @@
       "sens_flux": "Dépense",
       "ecart_moyen_pct": -26.1,
       "vote_total": 249412200.0,
-      "execute_total": 185931658.25,
+      "execute_total": 185931658.24999997,
       "taux_execution": 74.5,
       "nb_annees": 6
     },
@@ -333,7 +333,7 @@
       "sens_flux": "Recette",
       "ecart_moyen_pct": 23.1,
       "vote_total": 1145397505.33,
-      "execute_total": 1407366505.7200003,
+      "execute_total": 1407366505.72,
       "taux_execution": 122.9,
       "nb_annees": 6
     },
@@ -393,7 +393,7 @@
       "sens_flux": "Recette",
       "ecart_moyen_pct": -12.3,
       "vote_total": 275740677.24,
-      "execute_total": 226015960.35000002,
+      "execute_total": 226015960.35,
       "taux_execution": 82.0,
       "nb_annees": 6
     },
@@ -413,7 +413,7 @@
       "sens_flux": "Dépense",
       "ecart_moyen_pct": -11.3,
       "vote_total": 443797424.0,
-      "execute_total": 384581270.18000007,
+      "execute_total": 384581270.18,
       "taux_execution": 86.7,
       "nb_annees": 6
     },
@@ -423,7 +423,7 @@
       "sens_flux": "Dépense",
       "ecart_moyen_pct": -10.5,
       "vote_total": 402280846.64,
-      "execute_total": 360099011.26000005,
+      "execute_total": 360099011.26,
       "taux_execution": 89.5,
       "nb_annees": 6
     },
@@ -443,7 +443,7 @@
       "sens_flux": "Dépense",
       "ecart_moyen_pct": -8.2,
       "vote_total": 4347851177.79,
-      "execute_total": 3998569271.61,
+      "execute_total": 3998569271.6100006,
       "taux_execution": 92.0,
       "nb_annees": 6
     },
@@ -453,7 +453,7 @@
       "sens_flux": "Dépense",
       "ecart_moyen_pct": -6.9,
       "vote_total": 991924831.0,
-      "execute_total": 912259713.4000001,
+      "execute_total": 912259713.3999999,
       "taux_execution": 92.0,
       "nb_annees": 6
     },
@@ -483,7 +483,7 @@
       "sens_flux": "Dépense",
       "ecart_moyen_pct": -4.7,
       "vote_total": 1311223769.48,
-      "execute_total": 1252316447.5799997,
+      "execute_total": 1252316447.58,
       "taux_execution": 95.5,
       "nb_annees": 6
     },
@@ -503,7 +503,7 @@
       "sens_flux": "Dépense",
       "ecart_moyen_pct": -4.4,
       "vote_total": 5026984735.24,
-      "execute_total": 5104633010.240002,
+      "execute_total": 5104633010.24,
       "taux_execution": 101.5,
       "nb_annees": 6
     },
@@ -553,7 +553,7 @@
       "sens_flux": "Dépense",
       "ecart_moyen_pct": 2.5,
       "vote_total": 402516139.0,
-      "execute_total": 412710615.65999997,
+      "execute_total": 412710615.65999985,
       "taux_execution": 102.5,
       "nb_annees": 1
     },
@@ -563,7 +563,7 @@
       "sens_flux": "Dépense",
       "ecart_moyen_pct": 1.9,
       "vote_total": 3832481382.65,
-      "execute_total": 3905572080.52,
+      "execute_total": 3905572080.5200005,
       "taux_execution": 101.9,
       "nb_annees": 6
     },
@@ -573,7 +573,7 @@
       "sens_flux": "Recette",
       "ecart_moyen_pct": 1.6,
       "vote_total": 4638715261.0,
-      "execute_total": 4719550531.49,
+      "execute_total": 4719550531.490001,
       "taux_execution": 101.7,
       "nb_annees": 6
     },
@@ -583,7 +583,7 @@
       "sens_flux": "Dépense",
       "ecart_moyen_pct": 1.5,
       "vote_total": 4443996778.0,
-      "execute_total": 4515768142.1399975,
+      "execute_total": 4515768142.14,
       "taux_execution": 101.6,
       "nb_annees": 6
     },
@@ -593,7 +593,7 @@
       "sens_flux": "Dépense",
       "ecart_moyen_pct": 1.4,
       "vote_total": 10728267681.67,
-      "execute_total": 10876292623.690002,
+      "execute_total": 10876292623.69,
       "taux_execution": 101.4,
       "nb_annees": 6
     },
@@ -603,7 +603,7 @@
       "sens_flux": "Dépense",
       "ecart_moyen_pct": 1.4,
       "vote_total": 708098607.0,
-      "execute_total": 704069064.1800002,
+      "execute_total": 704069064.1800001,
       "taux_execution": 99.4,
       "nb_annees": 6
     },
@@ -623,7 +623,7 @@
       "sens_flux": "Dépense",
       "ecart_moyen_pct": 1.2,
       "vote_total": 1585783747.0,
-      "execute_total": 1604219122.7000008,
+      "execute_total": 1604219122.7000003,
       "taux_execution": 101.2,
       "nb_annees": 6
     },
@@ -693,7 +693,7 @@
       "sens_flux": "Dépense",
       "ecart_moyen_pct": -0.1,
       "vote_total": 4559781374.5,
-      "execute_total": 4553775854.209999,
+      "execute_total": 4553775854.21,
       "taux_execution": 99.9,
       "nb_annees": 6
     },

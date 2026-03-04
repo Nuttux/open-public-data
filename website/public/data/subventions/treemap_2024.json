@@ -1,160 +1,128 @@
 {
   "year": 2024,
-  "generated_at": "2026-02-05T19:11:24.674394",
+  "generated_at": "2026-02-18T16:41:39.992363",
   "total_montant": 1353488225.0,
-  "nb_thematiques": 19,
+  "nb_thematiques": 15,
   "data": [
     {
       "annee": 2024,
       "thematique": "Social - Solidarité",
-      "nb_beneficiaires": 191,
-      "nb_subventions": 192,
-      "montant_total": 451901925.0,
-      "pct_total": 33.39
-    },
-    {
-      "annee": 2024,
-      "thematique": "Éducation",
-      "nb_beneficiaires": 260,
-      "nb_subventions": 260,
-      "montant_total": 177426150.0,
-      "pct_total": 13.11
-    },
-    {
-      "annee": 2024,
-      "thematique": "Culture",
-      "nb_beneficiaires": 374,
-      "nb_subventions": 374,
-      "montant_total": 157124694.0,
-      "pct_total": 11.61
-    },
-    {
-      "annee": 2024,
-      "thematique": "Urbanisme - Logement",
-      "nb_beneficiaires": 31,
-      "nb_subventions": 31,
-      "montant_total": 136119150.0,
-      "pct_total": 10.06
-    },
-    {
-      "annee": 2024,
-      "thematique": "Transport",
-      "nb_beneficiaires": 12,
-      "nb_subventions": 12,
-      "montant_total": 81182842.0,
-      "pct_total": 6.0
-    },
-    {
-      "annee": 2024,
-      "thematique": "Administration",
-      "nb_beneficiaires": 421,
-      "nb_subventions": 422,
-      "montant_total": 77746465.0,
-      "pct_total": 5.74
-    },
-    {
-      "annee": 2024,
-      "thematique": "Sport",
-      "nb_beneficiaires": 1011,
-      "nb_subventions": 1013,
-      "montant_total": 69575351.0,
-      "pct_total": 5.14
+      "nb_beneficiaires": 282,
+      "nb_subventions": 284,
+      "montant_total": 508442388.0,
+      "pct_total": 37.57
     },
     {
       "annee": 2024,
       "thematique": "Logement",
-      "nb_beneficiaires": 25,
-      "nb_subventions": 25,
-      "montant_total": 48668127.0,
-      "pct_total": 3.6
+      "nb_beneficiaires": 39,
+      "nb_subventions": 39,
+      "montant_total": 206269366.0,
+      "pct_total": 15.24
+    },
+    {
+      "annee": 2024,
+      "thematique": "Éducation",
+      "nb_beneficiaires": 240,
+      "nb_subventions": 240,
+      "montant_total": 176685544.0,
+      "pct_total": 13.05
+    },
+    {
+      "annee": 2024,
+      "thematique": "Culture",
+      "nb_beneficiaires": 416,
+      "nb_subventions": 416,
+      "montant_total": 174961917.0,
+      "pct_total": 12.93
+    },
+    {
+      "annee": 2024,
+      "thematique": "Transport",
+      "nb_beneficiaires": 11,
+      "nb_subventions": 11,
+      "montant_total": 81009775.0,
+      "pct_total": 5.99
     },
     {
       "annee": 2024,
       "thematique": "Social - Petite enfance",
-      "nb_beneficiaires": 74,
-      "nb_subventions": 74,
-      "montant_total": 41116282.0,
-      "pct_total": 3.04
+      "nb_beneficiaires": 95,
+      "nb_subventions": 95,
+      "montant_total": 46940834.0,
+      "pct_total": 3.47
     },
     {
       "annee": 2024,
-      "thematique": "Social",
-      "nb_beneficiaires": 117,
-      "nb_subventions": 117,
-      "montant_total": 36047834.0,
-      "pct_total": 2.66
+      "thematique": "Sport",
+      "nb_beneficiaires": 179,
+      "nb_subventions": 179,
+      "montant_total": 39824646.0,
+      "pct_total": 2.94
     },
     {
       "annee": 2024,
       "thematique": "Économie",
-      "nb_beneficiaires": 871,
-      "nb_subventions": 871,
-      "montant_total": 25368543.0,
-      "pct_total": 1.87
-    },
-    {
-      "annee": 2024,
-      "thematique": "Culture & Sport",
-      "nb_beneficiaires": 118,
-      "nb_subventions": 118,
-      "montant_total": 19706859.0,
-      "pct_total": 1.46
-    },
-    {
-      "annee": 2024,
-      "thematique": "Environnement",
-      "nb_beneficiaires": 82,
-      "nb_subventions": 82,
-      "montant_total": 8967151.0,
-      "pct_total": 0.66
-    },
-    {
-      "annee": 2024,
-      "thematique": "Autre",
-      "nb_beneficiaires": 61,
-      "nb_subventions": 63,
-      "montant_total": 8550346.0,
-      "pct_total": 0.63
+      "nb_beneficiaires": 915,
+      "nb_subventions": 915,
+      "montant_total": 38179035.0,
+      "pct_total": 2.82
     },
     {
       "annee": 2024,
       "thematique": "Non classifié",
-      "nb_beneficiaires": 2233,
-      "nb_subventions": 2234,
-      "montant_total": 6080546.0,
-      "pct_total": 0.45
-    },
-    {
-      "annee": 2024,
-      "thematique": "International",
-      "nb_beneficiaires": 46,
-      "nb_subventions": 46,
-      "montant_total": 4565143.0,
-      "pct_total": 0.34
-    },
-    {
-      "annee": 2024,
-      "thematique": "Santé",
-      "nb_beneficiaires": 32,
-      "nb_subventions": 32,
-      "montant_total": 2878817.0,
-      "pct_total": 0.21
+      "nb_beneficiaires": 3622,
+      "nb_subventions": 3624,
+      "montant_total": 32182158.0,
+      "pct_total": 2.38
     },
     {
       "annee": 2024,
       "thematique": "Sécurité",
       "nb_beneficiaires": 2,
       "nb_subventions": 2,
-      "montant_total": 298400.0,
-      "pct_total": 0.02
+      "montant_total": 18240824.0,
+      "pct_total": 1.35
     },
     {
       "annee": 2024,
-      "thematique": "Transport - Voirie",
-      "nb_beneficiaires": 9,
-      "nb_subventions": 9,
-      "montant_total": 163600.0,
-      "pct_total": 0.01
+      "thematique": "Administration",
+      "nb_beneficiaires": 13,
+      "nb_subventions": 13,
+      "montant_total": 11690704.0,
+      "pct_total": 0.86
+    },
+    {
+      "annee": 2024,
+      "thematique": "Santé",
+      "nb_beneficiaires": 64,
+      "nb_subventions": 64,
+      "montant_total": 8174947.0,
+      "pct_total": 0.6
+    },
+    {
+      "annee": 2024,
+      "thematique": "Environnement",
+      "nb_beneficiaires": 46,
+      "nb_subventions": 46,
+      "montant_total": 6958872.0,
+      "pct_total": 0.51
+    },
+    {
+      "annee": 2024,
+      "thematique": "International",
+      "nb_beneficiaires": 48,
+      "nb_subventions": 48,
+      "montant_total": 3887215.0,
+      "pct_total": 0.29
+    },
+    {
+      "annee": 2024,
+      "thematique": "Autre",
+      "nb_beneficiaires": 1,
+      "nb_subventions": 1,
+      "montant_total": 40000.0,
+      "pct_total": 0
     }
   ]
 }
