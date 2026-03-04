@@ -10,7 +10,7 @@
  * Remplace l'ancien /bilan.
  */
 
-import { Suspense, useState, useEffect } from 'react';
+import { Suspense, useState, useEffect, useMemo } from 'react';
 import TabBar, { type Tab } from '@/components/TabBar';
 import { useTabState } from '@/lib/hooks/useTabState';
 import PageHeader from '@/components/PageHeader';
@@ -18,23 +18,25 @@ import PatrimoineAnnuelTab from '@/components/patrimoine/PatrimoineAnnuelTab';
 import PatrimoineTendancesTab from '@/components/patrimoine/PatrimoineTendancesTab';
 import { loadBilanIndex, type BilanIndex } from '@/lib/api/staticData';
 import { TAB_ICONS } from '@/lib/icons';
+import { useT } from '@/lib/localeContext';
 
-// ─── Tab definitions ─────────────────────────────────────────────────────────
+// ─── Valid tab IDs ───────────────────────────────────────────────────────────
 
-const PATRIMOINE_TABS: Tab[] = [
-  { id: 'annuel', label: 'Annuel', icon: TAB_ICONS.annuel },
-  { id: 'tendances', label: 'Tendances', icon: TAB_ICONS.tendances },
-];
-
-const VALID_TAB_IDS = PATRIMOINE_TABS.map(t => t.id);
+const VALID_TAB_IDS = ['annuel', 'tendances'];
 
 // ─── Inner component ─────────────────────────────────────────────────────────
 
 function PatrimoinePageInner() {
+  const t = useT();
   const [activeTab, setActiveTab] = useTabState('annuel', VALID_TAB_IDS);
   const [index, setIndex] = useState<BilanIndex | null>(null);
   const [selectedYear, setSelectedYear] = useState<number>(2024);
   const [isLoading, setIsLoading] = useState(true);
+
+  const tabs: Tab[] = useMemo(() => [
+    { id: 'annuel', label: t('tab.annuel'), icon: TAB_ICONS.annuel },
+    { id: 'tendances', label: t('tab.tendances'), icon: TAB_ICONS.tendances },
+  ], [t]);
 
   useEffect(() => {
     async function fetchIndex() {
@@ -56,7 +58,7 @@ function PatrimoinePageInner() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="w-12 h-12 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-slate-400">Chargement du patrimoine...</p>
+          <p className="text-slate-400">{t('patrimoine.loading')}</p>
         </div>
       </div>
     );
@@ -68,11 +70,11 @@ function PatrimoinePageInner() {
       <div className="border-b border-slate-800 bg-slate-900/50 backdrop-blur">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <PageHeader
-            title="Patrimoine de Paris"
-            description="État patrimonial, dette et santé financière de la Ville"
+            title={t('patrimoine.title')}
+            description={t('patrimoine.description')}
           />
           <div className="mt-5">
-            <TabBar tabs={PATRIMOINE_TABS} activeTab={activeTab} onChange={setActiveTab} />
+            <TabBar tabs={tabs} activeTab={activeTab} onChange={setActiveTab} />
           </div>
         </div>
       </div>
@@ -92,8 +94,8 @@ function PatrimoinePageInner() {
         {/* Footer */}
         <footer className="mt-8 pt-6 border-t border-slate-800">
           <div className="text-xs text-slate-500 text-center space-y-1">
-            <p>Données : Open Data Paris — Bilan patrimonial de la Ville de Paris</p>
-            <p>Années disponibles : {index.availableYears?.join(', ') || 'N/A'}</p>
+            <p>{t('patrimoine.footer.data')}</p>
+            <p>{t('patrimoine.footer.years')} : {index.availableYears?.join(', ') || 'N/A'}</p>
           </div>
         </footer>
       </div>

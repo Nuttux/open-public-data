@@ -16,6 +16,7 @@ import YearSelector from '@/components/YearSelector';
 import KpiTilesSection from '@/components/tableau-de-bord/KpiTilesSection';
 import PerCapitaSection from '@/components/tableau-de-bord/PerCapitaSection';
 import ExportBar from '@/components/shared/ExportBar';
+import { useT } from '@/lib/localeContext';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -35,6 +36,7 @@ interface SankeyData {
 // ─── Inner component (needs Suspense for useSearchParams) ────────────────────
 
 function TableauDeBordInner() {
+  const t = useT();
   const [index, setIndex] = useState<BudgetIndex | null>(null);
   const [sankeyData, setSankeyData] = useState<SankeyData | null>(null);
   const [selectedYear, setSelectedYear] = useState<number>(2024);
@@ -66,8 +68,8 @@ function TableauDeBordInner() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
       <PageHeader
-        title="Tableau de bord"
-        description="Vue d'ensemble des finances et de l'activité de la Ville — indicateurs clés et décomposition par habitant"
+        title={t('dashboard.title')}
+        description={t('dashboard.description')}
         actions={
           <YearSelector
             years={availableYears}
@@ -100,13 +102,13 @@ function TableauDeBordInner() {
       ) : sankeyData ? (
         <PerCapitaSection data={sankeyData} />
       ) : (
-        <div className="text-slate-500 text-center py-12">Données non disponibles</div>
+        <div className="text-slate-500 text-center py-12">{t('dashboard.no_data')}</div>
       )}
 
       {/* Quick links */}
       <section className="border-t border-slate-700/50 pt-8">
         <p className="text-xs text-slate-500 text-center">
-          Source : Open Data Paris · Comptes annuels de la Ville de Paris · Population INSEE 2023
+          {t('dashboard.footer')}
         </p>
       </section>
     </div>

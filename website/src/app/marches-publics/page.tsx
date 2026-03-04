@@ -14,7 +14,7 @@
  * pas des dépenses annuelles.
  */
 
-import { Suspense, useState, useEffect } from 'react';
+import { Suspense, useState, useEffect, useMemo } from 'react';
 import TabBar, { type Tab } from '@/components/TabBar';
 import { useTabState } from '@/lib/hooks/useTabState';
 import { useYearParam } from '@/lib/hooks/useYearParam';
@@ -25,6 +25,7 @@ import MarchesTendancesTab from '@/components/marches-publics/MarchesTendancesTa
 import MarchesExplorerTab from '@/components/marches-publics/MarchesExplorerTab';
 import type { MarchePublic } from '@/components/MarchesTable';
 import { TAB_ICONS } from '@/lib/icons';
+import { useT } from '@/lib/localeContext';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -48,19 +49,14 @@ interface MarchesYearResponse {
   data: MarchePublic[];
 }
 
-// ─── Tab definitions ─────────────────────────────────────────────────────────
+// ─── Valid tab IDs ───────────────────────────────────────────────────────────
 
-const MARCHES_TABS: Tab[] = [
-  { id: 'annuel', label: 'Annuel', icon: TAB_ICONS.annuel },
-  { id: 'tendances', label: 'Tendances', icon: TAB_ICONS.tendances },
-  { id: 'explorer', label: 'Explorer', icon: TAB_ICONS.explorer },
-];
-
-const VALID_TAB_IDS = MARCHES_TABS.map(t => t.id);
+const VALID_TAB_IDS = ['annuel', 'tendances', 'explorer'];
 
 // ─── Inner component ─────────────────────────────────────────────────────────
 
 function MarchesPageInner() {
+  const t = useT();
   const [activeTab, setActiveTab] = useTabState('annuel', VALID_TAB_IDS);
   const [index, setIndex] = useState<MarchesIndex | null>(null);
   const [selectedYear, setSelectedYear] = useYearParam(2024);
@@ -68,6 +64,12 @@ function MarchesPageInner() {
   const [isLoadingIndex, setIsLoadingIndex] = useState(true);
   const [isLoadingData, setIsLoadingData] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const tabs: Tab[] = useMemo(() => [
+    { id: 'annuel', label: t('tab.annuel'), icon: TAB_ICONS.annuel },
+    { id: 'tendances', label: t('tab.tendances'), icon: TAB_ICONS.tendances },
+    { id: 'explorer', label: t('tab.explorer'), icon: TAB_ICONS.explorer },
+  ], [t]);
 
   // ── Load index ──
   useEffect(() => {
@@ -127,8 +129,8 @@ function MarchesPageInner() {
       <div className="border-b border-slate-800 bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <PageHeader
-            title="Marchés publics"
-            description="Explorer les marchés publics par nature, catégorie d'achat et fournisseur"
+            title={t('marches.title')}
+            description={t('marches.description')}
             actions={
               activeTab !== 'tendances' ? (
                 <YearSelector
@@ -140,7 +142,7 @@ function MarchesPageInner() {
             }
           />
           <div className="mt-5">
-            <TabBar tabs={MARCHES_TABS} activeTab={activeTab} onChange={setActiveTab} />
+            <TabBar tabs={tabs} activeTab={activeTab} onChange={setActiveTab} />
           </div>
         </div>
       </div>
@@ -173,8 +175,8 @@ function MarchesPageInner() {
         {/* Footer */}
         <footer className="mt-8 pt-6 border-t border-slate-700/50">
           <div className="text-xs text-slate-500 text-center space-y-1">
-            <p>Données : Open Data Paris — Marchés publics de la Ville de Paris</p>
-            <p>Les montants affichés sont des plafonds contractuels sur toute la durée du contrat, pas des dépenses annuelles.</p>
+            <p>{t('marches.footer.data')}</p>
+            <p>{t('marches.footer.disclaimer')}</p>
           </div>
         </footer>
       </div>
