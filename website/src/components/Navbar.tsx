@@ -38,6 +38,8 @@ const navLinks = [
     shortLabel: 'Accueil',
     icon: NAV_ICONS.accueil,
     description: 'Présentation du projet',
+    activeColor: 'text-slate-100',
+    activeBg: 'bg-slate-700/30 border-slate-500/30',
   },
   {
     href: '/tableau-de-bord',
@@ -45,6 +47,8 @@ const navLinks = [
     shortLabel: 'Synthèse',
     icon: NAV_ICONS.synthese,
     description: 'Tableau de bord — KPI et coût par habitant',
+    activeColor: 'text-blue-400',
+    activeBg: 'bg-blue-600/20 border-blue-500/30',
   },
   {
     href: '/budget',
@@ -52,6 +56,8 @@ const navLinks = [
     shortLabel: 'Budget',
     icon: NAV_ICONS.budget,
     description: 'Budget de Paris — Annuel, Tendances, Prévision',
+    activeColor: 'text-rose-400',
+    activeBg: 'bg-rose-600/20 border-rose-500/30',
   },
   {
     href: '/patrimoine',
@@ -59,6 +65,8 @@ const navLinks = [
     shortLabel: 'Patrim.',
     icon: NAV_ICONS.patrimoine,
     description: 'État patrimonial, dette et santé financière',
+    activeColor: 'text-violet-400',
+    activeBg: 'bg-violet-600/20 border-violet-500/30',
   },
   {
     href: '/subventions',
@@ -66,6 +74,8 @@ const navLinks = [
     shortLabel: 'Subven.',
     icon: NAV_ICONS.subventions,
     description: 'Bénéficiaires par thématique',
+    activeColor: 'text-amber-400',
+    activeBg: 'bg-amber-600/20 border-amber-500/30',
   },
   {
     href: '/investissements',
@@ -73,6 +83,8 @@ const navLinks = [
     shortLabel: 'Invest.',
     icon: NAV_ICONS.investissements,
     description: "Projets d'investissement",
+    activeColor: 'text-purple-400',
+    activeBg: 'bg-purple-600/20 border-purple-500/30',
   },
   {
     href: '/marches-publics',
@@ -80,6 +92,8 @@ const navLinks = [
     shortLabel: 'Marchés',
     icon: NAV_ICONS.marches,
     description: 'Marchés publics de la collectivité parisienne',
+    activeColor: 'text-orange-400',
+    activeBg: 'bg-orange-600/20 border-orange-500/30',
   },
   {
     href: '/logements',
@@ -87,6 +101,8 @@ const navLinks = [
     shortLabel: 'Logem.',
     icon: NAV_ICONS.logements,
     description: 'Logements sociaux financés',
+    activeColor: 'text-cyan-400',
+    activeBg: 'bg-cyan-600/20 border-cyan-500/30',
   },
   {
     href: '/blog',
@@ -94,6 +110,8 @@ const navLinks = [
     shortLabel: 'Blog',
     icon: NAV_ICONS.blog,
     description: 'Articles et analyses',
+    activeColor: 'text-slate-100',
+    activeBg: 'bg-slate-700/30 border-slate-500/30',
   },
 ];
 
@@ -179,11 +197,11 @@ export default function Navbar() {
                     onClick={() => track('nav_click', { destination: link.href, nav_type: 'desktop_top' })}
                     className={`
                       flex items-center gap-1.5 px-2 lg:px-2.5 py-2 rounded-lg text-xs font-medium
-                      transition-all duration-200
+                      transition-all duration-200 ${link.activeColor}
                       ${
                         isActive
-                          ? 'bg-purple-600/20 text-purple-400 border border-purple-500/30'
-                          : 'text-slate-300 hover:text-slate-100 hover:bg-slate-800/50'
+                          ? `${link.activeBg} border`
+                          : 'opacity-70 hover:opacity-100 hover:bg-slate-800/50'
                       }
                     `}
                     title={link.description}
@@ -256,14 +274,13 @@ export default function Navbar() {
                   transition-colors duration-200
                   ${
                     isActive
-                      ? 'text-purple-400'
+                      ? link.activeColor
                       : 'text-slate-400 active:text-slate-200'
                   }
                 `}
               >
-                {/* Indicateur actif — barre violette en haut de l'onglet */}
                 {isActive && (
-                  <span className="absolute top-0 inset-x-2 h-0.5 bg-purple-400 rounded-full" />
+                  <span className={`absolute top-0 inset-x-2 h-0.5 ${link.activeColor.replace('text-', 'bg-')} rounded-full`} />
                 )}
                 <span className="text-[22px] leading-none">
                   {link.icon}
@@ -272,7 +289,7 @@ export default function Navbar() {
                   className={`
                     text-[9px] mt-1 leading-tight font-medium
                     max-w-full px-0.5 text-center
-                    ${isActive ? 'text-purple-400' : 'text-slate-400'}
+                    ${isActive ? link.activeColor : 'text-slate-400'}
                   `}
                 >
                   {link.shortLabel}
