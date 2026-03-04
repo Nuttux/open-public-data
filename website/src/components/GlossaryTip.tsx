@@ -14,10 +14,11 @@
 
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, useMemo } from 'react';
 import { createPortal } from 'react-dom';
-import { GLOSSARY } from '@/lib/glossary';
+import { getGlossaryMap } from '@/lib/glossary';
 import { useIsMobile } from '@/lib/hooks/useIsMobile';
+import { useT } from '@/lib/localeContext';
 
 interface GlossaryTipProps {
   /** Clé du terme dans le glossaire (ex: "recettes_propres") */
@@ -43,7 +44,9 @@ function computeTooltipPos(rect: DOMRect): { top: number; left: number } {
 }
 
 export default function GlossaryTip({ term }: GlossaryTipProps) {
-  const definition = GLOSSARY[term];
+  const t = useT();
+  const glossary = useMemo(() => getGlossaryMap(t), [t]);
+  const definition = glossary[term];
   const isMobile = useIsMobile();
 
   const buttonRef = useRef<HTMLButtonElement>(null);

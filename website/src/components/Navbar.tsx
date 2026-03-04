@@ -14,7 +14,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useGlossary } from '@/lib/glossaryContext';
+import { useLocale, useT } from '@/lib/localeContext';
 import { NAV_ICONS } from '@/lib/icons';
 import { useTrack } from '@/lib/analyticsContext';
 
@@ -31,141 +31,120 @@ import { useTrack } from '@/lib/analyticsContext';
  *   /bilan     → /patrimoine?tab=annuel
  *   /carte     → /logements?tab=carte
  */
-const navLinks = [
+const NAV_LINK_DEFS = [
   {
     href: '/',
-    label: 'Accueil',
-    shortLabel: 'Accueil',
+    labelKey: 'nav.accueil',
+    shortLabelKey: 'nav.accueil.short',
+    descKey: 'nav.accueil.desc',
     icon: NAV_ICONS.accueil,
-    description: 'Présentation du projet',
     activeColor: 'text-slate-100',
     activeBg: 'bg-slate-700/30 border-slate-500/30',
   },
   {
     href: '/tableau-de-bord',
-    label: 'Synthèse',
-    shortLabel: 'Synthèse',
+    labelKey: 'nav.synthese',
+    shortLabelKey: 'nav.synthese.short',
+    descKey: 'nav.synthese.desc',
     icon: NAV_ICONS.synthese,
-    description: 'Tableau de bord — KPI et coût par habitant',
     activeColor: 'text-blue-400',
     activeBg: 'bg-blue-600/20 border-blue-500/30',
   },
   {
     href: '/budget',
-    label: 'Budget',
-    shortLabel: 'Budget',
+    labelKey: 'nav.budget',
+    shortLabelKey: 'nav.budget.short',
+    descKey: 'nav.budget.desc',
     icon: NAV_ICONS.budget,
-    description: 'Budget de Paris — Annuel, Tendances, Prévision',
     activeColor: 'text-rose-400',
     activeBg: 'bg-rose-600/20 border-rose-500/30',
   },
   {
     href: '/patrimoine',
-    label: 'Patrimoine',
-    shortLabel: 'Patrim.',
+    labelKey: 'nav.patrimoine',
+    shortLabelKey: 'nav.patrimoine.short',
+    descKey: 'nav.patrimoine.desc',
     icon: NAV_ICONS.patrimoine,
-    description: 'État patrimonial, dette et santé financière',
     activeColor: 'text-violet-400',
     activeBg: 'bg-violet-600/20 border-violet-500/30',
   },
   {
     href: '/subventions',
-    label: 'Subventions',
-    shortLabel: 'Subven.',
+    labelKey: 'nav.subventions',
+    shortLabelKey: 'nav.subventions.short',
+    descKey: 'nav.subventions.desc',
     icon: NAV_ICONS.subventions,
-    description: 'Bénéficiaires par thématique',
     activeColor: 'text-amber-400',
     activeBg: 'bg-amber-600/20 border-amber-500/30',
   },
   {
     href: '/investissements',
-    label: 'Investissements',
-    shortLabel: 'Invest.',
+    labelKey: 'nav.investissements',
+    shortLabelKey: 'nav.investissements.short',
+    descKey: 'nav.investissements.desc',
     icon: NAV_ICONS.investissements,
-    description: "Projets d'investissement",
     activeColor: 'text-purple-400',
     activeBg: 'bg-purple-600/20 border-purple-500/30',
   },
   {
     href: '/marches-publics',
-    label: 'Marchés',
-    shortLabel: 'Marchés',
+    labelKey: 'nav.marches',
+    shortLabelKey: 'nav.marches.short',
+    descKey: 'nav.marches.desc',
     icon: NAV_ICONS.marches,
-    description: 'Marchés publics de la collectivité parisienne',
     activeColor: 'text-orange-400',
     activeBg: 'bg-orange-600/20 border-orange-500/30',
   },
   {
     href: '/logements',
-    label: 'Logements',
-    shortLabel: 'Logem.',
+    labelKey: 'nav.logements',
+    shortLabelKey: 'nav.logements.short',
+    descKey: 'nav.logements.desc',
     icon: NAV_ICONS.logements,
-    description: 'Logements sociaux financés',
     activeColor: 'text-cyan-400',
     activeBg: 'bg-cyan-600/20 border-cyan-500/30',
   },
   {
     href: '/blog',
-    label: 'Blog',
-    shortLabel: 'Blog',
+    labelKey: 'nav.blog',
+    shortLabelKey: 'nav.blog.short',
+    descKey: 'nav.blog.desc',
     icon: NAV_ICONS.blog,
-    description: 'Articles et analyses',
     activeColor: 'text-slate-100',
     activeBg: 'bg-slate-700/30 border-slate-500/30',
   },
-];
+] as const;
 
 /**
- * Bouton glossaire réutilisable pour desktop et mobile
- * Ouvre le tiroir glossaire avec les définitions des termes budgétaires
+ * FR / EN locale toggle — plain text, brutalist style
  */
-function GlossaryButton({
-  onClick,
-  className = '',
-}: {
-  onClick: () => void;
-  className?: string;
-}) {
+function LocaleToggle({ className = '' }: { className?: string }) {
+  const { locale, setLocale } = useLocale();
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={`
-        flex items-center justify-center rounded-lg
-        border border-slate-700/50 text-slate-300
-        hover:text-slate-100 hover:bg-slate-800/50
-        transition-all duration-200
-        ${className}
-      `}
-      title="Comprendre les chiffres"
-      aria-label="Ouvrir le glossaire des termes budgétaires"
-    >
-      <svg
-        className="w-4 h-4"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
+    <span className={`inline-flex items-center gap-1 text-xs font-mono ${className}`}>
+      <button
+        type="button"
+        onClick={() => setLocale('fr')}
+        className={`px-1 py-0.5 rounded transition-colors ${locale === 'fr' ? 'text-slate-100 font-bold' : 'text-slate-500 hover:text-slate-300'}`}
       >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-        />
-      </svg>
-    </button>
+        FR
+      </button>
+      <span className="text-slate-600">·</span>
+      <button
+        type="button"
+        onClick={() => setLocale('en')}
+        className={`px-1 py-0.5 rounded transition-colors ${locale === 'en' ? 'text-slate-100 font-bold' : 'text-slate-500 hover:text-slate-300'}`}
+      >
+        EN
+      </button>
+    </span>
   );
 }
 
 export default function Navbar() {
   const pathname = usePathname();
-  const { openFull } = useGlossary();
   const track = useTrack();
-
-  const handleGlossaryOpen = () => {
-    track('glossary_open', { trigger: 'navbar_button' });
-    openFull();
-  };
+  const t = useT();
 
   return (
     <>
@@ -182,13 +161,13 @@ export default function Navbar() {
               className="flex items-center gap-3 hover:opacity-80 transition-opacity shrink-0"
             >
               <h1 className="text-lg font-bold text-slate-100">
-                Données Lumières
+                {t('nav.site_title')}
               </h1>
             </Link>
 
             {/* Liens de navigation desktop */}
             <div className="flex items-center gap-0.5">
-              {navLinks.map((link) => {
+              {NAV_LINK_DEFS.map((link) => {
                 const isActive = pathname === link.href;
                 return (
                   <Link
@@ -204,26 +183,15 @@ export default function Navbar() {
                           : 'opacity-70 hover:opacity-100 hover:bg-slate-800/50'
                       }
                     `}
-                    title={link.description}
+                    title={t(link.descKey)}
                   >
                     <span className="text-[18px] leading-none">{link.icon}</span>
-                    <span className="hidden lg:inline">{link.label}</span>
+                    <span className="hidden lg:inline">{t(link.labelKey)}</span>
                   </Link>
                 );
               })}
 
-              <GlossaryButton onClick={handleGlossaryOpen} className="w-9 h-9 ml-2" />
-
-              <Link
-                href="/confidentialite"
-                className="w-9 h-9 ml-1 flex items-center justify-center rounded-lg border border-slate-700/50 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 transition-all duration-200"
-                title="Politique de confidentialité"
-                aria-label="Politique de confidentialité"
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                </svg>
-              </Link>
+              <LocaleToggle className="ml-2" />
             </div>
           </div>
         </div>
@@ -240,11 +208,11 @@ export default function Navbar() {
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
             <h1 className="text-base font-bold text-slate-100">
-              Données Lumières
+              {t('nav.site_title')}
             </h1>
           </Link>
 
-          <GlossaryButton onClick={handleGlossaryOpen} className="w-8 h-8" />
+          <LocaleToggle />
         </div>
       </header>
 
@@ -256,11 +224,11 @@ export default function Navbar() {
       <nav
         className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-md border-t border-slate-700/50"
         role="tablist"
-        aria-label="Navigation principale"
+        aria-label={t('nav.main_aria')}
         style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
       >
         <div className="grid grid-cols-9">
-          {navLinks.map((link) => {
+          {NAV_LINK_DEFS.map((link) => {
             const isActive = pathname === link.href;
             return (
               <Link
@@ -292,7 +260,7 @@ export default function Navbar() {
                     ${isActive ? link.activeColor : 'text-slate-400'}
                   `}
                 >
-                  {link.shortLabel}
+                  {t(link.shortLabelKey)}
                 </span>
               </Link>
             );

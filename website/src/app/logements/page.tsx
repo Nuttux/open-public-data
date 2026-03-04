@@ -24,26 +24,28 @@ import { TAB_ICONS } from '@/lib/icons';
 import LogementsAnnuelTab from '@/components/logements/LogementsAnnuelTab';
 import LogementsTendancesTab from '@/components/logements/LogementsTendancesTab';
 import LogementsExplorerTab from '@/components/logements/LogementsExplorerTab';
+import { useT } from '@/lib/localeContext';
 
-// ─── Tab definitions ─────────────────────────────────────────────────────────
+// ─── Valid tab IDs ───────────────────────────────────────────────────────────
 
-const LOGEMENTS_TABS: Tab[] = [
-  { id: 'annuel', label: 'Annuel', icon: TAB_ICONS.annuel },
-  { id: 'tendances', label: 'Tendances', icon: TAB_ICONS.tendances },
-  { id: 'explorer', label: 'Explorer', icon: TAB_ICONS.explorer },
-];
-
-const VALID_TAB_IDS = LOGEMENTS_TABS.map(t => t.id);
+const VALID_TAB_IDS = ['annuel', 'tendances', 'explorer'];
 
 // ─── Inner component ─────────────────────────────────────────────────────────
 
 function LogementsPageInner() {
+  const t = useT();
   const [activeTab, setActiveTab] = useTabState('annuel', VALID_TAB_IDS);
   const [allLogements, setAllLogements] = useState<LogementSocial[]>([]);
   const [arrondissementsStats, setArrondissementsStats] = useState<ArrondissementStats[]>([]);
   const [selectedYear, setSelectedYear] = useState<number>(2024);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  const tabs: Tab[] = useMemo(() => [
+    { id: 'annuel', label: t('tab.annuel'), icon: TAB_ICONS.annuel },
+    { id: 'tendances', label: t('tab.tendances'), icon: TAB_ICONS.tendances },
+    { id: 'explorer', label: t('tab.explorer'), icon: TAB_ICONS.explorer },
+  ], [t]);
 
   // ── Load data ──
   useEffect(() => {
@@ -99,14 +101,18 @@ function LogementsPageInner() {
     );
   }
 
+  const description = t('logements.description_template')
+    .replace('{count}', formatNumber(totalLogements))
+    .replace('{year}', String(selectedYear));
+
   return (
     <main className="min-h-screen">
       {/* Header */}
       <div className="border-b border-slate-800 bg-slate-900/50 backdrop-blur">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <PageHeader
-            title="Logements Sociaux"
-            description={`${formatNumber(totalLogements)} logements financés en ${selectedYear}`}
+            title={t('logements.title')}
+            description={description}
             actions={
               activeTab !== 'tendances' ? (
                 <YearSelector
@@ -118,7 +124,7 @@ function LogementsPageInner() {
             }
           />
           <div className="mt-5">
-            <TabBar tabs={LOGEMENTS_TABS} activeTab={activeTab} onChange={setActiveTab} />
+            <TabBar tabs={tabs} activeTab={activeTab} onChange={setActiveTab} />
           </div>
         </div>
       </div>
@@ -159,7 +165,7 @@ function LogementsPageInner() {
         {/* Footer */}
         <footer className="mt-8 pt-6 border-t border-slate-800">
           <div className="mb-4">
-            <h3 className="text-sm font-semibold text-slate-400 mb-3">Sources des données</h3>
+            <h3 className="text-sm font-semibold text-slate-400 mb-3">{t('logements.footer.sources_title')}</h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
               <a href={DATA_SOURCES.logementsSociaux.url} target="_blank" rel="noopener noreferrer" className="flex items-start gap-2 p-2 rounded bg-slate-800/30 hover:bg-slate-800/50 transition-colors">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0 mt-1.5" />

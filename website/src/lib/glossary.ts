@@ -13,6 +13,7 @@
 
 import type { ReactNode } from 'react';
 import { GLOSSARY_ICONS } from '@/lib/icons';
+import frDict from '@/i18n/fr';
 
 /** Définition d'un terme du glossaire */
 export interface GlossaryTerm {
@@ -37,167 +38,100 @@ export interface GlossarySection {
 }
 
 // ---------------------------------------------------------------------------
-// Données du glossaire
+// Structure du glossaire (clés uniquement — pas de texte hardcodé)
 // ---------------------------------------------------------------------------
 
-export const GLOSSARY_SECTIONS: GlossarySection[] = [
+interface TermDef {
+  key: string;
+  hasAnalogy: boolean;
+}
+
+interface SectionDef {
+  titleKey: string;
+  icon: ReactNode;
+  terms: TermDef[];
+}
+
+const SECTION_DEFS: SectionDef[] = [
   {
-    title: 'Le budget au quotidien',
+    titleKey: 'glossary.section.budget',
     icon: GLOSSARY_ICONS.budget,
     terms: [
-      {
-        key: 'recettes_propres',
-        label: 'Recettes propres',
-        plain:
-          "L'argent que Paris gagne réellement : impôts locaux, dotations de l'État, loyers de ses bâtiments… sans compter les emprunts.",
-        analogy: 'Comme votre salaire, sans compter un prêt bancaire.',
-      },
-      {
-        key: 'depenses',
-        label: 'Dépenses totales',
-        plain:
-          'Tout ce que Paris dépense dans l\'année : salaires des agents, entretien, aides sociales, grands travaux…',
-      },
-      {
-        key: 'fonctionnement',
-        label: 'Fonctionnement',
-        plain:
-          'Les dépenses du quotidien : salaires des agents, chauffage des écoles, entretien des rues.',
-        analogy: 'Comme vos charges mensuelles (loyer, courses, abonnements).',
-      },
-      {
-        key: 'investissement',
-        label: 'Investissement',
-        plain:
-          'Les grands projets : construire une école, rénover un musée, créer une piste cyclable.',
-        analogy: 'Comme acheter un appartement ou faire de gros travaux chez vous.',
-      },
-      {
-        key: 'nature_vs_fonction',
-        label: 'Nature vs Fonction',
-        plain:
-          'Deux façons de regarder les dépenses. Par fonction = à quoi ça sert (éducation, social…). Par nature = comment c\'est dépensé (personnel, achats, subventions…).',
-      },
-      {
-        key: 'budget_vote',
-        label: 'Budget voté (prévisionnel)',
-        plain:
-          'Le budget voté par le Conseil de Paris en début d\'année. C\'est une prévision : combien on prévoit de dépenser et de recevoir.',
-        analogy: 'Comme votre budget mensuel que vous planifiez en début de mois.',
-      },
-      {
-        key: 'budget_execute',
-        label: 'Budget exécuté (réel)',
-        plain:
-          'Ce qui a réellement été dépensé et encaissé en fin d\'année. Souvent différent du voté, surtout pour les grands projets.',
-        analogy: 'Comme vos relevés bancaires à la fin du mois : ce que vous avez vraiment dépensé.',
-      },
-      {
-        key: 'enveloppe_marche',
-        label: 'Enveloppe pluriannuelle',
-        plain:
-          'Le montant maximum qu\'un contrat peut atteindre sur toute sa durée (souvent 4 ans). Ce n\'est pas une dépense annuelle, c\'est un plafond contractuel.',
-        analogy: 'Comme un forfait téléphone sur 2 ans : le montant total du contrat, pas la facture du mois.',
-      },
+      { key: 'recettes_propres', hasAnalogy: true },
+      { key: 'depenses', hasAnalogy: false },
+      { key: 'fonctionnement', hasAnalogy: true },
+      { key: 'investissement', hasAnalogy: true },
+      { key: 'nature_vs_fonction', hasAnalogy: false },
+      { key: 'budget_vote', hasAnalogy: true },
+      { key: 'budget_execute', hasAnalogy: true },
+      { key: 'enveloppe_marche', hasAnalogy: true },
     ],
   },
   {
-    title: 'La santé financière',
+    titleKey: 'glossary.section.sante',
     icon: GLOSSARY_ICONS.sante,
     terms: [
-      {
-        key: 'epargne_brute',
-        label: 'Épargne brute',
-        plain:
-          "Ce qui reste des recettes du quotidien après les dépenses du quotidien. C'est la capacité de Paris à financer ses grands projets sans emprunter.",
-        analogy:
-          'Ce que vous mettez de côté chaque mois après avoir payé toutes vos factures.',
-      },
-      {
-        key: 'surplus_deficit',
-        label: 'Surplus / Déficit',
-        plain:
-          'La différence entre ce que Paris gagne réellement et ce qu\'il dépense (emprunts exclus). Négatif = il faut emprunter pour boucler le budget.',
-      },
-      {
-        key: 'solde_comptable',
-        label: 'Équilibre comptable',
-        plain:
-          "Recettes moins Dépenses en comptant les emprunts. Toujours proche de zéro car le budget est voté à l'équilibre. Ce n'est PAS un indicateur de bonne santé.",
-        analogy:
-          'Si vous empruntez 1 000 € et dépensez 1 000 €, votre solde est 0… mais vous avez une dette.',
-      },
+      { key: 'epargne_brute', hasAnalogy: true },
+      { key: 'surplus_deficit', hasAnalogy: false },
+      { key: 'solde_comptable', hasAnalogy: true },
     ],
   },
   {
-    title: 'La dette',
+    titleKey: 'glossary.section.dette',
     icon: GLOSSARY_ICONS.dette,
     terms: [
-      {
-        key: 'emprunts',
-        label: 'Emprunts',
-        plain:
-          "L'argent que Paris emprunte auprès des banques pour financer ses investissements.",
-      },
-      {
-        key: 'remboursement_principal',
-        label: 'Remboursement du capital',
-        plain:
-          'La part des remboursements qui réduit réellement la dette (hors intérêts).',
-        analogy:
-          'Quand vous remboursez votre crédit immobilier, c\'est la part qui diminue le capital restant dû.',
-      },
-      {
-        key: 'interets_dette',
-        label: 'Intérêts de la dette',
-        plain:
-          'Le coût de l\'emprunt : ce que Paris paye aux banques pour avoir emprunté.',
-      },
-      {
-        key: 'variation_dette_nette',
-        label: 'Variation de la dette',
-        plain:
-          'Nouveaux emprunts moins remboursements. Positif = la dette de Paris augmente, négatif = elle diminue.',
-      },
+      { key: 'emprunts', hasAnalogy: false },
+      { key: 'remboursement_principal', hasAnalogy: true },
+      { key: 'interets_dette', hasAnalogy: false },
+      { key: 'variation_dette_nette', hasAnalogy: false },
     ],
   },
   {
-    title: 'Le patrimoine (Bilan)',
+    titleKey: 'glossary.section.patrimoine',
     icon: GLOSSARY_ICONS.patrimoine,
     terms: [
-      {
-        key: 'actif_net',
-        label: 'Actif Net',
-        plain:
-          "La valeur totale de ce que Paris possède : bâtiments, routes, terrains, équipements… après déduction de l'usure.",
-      },
-      {
-        key: 'fonds_propres',
-        label: 'Fonds propres',
-        plain:
-          'La richesse accumulée par Paris au fil des années, sans compter les dettes.',
-        analogy:
-          'La valeur de votre maison moins ce que vous devez encore à la banque.',
-      },
-      {
-        key: 'dette_totale',
-        label: 'Dette totale',
-        plain:
-          "Tout ce que Paris doit : emprunts bancaires, fournisseurs, provisions pour risques…",
-      },
-      {
-        key: 'ratio_endettement',
-        label: "Ratio d'endettement",
-        plain:
-          "Dette divisée par Fonds propres. En dessous de 1 = la ville possède plus qu'elle ne doit. Au-dessus de 1 = attention.",
-      },
+      { key: 'actif_net', hasAnalogy: false },
+      { key: 'fonds_propres', hasAnalogy: true },
+      { key: 'dette_totale', hasAnalogy: false },
+      { key: 'ratio_endettement', hasAnalogy: false },
     ],
   },
 ];
 
 // ---------------------------------------------------------------------------
-// Index rapide par clé (pour les GlossaryTip inline)
+// Build translated glossary from a t() function
 // ---------------------------------------------------------------------------
+
+type TFn = (key: string) => string;
+
+/** Build GLOSSARY_SECTIONS using a translation function */
+export function getGlossarySections(t: TFn): GlossarySection[] {
+  return SECTION_DEFS.map((def) => ({
+    title: t(def.titleKey),
+    icon: def.icon,
+    terms: def.terms.map((td) => ({
+      key: td.key,
+      label: t(`glossary.${td.key}.label`),
+      plain: t(`glossary.${td.key}.plain`),
+      analogy: td.hasAnalogy ? t(`glossary.${td.key}.analogy`) : undefined,
+    })),
+  }));
+}
+
+/** Build GLOSSARY map using a translation function */
+export function getGlossaryMap(t: TFn): Record<string, GlossaryTerm> {
+  return Object.fromEntries(
+    getGlossarySections(t).flatMap((s) => s.terms).map((term) => [term.key, term]),
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Static exports (French defaults, used by non-translated consumers)
+// ---------------------------------------------------------------------------
+
+const frT = (key: string) => frDict[key] ?? key;
+
+export const GLOSSARY_SECTIONS: GlossarySection[] = getGlossarySections(frT);
 
 /** Map clé → définition pour accès O(1) */
 export const GLOSSARY: Record<string, GlossaryTerm> = Object.fromEntries(

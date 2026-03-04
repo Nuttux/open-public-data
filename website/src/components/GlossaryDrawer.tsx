@@ -15,27 +15,28 @@
 
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { GLOSSARY_SECTIONS, type GlossarySection } from '@/lib/glossary';
+import { useCallback, useEffect, useRef, useState, useMemo } from 'react';
+import { getGlossarySections, type GlossarySection } from '@/lib/glossary';
 import { useGlossary } from '@/lib/glossaryContext';
 import { useIsMobile } from '@/lib/hooks/useIsMobile';
 import { useTrack } from '@/lib/analyticsContext';
-
-/**
- * Trouve la section contenant un terme donné
- */
-function findSectionIndex(termKey: string): number {
-  return GLOSSARY_SECTIONS.findIndex((s) =>
-    s.terms.some((t) => t.key === termKey),
-  );
-}
+import { useT } from '@/lib/localeContext';
 
 export default function GlossaryDrawer() {
   const { isOpen, highlightedTerm, close } = useGlossary();
   const isMobile = useIsMobile();
   const track = useTrack();
+  const t = useT();
   const drawerRef = useRef<HTMLDivElement>(null);
   const highlightRef = useRef<HTMLDivElement>(null);
+
+  const sections = useMemo(() => getGlossarySections(t), [t]);
+
+  function findSectionIndex(termKey: string): number {
+    return sections.findIndex((s) =>
+      s.terms.some((term) => term.key === termKey),
+    );
+  }
 
   // Sections ouvertes (par index). Par défaut toutes fermées sauf si highlightedTerm.
   const [openSections, setOpenSections] = useState<Set<number>>(new Set());
@@ -56,13 +57,13 @@ export default function GlossaryDrawer() {
       });
     } else if (isOpen && !highlightedTerm) {
       // Mode glossaire complet : ouvrir toutes les sections
-      setOpenSections(new Set(GLOSSARY_SECTIONS.map((_, i) => i)));
+      setOpenSections(new Set(sections.map((_, i) => i)));
     }
   }, [isOpen, highlightedTerm, track]);
 
   /** Toggle une section */
   const toggleSection = useCallback((idx: number) => {
-    const section = GLOSSARY_SECTIONS[idx];
+    const section = sections[idx];
     setOpenSections((prev) => {
       const next = new Set(prev);
       const willOpen = !next.has(idx);
@@ -162,7 +163,7 @@ export default function GlossaryDrawer() {
 
         {/* Scrollable content */}
         <div className="flex-1 overflow-y-auto px-5 py-4 space-y-3">
-          {GLOSSARY_SECTIONS.map((section, sIdx) => (
+          {sections.map((section, sIdx) => (
             <SectionAccordion
               key={section.title}
               section={section}

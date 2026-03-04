@@ -15,67 +15,23 @@ import Link from 'next/link';
 import BudgetSankey from '@/components/BudgetSankey';
 import type { BudgetData } from '@/lib/formatters';
 import { useTrack } from '@/lib/analyticsContext';
+import { useT } from '@/lib/localeContext';
+import { useGlossary } from '@/lib/glossaryContext';
 
-const QUESTION_CARDS = [
-  {
-    href: '/budget',
-    category: 'Budget',
-    question: 'Combien coûte le fonctionnement ?',
-    detail: '9,3 Md€/an pour faire tourner la ville : salaires, cantines, éclairage, entretien des rues.',
-    linkLabel: 'Flux budgétaires',
-    accent: 'border-rose-500',
-    accentText: 'text-rose-400',
-  },
-  {
-    href: '/subventions',
-    category: 'Subventions',
-    question: 'Qui reçoit des subventions ?',
-    detail: '6 000+ associations financées par la Ville, classées par thématique et par montant.',
-    linkLabel: 'Bénéficiaires',
-    accent: 'border-amber-500',
-    accentText: 'text-amber-400',
-  },
-  {
-    href: '/investissements',
-    category: 'Investissements',
-    question: 'Quels travaux dans mon quartier ?',
-    detail: 'Écoles, gymnases, voirie — tous les projets géolocalisés, arrondissement par arrondissement.',
-    linkLabel: 'Carte des travaux',
-    accent: 'border-purple-500',
-    accentText: 'text-purple-400',
-  },
-  {
-    href: '/budget?tab=tendances',
-    category: 'Tendances',
-    question: 'Le budget est-il tenu ?',
-    detail: 'Évolution des recettes et dépenses depuis 2019. Écarts entre budget voté et exécuté.',
-    linkLabel: 'Évolution & exécution',
-    accent: 'border-emerald-500',
-    accentText: 'text-emerald-400',
-  },
-  {
-    href: '/patrimoine',
-    category: 'Patrimoine',
-    question: 'Que possède Paris ?',
-    detail: 'Terrains, bâtiments, réseaux : le patrimoine de la ville face à sa dette.',
-    linkLabel: 'Bilan actif / passif',
-    accent: 'border-violet-500',
-    accentText: 'text-violet-400',
-  },
-  {
-    href: '/logements',
-    category: 'Logements',
-    question: 'Où sont les logements sociaux ?',
-    detail: 'Carte des logements sociaux financés depuis 2010, par arrondissement et par programme.',
-    linkLabel: 'Carte des logements',
-    accent: 'border-cyan-500',
-    accentText: 'text-cyan-400',
-  },
+const CARD_KEYS = [
+  { href: '/budget', key: 'budget', accent: 'border-rose-500', accentText: 'text-rose-400' },
+  { href: '/subventions', key: 'subventions', accent: 'border-amber-500', accentText: 'text-amber-400' },
+  { href: '/investissements', key: 'investissements', accent: 'border-purple-500', accentText: 'text-purple-400' },
+  { href: '/budget?tab=tendances', key: 'tendances', accent: 'border-emerald-500', accentText: 'text-emerald-400' },
+  { href: '/patrimoine', key: 'patrimoine', accent: 'border-violet-500', accentText: 'text-violet-400' },
+  { href: '/logements', key: 'logements', accent: 'border-cyan-500', accentText: 'text-cyan-400' },
 ] as const;
 
 export default function LandingPage() {
   const [budgetData, setBudgetData] = useState<BudgetData | null>(null);
   const track = useTrack();
+  const t = useT();
+  const { openFull } = useGlossary();
 
   useEffect(() => {
     async function loadData() {
@@ -99,17 +55,17 @@ export default function LandingPage() {
       <section className="border-b border-slate-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-10">
           <h1 className="font-mono text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
-            <span className="text-slate-50">LES </span>
-            <span className="text-amber-400">FINANCES</span>
-            <span className="text-slate-50"> DE LA </span>
-            <span className="text-blue-400">VILLE DE PARIS</span>
+            <span className="text-slate-50">{t('landing.headline_1')}</span>
+            <span className="text-amber-400">{t('landing.headline_finances')}</span>
+            <span className="text-slate-50">{t('landing.headline_2')}</span>
+            <span className="text-blue-400">{t('landing.headline_city')}</span>
           </h1>
           <p className="mt-2 font-mono text-3xl sm:text-4xl lg:text-5xl font-bold">
-            <span className="text-slate-50">De </span>
-            <span className="text-emerald-400">2019 à 2026</span>
+            <span className="text-slate-50">{t('landing.subtitle_1')}</span>
+            <span className="text-emerald-400">{t('landing.subtitle_years')}</span>
           </p>
           <p className="mt-4 text-lg sm:text-xl text-slate-400">
-            D&apos;où vient l&apos;argent, où il part — sans jargon.
+            {t('landing.tagline')}
           </p>
         </div>
       </section>
@@ -118,10 +74,10 @@ export default function LandingPage() {
       <section className="border-b border-slate-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <h2 className="font-mono text-sm uppercase tracking-widest text-slate-400 mb-1">
-            Exemple : budget voté 2026
+            {t('landing.sankey_title')}
           </h2>
           <p className="font-mono text-4xl sm:text-5xl font-extrabold text-slate-50 mb-6">
-            11,7 Md€
+            {t('landing.sankey_amount')}
           </p>
           {budgetData ? (
             <BudgetSankey data={budgetData} />
@@ -129,12 +85,12 @@ export default function LandingPage() {
             <div className="bg-slate-900 border border-slate-600 p-6 h-[500px] flex items-center justify-center">
               <div className="text-center">
                 <div className="w-10 h-10 border-3 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-                <p className="text-slate-400 text-sm font-mono">Chargement...</p>
+                <p className="text-slate-400 text-sm font-mono">{t('landing.sankey_loading')}</p>
               </div>
             </div>
           )}
           <p className="mt-3 text-xs text-slate-500 font-mono">
-            Source : Comptes administratifs & budget voté 2026 — opendata.paris.fr · Conseil de Paris
+            {t('landing.sankey_source')}
           </p>
         </div>
       </section>
@@ -143,7 +99,7 @@ export default function LandingPage() {
       <section className="border-b border-slate-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 sm:pt-16 pb-2">
           <h2 className="font-mono text-lg sm:text-xl font-bold text-slate-100">
-            Explorer
+            {t('landing.explore')}
           </h2>
         </div>
       </section>
@@ -152,7 +108,7 @@ export default function LandingPage() {
       <section className="border-b border-slate-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">
-            {QUESTION_CARDS.map((card) => (
+            {CARD_KEYS.map((card) => (
               <Link
                 key={card.href}
                 href={card.href}
@@ -160,16 +116,16 @@ export default function LandingPage() {
                 className={`group block border border-slate-600 border-l-4 ${card.accent} p-6 hover:bg-slate-800 transition-colors -mt-px -ml-px`}
               >
                 <span className={`font-mono text-xs uppercase tracking-widest ${card.accentText}`}>
-                  {card.category}
+                  {t(`landing.card.${card.key}.category`)}
                 </span>
                 <p className="mt-2 text-lg font-semibold text-slate-100 group-hover:text-white">
-                  {card.question}
+                  {t(`landing.card.${card.key}.question`)}
                 </p>
                 <p className="mt-2 text-sm text-slate-400 leading-relaxed">
-                  {card.detail}
+                  {t(`landing.card.${card.key}.detail`)}
                 </p>
                 <span className={`inline-block mt-4 text-sm ${card.accentText} font-mono`}>
-                  {card.linkLabel} →
+                  {t(`landing.card.${card.key}.link`)} →
                 </span>
               </Link>
             ))}
@@ -181,23 +137,21 @@ export default function LandingPage() {
       <section className="border-b border-slate-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
           <h2 className="font-mono text-lg sm:text-xl font-bold text-slate-100 mb-6">
-            Pas simplement de l&apos;open data
+            {t('landing.diff.title')}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">
             <div className="border border-slate-600 border-l-4 border-l-blue-500 p-6 -mt-px -ml-px">
-              <span className="font-mono text-xs uppercase tracking-widest text-blue-400">Problème</span>
-              <p className="mt-2 text-lg font-semibold text-slate-100">Les données existent déjà</p>
+              <span className="font-mono text-xs uppercase tracking-widest text-blue-400">{t('landing.diff.problem.category')}</span>
+              <p className="mt-2 text-lg font-semibold text-slate-100">{t('landing.diff.problem.title')}</p>
               <p className="mt-2 text-sm text-slate-400 leading-relaxed">
-                CSV, fichiers Excel, PDFs du Conseil de Paris, opendata.paris.fr.
-                Le problème n&apos;est pas l&apos;accès, c&apos;est la lisibilité.
+                {t('landing.diff.problem.text')}
               </p>
             </div>
             <div className="border border-slate-600 border-l-4 border-l-amber-500 p-6 -mt-px -ml-px">
-              <span className="font-mono text-xs uppercase tracking-widest text-amber-400">Approche</span>
-              <p className="mt-2 text-lg font-semibold text-slate-100">Transformée, modélisée, analysée</p>
+              <span className="font-mono text-xs uppercase tracking-widest text-amber-400">{t('landing.diff.approach.category')}</span>
+              <p className="mt-2 text-lg font-semibold text-slate-100">{t('landing.diff.approach.title')}</p>
               <p className="mt-2 text-sm text-slate-400 leading-relaxed">
-                Investissements extraits des délibérations, projets géolocalisés
-                par arrondissement, subventions classifiées, évolution poste par poste depuis 2019.
+                {t('landing.diff.approach.text')}
               </p>
             </div>
             <a
@@ -207,11 +161,10 @@ export default function LandingPage() {
               onClick={() => track('external_link_click', { url: 'https://github.com/Nuttux/france-open-data', text: 'open source' })}
               className="group border border-slate-600 border-l-4 border-l-emerald-500 p-6 -mt-px -ml-px hover:bg-slate-800 transition-colors"
             >
-              <span className="font-mono text-xs uppercase tracking-widest text-emerald-400">Garantie</span>
-              <p className="mt-2 text-lg font-semibold text-slate-100 group-hover:text-white">100% open source</p>
+              <span className="font-mono text-xs uppercase tracking-widest text-emerald-400">{t('landing.diff.guarantee.category')}</span>
+              <p className="mt-2 text-lg font-semibold text-slate-100 group-hover:text-white">{t('landing.diff.guarantee.title')}</p>
               <p className="mt-2 text-sm text-slate-400 leading-relaxed">
-                Chaque étape peut être répliquée, auditée, modifiée.
-                Si un chiffre vous semble faux, remontez jusqu&apos;à la source.
+                {t('landing.diff.guarantee.text')}
               </p>
               <span className="inline-block mt-4 text-sm text-emerald-400 font-mono">GitHub →</span>
             </a>
@@ -223,31 +176,28 @@ export default function LandingPage() {
       <section className="border-b border-slate-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
           <h2 className="font-mono text-lg sm:text-xl font-bold text-slate-100 mb-6">
-            À qui ça sert
+            {t('landing.audience.title')}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">
             <div className="border border-slate-600 border-l-4 border-l-sky-500 p-6 -mt-px -ml-px">
-              <span className="font-mono text-xs uppercase tracking-widest text-sky-400">Citoyens</span>
-              <p className="mt-2 text-lg font-semibold text-slate-100">Comprendre où va votre argent</p>
+              <span className="font-mono text-xs uppercase tracking-widest text-sky-400">{t('landing.audience.citizens.category')}</span>
+              <p className="mt-2 text-lg font-semibold text-slate-100">{t('landing.audience.citizens.title')}</p>
               <p className="mt-2 text-sm text-slate-400 leading-relaxed">
-                Explorez les finances de votre ville, sans jargon comptable.
-                Votez en connaissance de cause.
+                {t('landing.audience.citizens.text')}
               </p>
             </div>
             <div className="border border-slate-600 border-l-4 border-l-orange-500 p-6 -mt-px -ml-px">
-              <span className="font-mono text-xs uppercase tracking-widest text-orange-400">Journalistes & analystes</span>
-              <p className="mt-2 text-lg font-semibold text-slate-100">Des données prêtes à l&apos;emploi</p>
+              <span className="font-mono text-xs uppercase tracking-widest text-orange-400">{t('landing.audience.journalists.category')}</span>
+              <p className="mt-2 text-lg font-semibold text-slate-100">{t('landing.audience.journalists.title')}</p>
               <p className="mt-2 text-sm text-slate-400 leading-relaxed">
-                Données déjà modélisées et structurées. Concentrez-vous
-                sur l&apos;analyse, pas sur le nettoyage de fichiers Excel.
+                {t('landing.audience.journalists.text')}
               </p>
             </div>
             <div className="border border-slate-600 border-l-4 border-l-fuchsia-500 p-6 -mt-px -ml-px">
-              <span className="font-mono text-xs uppercase tracking-widest text-fuchsia-400">Institutions publiques</span>
-              <p className="mt-2 text-lg font-semibold text-slate-100">Pipelines réutilisables</p>
+              <span className="font-mono text-xs uppercase tracking-widest text-fuchsia-400">{t('landing.audience.institutions.category')}</span>
+              <p className="mt-2 text-lg font-semibold text-slate-100">{t('landing.audience.institutions.title')}</p>
               <p className="mt-2 text-sm text-slate-400 leading-relaxed">
-                Réutilisez les pipelines de transformation pour votre propre
-                infrastructure data. Code ouvert, standards documentés.
+                {t('landing.audience.institutions.text')}
               </p>
             </div>
           </div>
@@ -258,10 +208,7 @@ export default function LandingPage() {
       <section className="border-b border-slate-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
           <p className="text-base sm:text-lg text-slate-300 max-w-3xl leading-relaxed">
-            <strong className="text-slate-100">Données Lumières</strong> est un projet
-            citoyen, indépendant de tout parti et de la Mairie de Paris.
-            Comprendre les comptes de sa ville ne devrait pas nécessiter un diplôme
-            de comptabilité publique.
+            <strong className="text-slate-100">{t('nav.site_title')}</strong> {t('landing.manifesto')}
           </p>
           <p className="mt-6 text-sm text-slate-400">
             <a
@@ -281,7 +228,7 @@ export default function LandingPage() {
               href="mailto:hi@franceopendata.org"
               className="underline hover:text-slate-200"
             >
-              Contactez-nous
+              {t('landing.contact')}
             </a>
           </p>
         </div>
@@ -291,11 +238,15 @@ export default function LandingPage() {
       <footer className="py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-xs text-slate-500 font-mono">
-            <a href="https://opendata.paris.fr/" target="_blank" rel="noopener noreferrer" className="hover:text-slate-300">Sources</a>
+            <a href="https://opendata.paris.fr/" target="_blank" rel="noopener noreferrer" className="hover:text-slate-300">{t('landing.footer.sources')}</a>
             {' · '}
-            <span>Licence MIT</span>
+            <span>{t('landing.footer.license')}</span>
             {' · '}
             <a href="https://github.com/Nuttux/france-open-data" target="_blank" rel="noopener noreferrer" className="hover:text-slate-300">GitHub</a>
+            {' · '}
+            <button type="button" onClick={() => { track('glossary_open', { trigger: 'footer_link' }); openFull(); }} className="hover:text-slate-300">{t('nav.glossary_title')}</button>
+            {' · '}
+            <Link href="/confidentialite" className="hover:text-slate-300">{t('nav.privacy_title')}</Link>
           </p>
         </div>
       </footer>

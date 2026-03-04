@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import { optOut, optIn, isCurrentlyOptedOut } from '@/lib/hooks/useAnalytics';
+import { useT } from '@/lib/localeContext';
 
 export default function ConfidentialitePage() {
+  const t = useT();
   const [isOptedOut, setIsOptedOut] = useState(false);
 
   useEffect(() => {
@@ -24,54 +26,55 @@ export default function ConfidentialitePage() {
     <main className="min-h-screen">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <h1 className="text-2xl font-bold text-slate-100 mb-8">
-          Politique de confidentialité
+          {t('privacy.title')}
         </h1>
 
         <div className="space-y-8 text-slate-300 text-sm leading-relaxed">
           {/* Section 1 */}
           <section>
             <h2 className="text-lg font-semibold text-slate-100 mb-3">
-              Mesure d&apos;audience
+              {t('privacy.analytics.title')}
             </h2>
-            <p>
-              Ce site utilise un système de mesure d&apos;audience développé en interne,
-              hébergé sur notre propre infrastructure. Aucun service tiers (Google Analytics,
-              Facebook Pixel, etc.) n&apos;est utilisé. Les données collectées ne sont jamais
-              partagées avec des tiers.
-            </p>
+            <p>{t('privacy.analytics.text')}</p>
           </section>
 
           {/* Section 2 */}
           <section>
             <h2 className="text-lg font-semibold text-slate-100 mb-3">
-              Données collectées
+              {t('privacy.data.title')}
             </h2>
-            <p className="mb-3">
-              Dans le cadre de la mesure d&apos;audience, nous collectons les données suivantes :
-            </p>
+            <p className="mb-3">{t('privacy.data.intro')}</p>
             <ul className="list-disc list-inside space-y-1.5 text-slate-400">
-              <li>Pages visitées et interactions (clics sur les onglets, filtres, graphiques)</li>
-              <li>Source de la visite (moteur de recherche, lien direct, réseau social)</li>
-              <li>Type d&apos;appareil (mobile ou desktop) et taille d&apos;écran</li>
-              <li>Langue du navigateur</li>
-              <li>Pays et ville approximative (déduits de l&apos;adresse IP, qui est ensuite tronquée)</li>
-              <li>Un identifiant anonyme stocké dans un cookie pour distinguer les visiteurs récurrents</li>
+              <li>{t('privacy.data.pages')}</li>
+              <li>{t('privacy.data.source')}</li>
+              <li>{t('privacy.data.device')}</li>
+              <li>{t('privacy.data.lang')}</li>
+              <li>{t('privacy.data.geo')}</li>
+              <li>{t('privacy.data.cookie_id')}</li>
             </ul>
           </section>
 
           {/* Section 3 */}
           <section>
             <h2 className="text-lg font-semibold text-slate-100 mb-3">
-              Cookie de mesure d&apos;audience
+              {t('privacy.cookie.title')}
             </h2>
             <p>
-              Un cookie nommé <code className="bg-slate-800 px-1.5 py-0.5 rounded text-xs">_dl_vid</code> est
-              déposé sur votre navigateur pour une durée maximale de <strong>13 mois</strong>.
-              Il contient uniquement un identifiant aléatoire (UUID) qui ne permet pas de vous
-              identifier personnellement. Ce cookie sert exclusivement à la mesure d&apos;audience.
+              {t('privacy.cookie.text')
+                .replace('{code}', '')
+                .split('{bold_13}')[0]}
+              <code className="bg-slate-800 px-1.5 py-0.5 rounded text-xs">_dl_vid</code>
+              {' '}
+              {t('privacy.cookie.text').includes('{code}')
+                ? t('privacy.cookie.text')
+                    .split('{code}')[1]
+                    ?.split('{bold_13}')[0]
+                : ''}
+              <strong>{t('privacy.13_months')}</strong>
+              {t('privacy.cookie.text').split('{bold_13}')[1] || ''}
             </p>
             <p className="mt-2">
-              Conformément aux recommandations de la{' '}
+              {t('privacy.cookie.cnil_prefix')}
               <a
                 href="https://www.cnil.fr/fr/cookies-et-autres-traceurs/regles/cookies-solutions-pour-les-outils-de-mesure-daudience"
                 target="_blank"
@@ -80,37 +83,35 @@ export default function ConfidentialitePage() {
               >
                 CNIL
               </a>
-              , ce cookie bénéficie de l&apos;exemption de consentement car il est strictement
-              limité à la mesure d&apos;audience, ne fait l&apos;objet d&apos;aucun recoupement
-              avec d&apos;autres traitements, et ne permet pas le suivi de la navigation sur
-              d&apos;autres sites.
+              {t('privacy.cookie.cnil')}
             </p>
           </section>
 
           {/* Section 4 */}
           <section>
             <h2 className="text-lg font-semibold text-slate-100 mb-3">
-              Hébergement des données
+              {t('privacy.hosting.title')}
             </h2>
             <p>
-              Les données sont stockées sur Google BigQuery dans la région <strong>EU</strong> (Union
-              Européenne). Les adresses IP sont tronquées (dernier octet supprimé) avant stockage.
-              Les données sont automatiquement supprimées après <strong>25 mois</strong>.
+              {t('privacy.hosting.text')
+                .split('{bold_eu}')[0]}
+              <strong>{t('privacy.eu')}</strong>
+              {t('privacy.hosting.text')
+                .split('{bold_eu}')[1]
+                ?.split('{bold_25}')[0]}
+              <strong>{t('privacy.25_months')}</strong>
+              {t('privacy.hosting.text').split('{bold_25}')[1] || ''}
             </p>
           </section>
 
           {/* Section 5 */}
           <section>
             <h2 className="text-lg font-semibold text-slate-100 mb-3">
-              Vos droits
+              {t('privacy.rights.title')}
             </h2>
-            <p>
-              Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez
-              d&apos;un droit d&apos;accès, de rectification et de suppression de vos données. Vous
-              pouvez également vous opposer à la mesure d&apos;audience en utilisant le bouton ci-dessous.
-            </p>
+            <p>{t('privacy.rights.text')}</p>
             <p className="mt-2">
-              Si votre navigateur envoie le signal{' '}
+              {t('privacy.rights.gpc_prefix')}
               <a
                 href="https://globalprivacycontrol.org/"
                 target="_blank"
@@ -119,7 +120,7 @@ export default function ConfidentialitePage() {
               >
                 Global Privacy Control (GPC)
               </a>
-              , la mesure d&apos;audience est automatiquement désactivée.
+              {t('privacy.rights.gpc_suffix')}
             </p>
           </section>
 
@@ -128,12 +129,10 @@ export default function ConfidentialitePage() {
             <div className="flex items-center justify-between gap-4">
               <div>
                 <h3 className="text-base font-semibold text-slate-100">
-                  Mesure d&apos;audience
+                  {t('privacy.toggle.title')}
                 </h3>
                 <p className="text-slate-400 text-sm mt-1">
-                  {isOptedOut
-                    ? 'La mesure d\'audience est désactivée. Aucune donnée n\'est collectée.'
-                    : 'La mesure d\'audience est activée. Vous pouvez la désactiver à tout moment.'}
+                  {isOptedOut ? t('privacy.toggle.off') : t('privacy.toggle.on')}
                 </p>
               </div>
               <button
@@ -145,7 +144,7 @@ export default function ConfidentialitePage() {
                 `}
                 role="switch"
                 aria-checked={!isOptedOut}
-                aria-label="Activer ou désactiver la mesure d'audience"
+                aria-label={t('privacy.toggle.aria')}
               >
                 <span
                   className={`
@@ -161,8 +160,7 @@ export default function ConfidentialitePage() {
           {/* Contact */}
           <section className="text-xs text-slate-500 border-t border-slate-800 pt-6">
             <p>
-              Pour toute question relative à la protection de vos données, vous pouvez
-              consulter le site de la{' '}
+              {t('privacy.contact')}
               <a
                 href="https://www.cnil.fr"
                 target="_blank"

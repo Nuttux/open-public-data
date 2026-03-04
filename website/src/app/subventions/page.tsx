@@ -21,6 +21,7 @@ import SubventionsTendancesTab from '@/components/subventions/SubventionsTendanc
 import SubventionsExplorerTab from '@/components/subventions/SubventionsExplorerTab';
 import type { Beneficiaire } from '@/components/SubventionsTable';
 import { TAB_ICONS } from '@/lib/icons';
+import { useT } from '@/lib/localeContext';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -44,19 +45,14 @@ interface BeneficiairesResponse {
   data: Beneficiaire[];
 }
 
-// ─── Tab definitions ─────────────────────────────────────────────────────────
+// ─── Valid tab IDs ───────────────────────────────────────────────────────────
 
-const SUBVENTIONS_TABS: Tab[] = [
-  { id: 'annuel', label: 'Annuel', icon: TAB_ICONS.annuel },
-  { id: 'tendances', label: 'Tendances', icon: TAB_ICONS.tendances },
-  { id: 'explorer', label: 'Explorer', icon: TAB_ICONS.explorer },
-];
-
-const VALID_TAB_IDS = SUBVENTIONS_TABS.map(t => t.id);
+const VALID_TAB_IDS = ['annuel', 'tendances', 'explorer'];
 
 // ─── Inner component ─────────────────────────────────────────────────────────
 
 function SubventionsPageInner() {
+  const t = useT();
   const [activeTab, setActiveTab] = useTabState('annuel', VALID_TAB_IDS);
   const [index, setIndex] = useState<SubventionsIndex | null>(null);
   const [selectedYear, setSelectedYear] = useState<number>(2024);
@@ -64,6 +60,12 @@ function SubventionsPageInner() {
   const [isLoadingIndex, setIsLoadingIndex] = useState(true);
   const [isLoadingData, setIsLoadingData] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const tabs: Tab[] = useMemo(() => [
+    { id: 'annuel', label: t('tab.annuel'), icon: TAB_ICONS.annuel },
+    { id: 'tendances', label: t('tab.tendances'), icon: TAB_ICONS.tendances },
+    { id: 'explorer', label: t('tab.explorer'), icon: TAB_ICONS.explorer },
+  ], [t]);
 
   // ── Load index ──
   useEffect(() => {
@@ -130,8 +132,8 @@ function SubventionsPageInner() {
       <div className="border-b border-slate-800 bg-slate-900/50 backdrop-blur">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <PageHeader
-            title="Subventions"
-            description="Explorer les bénéficiaires de subventions par thématique et filtres"
+            title={t('subventions.title')}
+            description={t('subventions.description')}
             actions={
               activeTab !== 'tendances' ? (
                 <YearSelector
@@ -143,7 +145,7 @@ function SubventionsPageInner() {
             }
           />
           <div className="mt-5">
-            <TabBar tabs={SUBVENTIONS_TABS} activeTab={activeTab} onChange={setActiveTab} />
+            <TabBar tabs={tabs} activeTab={activeTab} onChange={setActiveTab} />
           </div>
         </div>
       </div>
@@ -177,8 +179,8 @@ function SubventionsPageInner() {
         {/* Footer */}
         <footer className="mt-8 pt-6 border-t border-slate-800">
           <div className="text-xs text-slate-500 text-center space-y-1">
-            <p>Données : Open Data Paris — Subventions associations votées</p>
-            <p>Années avec données complètes : {index.available_years.filter(y => y !== 2020 && y !== 2021).join(', ')}</p>
+            <p>{t('subventions.footer.data')}</p>
+            <p>{t('subventions.footer.years')} : {index.available_years.filter(y => y !== 2020 && y !== 2021).join(', ')}</p>
           </div>
         </footer>
       </div>

@@ -10,6 +10,7 @@
 
 import { type ReactNode } from 'react';
 import { GlossaryProvider } from '@/lib/glossaryContext';
+import { LocaleProvider } from '@/lib/localeContext';
 import GlossaryDrawer from './GlossaryDrawer';
 
 interface GlossaryShellProps {
@@ -18,9 +19,11 @@ interface GlossaryShellProps {
 
 export default function GlossaryShell({ children }: GlossaryShellProps) {
   return (
-    <GlossaryProvider>
-      {children}
-      <GlossaryDrawer />
-    </GlossaryProvider>
+    <LocaleProvider>
+      <GlossaryProvider>
+        {children}
+        <GlossaryDrawer />
+      </GlossaryProvider>
+    </LocaleProvider>
   );
 }

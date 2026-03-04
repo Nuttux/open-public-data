@@ -11,7 +11,7 @@
  * Sources : /public/data/map/investissements_complet_{year}.json
  */
 
-import { Suspense, useState, useEffect } from 'react';
+import { Suspense, useState, useEffect, useMemo } from 'react';
 import TabBar, { type Tab } from '@/components/TabBar';
 import { useTabState } from '@/lib/hooks/useTabState';
 import PageHeader from '@/components/PageHeader';
@@ -22,16 +22,11 @@ import InvestissementsAnnuelTab from '@/components/investissements/Investissemen
 import InvestissementsExplorerTab from '@/components/investissements/InvestissementsExplorerTab';
 import InvestissementsTendancesTab from '@/components/investissements/InvestissementsTendancesTab';
 import { TAB_ICONS } from '@/lib/icons';
+import { useT } from '@/lib/localeContext';
 
-// ─── Tab definitions ─────────────────────────────────────────────────────────
+// ─── Valid tab IDs ───────────────────────────────────────────────────────────
 
-const INVEST_TABS: Tab[] = [
-  { id: 'annuel', label: 'Annuel', icon: TAB_ICONS.annuel },
-  { id: 'tendances', label: 'Tendances', icon: TAB_ICONS.tendances },
-  { id: 'explorer', label: 'Explorer', icon: TAB_ICONS.explorer },
-];
-
-const VALID_TAB_IDS = INVEST_TABS.map(t => t.id);
+const VALID_TAB_IDS = ['annuel', 'tendances', 'explorer'];
 
 interface BudgetInvestYear {
   year: number;
@@ -41,6 +36,7 @@ interface BudgetInvestYear {
 // ─── Inner component ─────────────────────────────────────────────────────────
 
 function InvestissementsPageInner() {
+  const t = useT();
   const [activeTab, setActiveTab] = useTabState('annuel', VALID_TAB_IDS);
   const [availableYears, setAvailableYears] = useState<number[]>([2024, 2023, 2022]);
   const [selectedYear, setSelectedYear] = useState<number>(2024);
@@ -50,6 +46,12 @@ function InvestissementsPageInner() {
   const [isLoadingIndex, setIsLoadingIndex] = useState(true);
   const [isLoadingData, setIsLoadingData] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const tabs: Tab[] = useMemo(() => [
+    { id: 'annuel', label: t('tab.annuel'), icon: TAB_ICONS.annuel },
+    { id: 'tendances', label: t('tab.tendances'), icon: TAB_ICONS.tendances },
+    { id: 'explorer', label: t('tab.explorer'), icon: TAB_ICONS.explorer },
+  ], [t]);
 
   // ── Load index + budget totals ──
   useEffect(() => {
@@ -114,8 +116,8 @@ function InvestissementsPageInner() {
       <div className="border-b border-slate-800 bg-slate-900/50 backdrop-blur">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <PageHeader
-            title="Investissements"
-            description="Projets d'équipements publics : écoles, piscines, voiries, parcs..."
+            title={t('investissements.title')}
+            description={t('investissements.description')}
             actions={
               activeTab !== 'tendances' ? (
                 <YearSelector
@@ -127,7 +129,7 @@ function InvestissementsPageInner() {
             }
           />
           <div className="mt-5">
-            <TabBar tabs={INVEST_TABS} activeTab={activeTab} onChange={setActiveTab} />
+            <TabBar tabs={tabs} activeTab={activeTab} onChange={setActiveTab} />
           </div>
         </div>
       </div>
@@ -170,10 +172,8 @@ function InvestissementsPageInner() {
         {/* Footer */}
         <footer className="mt-8 pt-6 border-t border-slate-800">
           <div className="text-xs text-slate-500 text-center space-y-1">
-            <p>
-              Données : Comptes Administratifs — Annexe &ldquo;Investissements Localisés&rdquo; (PDF) + OpenData Paris
-            </p>
-            <p>Années disponibles : {availableYears.join(', ')}</p>
+            <p>{t('investissements.footer.data')}</p>
+            <p>{t('investissements.footer.years')} : {availableYears.join(', ')}</p>
           </div>
         </footer>
       </div>
