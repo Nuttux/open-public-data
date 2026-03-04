@@ -109,7 +109,7 @@ export default function LandingPage() {
             <span className="text-emerald-400">2019 à 2026</span>
           </p>
           <p className="mt-4 text-lg sm:text-xl text-slate-400">
-            D&apos;où vient l&apos;argent, où il part, qui en profite — sans jargon.
+            D&apos;où vient l&apos;argent, où il part — sans jargon.
           </p>
         </div>
       </section>
@@ -276,6 +276,13 @@ export default function LandingPage() {
             <Link href="/blog" className="underline hover:text-slate-200">
               Blog
             </Link>
+            {' · '}
+            <a
+              href="mailto:hi@franceopendata.org"
+              className="underline hover:text-slate-200"
+            >
+              Contactez-nous
+            </a>
           </p>
         </div>
       </section>

@@ -376,7 +376,6 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
     }
   }, [onNodeClick, track]);
 
-  const variationDette = financingInfo.emprunts - financingInfo.dette;
 
   return (
     <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4 sm:p-6">
@@ -398,13 +397,6 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
               </span>
             </div>
           )}
-        </div>
-        <div className={`px-3 py-2 rounded-lg text-xs sm:text-sm ${
-          variationDette > 0 ? 'bg-red-500/10 border border-red-500/30' : 'bg-emerald-500/10 border border-emerald-500/30'
-        }`}>
-          <span className={variationDette > 0 ? 'text-red-400' : 'text-emerald-400'}>
-            {variationDette > 0 ? 'Dette +' : 'Dette '}{formatEuroCompact(variationDette)}
-          </span>
         </div>
       </div>
 
