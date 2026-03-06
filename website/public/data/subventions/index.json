@@ -1,14 +1,14 @@
 {
   "generated_at": "2026-02-18T16:41:39.318184",
   "source": "dbt marts (mart_subventions_treemap, mart_subventions_beneficiaires)",
-  "available_years": [
+  "availableYears": [
     2024,
     2023,
     2022,
     2019,
     2018
   ],
-  "totals_by_year": {
+  "totalsByYear": {
     "2024": {
       "montant_total": 1353488225.0,
       "nb_subventions": 5977

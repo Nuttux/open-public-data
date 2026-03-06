@@ -63,12 +63,13 @@ const SOURCE_LABELS: Record<string, { label: string; color: string }> = {
 };
 
 /**
- * Mapping nature juridique → type simplifié
+ * Mapping nature juridique → type simplifié.
+ * The pipeline normalizes variants (e.g. "Etablissements de droit public"
+ * → "Etablissements publics") at export time, so no duplicates needed here.
  */
 const NATURE_TO_TYPE_MAP: Record<string, string> = {
   'Associations': 'association',
   'Etablissements publics': 'public',
-  'Etablissements de droit public': 'public',
   'Autres personnes de droit public': 'public',
   'Etat': 'public',
   'Communes': 'public',

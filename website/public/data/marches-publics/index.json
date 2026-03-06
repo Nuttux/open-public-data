@@ -2,7 +2,7 @@
   "generated_at": "2026-02-16T14:13:07.723821",
   "source": "OpenData Paris API (bootstrap direct)",
   "note": "Les montants sont des enveloppes pluriannuelles (plafonds contractuels), pas des dépenses annuelles.",
-  "available_years": [
+  "availableYears": [
     2024,
     2023,
     2022,
@@ -16,7 +16,7 @@
     2014,
     2013
   ],
-  "totals_by_year": {
+  "totalsByYear": {
     "2024": {
       "nb_marches": 1407,
       "enveloppe_max_totale": 2495665169.6699977

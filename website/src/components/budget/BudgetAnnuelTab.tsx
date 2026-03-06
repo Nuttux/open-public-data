@@ -43,7 +43,21 @@ interface DrilldownState {
 
 interface EvolutionBudgetYear {
   year: number;
-  totals: { emprunts: number; recettes_propres: number };
+  totals: {
+    emprunts: number;
+    recettes_propres: number;
+    remboursement_principal: number;
+    interets_dette: number;
+    variation_dette_nette: number;
+    recettes: number;
+  };
+}
+
+/** Debt metrics for a single year, passed to StatsCards */
+export interface DebtMetrics {
+  variation_dette_nette: number;
+  interets_dette: number;
+  recettes_totales: number;
 }
 
 interface BudgetAnnuelTabProps {
@@ -68,7 +82,7 @@ function ViewToggle({
     <div className="inline-flex rounded-lg bg-slate-800/80 p-0.5 sm:p-1 border border-slate-700/50">
       <button
         onClick={() => onChange('flux')}
-        className={`px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-md text-xs sm:text-sm font-medium transition-all duration-200
+        className={`px-3 sm:px-4 py-2 sm:py-2 rounded-md text-xs sm:text-sm font-medium transition-all duration-200
           ${value === 'flux' ? 'bg-purple-500 text-white shadow-lg shadow-purple-500/25' : 'text-slate-400 hover:text-slate-200 active:bg-slate-700/50'}
         `}
       >
@@ -78,7 +92,7 @@ function ViewToggle({
       <button
         onClick={() => onChange('depenses')}
         disabled={!hasNatureData}
-        className={`px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-md text-xs sm:text-sm font-medium transition-all duration-200
+        className={`px-3 sm:px-4 py-2 sm:py-2 rounded-md text-xs sm:text-sm font-medium transition-all duration-200
           ${value === 'depenses'
             ? 'bg-purple-500 text-white shadow-lg shadow-purple-500/25'
             : hasNatureData
@@ -117,7 +131,6 @@ function DataStatusBadge({
   const statusConfig: Record<DataStatus, { label: string; color: string; icon: string }> = {
     COMPLET: { label: 'Budget exécuté', color: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30', icon: '✓' },
     PARTIEL: { label: 'Données partielles', color: 'bg-amber-500/20 text-amber-400 border-amber-500/30', icon: '◐' },
-    BUDGET_SEUL: { label: 'Budget uniquement', color: 'bg-orange-500/20 text-orange-400 border-orange-500/30', icon: '○' },
     BUDGET_VOTE: { label: 'Budget voté (BP)', color: 'bg-orange-500/20 text-orange-400 border-orange-500/30', icon: '○' },
     INCONNU: { label: 'Statut inconnu', color: 'bg-slate-500/20 text-slate-400 border-slate-500/30', icon: '?' },
   };
@@ -149,6 +162,7 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
   const [drilldown, setDrilldown] = useState<DrilldownState | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>('flux');
   const [empruntsData, setEmpruntsData] = useState<Record<number, number>>({});
+  const [debtMetrics, setDebtMetrics] = useState<Record<number, DebtMetrics>>({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -196,18 +210,25 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
     setDrilldown(null);
   }, [track]);
 
-  // Load emprunts data (once)
+  // Load emprunts + debt metrics data (once)
   useEffect(() => {
     async function loadEmprunts() {
       try {
         const res = await fetch('/data/evolution_budget.json');
         if (res.ok) {
           const evoData = await res.json();
-          const map: Record<number, number> = {};
+          const empMap: Record<number, number> = {};
+          const debtMap: Record<number, DebtMetrics> = {};
           evoData.years?.forEach((y: EvolutionBudgetYear) => {
-            map[y.year] = y.totals.emprunts;
+            empMap[y.year] = y.totals.emprunts;
+            debtMap[y.year] = {
+              variation_dette_nette: y.totals.variation_dette_nette,
+              interets_dette: y.totals.interets_dette,
+              recettes_totales: y.totals.recettes,
+            };
           });
-          setEmpruntsData(map);
+          setEmpruntsData(empMap);
+          setDebtMetrics(debtMap);
         }
       } catch { /* non-critical */ }
     }
@@ -391,6 +412,7 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
             depenses={budgetData.totals.depenses}
             year={selectedYear}
             emprunts={empruntsData[selectedYear] || budgetData.links.find(l => l.source === 'Emprunts')?.value || 0}
+            debt={debtMetrics[selectedYear]}
           />
 
           <ExportBar
@@ -408,7 +430,7 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
             <ViewToggle value={viewMode} onChange={handleViewChange} hasNatureData={!!natureData} />
             <p className="text-xs text-slate-500 hidden sm:block">
               {viewMode === 'flux'
-                ? "D'où vient l'argent et où va-t-il (éducation, social...)"
+                ? "D'où vient l'argent et comment se répartit-il entre les grands postes"
                 : 'Comment est-il dépensé (personnel, subventions, investissements...)'}
             </p>
           </div>

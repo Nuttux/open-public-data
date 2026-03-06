@@ -289,7 +289,7 @@ export default function BudgetTendancesTab() {
           { key: 'type_budget', label: 'Type budget' },
           { key: 'recettes', label: 'Recettes propres (€)' },
           { key: 'depenses', label: 'Dépenses (€)' },
-          { key: 'solde', label: 'Surplus/Déficit (€)' },
+          { key: 'solde', label: 'Déficit / Excédent (€)' },
         ]}
         filename={`budget_evolution_${startYear}-${endYear}`}
       />

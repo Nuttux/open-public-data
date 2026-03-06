@@ -86,7 +86,7 @@ export async function fetchSubventions(
     montant: r.montant_vote || 0,
     direction: r.direction || '',
     nature: r.nature_de_la_subvention || '',
-    secteurs: r.secteurs_d_activites_definies_par_l_association 
+    secteurs_activite: r.secteurs_d_activites_definies_par_l_association
       ? [r.secteurs_d_activites_definies_par_l_association]
       : undefined,
   }));

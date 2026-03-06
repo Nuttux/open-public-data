@@ -365,7 +365,7 @@ function EcartRanking({ ranking }: { ranking: EcartRow[] }) {
           );
         },
       },
-      grid: { left: isMobile ? 130 : 200, right: 50, top: 10, bottom: 30 },
+      grid: { left: isMobile ? 110 : 200, right: 50, top: 10, bottom: 30 },
       xAxis: {
         type: 'value',
         min: -MAX_ECART_DISPLAY,
@@ -381,8 +381,8 @@ function EcartRanking({ ranking }: { ranking: EcartRow[] }) {
         data: labels,
         axisLabel: {
           color: '#94a3b8',
-          fontSize: isMobile ? 9 : 11,
-          width: isMobile ? 120 : 190,
+          fontSize: isMobile ? 10 : 11,
+          width: isMobile ? 100 : 190,
           overflow: 'truncate',
         },
       },

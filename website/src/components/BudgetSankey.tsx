@@ -165,16 +165,6 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
     return Math.max(data.totals.recettes, data.totals.depenses);
   }, [data.totals]);
 
-  // Calcul des montants d'emprunts et dette
-  const financingInfo = useMemo(() => {
-    const empruntsLink = data.links.find(l => l.source === 'Emprunts');
-    const detteLink = data.links.find(l => l.target === 'Dette');
-    return {
-      emprunts: empruntsLink?.value || 0,
-      dette: detteLink?.value || 0,
-    };
-  }, [data.links]);
-
   const getNodeColor = useCallback((name: string, category: string) => {
     if (category === 'central') return '#8b5cf6'; // Violet — noeud central distinct des flux
     if (category === 'revenue') {

@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Page /marches-publics — Marchés publics de la collectivité parisienne.
+ * Page /marches-publics — Marchés publics de la Ville de Paris.
  *
  * Architecture à 3 onglets :
  *   - Annuel (défaut) : Treemap avec breakdown dynamique + KPIs + table top marchés
@@ -32,8 +32,8 @@ import { useT } from '@/lib/localeContext';
 interface MarchesIndex {
   generated_at: string;
   source: string;
-  available_years: number[];
-  totals_by_year: Record<string, { nb_marches: number; enveloppe_max_totale: number }>;
+  availableYears: number[];
+  totalsByYear: Record<string, { nb_marches: number; enveloppe_max_totale: number }>;
   filters: {
     natures: string[];
     categories: string[];
@@ -79,8 +79,8 @@ function MarchesPageInner() {
         if (!res.ok) throw new Error("Impossible de charger l'index");
         const data: MarchesIndex = await res.json();
         setIndex(data);
-        if (data.available_years.length > 0 && !data.available_years.includes(selectedYear)) {
-          setSelectedYear(data.available_years[0]);
+        if (data.availableYears.length > 0 && !data.availableYears.includes(selectedYear)) {
+          setSelectedYear(data.availableYears[0]);
         }
       } catch (err) {
         console.error('Error loading index:', err);
@@ -134,7 +134,7 @@ function MarchesPageInner() {
             actions={
               activeTab !== 'tendances' ? (
                 <YearSelector
-                  years={index.available_years}
+                  years={index.availableYears}
                   selectedYear={selectedYear}
                   onYearChange={setSelectedYear}
                 />

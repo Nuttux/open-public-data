@@ -10,8 +10,8 @@
  *    → Quelle part des recettes courantes est "mise de côté"
  *
  * Affiche deux mini-charts ECharts empilés verticalement, chacun avec :
- * - Son propre axe Y et ses seuils de référence (markLine)
- * - Des barres colorées dynamiquement selon les seuils
+ * - Son propre axe Y
+ * - Des barres de couleur neutre (sans jugement de valeur)
  *
  * Responsive : tailles adaptées pour mobile/desktop.
  */
@@ -42,25 +42,9 @@ interface DebtRatiosChartProps {
   height?: number;
 }
 
-/**
- * Détermine la couleur d'une barre de durée selon les seuils collectivités
- * @param years - Durée de désendettement en années
- */
-function getDurationColor(years: number): string {
-  if (years <= 7) return PALETTE.emerald;
-  if (years <= 12) return PALETTE.amber;
-  return PALETTE.red;
-}
-
-/**
- * Détermine la couleur d'une barre de taux d'autofinancement
- * @param pct - Taux en pourcentage
- */
-function getAutofinColor(pct: number): string {
-  if (pct >= 15) return PALETTE.emerald;
-  if (pct >= 8) return PALETTE.amber;
-  return PALETTE.red;
-}
+/** Couleur neutre pour les barres (sans jugement de valeur) */
+const BAR_COLOR_DURATION = PALETTE.blue;
+const BAR_COLOR_AUTOFIN = PALETTE.purple;
 
 /** Plafond d'affichage pour la durée (au-delà, la barre est tronquée avec un label) */
 const MAX_DURATION_DISPLAY = 40;
@@ -119,23 +103,13 @@ export default function DebtRatiosChart({
         const d = sortedData[idx];
         const rawDuree = d.epargne_brute > 0 ? d.dettes_financieres / d.epargne_brute : Infinity;
         const dureeLabel = rawDuree > MAX_DURATION_DISPLAY ? `> ${MAX_DURATION_DISPLAY} ans` : `${rawDuree.toFixed(1)} ans`;
-        const color = getDurationColor(rawDuree);
-        const qualif = rawDuree <= 7
-          ? '<span style="color:#10b981">● Sain</span>'
-          : rawDuree <= 12
-            ? '<span style="color:#f59e0b">● Vigilance</span>'
-            : '<span style="color:#ef4444">● Critique</span>';
         return `
           <div style="padding: 4px;">
             <div style="font-weight: 600; margin-bottom: 6px;">${items[0].name}</div>
-            <div style="display: flex; justify-content: space-between; gap: 16px; align-items: center;">
-              <span style="font-size: 16px; font-weight: 700; color: ${color};">${dureeLabel}</span>
-              <span style="font-size: 10px; color: #94a3b8;">${qualif}</span>
-            </div>
+            <div style="font-size: 16px; font-weight: 700; color: #e2e8f0;">${dureeLabel}</div>
             <div style="border-top: 1px solid rgba(148,163,184,0.2); margin-top: 6px; padding-top: 4px; font-size: 10px; color: #64748b;">
               Dette : ${formatEuroCompact(d.dettes_financieres)}${d.estimated ? ' (est.)' : ''} · Épargne : ${formatEuroCompact(d.epargne_brute)}
             </div>
-            <div style="font-size: 9px; color: #475569; margin-top: 4px;">Réf. : grille CRC / Cour des comptes</div>
           </div>
         `;
       },
@@ -181,7 +155,7 @@ export default function DebtRatiosChart({
           return {
             value: Math.min(d, MAX_DURATION_DISPLAY),
             itemStyle: {
-              color: getDurationColor(d),
+              color: BAR_COLOR_DURATION,
               opacity: isEstimated ? 0.55 : 1,
               borderRadius: [3, 3, 0, 0],
               ...(isEstimated ? { borderColor: '#94a3b8', borderWidth: 1, borderType: 'dashed' as const } : {}),
@@ -193,32 +167,13 @@ export default function DebtRatiosChart({
                 position: 'top' as const,
                 formatter: `${Math.round(d)}a`,
                 fontSize: 9,
-                color: PALETTE.red,
+                color: '#94a3b8',
                 fontWeight: 600,
               },
             } : {}),
           };
         }),
         barMaxWidth: isMobile ? 35 : 45,
-        // Seuils de référence
-        markLine: {
-          silent: true,
-          symbol: ['none', 'none'],
-          lineStyle: { type: 'dashed', width: 1 },
-          label: { fontSize: isMobile ? 8 : 10, position: 'insideEndTop' },
-          data: [
-            {
-              yAxis: 7,
-              lineStyle: { color: PALETTE.emerald },
-              label: { formatter: '7 ans', color: PALETTE.emerald },
-            },
-            {
-              yAxis: 12,
-              lineStyle: { color: PALETTE.amber },
-              label: { formatter: '12 ans', color: PALETTE.amber },
-            },
-          ],
-        },
       },
     ],
     animation: true,
@@ -251,23 +206,13 @@ export default function DebtRatiosChart({
         const tauxVal = d.recettes_fonctionnement > 0
           ? (d.epargne_brute / d.recettes_fonctionnement) * 100
           : 0;
-        const color = getAutofinColor(tauxVal);
-        const qualif = tauxVal >= 15
-          ? '<span style="color:#10b981">● Confortable</span>'
-          : tauxVal >= 8
-            ? '<span style="color:#f59e0b">● Correct</span>'
-            : '<span style="color:#ef4444">● Fragile</span>';
         return `
           <div style="padding: 4px;">
             <div style="font-weight: 600; margin-bottom: 6px;">${items[0].name}</div>
-            <div style="display: flex; justify-content: space-between; gap: 16px; align-items: center;">
-              <span style="font-size: 16px; font-weight: 700; color: ${color};">${tauxVal.toFixed(1)}%</span>
-              <span style="font-size: 10px; color: #94a3b8;">${qualif}</span>
-            </div>
+            <div style="font-size: 16px; font-weight: 700; color: #e2e8f0;">${tauxVal.toFixed(1)}%</div>
             <div style="border-top: 1px solid rgba(148,163,184,0.2); margin-top: 6px; padding-top: 4px; font-size: 10px; color: #64748b;">
               Épargne : ${formatEuroCompact(d.epargne_brute)} · Rec. fonct. : ${formatEuroCompact(d.recettes_fonctionnement)}
             </div>
-            <div style="font-size: 9px; color: #475569; margin-top: 4px;">Réf. : grille CRC / Cour des comptes</div>
           </div>
         `;
       },
@@ -316,7 +261,7 @@ export default function DebtRatiosChart({
           return {
             value: t,
             itemStyle: {
-              color: getAutofinColor(t),
+              color: BAR_COLOR_AUTOFIN,
               opacity: isEstimated ? 0.55 : 1,
               borderRadius: [3, 3, 0, 0],
               ...(isEstimated ? { borderColor: '#94a3b8', borderWidth: 1, borderType: 'dashed' as const } : {}),
@@ -324,25 +269,6 @@ export default function DebtRatiosChart({
           };
         }),
         barMaxWidth: isMobile ? 35 : 45,
-        // Seuils de référence
-        markLine: {
-          silent: true,
-          symbol: ['none', 'none'],
-          lineStyle: { type: 'dashed', width: 1 },
-          label: { fontSize: isMobile ? 8 : 10, position: 'insideEndTop' },
-          data: [
-            {
-              yAxis: 8,
-              lineStyle: { color: PALETTE.amber },
-              label: { formatter: '8%', color: PALETTE.amber },
-            },
-            {
-              yAxis: 15,
-              lineStyle: { color: PALETTE.emerald },
-              label: { formatter: '15%', color: PALETTE.emerald },
-            },
-          ],
-        },
       },
     ],
     animation: true,

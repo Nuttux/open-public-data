@@ -267,7 +267,7 @@ def export_index(years: list, all_data: list) -> dict:
         "description": "Bilan comptable de la Ville de Paris - État patrimonial Actif/Passif",
         "availableYears": years,
         "latestYear": years[0] if years else None,
-        "totals_by_year": totals_by_year,
+        "totalsByYear": totals_by_year,
     }
     
     output_file = OUTPUT_DIR / "bilan_index.json"

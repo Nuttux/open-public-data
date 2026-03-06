@@ -55,7 +55,7 @@ interface AutorisationsIndex {
 export interface BilanIndex {
   availableYears: number[];
   latestYear: number;
-  totals_by_year: Record<number, {
+  totalsByYear: Record<number, {
     actif_net: number;
     passif_net: number;
   }>;
@@ -559,7 +559,7 @@ export async function loadBilanIndex(): Promise<BilanIndex> {
     return {
       availableYears: [2024, 2023, 2022, 2021, 2020, 2019],
       latestYear: 2024,
-      totals_by_year: {},
+      totalsByYear: {},
     };
   }
 }

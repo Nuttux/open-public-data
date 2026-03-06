@@ -43,7 +43,7 @@ function PatrimoinePageInner() {
       try {
         const data = await loadBilanIndex();
         setIndex(data);
-        setSelectedYear(data.latestYear || 2024);
+        setSelectedYear(data.latestYear);
       } catch (err) {
         console.error('Error loading bilan index:', err);
       } finally {

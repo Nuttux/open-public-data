@@ -137,9 +137,9 @@ export interface SectionBreakdown {
  * Data availability status
  * - COMPLET: All data sources available (budget + subventions + AP/CP + arrondissements)
  * - PARTIEL: Some sources missing (usually AP/CP or arrondissements for recent years)
- * - BUDGET_SEUL: Only main budget available
+ * - BUDGET_VOTE: Only voted budget available (not yet executed)
  */
-export type DataStatus = 'COMPLET' | 'PARTIEL' | 'BUDGET_SEUL' | 'BUDGET_VOTE' | 'INCONNU';
+export type DataStatus = 'COMPLET' | 'PARTIEL' | 'BUDGET_VOTE' | 'INCONNU';
 
 /**
  * Data availability details per source

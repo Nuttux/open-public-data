@@ -140,8 +140,8 @@ def export_index(client: bigquery.Client):
         "generated_at": datetime.now().isoformat(),
         "source": "dbt marts (mart_marches_par_nature, mart_marches_fournisseurs)",
         "note": "Les montants sont des enveloppes pluriannuelles (plafonds contractuels), pas des dépenses annuelles.",
-        "available_years": years,
-        "totals_by_year": totals_by_year,
+        "availableYears": years,
+        "totalsByYear": totals_by_year,
         "filters": filters,
     }
 
@@ -268,7 +268,7 @@ def main():
 
     log.section("Génération de l'index")
     index = export_index(client)
-    years = [args.year] if args.year else index["available_years"]
+    years = [args.year] if args.year else index["availableYears"]
     log.success("Index créé", extra=f"{len(years)} années disponibles")
 
     log.section(f"Export des données ({len(years)} années)")

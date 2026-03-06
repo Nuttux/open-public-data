@@ -136,7 +136,21 @@ export const FLUX_COLORS = {
 } as const;
 
 // =============================================================================
-// 5. COULEURS RECETTES (pour compatibilité Sankey)
+// 5. TYPES D'ORGANISMES (Subventions)
+// =============================================================================
+// Utilisé dans SubventionsTendancesTab pour la dimension "type_organisme"
+
+export const TYPE_ORGANISME_COLORS: Record<string, string> = {
+  'Associations': PALETTE.purple,
+  'Établissements publics': PALETTE.blue,
+  'Entreprises': PALETTE.orange,
+  'Autres privés': PALETTE.teal,
+  'Personnes physiques': PALETTE.pink,
+  'Autres': PALETTE.gray,
+};
+
+// =============================================================================
+// 6. COULEURS RECETTES (pour compatibilité Sankey)
 // =============================================================================
 
 export const REVENUE_COLORS: Record<string, string> = {

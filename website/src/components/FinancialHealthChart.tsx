@@ -5,7 +5,7 @@
  * 
  * Affiche l'évolution de:
  * - Épargne brute (capacité d'autofinancement)
- * - Surplus/Déficit financier (hors emprunts)
+ * - Déficit / Excédent financier (hors emprunts)
  * 
  * Features:
  * - Bar chart pour épargne brute (toujours positive = bonne santé)
@@ -40,27 +40,6 @@ interface FinancialHealthChartProps {
   onYearClick?: (year: number) => void;
 }
 
-/**
- * Formate un montant en millions d'euros
- */
-function formatMillions(value: number): string {
-  const millions = value / 1_000_000;
-  if (Math.abs(millions) >= 1000) {
-    return `${(millions / 1000).toFixed(1)} Md€`;
-  }
-  return `${millions.toFixed(0)} M€`;
-}
-
-/**
- * Version courte pour mobile
- */
-function formatMillionsMobile(value: number): string {
-  const millions = value / 1_000_000;
-  if (Math.abs(millions) >= 1000) {
-    return `${(millions / 1000).toFixed(0)}Md`;
-  }
-  return `${millions.toFixed(0)}M`;
-}
 
 export default function FinancialHealthChart({
   data,
@@ -136,7 +115,7 @@ export default function FinancialHealthChart({
       },
     },
     legend: {
-      data: ['Épargne brute', 'Surplus/Déficit'],
+      data: ['Épargne brute', 'Déficit / Excédent'],
       ...(isMobile ? { top: 0 } : { bottom: 0 }),
       textStyle: {
         color: '#94a3b8',
@@ -173,7 +152,7 @@ export default function FinancialHealthChart({
       axisLabel: {
         color: '#64748b',
         fontSize: isMobile ? 9 : 11,
-        formatter: (value: number) => isMobile ? formatMillionsMobile(value) : formatMillions(value),
+        formatter: (value: number) => formatEuroCompact(value),
       },
       splitLine: {
         lineStyle: {
@@ -212,7 +191,7 @@ export default function FinancialHealthChart({
         },
       },
       {
-        name: 'Surplus/Déficit',
+        name: 'Déficit / Excédent',
         type: 'line',
         data: surplus,
         smooth: true,
