@@ -220,8 +220,8 @@ def main():
         "generated_at": datetime.now().isoformat(),
         "source": "OpenData Paris API (bootstrap direct)",
         "note": "Les montants sont des enveloppes pluriannuelles (plafonds contractuels), pas des dépenses annuelles.",
-        "available_years": years,
-        "totals_by_year": totals_by_year,
+        "availableYears": years,
+        "totalsByYear": totals_by_year,
         "filters": {
             "natures": all_natures,
             "categories": all_categories,

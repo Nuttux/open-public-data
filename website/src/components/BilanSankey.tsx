@@ -13,7 +13,7 @@
  * - Responsive: ajuste automatiquement la taille
  */
 
-import { useCallback, useMemo, useEffect } from 'react';
+import { useCallback, useMemo } from 'react';
 import ReactECharts from 'echarts-for-react';
 import type { EChartsOption } from 'echarts';
 import { formatEuroCompact, formatPercent, calculatePercentage } from '@/lib/formatters';
@@ -131,20 +131,6 @@ function MobileBilanView({ data, onNodeClick }: BilanSankeyProps) {
 export default function BilanSankey({ data, onNodeClick }: BilanSankeyProps) {
   const isMobile = useIsMobile(BREAKPOINTS.md);
   const isSmallTablet = useIsMobile(BREAKPOINTS.lg);
-
-  // #region agent log
-  fetch('http://127.0.0.1:7243/ingest/1f8e710b-4d17-470f-93f7-199824cb8279',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'BilanSankey.tsx:130',message:'BilanSankey render',data:{isMobile,isSmallTablet,windowWidth:typeof window!=='undefined'?window.innerWidth:0,breakpointMd:BREAKPOINTS.md,breakpointLg:BREAKPOINTS.lg,nodesCount:data.nodes.length,linksCount:data.links.length},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'H1,H2,H4'})}).catch(()=>{});
-  // #endregion
-
-  // #region agent log - resize tracker
-  useEffect(() => {
-    const handleResize = () => {
-      fetch('http://127.0.0.1:7243/ingest/1f8e710b-4d17-470f-93f7-199824cb8279',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'BilanSankey.tsx:resize',message:'Window resized',data:{windowWidth:window.innerWidth,windowHeight:window.innerHeight,isMobile,isSmallTablet},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'H1,H2'})}).catch(()=>{});
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [isMobile, isSmallTablet]);
-  // #endregion
 
   const totalPatrimoine = useMemo(() => {
     return Math.max(data.totals.actif_net, data.totals.passif_net);
@@ -354,9 +340,6 @@ export default function BilanSankey({ data, onNodeClick }: BilanSankeyProps) {
       </div>
 
       {/* Mobile: Vue simplifiée en barres */}
-      {/* #region agent log */}
-      {(() => { fetch('http://127.0.0.1:7243/ingest/1f8e710b-4d17-470f-93f7-199824cb8279',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'BilanSankey.tsx:360',message:'Render branch decision',data:{isMobile,showingSankey:!isMobile,chartHeight,windowWidth:typeof window!=='undefined'?window.innerWidth:0},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'H2,H3'})}).catch(()=>{}); return null; })()}
-      {/* #endregion */}
       {isMobile ? (
         <MobileBilanView data={data} onNodeClick={onNodeClick} />
       ) : (
@@ -385,9 +368,6 @@ export default function BilanSankey({ data, onNodeClick }: BilanSankeyProps) {
             </div>
           </div>
 
-          {/* #region agent log */}
-          {(() => { fetch('http://127.0.0.1:7243/ingest/1f8e710b-4d17-470f-93f7-199824cb8279',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'BilanSankey.tsx:395',message:'ReactECharts about to render',data:{chartHeight,isSmallTablet,nodesInOption:chartData.nodes.length,linksInOption:chartData.links.length},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'H3'})}).catch(()=>{}); return null; })()}
-          {/* #endregion */}
           <ReactECharts
             option={option}
             style={{ height: `${chartHeight}px`, width: '100%' }}

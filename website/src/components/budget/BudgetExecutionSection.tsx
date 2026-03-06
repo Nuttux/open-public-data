@@ -131,8 +131,8 @@ function ExecutionRateChart({ rates, height = 350 }: { rates: GlobalRate[]; heig
       tooltip: {
         trigger: 'axis',
         backgroundColor: 'rgba(15, 23, 42, 0.95)',
-        borderColor: '#f1f5f9',
-        textStyle: { color: '#0f172a', fontSize: 12 },
+        borderColor: '#334155',
+        textStyle: { color: '#e2e8f0', fontSize: 12 },
         formatter: (params: unknown) => {
           const items = params as Array<{
             seriesName: string; value: number | null; marker: string; axisValueLabel: string;
@@ -242,8 +242,8 @@ function EcartRanking({ ranking }: { ranking: EcartRow[] }) {
         trigger: 'axis',
         axisPointer: { type: 'shadow' },
         backgroundColor: 'rgba(15, 23, 42, 0.95)',
-        borderColor: '#f1f5f9',
-        textStyle: { color: '#0f172a', fontSize: 12 },
+        borderColor: '#334155',
+        textStyle: { color: '#e2e8f0', fontSize: 12 },
         formatter: (params: unknown) => {
           const items = params as Array<{ dataIndex: number }>;
           const idx = items[0]?.dataIndex;
@@ -258,24 +258,24 @@ function EcartRanking({ ranking }: { ranking: EcartRow[] }) {
           );
         },
       },
-      grid: { left: isMobile ? 130 : 200, right: 50, top: 10, bottom: 30 },
+      grid: { left: isMobile ? 110 : 200, right: 50, top: 10, bottom: 30 },
       xAxis: {
         type: 'value',
         min: -MAX_ECART_DISPLAY,
         max: MAX_ECART_DISPLAY,
         axisLabel: {
-          color: '#64748b',
+          color: '#94a3b8',
           formatter: (v: number) => `${v > 0 ? '+' : ''}${v}%`,
         },
-        splitLine: { lineStyle: { color: '#ffffff' } },
+        splitLine: { lineStyle: { color: '#1e293b' } },
       },
       yAxis: {
         type: 'category',
         data: labels,
         axisLabel: {
-          color: '#64748b',
-          fontSize: isMobile ? 9 : 11,
-          width: isMobile ? 120 : 190,
+          color: '#94a3b8',
+          fontSize: isMobile ? 10 : 11,
+          width: isMobile ? 100 : 190,
           overflow: 'truncate',
         },
       },

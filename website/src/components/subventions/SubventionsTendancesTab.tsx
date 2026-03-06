@@ -9,7 +9,7 @@
 
 import TendancesTab from '@/components/shared/TendancesTab';
 import type { TendancesYear, BreakdownOption } from '@/components/shared/TendancesTab';
-import { getThematiqueColor, PALETTE } from '@/lib/colors';
+import { getThematiqueColor, PALETTE, TYPE_ORGANISME_COLORS } from '@/lib/colors';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { PARIS_POPULATION_TOTAL } from '@/lib/constants/arrondissements';
 import { BREAKDOWN_ICONS } from '@/lib/icons';
@@ -21,15 +21,6 @@ const BREAKDOWNS: BreakdownOption[] = [
   { id: 'direction', label: 'Direction', icon: BREAKDOWN_ICONS.direction },
   { id: 'type_organisme', label: 'Type organisme', icon: BREAKDOWN_ICONS.type_organisme },
 ];
-
-const TYPE_ORGANISME_COLORS: Record<string, string> = {
-  'Associations': PALETTE.purple,
-  'Établissements publics': PALETTE.blue,
-  'Entreprises': PALETTE.orange,
-  'Autres privés': PALETTE.teal,
-  'Personnes physiques': PALETTE.pink,
-  'Autres': PALETTE.gray,
-};
 
 const DIRECTION_PALETTE = [
   PALETTE.blue, PALETTE.purple, PALETTE.pink, PALETTE.amber,
@@ -78,9 +69,8 @@ const KPI4_LABELS: Record<string, string> = {
 };
 
 function formatVariationDiff(value: number): string {
-  const m = value / 1_000_000;
-  const s = value >= 0 ? '+' : '';
-  return Math.abs(m) >= 1000 ? `${s}${(m / 1000).toFixed(1)} Md€` : `${s}${m.toFixed(0)} M€`;
+  const sign = value >= 0 ? '+' : '';
+  return `${sign}${formatEuroCompact(value)}`;
 }
 
 // ─── Component ───────────────────────────────────────────────────────────────

@@ -29,10 +29,12 @@ const CSV_COLUMNS: CsvColumn<Record<string, unknown>>[] = [
 
 // ─── Constants ───────────────────────────────────────────────────────────────
 
+// Maps normalized nature_juridique values to simplified type categories.
+// The pipeline normalizes variants (e.g. "Etablissements de droit public"
+// → "Etablissements publics") at export time, so no duplicates needed here.
 const NATURE_TO_TYPE: Record<string, string> = {
   'Associations': 'association',
   'Etablissements publics': 'public',
-  'Etablissements de droit public': 'public',
   'Autres personnes de droit public': 'public',
   'Etat': 'public',
   'Communes': 'public',

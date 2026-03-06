@@ -191,8 +191,8 @@ def export_index(client: bigquery.Client, years: list) -> dict:
         "generated_at": datetime.now().isoformat(),
         "source": "dbt mart (mart_budget_nature)",
         "description": "Répartition du budget par nature de dépense avec drill-down par thématique",
-        "available_years": years,
-        "totals_by_year": totals_by_year,
+        "availableYears": years,
+        "totalsByYear": totals_by_year,
         "natures": natures,
     }
     

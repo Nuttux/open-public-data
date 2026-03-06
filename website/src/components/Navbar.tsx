@@ -250,7 +250,7 @@ export default function Navbar() {
                 {isActive && (
                   <span className={`absolute top-0 inset-x-2 h-0.5 ${link.activeColor.replace('text-', 'bg-')} rounded-full`} />
                 )}
-                <span className="text-[22px] leading-none">
+                <span className="text-[20px] leading-none">
                   {link.icon}
                 </span>
                 <span

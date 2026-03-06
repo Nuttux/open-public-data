@@ -107,11 +107,13 @@ def fetch_beneficiaires_data(client: bigquery.Client, year: int = None, limit: i
     
     results = []
     for row in client.query(query).result():
+        nature = row.nature_juridique
+        nature = NATURE_JURIDIQUE_NORMALIZE.get(nature, nature)
         results.append({
             "annee": row.annee,
             "beneficiaire": row.beneficiaire,
             "beneficiaire_normalise": row.beneficiaire_normalise,
-            "nature_juridique": row.nature_juridique,
+            "nature_juridique": nature,
             "direction": row.direction,
             "secteurs_activite": row.secteurs_activite,
             "thematique": row.thematique or "Autre",
@@ -122,7 +124,7 @@ def fetch_beneficiaires_data(client: bigquery.Client, year: int = None, limit: i
             "objet_principal": row.objet_principal,
             "siret": row.siret,
         })
-    
+
     return results
 
 
@@ -151,8 +153,8 @@ def get_filter_options(client: bigquery.Client) -> dict:
     for row in client.query(query).result():
         thematiques.append(row.thematique)
     
-    # Natures juridiques
-    natures = []
+    # Natures juridiques (normalized and deduplicated)
+    natures_set = set()
     query = f"""
     SELECT DISTINCT nature_juridique
     FROM `{PROJECT_ID}.{DATASET}.mart_subventions_beneficiaires`
@@ -160,7 +162,8 @@ def get_filter_options(client: bigquery.Client) -> dict:
     ORDER BY nature_juridique
     """
     for row in client.query(query).result():
-        natures.append(row.nature_juridique)
+        natures_set.add(NATURE_JURIDIQUE_NORMALIZE.get(row.nature_juridique, row.nature_juridique))
+    natures = sorted(natures_set)
     
     # Directions
     directions = []
@@ -206,8 +209,8 @@ def export_index(client: bigquery.Client):
     index = {
         "generated_at": datetime.now().isoformat(),
         "source": "dbt marts (mart_subventions_treemap, mart_subventions_beneficiaires)",
-        "available_years": years,
-        "totals_by_year": totals_by_year,
+        "availableYears": years,
+        "totalsByYear": totals_by_year,
         "filters": filters,
     }
     
@@ -268,10 +271,17 @@ def export_beneficiaires_year(client: bigquery.Client, year: int, limit: int = 5
     print(f"    → {output_file.name} ({len(data)} bénéficiaires, {total/1e6:.1f}M€)")
 
 
+# Normalize inconsistent nature_juridique values from source data.
+# The source has both "Etablissements de droit public" and "Etablissements publics"
+# which refer to the same category. We normalize at export time so the website
+# doesn't need to maintain duplicate mappings.
+NATURE_JURIDIQUE_NORMALIZE = {
+    'Etablissements de droit public': 'Etablissements publics',
+}
+
 NATURE_TO_TYPE = {
     'Associations': 'Associations',
     'Etablissements publics': 'Établissements publics',
-    'Etablissements de droit public': 'Établissements publics',
     'Autres personnes de droit public': 'Établissements publics',
     'Etat': 'Établissements publics',
     'Communes': 'Établissements publics',
@@ -381,7 +391,7 @@ def main():
     # Index
     log.section("Génération de l'index")
     index = export_index(client)
-    years = [args.year] if args.year else index["available_years"]
+    years = [args.year] if args.year else index["availableYears"]
     log.success("Index créé", extra=f"{len(years)} années disponibles")
     
     # Export par année

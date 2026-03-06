@@ -54,7 +54,7 @@ export default function TabBar({ tabs, activeTab, onChange, className = '' }: Ta
               onChange(tab.id);
             }}
             className={`
-              flex items-center gap-1.5 whitespace-nowrap px-4 py-2 rounded-md text-sm font-medium
+              flex items-center gap-1.5 whitespace-nowrap px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium
               transition-all duration-200 shrink-0
               ${
                 isActive

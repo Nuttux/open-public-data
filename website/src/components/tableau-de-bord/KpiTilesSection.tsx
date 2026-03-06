@@ -24,7 +24,7 @@ interface EvolutionYear {
 }
 
 interface SubventionsIndex {
-  totals_by_year: Record<string, { montant_total: number; nb_subventions: number }>;
+  totalsByYear: Record<string, { montant_total: number; nb_subventions: number }>;
 }
 
 interface LogementRecord {
@@ -39,7 +39,7 @@ interface LogementsData {
 }
 
 interface MarchesIndex {
-  totals_by_year: Record<string, { nb_marches: number; enveloppe_max_totale: number }>;
+  totalsByYear: Record<string, { nb_marches: number; enveloppe_max_totale: number }>;
 }
 
 interface TileData {
@@ -133,8 +133,8 @@ export default function KpiTilesSection() {
         // ── Activité metrics ──────────────────────────────────────────
 
         // 4. Subventions / Aides versées
-        const subYears = Object.keys(sub.totals_by_year).map(Number).sort((a, b) => b - a);
-        const subLatest = sub.totals_by_year[subYears[0]];
+        const subYears = Object.keys(sub.totalsByYear).map(Number).sort((a, b) => b - a);
+        const subLatest = sub.totalsByYear[subYears[0]];
         const subPerCapita = Math.round(subLatest.montant_total / TOTAL_POPULATION);
 
         // 5. Logements sociaux — annualisé avec % PLAI
@@ -147,8 +147,8 @@ export default function KpiTilesSection() {
         const logPer1000 = (nbLogementsYear / TOTAL_POPULATION) * 1000;
 
         // 6. Marchés publics
-        const marYears = Object.keys(mar.totals_by_year).map(Number).sort((a, b) => b - a);
-        const marLatest = mar.totals_by_year[marYears[0]];
+        const marYears = Object.keys(mar.totalsByYear).map(Number).sort((a, b) => b - a);
+        const marLatest = mar.totalsByYear[marYears[0]];
 
         const activite: TileData[] = [
           {

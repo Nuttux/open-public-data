@@ -82,10 +82,10 @@ export default function RootLayout({
           <GlossaryShell>
             <Navbar />
             {/*
-              pb-20 sur mobile compense la barre de navigation fixe en bas (~56px + safe area).
+              pb-24 sur mobile compense la barre de navigation fixe en bas (~56px + safe area).
               md:pb-0 retire ce padding sur desktop où la nav est en haut.
             */}
-            <div className="pb-20 md:pb-0">
+            <div className="pb-24 md:pb-0">
               {children}
             </div>
           </GlossaryShell>

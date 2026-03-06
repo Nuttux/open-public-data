@@ -28,8 +28,8 @@ import { useT } from '@/lib/localeContext';
 interface SubventionsIndex {
   generated_at: string;
   source: string;
-  available_years: number[];
-  totals_by_year: Record<string, { montant_total: number; nb_subventions: number }>;
+  availableYears: number[];
+  totalsByYear: Record<string, { montant_total: number; nb_subventions: number }>;
   filters: {
     thematiques: string[];
     natures_juridiques: string[];
@@ -75,7 +75,7 @@ function SubventionsPageInner() {
         if (!res.ok) throw new Error("Impossible de charger l'index");
         const data: SubventionsIndex = await res.json();
         setIndex(data);
-        if (data.available_years.length > 0) setSelectedYear(data.available_years[0]);
+        if (data.availableYears.length > 0) setSelectedYear(data.availableYears[0]);
       } catch (err) {
         console.error('Error loading index:', err);
         setError('Erreur lors du chargement des données');
@@ -113,7 +113,7 @@ function SubventionsPageInner() {
 
   /** Nombre de subventions pour l'année sélectionnée */
   const nbSubventions = useMemo(
-    () => index?.totals_by_year[String(selectedYear)]?.nb_subventions || 0,
+    () => index?.totalsByYear[String(selectedYear)]?.nb_subventions || 0,
     [index, selectedYear],
   );
 
@@ -137,7 +137,7 @@ function SubventionsPageInner() {
             actions={
               activeTab !== 'tendances' ? (
                 <YearSelector
-                  years={index.available_years}
+                  years={index.availableYears}
                   selectedYear={selectedYear}
                   onYearChange={setSelectedYear}
                 />
@@ -180,7 +180,7 @@ function SubventionsPageInner() {
         <footer className="mt-8 pt-6 border-t border-slate-800">
           <div className="text-xs text-slate-500 text-center space-y-1">
             <p>{t('subventions.footer.data')}</p>
-            <p>{t('subventions.footer.years')} : {index.available_years.filter(y => y !== 2020 && y !== 2021).join(', ')}</p>
+            <p>{t('subventions.footer.years')} : {index.availableYears.filter(y => y !== 2020 && y !== 2021).join(', ')}</p>
           </div>
         </footer>
       </div>

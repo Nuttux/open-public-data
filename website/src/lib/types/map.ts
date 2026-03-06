@@ -30,7 +30,7 @@ export interface Subvention {
   direction: string;
   nature: string;
   thematique?: string;
-  secteurs?: string[];
+  secteurs_activite?: string[];
   // Géolocalisation (enrichie via API entreprises)
   coordinates?: GeoPoint;
   adresse?: string;
@@ -163,7 +163,7 @@ export interface MapFilters {
   directions?: string[];
   arrondissements?: number[];
   natures?: string[];
-  secteurs?: string[];
+  secteurs_activite?: string[];
 }
 
 /**
