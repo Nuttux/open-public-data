@@ -19,26 +19,31 @@ import type { CsvColumn } from '@/lib/export';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { PALETTE } from '@/lib/colors';
 import { BREAKDOWN_ICONS } from '@/lib/icons';
+import { useT } from '@/lib/localeContext';
 
-const CSV_COLUMNS: CsvColumn<Record<string, unknown>>[] = [
-  { key: 'numero_marche', label: 'N° marché' },
-  { key: 'objet', label: 'Objet' },
-  { key: 'nature', label: 'Nature' },
-  { key: 'categorie_libelle', label: 'Catégorie' },
-  { key: 'fournisseur_nom', label: 'Fournisseur' },
-  { key: 'fournisseur_siret', label: 'SIRET fournisseur' },
-  { key: 'montant_max', label: 'Enveloppe max (€)' },
-  { key: 'date_notification', label: 'Date notification' },
-  { key: 'duree_jours', label: 'Durée (jours)' },
-  { key: 'is_multiattributaire', label: 'Multi-attributaire', format: (v) => v ? 'Oui' : 'Non' },
-];
+function getCsvColumns(t: (key: string) => string): CsvColumn<Record<string, unknown>>[] {
+  return [
+    { key: 'numero_marche', label: t('marches.csv.numero') },
+    { key: 'objet', label: t('marches.csv.objet') },
+    { key: 'nature', label: t('marches.csv.nature') },
+    { key: 'categorie_libelle', label: t('marches.csv.categorie') },
+    { key: 'fournisseur_nom', label: t('marches.csv.fournisseur') },
+    { key: 'fournisseur_siret', label: t('marches.csv.siret') },
+    { key: 'montant_max', label: t('marches.csv.enveloppe') },
+    { key: 'date_notification', label: t('marches.csv.date') },
+    { key: 'duree_jours', label: t('marches.csv.duree') },
+    { key: 'is_multiattributaire', label: t('marches.csv.multi_attr'), format: (v) => v ? t('marches.csv.oui') : t('marches.csv.non') },
+  ];
+}
 
 // ─── Config ──────────────────────────────────────────────────────────────────
 
-const BREAKDOWNS: BreakdownOption[] = [
-  { id: 'nature', label: 'Nature', icon: BREAKDOWN_ICONS.nature },
-  { id: 'categorie', label: 'Catégorie', icon: BREAKDOWN_ICONS.categorie },
-];
+function getBreakdowns(t: (key: string) => string): BreakdownOption[] {
+  return [
+    { id: 'nature', label: t('marches.breakdown.nature'), icon: BREAKDOWN_ICONS.nature },
+    { id: 'categorie', label: t('marches.breakdown.categorie'), icon: BREAKDOWN_ICONS.categorie },
+  ];
+}
 
 /** Couleurs fixes par nature de marché */
 const NATURE_COLOR_MAP: Record<string, string> = {
@@ -56,19 +61,21 @@ const DIM_COLORS = [
   PALETTE.pink, PALETTE.green,
 ];
 
-function getGroupKey(m: MarchePublic, dim: string): string {
-  switch (dim) {
-    case 'nature':
-      return m.nature || 'Non renseigné';
-    case 'categorie':
-      return m.categorie_libelle || 'Non renseigné';
-    default:
-      return 'Autre';
-  }
+function makeGetGroupKey(t: (key: string) => string) {
+  return function getGroupKey(m: MarchePublic, dim: string): string {
+    switch (dim) {
+      case 'nature':
+        return m.nature || t('marches.not_specified');
+      case 'categorie':
+        return m.categorie_libelle || t('marches.not_specified');
+      default:
+        return t('marches.other');
+    }
+  };
 }
 
 function getGroupColor(key: string, dim: string, index: number): string {
-  if (key === 'Autres') return PALETTE.slate;
+  if (key === 'Autres' || key === 'Others') return PALETTE.slate;
   if (dim === 'nature') return NATURE_COLOR_MAP[key] || PALETTE.slate;
   return DIM_COLORS[index % DIM_COLORS.length];
 }
@@ -103,44 +110,46 @@ function cleanObjet(raw: string): string {
   return text || raw;
 }
 
-const COLUMNS: TableColumnDef<MarchePublic>[] = [
-  {
-    key: 'objet', label: 'Marché', align: 'left',
-    render: (m, i) => (
-      <div className="flex items-start gap-2">
-        <span className="text-slate-400 text-xs w-5 shrink-0 pt-0.5">{i + 1}</span>
-        <div className="min-w-0">
-          <p className="text-xs md:text-sm font-medium text-slate-200 line-clamp-2">
-            {m.categorie_libelle || cleanObjet(m.objet)}
-          </p>
-          <p className="text-[10px] md:text-xs text-slate-400 mt-0.5 line-clamp-1" title={m.objet}>
-            {cleanObjet(m.objet)}
-          </p>
-          <div className="flex items-center gap-1.5 mt-1">
-            <span
-              className="inline-block w-1.5 h-1.5 rounded-full shrink-0"
-              style={{ backgroundColor: NATURE_COLOR_MAP[m.nature] || '#64748b' }}
-            />
-            <span className="text-[10px] text-slate-400">
-              {NATURE_LABELS[m.nature] || m.nature}
-              {m.duree_jours ? ` · ${formatDuration(m.duree_jours)}` : ''}
-            </span>
+function getColumns(t: (key: string) => string): TableColumnDef<MarchePublic>[] {
+  return [
+    {
+      key: 'objet', label: t('marches.col.contract'), align: 'left',
+      render: (m, i) => (
+        <div className="flex items-start gap-2">
+          <span className="text-slate-400 text-xs w-5 shrink-0 pt-0.5">{i + 1}</span>
+          <div className="min-w-0">
+            <p className="text-xs md:text-sm font-medium text-slate-200 line-clamp-2">
+              {m.categorie_libelle || cleanObjet(m.objet)}
+            </p>
+            <p className="text-[10px] md:text-xs text-slate-400 mt-0.5 line-clamp-1" title={m.objet}>
+              {cleanObjet(m.objet)}
+            </p>
+            <div className="flex items-center gap-1.5 mt-1">
+              <span
+                className="inline-block w-1.5 h-1.5 rounded-full shrink-0"
+                style={{ backgroundColor: NATURE_COLOR_MAP[m.nature] || '#64748b' }}
+              />
+              <span className="text-[10px] text-slate-400">
+                {t(NATURE_LABELS[m.nature]) || m.nature}
+                {m.duree_jours ? ` · ${formatDuration(m.duree_jours)}` : ''}
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-    ),
-  },
-  {
-    key: 'fournisseur', label: 'Fournisseur', hideOnMobile: true, align: 'left',
-    render: (m) => m.is_multiattributaire
-      ? <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-amber-900/30 text-amber-400">Multi-attr.</span>
-      : <p className="text-xs text-slate-400 line-clamp-2">{m.fournisseur_nom}</p>,
-  },
-  {
-    key: 'montant', label: 'Montant max', align: 'right',
-    render: (m) => <p className="text-xs md:text-sm font-semibold text-teal-400 whitespace-nowrap">{formatEuroCompact(m.montant_max)}</p>,
-  },
-];
+      ),
+    },
+    {
+      key: 'fournisseur', label: t('marches.col.supplier'), hideOnMobile: true, align: 'left',
+      render: (m) => m.is_multiattributaire
+        ? <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-amber-900/30 text-amber-400">{t('marches.multi_attr')}</span>
+        : <p className="text-xs text-slate-400 line-clamp-2">{m.fournisseur_nom}</p>,
+    },
+    {
+      key: 'montant', label: t('marches.col.envelope'), align: 'right',
+      render: (m) => <p className="text-xs md:text-sm font-semibold text-teal-400 whitespace-nowrap">{formatEuroCompact(m.montant_max)}</p>,
+    },
+  ];
+}
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
@@ -155,6 +164,8 @@ interface MarchesAnnuelTabProps {
 export default function MarchesAnnuelTab({
   selectedYear, marches, isLoading, error, onNavigateExplorer,
 }: MarchesAnnuelTabProps) {
+  const t = useT();
+  const getGroupKey = makeGetGroupKey(t);
   const stats = useMemo(() => {
     if (marches.length === 0) return null;
 
@@ -199,22 +210,22 @@ export default function MarchesAnnuelTab({
       items={marches}
       isLoading={isLoading}
       theme="teal"
-      breakdowns={BREAKDOWNS}
+      breakdowns={getBreakdowns(t)}
       getGroupKey={getGroupKey}
       getGroupColor={getGroupColor}
       getValue={(m) => m.montant_max}
-      treemapTitle="Répartition des marchés publics"
-      tooltipCountLabel="Marchés"
+      treemapTitle={t('marches.treemap_title')}
+      tooltipCountLabel={t('marches.tooltip_count')}
       maxGroups={(dim) => dim === 'categorie' ? 8 : undefined}
-      itemLabel="marchés"
-      columns={COLUMNS}
+      itemLabel={t('marches.items')}
+      columns={getColumns(t)}
       sortItems={(a, b) => b.montant_max - a.montant_max}
       getItemKey={(m, i) => `${m.numero_marche}-${i}`}
       onNavigateExplorer={onNavigateExplorer}
       exportBar={
         <ExportBar
           csvData={marches as unknown as Record<string, unknown>[]}
-          csvColumns={CSV_COLUMNS}
+          csvColumns={getCsvColumns(t)}
           filename={`marches_publics_${selectedYear}`}
         />
       }
@@ -222,7 +233,7 @@ export default function MarchesAnnuelTab({
         <>
           <div className="bg-teal-900/30 border border-teal-500/30 rounded-lg p-3 mb-6">
             <p className="text-xs text-teal-300/80">
-              Les montants affichés sont des <strong className="text-teal-200">plafonds sur toute la durée du contrat</strong> (souvent 4 ans), pas des dépenses annuelles. Le montant réellement dépensé est généralement inférieur.
+              {t('marches.banner_text')}<strong className="text-teal-200">{t('marches.banner_bold')}</strong>{t('marches.banner_suffix')}
             </p>
           </div>
           {error && (
@@ -235,32 +246,32 @@ export default function MarchesAnnuelTab({
       kpiCards={stats && (
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
           <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-4">
-            <p className="text-xs text-slate-400 uppercase tracking-wide">Montant total</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">{t('marches.kpi.total_amount')}</p>
             <p className="text-2xl font-bold text-slate-100 mt-1">{formatEuroCompact(stats.totalEnveloppe)}</p>
-            <p className="text-xs text-slate-400 mt-1">{formatNumber(stats.total)} marchés notifiés</p>
+            <p className="text-xs text-slate-400 mt-1">{formatNumber(stats.total)} {t('marches.notified')}</p>
           </div>
           <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-4">
-            <p className="text-xs text-slate-400 uppercase tracking-wide">Montant médian</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">{t('marches.kpi.median_amount')}</p>
             <p className="text-2xl font-bold text-teal-400 mt-1">{formatEuroCompact(stats.median)}</p>
-            <p className="text-xs text-slate-400 mt-1">par marché</p>
+            <p className="text-xs text-slate-400 mt-1">{t('marches.kpi.per_contract')}</p>
           </div>
           <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-4">
-            <p className="text-xs text-slate-400 uppercase tracking-wide">Durée moyenne</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">{t('marches.kpi.avg_duration')}</p>
             <p className="text-2xl font-bold text-teal-400 mt-1">{stats.dureeMoyenne ? formatDuration(stats.dureeMoyenne) : '—'}</p>
-            <p className="text-xs text-slate-400 mt-1">par contrat</p>
+            <p className="text-xs text-slate-400 mt-1">{t('marches.kpi.per_contract_in')}</p>
           </div>
           <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-4">
-            <p className="text-xs text-slate-400 uppercase tracking-wide">Entreprises différentes</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">{t('marches.kpi.unique_suppliers')}</p>
             <p className="text-2xl font-bold text-emerald-400 mt-1">{formatNumber(stats.fournisseursUniques)}</p>
-            <p className="text-xs text-slate-400 mt-1">fournisseurs distincts</p>
+            <p className="text-xs text-slate-400 mt-1">{t('marches.kpi.distinct_suppliers')}</p>
           </div>
           <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-4">
-            <p className="text-xs text-slate-400 uppercase tracking-wide">Contrats partagés</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">{t('marches.kpi.shared_contracts')}</p>
             <p className="text-2xl font-bold text-amber-400 mt-1">{stats.tauxMultiAttr.toFixed(0)}%</p>
-            <p className="text-xs text-slate-400 mt-1">avec plusieurs entreprises</p>
+            <p className="text-xs text-slate-400 mt-1">{t('marches.kpi.shared_desc')}</p>
           </div>
           <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-4">
-            <p className="text-xs text-slate-400 uppercase tracking-wide">Top fournisseur</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">{t('marches.kpi.top_supplier')}</p>
             <p className="text-lg font-bold text-emerald-400 mt-1 truncate" title={stats.topFournisseurName}>
               {formatEuroCompact(stats.topFournisseurVal)}
             </p>

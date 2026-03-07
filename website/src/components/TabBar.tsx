@@ -12,6 +12,7 @@
  */
 
 import { useTrack } from '@/lib/analyticsContext';
+import { useT } from '@/lib/localeContext';
 
 export interface Tab {
   /** Identifiant unique du tab (utilisé dans l'URL ?tab=xxx) */
@@ -32,12 +33,13 @@ interface TabBarProps {
 
 export default function TabBar({ tabs, activeTab, onChange, className = '' }: TabBarProps) {
   const track = useTrack();
+  const t = useT();
 
   return (
     <div
       className={`flex overflow-x-auto scrollbar-hide bg-slate-800 rounded-lg border border-slate-700 p-0.5 ${className}`}
       role="tablist"
-      aria-label="Navigation par onglets"
+      aria-label={t('common.tab_aria')}
     >
       {tabs.map((tab) => {
         const isActive = tab.id === activeTab;

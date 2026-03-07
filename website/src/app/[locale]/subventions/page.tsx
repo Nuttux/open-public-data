@@ -78,7 +78,7 @@ function SubventionsPageInner() {
         if (data.available_years.length > 0) setSelectedYear(data.available_years[0]);
       } catch (err) {
         console.error('Error loading index:', err);
-        setError('Erreur lors du chargement des données');
+        setError(t('common.error_loading'));
       } finally {
         setIsLoadingIndex(false);
       }
@@ -99,7 +99,7 @@ function SubventionsPageInner() {
         setBeneficiaires(benefs.data);
       } catch (err) {
         console.error(`Error loading data for ${selectedYear}:`, err);
-        setError(`Données ${selectedYear} non disponibles`);
+        setError(t('common.error_data_year').replace('{year}', String(selectedYear)));
         setBeneficiaires([]);
       } finally {
         setIsLoadingData(false);

@@ -17,28 +17,33 @@ import { PARIS_POPULATION_TOTAL } from '@/lib/constants/arrondissements';
 import { PALETTE } from '@/lib/colors';
 import type { CsvColumn } from '@/lib/export';
 import { BREAKDOWN_ICONS } from '@/lib/icons';
+import { useT } from '@/lib/localeContext';
 
-const CSV_COLUMNS: CsvColumn<Record<string, unknown>>[] = [
-  { key: 'annee', label: 'Année' },
-  { key: 'adresse', label: 'Adresse' },
-  { key: 'codePostal', label: 'Code postal' },
-  { key: 'arrondissement', label: 'Arrondissement' },
-  { key: 'bailleur', label: 'Bailleur' },
-  { key: 'nbLogements', label: 'Nb logements' },
-  { key: 'nbPLAI', label: 'PLAI' },
-  { key: 'nbPLUS', label: 'PLUS' },
-  { key: 'nbPLS', label: 'PLS' },
-  { key: 'modeRealisation', label: 'Mode réalisation' },
-  { key: 'natureProgramme', label: 'Nature programme' },
-];
+function getCsvColumns(t: (k: string) => string): CsvColumn<Record<string, unknown>>[] {
+  return [
+    { key: 'annee', label: t('logements.csv.year') },
+    { key: 'adresse', label: t('logements.csv.address') },
+    { key: 'codePostal', label: t('logements.csv.postal_code') },
+    { key: 'arrondissement', label: t('logements.csv.arrondissement') },
+    { key: 'bailleur', label: t('logements.csv.landlord') },
+    { key: 'nbLogements', label: t('logements.csv.nb_housing') },
+    { key: 'nbPLAI', label: 'PLAI' },
+    { key: 'nbPLUS', label: 'PLUS' },
+    { key: 'nbPLS', label: 'PLS' },
+    { key: 'modeRealisation', label: t('logements.csv.mode') },
+    { key: 'natureProgramme', label: t('logements.csv.nature') },
+  ];
+}
 
 // ─── Config ──────────────────────────────────────────────────────────────────
 
-const BREAKDOWNS: BreakdownOption[] = [
-  { id: 'type', label: 'Type', icon: BREAKDOWN_ICONS.type },
-  { id: 'bailleur', label: 'Bailleur', icon: BREAKDOWN_ICONS.bailleur },
-  { id: 'arrondissement', label: 'Arrondissement', icon: BREAKDOWN_ICONS.arrondissement },
-];
+function getBreakdowns(t: (k: string) => string): BreakdownOption[] {
+  return [
+    { id: 'type', label: t('logements.breakdown.type'), icon: BREAKDOWN_ICONS.type },
+    { id: 'bailleur', label: t('logements.breakdown.landlord'), icon: BREAKDOWN_ICONS.bailleur },
+    { id: 'arrondissement', label: t('logements.breakdown.arrondissement'), icon: BREAKDOWN_ICONS.arrondissement },
+  ];
+}
 
 const DIM_COLORS = [
   PALETTE.emerald, PALETTE.cyan, PALETTE.blue, PALETTE.purple,
@@ -57,9 +62,11 @@ const ARR_COLORS = [
   PALETTE.teal, PALETTE.cyan, PALETTE.blue, PALETTE.sky, PALETTE.violet,
 ];
 
-function arrLabel(code: number): string {
-  if (code === 0) return 'Paris Centre';
-  return `${code}e arr.`;
+function makeArrLabel(t: (k: string) => string) {
+  return function arrLabel(code: number): string {
+    if (code === 0) return t('logements.paris_centre');
+    return `${code}e arr.`;
+  };
 }
 
 /** Couleurs fixes par type de logement (alignées avec la légende) */
@@ -79,17 +86,19 @@ function getDominantType(l: LogementSocial): string {
   return 'PLS (intermédiaire)';
 }
 
-function getGroupKey(l: LogementSocial, dim: string): string {
-  switch (dim) {
-    case 'bailleur':
-      return l.bailleur || '(non renseigné)';
-    case 'arrondissement':
-      return arrLabel(l.arrondissement);
-    case 'type':
-      return getDominantType(l);
-    default:
-      return 'Autre';
-  }
+function makeGetGroupKey(t: (k: string) => string, arrLabel: (code: number) => string) {
+  return function getGroupKey(l: LogementSocial, dim: string): string {
+    switch (dim) {
+      case 'bailleur':
+        return l.bailleur || t('logements.not_specified');
+      case 'arrondissement':
+        return arrLabel(l.arrondissement);
+      case 'type':
+        return getDominantType(l);
+      default:
+        return t('logements.other');
+    }
+  };
 }
 
 function getGroupColor(key: string, dim: string, index: number): string {
@@ -99,9 +108,10 @@ function getGroupColor(key: string, dim: string, index: number): string {
   return DIM_COLORS[index % DIM_COLORS.length];
 }
 
-const COLUMNS: TableColumnDef<LogementSocial>[] = [
+function getColumns(t: (k: string) => string, arrLabel: (code: number) => string): TableColumnDef<LogementSocial>[] {
+  return [
   {
-    key: 'programme', label: 'Programme', align: 'left',
+    key: 'programme', label: t('logements.col.programme'), align: 'left',
     render: (l, i) => (
       <div className="flex items-start gap-2">
         <span className="text-slate-400 text-xs w-5 shrink-0">{i + 1}</span>
@@ -115,11 +125,11 @@ const COLUMNS: TableColumnDef<LogementSocial>[] = [
     ),
   },
   {
-    key: 'arrondissement', label: 'Arr.', hideOnMobile: true, align: 'center',
+    key: 'arrondissement', label: t('logements.col.arr'), hideOnMobile: true, align: 'center',
     render: (l) => <span className="text-sm text-slate-300">{arrLabel(l.arrondissement)}</span>,
   },
   {
-    key: 'logements', label: 'Logements', align: 'right',
+    key: 'logements', label: t('logements.col.housing'), align: 'right',
     render: (l) => <p className="text-xs md:text-sm font-semibold text-emerald-400 whitespace-nowrap">{formatNumber(l.nbLogements)}</p>,
   },
   {
@@ -134,7 +144,8 @@ const COLUMNS: TableColumnDef<LogementSocial>[] = [
       </div>
     ),
   },
-];
+  ];
+}
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
@@ -148,6 +159,9 @@ interface LogementsAnnuelTabProps {
 export default function LogementsAnnuelTab({
   logements, selectedYear, isLoading, onNavigateExplorer,
 }: LogementsAnnuelTabProps) {
+  const t = useT();
+  const arrLabel = makeArrLabel(t);
+  const getGroupKey = makeGetGroupKey(t, arrLabel);
   const kpiStats = useMemo(() => {
     const totalLogements = logements.reduce((s, l) => s + l.nbLogements, 0);
     const totalPLAI = logements.reduce((s, l) => s + (l.nbPLAI || 0), 0);
@@ -162,44 +176,44 @@ export default function LogementsAnnuelTab({
       items={logements}
       isLoading={isLoading}
       theme="emerald"
-      breakdowns={BREAKDOWNS}
+      breakdowns={getBreakdowns(t)}
       getGroupKey={getGroupKey}
       getGroupColor={getGroupColor}
       getValue={(l) => l.nbLogements}
-      treemapTitle="Répartition des logements sociaux"
-      tooltipCountLabel="Programmes"
-      tooltipValueLabel="Logements"
-      formatValue={(v) => formatNumber(v) + ' logements'}
+      treemapTitle={t('logements.treemap_title')}
+      tooltipCountLabel={t('logements.tooltip_count')}
+      tooltipValueLabel={t('logements.tooltip_value')}
+      formatValue={(v) => formatNumber(v) + t('logements.format_value_suffix')}
       maxGroups={(dim) => dim === 'bailleur' ? 12 : undefined}
-      itemLabel="programmes"
-      columns={COLUMNS}
+      itemLabel={t('logements.item_label')}
+      columns={getColumns(t, arrLabel)}
       sortItems={(a, b) => b.nbLogements - a.nbLogements}
       getItemKey={(l, i) => `${l.id}-${i}`}
       onNavigateExplorer={onNavigateExplorer}
-      formatTotal={(items) => formatNumber(items.reduce((s, l) => s + l.nbLogements, 0)) + ' logements'}
+      formatTotal={(items) => formatNumber(items.reduce((s, l) => s + l.nbLogements, 0)) + t('logements.format_total_suffix')}
       banner={
         <div className="bg-slate-800/30 rounded-lg p-4 border border-slate-700/30 mb-6">
-          <h3 className="text-sm font-medium text-slate-300 mb-3">Types de logements sociaux</h3>
+          <h3 className="text-sm font-medium text-slate-300 mb-3">{t('logements.housing_types_title')}</h3>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
             <div className="flex items-start gap-2">
               <div className="w-3 h-3 rounded-full bg-blue-400 mt-0.5" />
               <div>
-                <p className="text-slate-300 font-medium">PLAI - Tres social</p>
-                <p className="text-slate-500">Revenus &lt; 60% du plafond HLM.</p>
+                <p className="text-slate-300 font-medium">{t('logements.plai_label')}</p>
+                <p className="text-slate-500">{t('logements.plai_desc')}</p>
               </div>
             </div>
             <div className="flex items-start gap-2">
               <div className="w-3 h-3 rounded-full bg-cyan-400 mt-0.5" />
               <div>
-                <p className="text-slate-300 font-medium">PLUS - Social standard</p>
-                <p className="text-slate-500">Revenus &lt; 100% du plafond HLM.</p>
+                <p className="text-slate-300 font-medium">{t('logements.plus_label')}</p>
+                <p className="text-slate-500">{t('logements.plus_desc')}</p>
               </div>
             </div>
             <div className="flex items-start gap-2">
               <div className="w-3 h-3 rounded-full bg-violet-400 mt-0.5" />
               <div>
-                <p className="text-slate-300 font-medium">PLS - Intermediaire</p>
-                <p className="text-slate-500">Revenus 100-130% du plafond HLM.</p>
+                <p className="text-slate-300 font-medium">{t('logements.pls_label')}</p>
+                <p className="text-slate-500">{t('logements.pls_desc')}</p>
               </div>
             </div>
           </div>
@@ -208,31 +222,31 @@ export default function LogementsAnnuelTab({
       kpiCards={
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-400 uppercase tracking-wide">Logements financés</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">{t('logements.kpi_funded')}</p>
             <p className="text-2xl font-bold text-slate-100 mt-1">{formatNumber(kpiStats.totalLogements)}</p>
-            <p className="text-xs text-slate-400 mt-1">{kpiStats.per1000.toFixed(1)} pour 1 000 hab</p>
+            <p className="text-xs text-slate-400 mt-1">{kpiStats.per1000.toFixed(1)} {t('logements.kpi_per_1000')}</p>
           </div>
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-400 uppercase tracking-wide">Très sociaux (PLAI)</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">{t('logements.kpi_very_social')}</p>
             <p className="text-2xl font-bold text-blue-400 mt-1">{formatNumber(kpiStats.totalPLAI)}</p>
-            <p className="text-xs text-slate-400 mt-1">{kpiStats.totalLogements > 0 ? ((kpiStats.totalPLAI / kpiStats.totalLogements) * 100).toFixed(0) : 0}% du total</p>
+            <p className="text-xs text-slate-400 mt-1">{kpiStats.totalLogements > 0 ? ((kpiStats.totalPLAI / kpiStats.totalLogements) * 100).toFixed(0) : 0}{t('logements.kpi_pct_total')}</p>
           </div>
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-400 uppercase tracking-wide">Sociaux (PLUS)</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">{t('logements.kpi_social')}</p>
             <p className="text-2xl font-bold text-cyan-400 mt-1">{formatNumber(kpiStats.totalPLUS)}</p>
-            <p className="text-xs text-slate-400 mt-1">{kpiStats.totalLogements > 0 ? ((kpiStats.totalPLUS / kpiStats.totalLogements) * 100).toFixed(0) : 0}% du total</p>
+            <p className="text-xs text-slate-400 mt-1">{kpiStats.totalLogements > 0 ? ((kpiStats.totalPLUS / kpiStats.totalLogements) * 100).toFixed(0) : 0}{t('logements.kpi_pct_total')}</p>
           </div>
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-400 uppercase tracking-wide">Intermédiaires (PLS)</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">{t('logements.kpi_intermediate')}</p>
             <p className="text-2xl font-bold text-violet-400 mt-1">{formatNumber(kpiStats.totalPLS)}</p>
-            <p className="text-xs text-slate-400 mt-1">{kpiStats.totalLogements > 0 ? ((kpiStats.totalPLS / kpiStats.totalLogements) * 100).toFixed(0) : 0}% du total</p>
+            <p className="text-xs text-slate-400 mt-1">{kpiStats.totalLogements > 0 ? ((kpiStats.totalPLS / kpiStats.totalLogements) * 100).toFixed(0) : 0}{t('logements.kpi_pct_total')}</p>
           </div>
         </div>
       }
       exportBar={
         <ExportBar
           csvData={logements as unknown as Record<string, unknown>[]}
-          csvColumns={CSV_COLUMNS}
+          csvColumns={getCsvColumns(t)}
           filename={`logements_sociaux_${selectedYear}`}
         />
       }

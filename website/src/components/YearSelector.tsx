@@ -9,6 +9,7 @@
  */
 
 import { useTrack } from '@/lib/analyticsContext';
+import { useT } from '@/lib/localeContext';
 
 interface YearSelectorProps {
   years: number[];
@@ -18,6 +19,7 @@ interface YearSelectorProps {
 
 export default function YearSelector({ years, selectedYear, onYearChange }: YearSelectorProps) {
   const track = useTrack();
+  const t = useT();
 
   const handleYearChange = (newYear: number) => {
     if (newYear !== selectedYear) {
@@ -29,7 +31,7 @@ export default function YearSelector({ years, selectedYear, onYearChange }: Year
   return (
     <div className="flex items-center gap-2">
       <label htmlFor="year-select" className="text-xs text-slate-400 hidden sm:inline">
-        Année :
+        {t('common.year')} :
       </label>
       <div className="flex items-center bg-slate-800 rounded-lg border border-slate-700 p-0.5">
         <select
@@ -60,7 +62,7 @@ export default function YearSelector({ years, selectedYear, onYearChange }: Year
           }}
           disabled={years.indexOf(selectedYear) === years.length - 1}
           className="p-1.5 rounded-md hover:bg-slate-700/50 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-          title="Année précédente"
+          title={t('common.year_prev_aria')}
         >
           <svg className="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -73,7 +75,7 @@ export default function YearSelector({ years, selectedYear, onYearChange }: Year
           }}
           disabled={years.indexOf(selectedYear) === 0}
           className="p-1.5 rounded-md hover:bg-slate-700/50 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-          title="Année suivante"
+          title={t('common.year_next_aria')}
         >
           <svg className="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

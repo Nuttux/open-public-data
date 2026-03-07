@@ -10,8 +10,9 @@
  * - Recherche textuelle
  */
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { useTrack } from '@/lib/analyticsContext';
+import { useT } from '@/lib/localeContext';
 
 /**
  * État des filtres
@@ -48,12 +49,12 @@ export const DEFAULT_FILTERS: SubventionFilters = {
  * max = 0 signifie "pas de limite"
  */
 export const MONTANT_RANGES = [
-  { min: 0, max: 0, label: 'Tous les montants' },
-  { min: 0, max: 100000, label: 'Moins de 100 k€' },
-  { min: 100000, max: 1000000, label: '100 k€ à 1 M€' },
-  { min: 1000000, max: 10000000, label: '1 M€ à 10 M€' },
-  { min: 10000000, max: 100000000, label: '10 M€ à 100 M€' },
-  { min: 100000000, max: 0, label: 'Plus de 100 M€' },
+  { min: 0, max: 0, labelKey: 'subventions.all_amounts' },
+  { min: 0, max: 100000, labelKey: 'subventions.amount_lt_100k' },
+  { min: 100000, max: 1000000, labelKey: 'subventions.amount_100k_1m' },
+  { min: 1000000, max: 10000000, labelKey: 'subventions.amount_1m_10m' },
+  { min: 10000000, max: 100000000, labelKey: 'subventions.amount_10m_100m' },
+  { min: 100000000, max: 0, labelKey: 'subventions.amount_gt_100m' },
 ];
 
 /**
@@ -77,13 +78,13 @@ export const NATURE_TO_TYPE: Record<string, string> = {
 /**
  * Labels pour les types d'organismes
  */
-export const TYPE_ORGANISME_LABELS: Record<string, string> = {
-  'association': 'Associations',
-  'public': 'Établissements publics',
-  'entreprise': 'Entreprises',
-  'personne_physique': 'Personnes physiques',
-  'prive_autre': 'Autres privés',
-  'autre': 'Autres',
+export const TYPE_ORGANISME_KEYS: Record<string, string> = {
+  'association': 'subventions.org.associations',
+  'public': 'subventions.org.public',
+  'entreprise': 'subventions.org.companies',
+  'personne_physique': 'subventions.org.individuals',
+  'prive_autre': 'subventions.org.other_private',
+  'autre': 'subventions.org.other',
 };
 
 interface SubventionsFiltersProps {
@@ -110,6 +111,7 @@ export default function SubventionsFilters({
 }: SubventionsFiltersProps) {
   const [isExpanded, setIsExpanded] = useState(true);
   const track = useTrack();
+  const t = useT();
 
   /**
    * Mise à jour d'un filtre
@@ -163,7 +165,7 @@ export default function SubventionsFilters({
         className="w-full flex items-center justify-between px-4 py-3 hover:bg-slate-700/30 transition-colors"
       >
         <div className="flex items-center gap-2">
-          <span className="font-medium text-slate-100">Filtres</span>
+          <span className="font-medium text-slate-100">{t('common.filters')}</span>
           {activeFiltersCount > 0 && (
             <span className="px-2 py-0.5 text-xs font-medium rounded-full bg-purple-500/20 text-purple-300">
               {activeFiltersCount}
@@ -180,13 +182,13 @@ export default function SubventionsFilters({
           {/* Recherche */}
           <div>
             <label className="block text-xs font-medium text-slate-300 mb-1.5">
-              Rechercher un bénéficiaire
+              {t('subventions.search')}
             </label>
             <input
               type="text"
               value={filters.search}
               onChange={(e) => updateFilter('search', e.target.value)}
-              placeholder="Nom, SIRET..."
+              placeholder={t('subventions.search_placeholder')}
               className="w-full px-3 py-2 bg-slate-900/50 border border-slate-700 rounded-lg text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-purple-500 transition-colors"
             />
           </div>
@@ -194,10 +196,10 @@ export default function SubventionsFilters({
           {/* Types d'organismes */}
           <div>
             <label className="block text-xs font-medium text-slate-300 mb-2">
-              Type d'organisme
+              {t('subventions.org_type')}
             </label>
             <div className="flex flex-wrap gap-2">
-              {Object.entries(TYPE_ORGANISME_LABELS).map(([type, label]) => (
+              {Object.entries(TYPE_ORGANISME_KEYS).map(([type, labelKey]) => (
                 <button
                   key={type}
                   onClick={() => toggleTypeOrganisme(type)}
@@ -209,7 +211,7 @@ export default function SubventionsFilters({
                     }
                   `}
                 >
-                  {label}
+                  {t(labelKey)}
                 </button>
               ))}
             </div>
@@ -219,7 +221,7 @@ export default function SubventionsFilters({
           {availableDirections.length > 0 && (
             <div>
               <label className="block text-xs font-medium text-slate-300 mb-1.5">
-                Direction
+                {t('subventions.direction')}
               </label>
               <select
                 value={filters.directions.length === 1 ? filters.directions[0] : ''}
@@ -229,7 +231,7 @@ export default function SubventionsFilters({
                 }}
                 className="w-full px-3 py-2 bg-slate-900/50 border border-slate-700 rounded-lg text-sm text-slate-100 focus:outline-none focus:border-purple-500 transition-colors"
               >
-                <option value="">Toutes les directions</option>
+                <option value="">{t('subventions.all_directions')}</option>
                 {availableDirections.map(dir => (
                   <option key={dir} value={dir}>{dir}</option>
                 ))}
@@ -240,7 +242,7 @@ export default function SubventionsFilters({
           {/* Plage de montant */}
           <div>
             <label className="block text-xs font-medium text-slate-300 mb-1.5">
-              Plage de montant
+              {t('subventions.amount_range')}
             </label>
             <select
               value={`${filters.montantMin}-${filters.montantMax}`}
@@ -255,7 +257,7 @@ export default function SubventionsFilters({
                   key={`${range.min}-${range.max}`} 
                   value={`${range.min}-${range.max}`}
                 >
-                  {range.label}
+                  {t(range.labelKey)}
                 </option>
               ))}
             </select>
@@ -265,7 +267,7 @@ export default function SubventionsFilters({
           {filters.thematique && (
             <div>
               <label className="block text-xs font-medium text-slate-300 mb-1.5">
-                Thématique
+                {t('subventions.thematique')}
               </label>
               <div className="flex items-center gap-2">
                 <span className="px-3 py-1.5 text-sm font-medium rounded-full bg-purple-500/20 border border-purple-500/50 text-purple-300">
@@ -288,7 +290,7 @@ export default function SubventionsFilters({
               disabled={activeFiltersCount === 0}
               className="w-full px-3 py-2 text-sm font-medium text-slate-300 hover:text-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
-              Réinitialiser les filtres
+              {t('common.reset_filters')}
             </button>
           </div>
 
@@ -296,10 +298,10 @@ export default function SubventionsFilters({
           {stats && (
             <div className="pt-2 border-t border-slate-700/50 text-xs text-slate-400 space-y-0.5">
               <p className="font-medium text-slate-400">
-                {stats.filtered.toLocaleString('fr-FR')} affichés
+                {stats.filtered.toLocaleString('fr-FR')} {t('common.displayed')}
               </p>
               <p>
-                sur top {stats.total.toLocaleString('fr-FR')} bénéficiaires
+                {t('common.of')} {t('chart.top')} {stats.total.toLocaleString('fr-FR')} {t('subventions.top_beneficiaries')}
               </p>
             </div>
           )}

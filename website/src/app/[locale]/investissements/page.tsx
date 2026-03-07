@@ -75,7 +75,7 @@ function InvestissementsPageInner() {
         }
       } catch (err) {
         console.error('Error loading index:', err);
-        setError('Erreur lors du chargement des données');
+        setError(t('common.error_loading'));
       } finally {
         setIsLoadingIndex(false);
       }
@@ -92,7 +92,7 @@ function InvestissementsPageInner() {
         setProjets(await loadAutorisationsForYear(selectedYear));
       } catch (err) {
         console.error(`Error loading data for ${selectedYear}:`, err);
-        setError(`Données ${selectedYear} non disponibles`);
+        setError(t('common.error_data_year').replace('{year}', String(selectedYear)));
         setProjets([]);
       } finally {
         setIsLoadingData(false);

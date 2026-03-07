@@ -14,18 +14,7 @@ import SubventionsTable, { type Beneficiaire } from '@/components/SubventionsTab
 import { type SubventionFilters, DEFAULT_FILTERS } from '@/components/SubventionsFilters';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import type { CsvColumn } from '@/lib/export';
-
-const CSV_COLUMNS: CsvColumn<Record<string, unknown>>[] = [
-  { key: 'annee', label: 'Année' },
-  { key: 'beneficiaire', label: 'Bénéficiaire' },
-  { key: 'nature_juridique', label: 'Nature juridique' },
-  { key: 'direction', label: 'Direction' },
-  { key: 'thematique', label: 'Thématique' },
-  { key: 'montant_total', label: 'Montant total (€)' },
-  { key: 'nb_subventions', label: 'Nb subventions' },
-  { key: 'objet_principal', label: 'Objet principal' },
-  { key: 'siret', label: 'SIRET' },
-];
+import { useT } from '@/lib/localeContext';
 
 // ─── Constants ───────────────────────────────────────────────────────────────
 
@@ -44,22 +33,22 @@ const NATURE_TO_TYPE: Record<string, string> = {
   'Autres': 'autre',
 };
 
-const TYPE_LABELS: Record<string, string> = {
-  'association': 'Associations',
-  'public': 'Établissements publics',
-  'entreprise': 'Entreprises',
-  'personne_physique': 'Personnes physiques',
-  'prive_autre': 'Autres privés',
-  'autre': 'Autres',
+const TYPE_LABEL_KEYS: Record<string, string> = {
+  'association': 'subventions.explorer.type.associations',
+  'public': 'subventions.explorer.type.public',
+  'entreprise': 'subventions.explorer.type.entreprises',
+  'personne_physique': 'subventions.explorer.type.personnes_physiques',
+  'prive_autre': 'subventions.explorer.type.autres_prives',
+  'autre': 'subventions.explorer.type.autres',
 };
 
-const MONTANT_RANGES = [
-  { min: 0, max: 0, label: 'Tous les montants' },
-  { min: 0, max: 100000, label: 'Moins de 100 k€' },
-  { min: 100000, max: 1000000, label: '100 k€ à 1 M€' },
-  { min: 1000000, max: 10000000, label: '1 M€ à 10 M€' },
-  { min: 10000000, max: 100000000, label: '10 M€ à 100 M€' },
-  { min: 100000000, max: 0, label: 'Plus de 100 M€' },
+const MONTANT_RANGE_DEFS = [
+  { min: 0, max: 0, key: 'subventions.explorer.all_amounts' },
+  { min: 0, max: 100000, key: 'subventions.explorer.lt_100k' },
+  { min: 100000, max: 1000000, key: 'subventions.explorer.100k_1m' },
+  { min: 1000000, max: 10000000, key: 'subventions.explorer.1m_10m' },
+  { min: 10000000, max: 100000000, key: 'subventions.explorer.10m_100m' },
+  { min: 100000000, max: 0, key: 'subventions.explorer.gt_100m' },
 ];
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -79,6 +68,7 @@ function FilterPanel({
   availableDirections: string[]; beneficiaires: Beneficiaire[];
   activeFilterCount: number; onReset: () => void; layout: 'sidebar' | 'inline';
 }) {
+  const t = useT();
   const isVertical = layout === 'sidebar';
 
   const thematiques = useMemo(() => {
@@ -89,28 +79,28 @@ function FilterPanel({
   return (
     <div className={isVertical ? 'space-y-4' : 'grid grid-cols-1 sm:grid-cols-3 gap-4'}>
       <div className={isVertical ? 'bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4' : ''}>
-        <label className="block text-xs font-medium text-slate-400 mb-1.5">Rechercher</label>
+        <label className="block text-xs font-medium text-slate-400 mb-1.5">{t('subventions.explorer.search_label')}</label>
         <input
           type="text" value={filters.search}
           onChange={e => onFiltersChange({ ...filters, search: e.target.value })}
-          placeholder="Nom, SIRET..."
+          placeholder={t('subventions.explorer.placeholder')}
           className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-purple-500"
         />
       </div>
 
       <div className={isVertical ? 'bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4' : ''}>
-        <label className="block text-xs font-medium text-slate-400 mb-2">Type d&apos;organisme</label>
+        <label className="block text-xs font-medium text-slate-400 mb-2">{t('subventions.explorer.type_organisme')}</label>
         <div className={isVertical ? 'space-y-1.5' : 'flex flex-wrap gap-1.5'}>
-          {Object.entries(TYPE_LABELS).map(([type, label]) => {
+          {Object.entries(TYPE_LABEL_KEYS).map(([type, labelKey]) => {
             const isSelected = filters.typesOrganisme.includes(type);
             return (
               <button key={type}
                 onClick={() => {
-                  const updated = isSelected ? filters.typesOrganisme.filter(t => t !== type) : [...filters.typesOrganisme, type];
+                  const updated = isSelected ? filters.typesOrganisme.filter(tp => tp !== type) : [...filters.typesOrganisme, type];
                   onFiltersChange({ ...filters, typesOrganisme: updated });
                 }}
                 className={`${isVertical ? 'w-full flex items-center justify-between px-3 py-2' : 'px-2 py-1'} rounded-md text-${isVertical ? 'sm' : '[11px]'} font-medium transition-all ${isSelected ? 'bg-purple-600/20 text-purple-400 border border-purple-500/30' : 'bg-slate-900/30 text-slate-400 hover:bg-slate-900/50 border border-transparent'}`}
-              ><span>{label}</span></button>
+              ><span>{t(labelKey)}</span></button>
             );
           })}
         </div>
@@ -119,36 +109,36 @@ function FilterPanel({
       <div className={isVertical ? 'space-y-4' : ''}>
         {availableDirections.length > 0 && (
           <div className={isVertical ? 'bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4' : ''}>
-            <label className="block text-xs font-medium text-slate-400 mb-1.5">Direction</label>
+            <label className="block text-xs font-medium text-slate-400 mb-1.5">{t('subventions.explorer.direction')}</label>
             <select value={filters.directions.length === 1 ? filters.directions[0] : ''}
               onChange={e => onFiltersChange({ ...filters, directions: e.target.value ? [e.target.value] : [] })}
               className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-purple-500"
             >
-              <option value="">Toutes les directions</option>
+              <option value="">{t('subventions.explorer.all_directions')}</option>
               {availableDirections.map(dir => <option key={dir} value={dir}>{dir}</option>)}
             </select>
           </div>
         )}
 
         <div className={isVertical ? 'bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4' : 'mt-3'}>
-          <label className="block text-xs font-medium text-slate-400 mb-1.5">Montant</label>
+          <label className="block text-xs font-medium text-slate-400 mb-1.5">{t('subventions.explorer.montant')}</label>
           <select value={`${filters.montantMin}-${filters.montantMax}`}
             onChange={e => { const [min, max] = e.target.value.split('-').map(Number); onFiltersChange({ ...filters, montantMin: min, montantMax: max }); }}
             className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-purple-500"
           >
-            {MONTANT_RANGES.map(r => <option key={`${r.min}-${r.max}`} value={`${r.min}-${r.max}`}>{r.label}</option>)}
+            {MONTANT_RANGE_DEFS.map(r => <option key={`${r.min}-${r.max}`} value={`${r.min}-${r.max}`}>{t(r.key)}</option>)}
           </select>
         </div>
 
         {isVertical && (
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <label className="block text-xs font-medium text-slate-400 mb-2">Thématique</label>
+            <label className="block text-xs font-medium text-slate-400 mb-2">{t('subventions.explorer.thematique')}</label>
             <select value={filters.thematique || ''}
               onChange={e => onFiltersChange({ ...filters, thematique: e.target.value || null })}
               className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-purple-500"
             >
-              <option value="">Toutes les thématiques</option>
-              {thematiques.map(t => <option key={t} value={t}>{t}</option>)}
+              <option value="">{t('subventions.explorer.all_thematiques')}</option>
+              {thematiques.map(th => <option key={th} value={th}>{th}</option>)}
             </select>
           </div>
         )}
@@ -157,7 +147,7 @@ function FilterPanel({
       {activeFilterCount > 0 && (
         <div className={isVertical ? '' : 'sm:col-span-3 flex justify-end pt-2 border-t border-slate-700/50'}>
           <button onClick={onReset} className="text-xs text-slate-500 hover:text-slate-300 transition-colors">
-            Réinitialiser les filtres ({activeFilterCount})
+            {t('subventions.explorer.reset_filters')} ({activeFilterCount})
           </button>
         </div>
       )}
@@ -170,7 +160,20 @@ function FilterPanel({
 export default function SubventionsExplorerTab({
   beneficiaires, availableDirections, isLoading,
 }: SubventionsExplorerTabProps) {
+  const t = useT();
   const [filters, setFilters] = useState<SubventionFilters>(DEFAULT_FILTERS);
+
+  const csvColumns: CsvColumn<Record<string, unknown>>[] = useMemo(() => [
+    { key: 'annee', label: t('csv.year') },
+    { key: 'beneficiaire', label: t('csv.beneficiaire') },
+    { key: 'nature_juridique', label: t('csv.nature_juridique') },
+    { key: 'direction', label: t('csv.direction') },
+    { key: 'thematique', label: t('csv.thematique') },
+    { key: 'montant_total', label: t('csv.montant_total') },
+    { key: 'nb_subventions', label: t('csv.nb_subventions') },
+    { key: 'objet_principal', label: t('csv.objet_principal') },
+    { key: 'siret', label: t('csv.siret') },
+  ], [t]);
 
   const activeFilterCount = useMemo(() => {
     let c = 0;
@@ -206,10 +209,10 @@ export default function SubventionsExplorerTab({
       theme="purple"
       isLoading={isLoading}
       activeFilterCount={activeFilterCount}
-      filterLabel="les bénéficiaires"
+      filterLabel={t('subventions.explorer.filter_label')}
       summaryTitle={
         <>
-          {formatNumber(filteredBenefs.length)} bénéficiaires
+          {formatNumber(filteredBenefs.length)} {t('subventions.explorer.beneficiaires')}
           <span className="text-sm font-normal text-slate-400 ml-2">({formatEuroCompact(filteredMontant)})</span>
         </>
       }
@@ -217,7 +220,7 @@ export default function SubventionsExplorerTab({
       exportBar={
         <ExportBar
           csvData={filteredBenefs as unknown as Record<string, unknown>[]}
-          csvColumns={CSV_COLUMNS}
+          csvColumns={csvColumns}
           filename="subventions_filtrees"
         />
       }

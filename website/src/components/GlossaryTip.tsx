@@ -120,7 +120,7 @@ export default function GlossaryTip({ term }: GlossaryTipProps) {
         onMouseLeave={hideTooltip}
         onFocus={showTooltip}
         onBlur={hideTooltip}
-        aria-label={`Définition : ${definition.label}`}
+        aria-label={`${t('glossary.definition_aria')} ${definition.label}`}
         className="inline-flex items-center align-middle ml-1 cursor-help focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 rounded-full"
       >
         {/* Icône info (?) */}

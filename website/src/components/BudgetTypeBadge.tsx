@@ -10,28 +10,13 @@
  */
 
 import type { BudgetType } from '@/lib/formatters';
+import { useT } from '@/lib/localeContext';
 
-/** Configuration visuelle pour chaque type de budget */
-const BADGE_CONFIG: Record<BudgetType, {
-  label: string;
-  classes: string;
-  tooltip: string;
-}> = {
-  execute: {
-    label: 'Réel',
-    classes: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
-    tooltip: 'Chiffres réels : ce qui a vraiment été dépensé et encaissé',
-  },
-  vote: {
-    label: 'Prévisionnel',
-    classes: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
-    tooltip: 'Budget prévisionnel voté par le Conseil de Paris — les montants définitifs seront connus après exécution',
-  },
-  estime: {
-    label: 'Estimé',
-    classes: 'bg-slate-500/20 text-slate-400 border-slate-500/30',
-    tooltip: 'Estimation basée sur les taux de réalisation des années précédentes',
-  },
+/** Configuration visuelle pour chaque type de budget (classes only, labels come from i18n) */
+const BADGE_CLASSES: Record<BudgetType, string> = {
+  execute: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
+  vote: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
+  estime: 'bg-slate-500/20 text-slate-400 border-slate-500/30',
 };
 
 interface BudgetTypeBadgeProps {
@@ -43,19 +28,31 @@ interface BudgetTypeBadgeProps {
 }
 
 export default function BudgetTypeBadge({ type, compact = false, className = '' }: BudgetTypeBadgeProps) {
-  const config = BADGE_CONFIG[type];
+  const t = useT();
+
+  const labels: Record<BudgetType, string> = {
+    execute: t('budget.type.real'),
+    vote: t('budget.type.forecast'),
+    estime: t('budget.type.estimated'),
+  };
+
+  const tooltips: Record<BudgetType, string> = {
+    execute: t('budget.type.real_desc'),
+    vote: t('budget.type.forecast_desc'),
+    estime: t('budget.type.estimated_desc'),
+  };
 
   return (
     <span
       className={`
         inline-flex items-center gap-1 rounded-full border font-medium
         ${compact ? 'px-1.5 py-0.5 text-[10px]' : 'px-2.5 py-1 text-xs'}
-        ${config.classes}
+        ${BADGE_CLASSES[type]}
         ${className}
       `}
-      title={config.tooltip}
+      title={tooltips[type]}
     >
-      {config.label}
+      {labels[type]}
     </span>
   );
 }

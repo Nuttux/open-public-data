@@ -16,6 +16,7 @@
 
 import { useMemo } from 'react';
 import { formatEuroCompact } from '@/lib/formatters';
+import { useT } from '@/lib/localeContext';
 import GlossaryTip from './GlossaryTip';
 import type { YearlyBudget } from './EvolutionChart';
 
@@ -62,6 +63,7 @@ function VariationBadge({
 }
 
 export default function YoyCards({ currentYear, previousYear }: YoyCardsProps) {
+  const t = useT();
   const variationRecettes = useMemo(() => {
     if (!previousYear) return null;
     return calculateVariation(currentYear.recettes, previousYear.recettes);
@@ -89,7 +91,7 @@ export default function YoyCards({ currentYear, previousYear }: YoyCardsProps) {
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
         <div className="flex items-center justify-between mb-2 gap-2">
           <span className="text-xs text-slate-500 uppercase tracking-wide whitespace-nowrap">
-            Recettes {currentYear.year} <GlossaryTip term="recettes_propres" />
+            {t('yoy.revenue')} {currentYear.year} <GlossaryTip term="recettes_propres" />
           </span>
           {vsLabel && (
             <span className="text-xs text-slate-500 whitespace-nowrap flex-shrink-0">{vsLabel}</span>
@@ -109,7 +111,7 @@ export default function YoyCards({ currentYear, previousYear }: YoyCardsProps) {
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
         <div className="flex items-center justify-between mb-2 gap-2">
           <span className="text-xs text-slate-500 uppercase tracking-wide whitespace-nowrap">
-            Dépenses {currentYear.year} <GlossaryTip term="depenses" />
+            {t('yoy.expenditure')} {currentYear.year} <GlossaryTip term="depenses" />
           </span>
           {vsLabel && (
             <span className="text-xs text-slate-500 whitespace-nowrap flex-shrink-0">{vsLabel}</span>
@@ -131,7 +133,7 @@ export default function YoyCards({ currentYear, previousYear }: YoyCardsProps) {
           <span className={`text-xs uppercase tracking-wide whitespace-nowrap ${
             currentYear.solde >= 0 ? 'text-emerald-400' : 'text-red-400'
           }`}>
-            {currentYear.solde >= 0 ? 'Excédent' : 'Déficit'} {currentYear.year} <GlossaryTip term="surplus_deficit" />
+            {currentYear.solde >= 0 ? t('chart.surplus') : t('chart.deficit')} {currentYear.year} <GlossaryTip term="surplus_deficit" />
           </span>
           {vsLabel && (
             <span className="text-xs text-slate-500 whitespace-nowrap flex-shrink-0">{vsLabel}</span>

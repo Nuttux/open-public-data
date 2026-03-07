@@ -15,14 +15,17 @@ import { formatNumber } from '@/lib/formatters';
 import { PARIS_POPULATION_TOTAL } from '@/lib/constants/arrondissements';
 import { PALETTE } from '@/lib/colors';
 import { BREAKDOWN_ICONS } from '@/lib/icons';
+import { useT } from '@/lib/localeContext';
 
 // ─── Config ──────────────────────────────────────────────────────────────────
 
-const BREAKDOWNS: BreakdownOption[] = [
-  { id: 'type', label: 'Type', icon: BREAKDOWN_ICONS.type },
-  { id: 'bailleur', label: 'Bailleur', icon: BREAKDOWN_ICONS.bailleur },
-  { id: 'arrondissement', label: 'Arrondissement', icon: BREAKDOWN_ICONS.arrondissement },
-];
+function getBreakdowns(t: (k: string) => string): BreakdownOption[] {
+  return [
+    { id: 'type', label: t('logements.breakdown.type'), icon: BREAKDOWN_ICONS.type },
+    { id: 'bailleur', label: t('logements.breakdown.landlord'), icon: BREAKDOWN_ICONS.bailleur },
+    { id: 'arrondissement', label: t('logements.breakdown.arrondissement'), icon: BREAKDOWN_ICONS.arrondissement },
+  ];
+}
 
 const TYPE_COLORS: Record<string, string> = {
   'PLAI (très social)': PALETTE.blue,
@@ -108,50 +111,51 @@ function aggregateLogements(allLogements: LogementSocial[]): TendancesYear[] {
 interface LogementsTendancesTabProps { allLogements: LogementSocial[]; }
 
 export default function LogementsTendancesTab({ allLogements }: LogementsTendancesTabProps) {
+  const t = useT();
   const data = useMemo(() => aggregateLogements(allLogements), [allLogements]);
 
   return (
     <TendancesTab
       data={data}
-      breakdowns={BREAKDOWNS}
+      breakdowns={getBreakdowns(t)}
       getGroupColor={getGroupColor}
       groupLimit={groupLimit}
       theme="emerald"
       formatValue={formatNumber}
-      tooltipHeader={(year, total) => `${year} — ${formatNumber(total)} logements`}
+      tooltipHeader={(year, total) => `${year} — ${formatNumber(total)} ${t('logements.format_value_suffix').trim()}`}
       formatVariationDiff={(diff) => `${diff >= 0 ? '+' : ''}${formatNumber(diff)}`}
       showVariationPct={false}
-      formatVariationTooltipValue={(v) => `${formatNumber(v)} logements`}
-      title="Tendances des logements sociaux"
-      kpi1Label={(year) => `Production ${year}`}
-      kpi1Sub={(year) => `${((year.total / PARIS_POPULATION_TOTAL) * 1000).toFixed(1)} pour 1 000 hab`}
+      formatVariationTooltipValue={(v) => `${formatNumber(v)} ${t('logements.format_value_suffix').trim()}`}
+      title={t('logements.tendances_title')}
+      kpi1Label={(year) => `${t('logements.tendances_kpi1_prefix')} ${year}`}
+      kpi1Sub={(year) => `${((year.total / PARIS_POPULATION_TOTAL) * 1000).toFixed(1)} ${t('logements.kpi_per_1000')}`}
       kpi3={(ctx) => {
         const totalCumul = ctx.filteredYears.reduce((s, y) => s + y.total, 0);
         return {
-          label: `Cumul ${ctx.earliest.year}→${ctx.latest.year}`,
+          label: `${t('logements.tendances_kpi3_prefix')} ${ctx.earliest.year}→${ctx.latest.year}`,
           value: totalCumul >= 1000 ? `${(totalCumul / 1000).toFixed(0)}k` : formatNumber(totalCumul),
-          sub: 'logements financés',
+          sub: t('logements.tendances_kpi3_sub'),
         };
       }}
       kpi4={(ctx) => {
         const avg = ctx.filteredYears.reduce((s, y) => s + y.total, 0) / ctx.filteredYears.length;
         return {
-          label: 'Moyenne annuelle',
+          label: t('logements.tendances_kpi4_label'),
           value: formatNumber(Math.round(avg)),
-          sub: 'logements / an',
+          sub: t('logements.tendances_kpi4_sub'),
         };
       }}
-      chartTitle={(dim) => `Production annuelle par ${dim}`}
-      variationTitle={(dim) => `Évolution par ${dim}`}
-      variationSubtitle={(dim) => `Quels ${dim}s ont le plus évolué`}
+      chartTitle={(dim) => t('logements.tendances_chart_title').replace('{dim}', dim)}
+      variationTitle={(dim) => t('logements.tendances_variation_title').replace('{dim}', dim)}
+      variationSubtitle={(dim) => t('logements.tendances_variation_sub').replace('{dim}', dim)}
       yAxisFormatter={(v: number) => formatNumber(v)}
       csvFilename="logements_tendances"
-      sourceNote="Source : Open Data Paris — Logements sociaux financés à Paris."
+      sourceNote={t('logements.tendances_source')}
       qualityNotes={
         <ul className="text-[11px] text-slate-500 space-y-1.5 list-disc list-inside">
-          <li>Données issues du jeu <strong className="text-slate-400">logements sociaux financés à Paris</strong> (OpenData Paris), couvrant 2010-2024.</li>
-          <li>Chaque programme représente un financement validé ; la livraison effective intervient en général 2-4 ans plus tard.</li>
-          <li>La répartition PLAI/PLUS/PLS peut varier selon les quotas réglementaires (loi SRU, PLU).</li>
+          <li dangerouslySetInnerHTML={{ __html: t('logements.tendances_quality_1') }} />
+          <li>{t('logements.tendances_quality_2')}</li>
+          <li>{t('logements.tendances_quality_3')}</li>
         </ul>
       }
     />

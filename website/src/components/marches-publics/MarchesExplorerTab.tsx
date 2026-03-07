@@ -14,19 +14,22 @@ import { type MarchesFilters, DEFAULT_MARCHES_FILTERS, MONTANT_RANGES, NATURE_LA
 import ExportBar from '@/components/shared/ExportBar';
 import type { CsvColumn } from '@/lib/export';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
+import { useT } from '@/lib/localeContext';
 
-const CSV_COLUMNS: CsvColumn<Record<string, unknown>>[] = [
-  { key: 'numero_marche', label: 'N° marché' },
-  { key: 'objet', label: 'Objet' },
-  { key: 'nature', label: 'Nature' },
-  { key: 'categorie_libelle', label: 'Catégorie' },
-  { key: 'fournisseur_nom', label: 'Fournisseur' },
-  { key: 'fournisseur_siret', label: 'SIRET fournisseur' },
-  { key: 'montant_max', label: 'Enveloppe max (€)' },
-  { key: 'date_notification', label: 'Date notification' },
-  { key: 'duree_jours', label: 'Durée (jours)' },
-  { key: 'is_multiattributaire', label: 'Multi-attributaire', format: (v) => v ? 'Oui' : 'Non' },
-];
+function getCsvColumns(t: (key: string) => string): CsvColumn<Record<string, unknown>>[] {
+  return [
+    { key: 'numero_marche', label: t('marches.csv.numero') },
+    { key: 'objet', label: t('marches.csv.objet') },
+    { key: 'nature', label: t('marches.csv.nature') },
+    { key: 'categorie_libelle', label: t('marches.csv.categorie') },
+    { key: 'fournisseur_nom', label: t('marches.csv.fournisseur') },
+    { key: 'fournisseur_siret', label: t('marches.csv.siret') },
+    { key: 'montant_max', label: t('marches.csv.enveloppe') },
+    { key: 'date_notification', label: t('marches.csv.date') },
+    { key: 'duree_jours', label: t('marches.csv.duree') },
+    { key: 'is_multiattributaire', label: t('marches.csv.multi_attr'), format: (v) => v ? t('marches.csv.oui') : t('marches.csv.non') },
+  ];
+}
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -46,21 +49,22 @@ function FilterPanel({
   activeFilterCount: number; onReset: () => void; layout: 'sidebar' | 'inline';
 }) {
   const isVertical = layout === 'sidebar';
+  const t = useT();
 
   return (
     <div className={isVertical ? 'space-y-4' : 'grid grid-cols-1 sm:grid-cols-3 gap-4'}>
       <div className={isVertical ? 'bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-4' : ''}>
-        <label className="block text-xs font-medium text-slate-500 mb-1.5">Rechercher</label>
+        <label className="block text-xs font-medium text-slate-500 mb-1.5">{t('marches.search')}</label>
         <input
           type="text" value={filters.search}
           onChange={e => onFiltersChange({ ...filters, search: e.target.value })}
-          placeholder="Objet, fournisseur, n° marché..."
+          placeholder={t('marches.search_placeholder')}
           className="w-full bg-slate-800/30 border border-slate-700/50 rounded-lg px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-teal-500"
         />
       </div>
 
       <div className={isVertical ? 'bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-4' : ''}>
-        <label className="block text-xs font-medium text-slate-500 mb-2">Nature</label>
+        <label className="block text-xs font-medium text-slate-500 mb-2">{t('marches.filter_nature')}</label>
         <div className={isVertical ? 'space-y-1.5' : 'flex flex-wrap gap-1.5'}>
           {Object.entries(NATURE_LABELS).map(([nature, label]) => {
             const isSelected = filters.natures.includes(nature);
@@ -71,7 +75,7 @@ function FilterPanel({
                   onFiltersChange({ ...filters, natures: updated });
                 }}
                 className={`${isVertical ? 'w-full flex items-center justify-between px-3 py-2' : 'px-2 py-1'} rounded-md text-${isVertical ? 'sm' : '[11px]'} font-medium transition-all ${isSelected ? 'bg-teal-500/20 text-teal-400 border border-teal-500/30' : 'bg-slate-5030 text-slate-500 hover:bg-slate-800/30 border border-transparent'}`}
-              ><span>{label}</span></button>
+              ><span>{t(label)}</span></button>
             );
           })}
         </div>
@@ -80,24 +84,24 @@ function FilterPanel({
       <div className={isVertical ? 'space-y-4' : ''}>
         {availableCategories.length > 0 && (
           <div className={isVertical ? 'bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-4' : ''}>
-            <label className="block text-xs font-medium text-slate-500 mb-1.5">Catégorie d&apos;achat</label>
+            <label className="block text-xs font-medium text-slate-500 mb-1.5">{t('marches.filter_category')}</label>
             <select value={filters.categories.length === 1 ? filters.categories[0] : ''}
               onChange={e => onFiltersChange({ ...filters, categories: e.target.value ? [e.target.value] : [] })}
               className="w-full bg-slate-800/30 border border-slate-700/50 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-teal-500"
             >
-              <option value="">Toutes les catégories</option>
+              <option value="">{t('marches.all_categories')}</option>
               {availableCategories.map(cat => <option key={cat} value={cat}>{cat}</option>)}
             </select>
           </div>
         )}
 
         <div className={isVertical ? 'bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-4' : 'mt-3'}>
-          <label className="block text-xs font-medium text-slate-500 mb-1.5">Montant</label>
+          <label className="block text-xs font-medium text-slate-500 mb-1.5">{t('marches.filter_amount')}</label>
           <select value={`${filters.montantMin}-${filters.montantMax}`}
             onChange={e => { const [min, max] = e.target.value.split('-').map(Number); onFiltersChange({ ...filters, montantMin: min, montantMax: max }); }}
             className="w-full bg-slate-800/30 border border-slate-700/50 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-teal-500"
           >
-            {MONTANT_RANGES.map(r => <option key={`${r.min}-${r.max}`} value={`${r.min}-${r.max}`}>{r.label}</option>)}
+            {MONTANT_RANGES.map(r => <option key={`${r.min}-${r.max}`} value={`${r.min}-${r.max}`}>{t(r.labelKey)}</option>)}
           </select>
         </div>
       </div>
@@ -105,7 +109,7 @@ function FilterPanel({
       {activeFilterCount > 0 && (
         <div className={isVertical ? '' : 'sm:col-span-3 flex justify-end pt-2 border-t border-slate-700/50'}>
           <button onClick={onReset} className="text-xs text-slate-500 hover:text-slate-300 transition-colors">
-            Réinitialiser les filtres ({activeFilterCount})
+            {t('marches.reset_filters')} ({activeFilterCount})
           </button>
         </div>
       )}
@@ -118,6 +122,7 @@ function FilterPanel({
 export default function MarchesExplorerTab({
   marches, availableCategories, isLoading,
 }: MarchesExplorerTabProps) {
+  const t = useT();
   const [filters, setFilters] = useState<MarchesFilters>(DEFAULT_MARCHES_FILTERS);
 
   const activeFilterCount = useMemo(() => {
@@ -159,17 +164,17 @@ export default function MarchesExplorerTab({
     <>
       <div className="bg-teal-900/30 border border-teal-500/30 rounded-lg p-3 mb-6">
         <p className="text-xs text-teal-300/80">
-          Les montants affichés sont des <strong className="text-teal-200">plafonds sur toute la durée du contrat</strong> (souvent 4 ans), pas des dépenses annuelles. Le montant réellement dépensé est généralement inférieur.
+          {t('marches.banner_text')}<strong className="text-teal-200">{t('marches.banner_bold')}</strong>{t('marches.banner_suffix')}
         </p>
       </div>
       <ExplorerTab
       theme="teal"
       isLoading={isLoading}
       activeFilterCount={activeFilterCount}
-      filterLabel="les marchés"
+      filterLabel={t('marches.filter_the')}
       summaryTitle={
         <>
-          {formatNumber(filteredMarches.length)} marchés
+          {formatNumber(filteredMarches.length)} {t('marches.items')}
           <span className="text-sm font-normal text-slate-500 ml-2">({formatEuroCompact(filteredEnveloppe)})</span>
         </>
       }
@@ -177,7 +182,7 @@ export default function MarchesExplorerTab({
       exportBar={
         <ExportBar
           csvData={filteredMarches as unknown as Record<string, unknown>[]}
-          csvColumns={CSV_COLUMNS}
+          csvColumns={getCsvColumns(t)}
           filename="marches_filtres"
         />
       }

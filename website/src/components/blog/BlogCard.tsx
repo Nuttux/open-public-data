@@ -1,5 +1,8 @@
-import Link from "next/link";
+'use client';
+
+import LocaleLink from "@/components/LocaleLink";
 import { BlogPostMeta } from "@/lib/blog";
+import { useLocale } from "@/lib/localeContext";
 
 interface BlogCardProps {
   post: BlogPostMeta;
@@ -9,7 +12,8 @@ interface BlogCardProps {
  * Blog post card for the blog listing page
  */
 export default function BlogCard({ post }: BlogCardProps) {
-  const formattedDate = new Date(post.date).toLocaleDateString("fr-FR", {
+  const { locale } = useLocale();
+  const formattedDate = new Date(post.date).toLocaleDateString(locale === 'en' ? 'en-GB' : 'fr-FR', {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -17,7 +21,7 @@ export default function BlogCard({ post }: BlogCardProps) {
 
   return (
     <article className="group">
-      <Link href={`/blog/${post.slug}`}>
+      <LocaleLink href={`/blog/${post.slug}`}>
         <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-6 transition-all duration-300 hover:border-emerald-500/50 hover:bg-slate-900/80 hover:shadow-lg hover:shadow-emerald-500/5">
           {/* Image placeholder */}
           {post.image && (
@@ -60,7 +64,7 @@ export default function BlogCard({ post }: BlogCardProps) {
             <span>{post.readingTime}</span>
           </div>
         </div>
-      </Link>
+      </LocaleLink>
     </article>
   );
 }

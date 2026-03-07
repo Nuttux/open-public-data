@@ -89,6 +89,19 @@ function truncateIp(ip: string): string {
 }
 
 // ---------------------------------------------------------------------------
+// Locale normalization — strip /fr/ or /en/ prefix for analytics continuity
+// ---------------------------------------------------------------------------
+
+function normalizePagePath(path: string): string {
+  return path.replace(/^\/(fr|en)/, '') || '/';
+}
+
+function extractPageLocale(path: string): string | null {
+  const match = path.match(/^\/(fr|en)\//);
+  return match ? match[1] : null;
+}
+
+// ---------------------------------------------------------------------------
 // Validation
 // ---------------------------------------------------------------------------
 
@@ -188,7 +201,8 @@ export async function POST(request: NextRequest) {
         received_at: now,
         visitor_id: e.visitor_id || null,
         session_id: e.session_id || null,
-        page_path: e.page_path,
+        page_path: normalizePagePath(e.page_path || '/'),
+        page_locale: extractPageLocale(e.page_path || '/'),
         page_tab: e.page_tab || null,
         referrer: e.referrer || null,
         utm_source: e.utm_source || null,

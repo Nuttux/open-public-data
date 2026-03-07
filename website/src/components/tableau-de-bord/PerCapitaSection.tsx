@@ -15,6 +15,7 @@ import { ARRONDISSEMENTS } from '@/lib/constants/arrondissements';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { PALETTE } from '@/lib/colors';
 import { useIsMobile } from '@/lib/hooks/useIsMobile';
+import { useT } from '@/lib/localeContext';
 
 const TOTAL_POPULATION = ARRONDISSEMENTS.reduce((s, a) => s + a.population, 0);
 
@@ -61,6 +62,7 @@ interface ThematiqueRow {
 }
 
 export default function PerCapitaSection({ data }: PerCapitaSectionProps) {
+  const t = useT();
   const isMobile = useIsMobile();
 
   const rows = useMemo<ThematiqueRow[]>(() => {
@@ -86,7 +88,7 @@ export default function PerCapitaSection({ data }: PerCapitaSectionProps) {
   );
   const totalPerDay = totalPerCapita / 365;
 
-  const budgetLabel = data.type_budget === 'vote' ? 'budget voté' : 'budget exécuté';
+  const budgetLabel = data.type_budget === 'vote' ? t('percapita.budget_voted') : t('percapita.budget_executed');
 
   // Horizontal stacked bar chart
   const chartOption = useMemo<EChartsOption>(() => ({
@@ -99,7 +101,7 @@ export default function PerCapitaSection({ data }: PerCapitaSectionProps) {
         const p = params as { name: string };
         const r = rows.find((row) => row.name === p.name);
         if (!r) return '';
-        return `<strong>${r.name}</strong><br/>${formatEuroCompact(r.total)} (${r.pct.toFixed(1)}%)<br/>${formatNumber(Math.round(r.perCapita))} €/hab/an`;
+        return `<strong>${r.name}</strong><br/>${formatEuroCompact(r.total)} (${r.pct.toFixed(1)}%)<br/>${formatNumber(Math.round(r.perCapita))} ${t('percapita.tooltip_per_hab')}`;
       },
     },
     series: [{
@@ -131,25 +133,25 @@ export default function PerCapitaSection({ data }: PerCapitaSectionProps) {
   return (
     <section>
       <h2 className="text-xl sm:text-2xl font-bold text-slate-100 mb-2">
-        À quoi sert le budget de Paris ?
+        {t('percapita.title')}
       </h2>
       <p className="text-sm text-slate-400 mb-1">
-        {data.year} ({budgetLabel}), rapporté à chaque Parisien · Population : {formatNumber(TOTAL_POPULATION)} hab. (INSEE 2023)
+        {t('percapita.subtitle').replace('{year}', String(data.year)).replace('{budgetLabel}', budgetLabel).replace('{pop}', formatNumber(TOTAL_POPULATION))}
       </p>
       <p className="text-xs text-slate-500 mb-6">
-        Financé par la fiscalité locale, les dotations de l&apos;État et l&apos;emprunt
+        {t('percapita.funding_source')}
       </p>
 
       {/* Hero KPI */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 mb-8">
         <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-5">
-          <p className="text-xs text-slate-400 uppercase tracking-wide mb-1">Par habitant / an</p>
+          <p className="text-xs text-slate-400 uppercase tracking-wide mb-1">{t('percapita.per_hab_year')}</p>
           <p className="text-3xl sm:text-4xl font-extrabold text-slate-100">
             {formatNumber(Math.round(totalPerCapita))} €
           </p>
         </div>
         <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-5">
-          <p className="text-xs text-slate-400 uppercase tracking-wide mb-1">Par habitant / jour</p>
+          <p className="text-xs text-slate-400 uppercase tracking-wide mb-1">{t('percapita.per_hab_day')}</p>
           <p className="text-3xl sm:text-4xl font-extrabold text-blue-600">
             ~{totalPerDay.toFixed(1).replace('.', ',')} €
           </p>
@@ -176,10 +178,10 @@ export default function PerCapitaSection({ data }: PerCapitaSectionProps) {
               <p className="text-xs font-medium text-slate-400 truncate">{r.name}</p>
             </div>
             <p className="text-lg font-bold text-slate-100">
-              {formatNumber(Math.round(r.perCapita))} €<span className="text-xs font-normal text-slate-400">/an</span>
+              {formatNumber(Math.round(r.perCapita))} €<span className="text-xs font-normal text-slate-400">{t('percapita.per_year')}</span>
             </p>
             <p className="text-[11px] text-slate-400 mt-0.5">
-              {r.pct.toFixed(1)}% du budget · {r.perDay.toFixed(2).replace('.', ',')} €/jour
+              {r.pct.toFixed(1)}{t('percapita.pct_budget')} · {r.perDay.toFixed(2).replace('.', ',')} {t('percapita.per_day')}
             </p>
           </div>
         ))}

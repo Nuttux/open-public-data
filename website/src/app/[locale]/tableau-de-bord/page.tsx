@@ -86,9 +86,9 @@ function TableauDeBordInner() {
         <ExportBar
           csvData={sankeyData.links as unknown as Record<string, unknown>[]}
           csvColumns={[
-            { key: 'source', label: 'Source' },
-            { key: 'target', label: 'Destination' },
-            { key: 'value', label: 'Montant (€)' },
+            { key: 'source', label: t('common.source') },
+            { key: 'target', label: t('dashboard.csv.destination') },
+            { key: 'value', label: `${t('subventions.col.amount')} (€)` },
           ]}
           filename={`budget_synthese_${selectedYear}`}
         />

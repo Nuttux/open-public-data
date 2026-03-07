@@ -20,6 +20,7 @@ import GlossaryTip from '@/components/GlossaryTip';
 import YearRangeSelector from '@/components/YearRangeSelector';
 import { formatEuroCompact } from '@/lib/formatters';
 import { MISC_ICONS } from '@/lib/icons';
+import { useT } from '@/lib/localeContext';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -52,6 +53,7 @@ interface BilanYearTotals {
 // ─── Main Tab Component ──────────────────────────────────────────────────────
 
 export default function PatrimoineTendancesTab() {
+  const t = useT();
   const [financialData, setFinancialData] = useState<FinancialYearData[]>([]);
   const [rawYears, setRawYears] = useState<EvolutionYear[]>([]);
   const [bilanByYear, setBilanByYear] = useState<Record<number, BilanYearTotals>>({});
@@ -109,7 +111,7 @@ export default function PatrimoineTendancesTab() {
         }
       } catch (err) {
         console.error('Error loading patrimoine tendances:', err);
-        setError('Impossible de charger les données financières.');
+        setError(t('patrimoine.tendances.error_load'));
       } finally {
         setIsLoading(false);
       }
@@ -257,7 +259,7 @@ export default function PatrimoineTendancesTab() {
       <div className="flex items-center justify-center py-20">
         <div className="text-center">
           <div className="w-12 h-12 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-slate-300">Chargement...</p>
+          <p className="text-slate-300">{t('patrimoine.tendances.loading')}</p>
         </div>
       </div>
     );
@@ -266,7 +268,7 @@ export default function PatrimoineTendancesTab() {
   if (error || rawYears.length === 0) {
     return (
       <div className="flex items-center justify-center py-20">
-        <p className="text-red-400">{error || 'Aucune donnée disponible'}</p>
+        <p className="text-red-400">{error || t('patrimoine.tendances.no_data')}</p>
       </div>
     );
   }
@@ -276,7 +278,7 @@ export default function PatrimoineTendancesTab() {
       {/* Year range selector */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-3">
         <p className="text-sm text-slate-300">
-          Évolution patrimoniale {availableYears[0]}–{availableYears[availableYears.length - 1]}
+          {t('patrimoine.tendances.evolution')} {availableYears[0]}–{availableYears[availableYears.length - 1]}
         </p>
         <YearRangeSelector
           availableYears={availableYears}
@@ -291,13 +293,13 @@ export default function PatrimoineTendancesTab() {
       <ExportBar
         csvData={csvRows}
         csvColumns={[
-          { key: 'year', label: 'Année' },
-          { key: 'epargne_brute', label: 'Épargne brute (€)' },
-          { key: 'emprunts', label: 'Emprunts (€)' },
-          { key: 'remboursement_principal', label: 'Remb. capital (€)' },
-          { key: 'interets_dette', label: 'Intérêts (€)' },
-          { key: 'variation_dette_nette', label: 'Δ Dette nette (€)' },
-          { key: 'dettes_financieres', label: 'Encours dette (€)' },
+          { key: 'year', label: t('patrimoine.tendances.csv.year') },
+          { key: 'epargne_brute', label: t('patrimoine.tendances.csv.epargne') },
+          { key: 'emprunts', label: t('patrimoine.tendances.csv.emprunts') },
+          { key: 'remboursement_principal', label: t('patrimoine.tendances.csv.remb') },
+          { key: 'interets_dette', label: t('patrimoine.tendances.csv.interets') },
+          { key: 'variation_dette_nette', label: t('patrimoine.tendances.csv.delta_dette') },
+          { key: 'dettes_financieres', label: t('patrimoine.tendances.csv.encours') },
         ]}
         filename={`patrimoine_tendances_${startYear}-${endYear}`}
       />
@@ -306,10 +308,10 @@ export default function PatrimoineTendancesTab() {
       {endYearRaw && (
         <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-amber-500/30 p-4 mb-6">
           <h3 className="text-sm font-semibold text-slate-200 mb-3 flex items-center gap-2">
-            Gestion de la dette {endYear}
+            {t('patrimoine.tendances.dette_title')} {endYear}
             {votedYears.has(endYear) && (
               <span className="text-[9px] sm:text-[10px] font-normal text-slate-300 border border-slate-600 rounded px-1 py-0.5">
-                voté *
+                {t('patrimoine.tendances.voted')}
               </span>
             )}
             {startYearRaw && (
@@ -320,7 +322,7 @@ export default function PatrimoineTendancesTab() {
             {/* Emprunts */}
             <div>
               <p className="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide">
-                Emprunts <GlossaryTip term="emprunts" />
+                {t('patrimoine.tendances.emprunts')} <GlossaryTip term="emprunts" />
               </p>
               <p className="text-lg md:text-xl font-bold text-amber-400 mt-1">
                 +{formatEuroCompact(endYearRaw.totals.emprunts)}
@@ -334,7 +336,7 @@ export default function PatrimoineTendancesTab() {
             {/* Remboursement capital */}
             <div>
               <p className="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide">
-                Remb. capital <GlossaryTip term="remboursement_principal" />
+                {t('patrimoine.tendances.remb_capital')} <GlossaryTip term="remboursement_principal" />
               </p>
               <p className="text-lg md:text-xl font-bold text-emerald-400 mt-1">
                 -{formatEuroCompact(endYearRaw.totals.remboursement_principal)}
@@ -348,7 +350,7 @@ export default function PatrimoineTendancesTab() {
             {/* Intérêts */}
             <div>
               <p className="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide">
-                Intérêts <GlossaryTip term="interets_dette" />
+                {t('patrimoine.tendances.interets')} <GlossaryTip term="interets_dette" />
               </p>
               <p className="text-lg md:text-xl font-bold text-red-400 mt-1">
                 -{formatEuroCompact(endYearRaw.totals.interets_dette)}
@@ -362,7 +364,7 @@ export default function PatrimoineTendancesTab() {
             {/* Variation dette nette */}
             <div>
               <p className="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide">
-                Δ Dette nette <GlossaryTip term="variation_dette_nette" />
+                {t('patrimoine.tendances.delta_dette')} <GlossaryTip term="variation_dette_nette" />
               </p>
               <p className={`text-lg md:text-xl font-bold mt-1 ${endYearRaw.totals.variation_dette_nette > 0 ? 'text-red-400' : 'text-emerald-400'}`}>
                 {endYearRaw.totals.variation_dette_nette > 0 ? '+' : ''}{formatEuroCompact(endYearRaw.totals.variation_dette_nette)}
@@ -380,10 +382,10 @@ export default function PatrimoineTendancesTab() {
       {/* Graphique santé financière (plage filtrée) */}
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6 mb-6">
         <h2 className="text-lg font-semibold text-slate-100 mb-2 flex items-center gap-2">
-          Santé Financière
+          {t('patrimoine.tendances.sante_title')}
         </h2>
         <p className="text-sm text-slate-300 mb-4">
-          Épargne brute (capacité d&apos;autofinancement) et Surplus/Déficit (hors emprunts)
+          {t('patrimoine.tendances.sante_desc')}
         </p>
         <FinancialHealthChart data={filteredFinancialData} height={350} />
 
@@ -392,52 +394,52 @@ export default function PatrimoineTendancesTab() {
           <div className="mt-4 pt-4 border-t border-slate-700/50 grid grid-cols-2 sm:grid-cols-4 gap-3">
             <div>
               <p className="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide">
-                Surplus/Déficit {endYear}
+                {t('patrimoine.tendances.surplus_deficit')} {endYear}
               </p>
               <p className={`text-lg md:text-xl font-bold mt-1 ${endYearRaw.totals.surplus_deficit >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
                 {endYearRaw.totals.surplus_deficit >= 0 ? '+' : ''}{formatEuroCompact(endYearRaw.totals.surplus_deficit)}
               </p>
               <p className="text-[10px] text-slate-400 mt-0.5">
                 {endYearRaw.totals.recettes_propres > 0
-                  ? `${((endYearRaw.totals.surplus_deficit / endYearRaw.totals.recettes_propres) * 100).toFixed(1)}% des recettes propres`
+                  ? `${((endYearRaw.totals.surplus_deficit / endYearRaw.totals.recettes_propres) * 100).toFixed(1)}${t('patrimoine.tendances.pct_recettes_propres')}`
                   : '—'}
               </p>
             </div>
             <div>
               <p className="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide">
-                Intérêts de dette {endYear}
+                {t('patrimoine.tendances.interets_dette')} {endYear}
               </p>
               <p className="text-lg md:text-xl font-bold text-red-400 mt-1">
                 {formatEuroCompact(endYearRaw.totals.interets_dette)}
               </p>
               <p className="text-[10px] text-slate-400 mt-0.5">
                 {endYearRaw.sections.fonctionnement.recettes > 0
-                  ? `${((endYearRaw.totals.interets_dette / endYearRaw.sections.fonctionnement.recettes) * 100).toFixed(1)}% des recettes fonct.`
+                  ? `${((endYearRaw.totals.interets_dette / endYearRaw.sections.fonctionnement.recettes) * 100).toFixed(1)}${t('patrimoine.tendances.pct_recettes_fonct')}`
                   : '—'}
               </p>
             </div>
             <div>
               <p className="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide">
-                Épargne brute {endYear}
+                {t('patrimoine.tendances.epargne_brute')} {endYear}
               </p>
               <p className={`text-lg md:text-xl font-bold mt-1 ${endYearRaw.epargne_brute >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
                 {formatEuroCompact(endYearRaw.epargne_brute)}
               </p>
               <p className="text-[10px] text-slate-400 mt-0.5">
                 {endYearRaw.sections.fonctionnement.recettes > 0
-                  ? `${((endYearRaw.epargne_brute / endYearRaw.sections.fonctionnement.recettes) * 100).toFixed(1)}% des recettes fonct.`
+                  ? `${((endYearRaw.epargne_brute / endYearRaw.sections.fonctionnement.recettes) * 100).toFixed(1)}${t('patrimoine.tendances.pct_recettes_fonct')}`
                   : '—'}
               </p>
             </div>
             <div>
               <p className="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide">
-                Recettes propres {endYear}
+                {t('patrimoine.tendances.recettes_propres')} {endYear}
               </p>
               <p className="text-lg md:text-xl font-bold text-slate-100 mt-1">
                 {formatEuroCompact(endYearRaw.totals.recettes_propres)}
               </p>
               <p className="text-[10px] text-slate-400 mt-0.5">
-                base de référence
+                {t('patrimoine.tendances.base_ref')}
               </p>
             </div>
           </div>
@@ -446,11 +448,11 @@ export default function PatrimoineTendancesTab() {
         <div className="mt-4 pt-4 border-t border-slate-700/50 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-300">
           <div>
             <span className="inline-block w-3 h-3 rounded bg-green-500 mr-2 align-middle" />
-            <strong className="text-slate-300">Épargne brute</strong> = Recettes fonctionnement − Dépenses fonctionnement.
+            <strong className="text-slate-300">{t('patrimoine.tendances.legend_epargne')}</strong> {t('patrimoine.tendances.legend_epargne_desc')}
           </div>
           <div>
             <span className="inline-block w-3 h-3 rounded bg-orange-500 mr-2 align-middle" />
-            <strong className="text-slate-300">Surplus/Déficit</strong> = Recettes propres − Dépenses totales (emprunts exclus).
+            <strong className="text-slate-300">{t('patrimoine.tendances.legend_surplus')}</strong> {t('patrimoine.tendances.legend_surplus_desc')}
           </div>
         </div>
       </div>
@@ -460,10 +462,10 @@ export default function PatrimoineTendancesTab() {
         <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6 mb-6">
           <h2 className="text-lg font-semibold text-slate-100 mb-2 flex items-center gap-2">
             <span className="text-lg">{MISC_ICONS.debtStock}</span>
-            Encours de la dette
+            {t('patrimoine.tendances.encours_title')}
           </h2>
           <p className="text-sm text-slate-300 mb-4">
-            Dettes financières totales inscrites au bilan (emprunts long terme)
+            {t('patrimoine.tendances.encours_desc')}
           </p>
           <DebtStockChart data={debtStockData} height={320} />
         </div>
@@ -474,28 +476,28 @@ export default function PatrimoineTendancesTab() {
         <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6 mb-6">
           <h2 className="text-lg font-semibold text-slate-100 mb-2 flex items-center gap-2">
             <span className="text-lg">{MISC_ICONS.debtRatios}</span>
-            Soutenabilité de la dette
+            {t('patrimoine.tendances.soutenabilite_title')}
           </h2>
           <p className="text-sm text-slate-300 mb-4">
-            Deux ratios clés : durée de désendettement (barres) et taux d&apos;autofinancement (courbe)
+            {t('patrimoine.tendances.soutenabilite_desc')}
           </p>
           <DebtRatiosChart data={filteredDebtRatiosData} height={350} />
           <div className="mt-4 pt-4 border-t border-slate-700/50 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-300">
             <div>
-              <strong className="text-slate-300">Durée de désendettement</strong> = Dettes financières ÷ Épargne brute.
-              <br />Seuils : <span className="text-emerald-400">≤ 7 ans</span> (sain),{' '}
-              <span className="text-amber-400">7–12 ans</span> (vigilance),{' '}
-              <span className="text-red-400">&gt; 12 ans</span> (critique).
+              <strong className="text-slate-300">{t('patrimoine.tendances.duree_desendettement')}</strong> {t('patrimoine.tendances.duree_formula')}
+              <br />{t('patrimoine.tendances.seuils')} <span className="text-emerald-400">{t('patrimoine.tendances.seuil_sain')}</span> {t('patrimoine.tendances.seuil_sain_label')},{' '}
+              <span className="text-amber-400">{t('patrimoine.tendances.seuil_vigilance')}</span> {t('patrimoine.tendances.seuil_vigilance_label')},{' '}
+              <span className="text-red-400">{t('patrimoine.tendances.seuil_critique')}</span> {t('patrimoine.tendances.seuil_critique_label')}.
             </div>
             <div>
-              <strong className="text-slate-300">Taux d&apos;autofinancement</strong> = Épargne brute ÷ Recettes de fonctionnement.
-              <br />Seuils : <span className="text-emerald-400">≥ 15%</span> (confortable),{' '}
-              <span className="text-amber-400">8–15%</span> (correct),{' '}
-              <span className="text-red-400">&lt; 8%</span> (fragile).
+              <strong className="text-slate-300">{t('patrimoine.tendances.taux_autofinancement')}</strong> {t('patrimoine.tendances.taux_formula')}
+              <br />{t('patrimoine.tendances.seuils')} <span className="text-emerald-400">{t('patrimoine.tendances.taux_confortable')}</span> {t('patrimoine.tendances.taux_confortable_label')},{' '}
+              <span className="text-amber-400">{t('patrimoine.tendances.taux_correct')}</span> {t('patrimoine.tendances.taux_correct_label')},{' '}
+              <span className="text-red-400">{t('patrimoine.tendances.taux_fragile')}</span> {t('patrimoine.tendances.taux_fragile_label')}.
             </div>
           </div>
           <p className="text-[10px] text-slate-500 mt-3">
-            Grille d&apos;analyse : Cour des comptes / Chambres régionales des comptes (CRC).
+            {t('patrimoine.tendances.grille_analyse')}
           </p>
         </div>
       )}
@@ -504,30 +506,30 @@ export default function PatrimoineTendancesTab() {
       {debtSummary && (
         <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6">
           <h2 className="text-lg font-semibold text-slate-100 mb-4 flex items-center gap-2">
-            Synthèse {startYear}–{endYear}
+            {t('patrimoine.tendances.synthese')} {startYear}–{endYear}
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <div>
-              <p className="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide">Total emprunté</p>
+              <p className="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide">{t('patrimoine.tendances.total_emprunte')}</p>
               <p className="text-lg md:text-xl font-bold text-amber-400">{formatEuroCompact(debtSummary.totalNewDebt)}</p>
-              <p className="text-[10px] md:text-xs text-slate-400 mt-1">Cumulé</p>
+              <p className="text-[10px] md:text-xs text-slate-400 mt-1">{t('patrimoine.tendances.cumule')}</p>
             </div>
             <div>
-              <p className="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide">Total remboursé</p>
+              <p className="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide">{t('patrimoine.tendances.total_rembourse')}</p>
               <p className="text-lg md:text-xl font-bold text-emerald-400">{formatEuroCompact(debtSummary.totalRepaid)}</p>
-              <p className="text-[10px] md:text-xs text-slate-400 mt-1">Capital</p>
+              <p className="text-[10px] md:text-xs text-slate-400 mt-1">{t('patrimoine.tendances.capital')}</p>
             </div>
             <div>
-              <p className="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide">Total intérêts</p>
+              <p className="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide">{t('patrimoine.tendances.total_interets')}</p>
               <p className="text-lg md:text-xl font-bold text-red-400">{formatEuroCompact(debtSummary.totalInterest)}</p>
-              <p className="text-[10px] md:text-xs text-slate-400 mt-1">Coût cumulé</p>
+              <p className="text-[10px] md:text-xs text-slate-400 mt-1">{t('patrimoine.tendances.cout_cumule')}</p>
             </div>
             <div>
-              <p className="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide">Épargne brute moy.</p>
+              <p className="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide">{t('patrimoine.tendances.epargne_moy')}</p>
               <p className={`text-lg md:text-xl font-bold ${debtSummary.avgEpargneBrute >= 0 ? 'text-green-400' : 'text-red-400'}`}>
                 {formatEuroCompact(debtSummary.avgEpargneBrute)}
               </p>
-              <p className="text-[10px] md:text-xs text-slate-400 mt-1">par an</p>
+              <p className="text-[10px] md:text-xs text-slate-400 mt-1">{t('patrimoine.tendances.par_an')}</p>
             </div>
           </div>
         </div>

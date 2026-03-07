@@ -16,6 +16,7 @@ import GlossaryTip from '@/components/GlossaryTip';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 import { loadBilanSankey, type BilanSankeyData } from '@/lib/api/staticData';
 import { formatEuroCompact, formatPercent } from '@/lib/formatters';
+import { useT } from '@/lib/localeContext';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -36,46 +37,47 @@ interface BilanDrilldownState {
 /** KPI cards for bilan comptable */
 function BilanStatsCards({ data }: { data: BilanSankeyData }) {
   const { totals, kpis } = data;
+  const t = useT();
 
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6">
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
         <div className="flex items-center gap-2 mb-1">
           <span className="text-emerald-400">●</span>
-          <span className="text-xs text-slate-400">Actif Net <GlossaryTip term="actif_net" /></span>
+          <span className="text-xs text-slate-400">{t('patrimoine.kpi.actif_net')} <GlossaryTip term="actif_net" /></span>
         </div>
         <div className="text-xl sm:text-2xl font-bold text-emerald-400">{formatEuroCompact(totals.actif_net)}</div>
-        <div className="text-xs text-slate-500 mt-1">Ce que Paris possède</div>
+        <div className="text-xs text-slate-500 mt-1">{t('patrimoine.kpi.actif_net_sub')}</div>
       </div>
 
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
         <div className="flex items-center gap-2 mb-1">
           <span className="text-blue-400">●</span>
-          <span className="text-xs text-slate-400">Fonds propres <GlossaryTip term="fonds_propres" /></span>
+          <span className="text-xs text-slate-400">{t('patrimoine.kpi.fonds_propres')} <GlossaryTip term="fonds_propres" /></span>
         </div>
         <div className="text-xl sm:text-2xl font-bold text-blue-400">{formatEuroCompact(totals.fonds_propres)}</div>
-        <div className="text-xs text-slate-500 mt-1">{formatPercent(kpis.pct_fonds_propres)} du passif</div>
+        <div className="text-xs text-slate-500 mt-1">{formatPercent(kpis.pct_fonds_propres)} {t('patrimoine.kpi.fonds_propres_sub')}</div>
       </div>
 
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
         <div className="flex items-center gap-2 mb-1">
           <span className="text-red-400">●</span>
-          <span className="text-xs text-slate-400">Dette totale <GlossaryTip term="dette_totale" /></span>
+          <span className="text-xs text-slate-400">{t('patrimoine.kpi.dette_totale')} <GlossaryTip term="dette_totale" /></span>
         </div>
         <div className="text-xl sm:text-2xl font-bold text-red-400">{formatEuroCompact(totals.dette_totale)}</div>
-        <div className="text-xs text-slate-500 mt-1">Financière : {formatEuroCompact(totals.dettes_financieres)}</div>
+        <div className="text-xs text-slate-500 mt-1">{t('patrimoine.kpi.dette_financiere')} {formatEuroCompact(totals.dettes_financieres)}</div>
       </div>
 
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
         <div className="flex items-center gap-2 mb-1">
           <span className={kpis.ratio_endettement && kpis.ratio_endettement > 1 ? 'text-amber-400' : 'text-emerald-400'}>●</span>
-          <span className="text-xs text-slate-400">Ratio endettement <GlossaryTip term="ratio_endettement" /></span>
+          <span className="text-xs text-slate-400">{t('patrimoine.kpi.ratio_endettement')} <GlossaryTip term="ratio_endettement" /></span>
         </div>
         <div className={`text-xl sm:text-2xl font-bold ${kpis.ratio_endettement && kpis.ratio_endettement > 1 ? 'text-amber-400' : 'text-emerald-400'}`}>
           {kpis.ratio_endettement ? kpis.ratio_endettement.toFixed(2) : 'N/A'}
         </div>
         <div className="text-xs text-slate-500 mt-1">
-          {kpis.ratio_endettement && kpis.ratio_endettement <= 1 ? '✓ Niveau sain' : '⚠ Dette > Fonds propres'}
+          {kpis.ratio_endettement && kpis.ratio_endettement <= 1 ? `✓ ${t('patrimoine.kpi.ratio_sain')}` : `⚠ ${t('patrimoine.kpi.ratio_alerte')}`}
         </div>
       </div>
     </div>
@@ -85,6 +87,7 @@ function BilanStatsCards({ data }: { data: BilanSankeyData }) {
 // ─── Main Tab Component ──────────────────────────────────────────────────────
 
 export default function PatrimoineAnnuelTab({ availableYears, selectedYear, onYearChange }: PatrimoineAnnuelTabProps) {
+  const t = useT();
   const [bilanData, setBilanData] = useState<BilanSankeyData | null>(null);
   const [drilldown, setDrilldown] = useState<BilanDrilldownState | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -124,12 +127,12 @@ export default function PatrimoineAnnuelTab({ availableYears, selectedYear, onYe
           setBilanData(data);
           setError(null);
         } else {
-          setError(`Données ${selectedYear} non disponibles`);
+          setError(t('patrimoine.error.no_data').replace('{year}', String(selectedYear)));
           setBilanData(null);
         }
       } catch (err) {
         console.error('Error loading bilan data:', err);
-        setError(`Erreur lors du chargement des données ${selectedYear}`);
+        setError(t('patrimoine.error.loading').replace('{year}', String(selectedYear)));
         setBilanData(null);
       } finally {
         setIsLoading(false);
@@ -193,9 +196,9 @@ export default function PatrimoineAnnuelTab({ availableYears, selectedYear, onYe
           <ExportBar
             csvData={csvLinks}
             csvColumns={[
-              { key: 'source', label: 'Source' },
-              { key: 'target', label: 'Destination' },
-              { key: 'value', label: 'Montant (€)' },
+              { key: 'source', label: t('patrimoine.csv.source') },
+              { key: 'target', label: t('patrimoine.csv.destination') },
+              { key: 'value', label: t('patrimoine.csv.montant') },
             ]}
             filename={`patrimoine_bilan_${selectedYear}`}
           />
@@ -207,9 +210,9 @@ export default function PatrimoineAnnuelTab({ availableYears, selectedYear, onYe
             <DrilldownPanel
               title={drilldown.title}
               category={drilldown.category === 'actif' ? 'revenue' : 'expense'}
-              parentCategory={drilldown.category === 'actif' ? 'Actif' : 'Passif'}
+              parentCategory={drilldown.category === 'actif' ? t('bilan.actif') : t('bilan.passif')}
               items={drilldown.items.map(item => ({ name: item.name, value: item.value }))}
-              breadcrumbs={[drilldown.category === 'actif' ? 'Actif' : 'Passif', drilldown.title]}
+              breadcrumbs={[drilldown.category === 'actif' ? t('bilan.actif') : t('bilan.passif'), drilldown.title]}
               currentLevel={1}
               onClose={handleCloseDrilldown}
               onBreadcrumbClick={() => {}}
@@ -227,9 +230,9 @@ export default function PatrimoineAnnuelTab({ availableYears, selectedYear, onYe
                 <DrilldownPanel
                   title={drilldown.title}
                   category={drilldown.category === 'actif' ? 'revenue' : 'expense'}
-                  parentCategory={drilldown.category === 'actif' ? 'Actif' : 'Passif'}
+                  parentCategory={drilldown.category === 'actif' ? t('bilan.actif') : t('bilan.passif')}
                   items={drilldown.items.map(item => ({ name: item.name, value: item.value }))}
-                  breadcrumbs={[drilldown.category === 'actif' ? 'Actif' : 'Passif', drilldown.title]}
+                  breadcrumbs={[drilldown.category === 'actif' ? t('bilan.actif') : t('bilan.passif'), drilldown.title]}
                   currentLevel={1}
                   onClose={handleCloseDrilldown}
                   onBreadcrumbClick={() => {}}
@@ -240,19 +243,19 @@ export default function PatrimoineAnnuelTab({ availableYears, selectedYear, onYe
 
           {/* Explication */}
           <div className="mt-6 bg-slate-800/30 rounded-xl border border-slate-700/30 p-4">
-            <h3 className="text-sm font-medium text-slate-300 mb-2">Comprendre le bilan</h3>
+            <h3 className="text-sm font-medium text-slate-300 mb-2">{t('patrimoine.explain.title')}</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-400">
               <div>
-                <p className="font-medium text-emerald-400 mb-1">Actif (à gauche)</p>
-                <p>Ce que la Ville possède : bâtiments, équipements, créances, trésorerie...</p>
+                <p className="font-medium text-emerald-400 mb-1">{t('patrimoine.explain.actif_title')}</p>
+                <p>{t('patrimoine.explain.actif_desc')}</p>
               </div>
               <div>
-                <p className="font-medium text-blue-400 mb-1">Passif (à droite)</p>
-                <p>Comment c&apos;est financé : fonds propres (épargne) + dettes (emprunts).</p>
+                <p className="font-medium text-blue-400 mb-1">{t('patrimoine.explain.passif_title')}</p>
+                <p>{t('patrimoine.explain.passif_desc')}</p>
               </div>
             </div>
             <p className="text-xs text-slate-500 mt-3 pt-3 border-t border-slate-700/50">
-              <strong>Équilibre comptable :</strong> Actif = Passif. Les fonds propres élevés indiquent une bonne santé financière.
+              <strong>{t('patrimoine.explain.equilibre')}</strong> {t('patrimoine.explain.equilibre_desc')}
             </p>
           </div>
         </>

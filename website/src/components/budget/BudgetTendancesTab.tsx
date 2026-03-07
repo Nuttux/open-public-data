@@ -21,6 +21,7 @@ import YearRangeSelector from '@/components/YearRangeSelector';
 import ExportBar from '@/components/shared/ExportBar';
 import DataQualityBanner from '@/components/DataQualityBanner';
 import BudgetExecutionSection from '@/components/budget/BudgetExecutionSection';
+import { useT } from '@/lib/localeContext';
 
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -149,6 +150,7 @@ function computeDynamicVariations(
 // ─── Main Tab Component ──────────────────────────────────────────────────────
 
 export default function BudgetTendancesTab() {
+  const t = useT();
   const [budgetData, setBudgetData] = useState<YearlyBudget[]>([]);
   const [rawData, setRawData] = useState<EvolutionBudgetData | null>(null);
   const [startYear, setStartYear] = useState<number>(2019);
@@ -162,7 +164,7 @@ export default function BudgetTendancesTab() {
       setError(null);
       try {
         const response = await fetch('/data/evolution_budget.json');
-        if (!response.ok) throw new Error('Fichier evolution_budget.json non trouvé');
+        if (!response.ok) throw new Error(t('tendances.error_file'));
 
         const data: EvolutionBudgetData = await response.json();
         setRawData(data);
@@ -185,8 +187,8 @@ export default function BudgetTendancesTab() {
           setEndYear(Math.max(...years));
         }
       } catch (err) {
-        console.error('Erreur chargement données évolution:', err);
-        setError('Impossible de charger les données budgétaires.');
+        console.error('Error loading evolution data:', err);
+        setError(t('tendances.error_file'));
       } finally {
         setIsLoading(false);
       }
@@ -244,7 +246,7 @@ export default function BudgetTendancesTab() {
       <div className="flex items-center justify-center py-20">
         <div className="text-center">
           <div className="w-12 h-12 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-slate-500">Chargement des données...</p>
+          <p className="text-slate-500">{t('common.loading')}</p>
         </div>
       </div>
     );
@@ -254,9 +256,9 @@ export default function BudgetTendancesTab() {
     return (
       <div className="flex items-center justify-center py-20">
         <div className="text-center max-w-md">
-          <p className="text-red-400 text-lg mb-2">{error || 'Aucune donnée disponible'}</p>
+          <p className="text-red-400 text-lg mb-2">{error || t('common.no_data')}</p>
           <p className="text-slate-500 text-sm">
-            Vérifiez que evolution_budget.json est présent dans /public/data/
+            {t('tendances.error_file_hint')}
           </p>
         </div>
       </div>
@@ -268,7 +270,7 @@ export default function BudgetTendancesTab() {
       {/* Year range selector */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-3">
         <p className="text-sm text-slate-500">
-          Analyse temporelle {availableYears[0]}–{availableYears[availableYears.length - 1]}
+          {t('tendances.temporal_analysis')} {availableYears[0]}–{availableYears[availableYears.length - 1]}
         </p>
         <YearRangeSelector
           availableYears={availableYears}
@@ -285,11 +287,11 @@ export default function BudgetTendancesTab() {
       <ExportBar
         csvData={filteredBudgetData as unknown as Record<string, unknown>[]}
         csvColumns={[
-          { key: 'year', label: 'Année' },
-          { key: 'type_budget', label: 'Type budget' },
-          { key: 'recettes', label: 'Recettes propres (€)' },
-          { key: 'depenses', label: 'Dépenses (€)' },
-          { key: 'solde', label: 'Surplus/Déficit (€)' },
+          { key: 'year', label: t('tendances.csv.year') },
+          { key: 'type_budget', label: t('tendances.csv.type') },
+          { key: 'recettes', label: t('tendances.csv.revenue') },
+          { key: 'depenses', label: t('tendances.csv.expenditure') },
+          { key: 'solde', label: t('tendances.csv.balance') },
         ]}
         filename={`budget_evolution_${startYear}-${endYear}`}
       />
@@ -304,14 +306,14 @@ export default function BudgetTendancesTab() {
       {/* Graphique évolution Recettes/Dépenses (plage filtrée) */}
       <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-6 mb-6">
         <h2 className="text-lg font-semibold text-slate-100 mb-4 flex items-center gap-2">
-          Évolution Recettes et Dépenses
+          {t('tendances.evolution_title')}
         </h2>
         <EvolutionChart data={filteredBudgetData} height={400} />
         {/* Footnote pour les années prévisionnelles */}
         {hasVotedYears && (
           <p className="text-[11px] text-slate-500 mt-3 flex items-center gap-1.5">
             <span className="inline-block w-4 border-t border-dashed border-slate-500" />
-            * Budget prévisionnel voté par le Conseil de Paris — montants non définitifs
+            {t('tendances.voted_footnote')}
           </p>
         )}
       </div>
@@ -330,7 +332,7 @@ export default function BudgetTendancesTab() {
         </div>
         <div className="relative flex justify-center">
           <span className="bg-slate-800/30 px-4 text-sm font-medium text-slate-500">
-            Exécution budgétaire
+            {t('tendances.execution_divider')}
           </span>
         </div>
       </div>

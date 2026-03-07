@@ -20,6 +20,7 @@ import ReactECharts from 'echarts-for-react';
 import type { EChartsOption } from 'echarts';
 import { PALETTE } from '@/lib/colors';
 import { useIsMobile } from '@/lib/hooks/useIsMobile';
+import { useT } from '@/lib/localeContext';
 import YearRangeSelector from '@/components/YearRangeSelector';
 import ExportBar from '@/components/shared/ExportBar';
 
@@ -157,6 +158,7 @@ export default function TendancesTab({
   const [isLoading, setIsLoading] = useState(!directData);
   const [error, setError] = useState<string | null>(null);
   const isMobile = useIsMobile();
+  const tr = useT();
   const t = THEME[theme];
 
   // Use direct data or fetched data
@@ -169,10 +171,10 @@ export default function TendancesTab({
     (async () => {
       try {
         const res = await fetch(dataUrl);
-        if (!res.ok) throw new Error('Fichier non trouvé');
+        if (!res.ok) throw new Error(tr('chart.file_not_found'));
         const json = await res.json();
         setFetchedData(parseData(json));
-      } catch (err) { console.error(err); setError('Données de tendances non disponibles'); }
+      } catch (err) { console.error(err); setError(tr('common.no_data')); }
       finally { setIsLoading(false); }
     })();
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -343,8 +345,8 @@ export default function TendancesTab({
   const { csvRows, csvColumns } = useMemo(() => {
     if (!csvFilename || filteredYears.length === 0) return { csvRows: [], csvColumns: [] };
     const cols: { key: string; label: string }[] = [
-      { key: 'year', label: 'Année' },
-      { key: 'total', label: 'Total' },
+      { key: 'year', label: tr('chart.csv_year') },
+      { key: 'total', label: tr('chart.csv_total') },
       ...groupsOrdered.map(g => ({ key: g, label: g })),
     ];
     const rows = filteredYears.map(y => {
@@ -357,18 +359,18 @@ export default function TendancesTab({
       return row;
     });
     return { csvRows: rows, csvColumns: cols };
-  }, [csvFilename, filteredYears, groupsOrdered, breakdown]);
+  }, [csvFilename, filteredYears, groupsOrdered, breakdown, tr]);
 
   // ── Default KPI3 / KPI4 ──
   const defaultKpi3 = kpiCtx ? {
-    label: `Évolution ${kpiCtx.earliest.year}→${kpiCtx.latest.year}`,
+    label: `${tr('chart.evolution')} ${kpiCtx.earliest.year}→${kpiCtx.latest.year}`,
     value: `${kpiCtx.periodPct >= 0 ? '+' : ''}${kpiCtx.periodPct.toFixed(1)}%`,
     valueClass: kpiCtx.periodPct >= 0 ? 'text-emerald-400' : 'text-red-400',
-    sub: `sur ${filteredYears.length} exercices`,
+    sub: `${tr('chart.on')} ${filteredYears.length} ${tr('chart.fiscal_years')}`,
   } : null;
 
   const defaultKpi4 = kpiCtx ? {
-    label: '1er groupe',
+    label: tr('chart.first_group'),
     value: kpiCtx.topName,
     sub: `${formatValue(kpiCtx.topValue)} (${kpiCtx.topPct.toFixed(0)}%)`,
   } : null;
@@ -378,7 +380,7 @@ export default function TendancesTab({
 
   // ── Loading / Error ──
   if (isLoading) return <div className="flex justify-center py-16"><div className={`w-10 h-10 border-4 ${t.spinner} border-t-transparent rounded-full animate-spin`} /></div>;
-  if (error || data.length === 0) return <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6"><div className="text-center py-12"><span className="text-4xl mb-4 block">⚠️</span><p className="text-sm text-slate-300">{error || 'Données non disponibles'}</p></div></div>;
+  if (error || data.length === 0) return <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6"><div className="text-center py-12"><span className="text-4xl mb-4 block">⚠️</span><p className="text-sm text-slate-300">{error || tr('common.no_data')}</p></div></div>;
 
   const currentDim = breakdowns.find(o => o.id === breakdown);
   const currentDimLabel = currentDim?.label.toLowerCase() || '';
@@ -418,9 +420,9 @@ export default function TendancesTab({
             {kpi1Sub && <p className="text-xs text-slate-400 mt-1">{kpi1Sub(kpiCtx.latest)}</p>}
           </div>
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4 sm:p-5">
-            <p className="text-xs text-slate-400 uppercase tracking-wide mb-1">Variation annuelle</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide mb-1">{tr('chart.annual_variation')}</p>
             <p className={`text-2xl font-bold mt-1 ${kpiCtx.yoyPct >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>{kpiCtx.yoyPct >= 0 ? '+' : ''}{kpiCtx.yoyPct.toFixed(1)}%</p>
-            <p className="text-xs text-slate-400 mt-1">vs {kpiCtx.latest.year - 1}</p>
+            <p className="text-xs text-slate-400 mt-1">{tr('chart.vs')} {kpiCtx.latest.year - 1}</p>
           </div>
           {kpi3Card && (
             <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4 sm:p-5">
@@ -457,8 +459,8 @@ export default function TendancesTab({
             </div>
           </div>
           <div className="flex items-center gap-4 mb-3 text-xs text-slate-300">
-            <div className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-emerald-500" /><span>Hausse</span></div>
-            <div className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-red-500" /><span>Baisse</span></div>
+            <div className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-emerald-500" /><span>{tr('chart.increase')}</span></div>
+            <div className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-red-500" /><span>{tr('chart.decrease')}</span></div>
           </div>
           <ReactECharts option={variationChartOption} style={{ height: variationChartHeight, width: '100%' }} opts={{ renderer: 'canvas' }} />
         </div>
@@ -466,7 +468,7 @@ export default function TendancesTab({
 
       {/* ── Data Quality Note ── */}
       <div className="bg-slate-800/30 rounded-xl border border-slate-700/30 p-4">
-        <h4 className="text-xs font-semibold text-slate-300 mb-2 flex items-center gap-1.5"><span>ℹ️</span> À propos de ces données</h4>
+        <h4 className="text-xs font-semibold text-slate-300 mb-2 flex items-center gap-1.5"><span>ℹ️</span> {tr('chart.about_data')}</h4>
         {qualityNotes}
       </div>
     </div>

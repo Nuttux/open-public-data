@@ -1,13 +1,11 @@
-import { notFound } from "next/navigation";
-import { getPostBySlug, getAllPostSlugs } from "@/lib/blog";
-import BlogHeader from "@/components/blog/BlogHeader";
-import type { Metadata } from "next";
-import { MDXRemote } from "next-mdx-remote/rsc";
+import { notFound } from 'next/navigation';
+import { getPostBySlug, getAllPostSlugs } from '@/lib/blog';
+import BlogHeader from '@/components/blog/BlogHeader';
+import type { Metadata } from 'next';
+import { MDXRemote } from 'next-mdx-remote/rsc';
+import { locales, isValidLocale, defaultLocale } from '@/i18n/config';
+import { t } from '@/i18n/getDictionary';
 
-/**
- * MDX Components for rendering blog content
- * Styled for dark theme with emerald accents
- */
 const mdxComponents = {
   h1: ({ children }: { children: React.ReactNode }) => (
     <h1 className="text-4xl font-bold text-white mb-6 mt-8">{children}</h1>
@@ -27,8 +25,8 @@ const mdxComponents = {
     <a
       href={href}
       className="text-emerald-400 hover:text-emerald-300 underline underline-offset-2 transition-colors"
-      target={href?.startsWith("http") ? "_blank" : undefined}
-      rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
+      target={href?.startsWith('http') ? '_blank' : undefined}
+      rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
     >
       {children}
     </a>
@@ -70,39 +68,36 @@ const mdxComponents = {
 };
 
 interface BlogPostPageProps {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }
 
-/**
- * Generate static params for all blog posts
- */
 export async function generateStaticParams() {
   const slugs = getAllPostSlugs();
-  return slugs.map((slug) => ({ slug }));
+  return locales.flatMap((locale) =>
+    slugs.map((slug) => ({ locale, slug })),
+  );
 }
 
-/**
- * Generate metadata for the blog post
- */
 export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale: raw, slug } = await params;
+  const locale = isValidLocale(raw) ? raw : defaultLocale;
   const post = getPostBySlug(slug);
 
   if (!post) {
     return {
-      title: "Article non trouvé - Budget Paris",
+      title: `${t(locale, 'blog.not_found')} - ${t(locale, 'nav.site_title')}`,
     };
   }
 
   return {
-    title: `${post.title} - Budget Paris`,
+    title: `${post.title} - ${t(locale, 'nav.site_title')}`,
     description: post.description,
     openGraph: {
       title: post.title,
       description: post.description,
-      type: "article",
+      type: 'article',
       publishedTime: post.date,
       authors: post.author ? [post.author] : undefined,
       images: post.image ? [post.image] : undefined,
@@ -110,11 +105,9 @@ export async function generateMetadata({
   };
 }
 
-/**
- * Individual blog post page
- */
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const { slug } = await params;
+  const { locale: raw, slug } = await params;
+  const locale = isValidLocale(raw) ? raw : defaultLocale;
   const post = getPostBySlug(slug);
 
   if (!post) {
@@ -126,16 +119,20 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <article className="max-w-3xl mx-auto px-6 py-12 md:py-20">
         <BlogHeader post={post} />
 
-        {/* MDX Content */}
+        {locale === 'en' && (
+          <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-3 mb-6 text-sm text-blue-300">
+            {t(locale, 'blog.french_only')}
+          </div>
+        )}
+
         <div className="prose prose-invert prose-emerald max-w-none">
           <MDXRemote source={post.content} components={mdxComponents} />
         </div>
 
-        {/* Footer */}
         <footer className="mt-16 pt-8 border-t border-slate-800">
           <div className="flex items-center justify-between">
             <p className="text-slate-500 text-sm">
-              Merci d&apos;avoir lu cet article !
+              {t(locale, 'blog.thanks')}
             </p>
           </div>
         </footer>

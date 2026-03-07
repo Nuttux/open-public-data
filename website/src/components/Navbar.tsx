@@ -1,36 +1,11 @@
 'use client';
 
-/**
- * Navbar - Navigation responsive du dashboard
- *
- * Structure responsive :
- * - Desktop (md+) : Barre horizontale en haut avec logo, liens texte et bouton glossaire
- * - Mobile  (<md) : Barre compacte en haut (logo + glossaire) + barre de navigation
- *   fixe en bas avec icônes et labels pour toutes les pages
- *
- * La barre mobile en bas utilise env(safe-area-inset-bottom) pour les
- * appareils avec zone d'accueil (iPhone X+).
- */
-
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLocale, useT } from '@/lib/localeContext';
 import { NAV_ICONS } from '@/lib/icons';
 import { useTrack } from '@/lib/analyticsContext';
 
-/**
- * Configuration des liens de navigation
- * Chaque entrée définit une page du dashboard avec son icône et son label
- */
-/**
- * Navigation links — Entity-based architecture.
- *
- * Legacy redirects configured in next.config.ts:
- *   /evolution → /budget?tab=tendances
- *   /prevision → /budget?tab=prevision
- *   /bilan     → /patrimoine?tab=annuel
- *   /carte     → /logements?tab=carte
- */
 const NAV_LINK_DEFS = [
   {
     href: '/',
@@ -115,9 +90,6 @@ const NAV_LINK_DEFS = [
   },
 ] as const;
 
-/**
- * FR / EN locale toggle — plain text, brutalist style
- */
 function LocaleToggle({ className = '' }: { className?: string }) {
   const { locale, setLocale } = useLocale();
   return (
@@ -129,7 +101,7 @@ function LocaleToggle({ className = '' }: { className?: string }) {
       >
         FR
       </button>
-      <span className="text-slate-600">·</span>
+      <span className="text-slate-600">&middot;</span>
       <button
         type="button"
         onClick={() => setLocale('en')}
@@ -143,21 +115,21 @@ function LocaleToggle({ className = '' }: { className?: string }) {
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { locale } = useLocale();
   const track = useTrack();
   const t = useT();
 
+  // Strip locale prefix for matching
+  const pathWithoutLocale = pathname.replace(/^\/(fr|en)/, '') || '/';
+
   return (
     <>
-      {/* ═══════════════════════════════════════════════════════════
-          DESKTOP : Barre de navigation horizontale en haut
-          Visible uniquement sur md+ (768px+)
-          ═══════════════════════════════════════════════════════════ */}
+      {/* DESKTOP NAV */}
       <nav className="hidden md:block bg-slate-900/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Logo / Titre */}
             <Link
-              href="/"
+              href={`/${locale}/`}
               className="flex items-center gap-3 hover:opacity-80 transition-opacity shrink-0"
             >
               <h1 className="text-lg font-bold text-slate-100">
@@ -165,15 +137,25 @@ export default function Navbar() {
               </h1>
             </Link>
 
-            {/* Liens de navigation desktop */}
             <div className="flex items-center gap-0.5">
               {NAV_LINK_DEFS.map((link) => {
-                const isActive = pathname === link.href;
+                const isActive =
+                  pathWithoutLocale === link.href ||
+                  (link.href !== '/' && pathWithoutLocale.startsWith(link.href));
+                const localizedHref =
+                  link.href === '/'
+                    ? `/${locale}/`
+                    : `/${locale}${link.href}`;
                 return (
                   <Link
                     key={link.href}
-                    href={link.href}
-                    onClick={() => track('nav_click', { destination: link.href, nav_type: 'desktop_top' })}
+                    href={localizedHref}
+                    onClick={() =>
+                      track('nav_click', {
+                        destination: link.href,
+                        nav_type: 'desktop_top',
+                      })
+                    }
                     className={`
                       flex items-center gap-1.5 px-2 lg:px-2.5 py-2 rounded-lg text-xs font-medium
                       transition-all duration-200 ${link.activeColor}
@@ -197,14 +179,11 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* ═══════════════════════════════════════════════════════════
-          MOBILE : Barre compacte en haut (logo + glossaire)
-          Visible uniquement sous md (< 768px)
-          ═══════════════════════════════════════════════════════════ */}
+      {/* MOBILE TOP BAR */}
       <header className="md:hidden bg-slate-900/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50">
         <div className="flex items-center justify-between h-12 px-4">
           <Link
-            href="/"
+            href={`/${locale}/`}
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
             <h1 className="text-base font-bold text-slate-100">
@@ -216,11 +195,7 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* ═══════════════════════════════════════════════════════════
-          MOBILE : Barre de navigation fixe en bas (tab bar)
-          9 onglets avec icône + label compact dans une grille CSS
-          Compatible safe-area pour iPhone X+ (home indicator)
-          ═══════════════════════════════════════════════════════════ */}
+      {/* MOBILE BOTTOM TAB BAR */}
       <nav
         className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-md border-t border-slate-700/50"
         role="tablist"
@@ -229,14 +204,25 @@ export default function Navbar() {
       >
         <div className="grid grid-cols-9">
           {NAV_LINK_DEFS.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive =
+              pathWithoutLocale === link.href ||
+              (link.href !== '/' && pathWithoutLocale.startsWith(link.href));
+            const localizedHref =
+              link.href === '/'
+                ? `/${locale}/`
+                : `/${locale}${link.href}`;
             return (
               <Link
                 key={link.href}
-                href={link.href}
+                href={localizedHref}
                 role="tab"
                 aria-selected={isActive}
-                onClick={() => track('nav_click', { destination: link.href, nav_type: 'mobile_bottom' })}
+                onClick={() =>
+                  track('nav_click', {
+                    destination: link.href,
+                    nav_type: 'mobile_bottom',
+                  })
+                }
                 className={`
                   relative flex flex-col items-center justify-center py-2
                   transition-colors duration-200
@@ -248,11 +234,11 @@ export default function Navbar() {
                 `}
               >
                 {isActive && (
-                  <span className={`absolute top-0 inset-x-2 h-0.5 ${link.activeColor.replace('text-', 'bg-')} rounded-full`} />
+                  <span
+                    className={`absolute top-0 inset-x-2 h-0.5 ${link.activeColor.replace('text-', 'bg-')} rounded-full`}
+                  />
                 )}
-                <span className="text-[22px] leading-none">
-                  {link.icon}
-                </span>
+                <span className="text-[22px] leading-none">{link.icon}</span>
                 <span
                   className={`
                     text-[9px] mt-1 leading-tight font-medium

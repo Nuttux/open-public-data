@@ -1,13 +1,14 @@
 'use client';
 
-import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from 'react';
+import { createContext, useContext, useCallback, type ReactNode } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import fr from '@/i18n/fr';
 import en from '@/i18n/en';
+import type { Locale } from '@/i18n/config';
 
-export type Locale = 'fr' | 'en';
+export type { Locale };
 
 const DICTIONARIES: Record<Locale, Record<string, string>> = { fr, en };
-const STORAGE_KEY = 'dl_locale';
 
 interface LocaleContextValue {
   locale: Locale;
@@ -21,21 +22,16 @@ const LocaleContext = createContext<LocaleContextValue>({
   t: (key) => key,
 });
 
-export function LocaleProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>('fr');
+export function LocaleProvider({ locale, children }: { locale: Locale; children: ReactNode }) {
+  const router = useRouter();
+  const pathname = usePathname();
 
-  // Hydrate from localStorage once on mount
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored === 'en') setLocaleState('en');
-    } catch { /* SSR / private browsing */ }
-  }, []);
-
-  const setLocale = useCallback((l: Locale) => {
-    setLocaleState(l);
-    try { localStorage.setItem(STORAGE_KEY, l); } catch { /* ignore */ }
-  }, []);
+  const setLocale = useCallback((newLocale: Locale) => {
+    // Replace the locale segment in the current path
+    const segments = pathname.split('/');
+    segments[1] = newLocale;
+    router.push(segments.join('/'));
+  }, [pathname, router]);
 
   const t = useCallback(
     (key: string): string => DICTIONARIES[locale][key] ?? DICTIONARIES.fr[key] ?? key,

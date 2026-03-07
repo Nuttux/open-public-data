@@ -15,6 +15,7 @@ import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { getThematiqueColor } from '@/lib/colors';
 import type { SubventionFilters } from './SubventionsFilters';
 import { useTrack } from '@/lib/analyticsContext';
+import { useT } from '@/lib/localeContext';
 
 /**
  * Données d'un bénéficiaire
@@ -91,6 +92,7 @@ export default function SubventionsTable({
   const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
   const [currentPage, setCurrentPage] = useState(1);
   const track = useTrack();
+  const t = useT();
 
   /**
    * Appliquer les filtres
@@ -229,7 +231,7 @@ export default function SubventionsTable({
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-8">
         <div className="flex items-center justify-center gap-3">
           <div className="w-6 h-6 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
-          <span className="text-slate-300">Chargement des données...</span>
+          <span className="text-slate-300">{t('common.loading')}</span>
         </div>
       </div>
     );
@@ -240,8 +242,8 @@ export default function SubventionsTable({
     return (
       <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-8">
         <div className="text-center">
-          <p className="text-slate-300">Aucun bénéficiaire ne correspond aux filtres.</p>
-          <p className="text-sm text-slate-400 mt-1">Essayez de modifier vos critères de recherche.</p>
+          <p className="text-slate-300">{t('subventions.no_results')}</p>
+          <p className="text-sm text-slate-400 mt-1">{t('subventions.no_results_hint')}</p>
         </div>
       </div>
     );
@@ -253,16 +255,16 @@ export default function SubventionsTable({
       <div className="px-4 py-3 border-b border-slate-700/50 flex items-center justify-between">
         <div>
           <h3 className="font-medium text-slate-100">
-            {formatNumber(sortedData.length)} bénéficiaire{sortedData.length > 1 ? 's' : ''} affiché{sortedData.length > 1 ? 's' : ''}
+            {formatNumber(sortedData.length)} {sortedData.length > 1 ? t('subventions.beneficiaries') : t('subventions.beneficiary')} {t('common.displayed')}
           </h3>
           <p className="text-xs text-slate-400">
-            Montant total affiché: {formatEuroCompact(sortedData.reduce((sum, b) => sum + b.montant_total, 0))}
+            {t('subventions.total_shown')} {formatEuroCompact(sortedData.reduce((sum, b) => sum + b.montant_total, 0))}
           </p>
         </div>
         
         {/* Pagination info */}
         <div className="text-sm text-slate-400">
-          Page {currentPage} / {totalPages}
+          {t('common.page')} {currentPage} / {totalPages}
         </div>
       </div>
 
@@ -271,14 +273,14 @@ export default function SubventionsTable({
         <table className="w-full">
           <thead className="bg-slate-900/50">
             <tr>
-              <SortableHeader column="beneficiaire" label="Bénéficiaire" className="min-w-[120px] md:min-w-[200px]" />
-              <SortableHeader column="thematique" label="Thématique" />
-              <SortableHeader column="montant_total" label="Montant" />
+              <SortableHeader column="beneficiaire" label={t('subventions.col.beneficiary')} className="min-w-[120px] md:min-w-[200px]" />
+              <SortableHeader column="thematique" label={t('subventions.col.thematique')} />
+              <SortableHeader column="montant_total" label={t('subventions.col.amount')} />
               {/* Colonnes masquées sur mobile pour garder le tableau lisible */}
-              <SortableHeader column="direction" label="Direction" className="hidden md:table-cell" />
-              <SortableHeader column="nature_juridique" label="Nature" className="hidden md:table-cell" />
+              <SortableHeader column="direction" label={t('subventions.col.direction')} className="hidden md:table-cell" />
+              <SortableHeader column="nature_juridique" label={t('subventions.col.nature')} className="hidden md:table-cell" />
               <th className="hidden md:table-cell px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wide">
-                Source
+                {t('subventions.col.source')}
               </th>
             </tr>
           </thead>
@@ -330,7 +332,7 @@ export default function SubventionsTable({
                     </p>
                     {beneficiaire.nb_subventions > 1 && (
                       <p className="text-[10px] md:text-xs text-slate-400">
-                        {beneficiaire.nb_subventions} subv.
+                        {beneficiaire.nb_subventions} {t('subventions.grants_abbr')}
                       </p>
                     )}
                   </td>
@@ -373,9 +375,9 @@ export default function SubventionsTable({
             disabled={currentPage === 1}
             className="px-3 py-1.5 text-sm font-medium text-slate-300 hover:text-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
-            ← Précédent
+            ← {t('common.prev')}
           </button>
-          
+
           <div className="flex items-center gap-1">
             {/* Afficher quelques pages autour de la page courante */}
             {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
@@ -413,7 +415,7 @@ export default function SubventionsTable({
             disabled={currentPage === totalPages}
             className="px-3 py-1.5 text-sm font-medium text-slate-300 hover:text-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
-            Suivant →
+            {t('common.next')} →
           </button>
         </div>
       )}

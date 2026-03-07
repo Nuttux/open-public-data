@@ -23,6 +23,7 @@ import type { EChartsOption } from 'echarts';
 import { formatEuroCompact } from '@/lib/formatters';
 import { PALETTE } from '@/lib/colors';
 import { useIsMobile } from '@/lib/hooks/useIsMobile';
+import { useT } from '@/lib/localeContext';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -87,28 +88,28 @@ function comparisonRates(rates: GlobalRate[]): GlobalRate[] {
 // ─── KPI Cards ───────────────────────────────────────────────────────────────
 
 /** 3 KPI cards showing execution rates for the latest comparison year */
-function ExecutionRateCards({ rates }: { rates: GlobalRate[] }) {
+function ExecutionRateCards({ rates, t }: { rates: GlobalRate[]; t: (key: string) => string }) {
   const comp = comparisonRates(rates);
   const latest = comp[comp.length - 1];
   if (!latest) return null;
 
   const cards = [
     {
-      label: "Taux global d'exécution",
+      label: t('prevision.global_rate'),
       value: latest.taux_global,
-      sub: `${latest.annee} — Toutes dépenses`,
+      sub: `${latest.annee} — ${t('prevision.all_spending')}`,
       color: 'text-blue-400',
     },
     {
-      label: 'Fonctionnement',
+      label: t('prevision.operating'),
       value: latest.taux_fonct,
-      sub: `${formatEuroCompact(latest.execute_fonct || 0)} exécuté / ${formatEuroCompact(latest.vote_fonct)} voté`,
+      sub: t('prevision.executed_of_voted').replace('{executed}', formatEuroCompact(latest.execute_fonct || 0)).replace('{voted}', formatEuroCompact(latest.vote_fonct)),
       color: 'text-emerald-400',
     },
     {
-      label: 'Investissement',
+      label: t('prevision.investment'),
       value: latest.taux_inves,
-      sub: `${formatEuroCompact(latest.execute_inves || 0)} exécuté / ${formatEuroCompact(latest.vote_inves)} voté`,
+      sub: t('prevision.executed_of_voted').replace('{executed}', formatEuroCompact(latest.execute_inves || 0)).replace('{voted}', formatEuroCompact(latest.vote_inves)),
       color: 'text-amber-400',
     },
   ];
@@ -131,7 +132,7 @@ function ExecutionRateCards({ rates }: { rates: GlobalRate[] }) {
 // ─── Vote vs Execute Bar Chart (comparison years only, chronological) ────────
 
 /** Grouped bar chart: Voté vs Exécuté. Only comparison years. */
-function VoteVsExecuteChart({ rates, height = 350 }: { rates: GlobalRate[]; height?: number }) {
+function VoteVsExecuteChart({ rates, height = 350, t }: { rates: GlobalRate[]; height?: number; t: (key: string) => string }) {
   const isMobile = useIsMobile();
 
   const option: EChartsOption = useMemo(() => {
@@ -158,13 +159,13 @@ function VoteVsExecuteChart({ rates, height = 350 }: { rates: GlobalRate[]; heig
           }
           const r = comp.find((x) => String(x.annee) === year);
           if (r?.taux_global) {
-            html += `<br/>Taux d'exécution: <strong>${r.taux_global.toFixed(1)}%</strong>`;
+            html += `<br/>${t('prevision.execution_rate')}: <strong>${r.taux_global.toFixed(1)}%</strong>`;
           }
           return html;
         },
       },
       legend: {
-        data: ['Budget Voté (BP)', 'Budget Exécuté (CA)'],
+        data: [t('prevision.voted_bp'), t('prevision.executed_ca')],
         top: 0,
         textStyle: { color: '#94a3b8', fontSize: isMobile ? 10 : 12 },
       },
@@ -185,29 +186,29 @@ function VoteVsExecuteChart({ rates, height = 350 }: { rates: GlobalRate[]; heig
       },
       series: [
         {
-          name: 'Budget Voté (BP)', type: 'bar',
+          name: t('prevision.voted_bp'), type: 'bar',
           data: comp.map((r) => r.depenses_vote),
           itemStyle: { color: PALETTE.orange, borderRadius: [4, 4, 0, 0] },
           barGap: '10%', barMaxWidth: 40,
         },
         {
-          name: 'Budget Exécuté (CA)', type: 'bar',
+          name: t('prevision.executed_ca'), type: 'bar',
           data: comp.map((r) => r.depenses_execute),
           itemStyle: { color: PALETTE.blue, borderRadius: [4, 4, 0, 0] },
           barMaxWidth: 40,
         },
       ],
     };
-  }, [rates, isMobile]);
+  }, [rates, isMobile, t]);
 
   return (
     <div className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-4 sm:p-6">
       <h3 className="text-lg font-semibold text-slate-200 mb-1">
-        Voté vs Exécuté — Dépenses totales
+        {t('prevision.vote_vs_execute_title')}
       </h3>
       <p className="text-xs text-slate-400 mb-4">
-        <span className="text-orange-400">■ Orange</span> = budget voté (BP) ·{' '}
-        <span className="text-blue-400">■ Bleu</span> = budget exécuté (CA). * = années COVID.
+        <span className="text-orange-400">■ {t('prevision.legend_orange')}</span> = {t('prevision.vote_vs_execute_desc')} ·{' '}
+        <span className="text-blue-400">■ {t('prevision.legend_blue')}</span> = {t('prevision.vote_vs_execute_desc2')}
       </p>
       <ReactECharts option={option} style={{ height }} notMerge />
     </div>
@@ -217,7 +218,7 @@ function VoteVsExecuteChart({ rates, height = 350 }: { rates: GlobalRate[]; heig
 // ─── Execution Rate Line Chart (with COVID markers) ──────────────────────────
 
 /** Line chart: execution rates by section across comparison years */
-function ExecutionRateChart({ rates, height = 350 }: { rates: GlobalRate[]; height?: number }) {
+function ExecutionRateChart({ rates, height = 350, t }: { rates: GlobalRate[]; height?: number; t: (key: string) => string }) {
   const isMobile = useIsMobile();
 
   const option: EChartsOption = useMemo(() => {
@@ -254,7 +255,7 @@ function ExecutionRateChart({ rates, height = 350 }: { rates: GlobalRate[]; heig
         },
       },
       legend: {
-        data: ['Global', 'Fonctionnement', 'Investissement'],
+        data: [t('prevision.legend.global'), t('prevision.legend.operating'), t('prevision.legend.investment')],
         top: 0,
         textStyle: { color: '#94a3b8', fontSize: isMobile ? 10 : 12 },
       },
@@ -277,7 +278,7 @@ function ExecutionRateChart({ rates, height = 350 }: { rates: GlobalRate[]; heig
       },
       series: [
         {
-          name: 'Global', type: 'line',
+          name: t('prevision.legend.global'), type: 'line',
           data: comp.map((r) => r.taux_global),
           lineStyle: { color: PALETTE.blue, width: 3 },
           itemStyle: { color: PALETTE.blue },
@@ -291,14 +292,14 @@ function ExecutionRateChart({ rates, height = 350 }: { rates: GlobalRate[]; heig
           ...(covidZones.length > 0 ? { markArea: { silent: true, data: covidZones } } : {}),
         },
         {
-          name: 'Fonctionnement', type: 'line',
+          name: t('prevision.legend.operating'), type: 'line',
           data: comp.map((r) => r.taux_fonct),
           lineStyle: { color: PALETTE.emerald, width: 2, type: 'dashed' },
           itemStyle: { color: PALETTE.emerald },
           symbolSize: isMobile ? 10 : 8,
         },
         {
-          name: 'Investissement', type: 'line',
+          name: t('prevision.legend.investment'), type: 'line',
           data: comp.map((r) => r.taux_inves),
           lineStyle: { color: PALETTE.amber, width: 2, type: 'dashed' },
           itemStyle: { color: PALETTE.amber },
@@ -306,16 +307,15 @@ function ExecutionRateChart({ rates, height = 350 }: { rates: GlobalRate[]; heig
         },
       ],
     };
-  }, [rates, isMobile]);
+  }, [rates, isMobile, t]);
 
   return (
     <div className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-4 sm:p-6">
       <h3 className="text-lg font-semibold text-slate-200 mb-1">
-        Taux d&apos;exécution par année
+        {t('prevision.rate_title')}
       </h3>
       <p className="text-xs text-slate-400 mb-4">
-        100% = budget intégralement exécuté. L&apos;investissement est
-        structurellement sous-exécuté (projets pluriannuels). * = COVID.
+        {t('prevision.rate_desc')}
       </p>
       <ReactECharts option={option} style={{ height }} notMerge />
     </div>
@@ -325,7 +325,7 @@ function ExecutionRateChart({ rates, height = 350 }: { rates: GlobalRate[]; heig
 // ─── Ecart Ranking (outliers capped, small posts filtered) ───────────────────
 
 /** Horizontal bar chart: écart moyen voté → exécuté par thématique */
-function EcartRanking({ ranking }: { ranking: EcartRow[] }) {
+function EcartRanking({ ranking, t }: { ranking: EcartRow[]; t: (key: string) => string }) {
   const isMobile = useIsMobile();
 
   const depenseRanking = useMemo(() => {
@@ -356,12 +356,12 @@ function EcartRanking({ ranking }: { ranking: EcartRow[] }) {
           const idx = items[0]?.dataIndex;
           const row = sorted[idx];
           if (!row) return '';
-          const status = row.ecart_moyen_pct > 0 ? 'Sur-exécuté' : 'Sous-exécuté';
+          const status = row.ecart_moyen_pct > 0 ? t('prevision.tooltip_over') : t('prevision.tooltip_under');
           return (
             `<strong>${row.thematique}</strong> (${row.section})<br/>` +
             `${status}: <strong>${row.ecart_moyen_pct > 0 ? '+' : ''}${row.ecart_moyen_pct.toFixed(1)}%</strong><br/>` +
-            `Voté moy: ${formatEuroCompact(row.vote_total / row.nb_annees)} → ` +
-            `Exécuté moy: ${formatEuroCompact(row.execute_total / row.nb_annees)}`
+            `${t('prevision.voted_avg')}: ${formatEuroCompact(row.vote_total / row.nb_annees)} → ` +
+            `${t('prevision.executed_avg')}: ${formatEuroCompact(row.execute_total / row.nb_annees)}`
           );
         },
       },
@@ -409,19 +409,19 @@ function EcartRanking({ ranking }: { ranking: EcartRow[] }) {
         },
       }],
     };
-  }, [depenseRanking, isMobile]);
+  }, [depenseRanking, isMobile, t]);
 
   const chartHeight = Math.max(300, depenseRanking.length * 28 + 60);
 
   return (
     <div className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-4 sm:p-6">
       <h3 className="text-lg font-semibold text-slate-200 mb-1">
-        Écart moyen Voté → Exécuté par poste
+        {t('prevision.ecart_title')}
       </h3>
       <p className="text-xs text-slate-400 mb-4">
-        <span className="text-red-400">Rouge</span> = sur-exécuté (dépensé plus que prévu) ·{' '}
-        <span className="text-emerald-400">Vert</span> = sous-exécuté.
-        Moyenne 2019-2024, dépenses &gt; 50 M€.
+        <span className="text-red-400">{t('prevision.ecart_desc_red')}</span> = {t('prevision.over_executed')} ·{' '}
+        <span className="text-emerald-400">{t('prevision.ecart_desc_green')}</span> = {t('prevision.under_executed')}.
+        {t('prevision.ecart_period')}
       </p>
       <ReactECharts option={option} style={{ height: chartHeight }} notMerge />
     </div>
@@ -431,6 +431,7 @@ function EcartRanking({ ranking }: { ranking: EcartRow[] }) {
 // ─── Main Tab Component ──────────────────────────────────────────────────────
 
 export default function BudgetPrevisionTab() {
+  const t = useT();
   const [data, setData] = useState<VoteExecuteData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -445,7 +446,7 @@ export default function BudgetPrevisionTab() {
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         setData(await response.json());
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Erreur de chargement');
+        setError(err instanceof Error ? err.message : t('prevision.error_title'));
       } finally {
         setIsLoading(false);
       }
@@ -464,7 +465,7 @@ export default function BudgetPrevisionTab() {
       <div className="flex items-center justify-center py-20">
         <div className="text-center">
           <div className="w-10 h-10 border-3 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-          <p className="text-slate-400 text-sm">Chargement des données...</p>
+          <p className="text-slate-400 text-sm">{t('common.loading')}</p>
         </div>
       </div>
     );
@@ -474,7 +475,7 @@ export default function BudgetPrevisionTab() {
     return (
       <div className="flex items-center justify-center py-20">
         <div className="text-center">
-          <p className="text-red-400 mb-2">Erreur de chargement</p>
+          <p className="text-red-400 mb-2">{t('prevision.error_title')}</p>
           <p className="text-slate-500 text-sm">{error}</p>
         </div>
       </div>
@@ -484,16 +485,16 @@ export default function BudgetPrevisionTab() {
   return (
     <div className="space-y-8">
       {/* KPI Cards */}
-      <ExecutionRateCards rates={chronoRates} />
+      <ExecutionRateCards rates={chronoRates} t={t} />
 
       {/* Charts row */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <VoteVsExecuteChart rates={chronoRates} />
-        <ExecutionRateChart rates={chronoRates} />
+        <VoteVsExecuteChart rates={chronoRates} t={t} />
+        <ExecutionRateChart rates={chronoRates} t={t} />
       </div>
 
       {/* Ecart Ranking */}
-      <EcartRanking ranking={data.ecart_ranking} />
+      <EcartRanking ranking={data.ecart_ranking} t={t} />
 
       {/* TODO: rediscuter comment documenter les sources de données (globalement, pas par page) */}
     </div>

@@ -11,7 +11,7 @@
  */
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
+import LocaleLink from '@/components/LocaleLink';
 import BudgetSankey from '@/components/BudgetSankey';
 import type { BudgetData } from '@/lib/formatters';
 import { useTrack } from '@/lib/analyticsContext';
@@ -42,7 +42,7 @@ export default function LandingPage() {
           setBudgetData(data);
         }
       } catch (error) {
-        console.error('Erreur chargement données Sankey:', error);
+        console.error('Error loading Sankey data:', error);
       }
     }
     loadData();
@@ -109,7 +109,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">
             {CARD_KEYS.map((card) => (
-              <Link
+              <LocaleLink
                 key={card.href}
                 href={card.href}
                 onClick={() => track('cta_click', { cta: 'question_card', destination: card.href })}
@@ -127,7 +127,7 @@ export default function LandingPage() {
                 <span className={`inline-block mt-4 text-sm ${card.accentText} font-mono`}>
                   {t(`landing.card.${card.key}.link`)} →
                 </span>
-              </Link>
+              </LocaleLink>
             ))}
           </div>
         </div>
@@ -220,9 +220,9 @@ export default function LandingPage() {
               GitHub
             </a>
             {' · '}
-            <Link href="/blog" className="underline hover:text-slate-200">
+            <LocaleLink href="/blog" className="underline hover:text-slate-200">
               Blog
-            </Link>
+            </LocaleLink>
             {' · '}
             <a
               href="mailto:hi@franceopendata.org"
@@ -246,7 +246,7 @@ export default function LandingPage() {
             {' · '}
             <button type="button" onClick={() => { track('glossary_open', { trigger: 'footer_link' }); openFull(); }} className="hover:text-slate-300">{t('nav.glossary_title')}</button>
             {' · '}
-            <Link href="/confidentialite" className="hover:text-slate-300">{t('nav.privacy_title')}</Link>
+            <LocaleLink href="/confidentialite" className="hover:text-slate-300">{t('nav.privacy_title')}</LocaleLink>
           </p>
         </div>
       </footer>

@@ -20,6 +20,7 @@ import type { EChartsOption } from 'echarts';
 import { formatEuroCompact } from '@/lib/formatters';
 import { PALETTE, FLUX_COLORS } from '@/lib/colors';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
+import { useT } from '@/lib/localeContext';
 
 export interface FinancialYearData {
   year: number;
@@ -69,7 +70,8 @@ export default function FinancialHealthChart({
   onYearClick,
 }: FinancialHealthChartProps) {
   const isMobile = useIsMobile(BREAKPOINTS.md);
-  
+  const t = useT();
+
   // Trier par année
   const sortedData = useMemo(() => {
     return [...data].sort((a, b) => a.year - b.year);
@@ -127,7 +129,7 @@ export default function FinancialHealthChart({
         if (yearData?.emprunts) {
           html += `
             <div style="border-top: 1px solid rgba(148, 163, 184, 0.2); margin-top: 8px; padding-top: 6px; font-size: ${isMobile ? '10px' : '11px'}; color: #94a3b8;">
-              Emprunts comptabilisés : ${formatEuroCompact(yearData.emprunts)}
+              ${t('financial.loans_recorded')} : ${formatEuroCompact(yearData.emprunts)}
             </div>
           `;
         }
@@ -136,7 +138,7 @@ export default function FinancialHealthChart({
       },
     },
     legend: {
-      data: ['Épargne brute', 'Surplus/Déficit'],
+      data: [t('financial.gross_savings'), t('financial.surplus_deficit')],
       ...(isMobile ? { top: 0 } : { bottom: 0 }),
       textStyle: {
         color: '#94a3b8',
@@ -186,7 +188,7 @@ export default function FinancialHealthChart({
     },
     series: [
       {
-        name: 'Épargne brute',
+        name: t('financial.gross_savings'),
         type: 'bar',
         data: epargne,
         barMaxWidth: isMobile ? 30 : 40,
@@ -212,7 +214,7 @@ export default function FinancialHealthChart({
         },
       },
       {
-        name: 'Surplus/Déficit',
+        name: t('financial.surplus_deficit'),
         type: 'line',
         data: surplus,
         smooth: true,
@@ -261,7 +263,7 @@ export default function FinancialHealthChart({
     animation: true,
     animationDuration: isMobile ? 500 : 800,
     animationEasing: 'cubicOut',
-  }), [years, epargne, surplus, sortedData, isMobile]);
+  }), [years, epargne, surplus, sortedData, isMobile, t]);
 
   // Gestion du clic
   const handleClick = (params: { name?: string }) => {

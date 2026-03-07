@@ -22,6 +22,7 @@ import { formatEuroCompact } from '@/lib/formatters';
 import { FLUX_COLORS } from '@/lib/colors';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 import { useTrack } from '@/lib/analyticsContext';
+import { useT } from '@/lib/localeContext';
 
 export interface YearlyBudget {
   year: number;
@@ -67,6 +68,7 @@ export default function EvolutionChart({
 }: EvolutionChartProps) {
   const isMobile = useIsMobile(BREAKPOINTS.md);
   const track = useTrack();
+  const t = useT();
   // Trier par année
   const sortedData = useMemo(() => {
     return [...data].sort((a, b) => a.year - b.year);
@@ -145,13 +147,13 @@ export default function EvolutionChart({
         let html = `<div style="font-weight: 600; margin-bottom: 6px; font-size: ${isMobile ? '13px' : '14px'};">`;
         html += year;
         if (isVoted) {
-          html += `<span style="font-weight: 400; font-size: 10px; color: #94a3b8; margin-left: 6px; vertical-align: middle; border: 1px solid #475569; border-radius: 3px; padding: 1px 4px;">voté</span>`;
+          html += `<span style="font-weight: 400; font-size: 10px; color: #94a3b8; margin-left: 6px; vertical-align: middle; border: 1px solid #475569; border-radius: 3px; padding: 1px 4px;">${t('common.voted')}</span>`;
         }
         html += `</div>`;
         
         // Afficher Recettes et Dépenses (exclure Déficit car affiché séparément)
         items
-          .filter(item => item.seriesName !== 'Déficit')
+          .filter(item => item.seriesName !== t('chart.deficit'))
           .forEach(item => {
             html += `
               <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '10px' : '16px'}; margin: 3px 0; font-size: ${isMobile ? '11px' : '12px'};">
@@ -167,7 +169,7 @@ export default function EvolutionChart({
         // Ligne séparée pour le déficit/excédent
         if (yearData) {
           const soldeColor = yearData.solde >= 0 ? FLUX_COLORS.solde.positif : FLUX_COLORS.solde.negatif;
-          const soldeLabel = yearData.solde >= 0 ? 'Excédent' : 'Déficit';
+          const soldeLabel = yearData.solde >= 0 ? t('chart.surplus') : t('chart.deficit');
           html += `
             <div style="border-top: 1px solid rgba(148, 163, 184, 0.2); margin-top: 6px; padding-top: 6px;">
               <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '10px' : '16px'}; font-size: ${isMobile ? '11px' : '12px'};">
@@ -187,7 +189,7 @@ export default function EvolutionChart({
       },
     },
     legend: {
-      data: ['Recettes', 'Dépenses', 'Déficit'],
+      data: [t('chart.revenue'), t('chart.expenditure'), t('chart.deficit')],
       // Mobile: légende en haut, Desktop: en bas
       ...(isMobile ? { top: 0 } : { bottom: 0 }),
       textStyle: {
@@ -244,7 +246,7 @@ export default function EvolutionChart({
     series: [
       // ── Recettes (trait plein = exécuté) ──
       {
-        name: 'Recettes',
+        name: t('chart.revenue'),
         type: 'line',
         data: splitSeries ? splitSeries.executedRecettes : recettes,
         smooth: true,
@@ -272,7 +274,7 @@ export default function EvolutionChart({
       },
       // ── Dépenses (trait plein = exécuté) ──
       {
-        name: 'Dépenses',
+        name: t('chart.expenditure'),
         type: 'line',
         data: splitSeries ? splitSeries.executedDepenses : depenses,
         smooth: true,
@@ -300,7 +302,7 @@ export default function EvolutionChart({
       },
       // ── Recettes votées (trait pointillé = prévisionnel) ──
       ...(splitSeries ? [{
-        name: 'Recettes',
+        name: t('chart.revenue'),
         type: 'line' as const,
         data: splitSeries.votedRecettes,
         smooth: true,
@@ -329,7 +331,7 @@ export default function EvolutionChart({
       }] : []),
       // ── Dépenses votées (trait pointillé = prévisionnel) ──
       ...(splitSeries ? [{
-        name: 'Dépenses',
+        name: t('chart.expenditure'),
         type: 'line' as const,
         data: splitSeries.votedDepenses,
         smooth: true,
@@ -358,7 +360,7 @@ export default function EvolutionChart({
       }] : []),
       // ── Barres Déficit / Excédent (fond) ──
       {
-        name: 'Déficit',
+        name: t('chart.deficit'),
         type: 'bar',
         itemStyle: {
           color: FLUX_COLORS.solde.negatif,
@@ -385,7 +387,7 @@ export default function EvolutionChart({
     animation: true,
     animationDuration: isMobile ? 500 : 800, // Plus rapide sur mobile
     animationEasing: 'cubicOut',
-  }), [years, recettes, depenses, soldes, sortedData, isMobile, splitSeries]);
+  }), [years, recettes, depenses, soldes, sortedData, isMobile, splitSeries, t]);
 
   // Gestion du clic sur un point
   const handleClick = (params: { name?: string }) => {

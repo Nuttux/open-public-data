@@ -12,13 +12,16 @@ import type { TendancesYear, BreakdownOption } from '@/components/shared/Tendanc
 import { PALETTE } from '@/lib/colors';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { BREAKDOWN_ICONS } from '@/lib/icons';
+import { useT } from '@/lib/localeContext';
 
 // ─── Config ──────────────────────────────────────────────────────────────────
 
-const BREAKDOWNS: BreakdownOption[] = [
-  { id: 'nature', label: 'Nature', icon: BREAKDOWN_ICONS.nature },
-  { id: 'categorie', label: 'Catégorie', icon: BREAKDOWN_ICONS.categorie },
-];
+function getBreakdowns(t: (key: string) => string): BreakdownOption[] {
+  return [
+    { id: 'nature', label: t('marches.breakdown.nature'), icon: BREAKDOWN_ICONS.nature },
+    { id: 'categorie', label: t('marches.breakdown.categorie'), icon: BREAKDOWN_ICONS.categorie },
+  ];
+}
 
 const NATURE_COLORS: Record<string, string> = {
   'SERVICES': PALETTE.blue,
@@ -65,10 +68,12 @@ function parseData(json: unknown): TendancesYear[] {
 
 // ─── KPI helpers ─────────────────────────────────────────────────────────────
 
-const KPI4_LABELS: Record<string, string> = {
-  nature: '1re nature',
-  categorie: '1re catégorie',
-};
+function getKpi4Labels(t: (key: string) => string): Record<string, string> {
+  return {
+    nature: t('marches.tendances.top_nature'),
+    categorie: t('marches.tendances.top_categorie'),
+  };
+}
 
 function formatVariationDiff(value: number): string {
   const m = value / 1_000_000;
@@ -79,50 +84,52 @@ function formatVariationDiff(value: number): string {
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function MarchesTendancesTab() {
+  const t = useT();
+  const kpi4Labels = getKpi4Labels(t);
   return (
     <>
       <div className="bg-teal-900/30 border border-teal-500/30 rounded-lg p-3 mb-6">
         <p className="text-xs text-teal-300/80">
-          Les montants affichés sont des <strong className="text-teal-200">plafonds sur toute la durée du contrat</strong> (souvent 4 ans), pas des dépenses annuelles. Le montant réellement dépensé est généralement inférieur.
+          {t('marches.banner_text')}<strong className="text-teal-200">{t('marches.banner_bold')}</strong>{t('marches.banner_suffix')}
         </p>
       </div>
       <TendancesTab
       dataUrl="/data/marches-publics/marches_tendances.json"
       parseData={parseData}
-      breakdowns={BREAKDOWNS}
+      breakdowns={getBreakdowns(t)}
       getGroupColor={(label, dim) => getGroupColor(label, dim)}
       groupLimit={(dim) => dim === 'categorie' ? 8 : undefined}
       theme="teal"
       formatValue={formatEuroCompact}
       tooltipHeader={(year, total) => `${year} — ${formatEuroCompact(total)}`}
       formatVariationDiff={formatVariationDiff}
-      title="Tendances des marchés publics"
-      kpi1Label={(year) => `Montant total ${year}`}
-      kpi1Sub={(year) => `${formatNumber(year.subCount || 0)} marchés notifiés`}
+      title={t('marches.tendances.title')}
+      kpi1Label={(year) => `${t('marches.tendances.total_amount')} ${year}`}
+      kpi1Sub={(year) => `${formatNumber(year.subCount || 0)} ${t('marches.notified')}`}
       kpi3={(ctx) => {
         const avg = ctx.latest.subCount ? ctx.latest.total / ctx.latest.subCount : 0;
         return {
-          label: 'Montant moyen',
+          label: t('marches.tendances.avg_amount'),
           value: formatEuroCompact(avg),
-          sub: `par marché en ${ctx.latest.year}`,
+          sub: `${t('marches.tendances.per_contract_in')} ${ctx.latest.year}`,
         };
       }}
       kpi4={(ctx) => ({
-        label: KPI4_LABELS[ctx.breakdown] || '1er groupe',
+        label: kpi4Labels[ctx.breakdown] || t('marches.tendances.top_group'),
         value: ctx.topName,
         sub: `${formatEuroCompact(ctx.topValue)} (${ctx.topPct.toFixed(0)}%)`,
       })}
-      chartTitle={(dim) => `Montants par ${dim}`}
-      variationTitle={(dim) => `Évolution par ${dim}`}
-      variationSubtitle={(dim) => `Quelles ${dim}s ont le plus évolué`}
+      chartTitle={(dim) => `${t('marches.tendances.amounts_by')} ${dim}`}
+      variationTitle={(dim) => `${t('marches.tendances.evolution_by')} ${dim}`}
+      variationSubtitle={(dim) => `${t('marches.tendances.which_evolved')} ${dim}s ${t('marches.tendances.most_evolved')}`}
       yAxisFormatter={(v: number) => v >= 1e9 ? `${(v / 1e9).toFixed(1)} Md€` : `${(v / 1e6).toFixed(0)} M€`}
-      sourceNote="Source : Open Data Paris — Liste des marchés de la collectivité parisienne. Les montants sont des plafonds contractuels sur toute la durée du contrat."
+      sourceNote={t('marches.tendances.source_note')}
       qualityNotes={
         <ul className="text-[11px] text-slate-500 space-y-1.5 list-disc list-inside">
-          <li>Les montants affichés sont des <strong className="text-slate-500">plafonds sur toute la durée du contrat</strong> (souvent 4 ans), pas des dépenses annuelles.</li>
-          <li>97% des marchés sont des <strong className="text-slate-500">contrats-cadres</strong> : le montant affiché est un maximum, la dépense réelle est généralement inférieure.</li>
-          <li>Les marchés <strong className="text-slate-500">multi-attributaires</strong> (~15% de la valeur) sont des contrats partagés entre plusieurs entreprises.</li>
-          <li>Données disponibles de 2013 à 2024. Publication annuelle avec ~10 mois de décalage.</li>
+          <li>{t('marches.tendances.quality_1')}<strong className="text-slate-500">{t('marches.tendances.quality_1_bold')}</strong>{t('marches.tendances.quality_1_suffix')}</li>
+          <li>{t('marches.tendances.quality_2_pre')}<strong className="text-slate-500">{t('marches.tendances.quality_2_bold')}</strong>{t('marches.tendances.quality_2_suffix')}</li>
+          <li>{t('marches.tendances.quality_3_pre')}<strong className="text-slate-500">{t('marches.tendances.quality_3_bold')}</strong>{t('marches.tendances.quality_3_suffix')}</li>
+          <li>{t('marches.tendances.quality_4')}</li>
         </ul>
       }
       csvFilename="marches_tendances"

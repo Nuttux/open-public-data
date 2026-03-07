@@ -1,25 +1,19 @@
-/**
- * GlossaryShell - Client wrapper for the glossary system
- *
- * Bundles the GlossaryProvider (context) and GlossaryDrawer (UI)
- * into a single client component that can be used in the server-side
- * root layout (app/layout.tsx).
- */
-
 'use client';
 
 import { type ReactNode } from 'react';
 import { GlossaryProvider } from '@/lib/glossaryContext';
 import { LocaleProvider } from '@/lib/localeContext';
 import GlossaryDrawer from './GlossaryDrawer';
+import type { Locale } from '@/i18n/config';
 
 interface GlossaryShellProps {
+  locale: Locale;
   children: ReactNode;
 }
 
-export default function GlossaryShell({ children }: GlossaryShellProps) {
+export default function GlossaryShell({ locale, children }: GlossaryShellProps) {
   return (
-    <LocaleProvider>
+    <LocaleProvider locale={locale}>
       <GlossaryProvider>
         {children}
         <GlossaryDrawer />

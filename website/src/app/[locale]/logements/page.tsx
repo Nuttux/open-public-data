@@ -60,7 +60,7 @@ function LogementsPageInner() {
         if (years.length > 0) setSelectedYear(years[0]);
       } catch (err) {
         console.error('Error:', err);
-        setError('Erreur lors du chargement des données');
+        setError(t('common.error_loading'));
       } finally {
         setIsLoading(false);
       }
@@ -170,22 +170,22 @@ function LogementsPageInner() {
               <a href={DATA_SOURCES.logementsSociaux.url} target="_blank" rel="noopener noreferrer" className="flex items-start gap-2 p-2 rounded bg-slate-800/30 hover:bg-slate-800/50 transition-colors">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0 mt-1.5" />
                 <div>
-                  <p className="text-slate-300 font-medium">{DATA_SOURCES.logementsSociaux.nom}</p>
-                  <p className="text-slate-500">{DATA_SOURCES.logementsSociaux.description}</p>
+                  <p className="text-slate-300 font-medium">{t('logements.source.housing_name')}</p>
+                  <p className="text-slate-500">{t('logements.source.housing_desc')}</p>
                 </div>
               </a>
               <a href={DATA_SOURCES.population.url} target="_blank" rel="noopener noreferrer" className="flex items-start gap-2 p-2 rounded bg-slate-800/30 hover:bg-slate-800/50 transition-colors">
                 <span className="w-2 h-2 rounded-full bg-cyan-400 shrink-0 mt-1.5" />
                 <div>
-                  <p className="text-slate-300 font-medium">{DATA_SOURCES.population.nom}</p>
-                  <p className="text-slate-500">{DATA_SOURCES.population.description}</p>
+                  <p className="text-slate-300 font-medium">{t('logements.source.population_name')}</p>
+                  <p className="text-slate-500">{t('logements.source.population_desc')}</p>
                 </div>
               </a>
               <a href={DATA_SOURCES.arrondissements.url} target="_blank" rel="noopener noreferrer" className="flex items-start gap-2 p-2 rounded bg-slate-800/30 hover:bg-slate-800/50 transition-colors">
                 <span className="w-2 h-2 rounded-full bg-slate-400 shrink-0 mt-1.5" />
                 <div>
-                  <p className="text-slate-300 font-medium">{DATA_SOURCES.arrondissements.nom}</p>
-                  <p className="text-slate-500">{DATA_SOURCES.arrondissements.description}</p>
+                  <p className="text-slate-300 font-medium">{t('logements.source.arrondissements_name')}</p>
+                  <p className="text-slate-500">{t('logements.source.arrondissements_desc')}</p>
                 </div>
               </a>
             </div>

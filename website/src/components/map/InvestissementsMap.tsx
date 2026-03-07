@@ -19,6 +19,7 @@ import { formatEuroCompact } from '@/lib/formatters';
 import { THEMATIQUE_LABELS, type ThematiqueSubvention } from '@/lib/constants/directions';
 import ChoroplethLayer, { ChoroplethLegend } from './ChoroplethLayer';
 import { MISC_ICONS } from '@/lib/icons';
+import { useT } from '@/lib/localeContext';
 
 /**
  * Centre de Paris par défaut
@@ -115,6 +116,7 @@ export default function InvestissementsMap({
   showChoropleth = false,
   arrondissementStats = [],
 }: InvestissementsMapProps) {
+  const t = useT();
   const [mapReady, setMapReady] = useState(false);
 
   /**
@@ -165,7 +167,7 @@ export default function InvestissementsMap({
         <div className="absolute inset-0 bg-slate-900/50 backdrop-blur-sm z-[1000] flex items-center justify-center">
           <div className="text-center">
             <div className="w-10 h-10 border-4 border-amber-500 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-            <p className="text-slate-300 text-sm">Chargement des projets...</p>
+            <p className="text-slate-300 text-sm">{t('map.loading_projects')}</p>
           </div>
         </div>
       )}
@@ -220,25 +222,25 @@ export default function InvestissementsMap({
                   </p>
                   <div className="text-xs text-slate-600 space-y-1.5">
                     <p className="leading-snug">
-                      <strong>Chapitre:</strong>{' '}
+                      <strong>{t('map.popup.chapitre')}</strong>{' '}
                       <span className="text-slate-700">{projet.missionTexte}</span>
                     </p>
                     {projet.thematique && (
                       <p>
-                        <strong>Thématique:</strong>{' '}
+                        <strong>{t('map.popup.thematique')}</strong>{' '}
                         {themaLabel?.icon || '📋'}{' '}
                         {themaLabel?.label || projet.thematique}
                       </p>
                     )}
-                    <p><strong>Année:</strong> {projet.annee}</p>
-                    
+                    <p><strong>{t('map.popup.annee')}</strong> {projet.annee}</p>
+
                     {/* Localisation */}
                     <div className="mt-2 pt-2 border-t border-slate-700/50">
                       {projet.isPrecise ? (
                         <>
                           <p className="flex items-center gap-1">
                             <span className="text-emerald-500">{MISC_ICONS.mapPinPrecise}</span>
-                            <strong>Localisation précise</strong>
+                            <strong>{t('map.popup.precise_location')}</strong>
                           </p>
                           {projet.adresse && (
                             <p className="text-slate-500 ml-5">{projet.adresse}</p>
@@ -248,12 +250,12 @@ export default function InvestissementsMap({
                         <>
                           <p className="flex items-center gap-1">
                             <span className="text-orange-400">{MISC_ICONS.mapPinApprox}</span>
-                            <strong>Localisation approximative</strong>
+                            <strong>{t('map.popup.approx_location')}</strong>
                           </p>
                           <p className="text-slate-500 ml-5">
-                            {projet.arrondissement === 0 
-                              ? 'Paris Centre' 
-                              : `${projet.arrondissement}ème arrondissement`}
+                            {projet.arrondissement === 0
+                              ? t('map.popup.paris_centre')
+                              : `${projet.arrondissement}${t('map.popup.arrondissement_suffix')}`}
                           </p>
                         </>
                       )}
@@ -269,24 +271,24 @@ export default function InvestissementsMap({
       {/* Légende points */}
       {!showChoropleth && (
         <div className="absolute bottom-4 left-4 bg-slate-900/90 backdrop-blur rounded-lg p-3 z-[1000]">
-          <h4 className="text-xs font-semibold text-slate-300 mb-2">Investissements</h4>
+          <h4 className="text-xs font-semibold text-slate-300 mb-2">{t('map.investments')}</h4>
           <div className="space-y-1.5 text-xs">
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-amber-500 border-2 border-amber-400" />
               <span className="text-slate-400">
-                Précis ({preciseCount})
+                {t('map.precise')} ({preciseCount})
               </span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-orange-400/50 border border-dashed border-orange-400" />
               <span className="text-slate-400">
-                Approx. ({approxCount})
+                {t('map.approx')} ({approxCount})
               </span>
             </div>
           </div>
           <div className="mt-3 pt-2 border-t border-slate-700">
             <p className="text-[10px] text-slate-500">
-              Total: {geoProjets.length} projets
+              {t('map.total_projects').replace('{count}', String(geoProjets.length))}
             </p>
           </div>
         </div>

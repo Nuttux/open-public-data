@@ -24,6 +24,7 @@ import { formatEuroCompact } from '@/lib/formatters';
 import { getNatureColor, getThematiqueColor } from '@/lib/colors';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 import { useTrack } from '@/lib/analyticsContext';
+import { useT } from '@/lib/localeContext';
 
 // Types pour les données
 interface NatureItem {
@@ -62,6 +63,7 @@ export default function NatureDonut({
 }: NatureDonutProps) {
   const isMobile = useIsMobile(BREAKPOINTS.md);
   const track = useTrack();
+  const t = useT();
 
   // Hauteur adaptative
   const chartHeight = isMobile ? Math.min(height, 320) : height;
@@ -74,7 +76,7 @@ export default function NatureDonut({
     if (!selectedNature) {
       // Niveau 1: par nature
       return {
-        title: 'Répartition par nature',
+        title: t('donut.title'),
         total: data.total_depenses,
         items: data.niveau_1.map(item => ({
           name: item.nature,
@@ -99,7 +101,7 @@ export default function NatureDonut({
         })),
       };
     }
-  }, [data, selectedNature]);
+  }, [data, selectedNature, t]);
 
   // Gérer le clic pour drill-down
   const handleClick = useCallback((params: { name?: string }) => {
@@ -140,14 +142,14 @@ export default function NatureDonut({
         return `
           <div style="font-weight: 600; margin-bottom: 4px; font-size: ${isMobile ? '12px' : '14px'};">${p.name}</div>
           <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '10px' : '16px'}; font-size: ${isMobile ? '11px' : '12px'};">
-            <span>Montant:</span>
+            <span>${t('donut.amount')}:</span>
             <span style="font-weight: 500;">${formatEuroCompact(p.value)}</span>
           </div>
           <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '10px' : '16px'}; font-size: ${isMobile ? '11px' : '12px'};">
-            <span>Part:</span>
+            <span>${t('donut.share')}:</span>
             <span style="font-weight: 500;">${p.data.pct.toFixed(1)}%</span>
           </div>
-          ${!selectedNature ? `<div style="margin-top: 6px; color: #60a5fa; font-size: ${isMobile ? '10px' : '11px'};">${isMobile ? 'Tap pour détail →' : 'Cliquez pour détail →'}</div>` : ''}
+          ${!selectedNature ? `<div style="margin-top: 6px; color: #60a5fa; font-size: ${isMobile ? '10px' : '11px'};">${isMobile ? `${t('donut.tap_detail')} →` : `${t('donut.click_detail')} →`}</div>` : ''}
         `;
       },
     },
@@ -171,7 +173,7 @@ export default function NatureDonut({
         left: 'center',
         top: isMobile ? '50%' : '52%',
         style: {
-          text: selectedNature ? 'dans cette catégorie' : 'Total dépenses',
+          text: selectedNature ? t('donut.in_category') : t('donut.total_expenses'),
           fontSize: isMobile ? 10 : 12,
           fill: '#94a3b8',
           textAlign: 'center',
@@ -213,7 +215,7 @@ export default function NatureDonut({
         animationDuration: isMobile ? 300 : 400,
       },
     ],
-  }), [currentData, selectedNature, isMobile]);
+  }), [currentData, selectedNature, isMobile, t]);
 
   return (
     <div className="w-full">
@@ -224,7 +226,7 @@ export default function NatureDonut({
             <button
               onClick={handleBack}
               className="p-1.5 sm:p-2 rounded-lg bg-slate-700/50 hover:bg-slate-700 active:bg-slate-600 transition-colors flex-shrink-0"
-              aria-label="Retour"
+              aria-label={t('donut.back_aria')}
             >
               <svg className="w-4 h-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -234,10 +236,10 @@ export default function NatureDonut({
           <h3 className="text-xs sm:text-sm font-medium text-slate-300 truncate">
             {selectedNature ? (
               <>
-                <span className="text-slate-500 hidden sm:inline">Nature →</span> {selectedNature}
+                <span className="text-slate-500 hidden sm:inline">{t('donut.nature_arrow')}</span> {selectedNature}
               </>
             ) : (
-              isMobile ? 'Appuyez pour explorer' : 'Cliquez sur une catégorie pour voir le détail'
+              isMobile ? t('donut.tap_explore') : t('donut.click_explore')
             )}
           </h3>
         </div>
@@ -279,7 +281,7 @@ export default function NatureDonut({
       {/* Afficher "et X autres" si plus d'items que visibles */}
       {currentData.items.length > (isMobile ? 6 : 8) && (
         <p className="text-[10px] sm:text-xs text-slate-500 mt-2 text-center">
-          et {currentData.items.length - (isMobile ? 6 : 8)} autres catégories
+          {t('donut.and_n_others').replace('{n}', String(currentData.items.length - (isMobile ? 6 : 8)))}
         </p>
       )}
     </div>

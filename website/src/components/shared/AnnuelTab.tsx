@@ -17,6 +17,7 @@ import ReactECharts from 'echarts-for-react';
 import type { EChartsOption } from 'echarts';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
+import { useT } from '@/lib/localeContext';
 
 // ─── Shared Types ────────────────────────────────────────────────────────────
 
@@ -179,13 +180,16 @@ export function aggregateItems<T>(
 export default function AnnuelTab<T>({
   items, isLoading, theme,
   breakdowns, getGroupKey, getGroupColor, getValue,
-  treemapTitle, tooltipCountLabel, tooltipValueLabel = 'Montant', formatValue = formatEuroCompact, maxGroups,
+  treemapTitle, tooltipCountLabel, tooltipValueLabel, formatValue = formatEuroCompact, maxGroups,
   kpiCards,
   itemLabel, columns, sortItems, getItemKey,
   previewLimit = 30, onNavigateExplorer, formatTotal,
   banner, exportBar,
 }: AnnuelTabProps<T>) {
   const isMobile = useIsMobile(BREAKPOINTS.md);
+  const tr = useT();
+  const resolvedTooltipValueLabel = tooltipValueLabel ?? tr('chart.amount');
+  const othersLabel = tr('chart.others');
   const [breakdown, setBreakdown] = useState(breakdowns[0].id);
   const [selectedGroup, setSelectedGroup] = useState<string | null>(null);
   const t = THEME[theme];
@@ -201,19 +205,19 @@ export default function AnnuelTab<T>({
     const autresCount = rest.reduce((s, g) => s + g.count, 0);
     const total = all.reduce((s, g) => s + g.montant, 0);
     top.push({
-      key: 'Autres',
+      key: othersLabel,
       montant: autresMontant,
       count: autresCount,
       pct: total > 0 ? (autresMontant / total) * 100 : 0,
     });
     return top;
-  }, [items, breakdown, getGroupKey, getValue, maxGroups]);
+  }, [items, breakdown, getGroupKey, getValue, maxGroups, othersLabel]);
 
   // ── Filtered items ──
-  const topGroupKeys = useMemo(() => new Set(groups.filter(g => g.key !== 'Autres').map(g => g.key)), [groups]);
+  const topGroupKeys = useMemo(() => new Set(groups.filter(g => g.key !== othersLabel).map(g => g.key)), [groups, othersLabel]);
   const filteredItems = useMemo(() => {
     if (!selectedGroup) return items;
-    if (selectedGroup === 'Autres') {
+    if (selectedGroup === othersLabel) {
       return items.filter(item => !topGroupKeys.has(getGroupKey(item, breakdown)));
     }
     return items.filter(item => getGroupKey(item, breakdown) === selectedGroup);
@@ -257,11 +261,11 @@ export default function AnnuelTab<T>({
           </div>
           <div style="display: flex; flex-direction: column; gap: 3px; font-size: ${isMobile ? '11px' : '12px'};">
             <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '12px' : '24px'};">
-              <span style="color: #94a3b8;">${tooltipValueLabel}</span>
+              <span style="color: #94a3b8;">${resolvedTooltipValueLabel}</span>
               <span style="font-weight: 500; color: #f1f5f9;">${formatValue(p.value)}</span>
             </div>
             <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '12px' : '24px'};">
-              <span style="color: #94a3b8;">Part du total</span>
+              <span style="color: #94a3b8;">${tr('chart.share_of_total')}</span>
               <span style="font-weight: 500; color: #f1f5f9;">${p.data.pct.toFixed(1)}%</span>
             </div>
             <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '12px' : '24px'};">
@@ -307,7 +311,7 @@ export default function AnnuelTab<T>({
       animationDuration: isMobile ? 300 : 500,
       animationEasing: 'cubicOut',
     }],
-  }), [chartData, isMobile, tooltipCountLabel, tooltipValueLabel, formatValue]);
+  }), [chartData, isMobile, tooltipCountLabel, resolvedTooltipValueLabel, formatValue, tr]);
 
   const handleTreemapClick = useCallback((params: unknown) => {
     const p = params as { name: string };
@@ -348,11 +352,11 @@ export default function AnnuelTab<T>({
           <div>
             <h3 className="text-base sm:text-lg font-semibold text-slate-100">{treemapTitle}</h3>
             <p className="text-xs sm:text-sm text-slate-300">
-              {isMobile ? 'Appuyez pour filtrer' : 'Cliquez sur un bloc pour filtrer la table'}
+              {isMobile ? tr('chart.tap_to_filter') : tr('chart.click_to_filter')}
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-xs text-slate-400 hidden sm:inline">Ventilation :</span>
+            <span className="text-xs text-slate-400 hidden sm:inline">{tr('chart.breakdown')} :</span>
             <div className="flex bg-slate-800 rounded-lg border border-slate-700 p-0.5">
               {breakdowns.map(opt => (
                 <button
@@ -384,7 +388,7 @@ export default function AnnuelTab<T>({
 
         {selectedGroup && (
           <div className="mt-3 flex flex-wrap items-center gap-2">
-            <span className="text-xs sm:text-sm text-slate-300">Filtre actif :</span>
+            <span className="text-xs sm:text-sm text-slate-300">{tr('chart.active_filter')} :</span>
             <button
               onClick={() => setSelectedGroup(null)}
               className={`inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium ${t.filterBadgeBg} ${t.filterBadgeText} border ${t.filterBadgeBorder} ${t.filterBadgeHover} transition-colors`}
@@ -402,7 +406,7 @@ export default function AnnuelTab<T>({
           <h3 className="text-lg font-semibold text-slate-100">
             {selectedGroup
               ? `${selectedGroup} — ${formatNumber(sortedFiltered.length)} ${itemLabel}`
-              : `Top ${itemLabel} — ${formatNumber(sortedFiltered.length)} ${itemLabel}`}
+              : `${tr('chart.top')} ${itemLabel} — ${formatNumber(sortedFiltered.length)} ${itemLabel}`}
           </h3>
           <span className={`text-sm font-semibold ${t.valueAccent}`}>{totalLabel}</span>
         </div>
@@ -442,13 +446,13 @@ export default function AnnuelTab<T>({
               onClick={onNavigateExplorer}
               className={`text-sm ${t.valueAccent} hover:opacity-80 transition-colors`}
             >
-              Voir les {formatNumber(sortedFiltered.length)} {itemLabel} →
+              {tr('chart.see_all')} {formatNumber(sortedFiltered.length)} {itemLabel} →
             </button>
           </div>
         )}
         {sortedFiltered.length === 0 && (
           <div className="px-4 py-12 text-center">
-            <p className="text-slate-300">Aucun {itemLabel.slice(0, -1)} ne correspond aux filtres</p>
+            <p className="text-slate-300">{tr('common.none')} {itemLabel.slice(0, -1)} {tr('chart.no_match')}</p>
           </div>
         )}
       </div>

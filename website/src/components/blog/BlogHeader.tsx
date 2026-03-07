@@ -1,5 +1,8 @@
-import Link from "next/link";
+'use client';
+
+import LocaleLink from "@/components/LocaleLink";
 import { BlogPostMeta } from "@/lib/blog";
+import { useLocale, useT } from "@/lib/localeContext";
 
 interface BlogHeaderProps {
   post: BlogPostMeta;
@@ -9,7 +12,9 @@ interface BlogHeaderProps {
  * Header component for individual blog posts
  */
 export default function BlogHeader({ post }: BlogHeaderProps) {
-  const formattedDate = new Date(post.date).toLocaleDateString("fr-FR", {
+  const { locale } = useLocale();
+  const t = useT();
+  const formattedDate = new Date(post.date).toLocaleDateString(locale === 'en' ? 'en-GB' : 'fr-FR', {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -18,7 +23,7 @@ export default function BlogHeader({ post }: BlogHeaderProps) {
   return (
     <header className="mb-10">
       {/* Back link */}
-      <Link
+      <LocaleLink
         href="/blog"
         className="inline-flex items-center gap-2 text-slate-400 hover:text-emerald-400 transition-colors mb-8"
       >
@@ -35,8 +40,8 @@ export default function BlogHeader({ post }: BlogHeaderProps) {
             d="M15 19l-7-7 7-7"
           />
         </svg>
-        Retour au blog
-      </Link>
+        {t('blog.back')}
+      </LocaleLink>
 
       {/* Tags */}
       {post.tags && post.tags.length > 0 && (

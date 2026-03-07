@@ -14,6 +14,7 @@ import { useState, useMemo, useCallback, useEffect } from 'react';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import type { MarchesFilters } from './MarchesFilters';
 import { NATURE_LABELS } from './MarchesFilters';
+import { useT, useLocale } from '@/lib/localeContext';
 
 /**
  * Données d'un marché public
@@ -83,6 +84,8 @@ export default function MarchesTable({
   const [sortColumn, setSortColumn] = useState<SortColumn>('montant_max');
   const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
   const [currentPage, setCurrentPage] = useState(1);
+  const t = useT();
+  const { locale } = useLocale();
 
   const filteredData = useMemo(() => {
     let result = [...data];
@@ -180,7 +183,7 @@ export default function MarchesTable({
       <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-8">
         <div className="flex items-center justify-center gap-3">
           <div className="w-6 h-6 border-2 border-teal-500 border-t-transparent rounded-full animate-spin" />
-          <span className="text-slate-400">Chargement des données...</span>
+          <span className="text-slate-400">{t('common.loading')}</span>
         </div>
       </div>
     );
@@ -190,8 +193,8 @@ export default function MarchesTable({
     return (
       <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-8">
         <div className="text-center">
-          <p className="text-slate-400">Aucun marché ne correspond aux filtres.</p>
-          <p className="text-sm text-slate-400 mt-1">Essayez de modifier vos critères de recherche.</p>
+          <p className="text-slate-400">{t('marches.no_results')}</p>
+          <p className="text-sm text-slate-400 mt-1">{t('marches.no_results_hint')}</p>
         </div>
       </div>
     );
@@ -203,14 +206,14 @@ export default function MarchesTable({
       <div className="px-4 py-3 border-b border-slate-700/50 flex items-center justify-between">
         <div>
           <h3 className="font-medium text-slate-100">
-            {formatNumber(sortedData.length)} {sortedData.length > 1 ? 'marchés affichés' : 'marché affiché'}
+            {formatNumber(sortedData.length)} {sortedData.length > 1 ? t('marches.contracts_shown') : t('marches.contract_shown')}
           </h3>
           <p className="text-xs text-slate-400">
-            Enveloppe max totale : {formatEuroCompact(sortedData.reduce((s, m) => s + m.montant_max, 0))}
+            {t('marches.total_envelope')} {formatEuroCompact(sortedData.reduce((s, m) => s + m.montant_max, 0))}
           </p>
         </div>
         <div className="text-sm text-slate-400">
-          Page {currentPage} / {totalPages}
+          {t('common.page')} {currentPage} / {totalPages}
         </div>
       </div>
 
@@ -219,10 +222,10 @@ export default function MarchesTable({
         <table className="w-full">
           <thead className="bg-slate-800/30">
             <tr>
-              <SortableHeader column="objet" label="Marché" className="min-w-[120px] md:min-w-[250px]" />
-              <SortableHeader column="fournisseur_nom" label="Fournisseur" className="min-w-[100px]" />
-              <SortableHeader column="montant_max" label="Enveloppe max" />
-              <SortableHeader column="duree_jours" label="Durée" className="hidden md:table-cell" />
+              <SortableHeader column="objet" label={t('marches.col.contract')} className="min-w-[120px] md:min-w-[250px]" />
+              <SortableHeader column="fournisseur_nom" label={t('marches.col.supplier')} className="min-w-[100px]" />
+              <SortableHeader column="montant_max" label={t('marches.col.envelope')} />
+              <SortableHeader column="duree_jours" label={t('marches.col.duration')} className="hidden md:table-cell" />
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-200">
@@ -246,8 +249,8 @@ export default function MarchesTable({
                         style={{ backgroundColor: NATURE_COLORS[m.nature] || '#64748b' }}
                       />
                       <span className="text-[10px] text-slate-400">
-                        {NATURE_LABELS[m.nature] || m.nature}
-                        {m.date_notification && ` · ${new Date(m.date_notification).toLocaleDateString('fr-FR')}`}
+                        {t(NATURE_LABELS[m.nature]) || m.nature}
+                        {m.date_notification && ` · ${new Date(m.date_notification).toLocaleDateString(locale === 'fr' ? 'fr-FR' : 'en-GB')}`}
                       </span>
                     </div>
                   </div>
@@ -257,7 +260,7 @@ export default function MarchesTable({
                 <td className="px-2 md:px-4 py-3">
                   {m.is_multiattributaire ? (
                     <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] md:text-xs font-medium bg-amber-50 text-amber-400">
-                      Multi-attr.
+                      {t('marches.multi_attr')}
                     </span>
                   ) : (
                     <p className="text-xs md:text-sm text-slate-400 line-clamp-2" title={m.fournisseur_nom}>
@@ -298,7 +301,7 @@ export default function MarchesTable({
             disabled={currentPage === 1}
             className="px-3 py-1.5 text-sm font-medium text-slate-300 hover:text-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
-            ← Précédent
+            ← {t('common.prev')}
           </button>
           <div className="flex items-center gap-1">
             {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
@@ -332,7 +335,7 @@ export default function MarchesTable({
             disabled={currentPage === totalPages}
             className="px-3 py-1.5 text-sm font-medium text-slate-300 hover:text-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
-            Suivant →
+            {t('common.next')} →
           </button>
         </div>
       )}

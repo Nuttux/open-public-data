@@ -27,6 +27,7 @@ import type { EChartsOption } from 'echarts';
 import { formatEuroCompact } from '@/lib/formatters';
 import { PALETTE } from '@/lib/colors';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
+import { useT } from '@/lib/localeContext';
 
 /** Structure d'un poste avec variation */
 export interface VariationItem {
@@ -265,6 +266,7 @@ export default function VariationRankChart({
   maxItems = 8,
 }: VariationRankChartProps) {
   const isMobile = useIsMobile(BREAKPOINTS.md);
+  const t = useT();
 
   // Filter out "Autre"/"Autres" and limit items
   const filteredDepenses = useMemo(() => {
@@ -284,10 +286,10 @@ export default function VariationRankChart({
       {/* Main header */}
       <div className="mb-4">
         <h3 className="text-lg font-semibold text-slate-100 flex items-center gap-2">
-          Évolution {data.periode.debut} → {data.periode.fin}
+          {t('chart.evolution')} {data.periode.debut} → {data.periode.fin}
         </h3>
         <p className="text-sm text-slate-400">
-          D&apos;où vient l&apos;argent et où il est dépensé — postes qui ont le plus évolué
+          {t('chart.variation_desc')}
         </p>
       </div>
 
@@ -295,11 +297,11 @@ export default function VariationRankChart({
       <div className="flex items-center gap-4 mb-4 text-xs text-slate-400">
         <div className="flex items-center gap-1.5">
           <span className="w-3 h-3 rounded bg-emerald-500"></span>
-          <span>Hausse</span>
+          <span>{t('chart.increase')}</span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="w-3 h-3 rounded bg-red-500"></span>
-          <span>Baisse</span>
+          <span>{t('chart.decrease')}</span>
         </div>
       </div>
 
@@ -308,8 +310,8 @@ export default function VariationRankChart({
         items={filteredRecettes}
         periode={data.periode}
         isMobile={isMobile}
-        title="Recettes — par source"
-        subtitle="D'où vient l'argent (Impôts, Emprunts, Dotations...)"
+        title={t('chart.revenue_sources')}
+        subtitle={t('chart.revenue_sources_desc')}
         icon=""
         accentColor="emerald"
       />
@@ -322,15 +324,15 @@ export default function VariationRankChart({
         items={filteredDepenses}
         periode={data.periode}
         isMobile={isMobile}
-        title="Dépenses — par destination"
-        subtitle="Où l'argent est dépensé (Social, Éducation, Transport...)"
+        title={t('chart.expenditure_dest')}
+        subtitle={t('chart.expenditure_dest_desc')}
         icon=""
         accentColor="rose"
       />
 
       {/* Note */}
       <p className="text-xs text-slate-500 mt-2">
-        * Hors catégories &quot;Autre&quot; (agrégats de postes mineurs)
+        {t('chart.excluding_other')}
       </p>
     </div>
   );

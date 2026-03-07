@@ -7,20 +7,14 @@
  * 3 breakdowns : Thématique, Direction, Type d'organisme.
  */
 
+import { useMemo } from 'react';
 import TendancesTab from '@/components/shared/TendancesTab';
 import type { TendancesYear, BreakdownOption } from '@/components/shared/TendancesTab';
 import { getThematiqueColor, PALETTE } from '@/lib/colors';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { PARIS_POPULATION_TOTAL } from '@/lib/constants/arrondissements';
 import { BREAKDOWN_ICONS } from '@/lib/icons';
-
-// ─── Config ──────────────────────────────────────────────────────────────────
-
-const BREAKDOWNS: BreakdownOption[] = [
-  { id: 'thematique', label: 'Thématique', icon: BREAKDOWN_ICONS.thematique },
-  { id: 'direction', label: 'Direction', icon: BREAKDOWN_ICONS.direction },
-  { id: 'type_organisme', label: 'Type organisme', icon: BREAKDOWN_ICONS.type_organisme },
-];
+import { useT } from '@/lib/localeContext';
 
 const TYPE_ORGANISME_COLORS: Record<string, string> = {
   'Associations': PALETTE.purple,
@@ -71,10 +65,10 @@ function parseData(json: unknown): TendancesYear[] {
 
 // ─── KPI helpers ─────────────────────────────────────────────────────────────
 
-const KPI4_LABELS: Record<string, string> = {
-  thematique: '1re thématique',
-  direction: '1re direction',
-  type_organisme: '1er type',
+const KPI4_KEYS: Record<string, string> = {
+  thematique: 'subventions.tendances.kpi4_thematique',
+  direction: 'subventions.tendances.kpi4_direction',
+  type_organisme: 'subventions.tendances.kpi4_type',
 };
 
 function formatVariationDiff(value: number): string {
@@ -86,35 +80,43 @@ function formatVariationDiff(value: number): string {
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function SubventionsTendancesTab() {
+  const t = useT();
+
+  const breakdowns: BreakdownOption[] = useMemo(() => [
+    { id: 'thematique', label: t('breakdown.thematique'), icon: BREAKDOWN_ICONS.thematique },
+    { id: 'direction', label: t('breakdown.direction'), icon: BREAKDOWN_ICONS.direction },
+    { id: 'type_organisme', label: t('breakdown.type_organisme'), icon: BREAKDOWN_ICONS.type_organisme },
+  ], [t]);
+
   return (
     <TendancesTab
       dataUrl="/data/subventions/subventions_tendances.json"
       parseData={parseData}
-      breakdowns={BREAKDOWNS}
+      breakdowns={breakdowns}
       getGroupColor={(label, dim) => getGroupColor(label, dim)}
       theme="purple"
       formatValue={formatEuroCompact}
       tooltipHeader={(year, total) => `${year} — ${formatEuroCompact(total)}`}
       formatVariationDiff={formatVariationDiff}
-      title="Tendances des subventions"
-      kpi1Label={(year) => `Subventions ${year}`}
-      kpi1Sub={(year) => `${formatNumber(year.subCount || 0)} subventions · ${formatNumber(Math.round(year.total / PARIS_POPULATION_TOTAL))} €/hab`}
+      title={t('subventions.tendances.title')}
+      kpi1Label={(year) => `${t('subventions.tendances.kpi1_label')} ${year}`}
+      kpi1Sub={(year) => `${formatNumber(year.subCount || 0)} ${t('subventions.tendances.kpi1_sub_grants')} · ${formatNumber(Math.round(year.total / PARIS_POPULATION_TOTAL))} ${t('subventions.tendances.kpi1_sub_per_hab')}`}
       kpi4={(ctx) => ({
-        label: KPI4_LABELS[ctx.breakdown] || '1er groupe',
+        label: t(KPI4_KEYS[ctx.breakdown] || 'subventions.tendances.kpi4_default'),
         value: ctx.topName,
         sub: `${formatEuroCompact(ctx.topValue)} (${ctx.topPct.toFixed(0)}%)`,
       })}
-      chartTitle={(dim) => `Subventions par ${dim}`}
-      variationTitle={(dim) => `Évolution par ${dim}`}
-      variationSubtitle={(dim) => `Quelles ${dim}s ont le plus évolué`}
+      chartTitle={(dim) => `${t('subventions.tendances.chart_title_prefix')} ${dim}`}
+      variationTitle={(dim) => `${t('subventions.tendances.variation_title_prefix')} ${dim}`}
+      variationSubtitle={(dim) => `${t('subventions.tendances.variation_subtitle_prefix')} ${dim}${t('subventions.tendances.variation_subtitle_suffix')}`}
       yAxisFormatter={(v: number) => v >= 1e9 ? `${(v / 1e9).toFixed(1)} Md€` : `${(v / 1e6).toFixed(0)} M€`}
       csvFilename="subventions_tendances"
-      sourceNote="Source : Open Data Paris — Subventions associations votées. Données absentes pour 2020-2021."
+      sourceNote={t('subventions.tendances.source')}
       qualityNotes={
         <ul className="text-[11px] text-slate-500 space-y-1.5 list-disc list-inside">
-          <li>Les données proviennent des <strong className="text-slate-400">subventions aux associations votées</strong> par le Conseil de Paris.</li>
-          <li>Les années <strong className="text-slate-400">2020 et 2021</strong> ne sont pas disponibles dans la source OpenData.</li>
-          <li>Les montants représentent le top 500 bénéficiaires par année, couvrant plus de 95% du total.</li>
+          <li>{t('subventions.tendances.quality_1')}</li>
+          <li>{t('subventions.tendances.quality_2')}</li>
+          <li>{t('subventions.tendances.quality_3')}</li>
         </ul>
       }
     />

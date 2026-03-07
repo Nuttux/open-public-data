@@ -16,6 +16,7 @@
  */
 
 import { formatEuroCompact } from '@/lib/formatters';
+import { useT } from '@/lib/localeContext';
 import GlossaryTip from './GlossaryTip';
 
 interface StatsCardsProps {
@@ -26,6 +27,7 @@ interface StatsCardsProps {
 }
 
 export default function StatsCards({ recettes, depenses, year, emprunts = 0 }: StatsCardsProps) {
+  const t = useT();
   // Recettes propres = recettes totales - emprunts
   const recettesPropres = recettes - emprunts;
   
@@ -42,7 +44,7 @@ export default function StatsCards({ recettes, depenses, year, emprunts = 0 }: S
           <div className="flex items-center justify-between">
             <div className="min-w-0 flex-1">
               <p className="text-[10px] sm:text-xs font-medium text-emerald-400 uppercase tracking-wider">
-                Recettes propres {year}
+                {t('stats.own_revenue')} {year}
                 <GlossaryTip term="recettes_propres" />
               </p>
               <p className="mt-1 text-xl sm:text-2xl font-bold text-emerald-400">
@@ -62,7 +64,7 @@ export default function StatsCards({ recettes, depenses, year, emprunts = 0 }: S
           <div className="flex items-center justify-between">
             <div className="min-w-0 flex-1">
               <p className="text-[10px] sm:text-xs font-medium text-rose-400 uppercase tracking-wider">
-                Dépenses totales {year}
+                {t('stats.total_expenditure')} {year}
                 <GlossaryTip term="depenses" />
               </p>
               <p className="mt-1 text-xl sm:text-2xl font-bold text-rose-400">
@@ -86,7 +88,7 @@ export default function StatsCards({ recettes, depenses, year, emprunts = 0 }: S
               <p className={`text-[10px] sm:text-xs font-medium uppercase tracking-wider ${
                 isDeficit ? 'text-red-400' : 'text-emerald-400'
               }`}>
-                {isDeficit ? 'Déficit' : 'Excédent'} {year}
+                {isDeficit ? t('chart.deficit') : t('chart.surplus')} {year}
                 <GlossaryTip term="surplus_deficit" />
               </p>
               <p className={`mt-1 text-xl sm:text-2xl font-bold ${
