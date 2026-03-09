@@ -14,6 +14,7 @@
  */
 
 import { useState, useEffect, useMemo } from 'react';
+import { useT } from '@/lib/localeContext';
 import EvolutionChart, { type YearlyBudget } from '@/components/EvolutionChart';
 import VariationRankChart, { type VariationsData, type VariationItem } from '@/components/VariationRankChart';
 import YoyCards from '@/components/YoyCards';
@@ -155,6 +156,7 @@ export default function BudgetTendancesTab() {
   const [endYear, setEndYear] = useState<number>(2024);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const t = useT();
 
   useEffect(() => {
     async function loadEvolutionData() {
@@ -244,7 +246,7 @@ export default function BudgetTendancesTab() {
       <div className="flex items-center justify-center py-20">
         <div className="text-center">
           <div className="w-12 h-12 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-slate-500">Chargement des données...</p>
+          <p className="text-slate-500">{t('ui.loading')}</p>
         </div>
       </div>
     );
@@ -254,9 +256,9 @@ export default function BudgetTendancesTab() {
     return (
       <div className="flex items-center justify-center py-20">
         <div className="text-center max-w-md">
-          <p className="text-red-400 text-lg mb-2">{error || 'Aucune donnée disponible'}</p>
+          <p className="text-red-400 text-lg mb-2">{error || t('ui.no_data')}</p>
           <p className="text-slate-500 text-sm">
-            Vérifiez que evolution_budget.json est présent dans /public/data/
+            {t('tendances.check_file')}
           </p>
         </div>
       </div>
@@ -268,7 +270,7 @@ export default function BudgetTendancesTab() {
       {/* Year range selector */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-3">
         <p className="text-sm text-slate-500">
-          Analyse temporelle {availableYears[0]}–{availableYears[availableYears.length - 1]}
+          {t('tendances.time_analysis')} {availableYears[0]}–{availableYears[availableYears.length - 1]}
         </p>
         <YearRangeSelector
           availableYears={availableYears}
@@ -304,14 +306,14 @@ export default function BudgetTendancesTab() {
       {/* Graphique évolution Recettes/Dépenses (plage filtrée) */}
       <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-6 mb-6">
         <h2 className="text-lg font-semibold text-slate-100 mb-4 flex items-center gap-2">
-          Évolution Recettes et Dépenses
+          {t('tendances.revenue_expenses_evolution')}
         </h2>
         <EvolutionChart data={filteredBudgetData} height={400} />
         {/* Footnote pour les années prévisionnelles */}
         {hasVotedYears && (
           <p className="text-[11px] text-slate-500 mt-3 flex items-center gap-1.5">
             <span className="inline-block w-4 border-t border-dashed border-slate-500" />
-            * Budget prévisionnel voté par le Conseil de Paris — montants non définitifs
+            {t('tendances.forecast_footnote')}
           </p>
         )}
       </div>
@@ -330,7 +332,7 @@ export default function BudgetTendancesTab() {
         </div>
         <div className="relative flex justify-center">
           <span className="bg-slate-800/30 px-4 text-sm font-medium text-slate-500">
-            Exécution budgétaire
+            {t('tendances.budget_execution')}
           </span>
         </div>
       </div>

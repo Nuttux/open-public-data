@@ -20,6 +20,7 @@ import type { EChartsOption } from 'echarts';
 import { PALETTE } from '@/lib/colors';
 import { formatEuroCompact } from '@/lib/formatters';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
+import { useT } from '@/lib/localeContext';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -49,6 +50,7 @@ export default function DebtStockChart({
   height = 320,
 }: DebtStockChartProps) {
   const isMobile = useIsMobile(BREAKPOINTS.md);
+  const t = useT();
 
   /** Données triées chronologiquement */
   const sortedData = useMemo(() => [...data].sort((a, b) => a.year - b.year), [data]);
@@ -87,7 +89,7 @@ export default function DebtStockChart({
         html += `<div style="font-weight: 600; margin-bottom: 6px;">`;
         html += d.year;
         if (d.estimated) {
-          html += `<span style="font-weight: 400; font-size: 10px; color: #94a3b8; margin-left: 6px; vertical-align: middle; border: 1px solid #475569; border-radius: 3px; padding: 1px 4px;">estimé</span>`;
+          html += `<span style="font-weight: 400; font-size: 10px; color: #94a3b8; margin-left: 6px; vertical-align: middle; border: 1px solid #475569; border-radius: 3px; padding: 1px 4px;">${t('debt.estimated')}</span>`;
         }
         html += `</div>`;
 
@@ -109,17 +111,17 @@ export default function DebtStockChart({
         if (d.emprunts != null || d.remboursement_principal != null) {
           html += `<div style="border-top: 1px solid rgba(148,163,184,0.2); margin-top: 6px; padding-top: 4px; font-size: 10px; color: #64748b;">`;
           if (d.emprunts != null) {
-            html += `Emprunts : +${formatEuroCompact(d.emprunts)}`;
+            html += `${t('debt.borrowing')} +${formatEuroCompact(d.emprunts)}`;
           }
           if (d.remboursement_principal != null) {
-            html += ` · Remb. : −${formatEuroCompact(d.remboursement_principal)}`;
+            html += ` · ${t('debt.repayment')} −${formatEuroCompact(d.remboursement_principal)}`;
           }
           html += `</div>`;
         }
 
         if (d.estimated) {
           html += `<div style="font-size: 9px; color: #64748b; margin-top: 4px; font-style: italic;">`;
-          html += `Estimation : bilan 2024 + flux votés`;
+          html += t('debt.estimation_note');
           html += `</div>`;
         }
 
@@ -191,7 +193,7 @@ export default function DebtStockChart({
     animation: true,
     animationDuration: isMobile ? 400 : 600,
     animationEasing: 'cubicOut',
-  }), [sortedData, years, isMobile, DEBT_COLOR]);
+  }), [sortedData, years, isMobile, DEBT_COLOR, t]);
 
   return (
     <div className="w-full">
@@ -203,7 +205,7 @@ export default function DebtStockChart({
       {hasEstimated && (
         <p className="text-[11px] text-slate-500 mt-1 flex items-center gap-1.5">
           <span className="inline-block w-4 border-t border-dashed border-slate-500" />
-          * Estimation : encours 2024 (bilan audité) + emprunts − remboursements (budget voté)
+          {t('debt.footnote')}
         </p>
       )}
     </div>

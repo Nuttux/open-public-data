@@ -20,6 +20,7 @@ import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { getThematiqueColor } from '@/lib/colors';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 import { useTrack } from '@/lib/analyticsContext';
+import { useT } from '@/lib/localeContext';
 
 /**
  * Données d'une thématique pour le treemap
@@ -62,6 +63,7 @@ export default function SubventionsTreemap({
 }: SubventionsTreemapProps) {
   const isMobile = useIsMobile(BREAKPOINTS.md);
   const track = useTrack();
+  const t = useT();
 
   // Hauteur adaptative
   const chartHeight = isMobile ? Math.min(height, 300) : height;
@@ -118,15 +120,15 @@ export default function SubventionsTreemap({
           </div>
           <div style="display: flex; flex-direction: column; gap: 3px; font-size: ${isMobile ? '11px' : '12px'};">
             <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '12px' : '24px'};">
-              <span style="color: #94a3b8;">Montant</span>
+              <span style="color: #94a3b8;">${t('treemap.amount')}</span>
               <span style="font-weight: 500;">${formatEuroCompact(p.value)}</span>
             </div>
             <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '12px' : '24px'};">
-              <span style="color: #94a3b8;">Part du total</span>
+              <span style="color: #94a3b8;">${t('treemap.share')}</span>
               <span style="font-weight: 500;">${p.data.pct.toFixed(1)}%</span>
             </div>
             <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '12px' : '24px'};">
-              <span style="color: #94a3b8;">Bénéficiaires</span>
+              <span style="color: #94a3b8;">${t('treemap.recipients')}</span>
               <span style="font-weight: 500;">${formatNumber(p.data.nbBeneficiaires)}</span>
             </div>
           </div>
@@ -195,7 +197,7 @@ export default function SubventionsTreemap({
         animationEasing: 'cubicOut',
       },
     ],
-  }), [chartData, isMobile]);
+  }), [chartData, isMobile, t]);
 
   /**
    * Gestion du clic
@@ -215,10 +217,10 @@ export default function SubventionsTreemap({
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4 mb-4">
         <div>
           <h3 className="text-base sm:text-lg font-semibold text-slate-100">
-            Répartition par thématique
+            {t('treemap.title')}
           </h3>
           <p className="text-xs sm:text-sm text-slate-400">
-            {isMobile ? 'Appuyez pour filtrer' : 'Cliquez sur une thématique pour filtrer la table'}
+            {isMobile ? t('treemap.tap_filter') : t('treemap.click_filter')}
           </p>
         </div>
         <div className="text-left sm:text-right">
@@ -226,7 +228,7 @@ export default function SubventionsTreemap({
             {formatEuroCompact(data.total_montant)}
           </p>
           <p className="text-xs sm:text-sm text-slate-400">
-            {formatNumber(data.nb_thematiques)} thématiques
+            {formatNumber(data.nb_thematiques)} {t('treemap.categories')}
           </p>
         </div>
       </div>
@@ -249,7 +251,7 @@ export default function SubventionsTreemap({
       {/* Indicateur de sélection - responsive */}
       {selectedThematique && (
         <div className="mt-3 flex flex-wrap items-center gap-2">
-          <span className="text-xs sm:text-sm text-slate-400">Filtre actif :</span>
+          <span className="text-xs sm:text-sm text-slate-400">{t('treemap.active_filter')}</span>
           <button
             onClick={() => onThematiqueClick?.(null)}
             className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-purple-500/20 text-purple-300 border border-purple-500/30 hover:bg-purple-500/30 active:bg-purple-500/40 transition-colors"

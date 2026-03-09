@@ -14,6 +14,7 @@ import { useState, type ReactNode } from 'react';
 import type { MapLayerType } from '@/lib/types/map';
 import { THEMATIQUE_LABELS, type ThematiqueSubvention } from '@/lib/constants/directions';
 import { MISC_ICONS } from '@/lib/icons';
+import { useT } from '@/lib/localeContext';
 
 /**
  * Configuration d'un layer de données
@@ -99,6 +100,9 @@ export default function MapFilters({
   stats,
 }: MapFiltersProps) {
   const [isExpanded, setIsExpanded] = useState(true);
+  const t = useT();
+
+  const LAYER_LABEL_KEYS: Record<string, string> = { logements: 'map_filters.social_housing', autorisations: 'map_filters.investments' };
 
   /**
    * Toggle un layer
@@ -165,7 +169,7 @@ export default function MapFilters({
         className="w-full flex items-center justify-between px-4 py-3 hover:bg-slate-700/30 transition-colors"
       >
         <div className="flex items-center gap-2">
-          <span className="font-semibold text-slate-200">Filtres</span>
+          <span className="font-semibold text-slate-200">{t('map_filters.title')}</span>
         </div>
         <span className={`text-slate-400 transition-transform ${isExpanded ? 'rotate-180' : ''}`}>
           ▼
@@ -178,7 +182,7 @@ export default function MapFilters({
           {/* Sélecteur d'année */}
           <div>
             <label className="block text-xs font-medium text-slate-300 mb-2">
-              Année
+              {t('map_filters.year')}
             </label>
             <select
               value={selectedYear}
@@ -197,7 +201,7 @@ export default function MapFilters({
           {/* Mode d'affichage */}
           <div>
             <label className="block text-xs font-medium text-slate-300 mb-2">
-              Mode d&apos;affichage
+              {t('map_filters.display_mode')}
             </label>
             <div className="flex gap-2">
               <button
@@ -208,7 +212,7 @@ export default function MapFilters({
                     : 'bg-slate-700/50 text-slate-300 hover:bg-slate-700'
                 }`}
               >
-                Points
+                {t('map_filters.points')}
               </button>
               <button
                 onClick={() => onChoroplethChange(true)}
@@ -218,7 +222,7 @@ export default function MapFilters({
                     : 'bg-slate-700/50 text-slate-300 hover:bg-slate-700'
                 }`}
               >
-                Par arrdt
+                {t('map_filters.by_district')}
               </button>
             </div>
           </div>
@@ -227,15 +231,15 @@ export default function MapFilters({
           {showChoropleth && (
             <div>
               <label className="block text-xs font-medium text-slate-300 mb-2">
-                Métrique (par habitant)
+                {t('map_filters.metric')}
               </label>
               <select
                 value={choroplethMetric}
                 onChange={(e) => onChoroplethMetricChange(e.target.value as 'subventions' | 'logements' | 'investissements')}
                 className="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-500"
               >
-                <option value="logements">Logements / 1000 hab</option>
-                <option value="investissements">Investissements / hab</option>
+                <option value="logements">{t('map_filters.housing_per_1000')}</option>
+                <option value="investissements">{t('map_filters.invest_per_capita')}</option>
               </select>
             </div>
           )}
@@ -244,7 +248,7 @@ export default function MapFilters({
           {!showChoropleth && (
             <div>
               <label className="block text-xs font-medium text-slate-300 mb-2">
-                Données affichées
+                {t('map_filters.displayed_data')}
               </label>
               <div className="space-y-2">
                 {LAYER_OPTIONS.map((layer) => {
@@ -276,17 +280,17 @@ export default function MapFilters({
                           <div className="flex items-center gap-2">
                             <span>{layer.icon}</span>
                             <span className={isActive ? 'text-slate-200' : 'text-slate-300'}>
-                              {layer.label}
+                              {t(LAYER_LABEL_KEYS[layer.id]) || layer.label}
                             </span>
                           </div>
                           {layerStats && (
                             <div className="text-xs text-slate-400 mt-0.5">
                               {layer.id === 'subventions' && layerStats.geolocated !== undefined ? (
-                                <>{layerStats.geolocated} / {layerStats.count} géolocalisés</>
+                                <>{t('map_filters.geolocated').replace('{n}', String(layerStats.geolocated)).replace('{total}', String(layerStats.count))}</>
                               ) : layer.id === 'autorisations' && layerStats.geolocated !== undefined ? (
-                                <>{layerStats.geolocated} / {layerStats.count} localisés</>
+                                <>{t('map_filters.located').replace('{n}', String(layerStats.geolocated)).replace('{total}', String(layerStats.count))}</>
                               ) : (
-                                <>{layerStats.count.toLocaleString('fr-FR')} programmes</>
+                                <>{t('map_filters.programmes_count').replace('{n}', layerStats.count.toLocaleString())}</>
                               )}
                             </div>
                           )}
@@ -297,12 +301,12 @@ export default function MapFilters({
                       {layer.id === 'subventions' && isActive && availableThematiques.length > 0 && (
                         <div className="ml-4 mt-2 pl-3 border-l-2 border-slate-700">
                           <div className="flex items-center justify-between mb-2">
-                            <span className="text-xs font-medium text-slate-300">Par thématique</span>
+                            <span className="text-xs font-medium text-slate-300">{t('map_filters.by_thematique')}</span>
                             <button
                               onClick={toggleAllThematiques}
                               className="text-xs text-purple-400 hover:text-purple-300"
                             >
-                              {selectedThematiques.length === availableThematiques.length ? 'Aucun' : 'Tous'}
+                              {selectedThematiques.length === availableThematiques.length ? t('map_filters.none') : t('map_filters.all')}
                             </button>
                           </div>
                           <div className="space-y-1 max-h-40 overflow-y-auto pr-1">
@@ -337,12 +341,12 @@ export default function MapFilters({
                       {layer.id === 'autorisations' && isActive && availableThematiquesAP.length > 0 && onThematiquesAPChange && (
                         <div className="ml-4 mt-2 pl-3 border-l-2 border-amber-700/50">
                           <div className="flex items-center justify-between mb-2">
-                            <span className="text-xs font-medium text-slate-300">Par thématique</span>
+                            <span className="text-xs font-medium text-slate-300">{t('map_filters.by_thematique')}</span>
                             <button
                               onClick={toggleAllThematiquesAP}
                               className="text-xs text-amber-400 hover:text-amber-300"
                             >
-                              {selectedThematiquesAP.length === availableThematiquesAP.length ? 'Aucun' : 'Tous'}
+                              {selectedThematiquesAP.length === availableThematiquesAP.length ? t('map_filters.none') : t('map_filters.all')}
                             </button>
                           </div>
                           <div className="space-y-1 max-h-40 overflow-y-auto pr-1">
@@ -385,7 +389,7 @@ export default function MapFilters({
               <div className="text-xs text-slate-400 space-y-1">
                 {subventionsActive && stats.subventions && (
                   <p>
-                    Total :{' '}
+                    {t('map_filters.total')}{' '}
                     <span className="text-purple-400 font-medium">
                       {(stats.subventions.total / 1_000_000).toFixed(1).replace('.', ',')} M€
                     </span>
@@ -393,15 +397,15 @@ export default function MapFilters({
                 )}
                 {activeLayers.includes('logements') && stats.logements && (
                   <p>
-                    Logements :{' '}
+                    {t('map_filters.housing')}{' '}
                     <span className="text-emerald-400 font-medium">
-                      {stats.logements.total.toLocaleString('fr-FR')}
+                      {stats.logements.total.toLocaleString()}
                     </span>
                   </p>
                 )}
                 {autorisationsActive && stats.autorisations && (
                   <p>
-                    Invest. :{' '}
+                    {t('map_filters.invest')}{' '}
                     <span className="text-amber-400 font-medium">
                       {(stats.autorisations.total / 1_000_000).toFixed(1).replace('.', ',')} M€
                     </span>

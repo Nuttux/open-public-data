@@ -10,10 +10,11 @@
  * Sections: Headline + Sankey → Question Cards → Manifesto → Footer
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import BudgetSankey from '@/components/BudgetSankey';
-import type { BudgetData } from '@/lib/formatters';
+import DrilldownPanel from '@/components/DrilldownPanel';
+import type { BudgetData, DrilldownItem } from '@/lib/formatters';
 import { useTrack } from '@/lib/analyticsContext';
 import { useT } from '@/lib/localeContext';
 import { useGlossary } from '@/lib/glossaryContext';
@@ -29,9 +30,27 @@ const CARD_KEYS = [
 
 export default function LandingPage() {
   const [budgetData, setBudgetData] = useState<BudgetData | null>(null);
+  const [drilldown, setDrilldown] = useState<{
+    title: string;
+    category: 'revenue' | 'expense';
+    items: DrilldownItem[];
+  } | null>(null);
+  const drilldownRef = useRef<HTMLDivElement>(null);
   const track = useTrack();
   const t = useT();
   const { openFull } = useGlossary();
+
+  const handleSankeyClick = useCallback((nodeName: string, category: 'revenue' | 'expense') => {
+    if (!budgetData) return;
+    track('cta_click', { cta: 'landing_sankey', node: nodeName, category });
+    const items = category === 'revenue'
+      ? budgetData.drilldown?.revenue?.[nodeName]
+      : budgetData.drilldown?.expenses?.[nodeName];
+    if (items && items.length > 0) {
+      setDrilldown({ title: nodeName, category, items });
+      setTimeout(() => drilldownRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+    }
+  }, [budgetData, track]);
 
   useEffect(() => {
     async function loadData() {
@@ -80,13 +99,23 @@ export default function LandingPage() {
             {t('landing.sankey_amount')}
           </p>
           {budgetData ? (
-            <BudgetSankey data={budgetData} />
+            <BudgetSankey data={budgetData} onNodeClick={handleSankeyClick} />
           ) : (
             <div className="bg-slate-900 border border-slate-600 p-6 h-[500px] flex items-center justify-center">
               <div className="text-center">
                 <div className="w-10 h-10 border-3 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
                 <p className="text-slate-400 text-sm font-mono">{t('landing.sankey_loading')}</p>
               </div>
+            </div>
+          )}
+          {drilldown && (
+            <div ref={drilldownRef}>
+              <DrilldownPanel
+                title={drilldown.title}
+                category={drilldown.category}
+                items={drilldown.items}
+                onClose={() => setDrilldown(null)}
+              />
             </div>
           )}
           <p className="mt-3 text-xs text-slate-500 font-mono">

@@ -22,6 +22,7 @@ import type { EChartsOption } from 'echarts';
 import { PALETTE } from '@/lib/colors';
 import { formatEuroCompact } from '@/lib/formatters';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
+import { useT } from '@/lib/localeContext';
 
 export interface DebtRatioYearData {
   year: number;
@@ -53,6 +54,7 @@ export default function DebtRatiosChart({
   data,
   height = 500,
 }: DebtRatiosChartProps) {
+  const t = useT();
   const isMobile = useIsMobile(BREAKPOINTS.md);
 
   const sortedData = useMemo(() => {
@@ -84,7 +86,7 @@ export default function DebtRatiosChart({
   const durationOption: EChartsOption = useMemo(() => ({
     backgroundColor: 'transparent',
     title: {
-      text: 'Durée de désendettement',
+      text: t('debt_ratios.deleveraging'),
       textStyle: { color: '#e2e8f0', fontSize: isMobile ? 13 : 14, fontWeight: 600 },
       left: 0,
       top: 0,
@@ -102,13 +104,14 @@ export default function DebtRatiosChart({
         const idx = items[0].dataIndex;
         const d = sortedData[idx];
         const rawDuree = d.epargne_brute > 0 ? d.dettes_financieres / d.epargne_brute : Infinity;
-        const dureeLabel = rawDuree > MAX_DURATION_DISPLAY ? `> ${MAX_DURATION_DISPLAY} ans` : `${rawDuree.toFixed(1)} ans`;
+        const yearsUnit = t('debt_ratios.years_unit').toLowerCase();
+        const dureeLabel = rawDuree > MAX_DURATION_DISPLAY ? `> ${MAX_DURATION_DISPLAY} ${yearsUnit}` : `${rawDuree.toFixed(1)} ${yearsUnit}`;
         return `
           <div style="padding: 4px;">
             <div style="font-weight: 600; margin-bottom: 6px;">${items[0].name}</div>
             <div style="font-size: 16px; font-weight: 700; color: #e2e8f0;">${dureeLabel}</div>
             <div style="border-top: 1px solid rgba(148,163,184,0.2); margin-top: 6px; padding-top: 4px; font-size: 10px; color: #64748b;">
-              Dette : ${formatEuroCompact(d.dettes_financieres)}${d.estimated ? ' (est.)' : ''} · Épargne : ${formatEuroCompact(d.epargne_brute)}
+              ${t('debt_ratios.debt_label')} ${formatEuroCompact(d.dettes_financieres)}${d.estimated ? ' (est.)' : ''} · ${t('debt_ratios.savings_label')} ${formatEuroCompact(d.epargne_brute)}
             </div>
           </div>
         `;
@@ -139,7 +142,7 @@ export default function DebtRatiosChart({
     },
     yAxis: {
       type: 'value',
-      name: isMobile ? '' : 'Années',
+      name: isMobile ? '' : t('debt_ratios.years_unit'),
       nameTextStyle: { color: '#64748b', fontSize: 10 },
       axisLine: { show: false },
       axisLabel: { color: '#64748b', fontSize: isMobile ? 9 : 11 },
@@ -179,14 +182,14 @@ export default function DebtRatiosChart({
     animation: true,
     animationDuration: isMobile ? 400 : 600,
     animationEasing: 'cubicOut',
-  }), [years, durees, sortedData, isMobile]);
+  }), [years, durees, sortedData, isMobile, t]);
 
   // ─── Chart 2 : Taux d'autofinancement ───────────────────────────────────
 
   const autofinOption: EChartsOption = useMemo(() => ({
     backgroundColor: 'transparent',
     title: {
-      text: 'Taux d\'autofinancement',
+      text: t('debt_ratios.self_financing'),
       textStyle: { color: '#e2e8f0', fontSize: isMobile ? 13 : 14, fontWeight: 600 },
       left: 0,
       top: 0,
@@ -211,7 +214,7 @@ export default function DebtRatiosChart({
             <div style="font-weight: 600; margin-bottom: 6px;">${items[0].name}</div>
             <div style="font-size: 16px; font-weight: 700; color: #e2e8f0;">${tauxVal.toFixed(1)}%</div>
             <div style="border-top: 1px solid rgba(148,163,184,0.2); margin-top: 6px; padding-top: 4px; font-size: 10px; color: #64748b;">
-              Épargne : ${formatEuroCompact(d.epargne_brute)} · Rec. fonct. : ${formatEuroCompact(d.recettes_fonctionnement)}
+              ${t('debt_ratios.savings_label')} ${formatEuroCompact(d.epargne_brute)} · ${t('debt_ratios.operating_rev_label')} ${formatEuroCompact(d.recettes_fonctionnement)}
             </div>
           </div>
         `;
@@ -256,10 +259,10 @@ export default function DebtRatiosChart({
     series: [
       {
         type: 'bar',
-        data: taux.map((t, i) => {
+        data: taux.map((val, i) => {
           const isEstimated = sortedData[i]?.estimated;
           return {
-            value: t,
+            value: val,
             itemStyle: {
               color: BAR_COLOR_AUTOFIN,
               opacity: isEstimated ? 0.55 : 1,
@@ -274,7 +277,7 @@ export default function DebtRatiosChart({
     animation: true,
     animationDuration: isMobile ? 400 : 600,
     animationEasing: 'cubicOut',
-  }), [years, taux, sortedData, isMobile]);
+  }), [years, taux, sortedData, isMobile, t]);
 
   return (
     <div className="w-full space-y-4">
@@ -291,7 +294,7 @@ export default function DebtRatiosChart({
       {hasEstimated && (
         <p className="text-[11px] text-slate-500 mt-1 flex items-center gap-1.5">
           <span className="inline-block w-4 border-t border-dashed border-slate-500" />
-          * Dette estimée : encours 2024 (bilan) +&nbsp;emprunts − remboursements (budget voté)
+          {t('debt_ratios.footnote')}
         </p>
       )}
     </div>

@@ -15,6 +15,7 @@ import type { AutorisationProgramme, ArrondissementStats } from '@/lib/types/map
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { THEMATIQUE_LABELS, type ThematiqueSubvention } from '@/lib/constants/directions';
 import type { CsvColumn } from '@/lib/export';
+import { useT } from '@/lib/localeContext';
 
 const CSV_COLUMNS: CsvColumn<Record<string, unknown>>[] = [
   { key: 'annee', label: 'Année' },
@@ -72,27 +73,28 @@ function FilterPanel({
   layout: 'sidebar' | 'inline';
 }) {
   const isVertical = layout === 'sidebar';
+  const t = useT();
 
   return (
     <div className={isVertical ? 'space-y-4' : 'grid grid-cols-1 sm:grid-cols-3 gap-4'}>
       <div className={isVertical ? 'bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4' : ''}>
-        <label className="block text-xs font-medium text-slate-400 mb-1.5">Rechercher</label>
+        <label className="block text-xs font-medium text-slate-400 mb-1.5">{t('invest_explorer.search')}</label>
         <input
           type="text" value={searchTerm}
           onChange={e => onSearchChange(e.target.value)}
-          placeholder="Nom du projet..."
+          placeholder={t('invest_explorer.search_placeholder')}
           className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-500"
         />
       </div>
 
       <div className={isVertical ? 'bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4' : ''}>
-        <label className="block text-xs font-medium text-slate-400 mb-1.5">Arrondissement</label>
+        <label className="block text-xs font-medium text-slate-400 mb-1.5">{t('invest_explorer.arrondissement')}</label>
         <select
           value={selectedArrondissement ?? ''}
           onChange={e => onArrondissementChange(e.target.value ? Number(e.target.value) : null)}
           className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-amber-500"
         >
-          <option value="">Tous</option>
+          <option value="">{t('invest_explorer.all')}</option>
           <option value="0">Paris Centre (1-4)</option>
           {Array.from({ length: 16 }, (_, i) => i + 5).map(arr => (
             <option key={arr} value={arr}>{arr}e</option>
@@ -101,7 +103,7 @@ function FilterPanel({
       </div>
 
       <div className={isVertical ? 'bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4' : ''}>
-        <label className="block text-xs font-medium text-slate-400 mb-2">Thématiques</label>
+        <label className="block text-xs font-medium text-slate-400 mb-2">{t('invest_explorer.thematiques')}</label>
         <div className={isVertical ? 'space-y-1.5' : 'flex flex-wrap gap-1.5'}>
           {THEMATIQUES.map(t => {
             const label = THEMATIQUE_LABELS[t as ThematiqueSubvention];
@@ -131,7 +133,7 @@ function FilterPanel({
       {activeFilterCount > 0 && (
         <div className={isVertical ? '' : 'sm:col-span-3 flex justify-end pt-2 border-t border-slate-700/50'}>
           <button onClick={onReset} className="text-xs text-slate-500 hover:text-slate-300 transition-colors">
-            Réinitialiser les filtres ({activeFilterCount})
+            {t('invest_explorer.reset_filters')} ({activeFilterCount})
           </button>
         </div>
       )}
@@ -149,6 +151,7 @@ export default function InvestissementsExplorerTab({
   const [selectedThematiques, setSelectedThematiques] = useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const PAGE_SIZE = 50;
+  const t = useT();
 
   const filteredProjets = useMemo(() => {
     let filtered = projets;
@@ -219,10 +222,10 @@ export default function InvestissementsExplorerTab({
       theme="amber"
       isLoading={isLoading}
       activeFilterCount={activeFilterCount}
-      filterLabel="les projets"
+      filterLabel={t('invest_explorer.filter_label')}
       summaryTitle={
         <>
-          {formatNumber(filteredProjets.length)} projets
+          {formatNumber(filteredProjets.length)} {t('invest_explorer.projects')}
           <span className="text-sm font-normal text-slate-400 ml-2">
             ({formatEuroCompact(filteredMontant)})
           </span>
@@ -242,10 +245,10 @@ export default function InvestissementsExplorerTab({
             <table className="w-full">
               <thead>
                 <tr className="border-b border-slate-700">
-                  <th className="text-left px-2 md:px-4 py-3 text-xs font-medium text-slate-400 uppercase">Projet</th>
-                  <th className="hidden md:table-cell text-left px-4 py-3 text-xs font-medium text-slate-400 uppercase">Chapitre</th>
-                  <th className="text-right px-2 md:px-4 py-3 text-xs font-medium text-slate-400 uppercase">Montant</th>
-                  <th className="hidden md:table-cell text-center px-4 py-3 text-xs font-medium text-slate-400 uppercase">Arr.</th>
+                  <th className="text-left px-2 md:px-4 py-3 text-xs font-medium text-slate-400 uppercase">{t('invest_explorer.project')}</th>
+                  <th className="hidden md:table-cell text-left px-4 py-3 text-xs font-medium text-slate-400 uppercase">{t('invest_explorer.chapter')}</th>
+                  <th className="text-right px-2 md:px-4 py-3 text-xs font-medium text-slate-400 uppercase">{t('invest_explorer.amount')}</th>
+                  <th className="hidden md:table-cell text-center px-4 py-3 text-xs font-medium text-slate-400 uppercase">{t('col.arr')}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-700/50">
@@ -275,7 +278,7 @@ export default function InvestissementsExplorerTab({
                       <td className="hidden md:table-cell px-4 py-3 text-center">
                         {p.arrondissement !== undefined
                           ? <span className="text-sm text-slate-300">
-                              {p.arrondissement === 0 ? 'Centre' : `${p.arrondissement}e`}
+                              {p.arrondissement === 0 ? t('label.centre') : `${p.arrondissement}e`}
                             </span>
                           : <span className="text-slate-500">-</span>}
                       </td>
@@ -292,23 +295,23 @@ export default function InvestissementsExplorerTab({
                 disabled={currentPage === 1}
                 className="text-sm text-slate-400 hover:text-slate-200 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
               >
-                ← Précédent
+                {t('invest_explorer.prev')}
               </button>
               <span className="text-sm text-slate-500">
-                Page {currentPage} / {totalPages} · {formatNumber(sortedProjets.length)} projets
+                {t('invest_explorer.page_of').replace('{current}', String(currentPage)).replace('{total}', String(totalPages)).replace('{count}', formatNumber(sortedProjets.length))}
               </span>
               <button
                 onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
                 disabled={currentPage === totalPages}
                 className="text-sm text-slate-400 hover:text-slate-200 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
               >
-                Suivant →
+                {t('invest_explorer.next')}
               </button>
             </div>
           )}
           {sortedProjets.length === 0 && (
             <div className="px-4 py-12 text-center">
-              <p className="text-slate-400">Aucun projet ne correspond aux filtres</p>
+              <p className="text-slate-400">{t('invest_explorer.no_results')}</p>
             </div>
           )}
         </div>

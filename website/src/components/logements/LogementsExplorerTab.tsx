@@ -15,6 +15,7 @@ import type { LogementSocial, ArrondissementStats } from '@/lib/types/map';
 import { formatNumber } from '@/lib/formatters';
 import type { CsvColumn } from '@/lib/export';
 import { useTrack } from '@/lib/analyticsContext';
+import { useT } from '@/lib/localeContext';
 
 const CSV_COLUMNS: CsvColumn<Record<string, unknown>>[] = [
   { key: 'annee', label: 'Année' },
@@ -74,6 +75,7 @@ function FilterPanel({
   activeFilterCount: number; onReset: () => void; layout: 'sidebar' | 'inline';
 }) {
   const isVertical = layout === 'sidebar';
+  const t = useT();
 
   const bailleurs = useMemo(() => {
     const map: Record<string, number> = {};
@@ -94,50 +96,50 @@ function FilterPanel({
   return (
     <div className={isVertical ? 'space-y-4' : 'grid grid-cols-1 sm:grid-cols-3 gap-4'}>
       <div className={isVertical ? 'bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4' : ''}>
-        <label className="block text-xs font-medium text-slate-400 mb-1.5">Rechercher</label>
+        <label className="block text-xs font-medium text-slate-400 mb-1.5">{t('log_explorer.search')}</label>
         <input
           type="text" value={filters.search}
           onChange={e => onFiltersChange({ ...filters, search: e.target.value })}
-          placeholder="Adresse, bailleur..."
+          placeholder={t('log_explorer.search_placeholder')}
           className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-emerald-500"
         />
       </div>
 
       <div className={isVertical ? 'bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4' : ''}>
-        <label className="block text-xs font-medium text-slate-400 mb-1.5">Bailleur</label>
+        <label className="block text-xs font-medium text-slate-400 mb-1.5">{t('log_explorer.landlord')}</label>
         <select
           value={filters.bailleur || ''}
           onChange={e => onFiltersChange({ ...filters, bailleur: e.target.value || null })}
           className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-emerald-500"
         >
-          <option value="">Tous les bailleurs</option>
+          <option value="">{t('log_explorer.all_landlords')}</option>
           {bailleurs.slice(0, 30).map(b => <option key={b} value={b}>{b}</option>)}
         </select>
       </div>
 
       <div className={isVertical ? 'space-y-4' : ''}>
         <div className={isVertical ? 'bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4' : ''}>
-          <label className="block text-xs font-medium text-slate-400 mb-1.5">Arrondissement</label>
+          <label className="block text-xs font-medium text-slate-400 mb-1.5">{t('log_explorer.arrondissement')}</label>
           <select
             value={filters.arrondissement ?? ''}
             onChange={e => onFiltersChange({ ...filters, arrondissement: e.target.value ? Number(e.target.value) : null })}
             className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-emerald-500"
           >
-            <option value="">Tous</option>
+            <option value="">{t('log_explorer.all')}</option>
             {arrondissements.map(a => (
-              <option key={a} value={a}>{a === 0 ? 'Paris Centre' : `${a}e`}</option>
+              <option key={a} value={a}>{a === 0 ? t('label.paris_centre') : `${a}e`}</option>
             ))}
           </select>
         </div>
 
         <div className={isVertical ? 'bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4' : 'mt-3'}>
-          <label className="block text-xs font-medium text-slate-400 mb-1.5">Année</label>
+          <label className="block text-xs font-medium text-slate-400 mb-1.5">{t('log_explorer.year')}</label>
           <select
             value={filters.annee ?? ''}
             onChange={e => onFiltersChange({ ...filters, annee: e.target.value ? Number(e.target.value) : null })}
             className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-emerald-500"
           >
-            <option value="">Toutes les années</option>
+            <option value="">{t('log_explorer.all_years')}</option>
             {years.map(y => <option key={y} value={y}>{y}</option>)}
           </select>
         </div>
@@ -146,7 +148,7 @@ function FilterPanel({
       {activeFilterCount > 0 && (
         <div className={isVertical ? '' : 'sm:col-span-3 flex justify-end pt-2 border-t border-slate-700/50'}>
           <button onClick={onReset} className="text-xs text-slate-500 hover:text-slate-300 transition-colors">
-            Réinitialiser les filtres ({activeFilterCount})
+            {t('log_explorer.reset_filters')} ({activeFilterCount})
           </button>
         </div>
       )}
@@ -160,6 +162,7 @@ export default function LogementsExplorerTab({
   logements, arrondissementStats, allArrondissements: _allArrondissements, isLoading,
 }: LogementsExplorerTabProps) {
   const track = useTrack();
+  const t = useT();
   const [filters, setFilters] = useState<Filters>(DEFAULT_FILTERS);
 
   const handleFiltersChange = useCallback((newFilters: Filters) => {
@@ -217,13 +220,13 @@ export default function LogementsExplorerTab({
       theme="emerald"
       isLoading={isLoading}
       activeFilterCount={activeFilterCount}
-      filterLabel="les programmes"
+      filterLabel={t('log_explorer.filter_label')}
       defaultView="carte"
       summaryTitle={
         <>
-          {formatNumber(filteredLogements.length)} programmes
+          {formatNumber(filteredLogements.length)} {t('log_explorer.programmes')}
           <span className="text-sm font-normal text-slate-400 ml-2">
-            ({formatNumber(totalLogements)} logements)
+            ({formatNumber(totalLogements)} {t('log_explorer.housing_units')})
           </span>
         </>
       }
@@ -241,14 +244,14 @@ export default function LogementsExplorerTab({
             <table className="w-full">
               <thead>
                 <tr className="border-b border-slate-700">
-                  <th className="text-left px-2 md:px-4 py-3 text-xs font-medium text-slate-400 uppercase">Adresse</th>
-                  <th className="hidden md:table-cell text-left px-4 py-3 text-xs font-medium text-slate-400 uppercase">Bailleur</th>
-                  <th className="text-right px-2 md:px-4 py-3 text-xs font-medium text-slate-400 uppercase">Logements</th>
+                  <th className="text-left px-2 md:px-4 py-3 text-xs font-medium text-slate-400 uppercase">{t('log_explorer.address')}</th>
+                  <th className="hidden md:table-cell text-left px-4 py-3 text-xs font-medium text-slate-400 uppercase">{t('log_explorer.landlord')}</th>
+                  <th className="text-right px-2 md:px-4 py-3 text-xs font-medium text-slate-400 uppercase">{t('log_explorer.housing')}</th>
                   <th className="hidden lg:table-cell text-right px-4 py-3 text-xs font-medium text-blue-400 uppercase">PLAI</th>
                   <th className="hidden lg:table-cell text-right px-4 py-3 text-xs font-medium text-cyan-400 uppercase">PLUS</th>
                   <th className="hidden lg:table-cell text-right px-4 py-3 text-xs font-medium text-violet-400 uppercase">PLS</th>
-                  <th className="hidden md:table-cell text-center px-4 py-3 text-xs font-medium text-slate-400 uppercase">Année</th>
-                  <th className="hidden md:table-cell text-center px-4 py-3 text-xs font-medium text-slate-400 uppercase">Arr.</th>
+                  <th className="hidden md:table-cell text-center px-4 py-3 text-xs font-medium text-slate-400 uppercase">{t('log_explorer.year')}</th>
+                  <th className="hidden md:table-cell text-center px-4 py-3 text-xs font-medium text-slate-400 uppercase">{t('col.arr')}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-700/50">
@@ -270,7 +273,7 @@ export default function LogementsExplorerTab({
                     <td className="hidden lg:table-cell px-4 py-3 text-right text-sm text-violet-400">{l.nbPLS || 0}</td>
                     <td className="hidden md:table-cell px-4 py-3 text-center text-sm text-slate-400">{l.annee}</td>
                     <td className="hidden md:table-cell px-4 py-3 text-center text-sm text-slate-400">
-                      {l.arrondissement === 0 ? 'Centre' : `${l.arrondissement}e`}
+                      {l.arrondissement === 0 ? t('label.centre') : `${l.arrondissement}e`}
                     </td>
                   </tr>
                 ))}
@@ -279,12 +282,12 @@ export default function LogementsExplorerTab({
           </div>
           {filteredLogements.length > 100 && (
             <div className="px-4 py-3 border-t border-slate-700 text-center">
-              <p className="text-sm text-slate-500">100 premiers sur {formatNumber(filteredLogements.length)}</p>
+              <p className="text-sm text-slate-500">{t('log_explorer.first_of').replace('{total}', formatNumber(filteredLogements.length))}</p>
             </div>
           )}
           {filteredLogements.length === 0 && (
             <div className="px-4 py-12 text-center">
-              <p className="text-slate-400">Aucun programme ne correspond aux filtres</p>
+              <p className="text-slate-400">{t('log_explorer.no_results')}</p>
             </div>
           )}
         </div>

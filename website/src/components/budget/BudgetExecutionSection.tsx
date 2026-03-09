@@ -15,6 +15,7 @@ import type { EChartsOption } from 'echarts';
 import { formatEuroCompact } from '@/lib/formatters';
 import { PALETTE } from '@/lib/colors';
 import { useIsMobile } from '@/lib/hooks/useIsMobile';
+import { useT } from '@/lib/localeContext';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -71,27 +72,28 @@ function comparisonRates(rates: GlobalRate[]): GlobalRate[] {
 // ─── KPI Cards ───────────────────────────────────────────────────────────────
 
 function ExecutionRateCards({ rates }: { rates: GlobalRate[] }) {
+  const t = useT();
   const comp = comparisonRates(rates);
   const latest = comp[comp.length - 1];
   if (!latest) return null;
 
   const cards = [
     {
-      label: "Taux global d'exécution",
+      label: t('execution.global_rate'),
       value: latest.taux_global,
-      sub: `${latest.annee} — Part du budget prévu réellement dépensée`,
+      sub: `${latest.annee} — ${t('execution.global_rate_desc')}`,
       color: 'text-blue-600',
     },
     {
-      label: 'Dépenses courantes',
+      label: t('execution.current_expenses'),
       value: latest.taux_fonct,
-      sub: `${formatEuroCompact(latest.execute_fonct || 0)} dépensé / ${formatEuroCompact(latest.vote_fonct)} prévu`,
+      sub: `${formatEuroCompact(latest.execute_fonct || 0)} / ${formatEuroCompact(latest.vote_fonct)}`,
       color: 'text-emerald-600',
     },
     {
-      label: 'Grands projets',
+      label: t('execution.major_projects'),
       value: latest.taux_inves,
-      sub: `${formatEuroCompact(latest.execute_inves || 0)} dépensé / ${formatEuroCompact(latest.vote_inves)} prévu`,
+      sub: `${formatEuroCompact(latest.execute_inves || 0)} / ${formatEuroCompact(latest.vote_inves)}`,
       color: 'text-amber-600',
     },
   ];
@@ -115,6 +117,7 @@ function ExecutionRateCards({ rates }: { rates: GlobalRate[] }) {
 
 function ExecutionRateChart({ rates, height = 350 }: { rates: GlobalRate[]; height?: number }) {
   const isMobile = useIsMobile();
+  const t = useT();
 
   const option: EChartsOption = useMemo(() => {
     const comp = comparisonRates(rates);
@@ -149,7 +152,7 @@ function ExecutionRateChart({ rates, height = 350 }: { rates: GlobalRate[]; heig
         },
       },
       legend: {
-        data: ['Global', 'Courant', 'Grands projets'],
+        data: [t('execution.global'), t('execution.operating'), t('execution.major_projects')],
         top: 0,
         textStyle: { color: '#64748b', fontSize: isMobile ? 10 : 12 },
       },
@@ -172,7 +175,7 @@ function ExecutionRateChart({ rates, height = 350 }: { rates: GlobalRate[]; heig
       },
       series: [
         {
-          name: 'Global', type: 'line',
+          name: t('execution.global'), type: 'line',
           data: comp.map((r) => r.taux_global),
           lineStyle: { color: PALETTE.blue, width: 3 },
           itemStyle: { color: PALETTE.blue },
@@ -186,14 +189,14 @@ function ExecutionRateChart({ rates, height = 350 }: { rates: GlobalRate[]; heig
           ...(covidZones.length > 0 ? { markArea: { silent: true, data: covidZones } } : {}),
         },
         {
-          name: 'Courant', type: 'line',
+          name: t('execution.operating'), type: 'line',
           data: comp.map((r) => r.taux_fonct),
           lineStyle: { color: PALETTE.emerald, width: 2, type: 'dashed' },
           itemStyle: { color: PALETTE.emerald },
           symbolSize: isMobile ? 10 : 8,
         },
         {
-          name: 'Grands projets', type: 'line',
+          name: t('execution.major_projects'), type: 'line',
           data: comp.map((r) => r.taux_inves),
           lineStyle: { color: PALETTE.amber, width: 2, type: 'dashed' },
           itemStyle: { color: PALETTE.amber },
@@ -201,16 +204,15 @@ function ExecutionRateChart({ rates, height = 350 }: { rates: GlobalRate[]; heig
         },
       ],
     };
-  }, [rates, isMobile]);
+  }, [rates, isMobile, t]);
 
   return (
     <div className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-4 sm:p-6">
       <h3 className="text-lg font-semibold text-slate-200 mb-1">
-        Taux d&apos;exécution par année
+        {t('execution.rate_by_year')}
       </h3>
       <p className="text-xs text-slate-500 mb-4">
-        100% = tout le budget prévu a été dépensé. Les grands projets sont souvent
-        en dessous car ils s&apos;étalent sur plusieurs années. * = année COVID.
+        {t('execution.rate_by_year_desc_alt')}
       </p>
       <ReactECharts option={option} style={{ height }} notMerge />
     </div>
@@ -221,6 +223,7 @@ function ExecutionRateChart({ rates, height = 350 }: { rates: GlobalRate[]; heig
 
 function EcartRanking({ ranking }: { ranking: EcartRow[] }) {
   const isMobile = useIsMobile();
+  const t = useT();
 
   const depenseRanking = useMemo(() => {
     return ranking
@@ -249,12 +252,12 @@ function EcartRanking({ ranking }: { ranking: EcartRow[] }) {
           const idx = items[0]?.dataIndex;
           const row = sorted[idx];
           if (!row) return '';
-          const status = row.ecart_moyen_pct > 0 ? 'Sur-exécuté' : 'Sous-exécuté';
+          const status = row.ecart_moyen_pct > 0 ? t('execution.over_executed') : t('execution.under_executed');
           return (
             `<strong>${row.thematique}</strong> (${row.section})<br/>` +
             `${status}: <strong>${row.ecart_moyen_pct > 0 ? '+' : ''}${row.ecart_moyen_pct.toFixed(1)}%</strong><br/>` +
-            `Voté moy: ${formatEuroCompact(row.vote_total / row.nb_annees)} → ` +
-            `Exécuté moy: ${formatEuroCompact(row.execute_total / row.nb_annees)}`
+            `${t('execution.avg_voted')} ${formatEuroCompact(row.vote_total / row.nb_annees)} → ` +
+            `${t('execution.avg_executed')} ${formatEuroCompact(row.execute_total / row.nb_annees)}`
           );
         },
       },
@@ -302,19 +305,19 @@ function EcartRanking({ ranking }: { ranking: EcartRow[] }) {
         },
       }],
     };
-  }, [depenseRanking, isMobile]);
+  }, [depenseRanking, isMobile, t]);
 
   const chartHeight = Math.max(300, depenseRanking.length * 28 + 60);
 
   return (
     <div className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-4 sm:p-6">
       <h3 className="text-lg font-semibold text-slate-200 mb-1">
-        Écart moyen entre prévu et réel par poste
+        {t('execution.gap_title')}
       </h3>
       <p className="text-xs text-slate-500 mb-4">
-        <span className="text-red-600">Rouge</span> = dépensé plus que prévu ·{' '}
-        <span className="text-emerald-600">Vert</span> = dépensé moins que prévu.
-        Moyenne 2019-2024, postes &gt; 50 M€.
+        <span className="text-red-600">{t('execution.red')}</span> = {t('execution.spent_more_than_planned')} ·{' '}
+        <span className="text-emerald-600">{t('execution.green')}</span> = {t('execution.spent_less_than_planned')}.
+        {t('execution.gap_footer')}
       </p>
       <ReactECharts option={option} style={{ height: chartHeight }} notMerge />
     </div>
@@ -324,6 +327,7 @@ function EcartRanking({ ranking }: { ranking: EcartRow[] }) {
 // ─── Main Section Component ──────────────────────────────────────────────────
 
 export default function BudgetExecutionSection() {
+  const t = useT();
   const [data, setData] = useState<VoteExecuteData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -355,7 +359,7 @@ export default function BudgetExecutionSection() {
       <div className="flex items-center justify-center py-12">
         <div className="text-center">
           <div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-2" />
-          <p className="text-slate-500 text-sm">Chargement exécution budgétaire...</p>
+          <p className="text-slate-500 text-sm">{t('execution.loading')}</p>
         </div>
       </div>
     );
@@ -364,7 +368,7 @@ export default function BudgetExecutionSection() {
   if (error || !data) {
     return (
       <div className="text-center py-8">
-        <p className="text-slate-500 text-sm">Données d&apos;exécution budgétaire non disponibles.</p>
+        <p className="text-slate-500 text-sm">{t('execution.no_data')}</p>
       </div>
     );
   }

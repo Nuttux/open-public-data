@@ -19,6 +19,7 @@
  */
 
 import { useTrack } from '@/lib/analyticsContext';
+import { useT } from '@/lib/localeContext';
 
 interface YearRangeSelectorProps {
   /** Années disponibles dans les données (ordre quelconque) */
@@ -44,6 +45,7 @@ export default function YearRangeSelector({
   onEndYearChange,
 }: YearRangeSelectorProps) {
   const track = useTrack();
+  const t = useT();
   /** Années triées croissantes */
   const sortedYears = [...availableYears].sort((a, b) => a - b);
 
@@ -59,7 +61,7 @@ export default function YearRangeSelector({
   return (
     <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
       {/* Label */}
-      <span className="text-xs text-slate-400 whitespace-nowrap">Période :</span>
+      <span className="text-xs text-slate-400 whitespace-nowrap">{t('ui.period_label')}</span>
 
       {/* Dual selectors — même boîte bordée que les autres contrôles */}
       <div className="flex items-center bg-slate-800 rounded-lg border border-slate-700 p-0.5">
@@ -72,7 +74,7 @@ export default function YearRangeSelector({
             onStartYearChange(newYear);
           }}
           className="bg-transparent px-3 py-1.5 text-slate-100 text-sm font-medium focus:outline-none cursor-pointer"
-          aria-label="Année de début"
+          aria-label={t('ui.start_year')}
         >
           {startOptions.map(y => (
             <option key={y} value={y} className="bg-slate-800">{formatYear(y)}</option>
@@ -91,7 +93,7 @@ export default function YearRangeSelector({
             onEndYearChange(newYear);
           }}
           className="bg-transparent px-3 py-1.5 text-slate-100 text-sm font-medium focus:outline-none cursor-pointer"
-          aria-label="Année de fin"
+          aria-label={t('ui.end_year')}
         >
           {endOptions.map(y => (
             <option key={y} value={y} className="bg-slate-800">{formatYear(y)}</option>

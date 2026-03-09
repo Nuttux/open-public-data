@@ -17,6 +17,7 @@ import ReactECharts from 'echarts-for-react';
 import type { EChartsOption } from 'echarts';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
+import { useT } from '@/lib/localeContext';
 
 // ─── Shared Types ────────────────────────────────────────────────────────────
 
@@ -179,7 +180,7 @@ export function aggregateItems<T>(
 export default function AnnuelTab<T>({
   items, isLoading, theme,
   breakdowns, getGroupKey, getGroupColor, getValue,
-  treemapTitle, tooltipCountLabel, tooltipValueLabel = 'Montant', formatValue = formatEuroCompact, maxGroups,
+  treemapTitle, tooltipCountLabel, tooltipValueLabel, formatValue = formatEuroCompact, maxGroups,
   kpiCards,
   itemLabel, columns, sortItems, getItemKey,
   previewLimit = 30, onNavigateExplorer, formatTotal,
@@ -188,6 +189,7 @@ export default function AnnuelTab<T>({
   const isMobile = useIsMobile(BREAKPOINTS.md);
   const [breakdown, setBreakdown] = useState(breakdowns[0].id);
   const [selectedGroup, setSelectedGroup] = useState<string | null>(null);
+  const tr = useT();
   const t = THEME[theme];
 
   // ── Aggregation ──
@@ -257,11 +259,11 @@ export default function AnnuelTab<T>({
           </div>
           <div style="display: flex; flex-direction: column; gap: 3px; font-size: ${isMobile ? '11px' : '12px'};">
             <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '12px' : '24px'};">
-              <span style="color: #94a3b8;">${tooltipValueLabel}</span>
+              <span style="color: #94a3b8;">${tooltipValueLabel || tr('annuel.amount')}</span>
               <span style="font-weight: 500; color: #f1f5f9;">${formatValue(p.value)}</span>
             </div>
             <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '12px' : '24px'};">
-              <span style="color: #94a3b8;">Part du total</span>
+              <span style="color: #94a3b8;">${tr('annuel.part_du_total')}</span>
               <span style="font-weight: 500; color: #f1f5f9;">${p.data.pct.toFixed(1)}%</span>
             </div>
             <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '12px' : '24px'};">
@@ -307,7 +309,7 @@ export default function AnnuelTab<T>({
       animationDuration: isMobile ? 300 : 500,
       animationEasing: 'cubicOut',
     }],
-  }), [chartData, isMobile, tooltipCountLabel, tooltipValueLabel, formatValue]);
+  }), [chartData, isMobile, tooltipCountLabel, tooltipValueLabel, formatValue, tr]);
 
   const handleTreemapClick = useCallback((params: unknown) => {
     const p = params as { name: string };
@@ -348,11 +350,11 @@ export default function AnnuelTab<T>({
           <div>
             <h3 className="text-base sm:text-lg font-semibold text-slate-100">{treemapTitle}</h3>
             <p className="text-xs sm:text-sm text-slate-300">
-              {isMobile ? 'Appuyez pour filtrer' : 'Cliquez sur un bloc pour filtrer la table'}
+              {isMobile ? tr('ui.tap_to_filter') : tr('ui.click_block_filter')}
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-xs text-slate-400 hidden sm:inline">Ventilation :</span>
+            <span className="text-xs text-slate-400 hidden sm:inline">{tr('ui.breakdown_label')}</span>
             <div className="flex bg-slate-800 rounded-lg border border-slate-700 p-0.5">
               {breakdowns.map(opt => (
                 <button
@@ -384,7 +386,7 @@ export default function AnnuelTab<T>({
 
         {selectedGroup && (
           <div className="mt-3 flex flex-wrap items-center gap-2">
-            <span className="text-xs sm:text-sm text-slate-300">Filtre actif :</span>
+            <span className="text-xs sm:text-sm text-slate-300">{tr('ui.active_filter')}</span>
             <button
               onClick={() => setSelectedGroup(null)}
               className={`inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium ${t.filterBadgeBg} ${t.filterBadgeText} border ${t.filterBadgeBorder} ${t.filterBadgeHover} transition-colors`}
@@ -442,13 +444,13 @@ export default function AnnuelTab<T>({
               onClick={onNavigateExplorer}
               className={`text-sm ${t.valueAccent} hover:opacity-80 transition-colors`}
             >
-              Voir les {formatNumber(sortedFiltered.length)} {itemLabel} →
+              {tr('ui.click_to_explore').replace('→', '').trim()} {formatNumber(sortedFiltered.length)} {itemLabel} →
             </button>
           </div>
         )}
         {sortedFiltered.length === 0 && (
           <div className="px-4 py-12 text-center">
-            <p className="text-slate-300">Aucun {itemLabel.slice(0, -1)} ne correspond aux filtres</p>
+            <p className="text-slate-300">{tr('ui.no_match_filters')}</p>
           </div>
         )}
       </div>

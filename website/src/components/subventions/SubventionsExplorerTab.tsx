@@ -14,6 +14,7 @@ import SubventionsTable, { type Beneficiaire } from '@/components/SubventionsTab
 import { type SubventionFilters, DEFAULT_FILTERS } from '@/components/SubventionsFilters';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import type { CsvColumn } from '@/lib/export';
+import { useT } from '@/lib/localeContext';
 
 const CSV_COLUMNS: CsvColumn<Record<string, unknown>>[] = [
   { key: 'annee', label: 'Année' },
@@ -55,6 +56,8 @@ const TYPE_LABELS: Record<string, string> = {
   'autre': 'Autres',
 };
 
+const SUB_RANGE_KEYS = ['filters.range.all', 'filters.range.lt_100k', 'filters.range.100k_1m', 'filters.range.1m_10m', 'filters.range.10m_100m', 'filters.range.gt_100m'];
+
 const MONTANT_RANGES = [
   { min: 0, max: 0, label: 'Tous les montants' },
   { min: 0, max: 100000, label: 'Moins de 100 k€' },
@@ -82,6 +85,7 @@ function FilterPanel({
   activeFilterCount: number; onReset: () => void; layout: 'sidebar' | 'inline';
 }) {
   const isVertical = layout === 'sidebar';
+  const t = useT();
 
   const thematiques = useMemo(() => {
     const set = new Set(beneficiaires.map(b => b.thematique));
@@ -91,17 +95,17 @@ function FilterPanel({
   return (
     <div className={isVertical ? 'space-y-4' : 'grid grid-cols-1 sm:grid-cols-3 gap-4'}>
       <div className={isVertical ? 'bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4' : ''}>
-        <label className="block text-xs font-medium text-slate-400 mb-1.5">Rechercher</label>
+        <label className="block text-xs font-medium text-slate-400 mb-1.5">{t('subv_explorer.search')}</label>
         <input
           type="text" value={filters.search}
           onChange={e => onFiltersChange({ ...filters, search: e.target.value })}
-          placeholder="Nom, SIRET..."
+          placeholder={t('subv_explorer.search_placeholder')}
           className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-purple-500"
         />
       </div>
 
       <div className={isVertical ? 'bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4' : ''}>
-        <label className="block text-xs font-medium text-slate-400 mb-2">Type d&apos;organisme</label>
+        <label className="block text-xs font-medium text-slate-400 mb-2">{t('subv_explorer.org_type')}</label>
         <div className={isVertical ? 'space-y-1.5' : 'flex flex-wrap gap-1.5'}>
           {Object.entries(TYPE_LABELS).map(([type, label]) => {
             const isSelected = filters.typesOrganisme.includes(type);
@@ -112,7 +116,7 @@ function FilterPanel({
                   onFiltersChange({ ...filters, typesOrganisme: updated });
                 }}
                 className={`${isVertical ? 'w-full flex items-center justify-between px-3 py-2' : 'px-2 py-1'} rounded-md text-${isVertical ? 'sm' : '[11px]'} font-medium transition-all ${isSelected ? 'bg-purple-600/20 text-purple-400 border border-purple-500/30' : 'bg-slate-900/30 text-slate-400 hover:bg-slate-900/50 border border-transparent'}`}
-              ><span>{label}</span></button>
+              ><span>{t('filters.type.' + type)}</span></button>
             );
           })}
         </div>
@@ -121,35 +125,35 @@ function FilterPanel({
       <div className={isVertical ? 'space-y-4' : ''}>
         {availableDirections.length > 0 && (
           <div className={isVertical ? 'bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4' : ''}>
-            <label className="block text-xs font-medium text-slate-400 mb-1.5">Direction</label>
+            <label className="block text-xs font-medium text-slate-400 mb-1.5">{t('subv_explorer.direction')}</label>
             <select value={filters.directions.length === 1 ? filters.directions[0] : ''}
               onChange={e => onFiltersChange({ ...filters, directions: e.target.value ? [e.target.value] : [] })}
               className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-purple-500"
             >
-              <option value="">Toutes les directions</option>
+              <option value="">{t('subv_explorer.all_directions')}</option>
               {availableDirections.map(dir => <option key={dir} value={dir}>{dir}</option>)}
             </select>
           </div>
         )}
 
         <div className={isVertical ? 'bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4' : 'mt-3'}>
-          <label className="block text-xs font-medium text-slate-400 mb-1.5">Montant</label>
+          <label className="block text-xs font-medium text-slate-400 mb-1.5">{t('subv_explorer.amount')}</label>
           <select value={`${filters.montantMin}-${filters.montantMax}`}
             onChange={e => { const [min, max] = e.target.value.split('-').map(Number); onFiltersChange({ ...filters, montantMin: min, montantMax: max }); }}
             className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-purple-500"
           >
-            {MONTANT_RANGES.map(r => <option key={`${r.min}-${r.max}`} value={`${r.min}-${r.max}`}>{r.label}</option>)}
+            {MONTANT_RANGES.map((r, i) => <option key={`${r.min}-${r.max}`} value={`${r.min}-${r.max}`}>{t(SUB_RANGE_KEYS[i])}</option>)}
           </select>
         </div>
 
         {isVertical && (
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <label className="block text-xs font-medium text-slate-400 mb-2">Thématique</label>
+            <label className="block text-xs font-medium text-slate-400 mb-2">{t('subv_explorer.thematique')}</label>
             <select value={filters.thematique || ''}
               onChange={e => onFiltersChange({ ...filters, thematique: e.target.value || null })}
               className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-purple-500"
             >
-              <option value="">Toutes les thématiques</option>
+              <option value="">{t('subv_explorer.all_thematiques')}</option>
               {thematiques.map(t => <option key={t} value={t}>{t}</option>)}
             </select>
           </div>
@@ -159,7 +163,7 @@ function FilterPanel({
       {activeFilterCount > 0 && (
         <div className={isVertical ? '' : 'sm:col-span-3 flex justify-end pt-2 border-t border-slate-700/50'}>
           <button onClick={onReset} className="text-xs text-slate-500 hover:text-slate-300 transition-colors">
-            Réinitialiser les filtres ({activeFilterCount})
+            {t('subv_explorer.reset_filters')} ({activeFilterCount})
           </button>
         </div>
       )}
@@ -173,6 +177,7 @@ export default function SubventionsExplorerTab({
   beneficiaires, availableDirections, isLoading,
 }: SubventionsExplorerTabProps) {
   const [filters, setFilters] = useState<SubventionFilters>(DEFAULT_FILTERS);
+  const t = useT();
 
   const activeFilterCount = useMemo(() => {
     let c = 0;
@@ -208,10 +213,10 @@ export default function SubventionsExplorerTab({
       theme="purple"
       isLoading={isLoading}
       activeFilterCount={activeFilterCount}
-      filterLabel="les bénéficiaires"
+      filterLabel={t('subv_explorer.filter_label')}
       summaryTitle={
         <>
-          {formatNumber(filteredBenefs.length)} bénéficiaires
+          {formatNumber(filteredBenefs.length)} {t('subv_explorer.recipients')}
           <span className="text-sm font-normal text-slate-400 ml-2">({formatEuroCompact(filteredMontant)})</span>
         </>
       }

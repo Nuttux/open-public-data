@@ -10,29 +10,28 @@
  */
 
 import type { BudgetType } from '@/lib/formatters';
+import { useT } from '@/lib/localeContext';
 
 /** Configuration visuelle pour chaque type de budget */
-const BADGE_CONFIG: Record<BudgetType, {
-  label: string;
-  classes: string;
-  tooltip: string;
-}> = {
-  execute: {
-    label: 'Réel',
-    classes: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
-    tooltip: 'Chiffres réels : ce qui a vraiment été dépensé et encaissé',
-  },
-  vote: {
-    label: 'Prévisionnel',
-    classes: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
-    tooltip: 'Budget prévisionnel voté par le Conseil de Paris — les montants définitifs seront connus après exécution',
-  },
-  estime: {
-    label: 'Estimé',
-    classes: 'bg-slate-500/20 text-slate-400 border-slate-500/30',
-    tooltip: 'Estimation basée sur les taux de réalisation des années précédentes',
-  },
-};
+function getBadgeConfig(t: (key: string) => string): Record<BudgetType, { label: string; classes: string; tooltip: string }> {
+  return {
+    execute: {
+      label: t('badge.real'),
+      classes: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
+      tooltip: t('badge.real_tooltip'),
+    },
+    vote: {
+      label: t('badge.forecast'),
+      classes: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
+      tooltip: t('badge.forecast_tooltip'),
+    },
+    estime: {
+      label: t('badge.estimated'),
+      classes: 'bg-slate-500/20 text-slate-400 border-slate-500/30',
+      tooltip: t('badge.estimated_tooltip'),
+    },
+  };
+}
 
 interface BudgetTypeBadgeProps {
   type: BudgetType;
@@ -43,7 +42,8 @@ interface BudgetTypeBadgeProps {
 }
 
 export default function BudgetTypeBadge({ type, compact = false, className = '' }: BudgetTypeBadgeProps) {
-  const config = BADGE_CONFIG[type];
+  const t = useT();
+  const config = getBadgeConfig(t)[type];
 
   return (
     <span

@@ -7,20 +7,16 @@
  * 3 breakdowns : Thématique, Direction, Type d'organisme.
  */
 
+import { useMemo } from 'react';
 import TendancesTab from '@/components/shared/TendancesTab';
 import type { TendancesYear, BreakdownOption } from '@/components/shared/TendancesTab';
 import { getThematiqueColor, PALETTE, TYPE_ORGANISME_COLORS } from '@/lib/colors';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { PARIS_POPULATION_TOTAL } from '@/lib/constants/arrondissements';
 import { BREAKDOWN_ICONS } from '@/lib/icons';
+import { useT } from '@/lib/localeContext';
 
 // ─── Config ──────────────────────────────────────────────────────────────────
-
-const BREAKDOWNS: BreakdownOption[] = [
-  { id: 'thematique', label: 'Thématique', icon: BREAKDOWN_ICONS.thematique },
-  { id: 'direction', label: 'Direction', icon: BREAKDOWN_ICONS.direction },
-  { id: 'type_organisme', label: 'Type organisme', icon: BREAKDOWN_ICONS.type_organisme },
-];
 
 const DIRECTION_PALETTE = [
   PALETTE.blue, PALETTE.purple, PALETTE.pink, PALETTE.amber,
@@ -62,12 +58,6 @@ function parseData(json: unknown): TendancesYear[] {
 
 // ─── KPI helpers ─────────────────────────────────────────────────────────────
 
-const KPI4_LABELS: Record<string, string> = {
-  thematique: '1re thématique',
-  direction: '1re direction',
-  type_organisme: '1er type',
-};
-
 function formatVariationDiff(value: number): string {
   const sign = value >= 0 ? '+' : '';
   return `${sign}${formatEuroCompact(value)}`;
@@ -76,35 +66,41 @@ function formatVariationDiff(value: number): string {
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function SubventionsTendancesTab() {
+  const t = useT();
+  const breakdowns = useMemo<BreakdownOption[]>(() => [
+    { id: 'thematique', label: t('breakdown.category'), icon: BREAKDOWN_ICONS.thematique },
+    { id: 'direction', label: t('breakdown.department'), icon: BREAKDOWN_ICONS.direction },
+    { id: 'type_organisme', label: t('breakdown.org_type'), icon: BREAKDOWN_ICONS.type_organisme },
+  ], [t]);
   return (
     <TendancesTab
       dataUrl="/data/subventions/subventions_tendances.json"
       parseData={parseData}
-      breakdowns={BREAKDOWNS}
+      breakdowns={breakdowns}
       getGroupColor={(label, dim) => getGroupColor(label, dim)}
       theme="purple"
       formatValue={formatEuroCompact}
       tooltipHeader={(year, total) => `${year} — ${formatEuroCompact(total)}`}
       formatVariationDiff={formatVariationDiff}
-      title="Tendances des subventions"
-      kpi1Label={(year) => `Subventions ${year}`}
-      kpi1Sub={(year) => `${formatNumber(year.subCount || 0)} subventions · ${formatNumber(Math.round(year.total / PARIS_POPULATION_TOTAL))} €/hab`}
+      title={t('subv_tendances.title')}
+      kpi1Label={(year) => t('subv_tendances.kpi1').replace('{year}', String(year))}
+      kpi1Sub={(year) => `${formatNumber(year.subCount || 0)} ${t('subv_tendances.grants_count')} · ${formatNumber(Math.round(year.total / PARIS_POPULATION_TOTAL))} €/${t('subv_tendances.per_resident')}`}
       kpi4={(ctx) => ({
-        label: KPI4_LABELS[ctx.breakdown] || '1er groupe',
+        label: t('subv_tendances.kpi4_' + ctx.breakdown) || t('subv_tendances.kpi4_default'),
         value: ctx.topName,
         sub: `${formatEuroCompact(ctx.topValue)} (${ctx.topPct.toFixed(0)}%)`,
       })}
-      chartTitle={(dim) => `Subventions par ${dim}`}
-      variationTitle={(dim) => `Évolution par ${dim}`}
-      variationSubtitle={(dim) => `Quelles ${dim}s ont le plus évolué`}
+      chartTitle={(dim) => t('subv_tendances.chart_title').replace('{dim}', dim)}
+      variationTitle={(dim) => t('subv_tendances.variation_title').replace('{dim}', dim)}
+      variationSubtitle={(dim) => t('subv_tendances.variation_subtitle').replace('{dim}', dim)}
       yAxisFormatter={(v: number) => v >= 1e9 ? `${(v / 1e9).toFixed(1)} Md€` : `${(v / 1e6).toFixed(0)} M€`}
       csvFilename="subventions_tendances"
-      sourceNote="Source : Open Data Paris — Subventions associations votées. Données absentes pour 2020-2021."
+      sourceNote={t('subv_tendances.source')}
       qualityNotes={
         <ul className="text-[11px] text-slate-500 space-y-1.5 list-disc list-inside">
-          <li>Les données proviennent des <strong className="text-slate-400">subventions aux associations votées</strong> par le Conseil de Paris.</li>
-          <li>Les années <strong className="text-slate-400">2020 et 2021</strong> ne sont pas disponibles dans la source OpenData.</li>
-          <li>Les montants représentent le top 500 bénéficiaires par année, couvrant plus de 95% du total.</li>
+          <li dangerouslySetInnerHTML={{ __html: t('subv_tendances.note1') }} />
+          <li dangerouslySetInnerHTML={{ __html: t('subv_tendances.note2') }} />
+          <li dangerouslySetInnerHTML={{ __html: t('subv_tendances.note3') }} />
         </ul>
       }
     />

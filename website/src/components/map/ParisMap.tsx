@@ -20,6 +20,7 @@ import { formatEuroCompact } from '@/lib/formatters';
 import { getDirectionName, THEMATIQUE_LABELS, type ThematiqueSubvention } from '@/lib/constants/directions';
 import ChoroplethLayer, { ChoroplethLegend, type ChoroplethMetric } from './ChoroplethLayer';
 import { MISC_ICONS } from '@/lib/icons';
+import { useT } from '@/lib/localeContext';
 
 /**
  * Centre de Paris par défaut
@@ -158,6 +159,7 @@ export default function ParisMap({
   selectedId,
   isLoading = false,
 }: ParisMapProps) {
+  const t = useT();
   const [mapReady, setMapReady] = useState(false);
 
   // Les subventions avec coordonnées
@@ -217,7 +219,7 @@ export default function ParisMap({
         <div className="absolute inset-0 bg-slate-900/50 backdrop-blur-sm z-[1000] flex items-center justify-center">
           <div className="text-center">
             <div className="w-10 h-10 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-            <p className="text-slate-300 text-sm">Chargement des données...</p>
+            <p className="text-slate-300 text-sm">{t('ui.loading')}</p>
           </div>
         </div>
       )}
@@ -270,20 +272,20 @@ export default function ParisMap({
                 </p>
                 <div className="text-xs text-slate-600 space-y-1">
                   <p>
-                    <strong>Direction:</strong>{' '}
+                    <strong>{t('map.direction')}</strong>{' '}
                     <span title={sub.direction}>{getDirectionName(sub.direction)}</span>
                   </p>
                   {sub.thematique && (
                     <p>
-                      <strong>Thématique:</strong>{' '}
+                      <strong>{t('map.theme')}</strong>{' '}
                       {THEMATIQUE_LABELS[sub.thematique as ThematiqueSubvention]?.icon || '📋'}{' '}
                       {THEMATIQUE_LABELS[sub.thematique as ThematiqueSubvention]?.label || sub.thematique}
                     </p>
                   )}
-                  <p><strong>Nature:</strong> {sub.nature}</p>
-                  <p><strong>Objet:</strong> {sub.objet}</p>
-                  {sub.adresse && <p><strong>Adresse:</strong> {sub.adresse}</p>}
-                  <p><strong>Année:</strong> {sub.annee}</p>
+                  <p><strong>{t('map.nature')}</strong> {sub.nature}</p>
+                  <p><strong>{t('map.object')}</strong> {sub.objet}</p>
+                  {sub.adresse && <p><strong>{t('map.address')}</strong> {sub.adresse}</p>}
+                  <p><strong>{t('map.year')}</strong> {sub.annee}</p>
                 </div>
               </div>
             </Popup>
@@ -310,18 +312,18 @@ export default function ParisMap({
               <div className="min-w-[200px]">
                 <h3 className="font-bold text-slate-100 mb-1">{log.adresse}</h3>
                 <p className="text-2xl font-bold text-emerald-600 mb-2">
-                  {log.nbLogements} logements
+                  {log.nbLogements} {t('map.units')}
                 </p>
                 <div className="text-xs text-slate-600 space-y-1">
-                  <p><strong>Bailleur:</strong> {log.bailleur}</p>
-                  <p><strong>Type:</strong> {log.natureProgramme}</p>
-                  <p><strong>Mode:</strong> {log.modeRealisation}</p>
-                  <p><strong>Année:</strong> {log.annee}</p>
-                  <p><strong>Arrondissement:</strong> {log.arrondissement}ème</p>
+                  <p><strong>{t('map.landlord')}</strong> {log.bailleur}</p>
+                  <p><strong>{t('map.type')}</strong> {log.natureProgramme}</p>
+                  <p><strong>{t('map.mode')}</strong> {log.modeRealisation}</p>
+                  <p><strong>{t('map.year')}</strong> {log.annee}</p>
+                  <p><strong>{t('map.district')}</strong> {`${log.arrondissement}${t('map.district_suffix')}`}</p>
                   <div className="mt-2 pt-2 border-t border-slate-700/50">
-                    <p>PLAI (très social): {log.nbPLAI}</p>
-                    <p>PLUS (social): {log.nbPLUS}</p>
-                    <p>PLS (intermédiaire): {log.nbPLS}</p>
+                    <p>{t('map.plai_label')} {log.nbPLAI}</p>
+                    <p>{t('map.plus_label')} {log.nbPLUS}</p>
+                    <p>{t('map.pls_label')} {log.nbPLS}</p>
                   </div>
                 </div>
               </div>
@@ -353,24 +355,24 @@ export default function ParisMap({
                 </p>
                 <div className="text-xs text-slate-600 space-y-1.5">
                   <p className="leading-snug">
-                    <strong>Chapitre:</strong>{' '}
+                    <strong>{t('map.chapter')}</strong>{' '}
                     <span className="text-slate-700">{ap.missionTexte}</span>
                   </p>
                   {ap.thematique && (
                     <p>
-                      <strong>Thématique:</strong>{' '}
+                      <strong>{t('map.theme')}</strong>{' '}
                       {THEMATIQUE_LABELS[ap.thematique as ThematiqueSubvention]?.icon || '📋'}{' '}
                       {THEMATIQUE_LABELS[ap.thematique as ThematiqueSubvention]?.label || ap.thematique}
                     </p>
                   )}
-                  <p><strong>Année:</strong> {ap.annee}</p>
+                  <p><strong>{t('map.year')}</strong> {ap.annee}</p>
                   {/* Localisation avec indicateur de précision */}
                   <div className="mt-2 pt-2 border-t border-slate-700/50">
                     {ap.isPrecise ? (
                       <>
                         <p className="flex items-center gap-1">
                           <span className="text-emerald-500">{MISC_ICONS.mapPinPrecise}</span>
-                          <strong>Localisation précise</strong>
+                          <strong>{t('map.precise_location')}</strong>
                         </p>
                         {ap.adresse && (
                           <p className="text-slate-500 ml-5">{ap.adresse}</p>
@@ -380,10 +382,10 @@ export default function ParisMap({
                       <>
                         <p className="flex items-center gap-1">
                           <span className="text-orange-400">{MISC_ICONS.mapPinApprox}</span>
-                          <strong>Localisation approximative</strong>
+                          <strong>{t('map.approx_location')}</strong>
                         </p>
                         <p className="text-slate-500 ml-5">
-                          {ap.arrondissement === 0 ? 'Paris Centre' : `${ap.arrondissement}ème arrondissement`}
+                          {ap.arrondissement === 0 ? t('map.centre') : `${ap.arrondissement}${t('map.district_suffix')} arr.`}
                         </p>
                       </>
                     )}
@@ -398,18 +400,18 @@ export default function ParisMap({
       {/* Légende points */}
       {!showChoropleth && (
         <div className="absolute bottom-4 left-4 bg-slate-900/90 backdrop-blur rounded-lg p-3 z-[1000]">
-          <h4 className="text-xs font-semibold text-slate-300 mb-2">Légende</h4>
+          <h4 className="text-xs font-semibold text-slate-300 mb-2">{t('map.legend')}</h4>
           <div className="space-y-1.5 text-xs">
             {showSubventions && (
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-purple-500" />
-                <span className="text-slate-400">Subventions ({geoSubventions.length})</span>
+                <span className="text-slate-400">{t('map.grants')} ({geoSubventions.length})</span>
               </div>
             )}
             {showLogements && (
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-emerald-500" />
-                <span className="text-slate-400">Logements ({logements.length})</span>
+                <span className="text-slate-400">{t('map.housing')} ({logements.length})</span>
               </div>
             )}
             {showAutorisations && (
@@ -417,13 +419,13 @@ export default function ParisMap({
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-amber-500 border-2 border-amber-400" />
                   <span className="text-slate-400">
-                    Investissements précis ({geoAutorisations.filter(a => a.isPrecise).length})
+                    {t('map.precise_investments')} ({geoAutorisations.filter(a => a.isPrecise).length})
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-orange-400/50 border border-dashed border-orange-400" />
                   <span className="text-slate-400">
-                    Approx. ({geoAutorisations.filter(a => !a.isPrecise).length})
+                    {t('map.approx')} ({geoAutorisations.filter(a => !a.isPrecise).length})
                   </span>
                 </div>
               </>
