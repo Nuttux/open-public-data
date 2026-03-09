@@ -97,7 +97,7 @@ function normalizePagePath(path: string): string {
 }
 
 function extractPageLocale(path: string): string | null {
-  const match = path.match(/^\/(fr|en)\//);
+  const match = path.match(/^\/(fr|en)(\/|$)/);
   return match ? match[1] : null;
 }
 
