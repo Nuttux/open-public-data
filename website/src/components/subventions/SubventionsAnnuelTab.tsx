@@ -18,6 +18,7 @@ import { PARIS_POPULATION_TOTAL } from '@/lib/constants/arrondissements';
 import { getThematiqueColor, PALETTE } from '@/lib/colors';
 import type { CsvColumn } from '@/lib/export';
 import { BREAKDOWN_ICONS } from '@/lib/icons';
+import { useT } from '@/lib/localeContext';
 
 const CSV_COLUMNS: CsvColumn<Record<string, unknown>>[] = [
   { key: 'annee', label: 'Année' },
@@ -31,12 +32,6 @@ const CSV_COLUMNS: CsvColumn<Record<string, unknown>>[] = [
 ];
 
 // ─── Config ──────────────────────────────────────────────────────────────────
-
-const BREAKDOWNS: BreakdownOption[] = [
-  { id: 'thematique', label: 'Thématique', icon: BREAKDOWN_ICONS.thematique },
-  { id: 'direction', label: 'Direction', icon: BREAKDOWN_ICONS.direction },
-  { id: 'type_organisme', label: 'Type organisme', icon: BREAKDOWN_ICONS.type_organisme },
-];
 
 /** Mapping nature juridique → type organisme simplifié */
 const NATURE_TO_TYPE: Record<string, string> = {
@@ -63,16 +58,17 @@ const DIM_COLORS = [
   PALETTE.pink, PALETTE.green,
 ];
 
-function getGroupKey(b: Beneficiaire, dim: string): string {
+function getGroupKey(b: Beneficiaire, dim: string, t?: (k: string) => string): string {
+  const other = t ? t('label.other') : 'Autre';
   switch (dim) {
     case 'thematique':
-      return b.thematique || 'Non classifié';
+      return b.thematique || (t ? t('label.unclassified') : 'Non classifié');
     case 'direction':
-      return b.direction || 'Non renseignée';
+      return b.direction || (t ? t('label.not_specified') : 'Non renseignée');
     case 'type_organisme':
-      return NATURE_TO_TYPE[b.nature_juridique || ''] || 'Autres';
+      return NATURE_TO_TYPE[b.nature_juridique || ''] || other;
     default:
-      return 'Autre';
+      return other;
   }
 }
 
@@ -81,36 +77,38 @@ function getGroupColor(key: string, dim: string, index: number): string {
   return DIM_COLORS[index % DIM_COLORS.length];
 }
 
-const COLUMNS: TableColumnDef<Beneficiaire>[] = [
-  {
-    key: 'beneficiaire', label: 'Bénéficiaire', align: 'left',
-    render: (b, i) => (
-      <div className="flex items-start gap-2">
-        <span className="text-slate-400 text-xs w-5 shrink-0">{i + 1}</span>
-        <div className="min-w-0">
-          <p className="text-xs md:text-sm text-slate-200 line-clamp-2">{b.beneficiaire}</p>
-          <p className="text-[10px] md:text-xs text-slate-400 mt-1">
-            {b.nature_juridique || 'N/A'}
-          </p>
+function getColumns(t: (k: string) => string): TableColumnDef<Beneficiaire>[] {
+  return [
+    {
+      key: 'beneficiaire', label: t('col.recipient'), align: 'left',
+      render: (b, i) => (
+        <div className="flex items-start gap-2">
+          <span className="text-slate-400 text-xs w-5 shrink-0">{i + 1}</span>
+          <div className="min-w-0">
+            <p className="text-xs md:text-sm text-slate-200 line-clamp-2">{b.beneficiaire}</p>
+            <p className="text-[10px] md:text-xs text-slate-400 mt-1">
+              {b.nature_juridique || 'N/A'}
+            </p>
+          </div>
         </div>
-      </div>
-    ),
-  },
-  {
-    key: 'thematique', label: 'Thématique', hideOnMobile: true, align: 'left',
-    render: (b) => <p className="text-xs text-slate-400 line-clamp-2">{b.thematique}</p>,
-  },
-  {
-    key: 'montant', label: 'Montant', align: 'right',
-    render: (b) => <p className="text-xs md:text-sm font-semibold text-purple-400 whitespace-nowrap">{formatEuroCompact(b.montant_total)}</p>,
-  },
-  {
-    key: 'direction', label: 'Dir.', hideOnMobile: true, align: 'center',
-    render: (b) => b.direction
-      ? <span className="text-sm text-slate-300">{b.direction}</span>
-      : <span className="text-slate-500">-</span>,
-  },
-];
+      ),
+    },
+    {
+      key: 'thematique', label: t('col.category'), hideOnMobile: true, align: 'left',
+      render: (b) => <p className="text-xs text-slate-400 line-clamp-2">{b.thematique}</p>,
+    },
+    {
+      key: 'montant', label: t('col.amount'), align: 'right',
+      render: (b) => <p className="text-xs md:text-sm font-semibold text-purple-400 whitespace-nowrap">{formatEuroCompact(b.montant_total)}</p>,
+    },
+    {
+      key: 'direction', label: t('col.dept'), hideOnMobile: true, align: 'center',
+      render: (b) => b.direction
+        ? <span className="text-sm text-slate-300">{b.direction}</span>
+        : <span className="text-slate-500">-</span>,
+    },
+  ];
+}
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
@@ -126,6 +124,13 @@ interface SubventionsAnnuelTabProps {
 export default function SubventionsAnnuelTab({
   selectedYear, beneficiaires, nbSubventions, isLoading, error, onNavigateExplorer,
 }: SubventionsAnnuelTabProps) {
+  const t = useT();
+  const breakdowns = useMemo<BreakdownOption[]>(() => [
+    { id: 'thematique', label: t('breakdown.category'), icon: BREAKDOWN_ICONS.thematique },
+    { id: 'direction', label: t('breakdown.department'), icon: BREAKDOWN_ICONS.direction },
+    { id: 'type_organisme', label: t('breakdown.org_type'), icon: BREAKDOWN_ICONS.type_organisme },
+  ], [t]);
+  const columns = useMemo(() => getColumns(t), [t]);
   const stats = useMemo(() => {
     const totalMontant = beneficiaires.reduce((s, b) => s + b.montant_total, 0);
     return { total: beneficiaires.length, totalMontant };
@@ -146,14 +151,14 @@ export default function SubventionsAnnuelTab({
       items={beneficiaires}
       isLoading={isLoading}
       theme="purple"
-      breakdowns={BREAKDOWNS}
-      getGroupKey={getGroupKey}
+      breakdowns={breakdowns}
+      getGroupKey={(b, dim) => getGroupKey(b, dim, t)}
       getGroupColor={getGroupColor}
       getValue={(b) => b.montant_total}
-      treemapTitle="Répartition des subventions"
-      tooltipCountLabel="Bénéficiaires"
-      itemLabel="bénéficiaires"
-      columns={COLUMNS}
+      treemapTitle={t('subv_annuel.treemap_title')}
+      tooltipCountLabel={t('subv_annuel.tooltip_count')}
+      itemLabel={t('subv_annuel.item_label')}
+      columns={columns}
       sortItems={(a, b) => b.montant_total - a.montant_total}
       getItemKey={(b, i) => `${b.beneficiaire}-${i}`}
       onNavigateExplorer={onNavigateExplorer}
@@ -170,17 +175,17 @@ export default function SubventionsAnnuelTab({
       kpiCards={
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-400 uppercase tracking-wide">Montant total</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">{t('subv_annuel.total_amount')}</p>
             <p className="text-2xl font-bold text-slate-100 mt-1">{formatEuroCompact(stats.totalMontant)}</p>
-            <p className="text-xs text-slate-400 mt-1">{formatNumber(nbSubventions)} subventions · {formatNumber(Math.round(stats.totalMontant / PARIS_POPULATION_TOTAL))} €/hab</p>
+            <p className="text-xs text-slate-400 mt-1">{formatNumber(nbSubventions)} {t('subv_annuel.grants_count')} · {formatNumber(Math.round(stats.totalMontant / PARIS_POPULATION_TOTAL))} €/{t('subv_annuel.per_resident')}</p>
           </div>
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-400 uppercase tracking-wide">Bénéficiaire médian</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">{t('subv_annuel.median')}</p>
             <p className="text-2xl font-bold text-purple-400 mt-1">{topKpis ? formatEuroCompact(topKpis.median) : '—'}</p>
-            <p className="text-xs text-slate-400 mt-1">montant médian</p>
+            <p className="text-xs text-slate-400 mt-1">{t('subv_annuel.median_amount')}</p>
           </div>
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-400 uppercase tracking-wide">Top bénéficiaire</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">{t('subv_annuel.top')}</p>
             <p className="text-lg font-bold text-emerald-400 mt-1 truncate" title={topKpis?.topName}>
               {topKpis ? formatEuroCompact(topKpis.topVal) : '—'}
             </p>
@@ -189,7 +194,7 @@ export default function SubventionsAnnuelTab({
             </p>
           </div>
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4">
-            <p className="text-xs text-slate-400 uppercase tracking-wide">Bénéficiaires</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide">{t('subv_annuel.recipients')}</p>
             <p className="text-2xl font-bold text-purple-400 mt-1">{formatNumber(stats.total)}</p>
             <p className="text-xs text-slate-400 mt-1">{selectedYear}</p>
           </div>

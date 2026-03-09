@@ -22,11 +22,19 @@ import ExportBar from '@/components/shared/ExportBar';
 import { getBudgetTypeForYear } from '@/components/BudgetTypeBadge';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 import { useTrack } from '@/lib/analyticsContext';
+import { useT } from '@/lib/localeContext';
 import type { BudgetData, BudgetIndex, DrilldownItem, DataStatus, BudgetType } from '@/lib/formatters';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
 type ViewMode = 'flux' | 'depenses';
+
+/** Translate a data node name for display, falling back to original */
+function tn(name: string, t: (k: string) => string): string {
+  const key = `node.${name}`;
+  const val = t(key);
+  return val === key ? name : val;
+}
 
 interface DrilldownLevel {
   title: string;
@@ -78,6 +86,7 @@ function ViewToggle({
   onChange: (mode: ViewMode) => void;
   hasNatureData: boolean;
 }) {
+  const t = useT();
   return (
     <div className="inline-flex rounded-lg bg-slate-800/80 p-0.5 sm:p-1 border border-slate-700/50">
       <button
@@ -86,8 +95,8 @@ function ViewToggle({
           ${value === 'flux' ? 'bg-purple-500 text-white shadow-lg shadow-purple-500/25' : 'text-slate-400 hover:text-slate-200 active:bg-slate-700/50'}
         `}
       >
-        <span className="sm:hidden">Flux</span>
-        <span className="hidden sm:inline">Flux budgétaires</span>
+        <span className="sm:hidden">{t('budget_annuel.flux')}</span>
+        <span className="hidden sm:inline">{t('budget_annuel.flux_full')}</span>
       </button>
       <button
         onClick={() => onChange('depenses')}
@@ -100,10 +109,10 @@ function ViewToggle({
               : 'text-slate-600 cursor-not-allowed'
           }
         `}
-        title={!hasNatureData ? 'Données non disponibles pour cette année' : undefined}
+        title={!hasNatureData ? t('budget_annuel.no_data_year') : undefined}
       >
-        <span className="sm:hidden">Dépenses</span>
-        <span className="hidden sm:inline">Types de dépenses</span>
+        <span className="sm:hidden">{t('budget_annuel.expenses')}</span>
+        <span className="hidden sm:inline">{t('budget_annuel.expenses_full')}</span>
       </button>
     </div>
   );
@@ -128,11 +137,12 @@ function DataStatusBadge({
 }) {
   if (!status) return null;
 
+  const t = useT();
   const statusConfig: Record<DataStatus, { label: string; color: string; icon: string }> = {
-    COMPLET: { label: 'Budget exécuté', color: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30', icon: '✓' },
-    PARTIEL: { label: 'Données partielles', color: 'bg-amber-500/20 text-amber-400 border-amber-500/30', icon: '◐' },
-    BUDGET_VOTE: { label: 'Budget voté (BP)', color: 'bg-orange-500/20 text-orange-400 border-orange-500/30', icon: '○' },
-    INCONNU: { label: 'Statut inconnu', color: 'bg-slate-500/20 text-slate-400 border-slate-500/30', icon: '?' },
+    COMPLET: { label: t('budget_annuel.status.executed'), color: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30', icon: '✓' },
+    PARTIEL: { label: t('budget_annuel.status.partial'), color: 'bg-amber-500/20 text-amber-400 border-amber-500/30', icon: '◐' },
+    BUDGET_VOTE: { label: t('budget_annuel.status.voted'), color: 'bg-orange-500/20 text-orange-400 border-orange-500/30', icon: '○' },
+    INCONNU: { label: t('budget_annuel.status.unknown'), color: 'bg-slate-500/20 text-slate-400 border-slate-500/30', icon: '?' },
   };
 
   // Statut effectif pour cette page : si le budget principal est disponible,
@@ -157,6 +167,7 @@ function DataStatusBadge({
 
 export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: BudgetAnnuelTabProps) {
   const track = useTrack();
+  const t = useT();
   const [budgetData, setBudgetData] = useState<BudgetData | null>(null);
   const [natureData, setNatureData] = useState<BudgetNatureData | null>(null);
   const [drilldown, setDrilldown] = useState<DrilldownState | null>(null);
@@ -246,13 +257,13 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
           fetch(`/data/budget_nature_${selectedYear}.json`).catch(() => null),
         ]);
 
-        if (!sankeyRes.ok) throw new Error(`Données ${selectedYear} non disponibles`);
+        if (!sankeyRes.ok) throw new Error(`Data ${selectedYear} unavailable`);
 
         setBudgetData(await sankeyRes.json());
         setNatureData(natureRes?.ok ? await natureRes.json() : null);
         setError(null);
       } catch (err) {
-        setError(`Erreur lors du chargement des données ${selectedYear}`);
+        setError(t('budget_annuel.nature_no_data').replace('{year}', String(selectedYear)));
         console.error('Error loading budget data:', err);
         setBudgetData(null);
         setNatureData(null);
@@ -360,7 +371,7 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
   }, [budgetData]);
 
   const currentDrilldown = drilldown ? drilldown.levels[drilldown.currentLevel] : null;
-  const breadcrumbs = drilldown?.levels.map(l => l.title) || [];
+  const breadcrumbs = drilldown?.levels.map(l => tn(l.title, t)) || [];
   const canDrillDeeper = currentDrilldown
     ? drilldown?.originalItems.some(i => i.name.startsWith(currentDrilldown.items[0]?.name + ':'))
     : false;
@@ -386,8 +397,7 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
       {budgetType === 'vote' && (
         <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-4 mb-6">
           <p className="text-sm text-orange-300">
-            <strong>Budget prévisionnel {selectedYear}</strong> — voté par le Conseil de Paris.
-            Hors COVID, l&apos;écart-type avec le budget exécuté est de ±5%.
+            {t('budget_annuel.voted_disclaimer').replace('{year}', String(selectedYear))}
           </p>
         </div>
       )}
@@ -418,9 +428,9 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
           <ExportBar
             csvData={csvLinks}
             csvColumns={[
-              { key: 'source', label: 'Source' },
-              { key: 'target', label: 'Destination' },
-              { key: 'value', label: 'Montant (€)' },
+              { key: 'source', label: t('budget_annuel.csv_source') },
+              { key: 'target', label: t('budget_annuel.csv_destination') },
+              { key: 'value', label: t('budget_annuel.csv_amount') },
             ]}
             filename={`budget_annuel_${selectedYear}`}
           />
@@ -430,8 +440,8 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
             <ViewToggle value={viewMode} onChange={handleViewChange} hasNatureData={!!natureData} />
             <p className="text-xs text-slate-500 hidden sm:block">
               {viewMode === 'flux'
-                ? "D'où vient l'argent et comment se répartit-il entre les grands postes"
-                : 'Comment est-il dépensé (personnel, subventions, investissements...)'}
+                ? t('budget_annuel.view_hint_flux')
+                : t('budget_annuel.view_hint_expenses')}
             </p>
           </div>
 
@@ -450,7 +460,7 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
                     >
                       <div className="p-4 pt-safe pb-safe">
                         <DrilldownPanel
-                          title={currentDrilldown.title}
+                          title={tn(currentDrilldown.title, t)}
                           category={currentDrilldown.category}
                           parentCategory={breadcrumbs[0]}
                           items={currentDrilldown.items}
@@ -515,11 +525,11 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
           {viewMode === 'depenses' && natureData && (
             <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6">
               <div className="flex items-center gap-2 mb-2">
-                <h3 className="text-lg font-semibold text-slate-100">Répartition par type de dépense</h3>
+                <h3 className="text-lg font-semibold text-slate-100">{t('budget_annuel.nature_title')}</h3>
               </div>
-              <p className="text-sm text-slate-400 mb-1">Cliquez sur une catégorie pour voir le détail</p>
+              <p className="text-sm text-slate-400 mb-1">{t('budget_annuel.nature_click')}</p>
               <p className="text-xs text-slate-500 mb-4">
-                Classification comptable : personnel, subventions, investissements, etc.
+                {t('budget_annuel.nature_desc')}
               </p>
               <NatureDonut data={natureData} height={400} />
             </div>
@@ -527,7 +537,7 @@ export default function BudgetAnnuelTab({ selectedYear, onYearChange, index }: B
 
           {viewMode === 'depenses' && !natureData && (
             <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-12 text-center">
-              <p className="text-slate-400">Données par type de dépense non disponibles pour {selectedYear}</p>
+              <p className="text-slate-400">{t('budget_annuel.nature_no_data').replace('{year}', String(selectedYear))}</p>
             </div>
           )}
         </>

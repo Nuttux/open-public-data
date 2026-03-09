@@ -15,6 +15,7 @@
 
 import { useState, type ReactNode } from 'react';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
+import { useT } from '@/lib/localeContext';
 
 // ─── Theme ───────────────────────────────────────────────────────────────────
 
@@ -120,6 +121,7 @@ export default function ExplorerTab({
   isLoading,
 }: ExplorerTabProps) {
   const isMobile = useIsMobile(BREAKPOINTS.lg);
+  const tr = useT();
   const [viewMode, setViewMode] = useState<ViewMode>(defaultView);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const t = THEME[theme];
@@ -147,7 +149,7 @@ export default function ExplorerTab({
 
         {hasToggle && (
           <div className="flex items-center gap-2">
-            <span className="text-xs text-slate-500 hidden sm:inline">Visualisation :</span>
+            <span className="text-xs text-slate-500 hidden sm:inline">{tr('ui.visualization')}</span>
             <div className="flex bg-slate-800 rounded-lg border border-slate-700 p-0.5">
               <button
                 onClick={() => setViewMode('liste')}
@@ -155,7 +157,7 @@ export default function ExplorerTab({
                   viewMode === 'liste' ? t.activeBtn : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50'
                 }`}
               >
-                <ListIcon /> Liste
+                <ListIcon /> {tr('ui.list')}
               </button>
               {hasMap && (
                 <button
@@ -164,7 +166,7 @@ export default function ExplorerTab({
                     viewMode === 'carte' ? t.activeBtn : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50'
                   }`}
                 >
-                  <MapIcon /> Carte
+                  <MapIcon /> {tr('ui.map')}
                 </button>
               )}
               {hasArr && (
@@ -174,7 +176,7 @@ export default function ExplorerTab({
                     viewMode === 'arrondissements' ? t.activeBtn : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50'
                   }`}
                 >
-                  <ArrIcon /> <span className="hidden sm:inline">Arrondissements</span><span className="sm:hidden">Arr.</span>
+                  <ArrIcon /> <span className="hidden sm:inline">{tr('ui.arrondissements')}</span><span className="sm:hidden">{tr('ui.arr_short')}</span>
                 </button>
               )}
             </div>
@@ -201,8 +203,8 @@ export default function ExplorerTab({
               <FilterIcon open={mobileFiltersOpen} />
               <span>
                 {activeFilterCount > 0
-                  ? `Filtres (${activeFilterCount} actif${activeFilterCount > 1 ? 's' : ''})`
-                  : `Filtrer ${filterLabel}`}
+                  ? tr('ui.filters_active').replace('{count}', String(activeFilterCount))
+                  : tr('ui.filter_label').replace('{label}', filterLabel)}
               </span>
             </div>
             <ChevronIcon open={mobileFiltersOpen} />

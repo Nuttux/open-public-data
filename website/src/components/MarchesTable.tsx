@@ -12,6 +12,7 @@
 
 import { useState, useMemo, useCallback, useEffect } from 'react';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
+import { useT } from '@/lib/localeContext';
 import type { MarchesFilters } from './MarchesFilters';
 import { NATURE_LABELS } from './MarchesFilters';
 
@@ -83,6 +84,7 @@ export default function MarchesTable({
   const [sortColumn, setSortColumn] = useState<SortColumn>('montant_max');
   const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
   const [currentPage, setCurrentPage] = useState(1);
+  const t = useT();
 
   const filteredData = useMemo(() => {
     let result = [...data];
@@ -180,7 +182,7 @@ export default function MarchesTable({
       <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-8">
         <div className="flex items-center justify-center gap-3">
           <div className="w-6 h-6 border-2 border-teal-500 border-t-transparent rounded-full animate-spin" />
-          <span className="text-slate-400">Chargement des données...</span>
+          <span className="text-slate-400">{t('ui.loading')}</span>
         </div>
       </div>
     );
@@ -190,8 +192,8 @@ export default function MarchesTable({
     return (
       <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-8">
         <div className="text-center">
-          <p className="text-slate-400">Aucun marché ne correspond aux filtres.</p>
-          <p className="text-sm text-slate-400 mt-1">Essayez de modifier vos critères de recherche.</p>
+          <p className="text-slate-400">{t('marches_table.no_results')}</p>
+          <p className="text-sm text-slate-400 mt-1">{t('ui.try_modify_search')}</p>
         </div>
       </div>
     );
@@ -203,10 +205,10 @@ export default function MarchesTable({
       <div className="px-4 py-3 border-b border-slate-700/50 flex items-center justify-between">
         <div>
           <h3 className="font-medium text-slate-100">
-            {formatNumber(sortedData.length)} {sortedData.length > 1 ? 'marchés affichés' : 'marché affiché'}
+            {formatNumber(sortedData.length)} {sortedData.length > 1 ? t('marches_table.contracts_displayed') : t('marches_table.contract_displayed')}
           </h3>
           <p className="text-xs text-slate-400">
-            Enveloppe max totale : {formatEuroCompact(sortedData.reduce((s, m) => s + m.montant_max, 0))}
+            {t('marches_table.max_envelope_total')} {formatEuroCompact(sortedData.reduce((s, m) => s + m.montant_max, 0))}
           </p>
         </div>
         <div className="text-sm text-slate-400">
@@ -219,10 +221,10 @@ export default function MarchesTable({
         <table className="w-full">
           <thead className="bg-slate-800/30">
             <tr>
-              <SortableHeader column="objet" label="Marché" className="min-w-[120px] md:min-w-[250px]" />
-              <SortableHeader column="fournisseur_nom" label="Fournisseur" className="min-w-[100px]" />
-              <SortableHeader column="montant_max" label="Enveloppe max" />
-              <SortableHeader column="duree_jours" label="Durée" className="hidden md:table-cell" />
+              <SortableHeader column="objet" label={t('marches_table.col_contract')} className="min-w-[120px] md:min-w-[250px]" />
+              <SortableHeader column="fournisseur_nom" label={t('marches_table.col_supplier')} className="min-w-[100px]" />
+              <SortableHeader column="montant_max" label={t('marches_table.col_max_amount')} />
+              <SortableHeader column="duree_jours" label={t('marches_table.col_duration')} className="hidden md:table-cell" />
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-200">
@@ -298,7 +300,7 @@ export default function MarchesTable({
             disabled={currentPage === 1}
             className="px-3 py-1.5 text-sm font-medium text-slate-300 hover:text-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
-            ← Précédent
+            {t('ui.previous')}
           </button>
           <div className="flex items-center gap-1">
             {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
@@ -332,7 +334,7 @@ export default function MarchesTable({
             disabled={currentPage === totalPages}
             className="px-3 py-1.5 text-sm font-medium text-slate-300 hover:text-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
-            Suivant →
+            {t('ui.next')}
           </button>
         </div>
       )}

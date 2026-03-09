@@ -17,6 +17,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import type { LogementSocial, GeoPoint, ArrondissementStats } from '@/lib/types/map';
 import { formatNumber } from '@/lib/formatters';
+import { useT } from '@/lib/localeContext';
 import ChoroplethLayer, { ChoroplethLegend } from './ChoroplethLayer';
 
 /**
@@ -89,6 +90,7 @@ export default function LogementsSociauxMap({
   isLoading = false,
   selectedBailleur = null,
 }: LogementsSociauxMapProps) {
+  const t = useT();
   const [mapReady, setMapReady] = useState(false);
 
   // Max pour la légende choroplèthe
@@ -108,7 +110,7 @@ export default function LogementsSociauxMap({
         <div className="absolute inset-0 bg-slate-900/50 backdrop-blur-sm z-[1000] flex items-center justify-center">
           <div className="text-center">
             <div className="w-10 h-10 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-            <p className="text-slate-300 text-sm">Chargement des logements...</p>
+            <p className="text-slate-300 text-sm">{t('ui.loading_housing')}</p>
           </div>
         </div>
       )}
@@ -157,18 +159,18 @@ export default function LogementsSociauxMap({
                 <div className="min-w-[220px]">
                   <h3 className="font-bold text-slate-100 mb-1 text-sm">{log.adresse}</h3>
                   <p className="text-2xl font-bold text-emerald-600 mb-2">
-                    {log.nbLogements} logements
+                    {log.nbLogements} {t('map.units')}
                   </p>
                   <div className="text-xs text-slate-600 space-y-1">
-                    <p><strong>Bailleur:</strong> {log.bailleur || '(non renseigné)'}</p>
-                    <p><strong>Type:</strong> {log.natureProgramme}</p>
-                    <p><strong>Mode:</strong> {log.modeRealisation}</p>
-                    <p><strong>Année:</strong> {log.annee}</p>
-                    <p><strong>Arrondissement:</strong> {log.arrondissement === 0 ? 'Centre' : `${log.arrondissement}ème`}</p>
+                    <p><strong>{t('map.landlord')}</strong> {log.bailleur || '(non renseigné)'}</p>
+                    <p><strong>{t('map.type')}</strong> {log.natureProgramme}</p>
+                    <p><strong>{t('map.mode')}</strong> {log.modeRealisation}</p>
+                    <p><strong>{t('map.year')}</strong> {log.annee}</p>
+                    <p><strong>{t('map.district')}</strong> {log.arrondissement === 0 ? t('map.centre') : `${log.arrondissement}${t('map.district_suffix')}`}</p>
                     <div className="mt-2 pt-2 border-t border-slate-700/50">
-                      <p className="text-blue-600">PLAI (très social): {log.nbPLAI}</p>
-                      <p className="text-cyan-600">PLUS (social): {log.nbPLUS}</p>
-                      <p className="text-violet-600">PLS (intermédiaire): {log.nbPLS}</p>
+                      <p className="text-blue-600">{t('map.plai_label')} {log.nbPLAI}</p>
+                      <p className="text-cyan-600">{t('map.plus_label')} {log.nbPLUS}</p>
+                      <p className="text-violet-600">{t('map.pls_label')} {log.nbPLS}</p>
                     </div>
                   </div>
                 </div>
@@ -181,24 +183,24 @@ export default function LogementsSociauxMap({
       {/* Légende points */}
       {!showChoropleth && (
         <div className="absolute bottom-4 left-4 bg-slate-900/90 backdrop-blur rounded-lg p-3 z-[1000]">
-          <h4 className="text-xs font-semibold text-slate-300 mb-2">Logements sociaux</h4>
+          <h4 className="text-xs font-semibold text-slate-300 mb-2">{t('map.social_housing')}</h4>
           <div className="space-y-1.5 text-xs">
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-emerald-500" />
               <span className="text-slate-400">
-                {formatNumber(logements.length)} programmes
+                {formatNumber(logements.length)} {t('map.programmes')}
               </span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-emerald-500/50" />
               <span className="text-slate-500 text-[10px]">
-                Taille = nb logements
+                {t('map.size_units')}
               </span>
             </div>
           </div>
           <div className="mt-2 pt-2 border-t border-slate-700">
             <p className="text-[10px] text-slate-500">
-              Total: {formatNumber(totalLogements)} logements
+              {t('map.total_units').replace('{count}', formatNumber(totalLogements))}
             </p>
           </div>
         </div>

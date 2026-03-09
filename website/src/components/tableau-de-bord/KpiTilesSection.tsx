@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { ARRONDISSEMENTS } from '@/lib/constants/arrondissements';
+import { useT } from '@/lib/localeContext';
 
 const TOTAL_POPULATION = ARRONDISSEMENTS.reduce((s, a) => s + a.population, 0);
 
@@ -75,6 +76,7 @@ function TileGrid({ tiles }: { tiles: TileData[] }) {
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function KpiTilesSection() {
+  const t = useT();
   const [budgetTiles, setBudgetTiles] = useState<TileData[]>([]);
   const [activiteTiles, setActiviteTiles] = useState<TileData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -96,7 +98,7 @@ export default function KpiTilesSection() {
 
         // ── Budget metrics ────────────────────────────────────────────
         const latest = evo.years[0];
-        const budgetSuffix = latest.type_budget === 'vote' ? ' (prévisionnel)' : '';
+        const budgetSuffix = latest.type_budget === 'vote' ? t('kpi.forecast') : '';
 
         const perCapitaDay = latest.totals.depenses / TOTAL_POPULATION / 365;
         const investDepenses = latest.sections.investissement.depenses;
@@ -108,21 +110,21 @@ export default function KpiTilesSection() {
 
         const budget: TileData[] = [
           {
-            label: `Votre budget quotidien${budgetSuffix}`,
+            label: `${t('kpi.daily_budget')}${budgetSuffix}`,
             value: `${perCapitaDay.toFixed(1).replace('.', ',')} €/jour`,
-            sub: `par Parisien · ${formatNumber(Math.round(latest.totals.depenses / TOTAL_POPULATION))} €/an`,
+            sub: `${t('kpi.per_parisian')} · ${formatNumber(Math.round(latest.totals.depenses / TOTAL_POPULATION))} €${t('kpi.per_year')}`,
             href: '/budget',
             color: 'border-blue-500/40',
           },
           {
-            label: `Grands projets ${latest.year}${budgetSuffix}`,
+            label: `${t('kpi.major_projects')} ${latest.year}${budgetSuffix}`,
             value: formatEuroCompact(investDepenses),
             sub: `${investPct.toFixed(0)}% du budget · ${formatNumber(investPerCapita)} €/hab`,
             href: '/investissements',
             color: 'border-emerald-500/40',
           },
           {
-            label: `Ce que Paris met de côté ${latest.year}${budgetSuffix}`,
+            label: `${t('kpi.paris_savings')} ${latest.year}${budgetSuffix}`,
             value: formatEuroCompact(epargne),
             sub: `${epargnePct.toFixed(1)}% des recettes courantes`,
             href: '/budget?tab=tendances',
@@ -152,23 +154,23 @@ export default function KpiTilesSection() {
 
         const activite: TileData[] = [
           {
-            label: `Subventions ${subYears[0]}`,
+            label: `${t('kpi.grants_label')} ${subYears[0]}`,
             value: formatEuroCompact(subLatest.montant_total),
             sub: `${formatNumber(subLatest.nb_subventions)} versements · ${formatNumber(subPerCapita)} €/hab`,
             href: '/subventions',
             color: 'border-purple-500/40',
           },
           {
-            label: `Logements financés ${latestLogYear}`,
+            label: `${t('kpi.housing_funded')} ${latestLogYear}`,
             value: `${formatNumber(nbLogementsYear)} logements`,
             sub: `dont ${pctPLAI.toFixed(0)}% très sociaux · ${logPer1000.toFixed(1)} / 1 000 hab`,
             href: '/logements',
             color: 'border-amber-500/40',
           },
           {
-            label: `Commande publique ${marYears[0]}`,
+            label: `${t('kpi.public_procurement')} ${marYears[0]}`,
             value: `${formatNumber(marLatest.nb_marches)} marchés`,
-            sub: 'Marchés notifiés dans l\'année',
+            sub: t('kpi.contracts_notified'),
             href: '/marches-publics',
             color: 'border-teal-500/40',
           },
@@ -183,7 +185,7 @@ export default function KpiTilesSection() {
       }
     }
     load();
-  }, []);
+  }, [t]);
 
   if (isLoading) {
     return (
@@ -201,22 +203,22 @@ export default function KpiTilesSection() {
     <section className="space-y-6">
       <div>
         <h2 className="text-xl sm:text-2xl font-bold text-slate-100 mb-1">
-          Paris en un coup d&apos;œil
+          {t('kpi.title')}
         </h2>
         <p className="text-sm text-slate-400">
-          Cliquez sur un indicateur pour explorer en détail
+          {t('ui.click_indicator')}
         </p>
       </div>
 
       {/* Votre budget */}
       <div>
-        <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-3">Votre budget</p>
+        <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-3">{t('kpi.your_budget')}</p>
         <TileGrid tiles={budgetTiles} />
       </div>
 
       {/* Activité */}
       <div>
-        <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-3">Activité</p>
+        <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-3">{t('kpi.activity')}</p>
         <TileGrid tiles={activiteTiles} />
       </div>
     </section>

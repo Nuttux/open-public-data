@@ -20,6 +20,7 @@ import { getCategoryColor, lightenColor } from '@/lib/colors';
 import type { DrilldownItem, SectionBreakdown } from '@/lib/formatters';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 import { useTrack } from '@/lib/analyticsContext';
+import { useT } from '@/lib/localeContext';
 
 /** Type pour les sections budgétaires */
 type BudgetSection = 'all' | 'Fonctionnement' | 'Investissement';
@@ -52,6 +53,7 @@ export default function DrilldownPanel({
 }: DrilldownPanelProps) {
   const isMobile = useIsMobile(BREAKPOINTS.md);
   const track = useTrack();
+  const t = useT();
 
   // ── Slide animation for level transitions (L2↔L3) ──
   // Direction: 'forward' = slide left (deeper), 'back' = slide right (back up)
@@ -248,8 +250,8 @@ export default function DrilldownPanel({
           <div style="padding: ${isMobile ? '8px' : '10px'}; max-width: ${isMobile ? '240px' : '300px'};">
             <div style="font-weight: 600; margin-bottom: 4px; word-wrap: break-word; line-height: 1.3; font-size: ${isMobile ? '12px' : '14px'};">${item.name}</div>
             <div style="font-size: ${isMobile ? '16px' : '20px'}; font-weight: 700; color: ${barColor};">${formatEuroCompact(item.value)}</div>
-            <div style="color: #94a3b8; font-size: ${isMobile ? '10px' : '12px'};">${formatPercent(percentage)} de ${categoryName}</div>
-            ${canDrillDown && !item.name.startsWith('Autres') ? `<div style="margin-top: 6px; color: #60a5fa; font-size: ${isMobile ? '10px' : '11px'};">${isMobile ? 'Tap pour explorer →' : 'Cliquez pour explorer →'}</div>` : ''}
+            <div style="color: #94a3b8; font-size: ${isMobile ? '10px' : '12px'};">${formatPercent(percentage)} ${t('ui.of_budget')}</div>
+            ${canDrillDown && !item.name.startsWith('Autres') ? `<div style="margin-top: 6px; color: #60a5fa; font-size: ${isMobile ? '10px' : '11px'};">${isMobile ? t('ui.tap_to_explore') : t('ui.click_to_explore')}</div>` : ''}
           </div>
         `;
       },
@@ -329,7 +331,7 @@ export default function DrilldownPanel({
         },
       },
     ],
-  }), [displayItems, total, barColor, hoverColor, canDrillDown, categoryName, truncateText, isMobile, maxTextLen, labelWidth]);
+  }), [displayItems, total, barColor, hoverColor, canDrillDown, categoryName, truncateText, isMobile, maxTextLen, labelWidth, t]);
 
   const handleChartClick = (params: { dataIndex?: number }) => {
     if (typeof params.dataIndex === 'number' && onItemClick) {
@@ -363,7 +365,7 @@ export default function DrilldownPanel({
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
-              <span>{currentLevel > 0 ? 'Retour' : 'Fermer'}</span>
+              <span>{currentLevel > 0 ? t('ui.back') : t('ui.close')}</span>
             </button>
             
             {/* Breadcrumbs */}
@@ -373,7 +375,7 @@ export default function DrilldownPanel({
                   onClick={onClose}
                   className="text-slate-500 hover:text-slate-300 transition-colors whitespace-nowrap"
                 >
-                  Sankey
+                  {t('drilldown.sankey')}
                 </button>
                 {breadcrumbs.map((crumb, idx) => (
                   <span key={idx} className="flex items-center gap-1">
@@ -403,7 +405,7 @@ export default function DrilldownPanel({
               style={bgStyle}
             >
               <span style={{ color: barColor }}>
-                {category === 'revenue' ? 'Recette' : 'Dépense'}
+                {category === 'revenue' ? t('drilldown.revenue') : t('drilldown.expense')}
               </span>
             </div>
             <h3 className="text-lg sm:text-xl font-semibold text-slate-100 break-words">
@@ -415,7 +417,7 @@ export default function DrilldownPanel({
         <button
           onClick={() => { track('drilldown_close', { title, level: currentLevel }); onClose(); }}
           className="p-2 hover:bg-slate-700 rounded-lg transition-colors self-start shrink-0"
-          title="Fermer"
+          title={t('ui.close')}
         >
           <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -430,9 +432,9 @@ export default function DrilldownPanel({
       <div className="rounded-lg p-4 mb-4" style={bgStyle}>
         <div className="flex items-center justify-between">
           <div>
-            <span className="text-slate-300 font-medium">Total</span>
+            <span className="text-slate-300 font-medium">{t('drilldown.total')}</span>
             <p className="text-sm text-slate-500">
-              {filteredItems.length} postes
+              {filteredItems.length} {t('drilldown.items')}
               {selectedSection !== 'all' && (
                 <span className="ml-1 text-xs">
                   ({selectedSection})
@@ -484,8 +486,8 @@ export default function DrilldownPanel({
                 <div className="flex items-center gap-2">
                   <div className={`w-3 h-3 rounded-full ${sectionTotals.fonctionnement > 0 ? 'bg-blue-500' : 'bg-blue-500/30'}`}></div>
                   <div>
-                    <span className={`text-sm font-medium ${sectionTotals.fonctionnement > 0 ? 'text-slate-200' : 'text-slate-500'}`}>Fonctionnement</span>
-                    <span className={`text-[10px] block ${sectionTotals.fonctionnement > 0 ? 'text-slate-400' : 'text-slate-600'}`}>dépenses courantes</span>
+                    <span className={`text-sm font-medium ${sectionTotals.fonctionnement > 0 ? 'text-slate-200' : 'text-slate-500'}`}>{t('drilldown.operating')}</span>
+                    <span className={`text-[10px] block ${sectionTotals.fonctionnement > 0 ? 'text-slate-400' : 'text-slate-600'}`}>{t('drilldown.operating_desc')}</span>
                   </div>
                 </div>
                 <div className="text-right">
@@ -514,8 +516,8 @@ export default function DrilldownPanel({
                 <div className="flex items-center gap-2">
                   <div className={`w-3 h-3 rounded-full ${sectionTotals.investissement > 0 ? 'bg-amber-500' : 'bg-amber-500/30'}`}></div>
                   <div>
-                    <span className={`text-sm font-medium ${sectionTotals.investissement > 0 ? 'text-slate-200' : 'text-slate-500'}`}>Investissement</span>
-                    <span className={`text-[10px] block ${sectionTotals.investissement > 0 ? 'text-slate-400' : 'text-slate-600'}`}>grands projets</span>
+                    <span className={`text-sm font-medium ${sectionTotals.investissement > 0 ? 'text-slate-200' : 'text-slate-500'}`}>{t('drilldown.investment')}</span>
+                    <span className={`text-[10px] block ${sectionTotals.investissement > 0 ? 'text-slate-400' : 'text-slate-600'}`}>{t('drilldown.investment_desc')}</span>
                   </div>
                 </div>
                 <div className="text-right">
@@ -538,14 +540,14 @@ export default function DrilldownPanel({
               onClick={() => setSelectedSection('all')}
               className="mt-3 w-full text-center text-xs text-slate-500 hover:text-slate-300 transition-colors"
             >
-              ↩ Afficher toutes les dépenses
+              {t('ui.show_all_expenses')}
             </button>
           )}
           
           {/* Note about special operations when section totals don't add up to total */}
           {selectedSection === 'all' && sectionTotals.total < total * 0.95 && (
             <div className="mt-3 text-xs text-slate-500 text-center">
-              Certains postes (reversements fiscaux, dette...) sont des opérations spéciales
+              {t('drilldown.special_ops')}
             </div>
           )}
         </div>
@@ -555,7 +557,7 @@ export default function DrilldownPanel({
       {canDrillDown && (
         <div className="flex items-center gap-2 mb-3 px-3 py-2 bg-slate-700/30 rounded-lg text-sm">
           <span className="text-slate-400">
-            {isMobile ? 'Appuyez sur une barre pour explorer →' : 'Cliquez sur une barre pour explorer →'}
+            {isMobile ? t('ui.tap_bar_explore') : t('ui.click_bar_explore')}
           </span>
         </div>
       )}
@@ -575,12 +577,12 @@ export default function DrilldownPanel({
         />
       ) : (
         <div className="flex flex-col items-center justify-center py-12 text-center">
-          <p className="text-slate-400">Aucune dépense dans cette section</p>
+          <p className="text-slate-400">{t('ui.no_expenses_section')}</p>
           <button
             onClick={() => setSelectedSection('all')}
             className="mt-3 text-sm text-blue-400 hover:text-blue-300 transition-colors"
           >
-            ↩ Afficher toutes les dépenses
+            {t('drilldown.show_all')}
           </button>
         </div>
       )}

@@ -17,6 +17,7 @@ import type { Feature, FeatureCollection, Geometry } from 'geojson';
 import type { PathOptions, Layer } from 'leaflet';
 import type { ArrondissementStats } from '@/lib/types/map';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
+import { useT } from '@/lib/localeContext';
 
 /**
  * Type de métrique pour la coloration
@@ -78,6 +79,7 @@ export default function ChoroplethLayer({
   const map = useMap();
   const [geoData, setGeoData] = useState<FeatureCollection | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const t = useT();
 
   /**
    * Charger les polygones des arrondissements depuis le fichier statique
@@ -162,30 +164,30 @@ export default function ChoroplethLayer({
     layer: Layer
   ) => {
     const code = feature.properties?.c_ar;
-    const nom = feature.properties?.l_ar || (code === 0 ? 'Paris Centre' : `${code}ème`);
+    const nom = feature.properties?.l_ar || (code === 0 ? t('label.paris_centre') : `${code}ème`);
     const arrStats = statsMap.get(code);
 
     const population = arrStats?.population || 0;
     const popupContent = `
       <div style="min-width: 220px; padding: 8px; font-family: system-ui, sans-serif;">
         <h3 style="font-weight: bold; margin-bottom: 4px; font-size: 14px; color: #f1f5f9;">${nom}</h3>
-        <p style="font-size: 11px; color: #94a3b8; margin-bottom: 8px;">Population: ${formatNumber(population)} hab.</p>
+        <p style="font-size: 11px; color: #94a3b8; margin-bottom: 8px;">${t('choropleth.population')} ${formatNumber(population)} ${t('choropleth.population_unit')}</p>
         ${arrStats ? `
           <div style="font-size: 12px; color: #e2e8f0; border-top: 1px solid #475569; padding-top: 8px;">
             <p style="margin-bottom: 6px;">
-              <strong style="color: #a855f7;">Subventions :</strong> ${formatEuroCompact(arrStats.totalSubventions || 0)}
-              <br/><span style="color: #94a3b8; font-size: 11px;">${formatNumber(arrStats.subventionsPerCapita || 0)} €/hab</span>
+              <strong style="color: #a855f7;">${t('choropleth.grants_label')}</strong> ${formatEuroCompact(arrStats.totalSubventions || 0)}
+              <br/><span style="color: #94a3b8; font-size: 11px;">${formatNumber(arrStats.subventionsPerCapita || 0)} ${t('choropleth.per_capita')}</span>
             </p>
             <p style="margin-bottom: 6px;">
-              <strong style="color: #10b981;">Logements :</strong> ${formatNumber(arrStats.totalLogements || 0)}
-              <br/><span style="color: #94a3b8; font-size: 11px;">${(arrStats.logementsPerCapita || 0).toFixed(1)} / 1000 hab</span>
+              <strong style="color: #10b981;">${t('choropleth.housing_label')}</strong> ${formatNumber(arrStats.totalLogements || 0)}
+              <br/><span style="color: #94a3b8; font-size: 11px;">${(arrStats.logementsPerCapita || 0).toFixed(1)} ${t('choropleth.per_1000')}</span>
             </p>
             <p>
-              <strong style="color: #f59e0b;">Investissements :</strong> ${formatEuroCompact(arrStats.totalInvestissement || 0)}
-              <br/><span style="color: #94a3b8; font-size: 11px;">${formatNumber(arrStats.investissementPerCapita || 0)} €/hab</span>
+              <strong style="color: #f59e0b;">${t('choropleth.investments_label')}</strong> ${formatEuroCompact(arrStats.totalInvestissement || 0)}
+              <br/><span style="color: #94a3b8; font-size: 11px;">${formatNumber(arrStats.investissementPerCapita || 0)} ${t('choropleth.per_capita')}</span>
             </p>
           </div>
-        ` : '<p style="color: #94a3b8; font-size: 12px;">Pas de données</p>'}
+        ` : `<p style="color: #94a3b8; font-size: 12px;">${t('choropleth.no_data')}</p>`}
       </div>
     `;
     
@@ -214,7 +216,7 @@ export default function ChoroplethLayer({
         onArrondissementClick?.(code);
       },
     });
-  }, [statsMap, getFeatureStyle, onArrondissementClick]);
+  }, [statsMap, getFeatureStyle, onArrondissementClick, t]);
 
   if (isLoading || !geoData) {
     return null;
@@ -259,8 +261,9 @@ export function ChoroplethLegend({
   metric: ChoroplethMetric; 
   maxValue: number;
 }) {
+  const t = useT();
   const scale = COLOR_SCALES[metric];
-  
+
   const labels = [
     '0',
     formatLegendValue(maxValue * 0.25, metric),
@@ -270,9 +273,9 @@ export function ChoroplethLegend({
   ];
   
   const metricLabels: Record<ChoroplethMetric, string> = {
-    subventions: '€ / hab',
-    logements: '/ 1000 hab',
-    investissements: '€ / hab',
+    subventions: t('choropleth.per_capita'),
+    logements: t('choropleth.per_1000'),
+    investissements: t('choropleth.per_capita'),
   };
 
   return (

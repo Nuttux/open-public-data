@@ -7,18 +7,16 @@
  * Breakdown unique : Secteur (chapitres M57).
  */
 
+import { useMemo } from 'react';
 import TendancesTab from '@/components/shared/TendancesTab';
 import type { TendancesYear, BreakdownOption } from '@/components/shared/TendancesTab';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { PARIS_POPULATION_TOTAL } from '@/lib/constants/arrondissements';
 import { PALETTE } from '@/lib/colors';
 import { BREAKDOWN_ICONS } from '@/lib/icons';
+import { useT } from '@/lib/localeContext';
 
 // ─── Config ──────────────────────────────────────────────────────────────────
-
-const BREAKDOWNS: BreakdownOption[] = [
-  { id: 'secteur', label: 'Secteur', icon: BREAKDOWN_ICONS.secteur },
-];
 
 const CHAPITRE_COLORS: Record<string, string> = {
   'Aménagement & Habitat': PALETTE.cyan,
@@ -60,35 +58,39 @@ function formatVariationDiff(value: number): string {
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function InvestissementsTendancesTab() {
+  const t = useT();
+  const breakdowns = useMemo<BreakdownOption[]>(() => [
+    { id: 'secteur', label: t('breakdown.sector'), icon: BREAKDOWN_ICONS.secteur },
+  ], [t]);
   return (
     <TendancesTab
       dataUrl="/data/investissement_tendances.json"
       parseData={parseData}
-      breakdowns={BREAKDOWNS}
+      breakdowns={breakdowns}
       getGroupColor={(label) => getGroupColor(label)}
       theme="amber"
       formatValue={formatEuroCompact}
       tooltipHeader={(year, total) => `${year} — ${formatEuroCompact(total)}`}
       formatVariationDiff={formatVariationDiff}
-      title="Tendances d'investissement"
-      kpi1Label={(year) => `Investissement ${year}`}
-      kpi1Sub={(year) => `${formatNumber(Math.round(year.total / PARIS_POPULATION_TOTAL))} €/hab · hors opérations financières`}
+      title={t('invest_tendances.title')}
+      kpi1Label={(year) => t('invest_tendances.kpi1').replace('{year}', String(year))}
+      kpi1Sub={(year) => `${formatNumber(Math.round(year.total / PARIS_POPULATION_TOTAL))} €/${t('invest_tendances.per_resident')} · ${t('invest_tendances.excl_financial')}`}
       kpi4={(ctx) => ({
-        label: '1er secteur',
+        label: t('invest_tendances.top_sector'),
         value: ctx.topName,
         sub: `${formatEuroCompact(ctx.topValue)} (${ctx.topPct.toFixed(0)}%)`,
       })}
-      chartTitle={(dim) => `Dépenses d'investissement par ${dim}`}
-      variationTitle={(dim) => `Évolution par ${dim}`}
-      variationSubtitle={(dim) => `Quels ${dim}s ont le plus évolué`}
+      chartTitle={(dim) => t('invest_tendances.chart_title').replace('{dim}', dim)}
+      variationTitle={(dim) => t('invest_tendances.variation_title').replace('{dim}', dim)}
+      variationSubtitle={(dim) => t('invest_tendances.variation_subtitle').replace('{dim}', dim)}
       yAxisFormatter={(v: number) => `${(v / 1e9).toFixed(1)} Md€`}
       csvFilename="investissements_tendances"
-      sourceNote="Source : Open Data Paris — Comptes annuels de la Ville de Paris. Hors dette et dotations."
+      sourceNote={t('invest_tendances.source')}
       qualityNotes={
         <ul className="text-[11px] text-slate-500 space-y-1.5 list-disc list-inside">
-          <li>Ces tendances reflètent les dépenses d&apos;investissement <em>réellement engagées</em> chaque année (2019-2024).</li>
-          <li>Les opérations financières (emprunts, remboursements) sont exclues pour ne montrer que l&apos;investissement concret en équipements et infrastructures.</li>
-          <li>L&apos;onglet « Explorer » utilise une source plus détaillée qui liste les projets individuels avec leur localisation.</li>
+          <li dangerouslySetInnerHTML={{ __html: t('invest_tendances.note1') }} />
+          <li dangerouslySetInnerHTML={{ __html: t('invest_tendances.note2') }} />
+          <li dangerouslySetInnerHTML={{ __html: t('invest_tendances.note3') }} />
         </ul>
       }
     />

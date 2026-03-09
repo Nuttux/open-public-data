@@ -12,6 +12,8 @@
 
 import { useState, useCallback } from 'react';
 import { useTrack } from '@/lib/analyticsContext';
+import { useT } from '@/lib/localeContext';
+import { formatNumber } from '@/lib/formatters';
 
 /**
  * État des filtres
@@ -55,6 +57,8 @@ export const MONTANT_RANGES = [
   { min: 10000000, max: 100000000, label: '10 M€ à 100 M€' },
   { min: 100000000, max: 0, label: 'Plus de 100 M€' },
 ];
+
+const RANGE_KEYS = ['filters.range.all', 'filters.range.lt_100k', 'filters.range.100k_1m', 'filters.range.1m_10m', 'filters.range.10m_100m', 'filters.range.gt_100m'];
 
 /**
  * Mapping nature juridique → type organisme simplifié
@@ -109,6 +113,7 @@ export default function SubventionsFilters({
   stats,
 }: SubventionsFiltersProps) {
   const [isExpanded, setIsExpanded] = useState(true);
+  const t = useT();
   const track = useTrack();
 
   /**
@@ -163,7 +168,7 @@ export default function SubventionsFilters({
         className="w-full flex items-center justify-between px-4 py-3 hover:bg-slate-700/30 transition-colors"
       >
         <div className="flex items-center gap-2">
-          <span className="font-medium text-slate-100">Filtres</span>
+          <span className="font-medium text-slate-100">{t('filters.title')}</span>
           {activeFiltersCount > 0 && (
             <span className="px-2 py-0.5 text-xs font-medium rounded-full bg-purple-500/20 text-purple-300">
               {activeFiltersCount}
@@ -180,13 +185,13 @@ export default function SubventionsFilters({
           {/* Recherche */}
           <div>
             <label className="block text-xs font-medium text-slate-300 mb-1.5">
-              Rechercher un bénéficiaire
+              {t('filters.search')}
             </label>
             <input
               type="text"
               value={filters.search}
               onChange={(e) => updateFilter('search', e.target.value)}
-              placeholder="Nom, SIRET..."
+              placeholder={t('filters.search_placeholder')}
               className="w-full px-3 py-2 bg-slate-900/50 border border-slate-700 rounded-lg text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-purple-500 transition-colors"
             />
           </div>
@@ -194,10 +199,10 @@ export default function SubventionsFilters({
           {/* Types d'organismes */}
           <div>
             <label className="block text-xs font-medium text-slate-300 mb-2">
-              Type d'organisme
+              {t('filters.org_type')}
             </label>
             <div className="flex flex-wrap gap-2">
-              {Object.entries(TYPE_ORGANISME_LABELS).map(([type, label]) => (
+              {Object.keys(TYPE_ORGANISME_LABELS).map((type) => (
                 <button
                   key={type}
                   onClick={() => toggleTypeOrganisme(type)}
@@ -209,7 +214,7 @@ export default function SubventionsFilters({
                     }
                   `}
                 >
-                  {label}
+                  {t(`filters.type.${type}`)}
                 </button>
               ))}
             </div>
@@ -219,7 +224,7 @@ export default function SubventionsFilters({
           {availableDirections.length > 0 && (
             <div>
               <label className="block text-xs font-medium text-slate-300 mb-1.5">
-                Direction
+                {t('filters.direction')}
               </label>
               <select
                 value={filters.directions.length === 1 ? filters.directions[0] : ''}
@@ -229,7 +234,7 @@ export default function SubventionsFilters({
                 }}
                 className="w-full px-3 py-2 bg-slate-900/50 border border-slate-700 rounded-lg text-sm text-slate-100 focus:outline-none focus:border-purple-500 transition-colors"
               >
-                <option value="">Toutes les directions</option>
+                <option value="">{t('filters.all_directions')}</option>
                 {availableDirections.map(dir => (
                   <option key={dir} value={dir}>{dir}</option>
                 ))}
@@ -240,7 +245,7 @@ export default function SubventionsFilters({
           {/* Plage de montant */}
           <div>
             <label className="block text-xs font-medium text-slate-300 mb-1.5">
-              Plage de montant
+              {t('filters.amount_range')}
             </label>
             <select
               value={`${filters.montantMin}-${filters.montantMax}`}
@@ -250,12 +255,12 @@ export default function SubventionsFilters({
               }}
               className="w-full px-3 py-2 bg-slate-900/50 border border-slate-700 rounded-lg text-sm text-slate-100 focus:outline-none focus:border-purple-500 transition-colors"
             >
-              {MONTANT_RANGES.map((range) => (
-                <option 
-                  key={`${range.min}-${range.max}`} 
+              {MONTANT_RANGES.map((range, i) => (
+                <option
+                  key={`${range.min}-${range.max}`}
                   value={`${range.min}-${range.max}`}
                 >
-                  {range.label}
+                  {t(RANGE_KEYS[i])}
                 </option>
               ))}
             </select>
@@ -265,7 +270,7 @@ export default function SubventionsFilters({
           {filters.thematique && (
             <div>
               <label className="block text-xs font-medium text-slate-300 mb-1.5">
-                Thématique
+                {t('filters.thematique')}
               </label>
               <div className="flex items-center gap-2">
                 <span className="px-3 py-1.5 text-sm font-medium rounded-full bg-purple-500/20 border border-purple-500/50 text-purple-300">
@@ -288,7 +293,7 @@ export default function SubventionsFilters({
               disabled={activeFiltersCount === 0}
               className="w-full px-3 py-2 text-sm font-medium text-slate-300 hover:text-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
-              Réinitialiser les filtres
+              {t('filters.reset')}
             </button>
           </div>
 
@@ -296,10 +301,10 @@ export default function SubventionsFilters({
           {stats && (
             <div className="pt-2 border-t border-slate-700/50 text-xs text-slate-400 space-y-0.5">
               <p className="font-medium text-slate-400">
-                {stats.filtered.toLocaleString('fr-FR')} affichés
+                {formatNumber(stats.filtered)} {t('filters.displayed')}
               </p>
               <p>
-                sur top {stats.total.toLocaleString('fr-FR')} bénéficiaires
+                {t('filters.of_top').replace('{count}', formatNumber(stats.total))}
               </p>
             </div>
           )}

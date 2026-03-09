@@ -17,6 +17,7 @@
 
 import Link from 'next/link';
 import { formatEuroCompact } from '@/lib/formatters';
+import { useT } from '@/lib/localeContext';
 import GlossaryTip from './GlossaryTip';
 import type { DebtMetrics } from './budget/BudgetAnnuelTab';
 
@@ -29,6 +30,7 @@ interface StatsCardsProps {
 }
 
 export default function StatsCards({ recettes, depenses, year, emprunts = 0, debt }: StatsCardsProps) {
+  const t = useT();
   // Recettes propres = recettes totales - emprunts
   const recettesPropres = recettes - emprunts;
 
@@ -51,7 +53,7 @@ export default function StatsCards({ recettes, depenses, year, emprunts = 0, deb
           <div className="flex items-center justify-between">
             <div className="min-w-0 flex-1">
               <p className="text-[10px] sm:text-xs font-medium text-emerald-400 uppercase tracking-wider">
-                Recettes propres {year}
+                {t('stats.own_revenue').replace('{year}', String(year))}
                 <GlossaryTip term="recettes_propres" />
               </p>
               <p className="mt-1 text-xl sm:text-2xl font-bold text-emerald-400">
@@ -71,7 +73,7 @@ export default function StatsCards({ recettes, depenses, year, emprunts = 0, deb
           <div className="flex items-center justify-between">
             <div className="min-w-0 flex-1">
               <p className="text-[10px] sm:text-xs font-medium text-rose-400 uppercase tracking-wider">
-                Dépenses totales {year}
+                {t('stats.total_expenses').replace('{year}', String(year))}
                 <GlossaryTip term="depenses" />
               </p>
               <p className="mt-1 text-xl sm:text-2xl font-bold text-rose-400">
@@ -97,7 +99,7 @@ export default function StatsCards({ recettes, depenses, year, emprunts = 0, deb
               <p className={`text-[10px] sm:text-xs font-medium uppercase tracking-wider ${
                 isDeficit ? 'text-red-400' : 'text-emerald-400'
               }`}>
-                {isDeficit ? 'Déficit' : 'Excédent'} {year}
+                {isDeficit ? t('stats.deficit') : t('stats.surplus')} {year}
                 <GlossaryTip term="surplus_deficit" />
               </p>
               <p className={`mt-1 text-xl sm:text-2xl font-bold ${
@@ -132,7 +134,7 @@ export default function StatsCards({ recettes, depenses, year, emprunts = 0, deb
                 <p className={`text-[10px] sm:text-xs font-medium uppercase tracking-wider ${
                   debtIncreasing ? 'text-amber-400' : 'text-emerald-400'
                 }`}>
-                  Endettement net {year}
+                  {t('stats.net_debt').replace('{year}', String(year))}
                   <GlossaryTip term="variation_dette_nette" />
                 </p>
                 <p className={`mt-1 text-xl sm:text-2xl font-bold ${
@@ -142,13 +144,13 @@ export default function StatsCards({ recettes, depenses, year, emprunts = 0, deb
                 </p>
                 <div className="mt-1.5 space-y-0.5">
                   <p className="text-[10px] text-slate-400">
-                    {formatEuroCompact(debt.interets_dette)} d&apos;intérêts ({interestPctRecettes.toFixed(1)}% des recettes)
+                    {t('stats.interest_pct').replace('{amount}', formatEuroCompact(debt.interets_dette)).replace('{pct}', interestPctRecettes.toFixed(1))}
                   </p>
                   <Link
                     href="/patrimoine"
                     className="text-[10px] text-blue-400 hover:text-blue-300 transition-colors"
                   >
-                    Voir le détail dette →
+                    {t('stats.see_debt_detail')}
                   </Link>
                 </div>
               </div>

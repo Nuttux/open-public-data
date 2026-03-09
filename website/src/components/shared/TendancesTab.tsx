@@ -22,6 +22,7 @@ import { PALETTE } from '@/lib/colors';
 import { useIsMobile } from '@/lib/hooks/useIsMobile';
 import YearRangeSelector from '@/components/YearRangeSelector';
 import ExportBar from '@/components/shared/ExportBar';
+import { useT } from '@/lib/localeContext';
 
 // ─── Shared Types ────────────────────────────────────────────────────────────
 
@@ -158,6 +159,7 @@ export default function TendancesTab({
   const [error, setError] = useState<string | null>(null);
   const isMobile = useIsMobile();
   const t = THEME[theme];
+  const tr = useT();
 
   // Use direct data or fetched data
   const data = directData || fetchedData;
@@ -343,7 +345,7 @@ export default function TendancesTab({
   const { csvRows, csvColumns } = useMemo(() => {
     if (!csvFilename || filteredYears.length === 0) return { csvRows: [], csvColumns: [] };
     const cols: { key: string; label: string }[] = [
-      { key: 'year', label: 'Année' },
+      { key: 'year', label: tr('csv.year') },
       { key: 'total', label: 'Total' },
       ...groupsOrdered.map(g => ({ key: g, label: g })),
     ];
@@ -361,14 +363,14 @@ export default function TendancesTab({
 
   // ── Default KPI3 / KPI4 ──
   const defaultKpi3 = kpiCtx ? {
-    label: `Évolution ${kpiCtx.earliest.year}→${kpiCtx.latest.year}`,
+    label: tr('ui.evolution_period').replace('{start}', String(kpiCtx.earliest.year)).replace('{end}', String(kpiCtx.latest.year)),
     value: `${kpiCtx.periodPct >= 0 ? '+' : ''}${kpiCtx.periodPct.toFixed(1)}%`,
     valueClass: kpiCtx.periodPct >= 0 ? 'text-emerald-400' : 'text-red-400',
-    sub: `sur ${filteredYears.length} exercices`,
+    sub: tr('ui.over_n_years').replace('{n}', String(filteredYears.length)),
   } : null;
 
   const defaultKpi4 = kpiCtx ? {
-    label: '1er groupe',
+    label: tr('ui.top_group'),
     value: kpiCtx.topName,
     sub: `${formatValue(kpiCtx.topValue)} (${kpiCtx.topPct.toFixed(0)}%)`,
   } : null;
@@ -378,7 +380,7 @@ export default function TendancesTab({
 
   // ── Loading / Error ──
   if (isLoading) return <div className="flex justify-center py-16"><div className={`w-10 h-10 border-4 ${t.spinner} border-t-transparent rounded-full animate-spin`} /></div>;
-  if (error || data.length === 0) return <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6"><div className="text-center py-12"><span className="text-4xl mb-4 block">⚠️</span><p className="text-sm text-slate-300">{error || 'Données non disponibles'}</p></div></div>;
+  if (error || data.length === 0) return <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-6"><div className="text-center py-12"><span className="text-4xl mb-4 block">⚠️</span><p className="text-sm text-slate-300">{error || tr('ui.data_unavailable')}</p></div></div>;
 
   const currentDim = breakdowns.find(o => o.id === breakdown);
   const currentDimLabel = currentDim?.label.toLowerCase() || '';
@@ -418,7 +420,7 @@ export default function TendancesTab({
             {kpi1Sub && <p className="text-xs text-slate-400 mt-1">{kpi1Sub(kpiCtx.latest)}</p>}
           </div>
           <div className="bg-slate-800/50 backdrop-blur rounded-xl border border-slate-700/50 p-4 sm:p-5">
-            <p className="text-xs text-slate-400 uppercase tracking-wide mb-1">Variation annuelle</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wide mb-1">{tr('ui.yoy_variation')}</p>
             <p className={`text-2xl font-bold mt-1 ${kpiCtx.yoyPct >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>{kpiCtx.yoyPct >= 0 ? '+' : ''}{kpiCtx.yoyPct.toFixed(1)}%</p>
             <p className="text-xs text-slate-400 mt-1">vs {kpiCtx.latest.year - 1}</p>
           </div>
@@ -457,8 +459,8 @@ export default function TendancesTab({
             </div>
           </div>
           <div className="flex items-center gap-4 mb-3 text-xs text-slate-300">
-            <div className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-emerald-500" /><span>Hausse</span></div>
-            <div className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-red-500" /><span>Baisse</span></div>
+            <div className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-emerald-500" /><span>{tr('ui.hausse')}</span></div>
+            <div className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-red-500" /><span>{tr('ui.baisse')}</span></div>
           </div>
           <ReactECharts option={variationChartOption} style={{ height: variationChartHeight, width: '100%' }} opts={{ renderer: 'canvas' }} />
         </div>
@@ -466,7 +468,7 @@ export default function TendancesTab({
 
       {/* ── Data Quality Note ── */}
       <div className="bg-slate-800/30 rounded-xl border border-slate-700/30 p-4">
-        <h4 className="text-xs font-semibold text-slate-300 mb-2 flex items-center gap-1.5"><span>ℹ️</span> À propos de ces données</h4>
+        <h4 className="text-xs font-semibold text-slate-300 mb-2 flex items-center gap-1.5"><span>ℹ️</span> {tr('ui.about_data')}</h4>
         {qualityNotes}
       </div>
     </div>
