@@ -23,7 +23,7 @@ import type { EChartsOption } from 'echarts';
 import { formatEuroCompact } from '@/lib/formatters';
 import { PALETTE } from '@/lib/colors';
 import { useIsMobile } from '@/lib/hooks/useIsMobile';
-import { useT } from '@/lib/localeContext';
+import { useT, useTCategory } from '@/lib/localeContext';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -327,6 +327,7 @@ function ExecutionRateChart({ rates, height = 350, t }: { rates: GlobalRate[]; h
 /** Horizontal bar chart: écart moyen voté → exécuté par thématique */
 function EcartRanking({ ranking, t }: { ranking: EcartRow[]; t: (key: string) => string }) {
   const isMobile = useIsMobile();
+  const tCat = useTCategory();
 
   const depenseRanking = useMemo(() => {
     return ranking
@@ -337,7 +338,7 @@ function EcartRanking({ ranking, t }: { ranking: EcartRow[]; t: (key: string) =>
 
   const option: EChartsOption = useMemo(() => {
     const sorted = [...depenseRanking].sort((a, b) => a.ecart_moyen_pct - b.ecart_moyen_pct);
-    const labels = sorted.map((r) => `${r.thematique} (${r.section.slice(0, 5)})`);
+    const labels = sorted.map((r) => `${tCat(r.thematique)} (${r.section.slice(0, 5)})`);
     const rawValues = sorted.map((r) => r.ecart_moyen_pct);
     // Cap display values so outliers don't crush the chart
     const displayValues = sorted.map((r) =>
@@ -358,7 +359,7 @@ function EcartRanking({ ranking, t }: { ranking: EcartRow[]; t: (key: string) =>
           if (!row) return '';
           const status = row.ecart_moyen_pct > 0 ? t('prevision.tooltip_over') : t('prevision.tooltip_under');
           return (
-            `<strong>${row.thematique}</strong> (${row.section})<br/>` +
+            `<strong>${tCat(row.thematique)}</strong> (${row.section})<br/>` +
             `${status}: <strong>${row.ecart_moyen_pct > 0 ? '+' : ''}${row.ecart_moyen_pct.toFixed(1)}%</strong><br/>` +
             `${t('prevision.voted_avg')}: ${formatEuroCompact(row.vote_total / row.nb_annees)} → ` +
             `${t('prevision.executed_avg')}: ${formatEuroCompact(row.execute_total / row.nb_annees)}`
@@ -409,7 +410,7 @@ function EcartRanking({ ranking, t }: { ranking: EcartRow[]; t: (key: string) =>
         },
       }],
     };
-  }, [depenseRanking, isMobile, t]);
+  }, [depenseRanking, isMobile, t, tCat]);
 
   const chartHeight = Math.max(300, depenseRanking.length * 28 + 60);
 

@@ -40,14 +40,8 @@ DGFIP_YEARS = list(range(2024, 2016, -1))  # 2024→2017
 # M57 nomenclature (loaded from seed)
 M57_MAP: dict[str, dict] = {}
 
-# City display labels
-CITY_LABELS = {
-    "paris": "Budget Paris",
-    "marseille": "Budget Marseille",
-    "lyon": "Budget Lyon",
-    "toulouse": "Budget Toulouse",
-    "nice": "Budget Nice",
-}
+# City display labels — auto-generated from communes CSV at runtime
+CITY_LABELS: dict[str, str] = {}
 
 # CPV code → category mapping
 CPV_CATEGORIES = {
@@ -74,6 +68,7 @@ def load_communes() -> list[dict]:
         for row in csv.DictReader(f):
             row["population"] = int(row["population"])
             communes.append(row)
+            CITY_LABELS[row["slug"]] = f"Budget {row['nom']}"
     print(f"  {len(communes)} communes: {', '.join(c['nom'] for c in communes)}")
     return communes
 
@@ -156,38 +151,40 @@ def fetch_dgfip(communes: list[dict], dry_run: bool = False):
     print(f"  DGFIP BALANCES COMPTABLES")
     print(f"{'='*60}")
 
-    sirens = [c["siren"].strip() for c in communes]
-    slug_by_siren = {c["siren"].strip(): c["slug"] for c in communes}
     pop_by_slug = {c["slug"]: c["population"] for c in communes}
-
-    siren_filter = " OR ".join(f"siren='{s}'" for s in sirens)
 
     all_rows = []
     for year in DGFIP_YEARS:
         dataset_id = f"balances-comptables-des-communes-en-{year}"
-        print(f"  [{year}] {dataset_id}...", end=" ", flush=True)
+        year_count = 0
+        print(f"  [{year}] {dataset_id}...")
 
-        try:
-            records = download_ods(
-                api_base=DGFIP_API,
-                dataset_id=dataset_id,
-                where=siren_filter,
-            )
-            if not records:
-                print("no data")
-                continue
-            for r in records:
-                r["_year"] = year
-                r["_slug"] = slug_by_siren.get(r.get("siren", ""), "")
-            all_rows.extend(records)
-            print(f"{len(records):,} rows")
-        except requests.exceptions.HTTPError as e:
-            if e.response.status_code == 404:
-                print("not found")
-            else:
-                print(f"error: {e}")
-        except Exception as e:
-            print(f"error: {e}")
+        # Query per city to avoid URL length limits with 20 SIRENs
+        for commune in communes:
+            siren = commune["siren"].strip()
+            slug = commune["slug"]
+            try:
+                records = download_ods(
+                    api_base=DGFIP_API,
+                    dataset_id=dataset_id,
+                    where=f"siren='{siren}'",
+                )
+                if not records:
+                    continue
+                for r in records:
+                    r["_year"] = year
+                    r["_slug"] = slug
+                all_rows.extend(records)
+                year_count += len(records)
+            except requests.exceptions.HTTPError as e:
+                if e.response.status_code == 404:
+                    pass
+                else:
+                    print(f"    {commune['nom']}: error {e}")
+            except Exception as e:
+                print(f"    {commune['nom']}: error {e}")
+
+        print(f"    → {year_count:,} rows")
 
     if not all_rows:
         print("  No DGFiP data found!")
@@ -546,10 +543,9 @@ def fetch_decp(communes: list[dict], dry_run: bool = False):
     # Some cities publish under multiple entities - use the main one
     DECP_SEARCH = {
         "paris": ["VILLE DE PARIS"],
-        "marseille": ["COMMUNE DE MARSEILLE"],
-        "lyon": ["COMMUNE DE LYON"],
         "toulouse": ["COMMUNE DE TOULOUSE", "TOULOUSE METROPOLE"],
-        "nice": ["COMMUNE DE NICE"],
+        "strasbourg": ["EUROMETROPOLE DE STRASBOURG"],
+        "le-havre": ["COMMUNE DU HAVRE", "LE HAVRE"],
     }
 
     all_records = []

@@ -1,0 +1,326 @@
+{
+  "year": 2023,
+  "type_budget": "execute",
+  "city_slug": "montpellier",
+  "city_name": "Montpellier",
+  "dataStatus": "COMPLET",
+  "totals": {
+    "recettes": 559490314.26,
+    "depenses": 507928945.34,
+    "solde": 51561368.92
+  },
+  "nodes": [
+    {
+      "name": "Fiscalité",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations État",
+      "category": "revenue"
+    },
+    {
+      "name": "Emprunts",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits des services",
+      "category": "revenue"
+    },
+    {
+      "name": "Provisions",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits exceptionnels",
+      "category": "revenue"
+    },
+    {
+      "name": "Subventions investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Autres produits",
+      "category": "revenue"
+    },
+    {
+      "name": "Reprises",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits financiers",
+      "category": "revenue"
+    },
+    {
+      "name": "Budget Montpellier",
+      "category": "central"
+    },
+    {
+      "name": "Investissements",
+      "category": "expense"
+    },
+    {
+      "name": "Personnel",
+      "category": "expense"
+    },
+    {
+      "name": "Fonctionnement courant",
+      "category": "expense"
+    },
+    {
+      "name": "Transferts & subventions",
+      "category": "expense"
+    },
+    {
+      "name": "Amortissements",
+      "category": "expense"
+    },
+    {
+      "name": "Charges financières",
+      "category": "expense"
+    },
+    {
+      "name": "Dette",
+      "category": "expense"
+    },
+    {
+      "name": "Charges fiscales",
+      "category": "expense"
+    },
+    {
+      "name": "Charges exceptionnelles",
+      "category": "expense"
+    }
+  ],
+  "links": [
+    {
+      "source": "Fiscalité",
+      "target": "Budget Montpellier",
+      "value": 275181490.81
+    },
+    {
+      "source": "Dotations État",
+      "target": "Budget Montpellier",
+      "value": 100022124.76
+    },
+    {
+      "source": "Emprunts",
+      "target": "Budget Montpellier",
+      "value": 73546368.79
+    },
+    {
+      "source": "Dotations investissement",
+      "target": "Budget Montpellier",
+      "value": 51718172.23
+    },
+    {
+      "source": "Produits des services",
+      "target": "Budget Montpellier",
+      "value": 28880933.32
+    },
+    {
+      "source": "Provisions",
+      "target": "Budget Montpellier",
+      "value": 11777003.58
+    },
+    {
+      "source": "Produits exceptionnels",
+      "target": "Budget Montpellier",
+      "value": 7586706.0
+    },
+    {
+      "source": "Subventions investissement",
+      "target": "Budget Montpellier",
+      "value": 6404937.7
+    },
+    {
+      "source": "Autres produits",
+      "target": "Budget Montpellier",
+      "value": 3643330.59
+    },
+    {
+      "source": "Reprises",
+      "target": "Budget Montpellier",
+      "value": 716687.07
+    },
+    {
+      "source": "Produits financiers",
+      "target": "Budget Montpellier",
+      "value": 12559.41
+    },
+    {
+      "source": "Budget Montpellier",
+      "target": "Investissements",
+      "value": 166328928.28
+    },
+    {
+      "source": "Budget Montpellier",
+      "target": "Personnel",
+      "value": 162774459.81
+    },
+    {
+      "source": "Budget Montpellier",
+      "target": "Fonctionnement courant",
+      "value": 102813731.65
+    },
+    {
+      "source": "Budget Montpellier",
+      "target": "Transferts & subventions",
+      "value": 32211986.73
+    },
+    {
+      "source": "Budget Montpellier",
+      "target": "Amortissements",
+      "value": 24996951.05
+    },
+    {
+      "source": "Budget Montpellier",
+      "target": "Charges financières",
+      "value": 7358080.66
+    },
+    {
+      "source": "Budget Montpellier",
+      "target": "Dette",
+      "value": 6531246.71
+    },
+    {
+      "source": "Budget Montpellier",
+      "target": "Charges fiscales",
+      "value": 4465830.62
+    },
+    {
+      "source": "Budget Montpellier",
+      "target": "Charges exceptionnelles",
+      "value": 447729.83
+    }
+  ],
+  "drilldown": {
+    "revenue": {
+      "Fiscalité": [
+        {
+          "name": "Fiscalité",
+          "value": 275181490.81
+        }
+      ],
+      "Dotations État": [
+        {
+          "name": "Dotations État",
+          "value": 100022124.76
+        }
+      ],
+      "Emprunts": [
+        {
+          "name": "Emprunts",
+          "value": 73546368.79
+        }
+      ],
+      "Dotations investissement": [
+        {
+          "name": "Dotations investissement",
+          "value": 51718172.23
+        }
+      ],
+      "Produits des services": [
+        {
+          "name": "Produits des services",
+          "value": 28880933.32
+        }
+      ],
+      "Provisions": [
+        {
+          "name": "Provisions",
+          "value": 11777003.58
+        }
+      ],
+      "Produits exceptionnels": [
+        {
+          "name": "Produits exceptionnels",
+          "value": 7586706.0
+        }
+      ],
+      "Subventions investissement": [
+        {
+          "name": "Subventions investissement",
+          "value": 6404937.7
+        }
+      ],
+      "Autres produits": [
+        {
+          "name": "Autres produits",
+          "value": 3643330.59
+        }
+      ],
+      "Reprises": [
+        {
+          "name": "Reprises",
+          "value": 716687.07
+        }
+      ],
+      "Produits financiers": [
+        {
+          "name": "Produits financiers",
+          "value": 12559.41
+        }
+      ]
+    },
+    "expenses": {
+      "Investissements": [
+        {
+          "name": "Investissements",
+          "value": 166328928.28
+        }
+      ],
+      "Personnel": [
+        {
+          "name": "Personnel",
+          "value": 162774459.81
+        }
+      ],
+      "Fonctionnement courant": [
+        {
+          "name": "Fonctionnement courant",
+          "value": 102813731.65
+        }
+      ],
+      "Transferts & subventions": [
+        {
+          "name": "Transferts & subventions",
+          "value": 32211986.73
+        }
+      ],
+      "Amortissements": [
+        {
+          "name": "Amortissements",
+          "value": 24996951.05
+        }
+      ],
+      "Charges financières": [
+        {
+          "name": "Charges financières",
+          "value": 7358080.66
+        }
+      ],
+      "Dette": [
+        {
+          "name": "Dette",
+          "value": 6531246.71
+        }
+      ],
+      "Charges fiscales": [
+        {
+          "name": "Charges fiscales",
+          "value": 4465830.62
+        }
+      ],
+      "Charges exceptionnelles": [
+        {
+          "name": "Charges exceptionnelles",
+          "value": 447729.83
+        }
+      ]
+    }
+  }
+}

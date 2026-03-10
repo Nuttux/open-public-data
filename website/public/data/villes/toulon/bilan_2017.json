@@ -1,0 +1,17 @@
+{
+  "year": 2017,
+  "city_slug": "toulon",
+  "totals": {
+    "actif_total": 1510867433.78,
+    "passif_total": 1256853543.07,
+    "dette_financiere": 78575582.76,
+    "fonds_propres": 1178277960.31,
+    "tresorerie": 20357768.55,
+    "immobilisations": 1490509665.23
+  },
+  "kpis": {
+    "ratio_endettement": 6.25,
+    "pct_fonds_propres": 93.75,
+    "dette_par_hab": 456.96
+  }
+}

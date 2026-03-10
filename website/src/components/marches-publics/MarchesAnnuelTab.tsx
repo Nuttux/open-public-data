@@ -19,7 +19,7 @@ import type { CsvColumn } from '@/lib/export';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { PALETTE } from '@/lib/colors';
 import { BREAKDOWN_ICONS } from '@/lib/icons';
-import { useT } from '@/lib/localeContext';
+import { useT, useTCategory } from '@/lib/localeContext';
 
 function getCsvColumns(t: (key: string) => string): CsvColumn<Record<string, unknown>>[] {
   return [
@@ -110,7 +110,7 @@ function cleanObjet(raw: string): string {
   return text || raw;
 }
 
-function getColumns(t: (key: string) => string): TableColumnDef<MarchePublic>[] {
+function getColumns(t: (key: string) => string, tCat: (name: string) => string): TableColumnDef<MarchePublic>[] {
   return [
     {
       key: 'objet', label: t('marches.col.contract'), align: 'left',
@@ -119,7 +119,7 @@ function getColumns(t: (key: string) => string): TableColumnDef<MarchePublic>[] 
           <span className="text-slate-400 text-xs w-5 shrink-0 pt-0.5">{i + 1}</span>
           <div className="min-w-0">
             <p className="text-xs md:text-sm font-medium text-slate-200 line-clamp-2">
-              {m.categorie_libelle || cleanObjet(m.objet)}
+              {m.categorie_libelle ? tCat(m.categorie_libelle) : cleanObjet(m.objet)}
             </p>
             <p className="text-[10px] md:text-xs text-slate-400 mt-0.5 line-clamp-1" title={m.objet}>
               {cleanObjet(m.objet)}
@@ -165,6 +165,7 @@ export default function MarchesAnnuelTab({
   selectedYear, marches, isLoading, error, onNavigateExplorer,
 }: MarchesAnnuelTabProps) {
   const t = useT();
+  const tCat = useTCategory();
   const getGroupKey = makeGetGroupKey(t);
   const stats = useMemo(() => {
     if (marches.length === 0) return null;
@@ -218,7 +219,7 @@ export default function MarchesAnnuelTab({
       tooltipCountLabel={t('marches.tooltip_count')}
       maxGroups={(dim) => dim === 'categorie' ? 8 : undefined}
       itemLabel={t('marches.items')}
-      columns={getColumns(t)}
+      columns={getColumns(t, tCat)}
       sortItems={(a, b) => b.montant_max - a.montant_max}
       getItemKey={(m, i) => `${m.numero_marche}-${i}`}
       onNavigateExplorer={onNavigateExplorer}

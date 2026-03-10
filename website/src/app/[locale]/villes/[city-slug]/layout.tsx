@@ -27,7 +27,7 @@ export default function CityLayout({
   const city = getCityBySlug(slug);
 
   if (!city) {
-    return <div className="max-w-6xl mx-auto px-4 py-8 text-slate-400">Ville introuvable</div>;
+    return <div className="max-w-6xl mx-auto px-4 py-8 text-slate-400">{t('villes.ville_introuvable')}</div>;
   }
 
   return (

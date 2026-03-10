@@ -15,7 +15,7 @@ import type { AutorisationProgramme, ArrondissementStats } from '@/lib/types/map
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { THEMATIQUE_LABELS, type ThematiqueSubvention } from '@/lib/constants/directions';
 import type { CsvColumn } from '@/lib/export';
-import { useT } from '@/lib/localeContext';
+import { useT, useTCategory } from '@/lib/localeContext';
 
 // ─── Dynamic import (Leaflet needs window) ───────────────────────────────────
 
@@ -63,6 +63,7 @@ function FilterPanel({
   layout: 'sidebar' | 'inline';
 }) {
   const t = useT();
+  const tCat = useTCategory();
   const isVertical = layout === 'sidebar';
 
   return (
@@ -111,7 +112,7 @@ function FilterPanel({
               >
                 <span className="flex items-center gap-1.5">
                   <span>{label?.icon || '📋'}</span>
-                  <span>{label?.label || th}</span>
+                  <span>{tCat(label?.label || th)}</span>
                 </span>
                 {isVertical && <span className="text-xs opacity-70">{count}</span>}
               </button>
@@ -137,6 +138,7 @@ export default function InvestissementsExplorerTab({
   projets, arrondissementStats, isLoading,
 }: InvestissementsExplorerTabProps) {
   const t = useT();
+  const tCat = useTCategory();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedArrondissement, setSelectedArrondissement] = useState<number | null>(null);
   const [selectedThematiques, setSelectedThematiques] = useState<string[]>([]);
@@ -262,13 +264,13 @@ export default function InvestissementsExplorerTab({
                           <div className="min-w-0">
                             <p className="text-xs md:text-sm text-slate-200 line-clamp-2">{p.apTexte}</p>
                             <p className="text-[10px] md:text-xs text-slate-500 mt-1">
-                              {label?.icon || '📋'} {label?.label || p.thematique}
+                              {label?.icon || '📋'} {tCat(label?.label || p.thematique)}
                             </p>
                           </div>
                         </div>
                       </td>
                       <td className="hidden md:table-cell px-4 py-3">
-                        <p className="text-xs text-slate-400 line-clamp-2">{p.missionTexte}</p>
+                        <p className="text-xs text-slate-400 line-clamp-2">{tCat(p.missionTexte || '')}</p>
                       </td>
                       <td className="px-2 md:px-4 py-3 text-right">
                         <p className="text-xs md:text-sm font-semibold text-amber-400 whitespace-nowrap">

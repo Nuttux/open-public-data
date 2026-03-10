@@ -1,0 +1,17 @@
+{
+  "year": 2022,
+  "city_slug": "dijon",
+  "totals": {
+    "actif_total": 1681405040.92,
+    "passif_total": 1419146409.37,
+    "dette_financiere": 122450822.22,
+    "fonds_propres": 1296695587.15,
+    "tresorerie": 77518192.76,
+    "immobilisations": 1603886848.16
+  },
+  "kpis": {
+    "ratio_endettement": 8.63,
+    "pct_fonds_propres": 91.37,
+    "dette_par_hab": 775.0
+  }
+}

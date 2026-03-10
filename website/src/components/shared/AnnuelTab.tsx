@@ -17,7 +17,7 @@ import ReactECharts from 'echarts-for-react';
 import type { EChartsOption } from 'echarts';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
-import { useT } from '@/lib/localeContext';
+import { useT, useTCategory } from '@/lib/localeContext';
 
 // ─── Shared Types ────────────────────────────────────────────────────────────
 
@@ -188,6 +188,7 @@ export default function AnnuelTab<T>({
 }: AnnuelTabProps<T>) {
   const isMobile = useIsMobile(BREAKPOINTS.md);
   const tr = useT();
+  const tCat = useTCategory();
   const resolvedTooltipValueLabel = tooltipValueLabel ?? tr('chart.amount');
   const othersLabel = tr('chart.others');
   const [breakdown, setBreakdown] = useState(breakdowns[0].id);
@@ -257,7 +258,7 @@ export default function AnnuelTab<T>({
         const p = params as { name: string; value: number; data: { pct: number; count: number } };
         return `
           <div style="font-weight: 600; margin-bottom: 6px; font-size: ${isMobile ? '12px' : '14px'}; color: #f1f5f9;">
-            ${p.name}
+            ${tCat(p.name)}
           </div>
           <div style="display: flex; flex-direction: column; gap: 3px; font-size: ${isMobile ? '11px' : '12px'};">
             <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '12px' : '24px'};">
@@ -290,7 +291,8 @@ export default function AnnuelTab<T>({
           const p = params as { name: string; data: { pct: number } };
           const threshold = isMobile ? 5 : 3;
           if (p.data.pct < threshold) return '';
-          const name = isMobile && p.name.length > 12 ? p.name.substring(0, 11) + '…' : p.name;
+          const translated = tCat(p.name);
+          const name = isMobile && translated.length > 12 ? translated.substring(0, 11) + '…' : translated;
           return `${name}\n${p.data.pct.toFixed(0)}%`;
         },
         fontSize: isMobile ? 10 : 12,
@@ -311,7 +313,7 @@ export default function AnnuelTab<T>({
       animationDuration: isMobile ? 300 : 500,
       animationEasing: 'cubicOut',
     }],
-  }), [chartData, isMobile, tooltipCountLabel, resolvedTooltipValueLabel, formatValue, tr]);
+  }), [chartData, isMobile, tooltipCountLabel, resolvedTooltipValueLabel, formatValue, tr, tCat]);
 
   const handleTreemapClick = useCallback((params: unknown) => {
     const p = params as { name: string };
@@ -393,7 +395,7 @@ export default function AnnuelTab<T>({
               onClick={() => setSelectedGroup(null)}
               className={`inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium ${t.filterBadgeBg} ${t.filterBadgeText} border ${t.filterBadgeBorder} ${t.filterBadgeHover} transition-colors`}
             >
-              {selectedGroup}
+              {tCat(selectedGroup)}
               <span className={t.filterX}>×</span>
             </button>
           </div>
@@ -405,7 +407,7 @@ export default function AnnuelTab<T>({
         <div className="px-4 py-3 border-b border-slate-700 flex items-center justify-between">
           <h3 className="text-lg font-semibold text-slate-100">
             {selectedGroup
-              ? `${selectedGroup} — ${formatNumber(sortedFiltered.length)} ${itemLabel}`
+              ? `${tCat(selectedGroup)} — ${formatNumber(sortedFiltered.length)} ${itemLabel}`
               : `${tr('chart.top')} ${itemLabel} — ${formatNumber(sortedFiltered.length)} ${itemLabel}`}
           </h3>
           <span className={`text-sm font-semibold ${t.valueAccent}`}>{totalLabel}</span>

@@ -37,6 +37,7 @@ import {
   ClipboardList,
   Users,
   Tag,
+  GitCompareArrows,
 } from 'lucide-react';
 import type { ReactNode } from 'react';
 
@@ -52,6 +53,7 @@ export const NAV_ICONS: Record<string, ReactNode> = {
   marches: <Handshake size="1em" />,
   logements: <Building2 size="1em" />,
   blog: <PenLine size="1em" />,
+  villes: <GitCompareArrows size="1em" />,
 };
 
 // ─── Tab icons (TabBar within pages) ────────────────────────────────────────

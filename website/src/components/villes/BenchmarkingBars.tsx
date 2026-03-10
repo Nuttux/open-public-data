@@ -7,6 +7,7 @@ import { CITIES } from '@/lib/constants/cities';
 import type { BenchmarkingData } from '@/lib/types/villes';
 import { formatEuroCompact } from '@/lib/formatters';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
+import { useT } from '@/lib/localeContext';
 
 interface Props {
   data: BenchmarkingData;
@@ -15,11 +16,12 @@ interface Props {
 
 export default function BenchmarkingBars({ data, selectedYear }: Props) {
   const isMobile = useIsMobile(BREAKPOINTS.md);
+  const t = useT();
 
   const option: EChartsOption = useMemo(() => {
     if (!selectedYear) return {};
 
-    const categories = ['Recettes', 'Dépenses', 'Investissement', 'Dette'];
+    const categories = [t('villes.bench_recettes'), t('villes.bench_depenses'), t('villes.bench_investissement'), t('villes.bench_dette')];
 
     const series = CITIES.map((cityMeta) => {
       const cityData = data.cities.find((c) => c.slug === cityMeta.slug);
@@ -90,7 +92,7 @@ export default function BenchmarkingBars({ data, selectedYear }: Props) {
       },
       series,
     };
-  }, [data, selectedYear, isMobile]);
+  }, [data, selectedYear, isMobile, t]);
 
   return (
     <ReactECharts

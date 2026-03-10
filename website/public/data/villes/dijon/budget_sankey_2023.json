@@ -1,0 +1,311 @@
+{
+  "year": 2023,
+  "type_budget": "execute",
+  "city_slug": "dijon",
+  "city_name": "Dijon",
+  "dataStatus": "COMPLET",
+  "totals": {
+    "recettes": 260892694.38,
+    "depenses": 257220508.51,
+    "solde": 3672185.87
+  },
+  "nodes": [
+    {
+      "name": "Fiscalité",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations État",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits des services",
+      "category": "revenue"
+    },
+    {
+      "name": "Subventions investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Autres produits",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits exceptionnels",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits financiers",
+      "category": "revenue"
+    },
+    {
+      "name": "Reprises",
+      "category": "revenue"
+    },
+    {
+      "name": "Emprunts",
+      "category": "revenue"
+    },
+    {
+      "name": "Budget Dijon",
+      "category": "central"
+    },
+    {
+      "name": "Personnel",
+      "category": "expense"
+    },
+    {
+      "name": "Investissements",
+      "category": "expense"
+    },
+    {
+      "name": "Fonctionnement courant",
+      "category": "expense"
+    },
+    {
+      "name": "Transferts & subventions",
+      "category": "expense"
+    },
+    {
+      "name": "Amortissements",
+      "category": "expense"
+    },
+    {
+      "name": "Dette",
+      "category": "expense"
+    },
+    {
+      "name": "Charges financières",
+      "category": "expense"
+    },
+    {
+      "name": "Charges fiscales",
+      "category": "expense"
+    },
+    {
+      "name": "Charges exceptionnelles",
+      "category": "expense"
+    }
+  ],
+  "links": [
+    {
+      "source": "Fiscalité",
+      "target": "Budget Dijon",
+      "value": 154972500.81
+    },
+    {
+      "source": "Dotations État",
+      "target": "Budget Dijon",
+      "value": 41487104.74
+    },
+    {
+      "source": "Dotations investissement",
+      "target": "Budget Dijon",
+      "value": 36868897.61
+    },
+    {
+      "source": "Produits des services",
+      "target": "Budget Dijon",
+      "value": 13900510.43
+    },
+    {
+      "source": "Subventions investissement",
+      "target": "Budget Dijon",
+      "value": 7440464.72
+    },
+    {
+      "source": "Autres produits",
+      "target": "Budget Dijon",
+      "value": 3175112.98
+    },
+    {
+      "source": "Produits exceptionnels",
+      "target": "Budget Dijon",
+      "value": 1851753.22
+    },
+    {
+      "source": "Produits financiers",
+      "target": "Budget Dijon",
+      "value": 1163634.75
+    },
+    {
+      "source": "Reprises",
+      "target": "Budget Dijon",
+      "value": 32020.0
+    },
+    {
+      "source": "Emprunts",
+      "target": "Budget Dijon",
+      "value": 695.12
+    },
+    {
+      "source": "Budget Dijon",
+      "target": "Personnel",
+      "value": 83943870.48
+    },
+    {
+      "source": "Budget Dijon",
+      "target": "Investissements",
+      "value": 58480481.93
+    },
+    {
+      "source": "Budget Dijon",
+      "target": "Fonctionnement courant",
+      "value": 48789089.58
+    },
+    {
+      "source": "Budget Dijon",
+      "target": "Transferts & subventions",
+      "value": 33962142.03
+    },
+    {
+      "source": "Budget Dijon",
+      "target": "Amortissements",
+      "value": 11709668.84
+    },
+    {
+      "source": "Budget Dijon",
+      "target": "Dette",
+      "value": 10906281.1
+    },
+    {
+      "source": "Budget Dijon",
+      "target": "Charges financières",
+      "value": 4340007.61
+    },
+    {
+      "source": "Budget Dijon",
+      "target": "Charges fiscales",
+      "value": 3120094.27
+    },
+    {
+      "source": "Budget Dijon",
+      "target": "Charges exceptionnelles",
+      "value": 1968872.67
+    }
+  ],
+  "drilldown": {
+    "revenue": {
+      "Fiscalité": [
+        {
+          "name": "Fiscalité",
+          "value": 154972500.81
+        }
+      ],
+      "Dotations État": [
+        {
+          "name": "Dotations État",
+          "value": 41487104.74
+        }
+      ],
+      "Dotations investissement": [
+        {
+          "name": "Dotations investissement",
+          "value": 36868897.61
+        }
+      ],
+      "Produits des services": [
+        {
+          "name": "Produits des services",
+          "value": 13900510.43
+        }
+      ],
+      "Subventions investissement": [
+        {
+          "name": "Subventions investissement",
+          "value": 7440464.72
+        }
+      ],
+      "Autres produits": [
+        {
+          "name": "Autres produits",
+          "value": 3175112.98
+        }
+      ],
+      "Produits exceptionnels": [
+        {
+          "name": "Produits exceptionnels",
+          "value": 1851753.22
+        }
+      ],
+      "Produits financiers": [
+        {
+          "name": "Produits financiers",
+          "value": 1163634.75
+        }
+      ],
+      "Reprises": [
+        {
+          "name": "Reprises",
+          "value": 32020.0
+        }
+      ],
+      "Emprunts": [
+        {
+          "name": "Emprunts",
+          "value": 695.12
+        }
+      ]
+    },
+    "expenses": {
+      "Personnel": [
+        {
+          "name": "Personnel",
+          "value": 83943870.48
+        }
+      ],
+      "Investissements": [
+        {
+          "name": "Investissements",
+          "value": 58480481.93
+        }
+      ],
+      "Fonctionnement courant": [
+        {
+          "name": "Fonctionnement courant",
+          "value": 48789089.58
+        }
+      ],
+      "Transferts & subventions": [
+        {
+          "name": "Transferts & subventions",
+          "value": 33962142.03
+        }
+      ],
+      "Amortissements": [
+        {
+          "name": "Amortissements",
+          "value": 11709668.84
+        }
+      ],
+      "Dette": [
+        {
+          "name": "Dette",
+          "value": 10906281.1
+        }
+      ],
+      "Charges financières": [
+        {
+          "name": "Charges financières",
+          "value": 4340007.61
+        }
+      ],
+      "Charges fiscales": [
+        {
+          "name": "Charges fiscales",
+          "value": 3120094.27
+        }
+      ],
+      "Charges exceptionnelles": [
+        {
+          "name": "Charges exceptionnelles",
+          "value": 1968872.67
+        }
+      ]
+    }
+  }
+}

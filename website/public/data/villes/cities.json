@@ -17,8 +17,7 @@
       "datasets": [
         "budget",
         "patrimoine",
-        "marches",
-        "subventions"
+        "marches"
       ]
     },
     {
@@ -38,8 +37,7 @@
       "datasets": [
         "budget",
         "patrimoine",
-        "marches",
-        "subventions"
+        "marches"
       ]
     },
     {
@@ -59,8 +57,7 @@
       "datasets": [
         "budget",
         "patrimoine",
-        "marches",
-        "subventions"
+        "marches"
       ]
     },
     {
@@ -80,8 +77,7 @@
       "datasets": [
         "budget",
         "patrimoine",
-        "marches",
-        "subventions"
+        "marches"
       ]
     },
     {
@@ -101,8 +97,292 @@
       "datasets": [
         "budget",
         "patrimoine",
-        "marches",
-        "subventions"
+        "marches"
+      ]
+    },
+    {
+      "slug": "nantes",
+      "name": "Nantes",
+      "population": 320732,
+      "available_years": [
+        2024,
+        2023,
+        2022,
+        2021,
+        2020,
+        2019,
+        2018,
+        2017
+      ],
+      "datasets": [
+        "budget",
+        "patrimoine"
+      ]
+    },
+    {
+      "slug": "montpellier",
+      "name": "Montpellier",
+      "population": 299096,
+      "available_years": [
+        2024,
+        2023,
+        2022,
+        2021,
+        2020,
+        2019,
+        2018,
+        2017
+      ],
+      "datasets": [
+        "budget",
+        "patrimoine"
+      ]
+    },
+    {
+      "slug": "strasbourg",
+      "name": "Strasbourg",
+      "population": 287228,
+      "available_years": [
+        2024,
+        2023,
+        2022,
+        2021,
+        2020,
+        2019,
+        2018,
+        2017
+      ],
+      "datasets": [
+        "budget",
+        "patrimoine"
+      ]
+    },
+    {
+      "slug": "bordeaux",
+      "name": "Bordeaux",
+      "population": 260958,
+      "available_years": [
+        2024,
+        2023,
+        2022,
+        2021,
+        2020,
+        2019,
+        2018,
+        2017
+      ],
+      "datasets": [
+        "budget",
+        "patrimoine"
+      ]
+    },
+    {
+      "slug": "lille",
+      "name": "Lille",
+      "population": 236234,
+      "available_years": [
+        2024,
+        2023,
+        2022,
+        2021,
+        2020,
+        2019,
+        2018,
+        2017
+      ],
+      "datasets": [
+        "budget",
+        "patrimoine"
+      ]
+    },
+    {
+      "slug": "rennes",
+      "name": "Rennes",
+      "population": 222485,
+      "available_years": [
+        2024,
+        2023,
+        2022,
+        2021,
+        2020,
+        2019,
+        2018,
+        2017
+      ],
+      "datasets": [
+        "budget",
+        "patrimoine"
+      ]
+    },
+    {
+      "slug": "reims",
+      "name": "Reims",
+      "population": 182460,
+      "available_years": [
+        2024,
+        2023,
+        2022,
+        2021,
+        2020,
+        2019,
+        2018,
+        2017
+      ],
+      "datasets": [
+        "budget",
+        "patrimoine"
+      ]
+    },
+    {
+      "slug": "saint-etienne",
+      "name": "Saint-Étienne",
+      "population": 174082,
+      "available_years": [
+        2024,
+        2023,
+        2022,
+        2021,
+        2020,
+        2019,
+        2018,
+        2017
+      ],
+      "datasets": [
+        "budget",
+        "patrimoine"
+      ]
+    },
+    {
+      "slug": "toulon",
+      "name": "Toulon",
+      "population": 171953,
+      "available_years": [
+        2024,
+        2023,
+        2022,
+        2021,
+        2020,
+        2019,
+        2018,
+        2017
+      ],
+      "datasets": [
+        "budget",
+        "patrimoine"
+      ]
+    },
+    {
+      "slug": "le-havre",
+      "name": "Le Havre",
+      "population": 170352,
+      "available_years": [
+        2024,
+        2023,
+        2022,
+        2021,
+        2020,
+        2019,
+        2018,
+        2017
+      ],
+      "datasets": [
+        "budget",
+        "patrimoine"
+      ]
+    },
+    {
+      "slug": "grenoble",
+      "name": "Grenoble",
+      "population": 158198,
+      "available_years": [
+        2024,
+        2023,
+        2022,
+        2021,
+        2020,
+        2019,
+        2018,
+        2017
+      ],
+      "datasets": [
+        "budget",
+        "patrimoine"
+      ]
+    },
+    {
+      "slug": "dijon",
+      "name": "Dijon",
+      "population": 158002,
+      "available_years": [
+        2024,
+        2023,
+        2022,
+        2021,
+        2020,
+        2019,
+        2018,
+        2017
+      ],
+      "datasets": [
+        "budget",
+        "patrimoine"
+      ]
+    },
+    {
+      "slug": "angers",
+      "name": "Angers",
+      "population": 155850,
+      "available_years": [
+        2024,
+        2023,
+        2022,
+        2021,
+        2020,
+        2019,
+        2018,
+        2017
+      ],
+      "datasets": [
+        "budget",
+        "patrimoine"
+      ]
+    },
+    {
+      "slug": "nimes",
+      "name": "Nîmes",
+      "population": 148236,
+      "available_years": [
+        2024,
+        2023,
+        2022,
+        2021,
+        2020,
+        2019,
+        2018,
+        2017
+      ],
+      "datasets": [
+        "budget",
+        "patrimoine"
+      ]
+    },
+    {
+      "slug": "villeurbanne",
+      "name": "Villeurbanne",
+      "population": 154781,
+      "available_years": [
+        2024,
+        2023,
+        2022,
+        2021,
+        2020,
+        2019,
+        2018,
+        2017
+      ],
+      "datasets": [
+        "budget",
+        "patrimoine"
       ]
     }
   ],

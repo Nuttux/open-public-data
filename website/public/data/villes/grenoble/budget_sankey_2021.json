@@ -1,0 +1,296 @@
+{
+  "year": 2021,
+  "type_budget": "execute",
+  "city_slug": "grenoble",
+  "city_name": "Grenoble",
+  "dataStatus": "COMPLET",
+  "totals": {
+    "recettes": 319594722.78,
+    "depenses": 322334043.53,
+    "solde": -2739320.75
+  },
+  "nodes": [
+    {
+      "name": "Fiscalité",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations État",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits des services",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits exceptionnels",
+      "category": "revenue"
+    },
+    {
+      "name": "Subventions investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Emprunts",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits financiers",
+      "category": "revenue"
+    },
+    {
+      "name": "Autres produits",
+      "category": "revenue"
+    },
+    {
+      "name": "Budget Grenoble",
+      "category": "central"
+    },
+    {
+      "name": "Personnel",
+      "category": "expense"
+    },
+    {
+      "name": "Fonctionnement courant",
+      "category": "expense"
+    },
+    {
+      "name": "Investissements",
+      "category": "expense"
+    },
+    {
+      "name": "Transferts & subventions",
+      "category": "expense"
+    },
+    {
+      "name": "Amortissements",
+      "category": "expense"
+    },
+    {
+      "name": "Charges exceptionnelles",
+      "category": "expense"
+    },
+    {
+      "name": "Dette",
+      "category": "expense"
+    },
+    {
+      "name": "Charges financières",
+      "category": "expense"
+    },
+    {
+      "name": "Charges fiscales",
+      "category": "expense"
+    }
+  ],
+  "links": [
+    {
+      "source": "Fiscalité",
+      "target": "Budget Grenoble",
+      "value": 200186504.74
+    },
+    {
+      "source": "Dotations État",
+      "target": "Budget Grenoble",
+      "value": 44196185.48
+    },
+    {
+      "source": "Produits des services",
+      "target": "Budget Grenoble",
+      "value": 24350674.54
+    },
+    {
+      "source": "Dotations investissement",
+      "target": "Budget Grenoble",
+      "value": 22182785.66
+    },
+    {
+      "source": "Produits exceptionnels",
+      "target": "Budget Grenoble",
+      "value": 18557790.13
+    },
+    {
+      "source": "Subventions investissement",
+      "target": "Budget Grenoble",
+      "value": 5281693.95
+    },
+    {
+      "source": "Emprunts",
+      "target": "Budget Grenoble",
+      "value": 1882584.7
+    },
+    {
+      "source": "Produits financiers",
+      "target": "Budget Grenoble",
+      "value": 1552734.01
+    },
+    {
+      "source": "Autres produits",
+      "target": "Budget Grenoble",
+      "value": 1403769.57
+    },
+    {
+      "source": "Budget Grenoble",
+      "target": "Personnel",
+      "value": 132656620.91
+    },
+    {
+      "source": "Budget Grenoble",
+      "target": "Fonctionnement courant",
+      "value": 56102219.19
+    },
+    {
+      "source": "Budget Grenoble",
+      "target": "Investissements",
+      "value": 51725829.73
+    },
+    {
+      "source": "Budget Grenoble",
+      "target": "Transferts & subventions",
+      "value": 37280376.76
+    },
+    {
+      "source": "Budget Grenoble",
+      "target": "Amortissements",
+      "value": 14843558.14
+    },
+    {
+      "source": "Budget Grenoble",
+      "target": "Charges exceptionnelles",
+      "value": 11852672.88
+    },
+    {
+      "source": "Budget Grenoble",
+      "target": "Dette",
+      "value": 7601647.82
+    },
+    {
+      "source": "Budget Grenoble",
+      "target": "Charges financières",
+      "value": 6198918.65
+    },
+    {
+      "source": "Budget Grenoble",
+      "target": "Charges fiscales",
+      "value": 4072199.45
+    }
+  ],
+  "drilldown": {
+    "revenue": {
+      "Fiscalité": [
+        {
+          "name": "Fiscalité",
+          "value": 200186504.74
+        }
+      ],
+      "Dotations État": [
+        {
+          "name": "Dotations État",
+          "value": 44196185.48
+        }
+      ],
+      "Produits des services": [
+        {
+          "name": "Produits des services",
+          "value": 24350674.54
+        }
+      ],
+      "Dotations investissement": [
+        {
+          "name": "Dotations investissement",
+          "value": 22182785.66
+        }
+      ],
+      "Produits exceptionnels": [
+        {
+          "name": "Produits exceptionnels",
+          "value": 18557790.13
+        }
+      ],
+      "Subventions investissement": [
+        {
+          "name": "Subventions investissement",
+          "value": 5281693.95
+        }
+      ],
+      "Emprunts": [
+        {
+          "name": "Emprunts",
+          "value": 1882584.7
+        }
+      ],
+      "Produits financiers": [
+        {
+          "name": "Produits financiers",
+          "value": 1552734.01
+        }
+      ],
+      "Autres produits": [
+        {
+          "name": "Autres produits",
+          "value": 1403769.57
+        }
+      ]
+    },
+    "expenses": {
+      "Personnel": [
+        {
+          "name": "Personnel",
+          "value": 132656620.91
+        }
+      ],
+      "Fonctionnement courant": [
+        {
+          "name": "Fonctionnement courant",
+          "value": 56102219.19
+        }
+      ],
+      "Investissements": [
+        {
+          "name": "Investissements",
+          "value": 51725829.73
+        }
+      ],
+      "Transferts & subventions": [
+        {
+          "name": "Transferts & subventions",
+          "value": 37280376.76
+        }
+      ],
+      "Amortissements": [
+        {
+          "name": "Amortissements",
+          "value": 14843558.14
+        }
+      ],
+      "Charges exceptionnelles": [
+        {
+          "name": "Charges exceptionnelles",
+          "value": 11852672.88
+        }
+      ],
+      "Dette": [
+        {
+          "name": "Dette",
+          "value": 7601647.82
+        }
+      ],
+      "Charges financières": [
+        {
+          "name": "Charges financières",
+          "value": 6198918.65
+        }
+      ],
+      "Charges fiscales": [
+        {
+          "name": "Charges fiscales",
+          "value": 4072199.45
+        }
+      ]
+    }
+  }
+}

@@ -122,6 +122,50 @@ const FR_TO_EN: Record<string, string> = {
   'Emprunts souscrits auprès des établissements de crédit': 'Bank Loans',
   'Provisions pour risques': 'Risk Provisions',
 
+  // ── Investment thématiques (THEMATIQUE_LABELS) ───────────────────────
+  'Culture & Arts': 'Culture & Arts',
+  'Sport & Jeunesse': 'Sport & Youth',
+  'Social & Solidarité': 'Social & Solidarity',
+  'Éducation & Petite enfance': 'Education & Early Childhood',
+  'Environnement & Espaces verts': 'Environment & Green Spaces',
+  'Économie & Emploi': 'Economy & Employment',
+  'Logement & Habitat': 'Housing & Habitat',
+  'Urbanisme & Voirie': 'Urban Planning & Roads',
+  'Prévention & Sécurité': 'Prevention & Safety',
+  'mobilite': 'Mobility',
+  'democratie': 'Democracy',
+
+  // ── Investment chapter names (missionTexte) ─────────────────────────
+  'Voirie': 'Roads',
+  'Affaires Scolaires': 'School Affairs',
+  'Jeunesse et Sports': 'Youth & Sports',
+  'Affaires Culturelles': 'Cultural Affairs',
+  'Famille': 'Family',
+  'Décentralisation': 'Decentralisation',
+  'Propreté': 'Cleanliness',
+  'Action Sanitaire et Sociale': 'Health & Social Services',
+  'Aménagement Urbain': 'Urban Development',
+  'Transports et Déplacements': 'Transport & Mobility',
+
+  // ── Housing types ───────────────────────────────────────────────────
+  'PLAI (très social)': 'PLAI (very social)',
+  'PLUS (social)': 'PLUS (social)',
+  'PLS (intermédiaire)': 'PLS (intermediate)',
+
+  // ── Marchés categorie_libelle ───────────────────────────────────────
+  'Travaux d\'aménagement de voirie': 'Road development works',
+  'Travaux d\'aménagement d\'espaces verts': 'Green space development works',
+  'Travaux sur le réseau d\'assainissement': 'Sewage network works',
+  'Travaux de construction, rénovation équipements publics': 'Construction & renovation of public facilities',
+  'Maintenance des installations': 'Facility maintenance',
+  'Carburants': 'Fuel',
+  'Travaux de génie civil': 'Civil engineering works',
+  'Travaux d\'entretien, préservation équipements publics': 'Maintenance of public facilities',
+  'Animation culturelle et de loisirs': 'Cultural & leisure activities',
+  'Services d\'actions éducatives scolaires et périscolaires': 'School & extracurricular education services',
+  'Collecte ordures ménagères et autres déchets': 'Household & other waste collection',
+  'Services de centres de vacances et de centres de loisirs': 'Holiday & leisure centre services',
+
   // ── Subventions thématiques ───────────────────────────────────────────
   'Social - Solidarité': 'Social - Solidarity',
   'Social - Petite enfance': 'Social - Early Childhood',
@@ -156,6 +200,16 @@ const FR_TO_EN: Record<string, string> = {
   'Recettes': 'Revenue',
   'Dépenses': 'Expenditure',
   'Budget': 'Budget',
+
+  // ── Subventions misc ─────────────────────────────────────────────────
+  'Non renseignée': 'Not specified',
+  'Autres privés': 'Other Private',
+  'Établissements publics': 'Public Institutions',
+
+  // ── Marchés publics natures ─────────────────────────────────────────
+  'SERVICES': 'Services',
+  'TRAVAUX': 'Works',
+  'FOURNITURE': 'Supplies',
 
   // ── Organisation types (subventions) ──────────────────────────────────
   'Associations': 'Associations',

@@ -15,7 +15,7 @@ import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { getThematiqueColor } from '@/lib/colors';
 import type { SubventionFilters } from './SubventionsFilters';
 import { useTrack } from '@/lib/analyticsContext';
-import { useT } from '@/lib/localeContext';
+import { useT, useTCategory } from '@/lib/localeContext';
 
 /**
  * Données d'un bénéficiaire
@@ -93,6 +93,7 @@ export default function SubventionsTable({
   const [currentPage, setCurrentPage] = useState(1);
   const track = useTrack();
   const t = useT();
+  const tCat = useTCategory();
 
   /**
    * Appliquer les filtres
@@ -316,11 +317,11 @@ export default function SubventionsTable({
                         color: getThematiqueColor(beneficiaire.thematique),
                       }}
                     >
-                      {beneficiaire.thematique}
+                      {tCat(beneficiaire.thematique)}
                     </span>
                     {beneficiaire.sous_categorie && (
                       <p className="text-[10px] md:text-xs text-slate-400 mt-0.5">
-                        {beneficiaire.sous_categorie}
+                        {tCat(beneficiaire.sous_categorie!)}
                       </p>
                     )}
                   </td>
@@ -347,7 +348,7 @@ export default function SubventionsTable({
                   {/* Nature juridique — masqué sur mobile */}
                   <td className="hidden md:table-cell px-4 py-3">
                     <span className="text-sm text-slate-400">
-                      {beneficiaire.nature_juridique || '-'}
+                      {beneficiaire.nature_juridique ? tCat(beneficiaire.nature_juridique) : '-'}
                     </span>
                   </td>
                   

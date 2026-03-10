@@ -1,0 +1,17 @@
+{
+  "year": 2023,
+  "city_slug": "reims",
+  "totals": {
+    "actif_total": 2130411224.64,
+    "passif_total": 1885256772.83,
+    "dette_financiere": 246810100.98,
+    "fonds_propres": 1638446671.85,
+    "tresorerie": 61556133.93,
+    "immobilisations": 2068855090.71
+  },
+  "kpis": {
+    "ratio_endettement": 13.09,
+    "pct_fonds_propres": 86.91,
+    "dette_par_hab": 1352.68
+  }
+}

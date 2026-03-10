@@ -1,0 +1,296 @@
+{
+  "year": 2020,
+  "type_budget": "execute",
+  "city_slug": "toulon",
+  "city_name": "Toulon",
+  "dataStatus": "COMPLET",
+  "totals": {
+    "recettes": 262460167.73,
+    "depenses": 236789678.71,
+    "solde": 25670489.02
+  },
+  "nodes": [
+    {
+      "name": "Fiscalité",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations État",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits exceptionnels",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits des services",
+      "category": "revenue"
+    },
+    {
+      "name": "Subventions investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Autres produits",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits financiers",
+      "category": "revenue"
+    },
+    {
+      "name": "Emprunts",
+      "category": "revenue"
+    },
+    {
+      "name": "Budget Toulon",
+      "category": "central"
+    },
+    {
+      "name": "Personnel",
+      "category": "expense"
+    },
+    {
+      "name": "Investissements",
+      "category": "expense"
+    },
+    {
+      "name": "Amortissements",
+      "category": "expense"
+    },
+    {
+      "name": "Fonctionnement courant",
+      "category": "expense"
+    },
+    {
+      "name": "Transferts & subventions",
+      "category": "expense"
+    },
+    {
+      "name": "Dette",
+      "category": "expense"
+    },
+    {
+      "name": "Charges fiscales",
+      "category": "expense"
+    },
+    {
+      "name": "Charges exceptionnelles",
+      "category": "expense"
+    },
+    {
+      "name": "Charges financières",
+      "category": "expense"
+    }
+  ],
+  "links": [
+    {
+      "source": "Fiscalité",
+      "target": "Budget Toulon",
+      "value": 114261718.68
+    },
+    {
+      "source": "Dotations État",
+      "target": "Budget Toulon",
+      "value": 65699014.72
+    },
+    {
+      "source": "Dotations investissement",
+      "target": "Budget Toulon",
+      "value": 39306864.95
+    },
+    {
+      "source": "Produits exceptionnels",
+      "target": "Budget Toulon",
+      "value": 21974722.55
+    },
+    {
+      "source": "Produits des services",
+      "target": "Budget Toulon",
+      "value": 13507818.72
+    },
+    {
+      "source": "Subventions investissement",
+      "target": "Budget Toulon",
+      "value": 6329389.49
+    },
+    {
+      "source": "Autres produits",
+      "target": "Budget Toulon",
+      "value": 1206154.27
+    },
+    {
+      "source": "Produits financiers",
+      "target": "Budget Toulon",
+      "value": 173434.6
+    },
+    {
+      "source": "Emprunts",
+      "target": "Budget Toulon",
+      "value": 1049.75
+    },
+    {
+      "source": "Budget Toulon",
+      "target": "Personnel",
+      "value": 108488850.42
+    },
+    {
+      "source": "Budget Toulon",
+      "target": "Investissements",
+      "value": 42390210.48
+    },
+    {
+      "source": "Budget Toulon",
+      "target": "Amortissements",
+      "value": 29366619.34
+    },
+    {
+      "source": "Budget Toulon",
+      "target": "Fonctionnement courant",
+      "value": 28352077.49
+    },
+    {
+      "source": "Budget Toulon",
+      "target": "Transferts & subventions",
+      "value": 14281970.64
+    },
+    {
+      "source": "Budget Toulon",
+      "target": "Dette",
+      "value": 6342568.98
+    },
+    {
+      "source": "Budget Toulon",
+      "target": "Charges fiscales",
+      "value": 3553455.09
+    },
+    {
+      "source": "Budget Toulon",
+      "target": "Charges exceptionnelles",
+      "value": 2890353.79
+    },
+    {
+      "source": "Budget Toulon",
+      "target": "Charges financières",
+      "value": 1123572.48
+    }
+  ],
+  "drilldown": {
+    "revenue": {
+      "Fiscalité": [
+        {
+          "name": "Fiscalité",
+          "value": 114261718.68
+        }
+      ],
+      "Dotations État": [
+        {
+          "name": "Dotations État",
+          "value": 65699014.72
+        }
+      ],
+      "Dotations investissement": [
+        {
+          "name": "Dotations investissement",
+          "value": 39306864.95
+        }
+      ],
+      "Produits exceptionnels": [
+        {
+          "name": "Produits exceptionnels",
+          "value": 21974722.55
+        }
+      ],
+      "Produits des services": [
+        {
+          "name": "Produits des services",
+          "value": 13507818.72
+        }
+      ],
+      "Subventions investissement": [
+        {
+          "name": "Subventions investissement",
+          "value": 6329389.49
+        }
+      ],
+      "Autres produits": [
+        {
+          "name": "Autres produits",
+          "value": 1206154.27
+        }
+      ],
+      "Produits financiers": [
+        {
+          "name": "Produits financiers",
+          "value": 173434.6
+        }
+      ],
+      "Emprunts": [
+        {
+          "name": "Emprunts",
+          "value": 1049.75
+        }
+      ]
+    },
+    "expenses": {
+      "Personnel": [
+        {
+          "name": "Personnel",
+          "value": 108488850.42
+        }
+      ],
+      "Investissements": [
+        {
+          "name": "Investissements",
+          "value": 42390210.48
+        }
+      ],
+      "Amortissements": [
+        {
+          "name": "Amortissements",
+          "value": 29366619.34
+        }
+      ],
+      "Fonctionnement courant": [
+        {
+          "name": "Fonctionnement courant",
+          "value": 28352077.49
+        }
+      ],
+      "Transferts & subventions": [
+        {
+          "name": "Transferts & subventions",
+          "value": 14281970.64
+        }
+      ],
+      "Dette": [
+        {
+          "name": "Dette",
+          "value": 6342568.98
+        }
+      ],
+      "Charges fiscales": [
+        {
+          "name": "Charges fiscales",
+          "value": 3553455.09
+        }
+      ],
+      "Charges exceptionnelles": [
+        {
+          "name": "Charges exceptionnelles",
+          "value": 2890353.79
+        }
+      ],
+      "Charges financières": [
+        {
+          "name": "Charges financières",
+          "value": 1123572.48
+        }
+      ]
+    }
+  }
+}

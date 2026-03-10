@@ -18,7 +18,7 @@ import { PARIS_POPULATION_TOTAL } from '@/lib/constants/arrondissements';
 import { getThematiqueColor, PALETTE } from '@/lib/colors';
 import type { CsvColumn } from '@/lib/export';
 import { BREAKDOWN_ICONS } from '@/lib/icons';
-import { useT } from '@/lib/localeContext';
+import { useT, useTCategory } from '@/lib/localeContext';
 
 /** Mapping nature juridique → type organisme simplifié */
 const NATURE_TO_TYPE: Record<string, string> = {
@@ -65,6 +65,7 @@ function getGroupColor(key: string, dim: string, index: number): string {
 
 function useColumns(): TableColumnDef<Beneficiaire>[] {
   const t = useT();
+  const tCat = useTCategory();
   return useMemo(() => [
     {
       key: 'beneficiaire', label: t('subventions.col.beneficiary'), align: 'left' as const,
@@ -74,7 +75,7 @@ function useColumns(): TableColumnDef<Beneficiaire>[] {
           <div className="min-w-0">
             <p className="text-xs md:text-sm text-slate-200 line-clamp-2">{b.beneficiaire}</p>
             <p className="text-[10px] md:text-xs text-slate-400 mt-1">
-              {b.nature_juridique || 'N/A'}
+              {b.nature_juridique ? tCat(b.nature_juridique) : 'N/A'}
             </p>
           </div>
         </div>
@@ -82,7 +83,7 @@ function useColumns(): TableColumnDef<Beneficiaire>[] {
     },
     {
       key: 'thematique', label: t('subventions.col.thematique'), hideOnMobile: true, align: 'left' as const,
-      render: (b: Beneficiaire) => <p className="text-xs text-slate-400 line-clamp-2">{b.thematique}</p>,
+      render: (b: Beneficiaire) => <p className="text-xs text-slate-400 line-clamp-2">{tCat(b.thematique)}</p>,
     },
     {
       key: 'montant', label: t('subventions.col.amount'), align: 'right' as const,
@@ -94,7 +95,7 @@ function useColumns(): TableColumnDef<Beneficiaire>[] {
         ? <span className="text-sm text-slate-300">{b.direction}</span>
         : <span className="text-slate-500">-</span>,
     },
-  ], [t]);
+  ], [t, tCat]);
 }
 
 // ─── Component ───────────────────────────────────────────────────────────────

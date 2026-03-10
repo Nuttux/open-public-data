@@ -1,0 +1,17 @@
+{
+  "year": 2022,
+  "city_slug": "angers",
+  "totals": {
+    "actif_total": 2102932235.88,
+    "passif_total": 1782909199.89,
+    "dette_financiere": 164267364.27,
+    "fonds_propres": 1618641835.62,
+    "tresorerie": 20760300.69,
+    "immobilisations": 2082171935.19
+  },
+  "kpis": {
+    "ratio_endettement": 9.21,
+    "pct_fonds_propres": 90.79,
+    "dette_par_hab": 1054.01
+  }
+}

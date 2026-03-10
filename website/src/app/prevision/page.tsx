@@ -21,6 +21,7 @@ import type { EChartsOption } from 'echarts';
 import { formatEuroCompact } from '@/lib/formatters';
 import { PALETTE } from '@/lib/colors';
 import { useIsMobile } from '@/lib/hooks/useIsMobile';
+import { useTCategory } from '@/lib/localeContext';
 import ExportBar from '@/components/shared/ExportBar';
 
 // =============================================================================
@@ -404,6 +405,7 @@ const MAX_ECART_DISPLAY = 60;
  * Filters out tiny posts and caps outliers for readability.
  */
 function EcartRanking({ ranking }: { ranking: EcartRow[] }) {
+  const tCat = useTCategory();
   const isMobile = useIsMobile();
 
   const depenseRanking = useMemo(() => {
@@ -417,7 +419,7 @@ function EcartRanking({ ranking }: { ranking: EcartRow[] }) {
     const sorted = [...depenseRanking].sort(
       (a, b) => a.ecart_moyen_pct - b.ecart_moyen_pct,
     );
-    const labels = sorted.map((r) => `${r.thematique} (${r.section.slice(0, 5)})`);
+    const labels = sorted.map((r) => `${tCat(r.thematique)} (${r.section.slice(0, 5)})`);
     // Cap display values for readability
     const displayValues = sorted.map((r) =>
       Math.max(-MAX_ECART_DISPLAY, Math.min(MAX_ECART_DISPLAY, r.ecart_moyen_pct)),
@@ -438,7 +440,7 @@ function EcartRanking({ ranking }: { ranking: EcartRow[] }) {
           if (!row) return '';
           const status = row.ecart_moyen_pct > 0 ? 'Sur-exécuté' : 'Sous-exécuté';
           return (
-            `<strong>${row.thematique}</strong> (${row.section})<br/>` +
+            `<strong>${tCat(row.thematique)}</strong> (${row.section})<br/>` +
             `${status}: <strong>${row.ecart_moyen_pct > 0 ? '+' : ''}${row.ecart_moyen_pct.toFixed(1)}%</strong><br/>` +
             `Voté moy: ${formatEuroCompact(row.vote_total / row.nb_annees)} → ` +
             `Exécuté moy: ${formatEuroCompact(row.execute_total / row.nb_annees)}`
@@ -496,7 +498,7 @@ function EcartRanking({ ranking }: { ranking: EcartRow[] }) {
         },
       ],
     };
-  }, [depenseRanking, isMobile]);
+  }, [depenseRanking, isMobile, tCat]);
 
   const chartHeight = Math.max(300, depenseRanking.length * 28 + 60);
 

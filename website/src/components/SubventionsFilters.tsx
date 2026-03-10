@@ -12,7 +12,7 @@
 
 import { useState, useCallback, useMemo } from 'react';
 import { useTrack } from '@/lib/analyticsContext';
-import { useT } from '@/lib/localeContext';
+import { useT, useTCategory } from '@/lib/localeContext';
 
 /**
  * État des filtres
@@ -112,6 +112,7 @@ export default function SubventionsFilters({
   const [isExpanded, setIsExpanded] = useState(true);
   const track = useTrack();
   const t = useT();
+  const tCat = useTCategory();
 
   /**
    * Mise à jour d'un filtre
@@ -271,7 +272,7 @@ export default function SubventionsFilters({
               </label>
               <div className="flex items-center gap-2">
                 <span className="px-3 py-1.5 text-sm font-medium rounded-full bg-purple-500/20 border border-purple-500/50 text-purple-300">
-                  {filters.thematique}
+                  {tCat(filters.thematique)}
                 </span>
                 <button
                   onClick={() => updateFilter('thematique', null)}

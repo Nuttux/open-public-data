@@ -14,7 +14,7 @@ import { useState, useMemo, useCallback, useEffect } from 'react';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import type { MarchesFilters } from './MarchesFilters';
 import { NATURE_LABELS } from './MarchesFilters';
-import { useT, useLocale } from '@/lib/localeContext';
+import { useT, useLocale, useTCategory } from '@/lib/localeContext';
 
 /**
  * Données d'un marché public
@@ -85,6 +85,7 @@ export default function MarchesTable({
   const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
   const [currentPage, setCurrentPage] = useState(1);
   const t = useT();
+  const tCat = useTCategory();
   const { locale } = useLocale();
 
   const filteredData = useMemo(() => {
@@ -238,7 +239,7 @@ export default function MarchesTable({
                 <td className="px-2 md:px-4 py-3">
                   <div className="min-w-[100px] md:min-w-[200px]">
                     <p className="font-medium text-slate-100 text-xs md:text-sm line-clamp-2">
-                      {m.categorie_libelle || cleanObjet(m.objet)}
+                      {m.categorie_libelle ? tCat(m.categorie_libelle) : cleanObjet(m.objet)}
                     </p>
                     <p className="text-[10px] md:text-xs text-slate-400 mt-0.5 line-clamp-1" title={m.objet}>
                       {cleanObjet(m.objet)}
@@ -249,7 +250,7 @@ export default function MarchesTable({
                         style={{ backgroundColor: NATURE_COLORS[m.nature] || '#64748b' }}
                       />
                       <span className="text-[10px] text-slate-400">
-                        {t(NATURE_LABELS[m.nature]) || m.nature}
+                        {t(NATURE_LABELS[m.nature]) || tCat(m.nature)}
                         {m.date_notification && ` · ${new Date(m.date_notification).toLocaleDateString(locale === 'fr' ? 'fr-FR' : 'en-GB')}`}
                       </span>
                     </div>

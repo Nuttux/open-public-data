@@ -1,0 +1,296 @@
+{
+  "year": 2023,
+  "type_budget": "execute",
+  "city_slug": "saint-etienne",
+  "city_name": "Saint-Etienne",
+  "dataStatus": "COMPLET",
+  "totals": {
+    "recettes": 324296869.01,
+    "depenses": 318466270.77,
+    "solde": 5830598.24
+  },
+  "nodes": [
+    {
+      "name": "Fiscalité",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations État",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits des services",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits exceptionnels",
+      "category": "revenue"
+    },
+    {
+      "name": "Subventions investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Autres produits",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits financiers",
+      "category": "revenue"
+    },
+    {
+      "name": "Reprises",
+      "category": "revenue"
+    },
+    {
+      "name": "Budget Saint-Étienne",
+      "category": "central"
+    },
+    {
+      "name": "Personnel",
+      "category": "expense"
+    },
+    {
+      "name": "Investissements",
+      "category": "expense"
+    },
+    {
+      "name": "Fonctionnement courant",
+      "category": "expense"
+    },
+    {
+      "name": "Transferts & subventions",
+      "category": "expense"
+    },
+    {
+      "name": "Amortissements",
+      "category": "expense"
+    },
+    {
+      "name": "Charges exceptionnelles",
+      "category": "expense"
+    },
+    {
+      "name": "Charges financières",
+      "category": "expense"
+    },
+    {
+      "name": "Dette",
+      "category": "expense"
+    },
+    {
+      "name": "Charges fiscales",
+      "category": "expense"
+    }
+  ],
+  "links": [
+    {
+      "source": "Fiscalité",
+      "target": "Budget Saint-Étienne",
+      "value": 158495214.47
+    },
+    {
+      "source": "Dotations État",
+      "target": "Budget Saint-Étienne",
+      "value": 58561701.32
+    },
+    {
+      "source": "Produits des services",
+      "target": "Budget Saint-Étienne",
+      "value": 35290747.95
+    },
+    {
+      "source": "Dotations investissement",
+      "target": "Budget Saint-Étienne",
+      "value": 33013435.82
+    },
+    {
+      "source": "Produits exceptionnels",
+      "target": "Budget Saint-Étienne",
+      "value": 16376855.17
+    },
+    {
+      "source": "Subventions investissement",
+      "target": "Budget Saint-Étienne",
+      "value": 12368088.15
+    },
+    {
+      "source": "Autres produits",
+      "target": "Budget Saint-Étienne",
+      "value": 7574861.09
+    },
+    {
+      "source": "Produits financiers",
+      "target": "Budget Saint-Étienne",
+      "value": 1588310.94
+    },
+    {
+      "source": "Reprises",
+      "target": "Budget Saint-Étienne",
+      "value": 1027654.1
+    },
+    {
+      "source": "Budget Saint-Étienne",
+      "target": "Personnel",
+      "value": 126503319.58
+    },
+    {
+      "source": "Budget Saint-Étienne",
+      "target": "Investissements",
+      "value": 53994456.54
+    },
+    {
+      "source": "Budget Saint-Étienne",
+      "target": "Fonctionnement courant",
+      "value": 48394454.22
+    },
+    {
+      "source": "Budget Saint-Étienne",
+      "target": "Transferts & subventions",
+      "value": 37313793.95
+    },
+    {
+      "source": "Budget Saint-Étienne",
+      "target": "Amortissements",
+      "value": 16937335.5
+    },
+    {
+      "source": "Budget Saint-Étienne",
+      "target": "Charges exceptionnelles",
+      "value": 11491090.07
+    },
+    {
+      "source": "Budget Saint-Étienne",
+      "target": "Charges financières",
+      "value": 10628017.92
+    },
+    {
+      "source": "Budget Saint-Étienne",
+      "target": "Dette",
+      "value": 8253620.88
+    },
+    {
+      "source": "Budget Saint-Étienne",
+      "target": "Charges fiscales",
+      "value": 4950182.11
+    }
+  ],
+  "drilldown": {
+    "revenue": {
+      "Fiscalité": [
+        {
+          "name": "Fiscalité",
+          "value": 158495214.47
+        }
+      ],
+      "Dotations État": [
+        {
+          "name": "Dotations État",
+          "value": 58561701.32
+        }
+      ],
+      "Produits des services": [
+        {
+          "name": "Produits des services",
+          "value": 35290747.95
+        }
+      ],
+      "Dotations investissement": [
+        {
+          "name": "Dotations investissement",
+          "value": 33013435.82
+        }
+      ],
+      "Produits exceptionnels": [
+        {
+          "name": "Produits exceptionnels",
+          "value": 16376855.17
+        }
+      ],
+      "Subventions investissement": [
+        {
+          "name": "Subventions investissement",
+          "value": 12368088.15
+        }
+      ],
+      "Autres produits": [
+        {
+          "name": "Autres produits",
+          "value": 7574861.09
+        }
+      ],
+      "Produits financiers": [
+        {
+          "name": "Produits financiers",
+          "value": 1588310.94
+        }
+      ],
+      "Reprises": [
+        {
+          "name": "Reprises",
+          "value": 1027654.1
+        }
+      ]
+    },
+    "expenses": {
+      "Personnel": [
+        {
+          "name": "Personnel",
+          "value": 126503319.58
+        }
+      ],
+      "Investissements": [
+        {
+          "name": "Investissements",
+          "value": 53994456.54
+        }
+      ],
+      "Fonctionnement courant": [
+        {
+          "name": "Fonctionnement courant",
+          "value": 48394454.22
+        }
+      ],
+      "Transferts & subventions": [
+        {
+          "name": "Transferts & subventions",
+          "value": 37313793.95
+        }
+      ],
+      "Amortissements": [
+        {
+          "name": "Amortissements",
+          "value": 16937335.5
+        }
+      ],
+      "Charges exceptionnelles": [
+        {
+          "name": "Charges exceptionnelles",
+          "value": 11491090.07
+        }
+      ],
+      "Charges financières": [
+        {
+          "name": "Charges financières",
+          "value": 10628017.92
+        }
+      ],
+      "Dette": [
+        {
+          "name": "Dette",
+          "value": 8253620.88
+        }
+      ],
+      "Charges fiscales": [
+        {
+          "name": "Charges fiscales",
+          "value": 4950182.11
+        }
+      ]
+    }
+  }
+}

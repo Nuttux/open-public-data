@@ -1,0 +1,311 @@
+{
+  "year": 2022,
+  "type_budget": "execute",
+  "city_slug": "lille",
+  "city_name": "Lille",
+  "dataStatus": "COMPLET",
+  "totals": {
+    "recettes": 481283019.79,
+    "depenses": 461049789.14,
+    "solde": 20233230.65
+  },
+  "nodes": [
+    {
+      "name": "Fiscalité",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations État",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits des services",
+      "category": "revenue"
+    },
+    {
+      "name": "Autres produits",
+      "category": "revenue"
+    },
+    {
+      "name": "Reprises",
+      "category": "revenue"
+    },
+    {
+      "name": "Subventions investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Emprunts",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits exceptionnels",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits financiers",
+      "category": "revenue"
+    },
+    {
+      "name": "Budget Lille",
+      "category": "central"
+    },
+    {
+      "name": "Personnel",
+      "category": "expense"
+    },
+    {
+      "name": "Investissements",
+      "category": "expense"
+    },
+    {
+      "name": "Fonctionnement courant",
+      "category": "expense"
+    },
+    {
+      "name": "Transferts & subventions",
+      "category": "expense"
+    },
+    {
+      "name": "Amortissements",
+      "category": "expense"
+    },
+    {
+      "name": "Charges fiscales",
+      "category": "expense"
+    },
+    {
+      "name": "Dette",
+      "category": "expense"
+    },
+    {
+      "name": "Charges financières",
+      "category": "expense"
+    },
+    {
+      "name": "Charges exceptionnelles",
+      "category": "expense"
+    }
+  ],
+  "links": [
+    {
+      "source": "Fiscalité",
+      "target": "Budget Lille",
+      "value": 268232734.66
+    },
+    {
+      "source": "Dotations État",
+      "target": "Budget Lille",
+      "value": 90400753.08
+    },
+    {
+      "source": "Dotations investissement",
+      "target": "Budget Lille",
+      "value": 56125842.93
+    },
+    {
+      "source": "Produits des services",
+      "target": "Budget Lille",
+      "value": 34848795.66
+    },
+    {
+      "source": "Autres produits",
+      "target": "Budget Lille",
+      "value": 12702962.94
+    },
+    {
+      "source": "Reprises",
+      "target": "Budget Lille",
+      "value": 7184306.92
+    },
+    {
+      "source": "Subventions investissement",
+      "target": "Budget Lille",
+      "value": 7150171.46
+    },
+    {
+      "source": "Emprunts",
+      "target": "Budget Lille",
+      "value": 2666000.0
+    },
+    {
+      "source": "Produits exceptionnels",
+      "target": "Budget Lille",
+      "value": 1659208.08
+    },
+    {
+      "source": "Produits financiers",
+      "target": "Budget Lille",
+      "value": 312244.06
+    },
+    {
+      "source": "Budget Lille",
+      "target": "Personnel",
+      "value": 216102082.4
+    },
+    {
+      "source": "Budget Lille",
+      "target": "Investissements",
+      "value": 93067014.06
+    },
+    {
+      "source": "Budget Lille",
+      "target": "Fonctionnement courant",
+      "value": 69202084.96
+    },
+    {
+      "source": "Budget Lille",
+      "target": "Transferts & subventions",
+      "value": 44010398.6
+    },
+    {
+      "source": "Budget Lille",
+      "target": "Amortissements",
+      "value": 18833401.91
+    },
+    {
+      "source": "Budget Lille",
+      "target": "Charges fiscales",
+      "value": 6258759.58
+    },
+    {
+      "source": "Budget Lille",
+      "target": "Dette",
+      "value": 5940494.09
+    },
+    {
+      "source": "Budget Lille",
+      "target": "Charges financières",
+      "value": 5823182.78
+    },
+    {
+      "source": "Budget Lille",
+      "target": "Charges exceptionnelles",
+      "value": 1812370.76
+    }
+  ],
+  "drilldown": {
+    "revenue": {
+      "Fiscalité": [
+        {
+          "name": "Fiscalité",
+          "value": 268232734.66
+        }
+      ],
+      "Dotations État": [
+        {
+          "name": "Dotations État",
+          "value": 90400753.08
+        }
+      ],
+      "Dotations investissement": [
+        {
+          "name": "Dotations investissement",
+          "value": 56125842.93
+        }
+      ],
+      "Produits des services": [
+        {
+          "name": "Produits des services",
+          "value": 34848795.66
+        }
+      ],
+      "Autres produits": [
+        {
+          "name": "Autres produits",
+          "value": 12702962.94
+        }
+      ],
+      "Reprises": [
+        {
+          "name": "Reprises",
+          "value": 7184306.92
+        }
+      ],
+      "Subventions investissement": [
+        {
+          "name": "Subventions investissement",
+          "value": 7150171.46
+        }
+      ],
+      "Emprunts": [
+        {
+          "name": "Emprunts",
+          "value": 2666000.0
+        }
+      ],
+      "Produits exceptionnels": [
+        {
+          "name": "Produits exceptionnels",
+          "value": 1659208.08
+        }
+      ],
+      "Produits financiers": [
+        {
+          "name": "Produits financiers",
+          "value": 312244.06
+        }
+      ]
+    },
+    "expenses": {
+      "Personnel": [
+        {
+          "name": "Personnel",
+          "value": 216102082.4
+        }
+      ],
+      "Investissements": [
+        {
+          "name": "Investissements",
+          "value": 93067014.06
+        }
+      ],
+      "Fonctionnement courant": [
+        {
+          "name": "Fonctionnement courant",
+          "value": 69202084.96
+        }
+      ],
+      "Transferts & subventions": [
+        {
+          "name": "Transferts & subventions",
+          "value": 44010398.6
+        }
+      ],
+      "Amortissements": [
+        {
+          "name": "Amortissements",
+          "value": 18833401.91
+        }
+      ],
+      "Charges fiscales": [
+        {
+          "name": "Charges fiscales",
+          "value": 6258759.58
+        }
+      ],
+      "Dette": [
+        {
+          "name": "Dette",
+          "value": 5940494.09
+        }
+      ],
+      "Charges financières": [
+        {
+          "name": "Charges financières",
+          "value": 5823182.78
+        }
+      ],
+      "Charges exceptionnelles": [
+        {
+          "name": "Charges exceptionnelles",
+          "value": 1812370.76
+        }
+      ]
+    }
+  }
+}

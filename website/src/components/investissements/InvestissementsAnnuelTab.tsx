@@ -18,7 +18,7 @@ import { getThematiqueColor, PALETTE } from '@/lib/colors';
 import { THEMATIQUE_LABELS, type ThematiqueSubvention } from '@/lib/constants/directions';
 import type { CsvColumn } from '@/lib/export';
 import { BREAKDOWN_ICONS } from '@/lib/icons';
-import { useT } from '@/lib/localeContext';
+import { useT, useTCategory } from '@/lib/localeContext';
 
 const ARR_COLORS = [
   PALETTE.amber, PALETTE.orange, PALETTE.rose, PALETTE.red,
@@ -47,6 +47,7 @@ export default function InvestissementsAnnuelTab({
   projets, selectedYear, budgetInvest, isLoading, onNavigateExplorer,
 }: InvestissementsAnnuelTabProps) {
   const t = useT();
+  const tCat = useTCategory();
 
   const csvColumns: CsvColumn<Record<string, unknown>>[] = useMemo(() => [
     { key: 'annee', label: t('invest.csv.annee') },
@@ -92,7 +93,7 @@ export default function InvestissementsAnnuelTab({
             <p className="text-xs md:text-sm text-slate-200 line-clamp-2">{p.apTexte}</p>
             <p className="text-[10px] md:text-xs text-slate-400 mt-1">
               {THEMATIQUE_LABELS[p.thematique as ThematiqueSubvention]?.icon || '📋'}{' '}
-              {THEMATIQUE_LABELS[p.thematique as ThematiqueSubvention]?.label || p.thematique}
+              {tCat(THEMATIQUE_LABELS[p.thematique as ThematiqueSubvention]?.label || p.thematique)}
             </p>
           </div>
         </div>
@@ -100,7 +101,7 @@ export default function InvestissementsAnnuelTab({
     },
     {
       key: 'chapitre', label: t('invest.col.chapitre'), hideOnMobile: true, align: 'left' as const,
-      render: (p: AutorisationProgramme) => <p className="text-xs text-slate-400 line-clamp-2">{p.missionTexte}</p>,
+      render: (p: AutorisationProgramme) => <p className="text-xs text-slate-400 line-clamp-2">{tCat(p.missionTexte || '')}</p>,
     },
     {
       key: 'montant', label: t('invest.col.montant'), align: 'right' as const,
@@ -112,7 +113,7 @@ export default function InvestissementsAnnuelTab({
         ? <span className="text-sm text-slate-300">{arrLabel(p.arrondissement)}</span>
         : <span className="text-slate-500">-</span>,
     },
-  ], [t]);
+  ], [t, tCat]);
 
   const stats = useMemo(() => {
     const totalMontant = projets.reduce((s, p) => s + p.montant, 0);

@@ -1,0 +1,326 @@
+{
+  "year": 2020,
+  "type_budget": "execute",
+  "city_slug": "nimes",
+  "city_name": "Nimes",
+  "dataStatus": "COMPLET",
+  "totals": {
+    "recettes": 318467641.52,
+    "depenses": 293455525.26,
+    "solde": 25012116.26
+  },
+  "nodes": [
+    {
+      "name": "Fiscalité",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations État",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Subventions investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Provisions",
+      "category": "revenue"
+    },
+    {
+      "name": "Emprunts",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits exceptionnels",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits des services",
+      "category": "revenue"
+    },
+    {
+      "name": "Autres produits",
+      "category": "revenue"
+    },
+    {
+      "name": "Reprises",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits financiers",
+      "category": "revenue"
+    },
+    {
+      "name": "Budget Nîmes",
+      "category": "central"
+    },
+    {
+      "name": "Personnel",
+      "category": "expense"
+    },
+    {
+      "name": "Investissements",
+      "category": "expense"
+    },
+    {
+      "name": "Fonctionnement courant",
+      "category": "expense"
+    },
+    {
+      "name": "Transferts & subventions",
+      "category": "expense"
+    },
+    {
+      "name": "Amortissements",
+      "category": "expense"
+    },
+    {
+      "name": "Dette",
+      "category": "expense"
+    },
+    {
+      "name": "Charges financières",
+      "category": "expense"
+    },
+    {
+      "name": "Charges exceptionnelles",
+      "category": "expense"
+    },
+    {
+      "name": "Charges fiscales",
+      "category": "expense"
+    }
+  ],
+  "links": [
+    {
+      "source": "Fiscalité",
+      "target": "Budget Nîmes",
+      "value": 158454832.79
+    },
+    {
+      "source": "Dotations État",
+      "target": "Budget Nîmes",
+      "value": 62658960.36
+    },
+    {
+      "source": "Dotations investissement",
+      "target": "Budget Nîmes",
+      "value": 39060532.46
+    },
+    {
+      "source": "Subventions investissement",
+      "target": "Budget Nîmes",
+      "value": 16383967.49
+    },
+    {
+      "source": "Provisions",
+      "target": "Budget Nîmes",
+      "value": 9433725.44
+    },
+    {
+      "source": "Emprunts",
+      "target": "Budget Nîmes",
+      "value": 8904985.12
+    },
+    {
+      "source": "Produits exceptionnels",
+      "target": "Budget Nîmes",
+      "value": 6458673.16
+    },
+    {
+      "source": "Produits des services",
+      "target": "Budget Nîmes",
+      "value": 6353616.5
+    },
+    {
+      "source": "Autres produits",
+      "target": "Budget Nîmes",
+      "value": 5043108.95
+    },
+    {
+      "source": "Reprises",
+      "target": "Budget Nîmes",
+      "value": 4716862.72
+    },
+    {
+      "source": "Produits financiers",
+      "target": "Budget Nîmes",
+      "value": 998376.53
+    },
+    {
+      "source": "Budget Nîmes",
+      "target": "Personnel",
+      "value": 96191686.73
+    },
+    {
+      "source": "Budget Nîmes",
+      "target": "Investissements",
+      "value": 75285313.32
+    },
+    {
+      "source": "Budget Nîmes",
+      "target": "Fonctionnement courant",
+      "value": 59236523.98
+    },
+    {
+      "source": "Budget Nîmes",
+      "target": "Transferts & subventions",
+      "value": 30854104.74
+    },
+    {
+      "source": "Budget Nîmes",
+      "target": "Amortissements",
+      "value": 7639668.59
+    },
+    {
+      "source": "Budget Nîmes",
+      "target": "Dette",
+      "value": 7344754.55
+    },
+    {
+      "source": "Budget Nîmes",
+      "target": "Charges financières",
+      "value": 7077082.31
+    },
+    {
+      "source": "Budget Nîmes",
+      "target": "Charges exceptionnelles",
+      "value": 6262025.15
+    },
+    {
+      "source": "Budget Nîmes",
+      "target": "Charges fiscales",
+      "value": 3564365.89
+    }
+  ],
+  "drilldown": {
+    "revenue": {
+      "Fiscalité": [
+        {
+          "name": "Fiscalité",
+          "value": 158454832.79
+        }
+      ],
+      "Dotations État": [
+        {
+          "name": "Dotations État",
+          "value": 62658960.36
+        }
+      ],
+      "Dotations investissement": [
+        {
+          "name": "Dotations investissement",
+          "value": 39060532.46
+        }
+      ],
+      "Subventions investissement": [
+        {
+          "name": "Subventions investissement",
+          "value": 16383967.49
+        }
+      ],
+      "Provisions": [
+        {
+          "name": "Provisions",
+          "value": 9433725.44
+        }
+      ],
+      "Emprunts": [
+        {
+          "name": "Emprunts",
+          "value": 8904985.12
+        }
+      ],
+      "Produits exceptionnels": [
+        {
+          "name": "Produits exceptionnels",
+          "value": 6458673.16
+        }
+      ],
+      "Produits des services": [
+        {
+          "name": "Produits des services",
+          "value": 6353616.5
+        }
+      ],
+      "Autres produits": [
+        {
+          "name": "Autres produits",
+          "value": 5043108.95
+        }
+      ],
+      "Reprises": [
+        {
+          "name": "Reprises",
+          "value": 4716862.72
+        }
+      ],
+      "Produits financiers": [
+        {
+          "name": "Produits financiers",
+          "value": 998376.53
+        }
+      ]
+    },
+    "expenses": {
+      "Personnel": [
+        {
+          "name": "Personnel",
+          "value": 96191686.73
+        }
+      ],
+      "Investissements": [
+        {
+          "name": "Investissements",
+          "value": 75285313.32
+        }
+      ],
+      "Fonctionnement courant": [
+        {
+          "name": "Fonctionnement courant",
+          "value": 59236523.98
+        }
+      ],
+      "Transferts & subventions": [
+        {
+          "name": "Transferts & subventions",
+          "value": 30854104.74
+        }
+      ],
+      "Amortissements": [
+        {
+          "name": "Amortissements",
+          "value": 7639668.59
+        }
+      ],
+      "Dette": [
+        {
+          "name": "Dette",
+          "value": 7344754.55
+        }
+      ],
+      "Charges financières": [
+        {
+          "name": "Charges financières",
+          "value": 7077082.31
+        }
+      ],
+      "Charges exceptionnelles": [
+        {
+          "name": "Charges exceptionnelles",
+          "value": 6262025.15
+        }
+      ],
+      "Charges fiscales": [
+        {
+          "name": "Charges fiscales",
+          "value": 3564365.89
+        }
+      ]
+    }
+  }
+}
