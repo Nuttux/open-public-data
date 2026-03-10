@@ -1,0 +1,17 @@
+{
+  "year": 2024,
+  "city_slug": "toulouse",
+  "totals": {
+    "actif_total": 5698643700.94,
+    "passif_total": 4664322405.5,
+    "dette_financiere": 273559939.62,
+    "fonds_propres": 4390762465.88,
+    "tresorerie": 47989416.28,
+    "immobilisations": 5650654284.66
+  },
+  "kpis": {
+    "ratio_endettement": 5.86,
+    "pct_fonds_propres": 94.14,
+    "dette_par_hab": 542.69
+  }
+}

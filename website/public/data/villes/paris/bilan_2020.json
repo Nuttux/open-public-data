@@ -1,0 +1,17 @@
+{
+  "year": 2020,
+  "city_slug": "paris",
+  "totals": {
+    "actif_total": 49035828227.66,
+    "passif_total": 37768560235.64,
+    "dette_financiere": 7824085373.84,
+    "fonds_propres": 29944474861.8,
+    "tresorerie": -186073065.42,
+    "immobilisations": 49035828227.66
+  },
+  "kpis": {
+    "ratio_endettement": 20.72,
+    "pct_fonds_propres": 79.28,
+    "dette_par_hab": 3667.92
+  }
+}

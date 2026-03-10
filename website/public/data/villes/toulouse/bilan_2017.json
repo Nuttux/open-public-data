@@ -1,0 +1,17 @@
+{
+  "year": 2017,
+  "city_slug": "toulouse",
+  "totals": {
+    "actif_total": 4974217026.12,
+    "passif_total": 4108587228.83,
+    "dette_financiere": 119971207.88,
+    "fonds_propres": 3988616020.95,
+    "tresorerie": 68745072.19,
+    "immobilisations": 4905471953.93
+  },
+  "kpis": {
+    "ratio_endettement": 2.92,
+    "pct_fonds_propres": 97.08,
+    "dette_par_hab": 238.0
+  }
+}

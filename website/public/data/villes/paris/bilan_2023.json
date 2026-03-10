@@ -1,0 +1,17 @@
+{
+  "year": 2023,
+  "city_slug": "paris",
+  "totals": {
+    "actif_total": 56205064243.26,
+    "passif_total": 42814639909.52,
+    "dette_financiere": 9994153654.54,
+    "fonds_propres": 32820486254.98,
+    "tresorerie": -357944965.96,
+    "immobilisations": 56205064243.26
+  },
+  "kpis": {
+    "ratio_endettement": 23.34,
+    "pct_fonds_propres": 76.66,
+    "dette_par_hab": 4685.25
+  }
+}

@@ -1,0 +1,326 @@
+{
+  "year": 2022,
+  "type_budget": "execute",
+  "city_slug": "paris",
+  "city_name": "Paris",
+  "dataStatus": "COMPLET",
+  "totals": {
+    "recettes": 11539477810.8,
+    "depenses": 9820771987.97,
+    "solde": 1718705822.83
+  },
+  "nodes": [
+    {
+      "name": "Fiscalité",
+      "category": "revenue"
+    },
+    {
+      "name": "Emprunts",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits des services",
+      "category": "revenue"
+    },
+    {
+      "name": "Autres produits",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations État",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Subventions investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits exceptionnels",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits financiers",
+      "category": "revenue"
+    },
+    {
+      "name": "Reprises",
+      "category": "revenue"
+    },
+    {
+      "name": "Provisions",
+      "category": "revenue"
+    },
+    {
+      "name": "Budget Paris",
+      "category": "central"
+    },
+    {
+      "name": "Transferts & subventions",
+      "category": "expense"
+    },
+    {
+      "name": "Personnel",
+      "category": "expense"
+    },
+    {
+      "name": "Investissements",
+      "category": "expense"
+    },
+    {
+      "name": "Fonctionnement courant",
+      "category": "expense"
+    },
+    {
+      "name": "Amortissements",
+      "category": "expense"
+    },
+    {
+      "name": "Charges financières",
+      "category": "expense"
+    },
+    {
+      "name": "Charges exceptionnelles",
+      "category": "expense"
+    },
+    {
+      "name": "Dette",
+      "category": "expense"
+    },
+    {
+      "name": "Charges fiscales",
+      "category": "expense"
+    }
+  ],
+  "links": [
+    {
+      "source": "Fiscalité",
+      "target": "Budget Paris",
+      "value": 7350880069.81
+    },
+    {
+      "source": "Emprunts",
+      "target": "Budget Paris",
+      "value": 965901158.29
+    },
+    {
+      "source": "Produits des services",
+      "target": "Budget Paris",
+      "value": 776447669.61
+    },
+    {
+      "source": "Autres produits",
+      "target": "Budget Paris",
+      "value": 758523564.39
+    },
+    {
+      "source": "Dotations État",
+      "target": "Budget Paris",
+      "value": 587038888.07
+    },
+    {
+      "source": "Dotations investissement",
+      "target": "Budget Paris",
+      "value": 431922361.98
+    },
+    {
+      "source": "Subventions investissement",
+      "target": "Budget Paris",
+      "value": 325231246.77
+    },
+    {
+      "source": "Produits exceptionnels",
+      "target": "Budget Paris",
+      "value": 295416590.37
+    },
+    {
+      "source": "Produits financiers",
+      "target": "Budget Paris",
+      "value": 23445430.03
+    },
+    {
+      "source": "Reprises",
+      "target": "Budget Paris",
+      "value": 23392374.46
+    },
+    {
+      "source": "Provisions",
+      "target": "Budget Paris",
+      "value": 1278457.02
+    },
+    {
+      "source": "Budget Paris",
+      "target": "Transferts & subventions",
+      "value": 3278219845.88
+    },
+    {
+      "source": "Budget Paris",
+      "target": "Personnel",
+      "value": 2467892415.7
+    },
+    {
+      "source": "Budget Paris",
+      "target": "Investissements",
+      "value": 1911328611.34
+    },
+    {
+      "source": "Budget Paris",
+      "target": "Fonctionnement courant",
+      "value": 1181189534.46
+    },
+    {
+      "source": "Budget Paris",
+      "target": "Amortissements",
+      "value": 555541806.93
+    },
+    {
+      "source": "Budget Paris",
+      "target": "Charges financières",
+      "value": 142661750.1
+    },
+    {
+      "source": "Budget Paris",
+      "target": "Charges exceptionnelles",
+      "value": 110833761.64
+    },
+    {
+      "source": "Budget Paris",
+      "target": "Dette",
+      "value": 99962519.32
+    },
+    {
+      "source": "Budget Paris",
+      "target": "Charges fiscales",
+      "value": 73141742.6
+    }
+  ],
+  "drilldown": {
+    "revenue": {
+      "Fiscalité": [
+        {
+          "name": "Fiscalité",
+          "value": 7350880069.81
+        }
+      ],
+      "Emprunts": [
+        {
+          "name": "Emprunts",
+          "value": 965901158.29
+        }
+      ],
+      "Produits des services": [
+        {
+          "name": "Produits des services",
+          "value": 776447669.61
+        }
+      ],
+      "Autres produits": [
+        {
+          "name": "Autres produits",
+          "value": 758523564.39
+        }
+      ],
+      "Dotations État": [
+        {
+          "name": "Dotations État",
+          "value": 587038888.07
+        }
+      ],
+      "Dotations investissement": [
+        {
+          "name": "Dotations investissement",
+          "value": 431922361.98
+        }
+      ],
+      "Subventions investissement": [
+        {
+          "name": "Subventions investissement",
+          "value": 325231246.77
+        }
+      ],
+      "Produits exceptionnels": [
+        {
+          "name": "Produits exceptionnels",
+          "value": 295416590.37
+        }
+      ],
+      "Produits financiers": [
+        {
+          "name": "Produits financiers",
+          "value": 23445430.03
+        }
+      ],
+      "Reprises": [
+        {
+          "name": "Reprises",
+          "value": 23392374.46
+        }
+      ],
+      "Provisions": [
+        {
+          "name": "Provisions",
+          "value": 1278457.02
+        }
+      ]
+    },
+    "expenses": {
+      "Transferts & subventions": [
+        {
+          "name": "Transferts & subventions",
+          "value": 3278219845.88
+        }
+      ],
+      "Personnel": [
+        {
+          "name": "Personnel",
+          "value": 2467892415.7
+        }
+      ],
+      "Investissements": [
+        {
+          "name": "Investissements",
+          "value": 1911328611.34
+        }
+      ],
+      "Fonctionnement courant": [
+        {
+          "name": "Fonctionnement courant",
+          "value": 1181189534.46
+        }
+      ],
+      "Amortissements": [
+        {
+          "name": "Amortissements",
+          "value": 555541806.93
+        }
+      ],
+      "Charges financières": [
+        {
+          "name": "Charges financières",
+          "value": 142661750.1
+        }
+      ],
+      "Charges exceptionnelles": [
+        {
+          "name": "Charges exceptionnelles",
+          "value": 110833761.64
+        }
+      ],
+      "Dette": [
+        {
+          "name": "Dette",
+          "value": 99962519.32
+        }
+      ],
+      "Charges fiscales": [
+        {
+          "name": "Charges fiscales",
+          "value": 73141742.6
+        }
+      ]
+    }
+  }
+}

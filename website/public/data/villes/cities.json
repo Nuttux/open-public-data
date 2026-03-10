@@ -1,0 +1,120 @@
+{
+  "cities": [
+    {
+      "slug": "paris",
+      "name": "Paris",
+      "population": 2133111,
+      "available_years": [
+        2024,
+        2023,
+        2022,
+        2021,
+        2020,
+        2019,
+        2018,
+        2017
+      ],
+      "datasets": [
+        "budget",
+        "patrimoine",
+        "marches",
+        "subventions"
+      ]
+    },
+    {
+      "slug": "marseille",
+      "name": "Marseille",
+      "population": 873076,
+      "available_years": [
+        2024,
+        2023,
+        2022,
+        2021,
+        2020,
+        2019,
+        2018,
+        2017
+      ],
+      "datasets": [
+        "budget",
+        "patrimoine",
+        "marches",
+        "subventions"
+      ]
+    },
+    {
+      "slug": "lyon",
+      "name": "Lyon",
+      "population": 522250,
+      "available_years": [
+        2024,
+        2023,
+        2022,
+        2021,
+        2020,
+        2019,
+        2018,
+        2017
+      ],
+      "datasets": [
+        "budget",
+        "patrimoine",
+        "marches",
+        "subventions"
+      ]
+    },
+    {
+      "slug": "toulouse",
+      "name": "Toulouse",
+      "population": 504078,
+      "available_years": [
+        2024,
+        2023,
+        2022,
+        2021,
+        2020,
+        2019,
+        2018,
+        2017
+      ],
+      "datasets": [
+        "budget",
+        "patrimoine",
+        "marches",
+        "subventions"
+      ]
+    },
+    {
+      "slug": "nice",
+      "name": "Nice",
+      "population": 342669,
+      "available_years": [
+        2024,
+        2023,
+        2022,
+        2021,
+        2020,
+        2019,
+        2018,
+        2017
+      ],
+      "datasets": [
+        "budget",
+        "patrimoine",
+        "marches",
+        "subventions"
+      ]
+    }
+  ],
+  "latest_year": 2024,
+  "available_years": [
+    2024,
+    2023,
+    2022,
+    2021,
+    2020,
+    2019,
+    2018,
+    2017
+  ]
+}

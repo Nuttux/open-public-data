@@ -1,0 +1,864 @@
+{
+  "annee": 2023,
+  "city_slug": "paris",
+  "total_montant": 5479895707.68,
+  "total_marches": 3989,
+  "categories": [
+    {
+      "categorie": "Construction & Bâtiment",
+      "nb_marches": 1207,
+      "montant_total": 1439093685.76,
+      "montant_moyen": 1192289.71
+    },
+    {
+      "categorie": "Autres",
+      "nb_marches": 720,
+      "montant_total": 1233878835.6,
+      "montant_moyen": 1713720.61
+    },
+    {
+      "categorie": "Services professionnels",
+      "nb_marches": 1200,
+      "montant_total": 827084492.67,
+      "montant_moyen": 689237.08
+    },
+    {
+      "categorie": "Transport & Véhicules",
+      "nb_marches": 274,
+      "montant_total": 462210903.1,
+      "montant_moyen": 1686901.11
+    },
+    {
+      "categorie": "Informatique & Télécom",
+      "nb_marches": 194,
+      "montant_total": 423525375.06,
+      "montant_moyen": 2183120.49
+    },
+    {
+      "categorie": "Alimentation & Restauration",
+      "nb_marches": 168,
+      "montant_total": 321833317.64,
+      "montant_moyen": 1915674.51
+    },
+    {
+      "categorie": "Environnement & Propreté",
+      "nb_marches": 79,
+      "montant_total": 320541423.5,
+      "montant_moyen": 4057486.37
+    },
+    {
+      "categorie": "Santé & Social",
+      "nb_marches": 124,
+      "montant_total": 270527459.35,
+      "montant_moyen": 2181673.06
+    },
+    {
+      "categorie": "Énergie",
+      "nb_marches": 23,
+      "montant_total": 181200215.0,
+      "montant_moyen": 7878270.22
+    }
+  ],
+  "top_marches": [
+    {
+      "objet": "SA3 SANITAIRES AUTONETTOYANT SUR L’ESPACE PUBLIC PARISIEN",
+      "montant": 237646388.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "None",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "SA4 MGP CONCEPTION/REALISAT/EXPLOIT.TECHN/MAINTENANCE ARENA",
+      "montant": 143023353.07,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "None",
+      "procedure": "Procédure concurrentielle avec négociation"
+    },
+    {
+      "objet": "SA3.MULTIATTRI.ACBC.AVITAILLEMT GNC,BIO-GNC DE VEHICULS LOT1",
+      "montant": 100000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-10-26",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3.MULTIATTRI.ACBC.AVITAILLEMT GNC,BIO-GNC DE VEHICULS LOT1",
+      "montant": 100000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-10-26",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Mise à disposition de véhicules de collecte avec chauffeurs et ripeurs pour assurer des services complémentaires de collecte du mobilier urbain de collecte",
+      "montant": 90000000.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2023-12-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "ACBC SEJOURS CLASSE DECOUVERTE ET VACANCES ARC-EN-CIEL",
+      "montant": 78333333.2,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2023-07-20",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "SA4 CREATION BASSIN STOCKAGE EAUX AUSTERLITZ - LOT1 MIXTE",
+      "montant": 77694397.61,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "None",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "ACBC SEJOURS CLASSE DECOUVERTE ET VACANCES ARC-EN-CIEL",
+      "montant": 76666666.52,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2023-07-20",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Accord-cadre à bons de commande pour la fourniture d’équipements informatiques, de logiciels, et de prestations associées en 2 lots séparés - Fourniture et services multi éditeurs permettant l’acquisition de logiciels et prestations annexes",
+      "montant": 65300000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-09-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Occupation et exploitation des résidences sises 4-6 et 10, Route du Champ d’entraînement, dans le bois de Boulogne, 75016 Paris",
+      "montant": 60000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-03-31",
+      "procedure": "Pas de groupement"
+    },
+    {
+      "objet": "Lot 1 - Gaz gris et biométhane à part variable (tous sites) . Accord-cadre multi-attributaires à marché subséquent pour la fourniture et acheminement de gaz naturel aux points de comptage et d’estimation",
+      "montant": 52000000.0,
+      "categorie": "Énergie",
+      "titulaire": "",
+      "date": "2023-09-04",
+      "procedure": "Pas de groupement"
+    },
+    {
+      "objet": "Accord-cadre multi-attributaire à marchés subséquents pour la fourniture et l’acheminement d’électricité aux points de livraison du groupement de commandes de la collectivité parisienne et services associés - 100% vert avec une part de vert premium propos",
+      "montant": 51344450.0,
+      "categorie": "Énergie",
+      "titulaire": "",
+      "date": "2023-12-01",
+      "procedure": "Pas de groupement"
+    },
+    {
+      "objet": "Accord-cadre multi-attributaire à marchés subséquents pour la fourniture et l’acheminement d’électricité aux points de livraison du groupement de commandes de la collectivité parisienne et services associés - 100% vert avec une part de vert premium propos",
+      "montant": 51309953.0,
+      "categorie": "Énergie",
+      "titulaire": "",
+      "date": "2023-12-01",
+      "procedure": "Pas de groupement"
+    },
+    {
+      "objet": "SA1 LOT2-ACBC FOURNITURES LOGICIELS ET PRESTATIONS ANNEXES",
+      "montant": 50000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-09-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4 ACBC MULTIATTRIB TVX ACCESSIBILIT HANDICAPS DANS LES ERP",
+      "montant": 50000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-03-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4 ACBC MULTIATTRIB TVX ACCESSIBILIT HANDICAPS DANS LES ERP",
+      "montant": 50000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-03-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4 ACBC MULTIATTRIB TVX ACCESSIBILIT HANDICAPS DANS LES ERP",
+      "montant": 50000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-03-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4 ACBC MULTIATTRIB TVX ACCESSIBILIT HANDICAPS DANS LES ERP",
+      "montant": 50000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-03-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4 ACBC MULTIATTRIB TVX ACCESSIBILIT HANDICAPS DANS LES ERP",
+      "montant": 50000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-03-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre à bons de commande pour des prestations de transport aérien des agents de la Ville de Paris et de l’Etablissement public Paris Musées, ainsi que de leurs ayants droit dans le cadre des congés bonifiés",
+      "montant": 40400000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-08-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA1/ACBC TRANSPORT AÉRIEN AGENTS VDP ET EPPM CONGES BONIFIES",
+      "montant": 40000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-08-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA2/ACBC_GESTION DES IMPRIMÉS V. DE PARIS_PRINT MANAGEMENT",
+      "montant": 40000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-08-03",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Prestations de Print Management - Phase offre finale",
+      "montant": 40000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-08-03",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "SA3 TUNNELS LAC SUPERIEUR ET BUTTE MORTEMART BD PERIPHERIQUE",
+      "montant": 39153914.05,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "None",
+      "procedure": "Procédure concurrentielle avec négociation"
+    },
+    {
+      "objet": "ACBC SEJOURS CLASSE DECOUVERTE ET VACANCES ARC-EN-CIEL",
+      "montant": 29999999.92,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2023-07-20",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "SA3_TVX D’OUVRAGES D’ART RELATIFS_PROLONGEMENT DU TRAMWAY T3",
+      "montant": 26952472.42,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "None",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "ACBC SEJOURS CLASSE DECOUVERTE ET VACANCES ARC-EN-CIEL",
+      "montant": 26666666.56,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2023-07-20",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "SA4.ACBC.MULTIATT. COARC_SCULPT,ŒUVRES ART MONUMENT MAT TRAD",
+      "montant": 20000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-09-28",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "SA4.ACBC.MULTIATT. COARC_SCULPT,ŒUVRES ART MONUMENT MAT TRAD",
+      "montant": 20000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-09-28",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "SA4.ACBC.MULTIATT. COARC_SCULPT,ŒUVRES ART MONUMENT MAT TRAD",
+      "montant": 20000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-09-28",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "SA4.ACBC.MULTIATT. COARC_SCULPT,ŒUVRES ART MONUMENT MAT TRAD",
+      "montant": 20000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-09-28",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "SA4.ACBC.MULTIATT. COARC_SCULPT,ŒUVRES ART MONUMENT MAT TRAD",
+      "montant": 20000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-09-28",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "SA1 LOT2 AC A MS MULTIATTRIB RENOUV/DEPLOIEMT INFRA RESEAUX",
+      "montant": 20000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2023-03-02",
+      "procedure": null
+    },
+    {
+      "objet": "SA1 LOT2 AC A MS MULTIATTRIB RENOUV/DEPLOIEMT INFRA RESEAUX",
+      "montant": 20000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2023-03-02",
+      "procedure": null
+    },
+    {
+      "objet": "SA1 LOT2 AC A MS MULTIATTRIB RENOUV/DEPLOIEMT INFRA RESEAUX",
+      "montant": 20000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2023-03-02",
+      "procedure": null
+    },
+    {
+      "objet": "SA4.TRVX CSTRUCT PISCINE 133 BIS R BELLIARD 75018 LOT 1",
+      "montant": 18660000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-08-25",
+      "procedure": "Procédure concurrentielle avec négociation"
+    },
+    {
+      "objet": "Lot 1 : Travaux de construction d’une piscine municipale à faible impact environnemental 133-133 bis rue Belliard 75018 Paris",
+      "montant": 18660000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-08-25",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "SA3 TVX PROLONGEMENT TRAMWAY T3 PTE D’ASNIERES PTE DAUPHINE",
+      "montant": 18304032.88,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "None",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA1 ACBC SURVEILLANC/SURETE ZONES RENDUES PIETONNES VDP LOT2",
+      "montant": 18000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-06-09",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4.MARCHE PERFORMANC RÉNOVAT°BÂTIMENTAIRE DE 9 COLLÈGES V.P",
+      "montant": 17311769.4,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-22",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "SA4.MARCHE PERFORMANC RÉNOVAT°BÂTIMENTAIRE DE 9 COLLÈGES V.P",
+      "montant": 17311769.4,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-22",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "SA4.MARCHE PERFORMANC RÉNOVAT°BÂTIMENTAIRE DE 9 COLLÈGES V.P",
+      "montant": 17311769.4,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-22",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "SA4.MARCHE PERFORMANC RÉNOVAT°BÂTIMENTAIRE DE 9 COLLÈGES V.P",
+      "montant": 17311769.4,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-22",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "SA4.MARCHE PERFORMANC RÉNOVAT°BÂTIMENTAIRE DE 9 COLLÈGES V.P",
+      "montant": 17311769.4,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-22",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "SA4.MARCHE PERFORMANC RÉNOVAT°BÂTIMENTAIRE DE 9 COLLÈGES V.P",
+      "montant": 17311769.4,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-22",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "SA4.MARCHE PERFORMANC RÉNOVAT°BÂTIMENTAIRE DE 9 COLLÈGES V.P",
+      "montant": 17311769.4,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-22",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Le présent marché est un marché public global de performance énergétique associant la conception, la réalisation, l’exploitation et la maintenance des Bâtiments de 9 collèges de la Ville de Paris. ",
+      "montant": 17311769.4,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-11-22",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Accord-cadre multi-attributaire à marchés subséquents pour la fourniture et l’acheminement d’électricité aux points de livraison du groupement de commandes de la collectivité parisienne et services associés - 100% vert premium en circuit court (uniquement",
+      "montant": 16553812.0,
+      "categorie": "Énergie",
+      "titulaire": "",
+      "date": "2023-12-01",
+      "procedure": "Pas de groupement"
+    },
+    {
+      "objet": "SA1 ACBC SURVEILLANCE/SURETE MANIFS GRDE AMPLEUR VDP LOT1",
+      "montant": 16000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-06-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA1 ACBC SURVEILLANCE/SURETE MANIFS GRDE AMPLEUR VDP LOT1",
+      "montant": 16000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-06-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de voirie, réseaux divers, éclairage public et signalisation lumineuse tricolore pour le réaménagement de la Porte de la Chapelle, Paris 18e",
+      "montant": 15935704.17,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-01-10",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4 ACBC MULTIATTRIBUTAIRE MISSIONS SPS CATEG 3 SUR EP LOT1",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-08-14",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "SA4 ACBC MULTIATTRIBUTAIRE MISSIONS SPS CATEG 3 SUR EP LOT1",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-08-14",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "SA4 ACBC MULTIATTRIBUTAIRE MISSIONS SPS CATEG 3 SUR EP LOT1",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-08-14",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "SA4 ACBC MULTIATTRIBUTAIRE MISSIONS SPS CATEG 3 SUR EP LOT1",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-08-14",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "SA4 ACBC MULTIATTRIBUTAIRE MISSIONS SPS CATEG 3 SUR EP LOT1",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-08-14",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "SA3 FOURNITURE BORDURES ET SEPARATEURS EN GRANIT LOT1",
+      "montant": 15000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-07-24",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA1-ACMS-DEVELOPP.MAINT.NOUVELLES APPLICATIONS INFORMATIQUES",
+      "montant": 15000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2023-07-11",
+      "procedure": null
+    },
+    {
+      "objet": "SA1-ACMS-DEVELOPP.MAINT.NOUVELLES APPLICATIONS INFORMATIQUES",
+      "montant": 15000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2023-07-11",
+      "procedure": null
+    },
+    {
+      "objet": "SA1-ACMS-DEVELOPP.MAINT.NOUVELLES APPLICATIONS INFORMATIQUES",
+      "montant": 15000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2023-07-11",
+      "procedure": null
+    },
+    {
+      "objet": "SA4 ACBC DE PRESTATIONS DE GEOMETRES TOPOGRAPHES LOT1",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-06-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4 ACBC DE PRESTATIONS DE GEOMETRES TOPOGRAPHES LOT1",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-06-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4 ACBC DE PRESTATIONS DE GEOMETRES TOPOGRAPHES LOT1",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-06-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4 ACBC DE PRESTATIONS DE GEOMETRES TOPOGRAPHES LOT1",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-06-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "ACBC SEJOURS CLASSE DECOUVERTE ET VACANCES ARC-EN-CIEL",
+      "montant": 13333333.32,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2023-07-20",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "SA4.ACBC.BÂTIMENTS SPÉCIAUX,VERTIAIRES DE LA V.P LOT1",
+      "montant": 12600000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2023-12-05",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3.ACBC.AVITAILLEMT MOBILE GNC,BIO-GNC GARAGES PL DPE LOT 2",
+      "montant": 12000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-10-26",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA1 ACBC SURVEILLANCE/SURETE MANIFS EVENEMENTIELLES VDP LOT3",
+      "montant": 12000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-06-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA1 ACBC SURVEILLANCE/SURETE MANIFS EVENEMENTIELLES VDP LOT3",
+      "montant": 12000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-06-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3-LOT1 TVX CONSOLIDATION SOLS PARIS RIVE DROITE 78 93 95",
+      "montant": 12000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-04-27",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3 LOT2 DESAMIANTAGE CHAUSSEES 5À7+12016+BOULOGNE+PERIPHER",
+      "montant": 12000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-03-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord cadre à bons de commande de travaux de désamiantage sur les chaussées parisiennes - Travaux de désamiantage sur les chaussées parisiennes dans le 5e, 6e, 7e, 12e, 13e, 14e, 15e et 16e arrondissement et le bois de Boulogne et le Boulevard Périphériq",
+      "montant": 12000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-03-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à bons de commande de fourniture et maintenance d’imprimantes, de multifonctions, de photocopieurs, de presses numériques et de prestations associées en 5 lots séparés - Fourniture et maintenance d’imprimantes et de multifonctions A4, A4-A3",
+      "montant": 12000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2023-03-03",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA1.ENT MISE EN OEUVRE HEBERGEMENT MAINTENANCE EVOLUTIONS",
+      "montant": 12000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2023-03-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA1.ENT MISE EN OEUVRE HEBERGEMENT MAINTENANCE EVOLUTIONS",
+      "montant": 12000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2023-03-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord cadre à bons de commandes relatif à la mise en œuvre, l’hébergement, la maintenance et aux évolutions de la solution sous licence libre Open ENT à destination des établissements à caractère pédagogique de la collectivité parisienne ",
+      "montant": 12000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2023-03-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Gestion et exploitation de 5 Centres Paris Anim’ dans les 14ème, 17ème et 20ème arrondissements de Paris - Gestion et exploitation des centres Paris Anim’ Angel Parra et Marc Sangnier situés dans le 14ème arrondissement de Paris",
+      "montant": 11859347.2,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-06-27",
+      "procedure": "Pas de groupement"
+    },
+    {
+      "objet": "SA4.SA4.ACBC.EQUIPEMTS PUBLICS V.P 1,2,3,4,8,9..12ARR LOT 2",
+      "montant": 11600000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2023-12-06",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA1. FOURNITURE,MAINTEN,IMPRIMANTE MULTIFONCT°A4,A4,A3 LOT 1",
+      "montant": 11500000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2023-03-03",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3/ACBC_FOURN./MONTAGE/MAINT. SYSTÈMES PRÉVENTION ACCIDENTS",
+      "montant": 11000000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2023-09-29",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "CSP3.AC_BC_MS PRODUCTION,RÉALISAT°,INSTALLAT° ŒUV ART 3D EP",
+      "montant": 11000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-04-27",
+      "procedure": "Procédure concurrentielle avec négociation"
+    },
+    {
+      "objet": "CSP3.AC_BC_MS PRODUCTION,RÉALISAT°,INSTALLAT° ŒUV ART 3D EP",
+      "montant": 11000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-04-27",
+      "procedure": "Procédure concurrentielle avec négociation"
+    },
+    {
+      "objet": "Production déléguée de Nuit Blanche",
+      "montant": 10800000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-07",
+      "procedure": "Pas de groupement"
+    },
+    {
+      "objet": "SA2 GEST/EXPLOIT. ETAB ACCUEIL PETITE ENFANCE - LOT1: 18/19E",
+      "montant": 10583845.84,
+      "categorie": "Santé & Social",
+      "titulaire": "",
+      "date": "None",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "SA3 ENTRETIEN DES ESPACES VERTS PARIS 15È,16È,17ÈME LOT2",
+      "montant": 10400000.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2023-02-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord cadre à bons de commande d’appui pour l’entretien horticole des espaces végétalisés sur l’espace public  - Entretien des espaces végétalisées dans les 15ème, 16ème et 17ème arrondissements de Paris",
+      "montant": 10400000.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2023-02-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3.ACBC.TRVX RÉHABILITAT°BRANCHEMTS ASSAINIS CIRC EST LOT 1",
+      "montant": 10000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-12-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3.ACBC.TRVX RÉHABILIT BRANCHEMTS ASSAINIS CIRC OUEST LOT 2",
+      "montant": 10000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-12-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3.ACBC.TRVX REABILITAT°ASSAINISSEMTS SUD 5,7,13..15 LOT 3",
+      "montant": 10000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-12-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA2.PRODUCTION DÉLÉGUÉE DE « NUIT BLANCHE »",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-07",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "SA3 ACBC TVX GENIE CIVIL/RESEAU FLUVIAL GRAND GABARIT LOT1",
+      "montant": 10000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-07-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3 ACBC TVX GENIE CIVIL/RESEAU FLUVIAL GRAND GABARIT LOT1",
+      "montant": 10000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-07-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3 ACBC TVX GENIE CIVIL/RESEAU FLUVIAL GRAND GABARIT LOT1",
+      "montant": 10000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-07-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3 ACBC TVX GENIE CIVIL/RESEAU FLUVIAL PETIT GABARIT LOT2",
+      "montant": 10000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-07-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA2-ACBC-ARMEMENT GESTION DISPOSITIF CRISE CATASTROPHE-LOT1",
+      "montant": 10000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-06-21",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "SA2-ACBC-ARMEMENT GESTION DISPOSITIF CRISE CATASTROPHE-LOT1",
+      "montant": 10000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-06-21",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "SA2-ACBC-MISSIONS ASSISTANCE A LA POPULATION (CRISE) LOT2",
+      "montant": 10000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-06-21",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "SA2-ACBC-MISSIONS ASSISTANCE A LA POPULATION (CRISE) LOT2",
+      "montant": 10000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-06-21",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "SA3-LOT2-TVX CONSOL.SOLS SUD RIVE GAUCHE + 02 60 77 91 92 94",
+      "montant": 10000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-04-27",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à bons de commande en 3 lots pour la fourniture de matériaux de métallerie, d’échelles/échafaudages et de matériels de stockage/manutention, pour la Ville de Paris et pour l’Établissement Public Paris Musées (EPPM). - Fourniture de matériel",
+      "montant": 10000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-04-14",
+      "procedure": "Appel d'offres ouvert"
+    }
+  ]
+}

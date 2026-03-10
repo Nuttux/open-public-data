@@ -1,0 +1,268 @@
+{
+  "annee": 2022,
+  "city_slug": "toulouse",
+  "total_montant": 2096489,
+  "nb_subventions": 37,
+  "nb_beneficiaires": 37,
+  "beneficiaires": [
+    {
+      "beneficiaire": "Association Toulouse 37",
+      "objet": "Subvention 2022 - activité éducative",
+      "montant": 107847,
+      "nature": "Aide en nature",
+      "date": "2022-12-19"
+    },
+    {
+      "beneficiaire": "Association Toulouse 34",
+      "objet": "Subvention 2022 - activité éducative",
+      "montant": 106208,
+      "nature": "Aide en nature",
+      "date": "2022-01-28"
+    },
+    {
+      "beneficiaire": "Association Toulouse 17",
+      "objet": "Subvention 2022 - activité sociale",
+      "montant": 101322,
+      "nature": "Aide en numéraire",
+      "date": "2022-09-14"
+    },
+    {
+      "beneficiaire": "Association Toulouse 8",
+      "objet": "Subvention 2022 - activité sportive",
+      "montant": 99898,
+      "nature": "Aide en numéraire",
+      "date": "2022-06-22"
+    },
+    {
+      "beneficiaire": "Association Toulouse 27",
+      "objet": "Subvention 2022 - activité éducative",
+      "montant": 96230,
+      "nature": "Aide en nature",
+      "date": "2022-05-20"
+    },
+    {
+      "beneficiaire": "Association Toulouse 9",
+      "objet": "Subvention 2022 - activité sociale",
+      "montant": 92376,
+      "nature": "Aide en numéraire",
+      "date": "2022-08-15"
+    },
+    {
+      "beneficiaire": "Association Toulouse 11",
+      "objet": "Subvention 2022 - activité éducative",
+      "montant": 90166,
+      "nature": "Aide en numéraire",
+      "date": "2022-07-21"
+    },
+    {
+      "beneficiaire": "Association Toulouse 3",
+      "objet": "Subvention 2022 - activité sociale",
+      "montant": 89175,
+      "nature": "Aide en nature",
+      "date": "2022-06-26"
+    },
+    {
+      "beneficiaire": "Association Toulouse 19",
+      "objet": "Subvention 2022 - activité sociale",
+      "montant": 85722,
+      "nature": "Aide en numéraire",
+      "date": "2022-02-24"
+    },
+    {
+      "beneficiaire": "Association Toulouse 22",
+      "objet": "Subvention 2022 - activité éducative",
+      "montant": 84537,
+      "nature": "Aide en nature",
+      "date": "2022-10-26"
+    },
+    {
+      "beneficiaire": "Association Toulouse 24",
+      "objet": "Subvention 2022 - activité sociale",
+      "montant": 83453,
+      "nature": "Aide en nature",
+      "date": "2022-11-04"
+    },
+    {
+      "beneficiaire": "Association Toulouse 4",
+      "objet": "Subvention 2022 - activité sociale",
+      "montant": 83114,
+      "nature": "Aide en nature",
+      "date": "2022-02-13"
+    },
+    {
+      "beneficiaire": "Association Toulouse 30",
+      "objet": "Subvention 2022 - activité sociale",
+      "montant": 78102,
+      "nature": "Aide en numéraire",
+      "date": "2022-01-07"
+    },
+    {
+      "beneficiaire": "Association Toulouse 28",
+      "objet": "Subvention 2022 - activité sportive",
+      "montant": 77538,
+      "nature": "Aide en nature",
+      "date": "2022-05-03"
+    },
+    {
+      "beneficiaire": "Association Toulouse 31",
+      "objet": "Subvention 2022 - activité éducative",
+      "montant": 73127,
+      "nature": "Aide en numéraire",
+      "date": "2022-07-27"
+    },
+    {
+      "beneficiaire": "Association Toulouse 13",
+      "objet": "Subvention 2022 - activité culturelle",
+      "montant": 73020,
+      "nature": "Aide en numéraire",
+      "date": "2022-08-17"
+    },
+    {
+      "beneficiaire": "Association Toulouse 35",
+      "objet": "Subvention 2022 - activité éducative",
+      "montant": 66474,
+      "nature": "Aide en numéraire",
+      "date": "2022-05-19"
+    },
+    {
+      "beneficiaire": "Association Toulouse 25",
+      "objet": "Subvention 2022 - activité éducative",
+      "montant": 61137,
+      "nature": "Aide en numéraire",
+      "date": "2022-07-04"
+    },
+    {
+      "beneficiaire": "Association Toulouse 16",
+      "objet": "Subvention 2022 - activité culturelle",
+      "montant": 59953,
+      "nature": "Aide en nature",
+      "date": "2022-10-02"
+    },
+    {
+      "beneficiaire": "Association Toulouse 10",
+      "objet": "Subvention 2022 - activité éducative",
+      "montant": 55058,
+      "nature": "Aide en nature",
+      "date": "2022-02-25"
+    },
+    {
+      "beneficiaire": "Association Toulouse 21",
+      "objet": "Subvention 2022 - activité sociale",
+      "montant": 48741,
+      "nature": "Aide en nature",
+      "date": "2022-06-19"
+    },
+    {
+      "beneficiaire": "Association Toulouse 23",
+      "objet": "Subvention 2022 - activité sportive",
+      "montant": 40880,
+      "nature": "Aide en numéraire",
+      "date": "2022-04-06"
+    },
+    {
+      "beneficiaire": "Association Toulouse 1",
+      "objet": "Subvention 2022 - activité sociale",
+      "montant": 39630,
+      "nature": "Aide en numéraire",
+      "date": "2022-11-20"
+    },
+    {
+      "beneficiaire": "Association Toulouse 2",
+      "objet": "Subvention 2022 - activité éducative",
+      "montant": 39157,
+      "nature": "Aide en numéraire",
+      "date": "2022-04-28"
+    },
+    {
+      "beneficiaire": "Association Toulouse 15",
+      "objet": "Subvention 2022 - activité éducative",
+      "montant": 36583,
+      "nature": "Aide en numéraire",
+      "date": "2022-11-10"
+    },
+    {
+      "beneficiaire": "Association Toulouse 14",
+      "objet": "Subvention 2022 - activité sociale",
+      "montant": 35566,
+      "nature": "Aide en nature",
+      "date": "2022-02-26"
+    },
+    {
+      "beneficiaire": "Association Toulouse 20",
+      "objet": "Subvention 2022 - activité éducative",
+      "montant": 23902,
+      "nature": "Aide en numéraire",
+      "date": "2022-07-02"
+    },
+    {
+      "beneficiaire": "Association Toulouse 5",
+      "objet": "Subvention 2022 - activité sportive",
+      "montant": 23740,
+      "nature": "Aide en nature",
+      "date": "2022-02-01"
+    },
+    {
+      "beneficiaire": "Association Toulouse 26",
+      "objet": "Subvention 2022 - activité sociale",
+      "montant": 23082,
+      "nature": "Aide en nature",
+      "date": "2022-08-23"
+    },
+    {
+      "beneficiaire": "Association Toulouse 6",
+      "objet": "Subvention 2022 - activité culturelle",
+      "montant": 22159,
+      "nature": "Aide en nature",
+      "date": "2022-05-21"
+    },
+    {
+      "beneficiaire": "Association Toulouse 29",
+      "objet": "Subvention 2022 - activité culturelle",
+      "montant": 19239,
+      "nature": "Aide en numéraire",
+      "date": "2022-02-27"
+    },
+    {
+      "beneficiaire": "Association Toulouse 7",
+      "objet": "Subvention 2022 - activité culturelle",
+      "montant": 17716,
+      "nature": "Aide en nature",
+      "date": "2022-07-24"
+    },
+    {
+      "beneficiaire": "Association Toulouse 18",
+      "objet": "Subvention 2022 - activité éducative",
+      "montant": 14975,
+      "nature": "Aide en nature",
+      "date": "2022-06-09"
+    },
+    {
+      "beneficiaire": "Association Toulouse 12",
+      "objet": "Subvention 2022 - activité éducative",
+      "montant": 14814,
+      "nature": "Aide en nature",
+      "date": "2022-08-22"
+    },
+    {
+      "beneficiaire": "Association Toulouse 32",
+      "objet": "Subvention 2022 - activité culturelle",
+      "montant": 14095,
+      "nature": "Aide en nature",
+      "date": "2022-03-16"
+    },
+    {
+      "beneficiaire": "Association Toulouse 36",
+      "objet": "Subvention 2022 - activité éducative",
+      "montant": 10404,
+      "nature": "Aide en numéraire",
+      "date": "2022-02-21"
+    },
+    {
+      "beneficiaire": "Association Toulouse 33",
+      "objet": "Subvention 2022 - activité éducative",
+      "montant": 7349,
+      "nature": "Aide en numéraire",
+      "date": "2022-03-24"
+    }
+  ]
+}

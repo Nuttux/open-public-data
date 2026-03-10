@@ -1,0 +1,29 @@
+nature_prefix,category_fr,category_en,section,sens_flux,sankey_group
+60,Achats & approvisionnements,Purchases & supplies,F,Depense,Fonctionnement courant
+61,Services extérieurs,External services,F,Depense,Fonctionnement courant
+62,Autres services extérieurs,Other external services,F,Depense,Fonctionnement courant
+63,Impôts & taxes,Taxes paid,F,Depense,Charges fiscales
+64,Personnel,Staff costs,F,Depense,Personnel
+65,Autres charges de gestion,Other operating expenses,F,Depense,Transferts & subventions
+66,Charges financières,Financial charges,F,Depense,Charges financières
+67,Charges exceptionnelles,Extraordinary expenses,F,Depense,Charges exceptionnelles
+68,Dotations amortissements,Depreciation,F,Depense,Amortissements
+70,Produits des services,Service revenue,F,Recette,Produits des services
+73,Impôts et taxes,Tax revenue,F,Recette,Fiscalité
+74,Dotations et subventions,Grants & subsidies,F,Recette,Dotations État
+75,Autres produits de gestion,Other operating revenue,F,Recette,Autres produits
+76,Produits financiers,Financial revenue,F,Recette,Produits financiers
+77,Produits exceptionnels,Extraordinary revenue,F,Recette,Produits exceptionnels
+78,Reprises amortissements,Depreciation reversals,F,Recette,Reprises
+16,Emprunts et dettes,Borrowing & debt,I,Both,Emprunts & Dette
+20,Immobilisations incorporelles,Intangible assets,I,Depense,Investissements
+21,Immobilisations corporelles,Tangible assets,I,Depense,Investissements
+22,Immobilisations reçues,Assets received,I,Depense,Investissements
+23,Immobilisations en cours,Assets under construction,I,Depense,Investissements
+24,Participations,Equity investments,I,Depense,Investissements
+26,Participations financières,Financial investments,I,Depense,Investissements
+27,Autres immobilisations financières,Other financial assets,I,Depense,Investissements
+28,Amortissements immobilisations,Asset depreciation,I,Depense,Investissements
+10,Dotations fonds et réserves,Endowments & reserves,I,Recette,Dotations investissement
+13,Subventions investissement,Investment grants,I,Recette,Subventions investissement
+15,Provisions pour risques,Risk provisions,I,Recette,Provisions

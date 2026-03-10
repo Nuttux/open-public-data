@@ -1,0 +1,326 @@
+{
+  "year": 2017,
+  "type_budget": "execute",
+  "city_slug": "marseille",
+  "city_name": "Marseille",
+  "dataStatus": "COMPLET",
+  "totals": {
+    "recettes": 1415700701.82,
+    "depenses": 1400148532.24,
+    "solde": 15552169.58
+  },
+  "nodes": [
+    {
+      "name": "Fiscalité",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations État",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits des services",
+      "category": "revenue"
+    },
+    {
+      "name": "Autres produits",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits exceptionnels",
+      "category": "revenue"
+    },
+    {
+      "name": "Subventions investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Emprunts",
+      "category": "revenue"
+    },
+    {
+      "name": "Reprises",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits financiers",
+      "category": "revenue"
+    },
+    {
+      "name": "Provisions",
+      "category": "revenue"
+    },
+    {
+      "name": "Budget Marseille",
+      "category": "central"
+    },
+    {
+      "name": "Personnel",
+      "category": "expense"
+    },
+    {
+      "name": "Fonctionnement courant",
+      "category": "expense"
+    },
+    {
+      "name": "Investissements",
+      "category": "expense"
+    },
+    {
+      "name": "Transferts & subventions",
+      "category": "expense"
+    },
+    {
+      "name": "Dette",
+      "category": "expense"
+    },
+    {
+      "name": "Charges financières",
+      "category": "expense"
+    },
+    {
+      "name": "Charges exceptionnelles",
+      "category": "expense"
+    },
+    {
+      "name": "Amortissements",
+      "category": "expense"
+    },
+    {
+      "name": "Charges fiscales",
+      "category": "expense"
+    }
+  ],
+  "links": [
+    {
+      "source": "Fiscalité",
+      "target": "Budget Marseille",
+      "value": 750985831.37
+    },
+    {
+      "source": "Dotations État",
+      "target": "Budget Marseille",
+      "value": 339190564.27
+    },
+    {
+      "source": "Dotations investissement",
+      "target": "Budget Marseille",
+      "value": 117363051.58
+    },
+    {
+      "source": "Produits des services",
+      "target": "Budget Marseille",
+      "value": 55493817.78
+    },
+    {
+      "source": "Autres produits",
+      "target": "Budget Marseille",
+      "value": 44194970.98
+    },
+    {
+      "source": "Produits exceptionnels",
+      "target": "Budget Marseille",
+      "value": 42430332.06
+    },
+    {
+      "source": "Subventions investissement",
+      "target": "Budget Marseille",
+      "value": 38692731.55
+    },
+    {
+      "source": "Emprunts",
+      "target": "Budget Marseille",
+      "value": 20468371.64
+    },
+    {
+      "source": "Reprises",
+      "target": "Budget Marseille",
+      "value": 5211558.74
+    },
+    {
+      "source": "Produits financiers",
+      "target": "Budget Marseille",
+      "value": 1264269.09
+    },
+    {
+      "source": "Provisions",
+      "target": "Budget Marseille",
+      "value": 405202.76
+    },
+    {
+      "source": "Budget Marseille",
+      "target": "Personnel",
+      "value": 523558428.55
+    },
+    {
+      "source": "Budget Marseille",
+      "target": "Fonctionnement courant",
+      "value": 298247843.34
+    },
+    {
+      "source": "Budget Marseille",
+      "target": "Investissements",
+      "value": 208034191.7
+    },
+    {
+      "source": "Budget Marseille",
+      "target": "Transferts & subventions",
+      "value": 119331317.35
+    },
+    {
+      "source": "Budget Marseille",
+      "target": "Dette",
+      "value": 62273344.24
+    },
+    {
+      "source": "Budget Marseille",
+      "target": "Charges financières",
+      "value": 58835893.91
+    },
+    {
+      "source": "Budget Marseille",
+      "target": "Charges exceptionnelles",
+      "value": 58700923.06
+    },
+    {
+      "source": "Budget Marseille",
+      "target": "Amortissements",
+      "value": 58219035.67
+    },
+    {
+      "source": "Budget Marseille",
+      "target": "Charges fiscales",
+      "value": 12947554.42
+    }
+  ],
+  "drilldown": {
+    "revenue": {
+      "Fiscalité": [
+        {
+          "name": "Fiscalité",
+          "value": 750985831.37
+        }
+      ],
+      "Dotations État": [
+        {
+          "name": "Dotations État",
+          "value": 339190564.27
+        }
+      ],
+      "Dotations investissement": [
+        {
+          "name": "Dotations investissement",
+          "value": 117363051.58
+        }
+      ],
+      "Produits des services": [
+        {
+          "name": "Produits des services",
+          "value": 55493817.78
+        }
+      ],
+      "Autres produits": [
+        {
+          "name": "Autres produits",
+          "value": 44194970.98
+        }
+      ],
+      "Produits exceptionnels": [
+        {
+          "name": "Produits exceptionnels",
+          "value": 42430332.06
+        }
+      ],
+      "Subventions investissement": [
+        {
+          "name": "Subventions investissement",
+          "value": 38692731.55
+        }
+      ],
+      "Emprunts": [
+        {
+          "name": "Emprunts",
+          "value": 20468371.64
+        }
+      ],
+      "Reprises": [
+        {
+          "name": "Reprises",
+          "value": 5211558.74
+        }
+      ],
+      "Produits financiers": [
+        {
+          "name": "Produits financiers",
+          "value": 1264269.09
+        }
+      ],
+      "Provisions": [
+        {
+          "name": "Provisions",
+          "value": 405202.76
+        }
+      ]
+    },
+    "expenses": {
+      "Personnel": [
+        {
+          "name": "Personnel",
+          "value": 523558428.55
+        }
+      ],
+      "Fonctionnement courant": [
+        {
+          "name": "Fonctionnement courant",
+          "value": 298247843.34
+        }
+      ],
+      "Investissements": [
+        {
+          "name": "Investissements",
+          "value": 208034191.7
+        }
+      ],
+      "Transferts & subventions": [
+        {
+          "name": "Transferts & subventions",
+          "value": 119331317.35
+        }
+      ],
+      "Dette": [
+        {
+          "name": "Dette",
+          "value": 62273344.24
+        }
+      ],
+      "Charges financières": [
+        {
+          "name": "Charges financières",
+          "value": 58835893.91
+        }
+      ],
+      "Charges exceptionnelles": [
+        {
+          "name": "Charges exceptionnelles",
+          "value": 58700923.06
+        }
+      ],
+      "Amortissements": [
+        {
+          "name": "Amortissements",
+          "value": 58219035.67
+        }
+      ],
+      "Charges fiscales": [
+        {
+          "name": "Charges fiscales",
+          "value": 12947554.42
+        }
+      ]
+    }
+  }
+}

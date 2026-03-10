@@ -1,0 +1,17 @@
+{
+  "year": 2021,
+  "city_slug": "nice",
+  "totals": {
+    "actif_total": 5124094910.92,
+    "passif_total": 3745000267.15,
+    "dette_financiere": 519212446.13,
+    "fonds_propres": 3225787821.02,
+    "tresorerie": 42225413.69,
+    "immobilisations": 5081869497.23
+  },
+  "kpis": {
+    "ratio_endettement": 13.86,
+    "pct_fonds_propres": 86.14,
+    "dette_par_hab": 1515.2
+  }
+}

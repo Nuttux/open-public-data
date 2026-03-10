@@ -1120,6 +1120,9 @@ const en: Record<string, string> = {
   'villes.retour_villes': 'All cities',
   'villes.source_nationale': 'Source: DGFiP / OFGL / DECP (national data)',
   'villes.no_data': 'Data not available for this year',
+  'villes.donnees': 'Data',
+  'villes.recettes': 'Revenue',
+  'villes.depenses': 'Expenses',
 };
 
 export default en;

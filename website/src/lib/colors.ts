@@ -140,12 +140,25 @@ export const FLUX_COLORS = {
 // =============================================================================
 
 export const REVENUE_COLORS: Record<string, string> = {
+  // Paris functional categories
   'Impôts & Taxes': PALETTE.emerald,
   'Services Publics': PALETTE.sky,
   'Dotations & Subventions': PALETTE.cyan,
   'Emprunts': PALETTE.amber,
   'Investissement': PALETTE.violet,
   'Autres': PALETTE.slate,
+  // M57 accounting categories (villes)
+  'Fiscalité': PALETTE.emerald,
+  'Produits des services': PALETTE.sky,
+  'Dotations État': PALETTE.cyan,
+  'Emprunts & Dette': PALETTE.amber,
+  'Autres produits': PALETTE.slate,
+  'Dotations investissement': PALETTE.violet,
+  'Subventions investissement': PALETTE.violet,
+  'Produits exceptionnels': PALETTE.slateLight,
+  'Produits financiers': PALETTE.teal,
+  'Provisions': PALETTE.slate,
+  'Reprises': PALETTE.slateLight,
 };
 
 // =============================================================================
@@ -154,6 +167,7 @@ export const REVENUE_COLORS: Record<string, string> = {
 // Utilise les mêmes couleurs que THEMATIQUE_COLORS pour cohérence
 
 export const EXPENSE_COLORS: Record<string, string> = {
+  // Paris functional categories
   'Action Sociale': THEMATIQUE_COLORS['Action Sociale'],
   'Personnel & Admin': THEMATIQUE_COLORS['Administration'],
   'Éducation': THEMATIQUE_COLORS['Éducation'],
@@ -165,6 +179,15 @@ export const EXPENSE_COLORS: Record<string, string> = {
   'Économie': THEMATIQUE_COLORS['Économie'],
   'Dette': THEMATIQUE_COLORS['Dette'],
   'Autres': PALETTE.slate,
+  // M57 accounting categories (villes)
+  'Personnel': PALETTE.blue,
+  'Fonctionnement courant': PALETTE.cyan,
+  'Transferts & subventions': PALETTE.pink,
+  'Investissements': PALETTE.green,
+  'Charges financières': PALETTE.amber,
+  'Charges fiscales': PALETTE.orange,
+  'Charges exceptionnelles': PALETTE.red,
+  'Amortissements': PALETTE.slate,
 };
 
 // =============================================================================

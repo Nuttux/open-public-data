@@ -200,6 +200,34 @@ seeds:
         source_page: INT64
         source_pdf: STRING
 
+    # =========================================================================
+    # NATIONAL : Référentiels multi-ville
+    # =========================================================================
+
+    # -------------------------------------------------------------------------
+    # Communes cibles (5 plus grandes villes de France)
+    # -------------------------------------------------------------------------
+    seed_communes_cibles:
+      +column_types:
+        code_insee: STRING
+        siren: STRING
+        nom: STRING
+        slug: STRING
+        population: INT64
+        departement: STRING
+
+    # -------------------------------------------------------------------------
+    # Nomenclature M57 (comptes nature → catégories Sankey)
+    # -------------------------------------------------------------------------
+    seed_nomenclature_m57:
+      +column_types:
+        nature_prefix: STRING
+        category_fr: STRING
+        category_en: STRING
+        section: STRING
+        sens_flux: STRING
+        sankey_group: STRING
+
 # =============================================================================
 # Configuration des modèles par couche
 # =============================================================================
@@ -212,7 +240,7 @@ models:
       +materialized: view
       +schema: staging
       +tags: ['staging']
-    
+
     # -------------------------------------------------------------------------
     # Intermediate : Tables intermédiaires avec logique métier
     # -------------------------------------------------------------------------
@@ -220,7 +248,7 @@ models:
       +materialized: table
       +schema: intermediate
       +tags: ['intermediate']
-    
+
     # -------------------------------------------------------------------------
     # Core / Analytics : Tables finales dénormalisées (OBT)
     # -------------------------------------------------------------------------
@@ -228,7 +256,7 @@ models:
       +materialized: table
       +schema: analytics
       +tags: ['analytics', 'core']
-    
+
     # -------------------------------------------------------------------------
     # Marts : Tables agrégées et optimisées pour l'export frontend
     # -------------------------------------------------------------------------
@@ -236,6 +264,23 @@ models:
       +materialized: table
       +schema: marts
       +tags: ['marts']
+
+    # =========================================================================
+    # NATIONAL : Pipeline multi-ville (données DGFiP, OFGL, DECP)
+    # =========================================================================
+    national:
+      staging:
+        +materialized: view
+        +schema: national_staging
+        +tags: ['national', 'staging']
+      core:
+        +materialized: table
+        +schema: national_core
+        +tags: ['national', 'core']
+      marts:
+        +materialized: table
+        +schema: national_marts
+        +tags: ['national', 'marts']
 
 # =============================================================================
 # Variables globales du projet

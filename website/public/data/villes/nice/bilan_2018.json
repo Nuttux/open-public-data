@@ -1,0 +1,17 @@
+{
+  "year": 2018,
+  "city_slug": "nice",
+  "totals": {
+    "actif_total": 4995429940.3,
+    "passif_total": 3604818904.59,
+    "dette_financiere": 479568317.74,
+    "fonds_propres": 3125250586.85,
+    "tresorerie": 56898767.37,
+    "immobilisations": 4938531172.93
+  },
+  "kpis": {
+    "ratio_endettement": 13.3,
+    "pct_fonds_propres": 86.7,
+    "dette_par_hab": 1399.51
+  }
+}

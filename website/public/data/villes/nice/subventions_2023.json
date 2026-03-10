@@ -1,0 +1,401 @@
+{
+  "annee": 2023,
+  "city_slug": "nice",
+  "total_montant": 2492684,
+  "nb_subventions": 56,
+  "nb_beneficiaires": 56,
+  "beneficiaires": [
+    {
+      "beneficiaire": "Association Nice 3",
+      "objet": "Subvention 2023 - activité sportive",
+      "montant": 87104,
+      "nature": "Aide en numéraire",
+      "date": "2023-07-22"
+    },
+    {
+      "beneficiaire": "Association Nice 55",
+      "objet": "Subvention 2023 - activité éducative",
+      "montant": 86540,
+      "nature": "Aide en nature",
+      "date": "2023-02-14"
+    },
+    {
+      "beneficiaire": "Association Nice 23",
+      "objet": "Subvention 2023 - activité sportive",
+      "montant": 85407,
+      "nature": "Aide en nature",
+      "date": "2023-03-12"
+    },
+    {
+      "beneficiaire": "Association Nice 32",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 85266,
+      "nature": "Aide en numéraire",
+      "date": "2023-10-02"
+    },
+    {
+      "beneficiaire": "Association Nice 12",
+      "objet": "Subvention 2023 - activité éducative",
+      "montant": 84866,
+      "nature": "Aide en numéraire",
+      "date": "2023-09-07"
+    },
+    {
+      "beneficiaire": "Association Nice 43",
+      "objet": "Subvention 2023 - activité sociale",
+      "montant": 84455,
+      "nature": "Aide en nature",
+      "date": "2023-01-12"
+    },
+    {
+      "beneficiaire": "Association Nice 35",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 82349,
+      "nature": "Aide en numéraire",
+      "date": "2023-12-14"
+    },
+    {
+      "beneficiaire": "Association Nice 54",
+      "objet": "Subvention 2023 - activité sportive",
+      "montant": 81500,
+      "nature": "Aide en numéraire",
+      "date": "2023-11-07"
+    },
+    {
+      "beneficiaire": "Association Nice 31",
+      "objet": "Subvention 2023 - activité sportive",
+      "montant": 76713,
+      "nature": "Aide en numéraire",
+      "date": "2023-02-24"
+    },
+    {
+      "beneficiaire": "Association Nice 38",
+      "objet": "Subvention 2023 - activité sportive",
+      "montant": 76212,
+      "nature": "Aide en nature",
+      "date": "2023-01-14"
+    },
+    {
+      "beneficiaire": "Association Nice 40",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 75552,
+      "nature": "Aide en numéraire",
+      "date": "2023-05-10"
+    },
+    {
+      "beneficiaire": "Association Nice 33",
+      "objet": "Subvention 2023 - activité sociale",
+      "montant": 67969,
+      "nature": "Aide en nature",
+      "date": "2023-01-14"
+    },
+    {
+      "beneficiaire": "Association Nice 14",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 65482,
+      "nature": "Aide en numéraire",
+      "date": "2023-07-27"
+    },
+    {
+      "beneficiaire": "Association Nice 6",
+      "objet": "Subvention 2023 - activité éducative",
+      "montant": 63821,
+      "nature": "Aide en nature",
+      "date": "2023-10-18"
+    },
+    {
+      "beneficiaire": "Association Nice 7",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 63206,
+      "nature": "Aide en numéraire",
+      "date": "2023-04-02"
+    },
+    {
+      "beneficiaire": "Association Nice 27",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 62372,
+      "nature": "Aide en nature",
+      "date": "2023-12-15"
+    },
+    {
+      "beneficiaire": "Association Nice 37",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 62054,
+      "nature": "Aide en numéraire",
+      "date": "2023-03-03"
+    },
+    {
+      "beneficiaire": "Association Nice 5",
+      "objet": "Subvention 2023 - activité sportive",
+      "montant": 60735,
+      "nature": "Aide en nature",
+      "date": "2023-03-19"
+    },
+    {
+      "beneficiaire": "Association Nice 25",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 60598,
+      "nature": "Aide en numéraire",
+      "date": "2023-07-19"
+    },
+    {
+      "beneficiaire": "Association Nice 1",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 60176,
+      "nature": "Aide en numéraire",
+      "date": "2023-09-09"
+    },
+    {
+      "beneficiaire": "Association Nice 13",
+      "objet": "Subvention 2023 - activité sociale",
+      "montant": 58195,
+      "nature": "Aide en nature",
+      "date": "2023-11-23"
+    },
+    {
+      "beneficiaire": "Association Nice 44",
+      "objet": "Subvention 2023 - activité sociale",
+      "montant": 56989,
+      "nature": "Aide en nature",
+      "date": "2023-05-12"
+    },
+    {
+      "beneficiaire": "Association Nice 9",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 54951,
+      "nature": "Aide en nature",
+      "date": "2023-03-24"
+    },
+    {
+      "beneficiaire": "Association Nice 22",
+      "objet": "Subvention 2023 - activité sportive",
+      "montant": 51495,
+      "nature": "Aide en numéraire",
+      "date": "2023-01-06"
+    },
+    {
+      "beneficiaire": "Association Nice 56",
+      "objet": "Subvention 2023 - activité éducative",
+      "montant": 51374,
+      "nature": "Aide en numéraire",
+      "date": "2023-06-25"
+    },
+    {
+      "beneficiaire": "Association Nice 34",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 45323,
+      "nature": "Aide en numéraire",
+      "date": "2023-07-01"
+    },
+    {
+      "beneficiaire": "Association Nice 24",
+      "objet": "Subvention 2023 - activité éducative",
+      "montant": 45083,
+      "nature": "Aide en numéraire",
+      "date": "2023-05-01"
+    },
+    {
+      "beneficiaire": "Association Nice 28",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 41829,
+      "nature": "Aide en nature",
+      "date": "2023-08-17"
+    },
+    {
+      "beneficiaire": "Association Nice 49",
+      "objet": "Subvention 2023 - activité sportive",
+      "montant": 40917,
+      "nature": "Aide en numéraire",
+      "date": "2023-09-26"
+    },
+    {
+      "beneficiaire": "Association Nice 47",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 39404,
+      "nature": "Aide en nature",
+      "date": "2023-01-05"
+    },
+    {
+      "beneficiaire": "Association Nice 11",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 38489,
+      "nature": "Aide en numéraire",
+      "date": "2023-05-22"
+    },
+    {
+      "beneficiaire": "Association Nice 39",
+      "objet": "Subvention 2023 - activité éducative",
+      "montant": 36689,
+      "nature": "Aide en nature",
+      "date": "2023-02-11"
+    },
+    {
+      "beneficiaire": "Association Nice 19",
+      "objet": "Subvention 2023 - activité sociale",
+      "montant": 36523,
+      "nature": "Aide en numéraire",
+      "date": "2023-07-04"
+    },
+    {
+      "beneficiaire": "Association Nice 52",
+      "objet": "Subvention 2023 - activité sociale",
+      "montant": 34984,
+      "nature": "Aide en numéraire",
+      "date": "2023-02-07"
+    },
+    {
+      "beneficiaire": "Association Nice 15",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 31303,
+      "nature": "Aide en nature",
+      "date": "2023-07-01"
+    },
+    {
+      "beneficiaire": "Association Nice 30",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 30343,
+      "nature": "Aide en numéraire",
+      "date": "2023-05-14"
+    },
+    {
+      "beneficiaire": "Association Nice 41",
+      "objet": "Subvention 2023 - activité éducative",
+      "montant": 29344,
+      "nature": "Aide en numéraire",
+      "date": "2023-01-24"
+    },
+    {
+      "beneficiaire": "Association Nice 29",
+      "objet": "Subvention 2023 - activité sportive",
+      "montant": 27822,
+      "nature": "Aide en nature",
+      "date": "2023-09-23"
+    },
+    {
+      "beneficiaire": "Association Nice 4",
+      "objet": "Subvention 2023 - activité sociale",
+      "montant": 25462,
+      "nature": "Aide en numéraire",
+      "date": "2023-09-26"
+    },
+    {
+      "beneficiaire": "Association Nice 36",
+      "objet": "Subvention 2023 - activité sportive",
+      "montant": 25109,
+      "nature": "Aide en numéraire",
+      "date": "2023-10-15"
+    },
+    {
+      "beneficiaire": "Association Nice 48",
+      "objet": "Subvention 2023 - activité sportive",
+      "montant": 23553,
+      "nature": "Aide en nature",
+      "date": "2023-06-10"
+    },
+    {
+      "beneficiaire": "Association Nice 42",
+      "objet": "Subvention 2023 - activité éducative",
+      "montant": 22811,
+      "nature": "Aide en nature",
+      "date": "2023-11-17"
+    },
+    {
+      "beneficiaire": "Association Nice 20",
+      "objet": "Subvention 2023 - activité sociale",
+      "montant": 19228,
+      "nature": "Aide en nature",
+      "date": "2023-10-27"
+    },
+    {
+      "beneficiaire": "Association Nice 51",
+      "objet": "Subvention 2023 - activité éducative",
+      "montant": 18035,
+      "nature": "Aide en nature",
+      "date": "2023-12-14"
+    },
+    {
+      "beneficiaire": "Association Nice 18",
+      "objet": "Subvention 2023 - activité sportive",
+      "montant": 16704,
+      "nature": "Aide en numéraire",
+      "date": "2023-05-01"
+    },
+    {
+      "beneficiaire": "Association Nice 8",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 16304,
+      "nature": "Aide en numéraire",
+      "date": "2023-03-20"
+    },
+    {
+      "beneficiaire": "Association Nice 50",
+      "objet": "Subvention 2023 - activité sportive",
+      "montant": 13473,
+      "nature": "Aide en nature",
+      "date": "2023-11-27"
+    },
+    {
+      "beneficiaire": "Association Nice 46",
+      "objet": "Subvention 2023 - activité sociale",
+      "montant": 12841,
+      "nature": "Aide en nature",
+      "date": "2023-04-03"
+    },
+    {
+      "beneficiaire": "Association Nice 21",
+      "objet": "Subvention 2023 - activité éducative",
+      "montant": 12343,
+      "nature": "Aide en nature",
+      "date": "2023-12-19"
+    },
+    {
+      "beneficiaire": "Association Nice 2",
+      "objet": "Subvention 2023 - activité sociale",
+      "montant": 11405,
+      "nature": "Aide en numéraire",
+      "date": "2023-09-10"
+    },
+    {
+      "beneficiaire": "Association Nice 16",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 10796,
+      "nature": "Aide en numéraire",
+      "date": "2023-09-04"
+    },
+    {
+      "beneficiaire": "Association Nice 10",
+      "objet": "Subvention 2023 - activité éducative",
+      "montant": 10525,
+      "nature": "Aide en nature",
+      "date": "2023-05-13"
+    },
+    {
+      "beneficiaire": "Association Nice 17",
+      "objet": "Subvention 2023 - activité éducative",
+      "montant": 9803,
+      "nature": "Aide en numéraire",
+      "date": "2023-06-11"
+    },
+    {
+      "beneficiaire": "Association Nice 26",
+      "objet": "Subvention 2023 - activité sportive",
+      "montant": 8679,
+      "nature": "Aide en nature",
+      "date": "2023-12-25"
+    },
+    {
+      "beneficiaire": "Association Nice 53",
+      "objet": "Subvention 2023 - activité sportive",
+      "montant": 7596,
+      "nature": "Aide en nature",
+      "date": "2023-07-24"
+    },
+    {
+      "beneficiaire": "Association Nice 45",
+      "objet": "Subvention 2023 - activité sociale",
+      "montant": 4583,
+      "nature": "Aide en numéraire",
+      "date": "2023-07-12"
+    }
+  ]
+}

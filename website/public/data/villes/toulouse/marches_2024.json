@@ -1,0 +1,864 @@
+{
+  "annee": 2024,
+  "city_slug": "toulouse",
+  "total_montant": 5477101259.22,
+  "total_marches": 2224,
+  "categories": [
+    {
+      "categorie": "Construction & Bâtiment",
+      "nb_marches": 1080,
+      "montant_total": 3950380902.35,
+      "montant_moyen": 3657760.09
+    },
+    {
+      "categorie": "Services professionnels",
+      "nb_marches": 463,
+      "montant_total": 547045816.31,
+      "montant_moyen": 1181524.44
+    },
+    {
+      "categorie": "Transport & Véhicules",
+      "nb_marches": 101,
+      "montant_total": 396360160.98,
+      "montant_moyen": 3924358.03
+    },
+    {
+      "categorie": "Alimentation & Restauration",
+      "nb_marches": 104,
+      "montant_total": 209309426.5,
+      "montant_moyen": 2012590.64
+    },
+    {
+      "categorie": "Autres",
+      "nb_marches": 234,
+      "montant_total": 153165788.56,
+      "montant_moyen": 654554.65
+    },
+    {
+      "categorie": "Environnement & Propreté",
+      "nb_marches": 104,
+      "montant_total": 107499445.33,
+      "montant_moyen": 1033648.51
+    },
+    {
+      "categorie": "Informatique & Télécom",
+      "nb_marches": 106,
+      "montant_total": 87501292.47,
+      "montant_moyen": 825483.89
+    },
+    {
+      "categorie": "Santé & Social",
+      "nb_marches": 26,
+      "montant_total": 15718426.72,
+      "montant_moyen": 604554.87
+    },
+    {
+      "categorie": "Énergie",
+      "nb_marches": 6,
+      "montant_total": 10120000.0,
+      "montant_moyen": 1686666.67
+    }
+  ],
+  "top_marches": [
+    {
+      "objet": "TRAVAUX ASSAINISSEMENT EAUX USEES ET EAUX PLUVIALES",
+      "montant": 116000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-05-16",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "TRAVAUX ASSAINISSEMENT EAUX USEES ET EAUX PLUVIALES",
+      "montant": 116000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-05-16",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "TRAVAUX ASSAINISSEMENT EAUX USEES ET EAUX PLUVIALES",
+      "montant": 116000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-05-16",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "TRAVAUX ASSAINISSEMENT EAUX USEES ET EAUX PLUVIALES",
+      "montant": 116000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-05-16",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "TRAVAUX D’EAU POTABLE ET DE DEFENSE EXTERIEURE CONTRE L’INCENCIE",
+      "montant": 116000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-05-16",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "TRAVAUX D’EAU POTABLE ET DE DEFENSE EXTERIEURE CONTRE L’INCENCIE",
+      "montant": 116000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-05-16",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "TRAVAUX D’EAU POTABLE ET DE DEFENSE EXTERIEURE CONTRE L’INCENCIE",
+      "montant": 116000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-05-16",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "TRAVAUX D’EAU POTABLE ET DE DEFENSE EXTERIEURE CONTRE L’INCENCIE",
+      "montant": 116000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-05-16",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX PLUVIALES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2024 A 2026 -SA-NF",
+      "montant": 116000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-05-16",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX PLUVIALES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2024 A 2026 -SA-NF",
+      "montant": 116000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-05-16",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX PLUVIALES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2024 A 2026 -SA-NF",
+      "montant": 116000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-05-16",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX PLUVIALES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2024 A 2026 -SA-NF",
+      "montant": 116000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-05-16",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX PLUVIALES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2024 A 2026 -SA-NF",
+      "montant": 116000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-05-16",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX PLUVIALES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2024 A 2026 -SA-NF",
+      "montant": 116000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-05-16",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX PLUVIALES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2024 A 2026 -SA-NF",
+      "montant": 116000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-05-16",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX PLUVIALES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2024 A 2026 -SA-NF",
+      "montant": 116000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-05-16",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX PLUVIALES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2024 A 2026 -SA-NF",
+      "montant": 116000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-05-16",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX PLUVIALES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2024 A 2026 -SA-NF",
+      "montant": 116000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-05-16",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Accord-cadre de travaux tous corps d’état et d’entretien du patrimoine de Toulouse Métropole Habitat",
+      "montant": 30000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-03-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de travaux tous corps d’état et d’entretien du patrimoine de Toulouse Métropole Habitat",
+      "montant": 30000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-03-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de travaux tous corps d’état et d’entretien du patrimoine de Toulouse Métropole Habitat",
+      "montant": 30000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-03-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de travaux tous corps d’état et d’entretien du patrimoine de Toulouse Métropole Habitat",
+      "montant": 30000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-03-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de travaux tous corps d’état et d’entretien du patrimoine de Toulouse Métropole Habitat",
+      "montant": 30000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-03-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de travaux tous corps d’état et d’entretien du patrimoine de Toulouse Métropole Habitat",
+      "montant": 30000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-03-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de travaux tous corps d’état et d’entretien du patrimoine de Toulouse Métropole Habitat",
+      "montant": 30000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-03-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de travaux tous corps d’état et d’entretien du patrimoine de Toulouse Métropole Habitat",
+      "montant": 30000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-03-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de travaux tous corps d’état et d’entretien du patrimoine de Toulouse Métropole Habitat",
+      "montant": 30000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-03-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de travaux tous corps d’état et d’entretien du patrimoine de Toulouse Métropole Habitat",
+      "montant": 30000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-03-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de travaux tous corps d’état et d’entretien du patrimoine de Toulouse Métropole Habitat",
+      "montant": 30000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-03-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de travaux tous corps d’état et d’entretien du patrimoine de Toulouse Métropole Habitat",
+      "montant": 30000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-03-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26055706.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-05",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26055706.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-05",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26055706.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-05",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26055706.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-05",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26055706.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-05-28",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26055706.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-05-28",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26055706.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-05-28",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26055706.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-05-28",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "22M0429DC-Prestations de service avec objectifs de performance portant sur le déploiement et la gestion de nouvelles modalités de gestion des résidus de jardin sur le territoire de Toulouse Métropole ",
+      "montant": 23803273.04,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2024-02-06",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "MARCHE PUBLIC DE PERFORMANCE ENERGETIQUE - REHABILITATION ENERGETIQUE POUR LA RESIDENCE LA <br />GARONNE",
+      "montant": 21408983.9,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-03-06",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "MARCHE PUBLIC DE PERFORMANCE ENERGETIQUE - REHABILITATION ENERGETIQUE POUR LA RESIDENCE LA <br />GARONNE",
+      "montant": 21408983.9,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-03-06",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "Accord-cadre  de travaux de voirie : chaussées, trottoirs, voirie sur espaces verts, réfection définitive de tranchées, aménagements liés aux bâtiments. ANNÉES 2023-2027 - 22MC0288AOO",
+      "montant": 15600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-24",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre  de travaux de voirie : chaussées, trottoirs, voirie sur espaces verts, réfection définitive de tranchées, aménagements liés aux bâtiments. ANNÉES 2023-2027 - 22MC0288AOO",
+      "montant": 15600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-24",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre  de travaux de voirie : chaussées, trottoirs, voirie sur espaces verts, réfection définitive de tranchées, aménagements liés aux bâtiments. ANNÉES 2023-2027 - 22MC0288AOO",
+      "montant": 15600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-24",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre  de travaux de voirie : chaussées, trottoirs, voirie sur espaces verts, réfection définitive de tranchées, aménagements liés aux bâtiments. ANNÉES 2023-2027 - 22MC0288AOO",
+      "montant": 15600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-24",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre  de travaux de voirie : chaussées, trottoirs, voirie sur espaces verts, réfection définitive de tranchées, aménagements liés aux bâtiments. ANNÉES 2023-2027 - 22MC0288AOO",
+      "montant": 15600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-24",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre  de travaux de voirie : chaussées, trottoirs, voirie sur espaces verts, réfection définitive de tranchées, aménagements liés aux bâtiments. ANNÉES 2023-2027 - 22MC0288AOO",
+      "montant": 15600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-24",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre  de travaux de voirie : chaussées, trottoirs, voirie sur espaces verts, réfection définitive de tranchées, aménagements liés aux bâtiments. ANNÉES 2023-2027 - 22MC0288AOO",
+      "montant": 15600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-24",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre  de travaux de voirie : chaussées, trottoirs, voirie sur espaces verts, réfection définitive de tranchées, aménagements liés aux bâtiments. ANNÉES 2023-2027 - 22MC0288AOO",
+      "montant": 15600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-24",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre  de travaux de voirie : chaussées, trottoirs, voirie sur espaces verts, réfection définitive de tranchées, aménagements liés aux bâtiments. ANNÉES 2023-2027 - 22MC0288AOO",
+      "montant": 15600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-24",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-03-20",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-03-20",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-03-20",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-03-20",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-03-20",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-03-20",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-03-20",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-03-20",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-03-20",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-03-20",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-03-20",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-03-20",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-03-20",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-03-20",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-03-20",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "AC A MS POUR FOURNITURES DENREES ALIMENTAIRE 2025-2028",
+      "montant": 13200000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2024-12-19",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "AC A MS POUR FOURNITURES DENREES ALIMENTAIRE 2025-2028",
+      "montant": 13200000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2024-12-19",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "AC A MS POUR FOURNITURES DENREES ALIMENTAIRE 2025-2028",
+      "montant": 13200000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2024-12-19",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "RESTAURATION EN LIAISON FROIDE  SERVIE DANS LES STRUCTURES DE PETITE ENFANCE DE  LA VILLE DE TOULOUSE ANNEES 2024-2028",
+      "montant": 11598000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2024-07-21",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "FOURNITURE DE LICENCES SUPPORT ET MAINTENANCE LOGICIELLE",
+      "montant": 9375000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-12-10",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "AC A MS POUR FOURNITURES DENREES ALIMENTAIRE 2025-2028",
+      "montant": 8320000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2024-12-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "AC A MS POUR FOURNITURES DENREES ALIMENTAIRE 2025-2028",
+      "montant": 8320000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2024-12-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "AC A MS POUR FOURNITURES DENREES ALIMENTAIRE 2025-2028",
+      "montant": 8320000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2024-12-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de réhabilitation et de résidentialisation de 182 logements - Résidence PAPUS MIRAIL",
+      "montant": 8145691.54,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-11-27",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 7734244.58,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-03-22",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 7734244.58,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-03-22",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 7734244.58,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-03-22",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 7734244.58,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-03-22",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 7734244.58,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-03-22",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 7734244.58,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-03-22",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 7734244.58,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-03-22",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 7584244.58,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-03-15",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 7584244.58,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-03-15",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 7584244.58,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-03-15",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 7584244.58,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-03-15",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 7584244.58,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-03-15",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 7584244.58,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-03-15",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 7584244.58,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-03-15",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 7584244.58,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-03-15",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 7584244.58,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-03-15",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 7584244.58,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-03-15",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "FOURNITURE DE LICENCES SUPPORT ET MAINTENANCE LOGICIELLE",
+      "montant": 7500000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-12-10",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 7474647.48,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-03-08",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 7474647.48,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-03-08",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 7474647.48,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-03-08",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 7474647.48,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-03-08",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 7474647.48,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-03-08",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 7474647.48,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-03-08",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 7474647.48,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-03-08",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 7474647.48,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-03-08",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    }
+  ]
+}

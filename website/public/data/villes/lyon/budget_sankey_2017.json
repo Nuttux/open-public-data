@@ -1,0 +1,326 @@
+{
+  "year": 2017,
+  "type_budget": "execute",
+  "city_slug": "lyon",
+  "city_name": "Lyon",
+  "dataStatus": "COMPLET",
+  "totals": {
+    "recettes": 817464707.44,
+    "depenses": 764915302.56,
+    "solde": 52549404.88
+  },
+  "nodes": [
+    {
+      "name": "Fiscalité",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations État",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits des services",
+      "category": "revenue"
+    },
+    {
+      "name": "Emprunts",
+      "category": "revenue"
+    },
+    {
+      "name": "Autres produits",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits exceptionnels",
+      "category": "revenue"
+    },
+    {
+      "name": "Subventions investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits financiers",
+      "category": "revenue"
+    },
+    {
+      "name": "Provisions",
+      "category": "revenue"
+    },
+    {
+      "name": "Reprises",
+      "category": "revenue"
+    },
+    {
+      "name": "Budget Lyon",
+      "category": "central"
+    },
+    {
+      "name": "Personnel",
+      "category": "expense"
+    },
+    {
+      "name": "Transferts & subventions",
+      "category": "expense"
+    },
+    {
+      "name": "Fonctionnement courant",
+      "category": "expense"
+    },
+    {
+      "name": "Investissements",
+      "category": "expense"
+    },
+    {
+      "name": "Amortissements",
+      "category": "expense"
+    },
+    {
+      "name": "Dette",
+      "category": "expense"
+    },
+    {
+      "name": "Charges exceptionnelles",
+      "category": "expense"
+    },
+    {
+      "name": "Charges financières",
+      "category": "expense"
+    },
+    {
+      "name": "Charges fiscales",
+      "category": "expense"
+    }
+  ],
+  "links": [
+    {
+      "source": "Fiscalité",
+      "target": "Budget Lyon",
+      "value": 472534732.7
+    },
+    {
+      "source": "Dotations État",
+      "target": "Budget Lyon",
+      "value": 130755565.04
+    },
+    {
+      "source": "Dotations investissement",
+      "target": "Budget Lyon",
+      "value": 69039665.69
+    },
+    {
+      "source": "Produits des services",
+      "target": "Budget Lyon",
+      "value": 54723701.53
+    },
+    {
+      "source": "Emprunts",
+      "target": "Budget Lyon",
+      "value": 43329803.6
+    },
+    {
+      "source": "Autres produits",
+      "target": "Budget Lyon",
+      "value": 26746810.14
+    },
+    {
+      "source": "Produits exceptionnels",
+      "target": "Budget Lyon",
+      "value": 13332632.11
+    },
+    {
+      "source": "Subventions investissement",
+      "target": "Budget Lyon",
+      "value": 5397126.39
+    },
+    {
+      "source": "Produits financiers",
+      "target": "Budget Lyon",
+      "value": 883670.24
+    },
+    {
+      "source": "Provisions",
+      "target": "Budget Lyon",
+      "value": 514000.0
+    },
+    {
+      "source": "Reprises",
+      "target": "Budget Lyon",
+      "value": 207000.0
+    },
+    {
+      "source": "Budget Lyon",
+      "target": "Personnel",
+      "value": 341535980.44
+    },
+    {
+      "source": "Budget Lyon",
+      "target": "Transferts & subventions",
+      "value": 120936439.83
+    },
+    {
+      "source": "Budget Lyon",
+      "target": "Fonctionnement courant",
+      "value": 116960337.14
+    },
+    {
+      "source": "Budget Lyon",
+      "target": "Investissements",
+      "value": 103422666.27
+    },
+    {
+      "source": "Budget Lyon",
+      "target": "Amortissements",
+      "value": 28505579.42
+    },
+    {
+      "source": "Budget Lyon",
+      "target": "Dette",
+      "value": 26170140.9
+    },
+    {
+      "source": "Budget Lyon",
+      "target": "Charges exceptionnelles",
+      "value": 9751728.16
+    },
+    {
+      "source": "Budget Lyon",
+      "target": "Charges financières",
+      "value": 9196234.78
+    },
+    {
+      "source": "Budget Lyon",
+      "target": "Charges fiscales",
+      "value": 8436195.62
+    }
+  ],
+  "drilldown": {
+    "revenue": {
+      "Fiscalité": [
+        {
+          "name": "Fiscalité",
+          "value": 472534732.7
+        }
+      ],
+      "Dotations État": [
+        {
+          "name": "Dotations État",
+          "value": 130755565.04
+        }
+      ],
+      "Dotations investissement": [
+        {
+          "name": "Dotations investissement",
+          "value": 69039665.69
+        }
+      ],
+      "Produits des services": [
+        {
+          "name": "Produits des services",
+          "value": 54723701.53
+        }
+      ],
+      "Emprunts": [
+        {
+          "name": "Emprunts",
+          "value": 43329803.6
+        }
+      ],
+      "Autres produits": [
+        {
+          "name": "Autres produits",
+          "value": 26746810.14
+        }
+      ],
+      "Produits exceptionnels": [
+        {
+          "name": "Produits exceptionnels",
+          "value": 13332632.11
+        }
+      ],
+      "Subventions investissement": [
+        {
+          "name": "Subventions investissement",
+          "value": 5397126.39
+        }
+      ],
+      "Produits financiers": [
+        {
+          "name": "Produits financiers",
+          "value": 883670.24
+        }
+      ],
+      "Provisions": [
+        {
+          "name": "Provisions",
+          "value": 514000.0
+        }
+      ],
+      "Reprises": [
+        {
+          "name": "Reprises",
+          "value": 207000.0
+        }
+      ]
+    },
+    "expenses": {
+      "Personnel": [
+        {
+          "name": "Personnel",
+          "value": 341535980.44
+        }
+      ],
+      "Transferts & subventions": [
+        {
+          "name": "Transferts & subventions",
+          "value": 120936439.83
+        }
+      ],
+      "Fonctionnement courant": [
+        {
+          "name": "Fonctionnement courant",
+          "value": 116960337.14
+        }
+      ],
+      "Investissements": [
+        {
+          "name": "Investissements",
+          "value": 103422666.27
+        }
+      ],
+      "Amortissements": [
+        {
+          "name": "Amortissements",
+          "value": 28505579.42
+        }
+      ],
+      "Dette": [
+        {
+          "name": "Dette",
+          "value": 26170140.9
+        }
+      ],
+      "Charges exceptionnelles": [
+        {
+          "name": "Charges exceptionnelles",
+          "value": 9751728.16
+        }
+      ],
+      "Charges financières": [
+        {
+          "name": "Charges financières",
+          "value": 9196234.78
+        }
+      ],
+      "Charges fiscales": [
+        {
+          "name": "Charges fiscales",
+          "value": 8436195.62
+        }
+      ]
+    }
+  }
+}
