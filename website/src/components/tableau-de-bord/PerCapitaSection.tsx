@@ -15,7 +15,7 @@ import { ARRONDISSEMENTS } from '@/lib/constants/arrondissements';
 import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { PALETTE } from '@/lib/colors';
 import { useIsMobile } from '@/lib/hooks/useIsMobile';
-import { useT } from '@/lib/localeContext';
+import { useT, useTCategory } from '@/lib/localeContext';
 
 const TOTAL_POPULATION = ARRONDISSEMENTS.reduce((s, a) => s + a.population, 0);
 
@@ -63,6 +63,7 @@ interface ThematiqueRow {
 
 export default function PerCapitaSection({ data }: PerCapitaSectionProps) {
   const t = useT();
+  const tCat = useTCategory();
   const isMobile = useIsMobile();
 
   const rows = useMemo<ThematiqueRow[]>(() => {
@@ -101,7 +102,7 @@ export default function PerCapitaSection({ data }: PerCapitaSectionProps) {
         const p = params as { name: string };
         const r = rows.find((row) => row.name === p.name);
         if (!r) return '';
-        return `<strong>${r.name}</strong><br/>${formatEuroCompact(r.total)} (${r.pct.toFixed(1)}%)<br/>${formatNumber(Math.round(r.perCapita))} ${t('percapita.tooltip_per_hab')}`;
+        return `<strong>${tCat(r.name)}</strong><br/>${formatEuroCompact(r.total)} (${r.pct.toFixed(1)}%)<br/>${formatNumber(Math.round(r.perCapita))} ${t('percapita.tooltip_per_hab')}`;
       },
     },
     series: [{
@@ -116,7 +117,7 @@ export default function PerCapitaSection({ data }: PerCapitaSectionProps) {
         color: '#64748b',
         formatter: (params: unknown) => {
           const p = params as { name: string; percent?: number };
-          return `${p.name}\n${p.percent?.toFixed(1)}%`;
+          return `${tCat(p.name)}\n${p.percent?.toFixed(1)}%`;
         },
       },
       emphasis: {
@@ -128,7 +129,7 @@ export default function PerCapitaSection({ data }: PerCapitaSectionProps) {
         itemStyle: { color: r.color },
       })),
     }],
-  }), [rows, isMobile]);
+  }), [rows, isMobile, tCat, t]);
 
   return (
     <section>
@@ -175,7 +176,7 @@ export default function PerCapitaSection({ data }: PerCapitaSectionProps) {
                 className="w-2.5 h-2.5 rounded-full shrink-0"
                 style={{ backgroundColor: r.color }}
               />
-              <p className="text-xs font-medium text-slate-400 truncate">{r.name}</p>
+              <p className="text-xs font-medium text-slate-400 truncate">{tCat(r.name)}</p>
             </div>
             <p className="text-lg font-bold text-slate-100">
               {formatNumber(Math.round(r.perCapita))} €<span className="text-xs font-normal text-slate-400">{t('percapita.per_year')}</span>

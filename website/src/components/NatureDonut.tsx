@@ -24,7 +24,7 @@ import { formatEuroCompact } from '@/lib/formatters';
 import { getNatureColor, getThematiqueColor } from '@/lib/colors';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 import { useTrack } from '@/lib/analyticsContext';
-import { useT } from '@/lib/localeContext';
+import { useT, useTCategory } from '@/lib/localeContext';
 
 // Types pour les données
 interface NatureItem {
@@ -64,6 +64,7 @@ export default function NatureDonut({
   const isMobile = useIsMobile(BREAKPOINTS.md);
   const track = useTrack();
   const t = useT();
+  const tCat = useTCategory();
 
   // Hauteur adaptative
   const chartHeight = isMobile ? Math.min(height, 320) : height;
@@ -140,7 +141,7 @@ export default function NatureDonut({
       formatter: (params: unknown) => {
         const p = params as { name: string; value: number; data: { pct: number } };
         return `
-          <div style="font-weight: 600; margin-bottom: 4px; font-size: ${isMobile ? '12px' : '14px'};">${p.name}</div>
+          <div style="font-weight: 600; margin-bottom: 4px; font-size: ${isMobile ? '12px' : '14px'};">${tCat(p.name)}</div>
           <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '10px' : '16px'}; font-size: ${isMobile ? '11px' : '12px'};">
             <span>${t('donut.amount')}:</span>
             <span style="font-weight: 500;">${formatEuroCompact(p.value)}</span>
@@ -215,7 +216,7 @@ export default function NatureDonut({
         animationDuration: isMobile ? 300 : 400,
       },
     ],
-  }), [currentData, selectedNature, isMobile, t]);
+  }), [currentData, selectedNature, isMobile, t, tCat]);
 
   return (
     <div className="w-full">
@@ -236,7 +237,7 @@ export default function NatureDonut({
           <h3 className="text-xs sm:text-sm font-medium text-slate-300 truncate">
             {selectedNature ? (
               <>
-                <span className="text-slate-500 hidden sm:inline">{t('donut.nature_arrow')}</span> {selectedNature}
+                <span className="text-slate-500 hidden sm:inline">{t('donut.nature_arrow')}</span> {tCat(selectedNature)}
               </>
             ) : (
               isMobile ? t('donut.tap_explore') : t('donut.click_explore')
@@ -269,7 +270,7 @@ export default function NatureDonut({
               style={{ backgroundColor: item.color }}
             />
             <span className="text-[10px] sm:text-xs text-slate-300 truncate flex-1">
-              {item.name}
+              {tCat(item.name)}
             </span>
             <span className="text-[10px] sm:text-xs text-slate-500 font-medium">
               {item.pct.toFixed(0)}%

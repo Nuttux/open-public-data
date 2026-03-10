@@ -20,7 +20,7 @@ import ReactECharts from 'echarts-for-react';
 import type { EChartsOption } from 'echarts';
 import { PALETTE } from '@/lib/colors';
 import { useIsMobile } from '@/lib/hooks/useIsMobile';
-import { useT } from '@/lib/localeContext';
+import { useT, useTCategory } from '@/lib/localeContext';
 import YearRangeSelector from '@/components/YearRangeSelector';
 import ExportBar from '@/components/shared/ExportBar';
 
@@ -159,6 +159,7 @@ export default function TendancesTab({
   const [error, setError] = useState<string | null>(null);
   const isMobile = useIsMobile();
   const tr = useT();
+  const tCat = useTCategory();
   const t = THEME[theme];
 
   // Use direct data or fetched data
@@ -233,19 +234,19 @@ export default function TendancesTab({
           for (const it of [...items].sort((a, b) => (b.value || 0) - (a.value || 0))) {
             if (it.value > 0) {
               const pct = total > 0 ? ((it.value / total) * 100).toFixed(1) : '0';
-              h += `<div style="display:flex;gap:6px;align-items:center;margin:2px 0"><span style="width:8px;height:8px;border-radius:2px;background:${it.color};flex-shrink:0"></span><span style="flex:1">${it.seriesName}</span><span style="font-weight:500">${formatValue(it.value)}</span><span style="color:#94a3b8;font-size:11px">(${pct}%)</span></div>`;
+              h += `<div style="display:flex;gap:6px;align-items:center;margin:2px 0"><span style="width:8px;height:8px;border-radius:2px;background:${it.color};flex-shrink:0"></span><span style="flex:1">${tCat(it.seriesName)}</span><span style="font-weight:500">${formatValue(it.value)}</span><span style="color:#94a3b8;font-size:11px">(${pct}%)</span></div>`;
             }
           }
           return h;
         },
       },
-      legend: { bottom: 0, left: 'center', textStyle: { color: '#94a3b8', fontSize: 11 }, itemWidth: 12, itemHeight: 12, itemGap: isMobile ? 6 : 12, type: isMobile ? 'scroll' : 'plain' },
+      legend: { bottom: 0, left: 'center', textStyle: { color: '#94a3b8', fontSize: 11 }, itemWidth: 12, itemHeight: 12, itemGap: isMobile ? 6 : 12, type: isMobile ? 'scroll' : 'plain', formatter: (name: string) => tCat(name) },
       grid: { top: 30, right: isMobile ? 10 : 20, bottom: isMobile ? 80 : 60, left: isMobile ? 10 : 20, containLabel: true },
       xAxis: { type: 'category', data: years, axisLabel: { color: '#94a3b8', fontSize: 12 }, axisLine: { lineStyle: { color: 'rgba(148,163,184,0.2)' } } },
       yAxis: { type: 'value', axisLabel: { color: '#64748b', fontSize: 11, formatter: yAxisFormatter }, splitLine: { lineStyle: { color: 'rgba(148,163,184,0.08)' } } },
       series,
     };
-  }, [filteredYears, groupsOrdered, isMobile, breakdown, getGroupColor, yAxisFormatter, formatValue, tooltipHeader]);
+  }, [filteredYears, groupsOrdered, isMobile, breakdown, getGroupColor, yAxisFormatter, formatValue, tooltipHeader, tCat]);
 
   // ── KPIs ──
   const kpiCtx = useMemo(() => {
@@ -292,7 +293,7 @@ export default function TendancesTab({
   const fmtVarTooltipVal = formatVariationTooltipValue || formatValue;
   const variationChartOption = useMemo((): EChartsOption | null => {
     if (variationItems.length === 0) return null;
-    const cats = variationItems.map(d => d.label);
+    const cats = variationItems.map(d => tCat(d.label));
     const vals = variationItems.map(d => d.diff);
     const pcts = variationItems.map(d => d.diffPct);
     const mx = Math.max(...vals.map(Math.abs), 1);
@@ -307,7 +308,7 @@ export default function TendancesTab({
           if (!a?.length) return '';
           const it = variationItems[a[0].dataIndex];
           const c = it.diff >= 0 ? PALETTE.emerald : PALETTE.red;
-          return `<div style="font-weight:600;margin-bottom:6px">${it.label}</div><div style="display:flex;justify-content:space-between;gap:20px"><span>${startYear} :</span><span>${fmtVarTooltipVal(it.earliestVal)}</span></div><div style="display:flex;justify-content:space-between;gap:20px"><span>${endYear} :</span><span>${fmtVarTooltipVal(it.latestVal)}</span></div><div style="border-top:1px solid rgba(148,163,184,0.3);margin-top:6px;padding-top:6px"><span style="color:${c};font-weight:600">${formatVariationDiff(it.diff)}${showVariationPct ? ` (${it.diffPct >= 0 ? '+' : ''}${it.diffPct.toFixed(1)}%)` : ''}</span></div>`;
+          return `<div style="font-weight:600;margin-bottom:6px">${tCat(it.label)}</div><div style="display:flex;justify-content:space-between;gap:20px"><span>${startYear} :</span><span>${fmtVarTooltipVal(it.earliestVal)}</span></div><div style="display:flex;justify-content:space-between;gap:20px"><span>${endYear} :</span><span>${fmtVarTooltipVal(it.latestVal)}</span></div><div style="border-top:1px solid rgba(148,163,184,0.3);margin-top:6px;padding-top:6px"><span style="color:${c};font-weight:600">${formatVariationDiff(it.diff)}${showVariationPct ? ` (${it.diffPct >= 0 ? '+' : ''}${it.diffPct.toFixed(1)}%)` : ''}</span></div>`;
         },
       },
       grid: { left: isMobile ? '5%' : '3%', right: isMobile ? '18%' : '14%', top: 5, bottom: 5, containLabel: true },
@@ -337,7 +338,7 @@ export default function TendancesTab({
       }],
       animation: true, animationDuration: 600, animationEasing: 'cubicOut',
     };
-  }, [variationItems, startYear, endYear, isMobile, formatVariationDiff, fmtVarTooltipVal, showVariationPct]);
+  }, [variationItems, startYear, endYear, isMobile, formatVariationDiff, fmtVarTooltipVal, showVariationPct, tCat]);
 
   const variationChartHeight = useMemo(() => Math.max(150, variationItems.length * (isMobile ? 34 : 38) + 20), [variationItems.length, isMobile]);
 
@@ -347,7 +348,7 @@ export default function TendancesTab({
     const cols: { key: string; label: string }[] = [
       { key: 'year', label: tr('chart.csv_year') },
       { key: 'total', label: tr('chart.csv_total') },
-      ...groupsOrdered.map(g => ({ key: g, label: g })),
+      ...groupsOrdered.map(g => ({ key: g, label: tCat(g) })),
     ];
     const rows = filteredYears.map(y => {
       const row: Record<string, unknown> = { year: y.year, total: y.total };
@@ -359,7 +360,7 @@ export default function TendancesTab({
       return row;
     });
     return { csvRows: rows, csvColumns: cols };
-  }, [csvFilename, filteredYears, groupsOrdered, breakdown, tr]);
+  }, [csvFilename, filteredYears, groupsOrdered, breakdown, tr, tCat]);
 
   // ── Default KPI3 / KPI4 ──
   const defaultKpi3 = kpiCtx ? {
@@ -371,7 +372,7 @@ export default function TendancesTab({
 
   const defaultKpi4 = kpiCtx ? {
     label: tr('chart.first_group'),
-    value: kpiCtx.topName,
+    value: tCat(kpiCtx.topName),
     sub: `${formatValue(kpiCtx.topValue)} (${kpiCtx.topPct.toFixed(0)}%)`,
   } : null;
 

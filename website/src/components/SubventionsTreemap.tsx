@@ -20,7 +20,7 @@ import { formatEuroCompact, formatNumber } from '@/lib/formatters';
 import { getThematiqueColor } from '@/lib/colors';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 import { useTrack } from '@/lib/analyticsContext';
-import { useT } from '@/lib/localeContext';
+import { useT, useTCategory } from '@/lib/localeContext';
 
 /**
  * Données d'une thématique pour le treemap
@@ -64,6 +64,7 @@ export default function SubventionsTreemap({
   const isMobile = useIsMobile(BREAKPOINTS.md);
   const track = useTrack();
   const t = useT();
+  const tCat = useTCategory();
 
   // Hauteur adaptative
   const chartHeight = isMobile ? Math.min(height, 300) : height;
@@ -116,11 +117,11 @@ export default function SubventionsTreemap({
         
         return `
           <div style="font-weight: 600; margin-bottom: 6px; font-size: ${isMobile ? '12px' : '14px'};">
-            ${p.name}
+            ${tCat(p.name)}
           </div>
           <div style="display: flex; flex-direction: column; gap: 3px; font-size: ${isMobile ? '11px' : '12px'};">
             <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '12px' : '24px'};">
-              <span style="color: #94a3b8;">Montant</span>
+              <span style="color: #94a3b8;">${t('chart.amount')}</span>
               <span style="font-weight: 500;">${formatEuroCompact(p.value)}</span>
             </div>
             <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '12px' : '24px'};">
@@ -128,7 +129,7 @@ export default function SubventionsTreemap({
               <span style="font-weight: 500;">${p.data.pct.toFixed(1)}%</span>
             </div>
             <div style="display: flex; justify-content: space-between; gap: ${isMobile ? '12px' : '24px'};">
-              <span style="color: #94a3b8;">Bénéficiaires</span>
+              <span style="color: #94a3b8;">${t('treemap.tooltip.beneficiaires')}</span>
               <span style="font-weight: 500;">${formatNumber(p.data.nbBeneficiaires)}</span>
             </div>
           </div>
@@ -163,9 +164,10 @@ export default function SubventionsTreemap({
             const threshold = isMobile ? 4 : 2;
             if (p.data.pct < threshold) return '';
             // Sur mobile, nom tronqué si nécessaire
-            const displayName = isMobile && p.name.length > 10 
-              ? p.name.substring(0, 9) + '…' 
-              : p.name;
+            const translated = tCat(p.name);
+            const displayName = isMobile && translated.length > 10
+              ? translated.substring(0, 9) + '…'
+              : translated;
             return `${displayName}\n${p.data.pct.toFixed(0)}%`;
           },
           fontSize: isMobile ? 10 : 12,

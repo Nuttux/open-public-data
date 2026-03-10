@@ -5,6 +5,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import fr from '@/i18n/fr';
 import en from '@/i18n/en';
 import type { Locale } from '@/i18n/config';
+import { translateCategory } from '@/lib/categoryTranslations';
 
 export type { Locale };
 
@@ -51,4 +52,10 @@ export function useLocale() {
 
 export function useT() {
   return useContext(LocaleContext).t;
+}
+
+/** Translate a French data category name (from JSON) to the current locale. */
+export function useTCategory() {
+  const { locale } = useContext(LocaleContext);
+  return useCallback((name: string) => translateCategory(name, locale), [locale]);
 }

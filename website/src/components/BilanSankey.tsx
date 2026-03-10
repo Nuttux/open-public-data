@@ -20,7 +20,7 @@ import { formatEuroCompact, formatPercent, calculatePercentage } from '@/lib/for
 import { getBilanColor, BILAN_ACTIF_COLORS, BILAN_PASSIF_COLORS, BILAN_CENTRAL_COLOR } from '@/lib/colors';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 import type { BilanSankeyData } from '@/lib/api/staticData';
-import { useT } from '@/lib/localeContext';
+import { useT, useTCategory } from '@/lib/localeContext';
 
 interface BilanSankeyProps {
   data: BilanSankeyData;
@@ -32,6 +32,7 @@ interface BilanSankeyProps {
  */
 function MobileBilanView({ data, onNodeClick }: BilanSankeyProps) {
   const t = useT();
+  const tCat = useTCategory();
   const maxValue = Math.max(
     ...data.links.map(l => l.value)
   );
@@ -68,7 +69,7 @@ function MobileBilanView({ data, onNodeClick }: BilanSankeyProps) {
               >
                 <div className="flex items-center justify-between text-xs mb-1">
                   <span className="text-slate-300 group-hover:text-white transition-colors truncate pr-2">
-                    {node.name}
+                    {tCat(node.name)}
                   </span>
                   <span className="text-emerald-400 font-medium whitespace-nowrap">
                     {formatEuroCompact(value)}
@@ -106,7 +107,7 @@ function MobileBilanView({ data, onNodeClick }: BilanSankeyProps) {
               >
                 <div className="flex items-center justify-between text-xs mb-1">
                   <span className="text-slate-300 group-hover:text-white transition-colors truncate pr-2">
-                    {node.name}
+                    {tCat(node.name)}
                   </span>
                   <span className="text-blue-400 font-medium whitespace-nowrap">
                     {formatEuroCompact(value)}
@@ -134,6 +135,7 @@ export default function BilanSankey({ data, onNodeClick }: BilanSankeyProps) {
   const isMobile = useIsMobile(BREAKPOINTS.md);
   const isSmallTablet = useIsMobile(BREAKPOINTS.lg);
   const t = useT();
+  const tCat = useTCategory();
 
   // #region agent log
   fetch('http://127.0.0.1:7243/ingest/1f8e710b-4d17-470f-93f7-199824cb8279',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'BilanSankey.tsx:130',message:'BilanSankey render',data:{isMobile,isSmallTablet,windowWidth:typeof window!=='undefined'?window.innerWidth:0,breakpointMd:BREAKPOINTS.md,breakpointLg:BREAKPOINTS.lg,nodesCount:data.nodes.length,linksCount:data.links.length},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'H1,H2,H4'})}).catch(()=>{});
@@ -227,7 +229,7 @@ export default function BilanSankey({ data, onNodeClick }: BilanSankeyProps) {
           
           return `
             <div style="padding: 8px; max-width: 260px;">
-              <div style="font-weight: 600; margin-bottom: 6px;">${p.name}</div>
+              <div style="font-weight: 600; margin-bottom: 6px;">${tCat(p.name)}</div>
               <div style="color: #94a3b8; font-size: 11px; margin-bottom: 4px;">${label}</div>
               <div style="font-size: 18px; font-weight: 700; color: #10b981;">${formatEuroCompact(p.value)}</div>
               <div style="color: #94a3b8; font-size: 11px;">${formatPercent(percentage)} ${t('bilan.of_patrimoine')}</div>
@@ -241,7 +243,7 @@ export default function BilanSankey({ data, onNodeClick }: BilanSankeyProps) {
           return `
             <div style="padding: 8px;">
               <div style="font-weight: 600; margin-bottom: 6px; font-size: 13px;">
-                ${p.data.source} → ${p.data.target}
+                ${tCat(p.data.source || '')} → ${tCat(p.data.target || '')}
               </div>
               <div style="font-size: 16px; font-weight: 700; color: #8b5cf6;">${formatEuroCompact(p.value)}</div>
               <div style="color: #94a3b8; font-size: 11px;">${formatPercent(percentage)} ${t('bilan.of_patrimoine')}</div>
@@ -283,13 +285,14 @@ export default function BilanSankey({ data, onNodeClick }: BilanSankeyProps) {
           fontWeight: 500,
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           formatter: (params: any) => {
+            const translated = tCat(params.name);
             if (params.name === 'Patrimoine Paris') {
-              return params.name;
+              return translated;
             }
             const value = params.value || 0;
-            const displayName = isSmallTablet && params.name.length > 14 
-              ? params.name.substring(0, 13) + '…' 
-              : params.name;
+            const displayName = isSmallTablet && translated.length > 14
+              ? translated.substring(0, 13) + '…'
+              : translated;
             return `${displayName}\n{small|${formatEuroCompact(value)}}`;
           },
           rich: {
@@ -319,7 +322,7 @@ export default function BilanSankey({ data, onNodeClick }: BilanSankeyProps) {
         ],
       },
     ],
-  }), [chartData, totalPatrimoine, chartMargins, isSmallTablet, t]);
+  }), [chartData, totalPatrimoine, chartMargins, isSmallTablet, t, tCat]);
 
   const handleChartClick = useCallback((params: { 
     dataType?: string; 

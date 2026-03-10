@@ -20,7 +20,7 @@ import { getCategoryColor, lightenColor } from '@/lib/colors';
 import type { DrilldownItem, SectionBreakdown } from '@/lib/formatters';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 import { useTrack } from '@/lib/analyticsContext';
-import { useT } from '@/lib/localeContext';
+import { useT, useTCategory } from '@/lib/localeContext';
 
 /** Type pour les sections budgétaires */
 type BudgetSection = 'all' | 'Fonctionnement' | 'Investissement';
@@ -54,6 +54,7 @@ export default function DrilldownPanel({
   const isMobile = useIsMobile(BREAKPOINTS.md);
   const track = useTrack();
   const t = useT();
+  const tCat = useTCategory();
 
   // ── Slide animation for level transitions (L2↔L3) ──
   // Direction: 'forward' = slide left (deeper), 'back' = slide right (back up)
@@ -248,9 +249,9 @@ export default function DrilldownPanel({
         const percentage = calculatePercentage(item.value, total);
         return `
           <div style="padding: ${isMobile ? '8px' : '10px'}; max-width: ${isMobile ? '240px' : '300px'};">
-            <div style="font-weight: 600; margin-bottom: 4px; word-wrap: break-word; line-height: 1.3; font-size: ${isMobile ? '12px' : '14px'};">${item.name}</div>
+            <div style="font-weight: 600; margin-bottom: 4px; word-wrap: break-word; line-height: 1.3; font-size: ${isMobile ? '12px' : '14px'};">${tCat(item.name)}</div>
             <div style="font-size: ${isMobile ? '16px' : '20px'}; font-weight: 700; color: ${barColor};">${formatEuroCompact(item.value)}</div>
-            <div style="color: #94a3b8; font-size: ${isMobile ? '10px' : '12px'};">${formatPercent(percentage)} de ${categoryName}</div>
+            <div style="color: #94a3b8; font-size: ${isMobile ? '10px' : '12px'};">${formatPercent(percentage)} · ${tCat(categoryName)}</div>
             ${canDrillDown && !item.name.startsWith('Autres') ? `<div style="margin-top: 6px; color: #60a5fa; font-size: ${isMobile ? '10px' : '11px'};">${isMobile ? `${t('budget.tap_bar_explore')} →` : `${t('budget.click_bar_explore')} →`}</div>` : ''}
           </div>
         `;
@@ -275,7 +276,7 @@ export default function DrilldownPanel({
     },
     yAxis: {
       type: 'category',
-      data: displayItems.map(item => truncateText(item.name, maxTextLen)).reverse(),
+      data: displayItems.map(item => truncateText(tCat(item.name), maxTextLen)).reverse(),
       axisLabel: {
         fontSize: isMobile ? 10 : 11,
         color: '#cbd5e1',
@@ -331,7 +332,7 @@ export default function DrilldownPanel({
         },
       },
     ],
-  }), [displayItems, total, barColor, hoverColor, canDrillDown, categoryName, truncateText, isMobile, maxTextLen, labelWidth, t]);
+  }), [displayItems, total, barColor, hoverColor, canDrillDown, categoryName, truncateText, isMobile, maxTextLen, labelWidth, t, tCat]);
 
   const handleChartClick = (params: { dataIndex?: number }) => {
     if (typeof params.dataIndex === 'number' && onItemClick) {
@@ -385,11 +386,11 @@ export default function DrilldownPanel({
                         onClick={() => onBreadcrumbClick?.(idx)}
                         className="text-slate-400 hover:text-slate-200 transition-colors whitespace-nowrap"
                       >
-                        {crumb.length > 20 ? crumb.substring(0, 18) + '...' : crumb}
+                        {tCat(crumb).length > 20 ? tCat(crumb).substring(0, 18) + '...' : tCat(crumb)}
                       </button>
                     ) : (
                       <span className="font-medium whitespace-nowrap" style={{ color: barColor }}>
-                        {crumb.length > 20 ? crumb.substring(0, 18) + '...' : crumb}
+                        {tCat(crumb).length > 20 ? tCat(crumb).substring(0, 18) + '...' : tCat(crumb)}
                       </span>
                     )}
                   </span>
@@ -409,7 +410,7 @@ export default function DrilldownPanel({
               </span>
             </div>
             <h3 className="text-lg sm:text-xl font-semibold text-slate-100 break-words">
-            {title}
+            {tCat(title)}
           </h3>
           </div>
         </div>

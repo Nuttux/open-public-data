@@ -19,6 +19,7 @@ import { REVENUE_COLORS, EXPENSE_COLORS, FLUX_COLORS } from '@/lib/colors';
 import type { BudgetData } from '@/lib/formatters';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
 import { useTrack } from '@/lib/analyticsContext';
+import { useT, useTCategory } from '@/lib/localeContext';
 
 interface BudgetSankeyProps {
   data: BudgetData;
@@ -28,7 +29,9 @@ interface BudgetSankeyProps {
 /**
  * Vue mobile simplifiée - Barres horizontales interactives
  */
-function MobileBudgetView({ data, onNodeClick, track }: BudgetSankeyProps & { track: ReturnType<typeof useTrack> }) {
+function MobileBudgetView({ data, onNodeClick, track }: BudgetSankeyProps & { track: ReturnType<typeof useTrack>; }) {
+  const tCat = useTCategory();
+  const t = useT();
   const totalBudget = Math.max(data.totals.recettes, data.totals.depenses);
 
   // Séparer recettes et dépenses
@@ -66,8 +69,8 @@ function MobileBudgetView({ data, onNodeClick, track }: BudgetSankeyProps & { tr
       <div>
         <h3 className="text-sm font-medium text-slate-300 mb-3 flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-emerald-500" />
-          Recettes
-          <span className="text-[10px] text-slate-500 font-normal ml-1">Appuyez pour détail</span>
+          {tCat('Recettes')}
+          <span className="text-[10px] text-slate-500 font-normal ml-1">{t('budget.tap_bar_explore')}</span>
         </h3>
         <div className="space-y-2">
           {revenues.map((item, idx) => (
@@ -83,7 +86,7 @@ function MobileBudgetView({ data, onNodeClick, track }: BudgetSankeyProps & { tr
             >
               <div className="flex items-center justify-between text-xs mb-1">
                 <span className="text-slate-300 group-active:text-white transition-colors truncate pr-2">
-                  {item.name}
+                  {tCat(item.name)}
                 </span>
                 <div className="flex items-center gap-1.5">
                   <span className="text-emerald-400 font-medium whitespace-nowrap">
@@ -102,7 +105,7 @@ function MobileBudgetView({ data, onNodeClick, track }: BudgetSankeyProps & { tr
                 />
               </div>
               <div className="text-[10px] text-slate-500 mt-0.5">
-                {formatPercent(calculatePercentage(item.value, totalBudget))} du budget
+                {formatPercent(calculatePercentage(item.value, totalBudget))} {t('percapita.pct_budget')}
               </div>
             </button>
           ))}
@@ -113,8 +116,8 @@ function MobileBudgetView({ data, onNodeClick, track }: BudgetSankeyProps & { tr
       <div>
         <h3 className="text-sm font-medium text-slate-300 mb-3 flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-rose-500" />
-          Dépenses
-          <span className="text-[10px] text-slate-500 font-normal ml-1">Appuyez pour détail</span>
+          {tCat('Dépenses')}
+          <span className="text-[10px] text-slate-500 font-normal ml-1">{t('budget.tap_bar_explore')}</span>
         </h3>
         <div className="space-y-2">
           {expenses.map((item) => (
@@ -128,7 +131,7 @@ function MobileBudgetView({ data, onNodeClick, track }: BudgetSankeyProps & { tr
             >
               <div className="flex items-center justify-between text-xs mb-1">
                 <span className="text-slate-300 group-active:text-white transition-colors truncate pr-2">
-                  {item.name}
+                  {tCat(item.name)}
                 </span>
                 <div className="flex items-center gap-1.5">
                   <span className="text-rose-400 font-medium whitespace-nowrap">
@@ -147,7 +150,7 @@ function MobileBudgetView({ data, onNodeClick, track }: BudgetSankeyProps & { tr
                 />
               </div>
               <div className="text-[10px] text-slate-500 mt-0.5">
-                {formatPercent(calculatePercentage(item.value, totalBudget))} du budget
+                {formatPercent(calculatePercentage(item.value, totalBudget))} {t('percapita.pct_budget')}
               </div>
             </button>
           ))}
@@ -161,6 +164,8 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
   const isMobile = useIsMobile(BREAKPOINTS.md);
   const track = useTrack();
   const isSmallTablet = useIsMobile(BREAKPOINTS.lg);
+  const tCat = useTCategory();
+  const t = useT();
   const totalBudget = useMemo(() => {
     return Math.max(data.totals.recettes, data.totals.depenses);
   }, [data.totals]);
@@ -241,34 +246,34 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
         
         if (p.dataType === 'node') {
           const percentage = calculatePercentage(p.value, totalBudget);
-          let label = 'Budget';
-          
+          let label = tCat('Budget');
+
           if (p.data.category === 'revenue') {
-            label = p.name === 'Emprunts' ? 'Financement' : 'Recette';
+            label = p.name === 'Emprunts' ? tCat('Emprunts') : tCat('Recettes');
           } else if (p.data.category === 'expense') {
-            label = p.name === 'Dette' ? 'Remboursement' : 'Dépense';
+            label = p.name === 'Dette' ? tCat('Remboursement dette') : tCat('Dépenses');
           }
-          
+
           return `
             <div style="padding: 8px; max-width: 240px;">
-              <div style="font-weight: 600; margin-bottom: 6px;">${p.name}</div>
+              <div style="font-weight: 600; margin-bottom: 6px;">${tCat(p.name)}</div>
               <div style="color: #94a3b8; font-size: 11px; margin-bottom: 4px;">${label}</div>
               <div style="font-size: 18px; font-weight: 700; color: #10b981;">${formatEuroCompact(p.value)}</div>
-              <div style="color: #94a3b8; font-size: 11px;">${formatPercent(percentage)} du budget</div>
-              ${p.data.category !== 'central' ? '<div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #334155; color: #60a5fa; font-size: 11px;">Cliquez pour explorer →</div>' : ''}
+              <div style="color: #94a3b8; font-size: 11px;">${formatPercent(percentage)} ${t('percapita.pct_budget')}</div>
+              ${p.data.category !== 'central' ? `<div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #334155; color: #60a5fa; font-size: 11px;">${t('budget.click_bar_explore')} →</div>` : ''}
             </div>
           `;
         }
-        
+
         if (p.dataType === 'edge') {
           const percentage = calculatePercentage(p.value, totalBudget);
           return `
             <div style="padding: 8px;">
               <div style="font-weight: 600; margin-bottom: 6px; font-size: 13px;">
-                ${p.data.source} → ${p.data.target}
+                ${tCat(p.data.source || '')} → ${tCat(p.data.target || '')}
               </div>
               <div style="font-size: 16px; font-weight: 700; color: ${FLUX_COLORS.emprunts};">${formatEuroCompact(p.value)}</div>
-              <div style="color: #94a3b8; font-size: 11px;">${formatPercent(percentage)} du budget</div>
+              <div style="color: #94a3b8; font-size: 11px;">${formatPercent(percentage)} ${t('percapita.pct_budget')}</div>
             </div>
           `;
         }
@@ -314,14 +319,14 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
           fontWeight: 500,
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           formatter: (params: any) => {
+            const translated = tCat(params.name);
             if (params.name === 'Budget Paris') {
-              return params.name;
+              return translated;
             }
             const value = params.value || 0;
-            // Sur tablette, nom tronqué si trop long
-            const displayName = isSmallTablet && params.name.length > 12
-              ? params.name.substring(0, 11) + '…'
-              : params.name;
+            const displayName = isSmallTablet && translated.length > 12
+              ? translated.substring(0, 11) + '…'
+              : translated;
             return `${displayName}\n{small|${formatEuroCompact(value)}}`;
           },
           rich: {
@@ -351,7 +356,7 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
         ],
       },
     ],
-  }), [chartData, totalBudget, chartMargins, isSmallTablet]);
+  }), [chartData, totalBudget, chartMargins, isSmallTablet, tCat, t]);
 
   const handleChartClick = useCallback((params: {
     dataType?: string;
@@ -383,17 +388,17 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
         <div>
           <h2 className="text-base sm:text-lg font-semibold text-slate-100">
-            Flux budgétaires {data.year}
+            {t('budget.view.flux_full')} {data.year}
           </h2>
           {isMobile ? (
-            <p className="text-xs text-slate-400 mt-1">Appuyez pour explorer</p>
+            <p className="text-xs text-slate-400 mt-1">{t('budget.tap_bar_explore')}</p>
           ) : (
             <div className="flex items-center gap-2 mt-1.5">
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-blue-500/15 text-blue-400 border border-blue-500/30">
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
                 </svg>
-                Cliquez sur une catégorie pour voir le détail
+                {t('chart.click_to_filter')}
               </span>
             </div>
           )}
@@ -410,23 +415,23 @@ export default function BudgetSankey({ data, onNodeClick }: BudgetSankeyProps) {
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-3 text-xs">
             <div className="flex items-center gap-1.5">
               <div className="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
-              <span className="text-slate-400">Recettes</span>
+              <span className="text-slate-400">{tCat('Recettes')}</span>
             </div>
             <div className="flex items-center gap-1.5">
               <div className="w-2.5 h-2.5 rounded-full bg-amber-500"></div>
-              <span className="text-slate-400">Emprunts</span>
+              <span className="text-slate-400">{tCat('Emprunts')}</span>
             </div>
             <div className="flex items-center gap-1.5">
               <div className="w-2.5 h-2.5 rounded-full bg-violet-500"></div>
-              <span className="text-slate-400">Budget</span>
+              <span className="text-slate-400">{tCat('Budget')}</span>
             </div>
             <div className="flex items-center gap-1.5">
               <div className="w-2.5 h-2.5 rounded-full bg-rose-500"></div>
-              <span className="text-slate-400">Dépenses</span>
+              <span className="text-slate-400">{tCat('Dépenses')}</span>
             </div>
             <div className="flex items-center gap-1.5">
               <div className="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
-              <span className="text-slate-400">Dette</span>
+              <span className="text-slate-400">{tCat('Dette')}</span>
             </div>
           </div>
 

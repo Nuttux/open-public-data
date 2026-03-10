@@ -27,7 +27,7 @@ import type { EChartsOption } from 'echarts';
 import { formatEuroCompact } from '@/lib/formatters';
 import { PALETTE } from '@/lib/colors';
 import { useIsMobile, BREAKPOINTS } from '@/lib/hooks/useIsMobile';
-import { useT } from '@/lib/localeContext';
+import { useT, useTCategory } from '@/lib/localeContext';
 
 /** Structure d'un poste avec variation */
 export interface VariationItem {
@@ -84,15 +84,16 @@ interface SingleChartProps {
   accentColor: string;
 }
 
-function SingleVariationChart({ 
-  items, 
-  periode, 
-  isMobile, 
-  title, 
-  subtitle, 
+function SingleVariationChart({
+  items,
+  periode,
+  isMobile,
+  title,
+  subtitle,
   icon,
   accentColor,
 }: SingleChartProps) {
+  const tCat = useTCategory();
   // Séparer hausses et baisses pour le tri visuel
   const sortedData = useMemo(() => {
     const hausses = items.filter(item => item.variation_euros >= 0)
@@ -111,7 +112,7 @@ function SingleVariationChart({
   }, [sortedData.length, isMobile]);
 
   const option: EChartsOption = useMemo(() => {
-    const categories = sortedData.map(d => d.label);
+    const categories = sortedData.map(d => tCat(d.label));
     const values = sortedData.map(d => d.variation_euros);
     const pcts = sortedData.map(d => d.variation_pct);
 
@@ -135,7 +136,7 @@ function SingleVariationChart({
           const color = item.variation_euros >= 0 ? PALETTE.emerald : PALETTE.red;
           
           return `
-            <div style="font-weight: 600; margin-bottom: 6px;">${item.label}</div>
+            <div style="font-weight: 600; margin-bottom: 6px;">${tCat(item.label)}</div>
             <div style="display: flex; justify-content: space-between; gap: 20px;">
               <span>${periode.debut}:</span>
               <span>${formatEuroCompact(item.montant_debut)}</span>
@@ -226,7 +227,7 @@ function SingleVariationChart({
       animationDuration: 600,
       animationEasing: 'cubicOut',
     };
-  }, [sortedData, periode, isMobile]);
+  }, [sortedData, periode, isMobile, tCat]);
 
   if (sortedData.length === 0) {
     return null;
