@@ -581,6 +581,14 @@ const fr: Record<string, string> = {
   'kpi.forecast': ' (prévisionnel)',
   'kpi.per_parisian': 'par Parisien',
   'kpi.per_year': '/an',
+  'kpi.per_day_suffix': '/jour',
+  'kpi.of_budget': '% du budget',
+  'kpi.per_hab': '€/hab',
+  'kpi.of_revenue': '% des recettes courantes',
+  'kpi.payments': 'versements',
+  'kpi.housing_units': 'logements',
+  'kpi.housing_sub': 'dont {pct}% très sociaux · {per1000} / 1 000 hab',
+  'kpi.contracts_count': '{count} marchés',
 
   // ── Shared AnnuelTab ─────────────────────────────────────────────────────
   'annuel.part_du_total': 'Part du total',
