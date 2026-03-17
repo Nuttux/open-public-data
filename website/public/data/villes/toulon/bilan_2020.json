@@ -1,0 +1,17 @@
+{
+  "year": 2020,
+  "city_slug": "toulon",
+  "totals": {
+    "actif_total": 1627893495.78,
+    "passif_total": 1294794809.03,
+    "dette_financiere": 70438761.77,
+    "fonds_propres": 1224356047.26,
+    "tresorerie": 10955116.88,
+    "immobilisations": 1616938378.9
+  },
+  "kpis": {
+    "ratio_endettement": 5.44,
+    "pct_fonds_propres": 94.56,
+    "dette_par_hab": 409.64
+  }
+}

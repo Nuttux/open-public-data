@@ -1,0 +1,864 @@
+{
+  "annee": 2021,
+  "city_slug": "lyon",
+  "total_montant": 1202151787.03,
+  "total_marches": 1616,
+  "categories": [
+    {
+      "categorie": "Construction & Bâtiment",
+      "nb_marches": 693,
+      "montant_total": 660558271.32,
+      "montant_moyen": 953186.54
+    },
+    {
+      "categorie": "Autres",
+      "nb_marches": 328,
+      "montant_total": 203364100.74,
+      "montant_moyen": 620012.5
+    },
+    {
+      "categorie": "Transport & Véhicules",
+      "nb_marches": 93,
+      "montant_total": 86707293.85,
+      "montant_moyen": 932336.49
+    },
+    {
+      "categorie": "Alimentation & Restauration",
+      "nb_marches": 5,
+      "montant_total": 82460000.0,
+      "montant_moyen": 16492000.0
+    },
+    {
+      "categorie": "Services professionnels",
+      "nb_marches": 359,
+      "montant_total": 81711010.97,
+      "montant_moyen": 227607.27
+    },
+    {
+      "categorie": "Informatique & Télécom",
+      "nb_marches": 64,
+      "montant_total": 62482062.49,
+      "montant_moyen": 976282.23
+    },
+    {
+      "categorie": "Énergie",
+      "nb_marches": 42,
+      "montant_total": 14155407.03,
+      "montant_moyen": 337033.5
+    },
+    {
+      "categorie": "Environnement & Propreté",
+      "nb_marches": 26,
+      "montant_total": 10096250.0,
+      "montant_moyen": 388317.31
+    },
+    {
+      "categorie": "Santé & Social",
+      "nb_marches": 6,
+      "montant_total": 617390.63,
+      "montant_moyen": 102898.44
+    }
+  ],
+  "top_marches": [
+    {
+      "objet": "Service de préparation et de livraison de repas à destination des écoles primaires de la ville de Lyon et des ACM Divertisport.",
+      "montant": 41000000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2021-12-22",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Service de préparation et de livraison de repas à destination des écoles primaires de la ville de Lyon et des ACM Divertisport.",
+      "montant": 41000000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2021-12-22",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Mandat de maîtrise d’ouvrage pour la rénovation énergétique des groupes scolaires Diderot et les Gémeaux et du bâtiment multi usages Dolet Boileau",
+      "montant": 15337360.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-09-30",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Mandat de maîtrise d’ouvrage pour la rénovation énergétique des groupes scolaires Diderot et les Gémeaux et du bâtiment multi usages Dolet Boileau",
+      "montant": 15337360.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-09-30",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "MS FOURNITURE DE GAZ ET BIOMETHANE",
+      "montant": 15000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-19",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "MS FOURNITURE DE GAZ ET BIOMETHANE",
+      "montant": 15000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-19",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture de produits d’entretien, d’hygiène et de matériels de nettoyage pour les services de la Ville de Lyon",
+      "montant": 9800000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-12-06",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture de produits d’entretien, d’hygiène et de matériels de nettoyage pour les services de la Ville de Lyon",
+      "montant": 9800000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-12-06",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture de produits d’entretien, d’hygiène et de matériels de nettoyage pour les services de la Ville de Lyon",
+      "montant": 9800000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-12-06",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine de l’éclairage public - Lot 04 : travaux electricite sur le patrimoine eclairage public-rive gauche",
+      "montant": 6000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-27",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine de l’éclairage public - Lot 04 : travaux electricite sur le patrimoine eclairage public-rive gauche",
+      "montant": 6000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-27",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine de l’éclairage public - Lot 04 : travaux electricite sur le patrimoine eclairage public-rive gauche",
+      "montant": 6000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-27",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine de l’éclairage public - Lot 03 : travaux électricité sur le patrimoine éclairage public-rive droite",
+      "montant": 6000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine de l’éclairage public - Lot 03 : travaux électricité sur le patrimoine éclairage public-rive droite",
+      "montant": 6000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine de l’éclairage public - Lot 03 : travaux électricité sur le patrimoine éclairage public-rive droite",
+      "montant": 6000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine de l’éclairage public - Lot 03 : travaux électricité sur le patrimoine éclairage public-rive droite",
+      "montant": 6000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine de l’éclairage public - Lot 03 : travaux électricité sur le patrimoine éclairage public-rive droite",
+      "montant": 6000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine de l’éclairage public - Lot 03 : travaux électricité sur le patrimoine éclairage public-rive droite",
+      "montant": 6000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture et pose de câblages banalisés multimédia et prestations associées",
+      "montant": 6000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2021-12-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture et pose de câblages banalisés multimédia et prestations associées",
+      "montant": 6000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2021-12-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations de nettoyage de tags, graffitis et affichage sauvage-Lot 1 Tous supports excepté mobilier de jalonnement",
+      "montant": 6000000.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2021-02-01",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Assurance multirisques du patrimoine de la Ville de Lyon",
+      "montant": 5483273.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-02-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Assurance multirisques du patrimoine de la Ville de Lyon",
+      "montant": 5483273.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-02-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Maintenance et hébergement d’un logiciel de gestion globale centralisée des outils de stationnement (GGCOS) à la ville de Lyon",
+      "montant": 5000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2021-10-01",
+      "procedure": "Marché négocié sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "Fourniture de candélabres nécessaires aux opérations d’aménagement et d’entretien",
+      "montant": 4800000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-09-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture de candélabres nécessaires aux opérations d’aménagement et d’entretien",
+      "montant": 4800000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-09-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Acquisition de véhicules utilitaires équipés et aménagés en motorisation GNV",
+      "montant": 4583333.33,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2021-12-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Acquisition de véhicules utilitaires équipés et aménagés en motorisation GNV",
+      "montant": 4583333.33,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2021-12-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Déplacements professionnels-Lot 1-Déplacements individuels ou de petits groupes",
+      "montant": 4400000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-09-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Déplacements professionnels-Lot 1-Déplacements individuels ou de petits groupes",
+      "montant": 4400000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-05-26",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Déplacements professionnels-Lot 1-Déplacements individuels ou de petits groupes",
+      "montant": 4400000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-05-26",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-10-27",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-10-27",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-10-06",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-10-06",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-10-05",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-10-05",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine de l’éclairage public - Lot 02 : travaux de terrassement sur patrimoine éclairage public- rive gauche",
+      "montant": 4000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-29",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine de l’éclairage public - Lot 02 : travaux de terrassement sur patrimoine éclairage public- rive gauche",
+      "montant": 4000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-29",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine de l’éclairage public - Lot 02 : travaux de terrassement sur patrimoine éclairage public- rive gauche",
+      "montant": 4000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-29",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine de l’éclairage public - Lot 02 : travaux de terrassement sur patrimoine éclairage public- rive gauche",
+      "montant": 4000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-29",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine de l’éclairage public - Lot 02 : travaux de terrassement sur patrimoine éclairage public- rive gauche",
+      "montant": 4000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-29",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine de l’éclairage public - Lot 01 travaux de terrassement sur patrimoine éclairage public Rive Droite",
+      "montant": 4000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine de l’éclairage public - Lot 01 travaux de terrassement sur patrimoine éclairage public Rive Droite",
+      "montant": 4000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur les armoires et régulations des installations de génie climatique",
+      "montant": 4000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture de matériel de pilotage, contrôle et télégestion des installations d’éclairage public",
+      "montant": 4000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-05-21",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "MS FOURNITURE DE GAZ ET BIOMETHANE",
+      "montant": 3623730.88,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-19",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture et maintenance d?équipements professionnels de cuisines, de self-service, de buanderies et prestations associées pour la Ville de Lyon - Lot 1",
+      "montant": 3600000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-07-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture et maintenance d?équipements professionnels de cuisines, de self-service, de buanderies et prestations associées pour la Ville de Lyon - Lot 1",
+      "montant": 3600000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-07-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture et maintenance d?équipements professionnels de cuisines, de self-service, de buanderies et prestations associées pour la Ville de Lyon - Lot 1",
+      "montant": 3600000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-07-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture et maintenance d?équipements professionnels de cuisines, de self-service, de buanderies et prestations associées pour la Ville de Lyon - Lot 1",
+      "montant": 3600000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-07-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Acquisition de fournitures de bureau et papier pour la Ville de Lyon et le CCAS de Lyon",
+      "montant": 3520000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2021-12-14",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Achat, réparation, location et installation de matériel de sonorisation et scénique-Lot 2-Achat et réparation de matériel professionnels d’éclairages scéniques",
+      "montant": 3400000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2021-10-21",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Achat, réparation, location et installation de matériel de sonorisation et scénique-Lot 2-Achat et réparation de matériel professionnels d’éclairages scéniques",
+      "montant": 3400000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2021-10-21",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Achat, réparation, location et installation de matériel de sonorisation et scénique-Lot 2-Achat et réparation de matériel professionnels d’éclairages scéniques",
+      "montant": 3400000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2021-10-21",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Acquisition de services de télécommunication - lot 1 : acquisition de services de télécommunication",
+      "montant": 3300000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-01-07",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Acquisition de services de télécommunication - lot 1 : acquisition de services de télécommunication",
+      "montant": 3300000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-01-07",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Duvivier Cronstadt construction lot03 gros oeuvre",
+      "montant": 3147000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-02-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Duvivier Cronstadt construction lot03 gros oeuvre",
+      "montant": 3147000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-02-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Duvivier Cronstadt construction lot03 gros oeuvre",
+      "montant": 3147000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-02-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Duvivier Cronstadt construction lot03 gros oeuvre",
+      "montant": 3147000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-02-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Duvivier Cronstadt construction lot03 gros oeuvre",
+      "montant": 3147000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-02-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Duvivier Cronstadt construction lot03 gros oeuvre",
+      "montant": 3147000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-02-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Duvivier Cronstadt construction lot03 gros oeuvre",
+      "montant": 3147000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-02-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Duvivier Cronstadt construction lot03 gros oeuvre",
+      "montant": 3147000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-02-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Duvivier Cronstadt construction lot03 gros oeuvre",
+      "montant": 3147000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-02-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Duvivier Cronstadt construction lot03 gros oeuvre",
+      "montant": 3147000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-02-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Maintenance et exploitation de l?ensemble des infrastructures du système de radiocommunication à la norme Tétra de la Ville de Lyon et achat de matériels",
+      "montant": 3000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2021-02-24",
+      "procedure": "Appel d'offres ouvert"
+    }
+  ]
+}

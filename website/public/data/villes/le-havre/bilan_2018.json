@@ -1,0 +1,17 @@
+{
+  "year": 2018,
+  "city_slug": "le-havre",
+  "totals": {
+    "actif_total": 2030018502.98,
+    "passif_total": 1723274552.3,
+    "dette_financiere": 316968044.62,
+    "fonds_propres": 1406306507.68,
+    "tresorerie": 32010358.04,
+    "immobilisations": 1998008144.94
+  },
+  "kpis": {
+    "ratio_endettement": 18.39,
+    "pct_fonds_propres": 81.61,
+    "dette_par_hab": 1860.67
+  }
+}

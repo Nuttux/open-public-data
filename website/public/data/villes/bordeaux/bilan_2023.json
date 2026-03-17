@@ -1,0 +1,17 @@
+{
+  "year": 2023,
+  "city_slug": "bordeaux",
+  "totals": {
+    "actif_total": 2667106106.54,
+    "passif_total": 2184584749.94,
+    "dette_financiere": 292331418.64,
+    "fonds_propres": 1892253331.3,
+    "tresorerie": 54486987.04,
+    "immobilisations": 2612619119.5
+  },
+  "kpis": {
+    "ratio_endettement": 13.38,
+    "pct_fonds_propres": 86.62,
+    "dette_par_hab": 1120.22
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "year": 2017,
+  "city_slug": "nantes",
+  "totals": {
+    "actif_total": 1576303865.53,
+    "passif_total": 1797100001.59,
+    "dette_financiere": 205776493.26,
+    "fonds_propres": 1591323508.33,
+    "tresorerie": 49847671.53,
+    "immobilisations": 1526456194.0
+  },
+  "kpis": {
+    "ratio_endettement": 11.45,
+    "pct_fonds_propres": 88.55,
+    "dette_par_hab": 641.58
+  }
+}

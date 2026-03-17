@@ -1,0 +1,864 @@
+{
+  "annee": 2020,
+  "city_slug": "toulouse",
+  "total_montant": 457662924.26,
+  "total_marches": 581,
+  "categories": [
+    {
+      "categorie": "Construction & Bâtiment",
+      "nb_marches": 214,
+      "montant_total": 265816303.65,
+      "montant_moyen": 1242132.26
+    },
+    {
+      "categorie": "Services professionnels",
+      "nb_marches": 211,
+      "montant_total": 139296957.92,
+      "montant_moyen": 660175.16
+    },
+    {
+      "categorie": "Autres",
+      "nb_marches": 62,
+      "montant_total": 32025785.78,
+      "montant_moyen": 516544.93
+    },
+    {
+      "categorie": "Alimentation & Restauration",
+      "nb_marches": 21,
+      "montant_total": 5576444.39,
+      "montant_moyen": 265544.97
+    },
+    {
+      "categorie": "Informatique & Télécom",
+      "nb_marches": 21,
+      "montant_total": 5261780.71,
+      "montant_moyen": 250560.99
+    },
+    {
+      "categorie": "Santé & Social",
+      "nb_marches": 19,
+      "montant_total": 3540434.6,
+      "montant_moyen": 186338.66
+    },
+    {
+      "categorie": "Environnement & Propreté",
+      "nb_marches": 15,
+      "montant_total": 3145185.6,
+      "montant_moyen": 209679.04
+    },
+    {
+      "categorie": "Transport & Véhicules",
+      "nb_marches": 15,
+      "montant_total": 2142521.0,
+      "montant_moyen": 142834.73
+    },
+    {
+      "categorie": "Énergie",
+      "nb_marches": 3,
+      "montant_total": 857510.61,
+      "montant_moyen": 285836.87
+    }
+  ],
+  "top_marches": [
+    {
+      "objet": "20M0369AOO-SUPPORT A L’ANIMATION ET LA GESTION DES PÉPINIERES ET HOTELS D’ENTREPRISES DE TOULOUSE MÉTROPOLE  2021- 2023 - AC-FP.",
+      "montant": 24360000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2020-12-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "20M0234AOO - TRAVAUX D’AMENAGEMENT DES ESPACES PUBLICS DU NOUVEAU QUARTIER EISENHOWER/SAINT SIMON ET DU PROJET CEINTURE SUD AVENUE EISENHOWER - SA/SG",
+      "montant": 12198550.85,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-10-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 10131726.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 10131726.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 10131726.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 10131726.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 10131726.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 10131726.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 8951531.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 8951531.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 8951531.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 8951531.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CREATION D’UN TECHNO-CENTRE SUR LE SITE ATLANTA -SA/NF-",
+      "montant": 5626106.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-05-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CREATION D’UN TECHNO-CENTRE SUR LE SITE ATLANTA -SA/NF-",
+      "montant": 5626106.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-05-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CREATION D’UN TECHNO-CENTRE SUR LE SITE ATLANTA -SA/NF-",
+      "montant": 5626106.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-05-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CREATION D’UN TECHNO-CENTRE SUR LE SITE ATLANTA -SA/NF-",
+      "montant": 5626106.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-05-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CREATION D’UN TECHNO-CENTRE SUR LE SITE ATLANTA -SA/NF-",
+      "montant": 5626106.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-05-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CREATION D’UN TECHNO-CENTRE SUR LE SITE ATLANTA -SA/NF-",
+      "montant": 5626106.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-05-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CREATION D’UN TECHNO-CENTRE SUR LE SITE ATLANTA -SA/NF-",
+      "montant": 5626106.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-05-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CREATION D’UN TECHNO-CENTRE SUR LE SITE ATLANTA -SA/NF-",
+      "montant": 5626106.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-05-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CREATION D’UN TECHNO-CENTRE SUR LE SITE ATLANTA -SA/NF-",
+      "montant": 5626106.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-05-13",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CREATION D’UN TECHNO-CENTRE SUR LE SITE ATLANTA -SA/NF-",
+      "montant": 5626106.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-05-13",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CREATION D’UN TECHNO-CENTRE SUR LE SITE ATLANTA -SA/NF-",
+      "montant": 5626106.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-05-13",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CREATION D’UN TECHNO-CENTRE SUR LE SITE ATLANTA -SA/NF-",
+      "montant": 5626106.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-05-13",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CREATION D’UN TECHNO-CENTRE SUR LE SITE ATLANTA -SA/NF-",
+      "montant": 5626106.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-05-13",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CREATION D’UN TECHNO-CENTRE SUR LE SITE ATLANTA -SA/NF-",
+      "montant": 5626106.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-05-13",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CREATION D’UN TECHNO-CENTRE SUR LE SITE ATLANTA -SA/NF-",
+      "montant": 5626106.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-05-13",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CREATION D’UN TECHNO-CENTRE SUR LE SITE ATLANTA -SA/NF-",
+      "montant": 5626106.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-05-13",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 5370918.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 5370918.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 5370918.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 5370918.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 5370918.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 5370918.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 5370918.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 4635650.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 4635650.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 4635650.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 4635650.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 3580612.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 3580612.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 3580612.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 3580612.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 2781390.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 2781390.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 2781390.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 2781390.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 2781390.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 2781390.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M268AO - TRAVAUX D’AMENAGEMENT DE LA LINEO 10 - AV/SG",
+      "montant": 2479680.63,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-06-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "19M268AO - TRAVAUX D’AMENAGEMENT DE LA LINEO 10 - AV/SG",
+      "montant": 2448332.81,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-06-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "TRAVAUX DE RESTAURATION DE LA CHAPELLE SAINT JOSEPH DE LA GRAVE-19V187PA-DT/NF-",
+      "montant": 2095023.97,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-04-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TRAVAUX DE RESTAURATION DE LA CHAPELLE SAINT JOSEPH DE LA GRAVE-19V187PA-DT/NF-",
+      "montant": 2095023.97,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-04-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 1854260.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 1854260.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 1854260.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "19M164MN - ACCORD-CADRE POUR LES TRAVAUX D’ASSAINISSEMENT, D’EAUX USEES, D’EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2020 A 2023 - SA/NF",
+      "montant": 1854260.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-06",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "TRAVAUX D’ASSAINISSEMENT EAUX USEES, EAUX PLUVIALES, ET D’EAU POTABLE COMMUNE D’AUCAMVILLE - ROUTE DE FRONTON. AV/LM",
+      "montant": 1840796.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-04-02",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TRAVAUX D’ASSAINISSEMENT EAUX USEES, EAUX PLUVIALES, ET D’EAU POTABLE COMMUNE D’AUCAMVILLE - ROUTE DE FRONTON. AV/LM",
+      "montant": 1840796.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-04-02",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TRAVAUX D’ASSAINISSEMENT EAUX USEES, EAUX PLUVIALES, ET D’EAU POTABLE COMMUNE D’AUCAMVILLE - ROUTE DE FRONTON. AV/LM",
+      "montant": 1840796.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-04-02",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "19C042AO - AC/JM - GARDIENNAGE, SURVEILLANCE ET SECURITE SUR LES SITES DE LA VILLE DE TOULOUSE, DE TOULOUSE METROPOLE ET DE L’ETABLISSEMENT PUBLIC FONCIER LOCAL - ANNEES 2019 A 2023",
+      "montant": 1800000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-06-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "19C042AO - AC/JM - GARDIENNAGE, SURVEILLANCE ET SECURITE SUR LES SITES DE LA VILLE DE TOULOUSE, DE TOULOUSE METROPOLE ET DE L’ETABLISSEMENT PUBLIC FONCIER LOCAL - ANNEES 2019 A 2023",
+      "montant": 1800000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-06-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "19C042AO - AC/JM - GARDIENNAGE, SURVEILLANCE ET SECURITE SUR LES SITES DE LA VILLE DE TOULOUSE, DE TOULOUSE METROPOLE ET DE L’ETABLISSEMENT PUBLIC FONCIER LOCAL - ANNEES 2019 A 2023",
+      "montant": 1800000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-06-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "TRAVAUX DE RESTAURATION PARTIELLE DES MURS-DIGUES DE LA RIVE DROITE DE LA GARONNE DANS LE CADRE DE LA RESTAURATION DES QUAIS HISTORIQUES DE TOULOUSE - 19M235AO - SA-SG",
+      "montant": 1783438.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "TRAVAUX DE RESTAURATION PARTIELLE DES MURS-DIGUES DE LA RIVE DROITE DE LA GARONNE DANS LE CADRE DE LA RESTAURATION DES QUAIS HISTORIQUES DE TOULOUSE - 19M235AO - SA-SG",
+      "montant": 1783438.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-03-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "N°19C196AO - JE-HZ - HEBERGEMENT, EXPLOITATION ET MAINTENANCE DE LA  PLATEFORME INTERNET EXTERNALISEE DE LA VILLE DE TOULOUSE ET DE TOULOUSE METROPOLE",
+      "montant": 1756366.7,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2020-07-07",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "TRAVAUX D’AMENAGEMENT DES VOIES DE LIAISON CITE BLANCHE - QUARTIER DES IZARDS - 20M0130PA - AV/LA",
+      "montant": 1686850.19,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-10-27",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "20M0059AOO - DG/ZA - ASSISTANCE A MAITRISE D’OUVRAGE POUR LE PROJET VILAGIL",
+      "montant": 1668000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "TRAVAUX DE CONSTRUCTION D’UN CREMATORIUM -19M286AO - DT/LM",
+      "montant": 1544179.26,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-04-29",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "20M0226MN - FOURNITURE DE MASQUES BARRIERE EN TISSU HOMOLOGUES AFNOR DG-HZ",
+      "montant": 1521000.0,
+      "categorie": "Santé & Social",
+      "titulaire": "",
+      "date": "2020-04-23",
+      "procedure": "Marché négocié sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - REGROUPEMENT DES ATELIERS DU THEATRE DU CAPITOLE - CONSTRUCTION NEUVE -SA/SG-",
+      "montant": 1455101.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-06-18",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "20V0071AOO - Fourniture et location d’un groupe scolaire provisoire en bâtiments modulaires à SAINT SIMON - Années 2020-2024.<br />",
+      "montant": 1212507.34,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-06-03",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "19C042AO - AC/JM - GARDIENNAGE, SURVEILLANCE ET SECURITE SUR LES SITES DE LA VILLE DE TOULOUSE, DE TOULOUSE METROPOLE ET DE L’ETABLISSEMENT PUBLIC FONCIER LOCAL - ANNEES 2019 A 2023",
+      "montant": 1200000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-05-12",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "19C042AO - AC/JM - GARDIENNAGE, SURVEILLANCE ET SECURITE SUR LES SITES DE LA VILLE DE TOULOUSE, DE TOULOUSE METROPOLE ET DE L’ETABLISSEMENT PUBLIC FONCIER LOCAL - ANNEES 2019 A 2023",
+      "montant": 1200000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-05-12",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "19C042AO - AC/JM - GARDIENNAGE, SURVEILLANCE ET SECURITE SUR LES SITES DE LA VILLE DE TOULOUSE, DE TOULOUSE METROPOLE ET DE L’ETABLISSEMENT PUBLIC FONCIER LOCAL - ANNEES 2019 A 2023",
+      "montant": 1200000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-05-12",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "19M297PA - TRAVAUX D’AMENAGEMENT D’INFRASTRUCTURES POUR LA LIGNE DE BUS STRUCTURANTE \"CEINTURE SUD\"-SA/LM",
+      "montant": 1157081.22,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-07-15",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "19M297PA - TRAVAUX D’AMENAGEMENT D’INFRASTRUCTURES POUR LA LIGNE DE BUS STRUCTURANTE \"CEINTURE SUD\"-SA/LM",
+      "montant": 1157081.22,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-07-15",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "19M297PA - TRAVAUX D’AMENAGEMENT D’INFRASTRUCTURES POUR LA LIGNE DE BUS STRUCTURANTE \"CEINTURE SUD\"-SA/LM",
+      "montant": 1157081.22,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-07-15",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "19M297PA - TRAVAUX D’AMENAGEMENT D’INFRASTRUCTURES POUR LA LIGNE DE BUS STRUCTURANTE \"CEINTURE SUD\"-SA/LM",
+      "montant": 1157081.22,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-07-15",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CONSTRUCTION DU GROUPE SCOLAIRE BARIGOUDE-MS/NF-Avenue James Clerck Maxwell à Toulouse - (Parcelle cadastrale n° AH 217)",
+      "montant": 1152196.5,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-04-02",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CONSTRUCTION DU GROUPE SCOLAIRE BARIGOUDE-MS/NF-Avenue James Clerck Maxwell à Toulouse - (Parcelle cadastrale n° AH 217)",
+      "montant": 1152196.5,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-04-02",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CONSTRUCTION DU GROUPE SCOLAIRE BARIGOUDE-MS/NF-Avenue James Clerck Maxwell à Toulouse - (Parcelle cadastrale n° AH 217)",
+      "montant": 1152196.5,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-04-02",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CONSTRUCTION DU GROUPE SCOLAIRE BARIGOUDE-MS/NF-Avenue James Clerck Maxwell à Toulouse - (Parcelle cadastrale n° AH 217)",
+      "montant": 1152196.5,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-04-02",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CONSTRUCTION DU GROUPE SCOLAIRE BARIGOUDE-MS/NF-Avenue James Clerck Maxwell à Toulouse - (Parcelle cadastrale n° AH 217)",
+      "montant": 1152196.5,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-04-02",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CONSTRUCTION DU GROUPE SCOLAIRE BARIGOUDE-MS/NF-Avenue James Clerck Maxwell à Toulouse - (Parcelle cadastrale n° AH 217)",
+      "montant": 1152196.5,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-04-02",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CONSTRUCTION DU GROUPE SCOLAIRE BARIGOUDE-MS/NF-Avenue James Clerck Maxwell à Toulouse - (Parcelle cadastrale n° AH 217)",
+      "montant": 1152196.5,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-04-02",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CONSTRUCTION DU GROUPE SCOLAIRE BARIGOUDE-MS/NF-Avenue James Clerck Maxwell à Toulouse - (Parcelle cadastrale n° AH 217)",
+      "montant": 1152196.5,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-04-02",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE/ZD-19C033AO-ACHAT ET MAINTENANCE DE SYSTEMES D’IMPRESSIONS NUMERIQUES",
+      "montant": 1094770.5,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2020-01-10",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "19M270AO - JE/EO - PRESTATIONS DE NETTOIEMENT SUR LES COMMUNES DE CUGNAUX ET TOURNEFEUILLE - ANNEES 2020 A 2023",
+      "montant": 1090000.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2020-07-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "MARCHE SUBSEQUENT N°10 - PRESTATIONS DE MAITRISE D’OEUVRE POUR L’AMENAGEMENT DES ALLEES DE BELLEFONTAINE, DE LA PLACE COMMERCIALE ET DE LA PLACE MARTIN LUTHER KING ACCORD CADRE N° 13M136AC - VA/LA 2 LOTS",
+      "montant": 1040880.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-11-26",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Lot 14",
+      "montant": 1000000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2020-12-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Numéro de la consultation : 20M0179PA PROJET DE RENOUVELLEMENT URBAIN DE LA REYNERIE - TRAVAUX D’AMENAGEMENT DES ESPACES PUBLICS - ABORDS DE L’ILOT 8 - DT/NF",
+      "montant": 995491.56,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-10-12",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "20M0137AOO - FOURNITURE DE COMPOSTEURS EN BOIS POUR JARDINS INDIVIDUELS, COMPOSTEURS COLLECTIFS ET DE SEAUX A DECHETS ORGANIQUES (BIO-SEAUX) POUR LES ANNEES 2020 A 2024 - JE/FP",
+      "montant": 971676.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2020-08-21",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de réaménagement du secteur du Boiret - Commune de Cornebarrieu - 19M307PA",
+      "montant": 914604.24,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-09-28",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Travaux de réaménagement du secteur du Boiret - Commune de Cornebarrieu - 19M307PA",
+      "montant": 914604.24,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-09-28",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Travaux de réaménagement du secteur du Boiret - Commune de Cornebarrieu - 19M307PA",
+      "montant": 914604.24,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-09-28",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Travaux de réaménagement du secteur du Boiret - Commune de Cornebarrieu - 19M307PA",
+      "montant": 914604.24,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-09-28",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Lot 12",
+      "montant": 850000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2020-12-30",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "19M294PA - Travaux de modernisation  et recalibrage du réseau pluvial - Boulevard des Récollets - Commune de Toulouse / SA",
+      "montant": 831625.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-06-18",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "20MC0027AOO - AC-JM - RESERVATION ET FOURNITURE DE TITRES DE TRANSPORT ET PRESTATIONS ASSOCIEES",
+      "montant": 830000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2020-10-30",
+      "procedure": "Appel d'offres ouvert"
+    }
+  ]
+}

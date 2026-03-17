@@ -1,0 +1,311 @@
+{
+  "year": 2021,
+  "type_budget": "execute",
+  "city_slug": "nantes",
+  "city_name": "Nantes",
+  "dataStatus": "COMPLET",
+  "totals": {
+    "recettes": 512979376.66,
+    "depenses": 510135535.75,
+    "solde": 2843840.91
+  },
+  "nodes": [
+    {
+      "name": "Fiscalité",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations État",
+      "category": "revenue"
+    },
+    {
+      "name": "Emprunts",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits des services",
+      "category": "revenue"
+    },
+    {
+      "name": "Autres produits",
+      "category": "revenue"
+    },
+    {
+      "name": "Subventions investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits exceptionnels",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits financiers",
+      "category": "revenue"
+    },
+    {
+      "name": "Reprises",
+      "category": "revenue"
+    },
+    {
+      "name": "Budget Nantes",
+      "category": "central"
+    },
+    {
+      "name": "Personnel",
+      "category": "expense"
+    },
+    {
+      "name": "Fonctionnement courant",
+      "category": "expense"
+    },
+    {
+      "name": "Investissements",
+      "category": "expense"
+    },
+    {
+      "name": "Transferts & subventions",
+      "category": "expense"
+    },
+    {
+      "name": "Amortissements",
+      "category": "expense"
+    },
+    {
+      "name": "Charges fiscales",
+      "category": "expense"
+    },
+    {
+      "name": "Charges exceptionnelles",
+      "category": "expense"
+    },
+    {
+      "name": "Charges financières",
+      "category": "expense"
+    },
+    {
+      "name": "Dette",
+      "category": "expense"
+    }
+  ],
+  "links": [
+    {
+      "source": "Fiscalité",
+      "target": "Budget Nantes",
+      "value": 304206911.96
+    },
+    {
+      "source": "Dotations État",
+      "target": "Budget Nantes",
+      "value": 96123771.38
+    },
+    {
+      "source": "Emprunts",
+      "target": "Budget Nantes",
+      "value": 38432423.55
+    },
+    {
+      "source": "Dotations investissement",
+      "target": "Budget Nantes",
+      "value": 30247849.29
+    },
+    {
+      "source": "Produits des services",
+      "target": "Budget Nantes",
+      "value": 28370182.1
+    },
+    {
+      "source": "Autres produits",
+      "target": "Budget Nantes",
+      "value": 8787312.14
+    },
+    {
+      "source": "Subventions investissement",
+      "target": "Budget Nantes",
+      "value": 4364274.49
+    },
+    {
+      "source": "Produits exceptionnels",
+      "target": "Budget Nantes",
+      "value": 2356109.49
+    },
+    {
+      "source": "Produits financiers",
+      "target": "Budget Nantes",
+      "value": 50542.26
+    },
+    {
+      "source": "Reprises",
+      "target": "Budget Nantes",
+      "value": 40000.0
+    },
+    {
+      "source": "Budget Nantes",
+      "target": "Personnel",
+      "value": 154514559.18
+    },
+    {
+      "source": "Budget Nantes",
+      "target": "Fonctionnement courant",
+      "value": 126739488.45
+    },
+    {
+      "source": "Budget Nantes",
+      "target": "Investissements",
+      "value": 106249215.59
+    },
+    {
+      "source": "Budget Nantes",
+      "target": "Transferts & subventions",
+      "value": 95946027.81
+    },
+    {
+      "source": "Budget Nantes",
+      "target": "Amortissements",
+      "value": 16066537.19
+    },
+    {
+      "source": "Budget Nantes",
+      "target": "Charges fiscales",
+      "value": 4231799.78
+    },
+    {
+      "source": "Budget Nantes",
+      "target": "Charges exceptionnelles",
+      "value": 3305395.08
+    },
+    {
+      "source": "Budget Nantes",
+      "target": "Charges financières",
+      "value": 2110178.4
+    },
+    {
+      "source": "Budget Nantes",
+      "target": "Dette",
+      "value": 972334.27
+    }
+  ],
+  "drilldown": {
+    "revenue": {
+      "Fiscalité": [
+        {
+          "name": "Fiscalité",
+          "value": 304206911.96
+        }
+      ],
+      "Dotations État": [
+        {
+          "name": "Dotations État",
+          "value": 96123771.38
+        }
+      ],
+      "Emprunts": [
+        {
+          "name": "Emprunts",
+          "value": 38432423.55
+        }
+      ],
+      "Dotations investissement": [
+        {
+          "name": "Dotations investissement",
+          "value": 30247849.29
+        }
+      ],
+      "Produits des services": [
+        {
+          "name": "Produits des services",
+          "value": 28370182.1
+        }
+      ],
+      "Autres produits": [
+        {
+          "name": "Autres produits",
+          "value": 8787312.14
+        }
+      ],
+      "Subventions investissement": [
+        {
+          "name": "Subventions investissement",
+          "value": 4364274.49
+        }
+      ],
+      "Produits exceptionnels": [
+        {
+          "name": "Produits exceptionnels",
+          "value": 2356109.49
+        }
+      ],
+      "Produits financiers": [
+        {
+          "name": "Produits financiers",
+          "value": 50542.26
+        }
+      ],
+      "Reprises": [
+        {
+          "name": "Reprises",
+          "value": 40000.0
+        }
+      ]
+    },
+    "expenses": {
+      "Personnel": [
+        {
+          "name": "Personnel",
+          "value": 154514559.18
+        }
+      ],
+      "Fonctionnement courant": [
+        {
+          "name": "Fonctionnement courant",
+          "value": 126739488.45
+        }
+      ],
+      "Investissements": [
+        {
+          "name": "Investissements",
+          "value": 106249215.59
+        }
+      ],
+      "Transferts & subventions": [
+        {
+          "name": "Transferts & subventions",
+          "value": 95946027.81
+        }
+      ],
+      "Amortissements": [
+        {
+          "name": "Amortissements",
+          "value": 16066537.19
+        }
+      ],
+      "Charges fiscales": [
+        {
+          "name": "Charges fiscales",
+          "value": 4231799.78
+        }
+      ],
+      "Charges exceptionnelles": [
+        {
+          "name": "Charges exceptionnelles",
+          "value": 3305395.08
+        }
+      ],
+      "Charges financières": [
+        {
+          "name": "Charges financières",
+          "value": 2110178.4
+        }
+      ],
+      "Dette": [
+        {
+          "name": "Dette",
+          "value": 972334.27
+        }
+      ]
+    }
+  }
+}

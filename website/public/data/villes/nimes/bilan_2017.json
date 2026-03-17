@@ -1,0 +1,17 @@
+{
+  "year": 2017,
+  "city_slug": "nimes",
+  "totals": {
+    "actif_total": 1690335119.41,
+    "passif_total": 1463582126.77,
+    "dette_financiere": 253572353.15,
+    "fonds_propres": 1210009773.62,
+    "tresorerie": 25065749.44,
+    "immobilisations": 1665269369.97
+  },
+  "kpis": {
+    "ratio_endettement": 17.33,
+    "pct_fonds_propres": 82.67,
+    "dette_par_hab": 1710.6
+  }
+}

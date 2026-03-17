@@ -1,0 +1,194 @@
+[
+  {
+    "year": 2017,
+    "recettes_totales": 763799774.48,
+    "depenses_totales": 738745161.66,
+    "solde": 25054612.82,
+    "epargne_brute": 63861616.37,
+    "section": {
+      "Fonctionnement": {
+        "recettes": 699184111.76,
+        "depenses": 635322495.39
+      },
+      "Investissement": {
+        "recettes": 64615662.72,
+        "depenses": 103422666.27
+      }
+    },
+    "par_categorie": {
+      "personnel": 341535980.44,
+      "fonctionnement_courant": 116960337.14,
+      "transferts": 120936439.83,
+      "charges_financieres": 9196234.78,
+      "investissements": 103422666.27
+    }
+  },
+  {
+    "year": 2018,
+    "recettes_totales": 797116622.33,
+    "depenses_totales": 732800648.61,
+    "solde": 64315973.72,
+    "epargne_brute": 101510178.89,
+    "section": {
+      "Fonctionnement": {
+        "recettes": 729030949.64,
+        "depenses": 627520770.75
+      },
+      "Investissement": {
+        "recettes": 68085672.69,
+        "depenses": 105279877.86
+      }
+    },
+    "par_categorie": {
+      "personnel": 339233220.82,
+      "fonctionnement_courant": 114752835.13,
+      "transferts": 121810805.72,
+      "charges_financieres": 7735361.4,
+      "investissements": 105279877.86
+    }
+  },
+  {
+    "year": 2019,
+    "recettes_totales": 855679566.51,
+    "depenses_totales": 838294144.58,
+    "solde": 17385421.93,
+    "epargne_brute": 98177736.8,
+    "section": {
+      "Fonctionnement": {
+        "recettes": 728690024.96,
+        "depenses": 630512288.16
+      },
+      "Investissement": {
+        "recettes": 126989541.55,
+        "depenses": 207781856.42
+      }
+    },
+    "par_categorie": {
+      "personnel": 338230550.24,
+      "fonctionnement_courant": 118211507.68,
+      "transferts": 124225678.18,
+      "charges_financieres": 6771504.77,
+      "investissements": 207781856.42
+    }
+  },
+  {
+    "year": 2020,
+    "recettes_totales": 782591291.99,
+    "depenses_totales": 756823083.42,
+    "solde": 25768208.57,
+    "epargne_brute": 59206264.88,
+    "section": {
+      "Fonctionnement": {
+        "recettes": 698595120.45,
+        "depenses": 639388855.57
+      },
+      "Investissement": {
+        "recettes": 83996171.54,
+        "depenses": 117434227.85
+      }
+    },
+    "par_categorie": {
+      "personnel": 342263691.73,
+      "fonctionnement_courant": 118879542.19,
+      "transferts": 128871148.37,
+      "charges_financieres": 5032429.98,
+      "investissements": 117434227.85
+    }
+  },
+  {
+    "year": 2021,
+    "recettes_totales": 872606501.06,
+    "depenses_totales": 772537849.04,
+    "solde": 100068652.02,
+    "epargne_brute": 44653128.34,
+    "section": {
+      "Fonctionnement": {
+        "recettes": 721772959.2,
+        "depenses": 677119830.86
+      },
+      "Investissement": {
+        "recettes": 150833541.86,
+        "depenses": 95418018.18
+      }
+    },
+    "par_categorie": {
+      "personnel": 347820353.85,
+      "fonctionnement_courant": 119023157.55,
+      "transferts": 135353641.53,
+      "charges_financieres": 4566145.63,
+      "investissements": 95418018.18
+    }
+  },
+  {
+    "year": 2022,
+    "recettes_totales": 817456521.69,
+    "depenses_totales": 789837113.12,
+    "solde": 27619408.57,
+    "epargne_brute": 77712963.94,
+    "section": {
+      "Fonctionnement": {
+        "recettes": 762499410.07,
+        "depenses": 684786446.13
+      },
+      "Investissement": {
+        "recettes": 54957111.62,
+        "depenses": 105050666.99
+      }
+    },
+    "par_categorie": {
+      "personnel": 366576691.46,
+      "fonctionnement_courant": 127747145.83,
+      "transferts": 137377675.56,
+      "charges_financieres": 3901977.64,
+      "investissements": 105050666.99
+    }
+  },
+  {
+    "year": 2023,
+    "recettes_totales": 922595786.18,
+    "depenses_totales": 869448607.21,
+    "solde": 53147178.97,
+    "epargne_brute": 98174890.88,
+    "section": {
+      "Fonctionnement": {
+        "recettes": 829524355.27,
+        "depenses": 731349464.39
+      },
+      "Investissement": {
+        "recettes": 93071430.91,
+        "depenses": 138099142.82
+      }
+    },
+    "par_categorie": {
+      "personnel": 380583848.49,
+      "fonctionnement_courant": 151801682.47,
+      "transferts": 136785467.86,
+      "charges_financieres": 5536415.72,
+      "investissements": 138099142.82
+    }
+  },
+  {
+    "year": 2024,
+    "recettes_totales": 956605134.04,
+    "depenses_totales": 918770652.0,
+    "solde": 37834482.04,
+    "epargne_brute": 75732198.13,
+    "section": {
+      "Fonctionnement": {
+        "recettes": 833545118.91,
+        "depenses": 757812920.78
+      },
+      "Investissement": {
+        "recettes": 123060015.13,
+        "depenses": 160957731.22
+      }
+    },
+    "par_categorie": {
+      "personnel": 403251607.83,
+      "fonctionnement_courant": 153710983.45,
+      "transferts": 144101174.84,
+      "charges_financieres": 5589451.81,
+      "investissements": 160957731.22
+    }
+  }
+]

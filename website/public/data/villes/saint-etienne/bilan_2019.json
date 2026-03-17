@@ -1,0 +1,17 @@
+{
+  "year": 2019,
+  "city_slug": "saint-etienne",
+  "totals": {
+    "actif_total": 2164354797.82,
+    "passif_total": 1683415765.53,
+    "dette_financiere": 308571161.42,
+    "fonds_propres": 1374844604.11,
+    "tresorerie": 57480480.74,
+    "immobilisations": 2106874317.08
+  },
+  "kpis": {
+    "ratio_endettement": 18.33,
+    "pct_fonds_propres": 81.67,
+    "dette_par_hab": 1772.56
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "year": 2022,
+  "city_slug": "saint-etienne",
+  "totals": {
+    "actif_total": 2180725318.52,
+    "passif_total": 1764229704.56,
+    "dette_financiere": 263240381.63,
+    "fonds_propres": 1500989322.93,
+    "tresorerie": 23475841.64,
+    "immobilisations": 2157249476.88
+  },
+  "kpis": {
+    "ratio_endettement": 14.92,
+    "pct_fonds_propres": 85.08,
+    "dette_par_hab": 1512.16
+  }
+}

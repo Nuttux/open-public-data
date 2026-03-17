@@ -1,0 +1,282 @@
+{
+  "annee": 2019,
+  "city_slug": "lyon",
+  "total_montant": 2353108,
+  "nb_subventions": 39,
+  "nb_beneficiaires": 39,
+  "beneficiaires": [
+    {
+      "beneficiaire": "Association Lyon 28",
+      "objet": "Subvention 2019 - activité sociale",
+      "montant": 129964,
+      "nature": "Aide en numéraire",
+      "date": "2019-03-26"
+    },
+    {
+      "beneficiaire": "Association Lyon 7",
+      "objet": "Subvention 2019 - activité sociale",
+      "montant": 127267,
+      "nature": "Aide en numéraire",
+      "date": "2019-08-20"
+    },
+    {
+      "beneficiaire": "Association Lyon 8",
+      "objet": "Subvention 2019 - activité culturelle",
+      "montant": 118010,
+      "nature": "Aide en numéraire",
+      "date": "2019-02-04"
+    },
+    {
+      "beneficiaire": "Association Lyon 3",
+      "objet": "Subvention 2019 - activité culturelle",
+      "montant": 114237,
+      "nature": "Aide en nature",
+      "date": "2019-11-28"
+    },
+    {
+      "beneficiaire": "Association Lyon 39",
+      "objet": "Subvention 2019 - activité culturelle",
+      "montant": 111892,
+      "nature": "Aide en numéraire",
+      "date": "2019-10-18"
+    },
+    {
+      "beneficiaire": "Association Lyon 15",
+      "objet": "Subvention 2019 - activité éducative",
+      "montant": 110304,
+      "nature": "Aide en numéraire",
+      "date": "2019-08-03"
+    },
+    {
+      "beneficiaire": "Association Lyon 4",
+      "objet": "Subvention 2019 - activité culturelle",
+      "montant": 105415,
+      "nature": "Aide en numéraire",
+      "date": "2019-02-02"
+    },
+    {
+      "beneficiaire": "Association Lyon 26",
+      "objet": "Subvention 2019 - activité sociale",
+      "montant": 92568,
+      "nature": "Aide en nature",
+      "date": "2019-04-14"
+    },
+    {
+      "beneficiaire": "Association Lyon 20",
+      "objet": "Subvention 2019 - activité sociale",
+      "montant": 86078,
+      "nature": "Aide en nature",
+      "date": "2019-10-03"
+    },
+    {
+      "beneficiaire": "Association Lyon 9",
+      "objet": "Subvention 2019 - activité éducative",
+      "montant": 85905,
+      "nature": "Aide en numéraire",
+      "date": "2019-02-26"
+    },
+    {
+      "beneficiaire": "Association Lyon 30",
+      "objet": "Subvention 2019 - activité éducative",
+      "montant": 85602,
+      "nature": "Aide en nature",
+      "date": "2019-07-07"
+    },
+    {
+      "beneficiaire": "Association Lyon 1",
+      "objet": "Subvention 2019 - activité éducative",
+      "montant": 77753,
+      "nature": "Aide en nature",
+      "date": "2019-01-02"
+    },
+    {
+      "beneficiaire": "Association Lyon 25",
+      "objet": "Subvention 2019 - activité éducative",
+      "montant": 72888,
+      "nature": "Aide en numéraire",
+      "date": "2019-11-02"
+    },
+    {
+      "beneficiaire": "Association Lyon 5",
+      "objet": "Subvention 2019 - activité culturelle",
+      "montant": 71737,
+      "nature": "Aide en numéraire",
+      "date": "2019-08-20"
+    },
+    {
+      "beneficiaire": "Association Lyon 29",
+      "objet": "Subvention 2019 - activité sociale",
+      "montant": 71225,
+      "nature": "Aide en numéraire",
+      "date": "2019-02-08"
+    },
+    {
+      "beneficiaire": "Association Lyon 23",
+      "objet": "Subvention 2019 - activité culturelle",
+      "montant": 68441,
+      "nature": "Aide en numéraire",
+      "date": "2019-05-02"
+    },
+    {
+      "beneficiaire": "Association Lyon 10",
+      "objet": "Subvention 2019 - activité culturelle",
+      "montant": 63365,
+      "nature": "Aide en nature",
+      "date": "2019-06-04"
+    },
+    {
+      "beneficiaire": "Association Lyon 17",
+      "objet": "Subvention 2019 - activité sportive",
+      "montant": 62031,
+      "nature": "Aide en nature",
+      "date": "2019-12-05"
+    },
+    {
+      "beneficiaire": "Association Lyon 21",
+      "objet": "Subvention 2019 - activité sportive",
+      "montant": 52899,
+      "nature": "Aide en numéraire",
+      "date": "2019-09-08"
+    },
+    {
+      "beneficiaire": "Association Lyon 12",
+      "objet": "Subvention 2019 - activité culturelle",
+      "montant": 51250,
+      "nature": "Aide en numéraire",
+      "date": "2019-05-05"
+    },
+    {
+      "beneficiaire": "Association Lyon 27",
+      "objet": "Subvention 2019 - activité sportive",
+      "montant": 51088,
+      "nature": "Aide en nature",
+      "date": "2019-01-04"
+    },
+    {
+      "beneficiaire": "Association Lyon 11",
+      "objet": "Subvention 2019 - activité culturelle",
+      "montant": 49392,
+      "nature": "Aide en numéraire",
+      "date": "2019-01-19"
+    },
+    {
+      "beneficiaire": "Association Lyon 37",
+      "objet": "Subvention 2019 - activité sociale",
+      "montant": 43917,
+      "nature": "Aide en numéraire",
+      "date": "2019-08-15"
+    },
+    {
+      "beneficiaire": "Association Lyon 14",
+      "objet": "Subvention 2019 - activité éducative",
+      "montant": 38981,
+      "nature": "Aide en numéraire",
+      "date": "2019-03-04"
+    },
+    {
+      "beneficiaire": "Association Lyon 6",
+      "objet": "Subvention 2019 - activité sociale",
+      "montant": 38853,
+      "nature": "Aide en numéraire",
+      "date": "2019-01-06"
+    },
+    {
+      "beneficiaire": "Association Lyon 19",
+      "objet": "Subvention 2019 - activité éducative",
+      "montant": 38395,
+      "nature": "Aide en numéraire",
+      "date": "2019-10-23"
+    },
+    {
+      "beneficiaire": "Association Lyon 32",
+      "objet": "Subvention 2019 - activité sociale",
+      "montant": 38110,
+      "nature": "Aide en nature",
+      "date": "2019-04-13"
+    },
+    {
+      "beneficiaire": "Association Lyon 31",
+      "objet": "Subvention 2019 - activité sportive",
+      "montant": 37167,
+      "nature": "Aide en numéraire",
+      "date": "2019-06-08"
+    },
+    {
+      "beneficiaire": "Association Lyon 34",
+      "objet": "Subvention 2019 - activité culturelle",
+      "montant": 35311,
+      "nature": "Aide en nature",
+      "date": "2019-03-13"
+    },
+    {
+      "beneficiaire": "Association Lyon 36",
+      "objet": "Subvention 2019 - activité sportive",
+      "montant": 33447,
+      "nature": "Aide en numéraire",
+      "date": "2019-01-23"
+    },
+    {
+      "beneficiaire": "Association Lyon 38",
+      "objet": "Subvention 2019 - activité éducative",
+      "montant": 29306,
+      "nature": "Aide en nature",
+      "date": "2019-04-10"
+    },
+    {
+      "beneficiaire": "Association Lyon 13",
+      "objet": "Subvention 2019 - activité éducative",
+      "montant": 28885,
+      "nature": "Aide en nature",
+      "date": "2019-09-06"
+    },
+    {
+      "beneficiaire": "Association Lyon 18",
+      "objet": "Subvention 2019 - activité culturelle",
+      "montant": 25551,
+      "nature": "Aide en nature",
+      "date": "2019-09-15"
+    },
+    {
+      "beneficiaire": "Association Lyon 35",
+      "objet": "Subvention 2019 - activité sportive",
+      "montant": 24658,
+      "nature": "Aide en numéraire",
+      "date": "2019-11-12"
+    },
+    {
+      "beneficiaire": "Association Lyon 22",
+      "objet": "Subvention 2019 - activité culturelle",
+      "montant": 22134,
+      "nature": "Aide en numéraire",
+      "date": "2019-10-12"
+    },
+    {
+      "beneficiaire": "Association Lyon 24",
+      "objet": "Subvention 2019 - activité culturelle",
+      "montant": 21489,
+      "nature": "Aide en numéraire",
+      "date": "2019-11-28"
+    },
+    {
+      "beneficiaire": "Association Lyon 33",
+      "objet": "Subvention 2019 - activité culturelle",
+      "montant": 16261,
+      "nature": "Aide en nature",
+      "date": "2019-01-14"
+    },
+    {
+      "beneficiaire": "Association Lyon 2",
+      "objet": "Subvention 2019 - activité sportive",
+      "montant": 13927,
+      "nature": "Aide en numéraire",
+      "date": "2019-07-04"
+    },
+    {
+      "beneficiaire": "Association Lyon 16",
+      "objet": "Subvention 2019 - activité sociale",
+      "montant": 7405,
+      "nature": "Aide en numéraire",
+      "date": "2019-12-21"
+    }
+  ]
+}

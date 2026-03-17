@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: stg_dgfip_balances
+    description: "Balances comptables DGFiP nettoyées - 1 ligne = 1 compte M57 par commune/année"
+    columns:
+      - name: commune_slug
+        tests: [not_null]
+      - name: annee
+        tests: [not_null]
+      - name: compte
+        tests: [not_null]
+
+  - name: stg_ofgl_communes
+    description: "Agrégats OFGL nettoyés - KPIs financiers par commune/année"
+    columns:
+      - name: commune_slug
+        tests: [not_null]
+
+  - name: stg_decp_marches
+    description: "DECP marchés publics nettoyés - 1 ligne = 1 marché notifié"
+    columns:
+      - name: commune_slug
+        tests: [not_null]
+      - name: marche_id
+        tests: [not_null]
+
+  - name: stg_subventions_nat
+    description: "Subventions nationales SCDL nettoyées - 1 ligne = 1 subvention > 23k€"
+    columns:
+      - name: commune_slug
+        tests: [not_null]

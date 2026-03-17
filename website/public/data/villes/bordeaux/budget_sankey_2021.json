@@ -1,0 +1,311 @@
+{
+  "year": 2021,
+  "type_budget": "execute",
+  "city_slug": "bordeaux",
+  "city_name": "Bordeaux",
+  "dataStatus": "COMPLET",
+  "totals": {
+    "recettes": 510030544.2,
+    "depenses": 454900936.86,
+    "solde": 55129607.34
+  },
+  "nodes": [
+    {
+      "name": "Fiscalité",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations État",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits des services",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits exceptionnels",
+      "category": "revenue"
+    },
+    {
+      "name": "Emprunts",
+      "category": "revenue"
+    },
+    {
+      "name": "Subventions investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Autres produits",
+      "category": "revenue"
+    },
+    {
+      "name": "Reprises",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits financiers",
+      "category": "revenue"
+    },
+    {
+      "name": "Budget Bordeaux",
+      "category": "central"
+    },
+    {
+      "name": "Personnel",
+      "category": "expense"
+    },
+    {
+      "name": "Investissements",
+      "category": "expense"
+    },
+    {
+      "name": "Transferts & subventions",
+      "category": "expense"
+    },
+    {
+      "name": "Fonctionnement courant",
+      "category": "expense"
+    },
+    {
+      "name": "Amortissements",
+      "category": "expense"
+    },
+    {
+      "name": "Charges exceptionnelles",
+      "category": "expense"
+    },
+    {
+      "name": "Charges financières",
+      "category": "expense"
+    },
+    {
+      "name": "Charges fiscales",
+      "category": "expense"
+    },
+    {
+      "name": "Dette",
+      "category": "expense"
+    }
+  ],
+  "links": [
+    {
+      "source": "Fiscalité",
+      "target": "Budget Bordeaux",
+      "value": 306886229.55
+    },
+    {
+      "source": "Dotations État",
+      "target": "Budget Bordeaux",
+      "value": 63406547.91
+    },
+    {
+      "source": "Dotations investissement",
+      "target": "Budget Bordeaux",
+      "value": 45575079.34
+    },
+    {
+      "source": "Produits des services",
+      "target": "Budget Bordeaux",
+      "value": 37762443.32
+    },
+    {
+      "source": "Produits exceptionnels",
+      "target": "Budget Bordeaux",
+      "value": 24253794.08
+    },
+    {
+      "source": "Emprunts",
+      "target": "Budget Bordeaux",
+      "value": 13896487.69
+    },
+    {
+      "source": "Subventions investissement",
+      "target": "Budget Bordeaux",
+      "value": 11146896.41
+    },
+    {
+      "source": "Autres produits",
+      "target": "Budget Bordeaux",
+      "value": 6884231.01
+    },
+    {
+      "source": "Reprises",
+      "target": "Budget Bordeaux",
+      "value": 206991.14
+    },
+    {
+      "source": "Produits financiers",
+      "target": "Budget Bordeaux",
+      "value": 11843.75
+    },
+    {
+      "source": "Budget Bordeaux",
+      "target": "Personnel",
+      "value": 145800979.01
+    },
+    {
+      "source": "Budget Bordeaux",
+      "target": "Investissements",
+      "value": 108007870.47
+    },
+    {
+      "source": "Budget Bordeaux",
+      "target": "Transferts & subventions",
+      "value": 83392406.86
+    },
+    {
+      "source": "Budget Bordeaux",
+      "target": "Fonctionnement courant",
+      "value": 65478254.18
+    },
+    {
+      "source": "Budget Bordeaux",
+      "target": "Amortissements",
+      "value": 29624926.36
+    },
+    {
+      "source": "Budget Bordeaux",
+      "target": "Charges exceptionnelles",
+      "value": 11180356.87
+    },
+    {
+      "source": "Budget Bordeaux",
+      "target": "Charges financières",
+      "value": 5432854.34
+    },
+    {
+      "source": "Budget Bordeaux",
+      "target": "Charges fiscales",
+      "value": 4369401.31
+    },
+    {
+      "source": "Budget Bordeaux",
+      "target": "Dette",
+      "value": 1613887.46
+    }
+  ],
+  "drilldown": {
+    "revenue": {
+      "Fiscalité": [
+        {
+          "name": "Fiscalité",
+          "value": 306886229.55
+        }
+      ],
+      "Dotations État": [
+        {
+          "name": "Dotations État",
+          "value": 63406547.91
+        }
+      ],
+      "Dotations investissement": [
+        {
+          "name": "Dotations investissement",
+          "value": 45575079.34
+        }
+      ],
+      "Produits des services": [
+        {
+          "name": "Produits des services",
+          "value": 37762443.32
+        }
+      ],
+      "Produits exceptionnels": [
+        {
+          "name": "Produits exceptionnels",
+          "value": 24253794.08
+        }
+      ],
+      "Emprunts": [
+        {
+          "name": "Emprunts",
+          "value": 13896487.69
+        }
+      ],
+      "Subventions investissement": [
+        {
+          "name": "Subventions investissement",
+          "value": 11146896.41
+        }
+      ],
+      "Autres produits": [
+        {
+          "name": "Autres produits",
+          "value": 6884231.01
+        }
+      ],
+      "Reprises": [
+        {
+          "name": "Reprises",
+          "value": 206991.14
+        }
+      ],
+      "Produits financiers": [
+        {
+          "name": "Produits financiers",
+          "value": 11843.75
+        }
+      ]
+    },
+    "expenses": {
+      "Personnel": [
+        {
+          "name": "Personnel",
+          "value": 145800979.01
+        }
+      ],
+      "Investissements": [
+        {
+          "name": "Investissements",
+          "value": 108007870.47
+        }
+      ],
+      "Transferts & subventions": [
+        {
+          "name": "Transferts & subventions",
+          "value": 83392406.86
+        }
+      ],
+      "Fonctionnement courant": [
+        {
+          "name": "Fonctionnement courant",
+          "value": 65478254.18
+        }
+      ],
+      "Amortissements": [
+        {
+          "name": "Amortissements",
+          "value": 29624926.36
+        }
+      ],
+      "Charges exceptionnelles": [
+        {
+          "name": "Charges exceptionnelles",
+          "value": 11180356.87
+        }
+      ],
+      "Charges financières": [
+        {
+          "name": "Charges financières",
+          "value": 5432854.34
+        }
+      ],
+      "Charges fiscales": [
+        {
+          "name": "Charges fiscales",
+          "value": 4369401.31
+        }
+      ],
+      "Dette": [
+        {
+          "name": "Dette",
+          "value": 1613887.46
+        }
+      ]
+    }
+  }
+}

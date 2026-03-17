@@ -1,0 +1,17 @@
+{
+  "year": 2020,
+  "city_slug": "lyon",
+  "totals": {
+    "actif_total": 4022245804.88,
+    "passif_total": 3168922983.5,
+    "dette_financiere": 404889071.85,
+    "fonds_propres": 2764033911.65,
+    "tresorerie": 53413185.75,
+    "immobilisations": 3968832619.13
+  },
+  "kpis": {
+    "ratio_endettement": 12.78,
+    "pct_fonds_propres": 87.22,
+    "dette_par_hab": 775.28
+  }
+}

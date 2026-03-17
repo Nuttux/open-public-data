@@ -1,0 +1,17 @@
+{
+  "year": 2020,
+  "city_slug": "angers",
+  "totals": {
+    "actif_total": 1987872786.56,
+    "passif_total": 1712710398.8,
+    "dette_financiere": 160174636.93,
+    "fonds_propres": 1552535761.87,
+    "tresorerie": 16664833.73,
+    "immobilisations": 1971207952.83
+  },
+  "kpis": {
+    "ratio_endettement": 9.35,
+    "pct_fonds_propres": 90.65,
+    "dette_par_hab": 1027.75
+  }
+}

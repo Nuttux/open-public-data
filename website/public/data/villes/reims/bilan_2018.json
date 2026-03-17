@@ -1,0 +1,17 @@
+{
+  "year": 2018,
+  "city_slug": "reims",
+  "totals": {
+    "actif_total": 2115992245.06,
+    "passif_total": 1666387892.13,
+    "dette_financiere": 293743738.69,
+    "fonds_propres": 1372644153.44,
+    "tresorerie": 17597604.78,
+    "immobilisations": 2098394640.28
+  },
+  "kpis": {
+    "ratio_endettement": 17.63,
+    "pct_fonds_propres": 82.37,
+    "dette_par_hab": 1609.91
+  }
+}

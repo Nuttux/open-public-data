@@ -1,0 +1,296 @@
+{
+  "year": 2022,
+  "type_budget": "execute",
+  "city_slug": "angers",
+  "city_name": "Angers",
+  "dataStatus": "COMPLET",
+  "totals": {
+    "recettes": 289766437.26,
+    "depenses": 292387613.77,
+    "solde": -2621176.51
+  },
+  "nodes": [
+    {
+      "name": "Fiscalité",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations État",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits des services",
+      "category": "revenue"
+    },
+    {
+      "name": "Subventions investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Emprunts",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits exceptionnels",
+      "category": "revenue"
+    },
+    {
+      "name": "Autres produits",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits financiers",
+      "category": "revenue"
+    },
+    {
+      "name": "Budget Angers",
+      "category": "central"
+    },
+    {
+      "name": "Personnel",
+      "category": "expense"
+    },
+    {
+      "name": "Investissements",
+      "category": "expense"
+    },
+    {
+      "name": "Transferts & subventions",
+      "category": "expense"
+    },
+    {
+      "name": "Fonctionnement courant",
+      "category": "expense"
+    },
+    {
+      "name": "Amortissements",
+      "category": "expense"
+    },
+    {
+      "name": "Charges exceptionnelles",
+      "category": "expense"
+    },
+    {
+      "name": "Charges fiscales",
+      "category": "expense"
+    },
+    {
+      "name": "Charges financières",
+      "category": "expense"
+    },
+    {
+      "name": "Dette",
+      "category": "expense"
+    }
+  ],
+  "links": [
+    {
+      "source": "Fiscalité",
+      "target": "Budget Angers",
+      "value": 143404305.61
+    },
+    {
+      "source": "Dotations État",
+      "target": "Budget Angers",
+      "value": 68985195.46
+    },
+    {
+      "source": "Dotations investissement",
+      "target": "Budget Angers",
+      "value": 35011705.23
+    },
+    {
+      "source": "Produits des services",
+      "target": "Budget Angers",
+      "value": 15858666.79
+    },
+    {
+      "source": "Subventions investissement",
+      "target": "Budget Angers",
+      "value": 8470208.92
+    },
+    {
+      "source": "Emprunts",
+      "target": "Budget Angers",
+      "value": 7239701.26
+    },
+    {
+      "source": "Produits exceptionnels",
+      "target": "Budget Angers",
+      "value": 7123340.95
+    },
+    {
+      "source": "Autres produits",
+      "target": "Budget Angers",
+      "value": 3142831.72
+    },
+    {
+      "source": "Produits financiers",
+      "target": "Budget Angers",
+      "value": 530481.32
+    },
+    {
+      "source": "Budget Angers",
+      "target": "Personnel",
+      "value": 115158336.57
+    },
+    {
+      "source": "Budget Angers",
+      "target": "Investissements",
+      "value": 64976882.76
+    },
+    {
+      "source": "Budget Angers",
+      "target": "Transferts & subventions",
+      "value": 45567427.35
+    },
+    {
+      "source": "Budget Angers",
+      "target": "Fonctionnement courant",
+      "value": 42602136.11
+    },
+    {
+      "source": "Budget Angers",
+      "target": "Amortissements",
+      "value": 11730595.98
+    },
+    {
+      "source": "Budget Angers",
+      "target": "Charges exceptionnelles",
+      "value": 5971020.07
+    },
+    {
+      "source": "Budget Angers",
+      "target": "Charges fiscales",
+      "value": 3529507.87
+    },
+    {
+      "source": "Budget Angers",
+      "target": "Charges financières",
+      "value": 1737090.37
+    },
+    {
+      "source": "Budget Angers",
+      "target": "Dette",
+      "value": 1114616.69
+    }
+  ],
+  "drilldown": {
+    "revenue": {
+      "Fiscalité": [
+        {
+          "name": "Fiscalité",
+          "value": 143404305.61
+        }
+      ],
+      "Dotations État": [
+        {
+          "name": "Dotations État",
+          "value": 68985195.46
+        }
+      ],
+      "Dotations investissement": [
+        {
+          "name": "Dotations investissement",
+          "value": 35011705.23
+        }
+      ],
+      "Produits des services": [
+        {
+          "name": "Produits des services",
+          "value": 15858666.79
+        }
+      ],
+      "Subventions investissement": [
+        {
+          "name": "Subventions investissement",
+          "value": 8470208.92
+        }
+      ],
+      "Emprunts": [
+        {
+          "name": "Emprunts",
+          "value": 7239701.26
+        }
+      ],
+      "Produits exceptionnels": [
+        {
+          "name": "Produits exceptionnels",
+          "value": 7123340.95
+        }
+      ],
+      "Autres produits": [
+        {
+          "name": "Autres produits",
+          "value": 3142831.72
+        }
+      ],
+      "Produits financiers": [
+        {
+          "name": "Produits financiers",
+          "value": 530481.32
+        }
+      ]
+    },
+    "expenses": {
+      "Personnel": [
+        {
+          "name": "Personnel",
+          "value": 115158336.57
+        }
+      ],
+      "Investissements": [
+        {
+          "name": "Investissements",
+          "value": 64976882.76
+        }
+      ],
+      "Transferts & subventions": [
+        {
+          "name": "Transferts & subventions",
+          "value": 45567427.35
+        }
+      ],
+      "Fonctionnement courant": [
+        {
+          "name": "Fonctionnement courant",
+          "value": 42602136.11
+        }
+      ],
+      "Amortissements": [
+        {
+          "name": "Amortissements",
+          "value": 11730595.98
+        }
+      ],
+      "Charges exceptionnelles": [
+        {
+          "name": "Charges exceptionnelles",
+          "value": 5971020.07
+        }
+      ],
+      "Charges fiscales": [
+        {
+          "name": "Charges fiscales",
+          "value": 3529507.87
+        }
+      ],
+      "Charges financières": [
+        {
+          "name": "Charges financières",
+          "value": 1737090.37
+        }
+      ],
+      "Dette": [
+        {
+          "name": "Dette",
+          "value": 1114616.69
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "year": 2017,
+  "city_slug": "rennes",
+  "totals": {
+    "actif_total": 2556129458.24,
+    "passif_total": 2015270293.51,
+    "dette_financiere": 158446868.25,
+    "fonds_propres": 1856823425.26,
+    "tresorerie": 9866290.87,
+    "immobilisations": 2546263167.37
+  },
+  "kpis": {
+    "ratio_endettement": 7.86,
+    "pct_fonds_propres": 92.14,
+    "dette_par_hab": 712.17
+  }
+}

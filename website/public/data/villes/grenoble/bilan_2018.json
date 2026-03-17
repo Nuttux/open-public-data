@@ -1,0 +1,17 @@
+{
+  "year": 2018,
+  "city_slug": "grenoble",
+  "totals": {
+    "actif_total": 2043335588.9,
+    "passif_total": 1629275985.23,
+    "dette_financiere": 322872381.05,
+    "fonds_propres": 1306403604.18,
+    "tresorerie": 19073081.55,
+    "immobilisations": 2024262507.35
+  },
+  "kpis": {
+    "ratio_endettement": 19.82,
+    "pct_fonds_propres": 80.18,
+    "dette_par_hab": 2040.94
+  }
+}

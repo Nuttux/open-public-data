@@ -1,0 +1,408 @@
+{
+  "annee": 2020,
+  "city_slug": "toulouse",
+  "total_montant": 3561284,
+  "nb_subventions": 57,
+  "nb_beneficiaires": 57,
+  "beneficiaires": [
+    {
+      "beneficiaire": "Association Toulouse 54",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 109155,
+      "nature": "Aide en nature",
+      "date": "2020-11-18"
+    },
+    {
+      "beneficiaire": "Association Toulouse 43",
+      "objet": "Subvention 2020 - activité sportive",
+      "montant": 107066,
+      "nature": "Aide en nature",
+      "date": "2020-10-12"
+    },
+    {
+      "beneficiaire": "Association Toulouse 13",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 106052,
+      "nature": "Aide en nature",
+      "date": "2020-04-08"
+    },
+    {
+      "beneficiaire": "Association Toulouse 38",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 105697,
+      "nature": "Aide en nature",
+      "date": "2020-01-23"
+    },
+    {
+      "beneficiaire": "Association Toulouse 8",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 105601,
+      "nature": "Aide en nature",
+      "date": "2020-12-09"
+    },
+    {
+      "beneficiaire": "Association Toulouse 19",
+      "objet": "Subvention 2020 - activité sportive",
+      "montant": 104980,
+      "nature": "Aide en numéraire",
+      "date": "2020-01-20"
+    },
+    {
+      "beneficiaire": "Association Toulouse 24",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 104686,
+      "nature": "Aide en nature",
+      "date": "2020-01-11"
+    },
+    {
+      "beneficiaire": "Association Toulouse 22",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 103869,
+      "nature": "Aide en numéraire",
+      "date": "2020-01-07"
+    },
+    {
+      "beneficiaire": "Association Toulouse 45",
+      "objet": "Subvention 2020 - activité sportive",
+      "montant": 103310,
+      "nature": "Aide en nature",
+      "date": "2020-01-08"
+    },
+    {
+      "beneficiaire": "Association Toulouse 40",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 99658,
+      "nature": "Aide en numéraire",
+      "date": "2020-07-18"
+    },
+    {
+      "beneficiaire": "Association Toulouse 36",
+      "objet": "Subvention 2020 - activité sportive",
+      "montant": 97820,
+      "nature": "Aide en nature",
+      "date": "2020-11-09"
+    },
+    {
+      "beneficiaire": "Association Toulouse 53",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 97512,
+      "nature": "Aide en nature",
+      "date": "2020-04-28"
+    },
+    {
+      "beneficiaire": "Association Toulouse 9",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 95933,
+      "nature": "Aide en numéraire",
+      "date": "2020-10-21"
+    },
+    {
+      "beneficiaire": "Association Toulouse 56",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 94664,
+      "nature": "Aide en nature",
+      "date": "2020-07-28"
+    },
+    {
+      "beneficiaire": "Association Toulouse 32",
+      "objet": "Subvention 2020 - activité sportive",
+      "montant": 93156,
+      "nature": "Aide en nature",
+      "date": "2020-06-27"
+    },
+    {
+      "beneficiaire": "Association Toulouse 2",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 91019,
+      "nature": "Aide en nature",
+      "date": "2020-01-04"
+    },
+    {
+      "beneficiaire": "Association Toulouse 47",
+      "objet": "Subvention 2020 - activité sportive",
+      "montant": 89895,
+      "nature": "Aide en numéraire",
+      "date": "2020-04-16"
+    },
+    {
+      "beneficiaire": "Association Toulouse 29",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 87126,
+      "nature": "Aide en nature",
+      "date": "2020-09-15"
+    },
+    {
+      "beneficiaire": "Association Toulouse 41",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 85073,
+      "nature": "Aide en numéraire",
+      "date": "2020-11-21"
+    },
+    {
+      "beneficiaire": "Association Toulouse 5",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 85019,
+      "nature": "Aide en nature",
+      "date": "2020-08-22"
+    },
+    {
+      "beneficiaire": "Association Toulouse 46",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 84649,
+      "nature": "Aide en nature",
+      "date": "2020-04-03"
+    },
+    {
+      "beneficiaire": "Association Toulouse 23",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 83989,
+      "nature": "Aide en numéraire",
+      "date": "2020-08-17"
+    },
+    {
+      "beneficiaire": "Association Toulouse 12",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 83824,
+      "nature": "Aide en numéraire",
+      "date": "2020-02-22"
+    },
+    {
+      "beneficiaire": "Association Toulouse 52",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 83342,
+      "nature": "Aide en numéraire",
+      "date": "2020-05-19"
+    },
+    {
+      "beneficiaire": "Association Toulouse 35",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 81149,
+      "nature": "Aide en nature",
+      "date": "2020-07-07"
+    },
+    {
+      "beneficiaire": "Association Toulouse 51",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 74303,
+      "nature": "Aide en numéraire",
+      "date": "2020-02-19"
+    },
+    {
+      "beneficiaire": "Association Toulouse 39",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 72898,
+      "nature": "Aide en numéraire",
+      "date": "2020-10-16"
+    },
+    {
+      "beneficiaire": "Association Toulouse 26",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 71544,
+      "nature": "Aide en numéraire",
+      "date": "2020-05-18"
+    },
+    {
+      "beneficiaire": "Association Toulouse 33",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 66467,
+      "nature": "Aide en nature",
+      "date": "2020-01-06"
+    },
+    {
+      "beneficiaire": "Association Toulouse 50",
+      "objet": "Subvention 2020 - activité sportive",
+      "montant": 64782,
+      "nature": "Aide en nature",
+      "date": "2020-03-18"
+    },
+    {
+      "beneficiaire": "Association Toulouse 4",
+      "objet": "Subvention 2020 - activité sportive",
+      "montant": 64431,
+      "nature": "Aide en nature",
+      "date": "2020-07-16"
+    },
+    {
+      "beneficiaire": "Association Toulouse 10",
+      "objet": "Subvention 2020 - activité sportive",
+      "montant": 63936,
+      "nature": "Aide en numéraire",
+      "date": "2020-11-18"
+    },
+    {
+      "beneficiaire": "Association Toulouse 25",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 63105,
+      "nature": "Aide en numéraire",
+      "date": "2020-08-01"
+    },
+    {
+      "beneficiaire": "Association Toulouse 42",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 61586,
+      "nature": "Aide en nature",
+      "date": "2020-11-04"
+    },
+    {
+      "beneficiaire": "Association Toulouse 15",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 56635,
+      "nature": "Aide en numéraire",
+      "date": "2020-06-14"
+    },
+    {
+      "beneficiaire": "Association Toulouse 28",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 51861,
+      "nature": "Aide en numéraire",
+      "date": "2020-03-12"
+    },
+    {
+      "beneficiaire": "Association Toulouse 16",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 48603,
+      "nature": "Aide en nature",
+      "date": "2020-07-09"
+    },
+    {
+      "beneficiaire": "Association Toulouse 7",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 45696,
+      "nature": "Aide en nature",
+      "date": "2020-06-18"
+    },
+    {
+      "beneficiaire": "Association Toulouse 21",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 38645,
+      "nature": "Aide en nature",
+      "date": "2020-06-09"
+    },
+    {
+      "beneficiaire": "Association Toulouse 34",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 36609,
+      "nature": "Aide en nature",
+      "date": "2020-12-04"
+    },
+    {
+      "beneficiaire": "Association Toulouse 57",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 33817,
+      "nature": "Aide en nature",
+      "date": "2020-08-12"
+    },
+    {
+      "beneficiaire": "Association Toulouse 37",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 33710,
+      "nature": "Aide en nature",
+      "date": "2020-06-07"
+    },
+    {
+      "beneficiaire": "Association Toulouse 27",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 30908,
+      "nature": "Aide en numéraire",
+      "date": "2020-05-19"
+    },
+    {
+      "beneficiaire": "Association Toulouse 11",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 25253,
+      "nature": "Aide en numéraire",
+      "date": "2020-10-17"
+    },
+    {
+      "beneficiaire": "Association Toulouse 20",
+      "objet": "Subvention 2020 - activité sportive",
+      "montant": 24102,
+      "nature": "Aide en numéraire",
+      "date": "2020-05-13"
+    },
+    {
+      "beneficiaire": "Association Toulouse 44",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 23654,
+      "nature": "Aide en numéraire",
+      "date": "2020-02-15"
+    },
+    {
+      "beneficiaire": "Association Toulouse 6",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 20694,
+      "nature": "Aide en nature",
+      "date": "2020-02-26"
+    },
+    {
+      "beneficiaire": "Association Toulouse 18",
+      "objet": "Subvention 2020 - activité sportive",
+      "montant": 20175,
+      "nature": "Aide en nature",
+      "date": "2020-02-05"
+    },
+    {
+      "beneficiaire": "Association Toulouse 17",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 17091,
+      "nature": "Aide en numéraire",
+      "date": "2020-09-06"
+    },
+    {
+      "beneficiaire": "Association Toulouse 14",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 13943,
+      "nature": "Aide en nature",
+      "date": "2020-07-19"
+    },
+    {
+      "beneficiaire": "Association Toulouse 3",
+      "objet": "Subvention 2020 - activité sportive",
+      "montant": 12150,
+      "nature": "Aide en numéraire",
+      "date": "2020-07-16"
+    },
+    {
+      "beneficiaire": "Association Toulouse 1",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 10165,
+      "nature": "Aide en nature",
+      "date": "2020-05-07"
+    },
+    {
+      "beneficiaire": "Association Toulouse 48",
+      "objet": "Subvention 2020 - activité sportive",
+      "montant": 8921,
+      "nature": "Aide en nature",
+      "date": "2020-12-23"
+    },
+    {
+      "beneficiaire": "Association Toulouse 49",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 5809,
+      "nature": "Aide en nature",
+      "date": "2020-02-28"
+    },
+    {
+      "beneficiaire": "Association Toulouse 55",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 5265,
+      "nature": "Aide en nature",
+      "date": "2020-11-22"
+    },
+    {
+      "beneficiaire": "Association Toulouse 30",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 5165,
+      "nature": "Aide en nature",
+      "date": "2020-10-10"
+    },
+    {
+      "beneficiaire": "Association Toulouse 31",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 5117,
+      "nature": "Aide en nature",
+      "date": "2020-05-20"
+    }
+  ]
+}

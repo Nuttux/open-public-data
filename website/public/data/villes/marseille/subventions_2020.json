@@ -1,0 +1,450 @@
+{
+  "annee": 2020,
+  "city_slug": "marseille",
+  "total_montant": 6145667,
+  "nb_subventions": 63,
+  "nb_beneficiaires": 63,
+  "beneficiaires": [
+    {
+      "beneficiaire": "Association Marseille 7",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 174577,
+      "nature": "Aide en nature",
+      "date": "2020-07-13"
+    },
+    {
+      "beneficiaire": "Association Marseille 56",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 171923,
+      "nature": "Aide en numéraire",
+      "date": "2020-02-14"
+    },
+    {
+      "beneficiaire": "Association Marseille 54",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 168708,
+      "nature": "Aide en nature",
+      "date": "2020-07-23"
+    },
+    {
+      "beneficiaire": "Association Marseille 52",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 167502,
+      "nature": "Aide en nature",
+      "date": "2020-12-03"
+    },
+    {
+      "beneficiaire": "Association Marseille 12",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 166139,
+      "nature": "Aide en nature",
+      "date": "2020-11-03"
+    },
+    {
+      "beneficiaire": "Association Marseille 47",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 159103,
+      "nature": "Aide en numéraire",
+      "date": "2020-08-10"
+    },
+    {
+      "beneficiaire": "Association Marseille 25",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 156970,
+      "nature": "Aide en numéraire",
+      "date": "2020-01-22"
+    },
+    {
+      "beneficiaire": "Association Marseille 16",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 152879,
+      "nature": "Aide en nature",
+      "date": "2020-09-10"
+    },
+    {
+      "beneficiaire": "Association Marseille 4",
+      "objet": "Subvention 2020 - activité sportive",
+      "montant": 151876,
+      "nature": "Aide en nature",
+      "date": "2020-11-23"
+    },
+    {
+      "beneficiaire": "Association Marseille 49",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 150333,
+      "nature": "Aide en nature",
+      "date": "2020-11-11"
+    },
+    {
+      "beneficiaire": "Association Marseille 10",
+      "objet": "Subvention 2020 - activité sportive",
+      "montant": 149193,
+      "nature": "Aide en numéraire",
+      "date": "2020-05-04"
+    },
+    {
+      "beneficiaire": "Association Marseille 53",
+      "objet": "Subvention 2020 - activité sportive",
+      "montant": 144108,
+      "nature": "Aide en numéraire",
+      "date": "2020-02-13"
+    },
+    {
+      "beneficiaire": "Association Marseille 57",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 141988,
+      "nature": "Aide en nature",
+      "date": "2020-03-20"
+    },
+    {
+      "beneficiaire": "Association Marseille 55",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 141593,
+      "nature": "Aide en numéraire",
+      "date": "2020-02-05"
+    },
+    {
+      "beneficiaire": "Association Marseille 58",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 138131,
+      "nature": "Aide en numéraire",
+      "date": "2020-11-27"
+    },
+    {
+      "beneficiaire": "Association Marseille 19",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 138094,
+      "nature": "Aide en nature",
+      "date": "2020-06-21"
+    },
+    {
+      "beneficiaire": "Association Marseille 42",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 137930,
+      "nature": "Aide en numéraire",
+      "date": "2020-06-23"
+    },
+    {
+      "beneficiaire": "Association Marseille 50",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 131349,
+      "nature": "Aide en numéraire",
+      "date": "2020-01-01"
+    },
+    {
+      "beneficiaire": "Association Marseille 8",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 131047,
+      "nature": "Aide en numéraire",
+      "date": "2020-06-24"
+    },
+    {
+      "beneficiaire": "Association Marseille 29",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 129562,
+      "nature": "Aide en nature",
+      "date": "2020-07-22"
+    },
+    {
+      "beneficiaire": "Association Marseille 32",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 129451,
+      "nature": "Aide en numéraire",
+      "date": "2020-04-24"
+    },
+    {
+      "beneficiaire": "Association Marseille 61",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 125678,
+      "nature": "Aide en numéraire",
+      "date": "2020-11-28"
+    },
+    {
+      "beneficiaire": "Association Marseille 44",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 122946,
+      "nature": "Aide en nature",
+      "date": "2020-06-08"
+    },
+    {
+      "beneficiaire": "Association Marseille 9",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 122631,
+      "nature": "Aide en nature",
+      "date": "2020-11-12"
+    },
+    {
+      "beneficiaire": "Association Marseille 51",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 118797,
+      "nature": "Aide en numéraire",
+      "date": "2020-06-12"
+    },
+    {
+      "beneficiaire": "Association Marseille 39",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 118652,
+      "nature": "Aide en nature",
+      "date": "2020-10-20"
+    },
+    {
+      "beneficiaire": "Association Marseille 6",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 118326,
+      "nature": "Aide en numéraire",
+      "date": "2020-12-01"
+    },
+    {
+      "beneficiaire": "Association Marseille 23",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 113811,
+      "nature": "Aide en nature",
+      "date": "2020-07-16"
+    },
+    {
+      "beneficiaire": "Association Marseille 26",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 112675,
+      "nature": "Aide en numéraire",
+      "date": "2020-04-23"
+    },
+    {
+      "beneficiaire": "Association Marseille 35",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 107206,
+      "nature": "Aide en numéraire",
+      "date": "2020-11-04"
+    },
+    {
+      "beneficiaire": "Association Marseille 33",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 106499,
+      "nature": "Aide en numéraire",
+      "date": "2020-02-12"
+    },
+    {
+      "beneficiaire": "Association Marseille 1",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 105630,
+      "nature": "Aide en numéraire",
+      "date": "2020-09-22"
+    },
+    {
+      "beneficiaire": "Association Marseille 2",
+      "objet": "Subvention 2020 - activité sportive",
+      "montant": 101785,
+      "nature": "Aide en nature",
+      "date": "2020-05-22"
+    },
+    {
+      "beneficiaire": "Association Marseille 62",
+      "objet": "Subvention 2020 - activité sportive",
+      "montant": 94714,
+      "nature": "Aide en numéraire",
+      "date": "2020-07-22"
+    },
+    {
+      "beneficiaire": "Association Marseille 22",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 89785,
+      "nature": "Aide en numéraire",
+      "date": "2020-03-20"
+    },
+    {
+      "beneficiaire": "Association Marseille 59",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 88700,
+      "nature": "Aide en nature",
+      "date": "2020-02-14"
+    },
+    {
+      "beneficiaire": "Association Marseille 63",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 88508,
+      "nature": "Aide en nature",
+      "date": "2020-03-27"
+    },
+    {
+      "beneficiaire": "Association Marseille 3",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 88476,
+      "nature": "Aide en nature",
+      "date": "2020-05-21"
+    },
+    {
+      "beneficiaire": "Association Marseille 15",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 86606,
+      "nature": "Aide en numéraire",
+      "date": "2020-08-07"
+    },
+    {
+      "beneficiaire": "Association Marseille 48",
+      "objet": "Subvention 2020 - activité sportive",
+      "montant": 85561,
+      "nature": "Aide en numéraire",
+      "date": "2020-03-28"
+    },
+    {
+      "beneficiaire": "Association Marseille 40",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 77973,
+      "nature": "Aide en numéraire",
+      "date": "2020-09-24"
+    },
+    {
+      "beneficiaire": "Association Marseille 18",
+      "objet": "Subvention 2020 - activité sportive",
+      "montant": 76365,
+      "nature": "Aide en nature",
+      "date": "2020-03-11"
+    },
+    {
+      "beneficiaire": "Association Marseille 34",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 70688,
+      "nature": "Aide en nature",
+      "date": "2020-09-20"
+    },
+    {
+      "beneficiaire": "Association Marseille 14",
+      "objet": "Subvention 2020 - activité sportive",
+      "montant": 70102,
+      "nature": "Aide en nature",
+      "date": "2020-08-28"
+    },
+    {
+      "beneficiaire": "Association Marseille 13",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 67365,
+      "nature": "Aide en nature",
+      "date": "2020-07-26"
+    },
+    {
+      "beneficiaire": "Association Marseille 30",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 65269,
+      "nature": "Aide en nature",
+      "date": "2020-06-25"
+    },
+    {
+      "beneficiaire": "Association Marseille 20",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 60374,
+      "nature": "Aide en numéraire",
+      "date": "2020-01-15"
+    },
+    {
+      "beneficiaire": "Association Marseille 27",
+      "objet": "Subvention 2020 - activité sportive",
+      "montant": 60154,
+      "nature": "Aide en numéraire",
+      "date": "2020-07-17"
+    },
+    {
+      "beneficiaire": "Association Marseille 43",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 57359,
+      "nature": "Aide en numéraire",
+      "date": "2020-09-16"
+    },
+    {
+      "beneficiaire": "Association Marseille 41",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 55248,
+      "nature": "Aide en numéraire",
+      "date": "2020-08-07"
+    },
+    {
+      "beneficiaire": "Association Marseille 21",
+      "objet": "Subvention 2020 - activité sportive",
+      "montant": 43006,
+      "nature": "Aide en numéraire",
+      "date": "2020-10-25"
+    },
+    {
+      "beneficiaire": "Association Marseille 38",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 42357,
+      "nature": "Aide en numéraire",
+      "date": "2020-05-14"
+    },
+    {
+      "beneficiaire": "Association Marseille 5",
+      "objet": "Subvention 2020 - activité sportive",
+      "montant": 39497,
+      "nature": "Aide en numéraire",
+      "date": "2020-01-26"
+    },
+    {
+      "beneficiaire": "Association Marseille 28",
+      "objet": "Subvention 2020 - activité sportive",
+      "montant": 35934,
+      "nature": "Aide en numéraire",
+      "date": "2020-05-10"
+    },
+    {
+      "beneficiaire": "Association Marseille 31",
+      "objet": "Subvention 2020 - activité culturelle",
+      "montant": 35577,
+      "nature": "Aide en nature",
+      "date": "2020-01-08"
+    },
+    {
+      "beneficiaire": "Association Marseille 46",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 32950,
+      "nature": "Aide en numéraire",
+      "date": "2020-09-03"
+    },
+    {
+      "beneficiaire": "Association Marseille 11",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 29410,
+      "nature": "Aide en nature",
+      "date": "2020-12-26"
+    },
+    {
+      "beneficiaire": "Association Marseille 37",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 28684,
+      "nature": "Aide en nature",
+      "date": "2020-08-23"
+    },
+    {
+      "beneficiaire": "Association Marseille 17",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 17076,
+      "nature": "Aide en numéraire",
+      "date": "2020-03-07"
+    },
+    {
+      "beneficiaire": "Association Marseille 36",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 16103,
+      "nature": "Aide en numéraire",
+      "date": "2020-07-15"
+    },
+    {
+      "beneficiaire": "Association Marseille 60",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 15725,
+      "nature": "Aide en nature",
+      "date": "2020-11-11"
+    },
+    {
+      "beneficiaire": "Association Marseille 45",
+      "objet": "Subvention 2020 - activité sociale",
+      "montant": 10179,
+      "nature": "Aide en numéraire",
+      "date": "2020-02-27"
+    },
+    {
+      "beneficiaire": "Association Marseille 24",
+      "objet": "Subvention 2020 - activité éducative",
+      "montant": 8830,
+      "nature": "Aide en numéraire",
+      "date": "2020-12-12"
+    }
+  ]
+}

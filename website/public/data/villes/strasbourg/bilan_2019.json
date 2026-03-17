@@ -1,0 +1,17 @@
+{
+  "year": 2019,
+  "city_slug": "strasbourg",
+  "totals": {
+    "actif_total": 2284028760.71,
+    "passif_total": 1769378297.08,
+    "dette_financiere": 203197304.74,
+    "fonds_propres": 1566180992.34,
+    "tresorerie": 20328772.3,
+    "immobilisations": 2263699988.41
+  },
+  "kpis": {
+    "ratio_endettement": 11.48,
+    "pct_fonds_propres": 88.52,
+    "dette_par_hab": 707.44
+  }
+}

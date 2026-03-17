@@ -1,0 +1,38 @@
+{
+  "annee": 2020,
+  "city_slug": "marseille",
+  "total_montant": 400493.5,
+  "total_marches": 2,
+  "categories": [
+    {
+      "categorie": "Services professionnels",
+      "nb_marches": 1,
+      "montant_total": 400000.0,
+      "montant_moyen": 400000.0
+    },
+    {
+      "categorie": "Autres",
+      "nb_marches": 1,
+      "montant_total": 493.5,
+      "montant_moyen": 493.5
+    }
+  ],
+  "top_marches": [
+    {
+      "objet": "Location, transport, montage et démontage de tentes, chapiteaux, structures et équipements annexes dans le secteur géographique communal de tous les arrondissements excepté le 8ème.",
+      "montant": 400000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-09-15",
+      "procedure": "Pas de groupement"
+    },
+    {
+      "objet": "PRESTATION AGENT PORTAIL",
+      "montant": 493.5,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2020-12-03",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    }
+  ]
+}
