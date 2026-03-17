@@ -169,7 +169,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16">
             {/* Logo / Titre */}
             <Link
-              href={`/${locale}/`}
+              href="/"
               className="flex items-center gap-3 hover:opacity-80 transition-opacity shrink-0"
             >
               <h1 className="text-lg font-bold text-slate-100">
@@ -180,7 +180,7 @@ export default function Navbar() {
             {/* Liens de navigation desktop */}
             <div className="flex items-center gap-0.5">
               {NAV_LINK_DEFS.map((link) => {
-                const localizedHref = link.href === '/' ? `/${locale}/` : `/${locale}${link.href}`;
+                const localizedHref = link.href === '/villes' ? `/${locale}/villes` : link.href;
                 const isActive = pathWithoutLocale === link.href || (link.href !== '/' && pathWithoutLocale.startsWith(link.href));
                 return (
                   <Link
@@ -217,7 +217,7 @@ export default function Navbar() {
       <header className="md:hidden bg-slate-900/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50">
         <div className="flex items-center justify-between h-12 px-4">
           <Link
-            href={`/${locale}/`}
+            href="/"
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
             <h1 className="text-base font-bold text-slate-100">
@@ -242,7 +242,7 @@ export default function Navbar() {
       >
         <div className="grid grid-cols-10">
           {NAV_LINK_DEFS.map((link) => {
-            const localizedHref = link.href === '/' ? `/${locale}/` : `/${locale}${link.href}`;
+            const localizedHref = link.href === '/villes' ? `/${locale}/villes` : link.href;
             const isActive = pathWithoutLocale === link.href || (link.href !== '/' && pathWithoutLocale.startsWith(link.href));
             return (
               <Link

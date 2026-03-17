@@ -32,6 +32,17 @@ const nextConfig: NextConfig = {
         destination: '/logements?tab=carte',
         permanent: true,
       },
+      // Villes pages live under /[locale]/villes — redirect bare paths
+      {
+        source: '/villes',
+        destination: '/fr/villes',
+        permanent: false,
+      },
+      {
+        source: '/villes/:path*',
+        destination: '/fr/villes/:path*',
+        permanent: false,
+      },
     ];
   },
 };
