@@ -1,0 +1,17 @@
+{
+  "year": 2021,
+  "city_slug": "le-havre",
+  "totals": {
+    "actif_total": 1623393420.77,
+    "passif_total": 1760430977.42,
+    "dette_financiere": 251088686.83,
+    "fonds_propres": 1509342290.59,
+    "tresorerie": 28789216.41,
+    "immobilisations": 1594604204.36
+  },
+  "kpis": {
+    "ratio_endettement": 14.26,
+    "pct_fonds_propres": 85.74,
+    "dette_par_hab": 1473.94
+  }
+}

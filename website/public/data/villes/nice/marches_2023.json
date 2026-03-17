@@ -1,0 +1,864 @@
+{
+  "annee": 2023,
+  "city_slug": "nice",
+  "total_montant": 164002213211.86,
+  "total_marches": 3124,
+  "categories": [
+    {
+      "categorie": "Services professionnels",
+      "nb_marches": 1003,
+      "montant_total": 141910239749.02,
+      "montant_moyen": 141485782.4
+    },
+    {
+      "categorie": "Construction & Bâtiment",
+      "nb_marches": 417,
+      "montant_total": 10101373819.36,
+      "montant_moyen": 24223918.03
+    },
+    {
+      "categorie": "Informatique & Télécom",
+      "nb_marches": 78,
+      "montant_total": 7458208648.0,
+      "montant_moyen": 95618059.59
+    },
+    {
+      "categorie": "Autres",
+      "nb_marches": 915,
+      "montant_total": 2116610802.4,
+      "montant_moyen": 2313235.85
+    },
+    {
+      "categorie": "Environnement & Propreté",
+      "nb_marches": 92,
+      "montant_total": 993109243.16,
+      "montant_moyen": 10794665.69
+    },
+    {
+      "categorie": "Alimentation & Restauration",
+      "nb_marches": 360,
+      "montant_total": 835761452.0,
+      "montant_moyen": 2321559.59
+    },
+    {
+      "categorie": "Transport & Véhicules",
+      "nb_marches": 163,
+      "montant_total": 529851118.4,
+      "montant_moyen": 3250620.36
+    },
+    {
+      "categorie": "Santé & Social",
+      "nb_marches": 92,
+      "montant_total": 55884732.0,
+      "montant_moyen": 607442.74
+    },
+    {
+      "categorie": "Énergie",
+      "nb_marches": 4,
+      "montant_total": 1173647.52,
+      "montant_moyen": 293411.88
+    }
+  ],
+  "top_marches": [
+    {
+      "objet": "JE000 LOT 3 SECURITE MANIFESTATIONS EVENEMENTIELLES D’ACROPOLIS",
+      "montant": 39999999996.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-06-16",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "ME000 - MISE À DISPOSITION D’UN LOGICIEL DE BILLETTERIE ET DES MATÉRIELS NÉCESSAIRES À LA GESTION INFORMATIQUE DE PLACES AINSI QUE DES PRESTATIONS ASSOCIÉES POUR DES MANIFESTATIONS PONCTUELLES",
+      "montant": 3333333330.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2023-11-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "ME000 - MISE À DISPOSITION D’UN LOGICIEL DE BILLETTERIE ET DES MATÉRIELS NÉCESSAIRES À LA GESTION INFORMATIQUE DE PLACES AINSI QUE DES PRESTATIONS ASSOCIÉES POUR DES MANIFESTATIONS PONCTUELLES",
+      "montant": 3333333330.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2023-11-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "LOT 1 -DROIT PUBLIC ECONOMIQUE",
+      "montant": 399999996.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-27",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 1 -DROIT PUBLIC ECONOMIQUE",
+      "montant": 399999996.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-27",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 1 -DROIT PUBLIC ECONOMIQUE",
+      "montant": 399999996.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-27",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 1 -DROIT PUBLIC ECONOMIQUE",
+      "montant": 399999996.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-27",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 1 -DROIT PUBLIC ECONOMIQUE",
+      "montant": 399999996.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-27",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 1 -DROIT PUBLIC ECONOMIQUE",
+      "montant": 399999996.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-27",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 1 -DROIT PUBLIC ECONOMIQUE",
+      "montant": 399999996.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-27",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 1 -DROIT PUBLIC ECONOMIQUE",
+      "montant": 399999996.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-27",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 1 -DROIT PUBLIC ECONOMIQUE",
+      "montant": 399999996.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-27",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 1 -DROIT PUBLIC ECONOMIQUE",
+      "montant": 399999996.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-27",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 1 -DROIT PUBLIC ECONOMIQUE",
+      "montant": 399999996.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-27",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 1 -DROIT PUBLIC ECONOMIQUE",
+      "montant": 399999996.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-27",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 1 -DROIT PUBLIC ECONOMIQUE",
+      "montant": 399999996.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-27",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 1 -DROIT PUBLIC ECONOMIQUE",
+      "montant": 399999996.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-27",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 1 -DROIT PUBLIC ECONOMIQUE",
+      "montant": 399999996.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-27",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 1 -DROIT PUBLIC ECONOMIQUE",
+      "montant": 399999996.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-27",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 1 -DROIT PUBLIC ECONOMIQUE",
+      "montant": 399999996.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-27",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 1 -DROIT PUBLIC ECONOMIQUE",
+      "montant": 399999996.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-27",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 8 - DROIT PENAL",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-12-20",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 8 - DROIT PENAL",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-12-20",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 8 - DROIT PENAL",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-12-20",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 8 - DROIT PENAL",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-12-20",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 8 - DROIT PENAL",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-12-20",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 8 - DROIT PENAL",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-12-20",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 8 - DROIT PENAL",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-12-20",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 8 - DROIT PENAL",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-12-20",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 8 - DROIT PENAL",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-12-20",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 8 - DROIT PENAL",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-12-20",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 8 - DROIT PENAL",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-12-20",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 8 - DROIT PENAL",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-12-20",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 8 - DROIT PENAL",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-12-20",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 4 - FONCTION PUBLIQUE TERRITORIALE ET GESTION DES RESSOURCES HUMAINES",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-12-15",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 4 - FONCTION PUBLIQUE TERRITORIALE ET GESTION DES RESSOURCES HUMAINES",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-12-15",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 4 - FONCTION PUBLIQUE TERRITORIALE ET GESTION DES RESSOURCES HUMAINES",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-12-15",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 4 - FONCTION PUBLIQUE TERRITORIALE ET GESTION DES RESSOURCES HUMAINES",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-12-15",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 4 - FONCTION PUBLIQUE TERRITORIALE ET GESTION DES RESSOURCES HUMAINES",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-12-15",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 4 - FONCTION PUBLIQUE TERRITORIALE ET GESTION DES RESSOURCES HUMAINES",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-12-15",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 4 - FONCTION PUBLIQUE TERRITORIALE ET GESTION DES RESSOURCES HUMAINES",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-12-15",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 4 - FONCTION PUBLIQUE TERRITORIALE ET GESTION DES RESSOURCES HUMAINES",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-12-15",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 2 - GESTION DES COLLECTIVITES TERRITORIALES ET INTERCOMMUNALITE",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 2 - GESTION DES COLLECTIVITES TERRITORIALES ET INTERCOMMUNALITE",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 2 - GESTION DES COLLECTIVITES TERRITORIALES ET INTERCOMMUNALITE",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 2 - GESTION DES COLLECTIVITES TERRITORIALES ET INTERCOMMUNALITE",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 2 - GESTION DES COLLECTIVITES TERRITORIALES ET INTERCOMMUNALITE",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 2 - GESTION DES COLLECTIVITES TERRITORIALES ET INTERCOMMUNALITE",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 2 - GESTION DES COLLECTIVITES TERRITORIALES ET INTERCOMMUNALITE",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 2 - GESTION DES COLLECTIVITES TERRITORIALES ET INTERCOMMUNALITE",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 2 - GESTION DES COLLECTIVITES TERRITORIALES ET INTERCOMMUNALITE",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 2 - GESTION DES COLLECTIVITES TERRITORIALES ET INTERCOMMUNALITE",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 2 - GESTION DES COLLECTIVITES TERRITORIALES ET INTERCOMMUNALITE",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 2 - GESTION DES COLLECTIVITES TERRITORIALES ET INTERCOMMUNALITE",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 2 - GESTION DES COLLECTIVITES TERRITORIALES ET INTERCOMMUNALITE",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 2 - GESTION DES COLLECTIVITES TERRITORIALES ET INTERCOMMUNALITE",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 2 - GESTION DES COLLECTIVITES TERRITORIALES ET INTERCOMMUNALITE",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 2 - GESTION DES COLLECTIVITES TERRITORIALES ET INTERCOMMUNALITE",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 2 - GESTION DES COLLECTIVITES TERRITORIALES ET INTERCOMMUNALITE",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 3 - DOMMAGE DE TRAVAUX PUBLICS ET RESPONSABILITE ADMINISTRATIVE (HORS ASSURANCES)",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 3 - DOMMAGE DE TRAVAUX PUBLICS ET RESPONSABILITE ADMINISTRATIVE (HORS ASSURANCES)",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 3 - DOMMAGE DE TRAVAUX PUBLICS ET RESPONSABILITE ADMINISTRATIVE (HORS ASSURANCES)",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 3 - DOMMAGE DE TRAVAUX PUBLICS ET RESPONSABILITE ADMINISTRATIVE (HORS ASSURANCES)",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 3 - DOMMAGE DE TRAVAUX PUBLICS ET RESPONSABILITE ADMINISTRATIVE (HORS ASSURANCES)",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 3 - DOMMAGE DE TRAVAUX PUBLICS ET RESPONSABILITE ADMINISTRATIVE (HORS ASSURANCES)",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 3 - DOMMAGE DE TRAVAUX PUBLICS ET RESPONSABILITE ADMINISTRATIVE (HORS ASSURANCES)",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 3 - DOMMAGE DE TRAVAUX PUBLICS ET RESPONSABILITE ADMINISTRATIVE (HORS ASSURANCES)",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 3 - DOMMAGE DE TRAVAUX PUBLICS ET RESPONSABILITE ADMINISTRATIVE (HORS ASSURANCES)",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 3 - DOMMAGE DE TRAVAUX PUBLICS ET RESPONSABILITE ADMINISTRATIVE (HORS ASSURANCES)",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 3 - DOMMAGE DE TRAVAUX PUBLICS ET RESPONSABILITE ADMINISTRATIVE (HORS ASSURANCES)",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 3 - DOMMAGE DE TRAVAUX PUBLICS ET RESPONSABILITE ADMINISTRATIVE (HORS ASSURANCES)",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 3 - DOMMAGE DE TRAVAUX PUBLICS ET RESPONSABILITE ADMINISTRATIVE (HORS ASSURANCES)",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 3 - DOMMAGE DE TRAVAUX PUBLICS ET RESPONSABILITE ADMINISTRATIVE (HORS ASSURANCES)",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 3 - DOMMAGE DE TRAVAUX PUBLICS ET RESPONSABILITE ADMINISTRATIVE (HORS ASSURANCES)",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 3 - DOMMAGE DE TRAVAUX PUBLICS ET RESPONSABILITE ADMINISTRATIVE (HORS ASSURANCES)",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 4 - FONCTION PUBLIQUE TERRITORIALE ET GESTION DES RESSOURCES HUMAINES",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 4 - FONCTION PUBLIQUE TERRITORIALE ET GESTION DES RESSOURCES HUMAINES",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 4 - FONCTION PUBLIQUE TERRITORIALE ET GESTION DES RESSOURCES HUMAINES",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 4 - FONCTION PUBLIQUE TERRITORIALE ET GESTION DES RESSOURCES HUMAINES",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 4 - FONCTION PUBLIQUE TERRITORIALE ET GESTION DES RESSOURCES HUMAINES",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 4 - FONCTION PUBLIQUE TERRITORIALE ET GESTION DES RESSOURCES HUMAINES",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 4 - FONCTION PUBLIQUE TERRITORIALE ET GESTION DES RESSOURCES HUMAINES",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 4 - FONCTION PUBLIQUE TERRITORIALE ET GESTION DES RESSOURCES HUMAINES",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 4 - FONCTION PUBLIQUE TERRITORIALE ET GESTION DES RESSOURCES HUMAINES",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 4 - FONCTION PUBLIQUE TERRITORIALE ET GESTION DES RESSOURCES HUMAINES",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 4 - FONCTION PUBLIQUE TERRITORIALE ET GESTION DES RESSOURCES HUMAINES",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 4 - FONCTION PUBLIQUE TERRITORIALE ET GESTION DES RESSOURCES HUMAINES",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 4 - FONCTION PUBLIQUE TERRITORIALE ET GESTION DES RESSOURCES HUMAINES",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 4 - FONCTION PUBLIQUE TERRITORIALE ET GESTION DES RESSOURCES HUMAINES",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 4 - FONCTION PUBLIQUE TERRITORIALE ET GESTION DES RESSOURCES HUMAINES",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 4 - FONCTION PUBLIQUE TERRITORIALE ET GESTION DES RESSOURCES HUMAINES",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 5 - URBANISME ET DOCUMENT D’URBANISME",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 5 - URBANISME ET DOCUMENT D’URBANISME",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 5 - URBANISME ET DOCUMENT D’URBANISME",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 5 - URBANISME ET DOCUMENT D’URBANISME",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 5 - URBANISME ET DOCUMENT D’URBANISME",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 5 - URBANISME ET DOCUMENT D’URBANISME",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 5 - URBANISME ET DOCUMENT D’URBANISME",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 5 - URBANISME ET DOCUMENT D’URBANISME",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 5 - URBANISME ET DOCUMENT D’URBANISME",
+      "montant": 399996000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-11-23",
+      "procedure": "Procédure adaptée"
+    }
+  ]
+}

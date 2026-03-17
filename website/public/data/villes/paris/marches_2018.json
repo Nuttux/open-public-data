@@ -1,0 +1,84 @@
+{
+  "annee": 2018,
+  "city_slug": "paris",
+  "total_montant": 23241956.32,
+  "total_marches": 7,
+  "categories": [
+    {
+      "categorie": "Construction & Bâtiment",
+      "nb_marches": 4,
+      "montant_total": 22607761.32,
+      "montant_moyen": 5651940.33
+    },
+    {
+      "categorie": "Environnement & Propreté",
+      "nb_marches": 2,
+      "montant_total": 525000.0,
+      "montant_moyen": 262500.0
+    },
+    {
+      "categorie": "Services professionnels",
+      "nb_marches": 1,
+      "montant_total": 109195.0,
+      "montant_moyen": 109195.0
+    }
+  ],
+  "top_marches": [
+    {
+      "objet": "Travaux d’entretien des chaussées et trottoirs – 8ème, 17ème et 18ème arrondissements (Lot 2)",
+      "montant": 20000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2018-12-18",
+      "procedure": "Pas de groupement"
+    },
+    {
+      "objet": "Travaux d’infrastructures de voirie en vue du réaménagement de la place de la Bastille – PARIS 4ème, 11ème et 12ème arrondissement",
+      "montant": 2342919.82,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2018-08-01",
+      "procedure": "Pas de groupement"
+    },
+    {
+      "objet": "Désinsectisation, désinfection, dératisation, curage des vide-ordures et lutte anti pigeons dans les établissements du Centre d’Action Sociale de la Ville de Paris - lot 2",
+      "montant": 270000.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2018-10-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Désinsectisation, désinfection, dératisation, curage des vide-ordures et lutte anti pigeons dans les établissements du Centre d’Action Sociale de la Ville de Paris - LOT 3",
+      "montant": 255000.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2018-10-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux d’infrastructure de voirie aménagement du carrefour Valmy/ Stalingrad / La Fayette (Paris 10éme et 19éme arrondissements) - ",
+      "montant": 205101.5,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2018-07-27",
+      "procedure": "Pas de groupement"
+    },
+    {
+      "objet": "AMO pour le renouvellement de la concession de production et de distribution d’énergie frigorifique à Paris.",
+      "montant": 109195.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2018-03-16",
+      "procedure": "Pas de groupement"
+    },
+    {
+      "objet": "Dépose glaces et fourniture, pose garde-corps pour galeries d’éclairage de 4 souterrains du BP et la dépose, évacuation d’une structure métallique d’un terre-plein central Lot 2 dépose structure métallique souterrain Colombie",
+      "montant": 59740.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2018-05-04",
+      "procedure": "Pas de groupement"
+    }
+  ]
+}

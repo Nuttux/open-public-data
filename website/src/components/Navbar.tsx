@@ -105,6 +105,15 @@ const NAV_LINK_DEFS = [
     activeBg: 'bg-cyan-600/20 border-cyan-500/30',
   },
   {
+    href: '/villes',
+    labelKey: 'nav.villes',
+    shortLabelKey: 'nav.villes.short',
+    descKey: 'nav.villes.desc',
+    icon: NAV_ICONS.villes,
+    activeColor: 'text-teal-400',
+    activeBg: 'bg-teal-600/20 border-teal-500/30',
+  },
+  {
     href: '/blog',
     labelKey: 'nav.blog',
     shortLabelKey: 'nav.blog.short',
@@ -227,7 +236,7 @@ export default function Navbar() {
         aria-label={t('nav.main_aria')}
         style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
       >
-        <div className="grid grid-cols-9">
+        <div className="grid grid-cols-10">
           {NAV_LINK_DEFS.map((link) => {
             const isActive = pathname === link.href;
             return (

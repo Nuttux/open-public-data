@@ -1,0 +1,864 @@
+{
+  "annee": 2022,
+  "city_slug": "toulouse",
+  "total_montant": 3379928806.85,
+  "total_marches": 1952,
+  "categories": [
+    {
+      "categorie": "Construction & Bâtiment",
+      "nb_marches": 661,
+      "montant_total": 1983341553.25,
+      "montant_moyen": 3000516.72
+    },
+    {
+      "categorie": "Autres",
+      "nb_marches": 508,
+      "montant_total": 543339989.01,
+      "montant_moyen": 1069566.91
+    },
+    {
+      "categorie": "Services professionnels",
+      "nb_marches": 404,
+      "montant_total": 268850662.35,
+      "montant_moyen": 665471.94
+    },
+    {
+      "categorie": "Informatique & Télécom",
+      "nb_marches": 106,
+      "montant_total": 202014058.39,
+      "montant_moyen": 1905793.0
+    },
+    {
+      "categorie": "Transport & Véhicules",
+      "nb_marches": 63,
+      "montant_total": 174160368.23,
+      "montant_moyen": 2764450.29
+    },
+    {
+      "categorie": "Alimentation & Restauration",
+      "nb_marches": 86,
+      "montant_total": 87828573.17,
+      "montant_moyen": 1021262.48
+    },
+    {
+      "categorie": "Énergie",
+      "nb_marches": 5,
+      "montant_total": 81621597.53,
+      "montant_moyen": 16324319.51
+    },
+    {
+      "categorie": "Environnement & Propreté",
+      "nb_marches": 100,
+      "montant_total": 36478741.96,
+      "montant_moyen": 364787.42
+    },
+    {
+      "categorie": "Santé & Social",
+      "nb_marches": 19,
+      "montant_total": 2293262.96,
+      "montant_moyen": 120698.05
+    }
+  ],
+  "top_marches": [
+    {
+      "objet": "21M0329AOO - SA/SG - TRAVAUX REGROUPEMENT DES ATELIERS DU THEATRE DU CAPITOLE - LOTS 1-3-4-9-10-11-12-13 et 14",
+      "montant": 109852337.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-05-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "CB/SM-22MC0107AOO-Fourniture et acheminement de gaz naturel pour alimenter les points de livraison des divers sites du groupement de commandes de Toulouse Métropole et prestations de services associés.",
+      "montant": 28952175.49,
+      "categorie": "Énergie",
+      "titulaire": "",
+      "date": "2022-03-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "CB/SM-22MC0107AOO-Fourniture et acheminement de gaz naturel pour alimenter les points de livraison des divers sites du groupement de commandes de Toulouse Métropole et prestations de services associés.",
+      "montant": 26582255.33,
+      "categorie": "Énergie",
+      "titulaire": "",
+      "date": "2022-03-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-12-28",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-12-28",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-12-28",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-12-28",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-12-28",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-12-28",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-12-28",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-12-28",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26021670.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-28",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "CB/SM-22MC0107AOO-Fourniture et acheminement de gaz naturel pour alimenter les points de livraison des divers sites du groupement de commandes de Toulouse Métropole et prestations de services associés.",
+      "montant": 25984830.69,
+      "categorie": "Énergie",
+      "titulaire": "",
+      "date": "2022-03-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA- 21M0085PN - CONCEPTION ET REALISATION POUR LA CONSTRUCTION DE LA PASSERELLE RAPAS",
+      "montant": 11249102.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-01-28",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "SA- 21M0085PN - CONCEPTION ET REALISATION POUR LA CONSTRUCTION DE LA PASSERELLE RAPAS",
+      "montant": 11249102.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-01-28",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "SA- 21M0085PN - CONCEPTION ET REALISATION POUR LA CONSTRUCTION DE LA PASSERELLE RAPAS",
+      "montant": 11249102.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-01-28",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "SA- 21M0085PN - CONCEPTION ET REALISATION POUR LA CONSTRUCTION DE LA PASSERELLE RAPAS",
+      "montant": 11249102.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-01-28",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "SA- 21M0085PN - CONCEPTION ET REALISATION POUR LA CONSTRUCTION DE LA PASSERELLE RAPAS",
+      "montant": 11249102.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-01-28",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 10661000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2022-04-27",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 10661000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2022-04-27",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "PRESTATIONS DE MAINTIEN EN CONDITION OPERATIONNELLE DE L’INFRASTRUCTURE ET DE GESTION DES POSTES INF",
+      "montant": 10661000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2022-04-27",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "21M00145PN  CONCEPTION ET REALISATION POUR LA CONSTRUCTION DE LA PASSERELLE EMPALOT",
+      "montant": 9861385.84,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-12-20",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "21M00145PN  CONCEPTION ET REALISATION POUR LA CONSTRUCTION DE LA PASSERELLE EMPALOT",
+      "montant": 9861385.84,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-12-20",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "21M00145PN  CONCEPTION ET REALISATION POUR LA CONSTRUCTION DE LA PASSERELLE EMPALOT",
+      "montant": 9861385.84,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-12-20",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "21M00145PN  CONCEPTION ET REALISATION POUR LA CONSTRUCTION DE LA PASSERELLE EMPALOT",
+      "montant": 9861385.84,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-12-20",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "21M00145PN  CONCEPTION ET REALISATION POUR LA CONSTRUCTION DE LA PASSERELLE EMPALOT",
+      "montant": 9861385.84,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-12-20",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "21M00145PN  CONCEPTION ET REALISATION POUR LA CONSTRUCTION DE LA PASSERELLE EMPALOT",
+      "montant": 9861385.84,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-12-20",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "21M00145PN  CONCEPTION ET REALISATION POUR LA CONSTRUCTION DE LA PASSERELLE EMPALOT",
+      "montant": 9861385.84,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-12-20",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "21M00145PN  CONCEPTION ET REALISATION POUR LA CONSTRUCTION DE LA PASSERELLE EMPALOT",
+      "montant": 9861385.84,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-12-20",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "21M00145PN  CONCEPTION ET REALISATION POUR LA CONSTRUCTION DE LA PASSERELLE EMPALOT",
+      "montant": 9861385.84,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-12-20",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "21M00145PN  CONCEPTION ET REALISATION POUR LA CONSTRUCTION DE LA PASSERELLE EMPALOT",
+      "montant": 9494460.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-01-24",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "21M00145PN  CONCEPTION ET REALISATION POUR LA CONSTRUCTION DE LA PASSERELLE EMPALOT",
+      "montant": 9494460.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-01-24",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "21M00145PN  CONCEPTION ET REALISATION POUR LA CONSTRUCTION DE LA PASSERELLE EMPALOT",
+      "montant": 9494460.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-01-24",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "21M00145PN  CONCEPTION ET REALISATION POUR LA CONSTRUCTION DE LA PASSERELLE EMPALOT",
+      "montant": 9494460.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-01-24",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "21M00145PN  CONCEPTION ET REALISATION POUR LA CONSTRUCTION DE LA PASSERELLE EMPALOT",
+      "montant": 9494460.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-01-24",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "21M00145PN  CONCEPTION ET REALISATION POUR LA CONSTRUCTION DE LA PASSERELLE EMPALOT",
+      "montant": 9494460.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-01-24",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "21M00145PN  CONCEPTION ET REALISATION POUR LA CONSTRUCTION DE LA PASSERELLE EMPALOT",
+      "montant": 9494460.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-01-24",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "21M00145PN  CONCEPTION ET REALISATION POUR LA CONSTRUCTION DE LA PASSERELLE EMPALOT",
+      "montant": 9494460.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-01-24",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "21M00145PN  CONCEPTION ET REALISATION POUR LA CONSTRUCTION DE LA PASSERELLE EMPALOT",
+      "montant": 9494460.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-01-24",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "FOURNITURE DE LICENCES SUPPORT ET MAINTENANCE LOGICIELLE",
+      "montant": 9000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2022-04-22",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "FOURNITURE DE LICENCES SUPPORT ET MAINTENANCE LOGICIELLE",
+      "montant": 9000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2022-04-22",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "LOT 16 EPICERIE SUCREE - SALEE DONT CONSERVES",
+      "montant": 7161702.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2022-12-27",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "LOT 16 EPICERIE SUCREE - SALEE DONT CONSERVES",
+      "montant": 7161702.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2022-12-27",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "APPROVISIONNEMENT DE POSTES DE TRAVAIL MOYENS D IMPRESSION MATERIELS INFORMATIQUES DIVERS ET PRESTA",
+      "montant": 7120000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2022-03-09",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "APPROVISIONNEMENT DE POSTES DE TRAVAIL MOYENS D IMPRESSION MATERIELS INFORMATIQUES DIVERS ET PRESTA",
+      "montant": 7120000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2022-03-09",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "APPROVISIONNEMENT DE POSTES DE TRAVAIL MOYENS D IMPRESSION MATERIELS INFORMATIQUES DIVERS ET PRESTA",
+      "montant": 7120000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2022-03-09",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "APPROVISIONNEMENT DE POSTES DE TRAVAIL MOYENS D IMPRESSION MATERIELS INFORMATIQUES DIVERS ET PRESTA",
+      "montant": 7120000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2022-03-09",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "APPROVISIONNEMENT DE POSTES DE TRAVAIL MOYENS D IMPRESSION MATERIELS INFORMATIQUES DIVERS ET PRESTA",
+      "montant": 7120000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2022-03-09",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "APPROVISIONNEMENT DE POSTES DE TRAVAIL MOYENS D IMPRESSION MATERIELS INFORMATIQUES DIVERS ET PRESTA",
+      "montant": 7120000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2022-03-09",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "APPROVISIONNEMENT DE POSTES DE TRAVAIL MOYENS D IMPRESSION MATERIELS INFORMATIQUES DIVERS ET PRESTA",
+      "montant": 7120000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2022-03-09",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "APPROVISIONNEMENT DE POSTES DE TRAVAIL MOYENS D IMPRESSION MATERIELS INFORMATIQUES DIVERS ET PRESTA",
+      "montant": 7120000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2022-03-09",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "APPROVISIONNEMENT DE POSTES DE TRAVAIL MOYENS D IMPRESSION MATERIELS INFORMATIQUES DIVERS ET PRESTA",
+      "montant": 6993600.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2022-06-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "APPROVISIONNEMENT DE POSTES DE TRAVAIL MOYENS D IMPRESSION MATERIELS INFORMATIQUES DIVERS ET PRESTA",
+      "montant": 6993600.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2022-06-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "APPROVISIONNEMENT DE POSTES DE TRAVAIL MOYENS D IMPRESSION MATERIELS INFORMATIQUES DIVERS ET PRESTA",
+      "montant": 6993600.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2022-06-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "APPROVISIONNEMENT DE POSTES DE TRAVAIL MOYENS D IMPRESSION MATERIELS INFORMATIQUES DIVERS ET PRESTA",
+      "montant": 6993600.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2022-06-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "APPROVISIONNEMENT DE POSTES DE TRAVAIL MOYENS D IMPRESSION MATERIELS INFORMATIQUES DIVERS ET PRESTA",
+      "montant": 6993600.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2022-06-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "APPROVISIONNEMENT DE POSTES DE TRAVAIL MOYENS D IMPRESSION MATERIELS INFORMATIQUES DIVERS ET PRESTA",
+      "montant": 6993600.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2022-06-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "21MC0662PN - FOURNITURE DE LICENCES, SUPPORT ET MAINTENANCE LOGICIELLE - JE/HZ",
+      "montant": 6782295.83,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2022-04-22",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "PRESTATIONS D INGENIERIE ARCHITECTURE TECHNIQUE ET INTEGRATION POUR LES POSTES DE TRAVAIL ET LES IN",
+      "montant": 6336000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2022-03-07",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "ACHAT D’ESPACES PUBLICITAIRES CONSEILS MÉDIAS AU NOM ET POUR LE COMPTE DE TOULOUSE MÉTROPOLE",
+      "montant": 6000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2022-11-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "ACHAT D’ESPACES PUBLICITAIRES CONSEILS MÉDIAS AU NOM ET POUR LE COMPTE DE TOULOUSE MÉTROPOLE",
+      "montant": 6000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2022-11-02",
+      "procedure": "Appel d'offres ouvert"
+    }
+  ]
+}

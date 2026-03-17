@@ -1,0 +1,17 @@
+{
+  "year": 2023,
+  "city_slug": "rennes",
+  "totals": {
+    "actif_total": 2889104307.59,
+    "passif_total": 2349735290.51,
+    "dette_financiere": 281957457.83,
+    "fonds_propres": 2067777832.68,
+    "tresorerie": 8864000.21,
+    "immobilisations": 2880240307.38
+  },
+  "kpis": {
+    "ratio_endettement": 12.0,
+    "pct_fonds_propres": 88.0,
+    "dette_par_hab": 1267.31
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "year": 2019,
+  "city_slug": "villeurbanne",
+  "totals": {
+    "actif_total": 898431465.4,
+    "passif_total": 729707218.83,
+    "dette_financiere": 38754156.92,
+    "fonds_propres": 690953061.91,
+    "tresorerie": 17209862.01,
+    "immobilisations": 881221603.39
+  },
+  "kpis": {
+    "ratio_endettement": 5.31,
+    "pct_fonds_propres": 94.69,
+    "dette_par_hab": 250.38
+  }
+}

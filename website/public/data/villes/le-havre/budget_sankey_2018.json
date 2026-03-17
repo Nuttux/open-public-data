@@ -1,0 +1,311 @@
+{
+  "year": 2018,
+  "type_budget": "execute",
+  "city_slug": "le-havre",
+  "city_name": "Le-Havre",
+  "dataStatus": "COMPLET",
+  "totals": {
+    "recettes": 340081610.99,
+    "depenses": 312650765.17,
+    "solde": 27430845.82
+  },
+  "nodes": [
+    {
+      "name": "Fiscalité",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations État",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits des services",
+      "category": "revenue"
+    },
+    {
+      "name": "Emprunts",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits exceptionnels",
+      "category": "revenue"
+    },
+    {
+      "name": "Subventions investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Autres produits",
+      "category": "revenue"
+    },
+    {
+      "name": "Reprises",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits financiers",
+      "category": "revenue"
+    },
+    {
+      "name": "Budget Le Havre",
+      "category": "central"
+    },
+    {
+      "name": "Personnel",
+      "category": "expense"
+    },
+    {
+      "name": "Investissements",
+      "category": "expense"
+    },
+    {
+      "name": "Fonctionnement courant",
+      "category": "expense"
+    },
+    {
+      "name": "Transferts & subventions",
+      "category": "expense"
+    },
+    {
+      "name": "Amortissements",
+      "category": "expense"
+    },
+    {
+      "name": "Charges exceptionnelles",
+      "category": "expense"
+    },
+    {
+      "name": "Charges financières",
+      "category": "expense"
+    },
+    {
+      "name": "Charges fiscales",
+      "category": "expense"
+    },
+    {
+      "name": "Dette",
+      "category": "expense"
+    }
+  ],
+  "links": [
+    {
+      "source": "Fiscalité",
+      "target": "Budget Le Havre",
+      "value": 164942393.49
+    },
+    {
+      "source": "Dotations État",
+      "target": "Budget Le Havre",
+      "value": 69666743.0
+    },
+    {
+      "source": "Dotations investissement",
+      "target": "Budget Le Havre",
+      "value": 32248647.74
+    },
+    {
+      "source": "Produits des services",
+      "target": "Budget Le Havre",
+      "value": 30203967.46
+    },
+    {
+      "source": "Emprunts",
+      "target": "Budget Le Havre",
+      "value": 16985688.95
+    },
+    {
+      "source": "Produits exceptionnels",
+      "target": "Budget Le Havre",
+      "value": 11386810.7
+    },
+    {
+      "source": "Subventions investissement",
+      "target": "Budget Le Havre",
+      "value": 9982548.99
+    },
+    {
+      "source": "Autres produits",
+      "target": "Budget Le Havre",
+      "value": 3879660.43
+    },
+    {
+      "source": "Reprises",
+      "target": "Budget Le Havre",
+      "value": 744239.44
+    },
+    {
+      "source": "Produits financiers",
+      "target": "Budget Le Havre",
+      "value": 40910.79
+    },
+    {
+      "source": "Budget Le Havre",
+      "target": "Personnel",
+      "value": 130198959.48
+    },
+    {
+      "source": "Budget Le Havre",
+      "target": "Investissements",
+      "value": 52617095.07
+    },
+    {
+      "source": "Budget Le Havre",
+      "target": "Fonctionnement courant",
+      "value": 51939810.11
+    },
+    {
+      "source": "Budget Le Havre",
+      "target": "Transferts & subventions",
+      "value": 35094864.62
+    },
+    {
+      "source": "Budget Le Havre",
+      "target": "Amortissements",
+      "value": 14479361.18
+    },
+    {
+      "source": "Budget Le Havre",
+      "target": "Charges exceptionnelles",
+      "value": 12895403.11
+    },
+    {
+      "source": "Budget Le Havre",
+      "target": "Charges financières",
+      "value": 6813180.3
+    },
+    {
+      "source": "Budget Le Havre",
+      "target": "Charges fiscales",
+      "value": 4415510.28
+    },
+    {
+      "source": "Budget Le Havre",
+      "target": "Dette",
+      "value": 4196581.02
+    }
+  ],
+  "drilldown": {
+    "revenue": {
+      "Fiscalité": [
+        {
+          "name": "Fiscalité",
+          "value": 164942393.49
+        }
+      ],
+      "Dotations État": [
+        {
+          "name": "Dotations État",
+          "value": 69666743.0
+        }
+      ],
+      "Dotations investissement": [
+        {
+          "name": "Dotations investissement",
+          "value": 32248647.74
+        }
+      ],
+      "Produits des services": [
+        {
+          "name": "Produits des services",
+          "value": 30203967.46
+        }
+      ],
+      "Emprunts": [
+        {
+          "name": "Emprunts",
+          "value": 16985688.95
+        }
+      ],
+      "Produits exceptionnels": [
+        {
+          "name": "Produits exceptionnels",
+          "value": 11386810.7
+        }
+      ],
+      "Subventions investissement": [
+        {
+          "name": "Subventions investissement",
+          "value": 9982548.99
+        }
+      ],
+      "Autres produits": [
+        {
+          "name": "Autres produits",
+          "value": 3879660.43
+        }
+      ],
+      "Reprises": [
+        {
+          "name": "Reprises",
+          "value": 744239.44
+        }
+      ],
+      "Produits financiers": [
+        {
+          "name": "Produits financiers",
+          "value": 40910.79
+        }
+      ]
+    },
+    "expenses": {
+      "Personnel": [
+        {
+          "name": "Personnel",
+          "value": 130198959.48
+        }
+      ],
+      "Investissements": [
+        {
+          "name": "Investissements",
+          "value": 52617095.07
+        }
+      ],
+      "Fonctionnement courant": [
+        {
+          "name": "Fonctionnement courant",
+          "value": 51939810.11
+        }
+      ],
+      "Transferts & subventions": [
+        {
+          "name": "Transferts & subventions",
+          "value": 35094864.62
+        }
+      ],
+      "Amortissements": [
+        {
+          "name": "Amortissements",
+          "value": 14479361.18
+        }
+      ],
+      "Charges exceptionnelles": [
+        {
+          "name": "Charges exceptionnelles",
+          "value": 12895403.11
+        }
+      ],
+      "Charges financières": [
+        {
+          "name": "Charges financières",
+          "value": 6813180.3
+        }
+      ],
+      "Charges fiscales": [
+        {
+          "name": "Charges fiscales",
+          "value": 4415510.28
+        }
+      ],
+      "Dette": [
+        {
+          "name": "Dette",
+          "value": 4196581.02
+        }
+      ]
+    }
+  }
+}

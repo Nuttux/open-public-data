@@ -1,0 +1,864 @@
+{
+  "annee": 2025,
+  "city_slug": "lyon",
+  "total_montant": 5544661004.7,
+  "total_marches": 3868,
+  "categories": [
+    {
+      "categorie": "Construction & Bâtiment",
+      "nb_marches": 1409,
+      "montant_total": 1679438930.12,
+      "montant_moyen": 1191936.79
+    },
+    {
+      "categorie": "Services professionnels",
+      "nb_marches": 1090,
+      "montant_total": 1316282836.06,
+      "montant_moyen": 1207598.93
+    },
+    {
+      "categorie": "Autres",
+      "nb_marches": 807,
+      "montant_total": 1265133886.82,
+      "montant_moyen": 1567699.98
+    },
+    {
+      "categorie": "Énergie",
+      "nb_marches": 47,
+      "montant_total": 397612565.03,
+      "montant_moyen": 8459841.81
+    },
+    {
+      "categorie": "Alimentation & Restauration",
+      "nb_marches": 72,
+      "montant_total": 313027600.0,
+      "montant_moyen": 4347605.56
+    },
+    {
+      "categorie": "Informatique & Télécom",
+      "nb_marches": 183,
+      "montant_total": 278189724.35,
+      "montant_moyen": 1520162.43
+    },
+    {
+      "categorie": "Transport & Véhicules",
+      "nb_marches": 191,
+      "montant_total": 225524272.72,
+      "montant_moyen": 1180755.35
+    },
+    {
+      "categorie": "Environnement & Propreté",
+      "nb_marches": 55,
+      "montant_total": 67616493.92,
+      "montant_moyen": 1229390.8
+    },
+    {
+      "categorie": "Santé & Social",
+      "nb_marches": 14,
+      "montant_total": 1834695.68,
+      "montant_moyen": 131049.69
+    }
+  ],
+  "top_marches": [
+    {
+      "objet": "Acheminement et fourniture d?électricité pour les besoins propres de la Ville de Lyon et du CCAS",
+      "montant": 99999999.0,
+      "categorie": "Énergie",
+      "titulaire": "",
+      "date": "2025-04-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Service de préparation et de livraison de repas à destination des écoles primaires de la ville de Lyon et des ACM HE HOP",
+      "montant": 72000000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2025-12-31",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Réalisation et fourniture de titres restaurant pour le personnel de la ville de Lyon, du centre communal d’action sociale de Lyon (CCAS) et de l’école nationale supérieure des beaux-arts de Lyon (ENSBA)",
+      "montant": 70125000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2025-07-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Réalisation et fourniture de titres restaurant pour le personnel de la ville de Lyon, du centre communal d’action sociale de Lyon (CCAS) et de l’école nationale supérieure des beaux-arts de Lyon (ENSBA)",
+      "montant": 70125000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2025-07-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Réalisation et fourniture de titres restaurant pour le personnel de la ville de Lyon, du centre communal d’action sociale de Lyon (CCAS) et de l’école nationale supérieure des beaux-arts de Lyon (ENSBA)",
+      "montant": 70125000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2025-07-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Réalisation et fourniture de titres restaurant pour le personnel de la ville de Lyon, du centre communal d’action sociale de Lyon (CCAS) et de l’école nationale supérieure des beaux-arts de Lyon (ENSBA)",
+      "montant": 70125000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2025-07-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture d’électricité pour la Ville de Lyon et le CCAS de Lyon",
+      "montant": 60000000.0,
+      "categorie": "Énergie",
+      "titulaire": "",
+      "date": "2025-03-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture d’électricité pour la Ville de Lyon et le CCAS de Lyon",
+      "montant": 60000000.0,
+      "categorie": "Énergie",
+      "titulaire": "",
+      "date": "2025-03-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture d’électricité pour la Ville de Lyon et le CCAS de Lyon",
+      "montant": 60000000.0,
+      "categorie": "Énergie",
+      "titulaire": "",
+      "date": "2025-03-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Mise en oeuvre de couvertures complémentaires de prévoyance et de frais de santé au profit des agents de la Ville de Lyon, du CCAS de Lyon et de la caisse des écoles - Lot 1 : Couverture complémentaire de frais de santé",
+      "montant": 52407039.6,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2025-08-11",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Mise en oeuvre de couvertures complémentaires de prévoyance et de frais de santé au profit des agents de la Ville de Lyon, du CCAS de Lyon et de la caisse des écoles - Lot 1 : Couverture complémentaire de frais de santé",
+      "montant": 52407039.6,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2025-08-11",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Mise en oeuvre de couvertures complémentaires de prévoyance et de frais de santé au profit des agents de la Ville de Lyon, du CCAS de Lyon et de la caisse des écoles - Lot 1 : Couverture complémentaire de frais de santé",
+      "montant": 52407039.6,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2025-08-11",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Achats auprès de la centrale d’achat UGAP",
+      "montant": 50000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2025-06-02",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "Achats auprès de la centrale d’achat UGAP",
+      "montant": 50000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2025-05-28",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "Service de préparation et de livraison de repas à destination des écoles primaires de la ville de Lyon et des ACM Divertisport.",
+      "montant": 41000000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2025-09-26",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Service de préparation et de livraison de repas à destination des écoles primaires de la ville de Lyon et des ACM Divertisport.",
+      "montant": 41000000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2025-09-26",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Mise en oeuvre de couvertures complémentaires de prévoyance et de frais de santé au profit des agents de la Ville de Lyon, du CCAS de Lyon et de la caisse des écoles - Lot 2 : Couverture complémentaire de prévoyance",
+      "montant": 35784193.74,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2025-09-08",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Mise en oeuvre de couvertures complémentaires de prévoyance et de frais de santé au profit des agents de la Ville de Lyon, du CCAS de Lyon et de la caisse des écoles - Lot 2 : Couverture complémentaire de prévoyance",
+      "montant": 35784193.74,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2025-09-08",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Mise en oeuvre de couvertures complémentaires de prévoyance et de frais de santé au profit des agents de la Ville de Lyon, du CCAS de Lyon et de la caisse des écoles - Lot 2 : Couverture complémentaire de prévoyance",
+      "montant": 35784193.74,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2025-08-11",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Mise en oeuvre de couvertures complémentaires de prévoyance et de frais de santé au profit des agents de la Ville de Lyon, du CCAS de Lyon et de la caisse des écoles - Lot 2 : Couverture complémentaire de prévoyance",
+      "montant": 35784193.74,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2025-08-11",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Fourniture électricité C5 bâtiment",
+      "montant": 30000000.0,
+      "categorie": "Énergie",
+      "titulaire": "",
+      "date": "2025-09-03",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture électricité C5 bâtiment",
+      "montant": 30000000.0,
+      "categorie": "Énergie",
+      "titulaire": "",
+      "date": "2025-07-21",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture électricité C5 bâtiment",
+      "montant": 30000000.0,
+      "categorie": "Énergie",
+      "titulaire": "",
+      "date": "2025-05-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations sécurité et gardiennage pour la Ville de Lyon - Lot 4 : Prestations de sécurité, gardiennage ponctuelles des sites, des événements et la télésurveillance",
+      "montant": 28800000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-16",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Prestations sécurité et gardiennage pour la Ville de Lyon - Lot 4 : Prestations de sécurité, gardiennage ponctuelles des sites, des événements et la télésurveillance",
+      "montant": 28800000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-10",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Prestations sécurité et gardiennage pour la Ville de Lyon - Lot 4 : Prestations de sécurité, gardiennage ponctuelles des sites, des événements et la télésurveillance",
+      "montant": 28800000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-02",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Prestations sécurité et gardiennage pour la Ville de Lyon - Lot 4 : Prestations de sécurité, gardiennage ponctuelles des sites, des événements et la télésurveillance",
+      "montant": 28800000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-08-29",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Prestations sécurité et gardiennage pour la Ville de Lyon - Lot 4 : Prestations de sécurité, gardiennage ponctuelles des sites, des événements et la télésurveillance",
+      "montant": 28800000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-08-28",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Prestations sécurité et gardiennage pour la Ville de Lyon - Lot 4 : Prestations de sécurité, gardiennage ponctuelles des sites, des événements et la télésurveillance",
+      "montant": 28800000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-06-16",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Prestation d’infogérance de l’environnement numérique utilisateur et du système d’information de la Ville de Lyon-Lot 2-Infogérance du système d’informations",
+      "montant": 20000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2025-10-13",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Prestation d’infogérance de l’environnement numérique utilisateur et du système d’information de la Ville de Lyon-Lot 2-Infogérance du système d’informations",
+      "montant": 20000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2025-06-04",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Prestation d’infogérance de l’environnement numérique utilisateur et du système d’information de la Ville de Lyon-Lot 2-Infogérance du système d’informations",
+      "montant": 20000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2025-06-04",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Prestations d’infogérance de l’environnement numérique utilisateur et du système d’information de la Ville de Lyon - Lot 1 : Infogérance de l?environnement numérique Utilisateur",
+      "montant": 12000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2025-07-29",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Prestations d’infogérance de l’environnement numérique utilisateur et du système d’information de la Ville de Lyon - Lot 1 : Infogérance de l?environnement numérique Utilisateur",
+      "montant": 12000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2025-07-24",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de MOE pour des opérations de travaux d?aménagement ou de réhabilitation de locaux de bâtiments ne relevant pas du patrimoine classé au titre des monuments historiques",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture électricité C2 C3 C4",
+      "montant": 10000000.0,
+      "categorie": "Énergie",
+      "titulaire": "",
+      "date": "2025-11-07",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture de produits d’entretien, d’hygiène et de matériels de nettoyage pour les services de la Ville de Lyon",
+      "montant": 9800000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2025-01-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture de produits d’entretien, d’hygiène, de petit matériel et accessoires de nettoyage pour les services de la Ville de Lyon",
+      "montant": 9000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2025-11-27",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture de produits d’entretien, d’hygiène, de petit matériel et accessoires de nettoyage pour les services de la Ville de Lyon",
+      "montant": 9000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2025-06-05",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture de produits d’entretien, d’hygiène, de petit matériel et accessoires de nettoyage pour les services de la Ville de Lyon",
+      "montant": 9000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2025-02-21",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture de produits d’entretien, d’hygiène, de petit matériel et accessoires de nettoyage pour les services de la Ville de Lyon",
+      "montant": 9000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2025-02-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture de produits d’entretien, d’hygiène, de petit matériel et accessoires de nettoyage pour les services de la Ville de Lyon",
+      "montant": 9000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2025-02-19",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine Ville et CCAS 1-2-4 et rive gauche Lot 5 Electricité",
+      "montant": 8600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-12-24",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine du secteur 3e et 6e arrondissements et de la rive gauche et étanchéité rive droite  Ville de Lyon et CCAS - Lot 5 : Electricité secteur 3-6",
+      "montant": 8600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-10-24",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine du secteur 3e et 6e arrondissements et de la rive gauche et étanchéité rive droite  Ville de Lyon et CCAS - Lot 5 : Electricité secteur 3-6",
+      "montant": 8600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-04-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine du secteur 3e et 6e arrondissements et de la rive gauche et étanchéité rive droite  Ville de Lyon et CCAS - Lot 5 : Electricité secteur 3-6",
+      "montant": 8600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-04-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine du secteur 3e et 6e arrondissements et de la rive gauche et étanchéité rive droite  Ville de Lyon et CCAS - Lot 5 : Electricité secteur 3-6",
+      "montant": 8600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-01-10",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine secteurs 7-8 et désenfumage tous secteurs - Lot 1 - Maçonnerie",
+      "montant": 8575000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine secteurs 7-8 et désenfumage tous secteurs - Lot 1 - Maçonnerie",
+      "montant": 8575000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-10-31",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite LOT 5 : Electricité",
+      "montant": 8200000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-10-31",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite LOT 5 : Electricité",
+      "montant": 8200000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-10-31",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite LOT 5 : Electricité",
+      "montant": 8200000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-04-25",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite LOT 5 : Electricité",
+      "montant": 8200000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-04-25",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite LOT 5 : Electricité",
+      "montant": 8200000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-04-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite LOT 5 : Electricité",
+      "montant": 8200000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-04-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite LOT 5 : Electricité",
+      "montant": 8200000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-04-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite LOT 5 : Electricité",
+      "montant": 8200000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-04-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux d’installation de panneaux photovoltaïques",
+      "montant": 8000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-10-24",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture et pose d’infrastructure de câblage courant faible VDI et prestations associées",
+      "montant": 8000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2025-10-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Acquisition maintenance serveurs Windows-Linux-Equipements actifs de réseaux, sécurité, téléphonie sur IP et prestations associées-Lot 1- Acquisition et maintenance des équipements actifs de réseau, sécurité, téléphonie sur IP",
+      "montant": 8000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2025-10-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Remise et collecte, acheminement, distribution d?envois postaux à délais indicatifs et produits annexes pour les services de la Ville de Lyon et du Centre Communal d?Action Sociale de Lyon",
+      "montant": 8000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2025-09-23",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "Remise et collecte, acheminement, distribution d?envois postaux à délais indicatifs et produits annexes pour les services de la Ville de Lyon et du Centre Communal d?Action Sociale de Lyon",
+      "montant": 8000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2025-09-23",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "Remise et collecte, acheminement, distribution d?envois postaux à délais indicatifs et produits annexes pour les services de la Ville de Lyon et du Centre Communal d?Action Sociale de Lyon",
+      "montant": 8000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2025-09-23",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    }
+  ]
+}

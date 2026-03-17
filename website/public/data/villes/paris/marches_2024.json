@@ -1,0 +1,864 @@
+{
+  "annee": 2024,
+  "city_slug": "paris",
+  "total_montant": 3985731719.3,
+  "total_marches": 1405,
+  "categories": [
+    {
+      "categorie": "Construction & Bâtiment",
+      "nb_marches": 451,
+      "montant_total": 3147058473.9,
+      "montant_moyen": 6977956.7
+    },
+    {
+      "categorie": "Services professionnels",
+      "nb_marches": 370,
+      "montant_total": 224307595.49,
+      "montant_moyen": 606236.74
+    },
+    {
+      "categorie": "Autres",
+      "nb_marches": 346,
+      "montant_total": 168454794.98,
+      "montant_moyen": 486863.57
+    },
+    {
+      "categorie": "Informatique & Télécom",
+      "nb_marches": 49,
+      "montant_total": 116260035.39,
+      "montant_moyen": 2372653.78
+    },
+    {
+      "categorie": "Transport & Véhicules",
+      "nb_marches": 84,
+      "montant_total": 107353914.14,
+      "montant_moyen": 1278022.79
+    },
+    {
+      "categorie": "Énergie",
+      "nb_marches": 4,
+      "montant_total": 102992000.0,
+      "montant_moyen": 25748000.0
+    },
+    {
+      "categorie": "Environnement & Propreté",
+      "nb_marches": 41,
+      "montant_total": 95105406.91,
+      "montant_moyen": 2319644.07
+    },
+    {
+      "categorie": "Alimentation & Restauration",
+      "nb_marches": 15,
+      "montant_total": 14196953.99,
+      "montant_moyen": 946463.6
+    },
+    {
+      "categorie": "Santé & Social",
+      "nb_marches": 45,
+      "montant_total": 10002544.5,
+      "montant_moyen": 222278.77
+    }
+  ],
+  "top_marches": [
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Chaufferies gaz et sous-stations vapeur ou eau chaude- Géographique Ouest (1-2-3-4-6-7-8-9-14-15-16-17-18)",
+      "montant": 60000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Chaufferies gaz et sous-stations vapeur ou eau chaude- Géographique Ouest (1-2-3-4-6-7-8-9-14-15-16-17-18)",
+      "montant": 60000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Chaufferies gaz et sous-stations vapeur ou eau chaude- Géographique Ouest (1-2-3-4-6-7-8-9-14-15-16-17-18)",
+      "montant": 60000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Chaufferies gaz et sous-stations vapeur ou eau chaude- Géographique Ouest (1-2-3-4-6-7-8-9-14-15-16-17-18)",
+      "montant": 60000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Chaufferies gaz et sous-stations vapeur ou eau chaude- Géographique Ouest (1-2-3-4-6-7-8-9-14-15-16-17-18)",
+      "montant": 60000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Chaufferies gaz et sous-stations vapeur ou eau chaude- Géographique Ouest (1-2-3-4-6-7-8-9-14-15-16-17-18)",
+      "montant": 60000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Chaufferies gaz et sous-stations vapeur ou eau chaude- Géographique Ouest (1-2-3-4-6-7-8-9-14-15-16-17-18)",
+      "montant": 60000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Chaufferies gaz et sous-stations vapeur ou eau chaude- Géographique Ouest (1-2-3-4-6-7-8-9-14-15-16-17-18)",
+      "montant": 60000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Chaufferies gaz et sous-stations vapeur ou eau chaude- Géographique Est (5-10-11-12-13-19-20)",
+      "montant": 60000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Chaufferies gaz et sous-stations vapeur ou eau chaude- Géographique Est (5-10-11-12-13-19-20)",
+      "montant": 60000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Chaufferies gaz et sous-stations vapeur ou eau chaude- Géographique Est (5-10-11-12-13-19-20)",
+      "montant": 60000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Chaufferies gaz et sous-stations vapeur ou eau chaude- Géographique Est (5-10-11-12-13-19-20)",
+      "montant": 60000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Chaufferies gaz et sous-stations vapeur ou eau chaude- Géographique Est (5-10-11-12-13-19-20)",
+      "montant": 60000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Chaufferies gaz et sous-stations vapeur ou eau chaude- Géographique Est (5-10-11-12-13-19-20)",
+      "montant": 60000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Chaufferies gaz et sous-stations vapeur ou eau chaude- Géographique Est (5-10-11-12-13-19-20)",
+      "montant": 60000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre à marchés subséquents pour les travaux d’aménagement paysager des cours des établissements parisiens. - Travaux d’aménagement paysager des cours des établissements parisiens dans les arrondissements Paris Centre, 8ème, 9ème, 10ème, 11ème et 12ème ",
+      "montant": 60000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-02-20",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Accord-cadre à marchés subséquents pour les travaux d’aménagement paysager des cours des établissements parisiens. - Travaux d’aménagement paysager des cours des établissements parisiens dans les arrondissements 18ème, 19ème et 20ème",
+      "montant": 60000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-02-15",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Accord-cadre à marchés subséquents pour les travaux d’aménagement paysager des cours des établissements parisiens. - Travaux d’aménagement paysager des cours des établissements parisiens dans les arrondissements 18ème, 19ème et 20ème",
+      "montant": 60000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-02-15",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Accord-cadre à marchés subséquents pour les travaux d’aménagement paysager des cours des établissements parisiens. - Travaux d’aménagement paysager des cours des établissements parisiens dans les arrondissements 18ème, 19ème et 20ème",
+      "montant": 60000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-02-15",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Accord-cadre à marchés subséquents pour les travaux d’aménagement paysager des cours des établissements parisiens. - Travaux d’aménagement paysager des cours des établissements parisiens dans les arrondissements 5ème, 6ème, 7ème, 13ème, 14ème, 15ème, 16ème et 17ème",
+      "montant": 60000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-02-15",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Accord-cadre à marchés subséquents pour les travaux d’aménagement paysager des cours des établissements parisiens. - Travaux d’aménagement paysager des cours des établissements parisiens dans les arrondissements 5ème, 6ème, 7ème, 13ème, 14ème, 15ème, 16ème et 17ème",
+      "montant": 60000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-02-15",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Accord-cadre à marchés subséquents pour les travaux d’aménagement paysager des cours des établissements parisiens. - Travaux d’aménagement paysager des cours des établissements parisiens dans les arrondissements 5ème, 6ème, 7ème, 13ème, 14ème, 15ème, 16ème et 17ème",
+      "montant": 60000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-02-15",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Accord-cadre à marchés subséquents pour les travaux d’aménagement paysager des cours des établissements parisiens. - Travaux d’aménagement paysager des cours des établissements parisiens dans les arrondissements 5ème, 6ème, 7ème, 13ème, 14ème, 15ème, 16ème et 17ème",
+      "montant": 60000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-02-15",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Accord-cadre à marchés subséquents pour les travaux d’aménagement paysager des cours des établissements parisiens. - Travaux d’aménagement paysager des cours des établissements parisiens dans les arrondissements Paris Centre, 8ème, 9ème, 10ème, 11ème et 12ème ",
+      "montant": 60000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-02-15",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Accord-cadre à marchés subséquents pour les travaux d’aménagement paysager des cours des établissements parisiens. - Travaux d’aménagement paysager des cours des établissements parisiens dans les arrondissements Paris Centre, 8ème, 9ème, 10ème, 11ème et 12ème ",
+      "montant": 60000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-02-15",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Accord-cadre à marchés subséquents pour les travaux d’aménagement paysager des cours des établissements parisiens. - Travaux d’aménagement paysager des cours des établissements parisiens dans les arrondissements Paris Centre, 8ème, 9ème, 10ème, 11ème et 12ème ",
+      "montant": 60000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-02-15",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Fourniture de carburant et services annexes par cartes accréditives",
+      "montant": 50000000.0,
+      "categorie": "Énergie",
+      "titulaire": "",
+      "date": "2024-11-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture de carburant et services annexes par cartes accréditives",
+      "montant": 50000000.0,
+      "categorie": "Énergie",
+      "titulaire": "",
+      "date": "2024-11-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture de postes de travail informatique fixes, portables, hybrides et stations de travail, neufs et/ou en réemploi (réutilisation), options et prestations associées",
+      "montant": 47800000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2024-02-05",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Accord cadre à bons de commandes d’entretien courant Plomberie sur le patrimoine de la RIVP et d’HSF",
+      "montant": 40400000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-11-22",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Accord cadre à bons de commandes d’entretien courant Plomberie sur le patrimoine de la RIVP et d’HSF",
+      "montant": 40400000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-11-22",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Accord cadre à bons de commandes d’entretien courant Plomberie sur le patrimoine de la RIVP et d’HSF",
+      "montant": 40400000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-11-22",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Accord cadre à bons de commandes d’entretien courant Plomberie sur le patrimoine de la RIVP et d’HSF",
+      "montant": 40400000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-11-22",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Accord cadre à bons de commandes d’entretien courant Plomberie sur le patrimoine de la RIVP et d’HSF",
+      "montant": 40400000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-11-22",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Accord cadre à bons de commandes d’entretien courant Plomberie sur le patrimoine de la RIVP et d’HSF",
+      "montant": 40400000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-11-22",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Accord cadre à bons de commandes d’entretien courant Plomberie sur le patrimoine de la RIVP et d’HSF",
+      "montant": 40400000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-11-22",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Accord cadre à bons de commandes d’entretien courant Plomberie sur le patrimoine de la RIVP et d’HSF",
+      "montant": 40400000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-11-22",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Accord cadre à bons de commandes d’entretien courant Plomberie sur le patrimoine de la RIVP et d’HSF",
+      "montant": 40400000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-11-22",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Accord cadre à bons de commandes d’entretien courant Plomberie sur le patrimoine de la RIVP et d’HSF",
+      "montant": 40400000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-11-22",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Ventilation des locaux en IdF-Géographique Ouest (1-2-3-4-6-7-8-9-14-15-16-17-18)",
+      "montant": 40000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Ventilation des locaux en IdF-Géographique Ouest (1-2-3-4-6-7-8-9-14-15-16-17-18)",
+      "montant": 40000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Ventilation des locaux en IdF-Géographique Ouest (1-2-3-4-6-7-8-9-14-15-16-17-18)",
+      "montant": 40000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Ventilation des locaux en IdF-Géographique Ouest (1-2-3-4-6-7-8-9-14-15-16-17-18)",
+      "montant": 40000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Ventilation des locaux en IdF-Géographique Ouest (1-2-3-4-6-7-8-9-14-15-16-17-18)",
+      "montant": 40000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Ventilation des locaux en IdF-Géographique Ouest (1-2-3-4-6-7-8-9-14-15-16-17-18)",
+      "montant": 40000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Ventilation des locaux en IdF-Géographique Ouest (1-2-3-4-6-7-8-9-14-15-16-17-18)",
+      "montant": 40000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Ventilation des locaux en IdF-Géographique Est (5-10-11-12-13-19-20)",
+      "montant": 40000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Ventilation des locaux en IdF-Géographique Est (5-10-11-12-13-19-20)",
+      "montant": 40000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Ventilation des locaux en IdF-Géographique Est (5-10-11-12-13-19-20)",
+      "montant": 40000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Ventilation des locaux en IdF-Géographique Est (5-10-11-12-13-19-20)",
+      "montant": 40000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Ventilation des locaux en IdF-Géographique Est (5-10-11-12-13-19-20)",
+      "montant": 40000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Ventilation des locaux en IdF-Géographique Est (5-10-11-12-13-19-20)",
+      "montant": 40000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Ventilation des locaux en IdF-Géographique Est (5-10-11-12-13-19-20)",
+      "montant": 40000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Changement d’énergie avec ou sans distribution hydraulique/ Opérations complexes en IdF",
+      "montant": 40000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Changement d’énergie avec ou sans distribution hydraulique/ Opérations complexes en IdF",
+      "montant": 40000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Changement d’énergie avec ou sans distribution hydraulique/ Opérations complexes en IdF",
+      "montant": 40000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Changement d’énergie avec ou sans distribution hydraulique/ Opérations complexes en IdF",
+      "montant": 40000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à marchés subséquents pour les travaux de modernisation des installations de génie climatique des équipements de la collectivité parisienne. - Changement d’énergie avec ou sans distribution hydraulique/ Opérations complexes en IdF",
+      "montant": 40000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "travaux d’enrobés sur les chaussées parisiennes - Travaux d’enrobés sur les chaussées parisiennes (hors boulevard périphérique, berges et tunnels)",
+      "montant": 40000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-01-31",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à bons de commande en 2 lots, pour des travaux de fourniture et pose et des travaux d’entretien, des stores et volets roulants dans les équipements de la Ville de Paris et les bâtiments gérés par l’Établissement Public Paris Musées (EPPM). - Accord-cadre à bons de commande multi-attributaires pour des travaux de fourniture et pose et des travaux d’entretien, des stores et volets roulants dans les équipements de la Ville de Paris.",
+      "montant": 24000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-06-06",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à bons de commande en 2 lots, pour des travaux de fourniture et pose et des travaux d’entretien, des stores et volets roulants dans les équipements de la Ville de Paris et les bâtiments gérés par l’Établissement Public Paris Musées (EPPM). - Accord-cadre à bons de commande multi-attributaires pour des travaux de fourniture et pose et des travaux d’entretien, des stores et volets roulants dans les équipements de la Ville de Paris.",
+      "montant": 24000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-06-05",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à bons de commande en 2 lots, pour des travaux de fourniture et pose et des travaux d’entretien, des stores et volets roulants dans les équipements de la Ville de Paris et les bâtiments gérés par l’Établissement Public Paris Musées (EPPM). - Accord-cadre à bons de commande multi-attributaires pour des travaux de fourniture et pose et des travaux d’entretien, des stores et volets roulants dans les équipements de la Ville de Paris.",
+      "montant": 24000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-06-05",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à bons de commande de diagnostics amiante et plomb dans les immeubles bâtis et les ouvrages sur l’espace public de la Ville de Paris, et dans les bâtiments gérés par l’Établissement Public Paris Musées (EPPM).",
+      "montant": 22200000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-05-06",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à bons de commande de diagnostics amiante et plomb dans les immeubles bâtis et les ouvrages sur l’espace public de la Ville de Paris, et dans les bâtiments gérés par l’Établissement Public Paris Musées (EPPM).",
+      "montant": 22200000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-05-06",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à bons de commande de diagnostics amiante et plomb dans les immeubles bâtis et les ouvrages sur l’espace public de la Ville de Paris, et dans les bâtiments gérés par l’Établissement Public Paris Musées (EPPM).",
+      "montant": 22200000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-05-06",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à bons de commande de diagnostics amiante et plomb dans les immeubles bâtis et les ouvrages sur l’espace public de la Ville de Paris, et dans les bâtiments gérés par l’Établissement Public Paris Musées (EPPM).",
+      "montant": 22200000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-05-06",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accords-cadres à bons de commande de diagnostics amiante et plomb dans les immeubles bâtis et les ouvrages sur l’espace public de la Ville de Paris, et dans les bâtiments gérés par l’Établissement Public Paris Musées (EPPM).",
+      "montant": 22200000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-05-06",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre à marchés subséquents de travaux de rénovation de stations de gestion locale du réseau d’assainissement parisien",
+      "montant": 21619585.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-11-26",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre à marchés subséquents de travaux de rénovation de stations de gestion locale du réseau d’assainissement parisien",
+      "montant": 21419017.95,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-11-25",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "travaux d’enrobés sur les chaussées parisiennes - Travaux d’enrobés sur le boulevard périphérique, les berges et tunnels parisiens",
+      "montant": 20000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-01-31",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre à marchés subséquents de travaux de rénovation de stations de gestion locale du réseau d’assainissement parisien",
+      "montant": 19967181.48,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-11-26",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre multi-attributaires à bons de commandes pour la Maintenance préventive et curative des installations et systèmes de sureté des bâtiments de la Ville de Paris.",
+      "montant": 15000000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-06-26",
+      "procedure": "Appel d'offres restreint"
+    },
+    {
+      "objet": "Accord-cadre multi-attributaires à bons de commandes pour la Maintenance préventive et curative des installations et systèmes de sureté des bâtiments de la Ville de Paris.",
+      "montant": 15000000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-06-26",
+      "procedure": "Appel d'offres restreint"
+    },
+    {
+      "objet": "Accords-cadres à bons de commande en 6 lots pour la conservation-restauration de peinture de chevalet (cadre compris), de vitrail, de peinture murale, de textile et tapisserie, de mobilier et d’arts graphiques propriétés de la Ville de Paris. - Accord-cadre Ville de Paris pour les prestations de conservation-restauration de mobilier ",
+      "montant": 14000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-10-22",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Accords-cadres à bons de commande en 6 lots pour la conservation-restauration de peinture de chevalet (cadre compris), de vitrail, de peinture murale, de textile et tapisserie, de mobilier et d’arts graphiques propriétés de la Ville de Paris. - Accord-cadre Ville de Paris pour les prestations de conservation-restauration de mobilier ",
+      "montant": 14000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-10-22",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Accords-cadres à bons de commandes pour la fourniture de mobiliers de bureaux en 4 lots séparés - Fourniture et installation de mobilier pour des aménagements standards et modulaires : plans de travail, bureaux, armoires, caissons et accessoires",
+      "montant": 12000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-11-27",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre multi-attributaires à bons de commande et à marchés subséquents d’Assistance à Maîtrise d’Ouvrage (AMOA) pour l’accompagnement de projets informatiques de la Ville de Paris",
+      "montant": 12000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2024-08-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre multi-attributaires à bons de commande et à marchés subséquents d’Assistance à Maîtrise d’Ouvrage (AMOA) pour l’accompagnement de projets informatiques de la Ville de Paris",
+      "montant": 12000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2024-08-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre multi-attributaires à bons de commande et à marchés subséquents d’Assistance à Maîtrise d’Ouvrage (AMOA) pour l’accompagnement de projets informatiques de la Ville de Paris",
+      "montant": 12000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2024-08-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Contrôle qualité des plans de voirie de la Ville de Paris",
+      "montant": 10000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-12-05",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de rénovation de la Piscine Château-Landon - 31 rue du Château-Landon - 75010 Paris - phase offre finale",
+      "montant": 8030000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-06-18",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Accords-cadres à bons de commandes pour la fourniture de mobiliers de bureaux en 4 lots séparés - Fourniture et installation de sièges de bureaux, chaises",
+      "montant": 8000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-12-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture de pièces détachées et réparation de carrosseries pour véhicules poids lourds - Fourniture d’accessoires, de pièces d’usure et d’organes électriques pour moteurs et châssis poids lourds et engins",
+      "montant": 8000000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-02-12",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre multi-attributaires à marchés subséquents de travaux d’automatisme et d’électricité dans les centres thermiques et d’installation de sondes de température d’ambiance IoT dans les bâtiments de la ville de Paris - 2 lots - Travaux d’installation de sondes de température d’ambiance IoT dans les bâtiments de la ville de Paris",
+      "montant": 7479239.9,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-03",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Marché d’assurances responsabilité civile générale et multirisques pour le groupement de commande RIVP, HENEO, HSF",
+      "montant": 7243486.19,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-12-16",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Marché d’assurances responsabilité civile générale et multirisques pour le groupement de commande RIVP, HENEO, HSF",
+      "montant": 7243486.19,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-12-16",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "SA4.ACBC.EQUIPEMENTS PUBLICS DE LA V.P ARR 19 ET 20 LOT 5",
+      "montant": 7200000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-01-01",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre multi-attributaires à marchés subséquents de travaux d’automatisme et d’électricité dans les centres thermiques et d’installation de sondes de température d’ambiance IoT dans les bâtiments de la ville de Paris - 2 lots - Travaux d’installation de sondes de température d’ambiance IoT dans les bâtiments de la ville de Paris",
+      "montant": 6894174.59,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-10-03",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre à bons de commande relatif à la maintenance des licences des progiciels SAP",
+      "montant": 6000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2024-11-26",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Lot 1: Fourniture et livraison de produits de types viande issus du buf, du veau et de l’agneau",
+      "montant": 6000000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2024-07-30",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Entretien des espaces verts d’établissements et de cimetières en 9 lots - Entretien des espaces verts des établissements situés dans les 11ème, 12ème et 20ème arrondissements de Paris",
+      "montant": 6000000.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2024-06-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Entretien des espaces verts des établissements situés dans les 15ème, 16ème et 17ème arrondissements de Paris",
+      "montant": 6000000.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2024-06-14",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Conception et production des dispositifs évènementiels, à la charge de la Ville de Paris, liés à la gestion des sites officiels et leurs abords pendant les Jeux Olympiques et Paralympiques - marché fondé sur l’accord-cadre 20222022S01255",
+      "montant": 5415976.87,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-05-16",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Entretien des espaces verts d’établissements et de cimetières en 9 lots - Entretien des espaces verts des établissements situés dans les 18ème et 19ème arrondissements de Paris",
+      "montant": 5400000.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2024-06-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Marché subséquent à un accord-cadre à bons de commande d’Assistance à Maîtrise d’Ouvrage (AMOA) pour l’accompagnement de la refonte du SI Finance de la Ville de Paris",
+      "montant": 5000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2024-12-26",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "Accords-cadres à bons de commande d’Assistance à Maîtrise d’Ouvrage (AMOA) pour le renouvellement du service public de chaleur urbaine de la Ville de Paris, en 2 lots séparés - Accord-cadre à bons de commande d’Assistance à Maîtrise d’Ouvrage (AMOA) juridico-financière pour le renouvellement du service public de chaleur urbaine de la Ville de Paris",
+      "montant": 5000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Marché subséquent à l’accord-cadre 20242024S06943 - Assistance à Maîtrise d’Ouvrage (AMOA) pour l’accompagnement du Plan de Transformation Numérique de la fonction bâtimentaire de la Ville de Paris",
+      "montant": 5000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2024-12-19",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Accord-cadre à bons de commande de prestations d’entretien et de maintenance des Robinetteries sur patrimoine de la RIVP et d’HSF",
+      "montant": 5000000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-12-17",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Accord-cadre de prestations de désinfection, de désinsectisation, de dératisation, de détection et de traitement des punaises de lit sur le patrimoine de la RIVP et d’HSF",
+      "montant": 5000000.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2024-07-30",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Accord-cadre de prestations de désinfection, de désinsectisation, de dératisation, de détection et de traitement des punaises de lit sur le patrimoine de la RIVP et d’HSF",
+      "montant": 5000000.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2024-07-30",
+      "procedure": "Procédure avec négociation"
+    }
+  ]
+}

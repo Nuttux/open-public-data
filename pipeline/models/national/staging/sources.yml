@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: national_raw
+    database: open-data-france-484717
+    schema: raw_national
+    description: "Données brutes nationales (DGFiP, OFGL, DECP, Subventions)"
+    tables:
+      - name: dgfip_balances
+        description: "Balances comptables DGFiP - toutes les lignes de comptes M57 pour les communes cibles"
+      - name: ofgl_communes
+        description: "Agrégats OFGL - KPIs financiers pré-calculés par commune"
+      - name: decp_marches
+        description: "DECP consolidés - marchés publics nationaux filtrés par SIREN acheteur"
+      - name: subventions_nationales
+        description: "Subventions SCDL - subventions > 23k€ filtrées par SIRET attributaire"

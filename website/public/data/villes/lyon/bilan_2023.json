@@ -1,0 +1,17 @@
+{
+  "year": 2023,
+  "city_slug": "lyon",
+  "totals": {
+    "actif_total": 4461707756.36,
+    "passif_total": 3333591409.16,
+    "dette_financiere": 324200110.19,
+    "fonds_propres": 3009391298.97,
+    "tresorerie": 78233130.55,
+    "immobilisations": 4383474625.81
+  },
+  "kpis": {
+    "ratio_endettement": 9.73,
+    "pct_fonds_propres": 90.27,
+    "dette_par_hab": 620.78
+  }
+}

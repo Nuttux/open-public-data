@@ -1,0 +1,864 @@
+{
+  "annee": 2023,
+  "city_slug": "marseille",
+  "total_montant": 348243437.57,
+  "total_marches": 3837,
+  "categories": [
+    {
+      "categorie": "Autres",
+      "nb_marches": 2633,
+      "montant_total": 157653289.49,
+      "montant_moyen": 59875.92
+    },
+    {
+      "categorie": "Construction & Bâtiment",
+      "nb_marches": 172,
+      "montant_total": 86010422.1,
+      "montant_moyen": 500060.59
+    },
+    {
+      "categorie": "Transport & Véhicules",
+      "nb_marches": 148,
+      "montant_total": 32787957.65,
+      "montant_moyen": 221540.25
+    },
+    {
+      "categorie": "Environnement & Propreté",
+      "nb_marches": 86,
+      "montant_total": 25371132.53,
+      "montant_moyen": 295013.17
+    },
+    {
+      "categorie": "Informatique & Télécom",
+      "nb_marches": 116,
+      "montant_total": 24837447.6,
+      "montant_moyen": 214115.93
+    },
+    {
+      "categorie": "Services professionnels",
+      "nb_marches": 478,
+      "montant_total": 18415591.71,
+      "montant_moyen": 38526.34
+    },
+    {
+      "categorie": "Alimentation & Restauration",
+      "nb_marches": 165,
+      "montant_total": 2811826.55,
+      "montant_moyen": 17041.37
+    },
+    {
+      "categorie": "Santé & Social",
+      "nb_marches": 32,
+      "montant_total": 305459.02,
+      "montant_moyen": 9545.59
+    },
+    {
+      "categorie": "Énergie",
+      "nb_marches": 7,
+      "montant_total": 50310.92,
+      "montant_moyen": 7187.27
+    }
+  ],
+  "top_marches": [
+    {
+      "objet": "Exécution de prestations de propreté, de collecte de déchets et d’entretien des sites du domaine de la commune, sans préjudice des compétences de la métropole, et exceptionnellement, dans le cadre des pouvoirs de salubrité publique du Maire. 7 lots",
+      "montant": 11476100.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2023-04-21",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Exploitation avec gros entretien des installations de génie climatique et des équipements des cantines dans les bâtiments constitutifs du patrimoine immobilier de la ville de Marseille – 4 lots - Exploitation avec gros entretien des installations de génie",
+      "montant": 7058250.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2023-09-29",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de construction du Groupe Scolaire Jolie Manon et du parc attenant Rue Loubon 13003 Marseille Relance des lots 1 3 et 4 - Gros œuvre / Façades",
+      "montant": 6739443.26,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-08-30",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de réparation, d’entretien, de rénovation et de petites créations dans les bâtiments et ouvrages divers constituant le patrimoine immobilier de la ville de Marseille pour l’ensemble des services municipaux dans le corps d’etat : charpente bois, ét",
+      "montant": 6000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-08-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de réparation, d’entretien, de rénovation et de petites créations dans les bâtiments et ouvrages divers constituant le patrimoine immobilier de la ville de Marseille pour l’ensemble des services municipaux dans le corps d’etat : charpente bois, ét",
+      "montant": 6000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-08-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de réparation, d’entretien, de rénovation et de petites créations dans les bâtiments et ouvrages divers constituant le patrimoine immobilier de la ville de Marseille pour l’ensemble des services municipaux dans le corps d’etat : charpente bois, ét",
+      "montant": 6000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-08-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de réparation, d’entretien, de rénovation et de petites créations dans les bâtiments et ouvrages divers constituant le patrimoine immobilier de la ville de Marseille pour l’ensemble des services municipaux dans le corps d’etat : charpente bois, ét",
+      "montant": 6000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-08-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Opérations de grosses réparations et de rénovations des installations du réseau d’éclairage public gérées par la ville de Marseille - 2 lots - Opérations de grosses réparations et de rénovations des installations de mises en lumière gérées par la Ville de",
+      "montant": 5600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-05-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 16 Secteur 16",
+      "montant": 5568124.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Exploitation avec gros entretien des installations de génie climatique et des équipements des cantines dans les bâtiments constitutifs du patrimoine immobilier de la ville de Marseille – 4 lots - Exploitation avec gros entretien des installations de génie",
+      "montant": 5277352.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2023-09-29",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 4 Secteur 4",
+      "montant": 5091775.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 23 Secteur 23",
+      "montant": 4821570.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 3 Secteur 3",
+      "montant": 4819172.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Opérations de grosses réparations et de rénovations des installations du réseau d’éclairage public gérées par la ville de Marseille - 2 lots - Opérations de grosses réparations et de rénovations des installations d’éclairage public gérées par la Ville de ",
+      "montant": 4800000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-05-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 20 Secteur 20",
+      "montant": 4741884.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 11 Secteur 11",
+      "montant": 4676929.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture de livres scolaires, de livres non scolaires et de compléments pédagogiques pour les écoles publiques communales, les réseaux d’aide spécialisée et les service municipaux. - LIVRES SCOLAIRES",
+      "montant": 4400000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-05-30",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 25 Secteur 25",
+      "montant": 4375386.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 13 Secteur 13",
+      "montant": 4216302.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 29 Secteur 29",
+      "montant": 4213062.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 10 Secteur 10",
+      "montant": 4201016.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 28 Secteur 28",
+      "montant": 4192160.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Exploitation avec gros entretien des installations de génie climatique et des équipements des cantines dans les bâtiments constitutifs du patrimoine immobilier de la ville de Marseille – 4 lots - Exploitation avec gros entretien des installations de génie",
+      "montant": 4186560.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2023-09-29",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 24 Secteur 24",
+      "montant": 4148323.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 2 Secteur 2",
+      "montant": 4116769.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture de services de télécommunications et prestations associées pour les besoins de la Ville de de Marseille (9 Lots) - Accès téléphoniques des sites centraux et secondaires, plus lignes éligibles à la Vente en Gros d’Abonnements (VGA): raccordement",
+      "montant": 4000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2023-12-01",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture de services de télécommunications et prestations associées pour les besoins de la Ville de de Marseille (9 Lots) - Télécommunications du Bataillon des Marins Pompiers de la Ville de Marseille :  communications téléphoniques, abonnements, trafic",
+      "montant": 4000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2023-12-01",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture de services de télécommunications et prestations associées pour les besoins de la Ville de de Marseille (9 Lots) - Réseau d’interconnexion opéré : service de transmissions de données permanentes entre des établissements de la Ville de Marseille",
+      "montant": 4000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2023-12-01",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture de services de télécommunications et prestations associées pour les besoins de la Ville de de Marseille (9 Lots) - Réseau d’interconnexion opéré : service de transmissions de données permanentes entre les écoles de la Ville de Marseille et les ",
+      "montant": 4000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2023-12-01",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de réparation, d’entretien, de rénovation et de petites créations dans les bâtiments et ouvrages divers constituant le patrimoine immobilier de la Ville de Marseille pour l’ensemble des services municipaux dans le corps d’état: revêtements de sols",
+      "montant": 4000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-10-03",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 26 Secteur 26",
+      "montant": 3999006.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 15 Secteur 15",
+      "montant": 3907660.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 7Secteur 7",
+      "montant": 3886758.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Exploitation avec gros entretien des installations de génie climatique et des équipements des cantines dans les bâtiments constitutifs du patrimoine immobilier de la ville de Marseille – 4 lots - Exploitation avec gros entretien des installations de génie",
+      "montant": 3819165.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2023-09-29",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 12 Secteur 12",
+      "montant": 3810931.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 9 Secteur 9",
+      "montant": 3761291.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 8 Secteur 8",
+      "montant": 3735540.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 17 Secteur 17",
+      "montant": 3714620.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 5Secteur 5",
+      "montant": 3698782.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 14 Secteur 14",
+      "montant": 3671910.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 21 Secteur 21",
+      "montant": 3664562.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 18 Secteur 18",
+      "montant": 3663655.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 27 Secteur 27",
+      "montant": 3654245.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de réparation, d’entretien, de rénovation et de petites créations dans les bâtiments et ouvrages divers constituant le Patrimoine Immobilier de la Ville de Marseille pour l’ensemble des Services municipaux dans le corps d’état : VITRERIE-MIROITERI",
+      "montant": 3600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-12-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de réparation, d’entretien, de rénovation et de petites créations dans les bâtiments et ouvrages divers constituant le Patrimoine Immobilier de la Ville de Marseille pour l’ensemble des Services municipaux dans le corps d’état : VITRERIE-MIROITERI",
+      "montant": 3600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-12-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 19 Secteur 19",
+      "montant": 3554428.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 22 Secteur 22",
+      "montant": 3509654.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 1 Secteur 1",
+      "montant": 3508600.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’accueil et d’animation périscolaires dans les écoles maternelles et élémentaires publiques de la Ville de Marseille - relance  - Lot 6Secteur 6",
+      "montant": 3456360.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-12-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations d’entretien horticole et de propreté (taille, tonte, fauche d’enherbement, désherbage,remplacement de végétaux, nettoyage, ramassage de détritus) et de petites réparations (réparation arrosage, réfection de revêtements) dans les espaces verts,",
+      "montant": 3200000.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2023-04-05",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Maintenance multitechnique des bâtiments de la marina des Jeux Olympiques. ",
+      "montant": 2800000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2023-06-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Aires de jeux, agrès et équipements sportifs dans les espaces verts de la Ville de Marseille - 2 lots - Fourniture et pose de jeux, d’agrès et d’équipements sportifs",
+      "montant": 2800000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-05-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de réparation, d’entretien, de rénovation et de petites créations des portes et portails automatiques sur les bâtiments et ouvrages divers du patrimoine immobilier de la Ville de Marseille pour l’ensemble des services municipaux - 2 lots - Travaux",
+      "montant": 2400000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-10-12",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de réparation, d’entretien, de rénovation et de petites créations des portes et portails automatiques sur les bâtiments et ouvrages divers du patrimoine immobilier de la Ville de Marseille pour l’ensemble des services municipaux - 2 lots - Travaux",
+      "montant": 2400000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-10-12",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Exécution de prestations de propreté, de collecte de déchets et d’entretien des sites du domaine de la commune, sans préjudice des compétences de la métropole, et exceptionnellement, dans le cadre des pouvoirs de salubrité publique du Maire. 7 lots - Coll",
+      "montant": 2114790.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2023-04-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de réparation, d’entretien, de rénovation et de petites créations dans les bâtiments et ouvrages divers constituant le Patrimoine Immobilier de la Ville de Marseille pour l’ensemble des Services Municipaux dans le corps d’état : STORES ET RIDEAUX ",
+      "montant": 2000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de réparation, d’entretien, de rénovation et de petites créations dans les bâtiments et ouvrages divers constituant le Patrimoine Immobilier de la Ville de Marseille pour l’ensemble des Services Municipaux dans le corps d’état : STORES ET RIDEAUX ",
+      "montant": 2000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-12-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture et livraison d’articles de plomberie et sanitaires pour les services municipaux de la Ville de Marseille - 2 lots - Articles de plomberie et sanitaires",
+      "montant": 2000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-11-09",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture de livres scolaires, de livres non scolaires et de compléments pédagogiques pour les écoles publiques communales, les réseaux d’aide spécialisée et les service municipaux. - COMPLEMENTS PEDAGOGIQUES",
+      "montant": 2000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-05-30",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Exécution de prestations de propreté, de collecte de déchets et d’entretien des sites du domaine de la commune, sans préjudice des compétences de la métropole, et exceptionnellement, dans le cadre des pouvoirs de salubrité publique du Maire. 7 lots - Pres",
+      "montant": 1930540.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2023-04-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Exécution de prestations de propreté, de collecte de déchets et d’entretien des sites du domaine de la commune, sans préjudice des compétences de la métropole, et exceptionnellement, dans le cadre des pouvoirs de salubrité publique du Maire. 7 lots - Coll",
+      "montant": 1902220.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2023-04-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux d’entretien, de réparation et de rénovation des installations hydrauliques, thermiques, électriques, de régulation et de télégestion des piscines municipales de la Ville de Marseille -  lots - travaux d’entretien, de réparation et rénovation sur r",
+      "montant": 1800000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-09-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux d’entretien, de réparation et de rénovation des installations hydrauliques, thermiques, électriques, de régulation et de télégestion des piscines municipales de la Ville de Marseille -  lots - travaux d’entretien, de réparation et rénovation sur r",
+      "montant": 1800000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-09-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "La présente consultation a pour objet la fourniture de journaux, revues et périodiques français et étrangers en format papier, couplé papier/électronique et 100 % électronique, leur livraison par portage ou postage, ainsi que la gestion des abonnements. -",
+      "montant": 1800000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-01-06",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux d’entretien, de réparation et de rénovation des installations hydrauliques, thermiques, électriques, de régulation et de télégestion des piscines municipales de la Ville de Marseille -  lots - Travaux sur les unités de filtration dans les piscines",
+      "montant": 1600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-09-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": " Travaux de réparation, d’entretien, de rénovation et de petites créations dans les bâtiments et ouvrages divers constituant le patrimoine immobilier de la Ville de Marseille pour l’ensemble des services municipaux dans le corps d’état \"Faux plafonds\" - 5",
+      "montant": 1600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-05-30",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": " Travaux de réparation, d’entretien, de rénovation et de petites créations dans les bâtiments et ouvrages divers constituant le patrimoine immobilier de la Ville de Marseille pour l’ensemble des services municipaux dans le corps d’état \"Faux plafonds\" - 5",
+      "montant": 1600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-05-30",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": " Travaux de réparation, d’entretien, de rénovation et de petites créations dans les bâtiments et ouvrages divers constituant le patrimoine immobilier de la Ville de Marseille pour l’ensemble des services municipaux dans le corps d’état \"Faux plafonds\" - 5",
+      "montant": 1600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-05-30",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": " Travaux de réparation, d’entretien, de rénovation et de petites créations dans les bâtiments et ouvrages divers constituant le patrimoine immobilier de la Ville de Marseille pour l’ensemble des services municipaux dans le corps d’état \"Faux plafonds\" - 5",
+      "montant": 1600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-05-30",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Aires de jeux, agrès et équipements sportifs dans les espaces verts de la Ville de Marseille - 2 lots - Contrôle, maintenance et réparations des jeux, agrès et équipements sportifs",
+      "montant": 1600000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2023-05-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "le traitement curatif et préventif des graffitis",
+      "montant": 1541940.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2023-11-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "La présente consultation a pour objet des travaux d‘aménagement du domaine sépulcral pour les 21 cimetières communaux de la Ville de Marseille. - La description précise du besoin est décrite dans le Cahier des Clauses Techniques Particulières (CCTP).",
+      "montant": 1462518.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-08-03",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "fourniture et livraison de matériel sportif pour la ville de Marseille - 6 lots - Matériel de musculation",
+      "montant": 1400000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-07-06",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "fourniture et livraison de matériel sportif pour la ville de Marseille - 6 lots - Mobilier fixe d’équipements des terrains et gymnases",
+      "montant": 1200000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-07-07",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations de relevés architecturaux et topographiques des bâtiments et ouvrages divers du patrimoine immobilier de la Ville de Marseille pour l’ensemble des services municipaux - 2 lots. - Relevés Architecturaux et Topographiques : 1er , 6ème, 7ème, 8èm",
+      "montant": 1200000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-05-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations de relevés architecturaux et topographiques des bâtiments et ouvrages divers du patrimoine immobilier de la Ville de Marseille pour l’ensemble des services municipaux - 2 lots. - Relevés Architecturaux et Topographiques : 2ème, 3ème, 4ème, 5èm",
+      "montant": 1200000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-05-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations de réparation de carrosserie et de travaux annexes de mécanique sur les véhicules multimarques dont le PTAC est supérieur à 3,5 tonnes, au profit du Bataillon de Marins-Pompiers de Marseille (BMPM) et la Direction des Transports et des Véhicul",
+      "montant": 1200000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2023-03-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "La présente consultation a pour objet la fourniture de journaux, revues et périodiques français et étrangers en format papier, couplé papier/électronique et 100 % électronique, leur livraison par portage ou postage, ainsi que la gestion des abonnements. -",
+      "montant": 1200000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-01-05",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "MARCHE DE MAÎTRISE D’OEUVRE DE LA FABRIQUE LOUBON – MEDIATHEQUE, POLE DE PRATIQUE ARTISTIQUE ET CITOYENNE  - RUE LOUBON MARSEILLE (13003)",
+      "montant": 1147400.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-07-07",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Exécution de prestations de propreté, de collecte de déchets et d’entretien des sites du domaine de la commune, sans préjudice des compétences de la métropole, et exceptionnellement, dans le cadre des pouvoirs de salubrité publique du Maire. 7 lots - Pres",
+      "montant": 1046422.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2023-04-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture de services de télécommunications et prestations associées pour les besoins de la Ville de de Marseille (9 Lots) - Connexions internet centrales : connexion à Internet des sites centraux de la Ville de Marseille avec achats et gestions des nom ",
+      "montant": 1000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2023-12-01",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture de papier et d’enveloppes - Fourniture de papier de reprographie",
+      "montant": 960000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2023-03-08",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Création d’un hangar destiné aux véhicules de secours et de locaux annexes, Centre d’Incendie et de Secours de la Pointe Rouge 10 promenade du Grand Large 13008 Marseille - 3 lots - STRUCTURE: Gros-oeuvre - Dallage - Charpente Métallique - Bardage - Isola",
+      "montant": 910607.41,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-04-20",
+      "procedure": "Pas de groupement"
+    },
+    {
+      "objet": "Fourniture de services de télécommunications et prestations associées pour les besoins de la Ville de de Marseille (9 Lots) - Liaisons point à point en fibre noire pour relier des sites BMPM ou Ville de Marseille.",
+      "montant": 800000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2023-12-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture de services de télécommunications et prestations associées pour les besoins de la Ville de de Marseille (9 Lots) - Accès temporaires : accès téléphoniques, accès Internet pour des manifestations récurrentes ou exceptionnelles ainsi que pour des",
+      "montant": 800000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2023-12-01",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture de services de télécommunications et prestations associées pour les besoins de la Ville de de Marseille (9 Lots) - Liaisons particulières : raccordements, abonnements, trafic entrant et sortant sur des lignes téléphoniques non éligibles à la VG",
+      "montant": 800000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2023-12-01",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture de services de télécommunications et prestations associées pour les besoins de la Ville de de Marseille (9 Lots) - Accès internet secondaires : accès internet sur des sites secondaires, à Haut Débit ou Très Haut Débit et services associés.",
+      "montant": 800000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2023-12-01",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Location, transport, pose, entretien et dépose de cabines de toilettes autonomes standards et pour les personnes à mobilité réduite  - Lot 3 : Location de cabines de toilettes autonomes chimiques standards et pour les personnes à mobilité réduite (PMR) ",
+      "montant": 800000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-11-30",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture et livraison d’articles de plomberie et sanitaires pour les services municipaux de la Ville de Marseille - 2 lots - Chauffe-eaux et accessoires",
+      "montant": 800000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-11-09",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Contrôle externe des organismes liés à la Ville de Marseille : analyse économique, juridique, financière - Analyse économique, financière et juridique des contrats de concession dont les délégations de service public",
+      "montant": 800000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-08-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Contrôle externe des organismes liés à la Ville de Marseille : analyse économique, juridique, financière - Analyse financière des organismes liés à la Ville de Marseille",
+      "montant": 800000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-08-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "fourniture et livraison de matériel sportif pour la ville de Marseille - 6 lots - Matériel d’éducation physique et sportive",
+      "montant": 800000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-07-07",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations de transport en autocars des enfants scolarisés ou en accueil de loisirs des 1er, 2e, 3e, 7e, 13e, 14e, 15e et 16e arrondissements de Marseille vers les équipements sportifs (hors piscines), parcs et espaces naturels marseillais. - La présente ",
+      "montant": 800000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-03-14",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "La présente consultation a pour objet la fourniture de journaux, revues et périodiques français et étrangers en format papier, couplé papier/électronique et 100 % électronique, leur livraison par portage ou postage, ainsi que la gestion des abonnements. -",
+      "montant": 800000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2023-01-06",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Le marché a pour objet : Prestations de conception, aménagement et exploitation du village Rugby",
+      "montant": 729912.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-08-24",
+      "procedure": "Pas de groupement"
+    },
+    {
+      "objet": "Prestations de travaux de mécanique générale, travaux annexes de mécanique et/ou de carrosserie au profit des véhicules du bataillon de marins-pompiers de Marseille et de la Direction des Transports et des Véhicules de la ville de Marseille, en 2 lots. - ",
+      "montant": 720000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2023-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations de travaux de mécanique générale, travaux annexes de mécanique et/ou de carrosserie au profit des véhicules du bataillon de marins-pompiers de Marseille et de la Direction des Transports et des Véhicules de la ville de Marseille, en 2 lots. - ",
+      "montant": 680000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2023-10-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture et livraison de propulseurs nautiques de sauvetage côtier, incluant les accessoires et prestations de maintenance associés, au profit du Bataillon de marins-pompiers de Marseille et d’autres services de la ville de Marseille.",
+      "montant": 650000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2023-06-07",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "fourniture et livraison de trousses de secours, mallettes de première urgence pour le Plan Particulier de Mise en Sûreté (PPMS), sachets de réassortiment, produits et matériel de premiers secours destinés aux services municipaux, crèches, écoles maternell",
+      "montant": 650000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2023-04-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de construction du Groupe Scolaire Jolie Manon et du parc attenant Rue Loubon 13003 Marseille Relance des lots 1 3 et 4 - Menuiseries Extérieures / Occultation",
+      "montant": 642096.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2023-08-30",
+      "procedure": "Appel d'offres ouvert"
+    }
+  ]
+}

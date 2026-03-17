@@ -1,0 +1,380 @@
+{
+  "annee": 2021,
+  "city_slug": "nice",
+  "total_montant": 2652275,
+  "nb_subventions": 53,
+  "nb_beneficiaires": 53,
+  "beneficiaires": [
+    {
+      "beneficiaire": "Association Nice 41",
+      "objet": "Subvention 2021 - activité sociale",
+      "montant": 88329,
+      "nature": "Aide en nature",
+      "date": "2021-07-17"
+    },
+    {
+      "beneficiaire": "Association Nice 30",
+      "objet": "Subvention 2021 - activité éducative",
+      "montant": 88105,
+      "nature": "Aide en numéraire",
+      "date": "2021-12-07"
+    },
+    {
+      "beneficiaire": "Association Nice 39",
+      "objet": "Subvention 2021 - activité sociale",
+      "montant": 87996,
+      "nature": "Aide en numéraire",
+      "date": "2021-10-26"
+    },
+    {
+      "beneficiaire": "Association Nice 14",
+      "objet": "Subvention 2021 - activité éducative",
+      "montant": 86361,
+      "nature": "Aide en numéraire",
+      "date": "2021-01-12"
+    },
+    {
+      "beneficiaire": "Association Nice 29",
+      "objet": "Subvention 2021 - activité éducative",
+      "montant": 84114,
+      "nature": "Aide en nature",
+      "date": "2021-02-17"
+    },
+    {
+      "beneficiaire": "Association Nice 28",
+      "objet": "Subvention 2021 - activité sportive",
+      "montant": 83058,
+      "nature": "Aide en nature",
+      "date": "2021-12-08"
+    },
+    {
+      "beneficiaire": "Association Nice 3",
+      "objet": "Subvention 2021 - activité sportive",
+      "montant": 82808,
+      "nature": "Aide en nature",
+      "date": "2021-05-26"
+    },
+    {
+      "beneficiaire": "Association Nice 47",
+      "objet": "Subvention 2021 - activité culturelle",
+      "montant": 80075,
+      "nature": "Aide en numéraire",
+      "date": "2021-12-06"
+    },
+    {
+      "beneficiaire": "Association Nice 15",
+      "objet": "Subvention 2021 - activité sportive",
+      "montant": 77014,
+      "nature": "Aide en numéraire",
+      "date": "2021-05-15"
+    },
+    {
+      "beneficiaire": "Association Nice 16",
+      "objet": "Subvention 2021 - activité culturelle",
+      "montant": 75855,
+      "nature": "Aide en nature",
+      "date": "2021-04-07"
+    },
+    {
+      "beneficiaire": "Association Nice 33",
+      "objet": "Subvention 2021 - activité éducative",
+      "montant": 75168,
+      "nature": "Aide en numéraire",
+      "date": "2021-01-26"
+    },
+    {
+      "beneficiaire": "Association Nice 32",
+      "objet": "Subvention 2021 - activité sociale",
+      "montant": 74250,
+      "nature": "Aide en nature",
+      "date": "2021-08-11"
+    },
+    {
+      "beneficiaire": "Association Nice 6",
+      "objet": "Subvention 2021 - activité éducative",
+      "montant": 74086,
+      "nature": "Aide en numéraire",
+      "date": "2021-10-14"
+    },
+    {
+      "beneficiaire": "Association Nice 4",
+      "objet": "Subvention 2021 - activité sociale",
+      "montant": 71871,
+      "nature": "Aide en numéraire",
+      "date": "2021-11-05"
+    },
+    {
+      "beneficiaire": "Association Nice 37",
+      "objet": "Subvention 2021 - activité sociale",
+      "montant": 69095,
+      "nature": "Aide en nature",
+      "date": "2021-04-18"
+    },
+    {
+      "beneficiaire": "Association Nice 23",
+      "objet": "Subvention 2021 - activité culturelle",
+      "montant": 68372,
+      "nature": "Aide en nature",
+      "date": "2021-08-14"
+    },
+    {
+      "beneficiaire": "Association Nice 43",
+      "objet": "Subvention 2021 - activité culturelle",
+      "montant": 64470,
+      "nature": "Aide en numéraire",
+      "date": "2021-06-14"
+    },
+    {
+      "beneficiaire": "Association Nice 46",
+      "objet": "Subvention 2021 - activité culturelle",
+      "montant": 62729,
+      "nature": "Aide en numéraire",
+      "date": "2021-11-03"
+    },
+    {
+      "beneficiaire": "Association Nice 27",
+      "objet": "Subvention 2021 - activité éducative",
+      "montant": 62517,
+      "nature": "Aide en nature",
+      "date": "2021-09-23"
+    },
+    {
+      "beneficiaire": "Association Nice 34",
+      "objet": "Subvention 2021 - activité sportive",
+      "montant": 59661,
+      "nature": "Aide en numéraire",
+      "date": "2021-05-04"
+    },
+    {
+      "beneficiaire": "Association Nice 38",
+      "objet": "Subvention 2021 - activité culturelle",
+      "montant": 58952,
+      "nature": "Aide en numéraire",
+      "date": "2021-04-09"
+    },
+    {
+      "beneficiaire": "Association Nice 2",
+      "objet": "Subvention 2021 - activité sportive",
+      "montant": 57782,
+      "nature": "Aide en nature",
+      "date": "2021-06-04"
+    },
+    {
+      "beneficiaire": "Association Nice 49",
+      "objet": "Subvention 2021 - activité sportive",
+      "montant": 57671,
+      "nature": "Aide en nature",
+      "date": "2021-01-23"
+    },
+    {
+      "beneficiaire": "Association Nice 31",
+      "objet": "Subvention 2021 - activité éducative",
+      "montant": 57291,
+      "nature": "Aide en numéraire",
+      "date": "2021-07-06"
+    },
+    {
+      "beneficiaire": "Association Nice 9",
+      "objet": "Subvention 2021 - activité éducative",
+      "montant": 55806,
+      "nature": "Aide en nature",
+      "date": "2021-03-26"
+    },
+    {
+      "beneficiaire": "Association Nice 1",
+      "objet": "Subvention 2021 - activité sportive",
+      "montant": 55623,
+      "nature": "Aide en nature",
+      "date": "2021-03-22"
+    },
+    {
+      "beneficiaire": "Association Nice 52",
+      "objet": "Subvention 2021 - activité sportive",
+      "montant": 51117,
+      "nature": "Aide en numéraire",
+      "date": "2021-08-04"
+    },
+    {
+      "beneficiaire": "Association Nice 11",
+      "objet": "Subvention 2021 - activité éducative",
+      "montant": 49858,
+      "nature": "Aide en numéraire",
+      "date": "2021-07-03"
+    },
+    {
+      "beneficiaire": "Association Nice 12",
+      "objet": "Subvention 2021 - activité éducative",
+      "montant": 49384,
+      "nature": "Aide en numéraire",
+      "date": "2021-12-03"
+    },
+    {
+      "beneficiaire": "Association Nice 26",
+      "objet": "Subvention 2021 - activité culturelle",
+      "montant": 47353,
+      "nature": "Aide en numéraire",
+      "date": "2021-07-27"
+    },
+    {
+      "beneficiaire": "Association Nice 44",
+      "objet": "Subvention 2021 - activité sociale",
+      "montant": 47257,
+      "nature": "Aide en numéraire",
+      "date": "2021-01-19"
+    },
+    {
+      "beneficiaire": "Association Nice 45",
+      "objet": "Subvention 2021 - activité éducative",
+      "montant": 45091,
+      "nature": "Aide en numéraire",
+      "date": "2021-05-06"
+    },
+    {
+      "beneficiaire": "Association Nice 20",
+      "objet": "Subvention 2021 - activité sociale",
+      "montant": 45080,
+      "nature": "Aide en numéraire",
+      "date": "2021-01-05"
+    },
+    {
+      "beneficiaire": "Association Nice 48",
+      "objet": "Subvention 2021 - activité sportive",
+      "montant": 42561,
+      "nature": "Aide en numéraire",
+      "date": "2021-06-10"
+    },
+    {
+      "beneficiaire": "Association Nice 24",
+      "objet": "Subvention 2021 - activité sportive",
+      "montant": 42260,
+      "nature": "Aide en numéraire",
+      "date": "2021-05-04"
+    },
+    {
+      "beneficiaire": "Association Nice 10",
+      "objet": "Subvention 2021 - activité culturelle",
+      "montant": 37040,
+      "nature": "Aide en nature",
+      "date": "2021-09-18"
+    },
+    {
+      "beneficiaire": "Association Nice 18",
+      "objet": "Subvention 2021 - activité culturelle",
+      "montant": 36549,
+      "nature": "Aide en numéraire",
+      "date": "2021-12-14"
+    },
+    {
+      "beneficiaire": "Association Nice 13",
+      "objet": "Subvention 2021 - activité culturelle",
+      "montant": 35196,
+      "nature": "Aide en numéraire",
+      "date": "2021-01-12"
+    },
+    {
+      "beneficiaire": "Association Nice 8",
+      "objet": "Subvention 2021 - activité éducative",
+      "montant": 34415,
+      "nature": "Aide en nature",
+      "date": "2021-07-16"
+    },
+    {
+      "beneficiaire": "Association Nice 42",
+      "objet": "Subvention 2021 - activité culturelle",
+      "montant": 31141,
+      "nature": "Aide en nature",
+      "date": "2021-12-12"
+    },
+    {
+      "beneficiaire": "Association Nice 53",
+      "objet": "Subvention 2021 - activité éducative",
+      "montant": 31076,
+      "nature": "Aide en nature",
+      "date": "2021-03-03"
+    },
+    {
+      "beneficiaire": "Association Nice 50",
+      "objet": "Subvention 2021 - activité éducative",
+      "montant": 24670,
+      "nature": "Aide en numéraire",
+      "date": "2021-03-19"
+    },
+    {
+      "beneficiaire": "Association Nice 36",
+      "objet": "Subvention 2021 - activité sportive",
+      "montant": 18115,
+      "nature": "Aide en numéraire",
+      "date": "2021-02-07"
+    },
+    {
+      "beneficiaire": "Association Nice 22",
+      "objet": "Subvention 2021 - activité éducative",
+      "montant": 16995,
+      "nature": "Aide en numéraire",
+      "date": "2021-08-24"
+    },
+    {
+      "beneficiaire": "Association Nice 5",
+      "objet": "Subvention 2021 - activité sportive",
+      "montant": 16828,
+      "nature": "Aide en nature",
+      "date": "2021-12-26"
+    },
+    {
+      "beneficiaire": "Association Nice 7",
+      "objet": "Subvention 2021 - activité sportive",
+      "montant": 16561,
+      "nature": "Aide en nature",
+      "date": "2021-03-06"
+    },
+    {
+      "beneficiaire": "Association Nice 21",
+      "objet": "Subvention 2021 - activité sportive",
+      "montant": 16270,
+      "nature": "Aide en numéraire",
+      "date": "2021-02-01"
+    },
+    {
+      "beneficiaire": "Association Nice 51",
+      "objet": "Subvention 2021 - activité éducative",
+      "montant": 12503,
+      "nature": "Aide en numéraire",
+      "date": "2021-03-25"
+    },
+    {
+      "beneficiaire": "Association Nice 35",
+      "objet": "Subvention 2021 - activité sociale",
+      "montant": 10821,
+      "nature": "Aide en nature",
+      "date": "2021-01-08"
+    },
+    {
+      "beneficiaire": "Association Nice 25",
+      "objet": "Subvention 2021 - activité culturelle",
+      "montant": 9292,
+      "nature": "Aide en numéraire",
+      "date": "2021-10-25"
+    },
+    {
+      "beneficiaire": "Association Nice 17",
+      "objet": "Subvention 2021 - activité culturelle",
+      "montant": 8937,
+      "nature": "Aide en numéraire",
+      "date": "2021-02-23"
+    },
+    {
+      "beneficiaire": "Association Nice 19",
+      "objet": "Subvention 2021 - activité sportive",
+      "montant": 8784,
+      "nature": "Aide en numéraire",
+      "date": "2021-11-19"
+    },
+    {
+      "beneficiaire": "Association Nice 40",
+      "objet": "Subvention 2021 - activité éducative",
+      "montant": 8062,
+      "nature": "Aide en nature",
+      "date": "2021-02-10"
+    }
+  ]
+}

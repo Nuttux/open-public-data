@@ -1,0 +1,236 @@
+{
+  "annee": 2018,
+  "city_slug": "toulouse",
+  "total_montant": 7842254.86,
+  "total_marches": 26,
+  "categories": [
+    {
+      "categorie": "Services professionnels",
+      "nb_marches": 22,
+      "montant_total": 7473180.83,
+      "montant_moyen": 339690.04
+    },
+    {
+      "categorie": "Construction & Bâtiment",
+      "nb_marches": 2,
+      "montant_total": 267484.0,
+      "montant_moyen": 133742.0
+    },
+    {
+      "categorie": "Santé & Social",
+      "nb_marches": 2,
+      "montant_total": 101590.03,
+      "montant_moyen": 50795.01
+    }
+  ],
+  "top_marches": [
+    {
+      "objet": "18M290MS-MARCHE SUBSEQUENT N�21 A L’ACCORD-CADRE 11G188 : MAITRISE D’OEUVRE POUR L’AMENAGEMENT DES BOULEVARDS - 18M290MS (SA-LM)",
+      "montant": 721366.46,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2018-12-11",
+      "procedure": "Marché public négocié sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "18M290MS-MARCHE SUBSEQUENT N�21 A L’ACCORD-CADRE 11G188 : MAITRISE D’OEUVRE POUR L’AMENAGEMENT DES BOULEVARDS - 18M290MS (SA-LM)",
+      "montant": 721366.46,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2018-12-11",
+      "procedure": "Marché public négocié sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "18M290MS-MARCHE SUBSEQUENT N�21 A L’ACCORD-CADRE 11G188 : MAITRISE D’OEUVRE POUR L’AMENAGEMENT DES BOULEVARDS - 18M290MS (SA-LM)",
+      "montant": 721366.46,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2018-12-11",
+      "procedure": "Marché public négocié sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "18M257AO-2-Lot 1 - POLE CENTRE",
+      "montant": 565680.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2018-12-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18M257AO-2-Lot 1 - POLE CENTRE",
+      "montant": 565680.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2018-12-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18M257AO-2-Lot 1 - POLE CENTRE",
+      "montant": 565680.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2018-12-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "PRESTATIONS D ETUDES ET CONTROLES EXTERIEURS DE TRAVAUX ROUTIERS ANNEES 2018 � 2022-18M060AO-SA-NF-",
+      "montant": 392016.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2018-07-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18M097MS-MS N�14 DE MAITRISE D’OEUVRE AMENAGEMENT D’UNE LIAISON VIAIRE RELIANT LA RUE DU CHER A L’IMPASSE DU BACHAGA BOUALAM, REQUALIFICATION DE L’IMPASSE DU BACHAGA BOUALAM, DE LA RUE DU CHER ET DE LA PLACE DE LA REUNION (VA-LM)",
+      "montant": 309643.95,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2018-10-04",
+      "procedure": "Marché public négocié sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "18M097MS-MS N�14 DE MAITRISE D’OEUVRE AMENAGEMENT D’UNE LIAISON VIAIRE RELIANT LA RUE DU CHER A L’IMPASSE DU BACHAGA BOUALAM, REQUALIFICATION DE L’IMPASSE DU BACHAGA BOUALAM, DE LA RUE DU CHER ET DE LA PLACE DE LA REUNION (VA-LM)",
+      "montant": 309643.95,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2018-10-04",
+      "procedure": "Marché public négocié sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "18M097MS-MS N�14 DE MAITRISE D’OEUVRE AMENAGEMENT D’UNE LIAISON VIAIRE RELIANT LA RUE DU CHER A L’IMPASSE DU BACHAGA BOUALAM, REQUALIFICATION DE L’IMPASSE DU BACHAGA BOUALAM, DE LA RUE DU CHER ET DE LA PLACE DE LA REUNION (VA-LM)",
+      "montant": 309643.95,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2018-10-04",
+      "procedure": "Marché public négocié sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "18M257AO-2-Lot 2 - POLE NORD",
+      "montant": 276005.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2018-12-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18M257AO-2-Lot 2 - POLE NORD",
+      "montant": 276005.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2018-12-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18M257AO-2-Lot 2 - POLE NORD",
+      "montant": 276005.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2018-12-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18M257AO-2-Lot 4 - POLE SUD",
+      "montant": 273660.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2018-12-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18M257AO-2-Lot 4 - POLE SUD",
+      "montant": 273660.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2018-12-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18M257AO-2-Lot 4 - POLE SUD",
+      "montant": 273660.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2018-12-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18M056MS-18M056MS - PRESTATIONS DE MA�TRISE D'UVRE POUR L’AM�NAGEMENT DE LA PREMI�RE PHASE DU TRAC� DE LIN�O 10 ENTRE LE CENTRE COMMERCIAL DE FENOUILLET ET LA STATION DE M�TRO LA VACHE MARCHE SUBS�QUENT N�12 ( VA-LM )",
+      "montant": 170104.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2018-05-28",
+      "procedure": "Procédure concurrentielle avec négociation"
+    },
+    {
+      "objet": "18M156PA-REHABILITATION DU POSTE DE REFOULEMENT LESTANG A SAINT-JEAN (18M156PA) (AV/AM)",
+      "montant": 133742.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2018-11-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "18M156PA-REHABILITATION DU POSTE DE REFOULEMENT LESTANG A SAINT-JEAN (18M156PA) (AV/AM)",
+      "montant": 133742.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2018-11-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "18M287MS-18M287MS - MS19 A L’AC 11G188 - MAITRISE D’OEUVRE POUR L’AMENAGEMENT DE LA RUE GATIEN ARNOULT, RUE DES TROIS PILIERS, ET PLACE ARNAUD BERNARD (SA/LM)",
+      "montant": 100956.8,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2018-12-11",
+      "procedure": "Marché public négocié sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "18M287MS-18M287MS - MS19 A L’AC 11G188 - MAITRISE D’OEUVRE POUR L’AMENAGEMENT DE LA RUE GATIEN ARNOULT, RUE DES TROIS PILIERS, ET PLACE ARNAUD BERNARD (SA/LM)",
+      "montant": 100956.8,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2018-12-11",
+      "procedure": "Marché public négocié sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "18M257AO-2-Lot 3 - POLE EST",
+      "montant": 90027.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2018-12-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18M257AO-2-Lot 3 - POLE EST",
+      "montant": 90027.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2018-12-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18M257AO-2-Lot 3 - POLE EST",
+      "montant": 90027.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2018-12-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18C063AO -Produits d’entretien sp�cifiques pour gymnases",
+      "montant": 81232.5,
+      "categorie": "Santé & Social",
+      "titulaire": "",
+      "date": "2018-12-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18C063AO -Produits de nettoyage et de d�sinfection des locaux et du mat�riel de restauration",
+      "montant": 20357.53,
+      "categorie": "Santé & Social",
+      "titulaire": "",
+      "date": "2018-12-29",
+      "procedure": "Appel d'offres ouvert"
+    }
+  ]
+}

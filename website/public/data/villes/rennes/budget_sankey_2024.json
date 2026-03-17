@@ -1,0 +1,296 @@
+{
+  "year": 2024,
+  "type_budget": "execute",
+  "city_slug": "rennes",
+  "city_name": "Rennes",
+  "dataStatus": "COMPLET",
+  "totals": {
+    "recettes": 422719456.17,
+    "depenses": 452889606.67,
+    "solde": -30170150.5
+  },
+  "nodes": [
+    {
+      "name": "Fiscalité",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations État",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits des services",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Subventions investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Emprunts",
+      "category": "revenue"
+    },
+    {
+      "name": "Autres produits",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits exceptionnels",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits financiers",
+      "category": "revenue"
+    },
+    {
+      "name": "Budget Rennes",
+      "category": "central"
+    },
+    {
+      "name": "Personnel",
+      "category": "expense"
+    },
+    {
+      "name": "Fonctionnement courant",
+      "category": "expense"
+    },
+    {
+      "name": "Investissements",
+      "category": "expense"
+    },
+    {
+      "name": "Transferts & subventions",
+      "category": "expense"
+    },
+    {
+      "name": "Amortissements",
+      "category": "expense"
+    },
+    {
+      "name": "Dette",
+      "category": "expense"
+    },
+    {
+      "name": "Charges financières",
+      "category": "expense"
+    },
+    {
+      "name": "Charges fiscales",
+      "category": "expense"
+    },
+    {
+      "name": "Charges exceptionnelles",
+      "category": "expense"
+    }
+  ],
+  "links": [
+    {
+      "source": "Fiscalité",
+      "target": "Budget Rennes",
+      "value": 224602030.19
+    },
+    {
+      "source": "Dotations État",
+      "target": "Budget Rennes",
+      "value": 85074837.54
+    },
+    {
+      "source": "Produits des services",
+      "target": "Budget Rennes",
+      "value": 37898136.12
+    },
+    {
+      "source": "Dotations investissement",
+      "target": "Budget Rennes",
+      "value": 34277846.45
+    },
+    {
+      "source": "Subventions investissement",
+      "target": "Budget Rennes",
+      "value": 13017469.53
+    },
+    {
+      "source": "Emprunts",
+      "target": "Budget Rennes",
+      "value": 13015049.01
+    },
+    {
+      "source": "Autres produits",
+      "target": "Budget Rennes",
+      "value": 10241964.87
+    },
+    {
+      "source": "Produits exceptionnels",
+      "target": "Budget Rennes",
+      "value": 4486823.01
+    },
+    {
+      "source": "Produits financiers",
+      "target": "Budget Rennes",
+      "value": 105299.45
+    },
+    {
+      "source": "Budget Rennes",
+      "target": "Personnel",
+      "value": 153831718.67
+    },
+    {
+      "source": "Budget Rennes",
+      "target": "Fonctionnement courant",
+      "value": 100728806.29
+    },
+    {
+      "source": "Budget Rennes",
+      "target": "Investissements",
+      "value": 83380065.25
+    },
+    {
+      "source": "Budget Rennes",
+      "target": "Transferts & subventions",
+      "value": 68344105.86
+    },
+    {
+      "source": "Budget Rennes",
+      "target": "Amortissements",
+      "value": 20067832.14
+    },
+    {
+      "source": "Budget Rennes",
+      "target": "Dette",
+      "value": 12217037.61
+    },
+    {
+      "source": "Budget Rennes",
+      "target": "Charges financières",
+      "value": 5440702.52
+    },
+    {
+      "source": "Budget Rennes",
+      "target": "Charges fiscales",
+      "value": 4504582.5
+    },
+    {
+      "source": "Budget Rennes",
+      "target": "Charges exceptionnelles",
+      "value": 4374755.83
+    }
+  ],
+  "drilldown": {
+    "revenue": {
+      "Fiscalité": [
+        {
+          "name": "Fiscalité",
+          "value": 224602030.19
+        }
+      ],
+      "Dotations État": [
+        {
+          "name": "Dotations État",
+          "value": 85074837.54
+        }
+      ],
+      "Produits des services": [
+        {
+          "name": "Produits des services",
+          "value": 37898136.12
+        }
+      ],
+      "Dotations investissement": [
+        {
+          "name": "Dotations investissement",
+          "value": 34277846.45
+        }
+      ],
+      "Subventions investissement": [
+        {
+          "name": "Subventions investissement",
+          "value": 13017469.53
+        }
+      ],
+      "Emprunts": [
+        {
+          "name": "Emprunts",
+          "value": 13015049.01
+        }
+      ],
+      "Autres produits": [
+        {
+          "name": "Autres produits",
+          "value": 10241964.87
+        }
+      ],
+      "Produits exceptionnels": [
+        {
+          "name": "Produits exceptionnels",
+          "value": 4486823.01
+        }
+      ],
+      "Produits financiers": [
+        {
+          "name": "Produits financiers",
+          "value": 105299.45
+        }
+      ]
+    },
+    "expenses": {
+      "Personnel": [
+        {
+          "name": "Personnel",
+          "value": 153831718.67
+        }
+      ],
+      "Fonctionnement courant": [
+        {
+          "name": "Fonctionnement courant",
+          "value": 100728806.29
+        }
+      ],
+      "Investissements": [
+        {
+          "name": "Investissements",
+          "value": 83380065.25
+        }
+      ],
+      "Transferts & subventions": [
+        {
+          "name": "Transferts & subventions",
+          "value": 68344105.86
+        }
+      ],
+      "Amortissements": [
+        {
+          "name": "Amortissements",
+          "value": 20067832.14
+        }
+      ],
+      "Dette": [
+        {
+          "name": "Dette",
+          "value": 12217037.61
+        }
+      ],
+      "Charges financières": [
+        {
+          "name": "Charges financières",
+          "value": 5440702.52
+        }
+      ],
+      "Charges fiscales": [
+        {
+          "name": "Charges fiscales",
+          "value": 4504582.5
+        }
+      ],
+      "Charges exceptionnelles": [
+        {
+          "name": "Charges exceptionnelles",
+          "value": 4374755.83
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,864 @@
+{
+  "annee": 2021,
+  "city_slug": "toulouse",
+  "total_montant": 597053013.47,
+  "total_marches": 967,
+  "categories": [
+    {
+      "categorie": "Autres",
+      "nb_marches": 256,
+      "montant_total": 199691478.49,
+      "montant_moyen": 780044.84
+    },
+    {
+      "categorie": "Services professionnels",
+      "nb_marches": 315,
+      "montant_total": 189590916.72,
+      "montant_moyen": 601875.93
+    },
+    {
+      "categorie": "Construction & Bâtiment",
+      "nb_marches": 267,
+      "montant_total": 184363005.07,
+      "montant_moyen": 690498.15
+    },
+    {
+      "categorie": "Informatique & Télécom",
+      "nb_marches": 44,
+      "montant_total": 8035954.84,
+      "montant_moyen": 182635.34
+    },
+    {
+      "categorie": "Alimentation & Restauration",
+      "nb_marches": 31,
+      "montant_total": 7354729.92,
+      "montant_moyen": 237249.35
+    },
+    {
+      "categorie": "Environnement & Propreté",
+      "nb_marches": 11,
+      "montant_total": 4893549.51,
+      "montant_moyen": 444868.14
+    },
+    {
+      "categorie": "Transport & Véhicules",
+      "nb_marches": 25,
+      "montant_total": 1942756.49,
+      "montant_moyen": 77710.26
+    },
+    {
+      "categorie": "Énergie",
+      "nb_marches": 7,
+      "montant_total": 613600.07,
+      "montant_moyen": 87657.15
+    },
+    {
+      "categorie": "Santé & Social",
+      "nb_marches": 11,
+      "montant_total": 567022.36,
+      "montant_moyen": 51547.49
+    }
+  ],
+  "top_marches": [
+    {
+      "objet": "20M0429APN - Grand Parc Canal - ÉTUDE DE DÉFINITION D’UN PLAN GUIDE URBAIN POUR VALORISER LES CANAUX DE LA MÉTROPOLE ET MISSIONS DE MAÎTRISE D’OEUVRE MS-SG<br />",
+      "montant": 5708650.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-07-26",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "20M0429APN - Grand Parc Canal - ÉTUDE DE DÉFINITION D’UN PLAN GUIDE URBAIN POUR VALORISER LES CANAUX DE LA MÉTROPOLE ET MISSIONS DE MAÎTRISE D’OEUVRE MS-SG<br />",
+      "montant": 5708650.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-07-26",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "20M0429APN - Grand Parc Canal - ÉTUDE DE DÉFINITION D’UN PLAN GUIDE URBAIN POUR VALORISER LES CANAUX DE LA MÉTROPOLE ET MISSIONS DE MAÎTRISE D’OEUVRE MS-SG<br />",
+      "montant": 5708650.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-07-26",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "20M0429APN - Grand Parc Canal - ÉTUDE DE DÉFINITION D’UN PLAN GUIDE URBAIN POUR VALORISER LES CANAUX DE LA MÉTROPOLE ET MISSIONS DE MAÎTRISE D’OEUVRE MS-SG<br />",
+      "montant": 5708650.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-07-26",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "20M0429APN - Grand Parc Canal - ÉTUDE DE DÉFINITION D’UN PLAN GUIDE URBAIN POUR VALORISER LES CANAUX DE LA MÉTROPOLE ET MISSIONS DE MAÎTRISE D’OEUVRE MS-SG<br />",
+      "montant": 5708650.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-07-26",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "20M0429APN - Grand Parc Canal - ÉTUDE DE DÉFINITION D’UN PLAN GUIDE URBAIN POUR VALORISER LES CANAUX DE LA MÉTROPOLE ET MISSIONS DE MAÎTRISE D’OEUVRE MS-SG<br />",
+      "montant": 5708650.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-07-26",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "20M0429APN - Grand Parc Canal - ÉTUDE DE DÉFINITION D’UN PLAN GUIDE URBAIN POUR VALORISER LES CANAUX DE LA MÉTROPOLE ET MISSIONS DE MAÎTRISE D’OEUVRE MS-SG<br />",
+      "montant": 5708650.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-07-26",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "20M0429APN - Grand Parc Canal - ÉTUDE DE DÉFINITION D’UN PLAN GUIDE URBAIN POUR VALORISER LES CANAUX DE LA MÉTROPOLE ET MISSIONS DE MAÎTRISE D’OEUVRE MS-SG<br />",
+      "montant": 5708650.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-07-26",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "20M0429APN - Grand Parc Canal - ÉTUDE DE DÉFINITION D’UN PLAN GUIDE URBAIN POUR VALORISER LES CANAUX DE LA MÉTROPOLE ET MISSIONS DE MAÎTRISE D’OEUVRE MS-SG<br />",
+      "montant": 5708650.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-07-26",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "20M0429APN - Grand Parc Canal - ÉTUDE DE DÉFINITION D’UN PLAN GUIDE URBAIN POUR VALORISER LES CANAUX DE LA MÉTROPOLE ET MISSIONS DE MAÎTRISE D’OEUVRE MS-SG<br />",
+      "montant": 5708650.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-07-26",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "20M0429APN - Grand Parc Canal - ÉTUDE DE DÉFINITION D’UN PLAN GUIDE URBAIN POUR VALORISER LES CANAUX DE LA MÉTROPOLE ET MISSIONS DE MAÎTRISE D’OEUVRE MS-SG<br />",
+      "montant": 5708650.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-07-26",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "20M0429APN - Grand Parc Canal - ÉTUDE DE DÉFINITION D’UN PLAN GUIDE URBAIN POUR VALORISER LES CANAUX DE LA MÉTROPOLE ET MISSIONS DE MAÎTRISE D’OEUVRE MS-SG<br />",
+      "montant": 5708650.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-07-26",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "TRAVAUX DE REFECTIONS LOCALISEES EN PRODUITS BITUMINEUX - 2021 à 2025 - 21M0209AOO - AV/SG",
+      "montant": 5206289.01,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-11-05",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "20V0268AOO - Travaux de construction du groupe scolaire Alphand-Meitner",
+      "montant": 3406637.02,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-03-31",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "20MC0274AOO - JE/EO - PRESTATIONS DE NETTOIEMENT DE L’ESPACE PUBLIC DU POLE TERRITORIAL NORD - ANNEES 2021 A 2027",
+      "montant": 3302879.09,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2021-09-24",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "TRAVAUX ASSAINISSEMENT COLLECTEUR GRAVITAIRE DE CEINTURE CUGNAUX",
+      "montant": 3091821.5,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-11-05",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TRAVAUX ASSAINISSEMENT COLLECTEUR GRAVITAIRE DE CEINTURE CUGNAUX",
+      "montant": 3091821.5,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-11-05",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TRAVAUX ASSAINISSEMENT COLLECTEUR GRAVITAIRE DE CEINTURE CUGNAUX",
+      "montant": 3091821.5,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-11-05",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TRAVAUX ASSAINISSEMENT COLLECTEUR GRAVITAIRE DE CEINTURE CUGNAUX",
+      "montant": 3091821.5,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-11-05",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TRAVAUX ASSAINISSEMENT COLLECTEUR GRAVITAIRE DE CEINTURE CUGNAUX",
+      "montant": 3091821.5,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-11-05",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TRAVAUX ASSAINISSEMENT COLLECTEUR GRAVITAIRE DE CEINTURE CUGNAUX",
+      "montant": 3091821.5,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-11-05",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TRAVAUX ASSAINISSEMENT COLLECTEUR GRAVITAIRE DE CEINTURE CUGNAUX",
+      "montant": 3091821.5,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-11-05",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TRAVAUX ASSAINISSEMENT COLLECTEUR GRAVITAIRE DE CEINTURE CUGNAUX",
+      "montant": 3091821.5,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-11-05",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TRAVAUX ASSAINISSEMENT COLLECTEUR GRAVITAIRE DE CEINTURE CUGNAUX",
+      "montant": 3091821.5,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-11-05",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TRAVAUX ASSAINISSEMENT COLLECTEUR GRAVITAIRE DE CEINTURE CUGNAUX",
+      "montant": 3091821.5,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-11-05",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TRAVAUX ASSAINISSEMENT COLLECTEUR GRAVITAIRE DE CEINTURE CUGNAUX",
+      "montant": 3091821.5,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-11-05",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TRAVAUX ASSAINISSEMENT COLLECTEUR GRAVITAIRE DE CEINTURE CUGNAUX",
+      "montant": 3091821.5,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-11-05",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TRAVAUX ASSAINISSEMENT COLLECTEUR GRAVITAIRE DE CEINTURE CUGNAUX",
+      "montant": 3091821.5,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-11-05",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TRAVAUX ASSAINISSEMENT COLLECTEUR GRAVITAIRE DE CEINTURE CUGNAUX",
+      "montant": 3091821.5,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-11-05",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TRAVAUX ASSAINISSEMENT COLLECTEUR GRAVITAIRE DE CEINTURE CUGNAUX",
+      "montant": 3091821.5,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-11-05",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TRAVAUX ASSAINISSEMENT COLLECTEUR GRAVITAIRE DE CEINTURE CUGNAUX",
+      "montant": 3091821.5,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-11-05",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TRAVAUX ASSAINISSEMENT COLLECTEUR GRAVITAIRE DE CEINTURE CUGNAUX",
+      "montant": 3091821.5,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-11-05",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "21M0293PA - TRAVAUX D’ASSAINISSEMENT D’EAUX  USEES  COLLECTEUR GRAVITAIRE DE CEINTURE COMMUNE DE CUGNAUX",
+      "montant": 3091821.5,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-11-05",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "21M0293PA - TRAVAUX D’ASSAINISSEMENT D’EAUX  USEES  COLLECTEUR GRAVITAIRE DE CEINTURE COMMUNE DE CUGNAUX",
+      "montant": 3091821.5,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-11-05",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "21M0293PA - TRAVAUX D’ASSAINISSEMENT D’EAUX  USEES  COLLECTEUR GRAVITAIRE DE CEINTURE COMMUNE DE CUGNAUX",
+      "montant": 3091821.5,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-11-05",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "21M0293PA - TRAVAUX D’ASSAINISSEMENT D’EAUX  USEES  COLLECTEUR GRAVITAIRE DE CEINTURE COMMUNE DE CUGNAUX",
+      "montant": 3091821.5,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-11-05",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "21M0293PA - TRAVAUX D’ASSAINISSEMENT D’EAUX  USEES  COLLECTEUR GRAVITAIRE DE CEINTURE COMMUNE DE CUGNAUX",
+      "montant": 3091821.5,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-11-05",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "MAITRISE D’OEUVRE MODERNISATION STEP GINESTOUS",
+      "montant": 3054861.02,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-09-03",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "MAITRISE D’OEUVRE MODERNISATION STEP GINESTOUS",
+      "montant": 3054861.02,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-09-03",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "MAITRISE D’OEUVRE MODERNISATION STEP GINESTOUS",
+      "montant": 3054861.02,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-09-03",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "MAITRISE D’OEUVRE MODERNISATION STEP GINESTOUS",
+      "montant": 3054861.02,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-09-03",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "MAITRISE D’OEUVRE MODERNISATION STEP GINESTOUS",
+      "montant": 3054861.02,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-09-03",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "MAITRISE D’OEUVRE MODERNISATION STEP GINESTOUS",
+      "montant": 3054861.02,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-09-03",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "MAITRISE D’OEUVRE MODERNISATION STEP GINESTOUS",
+      "montant": 3054861.02,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-09-03",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "MAITRISE D’OEUVRE MODERNISATION STEP GINESTOUS",
+      "montant": 3054861.02,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-09-03",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "MAITRISE D’OEUVRE MODERNISATION STEP GINESTOUS",
+      "montant": 3054861.02,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-09-03",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "MAITRISE D’OEUVRE MODERNISATION STEP GINESTOUS",
+      "montant": 3054861.02,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-09-03",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "MAITRISE D’OEUVRE MODERNISATION STEP GINESTOUS",
+      "montant": 3054861.02,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-09-03",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "MAITRISE D’OEUVRE MODERNISATION STEP GINESTOUS",
+      "montant": 3054861.02,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-09-03",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "MAITRISE D’OEUVRE MODERNISATION STEP GINESTOUS",
+      "montant": 3054861.02,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-09-03",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "PARSIFAL - Pour une Architecture Rénovée du SI Famille & Activités de Loisirs",
+      "montant": 2985695.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-18",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "20M0571AOO - RM901 - TRAVAUX DE CREATION D’UNE BRETELLE DE SORTIE VERS LA RUE VELASQUEZ A TOULOUSE VA-LM",
+      "montant": 2895379.44,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-03-25",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "20M0571AOO - RM901 - TRAVAUX DE CREATION D’UNE BRETELLE DE SORTIE VERS LA RUE VELASQUEZ A TOULOUSE VA-LM",
+      "montant": 2895379.44,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-03-25",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "APPROVISIONNEMENT INTEGRATION ADMINISTRATION ET MAINTENANCE DES INFRASTRUCTURES RESEAU ET TELEPHONIE",
+      "montant": 2100000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-19",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "APPROVISIONNEMENT INTEGRATION ADMINISTRATION ET MAINTENANCE DES INFRASTRUCTURES RESEAU ET TELEPHONIE",
+      "montant": 2100000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-19",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "APPROVISIONNEMENT INTEGRATION ADMINISTRATION ET MAINTENANCE DES INFRASTRUCTURES RESEAU ET TELEPHONIE",
+      "montant": 2100000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-19",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "APPROVISIONNEMENT INTEGRATION ADMINISTRATION ET MAINTENANCE DES INFRASTRUCTURES RESEAU ET TELEPHONIE",
+      "montant": 2100000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-19",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "20M0219PN - MISSIONS DE MAITRISE D’OEUVRE POUR LA FIABILISATION ET LA MODERNISATION DE L’USINE DE DEPOLLUTION DES EAUX USEES DE GINESTOUS-GARONNE - SA/NF",
+      "montant": 2021400.77,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-09-03",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "20M0219PN - MISSIONS DE MAITRISE D’OEUVRE POUR LA FIABILISATION ET LA MODERNISATION DE L’USINE DE DEPOLLUTION DES EAUX USEES DE GINESTOUS-GARONNE - SA/NF",
+      "montant": 2021400.77,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-09-03",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux d’assainissement EU, EP et AEP - Déviation des réseaux Ligne M3 Station Limayrac",
+      "montant": 1967235.42,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-07",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Travaux d’assainissement EU, EP et AEP - Déviation des réseaux Ligne M3 Station Limayrac",
+      "montant": 1967235.42,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-07",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Travaux d’assainissement EU, EP et AEP - Déviation des réseaux Ligne M3 Station Limayrac",
+      "montant": 1967235.42,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-07",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Travaux d’assainissement EU, EP et AEP - Déviation des réseaux Ligne M3 Station Limayrac",
+      "montant": 1967235.42,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-07",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Travaux d’assainissement EU, EP et AEP - Déviation des réseaux Ligne M3 Station Limayrac",
+      "montant": 1967235.42,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-07",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Travaux d’assainissement EU, EP et AEP - Déviation des réseaux Ligne M3 Station Limayrac",
+      "montant": 1967235.42,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-07",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Travaux d’assainissement EU, EP et AEP - Déviation des réseaux Ligne M3 Station Limayrac",
+      "montant": 1967235.42,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-07",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Travaux d’assainissement EU, EP et AEP - Déviation des réseaux Ligne M3 Station Limayrac",
+      "montant": 1967235.42,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-07",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Travaux d’assainissement EU, EP et AEP - Déviation des réseaux Ligne M3 Station Limayrac",
+      "montant": 1967235.42,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-07",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Travaux d’assainissement EU, EP et AEP - Déviation des réseaux Ligne M3 Station Limayrac",
+      "montant": 1967235.42,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-07",
+      "procedure": "Procédure adaptée"
+    }
+  ]
+}

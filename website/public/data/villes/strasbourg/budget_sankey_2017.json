@@ -1,0 +1,311 @@
+{
+  "year": 2017,
+  "type_budget": "execute",
+  "city_slug": "strasbourg",
+  "city_name": "Strasbourg",
+  "dataStatus": "COMPLET",
+  "totals": {
+    "recettes": 447617858.11,
+    "depenses": 464466051.64,
+    "solde": -16848193.53
+  },
+  "nodes": [
+    {
+      "name": "Fiscalité",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations État",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits des services",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits exceptionnels",
+      "category": "revenue"
+    },
+    {
+      "name": "Autres produits",
+      "category": "revenue"
+    },
+    {
+      "name": "Subventions investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits financiers",
+      "category": "revenue"
+    },
+    {
+      "name": "Reprises",
+      "category": "revenue"
+    },
+    {
+      "name": "Emprunts",
+      "category": "revenue"
+    },
+    {
+      "name": "Budget Strasbourg",
+      "category": "central"
+    },
+    {
+      "name": "Fonctionnement courant",
+      "category": "expense"
+    },
+    {
+      "name": "Investissements",
+      "category": "expense"
+    },
+    {
+      "name": "Transferts & subventions",
+      "category": "expense"
+    },
+    {
+      "name": "Dette",
+      "category": "expense"
+    },
+    {
+      "name": "Charges exceptionnelles",
+      "category": "expense"
+    },
+    {
+      "name": "Amortissements",
+      "category": "expense"
+    },
+    {
+      "name": "Charges fiscales",
+      "category": "expense"
+    },
+    {
+      "name": "Charges financières",
+      "category": "expense"
+    },
+    {
+      "name": "Personnel",
+      "category": "expense"
+    }
+  ],
+  "links": [
+    {
+      "source": "Fiscalité",
+      "target": "Budget Strasbourg",
+      "value": 258999168.05
+    },
+    {
+      "source": "Dotations État",
+      "target": "Budget Strasbourg",
+      "value": 83755463.09
+    },
+    {
+      "source": "Dotations investissement",
+      "target": "Budget Strasbourg",
+      "value": 41488049.07
+    },
+    {
+      "source": "Produits des services",
+      "target": "Budget Strasbourg",
+      "value": 18258880.84
+    },
+    {
+      "source": "Produits exceptionnels",
+      "target": "Budget Strasbourg",
+      "value": 17200984.31
+    },
+    {
+      "source": "Autres produits",
+      "target": "Budget Strasbourg",
+      "value": 16158518.7
+    },
+    {
+      "source": "Subventions investissement",
+      "target": "Budget Strasbourg",
+      "value": 7713566.54
+    },
+    {
+      "source": "Produits financiers",
+      "target": "Budget Strasbourg",
+      "value": 2616910.85
+    },
+    {
+      "source": "Reprises",
+      "target": "Budget Strasbourg",
+      "value": 1424360.75
+    },
+    {
+      "source": "Emprunts",
+      "target": "Budget Strasbourg",
+      "value": 1955.91
+    },
+    {
+      "source": "Budget Strasbourg",
+      "target": "Fonctionnement courant",
+      "value": 268760008.07
+    },
+    {
+      "source": "Budget Strasbourg",
+      "target": "Investissements",
+      "value": 74048037.39
+    },
+    {
+      "source": "Budget Strasbourg",
+      "target": "Transferts & subventions",
+      "value": 62969103.25
+    },
+    {
+      "source": "Budget Strasbourg",
+      "target": "Dette",
+      "value": 19267125.89
+    },
+    {
+      "source": "Budget Strasbourg",
+      "target": "Charges exceptionnelles",
+      "value": 16567043.06
+    },
+    {
+      "source": "Budget Strasbourg",
+      "target": "Amortissements",
+      "value": 11560409.06
+    },
+    {
+      "source": "Budget Strasbourg",
+      "target": "Charges fiscales",
+      "value": 4290440.14
+    },
+    {
+      "source": "Budget Strasbourg",
+      "target": "Charges financières",
+      "value": 3620992.31
+    },
+    {
+      "source": "Budget Strasbourg",
+      "target": "Personnel",
+      "value": 3382892.47
+    }
+  ],
+  "drilldown": {
+    "revenue": {
+      "Fiscalité": [
+        {
+          "name": "Fiscalité",
+          "value": 258999168.05
+        }
+      ],
+      "Dotations État": [
+        {
+          "name": "Dotations État",
+          "value": 83755463.09
+        }
+      ],
+      "Dotations investissement": [
+        {
+          "name": "Dotations investissement",
+          "value": 41488049.07
+        }
+      ],
+      "Produits des services": [
+        {
+          "name": "Produits des services",
+          "value": 18258880.84
+        }
+      ],
+      "Produits exceptionnels": [
+        {
+          "name": "Produits exceptionnels",
+          "value": 17200984.31
+        }
+      ],
+      "Autres produits": [
+        {
+          "name": "Autres produits",
+          "value": 16158518.7
+        }
+      ],
+      "Subventions investissement": [
+        {
+          "name": "Subventions investissement",
+          "value": 7713566.54
+        }
+      ],
+      "Produits financiers": [
+        {
+          "name": "Produits financiers",
+          "value": 2616910.85
+        }
+      ],
+      "Reprises": [
+        {
+          "name": "Reprises",
+          "value": 1424360.75
+        }
+      ],
+      "Emprunts": [
+        {
+          "name": "Emprunts",
+          "value": 1955.91
+        }
+      ]
+    },
+    "expenses": {
+      "Fonctionnement courant": [
+        {
+          "name": "Fonctionnement courant",
+          "value": 268760008.07
+        }
+      ],
+      "Investissements": [
+        {
+          "name": "Investissements",
+          "value": 74048037.39
+        }
+      ],
+      "Transferts & subventions": [
+        {
+          "name": "Transferts & subventions",
+          "value": 62969103.25
+        }
+      ],
+      "Dette": [
+        {
+          "name": "Dette",
+          "value": 19267125.89
+        }
+      ],
+      "Charges exceptionnelles": [
+        {
+          "name": "Charges exceptionnelles",
+          "value": 16567043.06
+        }
+      ],
+      "Amortissements": [
+        {
+          "name": "Amortissements",
+          "value": 11560409.06
+        }
+      ],
+      "Charges fiscales": [
+        {
+          "name": "Charges fiscales",
+          "value": 4290440.14
+        }
+      ],
+      "Charges financières": [
+        {
+          "name": "Charges financières",
+          "value": 3620992.31
+        }
+      ],
+      "Personnel": [
+        {
+          "name": "Personnel",
+          "value": 3382892.47
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,331 @@
+{
+  "annee": 2023,
+  "city_slug": "toulouse",
+  "total_montant": 2619901,
+  "nb_subventions": 46,
+  "nb_beneficiaires": 46,
+  "beneficiaires": [
+    {
+      "beneficiaire": "Association Toulouse 38",
+      "objet": "Subvention 2023 - activité sportive",
+      "montant": 108827,
+      "nature": "Aide en nature",
+      "date": "2023-08-16"
+    },
+    {
+      "beneficiaire": "Association Toulouse 21",
+      "objet": "Subvention 2023 - activité sportive",
+      "montant": 107495,
+      "nature": "Aide en numéraire",
+      "date": "2023-10-15"
+    },
+    {
+      "beneficiaire": "Association Toulouse 12",
+      "objet": "Subvention 2023 - activité sociale",
+      "montant": 104555,
+      "nature": "Aide en numéraire",
+      "date": "2023-02-15"
+    },
+    {
+      "beneficiaire": "Association Toulouse 15",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 104464,
+      "nature": "Aide en numéraire",
+      "date": "2023-01-23"
+    },
+    {
+      "beneficiaire": "Association Toulouse 2",
+      "objet": "Subvention 2023 - activité éducative",
+      "montant": 102287,
+      "nature": "Aide en nature",
+      "date": "2023-12-14"
+    },
+    {
+      "beneficiaire": "Association Toulouse 9",
+      "objet": "Subvention 2023 - activité éducative",
+      "montant": 96726,
+      "nature": "Aide en numéraire",
+      "date": "2023-05-06"
+    },
+    {
+      "beneficiaire": "Association Toulouse 19",
+      "objet": "Subvention 2023 - activité éducative",
+      "montant": 94924,
+      "nature": "Aide en numéraire",
+      "date": "2023-05-24"
+    },
+    {
+      "beneficiaire": "Association Toulouse 8",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 93940,
+      "nature": "Aide en nature",
+      "date": "2023-06-15"
+    },
+    {
+      "beneficiaire": "Association Toulouse 39",
+      "objet": "Subvention 2023 - activité sociale",
+      "montant": 93822,
+      "nature": "Aide en numéraire",
+      "date": "2023-02-12"
+    },
+    {
+      "beneficiaire": "Association Toulouse 3",
+      "objet": "Subvention 2023 - activité sociale",
+      "montant": 91573,
+      "nature": "Aide en nature",
+      "date": "2023-09-03"
+    },
+    {
+      "beneficiaire": "Association Toulouse 10",
+      "objet": "Subvention 2023 - activité sportive",
+      "montant": 88963,
+      "nature": "Aide en numéraire",
+      "date": "2023-02-14"
+    },
+    {
+      "beneficiaire": "Association Toulouse 16",
+      "objet": "Subvention 2023 - activité éducative",
+      "montant": 86216,
+      "nature": "Aide en nature",
+      "date": "2023-11-16"
+    },
+    {
+      "beneficiaire": "Association Toulouse 34",
+      "objet": "Subvention 2023 - activité éducative",
+      "montant": 85200,
+      "nature": "Aide en numéraire",
+      "date": "2023-09-28"
+    },
+    {
+      "beneficiaire": "Association Toulouse 5",
+      "objet": "Subvention 2023 - activité sociale",
+      "montant": 85022,
+      "nature": "Aide en numéraire",
+      "date": "2023-11-15"
+    },
+    {
+      "beneficiaire": "Association Toulouse 41",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 83758,
+      "nature": "Aide en nature",
+      "date": "2023-10-22"
+    },
+    {
+      "beneficiaire": "Association Toulouse 32",
+      "objet": "Subvention 2023 - activité sportive",
+      "montant": 83537,
+      "nature": "Aide en nature",
+      "date": "2023-05-09"
+    },
+    {
+      "beneficiaire": "Association Toulouse 24",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 79917,
+      "nature": "Aide en nature",
+      "date": "2023-12-20"
+    },
+    {
+      "beneficiaire": "Association Toulouse 44",
+      "objet": "Subvention 2023 - activité éducative",
+      "montant": 76095,
+      "nature": "Aide en nature",
+      "date": "2023-01-10"
+    },
+    {
+      "beneficiaire": "Association Toulouse 14",
+      "objet": "Subvention 2023 - activité éducative",
+      "montant": 68065,
+      "nature": "Aide en numéraire",
+      "date": "2023-02-12"
+    },
+    {
+      "beneficiaire": "Association Toulouse 42",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 66297,
+      "nature": "Aide en numéraire",
+      "date": "2023-09-25"
+    },
+    {
+      "beneficiaire": "Association Toulouse 7",
+      "objet": "Subvention 2023 - activité sportive",
+      "montant": 65485,
+      "nature": "Aide en numéraire",
+      "date": "2023-03-08"
+    },
+    {
+      "beneficiaire": "Association Toulouse 33",
+      "objet": "Subvention 2023 - activité sportive",
+      "montant": 59311,
+      "nature": "Aide en nature",
+      "date": "2023-03-11"
+    },
+    {
+      "beneficiaire": "Association Toulouse 26",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 54480,
+      "nature": "Aide en nature",
+      "date": "2023-10-22"
+    },
+    {
+      "beneficiaire": "Association Toulouse 37",
+      "objet": "Subvention 2023 - activité éducative",
+      "montant": 50859,
+      "nature": "Aide en nature",
+      "date": "2023-01-15"
+    },
+    {
+      "beneficiaire": "Association Toulouse 4",
+      "objet": "Subvention 2023 - activité sportive",
+      "montant": 49226,
+      "nature": "Aide en nature",
+      "date": "2023-08-23"
+    },
+    {
+      "beneficiaire": "Association Toulouse 20",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 48960,
+      "nature": "Aide en nature",
+      "date": "2023-03-01"
+    },
+    {
+      "beneficiaire": "Association Toulouse 43",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 48759,
+      "nature": "Aide en numéraire",
+      "date": "2023-04-25"
+    },
+    {
+      "beneficiaire": "Association Toulouse 45",
+      "objet": "Subvention 2023 - activité sociale",
+      "montant": 46424,
+      "nature": "Aide en numéraire",
+      "date": "2023-06-05"
+    },
+    {
+      "beneficiaire": "Association Toulouse 22",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 43850,
+      "nature": "Aide en nature",
+      "date": "2023-02-01"
+    },
+    {
+      "beneficiaire": "Association Toulouse 31",
+      "objet": "Subvention 2023 - activité sociale",
+      "montant": 37935,
+      "nature": "Aide en numéraire",
+      "date": "2023-08-28"
+    },
+    {
+      "beneficiaire": "Association Toulouse 18",
+      "objet": "Subvention 2023 - activité sportive",
+      "montant": 35279,
+      "nature": "Aide en nature",
+      "date": "2023-07-05"
+    },
+    {
+      "beneficiaire": "Association Toulouse 1",
+      "objet": "Subvention 2023 - activité sociale",
+      "montant": 33817,
+      "nature": "Aide en numéraire",
+      "date": "2023-08-16"
+    },
+    {
+      "beneficiaire": "Association Toulouse 13",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 32532,
+      "nature": "Aide en numéraire",
+      "date": "2023-01-13"
+    },
+    {
+      "beneficiaire": "Association Toulouse 17",
+      "objet": "Subvention 2023 - activité sociale",
+      "montant": 28617,
+      "nature": "Aide en numéraire",
+      "date": "2023-04-28"
+    },
+    {
+      "beneficiaire": "Association Toulouse 40",
+      "objet": "Subvention 2023 - activité sociale",
+      "montant": 26440,
+      "nature": "Aide en nature",
+      "date": "2023-03-27"
+    },
+    {
+      "beneficiaire": "Association Toulouse 11",
+      "objet": "Subvention 2023 - activité sportive",
+      "montant": 24147,
+      "nature": "Aide en nature",
+      "date": "2023-10-08"
+    },
+    {
+      "beneficiaire": "Association Toulouse 29",
+      "objet": "Subvention 2023 - activité sportive",
+      "montant": 22886,
+      "nature": "Aide en nature",
+      "date": "2023-06-15"
+    },
+    {
+      "beneficiaire": "Association Toulouse 23",
+      "objet": "Subvention 2023 - activité éducative",
+      "montant": 19039,
+      "nature": "Aide en nature",
+      "date": "2023-12-13"
+    },
+    {
+      "beneficiaire": "Association Toulouse 28",
+      "objet": "Subvention 2023 - activité sportive",
+      "montant": 18937,
+      "nature": "Aide en numéraire",
+      "date": "2023-10-06"
+    },
+    {
+      "beneficiaire": "Association Toulouse 30",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 14468,
+      "nature": "Aide en nature",
+      "date": "2023-03-09"
+    },
+    {
+      "beneficiaire": "Association Toulouse 46",
+      "objet": "Subvention 2023 - activité sociale",
+      "montant": 13567,
+      "nature": "Aide en nature",
+      "date": "2023-08-21"
+    },
+    {
+      "beneficiaire": "Association Toulouse 25",
+      "objet": "Subvention 2023 - activité sportive",
+      "montant": 12726,
+      "nature": "Aide en numéraire",
+      "date": "2023-01-11"
+    },
+    {
+      "beneficiaire": "Association Toulouse 35",
+      "objet": "Subvention 2023 - activité éducative",
+      "montant": 10645,
+      "nature": "Aide en numéraire",
+      "date": "2023-01-08"
+    },
+    {
+      "beneficiaire": "Association Toulouse 36",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 8823,
+      "nature": "Aide en nature",
+      "date": "2023-03-23"
+    },
+    {
+      "beneficiaire": "Association Toulouse 27",
+      "objet": "Subvention 2023 - activité sociale",
+      "montant": 5623,
+      "nature": "Aide en nature",
+      "date": "2023-05-13"
+    },
+    {
+      "beneficiaire": "Association Toulouse 6",
+      "objet": "Subvention 2023 - activité culturelle",
+      "montant": 5383,
+      "nature": "Aide en numéraire",
+      "date": "2023-11-10"
+    }
+  ]
+}

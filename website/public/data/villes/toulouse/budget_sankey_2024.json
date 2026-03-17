@@ -1,0 +1,311 @@
+{
+  "year": 2024,
+  "type_budget": "execute",
+  "city_slug": "toulouse",
+  "city_name": "Toulouse",
+  "dataStatus": "COMPLET",
+  "totals": {
+    "recettes": 775274215.24,
+    "depenses": 880958755.57,
+    "solde": -105684540.33
+  },
+  "nodes": [
+    {
+      "name": "Fiscalité",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations État",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits des services",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Subventions investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Autres produits",
+      "category": "revenue"
+    },
+    {
+      "name": "Reprises",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits exceptionnels",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits financiers",
+      "category": "revenue"
+    },
+    {
+      "name": "Emprunts",
+      "category": "revenue"
+    },
+    {
+      "name": "Budget Toulouse",
+      "category": "central"
+    },
+    {
+      "name": "Personnel",
+      "category": "expense"
+    },
+    {
+      "name": "Investissements",
+      "category": "expense"
+    },
+    {
+      "name": "Fonctionnement courant",
+      "category": "expense"
+    },
+    {
+      "name": "Transferts & subventions",
+      "category": "expense"
+    },
+    {
+      "name": "Amortissements",
+      "category": "expense"
+    },
+    {
+      "name": "Charges fiscales",
+      "category": "expense"
+    },
+    {
+      "name": "Charges financières",
+      "category": "expense"
+    },
+    {
+      "name": "Dette",
+      "category": "expense"
+    },
+    {
+      "name": "Charges exceptionnelles",
+      "category": "expense"
+    }
+  ],
+  "links": [
+    {
+      "source": "Fiscalité",
+      "target": "Budget Toulouse",
+      "value": 472636697.17
+    },
+    {
+      "source": "Dotations État",
+      "target": "Budget Toulouse",
+      "value": 156418673.67
+    },
+    {
+      "source": "Produits des services",
+      "target": "Budget Toulouse",
+      "value": 61972003.52
+    },
+    {
+      "source": "Dotations investissement",
+      "target": "Budget Toulouse",
+      "value": 53390682.47
+    },
+    {
+      "source": "Subventions investissement",
+      "target": "Budget Toulouse",
+      "value": 11502879.51
+    },
+    {
+      "source": "Autres produits",
+      "target": "Budget Toulouse",
+      "value": 8461315.96
+    },
+    {
+      "source": "Reprises",
+      "target": "Budget Toulouse",
+      "value": 4624174.46
+    },
+    {
+      "source": "Produits exceptionnels",
+      "target": "Budget Toulouse",
+      "value": 4548911.04
+    },
+    {
+      "source": "Produits financiers",
+      "target": "Budget Toulouse",
+      "value": 1635186.72
+    },
+    {
+      "source": "Emprunts",
+      "target": "Budget Toulouse",
+      "value": 83690.72
+    },
+    {
+      "source": "Budget Toulouse",
+      "target": "Personnel",
+      "value": 382437561.5
+    },
+    {
+      "source": "Budget Toulouse",
+      "target": "Investissements",
+      "value": 188369811.94
+    },
+    {
+      "source": "Budget Toulouse",
+      "target": "Fonctionnement courant",
+      "value": 152114067.69
+    },
+    {
+      "source": "Budget Toulouse",
+      "target": "Transferts & subventions",
+      "value": 80316769.15
+    },
+    {
+      "source": "Budget Toulouse",
+      "target": "Amortissements",
+      "value": 57324483.27
+    },
+    {
+      "source": "Budget Toulouse",
+      "target": "Charges fiscales",
+      "value": 9612990.62
+    },
+    {
+      "source": "Budget Toulouse",
+      "target": "Charges financières",
+      "value": 4992114.47
+    },
+    {
+      "source": "Budget Toulouse",
+      "target": "Dette",
+      "value": 3239559.51
+    },
+    {
+      "source": "Budget Toulouse",
+      "target": "Charges exceptionnelles",
+      "value": 2551397.42
+    }
+  ],
+  "drilldown": {
+    "revenue": {
+      "Fiscalité": [
+        {
+          "name": "Fiscalité",
+          "value": 472636697.17
+        }
+      ],
+      "Dotations État": [
+        {
+          "name": "Dotations État",
+          "value": 156418673.67
+        }
+      ],
+      "Produits des services": [
+        {
+          "name": "Produits des services",
+          "value": 61972003.52
+        }
+      ],
+      "Dotations investissement": [
+        {
+          "name": "Dotations investissement",
+          "value": 53390682.47
+        }
+      ],
+      "Subventions investissement": [
+        {
+          "name": "Subventions investissement",
+          "value": 11502879.51
+        }
+      ],
+      "Autres produits": [
+        {
+          "name": "Autres produits",
+          "value": 8461315.96
+        }
+      ],
+      "Reprises": [
+        {
+          "name": "Reprises",
+          "value": 4624174.46
+        }
+      ],
+      "Produits exceptionnels": [
+        {
+          "name": "Produits exceptionnels",
+          "value": 4548911.04
+        }
+      ],
+      "Produits financiers": [
+        {
+          "name": "Produits financiers",
+          "value": 1635186.72
+        }
+      ],
+      "Emprunts": [
+        {
+          "name": "Emprunts",
+          "value": 83690.72
+        }
+      ]
+    },
+    "expenses": {
+      "Personnel": [
+        {
+          "name": "Personnel",
+          "value": 382437561.5
+        }
+      ],
+      "Investissements": [
+        {
+          "name": "Investissements",
+          "value": 188369811.94
+        }
+      ],
+      "Fonctionnement courant": [
+        {
+          "name": "Fonctionnement courant",
+          "value": 152114067.69
+        }
+      ],
+      "Transferts & subventions": [
+        {
+          "name": "Transferts & subventions",
+          "value": 80316769.15
+        }
+      ],
+      "Amortissements": [
+        {
+          "name": "Amortissements",
+          "value": 57324483.27
+        }
+      ],
+      "Charges fiscales": [
+        {
+          "name": "Charges fiscales",
+          "value": 9612990.62
+        }
+      ],
+      "Charges financières": [
+        {
+          "name": "Charges financières",
+          "value": 4992114.47
+        }
+      ],
+      "Dette": [
+        {
+          "name": "Dette",
+          "value": 3239559.51
+        }
+      ],
+      "Charges exceptionnelles": [
+        {
+          "name": "Charges exceptionnelles",
+          "value": 2551397.42
+        }
+      ]
+    }
+  }
+}

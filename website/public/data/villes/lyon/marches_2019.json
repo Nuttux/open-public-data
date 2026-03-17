@@ -1,0 +1,864 @@
+{
+  "annee": 2019,
+  "city_slug": "lyon",
+  "total_montant": 461714663.13,
+  "total_marches": 650,
+  "categories": [
+    {
+      "categorie": "Autres",
+      "nb_marches": 175,
+      "montant_total": 200451063.43,
+      "montant_moyen": 1145434.65
+    },
+    {
+      "categorie": "Construction & Bâtiment",
+      "nb_marches": 228,
+      "montant_total": 141188089.59,
+      "montant_moyen": 619246.01
+    },
+    {
+      "categorie": "Services professionnels",
+      "nb_marches": 150,
+      "montant_total": 60045159.74,
+      "montant_moyen": 400301.06
+    },
+    {
+      "categorie": "Transport & Véhicules",
+      "nb_marches": 44,
+      "montant_total": 40297913.75,
+      "montant_moyen": 915861.68
+    },
+    {
+      "categorie": "Informatique & Télécom",
+      "nb_marches": 26,
+      "montant_total": 6687281.91,
+      "montant_moyen": 257203.15
+    },
+    {
+      "categorie": "Environnement & Propreté",
+      "nb_marches": 6,
+      "montant_total": 5231650.7,
+      "montant_moyen": 871941.78
+    },
+    {
+      "categorie": "Alimentation & Restauration",
+      "nb_marches": 9,
+      "montant_total": 4479880.0,
+      "montant_moyen": 497764.44
+    },
+    {
+      "categorie": "Santé & Social",
+      "nb_marches": 2,
+      "montant_total": 2410000.0,
+      "montant_moyen": 1205000.0
+    },
+    {
+      "categorie": "Énergie",
+      "nb_marches": 10,
+      "montant_total": 923624.01,
+      "montant_moyen": 92362.4
+    }
+  ],
+  "top_marches": [
+    {
+      "objet": "Accord-cadre pour la founiture d’électricité de la ville de Lyon et du CCAS de Lyon -Lot 2-Segment C3/C4",
+      "montant": 14100000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-30",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre pour la founiture d’électricité de la ville de Lyon et du CCAS de Lyon -Lot 2-Segment C3/C4",
+      "montant": 14100000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-30",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre pour la founiture d’électricité de la ville de Lyon et du CCAS de Lyon -Lot 2-Segment C3/C4",
+      "montant": 14100000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-30",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre pour la founiture d’électricité de la ville de Lyon et du CCAS de Lyon -Lot 2-Segment C3/C4",
+      "montant": 14100000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-30",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre pour la fourniture d’éléctricité pour la Ville de Lyon et le CCAS de Lyon -Lot 04-segment C5 Eclairage Urbain",
+      "montant": 12400000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-26",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre pour la fourniture d’éléctricité pour la Ville de Lyon et le CCAS de Lyon -Lot 04-segment C5 Eclairage Urbain",
+      "montant": 12400000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-26",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Concession de service public pour l’exploitation de la fourrière automobile de la Ville de Lyon",
+      "montant": 10500000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2019-07-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre pour la fourniture d’électricité pour la Ville de Lyon et le CCAS de Lyon-Lot 1-segment C2",
+      "montant": 10000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-29",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre pour la fourniture d’électricité pour la Ville de Lyon et le CCAS de Lyon-Lot 1-segment C2",
+      "montant": 10000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-29",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre pour la fourniture d’électricité pour la Ville de Lyon et le CCAS de Lyon-Lot 1-segment C2",
+      "montant": 10000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-29",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre pour la fourniture d’électricité pour la Ville de Lyon et le CCAS de Lyon-Lot 1-segment C2",
+      "montant": 10000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-29",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Rénovation, création et aménagement de terrains de sport en gazon synthétique",
+      "montant": 6000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-04-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Rénovation, création et aménagement de terrains de sport en gazon synthétique",
+      "montant": 6000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-04-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Rénovation, création et aménagement de terrains de sport en gazon synthétique",
+      "montant": 6000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-04-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Rénovation, création et aménagement de terrains de sport en gazon synthétique",
+      "montant": 6000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-04-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture et acheminement d’électricité pour la Ville de Lyon et le Centre Communal d’Action sociale (CCAS) de Lyon - Lot 2 : segments C3 et C4",
+      "montant": 5252224.59,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-11-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre pour la fourniture d’électricité pour la Ville de Lyon et le CCAS de Lyon-Lot 03-Segment C bâtiment",
+      "montant": 4800000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-26",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre pour la fourniture d’électricité pour la Ville de Lyon et le CCAS de Lyon-Lot 03-Segment C bâtiment",
+      "montant": 4800000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-26",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture et acheminement d’électricité pour la Ville de Lyon et le Centre Communal d’Action Sociale (CCAS) de Lyon - segment C2",
+      "montant": 4718914.5,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-11-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Marché Public Global de Performance Energétique pour la réhabilitation de la Piscine de Vaise et des Musées GADAGNE",
+      "montant": 4658298.89,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-03-21",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "Marché Public Global de Performance Energétique pour la réhabilitation de la Piscine de Vaise et des Musées GADAGNE",
+      "montant": 4658298.89,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-03-21",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "Marché Public Global de Performance Energétique pour la réhabilitation de la Piscine de Vaise et des Musées GADAGNE",
+      "montant": 4658298.89,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-03-21",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "Modification des horodateurs Stelio. Mise en conformité du kit de paiement bancaire.",
+      "montant": 4604410.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-10-10",
+      "procedure": "Marché négocié sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "Préparation, location, entretien et blanchissage du linge plat et des vêtements de travail pour les services de la ville de Lyon",
+      "montant": 3200000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-04-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Développements de  solutions spécifiques informatiques et tierce maintenance applicative de la Ville de Lyon lot 2 prestation de developpement web et de tierce maintenance applicatives pour les sites internet et applications mobiles specifiques VDL",
+      "montant": 2671000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2019-08-30",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Prestations de sécurité et gardiennage pour la Ville de Lyon lot 5 prestations de sécurité de gardiennage évenementielles",
+      "montant": 2640000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-08-14",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 5 : électricité - secteur 7-8",
+      "montant": 2600000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2019-12-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 5 : électricité - secteur 7-8",
+      "montant": 2600000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2019-12-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 5 : électricité - secteur 7-8",
+      "montant": 2600000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2019-12-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 5 : électricité - secteur 7-8",
+      "montant": 2600000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2019-12-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 5 : électricité - secteur 7-8",
+      "montant": 2600000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2019-12-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 5 : électricité - secteur 7-8",
+      "montant": 2600000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2019-12-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 5 : électricité - secteur 7-8",
+      "montant": 2600000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2019-12-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 5 : électricité - secteur 7-8",
+      "montant": 2600000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2019-12-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Réalisation, installation, location et exploitation de sanitaires publics à entretien automatique",
+      "montant": 2563536.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestation d’entretien et de nettoyage des locaux de la Ville de Lyon lot 3 nettoyage multi site spécialisés",
+      "montant": 2400000.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2019-02-01",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Transports d'?uvres et objets d’art pour les services de la Ville de Lyon-Lot 01-Transports International-France et France-international",
+      "montant": 2230000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-12-12",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Transports d'?uvres et objets d’art pour les services de la Ville de Lyon-Lot 01-Transports International-France et France-international",
+      "montant": 2230000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-12-12",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Transports d'?uvres et objets d’art pour les services de la Ville de Lyon-Lot 01-Transports International-France et France-international",
+      "montant": 2230000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-12-12",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Transports d'?uvres et objets d’art pour les services de la Ville de Lyon-Lot 01-Transports International-France et France-international",
+      "montant": 2230000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-12-12",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Transports d'?uvres et objets d’art pour les services de la Ville de Lyon-Lot 01-Transports International-France et France-international",
+      "montant": 2230000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-12-12",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Prestations de sécurité et gardiennage pour la Ville de Lyon lot 4 prestations de sécurité gardiennage ponctuelles des sites et télésurveillance",
+      "montant": 2200000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-08-14",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 1 : Maçonnerie - secteur 7-8",
+      "montant": 2000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-08-21",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "GS L. Jouhaux extension lot 2  gros oeuvre",
+      "montant": 1790923.4,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-05-29",
+      "procedure": "Marché négocié sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "Capture, transport, garde de tous les animaux errants ou nuisants sur le territoire communal et garde dans des locaux adaptés de tous les animaux pris en charge",
+      "montant": 1760000.0,
+      "categorie": "Santé & Social",
+      "titulaire": "",
+      "date": "2019-11-26",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 3 : Menuiserie - secteur 7-8",
+      "montant": 1680000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-08-26",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations de sécurité et gardiennage pour la Ville de Lyon lot 6 prestations de sécurité et gardiennage des piscines municipales et des patinoires",
+      "montant": 1672000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-08-14",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Groupe scolaire ginkgo - mission de maîtrise d’oeuvre - construction",
+      "montant": 1618795.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-10-16",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Groupe scolaire ginkgo - mission de maîtrise d’oeuvre - construction",
+      "montant": 1618795.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-10-16",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Groupe scolaire ginkgo - mission de maîtrise d’oeuvre - construction",
+      "montant": 1618795.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-10-16",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 2 : Plâtrerie - Peinture - secteur 7-8",
+      "montant": 1600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-11-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 2 : Plâtrerie - Peinture - secteur 7-8",
+      "montant": 1600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-11-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 2 : Plâtrerie - Peinture - secteur 7-8",
+      "montant": 1600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-11-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 2 : Plâtrerie - Peinture - secteur 7-8",
+      "montant": 1600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-11-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 2 : Plâtrerie - Peinture - secteur 7-8",
+      "montant": 1600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-11-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 2 : Plâtrerie - Peinture - secteur 7-8",
+      "montant": 1600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-11-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 2 : Plâtrerie - Peinture - secteur 7-8",
+      "montant": 1600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-11-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 2 : Plâtrerie - Peinture - secteur 7-8",
+      "montant": 1600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-11-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 2 : Plâtrerie - Peinture - secteur 7-8",
+      "montant": 1600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-11-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Etudes de sites potentiellement pollués",
+      "montant": 1600000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-03-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations de sécurité et gardiennage pour la Ville de Lyon lot 3 prestations de sécurité et gardiennage du Palais Bondy, du palais de la Mutualité et de la Bourse du Travail",
+      "montant": 1540000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-08-14",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Fourniture et gestion d?abonnements à des périodiques français et étrangers pour les services de la ville",
+      "montant": 1488000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-08-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture et gestion d?abonnements à des périodiques français et étrangers pour les services de la ville",
+      "montant": 1488000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-08-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations de sécurité et gardiennage pour la Ville de Lyon lot 2 prestations de sécurié et gardiennage site Halles de Lyon",
+      "montant": 1452000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-08-14",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Accord-cadre prestations de géomètres experts rive droite 1-2-4-5-9 arrondissements et extérieurs lot03",
+      "montant": 1440000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-10-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre prestations de géomètres experts rive droite 1-2-4-5-9 arrondissements et extérieurs lot03",
+      "montant": 1440000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-10-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations de sécurité et gardiennage pour la Ville de Lyon lot 1 prestations de sécurité et gardiennage site Subsistances",
+      "montant": 1408000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-08-14",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Prestations de sécurité et gardiennage pour la Ville de Lyon lot 1 prestations de sécurité et gardiennage site Subsistances",
+      "montant": 1408000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-08-14",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 16 : désenfumage - tous secteurs",
+      "montant": 1400000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2019-12-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 16 : désenfumage - tous secteurs",
+      "montant": 1400000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2019-12-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre de travaux sur le Patrimoine des secteurs 5-9 et rive droite-Lot 17-Etancheïté-Secteur Rive Droite",
+      "montant": 1284792.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-01-07",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 9 : Cours Voirie et Réseaux Divers (VRD) - Secteur 7-8",
+      "montant": 1280000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-11-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 9 : Cours Voirie et Réseaux Divers (VRD) - Secteur 7-8",
+      "montant": 1280000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-11-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 9 : Cours Voirie et Réseaux Divers (VRD) - Secteur 7-8",
+      "montant": 1280000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-11-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 9 : Cours Voirie et Réseaux Divers (VRD) - Secteur 7-8",
+      "montant": 1280000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-11-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 9 : Cours Voirie et Réseaux Divers (VRD) - Secteur 7-8",
+      "montant": 1280000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-11-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 9 : Cours Voirie et Réseaux Divers (VRD) - Secteur 7-8",
+      "montant": 1280000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-11-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine secteurs 7 et 8 et désenfumage tous secteurs - Lot 9 : Cours Voirie et Réseaux Divers (VRD) - Secteur 7-8",
+      "montant": 1280000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-11-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Aménagement d’un espace Forêts d’Asie-Zoo de Lyon-Lyon 6ème-Lot 01-Aménagement Paysagers-Voierie Reseaux divers-Terrassements, Maçonnerie, Clôtures spéciales, Bassins, Revêtements espaces verts",
+      "montant": 1248913.37,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-07-22",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Aménagement d’un espace Forêts d’Asie-Zoo de Lyon-Lyon 6ème-Lot 01-Aménagement Paysagers-Voierie Reseaux divers-Terrassements, Maçonnerie, Clôtures spéciales, Bassins, Revêtements espaces verts",
+      "montant": 1248913.37,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-07-22",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Aménagement d’un espace Forêts d’Asie-Zoo de Lyon-Lyon 6ème-Lot 01-Aménagement Paysagers-Voierie Reseaux divers-Terrassements, Maçonnerie, Clôtures spéciales, Bassins, Revêtements espaces verts",
+      "montant": 1248913.37,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-07-22",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Aménagement d’un espace Forêts d’Asie-Zoo de Lyon-Lyon 6ème-Lot 01-Aménagement Paysagers-Voierie Reseaux divers-Terrassements, Maçonnerie, Clôtures spéciales, Bassins, Revêtements espaces verts",
+      "montant": 1248913.37,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-07-22",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Aménagement d’un espace Forêts d’Asie-Zoo de Lyon-Lyon 6ème-Lot 01-Aménagement Paysagers-Voierie Reseaux divers-Terrassements, Maçonnerie, Clôtures spéciales, Bassins, Revêtements espaces verts",
+      "montant": 1248913.37,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-07-22",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Aménagement d’un espace Forêts d’Asie-Zoo de Lyon-Lyon 6ème-Lot 01-Aménagement Paysagers-Voierie Reseaux divers-Terrassements, Maçonnerie, Clôtures spéciales, Bassins, Revêtements espaces verts",
+      "montant": 1248913.37,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-07-22",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Aménagement d’un espace Forêts d’Asie-Zoo de Lyon-Lyon 6ème-Lot 01-Aménagement Paysagers-Voierie Reseaux divers-Terrassements, Maçonnerie, Clôtures spéciales, Bassins, Revêtements espaces verts",
+      "montant": 1248913.37,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-07-22",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Aménagement d’un espace Forêts d’Asie-Zoo de Lyon-Lyon 6ème-Lot 01-Aménagement Paysagers-Voierie Reseaux divers-Terrassements, Maçonnerie, Clôtures spéciales, Bassins, Revêtements espaces verts",
+      "montant": 1248913.37,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-07-22",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Aménagement d’un espace Forêts d’Asie-Zoo de Lyon-Lyon 6ème-Lot 01-Aménagement Paysagers-Voierie Reseaux divers-Terrassements, Maçonnerie, Clôtures spéciales, Bassins, Revêtements espaces verts",
+      "montant": 1248913.37,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-07-22",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Aménagement d’un espace Forêts d’Asie-Zoo de Lyon-Lyon 6ème-Lot 01-Aménagement Paysagers-Voierie Reseaux divers-Terrassements, Maçonnerie, Clôtures spéciales, Bassins, Revêtements espaces verts",
+      "montant": 1248913.37,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-07-22",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Réalisation relevés plans par des géomètres rive droite 1-2-4-5-9 arrondissements de Lyon et extérieurs lot 01",
+      "montant": 1200000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-10-26",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Réalisation relevés plans géomètres, Ville de Lyon lot02 rive gauche 3-6-7-8 arrondissements",
+      "montant": 1200000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-10-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre prestations de géomètres experts rive droite 3-6-7-8- arrondissements et extérieurs lot04",
+      "montant": 1200000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-10-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Réalisation diagnostics immobiliers Ville de Lyon rive droite 1-2-4-5-9 arrondissement lot05",
+      "montant": 1200000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-10-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Réalisation diagnostics immobiliers Ville de Lyon lot06 Rive gauche 3-6-7-8 arrondissements de lyon",
+      "montant": 1200000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-10-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Réalisation diagnostics immobiliers Ville de Lyon lot06 Rive gauche 3-6-7-8 arrondissements de lyon",
+      "montant": 1200000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-10-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Traitement de déchets divers des services municipaux de la Ville de  Lyon",
+      "montant": 1200000.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2019-04-25",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Collecte sélective et revalorisation des déchets papier/carton de la Ville de Lyon LOT 1",
+      "montant": 1200000.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2019-02-01",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Acquisition matériels, accessoires, outillages, pièces détachées espace verts lot 1 petites machines avec ou sans moteur accessoires associés et pièces détachées entretien , création d’espaces verts",
+      "montant": 1200000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-01-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Acquisition matériels, accessoires, outillages pièces détachées espaces verts lot 2 tracteurs, tondeuses",
+      "montant": 1200000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-01-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Acquisition matériels, accessoires, outillages pièces détachées espaces verts lot 2 tracteurs, tondeuses",
+      "montant": 1200000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-01-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Acquisition matériels, accessoires, outillages,pièces détachées espace verts lot 3 matériels espaces verts électriques batteries avec accessoires et pièces détachée, entretien et création d’espaces verts",
+      "montant": 1200000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-01-17",
+      "procedure": "Appel d'offres ouvert"
+    }
+  ]
+}

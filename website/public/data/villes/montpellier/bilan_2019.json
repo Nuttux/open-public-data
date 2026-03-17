@@ -1,0 +1,17 @@
+{
+  "year": 2019,
+  "city_slug": "montpellier",
+  "totals": {
+    "actif_total": 2374876825.12,
+    "passif_total": 2403007406.47,
+    "dette_financiere": 199269492.73,
+    "fonds_propres": 2203737913.74,
+    "tresorerie": 24107221.44,
+    "immobilisations": 2350769603.68
+  },
+  "kpis": {
+    "ratio_endettement": 8.29,
+    "pct_fonds_propres": 91.71,
+    "dette_par_hab": 666.24
+  }
+}

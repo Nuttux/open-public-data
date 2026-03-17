@@ -1,0 +1,864 @@
+{
+  "annee": 2024,
+  "city_slug": "marseille",
+  "total_montant": 250072071.3,
+  "total_marches": 2454,
+  "categories": [
+    {
+      "categorie": "Construction & Bâtiment",
+      "nb_marches": 106,
+      "montant_total": 112379444.78,
+      "montant_moyen": 1060183.44
+    },
+    {
+      "categorie": "Informatique & Télécom",
+      "nb_marches": 102,
+      "montant_total": 40916536.32,
+      "montant_moyen": 401142.51
+    },
+    {
+      "categorie": "Énergie",
+      "nb_marches": 2,
+      "montant_total": 32795646.45,
+      "montant_moyen": 16397823.22
+    },
+    {
+      "categorie": "Autres",
+      "nb_marches": 1762,
+      "montant_total": 31289247.8,
+      "montant_moyen": 17757.8
+    },
+    {
+      "categorie": "Transport & Véhicules",
+      "nb_marches": 62,
+      "montant_total": 15398976.31,
+      "montant_moyen": 248370.59
+    },
+    {
+      "categorie": "Services professionnels",
+      "nb_marches": 239,
+      "montant_total": 9385489.39,
+      "montant_moyen": 39269.83
+    },
+    {
+      "categorie": "Environnement & Propreté",
+      "nb_marches": 31,
+      "montant_total": 2956354.31,
+      "montant_moyen": 95366.27
+    },
+    {
+      "categorie": "Santé & Social",
+      "nb_marches": 30,
+      "montant_total": 2889239.31,
+      "montant_moyen": 96307.98
+    },
+    {
+      "categorie": "Alimentation & Restauration",
+      "nb_marches": 120,
+      "montant_total": 2061136.63,
+      "montant_moyen": 17176.14
+    }
+  ],
+  "top_marches": [
+    {
+      "objet": "EXPLOITATION  MAINTIEN RENOVATION ET EXTENSION DE L’ECLAIRAGE PUBLIC SUR LE TERRITOIRE DE LA COMMUNE DE MARSEILLE",
+      "montant": 83200000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-02-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture et acheminement d’électricité et services associés \"ELEC 2025\" - Lot 3",
+      "montant": 32500000.0,
+      "categorie": "Énergie",
+      "titulaire": "",
+      "date": "2024-08-09",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture, mise en conditionnement et  livraison d’articles de papeterie, de peinture et de travaux manuels pour les enfants scolarisés à Marseille, les crèches municipales et les divers services municipaux.\nPrestation de flocage. - Fournitures d’articles de papeterie et travaux manuels (hors cahiers, carnet et papier pour reproduction) - LOT N° 1 = fourniture d’articles de papeterie (hors cahiers, carnets et papier pour reproduction)",
+      "montant": 16000000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2024-04-26",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Tierce Maintenance Applicative des applications spécifiques ou libres de la Ville de Marseille et prestations associées  - Assistance technique_ LOT N° 3",
+      "montant": 8800000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2024-06-05",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Tierce Maintenance Applicative des applications spécifiques ou libres de la Ville de Marseille et prestations associées  - Tierce maintenance applicative_LOT N° 1",
+      "montant": 5477538.8,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-05-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Tierce Maintenance Applicative des applications spécifiques ou libres de la Ville de Marseille et prestations associées  - Développement logiciel_LOT N° 2",
+      "montant": 4800000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2024-05-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture, mise en conditionnement et  livraison d’articles de papeterie, de peinture et de travaux manuels pour les enfants scolarisés à Marseille, les crèches municipales et les divers services municipaux.\nPrestation de flocage. - Fourniture de cahiers, carnets et papier pour reproduction - LOT N° 2 : Fourniture de cahiers, carnets et papier pour reproduction",
+      "montant": 4800000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2024-04-26",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Renouvellement des Postes de travail informatiques des services municipaux de la Ville de Marseille, matériels et prestations associées",
+      "montant": 4125000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2024-08-07",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Déploiement du tri dans les lieux et équipements municipaux de la Ville de Marseille recevant du public – \nInstallation des équipements de tri (abris-bac)  pour les emballages ménagers hors foyer - Conception, fourniture, pose, maintenance et entretien d’abris-bacs pour recevoir les bacs  pour le tri des emballages/papiers, du verre et des ordures ménagères résiduelles pour les arrondissements suivants : 1er, 2ème, 3ème, 4ème, 5ème, 7ème, 11ème, 12ème, 13ème et 14ème",
+      "montant": 3500000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-05-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Déploiement du tri dans les lieux et équipements municipaux de la Ville de Marseille recevant du public – \nInstallation des équipements de tri (abris-bac)  pour les emballages ménagers hors foyer - Conception, fourniture, pose, maintenance et entretien d’abris-bacs pour recevoir les bacs  pour le tri des emballages/papiers, du verre et des ordures ménagères résiduelles pour les arrondissements suivants : 6ème, 8ème, 9ème, 10ème, 15ème, 16ème.",
+      "montant": 3500000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-05-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Achat de prestations d’agence de voyages",
+      "montant": 2800000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-03-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de désamiantage et de confortement de 3 bâtiments sis 78-80-82 rue Bernard Dubois 13001 Marseille",
+      "montant": 2058895.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-12-05",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Travaux de réparation, d’entretien, de rénovation et de petites créations dans les bâtiments et ouvrages divers constituant le patrimoine immobilier de la Ville de Marseille pour l’ensemble des services municipaux dans le corps d’état : Chauffage, Climatisation, VMC - 5 lots - Travaux de chauffage, climatisation, VMC pour l’ensemble des arrondissements et équipements rattachés. Accord-cadre multi attributaires à marchés subséquents.",
+      "montant": 2000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-07-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture, mise en conditionnement et  livraison d’articles de papeterie, de peinture et de travaux manuels pour les enfants scolarisés à Marseille, les crèches municipales et les divers services municipaux.\nPrestation de flocage. - Mise en conditionnement et livraison d’articles de papeterie pour des dispositifs spécifiques - LOT N° 3 : Mise en conditionnement et livraison de kits de rentrée scolaire",
+      "montant": 2000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-04-26",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture, mise en conditionnement et  livraison d’articles de papeterie, de peinture et de travaux manuels pour les enfants scolarisés à Marseille, les crèches municipales et les divers services municipaux.\nPrestation de flocage. - Prestation de flocage d’articles divers  - LOT N° 4 : Prestation de flocage d’articles divers",
+      "montant": 2000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-04-26",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Transport en autocars des enfants et jeunes de Marseille vers les équipements sportifs, parcs et espaces naturels marseillais - 4 Lots - Transport en autocars des enfants et des jeunes vers les équipements sportifs (hors piscines), parcs et espaces nature",
+      "montant": 2000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-01-12",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de réparation, d’entretien, de rénovation et de petites créations dans les bâtiments et ouvrages divers constituant le patrimoine immobilier de la Ville de Marseille pour l’ensemble des services municipaux dans le corps d’état : Chauffage, Climatisation, VMC - 5 lots - Travaux de chauffage, climatisation, VMC pour les écoles et crèches des 1, 6, 7, 8, 9, 10, 11, 12èmes arrondissements et équipements rattachés de la Ville de Marseille. Accord-cadre mono attributaire à bons de commande.",
+      "montant": 1800000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-07-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de réparation, d’entretien, de rénovation et de petites créations dans les bâtiments et ouvrages divers constituant le patrimoine immobilier de la Ville de Marseille pour l’ensemble des services municipaux dans le corps d’état : Chauffage, Climatisation, VMC - 5 lots - Travaux de chauffage, climatisation, VMC pour les écoles et crèches des 2, 3, 4, 5, 13, 14, 15, 16èmes arrondissements et équipements rattachés de la Ville de Marseille. Accord-cadre mono attributaire à bons de commande. ",
+      "montant": 1800000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-07-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de réparation, d’entretien, de rénovation et de petites créations dans les bâtiments et ouvrages divers constituant le patrimoine immobilier de la Ville de Marseille pour l’ensemble des services municipaux dans le corps d’état : Chauffage, Climatisation, VMC - 5 lots - Travaux de chauffage, climatisation, VMC pour tous bâtiments hors écoles et crèches des 1, 6, 7, 8, 9, 10, 11, 12èmes arrondissements et équipements rattachés de la Ville de Marseille. Accord-cadre mono attributaire à bons de commande. ",
+      "montant": 1800000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-07-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de réparation, d’entretien, de rénovation et de petites créations dans les bâtiments et ouvrages divers constituant le patrimoine immobilier de la Ville de Marseille pour l’ensemble des services municipaux dans le corps d’état : Chauffage, Climatisation, VMC - 5 lots - Travaux de chauffage, climatisation, VMC pour tous bâtiments hors écoles et crèches des 2, 3, 4, 5, 13, 14, 15, 16èmes arrondissements et équipements rattachés de la Ville de Marseille. Accord-cadre mono attributaire à bons de commande. ",
+      "montant": 1800000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-07-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux d’entretien, de rénovation ou d’aménagement des terrains de sport et des espaces extérieurs, annexes des équipements sportifs constituant le patrimoine immobilier de la Ville de Marseille  – 5 LOTS  - Travaux terrains de sport et des espaces extér",
+      "montant": 1623784.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-01-03",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture, gestion et livraison de chèques cadeaux, de chèques culture et de chèques d’accompagnement personnalisé, sur supports matériels et/ou dématérialisés pour les bénéficiaires du CAS de Marseille - Emission, gestion, fourniture et livraison de chèques cadeaux ",
+      "montant": 1500000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-11-26",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de réparation, d’entretien, de rénovation et de petites créations dans les bâtiments et ouvrages divers constituant le Patrimoine Immobilier de la Ville de Marseille pour l’ensemble des Services Municipaux dans le corps d’état : Fourniture, Mise en Place et Travaux de réparation de bâtiments préfabriqués ou modules préfabriqués – 3 Lots. - Fourniture et mise en place et travaux de réparation de bâtiments préfabriqués ou modules préfabriqués  - Lot 1 : Ecoles et crèches -  Accord-cadre mono attributaire à bons de commande. ",
+      "montant": 1500000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-05-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de réparation, d’entretien, de rénovation et de petites créations dans les bâtiments et ouvrages divers constituant le Patrimoine Immobilier de la Ville de Marseille pour l’ensemble des Services Municipaux dans le corps d’état : Fourniture, Mise en Place et Travaux de réparation de bâtiments préfabriqués ou modules préfabriqués – 3 Lots. - Fourniture et mise en place et travaux de réparation de bâtiments préfabriqués ou modules préfabriqués  - Lot 2 : Bâtiments autres qu’écoles et crèches -  Accord-cadre mono attributaire à bons de commande.",
+      "montant": 1500000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-05-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de réparation, d’entretien, de rénovation et de petites créations dans les bâtiments et ouvrages divers constituant le Patrimoine Immobilier de la Ville de Marseille pour l’ensemble des Services Municipaux dans le corps d’état : Fourniture, Mise en Place et Travaux de réparation de bâtiments préfabriqués ou modules préfabriqués – 3 Lots. - Fourniture et mise en place et travaux de réparation de bâtiments préfabriqués ou modules préfabriqués  - Lot 3 : Ecoles, crèches et autres bâtiments - Accord-cadre multi-attributaires à marchés subséquents",
+      "montant": 1500000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-05-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux d’entretien, de rénovation ou d’aménagement des terrains de sport et des espaces extérieurs, annexes des équipements sportifs constituant le patrimoine immobilier de la Ville de Marseille  – 5 LOTS  - Travaux terrains de sport et des espaces extér",
+      "montant": 1440320.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-01-03",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux d’entretien, de rénovation ou d’aménagement des terrains de sport et des espaces extérieurs, annexes des équipements sportifs constituant le patrimoine immobilier de la Ville de Marseille  – 5 LOTS  - Travaux terrains de sport et des espaces extér",
+      "montant": 1321262.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-01-03",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux d’entretien, de rénovation ou d’aménagement des terrains de sport et des espaces extérieurs, annexes des équipements sportifs constituant le patrimoine immobilier de la Ville de Marseille  – 5 LOTS  - Travaux terrains de sport et des espaces extér",
+      "montant": 1321262.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-01-03",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Le projet consiste à l’installation de bâtiments modulaires qui accueillera un centre de soins pluridisciplinaires située boulevard Alphonse Allais 13014 Marseille",
+      "montant": 1178856.5,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-08-26",
+      "procedure": "Appel d'offres restreint"
+    },
+    {
+      "objet": "Le présent marché a pour objet la fourniture et la livraison de couches jetables destinés aux 58 établissements  d’accueil du jeune enfant (crèches municipales) et une halte-garderie de la Ville de Marseille.\n\nLa fourniture et la livraison des couches pédiatriques doivent permettre aux structures de la petite enfance de la Ville de Marseille de répondre :\n\n à un besoin en matière d’hygiène et de confort des enfants\n\n aux contraintes logistiques inhérentes à chaque structure (locaux de rangement et de stockage)\n - Fourniture et livraison de changes aux EAJE du secteur Sud (1er,6ème,7ème,8ème,9ème,10ème,11ème et 12ème arrondissements de Marseille) - LOT N° 2",
+      "montant": 960000.0,
+      "categorie": "Santé & Social",
+      "titulaire": "",
+      "date": "2024-08-29",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Le présent marché couvre la maintenance, le suivi et les prestations associées pour la solution AZUR, hors la maintenance Editeur. Cette solution AZUR est le nom donné à l’ensemble des composantes du SIRH de la Ville de Marseille, bâti sur le progiciel PL",
+      "montant": 945430.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-02-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de modernisation du terrain sportif du stade Aygalades Oasis - \nTraverse de l’Oasis 13015 Marseille\n- Marché subséquent relatif à l’accord-cadre n° 23/12005 - lot n°5. ",
+      "montant": 889588.6,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-08-21",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Le présent marché a pour objet la fourniture et la livraison de couches jetables destinés aux 58 établissements  d’accueil du jeune enfant (crèches municipales) et une halte-garderie de la Ville de Marseille.\n\nLa fourniture et la livraison des couches pédiatriques doivent permettre aux structures de la petite enfance de la Ville de Marseille de répondre :\n\n à un besoin en matière d’hygiène et de confort des enfants\n\n aux contraintes logistiques inhérentes à chaque structure (locaux de rangement et de stockage)\n - Fourniture et livraison de changes aux EAJE du secteur Nord (2ème,3ème,4ème,5ème,13ème,14ème,15ème et 16ème arrondissements de Marseille) - LOT N° 1",
+      "montant": 800000.0,
+      "categorie": "Santé & Social",
+      "titulaire": "",
+      "date": "2024-08-29",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Diffusion d’informations de la Ville de Marseille par SMS ou dans les boîtes aux lettres non adressées - Envoi de SMS en masse avec location de base de données",
+      "montant": 800000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-06-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Analyses et Prélèvements d’eau - commune de Marseille -  2 lots - Contrôle rapide de la qualité bactériologique des eaux de baignade en mer",
+      "montant": 800000.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2024-05-29",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations de pose, de dépose et de maintenance du balisage et amarrage maritime (ancrages écologiques) de la Ville de Marseille - Prestations de pose, de dépose et de maintenance du balisage maritime de la Ville de Marseille - lot 1",
+      "montant": 800000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-03-21",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations de pose, de dépose et de maintenance du balisage et amarrage maritime (ancrages écologiques) de la Ville de Marseille - Prestations de maintenance et de pose d’amarrage  maritime sur ancrages écologiques - lot n° 2",
+      "montant": 800000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-03-21",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture, gestion et livraison de chèques cadeaux, de chèques culture et de chèques d’accompagnement personnalisé, sur supports matériels et/ou dématérialisés pour les bénéficiaires du CAS de Marseille - Emission, gestion, fourniture et livraison de chèques culture ",
+      "montant": 700000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-11-26",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux d’aménagement de la Plaine des loisirs & des sports - rue de la Busserine 13014 Marseille -  Jeux et agrès- relance du lot n° 4",
+      "montant": 662138.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-01-22",
+      "procedure": "Pas de groupement"
+    },
+    {
+      "objet": "Fourniture de matériels actifs de réseaux et sécurité informatiques et prestations associées ainsi que des prestations d’audit, d’assistance et de maintenance réseau et sécurité",
+      "montant": 622842.49,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2024-05-21",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Impression, façonnage et conditionnement et livraison du magazine municipal de Marseille.",
+      "montant": 609989.9,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-03-29",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de création et de grosses réparations des espaces verts dans les 4e 5e 11e 12e et 13e 14e 15e 16e arrondissements de Marseille -2 lots - EVT 13/14/15/16",
+      "montant": 602884.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-01-31",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Soins de conservation et toilettes mortuaires pour la Régie Municipale des Pompes Funèbres de Marseille\nLa description précise du besoin figure au CCTP.",
+      "montant": 600000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-11-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Réalisation de visites, diagnostics techniques et constats post-travaux de logements potentiellement non décents et/ou en infraction aux règles sanitaires d’hygiène sur le territoire de la Ville de Marseille",
+      "montant": 600000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-05-30",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Transport en autocars des enfants et jeunes de Marseille vers les équipements sportifs, parcs et espaces naturels marseillais - 4 Lots - Transport en autocars des enfants scolarisés dans les écoles de Marseille vers les piscines Pont de Vivaux, la Granièr",
+      "montant": 600000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-01-12",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Conception, réalisation et exploitation d’un Club 2024 à Marseille , site de célébration des Jeux Olympiques et Paralympiques de Paris 2024 - 2 LOTS - Conception, réalisation et exploitation d’un Club 2024 ",
+      "montant": 586350.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-05-30",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de réfection des toitures des écuries du centre équestre Pastré et aménagement d’une salle polyvalente - Couverture - Maçonnerie - Doublages - Faux plafonds - Menuiseries extérieures - Revêtements de sols - Peintures - Mobilier",
+      "montant": 529228.17,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-07-10",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Production de contenus audiovisuels - Vidéothèque",
+      "montant": 500000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-10-10",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Restauration du Grand-Orgue Mutin-Cavaillé-Coll de l’Eglise des Chartreux - 13004 Marseille",
+      "montant": 483915.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-08-27",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Création modulaire de l’école Maternelle Saint Gabriel la Marine, 101 Chemin de Sainte-Marthe, 13014 Marseille",
+      "montant": 467509.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-05-13",
+      "procedure": "Appel d'offres restreint"
+    },
+    {
+      "objet": "Travaux de création et de grosses réparations des espaces verts dans les 4e 5e 11e 12e et 13e 14e 15e 16e arrondissements de Marseille -2 lots - EVT 4/5/11/12",
+      "montant": 464043.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-01-31",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Gestion de la population aviaire sur le territoire de la ville de Marseille (3 lots).  - Gestion des nuisances causés par les pigeons",
+      "montant": 454028.0,
+      "categorie": "Santé & Social",
+      "titulaire": "",
+      "date": "2024-07-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "La consultation a pour objet:\npour les lots 1 et 2, des prestations d’entretien horticole, de propreté et de petites réparations dans les espaces verts, parcs, jardins, squares publics, établissements scolaires et autres propriétés municipales ainsi que sur la voirie dans les 13è, 14è, 15è et 16è arrondissements de la Ville de Marseille , \npour le lot 3 des prestations de propreté, d’enlèvement d’encombrants, de taille d’entretien, de débroussaillage, de désherbage, de coupe de gaulis et de tonte dans les espaces verts suivants :\nParc Séon, Accompagnements autour de la cité de la Bricarde, Jardin Barnier-Mollard, Parc de la Jougarelle, Jardin du Centre Social Consolat Mirabeau. \nToutefois, le titulaire du lot 2 peut également intervenir dans les sites entretenus par le titulaire du lot 3 pour des petites réparations ou des prestations ponctuelles non prévues au BPU du lot 3, à l’exception des prestations à la charge exclusive du titulaire du lot 3.\n\n - Entretien des espaces verts et...",
+      "montant": 445307.57,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2024-04-12",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "La consultation a pour objet:\npour les lots 1 et 2, des prestations d’entretien horticole, de propreté et de petites réparations dans les espaces verts, parcs, jardins, squares publics, établissements scolaires et autres propriétés municipales ainsi que sur la voirie dans les 13è, 14è, 15è et 16è arrondissements de la Ville de Marseille , \npour le lot 3 des prestations de propreté, d’enlèvement d’encombrants, de taille d’entretien, de débroussaillage, de désherbage, de coupe de gaulis et de tonte dans les espaces verts suivants :\nParc Séon, Accompagnements autour de la cité de la Bricarde, Jardin Barnier-Mollard, Parc de la Jougarelle, Jardin du Centre Social Consolat Mirabeau. \nToutefois, le titulaire du lot 2 peut également intervenir dans les sites entretenus par le titulaire du lot 3 pour des petites réparations ou des prestations ponctuelles non prévues au BPU du lot 3, à l’exception des prestations à la charge exclusive du titulaire du lot 3.\n\n - Entretien des espaces verts et...",
+      "montant": 406128.48,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2024-04-12",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Transport en autocars des enfants et jeunes de Marseille vers les équipements sportifs, parcs et espaces naturels marseillais - 4 Lots - Transport en autocars des enfants scolarisés dans les écoles de Marseille vers les piscines Busserine et Saint Joseph",
+      "montant": 400000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-01-12",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Gestion de la population aviaire sur le territoire de la ville de Marseille (3 lots).  - Gestion des nuisances causées par les goélands",
+      "montant": 377730.0,
+      "categorie": "Santé & Social",
+      "titulaire": "",
+      "date": "2024-07-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Marché pour diverses prestations la voie est libre  - Animations culturelles et artistiques - lot n° 1",
+      "montant": 371000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-06-21",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Marché subséquent pour la mission de modernisation du terrain de football en synthétique à la Solidarité,  voie Elie KAKOU 13015 Marseille",
+      "montant": 355073.01,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-05-30",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Rénovation des installations hydrauliques, de l’étanchéité,et de l’éclairage de la fontaine Cantini\nLot 1 - Hydraulique, équipements et réseaux divers\n Lot 2 - Etanchéité\n Lot 3 - Eclairage et mise en lumière - Hydraulique, équipements et réseaux divers",
+      "montant": 333505.35,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-04-02",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Marché subséquent relatif aux travaux de cuvelage du bassin de rétention, de réalisation d’enduit sur préau, de réfection des façades du bâtiment existant et de reprise des façades du bâtiment neuf - École élémentaire rue des Abeilles - 13001 Marseille",
+      "montant": 325993.2,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-01-08",
+      "procedure": "Pas de groupement"
+    },
+    {
+      "objet": "Restauration de documents écrits et graphiques pour les services de la Ville de Marseille. - Registres et documents reliés",
+      "montant": 324000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-02-12",
+      "procedure": "Pas de groupement"
+    },
+    {
+      "objet": "Marché pour diverses prestations la voie est libre  - Animations sportives - lot n° 3",
+      "montant": 320000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-06-21",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Production de contenus audiovisuels - Production de vidéos thématiques",
+      "montant": 300000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-10-03",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Production de contenus audiovisuels - Captations vidéo de discours ou d’évènements pour diffusion en direct ou différé avec réalisation",
+      "montant": 300000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-10-03",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "La mise en place d’un dispositif de formation à l’attention des agents devenus inaptes à leur emploi statutaire et dont il faut favoriser le repositionnement professionnel en interne au sein de la collectivité. - Formation sur les fondamentaux",
+      "montant": 300000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-10-01",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "La mise en place d’un dispositif de formation à l’attention des agents devenus inaptes à leur emploi statutaire et dont il faut favoriser le repositionnement professionnel en interne au sein de la collectivité. - Formations sur les métiers",
+      "montant": 300000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-10-01",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "ACCOMPAGNEMENT A LA RÉALISATION DE PROCEDURE ACHATS-MARCHES DE LA VILLE DE MARSEILLE",
+      "montant": 299650.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-03-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de modernisation de l’éclairage du terrain du stade Aygalades Oasis - 15 Traverse de l’Oasis 13015 Marseille",
+      "montant": 295646.45,
+      "categorie": "Énergie",
+      "titulaire": "",
+      "date": "2024-08-21",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Prestations récurrentes et ponctuelles de Sécurité Incendie et de Sûreté pour le Palais du Pharo et ses annexes",
+      "montant": 275017.39,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-03-29",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "TRAVAUX DE REPRISE STRUCTURELLE MUR DE SOUTENEMENT 2/4 IMPASSE MONTCAULT13013",
+      "montant": 270869.24,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-04-22",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Fourniture, gestion et livraison de chèques cadeaux, de chèques culture et de chèques d’accompagnement personnalisé, sur supports matériels et/ou dématérialisés pour les bénéficiaires du CAS de Marseille - Emission, gestion, fourniture et livraison de chèques d’accompagnement personnalisé multi-enseignes ",
+      "montant": 250000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-11-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Missions de diagnostic et d’expertise des pathologies du bois dues aux organismes nuisibles xylophages des bâtiments et ouvrages divers du patrimoine immobilier de la Ville de Marseille pour l’ensemble des services municipaux - Ecoles et crèches",
+      "montant": 240000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-03-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Missions de diagnostic et d’expertise des pathologies du bois dues aux organismes nuisibles xylophages des bâtiments et ouvrages divers du patrimoine immobilier de la Ville de Marseille pour l’ensemble des services municipaux - autres bâtiments",
+      "montant": 240000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-03-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Transport en autocars des enfants et jeunes de Marseille vers les équipements sportifs, parcs et espaces naturels marseillais - 4 Lots - Transport en autocars des enfants scolarisés dans les écoles de Marseille vers les piscines Saint Charles et Cercle de",
+      "montant": 240000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-01-12",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Création d’un réseau de visibilité dans les sites municipaux",
+      "montant": 220000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2024-11-25",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Prestation d’impression d’affiches de différents formats pour la communication de la Ville de Marseille.",
+      "montant": 220000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-10-16",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Prestations d’animation pour les événements de la Ville de Marseille - Accord-cadre pour des prestations d’animation pour la Ville de  Marseille",
+      "montant": 220000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-10-14",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Travaux de réfection des toitures des écuries du centre équestre Pastré et aménagement d’une salle polyvalente - Démolitions Dépollution",
+      "montant": 217313.6,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2024-07-10",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "ACCOMPAGNEMENT A LA RÉALISATION DE PROCEDURE ACHATS-MARCHES DE LA VILLE DE MARSEILLE",
+      "montant": 216600.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-03-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations traiteur pour la Mairie des 6ème et 8ème arrondissements Marseille",
+      "montant": 212000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2024-01-22",
+      "procedure": "Pas de groupement"
+    },
+    {
+      "objet": "Assistance à la coordination technique d’organisation d’événements",
+      "montant": 210000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-07-12",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "PRESTATIONS DE SÉCURITÉ HUMAINE POUR LA MAIRIE DES 1er et 7e ARRONDISSEMENTS\n\n",
+      "montant": 210000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-06-19",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "La présente consultation a pour objet la maintenance des jardins de la mairie des2° et 3° arrondissements",
+      "montant": 210000.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2024-05-07",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Numérisation de documents patrimoniaux pour les services de la Ville de Marseille - Numérisation de documents manuscrits et imprimés, reliés et non reliés.",
+      "montant": 205000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-11-21",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "La Ville de Marseille organise toute au long de l’année un certain nombre de manifestations récurrentes telles que la Voie est libre, l’Eté Marseillais, les fêtes de fin d’année et notamment, évènement majeur pour 2024, les épreuves nautiques des Jeux Olympiques.\nElle sera ainsi amenée au cours des 12 prochains mois à organiser un certain nombre de manifestations de grande ampleur.\nAfin de mener à bien ces missions, la Ville souhaite pouvoir disposer d’une assistance en matière de conception et d’organisation de ces manifestations et souhaite recourir à des prestations d’agencements et de décoration lors d’évènements qu’elle organise. Ces évènements peuvent avoir lieu en extérieur sur la voie publique, dans des parcs, mais aussi en intérieur ou dans une enceinte classée E.R.P.\nUne consultation est donc organisée afin de trouver un prestataire pouvant fournir des prestations à bons de commande pour du conseil ou les location, livraison, installation, mise en œuvre et reprise de mobil...",
+      "montant": 205000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-07-15",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Conseil et accompagnement juridique de la Ville de Marseille dans le cadre de l’exercice de sa politique de \"préemption commerciale\" et gestion des contentieux juridictionnels et non juridictionnels y afférents ainsi que conseil juridique général pour son Service Commerce et Artisanat - 2 lots - Conseil et accompagnement juridique dans le cadre du droit de préemption prévu au titre de l’article L.214-1 et suivants du code de l’Urbanisme et gestion des contentieux juridictionnels et non juridictionnels y afférents, pour le Service Commerce et Artisanat de la Ville de Marseille",
+      "montant": 200000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-12-09",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "GOUTERS DE NOEL 2024",
+      "montant": 200000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-11-19",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "BALLOTINS DE NOEL 2024 POUR LA MAIRIE DES 13ème et 14ème ARRONDISSEMENTS",
+      "montant": 200000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2024-11-08",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Analyses microbiologiques de produits finis, d’eau et de tests de surface, ainsi que prestations associées au profit du Bataillon de Marins-Pompiers de Marseille.",
+      "montant": 200000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-09-16",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Fourniture et livraison de barrières pivotantes manuelles pour la création d’aires piétonnes",
+      "montant": 200000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-08-26",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Diffusion d’informations de la Ville de Marseille par SMS ou dans les boîtes aux lettres non adressées - Envoi de SMS en masse sans location de base de données",
+      "montant": 200000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-06-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Maintenance portes et portails automatiques des bâtiments et ouvrages divers du patrimoine immobilier de la Ville de Marseille pour l’ensemble des services municipaux (2 lots) - Maintenance portes et portails automatiques des bâtiments et ouvrages divers du patrimoine immobilier de la Ville de Marseille : 1er , 6ème, 7ème, 8ème, 9ème, 10ème, 11ème,12ème arrondissements, et équipements rattachés. ",
+      "montant": 200000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-05-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Maintenance portes et portails automatiques des bâtiments et ouvrages divers du patrimoine immobilier de la Ville de Marseille pour l’ensemble des services municipaux (2 lots) - Maintenance portes et portails automatiques des bâtiments et ouvrages divers du patrimoine immobilier de la Ville de Marseille pour l’ensemble des services municipaux  : 2ème, 3ème, 4ème, 5ème, 13ème, 14ème, 15ème, 16ème arrondissements et équipements rattachés.",
+      "montant": 200000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2024-05-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture et livraison de repas en liaison froide pour accueil collectif des enfants de la Mairie des 13ème et 14ème arrondissements",
+      "montant": 200000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2024-02-01",
+      "procedure": "Pas de groupement"
+    },
+    {
+      "objet": "Fourniture et livraison de denrées alimentaires en gestion d’approvisionnement Maire des 13ème et 14ème arrondissements",
+      "montant": 200000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2024-02-01",
+      "procedure": "Pas de groupement"
+    },
+    {
+      "objet": "NEGOCIATION 23_3222 | FOURNITURE D’ÉQUIPEMENTS D’EXTENSIONS ET MAINTENANCE DE L’INFRASTRUCTURE DU RÉSEAU RADIO TETRA DE LA VILLE DE MARSEILLE ",
+      "montant": 199786.6,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2024-12-02",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "ACCOMPAGNEMENT A LA RÉALISATION DE PROCEDURE ACHATS-MARCHES DE LA VILLE DE MARSEILLE",
+      "montant": 199500.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2024-03-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "La Ville de Marseille souhaite louer une barge flottante avec des prestations d’installation et de démontage dans le cadre du lancement des festivités de « l’été marseillais 2024 \n - Location, installation, veille technique et démontage d’une batte flottante ",
+      "montant": 195000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2024-05-06",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Enlèvement de l’affichage non autorisé, et le nettoyage des emplacements municipaux réservés à l’affichage",
+      "montant": 188760.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2024-04-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Marché pour diverses prestations la voie est libre  - Fourniture de vélos multiplaces - lot n° 4",
+      "montant": 180000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2024-06-21",
+      "procedure": "Appel d'offres ouvert"
+    }
+  ]
+}

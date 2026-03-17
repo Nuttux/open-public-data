@@ -1,0 +1,17 @@
+{
+  "year": 2022,
+  "city_slug": "toulon",
+  "totals": {
+    "actif_total": 1670919935.87,
+    "passif_total": 1361034618.75,
+    "dette_financiere": 62855326.69,
+    "fonds_propres": 1298179292.06,
+    "tresorerie": 30237181.92,
+    "immobilisations": 1640682753.95
+  },
+  "kpis": {
+    "ratio_endettement": 4.62,
+    "pct_fonds_propres": 95.38,
+    "dette_par_hab": 365.54
+  }
+}

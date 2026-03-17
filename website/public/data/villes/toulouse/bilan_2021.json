@@ -1,0 +1,17 @@
+{
+  "year": 2021,
+  "city_slug": "toulouse",
+  "totals": {
+    "actif_total": 5314521626.66,
+    "passif_total": 4401331149.96,
+    "dette_financiere": 221096219.57,
+    "fonds_propres": 4180234930.39,
+    "tresorerie": 133073397.29,
+    "immobilisations": 5181448229.37
+  },
+  "kpis": {
+    "ratio_endettement": 5.02,
+    "pct_fonds_propres": 94.98,
+    "dette_par_hab": 438.62
+  }
+}

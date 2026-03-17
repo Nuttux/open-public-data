@@ -1,0 +1,864 @@
+{
+  "annee": 2019,
+  "city_slug": "toulouse",
+  "total_montant": 270016754.28999996,
+  "total_marches": 457,
+  "categories": [
+    {
+      "categorie": "Construction & Bâtiment",
+      "nb_marches": 177,
+      "montant_total": 110345976.57,
+      "montant_moyen": 623423.6
+    },
+    {
+      "categorie": "Informatique & Télécom",
+      "nb_marches": 22,
+      "montant_total": 59984478.08,
+      "montant_moyen": 2726567.19
+    },
+    {
+      "categorie": "Services professionnels",
+      "nb_marches": 70,
+      "montant_total": 35646768.48,
+      "montant_moyen": 509239.55
+    },
+    {
+      "categorie": "Autres",
+      "nb_marches": 94,
+      "montant_total": 30830040.75,
+      "montant_moyen": 327979.16
+    },
+    {
+      "categorie": "Énergie",
+      "nb_marches": 3,
+      "montant_total": 15692692.0,
+      "montant_moyen": 5230897.33
+    },
+    {
+      "categorie": "Alimentation & Restauration",
+      "nb_marches": 25,
+      "montant_total": 7289640.0,
+      "montant_moyen": 291585.6
+    },
+    {
+      "categorie": "Transport & Véhicules",
+      "nb_marches": 47,
+      "montant_total": 5566015.61,
+      "montant_moyen": 118425.86
+    },
+    {
+      "categorie": "Environnement & Propreté",
+      "nb_marches": 10,
+      "montant_total": 3655408.94,
+      "montant_moyen": 365540.89
+    },
+    {
+      "categorie": "Santé & Social",
+      "nb_marches": 9,
+      "montant_total": 1005733.86,
+      "montant_moyen": 111748.21
+    }
+  ],
+  "top_marches": [
+    {
+      "objet": "Marché subséquent relatif à l’accord cadre pour la fourniture d’électricité- 2020 à 2021- 3 lots",
+      "montant": 11869995.0,
+      "categorie": "Énergie",
+      "titulaire": "",
+      "date": "2019-07-01",
+      "procedure": "Marché négocié sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "Lot 7: Travaux de r�paration, amenagement et construction de voiries pour les operations inferieures ou egales � 50 K sur la zone Est de la M�tropole",
+      "montant": 8500000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-04-12",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18C119AO - BR/NF--LOT 1:Travaux de r�paration, am�nagement et construction de voiries pour les op�rations sup�rieures � 50 K sur les zones Sud et Ouest de la M�tropole",
+      "montant": 8500000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-04-12",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "ASSISTANCE A MAITRISE D’OUVRAGE POUR LA MISE EN OEUVRE DU PLAN INITIATIVE COPROPRIETES SUR LE TERRITOIRE DE TOULOUSE METROPOLE",
+      "montant": 8265808.96,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-11-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "ASSISTANCE A MAITRISE D’OUVRAGE POUR LA MISE EN OEUVRE DU PLAN INITIATIVE COPROPRIETES SUR LE TERRITOIRE DE TOULOUSE METROPOLE",
+      "montant": 8265808.96,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-11-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18C119AO - BR/NF--LOT 2:Travaux de r�paration, am�nagement et construction de voiries pour les op�rations sup�rieures � 50 K sur la zone Nord de la M�tropole",
+      "montant": 7200000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-04-12",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "TRAVAUX DE CRÉATION ET D’EXTENSION ENFOUISSEMENT CONJOINTS RÉSEAUX NUMÉRIQUES DE TÉLÉCOMMUNICATIONS DE TOULOUSE MÉTROPOLE - ANNÉES 2019 A 2023",
+      "montant": 6400000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2019-07-05",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "TRAVAUX DE CRÉATION ET D’EXTENSION ENFOUISSEMENT CONJOINTS RÉSEAUX NUMÉRIQUES DE TÉLÉCOMMUNICATIONS DE TOULOUSE MÉTROPOLE - ANNÉES 2019 A 2023",
+      "montant": 6400000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2019-07-05",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "TRAVAUX DE CRÉATION ET D’EXTENSION ENFOUISSEMENT CONJOINTS RÉSEAUX NUMÉRIQUES DE TÉLÉCOMMUNICATIONS DE TOULOUSE MÉTROPOLE - ANNÉES 2019 A 2023",
+      "montant": 6400000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2019-07-05",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "TRAVAUX DE CRÉATION ET D’EXTENSION ENFOUISSEMENT CONJOINTS RÉSEAUX NUMÉRIQUES DE TÉLÉCOMMUNICATIONS DE TOULOUSE MÉTROPOLE - ANNÉES 2019 A 2023",
+      "montant": 6400000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2019-07-05",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "TRAVAUX DE CRÉATION ET D’EXTENSION ENFOUISSEMENT CONJOINTS RÉSEAUX NUMÉRIQUES DE TÉLÉCOMMUNICATIONS DE TOULOUSE MÉTROPOLE - ANNÉES 2019 A 2023",
+      "montant": 6400000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2019-07-05",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "TRAVAUX DE CRÉATION ET D’EXTENSION ENFOUISSEMENT CONJOINTS RÉSEAUX NUMÉRIQUES DE TÉLÉCOMMUNICATIONS DE TOULOUSE MÉTROPOLE - ANNÉES 2019 A 2023",
+      "montant": 6400000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2019-07-05",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "TRAVAUX DE CRÉATION ET D’EXTENSION ENFOUISSEMENT CONJOINTS RÉSEAUX NUMÉRIQUES DE TÉLÉCOMMUNICATIONS DE TOULOUSE MÉTROPOLE - ANNÉES 2019 A 2023",
+      "montant": 6400000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2019-07-05",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "TRAVAUX DE CRÉATION ET D’EXTENSION ENFOUISSEMENT CONJOINTS RÉSEAUX NUMÉRIQUES DE TÉLÉCOMMUNICATIONS DE TOULOUSE MÉTROPOLE - ANNÉES 2019 A 2023",
+      "montant": 6400000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2019-07-05",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "TRAVAUX DE CRÉATION ET D’EXTENSION ENFOUISSEMENT CONJOINTS RÉSEAUX NUMÉRIQUES DE TÉLÉCOMMUNICATIONS DE TOULOUSE MÉTROPOLE - ANNÉES 2019 A 2023",
+      "montant": 6400000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2019-07-05",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "TX REALISATIONS TERRAINS DE SPORTS SYNTHETIQUES ANNEES 2018 A2021-18V001AC-DT/NF-.",
+      "montant": 5200000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-07-25",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TX REALISATIONS TERRAINS DE SPORTS SYNTHETIQUES ANNEES 2018 A2021-18V001AC-DT/NF-.",
+      "montant": 5200000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-07-25",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TX REALISATIONS TERRAINS DE SPORTS SYNTHETIQUES ANNEES 2018 A2021-18V001AC-DT/NF-.",
+      "montant": 5200000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-07-25",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "18C119AO - BR/NF--LOT 3: Travaux de r�paration, am�nagement et construction de voiries pour les op�rations sup�rieures � 50 K sur la zone Est de la M�tropole",
+      "montant": 5000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-04-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18C119AO - BR/NF--Lot 4:Travaux de r�paration, am�nagement et construction de voiries pour les op�rations sup�rieures � 50 K sur la zone Centre de la M�tropole",
+      "montant": 5000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-04-12",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18M327PA-18M327PA- TRAVAUX D’EXTENSION ET D’ENTRETIEN DES R�SEAUX DE TRANSMISSION DU PC CAPITOUL ANN�ES 2019 � 2020 - DT/LM",
+      "montant": 3000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-05-15",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "18M327PA-18M327PA- TRAVAUX D’EXTENSION ET D’ENTRETIEN DES R�SEAUX DE TRANSMISSION DU PC CAPITOUL ANN�ES 2019 � 2020 - DT/LM",
+      "montant": 3000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-05-15",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TRAVAUX DE CREATION ET D ENTRETIEN DE RESEAUX SECS ANNEES 2019 - 2023-18C105AO",
+      "montant": 3000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-03-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "TRAVAUX DE CREATION ET D ENTRETIEN DE RESEAUX SECS ANNEES 2019 - 2023-18C105AO",
+      "montant": 3000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-03-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Marché subséquent relatif à l’accord cadre pour la fourniture d’électricité- 2020 à 2021- 3 lots",
+      "montant": 2805293.0,
+      "categorie": "Énergie",
+      "titulaire": "",
+      "date": "2019-07-01",
+      "procedure": "Marché négocié sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "18M331AO-N�18M331AO - AC-HZ - Collecte des conteneurs enterr�s sur la Ville de Toulouse - Ann�es 2019 � 2025",
+      "montant": 2440000.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2019-07-10",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "TRAVAUX D’INSTALLATIONS DE MOTIFS LUMINEUX POUR LES FETES DE FIN D’ANNEES - 2019/2023 - 19V029PA",
+      "montant": 2400000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-07-24",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "18C119AO - BR/NF--Lot 6: Travaux de r�paration, am�nagement et construction de voiries pour les op�rations inf�rieures ou �gales � 50 K sur la zone Nord de la M�tropole",
+      "montant": 2300000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-06-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18M307MN-ACCORD-CADRE A BONS DE COMMANDE POUR LA MAITRISE D’OEUVRE DE TRAVAUX D ASSAINISSEMENT, D EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2019 A 2022",
+      "montant": 1900000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-04-04",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "18M307MN-ACCORD-CADRE A BONS DE COMMANDE POUR LA MAITRISE D’OEUVRE DE TRAVAUX D ASSAINISSEMENT, D EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2019 A 2022",
+      "montant": 1900000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-04-04",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "18M307MN-ACCORD-CADRE A BONS DE COMMANDE POUR LA MAITRISE D’OEUVRE DE TRAVAUX D ASSAINISSEMENT, D EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2019 A 2022",
+      "montant": 1900000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-04-04",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "18M307MN-ACCORD-CADRE A BONS DE COMMANDE POUR LA MAITRISE D’OEUVRE DE TRAVAUX D ASSAINISSEMENT, D EAU POTABLE ET D’INCENDIE DE TOULOUSE METROPOLE - ANNEES 2019 A 2022",
+      "montant": 1900000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-04-04",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "18C119AO - BR/NF--Lot 8:Travaux de r�paration, am�nagement et construction de voiries pour les op�rations inf�rieures ou �gales � 50 K sur la zone Centre de la M�tropole",
+      "montant": 1800000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-04-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18C119AO - BR/NF--Lot 5: Travaux de r�paration, am�nagement et construction de voiries pour les op�rations inf�rieures ou �gales � 50 K sur la zone Sud de la M�tropole",
+      "montant": 1800000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-04-15",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18C119AO - BR/NF--Lot 9:Travaux de r�paration, am�nagement et construction de voiries pour les op�rations inf�rieures ou �gales � 50 K sur la zone Ouest de la M�tropole",
+      "montant": 1600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-04-24",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "19V034AO - DT/SG-19V034AO - INSTALLATION ET LOCATION DE BATIMENTS MODULAIRES  POUR LA CREATION DU GROUPE SCOLAIRE PROVISOIRE DORTIS - ANNEES 2019 A 2021 RENOUVELABLE EN 2022 ET 2023",
+      "montant": 1589655.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-05-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "N�18M238PA - JE-HZ - Action d’insertion ayant pour support d’activit� le ramassage des cartons dans le centre ville de Toulouse Ann�es 2019 � 2023",
+      "montant": 1400000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-03-06",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "18M269PA - SA/SG-LOT 1 VOIRIE TERRASSEMENT",
+      "montant": 1353416.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-05-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "18M269PA - SA/SG-LOT 1 VOIRIE TERRASSEMENT",
+      "montant": 1353416.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-05-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE/SM-19C016AO-SERVICES DE TELECOMMUNICATIONS<br />",
+      "montant": 1347600.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-10-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "JE/SM-19C016AO-SERVICES DE TELECOMMUNICATIONS<br />",
+      "montant": 1303200.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-10-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18V168PA-AUBRAC - CURIE PIERRE ET MARIE - FERRY JULES - MUSSET (DE) ALFRED - NOUGARO",
+      "montant": 1263361.18,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-10",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "18V168PA-BERT PAUL - DOTTIN PAUL - GUILHERMY - TIBAOUS",
+      "montant": 1247277.56,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-09",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "18V168PA-JULIEN JULES - RANGUEIL - SAUZELONG - VERNANT JEAN PIERRE - MONTAUDRAN",
+      "montant": 1227256.63,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-09",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "18V168PA-CHATEAU DE L’HERS - JOLIMONT - JUNCASSE (LA) - BONNEFOY - SOUPETARD",
+      "montant": 1226354.33,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-10",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "18V168PA-ALPHAND - BORDEROUGE - DE GOUGES OLYMPE - NIBOUL - ZAY JEAN",
+      "montant": 1206192.25,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-10",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "18V168PA-BOURLIAGUET LEONCE - DAURAT DIDIER - FAUCHER DANIEL & HERITIER FRANCOISE - SIMONE VEIL - TRIOLET ELSA - VERGERS (LES)",
+      "montant": 1196309.39,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-09",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "18C140AO",
+      "montant": 1177403.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-08-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18M343AO -Des balayeuses aspiratrices compactes de 4 � 5 m3",
+      "montant": 1129708.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-30",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "19M129PA-AV-NF-TRAVAUX D’AMENAGEMENT DES BERGES DU NONCESSE A BALMA",
+      "montant": 1115301.63,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-10-02",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "19M135PA-MS-NF-Travaux de requalification des rues Franklin,Lemercier et Brouardel à Toulouse.<br />",
+      "montant": 1084301.4,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-09-18",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "19M135PA-MS-NF-Travaux de requalification des rues Franklin,Lemercier et Brouardel à Toulouse.<br />",
+      "montant": 1084301.4,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-09-18",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "19M135PA-MS-NF-Travaux de requalification des rues Franklin,Lemercier et Brouardel à Toulouse.<br />",
+      "montant": 1084301.4,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-09-18",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "18V168PA-DAURIAC SYLVAIN - HYON GEORGES - JACQUIER MAURICE - PAPUS - RONSARD",
+      "montant": 1025568.11,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-10",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "AC/SM-19C072MS/3- MARCHÉ SUBSÉQUENT N°3 POUR LA FOURNITURE D’ÉLECTRICITÉ-RELANCE DU LOT 3 : ÉCLAIRAGE PUBLIC AVEC CONNEXION DE TYPE C2, C3 ET C4(EX TARIF VERT ET TARIF JAUNE).",
+      "montant": 1017404.0,
+      "categorie": "Énergie",
+      "titulaire": "",
+      "date": "2019-11-25",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 10",
+      "montant": 987600.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2019-12-19",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "LOT 14",
+      "montant": 987600.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2019-12-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18V168PA-BAYARD MATABIAU - FOURTANIER ALEXANDRE - LAKANAL - SERMET",
+      "montant": 985186.16,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-10",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE/SM-19C016AO-SERVICES DE TELECOMMUNICATIONS<br />",
+      "montant": 949420.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-10-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18V168PA-CUVIER - LAPUJADE - MAOURINE (LA)",
+      "montant": 939164.32,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-09",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "N�18C092AO - JE-HZ - INSTALLATION ET MODIFICATION DE RESEAUX LOCAUX INFORMATIQUES",
+      "montant": 925000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2019-04-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18V168PA-FONTAINE BAYONNE - GAIS PINSONS (LES) - GODOLIN PEIRE - LESPINASSE - MOLIERE",
+      "montant": 807840.9,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-10",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "18V168PA-BECANNE MAURICE - BENEZET - BILLIERES ETIENNE",
+      "montant": 807840.9,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-09",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TRAVAUX D’INSTALLATIONS DE MOTIFS LUMINEUX POUR LES FETES DE FIN D’ANNEES - 2019/2023 - 19V029PA",
+      "montant": 800000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-07-29",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TRAVAUX D’INSTALLATIONS DE MOTIFS LUMINEUX POUR LES FETES DE FIN D’ANNEES - 2019/2023 - 19V029PA",
+      "montant": 800000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-07-29",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TRAVAUX D’AMENAGEMENT DES ACCES A LA ZAC MONTAUDRAN - 18M365PA - LM/SG",
+      "montant": 799723.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-04-25",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "18V168PA-AMIDONNIERS - FALGUIERE - PONTS JUMEAUX",
+      "montant": 765718.22,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-10",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "18V168PA-CHATEAU D’ANCELY - FLEURANCE - LITTRE",
+      "montant": 753663.11,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-10",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 12",
+      "montant": 752700.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2019-12-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "STADIUM DE TOULOUSE - TRAVAUX DE MISE EN PLACE DE RAMPES DE LUMINOTHERAPIE-19M044PA-DG-NF-",
+      "montant": 743971.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-07-22",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "18V168PA-CALVINHAC - CHAUBET JEAN - MICHELET",
+      "montant": 740817.48,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-10",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "18V168PA-DUPONT PIERRE - JAURES JEAN - RICARDIE 2",
+      "montant": 728987.97,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-09",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TRAVAUX D’AMÉNAGEMENT DES RUES DES SABLES ET RUE FROIDETERRE \"QUARTIER GRAND\" A TOULOUSE - MSA/LA",
+      "montant": 722373.6,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-10-30",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "AC -TX REALISATIONS TERRAINS DE SPORT-MS 4-TERRAIN SYNTHETIQUE VINCENT SERER",
+      "montant": 705045.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-07-19",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "AC -TX REALISATIONS TERRAINS DE SPORT-MS 4-TERRAIN SYNTHETIQUE VINCENT SERER",
+      "montant": 705045.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-07-19",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "18C113AO-N�18C113AO - PT/JM - ACHAT DE LAVE-VAISSELLES PROFESSIONNELS - PIECES DETACHEES ET ACCESSOIRES - ANNEES 2019-2022",
+      "montant": 700000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-06-07",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18V115AO AC/JM - PRESTATIONS D’EXPERTISE, ET DE DESTRUCTION DES V�HICULES ABANDONNES EN FOURRI�RE OU SUR LE DOMAINE PUBLIC",
+      "montant": 675000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-01-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18M343AO -Cinq (5) hydro d�capeuses � eau chaude avec r�cup�ration des eaux usag�es",
+      "montant": 675000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-29",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "19C013AO-VEHICULES DE TOURISME, MINIBUS ET VEHICULES UTILITAIRES",
+      "montant": 667207.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2019-06-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "20890 - Trvx PIN2-Lot 1 : Terrassement/Rev�tement/G�nie civil et mobilier",
+      "montant": 626026.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-06-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "20890 - Tvx Pin2 Lot 2 R�seaux-Travaux d’am�nagement de la piste de l’ancien a�rodrome de Toulouse Montaudran inscrite aux Monuments Historiques - Phase 2 / Lot 2 R�seaux",
+      "montant": 621989.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-06-13",
+      "procedure": "Marché public négocié sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "20890 - Tvx Pin2 Lot 2 R�seaux-Travaux d’am�nagement de la piste de l’ancien a�rodrome de Toulouse Montaudran inscrite aux Monuments Historiques - Phase 2 / Lot 2 R�seaux",
+      "montant": 621989.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-06-13",
+      "procedure": "Marché public négocié sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "20890 - Tvx Pin2 Lot 2 R�seaux-Travaux d’am�nagement de la piste de l’ancien a�rodrome de Toulouse Montaudran inscrite aux Monuments Historiques - Phase 2 / Lot 2 R�seaux",
+      "montant": 621989.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-06-13",
+      "procedure": "Marché public négocié sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "18M343AO -Quatre (4) balayeuses aspiratrices compactes de 4 � 5 m3 avec �quipements compl�mentaires.",
+      "montant": 614220.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2019-07-30",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "20890 - Mobilier b�ton 2-20890 - Accord-cadre � bons de commande - Fourniture, livraison, manutention, d�placement, d�pose et �vacuation de mobilier b�ton sur l’Espace M�moire de Toulouse A�rospace (Toulouse)",
+      "montant": 600000.0,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2019-06-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux d’assainissement eaux us�es Commune de LAUNAGUET - Chemin Cazalbarbier-18M326PA-LM-NF-",
+      "montant": 599476.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-06-27",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 20",
+      "montant": 573000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2019-12-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "LOT19",
+      "montant": 573000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2019-12-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "LOT 2",
+      "montant": 560330.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2019-12-03",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18C185PA--Lot 1:Travaux daires de jeux HPL, contreplaqu�, poly�thyl�ne",
+      "montant": 550000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-07-04",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "18C185PA--Lot 1:Travaux daires de jeux HPL, contreplaqu�, poly�thyl�ne",
+      "montant": 550000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-07-04",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "18C185PA--Lot 1:Travaux daires de jeux HPL, contreplaqu�, poly�thyl�ne",
+      "montant": 550000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-07-04",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "18M201AO-ACCORD CADRE DE MAITRISE D’OEUVRE INFRASTRUCTURES DE TRANSPORT",
+      "montant": 541600.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-02-27",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18M201AO-ACCORD CADRE DE MAITRISE D’OEUVRE INFRASTRUCTURES DE TRANSPORT",
+      "montant": 541600.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-02-27",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "18M201AO-ACCORD CADRE DE MAITRISE D’OEUVRE INFRASTRUCTURES DE TRANSPORT",
+      "montant": 541600.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2019-02-27",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "TRAVAUX D’EXTENSION DU RESEAU EU DU PEX - 18M366PA - AV/SG",
+      "montant": 536019.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-04-25",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TX REALISATIONS  TERRAINS DE SPORTS SYNTHETIQUES ANNEES 2018-A2021 MS N 3 TX TERRAIN LA RAMEE",
+      "montant": 533597.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-05-09",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TX REALISATIONS  TERRAINS DE SPORTS SYNTHETIQUES ANNEES 2018-A2021 MS N 3 TX TERRAIN LA RAMEE",
+      "montant": 533597.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-05-09",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TRAVAUX DE REHABILITATION ET D’AMENAGEMENT DU CASTELET (PRISON SAINT MICHEL) (18V107PA) (DT/SG)",
+      "montant": 522165.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2019-01-23",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "18C063AO -Jetables",
+      "montant": 504429.23,
+      "categorie": "Santé & Social",
+      "titulaire": "",
+      "date": "2019-01-02",
+      "procedure": "Appel d'offres ouvert"
+    }
+  ]
+}

@@ -1,0 +1,864 @@
+{
+  "annee": 2020,
+  "city_slug": "nice",
+  "total_montant": 976815323491.36,
+  "total_marches": 1244,
+  "categories": [
+    {
+      "categorie": "Alimentation & Restauration",
+      "nb_marches": 137,
+      "montant_total": 804291714584.03,
+      "montant_moyen": 5870742442.22
+    },
+    {
+      "categorie": "Services professionnels",
+      "nb_marches": 188,
+      "montant_total": 169087314634.0,
+      "montant_moyen": 899400609.76
+    },
+    {
+      "categorie": "Construction & Bâtiment",
+      "nb_marches": 150,
+      "montant_total": 1753854373.54,
+      "montant_moyen": 11692362.49
+    },
+    {
+      "categorie": "Environnement & Propreté",
+      "nb_marches": 45,
+      "montant_total": 727119932.0,
+      "montant_moyen": 16158220.71
+    },
+    {
+      "categorie": "Autres",
+      "nb_marches": 410,
+      "montant_total": 477621694.07,
+      "montant_moyen": 1164930.96
+    },
+    {
+      "categorie": "Transport & Véhicules",
+      "nb_marches": 144,
+      "montant_total": 329888226.48,
+      "montant_moyen": 2290890.46
+    },
+    {
+      "categorie": "Santé & Social",
+      "nb_marches": 115,
+      "montant_total": 71476587.82,
+      "montant_moyen": 621535.55
+    },
+    {
+      "categorie": "Informatique & Télécom",
+      "nb_marches": 41,
+      "montant_total": 54301459.42,
+      "montant_moyen": 1324425.84
+    },
+    {
+      "categorie": "Énergie",
+      "nb_marches": 14,
+      "montant_total": 22032000.0,
+      "montant_moyen": 1573714.29
+    }
+  ],
+  "top_marches": [
+    {
+      "objet": "IA800 - PRESTATION TRAITEUR DE GAMME SUPERIEUR POUR LES BESOINS ACROPOLIS - NIKAIA",
+      "montant": 39999999996.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2020-06-30",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "IA800 - PRESTATION TRAITEUR DE GAMME SUPERIEUR POUR LES BESOINS ACROPOLIS - NIKAIA",
+      "montant": 39999999996.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2020-06-30",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "IA800 - PRESTATION TRAITEUR DE GAMME SUPERIEUR POUR LES BESOINS ACROPOLIS - NIKAIA",
+      "montant": 39999999996.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2020-06-30",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "IA800 PRESTATIONS DE TRAITEUR DE GAMME CLASSIQUE POUR LES BESOINS DE LA RAN",
+      "montant": 39999999996.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2020-06-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "IA800 PRESTATIONS DE TRAITEUR DE GAMME CLASSIQUE POUR LES BESOINS DE LA RAN",
+      "montant": 39999999996.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2020-06-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "IA800 PRESTATIONS DE TRAITEUR DE GAMME CLASSIQUE POUR LES BESOINS DE LA RAN",
+      "montant": 39999999996.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2020-06-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "IA800 PRESTATIONS DE TRAITEUR DE GAMME CLASSIQUE POUR LES BESOINS DE LA RAN",
+      "montant": 39999999996.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2020-06-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "IA800 PRESTATIONS DE TRAITEUR DE GAMME CLASSIQUE POUR LES BESOINS DE LA RAN",
+      "montant": 39999999996.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2020-06-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "IA800 PRESTATIONS DE TRAITEUR DE GAMME CLASSIQUE POUR LES BESOINS DE LA RAN",
+      "montant": 39999999996.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2020-06-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "IA800 PRESTATIONS DE TRAITEUR DE GAMME CLASSIQUE POUR LES BESOINS DE LA RAN",
+      "montant": 39999999996.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2020-06-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "IA800 PRESTATIONS DE TRAITEUR DE GAMME CLASSIQUE POUR LES BESOINS DE LA RAN",
+      "montant": 39999999996.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2020-06-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "IA800 PRESTATIONS DE TRAITEUR DE GAMME CLASSIQUE POUR LES BESOINS DE LA RAN",
+      "montant": 39999999996.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2020-06-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "JE000 LOT 3 SECURITE MANIFESTATIONS EVENEMENTIELLES D’ACROPOLIS",
+      "montant": 39999999996.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 3 SECURITE MANIFESTATIONS EVENEMENTIELLES D’ACROPOLIS",
+      "montant": 39999999996.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 3 SECURITE MANIFESTATIONS EVENEMENTIELLES D’ACROPOLIS",
+      "montant": 39999999996.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 3 SECURITE MANIFESTATIONS EVENEMENTIELLES D’ACROPOLIS",
+      "montant": 39999999996.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "IA800 - PRESTATIONS DE TRAITEUR EXCLUSIVEMENT EN LIVRAISON POUR LES BESOINS ACROPOLIS NIKAIA",
+      "montant": 36000000000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "IA800 - PRESTATIONS DE TRAITEUR EXCLUSIVEMENT EN LIVRAISON POUR LES BESOINS ACROPOLIS NIKAIA",
+      "montant": 36000000000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "IA800 - PRESTATIONS DE TRAITEUR EXCLUSIVEMENT EN LIVRAISON POUR LES BESOINS ACROPOLIS NIKAIA",
+      "montant": 36000000000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "IA800 - PRESTATIONS DE TRAITEUR EXCLUSIVEMENT EN LIVRAISON POUR LES BESOINS ACROPOLIS NIKAIA",
+      "montant": 36000000000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "IA800 - PRESTATIONS DE TRAITEUR EXCLUSIVEMENT EN LIVRAISON POUR LES BESOINS ACROPOLIS NIKAIA",
+      "montant": 36000000000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "IA800 - PRESTATIONS DE TRAITEUR EXCLUSIVEMENT EN LIVRAISON POUR LES BESOINS ACROPOLIS NIKAIA",
+      "montant": 36000000000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "IA800 - PRESTATIONS DE TRAITEUR EXCLUSIVEMENT EN LIVRAISON POUR LES BESOINS ACROPOLIS NIKAIA",
+      "montant": 36000000000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "IA800 - PRESTATIONS DE TRAITEUR EXCLUSIVEMENT EN LIVRAISON POUR LES BESOINS ACROPOLIS NIKAIA",
+      "montant": 36000000000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "IA800 - PRESTATIONS DE TRAITEUR EXCLUSIVEMENT EN LIVRAISON POUR LES BESOINS ACROPOLIS NIKAIA",
+      "montant": 36000000000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "RC100 LOT2 SECTEUR EST",
+      "montant": 333333330.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-09-30",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "RC100 LOT2 SECTEUR EST",
+      "montant": 333333330.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2020-04-10",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-12-03",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-12-03",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-12-03",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-08-26",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-08-26",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-08-26",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-07-27",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-07-27",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-07-27",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "JE000 LOT 1 MISSION DE SECURITE POUR LES MANIFESTATIONS EVENEMENTIELLES",
+      "montant": 119999988.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2020-03-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "LOT 1 - PALAIS DES CONGRES ACROPOLIS ET PALAIS DES EXPOSITIONS DE NICE",
+      "montant": 39999996.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2020-11-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "LOT 1 - PALAIS DES CONGRES ACROPOLIS ET PALAIS DES EXPOSITIONS DE NICE",
+      "montant": 39999996.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2020-11-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "LOT 1 - PALAIS DES CONGRES ACROPOLIS ET PALAIS DES EXPOSITIONS DE NICE",
+      "montant": 39999996.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2020-11-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "LOT 1 - PALAIS DES CONGRES ACROPOLIS ET PALAIS DES EXPOSITIONS DE NICE",
+      "montant": 39999996.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2020-11-17",
+      "procedure": "Appel d'offres ouvert"
+    }
+  ]
+}

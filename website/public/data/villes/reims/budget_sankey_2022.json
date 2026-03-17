@@ -1,0 +1,296 @@
+{
+  "year": 2022,
+  "type_budget": "execute",
+  "city_slug": "reims",
+  "city_name": "Reims",
+  "dataStatus": "COMPLET",
+  "totals": {
+    "recettes": 309607850.7,
+    "depenses": 289553543.07,
+    "solde": 20054307.63
+  },
+  "nodes": [
+    {
+      "name": "Fiscalité",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations État",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits des services",
+      "category": "revenue"
+    },
+    {
+      "name": "Subventions investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Autres produits",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits exceptionnels",
+      "category": "revenue"
+    },
+    {
+      "name": "Emprunts",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits financiers",
+      "category": "revenue"
+    },
+    {
+      "name": "Budget Reims",
+      "category": "central"
+    },
+    {
+      "name": "Personnel",
+      "category": "expense"
+    },
+    {
+      "name": "Investissements",
+      "category": "expense"
+    },
+    {
+      "name": "Fonctionnement courant",
+      "category": "expense"
+    },
+    {
+      "name": "Transferts & subventions",
+      "category": "expense"
+    },
+    {
+      "name": "Amortissements",
+      "category": "expense"
+    },
+    {
+      "name": "Dette",
+      "category": "expense"
+    },
+    {
+      "name": "Charges exceptionnelles",
+      "category": "expense"
+    },
+    {
+      "name": "Charges financières",
+      "category": "expense"
+    },
+    {
+      "name": "Charges fiscales",
+      "category": "expense"
+    }
+  ],
+  "links": [
+    {
+      "source": "Fiscalité",
+      "target": "Budget Reims",
+      "value": 171595206.74
+    },
+    {
+      "source": "Dotations État",
+      "target": "Budget Reims",
+      "value": 66622431.82
+    },
+    {
+      "source": "Dotations investissement",
+      "target": "Budget Reims",
+      "value": 30458139.5
+    },
+    {
+      "source": "Produits des services",
+      "target": "Budget Reims",
+      "value": 18647898.8
+    },
+    {
+      "source": "Subventions investissement",
+      "target": "Budget Reims",
+      "value": 15456643.2
+    },
+    {
+      "source": "Autres produits",
+      "target": "Budget Reims",
+      "value": 3681264.99
+    },
+    {
+      "source": "Produits exceptionnels",
+      "target": "Budget Reims",
+      "value": 2018356.35
+    },
+    {
+      "source": "Emprunts",
+      "target": "Budget Reims",
+      "value": 622786.56
+    },
+    {
+      "source": "Produits financiers",
+      "target": "Budget Reims",
+      "value": 505122.74
+    },
+    {
+      "source": "Budget Reims",
+      "target": "Personnel",
+      "value": 94504408.02
+    },
+    {
+      "source": "Budget Reims",
+      "target": "Investissements",
+      "value": 59312850.97
+    },
+    {
+      "source": "Budget Reims",
+      "target": "Fonctionnement courant",
+      "value": 57975406.03
+    },
+    {
+      "source": "Budget Reims",
+      "target": "Transferts & subventions",
+      "value": 39791200.09
+    },
+    {
+      "source": "Budget Reims",
+      "target": "Amortissements",
+      "value": 14225614.62
+    },
+    {
+      "source": "Budget Reims",
+      "target": "Dette",
+      "value": 10229332.58
+    },
+    {
+      "source": "Budget Reims",
+      "target": "Charges exceptionnelles",
+      "value": 7355784.86
+    },
+    {
+      "source": "Budget Reims",
+      "target": "Charges financières",
+      "value": 3473871.41
+    },
+    {
+      "source": "Budget Reims",
+      "target": "Charges fiscales",
+      "value": 2685074.49
+    }
+  ],
+  "drilldown": {
+    "revenue": {
+      "Fiscalité": [
+        {
+          "name": "Fiscalité",
+          "value": 171595206.74
+        }
+      ],
+      "Dotations État": [
+        {
+          "name": "Dotations État",
+          "value": 66622431.82
+        }
+      ],
+      "Dotations investissement": [
+        {
+          "name": "Dotations investissement",
+          "value": 30458139.5
+        }
+      ],
+      "Produits des services": [
+        {
+          "name": "Produits des services",
+          "value": 18647898.8
+        }
+      ],
+      "Subventions investissement": [
+        {
+          "name": "Subventions investissement",
+          "value": 15456643.2
+        }
+      ],
+      "Autres produits": [
+        {
+          "name": "Autres produits",
+          "value": 3681264.99
+        }
+      ],
+      "Produits exceptionnels": [
+        {
+          "name": "Produits exceptionnels",
+          "value": 2018356.35
+        }
+      ],
+      "Emprunts": [
+        {
+          "name": "Emprunts",
+          "value": 622786.56
+        }
+      ],
+      "Produits financiers": [
+        {
+          "name": "Produits financiers",
+          "value": 505122.74
+        }
+      ]
+    },
+    "expenses": {
+      "Personnel": [
+        {
+          "name": "Personnel",
+          "value": 94504408.02
+        }
+      ],
+      "Investissements": [
+        {
+          "name": "Investissements",
+          "value": 59312850.97
+        }
+      ],
+      "Fonctionnement courant": [
+        {
+          "name": "Fonctionnement courant",
+          "value": 57975406.03
+        }
+      ],
+      "Transferts & subventions": [
+        {
+          "name": "Transferts & subventions",
+          "value": 39791200.09
+        }
+      ],
+      "Amortissements": [
+        {
+          "name": "Amortissements",
+          "value": 14225614.62
+        }
+      ],
+      "Dette": [
+        {
+          "name": "Dette",
+          "value": 10229332.58
+        }
+      ],
+      "Charges exceptionnelles": [
+        {
+          "name": "Charges exceptionnelles",
+          "value": 7355784.86
+        }
+      ],
+      "Charges financières": [
+        {
+          "name": "Charges financières",
+          "value": 3473871.41
+        }
+      ],
+      "Charges fiscales": [
+        {
+          "name": "Charges fiscales",
+          "value": 2685074.49
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "year": 2024,
+  "city_slug": "lille",
+  "totals": {
+    "actif_total": 2426336192.85,
+    "passif_total": 2038233232.57,
+    "dette_financiere": 366919706.21,
+    "fonds_propres": 1671313526.36,
+    "tresorerie": 42571356.83,
+    "immobilisations": 2383764836.02
+  },
+  "kpis": {
+    "ratio_endettement": 18.0,
+    "pct_fonds_propres": 82.0,
+    "dette_par_hab": 1553.2
+  }
+}

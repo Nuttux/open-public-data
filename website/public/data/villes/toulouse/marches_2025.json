@@ -1,0 +1,864 @@
+{
+  "annee": 2025,
+  "city_slug": "toulouse",
+  "total_montant": 3071619496.1499996,
+  "total_marches": 1584,
+  "categories": [
+    {
+      "categorie": "Construction & Bâtiment",
+      "nb_marches": 774,
+      "montant_total": 2166889632.7,
+      "montant_moyen": 2799599.01
+    },
+    {
+      "categorie": "Services professionnels",
+      "nb_marches": 380,
+      "montant_total": 491107382.28,
+      "montant_moyen": 1292387.85
+    },
+    {
+      "categorie": "Autres",
+      "nb_marches": 185,
+      "montant_total": 163756149.08,
+      "montant_moyen": 885168.37
+    },
+    {
+      "categorie": "Alimentation & Restauration",
+      "nb_marches": 96,
+      "montant_total": 162675795.99,
+      "montant_moyen": 1694539.54
+    },
+    {
+      "categorie": "Informatique & Télécom",
+      "nb_marches": 65,
+      "montant_total": 38513865.68,
+      "montant_moyen": 592521.01
+    },
+    {
+      "categorie": "Transport & Véhicules",
+      "nb_marches": 39,
+      "montant_total": 19728788.52,
+      "montant_moyen": 505866.37
+    },
+    {
+      "categorie": "Environnement & Propreté",
+      "nb_marches": 32,
+      "montant_total": 19155738.57,
+      "montant_moyen": 598616.83
+    },
+    {
+      "categorie": "Énergie",
+      "nb_marches": 3,
+      "montant_total": 7555509.93,
+      "montant_moyen": 2518503.31
+    },
+    {
+      "categorie": "Santé & Social",
+      "nb_marches": 10,
+      "montant_total": 2236633.4,
+      "montant_moyen": 223663.34
+    }
+  ],
+  "top_marches": [
+    {
+      "objet": "24M0086PN - Travaux d’extension et de fiabilisation de l’usine de dépollution des eaux usées de Toulouse-Ginestous-Garonne /SA-SG",
+      "montant": 131096872.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-12-01",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "24M0086PN - Travaux d’extension et de fiabilisation de l’usine de dépollution des eaux usées de Toulouse-Ginestous-Garonne /SA-SG",
+      "montant": 131096872.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-12-01",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "24M0086PN - Travaux d’extension et de fiabilisation de l’usine de dépollution des eaux usées de Toulouse-Ginestous-Garonne /SA-SG",
+      "montant": 131096872.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-12-01",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "24M0086PN - Travaux d’extension et de fiabilisation de l’usine de dépollution des eaux usées de Toulouse-Ginestous-Garonne /SA-SG",
+      "montant": 131096872.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-12-01",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "24M0086PN - Travaux d’extension et de fiabilisation de l’usine de dépollution des eaux usées de Toulouse-Ginestous-Garonne /SA-SG",
+      "montant": 131096872.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-12-01",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "24M0086PN - Travaux d’extension et de fiabilisation de l’usine de dépollution des eaux usées de Toulouse-Ginestous-Garonne /SA-SG",
+      "montant": 131096872.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-12-01",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "24M0086PN - Travaux d’extension et de fiabilisation de l’usine de dépollution des eaux usées de Toulouse-Ginestous-Garonne /SA-SG",
+      "montant": 131096872.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-12-01",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "24M0086PN - Travaux d’extension et de fiabilisation de l’usine de dépollution des eaux usées de Toulouse-Ginestous-Garonne /SA-SG",
+      "montant": 131096872.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-12-01",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "24M0086PN - Travaux d’extension et de fiabilisation de l’usine de dépollution des eaux usées de Toulouse-Ginestous-Garonne /SA-SG",
+      "montant": 131096872.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-12-01",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "24M0112PN-  CONSTRUCTION D&#8217;UN TECHNO-CENTRE sur le site ATLANTA -  -EB/SC/TP/ Lot n° 02 : FONDATIONS  SPECIALES - GROS OEUVRES - CHARPENTE BETON",
+      "montant": 26650000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-05-13",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "24M0112PN-  CONSTRUCTION D&#8217;UN TECHNO-CENTRE sur le site ATLANTA -  -EB/SC/TP/ Lot n° 02 : FONDATIONS  SPECIALES - GROS OEUVRES - CHARPENTE BETON",
+      "montant": 26650000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-05-13",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26055706.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-06-24",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26055706.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-06-24",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26055706.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-06-24",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26055706.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-06-24",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26055706.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-02-11",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26055706.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-02-11",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26055706.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-02-11",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Travaux de réhabilitation des réseaux EU et EP sur le territoire de TM",
+      "montant": 26055706.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-02-11",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "TRAVAUX DE DEPOLLUTION CHIMIQUE SUR LE TERRITOIRE DE TOULOUSE METROPOLE 2025/2026",
+      "montant": 16000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-12-01",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "TRAVAUX DE DEPOLLUTION CHIMIQUE SUR LE TERRITOIRE DE TOULOUSE METROPOLE 2025/2026",
+      "montant": 16000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-12-01",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-26",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-26",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-26",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-26",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-26",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-26",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-26",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-26",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-26",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-26",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-26",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-26",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-26",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-26",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "MO TRAVAUX D’ASSAINISSEMENT, D’EAU POTABLE ET D’INCENDIE HORS TVX COMPLEXES",
+      "montant": 15000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-11-26",
+      "procedure": "Marché passé sans publicité ni mise en concurrence préalable"
+    },
+    {
+      "objet": "Accord-cadre  de travaux de voirie : chaussées, trottoirs, voirie sur espaces verts, réfection définitive de tranchées, aménagements liés aux bâtiments. ANNÉES 2023-2027 - 22MC0288AOO",
+      "montant": 14000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-10-24",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre  de travaux de voirie : chaussées, trottoirs, voirie sur espaces verts, réfection définitive de tranchées, aménagements liés aux bâtiments. ANNÉES 2023-2027 - 22MC0288AOO",
+      "montant": 14000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-10-24",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre  de travaux de voirie : chaussées, trottoirs, voirie sur espaces verts, réfection définitive de tranchées, aménagements liés aux bâtiments. ANNÉES 2023-2027 - 22MC0288AOO",
+      "montant": 14000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-10-24",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre  de travaux de voirie : chaussées, trottoirs, voirie sur espaces verts, réfection définitive de tranchées, aménagements liés aux bâtiments. ANNÉES 2023-2027 - 22MC0288AOO",
+      "montant": 14000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-10-24",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "TRAVAUX DE DEPOLLUTION CHIMIQUE SUR LE TERRITOIRE DE TOULOUSE METROPOLE 2025/2026",
+      "montant": 12000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-12-01",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "TRAVAUX DE DEPOLLUTION CHIMIQUE SUR LE TERRITOIRE DE TOULOUSE METROPOLE 2025/2026",
+      "montant": 12000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-12-01",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "25MC0167AO MS -VP TRAVAUX DE DEPOLLUTION CHIMIQUE SUR LE TERRITOIRE DE TOULOUSE METROPOLE",
+      "montant": 12000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-10-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "25MC0167AO MS -VP TRAVAUX DE DEPOLLUTION CHIMIQUE SUR LE TERRITOIRE DE TOULOUSE METROPOLE",
+      "montant": 12000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-10-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "25MC0167AO MS -VP TRAVAUX DE DEPOLLUTION CHIMIQUE SUR LE TERRITOIRE DE TOULOUSE METROPOLE",
+      "montant": 12000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-10-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "25MC0167AO MS -VP TRAVAUX DE DEPOLLUTION CHIMIQUE SUR LE TERRITOIRE DE TOULOUSE METROPOLE",
+      "montant": 12000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-10-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Réhabilitation de 196 logements résidence le BEARN",
+      "montant": 10650000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-06-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Réhabilitation de 196 logements résidence le BEARN",
+      "montant": 10650000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-06-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Réhabilitation de 196 logements résidence le BEARN",
+      "montant": 10650000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-06-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "FOURNITURE DE LICENCES SUPPORT ET MAINTENANCE LOGICIELLE",
+      "montant": 10500000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2025-10-15",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "FROMAGE PORTION  dont BIO",
+      "montant": 9640000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2025-09-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "FROMAGE PORTION  dont BIO",
+      "montant": 9640000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2025-09-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "FROMAGE PORTION  dont BIO",
+      "montant": 9640000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2025-09-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "FROMAGE PORTION  dont BIO",
+      "montant": 9640000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2025-01-08",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "FROMAGE PORTION  dont BIO",
+      "montant": 9640000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2025-01-08",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "FROMAGE PORTION  dont BIO",
+      "montant": 9640000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2025-01-08",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "FOURNITURE DE LICENCES SUPPORT ET MAINTENANCE LOGICIELLE",
+      "montant": 8250000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2025-10-15",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "LAIT-BEURRE -CREME- YAOURTS - DESSERTS LACTES DONT BIO",
+      "montant": 6720000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2025-04-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "LAIT-BEURRE -CREME- YAOURTS - DESSERTS LACTES DONT BIO",
+      "montant": 6720000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2025-04-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "LAIT-BEURRE -CREME- YAOURTS - DESSERTS LACTES DONT BIO",
+      "montant": 6720000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2025-04-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "LAIT-BEURRE -CREME- YAOURTS - DESSERTS LACTES DONT BIO",
+      "montant": 6720000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2025-01-08",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "LAIT-BEURRE -CREME- YAOURTS - DESSERTS LACTES DONT BIO",
+      "montant": 6720000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2025-01-08",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "LAIT-BEURRE -CREME- YAOURTS - DESSERTS LACTES DONT BIO",
+      "montant": 6720000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2025-01-08",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CREATION D’UN TECHNO-CENTRE SUR LE SITE ATLANTA -SA/NF-",
+      "montant": 6636844.68,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-18",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CREATION D’UN TECHNO-CENTRE SUR LE SITE ATLANTA -SA/NF-",
+      "montant": 6636844.68,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-18",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CREATION D’UN TECHNO-CENTRE SUR LE SITE ATLANTA -SA/NF-",
+      "montant": 6636844.68,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-18",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CREATION D’UN TECHNO-CENTRE SUR LE SITE ATLANTA -SA/NF-",
+      "montant": 6636844.68,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-18",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CREATION D’UN TECHNO-CENTRE SUR LE SITE ATLANTA -SA/NF-",
+      "montant": 6636844.68,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-18",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CREATION D’UN TECHNO-CENTRE SUR LE SITE ATLANTA -SA/NF-",
+      "montant": 6636844.68,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-18",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CREATION D’UN TECHNO-CENTRE SUR LE SITE ATLANTA -SA/NF-",
+      "montant": 6636844.68,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-18",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "CONCOURS POUR L’ATTRIBUTION D’UN MARCHE DE MAÎTRISE D’OEUVRE - CREATION D’UN TECHNO-CENTRE SUR LE SITE ATLANTA -SA/NF-",
+      "montant": 6636844.68,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-12-18",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "RESTRUCTURATION D’ESPACES VERTS 2024/2025 - TERRITOIRE OUEST - LOT 5",
+      "montant": 6000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-10-27",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "RESTRUCTURATION D’ESPACES VERTS 2024/2025 - TERRITOIRE OUEST - LOT 5",
+      "montant": 6000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-10-27",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "RESTRUCTURATION D’ESPACES VERTS 2024/2025 - TERRITOIRE NORD - LOT 2",
+      "montant": 6000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-10-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "RESTRUCTURATION D’ESPACES VERTS 2024/2025 - TERRITOIRE NORD - LOT 2",
+      "montant": 6000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-10-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "RESTRUCTURATION D’ESPACES VERTS 2024/2025 - TERRITOIRE NORD - LOT 2",
+      "montant": 6000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-10-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "25MC0138AOO - TRAVAUX DE SIGNALISATION HORIZONTALE - ANNEES 2025 A 2029 ST/CN",
+      "montant": 5950000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-07-08",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "TRAVAUX D’ASSAINISSEMENT ET D’EAU POTABLE CH BOUDOU LAUNAGUET",
+      "montant": 5704294.61,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-10-09",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "- APPROVISIONNEMENT, INTEGRATION,  ADMINISTRATION ET MAINTENANCE DES  INFRASTRUCTURES RESEAU ET TELEPHONIE",
+      "montant": 5500000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2025-12-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "IMPRESSION DE VISUELS NUMERIQUES MULTI-FORMATS : FABRICATION ET ACHAT DE SUPPORTS DE COMMUNICATION - POSE, DEPOSE, STOCKAGE ET ENTRETIEN 2025-2029",
+      "montant": 5480000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-07-01",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "25MC0211AOO - ACCORD-CADRE POUR DES PRESTATIONS DE MAITRISE D’OEUVRE  DE BATIMENT - Lot 4 Territoire EST - EC VF",
+      "montant": 5200000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-10-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "24M0084AOO -  CONSTRUCTION D&#8217;UN TECHNO-CENTRE sur le site ATLANTA - RELANCE - EB/SC/TP/ Lot n° 15 : ELECTRICITE COURANTS FORTS ET FAIBLES",
+      "montant": 5109000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-05-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "24M0084AOO -  CONSTRUCTION D&#8217;UN TECHNO-CENTRE sur le site ATLANTA - RELANCE - EB/SC/TP/ Lot n° 15 : ELECTRICITE COURANTS FORTS ET FAIBLES",
+      "montant": 5109000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-05-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "24M0368AOO-MS-Accord cadre pour des prestations de maîtrise d’oeuvre pour l’opération voie nord -Aménagements multimodaux. ",
+      "montant": 5000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-02-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "24M0368AOO-MS-Accord cadre pour des prestations de maîtrise d’oeuvre pour l’opération voie nord -Aménagements multimodaux. ",
+      "montant": 5000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-02-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "24M0368AOO-MS-Accord cadre pour des prestations de maîtrise d’oeuvre pour l’opération voie nord -Aménagements multimodaux. ",
+      "montant": 5000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-02-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "24M0368AOO-MS-Accord cadre pour des prestations de maîtrise d’oeuvre pour l’opération voie nord -Aménagements multimodaux. ",
+      "montant": 5000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-02-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "24M0368AOO-MS-Accord cadre pour des prestations de maîtrise d’oeuvre pour l’opération voie nord -Aménagements multimodaux. ",
+      "montant": 5000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2025-02-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "24M0084AOO -  CONSTRUCTION D&#8217;UN TECHNO-CENTRE sur le site ATLANTA - RELANCE - EB/SC/TP/ Lot n° 05 : COUVERTURE BARDAGE PHOTOVOLTAIQUE",
+      "montant": 4902348.7,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-05-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "24M0084AOO -  CONSTRUCTION D&#8217;UN TECHNO-CENTRE sur le site ATLANTA - RELANCE - EB/SC/TP/ Lot n° 05 : COUVERTURE BARDAGE PHOTOVOLTAIQUE",
+      "montant": 4902348.7,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-05-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "24M0112PN-  CONSTRUCTION D&#8217;UN TECHNO-CENTRE sur le site ATLANTA -  -EB/SC/TP/ Lot n° 14 : CHAUFFAGE - VENTILATION - PLOMBERIE - SANITAIRE - DESENFUMAGE - AIR COMPRIME",
+      "montant": 4888312.16,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-05-13",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "24M0112PN-  CONSTRUCTION D&#8217;UN TECHNO-CENTRE sur le site ATLANTA -  -EB/SC/TP/ Lot n° 14 : CHAUFFAGE - VENTILATION - PLOMBERIE - SANITAIRE - DESENFUMAGE - AIR COMPRIME",
+      "montant": 4888312.16,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-05-13",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "REALISATION DE SOLS AMORTISSANTS",
+      "montant": 4500000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-08-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "REALISATION DE SOLS AMORTISSANTS",
+      "montant": 4500000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-08-13",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "TRAVAUX DE REALISATION ET D’EXPLOITATION DE CONTINUITES OPTIQUES POUR LE COMPTE DE LA MAIRIE DE TOULOUSE ANNEES 2025 2026 2027",
+      "montant": 4500000.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2025-01-31",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "FOURNITURE DE MOBILIER ENFANCE ET PETITE ENFANCE",
+      "montant": 4450000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2025-03-08",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "APPROVISIONNEMENT, INTEGRATION,  ADMINISTRATION ET MAINTENANCE DES  INFRASTRUCTURES RESEAU ET TELEPHONIE",
+      "montant": 4200000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2025-12-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "24M0476PN - CONSTRUCTION D&#8217;UN TECHNO-CENTRE sur le site ATLANTA - RELANCE LOT 1 VRD ",
+      "montant": 4087779.79,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-05-13",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "24M0476PN - CONSTRUCTION D&#8217;UN TECHNO-CENTRE sur le site ATLANTA - RELANCE LOT 1 VRD ",
+      "montant": 4087779.79,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2025-05-13",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "APPROVISIONNEMENT DE POSTES DE TRAVAIL MOYENS D IMPRESSION MATERIELS INFORMATIQUES DIVERS ET PRESTA",
+      "montant": 4075802.93,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2025-02-27",
+      "procedure": "Appel d'offres ouvert"
+    }
+  ]
+}

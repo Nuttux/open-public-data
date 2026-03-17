@@ -1,0 +1,17 @@
+{
+  "year": 2024,
+  "city_slug": "marseille",
+  "totals": {
+    "actif_total": 7923799034.19,
+    "passif_total": 6941988406.27,
+    "dette_financiere": 1428594483.62,
+    "fonds_propres": 5513393922.65,
+    "tresorerie": 19708381.31,
+    "immobilisations": 7904090652.88
+  },
+  "kpis": {
+    "ratio_endettement": 20.58,
+    "pct_fonds_propres": 79.42,
+    "dette_par_hab": 1636.28
+  }
+}

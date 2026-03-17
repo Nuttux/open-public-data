@@ -1,0 +1,311 @@
+{
+  "year": 2017,
+  "type_budget": "execute",
+  "city_slug": "nice",
+  "city_name": "Nice",
+  "dataStatus": "COMPLET",
+  "totals": {
+    "recettes": 645683510.35,
+    "depenses": 657432209.98,
+    "solde": -11748699.63
+  },
+  "nodes": [
+    {
+      "name": "Fiscalité",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations État",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits des services",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits exceptionnels",
+      "category": "revenue"
+    },
+    {
+      "name": "Emprunts",
+      "category": "revenue"
+    },
+    {
+      "name": "Autres produits",
+      "category": "revenue"
+    },
+    {
+      "name": "Subventions investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits financiers",
+      "category": "revenue"
+    },
+    {
+      "name": "Reprises",
+      "category": "revenue"
+    },
+    {
+      "name": "Budget Nice",
+      "category": "central"
+    },
+    {
+      "name": "Personnel",
+      "category": "expense"
+    },
+    {
+      "name": "Fonctionnement courant",
+      "category": "expense"
+    },
+    {
+      "name": "Transferts & subventions",
+      "category": "expense"
+    },
+    {
+      "name": "Investissements",
+      "category": "expense"
+    },
+    {
+      "name": "Amortissements",
+      "category": "expense"
+    },
+    {
+      "name": "Charges exceptionnelles",
+      "category": "expense"
+    },
+    {
+      "name": "Charges financières",
+      "category": "expense"
+    },
+    {
+      "name": "Charges fiscales",
+      "category": "expense"
+    },
+    {
+      "name": "Dette",
+      "category": "expense"
+    }
+  ],
+  "links": [
+    {
+      "source": "Fiscalité",
+      "target": "Budget Nice",
+      "value": 361339232.85
+    },
+    {
+      "source": "Dotations État",
+      "target": "Budget Nice",
+      "value": 136198590.18
+    },
+    {
+      "source": "Produits des services",
+      "target": "Budget Nice",
+      "value": 43732763.52
+    },
+    {
+      "source": "Dotations investissement",
+      "target": "Budget Nice",
+      "value": 37670788.69
+    },
+    {
+      "source": "Produits exceptionnels",
+      "target": "Budget Nice",
+      "value": 23185424.4
+    },
+    {
+      "source": "Emprunts",
+      "target": "Budget Nice",
+      "value": 17015202.39
+    },
+    {
+      "source": "Autres produits",
+      "target": "Budget Nice",
+      "value": 15085942.65
+    },
+    {
+      "source": "Subventions investissement",
+      "target": "Budget Nice",
+      "value": 8990547.72
+    },
+    {
+      "source": "Produits financiers",
+      "target": "Budget Nice",
+      "value": 2442145.95
+    },
+    {
+      "source": "Reprises",
+      "target": "Budget Nice",
+      "value": 22872.0
+    },
+    {
+      "source": "Budget Nice",
+      "target": "Personnel",
+      "value": 245106363.08
+    },
+    {
+      "source": "Budget Nice",
+      "target": "Fonctionnement courant",
+      "value": 160048254.67
+    },
+    {
+      "source": "Budget Nice",
+      "target": "Transferts & subventions",
+      "value": 101210079.78
+    },
+    {
+      "source": "Budget Nice",
+      "target": "Investissements",
+      "value": 79109836.38
+    },
+    {
+      "source": "Budget Nice",
+      "target": "Amortissements",
+      "value": 29665395.07
+    },
+    {
+      "source": "Budget Nice",
+      "target": "Charges exceptionnelles",
+      "value": 15511566.95
+    },
+    {
+      "source": "Budget Nice",
+      "target": "Charges financières",
+      "value": 15175726.03
+    },
+    {
+      "source": "Budget Nice",
+      "target": "Charges fiscales",
+      "value": 6583281.97
+    },
+    {
+      "source": "Budget Nice",
+      "target": "Dette",
+      "value": 5021706.05
+    }
+  ],
+  "drilldown": {
+    "revenue": {
+      "Fiscalité": [
+        {
+          "name": "Fiscalité",
+          "value": 361339232.85
+        }
+      ],
+      "Dotations État": [
+        {
+          "name": "Dotations État",
+          "value": 136198590.18
+        }
+      ],
+      "Produits des services": [
+        {
+          "name": "Produits des services",
+          "value": 43732763.52
+        }
+      ],
+      "Dotations investissement": [
+        {
+          "name": "Dotations investissement",
+          "value": 37670788.69
+        }
+      ],
+      "Produits exceptionnels": [
+        {
+          "name": "Produits exceptionnels",
+          "value": 23185424.4
+        }
+      ],
+      "Emprunts": [
+        {
+          "name": "Emprunts",
+          "value": 17015202.39
+        }
+      ],
+      "Autres produits": [
+        {
+          "name": "Autres produits",
+          "value": 15085942.65
+        }
+      ],
+      "Subventions investissement": [
+        {
+          "name": "Subventions investissement",
+          "value": 8990547.72
+        }
+      ],
+      "Produits financiers": [
+        {
+          "name": "Produits financiers",
+          "value": 2442145.95
+        }
+      ],
+      "Reprises": [
+        {
+          "name": "Reprises",
+          "value": 22872.0
+        }
+      ]
+    },
+    "expenses": {
+      "Personnel": [
+        {
+          "name": "Personnel",
+          "value": 245106363.08
+        }
+      ],
+      "Fonctionnement courant": [
+        {
+          "name": "Fonctionnement courant",
+          "value": 160048254.67
+        }
+      ],
+      "Transferts & subventions": [
+        {
+          "name": "Transferts & subventions",
+          "value": 101210079.78
+        }
+      ],
+      "Investissements": [
+        {
+          "name": "Investissements",
+          "value": 79109836.38
+        }
+      ],
+      "Amortissements": [
+        {
+          "name": "Amortissements",
+          "value": 29665395.07
+        }
+      ],
+      "Charges exceptionnelles": [
+        {
+          "name": "Charges exceptionnelles",
+          "value": 15511566.95
+        }
+      ],
+      "Charges financières": [
+        {
+          "name": "Charges financières",
+          "value": 15175726.03
+        }
+      ],
+      "Charges fiscales": [
+        {
+          "name": "Charges fiscales",
+          "value": 6583281.97
+        }
+      ],
+      "Dette": [
+        {
+          "name": "Dette",
+          "value": 5021706.05
+        }
+      ]
+    }
+  }
+}

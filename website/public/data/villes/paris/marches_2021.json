@@ -1,0 +1,864 @@
+{
+  "annee": 2021,
+  "city_slug": "paris",
+  "total_montant": 10786606075.18,
+  "total_marches": 3958,
+  "categories": [
+    {
+      "categorie": "Construction & Bâtiment",
+      "nb_marches": 1248,
+      "montant_total": 5782357497.21,
+      "montant_moyen": 4633299.28
+    },
+    {
+      "categorie": "Environnement & Propreté",
+      "nb_marches": 115,
+      "montant_total": 1394072012.61,
+      "montant_moyen": 12122365.33
+    },
+    {
+      "categorie": "Transport & Véhicules",
+      "nb_marches": 251,
+      "montant_total": 1306443887.11,
+      "montant_moyen": 5204955.73
+    },
+    {
+      "categorie": "Autres",
+      "nb_marches": 1006,
+      "montant_total": 941565077.61,
+      "montant_moyen": 935949.38
+    },
+    {
+      "categorie": "Services professionnels",
+      "nb_marches": 953,
+      "montant_total": 628163548.83,
+      "montant_moyen": 659143.28
+    },
+    {
+      "categorie": "Santé & Social",
+      "nb_marches": 137,
+      "montant_total": 371615345.14,
+      "montant_moyen": 2712520.77
+    },
+    {
+      "categorie": "Informatique & Télécom",
+      "nb_marches": 174,
+      "montant_total": 210744498.39,
+      "montant_moyen": 1211175.28
+    },
+    {
+      "categorie": "Alimentation & Restauration",
+      "nb_marches": 69,
+      "montant_total": 146704549.62,
+      "montant_moyen": 2126152.89
+    },
+    {
+      "categorie": "Énergie",
+      "nb_marches": 5,
+      "montant_total": 4939658.66,
+      "montant_moyen": 987931.73
+    }
+  ],
+  "top_marches": [
+    {
+      "objet": "SA3-MGP INSTALLATIONS EP ILLUMINATIONS ET SIGNAL. LUMIN. VDP",
+      "montant": 569307209.08,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2021-04-28",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "SA4-TVX COUVERT.EDIFICES CULTUELS HISTOR. ET IMMEUBLES LOT2",
+      "montant": 276121889.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-27",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4-TVX COUVERT.EDIFICES CULTUELS HISTOR. ET IMMEUBLES LOT2",
+      "montant": 276121889.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-27",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4-TVX COUVERT.EDIFICES CULTUELS HISTOR. ET IMMEUBLES LOT2",
+      "montant": 276121889.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-27",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4-TVX COUVERT.EDIFICES CULTUELS HISTOR. ET IMMEUBLES LOT2",
+      "montant": 276121889.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-27",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4-TVX COUVERT.EDIFICES CULTUELS HISTOR. ET IMMEUBLES LOT2",
+      "montant": 276121889.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-27",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4.TCE MULTATT-ÉQU. PUBLICS-HORS ÉQUIPEMENTS SPORTS LOT1",
+      "montant": 140000009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-02-08",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4.TCE MULTATT-ÉQU. PUBLICS-HORS ÉQUIPEMENTS SPORTS LOT1",
+      "montant": 140000009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-02-08",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4.TCE MULTATT-ÉQU. PUBLICS-HORS ÉQUIPEMENTS SPORTS LOT1",
+      "montant": 140000009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-02-08",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4.TCE MULTATT-ÉQU. PUBLICS-HORS ÉQUIPEMENTS SPORTS LOT1",
+      "montant": 140000009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-02-08",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4.TCE MULTATT-ÉQU. PUBLICS-HORS ÉQUIPEMENTS SPORTS LOT1",
+      "montant": 140000009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-02-08",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Collecte en porte à porte des déchets ménagers et assimilés, collecte des déchets alimentaires des marchés et de points d’apport volontaire, et mise à disposition de collecte en 6 lots séparés. - Collecte en porte à porte des déchets ménagers et assimilés",
+      "montant": 116215747.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2021-08-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3.COLLECTE  PORTE À PORTE DÉCHETS MÉNAGERS PARIS 10,18LOT2",
+      "montant": 115681338.41,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2021-08-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3.COLLECTE  PORTE À PORTE DÉCHETS MÉNAGERS PARIS 10,18LOT2",
+      "montant": 115681338.41,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2021-08-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Collecte en porte à porte des déchets ménagers et assimilés, collecte des déchets alimentaires des marchés et de points d’apport volontaire, et mise à disposition de collecte en 6 lots séparés. - Collecte en porte à porte des déchets ménagers et assimilés",
+      "montant": 106772054.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2021-08-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Collecte en porte à porte des déchets ménagers et assimilés, collecte des déchets alimentaires des marchés et de points d’apport volontaire, et mise à disposition de collecte en 6 lots séparés. - Collecte en porte à porte es déchets ménagers et assimilés ",
+      "montant": 100183322.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2021-08-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4-TVX COUVERT.EDIFICES CULTUELS HISTOR. ET IMMEUBLES LOT1",
+      "montant": 96000009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-24",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4-TVX COUVERT.EDIFICES CULTUELS HISTOR. ET IMMEUBLES LOT1",
+      "montant": 96000009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-24",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4-TVX COUVERT.EDIFICES CULTUELS HISTOR. ET IMMEUBLES LOT1",
+      "montant": 96000009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-24",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4.TCE ÉQUIPEMENT SPORTIFS,CENTRES ANIMATIONS,AUTRES LOT4",
+      "montant": 96000009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-02-08",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4.TCE ÉQUIPEMENT SPORTIFS,CENTRES ANIMATIONS,AUTRES LOT4",
+      "montant": 96000009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-02-08",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4.TCE BAT. TERTIAIRES,LOCAUX,PERSONNELS ACTIVITE VP LOT2",
+      "montant": 89520009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-02-08",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4.TCE BAT. TERTIAIRES,LOCAUX,PERSONNELS ACTIVITE VP LOT2",
+      "montant": 89520009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-02-08",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4.TCE BAT. TERTIAIRES,LOCAUX,PERSONNELS ACTIVITE VP LOT2",
+      "montant": 89520009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-02-08",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3.COLLECTE  PORTE À PORTE DÉCHETS MÉNAGERS /11,19ÈME LOT 3",
+      "montant": 89400706.09,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2021-08-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3.COLLECTE  PORTE À PORTE DÉCHETS MÉNAGERS CENTRE,7ÈMELOT1",
+      "montant": 86248171.36,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2021-08-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3.COLLECTE  PORTE À PORTE DÉCHETS MÉNAGERS CENTRE,7ÈMELOT1",
+      "montant": 86248171.36,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2021-08-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3 ENLEVEMENT VEHICULES 4 ROUES JUSQU’A 3T5 PARIS NORD LOT1",
+      "montant": 70200199.99,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2021-03-03",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "FOURNITURE ELECTRICITE LOT 1 VERTE",
+      "montant": 70000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-17",
+      "procedure": null
+    },
+    {
+      "objet": "SA4 REVETEMENT SOLS SOUPLES EQUIP.  VILLE DE PARIS LOT1",
+      "montant": 66700009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-07-12",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4 REVETEMENT SOLS SOUPLES EQUIP.  VILLE DE PARIS LOT1",
+      "montant": 66700009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-07-12",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4 REVETEMENT SOLS SOUPLES EQUIP.  VILLE DE PARIS LOT1",
+      "montant": 66700009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-07-12",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4 REVETEMENT SOLS SOUPLES EQUIP.  VILLE DE PARIS LOT1",
+      "montant": 66700009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-07-12",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4 REVETEMENT SOLS SOUPLES EQUIP.  VILLE DE PARIS LOT1",
+      "montant": 66700009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-07-12",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3 ENLEVEMENT VEHIC. 2/3 ROUES MOTORISES A PARIS LOT 3",
+      "montant": 58982799.99,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2021-03-03",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "SA3 AMENAGT CYCLABLE TVX INFRA SUD/SUD-OUEST/BOIS BOULO LOT1",
+      "montant": 58000009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-04-29",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre à bons de commande de réalisation des travaux de voirie pour des aménagements cyclables prévus dans la mandature 2020-2026 - Travaux d’infrastructure – Arrondissements du Sud (5e, 6e, 7e et 14e) et du Sud-Ouest (15e et 16e) et Bois de Boulogn",
+      "montant": 57964000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-04-29",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3 ENLEVEMENT VEHICULES 4 ROUES JUSQU’A 3T5 PARIS SUD LOT2",
+      "montant": 57812799.99,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2021-03-03",
+      "procedure": "Procédure négociée avec mise en concurrence préalable"
+    },
+    {
+      "objet": "Collecte en porte à porte des déchets ménagers et assimilés, collecte des déchets alimentaires des marchés et de points d’apport volontaire, et mise à disposition de collecte en 6 lots séparés. - Collecte en porte à porte des déchets ménagers et assimilés",
+      "montant": 54852484.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2021-08-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3.COLLECTE PORTE À PORTE DÉCHETS MÉNAGERS / LE 15E  LOT 5",
+      "montant": 54454149.99,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2021-08-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Collecte en porte à porte des déchets ménagers et assimilés, collecte des déchets alimentaires des marchés et de points d’apport volontaire, et mise à disposition de collecte en 6 lots séparés. - Collecte en porte à porte des déchets ménagers et assimilés",
+      "montant": 51556485.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2021-08-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3.COLLECTE,PORTE À PORTE DÉCHETS MÉNAGERS/ LE 13E LOT 4",
+      "montant": 51372402.19,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2021-08-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4 ACBC METALL/SERRURERIE ETABLTS PUBLICS VDP LOT1 MULTIATT",
+      "montant": 50400009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-01-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4 ACBC METALL/SERRURERIE ETABLTS PUBLICS VDP LOT1 MULTIATT",
+      "montant": 50400009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-01-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4 ACBC METALL/SERRURERIE ETABLTS PUBLICS VDP LOT1 MULTIATT",
+      "montant": 50400009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-01-22",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "FOURNITURE ELECTRICITE LOT 2 VERTE PREMIUM",
+      "montant": 48000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2021-11-17",
+      "procedure": null
+    },
+    {
+      "objet": "SA3.TRVX INF ARR CTRE (1,2,3,4,4,9,10)N OUEST(8,17,18)LOT2",
+      "montant": 46000009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-04-29",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre à bons de commande de réalisation des travaux de voirie pour des aménagements cyclables prévus dans la mandature 2020-2026 - Travaux d’infrastructure – Arrondissements du Centre (1er, 2e, 3, 4e, 9e et 10e) et du Nord-Ouest (8e, 17e et 18e) ",
+      "montant": 45492000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-04-29",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3-LOT2-TVX DE MISE EN CONFORMITE PMR DES ARRETS DE BUS",
+      "montant": 42955201.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-07-07",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3-LOT2-TVX DE MISE EN CONFORMITE PMR DES ARRETS DE BUS",
+      "montant": 42955201.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-07-07",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3-LOT2-TVX DE MISE EN CONFORMITE PMR DES ARRETS DE BUS",
+      "montant": 42955201.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-07-07",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA1-ACBC - TMMA ET PRESTATIONS ANNEXES",
+      "montant": 42000009.99,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2021-10-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA2/PAN - FOURNITURE DENREES BRUTES ET CONCEPTION DE MENUS",
+      "montant": 40000009.99,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2021-09-28",
+      "procedure": null
+    },
+    {
+      "objet": "SA3 AMENAGT CYCLABLE TVX INFRA ND-EST/SUD-EST/BOIS VINC LOT3",
+      "montant": 37440368.3,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-04-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3 AMENAGT CYCLABLE TVX INFRA ND-EST/SUD-EST/BOIS VINC LOT3",
+      "montant": 37440368.3,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-04-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "REM CONSTRUCTION NEUVE d’un ensemble immobilier situé sur le LOT N1 de la ZAC Clichy-Batignolles Paris 17e (80 lgts sociaux + 151 lgts étudiants + CHU 40 pl. + centre de santé + parking + 3 commerces)",
+      "montant": 37134633.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-11-22",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "Conception de menus et fourniture de denrées brutes pour les établissement d’accueil de la petite enfance de la Ville de Paris",
+      "montant": 36800000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2021-09-28",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "SA4-ACBC/TVX COUVERT.BAT TERTIAIRES PROPRIETES VDP LOT3",
+      "montant": 36000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-27",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4-ACBC/TVX COUVERT.BAT TERTIAIRES PROPRIETES VDP LOT3",
+      "montant": 36000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-12-27",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux de mise en conformité des tunnels Lac Supérieur et Butte Mortemart situés sur le Boulevard Périphérique à Paris 16ème arrondissement ",
+      "montant": 35586916.55,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-14",
+      "procedure": "Procédure avec négociation"
+    },
+    {
+      "objet": "SA3 TUNNELS LAC SUPERIEUR ET BUTTE MORTEMART BD PERIPHERIQUE",
+      "montant": 35572571.78,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-14",
+      "procedure": "Procédure concurrentielle avec négociation"
+    },
+    {
+      "objet": "SA3 TUNNELS LAC SUPERIEUR ET BUTTE MORTEMART BD PERIPHERIQUE",
+      "montant": 35572571.78,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-14",
+      "procedure": "Procédure concurrentielle avec négociation"
+    },
+    {
+      "objet": "SA3 TUNNELS LAC SUPERIEUR ET BUTTE MORTEMART BD PERIPHERIQUE",
+      "montant": 35572571.78,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-14",
+      "procedure": "Procédure concurrentielle avec négociation"
+    },
+    {
+      "objet": "SA3 TUNNELS LAC SUPERIEUR ET BUTTE MORTEMART BD PERIPHERIQUE",
+      "montant": 35572571.78,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-14",
+      "procedure": "Procédure concurrentielle avec négociation"
+    },
+    {
+      "objet": "SA3 TUNNELS LAC SUPERIEUR ET BUTTE MORTEMART BD PERIPHERIQUE",
+      "montant": 35572571.78,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-06-14",
+      "procedure": "Procédure concurrentielle avec négociation"
+    },
+    {
+      "objet": "Accord-cadre à bons de commande de réalisation des travaux de voirie pour des aménagements cyclables prévus dans la mandature 2020-2026 - Travaux d’infrastructure – Arrondissements du Nord-Est (11e, 19e et 20e) et du Sud-Est (12e et 13e) et Bois de Vincen",
+      "montant": 34521000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-04-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4/ACBC-MULTI_LOT1_TVX PEINTURE EQUIPMT PUBLICS VILLE PARIS",
+      "montant": 33600009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-03-09",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4/ACBC-MULTI_LOT1_TVX PEINTURE EQUIPMT PUBLICS VILLE PARIS",
+      "montant": 33600009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-03-09",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4/ACBC-MULTI_LOT1_TVX PEINTURE EQUIPMT PUBLICS VILLE PARIS",
+      "montant": 33600009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-03-09",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4/ACBC-MULTI_LOT1_TVX PEINTURE EQUIPMT PUBLICS VILLE PARIS",
+      "montant": 33600009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-03-09",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4/ACBC-MULTI_LOT1_TVX PEINTURE EQUIPMT PUBLICS VILLE PARIS",
+      "montant": 33600009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-03-09",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3 COLLECTE DU VERRE EN PORTE A PORTE LOT 2",
+      "montant": 32544009.99,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2021-08-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA2 ACBC PLACES D’ACCUEIL PETITE ENFANCE EN ETS PRIVES  RG2",
+      "montant": 32023869.99,
+      "categorie": "Santé & Social",
+      "titulaire": "",
+      "date": "2021-07-02",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "SA2 ACBC PLACES D’ACCUEIL PETITE ENFANCE EN ETS PRIVES RG4",
+      "montant": 32023869.99,
+      "categorie": "Santé & Social",
+      "titulaire": "",
+      "date": "2021-07-02",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "SA2 ACBC PLACES ACCUEIL ETABLISSTS PRIVES PETITE ENFANCE RG3",
+      "montant": 32023869.99,
+      "categorie": "Santé & Social",
+      "titulaire": "",
+      "date": "2021-07-02",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "SA2 ACBC PLACES ACCUEIL ETABLISSTS PRIVES PETITE ENFANCE RG1",
+      "montant": 32023869.99,
+      "categorie": "Santé & Social",
+      "titulaire": "",
+      "date": "2021-07-02",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "SA2 ACBC PLACES ACCUEIL ETABLISSTS PRIVES PETITE ENFANCE RG6",
+      "montant": 32023864.99,
+      "categorie": "Santé & Social",
+      "titulaire": "",
+      "date": "2021-07-02",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "SA2 ACBC PLACES ACCUEIL ETABLISSTS PRIVES PETITE ENFANCE RG5",
+      "montant": 32023864.99,
+      "categorie": "Santé & Social",
+      "titulaire": "",
+      "date": "2021-07-02",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "SA4 ACBC APPAREILS ELEVATEURS EQUIPTS PUBLICS ET ERP LOT1",
+      "montant": 32000009.99,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2021-11-19",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4 ACBC APPAREILS ELEVATEURS EQUIPTS PUBLICS ET ERP LOT1",
+      "montant": 32000009.99,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2021-11-19",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4 ACBC APPAREILS ELEVATEURS EQUIPTS PUBLICS ET ERP LOT1",
+      "montant": 32000009.99,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2021-11-19",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4 ACBC APPAREILS ELEVATEURS EQUIPTS PUBLICS ET ERP LOT1",
+      "montant": 32000009.99,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "",
+      "date": "2021-11-19",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accord-cadre à bons de commande de tierce maintenance multi-applications et prestations annexes. - Les prestations Tierce Maintenance Applicative ont pour objet principal le maintien en condition opérationnelle et les adaptations du parc applicatif des appl",
+      "montant": 31973360.0,
+      "categorie": "Informatique & Télécom",
+      "titulaire": "",
+      "date": "2021-10-11",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3 COLLECTE DU VERRE EN PORTE A PORTE LOT1",
+      "montant": 31207725.99,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2021-08-03",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3 COLLECTE DE VERRE EN PORTE A PORTE LOT 3",
+      "montant": 30708009.99,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2021-08-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3-LOT 6-TVX ENTR. SOLS ESP. VERTS BOIS BOUL. SITES 78 94",
+      "montant": 30000009.99,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2021-07-07",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA3-LOT1-TVX DE MISE EN CONFORMITE PMR DES ARRETS DE BUS",
+      "montant": 30000009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-07-07",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "MPG DE PERFORMANCE ENERGETIQUE DE 60 ECOLES",
+      "montant": 29593758.03,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "None",
+      "procedure": "Dialogue compétitif"
+    },
+    {
+      "objet": "SA1 LOT3 PRESTATIONS SURVEILLANCE ET SURETE SITES VDP",
+      "montant": 28800009.99,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-08-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA1 LOT3 PRESTATIONS SURVEILLANCE ET SURETE SITES VDP",
+      "montant": 28800009.99,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-08-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4-ACBC-LOT1-SOLS SPORTIF 1 A 6 9,10,13,14,18,19; 91,93,95",
+      "montant": 27948559.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-05-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4-ACBC-LOT1-SOLS SPORTIF 1 A 6 9,10,13,14,18,19; 91,93,95",
+      "montant": 27948559.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-05-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4.TCE LOGEMENTS DE FONCTION LOT3",
+      "montant": 27200009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-02-08",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4.TCE LOGEMENTS DE FONCTION LOT3",
+      "montant": 27200009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-02-08",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4 ACBC TVX ETANCHEITE/VEGETAL.BAT.ADM./LOCAUX PROF.LOT1",
+      "montant": 27000009.99,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2021-04-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4 ACBC PRESTATIONS DIAGNOSTICS/PRECONISATIONS STRUCTURES",
+      "montant": 26300009.99,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-10-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4 ACBC PRESTATIONS DIAGNOSTICS/PRECONISATIONS STRUCTURES",
+      "montant": 26300009.99,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-10-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4 ACBC PRESTATIONS DIAGNOSTICS/PRECONISATIONS STRUCTURES",
+      "montant": 26300009.99,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-10-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4 ACBC PRESTATIONS DIAGNOSTICS/PRECONISATIONS STRUCTURES",
+      "montant": 26300009.99,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-10-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "SA4 ACBC PRESTATIONS DIAGNOSTICS/PRECONISATIONS STRUCTURES",
+      "montant": 26300009.99,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2021-10-14",
+      "procedure": "Appel d'offres ouvert"
+    }
+  ]
+}

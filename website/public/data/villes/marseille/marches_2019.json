@@ -1,0 +1,224 @@
+{
+  "annee": 2019,
+  "city_slug": "marseille",
+  "total_montant": 174257505,
+  "total_marches": 362,
+  "categories": [
+    {
+      "categorie": "Construction & Bâtiment",
+      "nb_marches": 26,
+      "montant_total": 19190408,
+      "montant_moyen": 738093
+    },
+    {
+      "categorie": "Informatique & Télécom",
+      "nb_marches": 58,
+      "montant_total": 18665703,
+      "montant_moyen": 321822
+    },
+    {
+      "categorie": "Transport & Véhicules",
+      "nb_marches": 14,
+      "montant_total": 18904375,
+      "montant_moyen": 1350312
+    },
+    {
+      "categorie": "Environnement & Propreté",
+      "nb_marches": 36,
+      "montant_total": 20303498,
+      "montant_moyen": 563986
+    },
+    {
+      "categorie": "Énergie",
+      "nb_marches": 68,
+      "montant_total": 19809247,
+      "montant_moyen": 291312
+    },
+    {
+      "categorie": "Services professionnels",
+      "nb_marches": 30,
+      "montant_total": 19280573,
+      "montant_moyen": 642686
+    },
+    {
+      "categorie": "Santé & Social",
+      "nb_marches": 22,
+      "montant_total": 18684781,
+      "montant_moyen": 849308
+    },
+    {
+      "categorie": "Alimentation & Restauration",
+      "nb_marches": 55,
+      "montant_total": 18791956,
+      "montant_moyen": 341672
+    },
+    {
+      "categorie": "Autres",
+      "nb_marches": 53,
+      "montant_total": 20626964,
+      "montant_moyen": 389188
+    }
+  ],
+  "top_marches": [
+    {
+      "objet": "Marché Marseille #3 - Alimentation & Restauration",
+      "montant": 1694714,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "Entreprise C6",
+      "date": "2019-07-09",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Marché Marseille #11 - Santé & Social",
+      "montant": 1693081,
+      "categorie": "Services professionnels",
+      "titulaire": "Entreprise K7",
+      "date": "2019-02-01",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Marché Marseille #5 - Construction & Bâtiment",
+      "montant": 1669403,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "Entreprise E4",
+      "date": "2019-08-26",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Marché Marseille #6 - Informatique & Télécom",
+      "montant": 1439526,
+      "categorie": "Santé & Social",
+      "titulaire": "Entreprise F8",
+      "date": "2019-03-21",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Marché Marseille #9 - Construction & Bâtiment",
+      "montant": 1391086,
+      "categorie": "Services professionnels",
+      "titulaire": "Entreprise I9",
+      "date": "2019-10-21",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Marché Marseille #10 - Informatique & Télécom",
+      "montant": 1353756,
+      "categorie": "Services professionnels",
+      "titulaire": "Entreprise J3",
+      "date": "2019-11-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Marché Marseille #18 - Services professionnels",
+      "montant": 1146268,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "Entreprise R4",
+      "date": "2019-09-06",
+      "procedure": "Marché négocié"
+    },
+    {
+      "objet": "Marché Marseille #8 - Alimentation & Restauration",
+      "montant": 1033548,
+      "categorie": "Autres",
+      "titulaire": "Entreprise H9",
+      "date": "2019-12-14",
+      "procedure": "Marché négocié"
+    },
+    {
+      "objet": "Marché Marseille #16 - Environnement & Propreté",
+      "montant": 928712,
+      "categorie": "Services professionnels",
+      "titulaire": "Entreprise P8",
+      "date": "2019-02-15",
+      "procedure": "Marché négocié"
+    },
+    {
+      "objet": "Marché Marseille #2 - Environnement & Propreté",
+      "montant": 856502,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "Entreprise B7",
+      "date": "2019-06-10",
+      "procedure": "Marché négocié"
+    },
+    {
+      "objet": "Marché Marseille #13 - Environnement & Propreté",
+      "montant": 799510,
+      "categorie": "Santé & Social",
+      "titulaire": "Entreprise M8",
+      "date": "2019-11-19",
+      "procedure": "Marché négocié"
+    },
+    {
+      "objet": "Marché Marseille #1 - Services professionnels",
+      "montant": 789982,
+      "categorie": "Santé & Social",
+      "titulaire": "Entreprise A3",
+      "date": "2019-05-11",
+      "procedure": "Marché négocié"
+    },
+    {
+      "objet": "Marché Marseille #19 - Transport & Véhicules",
+      "montant": 602647,
+      "categorie": "Santé & Social",
+      "titulaire": "Entreprise S8",
+      "date": "2019-04-26",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Marché Marseille #17 - Alimentation & Restauration",
+      "montant": 581930,
+      "categorie": "Énergie",
+      "titulaire": "Entreprise Q1",
+      "date": "2019-12-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Marché Marseille #7 - Environnement & Propreté",
+      "montant": 468349,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "Entreprise G7",
+      "date": "2019-07-03",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Marché Marseille #12 - Énergie",
+      "montant": 415732,
+      "categorie": "Autres",
+      "titulaire": "Entreprise L9",
+      "date": "2019-10-23",
+      "procedure": "Marché négocié"
+    },
+    {
+      "objet": "Marché Marseille #20 - Transport & Véhicules",
+      "montant": 354654,
+      "categorie": "Santé & Social",
+      "titulaire": "Entreprise T7",
+      "date": "2019-01-24",
+      "procedure": "Marché négocié"
+    },
+    {
+      "objet": "Marché Marseille #14 - Autres",
+      "montant": 293528,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "Entreprise N8",
+      "date": "2019-02-10",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Marché Marseille #15 - Informatique & Télécom",
+      "montant": 234059,
+      "categorie": "Transport & Véhicules",
+      "titulaire": "Entreprise O6",
+      "date": "2019-05-11",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Marché Marseille #4 - Services professionnels",
+      "montant": 230318,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "Entreprise D9",
+      "date": "2019-03-22",
+      "procedure": "Marché négocié"
+    }
+  ]
+}

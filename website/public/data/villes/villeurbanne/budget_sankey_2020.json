@@ -1,0 +1,296 @@
+{
+  "year": 2020,
+  "type_budget": "execute",
+  "city_slug": "villeurbanne",
+  "city_name": "Villeurbanne",
+  "dataStatus": "COMPLET",
+  "totals": {
+    "recettes": 198420771.83,
+    "depenses": 189176667.7,
+    "solde": 9244104.13
+  },
+  "nodes": [
+    {
+      "name": "Fiscalité",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations État",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Subventions investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits des services",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits exceptionnels",
+      "category": "revenue"
+    },
+    {
+      "name": "Autres produits",
+      "category": "revenue"
+    },
+    {
+      "name": "Emprunts",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits financiers",
+      "category": "revenue"
+    },
+    {
+      "name": "Budget Villeurbanne",
+      "category": "central"
+    },
+    {
+      "name": "Personnel",
+      "category": "expense"
+    },
+    {
+      "name": "Investissements",
+      "category": "expense"
+    },
+    {
+      "name": "Transferts & subventions",
+      "category": "expense"
+    },
+    {
+      "name": "Fonctionnement courant",
+      "category": "expense"
+    },
+    {
+      "name": "Amortissements",
+      "category": "expense"
+    },
+    {
+      "name": "Dette",
+      "category": "expense"
+    },
+    {
+      "name": "Charges fiscales",
+      "category": "expense"
+    },
+    {
+      "name": "Charges exceptionnelles",
+      "category": "expense"
+    },
+    {
+      "name": "Charges financières",
+      "category": "expense"
+    }
+  ],
+  "links": [
+    {
+      "source": "Fiscalité",
+      "target": "Budget Villeurbanne",
+      "value": 110217507.38
+    },
+    {
+      "source": "Dotations État",
+      "target": "Budget Villeurbanne",
+      "value": 32837090.72
+    },
+    {
+      "source": "Dotations investissement",
+      "target": "Budget Villeurbanne",
+      "value": 27005221.18
+    },
+    {
+      "source": "Subventions investissement",
+      "target": "Budget Villeurbanne",
+      "value": 16464934.85
+    },
+    {
+      "source": "Produits des services",
+      "target": "Budget Villeurbanne",
+      "value": 9129215.8
+    },
+    {
+      "source": "Produits exceptionnels",
+      "target": "Budget Villeurbanne",
+      "value": 1776498.61
+    },
+    {
+      "source": "Autres produits",
+      "target": "Budget Villeurbanne",
+      "value": 590289.29
+    },
+    {
+      "source": "Emprunts",
+      "target": "Budget Villeurbanne",
+      "value": 400000.0
+    },
+    {
+      "source": "Produits financiers",
+      "target": "Budget Villeurbanne",
+      "value": 14.0
+    },
+    {
+      "source": "Budget Villeurbanne",
+      "target": "Personnel",
+      "value": 76006850.14
+    },
+    {
+      "source": "Budget Villeurbanne",
+      "target": "Investissements",
+      "value": 50085286.18
+    },
+    {
+      "source": "Budget Villeurbanne",
+      "target": "Transferts & subventions",
+      "value": 23999736.66
+    },
+    {
+      "source": "Budget Villeurbanne",
+      "target": "Fonctionnement courant",
+      "value": 20063499.61
+    },
+    {
+      "source": "Budget Villeurbanne",
+      "target": "Amortissements",
+      "value": 11104661.59
+    },
+    {
+      "source": "Budget Villeurbanne",
+      "target": "Dette",
+      "value": 4394608.2
+    },
+    {
+      "source": "Budget Villeurbanne",
+      "target": "Charges fiscales",
+      "value": 1922482.18
+    },
+    {
+      "source": "Budget Villeurbanne",
+      "target": "Charges exceptionnelles",
+      "value": 1350104.66
+    },
+    {
+      "source": "Budget Villeurbanne",
+      "target": "Charges financières",
+      "value": 249438.48
+    }
+  ],
+  "drilldown": {
+    "revenue": {
+      "Fiscalité": [
+        {
+          "name": "Fiscalité",
+          "value": 110217507.38
+        }
+      ],
+      "Dotations État": [
+        {
+          "name": "Dotations État",
+          "value": 32837090.72
+        }
+      ],
+      "Dotations investissement": [
+        {
+          "name": "Dotations investissement",
+          "value": 27005221.18
+        }
+      ],
+      "Subventions investissement": [
+        {
+          "name": "Subventions investissement",
+          "value": 16464934.85
+        }
+      ],
+      "Produits des services": [
+        {
+          "name": "Produits des services",
+          "value": 9129215.8
+        }
+      ],
+      "Produits exceptionnels": [
+        {
+          "name": "Produits exceptionnels",
+          "value": 1776498.61
+        }
+      ],
+      "Autres produits": [
+        {
+          "name": "Autres produits",
+          "value": 590289.29
+        }
+      ],
+      "Emprunts": [
+        {
+          "name": "Emprunts",
+          "value": 400000.0
+        }
+      ],
+      "Produits financiers": [
+        {
+          "name": "Produits financiers",
+          "value": 14.0
+        }
+      ]
+    },
+    "expenses": {
+      "Personnel": [
+        {
+          "name": "Personnel",
+          "value": 76006850.14
+        }
+      ],
+      "Investissements": [
+        {
+          "name": "Investissements",
+          "value": 50085286.18
+        }
+      ],
+      "Transferts & subventions": [
+        {
+          "name": "Transferts & subventions",
+          "value": 23999736.66
+        }
+      ],
+      "Fonctionnement courant": [
+        {
+          "name": "Fonctionnement courant",
+          "value": 20063499.61
+        }
+      ],
+      "Amortissements": [
+        {
+          "name": "Amortissements",
+          "value": 11104661.59
+        }
+      ],
+      "Dette": [
+        {
+          "name": "Dette",
+          "value": 4394608.2
+        }
+      ],
+      "Charges fiscales": [
+        {
+          "name": "Charges fiscales",
+          "value": 1922482.18
+        }
+      ],
+      "Charges exceptionnelles": [
+        {
+          "name": "Charges exceptionnelles",
+          "value": 1350104.66
+        }
+      ],
+      "Charges financières": [
+        {
+          "name": "Charges financières",
+          "value": 249438.48
+        }
+      ]
+    }
+  }
+}

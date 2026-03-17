@@ -1,0 +1,864 @@
+{
+  "annee": 2022,
+  "city_slug": "lyon",
+  "total_montant": 2066541609.83,
+  "total_marches": 2366,
+  "categories": [
+    {
+      "categorie": "Construction & Bâtiment",
+      "nb_marches": 757,
+      "montant_total": 1023729538.77,
+      "montant_moyen": 1352350.78
+    },
+    {
+      "categorie": "Services professionnels",
+      "nb_marches": 999,
+      "montant_total": 564914588.52,
+      "montant_moyen": 565480.07
+    },
+    {
+      "categorie": "Autres",
+      "nb_marches": 423,
+      "montant_total": 245518289.3,
+      "montant_moyen": 580421.49
+    },
+    {
+      "categorie": "Transport & Véhicules",
+      "nb_marches": 76,
+      "montant_total": 115129833.02,
+      "montant_moyen": 1514866.22
+    },
+    {
+      "categorie": "Environnement & Propreté",
+      "nb_marches": 36,
+      "montant_total": 43130400.0,
+      "montant_moyen": 1198066.67
+    },
+    {
+      "categorie": "Alimentation & Restauration",
+      "nb_marches": 11,
+      "montant_total": 42718270.4,
+      "montant_moyen": 3883479.13
+    },
+    {
+      "categorie": "Informatique & Télécom",
+      "nb_marches": 45,
+      "montant_total": 17923393.24,
+      "montant_moyen": 398297.63
+    },
+    {
+      "categorie": "Énergie",
+      "nb_marches": 18,
+      "montant_total": 13421296.58,
+      "montant_moyen": 745627.59
+    },
+    {
+      "categorie": "Santé & Social",
+      "nb_marches": 1,
+      "montant_total": 56000.0,
+      "montant_moyen": 56000.0
+    }
+  ],
+  "top_marches": [
+    {
+      "objet": "Service de préparation et de livraison de repas à destination des écoles primaires de la ville de Lyon et des ACM Divertisport.",
+      "montant": 41000000.0,
+      "categorie": "Alimentation & Restauration",
+      "titulaire": "",
+      "date": "2022-04-29",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite - Lot 3 : Menuiserie",
+      "montant": 10000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-11-24",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture de produits d’entretien, d’hygiène et de matériels de nettoyage pour les services de la Ville de Lyon",
+      "montant": 9800000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2022-01-21",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture de produits d’entretien, d’hygiène et de matériels de nettoyage pour les services de la Ville de Lyon",
+      "montant": 9800000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2022-01-21",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite LOT 5 : Electricité",
+      "montant": 8200000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-12-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite LOT 5 : Electricité",
+      "montant": 8200000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-11-24",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite LOT 5 : Electricité",
+      "montant": 8200000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-11-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite LOT 5 : Electricité",
+      "montant": 8200000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-11-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite LOT 5 : Electricité",
+      "montant": 8200000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-11-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite - LOT 1 : MAÇONNERIE",
+      "montant": 7800000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-12-19",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite - LOT 1 : MAÇONNERIE",
+      "montant": 7800000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-12-19",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite - LOT 1 : MAÇONNERIE",
+      "montant": 7800000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-12-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite - LOT 1 : MAÇONNERIE",
+      "montant": 7800000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-12-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite - LOT 1 : MAÇONNERIE",
+      "montant": 7800000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-12-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite - LOT 1 : MAÇONNERIE",
+      "montant": 7800000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-12-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite - LOT 1 : MAÇONNERIE",
+      "montant": 7800000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-12-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite - LOT 1 : MAÇONNERIE",
+      "montant": 7800000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-12-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite - LOT 2 Plâtrerie-peinture",
+      "montant": 7600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-11-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite - LOT 2 Plâtrerie-peinture",
+      "montant": 7600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-11-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite - LOT 2 Plâtrerie-peinture",
+      "montant": 7600000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-11-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accueils périscolaires dans les écoles publiques école 3e arrondissement",
+      "montant": 7200000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2022-11-25",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Fourniture d’électricité C2, C3, C4 (EX VRA)",
+      "montant": 6598792.34,
+      "categorie": "Énergie",
+      "titulaire": "",
+      "date": "2022-10-20",
+      "procedure": "Appel d'offres restreint"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite - LOT 17 : ETANCHEITE",
+      "montant": 6440000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-11-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite - LOT 17 : ETANCHEITE",
+      "montant": 6440000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-11-25",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite - LOT 17 : ETANCHEITE",
+      "montant": 6440000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-11-25",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite - LOT 17 : ETANCHEITE",
+      "montant": 6440000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-11-25",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine de l’éclairage public - Lot 03 : travaux électricité sur le patrimoine éclairage public-rive droite",
+      "montant": 6000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-10-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine de l’éclairage public - Lot 04 : travaux electricite sur le patrimoine eclairage public-rive gauche",
+      "montant": 6000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-10-13",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture et maintenance des systèmes de vidéoprotection-Lot 2-Fourniture des systèmes de vidéoprotection",
+      "montant": 6000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2022-09-06",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations de nettoyage de tags, graffitis et affichage sauvage-Lot 1 Tous supports excepté mobilier de jalonnement",
+      "montant": 6000000.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2022-06-09",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Prestations de nettoyage de tags, graffitis et affichage sauvage-Lot 1 Tous supports excepté mobilier de jalonnement",
+      "montant": 6000000.0,
+      "categorie": "Environnement & Propreté",
+      "titulaire": "",
+      "date": "2022-06-07",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture et maintenance des systèmes de vidéoprotection-Lot 2-Fourniture des systèmes de vidéoprotection",
+      "montant": 6000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2022-05-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture et maintenance des systèmes de vidéoprotection-Lot 2-Fourniture des systèmes de vidéoprotection",
+      "montant": 6000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2022-05-20",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture et maintenance des systèmes de vidéoprotection-Lot 2-Fourniture des systèmes de vidéoprotection",
+      "montant": 6000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2022-05-18",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine de l’éclairage public - Lot 03 : travaux électricité sur le patrimoine éclairage public-rive droite",
+      "montant": 6000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-04-29",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine de l’éclairage public - Lot 04 : travaux electricite sur le patrimoine eclairage public-rive gauche",
+      "montant": 6000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-04-29",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux sur le patrimoine de l’éclairage public - Lot 04 : travaux electricite sur le patrimoine eclairage public-rive gauche",
+      "montant": 6000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-04-25",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture et maintenance des systèmes de vidéoprotection-Lot 2-Fourniture des systèmes de vidéoprotection",
+      "montant": 6000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2022-03-10",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Fourniture et maintenance des systèmes de vidéoprotection-Lot 2-Fourniture des systèmes de vidéoprotection",
+      "montant": 6000000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2022-03-10",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Accueils périscolaires dans les écoles publiques Lot 2 Ecoles 7ème arrondissement",
+      "montant": 5400000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2022-11-25",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite - LOT 7 SERRURERIE",
+      "montant": 5000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-11-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite - LOT 7 SERRURERIE",
+      "montant": 5000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-11-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite - LOT 7 SERRURERIE",
+      "montant": 5000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-11-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite - LOT 7 SERRURERIE",
+      "montant": 5000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-11-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite - LOT 7 SERRURERIE",
+      "montant": 5000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-11-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite - LOT 7 SERRURERIE",
+      "montant": 5000000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-11-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travail temporaire dans les crèches municipales",
+      "montant": 5000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2022-11-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travail temporaire dans les crèches municipales",
+      "montant": 5000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2022-11-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travail temporaire dans les crèches municipales",
+      "montant": 5000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2022-11-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travail temporaire dans les crèches municipales",
+      "montant": 5000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2022-11-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travail temporaire dans les crèches municipales",
+      "montant": 5000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2022-11-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travail temporaire dans les crèches municipales",
+      "montant": 5000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2022-11-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travail temporaire dans les crèches municipales",
+      "montant": 5000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2022-11-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travail temporaire dans les crèches municipales",
+      "montant": 5000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2022-11-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travail temporaire dans les crèches municipales",
+      "montant": 5000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2022-11-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travail temporaire dans les crèches municipales",
+      "montant": 5000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2022-11-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travail temporaire dans les crèches municipales",
+      "montant": 5000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2022-11-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travail temporaire dans les crèches municipales",
+      "montant": 5000000.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2022-11-16",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Mandat de maîtrise d’ouvrage pour la conduite d’opérations de rénovation de 3 groupes scolaires : Painlevé, Meynis et Herriot",
+      "montant": 4837500.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2022-08-05",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Mandat de maîtrise d’ouvrage pour la conduite d’opérations de rénovation de 3 groupes scolaires : Painlevé, Meynis et Herriot",
+      "montant": 4837500.0,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2022-08-05",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Mandat de maîtrise d’ouvrage pour la conduite d’opérations de rénovation de 3 groupes scolaires : Painlevé, Meynis et Herriot",
+      "montant": 4801225.83,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2022-11-08",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Mandat de maîtrise d’ouvrage pour la conduite d’opérations de rénovation de 3 groupes scolaires : Painlevé, Meynis et Herriot",
+      "montant": 4801225.83,
+      "categorie": "Services professionnels",
+      "titulaire": "",
+      "date": "2022-08-18",
+      "procedure": "Procédure adaptée"
+    },
+    {
+      "objet": "Mandat de maîtrise d’ouvrage - établissements d’accueil de jeunes enfants",
+      "montant": 4536853.33,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2022-05-09",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Acquisition d’horodateurs et gestion centralisée associée",
+      "montant": 4500000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2022-08-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Acquisition d’horodateurs et gestion centralisée associée",
+      "montant": 4500000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2022-08-02",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite - LOT 11 CARRELAGE",
+      "montant": 4400000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-11-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite - LOT 11 CARRELAGE",
+      "montant": 4400000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-11-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite - LOT 11 CARRELAGE",
+      "montant": 4400000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-11-28",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite - LOT 9 : COURS VRD",
+      "montant": 4400000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-11-25",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Travaux patrimoine 5-9 Rive droite - LOT 9 : COURS VRD",
+      "montant": 4400000.0,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-11-25",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Déplacements professionnels-Lot 1-Déplacements individuels ou de petits groupes",
+      "montant": 4400000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2022-09-19",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Déplacements professionnels-Lot 1-Déplacements individuels ou de petits groupes",
+      "montant": 4400000.0,
+      "categorie": "Autres",
+      "titulaire": "",
+      "date": "2022-01-17",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4272902.7,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-09-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4272902.7,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-09-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4272902.7,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-09-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4272902.7,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-09-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4272902.7,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-09-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4272902.7,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-09-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4272902.7,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-09-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4272902.7,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-09-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4272902.7,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-09-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4272902.7,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-09-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4272902.7,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-09-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4272902.7,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-09-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4272902.7,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-09-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4272902.7,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-09-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4272902.7,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-09-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4272902.7,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-09-23",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4241932.74,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-11-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4241932.74,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-11-14",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4241932.74,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-09-27",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4241932.74,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-09-27",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-09-12",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-09-12",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-09-06",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-09-06",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-12",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-12",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-04",
+      "procedure": "Appel d'offres ouvert"
+    },
+    {
+      "objet": "Groupe scolaire Ginkgo - Construction Lot 03 Gros oeuvre plancher mixte bois béton",
+      "montant": 4181187.64,
+      "categorie": "Construction & Bâtiment",
+      "titulaire": "",
+      "date": "2022-07-04",
+      "procedure": "Appel d'offres ouvert"
+    }
+  ]
+}
