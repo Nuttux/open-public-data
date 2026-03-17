@@ -152,8 +152,11 @@ function LocaleToggle({ className = '' }: { className?: string }) {
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { locale } = useLocale();
   const track = useTrack();
   const t = useT();
+
+  const pathWithoutLocale = pathname.replace(/^\/(fr|en)/, '') || '/';
 
   return (
     <>
@@ -166,7 +169,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16">
             {/* Logo / Titre */}
             <Link
-              href="/"
+              href={`/${locale}/`}
               className="flex items-center gap-3 hover:opacity-80 transition-opacity shrink-0"
             >
               <h1 className="text-lg font-bold text-slate-100">
@@ -177,11 +180,12 @@ export default function Navbar() {
             {/* Liens de navigation desktop */}
             <div className="flex items-center gap-0.5">
               {NAV_LINK_DEFS.map((link) => {
-                const isActive = pathname === link.href;
+                const localizedHref = link.href === '/' ? `/${locale}/` : `/${locale}${link.href}`;
+                const isActive = pathWithoutLocale === link.href || (link.href !== '/' && pathWithoutLocale.startsWith(link.href));
                 return (
                   <Link
                     key={link.href}
-                    href={link.href}
+                    href={localizedHref}
                     onClick={() => track('nav_click', { destination: link.href, nav_type: 'desktop_top' })}
                     className={`
                       flex items-center gap-1.5 px-2 lg:px-2.5 py-2 rounded-lg text-xs font-medium
@@ -213,7 +217,7 @@ export default function Navbar() {
       <header className="md:hidden bg-slate-900/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50">
         <div className="flex items-center justify-between h-12 px-4">
           <Link
-            href="/"
+            href={`/${locale}/`}
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
             <h1 className="text-base font-bold text-slate-100">
@@ -238,11 +242,12 @@ export default function Navbar() {
       >
         <div className="grid grid-cols-10">
           {NAV_LINK_DEFS.map((link) => {
-            const isActive = pathname === link.href;
+            const localizedHref = link.href === '/' ? `/${locale}/` : `/${locale}${link.href}`;
+            const isActive = pathWithoutLocale === link.href || (link.href !== '/' && pathWithoutLocale.startsWith(link.href));
             return (
               <Link
                 key={link.href}
-                href={link.href}
+                href={localizedHref}
                 role="tab"
                 aria-selected={isActive}
                 onClick={() => track('nav_click', { destination: link.href, nav_type: 'mobile_bottom' })}
