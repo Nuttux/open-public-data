@@ -111,7 +111,7 @@ export default function KpiTilesSection() {
         const budget: TileData[] = [
           {
             label: `${t('kpi.daily_budget')}${budgetSuffix}`,
-            value: `${perCapitaDay.toFixed(1).replace('.', ',')} €/jour`,
+            value: `${perCapitaDay.toFixed(1).replace('.', ',')} €${t('kpi.per_day_suffix')}`,
             sub: `${t('kpi.per_parisian')} · ${formatNumber(Math.round(latest.totals.depenses / TOTAL_POPULATION))} €${t('kpi.per_year')}`,
             href: '/budget',
             color: 'border-blue-500/40',
@@ -119,14 +119,14 @@ export default function KpiTilesSection() {
           {
             label: `${t('kpi.major_projects')} ${latest.year}${budgetSuffix}`,
             value: formatEuroCompact(investDepenses),
-            sub: `${investPct.toFixed(0)}% du budget · ${formatNumber(investPerCapita)} €/hab`,
+            sub: `${investPct.toFixed(0)}${t('kpi.of_budget')} · ${formatNumber(investPerCapita)} ${t('kpi.per_hab')}`,
             href: '/investissements',
             color: 'border-emerald-500/40',
           },
           {
             label: `${t('kpi.paris_savings')} ${latest.year}${budgetSuffix}`,
             value: formatEuroCompact(epargne),
-            sub: `${epargnePct.toFixed(1)}% des recettes courantes`,
+            sub: `${epargnePct.toFixed(1)}${t('kpi.of_revenue')}`,
             href: '/budget?tab=tendances',
             color: epargne > 0 ? 'border-emerald-500/40' : 'border-red-500/40',
           },
@@ -156,20 +156,20 @@ export default function KpiTilesSection() {
           {
             label: `${t('kpi.grants_label')} ${subYears[0]}`,
             value: formatEuroCompact(subLatest.montant_total),
-            sub: `${formatNumber(subLatest.nb_subventions)} versements · ${formatNumber(subPerCapita)} €/hab`,
+            sub: `${formatNumber(subLatest.nb_subventions)} ${t('kpi.payments')} · ${formatNumber(subPerCapita)} ${t('kpi.per_hab')}`,
             href: '/subventions',
             color: 'border-purple-500/40',
           },
           {
             label: `${t('kpi.housing_funded')} ${latestLogYear}`,
-            value: `${formatNumber(nbLogementsYear)} logements`,
-            sub: `dont ${pctPLAI.toFixed(0)}% très sociaux · ${logPer1000.toFixed(1)} / 1 000 hab`,
+            value: `${formatNumber(nbLogementsYear)} ${t('kpi.housing_units')}`,
+            sub: t('kpi.housing_sub').replace('{pct}', pctPLAI.toFixed(0)).replace('{per1000}', logPer1000.toFixed(1)),
             href: '/logements',
             color: 'border-amber-500/40',
           },
           {
             label: `${t('kpi.public_procurement')} ${marYears[0]}`,
-            value: `${formatNumber(marLatest.nb_marches)} marchés`,
+            value: t('kpi.contracts_count').replace('{count}', formatNumber(marLatest.nb_marches)),
             sub: t('kpi.contracts_notified'),
             href: '/marches-publics',
             color: 'border-teal-500/40',

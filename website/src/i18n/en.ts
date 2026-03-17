@@ -581,6 +581,14 @@ const en: Record<string, string> = {
   'kpi.forecast': ' (forecast)',
   'kpi.per_parisian': 'per Parisian',
   'kpi.per_year': '/year',
+  'kpi.per_day_suffix': '/day',
+  'kpi.of_budget': '% of budget',
+  'kpi.per_hab': '€/resident',
+  'kpi.of_revenue': '% of current revenue',
+  'kpi.payments': 'payments',
+  'kpi.housing_units': 'housing units',
+  'kpi.housing_sub': 'of which {pct}% very social · {per1000} / 1,000 residents',
+  'kpi.contracts_count': '{count} contracts',
 
   // ── Shared AnnuelTab ─────────────────────────────────────────────────────
   'annuel.part_du_total': 'Share of total',

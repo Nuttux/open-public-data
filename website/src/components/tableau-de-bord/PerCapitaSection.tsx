@@ -61,6 +61,13 @@ interface ThematiqueRow {
   color: string;
 }
 
+/** Translate a data node name for display, falling back to original */
+function tn(name: string, t: (k: string) => string): string {
+  const key = `node.${name}`;
+  const val = t(key);
+  return val === key ? name : val;
+}
+
 export default function PerCapitaSection({ data }: PerCapitaSectionProps) {
   const isMobile = useIsMobile();
   const t = useT();
@@ -101,7 +108,7 @@ export default function PerCapitaSection({ data }: PerCapitaSectionProps) {
         const p = params as { name: string };
         const r = rows.find((row) => row.name === p.name);
         if (!r) return '';
-        return `<strong>${r.name}</strong><br/>${formatEuroCompact(r.total)} (${r.pct.toFixed(1)}%)<br/>${formatNumber(Math.round(r.perCapita))} ${t('percapita.tooltip_per_year')}`;
+        return `<strong>${tn(r.name, t)}</strong><br/>${formatEuroCompact(r.total)} (${r.pct.toFixed(1)}%)<br/>${formatNumber(Math.round(r.perCapita))} ${t('percapita.tooltip_per_year')}`;
       },
     },
     series: [{
@@ -116,7 +123,7 @@ export default function PerCapitaSection({ data }: PerCapitaSectionProps) {
         color: '#64748b',
         formatter: (params: unknown) => {
           const p = params as { name: string; percent?: number };
-          return `${p.name}\n${p.percent?.toFixed(1)}%`;
+          return `${tn(p.name, t)}\n${p.percent?.toFixed(1)}%`;
         },
       },
       emphasis: {
@@ -175,7 +182,7 @@ export default function PerCapitaSection({ data }: PerCapitaSectionProps) {
                 className="w-2.5 h-2.5 rounded-full shrink-0"
                 style={{ backgroundColor: r.color }}
               />
-              <p className="text-xs font-medium text-slate-400 truncate">{r.name}</p>
+              <p className="text-xs font-medium text-slate-400 truncate">{tn(r.name, t)}</p>
             </div>
             <p className="text-lg font-bold text-slate-100">
               {formatNumber(Math.round(r.perCapita))} €<span className="text-xs font-normal text-slate-400">{t('percapita.per_year_suffix')}</span>
