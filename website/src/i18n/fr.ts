@@ -811,9 +811,9 @@ const fr: Record<string, string> = {
   'percapita.subtitle': '{year} ({budgetLabel}), rapporté à chaque Parisien · Population : {pop} hab. (INSEE 2023)',
   'percapita.funded_by': 'Financé par la fiscalité locale, les dotations de l\'État et l\'emprunt',
   'percapita.per_year': 'Par habitant / an',
-  'percapita.per_day': 'Par habitant / jour',
+  'percapita.per_month': 'Par habitant / mois',
   'percapita.per_year_suffix': '/an',
-  'percapita.pct_budget_daily': '{pct}% du budget · {daily} €/jour',
+  'percapita.pct_budget_monthly': '{pct}% du budget · {monthly} €/mois',
   'percapita.tooltip_per_year': '€/hab/an',
 
   // ── MarchesFilters ─────────────────────────────────────────────────────────

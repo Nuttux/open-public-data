@@ -56,7 +56,7 @@ interface ThematiqueRow {
   name: string;
   total: number;
   perCapita: number;
-  perDay: number;
+  perMonth: number;
   pct: number;
   color: string;
 }
@@ -82,7 +82,7 @@ export default function PerCapitaSection({ data }: PerCapitaSectionProps) {
         name: link.target,
         total: link.value,
         perCapita: link.value / TOTAL_POPULATION,
-        perDay: link.value / TOTAL_POPULATION / 365,
+        perMonth: link.value / TOTAL_POPULATION / 12,
         pct: totalDepenses > 0 ? (link.value / totalDepenses) * 100 : 0,
         color: THEME_COLORS[link.target] || FALLBACK_COLORS[i % FALLBACK_COLORS.length],
       }))
@@ -93,7 +93,7 @@ export default function PerCapitaSection({ data }: PerCapitaSectionProps) {
     () => rows.reduce((s, r) => s + r.perCapita, 0),
     [rows],
   );
-  const totalPerDay = totalPerCapita / 365;
+  const totalPerMonth = totalPerCapita / 12;
 
   const budgetLabel = data.type_budget === 'vote' ? t('percapita.voted_budget') : t('percapita.executed_budget');
 
@@ -108,7 +108,7 @@ export default function PerCapitaSection({ data }: PerCapitaSectionProps) {
         const p = params as { name: string };
         const r = rows.find((row) => row.name === p.name);
         if (!r) return '';
-        return `<strong>${tn(r.name, t)}</strong><br/>${formatEuroCompact(r.total)} (${r.pct.toFixed(1)}%)<br/>${formatNumber(Math.round(r.perCapita))} ${t('percapita.tooltip_per_year')}`;
+        return `<strong>${tn(r.name, t)}</strong><br/>${formatEuroCompact(r.total)} (${r.pct.toFixed(1)}%)<br/>${formatNumber(Math.round(r.perCapita))} ${t('percapita.tooltip_per_year')} · ${r.perMonth.toFixed(1)} €/mois`;
       },
     },
     series: [{
@@ -158,9 +158,9 @@ export default function PerCapitaSection({ data }: PerCapitaSectionProps) {
           </p>
         </div>
         <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-5">
-          <p className="text-xs text-slate-400 uppercase tracking-wide mb-1">{t('percapita.per_day')}</p>
-          <p className="text-3xl sm:text-4xl font-extrabold text-blue-600">
-            ~{totalPerDay.toFixed(1).replace('.', ',')} €
+          <p className="text-xs text-slate-400 uppercase tracking-wide mb-1">{t('percapita.per_month')}</p>
+          <p className="text-3xl sm:text-4xl font-extrabold text-blue-400">
+            ~{totalPerMonth.toFixed(0)} €
           </p>
         </div>
       </div>
@@ -188,7 +188,7 @@ export default function PerCapitaSection({ data }: PerCapitaSectionProps) {
               {formatNumber(Math.round(r.perCapita))} €<span className="text-xs font-normal text-slate-400">{t('percapita.per_year_suffix')}</span>
             </p>
             <p className="text-[11px] text-slate-400 mt-0.5">
-              {t('percapita.pct_budget_daily').replace('{pct}', r.pct.toFixed(1)).replace('{daily}', r.perDay.toFixed(2))}
+              {t('percapita.pct_budget_monthly').replace('{pct}', r.pct.toFixed(1)).replace('{monthly}', r.perMonth.toFixed(1))}
             </p>
           </div>
         ))}
