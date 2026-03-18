@@ -95,7 +95,6 @@ export default function PerCapitaSection({ data }: PerCapitaSectionProps) {
   );
   const totalPerMonth = totalPerCapita / 12;
 
-  const budgetLabel = data.type_budget === 'vote' ? t('percapita.voted_budget') : t('percapita.executed_budget');
 
   // Horizontal stacked bar chart
   const chartOption = useMemo<EChartsOption>(() => ({
@@ -139,35 +138,30 @@ export default function PerCapitaSection({ data }: PerCapitaSectionProps) {
 
   return (
     <section>
-      <h2 className="text-xl sm:text-2xl font-bold text-slate-100 mb-2">
+      <h2 className="text-xl sm:text-2xl font-bold text-slate-100 mb-6">
         {t('percapita.title')}
       </h2>
-      <p className="text-sm text-slate-400 mb-1">
-        {t('percapita.subtitle').replace('{year}', String(data.year)).replace('{budgetLabel}', budgetLabel).replace('{pop}', formatNumber(TOTAL_POPULATION))}
-      </p>
-      <p className="text-xs text-slate-500 mb-6">
-        {t('percapita.funded_by')}
-      </p>
 
       {/* Hero KPI */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 mb-8">
-        <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-5">
-          <p className="text-xs text-slate-400 uppercase tracking-wide mb-1">{t('percapita.per_year')}</p>
-          <p className="text-3xl sm:text-4xl font-extrabold text-slate-100">
+      <div className="grid grid-cols-2 gap-3 mb-6">
+        <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-4">
+          <p className="text-[10px] text-slate-400 uppercase tracking-wide mb-2">/an</p>
+          <p className="text-2xl sm:text-3xl font-extrabold text-slate-100">
             {formatNumber(Math.round(totalPerCapita))} €
           </p>
         </div>
-        <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-5">
-          <p className="text-xs text-slate-400 uppercase tracking-wide mb-1">{t('percapita.per_month')}</p>
-          <p className="text-3xl sm:text-4xl font-extrabold text-blue-400">
+        <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-4">
+          <p className="text-[10px] text-slate-400 uppercase tracking-wide mb-2">/mois</p>
+          <p className="text-2xl sm:text-3xl font-extrabold text-blue-400">
             ~{totalPerMonth.toFixed(0)} €
           </p>
         </div>
       </div>
 
-      {/* Donut chart */}
-      <div className="bg-slate-800/30 rounded-xl border border-slate-700/50 p-4 mb-6">
-        <ReactECharts option={chartOption} style={{ height: isMobile ? 300 : 380 }} />
+
+      {/* Donut chart — desktop only */}
+      <div className="hidden md:block bg-slate-800/30 rounded-xl border border-slate-700/50 p-4 mb-6">
+        <ReactECharts option={chartOption} style={{ height: 380 }} />
       </div>
 
       {/* Detail cards */}
@@ -193,6 +187,11 @@ export default function PerCapitaSection({ data }: PerCapitaSectionProps) {
           </div>
         ))}
       </div>
+
+      {/* Source */}
+      <p className="text-xs text-slate-500 mt-4">
+        {data.year} · {t('percapita.funded_by')} · {formatNumber(TOTAL_POPULATION)} hab. (INSEE 2023)
+      </p>
     </section>
   );
 }
