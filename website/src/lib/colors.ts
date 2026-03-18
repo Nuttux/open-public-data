@@ -154,12 +154,24 @@ export const TYPE_ORGANISME_COLORS: Record<string, string> = {
 // =============================================================================
 
 export const REVENUE_COLORS: Record<string, string> = {
+  // Paris
   'Impôts & Taxes': PALETTE.emerald,
   'Services Publics': PALETTE.sky,
   'Dotations & Subventions': PALETTE.cyan,
   'Emprunts': PALETTE.amber,
   'Investissement': PALETTE.violet,
   'Autres': PALETTE.slate,
+  // Villes (noms comptables DGFiP)
+  'Fiscalité': PALETTE.emerald,
+  'Produits fiscaux': PALETTE.emerald,
+  'Dotations État': PALETTE.cyan,
+  'Dotations fonctionnement': PALETTE.cyan,
+  'Dotations investissement': PALETTE.teal,
+  'Subventions investissement': PALETTE.violet,
+  'Produits des services': PALETTE.sky,
+  'Autres produits': PALETTE.slate,
+  'Produits exceptionnels': PALETTE.gray,
+  'Recettes exceptionnelles': PALETTE.gray,
 };
 
 // =============================================================================
@@ -168,6 +180,7 @@ export const REVENUE_COLORS: Record<string, string> = {
 // Utilise les mêmes couleurs que THEMATIQUE_COLORS pour cohérence
 
 export const EXPENSE_COLORS: Record<string, string> = {
+  // Paris (thématiques fonctionnelles)
   'Action Sociale': THEMATIQUE_COLORS['Action Sociale'],
   'Personnel & Admin': THEMATIQUE_COLORS['Administration'],
   'Éducation': THEMATIQUE_COLORS['Éducation'],
@@ -179,6 +192,19 @@ export const EXPENSE_COLORS: Record<string, string> = {
   'Économie': THEMATIQUE_COLORS['Économie'],
   'Dette': THEMATIQUE_COLORS['Dette'],
   'Autres': PALETTE.slate,
+  // Villes (noms comptables DGFiP)
+  'Personnel': PALETTE.slate,
+  'Charges de personnel': PALETTE.slate,
+  'Fonctionnement courant': PALETTE.rose,
+  'Achats et charges externes': PALETTE.rose,
+  'Investissements': PALETTE.violet,
+  'Dépenses d\'investissement': PALETTE.violet,
+  'Transferts & subventions': PALETTE.purple,
+  'Subventions versées': PALETTE.purple,
+  'Amortissements': PALETTE.yellow,
+  'Dotations aux amortissements': PALETTE.yellow,
+  'Charges financières': PALETTE.amber,
+  'Remboursement dette': PALETTE.yellow,
 };
 
 // =============================================================================
