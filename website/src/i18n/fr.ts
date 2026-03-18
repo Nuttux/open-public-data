@@ -83,9 +83,9 @@ const fr: Record<string, string> = {
 
   // "Pas simplement de l'open data" section
   'landing.diff.title': "Pas simplement de l'open data",
-  'landing.diff.problem.category': 'Constat',
-  'landing.diff.problem.title': 'Publiques, incomplètes, illisibles',
-  'landing.diff.problem.text': "Une partie des données est en open data. Le reste est enfoui dans des PDFs de délibérations ou absent. Et même ce qui est publié reste incompréhensible sans traitement.",
+  'landing.diff.problem.category': 'Problème',
+  'landing.diff.problem.title': 'Données open data incomplètes et peu lisibles',
+  'landing.diff.problem.text': "Les données officielles existent, mais elles ne sont pas faites pour être lues. CSV open data incomplets, PDFs de milliers de pages, portails techniques.",
   'landing.diff.approach.category': 'Approche',
   'landing.diff.approach.title': 'Transformée, modélisée, analysée',
   'landing.diff.approach.text': 'Investissements extraits des délibérations, projets géolocalisés par arrondissement, subventions classifiées, évolution poste par poste depuis 2019.',
