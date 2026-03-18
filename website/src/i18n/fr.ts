@@ -83,9 +83,9 @@ const fr: Record<string, string> = {
 
   // "Pas simplement de l'open data" section
   'landing.diff.title': "Pas simplement de l'open data",
-  'landing.diff.problem.category': 'Problème',
-  'landing.diff.problem.title': 'Les données existent déjà',
-  'landing.diff.problem.text': "CSV, fichiers Excel, PDFs du Conseil de Paris, opendata.paris.fr. Le problème n'est pas l'accès, c'est la lisibilité.",
+  'landing.diff.problem.category': 'Constat',
+  'landing.diff.problem.title': 'Les données sont publiques, pas lisibles',
+  'landing.diff.problem.text': "opendata.paris.fr publie tout. Mais entre un CSV de 50 000 lignes et un citoyen qui veut comprendre son budget, il manque une interface.",
   'landing.diff.approach.category': 'Approche',
   'landing.diff.approach.title': 'Transformée, modélisée, analysée',
   'landing.diff.approach.text': 'Investissements extraits des délibérations, projets géolocalisés par arrondissement, subventions classifiées, évolution poste par poste depuis 2019.',

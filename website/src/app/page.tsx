@@ -82,18 +82,12 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ——— 3. EXPLORER ——— */}
+      {/* ——— 3. EXPLORER + QUESTION CARDS ——— */}
       <section className="border-b border-slate-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 sm:pt-16 pb-2">
-          <h2 className="font-mono text-lg sm:text-xl font-bold text-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 sm:pt-16 pb-14 sm:pb-16">
+          <h2 className="font-mono text-lg sm:text-xl font-bold text-slate-100 mb-6">
             {t('landing.explore')}
           </h2>
-        </div>
-      </section>
-
-      {/* ——— 3b. QUESTION CARDS ——— */}
-      <section className="border-b border-slate-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">
             {CARD_KEYS.map((card) => (
               <Link
