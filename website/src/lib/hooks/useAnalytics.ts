@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -174,10 +174,10 @@ function flush(): void {
 function buildEvent(
   eventName: string,
   pathname: string,
-  searchParams: URLSearchParams,
   properties: Record<string, unknown> = {},
 ): AnalyticsEvent {
   const utm = getUtmParams();
+  const sp = new URLSearchParams(window.location.search);
   return {
     event_id: crypto.randomUUID(),
     event_name: eventName,
@@ -185,7 +185,7 @@ function buildEvent(
     visitor_id: getOrCreateVisitorId(),
     session_id: getSessionId(),
     page_path: pathname,
-    page_tab: searchParams.get('tab') || null,
+    page_tab: sp.get('tab') || null,
     referrer: document.referrer || null,
     utm_source: utm?.utm_source || null,
     utm_medium: utm?.utm_medium || null,
@@ -204,7 +204,6 @@ function buildEvent(
 
 export function useAnalytics() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const prevPathRef = useRef<string | null>(null);
   const sessionStartedRef = useRef(false);
   const flushIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -221,7 +220,7 @@ export function useAnalytics() {
         return;
       }
 
-      const event = buildEvent(eventName, pathname, searchParams, properties);
+      const event = buildEvent(eventName, pathname, properties);
 
       if (process.env.NODE_ENV === 'development') {
         console.log('[analytics]', eventName, event);
@@ -229,7 +228,7 @@ export function useAnalytics() {
 
       buffer.push(event);
     },
-    [pathname, searchParams],
+    [pathname],
   );
 
   // Auto-track session_start (once per tab lifetime)
@@ -242,13 +241,14 @@ export function useAnalytics() {
   // Auto-track page_view on route changes
   useEffect(() => {
     if (!isEnabled() || isOptedOut()) return;
-    const fullPath = pathname + (searchParams.toString() ? `?${searchParams.toString()}` : '');
+    const search = typeof window !== 'undefined' ? window.location.search : '';
+    const fullPath = pathname + search;
     if (prevPathRef.current === fullPath) return;
     prevPathRef.current = fullPath;
     // Reset scroll thresholds on new page
     scrollThresholdsRef.current = new Set();
     track('page_view');
-  }, [pathname, searchParams, track]);
+  }, [pathname, track]);
 
   // Scroll depth tracking
   useEffect(() => {
