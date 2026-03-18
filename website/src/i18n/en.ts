@@ -811,9 +811,9 @@ const en: Record<string, string> = {
   'percapita.subtitle': '{year} ({budgetLabel}), per Parisian · Population: {pop} residents (INSEE 2023)',
   'percapita.funded_by': 'Funded by local taxes, government grants and borrowing',
   'percapita.per_year': 'Per resident / year',
-  'percapita.per_day': 'Per resident / day',
+  'percapita.per_month': 'Per resident / month',
   'percapita.per_year_suffix': '/year',
-  'percapita.pct_budget_daily': '{pct}% of budget · {daily} €/day',
+  'percapita.pct_budget_monthly': '{pct}% of budget · {monthly} €/month',
   'percapita.tooltip_per_year': '€/resident/year',
 
   // ── MarchesFilters ─────────────────────────────────────────────────────────
