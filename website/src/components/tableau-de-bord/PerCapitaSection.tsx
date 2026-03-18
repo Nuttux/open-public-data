@@ -145,13 +145,13 @@ export default function PerCapitaSection({ data }: PerCapitaSectionProps) {
       {/* Hero KPI */}
       <div className="grid grid-cols-2 gap-3 mb-6">
         <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-4">
-          <p className="text-[10px] text-slate-400 uppercase tracking-wide mb-2">/an</p>
+          <p className="text-[10px] text-slate-400 uppercase tracking-wide mb-2">Par habitant / an</p>
           <p className="text-2xl sm:text-3xl font-extrabold text-slate-100">
             {formatNumber(Math.round(totalPerCapita))} €
           </p>
         </div>
         <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-sm p-4">
-          <p className="text-[10px] text-slate-400 uppercase tracking-wide mb-2">/mois</p>
+          <p className="text-[10px] text-slate-400 uppercase tracking-wide mb-2">Par habitant / mois</p>
           <p className="text-2xl sm:text-3xl font-extrabold text-blue-400">
             ~{totalPerMonth.toFixed(0)} €
           </p>
