@@ -31,24 +31,26 @@ const inter = Inter({
  * Page metadata for SEO and social sharing
  */
 export const metadata: Metadata = {
-  title: "Budget Paris - Tableau de bord interactif",
+  title: "Données Lumières — Open data Paris en clair",
   description:
-    "Visualisation interactive des finances de la Ville de Paris. Explorez les recettes et dépenses budgétaires avec des graphiques Sankey et une carte interactive.",
+    "Budget, subventions, marchés publics, logements sociaux, investissements : explorez les données ouvertes de la Ville de Paris en visualisations interactives.",
   keywords: [
     "Paris",
+    "open data",
     "budget",
     "finances publiques",
-    "open data",
-    "visualisation",
-    "Sankey",
-    "carte",
     "subventions",
+    "marchés publics",
     "logements sociaux",
+    "investissements",
+    "visualisation",
+    "données ouvertes",
   ],
-  authors: [{ name: "Paris Budget Dashboard" }],
+  authors: [{ name: "Données Lumières" }],
   openGraph: {
-    title: "Budget Paris - Tableau de bord interactif",
-    description: "Visualisation des finances de la Ville de Paris",
+    title: "Données Lumières — Open data Paris en clair",
+    description:
+      "Budget, subventions, marchés publics, logements sociaux, investissements : explorez les données ouvertes de la Ville de Paris en visualisations interactives.",
     type: "website",
     locale: "fr_FR",
   },
