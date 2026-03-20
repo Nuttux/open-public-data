@@ -95,11 +95,9 @@ function SingleVariationChart({
 }: SingleChartProps) {
   // Séparer hausses et baisses pour le tri visuel
   const sortedData = useMemo(() => {
-    const hausses = items.filter(item => item.variation_euros >= 0)
-      .sort((a, b) => b.variation_euros - a.variation_euros);
-    const baisses = items.filter(item => item.variation_euros < 0)
-      .sort((a, b) => a.variation_euros - b.variation_euros);
-    return [...hausses, ...baisses];
+    // inverse: true makes index 0 appear at top of chart.
+    // We want: top = biggest positive, bottom = biggest negative.
+    return [...items].sort((a, b) => b.variation_euros - a.variation_euros);
   }, [items]);
 
   // Hauteur adaptative basée sur le nombre d'items

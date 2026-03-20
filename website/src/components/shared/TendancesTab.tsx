@@ -284,7 +284,7 @@ export default function TendancesTab({
       return { label, latestVal: lv, earliestVal: ev, diff, diffPct: ev > 0 ? (diff / ev) * 100 : 0 };
     });
     const h = items.filter(i => i.diff >= 0).sort((a, b) => b.diff - a.diff);
-    const b = items.filter(i => i.diff < 0).sort((a, b) => a.diff - b.diff);
+    const b = items.filter(i => i.diff < 0).sort((a, b) => b.diff - a.diff);
     return [...h, ...b];
   }, [filteredYears, groupsOrdered, breakdown]);
 
