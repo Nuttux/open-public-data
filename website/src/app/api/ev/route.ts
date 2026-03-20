@@ -191,28 +191,30 @@ export async function POST(request: NextRequest) {
     const rows = events
       .filter(isValidEvent)
       .map((e) => ({
-        event_id: e.event_id,
-        event_name: e.event_name,
+        event_id: e.event_id!,
+        event_name: e.event_name!,
         event_timestamp: e.event_timestamp || now,
         received_at: now,
-        visitor_id: e.visitor_id || null,
-        session_id: e.session_id || null,
-        page_path: e.page_path,
-        page_locale: extractPageLocale(e.page_path || '/'),
-        page_tab: e.page_tab || null,
-        referrer: e.referrer || null,
-        utm_source: e.utm_source || null,
-        utm_medium: e.utm_medium || null,
-        utm_campaign: e.utm_campaign || null,
-        device_type: e.device_type || null,
-        viewport_width: e.viewport_width || null,
-        screen_width: e.screen_width || null,
-        user_agent: request.headers.get('user-agent') || null,
-        locale: e.locale || null,
-        country,
-        city,
-        ip_truncated: ipTruncated,
-        properties: e.properties || '{}',
+        data: JSON.stringify({
+          visitor_id: e.visitor_id || null,
+          session_id: e.session_id || null,
+          page_path: e.page_path,
+          page_locale: extractPageLocale(e.page_path || '/'),
+          page_tab: e.page_tab || null,
+          referrer: e.referrer || null,
+          utm_source: e.utm_source || null,
+          utm_medium: e.utm_medium || null,
+          utm_campaign: e.utm_campaign || null,
+          device_type: e.device_type || null,
+          viewport_width: e.viewport_width || null,
+          screen_width: e.screen_width || null,
+          user_agent: request.headers.get('user-agent') || null,
+          locale: e.locale || null,
+          country,
+          city,
+          ip_truncated: ipTruncated,
+          properties: e.properties || '{}',
+        }),
       }));
 
     if (rows.length === 0) {
@@ -224,7 +226,7 @@ export async function POST(request: NextRequest) {
     if (bq) {
       const dataset = process.env.BIGQUERY_ANALYTICS_DATASET || 'product_analytics';
       try {
-        await bq.dataset(dataset).table('events').insert(rows);
+        await bq.dataset(dataset).table('events_v2').insert(rows);
       } catch (err: unknown) {
         // Log but don't fail the response — analytics should never break the app
         const error = err as { errors?: unknown[] };
