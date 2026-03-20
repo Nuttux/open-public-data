@@ -312,7 +312,7 @@ export default function TendancesTab({
       },
       grid: { left: isMobile ? '5%' : '3%', right: isMobile ? '18%' : '14%', top: 5, bottom: 5, containLabel: true },
       xAxis: { type: 'value', min: -mx * 1.15, max: mx * 1.15, axisLine: { show: false }, axisTick: { show: false }, axisLabel: { show: false }, splitLine: { lineStyle: { color: 'rgba(71,85,105,0.2)', type: 'dashed' } } },
-      yAxis: { type: 'category', data: cats, inverse: true, axisLine: { show: false }, axisTick: { show: false }, axisLabel: { color: '#94a3b8', fontSize: isMobile ? 10 : 12, width: isMobile ? 100 : 160, overflow: 'truncate', ellipsis: '...' } },
+      yAxis: { type: 'category', data: cats, inverse: true, axisLine: { show: false }, axisTick: { show: false }, axisLabel: { color: '#94a3b8', fontSize: isMobile ? 10 : 12, width: isMobile ? 140 : 280, overflow: 'truncate', ellipsis: '...' } },
       series: [{
         type: 'bar', barMaxWidth: isMobile ? 18 : 22,
         data: vals.map(v => ({
