@@ -4,9 +4,9 @@ const fr: Record<string, string> = {
   'nav.accueil': 'Accueil',
   'nav.accueil.short': 'Accueil',
   'nav.accueil.desc': 'Présentation du projet',
-  'nav.synthese': 'Synthèse',
-  'nav.synthese.short': 'Synthèse',
-  'nav.synthese.desc': 'Tableau de bord — KPI et coût par habitant',
+  'nav.synthese': 'Tableau de bord',
+  'nav.synthese.short': 'Tableau',
+  'nav.synthese.desc': 'KPI synthétiques et coût par habitant',
   'nav.budget': 'Budget',
   'nav.budget.short': 'Budget',
   'nav.budget.desc': 'Budget de Paris — Annuel, Tendances, Prévision',
@@ -58,7 +58,7 @@ const fr: Record<string, string> = {
   // Question cards
   'landing.card.budget.category': 'Budget',
   'landing.card.budget.question': 'Combien coûte le fonctionnement ?',
-  'landing.card.budget.detail': '9,3 Md€/an pour faire tourner la ville : salaires, cantines, éclairage, entretien des rues.',
+  'landing.card.budget.detail': '9,5 Md€/an pour faire tourner la ville : salaires, cantines, éclairage, entretien des rues.',
   'landing.card.budget.link': 'Flux budgétaires',
   'landing.card.subventions.category': 'Subventions',
   'landing.card.subventions.question': 'Qui reçoit des subventions ?',
@@ -805,13 +805,8 @@ const fr: Record<string, string> = {
   'choropleth.per_1000': '/ 1000 hab',
 
   // ── PerCapitaSection ───────────────────────────────────────────────────────
-  'percapita.voted_budget': 'budget voté',
-  'percapita.executed_budget': 'budget exécuté',
   'percapita.title': 'À quoi sert le budget de Paris ?',
-  'percapita.subtitle': '{year} ({budgetLabel}), rapporté à chaque Parisien · Population : {pop} hab. (INSEE 2023)',
   'percapita.funded_by': 'Financé par la fiscalité locale, les dotations de l\'État et l\'emprunt',
-  'percapita.per_year': 'Par habitant / an',
-  'percapita.per_month': 'Par habitant / mois',
   'percapita.per_year_suffix': '/an',
   'percapita.pct_budget_monthly': '{pct}% du budget · {monthly} €/mois',
   'percapita.tooltip_per_year': '€/hab/an',
@@ -1090,6 +1085,9 @@ const fr: Record<string, string> = {
   'villes.carte.title': 'Carte des finances locales',
   'villes.carte.subtitle': 'Visualisez les indicateurs financiers sur la carte de France',
   'villes.carte.metrique': 'Indicateur affich\u00e9',
+  'villes.paris_disclaimer.title': 'Chiffres normalis\u00e9s (source DGFiP)',
+  'villes.paris_disclaimer.body': "Sur cette page, Paris est pr\u00e9sent\u00e9 avec les Comptes individuels DGFiP, un format standardis\u00e9 pour toutes les collectivit\u00e9s fran\u00e7aises. C'est ce qui permet la comparaison avec Lyon, Marseille ou Toulouse. Le p\u00e9rim\u00e8tre est plus restreint que le Compte administratif officiel de la Ville (budgets annexes, nomenclature comptable locale) : les totaux peuvent donc diff\u00e9rer de plusieurs centaines de millions d'euros.",
+  'villes.paris_disclaimer.cta': 'Voir le budget complet de Paris \u2192',
 };
 
 export default fr;

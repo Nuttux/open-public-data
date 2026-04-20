@@ -18,23 +18,26 @@ import argparse
 import json
 from pathlib import Path
 from datetime import datetime
-from google.cloud import bigquery
 import requests
 
 # =============================================================================
 # Configuration
 # =============================================================================
 
-PROJECT_ID = "open-data-france-484717"
-DATASET = "dbt_paris_analytics"
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent
+SUBVENTIONS_DIR = PROJECT_ROOT / "website" / "public" / "data" / "subventions"
 SEED_PATH = Path(__file__).parent.parent.parent / "seeds" / "seed_cache_thematique_beneficiaires.csv"
 
 GEMINI_API_KEY = os.environ.get("GOOGLE_API_KEY", "")
-GEMINI_MODEL = "gemini-2.5-flash"
+# Gemini 3 Flash — main workhorse for classification with long system prompt.
+# Reasoning is needed to disambiguate themes (e.g. "Maison Européenne de la
+# Photographie" → Culture, not International). Override via GEMINI_MODEL env
+# if you want to fall back or try a newer variant.
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3-flash-preview")
 GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent"
 
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-CLAUDE_MODEL = "claude-opus-4-6"
+CLAUDE_MODEL = os.environ.get("CLAUDE_MODEL", "claude-opus-4-7")
 
 BATCH_SIZE = 10
 PARETO_LIMIT = 500
@@ -300,34 +303,37 @@ def call_gemini_batch(beneficiaires: list) -> list:
         return []
 
 
-def get_beneficiaires_to_classify(client: bigquery.Client, existing_cache: dict, limit: int = None) -> list:
-    """Récupère les bénéficiaires 'default', top N par montant."""
+def get_beneficiaires_to_classify(existing_cache: dict, limit: int = None) -> list:
+    """Liste les bénéficiaires à classifier depuis les JSONs publics.
+
+    Lit `website/public/data/subventions/beneficiaires_*.json`, agrège les
+    montants par nom sur toutes les années disponibles, puis renvoie les
+    top N non encore en cache. Remplace l'ancienne requête BigQuery.
+    """
     actual_limit = limit or PARETO_LIMIT
 
-    query = f"""
-    SELECT
-        beneficiaire_normalise,
-        SUM(montant) as montant_total
-    FROM `{PROJECT_ID}.{DATASET}.core_subventions`
-    WHERE ode_source_thematique = 'default'
-      AND beneficiaire_normalise IS NOT NULL
-    GROUP BY beneficiaire_normalise
-    ORDER BY montant_total DESC
-    LIMIT {actual_limit * 2}
-    """
+    totals: dict[str, float] = {}
+    for f in sorted(SUBVENTIONS_DIR.glob("beneficiaires_*.json")):
+        try:
+            with f.open(encoding="utf-8") as fh:
+                data = json.load(fh)
+        except Exception:
+            continue
+        for row in data.get("data", []):
+            name = (row.get("beneficiaire") or "").strip()
+            if not name:
+                continue
+            amount = float(row.get("montant_total") or row.get("montant") or 0)
+            totals[name] = totals.get(name, 0) + amount
 
-    results = client.query(query).result()
-
+    ranked = sorted(totals.items(), key=lambda kv: kv[1], reverse=True)
     to_process = []
-    for row in results:
-        if row.beneficiaire_normalise not in existing_cache:
-            to_process.append({
-                'nom': row.beneficiaire_normalise,
-                'montant': row.montant_total
-            })
-            if len(to_process) >= actual_limit:
-                break
-
+    for nom, montant in ranked:
+        if nom in existing_cache:
+            continue
+        to_process.append({"nom": nom, "montant": montant})
+        if len(to_process) >= actual_limit:
+            break
     return to_process
 
 
@@ -339,8 +345,8 @@ def main():
     parser = argparse.ArgumentParser(description="Classification thématique LLM (batch)")
     parser.add_argument('--limit', type=int, help=f"Nombre max (default: {PARETO_LIMIT})")
     parser.add_argument('--dry-run', action='store_true', help="Simulation")
-    parser.add_argument('--provider', choices=['claude', 'gemini'], default='claude',
-                       help="LLM provider (default: claude)")
+    parser.add_argument('--provider', choices=['claude', 'gemini'], default='gemini',
+                       help="LLM provider (default: gemini)")
     args = parser.parse_args()
 
     provider_label = f"Claude ({CLAUDE_MODEL})" if args.provider == 'claude' else f"Gemini ({GEMINI_MODEL})"
@@ -362,8 +368,7 @@ def main():
     cache = load_existing_cache()
     print(f"Cache existant: {len(cache)} bénéficiaires")
 
-    client = bigquery.Client(project=PROJECT_ID)
-    to_process = get_beneficiaires_to_classify(client, cache, args.limit)
+    to_process = get_beneficiaires_to_classify(cache, args.limit)
 
     total_montant = sum(b['montant'] for b in to_process)
     print(f"Bénéficiaires à classifier: {len(to_process)} (top par montant)")

@@ -45,3 +45,14 @@ __pycache__/
 # Temp files
 *.json.bak
 *.log
+
+# Large local assets
+mockups/
+archive/
+instagram-stories/
+
+# Pipeline outputs
+pipeline/output/
+
+# Backup directories
+.git.broken/
