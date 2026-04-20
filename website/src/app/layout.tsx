@@ -13,14 +13,9 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import GlossaryShell from "@/components/GlossaryShell";
 import AnalyticsProvider from "@/components/AnalyticsProvider";
+import { SITE_URL, SITE_NAME, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 
-/**
- * Inter font configuration
- * Variable font for optimal loading and flexibility
- */
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -28,12 +23,21 @@ const inter = Inter({
 });
 
 /**
- * Page metadata for SEO and social sharing
+ * Root metadata — title template + defaults inherited by every route.
+ * Per-route files override title/description/path via their own export.
  */
+const DEFAULT_TITLE = "Données Lumières — Open data Paris en clair";
+const DEFAULT_DESCRIPTION =
+  "Budget, subventions, marchés publics, logements sociaux, investissements : explorez les données ouvertes de la Ville de Paris et d'une vingtaine de grandes villes françaises en visualisations interactives.";
+
 export const metadata: Metadata = {
-  title: "Données Lumières — Open data Paris en clair",
-  description:
-    "Budget, subventions, marchés publics, logements sociaux, investissements : explorez les données ouvertes de la Ville de Paris en visualisations interactives.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: DEFAULT_TITLE,
+    template: `%s · ${SITE_NAME}`,
+  },
+  description: DEFAULT_DESCRIPTION,
+  applicationName: SITE_NAME,
   keywords: [
     "Paris",
     "open data",
@@ -45,15 +49,41 @@ export const metadata: Metadata = {
     "investissements",
     "visualisation",
     "données ouvertes",
+    "villes françaises",
+    "DGFiP",
   ],
-  authors: [{ name: "Données Lumières" }],
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  alternates: {
+    canonical: "/",
+    languages: {
+      "fr-FR": "/",
+      "en-US": "/",
+    },
+  },
   openGraph: {
-    title: "Données Lumières — Open data Paris en clair",
-    description:
-      "Budget, subventions, marchés publics, logements sociaux, investissements : explorez les données ouvertes de la Ville de Paris en visualisations interactives.",
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_NAME,
     type: "website",
     locale: "fr_FR",
+    alternateLocale: ["en_US"],
+    images: [{ url: "/og-default.png", width: 1200, height: 630, alt: SITE_NAME }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    images: ["/og-default.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-snippet": -1, "max-image-preview": "large" },
+  },
+  category: "Open data",
 };
 
 /**
@@ -78,19 +108,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className="dark">
-      <body className={`${inter.variable} font-sans antialiased bg-slate-950 text-slate-100`}>
+    <html lang="fr">
+      <body className={`${inter.variable} font-sans antialiased`}>
+        {/* GEO: structured data for AI search engines */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd()) }}
+        />
         <AnalyticsProvider>
-          <GlossaryShell>
-            <Navbar />
-            {/*
-              pb-24 sur mobile compense la barre de navigation fixe en bas (~56px + safe area).
-              md:pb-0 retire ce padding sur desktop où la nav est en haut.
-            */}
-            <div className="pb-24 md:pb-0">
-              {children}
-            </div>
-          </GlossaryShell>
+          {children}
         </AnalyticsProvider>
       </body>
     </html>

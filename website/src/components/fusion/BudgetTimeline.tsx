@@ -1,0 +1,185 @@
+type Point = {
+  year: number;
+  value: number;
+  type: "execute" | "vote" | "estimate";
+};
+
+type Annotation = {
+  year: number;
+  label: string;
+};
+
+type Props = {
+  points: Point[];
+  /** Currently highlighted year (rouge dot + badge). */
+  activeYear: number;
+  /** Vertical dashed-line annotations (COVID, JO, etc). */
+  annotations?: Annotation[];
+  /** Axis labels — override the computed min/max/mid values in Md €. */
+  yTicks?: number[];
+  /** Height in px (viewBox is 1200×340 — width is responsive). */
+  height?: number;
+};
+
+/**
+ * Évolution du budget — line chart SVG matching the mockup. Solid
+ * line for executed years, dashed line for estimate/voted, rouge
+ * dot + badge on the active year.
+ */
+export default function BudgetTimeline({
+  points,
+  activeYear,
+  annotations = [],
+  yTicks,
+  height = 340,
+}: Props) {
+  // viewBox: 1200x340. Padding: 60 left, 20 right, 40 top, 60 bottom (labels)
+  const W = 1200;
+  const H = 340;
+  const LEFT = 60;
+  const RIGHT = 1180;
+  const TOP = 40;
+  const BOTTOM = 280;
+
+  const sorted = points.slice().sort((a, b) => a.year - b.year);
+  const minVal = Math.min(...sorted.map((p) => p.value));
+  const maxVal = Math.max(...sorted.map((p) => p.value));
+  // Prefer integer ticks (9, 10, 11, 12 Md). Fall back to 0.5 steps if the
+  // range is too tight.
+  const rawTop = Math.ceil(maxVal + 0.3);
+  const rawBottom = Math.max(0, Math.floor(minVal - 0.3));
+  const range = rawTop - rawBottom;
+  const step = range >= 3 ? 1 : range >= 1.5 ? 0.5 : 0.2;
+  const top = Math.ceil(maxVal / step) * step;
+  const bottom = Math.floor(minVal / step) * step;
+  const computedTicks: number[] = [];
+  for (let v = top; v >= bottom - 1e-9; v -= step) computedTicks.push(Number(v.toFixed(2)));
+  const ticks = yTicks ?? computedTicks;
+  const yMin = ticks[ticks.length - 1];
+  const yMax = ticks[0];
+
+  const xFor = (year: number) => {
+    const i = sorted.findIndex((p) => p.year === year);
+    if (i < 0) return LEFT;
+    const t = sorted.length > 1 ? i / (sorted.length - 1) : 0;
+    return LEFT + t * (RIGHT - LEFT);
+  };
+  const yFor = (value: number) => {
+    const t = (value - yMin) / (yMax - yMin);
+    return BOTTOM - t * (BOTTOM - TOP);
+  };
+
+  // Split into solid (execute) + dashed (estimate/vote) segments.
+  // Dashed starts at the last execute point so the two segments meet without
+  // a gap on the chart.
+  const firstNonExecIdx = sorted.findIndex((p) => p.type !== "execute");
+  const solidPoints = firstNonExecIdx < 0 ? sorted : sorted.slice(0, firstNonExecIdx);
+  const dashedPoints =
+    firstNonExecIdx <= 0 ? [] : sorted.slice(Math.max(0, firstNonExecIdx - 1));
+
+  const solidD = solidPoints.map((p) => `${xFor(p.year)},${yFor(p.value)}`).join(" ");
+  const dashedD = dashedPoints.map((p) => `${xFor(p.year)},${yFor(p.value)}`).join(" ");
+
+  const active = sorted.find((p) => p.year === activeYear) ?? sorted[sorted.length - 1];
+
+  return (
+    <div className="fx-timechart">
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        role="img"
+        aria-label={`Évolution du budget ${sorted[0]?.year} à ${sorted[sorted.length - 1]?.year}`}
+        preserveAspectRatio="xMidYMid meet"
+        style={{ width: "100%", height }}
+      >
+        {/* Grid */}
+        <g stroke="#e4e6ea" strokeWidth="1">
+          {ticks.map((t, i) => (
+            <line key={i} x1={LEFT} y1={yFor(t)} x2={RIGHT} y2={yFor(t)} />
+          ))}
+        </g>
+        {/* Y labels */}
+        <g fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#5f6672">
+          {ticks.map((t, i) => (
+            <text key={i} x={LEFT - 10} y={yFor(t) + 4} textAnchor="end">
+              {(Number.isInteger(t) ? t.toString() : t.toFixed(1)).replace(".", ",")} Md
+            </text>
+          ))}
+        </g>
+
+        {/* Annotations */}
+        {annotations.map((a, i) => {
+          const x = xFor(a.year);
+          return (
+            <g key={i}>
+              <line x1={x} y1={TOP} x2={x} y2={BOTTOM} stroke="#9099a6" strokeWidth="1" strokeDasharray="3 3" opacity="0.6" />
+              <rect x={x - 60} y={16} width="120" height="18" fill="#fafaf7" stroke="#9099a6" strokeWidth="0.8" />
+              <text x={x} y={29} textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" letterSpacing="0.5">
+                {a.label}
+              </text>
+            </g>
+          );
+        })}
+
+        {/* Line — solid for executed */}
+        {solidPoints.length > 1 && (
+          <polyline points={solidD} fill="none" stroke="#0a0a0a" strokeWidth="2.5" />
+        )}
+        {/* Line — dashed for estimate/vote */}
+        {dashedPoints.length > 1 && (
+          <polyline points={dashedD} fill="none" stroke="#0a0a0a" strokeWidth="2" strokeDasharray="6 4" />
+        )}
+
+        {/* Dots */}
+        {sorted.map((p) => {
+          const x = xFor(p.year);
+          const y = yFor(p.value);
+          if (p.year === activeYear) return null;
+          if (p.type === "execute") {
+            return <circle key={p.year} cx={x} cy={y} r="4" fill="#0a0a0a" />;
+          }
+          return <circle key={p.year} cx={x} cy={y} r="4" fill="#fff" stroke="#0a0a0a" strokeWidth="2" />;
+        })}
+
+        {/* Active year — rouge + badge */}
+        <g>
+          <circle cx={xFor(active.year)} cy={yFor(active.value)} r="8" fill="#e11d1d" />
+          <g transform={`translate(${xFor(active.year)}, ${yFor(active.value)})`}>
+            <rect x="-44" y="-60" width="88" height="28" fill="#e11d1d" />
+            <text x="0" y="-40" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="12" fontWeight="700" fill="#fff">
+              {active.year} {active.type === "vote" ? "voté" : active.type === "estimate" ? "est." : "exéc."}
+            </text>
+            <line x1="0" y1="-31" x2="0" y2="-10" stroke="#e11d1d" strokeWidth="1.5" />
+          </g>
+        </g>
+
+        {/* X labels */}
+        <g fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#5f6672" textAnchor="middle">
+          {sorted.map((p) => (
+            <text
+              key={p.year}
+              x={xFor(p.year)}
+              y={310}
+              fill={p.year === activeYear ? "#e11d1d" : "#5f6672"}
+              fontWeight={p.year === activeYear ? 700 : 400}
+            >
+              {p.year}
+            </text>
+          ))}
+        </g>
+        {/* Status row */}
+        <g fontFamily="JetBrains Mono, monospace" fontSize="9" fill="#9099a6" textAnchor="middle" letterSpacing="1">
+          {sorted.map((p) => (
+            <text
+              key={p.year}
+              x={xFor(p.year)}
+              y={326}
+              fill={p.year === activeYear ? "#e11d1d" : "#9099a6"}
+            >
+              {p.type === "execute" ? "EXÉC." : p.type === "vote" ? "VOTÉ" : "EST."}
+            </text>
+          ))}
+        </g>
+      </svg>
+    </div>
+  );
+}

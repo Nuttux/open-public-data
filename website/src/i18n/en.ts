@@ -4,9 +4,9 @@ const en: Record<string, string> = {
   'nav.accueil': 'Home',
   'nav.accueil.short': 'Home',
   'nav.accueil.desc': 'Project overview',
-  'nav.synthese': 'Overview',
-  'nav.synthese.short': 'Overview',
-  'nav.synthese.desc': 'Dashboard — KPIs and cost per capita',
+  'nav.synthese': 'Dashboard',
+  'nav.synthese.short': 'Dashboard',
+  'nav.synthese.desc': 'Synthetic KPIs and cost per capita',
   'nav.budget': 'Budget',
   'nav.budget.short': 'Budget',
   'nav.budget.desc': 'Paris budget — Annual, Trends, Forecast',
@@ -58,7 +58,7 @@ const en: Record<string, string> = {
   // Question cards
   'landing.card.budget.category': 'Budget',
   'landing.card.budget.question': 'How much does it cost to run the city?',
-  'landing.card.budget.detail': '€9.3 Bn/year to keep the city running: salaries, school meals, street lighting, road maintenance.',
+  'landing.card.budget.detail': '€9.5 Bn/year to keep the city running: salaries, school meals, street lighting, road maintenance.',
   'landing.card.budget.link': 'Budget flows',
   'landing.card.subventions.category': 'Grants',
   'landing.card.subventions.question': 'Who receives grants?',
@@ -805,13 +805,8 @@ const en: Record<string, string> = {
   'choropleth.per_1000': '/ 1,000 residents',
 
   // ── PerCapitaSection ───────────────────────────────────────────────────────
-  'percapita.voted_budget': 'voted budget',
-  'percapita.executed_budget': 'executed budget',
   'percapita.title': 'What does Paris\'s budget pay for?',
-  'percapita.subtitle': '{year} ({budgetLabel}), per Parisian · Population: {pop} residents (INSEE 2023)',
   'percapita.funded_by': 'Funded by local taxes, government grants and borrowing',
-  'percapita.per_year': 'Per resident / year',
-  'percapita.per_month': 'Per resident / month',
   'percapita.per_year_suffix': '/year',
   'percapita.pct_budget_monthly': '{pct}% of budget · {monthly} €/month',
   'percapita.tooltip_per_year': '€/resident/year',
@@ -1090,6 +1085,9 @@ const en: Record<string, string> = {
   'villes.carte.title': 'Local finance map',
   'villes.carte.subtitle': 'View financial indicators on the map of France',
   'villes.carte.metrique': 'Displayed metric',
+  'villes.paris_disclaimer.title': 'Normalised figures (DGFiP source)',
+  'villes.paris_disclaimer.body': "On this page, Paris is shown through the DGFiP Individual Accounts, a standardised format used for every French local authority. This is what makes cross-city comparison with Lyon, Marseille or Toulouse possible. The scope is narrower than Paris's official Administrative Account (annex budgets, local accounting nomenclature): totals can therefore differ by several hundred million euros.",
+  'villes.paris_disclaimer.cta': "View Paris's full budget \u2192",
 };
 
 export default en;

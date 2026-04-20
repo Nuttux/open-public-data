@@ -1,75 +1,95 @@
-'use client';
+import type { Metadata } from 'next';
+import { getCityBySlug, CITY_SLUGS } from '@/lib/constants/cities';
+import { buildPageMetadata, breadcrumbJsonLd, datasetJsonLd } from '@/lib/seo';
+import CityLayoutClient from './CityLayoutClient';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useLocale, useT } from '@/lib/localeContext';
-import { getCityBySlug } from '@/lib/constants/cities';
-import { use } from 'react';
+type Params = { locale: string; 'city-slug': string };
 
-const CITY_TABS = [
-  { key: 'budget', labelKey: 'villes.budget_page' },
-  { key: 'patrimoine', labelKey: 'villes.patrimoine_page' },
-  { key: 'marches', labelKey: 'villes.marches_page' },
-  { key: 'subventions', labelKey: 'villes.subventions_page' },
-] as const;
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<Params>;
+}): Promise<Metadata> {
+  const { locale, 'city-slug': slug } = await params;
+  const city = getCityBySlug(slug);
 
-export default function CityLayout({
+  if (!city) {
+    return buildPageMetadata({
+      title: 'Ville introuvable',
+      description: 'Cette ville ne fait pas partie de nos données.',
+      path: `/${locale}/villes/${slug}`,
+      noindex: true,
+    });
+  }
+
+  return buildPageMetadata({
+    title: `${city.name} — Finances locales (${city.population.toLocaleString('fr-FR')} habitants)`,
+    description: `Budget, patrimoine, marchés publics et subventions de la Ville de ${city.name}. Données DGFiP et OFGL normalisées, comparables avec les autres grandes villes françaises.`,
+    path: `/${locale}/villes/${slug}/budget`,
+    keywords: [
+      `budget ${city.name}`,
+      `finances ${city.name}`,
+      `dette ${city.name}`,
+      `marchés publics ${city.name}`,
+      'DGFiP',
+      'collectivités territoriales',
+    ],
+    alternates: {
+      fr: `/fr/villes/${slug}/budget`,
+      en: `/en/villes/${slug}/budget`,
+    },
+  });
+}
+
+export async function generateStaticParams() {
+  return CITY_SLUGS.flatMap((slug) =>
+    ['fr', 'en'].map((locale) => ({ locale, 'city-slug': slug })),
+  );
+}
+
+export default async function CityLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ 'city-slug': string }>;
+  params: Promise<Params>;
 }) {
-  const { 'city-slug': slug } = use(params);
-  const { locale } = useLocale();
-  const t = useT();
-  const pathname = usePathname();
+  const { locale, 'city-slug': slug } = await params;
   const city = getCityBySlug(slug);
 
-  if (!city) {
-    return <div className="max-w-6xl mx-auto px-4 py-8 text-slate-400">{t('villes.ville_introuvable')}</div>;
-  }
+  const breadcrumb = city
+    ? breadcrumbJsonLd([
+        { name: 'Accueil', path: '/' },
+        { name: 'Villes', path: `/${locale}/villes` },
+        { name: city.name, path: `/${locale}/villes/${slug}/budget` },
+      ])
+    : null;
+
+  const dataset = city
+    ? datasetJsonLd({
+        name: `Finances de la Ville de ${city.name}`,
+        description: `Budget, patrimoine, marchés publics et subventions de la Ville de ${city.name}, source DGFiP / OFGL / DECP.`,
+        path: `/${locale}/villes/${slug}/budget`,
+        keywords: [city.name, 'budget', 'finances locales', 'DGFiP'],
+        spatialCoverage: `${city.name}, France`,
+      })
+    : null;
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-6">
-      {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-sm text-slate-500 mb-4">
-        <Link href={`/${locale}/villes`} className="hover:text-slate-300 transition-colors">
-          {t('villes.retour_villes')}
-        </Link>
-        <span>/</span>
-        <span className="text-slate-300 font-medium">{city.name}</span>
-      </div>
-
-      {/* City header */}
-      <div className="flex items-center gap-3 mb-6">
-        <div className="w-3 h-3 rounded-full" style={{ backgroundColor: city.color }} />
-        <h1 className="text-xl sm:text-2xl font-bold text-slate-100">{city.name}</h1>
-      </div>
-
-      {/* Sub-nav tabs */}
-      <div className="flex gap-1 mb-6 overflow-x-auto border-b border-slate-700/50 pb-px">
-        {CITY_TABS.map((tab) => {
-          const href = `/${locale}/villes/${slug}/${tab.key}`;
-          const isActive = pathname.endsWith(`/${tab.key}`);
-
-          return (
-            <Link
-              key={tab.key}
-              href={href}
-              className={`px-3 py-2 text-sm font-medium rounded-t-lg whitespace-nowrap transition-colors ${
-                isActive
-                  ? 'text-teal-400 border-b-2 border-teal-400 bg-teal-600/10'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/30'
-              }`}
-            >
-              {t(tab.labelKey)}
-            </Link>
-          );
-        })}
-      </div>
-
-      {children}
-    </div>
+    <>
+      {breadcrumb && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+        />
+      )}
+      {dataset && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(dataset) }}
+        />
+      )}
+      <CityLayoutClient slug={slug}>{children}</CityLayoutClient>
+    </>
   );
 }
