@@ -114,3 +114,59 @@ export function guessTypologieFromName(name: string | null | undefined): string 
   }
   return null;
 }
+
+// ─── Buckets typologie consolidés (pour la carte) ──────────────────────
+// 7 buckets max — au-delà la palette devient illisible.
+
+export type TypoBucket =
+  | "education"
+  | "voirie"
+  | "vert"
+  | "culture"
+  | "logesante"
+  | "admin"
+  | "autre";
+
+const RAW_TO_BUCKET: Record<string, TypoBucket> = {
+  "ecole": "education",
+  "college": "education",
+  "lycee": "education",
+  "creche": "education",
+  "bibliotheque": "education",
+  "voirie": "voirie",
+  "espace-vert": "vert",
+  "equipement-culturel": "culture",
+  "gymnase": "culture",
+  "piscine": "culture",
+  "logement-social": "logesante",
+  "equipement-sante": "logesante",
+  "administration": "admin",
+  "autre": "autre",
+};
+
+export const TYPO_BUCKETS: { key: TypoBucket; label: string; color: string }[] = [
+  { key: "education",  label: "Éducation",        color: "#2a3680" },
+  { key: "voirie",     label: "Voirie",           color: "#546583" },
+  { key: "vert",       label: "Espaces verts",    color: "#6b9c52" },
+  { key: "culture",    label: "Culture & sport",  color: "#c12323" },
+  { key: "logesante",  label: "Logement & santé", color: "#b8495d" },
+  { key: "admin",      label: "Administration",   color: "#6b6f7a" },
+  { key: "autre",      label: "Autre",            color: "#bdbdb5" },
+];
+
+/** Résout le bucket à partir de la typologie normalisée ou du nom du projet. */
+export function resolveTypoBucket(
+  typologieNormalisee: string | null | undefined,
+  name: string | null | undefined,
+): TypoBucket {
+  const raw = typologieNormalisee ?? guessTypologieFromName(name);
+  if (!raw) return "autre";
+  return RAW_TO_BUCKET[raw] ?? "autre";
+}
+
+/** Heuristique : un projet est "JO 2024" si son nom matche les keywords. */
+export function detectJO(name: string | null | undefined): boolean {
+  if (!name) return false;
+  const n = name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  return /\b(jo\s*2024|jeux\s*olympiques?|olympique|paralympique|arena\s*porte\s*de\s*la\s*chapelle|village\s*olympique)\b/.test(n);
+}

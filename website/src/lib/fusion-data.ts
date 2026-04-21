@@ -1291,6 +1291,8 @@ export type InvestissementsData = {
     amount: number;
     chapitre: string;
     arr: number;
+    typo: import("./projet-utils").TypoBucket;
+    isJO: boolean;
   }[];
   yearsSummary: { year: number; total: number; horsDette: number }[];
 };
@@ -1375,15 +1377,20 @@ export function loadInvestissementsData(requestedYear?: number): Investissements
 
   const geoPoints = projets
     .filter((p) => p.lat != null && p.lon != null)
-    .map((p) => ({
-      id: p.id,
-      lat: p.lat as number,
-      lon: p.lon as number,
-      name: p.nom_projet ?? "Projet",
-      amount: Number(p.montant ?? 0),
-      chapitre: p.chapitre_libelle ?? "",
-      arr: Number(p.arrondissement) || 0,
-    }));
+    .map((p) => {
+      const vulg = loadProjetVulgarization(p.id);
+      return {
+        id: p.id,
+        lat: p.lat as number,
+        lon: p.lon as number,
+        name: p.nom_projet ?? "Projet",
+        amount: Number(p.montant ?? 0),
+        chapitre: p.chapitre_libelle ?? "",
+        arr: Number(p.arrondissement) || 0,
+        typo: resolveTypoBucket(vulg?.typologie_normalisee, p.nom_projet),
+        isJO: detectJO(p.nom_projet),
+      };
+    });
 
   // Axe M57 (classification fonctionnelle du budget) : couvre 100 % des
   // dépenses d'investissement. On mappe les libellés "service" du dump
@@ -1542,7 +1549,7 @@ export type ChapitreFiche = {
 };
 
 // `slugifyChapitre` vit dans `@/lib/projet-utils` (client-safe).
-import { slugifyChapitre, serviceToM57 } from "./projet-utils";
+import { slugifyChapitre, serviceToM57, resolveTypoBucket, detectJO } from "./projet-utils";
 export { slugifyChapitre };
 
 export function loadChapitre(slug: string, year?: number): ChapitreFiche | null {
@@ -1808,6 +1815,85 @@ export function loadPatrimoineStructure(year: number): PatrimoineStructure | nul
   } catch {
     return null;
   }
+}
+
+// ─── Hors bilan · garanties d'emprunt ──────────────────────────────────────
+
+export type HorsBilanBeneficiaire = {
+  key: string;
+  name: string;
+  capital_restant: number;
+  montant_initial: number;
+  count_emprunts: number;
+  share: number;
+  nature_dominante: string;
+};
+
+export type HorsBilanData = {
+  year: number;
+  generated_at: string;
+  totals: {
+    capital_restant: number;
+    montant_initial: number;
+    annuite_totale: number;
+    annuite_interets: number;
+    annuite_capital: number;
+    count_emprunts: number;
+    count_beneficiaires: number;
+    count_preteurs: number;
+  };
+  taux: {
+    capital_taux_fixe: number;
+    capital_taux_variable: number;
+    part_fixe: number;
+    part_variable: number;
+    taux_moyen_pondere_pct: number;
+    duree_residuelle_moyenne_ans: number;
+    indices_variables: Array<{ index: string; count: number }>;
+  };
+  by_nature: Array<{
+    key: string;
+    label: string;
+    capital_restant: number;
+    share: number;
+    count_emprunts: number;
+  }>;
+  top_beneficiaires: HorsBilanBeneficiaire[];
+  autres_beneficiaires: {
+    count: number;
+    capital_restant: number;
+    count_emprunts: number;
+    share: number;
+  };
+  top_preteurs: Array<{
+    name: string;
+    capital_restant: number;
+    count_emprunts: number;
+    share: number;
+  }>;
+  sources: {
+    dataset: string;
+    url: string;
+    license: string;
+    note: string;
+  };
+};
+
+export function loadHorsBilan(year: number): HorsBilanData | null {
+  try {
+    return readJson<HorsBilanData>(`hors_bilan_${year}.json`);
+  } catch {
+    return null;
+  }
+}
+
+export function loadHorsBilanTrajectory(years: number[]): Array<{ year: number; capital_restant: number }> {
+  const out: Array<{ year: number; capital_restant: number }> = [];
+  for (const y of years) {
+    const d = loadHorsBilan(y);
+    if (d) out.push({ year: y, capital_restant: d.totals.capital_restant });
+  }
+  return out;
 }
 
 // ─── Logement social ───────────────────────────────────────────────────────
