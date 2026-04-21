@@ -15,6 +15,7 @@ import StackedBarTheme from "@/components/fusion/StackedBarTheme";
 import QuiRecoitExplorer from "./QuiRecoitExplorer";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import type { QuiRecoitData } from "@/lib/fusion-data";
+import { slugifyLabel } from "@/lib/projet-utils";
 import { useT } from "@/lib/localeContext";
 
 type QuiRecoitIndex = { availableYears: number[] };
@@ -155,6 +156,9 @@ export default function QuiRecoitClient({
             basePath="/qui-recoit"
             entityNoun={t("fx.qr.s02.entity_noun")}
             paretoContrast={t("fx.qr.s02.pareto_contrast")}
+            hrefBuilder={(theme) =>
+              `/qui-recoit/theme/${slugifyLabel(theme)}?year=${d.year}`
+            }
           />
         </div>
       </section>
