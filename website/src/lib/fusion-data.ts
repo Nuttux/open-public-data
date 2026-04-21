@@ -250,8 +250,6 @@ export type BudgetPageData = {
   topDepenses: {
     label: string;
     value: number;
-    /** Variation en % vs l'année précédente (null si indisponible). */
-    deltaPct: number | null;
     /** Top sous-postes (fonctionnement + investissement fusionnés, triés par montant desc). */
     subPostes: { name: string; value: number }[];
   }[];
@@ -1929,19 +1927,6 @@ export function loadBudgetPageData(requestedYear?: number): BudgetPageData {
     .reduce((s, l) => s + l.value, 0);
   const epargneBrute = Math.max(0, sankey.totals.recettes - emprunts - fonctionnement);
 
-  // Load previous year's sankey to compute per-category YoY deltas. Silent
-  // failure if absent (first year of the series).
-  const prevYear = year - 1;
-  let prevDepByLabel = new Map<string, number>();
-  try {
-    const prev = readJson<BudgetSankeyFull>(`budget_sankey_${prevYear}.json`);
-    prevDepByLabel = new Map(
-      prev.links
-        .filter((l) => l.source === "Budget Paris")
-        .map((l) => [l.target, l.value] as const),
-    );
-  } catch {}
-
   const topDepenses = sankey.links
     .filter((l) => l.source === "Budget Paris")
     .map((l) => {
@@ -1955,10 +1940,7 @@ export function loadBudgetPageData(requestedYear?: number): BudgetPageData {
         .slice()
         .sort((a, b) => b.value - a.value)
         .slice(0, 12);
-      const prevVal = prevDepByLabel.get(l.target);
-      const deltaPct =
-        prevVal && prevVal > 0 ? ((l.value - prevVal) / prevVal) * 100 : null;
-      return { label: l.target, value: l.value, deltaPct, subPostes };
+      return { label: l.target, value: l.value, subPostes };
     })
     .sort((a, b) => b.value - a.value);
 
@@ -2030,7 +2012,6 @@ export function loadBudgetPoste(slug: string, requestedYear?: number): BudgetPos
     : index.latestYear;
   const sankey = readJson<BudgetSankeyFull>(`budget_sankey_${year}.json`);
 
-  // Try to match on depenses links first, then recettes.
   const depLink = sankey.links.find(
     (l) => l.source === "Budget Paris" && slugifyLabel(l.target) === slug,
   );
@@ -2048,8 +2029,6 @@ export function loadBudgetPoste(slug: string, requestedYear?: number): BudgetPos
   const totalKind = kind === "depense" ? sankey.totals.depenses : sankey.totals.recettes;
   const shareOfKindPct = totalKind > 0 ? (total / totalKind) * 100 : 0;
 
-  // Sub-postes: for depense, fonctionnement + investissement items in bySection.
-  // For recette, drilldown.revenue[label].
   let subPostes: { name: string; value: number }[] = [];
   if (kind === "depense") {
     const cat = sankey.bySection[label];
@@ -2064,7 +2043,6 @@ export function loadBudgetPoste(slug: string, requestedYear?: number): BudgetPos
       .sort((a, b) => b.value - a.value);
   }
 
-  // YoY delta
   const previousYear = year - 1;
   let deltaPct: number | null = null;
   try {
