@@ -3530,6 +3530,14 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   max-width: 680px;
   line-height: 1.55;
 }
+.theme-fusion .fx-tiles-sub-label {
+  margin: 56px 0 14px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
 .theme-fusion .fx-grid-foot {
   margin-top: 32px;
   display: flex;
