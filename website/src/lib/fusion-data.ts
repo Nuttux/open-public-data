@@ -2004,6 +2004,96 @@ export function loadBudgetPageData(requestedYear?: number): BudgetPageData {
 }
 
 // =====================================================================
+// Budget — drawer fiche par poste (recettes ou dépenses)
+// =====================================================================
+
+export type BudgetPosteFiche = {
+  slug: string;
+  label: string;
+  /** "depense" | "recette" — direction du flux dans le sankey. */
+  kind: "depense" | "recette";
+  year: number;
+  previousYear: number;
+  total: number;
+  /** Part du total (dépenses ou recettes selon kind). */
+  shareOfKindPct: number;
+  /** Variation en % vs année précédente (null si indisponible). */
+  deltaPct: number | null;
+  /** Sous-postes N2/N3 — le nom peut contenir ":" séparant N2 et N3. */
+  subPostes: { name: string; value: number }[];
+};
+
+export function loadBudgetPoste(slug: string, requestedYear?: number): BudgetPosteFiche | null {
+  const index = readJson<BudgetIndex>("budget_index.json");
+  const year = requestedYear && index.availableYears.includes(requestedYear)
+    ? requestedYear
+    : index.latestYear;
+  const sankey = readJson<BudgetSankeyFull>(`budget_sankey_${year}.json`);
+
+  // Try to match on depenses links first, then recettes.
+  const depLink = sankey.links.find(
+    (l) => l.source === "Budget Paris" && slugifyLabel(l.target) === slug,
+  );
+  const recLink = !depLink
+    ? sankey.links.find(
+        (l) => l.target === "Budget Paris" && slugifyLabel(l.source) === slug,
+      )
+    : null;
+
+  if (!depLink && !recLink) return null;
+
+  const kind: "depense" | "recette" = depLink ? "depense" : "recette";
+  const label = depLink ? depLink.target : recLink!.source;
+  const total = depLink ? depLink.value : recLink!.value;
+  const totalKind = kind === "depense" ? sankey.totals.depenses : sankey.totals.recettes;
+  const shareOfKindPct = totalKind > 0 ? (total / totalKind) * 100 : 0;
+
+  // Sub-postes: for depense, fonctionnement + investissement items in bySection.
+  // For recette, drilldown.revenue[label].
+  let subPostes: { name: string; value: number }[] = [];
+  if (kind === "depense") {
+    const cat = sankey.bySection[label];
+    const items = [
+      ...(cat?.Fonctionnement?.items ?? []),
+      ...(cat?.Investissement?.items ?? []),
+    ];
+    subPostes = items.slice().sort((a, b) => b.value - a.value);
+  } else {
+    subPostes = (sankey.drilldown?.revenue?.[label] ?? [])
+      .slice()
+      .sort((a, b) => b.value - a.value);
+  }
+
+  // YoY delta
+  const previousYear = year - 1;
+  let deltaPct: number | null = null;
+  try {
+    const prev = readJson<BudgetSankeyFull>(`budget_sankey_${previousYear}.json`);
+    const prevLink =
+      kind === "depense"
+        ? prev.links.find((l) => l.source === "Budget Paris" && l.target === label)
+        : prev.links.find((l) => l.target === "Budget Paris" && l.source === label);
+    if (prevLink && prevLink.value > 0) {
+      deltaPct = ((total - prevLink.value) / prevLink.value) * 100;
+    }
+  } catch {
+    /* previous year unavailable */
+  }
+
+  return {
+    slug,
+    label,
+    kind,
+    year,
+    previousYear,
+    total,
+    shareOfKindPct,
+    deltaPct,
+    subPostes,
+  };
+}
+
+// =====================================================================
 // Thème subventions / catégorie marchés — drawer fiches
 // =====================================================================
 
