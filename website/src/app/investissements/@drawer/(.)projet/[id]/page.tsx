@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { DetailDrawer, ProjetFiche } from "@/components/fusion";
-import { loadProjet } from "@/lib/fusion-data";
+import { loadProjet, resolveProjetPhoto } from "@/lib/fusion-data";
 
 type Params = { id: string };
 
@@ -15,6 +15,7 @@ export default async function DrawerProjetPage({ params }: { params: Promise<Par
   const { id } = await params;
   const projet = loadProjet(id);
   if (!projet) return notFound();
+  const photo = resolveProjetPhoto(projet.id, projet.name);
 
   const montantStr = projet.montant >= 1e6
     ? `${(projet.montant / 1e6).toFixed(1).replace(".", ",")} M€`
@@ -36,7 +37,7 @@ export default async function DrawerProjetPage({ params }: { params: Promise<Par
         backHref="/investissements"
         breadcrumbLabel={projet.name.slice(0, 50)}
       >
-        <ProjetFiche projet={projet} />
+        <ProjetFiche projet={projet} photo={photo} />
       </DetailDrawer>
     </div>
   );

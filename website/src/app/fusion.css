@@ -4811,6 +4811,8 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   border: 1px solid var(--ink);
   padding: 24px 26px 22px;
   background: var(--bg);
+  display: flex;
+  flex-direction: column;
 }
 .theme-fusion .fx-bc-head {
   font-family: var(--f-mono);
@@ -4841,6 +4843,13 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   color: var(--muted);
   margin-left: 3px;
 }
+.theme-fusion .fx-bc-hint {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
 .theme-fusion .fx-bc-stack {
   display: flex;
   width: 100%;
@@ -4849,6 +4858,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   flex-direction: column;
   margin-bottom: 14px;
   overflow: hidden;
+  height: 460px;
 }
 .theme-fusion .fx-bc-seg {
   background: var(--ink);
@@ -4887,7 +4897,14 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   letter-spacing: -0.015em;
   opacity: 0.9;
 }
-.theme-fusion .fx-bc-seg.tiny { padding: 4px 14px; }
+.theme-fusion .fx-bc-seg.tiny {
+  padding: 6px 14px;
+  min-height: 32px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
 .theme-fusion .fx-bc-seg.tiny .fx-bc-seg-l,
 .theme-fusion .fx-bc-seg.tiny .fx-bc-seg-v { font-size: 10.5px; }
 .theme-fusion button.fx-bc-seg {
@@ -4926,6 +4943,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   font-size: 11px;
   color: var(--muted);
   line-height: 1.6;
+  margin-top: auto;
 }
 .theme-fusion .fx-bc-legend b { color: var(--ink); font-weight: 500; }
 
@@ -4984,11 +5002,11 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   opacity: 0.75;
 }
 .theme-fusion .fx-ratebar-seg.seg-fixed {
-  background: var(--ink);
+  background: rgba(10, 10, 10, 0.72);
   color: var(--bg);
 }
 .theme-fusion .fx-ratebar-seg.seg-var {
-  background: #e4e6ea;
+  background: #eceae4;
   color: var(--ink);
 }
 .theme-fusion .fx-ratebar-legend {

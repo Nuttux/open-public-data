@@ -1,0 +1,638 @@
+{
+  "generated_at": "2026-04-21T22:08:27",
+  "model": "gemini-3-flash-preview",
+  "count": 33,
+  "items": {
+    "ELOGIE SIEMP": {
+      "beneficiaire": "ELOGIE-SIEMP",
+      "beneficiaire_normalise": "ELOGIE SIEMP",
+      "siret": "",
+      "generated_at": "2026-04-21T20:44:07",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Bailleur social de la Ville de Paris assurant la construction, la réhabilitation et la gestion de logements sociaux.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFl7iXbv8zDc7A6D99QpIfOHPQjFNj1ZyiL2JUAg5EJjLDmVQa9seWj-zXf_pAOJVGkqEY1Jpj-qC2SCAFU_FYPRSKPcnpx0exa2qFNblRgHv3XmJenYc4yGLjB54Eug_uopdX608Ubww5l7w9y4c9mMSrU77_PKdIXRlq-Kg6NXQ==",
+          "title": "welcometothejungle.com"
+        },
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHgjWgJ4wzO-kPCg0Kw4GyIQS4HXL3dQW5ZU-eZ_oqigcJ4zh9YK8v2I2Ub7_vtNDlf9184NV_otxpipLfhXEJ51C8S-tQ_mCzBGRJ3QX0Ep5tonN6N999JlBKX6egZW1w_AmtW2Ctme3IapcG4NlKZFr2AhvyJ413Tg69ASUNTndqjp5h_",
+          "title": "data.gouv.fr"
+        }
+      ],
+      "confiance": 0.65,
+      "source_type": "grounded_search"
+    },
+    "AGCE METRO DES MOBILITES PARTAGEES": {
+      "beneficiaire": "AGCE METRO. DES MOBILITES PARTAGEES",
+      "beneficiaire_normalise": "AGCE METRO DES MOBILITES PARTAGEES",
+      "siret": "",
+      "generated_at": "2026-04-21T20:44:16",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Établissement public chargé de la gestion et du développement des services de mobilités partagées, dont le système de vélos en libre-service Vélib' Métropole.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGPvLIRlIYab_qDLhr4gwEbHlXWcWuussiufW11vCN8eQtV3Gb2_eWwZwCyyCGK1aX6Hi1mi-ZkHxifMOe8tipnMBpXajYGiq_JkoQDvHJhYxm2Kc-oTex9nHXr7ssYPhjvLQ4xCsIUz-ynhvrM39JEjwyjbYQ24TdWPNOuI-yme9u1gUKlXllPXHoe6m-HojwSLXvMjw==",
+          "title": "wikipedia.org"
+        },
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFwVb3xmIeeqQZwxoReZDK9HxTvD_xN-i3cDh_IpMSSBUU9-rzQfsrz1LrNvKmV-iV7nEOrnqHHmHPFe_5GMuM3fS69_kU_JvwR5v_BDbjuWc0HKflrUZeEjj1_uJJPT7wK1-A8Qps6GtcRFNpUNkFEO7Nme1VacIzMV_Q=",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.65,
+      "source_type": "grounded_search"
+    },
+    "REGIE ECOLE SUP PHYSIQUE CHIMIE IND": {
+      "beneficiaire": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+      "beneficiaire_normalise": "REGIE ECOLE SUP PHYSIQUE CHIMIE IND",
+      "siret": "",
+      "generated_at": "2026-04-21T20:44:24",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Grande école d'ingénieurs publique de la Ville de Paris spécialisée en physique, chimie et biologie, alliant enseignement supérieur et recherche.",
+      "perimetre_geographique": "Paris 5e",
+      "sources": [
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFhav8oz3gc-TUE9wpP4obnqnn2-ERZ2S2yq9ejnyA0IawqbSEvkQZs6tre0ICvqZ1B8pRcRq3OXnLvYR7g5cb8depyBXCr-GQF8_46ZUzdKqZecaEvEc8xn6FknNFOKNyls7-h",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.5,
+      "source_type": "grounded_search"
+    },
+    "PREFECTURE DE POLICE DE PARIS": {
+      "beneficiaire": "PREFECTURE DE POLICE DE PARIS",
+      "beneficiaire_normalise": "PREFECTURE DE POLICE DE PARIS",
+      "siret": "",
+      "generated_at": "2026-04-21T20:44:32",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Institution d'État chargée de la sécurité des biens et personnes, de l'ordre public et de missions administratives à Paris et en petite couronne.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFeQQlPCEhio5R3GWvINWZQAZQJXqIG4nKHRbQIrKr0f-1CVTt4vgA9CFJYz32beRQCcRL7zLO51jjmy432BfhJLGGOUqmyJT-5vWEZVbGbHdLquYNyWtEL6YDNUeBaErku7lDWUwoOXh34JiFOv112tvm2fe_mwraY-Q==",
+          "title": "wikipedia.org"
+        },
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHtgG8xiKlAN8IzqtwdasDElOJwUO9DSujP75cdVwoMXs85PQh2xvqhSoMO3_6jtWsxBBm_BRn1tzgwRJQacbfbjniPHx-WGKMvO-e5r13sqXxiIWh7goOQxOX6v_8tgNAkOobwOYNnYf1Z2U-NbHTPz66u",
+          "title": "mon-administration.com"
+        },
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHDtV5Q25M1QyhBt9PdJtyS3g1esHMwXALPf27MycrMZVJUffG1hqfgzAMxfLw7Is3Oq2fX2pQsZkaOg1aZee4WOJkOnds9CqY0_W3XDee75C22zZrsCAqx4xr0vTMl_IMIimlwrWwXjfqVbkJ4__cZ6GdogdSTzPG7MbcRODPg1uzR-vFCR33lSOI=",
+          "title": "spds.fr"
+        },
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGd45r-hkfoD4xOaI6fWd5Ch7faJ6XqWnJLu4MMEYTF5rxLOaqrVu2YK49YiKwL002exiCytd7XGRBwPP1YbGTnUsZPxz0pkCvHrf10T0NLaVUTVnGh0GRAoPhDSeETY33Hxt9Un2yGYBb8iXogXbmY",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "grounded_search"
+    },
+    "CITE DE LA MUSIQUE": {
+      "beneficiaire": "LA CITE DE LA MUSIQUE",
+      "beneficiaire_normalise": "CITE DE LA MUSIQUE",
+      "siret": "",
+      "generated_at": "2026-04-21T20:44:50",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Établissement public dédié à la diffusion, l'éducation et la transmission musicale, regroupant des salles de concert, un musée et une médiathèque.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGqvzlXPPSvf6BHMgwbV9vHu70olLlLNTE62dnL65-vbbSN-8TDlVYo-uOfnbZC2BvP38ciMH0qvnPFfaoku0PrOjXzxp87ReZymJfOYps88ZelRZbWKPz-6_fl8ykZKWpossYpAMKAe6An-apr58egBNiGpHsJLk_K-GU486swLWPiUIWr0Hvea_elO-qvyG874iU=",
+          "title": "ticketmaster.fr"
+        }
+      ],
+      "confiance": 0.5,
+      "source_type": "grounded_search"
+    },
+    "THEATRE MUSICAL DE PARIS": {
+      "beneficiaire": "THEATRE MUSICAL DE PARIS",
+      "beneficiaire_normalise": "THEATRE MUSICAL DE PARIS",
+      "siret": "31669616000019",
+      "generated_at": "2026-04-21T20:45:01",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Association chargée de la gestion et de l'exploitation du Théâtre du Châtelet, produisant des spectacles musicaux, opéras, concerts et ballets.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGFVQje4VELQcJx8MTlBRbi1wodMN2_DYWFWu13f1cTc1d-S6LQfEVEs3cBm87Hc0QX16I2JggpKFhPsh4N-BQSW8TKc1hBqOM0j1W0RqzJl5vZowatWOP04ohPnN-DDu3jEbpL1UGY2Gmio622qXvQ82NRNNY37dqCKeRWHb3nNBd2Bd6uZO74EtRIw3jb-X_UOqprlsInTo-07ARtpqK7O4MHOFp8dkPDL4dk1EVj1QWHJ-scD9GsV1eyw3R03WhTnwNsl3LhQRs1C0a2N2Zd4tcWIyjm0L8n0-uQbSGZ61PBnoLp",
+          "title": "premiereloge-opera.com"
+        }
+      ],
+      "confiance": 0.5,
+      "source_type": "grounded_search"
+    },
+    "THEATRE DE LA VILLE": {
+      "beneficiaire": "THEATRE DE LA VILLE",
+      "beneficiaire_normalise": "THEATRE DE LA VILLE",
+      "siret": "77566172100024",
+      "generated_at": "2026-04-21T20:45:13",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Association gérant un établissement culturel public parisien dédié à la création et à la diffusion de spectacles de théâtre, de danse et de musique.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGghFuYTqkx1rIJTHrRNWZWSruMg330mam5Mgcf2bOBRGUGNG9FZRjGLAACj29A0xu4CVR8P-8JzW8fU3gsJ4mMXYMCfqaTQO0GpyabVxRvRLYfNwSC94hkXOj6nb0sbtkhOKsIs2G9jP08NhyIAMxzEs5ULTByg7tUJ74d3zg=",
+          "title": "parisjetaime.com"
+        },
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFGVCmRI5JN6pC4ipoBllPf7LyeDbriGXK5KH6b2j0rgzN7kTeC3dmWfMs-G1ZVhHpf2tXGwYkwNyH6evETqXCWkZy3Ygl9CQBctH_Oeyz2G2k2fmc34wtJvtcdwTrOkJNnRrOn1Im1CApXP4PmW7AT_ef4o4wb2FyT15fAU2jXRCNc4LJ2ixzgAx3fr9ZdVMswGS6TDCRtTg==",
+          "title": "dansercanalhistorique.fr"
+        }
+      ],
+      "confiance": 0.65,
+      "source_type": "grounded_search"
+    },
+    "CENTRE ACTION SOCIALE VILLE PARIS": {
+      "beneficiaire": "CENTRE ACTION SOCIALE VILLE PARIS",
+      "beneficiaire_normalise": "CENTRE ACTION SOCIALE VILLE PARIS",
+      "siret": "",
+      "generated_at": "2026-04-21T20:56:10",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Établissement public municipal gérant l'aide sociale, les prestations de solidarité et les structures d'accueil (EHPAD, restaurants) à Paris.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGhyNh-7foVKHjkglDgEpQ27M0NeSLn1HnyEOTzpYdUn7rSKg9Zo0IWWXCWK39lazt1TPyWVah-QGQzMKIXzy0lHvjZDoDmB2YriTsiQkcCbNYxDt0I8RDSm00Q-myB1IWCh-RHp3AtWIAuEqmdqJEZ3Q4czsKyB97tB2ia5GnxEreELVA1u-WAPhPCNs24",
+          "title": "paris.fr"
+        },
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEF1Un59OzvFkfwRTaMvi-5YhGCqKNAEE7MbS4ybGP-FAS2NZ7xz9Y2FUHjDfVq8eNgdItXGHsOKvIwnIaMedJs3SFOQaVRJsbz1rWflvCzoRFSio6-VM2A81LyYbtRNhsiT4Z9GzuIpxmc7ketqaZ59M5rYlHmvyJT4aJ83UnEsIMrWg==",
+          "title": "kompass.com"
+        }
+      ],
+      "confiance": 0.65,
+      "source_type": "grounded_search"
+    },
+    "PARIS MUSEES": {
+      "beneficiaire": "PARIS MUSEES",
+      "beneficiaire_normalise": "PARIS MUSEES",
+      "siret": "200032779",
+      "generated_at": "2026-04-21T20:56:15",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Établissement public administratif chargé de la gestion, de la valorisation et de la conservation des collections des 14 musées de la Ville de Paris.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHW_8gBeLxlOZ8BSV51oXPZJ1k621RHM8yKJVqH25hM9U8BqjaRYvPAuvtGWGy5DYPQdLGUpKVK42neXLBsr8r1WitoOV7tbW19fAiueZo4snlGViF-_0WopC4aBWBAZsnX1Ob2U7TV25mE",
+          "title": "wikipedia.org"
+        },
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF6PYHhufU-QTbb7xQsPQbIvh2rn8bRGo5QST0KsXwmfCnuWk-8N3Q7Aids4ixifXH3ePPkfORKTdLILDCqJ5FknSUGzklPJNMlqbOw8oKlct4Jma4eq1PGLGrdYOZiMfqD1qyTBrmHaLBMfuQpdzhv0poRDft5Xg==",
+          "title": "wikipedia.org"
+        },
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF2UjPCbndj1jpQsTqOq8it7345_-hgIcJrRu0Ce3P9VaPHjacTvmWOerwJPZHs8pdQuPQljuXzzUFUZxx1puMhqn7sujtK6K7LaRIofEegMZ9utxvmfbNOTJ8-nsWX-UB68Ax2R-hPt00mLXE8Aw==",
+          "title": "friendsoffdf.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "grounded_search"
+    },
+    "REGIE IMMOBILIERE VILLE DE PARIS": {
+      "beneficiaire": "REGIE IMMOBILIERE VILLE DE PARIS",
+      "beneficiaire_normalise": "REGIE IMMOBILIERE VILLE DE PARIS",
+      "siret": "",
+      "generated_at": "2026-04-21T20:56:29",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Bailleur social (SEM) chargé de la construction, de la réhabilitation et de la gestion de logements sociaux, résidences étudiantes et locaux d'activités.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEsPnnNpyjU5mR7jtT8Azufr6fEUyOyJAwnsVotYo-BUhcFXfMxEgiq7_741uksXlgD7lRfORiYq0uHMEvA6SAUMzhpD9GfexqQbCrPvwLjs0iIqJmN6-vk50mdXoRN5N2S6ZfkG1JM1jblGgEncpNvHIpqBPNaZ8Ot4n44MDsVbYIIXtNRBLuNlA==",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.5,
+      "source_type": "grounded_search"
+    },
+    "SOLIDEO": {
+      "beneficiaire": "SOLIDEO",
+      "beneficiaire_normalise": "SOLIDEO",
+      "siret": "",
+      "generated_at": "2026-04-21T20:56:47",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Établissement public chargé de financer, superviser et livrer les ouvrages et infrastructures nécessaires aux Jeux Olympiques et Paralympiques de Paris 2024.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGFUykdSLhvzBV5YfCm4TsSCva4ylLIIQUc6KuaHJr2ZilY4jD_onOD2K-Us6z7Mt3EuBRY0f8cmFQDtEhsiC7s41nnptqO4sB_taNJ6V6IGGW52owuH9m71PzHqQe_Gg0xTSQ=",
+          "title": "ouvrages-olympiques.fr"
+        },
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGmTH6gfuwjlRNGP3fCkihAOIXggeLTPToe1gMdsdbSfZb-36PYBlYzHr_uaa9_VlsQ6EcZ80bs14bphqn-rbUCxkqEiWmi96aMdutfmm1lRzn03gv3nVadrsGBunx4QmIgJ2Xy3CWXLJUa",
+          "title": "ess2024.org"
+        }
+      ],
+      "confiance": 0.65,
+      "source_type": "grounded_search"
+    },
+    "REGIE AUTONOME TRANSPORTS PARISIENS": {
+      "beneficiaire": "REGIE AUTONOME TRANSPORTS PARISIENS",
+      "beneficiaire_normalise": "REGIE AUTONOME TRANSPORTS PARISIENS",
+      "siret": "",
+      "generated_at": "2026-04-21T20:57:04",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Établissement public (EPIC) chargé de l'exploitation et de la maintenance des réseaux de métro, RER, bus et tramways à Paris et en Île-de-France.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFBta6hhenYhpQHDLvP61RNSqhGoULjQY-jeCGiuMQwnkIu0mCmf7MsTZmw4UIbhVR9Bqzq3e-eBQjqtpTsBRvE6YUv2qXeZCiAwYVSu4P8AS6eXTri4FUKd2Z8U6xnbHSxf_E8xIhZs_WZO0TRQxIB_PT-Dd3cbsQo_vl5JY7Ry47BlFYPzWXLAwI09Es=",
+          "title": "francearchives.gouv.fr"
+        },
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFptZ3CQzyjyDaBB9je0inGSKNRO6nLWr6IHj9C6MWWQeY2JNXQoUINlhakMu9hvD-XdpgEz5RsWD5UYwfdHy0qtpPZd5twjXJa1QZCS_RpGXN0vjBulGKw3mOdLHMRjNY39_Q=",
+          "title": "economie-politique.org"
+        }
+      ],
+      "confiance": 0.65,
+      "source_type": "grounded_search"
+    },
+    "ACTION SOCIA PERSON VIL PARISDEP PA": {
+      "beneficiaire": "ACTION SOCIA PERSON VIL PARISDEP PA",
+      "beneficiaire_normalise": "ACTION SOCIA PERSON VIL PARISDEP PA",
+      "siret": "",
+      "generated_at": "2026-04-21T20:57:19",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Association gérant l'action sociale (restauration collective, loisirs, aides) pour les agents de la Ville de Paris et du Département de Paris.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHKfs8zBAlUYx0YU6gP4lzqAQnQDAFh83Se3jh3ipaN7bUz3DYzxlbhZYMESSAYHgQ10JoawXXBnRUUM2CnpMVYTExmp9GBFsx_BFJRmAyHf6ZTz25bkYRssdK4YNSntUdJv_49MJ_Pxn8GoULB3Xzb6nWLgGysXXCzT3CHjlW_atdqxtFWLBc=",
+          "title": "association-d-action-sociale-en-faveur-des-personn-323857219.mil.wf"
+        },
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEUfo1jPiiZnPDdqZUcMJt0XwUs4He_a9m1xjnsD7EYN-_ahK1e4FrCwpP0Wp3cuIxmQjrEXa983T_S_P5gj5tAfthFxiB_Y2aFMcz8p5s_TPxxzoWFoeo=",
+          "title": "aspp.fr"
+        }
+      ],
+      "confiance": 0.65,
+      "source_type": "grounded_search"
+    },
+    "SNCF RESEAU": {
+      "beneficiaire": "SNCF RESEAU",
+      "beneficiaire_normalise": "SNCF RESEAU",
+      "siret": "412280737",
+      "generated_at": "2026-04-21T21:05:45",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Société anonyme à capitaux publics du groupe SNCF chargée de la gestion, de la maintenance et du développement du réseau ferroviaire national.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHTednAk0JR6nL0XcommHeilRzxY94IuOSpF8uDoqcY0UQhXCA1HjbrHjBPv184VCJbBE_mJB6KB3MdVOkhOD1x3NlRJm-1lZZxWyxZGA1RL9mL_sfDG2zAfm7xMU2zOekMFZ_SZBPUHAAm3wNEyqaKHOAfy75SvPNM4WorKA566vX765q-xDdFCCnWLRAtw_PGITFb",
+          "title": "wikipedia.org"
+        },
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGAKvq-86sKB1z5SgmcfmArcg0XJrYV1VeqF2Wwpvizmeh9DEQtXgG0lbwiiBa5pePREEgrXV7O_F3Cy-EEN-9cUFNoyQcRZ-IiK5P7sdAT3mStxAteO6Pio8qJFs5xZYyfBS_9SQ39gg==",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.65,
+      "source_type": "grounded_search"
+    },
+    "CAISSE ECOLES 20 EME ARRON PARIS": {
+      "beneficiaire": "CAISSE ECOLES 20 EME ARRON PARIS",
+      "beneficiaire_normalise": "CAISSE ECOLES 20 EME ARRON PARIS",
+      "siret": "267500403",
+      "generated_at": "2026-04-21T21:06:04",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Établissement public gérant la restauration scolaire, les séjours de vacances et le soutien aux projets pédagogiques du 20e arrondissement de Paris.",
+      "perimetre_geographique": "Paris XXe",
+      "sources": [
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFrzxYk-MVStZXRyL9YzGKvhKa1W7z5ly7_aSJbhjW1j7hRledZgPEPYl9Ig6xinwIlC3GdZWjVBLI2xaTsFIR1-re6mc0fDtXz15FjWfqGFB4LtD-7fXZYsE1g5riRdrB96MVeFS8nOkzJ9aUYG41CIwEuVoA=",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.5,
+      "source_type": "grounded_search"
+    },
+    "CAISSE ECOLES 19 EME ARRON PARIS": {
+      "beneficiaire": "CAISSE ECOLES 19 EME ARRON PARIS",
+      "beneficiaire_normalise": "CAISSE ECOLES 19 EME ARRON PARIS",
+      "siret": "267500395",
+      "generated_at": "2026-04-21T21:06:20",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Établissement public chargé de la restauration scolaire et de l'organisation de séjours de vacances pour les enfants du 19e arrondissement de Paris.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQExwuHixTyQagsfIPnTO8zA3L4Ag3o_WwlpxZ6YQfURFKZPNp4GOmPz0kf_sNJR5z9lPh4MUDDudcR_K04uDVg98F1fDOuoEPFwN_-5p4Gq619e2ewoC_MphOqf-yB8adVi48mPhO7frEBe_lijsFgLwN6tONCsDdyfGZJ2I_6u",
+          "title": "kompass.com"
+        }
+      ],
+      "confiance": 0.5,
+      "source_type": "grounded_search"
+    },
+    "CAISSE DES ECOLES DU 13E ARRONDISSE": {
+      "beneficiaire": "CAISSE DES ECOLES DU 13E ARRONDISSE",
+      "beneficiaire_normalise": "CAISSE DES ECOLES DU 13E ARRONDISSE",
+      "siret": "",
+      "generated_at": "2026-04-21T21:06:33",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Établissement public gérant la restauration scolaire, les activités périscolaires et les séjours de vacances des écoles du 13e arrondissement de Paris.",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH_GHhXQ-_SNAScys3Gjk_LWQgVYUB4-EWMMUezK4_inYsuv1QRDZO1tLTCwRhdkKcy0xOf99m5QHSWiXVRLPCm2DmufwAOXig2GrQ6EglLJqiKK2S5KEXdSfl_8nP3u-VNUYSmi-eSdQTS",
+          "title": "caissedesecolesparis13.fr"
+        },
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEBWT78uf06mvMUztjm3O1YuShM0QXKc3hnKh_7At_u2C8swLef0ksysL5uE1LOUt-P6exZDeBKGIBnrRQ_6wqKdhclaogzRQFpzgmcOFL3eyrEJ4grNSY61g3FB0LPuVOqMM1cF5hXdsQp-uo_9L9T1Tn-GWBOfq5d",
+          "title": "paris.fr"
+        },
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFW0Kowz3tFBHC59agZbmC1ftBSTW55ORgx3ttsvyeCXnaMT-gi8-bxV3zWWve97w57A9rstRfp81YN_oQ1bIBFCKeq_gn4U99nuibcm-4EVY128NLQAC019rLmue14fuKltP3areLK1cRiZ-baN0ItZCAHMHec0q4Ei8gj-CtW3Ntg6LvJMVg1Ow==",
+          "title": "wordpress.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "grounded_search"
+    },
+    "AGENCE NATIONALE DE L HABITAT": {
+      "beneficiaire": "AGENCE NATIONALE DE L'HABITAT",
+      "beneficiaire_normalise": "AGENCE NATIONALE DE L HABITAT",
+      "siret": "180067027",
+      "generated_at": "2026-04-21T21:06:48",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Établissement public d'État chargé de financer et d'accompagner la rénovation et l'amélioration du parc de logements privés sur l'ensemble du territoire.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFB0pECAl2TuCZiMKopm0qr0rj0lxwMA_HsWAU7JwPA7Zwbw5_RBFZtgRhaS38oE4M0OuZVbxkJRu80P5sCCaDKsX_2XOw7QMBIEdwbSLohoKoZlzwLvMuhS_PXy4xGlMu5qOTGzePMW7Nhi1VI4EiC0mMEqCLw2tCfqFCaWb0=",
+          "title": "data.gouv.fr"
+        },
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGKU3V6cNkMnYQixJD9ZplnuGcKg0jnaYqTFCAJEc4m0mdRq1sovEeoXxzH3tbuB-kehwnz_3ASX2GSmyFFezDBR6VXSOo9p5xupDXD0ziPaBb4onKNapTenipaNqWfrJCEQO_2Xg30hXqWEtLgyK4jdRZFx_PBFVp5UlCtcpyL3WNuJorKttrDhBh1-15crzXxSPTtTus0TemcvvKa1AdAVwn7X6fwAFGrVcmYuwOLgOXbQQ==",
+          "title": "developpement-durable.gouv.fr"
+        },
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGETp2Xfjte5cBLUnW3Kmnjmxr_1CBMu_q1SqMTpUIpC7Rpk21n4Dc2yMtVCFThww-FZjisAa8ajiMWf-YAXTRRgLRXdSbAvDDAbN3p9pGbi0pbLpKQSvHTcDPKi-D1ZT4v_0BGAl2JIxrbfkPx2bP8Ds67LFssBnbkYOWb2KKOE_Tb0COG1nmrNv3SVFw3x_BQKGGtX2YGrD3xMrgdqUaKHhxBPp4pDiAw8DsAAc3PzgJUm-zdrs9pKfr2LDiQvBrvfSxiPMN1Iuj_a6BC-fIDNpv-gB_DSRMkezeq--2E6WNLweVJrDtuhO1Mx90bCmV1I3cvip61pKhf2-OxhEmAMJt6ag==",
+          "title": "mayenne.gouv.fr"
+        },
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFO-pDDjHQyBiivm1D4SOuaSdpkB7eIVXQGvPwe0PYBgcME2lUdJPKJI-uGqVdwVZJekOJOXjtMmOEmAHU2lDOMqix0wMmnfsZKLf7Tg-2dFFbLLSOXbce5he2soXofRbyHO-kHsX1Lfv5cvuoIBdVpoygRzeBXNw7csC79lRPQQNfzvewc4gwjZAJ1AN1EDQ2uyhSuofa2sdPPNRudvHpsPvYztqFeaLS2RkBykxdV3yyAfBWJ5-4n",
+          "title": "connaissancedesenergies.org"
+        },
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFkcUQLY406CpSAJWMpfY5BY8R_U16V8OYf7M5v42zeMSejsBKDtNYmApUAjDcPlDBvBTfFaHSpvitMCnphz9bct48cqmOB6btIQIOanJAuYotEjLzxHv3OBLcttVwF_P10iiDPqa__bjGC0FsFY3x4ouALLmZ7rwpzaNJH8EsGYaHak2iKfvrCry4AHvOg3_JCI3Mv9GktWEOqVhTCOg==",
+          "title": "loire.gouv.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "grounded_search"
+    },
+    "CAISSE DES ECOLES 15EME ARRONDISSEM": {
+      "beneficiaire": "CAISSE DES ECOLES 15EME ARRONDISSEM",
+      "beneficiaire_normalise": "CAISSE DES ECOLES 15EME ARRONDISSEM",
+      "siret": "",
+      "generated_at": "2026-04-21T21:14:37",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Établissement public autonome gérant la restauration scolaire, les activités périscolaires et l'éducation à la nutrition dans le 15e arrondissement de Paris.",
+      "perimetre_geographique": "Paris XVe",
+      "sources": [
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFJ56UCMfCHm9qoDsWakItGY_GomIUBfKaR4URrrSlzgqPIby-090qjAB1m74HEnG_oKcRM1fG6BODyTKtvqNAagehI6ZuWHMx0hYQTY6sznDNlAZaNyWlQAnGFliFkTkBpZcQI04kWCNm_nveX4aR23Qo=",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.5,
+      "source_type": "grounded_search"
+    },
+    "104 CENT QUATRE": {
+      "beneficiaire": "104 CENT QUATRE",
+      "beneficiaire_normalise": "104 CENT QUATRE",
+      "siret": "508372927",
+      "generated_at": "2026-04-21T21:14:51",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Établissement public de coopération culturelle de la Ville de Paris, lieu de création, de production et de diffusion artistique pluridisciplinaire.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFtpoDCqADD2hgv75hSku_jWOW87gPJHFaZQlgltCvuCqEotzUczTpR67hJetHtWWHT9fVF8T24OV-zfYqe8WEP3rIkOd1KbW1abR4FwNBcZ7pNF1b47CwNoE8LLyoAojl8773Z1P3FjL3-ZuYVDpqy68iSbpgc_mXPpb1GBU5B22PcIRQxSosk6cSScTk1eNF8JU42r4Fgv2vxo2zfE39Kxxe0o82LDLbyNdEdSZfyiNewbr3CYGxQbfvOhy7DEZk8e9nN6AqH9mPYG_DugcAF",
+          "title": "visitparisregion.com"
+        },
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGi_CD49fnNdZVv4ReAlbdeSHvkLI05HPzrVKGa0raXnFLIcAZvaE_mj6ToBkZLx2xnq0E0_39NDpQAHQ3gn21rrl924iQRQFX-ghf1-_vC6EqvkPUwvOkyalizn2W7PC-2UBIQfmGB0T5yyvFDUoI=",
+          "title": "parisjetaime.com"
+        },
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGwnWtanfzULNe0ATPKdezgu5Euj8z_1SCPVTfl92uHyC1QLfF-FMRDOhOfCHNjVkP96oZCslhsW9f_0TmIHXmcCJjE40ODZZnVx2cGjLbMd3pKGR3qD9uV-1xoim72hl5HYY6aXLELpFc=",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "grounded_search"
+    },
+    "IMMOBILIERE 3F": {
+      "beneficiaire": "IMMOBILIERE 3F",
+      "beneficiaire_normalise": "IMMOBILIERE 3F",
+      "siret": "552141533",
+      "generated_at": "2026-04-21T21:14:57",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Bailleur social (ESH) filiale d'Action Logement, spécialisé dans la construction, la gestion et la location de logements sociaux et intermédiaires.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFXejLNbZ2P8aw3dHwarGHNlflDuHB9yGvqYYCtXKaiwmdE7zhQbpJxBbdWhs5JsuKC8mGNtw4qZ5z9H-BLgCRPAnPo9ShVULaY5V8k-RWTXE5uDTDuQjE9wdg=",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.5,
+      "source_type": "grounded_search"
+    },
+    "ABC PUERICULTURE": {
+      "beneficiaire": "ABC PUERICULTURE",
+      "beneficiaire_normalise": "ABC PUERICULTURE",
+      "siret": "34482479200032",
+      "generated_at": "2026-04-21T21:15:04",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Association gérant un réseau de crèches associatives et de relais petite enfance pour l'accueil de jeunes enfants à Paris.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHaPQ2aXRY1x5zx8YnIv66V8K-91ZJ9ZU4yDKJAvzJZ0c4VdZbzVMvhEWiPp4p3guQMhy80rfcp1jNBoPS1NiR3zsQdqn7u5FzzbPD27Hqoa9lA9mSh1neIOTV2VpRvvAKukBnkiPub_fKjLgqV44clvps=",
+          "title": "societeinfo.com"
+        },
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEyjsdcUdaC1gduogjA5kW4OCLv4oR5K6A5QnE42tGzp5rUIwHcgqQXJKEVixCsEyc5TfVYMicfhK5IlCqj3B8nOXZQEoNtxwpbyMplqUxMxOC8rL6ZTjvCKsD5VfiDTUYYrG7L9v1foq5lQnERu9ctiQ7xVtBJuIEcsNK9Dg==",
+          "title": "societeinfo.com"
+        },
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH-qRViXcpOjB6GAW0tD12WYUfrAAS1LfaqIz0ds4RdXsxSQ5AA11Kl4DEAFcMKjPe918NVLKrF8TuTokVow594K71rBs283o8-f6RskkkM9Tz3Hh8Yi2Vv_ZSYG3ZXQGUjZ-QFiI0YOvB2Z12AhJ_9ArhyYBby3GdsXc5A9wat",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "grounded_search"
+    },
+    "CAISSE DES ECOLES DU 14E ARRONDISSE": {
+      "beneficiaire": "CAISSE DES ECOLES DU 14E ARRONDISSE",
+      "beneficiaire_normalise": "CAISSE DES ECOLES DU 14E ARRONDISSE",
+      "siret": "",
+      "generated_at": "2026-04-21T21:15:16",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Établissement public gérant la restauration scolaire, les goûters et les séjours de vacances pour les élèves des écoles publiques du 14e arrondissement.",
+      "perimetre_geographique": "Paris XIVe",
+      "sources": [
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE6qZRmPP5djqUitOqjT8h6NOAncfwrDZ40YjQVFAdZU6lgcAD_iukiqPRt51_6w4ee1JnH7sT-8UukTMMtip44sic50Q_v1xdptElxmAha3Er18a4H2IIesC3Mk8c=",
+          "title": "cde14.fr"
+        }
+      ],
+      "confiance": 0.5,
+      "source_type": "grounded_search"
+    },
+    "PARIS HABITAT OPH": {
+      "beneficiaire": "PARIS HABITAT-OPH",
+      "beneficiaire_normalise": "PARIS HABITAT OPH",
+      "siret": "344810825",
+      "generated_at": "2026-04-21T22:07:15",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": null,
+      "perimetre_geographique": null,
+      "sources": [],
+      "confiance": 0.0,
+      "source_type": "fallback_none"
+    },
+    "CAISSE DES ECOLES DU 18E ARRONDISSE": {
+      "beneficiaire": "CAISSE DES ECOLES DU 18E ARRONDISSE",
+      "beneficiaire_normalise": "CAISSE DES ECOLES DU 18E ARRONDISSE",
+      "siret": "",
+      "generated_at": "2026-04-21T22:07:24",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": null,
+      "perimetre_geographique": null,
+      "sources": [],
+      "confiance": 0.0,
+      "source_type": "fallback_none"
+    },
+    "FONDATION OEUVRE DE LA CROIX": {
+      "beneficiaire": "FONDATION OEUVRE DE LA CROIX",
+      "beneficiaire_normalise": "FONDATION OEUVRE DE LA CROIX",
+      "siret": "784809683",
+      "generated_at": "2026-04-21T22:07:31",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Fondation reconnue d'utilité publique gérant des établissements sanitaires, médico-sociaux et de petite enfance pour les populations vulnérables.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFPdBYNCsSZ9YGbBSR8u0hwI-uAwSXvqpbcu1w75sv4nXDhO6OQQDWs0C7W6cmAK3zKDsXrov1E1VOb3WKnzcsq62GgehduNf_OuWLv1VGkC9kIVxbgFxuv8dmw4aNTGyViZhsxwS_wPi5PEA==",
+          "title": "croix-saint-simon.org"
+        },
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHNLqQ6lFyjoXklD7KM_yXmXkh4RQAvO0Pec5QY0cEgs7FvtQjHuOsbjP2adTvONZdhtSFwllpHJybzvK8PIMriI4FWQWBKzemCRjINWtOSfNxtGq0URU2QZWdqz3wYzNZyAQ==",
+          "title": "pagesjaunes.fr"
+        }
+      ],
+      "confiance": 0.65,
+      "source_type": "grounded_search"
+    },
+    "STE DE REQUALICATION DES": {
+      "beneficiaire": "STE DE REQUALICATION DES",
+      "beneficiaire_normalise": "STE DE REQUALICATION DES",
+      "siret": "",
+      "generated_at": "2026-04-21T22:07:40",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": null,
+      "perimetre_geographique": null,
+      "sources": [],
+      "confiance": 0.0,
+      "source_type": "fallback_none"
+    },
+    "L HABITATION CONFORTABLE": {
+      "beneficiaire": "L HABITATION CONFORTABLE",
+      "beneficiaire_normalise": "L HABITATION CONFORTABLE",
+      "siret": "572196459",
+      "generated_at": "2026-04-21T22:07:47",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Société anonyme d'habitations à loyer modéré (SA d'HLM) spécialisée dans la gestion de résidences sociales et collectives, filiale du groupe Paris Habitat.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQENiZ9IgRNzsmnSUiAl3rINTIBYkK-KzN9DhFZdPbkU7qnONWJi7_apnMzq7cij6AbHxOmY9rF9KTrd5Z-jU1cg2tObzSfipqTytgX3aE1eTAXJHa5vXnGRsVF1OnpdjJIvFGqyxcLvSq2SbMwhKvn8jQWQaoVIzQSJfNmE2qERzC8bwmXHmYDl2volN8nroIX9bUR2Z68=",
+          "title": "parishabitat.fr"
+        },
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFF7vAccIJkK08w11dg9t2EodFQFG_SvrxhjDW0q2OHJpD8fQQxfacczkQur1CHKSx2rou5tYyTpYsK7EFplY7ks3AmAmpZxJLWVAlJpGdXlHpf4mBNCEi26LDQU3NUd_Fh1fbpqHYU3J6lj6SotdfLPA==",
+          "title": "societeinfo.com"
+        }
+      ],
+      "confiance": 0.65,
+      "source_type": "grounded_search"
+    },
+    "CAISSE DES ECOLES DU 11E ARRONDISSE": {
+      "beneficiaire": "CAISSE DES ECOLES DU 11E ARRONDISSE",
+      "beneficiaire_normalise": "CAISSE DES ECOLES DU 11E ARRONDISSE",
+      "siret": "",
+      "generated_at": "2026-04-21T22:07:55",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": null,
+      "perimetre_geographique": null,
+      "sources": [],
+      "confiance": 0.0,
+      "source_type": "fallback_none"
+    },
+    "CAISSE DES ECOLES DU 17E ARRONDISSE": {
+      "beneficiaire": "CAISSE DES ECOLES DU 17E ARRONDISSE",
+      "beneficiaire_normalise": "CAISSE DES ECOLES DU 17E ARRONDISSE",
+      "siret": "",
+      "generated_at": "2026-04-21T22:08:02",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Établissement public local chargé de la restauration scolaire et de l'action sociale pour les élèves des écoles publiques du 17e arrondissement de Paris.",
+      "perimetre_geographique": "Paris 17e",
+      "sources": [
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG-0LzkQYXteuBjoAZH6QMizSVLk05dIZtoF4KSjGkyhI7BEUrLAJPcCB9GhFsmwDbnzerC8wQbITKsdO03leBQmFiWhzzNECyr5J93VVAex3vrTkm7rJQtslo8KMQWXVWXynhEW_XlLhA=",
+          "title": "cde17.fr"
+        }
+      ],
+      "confiance": 0.5,
+      "source_type": "grounded_search"
+    },
+    "RATP HABITAT": {
+      "beneficiaire": "RATP HABITAT",
+      "beneficiaire_normalise": "RATP HABITAT",
+      "siret": "592025811",
+      "generated_at": "2026-04-21T22:08:07",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": null,
+      "perimetre_geographique": null,
+      "sources": [],
+      "confiance": 0.0,
+      "source_type": "fallback_none"
+    },
+    "CAISSE ECOLES 12 EME ARRON PARIS": {
+      "beneficiaire": "CAISSE ECOLES 12 EME ARRON PARIS",
+      "beneficiaire_normalise": "CAISSE ECOLES 12 EME ARRON PARIS",
+      "siret": "267500320",
+      "generated_at": "2026-04-21T22:08:12",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": null,
+      "perimetre_geographique": null,
+      "sources": [],
+      "confiance": 0.0,
+      "source_type": "fallback_none"
+    },
+    "ALTERALIA": {
+      "beneficiaire": "ALTERALIA",
+      "beneficiaire_normalise": "ALTERALIA",
+      "siret": "35355631900021",
+      "generated_at": "2026-04-21T22:08:19",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Association qui gère des centres d'hébergement d'urgence, des foyers de jeunes travailleurs et des services d'accompagnement social pour publics précaires.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFl7QEhINmcjF0QolTHLwQsJ4qFnpsNJ2Dp-qwbGOSGZ1_l1MMfuUg6eMzYza-3HW-7OBlToJB6CbOKhFWeiy-pQ4hHKTk126mcP3cPgGVu3V0YyGDyoxIUr5rMMn1w0ztgO5JPteLexOd_CENZAlYA-vTG",
+          "title": "alteralia.com"
+        }
+      ],
+      "confiance": 0.5,
+      "source_type": "grounded_search"
+    }
+  }
+}

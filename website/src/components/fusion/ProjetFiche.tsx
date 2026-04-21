@@ -1,6 +1,6 @@
 "use client";
 
-import type { ProjetFiche as ProjetFicheType } from "@/lib/fusion-data";
+import type { ProjetFiche as ProjetFicheType, ProjetPhotoResolved } from "@/lib/fusion-data";
 import ProjetThumb from "./ProjetThumb";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
@@ -45,7 +45,7 @@ const TYPOLOGIE_LABELS_EN: Record<string, string> = {
   autre: "Other",
 };
 
-export default function ProjetFiche({ projet }: { projet: ProjetFicheType }) {
+export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType; photo?: ProjetPhotoResolved }) {
   const t = useT();
   const { locale } = useLocale();
   const locStr = locale === "en" ? "en-GB" : "fr-FR";
@@ -75,10 +75,11 @@ export default function ProjetFiche({ projet }: { projet: ProjetFicheType }) {
       {/* Vignette projet */}
       <div className="fx-fiche-thumb-wrap">
         <ProjetThumb
-          projetId={projet.id}
+          photo={photo?.photo}
+          generic={photo?.generic}
+          typologie={photo?.typologie ?? vulg?.typologie_normalisee ?? null}
           aspectRatio="16 / 9"
           fallbackLabel={projet.name}
-          typologieOverride={vulg?.typologie_normalisee}
           className="fx-fiche-thumb"
         />
       </div>

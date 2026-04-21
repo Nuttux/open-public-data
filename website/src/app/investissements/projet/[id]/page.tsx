@@ -5,7 +5,7 @@ import "../../../fusion.css";
 
 import { Navbar, Footer } from "@/components/fusion";
 import ProjetFiche from "@/components/fusion/ProjetFiche";
-import { loadProjet } from "@/lib/fusion-data";
+import { loadProjet, resolveProjetPhoto } from "@/lib/fusion-data";
 
 type Params = { id: string };
 
@@ -24,6 +24,7 @@ export default async function ProjetPage({ params }: { params: Promise<Params> }
   const { id } = await params;
   const projet = loadProjet(id);
   if (!projet) return notFound();
+  const photo = resolveProjetPhoto(projet.id, projet.name);
 
   return (
     <div className="theme-fusion">
@@ -42,7 +43,7 @@ export default async function ProjetPage({ params }: { params: Promise<Params> }
         </div>
       </section>
       <div className="fx-fiche-wrap">
-        <ProjetFiche projet={projet} />
+        <ProjetFiche projet={projet} photo={photo} />
       </div>
       <Footer />
     </div>
