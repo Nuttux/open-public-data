@@ -16,6 +16,7 @@ import PageTOC from "@/components/fusion/PageTOC";
 import PatrimoineDrillList from "@/components/fusion/PatrimoineDrillList";
 import StressTestTeaser from "@/components/fusion/StressTestTeaser";
 import CityComparator from "@/components/fusion/CityComparator";
+import HorsBilanMap from "@/components/fusion/HorsBilanMap";
 import { slugifyBailleur } from "@/lib/projet-utils";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import type { PatrimoineData, PatrimoineStructure, HorsBilanData, CityDebtSnapshot } from "@/lib/fusion-data";
@@ -458,6 +459,13 @@ export default function DettePatrimoineClient({
                   );
                 })()}
               </div>
+
+              <HorsBilanMap
+                byArrondissement={horsBilan.by_arrondissement}
+                nonLocalised={horsBilan.non_localised}
+                totalCapital={horsBilan.totals.capital_restant}
+                year={horsBilan.year}
+              />
 
               <p className="fx-hb-preteur">
                 {fill(t("fx.det.s04c.preteur_lead"), {
