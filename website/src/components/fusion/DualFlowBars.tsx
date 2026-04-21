@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 
 export type FlowRow = {
   label: ReactNode;
@@ -8,6 +9,8 @@ export type FlowRow = {
   rouge?: boolean;
   /** Optional override for the displayed value. */
   display?: ReactNode;
+  /** If set, the row becomes a <Link> (clickable — e.g. to open a drawer). */
+  href?: string;
 };
 
 type Props = {
@@ -42,26 +45,54 @@ export default function DualFlowBars({ left, right, center, callout }: Props) {
         </div>
         <div className="fx-dualbars-cols">
           <div>
-            {left.rows.map((r, i) => (
-              <div key={i} className={r.rouge ? "fx-dualbars-row fx-dualbars-rouge" : "fx-dualbars-row"}>
-                <span className="l">{r.label}</span>
-                <span className="track">
-                  <span className="fill" style={{ width: `${(r.value / leftMax) * 100}%` }} />
-                </span>
-                <span className="v tnum">{r.display ?? `${fmtBillions(r.value)} Md`}</span>
-              </div>
-            ))}
+            {left.rows.map((r, i) => {
+              const body = (
+                <>
+                  <span className="l">{r.label}</span>
+                  <span className="track">
+                    <span className="fill" style={{ width: `${(r.value / leftMax) * 100}%` }} />
+                  </span>
+                  <span className="v tnum">{r.display ?? `${fmtBillions(r.value)} Md`}</span>
+                </>
+              );
+              const cls = [
+                "fx-dualbars-row",
+                r.rouge ? "fx-dualbars-rouge" : "",
+                r.href ? "fx-dualbars-row-link" : "",
+              ].filter(Boolean).join(" ");
+              return r.href ? (
+                <Link key={i} href={r.href} className={cls} scroll={false}>
+                  {body}
+                </Link>
+              ) : (
+                <div key={i} className={cls}>{body}</div>
+              );
+            })}
           </div>
           <div>
-            {right.rows.map((r, i) => (
-              <div key={i} className={r.rouge ? "fx-dualbars-row fx-dualbars-rouge" : "fx-dualbars-row"}>
-                <span className="l">{r.label}</span>
-                <span className="track">
-                  <span className="fill" style={{ width: `${(r.value / rightMax) * 100}%` }} />
-                </span>
-                <span className="v tnum">{r.display ?? `${fmtBillions(r.value)} Md`}</span>
-              </div>
-            ))}
+            {right.rows.map((r, i) => {
+              const body = (
+                <>
+                  <span className="l">{r.label}</span>
+                  <span className="track">
+                    <span className="fill" style={{ width: `${(r.value / rightMax) * 100}%` }} />
+                  </span>
+                  <span className="v tnum">{r.display ?? `${fmtBillions(r.value)} Md`}</span>
+                </>
+              );
+              const cls = [
+                "fx-dualbars-row",
+                r.rouge ? "fx-dualbars-rouge" : "",
+                r.href ? "fx-dualbars-row-link" : "",
+              ].filter(Boolean).join(" ");
+              return r.href ? (
+                <Link key={i} href={r.href} className={cls} scroll={false}>
+                  {body}
+                </Link>
+              ) : (
+                <div key={i} className={cls}>{body}</div>
+              );
+            })}
           </div>
         </div>
         {center && (
