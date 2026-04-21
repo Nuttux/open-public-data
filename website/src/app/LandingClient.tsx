@@ -198,7 +198,6 @@ export default function LandingClient({ stats }: Props) {
           <div className="fx-grid-tiles">
             <TileCard
               href="/budget"
-              number="04"
               kind={t("fx.land.tile.02.kind")}
               title={t("fx.land.tile.02.title")}
               description={t("fx.land.tile.02.desc")}
@@ -219,7 +218,6 @@ export default function LandingClient({ stats }: Props) {
 
             <TileCard
               href="/dette-patrimoine"
-              number="05"
               kind={t("fx.land.tile.05.kind")}
               title={t("fx.land.tile.05.title")}
               description={t("fx.land.tile.05.desc")}
@@ -247,7 +245,6 @@ export default function LandingClient({ stats }: Props) {
 
             <TileCard
               href="/budget"
-              number="06"
               kind={t("fx.land.tile.06.kind")}
               title={t("fx.land.tile.06.title")}
               description={t("fx.land.tile.06.desc")}
@@ -320,6 +317,9 @@ export default function LandingClient({ stats }: Props) {
             <div className="fx-byline-actions">
               <a className="fx-btn fx-btn-small" href="/analyses">
                 {t("fx.land.byline.docs")}
+              </a>
+              <a className="fx-btn fx-btn-small" href="/methode">
+                {t("fx.land.byline.methode")}
               </a>
               <a
                 className="fx-btn fx-btn-small"

@@ -3,7 +3,8 @@ import type { ReactNode } from "react";
 
 type Props = {
   href: string;
-  number: string;
+  /** Top-left sequence number. Omit for tiles that aren't part of a numbered set. */
+  number?: string;
   kind: ReactNode;
   title: ReactNode;
   description: ReactNode;
@@ -35,7 +36,7 @@ export default function TileCard({
   return (
     <Link href={href} className={["fx-tile", className ?? ""].filter(Boolean).join(" ")}>
       <div className="fx-tile-top">
-        <span className="fx-tile-n">{number}</span>
+        {number && <span className="fx-tile-n">{number}</span>}
         <span className="fx-tile-kind">{kind}</span>
       </div>
       <div className="fx-tile-preview">{preview}</div>

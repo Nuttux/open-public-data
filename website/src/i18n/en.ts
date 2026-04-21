@@ -1212,6 +1212,7 @@ const en: Record<string, string> = {
   'fx.land.byline.name_suffix': ' · independent collective',
   'fx.land.byline.meta': 'All analyses are reproducible from the raw CSVs · last reviewed 18 April 2026',
   'fx.land.byline.docs': 'Documentation',
+  'fx.land.byline.methode': 'Method',
   'fx.land.byline.github': 'GitHub ↗',
   'fx.land.byline.contact': 'Contact',
 
