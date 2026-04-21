@@ -407,6 +407,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 @media (max-width: 768px) {
   .theme-fusion .fx-nav { grid-template-columns: 1fr auto; }
   .theme-fusion .fx-links,
+  .theme-fusion .fx-scope-wrap,
   .theme-fusion .fx-scope-nav,
   .theme-fusion .fx-lang { display: none; }
   .theme-fusion .fx-menu-btn { display: flex; }
@@ -488,7 +489,9 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   font-weight: 500;
   color: var(--muted);
   vertical-align: .6em;
-  margin-left: .08em;
+  margin-left: .5em;
+  letter-spacing: 0;
+  white-space: nowrap;
 }
 .theme-fusion .fx-hero-num-per {
   font-size: .2em;
@@ -510,9 +513,9 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   flex-wrap: wrap;
 }
 .theme-fusion .fx-hero-num-arrow { font-weight: 500; }
-.theme-fusion .fx-hero-num-arrow-up { color: var(--rouge); }
-.theme-fusion .fx-hero-num-arrow-down { color: var(--bleu); }
-.theme-fusion .fx-hero-num-arrow-flat { color: var(--muted); }
+.theme-fusion .fx-hero-num-arrow-up,
+.theme-fusion .fx-hero-num-arrow-down,
+.theme-fusion .fx-hero-num-arrow-flat { color: var(--ink-2); }
 .theme-fusion .fx-hero-num-sep { color: var(--muted-2); }
 .theme-fusion .fx-hero-num-base { color: var(--ink-2); }
 .theme-fusion .fx-hero-num-cap {
@@ -639,6 +642,39 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   color: var(--muted);
   font-weight: 500;
   margin-left: 2px;
+}
+.theme-fusion a.fx-br-row {
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+}
+.theme-fusion a.fx-br-row:focus-visible {
+  outline: 2px solid var(--bleu-vif);
+  outline-offset: -2px;
+}
+.theme-fusion a.fx-br-row:hover .fx-br-fill {
+  background: var(--bleu-vif);
+}
+/* Subtle chevron that fades in on hover — affords "this row is clickable"
+   without adding a permanent column. Positioned in the right padding so it
+   doesn't push content. */
+.theme-fusion a.fx-br-row::after {
+  content: "→";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translate(-8px, -50%);
+  font-family: var(--f-mono);
+  font-size: 14px;
+  color: var(--bleu);
+  opacity: 0;
+  transition: opacity .15s, transform .15s;
+  pointer-events: none;
+}
+.theme-fusion a.fx-br-row:hover::after,
+.theme-fusion a.fx-br-row:focus-visible::after {
+  opacity: 1;
+  transform: translate(0, -50%);
 }
 
 @media (max-width: 768px) {
@@ -858,6 +894,24 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   overflow: hidden;
 }
 .theme-fusion .fx-timechart svg { display: block; }
+
+/* Mobile: the 1200×340 viewBox scales to fit both axes of the container
+   ("meet" mode), so on a 375-wide viewport the content shrinks to ~31 %
+   and the fixed 340-px height leaves a huge empty band. Switch to
+   horizontal scroll with a sensible min-width and auto height so the
+   chart stays legible. */
+@media (max-width: 768px) {
+  .theme-fusion .fx-timechart {
+    padding: 18px 14px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .theme-fusion .fx-timechart svg {
+    min-width: 620px;
+    height: auto !important;
+    aspect-ratio: 1200 / 340;
+  }
+}
 
 /* Viz meta row — small sentence under a chart + inline link */
 .theme-fusion .fx-viz-meta {
@@ -1477,7 +1531,9 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion .fx-overview .fx-hero-num-u {
   font-size: .22em;
   vertical-align: .55em;
-  margin-left: .1em;
+  margin-left: .45em;
+  letter-spacing: 0;
+  white-space: nowrap;
 }
 .theme-fusion .fx-overview .fx-hero-num-line {
   font-family: var(--f-mono);
@@ -1564,6 +1620,40 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   text-align: right;
 }
 .theme-fusion .fx-dualbars-rouge .v { color: var(--rouge); }
+/* Clickable variant: turns the row into a Link without visible chrome;
+   hover repaints the fill and underlines the label. */
+.theme-fusion a.fx-dualbars-row {
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+  transition: background .12s;
+  cursor: pointer;
+}
+.theme-fusion a.fx-dualbars-row:hover { background: #fafaf7; }
+.theme-fusion a.fx-dualbars-row:hover .fill { background: var(--bleu-vif); }
+.theme-fusion a.fx-dualbars-row:hover .l { color: var(--bleu-vif); }
+.theme-fusion a.fx-dualbars-row:focus-visible {
+  outline: 2px solid var(--bleu-vif);
+  outline-offset: 2px;
+}
+.theme-fusion a.fx-dualbars-row::after {
+  content: "→";
+  position: absolute;
+  right: -18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--f-mono);
+  font-size: 13px;
+  color: var(--bleu);
+  opacity: 0;
+  transition: opacity .15s, transform .15s;
+  pointer-events: none;
+}
+.theme-fusion a.fx-dualbars-row:hover::after,
+.theme-fusion a.fx-dualbars-row:focus-visible::after {
+  opacity: 1;
+  transform: translate(4px, -50%);
+}
 .theme-fusion .fx-dualbars-center {
   display: flex;
   flex-direction: column;
@@ -3566,6 +3656,14 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   margin: 0 0 48px;
   max-width: 680px;
   line-height: 1.55;
+}
+.theme-fusion .fx-tiles-sub-label {
+  margin: 56px 0 14px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 .theme-fusion .fx-grid-foot {
   margin-top: 32px;
