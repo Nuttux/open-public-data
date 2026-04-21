@@ -18,11 +18,11 @@ import YearPicker from "@/components/fusion/YearPicker";
 import ExportRow from "@/components/fusion/ExportRow";
 import EmptyState from "@/components/fusion/EmptyState";
 import DualFlowBars from "@/components/fusion/DualFlowBars";
-import ExpandableList from "@/components/fusion/ExpandableList";
 import Tip from "@/components/fusion/Tip";
 import BudgetTimeline from "@/components/fusion/BudgetTimeline";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import type { BudgetPageData, VoteExecuteData } from "@/lib/fusion-data";
+import { slugifyLabel } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 
@@ -41,7 +41,6 @@ type Props = {
 export default function BudgetClient({ index, d, voteExec }: Props) {
   const t = useT();
   const { locale } = useLocale();
-  const numLocale = locale === "en" ? "en-GB" : "fr-FR";
 
   const fill = (key: string, vars: Record<string, string | number>) => {
     let s = t(key);
@@ -52,26 +51,6 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
   const yearType = index.summary.find((s) => s.year === d.year)?.type_budget ?? "execute";
   const isVoted = yearType === "vote";
 
-  // Deep link from landing/other pages: ?theme=X opens + scrolls to that
-  // poste in the S03 dépenses list. Tolerant match: exact → prefix → contains.
-  const searchParams = useSearchParams();
-  const themeParam = searchParams.get("theme");
-  const matchedTheme = themeParam
-    ? d.topDepenses.find((x) => x.label === themeParam)?.label
-      ?? d.topDepenses.find((x) => x.label.toLowerCase().startsWith(themeParam.toLowerCase()))?.label
-      ?? d.topDepenses.find((x) => x.label.toLowerCase().includes(themeParam.toLowerCase()))?.label
-      ?? null
-    : null;
-  const depSectionRef = useRef<HTMLDivElement | null>(null);
-  useEffect(() => {
-    if (matchedTheme && depSectionRef.current) {
-      const timer = setTimeout(() => {
-        depSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 80);
-      return () => clearTimeout(timer);
-    }
-  }, [matchedTheme]);
-
   const deltaDir: "up" | "down" | "flat" =
     d.deltaDepensesPct > 0.1 ? "up" : d.deltaDepensesPct < -0.1 ? "down" : "flat";
 
@@ -81,18 +60,6 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
   const veRow = voteExec.rows.find((r) => r.year === d.year);
   const hasExecution = veRow?.executed != null;
 
-  const recDescKey = (label: string): string => {
-    switch (label) {
-      case "Impôts & Taxes": return "fx.bud.rec_desc.impots";
-      case "Dotations & Subventions": return "fx.bud.rec_desc.dotations";
-      case "Services Publics": return "fx.bud.rec_desc.services";
-      case "Emprunts": return "fx.bud.rec_desc.emprunts";
-      case "Investissement": return "fx.bud.rec_desc.invest";
-      case "Autres (R)": return "fx.bud.rec_desc.autres";
-      default: return "fx.bud.s03.no_desc";
-    }
-  };
-
   return (
     <div className="theme-fusion">
       <Navbar />
@@ -101,7 +68,6 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
         items={[
           { id: "sec-overview", label: t("fx.toc.chiffres") },
           { id: "sec-flux", label: t("fx.toc.flux") },
-          { id: "sec-detail", label: t("fx.toc.detail") },
           { id: "sec-evolution", label: t("fx.toc.evolution") },
           { id: "execution", label: t("fx.toc.execution") },
           { id: "sec-sources", label: t("fx.toc.sources") },
@@ -250,6 +216,53 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
             title={<>{t("fx.bud.s02.title.before")}<em>{t("fx.bud.s02.title.em")}</em>{t("fx.bud.s02.title.after")}</>}
             subtitle={t("fx.bud.s02.sub")}
           />
+
+          {/* Pareto + YoY top-3 movers on dépenses — story anchor above the
+              symmetric DualFlowBars. */}
+          {(() => {
+            const depSum = d.topDepenses.reduce((s, x) => s + x.value, 0);
+            const top3Sum = d.topDepenses.slice(0, 3).reduce((s, x) => s + x.value, 0);
+            const top3Pct = depSum > 0 ? (top3Sum / depSum) * 100 : 0;
+            const movers = d.topDepenses
+              .filter((x) => x.deltaPct !== null && Math.abs(x.deltaPct) >= 2 && x.label !== "Autres (D)")
+              .sort((a, b) => Math.abs(b.deltaPct!) - Math.abs(a.deltaPct!))
+              .slice(0, 3);
+            return (
+              <>
+                <p className="fx-note" style={{ marginTop: 0, marginBottom: 10 }}>
+                  {fill("fx.bud.s03.pareto_line", { year: d.year, pct: `${Math.round(top3Pct)} €` })}
+                </p>
+                {movers.length > 0 && (
+                  <div
+                    style={{
+                      fontFamily: "var(--f-mono)",
+                      fontSize: 12,
+                      color: "var(--ink-2)",
+                      letterSpacing: ".02em",
+                      marginBottom: 22,
+                      display: "flex",
+                      gap: 18,
+                      flexWrap: "wrap",
+                    }}
+                  >
+                    <span style={{ color: "var(--muted)", textTransform: "uppercase", letterSpacing: ".08em", fontSize: 11 }}>
+                      {fill("fx.bud.s03.yoy_label", { prev: d.previousYear })}
+                    </span>
+                    {movers.map((m) => (
+                      <span key={m.label} style={{ whiteSpace: "nowrap" }}>
+                        {m.label === "Autres (D)" ? t("fx.bud.autres") : m.label}{" "}
+                        <b style={{ color: "var(--ink)" }}>
+                          {m.deltaPct! >= 0 ? "+" : "−"}{" "}
+                          {fmtDec(Math.abs(m.deltaPct!), 1)} %
+                        </b>
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </>
+            );
+          })()}
+
           <DualFlowBars
             left={{
               title: <>{fill("fx.bud.s02.left_title", { amount: fmtBillions(d.recettes) })}</>,
@@ -258,6 +271,7 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
                 value: r.value,
                 display: `${fmtBillions(r.value)} Md`,
                 rouge: false,
+                href: `/budget/poste/${slugifyLabel(r.label)}?year=${d.year}`,
               })),
             }}
             right={{
@@ -267,6 +281,7 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
                 value: x.value,
                 display: `${fmtBillions(x.value)} Md`,
                 rouge: false,
+                href: `/budget/poste/${slugifyLabel(x.label)}?year=${d.year}`,
               })),
             }}
             center={{
@@ -299,150 +314,6 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
                 {t("fx.bud.s02.callout.p6")}
               </>
             }
-          />
-        </div>
-      </section>
-
-      <section className="fx-section" id="sec-detail">
-        <div className="fx-wrap">
-          <SectionHead
-            number="03"
-            kind={t("fx.bud.s03.kind")}
-            title={<>{t("fx.bud.s03.title.before")}<em>{t("fx.bud.s03.title.em")}</em>{t("fx.bud.s03.title.after")}</>}
-            subtitle={t("fx.bud.s03.sub")}
-          />
-          <div style={{ fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)", letterSpacing: ".08em", textTransform: "uppercase", marginBottom: 12 }}>
-            {fill("fx.bud.s03.rec_header", { amount: fmtBillions(d.recettes) })}
-          </div>
-          <ExpandableList
-            header={{
-              left: <>{t("fx.bud.s03.sources_left_a")}<b>{fill("fx.bud.s03.sources_left_b", { amount: fmtBillions(d.recettes) })}</b></>,
-              right: <>{fill("fx.bud.s03.postes", { n: topRec.length })}</>,
-            }}
-            items={topRec.map((r) => {
-              const refMax = topRec[0].value || 1;
-              const label = r.label === "Autres (R)" ? t("fx.bud.autres") : trLabel(r.label, locale);
-              const desc = t(recDescKey(r.label));
-              const subMax = r.subSources[0]?.value || 1;
-              return {
-                key: r.label,
-                label,
-                barPct: (r.value / refMax) * 100,
-                meta: <>{fmtDec((r.value / d.recettes) * 100, 1)} %</>,
-                value: fmtBillions(r.value),
-                unit: "Md €",
-                children: (
-                  <div>
-                    <p style={{ fontFamily: "var(--f-ui)", fontSize: 14, color: "var(--ink-2)", lineHeight: 1.55, maxWidth: 720, margin: "0 0 18px" }}>
-                      {desc}
-                    </p>
-                    <div style={{ fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)", letterSpacing: ".08em", textTransform: "uppercase", marginBottom: 14 }}>
-                      {fill("fx.bud.s03.top_sub_sources", { label })}
-                    </div>
-                    {r.subSources.length > 0 ? (
-                      <GroupedSubRows
-                        items={r.subSources}
-                        max={subMax}
-                        numLocale={numLocale}
-                        detailFallback={t("fx.bud.s03.detail_fallback")}
-                        locale={locale}
-                      />
-                    ) : (
-                      <p style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--muted)" }}>
-                        {t("fx.bud.s03.no_sub_sources")}
-                      </p>
-                    )}
-                  </div>
-                ),
-              };
-            })}
-          />
-
-          <div ref={depSectionRef} id="sec-depenses" style={{ fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)", letterSpacing: ".08em", textTransform: "uppercase", margin: "36px 0 12px" }}>
-            {fill("fx.bud.s03.dep_header", { amount: fmtBillions(d.depenses) })}
-          </div>
-          {(() => {
-            const depSum = d.topDepenses.reduce((s, x) => s + x.value, 0);
-            const top3Sum = d.topDepenses.slice(0, 3).reduce((s, x) => s + x.value, 0);
-            const top3Pct = depSum > 0 ? (top3Sum / depSum) * 100 : 0;
-            const movers = d.topDepenses
-              .filter((x) => x.deltaPct !== null && Math.abs(x.deltaPct) >= 2 && x.label !== "Autres (D)")
-              .sort((a, b) => Math.abs(b.deltaPct!) - Math.abs(a.deltaPct!))
-              .slice(0, 3);
-            return (
-              <>
-                <p className="fx-note" style={{ marginTop: 0, marginBottom: 14 }}>
-                  {fill("fx.bud.s03.pareto_line", { year: d.year, pct: `${Math.round(top3Pct)} €` })}
-                </p>
-                {movers.length > 0 && (
-                  <div
-                    style={{
-                      fontFamily: "var(--f-mono)",
-                      fontSize: 12,
-                      color: "var(--ink-2)",
-                      letterSpacing: ".02em",
-                      marginBottom: 18,
-                      display: "flex",
-                      gap: 18,
-                      flexWrap: "wrap",
-                    }}
-                  >
-                    <span style={{ color: "var(--muted)", textTransform: "uppercase", letterSpacing: ".08em", fontSize: 11 }}>
-                      {fill("fx.bud.s03.yoy_label", { prev: d.previousYear })}
-                    </span>
-                    {movers.map((m) => (
-                      <span key={m.label} style={{ whiteSpace: "nowrap" }}>
-                        {m.label === "Autres (D)" ? t("fx.bud.autres") : m.label}{" "}
-                        <b style={{ color: "var(--ink)" }}>
-                          {m.deltaPct! >= 0 ? "+" : "−"}{" "}
-                          {fmtDec(Math.abs(m.deltaPct!), 1)} %
-                        </b>
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </>
-            );
-          })()}
-          <ExpandableList
-            initialOpen={matchedTheme ?? undefined}
-            header={{
-              left: <>{t("fx.bud.s03.thematiques_left_a")}<b>{fill("fx.bud.s03.sources_left_b", { amount: fmtBillions(d.depenses) })}</b></>,
-              right: <>{fill("fx.bud.s03.postes", { n: d.topDepenses.length })}</>,
-            }}
-            items={d.topDepenses.map((x) => {
-              const refMax = d.topDepenses[0].value || 1;
-              const label = x.label === "Autres (D)" ? t("fx.bud.autres") : trLabel(x.label, locale);
-              const subMax = x.subPostes[0]?.value || 1;
-              return {
-                key: x.label,
-                label,
-                barPct: (x.value / refMax) * 100,
-                meta: <>{fmtDec((x.value / d.depenses) * 100, 1)} %</>,
-                value: fmtBillions(x.value),
-                unit: "Md €",
-                children: (
-                  <div>
-                    <div style={{ fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)", letterSpacing: ".08em", textTransform: "uppercase", marginBottom: 14 }}>
-                      {fill("fx.bud.s03.top_sub_postes", { label })}
-                    </div>
-                    {x.subPostes.length > 0 ? (
-                      <GroupedSubRows
-                        items={x.subPostes}
-                        max={subMax}
-                        numLocale={numLocale}
-                        detailFallback={t("fx.bud.s03.detail_fallback")}
-                        locale={locale}
-                      />
-                    ) : (
-                      <p style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--muted)" }}>
-                        {t("fx.bud.s03.no_sub_postes")}
-                      </p>
-                    )}
-                  </div>
-                ),
-              };
-            })}
           />
         </div>
       </section>
