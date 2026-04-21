@@ -11,6 +11,13 @@ type Props = {
   generic?: GenericPhotoEntry | null;
   /** Typologie normalisée — pictogramme de fallback. */
   typologie?: string | null;
+  /** Legacy prop: ID du projet — accepté mais ignoré par ce composant
+   *  purement client. Les pages serveur doivent résoudre la photo avec
+   *  `resolveProjetPhoto(id)` et passer le résultat via `photo`/`generic`. */
+  projetId?: string;
+  /** Legacy prop: override de typologie — accepté pour ne pas casser les
+   *  appelants mais priorisé après `typologie` (qui est la source moderne). */
+  typologieOverride?: string | null;
   width?: number;
   height?: number;
   aspectRatio?: string;
@@ -29,13 +36,16 @@ export default function ProjetThumb({
   photo,
   generic,
   typologie: typologieProp,
+  typologieOverride,
+  projetId: _projetId,
   width,
   height,
   aspectRatio = "16 / 9",
   className,
   fallbackLabel,
 }: Props) {
-  const typologie = typologieProp ?? guessTypologieFromName(fallbackLabel) ?? null;
+  void _projetId;
+  const typologie = typologieProp ?? typologieOverride ?? guessTypologieFromName(fallbackLabel) ?? null;
 
   const frame: React.CSSProperties =
     width != null && height != null
