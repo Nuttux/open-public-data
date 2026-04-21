@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { normalizeObjet } from "@/lib/objet-normalizer";
+import { useT, useLocale } from "@/lib/localeContext";
+import { trLabel } from "@/lib/label-translate";
 
 type Item = {
   titulaire: string;
@@ -24,28 +26,33 @@ type Props = {
   year: number;
 };
 
-const fmtAmount = (n: number) => {
-  if (n >= 1e9) return { v: new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 2 }).format(n / 1e9), u: "Md €" };
-  if (n >= 1e6) return { v: new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 1 }).format(n / 1e6), u: "M €" };
-  if (n >= 1e3) return { v: new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 }).format(n / 1e3), u: "k €" };
-  return { v: new Intl.NumberFormat("fr-FR").format(n), u: "€" };
+const fill = (s: string, vars: Record<string, string | number>) => {
+  let r = s;
+  for (const [k, v] of Object.entries(vars)) r = r.replace(`{${k}}`, String(v));
+  return r;
 };
 
-const fmtDate = (iso: string) => {
-  if (!iso) return "—";
-  try {
-    return new Intl.DateTimeFormat("fr-FR", { day: "2-digit", month: "2-digit", year: "numeric" }).format(new Date(iso));
-  } catch {
-    return iso;
-  }
-};
-
-/**
- * Recherche marchés : pattern search-first avec filtres. Si aucune recherche
- * active, affiche par défaut les 12 plus gros contrats (ou les 12 plus gros
- * de la catégorie sélectionnée). Volumineux côté data — pagination simple.
- */
 export default function MarchesSearch({ items, categories, natures, year }: Props) {
+  const t = useT();
+  const { locale } = useLocale();
+  const locStr = locale === "en" ? "en-GB" : "fr-FR";
+
+  const fmtAmount = (n: number) => {
+    if (n >= 1e9) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 2 }).format(n / 1e9), u: t("fx.s.md_eur") };
+    if (n >= 1e6) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 1 }).format(n / 1e6), u: t("fx.s.m_eur") };
+    if (n >= 1e3) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 0 }).format(n / 1e3), u: "k €" };
+    return { v: new Intl.NumberFormat(locStr).format(n), u: "€" };
+  };
+
+  const fmtDate = (iso: string) => {
+    if (!iso) return "—";
+    try {
+      return new Intl.DateTimeFormat(locStr, { day: "2-digit", month: "2-digit", year: "numeric" }).format(new Date(iso));
+    } catch {
+      return iso;
+    }
+  };
+
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("");
   const [nature, setNature] = useState("");
@@ -66,7 +73,6 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
   const isFilterActive = Boolean(category) || Boolean(nature) || !hideMulti;
   const hasActiveSelection = isQueryActive || isFilterActive;
 
-  // Default view: top 12 of whatever filter is active (or all)
   const displayed = filtered.slice(0, 24);
 
   const reset = () => {
@@ -77,17 +83,17 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
   };
 
   const contextLabel = (() => {
-    if (isQueryActive) return <>Résultats pour <b>« {query.trim()} »</b></>;
-    if (category && nature) return <>Catégorie <b>{category}</b> · Nature <b>{nature}</b></>;
-    if (category) return <>Catégorie <b>{category}</b></>;
-    if (nature) return <>Nature <b>{nature}</b></>;
-    return <>Top 24 des contrats {year}</>;
+    if (isQueryActive) return <>{t("fx.mp.search.ctx.query")} <b>« {query.trim()} »</b></>;
+    if (category && nature) return <>{t("fx.mp.search.ctx.cat")} <b>{category}</b> · {t("fx.mp.search.ctx.nat")} <b>{nature}</b></>;
+    if (category) return <>{t("fx.mp.search.ctx.cat")} <b>{category}</b></>;
+    if (nature) return <>{t("fx.mp.search.ctx.nat")} <b>{nature}</b></>;
+    return <>{fill(t("fx.mp.search.ctx.top"), { year })}</>;
   })();
 
   return (
     <div className="fx-search-wrap">
       <div className="fx-search-inner">
-        <div className="fx-search-label">Rechercher un contrat ou une entreprise</div>
+        <div className="fx-search-label">{t("fx.mp.search.label")}</div>
         <div className="fx-search-input-wrap">
           <span className="fx-search-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
@@ -98,36 +104,39 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
           <input
             className="fx-search-input"
             type="search"
-            placeholder="Nom d'un fournisseur, objet du marché, SIREN…"
+            placeholder={t("fx.mp.search.placeholder")}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
         </div>
         <div className="fx-search-filters">
-          <span className="fx-search-filter-label">Filtres</span>
+          <span className="fx-search-filter-label">{t("fx.mp.search.filters")}</span>
           <select value={category} onChange={(e) => setCategory(e.target.value)}>
-            <option value="">Toutes catégories</option>
-            {categories.map((c) => (
-              <option key={c} value={c}>
-                {c.length > 50 ? c.slice(0, 50) + "…" : c}
-              </option>
-            ))}
+            <option value="">{t("fx.mp.search.all_cat")}</option>
+            {categories.map((c) => {
+              const lbl = trLabel(c, locale);
+              return (
+                <option key={c} value={c}>
+                  {lbl.length > 50 ? lbl.slice(0, 50) + "…" : lbl}
+                </option>
+              );
+            })}
           </select>
           <select value={nature} onChange={(e) => setNature(e.target.value)}>
-            <option value="">Toutes natures</option>
+            <option value="">{t("fx.mp.search.all_nat")}</option>
             {natures.map((n) => (
               <option key={n} value={n}>
-                {n}
+                {trLabel(n, locale)}
               </option>
             ))}
           </select>
           <label style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--muted)", display: "inline-flex", alignItems: "center", gap: 6 }}>
             <input type="checkbox" checked={hideMulti} onChange={(e) => setHideMulti(e.target.checked)} />
-            Masquer multiattributaires
+            {t("fx.mp.search.hide_multi")}
           </label>
           {hasActiveSelection && (
             <button type="button" className="fx-search-clear" onClick={reset}>
-              Réinitialiser
+              {t("fx.mp.search.reset")}
             </button>
           )}
         </div>
@@ -135,9 +144,9 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
 
       <div className="fx-search-meta">
         <span>
-          {contextLabel} · <b>{new Intl.NumberFormat("fr-FR").format(filtered.length)} contrat{filtered.length > 1 ? "s" : ""}</b> correspond{filtered.length > 1 ? "ent" : ""}
+          {contextLabel} · <b>{new Intl.NumberFormat(locStr).format(filtered.length)} {filtered.length > 1 ? t("fx.mp.search.contract_p") : t("fx.mp.search.contract_s")}</b> {filtered.length > 1 ? t("fx.mp.search.match_p") : t("fx.mp.search.match_s")}
         </span>
-        <span>Trié par enveloppe max · exercice {year}</span>
+        <span>{fill(t("fx.mp.search.sorted"), { year })}</span>
       </div>
 
       {displayed.length > 0 ? (
@@ -152,7 +161,7 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
             return (
               <CardEl key={i} className="fx-result-card" {...cardProps}>
                 <div className="fx-result-card-top">
-                  <span className="fx-result-card-type">Marché · {it.nature}</span>
+                  <span className="fx-result-card-type">{t("fx.mp.search.card.marche")} · {trLabel(it.nature, locale)}</span>
                   <span>{fmtDate(it.date)}</span>
                 </div>
                 <h3>{(() => {
@@ -168,7 +177,7 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
                     {(it.titulaire === "MARCHE MULTIATTRIBUTAIRE" ? "Multi-attributaire" : it.titulaire).slice(0, 34)}
                   </span>
                   <span className="fx-result-card-cta">
-                    Fiche <span className="chev">→</span>
+                    {t("fx.mp.search.card.fiche")} <span className="chev">→</span>
                   </span>
                 </div>
               </CardEl>
@@ -176,15 +185,15 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
           })}
           {filtered.length > displayed.length && (
             <div className="fx-results-overflow">
-              + {filtered.length - displayed.length} autres contrats. Affinez la recherche pour filtrer.
+              {fill(t("fx.mp.search.overflow"), { n: filtered.length - displayed.length })}
             </div>
           )}
         </div>
       ) : (
         <div className="fx-search-placeholder">
-          <p>Aucun contrat ne correspond à cette recherche.</p>
+          <p>{t("fx.mp.search.empty")}</p>
           <button type="button" className="fx-btn" onClick={reset}>
-            Réinitialiser
+            {t("fx.mp.search.reset")}
           </button>
         </div>
       )}

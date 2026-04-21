@@ -4,6 +4,8 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useMemo } from "react";
 import "leaflet/dist/leaflet.css";
+import { useT, useLocale } from "@/lib/localeContext";
+import { trLabel } from "@/lib/label-translate";
 
 type Point = {
   id: string;
@@ -20,11 +22,6 @@ const TileLayer = dynamic(() => import("react-leaflet").then((m) => m.TileLayer)
 const CircleMarker = dynamic(() => import("react-leaflet").then((m) => m.CircleMarker), { ssr: false });
 const Tooltip = dynamic(() => import("react-leaflet").then((m) => m.Tooltip), { ssr: false });
 
-const fmt = (n: number) => {
-  if (n >= 1e6) return new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 1 }).format(n / 1e6) + " M €";
-  if (n >= 1e3) return new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 }).format(n / 1e3) + " k €";
-  return new Intl.NumberFormat("fr-FR").format(n) + " €";
-};
 
 type Props = {
   points: Point[];
@@ -39,6 +36,14 @@ type Props = {
  * alternative using the libraries already in package.json.
  */
 export default function ProjectMap({ points, maxAmount, height = 480 }: Props) {
+  const t = useT();
+  const { locale } = useLocale();
+  const locStr = locale === "en" ? "en-GB" : "fr-FR";
+  const fmt = (n: number) => {
+    if (n >= 1e6) return new Intl.NumberFormat(locStr, { maximumFractionDigits: 1 }).format(n / 1e6) + " " + t("fx.s.m_eur");
+    if (n >= 1e3) return new Intl.NumberFormat(locStr, { maximumFractionDigits: 0 }).format(n / 1e3) + " k €";
+    return new Intl.NumberFormat(locStr).format(n) + " €";
+  };
   const router = useRouter();
   const max = maxAmount ?? Math.max(...points.map((p) => p.amount), 1);
 
@@ -87,11 +92,11 @@ export default function ProjectMap({ points, maxAmount, height = 480 }: Props) {
                   <div style={{ fontWeight: 600, maxWidth: 260, lineHeight: 1.25 }}>{p.name}</div>
                   <div style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 11, marginTop: 4 }}>
                     {fmt(p.amount)}
-                    {p.chapitre ? ` · ${p.chapitre}` : ""}
-                    {p.arr != null && p.arr > 0 ? ` · ${p.arr}e arr.` : ""}
+                    {p.chapitre ? ` · ${trLabel(p.chapitre, locale)}` : ""}
+                    {p.arr != null && p.arr > 0 ? ` · ${p.arr}${t("fx.pm.arr_suffix")}` : ""}
                   </div>
                   <div style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 10, marginTop: 6, color: "#b8551c", letterSpacing: 0.5, textTransform: "uppercase" }}>
-                    Cliquer pour ouvrir la fiche ↗
+                    {t("fx.pm.click_open")}
                   </div>
                 </div>
               </Tooltip>

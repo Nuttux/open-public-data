@@ -40,7 +40,9 @@ ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 CLAUDE_MODEL = os.environ.get("CLAUDE_MODEL", "claude-opus-4-7")
 
 BATCH_SIZE = 10
-PARETO_LIMIT = 500
+# Long tail activé : on classe tous les bénéficiaires exportés (cap côté export).
+# Override avec `--limit` pour les runs exploratoires.
+PARETO_LIMIT = None
 
 THEMATIQUES = [
     "Social - Solidarité", "Social - Petite enfance", "Social",
@@ -310,7 +312,7 @@ def get_beneficiaires_to_classify(existing_cache: dict, limit: int = None) -> li
     montants par nom sur toutes les années disponibles, puis renvoie les
     top N non encore en cache. Remplace l'ancienne requête BigQuery.
     """
-    actual_limit = limit or PARETO_LIMIT
+    actual_limit = limit or PARETO_LIMIT  # None = pas de cap (long tail complet)
 
     totals: dict[str, float] = {}
     for f in sorted(SUBVENTIONS_DIR.glob("beneficiaires_*.json")):
@@ -332,7 +334,7 @@ def get_beneficiaires_to_classify(existing_cache: dict, limit: int = None) -> li
         if nom in existing_cache:
             continue
         to_process.append({"nom": nom, "montant": montant})
-        if len(to_process) >= actual_limit:
+        if actual_limit is not None and len(to_process) >= actual_limit:
             break
     return to_process
 
@@ -343,7 +345,7 @@ def get_beneficiaires_to_classify(existing_cache: dict, limit: int = None) -> li
 
 def main():
     parser = argparse.ArgumentParser(description="Classification thématique LLM (batch)")
-    parser.add_argument('--limit', type=int, help=f"Nombre max (default: {PARETO_LIMIT})")
+    parser.add_argument('--limit', type=int, help="Nombre max (default: tous les bénéficiaires exportés)")
     parser.add_argument('--dry-run', action='store_true', help="Simulation")
     parser.add_argument('--provider', choices=['claude', 'gemini'], default='gemini',
                        help="LLM provider (default: gemini)")

@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { DetailDrawer, AssociationFiche } from "@/components/fusion";
+import { AssoKicker } from "@/components/fusion/AssoKicker";
 import { loadAssociation, loadSubventionVulgarization } from "@/lib/fusion-data";
 
 type Params = { slug: string };
@@ -19,7 +20,7 @@ export default async function DrawerAssoPage({ params }: { params: Promise<Param
   return (
     <div className="theme-fusion">
       <DetailDrawer
-        kicker={<>Association · {asso.theme ?? "Thématique —"}</>}
+        kicker={<AssoKicker theme={asso.theme} />}
         title={asso.name}
         shareUrl={`/qui-recoit/association/${encodeURIComponent(asso.name)}`}
         shareText={shareText}

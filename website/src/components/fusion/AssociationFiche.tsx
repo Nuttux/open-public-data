@@ -1,10 +1,13 @@
-import type { AssociationFiche as AssociationFicheType, SubventionVulgarization } from "@/lib/fusion-data";
+"use client";
 
-const fmtEur = (n: number) => {
-  if (n >= 1e9) return { v: new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 2 }).format(n / 1e9), u: "Md €" };
-  if (n >= 1e6) return { v: new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 1 }).format(n / 1e6), u: "M €" };
-  if (n >= 1e3) return { v: new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 }).format(n / 1e3), u: "k €" };
-  return { v: new Intl.NumberFormat("fr-FR").format(n), u: "€" };
+import type { AssociationFiche as AssociationFicheType, SubventionVulgarization } from "@/lib/fusion-data";
+import { useT, useLocale } from "@/lib/localeContext";
+import { trLabel } from "@/lib/label-translate";
+
+const fill = (s: string, vars: Record<string, string | number>) => {
+  let r = s;
+  for (const [k, v] of Object.entries(vars)) r = r.replace(`{${k}}`, String(v));
+  return r;
 };
 
 export default function AssociationFiche({
@@ -14,6 +17,17 @@ export default function AssociationFiche({
   asso: AssociationFicheType;
   vulgarization?: SubventionVulgarization | null;
 }) {
+  const t = useT();
+  const { locale } = useLocale();
+  const locStr = locale === "en" ? "en-GB" : "fr-FR";
+
+  const fmtEur = (n: number) => {
+    if (n >= 1e9) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 2 }).format(n / 1e9), u: t("fx.s.md_eur") };
+    if (n >= 1e6) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 1 }).format(n / 1e6), u: t("fx.s.m_eur") };
+    if (n >= 1e3) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 0 }).format(n / 1e3), u: "k €" };
+    return { v: new Intl.NumberFormat(locStr).format(n), u: "€" };
+  };
+
   const { v: vTot, u: uTot } = fmtEur(asso.totalAmount);
   const firstYear = asso.yearsActive[0];
   const lastYear = asso.yearsActive[asso.yearsActive.length - 1];
@@ -43,50 +57,50 @@ export default function AssociationFiche({
 
       <div className="fx-fiche-kpis">
         <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">Cumul reçu</div>
+          <div className="fx-fiche-kpi-label">{t("fx.fiche.asso.cumul")}</div>
           <div className="fx-fiche-kpi-value tnum">
             {vTot}
             <span className="u">{uTot}</span>
           </div>
         </div>
         <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">Subventions</div>
+          <div className="fx-fiche-kpi-label">{t("fx.fiche.asso.subventions")}</div>
           <div className="fx-fiche-kpi-value tnum">{asso.subventionCount}</div>
         </div>
         <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">Actif depuis</div>
+          <div className="fx-fiche-kpi-label">{t("fx.fiche.asso.actif_depuis")}</div>
           <div className="fx-fiche-kpi-value tnum">{firstYear ?? "—"}</div>
         </div>
         <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">Dernière année</div>
+          <div className="fx-fiche-kpi-label">{t("fx.fiche.asso.derniere_annee")}</div>
           <div className="fx-fiche-kpi-value tnum">{lastYear ?? "—"}</div>
         </div>
       </div>
 
       <section className="fx-fiche-section">
-        <div className="fx-fiche-h">Identité</div>
+        <div className="fx-fiche-h">{t("fx.fiche.asso.identite")}</div>
         <dl>
           <div className="fx-fiche-prop">
-            <dt>Nom</dt>
+            <dt>{t("fx.fiche.shared.nom")}</dt>
             <dd>{asso.name}</dd>
           </div>
           {asso.natureJuridique && (
             <div className="fx-fiche-prop">
-              <dt>Nature</dt>
+              <dt>{t("fx.fiche.shared.nature")}</dt>
               <dd>{asso.natureJuridique}</dd>
             </div>
           )}
           {asso.theme && (
             <div className="fx-fiche-prop">
-              <dt>Thématique</dt>
-              <dd>{asso.theme}</dd>
+              <dt>{t("fx.fiche.asso.thematique")}</dt>
+              <dd>{trLabel(asso.theme, locale)}</dd>
             </div>
           )}
         </dl>
       </section>
 
       <section className="fx-fiche-section">
-        <div className="fx-fiche-h">Historique année par année</div>
+        <div className="fx-fiche-h">{t("fx.fiche.asso.historique")}</div>
         <div>
           {asso.byYear
             .slice()
@@ -136,7 +150,7 @@ export default function AssociationFiche({
                         {Math.abs(highlight.pct).toFixed(0)} %
                       </span>
                     ) : (
-                      <span className="muted">{y.count} sub.</span>
+                      <span className="muted">{y.count} {t("fx.fiche.asso.sub")}</span>
                     )}
                   </span>
                 </div>
@@ -145,12 +159,12 @@ export default function AssociationFiche({
         </div>
         {asso.highlights.length > 0 && (
           <p className="fx-fiche-note">
-            <b>Mouvements notables</b> ·{" "}
+            <b>{t("fx.fiche.asso.mouvements")}</b> ·{" "}
             {asso.highlights
               .slice(-3)
               .reverse()
               .map((h) =>
-                `${h.year}: ${h.kind === "up" ? "+" : "−"} ${Math.abs(h.pct).toFixed(0)} % vs année précédente`,
+                `${h.year}: ${h.kind === "up" ? "+" : "−"} ${Math.abs(h.pct).toFixed(0)} % ${t("fx.fiche.asso.vs_prev")}`,
               )
               .join(" · ")}
           </p>
@@ -160,16 +174,16 @@ export default function AssociationFiche({
       {asso.lignes.length > 0 && (
         <section className="fx-fiche-section">
           <div className="fx-fiche-h">
-            Détail des subventions ({asso.lignes.length} ligne{asso.lignes.length > 1 ? "s" : ""})
+            {fill(t("fx.fiche.asso.detail"), { n: asso.lignes.length, s: asso.lignes.length > 1 ? "s" : "" })}
           </div>
           <table className="fx-fiche-subv-table">
             <thead>
               <tr>
-                <th>Année</th>
-                <th>Direction</th>
-                <th>Motif</th>
-                <th style={{ textAlign: "right" }}>Montant</th>
-                <th style={{ textAlign: "right" }}>Lignes</th>
+                <th>{t("fx.fiche.shared.annee")}</th>
+                <th>{t("fx.fiche.asso.col.direction")}</th>
+                <th>{t("fx.fiche.asso.col.motif")}</th>
+                <th style={{ textAlign: "right" }}>{t("fx.fiche.shared.montant")}</th>
+                <th style={{ textAlign: "right" }}>{t("fx.fiche.asso.col.lignes")}</th>
               </tr>
             </thead>
             <tbody>
@@ -200,8 +214,7 @@ export default function AssociationFiche({
             </tbody>
           </table>
           <p className="fx-fiche-note" style={{ marginTop: 10 }}>
-            Données agrégées par année depuis le jeu open data « Subventions accordées ».
-            Le détail ligne-à-ligne (chaque délibération) est consultable sur{" "}
+            {t("fx.fiche.asso.note")}{" "}
             <a
               href={`https://opendata.paris.fr/explore/dataset/subventions-associations-votees/table/?refine.objet_du_dossier=&refine.nom_beneficiaire=${encodeURIComponent(asso.name)}`}
               target="_blank"
@@ -213,7 +226,6 @@ export default function AssociationFiche({
           </p>
         </section>
       )}
-
     </div>
   );
 }

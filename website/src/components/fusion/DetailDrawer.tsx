@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useT } from "@/lib/localeContext";
 
 type DrawerReferrer = { url: string; label: string };
 
@@ -52,6 +53,7 @@ export default function DetailDrawer({
   breadcrumbLabel,
   children,
 }: Props) {
+  const t = useT();
   const router = useRouter();
   const [copied, setCopied] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -134,6 +136,15 @@ export default function DetailDrawer({
   }, [menuOpen]);
 
   const close = () => {
+    // Si un drawer parent existe dans la pile, on y remonte plutôt que de
+    // retomber directement sur la racine. Click × sur drawer B ouvert depuis
+    // drawer A → on revient sur A, pas sur /investissements.
+    if (previous) {
+      const stack = readStack().slice(0, -1);
+      writeStack(stack);
+      router.back();
+      return;
+    }
     writeStack([]);
     if (typeof window !== "undefined" && window.history.length > 1) {
       router.back();
@@ -240,24 +251,24 @@ export default function DetailDrawer({
                   type="button"
                   className="fx-drawer-iconbtn"
                   onClick={onShareClick}
-                  aria-label="Partager"
+                  aria-label={t("fx.drawer.share_aria")}
                   aria-expanded={menuOpen}
                 >
-                  {copied ? "✓ Copié" : "↗ Partager"}
+                  {copied ? t("fx.drawer.copied") : t("fx.drawer.share")}
                 </button>
                 {menuOpen && (
                   <div className="fx-share-menu" role="menu">
                     <button type="button" role="menuitem" onClick={copyLink}>
-                      <span>⧉</span>Copier le lien
+                      <span>⧉</span>{t("fx.drawer.copy_link")}
                     </button>
                     <button type="button" role="menuitem" onClick={() => shareOn("twitter")}>
-                      <span>𝕏</span>Partager sur X
+                      <span>𝕏</span>{t("fx.drawer.share_twitter")}
                     </button>
                     <button type="button" role="menuitem" onClick={() => shareOn("linkedin")}>
-                      <span>in</span>Partager sur LinkedIn
+                      <span>in</span>{t("fx.drawer.share_linkedin")}
                     </button>
                     <button type="button" role="menuitem" onClick={() => shareOn("mail")}>
-                      <span>✉</span>Envoyer par email
+                      <span>✉</span>{t("fx.drawer.share_email")}
                     </button>
                   </div>
                 )}
@@ -267,8 +278,8 @@ export default function DetailDrawer({
               type="button"
               className="fx-drawer-close"
               onClick={close}
-              aria-label="Fermer"
-              title="Fermer (Échap)"
+              aria-label={t("fx.drawer.close_aria")}
+              title={t("fx.drawer.close_title")}
             >
               ×
             </button>

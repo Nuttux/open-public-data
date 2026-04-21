@@ -4,17 +4,20 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { ARRONDISSEMENT_PATHS, C_AR_BY_INDEX } from "./paris-arrondissements";
+import { useT, useLocale } from "@/lib/localeContext";
 
-const suf = (n: number) => (n === 1 ? "er" : "ᵉ");
+const sufFr = (n: number) => (n === 1 ? "er" : "ᵉ");
+const sufEn = (n: number) => (n === 1 ? "st" : n === 2 ? "nd" : n === 3 ? "rd" : "th");
 
 // Central arrondissements 1-4 fusionnés en secteur "Paris Centre" (c_ar=0).
 const CENTRAL_ARRS = [1, 2, 3, 4];
 
-const fmtEur = (n: number) => {
-  if (n >= 1e9) return `${(n / 1e9).toFixed(2).replace(".", ",")} Md €`;
-  if (n >= 1e6) return `${(n / 1e6).toFixed(1).replace(".", ",")} M €`;
-  if (n >= 1e3) return `${Math.round(n / 1e3).toLocaleString("fr-FR")} k €`;
-  return `${Math.round(n).toLocaleString("fr-FR")} €`;
+const fmtEurLocale = (n: number, locStr: string, mdLabel: string, mLabel: string) => {
+  const sep = locStr === "en-GB" ? "." : ",";
+  if (n >= 1e9) return `${(n / 1e9).toFixed(2).replace(".", sep)} ${mdLabel}`;
+  if (n >= 1e6) return `${(n / 1e6).toFixed(1).replace(".", sep)} ${mLabel}`;
+  if (n >= 1e3) return `${Math.round(n / 1e3).toLocaleString(locStr)} k €`;
+  return `${Math.round(n).toLocaleString(locStr)} €`;
 };
 
 /** Palette 5 paliers : pale ocre → ink. */
@@ -27,12 +30,20 @@ type Props = {
   height?: number;
 };
 
-function labelFor(cAr: number): string {
-  if (cAr === 0) return "Paris Centre (1-4ᵉ)";
-  return `${cAr}${suf(cAr)} arrondissement`;
-}
-
 export default function ParisChoropleth({ items, height = 420 }: Props) {
+  const t = useT();
+  const { locale } = useLocale();
+  const locStr = locale === "en" ? "en-GB" : "fr-FR";
+  const suf = locale === "en" ? sufEn : sufFr;
+  const mdLabel = t("fx.s.md_eur");
+  const mLabel = t("fx.s.m_eur");
+  const fmtEur = (n: number) => fmtEurLocale(n, locStr, mdLabel, mLabel);
+
+  const labelFor = (cAr: number): string => {
+    if (cAr === 0) return locale === "en" ? "Paris Centre (1-4th)" : "Paris Centre (1-4ᵉ)";
+    return locale === "en" ? `${cAr}${suf(cAr)} district` : `${cAr}${suf(cAr)} arrondissement`;
+  };
+
   const router = useRouter();
 
   // Consolide les données arr 1→20 en c_ar 0/5-20 (arr 1-4 → Paris Centre).
@@ -72,9 +83,9 @@ export default function ParisChoropleth({ items, height = 420 }: Props) {
     <div className="fx-choropleth">
       <div className="fx-choropleth-map" style={{ height }}>
         <div className="fx-choropleth-hint-mobile">
-          Touchez un arrondissement pour voir ses projets ↗
+          {t("fx.choro.mobile_hint")}
         </div>
-        <svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMid meet" aria-label="Carte des arrondissements de Paris — cliquer pour ouvrir la fiche">
+        <svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMid meet" aria-label={t("fx.choro.aria")}>
           <g>
             {ARRONDISSEMENT_PATHS.map((d, i) => {
               const cAr = C_AR_BY_INDEX[i];
@@ -100,7 +111,7 @@ export default function ParisChoropleth({ items, height = 420 }: Props) {
                   onClick={() => openArr(cAr)}
                 >
                   <title>
-                    {labelFor(cAr)} · {fmtEur(amount)} · {it?.count ?? 0} projets — cliquer pour ouvrir
+                    {labelFor(cAr)} · {fmtEur(amount)} · {it?.count ?? 0} {locale === "en" ? "projects" : "projets"} — {t("fx.choro.click_open")}
                   </title>
                 </path>
               );
@@ -115,28 +126,28 @@ export default function ParisChoropleth({ items, height = 420 }: Props) {
             <>
               <div className="fx-choropleth-arr">{labelFor(hoveredItem.arr)}</div>
               <div className="fx-choropleth-amount">{fmtEur(hoveredItem.amount)}</div>
-              <div className="fx-choropleth-count">{hoveredItem.count} projets localisés</div>
+              <div className="fx-choropleth-count">{hoveredItem.count} {t("fx.choro.projets_loc")}</div>
             </>
           ) : (
             <>
-              <div className="fx-choropleth-hint">Survolez un arrondissement</div>
+              <div className="fx-choropleth-hint">{t("fx.choro.hover")}</div>
               <div className="fx-choropleth-total">
-                {fmtEur([...byCar.values()].reduce((s, i) => s + i.amount, 0))} au total
+                {fmtEur([...byCar.values()].reduce((s, i) => s + i.amount, 0))} {t("fx.choro.total")}
               </div>
             </>
           )}
         </div>
 
         <div className="fx-choropleth-legend">
-          <div className="fx-choropleth-legend-label">Montant investi</div>
+          <div className="fx-choropleth-legend-label">{t("fx.choro.legend_label")}</div>
           <div className="fx-choropleth-legend-scale">
             {PALETTE.map((c, i) => (
               <div key={i} className="fx-choropleth-legend-step" style={{ background: c }}>
                 <span>
                   {i === 0
-                    ? "faible"
+                    ? t("fx.choro.legend_low")
                     : i === PALETTE.length - 1
-                      ? "élevé"
+                      ? t("fx.choro.legend_high")
                       : ""}
                 </span>
               </div>
@@ -167,7 +178,7 @@ export default function ParisChoropleth({ items, height = 420 }: Props) {
                 className={hovered === it.arr ? "is-hover" : ""}
               >
                 <span className="rank">{String(i + 1).padStart(2, "0")}</span>
-                <span className="arr">{it.arr === 0 ? "Centre (1-4ᵉ)" : `${it.arr}${suf(it.arr)}`}</span>
+                <span className="arr">{it.arr === 0 ? t("fx.choro.centre_short") : `${it.arr}${suf(it.arr)}`}</span>
                 <span className="amt">{fmtEur(it.amount)}</span>
               </li>
             ));

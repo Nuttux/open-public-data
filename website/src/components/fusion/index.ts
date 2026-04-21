@@ -5,6 +5,8 @@ export { default as ScopeDropdown } from "./ScopeDropdown";
 export { default as LangSwitcher } from "./LangSwitcher";
 export { default as Button } from "./Button";
 export { default as SectionHead } from "./SectionHead";
+export { default as PageTOC } from "./PageTOC";
+export type { TOCItem } from "./PageTOC";
 export { default as HeroNumber } from "./HeroNumber";
 export { default as KPIGrid } from "./KPIGrid";
 export { default as BarRow } from "./BarRow";
