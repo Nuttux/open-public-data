@@ -335,6 +335,8 @@ export type QuiRecoitData = {
     name: string;
     theme: string | null;
     amount: number;
+    totalAmount: number;
+    lastActiveYear: number;
     nb: number;
     history: { year: number; amount: number }[];
   }[];
@@ -793,11 +795,16 @@ export function loadQuiRecoitData(requestedYear?: number): QuiRecoitData {
       .slice()
       .sort((a, b2) => a - b2)
       .map((y) => ({ year: y, amount: histMap?.get(y) ?? 0 }));
+    const totalAmount = history.reduce((s, h) => s + h.amount, 0);
+    const activeYears = history.filter((h) => h.amount > 0).map((h) => h.year);
+    const lastActiveYear = activeYears.length > 0 ? Math.max(...activeYears) : yr;
     return {
       rank: i + 1,
       name: b.beneficiaire,
       theme: b.thematique ?? null,
       amount: b.montant_total,
+      totalAmount,
+      lastActiveYear,
       nb: b.nb_subventions,
       history,
     };
