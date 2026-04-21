@@ -2952,6 +2952,25 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   text-align: center;
   border-top: 1px solid var(--rule);
 }
+.theme-fusion .fx-results-more {
+  grid-column: 1 / -1;
+  background: var(--bg);
+  border: none;
+  border-top: 1px solid var(--rule);
+  padding: 18px 24px;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  color: var(--ink);
+  letter-spacing: .04em;
+  text-align: center;
+  cursor: pointer;
+  transition: background .15s ease;
+}
+.theme-fusion .fx-results-more:hover { background: #fafaf7; }
+.theme-fusion .fx-result-card[data-raw] { background: #fbfaf6; }
+.theme-fusion .fx-result-card[data-raw]:hover { background: #f5f3ea; }
+.theme-fusion .fx-result-card[data-raw] h3 { color: #3a3a36; }
+.theme-fusion .fx-result-card[data-raw] .fx-result-card-cta { color: var(--muted); }
 @media (max-width: 1000px) {
   .theme-fusion .fx-results-grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -4730,51 +4749,58 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   font-weight: 500;
 }
 
-/* fixed/variable stacked bar — labels outside the bar so they stay readable */
-.theme-fusion .fx-fixvar-wrap { margin-bottom: 12px; }
-.theme-fusion .fx-fixvar-labels {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 8px;
-  font-family: var(--f-mono);
-  font-size: 12px;
-  color: var(--muted);
-  letter-spacing: 0.02em;
-}
-.theme-fusion .fx-fv-lbl b {
-  color: var(--ink);
-  font-weight: 600;
-  font-family: var(--f-disp);
-  font-size: 17px;
-  letter-spacing: -0.015em;
-  margin-right: 4px;
-}
-.theme-fusion .fx-fv-lbl.var b { color: var(--muted); }
-.theme-fusion .fx-fixvar-bar {
+/* Rate bar — fixe/variable split with labels INSIDE each segment so they
+   are always visible regardless of segment width. Dark segment = fixe,
+   light segment = variable. */
+.theme-fusion .fx-ratebar {
   display: flex;
   width: 100%;
-  height: 24px;
+  min-height: 72px;
   border: 1px solid var(--ink);
+  margin-bottom: 12px;
   overflow: hidden;
 }
-.theme-fusion .fx-fv-seg {
-  min-width: 0;
-  border-right: 1px solid rgba(255, 255, 255, 0.15);
+.theme-fusion .fx-ratebar-seg {
+  min-width: 80px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  white-space: nowrap;
 }
-.theme-fusion .fx-fv-seg:last-child { border-right: 0; }
-.theme-fusion .fx-fv-seg.fixed { background: var(--ink); }
-.theme-fusion .fx-fv-seg.var { background: #e4e6ea; }
-.theme-fusion .fx-fv-legend {
+.theme-fusion .fx-ratebar-seg .pct {
+  font-family: var(--f-disp);
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.theme-fusion .fx-ratebar-seg .lbl {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+.theme-fusion .fx-ratebar-seg.seg-fixed {
+  background: var(--ink);
+  color: var(--bg);
+}
+.theme-fusion .fx-ratebar-seg.seg-var {
+  background: #e4e6ea;
+  color: var(--ink);
+}
+.theme-fusion .fx-ratebar-legend {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 12px;
   font-family: var(--f-mono);
   font-size: 11px;
   color: var(--muted);
   line-height: 1.55;
 }
-.theme-fusion .fx-fv-legend b { color: var(--ink); font-weight: 500; }
+.theme-fusion .fx-ratebar-legend b { color: var(--ink); font-weight: 500; }
 
 /* maturité KPI */
 .theme-fusion .fx-maturite-kpi {
@@ -5375,4 +5401,64 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 /* Liens inline "top arrondissements" dans fiches chapitre/arrondissement */
 .theme-fusion .fx-fiche-h + div > a[href^="/investissements/"]:hover {
   background: rgba(166, 118, 56, 0.06);
+}
+
+/* ─── Page TOC sticky (mobile only) ──────────────────────────────────────── */
+
+.theme-fusion .fx-page-toc {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .theme-fusion .fx-page-toc {
+    display: block;
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule);
+    padding: 8px 0;
+    margin: 0 -16px;
+  }
+  .theme-fusion .fx-page-toc ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 16px;
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .theme-fusion .fx-page-toc ul::-webkit-scrollbar {
+    display: none;
+  }
+  .theme-fusion .fx-page-toc li {
+    flex-shrink: 0;
+  }
+  .theme-fusion .fx-page-toc a {
+    display: inline-block;
+    padding: 6px 12px;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    white-space: nowrap;
+    transition: color 120ms ease, border-color 120ms ease, background 120ms ease;
+    -webkit-tap-highlight-color: rgba(166, 118, 56, 0.18);
+  }
+  .theme-fusion .fx-page-toc a.is-active {
+    color: var(--bg);
+    background: var(--ink);
+    border-color: var(--ink);
+  }
+  .theme-fusion .fx-page-toc a:active {
+    background: var(--ocre);
+    border-color: var(--ocre);
+    color: var(--bg);
+  }
 }
