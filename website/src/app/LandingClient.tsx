@@ -124,6 +124,8 @@ export default function LandingClient({ stats }: Props) {
           </h2>
           <p className="fx-sub">{t("fx.land.inside.sub")}</p>
 
+          {/* PRIMARY — 3 entry points above the fold: total budget,
+              investments, beneficiaries. Most viral, most clicked. */}
           <div className="fx-grid-tiles">
             <TileCard
               href="/budget"
@@ -152,29 +154,8 @@ export default function LandingClient({ stats }: Props) {
             />
 
             <TileCard
-              href="/budget"
-              number="02"
-              kind={t("fx.land.tile.02.kind")}
-              title={t("fx.land.tile.02.title")}
-              description={t("fx.land.tile.02.desc")}
-              preview={
-                <svg viewBox="0 0 200 100">
-                  <line x1="10" y1="85" x2="190" y2="85" className="stroke-muted" stroke="#9099a6" strokeWidth="1" />
-                  <polyline points="10,70 40,62 70,55 100,46 130,34 160,24 190,14" className="stroke" stroke="#0a0a0a" strokeWidth="2.5" fill="none" />
-                  {[[10,70],[40,62],[70,55],[100,46],[130,34],[160,24]].map(([x,y]) => (
-                    <circle key={`${x}-${y}`} cx={x} cy={y} r="3" className="fill" fill="#0a0a0a" />
-                  ))}
-                  <circle cx="190" cy="14" r="5" className="fill-sig" fill="#5f6672" />
-                </svg>
-              }
-              kpi="+ 14,2"
-              kpiUnit="%"
-              kpiDelta={<>{t("fx.land.tile.02.delta.before")}<b>{t("fx.land.tile.02.delta.em")}</b></>}
-            />
-
-            <TileCard
               href="/investissements"
-              number="03"
+              number="02"
               kind={t("fx.land.tile.03.kind")}
               title={t("fx.land.tile.03.title")}
               description={t("fx.land.tile.03.desc")}
@@ -195,7 +176,7 @@ export default function LandingClient({ stats }: Props) {
 
             <TileCard
               href="/qui-recoit"
-              number="04"
+              number="03"
               kind={t("fx.land.tile.04.kind")}
               title={t("fx.land.tile.04.title")}
               description={t("fx.land.tile.04.desc")}
@@ -213,6 +194,31 @@ export default function LandingClient({ stats }: Props) {
               kpi="312"
               kpiUnit="M €"
               kpiDelta={<>↑ <b>3,3 %</b> {t("fx.land.tile.vs")}2023</>}
+            />
+          </div>
+
+          {/* SECONDARY — context tiles, below the fold. */}
+          <div className="fx-tiles-sub-label">{t("fx.land.inside.secondary_label")}</div>
+          <div className="fx-grid-tiles">
+            <TileCard
+              href="/budget"
+              number="04"
+              kind={t("fx.land.tile.02.kind")}
+              title={t("fx.land.tile.02.title")}
+              description={t("fx.land.tile.02.desc")}
+              preview={
+                <svg viewBox="0 0 200 100">
+                  <line x1="10" y1="85" x2="190" y2="85" className="stroke-muted" stroke="#9099a6" strokeWidth="1" />
+                  <polyline points="10,70 40,62 70,55 100,46 130,34 160,24 190,14" className="stroke" stroke="#0a0a0a" strokeWidth="2.5" fill="none" />
+                  {[[10,70],[40,62],[70,55],[100,46],[130,34],[160,24]].map(([x,y]) => (
+                    <circle key={`${x}-${y}`} cx={x} cy={y} r="3" className="fill" fill="#0a0a0a" />
+                  ))}
+                  <circle cx="190" cy="14" r="5" className="fill-sig" fill="#5f6672" />
+                </svg>
+              }
+              kpi="+ 14,2"
+              kpiUnit="%"
+              kpiDelta={<>{t("fx.land.tile.02.delta.before")}<b>{t("fx.land.tile.02.delta.em")}</b></>}
             />
 
             <TileCard

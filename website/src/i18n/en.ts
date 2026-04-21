@@ -1163,6 +1163,7 @@ const en: Record<string, string> = {
   'fx.land.inside.h2.b.dot': '.',
   'fx.land.inside.sub': "The site features many pages, tabs and filters. Here are a few to give you an idea — where the money goes, how it evolves, in which districts, for whom.",
   'fx.land.inside.see_all': 'See all analyses and tables →',
+  'fx.land.inside.secondary_label': 'Dig deeper',
   // Tiles
   'fx.land.tile.vs': 'vs ',
   'fx.land.tile.01.kind': 'Money flow',

@@ -1163,6 +1163,7 @@ const fr: Record<string, string> = {
   'fx.land.inside.h2.b.dot': '.',
   'fx.land.inside.sub': "Le site contient de multiples pages, onglets et filtres. En voici quelques-uns pour vous donner une idée — où va l'argent, comment ça évolue, dans quels quartiers, pour qui.",
   'fx.land.inside.see_all': 'Voir toutes les analyses et tableaux →',
+  'fx.land.inside.secondary_label': 'Pour aller plus loin',
   // Tiles
   'fx.land.tile.vs': 'vs ',
   'fx.land.tile.01.kind': "Flux de l'argent",
