@@ -1252,6 +1252,7 @@ const en: Record<string, string> = {
   'fx.bud.s01.kpi.epargne.tip': 'Operating revenue minus operating expenses. The margin available to fund capital investment without borrowing.',
   'fx.bud.s03.pareto_line': 'Out of every €100 spent in {year}, the top 3 categories alone capture {pct}.',
   'fx.bud.s03.yoy_label': 'Vs {prev} ·',
+  'fx.bud.voted_notice_cta': 'See executed {year} →',
   'fx.bud.s03.stack_kicker': 'For every €100 spent in {year}',
   'fx.bud.s03.stack_entity': 'categories',
   'fx.bud.s03.stack_contrast': 'more than half the budget on 3 themes',

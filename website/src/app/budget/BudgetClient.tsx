@@ -130,17 +130,40 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
               label={t("fx.bud.year_label")}
             />
           </div>
-          {isVoted && (
-            <p style={{
-              marginTop: 18,
-              fontFamily: "var(--f-mono)",
-              fontSize: 11.5,
-              color: "var(--ink-2)",
-              letterSpacing: ".04em",
-            }}>
-              {fill("fx.bud.voted_notice", { year: d.year, next: d.year + 1 })}
-            </p>
-          )}
+          {isVoted && (() => {
+            const lastExecuted = index.summary
+              .filter((s) => s.type_budget === "execute" && s.year < d.year)
+              .map((s) => s.year)
+              .sort((a, b) => b - a)[0];
+            return (
+              <p style={{
+                marginTop: 18,
+                fontFamily: "var(--f-mono)",
+                fontSize: 11.5,
+                color: "var(--ink-2)",
+                letterSpacing: ".04em",
+                display: "flex",
+                gap: 14,
+                flexWrap: "wrap",
+                alignItems: "center",
+              }}>
+                <span>{fill("fx.bud.voted_notice", { year: d.year, next: d.year + 1 })}</span>
+                {lastExecuted && (
+                  <Link
+                    href={`/budget?year=${lastExecuted}`}
+                    style={{
+                      color: "var(--bleu)",
+                      borderBottom: "1px solid var(--bleu)",
+                      paddingBottom: 1,
+                      textDecoration: "none",
+                    }}
+                  >
+                    {fill("fx.bud.voted_notice_cta", { year: lastExecuted })}
+                  </Link>
+                )}
+              </p>
+            );
+          })()}
         </div>
       </section>
 
