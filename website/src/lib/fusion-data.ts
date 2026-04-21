@@ -1962,6 +1962,17 @@ export type HorsBilanData = {
     share: number;
     count_emprunts: number;
   }>;
+  by_arrondissement: Array<{
+    arr: number;
+    capital_restant: number;
+    count_emprunts: number;
+    share_of_localized: number;
+  }>;
+  non_localised: {
+    capital_restant: number;
+    count_emprunts: number;
+    share: number;
+  };
   top_beneficiaires: HorsBilanBeneficiaire[];
   autres_beneficiaires: {
     count: number;

@@ -5098,9 +5098,10 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion .fx-sim-result-head-row {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 14px;
   flex-wrap: wrap;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 .theme-fusion .fx-sim-result-head-row .fx-sim-result-head { margin-bottom: 0; }
 .theme-fusion .fx-sim-big {
@@ -5110,29 +5111,32 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   letter-spacing: -0.035em;
   color: var(--ink);
   display: inline-flex;
-  align-items: baseline;
+  align-items: flex-end;
+  gap: 0;
 }
 .theme-fusion .fx-sim-big .v {
   font-size: clamp(72px, 10vw, 128px);
   font-weight: 700;
+  line-height: 0.92;
 }
 .theme-fusion .fx-sim-big .u {
-  font-size: 0.26em;
-  margin-left: 0.4em;
-  vertical-align: 0.6em;
+  font-size: clamp(18px, 1.9vw, 28px);
+  margin-left: 0.45em;
+  margin-bottom: 0.18em;
   color: var(--muted);
   font-weight: 500;
   letter-spacing: 0;
+  line-height: 1;
 }
 .theme-fusion .fx-sim-big-tilde {
   font-family: var(--f-disp);
-  font-size: clamp(22px, 2.4vw, 34px);
+  font-size: clamp(44px, 6vw, 72px);
   font-weight: 500;
   color: var(--muted-2);
-  margin-right: 0.18em;
-  align-self: flex-start;
-  line-height: 1;
-  transform: translateY(0.3em);
+  margin-right: 0.1em;
+  margin-bottom: 0.12em;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
 }
 
 /* Comparison bar — médiane vs votre estimation */
@@ -5176,13 +5180,22 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   transition: left 200ms ease;
   z-index: 2;
 }
+.theme-fusion .fx-sim-compare-you .dot {
+  display: block;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--ocre);
+  box-shadow: 0 0 0 3px #f7f3e6;
+}
 .theme-fusion .fx-sim-compare-you .lbl {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
   font-family: var(--f-mono);
   font-size: 10px;
   letter-spacing: 0.12em;
@@ -5190,27 +5203,15 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   color: var(--ocre);
   font-weight: 600;
   white-space: nowrap;
-  margin-bottom: 5px;
   padding: 2px 6px;
   background: #f7f3e6;
   line-height: 1.3;
 }
-.theme-fusion .fx-sim-compare-you .dot {
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  background: var(--ocre);
-  box-shadow: 0 0 0 3px #f7f3e6;
-}
-.theme-fusion .fx-sim-compare-you-left { align-items: flex-end; }
-.theme-fusion .fx-sim-compare-you-left .lbl { transform: translateX(50%); margin-right: 6px; }
-.theme-fusion .fx-sim-compare-you-right { align-items: flex-start; }
-.theme-fusion .fx-sim-compare-you-right .lbl { transform: translateX(-50%); margin-left: 6px; }
 
 .theme-fusion .fx-sim-compare-axis {
   position: relative;
-  margin-top: 10px;
-  height: 14px;
+  margin-top: 12px;
+  height: 16px;
   font-family: var(--f-mono);
   font-size: 10px;
   letter-spacing: 0.1em;
@@ -5219,23 +5220,40 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 }
 .theme-fusion .fx-sim-compare-axis .ax {
   position: absolute;
-  top: 0;
+  top: 6px;
   line-height: 14px;
+  white-space: nowrap;
+}
+.theme-fusion .fx-sim-compare-axis .ax::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 6px;
+  background: var(--muted-2);
 }
 .theme-fusion .fx-sim-compare-axis .ax-start { left: 0; }
+.theme-fusion .fx-sim-compare-axis .ax-start::before { left: 0; transform: none; }
 .theme-fusion .fx-sim-compare-axis .ax-end { right: 0; }
+.theme-fusion .fx-sim-compare-axis .ax-end::before { right: 0; left: auto; transform: none; }
 .theme-fusion .fx-sim-compare-axis .ax-median {
   transform: translateX(-50%);
   color: var(--ink);
   font-weight: 600;
 }
+.theme-fusion .fx-sim-compare-axis .ax-median::before { background: var(--ink); }
 
-/* Tier chip — demoted to header inline context */
+/* Tier chip — inline header context. Uses the tint palette already
+   established across fx-sim to signal short/median/long/very-long. */
 .theme-fusion .fx-sim-tier {
-  display: inline-block;
-  padding: 4px 9px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 11px;
   font-family: var(--f-mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 600;
@@ -5243,10 +5261,18 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   background: #fff;
   color: var(--ink);
 }
-.theme-fusion .fx-sim-tier-short { background: #ecf3e8; }
+.theme-fusion .fx-sim-tier::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.6;
+}
+.theme-fusion .fx-sim-tier-short { background: #ecf3e8; color: #3a6b32; }
 .theme-fusion .fx-sim-tier-median { background: #fff; }
-.theme-fusion .fx-sim-tier-long { background: #f5e6cf; }
-.theme-fusion .fx-sim-tier-very_long { background: #f3d7d3; }
+.theme-fusion .fx-sim-tier-long { background: #f5e6cf; color: #7c5818; }
+.theme-fusion .fx-sim-tier-very_long { background: #f3d7d3; color: #a13028; }
 
 .theme-fusion .fx-sim-result-foot {
   margin-top: 30px;
@@ -5295,9 +5321,19 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   font-weight: 500;
   cursor: pointer;
   color: var(--bg);
-  transition: opacity 120ms ease;
+  transition: background 120ms ease, color 120ms ease;
 }
-.theme-fusion .fx-sim-share:hover { opacity: 0.82; }
+.theme-fusion .fx-sim-share::before {
+  content: "↗";
+  display: inline-block;
+  margin-right: 8px;
+  font-weight: 400;
+}
+.theme-fusion .fx-sim-share:hover { background: var(--bleu-vif); border-color: var(--bleu-vif); }
+.theme-fusion .fx-sim-share:focus-visible {
+  outline: 2px solid var(--bleu-vif);
+  outline-offset: 2px;
+}
 
 /* Ineligible state */
 .theme-fusion .fx-sim-result-head-alert { color: var(--rouge-vif); }
@@ -5320,6 +5356,22 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion .fx-sim-ineligible-p:last-child { margin-bottom: 0; }
 
 .theme-fusion .fx-sim-note { margin-top: 16px; }
+
+@media (max-width: 640px) {
+  .theme-fusion .fx-sim-form,
+  .theme-fusion .fx-sim-result { padding: 22px 20px 24px; }
+  .theme-fusion .fx-sim-compare-axis { font-size: 9px; letter-spacing: 0.06em; }
+  /* On narrow viewports the full "Médiane Paris 2024 · 4,2 ans" collides
+     with ax-start / ax-end. Hide the text and keep only the tick so users
+     still see where the median sits on the axis. */
+  .theme-fusion .fx-sim-compare-axis .ax-median {
+    font-size: 0;
+    color: transparent;
+  }
+  .theme-fusion .fx-sim-compare-you .lbl { font-size: 9px; padding: 1px 5px; }
+  .theme-fusion .fx-sim-result-foot { flex-direction: column; align-items: stretch; }
+  .theme-fusion .fx-sim-share { width: 100%; text-align: center; }
+}
 
 /* Bailleur card — makes fx-sources cells clickable with hover affordance. */
 .theme-fusion .fx-bailleur-card {
@@ -6445,6 +6497,60 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   }
   .theme-fusion .fx-city-compare-bar { grid-column: 1 / -1; }
   .theme-fusion .fx-city-compare-meta { grid-column: 1 / -1; text-align: left; }
+}
+
+/* ───── Carte hors bilan par arrondissement ──────────── */
+.theme-fusion .fx-hbmap {
+  margin-top: 40px;
+  padding: 28px 30px;
+  border: 1px solid var(--ink);
+  background: var(--bg);
+}
+.theme-fusion .fx-hbmap-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+.theme-fusion .fx-hbmap-kicker {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ocre);
+  margin-bottom: 8px;
+}
+.theme-fusion .fx-hbmap-title {
+  font-family: var(--f-disp);
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--ink);
+  margin: 0;
+}
+.theme-fusion .fx-hbmap-totals {
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+}
+.theme-fusion .fx-hbmap-totals b {
+  font-family: var(--f-disp);
+  font-weight: 700;
+  color: var(--ink);
+}
+.theme-fusion .fx-hbmap-footnote {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.02em;
+  line-height: 1.55;
 }
 
 /* ───── Ta part à toi (calculateur perso) ─────────────── */

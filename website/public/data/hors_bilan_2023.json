@@ -1,6 +1,6 @@
 {
   "year": 2023,
-  "generated_at": "2026-04-21T23:15:31.571666+00:00",
+  "generated_at": "2026-04-21T23:16:32.012995+00:00",
   "totals": {
     "capital_restant": 12310371784,
     "montant_initial": 15347765819,
@@ -67,129 +67,129 @@
   "by_arrondissement": [
     {
       "arr": 1,
-      "capital_restant": 0,
-      "count_emprunts": 0,
-      "share_of_localized": 0.0
+      "capital_restant": 54856147,
+      "count_emprunts": 132,
+      "share_of_localized": 0.006063054022082674
     },
     {
       "arr": 2,
-      "capital_restant": 0,
-      "count_emprunts": 0,
-      "share_of_localized": 0.0
+      "capital_restant": 46985035,
+      "count_emprunts": 122,
+      "share_of_localized": 0.005193088096209425
     },
     {
       "arr": 3,
-      "capital_restant": 0,
-      "count_emprunts": 0,
-      "share_of_localized": 0.0
+      "capital_restant": 88799287,
+      "count_emprunts": 190,
+      "share_of_localized": 0.009814668034723048
     },
     {
       "arr": 4,
-      "capital_restant": 0,
-      "count_emprunts": 0,
-      "share_of_localized": 0.0
+      "capital_restant": 95521254,
+      "count_emprunts": 165,
+      "share_of_localized": 0.010557622950379715
     },
     {
       "arr": 5,
-      "capital_restant": 0,
-      "count_emprunts": 0,
-      "share_of_localized": 0.0
+      "capital_restant": 182870960,
+      "count_emprunts": 167,
+      "share_of_localized": 0.020212073962003096
     },
     {
       "arr": 6,
-      "capital_restant": 0,
-      "count_emprunts": 0,
-      "share_of_localized": 0.0
+      "capital_restant": 49812582,
+      "count_emprunts": 81,
+      "share_of_localized": 0.005505606782329558
     },
     {
       "arr": 7,
-      "capital_restant": 0,
-      "count_emprunts": 0,
-      "share_of_localized": 0.0
+      "capital_restant": 158921579,
+      "count_emprunts": 52,
+      "share_of_localized": 0.017565034462456615
     },
     {
       "arr": 8,
-      "capital_restant": 0,
-      "count_emprunts": 0,
-      "share_of_localized": 0.0
+      "capital_restant": 75303814,
+      "count_emprunts": 121,
+      "share_of_localized": 0.008323061527632996
     },
     {
       "arr": 9,
-      "capital_restant": 0,
-      "count_emprunts": 0,
-      "share_of_localized": 0.0
+      "capital_restant": 162226660,
+      "count_emprunts": 338,
+      "share_of_localized": 0.017930333206151013
     },
     {
       "arr": 10,
-      "capital_restant": 0,
-      "count_emprunts": 0,
-      "share_of_localized": 0.0
+      "capital_restant": 406949433,
+      "count_emprunts": 609,
+      "share_of_localized": 0.04497866711183264
     },
     {
       "arr": 11,
-      "capital_restant": 0,
-      "count_emprunts": 0,
-      "share_of_localized": 0.0
+      "capital_restant": 391879475,
+      "count_emprunts": 736,
+      "share_of_localized": 0.04331303854232813
     },
     {
       "arr": 12,
-      "capital_restant": 0,
-      "count_emprunts": 0,
-      "share_of_localized": 0.0
+      "capital_restant": 887872099,
+      "count_emprunts": 736,
+      "share_of_localized": 0.09813333149800986
     },
     {
       "arr": 13,
-      "capital_restant": 0,
-      "count_emprunts": 0,
-      "share_of_localized": 0.0
+      "capital_restant": 966628627,
+      "count_emprunts": 630,
+      "share_of_localized": 0.10683800918709443
     },
     {
       "arr": 14,
-      "capital_restant": 0,
-      "count_emprunts": 0,
-      "share_of_localized": 0.0
+      "capital_restant": 619892689,
+      "count_emprunts": 524,
+      "share_of_localized": 0.06851452452742396
     },
     {
       "arr": 15,
-      "capital_restant": 0,
-      "count_emprunts": 0,
-      "share_of_localized": 0.0
+      "capital_restant": 788845469,
+      "count_emprunts": 924,
+      "share_of_localized": 0.08718827181911833
     },
     {
       "arr": 16,
-      "capital_restant": 0,
-      "count_emprunts": 0,
-      "share_of_localized": 0.0
+      "capital_restant": 279729838,
+      "count_emprunts": 253,
+      "share_of_localized": 0.030917539769092357
     },
     {
       "arr": 17,
-      "capital_restant": 0,
-      "count_emprunts": 0,
-      "share_of_localized": 0.0
+      "capital_restant": 598677330,
+      "count_emprunts": 583,
+      "share_of_localized": 0.06616966668893641
     },
     {
       "arr": 18,
-      "capital_restant": 0,
-      "count_emprunts": 0,
-      "share_of_localized": 0.0
+      "capital_restant": 1068109375,
+      "count_emprunts": 1306,
+      "share_of_localized": 0.11805431383062094
     },
     {
       "arr": 19,
-      "capital_restant": 0,
-      "count_emprunts": 0,
-      "share_of_localized": 0.0
+      "capital_restant": 1094224263,
+      "count_emprunts": 647,
+      "share_of_localized": 0.12094069911766549
     },
     {
       "arr": 20,
-      "capital_restant": 0,
-      "count_emprunts": 0,
-      "share_of_localized": 0.0
+      "capital_restant": 1029503957,
+      "count_emprunts": 1160,
+      "share_of_localized": 0.11378739486390921
     }
   ],
   "non_localised": {
-    "capital_restant": 12310371784,
-    "count_emprunts": 10031,
-    "share": 1.0
+    "capital_restant": 3262761912,
+    "count_emprunts": 555,
+    "share": 0.26504170374951636
   },
   "top_beneficiaires": [
     {
