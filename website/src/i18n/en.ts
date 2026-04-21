@@ -1461,7 +1461,7 @@ const en: Record<string, string> = {
   'fx.qr.s02.title.before': 'Where does ',
   'fx.qr.s02.title.em': 'the money',
   'fx.qr.s02.title.after': ' go?',
-  'fx.qr.s02.sub': 'Each segment of the bar = one theme, proportional to the amount paid. Click to filter recipients.',
+  'fx.qr.s02.sub': 'Each segment of the bar = one theme, proportional to the amount paid. Click a segment to open the theme detail (top recipients, trend, concentration).',
   'fx.qr.s02.entity_noun': 'recipients',
   'fx.qr.s02.pareto_contrast': 'more than all other beneficiaries combined',
   'fx.qr.s05.kind': 'Over time',
