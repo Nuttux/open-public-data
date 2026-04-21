@@ -208,7 +208,12 @@ export default function QuiRecoitClient({
                     <span>{t("fx.qr.s05.movers.variation")}</span>
                   </div>
                   {d.movers.hausses.map((m, i) => (
-                    <div key={i} className="fx-mover-row">
+                    <Link
+                      key={i}
+                      href={`/qui-recoit/association/${encodeURIComponent(m.name)}`}
+                      scroll={false}
+                      className="fx-mover-row"
+                    >
                       <span className="l">{m.name}</span>
                       <span className="v">
                         {m.amount >= 1e6 ? fmtMillions(m.amount, 1) + " M €" : fmtInt(m.amount / 1000) + " k €"}
@@ -217,7 +222,7 @@ export default function QuiRecoitClient({
                         <span className="mfill" style={{ width: `${(Math.abs(m.delta) / maxHausse) * 100}%` }} />
                       </span>
                       <span className="d up">↑ {fmtDec(m.delta, 1)} %</span>
-                    </div>
+                    </Link>
                   ))}
                 </div>
                 <div className="fx-movers-col">
@@ -229,7 +234,12 @@ export default function QuiRecoitClient({
                     <span>{t("fx.qr.s05.movers.variation")}</span>
                   </div>
                   {d.movers.baisses.map((m, i) => (
-                    <div key={i} className="fx-mover-row">
+                    <Link
+                      key={i}
+                      href={`/qui-recoit/association/${encodeURIComponent(m.name)}`}
+                      scroll={false}
+                      className="fx-mover-row"
+                    >
                       <span className="l">{m.name}</span>
                       <span className="v">
                         {m.amount >= 1e6 ? fmtMillions(m.amount, 1) + " M €" : fmtInt(m.amount / 1000) + " k €"}
@@ -238,7 +248,7 @@ export default function QuiRecoitClient({
                         <span className="mfill" style={{ width: `${(Math.abs(m.delta) / maxBaisse) * 100}%` }} />
                       </span>
                       <span className="d down">↓ {fmtDec(Math.abs(m.delta), 1)} %</span>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>
