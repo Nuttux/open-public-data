@@ -250,6 +250,8 @@ export type BudgetPageData = {
   topDepenses: {
     label: string;
     value: number;
+    /** Variation en % vs l'année précédente (null si indisponible). */
+    deltaPct: number | null;
     /** Top sous-postes (fonctionnement + investissement fusionnés, triés par montant desc). */
     subPostes: { name: string; value: number }[];
   }[];
@@ -1927,6 +1929,18 @@ export function loadBudgetPageData(requestedYear?: number): BudgetPageData {
     .reduce((s, l) => s + l.value, 0);
   const epargneBrute = Math.max(0, sankey.totals.recettes - emprunts - fonctionnement);
 
+  // Load previous year's sankey to compute per-category YoY deltas. Silent
+  // failure if absent (first year of the series).
+  const prevDepByLabel = new Map<string, number>();
+  try {
+    const prev = readJson<BudgetSankeyFull>(`budget_sankey_${year - 1}.json`);
+    for (const l of prev.links) {
+      if (l.source === "Budget Paris") prevDepByLabel.set(l.target, l.value);
+    }
+  } catch {
+    /* previous year unavailable */
+  }
+
   const topDepenses = sankey.links
     .filter((l) => l.source === "Budget Paris")
     .map((l) => {
@@ -1940,7 +1954,10 @@ export function loadBudgetPageData(requestedYear?: number): BudgetPageData {
         .slice()
         .sort((a, b) => b.value - a.value)
         .slice(0, 12);
-      return { label: l.target, value: l.value, subPostes };
+      const prevVal = prevDepByLabel.get(l.target);
+      const deltaPct =
+        prevVal && prevVal > 0 ? ((l.value - prevVal) / prevVal) * 100 : null;
+      return { label: l.target, value: l.value, deltaPct, subPostes };
     })
     .sort((a, b) => b.value - a.value);
 
