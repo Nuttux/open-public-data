@@ -250,6 +250,8 @@ export type BudgetPageData = {
   topDepenses: {
     label: string;
     value: number;
+    /** Variation en % vs l'année précédente (null si indisponible). */
+    deltaPct: number | null;
     /** Top sous-postes (fonctionnement + investissement fusionnés, triés par montant desc). */
     subPostes: { name: string; value: number }[];
   }[];
@@ -345,18 +347,6 @@ export type QuiRecoitData = {
     amount: number;
     count: number;
     topBen: { name: string; amount: number; nb: number }[];
-  }[];
-  allBeneficiaires: {
-    name: string;
-    theme: string | null;
-    /** Montant sur l'exercice courant (0 si pas actif cette année). */
-    amount: number;
-    /** Cumul historique sur toutes les années disponibles. */
-    totalAmount: number;
-    /** Dernière année où cette asso a reçu une subvention. */
-    lastActiveYear: number;
-    nb: number;
-    history: { year: number; amount: number }[];
   }[];
   yearsSummary: { year: number; total: number; count: number }[];
   availableThemes: string[];
@@ -535,6 +525,8 @@ export type ProjetFiche = {
   confidence: number | null;
   /** Vulgarisation IA si dispo dans le cache. */
   vulgarization: ProjetVulgarization | null;
+  /** Photo résolue pour client (photo + générique + typologie). */
+  photo: ProjetPhotoResolved;
   /** Rank parmi les projets de même typologie (ou chapitre) dans le même exercice. */
   typologieRank: { rank: number; total: number; typologie: string } | null;
   /** Rank parmi tous les projets du même arrondissement, même exercice. */
@@ -559,67 +551,14 @@ export function loadProjetVulgarization(id: string): ProjetVulgarization | null 
   return _projetsVulg[id] ?? null;
 }
 
-/**
- * Devine la typologie depuis le nom du projet — fallback déterministe quand
- * la vulgarisation LLM n'est pas dispo. Matching par mots-clés, du plus
- * spécifique au plus générique.
- */
-export function guessTypologieFromName(name: string | null | undefined): string | null {
-  if (!name) return null;
-  const n = name
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
-
-  const rules: [RegExp, string][] = [
-    [/\b(creche|halte[- ]?garderie|multi[- ]?accueil|etablissement multi[- ]?accueil)\b/, "creche"],
-    [/\becole\s+(elementaire|maternelle|polyvalente|primaire)\b/, "ecole"],
-    [/\becole\b/, "ecole"],
-    [/\b(college|groupe scolaire)\b/, "college"],
-    [/\blycee\b/, "lycee"],
-    [/\b(piscine|bassin ecole)\b/, "piscine"],
-    [/\b(bibliotheque|mediatheque|discotheque)\b/, "bibliotheque"],
-    [/\b(stade|centre sportif|skatepark|terrain (d['a-z ]*)?education physique|\btep\b|roller park)\b/, "gymnase"],
-    [/\bgymnase\b/, "gymnase"],
-    [/\b(parc|jardin|square|coulee verte|petite ceinture|bois|promenade|parvis|esplanade|ile aux cygnes)\b/, "espace-vert"],
-    [/\b(rue|avenue|boulevard|place|carrefour|rond[- ]?point|trottoirs?|chaussee|voirie|piste cyclable|pavage|tapis|pont|passage|quai|allee|route|velorue)\b/, "voirie"],
-    [/\b(embellir votre quartier|embellir.* quartier|reamenagement|amenagement urbain|budget participatif|rue apaisee|zone 30)\b/, "voirie"],
-    [/\bmairie\b/, "administration"],
-    [/\b(eglise|chapelle|cathedrale|basilique|temple)\b/, "equipement-culturel"],
-    [/\b(theatre|conservatoire|musee|cinema|centre culturel|atelier(s)? beaux[- ]?arts|maison des? (refugies|air|associations)|pavillon de l'arsenal|institut des? cultures?)\b/, "equipement-culturel"],
-    [/\b(logement|hlm|cite|residence sociale|hbm|habitat|copropriete)\b/, "logement-social"],
-    [/\b(hopital|ehpad|centre medical|centre de sante|dispensaire|aide sociale a l'enfance)\b/, "equipement-sante"],
-    [/\b(conservatoire municipal|centre paris anim|espace jeune)\b/, "equipement-culturel"],
-  ];
-
-  for (const [rx, typo] of rules) {
-    if (rx.test(n)) return typo;
-  }
-  return null;
-}
+// `guessTypologieFromName`, types photos — déplacés vers `@/lib/projet-utils`
+// pour être importables depuis les composants client sans embarquer fs/path.
+import { guessTypologieFromName } from "./projet-utils";
+import type { GenericPhotoEntry, ProjetPhotoDecision, ProjetPhotoResolved } from "./projet-utils";
+export { guessTypologieFromName };
+export type { GenericPhotoEntry, ProjetPhotoDecision, ProjetPhotoResolved };
 
 // ─── Projet photo decision ─────────────────────────────────────────────────
-
-export type ProjetPhotoDecision = {
-  decision: "photo_dediee" | "generique_typologique" | "pictogramme";
-  photo_url: string | null;
-  source_page: string | null;
-  source_label: string | null;
-  credit: string | null;
-  score: number;
-  reason: string;
-  typologie: string | null;
-};
-
-export type GenericPhotoEntry = {
-  typologie: string;
-  label: string;
-  url: string;
-  source_page: string | null;
-  source_label: string | null;
-  credit: string | null;
-  license: string | null;
-};
 
 let _projetPhotos: Record<string, ProjetPhotoDecision> | null = null;
 let _genericBank: Record<string, GenericPhotoEntry> | null = null;
@@ -639,6 +578,16 @@ export function loadGenericPhoto(typologie: string): GenericPhotoEntry | null {
   }
   const hit = _genericBank[typologie];
   return hit && hit.url ? hit : null;
+}
+
+/** Résout photo + générique + typologie en une fois pour un projet — à appeler
+ *  depuis les pages serveurs pour pré-calculer et passer aux composants clients. */
+export function resolveProjetPhoto(projetId: string, name?: string | null): ProjetPhotoResolved {
+  const photo = loadProjetPhoto(projetId);
+  const vulg = loadProjetVulgarization(projetId);
+  const typologie = vulg?.typologie_normalisee ?? guessTypologieFromName(name ?? null) ?? null;
+  const generic = typologie ? loadGenericPhoto(typologie) : null;
+  return { photo, generic, typologie };
 }
 
 export function loadProjet(id: string): ProjetFiche | null {
@@ -733,6 +682,7 @@ export function loadProjet(id: string): ProjetFiche | null {
       typologieRank,
       arrRank,
       similaires,
+      photo: resolveProjetPhoto(r.id, r.nom_projet),
     };
   }
   return null;
@@ -830,53 +780,6 @@ export function loadQuiRecoitData(requestedYear?: number): QuiRecoitData {
     }))
     .sort((a, b) => b.amount - a.amount);
 
-  const availableYearsSorted = idx.availableYears.slice().sort((a, b) => a - b);
-
-  // Union across ALL years — a beneficiary that hasn't received in the current
-  // year should still be findable (with its latest active year surfaced).
-  const seenNames = new Set<string>();
-  type AllBen = QuiRecoitData["allBeneficiaires"][number];
-  const allBeneficiaires: AllBen[] = [];
-  for (const file of yearlyData.values()) {
-    for (const b of file.data) {
-      if (seenNames.has(b.beneficiaire)) continue;
-      seenNames.add(b.beneficiaire);
-      const histMap = benHistory.get(b.beneficiaire);
-      const history = availableYearsSorted.map((y) => ({
-        year: y,
-        amount: histMap?.get(y) ?? 0,
-      }));
-      const totalAmount = history.reduce((s, h) => s + h.amount, 0);
-      const activeYears = history.filter((h) => h.amount > 0).map((h) => h.year);
-      const lastActiveYear = activeYears.length > 0 ? Math.max(...activeYears) : yr;
-      const curYearAmount = histMap?.get(yr) ?? 0;
-      // Use the current-year amount if any, else the most recent non-zero
-      // amount so sorting still surfaces meaningful entries.
-      const latestNonZero = [...history].reverse().find((h) => h.amount > 0)?.amount ?? 0;
-      allBeneficiaires.push({
-        name: b.beneficiaire,
-        theme: b.thematique ?? null,
-        amount: curYearAmount,
-        totalAmount,
-        lastActiveYear,
-        nb: b.nb_subventions,
-        history,
-        // Hidden sort key — dev-only, not in the type
-        // @ts-expect-error used below
-        _sortKey: curYearAmount > 0 ? curYearAmount : latestNonZero,
-      });
-    }
-  }
-  allBeneficiaires.sort((a, b) => {
-    // @ts-expect-error
-    return b._sortKey - a._sortKey;
-  });
-  // Strip the private sort key before serializing down to the client
-  for (const b of allBeneficiaires) {
-    // @ts-expect-error
-    delete b._sortKey;
-  }
-
   const yearsSummary = idx.availableYears
     .map((y) => ({ year: y, total: idx.totalsByYear[String(y)]?.montant_total ?? 0, count: idx.totalsByYear[String(y)]?.nb_subventions ?? 0 }))
     .sort((a, b) => a.year - b.year);
@@ -920,7 +823,6 @@ export function loadQuiRecoitData(requestedYear?: number): QuiRecoitData {
     deltaNbPct,
     top10,
     byTheme,
-    allBeneficiaires,
     yearsSummary,
     availableThemes,
     movers: { hausses, baisses },
@@ -1380,7 +1282,7 @@ export type InvestissementsData = {
   /** % du montant total capté par les 10 plus gros projets (pour la bannière Pareto). */
   top10ProjetsPct: number;
   byArrondissement: { arr: number; amount: number; count: number }[];
-  topProjets: { id: string; name: string; arr: number; chapitre: string; amount: number }[];
+  topProjets: { id: string; name: string; arr: number; chapitre: string; amount: number; photo: ProjetPhotoResolved }[];
   geoPoints: {
     id: string;
     lat: number;
@@ -1466,6 +1368,7 @@ export function loadInvestissementsData(requestedYear?: number): Investissements
       arr: p.arrondissement,
       chapitre: p.chapitre_libelle ?? "—",
       amount: p.montant,
+      photo: resolveProjetPhoto(p.id, p.nom_projet),
     }));
 
   const nbGeo = projets.filter((p) => p.lat != null && p.lon != null).length;
@@ -1541,6 +1444,7 @@ export type ArrondissementFiche = {
     name: string;
     amount: number;
     chapitre: string;
+    photo: ProjetPhotoResolved;
   }[];
 };
 
@@ -1599,6 +1503,7 @@ export function loadArrondissement(arrNum: number, year?: number): Arrondissemen
       name: p.nom_projet as string,
       amount: Number(p.montant ?? 0),
       chapitre: p.chapitre_libelle ?? "—",
+      photo: resolveProjetPhoto(p.id, p.nom_projet),
     }));
 
   return {
@@ -1631,17 +1536,13 @@ export type ChapitreFiche = {
     name: string;
     amount: number;
     arr: number;
+    photo: ProjetPhotoResolved;
   }[];
 };
 
-export function slugifyChapitre(label: string): string {
-  return label
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
-}
+// `slugifyChapitre` vit dans `@/lib/projet-utils` (client-safe).
+import { slugifyChapitre } from "./projet-utils";
+export { slugifyChapitre };
 
 export function loadChapitre(slug: string, year?: number): ChapitreFiche | null {
   const trends = readJson<InvTrends>("investissement_tendances.json");
@@ -1699,6 +1600,7 @@ export function loadChapitre(slug: string, year?: number): ChapitreFiche | null 
       name: p.nom_projet as string,
       amount: Number(p.montant ?? 0),
       arr: Number(p.arrondissement) || 0,
+      photo: resolveProjetPhoto(p.id, p.nom_projet),
     }));
 
   return {
@@ -2027,6 +1929,19 @@ export function loadBudgetPageData(requestedYear?: number): BudgetPageData {
     .reduce((s, l) => s + l.value, 0);
   const epargneBrute = Math.max(0, sankey.totals.recettes - emprunts - fonctionnement);
 
+  // Load previous year's sankey to compute per-category YoY deltas. Silent
+  // failure if absent (first year of the series).
+  const prevYear = year - 1;
+  let prevDepByLabel = new Map<string, number>();
+  try {
+    const prev = readJson<BudgetSankeyFull>(`budget_sankey_${prevYear}.json`);
+    prevDepByLabel = new Map(
+      prev.links
+        .filter((l) => l.source === "Budget Paris")
+        .map((l) => [l.target, l.value] as const),
+    );
+  } catch {}
+
   const topDepenses = sankey.links
     .filter((l) => l.source === "Budget Paris")
     .map((l) => {
@@ -2040,7 +1955,10 @@ export function loadBudgetPageData(requestedYear?: number): BudgetPageData {
         .slice()
         .sort((a, b) => b.value - a.value)
         .slice(0, 12);
-      return { label: l.target, value: l.value, subPostes };
+      const prevVal = prevDepByLabel.get(l.target);
+      const deltaPct =
+        prevVal && prevVal > 0 ? ((l.value - prevVal) / prevVal) * 100 : null;
+      return { label: l.target, value: l.value, deltaPct, subPostes };
     })
     .sort((a, b) => b.value - a.value);
 
