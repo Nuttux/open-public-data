@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "../fusion.css";
-import { loadPatrimoineData, loadPatrimoineStructure } from "@/lib/fusion-data";
+import { loadPatrimoineData, loadPatrimoineStructure, loadHorsBilan, loadHorsBilanTrajectory, loadCitiesDebtSnapshot } from "@/lib/fusion-data";
 import DettePatrimoineClient from "./DettePatrimoineClient";
 
 export const metadata: Metadata = {
@@ -19,5 +19,16 @@ export default async function DettePatrimoinePage({
   const requestedYear = sp.year ? Number(sp.year) : undefined;
   const d = loadPatrimoineData(requestedYear);
   const structure = loadPatrimoineStructure(d.year);
-  return <DettePatrimoineClient d={d} structure={structure} />;
+  const horsBilan = loadHorsBilan(d.year);
+  const horsBilanTrajectory = loadHorsBilanTrajectory(d.yearsSummary.map((y) => y.year));
+  const citiesSnapshot = loadCitiesDebtSnapshot(d.year);
+  return (
+    <DettePatrimoineClient
+      d={d}
+      structure={structure}
+      horsBilan={horsBilan}
+      horsBilanTrajectory={horsBilanTrajectory}
+      citiesSnapshot={citiesSnapshot}
+    />
+  );
 }

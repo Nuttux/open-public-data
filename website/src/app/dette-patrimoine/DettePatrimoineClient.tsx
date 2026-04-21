@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import SectionHead from "@/components/fusion/SectionHead";
@@ -13,8 +14,11 @@ import BudgetTimeline from "@/components/fusion/BudgetTimeline";
 import DetteStructurePanel from "@/components/fusion/DetteStructurePanel";
 import PageTOC from "@/components/fusion/PageTOC";
 import PatrimoineDrillList from "@/components/fusion/PatrimoineDrillList";
+import StressTestTeaser from "@/components/fusion/StressTestTeaser";
+import CityComparator from "@/components/fusion/CityComparator";
+import { slugifyBailleur } from "@/lib/projet-utils";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
-import type { PatrimoineData, PatrimoineStructure } from "@/lib/fusion-data";
+import type { PatrimoineData, PatrimoineStructure, HorsBilanData, CityDebtSnapshot } from "@/lib/fusion-data";
 import { useT } from "@/lib/localeContext";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
@@ -26,21 +30,27 @@ const fill = (s: string, vars: Record<string, string | number>) => {
 export default function DettePatrimoineClient({
   d,
   structure,
+  horsBilan,
+  horsBilanTrajectory,
+  citiesSnapshot,
 }: {
   d: PatrimoineData;
   structure: PatrimoineStructure | null;
+  horsBilan: HorsBilanData | null;
+  horsBilanTrajectory: Array<{ year: number; capital_restant: number }>;
+  citiesSnapshot: CityDebtSnapshot[];
 }) {
   const t = useT();
   const net = d.fondsPropres;
   const detteParHab = d.detteFinanciere / 2_133_111;
 
-  const hbRows = [
-    { eKey: "fx.det.hb.r1.e", entKey: "fx.det.hb.r1.ent", vKey: "fx.det.hb.r1.v", risk: "faible" },
-    { eKey: "fx.det.hb.r2.e", entKey: "fx.det.hb.r2.ent", vKey: "fx.det.hb.r2.v", risk: "moyen" },
-    { eKey: "fx.det.hb.r3.e", entKey: "fx.det.hb.r3.ent", vKey: "fx.det.hb.r3.v", risk: "moyen" },
-    { eKey: "fx.det.hb.r4.e", entKey: "fx.det.hb.r4.ent", vKey: "fx.det.hb.r4.v", risk: "faible" },
-    { eKey: "fx.det.hb.r5.e", entKey: "fx.det.hb.r5.ent", vKey: "fx.det.hb.r5.v", risk: "moyen" },
-  ];
+  // Unité auto Md € / M € pour les montants hors bilan
+  const mdLabel = t("fx.s.md_eur");
+  const mLabel = t("fx.s.m_eur");
+  const fmtAmount = (v: number): { value: string; unit: string } =>
+    v >= 1e9
+      ? { value: fmtBillions(v), unit: mdLabel }
+      : { value: fmtMillions(v, 0), unit: mLabel };
 
   return (
     <div className="theme-fusion">
@@ -48,13 +58,14 @@ export default function DettePatrimoineClient({
 
       <PageTOC
         items={[
-          { id: "sec-regles", label: t("fx.det.toc.regles") },
           { id: "sec-overview", label: t("fx.det.toc.overview") },
+          { id: "sec-stress", label: t("fx.det.toc.stress") },
           { id: "sec-bilan", label: t("fx.det.toc.bilan") },
           { id: "sec-trajectoire", label: t("fx.det.toc.trajectoire") },
           { id: "sec-actifs", label: t("fx.det.toc.actifs") },
           { id: "sec-dette", label: t("fx.det.toc.dette") },
           { id: "sec-hors-bilan", label: t("fx.det.toc.hors_bilan") },
+          { id: "sec-regles", label: t("fx.det.toc.regles") },
           { id: "sec-sources", label: t("fx.det.toc.sources") },
         ]}
       />
@@ -83,67 +94,10 @@ export default function DettePatrimoineClient({
         </div>
       </section>
 
-      <section className="fx-section" id="sec-regles">
-        <div className="fx-wrap">
-          <SectionHead
-            number="01"
-            kind={t("fx.det.s01.kind")}
-            title={
-              <>
-                {t("fx.det.s01.title.before")}
-                <em>{t("fx.det.s01.title.em")}</em>
-              </>
-            }
-            subtitle={t("fx.det.s01.sub")}
-          />
-          <div className="fx-sources fx-sources-2">
-            <div>
-              <div className="n">{t("fx.det.s01.r1.n")}</div>
-              <h3>{t("fx.det.s01.r1.h")}</h3>
-              <p>{t("fx.det.s01.r1.p")}</p>
-              <span className="fx-rule-ref">Article L.1612-4 CGCT</span>
-            </div>
-            <div>
-              <div className="n">{t("fx.det.s01.r2.n")}</div>
-              <h3>{t("fx.det.s01.r2.h")}</h3>
-              <p>{t("fx.det.s01.r2.p")}</p>
-              <span className="fx-rule-ref">Article L.1612-4 CGCT</span>
-            </div>
-            <div>
-              <div className="n">{t("fx.det.s01.r3.n")}</div>
-              <h3>{t("fx.det.s01.r3.h")}</h3>
-              <p>{t("fx.det.s01.r3.p")}</p>
-              <span className="fx-rule-ref">Article L.1612-4 CGCT · circulaire DGCL</span>
-            </div>
-            <div>
-              <div className="n">{t("fx.det.s01.r4.n")}</div>
-              <h3>{t("fx.det.s01.r4.h")}</h3>
-              <p>{t("fx.det.s01.r4.p")}</p>
-              <span className="fx-rule-ref">Loi de programmation des finances publiques 2023-2027</span>
-            </div>
-          </div>
-
-          <div className="fx-faillite-box">
-            <h4>
-              {t("fx.det.s01.note.b").split(" ").slice(0, -1).join(" ")}{" "}
-              <span className="rouge">
-                {t("fx.det.s01.note.b").split(" ").slice(-1)[0]}
-              </span>{" "}
-              ?
-            </h4>
-            <p>{t("fx.det.s01.note.text")}</p>
-          </div>
-
-          <PullQuote cite={<>Source · CGCT art. L.1612-14 · rapports CRC Île-de-France</>}>
-            {t("fx.det.s01.note.text")}
-          </PullQuote>
-        </div>
-      </section>
-
       <section className="fx-section" id="sec-overview">
         <div className="fx-wrap">
           <SectionHead
-            number="02"
+            number="01"
             kind={t("fx.det.s02.kind")}
             title={
               <>
@@ -214,6 +168,33 @@ export default function DettePatrimoineClient({
               ]}
             />
           </div>
+
+          {citiesSnapshot.length > 0 && (
+            <CityComparator cities={citiesSnapshot} highlightSlug="paris" />
+          )}
+        </div>
+      </section>
+
+      <section className="fx-section" id="sec-stress">
+        <div className="fx-wrap">
+          <SectionHead
+            number="02"
+            kind={t("fx.det.stress.kind")}
+            title={
+              <>
+                {t("fx.det.stress.title.before")}
+                <em>{t("fx.det.stress.title.em")}</em>
+                {t("fx.det.stress.title.after")}
+              </>
+            }
+            subtitle={t("fx.det.stress.sub")}
+          />
+          <StressTestTeaser
+            dette={d.detteFinanciere}
+            capaciteBaseline={d.capaciteDesendettement}
+            tauxBaseline={structure?.structure_dette.taux.taux_fixe_moyen_pondere_pct ?? 2.4}
+            year={d.year}
+          />
         </div>
       </section>
 
@@ -318,7 +299,7 @@ export default function DettePatrimoineClient({
         </div>
       </section>
 
-      <section className="fx-section" id="sec-actifs">
+      <section className="fx-section fx-section-annexe" id="sec-actifs">
         <div className="fx-wrap">
           <SectionHead
             number="05"
@@ -340,7 +321,7 @@ export default function DettePatrimoineClient({
         </div>
       </section>
 
-      <section className="fx-section" id="sec-dette">
+      <section className="fx-section fx-section-annexe" id="sec-dette">
         <div className="fx-wrap">
           <SectionHead
             number="06"
@@ -376,52 +357,195 @@ export default function DettePatrimoineClient({
             }
             subtitle={t("fx.det.s04c.sub")}
           />
-          <table className="fx-table">
-            <thead>
-              <tr>
-                <th>{t("fx.det.s04c.col.engagement")}</th>
-                <th>{t("fx.det.s04c.col.entite")}</th>
-                <th style={{ textAlign: "right" }}>{t("fx.det.s04c.col.amount")}</th>
-                <th>{t("fx.det.s04c.col.risk")}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {hbRows.map((row, i) => (
-                <tr key={i}>
-                  <td style={{ fontWeight: 500 }}>{t(row.eKey)}</td>
-                  <td className="muted">{t(row.entKey)}</td>
-                  <td className="num">{t(row.vKey)}</td>
-                  <td>
-                    <span
-                      style={{
-                        fontFamily: "var(--f-mono)",
-                        fontSize: 11,
-                        letterSpacing: ".04em",
-                        color:
-                          row.risk === "faible"
-                            ? "var(--bleu)"
-                            : row.risk === "moyen"
-                            ? "var(--ocre)"
-                            : "var(--rouge)",
-                      }}
+
+          {horsBilan ? (
+            <>
+              <HeroNumber
+                label={fill(t("fx.det.s04c.hero_label"), { year: horsBilan.year })}
+                value={fmtBillions(horsBilan.totals.capital_restant)}
+                unit={t("fx.s.md_eur")}
+                caption={
+                  <>
+                    {fill(t("fx.det.s04c.hero_cap"), {
+                      count: horsBilan.totals.count_emprunts.toLocaleString("fr-FR"),
+                      benef: horsBilan.totals.count_beneficiaires,
+                    })}
+                  </>
+                }
+              />
+              <KPIGrid
+                cols={3}
+                items={[
+                  {
+                    label: t("fx.det.s04c.kpi.annuite"),
+                    value: fmtMillions(horsBilan.totals.annuite_totale, 0),
+                    unit: t("fx.s.m_eur"),
+                    delta: t("fx.det.s04c.kpi.annuite_delta"),
+                  },
+                  {
+                    label: t("fx.det.s04c.kpi.taux"),
+                    value: fmtDec(horsBilan.taux.taux_moyen_pondere_pct, 2),
+                    unit: "%",
+                    delta: fill(t("fx.det.s04c.kpi.taux_delta"), {
+                      fixe: Math.round(horsBilan.taux.part_fixe * 100),
+                      var: Math.round(horsBilan.taux.part_variable * 100),
+                    }),
+                  },
+                  {
+                    label: t("fx.det.s04c.kpi.duree"),
+                    value: fmtDec(horsBilan.taux.duree_residuelle_moyenne_ans, 1),
+                    unit: t("fx.det.s02.kpi.ans"),
+                    delta: t("fx.det.s04c.kpi.duree_delta"),
+                  },
+                ]}
+              />
+
+              <h4 className="fx-h4">{t("fx.det.s04c.benef_title")}</h4>
+              <p className="fx-bc-hint" style={{ marginTop: -6 }}>{t("fx.det.s04c.click_hint")}</p>
+              <div className="fx-hb-list">
+                {horsBilan.top_beneficiaires.slice(0, 10).map((b) => {
+                  const f = fmtAmount(b.capital_restant);
+                  const slug = slugifyBailleur(b.name);
+                  return (
+                    <Link
+                      key={b.key}
+                      href={`/dette-patrimoine/bailleur/${encodeURIComponent(slug)}`}
+                      scroll={false}
+                      className="fx-hb-row clickable"
+                      aria-label={b.name}
                     >
-                      {row.risk === "faible"
-                        ? t("fx.det.s04c.risk.faible").toUpperCase()
-                        : t("fx.det.s04c.risk.moyen").toUpperCase()}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <p className="fx-note">{t("fx.det.s04c.note")}</p>
+                      <span className="fx-hb-l">{b.name}</span>
+                      <span className="fx-hb-bar" aria-hidden>
+                        <span className="fill" style={{ width: `${Math.max(2, b.share * 100)}%` }} />
+                      </span>
+                      <span className="fx-hb-v tnum">
+                        {f.value}
+                        <span className="u"> {f.unit}</span>
+                      </span>
+                      <span className="fx-hb-meta muted">
+                        {fill(t("fx.det.s04c.benef_meta"), {
+                          pct: fmtDec(b.share * 100, 1),
+                          n: b.count_emprunts,
+                        })}
+                        <span className="fx-hb-arrow" aria-hidden>→</span>
+                      </span>
+                    </Link>
+                  );
+                })}
+                {horsBilan.autres_beneficiaires.count > 0 && (() => {
+                  const f = fmtAmount(horsBilan.autres_beneficiaires.capital_restant);
+                  return (
+                    <div className="fx-hb-row tiny">
+                      <span className="fx-hb-l muted">
+                        {fill(t("fx.det.s04c.benef_autres"), {
+                          n: horsBilan.autres_beneficiaires.count,
+                        })}
+                      </span>
+                      <span className="fx-hb-bar" aria-hidden>
+                        <span className="fill light" style={{ width: `${Math.max(2, horsBilan.autres_beneficiaires.share * 100)}%` }} />
+                      </span>
+                      <span className="fx-hb-v tnum muted">
+                        {f.value}
+                        <span className="u"> {f.unit}</span>
+                      </span>
+                      <span className="fx-hb-meta muted">
+                        {fill(t("fx.det.s04c.benef_meta"), {
+                          pct: fmtDec(horsBilan.autres_beneficiaires.share * 100, 1),
+                          n: horsBilan.autres_beneficiaires.count_emprunts,
+                        })}
+                      </span>
+                    </div>
+                  );
+                })()}
+              </div>
+
+              <p className="fx-hb-preteur">
+                {fill(t("fx.det.s04c.preteur_lead"), {
+                  top: horsBilan.top_preteurs[0]?.name ?? "—",
+                  pct: fmtDec((horsBilan.top_preteurs[0]?.share ?? 0) * 100, 0),
+                })}
+              </p>
+
+              {horsBilanTrajectory.length >= 2 && (() => {
+                const first = horsBilanTrajectory[0];
+                const last = horsBilanTrajectory[horsBilanTrajectory.length - 1];
+                const growth = (last.capital_restant / first.capital_restant - 1) * 100;
+                return (
+                  <p className="fx-hb-traj muted tnum">
+                    {fill(t("fx.det.s04c.traj"), {
+                      y0: first.year,
+                      v0: fmtBillions(first.capital_restant),
+                      y1: last.year,
+                      v1: fmtBillions(last.capital_restant),
+                      growth: growth >= 0 ? `+${fmtDec(growth, 0)}` : fmtDec(growth, 0),
+                    })}
+                  </p>
+                );
+              })()}
+
+              <p className="fx-note">{horsBilan.sources.note}</p>
+            </>
+          ) : (
+            <p className="fx-note">{t("fx.det.s04c.note")}</p>
+          )}
+        </div>
+      </section>
+
+      <section className="fx-section" id="sec-regles">
+        <div className="fx-wrap">
+          <SectionHead
+            number="08"
+            kind={t("fx.det.s01.kind")}
+            title={
+              <>
+                {t("fx.det.s01.title.before")}
+                <em>{t("fx.det.s01.title.em")}</em>
+              </>
+            }
+            subtitle={t("fx.det.s01.sub")}
+          />
+          <details className="fx-collapsible">
+            <summary>{t("fx.det.s01.show_rules")}</summary>
+            <div className="fx-sources fx-sources-2" style={{ marginTop: 18 }}>
+              <div>
+                <div className="n">{t("fx.det.s01.r1.n")}</div>
+                <h3>{t("fx.det.s01.r1.h")}</h3>
+                <p>{t("fx.det.s01.r1.p")}</p>
+                <span className="fx-rule-ref">Article L.1612-4 CGCT</span>
+              </div>
+              <div>
+                <div className="n">{t("fx.det.s01.r2.n")}</div>
+                <h3>{t("fx.det.s01.r2.h")}</h3>
+                <p>{t("fx.det.s01.r2.p")}</p>
+                <span className="fx-rule-ref">Article L.1612-4 CGCT</span>
+              </div>
+              <div>
+                <div className="n">{t("fx.det.s01.r3.n")}</div>
+                <h3>{t("fx.det.s01.r3.h")}</h3>
+                <p>{t("fx.det.s01.r3.p")}</p>
+                <span className="fx-rule-ref">Article L.1612-4 CGCT · circulaire DGCL</span>
+              </div>
+              <div>
+                <div className="n">{t("fx.det.s01.r4.n")}</div>
+                <h3>{t("fx.det.s01.r4.h")}</h3>
+                <p>{t("fx.det.s01.r4.p")}</p>
+                <span className="fx-rule-ref">Loi de programmation des finances publiques 2023-2027</span>
+              </div>
+            </div>
+          </details>
+
+          <PullQuote cite={t("fx.det.s01.note.cite")}>
+            {t("fx.det.s01.note.before")}
+            <b>{t("fx.det.s01.note.em")}</b>
+            {t("fx.det.s01.note.after")}
+          </PullQuote>
         </div>
       </section>
 
       <section className="fx-section" id="sec-sources">
         <div className="fx-wrap">
           <SectionHead
-            number="08"
+            number="09"
             kind={t("fx.det.src.kind")}
             title={
               <>
@@ -470,7 +594,7 @@ export default function DettePatrimoineClient({
 
       <section className="fx-section">
         <div className="fx-wrap">
-          <SectionHead number="09" kind={t("fx.det.s07.kind")} title={t("fx.det.s07.title")} />
+          <SectionHead number="10" kind={t("fx.det.s07.kind")} title={t("fx.det.s07.title")} />
           <div className="fx-grid-tiles">
             <TileCard
               href="/budget"

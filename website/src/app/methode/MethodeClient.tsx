@@ -66,12 +66,12 @@ const TOOLS_FR: ToolMethod[] = [
   {
     id: "subventions", number: "05", kicker: "Subventions",
     title: "Subventions versées aux bénéficiaires", route: "/qui-recoit",
-    source: { name: "Subventions versées — annexes CA", dataset: "subventions-versees-annexe-compte-administratif-…", coverage: "2018-2024 · ~53 000 lignes", href: "https://opendata.paris.fr/explore/dataset/subventions-accordees-et-refusees", hrefLabel: "opendata.paris.fr" },
+    source: { name: "Subventions versées — annexes CA", dataset: "subventions-versees-annexe-compte-administratif-a-partir-de-2018", coverage: "2018-2024 · ~53 000 lignes", href: "https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/", hrefLabel: "opendata.paris.fr" },
     objectif: "Savoir qui reçoit l'argent public en subvention, pour quoi, et dans quelle proportion — du CASVP aux plus petites associations.",
     pipeline: [
       { label: "Sync + jointure", detail: <>Dataset subventions + dataset associations (SIRET, objet)</> },
       { label: "Normalisation", detail: <>Clé <code>beneficiaire_normalise</code> quand le SIRET est absent</> },
-      { label: "LLM thématique", detail: <>Gemini 2.5 Flash sur top 500 cumulés → seed cache</> },
+      { label: "LLM thématique", detail: <>Gemini 3 Flash / Claude Opus (selon tâche) sur top 500 cumulés → seed cache</> },
       { label: "Type organisme", detail: <>Colonnes <code>ode_*</code> (public / asso / entreprise / PP)</> },
       { label: "Revue humaine", detail: <>Contrôle manuel systématique &gt; 1 M€</> },
       { label: "Marts", detail: <><code>mart_subventions_treemap</code> + <code>mart_subventions_beneficiaires</code></> },
@@ -200,7 +200,7 @@ const GLOSSARY_FR: { term: string; def: string }[] = [
 
 const FAQ_FR: { q: string; a: string }[] = [
   { q: "Pourquoi votre chiffre diffère-t-il parfois de celui annoncé par la mairie ?", a: "Trois causes : (1) périmètre — on publie le budget principal, la mairie peut communiquer un « groupe Ville » qui inclut les satellites ; (2) timing — notre chiffre vient du dernier dataset ouvert ; (3) retraitement — on renomme et regroupe les chapitres, mais les agrégats sont identiques. Si l'écart persiste, dites-le-nous." },
-  { q: "Qu'est-ce que le LLM fait exactement dans votre pipeline ?", a: "Deux tâches précises : classifier la thématique des bénéficiaires de subventions, et aider à géolocaliser des projets d'investissement. Modèle : Gemini 2.5 Flash. Il ne calcule jamais un montant. Il tourne hors dbt, ses résultats sont mis en cache dans des seeds CSV publics, et on repasse manuellement sur les décisions > 1 M€." },
+  { q: "Qu'est-ce que le LLM fait exactement dans votre pipeline ?", a: "Plusieurs tâches ciblées : classifier la thématique des subventions, géolocaliser des projets d'investissement, vérifier l'activité des bénéficiaires par grounded search, vulgariser les intitulés techniques de marchés. Modèles : Gemini 3 Flash et Claude Opus selon la tâche. Il ne calcule jamais un montant. Il tourne hors dbt, ses résultats sont mis en cache dans des seeds CSV publics, et on repasse manuellement sur les décisions > 1 M€." },
   { q: "Comment évitez-vous le double comptage entre budget, subventions et marchés ?", a: "Chaque entité est modélisée séparément, jamais UNIONée aux autres. Le budget contient une ligne agrégée de subventions ; notre page « Subventions » détaille cette même ligne côté bénéficiaires. On n'additionne pas les deux. Documenté dans docs/architecture-modelling.md." },
   { q: "Vos totaux sont-ils identiques à ceux du site de la Ville ?", a: "Oui pour les agrégats issus d'un même dataset M57 : notre pipeline ne change pas les montants, il regroupe et renomme. Les écarts viennent des cas décrits plus haut (périmètre, timing, nomenclature)." },
   { q: "Pourquoi certaines années sont-elles absentes ou provisoires ?", a: "Chaque source a sa couverture documentée dans le tableau de couverture plus haut. L'exemple le plus visible : le dataset AP OpenData est gelé depuis 2022, donc pour 2023-2024 on bascule sur les PDF « Investissements Localisés ». On préfère afficher un manque que combler au doigt." },
@@ -245,12 +245,12 @@ const TOOLS_EN: ToolMethod[] = [
   {
     id: "subventions", number: "05", kicker: "Grants",
     title: "Grants paid to recipients", route: "/qui-recoit",
-    source: { name: "Grants paid — CA appendices", dataset: "subventions-versees-annexe-compte-administratif-…", coverage: "2018-2024 · ~53,000 lines", href: "https://opendata.paris.fr/explore/dataset/subventions-accordees-et-refusees", hrefLabel: "opendata.paris.fr" },
+    source: { name: "Grants paid — CA appendices", dataset: "subventions-versees-annexe-compte-administratif-a-partir-de-2018", coverage: "2018-2024 · ~53,000 lines", href: "https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/", hrefLabel: "opendata.paris.fr" },
     objectif: "Know who receives public money in grants, for what, and in what proportion — from CASVP to the smallest associations.",
     pipeline: [
       { label: "Sync + join", detail: <>Grants dataset + associations dataset (SIRET, purpose)</> },
       { label: "Normalisation", detail: <>Key <code>beneficiaire_normalise</code> when SIRET absent</> },
-      { label: "LLM theme", detail: <>Gemini 2.5 Flash on top 500 cumulative → seed cache</> },
+      { label: "LLM theme", detail: <>Gemini 3 Flash / Claude Opus (per task) on top 500 cumulative → seed cache</> },
       { label: "Org type", detail: <>Columns <code>ode_*</code> (public / non-profit / company / individual)</> },
       { label: "Human review", detail: <>Systematic manual check &gt; €1M</> },
       { label: "Marts", detail: <><code>mart_subventions_treemap</code> + <code>mart_subventions_beneficiaires</code></> },
@@ -379,7 +379,7 @@ const GLOSSARY_EN: { term: string; def: string }[] = [
 
 const FAQ_EN: { q: string; a: string }[] = [
   { q: "Why does your figure sometimes differ from the one announced by the City?", a: "Three reasons: (1) scope — we publish the main budget; the City may communicate a 'City group' that includes subsidiaries; (2) timing — our figure comes from the latest open dataset; (3) reprocessing — we rename and regroup chapters, but aggregates are identical. If the gap persists, let us know." },
-  { q: "What exactly does the LLM do in your pipeline?", a: "Two specific tasks: classify the theme of grant recipients, and help geolocate investment projects. Model: Gemini 2.5 Flash. It never calculates an amount. It runs outside dbt, its results are cached in public CSV seeds, and we manually review decisions > €1M." },
+  { q: "What exactly does the LLM do in your pipeline?", a: "Several targeted tasks: classify the theme of grants, geolocate investment projects, verify recipient activity via grounded search, vulgarise technical contract labels. Models: Gemini 3 Flash and Claude Opus depending on the task. It never calculates an amount. It runs outside dbt, results are cached in public CSV seeds, and we manually review decisions > €1M." },
   { q: "How do you avoid double-counting between budget, grants and contracts?", a: "Each entity is modelled separately, never UNIONed with others. The budget contains an aggregated grants line; our Grants page details that same line from the recipients' side. We don't add them together. Documented in docs/architecture-modelling.md." },
   { q: "Are your totals identical to those on the City's website?", a: "Yes for aggregates from the same M57 dataset: our pipeline doesn't change amounts, it regroups and renames. Differences come from the cases described above (scope, timing, nomenclature)." },
   { q: "Why are some years absent or provisional?", a: "Each source has its coverage documented in the coverage table above. The most visible example: the AP OpenData dataset has been frozen since 2022, so for 2023-2024 we switch to the 'Localised Investments' PDFs. We prefer to show a gap rather than fill it with guesswork." },
@@ -418,19 +418,19 @@ export default function MethodeClient() {
         <div className="fx-wrap">
           <div className="fx-page-kicker">{isFr ? "— Méthode" : "— Method"}</div>
           <h1 className="fx-page-title">
-            {isFr ? <>Comment on <em>construit</em> ces chiffres.</> : <>How we <em>build</em> these figures.</>}
+            {isFr ? <>Tout est <em>déjà</em> public.</> : <>It&apos;s all <em>already</em> public.</>}
           </h1>
           <p className="fx-page-lede">
             {isFr
-              ? <>Une page unique : d&apos;où viennent les données, comment elles sont traitées, quels choix éditoriaux ont été faits, et ce que les chiffres <em>ne disent pas</em>. Tout le pipeline est open source.</>
-              : <>One page: where the data comes from, how it is processed, what editorial choices were made, and what the figures <em>don&apos;t say</em>. The entire pipeline is open source.</>}
+              ? <>Tout ce que vous lisez ici, la Ville l&apos;a déjà publié quelque part — un dataset OpenData, une annexe comptable, un PDF du compte de gestion. Notre boulot : relier, renommer en français courant, rendre l&apos;ensemble lisible. Le pipeline est ouvert, chaque chiffre se recalcule depuis la source.</>
+              : <>Everything you read here, the City has already published somewhere — an OpenData dataset, an accounting appendix, a PDF from the management account. Our job: connect, rename in plain language, make it all readable. The pipeline is open, every figure can be recalculated from the source.</>}
           </p>
 
           <div className="fx-meth-stats">
             <div className="fx-meth-stat">
               <span className="n">{isFr ? "Datasets" : "Datasets"}</span>
-              <span className="v">7</span>
-              <span className="c">{isFr ? "sources OpenData Paris" : "OpenData Paris sources"}</span>
+              <span className="v">12+</span>
+              <span className="c">{isFr ? "opendata.paris.fr · INSEE SIRENE · BAN · PDFs officiels" : "opendata.paris.fr · INSEE SIRENE · BAN · official PDFs"}</span>
             </div>
             <div className="fx-meth-stat">
               <span className="n">{isFr ? "Outils" : "Tools"}</span>
@@ -450,7 +450,7 @@ export default function MethodeClient() {
           </div>
 
           <div className="fx-page-actions" style={{ marginTop: 28 }}>
-            <Button variant="primary" href="#architecture">{isFr ? "Voir l'architecture" : "See the architecture"}</Button>
+            <Button variant="primary" href="#couverture">{isFr ? "Voir les sources" : "See the sources"}</Button>
             <Button href="https://github.com/Nuttux/open-public-data">{isFr ? "Le code sur GitHub ↗" : "Code on GitHub ↗"}</Button>
           </div>
         </div>
@@ -458,6 +458,37 @@ export default function MethodeClient() {
 
       <section className="fx-section">
         <div className="fx-wrap">
+          <div className="fx-meth-origin">
+            <h2>{isFr ? <>Ces chiffres, d&apos;<em>où</em> ils viennent ?</> : <>These figures — <em>where</em> do they come from?</>}</h2>
+            <div className="fx-meth-origin-prose">
+              {isFr ? (
+                <>
+                  <p>
+                    <b>De la Ville, et seulement de la Ville.</b> Des datasets publiés sur opendata.paris.fr, de l&apos;INSEE, de data.gouv.fr, des PDFs joints aux comptes administratifs. Aucun chiffre n&apos;est reconstruit à partir de sources tierces, aucun n&apos;est estimé à la louche. On lit ce que la Ville écrit, et on essaie de le rendre lisible.
+                  </p>
+                  <p>
+                    Notre travail tient à peu près en un mot : <em>couture</em>. Les données existent, mais en silos — une douzaine de sources, des nomenclatures qui font fuir (chapitres 011, comptes 164×), des PDFs non-structurés, aucune vue qui croise budget, subventions, marchés et investissements. On rassemble tout dans une base unique, on nettoie, on renomme en français courant. Un LLM nous aide à classer les subventions par thème et à retrouver l&apos;adresse des projets (jamais à calculer un montant). Puis on publie.
+                  </p>
+                  <p>
+                    Ce n&apos;est donc <em>pas</em> une enquête, <em>pas</em> un audit critique, <em>pas</em> un scoop. C&apos;est un miroir rangé du bilan public. Si on s&apos;est trompé quelque part, le code est là pour que vous nous repreniez.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p>
+                    <b>From the City, and only from the City.</b> Datasets published on opendata.paris.fr, INSEE, data.gouv.fr, PDFs attached to administrative accounts. No figure is rebuilt from third-party sources, none is roughly estimated. We read what the City writes, and try to make it readable.
+                  </p>
+                  <p>
+                    Our work boils down to one word: <em>stitching</em>. The data exists, but scattered — a dozen sources, off-putting nomenclatures (chapters 011, accounts 164×), unstructured PDFs, no single view that crosses budget, grants, contracts and investments. We pull everything into a single base, clean it, rename it in plain language. An LLM helps us tag grants by theme and find project addresses (never to compute an amount). Then we publish.
+                  </p>
+                  <p>
+                    So this is <em>not</em> an investigation, <em>not</em> a critical audit, <em>not</em> a scoop. It&apos;s a tidied-up mirror of the public balance sheet. If we got something wrong, the code is there so you can set us straight.
+                  </p>
+                </>
+              )}
+            </div>
+          </div>
+
           <SectionHead
             number="00"
             kind={isFr ? "Sommaire" : "Contents"}
@@ -499,7 +530,7 @@ export default function MethodeClient() {
             <div>
               <div className="n">03</div>
               <h3>{isFr ? "Code & données ouverts" : "Open code & data"}</h3>
-              <p>{isFr ? "Tous les scripts sont sous licence MIT. Chaque chiffre peut être recalculé depuis un CSV source." : "All scripts are MIT-licensed. Every figure can be recalculated from a source CSV."}</p>
+              <p>{isFr ? "Les pipelines (Python + dbt) sont sous licence MIT. Chaque chiffre peut être recalculé depuis un CSV source." : "Pipelines (Python + dbt) are MIT-licensed. Every figure can be recalculated from a source CSV."}</p>
             </div>
             <div>
               <div className="n">04</div>
@@ -522,9 +553,9 @@ export default function MethodeClient() {
           <div className="fx-flow">
             <div className="fx-flow-row">
               <div className="fx-flow-node">
-                <span className="k">01 · {isFr ? "Source" : "Source"}</span>
-                <span className="lab">OpenData Paris</span>
-                <span className="sub">{isFr ? "7 datasets publics" : "7 public datasets"}</span>
+                <span className="k">01 · {isFr ? "Sources" : "Sources"}</span>
+                <span className="lab">OpenData Paris + INSEE + BAN</span>
+                <span className="sub">{isFr ? "12+ datasets & PDFs officiels" : "12+ official datasets & PDFs"}</span>
               </div>
               <span className="fx-flow-arrow">→</span>
               <div className="fx-flow-node">

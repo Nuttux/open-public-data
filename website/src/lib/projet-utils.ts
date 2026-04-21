@@ -16,6 +16,17 @@ export function slugifyChapitre(label: string): string {
 /** Alias — same algorithm, kept under a generic name for budget/other usages. */
 export const slugifyLabel = slugifyChapitre;
 
+/** Slug URL-safe depuis un nom de bailleur social (strip forme juridique + accents). */
+export function slugifyBailleur(name: string): string {
+  if (!name) return "";
+  let s = name.toLowerCase();
+  s = s.replace(/\s*\([^)]*\)/g, "");
+  s = s.replace(/\s+(oph|sem|seml|spla|esh|sa\s*hlm|sahlm|epic|oph[r]?|ophlm)\b/gi, "");
+  s = s.normalize("NFKD").replace(/[\u0300-\u036f]/g, "");
+  s = s.replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  return s;
+}
+
 /**
  * Mapping axe "service" (libellé direction/mission présent dans le dump
  * investissements_complet_YYYY.json) → axe "M57 fonctionnel" (libellé

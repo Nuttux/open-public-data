@@ -1,6 +1,6 @@
 {
   "year": 2022,
-  "generated_at": "2026-04-21T10:45:33.979713+00:00",
+  "generated_at": "2026-04-21T22:44:47.159237+00:00",
   "structure_dette": {
     "total_dette_financiere": 9285311785,
     "instruments": [
@@ -123,7 +123,18 @@
       }
     ],
     "bond_issuances_total_m_eur": 4850,
-    "obligataire_total": 6597738705
+    "obligataire_total": 6597738705,
+    "indicative_fields": [
+      "taux.part_fixe",
+      "taux.part_variable",
+      "taux.taux_fixe_moyen_pondere_pct",
+      "maturite_moyenne_ans",
+      "prochaine_echeance_lourde",
+      "bond_issuances",
+      "instruments[].taux_moyen_pct",
+      "instruments[].maturite_moyenne_ans",
+      "instruments[].part_taux_fixe"
+    ]
   },
   "masses_actif": [
     {
@@ -504,6 +515,6 @@
       "Rapport annuel Agence France Trésor",
       "Bloomberg · ISIN FR0014xxxx"
     ],
-    "limites": "Le split taux fixe/variable (82 %/18 %) et la maturité moyenne (14,2 ans) ne sont pas publiés en open data à la résolution ligne-par-ligne ; reconstitution depuis ROB. La ventilation par instrument (obligataire vs bancaire vs divers) provient directement du compte administratif M57."
+    "limites": "MESURÉ (bilan M57 opendata.paris.fr) : encours total, ventilation par instrument (obligataire / bancaire / divers), masses actif-passif. INDICATIF (reconstitution ROB / Euronext / communiqués Paris IR, constant sur la période 2019-2024) : split taux fixe/variable (82/18), maturité moyenne (14,2 ans), taux moyens par instrument, liste des émissions obligataires, prochaine échéance lourde. Ces champs sont listés dans `indicative_fields` et ne doivent pas être présentés comme des mesures directes issues de l'open data."
   }
 }

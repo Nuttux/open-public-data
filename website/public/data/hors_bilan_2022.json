@@ -1,0 +1,5443 @@
+{
+  "year": 2022,
+  "generated_at": "2026-04-21T23:15:31.108835+00:00",
+  "totals": {
+    "capital_restant": 11409948308,
+    "montant_initial": 14229563721,
+    "annuite_totale": 612819808,
+    "annuite_interets": 154134781,
+    "annuite_capital": 458685027,
+    "count_emprunts": 9166,
+    "count_beneficiaires": 107,
+    "count_preteurs": 35
+  },
+  "taux": {
+    "capital_taux_fixe": 3469247938,
+    "capital_taux_variable": 7940700370,
+    "part_fixe": 0.3040546586447316,
+    "part_variable": 0.6959453413552684,
+    "taux_moyen_pondere_pct": 2.265,
+    "duree_residuelle_moyenne_ans": 28.46,
+    "indices_variables": [
+      {
+        "index": "LIVRET A",
+        "count": 7435
+      },
+      {
+        "index": "INF FR XT",
+        "count": 403
+      },
+      {
+        "index": "EURIBOR03M",
+        "count": 50
+      },
+      {
+        "index": "EURIBOR06M",
+        "count": 45
+      },
+      {
+        "index": "LEP",
+        "count": 13
+      }
+    ]
+  },
+  "by_nature": [
+    {
+      "key": "logement_social_aide",
+      "label": "Logement social aidé par l'État",
+      "capital_restant": 9990711556,
+      "share": 0.8756140945174339,
+      "count_emprunts": 8993
+    },
+    {
+      "key": "logement_hors_aide",
+      "label": "Logement hors aide d'État",
+      "capital_restant": 1419236752,
+      "share": 0.12438590548256609,
+      "count_emprunts": 173
+    },
+    {
+      "key": "autres_operations",
+      "label": "Autres opérations (aménagement, équipements, assos)",
+      "capital_restant": 0,
+      "share": 0.0,
+      "count_emprunts": 0
+    }
+  ],
+  "by_arrondissement": [
+    {
+      "arr": 1,
+      "capital_restant": 0,
+      "count_emprunts": 0,
+      "share_of_localized": 0.0
+    },
+    {
+      "arr": 2,
+      "capital_restant": 0,
+      "count_emprunts": 0,
+      "share_of_localized": 0.0
+    },
+    {
+      "arr": 3,
+      "capital_restant": 0,
+      "count_emprunts": 0,
+      "share_of_localized": 0.0
+    },
+    {
+      "arr": 4,
+      "capital_restant": 0,
+      "count_emprunts": 0,
+      "share_of_localized": 0.0
+    },
+    {
+      "arr": 5,
+      "capital_restant": 0,
+      "count_emprunts": 0,
+      "share_of_localized": 0.0
+    },
+    {
+      "arr": 6,
+      "capital_restant": 0,
+      "count_emprunts": 0,
+      "share_of_localized": 0.0
+    },
+    {
+      "arr": 7,
+      "capital_restant": 0,
+      "count_emprunts": 0,
+      "share_of_localized": 0.0
+    },
+    {
+      "arr": 8,
+      "capital_restant": 0,
+      "count_emprunts": 0,
+      "share_of_localized": 0.0
+    },
+    {
+      "arr": 9,
+      "capital_restant": 0,
+      "count_emprunts": 0,
+      "share_of_localized": 0.0
+    },
+    {
+      "arr": 10,
+      "capital_restant": 0,
+      "count_emprunts": 0,
+      "share_of_localized": 0.0
+    },
+    {
+      "arr": 11,
+      "capital_restant": 0,
+      "count_emprunts": 0,
+      "share_of_localized": 0.0
+    },
+    {
+      "arr": 12,
+      "capital_restant": 0,
+      "count_emprunts": 0,
+      "share_of_localized": 0.0
+    },
+    {
+      "arr": 13,
+      "capital_restant": 0,
+      "count_emprunts": 0,
+      "share_of_localized": 0.0
+    },
+    {
+      "arr": 14,
+      "capital_restant": 0,
+      "count_emprunts": 0,
+      "share_of_localized": 0.0
+    },
+    {
+      "arr": 15,
+      "capital_restant": 0,
+      "count_emprunts": 0,
+      "share_of_localized": 0.0
+    },
+    {
+      "arr": 16,
+      "capital_restant": 0,
+      "count_emprunts": 0,
+      "share_of_localized": 0.0
+    },
+    {
+      "arr": 17,
+      "capital_restant": 0,
+      "count_emprunts": 0,
+      "share_of_localized": 0.0
+    },
+    {
+      "arr": 18,
+      "capital_restant": 0,
+      "count_emprunts": 0,
+      "share_of_localized": 0.0
+    },
+    {
+      "arr": 19,
+      "capital_restant": 0,
+      "count_emprunts": 0,
+      "share_of_localized": 0.0
+    },
+    {
+      "arr": 20,
+      "capital_restant": 0,
+      "count_emprunts": 0,
+      "share_of_localized": 0.0
+    }
+  ],
+  "non_localised": {
+    "capital_restant": 11409948308,
+    "count_emprunts": 9166,
+    "share": 1.0
+  },
+  "top_beneficiaires": [
+    {
+      "key": "rivp-sem",
+      "name": "RIVP (SEM)",
+      "capital_restant": 3871811017,
+      "montant_initial": 4576554367,
+      "count_emprunts": 2170,
+      "share": 0.33933642050566953,
+      "nature_dominante": "logement_social_aide",
+      "taux_moyen_pondere_pct": 2.407,
+      "duree_residuelle_moyenne_ans": 31.19,
+      "part_fixe": 0.39812656731118323,
+      "preteurs": [
+        {
+          "name": "CDC",
+          "capital_restant": 2911847886,
+          "count_emprunts": 1968,
+          "share": 0.7520635364181271
+        },
+        {
+          "name": "CE",
+          "capital_restant": 194551596,
+          "count_emprunts": 58,
+          "share": 0.050248215871152455
+        },
+        {
+          "name": "SG",
+          "capital_restant": 138388479,
+          "count_emprunts": 21,
+          "share": 0.03574257071576922
+        },
+        {
+          "name": "BAYER LB",
+          "capital_restant": 129122077,
+          "count_emprunts": 9,
+          "share": 0.03334927149493191
+        },
+        {
+          "name": "CF",
+          "capital_restant": 116217285,
+          "count_emprunts": 21,
+          "share": 0.030016259645014965
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "Travaux réhabilitation patrimoine - 75000 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 385583199,
+          "capital_restant": 354292287,
+          "duree_residuelle": 27.75,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.31
+        },
+        {
+          "objet": "Diverses adresses - 75000 - CPCT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2007,
+          "montant_initial": 136652790,
+          "capital_restant": 95814408,
+          "duree_residuelle": 20.07,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.96
+        },
+        {
+          "objet": "Diverses adresses - 75000 - CPCT - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "montant_initial": 112496878,
+          "capital_restant": 90171946,
+          "duree_residuelle": 19.75,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.45
+        },
+        {
+          "objet": "Diverses adresses - 75000 - CPCT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2010,
+          "montant_initial": 85898152,
+          "capital_restant": 55583436,
+          "duree_residuelle": 12.16,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 4.17
+        },
+        {
+          "objet": "Adresses diverses lgts loc. non sociaux - 75000",
+          "preteur": "CE",
+          "annee_mobilisation": 2010,
+          "montant_initial": 61890400,
+          "capital_restant": 49081255,
+          "duree_residuelle": 22.04,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 4.44
+        },
+        {
+          "objet": "Adresses diverses lgts loc. non sociaux - 75000",
+          "preteur": "SG",
+          "annee_mobilisation": 2009,
+          "montant_initial": 61890400,
+          "capital_restant": 44281346,
+          "duree_residuelle": 16.96,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 4.37
+        },
+        {
+          "objet": "Réaménagement emprunts compactés - CPCT - 75000",
+          "preteur": "CF",
+          "annee_mobilisation": 2011,
+          "montant_initial": 56924381,
+          "capital_restant": 43299157,
+          "duree_residuelle": 18.87,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 3.93
+        },
+        {
+          "objet": "Diverses adresses - 75000 - CPCT - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "montant_initial": 49933846,
+          "capital_restant": 43180007,
+          "duree_residuelle": 25.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.54
+        },
+        {
+          "objet": "Diverses adresses - 75000",
+          "preteur": "CE",
+          "annee_mobilisation": 2010,
+          "montant_initial": 49276630,
+          "capital_restant": 35484973,
+          "duree_residuelle": 18.02,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 4.13
+        },
+        {
+          "objet": "Divers programmes logements sociaux - 75000",
+          "preteur": "SG",
+          "annee_mobilisation": 2018,
+          "montant_initial": 35000000,
+          "capital_restant": 31392070,
+          "duree_residuelle": 25.64,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.89
+        },
+        {
+          "objet": "Réhabilitation patrimoine - 75000",
+          "preteur": "FPLLF",
+          "annee_mobilisation": 2017,
+          "montant_initial": 35000000,
+          "capital_restant": 30562475,
+          "duree_residuelle": 29.03,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.69
+        },
+        {
+          "objet": "Diverses opérations - 75000",
+          "preteur": "Riv. Inv",
+          "annee_mobilisation": 2018,
+          "montant_initial": 27910000,
+          "capital_restant": 25754784,
+          "duree_residuelle": 35.01,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 2.27
+        },
+        {
+          "objet": "LLI - Diverses opérations - 75000 - NSG - GA",
+          "preteur": "BAYER LB",
+          "annee_mobilisation": 2020,
+          "montant_initial": 26250000,
+          "capital_restant": 25232970,
+          "duree_residuelle": 39.94,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.0
+        },
+        {
+          "objet": "Programme d'investissements - 75000",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "montant_initial": 24750000,
+          "capital_restant": 24750000,
+          "duree_residuelle": 34.33,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.45
+        },
+        {
+          "objet": "18-30, rue Boucry - 75018 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 25849525,
+          "capital_restant": 24492376,
+          "duree_residuelle": 40.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 3.11
+        },
+        {
+          "objet": "LLI - Emprunt Opérations Investissements - 75000",
+          "preteur": "BAYER LB",
+          "annee_mobilisation": 2020,
+          "montant_initial": 25000000,
+          "capital_restant": 23972106,
+          "duree_residuelle": 37.33,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.0
+        },
+        {
+          "objet": "Financement Opérations Réhabilitation - 75000",
+          "preteur": "LBP",
+          "annee_mobilisation": 2020,
+          "montant_initial": 25000000,
+          "capital_restant": 23555407,
+          "duree_residuelle": 27.42,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.0
+        },
+        {
+          "objet": "Réaménagement de prêts - CPCT - 75000",
+          "preteur": "CF",
+          "annee_mobilisation": 2013,
+          "montant_initial": 28727626,
+          "capital_restant": 22679635,
+          "duree_residuelle": 20.45,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 3.68
+        },
+        {
+          "objet": "18-30, rue Boucry - 75018 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 23483116,
+          "capital_restant": 22319678,
+          "duree_residuelle": 60.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.95
+        },
+        {
+          "objet": "Immeuble Bouvier - Impasse Bouvier - 75011",
+          "preteur": "CA IdF",
+          "annee_mobilisation": 2015,
+          "montant_initial": 27040550,
+          "capital_restant": 22264729,
+          "duree_residuelle": 22.84,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 2.29
+        },
+        {
+          "objet": "64-66 rue de Meaux - 75019 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "montant_initial": 25089100,
+          "capital_restant": 22106999,
+          "duree_residuelle": 43.5,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.37
+        },
+        {
+          "objet": "64-66 rue de Meaux - 75019 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "montant_initial": 25725824,
+          "capital_restant": 22009735,
+          "duree_residuelle": 33.5,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.3
+        },
+        {
+          "objet": "Divers travaux - 75000",
+          "preteur": "LBP",
+          "annee_mobilisation": 2017,
+          "montant_initial": 25000000,
+          "capital_restant": 21713474,
+          "duree_residuelle": 24.45,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.82
+        },
+        {
+          "objet": "Financement Opérations Réhabilitation - 75000",
+          "preteur": "Riv. Inv",
+          "annee_mobilisation": 2020,
+          "montant_initial": 21987000,
+          "capital_restant": 21542969,
+          "duree_residuelle": 57.42,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.61
+        },
+        {
+          "objet": "Diverses opérations - CPCT 5 prêts - 75000 - RGT",
+          "preteur": "CE",
+          "annee_mobilisation": 2021,
+          "montant_initial": 21491121,
+          "capital_restant": 21032519,
+          "duree_residuelle": 27.86,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 3.23
+        }
+      ]
+    },
+    {
+      "key": "paris-habitat-oph-ep",
+      "name": "PARIS Habitat OPH (EP)",
+      "capital_restant": 2673822026,
+      "montant_initial": 3499976057,
+      "count_emprunts": 1921,
+      "share": 0.2343412918463015,
+      "nature_dominante": "logement_social_aide",
+      "taux_moyen_pondere_pct": 2.207,
+      "duree_residuelle_moyenne_ans": 27.27,
+      "part_fixe": 0.21923287551505155,
+      "preteurs": [
+        {
+          "name": "CDC",
+          "capital_restant": 2243874346,
+          "count_emprunts": 1749,
+          "share": 0.8392010850630459
+        },
+        {
+          "name": "LBP",
+          "capital_restant": 154049111,
+          "count_emprunts": 92,
+          "share": 0.057613823819406045
+        },
+        {
+          "name": "CE",
+          "capital_restant": 112440609,
+          "count_emprunts": 23,
+          "share": 0.04205239073219535
+        },
+        {
+          "name": "ARKEA",
+          "capital_restant": 51367411,
+          "count_emprunts": 4,
+          "share": 0.019211230401266873
+        },
+        {
+          "name": "SFIL - CFFL",
+          "capital_restant": 41779595,
+          "count_emprunts": 1,
+          "share": 0.015625420936182896
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "Refinancement avances Ville de Paris - Tranche 1",
+          "preteur": "CE",
+          "annee_mobilisation": 2007,
+          "montant_initial": 148831739,
+          "capital_restant": 81144138,
+          "duree_residuelle": 9.86,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 4.91
+        },
+        {
+          "objet": "Divers adresses - 75000 - RGT",
+          "preteur": "LBP",
+          "annee_mobilisation": 2013,
+          "montant_initial": 81631751,
+          "capital_restant": 42855724,
+          "duree_residuelle": 8.33,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 2.4
+        },
+        {
+          "objet": "CPG 2014 - Multi opérations - 75000",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "montant_initial": 47172060,
+          "capital_restant": 41832471,
+          "duree_residuelle": 34.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.19
+        },
+        {
+          "objet": "Financement rbrst avances/prêts Ville Paris - TRST",
+          "preteur": "SFIL - CFFL",
+          "annee_mobilisation": 2016,
+          "montant_initial": 61189871,
+          "capital_restant": 41779595,
+          "duree_residuelle": 9.86,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 4.88
+        },
+        {
+          "objet": "CPG 2015 - Multi opérations - 75000",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "montant_initial": 44208356,
+          "capital_restant": 39497837,
+          "duree_residuelle": 34.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.2
+        },
+        {
+          "objet": "Groupe Porte Dorée - Diverses adresses - 75012",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "montant_initial": 36614624,
+          "capital_restant": 34174660,
+          "duree_residuelle": 36.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.37
+        },
+        {
+          "objet": "CPG 2014 - Multi opérations - 75000 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 36400502,
+          "capital_restant": 31568515,
+          "duree_residuelle": 16.5,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.41
+        },
+        {
+          "objet": "Refi. - Diverses adresses - 75000 - RGT - CPCT",
+          "preteur": "ARKEA",
+          "annee_mobilisation": 2019,
+          "montant_initial": 34620388,
+          "capital_restant": 27931343,
+          "duree_residuelle": 26.5,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.54
+        },
+        {
+          "objet": "Refi. prêts CFF/Diverses opérations - 75000 - RGT",
+          "preteur": "LBP",
+          "annee_mobilisation": 2020,
+          "montant_initial": 28209437,
+          "capital_restant": 25674055,
+          "duree_residuelle": 22.46,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.93
+        },
+        {
+          "objet": "Programme d'investissements - 75000",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "montant_initial": 26010888,
+          "capital_restant": 25401766,
+          "duree_residuelle": 24.25,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.28
+        },
+        {
+          "objet": "Groupe Berthier - 75017",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "montant_initial": 25454020,
+          "capital_restant": 23281721,
+          "duree_residuelle": 35.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.26
+        },
+        {
+          "objet": "CPG 2014 - Multi opérations - 75000",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "montant_initial": 29581124,
+          "capital_restant": 21739471,
+          "duree_residuelle": 10.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 0.91
+        },
+        {
+          "objet": "Diverses opérations - 75000",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 26790894,
+          "capital_restant": 21660382,
+          "duree_residuelle": 11.42,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.96
+        },
+        {
+          "objet": "CPG 2014 - Multi opérations - 75000",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "montant_initial": 23074477,
+          "capital_restant": 20927622,
+          "duree_residuelle": 35.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.31
+        },
+        {
+          "objet": "Groupe Courcelles - 75017",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "montant_initial": 21155261,
+          "capital_restant": 19349827,
+          "duree_residuelle": 35.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.26
+        },
+        {
+          "objet": "Diverses adresses - 75000 -  CPG 2013 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "montant_initial": 19219449,
+          "capital_restant": 16925678,
+          "duree_residuelle": 26.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.17
+        },
+        {
+          "objet": "CPG 2014 - Multi opérations - 75000",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "montant_initial": 19125779,
+          "capital_restant": 16802538,
+          "duree_residuelle": 34.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.42
+        },
+        {
+          "objet": "Groupe Serrurier / Indochine - 75019 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 17159075,
+          "capital_restant": 16312851,
+          "duree_residuelle": 26.5,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "CPG 2016 - Multi opérations - 75000 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 30718011,
+          "capital_restant": 15693118,
+          "duree_residuelle": 3.96,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.65
+        },
+        {
+          "objet": "LLI - Opérations d'investissements - 75000 - NSG",
+          "preteur": "BAYER LB",
+          "annee_mobilisation": 2021,
+          "montant_initial": 15750000,
+          "capital_restant": 15356250,
+          "duree_residuelle": 38.01,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.0
+        },
+        {
+          "objet": "Groupe Alphonse Karr - 75019 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 15740024,
+          "capital_restant": 15168076,
+          "duree_residuelle": 23.67,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.79
+        },
+        {
+          "objet": "25-33 rue Pradier Fessart - 75019",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "montant_initial": 18962173,
+          "capital_restant": 14760537,
+          "duree_residuelle": 30.75,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.07
+        },
+        {
+          "objet": "CPG 2014 - Multi opérations - 75000 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 16042817,
+          "capital_restant": 13913212,
+          "duree_residuelle": 16.5,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.41
+        },
+        {
+          "objet": "Rues Bartolomé / Theuriet - 75015",
+          "preteur": "CDC",
+          "annee_mobilisation": 2015,
+          "montant_initial": 16733914,
+          "capital_restant": 13900452,
+          "duree_residuelle": 32.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.13
+        },
+        {
+          "objet": "Rue de Reuilly - 75012 - RGT",
+          "preteur": "LBP",
+          "annee_mobilisation": 2015,
+          "montant_initial": 19737102,
+          "capital_restant": 13353458,
+          "duree_residuelle": 12.45,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.19
+        }
+      ]
+    },
+    {
+      "key": "elogie-siemp-seml",
+      "name": "ELOGIE-SIEMP (SEML)",
+      "capital_restant": 1543932149,
+      "montant_initial": 1859162388,
+      "count_emprunts": 2622,
+      "share": 0.13531456125878843,
+      "nature_dominante": "logement_social_aide",
+      "taux_moyen_pondere_pct": 2.247,
+      "duree_residuelle_moyenne_ans": 32.25,
+      "part_fixe": 0.17280689390372833,
+      "preteurs": [
+        {
+          "name": "CDC",
+          "capital_restant": 1388556570,
+          "count_emprunts": 2437,
+          "share": 0.8993637259347975
+        },
+        {
+          "name": "CE",
+          "capital_restant": 47672291,
+          "count_emprunts": 43,
+          "share": 0.030877193180515024
+        },
+        {
+          "name": "ARKEA",
+          "capital_restant": 32169056,
+          "count_emprunts": 8,
+          "share": 0.020835796259328396
+        },
+        {
+          "name": "LBP",
+          "capital_restant": 25112239,
+          "count_emprunts": 10,
+          "share": 0.0162651180184303
+        },
+        {
+          "name": "CCOOP",
+          "capital_restant": 17362853,
+          "count_emprunts": 11,
+          "share": 0.01124586517512081
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "Remboursements avances Ville - 75000 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "montant_initial": 44438129,
+          "capital_restant": 39556246,
+          "duree_residuelle": 31.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.29
+        },
+        {
+          "objet": "Remboursement avances Ville - 75000 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2015,
+          "montant_initial": 36190439,
+          "capital_restant": 27872242,
+          "duree_residuelle": 17.75,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 2.1
+        },
+        {
+          "objet": "Divers programmes PLS - Refi. DEXIA - 75000 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "montant_initial": 14391625,
+          "capital_restant": 13012491,
+          "duree_residuelle": 30.09,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.85
+        },
+        {
+          "objet": "Divers programmes PLS - Refi. DEXIA - 75000 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "montant_initial": 13003971,
+          "capital_restant": 11611767,
+          "duree_residuelle": 27.09,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.89
+        },
+        {
+          "objet": "1-7, rue Corbineau - 75012 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2003,
+          "montant_initial": 14196852,
+          "capital_restant": 10330275,
+          "duree_residuelle": 32.5,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.88
+        },
+        {
+          "objet": "Divers programmes de logements sociaux - 75000",
+          "preteur": "CE",
+          "annee_mobilisation": 2015,
+          "montant_initial": 14944446,
+          "capital_restant": 9979972,
+          "duree_residuelle": 12.91,
+          "taux_type": "V",
+          "taux_index": "EURIBOR03M",
+          "taux_actuariel": 1.03
+        },
+        {
+          "objet": "Programme Porte Dorée - 75012",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 10067466,
+          "capital_restant": 9666619,
+          "duree_residuelle": 23.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.7
+        },
+        {
+          "objet": "Financement rembt avances Ville de Paris",
+          "preteur": "CCOOP",
+          "annee_mobilisation": 2011,
+          "montant_initial": 15571634,
+          "capital_restant": 9266307,
+          "duree_residuelle": 7.96,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 3.41
+        },
+        {
+          "objet": "Refinancement opérations PLS- 75000 - RGT",
+          "preteur": "ARKEA",
+          "annee_mobilisation": 2022,
+          "montant_initial": 8832169,
+          "capital_restant": 8832169,
+          "duree_residuelle": 39.5,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 2.34
+        },
+        {
+          "objet": "Refinancement opérations PLS- 75000 - RGT",
+          "preteur": "ARKEA",
+          "annee_mobilisation": 2022,
+          "montant_initial": 8507676,
+          "capital_restant": 8507676,
+          "duree_residuelle": 29.5,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 2.11
+        },
+        {
+          "objet": "Divers programmes PLS - Refi. DEXIA - 75000",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "montant_initial": 9067904,
+          "capital_restant": 8427574,
+          "duree_residuelle": 40.09,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.87
+        },
+        {
+          "objet": "Programme Porte Dorée - 75012",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 8245173,
+          "capital_restant": 8081313,
+          "duree_residuelle": 48.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.76
+        },
+        {
+          "objet": "8, Boulevard d'Indochine - 75019",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 9732561,
+          "capital_restant": 7708091,
+          "duree_residuelle": 37.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.34
+        },
+        {
+          "objet": "Divers programmes - 75000",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 8015215,
+          "capital_restant": 7559970,
+          "duree_residuelle": 36.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.88
+        },
+        {
+          "objet": "Travaux amélioration patrimoine - 75000",
+          "preteur": "CE",
+          "annee_mobilisation": 2022,
+          "montant_initial": 7533996,
+          "capital_restant": 7196475,
+          "duree_residuelle": 18.85,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.14
+        },
+        {
+          "objet": "Refinancement opérations PLS- 75000 - RGT",
+          "preteur": "ARKEA",
+          "annee_mobilisation": 2022,
+          "montant_initial": 7194670,
+          "capital_restant": 7194670,
+          "duree_residuelle": 29.5,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 2.11
+        },
+        {
+          "objet": "35-43, rue Duris - 75020 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 7179240,
+          "capital_restant": 7179240,
+          "duree_residuelle": 24.16,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.83
+        },
+        {
+          "objet": "Boulevard Sérurier - 75019 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 7125058,
+          "capital_restant": 7125058,
+          "duree_residuelle": 24.16,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.79
+        },
+        {
+          "objet": "Renouvellement composants -Divers adresses - 75000",
+          "preteur": "LBP",
+          "annee_mobilisation": 2017,
+          "montant_initial": 11198359,
+          "capital_restant": 7047842,
+          "duree_residuelle": 9.04,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.72
+        },
+        {
+          "objet": "Remboursements avances Ville - 75000 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "montant_initial": 7724760,
+          "capital_restant": 6986144,
+          "duree_residuelle": 33.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.26
+        },
+        {
+          "objet": "Groupe Clichy II - 75017 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 7082399,
+          "capital_restant": 6869648,
+          "duree_residuelle": 40.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "Divers programmes - 75000",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 7172502,
+          "capital_restant": 6869175,
+          "duree_residuelle": 46.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.92
+        },
+        {
+          "objet": "Rue du Chevaleret / Square Dunois - 75013",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "montant_initial": 6940148,
+          "capital_restant": 6280102,
+          "duree_residuelle": 17.5,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.17
+        },
+        {
+          "objet": "Divers programmes - 75012 - 75020",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "montant_initial": 6379437,
+          "capital_restant": 6129494,
+          "duree_residuelle": 37.5,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.89
+        },
+        {
+          "objet": "Place du Docteur Michaux - Groupe Princes - 75016",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 6436344,
+          "capital_restant": 6070775,
+          "duree_residuelle": 36.5,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.83
+        }
+      ]
+    },
+    {
+      "key": "icf-habitat-la-sabliere-sa-hlm",
+      "name": "ICF Habitat La Sablière (SA HLM)",
+      "capital_restant": 587596373,
+      "montant_initial": 739167155,
+      "count_emprunts": 192,
+      "share": 0.05149860078773283,
+      "nature_dominante": "logement_social_aide",
+      "taux_moyen_pondere_pct": 2.237,
+      "duree_residuelle_moyenne_ans": 25.82,
+      "part_fixe": 0.15018457844278865,
+      "preteurs": [
+        {
+          "name": "CDC",
+          "capital_restant": 537151273,
+          "count_emprunts": 179,
+          "share": 0.9141500835511002
+        },
+        {
+          "name": "CE",
+          "capital_restant": 18609180,
+          "count_emprunts": 2,
+          "share": 0.03167000549686902
+        },
+        {
+          "name": "CF",
+          "capital_restant": 10592504,
+          "count_emprunts": 3,
+          "share": 0.018026836768140524
+        },
+        {
+          "name": "CFCM",
+          "capital_restant": 9729384,
+          "count_emprunts": 3,
+          "share": 0.016557936907977158
+        },
+        {
+          "name": "CA IdF",
+          "capital_restant": 6785874,
+          "count_emprunts": 4,
+          "share": 0.011548529284470867
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "Diverses adresses - 75000",
+          "preteur": "CDC",
+          "annee_mobilisation": 2006,
+          "montant_initial": 149542333,
+          "capital_restant": 84772310,
+          "duree_residuelle": 18.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "Diverses adresses - 75000 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 32584410,
+          "capital_restant": 28093560,
+          "duree_residuelle": 13.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.63
+        },
+        {
+          "objet": "1, rue Gergovie - 75014 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 23006688,
+          "capital_restant": 22301322,
+          "duree_residuelle": 28.0,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.57
+        },
+        {
+          "objet": "Diverses adresses - 75000",
+          "preteur": "CE",
+          "annee_mobilisation": 2006,
+          "montant_initial": 27927439,
+          "capital_restant": 17201228,
+          "duree_residuelle": 13.88,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 4.15
+        },
+        {
+          "objet": "3-5, rue Fulton - 75013 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 16905880,
+          "capital_restant": 16258362,
+          "duree_residuelle": 35.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "3-17, rue Andrézieux - 75018 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 13683647,
+          "capital_restant": 13264118,
+          "duree_residuelle": 28.0,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.57
+        },
+        {
+          "objet": "Avenue de Clichy - Rue Boulay - 75017 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 9486220,
+          "capital_restant": 9486220,
+          "duree_residuelle": 41.5,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.53
+        },
+        {
+          "objet": "3-17, rue Andrézieux - 75018 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 10069503,
+          "capital_restant": 9352683,
+          "duree_residuelle": 21.59,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.75
+        },
+        {
+          "objet": "Secteur Ordener/Poissonniers (Lot 3) - 75018 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 8998652,
+          "capital_restant": 8747883,
+          "duree_residuelle": 35.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.8
+        },
+        {
+          "objet": "Résidence Sociale / Triangle Eole Evangile - 75019",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 8356215,
+          "capital_restant": 8159188,
+          "duree_residuelle": 33.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.51
+        },
+        {
+          "objet": "3-17, rue Andrézieux - 75018 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 8305996,
+          "capital_restant": 7764301,
+          "duree_residuelle": 21.0,
+          "taux_type": "V",
+          "taux_index": "INF FR XT",
+          "taux_actuariel": 2.79
+        },
+        {
+          "objet": "Gare de Lyon/Les Messageries L2-L7 - 75012 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 7064418,
+          "capital_restant": 6961474,
+          "duree_residuelle": 35.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.8
+        },
+        {
+          "objet": "Secteur Ordener/Poissonniers - 75018 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 7003836,
+          "capital_restant": 6702504,
+          "duree_residuelle": 35.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "3-5, rue Fulton - 75013 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 6978270,
+          "capital_restant": 6650852,
+          "duree_residuelle": 30.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 3.06
+        },
+        {
+          "objet": "Gare de Lyon/Les Messageries L2-L7 - 75012 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 6737683,
+          "capital_restant": 6535287,
+          "duree_residuelle": 35.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "ZAC Rive Gauche - 75013 / Vaugirard - 75015 - RGT",
+          "preteur": "CF",
+          "annee_mobilisation": 2009,
+          "montant_initial": 9744278,
+          "capital_restant": 6401367,
+          "duree_residuelle": 13.91,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 4.34
+        },
+        {
+          "objet": "Secteur Hébert (Lot M) - 75018 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 6467595,
+          "capital_restant": 6204587,
+          "duree_residuelle": 35.75,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "Secteur Hébert (Lot M) - 75018 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 6351652,
+          "capital_restant": 6189986,
+          "duree_residuelle": 35.75,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.8
+        },
+        {
+          "objet": "Résidence Sociale / Triangle Eole Evangile - 75019",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 5805170,
+          "capital_restant": 5647615,
+          "duree_residuelle": 33.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.71
+        },
+        {
+          "objet": "Lotissement Saussure - Ilot 4-7- 75017 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 5862108,
+          "capital_restant": 5570965,
+          "duree_residuelle": 28.5,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.39
+        },
+        {
+          "objet": "3-5 rue Fulton - 75013",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "montant_initial": 6813103,
+          "capital_restant": 5535713,
+          "duree_residuelle": 26.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.97
+        },
+        {
+          "objet": "Secteur Hébert (Lot G) - 75018 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 5530911,
+          "capital_restant": 5390135,
+          "duree_residuelle": 35.75,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.8
+        },
+        {
+          "objet": "11 rue du Charolais - 75012",
+          "preteur": "CDC",
+          "annee_mobilisation": 2013,
+          "montant_initial": 7017741,
+          "capital_restant": 5368554,
+          "duree_residuelle": 25.17,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.26
+        },
+        {
+          "objet": "Secteur Hébert (Lot G) - 75018 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 5329675,
+          "capital_restant": 5112941,
+          "duree_residuelle": 35.75,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "4-14 Passage Delessert - 75010",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "montant_initial": 6287438,
+          "capital_restant": 5092718,
+          "duree_residuelle": 26.84,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.06
+        }
+      ]
+    },
+    {
+      "key": "semapa-spla",
+      "name": "SEMAPA (SPLA)",
+      "capital_restant": 328231283,
+      "montant_initial": 355440000,
+      "count_emprunts": 17,
+      "share": 0.028767113943607193,
+      "nature_dominante": "logement_hors_aide",
+      "taux_moyen_pondere_pct": 0.74,
+      "duree_residuelle_moyenne_ans": 3.66,
+      "part_fixe": 0.8050155384235544,
+      "preteurs": [
+        {
+          "name": "CA IdF",
+          "capital_restant": 72000000,
+          "count_emprunts": 3,
+          "share": 0.21935751927350128
+        },
+        {
+          "name": "HSBC",
+          "capital_restant": 67440000,
+          "count_emprunts": 4,
+          "share": 0.20546487638617952
+        },
+        {
+          "name": "BAYER LB",
+          "capital_restant": 64000000,
+          "count_emprunts": 2,
+          "share": 0.19498446157644556
+        },
+        {
+          "name": "CE",
+          "capital_restant": 48000000,
+          "count_emprunts": 2,
+          "share": 0.14623834618233417
+        },
+        {
+          "name": "LBP",
+          "capital_restant": 26000000,
+          "count_emprunts": 2,
+          "share": 0.07921243751543101
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "Financement ZAC - EMTN (NSV) - 75000 - GA",
+          "preteur": "BAYER LB",
+          "annee_mobilisation": 2015,
+          "montant_initial": 40000000,
+          "capital_restant": 40000000,
+          "duree_residuelle": 5.44,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.61
+        },
+        {
+          "objet": "Financement ZAC - 75000",
+          "preteur": "CA IdF",
+          "annee_mobilisation": 2015,
+          "montant_initial": 48000000,
+          "capital_restant": 32000000,
+          "duree_residuelle": 5.49,
+          "taux_type": "V",
+          "taux_index": "EURIBOR03M",
+          "taux_actuariel": 0.98
+        },
+        {
+          "objet": "Financement ZAC - 75000",
+          "preteur": "CE",
+          "annee_mobilisation": 2020,
+          "montant_initial": 32000000,
+          "capital_restant": 32000000,
+          "duree_residuelle": 1.69,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.5
+        },
+        {
+          "objet": "Financement ZAC - 75000 - GA",
+          "preteur": "AUREL BGC SAS",
+          "annee_mobilisation": 2021,
+          "montant_initial": 24000000,
+          "capital_restant": 24000000,
+          "duree_residuelle": 5.26,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.14
+        },
+        {
+          "objet": "Financement ZAC - 75000 - GA",
+          "preteur": "HSBC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 24000000,
+          "capital_restant": 24000000,
+          "duree_residuelle": 1.14,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.37
+        },
+        {
+          "objet": "Financement ZAC - 75000 - AC",
+          "preteur": "CA IdF",
+          "annee_mobilisation": 2020,
+          "montant_initial": 24000000,
+          "capital_restant": 24000000,
+          "duree_residuelle": 3.75,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.49
+        },
+        {
+          "objet": "Financement ZAC - 75000",
+          "preteur": "BAYER LB",
+          "annee_mobilisation": 2018,
+          "montant_initial": 24000000,
+          "capital_restant": 24000000,
+          "duree_residuelle": 4.21,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.33
+        },
+        {
+          "objet": "Financement ZAC - EMTN - 75000 - GA",
+          "preteur": "HSBC",
+          "annee_mobilisation": 2016,
+          "montant_initial": 24000000,
+          "capital_restant": 24000000,
+          "duree_residuelle": 5.15,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.6
+        },
+        {
+          "objet": "Financement ZAC - 75000",
+          "preteur": "LBP",
+          "annee_mobilisation": 2019,
+          "montant_initial": 24000000,
+          "capital_restant": 18000000,
+          "duree_residuelle": 2.37,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.25
+        },
+        {
+          "objet": "Financement ZAC - 75000 - GA",
+          "preteur": "HSBC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 16000000,
+          "capital_restant": 16000000,
+          "duree_residuelle": 5.28,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.14
+        },
+        {
+          "objet": "Financement ZAC - 75000",
+          "preteur": "CE",
+          "annee_mobilisation": 2020,
+          "montant_initial": 16000000,
+          "capital_restant": 16000000,
+          "duree_residuelle": 2.34,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.22
+        },
+        {
+          "objet": "Financement ZAC - 75000 - GA",
+          "preteur": "CA IdF",
+          "annee_mobilisation": 2021,
+          "montant_initial": 16000000,
+          "capital_restant": 16000000,
+          "duree_residuelle": 0.28,
+          "taux_type": "V",
+          "taux_index": "EURIBOR03M",
+          "taux_actuariel": 0.41
+        },
+        {
+          "objet": "Financement ZAC - 75000 - GA",
+          "preteur": "GFI",
+          "annee_mobilisation": 2017,
+          "montant_initial": 16000000,
+          "capital_restant": 16000000,
+          "duree_residuelle": 1.1,
+          "taux_type": "V",
+          "taux_index": "E06M-MOY",
+          "taux_actuariel": 0.11
+        },
+        {
+          "objet": "Financement ZAC - 75000 - GA",
+          "preteur": "LBP",
+          "annee_mobilisation": 2022,
+          "montant_initial": 8000000,
+          "capital_restant": 8000000,
+          "duree_residuelle": 9.31,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.73
+        },
+        {
+          "objet": "Financement ZAC - 75000",
+          "preteur": "CCOOP",
+          "annee_mobilisation": 2019,
+          "montant_initial": 12000000,
+          "capital_restant": 6791283,
+          "duree_residuelle": 2.54,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.65
+        },
+        {
+          "objet": "Financement ZAC - 75000 - GA",
+          "preteur": "BRED BP",
+          "annee_mobilisation": 2021,
+          "montant_initial": 4000000,
+          "capital_restant": 4000000,
+          "duree_residuelle": 1.28,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.0
+        },
+        {
+          "objet": "Financement ZAC - 75000 - GA",
+          "preteur": "HSBC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 3440000,
+          "capital_restant": 3440000,
+          "duree_residuelle": 0.97,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.0
+        }
+      ]
+    },
+    {
+      "key": "immobiliere-3f-i3f-sa-hlm",
+      "name": "Immobilière 3F - I3F (SA HLM)",
+      "capital_restant": 254282010,
+      "montant_initial": 346727006,
+      "count_emprunts": 341,
+      "share": 0.022285991406031234,
+      "nature_dominante": "logement_social_aide",
+      "taux_moyen_pondere_pct": 2.326,
+      "duree_residuelle_moyenne_ans": 29.48,
+      "part_fixe": 0.12049956954656355,
+      "preteurs": [
+        {
+          "name": "CDC",
+          "capital_restant": 245255933,
+          "count_emprunts": 335,
+          "share": 0.9645036729004748
+        },
+        {
+          "name": "CA IdF",
+          "capital_restant": 4247580,
+          "count_emprunts": 3,
+          "share": 0.016704208414780482
+        },
+        {
+          "name": "CE",
+          "capital_restant": 3126717,
+          "count_emprunts": 1,
+          "share": 0.012296257178636971
+        },
+        {
+          "name": "ARKEA",
+          "capital_restant": 1651781,
+          "count_emprunts": 2,
+          "share": 0.006495861506107767
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "Plan climat / 14-20, rue Archereau - 75019 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 8368775,
+          "capital_restant": 7280264,
+          "duree_residuelle": 16.0,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.64
+        },
+        {
+          "objet": "Rue Chanez et rue Erlanger - 75016 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2002,
+          "montant_initial": 7711185,
+          "capital_restant": 6048087,
+          "duree_residuelle": 29.92,
+          "taux_type": "V",
+          "taux_index": "INF FR XT",
+          "taux_actuariel": 3.69
+        },
+        {
+          "objet": "129-131 rue du Faubourg du Temple - 75010",
+          "preteur": "CDC",
+          "annee_mobilisation": 2015,
+          "montant_initial": 6837000,
+          "capital_restant": 5629959,
+          "duree_residuelle": 32.42,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.11
+        },
+        {
+          "objet": "1-7, avenue de Corbera - 75012 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 5045000,
+          "capital_restant": 5045000,
+          "duree_residuelle": 19.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.45
+        },
+        {
+          "objet": "17, bd Morland - 75004 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 5092729,
+          "capital_restant": 4928000,
+          "duree_residuelle": 40.16,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "Rues Riquet / D'Aubervilliers - 75019 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 6105533,
+          "capital_restant": 4597224,
+          "duree_residuelle": 10.96,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.37
+        },
+        {
+          "objet": "1-7, avenue de Corbera - 75012 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 4590000,
+          "capital_restant": 4590000,
+          "duree_residuelle": 19.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.4
+        },
+        {
+          "objet": "85-97 rue Damrémont - 75018 - TRST - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 4653754,
+          "capital_restant": 4259574,
+          "duree_residuelle": 31.84,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.69
+        },
+        {
+          "objet": "47, rue des Francs Bourgeois  - 75004 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2002,
+          "montant_initial": 4889000,
+          "capital_restant": 3834573,
+          "duree_residuelle": 29.92,
+          "taux_type": "V",
+          "taux_index": "INF FR XT",
+          "taux_actuariel": 3.69
+        },
+        {
+          "objet": "ZAC Paris Rive Gauche - 75013 (Secteur Tolbiac)",
+          "preteur": "CA IdF",
+          "annee_mobilisation": 2017,
+          "montant_initial": 4163000,
+          "capital_restant": 3611123,
+          "duree_residuelle": 24.25,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.59
+        },
+        {
+          "objet": "4-17 rue Didot - 75014",
+          "preteur": "CDC",
+          "annee_mobilisation": 2009,
+          "montant_initial": 7700000,
+          "capital_restant": 3384417,
+          "duree_residuelle": 7.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.59
+        },
+        {
+          "objet": "141, Bd Macdonald - 75019",
+          "preteur": "CDC",
+          "annee_mobilisation": 2015,
+          "montant_initial": 3633000,
+          "capital_restant": 3274600,
+          "duree_residuelle": 34.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.21
+        },
+        {
+          "objet": "Diverses adresses - 75000",
+          "preteur": "CE",
+          "annee_mobilisation": 2010,
+          "montant_initial": 6474185,
+          "capital_restant": 3126717,
+          "duree_residuelle": 7.82,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 3.47
+        },
+        {
+          "objet": "17, bd Morland - 75004 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 3155321,
+          "capital_restant": 3075000,
+          "duree_residuelle": 60.16,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.24
+        },
+        {
+          "objet": "141, Bd Macdonald - 75019",
+          "preteur": "CDC",
+          "annee_mobilisation": 2015,
+          "montant_initial": 3300000,
+          "capital_restant": 3057330,
+          "duree_residuelle": 44.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.27
+        },
+        {
+          "objet": "15-21-23, allée du Fontainebleau - 75019 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 3552000,
+          "capital_restant": 3046898,
+          "duree_residuelle": 12.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.05
+        },
+        {
+          "objet": "67 à 79 avenue de Flandre - 75019 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 3899851,
+          "capital_restant": 2936433,
+          "duree_residuelle": 10.96,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.37
+        },
+        {
+          "objet": "6/8 rue Dulac - 75015 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 3210712,
+          "capital_restant": 2928515,
+          "duree_residuelle": 30.5,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.65
+        },
+        {
+          "objet": "11 rue Lepic - 75018",
+          "preteur": "CDC",
+          "annee_mobilisation": 2010,
+          "montant_initial": 3401253,
+          "capital_restant": 2864691,
+          "duree_residuelle": 37.42,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.19
+        },
+        {
+          "objet": "17, bd Morland - 75004 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 2930799,
+          "capital_restant": 2836000,
+          "duree_residuelle": 40.16,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "Orgues et avenue de flandre - 75019",
+          "preteur": "CDC",
+          "annee_mobilisation": 2009,
+          "montant_initial": 5168000,
+          "capital_restant": 2716527,
+          "duree_residuelle": 11.42,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.65
+        },
+        {
+          "objet": "49, rue du Général Brunet - 75019 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2002,
+          "montant_initial": 5395475,
+          "capital_restant": 2705026,
+          "duree_residuelle": 11.92,
+          "taux_type": "V",
+          "taux_index": "INF FR XT",
+          "taux_actuariel": 3.41
+        },
+        {
+          "objet": "ZAC Clichy Batignolles - 75017",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 2960000,
+          "capital_restant": 2669166,
+          "duree_residuelle": 26.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.8
+        },
+        {
+          "objet": "17, bd Morland - 75004 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 2608398,
+          "capital_restant": 2542000,
+          "duree_residuelle": 60.16,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.24
+        },
+        {
+          "objet": "17-21 rue Thionville - 75019 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 2844577,
+          "capital_restant": 2512378,
+          "duree_residuelle": 23.09,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.61
+        }
+      ]
+    },
+    {
+      "key": "batigere-ile-de-france-esh",
+      "name": "BATIGERE Ile de France (ESH)",
+      "capital_restant": 177928076,
+      "montant_initial": 219491250,
+      "count_emprunts": 161,
+      "share": 0.015594117607788779,
+      "nature_dominante": "logement_social_aide",
+      "taux_moyen_pondere_pct": 2.583,
+      "duree_residuelle_moyenne_ans": 32.46,
+      "part_fixe": 0.2809852451469615,
+      "preteurs": [
+        {
+          "name": "CDC",
+          "capital_restant": 135659597,
+          "count_emprunts": 147,
+          "share": 0.7624406445830602
+        },
+        {
+          "name": "DEXIA",
+          "capital_restant": 23840884,
+          "count_emprunts": 1,
+          "share": 0.1339916945735895
+        },
+        {
+          "name": "CFCM",
+          "capital_restant": 10367603,
+          "count_emprunts": 9,
+          "share": 0.05826850300495025
+        },
+        {
+          "name": "LBP",
+          "capital_restant": 4976535,
+          "count_emprunts": 2,
+          "share": 0.027969365752677385
+        },
+        {
+          "name": "CE",
+          "capital_restant": 2007062,
+          "count_emprunts": 1,
+          "share": 0.011280187856037042
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "Rachat patrimoine parisien de SCIC HAB IDF - 75000",
+          "preteur": "CDC",
+          "annee_mobilisation": 2006,
+          "montant_initial": 42060000,
+          "capital_restant": 24005242,
+          "duree_residuelle": 12.92,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 3.23
+        },
+        {
+          "objet": "Diverses adresses - 75000 - CPCT 3 prêts",
+          "preteur": "DEXIA",
+          "annee_mobilisation": 2019,
+          "montant_initial": 24956114,
+          "capital_restant": 23840884,
+          "duree_residuelle": 35.84,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 2.99
+        },
+        {
+          "objet": "113 à 117 rue des Orteaux - 75020",
+          "preteur": "CDC",
+          "annee_mobilisation": 2009,
+          "montant_initial": 27700000,
+          "capital_restant": 22765637,
+          "duree_residuelle": 35.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.27
+        },
+        {
+          "objet": "ZAC Paris Rive Gauche lot M9D1D2 - 75013",
+          "preteur": "CDC",
+          "annee_mobilisation": 2015,
+          "montant_initial": 5121781,
+          "capital_restant": 4434620,
+          "duree_residuelle": 32.67,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.17
+        },
+        {
+          "objet": "20 rue de Tourtille - 75020",
+          "preteur": "LBP",
+          "annee_mobilisation": 2016,
+          "montant_initial": 4746136,
+          "capital_restant": 4319119,
+          "duree_residuelle": 33.09,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.82
+        },
+        {
+          "objet": "Lot O8 ZAC Clichy Batignolles - 75017",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "montant_initial": 4517683,
+          "capital_restant": 4158227,
+          "duree_residuelle": 35.84,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.32
+        },
+        {
+          "objet": "87-89, rue Damrémont - 75018 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2005,
+          "montant_initial": 4655083,
+          "capital_restant": 3735962,
+          "duree_residuelle": 32.25,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.89
+        },
+        {
+          "objet": "Lot O8 ZAC Clichy Batignolles - 75017",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "montant_initial": 3809530,
+          "capital_restant": 3637095,
+          "duree_residuelle": 55.84,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.48
+        },
+        {
+          "objet": "26 rue Linois - 75015 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2013,
+          "montant_initial": 3883979,
+          "capital_restant": 3233920,
+          "duree_residuelle": 30.67,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.41
+        },
+        {
+          "objet": "143 av. Jean Jaurès - 75019",
+          "preteur": "CFCM",
+          "annee_mobilisation": 2011,
+          "montant_initial": 3810293,
+          "capital_restant": 3197061,
+          "duree_residuelle": 28.96,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.66
+        },
+        {
+          "objet": "ZAC Paris Rive Gauche lot M9D1D2 - 75013",
+          "preteur": "CFCM",
+          "annee_mobilisation": 2012,
+          "montant_initial": 3420501,
+          "capital_restant": 2829144,
+          "duree_residuelle": 30.5,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.68
+        },
+        {
+          "objet": "26 rue Linois - 75015 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2013,
+          "montant_initial": 3015964,
+          "capital_restant": 2650722,
+          "duree_residuelle": 40.67,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.49
+        },
+        {
+          "objet": "Rue de l'Argonne - 75019",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "montant_initial": 2655876,
+          "capital_restant": 2418603,
+          "duree_residuelle": 34.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.28
+        },
+        {
+          "objet": "Lot O8 ZAC Clichy Batignolles - 75017",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "montant_initial": 2457537,
+          "capital_restant": 2346299,
+          "duree_residuelle": 55.84,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.48
+        },
+        {
+          "objet": "Rue Linois - 75015",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "montant_initial": 2528611,
+          "capital_restant": 2139235,
+          "duree_residuelle": 31.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.03
+        },
+        {
+          "objet": "Refinancement - 1, Passage Vallet - 75013",
+          "preteur": "CE",
+          "annee_mobilisation": 2021,
+          "montant_initial": 2085259,
+          "capital_restant": 2007062,
+          "duree_residuelle": 38.75,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.63
+        },
+        {
+          "objet": "91, rue Damrémont - 75018 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2005,
+          "montant_initial": 2200000,
+          "capital_restant": 1765622,
+          "duree_residuelle": 32.25,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.89
+        },
+        {
+          "objet": "Rue de l'Argonne - 75019",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "montant_initial": 1808189,
+          "capital_restant": 1693197,
+          "duree_residuelle": 44.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.33
+        },
+        {
+          "objet": "Rue de la Chapelle - 75018 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "montant_initial": 1829833,
+          "capital_restant": 1685126,
+          "duree_residuelle": 43.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.63
+        },
+        {
+          "objet": "ZAC Paris Rive Gauche lot M9D1D2 - 75013",
+          "preteur": "CFCM",
+          "annee_mobilisation": 2012,
+          "montant_initial": 1784226,
+          "capital_restant": 1563063,
+          "duree_residuelle": 40.5,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.73
+        },
+        {
+          "objet": "ZAC Paris Rive Gauche lot M9D1D2 - 75013",
+          "preteur": "CDC",
+          "annee_mobilisation": 2015,
+          "montant_initial": 1710087,
+          "capital_restant": 1542414,
+          "duree_residuelle": 42.67,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.24
+        },
+        {
+          "objet": "143 av. Jean Jaurès - 75019",
+          "preteur": "CFCM",
+          "annee_mobilisation": 2011,
+          "montant_initial": 1679430,
+          "capital_restant": 1486493,
+          "duree_residuelle": 38.96,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.71
+        },
+        {
+          "objet": "diverses adresses",
+          "preteur": "CDC",
+          "annee_mobilisation": 2010,
+          "montant_initial": 1611952,
+          "capital_restant": 1264945,
+          "duree_residuelle": 27.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.12
+        },
+        {
+          "objet": "71, rue St Dominique - 75007 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 1326571,
+          "capital_restant": 1251972,
+          "duree_residuelle": 38.09,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.37
+        },
+        {
+          "objet": "34-36, rue de Pajol - 75018 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 1302461,
+          "capital_restant": 1232544,
+          "duree_residuelle": 41.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 3.11
+        }
+      ]
+    },
+    {
+      "key": "cdc-habitat-social-sem",
+      "name": "CDC Habitat Social (SEM)",
+      "capital_restant": 158103554,
+      "montant_initial": 230032159,
+      "count_emprunts": 160,
+      "share": 0.013856640662646339,
+      "nature_dominante": "logement_social_aide",
+      "taux_moyen_pondere_pct": 2.285,
+      "duree_residuelle_moyenne_ans": 29.14,
+      "part_fixe": 0.025648473393631063,
+      "preteurs": [
+        {
+          "name": "CDC",
+          "capital_restant": 113272344,
+          "count_emprunts": 150,
+          "share": 0.7164440118737754
+        },
+        {
+          "name": "CA IdF",
+          "capital_restant": 32904387,
+          "count_emprunts": 3,
+          "share": 0.20811921423725963
+        },
+        {
+          "name": "ARKEA",
+          "capital_restant": 10364435,
+          "count_emprunts": 3,
+          "share": 0.06555472548692683
+        },
+        {
+          "name": "CF",
+          "capital_restant": 1562387,
+          "count_emprunts": 4,
+          "share": 0.00988204840203817
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "2-14 avenue de la Porte de Vincennes - 75020",
+          "preteur": "CA IdF",
+          "annee_mobilisation": 2012,
+          "montant_initial": 17300000,
+          "capital_restant": 14211934,
+          "duree_residuelle": 29.55,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.78
+        },
+        {
+          "objet": "2-14 avenue de la Porte de Vincennes - 75020",
+          "preteur": "CA IdF",
+          "annee_mobilisation": 2012,
+          "montant_initial": 11000000,
+          "capital_restant": 9603258,
+          "duree_residuelle": 39.4,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.72
+        },
+        {
+          "objet": "2-14 avenue de la Porte de Vincennes - 75020",
+          "preteur": "CA IdF",
+          "annee_mobilisation": 2011,
+          "montant_initial": 14941143,
+          "capital_restant": 9089195,
+          "duree_residuelle": 18.15,
+          "taux_type": "V",
+          "taux_index": "EURIBOR03M",
+          "taux_actuariel": 0.56
+        },
+        {
+          "objet": "Ilôt 13 Blanqui Glacière - 75013 - TRST",
+          "preteur": "CDC",
+          "annee_mobilisation": 2010,
+          "montant_initial": 10697000,
+          "capital_restant": 8788816,
+          "duree_residuelle": 37.67,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.21
+        },
+        {
+          "objet": "Diverses adresses - 75000",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "montant_initial": 6438385,
+          "capital_restant": 5145726,
+          "duree_residuelle": 26.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.08
+        },
+        {
+          "objet": "88-90, boulevard Ney - 75018",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "montant_initial": 4834971,
+          "capital_restant": 4660338,
+          "duree_residuelle": 37.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.82
+        },
+        {
+          "objet": "88-90, boulevard Ney - 75018",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "montant_initial": 4828105,
+          "capital_restant": 4574061,
+          "duree_residuelle": 27.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.77
+        },
+        {
+          "objet": "Icade Paris 12 Meuniers - 75012",
+          "preteur": "ARKEA",
+          "annee_mobilisation": 2011,
+          "montant_initial": 4835000,
+          "capital_restant": 4096353,
+          "duree_residuelle": 38.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.67
+        },
+        {
+          "objet": "141-219 bd Mac Donald - 75019",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "montant_initial": 4199796,
+          "capital_restant": 3789888,
+          "duree_residuelle": 43.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.71
+        },
+        {
+          "objet": "Icade Bisson Cité de Gênes -75020 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 3679353,
+          "capital_restant": 3679353,
+          "duree_residuelle": 28.09,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 3.0
+        },
+        {
+          "objet": "Diverses adresses - 75000 - CPCT - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 3652730,
+          "capital_restant": 3604634,
+          "duree_residuelle": 33.85,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 3.14
+        },
+        {
+          "objet": "Icade Paris 12 Meuniers - 75012",
+          "preteur": "ARKEA",
+          "annee_mobilisation": 2011,
+          "montant_initial": 4922099,
+          "capital_restant": 3324944,
+          "duree_residuelle": 18.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.53
+        },
+        {
+          "objet": "141-219 Bld Macdonald - 75019",
+          "preteur": "CDC",
+          "annee_mobilisation": 2011,
+          "montant_initial": 4198323,
+          "capital_restant": 3253572,
+          "duree_residuelle": 28.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.86
+        },
+        {
+          "objet": "Icade Paris 12 Meuniers - 75012",
+          "preteur": "ARKEA",
+          "annee_mobilisation": 2011,
+          "montant_initial": 3753211,
+          "capital_restant": 2943138,
+          "duree_residuelle": 28.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.61
+        },
+        {
+          "objet": "Icade Bisson Cité de Gênes -75020 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 2937224,
+          "capital_restant": 2937224,
+          "duree_residuelle": 38.09,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 3.05
+        },
+        {
+          "objet": "Diverses adresses - 75000 - CPCT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2012,
+          "montant_initial": 6523592,
+          "capital_restant": 2813094,
+          "duree_residuelle": 6.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.5
+        },
+        {
+          "objet": "5-7 place de Vénétie - 75013 - TRST",
+          "preteur": "CDC",
+          "annee_mobilisation": 2010,
+          "montant_initial": 4732198,
+          "capital_restant": 2743251,
+          "duree_residuelle": 12.5,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.95
+        },
+        {
+          "objet": "6-8 place de la Porte de Champerret - 75017 - TRST",
+          "preteur": "CDC",
+          "annee_mobilisation": 2009,
+          "montant_initial": 3407304,
+          "capital_restant": 2539622,
+          "duree_residuelle": 36.75,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.39
+        },
+        {
+          "objet": "6-8 place de la Porte de Champerret - 75017 - TRST",
+          "preteur": "CDC",
+          "annee_mobilisation": 2009,
+          "montant_initial": 3150452,
+          "capital_restant": 2438438,
+          "duree_residuelle": 36.75,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.18
+        },
+        {
+          "objet": "141-219 Bld Macdonald - 75019",
+          "preteur": "CDC",
+          "annee_mobilisation": 2011,
+          "montant_initial": 2798882,
+          "capital_restant": 2347962,
+          "duree_residuelle": 38.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.11
+        },
+        {
+          "objet": "141-219, bd Mac Donald - 75019 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 1958882,
+          "capital_restant": 1958882,
+          "duree_residuelle": 33.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 3.05
+        },
+        {
+          "objet": "88-90, boulevard Ney - 75018",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "montant_initial": 1947959,
+          "capital_restant": 1908912,
+          "duree_residuelle": 57.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.86
+        },
+        {
+          "objet": "Hôpital Mondor - Rue Général Sarrail - 94000 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "montant_initial": 2169485,
+          "capital_restant": 1664429,
+          "duree_residuelle": 16.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.78
+        },
+        {
+          "objet": "Avenue Parmentier - 75011",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "montant_initial": 1945126,
+          "capital_restant": 1658629,
+          "duree_residuelle": 41.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.55
+        },
+        {
+          "objet": "12-16, bd du Général Jean Simon - 75013 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 1667034,
+          "capital_restant": 1599865,
+          "duree_residuelle": 60.16,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 3.02
+        }
+      ]
+    },
+    {
+      "key": "l-habitation-confortable-sa-hlm",
+      "name": "L'Habitation Confortable (SA HLM)",
+      "capital_restant": 134075907,
+      "montant_initial": 179330011,
+      "count_emprunts": 119,
+      "share": 0.011750790039847409,
+      "nature_dominante": "logement_social_aide",
+      "taux_moyen_pondere_pct": 2.33,
+      "duree_residuelle_moyenne_ans": 32.43,
+      "part_fixe": 0.15770003682346156,
+      "preteurs": [
+        {
+          "name": "CDC",
+          "capital_restant": 111318264,
+          "count_emprunts": 92,
+          "share": 0.8302629942165405
+        },
+        {
+          "name": "LBP",
+          "capital_restant": 8839940,
+          "count_emprunts": 15,
+          "share": 0.06593235617354626
+        },
+        {
+          "name": "CE",
+          "capital_restant": 6305185,
+          "count_emprunts": 6,
+          "share": 0.047026978257114375
+        },
+        {
+          "name": "CF",
+          "capital_restant": 4442708,
+          "count_emprunts": 2,
+          "share": 0.03313576437203967
+        },
+        {
+          "name": "CA IdF",
+          "capital_restant": 1693279,
+          "count_emprunts": 2,
+          "share": 0.012629253150486224
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "Résidence étudiante/ZAC Paris Rive Gauche - 75013",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "montant_initial": 10845516,
+          "capital_restant": 10845516,
+          "duree_residuelle": 39.33,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.54
+        },
+        {
+          "objet": "Résidence Etudiante - ZAC PRG - 75013 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 11119619,
+          "capital_restant": 10597085,
+          "duree_residuelle": 41.25,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "Résidence Etudiante - ZAC PRG - 75013 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 8424381,
+          "capital_restant": 8028502,
+          "duree_residuelle": 41.25,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "28, rue du Colonel Avia - 75015",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "montant_initial": 6757974,
+          "capital_restant": 6467156,
+          "duree_residuelle": 37.09,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.39
+        },
+        {
+          "objet": "Îlot Colmar Thionville - 75019 - TRST",
+          "preteur": "CDC",
+          "annee_mobilisation": 2013,
+          "montant_initial": 11392530,
+          "capital_restant": 5746521,
+          "duree_residuelle": 31.84,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.05
+        },
+        {
+          "objet": "Rue Amiral Mouchez - 75013 - RGT - TRST",
+          "preteur": "CE",
+          "annee_mobilisation": 2015,
+          "montant_initial": 7692827,
+          "capital_restant": 5251603,
+          "duree_residuelle": 12.43,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.47
+        },
+        {
+          "objet": "29-31 rue Daviel - 75013 - TRST",
+          "preteur": "CDC",
+          "annee_mobilisation": 2009,
+          "montant_initial": 8229581,
+          "capital_restant": 4921353,
+          "duree_residuelle": 28.67,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.14
+        },
+        {
+          "objet": "57-69 rue de Patay - 75013 - TRST",
+          "preteur": "CF",
+          "annee_mobilisation": 2015,
+          "montant_initial": 6450911,
+          "capital_restant": 4413681,
+          "duree_residuelle": 9.58,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 4.96
+        },
+        {
+          "objet": "383-385 rue de Vaugirard - 75015 - TRST",
+          "preteur": "CDC",
+          "annee_mobilisation": 2010,
+          "montant_initial": 5509558,
+          "capital_restant": 3920907,
+          "duree_residuelle": 29.5,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.13
+        },
+        {
+          "objet": "28, rue du Colonel Avia - 75015",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "montant_initial": 4000147,
+          "capital_restant": 3867163,
+          "duree_residuelle": 47.09,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.42
+        },
+        {
+          "objet": "61, bd Saint Jacques - 75014 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 2688574,
+          "capital_restant": 2625211,
+          "duree_residuelle": 38.84,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.72
+        },
+        {
+          "objet": "23, rue de Meaux - 75019",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "montant_initial": 2295946,
+          "capital_restant": 2181826,
+          "duree_residuelle": 37.09,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.6
+        },
+        {
+          "objet": "93-97 rue des Haies - 75020 - TRST",
+          "preteur": "CDC",
+          "annee_mobilisation": 2008,
+          "montant_initial": 3363984,
+          "capital_restant": 2168894,
+          "duree_residuelle": 27.25,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.29
+        },
+        {
+          "objet": "88, rue Ménilmontant - 75020 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 2224811,
+          "capital_restant": 2131670,
+          "duree_residuelle": 40.84,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "61, boulevard Saint-Jacques - 75014",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 2150168,
+          "capital_restant": 2096736,
+          "duree_residuelle": 38.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.72
+        },
+        {
+          "objet": "RPA - 281-295, rue de Charenton - 75012 - NSG",
+          "preteur": "LBP",
+          "annee_mobilisation": 2022,
+          "montant_initial": 2096114,
+          "capital_restant": 2096114,
+          "duree_residuelle": 39.09,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 3.08
+        },
+        {
+          "objet": "88, rue Ménilmontant - 75020 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 2169812,
+          "capital_restant": 2058772,
+          "duree_residuelle": 40.84,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 3.1
+        },
+        {
+          "objet": "59-61 rue St-Lazare - 75009 - TRST",
+          "preteur": "CDC",
+          "annee_mobilisation": 2009,
+          "montant_initial": 3154523,
+          "capital_restant": 2027633,
+          "duree_residuelle": 36.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.36
+        },
+        {
+          "objet": "Réaménagement emprunts - RGT - TRST",
+          "preteur": "CA IdF",
+          "annee_mobilisation": 2016,
+          "montant_initial": 2702877,
+          "capital_restant": 1683876,
+          "duree_residuelle": 8.33,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 3.17
+        },
+        {
+          "objet": "23, rue de Meaux - 75019",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "montant_initial": 1680725,
+          "capital_restant": 1625043,
+          "duree_residuelle": 57.09,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.66
+        },
+        {
+          "objet": "CHU - 57, bd Exelmans - 75016 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 1560241,
+          "capital_restant": 1510455,
+          "duree_residuelle": 61.25,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.8
+        },
+        {
+          "objet": "FJT - 2-4, rue Crespin du Gast - 75011 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 1555021,
+          "capital_restant": 1505402,
+          "duree_residuelle": 41.25,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.8
+        },
+        {
+          "objet": "114 rue du Temple - 75003 - TRST",
+          "preteur": "CDC",
+          "annee_mobilisation": 2007,
+          "montant_initial": 1888192,
+          "capital_restant": 1491907,
+          "duree_residuelle": 36.16,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.34
+        },
+        {
+          "objet": "37, boulevard de Belleville - 75011 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 1482555,
+          "capital_restant": 1460951,
+          "duree_residuelle": 40.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.8
+        },
+        {
+          "objet": "383-385 rue de Vaugirard - 75015 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2010,
+          "montant_initial": 1700785,
+          "capital_restant": 1440349,
+          "duree_residuelle": 39.5,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.19
+        }
+      ]
+    },
+    {
+      "key": "1001-vies-habitat-esh",
+      "name": "1001 Vies Habitat (ESH)",
+      "capital_restant": 120489583,
+      "montant_initial": 157818493,
+      "count_emprunts": 178,
+      "share": 0.010560046382335845,
+      "nature_dominante": "logement_social_aide",
+      "taux_moyen_pondere_pct": 2.5,
+      "duree_residuelle_moyenne_ans": 31.9,
+      "part_fixe": 0.002230076264928839,
+      "preteurs": [
+        {
+          "name": "CDC",
+          "capital_restant": 120489583,
+          "count_emprunts": 178,
+          "share": 1.0000000000000002
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "22-32, rue des Lilas - 75019",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 9440493,
+          "capital_restant": 8892661,
+          "duree_residuelle": 61.59,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 3.03
+        },
+        {
+          "objet": "Résidence Baudricourt - 75013 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "montant_initial": 9044483,
+          "capital_restant": 7775632,
+          "duree_residuelle": 20.33,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.15
+        },
+        {
+          "objet": "22-32, rue des Lilas - 75019",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 7006818,
+          "capital_restant": 6600213,
+          "duree_residuelle": 41.59,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 3.03
+        },
+        {
+          "objet": "Rue Charles Bertheau - 75013 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 6332606,
+          "capital_restant": 6228400,
+          "duree_residuelle": 39.09,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.98
+        },
+        {
+          "objet": "100, bld Masséna / 23, Villa d'Este - 75013 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2013,
+          "montant_initial": 7795404,
+          "capital_restant": 4691818,
+          "duree_residuelle": 14.42,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 3.66
+        },
+        {
+          "objet": "Rue Jean Dunand - 75013 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 4236351,
+          "capital_restant": 4166640,
+          "duree_residuelle": 39.09,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.98
+        },
+        {
+          "objet": "9 villa d'Este - 75013",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "montant_initial": 4705751,
+          "capital_restant": 4143280,
+          "duree_residuelle": 41.67,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.19
+        },
+        {
+          "objet": "22-32, rue des Lilas - 75019",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 3744589,
+          "capital_restant": 3527291,
+          "duree_residuelle": 41.59,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 3.03
+        },
+        {
+          "objet": "Tour Rimini - 8 avenue de Choisy - 75013",
+          "preteur": "CDC",
+          "annee_mobilisation": 2015,
+          "montant_initial": 3502924,
+          "capital_restant": 3138577,
+          "duree_residuelle": 42.5,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.2
+        },
+        {
+          "objet": "9 villa d'Este - 75013",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "montant_initial": 3352848,
+          "capital_restant": 2814720,
+          "duree_residuelle": 31.67,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.11
+        },
+        {
+          "objet": "Parc des Musiciens - Rue Thionville - 75019 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "montant_initial": 3005379,
+          "capital_restant": 2532893,
+          "duree_residuelle": 22.17,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.76
+        },
+        {
+          "objet": "Rue de l'Orillon - 75011 - RGT - TRST",
+          "preteur": "CDC",
+          "annee_mobilisation": 2013,
+          "montant_initial": 3490355,
+          "capital_restant": 2170074,
+          "duree_residuelle": 17.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.54
+        },
+        {
+          "objet": "Rue Robert Houdin - 75011 - RGT - TRST",
+          "preteur": "CDC",
+          "annee_mobilisation": 2013,
+          "montant_initial": 3177316,
+          "capital_restant": 1943998,
+          "duree_residuelle": 17.42,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.53
+        },
+        {
+          "objet": "Avenue du Maine - 75014 - RGT- TRST",
+          "preteur": "CDC",
+          "annee_mobilisation": 2013,
+          "montant_initial": 2017604,
+          "capital_restant": 1716577,
+          "duree_residuelle": 32.42,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.55
+        },
+        {
+          "objet": "134 rue de Charenton - 75012",
+          "preteur": "CDC",
+          "annee_mobilisation": 2010,
+          "montant_initial": 1974621,
+          "capital_restant": 1626419,
+          "duree_residuelle": 37.33,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.12
+        },
+        {
+          "objet": "5 Villa Virginie - 75014 - RGT - TRST",
+          "preteur": "CDC",
+          "annee_mobilisation": 2013,
+          "montant_initial": 1848435,
+          "capital_restant": 1572415,
+          "duree_residuelle": 32.42,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.55
+        },
+        {
+          "objet": "7/7bis rue Trétaigne - 75018 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2003,
+          "montant_initial": 2000000,
+          "capital_restant": 1556366,
+          "duree_residuelle": 30.67,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.95
+        },
+        {
+          "objet": "Rue des Eaux - 75016 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2013,
+          "montant_initial": 1818776,
+          "capital_restant": 1554998,
+          "duree_residuelle": 36.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.15
+        },
+        {
+          "objet": "Rue Severo - 75014 - RGT- TRST",
+          "preteur": "CDC",
+          "annee_mobilisation": 2013,
+          "montant_initial": 1755589,
+          "capital_restant": 1478063,
+          "duree_residuelle": 30.67,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.55
+        },
+        {
+          "objet": "225-231 rue d'Alézia - 75014",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "montant_initial": 2660000,
+          "capital_restant": 1453719,
+          "duree_residuelle": 6.25,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 0.64
+        },
+        {
+          "objet": "Résidence Sociale, rue Davy - 75017",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "montant_initial": 1465843,
+          "capital_restant": 1438626,
+          "duree_residuelle": 48.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.73
+        },
+        {
+          "objet": "24 rue de Picpus - 75012",
+          "preteur": "CDC",
+          "annee_mobilisation": 2010,
+          "montant_initial": 1734781,
+          "capital_restant": 1411652,
+          "duree_residuelle": 29.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.81
+        },
+        {
+          "objet": "13 rue Orillon -75011",
+          "preteur": "CDC",
+          "annee_mobilisation": 2015,
+          "montant_initial": 1552774,
+          "capital_restant": 1374625,
+          "duree_residuelle": 33.33,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.17
+        },
+        {
+          "objet": "12-16 rue du Chalet - 75010 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2013,
+          "montant_initial": 1576463,
+          "capital_restant": 1320523,
+          "duree_residuelle": 35.42,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.55
+        },
+        {
+          "objet": "Rue Fagon - 75013 - RGT- TRST",
+          "preteur": "CDC",
+          "annee_mobilisation": 2013,
+          "montant_initial": 1554350,
+          "capital_restant": 1308636,
+          "duree_residuelle": 30.67,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.55
+        }
+      ]
+    },
+    {
+      "key": "fondation-nationale-sciencespo",
+      "name": "Fondation Nationale SciencesPo",
+      "capital_restant": 106434122,
+      "montant_initial": 118120924,
+      "count_emprunts": 2,
+      "share": 0.009328186189731752,
+      "nature_dominante": "logement_hors_aide",
+      "taux_moyen_pondere_pct": 1.968,
+      "duree_residuelle_moyenne_ans": 24.51,
+      "part_fixe": 1.0,
+      "preteurs": [
+        {
+          "name": "DP AG",
+          "capital_restant": 106434122,
+          "count_emprunts": 2,
+          "share": 1.0
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "Hôtel Artillerie - Place St Thomas d'Aquin - 75007",
+          "preteur": "DP AG",
+          "annee_mobilisation": 2018,
+          "montant_initial": 60000000,
+          "capital_restant": 54305955,
+          "duree_residuelle": 25.0,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.65
+        },
+        {
+          "objet": "Hôtel Artillerie - Place St Thomas d'Aquin - 75007",
+          "preteur": "DP AG",
+          "annee_mobilisation": 2016,
+          "montant_initial": 58120924,
+          "capital_restant": 52128167,
+          "duree_residuelle": 24.0,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 2.3
+        }
+      ]
+    },
+    {
+      "key": "popb-accorhotels-arena-sem",
+      "name": "POPB - AccorHotels Arena (SEM)",
+      "capital_restant": 100238076,
+      "montant_initial": 113359481,
+      "count_emprunts": 1,
+      "share": 0.00878514726064335,
+      "nature_dominante": "logement_hors_aide",
+      "taux_moyen_pondere_pct": 3.5,
+      "duree_residuelle_moyenne_ans": 20.0,
+      "part_fixe": 1.0,
+      "preteurs": [
+        {
+          "name": "LBP",
+          "capital_restant": 100238076,
+          "count_emprunts": 1,
+          "share": 1.0
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "POPB - Travaux de modernisation - 75012 - RGT",
+          "preteur": "LBP",
+          "annee_mobilisation": 2018,
+          "montant_initial": 113359481,
+          "capital_restant": 100238076,
+          "duree_residuelle": 20.0,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 3.5
+        }
+      ]
+    },
+    {
+      "key": "paris-et-metropole-amenagement-spl",
+      "name": "Paris et Métropole Aménagement (SPL)",
+      "capital_restant": 97942400,
+      "montant_initial": 131280000,
+      "count_emprunts": 7,
+      "share": 0.00858394774088403,
+      "nature_dominante": "logement_hors_aide",
+      "taux_moyen_pondere_pct": 0.556,
+      "duree_residuelle_moyenne_ans": 2.03,
+      "part_fixe": 0.8100924625085765,
+      "preteurs": [
+        {
+          "name": "CCOOP",
+          "capital_restant": 42600000,
+          "count_emprunts": 2,
+          "share": 0.43494952135132486
+        },
+        {
+          "name": "LBP",
+          "capital_restant": 37742400,
+          "count_emprunts": 4,
+          "share": 0.38535302381808084
+        },
+        {
+          "name": "CE",
+          "capital_restant": 17600000,
+          "count_emprunts": 1,
+          "share": 0.17969745483059432
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "ZAC Saint Vincent de Paul - 75014",
+          "preteur": "CCOOP",
+          "annee_mobilisation": 2017,
+          "montant_initial": 24000000,
+          "capital_restant": 24000000,
+          "duree_residuelle": 0.81,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.76
+        },
+        {
+          "objet": "ZAC Saint Vincent de Paul - 75014",
+          "preteur": "CCOOP",
+          "annee_mobilisation": 2018,
+          "montant_initial": 37200000,
+          "capital_restant": 18600000,
+          "duree_residuelle": 0.81,
+          "taux_type": "V",
+          "taux_index": "EURIBOR12M",
+          "taux_actuariel": 0.43
+        },
+        {
+          "objet": "ZAC Gare Mines-Fillettes - 75018",
+          "preteur": "LBP",
+          "annee_mobilisation": 2020,
+          "montant_initial": 17600000,
+          "capital_restant": 17600000,
+          "duree_residuelle": 4.29,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.64
+        },
+        {
+          "objet": "ZAC Gare Mines-Fillettes - 75018",
+          "preteur": "CE",
+          "annee_mobilisation": 2020,
+          "montant_initial": 17600000,
+          "capital_restant": 17600000,
+          "duree_residuelle": 4.23,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.49
+        },
+        {
+          "objet": "ZAC Chapelle Chardon - 75018",
+          "preteur": "LBP",
+          "annee_mobilisation": 2018,
+          "montant_initial": 9680000,
+          "capital_restant": 9680000,
+          "duree_residuelle": 0.71,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.35
+        },
+        {
+          "objet": "ZAC Chapelle Chardon - 75018",
+          "preteur": "LBP",
+          "annee_mobilisation": 2018,
+          "montant_initial": 12000000,
+          "capital_restant": 6062400,
+          "duree_residuelle": 0.71,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.4
+        },
+        {
+          "objet": "ZAC Saint Vincent de Paul - 75014",
+          "preteur": "LBP",
+          "annee_mobilisation": 2017,
+          "montant_initial": 13200000,
+          "capital_restant": 4400000,
+          "duree_residuelle": 0.79,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.58
+        }
+      ]
+    },
+    {
+      "key": "habitat-social-francais-hsf-sa-hlm",
+      "name": "Habitat Social Français - hsf (SA HLM)",
+      "capital_restant": 93035909,
+      "montant_initial": 130058212,
+      "count_emprunts": 128,
+      "share": 0.008153929046876182,
+      "nature_dominante": "logement_social_aide",
+      "taux_moyen_pondere_pct": 2.21,
+      "duree_residuelle_moyenne_ans": 26.91,
+      "part_fixe": 0.15072538615762623,
+      "preteurs": [
+        {
+          "name": "CDC",
+          "capital_restant": 88615740,
+          "count_emprunts": 120,
+          "share": 0.9524896490953215
+        },
+        {
+          "name": "CE",
+          "capital_restant": 3400589,
+          "count_emprunts": 6,
+          "share": 0.03655135989006777
+        },
+        {
+          "name": "Crédit du Nord",
+          "capital_restant": 519583,
+          "count_emprunts": 1,
+          "share": 0.005584761367687967
+        },
+        {
+          "name": "LBP",
+          "capital_restant": 499996,
+          "count_emprunts": 1,
+          "share": 0.005374229646922631
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "Divers programmes - 75000",
+          "preteur": "CDC",
+          "annee_mobilisation": 2009,
+          "montant_initial": 14531489,
+          "capital_restant": 9834383,
+          "duree_residuelle": 17.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.08
+        },
+        {
+          "objet": "Diverses adresses - 75000 - CPCT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2011,
+          "montant_initial": 9665173,
+          "capital_restant": 4928985,
+          "duree_residuelle": 8.59,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.56
+        },
+        {
+          "objet": "Programme d'investissements - 75000",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "montant_initial": 3390000,
+          "capital_restant": 3390000,
+          "duree_residuelle": 34.25,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.44
+        },
+        {
+          "objet": "164 rue Jeanne d'Arc - 75013",
+          "preteur": "CDC",
+          "annee_mobilisation": 2012,
+          "montant_initial": 4158000,
+          "capital_restant": 3284227,
+          "duree_residuelle": 39.84,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.38
+        },
+        {
+          "objet": "164 rue Jeanne d'Arc - 75013",
+          "preteur": "CDC",
+          "annee_mobilisation": 2012,
+          "montant_initial": 4319081,
+          "capital_restant": 3232774,
+          "duree_residuelle": 29.84,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.29
+        },
+        {
+          "objet": "11-13 rue de Domremy - 75013",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "montant_initial": 3432368,
+          "capital_restant": 3187616,
+          "duree_residuelle": 26.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.75
+        },
+        {
+          "objet": "Diverses adresses - 75000 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "montant_initial": 3929202,
+          "capital_restant": 2409314,
+          "duree_residuelle": 9.17,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.83
+        },
+        {
+          "objet": "162-164, rue du Ménilmontant - 75020",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 2325866,
+          "capital_restant": 2264793,
+          "duree_residuelle": 26.09,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.82
+        },
+        {
+          "objet": "1-5, rue de la Croix Saint Simon - 75020",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "montant_initial": 2345488,
+          "capital_restant": 2220345,
+          "duree_residuelle": 25.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.77
+        },
+        {
+          "objet": "Diverses adresses - 75000 - CPCT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "montant_initial": 2514537,
+          "capital_restant": 2054425,
+          "duree_residuelle": 14.37,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "Diverses adresses - 75000",
+          "preteur": "CE",
+          "annee_mobilisation": 2010,
+          "montant_initial": 2800000,
+          "capital_restant": 1994714,
+          "duree_residuelle": 19.87,
+          "taux_type": "V",
+          "taux_index": "EURIBOR03M",
+          "taux_actuariel": 0.47
+        },
+        {
+          "objet": "14 rue Hainaut - 75019",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "montant_initial": 2135674,
+          "capital_restant": 1926910,
+          "duree_residuelle": 25.67,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.75
+        },
+        {
+          "objet": "Diverses adresses - 75000 - CPCT - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "montant_initial": 3274273,
+          "capital_restant": 1793928,
+          "duree_residuelle": 6.0,
+          "taux_type": "V",
+          "taux_index": "INF FR XT",
+          "taux_actuariel": 1.77
+        },
+        {
+          "objet": "Rues d'Ivry / Tolbiac - 75013 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 1803660,
+          "capital_restant": 1706619,
+          "duree_residuelle": 41.17,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 3.04
+        },
+        {
+          "objet": "9-11, rue Haxo - 75020",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 1703786,
+          "capital_restant": 1666718,
+          "duree_residuelle": 37.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.71
+        },
+        {
+          "objet": "12-14, rue Olivier Métra - 75020 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 1749419,
+          "capital_restant": 1632000,
+          "duree_residuelle": 21.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.53
+        },
+        {
+          "objet": "12-14, rue Olivier Métra - 75020 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 1549694,
+          "capital_restant": 1466314,
+          "duree_residuelle": 41.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.8
+        },
+        {
+          "objet": "177 rue Bagnolet et 78 rue Belgrand - 75020",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "montant_initial": 1414508,
+          "capital_restant": 1276239,
+          "duree_residuelle": 25.67,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.75
+        },
+        {
+          "objet": "17, rue de la Duée - 75020 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 1202031,
+          "capital_restant": 1154298,
+          "duree_residuelle": 40.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 3.11
+        },
+        {
+          "objet": "3-9 rue des Rigoles - 75020",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 1223421,
+          "capital_restant": 1133394,
+          "duree_residuelle": 26.75,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.82
+        },
+        {
+          "objet": "17, rue de la Duée - 75020 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 1178125,
+          "capital_restant": 1131341,
+          "duree_residuelle": 40.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 3.11
+        },
+        {
+          "objet": "Programme d'investissement - PHBB - 75000 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "montant_initial": 1070000,
+          "capital_restant": 1070000,
+          "duree_residuelle": 37.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 0.93
+        },
+        {
+          "objet": "14-16 rue des Pavillons - 75020",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "montant_initial": 1115119,
+          "capital_restant": 1008514,
+          "duree_residuelle": 34.5,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.22
+        },
+        {
+          "objet": "Rues d'Ivry / Tolbiac - 75013 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 1050704,
+          "capital_restant": 994174,
+          "duree_residuelle": 41.17,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 3.04
+        },
+        {
+          "objet": "222 rue de Charenton - 75012",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 1058016,
+          "capital_restant": 989220,
+          "duree_residuelle": 36.75,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.59
+        }
+      ]
+    },
+    {
+      "key": "ratp-habitat-esh",
+      "name": "RATP Habitat (ESH)",
+      "capital_restant": 91011590,
+      "montant_initial": 100389405,
+      "count_emprunts": 55,
+      "share": 0.007976511992442793,
+      "nature_dominante": "logement_social_aide",
+      "taux_moyen_pondere_pct": 2.341,
+      "duree_residuelle_moyenne_ans": 39.26,
+      "part_fixe": 0.0626993280825296,
+      "preteurs": [
+        {
+          "name": "CDC",
+          "capital_restant": 86119889,
+          "count_emprunts": 49,
+          "share": 0.9462518972986125
+        },
+        {
+          "name": "LBP",
+          "capital_restant": 3154267,
+          "count_emprunts": 2,
+          "share": 0.03465785760893036
+        },
+        {
+          "name": "CFCM",
+          "capital_restant": 1737434,
+          "count_emprunts": 4,
+          "share": 0.019090245092457128
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "144-146 rue de la Tombe Issoire - 75014",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "montant_initial": 11202216,
+          "capital_restant": 10499164,
+          "duree_residuelle": 34.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.23
+        },
+        {
+          "objet": "Divers Programmes - 75000 - CPCT - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "montant_initial": 11491666,
+          "capital_restant": 10045832,
+          "duree_residuelle": 24.42,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.52
+        },
+        {
+          "objet": "80, bd Jourdan - 75014",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "montant_initial": 7004651,
+          "capital_restant": 6558128,
+          "duree_residuelle": 34.09,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.24
+        },
+        {
+          "objet": "144-146 rue de la Tombe Issoire - 75014",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "montant_initial": 6123643,
+          "capital_restant": 5839511,
+          "duree_residuelle": 44.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.28
+        },
+        {
+          "objet": "80, bd Jourdan - 75014",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "montant_initial": 5803232,
+          "capital_restant": 5528412,
+          "duree_residuelle": 44.09,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.29
+        },
+        {
+          "objet": "Divers Programmes - 75000 - CPCT - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "montant_initial": 4877481,
+          "capital_restant": 3894633,
+          "duree_residuelle": 17.59,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.7
+        },
+        {
+          "objet": "80, bd Jourdan - 75014",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "montant_initial": 3336075,
+          "capital_restant": 3142969,
+          "duree_residuelle": 34.09,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.74
+        },
+        {
+          "objet": "80, bd Jourdan - 75014",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "montant_initial": 3175622,
+          "capital_restant": 3043127,
+          "duree_residuelle": 44.09,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.79
+        },
+        {
+          "objet": "46, rue des Maraîchers - 75020 - TRST",
+          "preteur": "LBP",
+          "annee_mobilisation": 2019,
+          "montant_initial": 2972829,
+          "capital_restant": 2498962,
+          "duree_residuelle": 13.62,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.43
+        },
+        {
+          "objet": "Rue Abel Hovelacque - 75013 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 2252905,
+          "capital_restant": 2252905,
+          "duree_residuelle": 78.5,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.43
+        },
+        {
+          "objet": "Rues Desnouettes / Lecourbe - 75015 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 1919217,
+          "capital_restant": 1919217,
+          "duree_residuelle": 78.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.31
+        },
+        {
+          "objet": "Divers programmes - 75000 - CPCT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2007,
+          "montant_initial": 2373376,
+          "capital_restant": 1805685,
+          "duree_residuelle": 26.25,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.92
+        },
+        {
+          "objet": "Rues Desnouettes / Lecourbe - 75015 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 1638082,
+          "capital_restant": 1638082,
+          "duree_residuelle": 78.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.31
+        },
+        {
+          "objet": "34, rue Championnet - 75018 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "montant_initial": 1604930,
+          "capital_restant": 1529168,
+          "duree_residuelle": 37.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.65
+        },
+        {
+          "objet": "80, bd Jourdan - 75014",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "montant_initial": 1591536,
+          "capital_restant": 1474106,
+          "duree_residuelle": 34.09,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.45
+        },
+        {
+          "objet": "Rues Desnouettes / Lecourbe - 75015 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 1458842,
+          "capital_restant": 1458842,
+          "duree_residuelle": 38.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.44
+        },
+        {
+          "objet": "Rue Abel Hovelacque - 75013 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 1430395,
+          "capital_restant": 1430395,
+          "duree_residuelle": 78.5,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.43
+        },
+        {
+          "objet": "Divers Programmes - 75000 - CPCT - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "montant_initial": 1580092,
+          "capital_restant": 1374413,
+          "duree_residuelle": 24.42,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.27
+        },
+        {
+          "objet": "34, rue Championnet - 75018 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "montant_initial": 1405170,
+          "capital_restant": 1373989,
+          "duree_residuelle": 77.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.72
+        },
+        {
+          "objet": "43 bis, rue Desnouettes - 75015 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "montant_initial": 1386930,
+          "capital_restant": 1308414,
+          "duree_residuelle": 27.25,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.14
+        },
+        {
+          "objet": "Divers programmes - 75000 - CPCT - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "montant_initial": 3258516,
+          "capital_restant": 1243685,
+          "duree_residuelle": 3.92,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 4.98
+        },
+        {
+          "objet": "80, bd Jourdan - 75014",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "montant_initial": 1318560,
+          "capital_restant": 1243030,
+          "duree_residuelle": 44.09,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.51
+        },
+        {
+          "objet": "26, rue St Maur - 75011 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "montant_initial": 1360419,
+          "capital_restant": 1206137,
+          "duree_residuelle": 15.5,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.63
+        },
+        {
+          "objet": "Rue Abel Hovelacque - 75013 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 1204164,
+          "capital_restant": 1204164,
+          "duree_residuelle": 38.5,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.53
+        },
+        {
+          "objet": "34, rue Championnet - 75018 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 1169024,
+          "capital_restant": 1169024,
+          "duree_residuelle": 78.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.38
+        }
+      ]
+    },
+    {
+      "key": "toit-et-joie-sa-hlm",
+      "name": "Toit et Joie (SA HLM)",
+      "capital_restant": 90345406,
+      "montant_initial": 103050823,
+      "count_emprunts": 179,
+      "share": 0.007918125791906993,
+      "nature_dominante": "logement_social_aide",
+      "taux_moyen_pondere_pct": 2.058,
+      "duree_residuelle_moyenne_ans": 37.25,
+      "part_fixe": 0.04859938347027836,
+      "preteurs": [
+        {
+          "name": "CDC",
+          "capital_restant": 82687346,
+          "count_emprunts": 158,
+          "share": 0.9152357613878531
+        },
+        {
+          "name": "CF",
+          "capital_restant": 5473958,
+          "count_emprunts": 14,
+          "share": 0.060589225767736156
+        },
+        {
+          "name": "CCOOP",
+          "capital_restant": 2184101,
+          "count_emprunts": 7,
+          "share": 0.024175012844410707
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "Rachat Baux à Construction - 75000",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 9813000,
+          "capital_restant": 9130257,
+          "duree_residuelle": 31.42,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.37
+        },
+        {
+          "objet": "10 bis rue de Moussy - 75004",
+          "preteur": "CDC",
+          "annee_mobilisation": 2011,
+          "montant_initial": 2825348,
+          "capital_restant": 2429067,
+          "duree_residuelle": 39.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.2
+        },
+        {
+          "objet": "101 à 105 bd Brune - 75014",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "montant_initial": 1860000,
+          "capital_restant": 1721312,
+          "duree_residuelle": 53.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.12
+        },
+        {
+          "objet": "140 bd du Montaparnasse - 75014",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 1760000,
+          "capital_restant": 1597090,
+          "duree_residuelle": 35.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.57
+        },
+        {
+          "objet": "101 à 105 bd Brune - 75014",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "montant_initial": 1785252,
+          "capital_restant": 1571194,
+          "duree_residuelle": 33.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.24
+        },
+        {
+          "objet": "56 - 58 rue René Boulanger - 75010",
+          "preteur": "CDC",
+          "annee_mobilisation": 2011,
+          "montant_initial": 1809942,
+          "capital_restant": 1556081,
+          "duree_residuelle": 39.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.2
+        },
+        {
+          "objet": "21 rue Bréguet - 75011",
+          "preteur": "CDC",
+          "annee_mobilisation": 2009,
+          "montant_initial": 2350000,
+          "capital_restant": 1502190,
+          "duree_residuelle": 36.25,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.17
+        },
+        {
+          "objet": "54 rue d'Aboukir - 75002",
+          "preteur": "CDC",
+          "annee_mobilisation": 2011,
+          "montant_initial": 1738097,
+          "capital_restant": 1494313,
+          "duree_residuelle": 39.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.2
+        },
+        {
+          "objet": "17, rue d'Alleray - 75015 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 1470000,
+          "capital_restant": 1470000,
+          "duree_residuelle": 24.75,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.7
+        },
+        {
+          "objet": "10 bis rue de Moussy - 75004",
+          "preteur": "CF",
+          "annee_mobilisation": 2010,
+          "montant_initial": 1602619,
+          "capital_restant": 1396121,
+          "duree_residuelle": 37.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.75
+        },
+        {
+          "objet": "140 bd du Montaparnasse - 75014",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 1450000,
+          "capital_restant": 1370182,
+          "duree_residuelle": 55.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.88
+        },
+        {
+          "objet": "62-64 rue Planchat - 75020",
+          "preteur": "CF",
+          "annee_mobilisation": 2010,
+          "montant_initial": 1530493,
+          "capital_restant": 1333289,
+          "duree_residuelle": 37.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.75
+        },
+        {
+          "objet": "21 rue Bréguet - 75011",
+          "preteur": "CDC",
+          "annee_mobilisation": 2009,
+          "montant_initial": 2237455,
+          "capital_restant": 1329588,
+          "duree_residuelle": 26.25,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.13
+        },
+        {
+          "objet": "46, rue de l'Ourcq Paris - 75019 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 1270000,
+          "capital_restant": 1270000,
+          "duree_residuelle": 24.75,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.7
+        },
+        {
+          "objet": "107, ter du Faubourg Saint Denis - 75010 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 1250000,
+          "capital_restant": 1250000,
+          "duree_residuelle": 59.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.31
+        },
+        {
+          "objet": "116, rue de Javel - 75015",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 1260000,
+          "capital_restant": 1243714,
+          "duree_residuelle": 56.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.3
+        },
+        {
+          "objet": "23, rue d'Alleray - 75015 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 1123000,
+          "capital_restant": 1123000,
+          "duree_residuelle": 24.75,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.7
+        },
+        {
+          "objet": "65, rue Jean-Jacques Rousseau - 75001 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 1114000,
+          "capital_restant": 1114000,
+          "duree_residuelle": 31.25,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.72
+        },
+        {
+          "objet": "Rues Guy Moquet/Du Capitaine Lagache - 75017 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 1080000,
+          "capital_restant": 1065694,
+          "duree_residuelle": 57.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.25
+        },
+        {
+          "objet": "10 bis rue de Moussy - 75004",
+          "preteur": "CDC",
+          "annee_mobilisation": 2011,
+          "montant_initial": 1222423,
+          "capital_restant": 1018002,
+          "duree_residuelle": 39.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.41
+        },
+        {
+          "objet": "12-14, Passage Raguinot - 75012",
+          "preteur": "CDC",
+          "annee_mobilisation": 2013,
+          "montant_initial": 1184990,
+          "capital_restant": 947312,
+          "duree_residuelle": 30.09,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.33
+        },
+        {
+          "objet": "10 allée Gaston Bachelard - 75014",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "montant_initial": 1000000,
+          "capital_restant": 926528,
+          "duree_residuelle": 54.42,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.56
+        },
+        {
+          "objet": "260, rue des Pyrénnées - 75020",
+          "preteur": "CDC",
+          "annee_mobilisation": 2013,
+          "montant_initial": 1057448,
+          "capital_restant": 893912,
+          "duree_residuelle": 40.09,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.41
+        },
+        {
+          "objet": "33 avenue Jean Jaurès - 75019",
+          "preteur": "CDC",
+          "annee_mobilisation": 2011,
+          "montant_initial": 1030910,
+          "capital_restant": 886315,
+          "duree_residuelle": 39.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.2
+        },
+        {
+          "objet": "17, rue d'Alleray - 75015 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 880000,
+          "capital_restant": 880000,
+          "duree_residuelle": 19.75,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.45
+        }
+      ]
+    },
+    {
+      "key": "3f-residences-sa-hlm",
+      "name": "3F Résidences (SA HLM)",
+      "capital_restant": 86053496,
+      "montant_initial": 103450214,
+      "count_emprunts": 69,
+      "share": 0.007541970724045638,
+      "nature_dominante": "logement_social_aide",
+      "taux_moyen_pondere_pct": 2.092,
+      "duree_residuelle_moyenne_ans": 35.6,
+      "part_fixe": 0.017590531455467507,
+      "preteurs": [
+        {
+          "name": "CDC",
+          "capital_restant": 84692510,
+          "count_emprunts": 67,
+          "share": 0.9841844201376964
+        },
+        {
+          "name": "CF",
+          "capital_restant": 1360986,
+          "count_emprunts": 2,
+          "share": 0.01581557986230382
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "66-68 rue des Plantes - 75014",
+          "preteur": "CDC",
+          "annee_mobilisation": 2013,
+          "montant_initial": 13030985,
+          "capital_restant": 10645746,
+          "duree_residuelle": 30.25,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.89
+        },
+        {
+          "objet": "62/68  rue des Plantes - 75014",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "montant_initial": 10693162,
+          "capital_restant": 9628122,
+          "duree_residuelle": 34.17,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.22
+        },
+        {
+          "objet": "12 rue Cantagrel - 75013",
+          "preteur": "CDC",
+          "annee_mobilisation": 2011,
+          "montant_initial": 10312446,
+          "capital_restant": 6185416,
+          "duree_residuelle": 30.33,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.27
+        },
+        {
+          "objet": "13 rue des Ecluses Saint-Martin - 75010",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "montant_initial": 5436977,
+          "capital_restant": 5184639,
+          "duree_residuelle": 55.25,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.36
+        },
+        {
+          "objet": "74 rue Maraîchers - 75020",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "montant_initial": 6293026,
+          "capital_restant": 5038359,
+          "duree_residuelle": 31.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.1
+        },
+        {
+          "objet": "ZAC Clichy-Batignolles - 75017",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "montant_initial": 4646811,
+          "capital_restant": 4093971,
+          "duree_residuelle": 33.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.13
+        },
+        {
+          "objet": "20-22, rue Beccaria - FTM - 75012 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "montant_initial": 3770220,
+          "capital_restant": 3770220,
+          "duree_residuelle": 34.84,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "13 rue des Ecluses Saint-Martin - 75010",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "montant_initial": 3638174,
+          "capital_restant": 3348698,
+          "duree_residuelle": 35.25,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.27
+        },
+        {
+          "objet": "ZAC Clichy-Batignolles - 75017",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "montant_initial": 3692270,
+          "capital_restant": 3292900,
+          "duree_residuelle": 33.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.63
+        },
+        {
+          "objet": "20-22, rue Beccaria - 75012",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 3345777,
+          "capital_restant": 3116555,
+          "duree_residuelle": 34.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.99
+        },
+        {
+          "objet": "ZAC Clichy-Batignolles - 75017",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "montant_initial": 3343214,
+          "capital_restant": 3082011,
+          "duree_residuelle": 43.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.7
+        },
+        {
+          "objet": "66, rue des Plantes - 75014 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 2600055,
+          "capital_restant": 2510903,
+          "duree_residuelle": 58.5,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.8
+        },
+        {
+          "objet": "15, rue Saint Just - 75017 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "montant_initial": 2352936,
+          "capital_restant": 2290145,
+          "duree_residuelle": 40.67,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.8
+        },
+        {
+          "objet": "66, rue des Plantes - 75014 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 2349441,
+          "capital_restant": 2268882,
+          "duree_residuelle": 41.5,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.8
+        },
+        {
+          "objet": "66, rue des Plantes - 75014 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 2110918,
+          "capital_restant": 2110918,
+          "duree_residuelle": 23.5,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.51
+        },
+        {
+          "objet": "ZAC Clichy-Batignolles - 75017",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "montant_initial": 1643489,
+          "capital_restant": 1447960,
+          "duree_residuelle": 33.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.13
+        },
+        {
+          "objet": "62/68  rue des Plantes - 75014",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "montant_initial": 1474483,
+          "capital_restant": 1364684,
+          "duree_residuelle": 44.16,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.28
+        },
+        {
+          "objet": "66-68 rue des Plantes - 75014",
+          "preteur": "CDC",
+          "annee_mobilisation": 2012,
+          "montant_initial": 1614312,
+          "capital_restant": 1269312,
+          "duree_residuelle": 40.25,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.15
+        },
+        {
+          "objet": "54 rue Ruisseau - 75018",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "montant_initial": 1841847,
+          "capital_restant": 1126783,
+          "duree_residuelle": 31.84,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.28
+        },
+        {
+          "objet": "13 rue des Ecluses Saint-Martin - 75010",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "montant_initial": 1182684,
+          "capital_restant": 1088069,
+          "duree_residuelle": 45.25,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.27
+        },
+        {
+          "objet": "185, rue Raymond Losserand - FJT - 75014 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "montant_initial": 1018910,
+          "capital_restant": 1018910,
+          "duree_residuelle": 59.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.8
+        },
+        {
+          "objet": "185, rue Raymond Losserand - FJT - 75014 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "montant_initial": 996056,
+          "capital_restant": 996056,
+          "duree_residuelle": 39.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.8
+        },
+        {
+          "objet": "Résidence sociale - Rue Beccaria - 75012 - TRST",
+          "preteur": "CDC",
+          "annee_mobilisation": 2009,
+          "montant_initial": 1371795,
+          "capital_restant": 920775,
+          "duree_residuelle": 14.0,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 3.48
+        },
+        {
+          "objet": "15, rue Saint Just - 75017 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "montant_initial": 831820,
+          "capital_restant": 809622,
+          "duree_residuelle": 40.67,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.8
+        },
+        {
+          "objet": "94 rue de Charonne - 75011 - TRST",
+          "preteur": "CF",
+          "annee_mobilisation": 2008,
+          "montant_initial": 1751364,
+          "capital_restant": 770600,
+          "duree_residuelle": 10.83,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.68
+        }
+      ]
+    },
+    {
+      "key": "seqens-sa-hlm",
+      "name": "SEQENS (SA HLM)",
+      "capital_restant": 79388740,
+      "montant_initial": 107940922,
+      "count_emprunts": 104,
+      "share": 0.006957852709639978,
+      "nature_dominante": "logement_social_aide",
+      "taux_moyen_pondere_pct": 2.197,
+      "duree_residuelle_moyenne_ans": 28.65,
+      "part_fixe": 0.2050449184766156,
+      "preteurs": [
+        {
+          "name": "CDC",
+          "capital_restant": 53639111,
+          "count_emprunts": 86,
+          "share": 0.6756513714528388
+        },
+        {
+          "name": "CE",
+          "capital_restant": 15843914,
+          "count_emprunts": 6,
+          "share": 0.19957381487467182
+        },
+        {
+          "name": "ARKEA",
+          "capital_restant": 3607992,
+          "count_emprunts": 4,
+          "share": 0.04544714970110103
+        },
+        {
+          "name": "CA IdF",
+          "capital_restant": 3090139,
+          "count_emprunts": 4,
+          "share": 0.03892415082706991
+        },
+        {
+          "name": "LBP",
+          "capital_restant": 2988355,
+          "count_emprunts": 3,
+          "share": 0.03764205615822236
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "LLI - 27-31, avenue de Flandre - 75019",
+          "preteur": "CE",
+          "annee_mobilisation": 2021,
+          "montant_initial": 7735622,
+          "capital_restant": 7520204,
+          "duree_residuelle": 28.76,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.21
+        },
+        {
+          "objet": "33 rue Olivier de Serres - 75015",
+          "preteur": "CDC",
+          "annee_mobilisation": 2015,
+          "montant_initial": 7201667,
+          "capital_restant": 6209981,
+          "duree_residuelle": 33.59,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.19
+        },
+        {
+          "objet": "33 rue Olivier de Serres - 75015",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "montant_initial": 5308455,
+          "capital_restant": 4625862,
+          "duree_residuelle": 33.59,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.65
+        },
+        {
+          "objet": "27-31, avenue de Flandre - 75019",
+          "preteur": "CE",
+          "annee_mobilisation": 2021,
+          "montant_initial": 2999056,
+          "capital_restant": 2820693,
+          "duree_residuelle": 13.76,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.92
+        },
+        {
+          "objet": "Rue de Duperré - 75009",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "montant_initial": 3439937,
+          "capital_restant": 2794982,
+          "duree_residuelle": 26.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.03
+        },
+        {
+          "objet": "18-20 avenue de St Ouen-75018 - TRST",
+          "preteur": "CDC",
+          "annee_mobilisation": 2004,
+          "montant_initial": 3554539,
+          "capital_restant": 2601751,
+          "duree_residuelle": 32.33,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.96
+        },
+        {
+          "objet": "33 rue Olivier de Serres-75015",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "montant_initial": 2910905,
+          "capital_restant": 2494267,
+          "duree_residuelle": 33.59,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.41
+        },
+        {
+          "objet": "CHU - Port de Javel Haut - 75015 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 2304868,
+          "capital_restant": 2237814,
+          "duree_residuelle": 41.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.8
+        },
+        {
+          "objet": "PCE - 47-51, rue Dutot - 75015",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 2032000,
+          "capital_restant": 1898877,
+          "duree_residuelle": 13.33,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 0.97
+        },
+        {
+          "objet": "92, rue de la Chapelle - 75018",
+          "preteur": "CA IdF",
+          "annee_mobilisation": 2022,
+          "montant_initial": 1840027,
+          "capital_restant": 1840027,
+          "duree_residuelle": 29.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 3.02
+        },
+        {
+          "objet": "LLI - 66, rue Julien Lacroix - 75020",
+          "preteur": "CE",
+          "annee_mobilisation": 2022,
+          "montant_initial": 1750284,
+          "capital_restant": 1750284,
+          "duree_residuelle": 16.2,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.3
+        },
+        {
+          "objet": "57, rue Vergniaud - 75013",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 1828364,
+          "capital_restant": 1730217,
+          "duree_residuelle": 51.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 3.11
+        },
+        {
+          "objet": "ZAC Clichy Batignolles lot E6 - 75017",
+          "preteur": "ARKEA",
+          "annee_mobilisation": 2014,
+          "montant_initial": 1725652,
+          "capital_restant": 1562527,
+          "duree_residuelle": 41.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "151, rue de Bagnolet - 75020",
+          "preteur": "LBP",
+          "annee_mobilisation": 2019,
+          "montant_initial": 1669700,
+          "capital_restant": 1547616,
+          "duree_residuelle": 13.59,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.66
+        },
+        {
+          "objet": "27-31, avenue de Flandre - 75019",
+          "preteur": "CE",
+          "annee_mobilisation": 2021,
+          "montant_initial": 1649121,
+          "capital_restant": 1545720,
+          "duree_residuelle": 13.76,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.87
+        },
+        {
+          "objet": "ZAC Clichy Batignolles - 75017",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "montant_initial": 1716564,
+          "capital_restant": 1446683,
+          "duree_residuelle": 31.25,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.08
+        },
+        {
+          "objet": "226, rue Lecourbe - 75015",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 1432987,
+          "capital_restant": 1384469,
+          "duree_residuelle": 61.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.05
+        },
+        {
+          "objet": "LLI - 89, rue des Maraîchers - 75020",
+          "preteur": "CE",
+          "annee_mobilisation": 2022,
+          "montant_initial": 1258652,
+          "capital_restant": 1258652,
+          "duree_residuelle": 19.0,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.8
+        },
+        {
+          "objet": "ZAC Clichy Batignolles lot E6 - 75017",
+          "preteur": "ARKEA",
+          "annee_mobilisation": 2013,
+          "montant_initial": 1449451,
+          "capital_restant": 1247139,
+          "duree_residuelle": 31.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.52
+        },
+        {
+          "objet": "33 rue Olivier de Serres-75015",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "montant_initial": 1350298,
+          "capital_restant": 1203481,
+          "duree_residuelle": 43.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.26
+        },
+        {
+          "objet": "151, rue de Bagnolet - 75020",
+          "preteur": "LBP",
+          "annee_mobilisation": 2019,
+          "montant_initial": 1398355,
+          "capital_restant": 1193475,
+          "duree_residuelle": 16.54,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.22
+        },
+        {
+          "objet": "7-9, rue des Frères Morane - 75015 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 1197514,
+          "capital_restant": 1144560,
+          "duree_residuelle": 41.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "57, rue Vergniaud - 75013",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "montant_initial": 1052207,
+          "capital_restant": 995724,
+          "duree_residuelle": 41.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 3.11
+        },
+        {
+          "objet": "12/14 rue du Buisson Saint Louis - 75010 - TRST",
+          "preteur": "CDC",
+          "annee_mobilisation": 2000,
+          "montant_initial": 2335519,
+          "capital_restant": 967601,
+          "duree_residuelle": 10.67,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 3.36
+        },
+        {
+          "objet": "66, rue Julien Lacroix - 75020",
+          "preteur": "CE",
+          "annee_mobilisation": 2022,
+          "montant_initial": 948360,
+          "capital_restant": 948360,
+          "duree_residuelle": 16.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 3.14
+        }
+      ]
+    },
+    {
+      "key": "ep-cite-musique-philharmonie",
+      "name": "EP Cité Musique - Philharmonie",
+      "capital_restant": 78018528,
+      "montant_initial": 159688923,
+      "count_emprunts": 1,
+      "share": 0.006837763494242911,
+      "nature_dominante": "logement_hors_aide",
+      "taux_moyen_pondere_pct": 5.0,
+      "duree_residuelle_moyenne_ans": 5.09,
+      "part_fixe": 1.0,
+      "preteurs": [
+        {
+          "name": "SG",
+          "capital_restant": 78018528,
+          "count_emprunts": 1,
+          "share": 1.0
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "Réalisation salle - 211 avenue Jean Jaurès - 75019",
+          "preteur": "SG",
+          "annee_mobilisation": 2011,
+          "montant_initial": 159688923,
+          "capital_restant": 78018528,
+          "duree_residuelle": 5.09,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 5.0
+        }
+      ]
+    },
+    {
+      "key": "aximo-esh",
+      "name": "AXIMO (ESH)",
+      "capital_restant": 61631416,
+      "montant_initial": 76174123,
+      "count_emprunts": 171,
+      "share": 0.005401550837709226,
+      "nature_dominante": "logement_social_aide",
+      "taux_moyen_pondere_pct": 2.271,
+      "duree_residuelle_moyenne_ans": 30.39,
+      "part_fixe": 0.17472045097836583,
+      "preteurs": [
+        {
+          "name": "CDC",
+          "capital_restant": 49292651,
+          "count_emprunts": 167,
+          "share": 0.7997974728986852
+        },
+        {
+          "name": "CE",
+          "capital_restant": 9349445,
+          "count_emprunts": 2,
+          "share": 0.1516993452539188
+        },
+        {
+          "name": "ARKEA",
+          "capital_restant": 2989320,
+          "count_emprunts": 2,
+          "share": 0.04850318184739596
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "166-172 quai Jemmapes - 75010 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2015,
+          "montant_initial": 11494741,
+          "capital_restant": 9869564,
+          "duree_residuelle": 32.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.51
+        },
+        {
+          "objet": "49, rue Blanche - 75009 - CPCT - RGT",
+          "preteur": "CE",
+          "annee_mobilisation": 2021,
+          "montant_initial": 6688687,
+          "capital_restant": 6394616,
+          "duree_residuelle": 23.66,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.06
+        },
+        {
+          "objet": "88, rue de la Villette - 75019 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2015,
+          "montant_initial": 6562617,
+          "capital_restant": 3681800,
+          "duree_residuelle": 7.92,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.01
+        },
+        {
+          "objet": "49 rue Blanche - 75009",
+          "preteur": "CE",
+          "annee_mobilisation": 2009,
+          "montant_initial": 4564342,
+          "capital_restant": 2954830,
+          "duree_residuelle": 15.04,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 4.53
+        },
+        {
+          "objet": "59 bd de Strasbourg - 75010 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2008,
+          "montant_initial": 4200000,
+          "capital_restant": 2532723,
+          "duree_residuelle": 20.25,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.64
+        },
+        {
+          "objet": "59 bd de Strasbourg - 75010 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2005,
+          "montant_initial": 3329499,
+          "capital_restant": 2377956,
+          "duree_residuelle": 31.33,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.86
+        },
+        {
+          "objet": "Divers programmes - 75000",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "montant_initial": 2466381,
+          "capital_restant": 2276049,
+          "duree_residuelle": 44.84,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.32
+        },
+        {
+          "objet": "59 bd de Strasbourg - 75010 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2005,
+          "montant_initial": 3305045,
+          "capital_restant": 1835411,
+          "duree_residuelle": 16.33,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.89
+        },
+        {
+          "objet": "8, rue d'Ardennes - 75009",
+          "preteur": "ARKEA",
+          "annee_mobilisation": 2019,
+          "montant_initial": 1879741,
+          "capital_restant": 1658097,
+          "duree_residuelle": 13.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.66
+        },
+        {
+          "objet": "17 rue Broussais - 75014 - RGT",
+          "preteur": "CDC",
+          "annee_mobilisation": 2005,
+          "montant_initial": 2823555,
+          "capital_restant": 1617880,
+          "duree_residuelle": 16.33,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.89
+        },
+        {
+          "objet": "8, rue d'Ardennes - 75009",
+          "preteur": "ARKEA",
+          "annee_mobilisation": 2019,
+          "montant_initial": 1536026,
+          "capital_restant": 1331223,
+          "duree_residuelle": 12.0,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.59
+        },
+        {
+          "objet": "8, rue d'Auteuil - 75016 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 1283800,
+          "capital_restant": 1253544,
+          "duree_residuelle": 38.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.72
+        },
+        {
+          "objet": "8, rue d'Auteuil - 75016 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 1166971,
+          "capital_restant": 1145303,
+          "duree_residuelle": 48.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.74
+        },
+        {
+          "objet": "72, bd Saint Marcel - 75005",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 1157651,
+          "capital_restant": 1105168,
+          "duree_residuelle": 46.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.37
+        },
+        {
+          "objet": "8, rue d'Auteuil - 75016 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 1017460,
+          "capital_restant": 997073,
+          "duree_residuelle": 38.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.52
+        },
+        {
+          "objet": "Divers programmes - 75000",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "montant_initial": 1085010,
+          "capital_restant": 984489,
+          "duree_residuelle": 44.84,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.53
+        },
+        {
+          "objet": "13, passage des Mauxins - 75019 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 878885,
+          "capital_restant": 773080,
+          "duree_residuelle": 12.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.78
+        },
+        {
+          "objet": "8, rue d'Auteuil - 75016 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 764812,
+          "capital_restant": 753257,
+          "duree_residuelle": 48.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.53
+        },
+        {
+          "objet": "72, bd Saint Marcel - 75005",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "montant_initial": 793326,
+          "capital_restant": 745604,
+          "duree_residuelle": 36.0,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.32
+        },
+        {
+          "objet": "72-74, rue Saint Marcel - 75005 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 711859,
+          "capital_restant": 697595,
+          "duree_residuelle": 38.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.52
+        },
+        {
+          "objet": "72-74, rue Saint Marcel - 75005 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 667566,
+          "capital_restant": 655171,
+          "duree_residuelle": 48.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.74
+        },
+        {
+          "objet": "72-74, rue Saint Marcel - 75005 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 621759,
+          "capital_restant": 607106,
+          "duree_residuelle": 38.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 1.72
+        },
+        {
+          "objet": "Diverses adresses - 75007 - 75015 - 75017",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "montant_initial": 608928,
+          "capital_restant": 548279,
+          "duree_residuelle": 34.17,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.22
+        },
+        {
+          "objet": "13, passage des Mauxins - 75019 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 617088,
+          "capital_restant": 542800,
+          "duree_residuelle": 12.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.78
+        },
+        {
+          "objet": "72-74, rue Saint Marcel - 75005 - NSG",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 546304,
+          "capital_restant": 538050,
+          "duree_residuelle": 48.58,
+          "taux_type": "V",
+          "taux_index": "LIVRET A",
+          "taux_actuariel": 2.53
+        }
+      ]
+    }
+  ],
+  "autres_beneficiaires": {
+    "count": 87,
+    "capital_restant": 675576647,
+    "count_emprunts": 568,
+    "share": 0.05920943977112804
+  },
+  "top_preteurs": [
+    {
+      "name": "CDC",
+      "capital_restant": 8660972516,
+      "count_emprunts": 8342,
+      "share": 0.7590720204858072
+    },
+    {
+      "name": "LBP",
+      "capital_restant": 514743539,
+      "count_emprunts": 146,
+      "share": 0.045113573284983124
+    },
+    {
+      "name": "CE",
+      "capital_restant": 510739717,
+      "count_emprunts": 170,
+      "share": 0.04476266703440205
+    },
+    {
+      "name": "CA IdF",
+      "capital_restant": 298265829,
+      "count_emprunts": 123,
+      "share": 0.02614085716296777
+    },
+    {
+      "name": "SG",
+      "capital_restant": 250404754,
+      "count_emprunts": 66,
+      "share": 0.021946177788526672
+    },
+    {
+      "name": "CF",
+      "capital_restant": 215876675,
+      "count_emprunts": 115,
+      "share": 0.018920039712465697
+    },
+    {
+      "name": "BAYER LB",
+      "capital_restant": 208478327,
+      "count_emprunts": 12,
+      "share": 0.0182716276320211
+    },
+    {
+      "name": "ARKEA",
+      "capital_restant": 144577836,
+      "count_emprunts": 32,
+      "share": 0.012671208654089295
+    },
+    {
+      "name": "DP AG",
+      "capital_restant": 112461766,
+      "count_emprunts": 3,
+      "share": 0.009856465901209546
+    },
+    {
+      "name": "CCOOP",
+      "capital_restant": 80634485,
+      "count_emprunts": 28,
+      "share": 0.007067033340997682
+    }
+  ],
+  "sources": {
+    "dataset": "opendata.paris.fr · dette-garantie (annexe IV-B CA)",
+    "url": "https://opendata.paris.fr/explore/dataset/dette-garantie/",
+    "license": "ODbL",
+    "note": "Une ligne = un emprunt garanti par la Ville de Paris. Le capital restant dû au 31/12 représente l'engagement hors bilan : Paris rembourse à la place du bénéficiaire uniquement en cas de défaut. Majoritairement des emprunts de bailleurs sociaux auprès de la CDC, donc un risque jugé faible par les agences de notation."
+  }
+}

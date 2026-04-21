@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-21T23:46:19",
+  "generated_at": "2026-04-22T00:56:39",
   "model": "gemini-3-flash-preview",
-  "count": 374,
+  "count": 476,
   "items": {
     "ELOGIE SIEMP": {
       "beneficiaire": "ELOGIE-SIEMP",
@@ -5951,39 +5951,6 @@
       "beneficiaire_normalise": "SIDACTION",
       "siret": "39894554300021"
     },
-    "STE ECONOMIE MIXTE PARIS COMMERCE": {
-      "beneficiaire": "STE ECONOMIE MIXTE PARIS COMMERCE",
-      "beneficiaire_normalise": "STE ECONOMIE MIXTE PARIS COMMERCE",
-      "siret": "",
-      "generated_at": "2026-04-21T23:29:25",
-      "model": "claude-haiku-4-5",
-      "activite_verifiee": "<cite index=\"8-1\">Société d'économie mixte de la Ville de Paris spécialisée dans la revitalisation du commerce et de l'artisanat de proximité</cite>",
-      "perimetre_geographique": "Paris",
-      "sources": [
-        {
-          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/societe-d-economie-mixte-paris-commerces-sem-pc-329121065",
-          "title": "Société SOCIETE D'ECONOMIE MIXTE PARIS COMMERCES (SEM PC) à 75004 PARIS 04 - SIREN 329 121 065 | L’Annuaire des Entreprises"
-        },
-        {
-          "url": "https://www.lesepl.fr/epl-en-action/la-sem-paris-commerces-pour-doper-le-commerce-de-proximite/",
-          "title": "La Sem Paris Commerces pour doper le commerce de proximité - Fédération des élus des Entreprises publiques locales"
-        },
-        {
-          "url": "https://mairie10.paris.fr/pages/lancement-de-paris-commerces-agir-pour-la-diversite-et-la-vitalite-du-commerce-de-proximite-25224",
-          "title": "Lancement de Paris Commerces : agir pour la diversité et la vitalité du commerce de proximité"
-        },
-        {
-          "url": "https://www.paris.fr/pages/diversite-commerciale-3553",
-          "title": "Diversité commerciale - Ville de Paris"
-        },
-        {
-          "url": "https://www.techno-science.net/definition/10922.html",
-          "title": "Sociétés d'économie mixte de Paris : définition et explications"
-        }
-      ],
-      "confiance": 0.8,
-      "source_type": "claude_web"
-    },
     "BASILIADE": {
       "beneficiaire": "BASILIADE",
       "beneficiaire_normalise": "BASILIADE",
@@ -6116,39 +6083,6 @@
       "confiance": 0.8,
       "source_type": "claude_web"
     },
-    "PASSERELLE 17 AS POUR LA REGIE": {
-      "beneficiaire": "PASSERELLE  17 AS POUR LA REGIE",
-      "beneficiaire_normalise": "PASSERELLE 17 AS POUR LA REGIE",
-      "siret": "",
-      "generated_at": "2026-04-21T23:30:19",
-      "model": "claude-haiku-4-5",
-      "activite_verifiee": "<cite index=\"2-1\">Association agréée entreprise d'insertion qui travaille à la valorisation de son territoire par l'insertion professionnelle de ses habitants et par l'amélioration du cadre de vie</cite>",
-      "perimetre_geographique": "Paris 17e et 18e",
-      "sources": [
-        {
-          "url": "https://www.passerelles17.paris/",
-          "title": "Passerelles 17"
-        },
-        {
-          "url": "https://dora.inclusion.gouv.fr/structures/passerelles-17-regie",
-          "title": "Passerelles 17- Régie 17ème et 18ème | DORA"
-        },
-        {
-          "url": "https://www.passerelles17.paris/passerelles/notre_mission/",
-          "title": "Notre mission - Passerelles 17 : Passerelles17"
-        },
-        {
-          "url": "https://www.jeveuxaider.gouv.fr/organisations/28174-passerelles-1718",
-          "title": "Association Passerelles 17/18 - Devenez bénévole dans l'association Passerelles 17/18 - JeVeuxAider.gouv.fr"
-        },
-        {
-          "url": "https://www.societe.com/societe/passerelles-17-association-pour-la-regie-de-quartier-du-17e-nord-est-494216559.html",
-          "title": "Société PASSERELLES 17 ASSOCIATION POUR LA REGIE DE QUARTIER DU 17E NORD EST à PARIS (75017). Chiffre d'affaires, extrait Kbis, bénéfice, statuts, extrait RNE, bilans, actionnaires - 494216559"
-        }
-      ],
-      "confiance": 0.8,
-      "source_type": "claude_web"
-    },
     "ASS PARENT ELEVE JARDIN ENFANT FR A": {
       "beneficiaire": "ASS PARENT ELEVE JARDIN ENFANT FR A",
       "beneficiaire_normalise": "ASS PARENT ELEVE JARDIN ENFANT FR A",
@@ -6177,72 +6111,6 @@
         {
           "url": "https://www.verif.com/societe/ASS-PARENT-ELEVE-JARDIN-ENFANT-FR-ALLEMA-300984523/",
           "title": "ASS PARENT ELEVE JARDIN ENFANT FR ALLEMA (30098452300013) , PARIS 10, Verif"
-        }
-      ],
-      "confiance": 0.8,
-      "source_type": "claude_web"
-    },
-    "BAL": {
-      "beneficiaire": "LE BAL",
-      "beneficiaire_normalise": "BAL",
-      "siret": "49396355700027",
-      "generated_at": "2026-04-21T23:30:58",
-      "model": "claude-haiku-4-5",
-      "activite_verifiee": "<cite index=\"7-1\">Association loi 1901 qui est une plateforme indépendante d'exposition, d'édition, de réflexion et de pédagogie, dédiée à l'image contemporaine sous toutes ses formes</cite>.",
-      "perimetre_geographique": "Paris XVIIIe",
-      "sources": [
-        {
-          "url": "https://www.societe.com/societe/le-bal-493963557.html",
-          "title": "LE BAL (PARIS) Chiffre d'affaires, résultat, bilans sur SOCIETE.COM - 493963557"
-        },
-        {
-          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/le-bal-493963557",
-          "title": "Association LE BAL à 75018 PARIS - SIREN 493 963 557"
-        },
-        {
-          "url": "https://rubypayeur.com/societe/le-bal-493963557",
-          "title": "Société LE BAL à PARIS 18 - SIREN : 493963557"
-        },
-        {
-          "url": "https://www.score3.fr/LE-BAL-493963557.shtml",
-          "title": "LE BAL - Siren 493963557 - 75018 Paris Informations financières et bilan d'entreprise sur Score3"
-        },
-        {
-          "url": "https://www.pappers.fr/entreprise/le-bal-493963557",
-          "title": "Association LE BAL : Chiffre d'affaires, statuts, extrait d'immatriculation"
-        }
-      ],
-      "confiance": 0.8,
-      "source_type": "claude_web"
-    },
-    "LINKEE FRANCE": {
-      "beneficiaire": "LINKEE FRANCE",
-      "beneficiaire_normalise": "LINKEE FRANCE",
-      "siret": "837634534",
-      "generated_at": "2026-04-21T23:31:02",
-      "model": "claude-haiku-4-5",
-      "activite_verifiee": "<cite index=\"20-1\">Association de l'Économie Sociale et Solidaire qui met en place une solution solidaire et collaborative luttant contre le gaspillage alimentaire en faveur des plus démunis</cite>",
-      "perimetre_geographique": "national",
-      "sources": [
-        {
-          "url": "https://www.societe.com/societe/linkee-france-837634534.html",
-          "title": "Société LINKEE FRANCE à PARIS (75020). Chiffre d'affaires, extrait Kbis, bénéfice, statuts, extrait RNE, bilans, actionnaires - 837634534"
-        },
-        {
-          "url": "https://www.verif.com/societe/LINKEE-PARIS-837634534/",
-          "title": "LINKEE FRANCE (83763453400023) , PARIS 20, Verif"
-        },
-        {
-          "url": "https://www.pappers.fr/entreprise/l-linkee-france-837634534",
-          "title": "Association L. LINKEE FRANCE : Chiffre d'affaires, statuts, extrait d'immatriculation"
-        },
-        {
-          "url": "https://infonet.fr/entreprises/83763453400023-linkee-france/",
-          "title": "LINKEE FRANCE (L.) à Paris | Chiffre d'Affaires, Statuts"
-        },
-        {
-          "url": "https://www.pappers.fr/entreprise/linkelles-922962147",
-          "title": "Association LINK'ELLES : Chiffre d'affaires, statuts, extrait d'immatriculation"
         }
       ],
       "confiance": 0.8,
@@ -6954,6 +6822,3504 @@
       "beneficiaire": "GRPT PARISIEN INTERBAILL SURVEILL",
       "beneficiaire_normalise": "GRPT PARISIEN INTERBAILL SURVEILL",
       "siret": ""
+    },
+    "ASS GAN YOSSEF CR JARDIN D ENFANTS": {
+      "beneficiaire": "ASS GAN YOSSEF CR JARDIN D ENFANTS",
+      "beneficiaire_normalise": "ASS GAN YOSSEF CR JARDIN D ENFANTS",
+      "siret": "",
+      "generated_at": "2026-04-21T23:53:20",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association gérant une crèche et jardin d'enfants, spécialisée dans l'accueil de jeunes enfants.",
+      "perimetre_geographique": "Paris XXe",
+      "sources": [
+        {
+          "url": "https://www.manageo.fr/entreprises/339735573.html",
+          "title": "▷Société ASS GAN YOSSEF CRECHE JARDIN D ENFANTS à PARIS : CA, résultats, bilan gratuit, SIRET, dirigeants, solvabilité, n° TVA - manageo.fr"
+        },
+        {
+          "url": "https://www.verif.com/societe/ASS-GAN-YOSSEF-CRECHE-JARDIN-D-ENFANTS-339735573/",
+          "title": "Société ASS GAN YOSSEF CRECHE JARDIN D ENFANTS à PARIS - Chiffre d'affaires, bilan, résultat - Siren / |Verif.com"
+        },
+        {
+          "url": "https://www.societe.com/societe/ass-gan-yossef-creche-jardin-d-enfants-339735573.html",
+          "title": "Société ASS GAN YOSSEF CRECHE JARDIN D ENFANTS à PARIS (75020). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 339735573"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/ass-gan-yossef-creche-jardin-d-enfants-creche-gan-gossef-339735573",
+          "title": "ass gan yossef creche jardin d enfants (creche gan gossef)"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/ass-gan-yossef-creche-jardin-d-enfants-339735573",
+          "title": "Association ASS GAN YOSSEF CRECHE JARDIN D ENFANTS : Chiffre d'affaires, statuts, Kbis"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASSOCIAT POUR L INSTITUT D ETUDES": {
+      "beneficiaire": "ASSOCIAT.POUR L INSTITUT D ETUDES",
+      "beneficiaire_normalise": "ASSOCIAT POUR L INSTITUT D ETUDES",
+      "siret": "",
+      "generated_at": "2026-04-21T23:55:28",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association déclarée gérant un centre de recherche en sciences humaines et sociales accueillant des chercheurs internationaux en résidence.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/association-pour-l-institut-d-etudes-avancees-paris-530056530.html",
+          "title": "ASSOCIATION POUR L INSTITUT D ETUDES AVANCEES - PARIS (PARIS) Chiffre d'affaires, rsultat, bilans sur SOCIETE.COM - 530056530"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/association-pour-l-institut-d-etudes-avancees-paris-530056530",
+          "title": "ASSOCIATION POUR L INSTITUT D ETUDES AVANCEES - PARIS : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.verif.com/societe/ASSOCIATION-POUR-L-INSTITUT-D-ETUDES-AVANCEES---PARIS-530056530/",
+          "title": "ASSOCIATION POUR L INSTITUT D ETUDES AVANCEES - PARIS (53005653000039) , PARIS 4, Verif"
+        },
+        {
+          "url": "https://www.amcsti.fr/membres/institut-detudes-avancees-de-paris/",
+          "title": "Institut d'Études Avancées de Paris"
+        },
+        {
+          "url": "https://www.helloasso.com/associations/institut-d-etudes-avancees-de-paris",
+          "title": "INSTITUT D'ETUDES AVANCEES DE PARIS | HelloAsso"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "APACHES DES VIGNOLES": {
+      "beneficiaire": "LES APACHES DES VIGNOLES",
+      "beneficiaire_normalise": "APACHES DES VIGNOLES",
+      "siret": "44532684600034",
+      "generated_at": "2026-04-21T23:55:32",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 gérant une crèche parentale accueillant les jeunes enfants depuis 2004",
+      "perimetre_geographique": "Paris XXe",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/les-apaches-des-vignoles-445326846.html",
+          "title": "Société LES APACHES DES VIGNOLES à PARIS (75020). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 445326846"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/les-apaches-des-vignoles-445326846",
+          "title": "Association LES APACHES DES VIGNOLES : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.118000.fr/e_C0056358041",
+          "title": "LES APACHES DES VIGNOLES à PARIS 75020 (RUE DES VIGNOLES): Adresse, horaires, téléphone - 118000.fr"
+        },
+        {
+          "url": "http://lesapachesdesvignoles.org/",
+          "title": "Les Apaches - Crèche parentale"
+        },
+        {
+          "url": "https://www.trouversacreche.fr/creche/75020_paris-20/8591/Les-Apaches-des-Vignoles",
+          "title": "Les Apaches des Vignoles à Paris 20e 75020"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "STATION C": {
+      "beneficiaire": "LA STATION C",
+      "beneficiaire_normalise": "STATION C",
+      "siret": "44361590100016",
+      "generated_at": "2026-04-21T23:55:35",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association qui gère un village numérique popup ambulant de cohésion sociale et d'éducation populaire dans les quartiers défavorisés.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/la-station-c-443615901",
+          "title": "Association LA STATION C à 75013 PARIS - SIREN 443 615 901 | L’Annuaire des Entreprises"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/station-c-839648326",
+          "title": "Société STATION C à 75017 PARIS - SIREN 839 648 326 | L’Annuaire des Entreprises"
+        },
+        {
+          "url": "https://www.societe.com/societe/station-c-839648326.html",
+          "title": "Société STATION C à PARIS (75017). Chiffre d'affaires, extrait Kbis, bénéfice, statuts, extrait RNE, bilans, actionnaires - 839648326"
+        },
+        {
+          "url": "https://trust.dot.state.wi.us/cscfinder/cityCountySearch.do?city=Siren",
+          "title": "DMV CSC Station detail"
+        },
+        {
+          "url": "https://www.lastation-c.fr/visite.html",
+          "title": "La Station C"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "DADOUN PERE ET FILS": {
+      "beneficiaire": "DADOUN PERE ET FILS",
+      "beneficiaire_normalise": "DADOUN PERE ET FILS",
+      "siret": "410708838",
+      "generated_at": "2026-04-21T23:55:42",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "SAS spécialisée dans l'organisation de foires, salons professionnels et congrès, et gestion concédée des marchés d'approvisionnement.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://rubypayeur.com/societe/dadoun-pere-et-fils-410708838",
+          "title": "Société DADOUN PERE ET FILS à SAINT-MAUR-DES-FOSSES - SIREN : 410708838"
+        },
+        {
+          "url": "https://www.xerfi.com/etudes-par-entreprise/DADOUN-PERE-ET-FILS_410708838",
+          "title": "Dadoun Pere et Fils"
+        },
+        {
+          "url": "https://www.societe.com/societe/dadoun-pere-et-fils-410708838.html",
+          "title": "Société DADOUN PERE ET FILS à SAINT-MAUR-DES-FOSSES (94100). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 410708838"
+        },
+        {
+          "url": "https://www.verif.com/en/company/DADOUN-PERE-ET-FILS-68d9e1781299230338b9a7a0/",
+          "title": "DADOUN PERE ET FILS (41070883800017) , SAINT-MAUR-DES-FOSSES, Verif"
+        },
+        {
+          "url": "https://corporama.com/fr/societe/dadoun-pere-et-fils/410708838",
+          "title": "Société DADOUN PERE ET FILS à SAINT-MAUR-DES-FOSSES, 94100 (SIREN 410708838) : infos légales, contacts et actualités sur Corporama"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "CANAUX": {
+      "beneficiaire": "LES CANAUX",
+      "beneficiaire_normalise": "CANAUX",
+      "siret": "82868623800019",
+      "generated_at": "2026-04-21T23:55:49",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 qui accompagne et forme les acteurs de l'économie solidaire, circulaire et innovante, gère la Maison des Économies Solidaires et Innovantes.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/les-canaux-828686238.html",
+          "title": "Société LES CANAUX à PARIS (75019). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 828686238"
+        },
+        {
+          "url": "https://www.verif.com/societe/LES-CANAUX-828686238/",
+          "title": "LES CANAUX (82868623800019) , PARIS 19, Verif"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/les-canaux-828686238",
+          "title": "Association LES CANAUX à 75019 PARIS - SIREN 828 686 238"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/les-canaux-828686238",
+          "title": "Association LES CANAUX : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/62002429",
+          "title": "Les Canaux Paris - Formation continue (adresse, horaires)"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "GABY SOURIRE": {
+      "beneficiaire": "GABY SOURIRE",
+      "beneficiaire_normalise": "GABY SOURIRE",
+      "siret": "47978923200010",
+      "generated_at": "2026-04-22T00:05:32",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association de théâtre créée en 2004, spécialisée dans les arts du spectacle vivant avec actions de proximité et transmission artistique auprès des habitants.",
+      "perimetre_geographique": "Paris XVIIIe",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/gaby-sourire-479789232.html",
+          "title": "GABY SOURIRE (PARIS) Chiffre d'affaires, rsultat, bilans sur SOCIETE.COM - 479789232"
+        },
+        {
+          "url": "http://w35-associations.apps.paris.fr/searchasso/jsp/site/Portal.jsp?id=737&page=searchasso",
+          "title": "GABY SOURIRE"
+        },
+        {
+          "url": "https://www.societe.com/etablissement/gaby-sourire-47978923200010.html",
+          "title": "Etablissement GABY SOURIRE PARIS (75018) sur SOCIETE.COM (47978923200010)"
+        },
+        {
+          "url": "http://www.compagniegabysourire.com/",
+          "title": "COMPAGNIE GABY SOURIRE"
+        },
+        {
+          "url": "https://www.artcena.fr/annuaire/organismes/compagnie-gaby-sourire",
+          "title": "Compagnie Gaby Sourire | ARTCENA"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "RESOQUARTIER": {
+      "beneficiaire": "RESOQUARTIER",
+      "beneficiaire_normalise": "RESOQUARTIER",
+      "siret": "53466446100025",
+      "generated_at": "2026-04-22T00:05:40",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association d'habitants engagée pour la justice économique et sociale, l'inclusion de tous et la transition écologique, basée à Paris 13e",
+      "perimetre_geographique": "Paris XIIIe",
+      "sources": [
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/resoquartier-534664461",
+          "title": "Association RESOQUARTIER à 75013 PARIS - SIREN 534 664 461 | L’Annuaire des Entreprises"
+        },
+        {
+          "url": "https://www.societe.com/societe/resoquartier-534664461.html",
+          "title": "Société RESOQUARTIER à PARIS (75013). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 534664461"
+        },
+        {
+          "url": "https://www.verif.com/societe/RESOQUARTIER-534664461/",
+          "title": "RESOQUARTIER (53466446100025) , PARIS, Verif"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/siret/53466446100025",
+          "title": "Resoquartier à Paris : SIRET/SIREN, numéro de TVA, info légales - N° 53466446100025"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/resoquartier-534664461",
+          "title": "Association RESOQUARTIER : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "STE ECONOMIE MIXTE PARIS COMMERCE": {
+      "beneficiaire": "STE ECONOMIE MIXTE PARIS COMMERCE",
+      "beneficiaire_normalise": "STE ECONOMIE MIXTE PARIS COMMERCE",
+      "siret": "",
+      "generated_at": "2026-04-22T00:05:49",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Société d'économie mixte de la Ville de Paris spécialisée dans la revitalisation du commerce et de l'artisanat de proximité",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.lesepl.fr/epl-en-action/la-sem-paris-commerces-pour-doper-le-commerce-de-proximite/",
+          "title": "La Sem Paris Commerces pour doper le commerce de proximité - Fédération des élus des Entreprises publiques locales"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/societe-d-economie-mixte-paris-commerces-sem-pc-329121065",
+          "title": "Société SOCIETE D'ECONOMIE MIXTE PARIS COMMERCES (SEM PC) à 75004 PARIS 04 - SIREN 329 121 065 | L’Annuaire des Entreprises"
+        },
+        {
+          "url": "https://mairie10.paris.fr/pages/lancement-de-paris-commerces-agir-pour-la-diversite-et-la-vitalite-du-commerce-de-proximite-25224",
+          "title": "Lancement de Paris Commerces : agir pour la diversité et la vitalité du commerce de proximité"
+        },
+        {
+          "url": "https://www.paris.fr/pages/diversite-commerciale-3553",
+          "title": "Diversité commerciale - Ville de Paris"
+        },
+        {
+          "url": "https://www.techno-science.net/definition/10922.html",
+          "title": "Sociétés d'économie mixte de Paris : définition et explications"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "PASSERELLE 17 AS POUR LA REGIE": {
+      "beneficiaire": "PASSERELLE  17 AS POUR LA REGIE",
+      "beneficiaire_normalise": "PASSERELLE 17 AS POUR LA REGIE",
+      "siret": "",
+      "generated_at": "2026-04-22T00:06:57",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association agréée entreprise d'insertion qui travaille à la valorisation de son territoire par l'insertion professionnelle de ses habitants et par l'amélioration du cadre de vie",
+      "perimetre_geographique": "Paris 17e et 18e",
+      "sources": [
+        {
+          "url": "https://www.passerelles17.paris/",
+          "title": "Passerelles 17"
+        },
+        {
+          "url": "https://dora.inclusion.gouv.fr/structures/passerelles-17-regie",
+          "title": "Passerelles 17- Régie 17ème et 18ème | DORA"
+        },
+        {
+          "url": "https://www.passerelles17.paris/passerelles/notre_mission/",
+          "title": "Notre mission - Passerelles 17 : Passerelles17"
+        },
+        {
+          "url": "https://www.jeveuxaider.gouv.fr/organisations/28174-passerelles-1718",
+          "title": "Association Passerelles 17/18 - Devenez bénévole dans l'association Passerelles 17/18 - JeVeuxAider.gouv.fr"
+        },
+        {
+          "url": "https://www.societe.com/societe/passerelles-17-association-pour-la-regie-de-quartier-du-17e-nord-est-494216559.html",
+          "title": "Société PASSERELLES 17 ASSOCIATION POUR LA REGIE DE QUARTIER DU 17E NORD EST à PARIS (75017). Chiffre d'affaires, extrait Kbis, bénéfice, statuts, extrait RNE, bilans, actionnaires - 494216559"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "BAL": {
+      "beneficiaire": "LE BAL",
+      "beneficiaire_normalise": "BAL",
+      "siret": "49396355700027",
+      "generated_at": "2026-04-22T00:07:05",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 d'exposition, d'édition, de réflexion et de pédagogie dédiée à l'image contemporaine (photographie, vidéo, cinéma, nouveaux médias)",
+      "perimetre_geographique": "Paris XVIIIe",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/le-bal-493963557.html",
+          "title": "LE BAL (PARIS) Chiffre d'affaires, résultat, bilans sur SOCIETE.COM - 493963557"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/le-bal-493963557",
+          "title": "Association LE BAL à 75018 PARIS - SIREN 493 963 557"
+        },
+        {
+          "url": "https://rubypayeur.com/societe/le-bal-493963557",
+          "title": "Société LE BAL à PARIS 18 - SIREN : 493963557"
+        },
+        {
+          "url": "https://www.score3.fr/LE-BAL-493963557.shtml",
+          "title": "LE BAL - Siren 493963557 - 75018 Paris Informations financières et bilan d'entreprise sur Score3"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/le-bal-493963557",
+          "title": "Association LE BAL : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "LINKEE FRANCE": {
+      "beneficiaire": "LINKEE FRANCE",
+      "beneficiaire_normalise": "LINKEE FRANCE",
+      "siret": "837634534",
+      "generated_at": "2026-04-22T00:07:13",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 qui collecte les denrées alimentaires invendues auprès de commerçants et les redistribue à des personnes en situation de précarité et des étudiants.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/linkee-france-837634534.html",
+          "title": "Société LINKEE FRANCE à PARIS (75020). Chiffre d'affaires, extrait Kbis, bénéfice, statuts, extrait RNE, bilans, actionnaires - 837634534"
+        },
+        {
+          "url": "https://www.verif.com/societe/LINKEE-PARIS-837634534/",
+          "title": "LINKEE FRANCE (83763453400023) , PARIS 20, Verif"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/l-linkee-france-837634534",
+          "title": "Association L. LINKEE FRANCE : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://infonet.fr/entreprises/83763453400023-linkee-france/",
+          "title": "LINKEE FRANCE (L.) à Paris | Chiffre d'Affaires, Statuts"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/linkelles-922962147",
+          "title": "Association LINK'ELLES : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ETS PUBLIC PARC GRANDE": {
+      "beneficiaire": "ETS PUBLIC PARC GRANDE",
+      "beneficiaire_normalise": "ETS PUBLIC PARC GRANDE",
+      "siret": "391406956",
+      "generated_at": "2026-04-22T00:07:22",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Établissement public à caractère industriel et commercial (EPIC) chargé d'animer, d'exploiter et de promouvoir l'ensemble du parc et de la Grande Halle de la Villette",
+      "perimetre_geographique": "Paris XIXe",
+      "sources": [
+        {
+          "url": "https://lannuaire.service-public.gouv.fr/gouvernement/f984531c-55c6-4613-acaa-79fe51b88ecd",
+          "title": "Établissement public du Parc et de la Grande Halle de La Villette (EPPGHV) - Annuaire | Service Public"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/ets-public-parc-grande-halle-villette-391406956",
+          "title": "ets public parc grande halle villette - L'Annuaire des Entreprises"
+        },
+        {
+          "url": "https://www.societe.com/societe/ets-public-parc-grande-halle-villette-391406956.html",
+          "title": "Société ETS PUBLIC PARC GRANDE HALLE VILLETTE à PARIS (75019). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 391406956"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/ets-public-parc-grande-halle-villette-391406956",
+          "title": "Société ETS PUBLIC PARC GRANDE HALLE VILLETTE : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.verif.com/en/company/ETS-PUBLIC-PARC-GRANDE-HALLE-VILLETTE-68d9d0761299230338311f50/",
+          "title": "ETS PUBLIC PARC GRANDE HALLE VILLETTE (39140695600014) , PARIS, Verif"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "PROJETS 19": {
+      "beneficiaire": "PROJETS-19",
+      "beneficiaire_normalise": "PROJETS 19",
+      "siret": "42294844800044",
+      "generated_at": "2026-04-22T00:08:31",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association de développement local proposant l'accompagnement vers l'emploi et le soutien à la création d'activité pour les publics fragiles dans les quartiers nord-est parisiens.",
+      "perimetre_geographique": "Paris 18e-19e",
+      "sources": [
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/projets-19-422948448",
+          "title": "Association PROJETS-19 à 75019 PARIS - SIREN 422 948 448 | L’Annuaire des Entreprises"
+        },
+        {
+          "url": "https://www.societe.com/societe/projets-19-422948448.html",
+          "title": "Société PROJETS-19 à PARIS (75019). Chiffre d'affaires, extrait Kbis, bénéfice, statuts, extrait RNE, bilans, actionnaires - 422948448"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/projets-19-422948448",
+          "title": "Association PROJETS-19 : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://info-et-sols.val-de-loire.hub.inrae.fr/projets/projets-termines/projet-siren",
+          "title": "Projet SIREN - Site de l'unité Info&Sols"
+        },
+        {
+          "url": "https://www.linkedin.com/in/marion-cresp-826046128/",
+          "title": "Marion Cresp - PROJETS-19 | LinkedIn"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ACCELER PARISIEN D INNOVATION": {
+      "beneficiaire": "L'ACCELER. PARISIEN D'INNOVATION",
+      "beneficiaire_normalise": "ACCELER PARISIEN D INNOVATION",
+      "siret": "",
+      "generated_at": "2026-04-22T00:08:40",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association structurée à l'échelle parisienne qui apporte un soutien au déploiement de l'expérimentation « territoires zéro chômeur de longue durée » et des démarches territoriales innovantes visant la résorption du chômage de longue durée.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://assoce.fr/waldec/W751260695/L-ACC-L-RATEUR-PARISIEN-D-INNOVATION-LOCALE-POUR-L-EMPLOI",
+          "title": "L'ACCÉLÉRATEUR PARISIEN D'INNOVATION LOCALE POUR L'EMPLOI (W751260695) - Assoce.fr"
+        },
+        {
+          "url": "https://bigmedia.bpifrance.fr/nos-actualites/le-psg-lance-un-accelerateur-de-startups-a-station-f",
+          "title": "Le PSG lance un accélérateur de startups à Station F"
+        },
+        {
+          "url": "https://www.paris.fr/pages/le-fonds-parisien-pour-l-innovation-25999",
+          "title": "Le Fonds Parisien pour l’Innovation - Ville de Paris"
+        },
+        {
+          "url": "https://www.chooseparisregion.org/paris-regions-accelerators-incubators",
+          "title": "Paris Region's Accelerators & Incubators | Choose Paris Region"
+        },
+        {
+          "url": "https://www.paris.fr/pages/decouvrez-les-25-incubateurs-labellises-fonds-parisien-pour-l-innovation-23057",
+          "title": "Découvrez les 25 incubateurs labellisés Fonds parisien pour l'innovation"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "JEUNESSE FEU VERT": {
+      "beneficiaire": "JEUNESSE FEU VERT",
+      "beneficiaire_normalise": "JEUNESSE FEU VERT",
+      "siret": "775698103",
+      "generated_at": "2026-04-22T00:08:51",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Fondation d'action sociale sans hébergement qui accompagne enfants, adolescents et familles en difficultés économiques, sociales et d'insertion professionnelle, via prévention spécialisée, foyers éducatifs, services d'AEMO et formation professionnelle.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.pappers.fr/entreprise/jeunesse-feu-vert-775698103",
+          "title": "JEUNESSE FEU VERT (775698103) : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.societe.com/societe/jeunesse-feu-vert-775698103.html",
+          "title": "Société JEUNESSE FEU VERT à PARIS (75012). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 775698103"
+        },
+        {
+          "url": "https://www.verif.com/societe/JEUNESSE-FEU-VERT-775698103/",
+          "title": "JEUNESSE FEU VERT (77569810300311) , PARIS 12, Verif"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/09576199",
+          "title": "Fondation Jeunesse Feu Vert Epinay sur Seine - Association culturelle (adresse, horaires)"
+        },
+        {
+          "url": "https://annuaire.action-sociale.org/?c=fondation-jeunesse-feu-vert-750000614&details=caracteristiques",
+          "title": "FONDATION JEUNESSE FEU VERT - Caractéristiques"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "COLLECTIF DES VOUTES": {
+      "beneficiaire": "LE COLLECTIF DES VOUTES",
+      "beneficiaire_normalise": "COLLECTIF DES VOUTES",
+      "siret": "92379834200013",
+      "generated_at": "2026-04-22T00:10:01",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 qui gère un tiers lieu populaire occupant les voûtes SNCF de l'Ourcq, accueillant des associations locales et proposant des activités culturelles et participatives.",
+      "perimetre_geographique": "Paris XIXe",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/le-collectif-des-voutes-923798342.html",
+          "title": "LE COLLECTIF DES VOUTES (PARIS) Chiffre d'affaires, résultat, bilans sur SOCIETE.COM - 923798342"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/le-collectif-des-voutes-923798342",
+          "title": "le collectif des voutes - L'Annuaire des Entreprises - Data Gouv"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/le-collectif-des-voutes-923798342",
+          "title": "Association LE COLLECTIF DES VOUTES : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/etablissement/92379834200013",
+          "title": "Siège social - LE COLLECTIF DES VOUTES à 75019 PARIS"
+        },
+        {
+          "url": "https://www.helloasso.com/associations/le-collectif-des-voutes",
+          "title": "LE COLLECTIF DES VOUTES | HelloAsso"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "CO P1 SOLIDARITES ETUDIANTES": {
+      "beneficiaire": "CO P1 - SOLIDARITES ETUDIANTES",
+      "beneficiaire_normalise": "CO P1 SOLIDARITES ETUDIANTES",
+      "siret": "",
+      "generated_at": "2026-04-22T00:10:12",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 à but non lucratif qui lutte contre la précarité étudiante par des distributions gratuites de denrées alimentaires, produits d'hygiène et vêtements, ainsi que des actions d'accompagnement et d'accès à la culture et au sport.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://cop1.fr/",
+          "title": "Cop1 - Solidarités Étudiantes : Agir contre la précarité étudiante"
+        },
+        {
+          "url": "https://dioceseparis.fr/cop1-solidarites-etudiantes.html",
+          "title": "Cop1 - Solidarités étudiantes - Étudiants et Jeunes Pros - Diocèse de Paris"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Cop1_-_Solidarit%C3%A9s_%C3%89tudiantes",
+          "title": "Cop1 - Solidarités Étudiantes — Wikipédia"
+        },
+        {
+          "url": "https://www.facebook.com/Cop1.Solidarites.Etudiantes/",
+          "title": "Association Cop1 - Solidarités Étudiantes | Paris | Facebook"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/cop1-solidarites-etudiantes-889105425",
+          "title": "Association COP1 SOLIDARITES ETUDIANTES à 75005 PARIS - SIREN 889 105 425 | L’Annuaire des Entreprises"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "INDIGO STATIONNEMENT SB": {
+      "beneficiaire": "INDIGO STATIONNEMENT SB",
+      "beneficiaire_normalise": "INDIGO STATIONNEMENT SB",
+      "siret": "394187892",
+      "generated_at": "2026-04-22T00:10:21",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Société par actions simplifiée spécialisée dans l'exploitation et la gestion de parkings, le stationnement en voirie et les services auxiliaires des transports terrestres.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.score3.fr/SPIE-AUTOCITE-394187892.shtml",
+          "title": "INDIGO STATIONNEMENT SB - Siren 394187892 - 92800 Puteaux Informations financières et bilan d'entreprise sur Score3"
+        },
+        {
+          "url": "https://www.societe.com/societe/indigo-stationnement-sb-394187892.html",
+          "title": "Société INDIGO STATIONNEMENT SB à PUTEAUX (92800). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 394187892"
+        },
+        {
+          "url": "https://www.verif.com/societe/INDIGO-STATIONNEMENT-SB-394187892/",
+          "title": "Société INDIGO STATIONNEMENT SB à PUTEAUX (Chiffre d'affaires, bilans, résultat) avec Verif.com - Siren 394187892"
+        },
+        {
+          "url": "https://www.net1901.org/entreprise/INDIGO-STATIONNEMENT-SB,39418789200275.html",
+          "title": "INDIGO STATIONNEMENT SB - LA GARENNE-COLOMBES"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/indigo-stationnement-sb-394187892",
+          "title": "Société INDIGO STATIONNEMENT SB : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "EXPERIMENTATION TERRITORIALE CONTRE": {
+      "beneficiaire": "EXPERIMENTATION TERRITORIALE CONTRE",
+      "beneficiaire_normalise": "EXPERIMENTATION TERRITORIALE CONTRE",
+      "siret": "822626305",
+      "generated_at": "2026-04-22T00:10:32",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association gestionnaire du Fonds d'expérimentation territoriale contre le chômage de longue durée, chargée de financer une fraction de la rémunération des personnes embauchées et de signer les conventions avec les collectivités et organismes publics ou privés.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/experimentation-territoriale-contre-le-chomage-de-longue-duree-822626305.html",
+          "title": "EXPERIMENTATION TERRITORIALE CONTRE LE CHOMAGE DE LONGUE DUREE (REZE) Chiffre d'affaires, résultat, bilans sur SOCIETE.COM - 822626305"
+        },
+        {
+          "url": "https://www.score3.fr/EXPERIMENTATION-TERRITORIALE-CONTRE-LE-CHOMAGE-DE-LONGUE-DUREE-822626305.shtml",
+          "title": "EXPERIMENTATION TERRITORIALE CONTRE LE CHOMAGE DE LONGUE DUREE - ETCLD - Siren 822626305 - 44400 Reze Informations financières et bilan d'entreprise sur Score3"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/experimentation-territoriale-contre-le-chomage-de-longue-duree-etcld-822626305",
+          "title": "experimentation territoriale contre le chomage de longue ..."
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/etcld-experimentation-territoriale-contre-le-chomage-de-longue-duree-822626305",
+          "title": "Association ETCLD EXPERIMENTATION TERRITORIALE CONTRE LE CHOMAGE DE LONGUE DUREE : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://association.politologue.com/association-subventions-experimentation-territoriale-contre-le-chomage-de-longue-duree.822626305",
+          "title": "ASSOCIATIONS - EXPERIMENTATION TERRITORIALE CONTRE LE CHOMAGE DE LONGUE DUREE (ETCLD), PARIS 10, subventions de l'association"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "100 ETABLISS CULTUREL SOLIDAIRE": {
+      "beneficiaire": "LE 100 ETABLISS. CULTUREL SOLIDAIRE",
+      "beneficiaire_normalise": "100 ETABLISS CULTUREL SOLIDAIRE",
+      "siret": "",
+      "generated_at": "2026-04-22T00:10:45",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Société Coopérative d'Intérêt Collectif (SCIC) fondée en 2008, laboratoire d'idées et d'expérimentations au profit d'une nouvelle forme de coopération culturelle, sociale et solidaire. Mise à disposition d'espaces de travail mutualisés et coopératifs pour les pratiques artistiques ; formation, insertion professionnelle et accompagnement économique des acteurs culturels.",
+      "perimetre_geographique": "Paris XIIe",
+      "sources": [
+        {
+          "url": "https://100ecs.fr/",
+          "title": "Le 100ecs - Établissement culturel solidaire"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/le-100-etablissement-culturel-solidaire-100-ecs-790060891",
+          "title": "Société LE 100 ETABLISSEMENT CULTUREL SOLIDAIRE (100 ECS) à 75012 PARIS - SIREN 790 060 891 | L’Annuaire des Entreprises"
+        },
+        {
+          "url": "https://www.lylo.fr/lieu/concerts-le-100-etablissement-culturel-solidaire-paris-12",
+          "title": "Le 100 - Etablissement Culturel Solidaire à Paris 12e – Concerts"
+        },
+        {
+          "url": "https://www.artcena.fr/annuaire/organismes/le-100-etablissement-culturel-solidaire",
+          "title": "Le 100, Etablissement culturel solidaire (100ECS) | ARTCENA"
+        },
+        {
+          "url": "https://feverup.com/en/paris/venue/le-100-etablissement-culturel-solidaire",
+          "title": "Le 100 - Établissement Culturel Solidaire (Paris): Events & Tickets | Fever"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASS LOGEMENT JEUNES TRAVAILLEURS": {
+      "beneficiaire": "ASS LOGEMENT JEUNES TRAVAILLEURS",
+      "beneficiaire_normalise": "ASS LOGEMENT JEUNES TRAVAILLEURS",
+      "siret": "775642549",
+      "generated_at": "2026-04-22T00:11:55",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association à but non lucratif gérant des foyers pour jeunes travailleurs et des résidences sociales en Île-de-France.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.pappers.fr/entreprise/altram-ass-pour-le-logement-jeunes-travailleurs-775642549",
+          "title": "ALTRAM ASS POUR LE LOGEMENT JEUNES TRAVAILLEURS : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/ass-pour-le-logement-jeunes-travailleurs-espace-provence-altram-775642549",
+          "title": "ass pour le logement jeunes travailleurs (espace provence ..."
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/aljt-association-pour-le-logement-des-jeunes-travailleurs-775666431",
+          "title": "ALJT ASSOCIATION POUR LE LOGEMENT DES JEUNES TRAVAILLEURS : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.score3.fr/ASS-LOGEMENT-JEUNES-TRAVAILLEURS-775666431.shtml",
+          "title": "ASSOCIATION POUR LE LOGEMENT DES JEUNES TRAVAILLEURS - ALJT - Siren 775666431 - Informations financières et bilan d'entreprise sur Score3"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/61579031",
+          "title": "ASS LOGEMENT JEUNES TRAVAILLEURS Fontenay sous Bois - Foyer pour jeunes travailleurs (adresse)"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "REVOIR NOTRE DAME DE PARIS": {
+      "beneficiaire": "REVOIR NOTRE-DAME DE PARIS",
+      "beneficiaire_normalise": "REVOIR NOTRE DAME DE PARIS",
+      "siret": "881635122",
+      "generated_at": "2026-04-22T00:12:09",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association déclarée organisant des manifestations culturelles et participantaux opérations de restauration et de rayonnement de la cathédrale Notre-Dame de Paris.",
+      "perimetre_geographique": "Paris IVe",
+      "sources": [
+        {
+          "url": "https://www.restauronsnotredame.org/",
+          "title": "Restaurons Notre-Dame | Paris | HOME"
+        },
+        {
+          "url": "https://amisnotredameparis.fr/",
+          "title": "Société des Amis de Notre-Dame de Paris"
+        },
+        {
+          "url": "https://www.notredamedeparis.fr/comprendre/autres-acteurs/",
+          "title": "Les autres acteurs de Notre-Dame - Cathédrale Notre-Dame de Paris"
+        },
+        {
+          "url": "https://www.friendsofnotredamedeparis.org/",
+          "title": "Friends of Notre-Dame de Paris | Rebuild, Restore Notre-Dame"
+        },
+        {
+          "url": "https://rebatirnotredamedeparis.fr/",
+          "title": "Rebâtir Notre-Dame de Paris - Accueil"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "AGENCE D AIDE A LA COOPERATION": {
+      "beneficiaire": "AGENCE D'AIDE A LA COOPERATION",
+      "beneficiaire_normalise": "AGENCE D AIDE A LA COOPERATION",
+      "siret": "402886816",
+      "generated_at": "2026-04-22T00:12:21",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association de solidarité internationale qui mène des actions d'aide humanitaire et de développement dans 35 pays.",
+      "perimetre_geographique": "international",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/agence-d-aide-a-la-cooperation-technique-et-au-developpement-402886816.html",
+          "title": "Société AGENCE D'AIDE A LA COOPERATION TECHNIQUE ET AU DEVELOPPEMENT à PARIS (75009). Chiffre d'affaires, extrait Kbis, bénéfice, statuts, extrait RNE, bilans, actionnaires - 402886816"
+        },
+        {
+          "url": "https://www.score3.fr/AGENCE-DAIDE-A-LA-COOPERATION-TECHNIQUE-ET-AU-DEVELOPPEMENT-402886816.shtml",
+          "title": "AGENCE D'AIDE A LA COOPERATION TECHNIQUE ET AU DEVELOPPEMENT - ACTED - Siren 402886816 - 75009 Paris Informations financières et bilan d'entreprise sur Score3"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/agence-d-aide-a-la-cooperation-technique-et-au-developpement-acted-402886816",
+          "title": "Association AGENCE D'AIDE A LA COOPERATION TECHNIQUE ET AU DEVELOPPEMENT (ACTED) à 75009 PARIS - SIREN 402 886 816 | L’Annuaire des Entreprises"
+        },
+        {
+          "url": "https://www.manageo.fr/entreprises/402886816.html",
+          "title": "▷Société AGENCE D'AIDE A LA COOPERATION TECHNIQUE ET AU DEVELOPPEMENT à PARIS : CA, résultats, bilan gratuit, SIRET, dirigeants, solvabilité, n° TVA - manageo.fr"
+        },
+        {
+          "url": "https://rubypayeur.com/societe/agence-d-aide-a-la-cooperation-technique-et-au-developpement-402886816",
+          "title": "AGENCE D'AIDE A LA COOPERATION TECHNIQUE ET AU DEVELOPPEMENT (402886816) 🚦 - Solvabilité, dirigeants et avis - 2024"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "CAISSE DES REGLEMENTS PECUNIAIRES EFFECTUES PAR LES AVOCATS A LA COUR DE PARIS CARPA": {
+      "beneficiaire": "CAISSE DES REGLEMENTS PECUNIAIRES EFFECTUES PAR LES AVOCATS A LA COUR DE PARIS (CARPA)",
+      "beneficiaire_normalise": "CAISSE DES REGLEMENTS PECUNIAIRES EFFECTUES PAR LES AVOCATS A LA COUR DE PARIS CARPA",
+      "siret": "78418121600051",
+      "generated_at": "2026-04-22T00:13:31",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association déclarée gérant les comptes de règlements pécuniaires des avocats du barreau de Paris, assurant la sécurisation des opérations de maniements de fonds pour le compte des clients.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Caisse_des_r%C3%A8glements_p%C3%A9cuniaires_des_avocats",
+          "title": "Caisse des règlements pécuniaires des avocats — Wikipédia"
+        },
+        {
+          "url": "https://www.legifrance.gouv.fr/codes/section_lc/JORFTEXT000000356568/LEGISCTA000006145648/2022-07-02",
+          "title": "Section II : Caisses des règlements pécuniaires des avocats (CARPA). (Articles 236 à 242) - Légifrance"
+        },
+        {
+          "url": "https://www.lexbase.fr/encyclopedie-juridique/59235568-etude-les-caisses-des-reglements-pecuniaires-des-avocats-carpa",
+          "title": "ETUDE : Les caisses des règlements pécuniaires des avocats (Carpa) | Lexbase"
+        },
+        {
+          "url": "https://www.dictionnaire-juridique.com/definition/carpa-caisse-autonome-des-reglements-pecuniaires-des-avocats.php",
+          "title": "CARPA (Caisse Autonome des Règlements Pécuniaires des Avocats) - Définition - Dictionnaire juridique"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/caisse-des-reglements-pecuniaires-effectues-par-les-avocats-a-la-cour-de-paris-carpa-carpa-carpa-784181216",
+          "title": "caisse des reglements pecuniaires effectues par les avocats a ..."
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "EMMAUS ALTERNATIVE": {
+      "beneficiaire": "EMMAUS ALTERNATIVE",
+      "beneficiaire_normalise": "EMMAUS ALTERNATIVE",
+      "siret": "382387546",
+      "generated_at": "2026-04-22T00:13:40",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association d'insertion et d'action sociale qui propose un chantier et une entreprise d'insertion pour accompagner les plus démunis",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://rubypayeur.com/societe/emmaus-alternatives-382387546",
+          "title": "Société EMMAUS ALTERNATIVES à MONTREUIL - SIREN : 382387546"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/emmaus-alternatives-382387546",
+          "title": "Association EMMAUS ALTERNATIVES à 93100 MONTREUIL - SIREN 382 387 546 | L’Annuaire des Entreprises"
+        },
+        {
+          "url": "https://www.verif.com/societe/EMMAUS-ALTERNATIVES-382387546/",
+          "title": "EMMAUS ALTERNATIVES (38238754600106) , MONTREUIL, Verif"
+        },
+        {
+          "url": "https://www.manageo.fr/entreprises/382387546.html",
+          "title": "▷Société EMMAUS ALTERNATIVES à MONTREUIL : CA, résultats, bilan gratuit, SIRET, dirigeants, solvabilité, n° TVA - manageo.fr"
+        },
+        {
+          "url": "https://www.societe.com/societe/emmaus-alternatives-382387546.html",
+          "title": "Société EMMAUS ALTERNATIVES à MONTREUIL (93100). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 382387546"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "OBSERVATOIRE REGION DU BRUIT EN IDF": {
+      "beneficiaire": "OBSERVATOIRE REGION DU BRUIT EN IDF",
+      "beneficiaire_normalise": "OBSERVATOIRE REGION DU BRUIT EN IDF",
+      "siret": "",
+      "generated_at": "2026-04-22T00:13:49",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 chargée de l'observation, l'évaluation et la cartographie de l'environnement sonore en Île-de-France, ainsi que de l'accompagnement des collectivités et de la sensibilisation du public.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.bruitparif.fr/",
+          "title": "L'observatoire du bruit en Ile-de-France"
+        },
+        {
+          "url": "https://www.iledefrance.fr/tous-les-organismes-associes/bruitparif",
+          "title": "Bruitparif | Région Île-de-France"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/bruitparif-observatoire-regional-du-bruit-en-idf-483921219",
+          "title": "Association BRUITPARIF OBSERVATOIRE REGIONAL DU BRUIT EN IDF : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "http://ompar.fluxus.org/charm-https-www.iledefrance.ars.sante.fr/le-bruit-en-ile-de-france",
+          "title": "Le bruit en Île-de-France | Agence régionale de santé Ile-de-France"
+        },
+        {
+          "url": "https://www.societe.com/societe/observatoire-regional-du-bruit-en-idf-483921219.html",
+          "title": "OBSERVATOIRE REGIONAL DU BRUIT EN IDF (SAINT-DENIS) Chiffre d'affaires, rsultat, bilans sur SOCIETE.COM - 483921219"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASSOCIATION ESPACES": {
+      "beneficiaire": "ASSOCIATION ESPACES",
+      "beneficiaire_normalise": "ASSOCIATION ESPACES",
+      "siret": "399241090",
+      "generated_at": "2026-04-22T00:15:00",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association d'insertion par l'écologie urbaine, opérant des chantiers d'insertion pour l'entretien des espaces verts, pigeonniers, jardins partagés et compostage urbain.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.verif.com/societe/ASSOCIATION-ESPACES-399241090/",
+          "title": "Société ASSOCIATION ESPACES à CHAVILLE - Chiffre d'affaires, bilan, résultat - Siren / |Verif.com"
+        },
+        {
+          "url": "https://www.societe.com/societe/association-espaces-399241090.html",
+          "title": "Société ASSOCIATION ESPACES à CHAVILLE (92370). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 399241090"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/09465606",
+          "title": "Association Espaces Chaville - Association humanitaire (adresse, horaires)"
+        },
+        {
+          "url": "https://rubypayeur.com/societe/association-espaces-399241090",
+          "title": "ASSOCIATION ESPACES (399241090) 🚦 - Solvabilité, dirigeants et avis - 2025"
+        },
+        {
+          "url": "https://www.manageo.fr/entreprises/399241090.html",
+          "title": "▷Société ASSOCIATION ESPACES à CHAVILLE : CA, résultats, bilan gratuit, SIRET, dirigeants, solvabilité, n° TVA - manageo.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASSOC DEVELOPP DE LA DANSE A PARIS": {
+      "beneficiaire": "ASSOC DEVELOPP DE LA DANSE A PARIS",
+      "beneficiaire_normalise": "ASSOC DEVELOPP DE LA DANSE A PARIS",
+      "siret": "439290388",
+      "generated_at": "2026-04-22T00:15:11",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 qui soutient, promeut et favorise la création artistique en danse, notamment par la production de spectacles, l'accueil d'artistes et compagnies, l'organisation de formations et du Festival Faits d'hiver, et la gestion du centre de création micadanses.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/assoc-developp-de-la-danse-a-paris-439290388.html",
+          "title": "Société ASSOC DEVELOPP DE LA DANSE A PARIS à PARIS (75004). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 439290388"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/assoc-developp-de-la-danse-a-paris-439290388",
+          "title": "Association ASSOC DEVELOPP DE LA DANSE A PARIS : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.journal-officiel.gouv.fr/associations/recherche/resultats/compte/2020-06-12?refine=region_dep/reg_10&page=2048&size=10",
+          "title": "Résultats de recherche | Associations | Page 2048 | journal-officiel.gouv.fr"
+        },
+        {
+          "url": "https://www.journal-officiel.gouv.fr/associations/recherche/resultats/compte/2019-12-17?cancelrefine=region_dep%2Fdept_81&page=9701&size=10&sort=date",
+          "title": "Résultats de recherche | Associations | journal-officiel.gouv.fr"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/09270307",
+          "title": "Assoc Developp De La Dans Paris - Producteur de spectacles (adresse, horaires)"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "OEUVRES HOSP FR DE L ORDRE DE MALTE": {
+      "beneficiaire": "OEUVRES HOSP FR DE L ORDRE DE MALTE",
+      "beneficiaire_normalise": "OEUVRES HOSP FR DE L ORDRE DE MALTE",
+      "siret": "",
+      "generated_at": "2026-04-22T00:15:21",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association catholique reconnue d'utilité publique depuis 1928, agréée de sécurité civile, qui gère 13 établissements médico-sociaux et mène des actions de solidarité, secourisme et santé en France et à l'international.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/%C5%92uvres_hospitali%C3%A8res_fran%C3%A7aises_de_l'ordre_de_Malte",
+          "title": "Œuvres hospitalières françaises de l'ordre de Malte — Wikipédia"
+        },
+        {
+          "url": "https://www.jeveuxaider.gouv.fr/organisations/11828-oeuvres-hospitalieres-francaises-de-lordre-de-malte-france",
+          "title": "Association Œuvres hospitalières françaises de l'Ordre de Malte France - Devenez bénévole dans l'association Œuvres hospitalières françaises de l'Ordre de Malte France - JeVeuxAider.gouv.fr"
+        },
+        {
+          "url": "https://www.ordredemaltefrance.org/association/",
+          "title": "L'Association - Ordre de Malte France"
+        },
+        {
+          "url": "https://annuaire.action-sociale.org/?c=oeuvres-hosp--de-l-ordre-de-malte-750810590&details=caracteristiques",
+          "title": "OEUVRES HOSPITALIERES ORDRE DE MALTE - Caractéristiques"
+        },
+        {
+          "url": "https://annuaire.action-sociale.org/?c=oeuvres-hosp--de-l-ordre-de-malte-750810590&details=etablissements",
+          "title": "OEUVRES HOSPITALIERES ORDRE DE MALTE - Établissements"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ARCAT": {
+      "beneficiaire": "ARCAT",
+      "beneficiaire_normalise": "ARCAT",
+      "siret": "821686417",
+      "generated_at": "2026-04-22T00:16:32",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 pionnière dans la lutte contre le VIH/sida et les hépatites virales, agissant pour l'accès aux soins et aux droits des personnes vivant avec une pathologie chronique évolutive et/ou en situation de précarité.",
+      "perimetre_geographique": "Paris et Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/arcat-821686417.html",
+          "title": "Société ARCAT à PARIS (75002). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 821686417"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/arcat-821686417",
+          "title": "Société ARCAT (821686417) : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/arcat-821686417",
+          "title": "Société ARCAT à 75002 PARIS - SIREN 821 686 417"
+        },
+        {
+          "url": "https://www.infogreffe.fr/entreprise-societe/821686417-arcat-750116B17220.html",
+          "title": "ARCAT à PARIS (821686417), CA, bilan, KBIS - Infogreffe"
+        },
+        {
+          "url": "https://rubypayeur.com/societe/arcat-821686417",
+          "title": "ARCAT (821686417) 🚦 - Solvabilité, dirigeants et avis - 2023"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "FEDERATION DES CRECHES GRIBOUILLE": {
+      "beneficiaire": "FEDERATION DES CRECHES GRIBOUILLE",
+      "beneficiaire_normalise": "FEDERATION DES CRECHES GRIBOUILLE",
+      "siret": "448496232",
+      "generated_at": "2026-04-22T00:16:43",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 gérant des crèches associatives et structures d'accueil collectif de la petite enfance pour enfants de 2 mois à 4 ans.",
+      "perimetre_geographique": "Paris XIVe",
+      "sources": [
+        {
+          "url": "https://www.score3.fr/FEDERATION-DES-CRECHES-GRIBOUILLE-448496232.shtml",
+          "title": "FEDERATION DES CRECHES GRIBOUILLE - Siren 448496232 - 76000 Rouen Informations financières et bilan d'entreprise sur Score3"
+        },
+        {
+          "url": "https://www.societe.com/societe/federation-des-creches-gribouille-448496232.html",
+          "title": "Société FEDERATION DES CRECHES GRIBOUILLE à ROUEN (76000). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 448496232"
+        },
+        {
+          "url": "https://pros.annuairefrancais.fr/75/75014/3822571_federation-des-creches-gribouille-paris-14-eme-75-paris.html",
+          "title": "FEDERATION DES CRECHES GRIBOUILLE a 75014 Paris 14 ème associations Autres (75) Annuaire Français"
+        },
+        {
+          "url": "https://gowork.fr/federation-des-creches-gr-rouen",
+          "title": "Avis FEDERATION DES CRECHES GRIBOUILLE | GoWork.fr"
+        },
+        {
+          "url": "https://hoodspot.fr/associations/federation-des-creches-gribouille-44849623200027/",
+          "title": "FEDERATION DES CRECHES GRIBOUILLE - Associations à Paris (75014) - Adresse et téléphone sur l’annuaire Hoodspot"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASSOC PREVENTION SITE VILLETTE": {
+      "beneficiaire": "ASSOC PREVENTION SITE VILLETTE",
+      "beneficiaire_normalise": "ASSOC PREVENTION SITE VILLETTE",
+      "siret": "340635176",
+      "generated_at": "2026-04-22T00:16:53",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association de prévention et d'insertion sociale et professionnelle intervenant sur le site de La Villette, proposant formation, prévention spécialisée, accompagnement à l'emploi et solutions alternatives à l'incarcération.",
+      "perimetre_geographique": "Paris XIXe",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/assoc-prevention-site-villette-340635176.html",
+          "title": "ASSOC PREVENTION SITE VILLETTE (PARIS) Chiffre d'affaires, résultat, bilans sur SOCIETE.COM - 340635176"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/57626674",
+          "title": "Association Prévention Site Villette Apsv Paris - Formation professionnelle (adresse, horaires, avis)"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/assoc-prevention-site-villette-apsv-340635176",
+          "title": "assoc prevention site villette (apsv) - L'Annuaire des Entreprises"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/apsv-assoc-prevention-site-villette-340635176",
+          "title": "Association APSV ASSOC PREVENTION SITE VILLETTE : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://certif-icpf.org/certifies/associationdeprventiondusitedelavillette-apsv",
+          "title": "Association de Prévention du Site de la Villette - APSV QUA006875 est certifié par ICPF"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "TRAVAIL ET VIE": {
+      "beneficiaire": "TRAVAIL ET VIE",
+      "beneficiaire_normalise": "TRAVAIL ET VIE",
+      "siret": "325894665",
+      "generated_at": "2026-04-22T00:17:02",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 de l'insertion par l'activité économique, gérant une entreprise d'insertion et des chantiers d'insertion en bâtiment, blanchisserie et agriculture urbaine pour la réinsertion professionnelle et sociale.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/travail-et-vie-325894665",
+          "title": "Association TRAVAIL ET VIE à 75018 PARIS - SIREN 325 894 665 | L’Annuaire des Entreprises"
+        },
+        {
+          "url": "https://www.societe.com/societe/travail-et-vie-325894665.html",
+          "title": "Société TRAVAIL ET VIE à PARIS (75018). Chiffre d'affaires, extrait Kbis, bénéfice, statuts, extrait RNE, bilans, actionnaires - 325894665"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/travail-et-vie-325894665",
+          "title": "Association TRAVAIL ET VIE : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://fr.kompass.com/c/travail-et-vie/fra04nw82/",
+          "title": "Travail Et Vie - Paris 19 75019 (Paris), 2 B Rue De L Ourcq , SIREN 32"
+        },
+        {
+          "url": "https://annuaire.action-sociale.org/?c=association-travail-et-vie-750825861&details=caracteristiques",
+          "title": "ASSOCIATION TRAVAIL ET VIE - Caractéristiques"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASSOCIATION CITE THEATRE": {
+      "beneficiaire": "ASSOCIATION CITE-THEATRE",
+      "beneficiaire_normalise": "ASSOCIATION CITE THEATRE",
+      "siret": "82095968200023",
+      "generated_at": "2026-04-22T00:18:12",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 qui gère le Théâtre de la Cité internationale, spécialisée dans la création et diffusion pluridisciplinaire du spectacle vivant contemporain, avec politique de résidence d'artistes.",
+      "perimetre_geographique": "Paris XIVe",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/association-cite-theatre-820959682.html",
+          "title": "ASSOCIATION CITE-THEATRE (PARIS) Chiffre d'affaires, résultat, bilans sur SOCIETE.COM - 820959682"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/association-cite-theatre-820959682",
+          "title": "Association ASSOCIATION CITE-THEATRE à 75014 PARIS 14"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/association-cite-theatre-820959682",
+          "title": "ASSOCIATION CITE-THEATRE : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.maitredata.com/app/societe/association-cite-theatre",
+          "title": "ASSOCIATION CITE-THEATRE"
+        },
+        {
+          "url": "https://fr.kompass.com/c/association-cite-theatre/fra01z69f/",
+          "title": "Association Cite-theatre - Paris 14 75014 (Paris), 21 Bd Jourdan , SIR"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "OZAR HATORAH PARIS TREIZE CRECHE": {
+      "beneficiaire": "OZAR HATORAH PARIS TREIZE CRECHE",
+      "beneficiaire_normalise": "OZAR HATORAH PARIS TREIZE CRECHE",
+      "siret": "832903397",
+      "generated_at": "2026-04-22T00:18:21",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association gérant une crèche collective multi-accueil agréée par la PMI, accueillant 66 enfants de 3 mois à 3 ans.",
+      "perimetre_geographique": "Paris XIIIe",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/association-ozar-hatorah-paris-treize-creche-832903397.html",
+          "title": "Société ASSOCIATION OZAR HATORAH PARIS TREIZE CRECHE à PARIS (75013). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 832903397"
+        },
+        {
+          "url": "https://ozarhatorah.com/ozar-hatorah-13/",
+          "title": "à la crèche ozar hatorah paris 13"
+        },
+        {
+          "url": "https://www.societe.com/liste-8891A-75.html",
+          "title": "Societe.com : RCS, siret, bilan, Accueil de jeunes enfants pour le dpartement Paris (75)"
+        },
+        {
+          "url": "https://ozarhatorah.com/la-creche/",
+          "title": "Paris 11 La crèche – OZAR HATORAH"
+        },
+        {
+          "url": "https://www.paris.fr/lieux/creche-associative-ozar-hatorah-3528",
+          "title": "Crèche associative ozar hatorah - Ville de Paris"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "AU TEMPS DU JEU": {
+      "beneficiaire": "AU TEMPS DU JEU",
+      "beneficiaire_normalise": "AU TEMPS DU JEU",
+      "siret": "88990882800011",
+      "generated_at": "2026-04-22T00:18:29",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association qui gère la ludothèque Denise Garon et propose des espaces de jeu, favorise le jeu comme créateur de lien social et soutien à la parentalité.",
+      "perimetre_geographique": "Paris XIIIe",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/au-temps-du-jeu-889908828.html",
+          "title": "Société AU TEMPS DU JEU à PARIS (75013). Chiffre d'affaires, extrait Kbis, bénéfice, statuts, extrait RNE, bilans, actionnaires - 889908828"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/au-temps-du-jeu-889908828",
+          "title": "Association AU TEMPS DU JEU à 75013 PARIS - SIREN 889 908 828 | L’Annuaire des Entreprises"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/au-temps-du-jeu-889908828",
+          "title": "Association AU TEMPS DU JEU : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/au-coin-du-jeu-892391152",
+          "title": "Société AU COIN DU JEU : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.autempsdujeu.paris/",
+          "title": "Au Temps Du Jeu"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "LEVALLOIS PARIS SAINT CLOUD": {
+      "beneficiaire": "LEVALLOIS PARIS SAINT-CLOUD",
+      "beneficiaire_normalise": "LEVALLOIS PARIS SAINT CLOUD",
+      "siret": "794758946",
+      "generated_at": "2026-04-22T00:18:41",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Société anonyme gérant un club professionnel de volley-ball féminin (Les Mariannes 92) évoluant en Ligue A Féminine.",
+      "perimetre_geographique": "Levallois-Perret (Hauts-de-Seine)",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/levallois-paris-saint-cloud-794758946.html",
+          "title": "LEVALLOIS PARIS SAINT-CLOUD (LEVALLOIS-PERRET) Chiffre d'affaires, rsultat, bilans sur SOCIETE.COM - 794758946"
+        },
+        {
+          "url": "https://www.verif.com/societe/STADE-FRANCAIS-PARIS-SAINT-CLOUD-794758946/",
+          "title": "LEVALLOIS PARIS SAINT-CLOUD (79475894600030) , LEVALLOIS-PERRET, Verif"
+        },
+        {
+          "url": "https://www.score3.fr/STADE-FRANCAIS-PARIS-SAINT-CLOUD-794758946.shtml",
+          "title": "STADE FRANCAIS PARIS SAINT-CLOUD - SCPSF - Siren 794758946 - 92210 St Cloud Informations financières et bilan d'entreprise sur Score3"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/levallois-paris-saint-cloud-les-mariannes-92-lpsc-794758946",
+          "title": "levallois paris saint-cloud (les mariannes 92) (lpsc)"
+        },
+        {
+          "url": "https://women.volleybox.net/levallois-paris-saint-cloud-t2218/players",
+          "title": "Levallois Paris Saint-Cloud » rosters :: Women Volleybox"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "FONDATION VOIR ET ENTENDRE": {
+      "beneficiaire": "FONDATION VOIR ET ENTENDRE",
+      "beneficiaire_normalise": "FONDATION VOIR ET ENTENDRE",
+      "siret": "498340892",
+      "generated_at": "2026-04-22T00:19:53",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Fondation de coopération scientifique qui soutient et coordonne les projets de recherche de l'Institut de la Vision sur les maladies de la vision et de l'audition.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/fondation-voir-et-entendre-498340892",
+          "title": "Société FONDATION VOIR ET ENTENDRE à 75012 PARIS - SIREN 498 340 892 | L’Annuaire des Entreprises"
+        },
+        {
+          "url": "https://www.verif.com/en/company/FONDATION-VOIR-ET-ENTENDRE-68d9c2111299230338d11b0d/",
+          "title": "FONDATION VOIR ET ENTENDRE (49834089200021) , PARIS, Verif"
+        },
+        {
+          "url": "https://www.societe.com/societe/fondation-voir-et-entendre-498340892.html",
+          "title": "Société FONDATION VOIR ET ENTENDRE à PARIS (75012). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 498340892"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/53289174",
+          "title": "Institut de la Vision - Fondation Voir et Entendre Paris - Police scientifique (adresse, horaires)"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/fondation-voir-et-entendre-498340892",
+          "title": "FONDATION VOIR ET ENTENDRE : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "CHAMPS DES POSSIBLES": {
+      "beneficiaire": "LES CHAMPS DES POSSIBLES",
+      "beneficiaire_normalise": "CHAMPS DES POSSIBLES",
+      "siret": "514027945",
+      "generated_at": "2026-04-22T00:20:02",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Coopérative d'intérêt collectif (SCIC/SA) facilitant l'installation d'agriculteurs, artisans et acteurs de la transition en Île-de-France, via une couveuse d'activités, une coopérative d'activités-emploi et un organisme de formation.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.verif.com/en/company/LES-CHAMPS-DES-POSSIBLES-68d9c08b129923033813c49a/",
+          "title": "LES CHAMPS DES POSSIBLES (51402794500013) , VILLENAUXE-LA-PETITE, Verif"
+        },
+        {
+          "url": "https://www.societe.com/societe/les-champs-des-possibles-514027945.html",
+          "title": "Société LES CHAMPS DES POSSIBLES à VILLENAUXE-LA-PETITE (77480). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 514027945"
+        },
+        {
+          "url": "https://data.inpi.fr/entreprises/514027945",
+          "title": "LES CHAMPS DES POSSIBLES (Entreprises) - Data INPI"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/les-champs-des-possibles-514027945",
+          "title": "Société LES CHAMPS DES POSSIBLES : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://app.vikta.com/vikdata/les-champs-des-possibles-514027945",
+          "title": "Company LES CHAMPS DES POSSIBLES 514027945: Capital, Statut…"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASSOCIATION CRECHE AVENIR": {
+      "beneficiaire": "ASSOCIATION CRECHE AVENIR",
+      "beneficiaire_normalise": "ASSOCIATION CRECHE AVENIR",
+      "siret": "33973531800018",
+      "generated_at": "2026-04-22T00:20:14",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 gérant une crèche collective d'accueil de jeunes enfants à Paris.",
+      "perimetre_geographique": "Paris XIXe",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/association-creche-avenir-339735318.html",
+          "title": "ASSOCIATION CRECHE AVENIR (PARIS) Chiffre d'affaires, résultat, bilans sur SOCIETE.COM - 339735318"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/association-creche-avenir-339735318",
+          "title": "ASSOCIATION CRECHE AVENIR : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://fr.kompass.com/c/association-creche-avenir/fr0304862/",
+          "title": "Association Creche Avenir - Paris 19 75019 (Paris), 29 Rue De Thionville , SIREN 339 735 318"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/05223231",
+          "title": "Crèche Avenir Paris - Crèche (adresse, horaires)"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/association-creche-avenir-339735318",
+          "title": "Association ASSOCIATION CRECHE AVENIR à 75019 PARIS"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASSOCIATION ARTHUR ET MARINE": {
+      "beneficiaire": "ASSOCIATION ARTHUR ET MARINE",
+      "beneficiaire_normalise": "ASSOCIATION ARTHUR ET MARINE",
+      "siret": "477728901",
+      "generated_at": "2026-04-22T00:21:24",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association déclarée spécialisée dans l'accueil de jeunes enfants, exploitant des crèches collectives à Paris.",
+      "perimetre_geographique": "Paris XIIIe",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/association-arthur-et-marine-477728901.html",
+          "title": "ASSOCIATION ARTHUR ET MARINE (PARIS 13) Chiffre d'affaires, rsultat, bilans sur SOCIETE.COM - 477728901"
+        },
+        {
+          "url": "https://www.verif.com/societe/ASSOCIATION-ARTHUR-ET-MARINE-477728901/",
+          "title": "Société ASSOCIATION ARTHUR ET MARINE à PARIS - Chiffre d'affaires, bilan, résultat - Siren / |Verif.com"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/association-arthur-et-marine-477728901",
+          "title": "ASSOCIATION ARTHUR ET MARINE : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.manageo.fr/entreprises/477728901.html",
+          "title": "ASSOCIATION ARTHUR ET MARINE à PARIS 13 sur Manageo.fr (47772890100018) Siège social"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/12119548",
+          "title": "Arthur Et Marine Paris - Crèche (adresse, horaires)"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "PARIS DANCE PROJECT": {
+      "beneficiaire": "PARIS DANCE PROJECT",
+      "beneficiaire_normalise": "PARIS DANCE PROJECT",
+      "siret": "92314789600016",
+      "generated_at": "2026-04-22T00:21:32",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association dédiée à la promotion et la transmission de la danse comme vecteur de progrès social, proposant des programmes d'éducation artistique gratuite, de création chorégraphique et de performances dans l'espace public.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/paris-dance-project-923147896.html",
+          "title": "PARIS DANCE PROJECT (PARIS) Chiffre d'affaires, résultat, bilans sur SOCIETE.COM - 923147896"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/siret/92314789600016",
+          "title": "Paris Dance Project : SIRET/SIREN, numéro de TVA, info légales - N° 92314789600016"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/paris-dance-project-923147896",
+          "title": "Association PARIS DANCE PROJECT : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://entreprises.lagazettefrance.fr/entreprise/paris-dance-project-923147896",
+          "title": "Société PARIS DANCE PROJECT à PARIS (75007) | La Gazette France"
+        },
+        {
+          "url": "https://fr.linkedin.com/company/paris-dance-project",
+          "title": "Paris Dance Project"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "PRIBON BELLEVILLE": {
+      "beneficiaire": "PRIBON BELLEVILLE",
+      "beneficiaire_normalise": "PRIBON BELLEVILLE",
+      "siret": "927531251",
+      "generated_at": "2026-04-22T00:21:44",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Société par actions simplifiée de commerce de détail alimentaire biologique et vrac à utilité sociale, exploitant des magasins de produits bio accessibles.",
+      "perimetre_geographique": "Paris Xe",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/pribon-belleville-927531251.html",
+          "title": "Société PRIBON BELLEVILLE à PARIS (75011). Chiffre d'affaires, extrait Kbis, bénéfice, statuts, extrait RNE, bilans, actionnaires - 927531251"
+        },
+        {
+          "url": "https://www.verif.com/societe/COMMUNE-DE-LES-BELLEVILLE-200084606/",
+          "title": "COMMUNE DE LES BELLEVILLE (20008460600017) , LES BELLEVILLE, Verif"
+        },
+        {
+          "url": "https://www.shopping-canada.com/shopping-malls-centers/ontario/belleville/quinte-mall/sirens",
+          "title": "Sirens in Quinte Mall (Belleville, Ontario K8P 3E1) | Shopping Canada"
+        },
+        {
+          "url": "https://www.societe.com/societe/commune-de-prunay-belleville-211002993.html",
+          "title": "COMMUNE DE PRUNAY BELLEVILLE (PRUNAY-BELLEVILLE) Chiffre d'affaires, rsultat, bilans sur SOCIETE.COM - 211002993"
+        },
+        {
+          "url": "https://www.societe.com/societe/pribon-879031847.html",
+          "title": "Société PRIBON à MONTREUIL (93100). Chiffre d'affaires, extrait Kbis, bénéfice, statuts, extrait RNE, bilans, actionnaires - 879031847"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASS FLORIMONT": {
+      "beneficiaire": "ASS FLORIMONT",
+      "beneficiaire_normalise": "ASS FLORIMONT",
+      "siret": "478334022",
+      "generated_at": "2026-04-22T00:21:56",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association de parents d'élèves de l'école élémentaire Florimont, œuvrant pour soutenir la vie scolaire et l'éducation des enfants.",
+      "perimetre_geographique": "Paris XIVe",
+      "sources": [
+        {
+          "url": "https://www.pappers.fr/entreprise/ass-parent-eleve-ecole-elementai-bossard-330559386",
+          "title": "Association ASS PARENT ELEVE ECOLE ELEMENTAI BOSSARD : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.verif.com/societe/ASS-PARENT-ELEVE-JARDIN-ENFANT-FR-ALLE-300984523/",
+          "title": "Société ASS PARENT ELEVE JARDIN ENFANT FR ALLEMA à PARIS - Chiffre d'affaires, bilan, résultat - Siren / |Verif.com"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/ass-parent-eleve-ecole-publiq-courtisols-392419909",
+          "title": "Association ASS PARENT ELEVE ECOLE PUBLIQ COURTISOLS : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://apef.ch/en/",
+          "title": "APEF | Association des Parents d'Élèves de l'institut Florimont"
+        },
+        {
+          "url": "https://www.societe.com/societe/ass-parent-eleve-ecole-publiqu-780938387.html",
+          "title": "ASS PARENT ELEVE ECOLE PUBLIQU (ALENCON) Chiffre d'affaires, rsultat, bilans sur SOCIETE.COM - 780938387"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "JARDIN DES TRAVERSES": {
+      "beneficiaire": "JARDIN DES TRAVERSES",
+      "beneficiaire_normalise": "JARDIN DES TRAVERSES",
+      "siret": "90465309400014",
+      "generated_at": "2026-04-22T00:22:08",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association dédiée à l'agriculture urbaine, l'expérimentation artistique et culturelle, gérant un jardin public sur la Petite Ceinture du 18e arrondissement.",
+      "perimetre_geographique": "Paris XVIIIe",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/jardin-des-traverses-904653094.html",
+          "title": "JARDIN DES TRAVERSES (PARIS) Chiffre d'affaires, résultat, bilans sur SOCIETE.COM - 904653094"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/jardin-des-traverses-904653094",
+          "title": "Association JARDIN DES TRAVERSES : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/siret/90465309400014",
+          "title": "Jardin Des Traverses à Paris : SIRET/SIREN, numéro de TVA, info légales - N° 90465309400014"
+        },
+        {
+          "url": "https://jardindestraverses.org/",
+          "title": "Jardin des Traverses"
+        },
+        {
+          "url": "https://www.petiteceinture-info.fr/Le-Jardin-des-Traverses.html",
+          "title": "Le Jardin des Traverses – Petite Ceinture Info"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ACTIONS ET RESSOUR POUR L INSERT": {
+      "beneficiaire": "ACTIONS ET RESSOUR POUR L'INSERT",
+      "beneficiaire_normalise": "ACTIONS ET RESSOUR POUR L INSERT",
+      "siret": "",
+      "generated_at": "2026-04-22T00:23:17",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association d'action sociale sans hébergement spécialisée dans l'insertion sociale par le soin et l'éducation",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://assoce.fr/departement/75/PARIS/categorie/30010",
+          "title": "PARIS (75) - (30010) entreprises d'insertion, associations intermédiaires, régies de quartier - Assoce.fr"
+        },
+        {
+          "url": "https://www.helloasso.com/e/reg/ile-de-france/dep/paris/cat/insertion",
+          "title": "Annuaire des Associations dans la catégorie insertion à Paris"
+        },
+        {
+          "url": "https://www.paris.fr/pages/agir-en-faveur-de-l-insertion-et-de-l-egalite-professionnelle-des-femmes-18037",
+          "title": "Agir en faveur de l'insertion et de l'égalité professionnelle des femmes"
+        },
+        {
+          "url": "https://www.gralon.net/mairies-france/paris/associations-aide-a-l-insertion-des-jeunes-75056.htm",
+          "title": "Associations aide à l'insertion des jeunes Paris : 236 associations"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/annuaire/paris-75/association-dinsertion",
+          "title": "Association d'insertion à Paris (75)"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "CONSERVATOIRE NATIONAL ARTS ET METI": {
+      "beneficiaire": "CONSERVATOIRE NATIONAL ARTS ET METI",
+      "beneficiaire_normalise": "CONSERVATOIRE NATIONAL ARTS ET METI",
+      "siret": "197534712",
+      "generated_at": "2026-04-22T00:23:30",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Établissement public à caractère scientifique, culturel et professionnel spécialisé dans la formation professionnelle tout au long de la vie, proposant plus de 750 formations et abritant le Musée des Arts et Métiers.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.cnam.fr/",
+          "title": "Conservatoire national des arts et métiers - Cnam"
+        },
+        {
+          "url": "https://www.cnam.fr/portail/conservatoire-national-des-arts-et-metiers-accueil-821166.kjsp",
+          "title": "Conservatoire national des arts et métiers | Accueil | Portail national | Cnam"
+        },
+        {
+          "url": "https://www.cnam.eu/",
+          "title": "Conservatoire national des arts et métiers | Homepage | Cnam portal | Cnam"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Conservatoire_national_des_arts_et_m%C3%A9tiers",
+          "title": "Conservatoire national des arts et métiers - Wikipedia"
+        },
+        {
+          "url": "https://www.facebook.com/LeCnam.formation/",
+          "title": "Conservatoire national des arts et métiers | Paris | Facebook"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "SECOURS POPULAIRE FRANCAIS": {
+      "beneficiaire": "SECOURS POPULAIRE FRANCAIS",
+      "beneficiaire_normalise": "SECOURS POPULAIRE FRANCAIS",
+      "siret": "782815229",
+      "generated_at": "2026-04-22T00:23:39",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association reconnue d'utilité publique agissant contre la pauvreté et l'exclusion en France et dans le monde, par l'aide alimentaire, vestimentaire, l'accès aux droits, la santé et l'insertion sociale.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.score3.fr/SECOURS-POPULAIRE-FRANCAIS-782815229.shtml",
+          "title": "SECOURS POPULAIRE FRANCAIS - SPF - Siren 782815229 - 13014 Marseille Informations financières et bilan d'entreprise sur Score3"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/secours-populaire-francais-spf-782815229",
+          "title": "secours populaire francais (spf) - L'Annuaire des Entreprises"
+        },
+        {
+          "url": "https://www.verif.com/societe/SECOURS-POPULAIRE-FRANCAIS-782815229/",
+          "title": "SECOURS POPULAIRE FRANCAIS (78281522900102) , MARSEILLE 14, Verif"
+        },
+        {
+          "url": "https://sante.e-pro.fr/bouches-du-rhone/secours-populaire-francais_f4398962",
+          "title": "SECOURS POPULAIRE FRANCAIS à Marseille 5 (adresse, téléphone)"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/56598084",
+          "title": "Secours Populaire Francais Marseille - Association humanitaire (adresse, horaires)"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASS LA PASSERELLE": {
+      "beneficiaire": "ASS LA PASSERELLE",
+      "beneficiaire_normalise": "ASS LA PASSERELLE",
+      "siret": "379744287",
+      "generated_at": "2026-04-22T00:24:50",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 d'accueil et de garde temporaire des enfants en l'absence des parents.",
+      "perimetre_geographique": "Paris XIIIe",
+      "sources": [
+        {
+          "url": "https://www.verif.com/societe/ASS-LA-PASSERELLE-379744287/",
+          "title": "ASS LA PASSERELLE (37974428700044) , PARIS 13, Verif"
+        },
+        {
+          "url": "https://www.societe.com/societe/ass-la-passerelle-379744287.html",
+          "title": "Société ASS LA PASSERELLE à PARIS (75013). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 379744287"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/ass-la-passerelle-379744287",
+          "title": "Association ASS LA PASSERELLE : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/etablissement/77588497600090",
+          "title": "Etablissement secondaire - LA PASSERELLE à 30120 LE VIGAN - SIRET 775 884 976 00090 | L’Annuaire des Entreprises"
+        },
+        {
+          "url": "https://www.verif.com/en/company/ASSOCIATION-PASSERELLE-68d9c23d12992303380574fa/",
+          "title": "ASSOCIATION PASSERELLE (50081170800048) , CLICHY, Verif"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ACTIV 18": {
+      "beneficiaire": "ACTIV'18",
+      "beneficiaire_normalise": "ACTIV 18",
+      "siret": "91381878700016",
+      "generated_at": "2026-04-22T00:25:01",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association Loi 1901 (EBE) créant des emplois durables pour les chômeurs de longue durée via des activités de services, alimentation durable et réemploi.",
+      "perimetre_geographique": "Paris XVIIIe",
+      "sources": [
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/activ-18-913818787",
+          "title": "Association ACTIV'18 à 75018 PARIS - SIREN 913 818 787"
+        },
+        {
+          "url": "https://www.societe.com/societe/activ-18-913818787.html",
+          "title": "Société ACTIV'18 à PARIS (75018). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 913818787"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/siret/91381878700016",
+          "title": "Activ'18 à Paris : SIRET/SIREN, numéro de TVA, info légales - N° 91381878700016"
+        },
+        {
+          "url": "https://infonet.fr/entreprises/91381878700016-activ-18/",
+          "title": "ACTIV'18 à Paris | Chiffre d'Affaires, Statuts et Bilans"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/activ18-913818787",
+          "title": "Association ACTIV'18 : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "JOURS HEUREUX": {
+      "beneficiaire": "LES JOURS HEUREUX",
+      "beneficiaire_normalise": "JOURS HEUREUX",
+      "siret": "311209589",
+      "generated_at": "2026-04-22T00:25:12",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 qui accueille et accompagne des personnes en situation de handicap mental au sein d'établissements et services médico-sociaux (foyers d'hébergement, foyers de vie, FAM, CAJ, CAMSP, SAVS).",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.score3.fr/LES-JOURS-HEUREUX-311209589.shtml",
+          "title": "LES JOURS HEUREUX - Siren 311209589 - 75016 Paris Informations financières et bilan d'entreprise sur Score3"
+        },
+        {
+          "url": "https://www.verif.com/en/company/LES-JOURS-HEUREUX-68d9c6961299230338f74a89/",
+          "title": "LES JOURS HEUREUX (31120958900127) , PARIS 16, Verif"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/les-jours-heureux-311209589",
+          "title": "Association LES JOURS HEUREUX : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.manageo.fr/entreprises/311209589.html",
+          "title": "▷Société LES JOURS HEUREUX à PARIS : CA, résultats, bilan gratuit, SIRET, dirigeants, solvabilité, n° TVA - manageo.fr"
+        },
+        {
+          "url": "https://www.societe.com/societe/les-jours-heureux-311209589.html",
+          "title": "Société LES JOURS HEUREUX à PARIS (75016). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 311209589"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASS REGION INSERTION ECONOMIQUE SOC": {
+      "beneficiaire": "ASS REGION INSERTION ECONOMIQUE SOC",
+      "beneficiaire_normalise": "ASS REGION INSERTION ECONOMIQUE SOC",
+      "siret": "",
+      "generated_at": "2026-04-22T00:26:22",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association de formation professionnelle et d'insertion par l'activité économique intervenant auprès des publics éloignés de l'emploi.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://sudestavenir.fr/notre-territoire/competences/solidarite-et-culture/action-sociale-insertion-et-economie-sociale-et-solidaire/",
+          "title": "Action sociale, insertion et économie sociale et solidaire - Grand Paris Sud Est Avenir"
+        },
+        {
+          "url": "https://emploi.spf75.org/Adresses-d-entreprises-d-insertion-EI",
+          "title": "Adresses d'entreprises d'insertion (EI) - [Secours populaire Français Accompagnement vers l'emploi]"
+        },
+        {
+          "url": "https://entreprises.cci-paris-idf.fr/web/rh/inclusion-par-l-emploi-l-insertion-par-l-activite-economique",
+          "title": "Inclusion par l'emploi - L'insertion par l'activité économique | CCI Paris Ile-de-France"
+        },
+        {
+          "url": "https://www.paris.fr/pages/le-tour-de-l-economie-sociale-et-solidaire-a-paris-6378",
+          "title": "L’économie sociale et solidaire à Paris - Ville de Paris"
+        },
+        {
+          "url": "https://insertion.paris/liste-entreprises/",
+          "title": "Annuaire des SIAE à Paris - IAE Paris - Solidaires pour l'Emploi"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "CI NEY 18": {
+      "beneficiaire": "LE CI'NEY 18",
+      "beneficiaire_normalise": "CI NEY 18",
+      "siret": "922166442",
+      "generated_at": "2026-04-22T00:26:36",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Société par actions simplifiée exploitant un cinéma avec deux salles et espaces culturels et sociaux (insertion, restauration) dans le 18e arrondissement de Paris.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/le-ci-ney-18-922166442.html",
+          "title": "LE CI'NEY 18 (PARIS) Chiffre d'affaires, résultat, bilans sur SOCIETE.COM - 922166442"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/le-ci-ney-18-922166442",
+          "title": "Société LE CI'NEY 18 à 75018 PARIS - SIREN 922 166 442"
+        },
+        {
+          "url": "https://societeinfo.com/app/recherche/societe/922166442",
+          "title": "LE CI'NEY 18 à PARIS - Chiffre d'Affaires, Résultat et Bilan ..."
+        },
+        {
+          "url": "https://www.marchesonline.com/appels-offres/avis/amenagement-du-cinema-le-ci-ney-18-situe-au-126-boul/ao-9203369-1",
+          "title": "Aménagement du cinéma le Ci'Ney 18 situé au 126 ..."
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/siret/92216644200017",
+          "title": "Le Ci'Ney 18 à Paris : SIRET/SIREN, numéro de TVA, info légales"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASSOCIATION PIMMS DE PARIS": {
+      "beneficiaire": "ASSOCIATION PIMMS DE PARIS",
+      "beneficiaire_normalise": "ASSOCIATION PIMMS DE PARIS",
+      "siret": "478056997",
+      "generated_at": "2026-04-22T00:26:47",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association de médiation sociale facilitant les relations entre les parisiens et les entreprises de service public et l'administration",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.verif.com/en/company/ASSOCIATION-PIMMS-DE-PARIS-68d9c10212992303389beae6/",
+          "title": "ASSOCIATION PIMMS DE PARIS (47805699700016) , PARIS, Verif"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/51932114",
+          "title": "Association Pimms De Paris - 181 Av. Daumesnil ..."
+        },
+        {
+          "url": "https://www.societe.com/societe/association-pimms-de-paris-478056997.html",
+          "title": "ASSOCIATION PIMMS DE PARIS (PARIS) Chiffre d'affaires, résultat, bilans sur SOCIETE.COM - 478056997"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/56728023",
+          "title": "Association PIMMS De Paris (adresse, horaires)"
+        },
+        {
+          "url": "https://www.118712.fr/professionnels/WkRRXVRRFQc",
+          "title": "Pimms Médiation à Paris"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASS FONDATION ETUDIANTE POUR LA VIL": {
+      "beneficiaire": "ASS FONDATION ETUDIANTE POUR LA VIL",
+      "beneficiaire_normalise": "ASS FONDATION ETUDIANTE POUR LA VIL",
+      "siret": "",
+      "generated_at": "2026-04-22T00:27:57",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 qui mobilise des étudiants bénévoles pour accompagner individuellement des enfants et jeunes en difficulté scolaire ou sociale dans les quartiers populaires.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/ass-fondation-etudiante-pour-la-ville-390322055.html",
+          "title": "Société ASS FONDATION ETUDIANTE POUR LA VILLE à PARIS (75010). Chiffre d'affaires, extrait Kbis, bénéfice, statuts, extrait RNE, bilans, actionnaires - 390322055"
+        },
+        {
+          "url": "https://www.u-pec.fr/fr/vie-de-campus/vie-associative-et-engagement/associations/afev-association-de-la-fondation-etudiante-pour-la-ville",
+          "title": "Association de la Fondation Étudiante pour la Ville (AFEV) - UPEC"
+        },
+        {
+          "url": "https://cnlj.bnf.fr/fr/organisme/association-de-la-fondation-tudiante-pour-la-ville",
+          "title": "Association de la Fondation Étudiante pour la Ville | CNLJ - La joie par les livres"
+        },
+        {
+          "url": "https://www.univ-spn.fr/portfolio/association-de-la-fondation-etudiante-pour-la-ville/",
+          "title": "Association de la Fondation Etudiante pour la Ville - Université Sorbonne Paris Nord"
+        },
+        {
+          "url": "https://www.univ-paris8.fr/Association-de-la-fondation-etudiante-pour-la-ville-AFEV",
+          "title": "Association de la fondation étudiante pour la ville (AFEV) - Université Paris 8"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "INSTITUTIONS GANONE YAD": {
+      "beneficiaire": "INSTITUTIONS GANONE YAD",
+      "beneficiaire_normalise": "INSTITUTIONS GANONE YAD",
+      "siret": "39419135700018",
+      "generated_at": "2026-04-22T00:28:07",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association gérant une crèche collective d'accueil de jeunes enfants (66 places, 3 mois-3 ans) à orientation éducative et culturelle.",
+      "perimetre_geographique": "Paris XIe",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/institutions-ganone-yad-394191357.html",
+          "title": "Société INSTITUTIONS GANONE YAD à PARIS (75004). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 394191357"
+        },
+        {
+          "url": "https://gowork.fr/institutions-ganone-yad-paris",
+          "title": "INSTITUTIONS GANONE YAD avis | GoWork.FR"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/57225901",
+          "title": "FEDERATION GANONE Paris - Garde d'enfants (adresse, horaires)"
+        },
+        {
+          "url": "https://annuaire.petitesaffiches.fr/garde-d-enfant/institutions-ganone-yad-39419135700018/",
+          "title": "INSTITUTIONS GANONE YAD - Garde d'enfants à Paris (75004) - Adresse et téléphone sur Hoodspot.fr"
+        },
+        {
+          "url": "https://www.gralon.net/mairies-france/paris/association-institutions-ganone-yad-paris_W751110022.htm",
+          "title": "Institutions ganone yad association Judaïsme judaïsme orthodoxe orthodoxe ts Paris,"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASS PUC RUGBY": {
+      "beneficiaire": "ASS PUC RUGBY",
+      "beneficiaire_normalise": "ASS PUC RUGBY",
+      "siret": "399015452",
+      "generated_at": "2026-04-22T00:28:18",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association de club de rugby assurant la formation des jeunes à la pratique du rugby de loisir et de compétition, et promouvant le rugby féminin.",
+      "perimetre_geographique": "Paris XIIIe",
+      "sources": [
+        {
+          "url": "https://rubypayeur.com/societe/ass-puc-rugby-399015452",
+          "title": "ASS PUC RUGBY (399015452) 🚦 - Solvabilité, dirigeants et avis - 2024"
+        },
+        {
+          "url": "https://www.societe.com/societe/ass-puc-rugby-399015452.html",
+          "title": "Société ASS PUC RUGBY à PARIS (75013). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 399015452"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/ass-puc-rugby-399015452",
+          "title": "Association ASS PUC RUGBY : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/09247609",
+          "title": "Ass Puc Rugby Paris - Associations sportives (adresse, horaires)"
+        },
+        {
+          "url": "https://fr.mappy.com/poi/50acef2c84ae9c6b73400be7",
+          "title": "Ass Puc Rugby - Club de sports d'équipe, 17 av Pierre de ..."
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASS NAT PREVENT ALCOOL ADDICT": {
+      "beneficiaire": "ASS. NAT. PREVENT. ALCOOL. ADDICT.",
+      "beneficiaire_normalise": "ASS NAT PREVENT ALCOOL ADDICT",
+      "siret": "",
+      "generated_at": "2026-04-22T00:28:28",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 reconnue d'utilité publique agissant en prévention, formation, soins et réduction des risques sur les addictions (alcool, tabac, drogues, jeux, médicaments).",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Association_Addictions_France",
+          "title": "Association Addictions France — Wikipédia"
+        },
+        {
+          "url": "https://www.le-cap.org/comprendre-laddiction/alcool/",
+          "title": "Alcool - Le Cap : Association pour la prévention et les soins aux addictions : tabac, drogues, alcools, écrans…"
+        },
+        {
+          "url": "https://www.sante-alcool.fr/",
+          "title": "santé ! alcool & réduction des risques autres regards, Marseille"
+        },
+        {
+          "url": "https://assoce.fr/departement/59/NORD/categorie/18030",
+          "title": "NORD (59) - prévention et lutte contre l'alcoolisme, la toxicomanie - Assoce.fr"
+        },
+        {
+          "url": "https://www.addictaide.fr/un-programme-pour-se-liberer-de-lalcool-les-alcooliques-anonymes/",
+          "title": "Un programme pour se libérer de l’alcool : les Alcooliques anonymes - Addict Aide - Le village des addictions"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "AU FIL DU RAIL": {
+      "beneficiaire": "AU FIL DU RAIL",
+      "beneficiaire_normalise": "AU FIL DU RAIL",
+      "siret": "908285794",
+      "generated_at": "2026-04-22T00:29:41",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Société par actions simplifiée spécialisée dans la construction et réhabilitation de bâtiments, opérant un tiers-lieu d'économie sociale et solidaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/au-fil-du-rail-908285794.html",
+          "title": "AU FIL DU RAIL (PARIS) Chiffre d'affaires, rsultat, bilans sur SOCIETE.COM - 908285794"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/au-fil-du-rail-908285794",
+          "title": "Société AU FIL DU RAIL : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.impayes.com/entreprise/au-fil-du-rail-908285794/",
+          "title": "Impayes.com : Entreprise AU FIL DU RAIL (908285794)"
+        },
+        {
+          "url": "https://infonet.fr/entreprises/90828579400016-au-fil-du-rail/",
+          "title": "Société AU FIL DU RAIL | Chiffre d'Affaires, Bilan et ..."
+        },
+        {
+          "url": "https://www.societe.com/etablissement/au-fil-du-rail-90828579400016.html",
+          "title": "Etablissement AU FIL DU RAIL PARIS 20 (75020) sur SOCIETE.COM (90828579400016)"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASS LES CROCOS CRECHE PARENTAL": {
+      "beneficiaire": "ASS LES CROCOS CRECHE PARENTAL",
+      "beneficiaire_normalise": "ASS LES CROCOS CRECHE PARENTAL",
+      "siret": "329655328",
+      "generated_at": "2026-04-22T00:29:53",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 gérant une crèche parentale accueillant 20 enfants de deux mois et demi à moins de quatre ans",
+      "perimetre_geographique": "Paris XIIe",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/ass-les-crocos-creche-parental-329655328.html",
+          "title": "ASS LES CROCOS CRECHE PARENTAL (PARIS) Chiffre d'affaires, résultat, bilans sur SOCIETE.COM - 329655328"
+        },
+        {
+          "url": "https://www.verif.com/societe/ASS-LES-CROCOS-CRECHE-PARENTAL-329655328/",
+          "title": "ASS LES CROCOS CRECHE PARENTAL (32965532800030) , PARIS 12, Verif"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/55251833",
+          "title": "Ass Les Crocos Paris - Crèche (adresse)"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/ass-les-crocos-creche-parental-329655328",
+          "title": "Association ASS LES CROCOS CRECHE PARENTAL : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/ass-les-crocos-creche-parental-329655328",
+          "title": "ass les crocos creche parental - L'Annuaire des Entreprises"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "THEATRE DU SOLEIL": {
+      "beneficiaire": "THEATRE DU SOLEIL",
+      "beneficiaire_normalise": "THEATRE DU SOLEIL",
+      "siret": "784340093",
+      "generated_at": "2026-04-22T00:30:02",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Compagnie de théâtre constituée en SCOP, créée en 1964, produisant et représentant des spectacles de théâtre vivant à la Cartoucherie du Bois de Vincennes.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/theatre-du-soleil-784340093.html",
+          "title": "Société THEATRE DU SOLEIL à PARIS (75012). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 784340093"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/theatre-du-soleil-784340093",
+          "title": "Société THEATRE DU SOLEIL : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.verif.com/societe/THEATRE-DU-SOLEIL-784340093/",
+          "title": "THEATRE DU SOLEIL (78434009300029) , PARIS 12, Verif"
+        },
+        {
+          "url": "https://www.score3.fr/THEATRE-DU-SOLEIL-784340093.shtml",
+          "title": "THEATRE DU SOLEIL - Siren 784340093 - 75012 Paris Informations financières et bilan d'entreprise sur Score3"
+        },
+        {
+          "url": "https://infonet.fr/entreprises/78434009300029-theatre-du-soleil/",
+          "title": "THEATRE DU SOLEIL à Paris 12 | Chiffre d'Affaires"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASS OZAR HATORAH PARIS ONZE CRECHE": {
+      "beneficiaire": "ASS. OZAR HATORAH PARIS ONZE CRECHE",
+      "beneficiaire_normalise": "ASS OZAR HATORAH PARIS ONZE CRECHE",
+      "siret": "",
+      "generated_at": "2026-04-22T00:31:12",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association gérant une crèche collective multi-accueil agréée par la Protection Maternelle et Infantile de la Ville de Paris",
+      "perimetre_geographique": "Paris XIe",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/lieux/creche-associative-ozar-hatorah-3521",
+          "title": "Crèche associative ozar hatorah - Ville de Paris"
+        },
+        {
+          "url": "https://ozarhatorah.com/la-creche/",
+          "title": "Paris 11 La crèche – OZAR HATORAH"
+        },
+        {
+          "url": "https://www.societe.com/societe/association-ozar-hatorah-paris-onze-creche-831252317.html",
+          "title": "ASSOCIATION OZAR HATORAH PARIS ONZE CRECHE (PARIS 11) Chiffre d'affaires, rsultat, bilans sur SOCIETE.COM - 831252317"
+        },
+        {
+          "url": "https://ozarhatorah.com/ozar-hatorah-13/",
+          "title": "à la crèche ozar hatorah paris 13"
+        },
+        {
+          "url": "https://ozarhatorah.com/",
+          "title": "OZAR HATORAH"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "MENAGERIE DE VERRE": {
+      "beneficiaire": "LA MENAGERIE DE VERRE",
+      "beneficiaire_normalise": "MENAGERIE DE VERRE",
+      "siret": "823862347",
+      "generated_at": "2026-04-22T00:31:22",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Laboratoire de création contemporaine accueillant résidences d'artistes, spectacles vivants (danse, théâtre, performance) et formations artistiques pluridisciplinaires.",
+      "perimetre_geographique": "Paris XIe",
+      "sources": [
+        {
+          "url": "https://www.verif.com/societe/SCI-LA-MENAGERIE-DE-VERRE-823862347/",
+          "title": "SCI LA MENAGERIE DE VERRE (82386234700015) , PARIS, Verif"
+        },
+        {
+          "url": "https://www.northdata.com/SCI+la+Menagerie+de+Verre,+Paris/Siren+823862347",
+          "title": "SCI la Menagerie de Verre, Paris 14, France"
+        },
+        {
+          "url": "https://www.societe.com/societe/sci-la-menagerie-de-verre-823862347.html",
+          "title": "Société SCI LA MENAGERIE DE VERRE à PARIS (75014). Chiffre d'affaires, extrait Kbis, bénéfice, statuts, extrait RNE, bilans, actionnaires - 823862347"
+        },
+        {
+          "url": "https://www.societe.com/societe/menagerie-de-verre-les-ateliers-de-danse-327957049.html",
+          "title": "Société MENAGERIE DE VERRE - LES ATELIERS DE DANSE à PARIS (75011). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 327957049"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/La_M%C3%A9nagerie_de_verre",
+          "title": "La Ménagerie de verre — Wikipédia"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASSOC POUR L AIDE AUX MERES DE FAMI": {
+      "beneficiaire": "ASSOC POUR L AIDE AUX MERES DE FAMI",
+      "beneficiaire_normalise": "ASSOC POUR L AIDE AUX MERES DE FAMI",
+      "siret": "",
+      "generated_at": "2026-04-22T00:32:36",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association reconnue d'utilité publique qui accompagne les familles au quotidien par un service d'aide à domicile soutenant les parents dans leur fonction parentale et aidant les familles fragilisées",
+      "perimetre_geographique": "Paris VIIe",
+      "sources": [
+        {
+          "url": "https://www.pagesjaunes.fr/pros/05366443",
+          "title": "Aide aux Meres de Famille Assoc Paris pour l' - Association humanitaire (adresse, horaires)"
+        },
+        {
+          "url": "https://fr.mappy.com/poi/5109527a84ae6ceded07d76e",
+          "title": "Aide aux Meres de Famille Assoc Paris pour l'"
+        },
+        {
+          "url": "https://amf-paris.asso.fr/",
+          "title": "Fondation Henriette Viollet – Aide aux familles"
+        },
+        {
+          "url": "https://www.groupe-sos.org/structure/aide-aux-meres-et-aux-familles-a-domicile-amfd/",
+          "title": "Aide aux Mères et aux Familles à Domicile (AMFD) - Groupe SOS"
+        },
+        {
+          "url": "https://aide-familles-domicile.fr/",
+          "title": "AMFD – Association spécialisée dans l'intervention à domicile"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "MAISON OUVERTE": {
+      "beneficiaire": "LA MAISON OUVERTE",
+      "beneficiaire_normalise": "MAISON OUVERTE",
+      "siret": "32450071900020",
+      "generated_at": "2026-04-22T00:32:45",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association de gestion de salles de spectacles et de diffusion culturelle.",
+      "perimetre_geographique": "Paris XIIIe",
+      "sources": [
+        {
+          "url": "https://www.verif.com/societe/LA-MAISON-OUVERTE-324500719/",
+          "title": "LA MAISON OUVERTE (32450071900020) , PARIS 13, Verif"
+        },
+        {
+          "url": "https://www.societe.com/societe/la-maison-ouverte-324500719.html",
+          "title": "Societe.com : RCS, siret, siren, bilan, l'information gratuite sur les entreprises du Registre du Commerce des Sociétés (RNCS)"
+        },
+        {
+          "url": "https://www.societe.com/societe/la-mome-maison-ouverte-802618736.html",
+          "title": "Société LA MOME MAISON OUVERTE à MONTREUIL (93100). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 802618736"
+        },
+        {
+          "url": "https://www.societe.com/societe/la-petite-maison-ouverte-353982796.html",
+          "title": "LA PETITE MAISON OUVERTE (SAINT-QUENTIN) Chiffre d'affaires, rsultat, bilans sur SOCIETE.COM - 353982796"
+        },
+        {
+          "url": "https://www.manageo.fr/entreprises/353982796/40.html",
+          "title": "▷Société LA PETITE MAISON OUVERTE à SAINT-QUENTIN (établissement secondaire fermé) : CA, résultats, bilan gratuit, SIRET, dirigeants, solvabilité, n° TVA - manageo.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASS CRECHE GAN ESTHER": {
+      "beneficiaire": "ASS CRECHE GAN ESTHER",
+      "beneficiaire_normalise": "ASS CRECHE GAN ESTHER",
+      "siret": "378480412",
+      "generated_at": "2026-04-22T00:32:55",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association gestionnaire d'une crèche spécialisée dans l'accueil de jeunes enfants.",
+      "perimetre_geographique": "Paris XIXe",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/ass-creche-gan-esther-378480412.html",
+          "title": "ASS CRECHE GAN ESTHER (PARIS) Chiffre d'affaires, résultat, bilans sur SOCIETE.COM - 378480412"
+        },
+        {
+          "url": "https://www.verif.com/societe/ASS-CRECHE-GAN-ESTHER-378480412/",
+          "title": "ASS CRECHE GAN ESTHER (37848041200014) , PARIS 19, Verif"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/cge-ass-creche-gan-esther-378480412",
+          "title": "Association CGE ASS CRECHE GAN ESTHER : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/12220620",
+          "title": "Créche Gan Esther Paris - Crèche (adresse, horaires)"
+        },
+        {
+          "url": "https://www.manageo.fr/entreprises/378480412.html",
+          "title": "▷Société ASS CRECHE GAN ESTHER à PARIS : CA, résultats, bilan gratuit, SIRET, dirigeants, solvabilité, n° TVA - manageo.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "BIMBAMJOB": {
+      "beneficiaire": "BIMBAMJOB",
+      "beneficiaire_normalise": "BIMBAMJOB",
+      "siret": "812216927",
+      "generated_at": "2026-04-22T00:34:05",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Entreprise sociale et solidaire de placement et d'accompagnement socio-professionnel vers l'emploi (SAS)",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/bimbamjob-812216927.html",
+          "title": "Société BIMBAMJOB à PARIS (75012). Chiffre d'affaires, extrait Kbis, bénéfice, statuts, extrait RNE, bilans, actionnaires - 812216927"
+        },
+        {
+          "url": "https://actulegales.fr/recherche/siren/812216927",
+          "title": "Annonce légale BIMBAMJOB : 8 annonces légales trouvées"
+        },
+        {
+          "url": "https://b-reputation.com/fr/public/812216927",
+          "title": "Bimbamjob (Paris) | Avis, Emails, Dirigeants, Chiffres d'affaires, Bilans | 812216927"
+        },
+        {
+          "url": "https://gowork.fr/bimbamjob-paris",
+          "title": "Avis sur BIMBAMJOB Paris - 26 avis - GoWork.fr"
+        },
+        {
+          "url": "https://rubypayeur.com/societe/bimbamjob-812216927",
+          "title": "BIMBAMJOB (812216927) 🚦 - Solvabilité, dirigeants et avis - 2025"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "MAISON DE L EUROPE DE PARIS CTRE": {
+      "beneficiaire": "MAISON DE L'EUROPE DE PARIS CTRE",
+      "beneficiaire_normalise": "MAISON DE L EUROPE DE PARIS CTRE",
+      "siret": "",
+      "generated_at": "2026-04-22T00:34:14",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association régie par la loi de 1901 créée en 1956 et reconnue d'utilité publique, qui forme et informe sur la citoyenneté européenne.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://paris-europe.eu/",
+          "title": "Maison de l'Europe de Paris – CIED"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Maison_de_l'Europe_de_Paris",
+          "title": "Maison de l'Europe de Paris — Wikipédia"
+        },
+        {
+          "url": "https://www.facebook.com/maisoneuropeparis/?locale=fr_FR",
+          "title": "Maison de l'Europe de Paris CED"
+        },
+        {
+          "url": "https://www.helloasso.com/associations/maison-de-l-europe-de-paris",
+          "title": "Maison de l'Europe de Paris | HelloAsso"
+        },
+        {
+          "url": "https://www.snrl.fr/La-Maison-de-l-Europe-de-Paris_a114.html",
+          "title": "La Maison de l'Europe de Paris"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "CTRE INTERNATIONAL CREATIONS THEATR": {
+      "beneficiaire": "CTRE INTERNATIONAL CREATIONS THEATR",
+      "beneficiaire_normalise": "CTRE INTERNATIONAL CREATIONS THEATR",
+      "siret": "",
+      "generated_at": "2026-04-22T00:35:23",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Société par actions simplifiée de recherche et création théâtrale, basée au théâtre des Bouffes du Nord depuis 1974.",
+      "perimetre_geographique": "Paris Xe",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/centre-international-de-creations-theatrales-301073003.html",
+          "title": "Société CENTRE INTERNATIONAL DE CREATIONS THEATRALES à PARIS (75010). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 301073003"
+        },
+        {
+          "url": "https://data.bnf.fr/fr/14654407/centre_international_de_creation_theatrale_paris/",
+          "title": "Centre international de création théâtrale. Paris (1968) - Organisation - Ressources de la Bibliothèque nationale de France"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/51368992",
+          "title": "CICT Centre International Créations Théatrale Paris - Salle de concert (adresse, horaires)"
+        },
+        {
+          "url": "https://www.verif.com/societe/CENTRE-INTERNATIONAL-DE-CREATIONS-THEATRALES-301073003/",
+          "title": "CENTRE INTERNATIONAL DE CREATIONS THEATRALES (30107300300016) , PARIS 10, Verif"
+        },
+        {
+          "url": "https://www.theatre-contemporain.net/contacts/CICT/",
+          "title": "CICT (Centre International de Créations Théâtrales)"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ARAIGNEE GENTILLE": {
+      "beneficiaire": "L'ARAIGNEE GENTILLE",
+      "beneficiaire_normalise": "ARAIGNEE GENTILLE",
+      "siret": "32854216200024",
+      "generated_at": "2026-04-22T00:35:36",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association déclarée spécialisée dans l'accueil de jeunes enfants, établissement d'accueil collectif de la petite enfance gérant une halte-garderie associative.",
+      "perimetre_geographique": "Paris XVIIIe",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/l-araignee-gentille-328542162.html",
+          "title": "Société L'ARAIGNEE GENTILLE à PARIS (75018). Chiffre d'affaires, extrait Kbis, bénéfice, statuts, extrait RNE, bilans, actionnaires - 328542162"
+        },
+        {
+          "url": "https://rubypayeur.com/societe/l-araignee-gentille-328542162",
+          "title": "Société L'ARAIGNEE GENTILLE à PARIS 18 - SIREN : 328542162"
+        },
+        {
+          "url": "https://infonet.fr/entreprises/32854216200024-l-araignee-gentille/",
+          "title": "L'ARAIGNEE GENTILLE à Paris | Chiffre d'Affaires"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/07824054",
+          "title": "L'Araignée Gentille Paris - Garde d'enfants (adresse)"
+        },
+        {
+          "url": "https://gowork.fr/l-araignee-gentille-paris/salary",
+          "title": "Salaire L ARAIGNEE GENTILLE - rapport sur les revenus"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ERDA": {
+      "beneficiaire": "ERDA",
+      "beneficiaire_normalise": "ERDA",
+      "siret": "398708727",
+      "generated_at": "2026-04-22T00:35:45",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association de production et de diffusion d'arts du spectacle vivant",
+      "perimetre_geographique": "Toulouse",
+      "sources": [
+        {
+          "url": "https://www.pappers.fr/entreprise/erda-education-recherche-developpement-artistique-391961513",
+          "title": "Association ERDA EDUCATION RECHERCHE DEVELOPPEMENT ARTISTIQUE : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.insulaorchestra.fr/en/legal-mentions/",
+          "title": "Legal mentions - Insula orchestra"
+        },
+        {
+          "url": "https://www.societe.com/societe/erda-education-recherche-developpement-artistique-391961513.html",
+          "title": "Société ERDA EDUCATION RECHERCHE DEVELOPPEMENT ARTISTIQUE à PARIS (75008). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 391961513"
+        },
+        {
+          "url": "https://www.fondationbs.org/erda-accentus",
+          "title": "erda | accentus | Fondation Bettencourt Schueller"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/erda-education-recherche-developpement-artistique-erda-391961513",
+          "title": "erda education recherche developpement artistique (erda)"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "OHEL ESTHER": {
+      "beneficiaire": "OHEL ESTHER",
+      "beneficiaire_normalise": "OHEL ESTHER",
+      "siret": "43382029700011",
+      "generated_at": "2026-04-22T00:36:56",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 gérant une halte-garderie pour la petite enfance (Ohel Léa) à Paris 19e.",
+      "perimetre_geographique": "Paris XIXe",
+      "sources": [
+        {
+          "url": "https://fr.kompass.com/c/ohel-esther/fr0298258/",
+          "title": "Ohel Esther - Paris 19 75019 (Paris), 4 Rue Henri Murger Batime..., SIREN 433 820 297"
+        },
+        {
+          "url": "http://www.societe.com/societe/ohel-esther-433820297.html",
+          "title": "Societe.com : RCS, siret, siren, bilan, l'information gratuite sur les entreprises du Registre du Commerce des Sociétés (RNCS)"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/ohel-esther-433820297",
+          "title": "Association OHEL ESTHER à 75019 PARIS"
+        },
+        {
+          "url": "https://www.trouversacreche.fr/creche/75019_paris-19/11548/ohel-esther",
+          "title": "Ohel Esther à 19e arrondissement de Paris (75019)"
+        },
+        {
+          "url": "https://www.le-site-de.com/ohel-esther-paris_3926.html",
+          "title": "Site de Ohel Esther à Paris 75019 3926"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "CHOUINE": {
+      "beneficiaire": "LA CHOUINE",
+      "beneficiaire_normalise": "CHOUINE",
+      "siret": "32826524400025",
+      "generated_at": "2026-04-22T00:37:06",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 gérant une crèche parentale associative accueillant enfants de 8 mois à 3 ans dans le 18e arrondissement de Paris.",
+      "perimetre_geographique": "Paris XVIIIe",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/la-chouine-328265244.html",
+          "title": "Société LA CHOUINE à PARIS (75018). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 328265244"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/57223013",
+          "title": "LA CHOUINE Paris - Association culturelle (adresse, horaires)"
+        },
+        {
+          "url": "https://fr.kompass.com/c/la-chouine/fr0640356/",
+          "title": "La Chouine - Paris 18 75018 (Paris), 7 Square Ornano 7 8, SIREN 328 265 244"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/la-chouine-328265244",
+          "title": "Association LA CHOUINE à 75018 PARIS - SIREN 328 265 244"
+        },
+        {
+          "url": "https://cincinnatibusinesslist.com/fr/328265244",
+          "title": "LA CHOUINE · 7 8 · 7 SQUARE ORNANO, 75018 PARIS, FRANCE - PublicCorpData"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "PAYSAN URBAIN": {
+      "beneficiaire": "LE PAYSAN URBAIN",
+      "beneficiaire_normalise": "PAYSAN URBAIN",
+      "siret": "81091248500028",
+      "generated_at": "2026-04-22T00:37:16",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association de chantier d'insertion par l'activité économique exploitant une ferme urbaine agro-écologique produisant des micro-pousses et fleurs comestibles, avec missions d'insertion professionnelle et d'éducation à l'environnement.",
+      "perimetre_geographique": "Paris XXe",
+      "sources": [
+        {
+          "url": "https://www.verif.com/societe/LE-PAYSAN-URBAIN-810912485/",
+          "title": "LE PAYSAN URBAIN (81091248500028) , PARIS 20, Verif"
+        },
+        {
+          "url": "https://www.societe.com/societe/le-paysan-urbain-810912485.html",
+          "title": "LE PAYSAN URBAIN (PARIS) Chiffre d'affaires, résultat, bilans sur SOCIETE.COM - 810912485"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/le-paysan-urbain-810912485",
+          "title": "Association LE PAYSAN URBAIN : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/le-paysan-urbain-810912485",
+          "title": "Association LE PAYSAN URBAIN à 75020 PARIS"
+        },
+        {
+          "url": "https://gowork.fr/le-paysan-urbain-romainville",
+          "title": "LE PAYSAN URBAIN France avis, offres d'emploi | GoWork.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASS PETITE ENFANCE ET PARENTAL": {
+      "beneficiaire": "ASS PETITE ENFANCE ET PARENTAL",
+      "beneficiaire_normalise": "ASS PETITE ENFANCE ET PARENTAL",
+      "siret": "315410654",
+      "generated_at": "2026-04-22T00:38:25",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association déclarée qui gère La Maison Verte, structure d'accueil et d'accompagnement pour la petite enfance et les parents.",
+      "perimetre_geographique": "Paris XVe",
+      "sources": [
+        {
+          "url": "https://www.118000.fr/e_C0056317230",
+          "title": "LA MAISON VERTE (ASS PETITE ENFANCE ET PARENTAL) à PARIS 75015 (RUE MEILHAC): Adresse, horaires, téléphone - 118000.fr"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/l-acheminee-ass-petite-enfance-parental-appes-380178673",
+          "title": "Association L'ACHEMINEE ASS PETITE ENFANCE PARENTAL (APPES) à 45000 ORLEANS - SIREN 380 178 673 | L’Annuaire des Entreprises"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/appes-lacheminee-ass-petite-enfance-parental-380178673",
+          "title": "Association APPES L'ACHEMINEE ASS PETITE ENFANCE PARENTAL : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://infonet.fr/entreprises/32284684100128-ape-ass-petite-enfance/",
+          "title": "APE ASS PETITE ENFANCE à Angers | Chiffre d'Affaires"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/ass-petite-enfance-et-parental-la-maison-verte-315410654",
+          "title": "ass petite enfance et parental la maison verte"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASS DES CINEMAS INDEPENDANTS": {
+      "beneficiaire": "ASS DES CINEMAS INDEPENDANTS",
+      "beneficiaire_normalise": "ASS DES CINEMAS INDEPENDANTS",
+      "siret": "390182251",
+      "generated_at": "2026-04-22T00:38:35",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association de cinéastes soutenant la diffusion de films indépendants en salles et organisant des rencontres entre films, auteurs et publics.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.verif.com/societe/ASS-DU-CINEMA-INDEPENDANT-POUR-SA-DIFFUS-390182251/",
+          "title": "ASS DU CINEMA INDEPENDANT POUR SA DIFFUS (39018225100053) , PARIS 10, Verif"
+        },
+        {
+          "url": "https://www.score3.fr/ASS-DU-CINEMA-INDEPENDANT-POUR-SA-DIFFUS-390182251.shtml",
+          "title": "ASS DU CINEMA INDEPENDANT POUR SA DIFFUS - ACID - Siren 390182251 - 75010 Paris Informations financières et bilan d'entreprise sur Score3"
+        },
+        {
+          "url": "https://www.societe.com/societe/ass-du-cinema-independant-pour-sa-diffus-390182251.html",
+          "title": "ASS DU CINEMA INDEPENDANT POUR SA DIFFUS (PARIS) Chiffre d'affaires, rsultat, bilans sur SOCIETE.COM - 390182251"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/acid-ass-du-cinema-independant-pour-sa-diffus-390182251",
+          "title": "Association ACID ASS DU CINEMA INDEPENDANT POUR SA DIFFUS : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/ass-des-cinemas-independants-parisiens-392669800",
+          "title": "Association ASS DES CINEMAS INDEPENDANTS PARISIENS : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "INSTITUT KURDE DE PARIS": {
+      "beneficiaire": "INSTITUT KURDE DE PARIS",
+      "beneficiaire_normalise": "INSTITUT KURDE DE PARIS",
+      "siret": "32744679500012",
+      "generated_at": "2026-04-22T00:39:45",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Fondation reconnue d'utilité publique depuis 1993, organisme culturel indépendant dédié à la promotion et la préservation de la langue, l'histoire et le patrimoine culturel kurdes",
+      "perimetre_geographique": "Paris Xe",
+      "sources": [
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/institut-kurde-de-paris-327446795",
+          "title": "Association INSTITUT KURDE DE PARIS à 75010 PARIS - SIREN 327 446 795 | L’Annuaire des Entreprises"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/etablissement/32744679500012",
+          "title": "Siège social - INSTITUT KURDE DE PARIS à 75010 PARIS - SIRET 327 446 795 00012 | L’Annuaire des Entreprises"
+        },
+        {
+          "url": "https://www.societe.com/societe/institut-kurde-de-paris-327446795.html",
+          "title": "Société INSTITUT KURDE DE PARIS à PARIS (75010). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 327446795"
+        },
+        {
+          "url": "https://www.institutkurde.org/",
+          "title": "Fondation Institut kurde de Paris"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Institut_kurde_de_Paris",
+          "title": "Institut kurde de Paris — Wikipédia"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "RELAIS MENILMONTANT": {
+      "beneficiaire": "RELAIS MENILMONTANT",
+      "beneficiaire_normalise": "RELAIS MENILMONTANT",
+      "siret": "30900121200047",
+      "generated_at": "2026-04-22T00:39:55",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi de 1901 constituée en centre social et maison de quartier agréée par la Caisse d'Allocations Familiales, lieu d'éducation populaire agréé par le ministère de la jeunesse et des sports",
+      "perimetre_geographique": "Paris XXe",
+      "sources": [
+        {
+          "url": "https://www.verif.com/societe/RELAIS-MENILMONTANT-309001212/",
+          "title": "RELAIS MENILMONTANT (30900121200047) , PARIS 20, Verif"
+        },
+        {
+          "url": "https://www.societe.com/societe/relais-menilmontant-309001212.html",
+          "title": "Société RELAIS MENILMONTANT à PARIS (75020). Chiffre d'affaires, extrait Kbis, bénéfice, statuts, extrait RNE, bilans, actionnaires - 309001212"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/58936949",
+          "title": "RELAIS MENILMONTANT Paris - Garde d'enfants (adresse, horaires)"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/relais-menilmontant-309001212",
+          "title": "Association RELAIS MENILMONTANT : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.facebook.com/relaismenilmontant/?locale=fr_FR",
+          "title": "Relais Ménilmontant (@relaismenilmontant)"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASSO ACIDULES ET A CROQUER": {
+      "beneficiaire": "ASSO ACIDULES ET A CROQUER",
+      "beneficiaire_normalise": "ASSO ACIDULES ET A CROQUER",
+      "siret": "327336707",
+      "generated_at": "2026-04-22T00:40:06",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 gérant une crèche parentale accueillant enfants de 6 mois à 3 ans avec participation active des parents.",
+      "perimetre_geographique": "Paris XVIIIe",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/asso-acidules-et-a-croquer-327336707.html",
+          "title": "ASSO ACIDULES ET A CROQUER (PARIS) Chiffre d'affaires, résultat, bilans sur SOCIETE.COM - 327336707"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/asso-acidules-et-a-croquer-327336707",
+          "title": "Association ASSO ACIDULES ET A CROQUER : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/asso-acidules-et-a-croquer-327336707",
+          "title": "Association ASSO ACIDULES ET A CROQUER à 75018 PARIS"
+        },
+        {
+          "url": "https://www.yelp.com/biz/asso-acidules-et-a-croquer-paris-18",
+          "title": "ASSO ACIDULES ET A CROQUER - Updated January 2026 - 78 Rue Marcadet, PARIS 18, Paris, France - Phone Number - Yelp"
+        },
+        {
+          "url": "https://recrute.pole-emploi.fr/page-entreprise/asso-acidules-et-a-croquer",
+          "title": "ASSO ACIDULES ET A CROQUER recrutement"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "APASO": {
+      "beneficiaire": "APASO",
+      "beneficiaire_normalise": "APASO",
+      "siret": "379372162",
+      "generated_at": "2026-04-22T00:41:15",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association déclarée d'action sociale sans hébergement proposant accompagnement psychologique, juridique et insertion sociale en Île-de-France.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://pros.annuairefrancais.fr/75014/ass-pour-la-prevention-l-accueil-le-soutien-et-l-orientation-apaso-paris-14-eme-75-paris-379372162-00055.html",
+          "title": "société : ASS POUR LA PREVENTION L'ACCUEIL LE SOUTIEN ET L'ORIENTATION APASO (siren 379372162) a Paris 14 ème 75014 assistante sociale (75) Bilans gratuits - Actes légaux - Statuts - Annuaire Français"
+        },
+        {
+          "url": "https://fr.kompass.com/c/apaso/fr4052365/",
+          "title": "Apaso - Paris 14 75014 (Paris), 88 Bd Arago , SIREN 379 372 162"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/55444928",
+          "title": "A.P.A.S.O. Paris - Association humanitaire (adresse, horaires)"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/54129679",
+          "title": "Association A.P.A.S.O Massy - Association humanitaire (adresse, horaires)"
+        },
+        {
+          "url": "https://www.score3.fr/ASS-POUR-LA-PREVENTION-L-ACCUEIL-LE-SOUTIEN-ET-L-ORIENTATION-379372162.shtml",
+          "title": "ASS POUR LA PREVENTION L'ACCUEIL LE SOUTIEN ET L'ORIENTATION - APASO - Siren 379372162 - 91300 Massy Informations financières et bilan d'entreprise sur Score3"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "GAIA PARIS": {
+      "beneficiaire": "GAIA PARIS",
+      "beneficiaire_normalise": "GAIA PARIS",
+      "siret": "49369278400025",
+      "generated_at": "2026-04-22T00:41:27",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 reconnue d'utilité publique spécialisée dans l'hébergement social et l'accompagnement médico-social des personnes usagères de drogues, appliquant les principes de réduction des risques.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/gaia-paris-493692784.html",
+          "title": "Société GAIA PARIS à PARIS (75011). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 493692784"
+        },
+        {
+          "url": "https://www.verif.com/societe/GAIA-PARIS-493692784/",
+          "title": "Société GAIA PARIS à PARIS - Chiffre d'affaires, bilan, ..."
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/52192221",
+          "title": "Gaia Paris - Centre de réadaptation (adresse, horaires)"
+        },
+        {
+          "url": "https://infonet.fr/entreprises/49369278400025-gaia-paris/",
+          "title": "GAIA PARIS à Paris | Chiffre d'Affaires, Statuts"
+        },
+        {
+          "url": "https://gowork.fr/gaia-paris-paris",
+          "title": "GAIA PARIS avis | GoWork.FR"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "PETIT NEY": {
+      "beneficiaire": "LE PETIT NEY",
+      "beneficiaire_normalise": "PETIT NEY",
+      "siret": "40287922500033",
+      "generated_at": "2026-04-22T00:42:36",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association déclarée gérant un café littéraire associatif proposant des activités culturelles, des ateliers de petite enfance (Poussiney) et des services d'accompagnement à la parentalité.",
+      "perimetre_geographique": "Paris XVIIIe",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/le-petit-ney-402879225.html",
+          "title": "LE PETIT NEY (PARIS 18) Chiffre d'affaires, rsultat, bilans sur SOCIETE.COM - 402879225"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/09170759",
+          "title": "Le Petit Ney Paris - Café bar (adresse, horaires)"
+        },
+        {
+          "url": "https://gowork.fr/le-petit-ney-paris",
+          "title": "LE PETIT NEY avis | GoWork.FR"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/etablissement/40287922500033",
+          "title": "LE PETIT NEY à 75018 PARIS - SIRET 402 879 225 00033"
+        },
+        {
+          "url": "https://www.helloasso.com/associations/le-petit-ney",
+          "title": "LE PETIT NEY | HelloAsso"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "GROUPEMENT D AGRICULTURE BIOLOGI": {
+      "beneficiaire": "GROUPEMENT D'AGRICULTURE BIOLOGI.",
+      "beneficiaire_normalise": "GROUPEMENT D AGRICULTURE BIOLOGI",
+      "siret": "",
+      "generated_at": "2026-04-22T00:42:45",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Groupement d'agriculteurs biologiques qui accompagne les producteurs franciliens en agriculture biologique et en conversion, membre du réseau FNAB.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.bioiledefrance.fr/",
+          "title": "le GAB IDF"
+        },
+        {
+          "url": "https://www.fnab.org/",
+          "title": "FNAB - La Fédération Nationale d'Agriculture Biologique"
+        },
+        {
+          "url": "https://www.produire-bio.fr/cest-quoi-la-bio/reseau-producteurs-bio/",
+          "title": "Le réseau bio - Produire Bio"
+        },
+        {
+          "url": "https://www.facebook.com/GAB.Bioiledefrance/",
+          "title": "GAB IdF - Groupement des Agriculteurs Biologiques en Ile de France | Savigny-le-Temple"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/groupement-dagriculture-biologique-et-biodynamique-de-la-region-ile-de-france-437536816",
+          "title": "GROUPEMENT D'AGRICULTURE BIOLOGIQUE ET BIODYNAMIQUE DE LA REGION ILE DE FRANCE : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ETERNEL SOLIDAIRE": {
+      "beneficiaire": "ETERNEL SOLIDAIRE",
+      "beneficiaire_normalise": "ETERNEL SOLIDAIRE",
+      "siret": "82398333300019",
+      "generated_at": "2026-04-22T00:42:55",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association d'économie sociale et solidaire portant un tiers-lieu d'insertion professionnelle, médiation numérique, restauration et agriculture urbaine dans le 19e arrondissement de Paris.",
+      "perimetre_geographique": "Paris XIXe",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/eternel-solidaire-823983333.html",
+          "title": "Société ETERNEL SOLIDAIRE à PARIS (75019). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 823983333"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/60669201",
+          "title": "L'Eternel Solidaire Paris - Association culturelle (adresse, horaires)"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/etablissement/82398333300019",
+          "title": "ETERNEL SOLIDAIRE à 75019 PARIS - SIRET 823 983 333 ..."
+        },
+        {
+          "url": "https://www.verif.com/societe/D2L-823983333/",
+          "title": "ETERNEL SOLIDAIRE (82398333300019) , PARIS, Verif"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/eternel-solidaire-823983333",
+          "title": "Association ETERNEL SOLIDAIRE : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASSOCIATION LE FIGUIER": {
+      "beneficiaire": "ASSOCIATION LE FIGUIER",
+      "beneficiaire_normalise": "ASSOCIATION LE FIGUIER",
+      "siret": "341194249",
+      "generated_at": "2026-04-22T00:44:07",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 gérant une crèche collective d'accueil de jeunes enfants (action sociale sans hébergement).",
+      "perimetre_geographique": "Paris IVe",
+      "sources": [
+        {
+          "url": "https://www.verif.com/societe/ASSOCIATION-LE-FIGUIER-341194249/",
+          "title": "Société ASSOCIATION LE FIGUIER à PARIS - Chiffre d'affaires, bilan, résultat - Siren / |Verif.com"
+        },
+        {
+          "url": "https://www.societe.com/societe/association-le-figuier-341194249.html",
+          "title": "Société ASSOCIATION LE FIGUIER à PARIS (75004). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 341194249"
+        },
+        {
+          "url": "https://www.118000.fr/e_C0001037855",
+          "title": "Le Figuier - Crèche Collective Associative à PARIS 75001 (Avé Maria): Adresse, horaires, téléphone - 118000.fr"
+        },
+        {
+          "url": "https://fr.kompass.com/c/association-le-figuier/fr0189204/",
+          "title": "Association Le Figuier - Paris 4 75004 (Paris), 6 Rue De L Ave Maria ,"
+        },
+        {
+          "url": "https://www.helloasso.com/associations/association-le-figuier",
+          "title": "Association Le Figuier | HelloAsso"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "CTRE INFORMAT DROITS FEMMES PARIS": {
+      "beneficiaire": "CTRE INFORMAT DROITS FEMMES PARIS",
+      "beneficiaire_normalise": "CTRE INFORMAT DROITS FEMMES PARIS",
+      "siret": "440622207",
+      "generated_at": "2026-04-22T00:44:16",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association qui exerce une mission d'intérêt général pour favoriser l'accès aux droits des femmes et leur insertion socio-économique, notamment en matière d'accès au droit, lutte contre les violences sexistes, emploi et formation.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.pappers.fr/entreprise/cidff37-ctre-information-droits-des-femmes-et-familles-dindre-et-loire-332663434",
+          "title": "Association CIDFF37 CTRE INFORMATION DROITS DES FEMMES ET FAMILLES D'INDRE ET LOIRE : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/09134203",
+          "title": "Ctre Inform Droits Femmes Saintes - Association humanitaire (adresse)"
+        },
+        {
+          "url": "https://educadroit.fr/trouver-un-intervenant/centres-dinformation-des-droits-des-femmes-et-de-la-famille-cidff",
+          "title": "Centres d'information des droits des femmes et de la famille (CIDFF)"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/cidff-ctre-infor-droits-femmes-familles-loiret-325751717",
+          "title": "Association CIDFF CTRE INFOR DROITS FEMMES FAMILLES LOIRET : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Centre_national_d'information_des_droits_des_femmes_et_des_familles",
+          "title": "Centre national d'information des droits des femmes et des familles — Wikipédia"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "SOLIDARITE CHRETIENNE": {
+      "beneficiaire": "SOLIDARITE CHRETIENNE",
+      "beneficiaire_normalise": "SOLIDARITE CHRETIENNE",
+      "siret": "387951320",
+      "generated_at": "2026-04-22T00:44:26",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 d'action sociale et de solidarité chrétienne intervenant dans le domaine de l'aide aux personnes en difficulté.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.societe.com/procedure-collective/actes-6-8-colmar-solidarite-chretienne-919520239",
+          "title": "Societe.com : RCS, siret, siren, bilan, l'information gratuite sur les entreprises du Registre du Commerce des Socits (RNCS)"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/groupe-sos-solidarites-341062404",
+          "title": "Association GROUPE SOS SOLIDARITES : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/secours-catholique-775666696",
+          "title": "Association SECOURS CATHOLIQUE : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.societe.com/societe/ass-communaute-vie-chretienne-408743656.html",
+          "title": "ASS COMMUNAUTE VIE CHRETIENNE (PARIS 11) Chiffre d'affaires, rsultat, bilans sur SOCIETE.COM - 408743656"
+        },
+        {
+          "url": "https://www.score3.fr/GROUPE-SOS-SOLIDARITES-341062404.shtml",
+          "title": "GROUPE SOS SOLIDARITES - Siren 341062404 - 75011 Paris Informations financières et bilan d'entreprise sur Score3"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "SOLIDARITE ROQUETTE": {
+      "beneficiaire": "SOLIDARITE ROQUETTE",
+      "beneficiaire_normalise": "SOLIDARITE ROQUETTE",
+      "siret": "39984846400018",
+      "generated_at": "2026-04-22T00:45:39",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 gérant un centre social, un centre de formation, une crèche et un jardin partagé dans le 11e arrondissement de Paris.",
+      "perimetre_geographique": "Paris XIe",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/solidarite-roquette-399848464.html",
+          "title": "SOLIDARITE ROQUETTE (PARIS) Chiffre d'affaires, résultat, bilans sur SOCIETE.COM - 399848464"
+        },
+        {
+          "url": "https://www.solidariteroquette.fr/",
+          "title": "Centre social et culturel | Roquette | Paris"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/solidarite-roquette-399848464",
+          "title": "Association SOLIDARITE ROQUETTE à 75011 PARIS"
+        },
+        {
+          "url": "https://www.tousbenevoles.org/trouver-une-association-benevole/75/paris/solidarite-roquette-1167",
+          "title": "Je recherche une association Solidarité Roquette | Tous Bénévoles"
+        },
+        {
+          "url": "https://www.solidariteroquette.fr/copie-de-l-association",
+          "title": "L'association - Solidarité Roquette"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASSOCIATION CONCERTS PASDELOUP": {
+      "beneficiaire": "ASSOCIATION CONCERTS PASDELOUP",
+      "beneficiaire_normalise": "ASSOCIATION CONCERTS PASDELOUP",
+      "siret": "78434004400048",
+      "generated_at": "2026-04-22T00:46:49",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association reconnue d'utilité publique spécialisée dans les arts du spectacle vivant, plus ancien orchestre associatif parisien encore en activité fondé en 1861.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/association-concerts-pasdeloup-784340044.html",
+          "title": "ASSOCIATION CONCERTS PASDELOUP (PARIS 3) Chiffre d'affaires, rsultat, bilans sur SOCIETE.COM - 784340044"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/association-concerts-pasdeloup-784340044",
+          "title": "ASSOCIATION CONCERTS PASDELOUP : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/association-concerts-pasdeloup-784340044",
+          "title": "association concerts pasdeloup - Annuaire des Entreprises"
+        },
+        {
+          "url": "https://www.concertspasdeloup.fr/",
+          "title": "Accueil - Concerts Pasdeloup"
+        },
+        {
+          "url": "https://www.concertspasdeloup.fr/association/",
+          "title": "Association - Concerts Pasdeloup"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "INFANS A L ENFANT": {
+      "beneficiaire": "DE L'INFANS A L'ENFANT",
+      "beneficiaire_normalise": "INFANS A L ENFANT",
+      "siret": "48208866300026",
+      "generated_at": "2026-04-22T00:46:58",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 gérant deux Lieux d'accueil enfants-parents (LAEP) pour les enfants de 0 à 6 ans, soutenue par la CAF et la Ville de Paris.",
+      "perimetre_geographique": "Paris XVIIIe",
+      "sources": [
+        {
+          "url": "https://rubypayeur.com/societe/de-l-infans-a-l-enfant-482088663",
+          "title": "Société DE L'INFANS A L'ENFANT à PARIS 18 - SIREN : 482088663"
+        },
+        {
+          "url": "https://www.verif.com/societe/DE-L-INFANS-A-L-ENFANT-482088663/",
+          "title": "DE L'INFANS A L'ENFANT (48208866300026) , PARIS 18, Verif"
+        },
+        {
+          "url": "https://www.societe.com/societe/de-l-infans-a-l-enfant-482088663.html",
+          "title": "Société DE L'INFANS A L'ENFANT à PARIS (75018). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 482088663"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/51763052",
+          "title": "De L'Infans A L'Enfant Paris - Association culturelle (adresse)"
+        },
+        {
+          "url": "https://www.manageo.fr/entreprises/482088663.html",
+          "title": "DE L'INFANS A L'ENFANT à PARIS 18 sur Manageo.fr (48208866300026) Siège social"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASS CAFEZOIDE": {
+      "beneficiaire": "ASS CAFEZOIDE",
+      "beneficiaire_normalise": "ASS CAFEZOIDE",
+      "siret": "438726978",
+      "generated_at": "2026-04-22T00:48:09",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 qui gère un café culturel et espace de loisirs pour enfants de 0 à 16 ans et leurs familles, proposant des activités artistiques, sociales et civiques.",
+      "perimetre_geographique": "Paris XIXe",
+      "sources": [
+        {
+          "url": "https://www.verif.com/societe/ASS-CAFEZOIDE-438726978/",
+          "title": "Société ASS CAFEZOIDE à PARIS - Chiffre d'affaires, bilan, résultat - Siren / |Verif.com"
+        },
+        {
+          "url": "https://www.societe.com/societe/ass-cafezoide-438726978.html",
+          "title": "Société ASS CAFEZOIDE à PARIS (75019). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 438726978"
+        },
+        {
+          "url": "https://www.net1901.org/association/CAFEZOIDE,601453.html",
+          "title": "CAFEZOIDE - Paris"
+        },
+        {
+          "url": "https://app.dataprospects.fr/entreprises/ASS-CAFEZOIDE/438726978",
+          "title": "DataProspect - Fiche entreprise ASS CAFEZOIDE"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/09159165",
+          "title": "Cafézoïde Paris - Café bar (adresse, horaires, ouvert le dimanche)"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASS SAFE": {
+      "beneficiaire": "ASS SAFE",
+      "beneficiaire_normalise": "ASS SAFE",
+      "siret": "395065436",
+      "generated_at": "2026-04-22T00:48:18",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association de santé publique chargée de la réduction des risques liés aux drogues, de la prévention du VIH/hépatites et de l'aide humanitaire en France et à l'étranger.",
+      "perimetre_geographique": "Paris XVe",
+      "sources": [
+        {
+          "url": "https://association.e-pro.fr/paris/ass-safe_f4943390",
+          "title": "ASS SAFE à Paris 15 (adresse, téléphone)"
+        },
+        {
+          "url": "https://rubypayeur.com/societe/ass-safe-395065436",
+          "title": "ASS SAFE (395065436) 🚦 - Solvabilité, dirigeants et avis - 2022"
+        },
+        {
+          "url": "https://www.amazon.com/Spartan-Defense-Personal-Keychain-Elderly/dp/B09R1G5XVX",
+          "title": "Amazon.com : The Original Self Defense Siren Personal Safety Alarm for Women, Men, Kids, Elderly - SOS LED Strobe Light - Air Travel/TSA Friendly - Emergency Safe Key Chain Device, Pocket Size - Black Rechargeable : Electronics"
+        },
+        {
+          "url": "https://www.societe.com/societe/ass-safe-395065436.html",
+          "title": "Société ASS SAFE à PARIS (75015). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 395065436"
+        },
+        {
+          "url": "https://www.amazon.com/self-defense-siren/s?k=self+defense+siren",
+          "title": "Amazon.com: Self Defense Siren"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "THEATRES DE LA CARTOUCHERIE": {
+      "beneficiaire": "DES THEATRES DE LA CARTOUCHERIE",
+      "beneficiaire_normalise": "THEATRES DE LA CARTOUCHERIE",
+      "siret": "493630248",
+      "generated_at": "2026-04-22T00:48:32",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association regroupant plusieurs théâtres et espaces de création artistique (Théâtre du Soleil, Théâtre de la Tempête, Théâtre de l'Épée de Bois, Théâtre de l'Aquarium, Atelier de Paris) situés dans l'ancienne Cartoucherie du Bois de Vincennes.",
+      "perimetre_geographique": "Paris XIIe",
+      "sources": [
+        {
+          "url": "https://www.offi.fr/theatre/cartoucherie-5289.html",
+          "title": "Cartoucherie : programme et réservation - L'Officiel des spectacles"
+        },
+        {
+          "url": "https://cartoucherie.fr/",
+          "title": "CARTOUCHERIE | Des fabriques de théâtre et de danse au cœur du Bois de Vincennes…"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/02457597",
+          "title": "Thêatre Du Soleil Paris - Théâtre (adresse, horaires)"
+        },
+        {
+          "url": "https://www.theatreonline.com/Theatre/Cartoucherie-Theatre-du-Soleil/163",
+          "title": "Cartoucherie - Théâtre du Soleil | THEATREonline"
+        },
+        {
+          "url": "https://www.theatreonline.com/Theatre/Cartoucherie-Theatre-de-la-Tempete/12",
+          "title": "Cartoucherie - Théâtre de la Tempête | THEATREonline"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ATELIER BERLIOZ ADPS": {
+      "beneficiaire": "ATELIER BERLIOZ ADPS",
+      "beneficiaire_normalise": "ATELIER BERLIOZ ADPS",
+      "siret": "34153916100016",
+      "generated_at": "2026-04-22T00:49:42",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association gestionnaire d'une halte-garderie accueillant les enfants de 1 à 4 ans (action sociale sans hébergement).",
+      "perimetre_geographique": "Paris IXe",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/atelier-berlioz-adps-341539161.html",
+          "title": "ATELIER BERLIOZ ADPS (PARIS) Chiffre d'affaires, résultat, bilans sur SOCIETE.COM - 341539161"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/atelier-berlioz-adps-341539161",
+          "title": "ATELIER BERLIOZ ADPS : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/atelier-berlioz-adps-341539161",
+          "title": "Association ATELIER BERLIOZ ADPS à 75009 PARIS"
+        },
+        {
+          "url": "https://lescreches.fr/paris-75000/adps-atelier-berlioz-7bv.html",
+          "title": "Adps - Atelier Berlioz - Paris"
+        },
+        {
+          "url": "https://www.linkedin.com/in/sabrina-guidici-1542411bb/",
+          "title": "Sabrina Guidici - Éducateur jeunes enfants chez ATELIER BERLIOZ ADPS | LinkedIn"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASSOC CENTRE ALPHA CHOISY": {
+      "beneficiaire": "ASSOC CENTRE ALPHA CHOISY",
+      "beneficiaire_normalise": "ASSOC CENTRE ALPHA CHOISY",
+      "siret": "408605251",
+      "generated_at": "2026-04-22T00:49:51",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 organisme de formation qui accompagne des adultes étrangers ne maîtrisant pas ou peu la langue française",
+      "perimetre_geographique": "Paris XIIIe",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/assoc-centre-alpha-choisy-408605251.html",
+          "title": "ASSOC CENTRE ALPHA CHOISY (PARIS) Chiffre d'affaires, résultat, bilans sur SOCIETE.COM - 408605251"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/assoc-centre-alpha-choisy-408605251",
+          "title": "Association ASSOC CENTRE ALPHA CHOISY : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/07826789",
+          "title": "Centre Alpha Choisy Paris - Formation continue (adresse, horaires)"
+        },
+        {
+          "url": "https://www.journal-officiel.gouv.fr/associations/recherche/resultats/compte/2019-12-13?size=10&refine=options_entite/ASSO/Compte&page=2541",
+          "title": "Résultats de recherche | Associations | Page 2541 | journal-officiel.gouv.fr"
+        },
+        {
+          "url": "http://w35-associations.apps.paris.fr/searchasso/jsp/site/Portal.jsp?id=1932&page=searchasso",
+          "title": "CENTRE ALPHA CHOISY"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "SCIENCE TECHNOLOGIE ET SOCIETE": {
+      "beneficiaire": "SCIENCE TECHNOLOGIE ET SOCIETE",
+      "beneficiaire_normalise": "SCIENCE TECHNOLOGIE ET SOCIETE",
+      "siret": "328100078",
+      "generated_at": "2026-04-22T00:51:00",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association de culture scientifique et technique qui explore les relations entre l'évolution scientifique, technologique et le développement sociétal, organisant rencontres, colloques et formations.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/science-technologie-et-societe-328100078.html",
+          "title": "Société SCIENCE TECHNOLOGIE ET SOCIETE à PARIS (75013). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 328100078"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/05217184",
+          "title": "Science Technologie Et Société Paris - Association culturelle (adresse, horaires)"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/asts-science-technologie-et-societe-328100078",
+          "title": "Association ASTS SCIENCE TECHNOLOGIE ET SOCIETE : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://fr.kompass.com/c/science-technologie-et-societe/fr8006489/",
+          "title": "Science Technologie Et Societe - Paris 13 75013 (Paris), 54 Avenue Edison , SIREN 328 100 078"
+        },
+        {
+          "url": "https://www.societe.com/",
+          "title": "Societe.com : RCS, siret, siren, bilan, l'information gratuite sur les entreprises du Registre du Commerce des Sociétés (RNCS)"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "PETIT BAIN": {
+      "beneficiaire": "PETIT BAIN",
+      "beneficiaire_normalise": "PETIT BAIN",
+      "siret": "539350553",
+      "generated_at": "2026-04-22T00:51:09",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Société coopérative d'intérêt collectif exploitant un équipement culturel flottant proposant concerts, spectacles, restauration et ateliers artistiques.",
+      "perimetre_geographique": "Paris XIIIe",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/petit-bain-539350553.html",
+          "title": "Société PETIT BAIN à PARIS (75013). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 539350553"
+        },
+        {
+          "url": "https://www.verif.com/societe/PETIT-BAIN-539350553/",
+          "title": "Société PETIT BAIN à PARIS - Chiffre d'affaires, bilan, résultat - Siren / |Verif.com"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/53470648",
+          "title": "Petit Bain Paris - Restaurant (adresse, horaires, ouvert le dimanche)"
+        },
+        {
+          "url": "https://www.score3.fr/PETIT-BAIN-539350553.shtml",
+          "title": "PETIT BAIN - Siren 539350553 - 75013 Paris Informations financières et bilan d'entreprise sur Score3"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/petit-bain-539350553",
+          "title": "Société PETIT BAIN : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ECOLE NORMALE SOCIALE": {
+      "beneficiaire": "ECOLE NORMALE SOCIALE",
+      "beneficiaire_normalise": "ECOLE NORMALE SOCIALE",
+      "siret": "30903277900022",
+      "generated_at": "2026-04-22T00:52:20",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association reconnue d'intérêt général qui gère un centre de formation en travail social, un centre social (Espace Torcy) et un pôle sociolinguistique, proposant des formations diplômantes et continues dans le champ du travail social.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/ecole-normale-sociale-309032779.html",
+          "title": "ECOLE NORMALE SOCIALE (PARIS) Chiffre d'affaires, rsultat, bilans sur SOCIETE.COM - 309032779"
+        },
+        {
+          "url": "https://www.verif.com/en/company/ECOLE-NORMALE-SOCIALE-68d9d07412992303382ff190/",
+          "title": "ECOLE NORMALE SOCIALE (30903277900022) , PARIS 18, Verif"
+        },
+        {
+          "url": "https://www.score3.fr/ECOLE-NORMALE-SOCIALE-309032779.shtml",
+          "title": "ECOLE NORMALE SOCIALE - Siren 309032779 - 75018 Paris Informations financières et bilan d'entreprise sur Score3"
+        },
+        {
+          "url": "https://education.e-pro.fr/paris/ecole-normale-sociale_f5014359",
+          "title": "ECOLE NORMALE SOCIALE à Paris 18 (adresse, téléphone)"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/01542108",
+          "title": "Ecole Normale Sociale Paris - Enseignement supérieur privé (adresse, horaires)"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "DISTRICT PARISIEN DE FOOTBALL": {
+      "beneficiaire": "DISTRICT PARISIEN DE FOOTBALL",
+      "beneficiaire_normalise": "DISTRICT PARISIEN DE FOOTBALL",
+      "siret": "89203125300024",
+      "generated_at": "2026-04-22T00:52:28",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association chargée de la mise en œuvre des compétitions de football au profit des clubs parisiens affiliés à la Fédération Française de Football",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/district-parisien-de-football-892031253.html",
+          "title": "DISTRICT PARISIEN DE FOOTBALL (PARIS) Chiffre d'affaires, résultat, bilans sur SOCIETE.COM - 892031253"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/district-parisien-de-football-892031253",
+          "title": "district parisien de football - L'Annuaire des Entreprises"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/siret/89203125300024",
+          "title": "District Parisien De Football : SIRET/SIREN, numéro de TVA, info légales - N° 89203125300024"
+        },
+        {
+          "url": "https://paris-idf.fff.fr/informations/la-ligue-et-ses-districts/",
+          "title": "La Ligue et ses districts – LIGUE DE PARIS ILE-DE-FRANCE"
+        },
+        {
+          "url": "https://www.net1901.org/association/DISTRICT-PARISIEN-DE-FOOTBALL,3524171.html",
+          "title": "DISTRICT PARISIEN DE FOOTBALL - Paris"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ARBRE BLEU": {
+      "beneficiaire": "ARBRE BLEU",
+      "beneficiaire_normalise": "ARBRE BLEU",
+      "siret": "38411101900012",
+      "generated_at": "2026-04-22T00:53:38",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association gestionnaire d'un lieu d'accueil enfants-parents (LAEP) pour jeunes enfants de la naissance à 4 ans, situé à la Goutte d'Or.",
+      "perimetre_geographique": "Paris XVIIIe",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/arbre-bleu-384111019.html",
+          "title": "Société ARBRE BLEU à PARIS (75018). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 384111019"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/50541283",
+          "title": "L'Arbre Bleu Paris - Association humanitaire (adresse, horaires)"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/arbre-bleu-384111019",
+          "title": "Association ARBRE BLEU : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://arbrebleu.fr/",
+          "title": "L'arbre Bleu | Association qui intervient principalement sur le territoire de la commune d 'Orée d'Anjou."
+        },
+        {
+          "url": "https://www.societe.com/societe/l-arbre-bleu-804932499.html",
+          "title": "L'ARBRE BLEU (OREE-D'ANJOU) Chiffre d'affaires, rsultat, bilans sur SOCIETE.COM - 804932499"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "BAGAGERIE SOLIDAIRE 14": {
+      "beneficiaire": "BAGAGERIE SOLIDAIRE 14",
+      "beneficiaire_normalise": "BAGAGERIE SOLIDAIRE 14",
+      "siret": "85357359000017",
+      "generated_at": "2026-04-22T00:53:51",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association qui crée et gère une bagagerie solidaire offrant un espace sécurisé de stockage de bagages aux personnes sans domicile fixe, avec services d'accueil et d'accompagnement social.",
+      "perimetre_geographique": "Paris XIVe",
+      "sources": [
+        {
+          "url": "https://www.bagageriesolidaire14.org/page/662982-presentation",
+          "title": "Présentation | Bagagerie Solidaire 14"
+        },
+        {
+          "url": "https://www.jeveuxaider.gouv.fr/missions-benevolat/29631/benevolat-bagagerie-solidaire-14-paris",
+          "title": "J'aide à la bagagerie solidaire du 14e"
+        },
+        {
+          "url": "https://www.jeveuxaider.gouv.fr/organisations/15002-bagagerie-solidaire-14",
+          "title": "Association BAGAGERIE SOLIDAIRE 14 - Devenez bénévole dans l'association BAGAGERIE SOLIDAIRE 14 - JeVeuxAider.gouv.fr"
+        },
+        {
+          "url": "https://www.facebook.com/Bagageriesolidaire14/",
+          "title": "Bagagerie Solidaire 14 | Paris"
+        },
+        {
+          "url": "https://grandhuit.eu/projet/bagagerie-troubadour/",
+          "title": "BAGAGERIE TROUBADOUR - Grand Huit architecture"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "CTRE LOGEME JEUNES": {
+      "beneficiaire": "CTRE LOGEME JEUNES",
+      "beneficiaire_normalise": "CTRE LOGEME JEUNES",
+      "siret": "775696990",
+      "generated_at": "2026-04-22T00:54:01",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association déclarée exerçant l'activité d'autres hébergements, créée en 1955, proposant des logements pour jeunes travailleurs, étudiants et stagiaires.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.verif.com/societe/CTRE-LOGEME-JEUNES-TRAVAI-ETUDIA-STAGIAI-775696990/",
+          "title": "Société CTRE LOGEME JEUNES TRAVAI ETUDIA STAGIAI à PARIS - Chiffre d'affaires, bilan, résultat - Siren / |Verif.com"
+        },
+        {
+          "url": "https://www.societe.com/societe/ctre-logeme-jeunes-travai-etudia-stagiai-775696990.html",
+          "title": "Société CTRE LOGEME JEUNES TRAVAI ETUDIA STAGIAI à PARIS (75013). Chiffre d'affaires, extrait Kbis, bénéfice, statuts, extrait RNE, bilans, actionnaires - 775696990"
+        },
+        {
+          "url": "https://www.score3.fr/CTRE-LOGEME-JEUNES-TRAVAI-ETUDIA-STAGIAI-775696990.shtml",
+          "title": "CTRE LOGEME JEUNES TRAVAI ETUDIA STAGIAI - CLJT - Siren 775696990 - 75013 Paris Informations financières et bilan d'entreprise sur Score3"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/cljt-ctre-logeme-jeunes-travai-etudia-stagiai-775696990",
+          "title": "Association CLJT CTRE LOGEME JEUNES TRAVAI ETUDIA STAGIAI : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://entreprises.annuairefrancais.fr/75014/ctre-logeme-jeunes-travai-etudia-stagiai-cljt-paris-14-eme-75-paris-775696990-00057.html",
+          "title": "société : CTRE LOGEME JEUNES TRAVAI ETUDIA STAGIAI CLJT (siren 775696990) a Paris 14 ème 75014 tourisme Organismes (75) Bilans gratuits - Actes légaux - Statuts - Annuaire Français"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "FEDERATION UNIE DES AUBERGES DE JEU": {
+      "beneficiaire": "FEDERATION UNIE DES AUBERGES DE JEU",
+      "beneficiaire_normalise": "FEDERATION UNIE DES AUBERGES DE JEU",
+      "siret": "",
+      "generated_at": "2026-04-22T00:55:10",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 à but non lucratif, fédération française d'auberges de jeunesse affiliée au réseau international Hostelling International",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.unat-occitanie.fr/diffusio/operateur/fuaj-federation-unie-des-auberges-de-jeunesse-paris-paris_TFOo52",
+          "title": "FUAJ (Fédération Unie des Auberges de Jeunesse), PARIS | UNAT Occitanie"
+        },
+        {
+          "url": "https://mesinfos.fr/consulter-greffe-paris/association-federation-unie-des-auberges-de-jeunes-7f680da2ec25f47deebdeef6350257fb81582bbe",
+          "title": "ASSOCIATION FEDERATION UNIE DES AUBERGES DE JEUNES - Annonce légale en Paris (75) - mesinfos"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/F%C3%A9d%C3%A9ration_unie_des_auberges_de_jeunesse",
+          "title": "Fédération unie des auberges de jeunesse — Wikipédia"
+        },
+        {
+          "url": "https://www.societe.com/societe/federation-unie-des-auberges-de-jeunesse-775674260.html",
+          "title": "Société FEDERATION UNIE DES AUBERGES DE JEUNESSE à PARIS (75018). Chiffre d'affaires, extrait Kbis, bénéfice, statuts, extrait RNE, bilans, actionnaires - 775674260"
+        },
+        {
+          "url": "https://parisactionclimat.paris.fr/fr/federation-unie-des-auberges-de-jeunesse",
+          "title": "Fédération Unie des Auberges de Jeunesse"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ORGANISATION INTERNAT MIGRATIONS": {
+      "beneficiaire": "ORGANISATION INTERNAT MIGRATIONS",
+      "beneficiaire_normalise": "ORGANISATION INTERNAT MIGRATIONS",
+      "siret": "",
+      "generated_at": "2026-04-22T00:55:19",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Organisation intergouvernementale liée aux Nations unies, chargée de promouvoir une gestion ordonnée et humaine des migrations et d'accompagner les migrants.",
+      "perimetre_geographique": "international",
+      "sources": [
+        {
+          "url": "https://www.pagesjaunes.fr/pros/51987136",
+          "title": "O-i-m Organisation Internationale pour les Migrations Paris (adresse, horaires)"
+        },
+        {
+          "url": "https://www.infomie.net/spip.php?auteur462=&lang=fr",
+          "title": "Organisation internationale pour les migrations (OIM) - Paris – InfoMIE.net"
+        },
+        {
+          "url": "https://france.iom.int/fr",
+          "title": "OIM France"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/etablissement/43970442000033",
+          "title": "Siège social - ORGANISATION INTERNATIONALE MIGRATIONS (OIM) à 75009 PARIS - SIRET 439 704 420 00033 | L’Annuaire des Entreprises"
+        },
+        {
+          "url": "https://ccfd-terresolidaire.org/combat/migrations-internationales/",
+          "title": "Migrations Internationales - CCFD-Terre Solidaire"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "PARIS 13 ATLETICO": {
+      "beneficiaire": "PARIS 13 ATLETICO",
+      "beneficiaire_normalise": "PARIS 13 ATLETICO",
+      "siret": "42002748400047",
+      "generated_at": "2026-04-22T00:55:29",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association déclarée (loi 1901) organisant et favorisant la pratique du football et des sports, basée à Paris 13e arrondissement",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/paris-13-atletico-420027484.html",
+          "title": "Société PARIS 13 ATLETICO à PARIS (75013). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 420027484"
+        },
+        {
+          "url": "https://www.verif.com/societe/PARIS-13-ATLETICO-420027484/",
+          "title": "PARIS 13 ATLETICO (42002748400047) , PARIS, Verif"
+        },
+        {
+          "url": "https://www.societe.com/etablissements/paris-13-atletico-420027484.html",
+          "title": "PARIS 13 ATLETICO (420027484), tous les tablissements de l'entreprise sur SOCIETE.COM"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/paris-13-atletico-420027484",
+          "title": "Association PARIS 13 ATLETICO : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://infonet.fr/entreprises/42002748400047-paris-13-atletico/",
+          "title": "PARIS 13 ATLETICO à Paris | Chiffre d'Affaires, Statuts"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
     }
   }
 }

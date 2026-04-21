@@ -31,9 +31,11 @@ DATA_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "
 
 
 # ─── Dette — ratios ROB/CRC (non publiés en open data) ───────────────────
-# Références : ROB 2024 Paris, rapport CRC Île-de-France 2023/2024, Moody's Aa2.
-# Ces ratios servent uniquement au split taux fixe/variable et à la maturité
-# moyenne. La ventilation par instrument est dérivée du drilldown réel.
+# ATTENTION : ces ratios sont INDICATIFS et CONSTANTS sur toute la période
+# 2019-2024. Sources citées : ROB 2024 Paris, CRC IdF 2023/2024. Ils ne
+# reflètent pas une recomposition année par année. Le JSON de sortie
+# expose `indicative_fields` pour signaler ce qui est reconstitué vs
+# directement issu du bilan M57.
 
 DETTE_QUALITATIVE = {
     "taux_part_fixe": 0.82,
@@ -309,6 +311,20 @@ def build_structure_dette(bilan: dict) -> dict:
         "bond_issuances": issuances_active,
         "bond_issuances_total_m_eur": sum(b["amount_m_eur"] for b in issuances_active),
         "obligataire_total": obligataire_total,
+        # Champs reconstitués (ROB / Euronext / communiqués IR), non agrégés
+        # directement depuis l'open data. Valeurs indicatives, constantes sur
+        # 2019-2024 pour les ratios. À ne pas présenter comme "mesuré".
+        "indicative_fields": [
+            "taux.part_fixe",
+            "taux.part_variable",
+            "taux.taux_fixe_moyen_pondere_pct",
+            "maturite_moyenne_ans",
+            "prochaine_echeance_lourde",
+            "bond_issuances",
+            "instruments[].taux_moyen_pct",
+            "instruments[].maturite_moyenne_ans",
+            "instruments[].part_taux_fixe",
+        ],
     }
 
 
@@ -347,10 +363,14 @@ def build(year: int, logger: Logger) -> Path:
                 "Bloomberg · ISIN FR0014xxxx",
             ],
             "limites": (
-                "Le split taux fixe/variable (82 %/18 %) et la maturité moyenne (14,2 ans) "
-                "ne sont pas publiés en open data à la résolution ligne-par-ligne ; "
-                "reconstitution depuis ROB. La ventilation par instrument (obligataire "
-                "vs bancaire vs divers) provient directement du compte administratif M57."
+                "MESURÉ (bilan M57 opendata.paris.fr) : encours total, ventilation "
+                "par instrument (obligataire / bancaire / divers), masses actif-passif. "
+                "INDICATIF (reconstitution ROB / Euronext / communiqués Paris IR, "
+                "constant sur la période 2019-2024) : split taux fixe/variable (82/18), "
+                "maturité moyenne (14,2 ans), taux moyens par instrument, liste des "
+                "émissions obligataires, prochaine échéance lourde. Ces champs sont "
+                "listés dans `indicative_fields` et ne doivent pas être présentés "
+                "comme des mesures directes issues de l'open data."
             ),
         },
     }

@@ -28,16 +28,38 @@ type Item = { arr: number; amount: number; count: number };
 type Props = {
   items: Item[];
   height?: number;
+  /** Formats the main value shown in tooltip, ranking and legend bounds.
+   *  Defaults to euro formatting (investissements use case). */
+  formatValue?: (v: number) => string;
+  /** Label used after the count in the tooltip ("projets", "logements"…).
+   *  Defaults to fx.choro.projets_loc. */
+  unitLabel?: string;
+  /** Builds the click-through href from an arrondissement number (1-20),
+   *  or c_ar=0 for Paris Centre. Return null to make tiles non-clickable.
+   *  Defaults to /investissements/arrondissement/{n}. */
+  hrefFor?: (arr: number) => string | null;
+  /** Show the top-5 ranking list in the sidebar. Defaults to true.
+   *  Turn off when a richer exhaustive ranking is rendered below the map. */
+  showRanking?: boolean;
 };
 
-export default function ParisChoropleth({ items, height = 420 }: Props) {
+export default function ParisChoropleth({
+  items,
+  height = 420,
+  formatValue,
+  unitLabel,
+  hrefFor,
+  showRanking = true,
+}: Props) {
   const t = useT();
   const { locale } = useLocale();
   const locStr = locale === "en" ? "en-GB" : "fr-FR";
   const suf = locale === "en" ? sufEn : sufFr;
   const mdLabel = t("fx.s.md_eur");
   const mLabel = t("fx.s.m_eur");
-  const fmtEur = (n: number) => fmtEurLocale(n, locStr, mdLabel, mLabel);
+  const fmtEur =
+    formatValue ?? ((n: number) => fmtEurLocale(n, locStr, mdLabel, mLabel));
+  const unit = unitLabel ?? t("fx.choro.projets_loc");
 
   const labelFor = (cAr: number): string => {
     if (cAr === 0) return locale === "en" ? "Paris Centre (1-4th)" : "Paris Centre (1-4ᵉ)";
@@ -56,11 +78,14 @@ export default function ParisChoropleth({ items, height = 420 }: Props) {
     byCar.set(key, cur);
   }
 
-  const openArr = (cAr: number) => {
-    // For Paris Centre, link to the first central arrondissement (arr=1) — the
-    // per-arrondissement fiche will still aggregate. Otherwise use c_ar as-is.
+  const defaultHref = (cAr: number) => {
     const target = cAr === 0 ? 1 : cAr;
-    router.push(`/investissements/arrondissement/${target}`, { scroll: false });
+    return `/investissements/arrondissement/${target}`;
+  };
+  const resolveHref = hrefFor ?? defaultHref;
+  const openArr = (cAr: number) => {
+    const href = resolveHref(cAr);
+    if (href) router.push(href, { scroll: false });
   };
 
   const amounts = [...byCar.values()].map((v) => v.amount).sort((a, b) => a - b);
@@ -102,7 +127,7 @@ export default function ParisChoropleth({ items, height = 420 }: Props) {
                   stroke={isHover ? "#0a0a0a" : "#faf9f5"}
                   strokeWidth={isHover ? 0.8 : 0.5}
                   style={{
-                    cursor: "pointer",
+                    cursor: resolveHref(cAr) ? "pointer" : "default",
                     transition: "fill 120ms ease, stroke 120ms ease, stroke-width 120ms ease",
                     opacity: hovered != null && !isHover ? 0.75 : 1,
                   }}
@@ -111,7 +136,7 @@ export default function ParisChoropleth({ items, height = 420 }: Props) {
                   onClick={() => openArr(cAr)}
                 >
                   <title>
-                    {labelFor(cAr)} · {fmtEur(amount)} · {it?.count ?? 0} {locale === "en" ? "projects" : "projets"} — {t("fx.choro.click_open")}
+                    {labelFor(cAr)} · {fmtEur(amount)} · {it?.count ?? 0} {unit} — {t("fx.choro.click_open")}
                   </title>
                 </path>
               );
@@ -126,7 +151,7 @@ export default function ParisChoropleth({ items, height = 420 }: Props) {
             <>
               <div className="fx-choropleth-arr">{labelFor(hoveredItem.arr)}</div>
               <div className="fx-choropleth-amount">{fmtEur(hoveredItem.amount)}</div>
-              <div className="fx-choropleth-count">{hoveredItem.count} {t("fx.choro.projets_loc")}</div>
+              <div className="fx-choropleth-count">{hoveredItem.count} {unit}</div>
             </>
           ) : (
             <>
@@ -159,6 +184,7 @@ export default function ParisChoropleth({ items, height = 420 }: Props) {
           </div>
         </div>
 
+        {showRanking && (
         <ol className="fx-choropleth-ranking">
           {(() => {
             const sorted = [...byCar.values()].sort((a, b) => b.amount - a.amount);
@@ -184,6 +210,7 @@ export default function ParisChoropleth({ items, height = 420 }: Props) {
             ));
           })()}
         </ol>
+        )}
       </div>
     </div>
   );

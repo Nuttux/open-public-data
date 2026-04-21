@@ -18,7 +18,7 @@ type Props = {
  * Permet de sauter aux grandes sections de la page sans scroller 10 écrans.
  * Highlight auto de la section courante via IntersectionObserver.
  */
-export default function PageTOC({ items, scrollOffset = 60 }: Props) {
+export default function PageTOC({ items, scrollOffset = 96 }: Props) {
   const [activeId, setActiveId] = useState<string | null>(items[0]?.id ?? null);
 
   useEffect(() => {

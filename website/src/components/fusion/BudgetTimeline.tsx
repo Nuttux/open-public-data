@@ -19,6 +19,14 @@ type Props = {
   yTicks?: number[];
   /** Height in px (viewBox is 1200×340 — width is responsive). */
   height?: number;
+  /** Format a y-axis tick value. Defaults to `{n} Md` (budget use case). */
+  formatYTick?: (v: number) => string;
+  /** Replaces the active-year badge text ("2024 exéc."). */
+  activeBadge?: string;
+  /** Show the status row (EXÉC./VOTÉ/EST.). Defaults to true. */
+  showStatus?: boolean;
+  /** Override aria-label for accessibility. */
+  ariaLabel?: string;
 };
 
 /**
@@ -33,6 +41,10 @@ export default function BudgetTimeline({
   annotations = [],
   yTicks,
   height = 340,
+  formatYTick,
+  activeBadge,
+  showStatus = true,
+  ariaLabel,
 }: Props) {
   // viewBox: 1200x340. Padding: 60 left, 20 right, 40 top, 60 bottom (labels)
   const W = 1200;
@@ -88,7 +100,7 @@ export default function BudgetTimeline({
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
-        aria-label={`Évolution du budget ${sorted[0]?.year} à ${sorted[sorted.length - 1]?.year}`}
+        aria-label={ariaLabel ?? `Évolution du budget ${sorted[0]?.year} à ${sorted[sorted.length - 1]?.year}`}
         preserveAspectRatio="xMidYMid meet"
         style={{ width: "100%", height }}
       >
@@ -102,7 +114,9 @@ export default function BudgetTimeline({
         <g fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#5f6672">
           {ticks.map((t, i) => (
             <text key={i} x={LEFT - 10} y={yFor(t) + 4} textAnchor="end">
-              {(Number.isInteger(t) ? t.toString() : t.toFixed(1)).replace(".", ",")} Md
+              {formatYTick
+                ? formatYTick(t)
+                : `${(Number.isInteger(t) ? t.toString() : t.toFixed(1)).replace(".", ",")} Md`}
             </text>
           ))}
         </g>
@@ -148,7 +162,8 @@ export default function BudgetTimeline({
           <g transform={`translate(${xFor(active.year)}, ${yFor(active.value)})`}>
             <rect x="-44" y="-60" width="88" height="28" fill="#0a0a0a" />
             <text x="0" y="-40" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="12" fontWeight="700" fill="#fff">
-              {active.year} {active.type === "vote" ? "voté" : active.type === "estimate" ? "est." : "exéc."}
+              {activeBadge ??
+                `${active.year} ${active.type === "vote" ? "voté" : active.type === "estimate" ? "est." : "exéc."}`}
             </text>
             <line x1="0" y1="-31" x2="0" y2="-10" stroke="#0a0a0a" strokeWidth="1.5" />
           </g>
@@ -169,19 +184,21 @@ export default function BudgetTimeline({
           ))}
         </g>
         {/* Status row */}
-        <g fontFamily="JetBrains Mono, monospace" fontSize="9" fill="#9099a6" textAnchor="middle" letterSpacing="1">
-          {sorted.map((p) => (
-            <text
-              key={p.year}
-              x={xFor(p.year)}
-              y={326}
-              fill={p.year === activeYear ? "#0a0a0a" : "#9099a6"}
-              fontWeight={p.year === activeYear ? 700 : 400}
-            >
-              {p.type === "execute" ? "EXÉC." : p.type === "vote" ? "VOTÉ" : "EST."}
-            </text>
-          ))}
-        </g>
+        {showStatus && (
+          <g fontFamily="JetBrains Mono, monospace" fontSize="9" fill="#9099a6" textAnchor="middle" letterSpacing="1">
+            {sorted.map((p) => (
+              <text
+                key={p.year}
+                x={xFor(p.year)}
+                y={326}
+                fill={p.year === activeYear ? "#0a0a0a" : "#9099a6"}
+                fontWeight={p.year === activeYear ? 700 : 400}
+              >
+                {p.type === "execute" ? "EXÉC." : p.type === "vote" ? "VOTÉ" : "EST."}
+              </text>
+            ))}
+          </g>
+        )}
       </svg>
     </div>
   );
