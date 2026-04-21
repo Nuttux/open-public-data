@@ -106,7 +106,6 @@ export default function LandingClient({ stats }: Props) {
               display: fmtInt(b.perMonth),
               href: `/budget?theme=${encodeURIComponent(b.label)}`,
             }))}
-            shareTotal={stats.perCapitaMonth}
           />
         </div>
       </section>

@@ -640,6 +640,17 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   font-weight: 500;
   margin-left: 2px;
 }
+.theme-fusion a.fx-br-row {
+  color: inherit;
+  text-decoration: none;
+}
+.theme-fusion a.fx-br-row:focus-visible {
+  outline: 2px solid var(--bleu-vif);
+  outline-offset: -2px;
+}
+.theme-fusion a.fx-br-row:hover .fx-br-fill {
+  background: var(--bleu-vif);
+}
 
 @media (max-width: 768px) {
   .theme-fusion .fx-br-row {
