@@ -1,12 +1,16 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { AssoDrawer, SectionHead, type AssoFiche } from "@/components/fusion";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useRef, useState } from "react";
+import SectionHead from "@/components/fusion/SectionHead";
 
 type Bene = {
   name: string;
   theme: string | null;
   amount: number;
+  totalAmount: number;
+  lastActiveYear: number;
   nb: number;
   history: { year: number; amount: number }[];
 };
@@ -48,12 +52,30 @@ export default function QuiRecoitExplorer({
   themes,
   concentrationTop10Pct,
 }: Props) {
-  const [fiche, setFiche] = useState<AssoFiche | null>(null);
-
   const [query, setQuery] = useState("");
   const [theme, setTheme] = useState("");
   const [minEur, setMinEur] = useState("");
   const [maxEur, setMaxEur] = useState("");
+  const searchRef = useRef<HTMLElement | null>(null);
+  const searchParams = useSearchParams();
+
+  // Read ?theme=X from URL (set by the stackbar click) and apply it to the
+  // filter. Scroll to the search section so the user sees the results of
+  // their click.
+  useEffect(() => {
+    const themeParam = searchParams.get("theme");
+    if (themeParam) {
+      // Match against the canonical list — the stackbar consolidates
+      // "Social - Solidarité" etc. into "Social", so expand it back.
+      const matched = themes.includes(themeParam)
+        ? themeParam
+        : themes.find((t) => t.startsWith(themeParam)) ?? themeParam;
+      setTheme(matched);
+      setTimeout(() => {
+        searchRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 50);
+    }
+  }, [searchParams, themes]);
 
   const hasQuery = query.trim().length >= 2 || theme.length > 0 || minEur.length > 0 || maxEur.length > 0;
 
@@ -77,15 +99,7 @@ export default function QuiRecoitExplorer({
     setMaxEur("");
   };
 
-  const open = (b: Bene) =>
-    setFiche({
-      name: b.name,
-      theme: b.theme,
-      amount: b.amount,
-      nb: b.nb,
-      history: b.history,
-      currentYear: year,
-    });
+  const ficheHref = (name: string) => `/qui-recoit/association/${encodeURIComponent(name)}`;
 
   const refMax = top10[0]?.amount ?? 1;
 
@@ -95,7 +109,7 @@ export default function QuiRecoitExplorer({
       <section className="fx-section">
         <div className="fx-wrap">
           <SectionHead
-            number="02"
+            number="03"
             kind="Top bénéficiaires"
             title={<>Les <em>10 plus grosses</em> subventions.</>}
             subtitle={`Classées par montant pour l'exercice ${year}. Cliquez sur une ligne pour ouvrir la fiche de l'association.`}
@@ -108,11 +122,11 @@ export default function QuiRecoitExplorer({
         {top10.map((b) => {
           const { v, u } = fmtEur(b.amount);
           return (
-            <button
+            <Link
               key={b.rank}
-              type="button"
+              href={ficheHref(b.name)}
+              scroll={false}
               className="fx-top-row"
-              onClick={() => open(b)}
               aria-label={`Ouvrir la fiche de ${b.name}`}
             >
               <span className="r">{String(b.rank).padStart(2, "0")}</span>
@@ -126,7 +140,7 @@ export default function QuiRecoitExplorer({
               </span>
               <span className="theme">{b.theme ?? "—"}</span>
               <span className="arrow" aria-hidden="true">→</span>
-            </button>
+            </Link>
           );
         })}
       </div>
@@ -144,7 +158,7 @@ export default function QuiRecoitExplorer({
       </section>
 
       {/* === SECTION 04 : RECHERCHE === */}
-      <section className="fx-section" id="recherche">
+      <section className="fx-section" id="recherche" ref={searchRef}>
         <div className="fx-wrap">
           <SectionHead
             number="04"
@@ -223,17 +237,23 @@ export default function QuiRecoitExplorer({
         {hasQuery && filtered.length > 0 && (
           <div className="fx-results-grid">
             {filtered.slice(0, 24).map((it, i) => {
-              const { v, u } = fmtEur(it.amount);
+              const activeThisYear = it.amount > 0;
+              const displayAmount = activeThisYear ? it.amount : it.totalAmount;
+              const { v, u } = fmtEur(displayAmount);
               return (
-                <button
+                <Link
                   key={i}
-                  type="button"
+                  href={ficheHref(it.name)}
+                  scroll={false}
                   className="fx-result-card"
-                  onClick={() => open(it)}
                 >
                   <div className="fx-result-card-top">
-                    <span className="fx-result-card-type">Subvention</span>
-                    <span>{year}</span>
+                    <span className="fx-result-card-type">
+                      {activeThisYear ? "Subvention" : "Historique"}
+                    </span>
+                    <span>
+                      {activeThisYear ? year : `dernière : ${it.lastActiveYear}`}
+                    </span>
                   </div>
                   <h3>{it.name}</h3>
                   <div className="fx-result-card-amount tnum">
@@ -241,12 +261,16 @@ export default function QuiRecoitExplorer({
                     <span className="u">{u}</span>
                   </div>
                   <div className="fx-result-card-meta">
-                    <span className="fx-result-card-arr">{it.theme ?? "—"}</span>
+                    <span className="fx-result-card-arr">
+                      {activeThisYear
+                        ? it.theme ?? "—"
+                        : <em style={{ color: "var(--muted)", fontStyle: "normal" }}>cumul {new Intl.NumberFormat("fr-FR").format(it.history.filter(h => h.amount > 0).length)} exercices</em>}
+                    </span>
                     <span className="fx-result-card-cta">
                       Fiche <span className="chev">→</span>
                     </span>
                   </div>
-                </button>
+                </Link>
               );
             })}
             {filtered.length > 24 && (
@@ -285,7 +309,6 @@ export default function QuiRecoitExplorer({
         </div>
       </section>
 
-      <AssoDrawer fiche={fiche} onClose={() => setFiche(null)} />
     </>
   );
 }

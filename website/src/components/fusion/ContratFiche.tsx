@@ -42,34 +42,6 @@ export default function ContratFiche({
 
   return (
     <div>
-      {ranking && ranking.rankYear > 0 && (
-        <div className="fx-rank-strip">
-          <span className="fx-rank-badge">
-            #{ranking.rankYear}
-            <span className="fx-rank-of"> sur {ranking.totalYear}</span>
-          </span>
-          <span className="fx-rank-text">
-            plus gros marché {contrat.year}
-            {ranking.totalNature > 0 && (
-              <>
-                {" · "}
-                <b>#{ranking.rankNature}</b> des {ranking.totalNature.toLocaleString("fr-FR")}{" "}
-                marchés <i>{contrat.nature.toLowerCase()}</i>
-              </>
-            )}
-            {ranking.medianNature > 0 && contrat.montantMax > 0 && (
-              <>
-                {" · "}
-                {contrat.montantMax >= 2 * ranking.medianNature
-                  ? <><b>{(contrat.montantMax / ranking.medianNature).toFixed(1).replace(".", ",")}×</b> la médiane</>
-                  : contrat.montantMax <= ranking.medianNature / 2
-                  ? <>en dessous de la médiane ({fmtEur(ranking.medianNature).v} {fmtEur(ranking.medianNature).u})</>
-                  : <>proche de la médiane</>}
-              </>
-            )}
-          </span>
-        </div>
-      )}
       {vulgarization ? (
         <div className="fx-fiche-lead">
           {vulgarization.objet_clair && (

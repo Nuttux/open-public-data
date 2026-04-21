@@ -7,10 +7,12 @@ import BrandMark from "./BrandMark";
 import ScopeDropdown from "./ScopeDropdown";
 import LangSwitcher from "./LangSwitcher";
 import { NAV_LINKS } from "./nav-links";
+import { useT } from "@/lib/localeContext";
 
 export default function Navbar() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const t = useT();
 
   useEffect(() => {
     if (menuOpen) {
@@ -31,16 +33,16 @@ export default function Navbar() {
       <header className="fx-nav">
         <Link href="/" className="fx-brand">
           <BrandMark />
-          <span>France Open Data</span>
+          <span>{t("fx.nav.brand")}</span>
         </Link>
-        <nav className="fx-links" aria-label="Principale">
+        <nav className="fx-links" aria-label={t("fx.nav.main_aria")}>
           {NAV_LINKS.map((l) => (
             <Link
               key={l.href}
               href={l.href}
               className={isActive(l.href) ? "fx-link fx-link-on" : "fx-link"}
             >
-              {l.label}
+              {t(l.labelKey)}
             </Link>
           ))}
         </nav>
@@ -49,7 +51,7 @@ export default function Navbar() {
         <button
           type="button"
           className="fx-menu-btn"
-          aria-label="Menu"
+          aria-label={t("fx.nav.menu_aria")}
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen(true)}
         >
@@ -64,12 +66,12 @@ export default function Navbar() {
         <div className="fx-overlay-top">
           <div className="fx-overlay-brand">
             <BrandMark />
-            <span>France Open Data</span>
+            <span>{t("fx.nav.brand")}</span>
           </div>
           <button
             type="button"
             className="fx-overlay-close"
-            aria-label="Fermer"
+            aria-label={t("fx.nav.close")}
             onClick={() => setMenuOpen(false)}
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -78,11 +80,11 @@ export default function Navbar() {
             </svg>
           </button>
         </div>
-        <nav className="fx-overlay-nav" aria-label="Principale">
+        <nav className="fx-overlay-nav" aria-label={t("fx.nav.main_aria")}>
           {NAV_LINKS.map((l, i) => (
             <Link key={l.href} href={l.href}>
               <span className="fx-overlay-n">{String(i + 1).padStart(2, "0")}</span>
-              {l.label}
+              {t(l.labelKey)}
             </Link>
           ))}
         </nav>
@@ -91,7 +93,9 @@ export default function Navbar() {
             <ScopeDropdown variant="overlay" />
             <LangSwitcher />
           </div>
-          <Link href="/budget" className="fx-overlay-cta">Budget 2026 →</Link>
+          <Link href="/budget" className="fx-overlay-cta">
+            {t("fx.nav.cta_budget").replace("{year}", String(new Date().getFullYear()))}
+          </Link>
         </div>
       </div>
     </>

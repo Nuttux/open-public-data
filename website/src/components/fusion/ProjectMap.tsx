@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 import { useMemo } from "react";
 import "leaflet/dist/leaflet.css";
 
@@ -38,6 +39,7 @@ type Props = {
  * alternative using the libraries already in package.json.
  */
 export default function ProjectMap({ points, maxAmount, height = 480 }: Props) {
+  const router = useRouter();
   const max = maxAmount ?? Math.max(...points.map((p) => p.amount), 1);
 
   const safePoints = useMemo(
@@ -72,6 +74,12 @@ export default function ProjectMap({ points, maxAmount, height = 480 }: Props) {
                 fillColor: color,
                 fillOpacity: 0.55,
                 weight: 1,
+                className: "fx-map-marker",
+              }}
+              eventHandlers={{
+                click: () => {
+                  router.push(`/investissements/projet/${encodeURIComponent(p.id)}`);
+                },
               }}
             >
               <Tooltip direction="top" offset={[0, -4]}>
@@ -81,6 +89,9 @@ export default function ProjectMap({ points, maxAmount, height = 480 }: Props) {
                     {fmt(p.amount)}
                     {p.chapitre ? ` · ${p.chapitre}` : ""}
                     {p.arr != null && p.arr > 0 ? ` · ${p.arr}e arr.` : ""}
+                  </div>
+                  <div style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 10, marginTop: 6, color: "#b8551c", letterSpacing: 0.5, textTransform: "uppercase" }}>
+                    Cliquer pour ouvrir la fiche ↗
                   </div>
                 </div>
               </Tooltip>

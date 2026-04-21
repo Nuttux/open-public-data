@@ -23,13 +23,6 @@ export default function AssociationFiche({
     <div>
       {vulgarization ? (
         <div className="fx-fiche-lead">
-          <div className="fx-fiche-ai-badge" aria-label="Vulgarisation générée par IA">
-            <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
-              <path d="M5 0.5 L6.2 3.8 L9.5 5 L6.2 6.2 L5 9.5 L3.8 6.2 L0.5 5 L3.8 3.8 Z" fill="currentColor" />
-            </svg>
-            Vulgarisation IA · {vulgarization.model?.replace("-preview", "") ?? "Gemini"}
-            <span className="fx-fiche-ai-verify" title="Généré automatiquement, à vérifier sur la source">· à vérifier</span>
-          </div>
           {vulgarization.activite_claire && (
             <p className="fx-fiche-lead-main">
               {vulgarization.activite_claire}
@@ -69,17 +62,6 @@ export default function AssociationFiche({
           <div className="fx-fiche-kpi-value tnum">{lastYear ?? "—"}</div>
         </div>
       </div>
-
-      {asso.themeRank && (
-        <div className="fx-fiche-rank">
-          <span className="fx-fiche-rank-num">#{asso.themeRank.rank}</span>
-          <span>
-            plus subventionné{asso.themeRank.rank === 1 ? "" : "e"} en{" "}
-            <b>{asso.themeRank.theme}</b> sur {asso.themeRank.total} bénéficiaires
-            classés (exercice {lastYear}).
-          </span>
-        </div>
-      )}
 
       <section className="fx-fiche-section">
         <div className="fx-fiche-h">Identité</div>
@@ -174,6 +156,63 @@ export default function AssociationFiche({
           </p>
         )}
       </section>
+
+      {asso.lignes.length > 0 && (
+        <section className="fx-fiche-section">
+          <div className="fx-fiche-h">
+            Détail des subventions ({asso.lignes.length} ligne{asso.lignes.length > 1 ? "s" : ""})
+          </div>
+          <table className="fx-fiche-subv-table">
+            <thead>
+              <tr>
+                <th>Année</th>
+                <th>Direction</th>
+                <th>Motif</th>
+                <th style={{ textAlign: "right" }}>Montant</th>
+                <th style={{ textAlign: "right" }}>Lignes</th>
+              </tr>
+            </thead>
+            <tbody>
+              {asso.lignes.map((l, i) => {
+                const { v, u } = fmtEur(l.amount);
+                return (
+                  <tr key={i}>
+                    <td style={{ fontFamily: "var(--f-mono)", color: "var(--ocre)" }}>{l.year}</td>
+                    <td>{l.direction || <span className="muted">—</span>}</td>
+                    <td style={{ maxWidth: 280 }}>
+                      {l.objet ? (
+                        <span>{l.objet.length > 70 ? l.objet.slice(0, 70) + "…" : l.objet}</span>
+                      ) : l.subCategory ? (
+                        <span className="muted">{l.subCategory}</span>
+                      ) : (
+                        <span className="muted">—</span>
+                      )}
+                    </td>
+                    <td style={{ textAlign: "right", fontFamily: "var(--f-disp)", fontWeight: 700, fontSize: 13 }}>
+                      {v} <span style={{ fontSize: ".75em", color: "var(--muted)", fontWeight: 500 }}>{u}</span>
+                    </td>
+                    <td style={{ textAlign: "right", fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)" }}>
+                      {l.nb}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+          <p className="fx-fiche-note" style={{ marginTop: 10 }}>
+            Données agrégées par année depuis le jeu open data « Subventions accordées ».
+            Le détail ligne-à-ligne (chaque délibération) est consultable sur{" "}
+            <a
+              href={`https://opendata.paris.fr/explore/dataset/subventions-associations-votees/table/?refine.objet_du_dossier=&refine.nom_beneficiaire=${encodeURIComponent(asso.name)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
+            >
+              opendata.paris.fr ↗
+            </a>.
+          </p>
+        </section>
+      )}
 
     </div>
   );

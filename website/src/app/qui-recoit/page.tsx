@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import "../fusion.css";
 
+import Link from "next/link";
 import {
   Navbar,
   Footer,
@@ -12,6 +14,7 @@ import {
   ExportRow,
   ExpandableList,
   BudgetTimeline,
+  StackedBarTheme,
 } from "@/components/fusion";
 import QuiRecoitExplorer from "./QuiRecoitExplorer";
 import {
@@ -92,75 +95,45 @@ export default async function QuiRecoitPage({
               cols={2}
               items={[
                 { label: "Subventions versées", value: fmtInt(d.nbSubventions), delta: `${arrow} ${fmtDec(Math.abs(d.deltaNbPct), 1)} % vs ${d.previousYear}` },
-                { label: "Subvention médiane", value: d.medianSubvention >= 1_000_000 ? fmtMillions(d.medianSubvention, 1) + " M" : fmtInt(d.medianSubvention / 1_000) + " k", unit: "€", delta: "Moitié des aides" },
-                { label: "Thème dominant", value: d.topThemeName ?? "—", delta: d.topThemeAmount ? `${fmtMillions(d.topThemeAmount)} M €` : "—" },
-                { label: "Concentration top 10", value: `${fmtDec(d.concentrationTop10Pct, 0)} %`, delta: "du montant total" },
+                { label: "Subvention médiane", value: d.medianSubvention >= 1_000_000 ? fmtMillions(d.medianSubvention, 1) + " M" : fmtInt(d.medianSubvention / 1_000) + " k", unit: "€", delta: "Moitié des aides au-dessus / en-dessous" },
               ]}
             />
           </div>
         </div>
       </section>
 
-      {/* Sections 02 (Top 10) + 04 (Recherche) are rendered together by
-          QuiRecoitExplorer so they can share the AssoDrawer fiche state. */}
-      <QuiRecoitExplorer
-        year={d.year}
-        top10={d.top10}
-        allBeneficiaires={d.allBeneficiaires}
-        themes={d.availableThemes}
-        concentrationTop10Pct={d.concentrationTop10Pct}
-      />
-
       <section className="fx-section">
         <div className="fx-wrap">
           <SectionHead
-            number="03"
+            number="02"
             kind="Par thématique"
             title={<>Où va <em>l&apos;argent</em> ?</>}
-            subtitle="Classification : Social, Culture, Sport, Éducation, Environnement, etc. Chaque bénéficiaire est rattaché à une thématique principale."
+            subtitle="Chaque segment de la barre = une thématique, proportionnelle au montant versé. Cliquez pour filtrer les bénéficiaires."
           />
-          <ExpandableList
-            header={{
-              left: <>Thématiques · <b>{fmtInt(d.byTheme.length)} catégories</b></>,
-              right: <>Total · <b>{fmtBillions(d.total)} Md €</b></>,
-            }}
-            items={d.byTheme.map((t) => {
-              const refMax = d.byTheme[0].amount || 1;
-              return {
-                key: t.theme,
-                label: t.theme,
-                barPct: (t.amount / refMax) * 100,
-                meta: (
-                  <>
-                    {fmtInt(t.count)} sub. · {fmtDec((t.amount / d.total) * 100, 1)} %
-                  </>
-                ),
-                value: fmtMillions(t.amount, t.amount >= 1e9 ? 2 : 0),
-                unit: "M €",
-                children: (
-                  <div>
-                    <div style={{ fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)", letterSpacing: ".04em", marginBottom: 10 }}>
-                      TOP 5 BÉNÉFICIAIRES · {t.theme.toUpperCase()}
-                    </div>
-                    {t.topBen.map((b, j) => (
-                      <div key={j} className="fx-mini-row">
-                        <span className="rank">#{String(j + 1).padStart(2, "0")}</span>
-                        <span style={{ fontWeight: 500 }}>{b.name}</span>
-                        <span className="muted fx-mini-hide-mobile">{b.nb} sub.</span>
-                        <span className="num">{fmtMillions(b.amount, 1)} <span className="muted">M €</span></span>
-                      </div>
-                    ))}
-                  </div>
-                ),
-              };
-            })}
-            initialOpen={d.byTheme[0]?.theme}
+          <StackedBarTheme
+            items={d.byTheme.map((t) => ({ theme: t.theme, amount: t.amount, count: t.count }))}
+            total={d.total}
+            concentrationTop10Pct={d.concentrationTop10Pct}
+            year={d.year}
+            basePath="/qui-recoit"
+            entityNoun="bénéficiaires"
+            paretoContrast="soit plus que toutes les autres associations réunies en dehors du Social"
           />
-          <p style={{ fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)", letterSpacing: ".04em", marginTop: 20 }}>
-            <span>Cliquez sur une thématique pour voir les cinq plus gros bénéficiaires.</span>
-          </p>
         </div>
       </section>
+
+      {/* Sections 03 (Top 10) + 04 (Recherche) are rendered together by
+          QuiRecoitExplorer — placed AFTER the thematique view so users see
+          WHERE the money goes before WHO gets it. */}
+      <Suspense fallback={null}>
+        <QuiRecoitExplorer
+          year={d.year}
+          top10={d.top10}
+          allBeneficiaires={d.allBeneficiaires}
+          themes={d.availableThemes}
+          concentrationTop10Pct={d.concentrationTop10Pct}
+        />
+      </Suspense>
 
       <section className="fx-section">
         <div className="fx-wrap">

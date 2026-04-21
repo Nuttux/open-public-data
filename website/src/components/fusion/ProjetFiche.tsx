@@ -1,4 +1,5 @@
 import type { ProjetFiche as ProjetFicheType } from "@/lib/fusion-data";
+import ProjetThumb from "./ProjetThumb";
 
 const suf = (n: number) => (n === 1 ? "er" : "ᵉ");
 
@@ -39,6 +40,17 @@ export default function ProjetFiche({ projet }: { projet: ProjetFicheType }) {
 
   return (
     <div>
+      {/* Vignette projet — photo dédiée / générique / pictogramme */}
+      <div className="fx-fiche-thumb-wrap">
+        <ProjetThumb
+          projetId={projet.id}
+          aspectRatio="16 / 9"
+          fallbackLabel={projet.name}
+          typologieOverride={vulg?.typologie_normalisee}
+          className="fx-fiche-thumb"
+        />
+      </div>
+
       {/* Badge typologie + statut extraction */}
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 14 }}>
         {typoLabel && (
@@ -96,13 +108,6 @@ export default function ProjetFiche({ projet }: { projet: ProjetFicheType }) {
       {/* Bloc vulgarisation LLM */}
       {vulg && (vulg.description_claire || vulg.quoi_concretement) && (
         <div className="fx-fiche-lead">
-          <div className="fx-fiche-ai-badge" aria-label="Vulgarisation générée par IA">
-            <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
-              <path d="M5 0.5 L6.2 3.8 L9.5 5 L6.2 6.2 L5 9.5 L3.8 6.2 L0.5 5 L3.8 3.8 Z" fill="currentColor" />
-            </svg>
-            Vulgarisation IA · {vulg.model?.replace("-preview", "") ?? "Gemini"}
-            <span className="fx-fiche-ai-verify" title="Généré automatiquement, à vérifier sur la source">· à vérifier</span>
-          </div>
           {vulg.description_claire && (
             <p className="fx-fiche-lead-main">{vulg.description_claire}</p>
           )}
@@ -140,26 +145,6 @@ export default function ProjetFiche({ projet }: { projet: ProjetFicheType }) {
           </div>
         </div>
       </div>
-
-      {/* Rank strip — classement typologie */}
-      {projet.typologieRank && (
-        <div className="fx-fiche-rank">
-          <span className="fx-fiche-rank-num">#{projet.typologieRank.rank}</span>
-          <span>
-            plus gros projet <b>{TYPOLOGIE_LABELS[projet.typologieRank.typologie] ?? projet.typologieRank.typologie}</b>
-            {" "}sur {projet.typologieRank.total} projets classés (exercice {projet.year}).
-          </span>
-        </div>
-      )}
-      {projet.arrRank && projet.arrRank.rank <= 10 && (
-        <div className="fx-fiche-rank" style={{ marginTop: projet.typologieRank ? -12 : 0 }}>
-          <span className="fx-fiche-rank-num" style={{ color: "var(--bleu)" }}>#{projet.arrRank.rank}</span>
-          <span>
-            plus gros projet dans le <b>{projet.arrRank.arr}{suf(projet.arrRank.arr)} arrondissement</b>
-            {" "}sur {projet.arrRank.total} projets (exercice {projet.year}).
-          </span>
-        </div>
-      )}
 
       {/* Budget réel / surcoût — honnête */}
       <div className="fx-fiche-note" style={{ marginTop: 0 }}>
