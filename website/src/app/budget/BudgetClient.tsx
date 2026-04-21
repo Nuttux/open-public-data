@@ -1,30 +1,25 @@
 "use client";
 
 import Link from "next/link";
-import {
-  Navbar,
-  Footer,
-  Button,
-  SectionHead,
-  HeroNumber,
-  KPIGrid,
-  TileCard,
-  YearPicker,
-  ExportRow,
-  EmptyState,
-  DualFlowBars,
-  ExpandableList,
-  Tip,
-  BudgetTimeline,
-} from "@/components/fusion";
-import {
-  fmtBillions,
-  fmtDec,
-  fmtInt,
-  fmtMillions,
-  type BudgetPageData,
-  type VoteExecuteData,
-} from "@/lib/fusion-data";
+// Direct imports — the barrel pulls in server-only components (ProjetThumb,
+// ProjetFiche) that fail to bundle client-side (they read node:fs via
+// fusion-data).
+import Navbar from "@/components/fusion/Navbar";
+import Footer from "@/components/fusion/Footer";
+import Button from "@/components/fusion/Button";
+import SectionHead from "@/components/fusion/SectionHead";
+import HeroNumber from "@/components/fusion/HeroNumber";
+import KPIGrid from "@/components/fusion/KPIGrid";
+import TileCard from "@/components/fusion/TileCard";
+import YearPicker from "@/components/fusion/YearPicker";
+import ExportRow from "@/components/fusion/ExportRow";
+import EmptyState from "@/components/fusion/EmptyState";
+import DualFlowBars from "@/components/fusion/DualFlowBars";
+import ExpandableList from "@/components/fusion/ExpandableList";
+import Tip from "@/components/fusion/Tip";
+import BudgetTimeline from "@/components/fusion/BudgetTimeline";
+import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
+import type { BudgetPageData, VoteExecuteData } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
 
 type BudgetIndexLite = {

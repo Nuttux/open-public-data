@@ -1,17 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import {
-  Navbar,
-  Footer,
-  Button,
-  ScopeDropdown,
-  BarRow,
-  TileCard,
-  BrandMark,
-} from "@/components/fusion";
+// Direct imports — the barrel pulls in server-only components (ProjetThumb,
+// ProjetFiche) that fail to bundle for the client (they read node:fs via
+// fusion-data).
+import Navbar from "@/components/fusion/Navbar";
+import Footer from "@/components/fusion/Footer";
+import Button from "@/components/fusion/Button";
+import ScopeDropdown from "@/components/fusion/ScopeDropdown";
+import BarRow from "@/components/fusion/BarRow";
+import TileCard from "@/components/fusion/TileCard";
+import BrandMark from "@/components/fusion/BrandMark";
 import HeroBg from "@/components/fusion/HeroBg";
-import { fmtDec, fmtInt, fmtBillions, type LandingStats } from "@/lib/fusion-data";
+import { fmtDec, fmtInt, fmtBillions } from "@/lib/fmt";
+import type { LandingStats } from "@/lib/fusion-data";
 import { useT } from "@/lib/localeContext";
 
 type Props = { stats: LandingStats };
