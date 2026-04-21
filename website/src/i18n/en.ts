@@ -1263,7 +1263,7 @@ const en: Record<string, string> = {
   'fx.bud.s02.title.before': 'Where does the money ',
   'fx.bud.s02.title.em': 'come from and go',
   'fx.bud.s02.title.after': '?',
-  'fx.bud.s02.sub': 'Revenue first passes through an accounting section (operating or capital), then is allocated to spending lines. Red lines relate to borrowing or capital investment.',
+  'fx.bud.s02.sub': 'Revenue first passes through an accounting section (operating or capital), then is allocated to spending lines. Click a row to open the poste detail (sub-lines, year-over-year variation).',
   'fx.bud.s02.left_title': 'Revenue · €{amount}B',
   'fx.bud.s02.right_title': 'Spending · €{amount}B',
   'fx.bud.s02.center_label': 'Total (balanced)',

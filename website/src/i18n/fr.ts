@@ -1263,7 +1263,7 @@ const fr: Record<string, string> = {
   'fx.bud.s02.title.before': "D'où vient, ",
   'fx.bud.s02.title.em': 'où va',
   'fx.bud.s02.title.after': " l'argent ?",
-  'fx.bud.s02.sub': "Les recettes traversent d'abord une section comptable (fonctionnement ou investissement), puis sont affectées à des postes de dépenses. Les lignes en rouge sont liées à l'emprunt ou à l'investissement.",
+  'fx.bud.s02.sub': "Les recettes traversent d'abord une section comptable (fonctionnement ou investissement), puis sont affectées à des postes de dépenses. Cliquez sur une ligne pour ouvrir le détail du poste (sous-postes, variation vs année précédente).",
   'fx.bud.s02.left_title': 'Recettes · {amount} Md €',
   'fx.bud.s02.right_title': 'Dépenses · {amount} Md €',
   'fx.bud.s02.center_label': 'Total équilibré',

@@ -52,7 +52,7 @@ export default function DualFlowBars({ left, right, center, callout }: Props) {
                   <span className="track">
                     <span className="fill" style={{ width: `${(r.value / leftMax) * 100}%` }} />
                   </span>
-                  <span className="v tnum">{r.display ?? `${fmtBillions(r.value)} Md`}</span>
+                  <span className="v tnum">{r.display ?? `${fmtBillions(r.value)} Md €`}</span>
                 </>
               );
               const cls = [
@@ -77,7 +77,7 @@ export default function DualFlowBars({ left, right, center, callout }: Props) {
                   <span className="track">
                     <span className="fill" style={{ width: `${(r.value / rightMax) * 100}%` }} />
                   </span>
-                  <span className="v tnum">{r.display ?? `${fmtBillions(r.value)} Md`}</span>
+                  <span className="v tnum">{r.display ?? `${fmtBillions(r.value)} Md €`}</span>
                 </>
               );
               const cls = [

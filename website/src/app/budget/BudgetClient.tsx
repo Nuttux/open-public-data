@@ -269,7 +269,7 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
               rows: topRec.map((r) => ({
                 label: r.label === "Autres (R)" ? t("fx.bud.autres") : trLabel(r.label, locale),
                 value: r.value,
-                display: `${fmtBillions(r.value)} Md`,
+                display: `${fmtBillions(r.value)} Md €`,
                 rouge: false,
                 href: `/budget/poste/${slugifyLabel(r.label)}?year=${d.year}`,
               })),
@@ -279,7 +279,7 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
               rows: topDep.map((x) => ({
                 label: x.label === "Autres (D)" ? t("fx.bud.autres") : trLabel(x.label, locale),
                 value: x.value,
-                display: `${fmtBillions(x.value)} Md`,
+                display: `${fmtBillions(x.value)} Md €`,
                 rouge: false,
                 href: `/budget/poste/${slugifyLabel(x.label)}?year=${d.year}`,
               })),
