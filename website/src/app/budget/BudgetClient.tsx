@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useRef } from "react";
+import { useSearchParams } from "next/navigation";
 // Direct imports — the barrel pulls in server-only components (ProjetThumb,
 // ProjetFiche) that fail to bundle client-side (they read node:fs via
 // fusion-data).
@@ -8,6 +10,7 @@ import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import Button from "@/components/fusion/Button";
 import SectionHead from "@/components/fusion/SectionHead";
+import PageTOC from "@/components/fusion/PageTOC";
 import HeroNumber from "@/components/fusion/HeroNumber";
 import KPIGrid from "@/components/fusion/KPIGrid";
 import TileCard from "@/components/fusion/TileCard";
@@ -18,9 +21,11 @@ import DualFlowBars from "@/components/fusion/DualFlowBars";
 import ExpandableList from "@/components/fusion/ExpandableList";
 import Tip from "@/components/fusion/Tip";
 import BudgetTimeline from "@/components/fusion/BudgetTimeline";
+import StackedBarTheme from "@/components/fusion/StackedBarTheme";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import type { BudgetPageData, VoteExecuteData } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
+import { trLabel } from "@/lib/label-translate";
 
 type BudgetIndexLite = {
   availableYears: number[];
@@ -47,6 +52,27 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
 
   const yearType = index.summary.find((s) => s.year === d.year)?.type_budget ?? "execute";
   const isVoted = yearType === "vote";
+
+  // Deep link from landing/other pages: ?theme=X opens + scrolls to that
+  // poste in the S03 dépenses list. Tolerant match: exact → prefix → contains.
+  const searchParams = useSearchParams();
+  const themeParam = searchParams.get("theme");
+  const matchedTheme = themeParam
+    ? d.topDepenses.find((x) => x.label === themeParam)?.label
+      ?? d.topDepenses.find((x) => x.label.toLowerCase().startsWith(themeParam.toLowerCase()))?.label
+      ?? d.topDepenses.find((x) => x.label.toLowerCase().includes(themeParam.toLowerCase()))?.label
+      ?? null
+    : null;
+  const depSectionRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    if (matchedTheme && depSectionRef.current) {
+      const timer = setTimeout(() => {
+        depSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 80);
+      return () => clearTimeout(timer);
+    }
+  }, [matchedTheme]);
+
   const deltaDir: "up" | "down" | "flat" =
     d.deltaDepensesPct > 0.1 ? "up" : d.deltaDepensesPct < -0.1 ? "down" : "flat";
 
@@ -71,6 +97,19 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
   return (
     <div className="theme-fusion">
       <Navbar />
+
+      <PageTOC
+        items={[
+          { id: "sec-overview", label: t("fx.toc.chiffres") },
+          { id: "sec-flux", label: t("fx.toc.flux") },
+          { id: "sec-detail", label: t("fx.toc.detail") },
+          { id: "sec-evolution", label: t("fx.toc.evolution") },
+          { id: "execution", label: t("fx.toc.execution") },
+          { id: "sec-sources", label: t("fx.toc.sources") },
+          { id: "sec-explorer", label: t("fx.toc.explorer") },
+        ]}
+      />
+
 
       <section className="fx-page-header">
         <div className="fx-wrap">
@@ -97,7 +136,7 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
               marginTop: 18,
               fontFamily: "var(--f-mono)",
               fontSize: 11.5,
-              color: "var(--rouge)",
+              color: "var(--ink-2)",
               letterSpacing: ".04em",
             }}>
               {fill("fx.bud.voted_notice", { year: d.year, next: d.year + 1 })}
@@ -106,7 +145,7 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
         </div>
       </section>
 
-      <section className="fx-section">
+      <section className="fx-section" id="sec-overview">
         <div className="fx-wrap">
           <SectionHead
             number="01"
@@ -125,14 +164,19 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
               }}
               caption={
                 <>
-                  {t("fx.bud.s01.hero.soit")}<b>{fill("fx.bud.s01.hero.per_hab", { amount: fmtInt(d.depenses / 2_133_111) })}</b>
                   {isVoted ? t("fx.bud.s01.hero.cap_voted") : t("fx.bud.s01.hero.cap_exec")}
                 </>
               }
             />
             <KPIGrid
-              cols={2}
+              cols={3}
               items={[
+                {
+                  label: t("fx.bud.s01.kpi.per_hab"),
+                  value: fmtInt(d.depenses / 2_133_111),
+                  unit: "€",
+                  delta: fill("fx.bud.s01.kpi.per_hab.delta", { pop: "2,13 M" }),
+                },
                 { label: t("fx.bud.s01.kpi.recettes"), value: fmtBillions(d.recettes), unit: "Md €", delta: isVoted ? t("fx.bud.s01.kpi.voted") : t("fx.bud.s01.kpi.executed") },
                 {
                   label: t("fx.bud.s01.kpi.solde"),
@@ -160,13 +204,23 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
                   unit: "Md €",
                   delta: fill("fx.bud.s01.kpi.of_total", { pct: Math.round((d.investissement / d.depenses) * 100) }),
                 },
+                {
+                  label: (
+                    <Tip label={t("fx.bud.s01.kpi.epargne.tip")}>
+                      {t("fx.bud.s01.kpi.epargne")}
+                    </Tip>
+                  ),
+                  value: fmtBillions(d.epargneBrute),
+                  unit: "Md €",
+                  delta: fill("fx.bud.s01.kpi.of_total", { pct: Math.round((d.epargneBrute / d.recettes) * 100) }),
+                },
               ]}
             />
           </div>
         </div>
       </section>
 
-      <section className="fx-section">
+      <section className="fx-section" id="sec-flux">
         <div className="fx-wrap">
           <SectionHead
             number="02"
@@ -178,19 +232,19 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
             left={{
               title: <>{fill("fx.bud.s02.left_title", { amount: fmtBillions(d.recettes) })}</>,
               rows: topRec.map((r) => ({
-                label: r.label === "Autres (R)" ? t("fx.bud.autres") : r.label,
+                label: r.label === "Autres (R)" ? t("fx.bud.autres") : trLabel(r.label, locale),
                 value: r.value,
                 display: `${fmtBillions(r.value)} Md`,
-                rouge: /emprunt/i.test(r.label),
+                rouge: false,
               })),
             }}
             right={{
               title: <>{fill("fx.bud.s02.right_title", { amount: fmtBillions(d.depenses) })}</>,
               rows: topDep.map((x) => ({
-                label: x.label === "Autres (D)" ? t("fx.bud.autres") : x.label,
+                label: x.label === "Autres (D)" ? t("fx.bud.autres") : trLabel(x.label, locale),
                 value: x.value,
                 display: `${fmtBillions(x.value)} Md`,
-                rouge: /investissement|dette|remboursement/i.test(x.label),
+                rouge: false,
               })),
             }}
             center={{
@@ -214,7 +268,7 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
                 </Tip>
                 {t("fx.bud.s02.callout.p4")}
                 <Tip label={t("fx.bud.s02.callout.tip.emprunt")}>
-                  <span className="rouge"><b>{t("fx.bud.s02.callout.word.emprunt")}</b></span>
+                  <b>{t("fx.bud.s02.callout.word.emprunt")}</b>
                 </Tip>
                 {t("fx.bud.s02.callout.p5")}
                 <Tip label={t("fx.bud.s02.callout.tip.regle")}>
@@ -227,7 +281,7 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
         </div>
       </section>
 
-      <section className="fx-section">
+      <section className="fx-section" id="sec-detail">
         <div className="fx-wrap">
           <SectionHead
             number="03"
@@ -245,15 +299,12 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
             }}
             items={topRec.map((r) => {
               const refMax = topRec[0].value || 1;
-              const label = r.label === "Autres (R)" ? t("fx.bud.autres") : r.label;
-              const isRouge = /emprunt/i.test(r.label);
+              const label = r.label === "Autres (R)" ? t("fx.bud.autres") : trLabel(r.label, locale);
               const desc = t(recDescKey(r.label));
               const subMax = r.subSources[0]?.value || 1;
               return {
                 key: r.label,
-                label: (
-                  <span style={isRouge ? { color: "var(--rouge)" } : undefined}>{label}</span>
-                ),
+                label,
                 barPct: (r.value / refMax) * 100,
                 meta: <>{fmtDec((r.value / d.recettes) * 100, 1)} %</>,
                 value: fmtBillions(r.value),
@@ -270,9 +321,9 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
                       <GroupedSubRows
                         items={r.subSources}
                         max={subMax}
-                        rouge={isRouge}
                         numLocale={numLocale}
                         detailFallback={t("fx.bud.s03.detail_fallback")}
+                        locale={locale}
                       />
                     ) : (
                       <p style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--muted)" }}>
@@ -285,24 +336,46 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
             })}
           />
 
-          <div style={{ fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)", letterSpacing: ".08em", textTransform: "uppercase", margin: "36px 0 12px" }}>
+          <div ref={depSectionRef} id="sec-depenses" style={{ fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)", letterSpacing: ".08em", textTransform: "uppercase", margin: "36px 0 12px" }}>
             {fill("fx.bud.s03.dep_header", { amount: fmtBillions(d.depenses) })}
           </div>
+          {(() => {
+            const depSum = d.topDepenses.reduce((s, x) => s + x.value, 0);
+            const top3Sum = d.topDepenses.slice(0, 3).reduce((s, x) => s + x.value, 0);
+            const top3Pct = depSum > 0 ? (top3Sum / depSum) * 100 : 0;
+            return (
+              <div style={{ marginBottom: 28 }}>
+                <StackedBarTheme
+                  items={d.topDepenses.map((x) => ({
+                    theme: x.label === "Autres (D)" ? t("fx.bud.autres") : x.label,
+                    amount: x.value,
+                    count: x.subPostes.length,
+                  }))}
+                  total={depSum}
+                  concentrationTop10Pct={top3Pct}
+                  paretoTopN={3}
+                  year={d.year}
+                  basePath="/budget"
+                  kicker={fill("fx.bud.s03.stack_kicker", { year: d.year })}
+                  entityNoun={t("fx.bud.s03.stack_entity")}
+                  paretoContrast={t("fx.bud.s03.stack_contrast")}
+                />
+              </div>
+            );
+          })()}
           <ExpandableList
+            initialOpen={matchedTheme ?? undefined}
             header={{
               left: <>{t("fx.bud.s03.thematiques_left_a")}<b>{fill("fx.bud.s03.sources_left_b", { amount: fmtBillions(d.depenses) })}</b></>,
               right: <>{fill("fx.bud.s03.postes", { n: d.topDepenses.length })}</>,
             }}
             items={d.topDepenses.map((x) => {
               const refMax = d.topDepenses[0].value || 1;
-              const label = x.label === "Autres (D)" ? t("fx.bud.autres") : x.label;
-              const isRouge = /investissement|remboursement/i.test(x.label);
+              const label = x.label === "Autres (D)" ? t("fx.bud.autres") : trLabel(x.label, locale);
               const subMax = x.subPostes[0]?.value || 1;
               return {
                 key: x.label,
-                label: (
-                  <span style={isRouge ? { color: "var(--rouge)" } : undefined}>{label}</span>
-                ),
+                label,
                 barPct: (x.value / refMax) * 100,
                 meta: <>{fmtDec((x.value / d.depenses) * 100, 1)} %</>,
                 value: fmtBillions(x.value),
@@ -316,9 +389,9 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
                       <GroupedSubRows
                         items={x.subPostes}
                         max={subMax}
-                        rouge={isRouge}
                         numLocale={numLocale}
                         detailFallback={t("fx.bud.s03.detail_fallback")}
+                        locale={locale}
                       />
                     ) : (
                       <p style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--muted)" }}>
@@ -333,7 +406,7 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
         </div>
       </section>
 
-      <section className="fx-section">
+      <section className="fx-section" id="sec-evolution">
         <div className="fx-wrap">
           <SectionHead
             number="04"
@@ -451,12 +524,42 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
                   ]}
                 />
               </div>
+              {veRow?.executed != null && veRow.voted > 0 && (() => {
+                const taux = Math.min(100, (veRow.executed / veRow.voted) * 100);
+                return (
+                  <div style={{ marginTop: 28, paddingTop: 24, borderTop: "1px solid var(--rule)" }}>
+                    <div style={{ fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)", letterSpacing: ".08em", textTransform: "uppercase", marginBottom: 14 }}>
+                      {t("fx.bud.s05.compare_kicker")}
+                    </div>
+                    <div style={{ display: "grid", gap: 14 }}>
+                      <CompareBar
+                        label={t("fx.bud.s05.kpi.voted")}
+                        value={`${fmtBillions(veRow.voted)} Md €`}
+                        widthPct={100}
+                        muted={false}
+                      />
+                      <CompareBar
+                        label={t("fx.bud.s05.kpi.executed")}
+                        value={`${fmtBillions(veRow.executed)} Md €`}
+                        widthPct={taux}
+                        muted
+                      />
+                    </div>
+                    <p style={{ fontFamily: "var(--f-ui)", fontSize: 13.5, color: "var(--ink-2)", marginTop: 16, maxWidth: 720, lineHeight: 1.55 }}>
+                      {fill("fx.bud.s05.compare_caption", {
+                        pct: fmtDec(taux, 1),
+                        gap: fmtMillions(Math.max(0, veRow.voted - veRow.executed)),
+                      })}
+                    </p>
+                  </div>
+                );
+              })()}
             </>
           )}
         </div>
       </section>
 
-      <section className="fx-section">
+      <section className="fx-section" id="sec-sources">
         <div className="fx-wrap">
           <SectionHead
             number="06"
@@ -522,7 +625,7 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
         </div>
       </section>
 
-      <section className="fx-section">
+      <section className="fx-section" id="sec-explorer">
         <div className="fx-wrap">
           <SectionHead
             number="07"
@@ -584,24 +687,57 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
   );
 }
 
+function CompareBar({
+  label,
+  value,
+  widthPct,
+  muted,
+}: {
+  label: string;
+  value: string;
+  widthPct: number;
+  muted: boolean;
+}) {
+  return (
+    <div style={{ display: "grid", gridTemplateColumns: "minmax(120px, 180px) 1fr minmax(100px, auto)", gap: 16, alignItems: "center" }}>
+      <div style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--ink-2)", letterSpacing: ".04em", textTransform: "uppercase" }}>{label}</div>
+      <div style={{ position: "relative", height: 18, background: "var(--rule)" }}>
+        <div
+          style={{
+            position: "absolute",
+            left: 0,
+            top: 0,
+            bottom: 0,
+            width: `${widthPct}%`,
+            background: muted ? "var(--ink-2)" : "var(--ink)",
+            transition: "width 300ms",
+          }}
+        />
+      </div>
+      <div className="tnum" style={{ fontFamily: "var(--f-num)", fontSize: 15, fontWeight: 600, textAlign: "right" }}>{value}</div>
+    </div>
+  );
+}
+
 function GroupedSubRows({
   items,
   max,
-  rouge,
   numLocale,
   detailFallback,
+  locale,
 }: {
   items: { name: string; value: number }[];
   max: number;
-  rouge?: boolean;
   numLocale: string;
   detailFallback: string;
+  locale: "fr" | "en";
 }) {
   const groupOrder: string[] = [];
   const groups = new Map<string, { total: number; items: { globalRank: number; n3: string; value: number }[] }>();
   items.forEach((it, i) => {
     const idx = it.name.indexOf(":");
-    const n2 = idx > 0 ? it.name.slice(0, idx).trim() : detailFallback;
+    const n2Raw = idx > 0 ? it.name.slice(0, idx).trim() : detailFallback;
+    const n2 = trLabel(n2Raw, locale);
     const n3 = idx > 0 ? it.name.slice(idx + 1).trim() : it.name.trim();
     if (!groups.has(n2)) {
       groupOrder.push(n2);
@@ -652,7 +788,7 @@ function GroupedSubRows({
                       top: 2,
                       height: 6,
                       width: `${(it.value / max) * 100}%`,
-                      background: rouge ? "var(--rouge)" : "var(--ink)",
+                      background: "var(--ink)",
                     }}
                   />
                 </span>
