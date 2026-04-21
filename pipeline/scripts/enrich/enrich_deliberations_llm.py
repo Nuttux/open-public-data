@@ -1,22 +1,29 @@
 #!/usr/bin/env python3
 """
-Fill the gaps left by the regex-based deliberation scraper using Gemini.
+Fill the gaps left by the regex-based deliberation scraper using an LLM.
 
 For each article in `session_<id>.json` that is missing either the
 beneficiary or the amount, pull the corresponding article body from the
-cached PDF and ask Gemini 3 Flash to return a structured record:
+cached PDF and ask an LLM to return a structured record:
 
-    { article_num, beneficiary, amount_eur, siret, motif, dossier }
+    { article_num, beneficiary, amount_eur, siret, motif, dossier, is_admin }
 
-Articles that already have both beneficiary and amount from the regex
-pass are left alone (fast path). The output is written back in-place.
+Articles flagged is_admin=true are "Madame la Maire est autorisée à
+signer ..." or "La dépense sera imputée ..." — they don't carry a
+specific subvention and the junk beneficiary from the regex is cleared.
+
+Supports two providers — pick via --provider:
+    anthropic  → Claude Haiku 4 (ANTHROPIC_API_KEY). Default.
+    gemini     → Gemini 3 Flash  (GOOGLE_API_KEY / GEMINI_API_KEY).
 
 Usage:
-    GOOGLE_API_KEY=xxx python enrich_deliberations_llm.py --session 152
-    GOOGLE_API_KEY=xxx python enrich_deliberations_llm.py --session 152 --dry-run
+    ANTHROPIC_API_KEY=xxx python enrich_deliberations_llm.py --session 152
+    GOOGLE_API_KEY=xxx    python enrich_deliberations_llm.py --session 152 --provider gemini
+    python enrich_deliberations_llm.py --session 152 --dry-run
 
-Cost estimate: ~500-700 gap articles per session × ~800 input tokens each
-= ~400k input tokens / session on Gemini 3 Flash ≈ USD 0.05-0.10.
+Cost estimate (session 152, ~700 gap articles):
+    Claude Haiku 4  ≈ 0.15 $ (input ~400k tok, output ~50k tok)
+    Gemini 3 Flash  ≈ 0.05 $
 """
 
 from __future__ import annotations
@@ -39,6 +46,10 @@ PDF_CACHE = ROOT / "pipeline" / "cache" / "delibs" / "pdf"
 GEMINI_API_KEY = os.environ.get("GOOGLE_API_KEY") or os.environ.get("GEMINI_API_KEY")
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3-flash-preview")
 GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent"
+
+ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
+ANTHROPIC_MODEL = os.environ.get("ANTHROPIC_MODEL", "claude-haiku-4-5")
+ANTHROPIC_URL = "https://api.anthropic.com/v1/messages"
 
 MAX_RETRIES = 3
 RETRY_WAIT_429 = 8
@@ -85,15 +96,62 @@ def extract_article_body(pdf_path: Path, article_num: int | None) -> str | None:
 
 SYSTEM_PROMPT = """Tu es un assistant d'extraction de données pour des délibérations du Conseil de Paris.
 
-Chaque article d'une délibération attribue une subvention. Pour chaque entrée reçue, retourne un JSON strict contenant :
-- "article_num": le numéro d'article (copie-le depuis l'entrée)
-- "beneficiary": nom de l'organisation bénéficiaire (association, société, fondation, régie…). Si l'article n'attribue pas de subvention à une organisation (p. ex. article d'autorisation de signature, article budgétaire générique), retourne null.
-- "amount_eur": montant de la subvention en euros (nombre). Pour "30 000 € en fonctionnement et 5 000 € en investissement", additionne et retourne 35000. Retourne null si l'article ne fixe pas de montant.
-- "siret": numéro SIRET à 14 chiffres si présent dans le texte, sinon null.
-- "motif": en une phrase (max 200 caractères), l'objet/projet de la subvention. null si absent.
-- "dossier": référence Paris Asso, SIMPA, ou dossier interne (nombres/lettres). null si absent.
+Pour chaque entrée reçue, retourne un JSON contenant :
+- "idx": l'index de l'entrée (copie depuis le header "#N")
+- "is_admin": true si l'article est purement administratif (p. ex. "Madame la Maire est autorisée à signer", "La dépense sera imputée au budget", "Le Conseil approuve...") — sans attribuer de subvention à une organisation spécifique. Sinon false.
+- "beneficiary": nom de l'organisation bénéficiaire (association, société, fondation, régie…). null si is_admin=true ou absent. Garde le nom tel qu'il apparaît (sans guillemets, sans préfixe "la SARL"/"l'association").
+- "amount_eur": montant de la subvention en euros (nombre). Pour "30 000 € en fonctionnement et 5 000 € en investissement", additionne → 35000. null si is_admin=true ou absent.
+- "siret": numéro SIRET 14 chiffres si présent dans le texte, sinon null.
+- "motif": en une phrase (max 200 caractères), l'objet/projet de la subvention. null si is_admin ou absent.
+- "dossier": référence Paris Asso, SIMPA, ou dossier interne. null si absent.
 
 Réponds UNIQUEMENT avec un JSON array d'objets, dans le même ordre que les entrées reçues. Pas de prose, pas de markdown."""
+
+
+def _parse_json_array(text: str) -> list[dict]:
+    text = text.strip()
+    if text.startswith("```"):
+        text = text.split("\n", 1)[1].rsplit("```", 1)[0]
+    # Find the first [...] JSON array in the response.
+    m = re.search(r"\[[\s\S]*\]", text)
+    if not m:
+        raise ValueError(f"no JSON array in response: {text[:200]}")
+    return json.loads(m.group(0))
+
+
+def call_anthropic(prompt: str) -> list[dict]:
+    if not ANTHROPIC_API_KEY:
+        raise RuntimeError("ANTHROPIC_API_KEY non définie")
+    payload = {
+        "model": ANTHROPIC_MODEL,
+        "max_tokens": 4096,
+        "system": SYSTEM_PROMPT,
+        "messages": [{"role": "user", "content": prompt}],
+    }
+    for attempt in range(MAX_RETRIES):
+        r = requests.post(
+            ANTHROPIC_URL,
+            json=payload,
+            headers={
+                "x-api-key": ANTHROPIC_API_KEY,
+                "anthropic-version": "2023-06-01",
+                "content-type": "application/json",
+            },
+            timeout=60,
+        )
+        if r.status_code == 429:
+            wait = RETRY_WAIT_429 * (attempt + 1)
+            print(f"  ⚠ rate-limit, pause {wait}s")
+            time.sleep(wait)
+            continue
+        if r.status_code != 200:
+            raise RuntimeError(f"Claude HTTP {r.status_code}: {r.text[:200]}")
+        # Take the last text block (Claude may emit tool_use blocks etc.)
+        for block in reversed(r.json().get("content", [])):
+            if block.get("type") == "text":
+                return _parse_json_array(block.get("text", ""))
+        raise RuntimeError("no text block in Claude response")
+    raise RuntimeError("Max retries exceeded")
 
 
 def call_gemini(prompt: str) -> list[dict]:
@@ -117,10 +175,7 @@ def call_gemini(prompt: str) -> list[dict]:
             continue
         if r.status_code != 200:
             raise RuntimeError(f"Gemini HTTP {r.status_code}: {r.text[:200]}")
-        text = r.json()["candidates"][0]["content"]["parts"][0]["text"].strip()
-        if text.startswith("```"):
-            text = text.split("\n", 1)[1].rsplit("```", 1)[0]
-        return json.loads(text)
+        return _parse_json_array(r.json()["candidates"][0]["content"]["parts"][0]["text"])
     raise RuntimeError("Max retries exceeded")
 
 
@@ -136,7 +191,15 @@ def format_batch(batch: list[tuple[int, dict, str]]) -> str:
     return "\n".join(lines)
 
 
-def process_session(session_id: int, dry_run: bool = False) -> None:
+def call_llm(provider: str, prompt: str) -> list[dict]:
+    if provider == "anthropic":
+        return call_anthropic(prompt)
+    if provider == "gemini":
+        return call_gemini(prompt)
+    raise ValueError(f"unknown provider: {provider}")
+
+
+def process_session(session_id: int, provider: str, dry_run: bool = False) -> None:
     path = DELIBS_DIR / f"session_{session_id}.json"
     if not path.exists():
         print(f"No file for session {session_id}", file=sys.stderr)
@@ -185,16 +248,25 @@ def process_session(session_id: int, dry_run: bool = False) -> None:
     print(f"  pending LLM: {len(pending)}, skipped (no body found): {skipped}")
 
     filled = 0
+    admin_count = 0
     for start in range(0, len(pending), BATCH_SIZE):
         batch = pending[start : start + BATCH_SIZE]
         try:
-            results = call_gemini(format_batch(batch))
+            results = call_llm(provider, format_batch(batch))
         except Exception as e:  # noqa: BLE001
             print(f"  batch {start} LLM error: {e}")
             time.sleep(2)
             continue
         for (idx, _meta, _body), res in zip(batch, results):
             art = articles[idx]
+            # Admin article: clear junk beneficiary that the regex had guessed.
+            if res.get("is_admin"):
+                art["is_admin"] = True
+                art["beneficiary"] = None
+                art["amount_eur"] = None
+                art["_admin_source"] = "llm"
+                admin_count += 1
+                continue
             if not art.get("beneficiary") and res.get("beneficiary"):
                 art["beneficiary"] = res["beneficiary"]
                 art["beneficiary_source"] = "llm"
@@ -215,12 +287,16 @@ def process_session(session_id: int, dry_run: bool = False) -> None:
                 art["motif"] = res["motif"][:280]
             if not art.get("dossier") and res.get("dossier"):
                 art["dossier"] = str(res["dossier"])
-        print(f"  batch {start // BATCH_SIZE + 1}/{(len(pending) + BATCH_SIZE - 1) // BATCH_SIZE} filled {filled}")
+        print(
+            f"  batch {start // BATCH_SIZE + 1}/{(len(pending) + BATCH_SIZE - 1) // BATCH_SIZE}"
+            f"  filled={filled}  admin={admin_count}"
+        )
         time.sleep(0.3)
 
     data["articles"] = articles
     data["llm_enriched_at"] = time.strftime("%Y-%m-%dT%H:%M:%S")
-    data["llm_model"] = GEMINI_MODEL
+    data["llm_model"] = ANTHROPIC_MODEL if provider == "anthropic" else GEMINI_MODEL
+    data["llm_provider"] = provider
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
 
     # Re-count
@@ -233,10 +309,19 @@ def process_session(session_id: int, dry_run: bool = False) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--session", type=int, action="append", required=True)
+    ap.add_argument(
+        "--provider",
+        choices=("anthropic", "gemini", "auto"),
+        default="auto",
+        help="LLM backend; 'auto' picks anthropic if ANTHROPIC_API_KEY is set, else gemini.",
+    )
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
+    provider = args.provider
+    if provider == "auto":
+        provider = "anthropic" if ANTHROPIC_API_KEY else "gemini"
     for sid in args.session:
-        process_session(sid, dry_run=args.dry_run)
+        process_session(sid, provider=provider, dry_run=args.dry_run)
 
 
 if __name__ == "__main__":

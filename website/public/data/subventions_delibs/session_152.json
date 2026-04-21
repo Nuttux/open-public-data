@@ -1750,10 +1750,11 @@
       "article_num": null,
       "beneficiary": "la Fondation",
       "siret": "39115563700013",
-      "amount_eur": 0.0,
+      "amount_eur": 5000.0,
       "amount_raw": "000",
       "motif": "objet de servir la mémoire du Général de Gaulle, de faire connaîtr e, tant en Franc e qu’à l’étrang e r , l’exemple qu’il a donné et les enseigne m e n t s qu’il a laissés, par ses actions et par ses écrits, pour la défens e des valeurs qui sont le patrimoin e des Français",
-      "dossier": null
+      "dossier": null,
+      "amount_source": "manual"
     },
     {
       "delib_id": "2025 DAC 260",
@@ -1763,10 +1764,11 @@
       "article_num": null,
       "beneficiary": "Maison des anciens combattants de la 2e D",
       "siret": "78436139600053",
-      "amount_eur": 0.0,
+      "amount_eur": 10000.0,
       "amount_raw": "000",
       "motif": "objet de regrou p e r tous ceux qui ont appar t e n u à la 2e Division Blindée afin d’apport e r à ses memb r e s, en souvenir et pour la survivance de leur fraternité d’arme s et de leur solidarité au comba t, l’entraid e et l’assista nc e sous toutes leurs formes dont ils pourr",
-      "dossier": null
+      "dossier": null,
+      "amount_source": "manual"
     },
     {
       "delib_id": "2025 DAC 4",
@@ -1776,10 +1778,11 @@
       "article_num": 1,
       "beneficiary": "876",
       "siret": null,
-      "amount_eur": 0.0,
+      "amount_eur": 876000.0,
       "amount_raw": "000",
-      "motif": null,
-      "dossier": null
+      "motif": "subvention de fonctionnement 2025",
+      "dossier": null,
+      "amount_source": "manual"
     },
     {
       "delib_id": "2025 DAC 4",
@@ -1789,10 +1792,11 @@
       "article_num": 1,
       "beneficiary": "la SARL Théâtre du Rond-Point",
       "siret": "39958184200016",
-      "amount_eur": 0.0,
+      "amount_eur": 876000.0,
       "amount_raw": "000",
-      "motif": null,
-      "dossier": null
+      "motif": "subvention de fonctionnement 2025 (doublon délibération)",
+      "dossier": null,
+      "amount_source": "manual"
     },
     {
       "delib_id": "2025 DAC 4",
@@ -1800,12 +1804,13 @@
       "direction_name": "Direction des affaires culturelles",
       "session_id": 152,
       "article_num": 2,
-      "beneficiary": "la présente délibération",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": null,
       "amount_raw": null,
       "motif": null,
-      "dossier": null
+      "dossier": null,
+      "is_admin": true
     },
     {
       "delib_id": "2025 DAC 4",
@@ -1815,10 +1820,11 @@
       "article_num": 3,
       "beneficiary": null,
       "siret": null,
-      "amount_eur": 0.0,
+      "amount_eur": null,
       "amount_raw": "000",
       "motif": null,
-      "dossier": null
+      "dossier": null,
+      "is_admin": true
     },
     {
       "delib_id": "2025 DAC 5",
@@ -1828,10 +1834,11 @@
       "article_num": 1,
       "beneficiary": "La Dalle aux Chaps",
       "siret": "53381287100028",
-      "amount_eur": 0.0,
+      "amount_eur": 160000.0,
       "amount_raw": "000",
-      "motif": null,
-      "dossier": null
+      "motif": "subvention de fonctionnement 2025",
+      "dossier": "2025_05412",
+      "amount_source": "manual"
     },
     {
       "delib_id": "2025 DAC 5",
@@ -1841,10 +1848,11 @@
       "article_num": 2,
       "beneficiary": "Théâtre aux Mains Nues",
       "siret": "32341933300030",
-      "amount_eur": 0.0,
+      "amount_eur": 75000.0,
       "amount_raw": "000",
-      "motif": null,
-      "dossier": null
+      "motif": "subvention 2025",
+      "dossier": "2025_04419",
+      "amount_source": "manual"
     },
     {
       "delib_id": "2025 DAC 5",
@@ -1854,10 +1862,11 @@
       "article_num": 3,
       "beneficiary": null,
       "siret": null,
-      "amount_eur": 500.0,
+      "amount_eur": null,
       "amount_raw": "500",
       "motif": null,
-      "dossier": null
+      "dossier": null,
+      "is_admin": true
     },
     {
       "delib_id": "2025 DAC 5",
@@ -1865,12 +1874,13 @@
       "direction_name": "Direction des affaires culturelles",
       "session_id": 152,
       "article_num": 4,
-      "beneficiary": "la présente délibération",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": null,
       "amount_raw": null,
       "motif": null,
-      "dossier": null
+      "dossier": null,
+      "is_admin": true
     },
     {
       "delib_id": "2025 DAC 8",
@@ -1880,10 +1890,11 @@
       "article_num": 1,
       "beneficiary": "Cirque Ici",
       "siret": "43948197900045",
-      "amount_eur": 0.0,
+      "amount_eur": 25000.0,
       "amount_raw": "000",
       "motif": "la résidence artistique menée par la compagnie de Johann Le Guillerm sur le site du jardin d’agronomie tropicale, est fixée à 25",
-      "dossier": null
+      "dossier": "2025_03755",
+      "amount_source": "manual"
     },
     {
       "delib_id": "2025 DAC 8",
@@ -1896,7 +1907,8 @@
       "amount_eur": null,
       "amount_raw": null,
       "motif": null,
-      "dossier": null
+      "dossier": null,
+      "is_admin": true
     },
     {
       "delib_id": "2025 DAC 8",
@@ -1906,10 +1918,11 @@
       "article_num": 3,
       "beneficiary": null,
       "siret": null,
-      "amount_eur": 0.0,
+      "amount_eur": null,
       "amount_raw": "000",
       "motif": null,
-      "dossier": null
+      "dossier": null,
+      "is_admin": true
     },
     {
       "delib_id": "2025 DAC 11",
@@ -1919,11 +1932,12 @@
       "article_num": null,
       "beneficiary": "Le Théâtre Paris-Villette",
       "siret": "43353723000040",
-      "amount_eur": 0.0,
+      "amount_eur": 950000.0,
       "amount_raw": "000",
       "motif": "y mene r des actions cultur elles, des parten a ri a t s avec le tissu associatif local et des temps forts festifs et fédér at e u r s",
       "dossier": null,
-      "siret_source": "sirene"
+      "siret_source": "sirene",
+      "amount_source": "manual"
     },
     {
       "delib_id": "2025 DAC 12",
@@ -1931,12 +1945,14 @@
       "direction_name": "Direction des affaires culturelles",
       "session_id": 152,
       "article_num": 1,
-      "beneficiary": null,
+      "beneficiary": "Association pour le Développement de la Danse à Paris",
       "siret": "43929038800032",
-      "amount_eur": 0.0,
+      "amount_eur": 265000.0,
       "amount_raw": "000",
       "motif": "le DéveloppementdelaDanseàParis,domiciliéeau20rueGeoffroyl’Asnier75004Paris, estfixéeà265",
-      "dossier": null
+      "dossier": "2025_02982",
+      "beneficiary_source": "manual",
+      "amount_source": "manual"
     },
     {
       "delib_id": "2025 DAC 14",
@@ -1946,10 +1962,11 @@
       "article_num": 1,
       "beneficiary": "Centre d'art et de culture de la rue Broca",
       "siret": "41816024800013",
-      "amount_eur": 0.0,
+      "amount_eur": 20000.0,
       "amount_raw": "000",
-      "motif": null,
-      "dossier": null
+      "motif": "subvention 2025",
+      "dossier": "2025_03376",
+      "amount_source": "manual"
     },
     {
       "delib_id": "2025 DAC 14",
@@ -1962,7 +1979,8 @@
       "amount_eur": null,
       "amount_raw": null,
       "motif": null,
-      "dossier": null
+      "dossier": null,
+      "is_admin": true
     },
     {
       "delib_id": "2025 DAC 14",
@@ -1972,10 +1990,11 @@
       "article_num": 3,
       "beneficiary": null,
       "siret": null,
-      "amount_eur": 0.0,
+      "amount_eur": null,
       "amount_raw": "000",
       "motif": null,
-      "dossier": null
+      "dossier": null,
+      "is_admin": true
     },
     {
       "delib_id": "2025 DAC 15",
@@ -1985,10 +2004,11 @@
       "article_num": 1,
       "beneficiary": "Compagnie Graines de soleil",
       "siret": "42046186500040",
-      "amount_eur": 0.0,
+      "amount_eur": 20000.0,
       "amount_raw": "000",
-      "motif": null,
-      "dossier": null
+      "motif": "subvention de fonctionnement 2025",
+      "dossier": "2025_05147",
+      "amount_source": "manual"
     },
     {
       "delib_id": "2025 DAC 15",
@@ -1996,12 +2016,13 @@
       "direction_name": "Direction des affaires culturelles",
       "session_id": 152,
       "article_num": 2,
-      "beneficiary": "la présente délibération",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": null,
       "amount_raw": null,
       "motif": null,
-      "dossier": null
+      "dossier": null,
+      "is_admin": true
     },
     {
       "delib_id": "2025 DAC 15",
@@ -2011,10 +2032,11 @@
       "article_num": 3,
       "beneficiary": null,
       "siret": null,
-      "amount_eur": 0.0,
+      "amount_eur": null,
       "amount_raw": "000",
       "motif": null,
-      "dossier": null
+      "dossier": null,
+      "is_admin": true
     },
     {
       "delib_id": "2025 DAC 18",
@@ -2024,10 +2046,11 @@
       "article_num": null,
       "beneficiary": "Compagnie Flies",
       "siret": "83862097900073",
-      "amount_eur": 0.0,
+      "amount_eur": 22000.0,
       "amount_raw": "000",
       "motif": "les activités et événements parisiens qu’elles initient autour des arts représentatifs du mouvement et de la culture Hip Hop",
-      "dossier": null
+      "dossier": null,
+      "amount_source": "manual"
     },
     {
       "delib_id": "2025 DAC 19",
@@ -2037,10 +2060,11 @@
       "article_num": null,
       "beneficiary": "Les Plateaux Sauvages",
       "siret": "82349520500010",
-      "amount_eur": 0.0,
+      "amount_eur": 1100000.0,
       "amount_raw": "000",
       "motif": "les amateurs et amatrices, les Plateaux Sauvages est un équipement ouvert aux compagnies émergentes ou confirmées, aux habitant∙es du quartier et de l’arrondissement, offrant un accueil convivial, avec une attention particulière aux publics jeunes",
-      "dossier": null
+      "dossier": null,
+      "amount_source": "manual"
     },
     {
       "delib_id": "2025 DAC 20",
@@ -2048,12 +2072,14 @@
       "direction_name": "Direction des affaires culturelles",
       "session_id": 152,
       "article_num": 1,
-      "beneficiary": null,
+      "beneficiary": "La Place – Centre culturel hip hop",
       "siret": "80289090500028",
-      "amount_eur": 0.0,
+      "amount_eur": 1050000.0,
       "amount_raw": "000",
       "motif": "son fonctionnement, est fixée à 1",
-      "dossier": null
+      "dossier": "2025_08256",
+      "beneficiary_source": "manual",
+      "amount_source": "manual"
     },
     {
       "delib_id": "2025 DAC 20",
@@ -2066,7 +2092,8 @@
       "amount_eur": null,
       "amount_raw": null,
       "motif": null,
-      "dossier": null
+      "dossier": null,
+      "is_admin": true
     },
     {
       "delib_id": "2025 DAC 20",
@@ -2076,10 +2103,11 @@
       "article_num": 3,
       "beneficiary": null,
       "siret": null,
-      "amount_eur": 0.0,
+      "amount_eur": null,
       "amount_raw": "000",
       "motif": null,
-      "dossier": null
+      "dossier": null,
+      "is_admin": true
     },
     {
       "delib_id": "2025 DAC 38",
@@ -2089,10 +2117,11 @@
       "article_num": 2,
       "beneficiary": "Cité-Théâtre",
       "siret": "82095968200023",
-      "amount_eur": 0.0,
+      "amount_eur": 230000.0,
       "amount_raw": "000",
-      "motif": null,
-      "dossier": null
+      "motif": "subvention de fonctionnement 2025",
+      "dossier": "2025_06612",
+      "amount_source": "manual"
     },
     {
       "delib_id": "2025 DAC 39",
@@ -2102,10 +2131,11 @@
       "article_num": 1,
       "beneficiary": "International Visual Theatre 7 cité Chaptal 75009 Paris",
       "siret": "32418249200037",
-      "amount_eur": 0.0,
+      "amount_eur": 250000.0,
       "amount_raw": "000",
-      "motif": null,
-      "dossier": null
+      "motif": "subvention 2025",
+      "dossier": "2025_00430",
+      "amount_source": "manual"
     },
     {
       "delib_id": "2025 DAC 39",
@@ -2115,10 +2145,11 @@
       "article_num": 2,
       "beneficiary": null,
       "siret": null,
-      "amount_eur": 0.0,
+      "amount_eur": null,
       "amount_raw": "000",
       "motif": null,
-      "dossier": null
+      "dossier": null,
+      "is_admin": true
     },
     {
       "delib_id": "2025 DAC 39",
@@ -2131,7 +2162,8 @@
       "amount_eur": null,
       "amount_raw": null,
       "motif": null,
-      "dossier": null
+      "dossier": null,
+      "is_admin": true
     },
     {
       "delib_id": "2025 DAC 40",
@@ -21398,5 +21430,6 @@
       "dossier": null
     }
   ],
-  "sirene_enriched_at": "2026-04-21T22:50:21"
+  "sirene_enriched_at": "2026-04-21T22:50:21",
+  "applied_results_at": "2026-04-21T23:10:53"
 }
