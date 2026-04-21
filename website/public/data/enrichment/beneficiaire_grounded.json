@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-21T22:42:35",
+  "generated_at": "2026-04-21T22:52:03",
   "model": "gemini-3-flash-preview",
-  "count": 146,
+  "count": 232,
   "items": {
     "ELOGIE SIEMP": {
       "beneficiaire": "ELOGIE-SIEMP",
@@ -2788,6 +2788,1548 @@
       "beneficiaire": "THEATRE SILVIA MONFORT",
       "beneficiaire_normalise": "THEATRE SILVIA MONFORT",
       "siret": "38772311700017"
+    },
+    "ESPACE 19": {
+      "activite_verifiee": "Association d'éducation populaire loi 1901 (créée 1979, 19e) ; gère 3 centres sociaux et culturels, 3 crèches, 4 pôles de compétences (insertion, numérique, santé, formation).",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        {
+          "url": "https://espace19.org/",
+          "title": "espace19.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ESPACE 19",
+      "beneficiaire_normalise": "ESPACE 19",
+      "siret": "32228389600049"
+    },
+    "UNION DEPARTEMEN ASS FAMILIAL PARIS": {
+      "activite_verifiee": "Union Départementale des Associations Familiales de Paris (UDAF 75, créée 1945) ; représente ~70 assos familiales et 14 000 familles ; protection juridique majeurs, crèches, médiation.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.udaf75.fr/",
+          "title": "udaf75.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "UNION DEPARTEMEN ASS FAMILIAL PARIS",
+      "beneficiaire_normalise": "UNION DEPARTEMEN ASS FAMILIAL PARIS",
+      "siret": ""
+    },
+    "UNION DEPARTEMENTALE DE PARIS CFE C": {
+      "activite_verifiee": "Union Départementale des Associations Familiales de Paris (UDAF 75, créée 1945) ; représente ~70 assos familiales et 14 000 familles ; protection juridique majeurs, crèches, médiation.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.udaf75.fr/",
+          "title": "udaf75.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "UNION DEPARTEMENTALE DE PARIS CFE-C",
+      "beneficiaire_normalise": "UNION DEPARTEMENTALE DE PARIS CFE C",
+      "siret": ""
+    },
+    "UNION DEPARTEMENTALE UNSA DE PARIS": {
+      "activite_verifiee": "Union Départementale des Associations Familiales de Paris (UDAF 75, créée 1945) ; représente ~70 assos familiales et 14 000 familles ; protection juridique majeurs, crèches, médiation.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.udaf75.fr/",
+          "title": "udaf75.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "UNION DEPARTEMENTALE UNSA DE PARIS",
+      "beneficiaire_normalise": "UNION DEPARTEMENTALE UNSA DE PARIS",
+      "siret": ""
+    },
+    "UNION DEPARTEMENTALE PARIS CFE CGC": {
+      "activite_verifiee": "Union Départementale des Associations Familiales de Paris (UDAF 75, créée 1945) ; représente ~70 assos familiales et 14 000 familles ; protection juridique majeurs, crèches, médiation.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.udaf75.fr/",
+          "title": "udaf75.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "UNION DEPARTEMENTALE PARIS CFE-CGC",
+      "beneficiaire_normalise": "UNION DEPARTEMENTALE PARIS CFE CGC",
+      "siret": ""
+    },
+    "UNION DEPARTEMENTALE PARIS CFECGC": {
+      "activite_verifiee": "Union Départementale des Associations Familiales de Paris (UDAF 75, créée 1945) ; représente ~70 assos familiales et 14 000 familles ; protection juridique majeurs, crèches, médiation.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.udaf75.fr/",
+          "title": "udaf75.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "UNION DEPARTEMENTALE PARIS CFECGC",
+      "beneficiaire_normalise": "UNION DEPARTEMENTALE PARIS CFECGC",
+      "siret": ""
+    },
+    "UNION DEPARTEM SYNDICATS CGT FO PA": {
+      "activite_verifiee": "Union Départementale des Associations Familiales de Paris (UDAF 75, créée 1945) ; représente ~70 assos familiales et 14 000 familles ; protection juridique majeurs, crèches, médiation.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.udaf75.fr/",
+          "title": "udaf75.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "UNION DEPARTEM. SYNDICATS CGT FO PA",
+      "beneficiaire_normalise": "UNION DEPARTEM SYNDICATS CGT FO PA",
+      "siret": ""
+    },
+    "UNION DEPARTENTALE SYNDICAT CFTC PA": {
+      "activite_verifiee": "Union Départementale des Associations Familiales de Paris (UDAF 75, créée 1945) ; représente ~70 assos familiales et 14 000 familles ; protection juridique majeurs, crèches, médiation.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.udaf75.fr/",
+          "title": "udaf75.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "UNION DEPARTENTALE SYNDICAT CFTC PA",
+      "beneficiaire_normalise": "UNION DEPARTENTALE SYNDICAT CFTC PA",
+      "siret": ""
+    },
+    "UNION DEPARTE ASSOCIATION FAMILIAL PARIS": {
+      "activite_verifiee": "Union Départementale des Associations Familiales de Paris (UDAF 75, créée 1945) ; représente ~70 assos familiales et 14 000 familles ; protection juridique majeurs, crèches, médiation.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.udaf75.fr/",
+          "title": "udaf75.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "UNION DEPARTE. ASSOCIATION FAMILIAL PARIS",
+      "beneficiaire_normalise": "UNION DEPARTE ASSOCIATION FAMILIAL PARIS",
+      "siret": ""
+    },
+    "UNION DEPARTE ASS FAMILIAL PARIS": {
+      "activite_verifiee": "Union Départementale des Associations Familiales de Paris (UDAF 75, créée 1945) ; représente ~70 assos familiales et 14 000 familles ; protection juridique majeurs, crèches, médiation.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.udaf75.fr/",
+          "title": "udaf75.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "UNION DEPARTE ASS FAMILIAL PARIS",
+      "beneficiaire_normalise": "UNION DEPARTE ASS FAMILIAL PARIS",
+      "siret": ""
+    },
+    "ILE DE FRANCE MOBILITES": {
+      "activite_verifiee": "Établissement public administratif (ex-STIF, renommé 2017) ; autorité organisatrice des transports franciliens ; 10 M voyageurs/jour sur RATP, SNCF, OPTILE (75 opérateurs).",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.iledefrance-mobilites.fr/en/decouvrir/organisation",
+          "title": "iledefrance-mobilites.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ILE-DE-FRANCE MOBILITES",
+      "beneficiaire_normalise": "ILE DE FRANCE MOBILITES",
+      "siret": ""
+    },
+    "UNION SYNDICATS CFDT PARIS": {
+      "activite_verifiee": "Confédération française démocratique du travail (union régionale Paris/IDF) ; 1re organisation syndicale française, 634 000 adhérents, +1 100 syndicats locaux.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.cfdt.fr/",
+          "title": "cfdt.fr"
+        },
+        {
+          "url": "https://ile-de-france.cfdt.fr",
+          "title": "ile-de-france.cfdt.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "UNION SYNDICATS CFDT PARIS",
+      "beneficiaire_normalise": "UNION SYNDICATS CFDT PARIS",
+      "siret": ""
+    },
+    "ETE PARISIEN": {
+      "activite_verifiee": "Festival Paris l'Été (créé 1990 par Patrice Martinet, impulsion Jack Lang) ; festival estival multidisciplinaire (théâtre, danse, cirque, musique) dans l'espace public parisien.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.parislete.fr/fr/le-festival",
+          "title": "parislete.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "L'ETE PARISIEN",
+      "beneficiaire_normalise": "ETE PARISIEN",
+      "siret": "37978422600043"
+    },
+    "SEQUENS SOLIDARITES": {
+      "activite_verifiee": "Filiale de Seqens (Action Logement) ; gère 4 résidences sociales et 5 pensions de famille pour personnes en grande exclusion ; logements thématiques (étudiants, jeunes actifs, séniors).",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.seqens.fr/seqens/seqens-solidarites/mission/",
+          "title": "seqens.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SEQUENS SOLIDARITES",
+      "beneficiaire_normalise": "SEQUENS SOLIDARITES",
+      "siret": ""
+    },
+    "ESPACIL HABITAT SA D HABITATIONS": {
+      "activite_verifiee": "ESH (Entreprise Sociale pour l'Habitat) filiale d'Action Logement ; 27 000 logements sociaux en Bretagne et Loire-Atlantique ; constructions + accession sociale.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.espacil-habitat.fr/",
+          "title": "espacil-habitat.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ESPACIL HABITAT SA D HABITATIONS",
+      "beneficiaire_normalise": "ESPACIL HABITAT SA D HABITATIONS",
+      "siret": ""
+    },
+    "CHORBA": {
+      "activite_verifiee": "Association laïque loi 1901 (créée 1998) ; distribue 500 000 repas chauds/an aux SDF et migrants (Porte de la Villette), +3 000 bénévoles ; plus grande cantine sociale de France.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://lachorba.fr/",
+          "title": "lachorba.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LA CHORBA",
+      "beneficiaire_normalise": "CHORBA",
+      "siret": "43041135500026"
+    },
+    "UNE CHORBA POUR TOUS": {
+      "activite_verifiee": "Association laïque loi 1901 (créée 1998) ; distribue 500 000 repas chauds/an aux SDF et migrants (Porte de la Villette), +3 000 bénévoles ; plus grande cantine sociale de France.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://lachorba.fr/",
+          "title": "lachorba.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "UNE CHORBA POUR TOUS",
+      "beneficiaire_normalise": "UNE CHORBA POUR TOUS",
+      "siret": "44301381800036"
+    },
+    "EAU DE PARIS": {
+      "activite_verifiee": "Régie municipale (créée 2010) ; production, transport et distribution de 483 000 m³/jour d'eau potable à 3 M d'usagers parisiens, remunicipalisée depuis 2010.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.eaudeparis.fr/",
+          "title": "eaudeparis.fr"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Eau_de_Paris",
+          "title": "en.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "EAU DE PARIS",
+      "beneficiaire_normalise": "EAU DE PARIS",
+      "siret": ""
+    },
+    "FESTIVAL D AUTOMNE A PARIS": {
+      "activite_verifiee": "Association (créée 1972) ; festival multidisciplinaire annuel (théâtre, danse, musique, arts visuels) ; 80+ événements dans 60 lieux à Paris et IDF, scène internationale.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.festival-automne.com/en",
+          "title": "festival-automne.com"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Festival_d%27automne_%C3%A0_Paris",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FESTIVAL D AUTOMNE A PARIS",
+      "beneficiaire_normalise": "FESTIVAL D AUTOMNE A PARIS",
+      "siret": ""
+    },
+    "FRANCE TERRE D ASILE": {
+      "activite_verifiee": "Association (créée 1971) ; défend les droits des demandeurs d'asile, réfugiés et mineurs non accompagnés ; accompagne 12 000 personnes/jour dans 100+ établissements en France.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.france-terre-asile.org",
+          "title": "france-terre-asile.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FRANCE TERRE D ASILE",
+      "beneficiaire_normalise": "FRANCE TERRE D ASILE",
+      "siret": ""
+    },
+    "LYCEE TECHNOLOGIQUE ESTIENNE E S A": {
+      "activite_verifiee": "École supérieure des arts et industries graphiques (ESAIG/École Estienne, créée 1889) ; 13e arr. ; BTS, DNMADE et DSAA en design graphique, livre, animation, gravure.",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        {
+          "url": "https://www.ecole-estienne.paris/",
+          "title": "ecole-estienne.paris"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LYCEE TECHNOLOGIQUE ESTIENNE E.S.A.",
+      "beneficiaire_normalise": "LYCEE TECHNOLOGIQUE ESTIENNE E S A",
+      "siret": ""
+    },
+    "LYCEE TECHNOLOGIQUE ESTIENNE ESA": {
+      "activite_verifiee": "École supérieure des arts et industries graphiques (ESAIG/École Estienne, créée 1889) ; 13e arr. ; BTS, DNMADE et DSAA en design graphique, livre, animation, gravure.",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        {
+          "url": "https://www.ecole-estienne.paris/",
+          "title": "ecole-estienne.paris"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LYCEE TECHNOLOGIQUE ESTIENNE ESA",
+      "beneficiaire_normalise": "LYCEE TECHNOLOGIQUE ESTIENNE ESA",
+      "siret": ""
+    },
+    "GROUPE OEUVRES SOCIALES BELLEVILLE": {
+      "activite_verifiee": "Association reconnue d'utilité publique (GOSB, créée 1920, Paris 20e) ; 8 établissements en santé, petite enfance et handicap ; centre de santé sexuelle, PMI.",
+      "perimetre_geographique": "Paris 20e",
+      "sources": [
+        {
+          "url": "https://www.gosb.eu/",
+          "title": "gosb.eu"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "GROUPE OEUVRES SOCIALES BELLEVILLE",
+      "beneficiaire_normalise": "GROUPE OEUVRES SOCIALES BELLEVILLE",
+      "siret": ""
+    },
+    "ESTRELIA": {
+      "activite_verifiee": "Association spécialisée petite enfance et périnatalité ; gère 5 crèches et lieux d'accueil parents-enfants à Paris (19e, 20e, 10e) ; reprise par Fondation Croix Saint-Simon.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://estrelia.org/",
+          "title": "estrelia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ESTRELIA",
+      "beneficiaire_normalise": "ESTRELIA",
+      "siret": "34878236800032"
+    },
+    "ASSOCIATION ESTRELIA": {
+      "activite_verifiee": "Association spécialisée petite enfance et périnatalité ; gère 5 crèches et lieux d'accueil parents-enfants à Paris (19e, 20e, 10e) ; reprise par Fondation Croix Saint-Simon.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://estrelia.org/",
+          "title": "estrelia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION ESTRELIA",
+      "beneficiaire_normalise": "ASSOCIATION ESTRELIA",
+      "siret": ""
+    },
+    "THEATRE PARIS 14": {
+      "activite_verifiee": "Théâtre privé parisien dans le 14e (inclut Théâtre de la Gaîté Montparnasse, 26 rue de la Gaîté) ; programmation commerciale, spectacles jeune public et musicaux.",
+      "perimetre_geographique": "Paris 14e",
+      "sources": [
+        {
+          "url": "https://gaite.com/",
+          "title": "gaite.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "THEATRE PARIS 14",
+      "beneficiaire_normalise": "THEATRE PARIS 14",
+      "siret": ""
+    },
+    "IERFAS": {
+      "activite_verifiee": "Institut de formation aux métiers du travail social ; prépare aux diplômes d'assistant de service social, éducateur spécialisé et métiers de l'intervention sociale en Île-de-France.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.irtsparmentier.fr/",
+          "title": "irtsparmentier.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "IERFAS",
+      "beneficiaire_normalise": "IERFAS",
+      "siret": ""
+    },
+    "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA": {
+      "activite_verifiee": "École supérieure des arts appliqués Duperré (ESAA, créée 1856) ; 3e arr. ; forme 500 étudiants/an en mode, textile, céramique, design d'espace, design graphique.",
+      "perimetre_geographique": "Paris 3e",
+      "sources": [
+        {
+          "url": "https://www.duperre.org/",
+          "title": "duperre.org"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/%C3%89cole_Duperr%C3%A9",
+          "title": "en.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
+      "beneficiaire_normalise": "LYCEE TECHNOLOGIQUE MUN DUPERRE ESA",
+      "siret": ""
+    },
+    "GOUTTE LAIT SAINT LEON": {
+      "activite_verifiee": "Association (créée 1931) dans le 15e ; crèche + multi-accueils + PMI ; accueille 180 enfants/sem et ~2 200 consultations médicales/an pour 680 enfants inscrits.",
+      "perimetre_geographique": "Paris 15e",
+      "sources": [
+        {
+          "url": "https://www.gouttedelait.com/",
+          "title": "gouttedelait.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LA GOUTTE LAIT SAINT LEON",
+      "beneficiaire_normalise": "GOUTTE LAIT SAINT LEON",
+      "siret": ""
+    },
+    "FRANCE HORIZON": {
+      "activite_verifiee": "Association (ex-CEFR, +80 ans d'existence) ; 1 500 professionnels ; hébergement d'urgence, CHU, insertion sociale et professionnelle, logement des réfugiés et migrants.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.france-horizon.fr/",
+          "title": "france-horizon.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FRANCE HORIZON",
+      "beneficiaire_normalise": "FRANCE HORIZON",
+      "siret": "77566670400629"
+    },
+    "COOPERATIVE DE RUE ET DE CIRQUE": {
+      "activite_verifiee": "Coopérative (SCIC, créée 2005) dédiée aux arts de la rue et du cirque ; diffusion artistique, résidences (RueWATT), organise le Village de Cirque et Printemps gratuit.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.2r2c.coop/",
+          "title": "2r2c.coop"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:48:37",
+      "model": "claude-code-websearch",
+      "beneficiaire": "COOPERATIVE DE RUE ET DE CIRQUE",
+      "beneficiaire_normalise": "COOPERATIVE DE RUE ET DE CIRQUE",
+      "siret": ""
+    },
+    "ASS INTERNATIONALE MAIRES FRANCOPHO": {
+      "activite_verifiee": "Association Internationale des Maires Francophones (AIMF, créée 1979) ; rassemble maires de 345 villes dans 56 pays francophones, opérateur de la Francophonie.",
+      "perimetre_geographique": "international",
+      "sources": [
+        {
+          "url": "https://www.aimf.asso.fr/",
+          "title": "aimf.asso.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASS INTERNATIONALE MAIRES FRANCOPHO",
+      "beneficiaire_normalise": "ASS INTERNATIONALE MAIRES FRANCOPHO",
+      "siret": ""
+    },
+    "ASSOCIATION INTERNATIONALE MAIRES FRANCOPHO": {
+      "activite_verifiee": "Association Internationale des Maires Francophones (AIMF, créée 1979) ; rassemble maires de 345 villes dans 56 pays francophones, opérateur de la Francophonie.",
+      "perimetre_geographique": "international",
+      "sources": [
+        {
+          "url": "https://www.aimf.asso.fr/",
+          "title": "aimf.asso.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION INTERNATIONALE MAIRES FRANCOPHO",
+      "beneficiaire_normalise": "ASSOCIATION INTERNATIONALE MAIRES FRANCOPHO",
+      "siret": ""
+    },
+    "INTERNATIONALE MAIRES FRANCOPHO": {
+      "activite_verifiee": "Association Internationale des Maires Francophones (AIMF, créée 1979) ; rassemble maires de 345 villes dans 56 pays francophones, opérateur de la Francophonie.",
+      "perimetre_geographique": "international",
+      "sources": [
+        {
+          "url": "https://www.aimf.asso.fr/",
+          "title": "aimf.asso.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "INTERNATIONALE MAIRES FRANCOPHO",
+      "beneficiaire_normalise": "INTERNATIONALE MAIRES FRANCOPHO",
+      "siret": ""
+    },
+    "EFIDIS SA HABITATION LOYER MODERE": {
+      "activite_verifiee": "Bailleur social francilien (44 500 logements) intégré au groupe CDC Habitat via CDC Habitat Social ; fusionné avec OSICA dans Grand Paris Habitat.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.union-habitat.org/organismes/efidis",
+          "title": "union-habitat.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "EFIDIS SA HABITATION LOYER MODERE",
+      "beneficiaire_normalise": "EFIDIS SA HABITATION LOYER MODERE",
+      "siret": ""
+    },
+    "SEMAEST": {
+      "activite_verifiee": "SEM de la Ville de Paris (créée 2004, devenue SEM Paris Commerces en 2023) ; revitalise commerces et artisanat de proximité, +800 locaux commerciaux reconvertis.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.semaest.fr/",
+          "title": "semaest.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SEMAEST",
+      "beneficiaire_normalise": "SEMAEST",
+      "siret": ""
+    },
+    "FONDATION DE ROTHSCHILD": {
+      "activite_verifiee": "Hôpital Fondation Adolphe de Rothschild (ESPIC, créé 1905) dans le 19e ; hôpital universitaire sans but lucratif spécialisé en ophtalmologie et pathologies tête/cou.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        {
+          "url": "https://www.fo-rothschild.fr/",
+          "title": "fo-rothschild.fr"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/H%C3%B4pital_Fondation_Adolphe_de_Rothschild",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FONDATION DE ROTHSCHILD",
+      "beneficiaire_normalise": "FONDATION DE ROTHSCHILD",
+      "siret": "77568109100010"
+    },
+    "INSTITUT PASTEUR": {
+      "activite_verifiee": "Fondation reconnue d'utilité publique (créée 1887 par Louis Pasteur) ; centre mondial de recherche biomédicale, 3 200 collaborateurs, 10 Prix Nobel depuis sa création.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.pasteur.fr/fr/institut-pasteur",
+          "title": "pasteur.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "INSTITUT PASTEUR",
+      "beneficiaire_normalise": "INSTITUT PASTEUR",
+      "siret": ""
+    },
+    "EMMAUS DEFI FONDATEUR ABBE PIERRE": {
+      "activite_verifiee": "Association (créée 2007, 19e) ; structure d'insertion par l'activité économique ; ~200 salariés en parcours via collecte/tri/vente d'objets d'occasion, programme Premières Heures.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        {
+          "url": "https://emmaus-defi.org/",
+          "title": "emmaus-defi.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "EMMAUS DEFI - FONDATEUR ABBE PIERRE",
+      "beneficiaire_normalise": "EMMAUS DEFI FONDATEUR ABBE PIERRE",
+      "siret": ""
+    },
+    "EMMAUS DEFI": {
+      "activite_verifiee": "Association (créée 2007, 19e) ; structure d'insertion par l'activité économique ; ~200 salariés en parcours via collecte/tri/vente d'objets d'occasion, programme Premières Heures.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        {
+          "url": "https://emmaus-defi.org/",
+          "title": "emmaus-defi.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "EMMAUS DEFI",
+      "beneficiaire_normalise": "EMMAUS DEFI",
+      "siret": ""
+    },
+    "MANUFACTURE": {
+      "activite_verifiee": "La Manufacture (CDN) — centre dramatique national ; créations et diffusion théâtrales, résidences artistiques, formations et actions culturelles auprès des publics.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.asso-acdn.fr/",
+          "title": "asso-acdn.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LA MANUFACTURE",
+      "beneficiaire_normalise": "MANUFACTURE",
+      "siret": ""
+    },
+    "PARIS FOOTBALL CLUB": {
+      "activite_verifiee": "Club professionnel de football français (créé 1969, relevé en 2025 en Ligue 1) ; majoritairement détenu par Agache Sport (famille Arnault) depuis 2024 ; Stade Jean-Bouin.",
+      "perimetre_geographique": "Paris 16e",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Paris_Football_Club",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "PARIS FOOTBALL CLUB",
+      "beneficiaire_normalise": "PARIS FOOTBALL CLUB",
+      "siret": ""
+    },
+    "SYND INTERDEP PARC SPORTS CHOISY": {
+      "activite_verifiee": "Syndicat mixte ouvert (depuis 2020, entre Paris et Val-de-Marne) ; gère le Parc interdépartemental des sports de Choisy-le-Roi (150 ha, 500 000 visiteurs/an, 15 sports).",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Parc_interd%C3%A9partemental_des_sports_de_Paris-Val-de-Marne",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SYND INTERDEP PARC SPORTS CHOISY",
+      "beneficiaire_normalise": "SYND INTERDEP PARC SPORTS CHOISY",
+      "siret": ""
+    },
+    "CENTRE REGIONAL DE COORDINATION": {
+      "activite_verifiee": "CRCDC Île-de-France (créé 2019) ; coordonne dépistages organisés des cancers du sein, colorectal et du col de l'utérus sur 8 sites franciliens.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://depistage-cancers-idf.com/",
+          "title": "depistage-cancers-idf.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CENTRE REGIONAL DE COORDINATION",
+      "beneficiaire_normalise": "CENTRE REGIONAL DE COORDINATION",
+      "siret": ""
+    },
+    "CENTR ISRAELITE MONTMARTRE": {
+      "activite_verifiee": "Association créée 1900 (ex-Société philanthropique asile israélite) ; gère crèches dans le 18e (rues Lamarck, Chevalier de la Barre), 71 enfants accueillis.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://www.lecim.fr/",
+          "title": "lecim.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CENTR ISRAELITE MONTMARTRE",
+      "beneficiaire_normalise": "CENTR ISRAELITE MONTMARTRE",
+      "siret": ""
+    },
+    "SCIC D HLM GAMBETTA": {
+      "activite_verifiee": "Société coopérative d'intérêt collectif d'HLM (siège Cholet 49) ; groupe Gambetta, +5 000 logements sociaux en IDF, Pays de la Loire et PACA ; membre Habitat Réuni.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.groupegambetta.fr/",
+          "title": "groupegambetta.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SCIC D HLM GAMBETTA",
+      "beneficiaire_normalise": "SCIC D HLM GAMBETTA",
+      "siret": ""
+    },
+    "L AGENCE PARISIENNE DU CLIMAT": {
+      "activite_verifiee": "Association loi 1901 (APC, créée 2011 à l'initiative de la Ville de Paris) ; accélérateur de la transition énergétique, guichet unique rénovation énergétique des copropriétés.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.apc-paris.com/",
+          "title": "apc-paris.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "L AGENCE PARISIENNE DU CLIMAT",
+      "beneficiaire_normalise": "L AGENCE PARISIENNE DU CLIMAT",
+      "siret": ""
+    },
+    "AGENCE PARISIENNE DU CLIMAT": {
+      "activite_verifiee": "Association loi 1901 (APC, créée 2011 à l'initiative de la Ville de Paris) ; accélérateur de la transition énergétique, guichet unique rénovation énergétique des copropriétés.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.apc-paris.com/",
+          "title": "apc-paris.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "AGENCE PARISIENNE DU CLIMAT",
+      "beneficiaire_normalise": "AGENCE PARISIENNE DU CLIMAT",
+      "siret": ""
+    },
+    "HENEO": {
+      "activite_verifiee": "Bailleur associatif parisien (~5 200 logements meublés) ; résidences sociales, étudiantes, jeunes actifs et foyers de jeunes travailleurs à Paris et proche banlieue.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.heneo.fr/",
+          "title": "heneo.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "HENEO",
+      "beneficiaire_normalise": "HENEO",
+      "siret": ""
+    },
+    "STADE FRANCAIS PARIS": {
+      "activite_verifiee": "Club professionnel de rugby à XV (Top 14) fondé 1883, refondé 1995 par fusion avec CASG ; plusieurs titres champions de France ; Stade Jean-Bouin (16e).",
+      "perimetre_geographique": "Paris 16e",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stade_Fran%C3%A7ais",
+          "title": "en.wikipedia.org"
+        },
+        {
+          "url": "https://www.stade.fr/en/",
+          "title": "stade.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "STADE FRANCAIS PARIS",
+      "beneficiaire_normalise": "STADE FRANCAIS PARIS",
+      "siret": ""
+    },
+    "STADE FRANCAIS PARIS SAINT CLOUD": {
+      "activite_verifiee": "Club professionnel de rugby à XV (Top 14) fondé 1883, refondé 1995 par fusion avec CASG ; plusieurs titres champions de France ; Stade Jean-Bouin (16e).",
+      "perimetre_geographique": "Paris 16e",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stade_Fran%C3%A7ais",
+          "title": "en.wikipedia.org"
+        },
+        {
+          "url": "https://www.stade.fr/en/",
+          "title": "stade.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "STADE FRANCAIS PARIS SAINT CLOUD",
+      "beneficiaire_normalise": "STADE FRANCAIS PARIS SAINT CLOUD",
+      "siret": ""
+    },
+    "STADE FRANCAIS": {
+      "activite_verifiee": "Club professionnel de rugby à XV (Top 14) fondé 1883, refondé 1995 par fusion avec CASG ; plusieurs titres champions de France ; Stade Jean-Bouin (16e).",
+      "perimetre_geographique": "Paris 16e",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stade_Fran%C3%A7ais",
+          "title": "en.wikipedia.org"
+        },
+        {
+          "url": "https://www.stade.fr/en/",
+          "title": "stade.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "STADE FRANCAIS",
+      "beneficiaire_normalise": "STADE FRANCAIS",
+      "siret": "30299790300026"
+    },
+    "ASSOCIATION DU STADE FRANCAIS": {
+      "activite_verifiee": "Club professionnel de rugby à XV (Top 14) fondé 1883, refondé 1995 par fusion avec CASG ; plusieurs titres champions de France ; Stade Jean-Bouin (16e).",
+      "perimetre_geographique": "Paris 16e",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stade_Fran%C3%A7ais",
+          "title": "en.wikipedia.org"
+        },
+        {
+          "url": "https://www.stade.fr/en/",
+          "title": "stade.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION DU STADE FRANCAIS",
+      "beneficiaire_normalise": "ASSOCIATION DU STADE FRANCAIS",
+      "siret": ""
+    },
+    "FONDATION CITE INTERNATIONALE ARTS": {
+      "activite_verifiee": "Fondation (créée 1965) ; plus grande résidence d'artistes au monde ; 326 ateliers-logements au Marais et Montmartre ; accueille ~1 000 artistes/an tous disciplines.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.citedesartsparis.net/",
+          "title": "citedesartsparis.net"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cit%C3%A9_internationale_des_arts",
+          "title": "en.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FONDATION CITE INTERNATIONALE ARTS",
+      "beneficiaire_normalise": "FONDATION CITE INTERNATIONALE ARTS",
+      "siret": ""
+    },
+    "FOND CITE INTERNATIONALE ARTS": {
+      "activite_verifiee": "Fondation (créée 1965) ; plus grande résidence d'artistes au monde ; 326 ateliers-logements au Marais et Montmartre ; accueille ~1 000 artistes/an tous disciplines.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.citedesartsparis.net/",
+          "title": "citedesartsparis.net"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cit%C3%A9_internationale_des_arts",
+          "title": "en.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FOND CITE INTERNATIONALE ARTS",
+      "beneficiaire_normalise": "FOND CITE INTERNATIONALE ARTS",
+      "siret": ""
+    },
+    "FREHA": {
+      "activite_verifiee": "Bailleur social associatif (créé 1990, issu du mouvement Emmaüs) ; gère 6 résidences sociales et 6 pensions de famille en Île-de-France pour personnes en grande précarité.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.freha.fr/",
+          "title": "freha.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FREHA",
+      "beneficiaire_normalise": "FREHA",
+      "siret": ""
+    },
+    "ERIGERE": {
+      "activite_verifiee": "ESH filiale d'Action Logement (fusionnée avec Immobilière 3F au 1er oct 2025) ; avant fusion gérait 16 000 logements dans 126 communes d'IDF (séniors, jeunes actifs).",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.erigere.fr/",
+          "title": "erigere.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ERIGERE",
+      "beneficiaire_normalise": "ERIGERE",
+      "siret": ""
+    },
+    "ETUDES ET CHANTIERS ILE DE FRANCE": {
+      "activite_verifiee": "Association d'éducation populaire et ESS (créée 2001) ; 16 ateliers/chantiers d'insertion en IDF (espaces verts, vélo, maraîchage bio, patrimoine bâti).",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://etudesetchantiers.org/",
+          "title": "etudesetchantiers.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ETUDES ET CHANTIERS ILE DE FRANCE",
+      "beneficiaire_normalise": "ETUDES ET CHANTIERS ILE DE FRANCE",
+      "siret": "44066204700016"
+    },
+    "CENTRE D ACTION SOCIALE PROTESTANT": {
+      "activite_verifiee": "CASP — association laïque d'utilité publique (créée 1906) ; 617 salariés et 330 bénévoles dans 81 services ; accès aux droits, logement, santé, emploi à Paris et IDF.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://casp.asso.fr/",
+          "title": "casp.asso.fr"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Centre_d%27action_sociale_protestant",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CENTRE D ACTION SOCIALE PROTESTANT",
+      "beneficiaire_normalise": "CENTRE D ACTION SOCIALE PROTESTANT",
+      "siret": ""
+    },
+    "CENTRE D ACTION SOCIALE PROTESTANT UVRE DE SECOURS AUX ENFANTS": {
+      "activite_verifiee": "CASP — association laïque d'utilité publique (créée 1906) ; 617 salariés et 330 bénévoles dans 81 services ; accès aux droits, logement, santé, emploi à Paris et IDF.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://casp.asso.fr/",
+          "title": "casp.asso.fr"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Centre_d%27action_sociale_protestant",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:50:13",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CENTRE D ACTION SOCIALE PROTESTANT ŒUVRE DE SECOURS AUX ENFANTS",
+      "beneficiaire_normalise": "CENTRE D ACTION SOCIALE PROTESTANT UVRE DE SECOURS AUX ENFANTS",
+      "siret": ""
+    },
+    "PARIS UNIVERSITE CLUB": {
+      "activite_verifiee": "Club omnisports français (PUC, créé 1906 au Café Voltaire) ; base Stade Charléty (13e) ; école multisports, ~45 installations sportives, sports pour étudiants et grand public.",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        {
+          "url": "https://puc.paris/",
+          "title": "puc.paris"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:52:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "PARIS UNIVERSITE CLUB",
+      "beneficiaire_normalise": "PARIS UNIVERSITE CLUB",
+      "siret": ""
+    },
+    "MAISON GESTE IMAGE CTRE RECHERC EDU": {
+      "activite_verifiee": "Association loi 1901 (créée 1983) soutenue par la Ville de Paris ; centre d'éducation artistique (théâtre, photo, audiovisuel, multimédia) pour enfants et adolescents.",
+      "perimetre_geographique": "Paris 1er",
+      "sources": [
+        {
+          "url": "https://www.mgi-paris.org/",
+          "title": "mgi-paris.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:52:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "MAISON GESTE IMAGE CTRE RECHERC EDU",
+      "beneficiaire_normalise": "MAISON GESTE IMAGE CTRE RECHERC EDU",
+      "siret": ""
+    },
+    "MAISON GESTE IMAGE": {
+      "activite_verifiee": "Association loi 1901 (créée 1983) soutenue par la Ville de Paris ; centre d'éducation artistique (théâtre, photo, audiovisuel, multimédia) pour enfants et adolescents.",
+      "perimetre_geographique": "Paris 1er",
+      "sources": [
+        {
+          "url": "https://www.mgi-paris.org/",
+          "title": "mgi-paris.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:52:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "MAISON GESTE IMAGE",
+      "beneficiaire_normalise": "MAISON GESTE IMAGE",
+      "siret": ""
+    },
+    "CENTRE NATIONAL DE LA MUSIQUE": {
+      "activite_verifiee": "EPIC sous tutelle du ministère de la Culture (CNM, créé 2020) ; fédère la filière musicale française (soutien à la production, diffusion, observation, territoires, international).",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://cnm.fr/en/",
+          "title": "cnm.fr"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Centre_national_de_la_musique",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:52:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CENTRE NATIONAL DE LA MUSIQUE",
+      "beneficiaire_normalise": "CENTRE NATIONAL DE LA MUSIQUE",
+      "siret": ""
+    },
+    "SIPRHEM STE IMMOB POUR RESIDENCES": {
+      "activite_verifiee": "SARL coopérative (SIREN 383789393) siège 75008 ; gestion et exploitation de résidences hôtelières et logements meublés, assistance à la gestion d'hôtels.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.pappers.fr/entreprise/siprhem-societe-immobiliere-pour-les-residences-hotelieres-et-meublees-383789393",
+          "title": "pappers.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:52:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SIPRHEM STE IMMOB POUR  RESIDENCES",
+      "beneficiaire_normalise": "SIPRHEM STE IMMOB POUR RESIDENCES",
+      "siret": ""
+    },
+    "SOLIHA PARIS HAUTS DE SEINE VAL D O": {
+      "activite_verifiee": "Association SOLIHA Grand Paris (fédération Solidaires pour l'Habitat) ; rénove logements insalubres, accompagne +60 ans modestes sur Paris, Hauts-de-Seine, Val-d'Oise.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://soliha.fr/",
+          "title": "soliha.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:52:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SOLIHA PARIS HAUTS DE SEINE VAL D O",
+      "beneficiaire_normalise": "SOLIHA PARIS HAUTS DE SEINE VAL D O",
+      "siret": ""
+    },
+    "SOLIHA GRAND PARIS": {
+      "activite_verifiee": "Association SOLIHA Grand Paris (fédération Solidaires pour l'Habitat) ; rénove logements insalubres, accompagne +60 ans modestes sur Paris, Hauts-de-Seine, Val-d'Oise.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://soliha.fr/",
+          "title": "soliha.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:52:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SOLIHA GRAND PARIS",
+      "beneficiaire_normalise": "SOLIHA GRAND PARIS",
+      "siret": "78433713100014"
+    },
+    "PLANETE DES ENFANTS": {
+      "activite_verifiee": "Association loi 1901 (siège Paris 14e) ; gère 3 crèches associatives dans les 11e, 14e et 20e arrondissements (Les Fraises des Bois, Villa des Enfants, Étoiles de Philidor).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://laplanetedesenfants.org/",
+          "title": "laplanetedesenfants.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:52:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LA PLANETE DES ENFANTS",
+      "beneficiaire_normalise": "PLANETE DES ENFANTS",
+      "siret": ""
+    },
+    "RESTAUS DU COEUR LES RELAIS COEUR P": {
+      "activite_verifiee": "Association départementale Paris des Restos du Coeur ; 3 200 bénévoles, 5,4 M repas servis à 36 000 personnes via relais fixes et camions de distribution en Paris.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://ad75.restosducoeur.org/",
+          "title": "ad75.restosducoeur.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:52:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "RESTAUS DU COEUR LES RELAIS COEUR P",
+      "beneficiaire_normalise": "RESTAUS DU COEUR LES RELAIS COEUR P",
+      "siret": ""
+    },
+    "PARIS VOLLEY AVENIR": {
+      "activite_verifiee": "Club professionnel de volley-ball (créé 1998 par fusion PUC + PSG Racing) ; 9 fois champion de France ; évolue en Ligue A Marmara.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://parisvolley.com/",
+          "title": "parisvolley.com"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Paris_Volley",
+          "title": "en.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:52:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "PARIS VOLLEY AVENIR",
+      "beneficiaire_normalise": "PARIS VOLLEY AVENIR",
+      "siret": ""
+    },
+    "VILOGIA SOCIETE ANONYME D HLM": {
+      "activite_verifiee": "Société anonyme d'HLM (créée il y a un siècle, siège Villeneuve-d'Ascq) ; 90 000 logements et 190 000 résidents dans Hauts-de-France, IDF, Grand Est, Sud-Est.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.vilogia.fr/bailleur-social",
+          "title": "vilogia.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:52:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "VILOGIA SOCIETE ANONYME D'HLM",
+      "beneficiaire_normalise": "VILOGIA SOCIETE ANONYME D HLM",
+      "siret": ""
+    },
+    "PARIS 92": {
+      "activite_verifiee": "Club professionnel de handball féminin (ex-Issy Paris Hand, renommé 2018) ; évolue en Ligue Butagaz Energie ; salle Palais des Sports d'Issy-les-Moulineaux.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://paris92.fr/",
+          "title": "paris92.fr"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Paris_92",
+          "title": "en.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:52:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "PARIS 92",
+      "beneficiaire_normalise": "PARIS 92",
+      "siret": ""
+    },
+    "INST INTERDEP DU PARC DU TREMBLAY": {
+      "activite_verifiee": "Syndicat mixte ouvert (créé 2021) Paris + Val-de-Marne ; gère le parc du Tremblay (73 ha de sports et loisirs, Champigny-sur-Marne) ; 50-99 employés.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/syndicat-mixte-des-parcs-du-tremblay-et-de-choisy-paris-val-de-marne-200094829",
+          "title": "annuaire-entreprises.data.gouv.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:52:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "INST INTERDEP DU PARC DU TREMBLAY",
+      "beneficiaire_normalise": "INST INTERDEP DU PARC DU TREMBLAY",
+      "siret": ""
+    },
+    "SDT MIXTE DES PARCS DU TREMBLAY": {
+      "activite_verifiee": "Syndicat mixte ouvert (créé 2021) Paris + Val-de-Marne ; gère le parc du Tremblay (73 ha de sports et loisirs, Champigny-sur-Marne) ; 50-99 employés.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/syndicat-mixte-des-parcs-du-tremblay-et-de-choisy-paris-val-de-marne-200094829",
+          "title": "annuaire-entreprises.data.gouv.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:52:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SDT MIXTE DES PARCS DU TREMBLAY",
+      "beneficiaire_normalise": "SDT MIXTE DES PARCS DU TREMBLAY",
+      "siret": ""
+    },
+    "CRECHE LAIQUE ST FARGEAU": {
+      "activite_verifiee": "Association loi 1901 (créée 1899, SIREN 784808180) ; une des plus anciennes crèches laïques de Paris, dans le 20e (rue du Télégraphe), ~10-19 salariés.",
+      "perimetre_geographique": "Paris 20e",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/creche-laique-st-fargeau-784808180.html",
+          "title": "societe.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:52:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CRECHE LAIQUE ST FARGEAU",
+      "beneficiaire_normalise": "CRECHE LAIQUE ST FARGEAU",
+      "siret": ""
+    },
+    "OEUVRE DE SECOURS AUX ENFANTS": {
+      "activite_verifiee": "Association juive loi 1901 (OSE, créée 1912 en Russie, en France depuis 1933) ; reconnue d'utilité publique ; 36 établissements, 750 salariés ; enfance, santé, âge, handicap.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.ose-france.org/",
+          "title": "ose-france.org"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/%C5%92uvre_de_secours_aux_enfants",
+          "title": "en.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:52:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "OEUVRE DE SECOURS AUX ENFANTS",
+      "beneficiaire_normalise": "OEUVRE DE SECOURS AUX ENFANTS",
+      "siret": ""
+    },
+    "ECOLE NORMALE SUPERIEURE": {
+      "activite_verifiee": "Grande école publique (créée 1794 puis refondée 1826, rue d'Ulm 5e) ; institution la plus prestigieuse de France, formation recherche en sciences et lettres, PSL University.",
+      "perimetre_geographique": "Paris 5e",
+      "sources": [
+        {
+          "url": "https://www.ens.psl.eu/en",
+          "title": "ens.psl.eu"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/%C3%89cole_normale_sup%C3%A9rieure_(Paris)",
+          "title": "en.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:52:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ECOLE NORMALE SUPERIEURE",
+      "beneficiaire_normalise": "ECOLE NORMALE SUPERIEURE",
+      "siret": ""
+    },
+    "EMMAUS HABITAT": {
+      "activite_verifiee": "SA d'HLM (créée 1954 par l'Abbé Pierre après l'appel du 1er février) ; 15 000 logements, 50 000 locataires en Île-de-France ; membre du Mouvement Emmaüs.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.emmaus-habitat.fr/",
+          "title": "emmaus-habitat.fr"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Emma%C3%BCs_Habitat",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:52:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "EMMAUS HABITAT",
+      "beneficiaire_normalise": "EMMAUS HABITAT",
+      "siret": ""
+    },
+    "ETOILE DU NORD": {
+      "activite_verifiee": "Théâtre associatif parisien (créé 1979, 18e arr. rue Georgette-Agutte) ; scène conventionnée pour la création contemporaine, danse et jeune écriture ; 184 places.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://www.etoiledunord-theatre.com/",
+          "title": "etoiledunord-theatre.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:52:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "L'ETOILE DU NORD",
+      "beneficiaire_normalise": "ETOILE DU NORD",
+      "siret": "32618492600011"
+    },
+    "ASS PARIS ANIMATION CULT ET SPORT": {
+      "activite_verifiee": "Les centres Paris Anim' — 49 centres d'animation de proximité de la Ville de Paris (souvent gérés par la Ligue de l'Enseignement) ; +300 activités culturelles et sportives.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/pages/les-centres-d-animation-2390/",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:52:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASS PARIS ANIMATION CULT ET SPORT",
+      "beneficiaire_normalise": "ASS PARIS ANIMATION CULT ET SPORT",
+      "siret": ""
+    },
+    "ASSOCIATION PARIS ANIMATION CULT ET SPORT": {
+      "activite_verifiee": "Les centres Paris Anim' — 49 centres d'animation de proximité de la Ville de Paris (souvent gérés par la Ligue de l'Enseignement) ; +300 activités culturelles et sportives.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/pages/les-centres-d-animation-2390/",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:52:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION PARIS ANIMATION CULT ET SPORT",
+      "beneficiaire_normalise": "ASSOCIATION PARIS ANIMATION CULT ET SPORT",
+      "siret": ""
+    },
+    "PARIS ANIMATION CULT ET SPORT": {
+      "activite_verifiee": "Les centres Paris Anim' — 49 centres d'animation de proximité de la Ville de Paris (souvent gérés par la Ligue de l'Enseignement) ; +300 activités culturelles et sportives.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/pages/les-centres-d-animation-2390/",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:52:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "PARIS ANIMATION CULT ET SPORT",
+      "beneficiaire_normalise": "PARIS ANIMATION CULT ET SPORT",
+      "siret": ""
+    },
+    "POLE SUP ENSEIGNEM ARTISTIQ PARIS": {
+      "activite_verifiee": "PSPBB — Pôle supérieur d'enseignement artistique Paris Boulogne-Billancourt (créé 2008) ; formation 1er cycle en musique, danse jazz et théâtre, diplômes nationaux supérieurs pro.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.pspbb.fr/en",
+          "title": "pspbb.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:52:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "POLE SUP ENSEIGNEM ARTISTIQ PARIS-",
+      "beneficiaire_normalise": "POLE SUP ENSEIGNEM ARTISTIQ PARIS",
+      "siret": ""
+    },
+    "ASSOCIATION JEUNESSE LOUBAVITCH": {
+      "activite_verifiee": "Association (Beth Loubavitch) gérant le Complexe Beth 'Haya Mouchka (19e), plus grande école juive d'Europe (2 000 élèves) + écoles et crèches en IDF.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "http://w35-associations.apps.paris.fr/searchasso/jsp/site/Portal.jsp?id=7284&page=searchasso",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:52:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION JEUNESSE LOUBAVITCH",
+      "beneficiaire_normalise": "ASSOCIATION JEUNESSE LOUBAVITCH",
+      "siret": ""
+    },
+    "JEUNESSE LOUBAVITCH": {
+      "activite_verifiee": "Association (Beth Loubavitch) gérant le Complexe Beth 'Haya Mouchka (19e), plus grande école juive d'Europe (2 000 élèves) + écoles et crèches en IDF.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "http://w35-associations.apps.paris.fr/searchasso/jsp/site/Portal.jsp?id=7284&page=searchasso",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:52:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "JEUNESSE LOUBAVITCH",
+      "beneficiaire_normalise": "JEUNESSE LOUBAVITCH",
+      "siret": ""
+    },
+    "PARIS BASKETBALL": {
+      "activite_verifiee": "Club professionnel de basket-ball (créé 2018) ; évolue en Betclic ELITE et EuroLeague depuis 2024-25 ; champion de France ; joue à l'Adidas Arena, record d'affluence.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://parisbasketball.com/en/",
+          "title": "parisbasketball.com"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Paris_Basketball",
+          "title": "en.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:52:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "PARIS BASKETBALL",
+      "beneficiaire_normalise": "PARIS BASKETBALL",
+      "siret": ""
     }
   }
 }
