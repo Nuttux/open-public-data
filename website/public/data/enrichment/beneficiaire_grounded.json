@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-21T22:52:03",
+  "generated_at": "2026-04-21T23:15:03",
   "model": "gemini-3-flash-preview",
-  "count": 232,
+  "count": 325,
   "items": {
     "ELOGIE SIEMP": {
       "beneficiaire": "ELOGIE-SIEMP",
@@ -551,25 +551,21 @@
       "siret": ""
     },
     "L HABITATION CONFORTABLE": {
-      "beneficiaire": "L HABITATION CONFORTABLE",
-      "beneficiaire_normalise": "L HABITATION CONFORTABLE",
-      "siret": "572196459",
-      "generated_at": "2026-04-21T22:07:47",
-      "model": "gemini-3-flash-preview",
-      "activite_verifiee": "Société anonyme d'habitations à loyer modéré (SA d'HLM) spécialisée dans la gestion de résidences sociales et collectives, filiale du groupe Paris Habitat.",
+      "activite_verifiee": "Société anonyme d'HLM (SA d'HLM) spécialisée dans la gestion de logements sociaux en Île-de-France ; filiale d'Action Logement.",
       "perimetre_geographique": "Île-de-France",
       "sources": [
         {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQENiZ9IgRNzsmnSUiAl3rINTIBYkK-KzN9DhFZdPbkU7qnONWJi7_apnMzq7cij6AbHxOmY9rF9KTrd5Z-jU1cg2tObzSfipqTytgX3aE1eTAXJHa5vXnGRsVF1OnpdjJIvFGqyxcLvSq2SbMwhKvn8jQWQaoVIzQSJfNmE2qERzC8bwmXHmYDl2volN8nroIX9bUR2Z68=",
-          "title": "parishabitat.fr"
-        },
-        {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFF7vAccIJkK08w11dg9t2EodFQFG_SvrxhjDW0q2OHJpD8fQQxfacczkQur1CHKSx2rou5tYyTpYsK7EFplY7ks3AmAmpZxJLWVAlJpGdXlHpf4mBNCEi26LDQU3NUd_Fh1fbpqHYU3J6lj6SotdfLPA==",
-          "title": "societeinfo.com"
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/l-habitation-confortable-572196459",
+          "title": "annuaire-entreprises.data.gouv.fr"
         }
       ],
-      "confiance": 0.65,
-      "source_type": "grounded_search"
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "L HABITATION CONFORTABLE",
+      "beneficiaire_normalise": "L HABITATION CONFORTABLE",
+      "siret": ""
     },
     "CAISSE DES ECOLES DU 11E ARRONDISSE": {
       "activite_verifiee": "Établissement public local (Ville de Paris) gérant la restauration scolaire, l'aide aux familles et les séjours de vacances pour les enfants du 11e arrondissement.",
@@ -4330,6 +4326,1630 @@
       "beneficiaire": "PARIS BASKETBALL",
       "beneficiaire_normalise": "PARIS BASKETBALL",
       "siret": ""
+    },
+    "MEXICO À PARIS": {
+      "activite_verifiee": "Association loi 1901 (créée 2015, présidée par Juan Carlos Cedillo) ; promeut la culture mexicaine traditionnelle et contemporaine en France (Día de Muertos, Dahlia, Ollïn Art).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.mexicoaparis.com/",
+          "title": "mexicoaparis.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:09:30",
+      "model": "claude-code-websearch",
+      "beneficiaire": "MEXICO À PARIS",
+      "beneficiaire_normalise": "MEXICO À PARIS",
+      "siret": ""
+    },
+    "SNCF VOYAGEURS": {
+      "activite_verifiee": "Filiale du Groupe SNCF (créée 2020) dédiée au transport de voyageurs (TGV-Intercités, TER, Transilien) ; transport décarboné en France et en Europe.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.groupe-sncf.com/fr/groupe/portrait-entreprise/groupe-societes/sncf-voyageurs",
+          "title": "groupe-sncf.com"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/SNCF_Voyageurs",
+          "title": "en.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:09:30",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SNCF VOYAGEURS",
+      "beneficiaire_normalise": "SNCF VOYAGEURS",
+      "siret": ""
+    },
+    "GRPT PARISIEN INTER BAILL SURVEILL": {
+      "activite_verifiee": "GIE (GPIS, créé 2004) regroupant 12 bailleurs sociaux parisiens ; surveille 165 000 logements sociaux à Paris, +200 salariés.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://gie-gpis.com/",
+          "title": "gie-gpis.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:09:30",
+      "model": "claude-code-websearch",
+      "beneficiaire": "GRPT PARISIEN INTER-BAILL SURVEILL",
+      "beneficiaire_normalise": "GRPT PARISIEN INTER BAILL SURVEILL",
+      "siret": ""
+    },
+    "ETS PUB AMENAGEMENT UNIVERSITAIRE I": {
+      "activite_verifiee": "EPAURIF — Établissement public administratif (créé 2010) ; maîtrise d'ouvrage immobilière universitaire en IDF, ~60 projets pour ~30 universités et grandes écoles.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.epaurif.fr/",
+          "title": "epaurif.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:09:30",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ETS PUB AMENAGEMENT UNIVERSITAIRE I",
+      "beneficiaire_normalise": "ETS PUB AMENAGEMENT UNIVERSITAIRE I",
+      "siret": ""
+    },
+    "UNIVERSITE PARIS CITE": {
+      "activite_verifiee": "Université publique (créée 2019, renommée 2022) issue de la fusion Paris-Descartes + Paris-Diderot + intégration de l'IPGP ; recherche intensive en sciences, santé, lettres.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Universit%C3%A9_Paris-Cit%C3%A9",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:09:30",
+      "model": "claude-code-websearch",
+      "beneficiaire": "UNIVERSITE PARIS CITE",
+      "beneficiaire_normalise": "UNIVERSITE PARIS CITE",
+      "siret": ""
+    },
+    "SALLE SAINT BRUNO": {
+      "activite_verifiee": "Association loi 1901 (créée 1992) à la Goutte d'Or (Paris 18e) ; fédère ~20 associations locales en action sociale, insertion, éducation ; animation de quartier + EPN.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://sallesaintbruno.org/",
+          "title": "sallesaintbruno.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:09:30",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SALLE SAINT BRUNO",
+      "beneficiaire_normalise": "SALLE SAINT BRUNO",
+      "siret": "38873953400021"
+    },
+    "ATLA": {
+      "activite_verifiee": "École de musiques actuelles (Paris 18e, villa de Guelma) formant +30 ans aux métiers de la musique (blues, rock, pop, jazz, funk) ; formation pro et loisirs adultes.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://atla.fr/",
+          "title": "atla.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:09:30",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ATLA",
+      "beneficiaire_normalise": "ATLA",
+      "siret": ""
+    },
+    "PARCOURS INSERTION FLES PARIS": {
+      "activite_verifiee": "Association loi 1901 (FLES de Paris, créée 2004) ; formation professionnelle et linguistique (FLE/alpha) pour salariés en contrats aidés et publics éloignés de l'emploi.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.flesdeparis.fr/",
+          "title": "flesdeparis.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:09:30",
+      "model": "claude-code-websearch",
+      "beneficiaire": "PARCOURS INSERTION FLES PARIS",
+      "beneficiaire_normalise": "PARCOURS INSERTION FLES PARIS",
+      "siret": ""
+    },
+    "CDC HABITAT": {
+      "activite_verifiee": "Filiale à 100% de la Caisse des Dépôts (ex-groupe SNI) ; 554 000 logements en France (1er bailleur), mix social/intermédiaire/libre.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.cdc-habitat.fr/nous-decouvrir",
+          "title": "cdc-habitat.fr"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/CDC_Habitat",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:09:30",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CDC HABITAT",
+      "beneficiaire_normalise": "CDC HABITAT",
+      "siret": ""
+    },
+    "MEP MAISON EUROPEENNE": {
+      "activite_verifiee": "Association Paris Audiovisuel (créée 1978) gestionnaire de la Maison Européenne de la Photographie (MEP, 4e) ; collection 20 000 œuvres, ~30 expositions/an.",
+      "perimetre_geographique": "Paris 4e",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maison_europ%C3%A9enne_de_la_photographie",
+          "title": "en.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:09:30",
+      "model": "claude-code-websearch",
+      "beneficiaire": "MEP - MAISON EUROPEENNE",
+      "beneficiaire_normalise": "MEP MAISON EUROPEENNE",
+      "siret": ""
+    },
+    "AISON PRATIQUES ARTISTIQUES AMATEU": {
+      "activite_verifiee": "MPAA — Établissement culturel de la Ville de Paris réparti sur 5 sites ; soutient et développe les pratiques artistiques amateurs (répétitions, ateliers, spectacles).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.mpaa.fr/",
+          "title": "mpaa.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:09:30",
+      "model": "claude-code-websearch",
+      "beneficiaire": "AISON PRATIQUES ARTISTIQUES AMATEU",
+      "beneficiaire_normalise": "AISON PRATIQUES ARTISTIQUES AMATEU",
+      "siret": ""
+    },
+    "PUC VOLLEY BALL": {
+      "activite_verifiee": "Section volley-ball du Paris Université Club (PUC, omnisports créé 1906) ; base Stade Charléty (13e).",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        {
+          "url": "https://puc.paris/",
+          "title": "puc.paris"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:09:30",
+      "model": "claude-code-websearch",
+      "beneficiaire": "PUC VOLLEY BALL",
+      "beneficiaire_normalise": "PUC VOLLEY BALL",
+      "siret": "38897859500030"
+    },
+    "MINISTER ENSEI SUPERI RECHER INNOVA": {
+      "activite_verifiee": "Ministère de l'Enseignement supérieur, de la Recherche et de l'Innovation (MESRI) ; administration centrale de l'État pour l'enseignement supérieur et la recherche.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.enseignementsup-recherche.gouv.fr/",
+          "title": "enseignementsup-recherche.gouv.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:09:30",
+      "model": "claude-code-websearch",
+      "beneficiaire": "MINISTER ENSEI SUPERI RECHER INNOVA",
+      "beneficiaire_normalise": "MINISTER ENSEI SUPERI RECHER INNOVA",
+      "siret": ""
+    },
+    "SYND COPR 96 BD MASSENA 75013 PARIS": {
+      "activite_verifiee": "Syndicat de copropriété (syndic de gestion immobilière) à l'adresse indiquée ; représente les copropriétaires et gère les parties communes.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.service-public.fr/particuliers/vosdroits/F31486",
+          "title": "service-public.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:09:30",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SYND COPR 96 BD MASSENA 75013 PARIS",
+      "beneficiaire_normalise": "SYND COPR 96 BD MASSENA 75013 PARIS",
+      "siret": ""
+    },
+    "SOC ECONOMIE MIXTE ANIM ECO SCE TER": {
+      "activite_verifiee": "SEMAEST (devenue SEM Paris Commerces en 2023) ; SEM de la Ville de Paris spécialisée dans la revitalisation commerciale et artisanale des quartiers.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.semaest.fr/",
+          "title": "semaest.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:09:30",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SOC ECONOMIE MIXTE ANIM ECO SCE TER",
+      "beneficiaire_normalise": "SOC ECONOMIE MIXTE ANIM ECO SCE TER",
+      "siret": ""
+    },
+    "CARTON PLEIN 75": {
+      "activite_verifiee": "Association loi 1901 (créée 2012) ; insertion par l'activité économique ; collecte et réemploi de cartons + livraison cargo-bike à Paris, 92, 93 ; ~150 personnes/an accompagnées.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://cartonplein.org/",
+          "title": "cartonplein.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:11:33",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CARTON PLEIN 75",
+      "beneficiaire_normalise": "CARTON PLEIN 75",
+      "siret": "75232961500039"
+    },
+    "PETITE ROCKETTE": {
+      "activite_verifiee": "Association loi 1901 ; ressourceries (11e et 12e), atelier vélo (La Cycklette), restaurant anti-gaspi (La Trockette), boutique solidaire et formations aux métiers du réemploi.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.lapetiterockette.org/",
+          "title": "lapetiterockette.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:11:33",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LA PETITE ROCKETTE",
+      "beneficiaire_normalise": "PETITE ROCKETTE",
+      "siret": "50882247500028"
+    },
+    "OEUVRE DE LA MIE DE PAIN": {
+      "activite_verifiee": "Association créée (Le Refuge 1932) dans le 13e ; 7 structures d'hébergement d'urgence et insertion à Paris, dont Le Refuge (380 places) et Foyer Notre-Dame (femmes).",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        {
+          "url": "https://www.miedepain.asso.fr/",
+          "title": "miedepain.asso.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:11:33",
+      "model": "claude-code-websearch",
+      "beneficiaire": "OEUVRE DE LA MIE DE PAIN",
+      "beneficiaire_normalise": "OEUVRE DE LA MIE DE PAIN",
+      "siret": ""
+    },
+    "CITES CARITAS": {
+      "activite_verifiee": "Association loi 1901 (créée 1989 par Secours Catholique) ; 19 Cités (13 sociales + 6 médico-sociales) en France ; accompagne ~19 500 personnes/an en précarité.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://acsc.asso.fr/",
+          "title": "acsc.asso.fr"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Cit%C3%A9s_Caritas",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:11:33",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CITES CARITAS",
+      "beneficiaire_normalise": "CITES CARITAS",
+      "siret": "35330523800175"
+    },
+    "CONST ARCHITECT URBAIN ENVIRONNEMEN": {
+      "activite_verifiee": "CAUE de Paris — organisme départemental (créé 1981 par loi de 1977) ; conseil gratuit en architecture, urbanisme et paysage aux particuliers, élus et pros.",
+      "perimetre_geographique": "Paris 4e",
+      "sources": [
+        {
+          "url": "https://www.caue75.fr/",
+          "title": "caue75.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:11:33",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CONST ARCHITECT URBAIN ENVIRONNEMEN",
+      "beneficiaire_normalise": "CONST ARCHITECT URBAIN ENVIRONNEMEN",
+      "siret": ""
+    },
+    "AUX CAPTIFS LA LIBERATION": {
+      "activite_verifiee": "Association catholique (créée 1981) ; va vers les personnes en grande précarité (SDF, prostitution) sans discrimination ; 80 salariés, 250 bénévoles dans 7 arr. parisiens.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.captifs.fr/",
+          "title": "captifs.fr"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Aux_captifs,_la_lib%C3%A9ration",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:11:33",
+      "model": "claude-code-websearch",
+      "beneficiaire": "AUX CAPTIFS LA LIBERATION",
+      "beneficiaire_normalise": "AUX CAPTIFS LA LIBERATION",
+      "siret": "32591041200072"
+    },
+    "ENTREPRENDRE POUR HUMANISER": {
+      "activite_verifiee": "SCIC (EHD, créée 2003, siège Caluire) ; foncière solidaire construit/rénove EHPAD, logements intergénérationnels et accueil de réfugiés ; capital ouvert aux investisseurs.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.habitat-humanisme.org/finance-epargne-solidaire/foncieres-solidaires/investir-entreprendre-humaniser-dependance/",
+          "title": "habitat-humanisme.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:11:33",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ENTREPRENDRE POUR HUMANISER",
+      "beneficiaire_normalise": "ENTREPRENDRE POUR HUMANISER",
+      "siret": ""
+    },
+    "ECOLE DE LA 2E CHANCE DE PARIS": {
+      "activite_verifiee": "E2C Paris — association loi 1901 ; 2 sites (13e, 18e) ; accompagne 430 jeunes/an de 16-25 ans (sans qualif) vers l'emploi ou la formation ; taux de sortie positif 70%.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://e2c-paris.fr/",
+          "title": "e2c-paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:11:33",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ECOLE DE LA 2E CHANCE DE PARIS",
+      "beneficiaire_normalise": "ECOLE DE LA 2E CHANCE DE PARIS",
+      "siret": "49300518500050"
+    },
+    "SNL PROLOGUES": {
+      "activite_verifiee": "Foncière solidaire (SCIC, créée 1995) des associations SNL (Solidarités Nouvelles pour le Logement) ; +1 200 logements d'insertion, 3 220 personnes accueillies en IDF.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.solidarites-nouvelles-logement.org/",
+          "title": "solidarites-nouvelles-logement.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:11:33",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SNL PROLOGUES",
+      "beneficiaire_normalise": "SNL PROLOGUES",
+      "siret": ""
+    },
+    "ASSOCIATION COUP DE MAIN": {
+      "activite_verifiee": "Coup d'Main — association d'insertion par l'activité économique (agréée 1996) ; mise à disposition de salariés en insertion et travailleurs handicapés pour entreprises et particuliers.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.coupdmain.com/",
+          "title": "coupdmain.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:11:33",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION COUP DE MAIN",
+      "beneficiaire_normalise": "ASSOCIATION COUP DE MAIN",
+      "siret": ""
+    },
+    "MEMORIAL DE LA SHOAH": {
+      "activite_verifiee": "Musée et centre de documentation inauguré en 2005 (Marais, 4e) ; principale institution européenne d'histoire de la Shoah ; Mur des Noms (76 000 déportés).",
+      "perimetre_geographique": "Paris 4e",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/M%C3%A9morial_de_la_Shoah",
+          "title": "en.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:11:33",
+      "model": "claude-code-websearch",
+      "beneficiaire": "MEMORIAL DE LA SHOAH",
+      "beneficiaire_normalise": "MEMORIAL DE LA SHOAH",
+      "siret": ""
+    },
+    "THEATRE DE LA MARIONNETTE A PARIS": {
+      "activite_verifiee": "Le Mouffetard — centre national des arts de la marionnette (CNMa depuis 2022), 73 rue Mouffetard (5e) ; programmation contemporaine (formes, ombres, objets, adultes/jeunesse).",
+      "perimetre_geographique": "Paris 5e",
+      "sources": [
+        {
+          "url": "https://lemouffetard.com/",
+          "title": "lemouffetard.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:11:33",
+      "model": "claude-code-websearch",
+      "beneficiaire": "THEATRE DE LA MARIONNETTE A PARIS",
+      "beneficiaire_normalise": "THEATRE DE LA MARIONNETTE A PARIS",
+      "siret": "34112346100046"
+    },
+    "THEATRE DE LA MARIONNETTE THEATRE MOUFFETARD": {
+      "activite_verifiee": "Le Mouffetard — centre national des arts de la marionnette (CNMa depuis 2022), 73 rue Mouffetard (5e) ; programmation contemporaine (formes, ombres, objets, adultes/jeunesse).",
+      "perimetre_geographique": "Paris 5e",
+      "sources": [
+        {
+          "url": "https://lemouffetard.com/",
+          "title": "lemouffetard.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:11:33",
+      "model": "claude-code-websearch",
+      "beneficiaire": "THEATRE DE LA MARIONNETTE  THEATRE MOUFFETARD",
+      "beneficiaire_normalise": "THEATRE DE LA MARIONNETTE THEATRE MOUFFETARD",
+      "siret": ""
+    },
+    "ASS GAN YAEL CRECHE JARDIN ENF": {
+      "activite_verifiee": "Association gérant crèche et jardin d'enfants 'Gan Yaël' au 27-29 bis rue de Thionville (Paris 19e) ; 60 places crèche collective + crèche familiale + jardin d'enfants.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/lieux/creche-associative-gan-yael-16702",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:11:33",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASS GAN YAEL CRECHE JARDIN ENF",
+      "beneficiaire_normalise": "ASS GAN YAEL CRECHE JARDIN ENF",
+      "siret": ""
+    },
+    "ASSOCIATION GAN YAEL CRECHE JARDIN ENF": {
+      "activite_verifiee": "Association gérant crèche et jardin d'enfants 'Gan Yaël' au 27-29 bis rue de Thionville (Paris 19e) ; 60 places crèche collective + crèche familiale + jardin d'enfants.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/lieux/creche-associative-gan-yael-16702",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:11:33",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION GAN YAEL CRECHE JARDIN ENF",
+      "beneficiaire_normalise": "ASSOCIATION GAN YAEL CRECHE JARDIN ENF",
+      "siret": ""
+    },
+    "GAN YAEL CRECHE JARDIN ENF": {
+      "activite_verifiee": "Association gérant crèche et jardin d'enfants 'Gan Yaël' au 27-29 bis rue de Thionville (Paris 19e) ; 60 places crèche collective + crèche familiale + jardin d'enfants.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/lieux/creche-associative-gan-yael-16702",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:11:33",
+      "model": "claude-code-websearch",
+      "beneficiaire": "GAN YAEL CRECHE JARDIN ENF",
+      "beneficiaire_normalise": "GAN YAEL CRECHE JARDIN ENF",
+      "siret": ""
+    },
+    "OPPELIA": {
+      "activite_verifiee": "Association médico-sociale en addictologie (créée 2007 par fusion) ; 17 structures dans 16 départements ; à Paris : CSAPA Charonne (9 quai d'Austerlitz).",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.oppelia.fr/",
+          "title": "oppelia.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:11:33",
+      "model": "claude-code-websearch",
+      "beneficiaire": "OPPELIA",
+      "beneficiaire_normalise": "OPPELIA",
+      "siret": "32602117700133"
+    },
+    "GROUPE SOS SOLIDARITES": {
+      "activite_verifiee": "Branche du Groupe SOS ; lutte contre l'exclusion via hébergement d'urgence, CHRS, CADA pour migrants/réfugiés, accompagnement addictions, prostitution, VIH, handicap.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.groupe-sos.org/groupe-sos-solidarites/",
+          "title": "groupe-sos.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:11:33",
+      "model": "claude-code-websearch",
+      "beneficiaire": "GROUPE SOS SOLIDARITES",
+      "beneficiaire_normalise": "GROUPE SOS SOLIDARITES",
+      "siret": "34106240400478"
+    },
+    "SOLIDARITE SIDA": {
+      "activite_verifiee": "Association (16 bis av Parmentier, 11e) ; soutient ~150 associations françaises et étrangères dans +20 pays ; prévention VIH, aides financières, sensibilisation jeunes.",
+      "perimetre_geographique": "international",
+      "sources": [
+        {
+          "url": "https://www.solidarite-sida.org/",
+          "title": "solidarite-sida.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:11:33",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SOLIDARITE SIDA",
+      "beneficiaire_normalise": "SOLIDARITE SIDA",
+      "siret": "39861308300045"
+    },
+    "FONDS SOLIDARITE SIDA AFRIQUE": {
+      "activite_verifiee": "Association (16 bis av Parmentier, 11e) ; soutient ~150 associations françaises et étrangères dans +20 pays ; prévention VIH, aides financières, sensibilisation jeunes.",
+      "perimetre_geographique": "international",
+      "sources": [
+        {
+          "url": "https://www.solidarite-sida.org/",
+          "title": "solidarite-sida.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:11:33",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FONDS SOLIDARITE SIDA AFRIQUE",
+      "beneficiaire_normalise": "FONDS SOLIDARITE SIDA AFRIQUE",
+      "siret": ""
+    },
+    "UNIVERSITE DE PARIS": {
+      "activite_verifiee": "Université publique Paris Cité (créée 2019, renommée 2022) ; fusion Paris-Descartes + Paris-Diderot + IPGP ; 3 facultés (Santé, Sciences, Lettres) ; 1re française en médecine.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Universit%C3%A9_Paris-Cit%C3%A9",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:11:33",
+      "model": "claude-code-websearch",
+      "beneficiaire": "UNIVERSITE DE PARIS",
+      "beneficiaire_normalise": "UNIVERSITE DE PARIS",
+      "siret": ""
+    },
+    "ASSOCIAT SYNDICALE LIBRE OLYMPIADES": {
+      "activite_verifiee": "ASL Olympiades — association syndicale libre (13e) ; gère les parties communes ouvertes du complexe Les Olympiades (10 000 habitants, 16 bâtiments dont 6 tours).",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        {
+          "url": "https://www.asl-olympiades.paris/",
+          "title": "asl-olympiades.paris"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:11:33",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIAT SYNDICALE LIBRE OLYMPIADES",
+      "beneficiaire_normalise": "ASSOCIAT SYNDICALE LIBRE OLYMPIADES",
+      "siret": ""
+    },
+    "ASSOCIATION SYNDICALE LIBRE OLYMPIADES": {
+      "activite_verifiee": "ASL Olympiades — association syndicale libre (13e) ; gère les parties communes ouvertes du complexe Les Olympiades (10 000 habitants, 16 bâtiments dont 6 tours).",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        {
+          "url": "https://www.asl-olympiades.paris/",
+          "title": "asl-olympiades.paris"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:11:33",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION SYNDICALE LIBRE OLYMPIADES",
+      "beneficiaire_normalise": "ASSOCIATION SYNDICALE LIBRE OLYMPIADES",
+      "siret": ""
+    },
+    "A S L OLYMPIADES": {
+      "activite_verifiee": "ASL Olympiades — association syndicale libre (13e) ; gère les parties communes ouvertes du complexe Les Olympiades (10 000 habitants, 16 bâtiments dont 6 tours).",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        {
+          "url": "https://www.asl-olympiades.paris/",
+          "title": "asl-olympiades.paris"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:11:33",
+      "model": "claude-code-websearch",
+      "beneficiaire": "A.S.L. OLYMPIADES",
+      "beneficiaire_normalise": "A S L OLYMPIADES",
+      "siret": ""
+    },
+    "ASL OLYMPIADES": {
+      "activite_verifiee": "ASL Olympiades — association syndicale libre (13e) ; gère les parties communes ouvertes du complexe Les Olympiades (10 000 habitants, 16 bâtiments dont 6 tours).",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        {
+          "url": "https://www.asl-olympiades.paris/",
+          "title": "asl-olympiades.paris"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:11:33",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASL OLYMPIADES",
+      "beneficiaire_normalise": "ASL OLYMPIADES",
+      "siret": ""
+    },
+    "FONDATION CASIP COJASOR": {
+      "activite_verifiee": "Fondation reconnue d'utilité publique (créée 2000 par fusion CASIP 1809 + COJASOR 1945) ; action sociale pour personnes en difficulté dont communauté juive (~20 000 personnes/an).",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.casip-cojasor.fr/fondation",
+          "title": "casip-cojasor.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:13:15",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FONDATION CASIP-COJASOR",
+      "beneficiaire_normalise": "FONDATION CASIP COJASOR",
+      "siret": "42921211100018"
+    },
+    "FONDATION CASIPCOJASOR": {
+      "activite_verifiee": "Fondation reconnue d'utilité publique (créée 2000 par fusion CASIP 1809 + COJASOR 1945) ; action sociale pour personnes en difficulté dont communauté juive (~20 000 personnes/an).",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.casip-cojasor.fr/fondation",
+          "title": "casip-cojasor.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:13:15",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FONDATION CASIPCOJASOR",
+      "beneficiaire_normalise": "FONDATION CASIPCOJASOR",
+      "siret": ""
+    },
+    "MEDECINS DU MONDE": {
+      "activite_verifiee": "Association humanitaire ONG (créée 1980 par Bernard Kouchner et al.) ; +400 programmes dans 80 pays ; accès aux soins en France et à l'étranger, réduction des risques, migration.",
+      "perimetre_geographique": "international",
+      "sources": [
+        {
+          "url": "https://www.medecinsdumonde.org/en/",
+          "title": "medecinsdumonde.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:13:15",
+      "model": "claude-code-websearch",
+      "beneficiaire": "MEDECINS DU MONDE",
+      "beneficiaire_normalise": "MEDECINS DU MONDE",
+      "siret": ""
+    },
+    "STE DE RETRAITES CONSEILLERS PA": {
+      "activite_verifiee": "Association (SIREN 422006338) gérant le régime de retraite complémentaire des conseillers municipaux de Paris.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/retraite-conseillers-municipaux-paris-422006338.html",
+          "title": "societe.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:13:15",
+      "model": "claude-code-websearch",
+      "beneficiaire": "STE DE RETRAITES CONSEILLERS PA",
+      "beneficiaire_normalise": "STE DE RETRAITES CONSEILLERS PA",
+      "siret": ""
+    },
+    "ASS DES CITES DU SECOURS CATHOLIQUE": {
+      "activite_verifiee": "Association loi 1901 (Cités Caritas, créée 1989 par Secours Catholique) ; 19 Cités (13 sociales + 6 médico-sociales) en France ; accompagne ~19 500 personnes/an en précarité.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://acsc.asso.fr/",
+          "title": "acsc.asso.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:13:15",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASS DES CITES DU SECOURS CATHOLIQUE",
+      "beneficiaire_normalise": "ASS DES CITES DU SECOURS CATHOLIQUE",
+      "siret": ""
+    },
+    "ASSOCIATION DES CITES DU SECOURS CATHOLIQUE": {
+      "activite_verifiee": "Association loi 1901 (Cités Caritas, créée 1989 par Secours Catholique) ; 19 Cités (13 sociales + 6 médico-sociales) en France ; accompagne ~19 500 personnes/an en précarité.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://acsc.asso.fr/",
+          "title": "acsc.asso.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:13:15",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION DES CITES DU SECOURS CATHOLIQUE",
+      "beneficiaire_normalise": "ASSOCIATION DES CITES DU SECOURS CATHOLIQUE",
+      "siret": "35330523800175"
+    },
+    "SECOURS CATHOLIQUE": {
+      "activite_verifiee": "Association loi 1901 (Cités Caritas, créée 1989 par Secours Catholique) ; 19 Cités (13 sociales + 6 médico-sociales) en France ; accompagne ~19 500 personnes/an en précarité.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://acsc.asso.fr/",
+          "title": "acsc.asso.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:13:15",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SECOURS CATHOLIQUE",
+      "beneficiaire_normalise": "SECOURS CATHOLIQUE",
+      "siret": "77566669600015"
+    },
+    "RESEAU MOM ARTRE": {
+      "activite_verifiee": "Association loi 1901 (créée 2001) ; 9 centres d'accueil périscolaire artistique (Paris, Bondy, Argenteuil, Nantes) pour enfants 4-11 ans ; 17 sites au total, 9 000 enfants.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://momartre.net/",
+          "title": "momartre.net"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:13:15",
+      "model": "claude-code-websearch",
+      "beneficiaire": "RESEAU MOM'ARTRE",
+      "beneficiaire_normalise": "RESEAU MOM ARTRE",
+      "siret": "50996337700130"
+    },
+    "URGENCE JEUNES": {
+      "activite_verifiee": "Association (Paris 15e) ; accueil, hébergement et insertion de mineurs et jeunes majeurs en errance, familles monoparentales ; dispositif 100 places MNA.",
+      "perimetre_geographique": "Paris 15e",
+      "sources": [
+        {
+          "url": "https://www.urgence-jeune.fr/",
+          "title": "urgence-jeune.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:13:15",
+      "model": "claude-code-websearch",
+      "beneficiaire": "URGENCE JEUNES",
+      "beneficiaire_normalise": "URGENCE JEUNES",
+      "siret": "40878410600044"
+    },
+    "INTERFACE FORMATION": {
+      "activite_verifiee": "Association loi 1901 (créée 1995, Paris 18e) ; orientation, formation et insertion socio-professionnelle de jeunes 16-25 ans et bénéficiaires RSA ; espaces verts, aide à la personne, vente.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://www.interface-formation.net/",
+          "title": "interface-formation.net"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:13:15",
+      "model": "claude-code-websearch",
+      "beneficiaire": "INTERFACE FORMATION",
+      "beneficiaire_normalise": "INTERFACE FORMATION",
+      "siret": "40218568000020"
+    },
+    "FRANCO ASIATIQUE POUR L ENFANCE": {
+      "activite_verifiee": "Association AFAPE (créée 2005) ; crèches franco-chinoises bilingues Paris 10e (5 rue Yves Toudic) et 19e (12 rue Bellot, 72 berceaux).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://afape-paris.org/",
+          "title": "afape-paris.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:13:15",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FRANCO ASIATIQUE POUR L'ENFANCE",
+      "beneficiaire_normalise": "FRANCO ASIATIQUE POUR L ENFANCE",
+      "siret": ""
+    },
+    "CTRE NAT DE LA RECHERCHE SCIENTIFIQ": {
+      "activite_verifiee": "CNRS — EPST sous tutelle du MESRI (créé 1939) ; 1er organisme public de recherche en Europe, +32 000 personnels, toutes disciplines scientifiques et SHS.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.cnrs.fr/en",
+          "title": "cnrs.fr"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Centre_national_de_la_recherche_scientifique",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:13:15",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CTRE NAT DE LA RECHERCHE SCIENTIFIQ",
+      "beneficiaire_normalise": "CTRE NAT DE LA RECHERCHE SCIENTIFIQ",
+      "siret": ""
+    },
+    "MAISON DES ADOS ROBERT DEBRE GCSMS": {
+      "activite_verifiee": "GCSMS (Groupement de coopération sociale) créé 2011 dans le 19e, face à l'hôpital Robert-Debré ; accueil gratuit et anonyme 12-20 ans (santé, psy, scolarité, sexualité).",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        {
+          "url": "https://robertdebre.aphp.fr/maison-des-adolescents/",
+          "title": "robertdebre.aphp.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:13:15",
+      "model": "claude-code-websearch",
+      "beneficiaire": "MAISON DES ADOS ROBERT DEBRE GCSMS",
+      "beneficiaire_normalise": "MAISON DES ADOS ROBERT DEBRE GCSMS",
+      "siret": ""
+    },
+    "ACCOMPAG GLOBAL CONTRE EXCLUSION": {
+      "activite_verifiee": "ADAGE — association loi 1901 (créée 2008) ; accompagnement social et professionnel des femmes en précarité à Paris et IDF (diagnostic, langue, formations aide-soignant/auxiliaire puéri).",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.adage-lelabo.com/qui-sommes-nous-2",
+          "title": "adage-lelabo.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:13:15",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ACCOMPAG GLOBAL CONTRE EXCLUSION",
+      "beneficiaire_normalise": "ACCOMPAG GLOBAL CONTRE EXCLUSION",
+      "siret": ""
+    },
+    "LEO LAGRANGE NORD ILE DE FRANCE": {
+      "activite_verifiee": "Fédération Léo Lagrange (créée 1950 par Pierre Mauroy) — association d'éducation populaire reconnue d'utilité publique ; branche Nord-IDF : petite enfance, animation, formation.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.leolagrange.org/",
+          "title": "leolagrange.org"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/F%C3%A9d%C3%A9ration_L%C3%A9o-Lagrange",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:13:15",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LEO LAGRANGE NORD -ILE-DE-FRANCE",
+      "beneficiaire_normalise": "LEO LAGRANGE NORD ILE DE FRANCE",
+      "siret": "31661982400758"
+    },
+    "LEO LAGRANGE NORD ILEDEFRANCE": {
+      "activite_verifiee": "Fédération Léo Lagrange (créée 1950 par Pierre Mauroy) — association d'éducation populaire reconnue d'utilité publique ; branche Nord-IDF : petite enfance, animation, formation.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.leolagrange.org/",
+          "title": "leolagrange.org"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/F%C3%A9d%C3%A9ration_L%C3%A9o-Lagrange",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:13:15",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LEO LAGRANGE NORD ILEDEFRANCE",
+      "beneficiaire_normalise": "LEO LAGRANGE NORD ILEDEFRANCE",
+      "siret": ""
+    },
+    "INTERNATIONAL VISUAL THEATRE": {
+      "activite_verifiee": "IVT — Association (créée 1977, Pigalle 9e) lieu culturel de la culture sourde ; théâtre, centre de formation en LSF (~1 000 stagiaires/an), éditions de référence.",
+      "perimetre_geographique": "Paris 9e",
+      "sources": [
+        {
+          "url": "https://www.ivt.fr/",
+          "title": "ivt.fr"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/International_Visual_Theatre",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:13:15",
+      "model": "claude-code-websearch",
+      "beneficiaire": "INTERNATIONAL VISUAL THEATRE",
+      "beneficiaire_normalise": "INTERNATIONAL VISUAL THEATRE",
+      "siret": "32418249200037"
+    },
+    "ASS DEPARTEMENTALE INFORMATION LOGE": {
+      "activite_verifiee": "ADIL 75 — Association agréée par le ministère du Logement (réseau ANIL) ; conseil gratuit juridique, fiscal et financier sur le logement aux Parisiens.",
+      "perimetre_geographique": "Paris 14e",
+      "sources": [
+        {
+          "url": "https://www.adil75.org/",
+          "title": "adil75.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:13:15",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASS DEPARTEMENTALE INFORMATION LOGE",
+      "beneficiaire_normalise": "ASS DEPARTEMENTALE INFORMATION LOGE",
+      "siret": ""
+    },
+    "ASSOCIATION DEPARTEMENTALE INFORMATION LOGE": {
+      "activite_verifiee": "ADIL 75 — Association agréée par le ministère du Logement (réseau ANIL) ; conseil gratuit juridique, fiscal et financier sur le logement aux Parisiens.",
+      "perimetre_geographique": "Paris 14e",
+      "sources": [
+        {
+          "url": "https://www.adil75.org/",
+          "title": "adil75.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:13:15",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION DEPARTEMENTALE INFORMATION LOGE",
+      "beneficiaire_normalise": "ASSOCIATION DEPARTEMENTALE INFORMATION LOGE",
+      "siret": ""
+    },
+    "DEPARTEMENTALE INFORMATION LOGE": {
+      "activite_verifiee": "ADIL 75 — Association agréée par le ministère du Logement (réseau ANIL) ; conseil gratuit juridique, fiscal et financier sur le logement aux Parisiens.",
+      "perimetre_geographique": "Paris 14e",
+      "sources": [
+        {
+          "url": "https://www.adil75.org/",
+          "title": "adil75.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:13:15",
+      "model": "claude-code-websearch",
+      "beneficiaire": "DEPARTEMENTALE INFORMATION LOGE",
+      "beneficiaire_normalise": "DEPARTEMENTALE INFORMATION LOGE",
+      "siret": ""
+    },
+    "ERILIA": {
+      "activite_verifiee": "ESH (SA d'HLM) affiliée au Groupe Habitat en Région (BPCE) ; société à mission depuis 2021 ; fusionnée avec Logirem en 2024, 215 400 locataires.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.erilia.fr/",
+          "title": "erilia.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:13:15",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ERILIA",
+      "beneficiaire_normalise": "ERILIA",
+      "siret": ""
+    },
+    "ECOLE PARENTS EDUCATEURS IDF": {
+      "activite_verifiee": "EPE-IDF — association loi 1901 (créée 1929, Paris 11e) ; soutien à la parentalité (café des parents, ligne d'écoute, médico-psycho) + formation pros du secteur social.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.epe-idf.com/",
+          "title": "epe-idf.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:13:15",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ECOLE PARENTS EDUCATEURS IDF",
+      "beneficiaire_normalise": "ECOLE PARENTS EDUCATEURS IDF",
+      "siret": ""
+    },
+    "COMITE DEP OLYMPIQUE ET SPORTIF DE": {
+      "activite_verifiee": "CDOS Paris — organe déconcentré du CNOSF (créé 1978) ; représente les 26 comités sportifs départementaux parisiens ; promotion du sport et formation de dirigeants.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://paris.franceolympique.com/",
+          "title": "paris.franceolympique.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:13:15",
+      "model": "claude-code-websearch",
+      "beneficiaire": "COMITE DEP OLYMPIQUE ET SPORTIF DE",
+      "beneficiaire_normalise": "COMITE DEP OLYMPIQUE ET SPORTIF DE",
+      "siret": ""
+    },
+    "ASSOCIATION HALLE ST PIERRE": {
+      "activite_verifiee": "Association (créée 1985, ancienne halle Baltard au pied de Montmartre, 18e) ; musée et galerie d'art brut, naïf, singulier et outsider ; 3-4 expositions/an.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://www.hallesaintpierre.org/",
+          "title": "hallesaintpierre.org"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Halle_Saint-Pierre",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:13:15",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION HALLE ST PIERRE",
+      "beneficiaire_normalise": "ASSOCIATION HALLE ST PIERRE",
+      "siret": ""
+    },
+    "OFFICE TOURISME ET CONGRES PARIS": {
+      "activite_verifiee": "Office du Tourisme et des Congrès de Paris (OTCP) ; accueille et informe les visiteurs, promeut Paris, soutient le tourisme d'affaires.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://parisjetaime.com/professionnels/article/nos-missions-a1162",
+          "title": "parisjetaime.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "OFFICE TOURISME ET CONGRES PARIS",
+      "beneficiaire_normalise": "OFFICE TOURISME ET CONGRES PARIS",
+      "siret": ""
+    },
+    "PLACE CENTRE CULTUREL HIPHOP": {
+      "activite_verifiee": "La Place — centre culturel dédié au hip-hop sous la Canopée des Halles (1er), inauguré 2016 ; ~1 400 m², salle de concert, 8 studios, programmation rap/danse/graff.",
+      "perimetre_geographique": "Paris 1er",
+      "sources": [
+        {
+          "url": "https://laplace-paris.com/",
+          "title": "laplace-paris.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LA PLACE - CENTRE CULTUREL HIPHOP",
+      "beneficiaire_normalise": "PLACE CENTRE CULTUREL HIPHOP",
+      "siret": "80289090500010"
+    },
+    "PLACE CENTRE CULTUREL HIP HOP": {
+      "activite_verifiee": "La Place — centre culturel dédié au hip-hop sous la Canopée des Halles (1er), inauguré 2016 ; ~1 400 m², salle de concert, 8 studios, programmation rap/danse/graff.",
+      "perimetre_geographique": "Paris 1er",
+      "sources": [
+        {
+          "url": "https://laplace-paris.com/",
+          "title": "laplace-paris.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LA PLACE  CENTRE CULTUREL HIP HOP",
+      "beneficiaire_normalise": "PLACE CENTRE CULTUREL HIP HOP",
+      "siret": ""
+    },
+    "MAISON DES PRATIQUES ARTISTIQUES AMATEURS": {
+      "activite_verifiee": "MPAA — Établissement culturel de la Ville de Paris sur 5 sites ; soutient et développe les pratiques artistiques amateurs (répétitions, ateliers, spectacles).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.mpaa.fr/",
+          "title": "mpaa.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "MAISON DES PRATIQUES ARTISTIQUES AMATEURS",
+      "beneficiaire_normalise": "MAISON DES PRATIQUES ARTISTIQUES AMATEURS",
+      "siret": ""
+    },
+    "HABITATION CONFORTABLE": {
+      "activite_verifiee": "Société anonyme d'HLM (SA d'HLM) spécialisée dans la gestion de logements sociaux en Île-de-France ; filiale d'Action Logement.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/l-habitation-confortable-572196459",
+          "title": "annuaire-entreprises.data.gouv.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "L'HABITATION CONFORTABLE",
+      "beneficiaire_normalise": "HABITATION CONFORTABLE",
+      "siret": ""
+    },
+    "VERS PARIS SANS SIDA": {
+      "activite_verifiee": "Association (créée 2016 par Ville de Paris) ; vise à éradiquer l'épidémie VIH à Paris et Seine-Saint-Denis d'ici 2030 ; finance prévention, dépistage, PrEP ; baisse 33% des cas.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.parissanssida.fr",
+          "title": "parissanssida.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "VERS PARIS SANS SIDA",
+      "beneficiaire_normalise": "VERS PARIS SANS SIDA",
+      "siret": "82377240500036"
+    },
+    "AIDES": {
+      "activite_verifiee": "Association de lutte contre le SIDA (créée 1984 par Daniel Defert) ; 1re association VIH/hépatites en France et Europe ; reconnue d'utilité publique 1990.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.aides.org/",
+          "title": "aides.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "AIDES",
+      "beneficiaire_normalise": "AIDES",
+      "siret": "34949617400047"
+    },
+    "ARC EQUIPES D AMITIE ARC EA": {
+      "activite_verifiee": "Association Les Équipes d'Amitié (fondée 1948, Paris 4e rue Budé) ; accueil et accompagnement d'adolescents et jeunes en difficulté ou exclusion.",
+      "perimetre_geographique": "Paris 4e",
+      "sources": [
+        {
+          "url": "https://www.pappers.fr/entreprise/arc-equipes-damitie-arc-ea-775662067",
+          "title": "pappers.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ARC EQUIPES D AMITIE ARC EA",
+      "beneficiaire_normalise": "ARC EQUIPES D AMITIE ARC EA",
+      "siret": ""
+    },
+    "ARC EQUIPES D AMITIE ARCEA": {
+      "activite_verifiee": "Association Les Équipes d'Amitié (fondée 1948, Paris 4e rue Budé) ; accueil et accompagnement d'adolescents et jeunes en difficulté ou exclusion.",
+      "perimetre_geographique": "Paris 4e",
+      "sources": [
+        {
+          "url": "https://www.pappers.fr/entreprise/arc-equipes-damitie-arc-ea-775662067",
+          "title": "pappers.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ARC  EQUIPES D'AMITIE ARCEA",
+      "beneficiaire_normalise": "ARC EQUIPES D AMITIE ARCEA",
+      "siret": ""
+    },
+    "ASSOCIATION OLGA SPITZER": {
+      "activite_verifiee": "Fondation (créée 1923) ; protection de l'enfance ; 28 établissements, 900 professionnels à Paris et IDF ; accompagnement éducatif, médico-psychologique et soutien à la parentalité.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.fondationolgaspitzer.fr/",
+          "title": "fondationolgaspitzer.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION OLGA SPITZER",
+      "beneficiaire_normalise": "ASSOCIATION OLGA SPITZER",
+      "siret": "77565772900437"
+    },
+    "FONDATION OLGA SPITZER": {
+      "activite_verifiee": "Fondation (créée 1923) ; protection de l'enfance ; 28 établissements, 900 professionnels à Paris et IDF ; accompagnement éducatif, médico-psychologique et soutien à la parentalité.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.fondationolgaspitzer.fr/",
+          "title": "fondationolgaspitzer.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FONDATION OLGA SPITZER",
+      "beneficiaire_normalise": "FONDATION OLGA SPITZER",
+      "siret": ""
+    },
+    "OLGA SPITZER": {
+      "activite_verifiee": "Fondation (créée 1923) ; protection de l'enfance ; 28 établissements, 900 professionnels à Paris et IDF ; accompagnement éducatif, médico-psychologique et soutien à la parentalité.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.fondationolgaspitzer.fr/",
+          "title": "fondationolgaspitzer.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "OLGA SPITZER",
+      "beneficiaire_normalise": "OLGA SPITZER",
+      "siret": ""
+    },
+    "ASS GESTION RESEAU MESUR POLLUT ATM": {
+      "activite_verifiee": "Airparif — association agréée (loi 1901) pour la surveillance de la qualité de l'air en IDF ; 92 stations de mesure, bilans réglementaires, information préfecture/ARS.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.airparif.fr/",
+          "title": "airparif.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASS GESTION RESEAU MESUR POLLUT ATM",
+      "beneficiaire_normalise": "ASS GESTION RESEAU MESUR POLLUT ATM",
+      "siret": ""
+    },
+    "ASSOCIATION GESTION RESEAU MESUR POLLUT ATM": {
+      "activite_verifiee": "Airparif — association agréée (loi 1901) pour la surveillance de la qualité de l'air en IDF ; 92 stations de mesure, bilans réglementaires, information préfecture/ARS.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.airparif.fr/",
+          "title": "airparif.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION GESTION RESEAU MESUR POLLUT ATM",
+      "beneficiaire_normalise": "ASSOCIATION GESTION RESEAU MESUR POLLUT ATM",
+      "siret": ""
+    },
+    "GESTION RESEAU MESUR POLLUT ATM": {
+      "activite_verifiee": "Airparif — association agréée (loi 1901) pour la surveillance de la qualité de l'air en IDF ; 92 stations de mesure, bilans réglementaires, information préfecture/ARS.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.airparif.fr/",
+          "title": "airparif.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "GESTION RESEAU MESUR POLLUT ATM",
+      "beneficiaire_normalise": "GESTION RESEAU MESUR POLLUT ATM",
+      "siret": ""
+    },
+    "FONDS SOCIAL JUIF UNIFIE": {
+      "activite_verifiee": "Association loi 1901 (FSJU, créée 1951) ; fédère 300 associations juives de France en action sociale, culture, éducation ; soutient 430 programmes, 250 000 bénéficiaires/an.",
+      "perimetre_geographique": "Paris 5e",
+      "sources": [
+        {
+          "url": "https://www.fsju.org/",
+          "title": "fsju.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FONDS SOCIAL JUIF UNIFIE",
+      "beneficiaire_normalise": "FONDS SOCIAL JUIF UNIFIE",
+      "siret": "77567220700153"
+    },
+    "LOGIREP": {
+      "activite_verifiee": "Société anonyme d'HLM (créée 1960 par Eugène Claudius-Petit, siège Suresnes 92) ; société mère du Groupe Polylogis ; ~45 000 logements en IDF et Haute-Normandie.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://logirep.polylogis.immo/",
+          "title": "logirep.polylogis.immo"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LOGIREP",
+      "beneficiaire_normalise": "LOGIREP",
+      "siret": ""
+    },
+    "RESTAURANTS DU C UR": {
+      "activite_verifiee": "Les Restos du Cœur — association d'aide alimentaire (créée 1985 par Coluche) ; relais parisiens de distribution dans plusieurs arrondissements.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://ad75.restosducoeur.org/",
+          "title": "ad75.restosducoeur.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "RESTAURANTS DU CŒUR",
+      "beneficiaire_normalise": "RESTAURANTS DU C UR",
+      "siret": ""
+    },
+    "ASSOCIATION DROIT A L INITIATIVE ECONOMIQUE": {
+      "activite_verifiee": "ADIE — association loi 1901 (créée 1988 par Maria Nowak, reconnue d'utilité publique 2005) ; microcrédit accompagné (jusqu'à 10k€) pour entrepreneurs exclus du système bancaire.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.adie.org/",
+          "title": "adie.org"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Association_pour_le_droit_%C3%A0_l%27initiative_%C3%A9conomique",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION DROIT A L INITIATIVE ECONOMIQUE",
+      "beneficiaire_normalise": "ASSOCIATION DROIT A L INITIATIVE ECONOMIQUE",
+      "siret": ""
+    },
+    "DROIT A L INITIATIVE ECONOMIQUE": {
+      "activite_verifiee": "ADIE — association loi 1901 (créée 1988 par Maria Nowak, reconnue d'utilité publique 2005) ; microcrédit accompagné (jusqu'à 10k€) pour entrepreneurs exclus du système bancaire.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.adie.org/",
+          "title": "adie.org"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Association_pour_le_droit_%C3%A0_l%27initiative_%C3%A9conomique",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "DROIT A L INITIATIVE ECONOMIQUE",
+      "beneficiaire_normalise": "DROIT A L INITIATIVE ECONOMIQUE",
+      "siret": ""
+    },
+    "ASS DROIT A L INITIATIVE ECONOMIQUE": {
+      "activite_verifiee": "ADIE — association loi 1901 (créée 1988 par Maria Nowak, reconnue d'utilité publique 2005) ; microcrédit accompagné (jusqu'à 10k€) pour entrepreneurs exclus du système bancaire.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.adie.org/",
+          "title": "adie.org"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Association_pour_le_droit_%C3%A0_l%27initiative_%C3%A9conomique",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASS DROIT A L INITIATIVE ECONOMIQUE",
+      "beneficiaire_normalise": "ASS DROIT A L INITIATIVE ECONOMIQUE",
+      "siret": ""
+    },
+    "ATELIER DE PARIS CAROLYN CARLSON": {
+      "activite_verifiee": "CDCN — Centre de développement chorégraphique national (créé 1999 par Carolyn Carlson, Cartoucherie 12e) ; dédié à la danse contemporaine, ~15 spectacles/an et résidences.",
+      "perimetre_geographique": "Paris 12e",
+      "sources": [
+        {
+          "url": "https://www.atelierdeparis.org/",
+          "title": "atelierdeparis.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ATELIER DE PARIS CAROLYN CARLSON",
+      "beneficiaire_normalise": "ATELIER DE PARIS CAROLYN CARLSON",
+      "siret": "39864093800021"
+    },
+    "ATELIERS DE LA DANSE CAROLYN CARLSON": {
+      "activite_verifiee": "CDCN — Centre de développement chorégraphique national (créé 1999 par Carolyn Carlson, Cartoucherie 12e) ; dédié à la danse contemporaine, ~15 spectacles/an et résidences.",
+      "perimetre_geographique": "Paris 12e",
+      "sources": [
+        {
+          "url": "https://www.atelierdeparis.org/",
+          "title": "atelierdeparis.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ATELIERS DE LA DANSE CAROLYN CARLSON",
+      "beneficiaire_normalise": "ATELIERS DE LA DANSE CAROLYN CARLSON",
+      "siret": ""
+    },
+    "BETONSALON": {
+      "activite_verifiee": "Association loi 1901 (créée 2003, au sein d'Université Paris Cité, 13e) ; centre d'art et de recherche labellisé Centre d'art contemporain d'intérêt national.",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        {
+          "url": "https://www.betonsalon.net/en/",
+          "title": "betonsalon.net"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "BETONSALON",
+      "beneficiaire_normalise": "BETONSALON",
+      "siret": ""
+    },
+    "UNION SYNDICALE SOLIDAIRES PARIS": {
+      "activite_verifiee": "Union Solidaires Paris — regroupe +40 syndicats (SUD) ; ~10 000 adhérents ; alter-mondialiste, présent santé, éducation, transports (SNCF, Air France), culture (Louvre).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://solidairesparis.org/",
+          "title": "solidairesparis.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "UNION SYNDICALE SOLIDAIRES PARIS",
+      "beneficiaire_normalise": "UNION SYNDICALE SOLIDAIRES PARIS",
+      "siret": ""
+    },
+    "COMITE CHAMPS ELYSEES": {
+      "activite_verifiee": "Association loi 1901 (créée 1860, actuelle dénomination depuis 1980) ; regroupe les commerçants de l'avenue ; promotion, embellissement, horaires étendus d'ouverture.",
+      "perimetre_geographique": "Paris 8e",
+      "sources": [
+        {
+          "url": "https://comite-champs-elysees.com",
+          "title": "comite-champs-elysees.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "COMITE CHAMPS ELYSEES",
+      "beneficiaire_normalise": "COMITE CHAMPS ELYSEES",
+      "siret": ""
+    },
+    "FONCIERE D HABITAT ET HUMANISME": {
+      "activite_verifiee": "Foncière Habitat et Humanisme (créée 1986) ; entreprise solidaire (SIEG) ; construit, achète et rénove logements pour personnes en difficulté (pensions de famille, intergénérationnel).",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.habitat-humanisme.org/",
+          "title": "habitat-humanisme.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FONCIERE D'HABITAT ET HUMANISME",
+      "beneficiaire_normalise": "FONCIERE D HABITAT ET HUMANISME",
+      "siret": ""
+    },
+    "CENT D ACTIONS LOCALE DU XVIII": {
+      "activite_verifiee": "Association d'action sociale dans le 18e arrondissement de Paris ; accompagnement des habitants (seniors, familles, personnes en difficulté).",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CENT D ACTIONS LOCALE DU XVIII",
+      "beneficiaire_normalise": "CENT D ACTIONS LOCALE DU XVIII",
+      "siret": ""
+    },
+    "SIDACTION": {
+      "activite_verifiee": "Association reconnue d'utilité publique ; finance la recherche sur le SIDA et les associations d'aide aux personnes vivant avec le VIH en France et à l'international.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.sidaction.org/",
+          "title": "sidaction.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:15:03",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SIDACTION",
+      "beneficiaire_normalise": "SIDACTION",
+      "siret": "39894554300021"
     }
   }
 }
