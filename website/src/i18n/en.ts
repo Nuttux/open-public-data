@@ -1251,6 +1251,9 @@ const en: Record<string, string> = {
   'fx.bud.s01.kpi.epargne': 'Gross savings',
   'fx.bud.s01.kpi.epargne.tip': 'Operating revenue minus operating expenses. The margin available to fund capital investment without borrowing.',
   'fx.bud.s03.pareto_line': 'Out of every €100 spent in {year}, the top 3 categories alone capture {pct}.',
+  'fx.bud.s03.stack_kicker': 'For every €100 spent in {year}',
+  'fx.bud.s03.stack_entity': 'categories',
+  'fx.bud.s03.stack_contrast': 'more than half the budget on 3 themes',
   // S02
   'fx.bud.s02.kind': 'Flows',
   'fx.bud.s02.title.before': 'Where does the money ',
@@ -1335,6 +1338,8 @@ const en: Record<string, string> = {
   'fx.bud.s05.kpi.status.exec': 'Executed',
   'fx.bud.s05.kpi.status.sous': 'Under-executed',
   'fx.bud.s05.kpi.status.delta': '{pct}% of voted',
+  'fx.bud.s05.compare_kicker': 'Voted vs executed',
+  'fx.bud.s05.compare_caption': 'Execution reaches {pct}% of the voted amount. The gap represents €{gap}M unspent by year-end.',
   // S06
   'fx.bud.s06.kind': 'Sources & method',
   'fx.bud.s06.title.before': 'Auditable ',

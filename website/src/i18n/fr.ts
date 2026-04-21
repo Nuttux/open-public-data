@@ -1251,6 +1251,9 @@ const fr: Record<string, string> = {
   'fx.bud.s01.kpi.epargne': 'Épargne brute',
   'fx.bud.s01.kpi.epargne.tip': "Recettes de fonctionnement moins dépenses de fonctionnement. Marge qui sert à financer l'investissement sans emprunter.",
   'fx.bud.s03.pareto_line': 'Sur chaque 100 € de dépenses en {year}, les 3 plus gros postes en captent {pct}.',
+  'fx.bud.s03.stack_kicker': 'Sur chaque 100 € dépensés en {year}',
+  'fx.bud.s03.stack_entity': 'postes',
+  'fx.bud.s03.stack_contrast': 'soit plus de la moitié du budget sur 3 thématiques',
   // S02
   'fx.bud.s02.kind': 'Flux',
   'fx.bud.s02.title.before': "D'où vient, ",
@@ -1335,6 +1338,8 @@ const fr: Record<string, string> = {
   'fx.bud.s05.kpi.status.exec': 'Exécuté',
   'fx.bud.s05.kpi.status.sous': 'Sous-exécuté',
   'fx.bud.s05.kpi.status.delta': '{pct} % du voté',
+  'fx.bud.s05.compare_kicker': 'Voté vs exécuté',
+  'fx.bud.s05.compare_caption': "L'exécution atteint {pct} % du montant voté. L'écart représente {gap} M € non engagés en fin d'exercice.",
   // S06
   'fx.bud.s06.kind': 'Sources & méthode',
   'fx.bud.s06.title.before': 'Vérifiable ',
