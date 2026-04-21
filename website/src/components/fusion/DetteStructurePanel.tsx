@@ -99,6 +99,8 @@ export default function DetteStructurePanel({ structure, year }: Props) {
         </div>
       </div>
 
+      <p className="fx-ds-disclaimer">{t("fx.ds.ratios_indicatifs")}</p>
+
       <InstrumentDetteFiche
         instrument={open}
         year={year}

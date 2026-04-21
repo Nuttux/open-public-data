@@ -690,24 +690,104 @@ export function loadProjet(id: string): ProjetFiche | null {
 
 // ─── Bailleur (logement social) fiche ──────────────────────────────────────
 
-export type BailleurFiche = {
-  name: string;
-  type: string;
-  color: string;
+export type BailleurGaranties = {
+  year: number;
+  name_raw: string;
+  capital_restant: number;
+  montant_initial: number;
+  count_emprunts: number;
   share: number;
-  description: string;
+  taux_moyen_pondere_pct: number;
+  duree_residuelle_moyenne_ans: number;
+  part_fixe: number;
+  nature_dominante: string;
+  preteurs: HorsBilanPreteur[];
+  emprunts_top: HorsBilanEmprunt[];
 };
 
+export type BailleurFiche = {
+  slug: string;
+  name: string;
+  type?: string;
+  color?: string;
+  share?: number;
+  description?: string;
+  garanties?: BailleurGaranties;
+};
+
+/**
+ * Normalise un nom de bailleur en slug stable qui absorbe les variations :
+ * suffixes entre parenthèses, formes juridiques (OPH, SEM, ESH, SA HLM…),
+ * casse, accents. Permet de faire matcher "Paris Habitat" (liste éditoriale
+ * logement-social) avec "PARIS Habitat OPH (EPIC)" (données hors-bilan).
+ */
+// `slugifyBailleur` vit dans `@/lib/projet-utils` (client-safe).
+import { slugifyBailleur } from "./projet-utils";
+export { slugifyBailleur };
+
+/**
+ * Mappings manuels pour les bailleurs dont le slug auto-généré ne converge
+ * pas entre les deux sources (typiquement les filiales type "3F Résidences"
+ * vs "Immobilière 3F - I3F").
+ */
+const BAILLEUR_SLUG_ALIASES: Record<string, string> = {
+  "immobiliere-3f-i3f": "3f-residences",
+  "icf-habitat-la-sabliere": "icf-habitat",
+};
+
+function canonicalBailleurSlug(name: string): string {
+  const base = slugifyBailleur(name);
+  return BAILLEUR_SLUG_ALIASES[base] ?? base;
+}
+
 export function loadBailleur(slug: string): BailleurFiche | null {
-  const data = loadLogementSocialData();
-  const decoded = decodeURIComponent(slug).toLowerCase();
-  return (
-    data.bailleurs.find(
-      (b) =>
-        b.name.toLowerCase() === decoded ||
-        b.name.toLowerCase().replace(/\s+/g, "-") === decoded,
-    ) ?? null
+  const target = canonicalBailleurSlug(decodeURIComponent(slug));
+
+  // ─── Volet éditorial logement social ─────────────────────────────────
+  const ls = loadLogementSocialData();
+  const lsMatch = ls.bailleurs.find(
+    (b) => canonicalBailleurSlug(b.name) === target,
   );
+
+  // ─── Volet garanties d'emprunt (dernier exercice disponible) ─────────
+  let garanties: BailleurGaranties | undefined;
+  try {
+    const idx = readJson<{ latestYear: number }>("hors_bilan_index.json");
+    const hb = readJson<HorsBilanData>(`hors_bilan_${idx.latestYear}.json`);
+    const hbMatch = hb.top_beneficiaires.find(
+      (b) => canonicalBailleurSlug(b.name) === target,
+    );
+    if (hbMatch) {
+      garanties = {
+        year: hb.year,
+        name_raw: hbMatch.name,
+        capital_restant: hbMatch.capital_restant,
+        montant_initial: hbMatch.montant_initial,
+        count_emprunts: hbMatch.count_emprunts,
+        share: hbMatch.share,
+        taux_moyen_pondere_pct: hbMatch.taux_moyen_pondere_pct,
+        duree_residuelle_moyenne_ans: hbMatch.duree_residuelle_moyenne_ans,
+        part_fixe: hbMatch.part_fixe,
+        nature_dominante: hbMatch.nature_dominante,
+        preteurs: hbMatch.preteurs,
+        emprunts_top: hbMatch.emprunts_top,
+      };
+    }
+  } catch {
+    // Fichiers hors-bilan indisponibles — on ignore
+  }
+
+  if (!lsMatch && !garanties) return null;
+
+  return {
+    slug: target,
+    name: lsMatch?.name ?? garanties?.name_raw ?? "",
+    type: lsMatch?.type,
+    color: lsMatch?.color,
+    share: lsMatch?.share,
+    description: lsMatch?.description,
+    garanties,
+  };
 }
 
 export function loadQuiRecoitData(requestedYear?: number): QuiRecoitData {
@@ -1819,6 +1899,25 @@ export function loadPatrimoineStructure(year: number): PatrimoineStructure | nul
 
 // ─── Hors bilan · garanties d'emprunt ──────────────────────────────────────
 
+export type HorsBilanEmprunt = {
+  objet: string;
+  preteur: string;
+  annee_mobilisation: number | null;
+  montant_initial: number;
+  capital_restant: number;
+  duree_residuelle: number | null;
+  taux_type: string;
+  taux_index: string;
+  taux_actuariel: number | null;
+};
+
+export type HorsBilanPreteur = {
+  name: string;
+  capital_restant: number;
+  count_emprunts: number;
+  share: number;
+};
+
 export type HorsBilanBeneficiaire = {
   key: string;
   name: string;
@@ -1827,6 +1926,11 @@ export type HorsBilanBeneficiaire = {
   count_emprunts: number;
   share: number;
   nature_dominante: string;
+  taux_moyen_pondere_pct: number;
+  duree_residuelle_moyenne_ans: number;
+  part_fixe: number;
+  preteurs: HorsBilanPreteur[];
+  emprunts_top: HorsBilanEmprunt[];
 };
 
 export type HorsBilanData = {
@@ -1892,6 +1996,75 @@ export function loadHorsBilanTrajectory(years: number[]): Array<{ year: number; 
   for (const y of years) {
     const d = loadHorsBilan(y);
     if (d) out.push({ year: y, capital_restant: d.totals.capital_restant });
+  }
+  return out;
+}
+
+// ─── Benchmark inter-ville (capacité désendettement, dette/hab) ───────────
+
+export type CityDebtSnapshot = {
+  slug: string;
+  name: string;
+  population: number;
+  encours_dette: number;
+  epargne_brute: number;
+  capacite_desendettement: number;
+  dette_par_hab: number;
+  year: number;
+};
+
+type BenchmarkingPayload = {
+  latest_year: number;
+  available_years: number[];
+  cities: Array<{
+    slug: string;
+    name: string;
+    population: number;
+    years: Record<string, {
+      encours_dette?: number;
+      epargne_brute?: number;
+      dette_par_hab?: number;
+      ratio_dette_recettes?: number;
+    }>;
+  }>;
+};
+
+/**
+ * Charge un snapshot inter-ville pour l'année demandée : dette, épargne brute,
+ * capacité de désendettement, dette/hab. Utilisé par la mini-bande comparative
+ * sur la page bilan. Retombe sur l'année la plus récente disponible si l'année
+ * demandée manque pour une ville.
+ */
+export function loadCitiesDebtSnapshot(
+  year: number,
+  slugs: string[] = ["paris", "lyon", "marseille", "toulouse", "nice", "bordeaux"],
+): CityDebtSnapshot[] {
+  let data: BenchmarkingPayload;
+  try {
+    data = readJson<BenchmarkingPayload>("villes/benchmarking.json");
+  } catch {
+    return [];
+  }
+  const out: CityDebtSnapshot[] = [];
+  for (const slug of slugs) {
+    const city = data.cities.find((c) => c.slug === slug);
+    if (!city) continue;
+    const targetYear = city.years[String(year)] ? year : data.latest_year;
+    const yearData = city.years[String(targetYear)];
+    if (!yearData) continue;
+    const encours = yearData.encours_dette ?? 0;
+    const epargne = yearData.epargne_brute ?? 0;
+    const capacite = epargne > 0 ? encours / epargne : 0;
+    out.push({
+      slug: city.slug,
+      name: city.name,
+      population: city.population,
+      encours_dette: encours,
+      epargne_brute: epargne,
+      capacite_desendettement: capacite,
+      dette_par_hab: yearData.dette_par_hab ?? (city.population ? encours / city.population : 0),
+      year: targetYear,
+    });
   }
   return out;
 }

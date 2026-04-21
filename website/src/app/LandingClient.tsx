@@ -256,6 +256,96 @@ export default function LandingClient({ stats }: Props) {
               kpiUnit="%"
               kpiDelta={<>{t("fx.land.tile.06.delta.before")}<b>{t("fx.land.tile.06.delta.em")}</b></>}
             />
+
+            <TileCard
+              href="/dette-patrimoine/stress-test"
+              kind={t("fx.land.tile.stress.kind")}
+              title={t("fx.land.tile.stress.title")}
+              description={t("fx.land.tile.stress.desc")}
+              preview={
+                <svg viewBox="0 0 200 100">
+                  <line x1="10" y1="80" x2="190" y2="80" stroke="#9099a6" strokeWidth="1" />
+                  <line x1="10" y1="80" x2="190" y2="80" stroke="#0a0a0a" strokeWidth="2" strokeDasharray="1" strokeDashoffset="0" />
+                  <rect x="10" y="70" width="95" height="12" fill="#0a0a0a" opacity="0.15" />
+                  <rect x="105" y="70" width="85" height="12" fill="#e11d1d" opacity="0.22" />
+                  <line x1="108" y1="62" x2="108" y2="90" stroke="#a67638" strokeWidth="2" />
+                  <line x1="60" y1="58" x2="60" y2="94" stroke="#0a0a0a" strokeWidth="3" />
+                  <circle cx="60" cy="52" r="4" fill="#0a0a0a" />
+                  <text x="60" y="42" textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#0a0a0a" fontWeight="700">10,8</text>
+                  <text x="108" y="42" textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="8" fill="#a67638">seuil 12</text>
+                </svg>
+              }
+              kpi="10,8"
+              kpiUnit="ans"
+              kpiDelta={<>{t("fx.land.tile.stress.delta")}</>}
+            />
+
+            <TileCard
+              href="/logement-social"
+              kind={t("fx.land.tile.07.kind")}
+              title={t("fx.land.tile.07.title")}
+              description={t("fx.land.tile.07.desc")}
+              preview={
+                <svg viewBox="0 0 200 100">
+                  <line x1="10" y1="90" x2="190" y2="90" className="stroke-muted" stroke="#9099a6" strokeWidth="1" />
+                  {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i) => {
+                    const x = 14 + i * 14;
+                    const isYou = i === 8;
+                    return (
+                      <rect
+                        key={i}
+                        x={x}
+                        y={isYou ? 40 : 56}
+                        width="10"
+                        height={isYou ? 48 : 32}
+                        className={isYou ? "fill-sig" : "fill"}
+                        fill={isYou ? "#a67638" : "#0a0a0a"}
+                        opacity={isYou ? 1 : 0.85 - i * 0.05}
+                      />
+                    );
+                  })}
+                  <text x="126" y="32" textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="9" fill="#a67638" fontWeight="700">vous</text>
+                </svg>
+              }
+              kpi="4,2"
+              kpiUnit="ans"
+              kpiDelta={<>{t("fx.land.tile.07.delta")}</>}
+            />
+
+            <TileCard
+              href="/marches-publics"
+              kind={t("fx.land.tile.08.kind")}
+              title={t("fx.land.tile.08.title")}
+              description={t("fx.land.tile.08.desc")}
+              preview={
+                <svg viewBox="0 0 200 100">
+                  <line x1="10" y1="88" x2="190" y2="88" className="stroke-muted" stroke="#9099a6" strokeWidth="1" />
+                  {[62, 52, 44, 38, 34, 30, 27, 24, 21, 19, 17, 15, 13, 12, 11].map((h, i) => {
+                    const x = 12 + i * 12;
+                    const isTop = i === 0;
+                    return (
+                      <rect
+                        key={i}
+                        x={x}
+                        y={88 - h}
+                        width="9"
+                        height={h}
+                        className={isTop ? "fill-sig" : "fill"}
+                        fill={isTop ? "#5f6672" : "#0a0a0a"}
+                      />
+                    );
+                  })}
+                </svg>
+              }
+              kpi="2,5"
+              kpiUnit="Md €"
+              kpiDelta={
+                <>
+                  {t("fx.land.tile.08.delta.before")}
+                  <b>{t("fx.land.tile.08.delta.em")}</b>
+                </>
+              }
+            />
           </div>
 
           <div className="fx-grid-foot">

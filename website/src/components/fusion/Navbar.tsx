@@ -93,9 +93,6 @@ export default function Navbar() {
             <ScopeDropdown variant="overlay" />
             <LangSwitcher />
           </div>
-          <Link href="/budget" className="fx-overlay-cta">
-            {t("fx.nav.cta_budget").replace("{year}", String(new Date().getFullYear()))}
-          </Link>
         </div>
       </div>
     </>

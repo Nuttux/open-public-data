@@ -54,9 +54,11 @@ CLAUDE_URL = "https://api.anthropic.com/v1/messages"
 CLAUDE_WEB_SEARCH_MAX_USES = 3
 
 REQ_TIMEOUT = 90
-MAX_RETRIES = 3
-RETRY_WAIT_429 = 30
-CALL_DELAY = 0.3  # courtesy entre appels Gemini
+MAX_RETRIES = 6  # Tier 1 Anthropic = beaucoup de 429, on est patient
+RETRY_WAIT_429 = 60  # 60s, 120s, 180s… (suffisant pour la fenêtre RPM)
+# Délai par défaut entre appels — par défaut prudent pour Tier 1 Anthropic.
+# Override via --delay ou env CLAUDE_CALL_DELAY.
+CALL_DELAY = float(os.environ.get("CLAUDE_CALL_DELAY", "3.0"))
 
 # Codes APE génériques à rejeter (on les remplacera par grounded search)
 GENERIC_APE_CODES = {"9499Z", "9412Z", "9499", "9412", ""}
@@ -592,9 +594,12 @@ def process_beneficiaire(
 
     activite = result.get("activite_verifiee")
     if isinstance(activite, str):
-        activite = activite.strip() or None
+        # Strip Claude inline citation tags <cite index="...">…</cite>
+        activite = re.sub(r"</?cite[^>]*>", "", activite)
+        activite = re.sub(r"\s+", " ", activite).strip() or None
     perimetre = result.get("perimetre_geographique")
     if isinstance(perimetre, str):
+        perimetre = re.sub(r"</?cite[^>]*>", "", perimetre)
         perimetre = perimetre.strip() or None
     citations = result.get("_citations") or []
     search_queries = result.get("_search_queries") or []
@@ -661,6 +666,8 @@ def process_beneficiaire(
 
 
 def main() -> int:
+    global CALL_DELAY  # noqa: PLW0603
+
     parser = argparse.ArgumentParser(description="Enrichit les bénéficiaires via cascade SIRENE → LLM grounded (Claude ou Gemini)")
     parser.add_argument("--year", type=int)
     parser.add_argument("--limit", type=int, help="Limite le nombre de bénéficiaires")
@@ -668,7 +675,14 @@ def main() -> int:
     parser.add_argument("--verbose", action="store_true")
     parser.add_argument("--provider", choices=["claude", "gemini"], default="claude",
                         help="LLM provider (défaut: claude, plus fiable)")
+    parser.add_argument("--delay", type=float, default=None,
+                        help=f"Délai entre appels LLM en secondes (défaut: {CALL_DELAY})")
     args = parser.parse_args()
+
+    # Override delay si fourni
+    if args.delay is not None:
+        CALL_DELAY = args.delay
+        print(f"⏱  Délai entre appels : {CALL_DELAY}s")
 
     if args.provider == "claude" and not ANTHROPIC_API_KEY and not args.dry_run:
         print("❌ ANTHROPIC_API_KEY non définie (requis pour --provider claude).", file=sys.stderr)
