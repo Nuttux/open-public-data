@@ -120,12 +120,9 @@ export default function LandingClient({ stats }: Props) {
           </h2>
           <p className="fx-sub">{t("fx.land.inside.sub")}</p>
 
-          {/* PRIMARY — 3 entry points above the fold: total budget,
-              investments, beneficiaries. Most viral, most clicked. */}
           <div className="fx-grid-tiles">
             <TileCard
               href="/budget"
-              number="01"
               kind={t("fx.land.tile.01.kind")}
               title={t("fx.land.tile.01.title")}
               description={t("fx.land.tile.01.desc")}
@@ -151,7 +148,6 @@ export default function LandingClient({ stats }: Props) {
 
             <TileCard
               href="/investissements"
-              number="02"
               kind={t("fx.land.tile.03.kind")}
               title={t("fx.land.tile.03.title")}
               description={t("fx.land.tile.03.desc")}
@@ -172,7 +168,6 @@ export default function LandingClient({ stats }: Props) {
 
             <TileCard
               href="/qui-recoit"
-              number="03"
               kind={t("fx.land.tile.04.kind")}
               title={t("fx.land.tile.04.title")}
               description={t("fx.land.tile.04.desc")}
@@ -191,11 +186,7 @@ export default function LandingClient({ stats }: Props) {
               kpiUnit="M €"
               kpiDelta={<>↑ <b>3,3 %</b> {t("fx.land.tile.vs")}2023</>}
             />
-          </div>
 
-          {/* SECONDARY — context tiles, below the fold. */}
-          <div className="fx-tiles-sub-label">{t("fx.land.inside.secondary_label")}</div>
-          <div className="fx-grid-tiles">
             <TileCard
               href="/budget"
               kind={t("fx.land.tile.02.kind")}
