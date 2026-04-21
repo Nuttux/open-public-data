@@ -1,27 +1,25 @@
 #!/usr/bin/env python3
 """
-Enrich bénéficiaires de subventions via cascade SIRENE → Gemini grounded search.
+Enrich bénéficiaires de subventions via cascade SIRENE → LLM grounded search.
 
-Pour chaque bénéficiaire unique (clé : beneficiaire_normalise), on tente :
+Cascade par bénéficiaire (clé : beneficiaire_normalise) :
 
-  1. SIRENE-first — si on a un SIRET et que le code APE/NAF du siège est
-     spécifique (pas 9499Z / 9412Z / vide), on reprend directement le
-     libellé d'activité INSEE. Confiance 0.9, pas d'appel LLM.
-
-  2. Grounded search — sinon, on appelle Gemini 3 Flash avec l'outil
-     `google_search` activé. Le prompt contraint la recherche aux
-     domaines .fr / wikipedia / journal-officiel. Les citations
-     (groundingChunks) servent de preuves ; on refuse d'inventer.
-
-  3. Fallback — si rien de crédible, on marque fallback_none et on
-     laisse activite_verifiee à null (le frontend ignorera).
+  1. SIRENE cache (SIRET ou nom) → si APE spécifique, on prend le libellé INSEE.
+  2. recherche-entreprises.api.gouv.fr par nom → enrichit le cache en mémoire.
+  3. LLM grounded (provider=claude par défaut, gemini disponible) → cherche
+     l'activité et les sources web. Claude Haiku avec web_search est nettement
+     plus fiable que Gemini google_search pour les institutions françaises.
+  4. Wikipedia FR (MediaWiki API) → filet quand le LLM rend null.
+  5. Libellé INSEE brut si SIRENE a résolu sans APE spécifique.
+  6. fallback_none — frontend affiche "données brutes".
 
 Entrée : website/public/data/subventions/beneficiaires_*.json
 Cache  : website/public/data/enrichment/beneficiaire_grounded.json
 
 Usage :
-    GOOGLE_API_KEY=xxx python pipeline/scripts/enrich/enrich_beneficiaire_grounded_llm.py
-    GOOGLE_API_KEY=xxx python pipeline/scripts/enrich/enrich_beneficiaire_grounded_llm.py --limit 50 --verbose
+    ANTHROPIC_API_KEY=xxx python pipeline/scripts/enrich/enrich_beneficiaire_grounded_llm.py
+    ANTHROPIC_API_KEY=xxx python pipeline/scripts/enrich/enrich_beneficiaire_grounded_llm.py --limit 50 --verbose
+    GOOGLE_API_KEY=xxx python pipeline/scripts/enrich/enrich_beneficiaire_grounded_llm.py --provider gemini
     python pipeline/scripts/enrich/enrich_beneficiaire_grounded_llm.py --dry-run --year 2023
 """
 
@@ -47,6 +45,13 @@ CACHE_PATH = PROJECT_ROOT / "website" / "public" / "data" / "enrichment" / "bene
 GEMINI_API_KEY = os.environ.get("GOOGLE_API_KEY", "") or os.environ.get("GEMINI_API_KEY", "")
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3-flash-preview")
 GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent"
+
+# Claude — Haiku 4.5 par défaut (rapide et cheap), override possible par env.
+# Web search tool avec max 3 uses pour rester raisonnable sur le coût.
+ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
+CLAUDE_MODEL = os.environ.get("CLAUDE_MODEL", "claude-haiku-4-5")
+CLAUDE_URL = "https://api.anthropic.com/v1/messages"
+CLAUDE_WEB_SEARCH_MAX_USES = 3
 
 REQ_TIMEOUT = 90
 MAX_RETRIES = 3
@@ -350,6 +355,105 @@ def call_gemini_grounded(user_prompt: str) -> dict[str, Any]:
     raise RuntimeError("Max retries exceeded")
 
 
+def call_claude_web_search(user_prompt: str) -> dict[str, Any]:
+    """Appel Claude (Haiku) avec le tool `web_search`. Renvoie le même format
+    que call_gemini_grounded : {activite_verifiee, perimetre_geographique,
+    _citations, _search_queries, _raw_text}.
+
+    Le tool web_search est géré côté Anthropic : le modèle décide quand lancer
+    une recherche, les résultats sont injectés dans la conversation et cités
+    dans la réponse finale via des blocks `citations`.
+    """
+    if not ANTHROPIC_API_KEY:
+        raise RuntimeError("ANTHROPIC_API_KEY non définie")
+
+    payload = {
+        "model": CLAUDE_MODEL,
+        "max_tokens": 1024,
+        "temperature": 0.2,
+        "system": SYSTEM_PROMPT,
+        "tools": [
+            {
+                "type": "web_search_20250305",
+                "name": "web_search",
+                "max_uses": CLAUDE_WEB_SEARCH_MAX_USES,
+            }
+        ],
+        "messages": [{"role": "user", "content": user_prompt}],
+    }
+    headers = {
+        "x-api-key": ANTHROPIC_API_KEY,
+        "anthropic-version": "2023-06-01",
+        "content-type": "application/json",
+    }
+
+    for attempt in range(MAX_RETRIES):
+        r = requests.post(CLAUDE_URL, headers=headers, json=payload, timeout=REQ_TIMEOUT)
+        if r.status_code == 429:
+            wait = RETRY_WAIT_429 * (attempt + 1)
+            print(f"  ⚠ Claude rate-limit, pause {wait}s", flush=True)
+            time.sleep(wait)
+            continue
+        if r.status_code != 200:
+            raise RuntimeError(f"Claude HTTP {r.status_code}: {r.text[:300]}")
+        data = r.json()
+
+        # Concatène tous les blocks text et collecte les citations (URLs) et
+        # les queries de web_search.
+        text_parts: list[str] = []
+        citations: list[dict[str, Any]] = []
+        seen_urls: set[str] = set()
+        search_queries: list[str] = []
+        for block in data.get("content", []) or []:
+            btype = block.get("type")
+            if btype == "text":
+                text_parts.append(block.get("text") or "")
+                for c in block.get("citations") or []:
+                    url = c.get("url") or ""
+                    if url and url not in seen_urls:
+                        seen_urls.add(url)
+                        citations.append({"url": url, "title": c.get("title") or ""})
+            elif btype == "server_tool_use" and block.get("name") == "web_search":
+                q = (block.get("input") or {}).get("query") or ""
+                if q:
+                    search_queries.append(q)
+            elif btype == "web_search_tool_result":
+                # Peut contenir des URLs supplémentaires dans content[].url
+                for item in block.get("content", []) or []:
+                    url = item.get("url") or ""
+                    if url and url not in seen_urls:
+                        seen_urls.add(url)
+                        citations.append({"url": url, "title": item.get("title") or ""})
+
+        text = "".join(text_parts).strip()
+        # Extrait le JSON final du texte — peut être entouré de commentaires
+        if text.startswith("```"):
+            lines = text.split("\n")
+            while lines and lines[0].startswith("```"):
+                lines.pop(0)
+            while lines and lines[-1].startswith("```"):
+                lines.pop()
+            text = "\n".join(lines)
+        m = re.search(r"\{[\s\S]*\}", text)
+        if m:
+            text_json = m.group(0)
+        else:
+            text_json = text
+
+        try:
+            parsed = json.loads(text_json)
+        except json.JSONDecodeError:
+            # Pas de JSON parseable — on renvoie quand même un shape compatible
+            parsed = {"activite_verifiee": None, "perimetre_geographique": None}
+
+        parsed["_citations"] = citations
+        parsed["_search_queries"] = search_queries
+        parsed["_raw_text"] = text
+        return parsed
+
+    raise RuntimeError("Claude max retries exceeded")
+
+
 def confiance_from_citations(n: int) -> float:
     """Heuristique simple : plus de citations = plus de confiance."""
     if n >= 3:
@@ -413,6 +517,7 @@ def process_beneficiaire(
     b: dict[str, Any],
     sirene: dict[str, dict[str, Any]],
     sirene_name_index: dict[str, dict[str, Any]],
+    provider: str = "claude",
     verbose: bool = False,
 ) -> dict[str, Any]:
     name = b.get("beneficiaire") or ""
@@ -463,9 +568,15 @@ def process_beneficiaire(
                 "source_type": "sirene_ape",
             }
 
-    # Étape 2 : Gemini grounded (avec le nom officiel SIRENE si résolu)
+    # Étape 2 : LLM grounded (provider=claude par défaut, gemini en option)
+    grounded_source_type = "claude_web" if provider == "claude" else "grounded_search"
+    grounded_model = CLAUDE_MODEL if provider == "claude" else GEMINI_MODEL
+    base["model"] = grounded_model
     try:
-        result = call_gemini_grounded(build_user_prompt(b, sirene_entry))
+        if provider == "claude":
+            result = call_claude_web_search(build_user_prompt(b, sirene_entry))
+        else:
+            result = call_gemini_grounded(build_user_prompt(b, sirene_entry))
     except Exception as e:
         if verbose:
             print(f"  ⚠ grounded error: {e}")
@@ -545,20 +656,25 @@ def process_beneficiaire(
         "perimetre_geographique": perimetre,
         "sources": citations[:5],
         "confiance": confiance_from_citations(len(citations)),
-        "source_type": "grounded_search",
+        "source_type": grounded_source_type,
     }
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Enrichit les bénéficiaires via cascade SIRENE → Gemini grounded")
+    parser = argparse.ArgumentParser(description="Enrichit les bénéficiaires via cascade SIRENE → LLM grounded (Claude ou Gemini)")
     parser.add_argument("--year", type=int)
     parser.add_argument("--limit", type=int, help="Limite le nombre de bénéficiaires")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--verbose", action="store_true")
+    parser.add_argument("--provider", choices=["claude", "gemini"], default="claude",
+                        help="LLM provider (défaut: claude, plus fiable)")
     args = parser.parse_args()
 
-    if not GEMINI_API_KEY and not args.dry_run:
-        print("❌ GOOGLE_API_KEY / GEMINI_API_KEY non définie.", file=sys.stderr)
+    if args.provider == "claude" and not ANTHROPIC_API_KEY and not args.dry_run:
+        print("❌ ANTHROPIC_API_KEY non définie (requis pour --provider claude).", file=sys.stderr)
+        return 1
+    if args.provider == "gemini" and not GEMINI_API_KEY and not args.dry_run:
+        print("❌ GOOGLE_API_KEY / GEMINI_API_KEY non définie (requis pour --provider gemini).", file=sys.stderr)
         return 1
 
     cache = load_cache()
@@ -579,7 +695,7 @@ def main() -> int:
         print("✅ Cache à jour.")
         return 0
 
-    stats = {"sirene_ape": 0, "grounded_search": 0, "wikipedia": 0, "sirene_libelle": 0, "fallback_none": 0, "errors": 0}
+    stats = {"sirene_ape": 0, "grounded_search": 0, "claude_web": 0, "wikipedia": 0, "sirene_libelle": 0, "fallback_none": 0, "errors": 0}
     processed = 0
     total = len(pending)
     t_start = time.time()
@@ -605,7 +721,8 @@ def main() -> int:
             }
         else:
             try:
-                result = process_beneficiaire(b, sirene, sirene_name_index, verbose=args.verbose)
+                result = process_beneficiaire(b, sirene, sirene_name_index,
+                                              provider=args.provider, verbose=args.verbose)
             except Exception as e:
                 stats["errors"] += 1
                 print(f"  ⚠ {name}: {e}", flush=True)
@@ -615,8 +732,8 @@ def main() -> int:
             stats[result.get("source_type", "fallback_none")] = (
                 stats.get(result.get("source_type", "fallback_none"), 0) + 1
             )
-            # Rate-limit seulement si on a effectivement appelé Gemini
-            if result.get("source_type") == "grounded_search" or result.get("source_type") == "fallback_none":
+            # Rate-limit uniquement après un appel LLM effectif (Claude/Gemini)
+            if result.get("source_type") in ("grounded_search", "claude_web", "fallback_none"):
                 if "_error" not in result and result.get("source_type") != "sirene_ape":
                     time.sleep(CALL_DELAY)
 
@@ -629,8 +746,9 @@ def main() -> int:
             print(
                 f"  [{processed:>4}/{total}] {pct:5.1f}%  ·  {rate:4.1f} items/s  ·  "
                 f"ETA {eta//60:02d}m{eta%60:02d}s  ·  "
-                f"APE={stats['sirene_ape']} grounded={stats['grounded_search']} "
-                f"wiki={stats['wikipedia']} libelle={stats['sirene_libelle']} "
+                f"APE={stats['sirene_ape']} claude={stats['claude_web']} "
+                f"gemini={stats['grounded_search']} wiki={stats['wikipedia']} "
+                f"libelle={stats['sirene_libelle']} "
                 f"none={stats['fallback_none']} err={stats['errors']}",
                 flush=True,
             )
@@ -641,7 +759,8 @@ def main() -> int:
     print(f"💾 Cache écrit : {CACHE_PATH.relative_to(PROJECT_ROOT)} ({len(cache)} entrées)")
     print(
         f"📊 Résumé : SIRENE-APE={stats['sirene_ape']}  ·  "
-        f"grounded={stats['grounded_search']}  ·  "
+        f"claude-web={stats['claude_web']}  ·  "
+        f"gemini={stats['grounded_search']}  ·  "
         f"wikipedia={stats['wikipedia']}  ·  "
         f"sirene-libelle={stats['sirene_libelle']}  ·  "
         f"fallback={stats['fallback_none']}  ·  erreurs={stats['errors']}"
