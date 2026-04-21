@@ -894,6 +894,24 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 }
 .theme-fusion .fx-timechart svg { display: block; }
 
+/* Mobile: the 1200×340 viewBox scales to fit both axes of the container
+   ("meet" mode), so on a 375-wide viewport the content shrinks to ~31 %
+   and the fixed 340-px height leaves a huge empty band. Switch to
+   horizontal scroll with a sensible min-width and auto height so the
+   chart stays legible. */
+@media (max-width: 768px) {
+  .theme-fusion .fx-timechart {
+    padding: 18px 14px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .theme-fusion .fx-timechart svg {
+    min-width: 620px;
+    height: auto !important;
+    aspect-ratio: 1200 / 340;
+  }
+}
+
 /* Viz meta row — small sentence under a chart + inline link */
 .theme-fusion .fx-viz-meta {
   margin-top: 18px;
