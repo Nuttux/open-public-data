@@ -56,3 +56,7 @@ pipeline/output/
 
 # Backup directories
 .git.broken/
+
+# Scraped PDF deliberation cache (rebuilt by scrape_deliberations.py)
+pipeline/cache/delibs/pdf/
+pipeline/cache/delibs/html/
