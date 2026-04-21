@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-21T22:53:26",
+  "generated_at": "2026-04-21T23:31:53",
   "source": "recherche-entreprises.api.gouv.fr",
-  "count": 794,
+  "count": 924,
   "items": {
     "le théâtre paris-villette": {
       "denomination": "THEATRE PARIS VILLETTE",
@@ -5910,6 +5910,984 @@
     "intervalle - consultations et accueils psychanalytiques": null,
     "la porte ouverte paris centre d’aide morale et psychologique": null,
     "les psy nomades": null,
-    "22 786 euros": null
+    "22 786 euros": null,
+    "cirque ici": {
+      "denomination": "CIRQUE ICI",
+      "siren": "439481979",
+      "siret": "43948197900045",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Cirque Ici"
+    },
+    "compagnie graines de soleil": {
+      "denomination": "COMPAGNIE GRAINS DE SOLEIL",
+      "siren": "521620799",
+      "siret": "52162079900010",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS 5",
+      "matched_name": "Compagnie Graines de Soleil"
+    },
+    "la place": {
+      "denomination": "PLACE",
+      "siren": "931842751",
+      "siret": "93184275100022",
+      "nature_juridique": "5710",
+      "activite_principale": "71.11Z",
+      "ville_siege": "PARIS",
+      "matched_name": "La Place"
+    },
+    "forces majeures": {
+      "denomination": "FORCES MAJEURES COLLECTIF DE CHAMBRISTES",
+      "siren": "809946106",
+      "siret": "80994610600014",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "VILLEFAVARD",
+      "matched_name": "Forces majeures"
+    },
+    "pro quartet": {
+      "denomination": "PRO QUARTET CTRE EUR MUSIQUE CHAMBRE",
+      "siren": "342704665",
+      "siret": "34270466500047",
+      "nature_juridique": "9220",
+      "activite_principale": "85.52Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Pro Quartet"
+    },
+    "festivals le chant de la terre": {
+      "denomination": "FESTIVALS LE CHANT DE LA TERRE",
+      "siren": "907505465",
+      "siret": "90750546500019",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "SAINT-MAUR-DES-FOSSES",
+      "matched_name": "Festivals le chant de la terre"
+    },
+    "polynotes 75": {
+      "denomination": "POLYNOTES 75",
+      "siren": "391872801",
+      "siret": "39187280100041",
+      "nature_juridique": "9220",
+      "activite_principale": "85.52Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Polynotes 75"
+    },
+    "école de la transition écologique paris – etre paris": {
+      "denomination": "ECOLE DE LA TRANSITION ECOLOGIQUE PARIS - ETRE PARIS",
+      "siren": "848829602",
+      "siret": "84882960200012",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "École de la transition écologique Paris – ETRE Paris"
+    },
+    "agence pour la promotion de la création industrielle apci": {
+      "denomination": "ASS AGENCE PROMOTION CREATION INDUSTRIEL",
+      "siren": "328747613",
+      "siret": "32874761300060",
+      "nature_juridique": "9220",
+      "activite_principale": "63.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Agence pour la Promotion de la Création Industrielle APCI"
+    },
+    "artistes et artisans d'art du 11ème arrondissement": null,
+    "apur (atelier parisien d'urbanisme)": {
+      "denomination": "ATELIER PARISIEN D URBANISME",
+      "siren": "784237539",
+      "siret": "78423753900068",
+      "nature_juridique": "9220",
+      "activite_principale": "71.11Z",
+      "ville_siege": "PARIS",
+      "matched_name": "APUR (Atelier Parisien d'Urbanisme)"
+    },
+    "florimont": {
+      "denomination": "FLORIMONT JOAILLERIE",
+      "siren": "932200702",
+      "siret": "93220070200011",
+      "nature_juridique": "5710",
+      "activite_principale": "32.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "FLORIMONT"
+    },
+    "apesa paris": {
+      "denomination": "APESA PARIS",
+      "siren": "900702374",
+      "siret": "90070237400019",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "APESA Paris"
+    },
+    "ares atelier": {
+      "denomination": "ARES ATELIER",
+      "siren": "411935620",
+      "siret": "41193562000038",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PANTIN",
+      "matched_name": "Ares Atelier"
+    },
+    "les restaurants du cœur de paris –les relais du cœur de paris": {
+      "denomination": "FONCIERE DU COEUR",
+      "siren": "931753131",
+      "siret": "93175313100016",
+      "nature_juridique": "5308",
+      "activite_principale": "88.99B",
+      "ville_siege": "PARIS",
+      "matched_name": "Les Restaurants du Cœur de Paris –Les relais du cœur de Paris"
+    },
+    "l'équipage": {
+      "denomination": "L'EQUIPAGE SOLIDAIRE",
+      "siren": "890541360",
+      "siret": "89054136000016",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "l'Équipage"
+    },
+    "travail et partage –armée du salut": null,
+    "passerelles 17": {
+      "denomination": "PASSERELLES 17 ASSOCIATION POUR LA REGIE DE QUARTIER DU 17E NORD EST",
+      "siren": "494216559",
+      "siret": "49421655900034",
+      "nature_juridique": "9220",
+      "activite_principale": "88.99B",
+      "ville_siege": "PARIS",
+      "matched_name": "Passerelles 17"
+    },
+    "treize collèges publics": null,
+    "archives recherches et cultures lesbiennes –arcl": null,
+    "association de gestion du local interassociatif lgbtqi+ du 22 rue malher": {
+      "denomination": "ASSOCIATION DE GESTION DU LOCAL INTERASSOCIATIF LGBTQI+ DU 22 RUE MALHER",
+      "siren": "910538776",
+      "siret": "91053877600014",
+      "nature_juridique": "9220",
+      "activite_principale": "93.29Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Association de Gestion du Local Interassociatif LGBTQI+ du 22 rue Malher"
+    },
+    "association des journalistes lgbtqia+ (ajl)": null,
+    "association pour la reconnaissance des droits des personnes homosexuelles et trans à l'immigration et au séjour (ardhis)": null,
+    "collectif intersexe activiste – oii france": {
+      "denomination": "COLLECTIF INTERSEXE ACTIVISTE",
+      "siren": "837559434",
+      "siret": "83755943400043",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Collectif Intersexe Activiste – OII France"
+    },
+    "flag !": {
+      "denomination": "FLAG INTERNATIONAL",
+      "siren": "351694807",
+      "siret": "35169480700014",
+      "nature_juridique": "5499",
+      "activite_principale": "82.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "FLAG !"
+    },
+    "label gouine": {
+      "denomination": "LABEL GOUINE*",
+      "siren": "924164601",
+      "siret": "92416460100024",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Label Gouine"
+    },
+    "sos homophobie": {
+      "denomination": "SOS HOMOPHOBIE",
+      "siren": "443793492",
+      "siret": "44379349200044",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "SOS Homophobie"
+    },
+    "observatoire international des prisons – section française oip-sf": null,
+    "aarao – alphabétisation et accompagnement des ressortissants d'afrique de l'ouest": null,
+    "entraide & savoirs – necker-falguière": {
+      "denomination": "ENTRAIDE & SAVOIRS NECKER-FALGUIERE",
+      "siren": "850330804",
+      "siret": "85033080400012",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Entraide & Savoirs – Necker-Falguière"
+    },
+    "mon oeil!": {
+      "denomination": "MON OEIL!",
+      "siren": "832678072",
+      "siret": "83267807200014",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "MON OEIL!"
+    },
+    "girlfight – conseil de vie": {
+      "denomination": "GIRLFIGHT CONSEILS DE VIE",
+      "siren": "838361707",
+      "siret": "83836170700014",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Girlfight – Conseil de Vie"
+    },
+    "volley – vous +": {
+      "denomination": "VOLLEY-VOUS +",
+      "siren": "923979868",
+      "siret": "92397986800026",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Volley – Vous +"
+    },
+    "saint vincent de paul-accueil f. ozanam-la madeleine": null,
+    "société de saint-vincent-de-paul –conseil de paris": {
+      "denomination": "TINA BOLLAND CONSEIL",
+      "siren": "821714672",
+      "siret": "82171467200010",
+      "nature_juridique": "5710",
+      "activite_principale": "70.21Z",
+      "ville_siege": "PARIS",
+      "matched_name": "SOCIÉTÉ DE SAINT-VINCENT-DE-PAUL –CONSEIL DE PARIS"
+    },
+    "association solidarité sainte jeanne de chantal – ssjc": {
+      "denomination": "SOLIDARITE SAINTE JEANNE DE CHANTAL",
+      "siren": "832263800",
+      "siret": "83226380000019",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "ASSOCIATION SOLIDARITÉ SAINTE JEANNE DE CHANTAL – SSJC"
+    },
+    "association française d'astronomie": {
+      "denomination": "ASS FRANCAISE ASTRONOMIE",
+      "siren": "308850882",
+      "siret": "30885088200025",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Association Française d'Astronomie"
+    },
+    "collectif culture bar-bars paris /ile-de-france": {
+      "denomination": "COLLECTIF CULTURE BAR-BARS PARIS/ILE DE FRANCE",
+      "siren": "538715012",
+      "siret": "53871501200042",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Collectif Culture Bar-Bars Paris /Ile-de-France"
+    },
+    "association pour la gestion d'espaces temporaires artistiques (ageta)": {
+      "denomination": "ASSOCIATION POUR LA GESTION D ESPACES TEMPORAIRES ARTISTIQUES-AGETA",
+      "siren": "533214722",
+      "siret": "53321472200035",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "ASSOCIATION POUR LA GESTION D'ESPACES TEMPORAIRES ARTISTIQUES (AGETA)"
+    },
+    "association française d'agriculture urbaine professionnelle": {
+      "denomination": "ASSOCIATION FRANCAISE DE L'AGRICULTURE URBAINE PROFESSIONNELLE (AFAUP)",
+      "siren": "838298081",
+      "siret": "83829808100038",
+      "nature_juridique": "9220",
+      "activite_principale": "93.29Z",
+      "ville_siege": "COMBRIT",
+      "matched_name": "Association Française d'Agriculture Urbaine Professionnelle"
+    },
+    "terre de liens ile-de-france": {
+      "denomination": "TERRE DE LIENS ILE-DE-FRANCE",
+      "siren": "538025644",
+      "siret": "53802564400047",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Terre de Liens Ile-de-France"
+    },
+    "fondation olga spitzer": {
+      "denomination": "FONDATION OLGA SPITZER",
+      "siren": "775657729",
+      "siret": "77565772900676",
+      "nature_juridique": "9300",
+      "activite_principale": "87.90A",
+      "ville_siege": "PARIS",
+      "matched_name": "Fondation Olga Spitzer"
+    },
+    "fondation opej – baron edmond de rothschild": {
+      "denomination": "OPEJ BARON EDMOND DE ROTHSCHILD",
+      "siren": "775692064",
+      "siret": "77569206400014",
+      "nature_juridique": "9300",
+      "activite_principale": "88.99A",
+      "ville_siege": "PARIS",
+      "matched_name": "Fondation OPEJ – Baron Edmond de Rothschild"
+    },
+    "fondation henriette viollet –aides aux familles": null,
+    "une nouvelle idée de la crèche paris": {
+      "denomination": "UNE NOUVELLE IDEE DE LA CRECHE PARIS",
+      "siren": "828227025",
+      "siret": "82822702500040",
+      "nature_juridique": "9220",
+      "activite_principale": "88.91A",
+      "ville_siege": "PARIS",
+      "matched_name": "Une Nouvelle Idée de la crèche Paris"
+    },
+    "pour l'accueil de tous les enfants (apate)": {
+      "denomination": "ASSOCIATION POUR L'ACCUEIL DE TOUS LES ENFANTS",
+      "siren": "844545335",
+      "siret": "84454533500011",
+      "nature_juridique": "9220",
+      "activite_principale": "85.59B",
+      "ville_siege": "PARIS",
+      "matched_name": "Pour l'Accueil de Tous les Enfants (APATE)"
+    },
+    "société maternelle, la nouvelle etoile des enfants de france": null,
+    "quel univers inventer ?": {
+      "denomination": "QUEL UNIVERS INVENTER",
+      "siren": "321194045",
+      "siret": "32119404500027",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Quel univers inventer ?"
+    },
+    "crèche parentale pirouett'": {
+      "denomination": "CRECHE PARENTALE HALTE GARDER PIROUETTE",
+      "siren": "390648921",
+      "siret": "39064892100018",
+      "nature_juridique": "9220",
+      "activite_principale": "88.91A",
+      "ville_siege": "MOUTIERS-EN-PUISAYE",
+      "matched_name": "Crèche parentale Pirouett'"
+    },
+    "au fil de la découverte": {
+      "denomination": "AU FIL DE LA DECOUVERTE",
+      "siren": "348856899",
+      "siret": "34885689900011",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Au Fil de la Découverte"
+    },
+    "la porte entr'ouverte": {
+      "denomination": "ASSOC LA PORTE ENTR'OUVERTE",
+      "siren": "322579251",
+      "siret": "32257925100016",
+      "nature_juridique": "9220",
+      "activite_principale": "88.91A",
+      "ville_siege": "PARIS",
+      "matched_name": "La Porte Entr'ouverte"
+    },
+    "la maison de l'enfance": {
+      "denomination": "ENFANCE POUR TOUS",
+      "siren": "507937852",
+      "siret": "50793785200642",
+      "nature_juridique": "9220",
+      "activite_principale": "88.91A",
+      "ville_siege": "PARIS",
+      "matched_name": "La Maison de l'enfance"
+    },
+    "capucine et papillons jardin d'enfance": {
+      "denomination": "CAPUCINE ET PAPILLONS JARDIN D'ENFANCE",
+      "siren": "481586964",
+      "siret": "48158696400027",
+      "nature_juridique": "9220",
+      "activite_principale": "88.91A",
+      "ville_siege": "PARIS",
+      "matched_name": "Capucine et Papillons Jardin d'Enfance"
+    },
+    "pot@mai": {
+      "denomination": "POT@MAI",
+      "siren": "834295628",
+      "siret": "83429562800020",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "CERBERE",
+      "matched_name": "POT@MAI"
+    },
+    "ville de paris": {
+      "denomination": "VILLE DE PARIS",
+      "siren": "217500016",
+      "siret": "21750001600019",
+      "nature_juridique": "7229",
+      "activite_principale": "84.11Z",
+      "ville_siege": "PARIS 04",
+      "matched_name": "Ville de Paris"
+    },
+    "association sportive des jeunes sourds de paris": {
+      "denomination": "ASSOCIATION SPORTIVE DES JEUNES SOURDS DE PARIS",
+      "siren": "750426231",
+      "siret": "75042623100015",
+      "nature_juridique": "9220",
+      "activite_principale": "85.51Z",
+      "ville_siege": "PARIS",
+      "matched_name": "association sportive des jeunes sourds de Paris"
+    },
+    "bahamas": {
+      "denomination": "BAHAMAS",
+      "siren": "412445306",
+      "siret": "41244530600027",
+      "nature_juridique": "5499",
+      "activite_principale": "46.42Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Bahamas"
+    },
+    "asmf-association handisport de paris": {
+      "denomination": "ASMF ASSOCIATION HANDISPORT DE PARIS PREMIERE ASSOCIATION FRANCAISE CREEE EN 1954",
+      "siren": "429824592",
+      "siret": "42982459200050",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "ASMF-Association handisport de Paris"
+    },
+    "sport adapté du sud-est de paris": {
+      "denomination": "SPORT ADAPTE DU SUD EST DE PARIS",
+      "siren": "404376873",
+      "siret": "40437687300034",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Sport adapté du sud-est de Paris"
+    },
+    "club de natation adaptée-les dauphins du xvème": null,
+    "association sportive handi-jeunes de paris": {
+      "denomination": "ASS SPORTIVE HANDI JEUNES PARIS",
+      "siren": "480856624",
+      "siret": "48085662400014",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "association sportive handi-jeunes de Paris"
+    },
+    "c.s.i.n.i.": {
+      "denomination": "ENTENTE SPORTIVE SCUF CSINI",
+      "siren": "387507460",
+      "siret": "38750746000013",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "C.S.I.N.I."
+    },
+    "c.a.p.s.a.a.a.": {
+      "denomination": "RUGBY FAUTEUIL FRANCE DEVELOPPEMENT COMPETITION",
+      "siren": "924801202",
+      "siret": "92480120200012",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "C.A.P.S.A.A.A."
+    },
+    "comité départemental du sport adapté de paris": {
+      "denomination": "COMITE DEPARTEMENTAL SPORT ADAPTE PARIS",
+      "siren": "447580879",
+      "siret": "44758087900024",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Comité Départemental du Sport Adapté de Paris"
+    },
+    "comité départemental handisport de paris": {
+      "denomination": "COMITE DEPARTEMENTAL HANDISPORT DE PARIS",
+      "siren": "450888730",
+      "siret": "45088873000014",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Comité Départemental Handisport de Paris"
+    },
+    "mouettes de paris": {
+      "denomination": "LES MOUETTES DE PARIS",
+      "siren": "400988390",
+      "siret": "40098839000037",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Mouettes de Paris"
+    },
+    "paris nage libre": {
+      "denomination": "PARIS NAGE LIBRE",
+      "siren": "924090277",
+      "siret": "92409027700014",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Paris Nage Libre"
+    },
+    "association sportive du lycée racine": {
+      "denomination": "ASS  SPORTIVE DU LYCEE RACINE",
+      "siren": "428434732",
+      "siret": "42843473200015",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "association sportive du lycée Racine"
+    },
+    "expatriés inernational triathlon club ofparis": null,
+    "icf habitat la sablière secteur hébert lot h": null,
+    "icf habitat la sablière": {
+      "denomination": "GIE ECHANGER HABITER",
+      "siren": "854006152",
+      "siret": "85400615200011",
+      "nature_juridique": "6220",
+      "activite_principale": "68.20A",
+      "ville_siege": "PARIS",
+      "matched_name": "ICF Habitat La Sablière"
+    },
+    "rivp": {
+      "denomination": "REGIE IMMOBILIERE DE LA VILLE DE PARIS",
+      "siren": "552032708",
+      "siret": "55203270800216",
+      "nature_juridique": "5599",
+      "activite_principale": "68.20A",
+      "ville_siege": "PARIS",
+      "matched_name": "RIVP"
+    },
+    "extramurosl'association": null,
+    "calliope –cité des arts, de la parole et du bien dire": {
+      "denomination": "CALLIOPE - CITE DES ARTS DE LA PAROLE ET DU BIEN DIRE",
+      "siren": "837592153",
+      "siret": "83759215300022",
+      "nature_juridique": "9220",
+      "activite_principale": "90.03B",
+      "ville_siege": "PARIS",
+      "matched_name": "Calliope –Cité des arts, de la parole et du bien dire"
+    },
+    "capoeira viola –compagnie le sommet de l'abricotier": {
+      "denomination": "CAPOEIRA VIOLA COMPAGNIE LE SOMMET DE L ABRICOTIER",
+      "siren": "398713586",
+      "siret": "39871358600061",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Capoeira Viola –compagnie le sommet de l'abricotier"
+    },
+    "culture 21 – triton théâtre": null,
+    "up sport ! unis pour le sport": {
+      "denomination": "UP SPORT ! UNIS POUR LE SPORT",
+      "siren": "819794413",
+      "siret": "81979441300032",
+      "nature_juridique": "9220",
+      "activite_principale": "93.19Z",
+      "ville_siege": "PARIS",
+      "matched_name": "UP Sport ! Unis pour le Sport"
+    },
+    "a toi theatre": {
+      "denomination": "A TOI THEATRE",
+      "siren": "432916971",
+      "siret": "43291697100034",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "A TOI THEATRE"
+    },
+    "association de prevention specialisee et d'accompagement des jeunes (apsaj)": null,
+    "association pour la creation et l'innovation artistique et culturelle a.c.i.a.c": {
+      "denomination": "ASSOCIATION POUR LA CREATION ET L'INNOVATION ARTISTIQUE ET CULTURELLE A.C.I.A.C",
+      "siren": "791095631",
+      "siret": "79109563100028",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "LA VERRIERE",
+      "matched_name": "ASSOCIATION POUR LA CREATION ET L'INNOVATION ARTISTIQUE ET CULTURELLE A.C.I.A.C"
+    },
+    "la maison du canal regie de quartier paris 10": {
+      "denomination": "LA MAISON DU CANAL -REGIE DE QUARTIER PARIS 10",
+      "siren": "512274309",
+      "siret": "51227430900024",
+      "nature_juridique": "9220",
+      "activite_principale": "88.99B",
+      "ville_siege": "PARIS",
+      "matched_name": "LA MAISON DU CANAL REGIE DE QUARTIER PARIS 10"
+    },
+    "le picoulet mission populaire du xième": null,
+    "centre d'action sociale protestant (casp)": {
+      "denomination": "CENTRE D ACTION SOCIALE PROTESTANT",
+      "siren": "318732161",
+      "siret": "31873216100035",
+      "nature_juridique": "9220",
+      "activite_principale": "87.90B",
+      "ville_siege": "PARIS",
+      "matched_name": "Centre d'Action Sociale Protestant (CASP)"
+    },
+    "association du quartier saint bernard": {
+      "denomination": "ASSOC DU QUARTIER SAINT BERNARD",
+      "siren": "444442016",
+      "siret": "44444201600036",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Association du Quartier Saint Bernard"
+    },
+    "léo lagrange animation": {
+      "denomination": "LEO LAGRANGE ANIMATION",
+      "siren": "351713532",
+      "siret": "35171353200817",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Léo Lagrange Animation"
+    },
+    "danube social et culturel": {
+      "denomination": "ASSOCIATION DANUBE SOCIAL ET CULTUREL",
+      "siren": "449920420",
+      "siret": "44992042000022",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Danube Social et Culturel"
+    },
+    "belle ville": {
+      "denomination": "BELLE VILLE",
+      "siren": "811792795",
+      "siret": "81179279500015",
+      "nature_juridique": "6540",
+      "activite_principale": "68.20B",
+      "ville_siege": "PARIS",
+      "matched_name": "Belle Ville"
+    },
+    "aocsa la 20ème chaise": null,
+    "davout relais": {
+      "denomination": "DAVOUT RELAIS",
+      "siren": "795158393",
+      "siret": "79515839300020",
+      "nature_juridique": "9220",
+      "activite_principale": "88.99B",
+      "ville_siege": "PARIS",
+      "matched_name": "Davout Relais"
+    },
+    "groupement de coopération sociale et médico-sociale porteur du projet paris les ainés d'abord !": null,
+    "association d'entraide des pupilles et anciens pupilles de l'état (aepape 75 /atout cœur)": null,
+    "association nationale de prévention en alcoologie et addictologie": {
+      "denomination": "ASSOCIATION NATIONALE DE PREVENTION EN ALCOOLOGIE ET ADDICTOLOGIE",
+      "siren": "775660087",
+      "siret": "77566008700013",
+      "nature_juridique": "9220",
+      "activite_principale": "86.21Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Association Nationale de Prévention en Alcoologie et Addictologie"
+    },
+    "association aux captifs la libération": {
+      "denomination": "AUX CAPTIFS LA LIBERATION",
+      "siren": "325910412",
+      "siret": "32591041200080",
+      "nature_juridique": "9220",
+      "activite_principale": "88.99B",
+      "ville_siege": "PARIS",
+      "matched_name": "Association Aux Captifs La Libération"
+    },
+    "association gaia paris": {
+      "denomination": "GAIA PARIS",
+      "siren": "493692784",
+      "siret": "49369278400025",
+      "nature_juridique": "9220",
+      "activite_principale": "87.20B",
+      "ville_siege": "PARIS",
+      "matched_name": "Association GAIA PARIS"
+    },
+    "oppelia": {
+      "denomination": "OPPELIA",
+      "siren": "326021177",
+      "siret": "32602117700703",
+      "nature_juridique": "9220",
+      "activite_principale": "87.20B",
+      "ville_siege": "PARIS",
+      "matched_name": "OPPELIA"
+    },
+    "association pour le développement de l'analyse de drogues comme outil de réduction des risques et des dommages": {
+      "denomination": "ASSOCIATION POUR LE DEVELOPPEMENT DE L'ANALYSE DE DROGUES COMME OUTIL DE REDUCTION DES RISQUES ET DES DOMMAGES",
+      "siren": "912337243",
+      "siret": "91233724300014",
+      "nature_juridique": "9220",
+      "activite_principale": "72.19Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Association Pour le Développement de l'Analyse de Drogues comme outil de Réduction des Risques et des Dommages"
+    },
+    "association aurore": {
+      "denomination": "AURORE",
+      "siren": "534572540",
+      "siret": "53457254000035",
+      "nature_juridique": "5499",
+      "activite_principale": "70.22Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Association AURORE"
+    },
+    "checkpoint": {
+      "denomination": "CHECKPOINT",
+      "siren": "390725182",
+      "siret": "39072518200047",
+      "nature_juridique": "9220",
+      "activite_principale": "93.29Z",
+      "ville_siege": "PARIS",
+      "matched_name": "CHECKPOINT"
+    },
+    "scm cabinet médical la fayette": {
+      "denomination": "SCM CABINET MEDICAL LA FAYETTE",
+      "siren": "331417204",
+      "siret": "33141720400020",
+      "nature_juridique": "6589",
+      "activite_principale": "82.19Z",
+      "ville_siege": "PARIS",
+      "matched_name": "SCM Cabinet Médical La Fayette"
+    },
+    "association pour la promotion et développement du centre ressource européen en clinique transculturelle-babel": null,
+    "schizo oui !": {
+      "denomination": "SCHIZO OUI FAIRE FACE A LA SCHIZOPHRENIE",
+      "siren": "439803602",
+      "siret": "43980360200028",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Schizo Oui !"
+    },
+    "grand port fluvio-maritime de l'axe seine (haropa –port)": {
+      "denomination": "GRAND PORT FLUVIO-MARITIME DE L'AXE SEINE",
+      "siren": "899614804",
+      "siret": "89961480400016",
+      "nature_juridique": "4110",
+      "activite_principale": "52.22Z",
+      "ville_siege": "LE HAVRE",
+      "matched_name": "Grand Port fluvio-maritime de l'Axe Seine (HAROPA –Port)"
+    },
+    "3s – séjour sportif solidaire": {
+      "denomination": "SPORT CIRCULAIRE",
+      "siren": "914723861",
+      "siret": "91472386100011",
+      "nature_juridique": "5710",
+      "activite_principale": "38.11Z",
+      "ville_siege": "MASSY",
+      "matched_name": "3S – Séjour Sportif Solidaire"
+    },
+    "accueil goutte d'or": {
+      "denomination": "ACCUEIL GOUTTE D'OR",
+      "siren": "408646008",
+      "siret": "40864600800057",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Accueil Goutte d'Or"
+    },
+    "animation, insertion, culture et vélo": {
+      "denomination": "ASSO ANIMATION INSERTION CULTURE VELO",
+      "siren": "405395666",
+      "siret": "40539566600036",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Animation, Insertion, Culture et Vélo"
+    },
+    "comité départemental de cyclotourisme de paris -codep 75": {
+      "denomination": "COMITE DEPARTEMENTAL DE CYCLOTOURISME DE PARIS CODEP 75",
+      "siren": "801370073",
+      "siret": "80137007300018",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Comité Départemental de Cyclotourisme de Paris -Codep 75"
+    },
+    "cycl'avenir": {
+      "denomination": "CYCL'AVENIR",
+      "siren": "890785652",
+      "siret": "89078565200029",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Cycl'Avenir"
+    },
+    "cyclocube": {
+      "denomination": "CYCLOCUBE",
+      "siren": "891011322",
+      "siret": "89101132200023",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Cyclocube"
+    },
+    "développement animation vélo solidaire": {
+      "denomination": "DEVELOPPEMENT ANIMATION VELO-SOLIDAIRE",
+      "siren": "810506576",
+      "siret": "81050657600018",
+      "nature_juridique": "9220",
+      "activite_principale": "93.19Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Développement Animation Vélo Solidaire"
+    },
+    "de monblemont": {
+      "denomination": "DE MONBLEMONT",
+      "siren": "884814369",
+      "siret": "88481436900010",
+      "nature_juridique": "9220",
+      "activite_principale": "93.19Z",
+      "ville_siege": "PARIS",
+      "matched_name": "De Monblemont"
+    },
+    "études et chantiers solicycle": null,
+    "la course des triporteurs": {
+      "denomination": "LA COURSE DES TRIPORTEURS",
+      "siren": "924436116",
+      "siret": "92443611600017",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "La Course des Triporteurs"
+    },
+    "la cyclofficine": {
+      "denomination": "LA CYCLOFFICINE DE PARIS",
+      "siren": "532116738",
+      "siret": "53211673800040",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "La Cyclofficine"
+    },
+    "le petit biclou": {
+      "denomination": "LE PETIT BICLOU",
+      "siren": "850853169",
+      "siret": "85085316900017",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Le Petit Biclou"
+    },
+    "les roues libres": {
+      "denomination": "LES ROUES LIBRES",
+      "siren": "899416663",
+      "siret": "89941666300016",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Les Roues Libres"
+    },
+    "paillettes et cambouis": {
+      "denomination": "PAILLETTES & CAMBOUIS",
+      "siren": "888783560",
+      "siret": "88878356000020",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Paillettes et Cambouis"
+    },
+    "régie de quartier du 19e": {
+      "denomination": "REGIE DE QUARTIER DU 19E",
+      "siren": "441681715",
+      "siret": "44168171500047",
+      "nature_juridique": "9220",
+      "activite_principale": "88.99B",
+      "ville_siege": "PARIS",
+      "matched_name": "Régie de Quartier du 19e"
+    },
+    "répar": {
+      "denomination": "SOC CHAUFFE COMBUST REPAR APPAREIL MECAN",
+      "siren": "552055733",
+      "siret": "55205573300570",
+      "nature_juridique": "5599",
+      "activite_principale": "35.30Z",
+      "ville_siege": "LA GARENNE-COLOMBES",
+      "matched_name": "RéPAR"
+    },
+    "rosa parks paris": {
+      "denomination": "ROSA PARKS (PARIS)",
+      "siren": "808843494",
+      "siret": "80884349400028",
+      "nature_juridique": "9220",
+      "activite_principale": "93.29Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Rosa Parks Paris"
+    },
+    "vélo école du 20eme": {
+      "denomination": "VELO ECOLE DU 20EME",
+      "siren": "817859622",
+      "siret": "81785962200018",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Vélo École du 20eme"
+    },
+    "prévention routière": {
+      "denomination": "LA PREVENTION ROUTIERE",
+      "siren": "775719792",
+      "siret": "77571979202650",
+      "nature_juridique": "9230",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Prévention Routière"
+    },
+    "avenir santé france": {
+      "denomination": "AVENIR SANTE FRANCE",
+      "siren": "420829228",
+      "siret": "42082922800246",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "LYON",
+      "matched_name": "Avenir santé France"
+    },
+    "rue de l'avenir": {
+      "denomination": "RUE DE L'AVENIR",
+      "siren": "380727263",
+      "siret": "38072726300036",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Rue de l'Avenir"
+    },
+    "60 millions de piétons": {
+      "denomination": "60 MILLIONS DE PIETONS",
+      "siren": "308254432",
+      "siret": "30825443200054",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "60 Millions de piétons"
+    },
+    "a place égale": {
+      "denomination": "YOLANDE MESTRE",
+      "siren": "418137451",
+      "siret": "41813745100070",
+      "nature_juridique": "1000",
+      "activite_principale": "96.09Z",
+      "ville_siege": "LA ROQUETTE-SUR-SIAGNE",
+      "matched_name": "A place égale"
+    },
+    "crl10": null,
+    "le picoulet": {
+      "denomination": "PICOULET",
+      "siren": "812611598",
+      "siret": "81261159800010",
+      "nature_juridique": "6540",
+      "activite_principale": "00.00Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Le Picoulet"
+    },
+    "la fabrique des petits hasards": {
+      "denomination": "LA FABRIQUE DES PETITS HASARDS",
+      "siren": "480130012",
+      "siret": "48013001200044",
+      "nature_juridique": "9230",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "La Fabrique des Petits Hasards"
+    },
+    "léo lagrange nord-ile de france": {
+      "denomination": "LEO LAGRANGE NORD -ILE-DE-FRANCE",
+      "siren": "316619824",
+      "siret": "31661982400931",
+      "nature_juridique": "9220",
+      "activite_principale": "93.29Z",
+      "ville_siege": "AMIENS",
+      "matched_name": "Léo Lagrange Nord-Ile de France"
+    },
+    "rosa parks": {
+      "denomination": "SAS AU RESTAURANT ROSA PARKS",
+      "siren": "889318218",
+      "siret": "88931821800027",
+      "nature_juridique": "5710",
+      "activite_principale": "56.10A",
+      "ville_siege": "PARIS",
+      "matched_name": "Rosa Parks"
+    }
   }
 }
