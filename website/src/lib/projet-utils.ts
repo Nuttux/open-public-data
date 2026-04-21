@@ -16,6 +16,41 @@ export function slugifyChapitre(label: string): string {
 /** Alias — same algorithm, kept under a generic name for budget/other usages. */
 export const slugifyLabel = slugifyChapitre;
 
+// ───────────────────────────────────────────────────────────────────────────
+// Types partagés pour la résolution de photo — le loader vit côté serveur
+// (fusion-data.ts), ces types sont ré-exportés ici pour que les composants
+// client puissent les typer sans importer fs/path.
+// ───────────────────────────────────────────────────────────────────────────
+
+/** Une photo générique issue de la banque curée par typologie. */
+export type GenericPhotoEntry = {
+  url: string | null;
+  label: string;
+  credit?: string | null;
+  source_label?: string | null;
+  source?: string | null;
+};
+
+/** Décision photo LLM pré-résolue par projet. `decision` détermine le rendu :
+ *  "photo_dediee" → photo_url + credit ; "generique_typologique" → fallback
+ *  sur `generic` de la typologie ; "pictogramme" → SVG. */
+export type ProjetPhotoDecision = {
+  decision: "photo_dediee" | "generique_typologique" | "pictogramme" | string;
+  photo_url?: string | null;
+  credit?: string | null;
+  source_label?: string | null;
+  source?: string | null;
+  score?: number | null;
+  rationale?: string | null;
+};
+
+/** Bundle résolu côté serveur, passé en props aux composants client. */
+export type ProjetPhotoResolved = {
+  photo: ProjetPhotoDecision | null;
+  generic: GenericPhotoEntry | null;
+  typologie: string | null;
+};
+
 /**
  * Devine la typologie depuis le nom du projet — fallback déterministe quand
  * la vulgarisation LLM n'est pas dispo. Matching par mots-clés, du plus
