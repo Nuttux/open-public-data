@@ -3453,13 +3453,25 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion .fx-movers-head b { color: var(--ink); font-weight: 500; }
 .theme-fusion .fx-mover-row {
   display: grid;
-  grid-template-columns: 1fr 90px 90px;
+  grid-template-columns: 1fr 90px 70px 80px;
   gap: 12px;
   padding: 10px 0;
   border-bottom: 1px solid var(--rule);
   align-items: baseline;
+  color: inherit;
+  text-decoration: none;
+  transition: background .12s;
+  position: relative;
 }
 .theme-fusion .fx-mover-row:last-child { border-bottom: 0; }
+.theme-fusion a.fx-mover-row { cursor: pointer; }
+.theme-fusion a.fx-mover-row:hover { background: #fafaf7; }
+.theme-fusion a.fx-mover-row:hover .l { color: var(--bleu-vif); }
+.theme-fusion a.fx-mover-row:hover .mfill { background: var(--bleu-vif); }
+.theme-fusion a.fx-mover-row:focus-visible {
+  outline: 2px solid var(--bleu-vif);
+  outline-offset: -2px;
+}
 .theme-fusion .fx-mover-row .l {
   font-family: var(--f-ui);
   font-size: 14px;
