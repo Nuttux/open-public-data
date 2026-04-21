@@ -14,6 +14,7 @@ import BrandMark from "@/components/fusion/BrandMark";
 import HeroBg from "@/components/fusion/HeroBg";
 import { fmtDec, fmtInt, fmtBillions } from "@/lib/fmt";
 import type { LandingStats } from "@/lib/fusion-data";
+import { slugifyLabel } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 
@@ -104,7 +105,7 @@ export default function LandingClient({ stats }: Props) {
               value: b.perMonth,
               unit: "€",
               display: fmtInt(b.perMonth),
-              href: `/budget?theme=${encodeURIComponent(b.label)}`,
+              href: `/budget/poste/${slugifyLabel(b.label)}?year=${stats.year}`,
             }))}
           />
         </div>
