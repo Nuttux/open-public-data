@@ -1102,7 +1102,7 @@ const fr: Record<string, string> = {
   'fx.nav.link.marches': 'Marchés publics',
   'fx.nav.link.invest': 'Investissements',
   'fx.nav.link.logement': 'Logement social',
-  'fx.nav.link.dette': 'Dette',
+  'fx.nav.link.dette': 'Bilan',
   'fx.nav.link.analyses': 'Analyses',
   'fx.nav.cta_budget': 'Budget {year} →',
   // Scope dropdown
@@ -1485,6 +1485,7 @@ const fr: Record<string, string> = {
   'fx.qr.src.c3.p': "Scripts d'extraction + dbt marts publics sous licence MIT. Les totaux par année peuvent être recalculés depuis le CSV d'origine.",
   'fx.qr.src.c3.link': 'GitHub ↗',
   'fx.qr.src.scope_note': "Périmètre : bénéficiaires (associations, fondations, opérateurs). Les subventions n'étant pas rattachées à une adresse unique, cette page ne propose pas de cartographie par arrondissement — voir « Investissements » pour les projets localisés.",
+  'fx.qr.src.freshness_note': "Couverture temporelle : dernière année consolidée disponible = 2024. Les exercices 2020 et 2021 sont absents du jeu open data en amont (réorganisation du dataset Ville de Paris). Les subventions 2025 seront publiées après le vote du compte administratif (typiquement T2-T3 2026).",
   'fx.qr.src.export.csv': 'CSV · {year}',
   'fx.qr.src.export.json': 'JSON',
   'fx.qr.src.export.treemap': 'Treemap JSON',
@@ -2256,9 +2257,10 @@ const fr: Record<string, string> = {
   // ── BilanBoard ──────────────────────────────────────────────────────────────
   'fx.bb.actif_head_l': 'Actif · <b>ce que la Ville possède</b>',
   'fx.bb.passif_head_l': 'Passif · <b>fonds propres + ce que la Ville doit</b>',
-  'fx.bb.actif_legend': "L'<b>actif immobilisé</b> (bâtiments, terrains, voirie, équipements) représente l'essentiel du patrimoine. Cliquez sur un segment pour ouvrir le détail des sous-postes.",
+  'fx.bb.actif_legend': "L'<b>actif immobilisé</b> (bâtiments, terrains, voirie, équipements) représente l'essentiel du patrimoine.",
   'fx.bb.passif_legend': 'Les <b>fonds propres</b> ({fp} Md €, {fpPct} %) constituent le patrimoine net accumulé. La <b>dette financière</b> ({dett} Md €, {dettPct} %) pèse le reste.',
   'fx.bb.autres': 'Autres · {n} postes mineurs',
+  'fx.bb.click_hint': '↳ Cliquez une ligne pour voir le détail',
 
   // ── PatrimoineDrillList ─────────────────────────────────────────────────────
   'fx.pdl.head_left': 'Rang · Composante',
