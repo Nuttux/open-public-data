@@ -11,7 +11,7 @@ type Annotation = {
 
 type Props = {
   points: Point[];
-  /** Currently highlighted year (rouge dot + badge). */
+  /** Currently highlighted year (ink dot + badge; no rouge). */
   activeYear: number;
   /** Vertical dashed-line annotations (COVID, JO, etc). */
   annotations?: Annotation[];
@@ -22,9 +22,10 @@ type Props = {
 };
 
 /**
- * Évolution du budget — line chart SVG matching the mockup. Solid
- * line for executed years, dashed line for estimate/voted, rouge
- * dot + badge on the active year.
+ * Évolution du budget — line chart SVG. Solid line for executed
+ * years, dashed line for estimate/voted; active year marked with an
+ * ink (not rouge) dot + ink badge to avoid editorial red on neutral
+ * values like "budget grew".
  */
 export default function BudgetTimeline({
   points,
@@ -140,15 +141,16 @@ export default function BudgetTimeline({
           return <circle key={p.year} cx={x} cy={y} r="4" fill="#fff" stroke="#0a0a0a" strokeWidth="2" />;
         })}
 
-        {/* Active year — rouge + badge */}
+        {/* Active year — ink + badge (neutral emphasis, no red) */}
         <g>
-          <circle cx={xFor(active.year)} cy={yFor(active.value)} r="8" fill="#e11d1d" />
+          <circle cx={xFor(active.year)} cy={yFor(active.value)} r="8" fill="#0a0a0a" />
+          <circle cx={xFor(active.year)} cy={yFor(active.value)} r="3.5" fill="#fafaf7" />
           <g transform={`translate(${xFor(active.year)}, ${yFor(active.value)})`}>
-            <rect x="-44" y="-60" width="88" height="28" fill="#e11d1d" />
+            <rect x="-44" y="-60" width="88" height="28" fill="#0a0a0a" />
             <text x="0" y="-40" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="12" fontWeight="700" fill="#fff">
               {active.year} {active.type === "vote" ? "voté" : active.type === "estimate" ? "est." : "exéc."}
             </text>
-            <line x1="0" y1="-31" x2="0" y2="-10" stroke="#e11d1d" strokeWidth="1.5" />
+            <line x1="0" y1="-31" x2="0" y2="-10" stroke="#0a0a0a" strokeWidth="1.5" />
           </g>
         </g>
 
@@ -159,7 +161,7 @@ export default function BudgetTimeline({
               key={p.year}
               x={xFor(p.year)}
               y={310}
-              fill={p.year === activeYear ? "#e11d1d" : "#5f6672"}
+              fill={p.year === activeYear ? "#0a0a0a" : "#5f6672"}
               fontWeight={p.year === activeYear ? 700 : 400}
             >
               {p.year}
@@ -173,7 +175,8 @@ export default function BudgetTimeline({
               key={p.year}
               x={xFor(p.year)}
               y={326}
-              fill={p.year === activeYear ? "#e11d1d" : "#9099a6"}
+              fill={p.year === activeYear ? "#0a0a0a" : "#9099a6"}
+              fontWeight={p.year === activeYear ? 700 : 400}
             >
               {p.type === "execute" ? "EXÉC." : p.type === "vote" ? "VOTÉ" : "EST."}
             </text>
