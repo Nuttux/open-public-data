@@ -407,6 +407,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 @media (max-width: 768px) {
   .theme-fusion .fx-nav { grid-template-columns: 1fr auto; }
   .theme-fusion .fx-links,
+  .theme-fusion .fx-scope-wrap,
   .theme-fusion .fx-scope-nav,
   .theme-fusion .fx-lang { display: none; }
   .theme-fusion .fx-menu-btn { display: flex; }
