@@ -73,7 +73,6 @@ export default function PosteFiche({ poste }: Props) {
               <ul>
                 {g.items.map((it) => (
                   <li key={it.rank}>
-                    <span className="n">#{String(it.rank).padStart(2, "0")}</span>
                     <span className="lbl">{it.n3}</span>
                     <span className="bar" aria-hidden="true">
                       <span

@@ -2772,19 +2772,13 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 }
 .theme-fusion .fx-poste-group li {
   display: grid;
-  grid-template-columns: 34px minmax(180px, 1.6fr) 1fr minmax(90px, auto);
+  grid-template-columns: minmax(180px, 1.6fr) 1fr minmax(90px, auto);
   gap: 14px;
   align-items: center;
   padding: 8px 0;
   border-bottom: 1px solid var(--rule);
 }
 .theme-fusion .fx-poste-group li:last-child { border-bottom: 0; }
-.theme-fusion .fx-poste-group li .n {
-  font-family: var(--f-mono);
-  font-size: 11px;
-  color: var(--ocre);
-  letter-spacing: .02em;
-}
 .theme-fusion .fx-poste-group li .lbl {
   font-family: var(--f-ui);
   font-size: 14px;
@@ -2811,7 +2805,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 @media (max-width: 640px) {
   .theme-fusion .fx-poste-stats { grid-template-columns: 1fr; }
   .theme-fusion .fx-poste-group li {
-    grid-template-columns: 28px 1fr minmax(80px, auto);
+    grid-template-columns: 1fr minmax(80px, auto);
     gap: 10px;
   }
   .theme-fusion .fx-poste-group li .bar { display: none; }
