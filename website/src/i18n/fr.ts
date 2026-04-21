@@ -1252,6 +1252,7 @@ const fr: Record<string, string> = {
   'fx.bud.s01.kpi.epargne.tip': "Recettes de fonctionnement moins dépenses de fonctionnement. Marge qui sert à financer l'investissement sans emprunter.",
   'fx.bud.s03.pareto_line': 'Sur chaque 100 € de dépenses en {year}, les 3 plus gros postes en captent {pct}.',
   'fx.bud.s03.yoy_label': 'Vs {prev} ·',
+  'fx.bud.voted_notice_cta': 'Voir {year} exécuté →',
   'fx.bud.s03.stack_kicker': 'Sur chaque 100 € dépensés en {year}',
   'fx.bud.s03.stack_entity': 'postes',
   'fx.bud.s03.stack_contrast': 'soit plus de la moitié du budget sur 3 thématiques',
