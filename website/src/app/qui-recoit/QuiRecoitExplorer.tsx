@@ -14,28 +14,6 @@ function themeColor(theme: string | null): string {
   return THEME_COLOR[key] ?? THEME_COLOR[theme] ?? "#9099a6";
 }
 
-function Sparkline({ history, color }: { history: { year: number; amount: number }[]; color: string }) {
-  const pts = history.filter((h) => h.amount > 0);
-  if (pts.length < 2) return null;
-  const max = Math.max(...pts.map((p) => p.amount));
-  const min = Math.min(...pts.map((p) => p.amount));
-  const range = max - min || 1;
-  const W = 64;
-  const H = 16;
-  const coords = pts.map((p, i) => {
-    const x = (i / (pts.length - 1)) * W;
-    const y = H - ((p.amount - min) / range) * H;
-    return `${x.toFixed(1)},${y.toFixed(1)}`;
-  });
-  const lastY = coords[coords.length - 1].split(",")[1];
-  return (
-    <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ display: "block", overflow: "visible", flexShrink: 0 }} aria-hidden="true">
-      <polyline points={coords.join(" ")} fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <circle cx={W} cy={lastY} r="2" fill={color} />
-    </svg>
-  );
-}
-
 type Bene = {
   name: string;
   theme: string | null;
@@ -262,11 +240,8 @@ export default function QuiRecoitExplorer({
                 >
                   <span className="r">{String(b.rank).padStart(2, "0")}</span>
                   <span className="name">{b.name}</span>
-                  <span className="bar" style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                    <span style={{ position: "relative", flex: 1, height: 8, background: "var(--rule)" }}>
-                      <span className="fill" style={{ width: `${(b.amount / refMax) * 100}%`, background: color }} />
-                    </span>
-                    <Sparkline history={b.history} color={color} />
+                  <span className="bar" style={{ position: "relative", height: 8, background: "var(--rule)" }}>
+                    <span className="fill" style={{ width: `${(b.amount / refMax) * 100}%`, background: color }} />
                   </span>
                   <span className="v tnum">
                     {v}
