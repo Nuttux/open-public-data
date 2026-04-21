@@ -22,7 +22,7 @@ import Tip from "@/components/fusion/Tip";
 import BudgetTimeline from "@/components/fusion/BudgetTimeline";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import type { BudgetPageData, VoteExecuteData } from "@/lib/fusion-data";
-import { slugifyLabel } from "@/lib/fusion-data";
+import { slugifyLabel } from "@/lib/projet-utils";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 
