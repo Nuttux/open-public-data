@@ -58,10 +58,26 @@ def save_cache(items: dict) -> None:
 
 
 def normalise(name: str) -> str:
-    # Strip typical prefix words the PDF carries over.
+    """Strip connectors / entity prefixes / trailing noise picked up by
+    the regex from the PDF, so the resulting query matches SIRENE's
+    search index. Order matters: trailing noise first, then prefixes."""
     s = name.strip()
-    s = re.sub(r"^(?:association|fondation|société|régie|comité|centre|ligue|syndicat|groupement|collectif)\s+", "", s, flags=re.IGNORECASE)
-    s = re.sub(r"\s+", " ", s)
+    # Trim trailing descriptors the scraper regex sometimes swallows.
+    s = re.split(
+        r"\s+(?:domicili[ée]|sise|situ[ée]|au\s+titre\s+de|dont\s+le|dont\s+l[’']|déclarée\s+d['’]utilit[ée])",
+        s,
+        flags=re.IGNORECASE,
+    )[0]
+    # Strip leading french connector particles ("de l'", "la ", "le ").
+    s = re.sub(r"^(?:de\s+l['’]|de\s+la\s+|de\s+|l['’]\s*|la\s+|le\s+)\s*", "", s, flags=re.IGNORECASE)
+    # Strip entity prefixes (association, société, SAS, SARL, SCIC, régie...).
+    s = re.sub(
+        r"^(?:association|fondation|société|régie|comité|centre|ligue|syndicat|groupement|collectif|entreprise|SAS|SARL|SCIC|SCOP|EURL|SA|SNC|SCA|mutuelle|maison|théâtre|fonds)\s+",
+        "",
+        s,
+        flags=re.IGNORECASE,
+    )
+    s = re.sub(r"\s+", " ", s).strip(" ,;.'\"")
     return s
 
 
@@ -69,21 +85,23 @@ def lookup(name: str) -> dict | None:
     q = normalise(name)
     if not q or len(q) < 4:
         return None
-    params = {
-        "q": q,
-        "per_page": 1,
-        "page": 1,
-    }
-    try:
-        r = SESSION.get(API, params=params, timeout=10)
-    except requests.RequestException as e:
-        print(f"  request error {name!r}: {e}", file=sys.stderr)
-        return None
-    if r.status_code != 200:
-        return None
-    data = r.json()
-    hits = data.get("results") or []
-    if not hits:
+    # Two-pass: first restrict to Paris (dept 75) for higher precision,
+    # then fall back to national search if nothing matches.
+    for params in (
+        {"q": q, "departement": "75", "per_page": 1, "page": 1},
+        {"q": q, "per_page": 1, "page": 1},
+    ):
+        try:
+            r = SESSION.get(API, params=params, timeout=10)
+        except requests.RequestException as e:
+            print(f"  request error {name!r}: {e}", file=sys.stderr)
+            return None
+        if r.status_code != 200:
+            continue
+        hits = (r.json() or {}).get("results") or []
+        if hits:
+            break
+    else:
         return None
     h = hits[0]
     siege = h.get("siege") or {}

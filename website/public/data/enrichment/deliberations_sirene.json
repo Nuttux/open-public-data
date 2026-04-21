@@ -1,10 +1,8 @@
 {
-  "generated_at": "2026-04-21T22:23:58",
+  "generated_at": "2026-04-21T22:53:26",
   "source": "recherche-entreprises.api.gouv.fr",
   "count": 794,
   "items": {
-    "876": null,
-    "la présente délibération": null,
     "le théâtre paris-villette": {
       "denomination": "THEATRE PARIS VILLETTE",
       "siren": "433537230",
@@ -23,7 +21,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Atelier du Plateau-Théâtre Écarlate"
     },
-    "finance m e n t des travaux listés dans la prése n t e convention": null,
     "projet de 20": {
       "denomination": "PROJET 20",
       "siren": "907877435",
@@ -96,8 +93,6 @@
       "ville_siege": "L'ILE-SAINT-DENIS",
       "matched_name": "Halage"
     },
-    "la scop langues plurielles": null,
-    "la scic les champs des possibles": null,
     "slasheurs cueilleurs": {
       "denomination": "SLASHEURS CUEILLEURS",
       "siren": "924555915",
@@ -260,7 +255,6 @@
       "ville_siege": "GIGNAC-LA-NERTHE",
       "matched_name": "l’APUR"
     },
-    "florimont domicilié 5-9 place marcel paul": null,
     "la compagnie du 20e": {
       "denomination": "LA COMPAGNIE DU 20E",
       "siren": "920275393",
@@ -315,7 +309,6 @@
       "ville_siege": "SAINTE-GENEVIEVE-DES-BOIS",
       "matched_name": "Région Insertion Économique Social"
     },
-    "artémisia formation": null,
     "aurore": {
       "denomination": "AURORE",
       "siren": "534572540",
@@ -370,7 +363,6 @@
       "ville_siege": "MONTREUIL",
       "matched_name": "Emmaüs Alternatives"
     },
-    "emmaüs coup de main": null,
     "emmaüs défi-fondateur abbé pierre": {
       "denomination": "EMMAUS DEFI - FONDATEUR ABBE PIERRE",
       "siren": "494867856",
@@ -443,9 +435,6 @@
       "ville_siege": "PARIS",
       "matched_name": "de l’Armée du Salut -Centre Espoir"
     },
-    "de l’armée du salut -chu mouzaïa": null,
-    "de l’armée du salut -palais de la femme domiciliée 94": null,
-    "h.a": null,
     "interface formation": {
       "denomination": "INTERFACE FORMATION",
       "siren": "402185680",
@@ -527,7 +516,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Les Enfants du Canal"
     },
-    "déclarée d’utilité publique les œuvres de la mie de pain": null,
     "maisons d’accueil l’ilôt": {
       "denomination": "MAISON D'ACCUEIL L'ILOT",
       "siren": "784753287",
@@ -681,7 +669,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Travail au Clair"
     },
-    "travail et partage armée du salut": null,
     "villette emploi": {
       "denomination": "VILLETTE EMPLOI",
       "siren": "383054483",
@@ -691,7 +678,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Villette Emploi"
     },
-    "la sarl altermundi": null,
     "la sas ares services paris": {
       "denomination": "L-COMMERCE",
       "siren": "792454977",
@@ -710,8 +696,6 @@
       "ville_siege": "NICE",
       "matched_name": "la SARL B Nova"
     },
-    "entreprise du bâtiment et d’insertion par le retour à l’emploi": null,
-    "la sas bis boutique solidaire": null,
     "la sas bonne table": {
       "denomination": "SAS LA BONNE TABLE",
       "siren": "827741729",
@@ -730,10 +714,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Carton Plein Cyclo"
     },
-    "la sas change please france": null,
-    "la scop sas clair et net": null,
-    "la sas cyclocare": null,
-    "la sas cygogne": null,
     "la scop ebs le relais nord pas-de-calais": {
       "denomination": "EBS LE RELAIS FRANCE",
       "siren": "499652493",
@@ -743,7 +723,6 @@
       "ville_siege": "BRUAY-LA-BUISSIERE",
       "matched_name": "la SCOP EBS Le Relais Nord Pas-de-Calais"
     },
-    "la sas ecod’air": null,
     "l'associations emmaüs alternatives": {
       "denomination": "EMMAUS AVENUE DE LA RESISTANCE",
       "siren": "489661496",
@@ -780,9 +759,6 @@
       "ville_siege": "NANCY",
       "matched_name": "la SARL Farinez- vous"
     },
-    "la sarl food sweet food": null,
-    "la sarl groupement d’activités de courses et de services": null,
-    "la scic label gamelle": null,
     "la conciergerie solidaire 75": {
       "denomination": "LA CONCIERGERIE SOLIDAIRE 75",
       "siren": "825076680",
@@ -819,10 +795,6 @@
       "ville_siege": "PARIS",
       "matched_name": "la SA La Table du Recho"
     },
-    "la sarl pro insert": null,
-    "la sas réavie": null,
-    "la sas répareseb": null,
-    "la sas rézosocial": null,
     "la sarl tabernae": {
       "denomination": "TABERNA ROMANA SARL",
       "siren": "487600488",
@@ -832,7 +804,6 @@
       "ville_siege": "SAINT-REMY-DE-PROVENCE",
       "matched_name": "la SARL Tabernae"
     },
-    "la sas zazie hôtel": null,
     "flora tristan -régie du 14ème": {
       "denomination": "FLORA TRISTAN LA REGIE DE QUARTIER DU 14EME",
       "siren": "500266408",
@@ -896,12 +867,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Régie de quartier Tela 13"
     },
-    "la snc ergos 75 698": null,
-    "la sarl id’ées intérim f": null,
-    "optim etti": null,
-    "la sarl sbc insertion": null,
-    "la sas secours emploi intérim": null,
-    "villette emploi etti": null,
     "conseil départemental de l’accès au droit": {
       "denomination": "CONSEIL DEPARTEMENTAL DE L'ACCES AU DROIT",
       "siren": "188909071",
@@ -911,8 +876,6 @@
       "ville_siege": "AUXERRE",
       "matched_name": "Conseil Départemental de l’Accès au Droit"
     },
-    "un collège public parisien": null,
-    "trente et un collèges publics parisiens": null,
     "l’associations climates": {
       "denomination": "ASSOCIATION CLIMATES",
       "siren": "790405237",
@@ -940,7 +903,6 @@
       "ville_siege": "TOURVILLE-LA-RIVIERE",
       "matched_name": "Collectif MINUIT 12"
     },
-    "collège césar franck": null,
     "l’académie gay et lesbienne": {
       "denomination": "ACADEMIE GAY ET LESBIENNE",
       "siren": "791593064",
@@ -968,7 +930,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Arc Essentiel"
     },
-    "des parents et futurs parents gays et lesbiens": null,
     "basiliade": {
       "denomination": "BASILIADE",
       "siren": "400840476",
@@ -978,8 +939,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Basiliade"
     },
-    "bi cause": null,
-    "centre lesbien gai bitrans queer et intersexe de paris et d’ile-de-france": null,
     "cineffable": {
       "denomination": "CINEFFABLE",
       "siren": "438596371",
@@ -998,7 +957,6 @@
       "ville_siege": "CAUSSADE",
       "matched_name": "Collectif Famille"
     },
-    "comité miss trans france": null,
     "espace santé trans": {
       "denomination": "ESPACE SANTE TRANS",
       "siren": "818122053",
@@ -1143,7 +1101,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Comité Contre l’Esclavage Moderne-CCEM"
     },
-    "la farapej- fédération des associations réflexion-action": null,
     "française": {
       "denomination": "CROIX ROUGE FRANCAISE",
       "siren": "775672272",
@@ -1252,7 +1209,6 @@
       "ville_siege": "MEAUX",
       "matched_name": "Centre d’Études"
     },
-    "centre d’information et d’animation du 7e arrondissement": null,
     "la compagnie à force de rêver": {
       "denomination": "COMPAGNIE A FORCE DE REVER",
       "siren": "389377714",
@@ -1280,8 +1236,6 @@
       "ville_siege": "PARIS",
       "matched_name": "l’École Monique Apple"
     },
-    "équipe saint vincent insertion famille oberkampf paris": null,
-    "l’équipe saint- vincent alpha xvparis": null,
     "espace 16": {
       "denomination": "ESPACE 16",
       "siren": "317976256",
@@ -1354,7 +1308,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Paroles Voyageuses"
     },
-    "r.a": null,
     "réseau alpha": {
       "denomination": "ASSOCIATION RESEAU ALPHA",
       "siren": "512119306",
@@ -1391,7 +1344,6 @@
       "ville_siege": "PARIS",
       "matched_name": "ACCORDERIE PARIS-SUD"
     },
-    "13": null,
     "la compagnie des reves ayez": {
       "denomination": "LA COMPAGNIE DES REVES AYEZ",
       "siren": "750232837",
@@ -1473,7 +1425,6 @@
       "ville_siege": "POUILLON",
       "matched_name": "ASSOCIATION FLORIMONT"
     },
-    "cie bouche abouche": null,
     "droits d'urgence": {
       "denomination": "DROITS D'URGENCE",
       "siren": "451018592",
@@ -1492,8 +1443,6 @@
       "ville_siege": "PARIS",
       "matched_name": "FANATIKART"
     },
-    "lamaison du canal -regie de quartier paris 10(10068)": null,
-    "ma plume est avous": null,
     "moi et mes enfants": {
       "denomination": "MOI ET MES ENFANTS",
       "siren": "832358261",
@@ -1521,7 +1470,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Ticket d'entrée"
     },
-    "arbp - association rungis brillat peupliers": null,
     "le moulin": {
       "denomination": "LE MOULIN",
       "siren": "491424552",
@@ -1549,7 +1497,6 @@
       "ville_siege": "GENNEVILLIERS",
       "matched_name": "Culture Berbère ACB"
     },
-    "coalition internationalepour l’abolitionde lamaternité de substitution": null,
     "coordination française": {
       "denomination": "COORDINATION DES UNIVERSITES DE RECHERCHE INTENSIVE FRANCAISE",
       "siren": "800262354",
@@ -1649,8 +1596,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Parcours de Pionnières"
     },
-    "reconstruc- tion sein infos": null,
-    "soroptimist internationalparis-fondateur": null,
     "unlablld entertainment": {
       "denomination": "UNLABLLD ENTERTAINMENT",
       "siren": "877939454",
@@ -1660,7 +1605,6 @@
       "ville_siege": "PARIS",
       "matched_name": "UNLABLLD Entertainment"
     },
-    "aplaces égales": null,
     "act right": {
       "denomination": "ACT RIGHT",
       "siren": "888108669",
@@ -1688,7 +1632,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Consentis"
     },
-    "muyaboxing75": null,
     "paris 18 united": {
       "denomination": "PARIS 18 UNITED",
       "siren": "905379467",
@@ -1734,7 +1677,6 @@
       "ville_siege": "NEUVILLE-SUR-SAONE",
       "matched_name": "ROSA- PARKS"
     },
-    "the sorority fondation": null,
     "tu vis": {
       "denomination": "NOEL VIS",
       "siren": "326583622",
@@ -1753,7 +1695,6 @@
       "ville_siege": "PANTIN",
       "matched_name": "Womenability"
     },
-    "de soutien à lafondation des femmes": null,
     "la fondation": {
       "denomination": "LA FONDATION",
       "siren": "922303565",
@@ -1763,7 +1704,6 @@
       "ville_siege": "RIVARENNES",
       "matched_name": "la Fondation"
     },
-    "acti collterr init soci spor cult edu": null,
     "association livreensemble": {
       "denomination": "ASSOCIATION LIVREENSEMBLE",
       "siren": "850837626",
@@ -1809,10 +1749,6 @@
       "ville_siege": "PARIS",
       "matched_name": "PROLIFIC"
     },
-    "centre d’action sociale protestant dans la région parisienne": null,
-    "5ème arrondissement": null,
-    "comite des fetes et d’action sociale du 6e arrondissement": null,
-    "association d’education populaire notre dame des champs montparnasse rencontres": null,
     "partage 5.6.7": {
       "denomination": "PARTAGE 5.6.7",
       "siren": "487612038",
@@ -1822,9 +1758,6 @@
       "ville_siege": "PARIS",
       "matched_name": "PARTAGE 5.6.7"
     },
-    "la pause du 6e": null,
-    "cpn connaitre et proteger lanature du valde seine": null,
-    "entraide sourire sfx (saint francois xavier)": null,
     "lutece echecs": {
       "denomination": "LUTECE ECHECS",
       "siren": "424369783",
@@ -1834,7 +1767,6 @@
       "ville_siege": "PARIS",
       "matched_name": "LUTECE ECHECS"
     },
-    "old up generation des vieux debout gdvd": null,
     "sports 7": {
       "denomination": "SPORTS 7",
       "siren": "447702077",
@@ -1862,7 +1794,6 @@
       "ville_siege": "PARIS",
       "matched_name": "ACCUEIL SOLIDARITE SAINT AUGUSTIN"
     },
-    "association generale des familles du 8eme arrondissement": null,
     "foyer de la madeleine": {
       "denomination": "FOYER DE LA MADELEINE",
       "siren": "784329112",
@@ -1872,8 +1803,6 @@
       "ville_siege": "PARIS",
       "matched_name": "FOYER DE LA MADELEINE"
     },
-    "societe nationale d'entraide de lamedaille militaire": null,
-    "9 e histoire societe pour l’etude du patrimoine et de l’histoire du 9ème arrondissement": null,
     "arkenciel compagnie": {
       "denomination": "ARKENCIEL COMPAGNIE",
       "siren": "808466056",
@@ -1883,9 +1812,6 @@
       "ville_siege": "PARIS",
       "matched_name": "ARKENCIEL COMPAGNIE"
     },
-    "faites le 9 association d’animation locale et solidaire": null,
-    "cirque fier.e. s": null,
-    "corps acœur": null,
     "galipettes": {
       "denomination": "GALIPETTES",
       "siren": "492602826",
@@ -2003,7 +1929,6 @@
       "ville_siege": "PARIS",
       "matched_name": "CROK CINE"
     },
-    "lacamillienne": null,
     "lacloche": {
       "denomination": "DJODIE LACLOCHE (LACLOCHE)",
       "siren": "948310594",
@@ -2031,7 +1956,6 @@
       "ville_siege": "PARIS",
       "matched_name": "LES DEUX HIBOUX"
     },
-    "office du mouvement sportif du 12ème arrondissement oms 12": null,
     "reseau mom’artre": {
       "denomination": "RESEAU MOM'ARTRE",
       "siren": "509963377",
@@ -2050,7 +1974,6 @@
       "ville_siege": "PARIS",
       "matched_name": "VENI VERDI"
     },
-    "comité des fêtes et de la solidarité du 13e arrondissement": null,
     "mission bretonne d’île-de-france – ti ar vretoned mb-tav": {
       "denomination": "MISSION BRETONNE D'ILE DE FRANCE - TI AR VRETONED MB-TAV",
       "siren": "784601197",
@@ -2078,7 +2001,6 @@
       "ville_siege": "PARIS",
       "matched_name": "C14-Paris"
     },
-    "office du mouvement sportif du 14e arrondissement": null,
     "la table des matières": {
       "denomination": "LA TABLE DES MATIERES",
       "siren": "403046212",
@@ -2097,7 +2019,6 @@
       "ville_siege": "PARIS",
       "matched_name": "CROIX ROUGE FRANÇAISE"
     },
-    "équipe saint-vincent alpha xv paris": null,
     "depaul france": {
       "denomination": "DEPAUL FRANCE",
       "siren": "799505813",
@@ -2197,7 +2118,6 @@
       "ville_siege": "SAVENNIERES",
       "matched_name": "FRÈRES VOISIN"
     },
-    "union des institutions sociales du 15e arrondissement": null,
     "creat’eo idf": {
       "denomination": "CREAT'EO IDF",
       "siren": "814344461",
@@ -2243,7 +2163,6 @@
       "ville_siege": "PARIS",
       "matched_name": "CENTRE COROT ENTRAIDE D’AUTEUIL"
     },
-    "syndicat d'initiative du xvie": null,
     "solidarité logement": {
       "denomination": "ASSOCIATION POUR L'INCLUSION PAR LE LOGEMENT L'EMPLOI ET LES SOLIDARITES",
       "siren": "777499724",
@@ -2253,8 +2172,6 @@
       "ville_siege": "BREST",
       "matched_name": "SOLIDARITÉ LOGEMENT"
     },
-    "captifs lalibération": null,
-    "association générale de familles du 16e arrondissement": null,
     "volontariat et soutien par l’art": {
       "denomination": "VOLONTARIAT ET SOUTIEN PAR L'ART",
       "siren": "423171883",
@@ -2264,8 +2181,6 @@
       "ville_siege": "TOULON",
       "matched_name": "VOLONTARIAT ET SOUTIEN PAR L’ART"
     },
-    "comité d’entente des associations d’anciens combattants et victimes de guerre du 16e arrondissement": null,
-    "office du mouvement sportif du xvie arrondissement": null,
     "alternative culture": {
       "denomination": "ALTERNATIVE CULTURE",
       "siren": "879035665",
@@ -2275,8 +2190,6 @@
       "ville_siege": "PARIS",
       "matched_name": "ALTERNATIVE CULTURE"
     },
-    "amicale des pongistes du 17e - ap 17": null,
-    "association de sports adaptés et de loisirs de paris": null,
     "association sportive des juggernautes de paris": {
       "denomination": "ASSOCIATION SPORTIVE DES JUGGERNAUTES DE PARIS",
       "siren": "802646679",
@@ -2295,7 +2208,6 @@
       "ville_siege": "PARIS",
       "matched_name": "CALLIOPE - CITÉ DES ARTS DE LA PAROLE ET DU BIEN DIRE"
     },
-    "centre paroissial d’initiatives jeunes ozanam": null,
     "chez nous": {
       "denomination": "CHEZ NOUS",
       "siren": "849729512",
@@ -2323,7 +2235,6 @@
       "ville_siege": "PARIS",
       "matched_name": "ASSOCIATION LOOP"
     },
-    "titre de l’exercice 2025": null,
     "jeunesse parisienne 75": {
       "denomination": "JEUNESSE PARISIENNE 75",
       "siren": "931364699",
@@ -2333,7 +2244,6 @@
       "ville_siege": "PARIS",
       "matched_name": "JEUNESSE PARISIENNE 75"
     },
-    "le laboratoire de laride": null,
     "magriff": {
       "denomination": "MAGRIFF",
       "siren": "532396900",
@@ -2352,7 +2262,6 @@
       "ville_siege": "PARIS",
       "matched_name": "SYTTEEN"
     },
-    "ayyem zamen le temps jadis": null,
     "capoeira viola compagnie le sommet de l'abricotier": {
       "denomination": "CAPOEIRA VIOLA COMPAGNIE LE SOMMET DE L ABRICOTIER",
       "siren": "398713586",
@@ -2407,7 +2316,6 @@
       "ville_siege": "VERSAILLES",
       "matched_name": "LANGUES"
     },
-    "ma plume est àvous": null,
     "motivea": {
       "denomination": "MOTIVEA",
       "siren": "818253486",
@@ -2444,7 +2352,6 @@
       "ville_siege": "PARIS",
       "matched_name": "LE TEMPS DES RUES"
     },
-    "ligue de l’enseignement -fédération départementale de paris -mouvement d’éducation populaire": null,
     "emporter": {
       "denomination": "L'EMPORTE",
       "siren": "922056650",
@@ -2490,7 +2397,6 @@
       "ville_siege": "PARIS",
       "matched_name": "CROK CINÉ"
     },
-    "lefil de soie": null,
     "mains nues": {
       "denomination": "A MAINS NUES",
       "siren": "439228214",
@@ -2527,9 +2433,6 @@
       "ville_siege": "PARIS",
       "matched_name": "ESPEREM"
     },
-    "cocyclette": null,
-    "des cris des villes": null,
-    "strataj’m paris": null,
     "meilleur qu’hier": {
       "denomination": "MEILLEUR QU'HIER",
       "siren": "924468465",
@@ -2557,7 +2460,6 @@
       "ville_siege": "LYON",
       "matched_name": "Association Belleville ABV"
     },
-    "vivre le nouveau xiiième": null,
     "nationale de prévention en alcoologie et addictologie de paris": {
       "denomination": "ASSOCIATION NATIONALE DE PREVENTION EN ALCOOLOGIE ET ADDICTOLOGIE",
       "siren": "775660087",
@@ -2603,7 +2505,6 @@
       "ville_siege": "PARIS",
       "matched_name": "AgriParis Seine"
     },
-    "au titre de l’année 2025": null,
     "faune alfort": {
       "denomination": "FAUNE ALFORT",
       "siren": "804134773",
@@ -2613,7 +2514,6 @@
       "ville_siege": "MAISONS-ALFORT",
       "matched_name": "Faune Alfort"
     },
-    "arbres remarquables bilan recherche etudes et sauvegarde arbres": null,
     "fondation francaise": {
       "denomination": "CROIX ROUGE FRANCAISE",
       "siren": "775672272",
@@ -2623,8 +2523,6 @@
       "ville_siege": "PARIS",
       "matched_name": "FONDATION FRANCAISE"
     },
-    "fresque de labiodiversité": null,
-    "groupement regional d'animation et d'information sur lanature et l'environnement d'ile de france graine ile de france": null,
     "humanité et biodiversité": {
       "denomination": "HUMANITE ET BIODIVERSITE",
       "siren": "398015651",
@@ -2661,7 +2559,6 @@
       "ville_siege": "PARIS",
       "matched_name": "URBANESCENCE"
     },
-    "conseil national de laprotection animale cnpa-c": null,
     "gamelles pleines paris": {
       "denomination": "GAMELLES PLEINES PARIS",
       "siren": "533873600",
@@ -2680,7 +2577,6 @@
       "ville_siege": "SERVON",
       "matched_name": "NOSAÏS"
     },
-    "societe protectrice des animaux s pa": null,
     "vétérinaires": {
       "denomination": "ARGOS VETERINAIRE ATLANTIQUE",
       "siren": "802862474",
@@ -2708,7 +2604,6 @@
       "ville_siege": "VINCENNES",
       "matched_name": "DES CHATS DU BOIS DE VINCENNES ET ALENTOURS"
     },
-    "aucoeur des chats": null,
     "l'ecole du chat-comites de defense des betes libres": {
       "denomination": "L'ECOLE DU CHAT COMITE DE DEFENSE DES BETES LIBRES",
       "siren": "495179046",
@@ -2754,20 +2649,6 @@
       "ville_siege": "GIEN",
       "matched_name": "Bio Consom’acteurs"
     },
-    "groupement des agriculteurs biologiques de la région île-de-france": null,
-    "la caisse des écoles de paris centre": null,
-    "la caisse des écoles du 8earrondissement": null,
-    "caisse des écoles du 9earrondissement": null,
-    "la caisse des écoles du 10earrondissement": null,
-    "la caisse des écoles du 11earrondissement": null,
-    "la caisse des écoles du 13earrondissement": null,
-    "la caisse des écoles du 14earrondissement": null,
-    "la caisse des écoles du 16earrondissement": null,
-    "la caisse des écoles du 17earrondissement": null,
-    "la caisse des écoles du 18earrondissement": null,
-    "la caisse des écoles du 19earrondissement": null,
-    "la caisse des écoles du 20earrondissement": null,
-    "présent projet de délibération": null,
     "de l’armée du salut": {
       "denomination": "FONDATION DE L ARMEE DU SALUT",
       "siren": "431968601",
@@ -3317,7 +3198,6 @@
       "ville_siege": "LE PORT-MARLY",
       "matched_name": "Théâtre de la Marionnette"
     },
-    "théâtre de la ville-sarah bernhardt": null,
     "l’usage du monde au 21e siècle": {
       "denomination": "L'USAGE DU MONDE AU 21E SIECLE",
       "siren": "797779436",
@@ -3381,7 +3261,6 @@
       "ville_siege": "MALEMORT",
       "matched_name": "SAGES-FEMMES SANS FRONTIERES"
     },
-    "eau soleil paca": null,
     "africafrance solidaire": {
       "denomination": "AFRICAFRANCE SOLIDAIRE",
       "siren": "791278310",
@@ -3400,7 +3279,6 @@
       "ville_siege": "LILLE",
       "matched_name": "LE PARTENARIAT"
     },
-    "ido": null,
     "sos sahel": {
       "denomination": "ASS 1901 SOS SAHEL INTER FRANC",
       "siren": "315268672",
@@ -3554,7 +3432,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Bibliothèques Sans Frontières"
     },
-    "paris football club sis": null,
     "paris basketball": {
       "denomination": "PARIS BASKETBALL",
       "siren": "488120452",
@@ -3564,7 +3441,6 @@
       "ville_siege": "PARIS 13",
       "matched_name": "Paris Basketball"
     },
-    "paris cyclisme olympique": null,
     "paris 13 atletico": {
       "denomination": "PARIS 13 ATLETICO",
       "siren": "420027484",
@@ -3574,7 +3450,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Paris 13 Atletico"
     },
-    "paris volley avenir sis": null,
     "stade parisien des sourds": {
       "denomination": "STADE PARISIEN DES SOURDS",
       "siren": "534442116",
@@ -3584,7 +3459,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Stade Parisien des sourds"
     },
-    "sport adapté et loisirs de montmartre": null,
     "club sportif des sourds- muets": {
       "denomination": "CLUB SPORTIF DES SOURDS MUETS DE PARIS",
       "siren": "450124938",
@@ -3612,7 +3486,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Paris Basket Fauteuil"
     },
-    "comité départemental olympique et sportif de paris": null,
     "grs paris centre": {
       "denomination": "GRS PARIS CENTRE",
       "siren": "399404144",
@@ -3694,7 +3567,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Club des Nageurs de Paris"
     },
-    "sporting club universitaire de france": null,
     "neptune club de france": {
       "denomination": "NEPTUNE CLUB DE FRANCE",
       "siren": "353578081",
@@ -3767,8 +3639,6 @@
       "ville_siege": "NANTERRE",
       "matched_name": "Novosport"
     },
-    "l’office du mouvement sportif du 5earrondissement": null,
-    "amicale bouliste des arènes de lutèce et du 5ème arrondissement": null,
     "sportive de la police de paris": {
       "denomination": "ASSOCIATION SPORTIVE POLICE PARIS",
       "siren": "775681208",
@@ -3823,8 +3693,6 @@
       "ville_siege": "PARIS",
       "matched_name": "sports loisirs Poliveau"
     },
-    "l’office du mouvement sportif du 8earrondissement": null,
-    "l’office du mouvement sportif du 14ème arrondissement oms 14": null,
     "basket paris 14": {
       "denomination": "BASKET PARIS 14",
       "siren": "812230647",
@@ -3888,7 +3756,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Club Athlétique de Paris"
     },
-    "paris xivfutsal club": null,
     "la gassendiana": {
       "denomination": "GASSENDIANA",
       "siren": "417643855",
@@ -3916,7 +3783,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Planet roller"
     },
-    "ring du 14ème": null,
     "royal rouvier chess club": {
       "denomination": "ROYAL ROUVIER CHESS CLUB R2C2",
       "siren": "443700174",
@@ -3980,7 +3846,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Groupement d’Employeurs Profession Sport et Loisirs Paris"
     },
-    "emmaüs alternatives(numéroparisassos188453": null,
     "a toi théâtre 206": {
       "denomination": "A TOI THEATRE",
       "siren": "432916971",
@@ -3999,7 +3864,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Académie Football Paris 18"
     },
-    "la scop acp la manufacture chanson 124": null,
     "action et transition 153": {
       "denomination": "ACTION ET TRANSITION",
       "siren": "822148128",
@@ -4009,8 +3873,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Action et Transition 153"
     },
-    "acture 9 bis": null,
-    "art exprim 18ème -87": null,
     "artmélé 6": {
       "denomination": "ARTMELE",
       "siren": "833718067",
@@ -4038,7 +3900,6 @@
       "ville_siege": "PARIS",
       "matched_name": "de Monblémont 6"
     },
-    "d’éducation populaire de charonne réunion aepcr 77-79": null,
     "franco-chinoise pierre ducerf 29": {
       "denomination": "ASSO FRANCO CHINOISE PIERRE DUCERF",
       "siren": "403309883",
@@ -4048,8 +3909,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Franco-Chinoise Pierre Ducerf 29"
     },
-    "1000 collectes -la maison des possibles 132": null,
-    "socio-éducative des familles de l’ensemble clignancourt": null,
     "atelier des épinettes 41": {
       "denomination": "ATELIER DES EPINETTES",
       "siren": "478717408",
@@ -4104,7 +3963,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Axes Pluriels 55"
     },
-    "barrio 14 11": null,
     "centre animation jeunesse": {
       "denomination": "ANIMATION JEUNESSE",
       "siren": "492534904",
@@ -4195,7 +4053,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Créat’éo IDF 41/43"
     },
-    "crl 10 mvac 206": null,
     "croix rouge française le passage 24": {
       "denomination": "CROIX ROUGE FRANCAISE",
       "siren": "775672272",
@@ -4232,7 +4089,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Des Cris des Villes 23"
     },
-    "espoirs 19 mvac 20": null,
     "esprit": {
       "denomination": "ESPRIT",
       "siren": "991730607",
@@ -4260,7 +4116,6 @@
       "ville_siege": "STRASBOURG",
       "matched_name": "Fabrication Maison 1"
     },
-    "groupe de diffusion d’informations sur l’environnement": null,
     "harmonies itinérantes 25": {
       "denomination": "HARMONIES ITINERANTES",
       "siren": "910182575",
@@ -4270,7 +4125,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Harmonies Itinérantes 25"
     },
-    "j’imaginerais -mvac -206": null,
     "kapital jeunesse 5": {
       "denomination": "KAPITAL JEUNESSE (KJ)",
       "siren": "909441131",
@@ -4289,8 +4143,6 @@
       "ville_siege": "PARIS",
       "matched_name": "La Camillienne 12"
     },
-    "la camillienne-sports 12ème 12": null,
-    "la compagnie des tropes mvac -22": null,
     "la cyclofficine de paris 15": {
       "denomination": "LA CYCLOFFICINE DE PARIS",
       "siren": "532116738",
@@ -4345,7 +4197,6 @@
       "ville_siege": "PARIS",
       "matched_name": "La Sirène de Paris 20"
     },
-    "labomatique mvac 18e15": null,
     "l’aire à mots 99": {
       "denomination": "L'AIRE A MOTS",
       "siren": "421102849",
@@ -4364,7 +4215,6 @@
       "ville_siege": "NOYON",
       "matched_name": "L’Asile ArtistiK 1"
     },
-    "le club des naïades mvac 20e 18-20 rue ramus 75020 paris": null,
     "le fil de soie 55": {
       "denomination": "LE FIL DE SOIE",
       "siren": "511698235",
@@ -4401,7 +4251,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Les Fourmis qui jardinent MVAC 13e -11"
     },
-    "les fripons mvac 20e - 18": null,
     "les jeunes ambitieux": {
       "denomination": "JEUNES & AMBITIEUX",
       "siren": "941895419",
@@ -4429,7 +4278,6 @@
       "ville_siege": "PARIS",
       "matched_name": "L’Esprit du Vent 20"
     },
-    "l'intestine 22": null,
     "maison de l'activité physique adaptée": {
       "denomination": "MAISON DE L'ACTIVITE PHYSIQUE ADAPTEE",
       "siren": "829781491",
@@ -4475,7 +4323,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Mon Quartier Bouge 12"
     },
-    "move and art -mvac 11e": null,
     "ngamb’art 9 rue louis blanc 75010 paris": {
       "denomination": "NGAMB'ART",
       "siren": "484401294",
@@ -4566,8 +4413,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Puntaseca 134"
     },
-    "rassemblement des jeunes déterminés 13": null,
-    "raptz rapporteuz 72 bis": null,
     "réussir paris 18 15": {
       "denomination": "REUSSIR PARIS 18",
       "siren": "832313167",
@@ -4577,7 +4422,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Réussir Paris 18 15"
     },
-    "riquet élites 15 ter": null,
     "ro-bots 38": {
       "denomination": "RO-BOTS",
       "siren": "919840322",
@@ -4596,7 +4440,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Sensations Inclusives 20"
     },
-    "sporting club universitaire de france 55": null,
     "sporting paris 20 tennis de table": {
       "denomination": "SPORTING PARIS 20 TENNIS DE TABLE",
       "siren": "428242309",
@@ -4606,8 +4449,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Sporting Paris 20 Tennis de table"
     },
-    "strataj’m paris 86/88": null,
-    "s.w": null,
     "sytteen 4": {
       "denomination": "SYTTEEN",
       "siren": "900730854",
@@ -4644,7 +4485,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Théâtre aux Mains Nues 7"
     },
-    "veni verdi -mvac 20e 18-20": null,
     "vue d’ensemble 127": {
       "denomination": "VUE D ENSEMBLE",
       "siren": "539200451",
@@ -4663,7 +4503,6 @@
       "ville_siege": "PARIS",
       "matched_name": "la Mission Locale de Paris"
     },
-    "jeunesse feu vert-robert steindecker": null,
     "justice deuxième chance": {
       "denomination": "JUSTICE DEUXIEME CHANCE",
       "siren": "805067428",
@@ -4718,7 +4557,6 @@
       "ville_siege": "PARIS",
       "matched_name": "La Maison des Journalistes"
     },
-    "titre de l’année 2025": null,
     "17 evolution": {
       "denomination": "17 EVOLUTION",
       "siren": "924366446",
@@ -4755,7 +4593,6 @@
       "ville_siege": "PARIS",
       "matched_name": "BARRIO 14"
     },
-    "centre paroissial d'initiatives jeunes ozanam": null,
     "cit'art": {
       "denomination": "CIT'ART",
       "siren": "788961274",
@@ -4774,7 +4611,6 @@
       "ville_siege": "PARIS",
       "matched_name": "ETOILES DU SOL"
     },
-    "la releve bariolee": null,
     "collectifs en resonance": {
       "denomination": "COLLECTIFS EN RESONANCE",
       "siren": "929902443",
@@ -4802,7 +4638,6 @@
       "ville_siege": "PARIS",
       "matched_name": "HUSTLE PARIS -HP"
     },
-    "kasbah-sur-scene": null,
     "jeune & engage": {
       "denomination": "JEUNE & ENGAGE",
       "siren": "823066816",
@@ -4857,7 +4692,6 @@
       "ville_siege": "PARIS",
       "matched_name": "ASSOCIATION LA LOUVE AIMANTEE"
     },
-    "les anciens de lagrange auxbelles": null,
     "a mequignon droit d’enfance": {
       "denomination": "A MEQUIGNON DROIT D ENFANCE",
       "siren": "785062910",
@@ -4867,7 +4701,6 @@
       "ville_siege": "ELANCOURT",
       "matched_name": "A MEQUIGNON DROIT D’ENFANCE"
     },
-    "migration sante france": null,
     "mon quartier bouge": {
       "denomination": "MON QUARTIER BOUGE",
       "siren": "943883124",
@@ -4922,7 +4755,6 @@
       "ville_siege": "PARIS",
       "matched_name": "LES FRIPONS"
     },
-    "les mamans de labanane": null,
     "mediation nomade": {
       "denomination": "MEDIATION NOMADE",
       "siren": "528045735",
@@ -4932,7 +4764,6 @@
       "ville_siege": "LIMAY",
       "matched_name": "MEDIATION NOMADE"
     },
-    "titre de l’année 2025 à l’association union sportive des bretons de paris": null,
     "mediation de traverse": {
       "denomination": "MEDIATION DE TRAVERSE",
       "siren": "927711465",
@@ -4960,7 +4791,6 @@
       "ville_siege": "PARIS",
       "matched_name": "NUIT CHELOUE"
     },
-    "opej baron edmond de rothschild": null,
     "relais menilmontant": {
       "denomination": "RELAIS MENILMONTANT",
       "siren": "309001212",
@@ -5042,9 +4872,6 @@
       "ville_siege": "MOUGINS",
       "matched_name": "3 associations"
     },
-    "signer les conventions et avena nt corres po n d a n t s": null,
-    "allô maltraitance des personnes âgées à paris -alma-paris": null,
-    "le picoulet-mission populaire du 11e(11e)": null,
     "votre village à tous": {
       "denomination": "CULTUR BIBLIOTHEQUE POUR TOUS VILLAGE",
       "siren": "484108428",
@@ -5054,7 +4881,6 @@
       "ville_siege": "MONT-SAINT-AIGNAN",
       "matched_name": "Votre Village à Tous"
     },
-    "art exprim 18e": null,
     "l’aquilone": {
       "denomination": "TRANSARC AQUILON",
       "siren": "502657778",
@@ -5073,7 +4899,6 @@
       "ville_siege": "VERSAILLES",
       "matched_name": "Culture et Bibliothèque"
     },
-    "cqfd bessières": null,
     "calliope": {
       "denomination": "CALLIOPE",
       "siren": "817403876",
@@ -5164,8 +4989,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Octave et Arpège"
     },
-    "action handicap france - ahf": null,
-    "union départementale de paris de la fédération des malades et handicapés": null,
     "promotion de l'accessibilité et de la conception": {
       "denomination": "PROMOTION DE L ACCESSIBILITE ET DE LA CONCEPTION POUR TOUS",
       "siren": "791474471",
@@ -5175,8 +4998,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Promotion de l'Accessibilité et de la Conception"
     },
-    "signer la convention pluriannuelle d’objectifs 2025-2027": null,
-    "signer la convention pluriannuelle d’objectifs 2025-2027 avec l’association unafam": null,
     "association française contre les myopathies -afm": {
       "denomination": "ASS FRANCAISE CONTRE LES MYOPATHIES",
       "siren": "775609571",
@@ -5195,7 +5016,6 @@
       "ville_siege": "PARIS",
       "matched_name": "APF FRANCE HANDICAP"
     },
-    "de familles de traumatisés crâniens et de cérébrolésés idf - paris": null,
     "unanimes": {
       "denomination": "UNANIMES",
       "siren": "994792042",
@@ -5205,7 +5025,6 @@
       "ville_siege": "NIMES",
       "matched_name": "UNANIMES"
     },
-    "réadaptation et défense des devenus sourds ardds caravelle idf": null,
     "france acouphenes": {
       "denomination": "FRANCE ACOUPHENES",
       "siren": "403102635",
@@ -5224,7 +5043,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Fédération Française des DYS"
     },
-    "signer une convention pluriannuelle d’objectifs 2025-2027": null,
     "les chemins de la danse": {
       "denomination": "LES CHEMINS DE LA DANSE",
       "siren": "528368186",
@@ -5342,14 +5160,6 @@
       "ville_siege": "CHARBONNIERES-LES-BAINS",
       "matched_name": "Audition Solidarité"
     },
-    "titre de l’exercice 2025 à l’association": null,
-    "titre de l’exercice 2025 à l’association aurore": null,
-    "titre de l’exercice 2025 à l'association nationale de prévention en alcoologie et addictologie": null,
-    "titre de l’exercice 2025 à l'association aux captifs la libération": null,
-    "titre de l’exercice 2025 à l'association gaiaparis": null,
-    "titre de l’exercice 2025 au groupe sos solidarités": null,
-    "titre de l’exercice 2025 à l’association oppelia": null,
-    "solidarité sida 16 bis avenue parmentier": null,
     "titre de la santé": {
       "denomination": "SOC ETUDE EXPLOIT TITRE SANTE",
       "siren": "429136104",
@@ -5404,8 +5214,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Prix Clara"
     },
-    "titre de l’année 2025 à l’association comité": null,
-    "titre de l’année 2025 à l’association médecins du monde": null,
     "groupe sos solidarités": {
       "denomination": "GROUPE SOS SOLIDARITES",
       "siren": "341062404",
@@ -5442,7 +5250,6 @@
       "ville_siege": "SAINT-PAUL-TROIS-CHATEAUX",
       "matched_name": "ADEPT"
     },
-    "fédération des maisons et pôles de santé d’île-de-france": null,
     "argos 2001": {
       "denomination": "ARGOS 2001",
       "siren": "487704439",
@@ -5479,9 +5286,6 @@
       "ville_siege": "PARIS",
       "matched_name": "Dispens’aire Psy"
     },
-    "intervalle - consultations et accueils psychanalytiques": null,
-    "la porte ouverte paris centre d’aide morale et psychologique": null,
-    "les psy nomades": null,
     "groupement de coopération sociale et médico-sociale": {
       "denomination": "GROUPEMENT DE COOPERATION MEDICO SOCIAL LES 3S",
       "siren": "518676267",
@@ -5563,7 +5367,6 @@
       "ville_siege": "PARIS",
       "matched_name": "EPOC"
     },
-    "22 786 euros": null,
     "enfants": {
       "denomination": "OEUVRE DE SECOURS AUX ENFANTS",
       "siren": "775681331",
@@ -5572,6 +5375,541 @@
       "activite_principale": "88.99A",
       "ville_siege": "PARIS",
       "matched_name": "enfants"
-    }
+    },
+    "876": null,
+    "la présente délibération": null,
+    "finance m e n t des travaux listés dans la prése n t e convention": null,
+    "la scop langues plurielles": {
+      "denomination": "LANGUES PLURIELLES",
+      "siren": "533488631",
+      "siret": "53348863100029",
+      "nature_juridique": "5460",
+      "activite_principale": "85.59A",
+      "ville_siege": "PARIS",
+      "matched_name": "la SCOP Langues Plurielles"
+    },
+    "la scic les champs des possibles": {
+      "denomination": "LE CHAMP DES POSSIBLES",
+      "siren": "909763260",
+      "siret": "90976326000017",
+      "nature_juridique": "6540",
+      "activite_principale": "68.20B",
+      "ville_siege": "PARIS",
+      "matched_name": "la SCIC Les Champs des Possibles"
+    },
+    "florimont domicilié 5-9 place marcel paul": {
+      "denomination": "FLORIMONT JOAILLERIE",
+      "siren": "932200702",
+      "siret": "93220070200011",
+      "nature_juridique": "5710",
+      "activite_principale": "32.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Florimont domicilié 5-9 place Marcel Paul"
+    },
+    "artémisia formation": {
+      "denomination": "ARTEMISIA",
+      "siren": "420816779",
+      "siret": "42081677900029",
+      "ville_siege": "Paris",
+      "matched_name": "Artémisia Formation",
+      "source": "websearch"
+    },
+    "emmaüs coup de main": {
+      "denomination": "EMMAUS COUP DE MAIN",
+      "siren": "411970819",
+      "siret": "41197081900022",
+      "ville_siege": "Pantin",
+      "matched_name": "Emmaüs Coup de Main",
+      "source": "websearch"
+    },
+    "de l’armée du salut -chu mouzaïa": null,
+    "de l’armée du salut -palais de la femme domiciliée 94": {
+      "denomination": "FONDATION DE L ARMEE DU SALUT",
+      "siren": "431968601",
+      "siret": "43196860100010",
+      "nature_juridique": "9300",
+      "activite_principale": "87.90B",
+      "ville_siege": "PARIS",
+      "matched_name": "de l’Armée du Salut -Palais de la Femme domiciliée 94"
+    },
+    "h.a": null,
+    "déclarée d’utilité publique les œuvres de la mie de pain": {
+      "denomination": "LES ŒUVRES DE LA MIE DE PAIN",
+      "siren": "775682198",
+      "siret": "77568219800053",
+      "ville_siege": "Paris",
+      "matched_name": "Les Œuvres de la Mie de Pain",
+      "source": "websearch"
+    },
+    "travail et partage armée du salut": null,
+    "la sarl altermundi": {
+      "denomination": "ALTERMUNDI",
+      "siren": "440222842",
+      "siret": "44022284200021",
+      "nature_juridique": "5499",
+      "activite_principale": "47.91A",
+      "ville_siege": "PARIS",
+      "matched_name": "la SARL Altermundi"
+    },
+    "entreprise du bâtiment et d’insertion par le retour à l’emploi": {
+      "denomination": "ENT BATIMENT INSERTION RETOUR EMPLOI",
+      "siren": "385124003",
+      "siret": "38512400300018",
+      "nature_juridique": "9220",
+      "activite_principale": "88.10C",
+      "ville_siege": "PARIS",
+      "matched_name": "Entreprise du Bâtiment et d’Insertion par le Retour à l’Emploi"
+    },
+    "la sas bis boutique solidaire": {
+      "denomination": "BIS BOUTIQUE SOLIDAIRE",
+      "siren": "789822368",
+      "siret": "78982236800013",
+      "nature_juridique": "5710",
+      "activite_principale": "47.79Z",
+      "ville_siege": "PARIS",
+      "matched_name": "la SAS Bis Boutique Solidaire"
+    },
+    "la sas change please france": {
+      "denomination": "CHANGE PLEASE FRANCE",
+      "siren": "904548732",
+      "siret": "90454873200026",
+      "nature_juridique": "5710",
+      "activite_principale": "46.37Z",
+      "ville_siege": "PARIS",
+      "matched_name": "la SAS Change Please France"
+    },
+    "la scop sas clair et net": {
+      "denomination": "CLAIR ET NET SAS",
+      "siren": "811290162",
+      "siret": "81129016200015",
+      "nature_juridique": "5710",
+      "activite_principale": "81.21Z",
+      "ville_siege": "PARIS 18",
+      "matched_name": "la SCOP SAS Clair et Net"
+    },
+    "la sas cyclocare": {
+      "denomination": "CYCLOCARE",
+      "siren": "912901477",
+      "siret": "91290147700014",
+      "nature_juridique": "5710",
+      "activite_principale": "88.99B",
+      "ville_siege": "PARIS",
+      "matched_name": "la SAS Cyclocare"
+    },
+    "la sas cygogne": {
+      "denomination": "CYGOGNE",
+      "siren": "900510462",
+      "siret": "90051046200014",
+      "nature_juridique": "5710",
+      "activite_principale": "49.41B",
+      "ville_siege": "LA GARENNE-COLOMBES",
+      "matched_name": "la SAS Cygogne"
+    },
+    "la sas ecod’air": {
+      "denomination": "ECOD'AIR EA",
+      "siren": "494141419",
+      "siret": "49414141900015",
+      "nature_juridique": "5710",
+      "activite_principale": "46.51Z",
+      "ville_siege": "PARIS",
+      "matched_name": "la SAS Ecod’air"
+    },
+    "la sarl food sweet food": {
+      "denomination": "FOOD SWEET FOOD",
+      "siren": "839410503",
+      "siret": "83941050300016",
+      "nature_juridique": "5710",
+      "activite_principale": "56.10A",
+      "ville_siege": "PARIS",
+      "matched_name": "la SARL Food Sweet Food"
+    },
+    "la sarl groupement d’activités de courses et de services": {
+      "denomination": "GROUPEMENT D ACTIVITES DE COURSES ET DE SERVICES",
+      "siren": "309330629",
+      "siret": "30933062900069",
+      "nature_juridique": "5710",
+      "activite_principale": "82.92Z",
+      "ville_siege": "PARIS",
+      "matched_name": "la SARL Groupement d’Activités de Courses et de Services"
+    },
+    "la scic label gamelle": {
+      "denomination": "LABEL GAMELLE",
+      "siren": "844691097",
+      "siret": "84469109700027",
+      "nature_juridique": "5460",
+      "activite_principale": "56.29B",
+      "ville_siege": "MONTREUIL",
+      "matched_name": "la SCIC Label Gamelle"
+    },
+    "la sarl pro insert": {
+      "denomination": "PRO INSERT",
+      "siren": "421261967",
+      "siret": "42126196700028",
+      "nature_juridique": "5499",
+      "activite_principale": "81.21Z",
+      "ville_siege": "PARIS",
+      "matched_name": "la SARL Pro Insert"
+    },
+    "la sas réavie": {
+      "denomination": "ROBERTO PRUAL-REAVIS",
+      "siren": "488289083",
+      "siret": "48828908300013",
+      "nature_juridique": "1000",
+      "activite_principale": "90.03A",
+      "ville_siege": "PARIS",
+      "matched_name": "la SAS Réavie"
+    },
+    "la sas répareseb": {
+      "denomination": "REPARESEB",
+      "siren": "892136920",
+      "siret": "89213692000014",
+      "nature_juridique": "5710",
+      "activite_principale": "82.99Z",
+      "ville_siege": "PANTIN",
+      "matched_name": "la SAS RépareSeb"
+    },
+    "la sas rézosocial": {
+      "denomination": "REZOSOCIAL",
+      "siren": "794223461",
+      "siret": "79422346100045",
+      "nature_juridique": "5710",
+      "activite_principale": "62.02A",
+      "ville_siege": "PARIS",
+      "matched_name": "la SAS Rézosocial"
+    },
+    "la sas zazie hôtel": {
+      "denomination": "ZAZIE HOTEL",
+      "siren": "752387670",
+      "siret": "75238767000025",
+      "nature_juridique": "5710",
+      "activite_principale": "55.10Z",
+      "ville_siege": "PARIS",
+      "matched_name": "la SAS Zazie Hôtel"
+    },
+    "la snc ergos 75 698": {
+      "denomination": "ERGOS 75 698",
+      "siren": "908463466",
+      "siret": "90846346600015",
+      "nature_juridique": "5202",
+      "activite_principale": "82.11Z",
+      "ville_siege": "LAVAL",
+      "matched_name": "la SNC Ergos 75 698"
+    },
+    "la sarl id’ées intérim f": {
+      "denomination": "ID'EES INTERIM F",
+      "siren": "509377750",
+      "siret": "50937775000013",
+      "nature_juridique": "5499",
+      "activite_principale": "78.20Z",
+      "ville_siege": "CHENOVE",
+      "matched_name": "la SARL Id’ées Intérim F"
+    },
+    "optim etti": {
+      "denomination": "OPTIM E.T.T.I",
+      "siren": "437760226",
+      "siret": "43776022600039",
+      "nature_juridique": null,
+      "ville_siege": "Paris",
+      "matched_name": "Optim ETTI",
+      "source": "websearch"
+    },
+    "la sarl sbc insertion": {
+      "denomination": "SBC INSERTION",
+      "siren": "519260558",
+      "siret": "51926055800019",
+      "nature_juridique": "5710",
+      "activite_principale": "78.20Z",
+      "ville_siege": "PARIS",
+      "matched_name": "la SARL SBC Insertion"
+    },
+    "la sas secours emploi intérim": {
+      "denomination": "SECOURS EMPLOI INTERIM",
+      "siren": "788621563",
+      "siret": "78862156300030",
+      "nature_juridique": "5710",
+      "activite_principale": "78.20Z",
+      "ville_siege": "PARIS",
+      "matched_name": "la SAS Secours Emploi Intérim"
+    },
+    "villette emploi etti": null,
+    "un collège public parisien": null,
+    "trente et un collèges publics parisiens": null,
+    "collège césar franck": {
+      "denomination": "COLLEGE CESAR FRANCK",
+      "siren": "197522485",
+      "siret": "19752248500014",
+      "nature_juridique": "7331",
+      "activite_principale": "85.31Z",
+      "ville_siege": "PARIS",
+      "matched_name": "collège César Franck"
+    },
+    "des parents et futurs parents gays et lesbiens": null,
+    "bi cause": null,
+    "centre lesbien gai bitrans queer et intersexe de paris et d’ile-de-france": null,
+    "comité miss trans france": null,
+    "la farapej- fédération des associations réflexion-action": {
+      "denomination": "FEDERATION DES ASSOCIATIONS REFLEXION ACTION PRISON ET JUSTICE",
+      "siren": "383614070",
+      "siret": "38361407000050",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "la FARAPEJ- Fédération des Associations Réflexion-Action"
+    },
+    "centre d’information et d’animation du 7e arrondissement": null,
+    "équipe saint vincent insertion famille oberkampf paris": null,
+    "l’équipe saint- vincent alpha xvparis": null,
+    "r.a": null,
+    "13": null,
+    "cie bouche abouche": null,
+    "lamaison du canal -regie de quartier paris 10(10068)": null,
+    "ma plume est avous": null,
+    "arbp - association rungis brillat peupliers": null,
+    "coalition internationalepour l’abolitionde lamaternité de substitution": null,
+    "reconstruc- tion sein infos": null,
+    "soroptimist internationalparis-fondateur": null,
+    "aplaces égales": null,
+    "muyaboxing75": null,
+    "the sorority fondation": {
+      "denomination": "THE SORORITY FOUNDATION",
+      "siren": "903653673",
+      "siret": "90365367300025",
+      "ville_siege": "Paris",
+      "matched_name": "The Sorority Foundation",
+      "source": "websearch"
+    },
+    "de soutien à lafondation des femmes": null,
+    "acti collterr init soci spor cult edu": {
+      "denomination": "ACTI COLLTERR INIT SOCI SPOR CULT EDU",
+      "siren": "318720646",
+      "siret": "31872064600039",
+      "nature_juridique": "9220",
+      "activite_principale": "93.29Z",
+      "ville_siege": "PARIS",
+      "matched_name": "ACTI COLLTERR INIT SOCI SPOR CULT EDU"
+    },
+    "centre d’action sociale protestant dans la région parisienne": null,
+    "5ème arrondissement": {
+      "denomination": "AMICALE DES POLICIERS DES 5EME ET 6EME ARRONDISSEMENTS",
+      "siren": "834643744",
+      "siret": "83464374400016",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "5ème arrondissement"
+    },
+    "comite des fetes et d’action sociale du 6e arrondissement": null,
+    "association d’education populaire notre dame des champs montparnasse rencontres": null,
+    "la pause du 6e": null,
+    "cpn connaitre et proteger lanature du valde seine": null,
+    "entraide sourire sfx (saint francois xavier)": null,
+    "old up generation des vieux debout gdvd": {
+      "denomination": "ASSOCIATION OLD'UP",
+      "siren": "520238676",
+      "siret": "52023867600024",
+      "ville_siege": "Paris",
+      "matched_name": "OLD UP",
+      "source": "websearch"
+    },
+    "association generale des familles du 8eme arrondissement": null,
+    "societe nationale d'entraide de lamedaille militaire": null,
+    "9 e histoire societe pour l’etude du patrimoine et de l’histoire du 9ème arrondissement": null,
+    "faites le 9 association d’animation locale et solidaire": null,
+    "cirque fier.e. s": null,
+    "corps acœur": null,
+    "lacamillienne": null,
+    "office du mouvement sportif du 12ème arrondissement oms 12": {
+      "denomination": "OFFICE DU MOUVEMENT SPORTIF DU 12E",
+      "siren": "492898929",
+      "siret": "49289892900020",
+      "ville_siege": "Paris",
+      "matched_name": "OMS 12",
+      "source": "websearch"
+    },
+    "comité des fêtes et de la solidarité du 13e arrondissement": null,
+    "office du mouvement sportif du 14e arrondissement": null,
+    "équipe saint-vincent alpha xv paris": null,
+    "union des institutions sociales du 15e arrondissement": null,
+    "syndicat d'initiative du xvie": null,
+    "captifs lalibération": null,
+    "association générale de familles du 16e arrondissement": null,
+    "comité d’entente des associations d’anciens combattants et victimes de guerre du 16e arrondissement": null,
+    "office du mouvement sportif du xvie arrondissement": null,
+    "amicale des pongistes du 17e - ap 17": null,
+    "association de sports adaptés et de loisirs de paris": null,
+    "centre paroissial d’initiatives jeunes ozanam": null,
+    "titre de l’exercice 2025": null,
+    "le laboratoire de laride": null,
+    "ayyem zamen le temps jadis": null,
+    "ma plume est àvous": null,
+    "ligue de l’enseignement -fédération départementale de paris -mouvement d’éducation populaire": null,
+    "lefil de soie": null,
+    "cocyclette": {
+      "denomination": "COCYCLETTE",
+      "siren": "850291766",
+      "siret": "85029176600028",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "COCYCLETTE"
+    },
+    "des cris des villes": {
+      "denomination": "DES CRIS DES VILLES",
+      "siren": "884142407",
+      "siret": "88414240700029",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "DES CRIS DES VILLES"
+    },
+    "strataj’m paris": null,
+    "vivre le nouveau xiiième": null,
+    "au titre de l’année 2025": null,
+    "arbres remarquables bilan recherche etudes et sauvegarde arbres": null,
+    "fresque de labiodiversité": null,
+    "groupement regional d'animation et d'information sur lanature et l'environnement d'ile de france graine ile de france": null,
+    "conseil national de laprotection animale cnpa-c": null,
+    "societe protectrice des animaux s pa": null,
+    "aucoeur des chats": null,
+    "groupement des agriculteurs biologiques de la région île-de-france": null,
+    "la caisse des écoles de paris centre": null,
+    "la caisse des écoles du 8earrondissement": null,
+    "caisse des écoles du 9earrondissement": null,
+    "la caisse des écoles du 10earrondissement": null,
+    "la caisse des écoles du 11earrondissement": null,
+    "la caisse des écoles du 13earrondissement": null,
+    "la caisse des écoles du 14earrondissement": null,
+    "la caisse des écoles du 16earrondissement": null,
+    "la caisse des écoles du 17earrondissement": null,
+    "la caisse des écoles du 18earrondissement": null,
+    "la caisse des écoles du 19earrondissement": null,
+    "la caisse des écoles du 20earrondissement": null,
+    "présent projet de délibération": null,
+    "théâtre de la ville-sarah bernhardt": {
+      "denomination": "ASA DE PROPR DE L'AVENUE SARAH BERNHARDT",
+      "siren": "294404173",
+      "siret": "29440417300014",
+      "nature_juridique": "7321",
+      "activite_principale": "42.99Z",
+      "ville_siege": "NANTES",
+      "matched_name": "Théâtre de la Ville-Sarah Bernhardt"
+    },
+    "eau soleil paca": null,
+    "ido": null,
+    "paris football club sis": null,
+    "paris cyclisme olympique": null,
+    "paris volley avenir sis": null,
+    "sport adapté et loisirs de montmartre": null,
+    "comité départemental olympique et sportif de paris": null,
+    "sporting club universitaire de france": null,
+    "l’office du mouvement sportif du 5earrondissement": null,
+    "amicale bouliste des arènes de lutèce et du 5ème arrondissement": null,
+    "l’office du mouvement sportif du 8earrondissement": null,
+    "l’office du mouvement sportif du 14ème arrondissement oms 14": null,
+    "paris xivfutsal club": null,
+    "ring du 14ème": null,
+    "emmaüs alternatives(numéroparisassos188453": null,
+    "la scop acp la manufacture chanson 124": {
+      "denomination": "ACP LA MANUFACTURE CHANSON",
+      "siren": "328582598",
+      "siret": "32858259800046",
+      "nature_juridique": "5460",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "la SCOP ACP La Manufacture Chanson 124"
+    },
+    "acture 9 bis": null,
+    "art exprim 18ème -87": null,
+    "d’éducation populaire de charonne réunion aepcr 77-79": null,
+    "1000 collectes -la maison des possibles 132": null,
+    "socio-éducative des familles de l’ensemble clignancourt": null,
+    "barrio 14 11": {
+      "denomination": "BARRIO 14",
+      "siren": "924669625",
+      "siret": "92466962500015",
+      "nature_juridique": "9220",
+      "activite_principale": "88.99B",
+      "ville_siege": "PARIS",
+      "matched_name": "Barrio 14 11"
+    },
+    "crl 10 mvac 206": null,
+    "espoirs 19 mvac 20": null,
+    "groupe de diffusion d’informations sur l’environnement": null,
+    "j’imaginerais -mvac -206": null,
+    "la camillienne-sports 12ème 12": null,
+    "la compagnie des tropes mvac -22": null,
+    "labomatique mvac 18e15": null,
+    "le club des naïades mvac 20e 18-20 rue ramus 75020 paris": null,
+    "les fripons mvac 20e - 18": null,
+    "l'intestine 22": null,
+    "move and art -mvac 11e": null,
+    "rassemblement des jeunes déterminés 13": null,
+    "raptz rapporteuz 72 bis": null,
+    "riquet élites 15 ter": null,
+    "sporting club universitaire de france 55": null,
+    "strataj’m paris 86/88": null,
+    "s.w": null,
+    "veni verdi -mvac 20e 18-20": null,
+    "jeunesse feu vert-robert steindecker": null,
+    "titre de l’année 2025": null,
+    "centre paroissial d'initiatives jeunes ozanam": null,
+    "la releve bariolee": {
+      "denomination": "LA RELEVE BARIOLEE",
+      "siren": "438352445",
+      "siret": "43835244500037",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "MAISONS-ALFORT",
+      "matched_name": "LA RELEVE BARIOLEE"
+    },
+    "kasbah-sur-scene": {
+      "denomination": "KASBAH SUR SCENE",
+      "siren": "453747701",
+      "siret": "45374770100036",
+      "nature_juridique": "9220",
+      "activite_principale": "90.02Z",
+      "ville_siege": "PARIS",
+      "matched_name": "KASBAH-SUR-SCENE"
+    },
+    "les anciens de lagrange auxbelles": null,
+    "migration sante france": null,
+    "les mamans de labanane": null,
+    "titre de l’année 2025 à l’association union sportive des bretons de paris": null,
+    "opej baron edmond de rothschild": {
+      "denomination": "OPEJ BARON EDMOND DE ROTHSCHILD",
+      "siren": "775692064",
+      "siret": "77569206400014",
+      "nature_juridique": "9300",
+      "activite_principale": "88.99A",
+      "ville_siege": "PARIS",
+      "matched_name": "OPEJ BARON EDMOND DE ROTHSCHILD"
+    },
+    "signer les conventions et avena nt corres po n d a n t s": null,
+    "allô maltraitance des personnes âgées à paris -alma-paris": null,
+    "le picoulet-mission populaire du 11e(11e)": null,
+    "art exprim 18e": null,
+    "cqfd bessières": null,
+    "action handicap france - ahf": null,
+    "union départementale de paris de la fédération des malades et handicapés": null,
+    "signer la convention pluriannuelle d’objectifs 2025-2027": null,
+    "signer la convention pluriannuelle d’objectifs 2025-2027 avec l’association unafam": null,
+    "de familles de traumatisés crâniens et de cérébrolésés idf - paris": null,
+    "réadaptation et défense des devenus sourds ardds caravelle idf": null,
+    "signer une convention pluriannuelle d’objectifs 2025-2027": null,
+    "titre de l’exercice 2025 à l’association": null,
+    "titre de l’exercice 2025 à l’association aurore": null,
+    "titre de l’exercice 2025 à l'association nationale de prévention en alcoologie et addictologie": null,
+    "titre de l’exercice 2025 à l'association aux captifs la libération": null,
+    "titre de l’exercice 2025 à l'association gaiaparis": null,
+    "titre de l’exercice 2025 au groupe sos solidarités": null,
+    "titre de l’exercice 2025 à l’association oppelia": null,
+    "solidarité sida 16 bis avenue parmentier": null,
+    "titre de l’année 2025 à l’association comité": null,
+    "titre de l’année 2025 à l’association médecins du monde": null,
+    "fédération des maisons et pôles de santé d’île-de-france": null,
+    "intervalle - consultations et accueils psychanalytiques": null,
+    "la porte ouverte paris centre d’aide morale et psychologique": null,
+    "les psy nomades": null,
+    "22 786 euros": null
   }
 }
