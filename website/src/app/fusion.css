@@ -488,7 +488,9 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   font-weight: 500;
   color: var(--muted);
   vertical-align: .6em;
-  margin-left: .08em;
+  margin-left: .5em;
+  letter-spacing: 0;
+  white-space: nowrap;
 }
 .theme-fusion .fx-hero-num-per {
   font-size: .2em;
@@ -1510,7 +1512,9 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion .fx-overview .fx-hero-num-u {
   font-size: .22em;
   vertical-align: .55em;
-  margin-left: .1em;
+  margin-left: .45em;
+  letter-spacing: 0;
+  white-space: nowrap;
 }
 .theme-fusion .fx-overview .fx-hero-num-line {
   font-family: var(--f-mono);
