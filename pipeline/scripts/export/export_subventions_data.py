@@ -26,7 +26,7 @@ from google.cloud import bigquery
 
 # Configuration
 PROJECT_ID = "open-data-france-484717"
-DATASET = "dbt_paris"
+DATASET = "dbt_paris_marts"
 OUTPUT_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data" / "subventions"
 
 

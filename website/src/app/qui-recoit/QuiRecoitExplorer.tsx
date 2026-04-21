@@ -149,10 +149,13 @@ export default function QuiRecoitExplorer({
 
   const hasQuery = query.trim().length >= 2 || theme.length > 0 || minEur.length > 0 || maxEur.length > 0;
 
-  // Lazy-fetch du fichier slim (~quelques Mo max) au premier besoin.
-  // Le fichier couvre toutes les années → dédupliqué côté pipeline.
+  // Lazy-fetch du fichier slim au premier besoin. Ref pour garantir une
+  // seule tentative par mount, même en cas d'erreur — sinon risque de
+  // boucle infinie quand un fetch raté re-trigger l'effet.
+  const searchFetchedRef = useRef(false);
   useEffect(() => {
-    if (!hasQuery || searchData !== null || searchLoading) return;
+    if (!hasQuery || searchFetchedRef.current) return;
+    searchFetchedRef.current = true;
     let cancelled = false;
     setSearchLoading(true);
     setSearchError(null);
@@ -172,7 +175,7 @@ export default function QuiRecoitExplorer({
     return () => {
       cancelled = true;
     };
-  }, [hasQuery, searchData, searchLoading]);
+  }, [hasQuery]);
 
   // Reset pagination à chaque changement de filtre.
   useEffect(() => {
