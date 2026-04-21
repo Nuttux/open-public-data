@@ -24,6 +24,7 @@ import {
   fmtMillions,
   loadQuiRecoitData,
   loadQuiRecoitIndex,
+  slugifyLabel,
 } from "@/lib/fusion-data";
 
 export const metadata: Metadata = {
@@ -118,6 +119,7 @@ export default async function QuiRecoitPage({
             basePath="/qui-recoit"
             entityNoun="bénéficiaires"
             paretoContrast="soit plus que toutes les autres associations réunies en dehors du Social"
+            hrefBuilder={(theme) => `/qui-recoit/theme/${slugifyLabel(theme)}`}
           />
         </div>
       </section>

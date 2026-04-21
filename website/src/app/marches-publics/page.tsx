@@ -26,6 +26,7 @@ import {
   fmtMillions,
   loadMarchesIndex,
   loadMarchesPageData,
+  slugifyLabel,
 } from "@/lib/fusion-data";
 
 export const metadata: Metadata = {
@@ -134,6 +135,7 @@ export default async function MarchesPublicsPage({
             kicker={`Sur chaque 100 € d'enveloppe contractuelle ${d.year}`}
             entityNoun="titulaires"
             paretoContrast="les ~1 500 autres fournisseurs se partagent le reste"
+            hrefBuilder={(cat) => `/marches-publics/categorie/${slugifyLabel(cat)}`}
           />
         </div>
       </section>
@@ -264,9 +266,9 @@ export default async function MarchesPublicsPage({
         <div className="fx-wrap">
           <SectionHead
             number="05"
-            kind="Par procédure"
-            title={<>Avec quelle <em>concurrence</em> la Ville achète-t-elle ?</>}
-            subtitle="La nature du marché (travaux, services, fournitures) est le seul proxy de la procédure dispo en open data. Le libellé précis (appel d'offres ouvert, MAPA, procédure négociée) n'est pas publié ligne à ligne — à produire en pipeline."
+            kind="Par nature"
+            title={<>Travaux, services, fournitures : <em>le mix des contrats</em></>}
+            subtitle="Seule la nature du marché (travaux / services / fournitures) est publiée en open data. La procédure formelle (appel d'offres, MAPA, négociée) n'est pas ventilée — elle demanderait un scraping des avis d'attribution DECP."
           />
           <div style={{ border: "1px solid var(--ink)" }}>
             <div

@@ -11,7 +11,6 @@ import {
   TileCard,
   YearPicker,
   ExportRow,
-  SignauxFaibles,
   ProjectMap,
   ProjetThumb,
   ParisChoropleth,
@@ -168,15 +167,15 @@ export default async function InvestissementsPage({
             number="04"
             kind="Par chapitre"
             title={<>Ce que <em>la Ville construit</em></>}
-            subtitle="Classification fonctionnelle issue du budget. L'aménagement & l'habitat pèsent le plus, suivis des équipements culturels et sportifs."
+            subtitle={`Répartition des ${d.byChapitre.reduce((s, c) => s + c.count, 0)} projets d'investissement localisés (${((d.byChapitre.reduce((s, c) => s + c.amount, 0) / d.total) * 100).toFixed(0)} % du budget investissement ${d.year} — les acquisitions centrales et transverses ne sont pas ventilées par chapitre).`}
           />
           <StackedBarTheme
             items={d.byChapitre.map((c) => ({ theme: c.label, amount: c.amount, count: c.count }))}
-            total={d.total}
+            total={d.byChapitre.reduce((s, c) => s + c.amount, 0)}
             concentrationTop10Pct={d.top10ProjetsPct}
             year={d.year}
             basePath="/investissements"
-            kicker={`Sur chaque 100 € d'investissement en ${d.year}`}
+            kicker={`Sur chaque 100 € des projets localisés ${d.year}`}
             entityNoun="projets"
             paretoContrast="soit plus du quart du budget annuel concentré sur 10 chantiers"
             hrefBuilder={(theme) => `/investissements/chapitre/${slugifyChapitre(theme)}`}
@@ -219,69 +218,6 @@ export default async function InvestissementsPage({
             un pipeline LLM + heuristiques. Environ <b>{Math.round(100 - d.pctGeo)} %</b> des projets
             ne sont pas géolocalisables (opérations transverses, dotations centrales).
           </p>
-        </div>
-      </section>
-
-      <section className="fx-section">
-        <div className="fx-wrap">
-          <SectionHead
-            number="07"
-            kind="Signaux faibles"
-            title={<>Projets <em>à surveiller</em></>}
-            subtitle="Opérations notables pour leur volume, leur concentration territoriale ou l'absence de géolocalisation. Pas un signal de dérive — un appel à regarder de près."
-          />
-          <SignauxFaibles
-            note={
-              <>
-                <b>Méthode</b> : repérage heuristique sur montants &gt; 10 M €, projets non géolocalisés
-                (transverses), et concentration par arrondissement. Chaque projet peut être réexaminé
-                depuis sa fiche.
-              </>
-            }
-            items={[
-              {
-                flag: "Projets phare",
-                title: `${d.topProjets[0]?.name.slice(0, 60) ?? "—"}`,
-                body: `Le plus gros investissement de ${d.year} cumule ${fmtMillions(d.topProjets[0]?.amount ?? 0, 1)} M €, soit ${fmtDec((d.topProjets[0]?.amount ?? 0) / d.total * 100, 2)} % du total annuel.`,
-                stats: [
-                  { label: "Montant", value: `${fmtMillions(d.topProjets[0]?.amount ?? 0, 1)} M €` },
-                  { label: "Arr.", value: d.topProjets[0] && d.topProjets[0].arr > 0 ? `${d.topProjets[0].arr}${suf(d.topProjets[0].arr)}` : "transv." },
-                  { label: "Chap.", value: (d.topProjets[0]?.chapitre ?? "").slice(0, 14) },
-                ],
-              },
-              {
-                flag: "Concentration territoriale",
-                title: `${d.byArrondissement[0] ? `${d.byArrondissement[0].arr}${suf(d.byArrondissement[0].arr)} arrondissement` : "—"}`,
-                body: `Le premier arrondissement en volume reçoit ${fmtMillions(d.byArrondissement[0]?.amount ?? 0, 0)} M € — ${fmtDec((d.byArrondissement[0]?.amount ?? 0) / d.byArrondissement.reduce((s, a) => s + a.amount, 0) * 100, 0)} % des projets géolocalisés.`,
-                stats: [
-                  { label: "Montant", value: `${fmtMillions(d.byArrondissement[0]?.amount ?? 0, 0)} M €` },
-                  { label: "Projets", value: String(d.byArrondissement[0]?.count ?? 0) },
-                  { label: "Part", value: `${fmtDec((d.byArrondissement[0]?.amount ?? 0) / d.byArrondissement.reduce((s, a) => s + a.amount, 0) * 100, 0)} %` },
-                ],
-              },
-              {
-                flag: "Non localisé",
-                title: "Projets transverses",
-                body: `${fmtDec(100 - d.pctGeo, 0)} % des projets ${d.year} ne sont pas géolocalisables : dotations centrales, opérations pluri-sites, études. Ils représentent une part non négligeable du budget.`,
-                stats: [
-                  { label: "Part", value: `${fmtDec(100 - d.pctGeo, 0)} %` },
-                  { label: "Projets", value: fmtInt(d.nbProjets - d.nbGeo) },
-                  { label: "À produire", value: "Géolocalisation" },
-                ],
-                cta: { href: "/methode#investissements", label: "Lire la méthode" },
-              },
-              {
-                flag: "Chapitre dominant",
-                title: `${d.byChapitre[0]?.label ?? "—"}`,
-                body: `Ce chapitre fonctionnel absorbe à lui seul ${fmtMillions(d.byChapitre[0]?.amount ?? 0, 0)} M € — environ ${fmtDec((d.byChapitre[0]?.amount ?? 0) / d.total * 100, 0)} % du total. Logique structurelle à contextualiser.`,
-                stats: [
-                  { label: "Montant", value: `${fmtMillions(d.byChapitre[0]?.amount ?? 0, 0)} M €` },
-                  { label: "Part", value: `${fmtDec((d.byChapitre[0]?.amount ?? 0) / d.total * 100, 0)} %` },
-                  { label: "Rang", value: "#01" },
-                ],
-              },
-            ]}
-          />
         </div>
       </section>
 

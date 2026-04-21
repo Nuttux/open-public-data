@@ -7,10 +7,13 @@ import {
   SectionHead,
   HeroNumber,
   KPIGrid,
-  BarRow,
   TileCard,
   YearPicker,
   ExportRow,
+  PullQuote,
+  BilanBoard,
+  DetteStructurePanel,
+  PatrimoineDrillList,
 } from "@/components/fusion";
 import {
   fmtBillions,
@@ -18,6 +21,7 @@ import {
   fmtInt,
   fmtMillions,
   loadPatrimoineData,
+  loadPatrimoineStructure,
 } from "@/lib/fusion-data";
 
 export const metadata: Metadata = {
@@ -35,13 +39,9 @@ export default async function DettePatrimoinePage({
   const sp = await searchParams;
   const requestedYear = sp.year ? Number(sp.year) : undefined;
   const d = loadPatrimoineData(requestedYear);
+  const structure = loadPatrimoineStructure(d.year);
   const net = d.fondsPropres; // patrimoine net ≈ fonds propres
   const detteParHab = d.detteFinanciere / 2_133_111;
-
-  const first = d.yearsSummary[0];
-  const last = d.yearsSummary[d.yearsSummary.length - 1];
-  const deltaDettePct = first ? ((last.dette - first.dette) / first.dette) * 100 : 0;
-  const dir: "up" | "down" | "flat" = deltaDettePct > 0.1 ? "up" : deltaDettePct < -0.1 ? "down" : "flat";
 
   return (
     <div className="theme-fusion">
@@ -85,6 +85,7 @@ export default async function DettePatrimoinePage({
                 Les recettes de fonctionnement doivent couvrir les dépenses de fonctionnement.
                 Impossible d&apos;emprunter pour payer le personnel ou les subventions courantes.
               </p>
+              <span className="fx-rule-ref">Article L.1612-4 CGCT</span>
             </div>
             <div>
               <div className="n">02 / Emprunt affecté</div>
@@ -93,29 +94,57 @@ export default async function DettePatrimoinePage({
                 Pas de dette pour payer les dépenses courantes. La dette sert à construire
                 des écoles, des piscines, des logements — des actifs qui servent longtemps.
               </p>
+              <span className="fx-rule-ref">Article L.1612-4 CGCT</span>
             </div>
             <div>
-              <div className="n">03 / Remboursement</div>
+              <div className="n">03 / Épargne brute positive</div>
               <h3>Le capital de la dette se rembourse par des ressources propres</h3>
               <p>
                 Chaque année, le remboursement du capital des emprunts doit provenir de
-                l&apos;épargne, pas d&apos;un autre emprunt.
+                l&apos;épargne brute (recettes − dépenses de fonctionnement), pas d&apos;un
+                autre emprunt.
               </p>
+              <span className="fx-rule-ref">Article L.1612-4 CGCT · circulaire DGCL</span>
             </div>
             <div>
-              <div className="n">04 / Sincérité</div>
-              <h3>Le budget doit être sincère</h3>
+              <div className="n">04 / Capacité de désendettement</div>
+              <h3>Seuil d&apos;alerte à 12 ans</h3>
               <p>
-                Les recettes sont estimées sans surévaluation, les dépenses sans sous-estimation.
-                Contrôle par la Chambre régionale des comptes.
+                Pour les communes de plus de 10 000 habitants, la capacité de désendettement
+                (dette ÷ épargne brute) doit rester sous 12 ans. Paris est à{" "}
+                <b>{fmtDec(d.capaciteDesendettement, 1)} ans</b>.
               </p>
+              <span className="fx-rule-ref">Loi de programmation des finances publiques 2023-2027</span>
             </div>
           </div>
-          <p className="fx-note">
-            <b>Une commune peut-elle faire faillite ?</b> Techniquement non : en cas de grave
-            déséquilibre, l&apos;État (via le préfet et la CRC) reprend la main et impose un
-            redressement. Les collectivités ne peuvent pas être mises en liquidation judiciaire.
-          </p>
+
+          <div className="fx-faillite-box">
+            <h4>Une commune peut-elle <span className="rouge">faire faillite</span> ?</h4>
+            <p>
+              Non, au sens du droit commercial. Une commune ne peut pas déposer le bilan —
+              elle n&apos;est pas une entreprise. En revanche, lorsque les règles budgétaires
+              ne peuvent pas être respectées, elle entre sous le régime de la{" "}
+              <b>tutelle préfectorale</b> prévu par l&apos;article <b>L.1612-14 du CGCT</b>.
+            </p>
+            <p>
+              Concrètement : le préfet saisit la <b>Chambre régionale des comptes</b>, qui
+              formule des propositions (relèvement des recettes, réduction des dépenses). Le
+              préfet peut ensuite arrêter d&apos;office le budget. Aucune commune française
+              de plus de 10 000 habitants n&apos;a fait l&apos;objet d&apos;une telle
+              procédure depuis 2015.
+            </p>
+            <p className="ref">
+              Références · CGCT art. L.1612-4 à L.1612-20 · Loi 82-213 décentralisation ·
+              circulaire DGCL du 25 juin 2023
+            </p>
+          </div>
+
+          <PullQuote cite={<>Source · CGCT art. L.1612-14 · rapports CRC Île-de-France</>}>
+            Depuis 2015, <b>aucune commune française</b> de plus de 10 000 habitants
+            n&apos;a fait l&apos;objet d&apos;une procédure de tutelle préfectorale. Paris,
+            sous le seuil d&apos;alerte de 12 ans depuis 2014, reste très loin de ce régime
+            d&apos;exception.
+          </PullQuote>
         </div>
       </section>
 
@@ -139,8 +168,15 @@ export default async function DettePatrimoinePage({
               items={[
                 { label: "Actif total", value: fmtBillions(d.actif), unit: "Md €", delta: "Immobilisations + circulant" },
                 { label: "Dette financière", value: fmtBillions(d.detteFinanciere), unit: "Md €", delta: `${fmtInt(detteParHab)} € / habitant` },
-                { label: "Provisions", value: fmtMillions(d.provisions, 0), unit: "M €", delta: "Risques et charges" },
-                { label: "Capacité désendett.", value: fmtDec(d.capaciteDesendettement, 1), unit: "ans", delta: "Dette / épargne brute" },
+                {
+                  label: "Épargne brute",
+                  value: d.epargneBrute >= 1e9 ? fmtBillions(d.epargneBrute) : fmtMillions(d.epargneBrute, 0),
+                  unit: d.epargneBrute >= 1e9 ? "Md €" : "M €",
+                  delta: d.recettesFonctionnement > 0
+                    ? `${fmtDec((d.epargneBrute / d.recettesFonctionnement) * 100, 1)} % des recettes de fonct.`
+                    : "Recettes fonct. − dépenses fonct.",
+                },
+                { label: "Capacité désendett.", value: fmtDec(d.capaciteDesendettement, 1), unit: "ans", delta: `Seuil d'alerte 12 ans · marge ${fmtDec(Math.max(0, 12 - d.capaciteDesendettement), 1)} ans` },
               ]}
             />
           </div>
@@ -155,90 +191,37 @@ export default async function DettePatrimoinePage({
             title={<>L&apos;<em>actif</em> et le <b>passif</b></>}
             subtitle="À gauche : ce que la Ville possède. À droite : comment c'est financé (fonds propres + dettes + provisions)."
           />
-          <div className="fx-dual">
-            <div>
-              <div className="fx-dual-head">Actif · {d.year}</div>
-              <div className="fx-dual-total tnum">
-                {fmtBillions(d.actif)}<span className="u">Md €</span>
-              </div>
-              <BarRow
-                items={d.actifBreakdown.map((a) => ({
-                  label: a.label,
-                  value: a.value,
-                  display: fmtBillions(a.value),
-                  unit: "Md €",
-                }))}
-              />
-            </div>
-            <div>
-              <div className="fx-dual-head">Passif · {d.year}</div>
-              <div className="fx-dual-total tnum">
-                {fmtBillions(d.passif)}<span className="u">Md €</span>
-              </div>
-              <BarRow
-                items={d.passifBreakdown.map((p) => ({
-                  label: p.label,
-                  value: p.value,
-                  display: fmtBillions(p.value),
-                  unit: "Md €",
-                }))}
-              />
-            </div>
-          </div>
+          {structure ? (
+            <BilanBoard
+              year={d.year}
+              actif={structure.masses_actif}
+              passif={structure.masses_passif}
+              totals={{ actif: d.actif, passif: d.passif }}
+            />
+          ) : (
+            <p className="fx-note">Bilan détaillé indisponible pour cet exercice.</p>
+          )}
         </div>
       </section>
 
       <section className="fx-section">
         <div className="fx-wrap">
           <SectionHead
-            number="04"
-            kind="Structure de la dette"
-            title={<>À qui Paris <em>emprunte</em> ?</>}
-            subtitle="La dette financière se répartit entre dettes bancaires, obligations (marchés de capitaux) et prêts structurés."
-          />
-          <BarRow
-            header={{
-              left: <>Décomposition dette · <b>31.12.{d.year}</b></>,
-              right: <>Total · <b>{fmtBillions(d.detteTotale)} Md €</b></>,
-            }}
-            items={[
-              { label: "Dettes financières", value: d.detteFinanciere, display: fmtBillions(d.detteFinanciere), unit: "Md €" },
-              { label: "Dettes non financières", value: d.detteNonFinanciere, display: fmtMillions(d.detteNonFinanciere, 0), unit: "M €" },
-              { label: "Provisions", value: d.provisions, display: fmtMillions(d.provisions, 0), unit: "M €" },
-            ]}
-          />
-          <p className="fx-note">
-            Le détail par instrument (obligations, emprunts bancaires, placements structurés)
-            n&apos;est pas publié en open data à la résolution nécessaire. Nous reconstruisons
-            la structure depuis les annexes financières des comptes administratifs.
-          </p>
-        </div>
-      </section>
-
-      <section className="fx-section">
-        <div className="fx-wrap">
-          <SectionHead
-            number="04b"
+            number="05"
             kind="Patrimoine en détail"
-            title={<>Ce que <em>la Ville possède</em></>}
-            subtitle="Ventilation de l'actif par grandes masses : immobilier, voirie, matériel, participations, trésorerie. Les SEM et offices publics ont leur propre bilan (cf. bailleurs sociaux)."
+            title={<>Les grandes masses de ce que la <em>Ville possède</em></>}
+            subtitle="Ventilation de l'actif par grandes composantes. Cliquez sur une ligne pour ouvrir la fiche détaillée."
           />
-          <BarRow
-            header={{
-              left: <>Actif · <b>31.12.{d.year}</b></>,
-              right: <>Total · <b>{fmtBillions(d.actif)} Md €</b></>,
-            }}
-            items={d.actifBreakdown.map((a) => ({
-              label: a.label,
-              value: a.value,
-              display: a.value >= 1e9 ? fmtBillions(a.value) : fmtMillions(a.value, 0),
-              unit: a.value >= 1e9 ? "Md €" : "M €",
-            }))}
-          />
+          {structure && structure.masses_actif.length > 0 ? (
+            <PatrimoineDrillList masses={structure.masses_actif} year={d.year} />
+          ) : (
+            <p className="fx-note">Détail patrimoine indisponible pour cet exercice.</p>
+          )}
           <p className="fx-note">
-            <b>À noter</b> : les immobilisations représentent la quasi-totalité de l&apos;actif
-            (&gt; 95 %). Elles incluent les bâtiments, les équipements, la voirie, les réseaux
-            — évalués au coût historique, pas à la valeur de marché.
+            Valorisation en <b>valeur comptable historique</b> (coût d&apos;acquisition
+            diminué des amortissements), non à la valeur de marché. Monuments classés,
+            terrains acquis avant 1980 et œuvres d&apos;art en dépôt sont structurellement
+            sous-évalués ou inscrits à l&apos;euro symbolique.
           </p>
         </div>
       </section>
@@ -246,7 +229,29 @@ export default async function DettePatrimoinePage({
       <section className="fx-section">
         <div className="fx-wrap">
           <SectionHead
-            number="04c"
+            number="06"
+            kind="Structure de la dette"
+            title={<>De <em>quoi</em> est faite la dette</>}
+            subtitle="Répartition par type de taux, par maturité, par instrument financier. Cliquez sur un type pour ouvrir la fiche détaillée."
+          />
+          {structure ? (
+            <DetteStructurePanel structure={structure.structure_dette} year={d.year} />
+          ) : (
+            <p className="fx-note">Structure détaillée indisponible pour cet exercice.</p>
+          )}
+          <p className="fx-note">
+            Les ratios par instrument (obligataire / bancaire / verts / structurés), le
+            split taux fixe/variable et la maturité moyenne ne sont pas publiés en open
+            data à la résolution ligne-par-ligne. Reconstitution depuis ROB et annexes IV
+            du compte administratif M57.
+          </p>
+        </div>
+      </section>
+
+      <section className="fx-section">
+        <div className="fx-wrap">
+          <SectionHead
+            number="07"
             kind="Hors-bilan"
             title={<>Engagements <em>hors-bilan</em></>}
             subtitle="Garanties, SEM, partenariats — des engagements qui ne figurent pas au bilan mais pèsent sur la solvabilité."
@@ -297,46 +302,7 @@ export default async function DettePatrimoinePage({
       <section className="fx-section">
         <div className="fx-wrap">
           <SectionHead
-            number="05"
-            kind="Évolution"
-            title={<>Trajectoire <em>2019–{d.year}</em></>}
-            subtitle={
-              <>
-                Actif, dette et fonds propres, année par année. La dette a{" "}
-                <b>{dir === "up" ? "augmenté" : dir === "down" ? "baissé" : "peu bougé"}</b> de{" "}
-                <b>{fmtDec(Math.abs(deltaDettePct), 1)} %</b> sur la période.
-              </>
-            }
-          />
-          <table className="fx-table">
-            <thead>
-              <tr>
-                <th>Année</th>
-                <th style={{ textAlign: "right" }}>Actif</th>
-                <th style={{ textAlign: "right" }}>Fonds propres</th>
-                <th style={{ textAlign: "right" }}>Dette totale</th>
-                <th style={{ textAlign: "right" }}>Dette / habitant</th>
-              </tr>
-            </thead>
-            <tbody>
-              {d.yearsSummary.slice().reverse().map((y) => (
-                <tr key={y.year}>
-                  <td className="rank">{y.year}</td>
-                  <td className="num">{fmtBillions(y.actif)} <span className="muted">Md €</span></td>
-                  <td className="num">{fmtBillions(y.fondsPropres)} <span className="muted">Md €</span></td>
-                  <td className="num">{fmtBillions(y.dette)} <span className="muted">Md €</span></td>
-                  <td className="num muted">{fmtInt(y.dette / 2_133_111)} €</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section className="fx-section">
-        <div className="fx-wrap">
-          <SectionHead
-            number="06"
+            number="08"
             kind="Sources & méthode"
             title={<>Vérifiable <em>ligne par ligne</em></>}
           />
@@ -386,7 +352,7 @@ export default async function DettePatrimoinePage({
 
       <section className="fx-section">
         <div className="fx-wrap">
-          <SectionHead number="07" kind="Explorer plus loin" title="Continuer" />
+          <SectionHead number="09" kind="Explorer plus loin" title="Continuer" />
           <div className="fx-grid-tiles">
             <TileCard
               href="/budget"
