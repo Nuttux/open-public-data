@@ -342,10 +342,43 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
             const depSum = d.topDepenses.reduce((s, x) => s + x.value, 0);
             const top3Sum = d.topDepenses.slice(0, 3).reduce((s, x) => s + x.value, 0);
             const top3Pct = depSum > 0 ? (top3Sum / depSum) * 100 : 0;
+            const movers = d.topDepenses
+              .filter((x) => x.deltaPct !== null && Math.abs(x.deltaPct) >= 2 && x.label !== "Autres (D)")
+              .sort((a, b) => Math.abs(b.deltaPct!) - Math.abs(a.deltaPct!))
+              .slice(0, 3);
             return (
-              <p className="fx-note" style={{ marginTop: 0, marginBottom: 18 }}>
-                {fill("fx.bud.s03.pareto_line", { year: d.year, pct: `${Math.round(top3Pct)} €` })}
-              </p>
+              <>
+                <p className="fx-note" style={{ marginTop: 0, marginBottom: 14 }}>
+                  {fill("fx.bud.s03.pareto_line", { year: d.year, pct: `${Math.round(top3Pct)} €` })}
+                </p>
+                {movers.length > 0 && (
+                  <div
+                    style={{
+                      fontFamily: "var(--f-mono)",
+                      fontSize: 12,
+                      color: "var(--ink-2)",
+                      letterSpacing: ".02em",
+                      marginBottom: 18,
+                      display: "flex",
+                      gap: 18,
+                      flexWrap: "wrap",
+                    }}
+                  >
+                    <span style={{ color: "var(--muted)", textTransform: "uppercase", letterSpacing: ".08em", fontSize: 11 }}>
+                      {fill("fx.bud.s03.yoy_label", { prev: d.previousYear })}
+                    </span>
+                    {movers.map((m) => (
+                      <span key={m.label} style={{ whiteSpace: "nowrap" }}>
+                        {m.label === "Autres (D)" ? t("fx.bud.autres") : m.label}{" "}
+                        <b style={{ color: "var(--ink)" }}>
+                          {m.deltaPct! >= 0 ? "+" : "−"}{" "}
+                          {fmtDec(Math.abs(m.deltaPct!), 1)} %
+                        </b>
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </>
             );
           })()}
           <ExpandableList
