@@ -21,7 +21,6 @@ import DualFlowBars from "@/components/fusion/DualFlowBars";
 import ExpandableList from "@/components/fusion/ExpandableList";
 import Tip from "@/components/fusion/Tip";
 import BudgetTimeline from "@/components/fusion/BudgetTimeline";
-import StackedBarTheme from "@/components/fusion/StackedBarTheme";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import type { BudgetPageData, VoteExecuteData } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
@@ -344,23 +343,9 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
             const top3Sum = d.topDepenses.slice(0, 3).reduce((s, x) => s + x.value, 0);
             const top3Pct = depSum > 0 ? (top3Sum / depSum) * 100 : 0;
             return (
-              <div style={{ marginBottom: 28 }}>
-                <StackedBarTheme
-                  items={d.topDepenses.map((x) => ({
-                    theme: x.label === "Autres (D)" ? t("fx.bud.autres") : x.label,
-                    amount: x.value,
-                    count: x.subPostes.length,
-                  }))}
-                  total={depSum}
-                  concentrationTop10Pct={top3Pct}
-                  paretoTopN={3}
-                  year={d.year}
-                  basePath="/budget"
-                  kicker={fill("fx.bud.s03.stack_kicker", { year: d.year })}
-                  entityNoun={t("fx.bud.s03.stack_entity")}
-                  paretoContrast={t("fx.bud.s03.stack_contrast")}
-                />
-              </div>
+              <p className="fx-note" style={{ marginTop: 0, marginBottom: 18 }}>
+                {fill("fx.bud.s03.pareto_line", { year: d.year, pct: `${Math.round(top3Pct)} €` })}
+              </p>
             );
           })()}
           <ExpandableList
