@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-21T22:08:27",
+  "generated_at": "2026-04-21T22:42:35",
   "model": "gemini-3-flash-preview",
-  "count": 33,
+  "count": 146,
   "items": {
     "ELOGIE SIEMP": {
       "beneficiaire": "ELOGIE-SIEMP",
@@ -147,130 +147,118 @@
       "source_type": "grounded_search"
     },
     "CENTRE ACTION SOCIALE VILLE PARIS": {
-      "beneficiaire": "CENTRE ACTION SOCIALE VILLE PARIS",
-      "beneficiaire_normalise": "CENTRE ACTION SOCIALE VILLE PARIS",
-      "siret": "",
-      "generated_at": "2026-04-21T20:56:10",
-      "model": "gemini-3-flash-preview",
-      "activite_verifiee": "Établissement public municipal gérant l'aide sociale, les prestations de solidarité et les structures d'accueil (EHPAD, restaurants) à Paris.",
+      "activite_verifiee": "Établissement public municipal de Paris chargé de la lutte contre l'exclusion, gère 284 établissements et +140 résidences pour personnes âgées, handicapées ou précaires.",
       "perimetre_geographique": "Paris",
       "sources": [
         {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGhyNh-7foVKHjkglDgEpQ27M0NeSLn1HnyEOTzpYdUn7rSKg9Zo0IWWXCWK39lazt1TPyWVah-QGQzMKIXzy0lHvjZDoDmB2YriTsiQkcCbNYxDt0I8RDSm00Q-myB1IWCh-RHp3AtWIAuEqmdqJEZ3Q4czsKyB97tB2ia5GnxEreELVA1u-WAPhPCNs24",
+          "url": "https://www.paris.fr/dossiers/centre-d-action-sociale-de-la-ville-de-paris-casvp-23",
           "title": "paris.fr"
         },
         {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEF1Un59OzvFkfwRTaMvi-5YhGCqKNAEE7MbS4ybGP-FAS2NZ7xz9Y2FUHjDfVq8eNgdItXGHsOKvIwnIaMedJs3SFOQaVRJsbz1rWflvCzoRFSio6-VM2A81LyYbtRNhsiT4Z9GzuIpxmc7ketqaZ59M5rYlHmvyJT4aJ83UnEsIMrWg==",
-          "title": "kompass.com"
-        }
-      ],
-      "confiance": 0.65,
-      "source_type": "grounded_search"
-    },
-    "PARIS MUSEES": {
-      "beneficiaire": "PARIS MUSEES",
-      "beneficiaire_normalise": "PARIS MUSEES",
-      "siret": "200032779",
-      "generated_at": "2026-04-21T20:56:15",
-      "model": "gemini-3-flash-preview",
-      "activite_verifiee": "Établissement public administratif chargé de la gestion, de la valorisation et de la conservation des collections des 14 musées de la Ville de Paris.",
-      "perimetre_geographique": "Paris",
-      "sources": [
-        {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHW_8gBeLxlOZ8BSV51oXPZJ1k621RHM8yKJVqH25hM9U8BqjaRYvPAuvtGWGy5DYPQdLGUpKVK42neXLBsr8r1WitoOV7tbW19fAiueZo4snlGViF-_0WopC4aBWBAZsnX1Ob2U7TV25mE",
-          "title": "wikipedia.org"
-        },
-        {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF6PYHhufU-QTbb7xQsPQbIvh2rn8bRGo5QST0KsXwmfCnuWk-8N3Q7Aids4ixifXH3ePPkfORKTdLILDCqJ5FknSUGzklPJNMlqbOw8oKlct4Jma4eq1PGLGrdYOZiMfqD1qyTBrmHaLBMfuQpdzhv0poRDft5Xg==",
-          "title": "wikipedia.org"
-        },
-        {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF2UjPCbndj1jpQsTqOq8it7345_-hgIcJrRu0Ce3P9VaPHjacTvmWOerwJPZHs8pdQuPQljuXzzUFUZxx1puMhqn7sujtK6K7LaRIofEegMZ9utxvmfbNOTJ8-nsWX-UB68Ax2R-hPt00mLXE8Aw==",
-          "title": "friendsoffdf.org"
+          "url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/e65c2592-484b-42bf-a9ea-baba30ed554f",
+          "title": "service-public.gouv.fr"
         }
       ],
       "confiance": 0.8,
-      "source_type": "grounded_search"
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:18:34",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CENTRE ACTION SOCIALE VILLE PARIS",
+      "beneficiaire_normalise": "CENTRE ACTION SOCIALE VILLE PARIS",
+      "siret": ""
     },
-    "REGIE IMMOBILIERE VILLE DE PARIS": {
-      "beneficiaire": "REGIE IMMOBILIERE VILLE DE PARIS",
-      "beneficiaire_normalise": "REGIE IMMOBILIERE VILLE DE PARIS",
-      "siret": "",
-      "generated_at": "2026-04-21T20:56:29",
-      "model": "gemini-3-flash-preview",
-      "activite_verifiee": "Bailleur social (SEM) chargé de la construction, de la réhabilitation et de la gestion de logements sociaux, résidences étudiantes et locaux d'activités.",
-      "perimetre_geographique": "Île-de-France",
-      "sources": [
-        {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEsPnnNpyjU5mR7jtT8Azufr6fEUyOyJAwnsVotYo-BUhcFXfMxEgiq7_741uksXlgD7lRfORiYq0uHMEvA6SAUMzhpD9GfexqQbCrPvwLjs0iIqJmN6-vk50mdXoRN5N2S6ZfkG1JM1jblGgEncpNvHIpqBPNaZ8Ot4n44MDsVbYIIXtNRBLuNlA==",
-          "title": "wikipedia.org"
-        }
-      ],
-      "confiance": 0.5,
-      "source_type": "grounded_search"
-    },
-    "SOLIDEO": {
-      "beneficiaire": "SOLIDEO",
-      "beneficiaire_normalise": "SOLIDEO",
-      "siret": "",
-      "generated_at": "2026-04-21T20:56:47",
-      "model": "gemini-3-flash-preview",
-      "activite_verifiee": "Établissement public chargé de financer, superviser et livrer les ouvrages et infrastructures nécessaires aux Jeux Olympiques et Paralympiques de Paris 2024.",
-      "perimetre_geographique": "Île-de-France",
-      "sources": [
-        {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGFUykdSLhvzBV5YfCm4TsSCva4ylLIIQUc6KuaHJr2ZilY4jD_onOD2K-Us6z7Mt3EuBRY0f8cmFQDtEhsiC7s41nnptqO4sB_taNJ6V6IGGW52owuH9m71PzHqQe_Gg0xTSQ=",
-          "title": "ouvrages-olympiques.fr"
-        },
-        {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGmTH6gfuwjlRNGP3fCkihAOIXggeLTPToe1gMdsdbSfZb-36PYBlYzHr_uaa9_VlsQ6EcZ80bs14bphqn-rbUCxkqEiWmi96aMdutfmm1lRzn03gv3nVadrsGBunx4QmIgJ2Xy3CWXLJUa",
-          "title": "ess2024.org"
-        }
-      ],
-      "confiance": 0.65,
-      "source_type": "grounded_search"
-    },
-    "REGIE AUTONOME TRANSPORTS PARISIENS": {
-      "beneficiaire": "REGIE AUTONOME TRANSPORTS PARISIENS",
-      "beneficiaire_normalise": "REGIE AUTONOME TRANSPORTS PARISIENS",
-      "siret": "",
-      "generated_at": "2026-04-21T20:57:04",
-      "model": "gemini-3-flash-preview",
-      "activite_verifiee": "Établissement public (EPIC) chargé de l'exploitation et de la maintenance des réseaux de métro, RER, bus et tramways à Paris et en Île-de-France.",
-      "perimetre_geographique": "Île-de-France",
-      "sources": [
-        {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFBta6hhenYhpQHDLvP61RNSqhGoULjQY-jeCGiuMQwnkIu0mCmf7MsTZmw4UIbhVR9Bqzq3e-eBQjqtpTsBRvE6YUv2qXeZCiAwYVSu4P8AS6eXTri4FUKd2Z8U6xnbHSxf_E8xIhZs_WZO0TRQxIB_PT-Dd3cbsQo_vl5JY7Ry47BlFYPzWXLAwI09Es=",
-          "title": "francearchives.gouv.fr"
-        },
-        {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFptZ3CQzyjyDaBB9je0inGSKNRO6nLWr6IHj9C6MWWQeY2JNXQoUINlhakMu9hvD-XdpgEz5RsWD5UYwfdHy0qtpPZd5twjXJa1QZCS_RpGXN0vjBulGKw3mOdLHMRjNY39_Q=",
-          "title": "economie-politique.org"
-        }
-      ],
-      "confiance": 0.65,
-      "source_type": "grounded_search"
-    },
-    "ACTION SOCIA PERSON VIL PARISDEP PA": {
-      "beneficiaire": "ACTION SOCIA PERSON VIL PARISDEP PA",
-      "beneficiaire_normalise": "ACTION SOCIA PERSON VIL PARISDEP PA",
-      "siret": "",
-      "generated_at": "2026-04-21T20:57:19",
-      "model": "gemini-3-flash-preview",
-      "activite_verifiee": "Association gérant l'action sociale (restauration collective, loisirs, aides) pour les agents de la Ville de Paris et du Département de Paris.",
+    "PARIS MUSEES": {
+      "activite_verifiee": "Établissement public administratif de la Ville de Paris (créé 2013) ; gère les 14 musées municipaux parisiens dont Petit Palais, Musée d'Art Moderne, Carnavalet.",
       "perimetre_geographique": "Paris",
       "sources": [
         {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHKfs8zBAlUYx0YU6gP4lzqAQnQDAFh83Se3jh3ipaN7bUz3DYzxlbhZYMESSAYHgQ10JoawXXBnRUUM2CnpMVYTExmp9GBFsx_BFJRmAyHf6ZTz25bkYRssdK4YNSntUdJv_49MJ_Pxn8GoULB3Xzb6nWLgGysXXCzT3CHjlW_atdqxtFWLBc=",
-          "title": "association-d-action-sociale-en-faveur-des-personn-323857219.mil.wf"
-        },
-        {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEUfo1jPiiZnPDdqZUcMJt0XwUs4He_a9m1xjnsD7EYN-_ahK1e4FrCwpP0Wp3cuIxmQjrEXa983T_S_P5gj5tAfthFxiB_Y2aFMcz8p5s_TPxxzoWFoeo=",
-          "title": "aspp.fr"
+          "url": "https://fr.wikipedia.org/wiki/Paris_Mus%C3%A9es",
+          "title": "fr.wikipedia.org"
         }
       ],
-      "confiance": 0.65,
-      "source_type": "grounded_search"
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "PARIS MUSEES",
+      "beneficiaire_normalise": "PARIS MUSEES",
+      "siret": ""
+    },
+    "REGIE IMMOBILIERE VILLE DE PARIS": {
+      "activite_verifiee": "Société d'économie mixte, 2e bailleur social de Paris avec +66 000 logements ; construit et gère logements, résidences étudiantes, locaux pour start-ups.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.rivp.fr/",
+          "title": "rivp.fr"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/R%C3%A9gie_immobili%C3%A8re_de_la_ville_de_Paris",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:18:34",
+      "model": "claude-code-websearch",
+      "beneficiaire": "REGIE IMMOBILIERE VILLE DE PARIS",
+      "beneficiaire_normalise": "REGIE IMMOBILIERE VILLE DE PARIS",
+      "siret": ""
+    },
+    "SOLIDEO": {
+      "activite_verifiee": "Établissement public d'État (créé 2017) chargé de financer, superviser et livrer les ouvrages olympiques et paralympiques de Paris 2024.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Soci%C3%A9t%C3%A9_de_livraison_des_ouvrages_olympiques",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SOLIDEO",
+      "beneficiaire_normalise": "SOLIDEO",
+      "siret": ""
+    },
+    "REGIE AUTONOME TRANSPORTS PARISIENS": {
+      "activite_verifiee": "Établissement public à caractère industriel et commercial (EPIC) de l'État ; exploite et maintient les réseaux métro, RER, bus et tramway de la région parisienne.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/R%C3%A9gie_autonome_des_transports_parisiens",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "REGIE AUTONOME TRANSPORTS PARISIENS",
+      "beneficiaire_normalise": "REGIE AUTONOME TRANSPORTS PARISIENS",
+      "siret": ""
+    },
+    "ACTION SOCIA PERSON VIL PARISDEP PA": {
+      "activite_verifiee": "Association (ASPP, créée 1968) d'action sociale en faveur des personnels de la Ville et du Département de Paris ; gère restaurants administratifs et aides sociales.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.aspp.fr/a-propos",
+          "title": "aspp.fr"
+        },
+        {
+          "url": "https://www.ccomptes.fr/fr/publications/association-daction-sociale-en-faveur-du-personnel-de-la-ville-et-du-departement-de",
+          "title": "ccomptes.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:30:11",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ACTION SOCIA PERSON VIL PARISDEP PA",
+      "beneficiaire_normalise": "ACTION SOCIA PERSON VIL PARISDEP PA",
+      "siret": ""
     },
     "SNCF RESEAU": {
       "beneficiaire": "SNCF RESEAU",
@@ -294,63 +282,67 @@
       "source_type": "grounded_search"
     },
     "CAISSE ECOLES 20 EME ARRON PARIS": {
-      "beneficiaire": "CAISSE ECOLES 20 EME ARRON PARIS",
-      "beneficiaire_normalise": "CAISSE ECOLES 20 EME ARRON PARIS",
-      "siret": "267500403",
-      "generated_at": "2026-04-21T21:06:04",
-      "model": "gemini-3-flash-preview",
-      "activite_verifiee": "Établissement public gérant la restauration scolaire, les séjours de vacances et le soutien aux projets pédagogiques du 20e arrondissement de Paris.",
-      "perimetre_geographique": "Paris XXe",
+      "activite_verifiee": "Établissement public local (Ville de Paris) gérant la restauration scolaire, l'aide aux familles et les séjours de vacances pour les enfants du 20e arrondissement.",
+      "perimetre_geographique": "Paris 20e",
       "sources": [
         {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFrzxYk-MVStZXRyL9YzGKvhKa1W7z5ly7_aSJbhjW1j7hRledZgPEPYl9Ig6xinwIlC3GdZWjVBLI2xaTsFIR1-re6mc0fDtXz15FjWfqGFB4LtD-7fXZYsE1g5riRdrB96MVeFS8nOkzJ9aUYG41CIwEuVoA=",
+          "url": "https://www.paris.fr/pages/les-caisses-des-ecoles-de-paris-68",
           "title": "paris.fr"
+        },
+        {
+          "url": "https://www.ccomptes.fr/sites/default/files/2023-10/IDR2021-18.pdf",
+          "title": "ccomptes.fr"
         }
       ],
-      "confiance": 0.5,
-      "source_type": "grounded_search"
+      "confiance": 0.85,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CAISSE ECOLES 20 EME ARRON PARIS",
+      "beneficiaire_normalise": "CAISSE ECOLES 20 EME ARRON PARIS",
+      "siret": ""
     },
     "CAISSE ECOLES 19 EME ARRON PARIS": {
-      "beneficiaire": "CAISSE ECOLES 19 EME ARRON PARIS",
-      "beneficiaire_normalise": "CAISSE ECOLES 19 EME ARRON PARIS",
-      "siret": "267500395",
-      "generated_at": "2026-04-21T21:06:20",
-      "model": "gemini-3-flash-preview",
-      "activite_verifiee": "Établissement public chargé de la restauration scolaire et de l'organisation de séjours de vacances pour les enfants du 19e arrondissement de Paris.",
+      "activite_verifiee": "Établissement public local (Ville de Paris) gérant la restauration scolaire, l'aide aux familles et les séjours de vacances pour les enfants du 19e arrondissement.",
       "perimetre_geographique": "Paris 19e",
       "sources": [
         {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQExwuHixTyQagsfIPnTO8zA3L4Ag3o_WwlpxZ6YQfURFKZPNp4GOmPz0kf_sNJR5z9lPh4MUDDudcR_K04uDVg98F1fDOuoEPFwN_-5p4Gq619e2ewoC_MphOqf-yB8adVi48mPhO7frEBe_lijsFgLwN6tONCsDdyfGZJ2I_6u",
-          "title": "kompass.com"
-        }
-      ],
-      "confiance": 0.5,
-      "source_type": "grounded_search"
-    },
-    "CAISSE DES ECOLES DU 13E ARRONDISSE": {
-      "beneficiaire": "CAISSE DES ECOLES DU 13E ARRONDISSE",
-      "beneficiaire_normalise": "CAISSE DES ECOLES DU 13E ARRONDISSE",
-      "siret": "",
-      "generated_at": "2026-04-21T21:06:33",
-      "model": "gemini-3-flash-preview",
-      "activite_verifiee": "Établissement public gérant la restauration scolaire, les activités périscolaires et les séjours de vacances des écoles du 13e arrondissement de Paris.",
-      "perimetre_geographique": "Paris 13e",
-      "sources": [
-        {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH_GHhXQ-_SNAScys3Gjk_LWQgVYUB4-EWMMUezK4_inYsuv1QRDZO1tLTCwRhdkKcy0xOf99m5QHSWiXVRLPCm2DmufwAOXig2GrQ6EglLJqiKK2S5KEXdSfl_8nP3u-VNUYSmi-eSdQTS",
-          "title": "caissedesecolesparis13.fr"
-        },
-        {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEBWT78uf06mvMUztjm3O1YuShM0QXKc3hnKh_7At_u2C8swLef0ksysL5uE1LOUt-P6exZDeBKGIBnrRQ_6wqKdhclaogzRQFpzgmcOFL3eyrEJ4grNSY61g3FB0LPuVOqMM1cF5hXdsQp-uo_9L9T1Tn-GWBOfq5d",
+          "url": "https://www.paris.fr/pages/les-caisses-des-ecoles-de-paris-68",
           "title": "paris.fr"
         },
         {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFW0Kowz3tFBHC59agZbmC1ftBSTW55ORgx3ttsvyeCXnaMT-gi8-bxV3zWWve97w57A9rstRfp81YN_oQ1bIBFCKeq_gn4U99nuibcm-4EVY128NLQAC019rLmue14fuKltP3areLK1cRiZ-baN0ItZCAHMHec0q4Ei8gj-CtW3Ntg6LvJMVg1Ow==",
-          "title": "wordpress.com"
+          "url": "https://www.ccomptes.fr/sites/default/files/2023-10/IDR2021-18.pdf",
+          "title": "ccomptes.fr"
         }
       ],
-      "confiance": 0.8,
-      "source_type": "grounded_search"
+      "confiance": 0.85,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CAISSE ECOLES 19 EME ARRON PARIS",
+      "beneficiaire_normalise": "CAISSE ECOLES 19 EME ARRON PARIS",
+      "siret": ""
+    },
+    "CAISSE DES ECOLES DU 13E ARRONDISSE": {
+      "activite_verifiee": "Établissement public local (Ville de Paris) gérant la restauration scolaire, l'aide aux familles et les séjours de vacances pour les enfants du 13e arrondissement.",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/pages/les-caisses-des-ecoles-de-paris-68",
+          "title": "paris.fr"
+        },
+        {
+          "url": "https://www.ccomptes.fr/sites/default/files/2023-10/IDR2021-18.pdf",
+          "title": "ccomptes.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CAISSE DES ECOLES DU 13E ARRONDISSE",
+      "beneficiaire_normalise": "CAISSE DES ECOLES DU 13E ARRONDISSE",
+      "siret": ""
     },
     "AGENCE NATIONALE DE L HABITAT": {
       "beneficiaire": "AGENCE NATIONALE DE L'HABITAT",
@@ -386,46 +378,42 @@
       "source_type": "grounded_search"
     },
     "CAISSE DES ECOLES 15EME ARRONDISSEM": {
-      "beneficiaire": "CAISSE DES ECOLES 15EME ARRONDISSEM",
-      "beneficiaire_normalise": "CAISSE DES ECOLES 15EME ARRONDISSEM",
-      "siret": "",
-      "generated_at": "2026-04-21T21:14:37",
-      "model": "gemini-3-flash-preview",
-      "activite_verifiee": "Établissement public autonome gérant la restauration scolaire, les activités périscolaires et l'éducation à la nutrition dans le 15e arrondissement de Paris.",
-      "perimetre_geographique": "Paris XVe",
+      "activite_verifiee": "Établissement public local (Ville de Paris) gérant la restauration scolaire, l'aide aux familles et les séjours de vacances pour les enfants du 15e arrondissement.",
+      "perimetre_geographique": "Paris 15e",
       "sources": [
         {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFJ56UCMfCHm9qoDsWakItGY_GomIUBfKaR4URrrSlzgqPIby-090qjAB1m74HEnG_oKcRM1fG6BODyTKtvqNAagehI6ZuWHMx0hYQTY6sznDNlAZaNyWlQAnGFliFkTkBpZcQI04kWCNm_nveX4aR23Qo=",
+          "url": "https://www.paris.fr/pages/les-caisses-des-ecoles-de-paris-68",
           "title": "paris.fr"
+        },
+        {
+          "url": "https://www.ccomptes.fr/sites/default/files/2023-10/IDR2021-18.pdf",
+          "title": "ccomptes.fr"
         }
       ],
-      "confiance": 0.5,
-      "source_type": "grounded_search"
+      "confiance": 0.85,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CAISSE DES ECOLES 15EME ARRONDISSEM",
+      "beneficiaire_normalise": "CAISSE DES ECOLES 15EME ARRONDISSEM",
+      "siret": ""
     },
     "104 CENT QUATRE": {
-      "beneficiaire": "104 CENT QUATRE",
-      "beneficiaire_normalise": "104 CENT QUATRE",
-      "siret": "508372927",
-      "generated_at": "2026-04-21T21:14:51",
-      "model": "gemini-3-flash-preview",
-      "activite_verifiee": "Établissement public de coopération culturelle de la Ville de Paris, lieu de création, de production et de diffusion artistique pluridisciplinaire.",
+      "activite_verifiee": "Établissement public de coopération culturelle de la Ville de Paris (19e) ; centre d'art pluridisciplinaire accueillant spectacles, résidences et publics jeunes.",
       "perimetre_geographique": "Paris 19e",
       "sources": [
         {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFtpoDCqADD2hgv75hSku_jWOW87gPJHFaZQlgltCvuCqEotzUczTpR67hJetHtWWHT9fVF8T24OV-zfYqe8WEP3rIkOd1KbW1abR4FwNBcZ7pNF1b47CwNoE8LLyoAojl8773Z1P3FjL3-ZuYVDpqy68iSbpgc_mXPpb1GBU5B22PcIRQxSosk6cSScTk1eNF8JU42r4Fgv2vxo2zfE39Kxxe0o82LDLbyNdEdSZfyiNewbr3CYGxQbfvOhy7DEZk8e9nN6AqH9mPYG_DugcAF",
-          "title": "visitparisregion.com"
-        },
-        {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGi_CD49fnNdZVv4ReAlbdeSHvkLI05HPzrVKGa0raXnFLIcAZvaE_mj6ToBkZLx2xnq0E0_39NDpQAHQ3gn21rrl924iQRQFX-ghf1-_vC6EqvkPUwvOkyalizn2W7PC-2UBIQfmGB0T5yyvFDUoI=",
-          "title": "parisjetaime.com"
-        },
-        {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGwnWtanfzULNe0ATPKdezgu5Euj8z_1SCPVTfl92uHyC1QLfF-FMRDOhOfCHNjVkP96oZCslhsW9f_0TmIHXmcCJjE40ODZZnVx2cGjLbMd3pKGR3qD9uV-1xoim72hl5HYY6aXLELpFc=",
-          "title": "wikipedia.org"
+          "url": "https://www.104.fr/",
+          "title": "104.fr"
         }
       ],
       "confiance": 0.8,
-      "source_type": "grounded_search"
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:40:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "104 CENT QUATRE",
+      "beneficiaire_normalise": "104 CENT QUATRE",
+      "siret": ""
     },
     "IMMOBILIERE 3F": {
       "beneficiaire": "IMMOBILIERE 3F",
@@ -445,103 +433,122 @@
       "source_type": "grounded_search"
     },
     "ABC PUERICULTURE": {
-      "beneficiaire": "ABC PUERICULTURE",
-      "beneficiaire_normalise": "ABC PUERICULTURE",
-      "siret": "34482479200032",
-      "generated_at": "2026-04-21T21:15:04",
-      "model": "gemini-3-flash-preview",
-      "activite_verifiee": "Association gérant un réseau de crèches associatives et de relais petite enfance pour l'accueil de jeunes enfants à Paris.",
+      "activite_verifiee": "Association gérant un réseau de crèches associatives et de relais petite enfance à Paris ; accueil et accompagnement de jeunes enfants et familles.",
       "perimetre_geographique": "Paris",
       "sources": [
         {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHaPQ2aXRY1x5zx8YnIv66V8K-91ZJ9ZU4yDKJAvzJZ0c4VdZbzVMvhEWiPp4p3guQMhy80rfcp1jNBoPS1NiR3zsQdqn7u5FzzbPD27Hqoa9lA9mSh1neIOTV2VpRvvAKukBnkiPub_fKjLgqV44clvps=",
-          "title": "societeinfo.com"
-        },
-        {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEyjsdcUdaC1gduogjA5kW4OCLv4oR5K6A5QnE42tGzp5rUIwHcgqQXJKEVixCsEyc5TfVYMicfhK5IlCqj3B8nOXZQEoNtxwpbyMplqUxMxOC8rL6ZTjvCKsD5VfiDTUYYrG7L9v1foq5lQnERu9ctiQ7xVtBJuIEcsNK9Dg==",
-          "title": "societeinfo.com"
-        },
-        {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH-qRViXcpOjB6GAW0tD12WYUfrAAS1LfaqIz0ds4RdXsxSQ5AA11Kl4DEAFcMKjPe918NVLKrF8TuTokVow594K71rBs283o8-f6RskkkM9Tz3Hh8Yi2Vv_ZSYG3ZXQGUjZ-QFiI0YOvB2Z12AhJ_9ArhyYBby3GdsXc5A9wat",
-          "title": "paris.fr"
+          "url": "https://www.abc-puericulture.org/",
+          "title": "abc-puericulture.org"
         }
       ],
       "confiance": 0.8,
-      "source_type": "grounded_search"
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:40:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ABC PUERICULTURE",
+      "beneficiaire_normalise": "ABC PUERICULTURE",
+      "siret": ""
     },
     "CAISSE DES ECOLES DU 14E ARRONDISSE": {
-      "beneficiaire": "CAISSE DES ECOLES DU 14E ARRONDISSE",
-      "beneficiaire_normalise": "CAISSE DES ECOLES DU 14E ARRONDISSE",
-      "siret": "",
-      "generated_at": "2026-04-21T21:15:16",
-      "model": "gemini-3-flash-preview",
-      "activite_verifiee": "Établissement public gérant la restauration scolaire, les goûters et les séjours de vacances pour les élèves des écoles publiques du 14e arrondissement.",
-      "perimetre_geographique": "Paris XIVe",
+      "activite_verifiee": "Établissement public local (Ville de Paris) gérant la restauration scolaire, l'aide aux familles et les séjours de vacances pour les enfants du 14e arrondissement.",
+      "perimetre_geographique": "Paris 14e",
       "sources": [
         {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE6qZRmPP5djqUitOqjT8h6NOAncfwrDZ40YjQVFAdZU6lgcAD_iukiqPRt51_6w4ee1JnH7sT-8UukTMMtip44sic50Q_v1xdptElxmAha3Er18a4H2IIesC3Mk8c=",
-          "title": "cde14.fr"
+          "url": "https://www.paris.fr/pages/les-caisses-des-ecoles-de-paris-68",
+          "title": "paris.fr"
+        },
+        {
+          "url": "https://www.ccomptes.fr/sites/default/files/2023-10/IDR2021-18.pdf",
+          "title": "ccomptes.fr"
         }
       ],
-      "confiance": 0.5,
-      "source_type": "grounded_search"
+      "confiance": 0.85,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CAISSE DES ECOLES DU 14E ARRONDISSE",
+      "beneficiaire_normalise": "CAISSE DES ECOLES DU 14E ARRONDISSE",
+      "siret": ""
     },
     "PARIS HABITAT OPH": {
+      "activite_verifiee": "Office public de l'habitat (EPIC) de la Ville de Paris, créé 1914 ; 1er bailleur social de Paris, gère ~125 000 logements sociaux, 2 000-4 999 employés.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/paris-habitat-oph-paris-habitat-344810825",
+          "title": "annuaire-entreprises.data.gouv.fr"
+        },
+        {
+          "url": "https://www.parishabitat.fr/",
+          "title": "parishabitat.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
       "beneficiaire": "PARIS HABITAT-OPH",
       "beneficiaire_normalise": "PARIS HABITAT OPH",
-      "siret": "344810825",
-      "generated_at": "2026-04-21T22:07:15",
-      "model": "gemini-3-flash-preview",
-      "activite_verifiee": null,
-      "perimetre_geographique": null,
-      "sources": [],
-      "confiance": 0.0,
-      "source_type": "fallback_none"
+      "siret": ""
     },
     "CAISSE DES ECOLES DU 18E ARRONDISSE": {
+      "activite_verifiee": "Établissement public local (Ville de Paris) gérant la restauration scolaire, l'aide aux familles et les séjours de vacances pour les enfants du 18e arrondissement.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/pages/les-caisses-des-ecoles-de-paris-68",
+          "title": "paris.fr"
+        },
+        {
+          "url": "https://www.ccomptes.fr/sites/default/files/2023-10/IDR2021-18.pdf",
+          "title": "ccomptes.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
       "beneficiaire": "CAISSE DES ECOLES DU 18E ARRONDISSE",
       "beneficiaire_normalise": "CAISSE DES ECOLES DU 18E ARRONDISSE",
-      "siret": "",
-      "generated_at": "2026-04-21T22:07:24",
-      "model": "gemini-3-flash-preview",
-      "activite_verifiee": null,
-      "perimetre_geographique": null,
-      "sources": [],
-      "confiance": 0.0,
-      "source_type": "fallback_none"
+      "siret": ""
     },
     "FONDATION OEUVRE DE LA CROIX": {
-      "beneficiaire": "FONDATION OEUVRE DE LA CROIX",
-      "beneficiaire_normalise": "FONDATION OEUVRE DE LA CROIX",
-      "siret": "784809683",
-      "generated_at": "2026-04-21T22:07:31",
-      "model": "gemini-3-flash-preview",
-      "activite_verifiee": "Fondation reconnue d'utilité publique gérant des établissements sanitaires, médico-sociaux et de petite enfance pour les populations vulnérables.",
+      "activite_verifiee": "Fondation reconnue d'utilité publique (créée 1906) ; 50 structures sanitaires, petite enfance et médico-social en Île-de-France pour personnes vulnérables.",
       "perimetre_geographique": "Île-de-France",
       "sources": [
         {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFPdBYNCsSZ9YGbBSR8u0hwI-uAwSXvqpbcu1w75sv4nXDhO6OQQDWs0C7W6cmAK3zKDsXrov1E1VOb3WKnzcsq62GgehduNf_OuWLv1VGkC9kIVxbgFxuv8dmw4aNTGyViZhsxwS_wPi5PEA==",
+          "url": "https://www.croix-saint-simon.org/",
           "title": "croix-saint-simon.org"
-        },
-        {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHNLqQ6lFyjoXklD7KM_yXmXkh4RQAvO0Pec5QY0cEgs7FvtQjHuOsbjP2adTvONZdhtSFwllpHJybzvK8PIMriI4FWQWBKzemCRjINWtOSfNxtGq0URU2QZWdqz3wYzNZyAQ==",
-          "title": "pagesjaunes.fr"
         }
       ],
-      "confiance": 0.65,
-      "source_type": "grounded_search"
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FONDATION OEUVRE DE LA CROIX",
+      "beneficiaire_normalise": "FONDATION OEUVRE DE LA CROIX",
+      "siret": ""
     },
     "STE DE REQUALICATION DES": {
+      "activite_verifiee": "Société Publique Locale (SOREQA) créée 2010 ; traite l'habitat insalubre et dégradé, requalifie les quartiers anciens à Paris, Plaine Commune et Est Ensemble.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://soreqa.fr/",
+          "title": "soreqa.fr"
+        },
+        {
+          "url": "https://www.lemoniteur.fr/article/la-soreqa-nouvel-outil-de-lutte-contre-l-habitat-insalubre.837414",
+          "title": "lemoniteur.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
       "beneficiaire": "STE DE REQUALICATION DES",
       "beneficiaire_normalise": "STE DE REQUALICATION DES",
-      "siret": "",
-      "generated_at": "2026-04-21T22:07:40",
-      "model": "gemini-3-flash-preview",
-      "activite_verifiee": null,
-      "perimetre_geographique": null,
-      "sources": [],
-      "confiance": 0.0,
-      "source_type": "fallback_none"
+      "siret": ""
     },
     "L HABITATION CONFORTABLE": {
       "beneficiaire": "L HABITATION CONFORTABLE",
@@ -565,57 +572,88 @@
       "source_type": "grounded_search"
     },
     "CAISSE DES ECOLES DU 11E ARRONDISSE": {
+      "activite_verifiee": "Établissement public local (Ville de Paris) gérant la restauration scolaire, l'aide aux familles et les séjours de vacances pour les enfants du 11e arrondissement.",
+      "perimetre_geographique": "Paris 11e",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/pages/les-caisses-des-ecoles-de-paris-68",
+          "title": "paris.fr"
+        },
+        {
+          "url": "https://www.ccomptes.fr/sites/default/files/2023-10/IDR2021-18.pdf",
+          "title": "ccomptes.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
       "beneficiaire": "CAISSE DES ECOLES DU 11E ARRONDISSE",
       "beneficiaire_normalise": "CAISSE DES ECOLES DU 11E ARRONDISSE",
-      "siret": "",
-      "generated_at": "2026-04-21T22:07:55",
-      "model": "gemini-3-flash-preview",
-      "activite_verifiee": null,
-      "perimetre_geographique": null,
-      "sources": [],
-      "confiance": 0.0,
-      "source_type": "fallback_none"
+      "siret": ""
     },
     "CAISSE DES ECOLES DU 17E ARRONDISSE": {
-      "beneficiaire": "CAISSE DES ECOLES DU 17E ARRONDISSE",
-      "beneficiaire_normalise": "CAISSE DES ECOLES DU 17E ARRONDISSE",
-      "siret": "",
-      "generated_at": "2026-04-21T22:08:02",
-      "model": "gemini-3-flash-preview",
-      "activite_verifiee": "Établissement public local chargé de la restauration scolaire et de l'action sociale pour les élèves des écoles publiques du 17e arrondissement de Paris.",
+      "activite_verifiee": "Établissement public local (Ville de Paris) gérant la restauration scolaire, l'aide aux familles et les séjours de vacances pour les enfants du 17e arrondissement.",
       "perimetre_geographique": "Paris 17e",
       "sources": [
         {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG-0LzkQYXteuBjoAZH6QMizSVLk05dIZtoF4KSjGkyhI7BEUrLAJPcCB9GhFsmwDbnzerC8wQbITKsdO03leBQmFiWhzzNECyr5J93VVAex3vrTkm7rJQtslo8KMQWXVWXynhEW_XlLhA=",
-          "title": "cde17.fr"
+          "url": "https://www.paris.fr/pages/les-caisses-des-ecoles-de-paris-68",
+          "title": "paris.fr"
+        },
+        {
+          "url": "https://www.ccomptes.fr/sites/default/files/2023-10/IDR2021-18.pdf",
+          "title": "ccomptes.fr"
         }
       ],
-      "confiance": 0.5,
-      "source_type": "grounded_search"
+      "confiance": 0.85,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CAISSE DES ECOLES DU 17E ARRONDISSE",
+      "beneficiaire_normalise": "CAISSE DES ECOLES DU 17E ARRONDISSE",
+      "siret": ""
     },
     "RATP HABITAT": {
       "beneficiaire": "RATP HABITAT",
       "beneficiaire_normalise": "RATP HABITAT",
       "siret": "592025811",
-      "generated_at": "2026-04-21T22:08:07",
-      "model": "gemini-3-flash-preview",
-      "activite_verifiee": null,
-      "perimetre_geographique": null,
-      "sources": [],
-      "confiance": 0.0,
-      "source_type": "fallback_none"
+      "activite_verifiee": "Filiale sociale du groupe RATP (créée 1959) ; gère ~10 000 logements sociaux, résidences étudiantes et jeunes travailleurs en Île-de-France.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://ratphabitat.com/",
+          "title": "ratphabitat.com"
+        },
+        {
+          "url": "https://ratpgroup.com/fr/engagements-responsabilite-sociale-environnementale/logement-social/",
+          "title": "ratpgroup.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:21:21",
+      "model": "claude-code-websearch"
     },
     "CAISSE ECOLES 12 EME ARRON PARIS": {
+      "activite_verifiee": "Établissement public local (Ville de Paris) gérant la restauration scolaire, l'aide aux familles et les séjours de vacances pour les enfants du 12e arrondissement.",
+      "perimetre_geographique": "Paris 12e",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/pages/les-caisses-des-ecoles-de-paris-68",
+          "title": "paris.fr"
+        },
+        {
+          "url": "https://www.ccomptes.fr/sites/default/files/2023-10/IDR2021-18.pdf",
+          "title": "ccomptes.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
       "beneficiaire": "CAISSE ECOLES 12 EME ARRON PARIS",
       "beneficiaire_normalise": "CAISSE ECOLES 12 EME ARRON PARIS",
-      "siret": "267500320",
-      "generated_at": "2026-04-21T22:08:12",
-      "model": "gemini-3-flash-preview",
-      "activite_verifiee": null,
-      "perimetre_geographique": null,
-      "sources": [],
-      "confiance": 0.0,
-      "source_type": "fallback_none"
+      "siret": ""
     },
     "ALTERALIA": {
       "beneficiaire": "ALTERALIA",
@@ -633,6 +671,2123 @@
       ],
       "confiance": 0.5,
       "source_type": "grounded_search"
+    },
+    "TRESORERIE CENTRE ACTION SOCIALE PA": {
+      "activite_verifiee": "Établissement public municipal de Paris chargé de la lutte contre l'exclusion, gère 284 établissements et +140 résidences pour personnes âgées, handicapées ou précaires.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/dossiers/centre-d-action-sociale-de-la-ville-de-paris-casvp-23",
+          "title": "paris.fr"
+        },
+        {
+          "url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/e65c2592-484b-42bf-a9ea-baba30ed554f",
+          "title": "service-public.gouv.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:18:34",
+      "model": "claude-code-websearch",
+      "beneficiaire": "TRESORERIE CENTRE ACTION SOCIALE PA",
+      "beneficiaire_normalise": "TRESORERIE CENTRE ACTION SOCIALE PA",
+      "siret": ""
+    },
+    "REGIE IMMOBILIERE DE LA VILLE DE PARIS": {
+      "activite_verifiee": "Société d'économie mixte, 2e bailleur social de Paris avec +66 000 logements ; construit et gère logements, résidences étudiantes, locaux pour start-ups.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.rivp.fr/",
+          "title": "rivp.fr"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/R%C3%A9gie_immobili%C3%A8re_de_la_ville_de_Paris",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:18:34",
+      "model": "claude-code-websearch",
+      "beneficiaire": "REGIE IMMOBILIERE DE LA VILLE DE PARIS",
+      "beneficiaire_normalise": "REGIE IMMOBILIERE DE LA VILLE DE PARIS",
+      "siret": ""
+    },
+    "REGIE IMMOBILIERE DE LA VILLE DE PA": {
+      "activite_verifiee": "Société d'économie mixte, 2e bailleur social de Paris avec +66 000 logements ; construit et gère logements, résidences étudiantes, locaux pour start-ups.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.rivp.fr/",
+          "title": "rivp.fr"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/R%C3%A9gie_immobili%C3%A8re_de_la_ville_de_Paris",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:18:34",
+      "model": "claude-code-websearch",
+      "beneficiaire": "REGIE IMMOBILIERE DE LA VILLE DE PA",
+      "beneficiaire_normalise": "REGIE IMMOBILIERE DE LA VILLE DE PA",
+      "siret": ""
+    },
+    "REGIE IMMOBILIERE DE LA VILLE PARIS": {
+      "activite_verifiee": "Société d'économie mixte, 2e bailleur social de Paris avec +66 000 logements ; construit et gère logements, résidences étudiantes, locaux pour start-ups.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.rivp.fr/",
+          "title": "rivp.fr"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/R%C3%A9gie_immobili%C3%A8re_de_la_ville_de_Paris",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:18:34",
+      "model": "claude-code-websearch",
+      "beneficiaire": "REGIE IMMOBILIERE DE LA VILLE PARIS",
+      "beneficiaire_normalise": "REGIE IMMOBILIERE DE LA VILLE PARIS",
+      "siret": ""
+    },
+    "RIVP": {
+      "activite_verifiee": "Société d'économie mixte, 2e bailleur social de Paris avec +66 000 logements ; construit et gère logements, résidences étudiantes, locaux pour start-ups.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.rivp.fr/",
+          "title": "rivp.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:18:34",
+      "model": "claude-code-websearch",
+      "beneficiaire": "RIVP",
+      "beneficiaire_normalise": "RIVP",
+      "siret": ""
+    },
+    "SM AUTOLIB ET VELIB METROPOLE": {
+      "activite_verifiee": "Syndicat mixte (renommé Agence métropolitaine des mobilités partagées en 2024) gérant Vélib' et anciennement Autolib' en Île-de-France.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Agence_m%C3%A9tropolitaine_des_mobilit%C3%A9s_partag%C3%A9es",
+          "title": "fr.wikipedia.org"
+        },
+        {
+          "url": "https://www.ccomptes.fr/fr/publications/syndicat-mixte-autolib-et-velib-metropole-paris",
+          "title": "ccomptes.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:18:34",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SM AUTOLIB' ET VELIB' METROPOLE",
+      "beneficiaire_normalise": "SM AUTOLIB ET VELIB METROPOLE",
+      "siret": ""
+    },
+    "AUTOLIB VELIB METROPOLE": {
+      "activite_verifiee": "Syndicat mixte (renommé Agence métropolitaine des mobilités partagées en 2024) gérant Vélib' et anciennement Autolib' en Île-de-France.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Agence_m%C3%A9tropolitaine_des_mobilit%C3%A9s_partag%C3%A9es",
+          "title": "fr.wikipedia.org"
+        },
+        {
+          "url": "https://www.ccomptes.fr/fr/publications/syndicat-mixte-autolib-et-velib-metropole-paris",
+          "title": "ccomptes.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:18:34",
+      "model": "claude-code-websearch",
+      "beneficiaire": "AUTOLIB VELIB METROPOLE",
+      "beneficiaire_normalise": "AUTOLIB VELIB METROPOLE",
+      "siret": ""
+    },
+    "SYNDICAT MIXTE AUTOLIB ET VELIB METROPOLE": {
+      "activite_verifiee": "Syndicat mixte (renommé Agence métropolitaine des mobilités partagées en 2024) gérant Vélib' et anciennement Autolib' en Île-de-France.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Agence_m%C3%A9tropolitaine_des_mobilit%C3%A9s_partag%C3%A9es",
+          "title": "fr.wikipedia.org"
+        },
+        {
+          "url": "https://www.ccomptes.fr/fr/publications/syndicat-mixte-autolib-et-velib-metropole-paris",
+          "title": "ccomptes.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:18:34",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SYNDICAT MIXTE AUTOLIB’ ET VELIB’ METROPOLE",
+      "beneficiaire_normalise": "SYNDICAT MIXTE AUTOLIB ET VELIB METROPOLE",
+      "siret": ""
+    },
+    "FORUM DES IMAGES": {
+      "activite_verifiee": "Association loi 1901, institution culturelle de la Ville de Paris au Forum des Halles, dédiée au cinéma et aux images ; archives de 7 700 films sur Paris.",
+      "perimetre_geographique": "Paris 1er",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Forum_des_images",
+          "title": "fr.wikipedia.org"
+        },
+        {
+          "url": "https://www.forumdesimages.fr/",
+          "title": "forumdesimages.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:18:34",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FORUM DES IMAGES",
+      "beneficiaire_normalise": "FORUM DES IMAGES",
+      "siret": "33212365200023"
+    },
+    "AGOSPAP": {
+      "activite_verifiee": "Association pour la gestion des œuvres sociales des administrations parisiennes (créée 1981) ; prestations sociales pour agents Ville de Paris et AP-HP.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.agospap.com/com/page/6993",
+          "title": "agospap.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:18:34",
+      "model": "claude-code-websearch",
+      "beneficiaire": "AGOSPAP",
+      "beneficiaire_normalise": "AGOSPAP",
+      "siret": ""
+    },
+    "ADOMA": {
+      "activite_verifiee": "Société d'économie mixte, filiale du groupe CDC Habitat ; leader français du logement accompagné avec +80 000 solutions pour personnes en difficulté.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Adoma",
+          "title": "fr.wikipedia.org"
+        },
+        {
+          "url": "https://www.adoma.cdc-habitat.fr/",
+          "title": "adoma.cdc-habitat.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:18:34",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ADOMA",
+      "beneficiaire_normalise": "ADOMA",
+      "siret": ""
+    },
+    "ORCHESTRE DE CHAMBRE DE PARIS": {
+      "activite_verifiee": "Association gérant un orchestre de chambre de 43 musiciens en résidence à la Philharmonie de Paris ; diffusion musicale et actions sociales.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.orchestredechambredeparis.com/en/",
+          "title": "orchestredechambredeparis.com"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Orchestre_de_chambre_de_Paris",
+          "title": "en.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:18:34",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ORCHESTRE DE CHAMBRE DE PARIS",
+      "beneficiaire_normalise": "ORCHESTRE DE CHAMBRE DE PARIS",
+      "siret": "31390568900078"
+    },
+    "ECOLE DU BREUIL": {
+      "activite_verifiee": "École d'horticulture de la Ville de Paris dans le bois de Vincennes ; forme +300 élèves/an aux métiers du jardin, paysage et agriculture urbaine.",
+      "perimetre_geographique": "Paris 12e",
+      "sources": [
+        {
+          "url": "https://www.ecoledubreuil.fr/",
+          "title": "ecoledubreuil.fr"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/%C3%89cole_Du_Breuil",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:18:34",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ECOLE DU BREUIL",
+      "beneficiaire_normalise": "ECOLE DU BREUIL",
+      "siret": ""
+    },
+    "ICF LA SABLIERE SA D HLM": {
+      "activite_verifiee": "Société anonyme d'HLM, filiale SNCF du groupe ICF Habitat ; gère 42 336 logements sociaux en Île-de-France pour mobilité professionnelle SNCF et grand public.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/ICF_Habitat",
+          "title": "fr.wikipedia.org"
+        },
+        {
+          "url": "https://www.icfhabitat.fr/patrimoine/filiale/icf-sabliere/75-paris",
+          "title": "icfhabitat.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ICF LA SABLIERE SA D'HLM",
+      "beneficiaire_normalise": "ICF LA SABLIERE SA D HLM",
+      "siret": ""
+    },
+    "ATELIER PARISIEN D URBANISME": {
+      "activite_verifiee": "Association loi 1901 (APUR), créée en 1967 ; documente et analyse les évolutions urbaines de Paris et du Grand Paris, contribue aux politiques d'aménagement.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Atelier_parisien_d%27urbanisme",
+          "title": "fr.wikipedia.org"
+        },
+        {
+          "url": "https://www.apur.org/en",
+          "title": "apur.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ATELIER PARISIEN D URBANISME",
+      "beneficiaire_normalise": "ATELIER PARISIEN D URBANISME",
+      "siret": "78423753900043"
+    },
+    "EMMAUS SOLIDARITE": {
+      "activite_verifiee": "Association laïque d'intérêt général (créée 1954 par l'Abbé Pierre) ; accueille et héberge 4 000 personnes/jour via 85 services en Paris, IDF et Loir-et-Cher.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Emma%C3%BCs_Solidarit%C3%A9",
+          "title": "fr.wikipedia.org"
+        },
+        {
+          "url": "https://www.emmaus-solidarite.org/sur-le-terrain/les-hebergements",
+          "title": "emmaus-solidarite.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "EMMAUS SOLIDARITE",
+      "beneficiaire_normalise": "EMMAUS SOLIDARITE",
+      "siret": "31723624800017"
+    },
+    "CRESCENDO": {
+      "activite_verifiee": "Association loi 1901 (créée 1967), membre du Groupe SOS ; gère +65 crèches, relais petite enfance et services famille dans 6 régions dont l'Île-de-France.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.crescendo.asso.fr/",
+          "title": "crescendo.asso.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CRESCENDO",
+      "beneficiaire_normalise": "CRESCENDO",
+      "siret": "78481011100350"
+    },
+    "REGIE ECOLE INGENIEURS VILLE PARIS": {
+      "activite_verifiee": "Grande école d'ingénieurs publique de la Ville de Paris (EIVP), fondée 1959 dans le 19e ; spécialisée en génie urbain, membre de l'Université Gustave Eiffel.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        {
+          "url": "https://www.eivp-paris.fr/",
+          "title": "eivp-paris.fr"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/%C3%89cole_des_ing%C3%A9nieurs_de_la_Ville_de_Paris",
+          "title": "en.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "REGIE ECOLE INGENIEURS VILLE PARIS",
+      "beneficiaire_normalise": "REGIE ECOLE INGENIEURS VILLE PARIS",
+      "siret": ""
+    },
+    "MAISON KANGOUROU": {
+      "activite_verifiee": "Réseau associatif de crèches et multi-accueils ; 900+ places dans 23 établissements à Paris, IDF et régions ; accueille les familles avec jeunes enfants.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.lamaisonkangourou.com/",
+          "title": "lamaisonkangourou.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LA MAISON KANGOUROU",
+      "beneficiaire_normalise": "MAISON KANGOUROU",
+      "siret": "45234009400203"
+    },
+    "ANTIN RESIDENCES SA HABITAT": {
+      "activite_verifiee": "Société anonyme d'HLM, filiale du groupe Arcade VYV ; gère 30 700 logements (20 000 HLM + 10 000 spécialisés étudiants/séniors) en Île-de-France.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.antin-residences.fr/",
+          "title": "antin-residences.fr"
+        },
+        {
+          "url": "https://www.union-habitat.org/organismes/antin-residences-societe-anonyme-d-habitations-loyer-modere",
+          "title": "union-habitat.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ANTIN RESIDENCES SA HABITAT",
+      "beneficiaire_normalise": "ANTIN RESIDENCES SA HABITAT",
+      "siret": ""
+    },
+    "PARIS ATELIERS": {
+      "activite_verifiee": "Association loi 1901 subventionnée par la Ville de Paris (ex-ADAC, créée 1977) ; propose +110 disciplines artistiques, ~620 cours/sem, 5 000 inscrits/an.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.paris-ateliers.org/",
+          "title": "paris-ateliers.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "PARIS ATELIERS",
+      "beneficiaire_normalise": "PARIS ATELIERS",
+      "siret": "31293687500078"
+    },
+    "FONDATION OEUVRE DE LA CROIX ST SIM": {
+      "activite_verifiee": "Fondation reconnue d'utilité publique (créée 1906) ; 50 structures sanitaires, petite enfance et médico-social en Île-de-France pour personnes vulnérables.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.croix-saint-simon.org/",
+          "title": "croix-saint-simon.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FONDATION OEUVRE DE LA CROIX ST SIM",
+      "beneficiaire_normalise": "FONDATION OEUVRE DE LA CROIX ST SIM",
+      "siret": ""
+    },
+    "L HABITAT SOCIAL FRANCAIS": {
+      "activite_verifiee": "Société anonyme d'HLM (créée 1975) ; gère 5 100 logements sociaux à Paris et proche banlieue, construction et gestion conformes à la législation HLM.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.hsf-habitat.fr/",
+          "title": "hsf-habitat.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "L HABITAT SOCIAL FRANCAIS",
+      "beneficiaire_normalise": "L HABITAT SOCIAL FRANCAIS",
+      "siret": ""
+    },
+    "3F RESIDENCES": {
+      "activite_verifiee": "Filiale d'Immobilière 3F (groupe Action Logement) ; 250 résidences thématiques en France (étudiants, séniors, précaires, handicap, mobilité pro).",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/3F",
+          "title": "fr.wikipedia.org"
+        },
+        {
+          "url": "https://www.aurore.asso.fr/logement-accompagne/3f-residences-un-bailleur-social-partenaire-daurore-depuis-25-ans",
+          "title": "aurore.asso.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "3F RESIDENCES",
+      "beneficiaire_normalise": "3F RESIDENCES",
+      "siret": ""
+    },
+    "STE LIVRAISON OUVRAGES OLYMPIQUES": {
+      "activite_verifiee": "Établissement public d'État (SOLIDEO, créé 2017) chargé de financer, superviser et livrer les ouvrages olympiques et paralympiques de Paris 2024.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Soci%C3%A9t%C3%A9_de_livraison_des_ouvrages_olympiques",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "Ste LIVRAISON OUVRAGES OLYMPIQUES",
+      "beneficiaire_normalise": "STE LIVRAISON OUVRAGES OLYMPIQUES",
+      "siret": ""
+    },
+    "RÉGIE AUTONOME DES TRANSPORTS PARISIENS": {
+      "activite_verifiee": "Établissement public à caractère industriel et commercial (EPIC) de l'État ; exploite et maintient les réseaux métro, RER, bus et tramway de la région parisienne.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/R%C3%A9gie_autonome_des_transports_parisiens",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "RÉGIE AUTONOME DES TRANSPORTS PARISIENS",
+      "beneficiaire_normalise": "RÉGIE AUTONOME DES TRANSPORTS PARISIENS",
+      "siret": ""
+    },
+    "SOC REQUALICATION QUARTIERS ANCIENS": {
+      "activite_verifiee": "Société Publique Locale (SOREQA) créée 2010 ; traite l'habitat insalubre et dégradé, requalifie les quartiers anciens à Paris, Plaine Commune et Est Ensemble.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://soreqa.fr/",
+          "title": "soreqa.fr"
+        },
+        {
+          "url": "https://www.lemoniteur.fr/article/la-soreqa-nouvel-outil-de-lutte-contre-l-habitat-insalubre.837414",
+          "title": "lemoniteur.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SOC REQUALICATION QUARTIERS ANCIENS",
+      "beneficiaire_normalise": "SOC REQUALICATION QUARTIERS ANCIENS",
+      "siret": ""
+    },
+    "STE REQUALICATION QUARTIER ANCIEN": {
+      "activite_verifiee": "Société Publique Locale (SOREQA) créée 2010 ; traite l'habitat insalubre et dégradé, requalifie les quartiers anciens à Paris, Plaine Commune et Est Ensemble.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://soreqa.fr/",
+          "title": "soreqa.fr"
+        },
+        {
+          "url": "https://www.lemoniteur.fr/article/la-soreqa-nouvel-outil-de-lutte-contre-l-habitat-insalubre.837414",
+          "title": "lemoniteur.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "STE REQUALICATION QUARTIER ANCIEN",
+      "beneficiaire_normalise": "STE REQUALICATION QUARTIER ANCIEN",
+      "siret": ""
+    },
+    "CAISSE DES ECOLES DU 10E ARRONDISSE": {
+      "activite_verifiee": "Établissement public local (Ville de Paris) gérant la restauration scolaire, l'aide aux familles et les séjours de vacances pour les enfants du 10e arrondissement.",
+      "perimetre_geographique": "Paris 10e",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/pages/les-caisses-des-ecoles-de-paris-68",
+          "title": "paris.fr"
+        },
+        {
+          "url": "https://www.ccomptes.fr/sites/default/files/2023-10/IDR2021-18.pdf",
+          "title": "ccomptes.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CAISSE DES ECOLES DU 10E ARRONDISSE",
+      "beneficiaire_normalise": "CAISSE DES ECOLES DU 10E ARRONDISSE",
+      "siret": ""
+    },
+    "CAISSE ECOLES 16 EME ARRON PARIS": {
+      "activite_verifiee": "Établissement public local (Ville de Paris) gérant la restauration scolaire, l'aide aux familles et les séjours de vacances pour les enfants du 16e arrondissement.",
+      "perimetre_geographique": "Paris 16e",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/pages/les-caisses-des-ecoles-de-paris-68",
+          "title": "paris.fr"
+        },
+        {
+          "url": "https://www.ccomptes.fr/sites/default/files/2023-10/IDR2021-18.pdf",
+          "title": "ccomptes.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CAISSE ECOLES 16 EME ARRON PARIS",
+      "beneficiaire_normalise": "CAISSE ECOLES 16 EME ARRON PARIS",
+      "siret": ""
+    },
+    "CAISSE ECOLES 5 EME ARRONDISSEMENT": {
+      "activite_verifiee": "Établissement public local (Ville de Paris) gérant la restauration scolaire, l'aide aux familles et les séjours de vacances pour les enfants du 5e arrondissement.",
+      "perimetre_geographique": "Paris 5e",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/pages/les-caisses-des-ecoles-de-paris-68",
+          "title": "paris.fr"
+        },
+        {
+          "url": "https://www.ccomptes.fr/sites/default/files/2023-10/IDR2021-18.pdf",
+          "title": "ccomptes.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CAISSE ECOLES 5 EME ARRONDISSEMENT",
+      "beneficiaire_normalise": "CAISSE ECOLES 5 EME ARRONDISSEMENT",
+      "siret": ""
+    },
+    "CAISSE DES ECOLES DU 9E ARRONDISSEM": {
+      "activite_verifiee": "Établissement public local (Ville de Paris) gérant la restauration scolaire, l'aide aux familles et les séjours de vacances pour les enfants du 9e arrondissement.",
+      "perimetre_geographique": "Paris 9e",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/pages/les-caisses-des-ecoles-de-paris-68",
+          "title": "paris.fr"
+        },
+        {
+          "url": "https://www.ccomptes.fr/sites/default/files/2023-10/IDR2021-18.pdf",
+          "title": "ccomptes.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CAISSE DES ECOLES DU 9E ARRONDISSEM",
+      "beneficiaire_normalise": "CAISSE DES ECOLES DU 9E ARRONDISSEM",
+      "siret": ""
+    },
+    "CAISSE DES ECOLES DU 3E ARRONDISSEM": {
+      "activite_verifiee": "Établissement public local (Ville de Paris) gérant la restauration scolaire, l'aide aux familles et les séjours de vacances pour les enfants du 3e arrondissement.",
+      "perimetre_geographique": "Paris 3e",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/pages/les-caisses-des-ecoles-de-paris-68",
+          "title": "paris.fr"
+        },
+        {
+          "url": "https://www.ccomptes.fr/sites/default/files/2023-10/IDR2021-18.pdf",
+          "title": "ccomptes.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CAISSE DES ECOLES DU 3E ARRONDISSEM",
+      "beneficiaire_normalise": "CAISSE DES ECOLES DU 3E ARRONDISSEM",
+      "siret": ""
+    },
+    "CAISSE ECOLES 4 EME ARRONDISSEMENT": {
+      "activite_verifiee": "Établissement public local (Ville de Paris) gérant la restauration scolaire, l'aide aux familles et les séjours de vacances pour les enfants du 4e arrondissement.",
+      "perimetre_geographique": "Paris 4e",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/pages/les-caisses-des-ecoles-de-paris-68",
+          "title": "paris.fr"
+        },
+        {
+          "url": "https://www.ccomptes.fr/sites/default/files/2023-10/IDR2021-18.pdf",
+          "title": "ccomptes.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CAISSE ECOLES 4 EME ARRONDISSEMENT",
+      "beneficiaire_normalise": "CAISSE ECOLES 4 EME ARRONDISSEMENT",
+      "siret": ""
+    },
+    "CAISSE DES ECOLES DU 2E ARRONDISSEM": {
+      "activite_verifiee": "Établissement public local (Ville de Paris) gérant la restauration scolaire, l'aide aux familles et les séjours de vacances pour les enfants du 2e arrondissement.",
+      "perimetre_geographique": "Paris 2e",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/pages/les-caisses-des-ecoles-de-paris-68",
+          "title": "paris.fr"
+        },
+        {
+          "url": "https://www.ccomptes.fr/sites/default/files/2023-10/IDR2021-18.pdf",
+          "title": "ccomptes.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CAISSE DES ECOLES DU 2E ARRONDISSEM",
+      "beneficiaire_normalise": "CAISSE DES ECOLES DU 2E ARRONDISSEM",
+      "siret": ""
+    },
+    "CAISSE DES ECOLES DU 7EME ARRONDISS": {
+      "activite_verifiee": "Établissement public local (Ville de Paris) gérant la restauration scolaire, l'aide aux familles et les séjours de vacances pour les enfants du 7e arrondissement.",
+      "perimetre_geographique": "Paris 7e",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/pages/les-caisses-des-ecoles-de-paris-68",
+          "title": "paris.fr"
+        },
+        {
+          "url": "https://www.ccomptes.fr/sites/default/files/2023-10/IDR2021-18.pdf",
+          "title": "ccomptes.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CAISSE DES ECOLES DU 7EME ARRONDISS",
+      "beneficiaire_normalise": "CAISSE DES ECOLES DU 7EME ARRONDISS",
+      "siret": ""
+    },
+    "CAISSE DES ECOLES DU 8E ARRONDISSEM": {
+      "activite_verifiee": "Établissement public local (Ville de Paris) gérant la restauration scolaire, l'aide aux familles et les séjours de vacances pour les enfants du 8e arrondissement.",
+      "perimetre_geographique": "Paris 8e",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/pages/les-caisses-des-ecoles-de-paris-68",
+          "title": "paris.fr"
+        },
+        {
+          "url": "https://www.ccomptes.fr/sites/default/files/2023-10/IDR2021-18.pdf",
+          "title": "ccomptes.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CAISSE DES ECOLES DU 8E ARRONDISSEM",
+      "beneficiaire_normalise": "CAISSE DES ECOLES DU 8E ARRONDISSEM",
+      "siret": ""
+    },
+    "CAISSE DES ECOLES DU 6E ARRONDISSEM": {
+      "activite_verifiee": "Établissement public local (Ville de Paris) gérant la restauration scolaire, l'aide aux familles et les séjours de vacances pour les enfants du 6e arrondissement.",
+      "perimetre_geographique": "Paris 6e",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/pages/les-caisses-des-ecoles-de-paris-68",
+          "title": "paris.fr"
+        },
+        {
+          "url": "https://www.ccomptes.fr/sites/default/files/2023-10/IDR2021-18.pdf",
+          "title": "ccomptes.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CAISSE DES ECOLES DU 6E ARRONDISSEM",
+      "beneficiaire_normalise": "CAISSE DES ECOLES DU 6E ARRONDISSEM",
+      "siret": ""
+    },
+    "CAISSE ECOLES 1ER ARR PARIS": {
+      "activite_verifiee": "Établissement public local (Ville de Paris) gérant la restauration scolaire, l'aide aux familles et les séjours de vacances pour les enfants du 1er arrondissement.",
+      "perimetre_geographique": "Paris 1er",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/pages/les-caisses-des-ecoles-de-paris-68",
+          "title": "paris.fr"
+        },
+        {
+          "url": "https://www.ccomptes.fr/sites/default/files/2023-10/IDR2021-18.pdf",
+          "title": "ccomptes.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CAISSE ECOLES 1ER ARR  PARIS",
+      "beneficiaire_normalise": "CAISSE ECOLES 1ER ARR PARIS",
+      "siret": ""
+    },
+    "CAISSE DES ECOLES": {
+      "activite_verifiee": "Établissement public local (Ville de Paris) gérant la restauration scolaire, l'aide aux familles et les séjours de vacances pour les enfants du de Paris arrondissement.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/pages/les-caisses-des-ecoles-de-paris-68",
+          "title": "paris.fr"
+        },
+        {
+          "url": "https://www.ccomptes.fr/sites/default/files/2023-10/IDR2021-18.pdf",
+          "title": "ccomptes.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CAISSE DES ECOLES",
+      "beneficiaire_normalise": "CAISSE DES ECOLES",
+      "siret": ""
+    },
+    "CAISSE DES ECOLES DU 8E ARROND": {
+      "activite_verifiee": "Établissement public local (Ville de Paris) gérant la restauration scolaire, l'aide aux familles et les séjours de vacances pour les enfants du 8e arrondissement.",
+      "perimetre_geographique": "Paris 8e",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/pages/les-caisses-des-ecoles-de-paris-68",
+          "title": "paris.fr"
+        },
+        {
+          "url": "https://www.ccomptes.fr/sites/default/files/2023-10/IDR2021-18.pdf",
+          "title": "ccomptes.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:20:42",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CAISSE DES ECOLES DU 8E ARROND.",
+      "beneficiaire_normalise": "CAISSE DES ECOLES DU 8E ARROND",
+      "siret": ""
+    },
+    "CENTRE D ACTION SOCIALE DE LA VILLE DE PARIS": {
+      "activite_verifiee": "Établissement public municipal de Paris chargé de la lutte contre l'exclusion, gère 284 établissements et +140 résidences pour personnes âgées, handicapées ou précaires.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/dossiers/centre-d-action-sociale-de-la-ville-de-paris-casvp-23",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:30:11",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CENTRE D ACTION SOCIALE DE LA VILLE DE PARIS",
+      "beneficiaire_normalise": "CENTRE D ACTION SOCIALE DE LA VILLE DE PARIS",
+      "siret": ""
+    },
+    "RATP": {
+      "activite_verifiee": "Établissement public à caractère industriel et commercial (EPIC) de l'État ; exploite et maintient les réseaux métro, RER, bus et tramway de la région parisienne.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/R%C3%A9gie_autonome_des_transports_parisiens",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:30:11",
+      "model": "claude-code-websearch",
+      "beneficiaire": "RATP",
+      "beneficiaire_normalise": "RATP",
+      "siret": ""
+    },
+    "CDC HAB SOCIAL SA HAB LOYER MODERE": {
+      "activite_verifiee": "Société anonyme d'HLM, filiale de la Caisse des dépôts (groupe CDC Habitat, 554 000 logements en France) ; gestion locative sociale et accession à la propriété.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/CDC_Habitat",
+          "title": "fr.wikipedia.org"
+        },
+        {
+          "url": "https://www.cdc-habitat.fr",
+          "title": "cdc-habitat.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:30:11",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CDC HAB SOCIAL SA HAB LOYER MODERE",
+      "beneficiaire_normalise": "CDC HAB SOCIAL SA HAB LOYER MODERE",
+      "siret": ""
+    },
+    "MAISON DES BOUT CHOU": {
+      "activite_verifiee": "Association loi 1901 gérant 18 crèches (17 à Paris + 1 Marseille) ; fusionnée avec France Horizon au 1er avril 2025, 789 berceaux, 300 professionnels.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.lamaisondesboutchou.org/noscreches/",
+          "title": "lamaisondesboutchou.org"
+        },
+        {
+          "url": "https://www.france-horizon.fr/actualites/les-18-creches-de-lassociation-la-maison-des-boutchou-rejoignent-france-horizon",
+          "title": "france-horizon.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:30:11",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LA MAISON DES BOUT'CHOU",
+      "beneficiaire_normalise": "MAISON DES BOUT CHOU",
+      "siret": "35118614300175"
+    },
+    "SAMU SOCIAL DE PARIS": {
+      "activite_verifiee": "Association gérant le 115 (numéro d'urgence 24/7 pour les personnes sans-abri) et le SIAO Paris ; coordonne l'hébergement d'urgence en Île-de-France.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.samusocial.paris/",
+          "title": "samusocial.paris"
+        },
+        {
+          "url": "https://www.siao.paris/",
+          "title": "siao.paris"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:30:11",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SAMU SOCIAL DE PARIS",
+      "beneficiaire_normalise": "SAMU SOCIAL DE PARIS",
+      "siret": ""
+    },
+    "PARIS ET COMPAGNIE": {
+      "activite_verifiee": "Agence d'innovation et de développement économique de la Ville de Paris (Paris&Co) ; 12 incubateurs thématiques, +300 startups accompagnées, plateforme Le Cargo.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.parisandco.com/",
+          "title": "parisandco.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:30:11",
+      "model": "claude-code-websearch",
+      "beneficiaire": "PARIS ET COMPAGNIE",
+      "beneficiaire_normalise": "PARIS ET COMPAGNIE",
+      "siret": "40895436000033"
+    },
+    "FONDATION LEOPOLD BELLAN": {
+      "activite_verifiee": "Fondation reconnue d'utilité publique (créée 1884) ; 68 établissements, 4 250 lits/places en santé, médico-social et social pour 2 700 professionnels.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://bellan.fr/",
+          "title": "bellan.fr"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Fondation_L%C3%A9opold-Bellan",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:30:11",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FONDATION LEOPOLD BELLAN",
+      "beneficiaire_normalise": "FONDATION LEOPOLD BELLAN",
+      "siret": "77567216500013"
+    },
+    "AXIMO": {
+      "activite_verifiee": "Société anonyme d'HLM (ESH), filiale à 71% de Paris Habitat-OPH ; gère +2 500 logements sociaux en petits collectifs et maisons individuelles en Île-de-France.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.aximo.org/",
+          "title": "aximo.org"
+        },
+        {
+          "url": "https://www.union-habitat.org/organismes/aximo-sa-d-hlm",
+          "title": "union-habitat.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:30:11",
+      "model": "claude-code-websearch",
+      "beneficiaire": "AXIMO",
+      "beneficiaire_normalise": "AXIMO",
+      "siret": ""
+    },
+    "MISSION LOCALE DE PARIS": {
+      "activite_verifiee": "Association accueillant tous les jeunes parisiens de 16 à 25 ans ; 250 salariés, 7 antennes ; accompagnement vers l'emploi, la formation et l'insertion sociale.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.missionlocale.paris/",
+          "title": "missionlocale.paris"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:30:11",
+      "model": "claude-code-websearch",
+      "beneficiaire": "MISSION LOCALE DE PARIS",
+      "beneficiaire_normalise": "MISSION LOCALE DE PARIS",
+      "siret": "53132862300149"
+    },
+    "ASSOCIATION AURORE": {
+      "activite_verifiee": "Association reconnue d'utilité publique (créée 1871) ; héberge, soigne et accompagne 41 300 personnes en précarité vers l'autonomie en Île-de-France et 7 régions.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.aurore.asso.fr/",
+          "title": "aurore.asso.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:31:24",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION AURORE",
+      "beneficiaire_normalise": "ASSOCIATION AURORE",
+      "siret": ""
+    },
+    "AURORE": {
+      "activite_verifiee": "Association reconnue d'utilité publique (créée 1871) ; héberge, soigne et accompagne 41 300 personnes en précarité vers l'autonomie en Île-de-France et 7 régions.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.aurore.asso.fr/",
+          "title": "aurore.asso.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:31:24",
+      "model": "claude-code-websearch",
+      "beneficiaire": "AURORE",
+      "beneficiaire_normalise": "AURORE",
+      "siret": ""
+    },
+    "CROIX ROUGE FRANCAISE": {
+      "activite_verifiee": "Association humanitaire (fédération française) ; secours d'urgence, action sociale, formation et santé via 635 établissements en France métropolitaine et outre-mer.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.croix-rouge.fr/",
+          "title": "croix-rouge.fr"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Croix-Rouge_fran%C3%A7aise",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:31:24",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CROIX ROUGE FRANCAISE",
+      "beneficiaire_normalise": "CROIX ROUGE FRANCAISE",
+      "siret": ""
+    },
+    "CROIX ROUGE": {
+      "activite_verifiee": "Association humanitaire (fédération française) ; secours d'urgence, action sociale, formation et santé via 635 établissements en France métropolitaine et outre-mer.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.croix-rouge.fr/",
+          "title": "croix-rouge.fr"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Croix-Rouge_fran%C3%A7aise",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:31:24",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CROIX ROUGE",
+      "beneficiaire_normalise": "CROIX ROUGE",
+      "siret": ""
+    },
+    "THEATRE DU ROND POINT": {
+      "activite_verifiee": "Théâtre public (établissement culturel) au Rond-Point des Champs-Élysées (8e) dédié aux auteurs vivants et à la création contemporaine ; programmation théâtre, cirque, danse.",
+      "perimetre_geographique": "Paris 8e",
+      "sources": [
+        {
+          "url": "https://www.theatredurondpoint.fr/",
+          "title": "theatredurondpoint.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:31:24",
+      "model": "claude-code-websearch",
+      "beneficiaire": "THEATRE DU ROND POINT",
+      "beneficiaire_normalise": "THEATRE DU ROND POINT",
+      "siret": ""
+    },
+    "PAVILLON DE L ARSENAL": {
+      "activite_verifiee": "Centre d'information, de documentation et d'expositions d'urbanisme et d'architecture de Paris et du Grand Paris (4e, depuis 1988) ; entrée gratuite.",
+      "perimetre_geographique": "Paris 4e",
+      "sources": [
+        {
+          "url": "https://www.pavillon-arsenal.com/fr/",
+          "title": "pavillon-arsenal.com"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Pavillon_de_l%27Arsenal",
+          "title": "en.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:31:24",
+      "model": "claude-code-websearch",
+      "beneficiaire": "PAVILLON DE L ARSENAL",
+      "beneficiaire_normalise": "PAVILLON DE L ARSENAL",
+      "siret": ""
+    },
+    "PARIS AUDIO VISUEL MEP": {
+      "activite_verifiee": "Association (créée 1978) gestionnaire de la Maison Européenne de la Photographie (MEP, 4e) ; collection de 20 000 œuvres, ~30 expositions/an, auditorium et médiathèque.",
+      "perimetre_geographique": "Paris 4e",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maison_europ%C3%A9enne_de_la_photographie",
+          "title": "en.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:31:24",
+      "model": "claude-code-websearch",
+      "beneficiaire": "PARIS AUDIO VISUEL MEP",
+      "beneficiaire_normalise": "PARIS AUDIO VISUEL MEP",
+      "siret": ""
+    },
+    "MAISON DES METALLOS": {
+      "activite_verifiee": "Établissement culturel de la Ville de Paris dans le 11e (ex-usine d'instruments de musique de 1881, ancienne CGT Métallurgie) ; programmation pluridisciplinaire.",
+      "perimetre_geographique": "Paris 11e",
+      "sources": [
+        {
+          "url": "https://www.maisondesmetallos.paris/",
+          "title": "maisondesmetallos.paris"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Maison_des_m%C3%A9tallos",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:31:24",
+      "model": "claude-code-websearch",
+      "beneficiaire": "MAISON DES METALLOS",
+      "beneficiaire_normalise": "MAISON DES METALLOS",
+      "siret": ""
+    },
+    "ENFANT PRESENT": {
+      "activite_verifiee": "Association (membre CNAPE) ; gère 3 crèches préventives collectives et 2 structures médico-sociales pour enfants en situation de vulnérabilité à Paris et Val d'Oise.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.cnape.fr/associations/enfant-present/",
+          "title": "cnape.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:31:24",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ENFANT PRESENT",
+      "beneficiaire_normalise": "ENFANT PRESENT",
+      "siret": "39027802600047"
+    },
+    "COALLIA HABITAT": {
+      "activite_verifiee": "Association (ex-AFTAM, créée 1962) ; propose logement accompagné, hébergement social et accompagnement pour travailleurs migrants, réfugiés et publics vulnérables.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://coallia.org/",
+          "title": "coallia.org"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Coallia",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:31:24",
+      "model": "claude-code-websearch",
+      "beneficiaire": "COALLIA HABITAT",
+      "beneficiaire_normalise": "COALLIA HABITAT",
+      "siret": ""
+    },
+    "COALLIA": {
+      "activite_verifiee": "Association (ex-AFTAM, créée 1962) ; propose logement accompagné, hébergement social et accompagnement pour travailleurs migrants, réfugiés et publics vulnérables.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://coallia.org/",
+          "title": "coallia.org"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Coallia",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:31:24",
+      "model": "claude-code-websearch",
+      "beneficiaire": "COALLIA",
+      "beneficiaire_normalise": "COALLIA",
+      "siret": "77568030900611"
+    },
+    "ASSOCIATION ACTION SOCIALE EN FAVEUR DES PERSONNELS DE LA VILLE DE PARIS ET DU DEPARTEMENT DE PARIS": {
+      "activite_verifiee": "Association (ASPP) d'action sociale en faveur des personnels de la Ville et du Département de Paris ; gère restaurants administratifs et aides sociales.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.aspp.fr/a-propos",
+          "title": "aspp.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:31:24",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION ACTION SOCIALE EN FAVEUR DES PERSONNELS DE LA VILLE DE PARIS ET DU DEPARTEMENT DE PARIS",
+      "beneficiaire_normalise": "ASSOCIATION ACTION SOCIALE EN FAVEUR DES PERSONNELS DE LA VILLE DE PARIS ET DU DEPARTEMENT DE PARIS",
+      "siret": ""
+    },
+    "FOND OEUVRE DE LA CROIX ST SIMON": {
+      "activite_verifiee": "Fondation reconnue d'utilité publique (créée 1906) ; 50 structures sanitaires, petite enfance et médico-social en Île-de-France pour personnes vulnérables.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.croix-saint-simon.org/",
+          "title": "croix-saint-simon.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:31:24",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FOND. OEUVRE DE LA CROIX ST- SIMON",
+      "beneficiaire_normalise": "FOND OEUVRE DE LA CROIX ST SIMON",
+      "siret": ""
+    },
+    "ENSEMBLE PARIS EMPLOI COMPETENCES": {
+      "activite_verifiee": "Association EPEC (créée 2016, fusion PLIE Nord-Est + Maison de l'emploi) ; accompagne +3 000 demandeurs d'emploi/an dans 9 arrondissements parisiens.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.epec.paris/",
+          "title": "epec.paris"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:32:53",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ENSEMBLE PARIS EMPLOI COMPETENCES",
+      "beneficiaire_normalise": "ENSEMBLE PARIS EMPLOI COMPETENCES",
+      "siret": ""
+    },
+    "EPCS CAMPUS CONDORCET": {
+      "activite_verifiee": "Établissement public de coopération scientifique (10 membres fondateurs dont EHESS, CNRS, EPHE, Paris 1, 8) ; campus Aubervilliers dédié aux SHS, 12 000 chercheurs/doctorants.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.campus-condorcet.fr/en",
+          "title": "campus-condorcet.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:32:53",
+      "model": "claude-code-websearch",
+      "beneficiaire": "EPCS CAMPUS CONDORCET",
+      "beneficiaire_normalise": "EPCS CAMPUS CONDORCET",
+      "siret": ""
+    },
+    "OFFICE TOURISME CONGRES PARIS": {
+      "activite_verifiee": "Office du Tourisme et des Congrès de Paris (OTCP) ; accueille et informe les visiteurs, promeut la destination Paris en France et à l'étranger, soutient le tourisme d'affaires.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://parisjetaime.com/professionnels/article/nos-missions-a1162",
+          "title": "parisjetaime.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:32:53",
+      "model": "claude-code-websearch",
+      "beneficiaire": "OFFICE TOURISME CONGRES PARIS",
+      "beneficiaire_normalise": "OFFICE TOURISME CONGRES PARIS",
+      "siret": ""
+    },
+    "TOIT ET JOIE": {
+      "activite_verifiee": "Société anonyme d'HLM (créée 1957, groupe Poste Habitat) ; ~16 000 logements dans 90 communes d'Île-de-France, à l'origine pour les postiers.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.postehabitat.com/Toit-et-Joie-Poste-Habitat",
+          "title": "postehabitat.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:32:53",
+      "model": "claude-code-websearch",
+      "beneficiaire": "TOIT ET JOIE",
+      "beneficiaire_normalise": "TOIT ET JOIE",
+      "siret": ""
+    },
+    "SA D HLM TOIT ET JOIE": {
+      "activite_verifiee": "Société anonyme d'HLM (créée 1957, groupe Poste Habitat) ; ~16 000 logements dans 90 communes d'Île-de-France, à l'origine pour les postiers.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.postehabitat.com/Toit-et-Joie-Poste-Habitat",
+          "title": "postehabitat.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:32:53",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SA D'HLM TOIT ET JOIE",
+      "beneficiaire_normalise": "SA D HLM TOIT ET JOIE",
+      "siret": ""
+    },
+    "ENVOLUDIA": {
+      "activite_verifiee": "Association loi 1901 (+50 ans) ; gère 6 crèches inclusives et IME pour enfants polyhandicapés, IMC et troubles neurodéveloppementaux en Île-de-France.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.envoludia.org/",
+          "title": "envoludia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:32:53",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ENVOLUDIA",
+      "beneficiaire_normalise": "ENVOLUDIA",
+      "siret": "77573329800183"
+    },
+    "LYCEE DES METIERS BOULLE E S A A": {
+      "activite_verifiee": "École supérieure des arts appliqués (ESAA) et lycée professionnel de la Ville de Paris (12e, créée 1886) ; ébénisterie, arts du métal, design, architecture intérieure.",
+      "perimetre_geographique": "Paris 12e",
+      "sources": [
+        {
+          "url": "https://ecole-boulle.org/",
+          "title": "ecole-boulle.org"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/%C3%89cole_Boulle",
+          "title": "en.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:32:53",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LYCEE DES METIERS BOULLE E.S.A.A.",
+      "beneficiaire_normalise": "LYCEE DES METIERS BOULLE E S A A",
+      "siret": ""
+    },
+    "MUSEE D ART ET D HISTOIRE DU JUDAIS": {
+      "activite_verifiee": "Musée national (ouvert 1998) à l'Hôtel de Saint-Aignan (Marais, 3e) ; plus grand musée français dédié à l'art et l'histoire juive, 12 000 œuvres.",
+      "perimetre_geographique": "Paris 3e",
+      "sources": [
+        {
+          "url": "https://www.mahj.org/fr",
+          "title": "mahj.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:32:53",
+      "model": "claude-code-websearch",
+      "beneficiaire": "MUSEE D ART ET D HISTOIRE DU JUDAIS",
+      "beneficiaire_normalise": "MUSEE D ART ET D HISTOIRE DU JUDAIS",
+      "siret": ""
+    },
+    "MUSEE D ART ET D HISTOIRE DU JUDAISME": {
+      "activite_verifiee": "Musée national (ouvert 1998) à l'Hôtel de Saint-Aignan (Marais, 3e) ; plus grand musée français dédié à l'art et l'histoire juive, 12 000 œuvres.",
+      "perimetre_geographique": "Paris 3e",
+      "sources": [
+        {
+          "url": "https://www.mahj.org/fr",
+          "title": "mahj.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:32:53",
+      "model": "claude-code-websearch",
+      "beneficiaire": "MUSEE D'ART ET D'HISTOIRE DU JUDAISME",
+      "beneficiaire_normalise": "MUSEE D ART ET D HISTOIRE DU JUDAISME",
+      "siret": "34843510800017"
+    },
+    "BATIGERE ILE DE FRANCE SA D HLM": {
+      "activite_verifiee": "Bailleur social coopératif (Groupe Batigère Habitat) ; 76 000 logements en Grand Est, Île-de-France et Sud-Est ; logement social pour +180 000 personnes.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.batigere.fr/",
+          "title": "batigere.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:32:53",
+      "model": "claude-code-websearch",
+      "beneficiaire": "BATIGERE ILE DE FRANCE SA D HLM",
+      "beneficiaire_normalise": "BATIGERE ILE DE FRANCE SA D HLM",
+      "siret": ""
+    },
+    "BATIGERE EN ILE DE FRANCE": {
+      "activite_verifiee": "Bailleur social coopératif (Groupe Batigère Habitat) ; 76 000 logements en Grand Est, Île-de-France et Sud-Est ; logement social pour +180 000 personnes.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.batigere.fr/",
+          "title": "batigere.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:32:53",
+      "model": "claude-code-websearch",
+      "beneficiaire": "BATIGERE EN ILE DE FRANCE",
+      "beneficiaire_normalise": "BATIGERE EN ILE DE FRANCE",
+      "siret": ""
+    },
+    "BATIGERE HABITAT": {
+      "activite_verifiee": "Bailleur social coopératif (Groupe Batigère Habitat) ; 76 000 logements en Grand Est, Île-de-France et Sud-Est ; logement social pour +180 000 personnes.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.batigere.fr/",
+          "title": "batigere.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:32:53",
+      "model": "claude-code-websearch",
+      "beneficiaire": "BATIGERE HABITAT",
+      "beneficiaire_normalise": "BATIGERE HABITAT",
+      "siret": ""
+    },
+    "MADLINE": {
+      "activite_verifiee": "Entreprise de spectacle vivant (SIREN 843547142, créée 2018, Paris 18e) ; administration, gestion et exploitation de salles de spectacle et représentations publiques.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://www.pappers.fr/entreprise/madline-843547142",
+          "title": "pappers.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:32:53",
+      "model": "claude-code-websearch",
+      "beneficiaire": "MADLINE",
+      "beneficiaire_normalise": "MADLINE",
+      "siret": ""
+    },
+    "CENT QUATRE": {
+      "activite_verifiee": "Établissement public de coopération culturelle de la Ville de Paris (19e) ; centre d'art pluridisciplinaire accueillant spectacles, résidences et publics jeunes.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        {
+          "url": "https://www.104.fr/",
+          "title": "104.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:40:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CENT QUATRE",
+      "beneficiaire_normalise": "CENT QUATRE",
+      "siret": ""
+    },
+    "MISSION LOCALE PARIS": {
+      "activite_verifiee": "Association accueillant tous les jeunes parisiens de 16 à 25 ans ; 250 salariés, 7 antennes ; accompagnement vers l'emploi, la formation et l'insertion sociale.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.missionlocale.paris/",
+          "title": "missionlocale.paris"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:40:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "MISSION LOCALE PARIS",
+      "beneficiaire_normalise": "MISSION LOCALE PARIS",
+      "siret": ""
+    },
+    "ABC PUÉRICULTURE": {
+      "activite_verifiee": "Association gérant un réseau de crèches associatives et de relais petite enfance à Paris ; accueil et accompagnement de jeunes enfants et familles.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.abc-puericulture.org/",
+          "title": "abc-puericulture.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:40:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ABC PUÉRICULTURE",
+      "beneficiaire_normalise": "ABC PUÉRICULTURE",
+      "siret": ""
+    },
+    "INSTITUT DES CULTURES D ISLAM": {
+      "activite_verifiee": "Établissement culturel de la Ville de Paris dans le 18e (Goutte-d'Or) ; expositions, concerts, cours d'arabe, conférences et création contemporaine liées aux cultures musulmanes.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://www.institut-cultures-islam.org/en/",
+          "title": "institut-cultures-islam.org"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Institut_des_cultures_d%27Islam",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:40:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "INSTITUT DES CULTURES D ISLAM",
+      "beneficiaire_normalise": "INSTITUT DES CULTURES D ISLAM",
+      "siret": "52225251900015"
+    },
+    "FONDATION DE L ARMEE DU SALUT": {
+      "activite_verifiee": "Fondation humanitaire reconnue d'utilité publique ; +240 établissements, 2 800 salariés et 6 000 bénévoles en France pour les personnes en précarité, handicap, enfance.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.armeedusalut.fr/armee-du-salut/missions/fondation",
+          "title": "armeedusalut.fr"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Arm%C3%A9e_du_salut",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:40:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FONDATION DE L ARMEE DU SALUT",
+      "beneficiaire_normalise": "FONDATION DE L ARMEE DU SALUT",
+      "siret": ""
+    },
+    "ARMEE DU SALUT": {
+      "activite_verifiee": "Fondation humanitaire reconnue d'utilité publique ; +240 établissements, 2 800 salariés et 6 000 bénévoles en France pour les personnes en précarité, handicap, enfance.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.armeedusalut.fr/armee-du-salut/missions/fondation",
+          "title": "armeedusalut.fr"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Arm%C3%A9e_du_salut",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:40:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ARMEE DU SALUT",
+      "beneficiaire_normalise": "ARMEE DU SALUT",
+      "siret": ""
+    },
+    "PARIS 2024 COMITE D ORGANISATION": {
+      "activite_verifiee": "Association (COJOP, créée 2018, présidée par Tony Estanguet) chargée de planifier, organiser, financer et livrer les Jeux olympiques et paralympiques Paris 2024.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Comit%C3%A9_d%27organisation_des_Jeux_olympiques_et_paralympiques_d%27%C3%A9t%C3%A9_de_2024",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:40:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "PARIS 2024 COMITE D'ORGANISATION",
+      "beneficiaire_normalise": "PARIS 2024 COMITE D ORGANISATION",
+      "siret": ""
+    },
+    "PARIS 2024 COMITE D ORGANISAT DES": {
+      "activite_verifiee": "Association (COJOP, créée 2018, présidée par Tony Estanguet) chargée de planifier, organiser, financer et livrer les Jeux olympiques et paralympiques Paris 2024.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Comit%C3%A9_d%27organisation_des_Jeux_olympiques_et_paralympiques_d%27%C3%A9t%C3%A9_de_2024",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:40:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "PARIS 2024 COMITE D'ORGANISAT DES",
+      "beneficiaire_normalise": "PARIS 2024 COMITE D ORGANISAT DES",
+      "siret": ""
+    },
+    "MAISON PRATIQUES ARTISTIQUES AMATEU": {
+      "activite_verifiee": "Établissement culturel de la Ville de Paris (MPAA) réparti sur 5 sites ; soutient et développe les pratiques artistiques amateurs (répétitions, ateliers, spectacles).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.mpaa.fr/",
+          "title": "mpaa.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:40:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "MAISON PRATIQUES ARTISTIQUES AMATEU",
+      "beneficiaire_normalise": "MAISON PRATIQUES ARTISTIQUES AMATEU",
+      "siret": ""
+    },
+    "ASS SOUTIEN DU THEATRE PRIVE": {
+      "activite_verifiee": "Association loi 1901 (ASTP, fondée 1964) ; tutelle Ministère de la Culture + Ville de Paris ; collecte la taxe sur la billetterie théâtrale et finance la création privée.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://astp.asso.fr/qui-sommes-nous/",
+          "title": "astp.asso.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:40:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASS SOUTIEN DU THEATRE PRIVE",
+      "beneficiaire_normalise": "ASS SOUTIEN DU THEATRE PRIVE",
+      "siret": ""
+    },
+    "ASSOCIATION SOUTIEN DU THEATRE PRIVE": {
+      "activite_verifiee": "Association loi 1901 (ASTP, fondée 1964) ; tutelle Ministère de la Culture + Ville de Paris ; collecte la taxe sur la billetterie théâtrale et finance la création privée.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://astp.asso.fr/qui-sommes-nous/",
+          "title": "astp.asso.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:40:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION SOUTIEN DU THEATRE PRIVE",
+      "beneficiaire_normalise": "ASSOCIATION SOUTIEN DU THEATRE PRIVE",
+      "siret": ""
+    },
+    "SOUTIEN DU THEATRE PRIVE": {
+      "activite_verifiee": "Association loi 1901 (ASTP, fondée 1964) ; tutelle Ministère de la Culture + Ville de Paris ; collecte la taxe sur la billetterie théâtrale et finance la création privée.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://astp.asso.fr/qui-sommes-nous/",
+          "title": "astp.asso.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:40:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SOUTIEN DU THEATRE PRIVE",
+      "beneficiaire_normalise": "SOUTIEN DU THEATRE PRIVE",
+      "siret": ""
+    },
+    "1001 VIES HABITAT": {
+      "activite_verifiee": "Bailleur social historique (1957) ; ~92 000 logements, 216 000 personnes logées en Île-de-France, AuRA, PACA et Nouvelle-Aquitaine ; 1 313 salariés.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.1001vieshabitat.fr/",
+          "title": "1001vieshabitat.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:40:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "1001 VIES HABITAT",
+      "beneficiaire_normalise": "1001 VIES HABITAT",
+      "siret": ""
+    },
+    "RETRAITE CONSEILLERS MUNICIPAUX PAR": {
+      "activite_verifiee": "Association (déclarée à Paris 4e, SIREN 422006338) gérant le régime de retraite complémentaire des conseillers municipaux de Paris.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/retraite-conseillers-municipaux-paris-422006338.html",
+          "title": "societe.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:40:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "RETRAITE CONSEILLERS MUNICIPAUX PAR",
+      "beneficiaire_normalise": "RETRAITE CONSEILLERS MUNICIPAUX PAR",
+      "siret": ""
+    },
+    "BPIFRANCE REGIONS": {
+      "activite_verifiee": "Banque Publique d'Investissement (groupe État français) ; finance, garantit et investit dans les entreprises de la création à la transmission via 22 implantations régionales.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.bpifrance.fr/",
+          "title": "bpifrance.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:41:35",
+      "model": "claude-code-websearch",
+      "beneficiaire": "BPIFRANCE REGIONS",
+      "beneficiaire_normalise": "BPIFRANCE REGIONS",
+      "siret": ""
+    },
+    "BPIFRANCE": {
+      "activite_verifiee": "Banque Publique d'Investissement (groupe État français) ; finance, garantit et investit dans les entreprises de la création à la transmission via 22 implantations régionales.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.bpifrance.fr/",
+          "title": "bpifrance.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:41:35",
+      "model": "claude-code-websearch",
+      "beneficiaire": "BPIFRANCE",
+      "beneficiaire_normalise": "BPIFRANCE",
+      "siret": ""
+    },
+    "CENTRE REGIONAL OEUVRES UNIV SCOLAI": {
+      "activite_verifiee": "Établissement public (CROUS Paris) ; gère bourses, logement étudiant, restauration universitaire, vie culturelle et accueil des étudiants internationaux.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.crous-paris.fr/",
+          "title": "crous-paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:41:35",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CENTRE REGIONAL OEUVRES UNIV SCOLAI",
+      "beneficiaire_normalise": "CENTRE REGIONAL OEUVRES UNIV SCOLAI",
+      "siret": ""
+    },
+    "APATE": {
+      "activite_verifiee": "Association loi 1901 (APATE, créée 1990) ; gère 6 crèches et jardins d'enfants inclusifs à Paris, 1 place sur 3 réservée aux enfants handicapés.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.apate.fr/",
+          "title": "apate.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:41:35",
+      "model": "claude-code-websearch",
+      "beneficiaire": "APATE",
+      "beneficiaire_normalise": "APATE",
+      "siret": ""
+    },
+    "APATE LA MAISON DAGOBERT": {
+      "activite_verifiee": "Association loi 1901 (APATE, créée 1990) ; gère 6 crèches et jardins d'enfants inclusifs à Paris, 1 place sur 3 réservée aux enfants handicapés.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.apate.fr/",
+          "title": "apate.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:41:35",
+      "model": "claude-code-websearch",
+      "beneficiaire": "APATE LA MAISON DAGOBERT",
+      "beneficiaire_normalise": "APATE LA MAISON DAGOBERT",
+      "siret": ""
+    },
+    "APATE MOWGLI": {
+      "activite_verifiee": "Association loi 1901 (APATE, créée 1990) ; gère 6 crèches et jardins d'enfants inclusifs à Paris, 1 place sur 3 réservée aux enfants handicapés.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.apate.fr/",
+          "title": "apate.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:41:35",
+      "model": "claude-code-websearch",
+      "beneficiaire": "APATE MOWGLI",
+      "beneficiaire_normalise": "APATE MOWGLI",
+      "siret": ""
+    },
+    "APATE BALOO": {
+      "activite_verifiee": "Association loi 1901 (APATE, créée 1990) ; gère 6 crèches et jardins d'enfants inclusifs à Paris, 1 place sur 3 réservée aux enfants handicapés.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.apate.fr/",
+          "title": "apate.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:41:35",
+      "model": "claude-code-websearch",
+      "beneficiaire": "APATE BALOO",
+      "beneficiaire_normalise": "APATE BALOO",
+      "siret": ""
+    },
+    "CRECHE GAN MENAHEM": {
+      "activite_verifiee": "Association gestionnaire de crèches associatives (dont Beth Hilel, Heikhal Menah, Léa Frankforter) dans les 17e, 18e et 20e arrondissements de Paris.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/lieux/creche-associative-gan-menahem-3546",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:41:35",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CRECHE GAN MENAHEM",
+      "beneficiaire_normalise": "CRECHE GAN MENAHEM",
+      "siret": ""
+    },
+    "ORCHESTRE DE PARIS": {
+      "activite_verifiee": "Association gérant l'orchestre symphonique de Paris (119 musiciens, en résidence à la Philharmonie depuis 2015) ; 100+ concerts/saison, tournées internationales.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://philharmoniedeparis.fr/en/orchestre-de-paris",
+          "title": "philharmoniedeparis.fr"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Orchestre_de_Paris",
+          "title": "en.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:41:35",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ORCHESTRE DE PARIS",
+      "beneficiaire_normalise": "ORCHESTRE DE PARIS",
+      "siret": "77567064900067"
+    },
+    "PLATEAUX SAUVAGES": {
+      "activite_verifiee": "Fabrique artistique et culturelle de la Ville de Paris (20e, Ménilmontant) ; 2 salles, studios et résidences d'artistes émergents, tarification solidaire.",
+      "perimetre_geographique": "Paris 20e",
+      "sources": [
+        {
+          "url": "https://lesplateauxsauvages.fr/",
+          "title": "lesplateauxsauvages.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:41:35",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LES PLATEAUX SAUVAGES",
+      "beneficiaire_normalise": "PLATEAUX SAUVAGES",
+      "siret": "82349520500010"
+    },
+    "THEATRE PARIS VILLETTE": {
+      "activite_verifiee": "Établissement culturel de la Ville de Paris (créé 1986) dans le Parc de la Villette (19e) ; théâtre de proximité dédié à la création contemporaine, rénové en 2019.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        {
+          "url": "https://www.theatre-paris-villette.fr/",
+          "title": "theatre-paris-villette.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:41:35",
+      "model": "claude-code-websearch",
+      "beneficiaire": "THEATRE PARIS VILLETTE",
+      "beneficiaire_normalise": "THEATRE PARIS VILLETTE",
+      "siret": "43353723000040"
+    },
+    "SORBONNE UNIVERSITE": {
+      "activite_verifiee": "Université publique (créée 2018 par fusion Paris-Sorbonne + Pierre-et-Marie-Curie) ; 3 facultés (Lettres, Sciences, Santé) ; ~54 000 étudiants, ~2 700 personnels.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Sorbonne_Universit%C3%A9",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:41:35",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SORBONNE UNIVERSITE",
+      "beneficiaire_normalise": "SORBONNE UNIVERSITE",
+      "siret": ""
+    },
+    "SOC RET CONSE MUN PARIS CONS GEN SE": {
+      "activite_verifiee": "Association (SIREN 422006338) gérant le régime de retraite complémentaire des conseillers municipaux de Paris.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/retraite-conseillers-municipaux-paris-422006338.html",
+          "title": "societe.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:41:35",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SOC RET CONSE MUN PARIS CONS GEN SE",
+      "beneficiaire_normalise": "SOC RET CONSE MUN PARIS CONS GEN SE",
+      "siret": ""
+    },
+    "OFFICE DE TOURISME ET DES CONGRES P": {
+      "activite_verifiee": "Office du Tourisme et des Congrès de Paris (OTCP) ; accueille et informe les visiteurs, promeut la destination Paris en France et à l'étranger, soutient le tourisme d'affaires.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://parisjetaime.com/professionnels/article/nos-missions-a1162",
+          "title": "parisjetaime.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:42:35",
+      "model": "claude-code-websearch",
+      "beneficiaire": "OFFICE DE TOURISME ET DES CONGRES P",
+      "beneficiaire_normalise": "OFFICE DE TOURISME ET DES CONGRES P",
+      "siret": ""
+    },
+    "OFFICE DE TOURISME ET DES CONGRES PARIS": {
+      "activite_verifiee": "Office du Tourisme et des Congrès de Paris (OTCP) ; accueille et informe les visiteurs, promeut la destination Paris en France et à l'étranger, soutient le tourisme d'affaires.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://parisjetaime.com/professionnels/article/nos-missions-a1162",
+          "title": "parisjetaime.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:42:35",
+      "model": "claude-code-websearch",
+      "beneficiaire": "OFFICE DE TOURISME ET DES CONGRES PARIS",
+      "beneficiaire_normalise": "OFFICE DE TOURISME ET DES CONGRES PARIS",
+      "siret": ""
+    },
+    "SCIRE SCIEN CREAT INTERDISC RECH ED": {
+      "activite_verifiee": "Association (CRI / Learning Planet Institute, créée 2005 par François Taddei) dans le 4e ; éducation interdisciplinaire, labs et formation de la maternelle au doctorat.",
+      "perimetre_geographique": "Paris 4e",
+      "sources": [
+        {
+          "url": "https://www.learningplanetinstitute.org/en/",
+          "title": "learningplanetinstitute.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:42:35",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SCIRE SCIEN CREAT INTERDISC RECH ED",
+      "beneficiaire_normalise": "SCIRE SCIEN CREAT INTERDISC RECH ED",
+      "siret": ""
+    },
+    "ESPEREM": {
+      "activite_verifiee": "Association (siège 75006) ; gère 4 crèches préventives à Paris et des Maisons d'Enfants à Caractère Social ; protection enfance et soutien parentalité.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.esperem.org/",
+          "title": "esperem.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:42:35",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ESPEREM",
+      "beneficiaire_normalise": "ESPEREM",
+      "siret": "77573009600127"
+    },
+    "MAISON DE LA POESIE": {
+      "activite_verifiee": "Association (créée 1983 par Jacques Chirac) installée Passage Molière (3e) ; scène littéraire avec +350 événements/an (lectures, concerts, rencontres d'auteurs).",
+      "perimetre_geographique": "Paris 3e",
+      "sources": [
+        {
+          "url": "https://maisondelapoesieparis.com/",
+          "title": "maisondelapoesieparis.com"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Maison_de_la_Po%C3%A9sie",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:42:35",
+      "model": "claude-code-websearch",
+      "beneficiaire": "MAISON DE LA POESIE",
+      "beneficiaire_normalise": "MAISON DE LA POESIE",
+      "siret": "32590961200047"
+    },
+    "SEQENS STE A HABITAT LOYER MODERE": {
+      "activite_verifiee": "ESH filiale d'Action Logement (née 2018 de la fusion de 6 bailleurs) ; 106 000 logements dans 310+ communes d'Île-de-France ; société à mission depuis 2022.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.seqens.fr/",
+          "title": "seqens.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:42:35",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SEQENS STE A. HABITAT.LOYER MODERE",
+      "beneficiaire_normalise": "SEQENS STE A HABITAT LOYER MODERE",
+      "siret": ""
+    },
+    "SEQENS STE A HABITATLOYER MODERE": {
+      "activite_verifiee": "ESH filiale d'Action Logement (née 2018 de la fusion de 6 bailleurs) ; 106 000 logements dans 310+ communes d'Île-de-France ; société à mission depuis 2022.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.seqens.fr/",
+          "title": "seqens.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:42:35",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SEQENS STE A HABITATLOYER MODERE",
+      "beneficiaire_normalise": "SEQENS STE A HABITATLOYER MODERE",
+      "siret": ""
+    },
+    "PARIS INITIATIVES ENTREPRISES": {
+      "activite_verifiee": "Association Paris Initiative Entreprises (PIE, France Active) ; principal financeur de création et reprise d'entreprises à Paris via prêts d'honneur et garanties.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.pie.paris/",
+          "title": "pie.paris"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:42:35",
+      "model": "claude-code-websearch",
+      "beneficiaire": "PARIS INITIATIVES ENTREPRISES",
+      "beneficiaire_normalise": "PARIS INITIATIVES ENTREPRISES",
+      "siret": ""
+    },
+    "THEATRE SYLVIA MONFORT": {
+      "activite_verifiee": "Établissement culturel de la Ville de Paris (ouvert 1992) dans le parc Georges Brassens (15e) ; amphithéâtre de 456 places, programmation multidisciplinaire contemporaine.",
+      "perimetre_geographique": "Paris 15e",
+      "sources": [
+        {
+          "url": "https://theatresilviamonfort.eu/",
+          "title": "theatresilviamonfort.eu"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:42:35",
+      "model": "claude-code-websearch",
+      "beneficiaire": "THEATRE SYLVIA MONFORT",
+      "beneficiaire_normalise": "THEATRE SYLVIA MONFORT",
+      "siret": ""
+    },
+    "THEATRE SILVIA MONFORT": {
+      "activite_verifiee": "Établissement culturel de la Ville de Paris (ouvert 1992) dans le parc Georges Brassens (15e) ; amphithéâtre de 456 places, programmation multidisciplinaire contemporaine.",
+      "perimetre_geographique": "Paris 15e",
+      "sources": [
+        {
+          "url": "https://theatresilviamonfort.eu/",
+          "title": "theatresilviamonfort.eu"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T22:42:35",
+      "model": "claude-code-websearch",
+      "beneficiaire": "THEATRE SILVIA MONFORT",
+      "beneficiaire_normalise": "THEATRE SILVIA MONFORT",
+      "siret": "38772311700017"
     }
   }
 }
