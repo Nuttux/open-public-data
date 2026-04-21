@@ -299,6 +299,9 @@ export default function QuiRecoitClient({
           <p className="fx-note" style={{ marginTop: 22 }}>
             {t("fx.qr.src.scope_note")}
           </p>
+          <p className="fx-note" style={{ marginTop: 10 }}>
+            {t("fx.qr.src.freshness_note")}
+          </p>
           <ExportRow
             items={[
               {

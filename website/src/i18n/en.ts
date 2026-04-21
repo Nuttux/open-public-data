@@ -1102,7 +1102,7 @@ const en: Record<string, string> = {
   'fx.nav.link.marches': 'Public contracts',
   'fx.nav.link.invest': 'Investments',
   'fx.nav.link.logement': 'Social housing',
-  'fx.nav.link.dette': 'Debt',
+  'fx.nav.link.dette': 'Balance sheet',
   'fx.nav.link.analyses': 'Analyses',
   'fx.nav.cta_budget': 'Budget {year} →',
   // Scope dropdown
@@ -1485,6 +1485,7 @@ const en: Record<string, string> = {
   'fx.qr.src.c3.p': 'Extraction scripts + public dbt marts under the MIT licence. Yearly totals can be recomputed from the source CSV.',
   'fx.qr.src.c3.link': 'GitHub ↗',
   'fx.qr.src.scope_note': "Scope: beneficiaries (non-profits, foundations, public operators). Because grants aren't tied to a single address, this page has no district map — see 'Investments' for geolocated projects.",
+  'fx.qr.src.freshness_note': "Temporal coverage: last consolidated year available = 2024. Fiscal years 2020 and 2021 are absent from the upstream open-data dataset (Paris reorganized the dataset). 2025 subventions will be published after the compte administratif vote (typically Q2-Q3 2026).",
   'fx.qr.src.export.csv': 'CSV · {year}',
   'fx.qr.src.export.json': 'JSON',
   'fx.qr.src.export.treemap': 'Treemap JSON',
