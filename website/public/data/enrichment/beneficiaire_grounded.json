@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-21T23:44:22",
+  "generated_at": "2026-04-21T23:46:19",
   "model": "gemini-3-flash-preview",
-  "count": 352,
+  "count": 374,
   "items": {
     "ELOGIE SIEMP": {
       "beneficiaire": "ELOGIE-SIEMP",
@@ -6567,6 +6567,392 @@
       "model": "claude-code-websearch",
       "beneficiaire": "MUSIQUE SACREE A NOTRE DAME DE PARI",
       "beneficiaire_normalise": "MUSIQUE SACREE A NOTRE DAME DE PARI",
+      "siret": ""
+    },
+    "ACCUEIL GOUTTE D OR": {
+      "activite_verifiee": "Association loi 1901 (centre social agréé 2001, 18e rue Laghouat) ; accueil et intégration des habitants de la Goutte d'Or, aide sociale, soutien scolaire, ateliers FLE.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://www.accueilgouttedor.fr/",
+          "title": "accueilgouttedor.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:46:19",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ACCUEIL GOUTTE D'OR",
+      "beneficiaire_normalise": "ACCUEIL GOUTTE D OR",
+      "siret": "40864600800057"
+    },
+    "AGRIPARIS SEINE": {
+      "activite_verifiee": "Association (créée 2023) ; coopération territoriale de 7 collectivités du bassin de la Seine (Ville de Paris, Rouen, Le Havre…) ; alimentation durable, bio et locale.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://agriparisseine.fr/",
+          "title": "agriparisseine.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:46:19",
+      "model": "claude-code-websearch",
+      "beneficiaire": "AGRIPARIS SEINE",
+      "beneficiaire_normalise": "AGRIPARIS SEINE",
+      "siret": "92392391600012"
+    },
+    "FONCIERE DE LA VILLE DE PARIS": {
+      "activite_verifiee": "Organisme de foncier solidaire (OFS) de la Ville de Paris ; accession sociale à la propriété via Bail Réel Solidaire (~5 000€/m²) pour les classes moyennes parisiennes.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://fonciere-ville-paris.fr/",
+          "title": "fonciere-ville-paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:46:19",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LA FONCIERE DE LA VILLE DE PARIS",
+      "beneficiaire_normalise": "FONCIERE DE LA VILLE DE PARIS",
+      "siret": ""
+    },
+    "13 AVENIR": {
+      "activite_verifiee": "Association (créée 2017 par Régie de quartier Téla 13 + Aurore + Armée du Salut) ; entreprise à but d'emploi (Territoire Zéro Chômeur) dans le 13e ; 50-99 salariés.",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        {
+          "url": "https://13avenir.fr/",
+          "title": "13avenir.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:46:19",
+      "model": "claude-code-websearch",
+      "beneficiaire": "13 AVENIR",
+      "beneficiaire_normalise": "13 AVENIR",
+      "siret": "82852040300027"
+    },
+    "ASS LE DAUPHIN BLEU": {
+      "activite_verifiee": "Association loi 1901 (créée 2012, 81 rue Vauvenargues, Paris 18e) ; crèche associative multi-accueil pour jeunes enfants ; 10-19 salariés.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/lieux/creche-associative-le-dauphin-bleu-3551",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:46:19",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASS LE DAUPHIN BLEU",
+      "beneficiaire_normalise": "ASS LE DAUPHIN BLEU",
+      "siret": ""
+    },
+    "ASSOCIATION LE DAUPHIN BLEU": {
+      "activite_verifiee": "Association loi 1901 (créée 2012, 81 rue Vauvenargues, Paris 18e) ; crèche associative multi-accueil pour jeunes enfants ; 10-19 salariés.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/lieux/creche-associative-le-dauphin-bleu-3551",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:46:19",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION LE DAUPHIN BLEU",
+      "beneficiaire_normalise": "ASSOCIATION LE DAUPHIN BLEU",
+      "siret": ""
+    },
+    "DAUPHIN BLEU": {
+      "activite_verifiee": "Association loi 1901 (créée 2012, 81 rue Vauvenargues, Paris 18e) ; crèche associative multi-accueil pour jeunes enfants ; 10-19 salariés.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/lieux/creche-associative-le-dauphin-bleu-3551",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:46:19",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LE DAUPHIN BLEU",
+      "beneficiaire_normalise": "DAUPHIN BLEU",
+      "siret": "35029993900032"
+    },
+    "ARCHIPELIA": {
+      "activite_verifiee": "Association loi 1901 (créée 2001, 17 rue des Envierges Paris 20e) ; centre socio-culturel agréé Ville de Paris à Belleville ; activités familles, adultes, seniors, FLE.",
+      "perimetre_geographique": "Paris 20e",
+      "sources": [
+        {
+          "url": "https://www.archipelia.org/",
+          "title": "archipelia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:46:19",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ARCHIPELIA",
+      "beneficiaire_normalise": "ARCHIPELIA",
+      "siret": "43300654100026"
+    },
+    "CENTRE D ACTION SOCIAL PROTESTANT HUDA L ESQUISE": {
+      "activite_verifiee": "L'Esquisse — HUDA (Hébergement d'urgence pour demandeurs d'asile) géré par le CASP (Centre d'Action Sociale Protestant) à Paris ; accueil, domiciliation, accompagnement juridique.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://casp.asso.fr/structure/lesquisse/",
+          "title": "casp.asso.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:46:19",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CENTRE D'ACTION SOCIAL PROTESTANT HUDA L'ESQUISE",
+      "beneficiaire_normalise": "CENTRE D ACTION SOCIAL PROTESTANT HUDA L ESQUISE",
+      "siret": ""
+    },
+    "ASS L INST D ETUDES AVANCEES PARI": {
+      "activite_verifiee": "IEA de Paris (créé 2008 par la FMSH + EHESS + ENS, indépendant depuis 2011) ; institut de recherche en SHS inspiré du modèle de Princeton ; installé à l'Hôtel de Lauzun (4e).",
+      "perimetre_geographique": "Paris 4e",
+      "sources": [
+        {
+          "url": "https://www.paris-iea.fr/fr/",
+          "title": "paris-iea.fr"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Institut_d%27%C3%A9tudes_avanc%C3%A9es_de_Paris",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:46:19",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASS L INST D ETUDES AVANCEES - PARI",
+      "beneficiaire_normalise": "ASS L INST D ETUDES AVANCEES PARI",
+      "siret": ""
+    },
+    "ASSOCIATION L INST D ETUDES AVANCEES PARI": {
+      "activite_verifiee": "IEA de Paris (créé 2008 par la FMSH + EHESS + ENS, indépendant depuis 2011) ; institut de recherche en SHS inspiré du modèle de Princeton ; installé à l'Hôtel de Lauzun (4e).",
+      "perimetre_geographique": "Paris 4e",
+      "sources": [
+        {
+          "url": "https://www.paris-iea.fr/fr/",
+          "title": "paris-iea.fr"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Institut_d%27%C3%A9tudes_avanc%C3%A9es_de_Paris",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:46:19",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION L INST D ETUDES AVANCEES - PARI",
+      "beneficiaire_normalise": "ASSOCIATION L INST D ETUDES AVANCEES PARI",
+      "siret": ""
+    },
+    "L INST D ETUDES AVANCEES PARI": {
+      "activite_verifiee": "IEA de Paris (créé 2008 par la FMSH + EHESS + ENS, indépendant depuis 2011) ; institut de recherche en SHS inspiré du modèle de Princeton ; installé à l'Hôtel de Lauzun (4e).",
+      "perimetre_geographique": "Paris 4e",
+      "sources": [
+        {
+          "url": "https://www.paris-iea.fr/fr/",
+          "title": "paris-iea.fr"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Institut_d%27%C3%A9tudes_avanc%C3%A9es_de_Paris",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:46:19",
+      "model": "claude-code-websearch",
+      "beneficiaire": "L INST D ETUDES AVANCEES  PARI",
+      "beneficiaire_normalise": "L INST D ETUDES AVANCEES PARI",
+      "siret": ""
+    },
+    "HALAGE": {
+      "activite_verifiee": "Association loi 1901 (créée 1994, L'Île-Saint-Denis) ; SIAE pour l'insertion écologique ; ateliers espaces verts, Lil'Ô biodiversité, fleurs et formation CAPA.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.halage.fr/",
+          "title": "halage.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:46:19",
+      "model": "claude-code-websearch",
+      "beneficiaire": "HALAGE",
+      "beneficiaire_normalise": "HALAGE",
+      "siret": "40116107000032"
+    },
+    "ENFANTS DE LA GOUTTE D OR": {
+      "activite_verifiee": "EGDO — association (créée 1978, Paris 18e) ; accompagne +400 enfants/ados/jeunes adultes du quartier ; soutien scolaire, ateliers culturels, sport, prévention.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://www.egdo.fr/",
+          "title": "egdo.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:46:19",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LES ENFANTS DE LA GOUTTE D'OR",
+      "beneficiaire_normalise": "ENFANTS DE LA GOUTTE D OR",
+      "siret": ""
+    },
+    "COALITION INTERNATIONALE SIDA": {
+      "activite_verifiee": "Coalition PLUS (créée 2008 par AIDES, ALCS, ARCAD SIDA, COCQ SIDA) ; union internationale d'ONG communautaires VIH/hépatites dans 51 pays ; ~100 organisations membres.",
+      "perimetre_geographique": "international",
+      "sources": [
+        {
+          "url": "https://www.coalitionplus.org/",
+          "title": "coalitionplus.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:46:19",
+      "model": "claude-code-websearch",
+      "beneficiaire": "COALITION INTERNATIONALE SIDA",
+      "beneficiaire_normalise": "COALITION INTERNATIONALE SIDA",
+      "siret": ""
+    },
+    "BOUTIQUES DE GESTION PARIS ILE DE F": {
+      "activite_verifiee": "BGE PaRIF — association loi 1901 (créée 1979) ; accompagne création et reprise d'entreprises à Paris et IDF ; conseil, formation ; taux de pérennité 85% à 3 ans.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.bge-parif.com/",
+          "title": "bge-parif.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:46:19",
+      "model": "claude-code-websearch",
+      "beneficiaire": "BOUTIQUES DE GESTION PARIS ILE DE F",
+      "beneficiaire_normalise": "BOUTIQUES DE GESTION PARIS ILE DE F",
+      "siret": ""
+    },
+    "BOUTIQUES DE GESTION": {
+      "activite_verifiee": "BGE PaRIF — association loi 1901 (créée 1979) ; accompagne création et reprise d'entreprises à Paris et IDF ; conseil, formation ; taux de pérennité 85% à 3 ans.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.bge-parif.com/",
+          "title": "bge-parif.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:46:19",
+      "model": "claude-code-websearch",
+      "beneficiaire": "BOUTIQUES DE GESTION",
+      "beneficiaire_normalise": "BOUTIQUES DE GESTION",
+      "siret": ""
+    },
+    "CTRE ETUDES FORMATION D INSERT LANG": {
+      "activite_verifiee": "Langues Plurielles — SCOP (créée 2011, Paris 18e) ; formation linguistique (alpha, FLE, DCL), remise à niveau ; publics peu francophones, illettrisme, milieu pro.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://langues-plurielles.fr/",
+          "title": "langues-plurielles.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:46:19",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CTRE ETUDES FORMATION D INSERT LANG",
+      "beneficiaire_normalise": "CTRE ETUDES FORMATION D INSERT LANG",
+      "siret": ""
+    },
+    "ENFANTS DU CANAL": {
+      "activite_verifiee": "Association (créée 2007 après Enfants de Don Quichotte) ; maraudes quotidiennes, BusAbri, hébergement rue Vésale (5e) ; accompagne sans-abri, mal-logés, bidonvilles.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.lesenfantsducanal.fr/",
+          "title": "lesenfantsducanal.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:46:19",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LES ENFANTS DU CANAL",
+      "beneficiaire_normalise": "ENFANTS DU CANAL",
+      "siret": "49767330100030"
+    },
+    "CITE INTERNATIONALE DES ARTS": {
+      "activite_verifiee": "Fondation (créée 1965) ; plus grande résidence d'artistes au monde ; 326 ateliers-logements au Marais et Montmartre ; accueille ~1 000 artistes/an tous disciplines.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.citedesartsparis.net/",
+          "title": "citedesartsparis.net"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:46:19",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CITE INTERNATIONALE DES ARTS",
+      "beneficiaire_normalise": "CITE INTERNATIONALE DES ARTS",
+      "siret": ""
+    },
+    "ENTREPRISE SOCIALE POUR L HABITAT": {
+      "activite_verifiee": "Entreprise Sociale pour l'Habitat (ESH) — bailleur social agréé par l'État ; construction et gestion de logements sociaux en France.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.union-habitat.org/",
+          "title": "union-habitat.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:46:19",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ENTREPRISE SOCIALE POUR L'HABITAT",
+      "beneficiaire_normalise": "ENTREPRISE SOCIALE POUR L HABITAT",
+      "siret": ""
+    },
+    "GRPT PARISIEN INTERBAILL SURVEILL": {
+      "activite_verifiee": "GIE (GPIS, créé 2004) regroupant 12 bailleurs sociaux parisiens ; surveille 165 000 logements sociaux, +200 salariés.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://gie-gpis.com/",
+          "title": "gie-gpis.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:46:19",
+      "model": "claude-code-websearch",
+      "beneficiaire": "GRPT PARISIEN INTERBAILL SURVEILL",
+      "beneficiaire_normalise": "GRPT PARISIEN INTERBAILL SURVEILL",
       "siret": ""
     }
   }
