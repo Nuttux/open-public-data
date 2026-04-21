@@ -1,0 +1,195 @@
+/**
+ * French → English translations for closed-vocabulary labels that come from
+ * the data pipeline (themes, chapitres, natures, CPV categories, etc.).
+ *
+ * Applied at render time. Unknown values pass through unchanged.
+ */
+
+import type { Locale } from "./localeContext";
+
+const EN: Record<string, string> = {
+  // ── Subvention thematiques ────────────────────────────────────────────────
+  "Social": "Social services",
+  "Social - Solidarité": "Social – Solidarity",
+  "Social - Petite enfance": "Social – Early childhood",
+  "Logement": "Housing",
+  "Éducation": "Education",
+  "Culture": "Culture",
+  "Sport": "Sport",
+  "Environnement": "Environment",
+  "Santé": "Health",
+  "Transport": "Transport",
+  "Économie": "Economy",
+  "Administration": "Administration",
+  "Sécurité": "Security",
+  "International": "International",
+  "Autres": "Other",
+  "Autre": "Other",
+  "Non classifié": "Unclassified",
+
+  // ── Budget sankey node labels ─────────────────────────────────────────────
+  "Budget Paris": "Paris Budget",
+  "Impôts & Taxes": "Taxes & Levies",
+  "Dotations & Subventions": "Grants & Subsidies",
+  "Emprunts": "Borrowing",
+  "Services Publics": "Public Services",
+  "Investissement": "Investment",
+  "Personnel & Admin": "Personnel & Admin",
+  "Action Sociale": "Social Action",
+  "Aménagement & Logement": "Urban Planning & Housing",
+  "Remboursement dette": "Debt Repayment",
+
+  // ── Budget nature labels (niveau_1 / niveau_2) ────────────────────────────
+  "Personnel": "Personnel",
+  "Reversements péréquation": "Equalisation transfers",
+  "Transferts sociaux": "Social transfers",
+  "Contributions obligatoires": "Mandatory contributions",
+  "Subventions (fonctionnement)": "Grants (operating)",
+  "Subventions (investissement)": "Grants (investment)",
+  "Immobilisations en cours": "Assets under construction",
+  "Immobilisations corporelles": "Tangible fixed assets",
+  "Services extérieurs": "Outsourced services",
+  "Charges financières": "Financial charges",
+  "Dotations arrondissements": "District allocations",
+  "Dotations et participations": "Grants and equity",
+  "Autres services": "Other services",
+  "Achats": "Purchases",
+  "Études": "Studies",
+
+  // ── Drilldown group prefixes (budget detail) ──────────────────────────────
+  "APA": "APA (elderly care)",
+  "Action Économique": "Economic Action",
+  "Aménagement": "Urban Planning",
+  "Dotations État": "State Grants",
+  "Emprunts & Dette": "Borrowing & Debt",
+  "Fiscalité Directe": "Direct Taxation",
+  "Fiscalité Indirecte": "Indirect Taxation",
+  "Fonds Européens": "European Funds",
+  "Invest. Aménagement": "Invest. Urban Planning",
+  "Invest. Culture": "Invest. Culture",
+  "Invest. Environnement": "Invest. Environment",
+  "Invest. Services": "Invest. Services",
+  "Invest. Social": "Invest. Social",
+  "Invest. Sécurité": "Invest. Security",
+  "Invest. Transports": "Invest. Transport",
+  "Invest. Économie": "Invest. Economy",
+  "Invest. Éducation": "Invest. Education",
+  "Opérations Financières": "Financial Operations",
+  "RSA": "RSA (welfare)",
+
+  // ── Investment chapitres ──────────────────────────────────────────────────
+  "Aménagement & Habitat": "Urban planning & Housing",
+  "Enseignement": "Education",
+  "Santé & Social": "Health & Social",
+  "Rsa": "RSA welfare",
+
+  // ── Marché natures ────────────────────────────────────────────────────────
+  "SERVICES": "SERVICES",
+  "TRAVAUX": "WORKS",
+  "FOURNITURE": "SUPPLIES",
+
+  // ── Marché CPV categories ─────────────────────────────────────────────────
+  "Acheminement lettres,colis et courrier express": "Mail, parcel and express delivery",
+  "Aires et sols de jeux :équipements et maintenance associée": "Playground surfaces and equipment",
+  "Animation culturelle et de loisirs": "Cultural and leisure activities",
+  "Animations sportives de prévention": "Sports-based prevention activities",
+  "Carburants": "Fuels",
+  "Collecte ordures ménagères et autres déchets": "Household and other waste collection",
+  "Copieurs, massicots, destructeurs et maintenances": "Copiers, cutters, shredders and maintenance",
+  "Dégraffitage et désaffichage": "Graffiti and poster removal",
+  "Electricité (distribué)": "Electricity (distributed)",
+  "Equipements de protection individuelle": "Personal protective equipment",
+  "Etudes à caractère scientifique et technologique": "Scientific and technological studies",
+  "Gaz combustible (distribué)": "Fuel gas (distributed)",
+  "Gestion du stationnement": "Parking management",
+  "Impression offset": "Offset printing",
+  "Instruments, partitions, matériels musicaux (et maintenance)": "Musical instruments, scores, equipment (and maintenance)",
+  "Maintenance appareils élévateurs; ascenseurs, monte-charges": "Lift and hoist maintenance",
+  "Maintenance des installations de génie climatique": "HVAC plant maintenance",
+  "Maintenance extincteurs, systèmes protection incendie": "Fire extinguisher and fire-protection maintenance",
+  "Matériels,matériaux  de batiments pour ateliers": "Building materials and tools for workshops",
+  "Maîtrise d'oeuvre BTP": "Construction project management",
+  "Mobilier urbain": "Street furniture",
+  "Nettoiement des espaces publics": "Public space cleaning",
+  "Organisation des services : audit, conseil, contrôle gestion": "Organisational services: audit, consulting, management control",
+  "Prestations intellectuelles pour opérations BTP,urbanisme": "Professional services for construction and planning",
+  "Restauration et conception de menus": "Catering and menu design",
+  "Service des spectacles par des producteurs ou artistes": "Performance services from producers or artists",
+  "Services d'accompagnement (PMI, familles)": "Support services (PMI, families)",
+  "Services d'accueil à la petite enfance": "Early childhood services",
+  "Services d'actions éducatives scolaires et périscolaires": "School and after-school educational services",
+  "Services de centres de vacances et de centres de loisirs": "Holiday and leisure centre services",
+  "Services de conseils et représentations juridiques": "Legal advice and representation services",
+  "Services pour les personnes âgées, handicapés ou en difficul": "Services for elderly, disabled or vulnerable people",
+  "Surveillance, protection du patrimoine et des manifestations": "Heritage and event surveillance and protection",
+  "Travaux d'aménagement d'espaces verts": "Green space development works",
+  "Travaux d'aménagement de voirie": "Road development works",
+  "Travaux d'entretien, préservation équipements publics": "Public facility maintenance works",
+  "Travaux dans les équipements sportifs": "Sports facility works",
+  "Travaux de construction, rénovation équipements publics": "Public facility construction and renovation works",
+  "Travaux de génie climatique": "HVAC engineering works",
+  "Travaux sur le  réseau d'assainissement": "Sewer network works",
+  "Travaux sur le domaine géré par la DLH": "Works on DLH-managed estate",
+  "Véhicules automobiles": "Motor vehicles",
+  "acquisition de licences logicielles bureautiques": "Office software licence acquisition",
+  "entretien des espaces verts": "Green space maintenance",
+  "maintenance de progiciels": "Software maintenance",
+  "nettoyage vitre et locaux": "Window and premises cleaning",
+  "postes de travail et périphériques": "Workstations and peripherals",
+  "service d'aide sociale à l'enfance": "Child welfare services",
+  "travaux d'éclairage public": "Public lighting works",
+  "travaux de dépollution": "Decontamination works",
+  "travaux de génie civil et ouvrages d'art": "Civil engineering and structural works",
+  "travaux de serrurerie et métallerie espaces publics": "Public-space locksmith and metalwork",
+  "travaux de signalisation d'espaces publics": "Public-space signage works",
+  "travaux de signalisation lumineuse": "Traffic-signal works",
+
+  // ── Patrimoine masses (bilan) ─────────────────────────────────────────────
+  "Actif immobilisé": "Fixed assets",
+  "Actif circulant": "Current assets",
+  "Trésorerie (Actif)": "Cash (Assets)",
+  "Comptes de régularisation (Actif)": "Prepayments (Assets)",
+  "Fonds propres": "Equity",
+  "Dettes financières": "Financial debt",
+  "Dettes non financières": "Non-financial debt",
+  "Trésorerie (Passif)": "Cash (Liabilities)",
+  "Comptes de régularisation (Passif)": "Deferred income (Liabilities)",
+  "Provisions pour risques et charges": "Provisions for risks and charges",
+  // Tags
+  "Immobilier": "Real Estate",
+  "Circulant": "Current",
+  "Cash": "Cash",
+  "Régul.": "Accruals",
+  "Capitaux": "Capital",
+  "Dette": "Debt",
+  "Fournisseurs": "Suppliers",
+  "Trésorerie": "Treasury",
+  "Risques": "Risks",
+
+  // ── Bailleur types ────────────────────────────────────────────────────────
+  "OPH (Ville)": "OPH (City)",
+  "SEM": "SEM",
+  "Privé": "Private",
+  "Divers": "Various",
+  // Bailleur descriptions
+  "Office Public de l'Habitat de la Ville — plus grand bailleur social français.": "Public Housing Office of the City — largest social landlord in France.",
+  "Régie Immobilière de la Ville de Paris — SEM axée sur l'innovation habitat.": "Paris City Property Board — SEM focused on housing innovation.",
+  "Issue de la fusion Elogie et Siemp — réhabilitation et mixité sociale.": "From the merger of Elogie and Siemp — rehabilitation and social mix.",
+  "Filiale SNCF — logement des salariés et social.": "SNCF subsidiary — employee and social housing.",
+  "Groupe Action Logement — bailleur national présent à Paris.": "Action Logement Group — national landlord present in Paris.",
+  "Dizaines de petits bailleurs sociaux et coopératifs.": "Dozens of small social and cooperative landlords.",
+
+  // ── Rate types (dette) ────────────────────────────────────────────────────
+  "taux fixe": "fixed rate",
+  "variable": "variable",
+  "Taux fixe": "Fixed rate",
+  "Variable": "Variable",
+};
+
+/** Translate a data-driven label. Returns the English version when locale is "en"
+ *  and a translation exists; otherwise returns the input unchanged. */
+export function trLabel(raw: string | undefined | null, locale: Locale): string {
+  if (!raw) return "";
+  if (locale !== "en") return raw;
+  return EN[raw] ?? raw;
+}

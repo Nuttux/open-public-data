@@ -1,6 +1,14 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useT, useLocale } from "@/lib/localeContext";
+import { trLabel } from "@/lib/label-translate";
+
+const fill = (s: string, vars: Record<string, string | number>) => {
+  let r = s;
+  for (const [k, v] of Object.entries(vars)) r = r.replace(`{${k}}`, String(v));
+  return r;
+};
 
 type Item = {
   titulaire: string;
@@ -10,25 +18,29 @@ type Item = {
   date: string;
 };
 
-const fmtEur = (n: number) => {
-  if (n >= 1e9) return new Intl.NumberFormat("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n / 1e9) + " Md €";
-  if (n >= 1e6) return new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 1 }).format(n / 1e6) + " M €";
-  if (n >= 1e3) return new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 }).format(n / 1e3) + " k €";
-  return new Intl.NumberFormat("fr-FR").format(n) + " €";
-};
-
-const fmtDate = (iso: string) => {
-  if (!iso) return "—";
-  try {
-    return new Intl.DateTimeFormat("fr-FR", { day: "2-digit", month: "2-digit", year: "numeric" }).format(new Date(iso));
-  } catch {
-    return iso;
-  }
-};
-
 const PAGE_SIZE = 50;
 
 export default function MarchesFullList({ items }: { items: Item[] }) {
+  const t = useT();
+  const { locale } = useLocale();
+  const locStr = locale === "en" ? "en-GB" : "fr-FR";
+
+  const fmtEur = (n: number) => {
+    if (n >= 1e9) return new Intl.NumberFormat(locStr, { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n / 1e9) + " " + t("fx.s.md_eur");
+    if (n >= 1e6) return new Intl.NumberFormat(locStr, { maximumFractionDigits: 1 }).format(n / 1e6) + " " + t("fx.s.m_eur");
+    if (n >= 1e3) return new Intl.NumberFormat(locStr, { maximumFractionDigits: 0 }).format(n / 1e3) + " k €";
+    return new Intl.NumberFormat(locStr).format(n) + " €";
+  };
+
+  const fmtDate = (iso: string) => {
+    if (!iso) return "—";
+    try {
+      return new Intl.DateTimeFormat(locStr, { day: "2-digit", month: "2-digit", year: "numeric" }).format(new Date(iso));
+    } catch {
+      return iso;
+    }
+  };
+
   const [q, setQ] = useState("");
   const [cat, setCat] = useState("");
   const [shown, setShown] = useState(PAGE_SIZE);
@@ -57,10 +69,10 @@ export default function MarchesFullList({ items }: { items: Item[] }) {
     <div>
       <div className="fx-filters-row">
         <div className="fx-filter">
-          <label>Rechercher</label>
+          <label>{t("fx.mfl.search")}</label>
           <input
             type="search"
-            placeholder="Titulaire ou objet du marché…"
+            placeholder={t("fx.mfl.search_placeholder")}
             value={q}
             onChange={(e) => {
               setQ(e.target.value);
@@ -69,7 +81,7 @@ export default function MarchesFullList({ items }: { items: Item[] }) {
           />
         </div>
         <div className="fx-filter">
-          <label>Catégorie</label>
+          <label>{t("fx.mfl.category")}</label>
           <select
             value={cat}
             onChange={(e) => {
@@ -77,16 +89,22 @@ export default function MarchesFullList({ items }: { items: Item[] }) {
               setShown(PAGE_SIZE);
             }}
           >
-            <option value="">Toutes</option>
-            {categories.map((c) => (
-              <option key={c} value={c}>
-                {c.length > 50 ? c.slice(0, 50) + "…" : c}
-              </option>
-            ))}
+            <option value="">{t("fx.mfl.all")}</option>
+            {categories.map((c) => {
+              const lbl = trLabel(c, locale);
+              return (
+                <option key={c} value={c}>
+                  {lbl.length > 50 ? lbl.slice(0, 50) + "…" : lbl}
+                </option>
+              );
+            })}
           </select>
         </div>
         <div className="fx-filter-meta">
-          {new Intl.NumberFormat("fr-FR").format(filtered.length)} contrat{filtered.length > 1 ? "s" : ""}
+          {fill(t("fx.mfl.contracts"), {
+            n: new Intl.NumberFormat(locStr).format(filtered.length),
+            s: filtered.length > 1 ? "s" : "",
+          })}
         </div>
       </div>
 
@@ -94,11 +112,11 @@ export default function MarchesFullList({ items }: { items: Item[] }) {
         <thead>
           <tr>
             <th>#</th>
-            <th>Titulaire</th>
-            <th>Objet</th>
-            <th>Catégorie</th>
-            <th>Date</th>
-            <th style={{ textAlign: "right" }}>Enveloppe max</th>
+            <th>{t("fx.mfl.col.titulaire")}</th>
+            <th>{t("fx.mfl.col.objet")}</th>
+            <th>{t("fx.mfl.col.categorie")}</th>
+            <th>{t("fx.mfl.col.date")}</th>
+            <th style={{ textAlign: "right" }}>{t("fx.mfl.col.enveloppe")}</th>
           </tr>
         </thead>
         <tbody>
@@ -110,7 +128,7 @@ export default function MarchesFullList({ items }: { items: Item[] }) {
                 {it.objet.length > 120 ? it.objet.slice(0, 120) + "…" : it.objet}
               </td>
               <td className="muted" style={{ maxWidth: 200 }}>
-                {it.categorie.length > 40 ? it.categorie.slice(0, 40) + "…" : it.categorie}
+                {(() => { const lbl = trLabel(it.categorie, locale); return lbl.length > 40 ? lbl.slice(0, 40) + "…" : lbl; })()}
               </td>
               <td className="muted">{fmtDate(it.date)}</td>
               <td className="num">{fmtEur(it.montant)}</td>
@@ -126,16 +144,16 @@ export default function MarchesFullList({ items }: { items: Item[] }) {
             className="fx-btn"
             onClick={() => setShown(shown + PAGE_SIZE)}
           >
-            Afficher {Math.min(PAGE_SIZE, filtered.length - shown)} contrats de plus
+            {fill(t("fx.mfl.show_more"), { n: Math.min(PAGE_SIZE, filtered.length - shown) })}
           </button>
         </div>
       )}
 
       {filtered.length === 0 && (
         <div className="fx-empty" style={{ marginTop: 20 }}>
-          <div className="fx-empty-label">Aucun résultat</div>
-          <h3>Aucun contrat ne correspond à ces filtres.</h3>
-          <p>Essayez un autre terme ou une catégorie différente.</p>
+          <div className="fx-empty-label">{t("fx.mfl.empty.label")}</div>
+          <h3>{t("fx.mfl.empty.title")}</h3>
+          <p>{t("fx.mfl.empty.desc")}</p>
         </div>
       )}
     </div>

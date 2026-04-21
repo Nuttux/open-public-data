@@ -1,16 +1,17 @@
+"use client";
+
 import type { ProjetFiche as ProjetFicheType } from "@/lib/fusion-data";
 import ProjetThumb from "./ProjetThumb";
+import { useT, useLocale } from "@/lib/localeContext";
+import { trLabel } from "@/lib/label-translate";
 
-const suf = (n: number) => (n === 1 ? "er" : "ᵉ");
-
-const fmtEur = (n: number) => {
-  if (n >= 1e9) return { v: new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 2 }).format(n / 1e9), u: "Md €" };
-  if (n >= 1e6) return { v: new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 1 }).format(n / 1e6), u: "M €" };
-  if (n >= 1e3) return { v: new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 }).format(n / 1e3), u: "k €" };
-  return { v: new Intl.NumberFormat("fr-FR").format(n), u: "€" };
+const fill = (s: string, vars: Record<string, string | number>) => {
+  let r = s;
+  for (const [k, v] of Object.entries(vars)) r = r.replace(`{${k}}`, String(v));
+  return r;
 };
 
-const TYPOLOGIE_LABELS: Record<string, string> = {
+const TYPOLOGIE_LABELS_FR: Record<string, string> = {
   ecole: "École",
   college: "Collège",
   lycee: "Lycée",
@@ -27,7 +28,38 @@ const TYPOLOGIE_LABELS: Record<string, string> = {
   autre: "Autre",
 };
 
+const TYPOLOGIE_LABELS_EN: Record<string, string> = {
+  ecole: "School",
+  college: "Secondary school",
+  lycee: "High school",
+  creche: "Nursery",
+  gymnase: "Gym",
+  piscine: "Swimming pool",
+  bibliotheque: "Library",
+  "espace-vert": "Green space",
+  voirie: "Roads",
+  "logement-social": "Social housing",
+  "equipement-culturel": "Cultural facility",
+  "equipement-sante": "Health facility",
+  administration: "Administration",
+  autre: "Other",
+};
+
 export default function ProjetFiche({ projet }: { projet: ProjetFicheType }) {
+  const t = useT();
+  const { locale } = useLocale();
+  const locStr = locale === "en" ? "en-GB" : "fr-FR";
+
+  const TYPOLOGIE_LABELS = locale === "en" ? TYPOLOGIE_LABELS_EN : TYPOLOGIE_LABELS_FR;
+  const suf = (n: number) => (locale === "en" ? (n === 1 ? "st" : "th") : n === 1 ? "er" : "ᵉ");
+
+  const fmtEur = (n: number) => {
+    if (n >= 1e9) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 2 }).format(n / 1e9), u: t("fx.s.md_eur") };
+    if (n >= 1e6) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 1 }).format(n / 1e6), u: t("fx.s.m_eur") };
+    if (n >= 1e3) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 0 }).format(n / 1e3), u: "k €" };
+    return { v: new Intl.NumberFormat(locStr).format(n), u: "€" };
+  };
+
   const { v, u } = fmtEur(projet.montant);
   const mapUrl =
     projet.lat && projet.lon
@@ -40,7 +72,7 @@ export default function ProjetFiche({ projet }: { projet: ProjetFicheType }) {
 
   return (
     <div>
-      {/* Vignette projet — photo dédiée / générique / pictogramme */}
+      {/* Vignette projet */}
       <div className="fx-fiche-thumb-wrap">
         <ProjetThumb
           projetId={projet.id}
@@ -98,9 +130,9 @@ export default function ProjetFiche({ projet }: { projet: ProjetFicheType }) {
               color: "var(--ocre)",
               borderRadius: 2,
             }}
-            title="Extraction PDF à fiabilité modérée — vérifiez la source"
+            title={t("fx.fiche.projet.fiabilite_title")}
           >
-            Fiabilité {(projet.confidence * 100).toFixed(0)} %
+            {fill(t("fx.fiche.projet.fiabilite"), { n: (projet.confidence * 100).toFixed(0) })}
           </span>
         )}
       </div>
@@ -122,48 +154,44 @@ export default function ProjetFiche({ projet }: { projet: ProjetFicheType }) {
 
       <div className="fx-fiche-kpis">
         <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">Montant voté</div>
+          <div className="fx-fiche-kpi-label">{t("fx.fiche.projet.montant_vote")}</div>
           <div className="fx-fiche-kpi-value tnum">
             {v}
             <span className="u">{u}</span>
           </div>
         </div>
         <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">Exercice</div>
+          <div className="fx-fiche-kpi-label">{t("fx.fiche.shared.exercice")}</div>
           <div className="fx-fiche-kpi-value tnum">{projet.year}</div>
         </div>
         <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">Arrondissement</div>
+          <div className="fx-fiche-kpi-label">{t("fx.fiche.shared.arrondissement")}</div>
           <div className="fx-fiche-kpi-value" style={{ fontSize: 20 }}>
-            {projet.arrondissement > 0 ? `${projet.arrondissement}${suf(projet.arrondissement)}` : "Transverse"}
+            {projet.arrondissement > 0 ? `${projet.arrondissement}${suf(projet.arrondissement)}` : t("fx.fiche.projet.transverse")}
           </div>
         </div>
         <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">Chapitre</div>
+          <div className="fx-fiche-kpi-label">{t("fx.fiche.shared.chapitre")}</div>
           <div className="fx-fiche-kpi-value" style={{ fontSize: 14, lineHeight: 1.2 }}>
-            {projet.chapitre}
+            {trLabel(projet.chapitre, locale)}
           </div>
         </div>
       </div>
 
-      {/* Budget réel / surcoût — honnête */}
       <div className="fx-fiche-note" style={{ marginTop: 0 }}>
-        <b>Montant final & surcoût</b> — non disponibles publiquement à ce stade.
-        Les comptes administratifs publient le budget voté mais pas systématiquement
-        le solde en fin d&apos;opération ni les avenants. Sur notre roadmap.
+        {t("fx.fiche.projet.note_surcout")}
       </div>
 
       <section className="fx-fiche-section">
-        <div className="fx-fiche-h">Intitulé officiel</div>
+        <div className="fx-fiche-h">{t("fx.fiche.projet.intitule")}</div>
         <p style={{ fontFamily: "var(--f-ui)", fontSize: 14.5, color: "var(--ink-2)", lineHeight: 1.5, margin: 0 }}>
           {projet.name}
         </p>
       </section>
 
-      {/* Localisation */}
       {(projet.geoLabel || mapUrl) && (
         <section className="fx-fiche-section">
-          <div className="fx-fiche-h">Localisation</div>
+          <div className="fx-fiche-h">{t("fx.fiche.projet.localisation")}</div>
           {projet.geoLabel && (
             <p style={{ fontFamily: "var(--f-ui)", fontSize: 14, color: "var(--ink-2)", margin: "0 0 8px", lineHeight: 1.4 }}>
               {projet.geoLabel}
@@ -181,16 +209,15 @@ export default function ProjetFiche({ projet }: { projet: ProjetFicheType }) {
               rel="noopener noreferrer"
               style={{ fontFamily: "var(--f-mono)", fontSize: 12.5, color: "var(--bleu)", borderBottom: "1px solid var(--bleu)", paddingBottom: 1 }}
             >
-              Voir sur OpenStreetMap ↗
+              {t("fx.fiche.projet.voir_osm")}
             </a>
           )}
         </section>
       )}
 
-      {/* Projets similaires */}
       {projet.similaires.length > 0 && typoLabel && (
         <section className="fx-fiche-section">
-          <div className="fx-fiche-h">Autres projets {typoLabel.toLowerCase()} · {projet.year}</div>
+          <div className="fx-fiche-h">{fill(t("fx.fiche.projet.similaires"), { typo: typoLabel.toLowerCase(), year: projet.year })}</div>
           <div>
             {projet.similaires.map((s) => {
               const f = fmtEur(s.montant);
@@ -229,13 +256,12 @@ export default function ProjetFiche({ projet }: { projet: ProjetFicheType }) {
         </section>
       )}
 
-      {/* Source PDF — confiance */}
       <section className="fx-fiche-section">
-        <div className="fx-fiche-h">Source</div>
+        <div className="fx-fiche-h">{t("fx.fiche.shared.source")}</div>
         <dl>
           {projet.sourcePdf && (
             <div className="fx-fiche-prop">
-              <dt>Annexe CA {projet.year}</dt>
+              <dt>{fill(t("fx.fiche.projet.annexe"), { year: projet.year })}</dt>
               <dd>
                 <a
                   href={projet.sourcePdf}
@@ -243,23 +269,23 @@ export default function ProjetFiche({ projet }: { projet: ProjetFicheType }) {
                   rel="noopener noreferrer"
                   style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
                 >
-                  PDF source{projet.sourcePage ? ` · page ${projet.sourcePage}` : ""} ↗
+                  {t("fx.fiche.projet.pdf_source")}{projet.sourcePage ? ` ${fill(t("fx.fiche.projet.pdf_page"), { n: projet.sourcePage })}` : ""} ↗
                 </a>
               </dd>
             </div>
           )}
           <div className="fx-fiche-prop">
-            <dt>ID interne</dt>
+            <dt>{t("fx.fiche.projet.id_interne")}</dt>
             <dd style={{ fontFamily: "var(--f-mono)", fontSize: 11 }}>{projet.id}</dd>
           </div>
           {projet.confidence != null && (
             <div className="fx-fiche-prop">
-              <dt>Fiabilité extraction</dt>
+              <dt>{t("fx.fiche.projet.fiabilite_ext")}</dt>
               <dd style={{ fontFamily: "var(--f-mono)", fontSize: 11 }}>
                 {(projet.confidence * 100).toFixed(0)} %
                 {projet.confidence < 0.7 && (
                   <span className="muted" style={{ marginLeft: 8 }}>
-                    · vérification recommandée sur la source
+                    {t("fx.fiche.projet.verif")}
                   </span>
                 )}
               </dd>

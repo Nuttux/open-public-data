@@ -2,6 +2,13 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { useT, useLocale } from "@/lib/localeContext";
+
+const fill = (s: string, vars: Record<string, string | number>) => {
+  let r = s;
+  for (const [k, v] of Object.entries(vars)) r = r.replace(`{${k}}`, String(v));
+  return r;
+};
 
 type Post = {
   slug: string;
@@ -21,37 +28,17 @@ type Planned = {
   tag: string;
 };
 
-const CATEGORIES = ["Toutes", "Enquêtes", "Analyses", "Explications", "Portraits"] as const;
-
-function formatDate(iso: string): string {
-  try {
-    return new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "long", year: "numeric" })
-      .format(new Date(iso));
-  } catch {
-    return iso;
-  }
-}
-
 function categorySlug(category: string | undefined): string {
   const c = (category ?? "Analyse").toLowerCase();
-  if (c.startsWith("enquê")) return "enquete";
-  if (c.startsWith("explic")) return "explication";
-  if (c.startsWith("portr")) return "portrait";
+  if (c.startsWith("enquê") || c.startsWith("invest")) return "enquete";
+  if (c.startsWith("explic") || c.startsWith("explain")) return "explication";
+  if (c.startsWith("portr") || c.startsWith("profil")) return "portrait";
   if (c.startsWith("méth") || c.startsWith("meth")) return "explication";
   return "analyse";
 }
 
-function categoryLabel(category: string | undefined): string {
-  const slug = categorySlug(category);
-  if (slug === "enquete") return "Enquête";
-  if (slug === "explication") return "Explication";
-  if (slug === "portrait") return "Portrait";
-  return "Analyse";
-}
-
 /**
  * Render a title with a single `<em>…</em>` marker italicized & colored.
- * Authors can write titles like "JO 2024 : <em>anatomie d'un pic</em>".
  */
 function renderTitle(raw: string) {
   const match = raw.match(/^([\s\S]*?)<em>([\s\S]*?)<\/em>([\s\S]*)$/);
@@ -72,21 +59,56 @@ export default function AnalysesClient({
   posts: Post[];
   planned: Planned[];
 }) {
-  const [active, setActive] = useState<(typeof CATEGORIES)[number]>("Toutes");
+  const t = useT();
+  const { locale } = useLocale();
+  const locStr = locale === "en" ? "en-GB" : "fr-FR";
+
+  const CATEGORIES = [
+    { key: "all", label: t("fx.analyses.cat.all"), raw: "Toutes" },
+    { key: "enquetes", label: t("fx.analyses.cat.enquetes"), raw: "Enquêtes" },
+    { key: "analyses", label: t("fx.analyses.cat.analyses"), raw: "Analyses" },
+    { key: "explications", label: t("fx.analyses.cat.explications"), raw: "Explications" },
+    { key: "portraits", label: t("fx.analyses.cat.portraits"), raw: "Portraits" },
+  ] as const;
+
+  type CatKey = (typeof CATEGORIES)[number]["key"];
+
+  const [active, setActive] = useState<CatKey>("all");
+
+  const activeRaw = CATEGORIES.find((c) => c.key === active)?.raw ?? "Toutes";
+  const activeLabel = CATEGORIES.find((c) => c.key === active)?.label ?? "";
+
+  function formatDate(iso: string): string {
+    try {
+      return new Intl.DateTimeFormat(locStr, { day: "numeric", month: "long", year: "numeric" })
+        .format(new Date(iso));
+    } catch {
+      return iso;
+    }
+  }
+
+  function categoryLabel(category: string | undefined): string {
+    const slug = categorySlug(category);
+    if (slug === "enquete") return t("fx.analyses.cat.enquetes").replace(/s$/, "");
+    if (slug === "explication") return t("fx.analyses.cat.explications").replace(/s$/, "");
+    if (slug === "portrait") return t("fx.analyses.cat.portraits").replace(/s$/, "");
+    return t("fx.analyses.cat.analyses").replace(/s$/, "");
+  }
 
   const filtered = useMemo(() => {
-    if (active === "Toutes") return posts;
-    return posts.filter((p) => (p.category ?? "Analyses") === active);
-  }, [active, posts]);
+    if (active === "all") return posts;
+    return posts.filter((p) => (p.category ?? "Analyses") === activeRaw);
+  }, [active, activeRaw, posts]);
 
   const filteredPlanned = useMemo(() => {
-    if (active === "Toutes") return planned;
-    return planned.filter((p) => p.tag + "s" === active || p.tag === active.replace(/s$/, ""));
-  }, [active, planned]);
+    if (active === "all") return planned;
+    return planned.filter(
+      (p) => p.tag + "s" === activeRaw || p.tag === activeRaw.replace(/s$/, "")
+    );
+  }, [active, activeRaw, planned]);
 
   const hero = filtered[0];
   const rest = filtered.slice(1);
-
   const lastPublished = posts[0];
 
   return (
@@ -94,32 +116,33 @@ export default function AnalysesClient({
       <section className="fx-page-header">
         <div className="fx-wrap">
           <div className="fx-page-kicker">
-            Analyses &amp; dossiers · <b>éditoriaux</b> de France Open Data
+            {t("fx.analyses.page_kicker")}
           </div>
           <h1 className="fx-page-title">
-            Les chiffres, <em>racontés</em>.
+            {renderTitle(t("fx.analyses.page_title"))}
           </h1>
           <p className="fx-page-lede">
-            Analyses, enquêtes, portraits et explications — ce que{" "}
-            <b>les données publiques</b> nous permettent de comprendre,
-            dans un format qui se lit. Aucun article n&apos;est sponsorisé.
+            {t("fx.analyses.page_lede")}
           </p>
           <div className="fx-analyses-cats">
             {CATEGORIES.map((c) => (
               <button
-                key={c}
+                key={c.key}
                 type="button"
-                onClick={() => setActive(c)}
-                className={c === active ? "fx-cat fx-cat-on" : "fx-cat"}
+                onClick={() => setActive(c.key)}
+                className={c.key === active ? "fx-cat fx-cat-on" : "fx-cat"}
               >
-                {c}
+                {c.label}
               </button>
             ))}
             <span className="fx-cat-meta">
-              {posts.length} article{posts.length > 1 ? "s" : ""} publié
-              {posts.length > 1 ? "s" : ""} · {planned.length} en préparation
+              {fill(t("fx.analyses.meta.published"), {
+                n: posts.length,
+                s: posts.length > 1 ? "s" : "",
+              })}{" "}
+              · {fill(t("fx.analyses.meta.planned"), { n: planned.length })}
               {lastPublished && (
-                <> · dernière le {formatDate(lastPublished.date)}</>
+                <> · {fill(t("fx.analyses.meta.last"), { date: formatDate(lastPublished.date) })}</>
               )}
             </span>
           </div>
@@ -139,7 +162,7 @@ export default function AnalysesClient({
                 <span
                   className={`fx-photo-tag fx-photo-tag-hero fx-tag-${categorySlug(hero.category)}`}
                 >
-                  À la une · {categoryLabel(hero.category).toLowerCase()}
+                  {t("fx.analyses.hero.une")} · {categoryLabel(hero.category).toLowerCase()}
                 </span>
               </div>
               <div className="fx-hero-article-body">
@@ -150,10 +173,10 @@ export default function AnalysesClient({
                 <p className="fx-hero-article-deck">{hero.description}</p>
                 <div className="fx-hero-article-meta">
                   <span>
-                    Par <b>{hero.author ?? "France Open Data"}</b>
+                    {t("fx.analyses.hero.by")} <b>{hero.author ?? "France Open Data"}</b>
                   </span>
                   <span>·</span>
-                  <span>Publié le {formatDate(hero.date)}</span>
+                  <span>{t("fx.analyses.hero.published")} {formatDate(hero.date)}</span>
                   {hero.tags && hero.tags.length > 0 && (
                     <>
                       <span>·</span>
@@ -161,7 +184,7 @@ export default function AnalysesClient({
                     </>
                   )}
                 </div>
-                <span className="fx-hero-article-cta">Lire l&apos;analyse →</span>
+                <span className="fx-hero-article-cta">{t("fx.analyses.hero.cta")}</span>
               </div>
             </Link>
           </div>
@@ -175,15 +198,17 @@ export default function AnalysesClient({
               <div className="fx-sec-meta">
                 <span className="fx-sec-n">01</span>
                 <span className="fx-sec-dot">·</span>
-                <span className="fx-sec-kind">Récents</span>
+                <span className="fx-sec-kind">{t("fx.analyses.recent.kind")}</span>
               </div>
               <h2 className="fx-sec-title">
-                {active === "Toutes" ? "Articles récents" : `Récents · ${active}`}
+                {active === "all"
+                  ? t("fx.analyses.recent.title_all")
+                  : fill(t("fx.analyses.recent.title_cat"), { cat: activeLabel })}
               </h2>
               <p className="fx-sec-sub">
-                {active === "Toutes"
-                  ? "Les derniers articles publiés — toutes rubriques confondues."
-                  : `Les derniers articles de la rubrique « ${active} ».`}
+                {active === "all"
+                  ? t("fx.analyses.recent.sub_all")
+                  : fill(t("fx.analyses.recent.sub_cat"), { cat: activeLabel })}
               </p>
             </div>
             <div className="fx-articles-grid">
@@ -195,9 +220,7 @@ export default function AnalysesClient({
                       // eslint-disable-next-line @next/next/no-img-element
                       <img className="fx-photo-img" src={p.image} alt="" loading="lazy" />
                     )}
-                    <span
-                      className={`fx-photo-tag fx-tag-${categorySlug(p.category)}`}
-                    >
+                    <span className={`fx-photo-tag fx-tag-${categorySlug(p.category)}`}>
                       {categoryLabel(p.category)}
                     </span>
                   </div>
@@ -205,7 +228,7 @@ export default function AnalysesClient({
                     <h3>{renderTitle(p.title)}</h3>
                     <p>{p.description}</p>
                     <div className="fx-article-meta">
-                      <span>Publié <b>{formatDate(p.date)}</b></span>
+                      <span>{t("fx.analyses.card.published")} <b>{formatDate(p.date)}</b></span>
                       <span>·</span>
                       <span>{p.readingTime}</span>
                     </div>
@@ -224,15 +247,12 @@ export default function AnalysesClient({
               <div className="fx-sec-meta">
                 <span className="fx-sec-n">02</span>
                 <span className="fx-sec-dot">·</span>
-                <span className="fx-sec-kind">En préparation</span>
+                <span className="fx-sec-kind">{t("fx.analyses.planned.kind")}</span>
               </div>
               <h2 className="fx-sec-title">
-                Les <em>fondamentaux</em>
+                {renderTitle(t("fx.analyses.planned.title"))}
               </h2>
-              <p className="fx-sec-sub">
-                Articles en préparation — guide pédagogique pour comprendre les
-                finances publiques sans jargon.
-              </p>
+              <p className="fx-sec-sub">{t("fx.analyses.planned.sub")}</p>
             </div>
             <div className="fx-articles-grid">
               {filteredPlanned.map((p) => (
@@ -247,7 +267,7 @@ export default function AnalysesClient({
                     <h3>{renderTitle(p.title)}</h3>
                     <p>{p.description}</p>
                     <div className="fx-article-meta">
-                      <span>En préparation</span>
+                      <span>{t("fx.analyses.planned.badge")}</span>
                     </div>
                   </div>
                 </div>
@@ -261,12 +281,12 @@ export default function AnalysesClient({
         <section className="fx-section">
           <div className="fx-wrap">
             <div className="fx-empty">
-              <div className="fx-empty-label">Aucun résultat</div>
-              <h3>Pas d&apos;article dans cette catégorie pour le moment.</h3>
-              <p>Revenez prochainement ou consultez l&apos;ensemble des publications.</p>
+              <div className="fx-empty-label">{t("fx.analyses.empty.label")}</div>
+              <h3>{t("fx.analyses.empty.title")}</h3>
+              <p>{t("fx.analyses.empty.desc")}</p>
               <div className="fx-empty-actions">
-                <button type="button" className="fx-btn fx-btn-primary" onClick={() => setActive("Toutes")}>
-                  Voir toutes les analyses
+                <button type="button" className="fx-btn fx-btn-primary" onClick={() => setActive("all")}>
+                  {t("fx.analyses.empty.cta")}
                 </button>
               </div>
             </div>

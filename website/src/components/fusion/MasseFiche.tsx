@@ -3,6 +3,14 @@
 import { useEffect } from "react";
 import type { PatrimoineMasse } from "@/lib/fusion-data";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
+import { useT, useLocale } from "@/lib/localeContext";
+import { trLabel } from "@/lib/label-translate";
+
+const fill = (s: string, vars: Record<string, string | number>) => {
+  let r = s;
+  for (const [k, v] of Object.entries(vars)) r = r.replace(`{${k}}`, String(v));
+  return r;
+};
 
 type Props = {
   masse: PatrimoineMasse | null;
@@ -11,6 +19,9 @@ type Props = {
 };
 
 export default function MasseFiche({ masse, year, onClose }: Props) {
+  const t = useT();
+  const { locale } = useLocale();
+
   useEffect(() => {
     if (!masse) return;
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
@@ -24,7 +35,7 @@ export default function MasseFiche({ masse, year, onClose }: Props) {
   }, [masse, onClose]);
 
   if (!masse) return null;
-  const unit = masse.value >= 1e9 ? "Md €" : "M €";
+  const unit = masse.value >= 1e9 ? t("fx.s.md_eur") : t("fx.s.m_eur");
   const display = masse.value >= 1e9 ? fmtBillions(masse.value) : fmtMillions(masse.value, 0);
   const subitemsTotal = masse.subitems.reduce((s, i) => s + i.value, 0);
   const hasAmort = masse.subitems.some((i) => i.amort > 0);
@@ -32,63 +43,66 @@ export default function MasseFiche({ masse, year, onClose }: Props) {
   return (
     <>
       <div className="fx-fiche-backdrop" onClick={onClose} aria-hidden="true" />
-      <aside className="fx-fiche-panel" role="dialog" aria-modal="true" aria-label={masse.label}>
-        <button type="button" className="fx-fiche-close" onClick={onClose} aria-label="Fermer (Échap)">×</button>
+      <aside className="fx-fiche-panel" role="dialog" aria-modal="true" aria-label={trLabel(masse.label, locale)}>
+        <button type="button" className="fx-fiche-close" onClick={onClose} aria-label={t("fx.fiche.close_label")}>×</button>
 
         <div className="fx-fiche-head">
           <div className="fx-fiche-meta">
-            <span className="tag sol">{masse.tag}</span>
-            <span>{fmtDec(masse.share * 100, 1)} % du {masse.side}</span>
+            <span className="tag sol">{trLabel(masse.tag, locale)}</span>
+            <span>{fmtDec(masse.share * 100, 1)} {fill(t("fx.fiche.masse.pct_side"), { side: masse.side })}</span>
             <span className="sep">·</span>
-            <span>Bilan {year}</span>
+            <span>{fill(t("fx.fiche.masse.bilan"), { year })}</span>
           </div>
-          <h2>{masse.label} · {display} {unit}</h2>
+          <h2>{trLabel(masse.label, locale)} · {display} {unit}</h2>
           {masse.sub && <div className="fx-fiche-sub">{masse.sub}</div>}
         </div>
 
         <div className="fx-fiche-kpis">
           <div className="fk">
-            <div className="fk-label">Valeur nette</div>
+            <div className="fk-label">{t("fx.fiche.masse.valeur_nette")}</div>
             <div className="fk-value tnum">{display}<span className="u">{unit}</span></div>
           </div>
           <div className="fk">
-            <div className="fk-label">Part du {masse.side}</div>
+            <div className="fk-label">{fill(t("fx.fiche.masse.part_side"), { side: masse.side })}</div>
             <div className="fk-value tnum">{fmtDec(masse.share * 100, 1)}<span className="u">%</span></div>
           </div>
           <div className="fk">
-            <div className="fk-label">Par habitant</div>
+            <div className="fk-label">{t("fx.fiche.masse.par_hab")}</div>
             <div className="fk-value tnum">
               {fmtInt(masse.value / 2_133_111)}<span className="u">€</span>
             </div>
           </div>
           <div className="fk">
-            <div className="fk-label">Sous-postes</div>
+            <div className="fk-label">{t("fx.fiche.masse.sous_postes")}</div>
             <div className="fk-value tnum">{masse.subitems.length}</div>
           </div>
         </div>
 
         <div className="fx-fiche-body">
-          <h3>Ce que recouvre cette masse</h3>
-          <p>{masse.details || "Détail non documenté à ce jour."}</p>
+          <h3>{t("fx.fiche.masse.recouvre")}</h3>
+          <p>{masse.details || t("fx.fiche.masse.no_detail")}</p>
 
           {masse.subitems.length > 0 && (
             <>
               <h3 style={{ marginTop: 28 }}>
-                Sous-postes · {fmtInt(masse.subitems.length)} ligne{masse.subitems.length > 1 ? "s" : ""}
+                {fill(t("fx.fiche.masse.sous_postes_title"), {
+                  n: masse.subitems.length,
+                  s: masse.subitems.length > 1 ? "s" : "",
+                })}
               </h3>
               <table className="fx-fiche-table">
                 <thead>
                   <tr>
-                    <th>Poste</th>
-                    {hasAmort && <th className="num">Brut</th>}
-                    {hasAmort && <th className="num">Amort.</th>}
-                    <th className="num">Net</th>
-                    <th className="num">Part</th>
+                    <th>{t("fx.fiche.masse.col.poste")}</th>
+                    {hasAmort && <th className="num">{t("fx.fiche.masse.col.brut")}</th>}
+                    {hasAmort && <th className="num">{t("fx.fiche.masse.col.amort")}</th>}
+                    <th className="num">{t("fx.fiche.masse.col.net")}</th>
+                    <th className="num">{t("fx.fiche.masse.col.part")}</th>
                   </tr>
                 </thead>
                 <tbody>
                   {masse.subitems.map((s, i) => {
-                    const subUnit = s.value >= 1e9 ? "Md €" : s.value >= 1e6 ? "M €" : "€";
+                    const subUnit = s.value >= 1e9 ? t("fx.s.md_eur") : s.value >= 1e6 ? t("fx.s.m_eur") : "€";
                     const subDisplay = s.value >= 1e9
                       ? fmtBillions(s.value)
                       : s.value >= 1e6
@@ -118,14 +132,8 @@ export default function MasseFiche({ masse, year, onClose }: Props) {
             </>
           )}
 
-          <h3 style={{ marginTop: 28 }}>Limites de la donnée</h3>
-          <p className="muted">
-            Valorisation en <b>valeur comptable historique</b> (coût d&apos;acquisition
-            diminué des amortissements), non à la valeur de marché. Certaines masses —
-            monuments classés, terrains acquis avant 1980, œuvres d&apos;art en dépôt —
-            sont structurellement sous-évaluées ou inscrites à l&apos;euro symbolique.
-            Détail par bâtiment ou par parcelle non publié en open data.
-          </p>
+          <h3 style={{ marginTop: 28 }}>{t("fx.fiche.masse.limites")}</h3>
+          <p className="muted">{t("fx.fiche.masse.limites_desc")}</p>
         </div>
       </aside>
     </>

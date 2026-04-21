@@ -4,6 +4,13 @@ import { useState } from "react";
 import type { DetteInstrument, PatrimoineStructure } from "@/lib/fusion-data";
 import { fmtBillions, fmtDec, fmtMillions, fmtInt } from "@/lib/fmt";
 import InstrumentDetteFiche from "./InstrumentDetteFiche";
+import { useT } from "@/lib/localeContext";
+
+const fill = (s: string, vars: Record<string, string | number>) => {
+  let r = s;
+  for (const [k, v] of Object.entries(vars)) r = r.replace(`{${k}}`, String(v));
+  return r;
+};
 
 type Props = {
   structure: PatrimoineStructure["structure_dette"];
@@ -11,6 +18,7 @@ type Props = {
 };
 
 export default function DetteStructurePanel({ structure, year }: Props) {
+  const t = useT();
   const [openKey, setOpenKey] = useState<string | null>(null);
   const open = openKey
     ? structure.instruments.find((i) => i.key === openKey) ?? null
@@ -22,49 +30,53 @@ export default function DetteStructurePanel({ structure, year }: Props) {
   return (
     <div className="fx-dette-structure">
       <div className="fx-ds-grid">
-        {/* Col 1 — taux + maturité */}
         <div className="fx-ds-col">
-          <h4>Répartition par type de taux</h4>
-          <div className="fx-fixvar-wrap">
-            <div className="fx-fixvar-labels">
-              <span className="fx-fv-lbl fixed tnum">
-                <b>{fmtInt(partFixePct)} %</b> taux fixe
-              </span>
-              <span className="fx-fv-lbl var tnum">
-                <b>{fmtInt(partVarPct)} %</b> variable
-              </span>
+          <h4>{t("fx.ds.title_taux")}</h4>
+          <div
+            className="fx-ratebar"
+            role="img"
+            aria-label={fill(t("fx.ds.aria_taux"), { fixe: fmtInt(partFixePct), var: fmtInt(partVarPct) })}
+          >
+            <div className="fx-ratebar-seg seg-fixed" style={{ flexBasis: `${partFixePct}%` }}>
+              <div className="pct tnum">{fmtInt(partFixePct)} %</div>
+              <div className="lbl">{t("fx.ds.fixe_short")}</div>
             </div>
-            <div className="fx-fixvar-bar" role="img" aria-label={`${fmtInt(partFixePct)} % de taux fixe, ${fmtInt(partVarPct)} % de taux variable`}>
-              <div className="fx-fv-seg fixed" style={{ flex: `0 0 ${partFixePct}%` }} />
-              <div className="fx-fv-seg var" style={{ flex: `0 0 ${partVarPct}%` }} />
+            <div className="fx-ratebar-seg seg-var" style={{ flexBasis: `${partVarPct}%` }}>
+              <div className="pct tnum">{fmtInt(partVarPct)} %</div>
+              <div className="lbl">{t("fx.ds.var_short")}</div>
             </div>
           </div>
-          <div className="fx-fv-legend">
+          <div className="fx-ratebar-legend">
             <span>
-              <b>Taux fixe</b> · {fmtBillions(structure.taux.encours_taux_fixe)} Md € ·
-              taux moyen pondéré {fmtDec(structure.taux.taux_fixe_moyen_pondere_pct, 1)} %
+              <b>{t("fx.ds.fixe_b")}</b> ·{" "}
+              {fill(t("fx.ds.fixe_legend"), {
+                amount: fmtBillions(structure.taux.encours_taux_fixe),
+                pct: fmtDec(structure.taux.taux_fixe_moyen_pondere_pct, 1),
+              })}
             </span>
             <span>
-              <b>Variable</b> · {fmtBillions(structure.taux.encours_taux_variable)} Md € ·
-              indexé {structure.taux.indice_variable}
+              <b>{t("fx.ds.var_b")}</b> ·{" "}
+              {fill(t("fx.ds.var_legend"), {
+                amount: fmtBillions(structure.taux.encours_taux_variable),
+                index: structure.taux.indice_variable,
+              })}
             </span>
           </div>
 
-          <h4 style={{ marginTop: 26 }}>Maturité moyenne de l&apos;encours</h4>
+          <h4 style={{ marginTop: 26 }}>{t("fx.ds.title_maturite")}</h4>
           <div className="fx-maturite-kpi tnum">
             {fmtDec(structure.maturite_moyenne_ans, 1)}
-            <span className="u">ans</span>
+            <span className="u">{t("fx.ds.maturite_unit")}</span>
           </div>
           <div className="fx-maturite-sub">
-            <b>Durée résiduelle pondérée</b> · prochaine échéance lourde{" "}
+            <b>{t("fx.ds.maturite_sub_b")}</b> · {t("fx.ds.maturite_sub")}{" "}
             <b>{structure.prochaine_echeance_lourde.mois} {structure.prochaine_echeance_lourde.annee}</b>{" "}
             ({fmtInt(structure.prochaine_echeance_lourde.montant_m_eur)} M € · {structure.prochaine_echeance_lourde.libelle})
           </div>
         </div>
 
-        {/* Col 2 — 4 instruments cliquables */}
         <div className="fx-ds-col">
-          <h4>Ventilation par instrument financier</h4>
+          <h4>{t("fx.ds.title_instruments")}</h4>
           <div className="fx-instruments">
             {structure.instruments.map((inst, i) => (
               <Row
@@ -77,12 +89,12 @@ export default function DetteStructurePanel({ structure, year }: Props) {
             ))}
           </div>
           <div className="fx-instruments-note">
-            <b>Total · {fmtBillions(structure.total_dette_financiere)} Md €</b>
+            <b>{t("fx.ds.total_b")} · {fmtBillions(structure.total_dette_financiere)} {t("fx.s.md_eur")}</b>
             {" · "}
             {structure.instruments
               .map((i) => `${fmtInt(i.part * 100)} % ${i.label.toLowerCase().split(" ")[0]}`)
               .join(" · ")}
-            . Le stock structuré est en extinction naturelle (maturité &lt; 6 ans).
+            . {t("fx.ds.footer_extinction")}
           </div>
         </div>
       </div>
@@ -105,15 +117,16 @@ type RowProps = {
 };
 
 function Row({ inst, maxValue, onClick, first }: RowProps) {
+  const t = useT();
   const pct = Math.max(0, Math.min(100, (inst.encours / maxValue) * 100));
-  const unit = inst.encours >= 1e9 ? "Md €" : "M €";
+  const unit = inst.encours >= 1e9 ? t("fx.s.md_eur") : t("fx.s.m_eur");
   const display = inst.encours >= 1e9 ? fmtBillions(inst.encours) : fmtMillions(inst.encours, 0);
   return (
     <button
       type="button"
       className={`fx-inst-row${first ? " first" : ""}`}
       onClick={onClick}
-      aria-label={`Détail ${inst.label}`}
+      aria-label={fill(t("fx.ds.row_aria"), { label: inst.label })}
     >
       <span className="l">
         {inst.label}

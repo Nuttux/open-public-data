@@ -1,44 +1,52 @@
-import Link from "next/link";
+"use client";
 
+import Link from "next/link";
 import type { ChapitreFiche as ChapitreFicheType } from "@/lib/fusion-data";
 import ProjetThumb from "./ProjetThumb";
+import { useT, useLocale } from "@/lib/localeContext";
 
-const suf = (n: number) => (n === 1 ? "er" : "ᵉ");
-
-const fmtEur = (n: number) => {
-  if (n >= 1e9) return { v: new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 2 }).format(n / 1e9), u: "Md €" };
-  if (n >= 1e6) return { v: new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 1 }).format(n / 1e6), u: "M €" };
-  if (n >= 1e3) return { v: new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 }).format(n / 1e3), u: "k €" };
-  return { v: new Intl.NumberFormat("fr-FR").format(n), u: "€" };
+const fill = (s: string, vars: Record<string, string | number>) => {
+  let r = s;
+  for (const [k, v] of Object.entries(vars)) r = r.replace(`{${k}}`, String(v));
+  return r;
 };
 
-/**
- * Fiche chapitre — affichée en drawer quand l'utilisateur clique un segment
- * du StackedBarTheme. KPIs + top arrondissements + top 10 projets.
- */
 export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
+  const t = useT();
+  const { locale } = useLocale();
+  const locStr = locale === "en" ? "en-GB" : "fr-FR";
+
+  const fmtEur = (n: number) => {
+    if (n >= 1e9) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 2 }).format(n / 1e9), u: t("fx.s.md_eur") };
+    if (n >= 1e6) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 1 }).format(n / 1e6), u: t("fx.s.m_eur") };
+    if (n >= 1e3) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 0 }).format(n / 1e3), u: "k €" };
+    return { v: new Intl.NumberFormat(locStr).format(n), u: "€" };
+  };
+
+  const suf = (n: number) => (locale === "en" ? (n === 1 ? "st" : "th") : n === 1 ? "er" : "ᵉ");
+
   const { v, u } = fmtEur(chap.total);
 
   return (
     <div>
       <div className="fx-fiche-kpis">
         <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">Montant · {chap.year}</div>
+          <div className="fx-fiche-kpi-label">{fill(t("fx.fiche.chap.montant"), { year: chap.year })}</div>
           <div className="fx-fiche-kpi-value tnum">
             {v}
             <span className="u">{u}</span>
           </div>
         </div>
         <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">Part du budget invest.</div>
-          <div className="fx-fiche-kpi-value tnum">{chap.share.toFixed(1).replace(".", ",")} <span className="u">%</span></div>
+          <div className="fx-fiche-kpi-label">{t("fx.fiche.chap.part")}</div>
+          <div className="fx-fiche-kpi-value tnum">{chap.share.toFixed(1).replace(".", locale === "en" ? "." : ",")} <span className="u">%</span></div>
         </div>
         <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">Rang chapitre</div>
+          <div className="fx-fiche-kpi-label">{t("fx.fiche.chap.rang")}</div>
           <div className="fx-fiche-kpi-value tnum">#{chap.rank} <span className="u" style={{ fontSize: 14 }}>/ {chap.nbChapitres}</span></div>
         </div>
         <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">Projets identifiés</div>
+          <div className="fx-fiche-kpi-label">{t("fx.fiche.chap.projets")}</div>
           <div className="fx-fiche-kpi-value" style={{ fontSize: 28 }}>
             {chap.nbProjets}
           </div>
@@ -47,7 +55,7 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
 
       {chap.topArrondissements.length > 0 && (
         <section className="fx-fiche-section">
-          <div className="fx-fiche-h">Top arrondissements · {chap.label.toLowerCase()}</div>
+          <div className="fx-fiche-h">{fill(t("fx.fiche.chap.top_arr"), { label: chap.label.toLowerCase() })}</div>
           <div>
             {chap.topArrondissements.map((a) => {
               const f = fmtEur(a.amount);
@@ -73,7 +81,7 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
                     {a.arr}{suf(a.arr)}
                   </span>
                   <span className="muted" style={{ fontFamily: "var(--f-mono)", fontSize: 11 }}>
-                    {a.count} projet{a.count > 1 ? "s" : ""}
+                    {a.count} {a.count > 1 ? t("fx.fiche.chap.projet_p") : t("fx.fiche.chap.projet_s")}
                   </span>
                   <span style={{ fontFamily: "var(--f-disp)", fontWeight: 700 }}>
                     {f.v} <span style={{ fontSize: ".7em", color: "var(--muted)", fontWeight: 500 }}>{f.u}</span>
@@ -86,7 +94,7 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
       )}
 
       <section className="fx-fiche-section">
-        <div className="fx-fiche-h">Top projets · {chap.label.toLowerCase()}</div>
+        <div className="fx-fiche-h">{fill(t("fx.fiche.chap.top_proj"), { label: chap.label.toLowerCase() })}</div>
         <div className="fx-arr-top-grid">
           {chap.topProjets.map((p, i) => {
             const f = fmtEur(p.amount);
@@ -105,7 +113,7 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
                   <div className="fx-arr-top-name">{p.name.slice(0, 80)}</div>
                   <div className="fx-arr-top-amount">{f.v} <span className="u">{f.u}</span></div>
                   <div className="fx-arr-top-chap">
-                    {p.arr > 0 ? `${p.arr}${suf(p.arr)} arr.` : "Transverse"}
+                    {p.arr > 0 ? `${p.arr}${suf(p.arr)} arr.` : t("fx.fiche.chap.transverse")}
                   </div>
                 </div>
               </Link>

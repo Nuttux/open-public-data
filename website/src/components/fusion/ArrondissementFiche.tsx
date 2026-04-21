@@ -1,23 +1,31 @@
-import Link from "next/link";
+"use client";
 
+import Link from "next/link";
 import type { ArrondissementFiche as ArrondissementFicheType } from "@/lib/fusion-data";
 import ProjetThumb from "./ProjetThumb";
+import { useT, useLocale } from "@/lib/localeContext";
+import { trLabel } from "@/lib/label-translate";
 
-const suf = (n: number) => (n === 1 ? "er" : "ᵉ");
-
-const fmtEur = (n: number) => {
-  if (n >= 1e9) return { v: new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 2 }).format(n / 1e9), u: "Md €" };
-  if (n >= 1e6) return { v: new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 1 }).format(n / 1e6), u: "M €" };
-  if (n >= 1e3) return { v: new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 }).format(n / 1e3), u: "k €" };
-  return { v: new Intl.NumberFormat("fr-FR").format(n), u: "€" };
+const fill = (s: string, vars: Record<string, string | number>) => {
+  let r = s;
+  for (const [k, v] of Object.entries(vars)) r = r.replace(`{${k}}`, String(v));
+  return r;
 };
 
-/**
- * Fiche arrondissement — affichée dans un drawer quand l'utilisateur clique
- * sur un polygone du choropleth. Montre les KPIs + top 10 projets avec
- * vignettes photo (si dispo, sinon pictogramme).
- */
 export default function ArrondissementFiche({ arr }: { arr: ArrondissementFicheType }) {
+  const t = useT();
+  const { locale } = useLocale();
+  const locStr = locale === "en" ? "en-GB" : "fr-FR";
+
+  const fmtEur = (n: number) => {
+    if (n >= 1e9) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 2 }).format(n / 1e9), u: t("fx.s.md_eur") };
+    if (n >= 1e6) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 1 }).format(n / 1e6), u: t("fx.s.m_eur") };
+    if (n >= 1e3) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 0 }).format(n / 1e3), u: "k €" };
+    return { v: new Intl.NumberFormat(locStr).format(n), u: "€" };
+  };
+
+  const suf = (n: number) => (locale === "en" ? (n === 1 ? "st" : "th") : n === 1 ? "er" : "ᵉ");
+
   const { v, u } = fmtEur(arr.total);
   const topChap = arr.byChapitre[0];
 
@@ -25,40 +33,45 @@ export default function ArrondissementFiche({ arr }: { arr: ArrondissementFicheT
     <div>
       <div className="fx-fiche-kpis">
         <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">Investi en {arr.year}</div>
+          <div className="fx-fiche-kpi-label">{fill(t("fx.fiche.arr.investi"), { year: arr.year })}</div>
           <div className="fx-fiche-kpi-value tnum">
             {v}
             <span className="u">{u}</span>
           </div>
         </div>
         <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">Part Paris géolocalisé</div>
-          <div className="fx-fiche-kpi-value tnum">{arr.totalShare.toFixed(1).replace(".", ",")} <span className="u">%</span></div>
+          <div className="fx-fiche-kpi-label">{t("fx.fiche.arr.part_geo")}</div>
+          <div className="fx-fiche-kpi-value tnum">{arr.totalShare.toFixed(1).replace(".", locale === "en" ? "." : ",")} <span className="u">%</span></div>
         </div>
         <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">Rang parmi 20 arr.</div>
+          <div className="fx-fiche-kpi-label">{t("fx.fiche.arr.rang")}</div>
           <div className="fx-fiche-kpi-value tnum">#{arr.rank}</div>
         </div>
         <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">Projets identifiés</div>
+          <div className="fx-fiche-kpi-label">{t("fx.fiche.arr.projets")}</div>
           <div className="fx-fiche-kpi-value" style={{ fontSize: 24 }}>
-            {arr.nbProjets} <span className="muted" style={{ fontSize: 12 }}>· {arr.nbGeo} géolocalisés</span>
+            {arr.nbProjets} <span className="muted" style={{ fontSize: 12 }}>{fill(t("fx.fiche.arr.geo_n"), { n: arr.nbGeo })}</span>
           </div>
         </div>
       </div>
 
       {topChap && (
         <div className="fx-fiche-rank">
-          <span className="fx-fiche-rank-num" style={{ color: "var(--ocre)" }}>1er</span>
+          <span className="fx-fiche-rank-num" style={{ color: "var(--ocre)" }}>{t("fx.fiche.arr.rank1")}</span>
           <span>
-            chapitre : <b>{topChap.label}</b> — {fmtEur(topChap.amount).v} {fmtEur(topChap.amount).u}
-            {" "}sur {topChap.count} projets.
+            {fill(t("fx.fiche.arr.top_chap"), {
+              label: trLabel(topChap.label, locale),
+              v: fmtEur(topChap.amount).v,
+              u: fmtEur(topChap.amount).u,
+              n: topChap.count,
+              s: topChap.count > 1 ? "s" : "",
+            })}
           </span>
         </div>
       )}
 
       <section className="fx-fiche-section">
-        <div className="fx-fiche-h">Top projets · {arr.year}</div>
+        <div className="fx-fiche-h">{fill(t("fx.fiche.arr.top_projets"), { year: arr.year })}</div>
         <div className="fx-arr-top-grid">
           {arr.topProjets.map((p, i) => {
             const f = fmtEur(p.amount);
@@ -70,13 +83,13 @@ export default function ArrondissementFiche({ arr }: { arr: ArrondissementFicheT
                 className="fx-arr-top-item"
               >
                 <div className="fx-arr-top-thumb">
-                  <ProjetThumb projetId={p.id} aspectRatio="4 / 3" fallbackLabel={p.name} />
+                  <ProjetThumb photo={p.photo.photo} generic={p.photo.generic} typologie={p.photo.typologie} aspectRatio="4 / 3" fallbackLabel={p.name} />
                 </div>
                 <div className="fx-arr-top-meta">
                   <div className="fx-arr-top-rank">{String(i + 1).padStart(2, "0")}</div>
                   <div className="fx-arr-top-name">{p.name.slice(0, 80)}</div>
                   <div className="fx-arr-top-amount">{f.v} <span className="u">{f.u}</span></div>
-                  <div className="fx-arr-top-chap">{p.chapitre}</div>
+                  <div className="fx-arr-top-chap">{trLabel(p.chapitre, locale)}</div>
                 </div>
               </Link>
             );
@@ -86,7 +99,7 @@ export default function ArrondissementFiche({ arr }: { arr: ArrondissementFicheT
 
       {arr.byChapitre.length > 1 && (
         <section className="fx-fiche-section">
-          <div className="fx-fiche-h">Répartition par chapitre</div>
+          <div className="fx-fiche-h">{t("fx.fiche.arr.repartition")}</div>
           <div>
             {arr.byChapitre.map((c) => {
               const pct = (c.amount / arr.total) * 100;
@@ -105,9 +118,9 @@ export default function ArrondissementFiche({ arr }: { arr: ArrondissementFicheT
                     fontSize: 13.5,
                   }}
                 >
-                  <span style={{ fontWeight: 500 }}>{c.label}</span>
+                  <span style={{ fontWeight: 500 }}>{trLabel(c.label, locale)}</span>
                   <span className="muted" style={{ fontFamily: "var(--f-mono)", fontSize: 11 }}>
-                    {c.count} projet{c.count > 1 ? "s" : ""}
+                    {c.count} {c.count > 1 ? t("fx.fiche.arr.projet_p") : t("fx.fiche.arr.projet_s")}
                   </span>
                   <span style={{ fontFamily: "var(--f-disp)", fontWeight: 700, minWidth: 80, textAlign: "right" }}>
                     {f.v} <span style={{ fontSize: ".7em", color: "var(--muted)", fontWeight: 500 }}>{f.u}</span>
