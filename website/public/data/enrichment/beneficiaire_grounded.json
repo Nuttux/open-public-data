@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-21T23:15:03",
+  "generated_at": "2026-04-21T23:44:22",
   "model": "gemini-3-flash-preview",
-  "count": 325,
+  "count": 352,
   "items": {
     "ELOGIE SIEMP": {
       "beneficiaire": "ELOGIE-SIEMP",
@@ -652,21 +652,21 @@
       "siret": ""
     },
     "ALTERALIA": {
-      "beneficiaire": "ALTERALIA",
-      "beneficiaire_normalise": "ALTERALIA",
-      "siret": "35355631900021",
-      "generated_at": "2026-04-21T22:08:19",
-      "model": "gemini-3-flash-preview",
-      "activite_verifiee": "Association qui gère des centres d'hébergement d'urgence, des foyers de jeunes travailleurs et des services d'accompagnement social pour publics précaires.",
+      "activite_verifiee": "Association (créée 1972, siège Aubervilliers) ; +50 ans d'action pour les personnes en précarité/exclusion : hébergement d'urgence, protection enfance, FJT, logement transitoire.",
       "perimetre_geographique": "Île-de-France",
       "sources": [
         {
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFl7QEhINmcjF0QolTHLwQsJ4qFnpsNJ2Dp-qwbGOSGZ1_l1MMfuUg6eMzYza-3HW-7OBlToJB6CbOKhFWeiy-pQ4hHKTk126mcP3cPgGVu3V0YyGDyoxIUr5rMMn1w0ztgO5JPteLexOd_CENZAlYA-vTG",
+          "url": "https://www.alteralia.com/",
           "title": "alteralia.com"
         }
       ],
-      "confiance": 0.5,
-      "source_type": "grounded_search"
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:44:22",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ALTERALIA",
+      "beneficiaire_normalise": "ALTERALIA",
+      "siret": ""
     },
     "TRESORERIE CENTRE ACTION SOCIALE PA": {
       "activite_verifiee": "Établissement public municipal de Paris chargé de la lutte contre l'exclusion, gère 284 établissements et +140 résidences pour personnes âgées, handicapées ou précaires.",
@@ -5950,6 +5950,624 @@
       "beneficiaire": "SIDACTION",
       "beneficiaire_normalise": "SIDACTION",
       "siret": "39894554300021"
+    },
+    "STE ECONOMIE MIXTE PARIS COMMERCE": {
+      "beneficiaire": "STE ECONOMIE MIXTE PARIS COMMERCE",
+      "beneficiaire_normalise": "STE ECONOMIE MIXTE PARIS COMMERCE",
+      "siret": "",
+      "generated_at": "2026-04-21T23:29:25",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "<cite index=\"8-1\">Société d'économie mixte de la Ville de Paris spécialisée dans la revitalisation du commerce et de l'artisanat de proximité</cite>",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/societe-d-economie-mixte-paris-commerces-sem-pc-329121065",
+          "title": "Société SOCIETE D'ECONOMIE MIXTE PARIS COMMERCES (SEM PC) à 75004 PARIS 04 - SIREN 329 121 065 | L’Annuaire des Entreprises"
+        },
+        {
+          "url": "https://www.lesepl.fr/epl-en-action/la-sem-paris-commerces-pour-doper-le-commerce-de-proximite/",
+          "title": "La Sem Paris Commerces pour doper le commerce de proximité - Fédération des élus des Entreprises publiques locales"
+        },
+        {
+          "url": "https://mairie10.paris.fr/pages/lancement-de-paris-commerces-agir-pour-la-diversite-et-la-vitalite-du-commerce-de-proximite-25224",
+          "title": "Lancement de Paris Commerces : agir pour la diversité et la vitalité du commerce de proximité"
+        },
+        {
+          "url": "https://www.paris.fr/pages/diversite-commerciale-3553",
+          "title": "Diversité commerciale - Ville de Paris"
+        },
+        {
+          "url": "https://www.techno-science.net/definition/10922.html",
+          "title": "Sociétés d'économie mixte de Paris : définition et explications"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "BASILIADE": {
+      "beneficiaire": "BASILIADE",
+      "beneficiaire_normalise": "BASILIADE",
+      "siret": "40084047600115",
+      "generated_at": "2026-04-21T23:29:30",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association loi 1901 qui accueille et accompagne des personnes en situation de précarité, notamment atteintes par le VIH/SIDA, vers l'autonomie, via hébergement, aide médico-sociale et actions sociales.",
+      "perimetre_geographique": "Paris et Lyon",
+      "sources": [
+        {
+          "url": "https://rubypayeur.com/societe/basiliade-400840476",
+          "title": "Société BASILIADE à PARIS - SIREN : 400840476"
+        },
+        {
+          "url": "https://www.societe.com/societe/basiliade-400840476.html",
+          "title": "Société BASILIADE à PARIS (75011). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 400840476"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/09123472",
+          "title": "Basiliade Lyon - Association humanitaire (adresse, horaires)"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/58934544",
+          "title": "Association Basiliade Paris (adresse, horaires)"
+        },
+        {
+          "url": "https://www.manageo.fr/entreprises/400840476.html",
+          "title": "▷Société BASILIADE à PARIS 11 : CA, résultats, bilan gratuit, SIRET, dirigeants, solvabilité, n° TVA - manageo.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "FOODSWEETFOOD": {
+      "beneficiaire": "FOODSWEETFOOD",
+      "beneficiaire_normalise": "FOODSWEETFOOD",
+      "siret": "82907750200013",
+      "generated_at": "2026-04-21T23:29:34",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association d'insertion et organisme de formation qui accueille et forme des cuisiniers réfugiés, produit et distribue des repas aux personnes en situation de précarité, et propose des formations diplômantes aux métiers de la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/foodsweetfood-829077502.html",
+          "title": "FOODSWEETFOOD (PARIS) Chiffre d'affaires, rsultat, bilans sur SOCIETE.COM - 829077502"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/foodsweetfood-829077502",
+          "title": "Association FOODSWEETFOOD : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.siren-sweets.com",
+          "title": "Siren Sweets | Vegan & Gluten-Free Customizable Chocolate Bark"
+        },
+        {
+          "url": "https://www.siren-sweets.com/pages/about-us",
+          "title": "About Us – Siren Sweets"
+        },
+        {
+          "url": "https://pitchbook.com/profiles/company/185862-25",
+          "title": "Siren Snacks 2025 Company Profile: Valuation, Funding & Investors | PitchBook"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "FOND MAISON CHAMPS ST FRAN ASSISE": {
+      "beneficiaire": "FOND. MAISON CHAMPS ST-FRAN. ASSISE",
+      "beneficiaire_normalise": "FOND MAISON CHAMPS ST FRAN ASSISE",
+      "siret": "",
+      "generated_at": "2026-04-21T23:29:40",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Fondation reconnue d'utilité publique depuis 1932 proposant aide à domicile, soins infirmiers et hébergement temporaire pour personnes âgées, dépendantes et en situation de handicap.",
+      "perimetre_geographique": "Paris XIXe",
+      "sources": [
+        {
+          "url": "https://www.pagesjaunes.fr/pros/08055644",
+          "title": "Fondation Maison Des Champs De Saint François D'Assise Paris - Service d'aide à domicile (adresse, horaires)"
+        },
+        {
+          "url": "https://www.helloasso.com/associations/fondation-maison-des-champs-de-saint-francois-d-as",
+          "title": "Fondation Maison des Champs de Saint François d'Assise | HelloAsso"
+        },
+        {
+          "url": "https://www.fmdc.fr/",
+          "title": "Fondation maison des champs | FMDC"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/fondation-maison-des-champs-de-saint-francois-d-assise-775694763",
+          "title": "FONDATION MAISON DES CHAMPS DE SAINT FRANCOIS D ASSISE : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/55455147",
+          "title": "FONDATION MAISON DES CHAMPS SA Paris - Service d'aide à domicile (adresse, horaires)"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "COMPAGNIE DU 20E": {
+      "beneficiaire": "LA COMPAGNIE DU 20E",
+      "beneficiaire_normalise": "COMPAGNIE DU 20E",
+      "siret": "92027539300014",
+      "generated_at": "2026-04-21T23:30:14",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association Loi 1901 développant une entreprise à but d'emploi dans le cadre du projet Territoires Zéro Chômeur de Longue Durée, opérant une ressourcerie, un atelier de couture, des services de médiation sociale et un café associatif.",
+      "perimetre_geographique": "Paris 20e",
+      "sources": [
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/la-compagnie-du-20e-920275393",
+          "title": "Association LA COMPAGNIE DU 20E à 75020 PARIS - SIREN 920 275 393 | L’Annuaire des Entreprises"
+        },
+        {
+          "url": "https://www.societe.com/societe/la-compagnie-du-20e-920275393.html",
+          "title": "Société LA COMPAGNIE DU 20E à PARIS (75020). Chiffre d'affaires, bénéfice, statuts, extrait RNE, bilans, actionnaires - 920275393"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/la-compagnie-du-20e-920275393",
+          "title": "Association LA COMPAGNIE DU 20E : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://bilan.etcld.fr/entreprises/la-compagnie-du-20e",
+          "title": "La Compagnie du 20e | Le site du Bilan ETCLD"
+        },
+        {
+          "url": "https://fr.linkedin.com/company/la-compagnie-du-20e",
+          "title": "La Compagnie du 20e | LinkedIn"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "PASSERELLE 17 AS POUR LA REGIE": {
+      "beneficiaire": "PASSERELLE  17 AS POUR LA REGIE",
+      "beneficiaire_normalise": "PASSERELLE 17 AS POUR LA REGIE",
+      "siret": "",
+      "generated_at": "2026-04-21T23:30:19",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "<cite index=\"2-1\">Association agréée entreprise d'insertion qui travaille à la valorisation de son territoire par l'insertion professionnelle de ses habitants et par l'amélioration du cadre de vie</cite>",
+      "perimetre_geographique": "Paris 17e et 18e",
+      "sources": [
+        {
+          "url": "https://www.passerelles17.paris/",
+          "title": "Passerelles 17"
+        },
+        {
+          "url": "https://dora.inclusion.gouv.fr/structures/passerelles-17-regie",
+          "title": "Passerelles 17- Régie 17ème et 18ème | DORA"
+        },
+        {
+          "url": "https://www.passerelles17.paris/passerelles/notre_mission/",
+          "title": "Notre mission - Passerelles 17 : Passerelles17"
+        },
+        {
+          "url": "https://www.jeveuxaider.gouv.fr/organisations/28174-passerelles-1718",
+          "title": "Association Passerelles 17/18 - Devenez bénévole dans l'association Passerelles 17/18 - JeVeuxAider.gouv.fr"
+        },
+        {
+          "url": "https://www.societe.com/societe/passerelles-17-association-pour-la-regie-de-quartier-du-17e-nord-est-494216559.html",
+          "title": "Société PASSERELLES 17 ASSOCIATION POUR LA REGIE DE QUARTIER DU 17E NORD EST à PARIS (75017). Chiffre d'affaires, extrait Kbis, bénéfice, statuts, extrait RNE, bilans, actionnaires - 494216559"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "ASS PARENT ELEVE JARDIN ENFANT FR A": {
+      "beneficiaire": "ASS PARENT ELEVE JARDIN ENFANT FR A",
+      "beneficiaire_normalise": "ASS PARENT ELEVE JARDIN ENFANT FR A",
+      "siret": "",
+      "generated_at": "2026-04-21T23:30:53",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Association de parents d'élèves des jardins d'enfants franco-allemands, organisation fonctionnant par adhésion volontaire.",
+      "perimetre_geographique": "Paris Xe",
+      "sources": [
+        {
+          "url": "https://www.manageo.fr/entreprises/300984523.html",
+          "title": "▷Société ASS PARENT ELEVE JARDIN ENFANT FR ALLEMA à PARIS : CA, résultats, bilan gratuit, SIRET, dirigeants, solvabilité, n° TVA - manageo.fr"
+        },
+        {
+          "url": "https://rubypayeur.com/societe/ass-parent-eleve-jardin-enfant-fr-allema-300984523",
+          "title": "Société ASS PARENT ELEVE JARDIN ENFANT FR ALLEMA à PARIS - SIREN : 300984523"
+        },
+        {
+          "url": "https://www.verif.com/societe/ASS-PARENT-ELEVE-JARDIN-ENFANT-FR-ALLE-300984523/",
+          "title": "Société ASS PARENT ELEVE JARDIN ENFANT FR ALLEMA à PARIS - Chiffre d'affaires, bilan, résultat - Siren / |Verif.com"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/ajefa-ass-parent-eleve-jardin-enfant-fr-allema-300984523",
+          "title": "Association AJEFA ASS PARENT ELEVE JARDIN ENFANT FR ALLEMA : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://www.verif.com/societe/ASS-PARENT-ELEVE-JARDIN-ENFANT-FR-ALLEMA-300984523/",
+          "title": "ASS PARENT ELEVE JARDIN ENFANT FR ALLEMA (30098452300013) , PARIS 10, Verif"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "BAL": {
+      "beneficiaire": "LE BAL",
+      "beneficiaire_normalise": "BAL",
+      "siret": "49396355700027",
+      "generated_at": "2026-04-21T23:30:58",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "<cite index=\"7-1\">Association loi 1901 qui est une plateforme indépendante d'exposition, d'édition, de réflexion et de pédagogie, dédiée à l'image contemporaine sous toutes ses formes</cite>.",
+      "perimetre_geographique": "Paris XVIIIe",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/le-bal-493963557.html",
+          "title": "LE BAL (PARIS) Chiffre d'affaires, résultat, bilans sur SOCIETE.COM - 493963557"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/le-bal-493963557",
+          "title": "Association LE BAL à 75018 PARIS - SIREN 493 963 557"
+        },
+        {
+          "url": "https://rubypayeur.com/societe/le-bal-493963557",
+          "title": "Société LE BAL à PARIS 18 - SIREN : 493963557"
+        },
+        {
+          "url": "https://www.score3.fr/LE-BAL-493963557.shtml",
+          "title": "LE BAL - Siren 493963557 - 75018 Paris Informations financières et bilan d'entreprise sur Score3"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/le-bal-493963557",
+          "title": "Association LE BAL : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "LINKEE FRANCE": {
+      "beneficiaire": "LINKEE FRANCE",
+      "beneficiaire_normalise": "LINKEE FRANCE",
+      "siret": "837634534",
+      "generated_at": "2026-04-21T23:31:02",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "<cite index=\"20-1\">Association de l'Économie Sociale et Solidaire qui met en place une solution solidaire et collaborative luttant contre le gaspillage alimentaire en faveur des plus démunis</cite>",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/linkee-france-837634534.html",
+          "title": "Société LINKEE FRANCE à PARIS (75020). Chiffre d'affaires, extrait Kbis, bénéfice, statuts, extrait RNE, bilans, actionnaires - 837634534"
+        },
+        {
+          "url": "https://www.verif.com/societe/LINKEE-PARIS-837634534/",
+          "title": "LINKEE FRANCE (83763453400023) , PARIS 20, Verif"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/l-linkee-france-837634534",
+          "title": "Association L. LINKEE FRANCE : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        },
+        {
+          "url": "https://infonet.fr/entreprises/83763453400023-linkee-france/",
+          "title": "LINKEE FRANCE (L.) à Paris | Chiffre d'Affaires, Statuts"
+        },
+        {
+          "url": "https://www.pappers.fr/entreprise/linkelles-922962147",
+          "title": "Association LINK'ELLES : Chiffre d'affaires, statuts, extrait d'immatriculation"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "BOURSE DU TRAVAIL DE PARIS": {
+      "beneficiaire": "BOURSE DU TRAVAIL DE PARIS",
+      "beneficiaire_normalise": "BOURSE DU TRAVAIL DE PARIS",
+      "siret": "200098689",
+      "generated_at": "2026-04-21T23:31:37",
+      "model": "claude-haiku-4-5",
+      "activite_verifiee": "Établissement public municipal chargé de mettre à disposition des organisations syndicales des locaux de réunion et d'information professionnelle, et de concourir à la promotion économique et sociale des travailleurs.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.societe.com/societe/bourse-du-travail-de-paris-200098689.html",
+          "title": "BOURSE DU TRAVAIL DE PARIS (PARIS) Chiffre d'affaires, résultat, bilans sur SOCIETE.COM - 200098689"
+        },
+        {
+          "url": "https://annuaire-entreprises.data.gouv.fr/entreprise/bourse-du-travail-de-paris-200098689",
+          "title": "bourse du travail de paris - L'Annuaire des Entreprises"
+        },
+        {
+          "url": "https://entreprises.lagazettefrance.fr/entreprise/bourse-du-travail-de-paris-200098689",
+          "title": "Société BOURSE DU TRAVAIL DE PARIS à PARIS (75010) | La Gazette France"
+        },
+        {
+          "url": "https://www.118712.fr/professionnels/X0VRVl5UHwg",
+          "title": "BOURSE DU TRAVAIL à Paris"
+        },
+        {
+          "url": "https://www.pagesjaunes.fr/pros/07089129",
+          "title": "BOURSE DU TRAVAIL Paris - Syndicat de salariés (adresse, horaires)"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web"
+    },
+    "CARREFOURS EMPLOI ARMEES COLLECT EN": {
+      "activite_verifiee": "Carrefour Emploi Défense Mobilité — forum annuel (École militaire Paris) facilitant la reconversion des militaires et l'emploi des conjoints ; ~200 entreprises partenaires.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.defense.gouv.fr/sga/au-service-agents/reconversion",
+          "title": "defense.gouv.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:44:22",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CARREFOURS EMPLOI ARMEES COLLECT EN",
+      "beneficiaire_normalise": "CARREFOURS EMPLOI ARMEES COLLECT EN",
+      "siret": ""
+    },
+    "PROTECTION CIVILE PARIS SEINE": {
+      "activite_verifiee": "Association loi 1901 agréée sécurité civile (PCPS) ; +2 000 bénévoles dans 41 antennes (Paris, 92, 93, 94) ; postes de secours, formations PSC1/PSE, action sociale.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.protectioncivile.org/",
+          "title": "protectioncivile.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:44:22",
+      "model": "claude-code-websearch",
+      "beneficiaire": "PROTECTION CIVILE PARIS SEINE",
+      "beneficiaire_normalise": "PROTECTION CIVILE PARIS SEINE",
+      "siret": "41803746100047"
+    },
+    "INSTUT RECHERCHE APPLIQUEE ENFANT": {
+      "activite_verifiee": "Association IRAEC (créée 1976, 18e rue Joseph de Maistre) ; lieu d'accueil enfants-parents basé sur la psychanalyse + formations pros petite enfance.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://iraec.com/",
+          "title": "iraec.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:44:22",
+      "model": "claude-code-websearch",
+      "beneficiaire": "INSTUT RECHERCHE APPLIQUEE ENFANT",
+      "beneficiaire_normalise": "INSTUT RECHERCHE APPLIQUEE ENFANT",
+      "siret": ""
+    },
+    "INST CERVEAU MOELLE EPINIERE": {
+      "activite_verifiee": "Institut du Cerveau (ICM, créé 2010 à l'hôpital Pitié-Salpêtrière) ; fondation reconnue d'utilité publique + unité de recherche CNRS/Inserm/Sorbonne ; +900 chercheurs, 26 équipes.",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        {
+          "url": "https://institutducerveau.org/",
+          "title": "institutducerveau.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:44:22",
+      "model": "claude-code-websearch",
+      "beneficiaire": "INST CERVEAU MOELLE EPINIERE",
+      "beneficiaire_normalise": "INST CERVEAU MOELLE EPINIERE",
+      "siret": ""
+    },
+    "ETS PUBLIC PARC GRANDE HALLE VILLET": {
+      "activite_verifiee": "EPPGHV — Établissement public (EPIC) créé 1993 sous tutelle du ministère de la Culture (19e) ; anime le parc de la Villette, la Grande Halle, les Folies (création contemporaine).",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        {
+          "url": "https://www.lavillette.com/",
+          "title": "lavillette.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:44:22",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ETS PUBLIC PARC GRANDE HALLE VILLET",
+      "beneficiaire_normalise": "ETS PUBLIC PARC GRANDE HALLE VILLET",
+      "siret": ""
+    },
+    "LIRE A PARIS": {
+      "activite_verifiee": "L.I.R.E (Livre pour l'Insertion et le Refus de l'Exclusion, créée 1998) ; ~1 000 séances de lecture/an pour la petite enfance dans structures santé/social/culture parisiennes.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.associationlire.fr/",
+          "title": "associationlire.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:44:22",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LIRE A PARIS",
+      "beneficiaire_normalise": "LIRE A PARIS",
+      "siret": ""
+    },
+    "SA D H L M FRANCE HABITATION": {
+      "activite_verifiee": "France Habitation — SA d'HLM, bailleur social d'Île-de-France ; construction et gestion de logements sociaux.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:44:22",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SA D'H L M FRANCE HABITATION",
+      "beneficiaire_normalise": "SA D H L M FRANCE HABITATION",
+      "siret": ""
+    },
+    "MUSEE EN HERBE": {
+      "activite_verifiee": "Association (créée 1975 par Sylvie Girardet et Claire Merleau-Ponty, Paris 1er) ; 1er musée dédié à l'art pour les enfants (3 à 103 ans) ; expos, ateliers, jeux de piste.",
+      "perimetre_geographique": "Paris 1er",
+      "sources": [
+        {
+          "url": "https://www.musee-en-herbe.com/",
+          "title": "musee-en-herbe.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:44:22",
+      "model": "claude-code-websearch",
+      "beneficiaire": "MUSEE EN HERBE",
+      "beneficiaire_normalise": "MUSEE EN HERBE",
+      "siret": "31142870000034"
+    },
+    "ECOLE NAT SUP DE CHIMIE DE PARIS": {
+      "activite_verifiee": "Chimie ParisTech (ENSCP) — grande école publique d'ingénieurs (fondée 1896, Paris 5e) ; membre de l'Université PSL et de ParisTech ; formation en sciences chimiques.",
+      "perimetre_geographique": "Paris 5e",
+      "sources": [
+        {
+          "url": "https://www.chimieparistech.psl.eu",
+          "title": "chimieparistech.psl.eu"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:44:22",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ECOLE NAT SUP DE CHIMIE DE PARIS",
+      "beneficiaire_normalise": "ECOLE NAT SUP DE CHIMIE DE PARIS",
+      "siret": ""
+    },
+    "COMITE LOCAL D ORGA COUPES MONDE": {
+      "activite_verifiee": "Comité Local de Coordination Île-de-France de la Coupe du Monde de Rugby 2023 (GIP État/FFR/CNOSF) ; organisation décentralisée dans les villes hôtes.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.rugbyworldcup.com/2023",
+          "title": "rugbyworldcup.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:44:22",
+      "model": "claude-code-websearch",
+      "beneficiaire": "COMITE LOCAL D ORGA COUPES MONDE",
+      "beneficiaire_normalise": "COMITE LOCAL D ORGA COUPES MONDE",
+      "siret": ""
+    },
+    "FONCIERE PARIS COMMERCES": {
+      "activite_verifiee": "Foncière de la SEM Paris Commerces (ex-SEMAEST) ; +500 locaux commerciaux, recapitalisée 90 M€ en 2023 pour acquérir davantage de locaux dans les quartiers parisiens.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.pariscommerces.fr/",
+          "title": "pariscommerces.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:44:22",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FONCIERE PARIS COMMERCES",
+      "beneficiaire_normalise": "FONCIERE PARIS COMMERCES",
+      "siret": ""
+    },
+    "INST NATIONAL SANTE RECHERCHE MEDIC": {
+      "activite_verifiee": "Inserm — EPST créé 1964 sous tutelle des ministères Santé + Recherche ; 339 unités de recherche, ~13 000 scientifiques, budget 1,2 Md€ ; 2 Nobel de médecine.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.inserm.fr/en/home/",
+          "title": "inserm.fr"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Institut_national_de_la_sant%C3%A9_et_de_la_recherche_m%C3%A9dicale",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:44:22",
+      "model": "claude-code-websearch",
+      "beneficiaire": "INST NATIONAL SANTE RECHERCHE MEDIC",
+      "beneficiaire_normalise": "INST NATIONAL SANTE RECHERCHE MEDIC",
+      "siret": ""
+    },
+    "MUTUELLE LA MAYOTTE": {
+      "activite_verifiee": "Mutuelle La Mayotte — organisation médico-sociale (créée 1948) ; 10 établissements accompagnant enfants, adolescents et adultes en situation de handicap mental ou psychique en IDF.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.mutuellelamayotte.fr/",
+          "title": "mutuellelamayotte.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:44:22",
+      "model": "claude-code-websearch",
+      "beneficiaire": "MUTUELLE LA MAYOTTE",
+      "beneficiaire_normalise": "MUTUELLE LA MAYOTTE",
+      "siret": ""
+    },
+    "DALLE AUX CHAPS": {
+      "activite_verifiee": "Association (créée 2011, Paris 20e, Porte des Lilas) ; gère l'Espace Cirque — création, diffusion, pratiques amateurs et formation aux arts du cirque sous chapiteau.",
+      "perimetre_geographique": "Paris 20e",
+      "sources": [
+        {
+          "url": "https://www.pappers.fr/entreprise/la-dalle-aux-chaps-533812871",
+          "title": "pappers.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:44:22",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LA DALLE AUX CHAPS",
+      "beneficiaire_normalise": "DALLE AUX CHAPS",
+      "siret": ""
+    },
+    "SNCF GARES CONNEXIONS": {
+      "activite_verifiee": "SNCF Gares & Connexions — filiale du Groupe SNCF (rattachée à SNCF Réseau, créée 2009, société depuis 2020) ; gère 3 029 gares voyageurs du réseau national, 10M voyageurs/jour.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.groupe-sncf.com/fr/groupe/portrait-entreprise/groupe-societes/sncf-gares-et-connexions",
+          "title": "groupe-sncf.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:44:22",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SNCF GARES & CONNEXIONS",
+      "beneficiaire_normalise": "SNCF GARES CONNEXIONS",
+      "siret": ""
+    },
+    "ENFANCES AU CINEMA": {
+      "activite_verifiee": "Association (créée 2005) ; coordonne les dispositifs Mon 1er Cinéma (maternelle) et École et Cinéma (élémentaire) à Paris ; ~3 000 classes/an ; organise Mon Premier Festival.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.enfancesaucinema.net/",
+          "title": "enfancesaucinema.net"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:44:22",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ENFANCES AU CINEMA",
+      "beneficiaire_normalise": "ENFANCES AU CINEMA",
+      "siret": "48154244700026"
+    },
+    "MUSIQUE SACREE A NOTRE DAME DE PARI": {
+      "activite_verifiee": "Association Musique Sacrée à Notre-Dame de Paris (créée 1991) ; gère la Maîtrise Notre-Dame (~150 chanteurs 5-28 ans) et anime ~1 200 offices/an ; saison de concerts.",
+      "perimetre_geographique": "Paris 4e",
+      "sources": [
+        {
+          "url": "https://musique-sacree-notredamedeparis.fr/en/",
+          "title": "musique-sacree-notredamedeparis.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-21T23:44:22",
+      "model": "claude-code-websearch",
+      "beneficiaire": "MUSIQUE SACREE A NOTRE DAME DE PARI",
+      "beneficiaire_normalise": "MUSIQUE SACREE A NOTRE DAME DE PARI",
+      "siret": ""
     }
   }
 }
