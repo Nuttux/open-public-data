@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import type { AssociationFiche as AssociationFicheType, SubventionVulgarization } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
@@ -20,6 +21,7 @@ export default function AssociationFiche({
   const t = useT();
   const { locale } = useLocale();
   const locStr = locale === "en" ? "en-GB" : "fr-FR";
+  const [openLigne, setOpenLigne] = useState<number | null>(null);
 
   const fmtEur = (n: number) => {
     if (n >= 1e9) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 2 }).format(n / 1e9), u: t("fx.s.md_eur") };
@@ -189,26 +191,96 @@ export default function AssociationFiche({
             <tbody>
               {asso.lignes.map((l, i) => {
                 const { v, u } = fmtEur(l.amount);
+                const isOpen = openLigne === i;
+                const hasDetail = Boolean(l.objet || l.subCategory || l.secteurs);
                 return (
-                  <tr key={i}>
-                    <td style={{ fontFamily: "var(--f-mono)", color: "var(--ocre)" }}>{l.year}</td>
-                    <td>{l.direction || <span className="muted">—</span>}</td>
-                    <td style={{ maxWidth: 280 }}>
-                      {l.objet ? (
-                        <span>{l.objet.length > 70 ? l.objet.slice(0, 70) + "…" : l.objet}</span>
-                      ) : l.subCategory ? (
-                        <span className="muted">{l.subCategory}</span>
-                      ) : (
-                        <span className="muted">—</span>
-                      )}
-                    </td>
-                    <td style={{ textAlign: "right", fontFamily: "var(--f-disp)", fontWeight: 700, fontSize: 13 }}>
-                      {v} <span style={{ fontSize: ".75em", color: "var(--muted)", fontWeight: 500 }}>{u}</span>
-                    </td>
-                    <td style={{ textAlign: "right", fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)" }}>
-                      {l.nb}
-                    </td>
-                  </tr>
+                  <>
+                    <tr
+                      key={i}
+                      onClick={hasDetail ? () => setOpenLigne(isOpen ? null : i) : undefined}
+                      style={{
+                        cursor: hasDetail ? "pointer" : "default",
+                        background: isOpen ? "#fafaf7" : undefined,
+                      }}
+                      aria-expanded={hasDetail ? isOpen : undefined}
+                    >
+                      <td style={{ fontFamily: "var(--f-mono)", color: "var(--ocre)" }}>{l.year}</td>
+                      <td>{l.direction || <span className="muted">—</span>}</td>
+                      <td style={{ maxWidth: 280 }}>
+                        {l.objet ? (
+                          <span>{l.objet.length > 70 ? l.objet.slice(0, 70) + "…" : l.objet}</span>
+                        ) : l.subCategory ? (
+                          <span className="muted">{l.subCategory}</span>
+                        ) : (
+                          <span className="muted">—</span>
+                        )}
+                        {hasDetail && (
+                          <span
+                            aria-hidden="true"
+                            style={{
+                              marginLeft: 6,
+                              fontFamily: "var(--f-mono)",
+                              fontSize: 10,
+                              color: "var(--bleu)",
+                              transition: "transform .15s",
+                              display: "inline-block",
+                              transform: isOpen ? "rotate(90deg)" : "none",
+                            }}
+                          >
+                            ▸
+                          </span>
+                        )}
+                      </td>
+                      <td style={{ textAlign: "right", fontFamily: "var(--f-disp)", fontWeight: 700, fontSize: 13 }}>
+                        {v} <span style={{ fontSize: ".75em", color: "var(--muted)", fontWeight: 500 }}>{u}</span>
+                      </td>
+                      <td style={{ textAlign: "right", fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)" }}>
+                        {l.nb}
+                      </td>
+                    </tr>
+                    {isOpen && (
+                      <tr key={`${i}-detail`} style={{ background: "#fafaf7" }}>
+                        <td colSpan={5} style={{ padding: "12px 14px 16px", borderTop: 0 }}>
+                          <div style={{ display: "grid", gap: 10, fontFamily: "var(--f-ui)", fontSize: 13.5, lineHeight: 1.55, color: "var(--ink)" }}>
+                            {l.objet && (
+                              <div>
+                                <div style={{ fontFamily: "var(--f-mono)", fontSize: 10.5, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 4 }}>
+                                  {t("fx.fiche.asso.col.motif")}
+                                </div>
+                                <div>{l.objet}</div>
+                              </div>
+                            )}
+                            {l.subCategory && (
+                              <div>
+                                <div style={{ fontFamily: "var(--f-mono)", fontSize: 10.5, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 4 }}>
+                                  {t("fx.fiche.asso.detail.sub_category")}
+                                </div>
+                                <div>{l.subCategory}</div>
+                              </div>
+                            )}
+                            {l.secteurs && (
+                              <div>
+                                <div style={{ fontFamily: "var(--f-mono)", fontSize: 10.5, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 4 }}>
+                                  {t("fx.fiche.asso.detail.secteurs")}
+                                </div>
+                                <div>{l.secteurs}</div>
+                              </div>
+                            )}
+                            <div style={{ marginTop: 4 }}>
+                              <a
+                                href={`https://opendata.paris.fr/explore/dataset/subventions-associations-votees/table/?refine.annee_budget=${l.year}&refine.nom_beneficiaire=${encodeURIComponent(asso.name)}${l.direction ? `&refine.direction=${encodeURIComponent(l.direction)}` : ""}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
+                              >
+                                {t("fx.fiche.asso.detail.opendata")}
+                              </a>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    )}
+                  </>
                 );
               })}
             </tbody>
