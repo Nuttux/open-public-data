@@ -49,9 +49,17 @@ export default function LandingClient({ stats }: Props) {
             {t("fx.land.h1.after")}
           </h1>
           <p className="fx-lede">{t("fx.land.lede")}</p>
+          <div className="fx-ctas">
+            <Button variant="primary" href="/budget">
+              {fill("fx.land.cta.explore", { year: stats.year })}
+            </Button>
+          </div>
+        </div>
+      </section>
 
-          {/* HERO STAT — hoisted above the fold so the "chiffre qui choque"
-              hits in the first screen, not after scroll. */}
+      {/* SCALE */}
+      <section className="fx-scale" id="scale">
+        <div className="fx-wrap">
           <p className="fx-hero-num-line">{t("fx.land.scale.line")}</p>
           <p className="fx-hero-num-big tnum">
             {fmtInt(stats.perCapitaMonth)}
@@ -68,18 +76,6 @@ export default function LandingClient({ stats }: Props) {
             </span>
             <span>{fill("fx.land.scale.vs_fiscal", { year: stats.lastExecutedYear })}</span>
           </p>
-
-          <div className="fx-ctas">
-            <Button variant="primary" href="/budget">
-              {fill("fx.land.cta.explore", { year: stats.year })}
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* SCALE — breakdown by category */}
-      <section className="fx-scale" id="scale">
-        <div className="fx-wrap">
           <p className="fx-hero-num-cap">
             {t("fx.land.scale.cap.soit")}
             <b>{fill("fx.land.scale.cap.per_year", { amount: fmtInt(stats.perCapitaYear) })}</b>
