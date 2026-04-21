@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import "../fusion.css";
 
 import {
@@ -7,12 +8,15 @@ import {
   SectionHead,
   HeroNumber,
   KPIGrid,
-  BarRow,
   TileCard,
   YearPicker,
   ExportRow,
   SignauxFaibles,
   ProjectMap,
+  ProjetThumb,
+  ParisChoropleth,
+  BudgetTimeline,
+  StackedBarTheme,
 } from "@/components/fusion";
 import {
   fmtBillions,
@@ -20,6 +24,7 @@ import {
   fmtInt,
   fmtMillions,
   loadInvestissementsData,
+  slugifyChapitre,
 } from "@/lib/fusion-data";
 
 export const metadata: Metadata = {
@@ -39,7 +44,6 @@ export default async function InvestissementsPage({
   const sp = await searchParams;
   const requestedYear = sp.year ? Number(sp.year) : undefined;
   const d = loadInvestissementsData(requestedYear);
-  const topProj = d.topProjets.slice(0, 8);
   const ytrend = d.yearsSummary;
   const delta5y =
     ytrend.length >= 2
@@ -75,7 +79,42 @@ export default async function InvestissementsPage({
 
       <section className="fx-section">
         <div className="fx-wrap">
-          <SectionHead number="01" kind="Vue d'ensemble" title={<>Combien <em>la Ville investit</em> ?</>} />
+          <SectionHead
+            number="01"
+            kind="Projets phares"
+            title={<>Les <em>plus gros chantiers</em> de {d.year}</>}
+          />
+          <div className="fx-projet-grid">
+            {d.topProjets.slice(0, 12).map((p, i) => (
+              <Link
+                key={p.id}
+                href={`/investissements/projet/${encodeURIComponent(p.id)}`}
+                className="fx-projet-card"
+                scroll={false}
+              >
+                <div className="fx-projet-card-thumb">
+                  <ProjetThumb projetId={p.id} aspectRatio="4 / 3" fallbackLabel={p.name} />
+                </div>
+                <div className="fx-projet-card-body">
+                  <div className="fx-projet-card-rank">{String(i + 1).padStart(2, "0")}</div>
+                  <div className="fx-projet-card-name">{(p.name ?? "—").slice(0, 90)}</div>
+                  <div className="fx-projet-card-meta">
+                    <span>{p.arr > 0 ? `${p.arr}${suf(p.arr)} arr.` : "Transverse"}</span>
+                    <span className="fx-projet-card-amount">
+                      {p.amount >= 1e6 ? `${fmtMillions(p.amount, 1)} M€` : `${fmtInt(p.amount / 1000)} k€`}
+                    </span>
+                  </div>
+                  <div className="fx-projet-card-chapitre">{p.chapitre}</div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="fx-section">
+        <div className="fx-wrap">
+          <SectionHead number="02" kind="Vue d'ensemble" title={<>Combien <em>la Ville investit</em> ?</>} />
           <div className="fx-overview">
             <HeroNumber
               label={<>Investissement total · {d.year}</>}
@@ -109,7 +148,7 @@ export default async function InvestissementsPage({
       <section className="fx-section">
         <div className="fx-wrap">
           <SectionHead
-            number="01b"
+            number="03"
             kind="Carte"
             title={<>Où <em>l&apos;argent atterrit</em></>}
             subtitle={`Les ${fmtInt(d.nbGeo)} projets géolocalisés sur la carte de Paris. La taille des points est proportionnelle au montant ; le rouge indique les opérations > 10 M €.`}
@@ -126,78 +165,22 @@ export default async function InvestissementsPage({
       <section className="fx-section">
         <div className="fx-wrap">
           <SectionHead
-            number="02"
+            number="04"
             kind="Par chapitre"
             title={<>Ce que <em>la Ville construit</em></>}
             subtitle="Classification fonctionnelle issue du budget. L'aménagement & l'habitat pèsent le plus, suivis des équipements culturels et sportifs."
           />
-          <BarRow
-            header={{
-              left: <>Chapitres d&apos;investissement · <b>{d.year}</b></>,
-              right: <>Total · <b>{fmtBillions(d.total)} Md €</b></>,
-            }}
-            items={d.byChapitre.map((c) => ({
-              label: c.label,
-              value: c.amount,
-              display: fmtMillions(c.amount, 0),
-              unit: "M €",
-            }))}
+          <StackedBarTheme
+            items={d.byChapitre.map((c) => ({ theme: c.label, amount: c.amount, count: c.count }))}
+            total={d.total}
+            concentrationTop10Pct={d.top10ProjetsPct}
+            year={d.year}
+            basePath="/investissements"
+            kicker={`Sur chaque 100 € d'investissement en ${d.year}`}
+            entityNoun="projets"
+            paretoContrast="soit plus du quart du budget annuel concentré sur 10 chantiers"
+            hrefBuilder={(theme) => `/investissements/chapitre/${slugifyChapitre(theme)}`}
           />
-        </div>
-      </section>
-
-      <section className="fx-section">
-        <div className="fx-wrap">
-          <SectionHead
-            number="03"
-            kind="Par arrondissement"
-            title={<>Où <em>l&apos;argent atterrit</em></>}
-            subtitle="Somme des projets localisés par arrondissement. Les montants non géolocalisés (projets transverses, acquisitions centrales) ne sont pas inclus."
-          />
-          <BarRow
-            header={{
-              left: <>20 arrondissements · <b>projets géolocalisés</b></>,
-              right: <>{fmtInt(d.nbGeo)} projets · <b>{fmtMillions(d.byArrondissement.reduce((s, a) => s + a.amount, 0), 0)} M €</b></>,
-            }}
-            items={d.byArrondissement.slice(0, 20).map((a) => ({
-              label: `${a.arr}${suf(a.arr)} arrondissement`,
-              value: a.amount,
-              display: fmtMillions(a.amount, a.amount >= 10_000_000 ? 0 : 1),
-              unit: "M €",
-            }))}
-          />
-        </div>
-      </section>
-
-      <section className="fx-section">
-        <div className="fx-wrap">
-          <SectionHead
-            number="04"
-            kind="Projets phares"
-            title={<>Les <em>dix plus gros</em> projets</>}
-          />
-          <table className="fx-table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Projet</th>
-                <th>Arrondissement</th>
-                <th>Chapitre</th>
-                <th style={{ textAlign: "right" }}>Montant</th>
-              </tr>
-            </thead>
-            <tbody>
-              {topProj.map((p, i) => (
-                <tr key={i}>
-                  <td className="rank">{String(i + 1).padStart(2, "0")}</td>
-                  <td style={{ fontWeight: 500 }}>{(p.name ?? "—").slice(0, 80)}</td>
-                  <td className="muted">{p.arr > 0 ? `${p.arr}${suf(p.arr)}` : "transv."}</td>
-                  <td className="muted">{p.chapitre}</td>
-                  <td className="num">{p.amount >= 1e6 ? fmtMillions(p.amount, 1) + " M €" : fmtInt(p.amount / 1000) + " k €"}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
         </div>
       </section>
 
@@ -205,27 +188,32 @@ export default async function InvestissementsPage({
         <div className="fx-wrap">
           <SectionHead
             number="05"
+            kind="Par arrondissement"
+            title={<>Par <em>arrondissement</em></>}
+            subtitle="Somme des projets localisés par arrondissement. Les montants non géolocalisés (projets transverses, acquisitions centrales) ne sont pas inclus."
+          />
+          <ParisChoropleth
+            items={d.byArrondissement.map((a) => ({ arr: a.arr, amount: a.amount, count: a.count }))}
+            height={420}
+          />
+        </div>
+      </section>
+
+      <section className="fx-section">
+        <div className="fx-wrap">
+          <SectionHead
+            number="06"
             kind="Évolution"
             title={<>Trajectoire <em>2019–{d.year}</em></>}
           />
-          <table className="fx-table">
-            <thead>
-              <tr>
-                <th>Année</th>
-                <th style={{ textAlign: "right" }}>Investissement total</th>
-                <th style={{ textAlign: "right" }}>Hors dette</th>
-              </tr>
-            </thead>
-            <tbody>
-              {ytrend.slice().reverse().map((y) => (
-                <tr key={y.year}>
-                  <td className="rank">{y.year}</td>
-                  <td className="num">{fmtBillions(y.total)} <span className="muted">Md €</span></td>
-                  <td className="num">{fmtBillions(y.horsDette)} <span className="muted">Md €</span></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <BudgetTimeline
+            points={ytrend.map((y) => ({
+              year: y.year,
+              value: y.total / 1_000_000_000,
+              type: "execute" as const,
+            }))}
+            activeYear={d.year}
+          />
           <p className="fx-note">
             <b>À noter</b> : les projets sont extraits des annexes PDF du compte administratif via
             un pipeline LLM + heuristiques. Environ <b>{Math.round(100 - d.pctGeo)} %</b> des projets
@@ -237,7 +225,7 @@ export default async function InvestissementsPage({
       <section className="fx-section">
         <div className="fx-wrap">
           <SectionHead
-            number="06"
+            number="07"
             kind="Signaux faibles"
             title={<>Projets <em>à surveiller</em></>}
             subtitle="Opérations notables pour leur volume, leur concentration territoriale ou l'absence de géolocalisation. Pas un signal de dérive — un appel à regarder de près."
@@ -300,7 +288,7 @@ export default async function InvestissementsPage({
       <section className="fx-section">
         <div className="fx-wrap">
           <SectionHead
-            number="07"
+            number="08"
             kind="Sources & méthode"
             title={<>Vérifiable <em>ligne par ligne</em></>}
           />
@@ -350,7 +338,7 @@ export default async function InvestissementsPage({
 
       <section className="fx-section">
         <div className="fx-wrap">
-          <SectionHead number="08" kind="Explorer plus loin" title="Continuer" />
+          <SectionHead number="09" kind="Explorer plus loin" title="Continuer" />
           <div className="fx-grid-tiles">
             <TileCard
               href="/marches-publics"

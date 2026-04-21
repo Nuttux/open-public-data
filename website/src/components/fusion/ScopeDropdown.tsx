@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useT } from "@/lib/localeContext";
 
 /**
  * Scope selector — mocked for now. Paris is the only active scope; the
@@ -19,6 +20,7 @@ const OTHER_CITIES = ["Marseille", "Lyon", "Bordeaux", "Toulouse"] as const;
 export default function ScopeDropdown({ variant = "nav" }: Props) {
   const [open, setOpen] = useState(false);
   const wrapRef = useRef<HTMLSpanElement>(null);
+  const t = useT();
 
   useEffect(() => {
     if (!open) return;
@@ -55,7 +57,7 @@ export default function ScopeDropdown({ variant = "nav" }: Props) {
       </button>
       {open && (
         <div className="fx-scope-menu" role="menu">
-          <div className="fx-sm-head">Collectivité</div>
+          <div className="fx-sm-head">{t("fx.scope.heading")}</div>
           <a className="fx-sm-item fx-sm-active" href="#" role="menuitem">
             <span>Paris</span>
             <span className="fx-sm-check" aria-hidden="true">✓</span>
@@ -63,13 +65,13 @@ export default function ScopeDropdown({ variant = "nav" }: Props) {
           {OTHER_CITIES.map((c) => (
             <span key={c} className="fx-sm-item fx-sm-disabled" aria-disabled="true">
               <span>{c}</span>
-              <span className="fx-sm-tag">à venir</span>
+              <span className="fx-sm-tag">{t("fx.scope.tag.avenir")}</span>
             </span>
           ))}
           <div className="fx-sm-sep" />
           <span className="fx-sm-item fx-sm-disabled" aria-disabled="true">
-            <span>France</span>
-            <span className="fx-sm-tag">roadmap</span>
+            <span>{t("fx.scope.france")}</span>
+            <span className="fx-sm-tag">{t("fx.scope.tag.roadmap")}</span>
           </span>
         </div>
       )}

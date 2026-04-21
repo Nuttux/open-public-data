@@ -14,6 +14,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import AnalyticsProvider from "@/components/AnalyticsProvider";
+import { LocaleProvider } from "@/lib/localeContext";
 import { SITE_URL, SITE_NAME, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 
 const inter = Inter({
@@ -120,7 +121,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd()) }}
         />
         <AnalyticsProvider>
-          {children}
+          <LocaleProvider>
+            {children}
+          </LocaleProvider>
         </AnalyticsProvider>
       </body>
     </html>

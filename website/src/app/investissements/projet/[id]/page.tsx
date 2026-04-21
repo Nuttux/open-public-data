@@ -3,7 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import "../../../fusion.css";
 
-import { Navbar, Footer, ProjetFiche } from "@/components/fusion";
+import { Navbar, Footer } from "@/components/fusion";
+import ProjetFiche from "@/components/fusion/ProjetFiche";
 import { loadProjet } from "@/lib/fusion-data";
 
 type Params = { id: string };

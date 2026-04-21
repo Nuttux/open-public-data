@@ -15,6 +15,7 @@ import {
   SignauxFaibles,
   BudgetTimeline,
   Tip,
+  StackedBarTheme,
 } from "@/components/fusion";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import MarchesSearch from "./MarchesSearch";
@@ -120,6 +121,27 @@ export default async function MarchesPublicsPage({
         <div className="fx-wrap">
           <SectionHead
             number="02"
+            kind="Par catégorie"
+            title={<>Ce que <em>la Ville achète</em></>}
+            subtitle="Chaque segment = une catégorie, proportionnelle à l'enveloppe. Cliquez pour filtrer les contrats correspondants."
+          />
+          <StackedBarTheme
+            items={d.byCategory.map((c) => ({ theme: c.category, amount: c.amount, count: c.count }))}
+            total={d.total}
+            concentrationTop10Pct={top10Pct}
+            year={d.year}
+            basePath="/marches-publics"
+            kicker={`Sur chaque 100 € d'enveloppe contractuelle ${d.year}`}
+            entityNoun="titulaires"
+            paretoContrast="les ~1 500 autres fournisseurs se partagent le reste"
+          />
+        </div>
+      </section>
+
+      <section className="fx-section">
+        <div className="fx-wrap">
+          <SectionHead
+            number="03"
             kind="Top titulaires"
             title={<>Les <em>10 plus gros</em> attributaires</>}
             subtitle={`Enveloppe cumulée pour ${d.year}, hors marchés multiattributaires (${fmtInt(d.multiAttributaires.count)} contrats, ${fmtDec(multiPct, 0)} % du total). Cliquez sur + pour voir la liste des contrats par titulaire.`}
@@ -168,7 +190,7 @@ export default async function MarchesPublicsPage({
                           <tr key={i}>
                             <td style={{ fontWeight: 500, maxWidth: 360 }}>
                               {(() => {
-                                const clean = normalizeObjet(c.objet);
+                                const clean = c.objetClair || normalizeObjet(c.objet);
                                 const shown = clean.length > 100 ? clean.slice(0, 100) + "…" : clean;
                                 return c.numero ? (
                                   <Link
@@ -217,56 +239,6 @@ export default async function MarchesPublicsPage({
                 ),
               };
             })}
-          />
-        </div>
-      </section>
-
-      <section className="fx-section">
-        <div className="fx-wrap">
-          <SectionHead
-            number="03"
-            kind="Par catégorie"
-            title={<>Ce que <em>la Ville achète</em></>}
-            subtitle="Classification par libellé de catégorie (bâtiment, fournitures, services). Les CPV complets sont consultables dans chaque fiche marché."
-          />
-          <ExpandableList
-            header={{
-              left: <>Catégories · <b>{d.byCategory.length} principales</b></>,
-              right: <>Total · <b>{fmtBillions(d.total)} Md €</b></>,
-            }}
-            items={d.byCategory.map((c) => {
-              const refMax = d.byCategory[0].amount || 1;
-              return {
-                key: c.category,
-                label: c.category,
-                barPct: (c.amount / refMax) * 100,
-                meta: (
-                  <>
-                    {fmtInt(c.count)} contrats · {fmtDec((c.amount / d.total) * 100, 1)} %
-                  </>
-                ),
-                value: c.amount >= 1e9 ? fmtBillions(c.amount) : fmtMillions(c.amount, 0),
-                unit: c.amount >= 1e9 ? "Md €" : "M €",
-                children: (
-                  <div>
-                    <div style={{ fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)", letterSpacing: ".04em", marginBottom: 10 }}>
-                      TOP 5 TITULAIRES · {c.category.toUpperCase()}
-                    </div>
-                    {c.topTitulaires.map((t, j) => (
-                      <div key={j} className="fx-mini-row">
-                        <span className="rank">#{String(j + 1).padStart(2, "0")}</span>
-                        <span style={{ fontWeight: 500 }}>{t.name}</span>
-                        <span className="muted fx-mini-hide-mobile">{t.nb} contrats</span>
-                        <span className="num">
-                          {t.amount >= 1e9 ? fmtBillions(t.amount) + " Md €" : fmtMillions(t.amount, 1) + " M €"}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                ),
-              };
-            })}
-            initialOpen={d.byCategory[0]?.category}
           />
         </div>
       </section>

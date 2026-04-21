@@ -331,15 +331,55 @@ def validate_image_url(url: str) -> tuple[bool, str]:
 # ─── Wikipedia fallback (direct API) ──────────────────────────────────────────
 
 
+_PERSON_CATEGORY_HINTS = (
+    "Naissance en", "Décès en", "Personnalité", "Homme politique", "Femme politique",
+    "politique français", "Acteur français", "Actrice française", "Écrivain français",
+    "Écrivaine française", "Journaliste français", "Journaliste française",
+    "Sportif français", "Sportive française", "Joueur de", "Joueuse de",
+    "Historien français", "Historienne française", "Artiste français",
+    "Personnage de fiction",
+)
+
+
+def _is_person_page(title: str) -> bool:
+    """Vérifie via l'API Wikipedia si la page concerne une personne (catégories)."""
+    try:
+        r = requests.get(
+            "https://fr.wikipedia.org/w/api.php",
+            params={
+                "action": "query", "format": "json", "titles": title,
+                "prop": "categories", "cllimit": 50,
+            },
+            headers={"User-Agent": USER_AGENT},
+            timeout=REQ_TIMEOUT,
+        )
+    except requests.RequestException:
+        return False
+    if r.status_code != 200:
+        return False
+    pages = r.json().get("query", {}).get("pages", {}) or {}
+    for p in pages.values():
+        for cat in p.get("categories") or []:
+            cat_title = cat.get("title", "").replace("Catégorie:", "")
+            if any(hint in cat_title for hint in _PERSON_CATEGORY_HINTS):
+                return True
+    return False
+
+
 def wikipedia_pageimage(query: str) -> dict[str, Any] | None:
-    """Cherche la page Wikipedia FR qui matche le mieux + récupère sa pageimage."""
-    # 1. Search pour trouver le titre de page
+    """Cherche la page Wikipedia FR qui matche le mieux + récupère sa pageimage.
+
+    Rejette les pages qui parlent d'une personne (ex. "Piscine Belliard" renvoyait
+    David Belliard le politicien) — on essaie les 3 premiers résultats de recherche
+    et on skip tout ce qui a une catégorie "Personnalité/Naissance en…".
+    """
+    # 1. Search : top 3 résultats (pour pouvoir skipper des personnes homonymes)
     try:
         r = requests.get(
             "https://fr.wikipedia.org/w/api.php",
             params={
                 "action": "query", "format": "json", "list": "search",
-                "srsearch": query, "srlimit": 1, "srnamespace": 0,
+                "srsearch": query, "srlimit": 3, "srnamespace": 0,
             },
             headers={"User-Agent": USER_AGENT},
             timeout=REQ_TIMEOUT,
@@ -351,33 +391,35 @@ def wikipedia_pageimage(query: str) -> dict[str, Any] | None:
     results = r.json().get("query", {}).get("search", [])
     if not results:
         return None
-    title = results[0]["title"]
 
-    # 2. Récupère la pageimage (image principale extraite de l'infobox)
-    try:
-        r = requests.get(
-            "https://fr.wikipedia.org/w/api.php",
-            params={
-                "action": "query", "format": "json", "titles": title,
-                "prop": "pageimages|info", "pithumbsize": 1200, "inprop": "url",
-            },
-            headers={"User-Agent": USER_AGENT},
-            timeout=REQ_TIMEOUT,
-        )
-    except requests.RequestException:
-        return None
-    if r.status_code != 200:
-        return None
-    pages = r.json().get("query", {}).get("pages", {}) or {}
-    for p in pages.values():
-        thumb = (p.get("thumbnail") or {}).get("source")
-        if thumb:
-            return {
-                "page_url": p.get("fullurl"),
-                "image_url": thumb,
-                "page_title": title,
-                "source": "wikipedia.org",
-            }
+    for hit in results:
+        title = hit["title"]
+        if _is_person_page(title):
+            continue
+        try:
+            r = requests.get(
+                "https://fr.wikipedia.org/w/api.php",
+                params={
+                    "action": "query", "format": "json", "titles": title,
+                    "prop": "pageimages|info", "pithumbsize": 1200, "inprop": "url",
+                },
+                headers={"User-Agent": USER_AGENT},
+                timeout=REQ_TIMEOUT,
+            )
+        except requests.RequestException:
+            continue
+        if r.status_code != 200:
+            continue
+        pages = r.json().get("query", {}).get("pages", {}) or {}
+        for p in pages.values():
+            thumb = (p.get("thumbnail") or {}).get("source")
+            if thumb:
+                return {
+                    "page_url": p.get("fullurl"),
+                    "image_url": thumb,
+                    "page_title": title,
+                    "source": "wikipedia.org",
+                }
     return None
 
 
@@ -396,11 +438,52 @@ def process_item(item: dict[str, Any], validate: bool = True, verbose: bool = Fa
     pages = result.get("pages") or []
     citations = result.get("_citations") or []
 
+    # On combine les pages (Gemini JSON) et les citations (vraies URLs Google Search).
+    # Les citations sont priorisées car elles existent VRAIMENT (Gemini peut
+    # halluciner des IDs numériques dans ses "pages" mais les citations viennent
+    # du vrai retour de google_search).
+    combined_pages: list[dict[str, Any]] = []
+    seen_urls: set[str] = set()
+
+    for c in citations:
+        url = (c.get("uri") or "").strip()
+        if not url or url in seen_urls:
+            continue
+        seen_urls.add(url)
+        combined_pages.append({
+            "page_url": url,
+            "source": c.get("title") or urlparse(url).netloc,
+            "why": "citation Google Search",
+            "_origin": "citation",
+        })
+
+    # Pages 🧠 (Gemini-generated URLs) : on garde UNIQUEMENT celles qui suivent
+    # un pattern déterministe (Wikipedia / Wikimedia Commons). Pour paris.fr,
+    # leparisien, etc. Gemini invente les IDs numériques → 404 garantis, gaspillage
+    # de bande passante.
+    DETERMINISTIC_HOSTS = {
+        "fr.wikipedia.org", "en.wikipedia.org", "commons.wikimedia.org",
+        "wikidata.org", "www.openstreetmap.org",
+    }
+    for p in pages:
+        url = (p.get("page_url") or "").strip()
+        if not url or url in seen_urls:
+            continue
+        try:
+            host = urlparse(url).netloc.lower().lstrip("www.")
+        except Exception:
+            continue
+        if host not in DETERMINISTIC_HOSTS:
+            continue  # skip les 🧠 hallucinés
+        seen_urls.add(url)
+        p["_origin"] = "gemini-json"
+        combined_pages.append(p)
+
     # Étape B : pour chaque page, on scrape og:image
     photos: list[dict[str, Any]] = []
     seen_images: set[str] = set()
 
-    for page in pages:
+    for page in combined_pages:
         page_url = (page.get("page_url") or "").strip()
         if not page_url or not page_url.startswith(("http://", "https://")):
             continue
@@ -408,11 +491,13 @@ def process_item(item: dict[str, Any], validate: bool = True, verbose: bool = Fa
             if verbose:
                 print(f"  ⏭  {page_url} (domaine bloqué)")
             continue
+        origin_tag = "🔗" if page.get("_origin") == "citation" else "🧠"
         extracted = extract_images_from_page(page_url, verbose=verbose)
         if extracted.get("error"):
             if verbose:
-                print(f"  ✗ {page_url}: {extracted['error']}")
+                print(f"  ✗ {origin_tag} {page_url[:90]}: {extracted['error']}")
             continue
+        n_before = len(photos)
         for c in extracted.get("candidates") or []:
             img_url = c["url"]
             if img_url in seen_images:
@@ -425,6 +510,8 @@ def process_item(item: dict[str, Any], validate: bool = True, verbose: bool = Fa
                 "description": page.get("why") or extracted.get("page_title") or "",
                 "role": c["role"],
             })
+        if verbose and len(photos) > n_before:
+            print(f"  ✓ {origin_tag} {page_url[:90]} → {len(photos) - n_before} image(s)")
         time.sleep(0.15)  # courtesy rate-limit
 
     # Fallback Wikipedia direct API si rien trouvé

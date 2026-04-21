@@ -232,28 +232,11 @@ export function loadLandingStats(): LandingStats {
   };
 }
 
-/** "5 495" — French-locale integer. */
-export const fmtInt = (n: number) =>
-  new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 }).format(n);
-
-/** "15,06" — French-locale with up to 2 decimals. */
-export const fmtDec = (n: number, digits = 2) =>
-  new Intl.NumberFormat("fr-FR", { minimumFractionDigits: digits, maximumFractionDigits: digits }).format(n);
-
-/** Billions short-form: 11_722_400_172 → "11,72" (use with " Md €" unit). */
-export const fmtBillions = (n: number, digits = 2) => fmtDec(n / 1_000_000_000, digits);
-
-/** Millions short-form: 312_000_000 → "312" (use with " M €" unit). */
-export const fmtMillions = (n: number, digits = 0) => fmtDec(n / 1_000_000, digits);
-
-/** Automatic compact: < 1 M → "xxx k €"; < 1 B → "xxx M €"; else "x,xx Md €". */
-export function fmtCompactEur(n: number): { value: string; unit: string } {
-  const abs = Math.abs(n);
-  if (abs >= 1_000_000_000) return { value: fmtDec(n / 1_000_000_000), unit: "Md €" };
-  if (abs >= 1_000_000) return { value: fmtDec(n / 1_000_000, 0), unit: "M €" };
-  if (abs >= 1_000) return { value: fmtDec(n / 1_000, 0), unit: "k €" };
-  return { value: fmtInt(n), unit: "€" };
-}
+// Re-export format helpers from `./fmt` so existing `import { fmtInt } from
+// "@/lib/fusion-data"` keeps working. Client components should import from
+// `@/lib/fmt` directly to avoid pulling the server-only loaders.
+export { fmtInt, fmtDec, fmtBillions, fmtMillions, fmtCompactEur } from "./fmt";
+import { fmtInt, fmtDec } from "./fmt";
 
 export type BudgetPageData = {
   year: number;
@@ -323,6 +306,11 @@ type SubvBen = {
     montant_total: number;
     nb_subventions: number;
     nature_juridique?: string | null;
+    direction?: string | null;
+    secteurs_activite?: string | null;
+    sous_categorie?: string | null;
+    objet_principal?: string | null;
+    siret?: string | null;
   }>;
 };
 
@@ -360,7 +348,12 @@ export type QuiRecoitData = {
   allBeneficiaires: {
     name: string;
     theme: string | null;
+    /** Montant sur l'exercice courant (0 si pas actif cette année). */
     amount: number;
+    /** Cumul historique sur toutes les années disponibles. */
+    totalAmount: number;
+    /** Dernière année où cette asso a reçu une subvention. */
+    lastActiveYear: number;
     nb: number;
     history: { year: number; amount: number }[];
   }[];
@@ -384,6 +377,7 @@ export type AssociationFiche = {
   natureJuridique: string | null;
   totalAmount: number;
   subventionCount: number;
+  siret: string | null;
   yearsActive: number[];
   byYear: { year: number; amount: number; count: number }[];
   byTheme: { theme: string; amount: number; count: number }[];
@@ -391,6 +385,18 @@ export type AssociationFiche = {
   themeRank: { rank: number; total: number; theme: string } | null;
   /** Year-over-year swings ≥ 20% on the byYear timeline — used to annotate the chart. */
   highlights: { year: number; pct: number; kind: "up" | "down" }[];
+  /** One entry per (year × direction) with aggregated montant + objet principal.
+   * Beneficiaires_*.json already pre-aggregates per beneficiary per year, so
+   * this is essentially the line-level public data we have. */
+  lignes: {
+    year: number;
+    direction: string | null;
+    subCategory: string | null;
+    objet: string | null;
+    secteurs: string | null;
+    amount: number;
+    nb: number;
+  }[];
 };
 
 /**
@@ -402,9 +408,11 @@ export function loadAssociation(name: string): AssociationFiche | null {
   const target = decodeURIComponent(name).toLowerCase();
   const byYearMap = new Map<number, { amount: number; count: number }>();
   const byThemeMap = new Map<string, { amount: number; count: number }>();
+  const lignes: AssociationFiche["lignes"] = [];
   let canonicalName = "";
   let theme: string | null = null;
   let natureJuridique: string | null = null;
+  let siret: string | null = null;
 
   for (const y of idx.availableYears) {
     try {
@@ -414,6 +422,7 @@ export function loadAssociation(name: string): AssociationFiche | null {
         canonicalName = canonicalName || b.beneficiaire;
         theme = theme ?? b.thematique ?? null;
         natureJuridique = natureJuridique ?? b.nature_juridique ?? null;
+        siret = siret ?? b.siret ?? null;
 
         const cur = byYearMap.get(y) ?? { amount: 0, count: 0 };
         cur.amount += b.montant_total;
@@ -426,6 +435,16 @@ export function loadAssociation(name: string): AssociationFiche | null {
           t.count += b.nb_subventions;
           byThemeMap.set(b.thematique, t);
         }
+
+        lignes.push({
+          year: y,
+          direction: b.direction ?? null,
+          subCategory: b.sous_categorie ?? null,
+          objet: b.objet_principal ?? null,
+          secteurs: b.secteurs_activite ?? null,
+          amount: b.montant_total,
+          nb: b.nb_subventions,
+        });
       }
     } catch {}
   }
@@ -477,10 +496,12 @@ export function loadAssociation(name: string): AssociationFiche | null {
     name: canonicalName,
     theme,
     natureJuridique,
+    siret,
     totalAmount,
     subventionCount,
     yearsActive: byYear.map((y) => y.year),
     byYear,
+    lignes: lignes.sort((a, b) => (b.year - a.year) || (b.amount - a.amount)),
     byTheme,
     themeRank,
     highlights,
@@ -535,6 +556,88 @@ export function loadProjetVulgarization(id: string): ProjetVulgarization | null 
     _projetsVulg = data?.items ?? {};
   }
   return _projetsVulg[id] ?? null;
+}
+
+/**
+ * Devine la typologie depuis le nom du projet — fallback déterministe quand
+ * la vulgarisation LLM n'est pas dispo. Matching par mots-clés, du plus
+ * spécifique au plus générique.
+ */
+export function guessTypologieFromName(name: string | null | undefined): string | null {
+  if (!name) return null;
+  const n = name
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+
+  const rules: [RegExp, string][] = [
+    [/\b(creche|halte[- ]?garderie|multi[- ]?accueil|etablissement multi[- ]?accueil)\b/, "creche"],
+    [/\becole\s+(elementaire|maternelle|polyvalente|primaire)\b/, "ecole"],
+    [/\becole\b/, "ecole"],
+    [/\b(college|groupe scolaire)\b/, "college"],
+    [/\blycee\b/, "lycee"],
+    [/\b(piscine|bassin ecole)\b/, "piscine"],
+    [/\b(bibliotheque|mediatheque|discotheque)\b/, "bibliotheque"],
+    [/\b(stade|centre sportif|skatepark|terrain (d['a-z ]*)?education physique|\btep\b|roller park)\b/, "gymnase"],
+    [/\bgymnase\b/, "gymnase"],
+    [/\b(parc|jardin|square|coulee verte|petite ceinture|bois|promenade|parvis|esplanade|ile aux cygnes)\b/, "espace-vert"],
+    [/\b(rue|avenue|boulevard|place|carrefour|rond[- ]?point|trottoirs?|chaussee|voirie|piste cyclable|pavage|tapis|pont|passage|quai|allee|route|velorue)\b/, "voirie"],
+    [/\b(embellir votre quartier|embellir.* quartier|reamenagement|amenagement urbain|budget participatif|rue apaisee|zone 30)\b/, "voirie"],
+    [/\bmairie\b/, "administration"],
+    [/\b(eglise|chapelle|cathedrale|basilique|temple)\b/, "equipement-culturel"],
+    [/\b(theatre|conservatoire|musee|cinema|centre culturel|atelier(s)? beaux[- ]?arts|maison des? (refugies|air|associations)|pavillon de l'arsenal|institut des? cultures?)\b/, "equipement-culturel"],
+    [/\b(logement|hlm|cite|residence sociale|hbm|habitat|copropriete)\b/, "logement-social"],
+    [/\b(hopital|ehpad|centre medical|centre de sante|dispensaire|aide sociale a l'enfance)\b/, "equipement-sante"],
+    [/\b(conservatoire municipal|centre paris anim|espace jeune)\b/, "equipement-culturel"],
+  ];
+
+  for (const [rx, typo] of rules) {
+    if (rx.test(n)) return typo;
+  }
+  return null;
+}
+
+// ─── Projet photo decision ─────────────────────────────────────────────────
+
+export type ProjetPhotoDecision = {
+  decision: "photo_dediee" | "generique_typologique" | "pictogramme";
+  photo_url: string | null;
+  source_page: string | null;
+  source_label: string | null;
+  credit: string | null;
+  score: number;
+  reason: string;
+  typologie: string | null;
+};
+
+export type GenericPhotoEntry = {
+  typologie: string;
+  label: string;
+  url: string;
+  source_page: string | null;
+  source_label: string | null;
+  credit: string | null;
+  license: string | null;
+};
+
+let _projetPhotos: Record<string, ProjetPhotoDecision> | null = null;
+let _genericBank: Record<string, GenericPhotoEntry> | null = null;
+
+export function loadProjetPhoto(id: string): ProjetPhotoDecision | null {
+  if (_projetPhotos === null) {
+    const data = readJsonOrNull<{ items?: Record<string, ProjetPhotoDecision> }>("enrichment/projet_photos.json");
+    _projetPhotos = data?.items ?? {};
+  }
+  return _projetPhotos[id] ?? null;
+}
+
+export function loadGenericPhoto(typologie: string): GenericPhotoEntry | null {
+  if (_genericBank === null) {
+    const data = readJsonOrNull<{ items?: Record<string, GenericPhotoEntry> }>("enrichment/generic_photo_bank.json");
+    _genericBank = data?.items ?? {};
+  }
+  const hit = _genericBank[typologie];
+  return hit && hit.url ? hit : null;
 }
 
 export function loadProjet(id: string): ProjetFiche | null {
@@ -722,22 +825,51 @@ export function loadQuiRecoitData(requestedYear?: number): QuiRecoitData {
     .sort((a, b) => b.amount - a.amount);
 
   const availableYearsSorted = idx.availableYears.slice().sort((a, b) => a - b);
-  const allBeneficiaires = ben.data
-    .map((b) => {
+
+  // Union across ALL years — a beneficiary that hasn't received in the current
+  // year should still be findable (with its latest active year surfaced).
+  const seenNames = new Set<string>();
+  type AllBen = QuiRecoitData["allBeneficiaires"][number];
+  const allBeneficiaires: AllBen[] = [];
+  for (const file of yearlyData.values()) {
+    for (const b of file.data) {
+      if (seenNames.has(b.beneficiaire)) continue;
+      seenNames.add(b.beneficiaire);
       const histMap = benHistory.get(b.beneficiaire);
       const history = availableYearsSorted.map((y) => ({
         year: y,
         amount: histMap?.get(y) ?? 0,
       }));
-      return {
+      const totalAmount = history.reduce((s, h) => s + h.amount, 0);
+      const activeYears = history.filter((h) => h.amount > 0).map((h) => h.year);
+      const lastActiveYear = activeYears.length > 0 ? Math.max(...activeYears) : yr;
+      const curYearAmount = histMap?.get(yr) ?? 0;
+      // Use the current-year amount if any, else the most recent non-zero
+      // amount so sorting still surfaces meaningful entries.
+      const latestNonZero = [...history].reverse().find((h) => h.amount > 0)?.amount ?? 0;
+      allBeneficiaires.push({
         name: b.beneficiaire,
         theme: b.thematique ?? null,
-        amount: b.montant_total,
+        amount: curYearAmount,
+        totalAmount,
+        lastActiveYear,
         nb: b.nb_subventions,
         history,
-      };
-    })
-    .sort((a, b) => b.amount - a.amount);
+        // Hidden sort key — dev-only, not in the type
+        // @ts-expect-error used below
+        _sortKey: curYearAmount > 0 ? curYearAmount : latestNonZero,
+      });
+    }
+  }
+  allBeneficiaires.sort((a, b) => {
+    // @ts-expect-error
+    return b._sortKey - a._sortKey;
+  });
+  // Strip the private sort key before serializing down to the client
+  for (const b of allBeneficiaires) {
+    // @ts-expect-error
+    delete b._sortKey;
+  }
 
   const yearsSummary = idx.availableYears
     .map((y) => ({ year: y, total: idx.totalsByYear[String(y)]?.montant_total ?? 0, count: idx.totalsByYear[String(y)]?.nb_subventions ?? 0 }))
@@ -824,13 +956,13 @@ export type MarchesPageData = {
     siret: string;
     amount: number;
     nbContrats: number;
-    contrats: { numero: string; objet: string; montant: number; categorie: string; nature: string; date: string }[];
+    contrats: { numero: string; objet: string; objetClair: string | null; montant: number; categorie: string; nature: string; date: string }[];
   }[];
   byCategory: {
     category: string;
     amount: number;
     count: number;
-    topTitulaires: { name: string; amount: number; nb: number }[];
+    topTitulaires: { name: string; siret: string; amount: number; nb: number }[];
   }[];
   byNature: { nature: string; amount: number; count: number }[];
   allMarches: {
@@ -838,6 +970,7 @@ export type MarchesPageData = {
     titulaire: string;
     titulaireSiret: string;
     objet: string;
+    objetClair: string | null;
     montant: number;
     categorie: string;
     nature: string;
@@ -1060,11 +1193,16 @@ export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
   const marches = file.data ?? file.marches ?? [];
 
   const MULTI_NAME = "MARCHE MULTIATTRIBUTAIRE";
+  if (_marchesVulg === null) {
+    const data = readJsonOrNull<VulgarizationCache<MarcheVulgarization>>("enrichment/vulgarization_marches.json");
+    _marchesVulg = data?.items ?? {};
+  }
+  const vulgMap = _marchesVulg;
   type TitAgg = {
     amount: number;
     count: number;
     siret: string;
-    contrats: { numero: string; objet: string; montant: number; categorie: string; nature: string; date: string }[];
+    contrats: { numero: string; objet: string; objetClair: string | null; montant: number; categorie: string; nature: string; date: string }[];
   };
   const titAgg = new Map<string, TitAgg>();
   type CatAgg = { amount: number; count: number; items: Map<string, { amount: number; count: number }> };
@@ -1088,9 +1226,11 @@ export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
     if (!tA.siret && r.fournisseur_siret && r.fournisseur_siret !== "#") {
       tA.siret = r.fournisseur_siret.replace(/\s/g, "");
     }
+    const numero = r.numero_marche ?? "";
     tA.contrats.push({
-      numero: r.numero_marche ?? "",
+      numero,
       objet: r.objet || "",
+      objetClair: (numero && vulgMap[numero]?.objet_clair) || null,
       montant: v,
       categorie: r.categorie_libelle || "—",
       nature: r.nature || "—",
@@ -1135,7 +1275,12 @@ export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
       count: v.count,
       topTitulaires: [...v.items.entries()]
         .filter(([name]) => name !== MULTI_NAME)
-        .map(([name, x]) => ({ name, amount: x.amount, nb: x.count }))
+        .map(([name, x]) => ({
+          name,
+          siret: titAgg.get(name)?.siret ?? "",
+          amount: x.amount,
+          nb: x.count,
+        }))
         .sort((a, b) => b.amount - a.amount)
         .slice(0, 5),
     }))
@@ -1149,11 +1294,13 @@ export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
   const allMarches = marches
     .map((m) => {
       const r = m as MarcheRow & { numero_marche?: string; fournisseur_siret?: string; is_multiattributaire?: boolean };
+      const numeroMarche = r.numero_marche ?? "";
       return {
-        numeroMarche: r.numero_marche ?? "",
+        numeroMarche,
         titulaire: r.fournisseur_nom || "Non précisé",
         titulaireSiret: (r.fournisseur_siret ?? "").replace(/\s/g, ""),
         objet: r.objet || "",
+        objetClair: (numeroMarche && vulgMap[numeroMarche]?.objet_clair) || null,
         montant: Number(r.montant_max ?? r.montant_min ?? 0),
         categorie: r.categorie_libelle || r.nature || "Autres",
         nature: r.nature || "Autres",
@@ -1223,9 +1370,11 @@ export type InvestissementsData = {
   nbProjets: number;
   nbGeo: number;
   pctGeo: number;
-  byChapitre: { label: string; amount: number }[];
+  byChapitre: { label: string; amount: number; count: number }[];
+  /** % du montant total capté par les 10 plus gros projets (pour la bannière Pareto). */
+  top10ProjetsPct: number;
   byArrondissement: { arr: number; amount: number; count: number }[];
-  topProjets: { name: string; arr: number; chapitre: string; amount: number }[];
+  topProjets: { id: string; name: string; arr: number; chapitre: string; amount: number }[];
   geoPoints: {
     id: string;
     lat: number;
@@ -1238,11 +1387,46 @@ export type InvestissementsData = {
   yearsSummary: { year: number; total: number; horsDette: number }[];
 };
 
+/**
+ * Un projet a un "vrai" nom quand `nom_projet` existe et n'est pas un placeholder.
+ * Avant 2022, le dump BigQuery n'avait pas de libellé — toutes les lignes sont
+ * anonymes et inutilisables pour l'UX (top projets, photos, drawers).
+ */
+function hasUsableName(p: { nom_projet?: string }): boolean {
+  const n = (p.nom_projet ?? "").trim();
+  if (!n) return false;
+  const lower = n.toLowerCase();
+  return !["projet non nomme", "projet non nommé", "non nomme", "non nommé"].includes(lower);
+}
+
+/** Years avec au moins quelques projets nommés — les autres on les retire de la sélection. */
+function computeUsableYears(allYears: number[]): number[] {
+  const out: number[] = [];
+  for (const y of allYears) {
+    try {
+      const raw = readJson<InvComplet>(`map/investissements_complet_${y}.json`);
+      const named = (raw.data ?? []).filter(hasUsableName).length;
+      if (named >= 20) out.push(y);
+    } catch {}
+  }
+  return out;
+}
+
+let _usableYears: number[] | null = null;
+
 export function loadInvestissementsData(requestedYear?: number): InvestissementsData {
   const trends = readJson<InvTrends>("investissement_tendances.json");
-  const pick = requestedYear != null
-    ? trends.years.find((y) => y.year === requestedYear) ?? trends.years[trends.years.length - 1]
-    : trends.years[trends.years.length - 1];
+  const allYears = trends.years.map((y) => y.year).sort((a, b) => a - b);
+
+  if (_usableYears === null) _usableYears = computeUsableYears(allYears);
+  const usableYears = _usableYears;
+  const defaultYear = usableYears[usableYears.length - 1] ?? allYears[allYears.length - 1];
+
+  // Si l'année demandée n'a pas de données exploitables, on rabat vers la plus récente valide.
+  const effectiveYear = requestedYear != null && usableYears.includes(requestedYear)
+    ? requestedYear
+    : defaultYear;
+  const pick = trends.years.find((y) => y.year === effectiveYear) ?? trends.years[trends.years.length - 1];
   const latest = pick;
   const year = latest.year;
 
@@ -1266,11 +1450,13 @@ export function loadInvestissementsData(requestedYear?: number): Investissements
     .sort((a, b) => b.amount - a.amount);
 
   const topProjets = projets
+    .filter(hasUsableName)
     .slice()
     .sort((a, b) => b.montant - a.montant)
-    .slice(0, 10)
+    .slice(0, 24)
     .map((p) => ({
-      name: p.nom_projet ?? "Projet non nommé",
+      id: p.id,
+      name: p.nom_projet as string,
       arr: p.arrondissement,
       chapitre: p.chapitre_libelle ?? "—",
       amount: p.montant,
@@ -1290,25 +1476,236 @@ export function loadInvestissementsData(requestedYear?: number): Investissements
       arr: Number(p.arrondissement) || 0,
     }));
 
+  // Aggregate by raw chapitre_libelle from the project-level data so the
+  // stackbar labels match what `loadChapitre(slug)` can resolve. Tendances
+  // file groups differently (budget chapter) and its labels don't exist in
+  // the project data — clicking them yields 404s.
+  const chapitreAgg = new Map<string, { amount: number; count: number }>();
+  for (const p of projets) {
+    const key = p.chapitre_libelle ?? "—";
+    const cur = chapitreAgg.get(key) ?? { amount: 0, count: 0 };
+    cur.amount += Number(p.montant ?? 0);
+    cur.count += 1;
+    chapitreAgg.set(key, cur);
+  }
+
+  // Pareto : top 10 projets en montant vs total
+  const sortedByAmount = projets.slice().sort((a, b) => Number(b.montant ?? 0) - Number(a.montant ?? 0));
+  const top10Sum = sortedByAmount.slice(0, 10).reduce((s, p) => s + Number(p.montant ?? 0), 0);
+  const top10ProjetsPct = latest.depenses_total > 0 ? (top10Sum / latest.depenses_total) * 100 : 0;
+
   return {
     year,
-    availableYears: trends.years.map((y) => y.year).sort((a, b) => a - b),
+    availableYears: usableYears,
     total: latest.depenses_total,
     totalHorsDette: latest.depenses_hors_dette,
     nbProjets: projets.length,
     nbGeo,
     pctGeo: projets.length > 0 ? (nbGeo / projets.length) * 100 : 0,
-    byChapitre: latest.par_chapitre
-      .map((c) => ({ label: c.label, amount: c.depenses }))
+    byChapitre: [...chapitreAgg.entries()]
+      .map(([label, v]) => ({ label, amount: v.amount, count: v.count }))
       .sort((a, b) => b.amount - a.amount),
+    top10ProjetsPct,
     byArrondissement,
     topProjets,
     geoPoints,
+    // yearsSummary garde toutes les années pour la timeline (même sans noms,
+    // on connaît le MONTANT total voté depuis investissement_tendances.json).
     yearsSummary: trends.years.map((y) => ({
       year: y.year,
       total: y.depenses_total,
       horsDette: y.depenses_hors_dette,
     })),
+  };
+}
+
+// ─── Arrondissement fiche (investissements) ──────────────────────────────
+
+export type ArrondissementFiche = {
+  arr: number;
+  year: number;
+  total: number;
+  nbProjets: number;
+  nbGeo: number;
+  rank: number;          // rang parmi les 20 arr par montant total
+  totalShare: number;    // % du total Paris géolocalisé
+  byChapitre: { label: string; amount: number; count: number }[];
+  topProjets: {
+    id: string;
+    name: string;
+    amount: number;
+    chapitre: string;
+  }[];
+};
+
+export function loadArrondissement(arrNum: number, year?: number): ArrondissementFiche | null {
+  const trends = readJson<InvTrends>("investissement_tendances.json");
+  const pick = year != null
+    ? trends.years.find((y) => y.year === year) ?? trends.years[trends.years.length - 1]
+    : trends.years[trends.years.length - 1];
+  const targetYear = pick.year;
+
+  let complet: InvComplet | null = null;
+  try {
+    complet = readJson<InvComplet>(`map/investissements_complet_${targetYear}.json`);
+  } catch {
+    return null;
+  }
+  const projets = complet?.data ?? [];
+  const inArr = projets.filter((p) => Number(p.arrondissement) === arrNum);
+  if (inArr.length === 0) return null;
+
+  const total = inArr.reduce((s, p) => s + Number(p.montant ?? 0), 0);
+  const nbGeo = inArr.filter((p) => p.lat != null && p.lon != null).length;
+
+  // Rang dans l'exercice — par total montant
+  const arrTotals = new Map<number, number>();
+  for (const p of projets) {
+    const a = Number(p.arrondissement) || 0;
+    if (a === 0) continue;
+    arrTotals.set(a, (arrTotals.get(a) ?? 0) + Number(p.montant ?? 0));
+  }
+  const ranking = [...arrTotals.entries()].sort((a, b) => b[1] - a[1]);
+  const rank = ranking.findIndex(([a]) => a === arrNum) + 1;
+
+  const geolocalizedTotal = [...arrTotals.values()].reduce((s, v) => s + v, 0);
+  const totalShare = geolocalizedTotal > 0 ? (total / geolocalizedTotal) * 100 : 0;
+
+  const chapAgg = new Map<string, { amount: number; count: number }>();
+  for (const p of inArr) {
+    const key = p.chapitre_libelle ?? "—";
+    const cur = chapAgg.get(key) ?? { amount: 0, count: 0 };
+    cur.amount += Number(p.montant ?? 0);
+    cur.count += 1;
+    chapAgg.set(key, cur);
+  }
+  const byChapitre = [...chapAgg.entries()]
+    .map(([label, v]) => ({ label, amount: v.amount, count: v.count }))
+    .sort((a, b) => b.amount - a.amount);
+
+  const topProjets = inArr
+    .filter(hasUsableName)
+    .slice()
+    .sort((a, b) => Number(b.montant ?? 0) - Number(a.montant ?? 0))
+    .slice(0, 10)
+    .map((p) => ({
+      id: p.id,
+      name: p.nom_projet as string,
+      amount: Number(p.montant ?? 0),
+      chapitre: p.chapitre_libelle ?? "—",
+    }));
+
+  return {
+    arr: arrNum,
+    year: targetYear,
+    total,
+    nbProjets: inArr.length,
+    nbGeo,
+    rank,
+    totalShare,
+    byChapitre,
+    topProjets,
+  };
+}
+
+// ─── Chapitre fiche (investissements) ────────────────────────────────────
+
+export type ChapitreFiche = {
+  slug: string;
+  label: string;
+  year: number;
+  total: number;
+  nbProjets: number;
+  share: number;
+  rank: number;
+  nbChapitres: number;
+  topArrondissements: { arr: number; amount: number; count: number }[];
+  topProjets: {
+    id: string;
+    name: string;
+    amount: number;
+    arr: number;
+  }[];
+};
+
+export function slugifyChapitre(label: string): string {
+  return label
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
+export function loadChapitre(slug: string, year?: number): ChapitreFiche | null {
+  const trends = readJson<InvTrends>("investissement_tendances.json");
+  const pick = year != null
+    ? trends.years.find((y) => y.year === year) ?? trends.years[trends.years.length - 1]
+    : trends.years[trends.years.length - 1];
+  const targetYear = pick.year;
+
+  let complet: InvComplet | null = null;
+  try {
+    complet = readJson<InvComplet>(`map/investissements_complet_${targetYear}.json`);
+  } catch {
+    return null;
+  }
+  const projets = complet?.data ?? [];
+
+  const chapAgg = new Map<string, { amount: number; count: number }>();
+  for (const p of projets) {
+    const key = p.chapitre_libelle ?? "—";
+    const cur = chapAgg.get(key) ?? { amount: 0, count: 0 };
+    cur.amount += Number(p.montant ?? 0);
+    cur.count += 1;
+    chapAgg.set(key, cur);
+  }
+  const ranking = [...chapAgg.entries()].sort((a, b) => b[1].amount - a[1].amount);
+
+  const match = ranking.find(([label]) => slugifyChapitre(label) === slug);
+  if (!match) return null;
+  const [label, agg] = match;
+
+  const inChap = projets.filter((p) => (p.chapitre_libelle ?? "—") === label);
+  const rank = ranking.findIndex(([l]) => l === label) + 1;
+
+  const arrAgg = new Map<number, { amount: number; count: number }>();
+  for (const p of inChap) {
+    const a = Number(p.arrondissement) || 0;
+    if (a === 0) continue;
+    const cur = arrAgg.get(a) ?? { amount: 0, count: 0 };
+    cur.amount += Number(p.montant ?? 0);
+    cur.count += 1;
+    arrAgg.set(a, cur);
+  }
+  const topArrondissements = [...arrAgg.entries()]
+    .map(([arr, v]) => ({ arr, amount: v.amount, count: v.count }))
+    .sort((a, b) => b.amount - a.amount)
+    .slice(0, 5);
+
+  const topProjets = inChap
+    .filter(hasUsableName)
+    .slice()
+    .sort((a, b) => Number(b.montant ?? 0) - Number(a.montant ?? 0))
+    .slice(0, 10)
+    .map((p) => ({
+      id: p.id,
+      name: p.nom_projet as string,
+      amount: Number(p.montant ?? 0),
+      arr: Number(p.arrondissement) || 0,
+    }));
+
+  return {
+    slug,
+    label,
+    year: targetYear,
+    total: agg.amount,
+    nbProjets: agg.count,
+    share: pick.depenses_total > 0 ? (agg.amount / pick.depenses_total) * 100 : 0,
+    rank,
+    nbChapitres: ranking.length,
+    topArrondissements,
+    topProjets,
   };
 }
 
@@ -1344,7 +1741,9 @@ export type PatrimoineData = {
   detteFinanciere: number;
   detteNonFinanciere: number;
   provisions: number;
-  capaciteDesendettement: number; // en années (approx)
+  capaciteDesendettement: number; // en années
+  epargneBrute: number;           // recettes fonct − dépenses fonct, depuis budget
+  recettesFonctionnement: number; // base pour ratio RRF
   actifBreakdown: { label: string; value: number }[];
   passifBreakdown: { label: string; value: number }[];
   yearsSummary: { year: number; actif: number; passif: number; dette: number; fondsPropres: number }[];
@@ -1370,9 +1769,26 @@ export function loadPatrimoineData(requestedYear?: number): PatrimoineData {
     .map((l) => ({ label: l.target, value: l.value }))
     .sort((a, b) => b.value - a.value);
 
-  // Capacité de désendettement ≈ dette / épargne brute annuelle
-  // On l'approxime ici comme dette / 600 M € (épargne brute moyenne Paris)
-  const capaciteDesendettement = bilan.totals.dettes_financieres / 900_000_000;
+  // Épargne brute = recettes fonctionnement − dépenses fonctionnement, via budget sankey
+  let epargneBrute = 0;
+  let recettesFonctionnement = 0;
+  try {
+    const budget = readJson<BudgetSankeyFull>(`budget_sankey_${year}.json`);
+    let fonctionnement = 0;
+    for (const cat of Object.values(budget.bySection)) {
+      fonctionnement += cat.Fonctionnement?.total ?? 0;
+    }
+    const emprunts = budget.links
+      .filter((l) => l.source === "Emprunts" && l.target === "Budget Paris")
+      .reduce((s, l) => s + l.value, 0);
+    recettesFonctionnement = budget.totals.recettes - emprunts;
+    epargneBrute = Math.max(0, recettesFonctionnement - fonctionnement);
+  } catch {}
+
+  // Capacité de désendettement = dette financière / épargne brute annuelle
+  const capaciteDesendettement = epargneBrute > 0
+    ? bilan.totals.dettes_financieres / epargneBrute
+    : bilan.totals.dettes_financieres / 900_000_000;
 
   const yearsSummary: PatrimoineData["yearsSummary"] = [];
   for (const y of idx.availableYears.slice().sort((a, b) => a - b)) {
@@ -1399,10 +1815,74 @@ export function loadPatrimoineData(requestedYear?: number): PatrimoineData {
     detteNonFinanciere: bilan.totals.dettes_non_financieres,
     provisions: bilan.totals.provisions,
     capaciteDesendettement,
+    epargneBrute,
+    recettesFonctionnement,
     actifBreakdown,
     passifBreakdown,
     yearsSummary,
   };
+}
+
+// ─── Patrimoine — structure enrichie (dette + masses) ─────────────────────
+
+export type DetteInstrument = {
+  key: string;
+  label: string;
+  subtitle: string;
+  tag: string;
+  description: string;
+  encours: number;
+  part: number;
+  taux_moyen_pct: number;
+  maturite_moyenne_ans: number;
+  part_taux_fixe: number;
+};
+
+export type PatrimoineMasse = {
+  label: string;
+  value: number;
+  share: number;
+  tag: string;
+  sub: string;
+  details: string;
+};
+
+export type PatrimoineStructure = {
+  year: number;
+  structure_dette: {
+    total_dette_financiere: number;
+    instruments: DetteInstrument[];
+    taux: {
+      part_fixe: number;
+      part_variable: number;
+      taux_fixe_moyen_pondere_pct: number;
+      encours_taux_fixe: number;
+      encours_taux_variable: number;
+      indice_variable: string;
+    };
+    maturite_moyenne_ans: number;
+    prochaine_echeance_lourde: {
+      annee: number;
+      mois: string;
+      montant_m_eur: number;
+      libelle: string;
+    };
+  };
+  patrimoine_masses: PatrimoineMasse[];
+  paris_headcounts: Record<string, number>;
+  sources: {
+    dette: string[];
+    patrimoine_headcounts: string[];
+    limites: string;
+  };
+};
+
+export function loadPatrimoineStructure(year: number): PatrimoineStructure | null {
+  try {
+    return readJson<PatrimoineStructure>(`patrimoine_structure_${year}.json`);
+  } catch {
+    return null;
+  }
 }
 
 // ─── Logement social ───────────────────────────────────────────────────────
@@ -1575,4 +2055,204 @@ export function loadBudgetPageData(requestedYear?: number): BudgetPageData {
     sankeyLinks: sankey.links,
     yearsSummary,
   };
+}
+
+// =====================================================================
+// Thème subventions / catégorie marchés — drawer fiches
+// =====================================================================
+
+/** Slugifie un libellé éditorial (thème subvention / catégorie marché). */
+export function slugifyLabel(label: string): string {
+  return label
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
+export type ThemeSubventionsFiche = {
+  theme: string;
+  slug: string;
+  year: number;
+  previousYear: number;
+  total: number;
+  rankPct: number;
+  nbBeneficiaires: number;
+  nbSubventions: number;
+  shareOfTotalPct: number;
+  evolution: { year: number; amount: number; count: number }[];
+  topBeneficiaires: { name: string; amount: number; nb: number; direction: string | null; objet: string | null }[];
+};
+
+/** Charge la fiche agrégée pour un thème (page + drawer intercepting). */
+export function loadThemeSubventions(slug: string, requestedYear?: number): ThemeSubventionsFiche | null {
+  const idx = readJson<SubvIndex>("subventions/index.json");
+  const years = idx.availableYears.slice().sort((a, b) => a - b);
+  const yr = requestedYear && years.includes(requestedYear) ? requestedYear : years[years.length - 1];
+  const prev = years[years.length - 2] ?? yr;
+
+  // Résout le slug : match par slugification. Les variantes `Social-*` sont
+  // consolidées dans le stackbar sous `Social`, donc on doit élargir.
+  const target = slug.toLowerCase();
+  const matchTheme = (t: string | undefined | null): boolean => {
+    if (!t) return false;
+    const s = slugifyLabel(t);
+    if (s === target) return true;
+    if (target === "social" && t.toLowerCase().startsWith("social")) return true;
+    return false;
+  };
+
+  const perYear = new Map<number, { amount: number; count: number; benes: Map<string, { amount: number; nb: number; direction: string | null; objet: string | null }> }>();
+  let resolvedLabel = "";
+
+  for (const y of years) {
+    try {
+      const file = readJson<SubvBen>(`subventions/beneficiaires_${y}.json`);
+      const yearAgg = { amount: 0, count: 0, benes: new Map<string, { amount: number; nb: number; direction: string | null; objet: string | null }>() };
+      for (const b of file.data) {
+        if (!matchTheme(b.thematique ?? null)) continue;
+        resolvedLabel = resolvedLabel || (target === "social" ? "Social" : b.thematique ?? "");
+        yearAgg.amount += b.montant_total;
+        yearAgg.count += b.nb_subventions;
+        const cur = yearAgg.benes.get(b.beneficiaire) ?? { amount: 0, nb: 0, direction: null, objet: null };
+        cur.amount += b.montant_total;
+        cur.nb += b.nb_subventions;
+        cur.direction = cur.direction ?? b.direction ?? null;
+        cur.objet = cur.objet ?? b.objet_principal ?? null;
+        yearAgg.benes.set(b.beneficiaire, cur);
+      }
+      if (yearAgg.count > 0) perYear.set(y, yearAgg);
+    } catch {}
+  }
+
+  if (!resolvedLabel || !perYear.has(yr)) return null;
+  const current = perYear.get(yr)!;
+
+  const evolution = years
+    .map((y) => {
+      const p = perYear.get(y);
+      return { year: y, amount: p?.amount ?? 0, count: p?.count ?? 0 };
+    })
+    .filter((e) => e.amount > 0);
+
+  const topBeneficiaires = [...current.benes.entries()]
+    .map(([name, v]) => ({ name, amount: v.amount, nb: v.nb, direction: v.direction, objet: v.objet }))
+    .sort((a, b) => b.amount - a.amount)
+    .slice(0, 10);
+
+  const totalYr = idx.totalsByYear[String(yr)]?.montant_total ?? 0;
+  const shareOfTotalPct = totalYr > 0 ? (current.amount / totalYr) * 100 : 0;
+
+  return {
+    theme: resolvedLabel,
+    slug,
+    year: yr,
+    previousYear: prev,
+    total: current.amount,
+    rankPct: shareOfTotalPct,
+    nbBeneficiaires: current.benes.size,
+    nbSubventions: current.count,
+    shareOfTotalPct,
+    evolution,
+    topBeneficiaires,
+  };
+}
+
+export type MarcheCategorieFiche = {
+  category: string;
+  slug: string;
+  year: number;
+  total: number;
+  shareOfTotalPct: number;
+  nbContrats: number;
+  nbTitulaires: number;
+  topTitulaires: { name: string; siret: string; amount: number; nb: number }[];
+  topContrats: { numero: string; objet: string; objetClair: string | null; montant: number; fournisseur: string; fournisseurSiret: string; date: string; nature: string }[];
+};
+
+/** Charge la fiche agrégée pour une catégorie de marchés publics. */
+export function loadMarcheCategorie(slug: string, requestedYear?: number): MarcheCategorieFiche | null {
+  const idx = readJson<MarchesIndexRaw>("marches-publics/index.json");
+  const years = (idx.availableYears ?? []).slice().sort((a, b) => a - b);
+  const yr = requestedYear && years.includes(requestedYear) ? requestedYear : years[years.length - 1];
+
+  let file: MarchesFile;
+  try {
+    file = readJson<MarchesFile>(`marches-publics/marches_${yr}.json`);
+  } catch {
+    return null;
+  }
+  const rows = (file.data ?? file.marches ?? []) as (MarcheRow & {
+    numero_marche?: string;
+    fournisseur_siret?: string;
+    fournisseur_nom?: string;
+  })[];
+
+  const target = slug.toLowerCase();
+  const matching = rows.filter((r) => {
+    const cat = r.categorie_libelle || r.nature || "Autres";
+    return slugifyLabel(cat) === target;
+  });
+  if (matching.length === 0) return null;
+
+  const firstCat = matching[0].categorie_libelle || matching[0].nature || "Autres";
+  const total = matching.reduce((s, r) => s + Number(r.montant_max ?? 0), 0);
+
+  const titMap = new Map<string, { amount: number; count: number; siret: string }>();
+  for (const r of matching) {
+    const name = r.fournisseur_nom || "Non précisé";
+    if (name === "MARCHE MULTIATTRIBUTAIRE") continue;
+    const cur = titMap.get(name) ?? { amount: 0, count: 0, siret: "" };
+    cur.amount += Number(r.montant_max ?? 0);
+    cur.count += 1;
+    if (!cur.siret && r.fournisseur_siret && r.fournisseur_siret !== "#") {
+      cur.siret = r.fournisseur_siret.replace(/\s/g, "");
+    }
+    titMap.set(name, cur);
+  }
+  const topTitulaires = [...titMap.entries()]
+    .map(([name, v]) => ({ name, siret: v.siret, amount: v.amount, nb: v.count }))
+    .sort((a, b) => b.amount - a.amount)
+    .slice(0, 8);
+
+  const vulg = loadMarcheVulgMap();
+  const topContrats = matching
+    .slice()
+    .sort((a, b) => Number(b.montant_max ?? 0) - Number(a.montant_max ?? 0))
+    .slice(0, 10)
+    .map((r) => {
+      const numero = r.numero_marche ?? "";
+      return {
+        numero,
+        objet: r.objet ?? "",
+        objetClair: (numero && vulg[numero]?.objet_clair) || null,
+        montant: Number(r.montant_max ?? 0),
+        fournisseur: r.fournisseur_nom ?? "Non précisé",
+        fournisseurSiret: (r.fournisseur_siret ?? "").replace(/\s/g, ""),
+        date: r.date_notification ?? "",
+        nature: r.nature ?? "—",
+      };
+    });
+
+  // Grand total of marchés this year to compute a share %
+  const grandTotal = rows.reduce((s, r) => s + Number(r.montant_max ?? 0), 0);
+  const shareOfTotalPct = grandTotal > 0 ? (total / grandTotal) * 100 : 0;
+
+  return {
+    category: firstCat,
+    slug,
+    year: yr,
+    total,
+    shareOfTotalPct,
+    nbContrats: matching.length,
+    nbTitulaires: titMap.size,
+    topTitulaires,
+    topContrats,
+  };
+}
+
+function loadMarcheVulgMap(): Record<string, MarcheVulgarization> {
+  const data = readJsonOrNull<VulgarizationCache<MarcheVulgarization>>("enrichment/vulgarization_marches.json");
+  return data?.items ?? {};
 }
