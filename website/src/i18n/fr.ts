@@ -1096,7 +1096,7 @@ const fr: Record<string, string> = {
   'fx.nav.menu_aria': 'Menu',
   'fx.nav.close': 'Fermer',
   'fx.nav.lang_aria': 'Langue / Language',
-  'fx.nav.link.home': 'Accueil',
+  'fx.nav.link.home': 'Paris',
   'fx.nav.link.budget': 'Le budget',
   'fx.nav.link.subventions': 'Subventions',
   'fx.nav.link.marches': 'Marchés publics',
