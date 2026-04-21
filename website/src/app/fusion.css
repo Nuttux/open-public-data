@@ -3456,7 +3456,27 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   max-width: 640px;
   margin: 0 0 40px;
 }
-.theme-fusion .fx-hero .fx-ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+.theme-fusion .fx-hero .fx-ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 32px; }
+/* Hoisted hero stat: smaller than the scale-section original so it fits
+   in the first screen alongside h1, lede, and CTA. */
+.theme-fusion .fx-hero .fx-hero-num-line {
+  font-size: 15px;
+  color: var(--muted);
+  letter-spacing: .02em;
+  margin: 0 0 4px;
+  font-family: var(--f-mono);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.theme-fusion .fx-hero .fx-hero-num-big {
+  font-size: clamp(56px, 9vw, 108px);
+  line-height: .88;
+  margin: 0 0 12px;
+}
+.theme-fusion .fx-hero .fx-hero-num-delta {
+  font-size: 14px;
+  margin: 0;
+}
 
 .theme-fusion .fx-hero-bg {
   position: absolute;
