@@ -1461,7 +1461,7 @@ const fr: Record<string, string> = {
   'fx.qr.s02.title.before': 'Où va ',
   'fx.qr.s02.title.em': "l'argent",
   'fx.qr.s02.title.after': ' ?',
-  'fx.qr.s02.sub': 'Chaque segment de la barre = une thématique, proportionnelle au montant versé. Cliquez pour filtrer les bénéficiaires.',
+  'fx.qr.s02.sub': 'Chaque segment de la barre = une thématique, proportionnelle au montant versé. Cliquez sur un segment pour ouvrir le détail de la thématique (top bénéficiaires, évolution, concentration).',
   'fx.qr.s02.entity_noun': 'bénéficiaires',
   'fx.qr.s02.pareto_contrast': "soit davantage que tous les autres bénéficiaires réunis",
   'fx.qr.s05.kind': 'Dans le temps',
