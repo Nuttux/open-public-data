@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import "../../fusion.css";
 
 import { Navbar, Footer } from "@/components/fusion";
@@ -70,13 +71,15 @@ export default async function StressTestPage() {
 
       <section className="fx-section">
         <div className="fx-wrap">
-          <StressTest
-            dette={d.detteFinanciere}
-            capaciteBaseline={d.capaciteDesendettement}
-            tauxBaseline={tauxBaseline}
-            year={d.year}
-            urlSync
-          />
+          <Suspense fallback={null}>
+            <StressTest
+              dette={d.detteFinanciere}
+              capaciteBaseline={d.capaciteDesendettement}
+              tauxBaseline={tauxBaseline}
+              year={d.year}
+              urlSync
+            />
+          </Suspense>
 
           <TaPartAToi
             dette={d.detteFinanciere}
