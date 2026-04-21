@@ -14,12 +14,14 @@ import BrandMark from "@/components/fusion/BrandMark";
 import HeroBg from "@/components/fusion/HeroBg";
 import { fmtDec, fmtInt, fmtBillions } from "@/lib/fmt";
 import type { LandingStats } from "@/lib/fusion-data";
-import { useT } from "@/lib/localeContext";
+import { useT, useLocale } from "@/lib/localeContext";
+import { trLabel } from "@/lib/label-translate";
 
 type Props = { stats: LandingStats };
 
 export default function LandingClient({ stats }: Props) {
   const t = useT();
+  const { locale } = useLocale();
   const deltaPct = stats.deltaVsLastExecutedPct;
   const direction: "up" | "down" | "flat" =
     deltaPct > 0.1 ? "up" : deltaPct < -0.1 ? "down" : "flat";
@@ -98,11 +100,13 @@ export default function LandingClient({ stats }: Props) {
               ),
             }}
             items={stats.breakdown.map((b) => ({
-              label: b.label === "Autres (D)" ? t("fx.land.scale.autres") : b.label,
+              label: b.label === "Autres (D)" ? t("fx.land.scale.autres") : trLabel(b.label, locale),
               value: b.perMonth,
               unit: "€",
               display: fmtInt(b.perMonth),
+              href: `/budget?theme=${encodeURIComponent(b.label)}`,
             }))}
+            shareTotal={stats.perCapitaMonth}
           />
         </div>
       </section>
