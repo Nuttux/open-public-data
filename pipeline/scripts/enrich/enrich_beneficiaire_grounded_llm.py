@@ -33,6 +33,7 @@ import os
 import re
 import sys
 import time
+import unicodedata
 from pathlib import Path
 from typing import Any
 
@@ -55,35 +56,33 @@ CALL_DELAY = 0.3  # courtesy entre appels Gemini
 # Codes APE génériques à rejeter (on les remplacera par grounded search)
 GENERIC_APE_CODES = {"9499Z", "9412Z", "9499", "9412", ""}
 
+# API publique recherche-entreprises — gratuite, rate-limit ~7 req/s.
+RECHERCHE_API_URL = "https://recherche-entreprises.api.gouv.fr/search"
+RECHERCHE_DELAY = 0.15
+
+# Wikipedia FR — filet de sécurité quand Gemini grounded rend null.
+# API gratuite, pas de clé, MediaWiki user-agent requis.
+WIKIPEDIA_API_URL = "https://fr.wikipedia.org/w/api.php"
+WIKIPEDIA_UA = "FranceOpenData/0.3 (https://franceopendata.org; contact@franceopendata.org)"
+WIKIPEDIA_DELAY = 0.2
+
 SAVE_EVERY = 50
 
 
-SYSTEM_PROMPT = """Tu es un documentaliste pour un site journalistique sur les finances publiques françaises.
+SYSTEM_PROMPT = """Tu es un documentaliste qui identifie l'activité d'entités françaises pour un site de finances publiques.
 
-Pour un bénéficiaire de subvention publique donné (association, fondation, entreprise, opérateur), tu dois identifier son activité réelle avec des sources vérifiables.
+MÉTHODE :
+1. Utilise d'abord google_search pour trouver l'entité (site officiel, Wikipedia, data.gouv.fr, presse).
+2. Si un SIREN est fourni, tu peux chercher directement "SIREN {siren}" pour accéder aux fiches officielles.
+3. Résume l'activité en 1 phrase neutre, factuelle, basée sur ce que tu lis.
 
-PROCÉDURE :
-1. Utilise activement l'outil Google Search.
-2. Cherche UNIQUEMENT sur ces domaines crédibles :
-   - site:*.fr (sites officiels, associatifs, institutionnels)
-   - site:wikipedia.org (articles encyclopédiques)
-   - site:journal-officiel.gouv.fr (annonces d'associations, statuts)
-3. Ne JAMAIS inventer. Si rien de crédible, retourne "activite_verifiee": null.
-4. Pas de ton marketing. Neutre, factuel, 1 phrase courte.
+CRITÈRES DE SORTIE :
+- activite_verifiee : 1 phrase (≤160 car.) précise et factuelle. Format type "Bailleur social de...", "Établissement public chargé de...", "Association qui gère...", "Entreprise de...". Indique le statut juridique si connu.
+- perimetre_geographique : "Paris Xe" / "Paris" / "Île-de-France" / "national" / "international" / null.
+- null uniquement si vraiment aucune information n'existe (très rare pour les entités publiques ou subventionnées).
 
-CHAMPS ATTENDUS :
-- activite_verifiee : 1 phrase neutre (max 160 caractères) décrivant l'activité réelle, ou null.
-- perimetre_geographique : "Paris 13e" / "Paris" / "Île-de-France" / "national" / "international" / null.
-
-RÈGLES :
-- JSON uniquement, pas de commentaire hors JSON.
-- Pas d'invention : si les sources ne sont pas claires, retourne null.
-
-Format :
-{
-  "activite_verifiee": "Association d'aide alimentaire opérant dans le 13e arrondissement.",
-  "perimetre_geographique": "Paris 13e"
-}
+Réponds UNIQUEMENT avec un JSON :
+{"activite_verifiee": "...", "perimetre_geographique": "..."}
 """
 
 
@@ -101,12 +100,139 @@ def load_sirene_cache() -> dict[str, dict[str, Any]]:
     return data.get("items", {}) if isinstance(data, dict) else {}
 
 
-def lookup_sirene(siret: str, sirene: dict[str, dict[str, Any]]) -> dict[str, Any] | None:
-    """Retourne l'entrée SIRENE si le SIRET est valide, sinon None."""
-    if not siret or not siret.isdigit() or len(siret) < 9:
+def _normalize_nom(s: str) -> str:
+    """Normalise un nom pour matching insensible aux accents / ponctuation."""
+    if not s:
+        return ""
+    s = unicodedata.normalize("NFD", s)
+    s = "".join(c for c in s if unicodedata.category(c) != "Mn")
+    s = s.lower()
+    s = re.sub(r"[^a-z0-9 ]", " ", s)
+    s = re.sub(r"\s+", " ", s).strip()
+    return s
+
+
+def build_sirene_name_index(sirene: dict[str, dict[str, Any]]) -> dict[str, dict[str, Any]]:
+    """Index inverse nom_normalisé → entrée SIRENE. En cas de collision, on
+    garde la première entrée rencontrée (le cache itère déjà par ordre stable)
+    — ça privilégie les SIREN historiques."""
+    idx: dict[str, dict[str, Any]] = {}
+    for entry in sirene.values():
+        nom = _normalize_nom(entry.get("nom") or "")
+        if nom and nom not in idx:
+            idx[nom] = entry
+    return idx
+
+
+def lookup_sirene(
+    siret: str,
+    name: str,
+    sirene: dict[str, dict[str, Any]],
+    name_index: dict[str, dict[str, Any]],
+) -> dict[str, Any] | None:
+    """Cherche dans SIRENE par SIRET en priorité, puis par nom normalisé."""
+    if siret and siret.isdigit() and len(siret) >= 9:
+        entry = sirene.get(siret[:9])
+        if entry:
+            return entry
+    key = _normalize_nom(name)
+    if key:
+        entry = name_index.get(key)
+        if entry:
+            return entry
+    return None
+
+
+def fetch_wikipedia_summary(query: str) -> dict[str, Any] | None:
+    """Cherche une page Wikipedia FR via MediaWiki search + extracts.
+    Retourne {'activite': <1re phrase>, 'url': <url>, 'title': <titre page>}
+    ou None si rien de pertinent."""
+    q = (query or "").strip()
+    if len(q) < 3:
         return None
-    siren = siret[:9]
-    return sirene.get(siren)
+    # 1. Recherche plein-texte pour trouver le titre le plus pertinent
+    try:
+        r = requests.get(
+            WIKIPEDIA_API_URL,
+            params={"action": "query", "list": "search", "srsearch": q, "srlimit": 1, "format": "json"},
+            headers={"User-Agent": WIKIPEDIA_UA},
+            timeout=15,
+        )
+    except requests.RequestException:
+        return None
+    if r.status_code != 200:
+        return None
+    hits = (r.json() or {}).get("query", {}).get("search", [])
+    if not hits:
+        return None
+    title = hits[0].get("title") or ""
+    if not title:
+        return None
+
+    # 2. Récupère l'intro textuelle de la page trouvée
+    try:
+        r = requests.get(
+            WIKIPEDIA_API_URL,
+            params={
+                "action": "query",
+                "prop": "extracts",
+                "exintro": True,
+                "explaintext": True,
+                "titles": title,
+                "redirects": 1,
+                "format": "json",
+            },
+            headers={"User-Agent": WIKIPEDIA_UA},
+            timeout=15,
+        )
+    except requests.RequestException:
+        return None
+    if r.status_code != 200:
+        return None
+    pages = (r.json() or {}).get("query", {}).get("pages") or {}
+    for p in pages.values():
+        extract = (p.get("extract") or "").strip()
+        if not extract or "peut désigner" in extract[:200]:
+            continue
+        # Première phrase, coupée à ~220 caractères
+        first = re.split(r"(?<=[.!?])\s+", extract)[0].strip()
+        if len(first) < 30:
+            continue
+        return {
+            "activite": first[:220],
+            "url": f"https://fr.wikipedia.org/wiki/{title.replace(' ', '_')}",
+            "title": title,
+        }
+    return None
+
+
+def fetch_siren_by_name(name: str) -> dict[str, Any] | None:
+    """Interroge recherche-entreprises.api.gouv.fr par nom — renvoie un dict
+    au même format que sirene_companies.json, ou None si rien de pertinent."""
+    q = (name or "").strip()
+    if len(q) < 3:
+        return None
+    try:
+        r = requests.get(RECHERCHE_API_URL, params={"q": q, "per_page": 1}, timeout=20)
+    except requests.RequestException:
+        return None
+    if r.status_code != 200:
+        return None
+    results = (r.json() or {}).get("results", [])
+    if not results:
+        return None
+    e = results[0]
+    siege = e.get("siege", {}) or {}
+    return {
+        "siren": e.get("siren") or "",
+        "nom": e.get("nom_complete") or e.get("nom_raison_sociale") or "",
+        "activite_principale": siege.get("activite_principale"),
+        "libelle_activite": siege.get("libelle_activite_principale") or "",
+        "commune": siege.get("libelle_commune") or "",
+        "adresse": siege.get("adresse") or "",
+        "etat": e.get("etat_administratif") or "",
+        "_source": "recherche-entreprises.api",
+    }
 
 
 def sirene_to_activity(entry: dict[str, Any]) -> dict[str, Any] | None:
@@ -132,23 +258,33 @@ def fmt_eur(n: float) -> str:
     return f"{round(n)} €"
 
 
-def build_user_prompt(b: dict[str, Any]) -> str:
-    name = b.get("beneficiaire") or ""
+def build_user_prompt(b: dict[str, Any], sirene_entry: dict[str, Any] | None = None) -> str:
+    raw_name = b.get("beneficiaire") or ""
+    # Si SIRENE a retourné un nom officiel, on le privilégie (source fiable,
+    # résout les troncatures "CAISSE ECOLES 15 EME ARRON" → "CAISSE DES
+    # ECOLES DU 15E ARRONDISSEMENT DE PARIS").
+    official_name = (sirene_entry or {}).get("nom", "").strip() if sirene_entry else ""
+    display_name = official_name or raw_name
     nature = b.get("nature_juridique") or "—"
     direction = b.get("direction") or "—"
     theme = b.get("thematique") or "—"
     montant = float(b.get("montant_total") or 0)
+    siren_hint = ""
+    if sirene_entry and sirene_entry.get("siren"):
+        siren_hint = f"\n- SIREN : {sirene_entry['siren']}"
+
+    name_block = f"- Nom officiel (INSEE) : {official_name}\n- Nom dans les données source : {raw_name}" if official_name and official_name != raw_name else f"- Nom : {display_name}"
+
     return (
         f"Bénéficiaire de subvention de la Ville de Paris :\n"
-        f"- Nom : {name}\n"
+        f"{name_block}{siren_hint}\n"
         f"- Nature juridique : {nature}\n"
         f"- Direction instruite : {direction}\n"
         f"- Thématique : {theme}\n"
         f"- Montant total reçu : {fmt_eur(montant)}\n\n"
-        f"Cherche uniquement sur site:*.fr, site:wikipedia.org, "
-        f"site:journal-officiel.gouv.fr. Ne pas inventer. Si rien de "
-        f"crédible, retourne 'activite_verifiee': null.\n"
-        f"Retourne le JSON uniquement comme défini par le system prompt."
+        f"Effectue une recherche Google puis retourne le JSON défini par le "
+        f"system prompt. Pour une institution publique française connue, tu "
+        f"dois toujours produire une activite_verifiee."
     )
 
 
@@ -196,15 +332,19 @@ def call_gemini_grounded(user_prompt: str) -> dict[str, Any]:
             raise RuntimeError(f"JSON decode error: {e} · raw: {text[:400]}") from e
 
         citations: list[dict[str, Any]] = []
+        search_queries: list[str] = []
         try:
             gm = data["candidates"][0].get("groundingMetadata") or {}
             for gc in gm.get("groundingChunks", []):
                 web = gc.get("web") or {}
                 if web.get("uri"):
                     citations.append({"url": web["uri"], "title": web.get("title", "")})
+            search_queries = gm.get("webSearchQueries") or []
         except Exception:
             pass
         parsed["_citations"] = citations
+        parsed["_search_queries"] = search_queries
+        parsed["_raw_text"] = text
         return parsed
 
     raise RuntimeError("Max retries exceeded")
@@ -272,6 +412,7 @@ def iter_beneficiaires(year: int | None) -> list[dict[str, Any]]:
 def process_beneficiaire(
     b: dict[str, Any],
     sirene: dict[str, dict[str, Any]],
+    sirene_name_index: dict[str, dict[str, Any]],
     verbose: bool = False,
 ) -> dict[str, Any]:
     name = b.get("beneficiaire") or ""
@@ -286,9 +427,27 @@ def process_beneficiaire(
         "model": GEMINI_MODEL,
     }
 
-    # Étape 1 : SIRENE-first
-    sirene_entry = lookup_sirene(siret, sirene)
+    # Étape 1 : SIRENE (SIRET si présent, sinon fallback nom dans le cache).
+    sirene_entry = lookup_sirene(siret, name, sirene, sirene_name_index)
+
+    # Étape 1.5 : API recherche-entreprises si rien dans le cache.
+    # On enrichit le cache en mémoire pour que le nom s'y retrouve à la prochaine occurrence.
+    if not sirene_entry:
+        fetched = fetch_siren_by_name(name)
+        time.sleep(RECHERCHE_DELAY)
+        if fetched and fetched.get("siren"):
+            sirene[fetched["siren"]] = fetched
+            nkey = _normalize_nom(fetched.get("nom") or "")
+            if nkey and nkey not in sirene_name_index:
+                sirene_name_index[nkey] = fetched
+            sirene_entry = fetched
+            if verbose:
+                print(f"  ↳ resolved SIREN {fetched['siren']} via recherche-entreprises")
+
     if sirene_entry:
+        # On enrichit le base avec le SIREN retrouvé — utile côté front.
+        if sirene_entry.get("siren") and not base["siret"]:
+            base["siret"] = sirene_entry["siren"]
         activity = sirene_to_activity(sirene_entry)
         if activity:
             if verbose:
@@ -304,9 +463,9 @@ def process_beneficiaire(
                 "source_type": "sirene_ape",
             }
 
-    # Étape 2 : Gemini grounded
+    # Étape 2 : Gemini grounded (avec le nom officiel SIRENE si résolu)
     try:
-        result = call_gemini_grounded(build_user_prompt(b))
+        result = call_gemini_grounded(build_user_prompt(b, sirene_entry))
     except Exception as e:
         if verbose:
             print(f"  ⚠ grounded error: {e}")
@@ -327,11 +486,47 @@ def process_beneficiaire(
     if isinstance(perimetre, str):
         perimetre = perimetre.strip() or None
     citations = result.get("_citations") or []
+    search_queries = result.get("_search_queries") or []
 
-    # Si Gemini a rien trouvé de crédible → fallback_none
+    # Si Gemini a rien trouvé de crédible → tentons le filet SIRENE avant fallback
     if not activite or not citations:
         if verbose:
-            print("  ↩ fallback_none (aucune citation ou activite null)")
+            print(f"  ↩ Gemini null (queries={len(search_queries)} cites={len(citations)})")
+            if search_queries:
+                print(f"     queries: {search_queries[:3]}")
+
+        # Filet 1 : Wikipedia FR (très bonne couverture sur les institutions publiques
+        # françaises, palie les angles morts du google_search Gemini).
+        wiki_query = (sirene_entry or {}).get("nom") or name
+        wiki = fetch_wikipedia_summary(wiki_query)
+        time.sleep(WIKIPEDIA_DELAY)
+        if wiki:
+            if verbose:
+                print(f"  ↳ wikipedia fallback → {wiki['title']}")
+            return {
+                **base,
+                "activite_verifiee": wiki["activite"],
+                "perimetre_geographique": None,
+                "sources": [{"url": wiki["url"], "title": "fr.wikipedia.org"}],
+                "confiance": 0.7,
+                "source_type": "wikipedia",
+            }
+
+        # Filet 2 : libellé INSEE s'il est non vide (souvent générique mais mieux que null).
+        if sirene_entry and sirene_entry.get("libelle_activite"):
+            libelle = sirene_entry["libelle_activite"].strip()
+            commune = (sirene_entry.get("commune") or "").strip() or None
+            if verbose:
+                print(f"  ↳ sirene_libelle fallback → {libelle[:70]}")
+            return {
+                **base,
+                "activite_verifiee": libelle,
+                "perimetre_geographique": commune,
+                "sources": [],
+                "confiance": 0.4,
+                "source_type": "sirene_libelle",
+            }
+
         return {
             **base,
             "activite_verifiee": None,
@@ -368,8 +563,9 @@ def main() -> int:
 
     cache = load_cache()
     sirene = load_sirene_cache()
+    sirene_name_index = build_sirene_name_index(sirene)
     print(f"📦 Cache bénéficiaires : {len(cache)} entrées")
-    print(f"📦 Cache SIRENE : {len(sirene)} entreprises")
+    print(f"📦 Cache SIRENE : {len(sirene)} entreprises · index nom : {len(sirene_name_index)}")
 
     bens = iter_beneficiaires(args.year)
     pending = [b for b in bens if (b.get("beneficiaire_normalise") or "") not in cache]
@@ -383,7 +579,7 @@ def main() -> int:
         print("✅ Cache à jour.")
         return 0
 
-    stats = {"sirene_ape": 0, "grounded_search": 0, "fallback_none": 0, "errors": 0}
+    stats = {"sirene_ape": 0, "grounded_search": 0, "wikipedia": 0, "sirene_libelle": 0, "fallback_none": 0, "errors": 0}
     processed = 0
     total = len(pending)
     t_start = time.time()
@@ -409,7 +605,7 @@ def main() -> int:
             }
         else:
             try:
-                result = process_beneficiaire(b, sirene, verbose=args.verbose)
+                result = process_beneficiaire(b, sirene, sirene_name_index, verbose=args.verbose)
             except Exception as e:
                 stats["errors"] += 1
                 print(f"  ⚠ {name}: {e}", flush=True)
@@ -434,6 +630,7 @@ def main() -> int:
                 f"  [{processed:>4}/{total}] {pct:5.1f}%  ·  {rate:4.1f} items/s  ·  "
                 f"ETA {eta//60:02d}m{eta%60:02d}s  ·  "
                 f"APE={stats['sirene_ape']} grounded={stats['grounded_search']} "
+                f"wiki={stats['wikipedia']} libelle={stats['sirene_libelle']} "
                 f"none={stats['fallback_none']} err={stats['errors']}",
                 flush=True,
             )
@@ -445,6 +642,8 @@ def main() -> int:
     print(
         f"📊 Résumé : SIRENE-APE={stats['sirene_ape']}  ·  "
         f"grounded={stats['grounded_search']}  ·  "
+        f"wikipedia={stats['wikipedia']}  ·  "
+        f"sirene-libelle={stats['sirene_libelle']}  ·  "
         f"fallback={stats['fallback_none']}  ·  erreurs={stats['errors']}"
     )
     return 0

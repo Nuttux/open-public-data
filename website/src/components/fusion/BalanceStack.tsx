@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { useT } from "@/lib/localeContext";
 
 export type BalanceSegment = {
   key: string;
@@ -25,20 +26,23 @@ type ColumnProps = {
 };
 
 function Column({ side, headLeft, headRight, total, segments, legend }: ColumnProps) {
+  const t = useT();
+  const clickable = segments.some((s) => s.onClick);
   return (
     <div className="fx-balance-col">
       <div className="fx-bc-head">
         <span>{headLeft}</span>
         <span className="fx-bc-total tnum">{headRight}</span>
       </div>
+      {clickable && <div className="fx-bc-hint">{t("fx.bb.click_hint")}</div>}
       <div className="fx-bc-stack" aria-label={`${side} ventilé`}>
         {segments.map((s, i) => {
           const pct = total > 0 ? (s.value / total) * 100 : 0;
-          const auto = pct > 0 && pct < 4;
+          const isTiny = s.tiny || (pct > 0 && pct < 4);
           const cls = [
             "fx-bc-seg",
             s.filled === false ? "light" : "",
-            s.tiny || auto ? "tiny" : "",
+            isTiny ? "tiny" : "",
             s.onClick ? "clickable" : "",
           ]
             .filter(Boolean)
@@ -46,9 +50,9 @@ function Column({ side, headLeft, headRight, total, segments, legend }: ColumnPr
           const alpha = s.filled === false
             ? undefined
             : Math.max(0.34, 0.85 - i * 0.1);
-          const style: React.CSSProperties = {
-            flex: `0 0 ${pct}%`,
-          };
+          const style: React.CSSProperties = isTiny
+            ? { flex: "0 0 auto" }
+            : { flex: `${s.value} 1 0` };
           if (alpha !== undefined) {
             style.background = `rgba(10,10,10,${alpha.toFixed(2)})`;
           }

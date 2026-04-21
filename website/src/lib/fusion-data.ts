@@ -1385,17 +1385,18 @@ export function loadInvestissementsData(requestedYear?: number): Investissements
       arr: Number(p.arrondissement) || 0,
     }));
 
-  // Aggregate by raw chapitre_libelle from the project-level data so the
-  // stackbar labels match what `loadChapitre(slug)` can resolve. Tendances
-  // file groups differently (budget chapter) and its labels don't exist in
-  // the project data — clicking them yields 404s.
-  const chapitreAgg = new Map<string, { amount: number; count: number }>();
+  // Axe M57 (classification fonctionnelle du budget) : couvre 100 % des
+  // dépenses d'investissement. On mappe les libellés "service" du dump
+  // projets vers les chapitres M57 via `serviceToM57` pour que la somme
+  // des counts corresponde aux projets documentés par chapitre M57.
+  const m57Agg = new Map<string, { amount: number; count: number }>();
+  for (const c of latest.par_chapitre) {
+    m57Agg.set(c.label, { amount: c.depenses, count: 0 });
+  }
   for (const p of projets) {
-    const key = p.chapitre_libelle ?? "—";
-    const cur = chapitreAgg.get(key) ?? { amount: 0, count: 0 };
-    cur.amount += Number(p.montant ?? 0);
-    cur.count += 1;
-    chapitreAgg.set(key, cur);
+    const m57 = serviceToM57(p.chapitre_libelle) ?? "Autres";
+    const cur = m57Agg.get(m57);
+    if (cur) cur.count += 1;
   }
 
   // Pareto : top 10 projets en montant vs total
@@ -1411,7 +1412,7 @@ export function loadInvestissementsData(requestedYear?: number): Investissements
     nbProjets: projets.length,
     nbGeo,
     pctGeo: projets.length > 0 ? (nbGeo / projets.length) * 100 : 0,
-    byChapitre: [...chapitreAgg.entries()]
+    byChapitre: [...m57Agg.entries()]
       .map(([label, v]) => ({ label, amount: v.amount, count: v.count }))
       .sort((a, b) => b.amount - a.amount),
     top10ProjetsPct,
@@ -1541,7 +1542,7 @@ export type ChapitreFiche = {
 };
 
 // `slugifyChapitre` vit dans `@/lib/projet-utils` (client-safe).
-import { slugifyChapitre } from "./projet-utils";
+import { slugifyChapitre, serviceToM57 } from "./projet-utils";
 export { slugifyChapitre };
 
 export function loadChapitre(slug: string, year?: number): ChapitreFiche | null {
@@ -1551,30 +1552,24 @@ export function loadChapitre(slug: string, year?: number): ChapitreFiche | null 
     : trends.years[trends.years.length - 1];
   const targetYear = pick.year;
 
+  // Source de vérité : classification M57 du budget (par_chapitre).
+  const ranking = [...pick.par_chapitre]
+    .map((c) => ({ label: c.label, amount: c.depenses }))
+    .sort((a, b) => b.amount - a.amount);
+  const match = ranking.find((c) => slugifyChapitre(c.label) === slug);
+  if (!match) return null;
+  const label = match.label;
+  const rank = ranking.findIndex((c) => c.label === label) + 1;
+
   let complet: InvComplet | null = null;
   try {
     complet = readJson<InvComplet>(`map/investissements_complet_${targetYear}.json`);
   } catch {
-    return null;
+    // Fiche reste affichable avec total + rang ; listes vides.
   }
   const projets = complet?.data ?? [];
-
-  const chapAgg = new Map<string, { amount: number; count: number }>();
-  for (const p of projets) {
-    const key = p.chapitre_libelle ?? "—";
-    const cur = chapAgg.get(key) ?? { amount: 0, count: 0 };
-    cur.amount += Number(p.montant ?? 0);
-    cur.count += 1;
-    chapAgg.set(key, cur);
-  }
-  const ranking = [...chapAgg.entries()].sort((a, b) => b[1].amount - a[1].amount);
-
-  const match = ranking.find(([label]) => slugifyChapitre(label) === slug);
-  if (!match) return null;
-  const [label, agg] = match;
-
-  const inChap = projets.filter((p) => (p.chapitre_libelle ?? "—") === label);
-  const rank = ranking.findIndex(([l]) => l === label) + 1;
+  const inChap = projets.filter((p) => serviceToM57(p.chapitre_libelle) === label);
+  const agg = { amount: match.amount, count: inChap.length };
 
   const arrAgg = new Map<number, { amount: number; count: number }>();
   for (const p of inChap) {

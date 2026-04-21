@@ -16,6 +16,31 @@ export function slugifyChapitre(label: string): string {
 /** Alias — same algorithm, kept under a generic name for budget/other usages. */
 export const slugifyLabel = slugifyChapitre;
 
+/**
+ * Mapping axe "service" (libellé direction/mission présent dans le dump
+ * investissements_complet_YYYY.json) → axe "M57 fonctionnel" (libellé
+ * chapitre budgétaire présent dans investissement_tendances.json).
+ *
+ * Les deux classifications ne se recouvrent pas parfaitement : la barre
+ * « Ce que la Ville construit » s'appuie désormais sur l'axe M57 (qui
+ * couvre 100 % du budget investissement), et la fiche chapitre résout
+ * les projets via cette table.
+ */
+export const SERVICE_TO_M57: Record<string, string> = {
+  "Voirie": "Transports",
+  "Affaires Scolaires": "Enseignement",
+  "Affaires Culturelles": "Culture & Sport",
+  "Jeunesse et Sports": "Culture & Sport",
+  "Environnement": "Environnement",
+  "Famille": "Santé & Social",
+  "Décentralisation": "Services Généraux",
+};
+
+export function serviceToM57(serviceLabel: string | null | undefined): string | null {
+  if (!serviceLabel) return null;
+  return SERVICE_TO_M57[serviceLabel] ?? null;
+}
+
 // ───────────────────────────────────────────────────────────────────────────
 // Types partagés pour la résolution de photo — le loader vit côté serveur
 // (fusion-data.ts), ces types sont ré-exportés ici pour que les composants

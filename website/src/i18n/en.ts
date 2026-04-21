@@ -2257,9 +2257,10 @@ const en: Record<string, string> = {
   // ── BilanBoard ──────────────────────────────────────────────────────────────
   'fx.bb.actif_head_l': 'Assets · <b>what the City owns</b>',
   'fx.bb.passif_head_l': 'Liabilities · <b>equity + what the City owes</b>',
-  'fx.bb.actif_legend': '<b>Fixed assets</b> (buildings, land, roads, equipment) make up the bulk of the estate. Click a segment to open the sub-items.',
+  'fx.bb.actif_legend': '<b>Fixed assets</b> (buildings, land, roads, equipment) make up the bulk of the estate.',
   'fx.bb.passif_legend': '<b>Equity</b> (€{fp}bn, {fpPct}%) is the accumulated net worth. <b>Financial debt</b> (€{dett}bn, {dettPct}%) makes up the rest.',
   'fx.bb.autres': 'Other · {n} minor items',
+  'fx.bb.click_hint': '↳ Click a row to see details',
 
   // ── PatrimoineDrillList ─────────────────────────────────────────────────────
   'fx.pdl.head_left': 'Rank · Item',
