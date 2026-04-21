@@ -176,28 +176,23 @@ def extract_text(pdf_path: Path) -> str:
 
 # Amounts embed spaces-as-thousands in the PDF text stream (normalise).
 SPACE_DIGITS_RE = re.compile(r"(?<=\d)\s+(?=\d)")
-AMOUNT_RE = re.compile(r"(\d[\d ]{0,12}(?:,\d{1,2})?)\s*euros?", re.IGNORECASE)
+# Accept "N euros" and "N €" variants (with optional decimals).
+AMOUNT_RE = re.compile(r"(\d[\d ]{0,12}(?:,\d{1,2})?)\s*(?:euros?|€)", re.IGNORECASE)
 SIRET_RE = re.compile(r"(?:N°\s*SIRET|SIRET)\s*[:\-]?\s*(\d{14})", re.IGNORECASE)
 ARTICLE_RE = re.compile(r"\bArticle\s+(\d+)\b\s*[:\-]", re.IGNORECASE)
 
 # Beneficiary extraction runs a cascade of patterns on flattened text and
 # returns the first that matches. Order matters: most specific first.
+# Beneficiary extraction — cascade of patterns on the dekerned body.
+# Allows French quotes «...», any first-letter case, trailing boundary on
+# punctuation / paren / SIRET / "au titre" / "pour" etc.
+_ENTITY = r"(?:l['’]\s*(?:association|entreprise|établissement|organisme|EHPAD|ensemble|agence)\s+|la\s+(?:société|fondation|coopérative|mutuelle|régie|ligue|maison)\s+|le\s+(?:groupement|comité|centre|syndicat|collectif|fonds|théâtre)\s+|au\s+(?:groupement|centre)\s+)?"
+_NAME = r"«\s*([^»]{2,180})\s*»|([A-ZÀ-Ÿ0-9][A-Za-zÀ-Ÿ0-9&'’,\-\.\s/()]{1,180}?)(?=\s*,|\s+dont\s+|\s+pour\s+|\s+au\s+titre|\s+sise?\s+|\s+situ[ée]|\s+\(|\s+SIRET|\s+N°|\s+afin\s+|\.)"
+
 BEN_PATTERNS = [
-    # "est attribuée à l'association <NAME>" / "à la société <NAME>" / ...
-    re.compile(
-        r"attribu[ée]e?\s+(?:à|au|aux)\s+(?:l[’']\s*(?:association|entreprise|établissement|organisme|EHPAD)\s+|la\s+(?:société|fondation|coopérative|mutuelle|régie)\s+|le\s+(?:groupement|comité|centre|syndicat|collectif)\s+)?([A-ZÀ-Ÿ][A-Za-zÀ-Ÿ0-9&'’,\-\s]{2,140}?)(?=\s*,|\s+dont\s+|\s+pour\s+|\s+sise?\s+|\s+situ[ée]|\s+\(|\s+SIRET|\s+N°|\s+afin)",
-        re.IGNORECASE,
-    ),
-    # "subvention de X euros à <NAME>"  (short form)
-    re.compile(
-        r"subvention[^.]{0,80}\s+à\s+(?:l[’']\s*(?:association|entreprise|établissement|organisme|EHPAD)\s+|la\s+(?:société|fondation|coopérative|mutuelle|régie)\s+|le\s+(?:groupement|comité|centre|syndicat|collectif)\s+)?([A-ZÀ-Ÿ][A-Za-zÀ-Ÿ0-9&'’,\-\s]{2,120}?)(?=\s*,|\s+dont\s+|\s+pour\s+|\s+sise?\s+|\s+situ[ée]|\s+\(|\s+SIRET|\s+N°|\s+afin|\.)",
-        re.IGNORECASE,
-    ),
-    # Bare "à l'association X" early in the article.
-    re.compile(
-        r"à\s+(?:l[’']\s*(?:association|entreprise|établissement|organisme|EHPAD)\s+|la\s+(?:société|fondation|coopérative|mutuelle|régie)\s+|le\s+(?:groupement|comité|centre|syndicat|collectif)\s+)([A-ZÀ-Ÿ][A-Za-zÀ-Ÿ0-9&'’,\-\s]{2,120}?)(?=\s*,|\s+dont\s+|\s+pour\s+|\s+sise?\s+|\s+situ[ée]|\s+\(|\s+SIRET|\s+N°|\.)",
-        re.IGNORECASE,
-    ),
+    re.compile(rf"attribu[ée]e?\s+(?:à|au|aux)\s+{_ENTITY}(?:{_NAME})", re.IGNORECASE),
+    re.compile(rf"subvention[^.]{{0,120}}\s+(?:à|au|aux)\s+{_ENTITY}(?:{_NAME})", re.IGNORECASE),
+    re.compile(rf"\bà\s+{_ENTITY.replace('?', '')}(?:{_NAME})", re.IGNORECASE),
 ]
 
 DOSSIER_RE = re.compile(r"(?:Dossier|N°\s*Paris\s+Asso|N°\s*dossier)\s*[:\-]?\s*(\d{4,})", re.IGNORECASE)
@@ -226,18 +221,36 @@ def parse_amount(raw: str) -> float | None:
         return None
 
 
+def _dekern(text: str) -> str:
+    """Paris deliberation PDFs are saved with letter-spacing tracking,
+    so `page.extract_text()` produces a single space between every
+    kerned letter inside a word (`attribu é e`, `Mada m e`) while using
+    TWO consecutive spaces as the real word separator (`de  30  000`).
+    Recover readable text:
+        1. Treat newlines as equivalent to multiple spaces.
+        2. Protect 2+ consecutive spaces with a marker.
+        3. Remove remaining single spaces (kerning artefacts).
+        4. Restore the marker to a single space.
+    """
+    # Normalise non-breaking spaces and newlines as regular whitespace.
+    s = text.replace("\u00a0", " ").replace("\n", "  ")
+    s = re.sub(r"[ \t]{2,}", "\x01", s)
+    s = s.replace(" ", "")
+    return s.replace("\x01", " ")
+
+
 def _flatten(text: str) -> str:
-    """Normalise whitespace — PDF extraction often breaks mid-sentence.
-    Collapse runs of whitespace (including newlines) to single spaces so
-    beneficiary/motif regexes can span the original line breaks."""
+    """Flatten a dekerned body into a single line for regex that should
+    span line breaks. Does NOT re-run dekern — it is not idempotent on
+    single-space text and would glue every word together."""
     return re.sub(r"\s+", " ", text)
 
 
 def extract_articles(text: str, link: DelibLink) -> list[Article]:
-    # Normalise intra-number spaces produced by PDF extraction.
-    norm = SPACE_DIGITS_RE.sub("", text)
-    # Split on "Article N :" boundaries — first segment is the preamble (title).
-    parts = ARTICLE_RE.split(text)
+    # De-kern the PDF-extracted text before anything else, then split
+    # on "Article N :" boundaries (first segment is the preamble).
+    dekerned = _dekern(text)
+    parts = ARTICLE_RE.split(dekerned)
     articles: list[Article] = []
     # parts pattern: [preamble, art_num_1, body_1, art_num_2, body_2, ...]
     if len(parts) < 3:
@@ -266,14 +279,21 @@ def _parse_body(body: str, link: DelibLink, article_num: int | None) -> Article:
     amount_m = AMOUNT_RE.search(flat)
     amount_raw = amount_m.group(1).strip() if amount_m else None
     amount_eur = parse_amount(amount_m.group(1)) if amount_m else None
-    # Beneficiary — cascade of patterns
+    # Beneficiary — cascade of patterns. Each pattern has two capture groups:
+    # group(1) = quoted name (between «...»), group(2) = bare name.
     beneficiary: str | None = None
     for pat in BEN_PATTERNS:
         m = pat.search(flat)
         if m:
-            cand = m.group(1).strip(" .,;")
-            # Filter out obvious junk (all lowercase, too many words, common verbs)
-            if 2 <= len(cand.split()) <= 12 and not cand.lower().startswith(("et ", "ou ", "pour ", "afin ")):
+            cand = (m.group(1) or m.group(2) or "").strip(" .,;«»")
+            cand = re.sub(r"\s+", " ", cand)
+            # Reject obvious junk: too short, too long, starts with connector.
+            if (
+                2 <= len(cand) <= 140
+                and len(cand.split()) <= 16
+                and not cand.lower().startswith(("et ", "ou ", "pour ", "afin ", "dont "))
+                and not cand.lower().startswith(("une ", "la ville", "l'année"))
+            ):
                 beneficiary = cand
                 break
     # Dossier
