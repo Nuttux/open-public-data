@@ -204,7 +204,7 @@ export default function InvestissementsClient({ d }: { d: InvestissementsData })
             }
             subtitle={fill(t("fx.inv.s03.sub"), { n: fmtInt(d.nbGeo) })}
           />
-          <ProjectMap points={d.geoPoints} maxAmount={d.topProjets[0]?.amount ?? 1e6} height={520} />
+          <ProjectMap points={d.geoPoints} year={d.year} height={620} />
           <p className="fx-note">
             <b>{t("fx.inv.s03.note.b")}</b> :{" "}
             {fill(t("fx.inv.s03.note"), { pct: fmtDec(100 - d.pctGeo, 0) })}
