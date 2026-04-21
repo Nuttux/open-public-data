@@ -236,7 +236,6 @@ export function loadLandingStats(): LandingStats {
 // "@/lib/fusion-data"` keeps working. Client components should import from
 // `@/lib/fmt` directly to avoid pulling the server-only loaders.
 export { fmtInt, fmtDec, fmtBillions, fmtMillions, fmtCompactEur } from "./fmt";
-import { fmtInt, fmtDec } from "./fmt";
 
 export type BudgetPageData = {
   year: number;
@@ -1285,7 +1284,7 @@ export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
         .slice(0, 5),
     }))
     .sort((a, b) => b.amount - a.amount)
-    .slice(0, 16);
+    .slice(0, 50);
 
   const byNature = [...natureAgg.entries()]
     .map(([nature, v]) => ({ nature, amount: v.amount, count: v.count }))
@@ -1825,6 +1824,15 @@ export function loadPatrimoineData(requestedYear?: number): PatrimoineData {
 
 // ─── Patrimoine — structure enrichie (dette + masses) ─────────────────────
 
+export type BondIssuance = {
+  year: number;
+  amount_m_eur: number;
+  rate_pct: number;
+  maturity_years: number;
+  label: string;
+  meta: string;
+};
+
 export type DetteInstrument = {
   key: string;
   label: string;
@@ -1838,13 +1846,22 @@ export type DetteInstrument = {
   part_taux_fixe: number;
 };
 
+export type MasseSubitem = {
+  name: string;
+  value: number;
+  brut: number;
+  amort: number;
+};
+
 export type PatrimoineMasse = {
   label: string;
   value: number;
   share: number;
+  side: "actif" | "passif";
   tag: string;
   sub: string;
   details: string;
+  subitems: MasseSubitem[];
 };
 
 export type PatrimoineStructure = {
@@ -1867,12 +1884,16 @@ export type PatrimoineStructure = {
       montant_m_eur: number;
       libelle: string;
     };
+    bond_issuances: BondIssuance[];
+    bond_issuances_total_m_eur: number;
+    obligataire_total: number;
   };
-  patrimoine_masses: PatrimoineMasse[];
-  paris_headcounts: Record<string, number>;
+  masses_actif: PatrimoineMasse[];
+  masses_passif: PatrimoineMasse[];
   sources: {
-    dette: string[];
-    patrimoine_headcounts: string[];
+    bilan: string;
+    dette_structure_qualitative: string[];
+    bond_issuances: string[];
     limites: string;
   };
 };

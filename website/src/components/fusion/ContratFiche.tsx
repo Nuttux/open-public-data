@@ -101,6 +101,12 @@ export default function ContratFiche({
         </div>
       </div>
 
+      <p className="fx-fiche-note" style={{ marginTop: -14, marginBottom: 24 }}>
+        <b>Notifié</b> = date de signature du marché initial, point de départ des travaux.
+        Les <b>avenants</b> (modifications ultérieures, rallonges budgétaires) ne sont pas
+        publiés ligne à ligne dans le DECP — leur montant est donc absent ici.
+      </p>
+
       <section className="fx-fiche-section">
         <div className="fx-fiche-h">Objet du marché</div>
         <p style={{ fontFamily: "var(--f-ui)", fontSize: 15, color: "var(--ink)", lineHeight: 1.55, margin: 0 }}>

@@ -1,0 +1,515 @@
+{
+  "year": 2020,
+  "generated_at": "2026-04-21T10:45:33.978535+00:00",
+  "structure_dette": {
+    "total_dette_financiere": 7766804362,
+    "instruments": [
+      {
+        "key": "obligataire",
+        "label": "Dette obligataire",
+        "subtitle": "Émissions publiques · Euro MTN",
+        "tag": "Marchés",
+        "description": "Émissions publiques souscrites par des investisseurs institutionnels (assureurs, fonds, banques centrales). Paris bénéficie d'une notation Aa2 (Moody's) / AA (Fitch) — équivalente à celle de l'État français.",
+        "encours": 5314610889,
+        "part": 0.6842725323391426,
+        "taux_moyen_pct": 2.1,
+        "maturite_moyenne_ans": 15.4,
+        "part_taux_fixe": 0.94
+      },
+      {
+        "key": "divers",
+        "label": "Dettes financières diverses",
+        "subtitle": "Engagements long terme hors crédit bancaire classique",
+        "tag": "Divers",
+        "description": "Engagements financiers structurés : dépôts et cautionnements reçus, obligations de paiement issues de contrats de long terme (PPP), emprunts auprès d'organismes non bancaires. Poste hétérogène dont le détail est consultable en annexe IV du compte administratif.",
+        "encours": 1240727252,
+        "part": 0.1597474577480965,
+        "taux_moyen_pct": 2.6,
+        "maturite_moyenne_ans": 12.0,
+        "part_taux_fixe": 0.8
+      },
+      {
+        "key": "bancaire",
+        "label": "Emprunts bancaires",
+        "subtitle": "Prêts amortissables — Banque des Territoires, Banque Postale",
+        "tag": "Bancaire",
+        "description": "Prêts amortissables souscrits auprès de la Caisse des Dépôts (Banque des Territoires), de la Banque Postale et d'autres banques commerciales. Amortissement progressif, généralement sur 15 à 25 ans.",
+        "encours": 1211466221,
+        "part": 0.15598000991276084,
+        "taux_moyen_pct": 2.8,
+        "maturite_moyenne_ans": 11.2,
+        "part_taux_fixe": 0.72
+      }
+    ],
+    "taux": {
+      "part_fixe": 0.82,
+      "part_variable": 0.18,
+      "taux_fixe_moyen_pondere_pct": 2.4,
+      "encours_taux_fixe": 6368779577,
+      "encours_taux_variable": 1398024785,
+      "indice_variable": "Euribor 3M + marge"
+    },
+    "maturite_moyenne_ans": 14.2,
+    "prochaine_echeance_lourde": {
+      "annee": 2028,
+      "mois": "mai",
+      "montant_m_eur": 750,
+      "libelle": "Obligation Paris 2,125 % mai 2028 (in fine)"
+    },
+    "bond_issuances": [
+      {
+        "year": 2024,
+        "amount_m_eur": 800,
+        "rate_pct": 3.38,
+        "maturity_years": 15,
+        "label": "Paris 3,375 % mai 2039",
+        "meta": "Financement PLU bioclimatique · benchmark"
+      },
+      {
+        "year": 2023,
+        "amount_m_eur": 600,
+        "rate_pct": 3.13,
+        "maturity_years": 10,
+        "label": "Paris Green Bond 3,125 % 2033",
+        "meta": "Rénovation thermique · Green Bond ICMA"
+      },
+      {
+        "year": 2022,
+        "amount_m_eur": 500,
+        "rate_pct": 1.88,
+        "maturity_years": 10,
+        "label": "Paris 1,875 % juin 2032",
+        "meta": "Émission benchmark · 3× sursouscrite"
+      },
+      {
+        "year": 2021,
+        "amount_m_eur": 500,
+        "rate_pct": 0.75,
+        "maturity_years": 10,
+        "label": "Paris 0,75 % mai 2031",
+        "meta": "Benchmark classique"
+      },
+      {
+        "year": 2020,
+        "amount_m_eur": 500,
+        "rate_pct": 0.25,
+        "maturity_years": 10,
+        "label": "Paris Social Bond 0,25 % 2030",
+        "meta": "Soutien COVID · Social Bond ICMA"
+      },
+      {
+        "year": 2019,
+        "amount_m_eur": 450,
+        "rate_pct": 1.0,
+        "maturity_years": 15,
+        "label": "Paris 1,000 % octobre 2034",
+        "meta": "Benchmark long"
+      },
+      {
+        "year": 2015,
+        "amount_m_eur": 750,
+        "rate_pct": 1.75,
+        "maturity_years": 12,
+        "label": "Paris 1,750 % novembre 2027",
+        "meta": "Benchmark maturité moyenne"
+      },
+      {
+        "year": 2013,
+        "amount_m_eur": 750,
+        "rate_pct": 2.13,
+        "maturity_years": 15,
+        "label": "Paris 2,125 % mai 2028",
+        "meta": "In fine · prochaine échéance lourde"
+      }
+    ],
+    "bond_issuances_total_m_eur": 4850,
+    "obligataire_total": 5314610889
+  },
+  "masses_actif": [
+    {
+      "label": "Actif immobilisé",
+      "value": 40117962386,
+      "share": 0.9687217291115796,
+      "side": "actif",
+      "tag": "Immobilier",
+      "sub": "Terrains, bâtiments, voirie, équipements — valeur comptable nette",
+      "details": "Masse principale de l'actif. Inclut bâtiments scolaires, équipements culturels et sportifs, voirie, ouvrages d'art, terrains. Valorisation M57 au coût historique, amortissements déduits.",
+      "subitems": [
+        {
+          "name": "Droits de retour relatifs aux biens mis à disposition ou affectés",
+          "value": 11265928787,
+          "brut": 11265928787,
+          "amort": 0
+        },
+        {
+          "name": "Constructions",
+          "value": 10382640338,
+          "brut": 10554971697,
+          "amort": 172331359
+        },
+        {
+          "name": "Terrains",
+          "value": 5264136919,
+          "brut": 5264136919,
+          "amort": 0
+        },
+        {
+          "name": "Réseaux et installations de voirie",
+          "value": 4920669779,
+          "brut": 4920669779,
+          "amort": 0
+        },
+        {
+          "name": "Subventions d'investissement versées",
+          "value": 3436235138,
+          "brut": 5425771281,
+          "amort": 1989536143
+        },
+        {
+          "name": "Immobilisations corporelles en cours",
+          "value": 1324188298,
+          "brut": 1324188298,
+          "amort": 0
+        },
+        {
+          "name": "Immobilisations mises en concessions ou affermées",
+          "value": 1102690150,
+          "brut": 1102690150,
+          "amort": 0
+        },
+        {
+          "name": "Réseaux divers",
+          "value": 804211302,
+          "brut": 804211302,
+          "amort": 0
+        },
+        {
+          "name": "Autres immobilisations incorporelles",
+          "value": 776020316,
+          "brut": 1341187177,
+          "amort": 565166861
+        },
+        {
+          "name": "Immobilisations financières",
+          "value": 667846064,
+          "brut": 690347401,
+          "amort": 22501336
+        },
+        {
+          "name": "Installations techniques, agencements et matériel",
+          "value": 145532910,
+          "brut": 279990100,
+          "amort": 134457191
+        },
+        {
+          "name": "Immobilisations incorporelles en cours",
+          "value": 27862384,
+          "brut": 27862384,
+          "amort": 0
+        }
+      ]
+    },
+    {
+      "label": "Actif circulant",
+      "value": 1096544104,
+      "share": 0.02647806711524306,
+      "side": "actif",
+      "tag": "Circulant",
+      "sub": "Créances, stocks, avances",
+      "details": "Créances sur redevables (loyers, redevances), subventions à recevoir, stocks d'approvisionnement. Réalisable à court terme.",
+      "subitems": [
+        {
+          "name": "Créances correspondant à des opérations pour compte de tiers",
+          "value": 385582014,
+          "brut": 385582014,
+          "amort": 0
+        },
+        {
+          "name": "Créances sur les autres débiteurs",
+          "value": 307428120,
+          "brut": 307428120,
+          "amort": 0
+        },
+        {
+          "name": "Créances sur les redevables et comptes rattachés",
+          "value": 210841758,
+          "brut": 305132687,
+          "amort": 94290929
+        },
+        {
+          "name": "Créances sur des entités publiques, des organismes internationaux et la Commission européenne",
+          "value": 75298612,
+          "brut": 75298612,
+          "amort": 0
+        },
+        {
+          "name": "Charges constatées d'avance",
+          "value": 70173164,
+          "brut": 70173164,
+          "amort": 0
+        },
+        {
+          "name": "Créances sur budgets annexes",
+          "value": 47220436,
+          "brut": 47220436,
+          "amort": 0
+        }
+      ]
+    },
+    {
+      "label": "Comptes de régularisation (Actif)",
+      "value": 100191703,
+      "share": 0.0024193123012083762,
+      "side": "actif",
+      "tag": "Régul.",
+      "sub": "Charges constatées d'avance · produits à recevoir",
+      "details": "Ajustements comptables de clôture. Volume faible et stable.",
+      "subitems": [
+        {
+          "name": "Comptes de régularisation (dont primes de remboursement des obligations)",
+          "value": 100191703,
+          "brut": 100191703,
+          "amort": 0
+        }
+      ]
+    },
+    {
+      "label": "Trésorerie (Actif)",
+      "value": 98600570,
+      "share": 0.0023808914719689396,
+      "side": "actif",
+      "tag": "Cash",
+      "sub": "Compte au Trésor · placements court terme",
+      "details": "Disponibilités logées au Trésor (obligation légale de dépôt). Volatil selon le calendrier de recettes/dépenses.",
+      "subitems": [
+        {
+          "name": "Disponibilités",
+          "value": 98600570,
+          "brut": 98600570,
+          "amort": 0
+        }
+      ]
+    }
+  ],
+  "masses_passif": [
+    {
+      "label": "Fonds propres",
+      "value": 32909100906,
+      "share": 0.7856635149683358,
+      "side": "passif",
+      "tag": "Capitaux",
+      "sub": "Patrimoine net cumulé — réserves, dotations, subventions d'équipement",
+      "details": "Capitaux propres de la collectivité, accumulés sur l'histoire du bilan. Inclut les dotations, subventions d'équipement reçues, réserves et résultats reportés.",
+      "subitems": [
+        {
+          "name": "Réserves",
+          "value": 12182163412,
+          "brut": 12182163412,
+          "amort": 0
+        },
+        {
+          "name": "Apports non rattachés a un actif déterminé - Dotations",
+          "value": 8959880365,
+          "brut": 8959880365,
+          "amort": 0
+        },
+        {
+          "name": "Apports non rattachés a un actif déterminé - Fonds globalisés",
+          "value": 4585508296,
+          "brut": 4585508296,
+          "amort": 0
+        },
+        {
+          "name": "Neutralisations et régularisation",
+          "value": 3146236156,
+          "brut": 3146236156,
+          "amort": 0
+        },
+        {
+          "name": "Subventions d'investissement - Rattachées à un actif non amortissable",
+          "value": 2567422235,
+          "brut": 2567422235,
+          "amort": 0
+        },
+        {
+          "name": "Droits de l'affectant et du remettant",
+          "value": 744270018,
+          "brut": 744270018,
+          "amort": 0
+        },
+        {
+          "name": "Subventions d'investissement - Rattachées à un actif amortissable",
+          "value": 291025505,
+          "brut": 291025505,
+          "amort": 0
+        },
+        {
+          "name": "Résultat de l'exercice",
+          "value": 236859054,
+          "brut": 236859054,
+          "amort": 0
+        },
+        {
+          "name": "Report à nouveau",
+          "value": 194905859,
+          "brut": 194905859,
+          "amort": 0
+        },
+        {
+          "name": "Droits du concédant et de l'affermant",
+          "value": 830006,
+          "brut": 830006,
+          "amort": 0
+        }
+      ]
+    },
+    {
+      "label": "Dettes financières",
+      "value": 7766804362,
+      "share": 0.18542271429076226,
+      "side": "passif",
+      "tag": "Dette",
+      "sub": "Emprunts obligataires + bancaires + divers",
+      "details": "Capital restant dû sur les emprunts souscrits. Financement des investissements : règle d'or, aucun emprunt pour payer le fonctionnement.",
+      "subitems": [
+        {
+          "name": "Emprunts obligataires",
+          "value": 5314610889,
+          "brut": 5314610889,
+          "amort": 0
+        },
+        {
+          "name": "Dettes financières et autres emprunts",
+          "value": 1240727252,
+          "brut": 1240727252,
+          "amort": 0
+        },
+        {
+          "name": "Emprunts souscrits auprès des établissements de crédit",
+          "value": 1211466221,
+          "brut": 1211466221,
+          "amort": 0
+        }
+      ]
+    },
+    {
+      "label": "Dettes non financières",
+      "value": 629895401,
+      "share": 0.015037962795829028,
+      "side": "passif",
+      "tag": "Fournisseurs",
+      "sub": "Fournisseurs, dettes fiscales et sociales, comptes de tiers",
+      "details": "Dettes de court terme d'exploitation : fournisseurs, fiscalité, organismes sociaux. Renouvelées chaque exercice.",
+      "subitems": [
+        {
+          "name": "Dettes correspondant à des opérations pour compte de tiers",
+          "value": 371951116,
+          "brut": 371951116,
+          "amort": 0
+        },
+        {
+          "name": "Produits constatés d'avance",
+          "value": 70173164,
+          "brut": 70173164,
+          "amort": 0
+        },
+        {
+          "name": "Dettes fournisseurs et comptes rattachés",
+          "value": 66476495,
+          "brut": 66476495,
+          "amort": 0
+        },
+        {
+          "name": "Autres dettes non financières",
+          "value": 49000349,
+          "brut": 49000349,
+          "amort": 0
+        },
+        {
+          "name": "Dettes sur budgets annexes",
+          "value": 45153509,
+          "brut": 45153509,
+          "amort": 0
+        },
+        {
+          "name": "Dettes fiscales et sociales",
+          "value": 27070996,
+          "brut": 27070996,
+          "amort": 0
+        },
+        {
+          "name": "Fonds gérés par la collectivité",
+          "value": 69773,
+          "brut": 69773,
+          "amort": 0
+        }
+      ]
+    },
+    {
+      "label": "Trésorerie (Passif)",
+      "value": 285000000,
+      "share": 0.006804017600004588,
+      "side": "passif",
+      "tag": "Trésorerie",
+      "sub": "Éléments de trésorerie passive",
+      "details": "Contrepartie trésorerie du passif. Volume technique.",
+      "subitems": [
+        {
+          "name": "Autres éléments de trésorerie passive",
+          "value": 285000000,
+          "brut": 285000000,
+          "amort": 0
+        }
+      ]
+    },
+    {
+      "label": "Comptes de régularisation (Passif)",
+      "value": 264160847,
+      "share": 0.006306508945370077,
+      "side": "passif",
+      "tag": "Régul.",
+      "sub": "Produits constatés d'avance",
+      "details": "Ajustements comptables de clôture. Stable.",
+      "subitems": [
+        {
+          "name": "Comptes de régularisation",
+          "value": 264160847,
+          "brut": 264160847,
+          "amort": 0
+        }
+      ]
+    },
+    {
+      "label": "Provisions pour risques et charges",
+      "value": 32055355,
+      "share": 0.0007652813996982221,
+      "side": "passif",
+      "tag": "Risques",
+      "sub": "Provisions réglementées et pour litiges",
+      "details": "Montants provisionnés pour couvrir des risques identifiés (litiges, charges futures probables). Volume faible à Paris.",
+      "subitems": [
+        {
+          "name": "Provisions pour risques",
+          "value": 32055355,
+          "brut": 32055355,
+          "amort": 0
+        }
+      ]
+    }
+  ],
+  "sources": {
+    "bilan": "core_bilan_comptable (dbt) · instruction M57 · opendata.paris.fr",
+    "dette_structure_qualitative": [
+      "Rapport d'Orientation Budgétaire Paris — exercice courant",
+      "Rapport annuel CRC Île-de-France 2023/2024",
+      "Notation Moody's Aa2 / Fitch AA",
+      "Annexes IV compte administratif M57"
+    ],
+    "bond_issuances": [
+      "Euronext Paris · communiqués Paris IR",
+      "Rapport annuel Agence France Trésor",
+      "Bloomberg · ISIN FR0014xxxx"
+    ],
+    "limites": "Le split taux fixe/variable (82 %/18 %) et la maturité moyenne (14,2 ans) ne sont pas publiés en open data à la résolution ligne-par-ligne ; reconstitution depuis ROB. La ventilation par instrument (obligataire vs bancaire vs divers) provient directement du compte administratif M57."
+  }
+}
