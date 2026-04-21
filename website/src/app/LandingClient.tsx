@@ -135,7 +135,7 @@ export default function LandingClient({ stats }: Props) {
                   <rect x="92" y="36" width="16" height="28" className="fill" fill="#0a0a0a" />
                   <path d="M 108 44 C 140 44 160 26 194 26" className="stroke" stroke="#0a0a0a" strokeWidth="9" fill="none" />
                   <path d="M 108 50 C 140 50 160 52 194 52" className="stroke" stroke="#0a0a0a" strokeWidth="6" fill="none" />
-                  <path d="M 108 58 C 140 58 160 82 194 82" className="stroke-sig" stroke="#e11d1d" strokeWidth="7" fill="none" />
+                  <path d="M 108 58 C 140 58 160 82 194 82" className="stroke-sig" stroke="#5f6672" strokeWidth="7" fill="none" />
                 </svg>
               }
               kpi={fmtBillions(stats.totalDepenses)}
@@ -160,7 +160,7 @@ export default function LandingClient({ stats }: Props) {
                   {[[10,70],[40,62],[70,55],[100,46],[130,34],[160,24]].map(([x,y]) => (
                     <circle key={`${x}-${y}`} cx={x} cy={y} r="3" className="fill" fill="#0a0a0a" />
                   ))}
-                  <circle cx="190" cy="14" r="5" className="fill-sig" fill="#e11d1d" />
+                  <circle cx="190" cy="14" r="5" className="fill-sig" fill="#5f6672" />
                 </svg>
               }
               kpi="+ 14,2"
@@ -181,7 +181,7 @@ export default function LandingClient({ stats }: Props) {
                   {[[60,34],[86,42],[110,30],[140,36],[72,70],[104,78],[132,72],[158,68]].map(([x,y]) => (
                     <circle key={`${x}-${y}`} cx={x} cy={y} r="2.5" className="fill" fill="#0a0a0a" />
                   ))}
-                  <circle cx="118" cy="54" r="4" className="fill-sig" fill="#e11d1d" />
+                  <circle cx="118" cy="54" r="4" className="fill-sig" fill="#5f6672" />
                 </svg>
               }
               kpi="2,6"
@@ -225,7 +225,7 @@ export default function LandingClient({ stats }: Props) {
                   <rect x="32" y="48" width="60" height="24" className="fill" fill="#0a0a0a" opacity=".75" />
                   <rect x="32" y="74" width="60" height="12" className="fill" fill="#0a0a0a" opacity=".5" />
                   <rect x="108" y="6"  width="60" height="46" className="fill" fill="#0a0a0a" />
-                  <rect x="108" y="54" width="60" height="32" className="fill-sig" fill="#e11d1d" />
+                  <rect x="108" y="54" width="60" height="32" className="fill-sig" fill="#5f6672" />
                 </svg>
               }
               kpi="26"
@@ -253,7 +253,7 @@ export default function LandingClient({ stats }: Props) {
                   <rect x="58"  y="38" width="14" height="52" className="stroke" fill="none" stroke="#0a0a0a" strokeWidth="1.5" />
                   <rect x="74"  y="44" width="14" height="46" className="fill" fill="#0a0a0a" />
                   <rect x="98"  y="48" width="14" height="42" className="stroke" fill="none" stroke="#0a0a0a" strokeWidth="1.5" />
-                  <rect x="114" y="30" width="14" height="60" className="fill-sig" fill="#e11d1d" />
+                  <rect x="114" y="30" width="14" height="60" className="fill-sig" fill="#5f6672" />
                   <rect x="138" y="26" width="14" height="64" className="stroke" fill="none" stroke="#0a0a0a" strokeWidth="1.5" />
                   <rect x="154" y="36" width="14" height="54" className="fill" fill="#0a0a0a" />
                 </svg>

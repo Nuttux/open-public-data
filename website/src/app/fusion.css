@@ -510,9 +510,9 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   flex-wrap: wrap;
 }
 .theme-fusion .fx-hero-num-arrow { font-weight: 500; }
-.theme-fusion .fx-hero-num-arrow-up { color: var(--rouge); }
-.theme-fusion .fx-hero-num-arrow-down { color: var(--bleu); }
-.theme-fusion .fx-hero-num-arrow-flat { color: var(--muted); }
+.theme-fusion .fx-hero-num-arrow-up,
+.theme-fusion .fx-hero-num-arrow-down,
+.theme-fusion .fx-hero-num-arrow-flat { color: var(--ink-2); }
 .theme-fusion .fx-hero-num-sep { color: var(--muted-2); }
 .theme-fusion .fx-hero-num-base { color: var(--ink-2); }
 .theme-fusion .fx-hero-num-cap {
