@@ -1704,87 +1704,6 @@
   ],
   "articles": [
     {
-      "delib_id": "2025 DAC 252",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "de Défense des Valeurs de la Résistance",
-      "siret": "80131743900017",
-      "amount_eur": 200.0,
-      "amount_raw": "200",
-      "motif": "but de faire connaîtr e l'histoire de la Résistan c e, de trans m e t t r e la mémoire des acteu rs de la Résistanc e et de faire vivre et développe r les valeurs qui ont animé les comba tt a n t s de la Résista nc e qui ont été concrétisé e s dans le progra m m e du Conseil nati",
-      "dossier": null
-    },
-    {
-      "delib_id": "2025 DAC 253",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "Fonds Mémoire d’Auschwitz 17",
-      "siret": "42435979200019",
-      "amount_eur": 500.0,
-      "amount_raw": "500",
-      "motif": "la mémoire de tous les actes individuels et collectifs et encour a g e n t la recher c h e historiqu e sur la Shoah ainsi que la trans mission de l’histoire aux jeunes génér a tions afin d’en mainte nir le souvenir et d’entre t e ni r la mémoire collective",
-      "dossier": null
-    },
-    {
-      "delib_id": "2025 DAC 254",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "des Amis de la Fondation",
-      "siret": "82931724700023",
-      "amount_eur": 500.0,
-      "amount_raw": "500",
-      "motif": "la mémoire de tous les actes individuels et collectifs des déportés politiques, ayant marqué la Résistance nationale ou mondiale, la Shoah ou les conflits du XXe siècle",
-      "dossier": null
-    },
-    {
-      "delib_id": "2025 DAC 259",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "la Fondation",
-      "siret": "39115563700013",
-      "amount_eur": 5000.0,
-      "amount_raw": "000",
-      "motif": "objet de servir la mémoire du Général de Gaulle, de faire connaîtr e, tant en Franc e qu’à l’étrang e r , l’exemple qu’il a donné et les enseigne m e n t s qu’il a laissés, par ses actions et par ses écrits, pour la défens e des valeurs qui sont le patrimoin e des Français",
-      "dossier": null,
-      "amount_source": "manual"
-    },
-    {
-      "delib_id": "2025 DAC 260",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "Maison des anciens combattants de la 2e D",
-      "siret": "78436139600053",
-      "amount_eur": 10000.0,
-      "amount_raw": "000",
-      "motif": "objet de regrou p e r tous ceux qui ont appar t e n u à la 2e Division Blindée afin d’apport e r à ses memb r e s, en souvenir et pour la survivance de leur fraternité d’arme s et de leur solidarité au comba t, l’entraid e et l’assista nc e sous toutes leurs formes dont ils pourr",
-      "dossier": null,
-      "amount_source": "manual"
-    },
-    {
-      "delib_id": "2025 DAC 4",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": 1,
-      "beneficiary": "876",
-      "siret": null,
-      "amount_eur": 876000.0,
-      "amount_raw": "000",
-      "motif": "subvention de fonctionnement 2025",
-      "dossier": null,
-      "amount_source": "manual"
-    },
-    {
       "delib_id": "2025 DAC 4",
       "direction_id": 4,
       "direction_name": "Direction des affaires culturelles",
@@ -1932,21 +1851,6 @@
       "_admin_source": "llm"
     },
     {
-      "delib_id": "2025 DAC 11",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "Le Théâtre Paris-Villette",
-      "siret": "43353723000040",
-      "amount_eur": 950000.0,
-      "amount_raw": "000",
-      "motif": "y mene r des actions cultur elles, des parten a ri a t s avec le tissu associatif local et des temps forts festifs et fédér at e u r s",
-      "dossier": null,
-      "siret_source": "sirene",
-      "amount_source": "manual"
-    },
-    {
       "delib_id": "2025 DAC 12",
       "direction_id": 4,
       "direction_name": "Direction des affaires culturelles",
@@ -2049,34 +1953,6 @@
       "dossier": null,
       "is_admin": true,
       "_admin_source": "llm"
-    },
-    {
-      "delib_id": "2025 DAC 18",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "Compagnie Flies",
-      "siret": "83862097900073",
-      "amount_eur": 22000.0,
-      "amount_raw": "000",
-      "motif": "les activités et événements parisiens qu’elles initient autour des arts représentatifs du mouvement et de la culture Hip Hop",
-      "dossier": null,
-      "amount_source": "manual"
-    },
-    {
-      "delib_id": "2025 DAC 19",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "Les Plateaux Sauvages",
-      "siret": "82349520500010",
-      "amount_eur": 1100000.0,
-      "amount_raw": "000",
-      "motif": "les amateurs et amatrices, les Plateaux Sauvages est un équipement ouvert aux compagnies émergentes ou confirmées, aux habitant∙es du quartier et de l’arrondissement, offrant un accueil convivial, avec une attention particulière aux publics jeunes",
-      "dossier": null,
-      "amount_source": "manual"
     },
     {
       "delib_id": "2025 DAC 20",
@@ -2228,35 +2104,6 @@
       "_admin_source": "llm"
     },
     {
-      "delib_id": "2025 DAC 50",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "la SAS La Manufacture",
-      "siret": "32460241600012",
-      "amount_eur": 500000.0,
-      "amount_raw": "000",
-      "motif": "la relation scène/salle intimiste liée à la faible jauge au regard de la taille importante du plateau",
-      "dossier": "2025 DAC 50",
-      "amount_source": "llm"
-    },
-    {
-      "delib_id": "2025 DAC 51",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": null,
-      "siret": null,
-      "amount_eur": null,
-      "amount_raw": null,
-      "motif": "le Soutien du Théâtr e Privé (ASTP)",
-      "dossier": null,
-      "is_admin": true,
-      "_admin_source": "llm"
-    },
-    {
       "delib_id": "2025 DAC 54",
       "direction_id": 4,
       "direction_name": "Direction des affaires culturelles",
@@ -2346,48 +2193,6 @@
       "_admin_source": "llm"
     },
     {
-      "delib_id": "2025 DAC 58",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "au titre de ses activités",
-      "siret": "77566172100024",
-      "amount_eur": 500000.0,
-      "amount_raw": "000",
-      "motif": "son projet intitulé « Places en Réseau »",
-      "dossier": null,
-      "amount_source": "llm"
-    },
-    {
-      "delib_id": "2025 DAC 59",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "présent pro - jet",
-      "siret": "31142865000023",
-      "amount_eur": 30000.0,
-      "amount_raw": "000",
-      "motif": "soutenir l’activité de l’association",
-      "dossier": "ParisAsso:22161;2025_04885",
-      "amount_source": "llm"
-    },
-    {
-      "delib_id": "2025 DAC 69",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "CENTRE NATIONAL DES DRAMATURGIES CONTEMPORAINES - THEATRE OUVERT",
-      "siret": "30554644200032",
-      "amount_eur": 100000.0,
-      "amount_raw": "000",
-      "motif": "favoriser son ancrage territorial",
-      "dossier": null,
-      "amount_source": "llm"
-    },
-    {
       "delib_id": "2025 DAC 70",
       "direction_id": 4,
       "direction_name": "Direction des affaires culturelles",
@@ -2401,87 +2206,6 @@
       "dossier": null,
       "is_admin": true,
       "_admin_source": "llm"
-    },
-    {
-      "delib_id": "2025 DAC 78",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "par Actions Simplifiée La Fabrica Spectacles",
-      "siret": "79422096200045",
-      "amount_eur": 127000.0,
-      "amount_raw": "000",
-      "motif": "vocation, entre autre s, d’animer la vie sociale du quartier et de studios réservé s à l’héber g e m e n t des artistes en résiden ce de création ou se produisa n t en concert dans le lieu",
-      "dossier": null,
-      "amount_source": "llm"
-    },
-    {
-      "delib_id": "2025 DAC 79",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "Burning Womxn",
-      "siret": "88301553900033",
-      "amount_eur": 25000.0,
-      "amount_raw": "000",
-      "motif": "l'orga nisa tion de festivals",
-      "dossier": null,
-      "amount_source": "llm"
-    },
-    {
-      "delib_id": "2025 DAC 80",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "L’inter-co",
-      "siret": "88921794900029",
-      "amount_eur": 180.0,
-      "amount_raw": "180",
-      "motif": "le fonctionn e m e n t de la Flèche d’Or (20e)",
-      "dossier": "2025"
-    },
-    {
-      "delib_id": "2025 DAC 81",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "le Concert Spirituel",
-      "siret": "34941695800024",
-      "amount_eur": 75000.0,
-      "amount_raw": "000",
-      "motif": "six dates en janvier au Théâtr e du Chatelet, un progr a m m e de cantat e s de Bach à la Philhar mo ni e de Paris en avril",
-      "dossier": null,
-      "amount_source": "llm"
-    },
-    {
-      "delib_id": "2025 DAC 82",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "Le Cabaret Contemporain",
-      "siret": "51359023200072",
-      "amount_eur": 0.0,
-      "amount_raw": "000",
-      "motif": "but de faire connaître, notam m e n t à un public jeune, méloma n e ou non, la musique dite savant e",
-      "dossier": "2025 DAC 82"
-    },
-    {
-      "delib_id": "2025 DAC 84",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "Forces majeures",
-      "siret": "80994610600014",
-      "amount_eur": 0.0,
-      "amount_raw": "000",
-      "motif": "publics en zone reculée ou urbaine, concer ts en plein air, concert s en salle et/ ou sous les étoiles, tourné e s à vélo",
-      "dossier": "2025 DAC 82"
     },
     {
       "delib_id": "2025 DAC 86",
@@ -2514,36 +2238,6 @@
       "siret_source": "sirene"
     },
     {
-      "delib_id": "2025 DAC 87",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": null,
-      "siret": "90750546500019",
-      "amount_eur": null,
-      "amount_raw": "000",
-      "motif": "sa quatrième édition, proposait cinq concerts de ses ensembles de musiques de chambre résidents et partenaires dans le cadre de son projet européen MERITA",
-      "dossier": null,
-      "is_admin": true,
-      "_admin_source": "llm"
-    },
-    {
-      "delib_id": "2025 DAC 88",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": null,
-      "siret": "31390568900078",
-      "amount_eur": null,
-      "amount_raw": "000",
-      "motif": "objet la promotion du répertoire classique et contemporain à Paris, en France et à l'étranger",
-      "dossier": null,
-      "is_admin": true,
-      "_admin_source": "llm"
-    },
-    {
       "delib_id": "2025 DAC 90",
       "direction_id": 4,
       "direction_name": "Direction des affaires culturelles",
@@ -2557,45 +2251,6 @@
       "dossier": "2025 DAC 87",
       "beneficiary_source": "llm",
       "siret_source": "sirene"
-    },
-    {
-      "delib_id": "2025 DAC 91",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "La Caserne Éphémère",
-      "siret": "42447742000022",
-      "amount_eur": 0.0,
-      "amount_raw": "000",
-      "motif": "les artistes plasticiens et espace un bar- rest au r a n t en bordur e du canal Saint- Martin",
-      "dossier": "2025 DAC 87"
-    },
-    {
-      "delib_id": "2025 DAC 92",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "Union des Musiciens de Jazz",
-      "siret": "39342439500035",
-      "amount_eur": 0.0,
-      "amount_raw": "000",
-      "motif": "objet le soutien à la création, la production et la diffusion du jazz",
-      "dossier": "2025 DAC 92"
-    },
-    {
-      "delib_id": "2025 DAC 101",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "Cie MPDA",
-      "siret": "49934353100053",
-      "amount_eur": 0.0,
-      "amount_raw": "000",
-      "motif": "mission d’identifier et de diffuser le répertoir e des compositrices",
-      "dossier": "2025 DAC 92"
     },
     {
       "delib_id": "2025 DAC 122",
@@ -2642,14 +2297,15 @@
       "direction_name": "Direction des affaires culturelles",
       "session_id": 152,
       "article_num": 4,
-      "beneficiary": "la présente délibération",
+      "beneficiary": null,
       "siret": "41970662700033",
       "amount_eur": 15000.0,
       "amount_raw": null,
       "motif": "l’attribution de subventions de fonctionnement dont les textes sont joints en annexe à la présente délibération",
       "dossier": "2025_06213",
       "amount_source": "llm",
-      "siret_source": "llm"
+      "siret_source": "llm",
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DAC 122",
@@ -3030,34 +2686,6 @@
       "dossier": null,
       "is_admin": true,
       "_admin_source": "llm"
-    },
-    {
-      "delib_id": "2025 DAC 133",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "Réseau Lux",
-      "siret": "92439545200015",
-      "amount_eur": 10000.0,
-      "amount_raw": "000",
-      "motif": "un projet d’exposition sur le Pont Saint-Ange (10e/18e) PROJET DE DELIBERATION EXPOSÉ DES MOTIFS Mesdames, Messieurs, Dans le cadre de la politique de soutien aux arts visuels, à la jeune création et aux projets culturels dans l’espace public, je vous propose de bien vouloir attr",
-      "dossier": "2025_09434",
-      "amount_source": "llm"
-    },
-    {
-      "delib_id": "2025 DAC 162",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "Atelier des artistes en exil",
-      "siret": "82780813000047",
-      "amount_eur": 72000.0,
-      "amount_raw": "000",
-      "motif": "accueillir les réfugiés qui, fuyant des situations de conflits et de violences, arrivent en Europe et notam m e n t en France depuis le début de l’année 2015",
-      "dossier": null,
-      "amount_source": "llm"
     },
     {
       "delib_id": "2025 DAC 163",
@@ -3676,20 +3304,6 @@
       "dossier": null,
       "is_admin": true,
       "_admin_source": "llm"
-    },
-    {
-      "delib_id": "2025 DAC 236",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "Paris Librairies",
-      "siret": "75375835800034",
-      "amount_eur": 12000.0,
-      "amount_raw": "000",
-      "motif": "objectif d’assurer une meilleure visibilité au réseau de librairies de Paris et de mettre en avant l’aspect qualitatif du travail mis en œuvre autour des auteurs et autrices en librairie",
-      "dossier": "2025 DAC 236",
-      "amount_source": "llm"
     },
     {
       "delib_id": "2025 DAC 347",
@@ -4588,50 +4202,6 @@
       "dossier": null,
       "is_admin": true,
       "_admin_source": "llm"
-    },
-    {
-      "delib_id": "2025 DAC 238",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "la Bibliothèque des Amis de l’Instruction du 3e arrondissement",
-      "siret": "39141759900019",
-      "amount_eur": 3000.0,
-      "amount_raw": "000",
-      "motif": "permettre au public parisien de mieux exploiter la richesse des fonds conservés et développer les instruments de recherche à la disposition des chercheurs, avec un accent particulier accordé aux études médiévales",
-      "dossier": null,
-      "amount_source": "llm"
-    },
-    {
-      "delib_id": "2025 DAC 263",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "AWARE - Archives of Women Artists",
-      "siret": "80814580900030",
-      "amount_eur": 6000.0,
-      "amount_raw": "000",
-      "motif": "mission de réinté g r e r les artistes femmes du XXe siècle dans l'Histoire de l'art",
-      "dossier": null,
-      "siret_source": "sirene",
-      "amount_source": "llm"
-    },
-    {
-      "delib_id": "2025 DAC 264",
-      "direction_id": 4,
-      "direction_name": "Direction des affaires culturelles",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "Le Cercle Guimard",
-      "siret": "82975465400020",
-      "amount_eur": 2000.0,
-      "amount_raw": "000",
-      "motif": "ses édicules et entour a g e s du métro parisien en fonte, créés pour l’Exposition universelle de 1900",
-      "dossier": "2025_06123",
-      "siret_source": "sirene",
-      "amount_source": "llm"
     },
     {
       "delib_id": "2025 DAE 148",
@@ -8169,33 +7739,6 @@
       "_admin_source": "llm"
     },
     {
-      "delib_id": "2025 DDCT 50",
-      "direction_id": 37,
-      "direction_name": "Direction de la Démocratie, des Citoyens et des Territoires",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "ACCORDERIE PARIS-SUD",
-      "siret": "83333142400014",
-      "amount_eur": 80000.0,
-      "amount_raw": "80 000",
-      "motif": "échang e r entre elles différents services avec une seule et unique monnaie : le temps",
-      "dossier": null,
-      "siret_source": "sirene"
-    },
-    {
-      "delib_id": "2025 DDCT 91",
-      "direction_id": 37,
-      "direction_name": "Direction de la Démocratie, des Citoyens et des Territoires",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "13",
-      "siret": null,
-      "amount_eur": 161115.0,
-      "amount_raw": "161 115",
-      "motif": "le financement de 44 projets dans les quartiers populaires (2e tranche) PROJET DE DÉLIBÉRATION EXPOSÉ DES MOTIFS La Ville de Paris s’est dotée d’un Pacte parisien pour les quartiers populaires, qui traduit l’ambition de la Ville d’apporter des réponses concrètes dans chacun des 3",
-      "dossier": null
-    },
-    {
       "delib_id": "2025 DDCT 93",
       "direction_id": 37,
       "direction_name": "Direction de la Démocratie, des Citoyens et des Territoires",
@@ -8308,19 +7851,6 @@
       "dossier": null,
       "is_admin": true,
       "_admin_source": "llm"
-    },
-    {
-      "delib_id": "2025 DDCT 95",
-      "direction_id": 37,
-      "direction_name": "Direction de la Démocratie, des Citoyens et des Territoires",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "13",
-      "siret": null,
-      "amount_eur": 172500.0,
-      "amount_raw": "172 500",
-      "motif": "le finance m e n t de 50 projets dans les quartiers populaires parisiens PROJET DE DÉLIBÉRATION EXPOSÉ DES MOTIFS Mesda m e s, Messieurs, La Ville de Paris s’est dotée d’un Pacte parisien pour les quartie r s populaires qui traduit l’ambition de la Ville à apport e r des réponse",
-      "dossier": null
     },
     {
       "delib_id": "2025 DDCT 97",
@@ -9219,20 +8749,6 @@
       "dossier": null,
       "is_admin": true,
       "_admin_source": "llm"
-    },
-    {
-      "delib_id": "2025 DDCT 57",
-      "direction_id": 37,
-      "direction_name": "Direction de la Démocratie, des Citoyens et des Territoires",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "5ème arrondissement",
-      "siret": "83464374400016",
-      "amount_eur": 10000.0,
-      "amount_raw": "10 000",
-      "motif": "2025, le budget de la Ville de Paris a doté ce fonds, sur le budget de la DDCT, de 330",
-      "dossier": null,
-      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DDCT 58",
@@ -10544,12 +10060,13 @@
       "direction_name": "Direction de la Démocratie, des Citoyens et des Territoires",
       "session_id": 152,
       "article_num": 10,
-      "beneficiary": "titre de l’exercice 2025",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 1500.0,
       "amount_raw": "1 500",
       "motif": null,
-      "dossier": null
+      "dossier": null,
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DDCT 69",
@@ -10557,12 +10074,13 @@
       "direction_name": "Direction de la Démocratie, des Citoyens et des Territoires",
       "session_id": 152,
       "article_num": 11,
-      "beneficiary": "titre de l’exercice 2025",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 1500.0,
       "amount_raw": "1 500",
       "motif": null,
-      "dossier": null
+      "dossier": null,
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DDCT 69",
@@ -10737,12 +10255,13 @@
       "direction_name": "Direction de la Démocratie, des Citoyens et des Territoires",
       "session_id": 152,
       "article_num": 8,
-      "beneficiary": "titre de l’exercice 2025",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 2500.0,
       "amount_raw": "2 500",
       "motif": null,
-      "dossier": null
+      "dossier": null,
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DDCT 70",
@@ -10777,12 +10296,13 @@
       "direction_name": "Direction de la Démocratie, des Citoyens et des Territoires",
       "session_id": 152,
       "article_num": 11,
-      "beneficiary": "titre de l’exercice 2025",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 6000.0,
       "amount_raw": "6 000",
       "motif": null,
-      "dossier": null
+      "dossier": null,
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DDCT 70",
@@ -11000,12 +10520,13 @@
       "direction_name": "Direction de la Démocratie, des Citoyens et des Territoires",
       "session_id": 152,
       "article_num": 7,
-      "beneficiary": "titre de l’exercice 2025",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 2000.0,
       "amount_raw": "2 000",
       "motif": "LA VILLE (19603/2025_03970), sise 221 rue La Fayette, 75010 Paris",
-      "dossier": null
+      "dossier": null,
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DDCT 72",
@@ -11041,12 +10562,13 @@
       "direction_name": "Direction de la Démocratie, des Citoyens et des Territoires",
       "session_id": 152,
       "article_num": 10,
-      "beneficiary": "titre de l’exercice 2025",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 5000.0,
       "amount_raw": "5 000",
       "motif": null,
-      "dossier": null
+      "dossier": null,
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DDCT 72",
@@ -11460,12 +10982,13 @@
       "direction_name": "Direction des Espaces verts et de l'Environnement",
       "session_id": 152,
       "article_num": 2,
-      "beneficiary": "au titre de l’année 2025",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 20000.0,
       "amount_raw": "20 000",
       "motif": "quatre projets intitulés « Squares et jardins engagés dans la démarche des Refuges LPO » (dossier Paris Asso 2025_05876), « Etude et protection du Moineau domestique à Paris » (dossier Paris Asso 2025_05985), « Atlas des Oiseaux nicheurs du Grand Paris (2025- 2028) » (dossier Par",
-      "dossier": null
+      "dossier": null,
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DEVE 49",
@@ -11839,12 +11362,13 @@
       "direction_name": "Direction des Espaces verts et de l'Environnement",
       "session_id": 152,
       "article_num": 2,
-      "beneficiary": "au titre de l’année 2025",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 4500.0,
       "amount_raw": "4 500",
       "motif": "un projet intitulé « Education à l’environnement et Développement durable Pour Tous » (Paris Asso 56443, dossier 2024_06446) et « Bilan et étude de la reconduction du dispositif des quartiers moineaux » (dossier Paris Asso 2025_05933)",
-      "dossier": "2024"
+      "dossier": "2024",
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DEVE 53",
@@ -13862,12 +13386,13 @@
       "direction_name": "Direction des familles et de la petite enfance",
       "session_id": 152,
       "article_num": 1,
-      "beneficiary": "la présente délibération",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Conventions de subventions de fonctionnement au titre du Fonds Publics et territoires",
-      "dossier": "2025 DFPE 148"
+      "dossier": "2025 DFPE 148",
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DFPE 148",
@@ -15555,29 +15080,13 @@
       "direction_name": "Direction de la Jeunesse et des sports",
       "session_id": 152,
       "article_num": 10,
-      "beneficiary": null,
-      "siret": null,
-      "amount_eur": null,
-      "amount_raw": null,
-      "motif": "l'application de l'",
+      "beneficiary": "NAUSICAA ASEL Amicale Sports et Loisirs",
+      "siret": "40897759300024",
+      "amount_eur": 600.0,
+      "amount_raw": "600",
+      "motif": "l’exercice 2025 à NAUSICAA ASEL Amicale Sports et Loisirs (n°16213 / n°2025_00795) –chez Florence MEYER - 14, rue Jean Cottin (18e)",
       "dossier": null,
-      "is_admin": true,
-      "_admin_source": "llm"
-    },
-    {
-      "delib_id": "2025 DJS 2",
-      "direction_id": 19,
-      "direction_name": "Direction de la Jeunesse et des sports",
-      "session_id": 152,
-      "article_num": 10,
-      "beneficiary": null,
-      "siret": null,
-      "amount_eur": null,
-      "amount_raw": null,
-      "motif": null,
-      "dossier": null,
-      "is_admin": true,
-      "_admin_source": "llm"
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 2",
@@ -15716,20 +15225,6 @@
       "direction_id": 19,
       "direction_name": "Direction de la Jeunesse et des sports",
       "session_id": 152,
-      "article_num": 10,
-      "beneficiary": "NAUSICAA ASEL Amicale Sports et Loisirs",
-      "siret": "40897759300024",
-      "amount_eur": 600.0,
-      "amount_raw": "600",
-      "motif": "l’exercice 2025 à NAUSICAA ASEL Amicale Sports et Loisirs (n°16213 / n°2025_00795) –chez Florence MEYER - 14, rue Jean Cottin (18e)",
-      "dossier": null,
-      "siret_source": "sirene"
-    },
-    {
-      "delib_id": "2025 DJS 2",
-      "direction_id": 19,
-      "direction_name": "Direction de la Jeunesse et des sports",
-      "session_id": 152,
       "article_num": 11,
       "beneficiary": "Mouettes de Paris",
       "siret": "40098839000037",
@@ -15783,21 +15278,6 @@
       "amount_eur": null,
       "amount_raw": null,
       "motif": "l'application de l'",
-      "dossier": null,
-      "is_admin": true,
-      "_admin_source": "llm"
-    },
-    {
-      "delib_id": "2025 DJS 3",
-      "direction_id": 19,
-      "direction_name": "Direction de la Jeunesse et des sports",
-      "session_id": 152,
-      "article_num": 10,
-      "beneficiary": null,
-      "siret": null,
-      "amount_eur": null,
-      "amount_raw": null,
-      "motif": null,
       "dossier": null,
       "is_admin": true,
       "_admin_source": "llm"
@@ -15902,21 +15382,6 @@
       "amount_eur": null,
       "amount_raw": null,
       "motif": "l'application de l'",
-      "dossier": null,
-      "is_admin": true,
-      "_admin_source": "llm"
-    },
-    {
-      "delib_id": "2025 DJS 5",
-      "direction_id": 19,
-      "direction_name": "Direction de la Jeunesse et des sports",
-      "session_id": 152,
-      "article_num": 10,
-      "beneficiary": null,
-      "siret": null,
-      "amount_eur": null,
-      "amount_raw": null,
-      "motif": null,
       "dossier": null,
       "is_admin": true,
       "_admin_source": "llm"
@@ -16066,21 +15531,6 @@
       "direction_id": 19,
       "direction_name": "Direction de la Jeunesse et des sports",
       "session_id": 152,
-      "article_num": 10,
-      "beneficiary": null,
-      "siret": null,
-      "amount_eur": null,
-      "amount_raw": null,
-      "motif": null,
-      "dossier": null,
-      "is_admin": true,
-      "_admin_source": "llm"
-    },
-    {
-      "delib_id": "2025 DJS 8",
-      "direction_id": 19,
-      "direction_name": "Direction de la Jeunesse et des sports",
-      "session_id": 152,
       "article_num": 1,
       "beneficiary": "l’Office du Mouvement Sportif du 8earrondissement",
       "siret": null,
@@ -16140,29 +15590,13 @@
       "direction_name": "Direction de la Jeunesse et des sports",
       "session_id": 152,
       "article_num": 10,
-      "beneficiary": null,
-      "siret": null,
-      "amount_eur": null,
-      "amount_raw": null,
-      "motif": "l'application de l'",
-      "dossier": null,
-      "is_admin": true,
-      "_admin_source": "llm"
-    },
-    {
-      "delib_id": "2025 DJS 14",
-      "direction_id": 19,
-      "direction_name": "Direction de la Jeunesse et des sports",
-      "session_id": 152,
-      "article_num": 10,
-      "beneficiary": null,
-      "siret": null,
-      "amount_eur": null,
-      "amount_raw": null,
+      "beneficiary": "la Gassendiana",
+      "siret": "41764385500022",
+      "amount_eur": 9500.0,
+      "amount_raw": "9 500",
       "motif": null,
       "dossier": null,
-      "is_admin": true,
-      "_admin_source": "llm"
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 14",
@@ -16287,20 +15721,6 @@
       "amount_raw": "11 000",
       "motif": null,
       "dossier": null
-    },
-    {
-      "delib_id": "2025 DJS 14",
-      "direction_id": 19,
-      "direction_name": "Direction de la Jeunesse et des sports",
-      "session_id": 152,
-      "article_num": 10,
-      "beneficiary": "la Gassendiana",
-      "siret": "41764385500022",
-      "amount_eur": 9500.0,
-      "amount_raw": "9 500",
-      "motif": null,
-      "dossier": null,
-      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 14",
@@ -16568,9 +15988,9 @@
       "article_num": 1,
       "beneficiary": "RIVP",
       "siret": "55203270800216",
-      "amount_eur": null,
-      "amount_raw": null,
-      "motif": "Financement du programme complémentaire de création de 11 logements PLS en résidence étudiante.",
+      "amount_eur": 5535316.0,
+      "amount_raw": "5 535 316",
+      "motif": "la totalité de sa durée, le service des intérêts et l’amortissement du prêt PLS à souscrire par la RIVP auprès de la Caisse des Dépôt et Consignations, destiné à financer le programme de création de 102 logements PLS au sein d’une résidence étudiante situé 41 Rue Tournefort (5e)",
       "dossier": "2025 DLH 132",
       "beneficiary_source": "llm",
       "siret_source": "sirene"
@@ -16616,66 +16036,6 @@
       "amount_eur": null,
       "amount_raw": "22 743 966",
       "motif": "le service des intérêts et l’amortissement des prêts à contracter par la RIVP en vue du financement d’un programme de création de 91 logements sociaux PLS situé 41 Rue Tournefort (5e); Vu le projet de délibération en date du par lequel la Maire de Paris propose de modifier la gar",
-      "dossier": null,
-      "is_admin": true,
-      "_admin_source": "llm"
-    },
-    {
-      "delib_id": "2025 DLH 132",
-      "direction_id": 20,
-      "direction_name": "Direction du logement et de l'habitat",
-      "session_id": 152,
-      "article_num": 1,
-      "beneficiary": "RIVP",
-      "siret": "55203270800216",
-      "amount_eur": 5535316.0,
-      "amount_raw": "5 535 316",
-      "motif": "la totalité de sa durée, le service des intérêts et l’amortissement du prêt PLS à souscrire par la RIVP auprès de la Caisse des Dépôt et Consignations, destiné à financer le programme de création de 102 logements PLS au sein d’une résidence étudiante situé 41 Rue Tournefort (5e)",
-      "dossier": "2025 DLH 132",
-      "beneficiary_source": "llm",
-      "siret_source": "sirene"
-    },
-    {
-      "delib_id": "2025 DLH 132",
-      "direction_id": 20,
-      "direction_name": "Direction du logement et de l'habitat",
-      "session_id": 152,
-      "article_num": 2,
-      "beneficiary": "RIVP",
-      "siret": "55203270800216",
-      "amount_eur": 7072865.0,
-      "amount_raw": "7 072 865",
-      "motif": "la totalité de sa durée, le service des intérêts et l’amortissement du prêt PLS complémentaire à souscrire par la RIVP auprès de la Caisse des Dépôt et Consignations, destiné à financer la création de 102 logements PLS au sein d’une résidence étudiante situé 41 Rue Tournefort (5e",
-      "dossier": "2025 DLH 132",
-      "beneficiary_source": "llm",
-      "siret_source": "sirene"
-    },
-    {
-      "delib_id": "2025 DLH 132",
-      "direction_id": 20,
-      "direction_name": "Direction du logement et de l'habitat",
-      "session_id": 152,
-      "article_num": 3,
-      "beneficiary": null,
-      "siret": null,
-      "amount_eur": null,
-      "amount_raw": "10 135 785",
-      "motif": "la totalité de sa durée, le service des intérêts et l’amortissement du prêt PLS foncier à souscrire par la RIVP auprès de la Caisse des Dépôt et Consignations, destiné à financer la création de 102 logements PLS au sein d’une résidence étudiante situé 41 Rue Tournefort (5e)",
-      "dossier": null,
-      "is_admin": true,
-      "_admin_source": "llm"
-    },
-    {
-      "delib_id": "2025 DLH 132",
-      "direction_id": 20,
-      "direction_name": "Direction du logement et de l'habitat",
-      "session_id": 152,
-      "article_num": 4,
-      "beneficiary": null,
-      "siret": null,
-      "amount_eur": null,
-      "amount_raw": null,
-      "motif": "quelque motif que ce soit, ne s'acquitterait pas : -Des sommes dues (capital et intérêts) aux échéances convenues ; -Des intérêts moratoires encourus ; -En cas de remboursement anticipé des prêts survenu conformément aux conditions contractuelles du prêt, des intérêts courus cont",
       "dossier": null,
       "is_admin": true,
       "_admin_source": "llm"
@@ -18787,12 +18147,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 1,
-      "beneficiary": "titre de l’année 2025",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 4000.0,
       "amount_raw": "4 000",
       "motif": "TOUS (19943), 4, place de Vénétie (13e), pour une subvention d’un montant de 4 000 euros au titre de l’année 2025, pour son action « Prévention Rixes Sud 13 », (dossier n° 2025_08562 /DDCT/SPV/4 000 euros)",
-      "dossier": null
+      "dossier": null,
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 75",
@@ -18843,12 +18204,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 5,
-      "beneficiary": "titre de l’année 2025",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 2000.0,
       "amount_raw": "2 000",
       "motif": "son action « Création rap entre quartiers (suite) » (dossier n° 2025_09756/ DDCT/SPV/2 000€ et dossier n° 2025_08574/DSOL/SDILE/SLE 6 000 euros",
-      "dossier": null
+      "dossier": null,
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 75",
@@ -18856,12 +18218,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 6,
-      "beneficiary": "titre de l’année 2025",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 5000.0,
       "amount_raw": "5 000",
       "motif": "son action « J",
-      "dossier": "2025"
+      "dossier": "2025",
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 75",
@@ -18869,12 +18232,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 7,
-      "beneficiary": "titre de l’année 2025",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 1000.0,
       "amount_raw": "1 000",
       "motif": "son action « SPPR2025 DU JEU AU RISQUE DE RIXE prévention des rixes entre jeunes à Paris 2025 » (dossier n° 2025_08708 / DSOL/SDILE/SLE /1 000€)",
-      "dossier": null
+      "dossier": null,
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 75",
@@ -18924,12 +18288,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 11,
-      "beneficiary": "titre de l’année 2025",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 6000.0,
       "amount_raw": "6 000",
       "motif": "son action «Prévenir les rixes au sein des clubs sportifs »(dossier n° 2025_08705 / DSOL/SDILE/SLE/6 000 euros)",
-      "dossier": null
+      "dossier": null,
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 75",
@@ -18937,12 +18302,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 12,
-      "beneficiary": "titre de l’année 2025",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 2000.0,
       "amount_raw": "2 000",
       "motif": "son action « Les jeunes de Florimont disent non au harcèlement (dossier n° 2025_08351 /DDCT/SPV/2 000 euros) et pour son action « Net'Ethic (ex Web'écrans) » (dossier 2025_08094 /DDCT/SPV /2 000 euros)",
-      "dossier": "2025"
+      "dossier": "2025",
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 75",
@@ -18965,12 +18331,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 14,
-      "beneficiary": "titre de l’année 2025",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 2000.0,
       "amount_raw": "2 000",
       "motif": "son action «Prévention des Rixes : Conception d'une pièce de théâtre entre les jeunes des Rigoles et du bas Bell », (dossier n° 2025_08112 / DSOL/SDILE/SLE/2 000 euros)",
-      "dossier": null
+      "dossier": null,
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 75",
@@ -18992,12 +18359,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 16,
-      "beneficiary": "titre de l’année 2025",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 1500.0,
       "amount_raw": "1 500",
       "motif": "son action « Rixes sans retour // acte 2 », (dossier n° 2025_08560 / DSOL/SDILE/SLE/1 500 euros)",
-      "dossier": null
+      "dossier": null,
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 75",
@@ -19032,12 +18400,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 19,
-      "beneficiary": "titre de l’année 2025",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 1000.0,
       "amount_raw": "1 000",
       "motif": "son action « Prévention du cyber-harcèlement et des rixes",
-      "dossier": null
+      "dossier": null,
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 75",
@@ -19059,12 +18428,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 21,
-      "beneficiary": "titre de l’année 2025",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 1000.0,
       "amount_raw": "1 000",
       "motif": "son action « Rue aux enfants_ Cœur sur le collège Budé », (dossier n° 2025_08309/DPMP/BAP/1 000 euros)",
-      "dossier": null
+      "dossier": null,
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 75",
@@ -19072,12 +18442,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 22,
-      "beneficiary": "titre de l’année 2025",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 4500.0,
       "amount_raw": "4 500",
       "motif": "son action « Tournois Inter-Centres de Loisirs 14e-15e», (dossier n° 2025_08531/DSOL/SDILE/SLE/4 500 euros)",
-      "dossier": null
+      "dossier": null,
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 75",
@@ -19085,12 +18456,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 23,
-      "beneficiary": "titre de l’année 2025",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 2000.0,
       "amount_raw": "2 000",
       "motif": "son action « Lutte contre les phénomènes de rixes », (dossier n° 2025_08636/DPMP/BAP/2 000 euros) et son « Actions de terrain durant le mois de la prévention des rixes, (dossier n° 2025_08635/ DPMP/BAP/ 1 000 euros)",
-      "dossier": null
+      "dossier": null,
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 75",
@@ -19098,12 +18470,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 24,
-      "beneficiary": "titre de l’année 2025",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 4000.0,
       "amount_raw": "4 000",
       "motif": "son action «Lutte contre les violences chez les jeunes habitants du QPV Danube-Solidarité », (dossier n° 2025_08410/ DDCT/SPV /4 000 euros)",
-      "dossier": null
+      "dossier": null,
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 75",
@@ -19237,12 +18610,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 34,
-      "beneficiary": "titre de l’année 2025",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 3500.0,
       "amount_raw": "3 500",
       "motif": "son action «Théâtre forum :outils de sensibilisation contre les rixes et les violences sociales », (dossier n° 2025_07957/DSOL/SDILE/SLE/3 500 euros)",
-      "dossier": null
+      "dossier": null,
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 75",
@@ -19265,12 +18639,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 36,
-      "beneficiary": "titre de l’année 2025",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 4500.0,
       "amount_raw": "4 500",
       "motif": "son action «Prévention des violences inter quartiers : diffusion du spectacle ''L'effet Mandela'‘ », (dossier n° 2025_08668 /DSOL/SDILE/SLE/4 500 euros)",
-      "dossier": null
+      "dossier": null,
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 75",
@@ -19334,12 +18709,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 41,
-      "beneficiary": "titre de l’année 2025",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 2000.0,
       "amount_raw": "2 000",
       "motif": "son action « Rixe », (dossier n° 2025_08605 / DSOL/SDILE/SLE/2 000 euros)",
-      "dossier": null
+      "dossier": null,
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 75",
@@ -19526,12 +18902,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 55,
-      "beneficiary": "titre de l’année 2025",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 2000.0,
       "amount_raw": "2 000",
       "motif": "son action « Le printemps au square de la Roquette », (dossier n° 2025_08595 /DSOL/SDILE/SLE/2 000 euros) et son action « L'été au square de la Roquette », (dossier n° 2025_08598 /DSOL/SDILE/SLE/4 000 euros)",
-      "dossier": null
+      "dossier": null,
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 75",
@@ -19539,12 +18916,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 56,
-      "beneficiary": "titre de l’année 2025 à l’association UNION SPORTIVE DES BRETONS DE PARIS",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 7750.0,
       "amount_raw": "7 750",
       "motif": "son action « Super bootcamp ? Prévention des rixes -14/15/16ème arrondissements, Issy les Moulineaux, Vanves, Ma », (dossier n° 2025_08520 /DPMP/BAP/5 500 euros) et son action « Bootcamp prévention des rixes Paris Centre » (dossier n° 2025_08573 /DPMP/BAP/2 250 euros)",
-      "dossier": null
+      "dossier": null,
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 75",
@@ -19758,20 +19136,6 @@
       "_admin_source": "llm"
     },
     {
-      "delib_id": "2025 DSOL 42",
-      "direction_id": 47,
-      "direction_name": "Direction des Solidarités",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "3 associations",
-      "siret": "33274646000010",
-      "amount_eur": 199000.0,
-      "amount_raw": "199 000",
-      "motif": "l’information et la coordina tion des acteurs de la lutte contre la précarit é",
-      "dossier": "30982",
-      "siret_source": "sirene"
-    },
-    {
       "delib_id": "2025 DSOL 63",
       "direction_id": 47,
       "direction_name": "Direction des Solidarités",
@@ -19851,12 +19215,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 6,
-      "beneficiary": "titre de l’année 2025",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 1600.0,
       "amount_raw": "1 600",
       "motif": null,
-      "dossier": null
+      "dossier": null,
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 63",
@@ -19916,19 +19281,6 @@
       "dossier": "2025_09732",
       "beneficiary_source": "llm",
       "siret_source": "sirene"
-    },
-    {
-      "delib_id": "2025 DSOL 82",
-      "direction_id": 47,
-      "direction_name": "Direction des Solidarités",
-      "session_id": 152,
-      "article_num": null,
-      "beneficiary": "signer les conventions et avena nt corres po n d a n t s",
-      "siret": null,
-      "amount_eur": 80000.0,
-      "amount_raw": "80 000",
-      "motif": "leurs actions favorisant l'intégr a tion des réfugié·es à Paris PROJET DE DÉLIBERATIO N EXPOSÉ DES MOTIFS Mesda m e s, Messieurs, La Ville de Paris continue d’accueillir des femmes et des homm e s venu",
-      "dossier": null
     },
     {
       "delib_id": "2025 DSOL 109",
@@ -20703,12 +20055,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 1,
-      "beneficiary": "la présente délibération",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 20400.0,
       "amount_raw": "20 400",
       "motif": null,
-      "dossier": "2025"
+      "dossier": "2025",
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 76",
@@ -20716,12 +20069,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 2,
-      "beneficiary": "la présente délibération",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 15300.0,
       "amount_raw": "15 300",
       "motif": null,
-      "dossier": "2025"
+      "dossier": "2025",
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 76",
@@ -20729,12 +20083,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 3,
-      "beneficiary": "la présente délibération",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 12700.0,
       "amount_raw": "12 700",
       "motif": null,
-      "dossier": "2025"
+      "dossier": "2025",
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 76",
@@ -20742,12 +20097,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 4,
-      "beneficiary": "la présente délibération",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 6300.0,
       "amount_raw": "6 300",
       "motif": null,
-      "dossier": "2025"
+      "dossier": "2025",
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 76",
@@ -20755,12 +20111,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 5,
-      "beneficiary": "la présente délibération",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 1900.0,
       "amount_raw": "1 900",
       "motif": "la Promotion et l’Organisation Ludiques de Loisirs –APOLLO,Paris asso 200220, dossier 2025_08592, au titre de l’année 2025",
-      "dossier": "2025"
+      "dossier": "2025",
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 76",
@@ -20768,12 +20125,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 6,
-      "beneficiary": "la présente délibération",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 3000.0,
       "amount_raw": "3 000",
       "motif": null,
-      "dossier": "2025"
+      "dossier": "2025",
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 76",
@@ -20781,12 +20139,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 7,
-      "beneficiary": "la présente délibération",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 2000.0,
       "amount_raw": "2 000",
       "motif": null,
-      "dossier": "2025"
+      "dossier": "2025",
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 76",
@@ -20794,12 +20153,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 8,
-      "beneficiary": "la présente délibération",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 1200.0,
       "amount_raw": "1 200",
       "motif": null,
-      "dossier": "2025"
+      "dossier": "2025",
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 76",
@@ -20807,12 +20167,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 9,
-      "beneficiary": "la présente délibération",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 2100.0,
       "amount_raw": "2 100",
       "motif": null,
-      "dossier": "2025"
+      "dossier": "2025",
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 76",
@@ -20835,12 +20196,13 @@
       "direction_name": "Direction des Solidarités",
       "session_id": 152,
       "article_num": 1,
-      "beneficiary": "la présente délibération",
+      "beneficiary": null,
       "siret": "51279131000026",
       "amount_eur": 10000.0,
       "amount_raw": "10 000",
       "motif": null,
-      "dossier": "2025"
+      "dossier": "2025",
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSOL 79",
@@ -21076,12 +20438,13 @@
       "direction_name": "Direction de la Santé publique",
       "session_id": 152,
       "article_num": 1,
-      "beneficiary": "titre de l’exercice 2025 à l’Association",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 8000.0,
       "amount_raw": "8 000",
       "motif": "la Communication, l’Espace et la Réinsertion de Malades Addictifs –ACERMA (Paris Asso 8021), située 22, quai de la Loire à Paris (19e) pour l’action « Ateliers culturels adultes précarité - La culture comme outil de réhabilitation psychosociale »(dossier 2025_07719)",
-      "dossier": "2025"
+      "dossier": "2025",
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSP 21",
@@ -21104,12 +20467,13 @@
       "direction_name": "Direction de la Santé publique",
       "session_id": 152,
       "article_num": 3,
-      "beneficiary": "titre de l’exercice 2025 à l’association AURORE",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 110000.0,
       "amount_raw": "110 000",
       "motif": "assurer les actions suivantes : -«CHRS SILOE »(dossier 2025_05330) :30 000 euros ; -«Équipe mobile CAARUD EGO - volet médiation » (dossier 2025_05308) : 60 000 euros ; -«Encadrement des travailleurs-pairs »(dossier 2025_05299) :20 000 euros",
-      "dossier": "2025"
+      "dossier": "2025",
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSP 21",
@@ -21132,12 +20496,13 @@
       "direction_name": "Direction de la Santé publique",
       "session_id": 152,
       "article_num": 5,
-      "beneficiary": "titre de l’exercice 2025 à l'Association Nationale de Prévention en Alcoologie et Addictologie",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 40000.0,
       "amount_raw": "40 000",
       "motif": "assurer les actions suivantes : -«Promotion de la santé et prévention des conduites addictives auprès des personnes précaires »(dossier 2025_04273) :20 000 euros ; -«Réduction des risques « Alcool » au sein des structures d’hébergement de personnes en situation de grande précarit",
-      "dossier": "2025"
+      "dossier": "2025",
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSP 21",
@@ -21160,12 +20525,13 @@
       "direction_name": "Direction de la Santé publique",
       "session_id": 152,
       "article_num": 7,
-      "beneficiary": "titre de l’exercice 2025 à l'Association Aux Captifs La Libération",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 20000.0,
       "amount_raw": "20 000",
       "motif": "le «Projet Marcel Olivier -Améliorer la prise en charge des personnes SDF consommatrices »(dossier 2025_09197)",
-      "dossier": "2025"
+      "dossier": "2025",
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSP 21",
@@ -21188,12 +20554,13 @@
       "direction_name": "Direction de la Santé publique",
       "session_id": 152,
       "article_num": 9,
-      "beneficiary": "titre de l’exercice 2025 à l'Association GAIAPARIS",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 25000.0,
       "amount_raw": "25 000",
       "motif": "son action « Labofabrik »(dossier 2025_06028)",
-      "dossier": "2025"
+      "dossier": "2025",
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSP 21",
@@ -21216,12 +20583,13 @@
       "direction_name": "Direction de la Santé publique",
       "session_id": 152,
       "article_num": 11,
-      "beneficiary": "titre de l’exercice 2025 au Groupe SOS Solidarités",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 40000.0,
       "amount_raw": "40 000",
       "motif": "son action de « maraudes auprès des usagers de drogues »(dossier 2025_06039)",
-      "dossier": "2025"
+      "dossier": "2025",
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSP 21",
@@ -21244,12 +20612,13 @@
       "direction_name": "Direction de la Santé publique",
       "session_id": 152,
       "article_num": 13,
-      "beneficiary": "titre de l’exercice 2025 à l’association OPPELIA",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 60000.0,
       "amount_raw": "60 000",
       "motif": "sa structure Charonne pour son action de «Maraudes de médiation sociale dans les 10e, 18e et 19e arrondissements de Paris »(dossier 2025_05076)",
-      "dossier": "2025"
+      "dossier": "2025",
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSP 21",
@@ -21446,12 +20815,13 @@
       "direction_name": "Direction de la Santé publique",
       "session_id": 152,
       "article_num": 1,
-      "beneficiary": "titre de l’année 2025 à l’association Comité",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 500.0,
       "amount_raw": "500",
       "motif": "la Santé des Exilés (Le Comede) (n° Paris Asso 18447) pour les projets : -2025_04440 : Centre d'accompagnement global et pluridisciplinaire de personnes exilées au Comede Paris ; -2025_04443 : Accueil, dépistage et accompagnement médico-psycho-social, des exilé",
-      "dossier": "18447"
+      "dossier": "18447",
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSP 25",
@@ -21459,13 +20829,14 @@
       "direction_name": "Direction de la Santé publique",
       "session_id": 152,
       "article_num": 2,
-      "beneficiary": "titre de l’année 2025 à l’association Médecins du Monde",
+      "beneficiary": null,
       "siret": null,
       "amount_eur": 100000.0,
       "amount_raw": "000",
       "motif": "les projets : -1/2- -2025_04219 :Centre d'Accueil, d'Orientation et d'Accompagnement (CAOA) de Paris -Médecins du Monde ; -2025_04310 :Lotus Bus -Promotion de la santé et des droits des travailleuses du sexe chinoises à Paris ; -2025_05372 :Pas de Santé Sans Toit -Amélioration de",
       "dossier": "20399",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "junk_cleaned": true
     },
     {
       "delib_id": "2025 DSP 25",
@@ -22596,6 +21967,505 @@
       "dossier": null,
       "is_admin": true,
       "_admin_source": "llm"
+    },
+    {
+      "delib_id": "2025 DAC 252",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "de Défense des Valeurs de la Résistance",
+      "siret": "80131743900017",
+      "amount_eur": 200.0,
+      "amount_raw": "200",
+      "motif": "but de faire connaîtr e l'histoire de la Résistan c e, de trans m e t t r e la mémoire des acteu rs de la Résistanc e et de faire vivre et développe r les valeurs qui ont animé les comba tt a n t s de la Résista nc e qui ont été concrétisé e s dans le progra m m e du Conseil nati",
+      "dossier": null
+    },
+    {
+      "delib_id": "2025 DAC 253",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "Fonds Mémoire d’Auschwitz 17",
+      "siret": "42435979200019",
+      "amount_eur": 500.0,
+      "amount_raw": "500",
+      "motif": "la mémoire de tous les actes individuels et collectifs et encour a g e n t la recher c h e historiqu e sur la Shoah ainsi que la trans mission de l’histoire aux jeunes génér a tions afin d’en mainte nir le souvenir et d’entre t e ni r la mémoire collective",
+      "dossier": null
+    },
+    {
+      "delib_id": "2025 DAC 254",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "des Amis de la Fondation",
+      "siret": "82931724700023",
+      "amount_eur": 500.0,
+      "amount_raw": "500",
+      "motif": "la mémoire de tous les actes individuels et collectifs des déportés politiques, ayant marqué la Résistance nationale ou mondiale, la Shoah ou les conflits du XXe siècle",
+      "dossier": null
+    },
+    {
+      "delib_id": "2025 DAC 259",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "la Fondation",
+      "siret": "39115563700013",
+      "amount_eur": 5000.0,
+      "amount_raw": "000",
+      "motif": "objet de servir la mémoire du Général de Gaulle, de faire connaîtr e, tant en Franc e qu’à l’étrang e r , l’exemple qu’il a donné et les enseigne m e n t s qu’il a laissés, par ses actions et par ses écrits, pour la défens e des valeurs qui sont le patrimoin e des Français",
+      "dossier": null,
+      "amount_source": "manual"
+    },
+    {
+      "delib_id": "2025 DAC 260",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "Maison des anciens combattants de la 2e D",
+      "siret": "78436139600053",
+      "amount_eur": 10000.0,
+      "amount_raw": "000",
+      "motif": "objet de regrou p e r tous ceux qui ont appar t e n u à la 2e Division Blindée afin d’apport e r à ses memb r e s, en souvenir et pour la survivance de leur fraternité d’arme s et de leur solidarité au comba t, l’entraid e et l’assista nc e sous toutes leurs formes dont ils pourr",
+      "dossier": null,
+      "amount_source": "manual"
+    },
+    {
+      "delib_id": "2025 DAC 11",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "Le Théâtre Paris-Villette",
+      "siret": "43353723000040",
+      "amount_eur": 950000.0,
+      "amount_raw": "000",
+      "motif": "y mene r des actions cultur elles, des parten a ri a t s avec le tissu associatif local et des temps forts festifs et fédér at e u r s",
+      "dossier": null,
+      "siret_source": "sirene",
+      "amount_source": "manual"
+    },
+    {
+      "delib_id": "2025 DAC 18",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "Compagnie Flies",
+      "siret": "83862097900073",
+      "amount_eur": 22000.0,
+      "amount_raw": "000",
+      "motif": "les activités et événements parisiens qu’elles initient autour des arts représentatifs du mouvement et de la culture Hip Hop",
+      "dossier": null,
+      "amount_source": "manual"
+    },
+    {
+      "delib_id": "2025 DAC 19",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "Les Plateaux Sauvages",
+      "siret": "82349520500010",
+      "amount_eur": 1100000.0,
+      "amount_raw": "000",
+      "motif": "les amateurs et amatrices, les Plateaux Sauvages est un équipement ouvert aux compagnies émergentes ou confirmées, aux habitant∙es du quartier et de l’arrondissement, offrant un accueil convivial, avec une attention particulière aux publics jeunes",
+      "dossier": null,
+      "amount_source": "manual"
+    },
+    {
+      "delib_id": "2025 DAC 50",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "la SAS La Manufacture",
+      "siret": "32460241600012",
+      "amount_eur": 500000.0,
+      "amount_raw": "000",
+      "motif": "la relation scène/salle intimiste liée à la faible jauge au regard de la taille importante du plateau",
+      "dossier": "2025 DAC 50",
+      "amount_source": "llm"
+    },
+    {
+      "delib_id": "2025 DAC 51",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": null,
+      "siret": null,
+      "amount_eur": null,
+      "amount_raw": null,
+      "motif": "le Soutien du Théâtr e Privé (ASTP)",
+      "dossier": null,
+      "is_admin": true,
+      "_admin_source": "llm"
+    },
+    {
+      "delib_id": "2025 DAC 58",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": null,
+      "siret": "77566172100024",
+      "amount_eur": 500000.0,
+      "amount_raw": "000",
+      "motif": "son projet intitulé « Places en Réseau »",
+      "dossier": null,
+      "amount_source": "llm",
+      "junk_cleaned": true
+    },
+    {
+      "delib_id": "2025 DAC 59",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "présent pro - jet",
+      "siret": "31142865000023",
+      "amount_eur": 30000.0,
+      "amount_raw": "000",
+      "motif": "soutenir l’activité de l’association",
+      "dossier": "ParisAsso:22161;2025_04885",
+      "amount_source": "llm"
+    },
+    {
+      "delib_id": "2025 DAC 69",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "CENTRE NATIONAL DES DRAMATURGIES CONTEMPORAINES - THEATRE OUVERT",
+      "siret": "30554644200032",
+      "amount_eur": 100000.0,
+      "amount_raw": "000",
+      "motif": "favoriser son ancrage territorial",
+      "dossier": null,
+      "amount_source": "llm"
+    },
+    {
+      "delib_id": "2025 DAC 78",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "par Actions Simplifiée La Fabrica Spectacles",
+      "siret": "79422096200045",
+      "amount_eur": 127000.0,
+      "amount_raw": "000",
+      "motif": "vocation, entre autre s, d’animer la vie sociale du quartier et de studios réservé s à l’héber g e m e n t des artistes en résiden ce de création ou se produisa n t en concert dans le lieu",
+      "dossier": null,
+      "amount_source": "llm"
+    },
+    {
+      "delib_id": "2025 DAC 79",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "Burning Womxn",
+      "siret": "88301553900033",
+      "amount_eur": 25000.0,
+      "amount_raw": "000",
+      "motif": "l'orga nisa tion de festivals",
+      "dossier": null,
+      "amount_source": "llm"
+    },
+    {
+      "delib_id": "2025 DAC 80",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "L’inter-co",
+      "siret": "88921794900029",
+      "amount_eur": 180.0,
+      "amount_raw": "180",
+      "motif": "le fonctionn e m e n t de la Flèche d’Or (20e)",
+      "dossier": "2025"
+    },
+    {
+      "delib_id": "2025 DAC 81",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "le Concert Spirituel",
+      "siret": "34941695800024",
+      "amount_eur": 75000.0,
+      "amount_raw": "000",
+      "motif": "six dates en janvier au Théâtr e du Chatelet, un progr a m m e de cantat e s de Bach à la Philhar mo ni e de Paris en avril",
+      "dossier": null,
+      "amount_source": "llm"
+    },
+    {
+      "delib_id": "2025 DAC 82",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "Le Cabaret Contemporain",
+      "siret": "51359023200072",
+      "amount_eur": 0.0,
+      "amount_raw": "000",
+      "motif": "but de faire connaître, notam m e n t à un public jeune, méloma n e ou non, la musique dite savant e",
+      "dossier": "2025 DAC 82"
+    },
+    {
+      "delib_id": "2025 DAC 84",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "Forces majeures",
+      "siret": "80994610600014",
+      "amount_eur": 0.0,
+      "amount_raw": "000",
+      "motif": "publics en zone reculée ou urbaine, concer ts en plein air, concert s en salle et/ ou sous les étoiles, tourné e s à vélo",
+      "dossier": "2025 DAC 82"
+    },
+    {
+      "delib_id": "2025 DAC 87",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": null,
+      "siret": "90750546500019",
+      "amount_eur": null,
+      "amount_raw": "000",
+      "motif": "sa quatrième édition, proposait cinq concerts de ses ensembles de musiques de chambre résidents et partenaires dans le cadre de son projet européen MERITA",
+      "dossier": null,
+      "is_admin": true,
+      "_admin_source": "llm"
+    },
+    {
+      "delib_id": "2025 DAC 88",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": null,
+      "siret": "31390568900078",
+      "amount_eur": null,
+      "amount_raw": "000",
+      "motif": "objet la promotion du répertoire classique et contemporain à Paris, en France et à l'étranger",
+      "dossier": null,
+      "is_admin": true,
+      "_admin_source": "llm"
+    },
+    {
+      "delib_id": "2025 DAC 91",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "La Caserne Éphémère",
+      "siret": "42447742000022",
+      "amount_eur": 0.0,
+      "amount_raw": "000",
+      "motif": "les artistes plasticiens et espace un bar- rest au r a n t en bordur e du canal Saint- Martin",
+      "dossier": "2025 DAC 87"
+    },
+    {
+      "delib_id": "2025 DAC 92",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "Union des Musiciens de Jazz",
+      "siret": "39342439500035",
+      "amount_eur": 0.0,
+      "amount_raw": "000",
+      "motif": "objet le soutien à la création, la production et la diffusion du jazz",
+      "dossier": "2025 DAC 92"
+    },
+    {
+      "delib_id": "2025 DAC 101",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "Cie MPDA",
+      "siret": "49934353100053",
+      "amount_eur": 0.0,
+      "amount_raw": "000",
+      "motif": "mission d’identifier et de diffuser le répertoir e des compositrices",
+      "dossier": "2025 DAC 92"
+    },
+    {
+      "delib_id": "2025 DAC 133",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "Réseau Lux",
+      "siret": "92439545200015",
+      "amount_eur": 10000.0,
+      "amount_raw": "000",
+      "motif": "un projet d’exposition sur le Pont Saint-Ange (10e/18e) PROJET DE DELIBERATION EXPOSÉ DES MOTIFS Mesdames, Messieurs, Dans le cadre de la politique de soutien aux arts visuels, à la jeune création et aux projets culturels dans l’espace public, je vous propose de bien vouloir attr",
+      "dossier": "2025_09434",
+      "amount_source": "llm"
+    },
+    {
+      "delib_id": "2025 DAC 162",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "Atelier des artistes en exil",
+      "siret": "82780813000047",
+      "amount_eur": 72000.0,
+      "amount_raw": "000",
+      "motif": "accueillir les réfugiés qui, fuyant des situations de conflits et de violences, arrivent en Europe et notam m e n t en France depuis le début de l’année 2015",
+      "dossier": null,
+      "amount_source": "llm"
+    },
+    {
+      "delib_id": "2025 DAC 236",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "Paris Librairies",
+      "siret": "75375835800034",
+      "amount_eur": 12000.0,
+      "amount_raw": "000",
+      "motif": "objectif d’assurer une meilleure visibilité au réseau de librairies de Paris et de mettre en avant l’aspect qualitatif du travail mis en œuvre autour des auteurs et autrices en librairie",
+      "dossier": "2025 DAC 236",
+      "amount_source": "llm"
+    },
+    {
+      "delib_id": "2025 DAC 238",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "la Bibliothèque des Amis de l’Instruction du 3e arrondissement",
+      "siret": "39141759900019",
+      "amount_eur": 3000.0,
+      "amount_raw": "000",
+      "motif": "permettre au public parisien de mieux exploiter la richesse des fonds conservés et développer les instruments de recherche à la disposition des chercheurs, avec un accent particulier accordé aux études médiévales",
+      "dossier": null,
+      "amount_source": "llm"
+    },
+    {
+      "delib_id": "2025 DAC 263",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "AWARE - Archives of Women Artists",
+      "siret": "80814580900030",
+      "amount_eur": 6000.0,
+      "amount_raw": "000",
+      "motif": "mission de réinté g r e r les artistes femmes du XXe siècle dans l'Histoire de l'art",
+      "dossier": null,
+      "siret_source": "sirene",
+      "amount_source": "llm"
+    },
+    {
+      "delib_id": "2025 DAC 264",
+      "direction_id": 4,
+      "direction_name": "Direction des affaires culturelles",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "Le Cercle Guimard",
+      "siret": "82975465400020",
+      "amount_eur": 2000.0,
+      "amount_raw": "000",
+      "motif": "ses édicules et entour a g e s du métro parisien en fonte, créés pour l’Exposition universelle de 1900",
+      "dossier": "2025_06123",
+      "siret_source": "sirene",
+      "amount_source": "llm"
+    },
+    {
+      "delib_id": "2025 DDCT 50",
+      "direction_id": 37,
+      "direction_name": "Direction de la Démocratie, des Citoyens et des Territoires",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "ACCORDERIE PARIS-SUD",
+      "siret": "83333142400014",
+      "amount_eur": 80000.0,
+      "amount_raw": "80 000",
+      "motif": "échang e r entre elles différents services avec une seule et unique monnaie : le temps",
+      "dossier": null,
+      "siret_source": "sirene"
+    },
+    {
+      "delib_id": "2025 DDCT 91",
+      "direction_id": 37,
+      "direction_name": "Direction de la Démocratie, des Citoyens et des Territoires",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "13",
+      "siret": null,
+      "amount_eur": 161115.0,
+      "amount_raw": "161 115",
+      "motif": "le financement de 44 projets dans les quartiers populaires (2e tranche) PROJET DE DÉLIBÉRATION EXPOSÉ DES MOTIFS La Ville de Paris s’est dotée d’un Pacte parisien pour les quartiers populaires, qui traduit l’ambition de la Ville d’apporter des réponses concrètes dans chacun des 3",
+      "dossier": null
+    },
+    {
+      "delib_id": "2025 DDCT 95",
+      "direction_id": 37,
+      "direction_name": "Direction de la Démocratie, des Citoyens et des Territoires",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "13",
+      "siret": null,
+      "amount_eur": 172500.0,
+      "amount_raw": "172 500",
+      "motif": "le finance m e n t de 50 projets dans les quartiers populaires parisiens PROJET DE DÉLIBÉRATION EXPOSÉ DES MOTIFS Mesda m e s, Messieurs, La Ville de Paris s’est dotée d’un Pacte parisien pour les quartie r s populaires qui traduit l’ambition de la Ville à apport e r des réponse",
+      "dossier": null
+    },
+    {
+      "delib_id": "2025 DDCT 57",
+      "direction_id": 37,
+      "direction_name": "Direction de la Démocratie, des Citoyens et des Territoires",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "5ème arrondissement",
+      "siret": "83464374400016",
+      "amount_eur": 10000.0,
+      "amount_raw": "10 000",
+      "motif": "2025, le budget de la Ville de Paris a doté ce fonds, sur le budget de la DDCT, de 330",
+      "dossier": null,
+      "siret_source": "sirene"
+    },
+    {
+      "delib_id": "2025 DSOL 42",
+      "direction_id": 47,
+      "direction_name": "Direction des Solidarités",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "3 associations",
+      "siret": "33274646000010",
+      "amount_eur": 199000.0,
+      "amount_raw": "199 000",
+      "motif": "l’information et la coordina tion des acteurs de la lutte contre la précarit é",
+      "dossier": "30982",
+      "siret_source": "sirene"
+    },
+    {
+      "delib_id": "2025 DSOL 82",
+      "direction_id": 47,
+      "direction_name": "Direction des Solidarités",
+      "session_id": 152,
+      "article_num": null,
+      "beneficiary": "signer les conventions et avena nt corres po n d a n t s",
+      "siret": null,
+      "amount_eur": 80000.0,
+      "amount_raw": "80 000",
+      "motif": "leurs actions favorisant l'intégr a tion des réfugié·es à Paris PROJET DE DÉLIBERATIO N EXPOSÉ DES MOTIFS Mesda m e s, Messieurs, La Ville de Paris continue d’accueillir des femmes et des homm e s venu",
+      "dossier": null
     }
   ],
   "sirene_enriched_at": "2026-04-21T23:31:53",

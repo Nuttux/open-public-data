@@ -259,15 +259,35 @@ def extract_articles(text: str, link: DelibLink) -> list[Article]:
         articles.append(_parse_body(text, link, None))
         return articles
 
-    # Iterate pairs (article_num, body) after the preamble.
+    # Iterate pairs (article_num, body) after the preamble. Deduplicate by
+    # article_num — some PDFs reference the same article number twice (TOC
+    # + actual article, or repeated blocks); keep the pair with the most
+    # extractable info.
     it = iter(parts[1:])
+    by_num: dict[int, Article] = {}
+    unnumbered: list[Article] = []
     for art_num_str, body in zip(it, it):
         try:
             art_num = int(art_num_str)
         except ValueError:
-            art_num = None
-        articles.append(_parse_body(body, link, art_num))
+            unnumbered.append(_parse_body(body, link, None))
+            continue
+        candidate = _parse_body(body, link, art_num)
+        existing = by_num.get(art_num)
+        if existing is None or _score(candidate) > _score(existing):
+            by_num[art_num] = candidate
+    articles.extend(by_num.values())
+    articles.extend(unnumbered)
     return articles
+
+
+def _score(a: Article) -> int:
+    """Richness heuristic used to pick between duplicate article captures."""
+    return sum(
+        1
+        for v in (a.beneficiary, a.amount_eur, a.siret, a.motif, a.dossier)
+        if v
+    )
 
 
 def _parse_body(body: str, link: DelibLink, article_num: int | None) -> Article:

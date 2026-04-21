@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-21T23:31:53",
+  "generated_at": "2026-04-21T23:47:26",
   "source": "recherche-entreprises.api.gouv.fr",
-  "count": 924,
+  "count": 1181,
   "items": {
     "le théâtre paris-villette": {
       "denomination": "THEATRE PARIS VILLETTE",
@@ -6888,6 +6888,1687 @@
       "activite_principale": "56.10A",
       "ville_siege": "PARIS",
       "matched_name": "Rosa Parks"
+    },
+    "comité parisien de la libération": {
+      "denomination": "COMITE PARISIEN DE LA LIBERATION (CPL)",
+      "siren": "524029949",
+      "siret": "52402994900020",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Comité Parisien de la Libération"
+    },
+    "sham spectacles": {
+      "denomination": "SHAM SPECTACLES",
+      "siren": "488211020",
+      "siret": "48821102000026",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "LE BOURGET",
+      "matched_name": "SHAM Spectacles"
+    },
+    "l’été parisien": {
+      "denomination": "L'ETE PARISIEN",
+      "siren": "379784226",
+      "siret": "37978422600050",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "L’ÉTÉ PARISIEN"
+    },
+    "theatre irruptionnel": {
+      "denomination": "THEATRE IRRUPTIONNEL",
+      "siren": "451343537",
+      "siret": "45134353700036",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "LUSIGNAN",
+      "matched_name": "THEATRE IRRUPTIONNEL"
+    },
+    "1.000": {
+      "denomination": "SCM DU 1000",
+      "siren": "910235787",
+      "siret": "91023578700017",
+      "nature_juridique": "6589",
+      "activite_principale": "66.19A",
+      "ville_siege": "ROUEN",
+      "matched_name": "1.000"
+    },
+    "1.482": {
+      "denomination": "E-COMMERCE ZHONGWANG FRANCE SARL",
+      "siren": "998963698",
+      "siret": "99896369800019",
+      "nature_juridique": "5499",
+      "activite_principale": "47.91A",
+      "ville_siege": "PARIS",
+      "matched_name": "1.482"
+    },
+    "2.000": {
+      "denomination": "ASSURANCES 2000",
+      "siren": "305362162",
+      "siret": "30536216204922",
+      "nature_juridique": "5710",
+      "activite_principale": "66.22Z",
+      "ville_siege": "MONTREUIL",
+      "matched_name": "2.000"
+    },
+    "3.076": {
+      "denomination": "SALAZIE LOCATION 3076",
+      "siren": "948509401",
+      "siret": "94850940100014",
+      "nature_juridique": "5202",
+      "activite_principale": "77.39Z",
+      "ville_siege": "FORT DE FRANCE",
+      "matched_name": "3.076"
+    },
+    "art": null,
+    "femmes initiatives": {
+      "denomination": "FEMMES INITIATIVES",
+      "siren": "437764640",
+      "siret": "43776464000011",
+      "nature_juridique": "9220",
+      "activite_principale": "87.90B",
+      "ville_siege": "PARIS",
+      "matched_name": "Femmes Initiatives"
+    },
+    "accompagnement global contre l’exclusion": {
+      "denomination": "ASS D ACCOMPAGNEMENT GLOBAL CONTRE L EXCLUSION",
+      "siren": "510789639",
+      "siret": "51078963900026",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Accompagnement Global contre l’Exclusion"
+    },
+    "l’esprit du vent": {
+      "denomination": "L'ESPRIT DU VENT",
+      "siren": "452092992",
+      "siret": "45209299200026",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "L’Esprit du Vent"
+    },
+    "la sas lulu dans ma rue": {
+      "denomination": "LULU DANS MA RUE",
+      "siren": "821176344",
+      "siret": "82117634400082",
+      "nature_juridique": "5710",
+      "activite_principale": "82.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "la SAS Lulu dans ma rue"
+    },
+    "la sarl linklusion": {
+      "denomination": "LINKLUSION",
+      "siren": "823712294",
+      "siret": "82371229400011",
+      "nature_juridique": "5499",
+      "activite_principale": "82.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "la SARL Linklusion"
+    },
+    "germinal": {
+      "denomination": "GERMINAL",
+      "siren": "880969795",
+      "siret": "88096979500033",
+      "nature_juridique": "9220",
+      "activite_principale": "82.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Germinal"
+    },
+    "laboratoire interdisciplinaire de sociologie economique": null,
+    "l’école d’économie de paris": {
+      "denomination": "ECOLE D ECONOMIE DE PARIS",
+      "siren": "493902662",
+      "siret": "49390266200011",
+      "nature_juridique": "9300",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "l’École d’Économie de Paris"
+    },
+    "l’umr espace de université d’avignon": null,
+    "laboratoire leesu": null,
+    "l’unité mixte de recherche navier de école nationale des ponts et chaussées": null,
+    "cent quatorze collèges publics parisiens": null,
+    "quarante-sept collèges publics parisiens": null,
+    "de l’alimentation durable": {
+      "denomination": "ALLIANCE ALIMENTATION ELEVAGE POUR LA PROMOTION DE FILIERES ANIMALES DURABLES DANS LA CULTURE ALIMENTAIRE FRANCAISE",
+      "siren": "912725686",
+      "siret": "91272568600014",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "de l’alimentation durable"
+    },
+    "cours du second semestre 2026": null,
+    "ensemble nous sommes le 10ème": null,
+    "quartier partagé": {
+      "denomination": "QUARTIER PARTAGE",
+      "siren": "814749586",
+      "siret": "81474958600016",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Quartier partagé"
+    },
+    "l’association pour la gestion d’un centre d’animation culturelle -ageca": null,
+    "collectif des associations citoyennes cac": {
+      "denomination": "COLLECTIF DES ASSOCIATIONS CITOYENNES",
+      "siren": "425110103",
+      "siret": "42511010300024",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Collectif des associations citoyennes CAC"
+    },
+    "fonda": {
+      "denomination": "FONDA",
+      "siren": "323923649",
+      "siret": "32392364900061",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Fonda"
+    },
+    "france bénévolat paris": {
+      "denomination": "ASS FRANCE BENEVOLAT PARIS",
+      "siren": "488099615",
+      "siret": "48809961500012",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "France Bénévolat Paris"
+    },
+    "tous bénévoles": {
+      "denomination": "TOUS BENEVOLES",
+      "siren": "317385334",
+      "siret": "31738533400014",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Tous Bénévoles"
+    },
+    "urbanisme et démocratie": {
+      "denomination": "ASSOCIATION URBANISME ET DEMOCRATIE",
+      "siren": "422610964",
+      "siret": "42261096400039",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Urbanisme et démocratie"
+    },
+    "pimms médiation paris": {
+      "denomination": "PIMMS MEDIATION",
+      "siren": "423841741",
+      "siret": "42384174100089",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "LYON",
+      "matched_name": "PIMMS Médiation Paris"
+    },
+    "interassociative lesbienne gaie bi et trans": {
+      "denomination": "L'INTERASSOCIATIVE LESBIENNE GAIE  BI ET TRANS",
+      "siren": "521317057",
+      "siret": "52131705700011",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "INTERASSOCIATIVE LESBIENNE GAIE BI ET TRANS"
+    },
+    "association jeunesse education": {
+      "denomination": "ASS FORMATION EDUCATION JEUNESSE",
+      "siren": "323338608",
+      "siret": "32333860800017",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "ASSOCIATION JEUNESSE EDUCATION"
+    },
+    "association": {
+      "denomination": "ASSOCIATION",
+      "siren": "405202862",
+      "siret": "40520286200018",
+      "nature_juridique": "9220",
+      "activite_principale": "90.02Z",
+      "ville_siege": "PARIS",
+      "matched_name": "ASSOCIATION"
+    },
+    "l’associationassociationpourl'accueil": null,
+    "ateliers du chaudron": {
+      "denomination": "ATELIERS DU CHAUDRON",
+      "siren": "384418489",
+      "siret": "38441848900025",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "ATELIERS DU CHAUDRON"
+    },
+    "cairep centre d'aide d'interactions etde recherche ethnopsychologique": null,
+    "chinois de france français de chine": {
+      "denomination": "CHINOIS DE FRANCE FRANCAIS DE CHINE",
+      "siren": "531394740",
+      "siret": "53139474000025",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "CHINOIS DE FRANCE FRANÇAIS DE CHINE"
+    },
+    "collectif independant des locataires de la residence de tanger": {
+      "denomination": "COLLECTIF INDEPENDANT LOCATAIRES RESIDENCE TANGER",
+      "siren": "514586585",
+      "siret": "51458658500010",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "COLLECTIF INDEPENDANT DES LOCATAIRES DE LA RESIDENCE DE TANGER"
+    },
+    "l’associationentraidescolaireamicale(e": null,
+    "equipe saint-vincent declic-alpha xx paris": {
+      "denomination": "EQUIPE ST VINCENT DECLIC-ALPHA XX PARIS",
+      "siren": "514820224",
+      "siret": "51482022400046",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "EQUIPE SAINT-VINCENT DECLIC-ALPHA XX PARIS"
+    },
+    "l’associationesprit": null,
+    "la compagnie a l'affut": {
+      "denomination": "LA COMPAGNIE A L'AFFUT",
+      "siren": "447965229",
+      "siret": "44796522900043",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "LA COMPAGNIE A L'AFFUT"
+    },
+    "l’associationlafabriquedocumentaire(138941)(10e": null,
+    "le tatou theatre": {
+      "denomination": "LE TATOU THEATRE",
+      "siren": "827882267",
+      "siret": "82788226700038",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "VINCENNES",
+      "matched_name": "LE TATOU THEATRE"
+    },
+    "l'ecole normale sociale": {
+      "denomination": "ECOLE NORMALE SOCIALE",
+      "siren": "309032779",
+      "siret": "30903277900022",
+      "nature_juridique": "9220",
+      "activite_principale": "85.59B",
+      "ville_siege": "PARIS",
+      "matched_name": "L'ECOLE NORMALE SOCIALE"
+    },
+    "ma plume est a vous": {
+      "denomination": "MA PLUME EST A VOUS",
+      "siren": "415237866",
+      "siret": "41523786600025",
+      "nature_juridique": "9220",
+      "activite_principale": "88.99B",
+      "ville_siege": "PARIS",
+      "matched_name": "MA PLUME EST A VOUS"
+    },
+    "mamans association granges aux belles": {
+      "denomination": "MAMANS ASSOCIATION GRANGES AUX BELLES",
+      "siren": "850117375",
+      "siret": "85011737500012",
+      "nature_juridique": "9220",
+      "activite_principale": "88.91A",
+      "ville_siege": "PARIS",
+      "matched_name": "MAMANS ASSOCIATION GRANGES AUX BELLES"
+    },
+    "projets 19": {
+      "denomination": "PROJETS-19",
+      "siren": "422948448",
+      "siret": "42294844800044",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "PROJETS 19"
+    },
+    "l’associationtatane(185433)(11e": null,
+    "atoi theatre": null,
+    "femmes initiatives f i(12825)": null,
+    "antin residences sa habitat loyer modere": {
+      "denomination": "ANTIN RESIDENCES SA HABITAT LOYER MODERE",
+      "siren": "315518803",
+      "siret": "31551880300046",
+      "nature_juridique": "5546",
+      "activite_principale": "68.20A",
+      "ville_siege": "PARIS",
+      "matched_name": "ANTIN RESIDENCES SA HABITAT LOYER MODERE"
+    },
+    "acp la manufacture chanson": {
+      "denomination": "ACP LA MANUFACTURE CHANSON",
+      "siren": "328582598",
+      "siret": "32858259800046",
+      "nature_juridique": "5460",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "ACP LA MANUFACTURE CHANSON"
+    },
+    "accessijeux": {
+      "denomination": "ACCESSIJEUX",
+      "siren": "809621436",
+      "siret": "80962143600025",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "ACCESSIJEUX"
+    },
+    "collectif ab": null,
+    "artmele": {
+      "denomination": "ARTMELE",
+      "siren": "833718067",
+      "siret": "83371806700014",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "ARTMELE"
+    },
+    "amicale paris plaine 15": {
+      "denomination": "AMICALE PARIS PLAINE 15 (APP15)",
+      "siren": "851194357",
+      "siret": "85119435700014",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "AMICALE PARIS PLAINE 15"
+    },
+    "athletic club paris 15": {
+      "denomination": "ATHLETIC CLUB PARIS 15",
+      "siren": "511682296",
+      "siret": "51168229600039",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "ATHLETIC CLUB PARIS 15"
+    },
+    "compagnie des marlins": {
+      "denomination": "COMPAGNIE DES MARLINS",
+      "siren": "814597654",
+      "siret": "81459765400049",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "VITRY-SUR-SEINE",
+      "matched_name": "COMPAGNIE DES MARLINS"
+    },
+    "lacompagnie al'affut": null,
+    "le village": {
+      "denomination": "VILLAGE",
+      "siren": "822107520",
+      "siret": "82210752000014",
+      "nature_juridique": "5710",
+      "activite_principale": "47.22Z",
+      "ville_siege": "PARIS",
+      "matched_name": "LE VILLAGE"
+    },
+    "tkf school": {
+      "denomination": "TKF SCHOOL",
+      "siren": "852311216",
+      "siret": "85231121600026",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "TKF SCHOOL"
+    },
+    "a.s paris 17": {
+      "denomination": "A.S PARIS 17",
+      "siren": "923226120",
+      "siret": "92322612000015",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "A.S PARIS 17"
+    },
+    "acture": {
+      "denomination": "ACTURE",
+      "siren": "923662480",
+      "siret": "92366248000014",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "ACTURE"
+    },
+    "atelier des epinettes ade": {
+      "denomination": "ATELIER DES EPINETTES",
+      "siren": "478717408",
+      "siret": "47871740800015",
+      "nature_juridique": "9220",
+      "activite_principale": "90.03A",
+      "ville_siege": "PARIS",
+      "matched_name": "ATELIER DES EPINETTES ADE"
+    },
+    "atelier educatif culturel et sportif aecs": {
+      "denomination": "AECS(ATELIER EDUCATIF CULTUREL SPORTIF)",
+      "siren": "440833929",
+      "siret": "44083392900027",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "ATELIER EDUCATIF CULTUREL ET SPORTIF AECS"
+    },
+    "blanc titane": {
+      "denomination": "BLANC TITANE",
+      "siren": "813610615",
+      "siret": "81361061500011",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "BLANC TITANE"
+    },
+    "calliope -cité des arts de laparole et du bien dire": null,
+    "centre social et culturel porte pouchet": {
+      "denomination": "CENTRE SOCIAL ET CULTUREL PORTE POUCHET",
+      "siren": "842446569",
+      "siret": "84244656900027",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "CENTRE SOCIAL ET CULTUREL PORTE POUCHET"
+    },
+    "cqfd bessieres comite de quartier en faveur du developpement secteur bessieres": null,
+    "ecoute habitat 17 amicale des locataires bessieres - garnier - brunet - l": {
+      "denomination": "ECOUTE HABITAT 17 AMICALE DES LOCATAIRES BESSIERES-GARNIER BRUNET-PONT-A-MOUSSON",
+      "siren": "515362846",
+      "siret": "51536284600013",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "ECOUTE HABITAT 17 AMICALE DES LOCATAIRES BESSIERES - GARNIER - BRUNET - L"
+    },
+    "js europeenne champerret jeunesse sportive europeenne champerret": null,
+    "quartier de soleil": {
+      "denomination": "ASS QUARTIER DE SOLEIL",
+      "siren": "484675327",
+      "siret": "48467532700023",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "QUARTIER DE SOLEIL"
+    },
+    "s'orienter ensemble": {
+      "denomination": "S'ORIENTER ENSEMBLE",
+      "siren": "841629629",
+      "siret": "84162962900020",
+      "nature_juridique": "9220",
+      "activite_principale": "85.60Z",
+      "ville_siege": "GOURNAY-SUR-MARNE",
+      "matched_name": "S'ORIENTER ENSEMBLE"
+    },
+    "22 cheminots": {
+      "denomination": "22 CHEMINOTS",
+      "siren": "923064067",
+      "siret": "92306406700013",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "22 CHEMINOTS"
+    },
+    "lire - le livre": {
+      "denomination": "LIRE - LE LIVRE POUR L'INSERTION ET LE REFUS DE L'EXCLUSION",
+      "siren": "420600140",
+      "siret": "42060014000032",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "LIRE - LE LIVRE"
+    },
+    "aocsa la 20e chaise": null,
+    "a l 'adresse du jeu": {
+      "denomination": "A L'ADRESSE DU JEU",
+      "siren": "528505035",
+      "siret": "52850503500030",
+      "nature_juridique": "9220",
+      "activite_principale": "93.29Z",
+      "ville_siege": "MONTREUIL",
+      "matched_name": "A L 'ADRESSE DU JEU"
+    },
+    "association science technologie et societe": {
+      "denomination": "SCIENCE TECHNOLOGIE ET SOCIETE",
+      "siren": "328100078",
+      "siret": "32810007800059",
+      "nature_juridique": "9220",
+      "activite_principale": "94.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "ASSOCIATION SCIENCE TECHNOLOGIE ET SOCIETE"
+    },
+    "cqfd bessieres comite de quartier en faveur du developpementsecteurbessieres(13325)": null,
+    "gaby sourire": {
+      "denomination": "GABY SOURIRE",
+      "siren": "479789232",
+      "siret": "47978923200028",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "GABY SOURIRE"
+    },
+    "jardin des traverses": {
+      "denomination": "JARDIN DES TRAVERSES",
+      "siren": "904653094",
+      "siret": "90465309400014",
+      "nature_juridique": "9220",
+      "activite_principale": "01.29Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Jardin des Traverses"
+    },
+    "hauteur de 252 000 euros": null,
+    "787": null,
+    "l’institut français": {
+      "denomination": "INSTITUT FRANCAIS DU CHEVAL ET DE L'EQUITATION",
+      "siren": "130010440",
+      "siret": "13001044000019",
+      "nature_juridique": "7389",
+      "activite_principale": "84.12Z",
+      "ville_siege": "SAUMUR",
+      "matched_name": "l’Institut français"
+    },
+    "titre de l’année 2026 à l’aimf": null,
+    "cité internationale des arts": {
+      "denomination": "FONDATION CITE INTERNATIONALE ARTS",
+      "siren": "784243966",
+      "siret": "78424396600016",
+      "nature_juridique": "9300",
+      "activite_principale": "55.90Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Cité internationale des arts"
+    },
+    "maison de l’europe de paris": {
+      "denomination": "PARIS POUR L'EUROPE",
+      "siren": "402235154",
+      "siret": "40223515400018",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Maison de l’Europe de Paris"
+    },
+    "atelier de paris carolyn carlson": {
+      "denomination": "ATELIER DE PARIS CAROLYN CARLSON",
+      "siren": "398640938",
+      "siret": "39864093800021",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Atelier de Paris Carolyn Carlson"
+    },
+    "compagnie flies": {
+      "denomination": "COMPAGNIE FLIES",
+      "siren": "838620979",
+      "siret": "83862097900073",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "ISSY-LES-MOULINEAUX",
+      "matched_name": "Compagnie Flies"
+    },
+    "illico": {
+      "denomination": "ILLICO",
+      "siren": "919682138",
+      "siret": "91968213800012",
+      "nature_juridique": "5499",
+      "activite_principale": "69.20Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Illico"
+    },
+    "fédération moi jeu tri": {
+      "denomination": "FEDERATION MOI JEU TRI",
+      "siren": "885390328",
+      "siret": "88539032800023",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "FÉDÉRATION MOI JEU TRI"
+    },
+    "systèmes économiquement viables": null,
+    "geres": {
+      "denomination": "GERES",
+      "siren": "915022750",
+      "siret": "91502275000011",
+      "nature_juridique": "5710",
+      "activite_principale": "64.20Z",
+      "ville_siege": "PARIS",
+      "matched_name": "GERES"
+    },
+    "autour de l'eau": {
+      "denomination": "AUTOUR DE L'EAU",
+      "siren": "490728078",
+      "siret": "49072807800018",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "AUTOUR DE L'EAU"
+    },
+    "mieux nourrir et grandir": {
+      "denomination": "MIEUX NOURRIR ET GRANDIR",
+      "siren": "443872817",
+      "siret": "44387281700061",
+      "nature_juridique": "9220",
+      "activite_principale": "88.99B",
+      "ville_siege": "PARIS",
+      "matched_name": "MIEUX NOURRIR ET GRANDIR"
+    },
+    "hydraulique sans frontières": {
+      "denomination": "HYDRAULIQUE SANS FRONTIERES ILE DE FRANCE",
+      "siren": "503808172",
+      "siret": "50380817200012",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS 12",
+      "matched_name": "HYDRAULIQUE SANS FRONTIÈRES"
+    },
+    "codegaz": {
+      "denomination": "CODEGAZ ASSOCIATION HUMANITAIRE DE COOPERATION ET DEVELOPPEMENT DU PERSONNEL DE GDF SUEZ",
+      "siren": "477636914",
+      "siret": "47763691400137",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "CODEGAZ"
+    },
+    "comité de coopération avec le laos": {
+      "denomination": "COMITE DE COOPERATION AVEC LE LAOS",
+      "siren": "381757814",
+      "siret": "38175781400052",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "COMITÉ DE COOPÉRATION AVEC LE LAOS"
+    },
+    "avenir des jeunes filles de dapaong": {
+      "denomination": "AVENIR DES JEUNES FILLES DE DAPAONG",
+      "siren": "522421981",
+      "siret": "52242198100013",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "CEZY",
+      "matched_name": "AVENIR DES JEUNES FILLES DE DAPAONG"
+    },
+    "initiative développement": {
+      "denomination": "INITIATIVE ET DEVELOPPEMENT",
+      "siren": "399474006",
+      "siret": "39947400600018",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "BAZEMONT",
+      "matched_name": "INITIATIVE DÉVELOPPEMENT"
+    },
+    "électriciens sans frontières l’énergie du développement": {
+      "denomination": "ELECTRICIENS SANS FRONTIERES L'ENERGIE DU DEVELOPPEMENT",
+      "siren": "394528897",
+      "siret": "39452889700082",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "ÉLECTRICIENS SANS FRONTIÈRES L’ÉNERGIE DU DÉVELOPPEMENT"
+    },
+    "l’institut kurde de paris": {
+      "denomination": "INSTITUT KURDE DE PARIS",
+      "siren": "327446795",
+      "siret": "32744679500012",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "l’Institut kurde de Paris"
+    },
+    "maison des journalistes": {
+      "denomination": "LE JOURNALISTE",
+      "siren": "384661328",
+      "siret": "38466132800011",
+      "nature_juridique": "5499",
+      "activite_principale": "46.38B",
+      "ville_siege": "PARIS",
+      "matched_name": "Maison des Journalistes"
+    },
+    "cercle du marais": {
+      "denomination": "CERCLE DU MARAIS",
+      "siren": "420327652",
+      "siret": "42032765200046",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Cercle du Marais"
+    },
+    "tous en scène": {
+      "denomination": "TOUS EN SCENE",
+      "siren": "437785306",
+      "siret": "43778530600030",
+      "nature_juridique": "9220",
+      "activite_principale": "85.52Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Tous en scène"
+    },
+    "as du centre de paris": {
+      "denomination": "CENTRE SPORTIF SCOLAIRE AS LA FONTAINE",
+      "siren": "995233244",
+      "siret": "99523324400012",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "AS du centre de Paris"
+    },
+    "nature": {
+      "denomination": "NATURE",
+      "siren": "398540757",
+      "siret": "39854075700018",
+      "nature_juridique": "3220",
+      "activite_principale": "46.19B",
+      "ville_siege": "",
+      "matched_name": "Nature"
+    },
+    "paris bungy": {
+      "denomination": "PARIS BUNGY",
+      "siren": "844885665",
+      "siret": "84488566500019",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Paris Bungy"
+    },
+    "sportive du lycée turgot": {
+      "denomination": "ASSOCIATION SPORTIVE DU LYCEE TURGOT",
+      "siren": "517491999",
+      "siret": "51749199900010",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "sportive du lycée Turgot"
+    },
+    "judo france paris": {
+      "denomination": "JUDO FRANCE PARIS",
+      "siren": "424867539",
+      "siret": "42486753900035",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Judo France Paris"
+    },
+    "l’office du mouvement sportif du 10earrondissement oms 10": null,
+    "sportive jeunesse saint-vincent de paul": {
+      "denomination": "JEUNESSE SPORTIVE BUGLOSIENNE",
+      "siren": "782123905",
+      "siret": "78212390500013",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "SAINT-VINCENT-DE-PAUL",
+      "matched_name": "Sportive Jeunesse Saint-Vincent de Paul"
+    },
+    "tcx tennis club du dixième arrondissement": {
+      "denomination": "TCX TENNIS CLUB DU DIXIEME ARRONDISSEMENT",
+      "siren": "328429246",
+      "siret": "32842924600064",
+      "nature_juridique": "9220",
+      "activite_principale": "85.51Z",
+      "ville_siege": "PARIS",
+      "matched_name": "TCX Tennis club du dixième arrondissement"
+    },
+    "l’office du mouvement sportif du 12earrondissement": null,
+    "la camillienne sport 12e": null,
+    "l’espérance de reuilly": {
+      "denomination": "ESPERANCE DE REUILLY",
+      "siren": "429480460",
+      "siret": "42948046000014",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "l’Espérance de Reuilly"
+    },
+    "maccabi paris métropole": {
+      "denomination": "MACCABI PARIS METROPOLE",
+      "siren": "752531236",
+      "siret": "75253123600038",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Maccabi Paris Métropole"
+    },
+    "courir": {
+      "denomination": "COURIR FRANCE",
+      "siren": "428559967",
+      "siret": "42855996702962",
+      "nature_juridique": "5710",
+      "activite_principale": "47.72A",
+      "ville_siege": "PARIS",
+      "matched_name": "Courir"
+    },
+    "rns tennis": {
+      "denomination": "RNS TENNIS",
+      "siren": "398595330",
+      "siret": "39859533000042",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "RNS Tennis"
+    },
+    "paris saint germain handball association": {
+      "denomination": "PARIS SAINT-GERMAIN HANDBALL ASSOCIATION",
+      "siren": "483601753",
+      "siret": "48360175300021",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Paris Saint Germain Handball Association"
+    },
+    "paris 13 tennis de table": {
+      "denomination": "PARIS 13 TENNIS DE TABLE",
+      "siren": "402344451",
+      "siret": "40234445100032",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Paris 13 Tennis de Table"
+    },
+    "paris xiii des sports sur roulettes": {
+      "denomination": "ASS PARIS XIII DES SPORTS SUR ROULETTES",
+      "siren": "448159160",
+      "siret": "44815916000010",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Paris XIII des Sports sur Roulettes"
+    },
+    "cercle des escrimeurs parisiens": {
+      "denomination": "CERCLE DES ESCRIMEURS PARISIENS",
+      "siren": "424355832",
+      "siret": "42435583200025",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Cercle des Escrimeurs Parisiens"
+    },
+    "l’u": null,
+    "judo club baudricourt": {
+      "denomination": "ASS SPORTIVE JUDO CLUB BAUDRICOURT",
+      "siren": "392560132",
+      "siret": "39256013200038",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Judo Club Baudricourt"
+    },
+    "ascendanse hip-hop": {
+      "denomination": "ASCENDANSE HIP HOP",
+      "siren": "445079973",
+      "siret": "44507997300043",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Ascendanse Hip-Hop"
+    },
+    "sportive moulin des prés": {
+      "denomination": "ASS SPORTIVE MOULIN DES PRES",
+      "siren": "392952156",
+      "siret": "39295215600017",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Sportive Moulin des Prés"
+    },
+    "eiffel basket club": {
+      "denomination": "EIFFEL BASKET CLUB",
+      "siren": "448080259",
+      "siret": "44808025900022",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Eiffel Basket Club"
+    },
+    "sportive du lycée buffon": {
+      "denomination": "ASSOCIATION SPORTIVE DU LYCEE BUFFON",
+      "siren": "537839284",
+      "siret": "53783928400016",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "sportive du lycée Buffon"
+    },
+    "l’office du mouvement sportif du 16earrondissement": null,
+    "l’office du mouvement sportif du 17earrondissement": null,
+    "club sportif pouchet paris xvii": {
+      "denomination": "CLUB SPORTIF POUCHET PARIS XVII",
+      "siren": "482241429",
+      "siret": "48224142900018",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Club sportif Pouchet Paris XVII"
+    },
+    "l’office du mouvement sportif du 18earrondissement": null,
+    "olympique montmartre sports": {
+      "denomination": "OLYMPIQUE MONTMARTRE SPORTS",
+      "siren": "784756900",
+      "siret": "78475690000022",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Olympique Montmartre Sports"
+    },
+    "l’office du mouvement sportif du 19earrondissement": null,
+    "c.s": null,
+    "s.c": null,
+    "puc rugby": {
+      "denomination": "ASS PUC RUGBY",
+      "siren": "399015452",
+      "siret": "39901545200010",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "PUC Rugby"
+    },
+    "stade français": {
+      "denomination": "STADE FRANCAIS",
+      "siren": "302997903",
+      "siret": "30299790300026",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS 16",
+      "matched_name": "Stade Français"
+    },
+    "le racing multi athlon": {
+      "denomination": "RACING MULTI ATHLON",
+      "siren": "793708181",
+      "siret": "79370818100045",
+      "nature_juridique": "9220",
+      "activite_principale": "93.19Z",
+      "ville_siege": "PARIS",
+      "matched_name": "le Racing Multi Athlon"
+    },
+    "judo amicale paris xx": {
+      "denomination": "ASS JUDO AMICALE PARIS XX",
+      "siren": "479120909",
+      "siret": "47912090900037",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Judo Amicale Paris XX"
+    },
+    "club des français volants": {
+      "denomination": "CLUB DES FRANCAIS VOLANTS",
+      "siren": "318276516",
+      "siret": "31827651600032",
+      "nature_juridique": "9220",
+      "activite_principale": "93.19Z",
+      "ville_siege": "PARIS",
+      "matched_name": "club des Français Volants"
+    },
+    "sporting club de paris": {
+      "denomination": "SPORTING CLUB DE PARIS",
+      "siren": "399107663",
+      "siret": "39910766300011",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Sporting Club de Paris"
+    },
+    "stade français paris": {
+      "denomination": "STADE FRANCAIS PARIS",
+      "siren": "405042516",
+      "siret": "40504251600022",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Stade Français Paris"
+    },
+    "paris football club": {
+      "denomination": "PARIS FOOTBALL CLUB",
+      "siren": "517852059",
+      "siret": "51785205900032",
+      "nature_juridique": "5599",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Paris Football Club"
+    },
+    "levallois paris saint cloud": {
+      "denomination": "CENTRE DE CONSEIL ET DE SERVICE -CCS",
+      "siren": "504514555",
+      "siret": "50451455500656",
+      "nature_juridique": "6220",
+      "activite_principale": "66.19B",
+      "ville_siege": "NANTES",
+      "matched_name": "Levallois Paris Saint Cloud"
+    },
+    "paris 92": {
+      "denomination": "GESTION HOTEL PARIS 92",
+      "siren": "333268670",
+      "siret": "33326867000069",
+      "nature_juridique": "5499",
+      "activite_principale": "55.10Z",
+      "ville_siege": "PUTEAUX",
+      "matched_name": "Paris 92"
+    },
+    "paris volley avenir": {
+      "denomination": "PARIS VOLLEY AVENIR",
+      "siren": "844290528",
+      "siret": "84429052800018",
+      "nature_juridique": "5710",
+      "activite_principale": "93.19Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Paris Volley Avenir"
+    },
+    "la fédération française d’escrime": {
+      "denomination": "FEDERATION FRANCAISE D ESCRIME",
+      "siren": "775675606",
+      "siret": "77567560600070",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "NOISY-LE-GRAND",
+      "matched_name": "la Fédération Française d’Escrime"
+    },
+    "les hauts de belleville": {
+      "denomination": "LES HAUTS DE BELLEVILLE",
+      "siren": "333006286",
+      "siret": "33300628600012",
+      "nature_juridique": "6540",
+      "activite_principale": "68.20A",
+      "ville_siege": "PARIS",
+      "matched_name": "Les Hauts de Belleville"
+    },
+    "bénéfice des organismes": null,
+    "bénéfice de l’agence départementale d'information sur le logement": null,
+    "bénéfice de deux organismes": null,
+    "française des victimes du terrorisme": null,
+    "l’aspp": {
+      "denomination": "ASSOCIATION D'ACTION SOCIALE EN FAVEUR DES PERSONNELS DE LA VILLE DE PARIS ET DU DEPARTEMENT DE PARIS",
+      "siren": "323857219",
+      "siret": "32385721900345",
+      "nature_juridique": "9220",
+      "activite_principale": "56.29B",
+      "ville_siege": "PARIS",
+      "matched_name": "l’ASPP"
+    },
+    "droits devant !!": {
+      "denomination": "DROITS DEVANT",
+      "siren": "402062830",
+      "siret": "40206283000045",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Droits devant !!"
+    },
+    "cultures du cœur paris": {
+      "denomination": "CULTURES DU COEUR-PARIS",
+      "siren": "753837194",
+      "siret": "75383719400038",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Cultures du Cœur Paris"
+    },
+    "l’assemblée citoyenne des originaires de turquie": {
+      "denomination": "ASSEMBLEE CITOYENNE ORIGINAIRES TURQUIE",
+      "siren": "327047635",
+      "siret": "32704763500054",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "L’Assemblée Citoyenne des Originaires de Turquie"
+    },
+    "groupe d’entraide régional pour mieux apprendre ensemble (germae)": {
+      "denomination": "GROUPE D'ENTRAIDE REGIONAL POUR MIEUX APPRENDRE ENSEMBLE",
+      "siren": "784414120",
+      "siret": "78441412000088",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Groupe d’Entraide Régional pour Mieux Apprendre Ensemble (GERMAE)"
+    },
+    "migrants plaisance": {
+      "denomination": "MIGRANTS PLAISANCE",
+      "siren": "403810559",
+      "siret": "40381055900043",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Migrants Plaisance"
+    },
+    "centre alpha choisy": {
+      "denomination": "ASSOC CENTRE ALPHA CHOISY",
+      "siren": "408605251",
+      "siret": "40860525100011",
+      "nature_juridique": "9220",
+      "activite_principale": "85.59A",
+      "ville_siege": "PARIS",
+      "matched_name": "Centre Alpha Choisy"
+    },
+    "médiateurs et médiatrices du 20ème": {
+      "denomination": "LES MEDIATEURS ET LES MEDIATRICES DU 20EME LES MEDIATEURS ET MEDIATRICES SOCIAUX ET CULTURELLES",
+      "siren": "812781045",
+      "siret": "81278104500032",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Médiateurs et Médiatrices du 20ème"
+    },
+    "bagage rie 20": null,
+    "l'héber g e m e n t": null,
+    "disposition par la ville de paris": null,
+    "pré-retraités": {
+      "denomination": "GYM RETRAITES ET PRE RETRAITES",
+      "siren": "803532589",
+      "siret": "80353258900014",
+      "nature_juridique": "9220",
+      "activite_principale": "85.51Z",
+      "ville_siege": "SAINT-NICOLAS-DE-REDON",
+      "matched_name": "pré-retraités"
+    },
+    "des travailleurs maghrébins de france": {
+      "denomination": "ASSOCIATION DES TRAVAILLEURS MAGHREBINS DE FRANCE",
+      "siren": "326495231",
+      "siret": "32649523100028",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS 18",
+      "matched_name": "des travailleurs maghrébins de France"
+    },
+    "ressac volontariat": null,
+    "le club saint-denys-au-marais": {
+      "denomination": "CLUB SAINT-DENYS AU MARAIS",
+      "siren": "499819373",
+      "siret": "49981937300014",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Le Club Saint-Denys-au-Marais"
+    },
+    "le foyer saint-laurent": {
+      "denomination": "FOYER SAINT-LAURENT",
+      "siren": "750901720",
+      "siret": "75090172000011",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Le Foyer Saint-Laurent"
+    },
+    "culture et bibliothèques": {
+      "denomination": "CULTURE BIBLIOTHEQUE POUR TOUS",
+      "siren": "348872409",
+      "siret": "34887240900019",
+      "nature_juridique": "9220",
+      "activite_principale": "91.01Z",
+      "ville_siege": "PARIS 07",
+      "matched_name": "Culture et Bibliothèques"
+    },
+    "gaïa paris": {
+      "denomination": "GAIA DE PARIS",
+      "siren": "504951831",
+      "siret": "50495183100016",
+      "nature_juridique": "5499",
+      "activite_principale": "45.20A",
+      "ville_siege": "PARIS",
+      "matched_name": "Gaïa Paris"
+    },
+    "safe": {
+      "denomination": "SAFE",
+      "siren": "898313838",
+      "siret": "89831383800036",
+      "nature_juridique": "5710",
+      "activite_principale": "95.12Z",
+      "ville_siege": "SEVRAN",
+      "matched_name": "SAFE"
+    },
+    "titre de l’année 2026 à l’association comité": null,
+    "la scm des 4": {
+      "denomination": "SCM SONTAY 4",
+      "siren": "332202050",
+      "siret": "33220205000016",
+      "nature_juridique": "6589",
+      "activite_principale": "66.19A",
+      "ville_siege": "PARIS",
+      "matched_name": "la SCM des 4"
+    },
+    "vers paris sans sida": {
+      "denomination": "VERS PARIS SANS SIDA",
+      "siren": "823772405",
+      "siret": "82377240500051",
+      "nature_juridique": "9220",
+      "activite_principale": "82.11Z",
+      "ville_siege": "PARIS",
+      "matched_name": "VERS PARIS SANS SIDA"
+    },
+    "aides": {
+      "denomination": "AIDES",
+      "siren": "349496174",
+      "siret": "34949617400047",
+      "nature_juridique": "9230",
+      "activite_principale": "88.99B",
+      "ville_siege": "PANTIN",
+      "matched_name": "AIDES"
+    },
+    "association pour l'insertion des jeunes": {
+      "denomination": "ASS FAVORISER INSERTION JEUNES DIPLOMES",
+      "siren": "400174439",
+      "siret": "40017443900374",
+      "nature_juridique": "9220",
+      "activite_principale": "88.99B",
+      "ville_siege": "PARIS",
+      "matched_name": "Association Pour l'Insertion des Jeunes"
+    },
+    "caisse des écoles du 13 arrondissement": null,
+    "caisse des écoles du 20 arrondissement": {
+      "denomination": "CAISSE ECOLES 20 EME ARRON PARIS",
+      "siren": "267500403",
+      "siret": "26750040300048",
+      "nature_juridique": "7362",
+      "activite_principale": "88.99B",
+      "ville_siege": "PARIS",
+      "matched_name": "Caisse des écoles du 20 arrondissement"
+    },
+    "caisse des écoles du 19 arrondissement": null,
+    "caisse des écoles du 10 arrondissement": {
+      "denomination": "CAISSE DES ECOLES DU 10E ARRONDISSEMENT",
+      "siren": "267500304",
+      "siret": "26750030400014",
+      "nature_juridique": "7362",
+      "activite_principale": "88.99B",
+      "ville_siege": "PARIS",
+      "matched_name": "Caisse des écoles du 10 arrondissement"
+    },
+    "accueillaghoudat": null,
+    "acplamanufacturechanson": null,
+    "amicaledax": null,
+    "antanak": {
+      "denomination": "ANTANAK",
+      "siren": "809887532",
+      "siret": "80988753200020",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "ANTANAK"
+    },
+    "artexprim18eme": null,
+    "atelier samasco-jouer et apprendre": null,
+    "canal marches": {
+      "denomination": "CANAL MARCHES",
+      "siren": "412050569",
+      "siret": "41205056900026",
+      "nature_juridique": "9220",
+      "activite_principale": "59.11B",
+      "ville_siege": "PARIS",
+      "matched_name": "CANAL MARCHES"
+    },
+    "cie bouche a bouche": {
+      "denomination": "CIE BOUCHE A BOUCHE",
+      "siren": "404110629",
+      "siret": "40411062900031",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "CIE BOUCHE A BOUCHE"
+    },
+    "cliches urbains": {
+      "denomination": "CLICHES URBAINS",
+      "siren": "507934131",
+      "siret": "50793413100032",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "CLICHES URBAINS"
+    },
+    "collectif cafe culture cuisine (collectif 4c)": {
+      "denomination": "COLLECTIF CAFE CULTURE CUISINE COLLECTIF 4C",
+      "siren": "813550142",
+      "siret": "81355014200026",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "COLLECTIF CAFE CULTURE CUISINE (COLLECTIF 4C)"
+    },
+    "compagnie a force de rêver": {
+      "denomination": "COMPAGNIE A FORCE DE REVER",
+      "siren": "389377714",
+      "siret": "38937771400057",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "COMPAGNIE A FORCE DE RÊVER"
+    },
+    "croisée des langues": {
+      "denomination": "CROISEE DES LANGUES",
+      "siren": "917510364",
+      "siret": "91751036400032",
+      "nature_juridique": "9220",
+      "activite_principale": "85.59B",
+      "ville_siege": "PARIS",
+      "matched_name": "CROISÉE DES LANGUES"
+    },
+    "cultureprioitaire": null,
+    "debrouille compagnie": {
+      "denomination": "DEBROUILLE COMPAGNIE",
+      "siren": "444128581",
+      "siret": "44412858100030",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "DEBROUILLE COMPAGNIE"
+    },
+    "double face": {
+      "denomination": "DOUBLE FACE",
+      "siren": "340783091",
+      "siret": "34078309100010",
+      "nature_juridique": "5499",
+      "activite_principale": "51.6L",
+      "ville_siege": "PARIS 11",
+      "matched_name": "DOUBLE FACE"
+    },
+    "d'une langue a l'autre du lala": null,
+    "echomusee": {
+      "denomination": "ECHOMUSEE",
+      "siren": "504600107",
+      "siret": "50460010700016",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "ECHOMUSEE"
+    },
+    "ensemble et solidaires-union nationale retraites et personnes âgées- fédération de paris": {
+      "denomination": "ENSEMBLE ET SOLIDAIRES UNION NATIONALE RETRAITES ET PERSONNES AGEES FEDERATION DE PARIS",
+      "siren": "528186216",
+      "siret": "52818621600032",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "ENSEMBLE ET SOLIDAIRES-UNION NATIONALE RETRAITES ET PERSONNES ÂGÉES- FÉDÉRATION DE PARIS"
+    },
+    "espoirs19": null,
+    "étonnantcinéma": null,
+    "fabricationmaison": null,
+    "gabysourire": null,
+    "grouped'aideethnopsychologiquecharleshermitegaep": null,
+    "kthacompagnie": null,
+    "labandaàgodot": null,
+    "lacompagniedesrevesayez": null,
+    "lamaisondsfougeres": null,
+    "lapetiterockette": null,
+    "lasierraprod": null,
+    "labomatique": {
+      "denomination": "LABOMATIQUE",
+      "siren": "499819936",
+      "siret": "49981993600026",
+      "nature_juridique": "9220",
+      "activite_principale": "59.11C",
+      "ville_siege": "PARIS",
+      "matched_name": "LABOMATIQUE"
+    },
+    "lepetitney": null,
+    "lesenfantsdelsagoutted'oregdo": null,
+    "les enfants du cap-vert": {
+      "denomination": "LES ENFANTS DU CAP VERT",
+      "siren": "814289823",
+      "siret": "81428982300019",
+      "nature_juridique": "9220",
+      "activite_principale": "88.99B",
+      "ville_siege": "PARIS",
+      "matched_name": "LES ENFANTS DU CAP-VERT"
+    },
+    "les petits débrouillards île de france": {
+      "denomination": "LES PETITS DEBROUILLARDS ILE DE FRANCE",
+      "siren": "429943269",
+      "siret": "42994326900051",
+      "nature_juridique": "9220",
+      "activite_principale": "93.29Z",
+      "ville_siege": "MONTREUIL",
+      "matched_name": "LES PETITS DÉBROUILLARDS ÎLE DE FRANCE"
+    },
+    "lifi - l'improvisation théâtrale - ligue française d'improvisation": {
+      "denomination": "LIFI - L'IMPROVISATION THEATRALE - LIGUE FRANCAISE D'IMPROVISATION - EGALEMENT SURNOMMEE LA LIGUE D'IMPRO",
+      "siren": "387803398",
+      "siret": "38780339800065",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "LIFI - L'IMPROVISATION THÉÂTRALE - LIGUE FRANÇAISE D'IMPROVISATION"
+    },
+    "ngambart": {
+      "denomination": "NGAMB'ART",
+      "siren": "484401294",
+      "siret": "48440129400018",
+      "nature_juridique": "9220",
+      "activite_principale": "85.52Z",
+      "ville_siege": "PARIS",
+      "matched_name": "NGAMBART"
+    },
+    "parabole": {
+      "denomination": "PARABOLE",
+      "siren": "510115876",
+      "siret": "51011587600045",
+      "nature_juridique": "9220",
+      "activite_principale": "85.59A",
+      "ville_siege": "PARIS",
+      "matched_name": "PARABOLE"
+    },
+    "paris acasa futsal": {
+      "denomination": "PARIS ACASA FUTSAL",
+      "siren": "508523065",
+      "siret": "50852306500029",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "PARIS ACASA FUTSAL"
+    },
+    "paris est mouv": {
+      "denomination": "PARIS EST MOUV'",
+      "siren": "423845791",
+      "siret": "42384579100023",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "PARIS EST MOUV"
+    },
+    "petits freres des pauvres - association de gestion de ses etablissements pfp - age": {
+      "denomination": "PETITS FRERES PAUVRES ASS GESTI ETABLISS",
+      "siren": "441393675",
+      "siret": "44139367500398",
+      "nature_juridique": "9220",
+      "activite_principale": "87.90B",
+      "ville_siege": "PARIS",
+      "matched_name": "PETITS FRERES DES PAUVRES - ASSOCIATION DE GESTION DE SES ETABLISSEMENTS PFP - AGE"
+    },
+    "pieces montees": {
+      "denomination": "PIECES MONTEES",
+      "siren": "381260819",
+      "siret": "38126081900051",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "PIECES MONTEES"
+    },
+    "rapt z rapporteur z": null,
+    "regie de quartier du 19eme": null,
+    "sport dans la ville": {
+      "denomination": "FONDS DE DOTATION SPORT DANS LA VILLE",
+      "siren": "809323991",
+      "siret": "80932399100020",
+      "nature_juridique": "9300",
+      "activite_principale": "94.99Z",
+      "ville_siege": "LYON",
+      "matched_name": "SPORT DANS LA VILLE"
+    },
+    "theatre aux mains nues": {
+      "denomination": "THEATRE AUX MAINS NUES",
+      "siren": "323419333",
+      "siret": "32341933300030",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "THEATRE AUX MAINS NUES"
+    },
+    "zartsprod": null,
+    "lire-lelivrepourl'insertionetlerefusdel'exclusion": null,
+    "l'aireamots": null,
+    "association socio educative des familles de l'ensemble clignancourt": null,
+    "ateliers-comme a la maison": {
+      "denomination": "ATELIERS - COMME A LA MAISON",
+      "siren": "793118829",
+      "siret": "79311882900019",
+      "nature_juridique": "9220",
+      "activite_principale": "88.91A",
+      "ville_siege": "PARIS",
+      "matched_name": "ATELIERS-COMME A LA MAISON"
+    },
+    "la generale de théâtre": {
+      "denomination": "LA GENERALE DE THEATRE",
+      "siren": "531920866",
+      "siret": "53192086600021",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "LA GENERALE DE THÉÂTRE"
+    },
+    "le cinquième élément: ateliers de vie et d'art-thérapie pour personnes en situation de handicap et personnes valides": null,
+    "paroles!": {
+      "denomination": "PASCAL PAROLE",
+      "siren": "408753101",
+      "siret": "40875310100018",
+      "nature_juridique": "1000",
+      "activite_principale": "95.11Z",
+      "ville_siege": "PARIS",
+      "matched_name": "PAROLES!"
+    },
+    "poya": {
+      "denomination": "POYA",
+      "siren": "881586952",
+      "siret": "88158695200023",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "POYA"
+    },
+    "ricrac": {
+      "denomination": "RICRAC",
+      "siren": "978580371",
+      "siret": "97858037100018",
+      "nature_juridique": "5710",
+      "activite_principale": "35.11Z",
+      "ville_siege": "OIGNY",
+      "matched_name": "RICRAC"
+    },
+    "soeasy": {
+      "denomination": "SOEASY -CONCIERGERIE",
+      "siren": "832460943",
+      "siret": "83246094300018",
+      "nature_juridique": "5710",
+      "activite_principale": "79.90Z",
+      "ville_siege": "SAINTE-ANNE",
+      "matched_name": "SOEASY"
+    },
+    "ticket d'entree": {
+      "denomination": "ASSOCIATION TICKET D ENTREE",
+      "siren": "804936987",
+      "siret": "80493698700028",
+      "nature_juridique": "9220",
+      "activite_principale": "85.52Z",
+      "ville_siege": "PARIS",
+      "matched_name": "TICKET D'ENTREE"
+    },
+    "femme d'aujourd'hui-fda": {
+      "denomination": "FEMME D'AUJOURD'HUI - FDA",
+      "siren": "844875393",
+      "siret": "84487539300010",
+      "nature_juridique": "9220",
+      "activite_principale": "88.99B",
+      "ville_siege": "PARIS",
+      "matched_name": "FEMME D'AUJOURD'HUI-FDA"
+    },
+    "centre d'information sur les droits des femmes et des familles de paris": {
+      "denomination": "FEDERATION NATIONALE DES CENTRES D'INFORMATION SUR LES DROITS DES FEMMES ET DES FAMILLES",
+      "siren": "784315277",
+      "siret": "78431527700037",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Centre d'Information sur les Droits des Femmes et des Familles de Paris"
+    },
+    "coup de soleil": {
+      "denomination": "COUP DE SOLEIL",
+      "siren": "349461871",
+      "siret": "34946187100023",
+      "nature_juridique": "5499",
+      "activite_principale": "74.20Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Coup de Soleil"
+    },
+    "association pour le développement et le bien-être des congolais": {
+      "denomination": "ASSOCIATION POUR LE DEVELOPPEMENT ET LE BIEN ETRE DES CONGOLAIS",
+      "siren": "800691677",
+      "siret": "80069167700028",
+      "nature_juridique": "9220",
+      "activite_principale": "88.99B",
+      "ville_siege": "CUGNAUX",
+      "matched_name": "ASSOCIATION POUR LE DÉVELOPPEMENT ET LE BIEN-ÊTRE DES CONGOLAIS"
+    },
+    "club des naïades": {
+      "denomination": "LE CLUB DES NAIADES",
+      "siren": "509830733",
+      "siret": "50983073300044",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Club des Naïades"
+    },
+    "racing multi athlon": {
+      "denomination": "RACING MULTI ATHLON",
+      "siren": "793708181",
+      "siret": "79370818100045",
+      "nature_juridique": "9220",
+      "activite_principale": "93.19Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Racing Multi Athlon"
+    },
+    "association sporting club de paris": {
+      "denomination": "SPORTING CLUB DE PARIS",
+      "siren": "399107663",
+      "siret": "39910766300011",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "association Sporting Club de Paris"
+    },
+    "association paris cyclisme olympique": null,
+    "elogie-siemp": {
+      "denomination": "ELOGIE - SIEMP",
+      "siren": "552038200",
+      "siret": "55203820000069",
+      "nature_juridique": "5599",
+      "activite_principale": "68.20A",
+      "ville_siege": "PARIS",
+      "matched_name": "Elogie-Siemp"
+    },
+    "fondation des apprentis d'auteuil": {
+      "denomination": "FONDATION APPRENTIS D'AUTEUIL",
+      "siren": "775688799",
+      "siret": "77568879900011",
+      "nature_juridique": "9300",
+      "activite_principale": "85.32Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Fondation des Apprentis d'Auteuil"
+    },
+    "13onze15 :fraternité et vérité": {
+      "denomination": "13ONZE15: FRATERNITE ET VERITE",
+      "siren": "819792466",
+      "siret": "81979246600024",
+      "nature_juridique": "9220",
+      "activite_principale": "88.99B",
+      "ville_siege": "PARIS",
+      "matched_name": "13onze15 :Fraternité et Vérité"
+    },
+    "fédération nationale des victimes d'attentats et d'accidents collectifs –sos catastrophes &terrorisme": null,
+    "association pour la défense des familles et de l'individu victimes des sectes": {
+      "denomination": "ASS DEFENSE FAMILLES INDIVIDU VICTIMES SECTES",
+      "siren": "508959244",
+      "siret": "50895924400015",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "NICE",
+      "matched_name": "Association pour la Défense des Familles et de l'Individu victimes des sectes"
+    },
+    "protection civile paris seine": {
+      "denomination": "PROTECTION CIVILE PARIS SEINE",
+      "siren": "418037461",
+      "siret": "41803746100047",
+      "nature_juridique": "9220",
+      "activite_principale": "85.59A",
+      "ville_siege": "PARIS",
+      "matched_name": "Protection Civile Paris Seine"
     }
   }
 }
