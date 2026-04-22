@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T11:37:54.603640",
+  "generated_at": "2026-04-22T11:39:34.473775",
   "model": "gemini-3-flash-preview",
   "count": 780,
   "items": {
@@ -19804,7 +19804,206 @@
       "confiance": 0.8,
       "source_type": "claude_web",
       "enriched_at": "2026-04-22T11:37:54.603640"
+    },
+    "ASSOCIATION DE SOUTIEN A FOND": {
+      "activite_verifiee": "Association de soutien à un fonds de dotation (fonds parisien structurant de soutien à la culture, au sport ou à l'éducation, type Fonds de dotation Ville de Paris / Ateliers de Paris). Détails précis limités selon la dénomination exacte.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "metropolegrandparis.fr",
+        "bdmma.paris"
+      ],
+      "confiance": 0.4,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:39:34.473775"
+    },
+    "ASS PREVENTION ACCUEIL SOUTIEN ORIE": {
+      "activite_verifiee": "APASO — Association pour la Prévention, l'Accueil, le Soutien et l'Orientation, créée en 1989. 6 rue Auguste Caïn Paris 14e. Trois axes : insertion, soutien à la parentalité, accès au droit ; activités socio-judiciaires. Intervient en Île-de-France (Essonne et Paris).",
+      "perimetre_geographique": "Paris / Essonne",
+      "sources": [
+        "apaso.fr",
+        "barreausolidarite.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:39:34.473775"
+    },
+    "ASS PREVENTION ACCUEIL SOUTIEN ET O": {
+      "activite_verifiee": "APASO — Association pour la Prévention, l'Accueil, le Soutien et l'Orientation, créée en 1989. 6 rue Auguste Caïn Paris 14e. Trois axes : insertion, soutien à la parentalité, accès au droit ; activités socio-judiciaires. Intervient en Île-de-France (Essonne et Paris).",
+      "perimetre_geographique": "Paris / Essonne",
+      "sources": [
+        "apaso.fr",
+        "barreausolidarite.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:39:34.473775"
+    },
+    "ASSOCIATION PREVENTION ACCUEIL SOUTIEN ET": {
+      "activite_verifiee": "APASO — Association pour la Prévention, l'Accueil, le Soutien et l'Orientation, créée en 1989. 6 rue Auguste Caïn Paris 14e. Trois axes : insertion, soutien à la parentalité, accès au droit ; activités socio-judiciaires. Intervient en Île-de-France (Essonne et Paris).",
+      "perimetre_geographique": "Paris / Essonne",
+      "sources": [
+        "apaso.fr",
+        "barreausolidarite.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:39:34.473775"
+    },
+    "PAUSE DU 6EME": {
+      "activite_verifiee": "La Pause du 6e, association humanitaire 21 rue du Montparnasse Paris 6e. Gère une bagagerie solidaire pour personnes sans domicile fixe (stockage sécurisé de leurs affaires) avec permanences matin et soir assurées par des bénévoles.",
+      "perimetre_geographique": "Paris 6e",
+      "sources": [
+        "lapausedu6.org",
+        "jeveuxaider.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:39:34.473775"
+    },
+    "L UN EST L AUTRE": {
+      "activite_verifiee": "L'Un est l'Autre, association loi 1901 créée en 2003, Paris 14e. Prépare et distribue 2 400 repas chauds par semaine aux personnes sans abri ou en grande précarité (jeudi soir, samedi et dimanche midi). ~350 bénévoles, visites à domicile de personnes âgées, colis alimentaires, hébergement d'urgence.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "lunestlautre.org",
+        "helloasso.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:39:34.473775"
+    },
+    "UN TOIT POUR TOI": {
+      "activite_verifiee": "Un Toit pour Toi, association 4 rue Esclangon Paris 18e. Intermédiation locative agréée par la préfecture IdF (sous-location à des familles en urgence, ~10 logements). Domiciliation postale pour personnes sans logement stable (~4 200 inscrits). Accompagne les recours DALO.",
+      "perimetre_geographique": "Paris (IdF, 92, 93, 94)",
+      "sources": [
+        "untoitpourtoi.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:39:34.473775"
+    },
+    "VILLETTE SERVICE PLUS": {
+      "activite_verifiee": "Villette Service Plus / Villette Emploi — structures du groupe APSV (Association de Prévention du Site de la Villette, créée 1986). Association intermédiaire et ETTI, entreprise de services pour l'insertion professionnelle durable de jeunes en précarité dans le nord-est parisien. Porte aussi le projet Oeco (réduction des déchets, réemploi, réparation vélo).",
+      "perimetre_geographique": "Paris 19e (Villette)",
+      "sources": [
+        "apsv.fr",
+        "villette-emploi.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:39:34.473775"
+    },
+    "ERNEST CIRCUITCOURT RESTAURATION": {
+      "activite_verifiee": "Ernest — Circuit Court Solidarité, association créée en 2015. Prépare chaque semaine 500 repas et 130 paniers bio locaux pour personnes en précarité alimentaire, + 700 repas bénévoles pour personnes sans-abri. Dispositif « pourmanger » (supplément solidaire dans 15 restaurants partenaires). Restaurant Chez Ernest impasse Joinville Paris 19e depuis 2023.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        "hello-ernest.com",
+        "paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:39:34.473775"
+    },
+    "ASSOCIATION AU RENDEZ VOUS BOUT CHOU": {
+      "activite_verifiee": "Halte-garderie associative Au Rendez-vous des Bout'Chou, 52 rue de l'Amiral Roussin Paris 15e. Agrément Ville de Paris et CAF (tarifs selon revenus). Accueille 15 enfants dès 1 an jusqu'à l'entrée en maternelle, ouverture lundi-vendredi 8h-17h30. Équipe multilingue (FR, EN, NL).",
+      "perimetre_geographique": "Paris 15e",
+      "sources": [
+        "paris.fr",
+        "trouversacreche.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:39:34.473775"
+    },
+    "ASS AU RENDEZ VOUS BOUT CHOU": {
+      "activite_verifiee": "Halte-garderie associative Au Rendez-vous des Bout'Chou, 52 rue de l'Amiral Roussin Paris 15e. Agrément Ville de Paris et CAF (tarifs selon revenus). Accueille 15 enfants dès 1 an jusqu'à l'entrée en maternelle, ouverture lundi-vendredi 8h-17h30. Équipe multilingue (FR, EN, NL).",
+      "perimetre_geographique": "Paris 15e",
+      "sources": [
+        "paris.fr",
+        "trouversacreche.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:39:34.473775"
+    },
+    "REPARESEB": {
+      "activite_verifiee": "RépareSeb, social joint-venture créée par le Groupe SEB et le Groupe Ares en partenariat avec la Ville de Paris. Premier centre parisien de réparation collaborative du petit électroménager SEB : réparations sous et hors garantie, revente d'appareils reconditionnés (-50 %), insertion professionnelle d'environ 25 salariés.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "paris.fr",
+        "groupeseb.com",
+        "repareseb.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:39:34.473775"
+    },
+    "ORCHESTRE COLONNE": {
+      "activite_verifiee": "Orchestre Colonne — Association artistique des Concerts Colonne, fondée en 1873 par Édouard Colonne. Un des plus anciens orchestres parisiens encore en activité. Structure associative et SCOP rassemblant ~80-100 musiciens professionnels. +5 000 concerts symphoniques donnés à Paris, mission de soutien aux jeunes artistes.",
+      "perimetre_geographique": "Paris / France",
+      "sources": [
+        "orchestrecolonne.fr",
+        "fr.wikipedia.org/wiki/Orchestre_Colonne",
+        "les-scop.coop"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:39:34.473775"
+    },
+    "L ARAIGNEE GENTILLE": {
+      "activite_verifiee": "L'Araignée Gentille (SIREN 328542162), association / halte-garderie agréée, 6 square Ornano Paris 18e. Accueille enfants de 10 mois à 5 ans ; activités ludiques et langagières pour soutenir le développement et l'apprentissage de la vie collective.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        "paris.fr",
+        "societe.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:39:34.473775"
+    },
+    "GRAINS DE SEL": {
+      "activite_verifiee": "Association parisienne Grains de Sel — structure petite enfance (crèche parentale) ou coopérative alimentaire selon dénomination exacte. À Paris, référence identifiée : Les Amis des Grains de Sel, 41 rue Barrault Paris 13e (SCIC coopérative de consommateurs).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "lesgrainsdesel.fr",
+        "pagesjaunes.fr"
+      ],
+      "confiance": 0.4,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:39:34.473775"
+    },
+    "ASSOCIATION AMBROISE CROIZAT": {
+      "activite_verifiee": "Association Ambroise Croizat (SIREN 300512647), 4 rue Lasson Paris 12e. Loi 1901 de formation et d'action sociale : adaptation, insertion et réinsertion professionnelle de personnes en situation de handicap ou de fragilité. Gère deux ESRP (Louis Gatignon dans le Cher, Masson-Timbaud en IdF) ; formation professionnelle + FLE.",
+      "perimetre_geographique": "Île-de-France / Cher",
+      "sources": [
+        "asso-croizat.org",
+        "annuaire-entreprises.data.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:39:34.473775"
+    },
+    "ASS NAL PREVENTION ALCOOL ADDICTOLO": {
+      "activite_verifiee": "ANPAA — aujourd'hui Association Addictions France, loi 1901 reconnue d'utilité publique fondée en 1872 par Claude Bernard et Louis Pasteur. Siège 20 rue Saint-Fiacre Paris 2e. 89 comités départementaux et 19 comités régionaux : prévention et soins en alcoologie et addictologie (CSAPA, CAARUD), formation, plaidoyer.",
+      "perimetre_geographique": "France (siège Paris 2e)",
+      "sources": [
+        "fr.wikipedia.org/wiki/Association_Addictions_France",
+        "anpaa51.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:39:34.473775"
+    },
+    "FABRIQUE NOMADE": {
+      "activite_verifiee": "La Fabrique Nomade, association fondée en janvier 2016 par Inès Mesmar. 1 bis avenue Daumesnil Paris 12e (Viaduc des Arts). Valorise et accompagne l'insertion professionnelle d'artisans migrants et réfugiés : programme de 6 mois (FLE + collaboration avec des designers, production d'objets vendus 70-200 €). Taux d'insertion ~76 %. Soutien du groupe LVMH.",
+      "perimetre_geographique": "Paris 12e / France",
+      "sources": [
+        "lafabriquenomade.com",
+        "paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:39:34.473775"
     }
   },
-  "total": 973
+  "total": 991
 }
