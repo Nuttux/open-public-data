@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T11:45:54.572330",
+  "generated_at": "2026-04-22T11:47:31.849686",
   "model": "gemini-3-flash-preview",
   "count": 780,
   "items": {
@@ -20703,7 +20703,172 @@
       "confiance": 0.8,
       "source_type": "claude_web",
       "enriched_at": "2026-04-22T11:45:54.572330"
+    },
+    "SOCIETE DE PRODUCTION AG": {
+      "activite_verifiee": "Société de Production AG (ex-Cirque à l'Ancienne, SIREN 319556494), SARL de production de spectacle vivant. 55 avenue Marceau Paris 16e depuis septembre 2022. Activité étendue à l'édition musicale en 2024.",
+      "perimetre_geographique": "Paris 16e",
+      "sources": [
+        "societe.com",
+        "hoodspot.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:47:31.849686"
+    },
+    "NEAG 3": {
+      "activite_verifiee": "NEAG 3 (SIREN 848957387), société parisienne (Paris 19e) créée en 2019, commerce de détail alimentaire spécialisé (dirigée par Charles André Jean-Marie Lottmann). Porte potentiellement le projet Nous Anti-Gaspi.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        "societe.com",
+        "verif.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:47:31.849686"
+    },
+    "STUDYSPACE": {
+      "activite_verifiee": "StudySpace, association parisienne de soutien scolaire / espace d'étude (informations publiques détaillées limitées).",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.3,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:47:31.849686"
+    },
+    "MEDIATIONINSERTIONFORMATION": {
+      "activite_verifiee": "Médiation Insertion Formation (SIREN 524674280), association d'insertion par l'activité économique, 4 rue des Fougères Paris 20e (siège 33 rue Boucry Paris 18e). Chantier d'insertion dans les métiers du second œuvre du bâtiment (plâtre, peinture, carrelage, mosaïques) pour bailleurs sociaux (Paris Habitat). FLE et alphabétisation.",
+      "perimetre_geographique": "Paris / Hauts-de-Seine",
+      "sources": [
+        "acimif.fr",
+        "societe.com",
+        "reseau-alpha.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:47:31.849686"
+    },
+    "POUR DEVELOPPEMENT SANTE FEMMES": {
+      "activite_verifiee": "ADSF — Agir pour la Santé des Femmes (créée en 2001, Paris 18e). Améliore l'accès aux soins des femmes en situation de grande exclusion (SDF, victimes de violences, traite). 18 rue Bernard Dimey Paris 18e. Maraudes, accueils de jour à Paris et Lille.",
+      "perimetre_geographique": "Paris / Lille",
+      "sources": [
+        "adsfasso.org",
+        "jemengage.paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:47:31.849686"
+    },
+    "PORTE ENTR OUVERTE": {
+      "activite_verifiee": "La Porte Entr'Ouverte, structure d'accueil petite enfance associative à Paris 14e, agréée par la CAF depuis 1981 (création 1978). Halte-garderie / espace familles, accompagnement à la parentalité.",
+      "perimetre_geographique": "Paris 14e",
+      "sources": [
+        "acepprif.org/project/la-porte-entrouverte"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:47:31.849686"
+    },
+    "IDEES HEUREUSES": {
+      "activite_verifiee": "Les Idées Heureuses, association loi 1901 créée en 1987 (baroque) puis relancée par le violoniste Julien Chauvin. Siège 7 rue Rameau Paris 2e. Porte deux ensembles sur instruments d'époque : Le Concert de la Loge (olympique) et le Quatuor Cambini-Paris. Production/diffusion de concerts, répertoire du baroque au XXe siècle.",
+      "perimetre_geographique": "Paris 2e",
+      "sources": [
+        "ideesheureuses.ca",
+        "societe.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:47:31.849686"
+    },
+    "FOOTBALL CLUB DES GOBELINS": {
+      "activite_verifiee": "FC Gobelins Paris 13 — aujourd'hui Paris 13 Atletico, club de football fondé en 1968 au 3 avenue Joseph Bédier Paris 13e. ~40 équipes (École de foot U6-U13, seniors, féminines, loisirs). Club partenaire de formation du PSG depuis 2001. Label FFF Jeunes Élite (2021).",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        "fcgobelinsparis13.fr",
+        "paris13atletico.fr",
+        "en.wikipedia.org/wiki/Paris_13_Atletico"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:47:31.849686"
+    },
+    "REFER RESEAU FRANCILIEN DU REEMPLOI": {
+      "activite_verifiee": "REFER — Réseau Francilien du Réemploi, association loi 1901 créée en 2014. Fédère 74 membres actifs du réemploi solidaire en IdF (ressourceries, recycleries, ateliers vélo, Emmaüs) autour de ~150 boutiques solidaires. Observatoire, plaidoyer, appui aux collectivités et porteurs de projet.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        "reemploi-idf.org",
+        "grandpariscirculaire.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:47:31.849686"
+    },
+    "GROUP RECHER REALISAT DEVELOP RURAL": {
+      "activite_verifiee": "GRDR — Groupe de Recherche et de Réalisations pour le Développement Rural (Migration, Citoyenneté, Développement), association loi 1901 apolitique et aconfessionnelle créée en 1969. Siège 66 rue Marceau, Montreuil (93). Accompagne des initiatives de solidarité internationale en Afrique de l'Ouest (Mali, Mauritanie, Sénégal, Guinée-Bissau) et en France.",
+      "perimetre_geographique": "International (siège Montreuil 93)",
+      "sources": [
+        "grdr.org",
+        "ccfd-terresolidaire.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:47:31.849686"
+    },
+    "MOTEUR": {
+      "activite_verifiee": "Association Moteur !, créée par Caroline Sénéclauze. Concours national annuel (14-22 ans) en partenariat avec le CNC. Éducation à l'image et diversité : diffusion de courts-métrages donnant la parole aux jeunes sur les diversités territoriales, culturelles et sociales. Partenariat Éducation nationale (collèges/lycées option image) et Festival de Cannes.",
+      "perimetre_geographique": "France (Paris)",
+      "sources": [
+        "cnc.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:47:31.849686"
+    },
+    "DOMREMY BASKET 13": {
+      "activite_verifiee": "La Domrémy Basket 13 (LDB13), club de basket-ball Paris 13e, Maison des Associations 11 rue Caillaux. 29 équipes mixtes/jeunes/seniors, évolue en Régionale IdF. Renommée en 2005 pour affirmer son ancrage dans l'arrondissement.",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        "ladomremybasket13.com",
+        "ldb13.clubeo.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:47:31.849686"
+    },
+    "PARADOXES": {
+      "activite_verifiee": "Association Paradoxes (Paris) — plusieurs entités homonymes : Compagnie Paradoxe(s) (théâtre contemporain, conventionnée DRAC) ; Paradox Paris 11e (centre culturel et loisirs 4 rue Neuve-Popincourt) ; parADoxes Paris (lieu santé mentale 11-25 ans au 212 rue Saint-Maur Paris 10e) ; Association PARADOXES (loi 1901, 2001, thérapie brève systémique). Identification précise selon dossier.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "compagnie-paradoxes.fr",
+        "paradoxes-paris.org",
+        "paradoxes.asso.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:47:31.849686"
+    },
+    "BRICOLETTE": {
+      "activite_verifiee": "La Bricolette, association écologique et solidaire parisienne ; future ressourcerie du 10e arrondissement. Bricolette ambulante (résourcerie mobile dans les quartiers franciliens), ressourcerie hebdomadaire au centre d'hébergement d'urgence Magenta (Gare de l'Est). Ateliers de réparation / sensibilisation au réemploi.",
+      "perimetre_geographique": "Paris 10e / Île-de-France",
+      "sources": [
+        "jemengage.paris.fr",
+        "paris.fr",
+        "lepoulperessourcerie.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:47:31.849686"
+    },
+    "GROUPE SOS JEUNESSE": {
+      "activite_verifiee": "Groupe SOS Jeunesse, branche protection de l'enfance et jeunesse du Groupe SOS. Issu en 2016 de la fusion JCLT + Insertions & Alternatives. Siège 102 rue Amelot Paris 11e. 27 MECS, 10 AEMO, SAJE Paris 19e/20e, PARRAJ et structures maternité pour ~90 000 jeunes/an.",
+      "perimetre_geographique": "France (siège Paris 11e)",
+      "sources": [
+        "groupe-sos.org/groupe-sos-jeunesse",
+        "cnape.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:47:31.849686"
     }
   },
-  "total": 1055
+  "total": 1070
 }
