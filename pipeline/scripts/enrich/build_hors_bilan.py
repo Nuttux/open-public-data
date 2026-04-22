@@ -42,6 +42,7 @@ DEFAULT_YEARS = [2019, 2020, 2021, 2022, 2023, 2024]
 TOP_BENEFICIAIRES = 20
 TOP_PRETEURS = 10
 EMPRUNTS_PAR_BENEFICIAIRE = 25  # top emprunts embarqués dans chaque fiche bénéficiaire
+EMPRUNTS_PAR_ARRONDISSEMENT = 15  # top emprunts embarqués dans chaque fiche arrondissement
 
 # Regex pour extraire un code postal parisien (75001 à 75020, plus 75116
 # pour le 16e Nord historique) dans l'objet de l'emprunt
@@ -266,15 +267,51 @@ def build_year(year: int, df: pd.DataFrame, logger: Logger) -> dict:
     # (garanties globales au bénéficiaire sans opération nommée) sont agrégés
     # dans un bucket "non localisé".
     mask_loc = df["arr"].notna()
+    localised_crd_total = float(df.loc[mask_loc, crd_col].sum()) if mask_loc.any() else 0.0
     by_arrondissement = []
     for arr in range(1, 21):
         sub = df[df["arr"] == arr]
         crd_sum = float(sub[crd_col].sum())
+
+        # Top N emprunts par capital restant pour cette fiche arr
+        top_emp = sub.sort_values(crd_col, ascending=False).head(EMPRUNTS_PAR_ARRONDISSEMENT)
+        emprunts = []
+        for _, e in top_emp.iterrows():
+            emprunts.append({
+                "objet": (str(e["objet_de_l_emprunt_garanti"]) if pd.notna(e.get("objet_de_l_emprunt_garanti")) else ""),
+                "beneficiaire": (str(e["designation_du_beneficiaire"]) if pd.notna(e.get("designation_du_beneficiaire")) else ""),
+                "preteur": (str(e["organisme_preteur_ou_chef_de_file"]) if pd.notna(e.get("organisme_preteur_ou_chef_de_file")) else ""),
+                "annee_mobilisation": (int(e["annee_de_mobilisation"]) if pd.notna(e.get("annee_de_mobilisation")) else None),
+                "capital_restant": round(float(e[crd_col])),
+                "taux_type": (str(e["taux_initial_taux"]).upper() if pd.notna(e.get("taux_initial_taux")) else ""),
+                "taux_actuariel": float(e["taux_initial_taux_actuariel"]) if pd.notna(e.get("taux_initial_taux_actuariel")) else None,
+            })
+
+        # Top 3 bénéficiaires dans cet arr
+        top_benef_arr = (
+            sub.groupby("designation_du_beneficiaire", dropna=False)
+               .agg(capital_restant=(crd_col, "sum"), count_emprunts=(crd_col, "size"))
+               .sort_values("capital_restant", ascending=False)
+               .head(3)
+               .reset_index()
+        )
+        top_benefs = [
+            {
+                "name": str(r["designation_du_beneficiaire"]) if pd.notna(r["designation_du_beneficiaire"]) else "—",
+                "capital_restant": round(float(r["capital_restant"])),
+                "count_emprunts": int(r["count_emprunts"]),
+                "share_of_arr": (float(r["capital_restant"]) / crd_sum) if crd_sum else 0.0,
+            }
+            for _, r in top_benef_arr.iterrows()
+        ]
+
         by_arrondissement.append({
             "arr": arr,
             "capital_restant": round(crd_sum),
             "count_emprunts": int(len(sub)),
-            "share_of_localized": (crd_sum / float(df.loc[mask_loc, crd_col].sum())) if mask_loc.any() else 0.0,
+            "share_of_localized": (crd_sum / localised_crd_total) if localised_crd_total else 0.0,
+            "top_beneficiaires": top_benefs,
+            "emprunts_top": emprunts,
         })
     non_localised_crd = float(df.loc[~mask_loc, crd_col].sum())
     non_localised_count = int((~mask_loc).sum())

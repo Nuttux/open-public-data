@@ -1,12 +1,27 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import SectionHead from "@/components/fusion/SectionHead";
 import Button from "@/components/fusion/Button";
 import { useLocale } from "@/lib/localeContext";
+
+type SourceRow = {
+  portal: string;
+  url: string;
+  datasets: string;
+  freshness: string;
+};
+
+type TraceStep = {
+  stage: string;
+  label: string;
+  value: string;
+  detail: string;
+};
 
 type ToolMethod = {
   id: string;
@@ -396,6 +411,50 @@ const COVERAGE_EN: CoverageRow[] = [
   { label: "Balance sheet", status: "ok", statusLabel: "Up to date", segments: [{ start: 2019, end: 2024, text: "2019-2024" }] },
 ];
 
+// ── Sources (table synthétique) ──────────────────────────────────────────────
+
+const SOURCES_FR: SourceRow[] = [
+  { portal: "OpenData Paris", url: "opendata.paris.fr", datasets: "Budget M57, marchés publics, subventions, logements sociaux, AP, bilan comptable — 7 datasets", freshness: "Quotidien à annuel selon dataset" },
+  { portal: "INSEE — SIRENE", url: "data.gouv.fr / sirene", datasets: "Registre entreprises (SIRET, APE, effectifs, établissements)", freshness: "Mensuel" },
+  { portal: "Base Adresse Nationale", url: "api-adresse.data.gouv.fr", datasets: "Géocodage des adresses de projets d'investissement", freshness: "Temps réel" },
+  { portal: "cdn.paris.fr (PDFs)", url: "cdn.paris.fr", datasets: "Annexes CA 2024 (investissements localisés), Rapport d'Orientation Budgétaire, compte de gestion", freshness: "Annuel (juin N+1)" },
+  { portal: "DRIHL Île-de-France", url: "drihl.ile-de-france…gouv.fr", datasets: "Inventaire SRU, parc social au 1er janvier", freshness: "Annuel" },
+];
+
+const SOURCES_EN: SourceRow[] = [
+  { portal: "OpenData Paris", url: "opendata.paris.fr", datasets: "M57 budget, public contracts, grants, social housing, AP, balance sheet — 7 datasets", freshness: "Daily to annual depending on dataset" },
+  { portal: "INSEE — SIRENE", url: "data.gouv.fr / sirene", datasets: "Business register (SIRET, activity codes, headcount, sites)", freshness: "Monthly" },
+  { portal: "Base Adresse Nationale", url: "api-adresse.data.gouv.fr", datasets: "Address geocoding for investment projects", freshness: "Real time" },
+  { portal: "cdn.paris.fr (PDFs)", url: "cdn.paris.fr", datasets: "CA 2024 appendices (localised investments), Budget Orientation Report, management account", freshness: "Annual (June N+1)" },
+  { portal: "DRIHL Île-de-France", url: "drihl.ile-de-france…gouv.fr", datasets: "SRU inventory, social housing stock at January 1st", freshness: "Annual" },
+];
+
+// ── Exemple bout-en-bout (traçabilité d'un chiffre) ──────────────────────────
+
+const TRACE_FR: { claim: string; steps: TraceStep[] } = {
+  claim: "« 416 574 267 € versés au CASVP en 2024 » — affiché sur la page Qui-reçoit",
+  steps: [
+    { stage: "01 · Source", label: "opendata.paris.fr", value: "Dataset subventions-versees-annexe-compte-administratif-a-partir-de-2018", detail: "Une ligne brute du CSV : SIRET 267 500 049, montant 416 574 267 €, exercice 2024." },
+    { stage: "02 · Staging", label: "dbt · nettoyage", value: "stg_subventions.sql", detail: "Typage des colonnes, normalisation du SIRET, filtrage des montants nuls." },
+    { stage: "03 · Core", label: "dbt · table de vérité", value: "core_subventions (OBT)", detail: "Jointure SIRENE pour récupérer forme juridique = Établissement public. Pas de thématisation LLM nécessaire (top 1 par volume, revue manuelle)." },
+    { stage: "04 · Mart", label: "dbt · agrégation", value: "mart_subventions_beneficiaires.sql", detail: "Groupement par SIRET × année. Somme des lignes. Le résultat : 1 ligne CASVP 2024 avec 416 574 267 €." },
+    { stage: "05 · Export", label: "Python", value: "beneficiaires_2024.json", detail: "JSON figé servi en statique à Next.js. Aucun calcul côté site." },
+    { stage: "06 · Affichage", label: "React", value: "QuiRecoitExplorer.tsx", detail: "Le chiffre est lu tel quel et affiché." },
+  ],
+};
+
+const TRACE_EN: { claim: string; steps: TraceStep[] } = {
+  claim: "'€416,574,267 paid to CASVP in 2024' — displayed on the Qui-reçoit page",
+  steps: [
+    { stage: "01 · Source", label: "opendata.paris.fr", value: "Dataset subventions-versees-annexe-compte-administratif-a-partir-de-2018", detail: "One raw CSV row: SIRET 267 500 049, amount €416,574,267, fiscal year 2024." },
+    { stage: "02 · Staging", label: "dbt · cleaning", value: "stg_subventions.sql", detail: "Column typing, SIRET normalisation, null amounts filtered." },
+    { stage: "03 · Core", label: "dbt · source of truth", value: "core_subventions (OBT)", detail: "SIRENE join to retrieve legal form = Public establishment. No LLM theming needed (top 1 by volume, manual review)." },
+    { stage: "04 · Mart", label: "dbt · aggregation", value: "mart_subventions_beneficiaires.sql", detail: "Grouped by SIRET × year. Sum of rows. Result: 1 CASVP 2024 row with €416,574,267." },
+    { stage: "05 · Export", label: "Python", value: "beneficiaires_2024.json", detail: "Static JSON served to Next.js. No computation on site." },
+    { stage: "06 · Display", label: "React", value: "QuiRecoitExplorer.tsx", detail: "The figure is read as-is and displayed." },
+  ],
+};
+
 // ── Component ────────────────────────────────────────────────────────────────
 
 export default function MethodeClient() {
@@ -406,6 +465,11 @@ export default function MethodeClient() {
   const GLOSSARY = isFr ? GLOSSARY_FR : GLOSSARY_EN;
   const FAQ = isFr ? FAQ_FR : FAQ_EN;
   const COVERAGE = isFr ? COVERAGE_FR : COVERAGE_EN;
+  const SOURCES = isFr ? SOURCES_FR : SOURCES_EN;
+  const TRACE = isFr ? TRACE_FR : TRACE_EN;
+
+  const [activeToolId, setActiveToolId] = useState<string>(TOOLS[0]?.id ?? "budget");
+  const activeTool = TOOLS.find((t) => t.id === activeToolId) ?? TOOLS[0];
 
   const years: number[] = [];
   for (let y = AXIS_START; y <= AXIS_END; y++) years.push(y);
@@ -444,13 +508,13 @@ export default function MethodeClient() {
             </div>
             <div className="fx-meth-stat">
               <span className="n">{isFr ? "Historique" : "History"}</span>
-              <span className="v">11 {isFr ? "ans" : "yrs"}</span>
+              <span className="v">13 {isFr ? "ans" : "yrs"}</span>
               <span className="c">{isFr ? "2013 → 2024 (exécuté) · 2026 (voté)" : "2013 → 2024 (executed) · 2026 (voted)"}</span>
             </div>
           </div>
 
           <div className="fx-page-actions" style={{ marginTop: 28 }}>
-            <Button variant="primary" href="#couverture">{isFr ? "Voir les sources" : "See the sources"}</Button>
+            <Button variant="primary" href="#sources">{isFr ? "Voir les sources" : "See the sources"}</Button>
             <Button href="https://github.com/Nuttux/open-public-data">{isFr ? "Le code sur GitHub ↗" : "Code on GitHub ↗"}</Button>
           </div>
         </div>
@@ -495,130 +559,57 @@ export default function MethodeClient() {
             title={isFr ? <>Ce que vous <em>trouverez</em> ici</> : <>What you&apos;ll <em>find</em> here</>}
           />
           <div className="fx-toc">
-            <a href="#principes">{isFr ? "01 · Principes" : "01 · Principles"}</a>
-            <a href="#architecture">{isFr ? "02 · Architecture" : "02 · Architecture"}</a>
-            <a href="#couverture">{isFr ? "03 · Couverture" : "03 · Coverage"}</a>
-            {TOOLS.map((tool) => (
-              <a key={tool.id} href={`#${tool.id}`}>{tool.number} · {tool.kicker}</a>
-            ))}
-            <a href="#glossaire">{isFr ? "10 · Glossaire" : "10 · Glossary"}</a>
-            <a href="#faq">11 · FAQ</a>
-            <a href="#reproductibilite">{isFr ? "12 · Reproductibilité" : "12 · Reproducibility"}</a>
-            <a href="#corrections">{isFr ? "13 · Corrections" : "13 · Corrections"}</a>
+            <a href="#sources">{isFr ? "01 · Sources" : "01 · Sources"}</a>
+            <a href="#couverture">{isFr ? "02 · Couverture" : "02 · Coverage"}</a>
+            <a href="#architecture">{isFr ? "03 · Architecture" : "03 · Architecture"}</a>
+            <a href="#outils">{isFr ? "04 · Les 6 outils" : "04 · The 6 tools"}</a>
+            <a href="#exemple">{isFr ? "05 · Exemple tracé" : "05 · Traced example"}</a>
+            <a href="#glossaire">{isFr ? "06 · Glossaire" : "06 · Glossary"}</a>
+            <a href="#faq">07 · FAQ</a>
+            <a href="#engagements">{isFr ? "08 · Engagements" : "08 · Commitments"}</a>
           </div>
         </div>
       </section>
 
-      <section id="principes" className="fx-section">
+      <section id="sources" className="fx-section">
         <div className="fx-wrap">
           <SectionHead
             number="01"
-            kind={isFr ? "Principes" : "Principles"}
-            title={isFr ? <>Quatre <em>règles</em></> : <>Four <em>rules</em></>}
+            kind={isFr ? "Sources" : "Sources"}
+            title={isFr ? <>D&apos;<em>où</em> vient chaque chiffre</> : <>Where <em>each</em> figure comes from</>}
+            subtitle={isFr ? "Cinq portails officiels. Aucun autre." : "Five official portals. Nothing else."}
           />
-          <div className="fx-sources fx-sources-4">
-            <div>
-              <div className="n">01</div>
-              <h3>{isFr ? "Pas de contenu sponsorisé" : "No sponsored content"}</h3>
-              <p>{isFr ? "Aucun article, chiffre ou visualisation n'est sponsorisé. Les financements reçus sont publiés avec leur montant et ne conditionnent pas la ligne éditoriale." : "No article, figure or visualisation is sponsored. Any funding received is published with its amount and does not condition the editorial line."}</p>
+          <div className="fx-sources-table">
+            <div className="fx-sources-table-head">
+              <span>{isFr ? "Portail" : "Portal"}</span>
+              <span>URL</span>
+              <span>{isFr ? "Contenu utilisé" : "Content used"}</span>
+              <span>{isFr ? "Mise à jour" : "Freshness"}</span>
             </div>
-            <div>
-              <div className="n">02</div>
-              <h3>{isFr ? "Neutralité politique" : "Political neutrality"}</h3>
-              <p>{isFr ? "On publie des chiffres, pas des opinions. Les textes évitent les jugements sur les choix politiques et s'en tiennent à la donnée." : "We publish figures, not opinions. Texts avoid judgements on political choices and stick to the data."}</p>
-            </div>
-            <div>
-              <div className="n">03</div>
-              <h3>{isFr ? "Code & données ouverts" : "Open code & data"}</h3>
-              <p>{isFr ? "Les pipelines (Python + dbt) sont sous licence MIT. Chaque chiffre peut être recalculé depuis un CSV source." : "Pipelines (Python + dbt) are MIT-licensed. Every figure can be recalculated from a source CSV."}</p>
-            </div>
-            <div>
-              <div className="n">04</div>
-              <h3>{isFr ? "Corrections publiques" : "Public corrections"}</h3>
-              <p>{isFr ? "Erreur signalée = corrigée dans le code et consignée dans le changelog avec la date et l'origine du signalement." : "Error reported = corrected in the code and recorded in the changelog with the date and source of the report."}</p>
-            </div>
+            {SOURCES.map((s, i) => (
+              <div key={i} className="fx-sources-table-row">
+                <span className="portal">{s.portal}</span>
+                <span className="url"><code>{s.url}</code></span>
+                <span className="datasets">{s.datasets}</span>
+                <span className="fresh">{s.freshness}</span>
+              </div>
+            ))}
           </div>
-        </div>
-      </section>
-
-      <section id="architecture" className="fx-section">
-        <div className="fx-wrap">
-          <SectionHead
-            number="02"
-            kind={isFr ? "Architecture" : "Architecture"}
-            title={isFr ? <>Le même pipeline pour <em>chaque outil</em></> : <>The same pipeline for <em>every tool</em></>}
-            subtitle={isFr ? "Ingestion → transformation → enrichissement → export. Une fois pour toutes." : "Ingestion → transformation → enrichment → export. Once and for all."}
-          />
-
-          <div className="fx-flow">
-            <div className="fx-flow-row">
-              <div className="fx-flow-node">
-                <span className="k">01 · {isFr ? "Sources" : "Sources"}</span>
-                <span className="lab">OpenData Paris + INSEE + BAN</span>
-                <span className="sub">{isFr ? "12+ datasets & PDFs officiels" : "12+ official datasets & PDFs"}</span>
-              </div>
-              <span className="fx-flow-arrow">→</span>
-              <div className="fx-flow-node">
-                <span className="k">02 · {isFr ? "Ingest" : "Ingest"}</span>
-                <span className="lab">BigQuery raw</span>
-                <span className="sub">{isFr ? "Python, aucune transformation" : "Python, no transformation"}</span>
-              </div>
-              <span className="fx-flow-arrow">→</span>
-              <div className="fx-flow-node">
-                <span className="k">03 · Staging (dbt)</span>
-                <span className="lab">{isFr ? "Typage & clés" : "Typing & keys"}</span>
-                <span className="sub">{isFr ? "Filtrage, normalisation" : "Filtering, normalisation"}</span>
-              </div>
-              <span className="fx-flow-arrow">→</span>
-              <div className="fx-flow-node">
-                <span className="k">04 · Intermediate</span>
-                <span className="lab">{isFr ? "Jointures + ode_*" : "Joins + ode_*"}</span>
-                <span className="sub">{isFr ? "Enrichissements dbt" : "dbt enrichments"}</span>
-              </div>
-            </div>
-
-            <div className="fx-flow-row">
-              <div className="fx-flow-node alt">
-                <span className="k">{isFr ? "Hors pipeline" : "Outside pipeline"}</span>
-                <span className="lab">Gemini 2.5 Flash</span>
-                <span className="sub">{isFr ? "Thématique + géoloc top 500 (Pareto) → seeds CSV" : "Theme + geoloc top 500 (Pareto) → CSV seeds"}</span>
-              </div>
-              <span className="fx-flow-arrow">→</span>
-              <div className="fx-flow-node">
-                <span className="k">05 · Core (OBT)</span>
-                <span className="lab">{isFr ? "Une table par entité" : "One table per entity"}</span>
-                <span className="sub">core_budget, core_subventions…</span>
-              </div>
-              <span className="fx-flow-arrow">→</span>
-              <div className="fx-flow-node">
-                <span className="k">06 · Marts</span>
-                <span className="lab">{isFr ? "Une vue par viz" : "One view per viz"}</span>
-                <span className="sub">mart_sankey, mart_carte, …</span>
-              </div>
-              <span className="fx-flow-arrow">→</span>
-              <div className="fx-flow-node out">
-                <span className="k">07 · {isFr ? "Sortie" : "Output"}</span>
-                <span className="lab">{isFr ? "JSON figés" : "Static JSON"}</span>
-                <span className="sub">{isFr ? "Consommés par Next.js, pas d'API live" : "Consumed by Next.js, no live API"}</span>
-              </div>
-            </div>
-
-            <div className="fx-flow-note">
-              {isFr
-                ? <>{`Règle anti-double comptage — `}<code>core_budget</code>, <code>core_subventions</code>, <code>core_marches_publics</code>, <code>core_ap_projets</code>{` ne sont jamais UNIONés. Chaque entité vit séparément. Détail dans `}<code>docs/architecture-modelling.md</code>.</>
-                : <>{`Anti-double-counting rule — `}<code>core_budget</code>, <code>core_subventions</code>, <code>core_marches_publics</code>, <code>core_ap_projets</code>{` are never UNIONed. Each entity lives separately. Detail in `}<code>docs/architecture-modelling.md</code>.</>}
-            </div>
-          </div>
+          <p className="fx-note" style={{ marginTop: 18 }}>
+            {isFr
+              ? <><b>Un chiffre = une source.</b> Aucune donnée n&apos;est reconstruite, aucune n&apos;est estimée. Les ratios financiers qualitatifs (taux, maturité de dette) non publiés en open data sont explicitement marqués « indicatifs » dans leurs fiches.</>
+              : <><b>One figure = one source.</b> No data is reconstructed or estimated. Qualitative financial ratios (rates, debt maturity) not published as open data are explicitly flagged as "indicative" in their panels.</>}
+          </p>
         </div>
       </section>
 
       <section id="couverture" className="fx-section">
         <div className="fx-wrap">
           <SectionHead
-            number="03"
+            number="02"
             kind={isFr ? "Couverture & fraîcheur" : "Coverage & freshness"}
             title={isFr ? <>Ce qui est <em>à jour</em>, ce qui ne l&apos;est pas</> : <>What is <em>up to date</em>, what is not</>}
-            subtitle={isFr ? "Les données ouvertes par la Ville ne sont pas toutes maintenues au même rythme." : "Not all data opened by the City is maintained at the same pace."}
+            subtitle={isFr ? "Les données publiées par la Ville ne sont pas toutes maintenues au même rythme." : "Not all data published by the City is maintained at the same pace."}
           />
 
           <div className="fx-timeline">
@@ -654,42 +645,163 @@ export default function MethodeClient() {
         </div>
       </section>
 
-      {TOOLS.map((tool) => (
-        <section key={tool.id} id={tool.id} className="fx-section">
-          <div className="fx-wrap">
-            <div className="fx-tool-card">
+      <section id="architecture" className="fx-section">
+        <div className="fx-wrap">
+          <SectionHead
+            number="03"
+            kind={isFr ? "Architecture" : "Architecture"}
+            title={isFr ? <>De la source au <em>site</em>, en trois étapes</> : <>From source to <em>site</em>, in three steps</>}
+            subtitle={isFr ? "Un seul pipeline pour les six outils." : "One pipeline for all six tools."}
+          />
+
+          <div className="fx-flow-simple">
+            <div className="fx-flow-simple-step">
+              <div className="k">01</div>
+              <h4>{isFr ? "Collecter" : "Collect"}</h4>
+              <p>{isFr
+                ? "On télécharge les datasets publiés par la Ville (OpenData Paris), l'INSEE (SIRENE) et data.gouv. On parse les PDFs des annexes comptables. Aucune transformation à cette étape — on garde les CSV bruts."
+                : "We download the datasets published by the City (OpenData Paris), INSEE (SIRENE) and data.gouv. We parse the PDFs of accounting appendices. No transformation at this stage — we keep raw CSVs."}</p>
+            </div>
+            <span className="fx-flow-simple-arrow">→</span>
+            <div className="fx-flow-simple-step">
+              <div className="k">02</div>
+              <h4>{isFr ? "Relier & nettoyer" : "Stitch & clean"}</h4>
+              <p>{isFr
+                ? "On normalise les nomenclatures (chapitres M57 → libellés lisibles), on joint les datasets entre eux (SIRET ↔ SIRENE pour l'identité des bénéficiaires), on géocode les projets avec la BAN. Un LLM aide à classer par thème et géocoder ; il ne calcule jamais de montant."
+                : "We normalise nomenclatures (M57 chapters → readable labels), we join datasets (SIRET ↔ SIRENE for recipient identity), we geocode projects via BAN. An LLM helps classify by theme and geocode; it never computes an amount."}</p>
+            </div>
+            <span className="fx-flow-simple-arrow">→</span>
+            <div className="fx-flow-simple-step">
+              <div className="k">03</div>
+              <h4>{isFr ? "Publier" : "Publish"}</h4>
+              <p>{isFr
+                ? "Le résultat est exporté en JSON figés, versionnés dans le dépôt. Le site Next.js lit ces JSON en statique — pas d'API live, pas de recalcul côté navigateur. Ce que vous voyez est exactement ce qui a été calculé."
+                : "The result is exported to static JSON, versioned in the repo. The Next.js site reads these JSONs statically — no live API, no browser-side recalculation. What you see is exactly what was computed."}</p>
+            </div>
+          </div>
+
+          <details className="fx-flow-tech">
+            <summary>{isFr ? "Voir le détail technique (pour les devs)" : "See technical detail (for devs)"}</summary>
+            <div className="fx-flow">
+              <div className="fx-flow-row">
+                <div className="fx-flow-node">
+                  <span className="k">01 · {isFr ? "Sources" : "Sources"}</span>
+                  <span className="lab">OpenData Paris + INSEE + BAN</span>
+                  <span className="sub">{isFr ? "12+ datasets & PDFs officiels" : "12+ official datasets & PDFs"}</span>
+                </div>
+                <span className="fx-flow-arrow">→</span>
+                <div className="fx-flow-node">
+                  <span className="k">02 · {isFr ? "Ingest" : "Ingest"}</span>
+                  <span className="lab">BigQuery raw</span>
+                  <span className="sub">{isFr ? "Python, aucune transformation" : "Python, no transformation"}</span>
+                </div>
+                <span className="fx-flow-arrow">→</span>
+                <div className="fx-flow-node">
+                  <span className="k">03 · Staging (dbt)</span>
+                  <span className="lab">{isFr ? "Typage & clés" : "Typing & keys"}</span>
+                  <span className="sub">{isFr ? "Filtrage, normalisation" : "Filtering, normalisation"}</span>
+                </div>
+                <span className="fx-flow-arrow">→</span>
+                <div className="fx-flow-node">
+                  <span className="k">04 · Intermediate</span>
+                  <span className="lab">{isFr ? "Jointures + ode_*" : "Joins + ode_*"}</span>
+                  <span className="sub">{isFr ? "Enrichissements dbt" : "dbt enrichments"}</span>
+                </div>
+              </div>
+              <div className="fx-flow-row">
+                <div className="fx-flow-node alt">
+                  <span className="k">{isFr ? "Hors pipeline" : "Outside pipeline"}</span>
+                  <span className="lab">Gemini 3 Flash + Claude Opus</span>
+                  <span className="sub">{isFr ? "Thématique + géoloc top 500 (Pareto) → seeds CSV" : "Theme + geoloc top 500 (Pareto) → CSV seeds"}</span>
+                </div>
+                <span className="fx-flow-arrow">→</span>
+                <div className="fx-flow-node">
+                  <span className="k">05 · Core (OBT)</span>
+                  <span className="lab">{isFr ? "Une table par entité" : "One table per entity"}</span>
+                  <span className="sub">core_budget, core_subventions…</span>
+                </div>
+                <span className="fx-flow-arrow">→</span>
+                <div className="fx-flow-node">
+                  <span className="k">06 · Marts</span>
+                  <span className="lab">{isFr ? "Une vue par viz" : "One view per viz"}</span>
+                  <span className="sub">mart_sankey, mart_carte, …</span>
+                </div>
+                <span className="fx-flow-arrow">→</span>
+                <div className="fx-flow-node out">
+                  <span className="k">07 · {isFr ? "Sortie" : "Output"}</span>
+                  <span className="lab">{isFr ? "JSON figés" : "Static JSON"}</span>
+                  <span className="sub">{isFr ? "Consommés par Next.js, pas d'API live" : "Consumed by Next.js, no live API"}</span>
+                </div>
+              </div>
+              <div className="fx-flow-note">
+                {isFr
+                  ? <>{`Règle anti-double comptage — `}<code>core_budget</code>, <code>core_subventions</code>, <code>core_marches_publics</code>, <code>core_ap_projets</code>{` ne sont jamais UNIONés. Chaque entité vit séparément. Détail dans `}<code>docs/architecture-modelling.md</code>.</>
+                  : <>{`Anti-double-counting rule — `}<code>core_budget</code>, <code>core_subventions</code>, <code>core_marches_publics</code>, <code>core_ap_projets</code>{` are never UNIONed. Each entity lives separately. Detail in `}<code>docs/architecture-modelling.md</code>.</>}
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section id="outils" className="fx-section">
+        <div className="fx-wrap">
+          <SectionHead
+            number="04"
+            kind={isFr ? "Les 6 outils" : "The 6 tools"}
+            title={isFr ? <>Le <em>détail</em> par outil</> : <><em>Detail</em> per tool</>}
+            subtitle={isFr ? "Source exacte, pipeline, choix éditoriaux et limites — choisissez un outil." : "Exact source, pipeline, editorial choices and limits — pick a tool."}
+          />
+
+          <div className="fx-tool-tabs" role="tablist">
+            {TOOLS.map((tool) => (
+              <button
+                key={tool.id}
+                type="button"
+                role="tab"
+                aria-selected={activeToolId === tool.id}
+                className={`fx-tool-tab ${activeToolId === tool.id ? "active" : ""}`}
+                onClick={() => setActiveToolId(tool.id)}
+              >
+                <span className="num">{tool.number}</span>
+                <span className="lbl">{tool.kicker}</span>
+              </button>
+            ))}
+          </div>
+
+          {activeTool && (
+            <div className="fx-tool-card" role="tabpanel">
               <div className="fx-tool-top">
                 <div>
-                  <div className="t-num">{tool.number} · {tool.kicker}</div>
-                  <h3 className="t-title">{tool.title}</h3>
+                  <div className="t-num">{activeTool.number} · {activeTool.kicker}</div>
+                  <h3 className="t-title">{activeTool.title}</h3>
                 </div>
-                <Link href={tool.route} className="t-link">{tool.route} ↗</Link>
+                <Link href={activeTool.route} className="t-link">{activeTool.route} ↗</Link>
               </div>
 
               <div className="fx-tool-meta">
                 <div>
                   <div className="k">{isFr ? "Source" : "Source"}</div>
-                  <div className="v">{tool.source.name}</div>
+                  <div className="v">{activeTool.source.name}</div>
                 </div>
                 <div>
                   <div className="k">Dataset</div>
-                  <div className="v"><code>{tool.source.dataset}</code></div>
+                  <div className="v"><code>{activeTool.source.dataset}</code></div>
                 </div>
                 <div>
                   <div className="k">{isFr ? "Couverture" : "Coverage"}</div>
-                  <div className="v">{tool.source.coverage}</div>
+                  <div className="v">{activeTool.source.coverage}</div>
                 </div>
               </div>
 
               <div className="fx-tool-body">
                 <div className="objectif">
                   <span className="k">{isFr ? "Objectif" : "Goal"}</span>
-                  <p>{tool.objectif}</p>
+                  <p>{activeTool.objectif}</p>
                 </div>
                 <div>
                   <div className="fx-stepper">
                     <span className="k">Pipeline</span>
-                    {tool.pipeline.map((step, i) => (
+                    {activeTool.pipeline.map((step, i) => (
                       <div key={i} className="fx-step">
                         <div className="fx-step-num">{String(i + 1).padStart(2, "0")}</div>
                         <div className="fx-step-text">
@@ -703,23 +815,57 @@ export default function MethodeClient() {
 
               <div className="fx-tool-collapse">
                 <details>
-                  <summary>{isFr ? `Choix éditoriaux (${tool.choix.length})` : `Editorial choices (${tool.choix.length})`}</summary>
-                  <ul>{tool.choix.map((c, i) => <li key={i}>{c}</li>)}</ul>
+                  <summary>{isFr ? `Choix éditoriaux (${activeTool.choix.length})` : `Editorial choices (${activeTool.choix.length})`}</summary>
+                  <ul>{activeTool.choix.map((c, i) => <li key={i}>{c}</li>)}</ul>
                 </details>
                 <details>
-                  <summary>{isFr ? `Ce que les chiffres ne disent pas (${tool.limites.length})` : `What the figures don't say (${tool.limites.length})`}</summary>
-                  <ul>{tool.limites.map((l, i) => <li key={i}>{l}</li>)}</ul>
+                  <summary>{isFr ? `Cadre & périmètre (${activeTool.limites.length})` : `Scope & framing (${activeTool.limites.length})`}</summary>
+                  <ul>{activeTool.limites.map((l, i) => <li key={i}>{l}</li>)}</ul>
                 </details>
               </div>
             </div>
+          )}
+        </div>
+      </section>
+
+      <section id="exemple" className="fx-section">
+        <div className="fx-wrap">
+          <SectionHead
+            number="05"
+            kind={isFr ? "Exemple tracé" : "Traced example"}
+            title={isFr ? <>Un chiffre, <em>bout en bout</em></> : <>One figure, <em>end to end</em></>}
+            subtitle={isFr ? "Suivre un montant de la ligne CSV source jusqu'à son affichage sur le site." : "Follow one amount from the source CSV row to its display on the site."}
+          />
+
+          <div className="fx-trace-claim">
+            <span className="k">{isFr ? "Affirmation" : "Claim"}</span>
+            <p>{TRACE.claim}</p>
           </div>
-        </section>
-      ))}
+
+          <ol className="fx-trace-steps">
+            {TRACE.steps.map((step, i) => (
+              <li key={i}>
+                <div className="fx-trace-stage">{step.stage}</div>
+                <div className="fx-trace-body">
+                  <div className="lbl">{step.label} · <code>{step.value}</code></div>
+                  <p>{step.detail}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+
+          <p className="fx-note" style={{ marginTop: 18 }}>
+            {isFr
+              ? <><b>À retenir</b> : entre la source et l&apos;affichage, aucune étape n&apos;invente de chiffre. Seulement du nettoyage, des jointures et des sommes. Le code de chaque étape est public.</>
+              : <><b>Key point</b>: between source and display, no step invents a figure. Only cleaning, joins and sums. Each step's code is public.</>}
+          </p>
+        </div>
+      </section>
 
       <section id="glossaire" className="fx-section">
         <div className="fx-wrap">
           <SectionHead
-            number="10"
+            number="06"
             kind={isFr ? "Glossaire" : "Glossary"}
             title={isFr ? <>Les mots qu&apos;on <em>utilise</em></> : <>The words we <em>use</em></>}
             subtitle={isFr ? "Jargon comptable et technique en une phrase." : "Accounting and technical jargon in one sentence."}
@@ -738,7 +884,7 @@ export default function MethodeClient() {
       <section id="faq" className="fx-section">
         <div className="fx-wrap">
           <SectionHead
-            number="11"
+            number="07"
             kind="FAQ"
             title={isFr ? <>Les questions qui <em>reviennent</em></> : <>Frequently asked <em>questions</em></>}
           />
@@ -753,71 +899,37 @@ export default function MethodeClient() {
         </div>
       </section>
 
-      <section id="reproductibilite" className="fx-section">
+      <section id="engagements" className="fx-section">
         <div className="fx-wrap">
           <SectionHead
-            number="12"
-            kind={isFr ? "Reproductibilité" : "Reproducibility"}
-            title={isFr ? <>Refaire les calculs <em>vous-même</em></> : <>Reproduce the calculations <em>yourself</em></>}
+            number="08"
+            kind={isFr ? "Engagements" : "Commitments"}
+            title={isFr ? <>Nos <em>règles</em>, et quoi faire si on se trompe</> : <>Our <em>rules</em>, and what to do if we get it wrong</>}
           />
-          <div className="fx-sources">
-            <div>
-              <div className="n">{isFr ? "01 · Exports" : "01 · Exports"}</div>
-              <h3>{isFr ? "Télécharger la donnée nettoyée" : "Download the cleaned data"}</h3>
-              <p>{isFr ? "Bouton CSV et JSON en bas de chaque page « Sources & méthode ». Format stable, colonnes documentées dans le dépôt." : "CSV and JSON button at the bottom of each Sources & method page. Stable format, columns documented in the repo."}</p>
-              <Link href="/budget">{isFr ? "Exemple : export budget →" : "Example: budget export →"}</Link>
+          <div className="fx-engagements">
+            <div className="fx-engagement">
+              <h4>{isFr ? "Pas de contenu sponsorisé, pas de ligne politique" : "No sponsored content, no political line"}</h4>
+              <p>{isFr
+                ? "Aucun article, chiffre ou visualisation n'est sponsorisé. Les textes évitent les jugements sur les choix politiques et s'en tiennent à la donnée. Les financements que nous recevons sont publiés avec leur montant."
+                : "No article, figure or visualisation is sponsored. Texts avoid judgements on political choices and stick to the data. Any funding we receive is published with its amount."}</p>
             </div>
-            <div>
-              <div className="n">{isFr ? "02 · Code" : "02 · Code"}</div>
-              <h3>{isFr ? "Rejouer le pipeline" : "Replay the pipeline"}</h3>
-              <p>{isFr ? <>{`Les modèles dbt et scripts Python sont dans `}<code>pipeline/</code>. <code>dbt run</code>{` + `}<code>export_all.py</code>{` régénère les JSON.`}</> : <>{`dbt models and Python scripts are in `}<code>pipeline/</code>. <code>dbt run</code>{` + `}<code>export_all.py</code>{` regenerates the JSON.`}</>}</p>
-              <a href="https://github.com/Nuttux/open-public-data" target="_blank" rel="noopener noreferrer">
-                github.com/Nuttux/open-public-data ↗
-              </a>
+            <div className="fx-engagement">
+              <h4>{isFr ? "Code & données ouverts" : "Open code & data"}</h4>
+              <p>{isFr
+                ? <>Les pipelines (Python + dbt) sont sous licence MIT. Chaque chiffre peut être recalculé depuis un CSV source, et chaque page expose un export CSV/JSON. Code sur <a href="https://github.com/Nuttux/open-public-data" target="_blank" rel="noopener noreferrer">github.com/Nuttux/open-public-data ↗</a>.</>
+                : <>Pipelines (Python + dbt) are MIT-licensed. Every figure can be recalculated from a source CSV, and every page exposes a CSV/JSON export. Code at <a href="https://github.com/Nuttux/open-public-data" target="_blank" rel="noopener noreferrer">github.com/Nuttux/open-public-data ↗</a>.</>}</p>
             </div>
-            <div>
-              <div className="n">{isFr ? "03 · Données brutes" : "03 · Raw data"}</div>
-              <h3>{isFr ? "Remonter à la source" : "Go back to the source"}</h3>
-              <p>{isFr ? "Les datasets sources sont listés outil par outil plus haut. Le CSV de la Ville fait foi — ne rien nous croire sur parole." : "Source datasets are listed tool by tool above. The City's CSV is authoritative — don't take our word for it."}</p>
-              <a href="https://opendata.paris.fr" target="_blank" rel="noopener noreferrer">opendata.paris.fr ↗</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="corrections" className="fx-section">
-        <div className="fx-wrap">
-          <SectionHead
-            number="13"
-            kind={isFr ? "Corrections & changelog" : "Corrections & changelog"}
-            title={isFr ? <>Une erreur ? <em>On corrige.</em></> : <>A mistake? <em>We fix it.</em></>}
-            subtitle={isFr ? "Les corrections sont publiques, datées, consignées." : "Corrections are public, dated and recorded."}
-          />
-          <div className="fx-sources">
-            <div>
-              <div className="n">{isFr ? "Signaler" : "Report"}</div>
-              <h3>{isFr ? "Corriger un chiffre" : "Correct a figure"}</h3>
-              <p>{isFr ? "Par courriel ou ticket GitHub. Précisez la page, le chiffre contesté, et si possible la source officielle contradictoire." : "By email or GitHub issue. Specify the page, the disputed figure, and if possible the contradicting official source."}</p>
-              <a href="mailto:contact@franceopendata.org">contact@franceopendata.org ↗</a>
-            </div>
-            <div>
-              <div className="n">{isFr ? "Journal" : "Log"}</div>
-              <h3>{isFr ? "Changelog public" : "Public changelog"}</h3>
-              <p>{isFr ? "Historique des corrections — date, ampleur, chiffre avant / après — tenu dans le dépôt GitHub." : "History of corrections — date, scope, before/after figure — maintained in the GitHub repo."}</p>
-              <a href="https://github.com/Nuttux/open-public-data/commits/main" target="_blank" rel="noopener noreferrer">
-                {isFr ? "Voir les commits ↗" : "View commits ↗"}
-              </a>
-            </div>
-            <div>
-              <div className="n">{isFr ? "Règle" : "Rule"}</div>
-              <h3>{isFr ? "Jamais de chiffre supprimé" : "No figure ever deleted"}</h3>
-              <p>{isFr ? "On corrige en place, et on garde la trace. Un screenshot d'un ancien chiffre reste reliable à une entrée du changelog." : "We correct in place and keep a record. A screenshot of an old figure can be linked to a changelog entry."}</p>
-              <Link href="/contact">{isFr ? "Nous écrire →" : "Write to us →"}</Link>
+            <div className="fx-engagement">
+              <h4>{isFr ? "Corrections publiques, jamais de chiffre supprimé" : "Public corrections, no figure ever deleted"}</h4>
+              <p>{isFr
+                ? <>Erreur signalée = corrigée dans le code et consignée dans le changelog avec la date et l&apos;origine du signalement. On corrige en place et on garde la trace — pour que tout ancien screenshot reste traçable. <a href="https://github.com/Nuttux/open-public-data/commits/main" target="_blank" rel="noopener noreferrer">Voir les commits ↗</a></>
+                : <>Error reported = corrected in the code and recorded in the changelog with the date and source of the report. We correct in place and keep a record — so any old screenshot remains traceable. <a href="https://github.com/Nuttux/open-public-data/commits/main" target="_blank" rel="noopener noreferrer">View commits ↗</a></>}</p>
             </div>
           </div>
 
           <div style={{ marginTop: 32, display: "flex", gap: 10, flexWrap: "wrap" }}>
             <Button variant="primary" href="/contact">{isFr ? "Signaler une erreur" : "Report an error"}</Button>
+            <Button href="https://github.com/Nuttux/open-public-data">{isFr ? "Le code sur GitHub ↗" : "Code on GitHub ↗"}</Button>
             <Button href="/">{isFr ? "Retour à l'accueil" : "Back to home"}</Button>
           </div>
         </div>

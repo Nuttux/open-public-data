@@ -18,7 +18,7 @@ import type { QuiRecoitData } from "@/lib/fusion-data";
 import { slugifyLabel } from "@/lib/projet-utils";
 import { useT } from "@/lib/localeContext";
 
-type QuiRecoitIndex = { availableYears: number[] };
+type QuiRecoitIndex = { availableYears: number[]; previewYears?: number[] };
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
@@ -69,11 +69,22 @@ export default function QuiRecoitClient({
           <div className="fx-page-actions">
             <YearPicker
               years={idx.availableYears.slice().sort((a, b) => a - b)}
+              previewYears={idx.previewYears ?? []}
               current={d.year}
               basePath="/qui-recoit"
               label={t("fx.s.year_label")}
             />
           </div>
+          {(idx.previewYears ?? []).includes(d.year) && (
+            <div className="fx-preview-banner" role="note">
+              <span className="fx-preview-tag">Aperçu</span>
+              <span>
+                Données {d.year} extraites des délibérations du Conseil de Paris.
+                Non-consolidées (data.gouv publie la version officielle l&apos;année
+                suivante).
+              </span>
+            </div>
+          )}
         </div>
       </section>
 
@@ -94,11 +105,19 @@ export default function QuiRecoitClient({
               label={fill(t("fx.qr.s01.hero_label"), { year: d.year })}
               value={fmtBillions(d.total)}
               unit={t("fx.s.md_eur")}
-              delta={{
-                direction: dir,
-                value: `${fmtDec(Math.abs(d.deltaMontantPct), 1)} %`,
-                base: fill(t("fx.qr.s01.hero_base"), { year: String(d.previousYear) }),
-              }}
+              delta={
+                d.isPreview
+                  ? {
+                      direction: "flat",
+                      value: "partiel",
+                      base: `aperçu non consolidé`,
+                    }
+                  : {
+                      direction: dir,
+                      value: `${fmtDec(Math.abs(d.deltaMontantPct), 1)} %`,
+                      base: fill(t("fx.qr.s01.hero_base"), { year: String(d.previousYear) }),
+                    }
+              }
               caption={
                 <>
                   {t("fx.qr.s01.hero_cap.a")}
@@ -113,11 +132,13 @@ export default function QuiRecoitClient({
                 {
                   label: t("fx.qr.s01.kpi.versees"),
                   value: fmtInt(d.nbSubventions),
-                  delta: fill(t("fx.qr.s01.kpi.versees_delta"), {
-                    arrow,
-                    pct: fmtDec(Math.abs(d.deltaNbPct), 1),
-                    year: String(d.previousYear),
-                  }),
+                  delta: d.isPreview
+                    ? "extraction en cours"
+                    : fill(t("fx.qr.s01.kpi.versees_delta"), {
+                        arrow,
+                        pct: fmtDec(Math.abs(d.deltaNbPct), 1),
+                        year: String(d.previousYear),
+                      }),
                 },
                 {
                   label: t("fx.qr.s01.kpi.mediane"),
@@ -190,11 +211,22 @@ export default function QuiRecoitClient({
             points={d.yearsSummary.map((y) => ({
               year: y.year,
               value: y.total / 1_000_000_000,
-              type: "execute" as const,
+              type: y.preview ? ("vote" as const) : ("execute" as const),
             }))}
             activeYear={d.year}
+            activeBadge={(() => {
+              const active = d.yearsSummary.find((y) => y.year === d.year);
+              const label = active?.preview ? "voté" : "exéc.";
+              return `${d.year} ${label}`;
+            })()}
           />
-          {(() => {
+          {d.isPreview ? (
+            <div className="fx-movers-muted">
+              Comparaisons par bénéficiaire masquées : les données {d.year}
+              {" "}(délibérations du Conseil de Paris) ne couvrent pas encore
+              l&apos;année complète. Elles réapparaîtront au fil des sessions.
+            </div>
+          ) : (() => {
             const maxHausse = Math.max(1, ...d.movers.hausses.map((m) => Math.abs(m.delta)));
             const maxBaisse = Math.max(1, ...d.movers.baisses.map((m) => Math.abs(m.delta)));
             return (

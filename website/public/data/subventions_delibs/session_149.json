@@ -1986,12 +1986,13 @@
       "session_id": 149,
       "article_num": 1,
       "beneficiary": "Nos Rêves d'Enfants",
-      "siret": null,
+      "siret": "92451653700017",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Convention annuelle d'objectifs dans le cadre du Budget Participatif du 18ème arrondissement – édition 2023.",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DASCO 2",
@@ -3692,12 +3693,13 @@
       "session_id": 149,
       "article_num": 1,
       "beneficiary": "RELAIS 59",
-      "siret": null,
+      "siret": "32079817600022",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "l'attribution d'une subvention de fonctionnement",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DFPE 70",
@@ -3706,12 +3708,13 @@
       "session_id": 149,
       "article_num": 2,
       "beneficiary": "RELAIS 59",
-      "siret": null,
+      "siret": "32079817600022",
       "amount_eur": 73757.0,
       "amount_raw": "73 757",
       "motif": "Subvention de fonctionnement",
       "dossier": "2025",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DFPE 70",
@@ -3923,12 +3926,13 @@
       "session_id": 149,
       "article_num": 1,
       "beneficiary": "Maison de l'Europe de Paris",
-      "siret": null,
+      "siret": "40223515400018",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Centre de rencontres internationales.",
       "dossier": "2025",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DGRI 5",
@@ -4349,12 +4353,13 @@
       "session_id": 149,
       "article_num": 12,
       "beneficiary": "pour le Dialogue et l'Orientation Scolaire – ADOS",
-      "siret": null,
+      "siret": "37824819900036",
       "amount_eur": 71500.0,
       "amount_raw": "71 500",
       "motif": "Subvention de fonctionnement de l'Espace de Vie Sociale, accompagnement des familles et animation familiale, et prévention auprès des jeunes.",
       "dossier": "2025_04331",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSOL 9",
@@ -4390,12 +4395,13 @@
       "session_id": 149,
       "article_num": 15,
       "beneficiary": "Le Petit Ney",
-      "siret": null,
+      "siret": "40287922500033",
       "amount_eur": 18750.0,
       "amount_raw": "18750",
       "motif": "lui permettre d'assurer les actions suivantes: -Subventionautitredufonctionnementglobaldel’EspacedeVieSociale(DSOL):surlabase d’unmontantprévisionnelde25000€, estattribuéepourl’année2025unesubventionavec unepartfixede18750€ (2025_04850),correspondantà75%de25000€, verséeau1er seme",
       "dossier": "2025_04850",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSOL 9",
@@ -4554,12 +4560,13 @@
       "session_id": 149,
       "article_num": 1,
       "beneficiary": "AIRPARIF",
-      "siret": null,
+      "siret": "31646523600032",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "l’exercice 2025",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DTEC 2",
@@ -4597,12 +4604,13 @@
       "session_id": 149,
       "article_num": 1,
       "beneficiary": "Fédération française des Usagers de la Bicyclette (FUB)",
-      "siret": null,
+      "siret": "89165906200014",
       "amount_eur": 20000.0,
       "amount_raw": "20 000",
       "motif": "Subvention de fonctionnement et d'investissement pour les activités de l'association.",
       "dossier": "206333 / 2025_05906 / 2025_05907",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DVD 16",
@@ -4626,12 +4634,13 @@
       "session_id": 149,
       "article_num": 1,
       "beneficiary": "fondation Louis Lépine",
-      "siret": null,
+      "siret": "77566203400096",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "l’année 2025",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 PP 1",
@@ -4664,7 +4673,7 @@
       "_admin_source": "llm"
     }
   ],
-  "sirene_enriched_at": "2026-04-21T23:58:39",
+  "sirene_enriched_at": "2026-04-22T10:22:04",
   "llm_enriched_at": "2026-04-22T00:31:59",
   "llm_model": "claude-haiku-4-5",
   "llm_provider": "anthropic"
