@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T11:27:54.317620",
+  "generated_at": "2026-04-22T11:30:56.034754",
   "model": "gemini-3-flash-preview",
   "count": 780,
   "items": {
@@ -18063,7 +18063,401 @@
       "confiance": 0.5,
       "source_type": "claude_web",
       "enriched_at": "2026-04-22T11:27:54.317620"
+    },
+    "LYCEE TECHNOLOGIQUE JACQUES MONOD": {
+      "activite_verifiee": "Lycée polyvalent public Jacques Monod, 12 rue Victor Cousin Paris 5e. Formations générales, technologiques et professionnelles, notamment dans les filières sanitaires et sociales (école d'aide-soignante). Transfert prévu sur le Lycée Villon en septembre 2026.",
+      "perimetre_geographique": "Paris 5e",
+      "sources": [
+        "education.gouv.fr",
+        "lyceejacquesmonod.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:29:28.936106"
+    },
+    "D2L": {
+      "activite_verifiee": "D2L — Développement du Lien Local, association porteuse d'un atelier chantier d'insertion : travaux de peinture, électricité, plomberie, second œuvre du bâtiment et espaces verts pour bailleurs sociaux, associations et entreprises, avec accompagnement social et formation au titre d'Agent d'entretien du bâtiment.",
+      "perimetre_geographique": "Paris / Île-de-France",
+      "sources": [
+        "d2l-insertion.fr",
+        "facebook.com/d2linsertion"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:29:28.936106"
+    },
+    "COLLEGE ALBERTO GIACOMETTI": {
+      "activite_verifiee": "Collège public Alberto Giacometti, 7 rue du Cange Paris 14e. Établissement secondaire de l'académie de Paris avec section SEGPA.",
+      "perimetre_geographique": "Paris 14e",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:29:28.936106"
+    },
+    "VIF TRANSPORT LOGISTIQUE": {
+      "activite_verifiee": "VIF! Transport & Logistique, plateforme logistique d'insertion créée en 2016 au sein du groupe Croix-Rouge française (Croix-Rouge insertion). Siège à Pantin (93). Insère des publics éloignés de l'emploi sur les métiers cariste, magasinier, chauffeur ; gère notamment l'aide alimentaire FEAD et la collecte textile IdF de la Croix-Rouge.",
+      "perimetre_geographique": "Île-de-France (siège Pantin 93)",
+      "sources": [
+        "croix-rouge.fr",
+        "pappers.fr",
+        "insereco93.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:29:28.936106"
+    },
+    "QUEL UNIVERS INVENTER": {
+      "activite_verifiee": "Association culturelle et de spectacle Quel Univers Inventer, 43 rue des Bois Paris 19e (informations publiques détaillées limitées).",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        "fr.kompass.com",
+        "118000.fr"
+      ],
+      "confiance": 0.5,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:29:28.936106"
+    },
+    "CABANE A JEUX": {
+      "activite_verifiee": "Association Cabane à Jeux créée en 2011 par des professionnels de la ludothèque, gère la Ludothèque Denise Garon (8 square Dunois Paris 13e). Anime des espaces de jeu pour enfants, adolescents et familles.",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        "citizenkid.com",
+        "paris.fr",
+        "carenews.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:29:28.936106"
+    },
+    "FEDER FRANCAISE GYMNASTIQUE": {
+      "activite_verifiee": "Fédération Française de Gymnastique (FFGym), association loi 1901 reconnue d'utilité publique, fédération délégataire sous tutelle du ministère des Sports. Siège : 7 ter cour des Petites Écuries Paris 10e. Anime les clubs affiliés et redistribue des subventions territoriales (Agence nationale du Sport).",
+      "perimetre_geographique": "France (siège Paris 10e)",
+      "sources": [
+        "ffgym.fr",
+        "sports.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:29:28.936106"
+    },
+    "DIAGNOSTIC ET TRAJECTOIRES": {
+      "activite_verifiee": "Association Diagnostic et Trajectoires (SIREN 797776630), active depuis 2013, siège 3 rue Meynadier Paris 19e. Étudie les populations vivant en habitat informel (bidonvilles, squats) — notamment migrants d'Europe de l'Est — et appuie les politiques publiques de résorption et d'insertion sociale.",
+      "perimetre_geographique": "Paris / Île-de-France",
+      "sources": [
+        "societe.com",
+        "pappers.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:29:28.936106"
+    },
+    "CTRE NAL DRAMAT CONTEMP THEAT OUV": {
+      "activite_verifiee": "Théâtre Ouvert — Centre National des Dramaturgies Contemporaines, fondé en 1971 par Lucien et Micheline Attoun au Festival d'Avignon. Premier centre national de création dramatique dédié aux écritures contemporaines. Installé au 159 avenue Gambetta Paris 20e depuis 2020.",
+      "perimetre_geographique": "Paris 20e",
+      "sources": [
+        "theatre-ouvert.com",
+        "fr.wikipedia.org/wiki/Théâtre_Ouvert",
+        "artcena.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:29:28.936106"
+    },
+    "GROUPE RECHERCHE ECHANGES TECHNOLOG": {
+      "activite_verifiee": "GRET — Groupe de Recherche et d'Échanges Technologiques, ONG internationale de solidarité créée en 1976. ~700 professionnels, ~200 projets dans 26 pays (Afrique, Asie) sur l'accès aux services essentiels, l'agriculture, la microfinance. Siège : 45 bis avenue de la Belle Gabrielle, Nogent-sur-Marne (94).",
+      "perimetre_geographique": "International (siège Nogent-sur-Marne)",
+      "sources": [
+        "gret.org",
+        "fr.wikipedia.org/wiki/Gret_(association)",
+        "annuaire-entreprises.data.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:29:28.936106"
+    },
+    "ENTOURAGE": {
+      "activite_verifiee": "Association Entourage, créée en 2014, siège à Paris. Recrée du lien social entre habitants et personnes sans-abri via 3 programmes : Entourage Local (appli de voisinage), Entourage Pro (réseau solidaire pour l'emploi) et Entourage Sport (re-mobilisation par le sport).",
+      "perimetre_geographique": "France (Paris)",
+      "sources": [
+        "entourage.social",
+        "jeveuxaider.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:29:28.936106"
+    },
+    "PARRAINS PAR MILLE": {
+      "activite_verifiee": "Parrains Par Mille (PPM), association créée en 1990 spécialisée dans le parrainage de proximité d'enfants et jeunes isolés (vivant en famille ou accompagnés par l'ASE, dont mineurs non accompagnés). PPM75 (Paris) est une délégation départementale depuis 2022. ~1 400 enfants suivis en 2024.",
+      "perimetre_geographique": "Paris / France",
+      "sources": [
+        "ppm-asso.org",
+        "jemengage.paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:29:28.936106"
+    },
+    "ASSOCIATION PARRAINS PAR MILLE": {
+      "activite_verifiee": "Parrains Par Mille (PPM), association créée en 1990 spécialisée dans le parrainage de proximité d'enfants et jeunes isolés (vivant en famille ou accompagnés par l'ASE, dont mineurs non accompagnés). PPM75 (Paris) est une délégation départementale depuis 2022. ~1 400 enfants suivis en 2024.",
+      "perimetre_geographique": "Paris / France",
+      "sources": [
+        "ppm-asso.org",
+        "jemengage.paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:29:28.936106"
+    },
+    "ASS PARRAINS PAR MILLE": {
+      "activite_verifiee": "Parrains Par Mille (PPM), association créée en 1990 spécialisée dans le parrainage de proximité d'enfants et jeunes isolés (vivant en famille ou accompagnés par l'ASE, dont mineurs non accompagnés). PPM75 (Paris) est une délégation départementale depuis 2022. ~1 400 enfants suivis en 2024.",
+      "perimetre_geographique": "Paris / France",
+      "sources": [
+        "ppm-asso.org",
+        "jemengage.paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:29:28.936106"
+    },
+    "ASSOCIATION LES ENFANCES": {
+      "activite_verifiee": "Association Les Enfances, crèche parentale / structure d'accueil de la petite enfance, 33 rue Boucry Paris 18e. Accueille des enfants de familles diverses, dont enfants et salariés sourds ou malentendants (initiation à la LSF), ancrée dans la vie du quartier.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        "acepprif.org",
+        "pagesjaunes.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:29:28.936106"
+    },
+    "ASSOCIATION DEDALE": {
+      "activite_verifiee": "Dédale — agence européenne dédiée à la culture, aux nouvelles technologies et à l'innovation sociale. Porte le festival Emergences, le d-lab (accompagnement et résidences d'artistes), le Living Lab SmartCity Paris Sud et divers programmes de recherche (Future Heritage, Playgreen). Soutenue par la Commission européenne, le ministère de la Culture, la région IdF et la Ville de Paris.",
+      "perimetre_geographique": "Paris / Europe",
+      "sources": [
+        "dedale.info",
+        "reseau-dedale.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:29:28.936106"
+    },
+    "CHANTIER ECOLE ILE DE FRANCE": {
+      "activite_verifiee": "CHANTIER école Île-de-France, délégation IdF du réseau national CHANTIER école (créé en 2001). Réseau d'acteurs de l'Insertion par l'Activité Économique (IAE) : 70 structures portant des Ateliers et Chantiers d'Insertion (ACI). Professionnalisation (formation ETAIE), représentation institutionnelle.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        "regions.chantierecole.org/idf",
+        "chantierecole.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:29:28.936106"
+    },
+    "OFFICE CENTR COOPERAT ECOLE PARIS": {
+      "activite_verifiee": "OCCE — Office Central de la Coopération à l'École, association loi 1901 reconnue d'utilité publique depuis 1968 (créée en 1928). Siège fédéral 101 bis rue du Ranelagh Paris 16e. Appuie 45 000 coopératives et associations scolaires, 102 associations départementales, 5 millions d'élèves et éducateurs membres.",
+      "perimetre_geographique": "France (siège Paris 16e)",
+      "sources": [
+        "occe.coop",
+        "cnajep.asso.fr",
+        "annuaire-entreprises.data.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:30:56.034754"
+    },
+    "PASS W": {
+      "activite_verifiee": "Programme / dispositif municipal d'aide aux familles parisiennes (cartes et pass de la Ville de Paris — Paris Pass Familles, carte famille monoparentale, etc.).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "paris.fr",
+        "unccas.org"
+      ],
+      "confiance": 0.5,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:30:56.034754"
+    },
+    "CENTRE FORMATION FOOTBALL PARIS": {
+      "activite_verifiee": "Centre de formation de football basé à Paris ou en Île-de-France (PSG Campus Saint-Germain-en-Laye / Paris FC à Orly). Former et faire progresser les jeunes footballeurs U11-U19.",
+      "perimetre_geographique": "Paris / Île-de-France",
+      "sources": [
+        "psg.fr",
+        "parisfc.fr",
+        "fr.wikipedia.org/wiki/Centre_de_formation_du_Paris_Saint-Germain_Football_Club"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:30:56.034754"
+    },
+    "FONDAT ABBE PIERRE LOGEMENT DEFAVOR": {
+      "activite_verifiee": "Fondation pour le Logement des Défavorisés (ex-Fondation Abbé-Pierre), reconnue d'utilité publique en 1992. Siège 3/5 rue de Romainville Paris 19e. Finance la construction de logements très sociaux, lutte contre le mal-logement, soutient ~900 projets associatifs/an.",
+      "perimetre_geographique": "France (siège Paris 19e)",
+      "sources": [
+        "fondation-abbe-pierre.fr",
+        "fr.wikipedia.org/wiki/Fondation_pour_le_Logement_des_défavorisés"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:30:56.034754"
+    },
+    "ATHEVAINS": {
+      "activite_verifiee": "Compagnie Les Athévains / Artistic Athévains, dirigée par Anne-Marie Lazarini et Dominique Bourde. Exploite le Théâtre Artistic (Paris 11e) depuis 1979. Programmation de textes classiques peu connus, créations contemporaines, opéras de poche.",
+      "perimetre_geographique": "Paris 11e",
+      "sources": [
+        "artistictheatre.com",
+        "paris.fr",
+        "artcena.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:30:56.034754"
+    },
+    "RACING MULTI ATHLON": {
+      "activite_verifiee": "Racing Multi Athlon (RMA), club omnisports parisien fondé en 2011 à partir de la section pentathlon moderne du Lagardère Paris Racing. Plus de 850 membres répartis en 4 sections (pentathlon moderne, triathlon, athlétisme, escrime).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "rma-paris.fr",
+        "rma-triathlon.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:30:56.034754"
+    },
+    "CTE ORG CHAMP MONDE HANDBALL MAS 20": {
+      "activite_verifiee": "Comité d'Organisation du Championnat du Monde de Handball 2017 (France, janvier 2017), association loi 1901, siège à Boulogne-Billancourt (92). Structure temporaire présidée par Joël Delplanque (président de la FFHandball) pour organiser la 25e édition dans 8 villes dont Paris.",
+      "perimetre_geographique": "France (Paris + 7 villes)",
+      "sources": [
+        "francehandball2017.com",
+        "fr.wikipedia.org/wiki/Championnat_du_monde_masculin_de_handball_2017"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:30:56.034754"
+    },
+    "FAB CITY GRAND PARIS": {
+      "activite_verifiee": "Fab City Grand Paris, association consortium local du mouvement Fab City (initié à Barcelone en 2011). Réseau d'une trentaine d'acteurs parisiens (fablabs, makers, architectes, fermes urbaines) engagés dans la relocalisation de la production et l'économie circulaire. Porte le Fab City Hub Paris et des formations en fabrication numérique.",
+      "perimetre_geographique": "Paris / Grand Paris",
+      "sources": [
+        "fabcity.paris",
+        "medium.com/fab-city-grand-paris"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:30:56.034754"
+    },
+    "FONDATION D ENTREPRISE P S G": {
+      "activite_verifiee": "Fondation Paris Saint-Germain, fondation d'entreprise du club PSG créée en 2000 (première fondation d'un club français). Accompagne l'insertion sociale et professionnelle des jeunes en difficulté, organise des activités éducatives et sportives pour les enfants des quartiers défavorisés (~400 opérations/an, 18-20 000 enfants).",
+      "perimetre_geographique": "France (Paris et IdF)",
+      "sources": [
+        "foundation.psg.fr",
+        "psg.fr/en/psg-for-communities"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:30:56.034754"
+    },
+    "ASSOCIATION LOISIRS PLURIEL DE PARI": {
+      "activite_verifiee": "Loisirs Pluriel, association fondée en 1992 par des parents d'enfants en situation de handicap. Centres de loisirs et espaces jeunes inclusifs accueillant à parité enfants valides et en situation de handicap (3-18 ans). Réseau de 31 centres en France dont plusieurs à Paris (6e, 13e, 19e).",
+      "perimetre_geographique": "France (Paris : 6e, 13e, 19e)",
+      "sources": [
+        "loisirs-pluriel.com",
+        "handicap.paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:30:56.034754"
+    },
+    "LOISIRS PLURIEL 19EME": {
+      "activite_verifiee": "Loisirs Pluriel, association fondée en 1992 par des parents d'enfants en situation de handicap. Centres de loisirs et espaces jeunes inclusifs accueillant à parité enfants valides et en situation de handicap (3-18 ans). Réseau de 31 centres en France dont plusieurs à Paris (6e, 13e, 19e).",
+      "perimetre_geographique": "France (Paris : 6e, 13e, 19e)",
+      "sources": [
+        "loisirs-pluriel.com",
+        "handicap.paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:30:56.034754"
+    },
+    "LOISIRS PLURIEL DE PARIS 6": {
+      "activite_verifiee": "Loisirs Pluriel, association fondée en 1992 par des parents d'enfants en situation de handicap. Centres de loisirs et espaces jeunes inclusifs accueillant à parité enfants valides et en situation de handicap (3-18 ans). Réseau de 31 centres en France dont plusieurs à Paris (6e, 13e, 19e).",
+      "perimetre_geographique": "France (Paris : 6e, 13e, 19e)",
+      "sources": [
+        "loisirs-pluriel.com",
+        "handicap.paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:30:56.034754"
+    },
+    "ASSOCIATION LOISIRS PLURIEL DE PARIS 6": {
+      "activite_verifiee": "Loisirs Pluriel, association fondée en 1992 par des parents d'enfants en situation de handicap. Centres de loisirs et espaces jeunes inclusifs accueillant à parité enfants valides et en situation de handicap (3-18 ans). Réseau de 31 centres en France dont plusieurs à Paris (6e, 13e, 19e).",
+      "perimetre_geographique": "France (Paris : 6e, 13e, 19e)",
+      "sources": [
+        "loisirs-pluriel.com",
+        "handicap.paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:30:56.034754"
+    },
+    "PARIS AIDE AUX VICTIMES": {
+      "activite_verifiee": "Paris Aide aux Victimes (PAV / PAV75), association créée en 1987 agréée par le ministère de la Justice. Écoute, accueil, information sur les droits, soutien psychologique et juridique aux victimes d'infractions pénales, catastrophes et accidents. Siège 12 rue Charles Fourier Paris 13e ; antennes Paris 17e et 20e.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "pav75.fr",
+        "justice.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:30:56.034754"
+    },
+    "ASSOCIATION PARIS AIDE AUX VICTIMES": {
+      "activite_verifiee": "Paris Aide aux Victimes (PAV / PAV75), association créée en 1987 agréée par le ministère de la Justice. Écoute, accueil, information sur les droits, soutien psychologique et juridique aux victimes d'infractions pénales, catastrophes et accidents. Siège 12 rue Charles Fourier Paris 13e ; antennes Paris 17e et 20e.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "pav75.fr",
+        "justice.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:30:56.034754"
+    },
+    "KELBONGOO": {
+      "activite_verifiee": "Kelbongoo, entreprise de l'économie sociale et solidaire (agrément ESUS) créée en 2013 par Léa Barbier et Richard Fielding. Distribue en circuit court des produits fermiers locaux à prix accessibles dans les quartiers mixtes et populaires ; 4 boutiques à Paris (10e, 19e, deux dans le 20e) et points relais en Seine-Saint-Denis.",
+      "perimetre_geographique": "Paris / Île-de-France",
+      "sources": [
+        "mairie10.paris.fr",
+        "business.ladn.eu"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:30:56.034754"
+    },
+    "FOOD DE RUE FOOD2RUE": {
+      "activite_verifiee": "Food2Rue — Food de rue, association créée en 2014 (SIREN 810505180). Insertion de femmes éloignées de l'emploi vers les métiers de l'alimentation via les chantiers La Panaméenne (Paris 14e) et Labelle Gabrielle. Coopérative d'activité pour la création de micro-entreprises de street food. (Liquidation judiciaire engagée en octobre 2024.)",
+      "perimetre_geographique": "Paris 12e / 14e",
+      "sources": [
+        "food2rue.org",
+        "capville.fr",
+        "pappers.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:30:56.034754"
+    },
+    "MAISON BAKHITA": {
+      "activite_verifiee": "Maison Bakhita, association du diocèse de Paris inaugurée le 25 septembre 2021 au 5 ter rue Jean Cottin (Paris 18e). Centre ressource d'accompagnement des personnes exilées : formation des bénévoles, ateliers interculturels, parcours d'insertion professionnelle, sociale et culturelle.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        "maisonbakhita.fr",
+        "dioceseparis.fr",
+        "cnews.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:30:56.034754"
     }
   },
-  "total": 814
+  "total": 849
 }
