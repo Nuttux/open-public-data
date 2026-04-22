@@ -160,7 +160,9 @@ export default function StressTest({ dette, capaciteBaseline, tauxBaseline, year
   const [recettesDelta, setRecettesDelta] = useState(0); // %
   const [investMult, setInvestMult] = useState(1);
 
-  // Hydrate depuis l'URL au mount (Next.js : searchParams arrive côté client).
+  // Hydrate depuis l'URL au mount UNIQUEMENT — ne pas réagir aux changements
+  // ultérieurs de searchParams (qu'on déclenche nous-mêmes via router.replace
+  // ci-dessous, sinon ça créerait une boucle d'annulation).
   useEffect(() => {
     if (!urlSync || hydratedRef.current) return;
     const parse = (v: string | null, fallback: number) => {
@@ -172,12 +174,18 @@ export default function StressTest({ dette, capaciteBaseline, tauxBaseline, year
     setRecettesDelta(parse(searchParams.get("r"), 0));
     setInvestMult(parse(searchParams.get("i"), 1));
     hydratedRef.current = true;
-  }, [urlSync, searchParams, tauxBaseline]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Pousse l'URL à chaque changement (seulement après hydration + en mode sync).
+  // On lit le search courant via window.location pour ne pas remettre
+  // searchParams dans les deps — ça rentrait dans une boucle qui réinitialisait
+  // les paramètres avant que le state post-hydration ne soit propagé.
   useEffect(() => {
     if (!urlSync || !hydratedRef.current) return;
-    const params = new URLSearchParams(Array.from(searchParams.entries()));
+    const current =
+      typeof window !== "undefined" ? window.location.search : "";
+    const params = new URLSearchParams(current);
     const isBaseline =
       Math.abs(taux - tauxBaseline) < 0.01 &&
       Math.abs(recettesDelta) < 0.5 &&
@@ -193,7 +201,7 @@ export default function StressTest({ dette, capaciteBaseline, tauxBaseline, year
     }
     const q = params.toString();
     router.replace(q ? `${pathname}?${q}` : pathname, { scroll: false });
-  }, [taux, recettesDelta, investMult, urlSync, router, pathname, searchParams, tauxBaseline]);
+  }, [taux, recettesDelta, investMult, urlSync, router, pathname, tauxBaseline]);
 
   const result = useMemo(() => computeCapacite({
     taux,

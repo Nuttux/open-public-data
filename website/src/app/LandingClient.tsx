@@ -12,12 +12,34 @@ import BarRow from "@/components/fusion/BarRow";
 import TileCard from "@/components/fusion/TileCard";
 import BrandMark from "@/components/fusion/BrandMark";
 import HeroBg from "@/components/fusion/HeroBg";
-import { fmtDec, fmtInt, fmtBillions } from "@/lib/fmt";
+import { fmtDec, fmtInt, fmtBillions, fmtMillions } from "@/lib/fmt";
 import type { LandingStats } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 
 type Props = { stats: LandingStats };
+
+function cleanTopName(n: string): string {
+  return n.replace(/\s{2,}/g, " ").trim();
+}
+
+function TopListPreview({
+  items,
+}: {
+  items: { name: string; amount: number }[];
+}) {
+  return (
+    <div className="fx-tile-top3">
+      {items.map((it, i) => (
+        <div className="fx-tile-top3-row" key={`${i}-${it.name}`}>
+          <span className="fx-tile-top3-rank">{String(i + 1).padStart(2, "0")}</span>
+          <span className="fx-tile-top3-name" title={it.name}>{cleanTopName(it.name)}</span>
+          <span className="fx-tile-top3-amt tnum">{fmtMillions(it.amount)} M €</span>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function LandingClient({ stats }: Props) {
   const t = useT();
@@ -177,17 +199,7 @@ export default function LandingClient({ stats }: Props) {
               kind={t("fx.land.tile.04.kind")}
               title={t("fx.land.tile.04.title")}
               description={t("fx.land.tile.04.desc")}
-              preview={
-                <svg viewBox="0 0 200 100">
-                  {[14, 28, 42, 56, 70, 84].map((y, i) => (
-                    <g key={y}>
-                      <rect x="10" y={y - 1} width="4" height="4" className="fill-muted" fill="#9099a6" />
-                      <rect x="20" y={y - 1} width={90 - i * 12} height="6" className="fill" fill="#0a0a0a" />
-                      <rect x="160" y={y - 1} width="30" height="6" className="fill-muted" fill="#9099a6" />
-                    </g>
-                  ))}
-                </svg>
-              }
+              preview={<TopListPreview items={stats.topBeneficiaires} />}
               kpi="312"
               kpiUnit="M €"
               kpiDelta={<>↑ <b>3,3 %</b> {t("fx.land.tile.vs")}2023</>}
@@ -268,20 +280,28 @@ export default function LandingClient({ stats }: Props) {
               kind={t("fx.land.tile.stress.kind")}
               title={t("fx.land.tile.stress.title")}
               description={t("fx.land.tile.stress.desc")}
-              preview={
-                <svg viewBox="0 0 200 100">
-                  <line x1="10" y1="80" x2="190" y2="80" stroke="#9099a6" strokeWidth="1" />
-                  <line x1="10" y1="80" x2="190" y2="80" stroke="#0a0a0a" strokeWidth="2" strokeDasharray="1" strokeDashoffset="0" />
-                  <rect x="10" y="70" width="95" height="12" fill="#0a0a0a" opacity="0.15" />
-                  <rect x="105" y="70" width="85" height="12" fill="#e11d1d" opacity="0.22" />
-                  <line x1="108" y1="62" x2="108" y2="90" stroke="#a67638" strokeWidth="2" />
-                  <line x1="60" y1="58" x2="60" y2="94" stroke="#0a0a0a" strokeWidth="3" />
-                  <circle cx="60" cy="52" r="4" fill="#0a0a0a" />
-                  <text x="60" y="42" textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#0a0a0a" fontWeight="700">10,8</text>
-                  <text x="108" y="42" textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="8" fill="#a67638">seuil 12</text>
-                </svg>
-              }
-              kpi="10,8"
+              preview={(() => {
+                const cap = stats.capaciteDesendettement;
+                // Jauge : 0 → x=10, seuil 12 → x=108, critique 20 → x=152, max 30 → x=190
+                const toX = (yr: number) => 10 + Math.min(yr, 30) * 6;
+                const cursorX = toX(cap);
+                return (
+                  <svg viewBox="0 0 200 100">
+                    <line x1="10" y1="80" x2="190" y2="80" stroke="#9099a6" strokeWidth="1" />
+                    <rect x="10" y="70" width="62" height="12" fill="#0a0a0a" opacity="0.12" />
+                    <rect x="72" y="70" width="48" height="12" fill="#a67638" opacity="0.28" />
+                    <rect x="120" y="70" width="60" height="12" fill="#e11d1d" opacity="0.28" />
+                    <line x1={toX(12)} y1="62" x2={toX(12)} y2="90" stroke="#a67638" strokeWidth="2" />
+                    <line x1={cursorX} y1="58" x2={cursorX} y2="94" stroke="#0a0a0a" strokeWidth="3" />
+                    <circle cx={cursorX} cy="52" r="4" fill="#0a0a0a" />
+                    <text x={cursorX} y="42" textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#0a0a0a" fontWeight="700">
+                      {fmtDec(cap, 1)}
+                    </text>
+                    <text x={toX(12)} y="42" textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="8" fill="#a67638">seuil 12</text>
+                  </svg>
+                );
+              })()}
+              kpi={fmtDec(stats.capaciteDesendettement, 1)}
               kpiUnit="ans"
               kpiDelta={<>{t("fx.land.tile.stress.delta")}</>}
             />
@@ -323,26 +343,7 @@ export default function LandingClient({ stats }: Props) {
               kind={t("fx.land.tile.08.kind")}
               title={t("fx.land.tile.08.title")}
               description={t("fx.land.tile.08.desc")}
-              preview={
-                <svg viewBox="0 0 200 100">
-                  <line x1="10" y1="88" x2="190" y2="88" className="stroke-muted" stroke="#9099a6" strokeWidth="1" />
-                  {[62, 52, 44, 38, 34, 30, 27, 24, 21, 19, 17, 15, 13, 12, 11].map((h, i) => {
-                    const x = 12 + i * 12;
-                    const isTop = i === 0;
-                    return (
-                      <rect
-                        key={i}
-                        x={x}
-                        y={88 - h}
-                        width="9"
-                        height={h}
-                        className={isTop ? "fill-sig" : "fill"}
-                        fill={isTop ? "#5f6672" : "#0a0a0a"}
-                      />
-                    );
-                  })}
-                </svg>
-              }
+              preview={<TopListPreview items={stats.topFournisseurs} />}
               kpi="2,5"
               kpiUnit="Md €"
               kpiDelta={

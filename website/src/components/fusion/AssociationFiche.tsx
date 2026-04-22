@@ -268,7 +268,7 @@ export default function AssociationFiche({
                             )}
                             <div style={{ marginTop: 4 }}>
                               <a
-                                href={`https://opendata.paris.fr/explore/dataset/subventions-associations-votees/table/?refine.annee_budget=${l.year}&refine.nom_beneficiaire=${encodeURIComponent(asso.name)}${l.direction ? `&refine.direction=${encodeURIComponent(l.direction)}` : ""}`}
+                                href={`https://opendata.paris.fr/explore/dataset/subventions-associations-votees-/table/?refine.annee_budget=${l.year}&refine.nom_beneficiaire=${encodeURIComponent(asso.name)}${l.direction ? `&refine.direction=${encodeURIComponent(l.direction)}` : ""}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
@@ -288,7 +288,7 @@ export default function AssociationFiche({
           <p className="fx-fiche-note" style={{ marginTop: 10 }}>
             {t("fx.fiche.asso.note")}{" "}
             <a
-              href={`https://opendata.paris.fr/explore/dataset/subventions-associations-votees/table/?refine.objet_du_dossier=&refine.nom_beneficiaire=${encodeURIComponent(asso.name)}`}
+              href={`https://opendata.paris.fr/explore/dataset/subventions-associations-votees-/table/?refine.objet_du_dossier=&refine.nom_beneficiaire=${encodeURIComponent(asso.name)}`}
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}

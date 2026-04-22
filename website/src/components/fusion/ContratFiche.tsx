@@ -233,7 +233,7 @@ export default function ContratFiche({
             <dt>{t("fx.fiche.contrat.opendata")}</dt>
             <dd>
               <a
-                href="https://opendata.paris.fr"
+                href="https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}

@@ -150,6 +150,9 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
             }))}
             formatValue={(n) => `${fmtInt(n)} ${t("fx.log.s02.unit_long")}`}
             unitLabel={t("fx.log.s02.unit_ops")}
+            hrefFor={(cAr) =>
+              `/logement-social/arrondissement/${cAr === 0 ? "paris-centre" : cAr}`
+            }
           />
         </div>
       </section>
@@ -159,7 +162,7 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
         <div className="fx-wrap">
           <SectionHead
             number="03"
-            kind={t("fx.log.s03.kind")}
+            kind={<Tip label={t("fx.log.bailleur.tip")}>{t("fx.log.s03.kind")}</Tip>}
             title={
               <>
                 {t("fx.log.s03.title.before")}
@@ -338,8 +341,12 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
               <div className="n">{t("fx.log.src.c1.n")}</div>
               <h3>{t("fx.log.src.c1.h")}</h3>
               <p>{t("fx.log.src.c1.p")}</p>
-              <a href="https://www.paris.fr/logement-social" target="_blank" rel="noopener noreferrer">
-                paris.fr ↗
+              <a
+                href="https://opendata.paris.fr/explore/dataset/logements-sociaux-finances-a-paris/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t("fx.s.opendata")}
               </a>
             </div>
             <div>

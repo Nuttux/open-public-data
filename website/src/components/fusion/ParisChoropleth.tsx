@@ -158,9 +158,7 @@ export default function ParisChoropleth({
                   onMouseLeave={() => setHovered(null)}
                   onClick={(e) => openArr(cAr, "map", e)}
                 >
-                  <title>
-                    {labelFor(cAr)} · {fmtEur(amount)} · {it?.count ?? 0} {unit} — {t("fx.choro.click_open")}
-                  </title>
+                  <title>{`${labelFor(cAr)} · ${fmtEur(amount)} · ${it?.count ?? 0} ${unit} — ${t("fx.choro.click_open")}`}</title>
                 </path>
               );
             })}

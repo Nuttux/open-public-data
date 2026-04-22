@@ -114,9 +114,13 @@ export default function MarchesPublicsClient({
             <KPIGrid
               cols={2}
               items={[
-                { label: t("fx.mp.s01.kpi.notifies"), value: fmtInt(d.nb), delta: String(d.year) },
                 {
-                  label: t("fx.mp.s01.kpi.titulaires"),
+                  label: <Tip label={t("fx.mp.s01.kpi.notifies.tip")}>{t("fx.mp.s01.kpi.notifies")}</Tip>,
+                  value: fmtInt(d.nb),
+                  delta: String(d.year),
+                },
+                {
+                  label: <Tip label={t("fx.mp.titulaire.tip")}>{t("fx.mp.s01.kpi.titulaires")}</Tip>,
                   value: fmtInt(d.nbTitulaires),
                   delta: t("fx.mp.s01.kpi.titulaires_delta"),
                 },
