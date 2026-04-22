@@ -38,6 +38,28 @@ type Props = {
   voteExec: VoteExecuteData;
 };
 
+// Mapping exact des sources utilisées par le pipeline (cf. pipeline/scripts/tools/extract_pdf_budget_vote.py).
+// Budget voté (BP) : dataset OpenData pour 2019, puis PDFs éditique à partir de 2020.
+// Budget exécuté (CA) : dataset OpenData M57 pour toutes les années.
+const BP_PDF_BY_YEAR: Record<number, string> = {
+  2020: "https://cdn.paris.fr/paris/2025/01/31/bp-2020-editique-bg-avec-est-q1et.pdf",
+  2021: "https://cdn.paris.fr/paris/2021/02/04/7afb2a3b598405ef955f947999fcdbd5.pdf",
+  2022: "https://cdn.paris.fr/paris/2022/02/17/1654e867ca0ef70cbbab53e821cd9dc0.pdf",
+  2023: "https://cdn.paris.fr/paris/2023/02/15/bp-2023-editique-bg_partie01-QLeA.pdf",
+  2024: "https://cdn.paris.fr/paris/2024/02/21/1-bp-2024-editique-premierepartie-bg-ZFnH.pdf",
+  2025: "https://cdn.paris.fr/paris/2025/01/17/bp-2025-editique-premiere-parite-bg-weCs.pdf",
+  2026: "https://cdn.paris.fr/paris/2026/01/21/bp-2026-editique-premiere-partie-bg-bxlu.pdf",
+};
+const BP_DATASET_URL = "https://opendata.paris.fr/explore/dataset/budgets-votes-principaux-a-partir-de-2019-m57-ville-departement/";
+const CA_DATASET_URL = "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/";
+
+function budgetSourceFor(year: number, isVoted: boolean): { url: string; kind: "pdf" | "dataset" } {
+  if (!isVoted) return { url: CA_DATASET_URL, kind: "dataset" };
+  const pdf = BP_PDF_BY_YEAR[year];
+  if (pdf) return { url: pdf, kind: "pdf" };
+  return { url: BP_DATASET_URL, kind: "dataset" };
+}
+
 export default function BudgetClient({ index, d, voteExec }: Props) {
   const t = useT();
   const { locale } = useLocale();
@@ -85,7 +107,13 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
           <p className="fx-page-lede">
             {t("fx.bud.lede.l1")}
             <br />
-            {t("fx.bud.lede.l2")}
+            {t("fx.bud.lede.l2.prefix")}
+            <Tip label={t("fx.bud.lede.l2.ca.tip")}>{t("fx.bud.lede.l2.ca")}</Tip>
+            {t("fx.bud.lede.l2.sep1")}
+            <Tip label={t("fx.bud.s06.c1.m57.tip")}>M57</Tip>
+            {t("fx.bud.lede.l2.mid")}
+            <Tip label={t("fx.bud.lede.l2.delib.tip")}>{t("fx.bud.lede.l2.delib")}</Tip>
+            {t("fx.bud.lede.l2.suffix")}
           </p>
           <div className="fx-page-actions">
             <YearPicker
@@ -151,23 +179,40 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
                 base: fill("fx.bud.s01.hero.base", { year: d.previousYear }),
               }}
               caption={
-                <>
-                  {isVoted ? t("fx.bud.s01.hero.cap_voted") : t("fx.bud.s01.hero.cap_exec")}
-                </>
+                isVoted ? (
+                  <>
+                    {t("fx.bud.s01.hero.cap_voted.prefix")}
+                    <Tip label={t("fx.bud.s01.hero.cap_voted.voted.tip")}>{t("fx.bud.s01.hero.cap_voted.voted")}</Tip>
+                    {t("fx.bud.s01.hero.cap_voted.mid")}
+                    <Tip label={t("fx.bud.s01.hero.cap_voted.bp.tip")}>{t("fx.bud.s01.hero.cap_voted.bp")}</Tip>
+                    {t("fx.bud.s01.hero.cap_voted.suffix")}
+                  </>
+                ) : (
+                  <>
+                    {t("fx.bud.s01.hero.cap_exec.prefix")}
+                    <Tip label={t("fx.bud.s01.hero.cap_exec.exec.tip")}>{t("fx.bud.s01.hero.cap_exec.exec")}</Tip>
+                    {t("fx.bud.s01.hero.cap_exec.mid")}
+                  </>
+                )
               }
             />
             <KPIGrid
               cols={3}
               items={[
                 {
-                  label: t("fx.bud.s01.kpi.per_hab"),
+                  label: <Tip label={t("fx.bud.s01.kpi.per_hab.tip")}>{t("fx.bud.s01.kpi.per_hab")}</Tip>,
                   value: fmtInt(d.depenses / 2_133_111),
                   unit: "€",
                   delta: fill("fx.bud.s01.kpi.per_hab.delta", { pop: "2,13 M" }),
                 },
-                { label: t("fx.bud.s01.kpi.recettes"), value: fmtBillions(d.recettes), unit: "Md €", delta: isVoted ? t("fx.bud.s01.kpi.voted") : t("fx.bud.s01.kpi.executed") },
                 {
-                  label: t("fx.bud.s01.kpi.solde"),
+                  label: <Tip label={t("fx.bud.s01.kpi.recettes.tip")}>{t("fx.bud.s01.kpi.recettes")}</Tip>,
+                  value: fmtBillions(d.recettes),
+                  unit: "Md €",
+                  delta: isVoted ? t("fx.bud.s01.kpi.voted") : t("fx.bud.s01.kpi.executed"),
+                },
+                {
+                  label: <Tip label={t("fx.bud.s01.kpi.solde.tip")}>{t("fx.bud.s01.kpi.solde")}</Tip>,
                   value: (d.solde >= 0 ? "+ " : "− ") + fmtMillions(Math.abs(d.solde)),
                   unit: "M €",
                   delta: d.solde < 0 ? t("fx.bud.s01.kpi.need") : t("fx.bud.s01.kpi.excess"),
@@ -417,10 +462,18 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
                 <KPIGrid
                   cols={2}
                   items={[
-                    { label: t("fx.bud.s05.kpi.voted"), value: fmtBillions(veRow?.voted ?? 0), unit: "Md €" },
-                    { label: t("fx.bud.s05.kpi.executed"), value: fmtBillions(veRow?.executed ?? 0), unit: "Md €" },
                     {
-                      label: t("fx.bud.s05.kpi.gap"),
+                      label: <Tip label={t("fx.bud.s05.kpi.voted.tip")}>{t("fx.bud.s05.kpi.voted")}</Tip>,
+                      value: fmtBillions(veRow?.voted ?? 0),
+                      unit: "Md €",
+                    },
+                    {
+                      label: <Tip label={t("fx.bud.s05.kpi.executed.tip")}>{t("fx.bud.s05.kpi.executed")}</Tip>,
+                      value: fmtBillions(veRow?.executed ?? 0),
+                      unit: "Md €",
+                    },
+                    {
+                      label: <Tip label={t("fx.bud.s05.kpi.gap.tip")}>{t("fx.bud.s05.kpi.gap")}</Tip>,
                       value:
                         (veRow && veRow.executed != null
                           ? (veRow.executed - veRow.voted >= 0 ? "+ " : "− ") +
@@ -429,7 +482,7 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
                       unit: "M €",
                     },
                     {
-                      label: t("fx.bud.s05.kpi.status"),
+                      label: <Tip label={t("fx.bud.s05.kpi.status.tip")}>{t("fx.bud.s05.kpi.status")}</Tip>,
                       value: (veRow?.tauxGlobal ?? 0) >= 95 ? t("fx.bud.s05.kpi.status.exec") : t("fx.bud.s05.kpi.status.sous"),
                       delta: fill("fx.bud.s05.kpi.status.delta", { pct: fmtDec(veRow?.tauxGlobal ?? 0, 1) }),
                     },
@@ -493,15 +546,14 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
                   ? fill("fx.bud.s06.c1.p.voted", { prev: d.year - 1, next: d.year + 1 })
                   : t("fx.bud.s06.c1.p.exec")}
               </p>
-              <a
-                href={isVoted
-                  ? "https://opendata.paris.fr/explore/dataset/budgets-votes-principaux-a-partir-de-2019-m57-ville-departement/"
-                  : "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {t("fx.bud.s06.c1.link")}
-              </a>
+              {(() => {
+                const src = budgetSourceFor(d.year, isVoted);
+                return (
+                  <a href={src.url} target="_blank" rel="noopener noreferrer">
+                    {src.kind === "pdf" ? t("fx.s.pdf_annexe") : t("fx.bud.s06.c1.link")}
+                  </a>
+                );
+              })()}
             </div>
             <div>
               <div className="n">{t("fx.bud.s06.c2.n")}</div>

@@ -174,17 +174,17 @@ export default function InvestissementsClient({ d }: { d: InvestissementsData })
               cols={2}
               items={[
                 {
-                  label: t("fx.inv.s02.kpi.projets"),
+                  label: <Tip label={t("fx.inv.s02.kpi.projets.tip")}>{t("fx.inv.s02.kpi.projets")}</Tip>,
                   value: fmtInt(d.nbProjets),
                   delta: t("fx.inv.s02.kpi.projets_delta"),
                 },
                 {
-                  label: t("fx.inv.s02.kpi.geo"),
+                  label: <Tip label={t("fx.inv.s02.kpi.geo.tip")}>{t("fx.inv.s02.kpi.geo")}</Tip>,
                   value: `${fmtDec(d.pctGeo, 0)} %`,
                   delta: fill(t("fx.inv.s02.kpi.geo_delta"), { n: fmtInt(d.nbGeo) }),
                 },
                 {
-                  label: t("fx.inv.s02.kpi.top_chap"),
+                  label: <Tip label={t("fx.inv.s02.kpi.top_chap.tip")}>{t("fx.inv.s02.kpi.top_chap")}</Tip>,
                   value: trL(d.byChapitre[0]?.label) || "—",
                   delta: d.byChapitre[0] ? fmtMillions(d.byChapitre[0].amount) + " M €" : "—",
                 },

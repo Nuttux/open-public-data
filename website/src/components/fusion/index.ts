@@ -36,6 +36,7 @@ export { default as AssociationFiche } from "./AssociationFiche";
 export { default as ProjetFiche } from "./ProjetFiche";
 export { default as ProjetThumb } from "./ProjetThumb";
 export { default as ArrondissementFiche } from "./ArrondissementFiche";
+export { default as ArrondissementLogementFiche } from "./ArrondissementLogementFiche";
 export { default as ChapitreFiche } from "./ChapitreFiche";
 export { ProjetPictogram, PROJET_PICTOGRAMS } from "./ProjetPictograms";
 export { default as WaffleTheme } from "./WaffleTheme";

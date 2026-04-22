@@ -10,6 +10,7 @@ import KPIGrid from "@/components/fusion/KPIGrid";
 import TileCard from "@/components/fusion/TileCard";
 import YearPicker from "@/components/fusion/YearPicker";
 import ExportRow from "@/components/fusion/ExportRow";
+import Tip from "@/components/fusion/Tip";
 import BudgetTimeline from "@/components/fusion/BudgetTimeline";
 import StackedBarTheme from "@/components/fusion/StackedBarTheme";
 import QuiRecoitExplorer from "./QuiRecoitExplorer";
@@ -130,7 +131,7 @@ export default function QuiRecoitClient({
               cols={2}
               items={[
                 {
-                  label: t("fx.qr.s01.kpi.versees"),
+                  label: <Tip label={t("fx.qr.s01.kpi.versees.tip")}>{t("fx.qr.s01.kpi.versees")}</Tip>,
                   value: fmtInt(d.nbSubventions),
                   delta: d.isPreview
                     ? "extraction en cours"
@@ -141,7 +142,7 @@ export default function QuiRecoitClient({
                       }),
                 },
                 {
-                  label: t("fx.qr.s01.kpi.mediane"),
+                  label: <Tip label={t("fx.qr.s01.kpi.mediane.tip")}>{t("fx.qr.s01.kpi.mediane")}</Tip>,
                   value:
                     d.medianSubvention >= 1_000_000
                       ? fmtMillions(d.medianSubvention, 1) + " M"
@@ -306,11 +307,13 @@ export default function QuiRecoitClient({
               <h3>{fill(t("fx.qr.src.c1.h"), { year: d.year })}</h3>
               <p>{t("fx.qr.src.c1.p")}</p>
               <a
-                href="https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/"
+                href={d.isPreview
+                  ? "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page_id=3"
+                  : "https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/"}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {t("fx.s.opendata")}
+                {d.isPreview ? t("fx.s.deliberations") : t("fx.s.opendata")}
               </a>
             </div>
             <div>

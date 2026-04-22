@@ -87,7 +87,15 @@ export default function BailleurFiche({ bailleur }: { bailleur: BailleurFicheTyp
         <section className="fx-fiche-section">
           <div className="fx-fiche-h">{t("fx.fiche.bail.garanties_title")}</div>
           <p style={{ fontSize: 13.5, color: "var(--ink-2)", lineHeight: 1.55, margin: "0 0 16px" }}>
-            {t("fx.fiche.bail.garanties_lead")}
+            {t("fx.fiche.bail.garanties_lead")}{" "}
+            <a
+              href="https://opendata.paris.fr/explore/dataset/dette-garantie/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
+            >
+              {t("fx.s.opendata")}
+            </a>
           </p>
 
           <div className="fx-fiche-kpis">

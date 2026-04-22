@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import "../../fusion.css";
 
+// La page utilise useSearchParams côté client + metadata dynamique à partir
+// des query params → force le rendu à chaque requête pour éviter les 404
+// RSC prefetch et assurer que generateMetadata reçoit bien les searchParams.
+export const dynamic = "force-dynamic";
+
 import { Navbar, Footer } from "@/components/fusion";
 import StressTest from "@/components/fusion/StressTest";
 import TaPartAToi from "@/components/fusion/TaPartAToi";

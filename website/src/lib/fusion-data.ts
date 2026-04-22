@@ -190,6 +190,9 @@ export type LandingStats = {
   breakdown: { label: string; annual: number; perMonth: number }[];
   nbMarchesCumul: number;
   nbSubventionsCumul: number;
+  capaciteDesendettement: number; // années, pour teaser stress-test landing
+  topBeneficiaires: { name: string; amount: number; year: number }[];
+  topFournisseurs: { name: string; siret: string; amount: number; year: number }[];
 };
 
 /**
@@ -237,6 +240,90 @@ export function loadLandingStats(): LandingStats {
     0,
   );
 
+  // Capacité de désendettement — même formule que loadPatrimoineData, mais
+  // sans recharger tout le bilan complet (on se contente du dernier exercice
+  // exécuté). Sert au teaser stress-test sur la landing.
+  let capaciteDesendettement = 0;
+  try {
+    const bilan = readJson<{ totals: { dettes_financieres: number } }>(
+      `bilan_sankey_${lastExecutedYear}.json`,
+    );
+    const budget = readJson<BudgetSankeyFull>(`budget_sankey_${lastExecutedYear}.json`);
+    let fonctionnement = 0;
+    for (const cat of Object.values(budget.bySection)) {
+      fonctionnement += cat.Fonctionnement?.total ?? 0;
+    }
+    const emprunts = budget.links
+      .filter((l) => l.source === "Emprunts" && l.target === "Budget Paris")
+      .reduce((s, l) => s + l.value, 0);
+    const recettesFonct = budget.totals.recettes - emprunts;
+    const epargneBrute = Math.max(0, recettesFonct - fonctionnement);
+    capaciteDesendettement = epargneBrute > 0
+      ? bilan.totals.dettes_financieres / epargneBrute
+      : 0;
+  } catch {}
+
+  // Top 3 bénéficiaires — dernière année de subventions NON preview (données
+  // consolidées, pas un aperçu partiel).
+  let topBeneficiaires: LandingStats["topBeneficiaires"] = [];
+  try {
+    const subvIdxFull = readJson<{
+      totalsByYear: Record<string, { nb_subventions: number }>;
+      previewYears?: number[];
+    }>("subventions/index.json");
+    const previewSet = new Set(subvIdxFull.previewYears ?? []);
+    const subvYears = Object.keys(subvIdxFull.totalsByYear)
+      .map(Number)
+      .filter((y) => !previewSet.has(y))
+      .sort((a, b) => b - a);
+    const latestSubvYear = subvYears[0];
+    if (latestSubvYear) {
+      const benFile = readJson<{ data: { beneficiaire: string; montant_total: number }[] }>(
+        `subventions/beneficiaires_${latestSubvYear}.json`,
+      );
+      topBeneficiaires = benFile.data
+        .slice()
+        .sort((a, b) => b.montant_total - a.montant_total)
+        .slice(0, 3)
+        .map((b) => ({ name: b.beneficiaire, amount: b.montant_total, year: latestSubvYear }));
+    }
+  } catch {}
+
+  // Top 3 fournisseurs — dernière année de marchés disponible
+  let topFournisseurs: LandingStats["topFournisseurs"] = [];
+  try {
+    const marchesYears = Object.keys(marchesIdx.totalsByYear)
+      .map(Number)
+      .sort((a, b) => b - a);
+    const latestMarchesYear = marchesYears[0];
+    if (latestMarchesYear) {
+      const MULTI_NAME = "MARCHE MULTIATTRIBUTAIRE";
+      const marchesFile = readJson<{
+        data?: MarcheRow[];
+        marches?: MarcheRow[];
+      }>(`marches-publics/marches_${latestMarchesYear}.json`);
+      const rows = marchesFile.data ?? marchesFile.marches ?? [];
+      const agg = new Map<string, { name: string; siret: string; amount: number }>();
+      for (const r of rows) {
+        const name = (r.fournisseur_nom ?? "").trim();
+        if (!name || name === MULTI_NAME) continue;
+        if ((r as { is_multiattributaire?: boolean }).is_multiattributaire) continue;
+        const rawSiret = ((r as { fournisseur_siret?: string }).fournisseur_siret ?? "").replace(/\s/g, "");
+        const siren = rawSiret.slice(0, 9);
+        const key = siren || name.toLowerCase();
+        const v = Number(r.montant_max ?? r.montant_min ?? 0);
+        const curr = agg.get(key) ?? { name, siret: rawSiret, amount: 0 };
+        curr.amount += v;
+        if (!curr.siret && rawSiret) curr.siret = rawSiret;
+        agg.set(key, curr);
+      }
+      topFournisseurs = [...agg.values()]
+        .sort((a, b) => b.amount - a.amount)
+        .slice(0, 3)
+        .map((f) => ({ ...f, year: latestMarchesYear }));
+    }
+  } catch {}
+
   return {
     year,
     totalDepenses,
@@ -248,6 +335,9 @@ export function loadLandingStats(): LandingStats {
     breakdown,
     nbMarchesCumul,
     nbSubventionsCumul,
+    capaciteDesendettement,
+    topBeneficiaires,
+    topFournisseurs,
   };
 }
 
@@ -2238,6 +2328,203 @@ export function loadLogementSocialData(requestedYear?: number): LogementSocialDa
     bailleurs,
     yearsSummary,
     tension,
+  };
+}
+
+/** Project-level social-housing operation as exported in
+ *  /data/map/logements_YYYY.json. Values are one-to-one with the source JSON. */
+type LogementsFileProject = {
+  id: string;
+  annee: number;
+  adresse: string;
+  codePostal: string;
+  arrondissement: number;
+  latitude: number | null;
+  longitude: number | null;
+  bailleur: string;
+  nbLogements: number;
+  nbPlai: number;
+  nbPlus: number;
+  nbPlusCd: number;
+  nbPls: number;
+  natureProgramme: string;
+  modeRealisation: string;
+  commentaires: string | null;
+};
+
+type LogementsFile = {
+  year: number;
+  totalLogements: number;
+  count: number;
+  withCoords: number;
+  parArrondissement: Record<string, { total: number; count: number }>;
+  data: LogementsFileProject[];
+};
+
+export type ArrondissementLogementProject = {
+  id: string;
+  adresse: string;
+  codePostal: string;
+  bailleur: string;
+  nbLogements: number;
+  mix: { plai: number; plus: number; plusCd: number; pls: number };
+  natureProgramme: string;
+  modeRealisation: string;
+  latitude: number | null;
+  longitude: number | null;
+};
+
+/** Slug used for the Paris Centre grouping (1er–4e arrondissements). */
+export const PARIS_CENTRE_SLUG = "paris-centre";
+const PARIS_CENTRE_ARRS = [1, 2, 3, 4];
+
+export type ArrondissementLogementData = {
+  year: number;
+  availableYears: number[];
+  /** Numeric arr (1-20) when scoped to a single district, or null for the
+   *  aggregated Paris Centre view (1-4). */
+  arr: number | null;
+  /** Display label ("12ᵉ arrondissement", "Paris Centre (1er-4ᵉ)"). */
+  label: string;
+  /** Slug used by the route ("12", "paris-centre"). */
+  slug: string;
+  /** Total logements sociaux financés pour la zone et l'année. */
+  totalLogements: number;
+  /** Nombre d'opérations distinctes. */
+  nbOperations: number;
+  /** Part de la production logement-social Ville de Paris cette année-là. */
+  shareCity: number;
+  /** Rang de la zone en nombre de logements produits (Paris Centre compte
+   *  comme une entrée unique face aux 16 autres arrondissements). */
+  rank: number;
+  /** Projets triés par nbLogements desc. */
+  projects: ArrondissementLogementProject[];
+  /** Bailleurs distincts présents dans la zone avec cumul. */
+  byBailleur: Array<{ name: string; nbLogements: number; nbOperations: number }>;
+};
+
+/** Matches the label convention used in ParisChoropleth: arr 1-4 aggregate
+ *  as "Paris Centre" (c_ar = 0) since their fusion in 2020. */
+const labelFor = (slug: string): string => {
+  if (slug === PARIS_CENTRE_SLUG) return "Paris Centre (1er-4ᵉ)";
+  const n = Number(slug);
+  return n === 1 ? "1er arrondissement" : `${n}ᵉ arrondissement`;
+};
+
+const loadYearFile = (
+  requestedYear: number | undefined,
+): { file: LogementsFile; year: number; availableYears: number[] } | null => {
+  const years = [2018, 2019, 2020, 2021, 2022, 2023, 2024];
+  const files: Record<number, LogementsFile> = {};
+  for (const y of years) {
+    try {
+      files[y] = readJson<LogementsFile>(`map/logements_${y}.json`);
+    } catch {}
+  }
+  const availableYears = Object.keys(files).map(Number).sort((a, b) => a - b);
+  if (availableYears.length === 0) return null;
+  const year =
+    requestedYear && availableYears.includes(requestedYear)
+      ? requestedYear
+      : availableYears[availableYears.length - 1];
+  const file = files[year];
+  if (!file) return null;
+  return { file, year, availableYears };
+};
+
+const projectOf = (p: LogementsFileProject): ArrondissementLogementProject => ({
+  id: p.id,
+  adresse: p.adresse,
+  codePostal: p.codePostal,
+  bailleur: p.bailleur,
+  nbLogements: p.nbLogements,
+  mix: { plai: p.nbPlai, plus: p.nbPlus, plusCd: p.nbPlusCd, pls: p.nbPls },
+  natureProgramme: p.natureProgramme,
+  modeRealisation: p.modeRealisation,
+  latitude: p.latitude,
+  longitude: p.longitude,
+});
+
+const buildByBailleur = (projects: ArrondissementLogementProject[]) => {
+  const m = new Map<string, { nbLogements: number; nbOperations: number }>();
+  for (const p of projects) {
+    const cur = m.get(p.bailleur) ?? { nbLogements: 0, nbOperations: 0 };
+    cur.nbLogements += p.nbLogements;
+    cur.nbOperations += 1;
+    m.set(p.bailleur, cur);
+  }
+  return [...m.entries()]
+    .map(([name, v]) => ({ name, ...v }))
+    .sort((a, b) => b.nbLogements - a.nbLogements);
+};
+
+/** Groups arrondissements as shown on the choropleth: Paris Centre (1-4)
+ *  vs each district from 5-20. Returns totals per zone for ranking. */
+const zoneTotals = (
+  file: LogementsFile,
+): Array<{ key: string; total: number }> => {
+  const per = file.parArrondissement;
+  const centre = PARIS_CENTRE_ARRS.reduce(
+    (s, n) => s + (per[String(n)]?.total ?? 0),
+    0,
+  );
+  const zones: Array<{ key: string; total: number }> = [
+    { key: PARIS_CENTRE_SLUG, total: centre },
+  ];
+  for (let n = 5; n <= 20; n++) {
+    zones.push({ key: String(n), total: per[String(n)]?.total ?? 0 });
+  }
+  return zones;
+};
+
+/** Lists social-housing operations for a given arrondissement (numeric 1-20)
+ *  or the Paris Centre aggregate. Reads logements_YYYY.json and aggregates
+ *  per-bailleur totals. Returns null when the year file is missing or the
+ *  zone has no data. */
+export function loadArrondissementLogement(
+  slug: string,
+  requestedYear?: number,
+): ArrondissementLogementData | null {
+  const loaded = loadYearFile(requestedYear);
+  if (!loaded) return null;
+  const { file, year, availableYears } = loaded;
+
+  const isCentre = slug === PARIS_CENTRE_SLUG;
+  const arrNum = isCentre ? null : Number(slug);
+  if (!isCentre && (!Number.isInteger(arrNum!) || arrNum! < 1 || arrNum! > 20)) {
+    return null;
+  }
+  const arrFilter = (p: LogementsFileProject) =>
+    isCentre
+      ? PARIS_CENTRE_ARRS.includes(p.arrondissement)
+      : p.arrondissement === arrNum;
+
+  const projects = file.data
+    .filter(arrFilter)
+    .sort((a, b) => b.nbLogements - a.nbLogements)
+    .map(projectOf);
+  if (projects.length === 0) return null;
+
+  const totalLogements = projects.reduce((s, p) => s + p.nbLogements, 0);
+  const nbOperations = projects.length;
+  const cityTotal = file.totalLogements || 0;
+  const shareCity = cityTotal > 0 ? (totalLogements / cityTotal) * 100 : 0;
+
+  const zones = zoneTotals(file);
+  const rank = zones.filter((z) => z.total > totalLogements).length + 1;
+
+  return {
+    year,
+    availableYears,
+    arr: arrNum,
+    label: labelFor(slug),
+    slug,
+    totalLogements,
+    nbOperations,
+    shareCity,
+    rank,
+    projects,
+    byBailleur: buildByBailleur(projects),
   };
 }
 

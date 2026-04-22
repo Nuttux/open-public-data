@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useT } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
+import ReplayOptIn from "./ReplayOptIn";
 
 type Col = {
   headingKey: string;
@@ -114,6 +115,9 @@ export default function Footer() {
               </ul>
             </div>
           ))}
+        </div>
+        <div className="fx-foot-optin">
+          <ReplayOptIn />
         </div>
         <div className="fx-foot-base">
           <span>{t("fx.foot.license").replace("{year}", String(year))}</span>

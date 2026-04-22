@@ -756,6 +756,42 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   min-height: 120px;
 }
 .theme-fusion .fx-tile-preview svg { width: 100%; height: 110px; }
+.theme-fusion .fx-tile-top3 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 4px 0;
+}
+.theme-fusion .fx-tile-top3-row {
+  display: grid;
+  grid-template-columns: 18px 1fr auto;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 13px;
+  line-height: 1.25;
+}
+.theme-fusion .fx-tile-top3-rank {
+  font-family: var(--f-mono);
+  color: var(--muted);
+  font-size: 11px;
+}
+.theme-fusion .fx-tile-top3-name {
+  font-weight: 500;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.theme-fusion .fx-tile-top3-amt {
+  font-family: var(--f-mono);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 600;
+}
+.theme-fusion .fx-tile:hover .fx-tile-top3-rank { color: rgba(255,255,255,.55); }
+.theme-fusion .fx-tile:hover .fx-tile-top3-name,
+.theme-fusion .fx-tile:hover .fx-tile-top3-amt { color: var(--bg); }
 .theme-fusion .fx-tile-title {
   font-family: var(--f-disp);
   font-weight: 600;
@@ -880,6 +916,52 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   flex-wrap: wrap;
   gap: 10px;
 }
+
+/* Replay opt-in widget in footer */
+.theme-fusion .fx-foot-optin {
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px dashed var(--rule);
+}
+.theme-fusion .fx-replay-optin {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: .04em;
+  color: var(--muted);
+}
+.theme-fusion .fx-replay-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: transparent;
+  border: 1px solid var(--rule);
+  color: var(--muted);
+  padding: 6px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 120ms ease, color 120ms ease, background 120ms ease;
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+}
+.theme-fusion .fx-replay-btn:hover {
+  border-color: var(--ink-2);
+  color: var(--ink);
+}
+.theme-fusion .fx-replay-btn.is-on {
+  border-color: #22c55e;
+  color: #22c55e;
+  background: rgba(34, 197, 94, 0.08);
+}
+.theme-fusion .fx-replay-dot { font-size: 9px; line-height: 1; }
+.theme-fusion .fx-replay-more {
+  color: var(--muted-2);
+  text-decoration: none;
+}
+.theme-fusion .fx-replay-more:hover { color: var(--bleu); }
 @media (max-width: 768px) {
   .theme-fusion .fx-foot { padding: 40px 0 24px; }
   .theme-fusion .fx-foot-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -5047,6 +5129,127 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   .theme-fusion .fx-arr-top-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ───── Arrondissement · logement social · drawer fiche ─ */
+.theme-fusion .fx-arr-log-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--ink);
+}
+.theme-fusion .fx-arr-log-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 18px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg);
+}
+.theme-fusion .fx-arr-log-item:last-child { border-bottom: 0; }
+.theme-fusion .fx-arr-log-rank {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: var(--muted-2);
+  letter-spacing: 0.08em;
+}
+.theme-fusion .fx-arr-log-meta { min-width: 0; }
+.theme-fusion .fx-arr-log-addr {
+  font-family: var(--f-ui);
+  font-size: 14.5px;
+  color: var(--ink);
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.theme-fusion .fx-arr-log-sub {
+  margin-top: 3px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.theme-fusion .fx-arr-log-bailleur { color: var(--ocre); font-weight: 600; }
+.theme-fusion .fx-arr-log-sep { color: var(--muted-2); }
+.theme-fusion .fx-arr-log-count {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.theme-fusion .fx-arr-log-count-v {
+  font-family: var(--f-disp);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.theme-fusion .fx-arr-log-count-u {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.theme-fusion .fx-arr-log-more {
+  margin-top: 14px;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+.theme-fusion .fx-arr-log-more a {
+  color: var(--bleu);
+  border-bottom: 1px solid var(--bleu);
+  padding-bottom: 1px;
+}
+.theme-fusion .fx-arr-log-bailleurs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.theme-fusion .fx-arr-log-bailleur-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: baseline;
+  gap: 14px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--f-ui);
+  font-size: 13.5px;
+}
+.theme-fusion .fx-arr-log-bailleur-row:last-child { border-bottom: 0; }
+.theme-fusion .fx-arr-log-bailleur-name {
+  font-weight: 600;
+  color: var(--ink);
+}
+.theme-fusion .fx-arr-log-bailleur-ops {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+.theme-fusion .fx-arr-log-bailleur-v {
+  font-family: var(--f-disp);
+  font-weight: 700;
+  min-width: 100px;
+  text-align: right;
+  color: var(--ink);
+}
+.theme-fusion .fx-arr-log-bailleur-pct {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+@media (max-width: 560px) {
+  .theme-fusion .fx-arr-log-item { grid-template-columns: auto 1fr; }
+  .theme-fusion .fx-arr-log-count { grid-column: 1 / -1; justify-content: flex-end; }
+  .theme-fusion .fx-arr-log-addr { white-space: normal; }
 }
 
 /* ───── Pull quote — editorial citation block ─────────── */
