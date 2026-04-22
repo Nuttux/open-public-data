@@ -77,10 +77,10 @@ export default async function OG() {
         <div style={{ display: "flex", alignItems: "flex-end", gap: 64 }}>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ fontSize: 15, color: "#666", letterSpacing: 2, textTransform: "uppercase" }}>
-              Budget {stats.year}
+              {`Budget ${stats.year}`}
             </div>
             <div style={{ fontSize: 86, fontWeight: 800, color: "#111", letterSpacing: -2, lineHeight: 1 }}>
-              {budget} Md€
+              {`${budget} Md€`}
             </div>
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>

@@ -85,13 +85,16 @@ export default async function OG() {
             lineHeight: 1.05,
             letterSpacing: -2,
             maxWidth: 1060,
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "0 14px",
           }}
         >
-          {fr(d.nouveauxParAn)} logements produits face à{" "}
+          <span>{fr(d.nouveauxParAn)} logements produits face à</span>
           <span style={{ color: "#b8551c" }}>
             {fr(d.tension.demandesActives)}
-          </span>{" "}
-          demandes.
+          </span>
+          <span>demandes.</span>
         </div>
 
         <div style={{ flex: 1 }} />
@@ -106,7 +109,7 @@ export default async function OG() {
                 textTransform: "uppercase",
               }}
             >
-              Logements financés · {d.year}
+              {`Logements financés · ${d.year}`}
             </div>
             <div
               style={{
@@ -140,7 +143,7 @@ export default async function OG() {
                 lineHeight: 1,
               }}
             >
-              {d.tension.ratio}:1
+              {`${d.tension.ratio}:1`}
             </div>
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
