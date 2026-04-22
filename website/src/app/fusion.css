@@ -2681,6 +2681,44 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   line-height: 1.5;
 }
 
+.theme-fusion .fx-fiche-grounded {
+  margin: 0 0 18px;
+  padding: 14px 18px;
+  border: 1px solid rgba(10,10,10,0.12);
+  background: var(--bg);
+  font-family: var(--f-ui);
+}
+.theme-fusion .fx-fiche-grounded[data-low] { background: #fbfaf6; border-style: dashed; }
+.theme-fusion .fx-fiche-grounded-head {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.theme-fusion .fx-fiche-grounded-body {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.theme-fusion .fx-fiche-grounded[data-low] .fx-fiche-grounded-body { color: var(--muted); font-style: italic; }
+.theme-fusion .fx-fiche-grounded-meta {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed rgba(10,10,10,0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12.5px;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+.theme-fusion .fx-fiche-grounded-meta b { font-weight: 600; color: var(--ink); }
+.theme-fusion .fx-fiche-grounded-sources a { color: var(--bleu); text-decoration: underline; text-underline-offset: 2px; }
+.theme-fusion .fx-fiche-grounded-sources a:hover { text-decoration-thickness: 2px; }
+
 .theme-fusion .fx-fiche-rank {
   display: flex;
   align-items: baseline;
@@ -3554,6 +3592,17 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   line-height: 1.5;
   max-width: 780px;
 }
+.theme-fusion .fx-timeline-preview-note {
+  margin: 0 0 14px;
+  padding: 10px 14px;
+  border: 1px dashed var(--ink);
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  font-size: 13px;
+  color: var(--muted);
+  max-width: 720px;
+}
 .theme-fusion .fx-movers {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -3885,6 +3934,188 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
     padding-right: 0;
   }
   .theme-fusion .fx-meth-c:last-child { border-bottom: 0; }
+}
+
+/* Méthode strip — bandeau utilitaire discret
+ * Pas de fond ni de bordures propres : le trait bas de fx-scale au-dessus
+ * suffit comme séparateur, la strip se fond dans le flow. */
+.theme-fusion .fx-meth-strip {
+  padding: 18px 0;
+  background: var(--bg);
+}
+.theme-fusion .fx-meth-strip-link {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  text-decoration: none;
+  color: var(--ink);
+  flex-wrap: wrap;
+}
+.theme-fusion .fx-meth-strip-label {
+  font-family: var(--f-disp);
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  flex-shrink: 0;
+}
+.theme-fusion .fx-meth-strip-tags {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: .02em;
+  display: flex;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+.theme-fusion .fx-meth-strip-cta {
+  font-family: var(--f-mono);
+  font-size: 12.5px;
+  color: var(--bleu);
+  border-bottom: 1px solid var(--bleu);
+  padding-bottom: 1px;
+  flex-shrink: 0;
+}
+.theme-fusion .fx-meth-strip-link:hover .fx-meth-strip-cta { color: var(--ink); border-color: var(--ink); }
+@media (max-width: 768px) {
+  .theme-fusion .fx-meth-strip-link { gap: 8px; }
+  .theme-fusion .fx-meth-strip-tags { font-size: 11px; flex-wrap: wrap; }
+}
+
+/* Caveat inline dans la desc d'une tile */
+.theme-fusion .fx-tile-caveat {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: .04em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.theme-fusion .fx-tile:hover .fx-tile-caveat { color: rgba(255,255,255,.55); }
+
+/* Analyses teaser */
+.theme-fusion .fx-analyses {
+  padding: 96px 0 88px;
+  border-bottom: 1px solid var(--ink);
+  background: var(--bg);
+}
+.theme-fusion .fx-analyses-head { margin-bottom: 48px; }
+.theme-fusion .fx-analyses-head h2 {
+  font-family: var(--f-disp);
+  font-weight: 700;
+  font-size: clamp(36px, 5vw, 60px);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  margin: 0 0 14px;
+  max-width: 800px;
+}
+.theme-fusion .fx-analyses-head h2 em { font-style: italic; font-weight: 600; color: var(--bleu); }
+.theme-fusion .fx-analyses-head .fx-sub {
+  font-family: var(--f-ui);
+  font-size: 17px;
+  color: var(--muted);
+  margin: 0;
+  max-width: 680px;
+  line-height: 1.55;
+}
+.theme-fusion .fx-analyses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.theme-fusion .fx-analyses-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--ink);
+  background: var(--bg);
+  color: var(--ink);
+  text-decoration: none;
+  transition: background 120ms ease, color 120ms ease;
+  overflow: hidden;
+}
+.theme-fusion .fx-analyses-card:hover { background: var(--ink); color: var(--bg); }
+.theme-fusion .fx-analyses-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-bottom: 1px solid var(--ink);
+  background: var(--rule);
+}
+.theme-fusion .fx-analyses-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 300ms ease;
+}
+.theme-fusion .fx-analyses-card:hover .fx-analyses-media img { transform: scale(1.03); }
+.theme-fusion .fx-analyses-body {
+  display: flex;
+  flex-direction: column;
+  padding: 22px 24px 22px;
+  flex: 1;
+}
+.theme-fusion .fx-analyses-cat {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ocre);
+  margin-bottom: 16px;
+}
+.theme-fusion .fx-analyses-card:hover .fx-analyses-cat { color: var(--ocre); opacity: .9; }
+.theme-fusion .fx-analyses-title {
+  font-family: var(--f-disp);
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  margin: 0 0 12px;
+}
+.theme-fusion .fx-analyses-desc {
+  font-family: var(--f-ui);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0 0 20px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.theme-fusion .fx-analyses-card:hover .fx-analyses-desc { color: rgba(255,255,255,.72); }
+.theme-fusion .fx-analyses-foot {
+  margin-top: auto;
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  color: var(--muted);
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+}
+.theme-fusion .fx-analyses-card:hover .fx-analyses-foot { color: rgba(255,255,255,.55); }
+.theme-fusion .fx-analyses-foot-all {
+  margin-top: 32px;
+  display: flex;
+  justify-content: flex-end;
+}
+.theme-fusion .fx-analyses-foot-all a {
+  font-family: var(--f-mono);
+  font-size: 13px;
+  color: var(--bleu);
+  border-bottom: 1px solid var(--bleu);
+  padding-bottom: 1px;
+}
+.theme-fusion .fx-analyses-foot-all a:hover { color: var(--ink); border-color: var(--ink); }
+@media (max-width: 960px) {
+  .theme-fusion .fx-analyses-grid { grid-template-columns: 1fr; }
+  .theme-fusion .fx-analyses-card { min-height: 0; }
+}
+@media (max-width: 768px) {
+  .theme-fusion .fx-analyses { padding: 56px 0 48px; }
 }
 
 /* /methode — detailed methodology blocks under each tool section */

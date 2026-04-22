@@ -224,19 +224,42 @@ export default function QuiRecoitClient({
             }
             subtitle={t("fx.qr.s05.sub")}
           />
-          <BudgetTimeline
-            points={d.yearsSummary.map((y) => ({
-              year: y.year,
-              value: y.total / 1_000_000_000,
-              type: y.preview ? ("vote" as const) : ("execute" as const),
-            }))}
-            activeYear={d.year}
-            activeBadge={(() => {
-              const active = d.yearsSummary.find((y) => y.year === d.year);
-              const label = active?.preview ? "voté" : "exéc.";
-              return `${d.year} ${label}`;
-            })()}
-          />
+          {(() => {
+            // Preview years use a vote-cumulative scope that isn't
+            // comparable to consolidated payment-flow totals. Showing them
+            // on the timeline creates a misleading spike, so we plot only
+            // consolidated years and surface the preview total in a note.
+            const consolidated = d.yearsSummary.filter((y) => !y.preview);
+            const previewYear = d.yearsSummary.find((y) => y.preview);
+            const activeForChart = consolidated.some((y) => y.year === d.year)
+              ? d.year
+              : consolidated[consolidated.length - 1]?.year ?? d.year;
+            const showPreviewNote = d.isPreview && previewYear;
+            return (
+              <>
+                {showPreviewNote && (
+                  <div className="fx-timeline-preview-note">
+                    <span className="fx-preview-tag">Hors courbe</span>
+                    <span>
+                      {previewYear.year} voté à ce jour :
+                      {" "}<b>{fmtBillions(previewYear.total)} Md €</b> sur
+                      {" "}{fmtInt(previewYear.count)} délibérations. Non tracé
+                      {" "}car le périmètre de vote n&apos;est pas comparable
+                      {" "}aux années consolidées en flux annuel.
+                    </span>
+                  </div>
+                )}
+                <BudgetTimeline
+                  points={consolidated.map((y) => ({
+                    year: y.year,
+                    value: y.total / 1_000_000_000,
+                    type: "execute" as const,
+                  }))}
+                  activeYear={activeForChart}
+                />
+              </>
+            );
+          })()}
           {d.isPreview ? (
             <div className="fx-movers-muted">
               Comparaisons par bénéficiaire masquées : les données {d.year}
