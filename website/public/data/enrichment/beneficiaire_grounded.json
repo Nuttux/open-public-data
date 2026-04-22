@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T11:41:02.832913",
+  "generated_at": "2026-04-22T11:42:36.468016",
   "model": "gemini-3-flash-preview",
   "count": 780,
   "items": {
@@ -20150,7 +20150,210 @@
       "confiance": 0.8,
       "source_type": "claude_web",
       "enriched_at": "2026-04-22T11:41:02.832913"
+    },
+    "CAISSE FEDERALE DE CREDIT MUTUEL": {
+      "activite_verifiee": "Caisse Fédérale de Crédit Mutuel (CFCM), société coopérative bancaire. Coordination et services communs du réseau Crédit Mutuel, organisation centrale à Paris (Confédération Nationale du Crédit Mutuel, loi de 1958). Siège historique à Strasbourg.",
+      "perimetre_geographique": "France",
+      "sources": [
+        "bfcm.creditmutuel.fr",
+        "fr.wikipedia.org/wiki/Crédit_Mutuel_Alliance_fédérale"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:42:36.468016"
+    },
+    "GROUPE SEB FRANCE": {
+      "activite_verifiee": "Groupe SEB France, filiale française du groupe SEB (SA cotée, fondée en 1857). Leader mondial du petit électroménager (Tefal, Moulinex, Rowenta, Krups, SEB, etc.). Siège mondial 112 Chemin du Moulin Carron, Écully (69) ; ~32 000 salariés, présent dans ~150 pays.",
+      "perimetre_geographique": "France (siège Écully 69)",
+      "sources": [
+        "groupeseb.com",
+        "en.wikipedia.org/wiki/Groupe_SEB"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:42:36.468016"
+    },
+    "ASSOCIATION CRECHE GAN ESTHER": {
+      "activite_verifiee": "Association Crèche Gan Esther, crèche associative juive, 14 rue de Thionville Paris 19e. Accueille des enfants en bas âge dans le cadre du réseau des crèches et gans du Consistoire / communauté juive parisienne.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        "paris.fr",
+        "alloj.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:42:36.468016"
+    },
+    "CRECHE GAN ESTHER": {
+      "activite_verifiee": "Association Crèche Gan Esther, crèche associative juive, 14 rue de Thionville Paris 19e. Accueille des enfants en bas âge dans le cadre du réseau des crèches et gans du Consistoire / communauté juive parisienne.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        "paris.fr",
+        "alloj.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:42:36.468016"
+    },
+    "HAWA AU FEMININ": {
+      "activite_verifiee": "H.A.W.A au féminin (SIREN 883585184), atelier d'insertion pionnier de la mode circulaire et solidaire, fondé par Hawa Sangaré. Aujourd'hui installé à la Manufacture Berlier Paris 13e (après le 18e). Accompagne des femmes éloignées de l'emploi (80 % des effectifs) : couture à partir de tissus upcyclés de grandes maisons. Double Trophée ESS de la Ville de Paris.",
+      "perimetre_geographique": "Paris 13e (historiquement 18e)",
+      "sources": [
+        "hawaaufeminin.com",
+        "paris.fr",
+        "pappers.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:42:36.468016"
+    },
+    "JUDO AMICALE PARIS XX": {
+      "activite_verifiee": "AJA Paris 20e — Association Judo Amicale Paris XX, club fondé en 2003 par Alexandre Borderieux (champion de France 1992). 59 rue Saint-Blaise Paris 20e (gymnase des Orteaux). ~300 adhérents, pratique loisir et compétition, 52 médailles nationales depuis 2008.",
+      "perimetre_geographique": "Paris 20e",
+      "sources": [
+        "aja-parisxx.com",
+        "paris.fr",
+        "ffjudo.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:42:36.468016"
+    },
+    "ASSOCIATION JUDO AMICALE PARIS XX": {
+      "activite_verifiee": "AJA Paris 20e — Association Judo Amicale Paris XX, club fondé en 2003 par Alexandre Borderieux (champion de France 1992). 59 rue Saint-Blaise Paris 20e (gymnase des Orteaux). ~300 adhérents, pratique loisir et compétition, 52 médailles nationales depuis 2008.",
+      "perimetre_geographique": "Paris 20e",
+      "sources": [
+        "aja-parisxx.com",
+        "paris.fr",
+        "ffjudo.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:42:36.468016"
+    },
+    "ASSOCIATION PSYCHOFORM": {
+      "activite_verifiee": "Association Psychoform, structure parisienne de formation en psychanalyse ou en éducation psychothérapeutique (détails publics limités).",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:42:36.468016"
+    },
+    "EOS IMAGING": {
+      "activite_verifiee": "EOS Imaging (SIREN 349694893), groupe français d'imagerie médicale (ex-Biospace Med, fondée en 1989). Siège Paris 9e. Conçoit et commercialise le système EOS (radiographies corps entier basse dose en position fonctionnelle). Filiales : Besançon, Cambridge (USA), Montréal, Francfort, Singapour. Acquis en 2021 par AlphaTec (USA).",
+      "perimetre_geographique": "Paris 9e / International",
+      "sources": [
+        "eos-imaging.com",
+        "fr.wikipedia.org/wiki/EOS_imaging"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:42:36.468016"
+    },
+    "DEMOCRATIE ET ENTRAIDE EN SYRIE": {
+      "activite_verifiee": "Démocratie et Entraide en Syrie — Ghosn Zeitoun (SIREN 789432481), association loi 1901 créée le 11 septembre 2012 par des universitaires et chercheurs. 85 bd Malesherbes Paris 8e. Bourses et accompagnement FLE d'étudiants syriens et syro-palestiniens réfugiés (partenariats avec la Ville de Paris, France Terre d'Asile, CPU).",
+      "perimetre_geographique": "Paris 8e",
+      "sources": [
+        "societe.com",
+        "france-terre-asile.org",
+        "souriahouria.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:42:36.468016"
+    },
+    "ASSOCIATION TECHNO PLUS": {
+      "activite_verifiee": "Techno+, association communautaire de santé du mouvement rave / freeparty créée le 1er juin 1995, 105 avenue de la République Paris 11e. Intervention en événements techno : chill-out, distribution de matériel de réduction des risques (RdR drogues, son, sexuel), information et prévention.",
+      "perimetre_geographique": "Paris 11e / France",
+      "sources": [
+        "technoplus.org",
+        "fr.wikipedia.org/wiki/Techno_Plus"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:42:36.468016"
+    },
+    "POSITIVE PLANET": {
+      "activite_verifiee": "Positive Planet (ex-PlaNet Finance), ONG internationale de lutte contre la pauvreté créée en 1998 par Jacques Attali (président de la fondation) et Arnaud Ventura. Microfinance, appuis techniques, inclusion socio-économique. Positive Planet France (créée en 2006) lutte contre le chômage dans les quartiers prioritaires.",
+      "perimetre_geographique": "France / International",
+      "sources": [
+        "fondationbs.org",
+        "fr.wikipedia.org/wiki/Positive_Planet",
+        "carenews.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:42:36.468016"
+    },
+    "MUSIQUES ET CULTURES DIGITALES": {
+      "activite_verifiee": "Musiques & Cultures Digitales (MCD), association et magazine bilingue dédié aux arts numériques et aux musiques électroniques (ISSN 1638-3400). 8 rue du Général Renault Paris 11e. Membre du Réseau Arts Numériques (RAN).",
+      "perimetre_geographique": "Paris 11e",
+      "sources": [
+        "digitalmcd.com",
+        "portal.issn.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:42:36.468016"
+    },
+    "ASSOCIATION MEDIATION USAGE OPTIMAL NUIT": {
+      "activite_verifiee": "AMUON — Association de Médiation pour un Usage Optimal de la Nuit, fondée en 2011 par le réseau MAP (Musiques Actuelles de Paris) et la Chambre syndicale des cabarets artistiques et discothèques. Porte notamment Les Pierrots de la Nuit (médiateurs artistiques intervenant dans les quartiers festifs de Paris), centre de formation, Nightbreak.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "amuon.fr",
+        "lespierrotsdelanuit.org",
+        "paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:42:36.468016"
+    },
+    "ASS MEDIATION USAGE OPTIMAL NUIT": {
+      "activite_verifiee": "AMUON — Association de Médiation pour un Usage Optimal de la Nuit, fondée en 2011 par le réseau MAP (Musiques Actuelles de Paris) et la Chambre syndicale des cabarets artistiques et discothèques. Porte notamment Les Pierrots de la Nuit (médiateurs artistiques intervenant dans les quartiers festifs de Paris), centre de formation, Nightbreak.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "amuon.fr",
+        "lespierrotsdelanuit.org",
+        "paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:42:36.468016"
+    },
+    "MOULINOT COMPOST BIOGAZ": {
+      "activite_verifiee": "Moulinot Compost & Biogaz (SIREN 798298899), entreprise ESS/ESUS créée en 2013 par Stephan Martinez à Paris. Collecte et valorisation des déchets alimentaires (restaurants, cantines) en compost et biogaz. Plateforme logistique/prétraitement à Stains (93) — 40 000 tonnes/an. Insertion professionnelle des salariés.",
+      "perimetre_geographique": "Île-de-France (Stains 93)",
+      "sources": [
+        "moulinot.fr",
+        "societe.com",
+        "insereco93.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:42:36.468016"
+    },
+    "WIMOOV": {
+      "activite_verifiee": "Wimoov (ex-Voiture & Co, 1998), association du Groupe SOS, spécialiste de la mobilité inclusive et durable. Accompagne ~31 000 personnes en insertion/an (jeunes, seniors, personnes handicapées) via diagnostic mobilité, solutions de transport, co-voiturage, auto-école sociale. +250 professionnels, 1 000 partenaires.",
+      "perimetre_geographique": "France",
+      "sources": [
+        "wimoov.org",
+        "groupe-sos.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:42:36.468016"
+    },
+    "MAKE ICI": {
+      "activite_verifiee": "Make ICI, 1er réseau français de manufactures collaboratives pour artisans, designers, makers et entrepreneurs Made in France. Piloté par Christine et Nicolas Bard. 10 sites en France (dont Make ICI Vitry-sur-Seine depuis 2024, ICI Montreuil depuis 2012) ; 12 500 m² d'ateliers partagés, 500 résidents. ESUS, lauréat Prix Liliane Bettencourt 2020.",
+      "perimetre_geographique": "France / Île-de-France",
+      "sources": [
+        "makeici.org",
+        "leslaureats-intelligencedelamain.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:42:36.468016"
     }
   },
-  "total": 1005
+  "total": 1023
 }
