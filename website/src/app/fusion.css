@@ -8258,9 +8258,22 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    /* Fade à droite pour signaler que le TOC scroll horizontalement. */
-    mask-image: linear-gradient(to right, black calc(100% - 28px), transparent);
-    -webkit-mask-image: linear-gradient(to right, black calc(100% - 28px), transparent);
+    /* Fade à droite plus large + stop intermédiaire pour que le dégradé soit
+     * perçu plutôt que lu comme une coupure nette. */
+    mask-image: linear-gradient(
+      to right,
+      black 0%,
+      black calc(100% - 64px),
+      rgba(0, 0, 0, 0.35) calc(100% - 16px),
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      black 0%,
+      black calc(100% - 64px),
+      rgba(0, 0, 0, 0.35) calc(100% - 16px),
+      transparent 100%
+    );
   }
   .theme-fusion .fx-page-toc ul::-webkit-scrollbar {
     display: none;
