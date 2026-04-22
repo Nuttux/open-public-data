@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T21:37:49.312448",
+  "generated_at": "2026-04-22T21:46:19.106981",
   "model": "gemini-3-flash-preview",
   "count": 780,
   "items": {
@@ -24013,7 +24013,1312 @@
       "confiance": 0.7,
       "source_type": "claude_web",
       "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "CENTRE EPINETTES FAMIL INSERTION AC": {
+      "activite_verifiee": "CEFIA — Centre Social des Épinettes Famille Insertion Accueil (SIREN 399990696), association de 29 ans, 102 rue de la Jonquière Paris 17e. Centre social du quartier Épinettes : ateliers sociolinguistiques (ASL) depuis 20+ ans, accompagnement scolaire, activités sociales et culturelles, accueil familles.",
+      "perimetre_geographique": "Paris 17e",
+      "sources": [
+        "tousbenevoles.org",
+        "reseau-alpha.org",
+        "societe.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:41:10.790384"
+    },
+    "CRECHE LES GARDONS": {
+      "activite_verifiee": "Les Gardons, crèche parentale associative (SIREN 340163948), active depuis le 1er novembre 1986, 15 rue Montgallet Paris 12e (Picpus). Accueil collectif d'enfants de 3 mois à l'entrée en maternelle. Forte implication parentale (5h/semaine + réunions régulières), gestion par parents + professionnels.",
+      "perimetre_geographique": "Paris 12e",
+      "sources": [
+        "paris.fr",
+        "crechelesgardons.fr",
+        "societe.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:41:10.790384"
+    },
+    "FETART": {
+      "activite_verifiee": "Collectif Fetart, association de promotion de la jeune photographie européenne. Organise le festival Circulation(s) au CENTQUATRE-PARIS depuis 2011 (+225 artistes exposés, 250 000 visiteurs) et les Rencontres Photographiques du 10e arrondissement depuis 2017. Appel à candidatures ouvert, jeunes photographes européens.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "fetart.org",
+        "festival-circulations.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:41:10.790384"
+    },
+    "SAUVEGARDE DE L ADOLESCENCE": {
+      "activite_verifiee": "Sauvegarde de l'Adolescence à Paris, association créée en 1929 (RUP 1934). 95 salariés, 6 000 personnes ou familles aidées/an. Protection de l'enfance, AEMO à domicile, accompagnement vers le logement des -30 ans, hébergement 18-25 ans, CIEJ (Centre d'Initiatives Emploi Jeunes), SIOE (investigation et orientation éducative).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "sauvegarde-paris.fr",
+        "sanitaire-social.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:41:10.790384"
+    },
+    "PROGENITURE": {
+      "activite_verifiee": "Association Progéniture, crèche parentale parisienne (informations publiques détaillées limitées).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "acepprif.org"
+      ],
+      "confiance": 0.4,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:41:10.790384"
+    },
+    "PARIS ALESIA FOOTBALL CLUB": {
+      "activite_verifiee": "Paris Alésia FC, club de football du 14e arrondissement. Stade Élisabeth (15 avenue Paul Appell Paris 14e). 18-24 équipes (saison 25-26) mixtes de toutes catégories : école de foot, jeunes, seniors H/F, loisirs. Stages et tournois. Affilié FFF.",
+      "perimetre_geographique": "Paris 14e",
+      "sources": [
+        "parisalesiafc.com",
+        "fff.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:41:10.790384"
+    },
+    "COMPAGNONS BATISSEURS ILE DE FRANCE": {
+      "activite_verifiee": "Compagnons Bâtisseurs Île-de-France (CBIDF), créée en 2012, opérant sur 75/78/93/94/95. Auto-Réhabilitation Accompagnée (ARA) de logements pour lutter contre le mal-logement. 30 salariés + volontaires + services civiques. 13 Ateliers de quartier + 7 outilthèques mobiles. 2023 : 208 projets, 487 réparations pédagogiques, 85 aides administratives, +1 197 personnes accompagnées.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        "compagnonsbatisseurs.eu/iledefrance",
+        "qualitel.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:41:10.790384"
+    },
+    "NOUVELLE ETOILE DES ENFANTS DE": {
+      "activite_verifiee": "La Nouvelle Étoile des Enfants de France, association laïque et RUP créée en 1891 par trois femmes, 130+ ans d'action pour la protection de l'enfance. Centre maternel « La Nouvelle Étoile » (femmes enceintes isolées ou avec 1 enfant < 3 ans). Pionnière : premières crèches, premiers centres d'hygiène, première PMI, premières écoles de puériculture.",
+      "perimetre_geographique": "Paris 13e / France",
+      "sources": [
+        "nouvelle-etoile.fr",
+        "lanouvelle-etoile.org",
+        "annuaire.action-sociale.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:41:10.790384"
+    },
+    "NOUVELLE ETOILE DES ENFANTS DE F": {
+      "activite_verifiee": "La Nouvelle Étoile des Enfants de France, association laïque et RUP créée en 1891 par trois femmes, 130+ ans d'action pour la protection de l'enfance. Centre maternel « La Nouvelle Étoile » (femmes enceintes isolées ou avec 1 enfant < 3 ans). Pionnière : premières crèches, premiers centres d'hygiène, première PMI, premières écoles de puériculture.",
+      "perimetre_geographique": "Paris 13e / France",
+      "sources": [
+        "nouvelle-etoile.fr",
+        "lanouvelle-etoile.org",
+        "annuaire.action-sociale.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:41:10.790384"
+    },
+    "ACTIV ACTION": {
+      "activite_verifiee": "Activ'Action, association d'accompagnement collectif des chercheurs d'emploi (Paris + autres villes). Ateliers entre pairs pour identifier forces, construire plan d'action, développer la confiance. Réponse aux risques psycho-sociaux du chômage. Membre du réseau Ashoka, lauréat La France s'engage 2021.",
+      "perimetre_geographique": "France / Paris",
+      "sources": [
+        "activaction.org",
+        "helloasso.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:41:10.790384"
+    },
+    "KTHA COMPAGNIE": {
+      "activite_verifiee": "ktha compagnie, compagnie de théâtre de rue créée en 2000. Subventionnée par la Ville de Paris, DRAC IdF, Région IdF. Théâtre intimiste en dispositifs placés dans l'espace public (containers, camions, toits, parkings, stades, ronds-points, métro). Projets urbains collectifs (Petites Urbanités Libres Paris 20e en 2011), ZEF (dispositif d'accompagnement mensuel).",
+      "perimetre_geographique": "Paris / France",
+      "sources": [
+        "ktha.org",
+        "artcena.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:41:10.790384"
+    },
+    "EBS LE RELAIS NORD PAS DE CALAIS": {
+      "activite_verifiee": "EBS Le Relais Nord Pas-de-Calais (SCOP), siège Bruay-la-Buissière (62). Entreprise à But Socio-Économique spécialisée dans la collecte, le tri et la valorisation du textile, linge de maison, chaussures. Leader français : +120 000 tonnes en 2023 (55 % de la collecte française). Réseau de 30 Relais locaux, +22 000 bornes de collecte. Agréée Entreprise d'Insertion.",
+      "perimetre_geographique": "Nord-Pas-de-Calais / France",
+      "sources": [
+        "lerelais.org",
+        "les-scop.coop",
+        "emplois.inclusion.beta.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:41:10.790384"
+    },
+    "KODIKO": {
+      "activite_verifiee": "Association Kodiko, insertion professionnelle des réfugié·es via un programme de co-training réfugiés-salariés de 6 mois (2 RDV mensuels). Conditions : protection internationale + FLE A2 minimum. Accompagne à s'approprier les codes de l'entreprise, marché de l'emploi, CV, réseau. Ateliers collectifs. ~3 000 réfugiés accompagnés depuis la création.",
+      "perimetre_geographique": "Paris / France",
+      "sources": [
+        "kodiko.fr",
+        "lementorat.fr",
+        "infomigrants.net"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:41:10.790384"
+    },
+    "CARLOTTA CINEMAS": {
+      "activite_verifiee": "Carlotta Films (SIREN 418717401), société française de distribution cinématographique et d'édition vidéo fondée en 1998 par Vincent Paul-Boncour et Jean-Pierre Gardelli. Spécialisée dans la promotion du cinéma de patrimoine : distribution en salles (copies restaurées), édition DVD/Blu-ray/VOD, librairie. Siège 74 rue de Charenton Paris 12e.",
+      "perimetre_geographique": "Paris 12e",
+      "sources": [
+        "carlottafilms.com",
+        "fr.wikipedia.org/wiki/Carlotta_Films",
+        "societe.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:41:10.790384"
+    },
+    "AUTEUIL PETITE ENFANCE": {
+      "activite_verifiee": "Auteuil Petite Enfance (APE), association loi 1901 fondée en 2010, structure petite enfance de la Fondation Apprentis d'Auteuil. Siège 40 rue Jean de La Fontaine Paris 16e. 21 établissements d'accueil jeunes enfants (EAJE) + lieux d'accueil enfants-parents + soutien à la parentalité ; ~1 000 enfants/an, 220 salariés. Prévention précoce et accompagnement parentalité.",
+      "perimetre_geographique": "Paris / France",
+      "sources": [
+        "apprentis-auteuil.org",
+        "maisondesrefugies.paris"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:41:10.790384"
+    },
+    "OBSERVATOIRE INT PRISONS SECTION FR": {
+      "activite_verifiee": "OIP-SF — Observatoire International des Prisons, Section Française, association loi 1901 créée le 17 juin 1995 à Lyon, section française de l'OIP (fondé en 1990). Statut consultatif ONU. Siège 7 bis rue Riquet Paris 19e. Défense des droits humains en prison, observations via correspondants en détention, appui juridique aux détenus et proches, plaidoyer contre l'inflation carcérale.",
+      "perimetre_geographique": "Paris 19e / France",
+      "sources": [
+        "oip.org",
+        "cncdh.fr",
+        "fr.wikipedia.org/wiki/Observatoire_international_des_prisons_-_section_française"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:41:10.790384"
+    },
+    "CASERNE EPHEMERE": {
+      "activite_verifiee": "Usines Éphémères / La Caserne Éphémère — association gérante de Point Éphémère (200-206 quai de Valmy Paris 10e depuis 2004) et réseau lié à Hôpital Éphémère et Mains d'Œuvres. Ancienne docks du Canal Saint-Martin transformée en centre artistique et culturel : salle de concert 300 places, expo 120 m², 4 ateliers arts plastiques, studios danse, 5 studios musique, bar-restaurant. Résidences d'artistes jusqu'à 6 mois.",
+      "perimetre_geographique": "Paris 10e",
+      "sources": [
+        "pointephemere.org",
+        "en.wikipedia.org/wiki/Point_Éphémère",
+        "cnap.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:42:51.345647"
+    },
+    "ASSOCIATION JEUNES TALENTS": {
+      "activite_verifiee": "Jeunes Talents, association créée en 1998, reconnue d'utilité publique en 2019. Organise ~140 concerts/an (saison + Festival Européen Jeunes Talents en juillet) pour promouvoir de jeunes musiciens classiques de 18-26 ans, diplômés des CNSM Paris et Lyon ou grandes écoles européennes, tous rémunérés.",
+      "perimetre_geographique": "Paris / Europe",
+      "sources": [
+        "helloasso.com/associations/jeunes-talents"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:42:51.345647"
+    },
+    "EPICERIE SOLIDAIRE COURTE ECHELLE": {
+      "activite_verifiee": "Épicerie Solidaire La Courte Échelle (SIREN 411459464), 8 rue Gaston Tessier Paris 19e. Épicerie sociale : produits alimentaires et d'hygiène à tarif réduit sur orientation des services sociaux. Lutte contre l'exclusion, sensibilisation à la santé nutritionnelle et à la consommation responsable.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        "societe.com",
+        "pappers.fr",
+        "app.entourage.social"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:42:51.345647"
+    },
+    "PARIS CYCLISTE OLYMPIQUE": {
+      "activite_verifiee": "Paris Cycliste Olympique (PCO), club cycliste fondé en 1991. Siège au vélodrome Jacques-Anquetil (La Cipale, Bois de Vincennes Paris 12e). ~250 membres, 7 à 70 ans. Route, piste, cyclo-cross, école de vélo, équipe DN1 Route (élite amateur). Porte le programme national Savoir Rouler à Vélo en écoles, organise Mercredis Populaires et GP OMS Paris 14.",
+      "perimetre_geographique": "Paris 12e",
+      "sources": [
+        "pco75.com",
+        "helloasso.com",
+        "directvelo.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:42:51.345647"
+    },
+    "TENNIS CLUB DU 12 ARRDT": {
+      "activite_verifiee": "Club de tennis associatif du 12e arrondissement de Paris (TC12 Bercy / RNS Tennis / La Camillienne / Panda selon dénomination). Terrains Léo-Lagrange, Alain-Mimoun, Carnot, La Faluère — cours enfants et adultes, compétition et loisir.",
+      "perimetre_geographique": "Paris 12e",
+      "sources": [
+        "tc12bercy.fr",
+        "tennispanda.fr",
+        "rnstennis.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:42:51.345647"
+    },
+    "ABIOSOL": {
+      "activite_verifiee": "ABIOSOL — Agriculture BIOlogique et SOLidaire, pôle créé en 2009 (structuré en association en 2019). Composé du GAB IdF, Terre de Liens IdF, Les Champs des Possibles, Réseau AMAP IdF. Accompagne l'installation de paysans en agriculture bio solidaire en Île-de-France (réunions d'accueil, formations, visites, suivi individuel). 203 candidats accueillis, 92 % hors cadre familial agricole.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        "amap-idf.org/le-pole-abiosol",
+        "helloasso.com/associations/abiosol"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:42:51.345647"
+    },
+    "AMICALE DU NID": {
+      "activite_verifiee": "Amicale du Nid, association laïque apolitique. Accompagne les personnes en situation ou en danger de prostitution : accueil, accompagnement, insertion, prévention, formation, diagnostic de territoire. 16 départements, +4 800 personnes rencontrées et +5 000 accompagnées/an, +400 hébergées. Amicale du Nid 75 + partenariat Coallia (CPH/HUDA 75 places, TEHS). Position abolitionniste.",
+      "perimetre_geographique": "France (dont Paris 75)",
+      "sources": [
+        "amicaledunid.org",
+        "contrelatraite.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:42:51.345647"
+    },
+    "UJA MACCABI PARIS METROPOLE": {
+      "activite_verifiee": "UJA Maccabi Paris Métropole, club de football issu en 2012 de la fusion UJA Alfortville (fondée 1926 par la communauté arménienne d'Alfortville) + Maccabi Paris (fondé 1947, club sportif de la communauté juive parisienne). 21 équipes seniors H/F et jeunes, évolue en R3 IdF. Couleurs bleu marine/jaune, mission culturelle et de solidarité sociale.",
+      "perimetre_geographique": "Paris / Val-de-Marne",
+      "sources": [
+        "fr.wikipedia.org/wiki/UJA_Maccabi_Paris_Métropole",
+        "fff.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:42:51.345647"
+    },
+    "AU FIL DE LA DECOUVERTE": {
+      "activite_verifiee": "Au Fil de la Découverte, halte-garderie associative, 6 rue de Cronstadt Paris 15e. Accueil ponctuel d'enfants en bas âge (jusqu'à 3 demi-journées/semaine).",
+      "perimetre_geographique": "Paris 15e",
+      "sources": [
+        "paris.fr",
+        "trouversacreche.fr",
+        "creche-kidscool.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:42:51.345647"
+    },
+    "LOUISE ROSIER KIDS": {
+      "activite_verifiee": "Louise Rosier Kids (SIREN 831206867), association non lucrative 206 quai de Valmy Paris 10e. Sensibilisation des enfants au « bien manger » via ateliers cuisine et jeux nutrition dans les écoles prioritaires de Paris, en partenariat avec des chefs et diététiciens. Partiellement financée par la Ville de Paris.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "louiserosier.com",
+        "jemengage.paris.fr",
+        "societe.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:42:51.345647"
+    },
+    "COMPAGNIE A L AFFUT": {
+      "activite_verifiee": "Compagnie à l'Affût, créée en 2002 par Nour Jlassi. Basée Paris 13e, à caractère social et solidaire — démocratisation de la culture dans les QPV. Projet « Théâtre Outil » : théâtre-forum créant des espaces de dialogue. Trois troupes amateurs (Petits Affûtés, Jeunes Affûtés, Affûtés), Festival des Affûtés chaque été depuis 2013.",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        "compagniealaffut.com",
+        "helloasso.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:42:51.345647"
+    },
+    "ECOLE CHIEN GUIDE AVEUGLE PARIS REG": {
+      "activite_verifiee": "École de Chiens Guides de Paris, association loi 1901 d'intérêt général inaugurée en 1987. Siège 105 avenue de Saint-Maurice Paris 12e (Bois de Vincennes) + second site à Buc (78) depuis 2015 (élevage et éducation). Élève, éduque et remet gratuitement ~30 chiens guides/an à des personnes aveugles ou malvoyantes. +1 100 chiens remis en 29 ans.",
+      "perimetre_geographique": "Paris 12e / Yvelines",
+      "sources": [
+        "chiensguidesparis.fr",
+        "chiensguides.fr",
+        "chiens-guides-idf.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:42:51.345647"
+    },
+    "GRS PARIS CENTRE": {
+      "activite_verifiee": "GRS Paris Centre, club de gymnastique rythmique et sportive parisien. Entraînements dans plusieurs gymnases (Berlioux Forum des Halles, Bercy-Bastille, Léopold-Bellan, Lacretelle, lycée Maurice-Ravel). Initiation à la compétition nationale, engins ballon/ruban/cerceau/corde/massues, pratique individuelle et ensembles, stages d'été.",
+      "perimetre_geographique": "Paris (plusieurs arr.)",
+      "sources": [
+        "grspariscentre.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:42:51.345647"
+    },
+    "SOC PUBLIQUE LOCALE CARREAU TEMPLE": {
+      "activite_verifiee": "SPL Le Carreau du Temple / Paris & Métropole Aménagement — gère l'équipement hybride culture-sport-événementiel Paris 3e (marché couvert Carreau du Temple), 4 000 m², auditorium, espace modulable. Capital 100 % Ville de Paris.",
+      "perimetre_geographique": "Paris 3e",
+      "sources": [
+        "lecarreaudutemple.eu"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:42:51.345647"
+    },
+    "TRAVAIL ET PARTAGE": {
+      "activite_verifiee": "Travail et Partage, association parisienne (possiblement liée à la solidarité alimentaire / maraudes). Informations publiques détaillées limitées.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:42:51.345647"
+    },
+    "CENTRE MANDAPA": {
+      "activite_verifiee": "Centre Mandapa, salle de spectacle et école d'arts de l'Inde fondée en 1975, 6 rue Wurtz Paris 13e. ~200 représentations/saison (dont 50+ concerts), priorité au jeune public. Danses classiques indiennes (bharata natyam, kathak, kathakali, odissi), musique, théâtre indien, musique arabo-andalouse. Ateliers et cours.",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        "centre-mandapa.fr",
+        "offi.fr",
+        "theatres-parisiens.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:42:51.345647"
+    },
+    "ASSOCIATION CENTRE MANDAPA": {
+      "activite_verifiee": "Centre Mandapa, salle de spectacle et école d'arts de l'Inde fondée en 1975, 6 rue Wurtz Paris 13e. ~200 représentations/saison (dont 50+ concerts), priorité au jeune public. Danses classiques indiennes (bharata natyam, kathak, kathakali, odissi), musique, théâtre indien, musique arabo-andalouse. Ateliers et cours.",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        "centre-mandapa.fr",
+        "offi.fr",
+        "theatres-parisiens.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:42:51.345647"
+    },
+    "CINEPOQUE": {
+      "activite_verifiee": "Cinépoque, association parisienne liée au cinéma / festival (informations publiques détaillées limitées).",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:44:27.885008"
+    },
+    "MOTO ACTION": {
+      "activite_verifiee": "Moto Action, association parisienne d'insertion des jeunes par la mécanique moto / sports mécaniques (informations publiques détaillées limitées).",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:44:27.885008"
+    },
+    "CENTRE THEATRE DE L OPPRIME AUGUSTO": {
+      "activite_verifiee": "Centre du Théâtre de l'Opprimé (CTO-Paris), 78-80 rue du Charolais Paris 12e (depuis 1995). Fondé à Paris en mars 1979 par Augusto Boal (CEDITADE). Dirigé depuis 1998 par Rui Frati. Méthode du Théâtre de l'Opprimé : théâtre-forum, théâtre-image, arc-en-ciel du désir, théâtre invisible — rendre visibles les conflits sociaux et politiques.",
+      "perimetre_geographique": "Paris 12e",
+      "sources": [
+        "theatredelopprime.com",
+        "fr.wikipedia.org/wiki/Théâtre_de_l'Opprimé"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:44:27.885008"
+    },
+    "V R A C VER RESEAU ACHAT COMM PARIS": {
+      "activite_verifiee": "VRAC — Vers un Réseau d'Achat Commun. Association qui développe des groupements d'achat dans les quartiers prioritaires de Paris (et ailleurs) : produits paysans/bio/équitables en circuit court à prix bas, commandes mensuelles via cagette.net. Adhésion à partir d'1€, fonds de solidarité. 23 territoires en France/Belgique, 22 associations, +10 300 foyers membres, 124 groupements.",
+      "perimetre_geographique": "Paris / France / Belgique",
+      "sources": [
+        "paris.vrac-asso.org",
+        "vrac-asso.org",
+        "agriculture.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:44:27.885008"
+    },
+    "COLLECTIF ACCIDENT TRAVAIL HANDICAP": {
+      "activite_verifiee": "CATRED — Collectif des Accidentés du Travail, Handicapés et Retraités pour l'Égalité des Droits (SIREN 390223840). 20 boulevard Voltaire Paris 11e. Association loi 1901, accompagnement socio-juridique individualisé en matière de protection sociale. 4 axes : accès aux droits, soutien linguistique, services numériques, emploi.",
+      "perimetre_geographique": "Paris 11e",
+      "sources": [
+        "handicap.paris.fr/association/catred",
+        "pappers.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:44:27.885008"
+    },
+    "ASSOCIATION MAINS LIBRES": {
+      "activite_verifiee": "Association Mains Libres (Paris), structure associative liée à la surdité ou l'insertion professionnelle (informations publiques détaillées limitées).",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:44:27.885008"
+    },
+    "LUCERNAIRE FORUM": {
+      "activite_verifiee": "Lucernaire Forum, centre culturel fondé en 1968 par Christian Le Guillochet, Luce Berthommé et Laurent Terzieff, installé depuis 1978 au 53 rue Notre-Dame-des-Champs Paris 6e (ancienne usine). 3 salles de théâtre (Théâtre Noir 116 places, Théâtre Rouge 116 places, Le Paradis 46 places) + 3 salles cinéma art et essai + galerie d'exposition + librairie + bar-restaurant. Création contemporaine, classiques, jeune public.",
+      "perimetre_geographique": "Paris 6e",
+      "sources": [
+        "offi.fr/theatre/theatre-du-lucernaire-2620",
+        "fr.wikipedia.org/wiki/Lucernaire_(centre_culturel)"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:44:27.885008"
+    },
+    "COMITE PARISIEN DE BASKET BALL": {
+      "activite_verifiee": "Comité Parisien de Basketball (CD75), organe départemental parisien de la FFBB. 117 rue du Château des Rentiers Paris 13e. +50 clubs affiliés, +7 000 licenciés, président Oumar Samba Dia. 7 commissions (Sports, etc.) pour organiser championnats, formations, compétitions dans Paris.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "basket75.com",
+        "competitions.ffbb.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:44:27.885008"
+    },
+    "GUINGETTE PIRATE": {
+      "activite_verifiee": "La Guinguette Pirate (ex-Péniche Le Loceynius), association arrivée au pied de la BNF le 1er avril 1995 (jonque chinoise). Premier bateau-concert de l'Est parisien, Port de la Gare Paris 13e. Créatrice du Batofar (1999) puis de Petit Bain (2011). Porte le projet « L'Odyssée » (sports, culture, solidarité autour des voies d'eau franciliennes).",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        "laguinguettepirate.fr",
+        "helloasso.com/associations/la-guinguette-pirate"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:44:27.885008"
+    },
+    "JEUNESSE ATHLETIQUE DE MONTROUGE": {
+      "activite_verifiee": "JAM — Jeunesse Athlétique de Montrouge, club omnisports parisien créé en 1896 (association en 1904), 5 rue du Moulin-Vert Paris 14e. Athlétisme, football, tennis de table, volley, natation, tennis, handisport. +130 ans d'activité dans le 14e, couleurs bleu et blanc.",
+      "perimetre_geographique": "Paris 14e",
+      "sources": [
+        "jamomnisports.com",
+        "paris14.info"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:44:27.885008"
+    },
+    "SOC EXPL CHAMPOLLION": {
+      "activite_verifiee": "Société d'Exploitation Le Champo — Espace Jacques-Tati, cinéma d'art et essai indépendant au 51 rue des Écoles (angle rue Champollion) Paris 5e. Créé en 1938, repaire de la Nouvelle Vague (Truffaut, Godard, Chabrol). 2 salles (Champollion et Henri-Langlois). Rare système de rétroprojection par miroirs en France. Monument historique depuis 2000.",
+      "perimetre_geographique": "Paris 5e",
+      "sources": [
+        "cinema-lechampo.com",
+        "fr.wikipedia.org/wiki/Le_Champo_-_Espace_Jacques-Tati"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:44:27.885008"
+    },
+    "COMITE DEPARTEM SPORT ADAPTE PARIS": {
+      "activite_verifiee": "CDSA 75 — Comité Départemental Sport Adapté de Paris, 182 rue Raymond Losserand Paris 14e. Sport pour personnes avec handicap mental ou psychique. Structure de proximité FFSA (Fédération Française du Sport Adapté). 50 Centres Sport Adapté en partenariat dans 10 arrondissements.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "cdsa75.fr",
+        "handicap.paris.fr/association/comite-departemental-sport-adapte-paris"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:44:27.885008"
+    },
+    "MA PLUME EST A VOUS": {
+      "activite_verifiee": "Ma Plume est à Vous, association loi 1901 créée en mars 1997, 6 avenue de la Porte de Montmartre Paris 18e. Écrivains publics bénévoles : aide à lire/rédiger courriers administratifs ou privés pour personnes éloignées de l'écrit (alphabétisation, FLE, précarité). ~20 bénévoles + 3 salariés, médiation sociale par l'écrit.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        "maplumeestavous.wordpress.com",
+        "jeveuxaider.gouv.fr",
+        "vacarme.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:44:27.885008"
+    },
+    "FABRIQUE DOCUMENTAIRE": {
+      "activite_verifiee": "La Fabrique Documentaire, association créée en 2005 par les journalistes-documentaristes Benjamin Bibas et Emmanuel Chicon, basée Paris 20e. Reportages et documentaires (texte, radio, vidéo, web, expo) sur droits humains, environnement, médias. Depuis 2015, organise des ciné-festivals gratuits en espace public dans Paris Nord-Est et Seine-Saint-Denis.",
+      "perimetre_geographique": "Paris 20e",
+      "sources": [
+        "cine-voisins.fr",
+        "cine-jardins.fr",
+        "artcena.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:44:27.885008"
+    },
+    "FOYER DE GRENELLE CENTRE SOCIAL": {
+      "activite_verifiee": "Foyer de Grenelle, centre social RUP fondé en 1884 par le pasteur McAll après la Commune. 17 rue de l'Avre Paris 15e. ~1 000 personnes/semaine. Agréé CAF, Ville et Département. 3 pôles : accès numérique, apprentissage du français, accès au droit ; consultation juridique, logement, soutien scolaire, repair café, jeunes et seniors.",
+      "perimetre_geographique": "Paris 15e",
+      "sources": [
+        "foyerdegrenelle.org",
+        "benevolt.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:44:27.885008"
+    },
+    "CTE FR DE SOUTIEN GK SAVAR BANGLA": {
+      "activite_verifiee": "Comité Français de Soutien à GK Savar Bangladesh, association parisienne de solidarité internationale soutenant Gonoshasthaya Kendra (GK), ONG bangladaise pionnière de santé populaire et d'accès aux soins à Savar (près de Dhaka). (Détails publics limités.)",
+      "perimetre_geographique": "International (Paris)",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:46:19.106981"
+    },
+    "DISPO APPUI PERINAT SOINS AMBULATOI": {
+      "activite_verifiee": "DAPSA — Dispositif d'Appui Périnatalité et Soins Ambulatoires, structure parisienne d'appui et coordination en périnatalité + addictions/parentalité (informations publiques limitées ; probable activité de soutien aux professionnels et familles).",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:46:19.106981"
+    },
+    "PASSERELLE ASSIST AIDANT RESAF": {
+      "activite_verifiee": "RESAF — dispositif Passerelle Assist'Aidant parisien de soutien aux proches aidants (activité d'accompagnement des aidants familiaux ; informations publiques limitées).",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:46:19.106981"
+    },
+    "EMPLOI DEVELOPPEMENT": {
+      "activite_verifiee": "Emploi Développement, association parisienne d'accompagnement à l'emploi (insertion, formation, mentorat — informations publiques détaillées limitées).",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:46:19.106981"
+    },
+    "COMITE DEPARTEMENTAL DE RUGBY DE PA": {
+      "activite_verifiee": "CD75 — Comité Départemental de Rugby de Paris. Interlocuteur FFR pour les clubs parisiens : +4 000 licenciés répartis sur 7 clubs. Relais entre clubs, Ligue IdF et Fédération. Commissions : formation, sécurité, finances, événementiel, relations institutionnelles.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "parisrugby.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:46:19.106981"
+    },
+    "JUSTICE DEUXIEME CHANCE": {
+      "activite_verifiee": "Justice Deuxième Chance (J2C), association francilienne qui accompagne les Personnes Placées Sous Main de Justice (PPSMJ) vers et dans l'emploi. Actions en Île-de-France (75, 92, 93, 78). Programme « Un Métier, Une Chance » dans 3 établissements pénitentiaires IdF. Accompagnement personnalisé (milieu ouvert + détention) pour la réinsertion sociale et professionnelle.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        "justice2c.org",
+        "justice.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:46:19.106981"
+    },
+    "COMITE ACTION SOCIAL OUTRE MER": {
+      "activite_verifiee": "CASODOM — Comité d'Action Sociale en faveur des originaires des Départements d'Outre-Mer en métropole (SIREN 784180374), créé en 1956, RUP en 1973. 7 bis rue du Louvre Paris 1er. Service social pour Ultramarins en métropole : accueil, orientation, accès aux droits, logement, emploi/formation, aides financières d'urgence.",
+      "perimetre_geographique": "France (siège Paris 1er)",
+      "sources": [
+        "societe.com",
+        "helloasso.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:46:19.106981"
+    },
+    "OPTIMA": {
+      "activite_verifiee": "Optima — Médiation, Formation, Conseil, association parisienne (15e) spécialisée en médiation, formation, conseil, rénovation immobilière. Programmes MSADS et AMIS (formation et retour à l'emploi).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "optima.tm.fr",
+        "paris.cataloxy.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:46:19.106981"
+    },
+    "UN MONDE GOURMAND": {
+      "activite_verifiee": "Un Monde Gourmand, restaurant solidaire et entreprise d'insertion (EI). 18 rue Poissonnière Paris 2e. Depuis 2005, insertion professionnelle aux métiers de la restauration (expérience + formation). Cuisine maison avec produits frais, de saison, bio, zéro-déchet, livraisons à vélo (partenaire EI). Traiteur solidaire. Menus à partir de 15€.",
+      "perimetre_geographique": "Paris 2e",
+      "sources": [
+        "mondegourmand.com",
+        "paris.fr",
+        "lemarche.inclusion.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:46:19.106981"
+    },
+    "CHINOIS DE FRANCE FRANCAIS DE CHINE": {
+      "activite_verifiee": "CFFC — Chinois de France Français de Chine (SIREN 531394740), association créée en 1998, basée dans le Grand Belleville Paris 19e/20e. Formations en français et en chinois pour adultes et enfants, sinophones et francophones. Médiation sociale et culturelle, animation de quartier, intégration des migrations chinoises (Wenzhou, Dongbei).",
+      "perimetre_geographique": "Paris 19e / 20e (Belleville)",
+      "sources": [
+        "cffc.fr",
+        "pappers.fr",
+        "reseau-alpha.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:46:19.106981"
+    },
+    "ACADEMIE FOOTBALL PARIS 18": {
+      "activite_verifiee": "AFP18 — Académie Football Paris 18, association créée en mars 2015. Fait du football un vecteur d'éducation civique et populaire dans le QPV Portes du 18e. ~1 000 membres ; 2 projets : sportif + socio-éducatif. Soutien scolaire lundi/mardi/jeudi/vendredi 16h30-19h15 au Centre Social La Maison Bleue (24 avenue de la Porte Montmartre Paris 18e). Membre La Voix de l'Enfant, labellisé FFF.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        "academiefootballparis18.fr",
+        "mercilesport.fr",
+        "fff.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:46:19.106981"
+    },
+    "FASHION GREEN HUB GRAND PARIS": {
+      "activite_verifiee": "Fashion Green Hub Grand Paris, déclinaison IdF de Fashion Green Hub (association d'entreprises fondée à Roubaix en 2015, mode durable/circulaire/inclusive). Ouvre en décembre 2022 le Plateau Fertile Paris à l'Hôtel Industriel Berlier (13e) : manufacture mode circulaire et solidaire, centre de formation Qualiopi, matériauthèque circulaire, ateliers de production responsable.",
+      "perimetre_geographique": "Paris 13e / IdF",
+      "sources": [
+        "fashiongreenhub.org",
+        "vert.eco"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:46:19.106981"
+    },
+    "DANUBE PALACE": {
+      "activite_verifiee": "Le Danube Palace — Bouillon d'Cultures, association socioculturelle ESS créée en 2007 au cœur du quartier Danube-Solidarité-Marseillaise Paris 19e. Café culturel ouvert au public le 10 septembre 2019, 12 rue de la Solidarité (métro Danube/Ourcq). Cours informatique, poterie/sculpture/céramique, ateliers créatifs, ciné-débats, événements hebdomadaires (concerts, stand-up, magie), coworking.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        "ledanubepalace.com",
+        "paris.fr",
+        "ledanubepalacecafe.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:46:19.106981"
+    },
+    "SENSECUBE": {
+      "activite_verifiee": "SenseCube, incubateur social de makesense créé en 2014 à Paris (repris par l'organisation makesense). Accompagne des startups à fort impact sociétal en phase early-stage (concept, projet, jeune startup). 9 mois de coaching personnalisé, 2 espaces de travail à Paris, 40 formations collectives, ~100 k€ de bénéfices partenaires. Extension internationale : Mexique, Pérou, Sénégal, Liban, Philippines.",
+      "perimetre_geographique": "International (Paris)",
+      "sources": [
+        "france.makesense.org",
+        "fr.wikipedia.org/wiki/Makesense",
+        "maddyness.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:46:19.106981"
+    },
+    "VIACTI": {
+      "activite_verifiee": "Viacti, association sport-santé qui promeut l'Activité Physique Adaptée et Santé (APAS) comme vecteur d'autonomie et d'intégration. Basée à Paris 12e + Chelles + Clichy. Publics : personnes en situation de handicap physique/psychique/social, seniors. Ateliers collectifs ou individuels APAS, événements sportifs gratuits, sensibilisation et formations.",
+      "perimetre_geographique": "Paris 12e / IdF",
+      "sources": [
+        "viacti.com",
+        "helloasso.com",
+        "jemengage.paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:46:19.106981"
+    },
+    "KORHOM": {
+      "activite_verifiee": "Korhom, association créée en novembre 2010, 156 rue d'Aubervilliers Paris 19e. Éducation aux droits humains par la pédagogie d'expérience, jeu, travail de groupe. Ateliers tous publics (dès 6 ans, écoles, collèges, centres sociaux, associations) + formations adultes. Dispositifs d'inclusion pour personnes handicapées.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        "korhom.fr",
+        "helloasso.com/associations/korhom"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:46:19.106981"
+    },
+    "ECOUTE INTERCULT DISPOSIT INTER PSY": {
+      "activite_verifiee": "Dispositif d'écoute interculturelle et interprétariat psychiatrique parisien : appui aux professionnels de santé mentale dans la prise en charge de personnes migrantes. Proche du Centre Françoise Minkowska / Parcours d'Exil / AMSK (détails publics limités selon l'entité exacte).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "minkowska.com",
+        "parcours-exil.org"
+      ],
+      "confiance": 0.4,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:46:19.106981"
+    },
+    "MAISON DES FEMMES DE PARIS": {
+      "activite_verifiee": "Maison des Femmes de Paris (MDF), association loi 1901 fondée en 1981, 163 rue de Charenton Paris 12e. Espace féministe laïque d'accueil, solidarité et initiatives. Accès aux droits, lutte contre les violences de genre, action emploi (2 sessions annuelles), services juridique/social pour femmes sourdes victimes de violences, activités culturelles. Unique féministe à proposer un accueil hebdomadaire en LSF.",
+      "perimetre_geographique": "Paris 12e",
+      "sources": [
+        "mdfparis.fr",
+        "paris.fr",
+        "asso-idf.hubertine.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:46:19.106981"
+    },
+    "THEATRE IRRUPTIONNEL": {
+      "activite_verifiee": "Le Théâtre Irruptionnel, compagnie théâtre et danse. Associée à la Scène Nationale du Moulin du Roc à Niort. Productions contemporaines explorant des sujets comme le geste sportif et Shakespeare (Prospero). Présente à Paris (résidences + représentations).",
+      "perimetre_geographique": "Paris / Niort",
+      "sources": [
+        "latelier-a-spectacle.com",
+        "lesarchivesduspectacle.net",
+        "helloasso.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:46:19.106981"
+    },
+    "MOI ET MES ENFANTS": {
+      "beneficiaire": "Moi et mes Enfants",
+      "beneficiaire_normalise": "MOI ET MES ENFANTS",
+      "siret": "",
+      "generated_at": "2026-04-22T21:51:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Lieu d'accueil pour familles monoparentales (13e) : coworking avec garde d'enfants, ateliers parentalité, coaching, ostéopathie, yoga. Créé en 2017.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://paris.fr",
+          "title": "paris.fr"
+        },
+        {
+          "url": "https://parishabitat.fr",
+          "title": "parishabitat.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "SOLIDAYA": {
+      "beneficiaire": "Solidaya",
+      "beneficiaire_normalise": "SOLIDAYA",
+      "siret": "",
+      "generated_at": "2026-04-22T21:51:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Épicerie sociale et solidaire du 13e (14 rue du Moulin des Prés) : aide alimentaire hebdomadaire, lutte contre la précarité alimentaire étudiante.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://paris.fr",
+          "title": "paris.fr"
+        },
+        {
+          "url": "https://solidaya.fr",
+          "title": "solidaya.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "VIVRE ENSEMBLE MAROC TANGER": {
+      "beneficiaire": "Vivre Ensemble Maroc Tanger",
+      "beneficiaire_normalise": "VIVRE ENSEMBLE MAROC TANGER",
+      "siret": "",
+      "generated_at": "2026-04-22T21:51:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association de quartier Riquet-Stalingrad (19e, 26 rue du Maroc) : soutien scolaire, médiation, rencontres inter-résidents. Fondée en 2004.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://paris.fr",
+          "title": "paris.fr"
+        },
+        {
+          "url": "https://reseau-alpha.org",
+          "title": "reseau-alpha.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "CINE SORBONNE": {
+      "beneficiaire": "Ciné Sorbonne",
+      "beneficiaire_normalise": "CINE SORBONNE",
+      "siret": "",
+      "generated_at": "2026-04-22T21:51:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Société de distribution cinématographique (9 rue Champollion, 75005), spécialisée dans classiques restaurés — aujourd'hui La Filmothèque Distribution.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://lafilmotheque.fr",
+          "title": "lafilmotheque.fr"
+        }
+      ],
+      "confiance": 0.75,
+      "source_type": "grounded_search"
+    },
+    "VACANCES FAMILLES": {
+      "beneficiaire": "Vacances & Familles",
+      "beneficiaire_normalise": "VACANCES FAMILLES",
+      "siret": "",
+      "generated_at": "2026-04-22T21:51:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Accompagnement au départ en vacances de familles précaires : hébergement, budget, transport, soutien avant/pendant/après. Antenne Paris.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://vacancesetfamilles.org",
+          "title": "vacancesetfamilles.org"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "CAFE ASSOCIATIF PERNETY": {
+      "beneficiaire": "Café Associatif Pernety — Le Moulin à Café",
+      "beneficiaire_normalise": "CAFE ASSOCIATIF PERNETY",
+      "siret": "",
+      "generated_at": "2026-04-22T21:51:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Café associatif, solidaire et participatif du 14e (8 rue Sainte Léonie) : restauration à prix solidaires, concerts, aide aux devoirs, ateliers numériques. Fondé en 2006.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://moulin-cafe.org",
+          "title": "moulin-cafe.org"
+        },
+        {
+          "url": "https://paris.fr",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "MILA 18": {
+      "beneficiaire": "Mila 18",
+      "beneficiaire_normalise": "MILA 18",
+      "siret": "",
+      "generated_at": "2026-04-22T21:51:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Incubateur dédié aux acteurs indépendants de la musique (18e) : Rue de la Musique, hébergement labels / producteurs / managers, ~100 structures affiliées. Créé en 2002.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://milaparis.fr",
+          "title": "milaparis.fr"
+        },
+        {
+          "url": "https://irma.asso.fr",
+          "title": "irma.asso.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "SAVEURS EN PARTAGE": {
+      "beneficiaire": "Saveurs en Partage",
+      "beneficiaire_normalise": "SAVEURS EN PARTAGE",
+      "siret": "",
+      "generated_at": "2026-04-22T21:51:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Épicerie bio solidaire (20e, 38 bd Mortier) portée par un collectif de femmes : double tarification (-70% pour mères isolées), ateliers consommation responsable. Fondée en 2014.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://saveursenpartage.com",
+          "title": "saveursenpartage.com"
+        },
+        {
+          "url": "https://pie.paris",
+          "title": "pie.paris"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "BRADY SPECTACLES": {
+      "beneficiaire": "Brady Spectacles",
+      "beneficiaire_normalise": "BRADY SPECTACLES",
+      "siret": "",
+      "generated_at": "2026-04-22T21:51:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Structure liée au Brady (39 bd de Strasbourg, 10e) : cinéma/théâtre rénové en 2009, salle de spectacle vivant (100 places) et deux salles de cinéma.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://lebrady.fr",
+          "title": "lebrady.fr"
+        }
+      ],
+      "confiance": 0.6,
+      "source_type": "grounded_search"
+    },
+    "ESPERANCE PARIS 19E": {
+      "beneficiaire": "Espérance Paris 19e",
+      "beneficiaire_normalise": "ESPERANCE PARIS 19E",
+      "siret": "",
+      "generated_at": "2026-04-22T21:51:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association du 19e (Maison des Associations, 20 rue Édouard Pailleron). Activités locales de quartier.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://oms19paris.fr",
+          "title": "oms19paris.fr"
+        }
+      ],
+      "confiance": 0.5,
+      "source_type": "grounded_search"
+    },
+    "EVOLUTION SPORTIVE ET CULTURELLE XV": {
+      "beneficiaire": "Évolution Sportive et Culturelle du XVe (ESC XV)",
+      "beneficiaire_normalise": "EVOLUTION SPORTIVE ET CULTURELLE XV",
+      "siret": "",
+      "generated_at": "2026-04-22T21:51:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Club omnisports du 15e fondé en 1910 : 21 activités, ~2000 membres, 124 avenue Émile Zola. Un des plus anciens clubs de Paris.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://actuel-xv.fr",
+          "title": "actuel-xv.fr"
+        },
+        {
+          "url": "https://paris.fr",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "KABUBU L AMITIE PAR LE SPORT": {
+      "beneficiaire": "Kabubu",
+      "beneficiaire_normalise": "KABUBU L AMITIE PAR LE SPORT",
+      "siret": "",
+      "generated_at": "2026-04-22T21:51:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Inclusion des personnes exilées par le sport : ~30 séances hebdomadaires gratuites (course, badminton, foot…), formations aux métiers du sport pour réfugiés. Paris, Lyon, Strasbourg.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://kabubu.fr",
+          "title": "kabubu.fr"
+        },
+        {
+          "url": "https://paris.fr",
+          "title": "paris.fr"
+        },
+        {
+          "url": "https://fondationdefrance.org",
+          "title": "fondationdefrance.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ASSEMBLEE CITOYENNE ORIGINAIRES TUR": {
+      "beneficiaire": "ACORT — Assemblée Citoyenne des Originaires de Turquie",
+      "beneficiaire_normalise": "ASSEMBLEE CITOYENNE ORIGINAIRES TUR",
+      "siret": "",
+      "generated_at": "2026-04-22T21:51:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association d'intégration des immigrés turcs (10e, 2 bis rue Bouchardon) : alphabétisation, aide juridique, écrivain public, activités socio-culturelles. Fondée en 1981.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://acort.org",
+          "title": "acort.org"
+        },
+        {
+          "url": "https://maisondesrefugies.paris",
+          "title": "maisondesrefugies.paris"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "FARINEZ VOUS": {
+      "beneficiaire": "Farinez-vous",
+      "beneficiaire_normalise": "FARINEZ VOUS",
+      "siret": "",
+      "generated_at": "2026-04-22T21:55:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Boulangerie artisanale d'insertion (13e, 12e) créée en 2008 par Domitille Flichy : formation et emploi pour personnes éloignées de l'emploi, école inclusive de 4 mois. Statut entreprise d'insertion agréée depuis 2009.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://farinez-vous.com",
+          "title": "farinez-vous.com"
+        },
+        {
+          "url": "https://paris.fr",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "AEPNDC MONTPARNASSE RENCONTRE": {
+      "beneficiaire": "AEP NDC Montparnasse Rencontres",
+      "beneficiaire_normalise": "AEPNDC MONTPARNASSE RENCONTRE",
+      "siret": "",
+      "generated_at": "2026-04-22T21:55:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association d'éducation populaire Notre-Dame des Champs (14e, 92bis bd du Montparnasse) : aide alimentaire, domiciliation, vestiaire, soutien scolaire, apprentissage du français. Active depuis ~100 ans, 200+ bénévoles.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://benevolt.fr",
+          "title": "benevolt.fr"
+        },
+        {
+          "url": "https://maisondesrefugies.paris",
+          "title": "maisondesrefugies.paris"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "SOCIETE CINEDEVIL": {
+      "beneficiaire": "Société Cinédevil",
+      "beneficiaire_normalise": "SOCIETE CINEDEVIL",
+      "siret": "",
+      "generated_at": "2026-04-22T21:55:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Exploitant du cinéma Nouvel Odéon (6e, 6 rue de l'École de Médecine). Créée en 1964. SIRET 642035430.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://pappers.fr",
+          "title": "pappers.fr"
+        },
+        {
+          "url": "https://societe.com",
+          "title": "societe.com"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "PALAIS DE LA DECOUVERTE ET": {
+      "beneficiaire": "Palais de la Découverte",
+      "beneficiaire_normalise": "PALAIS DE LA DECOUVERTE ET",
+      "siret": "",
+      "generated_at": "2026-04-22T21:55:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Musée parisien des sciences (Grand Palais, 8e) créé en 1937 par Jean Perrin. Aujourd'hui partie d'Universcience (avec la Cité des sciences). Actuellement en rénovation, programmation aux Étincelles (15e).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://palais-decouverte.fr",
+          "title": "palais-decouverte.fr"
+        },
+        {
+          "url": "https://universcience.fr",
+          "title": "universcience.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "PEPINS PROD LA PEPINIERE DE QUART": {
+      "beneficiaire": "Pépins Production — la pépinière de quartier",
+      "beneficiaire_normalise": "PEPINS PROD LA PEPINIERE DE QUART",
+      "siret": "",
+      "generated_at": "2026-04-22T21:55:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association loi 1901 créée en 2015 : pépinières de quartier en ville, production écologique de ~35 000 plants/an avec participation citoyenne. 4 sites (Paris, Pantin, Chelles), insertion professionnelle via l'horticulture.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://pepinsproduction.fr",
+          "title": "pepinsproduction.fr"
+        },
+        {
+          "url": "https://lemarche.inclusion.gouv.fr",
+          "title": "lemarche.inclusion.gouv.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "MOUVEMENT FR PLANNING FAMILIAL": {
+      "beneficiaire": "Mouvement Français pour le Planning Familial",
+      "beneficiaire_normalise": "MOUVEMENT FR PLANNING FAMILIAL",
+      "siret": "",
+      "generated_at": "2026-04-22T21:55:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Confédération féministe créée en 1960 (héritage de « La maternité heureuse », 1956) : défense du droit à la contraception, à l'IVG et à l'éducation sexuelle. Siège national 4 square Saint-Irénée (11e). 80 associations départementales.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://planning-familial.org",
+          "title": "planning-familial.org"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "190": {
+      "beneficiaire": "Le 190",
+      "beneficiaire_normalise": "190",
+      "siret": "",
+      "generated_at": "2026-04-22T21:55:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Centre de santé sexuelle LGBTQI+ (11e, 90 rue Jean-Pierre Timbaud) : accueil gratuit, anonyme, prise en charge des problématiques IST, addictions et chemsex. SIRET 80540412600031.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://le190.fr",
+          "title": "le190.fr"
+        },
+        {
+          "url": "https://drogues-info-service.fr",
+          "title": "drogues-info-service.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "PARQUES": {
+      "beneficiaire": "Les Parques",
+      "beneficiaire_normalise": "PARQUES",
+      "siret": "",
+      "generated_at": "2026-04-22T21:55:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association d'intérêt général (13e, 11 rue Caillaux) créée en 2012 : art, culture et nature en quartier, ateliers intergénérationnels, insertion pro, ESS. Agrément jeunesse/éducation populaire depuis 2018. SIRET 75143768200022.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://benevolt.fr",
+          "title": "benevolt.fr"
+        },
+        {
+          "url": "https://jemengage.paris.fr",
+          "title": "jemengage.paris.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "ASS CONSULTATION LIEU ACCUEIL PSYCH": {
+      "beneficiaire": "CLAP — Consultation et Lieu d'Accueil Psychanalytique",
+      "beneficiaire_normalise": "ASS CONSULTATION LIEU ACCUEIL PSYCH",
+      "siret": "",
+      "generated_at": "2026-04-22T21:55:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association loi 1901 (9e, 23 rue Rodier) fondée en novembre 2010 : consultations psychanalytiques pour enfants et parents face à la détresse familiale. Équipe de psychologues cliniciens.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://net1901.org",
+          "title": "net1901.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION FOYERS DE JEUNES": {
+      "beneficiaire": "Association des Foyers de Jeunes",
+      "beneficiaire_normalise": "ASSOCIATION FOYERS DE JEUNES",
+      "siret": "",
+      "generated_at": "2026-04-22T21:55:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Gestionnaire du Foyer Tolbiac (Paris) et de la Résidence Petite Étoile (Levallois) : ~600 jeunes femmes (18–29 ans) accueillies chaque année — salariées, apprenties, stagiaires.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://unafo.org",
+          "title": "unafo.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "MA RESSOURCERIE": {
+      "beneficiaire": "Ma Ressourcerie",
+      "beneficiaire_normalise": "MA RESSOURCERIE",
+      "siret": "",
+      "generated_at": "2026-04-22T21:55:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (13e, 126 avenue d'Italie) gérant une ressourcerie solidaire depuis 2011 : collecte, réemploi, revente à bas prix, sensibilisation à la réduction des déchets. 6 salariés. SIRET 52189358600037.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://paris.fr",
+          "title": "paris.fr"
+        },
+        {
+          "url": "https://seconde-vie.net",
+          "title": "seconde-vie.net"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "FOYER JEUNE TRAVAIL CITE FLEUR": {
+      "beneficiaire": "Foyer de Jeunes Travailleurs Cité des Fleurs",
+      "beneficiaire_normalise": "FOYER JEUNE TRAVAIL CITE FLEUR",
+      "siret": "",
+      "generated_at": "2026-04-22T21:55:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Foyer de jeunes travailleurs (17e, 29 rue Gauthey) : hébergement meublé pour salariés, apprentis, stagiaires et étudiants, restauration sur place, accueil 24/7.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://fjtcitedesfleurs.org",
+          "title": "fjtcitedesfleurs.org"
+        },
+        {
+          "url": "https://habitatjeunes-idf.fr",
+          "title": "habitatjeunes-idf.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "FEDERATION INTERNATION DROITS HOMME": {
+      "beneficiaire": "FIDH — Fédération Internationale pour les Droits Humains",
+      "beneficiaire_normalise": "FEDERATION INTERNATION DROITS HOMME",
+      "siret": "",
+      "generated_at": "2026-04-22T21:55:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "ONG fédérative (11e, 17 passage de la Main d'Or) créée en 1922 : 192 ligues membres dans 117 pays, défense des droits humains civils, politiques, économiques et sociaux. Statut consultatif ONU/UNESCO/Conseil de l'Europe.",
+      "perimetre_geographique": "International",
+      "sources": [
+        {
+          "url": "https://fidh.org",
+          "title": "fidh.org"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "CTR PROMOT LIVRE JEUNESSE": {
+      "beneficiaire": "CPLJ-93 — Centre de Promotion du Livre de Jeunesse",
+      "beneficiaire_normalise": "CTR PROMOT LIVRE JEUNESSE",
+      "siret": "",
+      "generated_at": "2026-04-22T21:55:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (Montreuil, 3 rue François Debergue) : organise le Salon du livre et de la presse jeunesse de Montreuil, l'École du livre de jeunesse, le MÏCE et le programme européen Transbook.",
+      "perimetre_geographique": "Seine-Saint-Denis",
+      "sources": [
+        {
+          "url": "https://cnlj.bnf.fr",
+          "title": "cnlj.bnf.fr"
+        },
+        {
+          "url": "https://slpj.fr",
+          "title": "slpj.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ASS ARTISTIQUE CONCERT COLONNE": {
+      "beneficiaire": "Association Artistique des Concerts Colonne",
+      "beneficiaire_normalise": "ASS ARTISTIQUE CONCERT COLONNE",
+      "siret": "",
+      "generated_at": "2026-04-22T21:55:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Orchestre associatif fondé en 1873 par Édouard Colonne, un des plus anciens orchestres de Paris. Théâtre du Châtelet. Statut SCOP depuis 1984, ~100 musiciens coopérateurs.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://orchestrecolonne.fr",
+          "title": "orchestrecolonne.fr"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
     }
   },
-  "total": 1356
+  "total": 1451
 }
