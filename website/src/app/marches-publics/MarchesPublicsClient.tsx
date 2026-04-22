@@ -71,8 +71,14 @@ export default function MarchesPublicsClient({
             {t("fx.mp.title.after")}
           </h1>
           <p className="fx-page-lede">
-            {fmtInt(d.nb)}{t("fx.mp.lede.a")}{d.year}{t("fx.mp.lede.b")}{fmtInt(d.nbTitulaires)}{t("fx.mp.lede.c")}
-            <b>{t("fx.mp.lede.em")}</b>
+            {fmtInt(d.nb)}{" "}
+            <Tip label={t("fx.mp.lede.a.contrats.tip")}>{t("fx.mp.lede.a.contrats")}</Tip>
+            {t("fx.mp.lede.a.notifies")}{d.year}{t("fx.mp.lede.b")}{fmtInt(d.nbTitulaires)}{" "}
+            <Tip label={t("fx.mp.titulaire.tip")}>fournisseurs</Tip>
+            {t("fx.mp.lede.c")}
+            <b>
+              <Tip label={t("fx.mp.lede.em.tip")}>{t("fx.mp.lede.em")}</Tip>
+            </b>
             {t("fx.mp.lede.d")}
           </p>
           <div className="fx-page-actions">
@@ -106,7 +112,9 @@ export default function MarchesPublicsClient({
               caption={
                 <>
                   {t("fx.mp.s01.hero_cap.a")}
-                  <b>{t("fx.mp.s01.hero_cap.em")}</b>
+                  <b>
+                    <Tip label={t("fx.mp.s01.hero_cap.em.tip")}>{t("fx.mp.s01.hero_cap.em")}</Tip>
+                  </b>
                   {t("fx.mp.s01.hero_cap.b")}
                 </>
               }
@@ -152,7 +160,7 @@ export default function MarchesPublicsClient({
         <div className="fx-wrap">
           <SectionHead
             number="02"
-            kind={t("fx.mp.s02.kind")}
+            kind={<Tip label={t("fx.mp.s02.kind.tip")}>{t("fx.mp.s02.kind")}</Tip>}
             title={
               <>
                 {t("fx.mp.s02.title.before")}
@@ -178,7 +186,7 @@ export default function MarchesPublicsClient({
         <div className="fx-wrap">
           <SectionHead
             number="03"
-            kind={t("fx.mp.s03.kind")}
+            kind={<Tip label={t("fx.mp.s03.kind.tip")}>{t("fx.mp.s03.kind")}</Tip>}
             title={
               <>
                 {t("fx.mp.s03.title.before")}
@@ -410,7 +418,7 @@ export default function MarchesPublicsClient({
         <div className="fx-wrap">
           <SectionHead
             number="05"
-            kind={t("fx.mp.s05.kind")}
+            kind={<Tip label={t("fx.mp.s05.kind.tip")}>{t("fx.mp.s05.kind")}</Tip>}
             title={
               <>
                 {t("fx.mp.s05.title.before")}
@@ -520,7 +528,7 @@ export default function MarchesPublicsClient({
         <div className="fx-wrap">
           <SectionHead
             number="06"
-            kind={t("fx.mp.s06.kind")}
+            kind={<Tip label={t("fx.mp.s06.kind.tip")}>{t("fx.mp.s06.kind")}</Tip>}
             title={
               <>
                 {t("fx.mp.s06.title.before")}

@@ -4,7 +4,7 @@ import "../../../fusion.css";
 
 import { Navbar, Footer, AssociationFiche } from "@/components/fusion";
 import { AssoPageHeader } from "@/components/fusion/AssoKicker";
-import { loadAssociation, loadSubventionVulgarization } from "@/lib/fusion-data";
+import { loadAssociation, loadSubventionVulgarization, loadBeneficiaireGrounded } from "@/lib/fusion-data";
 
 type Params = { slug: string };
 
@@ -24,6 +24,7 @@ export default async function AssociationPage({ params }: { params: Promise<Para
   const asso = loadAssociation(slug);
   if (!asso) return notFound();
   const vulgarization = loadSubventionVulgarization(asso.name);
+  const grounded = loadBeneficiaireGrounded(asso.name);
 
   return (
     <div className="theme-fusion">
@@ -43,7 +44,7 @@ export default async function AssociationPage({ params }: { params: Promise<Para
         </div>
       </section>
       <div className="fx-fiche-wrap">
-        <AssociationFiche asso={asso} vulgarization={vulgarization} />
+        <AssociationFiche asso={asso} vulgarization={vulgarization} grounded={grounded} />
       </div>
       <Footer />
     </div>

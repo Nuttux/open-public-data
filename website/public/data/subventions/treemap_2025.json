@@ -1,0 +1,112 @@
+{
+  "year": 2025,
+  "generated_at": "2026-04-22T17:51:41.132807",
+  "total_montant": 293636673.0,
+  "nb_thematiques": 13,
+  "data": [
+    {
+      "annee": 2025,
+      "thematique": "Culture",
+      "nb_beneficiaires": 630,
+      "nb_subventions": 1169,
+      "montant_total": 71856600.0,
+      "pct_total": 24.47
+    },
+    {
+      "annee": 2025,
+      "thematique": "Social - Solidarité",
+      "nb_beneficiaires": 378,
+      "nb_subventions": 1418,
+      "montant_total": 61108820.0,
+      "pct_total": 20.81
+    },
+    {
+      "annee": 2025,
+      "thematique": "Social - Petite enfance",
+      "nb_beneficiaires": 129,
+      "nb_subventions": 435,
+      "montant_total": 56246919.0,
+      "pct_total": 19.16
+    },
+    {
+      "annee": 2025,
+      "thematique": "Non classifié",
+      "nb_beneficiaires": 578,
+      "nb_subventions": 1574,
+      "montant_total": 37730895.0,
+      "pct_total": 12.85
+    },
+    {
+      "annee": 2025,
+      "thematique": "Économie",
+      "nb_beneficiaires": 413,
+      "nb_subventions": 907,
+      "montant_total": 37574013.0,
+      "pct_total": 12.8
+    },
+    {
+      "annee": 2025,
+      "thematique": "Sport",
+      "nb_beneficiaires": 344,
+      "nb_subventions": 578,
+      "montant_total": 7367311.0,
+      "pct_total": 2.51
+    },
+    {
+      "annee": 2025,
+      "thematique": "Santé",
+      "nb_beneficiaires": 107,
+      "nb_subventions": 257,
+      "montant_total": 6744964.0,
+      "pct_total": 2.3
+    },
+    {
+      "annee": 2025,
+      "thematique": "International",
+      "nb_beneficiaires": 104,
+      "nb_subventions": 153,
+      "montant_total": 4886065.0,
+      "pct_total": 1.66
+    },
+    {
+      "annee": 2025,
+      "thematique": "Logement",
+      "nb_beneficiaires": 13,
+      "nb_subventions": 26,
+      "montant_total": 4267200.0,
+      "pct_total": 1.45
+    },
+    {
+      "annee": 2025,
+      "thematique": "Éducation",
+      "nb_beneficiaires": 137,
+      "nb_subventions": 317,
+      "montant_total": 3202718.0,
+      "pct_total": 1.09
+    },
+    {
+      "annee": 2025,
+      "thematique": "Environnement",
+      "nb_beneficiaires": 61,
+      "nb_subventions": 124,
+      "montant_total": 2311043.0,
+      "pct_total": 0.79
+    },
+    {
+      "annee": 2025,
+      "thematique": "Administration",
+      "nb_beneficiaires": 1,
+      "nb_subventions": 1,
+      "montant_total": 296750.0,
+      "pct_total": 0.1
+    },
+    {
+      "annee": 2025,
+      "thematique": "Transport",
+      "nb_beneficiaires": 2,
+      "nb_subventions": 7,
+      "montant_total": 43375.0,
+      "pct_total": 0.01
+    }
+  ]
+}

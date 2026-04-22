@@ -237,6 +237,13 @@ models:
       +schema: marts
       +tags: ['marts']
 
+    # -------------------------------------------------------------------------
+    # National models (OFGL, DECP nat., etc.) — disabled; require seeds &
+    # raw sources we don't sync in the Paris-only pipeline.
+    # -------------------------------------------------------------------------
+    national:
+      +enabled: false
+
 # =============================================================================
 # Variables globales du projet
 # =============================================================================

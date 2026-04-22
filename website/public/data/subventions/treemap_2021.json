@@ -1,0 +1,104 @@
+{
+  "year": 2021,
+  "generated_at": "2026-04-22T17:51:53.385489",
+  "total_montant": 248299009.0,
+  "nb_thematiques": 12,
+  "data": [
+    {
+      "annee": 2021,
+      "thematique": "Culture",
+      "nb_beneficiaires": 570,
+      "nb_subventions": 1034,
+      "montant_total": 66840609.0,
+      "pct_total": 26.92
+    },
+    {
+      "annee": 2021,
+      "thematique": "Non classifié",
+      "nb_beneficiaires": 809,
+      "nb_subventions": 2015,
+      "montant_total": 54608801.0,
+      "pct_total": 21.99
+    },
+    {
+      "annee": 2021,
+      "thematique": "Social - Petite enfance",
+      "nb_beneficiaires": 142,
+      "nb_subventions": 525,
+      "montant_total": 42559469.0,
+      "pct_total": 17.14
+    },
+    {
+      "annee": 2021,
+      "thematique": "Économie",
+      "nb_beneficiaires": 301,
+      "nb_subventions": 668,
+      "montant_total": 36948877.0,
+      "pct_total": 14.88
+    },
+    {
+      "annee": 2021,
+      "thematique": "Social - Solidarité",
+      "nb_beneficiaires": 66,
+      "nb_subventions": 442,
+      "montant_total": 25039423.0,
+      "pct_total": 10.08
+    },
+    {
+      "annee": 2021,
+      "thematique": "Sport",
+      "nb_beneficiaires": 416,
+      "nb_subventions": 698,
+      "montant_total": 7607441.0,
+      "pct_total": 3.06
+    },
+    {
+      "annee": 2021,
+      "thematique": "International",
+      "nb_beneficiaires": 78,
+      "nb_subventions": 100,
+      "montant_total": 4129800.0,
+      "pct_total": 1.66
+    },
+    {
+      "annee": 2021,
+      "thematique": "Éducation",
+      "nb_beneficiaires": 107,
+      "nb_subventions": 284,
+      "montant_total": 3519597.0,
+      "pct_total": 1.42
+    },
+    {
+      "annee": 2021,
+      "thematique": "Environnement",
+      "nb_beneficiaires": 61,
+      "nb_subventions": 158,
+      "montant_total": 2791033.0,
+      "pct_total": 1.12
+    },
+    {
+      "annee": 2021,
+      "thematique": "Logement",
+      "nb_beneficiaires": 11,
+      "nb_subventions": 18,
+      "montant_total": 2110426.0,
+      "pct_total": 0.85
+    },
+    {
+      "annee": 2021,
+      "thematique": "Santé",
+      "nb_beneficiaires": 15,
+      "nb_subventions": 46,
+      "montant_total": 2090933.0,
+      "pct_total": 0.84
+    },
+    {
+      "annee": 2021,
+      "thematique": "Transport",
+      "nb_beneficiaires": 2,
+      "nb_subventions": 7,
+      "montant_total": 52600.0,
+      "pct_total": 0.02
+    }
+  ]
+}

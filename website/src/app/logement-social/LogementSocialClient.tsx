@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
@@ -6,6 +7,7 @@ import SectionHead from "@/components/fusion/SectionHead";
 import HeroNumber from "@/components/fusion/HeroNumber";
 import KPIGrid from "@/components/fusion/KPIGrid";
 import BudgetTimeline from "@/components/fusion/BudgetTimeline";
+import PageTOC from "@/components/fusion/PageTOC";
 import ParisChoropleth from "@/components/fusion/ParisChoropleth";
 import TileCard from "@/components/fusion/TileCard";
 import WaitSimulator from "@/components/fusion/WaitSimulator";
@@ -23,6 +25,56 @@ const fill = (s: string, vars: Record<string, string | number>) => {
   for (const [k, v] of Object.entries(vars)) r = r.replace(`{${k}}`, String(v));
   return r;
 };
+
+/** Compact 7-year sparkline for the "Nouveaux financés" KPI. Highlights the
+ *  currently selected year with a dot; draws remaining points as a thin line.
+ *  First and last year labels are rendered below the SVG so the reader can
+ *  anchor the trajectory without hovering. */
+function Sparkline({
+  points,
+  activeYear,
+}: {
+  points: { year: number; value: number }[];
+  activeYear: number;
+}) {
+  if (points.length < 2) return null;
+  const width = 140;
+  const height = 32;
+  const vals = points.map((p) => p.value);
+  const min = Math.min(...vals);
+  const max = Math.max(...vals);
+  const range = Math.max(1, max - min);
+  const pad = 3;
+  const xStep = (width - pad * 2) / (points.length - 1);
+  const yOf = (v: number) => pad + (1 - (v - min) / range) * (height - pad * 2);
+  const line = points
+    .map((p, i) => `${i === 0 ? "M" : "L"} ${pad + i * xStep} ${yOf(p.value)}`)
+    .join(" ");
+  const activeIdx = points.findIndex((p) => p.year === activeYear);
+  const ax = activeIdx >= 0 ? pad + activeIdx * xStep : 0;
+  const ay = activeIdx >= 0 ? yOf(points[activeIdx].value) : 0;
+  const firstYear = points[0].year;
+  const lastYear = points[points.length - 1].year;
+  return (
+    <div className="fx-log-sparkline" aria-hidden>
+      <svg
+        viewBox={`0 0 ${width} ${height}`}
+        width={width}
+        height={height}
+        role="img"
+      >
+        <path d={line} fill="none" stroke="var(--muted-2)" strokeWidth="1.2" />
+        {activeIdx >= 0 && (
+          <circle cx={ax} cy={ay} r="3" fill="var(--ocre)" />
+        )}
+      </svg>
+      <div className="fx-log-sparkline-axis" style={{ width }}>
+        <span>{firstYear}</span>
+        <span>{lastYear}</span>
+      </div>
+    </div>
+  );
+}
 
 /** Produces 5-7 rounded Y-axis ticks covering [min, max] with a nice round
  *  step (1, 2, 5, 10, 25, 50, 100, 250, 500, 1000, …). Returned top→bottom. */
@@ -43,10 +95,44 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
   const { locale } = useLocale();
   const gap = d.sruRatio - d.sruTarget;
   const gapDir: "up" | "down" | "flat" = gap > 0.1 ? "up" : gap < -0.1 ? "down" : "flat";
+  const [hookCopied, setHookCopied] = useState(false);
+
+  const copyHookText = async () => {
+    if (typeof window === "undefined") return;
+    const line = fill(t("fx.log.hook.share.text"), {
+      year: d.year,
+      logements: fmtInt(d.nouveauxParAn),
+      operations: fmtInt(d.nbOperations),
+      demandes: fmtInt(d.tension.demandesActives),
+      ratio: d.tension.ratio,
+      delai: fmtDec(d.tension.delaiMedian, 1),
+      url: window.location.origin + "/logement-social",
+    });
+    try {
+      await navigator.clipboard.writeText(line);
+      setHookCopied(true);
+      setTimeout(() => setHookCopied(false), 1800);
+    } catch {
+      /* clipboard unavailable */
+    }
+  };
 
   return (
     <div className="theme-fusion">
       <Navbar />
+
+      <PageTOC
+        items={[
+          { id: "sec-sru", label: t("fx.toc.sru") },
+          { id: "sec-carte", label: t("fx.toc.carte") },
+          { id: "sec-bailleurs", label: t("fx.toc.bailleurs") },
+          { id: "sec-tension", label: t("fx.toc.tension") },
+          { id: "sec-simulateur", label: t("fx.toc.simulateur") },
+          { id: "sec-production", label: t("fx.toc.production") },
+          { id: "sec-sources", label: t("fx.toc.sources") },
+          { id: "sec-explorer", label: t("fx.toc.explorer") },
+        ]}
+      />
 
       <section className="fx-page-header">
         <div className="fx-wrap">
@@ -58,7 +144,17 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
             <b>{t("fx.log.title.b_b")}</b>
             {t("fx.log.title.b_after")}
           </h1>
-          <p className="fx-page-lede">{fill(t("fx.log.lede"), { year: d.year })}</p>
+          <p className="fx-page-lede">
+            {t("fx.log.lede.prefix")}
+            <Tip label={t("fx.log.sru.tip")}>{t("fx.log.lede.sru")}</Tip>
+            {t("fx.log.lede.mid1")}
+            <Tip label={t("fx.log.bailleur.tip")}>{t("fx.log.lede.bailleurs")}</Tip>
+            {t("fx.log.lede.mid2")}
+            <Tip label={t("fx.log.ddt.tip")}>{t("fx.log.lede.ddt")}</Tip>
+            {t("fx.log.lede.mid3")}
+            <Tip label={t("fx.log.lede.ca.tip")}>{t("fx.log.lede.ca")}</Tip>
+            {fill(t("fx.log.lede.suffix"), { year: d.year })}
+          </p>
           <div className="fx-page-actions">
             <YearPicker
               years={d.availableYears}
@@ -70,8 +166,58 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
         </div>
       </section>
 
+      {/* Hook · production de l'année (bouge avec le YearPicker) + tension DRIHL en contre-pied */}
+      <section className="fx-log-hook" aria-label={t("fx.log.hook.aria")}>
+        <div className="fx-wrap">
+          <div className="fx-log-hook-head">
+            <span className="fx-log-hook-kicker">
+              {fill(t("fx.log.hook.kicker"), { year: d.year })}
+            </span>
+            <span className="fx-log-hook-sep">·</span>
+            <span className="fx-log-hook-src">{t("fx.log.hook.source")}</span>
+          </div>
+          <div className="fx-log-hook-grid">
+            <div className="fx-log-hook-item">
+              <div className="fx-log-hook-v tnum">{fmtInt(d.nouveauxParAn)}</div>
+              <div className="fx-log-hook-l">{t("fx.log.hook.logements")}</div>
+            </div>
+            <div className="fx-log-hook-item">
+              <div className="fx-log-hook-v tnum">{fmtInt(d.nbOperations)}</div>
+              <div className="fx-log-hook-l">{t("fx.log.hook.operations")}</div>
+            </div>
+            <div className="fx-log-hook-item">
+              <div className="fx-log-hook-v tnum">
+                {d.byArrondissement.filter((a) => a.logements > 0).length}
+                <span className="fx-log-hook-u">/ 20</span>
+              </div>
+              <div className="fx-log-hook-l">{t("fx.log.hook.arrs")}</div>
+            </div>
+          </div>
+          <p className="fx-log-hook-tension">
+            <span className="fx-log-hook-tension-lbl">{t("fx.log.hook.tension.label")}</span>
+            <b>{fmtInt(d.tension.demandesActives)}</b> {t("fx.log.hook.demandes")}
+            <span className="fx-log-hook-tension-sep">·</span>
+            <b>{d.tension.ratio}:1</b>
+            <span className="fx-log-hook-tension-sep">·</span>
+            <b>{fmtDec(d.tension.delaiMedian, 1)} {t("fx.log.hook.annees")}</b>{" "}
+            {t("fx.log.hook.tension.wait")}
+            <span className="fx-log-hook-tension-src">{t("fx.log.hook.tension.src")}</span>
+          </p>
+          <div className="fx-log-hook-actions">
+            <button
+              type="button"
+              className="fx-log-hook-share"
+              onClick={copyHookText}
+              aria-live="polite"
+            >
+              {hookCopied ? t("fx.log.hook.share.copied") : t("fx.log.hook.share.cta")}
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* §01 — Vue d'ensemble SRU */}
-      <section className="fx-section">
+      <section className="fx-section" id="sec-sru">
         <div className="fx-wrap">
           <SectionHead
             number="01"
@@ -107,7 +253,15 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
                 {
                   label: fill(t("fx.log.s01.kpi.new"), { year: d.year }),
                   value: fmtInt(d.nouveauxParAn),
-                  delta: fill(t("fx.log.s01.kpi.new_delta"), { n: fmtInt(d.nbOperations) }),
+                  delta: (
+                    <>
+                      {fill(t("fx.log.s01.kpi.new_delta"), { n: fmtInt(d.nbOperations) })}
+                      <Sparkline
+                        points={d.yearsSummary.map((y) => ({ year: y.year, value: y.logements }))}
+                        activeYear={d.year}
+                      />
+                    </>
+                  ),
                 },
                 {
                   label: t("fx.log.s01.kpi.cible"),
@@ -129,11 +283,11 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
       </section>
 
       {/* §02 — Par arrondissement */}
-      <section className="fx-section">
+      <section className="fx-section" id="sec-carte">
         <div className="fx-wrap">
           <SectionHead
             number="02"
-            kind={t("fx.log.s02.kind")}
+            kind={<Tip label={t("fx.log.s02.kind.tip")}>{t("fx.log.s02.kind")}</Tip>}
             title={
               <>
                 {t("fx.log.s02.title.before")}
@@ -154,11 +308,12 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
               `/logement-social/arrondissement/${cAr === 0 ? "paris-centre" : cAr}`
             }
           />
+          <p className="fx-mini-note">{t("fx.log.s02.paris_centre_note")}</p>
         </div>
       </section>
 
       {/* §03 — Bailleurs */}
-      <section className="fx-section">
+      <section className="fx-section" id="sec-bailleurs">
         <div className="fx-wrap">
           <SectionHead
             number="03"
@@ -179,15 +334,11 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
                 href={`/dette-patrimoine/bailleur/${slugifyBailleur(b.name)}`}
                 className="fx-bailleur-card"
               >
-                <div className="n" style={{ color: b.color }}>
-                  {trLabel(b.type, locale)}
-                </div>
+                <div className="n">{trLabel(b.type, locale)}</div>
                 <h3>{b.name}</h3>
                 <p>{trLabel(b.description, locale)}</p>
                 <div className="fx-bailleur-share-row">
-                  <span className="fx-bailleur-share" style={{ color: b.color }}>
-                    ~{b.share} %
-                  </span>
+                  <span className="fx-bailleur-share">~{b.share} %</span>
                   <span className="fx-bailleur-share-unit">{t("fx.log.s03.du_parc")}</span>
                 </div>
               </Link>
@@ -200,7 +351,7 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
       </section>
 
       {/* §04 — Tension locative */}
-      <section className="fx-section">
+      <section className="fx-section" id="sec-tension">
         <div className="fx-wrap">
           <SectionHead
             number="04"
@@ -214,56 +365,49 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
             }
             subtitle={t("fx.log.tension.lede")}
           />
-          <div className="fx-overview">
-            <div className="fx-funnel-wrap">
-              <div className="fx-funnel-kicker">{t("fx.log.tension.funnel.kicker")}</div>
-              <div className="fx-funnel">
-                <div className="fx-funnel-step fx-funnel-step-1">
-                  <span className="v tnum">{fmtInt(d.tension.demandesActives)}</span>
-                  <span className="lbl">{t("fx.log.tension.funnel.s1.lbl")}</span>
+          {(() => {
+            const s1 = d.tension.demandesActives;
+            const s2 = d.tension.passeesCommission;
+            const s3 = d.tension.attributions;
+            const pct = (n: number) => (n / s1) * 100;
+            const steps = [
+              { idx: 1, v: s1, lbl: t("fx.log.tension.funnel.s1.lbl"), pct: pct(s1) },
+              { idx: 2, v: s2, lbl: t("fx.log.tension.funnel.s2.lbl"), pct: pct(s2) },
+              { idx: 3, v: s3, lbl: t("fx.log.tension.funnel.s3.lbl"), pct: pct(s3) },
+            ];
+            return (
+              <div className="fx-funnel-wrap">
+                <div className="fx-funnel-kicker">{t("fx.log.tension.funnel.kicker")}</div>
+                <div className="fx-funnel" role="img" aria-label={t("fx.log.tension.funnel.aria")}>
+                  {steps.map((s) => (
+                    <div key={s.idx} className={`fx-funnel-step fx-funnel-step-${s.idx}`}>
+                      <div className="fx-funnel-bar">
+                        <div
+                          className="fx-funnel-bar-fill"
+                          style={{ width: `${s.pct}%` }}
+                        />
+                      </div>
+                      <div className="fx-funnel-meta">
+                        <span className="fx-funnel-v tnum">{fmtInt(s.v)}</span>
+                        <span className="fx-funnel-lbl">{s.lbl}</span>
+                      </div>
+                      <span className="fx-funnel-pct tnum">
+                        {s.pct >= 10 ? fmtDec(s.pct, 0) : fmtDec(s.pct, 1)} %
+                      </span>
+                    </div>
+                  ))}
                 </div>
-                <div className="fx-funnel-step fx-funnel-step-2">
-                  <span className="v tnum">{fmtInt(d.tension.passeesCommission)}</span>
-                  <span className="lbl">{t("fx.log.tension.funnel.s2.lbl")}</span>
-                </div>
-                <div className="fx-funnel-step fx-funnel-step-3">
-                  <span className="v tnum">{fmtInt(d.tension.attributions)}</span>
-                  <span className="lbl">{t("fx.log.tension.funnel.s3.lbl")}</span>
-                </div>
+                <p className="fx-funnel-foot">
+                  {fill(t("fx.log.tension.funnel.foot"), { ratio: d.tension.ratio })}
+                </p>
               </div>
-              <p className="fx-funnel-foot">
-                {fill(t("fx.log.tension.funnel.foot"), { ratio: d.tension.ratio })}
-              </p>
-            </div>
-            <div className="fx-stat-cards">
-              <div className="fx-stat-card">
-                <div className="kicker">{t("fx.log.tension.kpi.ratio.kicker")}</div>
-                <div className="v tnum">
-                  {d.tension.ratio}
-                  <span className="u">{t("fx.log.tension.kpi.ratio.u")}</span>
-                </div>
-                <p>{t("fx.log.tension.kpi.ratio.p")}</p>
-              </div>
-              <div className="fx-stat-card">
-                <div className="kicker">{t("fx.log.tension.kpi.delai.kicker")}</div>
-                <div className="v tnum">
-                  {fmtDec(d.tension.delaiMedian, 1)}
-                  <span className="u">{t("fx.log.tension.kpi.delai.u")}</span>
-                </div>
-                <p>{t("fx.log.tension.kpi.delai.p")}</p>
-              </div>
-              <div className="fx-stat-card">
-                <div className="kicker">{t("fx.log.tension.kpi.nonpourvus.kicker")}</div>
-                <div className="v tnum">{fmtInt(d.tension.nonPourvus)}</div>
-                <p>{t("fx.log.tension.kpi.nonpourvus.p")}</p>
-              </div>
-            </div>
-          </div>
+            );
+          })()}
         </div>
       </section>
 
       {/* §05 — Simulateur */}
-      <section className="fx-section">
+      <section className="fx-section" id="sec-simulateur">
         <div className="fx-wrap">
           <SectionHead
             number="05"
@@ -282,11 +426,11 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
       </section>
 
       {/* §06 — Production annuelle */}
-      <section className="fx-section">
+      <section className="fx-section" id="sec-production">
         <div className="fx-wrap">
           <SectionHead
             number="06"
-            kind={t("fx.log.s04.kind")}
+            kind={<Tip label={t("fx.log.s04.kind.tip")}>{t("fx.log.s04.kind")}</Tip>}
             title={
               <>
                 {t("fx.log.s04.title.before")}
@@ -299,23 +443,26 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
             const vals = d.yearsSummary.map((y) => y.logements);
             const ticks = niceYTicks(Math.min(...vals), Math.max(...vals));
             return (
-              <BudgetTimeline
-                points={d.yearsSummary.map((y) => ({
-                  year: y.year,
-                  value: y.logements,
-                  type: "execute" as const,
-                }))}
-                activeYear={d.year}
-                annotations={[
-                  { year: 2020, label: t("fx.log.s04.ann.covid") },
-                  { year: 2024, label: t("fx.log.s04.ann.jo") },
-                ]}
-                yTicks={ticks}
-                formatYTick={(v) => fmtInt(v)}
-                activeBadge={`${d.year} · ${fmtInt(d.nouveauxParAn)} ${t("fx.log.s02.unit_long")}`}
-                showStatus={false}
-                ariaLabel={t("fx.log.s04.aria")}
-              />
+              <>
+                <div className="fx-y-axis-label">{t("fx.log.s04.y_label")}</div>
+                <BudgetTimeline
+                  points={d.yearsSummary.map((y) => ({
+                    year: y.year,
+                    value: y.logements,
+                    type: "execute" as const,
+                  }))}
+                  activeYear={d.year}
+                  annotations={[
+                    { year: 2020, label: t("fx.log.s04.ann.covid") },
+                    { year: 2024, label: t("fx.log.s04.ann.jo") },
+                  ]}
+                  yTicks={ticks}
+                  formatYTick={(v) => fmtInt(v)}
+                  activeBadge={`${d.year} · ${fmtInt(d.nouveauxParAn)} ${t("fx.log.s02.unit_long")}`}
+                  showStatus={false}
+                  ariaLabel={t("fx.log.s04.aria")}
+                />
+              </>
             );
           })()}
           <p className="fx-note">
@@ -325,7 +472,7 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
       </section>
 
       {/* §07 — Sources & méthode */}
-      <section className="fx-section">
+      <section className="fx-section" id="sec-sources">
         <div className="fx-wrap">
           <SectionHead
             number="07"
@@ -379,7 +526,7 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
       </section>
 
       {/* §08 — Explorer plus loin */}
-      <section className="fx-section">
+      <section className="fx-section" id="sec-explorer">
         <div className="fx-wrap">
           <SectionHead number="08" kind={t("fx.log.s06.kind")} title={t("fx.log.s06.title")} />
           <div className="fx-grid-tiles">

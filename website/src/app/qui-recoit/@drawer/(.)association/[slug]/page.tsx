@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 
 import { DetailDrawer, AssociationFiche } from "@/components/fusion";
 import { AssoKicker } from "@/components/fusion/AssoKicker";
-import { loadAssociation, loadSubventionVulgarization } from "@/lib/fusion-data";
+import { loadAssociation, loadSubventionVulgarization, loadBeneficiaireGrounded } from "@/lib/fusion-data";
 
 type Params = { slug: string };
 
@@ -11,6 +11,7 @@ export default async function DrawerAssoPage({ params }: { params: Promise<Param
   const asso = loadAssociation(slug);
   if (!asso) return notFound();
   const vulgarization = loadSubventionVulgarization(asso.name);
+  const grounded = loadBeneficiaireGrounded(asso.name);
 
   const montantStr = asso.totalAmount >= 1e6
     ? `${(asso.totalAmount / 1e6).toFixed(1).replace(".", ",")} M€`
@@ -27,7 +28,7 @@ export default async function DrawerAssoPage({ params }: { params: Promise<Param
         backHref="/qui-recoit"
         breadcrumbLabel={asso.name}
       >
-        <AssociationFiche asso={asso} vulgarization={vulgarization} />
+        <AssociationFiche asso={asso} vulgarization={vulgarization} grounded={grounded} />
       </DetailDrawer>
     </div>
   );

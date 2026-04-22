@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { AssociationFiche as AssociationFicheType, SubventionVulgarization } from "@/lib/fusion-data";
+import type { AssociationFiche as AssociationFicheType, BeneficiaireGrounded, SubventionVulgarization } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 
@@ -14,9 +14,11 @@ const fill = (s: string, vars: Record<string, string | number>) => {
 export default function AssociationFiche({
   asso,
   vulgarization,
+  grounded,
 }: {
   asso: AssociationFicheType;
   vulgarization?: SubventionVulgarization | null;
+  grounded?: BeneficiaireGrounded | null;
 }) {
   const t = useT();
   const { locale } = useLocale();
@@ -37,7 +39,42 @@ export default function AssociationFiche({
 
   return (
     <div>
-      {vulgarization ? (
+      {grounded && (grounded.confiance ?? 0) >= 0.6 && grounded.activite_verifiee ? (
+        <div className="fx-fiche-grounded">
+          <div className="fx-fiche-grounded-head">{locale === "en" ? "Activity" : "Activité"}</div>
+          <p className="fx-fiche-grounded-body">{grounded.activite_verifiee}</p>
+          <div className="fx-fiche-grounded-meta">
+            {grounded.perimetre_geographique ? (
+              <span>
+                <b>{locale === "en" ? "Scope" : "Périmètre"} :</b> {grounded.perimetre_geographique}
+              </span>
+            ) : null}
+            {grounded.sources && grounded.sources.length > 0 ? (
+              <span className="fx-fiche-grounded-sources">
+                <b>{locale === "en" ? "Sources" : "Sources"} :</b>{" "}
+                {grounded.sources.map((src, i) => {
+                  const s = typeof src === "string" ? { title: src } : src;
+                  const label = s.title || s.url || "";
+                  const href = s.url || (label.includes(".") ? `https://${label.replace(/^https?:\/\//, "")}` : undefined);
+                  const node = href ? (
+                    <a href={href} target="_blank" rel="noopener noreferrer">
+                      {label}
+                    </a>
+                  ) : (
+                    <span>{label}</span>
+                  );
+                  return (
+                    <span key={i}>
+                      {i > 0 ? ", " : ""}
+                      {node}
+                    </span>
+                  );
+                })}
+              </span>
+            ) : null}
+          </div>
+        </div>
+      ) : vulgarization ? (
         <div className="fx-fiche-lead">
           {vulgarization.activite_claire && (
             <p className="fx-fiche-lead-main">
