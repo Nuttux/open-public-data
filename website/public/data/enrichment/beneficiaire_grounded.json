@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-22T11:16:50",
+  "generated_at": "2026-04-22T11:18:26",
   "model": "gemini-3-flash-preview",
-  "count": 731,
+  "count": 747,
   "items": {
     "ELOGIE SIEMP": {
       "beneficiaire": "ELOGIE-SIEMP",
@@ -16879,6 +16879,278 @@
       "beneficiaire": "PETITE ENFANCE ET PARENTAL",
       "beneficiaire_normalise": "PETITE ENFANCE ET PARENTAL",
       "siret": ""
+    },
+    "ASSOCIATION POUR L AIDE AUX MERES DE FAMI": {
+      "activite_verifiee": "Fondation Henriette Viollet — Aide aux Familles (ex-Association Aides aux Mères de Famille, +100 ans, 12 rue Chomel Paris 7e) ; aide à domicile familles, parents, enfants.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://amf-paris.asso.fr/",
+          "title": "amf-paris.asso.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:18:26",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION POUR L AIDE AUX MERES DE FAMI",
+      "beneficiaire_normalise": "ASSOCIATION POUR L AIDE AUX MERES DE FAMI",
+      "siret": ""
+    },
+    "POUR L AIDE AUX MERES DE FAMI": {
+      "activite_verifiee": "Fondation Henriette Viollet — Aide aux Familles (ex-Association Aides aux Mères de Famille, +100 ans, 12 rue Chomel Paris 7e) ; aide à domicile familles, parents, enfants.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://amf-paris.asso.fr/",
+          "title": "amf-paris.asso.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:18:26",
+      "model": "claude-code-websearch",
+      "beneficiaire": "POUR L AIDE AUX MERES DE FAMI",
+      "beneficiaire_normalise": "POUR L AIDE AUX MERES DE FAMI",
+      "siret": ""
+    },
+    "SA IMMO MOULIN VERT SA HAB": {
+      "activite_verifiee": "COSIVIA (ex-SA HLM Immobilière du Moulin Vert, créée 1957, siège Paris 17e) ; +8 000 logements sociaux + 1 000 logements intermédiaires en Île-de-France ; agréée OFS.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.immobiliere-du-moulin-vert.fr/",
+          "title": "immobiliere-du-moulin-vert.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:18:26",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SA IMMO MOULIN VERT SA HAB",
+      "beneficiaire_normalise": "SA IMMO MOULIN VERT SA HAB",
+      "siret": ""
+    },
+    "ASSOCIATION DES CINEMAS INDEPENDANTS": {
+      "activite_verifiee": "CIP / ACIP — Association (créée 1992) fédérant 31 salles d'art et essai indépendantes dans 13 arrondissements parisiens ; éducation à l'image (École au cinéma, Collège au cinéma).",
+      "perimetre_geographique": "Paris 4e",
+      "sources": [
+        {
+          "url": "https://www.cinemasindependantsparisiens.fr/",
+          "title": "cinemasindependantsparisiens.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:18:26",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION DES CINEMAS INDEPENDANTS",
+      "beneficiaire_normalise": "ASSOCIATION DES CINEMAS INDEPENDANTS",
+      "siret": ""
+    },
+    "CINEMAS INDEPENDANTS": {
+      "activite_verifiee": "CIP / ACIP — Association (créée 1992) fédérant 31 salles d'art et essai indépendantes dans 13 arrondissements parisiens ; éducation à l'image (École au cinéma, Collège au cinéma).",
+      "perimetre_geographique": "Paris 4e",
+      "sources": [
+        {
+          "url": "https://www.cinemasindependantsparisiens.fr/",
+          "title": "cinemasindependantsparisiens.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:18:26",
+      "model": "claude-code-websearch",
+      "beneficiaire": "DES CINEMAS INDEPENDANTS",
+      "beneficiaire_normalise": "CINEMAS INDEPENDANTS",
+      "siret": ""
+    },
+    "GREEN CLIMATE FUND": {
+      "activite_verifiee": "GCF — Fonds vert pour le climat (ONU, créé 2010 sous UNFCCC) ; plus grand fonds climat mondial, $8,3 Mds approuvés pour 173 projets d'adaptation/atténuation en pays en développement.",
+      "perimetre_geographique": "international",
+      "sources": [
+        {
+          "url": "https://www.greenclimate.fund/",
+          "title": "greenclimate.fund"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:18:26",
+      "model": "claude-code-websearch",
+      "beneficiaire": "GREEN CLIMATE FUND",
+      "beneficiaire_normalise": "GREEN CLIMATE FUND",
+      "siret": ""
+    },
+    "ASSOCIATION SAFE": {
+      "activite_verifiee": "Association SAFE — réduction des risques liés à l'usage de drogues (siège 11 av. Porte de la Plaine Paris 15e) ; équipes mobiles, kits d'injection, ramassage seringues usagées.",
+      "perimetre_geographique": "Paris 15e",
+      "sources": [
+        {
+          "url": "https://www.safe.asso.fr/",
+          "title": "safe.asso.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:18:26",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION SAFE",
+      "beneficiaire_normalise": "ASSOCIATION SAFE",
+      "siret": ""
+    },
+    "ASSOCIATION PREVENTION SITE VILLETTE": {
+      "activite_verifiee": "APSV — Association de Prévention du Site La Villette (créée 1986, Paris 19e) ; prévention des incivilités, accompagnement ~200 personnes/an en insertion socio-pro, anti-discrimination.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        {
+          "url": "http://apsv.fr/",
+          "title": "apsv.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:18:26",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION PREVENTION SITE VILLETTE",
+      "beneficiaire_normalise": "ASSOCIATION PREVENTION SITE VILLETTE",
+      "siret": ""
+    },
+    "PREVENTION SITE VILLETTE": {
+      "activite_verifiee": "APSV — Association de Prévention du Site La Villette (créée 1986, Paris 19e) ; prévention des incivilités, accompagnement ~200 personnes/an en insertion socio-pro, anti-discrimination.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        {
+          "url": "http://apsv.fr/",
+          "title": "apsv.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:18:26",
+      "model": "claude-code-websearch",
+      "beneficiaire": "PREVENTION SITE VILLETTE",
+      "beneficiaire_normalise": "PREVENTION SITE VILLETTE",
+      "siret": ""
+    },
+    "LYCEE TECHNOLOGIQUE LUCAS DE NEHOU": {
+      "activite_verifiee": "Lycée Lucas de Nehou — École de Verre de Paris (5e, depuis 1947) ; lycée polyvalent public ; CAP, BMA, DNMADE en arts et techniques du verre, vitrail, verrerie scientifique.",
+      "perimetre_geographique": "Paris 5e",
+      "sources": [
+        {
+          "url": "https://pia.ac-paris.fr/serail/jcms/s1_1879560/fr/accueil",
+          "title": "pia.ac-paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:18:26",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LYCEE TECHNOLOGIQUE LUCAS DE NEHOU",
+      "beneficiaire_normalise": "LYCEE TECHNOLOGIQUE LUCAS DE NEHOU",
+      "siret": ""
+    },
+    "FONDATION SCIENCES MATHEMATIQUES PA": {
+      "activite_verifiee": "FSMP — Fondation Sciences Mathématiques de Paris (créée 2006) ; seul RTRA en maths, fédère 10 institutions (Sorbonne Université, Paris Cité, ENS, CNRS…) ; ~2 000 scientifiques.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://sciencesmaths-paris.fr/",
+          "title": "sciencesmaths-paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:18:26",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FONDATION SCIENCES MATHEMATIQUES PA",
+      "beneficiaire_normalise": "FONDATION SCIENCES MATHEMATIQUES PA",
+      "siret": ""
+    },
+    "FONDATION SCIENCES MATHEMATIQUES": {
+      "activite_verifiee": "FSMP — Fondation Sciences Mathématiques de Paris (créée 2006) ; seul RTRA en maths, fédère 10 institutions (Sorbonne Université, Paris Cité, ENS, CNRS…) ; ~2 000 scientifiques.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://sciencesmaths-paris.fr/",
+          "title": "sciencesmaths-paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:18:26",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FONDATION SCIENCES MATHEMATIQUES",
+      "beneficiaire_normalise": "FONDATION SCIENCES MATHEMATIQUES",
+      "siret": ""
+    },
+    "SPORTING CLUB UNIVERS FRANCE": {
+      "activite_verifiee": "SCUF — club omnisports (créé 1895 par Charles Brennus) ; 11 sections dont rugby (Fédérale 2), athlétisme, basket ; +650 membres, 1re école de rugby en France (1924).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://scuf.org/",
+          "title": "scuf.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:18:26",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SPORTING CLUB UNIVERS FRANCE",
+      "beneficiaire_normalise": "SPORTING CLUB UNIVERS FRANCE",
+      "siret": ""
+    },
+    "THEATRE DAUNOU": {
+      "activite_verifiee": "Théâtre privé (7 rue Daunou Paris 2e, construit 1921 en Art Déco) ; programmation comédies et boulevard ; symbole de la nuit parisienne, classé monument historique.",
+      "perimetre_geographique": "Paris 2e",
+      "sources": [
+        {
+          "url": "http://www.theatre-daunou.com/",
+          "title": "theatre-daunou.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:18:26",
+      "model": "claude-code-websearch",
+      "beneficiaire": "THEATRE DAUNOU",
+      "beneficiaire_normalise": "THEATRE DAUNOU",
+      "siret": ""
+    },
+    "AREMEDIA": {
+      "activite_verifiee": "Association de santé publique et éducation populaire (agréée ministère Ville/Jeunesse/Sports + Rectorat Paris) ; prévention conduites à risque, santé sexuelle, dépistage 'Hors les murs'.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://aremedia.org/",
+          "title": "aremedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:18:26",
+      "model": "claude-code-websearch",
+      "beneficiaire": "AREMEDIA",
+      "beneficiaire_normalise": "AREMEDIA",
+      "siret": ""
+    },
+    "YES WE CAMP": {
+      "activite_verifiee": "Association (créée 2013) ; tiers-lieux éphémères et coopératifs (ex Grands Voisins, Césure Paris 5e ex-Sorbonne-Nouvelle) ; 80 salariés, urbanisme transitoire, inclusion sociale.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://yeswecamp.org/en/",
+          "title": "yeswecamp.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:18:26",
+      "model": "claude-code-websearch",
+      "beneficiaire": "YES WE CAMP",
+      "beneficiaire_normalise": "YES WE CAMP",
+      "siret": "78942066800046"
     }
   }
 }
