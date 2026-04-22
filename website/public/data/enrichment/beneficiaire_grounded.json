@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T15:32:10.735535",
+  "generated_at": "2026-04-22T21:37:49.312448",
   "model": "gemini-3-flash-preview",
   "count": 780,
   "items": {
@@ -21548,7 +21548,2472 @@
       "confiance": 0.8,
       "source_type": "claude_web",
       "enriched_at": "2026-04-22T15:32:10.735535"
+    },
+    "400 COUPS": {
+      "activite_verifiee": "Les 400 Coups — Association pour l'éducation populaire, fondée en 2015 par des animateurs et pratiquants d'arts/nature. Base : La Fourmilière, Monestier-de-Clermont (38). Organise séjours d'été et centres de loisirs 4-17 ans avec tarification familiale et fonds de solidarité pour enfants des quartiers populaires (Grenoble, Paris).",
+      "perimetre_geographique": "France (IdF via séjours)",
+      "sources": [
+        "les400coups-colo.fr",
+        "assoce.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "FEDERATION FRANCAISE D ATHLETISME": {
+      "activite_verifiee": "FFA — Fédération Française d'Athlétisme (SIREN 784448730), association loi 1901 fondée en 1920, reconnue d'utilité publique. Siège 33 avenue Pierre-de-Coubertin Paris 13e depuis 1995. Fédération délégataire sous tutelle du ministère des Sports. ~315 000 licenciés, organise les championnats de France d'athlétisme.",
+      "perimetre_geographique": "France (siège Paris 13e)",
+      "sources": [
+        "athle.fr",
+        "sports.gouv.fr",
+        "annuaire-entreprises.data.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "ANIMA FAC": {
+      "activite_verifiee": "Animafac, réseau national des associations étudiantes, créé en 1996. Siège 153-155 avenue Jean Lolive, Pantin (93). Accompagne ~12 000 associations étudiantes (ressources, formations, guides pratiques, campagnes de sensibilisation). Mission de reconnaissance de l'engagement étudiant, ressources pour porteurs de projets solidaires.",
+      "perimetre_geographique": "France (siège Pantin 93)",
+      "sources": [
+        "animafac.net",
+        "fr.wikipedia.org/wiki/Animafac"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "ESPOIR 18": {
+      "activite_verifiee": "Espoir 18, association loi 1901 créée le 16 septembre 2002 par 6 acteurs sociaux du quartier La Chapelle (Paris 18e). Insertion et socialisation des 13-30 ans des quartiers populaires du 18e via éducation, art, culture, sport, insertion pro. Gère 6 Centres Paris Jeunes (Goutte d'Or, La Chapelle, Aubervilliers-Chapelle, Simplon-Clignancourt, Mont-Cenis). ~2 000 usagers.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        "espoir18.org",
+        "resolis.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "GRENADINE ET MENTHE A L EAU": {
+      "activite_verifiee": "Crèche parentale Grenadine et Menthe à l'eau (SIREN 333976439), association parisienne créée il y a 39 ans, 9 rue du Docteur Potain Paris 19e (Télégraphe). Petite structure ; projet pédagogique autour de la qualité d'accueil, cuisine bio préparée sur place, éveil à l'écologie.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        "creche-grenadine.org",
+        "paris.fr",
+        "acepprif.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "JETUIL": {
+      "activite_verifiee": "je.tu.il… — association créée en 1981, 18 rue de Saussure Paris 17e. Conçoit, produit et diffuse des programmes audiovisuels de prévention et d'éducation pour les jeunes (responsabilité affective, sexuelle, citoyenne) ; prévention des violences et des conduites à risque. Équipe de professionnels en sciences de l'éducation, philo, linguistique, santé.",
+      "perimetre_geographique": "Paris 17e / France",
+      "sources": [
+        "jetuil.asso.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "COMITE DE PARIS F S G T": {
+      "activite_verifiee": "Comité FSGT 75 — Comité de Paris de la Fédération Sportive et Gymnique du Travail (SIREN 784778797), association loi 1901. 35 avenue de Flandre Paris 19e. +12 500 adhérents et 2 000 bénévoles, double agrément Sport / Éducation populaire. Un des comités départementaux de la FSGT (200 000 pratiquants, 4 200 clubs).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "fsgt75.org",
+        "fsgt.org",
+        "pappers.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "COUP DE POUCE": {
+      "activite_verifiee": "Association Coup de Pouce, créée en 1989. Clubs de réussite scolaire (Coup de Pouce Clé pour les CP, Coup de Pouce CLEM pour les CE1) à destination d'enfants fragiles dans l'acquisition des fondamentaux, en partenariat avec l'Éducation nationale et la Ville de Paris. Séances 3 soirs/semaine après l'école, gratuites, groupes de 5-6, animateurs formés.",
+      "perimetre_geographique": "France / Paris",
+      "sources": [
+        "coupdepouceassociation.fr",
+        "ac-paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "ASSOCIATION COUP DE POUCE": {
+      "activite_verifiee": "Association Coup de Pouce, créée en 1989. Clubs de réussite scolaire (Coup de Pouce Clé pour les CP, Coup de Pouce CLEM pour les CE1) à destination d'enfants fragiles dans l'acquisition des fondamentaux, en partenariat avec l'Éducation nationale et la Ville de Paris. Séances 3 soirs/semaine après l'école, gratuites, groupes de 5-6, animateurs formés.",
+      "perimetre_geographique": "France / Paris",
+      "sources": [
+        "coupdepouceassociation.fr",
+        "ac-paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "CLUB D ESCRIME TOUR D AUVERGNE": {
+      "activite_verifiee": "Club d'Escrime de la Tour d'Auvergne (TA), 26 rue Buffault Paris 9e (gymnase Buffault). Établi dans le 9e depuis 1884. Fleuret tous âges (enfants dès 4 ans à vétérans), 538 licenciés en 2024-2025 (2e club français par nb de licenciés). 7 champions du monde, 5 d'Europe, 66 de France issus du club.",
+      "perimetre_geographique": "Paris 9e",
+      "sources": [
+        "escrime-ta.com",
+        "citizenkid.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "FEMMES INITIATIVES": {
+      "activite_verifiee": "Association Femmes Initiatives (Paris). Organisme de formation Qualiopi. Apprentissage du français (FLE, alphabétisation) et médiation socioculturelle pour l'insertion sociale ; cours accessibles à tous niveaux avec accompagnement humain. Intervient à Paris.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "paris.fr",
+        "jemengage.paris.fr",
+        "pagesjaunes.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "ATELIER DU PLATEAU THEATRE ECARLATE": {
+      "activite_verifiee": "Atelier du Plateau — Théâtre Écarlate (SIREN 324192210), lieu pluridisciplinaire de résidences et création (cirque, musique, théâtre). Ancienne usine de pipes Paris 19e, ouverte en 1999 par Gilles Zaepffel. Soutenu par Ville de Paris et DRAC IdF depuis 2001. Autoproclamé « 1er Centre Dramatique National de Quartier ». Dirigé par Matthieu Malgrange et Laetitia Zaepffel depuis 2005.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        "atelierduplateau.org",
+        "actesif.com",
+        "pappers.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "CINEMA CHAPLIN": {
+      "activite_verifiee": "Les Cinémas Chaplin — réseau associatif de deux salles d'art et essai parisiennes : Chaplin Denfert (24 place Denfert-Rochereau Paris 14e, ouvert en 2011) et Chaplin Saint-Lambert (Paris 15e). Cinéma d'auteur pluriel ouvert à tous : films en sortie + rétrospectives thématiques, documentaires, classiques, avant-premières presse.",
+      "perimetre_geographique": "Paris 14e / 15e",
+      "sources": [
+        "lescinemaschaplin.fr",
+        "cip-paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "A P S A J": {
+      "activite_verifiee": "APSAJ — Association de Prévention Spécialisée et d'Accompagnement des Jeunes, issue en 2018 de la fusion ADCLJC (créée 1968) + Maison des Copains de Villette. ~24 salariés (éducateurs, chefs de service, direction). Locaux : 76 rue Philippe de Girard et 25 rue Léon (Paris 18e), 156 rue d'Aubervilliers (Paris 19e). Éducation de rue, médiation, prévention spécialisée.",
+      "perimetre_geographique": "Paris 18e / 19e",
+      "sources": [
+        "apsaj.com",
+        "cpsp-asso.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "COLLEGE PIERRE DE RONSARD": {
+      "activite_verifiee": "Collège public parisien (Pierre de Ronsard), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "GYM PARIS 15": {
+      "activite_verifiee": "Gym' Paris 15, club de gymnastique du 15e arrondissement créé en 1996. Gymnastique artistique (F/M), rythmique, parkour, baby gym, fitness tous âges. Principaux lieux : Gymnase Falguière (144 rue Falguière) et Gymnase des Cévennes. Entraineurs brevetés.",
+      "perimetre_geographique": "Paris 15e",
+      "sources": [
+        "gymparis15.fr",
+        "sportiche.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "COLLEGE JEAN MOULIN": {
+      "activite_verifiee": "Collège public parisien (Jean Moulin), établissement d'enseignement secondaire de l'académie de Paris. Subventions Ville de Paris pour équipement et projets éducatifs.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "REGIE DE QUARTIER FECAMP 12": {
+      "activite_verifiee": "Régie de Quartier Fécamp 12 (Paris 12e), association créée en 2010 en partenariat Ville / bailleurs sociaux / associations / habitants. Entreprise d'Insertion agréée DRIEETS. Insère en CDDI des résidents du 12e (demandeurs d'emploi longue durée, bénéficiaires de minima sociaux, seniors). 63 salariés en insertion en 2023 : nettoyage, espaces verts, voirie.",
+      "perimetre_geographique": "Paris 12e",
+      "sources": [
+        "regie12.fr",
+        "grafie.org",
+        "emplois.inclusion.beta.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "HALTE AIDE AUX FEMMES BATTUES": {
+      "activite_verifiee": "HAFB — Halte Aide aux Femmes Battues, 17 rue Mendelssohn Paris 20e. Association pionnière à Paris sur la dénonciation des violences conjugales comme phénomène spécifique. Gère un ESI (Espace Solidarité Insertion) et le foyer Louise Labé (CHRS) pour femmes victimes. Membre de la FNSF (3919).",
+      "perimetre_geographique": "Paris 20e",
+      "sources": [
+        "hafb.fr",
+        "paris.fr",
+        "orientationviolences.hubertine.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:35:53.707011"
+    },
+    "PREMIERE URGENCE INTERNATIONALE": {
+      "activite_verifiee": "Première Urgence Internationale (PUI), ONG humanitaire française issue en 2015 de la fusion de Première Urgence et Aide Médicale Internationale. Siège 2 rue Auguste-Thomas Asnières-sur-Seine (92). 8 domaines d'expertise : santé, nutrition, sécurité alimentaire, eau, assainissement, réhabilitation, relance économique. 3 000 collaborateurs nationaux + 200 expatriés dans 22 pays, 6 M de bénéficiaires/an.",
+      "perimetre_geographique": "International (siège Asnières 92)",
+      "sources": [
+        "premiere-urgence.org",
+        "fr.wikipedia.org/wiki/Première_Urgence_Internationale"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:35:53.707011"
+    },
+    "ONDE ET CYBELE": {
+      "activite_verifiee": "L'Onde & Cybèle, association créée en 2004 par Blaise Merlin, basée dans le 18e arrondissement. Structure de production hybride : festivals Rhizomes (musiques et jardins, trois week-ends l'été dans les espaces verts du 18e et Aubervilliers) et La Voix est Libre (ex-Jazz Nomades). Ateliers de pratique artistique dans les QPV (Goutte d'Or) depuis 2007.",
+      "perimetre_geographique": "Paris 18e / Seine-Saint-Denis",
+      "sources": [
+        "festivalrhizomes.fr",
+        "gouttedor-et-vous.org",
+        "ajc-jazz.eu"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:35:53.707011"
+    },
+    "3 S SEJOUR SPORTIF SOLIDAIRE": {
+      "activite_verifiee": "Recyclerie Sportive — 3S Séjour Sportif Solidaire (SIREN 811475656), association nationale. Collecte, tri, co-réparation et redistribution d'équipements sportifs via boutique solidaire. Mission : accès au sport pour tous, emploi local et insertion professionnelle des personnes en difficulté, réduction des déchets dans le secteur sport. Antennes Paris 17 et Bordeaux.",
+      "perimetre_geographique": "France (Paris 17e et Bordeaux)",
+      "sources": [
+        "pappers.fr",
+        "shiftyourjob.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:35:53.707011"
+    },
+    "CYCLOFFICINE DE PARIS": {
+      "activite_verifiee": "La Cyclofficine de Paris, atelier vélo participatif et autogéré créé en 2010 (premier atelier Saint-Blaise Paris 20e en 2012, second Fougères en 2014). Mobilité active, réemploi, éducation populaire. Ventes de vélos à prix modique, permanences en non-mixité choisie (public féminin et trans), ateliers mobiles. Membre du RéPAR.",
+      "perimetre_geographique": "Paris 20e",
+      "sources": [
+        "helloasso.com/associations/la-cyclofficine-de-paris",
+        "repar.paris",
+        "cyclocoop.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:35:53.707011"
+    },
+    "CLOCHE": {
+      "activite_verifiee": "Association La Cloche (loi 1901, 2014). Crée du lien social entre voisins avec et sans domicile via 2 programmes : Le Carillon (réseau de commerçants solidaires dans 14 arr. parisiens offrant de petits services aux personnes en précarité) et Les Clochettes (jardins partagés inclusifs de quartier). Ateliers théâtre/choeur, formations de changement de regard.",
+      "perimetre_geographique": "Paris / France",
+      "sources": [
+        "lacloche.org",
+        "fondationlafrancesengage.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:35:53.707011"
+    },
+    "ACTION CONTRE LA FAIM": {
+      "activite_verifiee": "Action Contre la Faim (ACF), ONG humanitaire internationale française fondée en 1979, dédiée à la lutte contre la faim. Plateforme logistique à Paris. 5 expertises : nutrition/santé, santé mentale et pratiques de soins, sécurité alimentaire, eau/hygiène, plaidoyer. A aidé 17 M de personnes dans 49 pays en 2019.",
+      "perimetre_geographique": "International (siège Paris)",
+      "sources": [
+        "actioncontrelafaim.org",
+        "en.wikipedia.org/wiki/Action_Against_Hunger"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:35:53.707011"
+    },
+    "GROUP INTER PUBLIC CAFES CULTURES": {
+      "activite_verifiee": "GIP Cafés Cultures, Groupement d'Intérêt Public créé par arrêté du 31 mars 2015. Fonds public-privé (ministère de la Culture + collectivités + privé) qui aide l'emploi d'artistes et de techniciens du spectacle vivant dans les cafés, bars, restaurants et chez les employeurs occasionnels (comités, petites communes, fermes).",
+      "perimetre_geographique": "France",
+      "sources": [
+        "culture.gouv.fr",
+        "aidesmusiquesactuelles.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:35:53.707011"
+    },
+    "FRANCAIS LANGUE D ACCUEIL": {
+      "activite_verifiee": "Français Langue d'Accueil (FLA), association parisienne, 28 rue de l'Aqueduc Paris 10e. Apprentissage du français (FLE, alphabétisation, niveaux A1/A2/B1) pour demandeurs d'asile et réfugiés non-francophones de la région parisienne. Plus de 150 bénévoles, ~20 classes/an dans les 10e/18e/19e/20e. Accompagnement vers l'emploi/formation.",
+      "perimetre_geographique": "Paris 10e / 18e / 19e / 20e",
+      "sources": [
+        "francais-langue-daccueil.org",
+        "reseau-alpha.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:35:53.707011"
+    },
+    "AGORANOV": {
+      "activite_verifiee": "Agoranov, association loi 1901 créée en 2000 par l'ENS, ParisTech, Paris-Dauphine et Sorbonne Université (rejoint par Inria). Hébergée par Sorbonne Université, bd Raspail Paris 6e. Incubateur Deeptech de référence : ~30 startups/an sur 24 mois (deeptech, industrie, numérique, santé). +450 startups incubées, 5 licornes (Ÿnsect, DNA Script...), 12 500 emplois, 2,5 Md€ levés.",
+      "perimetre_geographique": "Paris (Sorbonne)",
+      "sources": [
+        "wiki-startup.com",
+        "iledefrance.fr",
+        "sorbonne-universite.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:35:53.707011"
+    },
+    "LIFE FOR PARIS 13 NOVEMBRE 2015": {
+      "activite_verifiee": "Life for Paris, association créée le 1er décembre 2015 après un texte Facebook de Maureen Roussel (rescapée du Bataclan), officialisée le 13 janvier 2016. Uniquement composée des 650+ victimes directes des attentats du 13 novembre 2015 (Bataclan, terrasses, Stade de France) + familles, primo-intervenants. Entraide, amélioration des dispositifs de prise en charge, résilience.",
+      "perimetre_geographique": "Paris / France",
+      "sources": [
+        "lifeforparis.org",
+        "fr.wikipedia.org/wiki/Life_for_Paris"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:35:53.707011"
+    },
+    "ORIGAMIX": {
+      "activite_verifiee": "Association Origami, halte-garderie créée en 1997, 8 rue de Prague Paris 12e (quartier Faubourg Saint-Antoine). Accueil des enfants de la marche à 6 ans pour les besoins ponctuels de garde. Équipe : directrice EJE, EJE, auxiliaire puéricultrice, CAP petite enfance.",
+      "perimetre_geographique": "Paris 12e",
+      "sources": [
+        "crechespourtous.com",
+        "alentoor.fr",
+        "hg.origami.free.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:35:53.707011"
+    },
+    "ORIGAMI": {
+      "activite_verifiee": "Association Origami, halte-garderie créée en 1997, 8 rue de Prague Paris 12e (quartier Faubourg Saint-Antoine). Accueil des enfants de la marche à 6 ans pour les besoins ponctuels de garde. Équipe : directrice EJE, EJE, auxiliaire puéricultrice, CAP petite enfance.",
+      "perimetre_geographique": "Paris 12e",
+      "sources": [
+        "crechespourtous.com",
+        "alentoor.fr",
+        "hg.origami.free.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:35:53.707011"
+    },
+    "D UNE LANGUE A L AUTRE DULALA": {
+      "activite_verifiee": "DULALA — D'Une Langue A L'Autre (SIREN 512183872), association créée en 2009, centre ressource et formation sur le bilinguisme et l'éducation au plurilinguisme. Ateliers d'éveil aux langues (1-12 ans), formations pro (éducation, petite enfance, social, santé), outils innovants. +30 000 enfants et 9 000 professionnels touchés. Labellisée Ashoka, Fondation de France, SNCF.",
+      "perimetre_geographique": "France / Paris",
+      "sources": [
+        "dulala.fr",
+        "maisondesrefugies.paris"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:35:53.707011"
+    },
+    "INALCO": {
+      "activite_verifiee": "INALCO — Institut National des Langues et Civilisations Orientales (« Langues O' »), grand établissement public d'enseignement supérieur et de recherche créé en 1795. Campus 65 rue des Grands-Moulins Paris 13e depuis 2011. 104 langues enseignées (plus gros catalogue mondial). Licence à doctorat, formation continue. Antennes à Singapour, Buenos Aires, São Paulo.",
+      "perimetre_geographique": "Paris 13e / International",
+      "sources": [
+        "inalco.fr",
+        "en.wikipedia.org/wiki/Institut_national_des_langues_et_civilisations_orientales"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:35:53.707011"
+    },
+    "ACP LA MANUFACTURE CHANSON": {
+      "activite_verifiee": "ACP la Manufacture Chanson, SCOP (ex-association) 124 avenue de la République Paris 11e. École de chanson fondée en 1981 par Christian Dente (ex-Ateliers Chanson de Paris, devenue ACP en 2000). Centre de formation professionnelle auteur-compositeur-interprète, salle Espace Christian Dente (50 places), scènes ouvertes, résidences.",
+      "perimetre_geographique": "Paris 11e",
+      "sources": [
+        "manufacturechanson.org",
+        "reseau-map.fr",
+        "profilculture-formation.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:35:53.707011"
+    },
+    "CINELBA SA": {
+      "activite_verifiee": "Cinelba SA (SIREN 572066603), SAS exploitante du cinéma Le Balzac (1 rue Balzac Paris 8e). Activité exploitation cinématographique / projection de films. Président : David Henochsberg. Capital 40 000 €, début d'activité avril 1989.",
+      "perimetre_geographique": "Paris 8e",
+      "sources": [
+        "societe.com",
+        "fr.kompass.com",
+        "pagesjaunes.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "BIS BOUTIQUE SOLIDAIRE": {
+      "activite_verifiee": "BIS Boutique Solidaire, entreprise d'insertion textile parisienne — mode solidaire et circulaire. 45 salariés dont 27 en insertion (formation couture, logistique, vente). Centre d'approvisionnement 1 000 m² à Vitry-sur-Seine ; 600 tonnes de textiles/an, 230 000 articles vendus. 4 boutiques (Marais, Montmartre, 15e, 14e) + dons à ~5 000 Parisiens/an.",
+      "perimetre_geographique": "Paris / Vitry-sur-Seine",
+      "sources": [
+        "bisboutiquesolidaire.fr",
+        "paris.fr",
+        "grandpariscirculaire.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "RESSOURCERIE CREATIVE": {
+      "activite_verifiee": "La Ressourcerie Créative, association de réemploi créée en septembre 2015 au site des Grands Voisins (ex-Saint-Vincent-de-Paul). Installée depuis octobre 2020 au 95 avenue du Général Leclerc Paris 14e. Collecte, tri, revalorisation et upcycling ; ateliers créatifs hebdos pour enfants et adultes. Accueille des jeunes en emplois d'avenir.",
+      "perimetre_geographique": "Paris 14e",
+      "sources": [
+        "laressourceriecreative.com",
+        "paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "PARIS 13 TENNIS DE TABLE": {
+      "activite_verifiee": "Paris 13 Tennis de Table (P13TT), club de ping-pong créé en 1972 sous Centre Daviel. 25 avenue de la Porte d'Ivry Paris 13e (salle spécifique Carpentier). +400 adhérents — plus gros club d'Île-de-France. Affilié FFTT, FFH, RCP. Partenaire de la mairie du 13e, six entraîneurs diplômés.",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        "paris13tt.org",
+        "paris.fr",
+        "tennis-de-table.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION ART EXPRIM 18": {
+      "activite_verifiee": "Art-exprim, association loi 1901 créée en 2000. Ateliers 87 rue Marcadet Paris 18e (+ 7 rue Pierre Mauroy à Chapelle International). Art contemporain accessible à tous : 8 disciplines (arts plastiques, dessin, BD, manga, sculpture…) pour enfants dès 3 ans, ados et adultes. 9 artistes intervenants, tarifs QF.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        "art-exprim.com",
+        "paris.fr",
+        "gouttedor-et-vous.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "LUTINLUNE": {
+      "activite_verifiee": "Crèche parentale Lutinlune, association loi 1901 créée en décembre 1986, 37 rue de la Réunion Paris 20e. 16 places (2,5 mois - 3,5 ans), ouverture 8h15-18h30. Fort engagement parental : ~4 demi-journées/mois + tâche associative. Financée par CAF + Ville de Paris + participations parentales.",
+      "perimetre_geographique": "Paris 20e",
+      "sources": [
+        "lutinlune.fr",
+        "paris.fr",
+        "acepprif.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "PETIT CONCEPT": {
+      "activite_verifiee": "Petit Concept, association culturelle parisienne (informations publiques détaillées limitées, probablement liée au spectacle vivant / création artistique).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "gralon.net"
+      ],
+      "confiance": 0.4,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "TECHNOPOL TECHNO PARADE": {
+      "activite_verifiee": "Technopol — Techno Parade, association créée en 1996 après l'annulation de Polaris à Lyon. Structure de référence en France pour les cultures électroniques, défense du statut DJ/producteur, RdR en milieu festif, lobbying auprès des pouvoirs publics. Porte la Techno Parade (créée en 1998 par Jack Lang) : 400 000 participants chaque année, + Paris Electronic Week.",
+      "perimetre_geographique": "Paris / France",
+      "sources": [
+        "technopol.net",
+        "fr.wikipedia.org/wiki/Technopol",
+        "fr.wikipedia.org/wiki/Techno_Parade"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION FOYER JORBALAN": {
+      "activite_verifiee": "AFJ — Association Foyer Jorbalan, créée en 1967 par la Congrégation des Adoratrices. Siège MDA 19 AFJ boîte 99, 20 rue Édouard Pailleron Paris 19e. Centre d'hébergement d'urgence pour femmes migrantes victimes de traite à des fins d'exploitation sexuelle (TEHS) ; 17 places, ~40 victimes accueillies/an, accompagnement pluridisciplinaire (médical, psy, juridique, éducatif).",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        "jeveuxaider.gouv.fr/organisations/18908",
+        "fondationcaritasfrance.org",
+        "annuaire.action-sociale.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "FOYER JORBALAN": {
+      "activite_verifiee": "AFJ — Association Foyer Jorbalan, créée en 1967 par la Congrégation des Adoratrices. Siège MDA 19 AFJ boîte 99, 20 rue Édouard Pailleron Paris 19e. Centre d'hébergement d'urgence pour femmes migrantes victimes de traite à des fins d'exploitation sexuelle (TEHS) ; 17 places, ~40 victimes accueillies/an, accompagnement pluridisciplinaire (médical, psy, juridique, éducatif).",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        "jeveuxaider.gouv.fr/organisations/18908",
+        "fondationcaritasfrance.org",
+        "annuaire.action-sociale.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "STUDIO DES URSULINES": {
+      "activite_verifiee": "Studio des Ursulines, 10 rue des Ursulines Paris 5e. Premier cinéma d'art et essai de France (1925, fondé par Laurence Myrga et Armand Tallier). Premier membre AFCAE en 1955. Labels : Jeune Public, Patrimoine et Répertoire, Courts-métrages, 15-25 ans. Programmation enfants ; lancement de la plateforme Benshi.fr en 2016.",
+      "perimetre_geographique": "Paris 5e",
+      "sources": [
+        "studiodesursulines.com",
+        "cnc.fr",
+        "en.wikipedia.org/wiki/Studio_des_Ursulines"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "CAPUCINE ET PAPILLONS JARDIN D ENFA": {
+      "activite_verifiee": "Capucine et Papillons, Jardin d'Enfance (SIREN 481586964), association loi 1901 fondée en 2002, 35 rue Clisson Paris 13e. Crèche parentale/associative ; équipe 6-9 salariés, approche éducative axée sur l'exploration, la créativité, l'apprentissage.",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        "societe.com",
+        "pagesjaunes.fr",
+        "helloasso.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "RUGBY CLUB PARIS 15": {
+      "activite_verifiee": "Rugby Club Paris 15 (RCP15), section rugby de l'Omnisport Paris 15 créée en 1971. Stade Suzanne-Lenglen Paris 15e. 950 licenciés : 4 équipes seniors H, 2 seniors F, juniors, cadets, école de rugby. Champion d'Île-de-France Régionale 1 → accession à Fédérale 3. Actions d'initiation en écoles et QPV.",
+      "perimetre_geographique": "Paris 15e",
+      "sources": [
+        "rcp15.fr",
+        "ffr.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "CIMADE SERVICE OECUMENIQUE ENTRAIDE": {
+      "activite_verifiee": "La Cimade — Service Œcuménique d'Entraide (SIREN 775666597), association œcuménique créée en 1939 pour assister les personnes déplacées des camps du sud de la France. Siège 176 rue de Grenelle Paris 7e. +110 000 migrants, réfugiés et demandeurs d'asile accueillis chaque année en permanences ; hébergement à Béziers et Massy (~200 places). Défense des droits, plaidoyer anti-discrimination.",
+      "perimetre_geographique": "France (siège Paris 7e)",
+      "sources": [
+        "lacimade.org",
+        "pappers.fr",
+        "unhcr.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ATELIERS DU CHAUDRON": {
+      "activite_verifiee": "Ateliers du Chaudron, compagnie théâtre et musique parisienne. Initialement à la Cartoucherie de Vincennes (1972-1999), relocalisée par la Ville dans le quartier Fontaine au Roi (Paris 11e). Fusion art théâtral et théâtre social depuis 40+ ans ; musique improvisée ancrée dans le jazz. Productions théâtrales et musicales au siège et hors les murs.",
+      "perimetre_geographique": "Paris 11e",
+      "sources": [
+        "ateliersduchaudron.net",
+        "helloasso.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "AS SPORT LYCEE ENS COMM MARIA DERA": {
+      "activite_verifiee": "Établissement scolaire public parisien (AS SPORT LYCEE ENS COMM MARIA DERA), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASS SPORTIVE DU COLLEGE FLORA TRIST": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASS SPORTIVE DU COLLEGE FLORA TRIST), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE DU LYCEE MOLIE": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE DU LYCEE MOLIE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASS SPORTIVE COLLEGE GUY FLAVIEN": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASS SPORTIVE COLLEGE GUY FLAVIEN), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "LYCEE TECHNOLOGIQUE SIMONE WEIL": {
+      "activite_verifiee": "Établissement scolaire public parisien (LYCEE TECHNOLOGIQUE SIMONE WEIL), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "SPORTIVE DU LYCEE PAUL VALERY": {
+      "activite_verifiee": "Établissement scolaire public parisien (SPORTIVE DU LYCEE PAUL VALERY), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "SPORTIVE DU LYCEE RACINE": {
+      "activite_verifiee": "Établissement scolaire public parisien (SPORTIVE DU LYCEE RACINE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE BUFFON": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE BUFFON), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE GEORGES MELIES": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE GEORGES MELIES), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE MAURICEUTRILLO": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE MAURICEUTRILLO), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOC SPORTIVE DU LYCEE PAUL VALERY": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOC SPORTIVE DU LYCEE PAUL VALERY), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASS SPORTIVE DU COLLEGE ELSA TRIOLE": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASS SPORTIVE DU COLLEGE ELSA TRIOLE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIF COLLEGE CLAUDE DEBUSS": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIF COLLEGE CLAUDE DEBUSS), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE DU COLLEGE MAN": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE DU COLLEGE MAN), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASS SPORTIVE LYCEE HONORE DE BALZAC": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASS SPORTIVE LYCEE HONORE DE BALZAC), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASS SPORTIVE DU LYCEE VICTOR HUGO": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASS SPORTIVE DU LYCEE VICTOR HUGO), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE MAURICE RAVEL": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE MAURICE RAVEL), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE DE FRANCE": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE DE FRANCE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE PILATRE DE ROZIER": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE PILATRE DE ROZIER), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE SAINTEXUPERY": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE SAINTEXUPERY), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOC SPORTIVE DU COLLEGE LUCIE AUB": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOC SPORTIVE DU COLLEGE LUCIE AUB), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE ROLAND DORGELES": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE ROLAND DORGELES), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE COLLEGE JACQUES DECOU": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE COLLEGE JACQUES DECOU), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASS SPORTIVE DU LYCEE RACINE": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASS SPORTIVE DU LYCEE RACINE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASS SPORTIVE DU COLLEGE ANDRE MALRA": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASS SPORTIVE DU COLLEGE ANDRE MALRA), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "SPORTIVE COLLEGE STAEL": {
+      "activite_verifiee": "Établissement scolaire public parisien (SPORTIVE COLLEGE STAEL), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE ALPHONSE DE LAMARTINE": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE ALPHONSE DE LAMARTINE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORT LYCEE ENS COMM MARIA DERA": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORT LYCEE ENS COMM MARIA DERA), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE DU LYCEE PAUL VALERY": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE DU LYCEE PAUL VALERY), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE DU LYCEE BUFFO": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE DU LYCEE BUFFO), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOC SPORTIVE LYCEE JULES FERRY": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOC SPORTIVE LYCEE JULES FERRY), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOC SPORTIVE COLLEGE FRANCOIS VIL": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOC SPORTIVE COLLEGE FRANCOIS VIL), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE COLLEGE JANSON DE SAI": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE COLLEGE JANSON DE SAI), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE LAVOISIER": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE LAVOISIER), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "LYCEE GENERAL CARNOT": {
+      "activite_verifiee": "Établissement scolaire public parisien (LYCEE GENERAL CARNOT), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "SPORTIVE LYCEE LOUISLEGRAND": {
+      "activite_verifiee": "Établissement scolaire public parisien (SPORTIVE LYCEE LOUISLEGRAND), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "LYCEE PROFESSIONNEL GALILEE": {
+      "activite_verifiee": "Établissement scolaire public parisien (LYCEE PROFESSIONNEL GALILEE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "AS SPORTIVE DU LYCEE JEAN BAPTISTE": {
+      "activite_verifiee": "Établissement scolaire public parisien (AS SPORTIVE DU LYCEE JEAN BAPTISTE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASS SPORTIVE DU LYCEE CONDORCET": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASS SPORTIVE DU LYCEE CONDORCET), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE DU LYCEE JACQUES DECOU": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE DU LYCEE JACQUES DECOU), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE JEAN DE LA FONTAINE": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE JEAN DE LA FONTAINE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE MARX DORMOY": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE MARX DORMOY), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE GERARD PHILIPPE": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE GERARD PHILIPPE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "LYCEE PROFESSIONNEL CHARLES DE GAUL": {
+      "activite_verifiee": "Établissement scolaire public parisien (LYCEE PROFESSIONNEL CHARLES DE GAUL), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASS SPORT DU COLLEGE GEORGES MELIES": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASS SPORT DU COLLEGE GEORGES MELIES), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE JACQUES DECOUR": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE JACQUES DECOUR), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "LYCEE GENERAL JEAN DE LA FONTAINE": {
+      "activite_verifiee": "Établissement scolaire public parisien (LYCEE GENERAL JEAN DE LA FONTAINE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "SPORTIVE COLLEGE FRANCOIS VIL": {
+      "activite_verifiee": "Établissement scolaire public parisien (SPORTIVE COLLEGE FRANCOIS VIL), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE CLAUDE BERNARD": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE CLAUDE BERNARD), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE CHARLES PEGUY": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE CHARLES PEGUY), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE ROBERT DOISNEAU": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE ROBERT DOISNEAU), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE MOULIN DES PRES": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE MOULIN DES PRES), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE DU COLLEGE YVONNE LE T": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE DU COLLEGE YVONNE LE T), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE ALPHONSE DAUDET": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE ALPHONSE DAUDET), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE GEORGE SAND": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE GEORGE SAND), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE JEANFRANCOIS OEBEN": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE JEANFRANCOIS OEBEN), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE MONTAIGNE": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE MONTAIGNE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE COLLEGE J B CLEMENT": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE COLLEGE J B CLEMENT), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "SPORTIVE COLLEGE J B CLEMENT": {
+      "activite_verifiee": "Établissement scolaire public parisien (SPORTIVE COLLEGE J B CLEMENT), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE DU LYCEE": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE DU LYCEE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "SPORTIVE DU COLLEGE ANDRE MALRA": {
+      "activite_verifiee": "Établissement scolaire public parisien (SPORTIVE DU COLLEGE ANDRE MALRA), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOC SPORTIVE COLLEGE ALPHONSE DAU": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOC SPORTIVE COLLEGE ALPHONSE DAU), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE VOLTAIRE": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE VOLTAIRE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE COLLEGE ROBERT DOISN": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE COLLEGE ROBERT DOISN), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE HELENE BOUCHER": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE HELENE BOUCHER), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE CARNOT": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE CARNOT), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE DU LYCEE CHAPT": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE DU LYCEE CHAPT), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "LYCEE PROFESSIONNEL CLAUDE ANTHIME": {
+      "activite_verifiee": "Établissement scolaire public parisien (LYCEE PROFESSIONNEL CLAUDE ANTHIME), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE FRANCOISE DOLTO": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE FRANCOISE DOLTO), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "PASSERELLE LYCEE UNIVERSITE SOLIDAI": {
+      "activite_verifiee": "Établissement scolaire public parisien (PASSERELLE LYCEE UNIVERSITE SOLIDAI), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASS SPORTIVE DU LYCEE JACQUES DECOU": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASS SPORTIVE DU LYCEE JACQUES DECOU), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE LYCEE JULES FERRY": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE LYCEE JULES FERRY), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOC SPORTIVE COLLEGE HECTOR BERLI": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOC SPORTIVE COLLEGE HECTOR BERLI), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "LYCEE GENERAL BUFFON": {
+      "activite_verifiee": "Établissement scolaire public parisien (LYCEE GENERAL BUFFON), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "SPORTIVE COLLEGE JACQUES DECOUR": {
+      "activite_verifiee": "Établissement scolaire public parisien (SPORTIVE COLLEGE JACQUES DECOUR), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE GABRIEL FAURE": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE GABRIEL FAURE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE COLLEGE FRANCOIS VIL": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE COLLEGE FRANCOIS VIL), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE JULES FERRY": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE JULES FERRY), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE PAUL VALERY": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE PAUL VALERY), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE CHAPTAL": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE CHAPTAL), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE JEANBAPTISTE POQUELIN": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE JEANBAPTISTE POQUELIN), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE VICTOR HUGO": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE VICTOR HUGO), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE DU LYCEE TURGO": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE DU LYCEE TURGO), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE BEAUMARCHAIS": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE BEAUMARCHAIS), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE ANTOINE COYSEVOX": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE ANTOINE COYSEVOX), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE LA ROSE BLANCHE": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE LA ROSE BLANCHE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE PAUL GAUGUIN": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE PAUL GAUGUIN), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE VALMY": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE VALMY), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "SPORTIVE DU LYCEE BUFFO": {
+      "activite_verifiee": "Établissement scolaire public parisien (SPORTIVE DU LYCEE BUFFO), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE MONTGOLFIER": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE MONTGOLFIER), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE MARIE CURIE": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE MARIE CURIE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE LYCEE PROFESS MARCEL D": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE LYCEE PROFESS MARCEL D), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE DU COLLEGE BUF": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE DU COLLEGE BUF), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE VICTOR DURUY": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE VICTOR DURUY), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "LYCEE POLYVALENT JEAN LURCAT": {
+      "activite_verifiee": "Établissement scolaire public parisien (LYCEE POLYVALENT JEAN LURCAT), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "LYCEE GENERAL TECHNOLOGIQ EDGAR Q": {
+      "activite_verifiee": "Établissement scolaire public parisien (LYCEE GENERAL TECHNOLOGIQ EDGAR Q), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASS SPORTIVE DU COLLEGE YVONNE LE T": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASS SPORTIVE DU COLLEGE YVONNE LE T), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "LYCEE POLYVALENT D ALEMBERT": {
+      "activite_verifiee": "Établissement scolaire public parisien (LYCEE POLYVALENT D ALEMBERT), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE ALAINFOURNIER": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE ALAINFOURNIER), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "LYCEE GENERAL ET TECHNOLOGIQUE ARAG": {
+      "activite_verifiee": "Établissement scolaire public parisien (LYCEE GENERAL ET TECHNOLOGIQUE ARAG), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE WA MOZART": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE WA MOZART), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE JEAN PERRIN": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE JEAN PERRIN), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "SPORT LYCEE PROF M DEPREZ": {
+      "activite_verifiee": "Établissement scolaire public parisien (SPORT LYCEE PROF M DEPREZ), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE JEANBAPTISTECLEMENT": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE JEANBAPTISTECLEMENT), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE JEAN FRANCOIS OEBEN": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE JEAN FRANCOIS OEBEN), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "SPORTIVE COLLEGE ROBERT DOISN": {
+      "activite_verifiee": "Établissement scolaire public parisien (SPORTIVE COLLEGE ROBERT DOISN), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE LYCEE LOUIS LE GRAND": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE LYCEE LOUIS LE GRAND), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOS SPORTIVE COLLEGE GERARD PHILI": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOS SPORTIVE COLLEGE GERARD PHILI), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "SPORTIVE DU LYCEE JACQUES DECOU": {
+      "activite_verifiee": "Établissement scolaire public parisien (SPORTIVE DU LYCEE JACQUES DECOU), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE LUCIE FAURE": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE LUCIE FAURE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSO SPORTIVE COLLEGE JACQUES DECOU": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSO SPORTIVE COLLEGE JACQUES DECOU), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE SONIA DELAUNAY": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE SONIA DELAUNAY), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "SPORTIVE COLLEGE MARX DORMOY": {
+      "activite_verifiee": "Établissement scolaire public parisien (SPORTIVE COLLEGE MARX DORMOY), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE CONDORCET": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE CONDORCET), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASS SPORTIVE LYCEE PROFESS MARCEL D": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASS SPORTIVE LYCEE PROFESS MARCEL D), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE ALAIN FOURNIER": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE ALAIN FOURNIER), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "LYCEE COLLEGE MONTAIGNE": {
+      "activite_verifiee": "Établissement scolaire public parisien (LYCEE COLLEGE MONTAIGNE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE DU LYCEE RACINE": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE DU LYCEE RACINE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE GEORGES DUHAMEL": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE GEORGES DUHAMEL), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASS SPORTIVE LYCEE LOUIS LE GRAND": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASS SPORTIVE LYCEE LOUIS LE GRAND), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "SPORTIVE DU COLLEGE MAN": {
+      "activite_verifiee": "Établissement scolaire public parisien (SPORTIVE DU COLLEGE MAN), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE PAUL BERT": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE PAUL BERT), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE EVARISTE GALOIS": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE EVARISTE GALOIS), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE COLLEGE ALPHONSE DAU": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE COLLEGE ALPHONSE DAU), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASS SPORTIVE COLLEGE YVONNE LE TAC": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASS SPORTIVE COLLEGE YVONNE LE TAC), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "SPORTIVE DU LYCEE": {
+      "activite_verifiee": "Établissement scolaire public parisien (SPORTIVE DU LYCEE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE ROGNONI": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE ROGNONI), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE COLLEGE JACQUES DECOUR": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE COLLEGE JACQUES DECOUR), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE DU COLLEGE ANDRE MALRA": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE DU COLLEGE ANDRE MALRA), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE COLLEGE GUY FLAVIEN": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE COLLEGE GUY FLAVIEN), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE DU LYCEE FENEL": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE DU LYCEE FENEL), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE DU LYCEE RASPAIL": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE DU LYCEE RASPAIL), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSO SPORTIVE COLLEGE EDGAR VARESE": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSO SPORTIVE COLLEGE EDGAR VARESE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE LYCEE D ALEMBERT": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE LYCEE D ALEMBERT), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE PIERRE JEAN DE BERANGER": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE PIERRE JEAN DE BERANGER), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORT LYCEE PROF M DEPREZ": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORT LYCEE PROF M DEPREZ), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASS SPORTIVE LYCEE D ALEMBERT": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASS SPORTIVE LYCEE D ALEMBERT), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE GEORGES BRAQUE": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE GEORGES BRAQUE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE COLLEGE HONORE DE BALZ": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE COLLEGE HONORE DE BALZ), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "UNION SPORTIVE DU COLLEGE GAMBETTA": {
+      "activite_verifiee": "Établissement scolaire public parisien (UNION SPORTIVE DU COLLEGE GAMBETTA), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE COLLEGE STAEL": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE COLLEGE STAEL), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASS SPORTIVE COLLEGE JACQUES DECOUR": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASS SPORTIVE COLLEGE JACQUES DECOUR), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "SPORTIVE COLLEGE YVONNE LE TAC": {
+      "activite_verifiee": "Établissement scolaire public parisien (SPORTIVE COLLEGE YVONNE LE TAC), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE COLLEGE MARX D": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE COLLEGE MARX D), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOC SPORTIVE COLLEGE ROBERT DOISN": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOC SPORTIVE COLLEGE ROBERT DOISN), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE STEPHANE MALLARME": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE STEPHANE MALLARME), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLECTIF COLLEGES PARIS EST": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLECTIF COLLEGES PARIS EST), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE FLORA TRISTAN": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE FLORA TRISTAN), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE HENRI BERGSON": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE HENRI BERGSON), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE JULES VERNE": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE JULES VERNE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSO SPORTIVE COLLEGE J B CLEMENT": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSO SPORTIVE COLLEGE J B CLEMENT), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE MAURICE UTRILLO": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE MAURICE UTRILLO), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE LUCIE AUBRAC": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE LUCIE AUBRAC), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASS SPORTIVE COLLEGE MARX DORMOY": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASS SPORTIVE COLLEGE MARX DORMOY), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE DU LYCEE ARAGO": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE DU LYCEE ARAGO), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE HENRI IV": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE HENRI IV), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE DU COLLEGE PAJOL": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE DU COLLEGE PAJOL), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASS SPORTIVE DU COLLEGE PIERRE ALVI": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASS SPORTIVE DU COLLEGE PIERRE ALVI), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE YVONNE LE TAC": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE YVONNE LE TAC), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE MOLIERE": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE MOLIERE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "LYCEE GENERAL TECHN SOPHIE GERMAI": {
+      "activite_verifiee": "Établissement scolaire public parisien (LYCEE GENERAL TECHN SOPHIE GERMAI), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE LYCEE HONORE DE BALZAC": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE LYCEE HONORE DE BALZAC), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOC SPORTIF COLLEGE CLAUDE DEBUSS": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOC SPORTIF COLLEGE CLAUDE DEBUSS), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "SPORTIF COLLEGE CLAUDE DEBUSS": {
+      "activite_verifiee": "Établissement scolaire public parisien (SPORTIF COLLEGE CLAUDE DEBUSS), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "SPORTIVE LYCEE D ALEMBERT": {
+      "activite_verifiee": "Établissement scolaire public parisien (SPORTIVE LYCEE D ALEMBERT), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "AS SPORTIVE DU LYCEE TURGOT": {
+      "activite_verifiee": "Établissement scolaire public parisien (AS SPORTIVE DU LYCEE TURGOT), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASS SPORT LYCEE PROF M DEPREZ": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASS SPORT LYCEE PROF M DEPREZ), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE CESAR FRANCK": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE CESAR FRANCK), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "LYCEE POLYVALENT ET DES METIERS DOR": {
+      "activite_verifiee": "Établissement scolaire public parisien (LYCEE POLYVALENT ET DES METIERS DOR), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE CHARLEMAGNE": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE CHARLEMAGNE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "ASSOCIATION SPORTIVE DU COLLEGE": {
+      "activite_verifiee": "Établissement scolaire public parisien (ASSOCIATION SPORTIVE DU COLLEGE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "COLLEGE HENRI MATISSE": {
+      "activite_verifiee": "Établissement scolaire public parisien (COLLEGE HENRI MATISSE), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
+    },
+    "LYCEE GENERAL HELENE BOUCHER": {
+      "activite_verifiee": "Établissement scolaire public parisien (LYCEE GENERAL HELENE BOUCHER), relevant de l'académie de Paris. Subventions de la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:37:49.312448"
     }
   },
-  "total": 1134
+  "total": 1356
 }

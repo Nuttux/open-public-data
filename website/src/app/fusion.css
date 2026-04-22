@@ -1088,17 +1088,27 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion .fx-tip:focus::after,
 .theme-fusion .fx-tip:focus::before { opacity: 1; }
 
-/* Mobile: clamp tooltip so it never overflows the viewport. */
+/* Mobile: anchor the tooltip to the viewport itself (position: fixed) so it
+   can never overflow regardless of the trigger's column position. The arrow
+   is hidden since there's no stable visual pointer when the bubble floats
+   independently of the trigger. */
 @media (max-width: 680px) {
   .theme-fusion .fx-tip::after {
-    width: min(260px, calc(100vw - 24px));
-    max-width: calc(100vw - 24px);
-    left: auto;
-    right: 0;
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: auto;
+    top: auto;
+    /* Use dvh bottom offset so the bubble sits above keyboards / browser UI */
+    inset: auto 12px max(16px, env(safe-area-inset-bottom)) 12px;
+    width: auto;
+    max-width: none;
     transform: none;
     font-size: 12px;
+    line-height: 1.5;
+    padding: 12px 16px;
   }
-  .theme-fusion .fx-tip::before { left: auto; right: 16px; transform: none; }
+  .theme-fusion .fx-tip::before { display: none; }
 }
 
 /* Byline block (used at bottom of Méthode section) */
