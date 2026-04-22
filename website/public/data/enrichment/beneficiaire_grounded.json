@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T11:47:31.849686",
+  "generated_at": "2026-04-22T11:49:11.592168",
   "model": "gemini-3-flash-preview",
   "count": 780,
   "items": {
@@ -20868,7 +20868,227 @@
       "confiance": 0.8,
       "source_type": "claude_web",
       "enriched_at": "2026-04-22T11:47:31.849686"
+    },
+    "POSITIVE": {
+      "activite_verifiee": "Positiv (ex-Positive Planet France), association créée en 2006 par Jacques Attali. Lutte contre le chômage dans les quartiers prioritaires (QPV) par l'accompagnement gratuit à la création d'entreprise. Présent dans 190 QPV / 50 sites en 6 régions. ~47 000 personnes accueillies, ~10 000 entrepreneurs accompagnés. Programme de 4-6 mois avec ateliers collectifs et coaching individuel.",
+      "perimetre_geographique": "France (Paris et régions)",
+      "sources": [
+        "dora.inclusion.gouv.fr/structures/positive-planet-pp",
+        "fondationbs.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:49:11.592168"
+    },
+    "ASSOCIATION GESTION CENTRE ANIMATION CULTUR": {
+      "activite_verifiee": "AGECA — Association pour la Gestion d'un Centre d'Animation Culturelle, 177 rue de Charonne Paris 11e, créée en 1974 pour combler le manque d'équipements collectifs du quartier. Centre socioculturel, tête de pont historique du milieu associatif immigré parisien.",
+      "perimetre_geographique": "Paris 11e",
+      "sources": [
+        "acceslibre.beta.gouv.fr",
+        "associations.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:49:11.592168"
+    },
+    "ASS GESTION CENTRE ANIMATION CULTUR": {
+      "activite_verifiee": "AGECA — Association pour la Gestion d'un Centre d'Animation Culturelle, 177 rue de Charonne Paris 11e, créée en 1974 pour combler le manque d'équipements collectifs du quartier. Centre socioculturel, tête de pont historique du milieu associatif immigré parisien.",
+      "perimetre_geographique": "Paris 11e",
+      "sources": [
+        "acceslibre.beta.gouv.fr",
+        "associations.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:49:11.592168"
+    },
+    "UP": {
+      "activite_verifiee": "Mouvement UP (UP Conferences, UP Campus, UP Campus), mouvement parisien dédié à l'innovation sociale. Organise conférences, cafés, afterworks pour rassembler les entrepreneurs et acteurs du changement ; observatoire des signaux faibles et réseau social positif.",
+      "perimetre_geographique": "Paris / France",
+      "sources": [
+        "up-campus.org",
+        "placetob.org"
+      ],
+      "confiance": 0.4,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:49:11.592168"
+    },
+    "REUZ FRANCE": {
+      "activite_verifiee": "Reuz France, structure parisienne liée à l'économie circulaire et aux ressourceries (informations publiques détaillées limitées selon la dénomination exacte).",
+      "perimetre_geographique": "Paris / France",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:49:11.592168"
+    },
+    "CAFETE CAFE COLL PLACE DES FETES": {
+      "activite_verifiee": "Le Cafête — Café collectif de la Place des Fêtes, association d'habitants du 19e arrondissement. Siège 239 rue de Belleville Paris 19e. Café itinérant mensuel, éducation populaire, rencontres entre habitants. Projet financé par le Budget Participatif (120 000 €).",
+      "perimetre_geographique": "Paris 19e (Place des Fêtes)",
+      "sources": [
+        "mpdf.fr",
+        "resolis.org",
+        "gralon.net"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:49:11.592168"
+    },
+    "ASSOCIATION FAMILLE CATHOLIQUE": {
+      "activite_verifiee": "AFC — Associations Familiales Catholiques, confédérées dans la CNAFC (reconnue d'utilité publique). 28 place Saint-Georges Paris 9e. ~30 000 familles adhérentes, ~350 AFC locales, 74 fédérations départementales. Défense et valorisation de la famille, ateliers d'éducation, plaidoyer familial.",
+      "perimetre_geographique": "France (siège Paris 9e)",
+      "sources": [
+        "afc-france.org",
+        "cnafc.france-assos-sante.org",
+        "fr.wikipedia.org/wiki/Confédération_nationale_des_associations_familiales_catholiques"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:49:11.592168"
+    },
+    "FAMILLE CATHOLIQUE": {
+      "activite_verifiee": "AFC — Associations Familiales Catholiques, confédérées dans la CNAFC (reconnue d'utilité publique). 28 place Saint-Georges Paris 9e. ~30 000 familles adhérentes, ~350 AFC locales, 74 fédérations départementales. Défense et valorisation de la famille, ateliers d'éducation, plaidoyer familial.",
+      "perimetre_geographique": "France (siège Paris 9e)",
+      "sources": [
+        "afc-france.org",
+        "cnafc.france-assos-sante.org",
+        "fr.wikipedia.org/wiki/Confédération_nationale_des_associations_familiales_catholiques"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:49:11.592168"
+    },
+    "ASSOCIATION POUR LA GESTION D ESPACES": {
+      "activite_verifiee": "Association pour la Gestion d'Espaces — probable structure parisienne gérant des espaces associatifs ou sociaux (détails publics limités selon dénomination).",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:49:11.592168"
+    },
+    "INNOVATION FACTORY": {
+      "activite_verifiee": "Innovation Factory, structure d'incubation / accélération à Paris liée à l'écosystème Web School Factory / Startup Innovation (réseau Cluster Paris Innovation). Détails précis limités selon l'entité visée.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "webschoolfactory.fr",
+        "104factory.fr"
+      ],
+      "confiance": 0.4,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:49:11.592168"
+    },
+    "ASSOCIATION DES ORGANISATIONS SYNDICALES DE LA BOURSE DU TRAVAIL DE PARIS": {
+      "activite_verifiee": "ASO-BT — Association des Organisations Syndicales de la Bourse du Travail de Paris (SIREN 852183318), créée le 19 avril 2019, 3 rue du Château d'Eau Paris 10e. Gérait la Bourse du Travail (CGT, CFDT, CFTC, CFE-CGC, FO, UNSA, SOLIDAIRES). Dissoute le 12 février 2024.",
+      "perimetre_geographique": "Paris 10e",
+      "sources": [
+        "pappers.fr",
+        "boursedutravail-paris.fr",
+        "fr.wikipedia.org/wiki/Bourse_du_travail_de_Paris"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:49:11.592168"
+    },
+    "EPITECH ECOLE INFORMAT NOUV TECHNO": {
+      "activite_verifiee": "Epitech — École pour l'informatique et les nouvelles technologies (créée en 1999, groupe IONIS). Campus principal au Kremlin-Bicêtre (94, à Porte d'Italie) + 12 campus en France. Diplôme Grande École en 5 ans (RNCP 7), bachelors spécialisés (cybersécurité, IA, cloud), MSc/MBA. Pédagogie par projets, sans cours magistraux.",
+      "perimetre_geographique": "Paris / France",
+      "sources": [
+        "epitech.eu",
+        "en.wikipedia.org/wiki/Epitech"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:49:11.592168"
+    },
+    "PARIS MUSIC": {
+      "activite_verifiee": "Paris Music — festival et/ou structure de musiques actuelles à Paris. Contexte : porté par le Réseau MAP (Réseau des Musiques Actuelles de Paris), créé en 2006, ~81 structures membres. Fédère, représente et promeut la mise en réseau des acteurs musicaux parisiens.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "reseau-map.fr",
+        "paris-music.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:49:11.592168"
+    },
+    "ARES ASSOCIATION": {
+      "activite_verifiee": "ARES — Association pour la Réinsertion Économique et Sociale, groupe d'IAE créé en 1991. Plus grand groupe d'IAE d'Île-de-France (~1 000 salariés accompagnés/an, 14 établissements, 4 secteurs : logistique, économie circulaire, numérique, BTP). Ares Services Paris : CAP 18, 189 rue d'Aubervilliers Paris 18e.",
+      "perimetre_geographique": "Île-de-France (siège Paris 18e)",
+      "sources": [
+        "groupeares.fr",
+        "grafie.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:49:11.592168"
+    },
+    "INCUBATEUR PARIS BIOTECH": {
+      "activite_verifiee": "Paris Biotech Santé, incubateur de santé créé en 2000 par l'Université de Paris, ESSEC, CentraleSupélec et INSERM. Pépinière Paris Santé Cochin (5 000 m², hôpital Cochin Paris 14e depuis 2007) : 53 entreprises et startups. Plus grand incubateur santé d'Europe. 10-12 projets sélectionnés/an (médicaments, dispositifs médicaux, e-santé, IA).",
+      "perimetre_geographique": "Paris 14e",
+      "sources": [
+        "parisbiotechsante.org",
+        "fr.wikipedia.org/wiki/Parisbiotech_Santé"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:49:11.592168"
+    },
+    "ASSOCIATION INCUBATEUR PARIS BIOTECH": {
+      "activite_verifiee": "Paris Biotech Santé, incubateur de santé créé en 2000 par l'Université de Paris, ESSEC, CentraleSupélec et INSERM. Pépinière Paris Santé Cochin (5 000 m², hôpital Cochin Paris 14e depuis 2007) : 53 entreprises et startups. Plus grand incubateur santé d'Europe. 10-12 projets sélectionnés/an (médicaments, dispositifs médicaux, e-santé, IA).",
+      "perimetre_geographique": "Paris 14e",
+      "sources": [
+        "parisbiotechsante.org",
+        "fr.wikipedia.org/wiki/Parisbiotech_Santé"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:49:11.592168"
+    },
+    "ENVIE TRAPPES EN YVELINES": {
+      "activite_verifiee": "Envie — Fédération nationale (créée en 1984), réseau de 50 structures d'insertion spécialisées dans la rénovation d'équipements électriques et électroniques (EEE). ~107 000 appareils rénovés/an, 2 200 ETP en insertion, 800 CDI, collecte 1/3 des DEEE français. Envie Trappes-en-Yvelines : antenne régionale Île-de-France.",
+      "perimetre_geographique": "France (antennes dont Trappes 78)",
+      "sources": [
+        "envie.org",
+        "ess-europe.eu",
+        "ecosystem.eco"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:49:11.592168"
+    },
+    "FEDERATION ENVIE": {
+      "activite_verifiee": "Envie — Fédération nationale (créée en 1984), réseau de 50 structures d'insertion spécialisées dans la rénovation d'équipements électriques et électroniques (EEE). ~107 000 appareils rénovés/an, 2 200 ETP en insertion, 800 CDI, collecte 1/3 des DEEE français. Envie Trappes-en-Yvelines : antenne régionale Île-de-France.",
+      "perimetre_geographique": "France (antennes dont Trappes 78)",
+      "sources": [
+        "envie.org",
+        "ess-europe.eu",
+        "ecosystem.eco"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:49:11.592168"
+    },
+    "AYYEM ZAMEN": {
+      "activite_verifiee": "Ayyem Zamen (« Le bon vieux temps » en arabe), association créée en mars 2003. Deux cafés sociaux pour Parisiens de +60 ans : Café Social Belleville (Paris 20e, 2003) et Café Social Dejean (Paris 18e, 2008). Accès aux droits des travailleurs immigrés âgés, ateliers, écrivains publics, + dispositif « Domiciles Partagés » (10 appartements) et équipe mobile.",
+      "perimetre_geographique": "Paris 18e / 20e",
+      "sources": [
+        "cafesocial.org",
+        "professionbanlieue.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:49:11.592168"
+    },
+    "ARCAL": {
+      "activite_verifiee": "Arcal — Atelier de Recherche et de Création pour l'Art Lyrique / Compagnie nationale de théâtre lyrique et musical (créée en 1983, labellisée 1999 par le ministère de la Culture). Dirigée par Catherine Kollen. Studios de répétition Paris 20e. ~50 représentations/saison, partout en France, priorité au jeune public. Programme Jeune Scène Lyrique (depuis 2023).",
+      "perimetre_geographique": "Paris 20e / France",
+      "sources": [
+        "arcal-lyrique.fr",
+        "fr.wikipedia.org/wiki/Atelier_de_recherche_et_de_création_pour_l'art_lyrique"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:49:11.592168"
     }
   },
-  "total": 1070
+  "total": 1090
 }
