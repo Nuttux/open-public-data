@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T11:42:36.468016",
+  "generated_at": "2026-04-22T11:44:13.533648",
   "model": "gemini-3-flash-preview",
   "count": 780,
   "items": {
@@ -20353,7 +20353,179 @@
       "confiance": 0.8,
       "source_type": "claude_web",
       "enriched_at": "2026-04-22T11:42:36.468016"
+    },
+    "PARIS SAINT GERMAIN HANDBALL": {
+      "activite_verifiee": "Paris Saint-Germain Handball, club professionnel de handball masculin fondé en 1941, département handball du Paris Saint-Germain FC. Domicilié au stade Pierre-de-Coubertin Paris 16e (4 016 places). Racheté par Qatar Sports Investments (QSI) en 2012. 12 titres de LNH Division 1.",
+      "perimetre_geographique": "Paris 16e (Coubertin)",
+      "sources": [
+        "en.wikipedia.org/wiki/Paris_Saint-Germain_Handball",
+        "psg.fr/en/handball"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:44:13.533648"
+    },
+    "ASS PARIS TOUT P TITS": {
+      "activite_verifiee": "Paris Tout P'tits, association créée en 1992, exclusivement bénévole. Fournit aux familles parisiennes démunies des paniers de lait infantile, petits pots et couches pour bébés de moins de 18 mois (12 semaines maximum/enfant) sur orientation par les services sociaux. 2 centres de distribution (Hermite Paris 18e, Didot Paris 14e).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "paristoutptits.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:44:13.533648"
+    },
+    "ASSOCIATION PARIS TOUT P TITS": {
+      "activite_verifiee": "Paris Tout P'tits, association créée en 1992, exclusivement bénévole. Fournit aux familles parisiennes démunies des paniers de lait infantile, petits pots et couches pour bébés de moins de 18 mois (12 semaines maximum/enfant) sur orientation par les services sociaux. 2 centres de distribution (Hermite Paris 18e, Didot Paris 14e).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "paristoutptits.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:44:13.533648"
+    },
+    "THE C40 CITIES CLIMATE LEADERSHIP": {
+      "activite_verifiee": "C40 Cities Climate Leadership Group, réseau de ~96 grandes villes dans le monde (1/12e de la population mondiale) fondé en 2005 par Ken Livingstone. Action climatique urbaine : réduction des GES, adaptation, qualité de l'air, emplois verts. Anne Hidalgo a été la 1re femme présidente (2016). Paris est membre.",
+      "perimetre_geographique": "International (membre Paris)",
+      "sources": [
+        "c40.org",
+        "en.wikipedia.org/wiki/C40_Cities_Climate_Leadership_Group"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:44:13.533648"
+    },
+    "ACCORDS CROISES": {
+      "activite_verifiee": "Accords Croisés, bureau de concerts, maison de production et label, 32 rue Myrha Paris 18e. Spécialisé dans les musiques du monde, collabore avec des voix internationales et produit des créations transculturelles (CD/DVD avec livrets documentés).",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        "accords-croises.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:44:13.533648"
+    },
+    "ASSOCIATION MISSION ENFANCE": {
+      "activite_verifiee": "Mission Enfance, OSI créée en 1991 en France et en Principauté de Monaco par le Père Stéphane Aumonier. Sous Présidence d'honneur du Prince Albert II de Monaco. Aide à l'éducation d'enfants en détresse dans le monde. Bureau à Paris : 33 rue Galilée Paris 16e.",
+      "perimetre_geographique": "International (Paris 16e)",
+      "sources": [
+        "missionenfance.org",
+        "osimonaco.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:44:13.533648"
+    },
+    "INCUBATEUR AU FEMININ": {
+      "activite_verifiee": "WILLA (ex-Paris Pionnières, SIREN 452740285), incubateur de startups parisien créé en 2005, dédié aux entreprises comptant au moins une femme à leur direction. Sentier, Paris 2e. +150 experts, 450 alumni actives. ~500 femmes accompagnées en 2023. Lutte pour la mixité dans la tech.",
+      "perimetre_geographique": "Paris 2e",
+      "sources": [
+        "hellowilla.co",
+        "paris.fr",
+        "societe.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:44:13.533648"
+    },
+    "42": {
+      "activite_verifiee": "42, école d'informatique gratuite, ouverte et sans prérequis, fondée en 2013 à Paris par Xavier Niel (Iliad-Free), Nicolas Sadirac, Kwame Yamgnane, Florian Bucher. 96 bd Bessières Paris 17e. Pédagogie par projets, peer-learning, sans professeurs. +15 000 étudiants dans 42 campus (25 pays).",
+      "perimetre_geographique": "Paris 17e / International",
+      "sources": [
+        "42.fr",
+        "fr.wikipedia.org/wiki/42_(écoles)"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:44:13.533648"
+    },
+    "COMITE D ORGAN FRANCE TIR A L ARC": {
+      "activite_verifiee": "Comité d'Organisation France Tir à l'Arc, association créée le 24 juin 2020 par la FFTA, le comité régional IdF, le comité départemental Paris, le CNOSF, la Ville de Paris et la Région IdF. Organise la Hyundai Archery World Cup et le Tournoi de qualification olympique à Paris (2021-2023) dans le cadre de Paris 2024.",
+      "perimetre_geographique": "France / Paris",
+      "sources": [
+        "ffta.fr",
+        "tiralarc75.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:44:13.533648"
+    },
+    "BANANE": {
+      "activite_verifiee": "Association Banane / Les Mamans de la Banane, créée en 2021 par Khady Mané. Lutte contre les rixes entre adolescents et accompagnement des jeunes des quartiers populaires (Amandiers, Ménilmontant) subissant drogues, sans-abrisme. Organise Clean Challenge et actions citoyennes.",
+      "perimetre_geographique": "Paris 20e",
+      "sources": [
+        "bondyblog.fr",
+        "facebook.com/bam20e"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:44:13.533648"
+    },
+    "FONDATION PARTAGE ET VIE": {
+      "activite_verifiee": "Fondation Partage et Vie (ex-Fondation Caisses d'Épargne pour la Solidarité, SIREN 920028560), RUP. Gère 136 établissements dans 12 régions métropolitaines + Martinique, Guadeloupe (46 départements) dont 86 EHPAD. Lutte contre l'exclusion sociale liée à l'âge, à la maladie ou au handicap.",
+      "perimetre_geographique": "France",
+      "sources": [
+        "fondationpartageetvie.org",
+        "fr.wikipedia.org/wiki/Fondation_Partage_et_Vie"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:44:13.533648"
+    },
+    "SOCIETE PUBLIQUE LOCALE LE CARREAU DU TEMPLE": {
+      "activite_verifiee": "SPL Le Carreau du Temple, société publique locale à capital 100 % Ville de Paris (décidée en 2008, ouverture 2014). Gère l'équipement hybride culture-sport-événementiel du marché couvert du Carreau du Temple (Paris 3e, 4 000 m², auditorium 250 places, espace modulable 1 800 m²). Programmation artistique, associations sportives, événements.",
+      "perimetre_geographique": "Paris 3e",
+      "sources": [
+        "lecarreaudutemple.eu",
+        "en.wikipedia.org/wiki/Carreau_du_Temple",
+        "lesepl.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:44:13.533648"
+    },
+    "HAUT COMME 3 POMMES": {
+      "activite_verifiee": "Haut Comme 3 Pommes (SIREN 328169339), association et halte-garderie associative parisienne, 42 bis rue Sedaine Paris 11e. Accueil des enfants en bas âge ; agréée CAF et Ville de Paris (tarif selon barème CNAF).",
+      "perimetre_geographique": "Paris 11e",
+      "sources": [
+        "paris.fr",
+        "pappers.fr",
+        "allocreche.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:44:13.533648"
+    },
+    "ESPERO": {
+      "activite_verifiee": "Espero, association parisienne d'accompagnement scolaire / éducatif — informations publiques détaillées limitées selon dénomination exacte.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:44:13.533648"
+    },
+    "WEBFORCE3 PARIS": {
+      "activite_verifiee": "Webforce3 Paris, école du numérique inclusive fondée en 2014 par Alain Assouline. Formations courtes (3-12 mois) au développement web, au webdesign/marketing digital et aux systèmes & réseaux, accessibles sans condition de diplôme. Deux centres à Paris (4e et 18e). ~50 écoles en France et à l'international.",
+      "perimetre_geographique": "Paris 4e / 18e",
+      "sources": [
+        "wf3.fr",
+        "topformation.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:44:13.533648"
+    },
+    "ASSISTANCE PUBLIQUE DES HOPITAUX DE PARIS": {
+      "activite_verifiee": "AP-HP — Assistance Publique Hôpitaux de Paris, centre hospitalier universitaire d'Île-de-France (~38 hôpitaux, ~100 000 agents). Premier CHU d'Europe. Siège 3 avenue Victoria Paris 4e.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        "aphp.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:44:13.533648"
     }
   },
-  "total": 1023
+  "total": 1039
 }
