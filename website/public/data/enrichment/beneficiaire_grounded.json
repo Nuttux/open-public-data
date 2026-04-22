@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T11:39:34.473775",
+  "generated_at": "2026-04-22T11:41:02.832913",
   "model": "gemini-3-flash-preview",
   "count": 780,
   "items": {
@@ -20003,7 +20003,154 @@
       "confiance": 0.8,
       "source_type": "claude_web",
       "enriched_at": "2026-04-22T11:39:34.473775"
+    },
+    "ASSOCIATION ESPACE": {
+      "activite_verifiee": "Association Espace — structure associative parisienne (détails précis limités selon dénomination exacte, potentiellement Espace Dakar, Espace 19, Espace Torcy, etc.).",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.3,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:41:02.832913"
+    },
+    "YOLO CONSEIL COACHING": {
+      "activite_verifiee": "YOLO Conseil & Coaching, organisme de formation et de coaching certifié Qualiopi, 10 place des Martyrs Clichy (92). Accompagne jeunes, femmes et adultes vers l'orientation, la reconversion professionnelle et la prise de poste. Formations courtes (ex. Career Search en 4 jours).",
+      "perimetre_geographique": "Clichy (92) / Paris",
+      "sources": [
+        "yolo-cc.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:41:02.832913"
+    },
+    "ASSOCIATION POUR INSERTION DES JEUNES": {
+      "activite_verifiee": "AIJ — Association Interprofessionnelle pour l'Insertion des Jeunes / AFIJ-type, structure parisienne d'accompagnement à l'insertion sociale et professionnelle des jeunes (16-25 ans).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "gralon.net",
+        "repertoiredesassociations.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:41:02.832913"
+    },
+    "PIROUETT": {
+      "activite_verifiee": "Pirouett' — crèche parentale associative, 147 bd Auguste Blanqui Paris 13e. 16 enfants de 10 mois à 3 ans, 7 professionnels qualifiés, pédagogie inspirée de Loczy, jardin, repas bio cuisinés sur place. Agréée PMI, subventionnée par la Ville de Paris.",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        "pirouett.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:41:02.832913"
+    },
+    "ACORE": {
+      "activite_verifiee": "ACORE, association loi 1901 créée le 29 septembre 1985, 19 bd des Italiens Paris 2e. Partenaire de la Ville de Paris pour la reconversion de publics parisiens ; services adaptés aux personnes en situation de handicap. Volet ACORE Ressources Humaines.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "acore-rh.org",
+        "acore-association.asso.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:41:02.832913"
+    },
+    "ACTION ET TRANSITION": {
+      "activite_verifiee": "Action et Transition, association parisienne d'accompagnement à l'insertion et/ou à la transition professionnelle. Détails publics limités.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.3,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:41:02.832913"
+    },
+    "FONDATION LOUIS LEPINE": {
+      "activite_verifiee": "Fondation Louis Lépine, fondation créée en 1950 pour soutenir les agents de la Préfecture de police de Paris et leurs familles. 4 missions : solidarité, logement, loisirs, bourses aux orphelins. Collabore avec l'Œuvre des Orphelins de la Préfecture de police (créée en 1901, RUP 1906).",
+      "perimetre_geographique": "Paris / Île-de-France",
+      "sources": [
+        "fondationlouislepine.fr",
+        "oeuvre-orphelins-prefecture-police.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:41:02.832913"
+    },
+    "REZ DE RAIL": {
+      "activite_verifiee": "Rez de Rail (SIREN 917724387), SCIC SA créée le 02/08/2022, 105 rue Curial Paris 19e. Exploite un lieu hybride sur la Petite Ceinture (café-bar-restaurant) autour de l'alimentation durable, éducation populaire, culture, économie circulaire et écologie. Partenaires : Bellevilles, IFA Paris, Mam'Ayoka.",
+      "perimetre_geographique": "Paris 19e (Petite Ceinture)",
+      "sources": [
+        "pappers.fr",
+        "societe.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:41:02.832913"
+    },
+    "YOTI PARIS": {
+      "activite_verifiee": "YOTI Paris, structure associative parisienne d'aide aux personnes âgées et/ou de solidarité intergénérationnelle. Détails publics limités.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.3,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:41:02.832913"
+    },
+    "CENTRE GAI ET LESBIEN": {
+      "activite_verifiee": "Centre LGBTQI+ de Paris et d'Île-de-France (ex-Centre Gai et Lesbien — CGL, créé 1993 ; ex-Maison des Homosexualités, 1989). SIREN 393943170, siège Paris 3e. Accueil, écoute, permanence juridique, psy, emploi, santé pour les personnes LGBTQI+. Fédère 109 associations membres.",
+      "perimetre_geographique": "Paris / Île-de-France",
+      "sources": [
+        "centrelgbtparis.org",
+        "fr.wikipedia.org/wiki/Centre_LGBT_Paris-Île-de-France"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:41:02.832913"
+    },
+    "ASSOCIATION LE GARAGE NUMERIQUE": {
+      "activite_verifiee": "Le Garage Numérique, association du 20e arrondissement (Ménilmontant) fondée en 2011. Inclusion numérique et éducation populaire : reconditionnement de PC sous logiciels libres, ateliers, formation de jeunes techniciens IT (dont Passe Numérique Pro en partenariat avec le CNAM). Lauréat Google Impact Challenge France 2019.",
+      "perimetre_geographique": "Paris 20e (et nord-est parisien)",
+      "sources": [
+        "legaragenumerique.fr",
+        "impactchallenge.withgoogle.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:41:02.832913"
+    },
+    "FEDERATION DE LA LIGUE DE L ENSEIGNEMENT": {
+      "activite_verifiee": "Fédération de Paris de la Ligue de l'enseignement (FOL 75), représentation départementale parisienne. 167 bd de la Villette Paris 10e. Mouvement d'éducation populaire fondé en 1866 par Jean Macé ; éducation, culture, solidarité et engagement civique. ~2M membres indirects en France.",
+      "perimetre_geographique": "Paris (fédération nationale IdF)",
+      "sources": [
+        "ligueparis.org",
+        "laligue.org",
+        "en.wikipedia.org/wiki/Ligue_de_l'enseignement"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:41:02.832913"
+    },
+    "ASSOC MOSAIQUE L ATELIER DES ENFANT": {
+      "activite_verifiee": "Mosaïque l'Atelier des Enfants, crèche multi-accueil associative, 21 rue de la Folie-Méricourt Paris 11e. Accueille les enfants de 1 à 3 ans et leur famille, lieu de vie et d'ouverture. (Président historique André Navel 1993-2019.)",
+      "perimetre_geographique": "Paris 11e",
+      "sources": [
+        "mosaiquelatelierdesenfants.fr",
+        "paris.fr",
+        "acepprif.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:41:02.832913"
+    },
+    "GIP POUR LA REUSSITE EDUCATIVE A PA": {
+      "activite_verifiee": "GIP REP — Groupement d'Intérêt Public pour la Réussite Éducative à Paris, créé le 13 juillet 2006 entre l'État, la Ville et le Département de Paris (rejoint par la CAF Paris en 2007). Porte le Programme de Réussite Éducative (PRE) dans les 11 territoires prioritaires parisiens : accompagnement individualisé éducatif, social, culturel et santé des enfants de 2 à 16 ans.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "reussite-educative.paris",
+        "societe.com",
+        "ozp.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:41:02.832913"
     }
   },
-  "total": 991
+  "total": 1005
 }
