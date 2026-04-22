@@ -29595,7 +29595,387 @@
       ],
       "confiance": 0.95,
       "source_type": "grounded_search"
+    },
+    "SERVICE PLUS A LA PERSONNE": {
+      "beneficiaire": "Service Plus à la Personne",
+      "beneficiaire_normalise": "SERVICE PLUS A LA PERSONNE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:38:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (7e, 66 avenue de Breteuil) créée le 27 mai 2009 : aide aux mineurs et adultes handicapés et autistes — aide quotidienne, mobilité, soutien en milieu pro, loisirs. 20-49 salariés. SIRET 51891162300032.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://serviceplusalapersonne.com",
+          "title": "serviceplusalapersonne.com"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "SAP COMPETENCES": {
+      "beneficiaire": "SAP Compétences",
+      "beneficiaire_normalise": "SAP COMPETENCES",
+      "siret": "",
+      "generated_at": "2026-04-23T00:38:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (15e, 29 rue Saint-Amand) créée vers 2015 : formation continue adulte. SIRET 81538640400025.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://societe.com",
+          "title": "societe.com"
+        }
+      ],
+      "confiance": 0.75,
+      "source_type": "grounded_search"
+    },
+    "CREAT EO IDF": {
+      "beneficiaire": "CREAT'EO IDF",
+      "beneficiaire_normalise": "CREAT EO IDF",
+      "siret": "",
+      "generated_at": "2026-04-23T00:38:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (15e, 41 rue de Cronstadt) créée le 24/10/2014 : organisation fonctionnant par adhésion volontaire. SIRET 81434446100011.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://societe.com",
+          "title": "societe.com"
+        }
+      ],
+      "confiance": 0.5,
+      "source_type": "grounded_search"
+    },
+    "ART ET CAETERA": {
+      "beneficiaire": "Art et Caetera",
+      "beneficiaire_normalise": "ART ET CAETERA",
+      "siret": "",
+      "generated_at": "2026-04-23T00:38:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (19e, 118-130 avenue Jean Jaurès) créée le 7 juin 2015 : ateliers, cours et stages en arts plastiques (peinture, gravure, collage, modelage, création numérique) pour enfants et adultes. 10-19 salariés. SIRET 81241791300033.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://artetcaetera.jimdofree.com",
+          "title": "artetcaetera.jimdofree.com"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "BETE A BON DIEU PRODUCTION": {
+      "beneficiaire": "Bête à Bon Dieu Production (BàBDP)",
+      "beneficiaire_normalise": "BETE A BON DIEU PRODUCTION",
+      "siret": "",
+      "generated_at": "2026-04-23T00:38:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (14e, 22 rue Deparcieux) : pratique de la philosophie associée au spectacle vivant — festival « Philoscène » en juin, ateliers à l'année. Accessible dès 6 ans, bilingue FR/LSF, valides et handicapés.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://theatre-contemporain.net",
+          "title": "theatre-contemporain.net"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "MEME ICI": {
+      "beneficiaire": "Association Même Ici — Compagnie Ici-Même",
+      "beneficiaire_normalise": "MEME ICI",
+      "siret": "",
+      "generated_at": "2026-04-23T00:38:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (20e, 23 rue Ramponneau) : spectacle vivant, arts dans l'espace public — collectif artistique subversif, exploration des phénomènes urbains. SIRET 79074499900018.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://artcena.fr",
+          "title": "artcena.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "MACCABI PARIS METROPOLE": {
+      "beneficiaire": "UJA Maccabi Paris Métropole",
+      "beneficiaire_normalise": "MACCABI PARIS METROPOLE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:38:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association culturelle et sportive (12e, 181 avenue Daumesnil) : club de football fondé en 2012 (fusion UJA Alfortville + section football SC Maccabi Paris, fondé 1924). 1000+ licenciés. Promotion de la culture juive et liens avec la ville.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "INSTITUT NATIONAL D ETUDES": {
+      "beneficiaire": "INED — Institut National d'Études Démographiques",
+      "beneficiaire_normalise": "INSTITUT NATIONAL D ETUDES",
+      "siret": "",
+      "generated_at": "2026-04-23T00:38:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "EPST (20e, 133 bd Davout) fondé le 24 octobre 1945 par décret à l'initiative de Robert Debré. Premier directeur : Alfred Sauvy. Recherche pluridisciplinaire en démographie.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://ined.fr",
+          "title": "ined.fr"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "IMAGINE INST MALAD GEN NECKER MALAD": {
+      "beneficiaire": "Institut Imagine — Institut des Maladies Génétiques Necker",
+      "beneficiaire_normalise": "IMAGINE INST MALAD GEN NECKER MALAD",
+      "siret": "",
+      "generated_at": "2026-04-23T00:38:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "IHU et Institut Carnot (15e, campus hôpital Necker) créé en 2007, nouveau bâtiment 19 000 m² en 2014 (architecture Jean Nouvel et Valéro) : recherche et soins sur les maladies génétiques. 1000 médecins/chercheurs/pros ; 400 solutions développées, 820 000 patients dans son entrepôt.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://institutimagine.org",
+          "title": "institutimagine.org"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ENTRE POTS": {
+      "beneficiaire": "Entre Pots",
+      "beneficiaire_normalise": "ENTRE POTS",
+      "siret": "",
+      "generated_at": "2026-04-23T00:38:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association de jardinage / jardin partagé parisienne — informations publiques limitées, probablement adhérente au réseau Main Verte.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "grounded_search"
+    },
+    "CTR PROMOT LIVRE JEUNESSE SEINE ST": {
+      "beneficiaire": "CPLJ-93 — Centre de Promotion du Livre de Jeunesse en Seine-Saint-Denis (ét. secondaire)",
+      "beneficiaire_normalise": "CTR PROMOT LIVRE JEUNESSE SEINE ST",
+      "siret": "",
+      "generated_at": "2026-04-23T00:38:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Voir entrée CTR PROMOT LIVRE JEUNESSE — organise le Salon du livre et de la presse jeunesse de Montreuil, l'École du livre de jeunesse.",
+      "perimetre_geographique": "Seine-Saint-Denis",
+      "sources": [
+        {
+          "url": "https://slpj.fr",
+          "title": "slpj.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "CONSERVATOI MUSIQUE EXPRESSIONS AR": {
+      "beneficiaire": "CMEA — Conservatoire de Musique et d'Expressions Artistiques",
+      "beneficiaire_normalise": "CONSERVATOI MUSIQUE EXPRESSIONS AR",
+      "siret": "",
+      "generated_at": "2026-04-23T00:38:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Conservatoire (5e, 80 bd Saint-Germain) : ouvert à tous sans limite d'âge, accessibilité handicap et accidentés de la vie — cours pratiques, formations pros, préparations aux concours.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://conservatoire-cmea.fr",
+          "title": "conservatoire-cmea.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "COMITE DEPARTEMENT D ATHLETISME": {
+      "beneficiaire": "CDA 75 — Comité Départemental d'Athlétisme de Paris",
+      "beneficiaire_normalise": "COMITE DEPARTEMENT D ATHLETISME",
+      "siret": "",
+      "generated_at": "2026-04-23T00:38:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Comité FFA (15e, 91 quai Jacques Chirac) créé en 1968 : 44 clubs, 3645 licenciés. Développement de l'athlétisme à Paris, championnats départementaux.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://lifa-athle.fr",
+          "title": "lifa-athle.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ASSOC GLAZ ART": {
+      "beneficiaire": "Association Glaz'art",
+      "beneficiaire_normalise": "ASSOC GLAZ ART",
+      "siret": "",
+      "generated_at": "2026-04-23T00:38:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association gérant Glazart (19e, 7-15 avenue de la Porte de la Villette) depuis 1992 — voir entrée ASSOCIATION GLAZ ART.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://glazart.com",
+          "title": "glazart.com"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "PLAINE COMMUNE": {
+      "beneficiaire": "Plaine Commune",
+      "beneficiaire_normalise": "PLAINE COMMUNE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:38:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Établissement Public Territorial (EPT) du Grand Paris (93) créé en 2016 (ex-CA 2001-2016) : 9 communes du nord de Paris (Aubervilliers, La Courneuve, Saint-Denis, Stains, Saint-Ouen…), 450 000 habitants. Compétences : politique de la ville, équipements culturels/sociaux/sportifs, assainissement, déchets.",
+      "perimetre_geographique": "Seine-Saint-Denis",
+      "sources": [
+        {
+          "url": "https://plainecommune.fr",
+          "title": "plainecommune.fr"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "REGIE DE QUARTIER ST BLAISE CHARONN": {
+      "beneficiaire": "Régie de Quartier Saint-Blaise Charonne",
+      "beneficiaire_normalise": "REGIE DE QUARTIER ST BLAISE CHARONN",
+      "siret": "",
+      "generated_at": "2026-04-23T00:38:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association loi 1901 et entreprise d'insertion ESS (20e, 56 bd Davout) créée en 2004 : lien social, emplois d'insertion (RSA, longue durée, femmes isolées, jeunes) dans le sud du 20e. Projet d'agriculture urbaine.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://regie-stblaise.com",
+          "title": "regie-stblaise.com"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "THEATRE DE LA PORTE SAINT MARTIN": {
+      "beneficiaire": "Théâtre de la Porte Saint-Martin",
+      "beneficiaire_normalise": "THEATRE DE LA PORTE SAINT MARTIN",
+      "siret": "",
+      "generated_at": "2026-04-23T00:38:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Théâtre à l'italienne (10e, près Place de la République) construit en 1781 par Nicolas Lenoir pour Marie-Antoinette ; rebaptisé en 1802. Temple du drame romantique sous Harel (Dumas, Hugo). Reconstruit en 1873 après la Commune. Actuellement occupé par la Comédie-Française jusqu'au 17 juillet 2026.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://portestmartin.com",
+          "title": "portestmartin.com"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ANTANAK": {
+      "beneficiaire": "Antanak",
+      "beneficiaire_normalise": "ANTANAK",
+      "siret": "",
+      "generated_at": "2026-04-23T00:38:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association loi 1901 (18e, 18 rue Bernard Dimey) : récupération et reconditionnement de matériel informatique (Linux / logiciels libres), dons aux adhérents, ateliers d'accompagnement numérique, écrivain public. Réduction de la fracture numérique, promotion de l'open source. SIRET 80988753200020.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://antanak.com",
+          "title": "antanak.com"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "IM PACTES": {
+      "beneficiaire": "IM'PACTES",
+      "beneficiaire_normalise": "IM PACTES",
+      "siret": "",
+      "generated_at": "2026-04-23T00:38:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (15e, 149 rue de Sèvres, Necker) créée le 20 mai 2022 par Céline Gréco : santé, scolarité, culture pour enfants et jeunes adultes protégés par l'ASE. Programme « Avenir » (bourses d'études, aide permis, ateliers autonomie) pour jeunes 18-25 ans. SIRET 92018037900025.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://association.impactes.fr",
+          "title": "association.impactes.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "FEDERAT ENT D INSERT D ILE FRANCE": {
+      "beneficiaire": "UREI / FEI Île-de-France",
+      "beneficiaire_normalise": "FEDERAT ENT D INSERT D ILE FRANCE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:38:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Fédération des Entreprises d'Insertion IDF (2e, 12 rue de la Lune) créée en 1984 : 313 structures adhérentes en 2026 (EI, ETTI, EITI). Accompagnement création/transformation d'entreprises d'insertion. Président : Sébastien Moriceau.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://idf.lesentreprisesdinsertion.org",
+          "title": "idf.lesentreprisesdinsertion.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "CARE FRANCE": {
+      "beneficiaire": "CARE France",
+      "beneficiaire_normalise": "CARE FRANCE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:38:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association de solidarité internationale (Pantin) créée le 4 novembre 1983, membre du réseau CARE (1945, 22 ONG US) : aide humanitaire d'urgence et développement, droits des femmes. 54M+ personnes aidées (2024), 51 pays. 85 salariés, 72 M€ budget. SIRET 33480580100043.",
+      "perimetre_geographique": "International",
+      "sources": [
+        {
+          "url": "https://carefrance.org",
+          "title": "carefrance.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ASS POUR INSERTION DES JEUNES": {
+      "beneficiaire": "Association pour l'Insertion des Jeunes (AIJ)",
+      "beneficiaire_normalise": "ASS POUR INSERTION DES JEUNES",
+      "siret": "",
+      "generated_at": "2026-04-23T00:38:40",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association parisienne d'insertion socio-pro des jeunes — probablement rattachée à une Mission Locale ou dispositif Pôle Emploi / AIJ (Accompagnement Intensif Jeunes).",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.5,
+      "source_type": "grounded_search"
     }
   },
-  "total": 1684
+  "total": 1706
 }
