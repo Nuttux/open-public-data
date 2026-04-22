@@ -28154,7 +28154,468 @@
       ],
       "confiance": 0.95,
       "source_type": "grounded_search"
+    },
+    "U N I R H 75": {
+      "beneficiaire": "UNIRH 75 / OHE 75",
+      "beneficiaire_normalise": "U N I R H 75",
+      "siret": "",
+      "generated_at": "2026-04-23T00:32:38",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (19e, 43 bis rue d'Hautpoul) créée en 1987 : insertion et maintien en emploi des personnes handicapées (CAP Emploi), en lien avec Pôle Emploi et Agefiph. Sensibilisation étudiants IDF.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://unirh75.org",
+          "title": "unirh75.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "SOLEIL BLAISE": {
+      "beneficiaire": "Soleil Saint-Blaise",
+      "beneficiaire_normalise": "SOLEIL BLAISE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:32:38",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Centre social (20e, quartier Saint-Blaise près de la Porte de Montreuil) : 6 salariés, 50 bénévoles — activités socioculturelles pour tous âges, permanences juridiques/psy/écrivain public, groupe parole parents. SIRET 48155472300033.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://soleilblaise.org",
+          "title": "soleilblaise.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "WAKE UP CAFE": {
+      "beneficiaire": "Wake Up Café (WKF)",
+      "beneficiaire_normalise": "WAKE UP CAFE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:32:38",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association créée en 2014 par Clotilde Gilbert (ex-aumônière Nanterre) : accompagnement global sortants de prison vers réinsertion durable. 9 sites (Paris, Montreuil, Sèvres, Nantes, Lyon, Valence, Marseille, Montpellier, Lille). 300+ personnes suivies, 65% sorties positives, <10% récidive (vs 32% national). SIRET 80502889100069.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://wakeupcafe.org",
+          "title": "wakeupcafe.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "MUSEE CLEMENCEAU": {
+      "beneficiaire": "Musée Clemenceau",
+      "beneficiaire_normalise": "MUSEE CLEMENCEAU",
+      "siret": "",
+      "generated_at": "2026-04-23T00:32:38",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Fondation reconnue d'utilité publique (16e, 8 rue Benjamin Franklin) : ouverte en 1931, gère l'appartement de Georges Clemenceau (y vécut 1895-1929). Classée Monuments Historiques (1955), labellisée « Maison des Illustres » (2012).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://musee-clemenceau.fr",
+          "title": "musee-clemenceau.fr"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "FEDERATION NATIONALE SOLIDARITE FEM": {
+      "beneficiaire": "FNSF — Fédération Nationale Solidarité Femmes",
+      "beneficiaire_normalise": "FEDERATION NATIONALE SOLIDARITE FEM",
+      "siret": "",
+      "generated_at": "2026-04-23T00:32:38",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Fédération issue du mouvement féministe (fin années 70) : premier réseau d'hébergement spécialisé pour femmes victimes de violences (80+ associations, 5000+ places). Gère le 3919 (numéro national gratuit, anonyme, 24/7). Direction : Mine Günbay.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://solidaritefemmes.org",
+          "title": "solidaritefemmes.org"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "FABRICA SPECTACLES": {
+      "beneficiaire": "La Fabrica Spectacles",
+      "beneficiaire_normalise": "FABRICA SPECTACLES",
+      "siret": "",
+      "generated_at": "2026-04-23T00:32:38",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "SAS (18e, 8 rue Léon — exploit 28 rue Stephenson) créée en 2013, capital 1,5 M€ : production et diffusion de spectacles vivants. A fusionné avec Le 360 Restaurant en octobre 2023.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://societe.com",
+          "title": "societe.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "grounded_search"
+    },
+    "CTR REGION INFORMATION PREVENTION S": {
+      "beneficiaire": "CRIPS Île-de-France (établissement secondaire)",
+      "beneficiaire_normalise": "CTR REGION INFORMATION PREVENTION S",
+      "siret": "",
+      "generated_at": "2026-04-23T00:32:38",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Organisme associé Région IDF (18e, 16 rue de l'Évangile), fondé 1988 : prévention VIH/IST/addictions et promotion santé des jeunes. 200 000+ jeunes touchés/an en IDF.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://lecrips-idf.net",
+          "title": "lecrips-idf.net"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "COMMUNICATION SANS FRONTIERES CSF": {
+      "beneficiaire": "CSF — Communication Sans Frontières",
+      "beneficiaire_normalise": "COMMUNICATION SANS FRONTIERES CSF",
+      "siret": "",
+      "generated_at": "2026-04-23T00:32:38",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association loi 1901 (17e, 14/16 bd Douaumont) fondée en 2003 par Bruno David : pros, étudiants et chercheurs en SIC — promotion d'une communication éthique. Organise le Grand Prix de la Communication Solidaire. ~200 membres. SIRET 45001767800050.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://communicationsansfrontieres.org",
+          "title": "communicationsansfrontieres.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "CIRQUE ICI": {
+      "beneficiaire": "Cirque Ici — Compagnie Johann Le Guillerm",
+      "beneficiaire_normalise": "CIRQUE ICI",
+      "siret": "",
+      "generated_at": "2026-04-23T00:32:38",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Compagnie de cirque contemporain créée en 1994 par Johann Le Guillerm (diplômé CNAC 1989) : recherche Attraction depuis 2001, spectacles « Où ça? », « Terces »… Grand Prix national du Cirque 1996, Prix SACD 2005 et 2017. Résidence au Jardin d'Agronomie Tropicale (Paris) depuis 2011. SIRET 43948197900045.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://johannleguillerm.com",
+          "title": "johannleguillerm.com"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "CCI REGION PARIS ILE DE FRANCE": {
+      "beneficiaire": "CCI Paris Île-de-France",
+      "beneficiaire_normalise": "CCI REGION PARIS ILE DE FRANCE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:32:38",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Chambre de commerce et d'industrie de région (siège depuis 2026 au 11 rue Léon-Jouhaux, 10e — ex-Hôtel Potocki 8e) : représente ~915 000 entreprises dans les 8 départements IDF. 92 chefs d'entreprise bénévoles élus 5 ans. Accompagnement création, développement, transmission.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://cci-paris-idf.fr",
+          "title": "cci-paris-idf.fr"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "APRSP ALTAIR": {
+      "beneficiaire": "APRSP Altaïr (AHPRSP)",
+      "beneficiaire_normalise": "APRSP ALTAIR",
+      "siret": "",
+      "generated_at": "2026-04-23T00:32:38",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (Nanterre, 40 rue Salvador Allende) créée en 1985, absorbée par Groupe SOS Solidarités : ACT VESTA, CHRS, SEA — accompagnement personnes en situation de prostitution, VIH/sida, précarité dans Paris et Hauts-de-Seine.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://groupe-sos.org",
+          "title": "groupe-sos.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "MODAFUSION": {
+      "beneficiaire": "ModaFusion (CASA93)",
+      "beneficiaire_normalise": "MODAFUSION",
+      "siret": "",
+      "generated_at": "2026-04-23T00:32:38",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association ESS loi 1901 (Montreuil, 107 rue de Stalingrad) créée en 2008, RIG + Qualiopi + ESUS : formation pro gratuite et RNCP aux métiers de la mode durable, circulaire et éthique pour jeunes créatifs 18-25 ans sans diplôme (programme CASA93). SIRET 82905339600067.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://casa93.org",
+          "title": "casa93.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION U S O MASSIF CENTRAL": {
+      "beneficiaire": "USOMC — Union Sportive Olympiades Massif Central",
+      "beneficiaire_normalise": "ASSOCIATION U S O MASSIF CENTRAL",
+      "siret": "",
+      "generated_at": "2026-04-23T00:32:38",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Club de rugby (13e) né en 1988 de la fusion de l'Union sportive Massif central (fondée 1922 par les Auvergnats de Paris) et de l'AS des Olympiades. Rattaché à la Ligue Auvergnate et du Massif Central (140 associations affiliées).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://usomc-rugbyparis.fr",
+          "title": "usomc-rugbyparis.fr"
+        },
+        {
+          "url": "https://mairie13.paris.fr",
+          "title": "mairie13.paris.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "HUSTLE PARIS HP": {
+      "beneficiaire": "Hustle Paris (HP)",
+      "beneficiaire_normalise": "HUSTLE PARIS HP",
+      "siret": "",
+      "generated_at": "2026-04-23T00:32:38",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association sportive et culturelle (14e, 1 rue Sophie Germain) créée le 27/11/2018 : club de basket (Travel Teams F/H), initiation artistique et activités culturelles. SIRET 84428652600026.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://hustle-paris.com",
+          "title": "hustle-paris.com"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "DEMAINS QUI CHANTENT": {
+      "beneficiaire": "Les Demains Qui Chantent",
+      "beneficiaire_normalise": "DEMAINS QUI CHANTENT",
+      "siret": "",
+      "generated_at": "2026-04-23T00:32:38",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Compagnie d'arts vivants (Aubervilliers, 7 rue du Dr Pesqué) créée en 1995 par Vincent Vergone (ex-Compagnie Espiègle / Praxinoscope) : spectacles pour la petite enfance, « culture écologique » du lien au vivant. 3 salariés. SIRET 40194130700027.",
+      "perimetre_geographique": "Seine-Saint-Denis",
+      "sources": [
+        {
+          "url": "https://lesdemainsquichantent.org",
+          "title": "lesdemainsquichantent.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "GARAGE AUTOS TRANSPORTS": {
+      "beneficiaire": "GAT — Garage Autos Transports",
+      "beneficiaire_normalise": "GARAGE AUTOS TRANSPORTS",
+      "siret": "",
+      "generated_at": "2026-04-23T00:32:38",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "SCOP (L'Haÿ-les-Roses, 44/48 avenue du Général de Gaulle — établissement 13e, 56 rue Albert) : location de véhicules, taxis, garage et opérations commerciales liées.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://les-scop.coop",
+          "title": "les-scop.coop"
+        },
+        {
+          "url": "https://societe.com",
+          "title": "societe.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION COMMUNICAT ESPACE REINSERT ALC": {
+      "beneficiaire": "ACERMA — Association pour la Communication, l'Espace et la Réinsertion des Malades Addictifs",
+      "beneficiaire_normalise": "ASSOCIATION COMMUNICAT ESPACE REINSERT ALC",
+      "siret": "",
+      "generated_at": "2026-04-23T00:32:38",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Espace culturel d'utilité sociale (19e, 22 quai de la Loire) : ateliers créatifs et culturels (parole, musique, image, mouvement, numérique) pour personnes souffrant d'addictions — abstinence, lien social, cognitif. Adhésion 35 €/an. Partenariat AP-HP.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://acerma.org",
+          "title": "acerma.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "THARGO": {
+      "beneficiaire": "Thargo",
+      "beneficiaire_normalise": "THARGO",
+      "siret": "",
+      "generated_at": "2026-04-23T00:32:38",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "SAS (12e, 61 rue de Lyon) créée en 2018, Qualiopi + ESUS : formation à l'utilité sociale — accompagnement pro des personnes, structures et territoires en transition. SIRET 84045906900034.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://thargo.fr",
+          "title": "thargo.fr"
+        },
+        {
+          "url": "https://francenum.gouv.fr",
+          "title": "francenum.gouv.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "CINEVOG SARL": {
+      "beneficiaire": "Cinevog SARL — Les 5 Caumartin",
+      "beneficiaire_normalise": "CINEVOG SARL",
+      "siret": "",
+      "generated_at": "2026-04-23T00:32:38",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "SARL (9e, 101 rue Saint-Lazare) créée en 1996 : exploitation des cinémas « Les Cinq Caumartin » (Studio Saint-Lazare, Cinevog 1-6), gérant Louis Merle.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://societe.com",
+          "title": "societe.com"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "PROTECTION SOCIALE DE VAUGIRARD": {
+      "beneficiaire": "Association Protection Sociale de Vaugirard — Jean Chérioux",
+      "beneficiaire_normalise": "PROTECTION SOCIALE DE VAUGIRARD",
+      "siret": "",
+      "generated_at": "2026-04-23T00:32:38",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (15e, 91 bis rue Falguière) créée le 7 février 1969 par le sénateur Jean Chérioux à l'initiative de parents : 10 établissements dont ESAT, IME, CAJ, 6 foyers de vie et CITL pour personnes en situation de handicap mental.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://caj-psv.over-blog.com",
+          "title": "caj-psv.over-blog.com"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "FABRICATION MAISON": {
+      "beneficiaire": "Fabrication Maison",
+      "beneficiaire_normalise": "FABRICATION MAISON",
+      "siret": "",
+      "generated_at": "2026-04-23T00:32:38",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association de graphistes (19e, 4 rue de Solidarité) : design graphique, ateliers participatifs (fresques, microédition en risographie) avec jeunes et habitants (Chaufourniers, Cité Rouge, Père-Lachaise). SIRET 42228221000018.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://fabricationmaison.fr",
+          "title": "fabricationmaison.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "ACCRA METROPOLITAN ASSEMBLY": {
+      "beneficiaire": "Accra Metropolitan Assembly (AMA)",
+      "beneficiaire_normalise": "ACCRA METROPOLITAN ASSEMBLY",
+      "siret": "",
+      "generated_at": "2026-04-23T00:32:38",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Collectivité locale du Ghana, partenaire de la Ville de Paris dans le cadre de l'« Accra-Paris Technical Cooperation Programme » signé en 2019 : gestion des déchets solides, financement durable, gouvernance ; déploiement de DansMaRue.",
+      "perimetre_geographique": "International",
+      "sources": [
+        {
+          "url": "https://coordinationsud.org",
+          "title": "coordinationsud.org"
+        },
+        {
+          "url": "https://ama.gov.gh",
+          "title": "ama.gov.gh"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "CTRE PRISE CHARG MALAD INFECTIEUSES": {
+      "beneficiaire": "CPCMI — Centre de Prise en Charge des Maladies Infectieuses",
+      "beneficiaire_normalise": "CTRE PRISE CHARG MALAD INFECTIEUSES",
+      "siret": "",
+      "generated_at": "2026-04-23T00:32:38",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (11e, 6 rue du Chemin Vert) : soins de premier recours pour patients atteints de maladies infectieuses chroniques — équipe pluridisciplinaire (infectiologues, dermato, psy, cardio, proctologues, sage-femmes, IDE, diététiciens, accès emploi/droit/psy).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://cpcmi.fr",
+          "title": "cpcmi.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "GROUP EXPLOITANT FORUM HALLES": {
+      "beneficiaire": "Groupement Exploitants du Forum des Halles",
+      "beneficiaire_normalise": "GROUP EXPLOITANT FORUM HALLES",
+      "siret": "",
+      "generated_at": "2026-04-23T00:32:38",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "GIE (1er, 101 Porte Berger — Westfield Forum des Halles) créé en 1979 : représente les commerçants et exploitants du centre commercial. Dirigé par Espace Expansion. ~50 M de visiteurs/an (centre n°1 en France).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://societe.com",
+          "title": "societe.com"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "VESTO": {
+      "beneficiaire": "Vesto",
+      "beneficiaire_normalise": "VESTO",
+      "siret": "",
+      "generated_at": "2026-04-23T00:32:38",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Entreprise ESS (Romainville, Île-de-France) fondée en 2020 par Bastien Rambaud, Wilfrid Dumas et Anne-Laurène Harmel : première filière française de reconditionnement d'équipements CHR (café-hôtel-restaurant). 300+ restaurateurs équipés, 101 tonnes reconditionnées (880 t CO2 évitées). Boutique « La Galerie Circulaire » à Paris.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://lacuisinepro.fr",
+          "title": "lacuisinepro.fr"
+        },
+        {
+          "url": "https://iledefrance.fr",
+          "title": "iledefrance.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
     }
   },
-  "total": 1604
+  "total": 1629
 }
