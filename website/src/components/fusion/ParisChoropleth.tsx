@@ -1,10 +1,12 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useState } from "react";
 
 import { ARRONDISSEMENT_PATHS, C_AR_BY_INDEX } from "./paris-arrondissements";
 import { useT, useLocale } from "@/lib/localeContext";
+import { useTrack } from "@/lib/analyticsContext";
+import { getClickCoords } from "@/lib/analytics-helpers";
 
 const sufFr = (n: number) => (n === 1 ? "er" : "ᵉ");
 const sufEn = (n: number) => (n === 1 ? "st" : n === 2 ? "nd" : n === 3 ? "rd" : "th");
@@ -71,6 +73,8 @@ export default function ParisChoropleth({
   };
 
   const router = useRouter();
+  const track = useTrack();
+  const pathname = usePathname();
 
   // Consolide les données arr 1→20 en c_ar 0/5-20 (arr 1-4 → Paris Centre).
   const byCar = new Map<number, Item>();
@@ -87,7 +91,16 @@ export default function ParisChoropleth({
     return `/investissements/arrondissement/${target}`;
   };
   const resolveHref = hrefFor ?? defaultHref;
-  const openArr = (cAr: number) => {
+  const openArr = (cAr: number, source: "map" | "ranking", ev?: React.MouseEvent) => {
+    const it = byCar.get(cAr);
+    track("choropleth_click", {
+      page: pathname,
+      arr: cAr,
+      amount: it?.amount ?? 0,
+      count: it?.count ?? 0,
+      source,
+      ...(ev ? getClickCoords(ev) : {}),
+    });
     if (onTileClick) {
       onTileClick(cAr);
       return;
@@ -143,7 +156,7 @@ export default function ParisChoropleth({
                   }}
                   onMouseEnter={() => setHovered(cAr)}
                   onMouseLeave={() => setHovered(null)}
-                  onClick={() => openArr(cAr)}
+                  onClick={(e) => openArr(cAr, "map", e)}
                 >
                   <title>
                     {labelFor(cAr)} · {fmtEur(amount)} · {it?.count ?? 0} {unit} — {t("fx.choro.click_open")}
@@ -210,7 +223,7 @@ export default function ParisChoropleth({
                 key={it.arr}
                 onMouseEnter={() => setHovered(it.arr)}
                 onMouseLeave={() => setHovered(null)}
-                onClick={() => openArr(it.arr)}
+                onClick={(e) => openArr(it.arr, "ranking", e)}
                 className={hovered === it.arr ? "is-hover" : ""}
               >
                 <span className="rank">{String(i + 1).padStart(2, "0")}</span>

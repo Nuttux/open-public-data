@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
+import { useTrack } from "@/lib/analyticsContext";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
@@ -92,6 +94,8 @@ export default function StackedBarTheme({
 }: Props) {
   const t = useT();
   const { locale } = useLocale();
+  const track = useTrack();
+  const pathname = usePathname();
   const locStr = locale === "en" ? "en-GB" : "fr-FR";
   const sep = locale === "en" ? "." : ",";
   const mdLabel = t("fx.s.md_eur");
@@ -149,6 +153,15 @@ export default function StackedBarTheme({
                 style={{ width: `${pct}%`, background: colorFor(s.theme, idx) }}
                 title={fill(t("fx.stacked.seg_detail"), { theme: trLabel(s.theme, locale), amount: fmtEur(s.amount), pct: pct.toFixed(1).replace(".", sep) })}
                 aria-label={fill(t("fx.stacked.seg_aria"), { theme: trLabel(s.theme, locale), amount: fmtEur(s.amount), pct: Math.round(pct) })}
+                onClick={() =>
+                  track("chart_element_click", {
+                    chart: "stackedbar_seg",
+                    page: pathname,
+                    theme: s.theme,
+                    amount: s.amount,
+                    pct: Math.round(pct),
+                  })
+                }
               >
                 {wide && (
                   <span className="fx-stackbar-seg-label">
@@ -192,6 +205,14 @@ export default function StackedBarTheme({
                     href={buildHref(s.theme)}
                     scroll={false}
                     className="fx-stackbar-legend-item"
+                    onClick={() =>
+                      track("chart_element_click", {
+                        chart: "stackedbar_legend",
+                        page: pathname,
+                        theme: s.theme,
+                        amount: s.amount,
+                      })
+                    }
                   >
                     <span className="sw" style={{ background: colorFor(s.theme, idx) }} />
                     <span className="nm">{trLabel(s.theme, locale)}</span>

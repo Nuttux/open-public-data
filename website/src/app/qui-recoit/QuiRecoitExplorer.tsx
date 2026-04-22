@@ -7,6 +7,8 @@ import SectionHead from "@/components/fusion/SectionHead";
 import { THEME_COLOR } from "@/components/fusion/StackedBarTheme";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
+import { useTrack } from "@/lib/analyticsContext";
+import { useDebouncedTrack, hashQuery, queryShape } from "@/lib/analytics-helpers";
 
 function themeColor(theme: string | null): string {
   if (!theme) return "#9099a6";
@@ -111,6 +113,8 @@ export default function QuiRecoitExplorer({
   const [searchError, setSearchError] = useState<string | null>(null);
   const searchRef = useRef<HTMLElement | null>(null);
   const searchParams = useSearchParams();
+  const track = useTrack();
+  const trackDebounced = useDebouncedTrack(700);
 
   useEffect(() => {
     const themeParam = searchParams.get("theme");
@@ -237,6 +241,15 @@ export default function QuiRecoitExplorer({
                   scroll={false}
                   className="fx-top-row"
                   aria-label={fill(t("fx.qr.top.aria"), { name: b.name })}
+                  onClick={() =>
+                    track("chart_element_click", {
+                      chart: "qr_top10",
+                      rank: b.rank,
+                      entity_name: b.name,
+                      amount: b.amount,
+                      theme: b.theme,
+                    })
+                  }
                 >
                   <span className="r">{String(b.rank).padStart(2, "0")}</span>
                   <span className="name">{b.name}</span>
@@ -299,12 +312,30 @@ export default function QuiRecoitExplorer({
                   type="search"
                   placeholder={t("fx.qr.search.placeholder")}
                   value={query}
-                  onChange={(e) => setQuery(e.target.value)}
+                  onChange={async (e) => {
+                    const next = e.target.value;
+                    setQuery(next);
+                    if (next.trim().length >= 2) {
+                      const qHash = await hashQuery(next);
+                      trackDebounced("search_submit", {
+                        page: "qui-recoit",
+                        q_hash: qHash,
+                        ...queryShape(next),
+                      });
+                    }
+                  }}
                 />
               </div>
               <div className="fx-search-filters">
                 <span className="fx-search-filter-label">{t("fx.qr.search.filters")}</span>
-                <select value={theme} onChange={(e) => setTheme(e.target.value)}>
+                <select
+                  value={theme}
+                  onChange={(e) => {
+                    const next = e.target.value;
+                    setTheme(next);
+                    track("filter_change", { page: "qui-recoit", field: "theme", value: next || "all" });
+                  }}
+                >
                   <option value="">{t("fx.qr.search.all_themes")}</option>
                   {themes.map((th) => (
                     <option key={th} value={th}>
@@ -321,7 +352,10 @@ export default function QuiRecoitExplorer({
                     placeholder="Min €"
                     min="0"
                     value={minEur}
-                    onChange={(e) => setMinEur(e.target.value)}
+                    onChange={(e) => {
+                      setMinEur(e.target.value);
+                      trackDebounced("filter_change", { page: "qui-recoit", field: "min_eur", value: e.target.value });
+                    }}
                   />
                   <span style={{ color: "var(--muted)", fontFamily: "var(--f-mono)", fontSize: 11 }}>→</span>
                   <input
@@ -329,10 +363,20 @@ export default function QuiRecoitExplorer({
                     placeholder="Max €"
                     min="0"
                     value={maxEur}
-                    onChange={(e) => setMaxEur(e.target.value)}
+                    onChange={(e) => {
+                      setMaxEur(e.target.value);
+                      trackDebounced("filter_change", { page: "qui-recoit", field: "max_eur", value: e.target.value });
+                    }}
                   />
                 </div>
-                <button type="button" className="fx-search-clear" onClick={reset}>
+                <button
+                  type="button"
+                  className="fx-search-clear"
+                  onClick={() => {
+                    track("filter_reset", { page: "qui-recoit" });
+                    reset();
+                  }}
+                >
                   {t("fx.qr.search.reset")}
                 </button>
               </div>
@@ -381,6 +425,15 @@ export default function QuiRecoitExplorer({
                       scroll={false}
                       className="fx-result-card"
                       data-raw={isRaw || undefined}
+                      onClick={() =>
+                        track("search_result_click", {
+                          page: "qui-recoit",
+                          entity_name: it.name,
+                          theme: it.theme,
+                          rank: i,
+                          results_count: filtered.length,
+                        })
+                      }
                     >
                       <div className="fx-result-card-top">
                         <span className="fx-result-card-type">
@@ -420,7 +473,15 @@ export default function QuiRecoitExplorer({
                   <button
                     type="button"
                     className="fx-results-more"
-                    onClick={() => setVisibleCount((n) => n + PAGE_SIZE)}
+                    onClick={() => {
+                      track("load_more", {
+                        page: "qui-recoit",
+                        visible_before: visibleCount,
+                        visible_after: visibleCount + PAGE_SIZE,
+                        total: filtered.length,
+                      });
+                      setVisibleCount((n) => n + PAGE_SIZE);
+                    }}
                   >
                     {locale === "en"
                       ? `Show ${Math.min(PAGE_SIZE, filtered.length - visibleCount)} more · ${filtered.length - visibleCount} left`
@@ -443,7 +504,15 @@ export default function QuiRecoitExplorer({
                 </p>
                 <div className="fx-search-seeds">
                   {SEEDS.map((s) => (
-                    <button key={s} type="button" className="fx-search-seed" onClick={() => setQuery(s)}>
+                    <button
+                      key={s}
+                      type="button"
+                      className="fx-search-seed"
+                      onClick={() => {
+                        track("search_seed_click", { page: "qui-recoit", seed: s });
+                        setQuery(s);
+                      }}
+                    >
                       « {s} »
                     </button>
                   ))}

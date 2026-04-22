@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { fmtInt } from "@/lib/fmt";
 import { useT } from "@/lib/localeContext";
+import { useTrack } from "@/lib/analyticsContext";
 
 // Paris 2024 (approximations calibrées sur les comptes administratifs)
 const PARIS_POPULATION = 2_133_111;
@@ -64,6 +65,7 @@ export default function TaPartAToi({
   tauxMoyen,
 }: Props) {
   const t = useT();
+  const track = useTrack();
   const [profileId, setProfileId] = useState<string>("t3");
 
   const profile = PROFILES.find((p) => p.id === profileId) ?? PROFILES[2];
@@ -98,7 +100,15 @@ export default function TaPartAToi({
               key={p.id}
               type="button"
               className={`fx-tapart-profile ${profileId === p.id ? "active" : ""}`}
-              onClick={() => setProfileId(p.id)}
+              onClick={() => {
+                if (profileId !== p.id) {
+                  track("ta_part_change", {
+                    profile_from: profileId,
+                    profile_to: p.id,
+                  });
+                }
+                setProfileId(p.id);
+              }}
             >
               <div className="l">{t(p.labelKey)}</div>
               <div className="d muted">{t(p.descKey)}</div>

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useT } from "@/lib/localeContext";
+import { useTrack } from "@/lib/analyticsContext";
 
 /**
  * Scope selector — mocked for now. Paris is the only active scope; the
@@ -21,6 +22,7 @@ export default function ScopeDropdown({ variant = "nav" }: Props) {
   const [open, setOpen] = useState(false);
   const wrapRef = useRef<HTMLSpanElement>(null);
   const t = useT();
+  const track = useTrack();
 
   useEffect(() => {
     if (!open) return;
@@ -50,7 +52,12 @@ export default function ScopeDropdown({ variant = "nav" }: Props) {
         className={triggerClass}
         aria-haspopup="menu"
         aria-expanded={open}
-        onClick={() => setOpen((v) => !v)}
+        onClick={() => {
+          setOpen((v) => {
+            track("scope_change", { action: v ? "close" : "open", variant });
+            return !v;
+          });
+        }}
       >
         <span>Paris</span>
         <span className="fx-scope-chev" aria-hidden="true">▾</span>
@@ -63,7 +70,14 @@ export default function ScopeDropdown({ variant = "nav" }: Props) {
             <span className="fx-sm-check" aria-hidden="true">✓</span>
           </a>
           {OTHER_CITIES.map((c) => (
-            <span key={c} className="fx-sm-item fx-sm-disabled" aria-disabled="true">
+            <span
+              key={c}
+              className="fx-sm-item fx-sm-disabled"
+              aria-disabled="true"
+              onClick={() =>
+                track("scope_change", { action: "click_disabled", target: c, variant })
+              }
+            >
               <span>{c}</span>
               <span className="fx-sm-tag">{t("fx.scope.tag.avenir")}</span>
             </span>

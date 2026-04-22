@@ -5,6 +5,8 @@ import { useMemo, useState } from "react";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
+import { useTrack } from "@/lib/analyticsContext";
+import { useDebouncedTrack, hashQuery, queryShape } from "@/lib/analytics-helpers";
 
 type Item = {
   titulaire: string;
@@ -57,6 +59,8 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
   const [category, setCategory] = useState("");
   const [nature, setNature] = useState("");
   const [hideMulti, setHideMulti] = useState(true);
+  const track = useTrack();
+  const trackDebounced = useDebouncedTrack(700);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -106,12 +110,29 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
             type="search"
             placeholder={t("fx.mp.search.placeholder")}
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={async (e) => {
+              const next = e.target.value;
+              setQuery(next);
+              if (next.trim().length >= 2) {
+                const qHash = await hashQuery(next);
+                trackDebounced("search_submit", {
+                  page: "marches-publics",
+                  q_hash: qHash,
+                  ...queryShape(next),
+                });
+              }
+            }}
           />
         </div>
         <div className="fx-search-filters">
           <span className="fx-search-filter-label">{t("fx.mp.search.filters")}</span>
-          <select value={category} onChange={(e) => setCategory(e.target.value)}>
+          <select
+            value={category}
+            onChange={(e) => {
+              setCategory(e.target.value);
+              track("filter_change", { page: "marches-publics", field: "category", value: e.target.value || "all" });
+            }}
+          >
             <option value="">{t("fx.mp.search.all_cat")}</option>
             {categories.map((c) => {
               const lbl = trLabel(c, locale);
@@ -122,7 +143,13 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
               );
             })}
           </select>
-          <select value={nature} onChange={(e) => setNature(e.target.value)}>
+          <select
+            value={nature}
+            onChange={(e) => {
+              setNature(e.target.value);
+              track("filter_change", { page: "marches-publics", field: "nature", value: e.target.value || "all" });
+            }}
+          >
             <option value="">{t("fx.mp.search.all_nat")}</option>
             {natures.map((n) => (
               <option key={n} value={n}>
@@ -131,11 +158,25 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
             ))}
           </select>
           <label style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--muted)", display: "inline-flex", alignItems: "center", gap: 6 }}>
-            <input type="checkbox" checked={hideMulti} onChange={(e) => setHideMulti(e.target.checked)} />
+            <input
+              type="checkbox"
+              checked={hideMulti}
+              onChange={(e) => {
+                setHideMulti(e.target.checked);
+                track("filter_change", { page: "marches-publics", field: "hide_multi", value: e.target.checked });
+              }}
+            />
             {t("fx.mp.search.hide_multi")}
           </label>
           {hasActiveSelection && (
-            <button type="button" className="fx-search-clear" onClick={reset}>
+            <button
+              type="button"
+              className="fx-search-clear"
+              onClick={() => {
+                track("filter_reset", { page: "marches-publics" });
+                reset();
+              }}
+            >
               {t("fx.mp.search.reset")}
             </button>
           )}
@@ -157,7 +198,19 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
               ? `/marches-publics/contrat/${encodeURIComponent(it.numeroMarche)}`
               : undefined;
             const CardEl: React.ElementType = href ? Link : "div";
-            const cardProps = href ? { href, scroll: false } : {};
+            const onCardClick = href
+              ? () =>
+                  track("search_result_click", {
+                    page: "marches-publics",
+                    entity_id: it.numeroMarche,
+                    rank: i,
+                    results_count: filtered.length,
+                    nature: it.nature,
+                    category: it.categorie,
+                    montant: it.montant,
+                  })
+              : undefined;
+            const cardProps = href ? { href, scroll: false, onClick: onCardClick } : {};
             return (
               <CardEl key={i} className="fx-result-card" {...cardProps}>
                 <div className="fx-result-card-top">
@@ -192,7 +245,14 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
       ) : (
         <div className="fx-search-placeholder">
           <p>{t("fx.mp.search.empty")}</p>
-          <button type="button" className="fx-btn" onClick={reset}>
+          <button
+            type="button"
+            className="fx-btn"
+            onClick={() => {
+              track("filter_reset", { page: "marches-publics", source: "empty_state" });
+              reset();
+            }}
+          >
             {t("fx.mp.search.reset")}
           </button>
         </div>

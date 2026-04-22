@@ -7,7 +7,6 @@ import HeroNumber from "@/components/fusion/HeroNumber";
 import KPIGrid from "@/components/fusion/KPIGrid";
 import BudgetTimeline from "@/components/fusion/BudgetTimeline";
 import ParisChoropleth from "@/components/fusion/ParisChoropleth";
-import PullQuote from "@/components/fusion/PullQuote";
 import TileCard from "@/components/fusion/TileCard";
 import WaitSimulator from "@/components/fusion/WaitSimulator";
 import YearPicker from "@/components/fusion/YearPicker";
@@ -54,9 +53,7 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
           <h1 className="fx-page-title">
             {t("fx.log.title.before")}
             <em>{t("fx.log.title.em")}</em>
-            {t("fx.log.title.mid")}
-            <br />
-            {t("fx.log.title.b")}
+            {t("fx.log.title.mid")} {t("fx.log.title.b")}
             <b>{t("fx.log.title.b_b")}</b>
             {t("fx.log.title.b_after")}
           </h1>
@@ -72,6 +69,7 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
         </div>
       </section>
 
+      {/* §01 — Vue d'ensemble SRU */}
       <section className="fx-section">
         <div className="fx-wrap">
           <SectionHead
@@ -123,100 +121,17 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
               ]}
             />
           </div>
+          <p className="fx-note">
+            <b>{t("fx.log.s04.sru_target_label")}</b> : {t("fx.log.s04.sru_target_note")}
+          </p>
         </div>
       </section>
 
+      {/* §02 — Par arrondissement */}
       <section className="fx-section">
         <div className="fx-wrap">
           <SectionHead
             number="02"
-            kind={t("fx.log.tension.kind")}
-            title={
-              <>
-                {t("fx.log.tension.title.before")}
-                <em>{t("fx.log.tension.title.em")}</em>
-                {t("fx.log.tension.title.after")}
-              </>
-            }
-            subtitle={t("fx.log.tension.lede")}
-          />
-          <div className="fx-overview">
-            <div className="fx-funnel-wrap">
-              <div className="fx-funnel-kicker">{t("fx.log.tension.funnel.kicker")}</div>
-              <div className="fx-funnel">
-                <div className="fx-funnel-step fx-funnel-step-1">
-                  <span className="v tnum">{t("fx.log.tension.funnel.s1.v")}</span>
-                  <span className="lbl">{t("fx.log.tension.funnel.s1.lbl")}</span>
-                </div>
-                <div className="fx-funnel-step fx-funnel-step-2">
-                  <span className="v tnum">{t("fx.log.tension.funnel.s2.v")}</span>
-                  <span className="lbl">{t("fx.log.tension.funnel.s2.lbl")}</span>
-                </div>
-                <div className="fx-funnel-step fx-funnel-step-3">
-                  <span className="v tnum">{t("fx.log.tension.funnel.s3.v")}</span>
-                  <span className="lbl">{t("fx.log.tension.funnel.s3.lbl")}</span>
-                </div>
-              </div>
-              <p className="fx-funnel-foot">{t("fx.log.tension.funnel.foot")}</p>
-            </div>
-            <div className="fx-stat-cards">
-              <div className="fx-stat-card">
-                <div className="kicker">{t("fx.log.tension.kpi.ratio.kicker")}</div>
-                <div className="v tnum">
-                  {t("fx.log.tension.kpi.ratio.v")}
-                  <span className="u">{t("fx.log.tension.kpi.ratio.u")}</span>
-                </div>
-                <p>{t("fx.log.tension.kpi.ratio.p")}</p>
-              </div>
-              <div className="fx-stat-card">
-                <div className="kicker">{t("fx.log.tension.kpi.delai.kicker")}</div>
-                <div className="v tnum">
-                  {t("fx.log.tension.kpi.delai.v")}
-                  <span className="u">{t("fx.log.tension.kpi.delai.u")}</span>
-                </div>
-                <p>{t("fx.log.tension.kpi.delai.p")}</p>
-              </div>
-              <div className="fx-stat-card">
-                <div className="kicker">{t("fx.log.tension.kpi.nonpourvus.kicker")}</div>
-                <div className="v tnum">{t("fx.log.tension.kpi.nonpourvus.v")}</div>
-                <p>{t("fx.log.tension.kpi.nonpourvus.p")}</p>
-              </div>
-            </div>
-          </div>
-          <PullQuote cite={t("fx.log.tension.quote.cite")}>
-            {t("fx.log.tension.quote.before")}
-            <b>{t("fx.log.tension.quote.a")}</b>
-            {t("fx.log.tension.quote.mid")}
-            <b>{t("fx.log.tension.quote.b")}</b>
-            {t("fx.log.tension.quote.mid2")}
-            <b>{t("fx.log.tension.quote.c")}</b>
-            {t("fx.log.tension.quote.after")}
-          </PullQuote>
-        </div>
-      </section>
-
-      <section className="fx-section">
-        <div className="fx-wrap">
-          <SectionHead
-            number="03"
-            kind={t("fx.log.sim.kind")}
-            title={
-              <>
-                {t("fx.log.sim.title.before")}
-                <em>{t("fx.log.sim.title.em")}</em>
-                {t("fx.log.sim.title.after")}
-              </>
-            }
-            subtitle={t("fx.log.sim.sub")}
-          />
-          <WaitSimulator />
-        </div>
-      </section>
-
-      <section className="fx-section">
-        <div className="fx-wrap">
-          <SectionHead
-            number="04"
             kind={t("fx.log.s02.kind")}
             title={
               <>
@@ -239,10 +154,11 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
         </div>
       </section>
 
+      {/* §03 — Bailleurs */}
       <section className="fx-section">
         <div className="fx-wrap">
           <SectionHead
-            number="05"
+            number="03"
             kind={t("fx.log.s03.kind")}
             title={
               <>
@@ -254,7 +170,7 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
             subtitle={t("fx.log.s03.sub")}
           />
           <div className="fx-sources">
-            {d.bailleurs.slice(0, 3).map((b) => (
+            {d.bailleurs.map((b) => (
               <Link
                 key={b.name}
                 href={`/dette-patrimoine/bailleur/${slugifyBailleur(b.name)}`}
@@ -265,61 +181,12 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
                 </div>
                 <h3>{b.name}</h3>
                 <p>{trLabel(b.description, locale)}</p>
-                <span
-                  style={{
-                    fontFamily: "var(--f-disp)",
-                    fontWeight: 700,
-                    fontSize: 22,
-                    color: b.color,
-                  }}
-                >
-                  ~ {b.share} %
-                </span>
-                <span
-                  style={{
-                    fontFamily: "var(--f-mono)",
-                    fontSize: 11,
-                    color: "var(--muted)",
-                    marginLeft: 8,
-                  }}
-                >
-                  {t("fx.log.s03.du_parc")}
-                </span>
-              </Link>
-            ))}
-          </div>
-          <div className="fx-sources" style={{ marginTop: 1 }}>
-            {d.bailleurs.slice(3).map((b) => (
-              <Link
-                key={b.name}
-                href={`/dette-patrimoine/bailleur/${slugifyBailleur(b.name)}`}
-                className="fx-bailleur-card"
-              >
-                <div className="n" style={{ color: b.color }}>
-                  {trLabel(b.type, locale)}
+                <div className="fx-bailleur-share-row">
+                  <span className="fx-bailleur-share" style={{ color: b.color }}>
+                    ~{b.share} %
+                  </span>
+                  <span className="fx-bailleur-share-unit">{t("fx.log.s03.du_parc")}</span>
                 </div>
-                <h3>{b.name}</h3>
-                <p>{trLabel(b.description, locale)}</p>
-                <span
-                  style={{
-                    fontFamily: "var(--f-disp)",
-                    fontWeight: 700,
-                    fontSize: 22,
-                    color: b.color,
-                  }}
-                >
-                  ~ {b.share} %
-                </span>
-                <span
-                  style={{
-                    fontFamily: "var(--f-mono)",
-                    fontSize: 11,
-                    color: "var(--muted)",
-                    marginLeft: 8,
-                  }}
-                >
-                  {t("fx.log.s03.du_parc")}
-                </span>
               </Link>
             ))}
           </div>
@@ -329,6 +196,89 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
         </div>
       </section>
 
+      {/* §04 — Tension locative */}
+      <section className="fx-section">
+        <div className="fx-wrap">
+          <SectionHead
+            number="04"
+            kind={t("fx.log.tension.kind")}
+            title={
+              <>
+                {t("fx.log.tension.title.before")}
+                <em>{t("fx.log.tension.title.em")}</em>
+                {t("fx.log.tension.title.after")}
+              </>
+            }
+            subtitle={t("fx.log.tension.lede")}
+          />
+          <div className="fx-overview">
+            <div className="fx-funnel-wrap">
+              <div className="fx-funnel-kicker">{t("fx.log.tension.funnel.kicker")}</div>
+              <div className="fx-funnel">
+                <div className="fx-funnel-step fx-funnel-step-1">
+                  <span className="v tnum">{fmtInt(d.tension.demandesActives)}</span>
+                  <span className="lbl">{t("fx.log.tension.funnel.s1.lbl")}</span>
+                </div>
+                <div className="fx-funnel-step fx-funnel-step-2">
+                  <span className="v tnum">{fmtInt(d.tension.passeesCommission)}</span>
+                  <span className="lbl">{t("fx.log.tension.funnel.s2.lbl")}</span>
+                </div>
+                <div className="fx-funnel-step fx-funnel-step-3">
+                  <span className="v tnum">{fmtInt(d.tension.attributions)}</span>
+                  <span className="lbl">{t("fx.log.tension.funnel.s3.lbl")}</span>
+                </div>
+              </div>
+              <p className="fx-funnel-foot">
+                {fill(t("fx.log.tension.funnel.foot"), { ratio: d.tension.ratio })}
+              </p>
+            </div>
+            <div className="fx-stat-cards">
+              <div className="fx-stat-card">
+                <div className="kicker">{t("fx.log.tension.kpi.ratio.kicker")}</div>
+                <div className="v tnum">
+                  {d.tension.ratio}
+                  <span className="u">{t("fx.log.tension.kpi.ratio.u")}</span>
+                </div>
+                <p>{t("fx.log.tension.kpi.ratio.p")}</p>
+              </div>
+              <div className="fx-stat-card">
+                <div className="kicker">{t("fx.log.tension.kpi.delai.kicker")}</div>
+                <div className="v tnum">
+                  {fmtDec(d.tension.delaiMedian, 1)}
+                  <span className="u">{t("fx.log.tension.kpi.delai.u")}</span>
+                </div>
+                <p>{t("fx.log.tension.kpi.delai.p")}</p>
+              </div>
+              <div className="fx-stat-card">
+                <div className="kicker">{t("fx.log.tension.kpi.nonpourvus.kicker")}</div>
+                <div className="v tnum">{fmtInt(d.tension.nonPourvus)}</div>
+                <p>{t("fx.log.tension.kpi.nonpourvus.p")}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* §05 — Simulateur */}
+      <section className="fx-section">
+        <div className="fx-wrap">
+          <SectionHead
+            number="05"
+            kind={t("fx.log.sim.kind")}
+            title={
+              <>
+                {t("fx.log.sim.title.before")}
+                <em>{t("fx.log.sim.title.em")}</em>
+                {t("fx.log.sim.title.after")}
+              </>
+            }
+            subtitle={t("fx.log.sim.sub")}
+          />
+          <WaitSimulator />
+        </div>
+      </section>
+
+      {/* §06 — Production annuelle */}
       <section className="fx-section">
         <div className="fx-wrap">
           <SectionHead
@@ -368,12 +318,10 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
           <p className="fx-note">
             <b>{t("fx.s.limite")}</b> : {t("fx.log.s04.note")}
           </p>
-          <p className="fx-note">
-            <b>{t("fx.log.s04.sru_target_label")}</b> : {t("fx.log.s04.sru_target_note")}
-          </p>
         </div>
       </section>
 
+      {/* §07 — Sources & méthode */}
       <section className="fx-section">
         <div className="fx-wrap">
           <SectionHead
@@ -423,6 +371,7 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
         </div>
       </section>
 
+      {/* §08 — Explorer plus loin */}
       <section className="fx-section">
         <div className="fx-wrap">
           <SectionHead number="08" kind={t("fx.log.s06.kind")} title={t("fx.log.s06.title")} />
@@ -450,10 +399,10 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
                   ].map(([x, y]) => (
                     <circle key={`${x}-${y}`} cx={x} cy={y} r="2.5" fill="#0a0a0a" />
                   ))}
-                  <circle cx="118" cy="54" r="4" fill="#e11d1d" />
+                  <circle cx="118" cy="54" r="4" fill="#a67638" />
                 </svg>
               }
-              kpi="2,1"
+              kpi="2,6"
               kpiUnit="Md €"
               kpiDelta={t("fx.log.s06.t1.delta")}
             />
@@ -473,9 +422,9 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
                   ))}
                 </svg>
               }
-              kpi="1,35"
-              kpiUnit="Md €"
-              kpiDelta="2024"
+              kpi="312"
+              kpiUnit="M €"
+              kpiDelta={t("fx.log.s06.t2.delta")}
             />
             <TileCard
               href="/dette-patrimoine"
@@ -488,10 +437,10 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
                   <rect x="32" y="10" width="60" height="40" fill="#0a0a0a" />
                   <rect x="32" y="52" width="60" height="24" fill="#0a0a0a" opacity=".75" />
                   <rect x="108" y="10" width="60" height="46" fill="#0a0a0a" />
-                  <rect x="108" y="58" width="60" height="32" fill="#e11d1d" />
+                  <rect x="108" y="58" width="60" height="32" fill="#a67638" />
                 </svg>
               }
-              kpi="36"
+              kpi="26"
               kpiUnit="Md €"
               kpiDelta={t("fx.log.s06.t3.delta")}
             />

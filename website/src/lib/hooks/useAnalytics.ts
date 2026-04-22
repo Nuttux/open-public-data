@@ -7,38 +7,57 @@ import { usePathname } from 'next/navigation';
 // Constants
 // ---------------------------------------------------------------------------
 
-const COOKIE_NAME = '_dl_vid';       // visitor ID cookie
-const OPTOUT_COOKIE = '_dl_optout';  // opt-out cookie
-const COOKIE_MAX_AGE = 60 * 60 * 24 * 395; // 13 months in seconds
+const COOKIE_NAME = '_dl_vid';
+const OPTOUT_COOKIE = '_dl_optout';
+const COOKIE_MAX_AGE = 60 * 60 * 24 * 395; // 13 months
 const FLUSH_INTERVAL_MS = 3_000;
 const ENDPOINT = '/api/ev';
 const MAX_BATCH_SIZE = 50;
 
-const KNOWN_EVENTS = new Set([
+export const KNOWN_EVENTS = new Set([
+  // auto
   'session_start',
   'page_view',
+  'page_exit',
   'scroll_depth',
-  'tab_change',
-  'year_change',
-  'year_range_change',
+  // chrome
   'nav_click',
-  'glossary_open',
-  'glossary_term_view',
-  'glossary_section_toggle',
+  'toc_click',
+  'scope_change',
+  'lang_switch',
+  'mobile_menu_toggle',
+  // selection
+  'year_change',
+  'tab_change',
+  // drawer
+  'drawer_open',
+  'drawer_close',
+  'drawer_back',
+  // share
+  'share_click',
+  // viz
+  'choropleth_click',
+  'map_marker_click',
+  'chart_element_click',
+  'timeline_point_click',
   'sankey_node_click',
-  'sankey_drilldown',
-  'drilldown_close',
-  'chart_click',
-  'donut_click',
-  'treemap_click',
+  // tools
+  'stress_test_run',
+  'city_compare_change',
+  'ta_part_change',
+  'logement_simulator_change',
+  // filters / search
   'filter_change',
   'filter_reset',
-  'table_sort',
-  'table_paginate',
-  'view_toggle',
-  'map_view_toggle',
-  'cta_click',
+  'search_submit',
+  'search_seed_click',
+  'search_result_click',
+  'load_more',
+  // disclosure
+  'details_toggle',
+  // outbound / CTA
   'external_link_click',
+  'cta_click',
 ]);
 
 // ---------------------------------------------------------------------------
@@ -70,11 +89,16 @@ function getOrCreateVisitorId(): string {
   return id;
 }
 
-// Session ID: unique per tab lifetime (module-level, not persisted)
 let _sessionId: string | null = null;
 function getSessionId(): string {
   if (!_sessionId) _sessionId = crypto.randomUUID();
   return _sessionId;
+}
+
+// Monotonic per-session sequence counter for replay ordering
+let _seq = 0;
+function nextSeq(): number {
+  return ++_seq;
 }
 
 // ---------------------------------------------------------------------------
@@ -113,6 +137,7 @@ export interface AnalyticsEvent {
   event_id: string;
   event_name: string;
   event_timestamp: string;
+  event_seq: number;
   visitor_id: string;
   session_id: string;
   page_path: string;
@@ -123,9 +148,10 @@ export interface AnalyticsEvent {
   utm_campaign: string | null;
   device_type: string;
   viewport_width: number;
+  viewport_height: number;
   screen_width: number;
   locale: string;
-  properties: string; // JSON string
+  properties: string;
 }
 
 // ---------------------------------------------------------------------------
@@ -136,7 +162,6 @@ function isEnabled(): boolean {
   if (typeof window === 'undefined') return false;
   const envFlag = process.env.NEXT_PUBLIC_ANALYTICS_ENABLED;
   if (envFlag === 'false' || envFlag === '0') return false;
-  // In development, default to disabled unless explicitly enabled
   if (process.env.NODE_ENV === 'development' && envFlag !== 'true' && envFlag !== '1') return false;
   return true;
 }
@@ -152,7 +177,6 @@ function flush(): void {
   const events = buffer.splice(0, MAX_BATCH_SIZE);
   const payload = JSON.stringify({ events });
 
-  // Use sendBeacon if available (works during page unload)
   if (navigator.sendBeacon) {
     navigator.sendBeacon(ENDPOINT, new Blob([payload], { type: 'application/json' }));
   } else {
@@ -161,9 +185,7 @@ function flush(): void {
       headers: { 'Content-Type': 'application/json' },
       body: payload,
       keepalive: true,
-    }).catch(() => {
-      // Silently fail — analytics should never break the app
-    });
+    }).catch(() => {});
   }
 }
 
@@ -182,6 +204,7 @@ function buildEvent(
     event_id: crypto.randomUUID(),
     event_name: eventName,
     event_timestamp: new Date().toISOString(),
+    event_seq: nextSeq(),
     visitor_id: getOrCreateVisitorId(),
     session_id: getSessionId(),
     page_path: pathname,
@@ -192,6 +215,7 @@ function buildEvent(
     utm_campaign: utm?.utm_campaign || null,
     device_type: window.innerWidth < 768 ? 'mobile' : 'desktop',
     viewport_width: window.innerWidth,
+    viewport_height: window.innerHeight,
     screen_width: screen.width,
     locale: navigator.language,
     properties: JSON.stringify(properties),
@@ -205,11 +229,12 @@ function buildEvent(
 export function useAnalytics() {
   const pathname = usePathname();
   const prevPathRef = useRef<string | null>(null);
+  const pageEnteredAtRef = useRef<number>(Date.now());
   const sessionStartedRef = useRef(false);
   const flushIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const scrollThresholdsRef = useRef<Set<number>>(new Set());
+  const maxScrollRef = useRef<number>(0);
 
-  // track() — the main function exposed to components
   const track = useCallback(
     (eventName: string, properties: Record<string, unknown> = {}) => {
       if (!isEnabled() || isOptedOut()) return;
@@ -223,7 +248,7 @@ export function useAnalytics() {
       const event = buildEvent(eventName, pathname, properties);
 
       if (process.env.NODE_ENV === 'development') {
-        console.log('[analytics]', eventName, event);
+        console.log('[analytics]', eventName, properties);
       }
 
       buffer.push(event);
@@ -231,22 +256,35 @@ export function useAnalytics() {
     [pathname],
   );
 
-  // Auto-track session_start (once per tab lifetime)
+  // session_start (once per tab)
   useEffect(() => {
     if (!isEnabled() || isOptedOut() || sessionStartedRef.current) return;
     sessionStartedRef.current = true;
     track('session_start', { entry_page: pathname });
   }, [track, pathname]);
 
-  // Auto-track page_view on route changes
+  // page_view + page_exit on route changes
   useEffect(() => {
     if (!isEnabled() || isOptedOut()) return;
     const search = typeof window !== 'undefined' ? window.location.search : '';
     const fullPath = pathname + search;
     if (prevPathRef.current === fullPath) return;
+
+    // Emit page_exit for previous page
+    if (prevPathRef.current !== null) {
+      const dwell_ms = Date.now() - pageEnteredAtRef.current;
+      const max_scroll = maxScrollRef.current;
+      const event = buildEvent('page_exit', prevPathRef.current, {
+        dwell_ms,
+        max_scroll_percent: max_scroll,
+      });
+      buffer.push(event);
+    }
+
     prevPathRef.current = fullPath;
-    // Reset scroll thresholds on new page
+    pageEnteredAtRef.current = Date.now();
     scrollThresholdsRef.current = new Set();
+    maxScrollRef.current = 0;
     track('page_view');
   }, [pathname, track]);
 
@@ -260,6 +298,7 @@ export function useAnalytics() {
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       if (docHeight <= 0) return;
       const percent = Math.round((scrollTop / docHeight) * 100);
+      if (percent > maxScrollRef.current) maxScrollRef.current = percent;
 
       for (const t of thresholds) {
         if (percent >= t && !scrollThresholdsRef.current.has(t)) {
@@ -273,13 +312,28 @@ export function useAnalytics() {
     return () => window.removeEventListener('scroll', onScroll);
   }, [pathname, track]);
 
-  // Flush interval + unload handler
+  // Flush interval + unload + page_exit on close
   useEffect(() => {
     if (!isEnabled()) return;
 
     flushIntervalRef.current = setInterval(flush, FLUSH_INTERVAL_MS);
 
-    const onUnload = () => flush();
+    const emitExit = () => {
+      if (prevPathRef.current !== null) {
+        const dwell_ms = Date.now() - pageEnteredAtRef.current;
+        const event = buildEvent('page_exit', prevPathRef.current, {
+          dwell_ms,
+          max_scroll_percent: maxScrollRef.current,
+          reason: 'unload',
+        });
+        buffer.push(event);
+      }
+    };
+
+    const onUnload = () => {
+      emitExit();
+      flush();
+    };
     const onVisibilityChange = () => {
       if (document.visibilityState === 'hidden') flush();
     };
@@ -291,7 +345,7 @@ export function useAnalytics() {
       if (flushIntervalRef.current) clearInterval(flushIntervalRef.current);
       window.removeEventListener('beforeunload', onUnload);
       document.removeEventListener('visibilitychange', onVisibilityChange);
-      flush(); // Flush remaining events on cleanup
+      flush();
     };
   }, []);
 
@@ -299,7 +353,7 @@ export function useAnalytics() {
 }
 
 // ---------------------------------------------------------------------------
-// Opt-out helpers (for privacy page)
+// Opt-out helpers
 // ---------------------------------------------------------------------------
 
 export function optOut(): void {

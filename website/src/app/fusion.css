@@ -4138,11 +4138,43 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion .fx-timeline-years span:first-child { border-left: 0; padding-left: 0; }
 .theme-fusion .fx-timeline-row {
   display: grid;
-  grid-template-columns: 240px 1fr;
+  grid-template-columns: 260px 1fr 72px;
   gap: 16px;
   align-items: center;
   padding: 10px 0;
   border-bottom: 1px dashed var(--rule);
+}
+.theme-fusion .fx-timeline-label-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.theme-fusion .fx-timeline-label-main .vol {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  color: var(--muted);
+  letter-spacing: .02em;
+}
+.theme-fusion .fx-timeline-link {
+  text-align: right;
+  font-family: var(--f-mono);
+  font-size: 11px;
+}
+.theme-fusion .fx-timeline-link a {
+  color: var(--muted);
+  transition: color .15s;
+  border-bottom: 1px solid transparent;
+}
+.theme-fusion .fx-timeline-link a:hover {
+  color: var(--bleu);
+  border-bottom-color: var(--bleu);
+}
+@media (max-width: 700px) {
+  .theme-fusion .fx-timeline-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .theme-fusion .fx-timeline-link { text-align: left; }
 }
 .theme-fusion .fx-timeline-row:last-child { border-bottom: 0; }
 .theme-fusion .fx-timeline-label {
@@ -5439,6 +5471,26 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   color: var(--ink);
   transform: translateX(2px);
 }
+.theme-fusion .fx-bailleur-share-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 4px;
+}
+.theme-fusion .fx-bailleur-share {
+  font-family: var(--f-disp);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.theme-fusion .fx-bailleur-share-unit {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
 
 /* ───── Funnel + stat cards (logement social — tension locative) ── */
 .theme-fusion .fx-funnel-wrap {
@@ -5497,7 +5549,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   clip-path: polygon(6% 0, 94% 0, 84% 100%, 16% 100%);
 }
 .theme-fusion .fx-funnel-step-3 {
-  background: var(--bleu-vif);
+  background: var(--ocre);
   width: 52%;
 }
 .theme-fusion .fx-funnel-foot {
