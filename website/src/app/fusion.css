@@ -685,6 +685,20 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   opacity: 1;
   transform: translate(0, -50%);
 }
+/* Touch devices have no :hover — surface the chevron permanently so users
+   know the row is clickable. */
+@media (hover: none) {
+  .theme-fusion a.fx-br-row::after {
+    opacity: 0.7;
+    transform: translate(0, -50%);
+    font-weight: 600;
+  }
+  /* Reserve space on the right so the chevron doesn't sit on top of the
+     montant column. */
+  .theme-fusion a.fx-br-row {
+    padding-right: 30px;
+  }
+}
 
 @media (max-width: 768px) {
   .theme-fusion .fx-br-row {
