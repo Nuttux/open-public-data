@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T11:36:18.939970",
+  "generated_at": "2026-04-22T11:37:54.603640",
   "model": "gemini-3-flash-preview",
   "count": 780,
   "items": {
@@ -19595,7 +19595,216 @@
       "confiance": 0.8,
       "source_type": "claude_web",
       "enriched_at": "2026-04-22T11:36:18.939970"
+    },
+    "ASSOCIATION GENERALE DES FAMILLES": {
+      "activite_verifiee": "AGF — Association Générale des Familles, réseau parisien par arrondissement (AGF 6, 8, 16, 17-18, etc.), affilié à Familles de France. Représente et défend les intérêts des familles, propose des activités culturelles, artistiques, sportives, d'aide mutuelle.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "agf16.fr",
+        "agf8.fr",
+        "familles-de-france.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:37:54.603640"
+    },
+    "ASS GENERALE DES FAMILLES": {
+      "activite_verifiee": "AGF — Association Générale des Familles, réseau parisien par arrondissement (AGF 6, 8, 16, 17-18, etc.), affilié à Familles de France. Représente et défend les intérêts des familles, propose des activités culturelles, artistiques, sportives, d'aide mutuelle.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "agf16.fr",
+        "agf8.fr",
+        "familles-de-france.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:37:54.603640"
+    },
+    "R G F DE PARIS ETS INTERDEPART": {
+      "activite_verifiee": "R.G.F de Paris — Régie Générale du Fiscale / Centre de formation départemental de la RGF, structure interdépartementale liée à la gestion foncière et fiscale à Paris.",
+      "perimetre_geographique": "Paris / Île-de-France",
+      "sources": [
+        "calcul-impots.com"
+      ],
+      "confiance": 0.4,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:37:54.603640"
+    },
+    "ASSOCIATION FONDATION ETUDIANTE POUR LA VIL": {
+      "activite_verifiee": "AFEV — Association de la Fondation Étudiante pour la Ville, créée en 1991. Réseau d'étudiants solidaires mobilisant ~7 000 bénévoles, 700 services civiques et 600 colocataires solidaires dans +40 villes et 300 quartiers populaires. Mentorat de jeunes en difficulté éducative (2h/semaine par binôme).",
+      "perimetre_geographique": "France (Paris et quartiers populaires)",
+      "sources": [
+        "afev.org",
+        "fr.wikipedia.org/wiki/Afev"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:37:54.603640"
+    },
+    "FONDATION ETUDIANTE POUR LA VIL": {
+      "activite_verifiee": "AFEV — Association de la Fondation Étudiante pour la Ville, créée en 1991. Réseau d'étudiants solidaires mobilisant ~7 000 bénévoles, 700 services civiques et 600 colocataires solidaires dans +40 villes et 300 quartiers populaires. Mentorat de jeunes en difficulté éducative (2h/semaine par binôme).",
+      "perimetre_geographique": "France (Paris et quartiers populaires)",
+      "sources": [
+        "afev.org",
+        "fr.wikipedia.org/wiki/Afev"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:37:54.603640"
+    },
+    "ASSOCIATION DE LA FONDATION ETUDIANTE POUR LA VILLE": {
+      "activite_verifiee": "AFEV — Association de la Fondation Étudiante pour la Ville, créée en 1991. Réseau d'étudiants solidaires mobilisant ~7 000 bénévoles, 700 services civiques et 600 colocataires solidaires dans +40 villes et 300 quartiers populaires. Mentorat de jeunes en difficulté éducative (2h/semaine par binôme).",
+      "perimetre_geographique": "France (Paris et quartiers populaires)",
+      "sources": [
+        "afev.org",
+        "fr.wikipedia.org/wiki/Afev"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:37:54.603640"
+    },
+    "CENTRE SOCIAL ET CULTUREL SOLIDARITE ROQUETTE": {
+      "activite_verifiee": "Centre social et culturel Solidarité Roquette, association implantée depuis 1975 au 47 rue de la Roquette Paris 11e. Gère 4 structures : centre social, centre de formation, crèche 25 berceaux, jardin partagé. Accompagnement social, soutien scolaire, ateliers FLE/alphabétisation, informatique, cuisine, couture.",
+      "perimetre_geographique": "Paris 11e",
+      "sources": [
+        "solidariteroquette.fr",
+        "caf.fr",
+        "mairie11.paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:37:54.603640"
+    },
+    "COLLECTIF CAFE CULTURE CUISINE": {
+      "activite_verifiee": "Collectif 4C — Collectif Café Culture Cuisine (SIREN 813550142), association créée le 21 mai 2015 par des habitants de la Goutte d'Or (Paris 18e). Porte Quartier Libre (9-11 rue de la Charbonnière Paris 18e depuis 2019, financé par le budget participatif) : cuisine partagée, café-restaurant associatif, espace ressource.",
+      "perimetre_geographique": "Paris 18e (Goutte d'Or)",
+      "sources": [
+        "quartierlibre4c.fr",
+        "gouttedor-et-vous.org",
+        "societe.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:37:54.603640"
+    },
+    "ASS TRANSITION NUMERIQUE EDUC": {
+      "activite_verifiee": "Association Transition Numérique Éducation, structure parisienne consacrée à l'accompagnement des établissements scolaires et des enseignants dans la transformation numérique éducative (détails publics limités).",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:37:54.603640"
+    },
+    "CAPS": {
+      "activite_verifiee": "CAPS — Centre d'Accueil Permanence Santé / PASS de l'Hôtel-Dieu (AP-HP), unité de consultation dédiée aux personnes en situation de précarité sans couverture maladie. Soins médicaux, infirmiers, sociaux et dentaires coordonnés. Hôtel-Dieu, 1 parvis Notre-Dame Paris 4e.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "aphp.fr",
+        "hoteldieu.aphp.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:37:54.603640"
+    },
+    "SA HLM PIERRES ET LUMIERES": {
+      "activite_verifiee": "Pierres & Lumières (SAPEL, SIREN 672022084), SA HLM fondée en 1967. Siège 112 avenue Aristide Briand, Antony (92). Gère ~6 100 logements sociaux en Île-de-France et dans le Loiret ; filiale Pierres Avenir Construction (accession sociale). Membre du réseau Habitat Réuni.",
+      "perimetre_geographique": "Île-de-France / Loiret",
+      "sources": [
+        "pierres-et-lumieres.com",
+        "habitat-reuni.fr",
+        "annuaire-entreprises.data.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:37:54.603640"
+    },
+    "PRIBON CRIMEE": {
+      "activite_verifiee": "Pri-Bon Crimée, association du 19e arrondissement de Paris — probablement liée au tissu socioculturel autour de la rue de Crimée (Espace 19, centres sociaux). Détails publics limités.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:37:54.603640"
+    },
+    "WATIZAT": {
+      "activite_verifiee": "Watizat, association créée en 2017 militant pour l'accès à l'information des personnes exilées. Publie un guide mensuel multilingue (FR, EN, AR, pashto, dari) de la demande d'asile : procédure, hébergement, distribution alimentaire, santé, cours de français, accès au droit. Antennes à Paris, Lyon, Toulouse, Oise.",
+      "perimetre_geographique": "Paris / France",
+      "sources": [
+        "watizat.org",
+        "guideasile.wordpress.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:37:54.603640"
+    },
+    "SANTE DAVIEL ASD": {
+      "activite_verifiee": "ASD — Association Santé Daviel (SIREN 891834459), 33 rue Boussingault Paris 13e. Structure d'appui à la coordination et à l'offre de soins dans le 13e : maintien/installation des professionnels de santé, maison de santé pluriprofessionnelle Daviel (ouverte en novembre 2024).",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        "pappers.fr",
+        "sante.fr",
+        "mairie13.paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:37:54.603640"
+    },
+    "FONDATION TERRE DE LIENS": {
+      "activite_verifiee": "Fondation Terre de Liens, fondation reconnue d'utilité publique. Préserve durablement le foncier agricole et facilite son accès aux paysans en agriculture biologique et paysanne. ~122 fermes acquises, ~3 000 ha préservés de la spéculation via l'association nationale, la Foncière solidaire et la Fondation.",
+      "perimetre_geographique": "France",
+      "sources": [
+        "terredeliens.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:37:54.603640"
+    },
+    "ENERCITIF": {
+      "activite_verifiee": "EnerCit'IF, coopérative solaire citoyenne parisienne créée en 2018 (association en 2016). Installe et exploite des centrales photovoltaïques sur toitures publiques parisiennes (écoles, collèges, gymnases). Marché de concession Ville de Paris pour 12 centrales (~750 kWc, ~4 000 m²). Gouvernance 1 personne = 1 voix.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "enercitif.org",
+        "energie-partagee.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:37:54.603640"
+    },
+    "ONZIEME EVENEMENTS FESTIVAL ONZE BOUGE": {
+      "activite_verifiee": "Festival Onze Bouge — porté par l'association À Suivre, festival d'arts de la rue du 11e arrondissement de Paris depuis 1997. 4 jours fin mai : théâtre, cirque, danse, musique et arts visuels gratuits dans les rues, squares et jardins du 11e.",
+      "perimetre_geographique": "Paris 11e",
+      "sources": [
+        "festivalonze.org",
+        "mairie11.paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:37:54.603640"
+    },
+    "ASSOCIATION LES PETITS RIENS": {
+      "activite_verifiee": "Association Les Petits Riens (Paris), école populaire des arts et ressourcerie solidaire. Ouvre la pratique artistique aux jeunes des quartiers populaires ; collecte et revente solidaire de vêtements et livres d'occasion avec des équipes en insertion professionnelle.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "paris.fr",
+        "lespetitsriens.org",
+        "fr.wikipedia.org/wiki/Les_Petits_Riens_(association)"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:37:54.603640"
+    },
+    "SPLA PARIS BATIGNOLLES AMENAGEMENT": {
+      "activite_verifiee": "SPL Paris Batignolles Aménagement — aujourd'hui Paris & Métropole Aménagement (P&Ma, SIREN 522085760), société publique locale créée en 2010 par la Ville de Paris pour la ZAC Clichy-Batignolles (Paris 17e). Périmètre étendu en 2015 à tout Paris. Porte 6 opérations (Chapelle Charbon, Paul Meurice, Porte Pouchet, Saint-Vincent-de-Paul, Clichy-Batignolles, Gare des Mines-Fillettes / Arena).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "parisetmetropole-amenagement.fr",
+        "societe.com",
+        "ccomptes.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:37:54.603640"
     }
   },
-  "total": 954
+  "total": 973
 }
