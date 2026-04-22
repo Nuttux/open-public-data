@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-22T11:13:32",
+  "generated_at": "2026-04-22T11:16:50",
   "model": "gemini-3-flash-preview",
-  "count": 692,
+  "count": 731,
   "items": {
     "ELOGIE SIEMP": {
       "beneficiaire": "ELOGIE-SIEMP",
@@ -16245,6 +16245,639 @@
       "model": "claude-code-websearch",
       "beneficiaire": "UNIVERSITE PARIS DIDEROT PARIS 7",
       "beneficiaire_normalise": "UNIVERSITE PARIS DIDEROT PARIS 7",
+      "siret": ""
+    },
+    "UNIS CITE": {
+      "activite_verifiee": "Unis-Cité (créée 1995) à l'origine du service civique en France ; 74 antennes ; +8 000 jeunes 16-25 ans/an.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.uniscite.fr/",
+          "title": "uniscite.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:15:27",
+      "model": "claude-code-websearch",
+      "beneficiaire": "UNIS-CITE",
+      "beneficiaire_normalise": "UNIS CITE",
+      "siret": "39819156900000"
+    },
+    "100 ETABLISSEMENT CULTUREL SOLIDAIRE": {
+      "activite_verifiee": "Le 100 ECS — SCIC (2008), 100 rue de Charenton Paris 12e ; fabrique culturelle, 1 800 m² d'ateliers pour artistes.",
+      "perimetre_geographique": "Paris 12e",
+      "sources": [
+        {
+          "url": "https://100ecs.fr/",
+          "title": "100ecs.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:15:27",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LE 100 ETABLISSEMENT CULTUREL SOLIDAIRE",
+      "beneficiaire_normalise": "100 ETABLISSEMENT CULTUREL SOLIDAIRE",
+      "siret": ""
+    },
+    "ASSOCIATION PUC RUGBY": {
+      "activite_verifiee": "Section rugby du Paris Université Club (PUC, créé 1906) ; évolue en fédérale ; base Stade Charléty.",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        {
+          "url": "https://puc.paris/",
+          "title": "puc.paris"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:15:27",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION PUC RUGBY",
+      "beneficiaire_normalise": "ASSOCIATION PUC RUGBY",
+      "siret": ""
+    },
+    "PUC RUGBY": {
+      "activite_verifiee": "Section rugby du Paris Université Club (PUC, créé 1906) ; évolue en fédérale ; base Stade Charléty.",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        {
+          "url": "https://puc.paris/",
+          "title": "puc.paris"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:15:27",
+      "model": "claude-code-websearch",
+      "beneficiaire": "PUC RUGBY",
+      "beneficiaire_normalise": "PUC RUGBY",
+      "siret": "39901545200010"
+    },
+    "ASSOCIATION REGION INSERTION ECONOMIQUE SOC": {
+      "activite_verifiee": "Programme régional d'insertion par l'activité économique en Île-de-France ; accompagnement vers l'emploi.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:15:27",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION REGION INSERTION ECONOMIQUE SOC",
+      "beneficiaire_normalise": "ASSOCIATION REGION INSERTION ECONOMIQUE SOC",
+      "siret": ""
+    },
+    "REGION INSERTION ECONOMIQUE SOC": {
+      "activite_verifiee": "Programme régional d'insertion par l'activité économique en Île-de-France ; accompagnement vers l'emploi.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:15:27",
+      "model": "claude-code-websearch",
+      "beneficiaire": "REGION INSERTION ECONOMIQUE SOC",
+      "beneficiaire_normalise": "REGION INSERTION ECONOMIQUE SOC",
+      "siret": ""
+    },
+    "MENAGERIE VERRE S A R L ATELIERS DA": {
+      "activite_verifiee": "La Ménagerie de Verre — théâtre associatif (créé 1983 par Marie-Thérèse Allier, rue Léchevin Paris 11e, 2000m², 6 studios) ; création chorégraphique contemporaine ; festivals Les Inaccoutumés, Étrange Cargo.",
+      "perimetre_geographique": "Paris 11e",
+      "sources": [
+        {
+          "url": "https://menageriedeverre.com/",
+          "title": "menageriedeverre.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:15:27",
+      "model": "claude-code-websearch",
+      "beneficiaire": "MENAGERIE VERRE S.A.R.L ATELIERS DA",
+      "beneficiaire_normalise": "MENAGERIE VERRE S A R L ATELIERS DA",
+      "siret": ""
+    },
+    "MAMA": {
+      "activite_verifiee": "MaMA Music & Convention (créé 2010) — marché des musiques actuelles à Paris (Pigalle/Montmartre, octobre) ; ~150 concerts, rencontres pro, 10 salles dont La Cigale.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://mama-musicandconvention.com/en/",
+          "title": "mama-musicandconvention.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:15:27",
+      "model": "claude-code-websearch",
+      "beneficiaire": "MAMA",
+      "beneficiaire_normalise": "MAMA",
+      "siret": ""
+    },
+    "OEUVRE HOSPITALITE TRAVAIL": {
+      "activite_verifiee": "OHT — Association (fusionnée avec Le Moulin Vert en 2020, 52 av. de Versailles Paris 16e) ; accueille adultes en situation de handicap psychique (FAM, foyer de vie, foyer d'hébergement).",
+      "perimetre_geographique": "Paris 16e",
+      "sources": [
+        {
+          "url": "https://handicap.paris.fr/etablissement/oeuvre-lhospitalite-du-travail-oht/",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:15:27",
+      "model": "claude-code-websearch",
+      "beneficiaire": "OEUVRE HOSPITALITE TRAVAIL",
+      "beneficiaire_normalise": "OEUVRE HOSPITALITE TRAVAIL",
+      "siret": ""
+    },
+    "LINKEE PARIS": {
+      "activite_verifiee": "Association (créée 2016) ; 1re association d'aide alimentaire aux étudiants précaires en France ; ~150 000 repas/mois via colis récupérés auprès de la distribution.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://linkee.co/",
+          "title": "linkee.co"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:15:27",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LINKEE PARIS",
+      "beneficiaire_normalise": "LINKEE PARIS",
+      "siret": ""
+    },
+    "LYCEE PROFESSIONNEL THEOPHILE GAUTI": {
+      "activite_verifiee": "LP Théophile Gautier — lycée professionnel public (Académie de Paris, 6 bis place des Vosges Paris 4e, créé 1980) ; 515 élèves ; Bac Pro vente, comptabilité, sécurité.",
+      "perimetre_geographique": "Paris 4e",
+      "sources": [
+        {
+          "url": "https://www.education.gouv.fr/annuaire/75012/paris-12e/lycee/0752845k/lp-theophile-gautier.html",
+          "title": "education.gouv.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:15:27",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LYCEE PROFESSIONNEL THEOPHILE GAUTI",
+      "beneficiaire_normalise": "LYCEE PROFESSIONNEL THEOPHILE GAUTI",
+      "siret": ""
+    },
+    "FACE PARIS": {
+      "activite_verifiee": "FACE Paris Hauts de Seine — club d'entreprises (créé 2006 par FACE, Ville de Paris et entreprises volontaires) ; insertion des publics éloignés de l'emploi.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://face-paris.org/",
+          "title": "face-paris.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:15:27",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FACE PARIS",
+      "beneficiaire_normalise": "FACE PARIS",
+      "siret": "49241040200027"
+    },
+    "ORGANIS PAN AFRICAINE LUTTE P SANTE": {
+      "activite_verifiee": "OPALS — Organisation Panafricaine de Lutte pour la Santé (créée 1988, siège Paris 6e rue de l'École de Médecine) ; réseau de Centres de Traitement Ambulatoire en Afrique sub-saharienne.",
+      "perimetre_geographique": "international",
+      "sources": [
+        {
+          "url": "https://www.opals.asso.fr/",
+          "title": "opals.asso.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:15:27",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ORGANIS PAN AFRICAINE LUTTE P SANTE",
+      "beneficiaire_normalise": "ORGANIS PAN AFRICAINE LUTTE P SANTE",
+      "siret": ""
+    },
+    "CONSEIL DEP DE L ACCES AU DROIT": {
+      "activite_verifiee": "CDAD Paris — Groupement d'intérêt public (créé 1998) fédérant tribunal, barreau, notaires, Ville de Paris ; coordonne l'accès au droit et à l'information juridique à Paris.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.tribunal-de-paris.justice.fr/75/acces-au-droit",
+          "title": "justice.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:15:27",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CONSEIL DEP DE L'ACCES AU DROIT",
+      "beneficiaire_normalise": "CONSEIL DEP DE L ACCES AU DROIT",
+      "siret": ""
+    },
+    "ASSOCIATION FLORIMONT": {
+      "activite_verifiee": "Association Florimont (créée 1998, Paris 14e Pernety) ; centre névralgique associatif fédérant ~80 assos ; accompagne 7 000 personnes/an ; emploi, numérique, isolement.",
+      "perimetre_geographique": "Paris 14e",
+      "sources": [
+        {
+          "url": "https://assoflorimont.fr/",
+          "title": "assoflorimont.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:15:27",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION FLORIMONT",
+      "beneficiaire_normalise": "ASSOCIATION FLORIMONT",
+      "siret": "41972560100035"
+    },
+    "FLORIMONT": {
+      "activite_verifiee": "Association Florimont (créée 1998, Paris 14e Pernety) ; centre névralgique associatif fédérant ~80 assos ; accompagne 7 000 personnes/an ; emploi, numérique, isolement.",
+      "perimetre_geographique": "Paris 14e",
+      "sources": [
+        {
+          "url": "https://assoflorimont.fr/",
+          "title": "assoflorimont.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:15:27",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FLORIMONT",
+      "beneficiaire_normalise": "FLORIMONT",
+      "siret": ""
+    },
+    "CNRS": {
+      "activite_verifiee": "Centre National de la Recherche Scientifique — EPST (créé 1939, tutelle MESRI) ; +32 000 personnels ; 1er organisme public de recherche européen, toutes disciplines.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.cnrs.fr/en",
+          "title": "cnrs.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:15:27",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CNRS",
+      "beneficiaire_normalise": "CNRS",
+      "siret": ""
+    },
+    "HALLE SAINTPIERRE": {
+      "activite_verifiee": "Association (créée 1985, ancienne halle Baltard au pied de Montmartre) ; musée et galerie d'art brut, naïf, singulier, outsider ; 3-4 expositions/an.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://www.hallesaintpierre.org/",
+          "title": "hallesaintpierre.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:15:27",
+      "model": "claude-code-websearch",
+      "beneficiaire": "HALLE SAINTPIERRE",
+      "beneficiaire_normalise": "HALLE SAINTPIERRE",
+      "siret": ""
+    },
+    "MAISON DE L ENFANCE": {
+      "activite_verifiee": "Maison de l'Enfance — association loi 1901 (créée 1990, Paris 16e Ranelagh-Jasmin) ; halte-garderie et relais d'auxiliaires parentales ; agréée PMI + subvention Ville de Paris.",
+      "perimetre_geographique": "Paris 16e",
+      "sources": [
+        {
+          "url": "https://www.maisondelenfance-paris16.fr/",
+          "title": "maisondelenfance-paris16.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:15:27",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LA MAISON DE L'ENFANCE",
+      "beneficiaire_normalise": "MAISON DE L ENFANCE",
+      "siret": "39033503200020"
+    },
+    "ASSOCIATION HALLE SAINT PIERRE": {
+      "activite_verifiee": "Association (créée 1985, ancienne halle Baltard au pied de Montmartre) ; musée et galerie d'art brut, naïf, singulier, outsider ; 3-4 expositions/an.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://www.hallesaintpierre.org/",
+          "title": "hallesaintpierre.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:15:27",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION HALLE SAINT PIERRE",
+      "beneficiaire_normalise": "ASSOCIATION HALLE SAINT PIERRE",
+      "siret": ""
+    },
+    "FOND MAISON CHAMPS STFRAN ASSISE": {
+      "activite_verifiee": "Fondation Maison des Champs (créée 1931, RUP 1932) Paris 19e ; services à domicile personnes âgées dépendantes, soins infirmiers, hébergement familial.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        {
+          "url": "https://www.fmdc.fr/",
+          "title": "fmdc.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:15:27",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FOND MAISON CHAMPS STFRAN ASSISE",
+      "beneficiaire_normalise": "FOND MAISON CHAMPS STFRAN ASSISE",
+      "siret": ""
+    },
+    "THE 42 AGENCY": {
+      "activite_verifiee": "Association 42 (créée 2013 par Xavier Niel) ; école gratuite d'informatique peer-learning à Paris ; art numérique via Art42, 1er musée d'art urbain de Paris.",
+      "perimetre_geographique": "Paris 17e",
+      "sources": [
+        {
+          "url": "https://42.fr/",
+          "title": "42.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:16:50",
+      "model": "claude-code-websearch",
+      "beneficiaire": "THE 42 AGENCY",
+      "beneficiaire_normalise": "THE 42 AGENCY",
+      "siret": ""
+    },
+    "LYCEE PROFESSIONNEL CAMILLE JENATZY": {
+      "activite_verifiee": "LP de l'automobile et de la logistique Camille Jenatzy — lycée professionnel public (6 r Charles Hermite Paris 18e) ; 320 élèves, CAP et Bac Pro automobile/logistique.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://lycee-jenatzy.fr/",
+          "title": "lycee-jenatzy.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:16:50",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LYCEE PROFESSIONNEL CAMILLE JENATZY",
+      "beneficiaire_normalise": "LYCEE PROFESSIONNEL CAMILLE JENATZY",
+      "siret": ""
+    },
+    "PASSERELLE": {
+      "activite_verifiee": "La Passerelle / Passerelles (associations d'insertion par l'activité économique) ; accompagnement professionnel et insertion en quartiers prioritaires de Paris.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:16:50",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LA PASSERELLE",
+      "beneficiaire_normalise": "PASSERELLE",
+      "siret": "37974428700044"
+    },
+    "EMBIX": {
+      "activite_verifiee": "SAS (créée 2011 par Alstom + Bouygues) ; services de gestion de l'énergie pour éco-quartiers (smart grids, Paris-Saclay, self-consommation, communautés d'énergie).",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.embix.fr/",
+          "title": "embix.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:16:50",
+      "model": "claude-code-websearch",
+      "beneficiaire": "EMBIX",
+      "beneficiaire_normalise": "EMBIX",
+      "siret": ""
+    },
+    "ESPERANCE SPORTIVE PARISIENNE": {
+      "activite_verifiee": "Club de football amateur (créé 1987, Paris 18e rue Jean Cocteau) ; 12 équipes (vétérans à seniors R3), évolue en ligue Paris IDF ; Centre Sportif des Poissonniers.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://esparisienne.fr/",
+          "title": "esparisienne.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:16:50",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ESPERANCE SPORTIVE PARISIENNE",
+      "beneficiaire_normalise": "ESPERANCE SPORTIVE PARISIENNE",
+      "siret": "34396747700013"
+    },
+    "ERDA EDUCAT RECHER DEVEL ARTIST": {
+      "activite_verifiee": "Association ERDA (créée 1988, 23 rue d'Anjou Paris 8e) ; regroupe le Chœur Accentus et l'Orchestre Insula ; 20-49 salariés, production musicale classique et contemporaine.",
+      "perimetre_geographique": "Paris 8e",
+      "sources": [
+        {
+          "url": "https://www.pappers.fr/entreprise/erda-education-recherche-developpement-artistique-391961513",
+          "title": "pappers.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:16:50",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ERDA EDUCAT RECHER DEVEL ARTIST",
+      "beneficiaire_normalise": "ERDA EDUCAT RECHER DEVEL ARTIST",
+      "siret": ""
+    },
+    "HOME SWEET MOMES": {
+      "activite_verifiee": "Association (créée 2013, Goutte d'Or Paris 18e) ; café des enfants 0-18 ans, éducation populaire, 100% bénévoles ; ouverture de tiers-lieu permanent prévue 2026.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://homesweetmomes.paris/about/",
+          "title": "homesweetmomes.paris"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:16:50",
+      "model": "claude-code-websearch",
+      "beneficiaire": "HOME SWEET MOMES",
+      "beneficiaire_normalise": "HOME SWEET MOMES",
+      "siret": ""
+    },
+    "CAP SPORTS ARTS AVENTURES AMITI": {
+      "activite_verifiee": "CAPSAAA — Association (créée 1995) ; club handisport historique ; 4 sections (basket fauteuil, rugby fauteuil, basket et athlé adaptés) ; ~80 compétitions/an.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://capsaaa.net/",
+          "title": "capsaaa.net"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:16:50",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CAP SPORTS ARTS AVENTURES AMITI",
+      "beneficiaire_normalise": "CAP SPORTS ARTS AVENTURES AMITI",
+      "siret": ""
+    },
+    "LYCEE TECHNOLOGIQUE M VOX ART DESSI": {
+      "activite_verifiee": "Lycée polyvalent Maximilien-Vox (5 rue Madame Paris 6e) ; public ; arts appliqués, design de communication, industries graphiques ; Bac STD2A.",
+      "perimetre_geographique": "Paris 6e",
+      "sources": [
+        {
+          "url": "https://www.lyceemaximilienvox.com/edu/",
+          "title": "lyceemaximilienvox.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:16:50",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LYCEE TECHNOLOGIQUE M VOX-ART-DESSI",
+      "beneficiaire_normalise": "LYCEE TECHNOLOGIQUE M VOX ART DESSI",
+      "siret": ""
+    },
+    "A L ADRESSE DU JEU": {
+      "activite_verifiee": "Association (20 ans d'expertise) ; promotion du jeu dans l'espace public ; gère L'R de Jeux (Place de la République), Ludomouv, ludothèque 1,2,3 Soleil à Montreuil.",
+      "perimetre_geographique": "Paris 11e",
+      "sources": [
+        {
+          "url": "https://www.aladressedujeu.fr/",
+          "title": "aladressedujeu.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:16:50",
+      "model": "claude-code-websearch",
+      "beneficiaire": "A L ADRESSE DU JEU",
+      "beneficiaire_normalise": "A L ADRESSE DU JEU",
+      "siret": "52850503500022"
+    },
+    "CTE PARALYMPIQUE SPORTIF FR C P S F": {
+      "activite_verifiee": "CPSF — Comité Paralympique et Sportif Français (créé 1992, présidé par Marie-Amélie Le Fur) ; 51 fédérations membres ; délégation française aux Jeux Paralympiques.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://france-paralympique.fr/",
+          "title": "france-paralympique.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:16:50",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CTE PARALYMPIQUE SPORTIF FR C P S F",
+      "beneficiaire_normalise": "CTE PARALYMPIQUE SPORTIF FR C P S F",
+      "siret": ""
+    },
+    "CTRE LOGEME JEUNES TRAVAI ETUDIA ST": {
+      "activite_verifiee": "CLJT — Centre du Logement des Jeunes Travailleurs, Étudiants et Stagiaires ; 12 établissements à Paris et 92 ; 1 300 logements pour 1 200 jeunes ~100 salariés.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.cljt.com/",
+          "title": "cljt.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:16:50",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CTRE LOGEME JEUNES TRAVAI ETUDIA ST",
+      "beneficiaire_normalise": "CTRE LOGEME JEUNES TRAVAI ETUDIA ST",
+      "siret": ""
+    },
+    "CTRE LOGEME JEUNES TRAVAI ETUDIA": {
+      "activite_verifiee": "CLJT — Centre du Logement des Jeunes Travailleurs, Étudiants et Stagiaires ; 12 établissements à Paris et 92 ; 1 300 logements pour 1 200 jeunes ~100 salariés.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.cljt.com/",
+          "title": "cljt.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:16:50",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CTRE LOGEME JEUNES TRAVAI ETUDIA",
+      "beneficiaire_normalise": "CTRE LOGEME JEUNES TRAVAI ETUDIA",
+      "siret": ""
+    },
+    "ASSOCIATION CENTRE ALPHA CHOISY": {
+      "activite_verifiee": "Association (créée 1996, 27 av. de Choisy Paris 13e) ; accompagnement linguistique de migrants (alphabétisation, FLE) ; ~400 adultes de 60 nationalités/an.",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        {
+          "url": "https://centrealphachoisy.fr/",
+          "title": "centrealphachoisy.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:16:50",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION CENTRE ALPHA CHOISY",
+      "beneficiaire_normalise": "ASSOCIATION CENTRE ALPHA CHOISY",
+      "siret": ""
+    },
+    "CENTRE ALPHA CHOISY": {
+      "activite_verifiee": "Association (créée 1996, 27 av. de Choisy Paris 13e) ; accompagnement linguistique de migrants (alphabétisation, FLE) ; ~400 adultes de 60 nationalités/an.",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        {
+          "url": "https://centrealphachoisy.fr/",
+          "title": "centrealphachoisy.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:16:50",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CENTRE ALPHA CHOISY",
+      "beneficiaire_normalise": "CENTRE ALPHA CHOISY",
+      "siret": "40860525100011"
+    },
+    "ASSOCIATION PROCESSUS RECHERCHE": {
+      "activite_verifiee": "Association dédiée à la recherche artistique (danse, performance) ; ateliers, résidences de création, accompagnement d'artistes à Paris.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:16:50",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION PROCESSUS RECHERCHE",
+      "beneficiaire_normalise": "ASSOCIATION PROCESSUS RECHERCHE",
+      "siret": ""
+    },
+    "ASSOCIATION PETITE ENFANCE ET PARENTAL": {
+      "activite_verifiee": "Structure d'accueil petite enfance (crèches) et soutien à la parentalité à Paris ; activités familiales et accompagnement parental.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:16:50",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION PETITE ENFANCE ET PARENTAL",
+      "beneficiaire_normalise": "ASSOCIATION PETITE ENFANCE ET PARENTAL",
+      "siret": ""
+    },
+    "PETITE ENFANCE ET PARENTAL": {
+      "activite_verifiee": "Structure d'accueil petite enfance (crèches) et soutien à la parentalité à Paris ; activités familiales et accompagnement parental.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:16:50",
+      "model": "claude-code-websearch",
+      "beneficiaire": "PETITE ENFANCE ET PARENTAL",
+      "beneficiaire_normalise": "PETITE ENFANCE ET PARENTAL",
       "siret": ""
     }
   }
