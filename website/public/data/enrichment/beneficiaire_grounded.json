@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T11:49:11.592168",
+  "generated_at": "2026-04-22T15:30:01.227245",
   "model": "gemini-3-flash-preview",
   "count": 780,
   "items": {
@@ -21088,7 +21088,225 @@
       "confiance": 0.8,
       "source_type": "claude_web",
       "enriched_at": "2026-04-22T11:49:11.592168"
+    },
+    "RÉGIE DE QUARTIER DU 19EME": {
+      "activite_verifiee": "Régie de Quartier du 19e, association et entreprise d'insertion, 9 rue Colette Magny Paris 19e (quartier Michelet/Alphonse Karr). Services de nettoyage, espaces verts, gestion des OM, second œuvre, en partenariat avec la Ville, les bailleurs sociaux et les habitants. 55 salariés en insertion accompagnés.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        "rqparis19.org",
+        "grafie.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:30:01.227245"
+    },
+    "ACTEURS DE LA REUSSITE EDUCATIVE": {
+      "activite_verifiee": "Anaré — Association Nationale des Acteurs de la Réussite Éducative, créée en 2007. Fédère les professionnels de la Réussite Éducative (PRE) : enseignants, travailleurs sociaux, médicaux-sociaux. Organise les journées nationales PRE, formation, ressources.",
+      "perimetre_geographique": "France / Paris",
+      "sources": [
+        "anare.fr",
+        "reussite-educative.paris"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:30:01.227245"
+    },
+    "APHP": {
+      "activite_verifiee": "AP-HP — Assistance Publique Hôpitaux de Paris, centre hospitalier universitaire d'Île-de-France (~38 hôpitaux publics, ~100 000 agents). Premier CHU d'Europe. Siège 3 avenue Victoria Paris 4e.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        "aphp.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:30:01.227245"
+    },
+    "AS PERSONNELS APSAPVP": {
+      "activite_verifiee": "APSAP-VP (Association des Personnels Sportifs des Administrations Parisiennes de la Ville de Paris), association omnisports loi 1901 fondée en 1929, reconnue d'utilité publique en 1971. Plus de 25 activités sportives aux agents de la Ville de Paris et de l'AP-HP, leurs familles et les Franciliens.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "apsapvp.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:30:01.227245"
+    },
+    "UNE GOUTTE ORGANISATION PRODUCTION": {
+      "activite_verifiee": "UGOP — Une Goutte d'Organisation Productions, compagnie de théâtre / production de spectacles vivants. 14 rue Édouard Robert Paris 12e.",
+      "perimetre_geographique": "Paris 12e",
+      "sources": [
+        "gralon.net",
+        "service-civique.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:30:01.227245"
+    },
+    "SBC INSERTION": {
+      "activite_verifiee": "SBC Insertion (SIREN 519260558), SAS ETTI créée en 2010, 13 bd de Courcelles Paris 8e (agences Paris 12e, Malakoff 92, Ivry 94). Recrute et accompagne des personnes en difficulté socio-professionnelle sur des missions d'intérim dans le BTP (gros œuvre, second œuvre), TP, dépollution, tri des déchets.",
+      "perimetre_geographique": "Paris / Hauts-de-Seine / Val-de-Marne",
+      "sources": [
+        "sbc-insertion.fr",
+        "societe.com",
+        "insereco93.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:30:01.227245"
+    },
+    "PLAISIR D ENFANCE": {
+      "activite_verifiee": "Plaisir d'Enfance (SIREN 378137400), groupe coopératif (SCOP depuis 2017) créé en 1990. 56/60 rue du Pré Saint-Gervais Paris 19e. Premier groupe français d'éducation alternative (pédagogie Pikler pour la petite enfance, Montessori pour l'école) : 2 crèches (Le Nid des Tout-petits) + 1 maternelle + 1 élémentaire.",
+      "perimetre_geographique": "Paris 19e / Île-de-France",
+      "sources": [
+        "plaisirdenfance.com",
+        "pappers.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:30:01.227245"
+    },
+    "STAGE ENTERTAINMENT FRANCE": {
+      "activite_verifiee": "Stage Entertainment France, filiale française (depuis 2005) du groupe international Stage Entertainment. Principal producteur de comédies musicales en France, opérateur du Théâtre Mogador (Paris 9e, ~1 600 places) et du Casino de Paris. Productions : Le Roi Lion, Aladdin, Moulin Rouge!, Chicago, TINA, Anastasia.",
+      "perimetre_geographique": "Paris 9e (Mogador)",
+      "sources": [
+        "stage-entertainment.fr",
+        "theatreonline.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:30:01.227245"
+    },
+    "BOOLOFOOD SASU": {
+      "activite_verifiee": "BoolOfood SASU, entreprise ESS (SIAE) parisienne proche du Parc de la Villette et du Canal de l'Ourcq Paris 19e. Restaurant africain / traiteur solidaire : cuisine fusion saine, 100% maison, locale et responsable (partenariats AMAP et coopératives de femmes au Sénégal). Insertion de jeunes vers l'emploi durable.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        "boolofood.com",
+        "lemarche.inclusion.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:30:01.227245"
+    },
+    "ETAPE PARCOURS LOGE JEUNES": {
+      "activite_verifiee": "L'Étape — Parcours Logement Jeunes (SIREN 310580329), association gérant 3 Foyers de Jeunes Travailleurs (FJT) à Paris : L'Étape Voltaire (20 bd Voltaire Paris 11e), L'Étape Blanqui (48 bd Blanqui Paris 13e), L'Étape Masséna (15-19 rue Nicole-Reine Lepaute Paris 13e). 202 logements pour 232 places (16-25 ans salariés).",
+      "perimetre_geographique": "Paris 11e / 13e",
+      "sources": [
+        "etape.asso.fr",
+        "pappers.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:30:01.227245"
+    },
+    "ASSOCIATION L ETAPE PARCOURS LOGE JEUNES": {
+      "activite_verifiee": "L'Étape — Parcours Logement Jeunes (SIREN 310580329), association gérant 3 Foyers de Jeunes Travailleurs (FJT) à Paris : L'Étape Voltaire (20 bd Voltaire Paris 11e), L'Étape Blanqui (48 bd Blanqui Paris 13e), L'Étape Masséna (15-19 rue Nicole-Reine Lepaute Paris 13e). 202 logements pour 232 places (16-25 ans salariés).",
+      "perimetre_geographique": "Paris 11e / 13e",
+      "sources": [
+        "etape.asso.fr",
+        "pappers.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:30:01.227245"
+    },
+    "MSP VINCENT AURIOL": {
+      "activite_verifiee": "MSP Vincent Auriol, maison de santé pluriprofessionnelle, 167 bd Vincent Auriol Paris 13e. SISA — consultations de médecine générale et pédiatrie (Dr Arié Sarfati, Dres Valentine Remy et Karolina Noster).",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        "maisons-et-poles-de-sante.com",
+        "sante.fr",
+        "pappers.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:30:01.227245"
+    },
+    "SISA DES ENVIERGES": {
+      "activite_verifiee": "SISA des Envierges, Société Interprofessionnelle de Soins Ambulatoires parisienne. Probablement rattachée à une maison de santé pluriprofessionnelle du 20e arrondissement (rue des Envierges / Belleville).",
+      "perimetre_geographique": "Paris 20e",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:30:01.227245"
+    },
+    "TATANE": {
+      "activite_verifiee": "Tatane (SIREN 752394460), association créée en 2011 par Vikash Dhorasoo, Brieux Férot et Pierre Walfisz. 28 rue de l'Orillon Paris 11e. Mouvement populaire pour un football durable, joyeux, inclusif et social. École de football itinérante, mixte, créative ; ateliers Tatane ; think tank.",
+      "perimetre_geographique": "Paris 11e",
+      "sources": [
+        "tatane.fr",
+        "footdelles.com",
+        "pappers.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:30:01.227245"
+    },
+    "BOUFFESQUETAIRES": {
+      "activite_verifiee": "Les Bouffesquetaires (SIREN 534526389), SAS ESS, 69 rue Armand Carrel Paris 19e. Fabrication et préparation de plats traiteurs, livraison vélo, restauration et pédagogie culinaire (accent éducation alimentaire et écologie).",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        "societe.com",
+        "acceslibre.beta.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:30:01.227245"
+    },
+    "ALLO MALTRAITANCE PERSONNES AGEES": {
+      "activite_verifiee": "ALMA Paris — Allô Maltraitance des Personnes Âgées et/ou Majeurs Handicapés, association parisienne membre de la Fédération 3977 (créée en 2014 par fusion d'Alma-France et Habéo). Écoute, conseil et appui aux victimes de maltraitance (personnes âgées, adultes en situation de handicap) et à leur entourage depuis 2003.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "alma-paris.org",
+        "3977.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:30:01.227245"
+    },
+    "ASSOCIATION LA CASERNE EPHEMERE": {
+      "activite_verifiee": "La Caserne Éphémère (SIREN 424477420), association loi 1901 créée le 1er août 1999, 24 rue Louis Blanc Paris 10e. Transforme des lieux vacants en centres culturels et pratiques artistiques éco-responsables. Opère Point Éphémère (200-206 quai de Valmy, ouvert en 2004) et La Caserne (caserne de pompiers transformée en incubateur mode durable).",
+      "perimetre_geographique": "Paris 10e",
+      "sources": [
+        "pointephemere.org",
+        "lacaserneparis.com",
+        "societe.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:30:01.227245"
+    },
+    "DESCODEUSES": {
+      "activite_verifiee": "DesCodeuses, association créée en 2018 par Souad Boutegrabet, école de code au féminin dans les quartiers prioritaires. Belleville-Amandiers Paris 20e (+ Saint-Ouen-sur-Seine et Roubaix). Formations professionnelles d'1 an (dev web, cybersécurité, applicative) par promotions de 15-20 femmes, ateliers de sensibilisation gratuits.",
+      "perimetre_geographique": "Paris 20e / Seine-Saint-Denis / Nord",
+      "sources": [
+        "descodeuses.org",
+        "fr.wikipedia.org/wiki/DesCodeuses"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:30:01.227245"
+    },
+    "ASSOCIATION ARTISTIQUE CONCERT COLONNE": {
+      "activite_verifiee": "Orchestre Colonne — Association artistique des Concerts Colonne, fondée en 1873 par Édouard Colonne, 94 rue de Miromesnil / 2 bd Berthier Paris 17e. SCOP ; ~80-100 musiciens professionnels. Plus ancien orchestre associatif parisien en activité, 5000+ concerts symphoniques.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "orchestrecolonne.fr",
+        "fr.wikipedia.org/wiki/Orchestre_Colonne"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:30:01.227245"
+    },
+    "ASSOCIATION DYNAMO": {
+      "activite_verifiee": "Association Dynamo, 3 passage Salarnier Paris 11e — association humanitaire et d'entraide sociale. Détails publics limités selon la dénomination exacte (homonymes à Troyes).",
+      "perimetre_geographique": "Paris 11e",
+      "sources": [
+        "mappy.com"
+      ],
+      "confiance": 0.4,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:30:01.227245"
     }
   },
-  "total": 1090
+  "total": 1110
 }
