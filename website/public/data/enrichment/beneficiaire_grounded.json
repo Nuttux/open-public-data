@@ -29130,7 +29130,472 @@
       ],
       "confiance": 0.95,
       "source_type": "grounded_search"
+    },
+    "REVIVRE": {
+      "beneficiaire": "Association Revivre",
+      "beneficiaire_normalise": "REVIVRE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:36:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (16e) œuvrant dans le champ des addictions (info publique limitée hors SIRET 423590116 — SIRET listé 48271367400018 pourrait être un autre établissement). À confirmer.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "grounded_search"
+    },
+    "JRS FRANCE SERVICE JESUITE REFUG": {
+      "beneficiaire": "JRS France — Service Jésuite des Réfugiés",
+      "beneficiaire_normalise": "JRS FRANCE SERVICE JESUITE REFUG",
+      "siret": "",
+      "generated_at": "2026-04-23T00:36:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association d'intérêt général créée en 2009 (rattachée à JRS International fondé en 1980) : accueil, hébergement temporaire, soutien juridique, intégration des demandeurs d'asile et réfugiés. 40 antennes régionales.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://jrsfrance.org",
+          "title": "jrsfrance.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "AMIS DE FRANS KRAJCBERG": {
+      "beneficiaire": "Association des Amis de Frans Krajcberg",
+      "beneficiaire_normalise": "AMIS DE FRANS KRAJCBERG",
+      "siret": "",
+      "generated_at": "2026-04-23T00:36:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (15e, 21 avenue du Maine, Chemin du Montparnasse) : gestion de l'Espace Frans Krajcberg (art & nature), collection de 15 œuvres léguées à la Ville de Paris en 2002. SIRET 75200920900012.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://espacekrajcberg.fr",
+          "title": "espacekrajcberg.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "AU BAGAGE DU CANAL": {
+      "beneficiaire": "Au Bagage du Canal",
+      "beneficiaire_normalise": "AU BAGAGE DU CANAL",
+      "siret": "",
+      "generated_at": "2026-04-23T00:36:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Bagagerie solidaire (19e, 11 passage de Flandre — Bassin de la Villette) ouverte en 2018 : consigne sécurisée et services pour personnes sans abri. 9e bagagerie parisienne. SIRET 83169480700023.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://aubagageducanal.fr",
+          "title": "aubagageducanal.fr"
+        },
+        {
+          "url": "https://paris.fr",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "STUDIO DU DRAGON": {
+      "beneficiaire": "Studio du Dragon",
+      "beneficiaire_normalise": "STUDIO DU DRAGON",
+      "siret": "",
+      "generated_at": "2026-04-23T00:36:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Société d'exploitation de cinéma (8e, 14 rue Lincoln — Cinéma Le Lincoln) créée en 1963 : salle de cinéma indépendante, bar et salon.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://hoodspot.fr",
+          "title": "hoodspot.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "CINQ PARNASSIENS": {
+      "beneficiaire": "Les 7 Parnassiens (ex-Les 5 Parnassiens)",
+      "beneficiaire_normalise": "CINQ PARNASSIENS",
+      "siret": "",
+      "generated_at": "2026-04-23T00:36:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Cinéma art et essai indépendant (14e, 98 bd du Montparnasse) inauguré en 1978 sous le nom « Les 5 Parnassiens », devenu « Les 7 Parnassiens » en 1979 avec l'ajout de deux salles.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://parnassiens.com",
+          "title": "parnassiens.com"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "FIL DE SOIE": {
+      "beneficiaire": "Le Fil de Soie",
+      "beneficiaire_normalise": "FIL DE SOIE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:36:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association culturelle (code 9001Z) créée le 1er juin 2008 : spectacle vivant. 3-5 salariés. SIRET 51169823500013.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://societe.com",
+          "title": "societe.com"
+        }
+      ],
+      "confiance": 0.75,
+      "source_type": "grounded_search"
+    },
+    "ESPRIT DU VENT": {
+      "beneficiaire": "L'Esprit du Vent",
+      "beneficiaire_normalise": "ESPRIT DU VENT",
+      "siret": "",
+      "generated_at": "2026-04-23T00:36:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (20e, 20 rue Saint-Fargeau) créée le 4 juillet 2001 : spectacle vivant à partir de textes poétiques et littéraires — depuis 2005, actions d'insertion sociale et pro et lutte contre les discriminations par l'art. SIRET 45209299200026.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://compagnielespritduvent.com",
+          "title": "compagnielespritduvent.com"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "KEUR KAMER": {
+      "beneficiaire": "Keur Kamer (A2K)",
+      "beneficiaire_normalise": "KEUR KAMER",
+      "siret": "",
+      "generated_at": "2026-04-23T00:36:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association solidaire (13e) créée en 2011 : soutien et insertion sociale/culturelle/politique des résidents des foyers de travailleurs migrants — alphabétisation, accompagnement administratif/juridique, sorties culturelles, projets en Afrique (éducation, santé, environnement).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://keurkamer.org",
+          "title": "keurkamer.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "TENNIS CLUB DU XIII TC XIII": {
+      "beneficiaire": "TC XIII — Tennis Club du 13e",
+      "beneficiaire_normalise": "TENNIS CLUB DU XIII TC XIII",
+      "siret": "",
+      "generated_at": "2026-04-23T00:36:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (13e, 15 rue des Hautes Formes) fondée en 1987 (ex-Tennis Club Municipal du XIII) : ~800 membres, affiliée FFT depuis 1989. Cours sur courts couverts (stade Charles Moureu). SIRET 35136224900036.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://tennisclub13.com",
+          "title": "tennisclub13.com"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "SONIC PROTEST": {
+      "beneficiaire": "Sonic Protest",
+      "beneficiaire_normalise": "SONIC PROTEST",
+      "siret": "",
+      "generated_at": "2026-04-23T00:36:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Festival annuel de musique expérimentale créé en 2003 : musique électroacoustique, improvisée, noise, avant-garde. Présent à Paris et en France (« Sonic Protest Ailleurs » depuis 2012). SIRET 50834253200027.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://sonicprotest.com",
+          "title": "sonicprotest.com"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "CAMELIA CINEMAS": {
+      "beneficiaire": "Camélia Cinémas / Les Films du Camélia",
+      "beneficiaire_normalise": "CAMELIA CINEMAS",
+      "siret": "",
+      "generated_at": "2026-04-23T00:36:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "SARL (6e, 28 rue Mazarine) active depuis 2015 : exploitation et distribution cinématographique. Les Films du Camélia (fondée 1988) — cinéma italien de patrimoine et films indépendants américains, éditions Blu-ray/DVD.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://lesfilmsducamelia.com",
+          "title": "lesfilmsducamelia.com"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "SARL DES AUTEURS REALIS PRODUCT": {
+      "beneficiaire": "SARL des Auteurs Réalisateurs Producteurs (ARP)",
+      "beneficiaire_normalise": "SARL DES AUTEURS REALIS PRODUCT",
+      "siret": "",
+      "generated_at": "2026-04-23T00:36:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "SARL (17e, 7 avenue de Clichy) liée à L'ARP (Société civile fondée en 1987 par Claude Berri et al.) : exploite le Cinéma des Cinéastes (ouvert 1996). Défense de la diversité et indépendance du cinéma français et européen.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://larp.fr",
+          "title": "larp.fr"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "EMMAUS CONNECT FONDATEUR": {
+      "beneficiaire": "Emmaüs Connect",
+      "beneficiaire_normalise": "EMMAUS CONNECT FONDATEUR",
+      "siret": "",
+      "generated_at": "2026-04-23T00:36:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association du mouvement Emmaüs créée en 2013 : lutte contre l'exclusion numérique — équipements reconditionnés, forfaits solidaires, apprentissages. 18 territoires, 150 salariés + 1500 bénévoles. 170 000 personnes accompagnées, 16 000 pros sociaux formés.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://emmaus-connect.org",
+          "title": "emmaus-connect.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "CONNAITRE PROTEGER NATURE VAL DE SE": {
+      "beneficiaire": "CPN Val-de-Seine",
+      "beneficiaire_normalise": "CONNAITRE PROTEGER NATURE VAL DE SE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:36:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association francilienne d'éducation populaire RUP (Paris et Étampes, 58 bd Berchère 91150) active depuis 1985 : éducation à l'environnement et protection de la nature. Membre du réseau national FCPN.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://cpnvaldeseine.fr",
+          "title": "cpnvaldeseine.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "TAXICOP": {
+      "beneficiaire": "Taxicop",
+      "beneficiaire_normalise": "TAXICOP",
+      "siret": "",
+      "generated_at": "2026-04-23T00:36:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Société coopérative de production (SCOP) créée des années 50 (issue de la SGL), transformée en SCOP en 1976 : taxis parisiens en coopérative. Alliance GESCOP + Alpha Taxis avec Barco et Gat (1130 chauffeurs associés au total).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://les-scop.coop",
+          "title": "les-scop.coop"
+        },
+        {
+          "url": "https://gescop.fr",
+          "title": "gescop.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "COUP DE POUSSES": {
+      "beneficiaire": "Coup de Pousses",
+      "beneficiaire_normalise": "COUP DE POUSSES",
+      "siret": "",
+      "generated_at": "2026-04-23T00:36:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (12e, 181 avenue Daumesnil) créée en 2018 : reconnexion des citadins à la nature — plantations participatives, mini-forêts urbaines. Gère Le Plant B, ressourcerie pour jardiniers (12e, Bercy Encore) depuis 2023. SIRET 84468440700027.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://coupdepousses.fr",
+          "title": "coupdepousses.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "CINEMAS 21": {
+      "beneficiaire": "Cinémas 21",
+      "beneficiaire_normalise": "CINEMAS 21",
+      "siret": "",
+      "generated_at": "2026-04-23T00:36:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "SARL (5e, 23 rue des Écoles) : projection de films. Informations publiques limitées.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://societe.com",
+          "title": "societe.com"
+        }
+      ],
+      "confiance": 0.5,
+      "source_type": "grounded_search"
+    },
+    "SAVOIRS POUR REUSSIR PARIS": {
+      "beneficiaire": "SPR Paris — Savoirs pour Réussir Paris",
+      "beneficiaire_normalise": "SAVOIRS POUR REUSSIR PARIS",
+      "siret": "",
+      "generated_at": "2026-04-23T00:36:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (ouverte en mars 2009) : lutte contre l'illettrisme dès 16 ans — lecture, écriture, calcul, numérique. Agréée JEP, soutenue par Ville de Paris, ANCT, DGLFLF. 900+ personnes accompagnées, ~60% de sorties positives.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://sprparis.wordpress.com",
+          "title": "sprparis.wordpress.com"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "HOPITAL NECKER ENFANTS MALADES": {
+      "beneficiaire": "Hôpital Necker-Enfants Malades (AP-HP)",
+      "beneficiaire_normalise": "HOPITAL NECKER ENFANTS MALADES",
+      "siret": "",
+      "generated_at": "2026-04-23T00:36:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Hôpital universitaire (15e, 149 rue de Sèvres) de l'AP-HP : toutes spécialités pédiatriques, maternité type 3, urgences pédiatriques, 60 centres de référence/expertise maladies rares. 5000 professionnels, 500 000 patients/an.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://aphp.fr",
+          "title": "aphp.fr"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "CHENE ET L HIBISCUS": {
+      "beneficiaire": "Le Chêne et l'Hibiscus",
+      "beneficiaire_normalise": "CHENE ET L HIBISCUS",
+      "siret": "",
+      "generated_at": "2026-04-23T00:36:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (11e, 7 rue Plichon) créée en 2016 : accompagnement psychologique-thérapeutique des personnes exilées et travail avec collectifs de travailleurs sociaux et communautés éducatives/santé. 18 membres dont 12 psychologues et 2 dramathérapeutes.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://chene-et-hibiscus.fr",
+          "title": "chene-et-hibiscus.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "EN AVANT DE PARIS": {
+      "beneficiaire": "En Avant de Paris",
+      "beneficiaire_normalise": "EN AVANT DE PARIS",
+      "siret": "",
+      "generated_at": "2026-04-23T00:36:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Club de gymnastique associatif (14e, 10 rue Huyghens) créé le 1er juillet 1984 : culture, loisirs, sport. 6-9 salariés. SIRET 33016669500016.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://societe.com",
+          "title": "societe.com"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "BASKET PARIS 14": {
+      "beneficiaire": "Basket Paris 14",
+      "beneficiaire_normalise": "BASKET PARIS 14",
+      "siret": "",
+      "generated_at": "2026-04-23T00:36:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Club de basket (14e, 8 place de l'Amphithéâtre) créé en 2015 : top 5 des clubs français par adhérents, 800+ membres dès l'éveil-U5 (3 ans). 8 membres bénévoles au comité + 2 salariés (DT + gestionnaire). SIRET 81223064700016.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://basketparis14.com",
+          "title": "basketparis14.com"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION GLAZ ART": {
+      "beneficiaire": "Glazart",
+      "beneficiaire_normalise": "ASSOCIATION GLAZ ART",
+      "siret": "",
+      "generated_at": "2026-04-23T00:36:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Salle de concert et club multidisciplinaire (19e, 7-15 avenue de la Porte de la Villette) créée en 1992 par Stéphane Vatinel : concerts alternatifs, nuits électroniques, résidences artistiques. Été : LaPlage (open-air depuis 2010).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://glazart.com",
+          "title": "glazart.com"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "WINTEGREAT": {
+      "beneficiaire": "Each One (ex-Wintegreat)",
+      "beneficiaire_normalise": "WINTEGREAT",
+      "siret": "",
+      "generated_at": "2026-04-23T00:36:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association créée en 2015 : programme gratuit et certifiant de 12 semaines (20h/semaine) en Grande École (9 villes en France) pour les personnes réfugiées — FLE, anglais, mentor, coach. 700+ parcours, 73% d'emploi à 3 mois. SIRET 82172705400016.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://wintegreat.org",
+          "title": "wintegreat.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ORCHESTRE SYMPHONIQUE DIVERTIMENTO": {
+      "beneficiaire": "Orchestre Symphonique Divertimento",
+      "beneficiaire_normalise": "ORCHESTRE SYMPHONIQUE DIVERTIMENTO",
+      "siret": "",
+      "generated_at": "2026-04-23T00:36:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Orchestre fondé en 1998 par Zahia Ziouani (Commandeur Ordre National du Mérite 2019, Officier Arts et Lettres 2014) : ensemble symphonique basé en Seine-Saint-Denis, grand répertoire et musiques méditerranéennes. Académie Divertimento (2008) — formation des jeunes musiciens. Biopic « Divertimento » (2023). SIRET 48356572700037.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://orchestre-divertimento.com",
+          "title": "orchestre-divertimento.com"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
     }
   },
-  "total": 1658
+  "total": 1684
 }
