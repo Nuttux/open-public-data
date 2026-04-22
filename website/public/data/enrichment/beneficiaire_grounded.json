@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T11:22:10",
+  "generated_at": "2026-04-22T11:27:54.317620",
   "model": "gemini-3-flash-preview",
   "count": 780,
   "items": {
@@ -17692,6 +17692,378 @@
       "beneficiaire": "DEVELOPP DE LA DANSE A PARIS",
       "beneficiaire_normalise": "DEVELOPP DE LA DANSE A PARIS",
       "siret": ""
+    },
+    "ASL 33 51 RUE SAINT BLAISE": {
+      "activite_verifiee": "Association syndicale libre gérant les équipements et espaces communs d'un ensemble immobilier situé 33-51 rue Saint-Blaise dans le 20e arrondissement de Paris.",
+      "perimetre_geographique": "Paris 20e",
+      "sources": [
+        "service-public.gouv.fr",
+        "lamy-immobilier.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:26:06.121648"
+    },
+    "ASS LES AMIS DU BUS DES FEMMES": {
+      "activite_verifiee": "Association communautaire créée en 1990 pour venir en aide aux personnes en situation de prostitution en Île-de-France : prévention santé (VIH, hépatites, IST), accès aux droits et parcours de sortie de prostitution via un bus-camping-car itinérant.",
+      "perimetre_geographique": "Paris et Île-de-France",
+      "sources": [
+        "busdesfemmes.org",
+        "en.wikipedia.org/wiki/Les_amis_du_bus_des_femmes"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:26:06.121648"
+    },
+    "BUS DES FEMMES": {
+      "activite_verifiee": "Association communautaire créée en 1990 pour venir en aide aux personnes en situation de prostitution en Île-de-France : prévention santé (VIH, hépatites, IST), accès aux droits et parcours de sortie de prostitution via un bus-camping-car itinérant.",
+      "perimetre_geographique": "Paris et Île-de-France",
+      "sources": [
+        "busdesfemmes.org",
+        "en.wikipedia.org/wiki/Les_amis_du_bus_des_femmes"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:26:06.121648"
+    },
+    "ASS MIEUX ETRE LOGEMENT ISOLES": {
+      "activite_verifiee": "AMLI (Association pour l'Accompagnement, le Mieux-être et le Logement des Isolés), créée en 1965, gère des logements accompagnés pour personnes isolées et fragiles : foyers de travailleurs migrants, résidences sociales, CADA, centres d'hébergement d'urgence.",
+      "perimetre_geographique": "France (présente à Paris depuis 2016)",
+      "sources": [
+        "amli.asso.fr",
+        "annuaire-entreprises.data.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:26:06.121648"
+    },
+    "ASSOCIATION MIEUX ETRE LOGEMENT ISOLES": {
+      "activite_verifiee": "AMLI (Association pour l'Accompagnement, le Mieux-être et le Logement des Isolés), créée en 1965, gère des logements accompagnés pour personnes isolées et fragiles : foyers de travailleurs migrants, résidences sociales, CADA, centres d'hébergement d'urgence.",
+      "perimetre_geographique": "France (présente à Paris depuis 2016)",
+      "sources": [
+        "amli.asso.fr",
+        "annuaire-entreprises.data.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:26:06.121648"
+    },
+    "SIERRA PROD": {
+      "activite_verifiee": "La Sierra Prod, association loi 1901 agréée Jeunesse et Éducation Populaire et Service Civique, basée au nord du 18e arrondissement (Goutte d'Or / Porte de Clignancourt). Lutte contre l'isolement social et culturel via ateliers audiovisuels (documentaires, courts-métrages, photo, musique).",
+      "perimetre_geographique": "Paris 18e (quartiers Nord)",
+      "sources": [
+        "lasierraprod.com",
+        "gouttedor-et-vous.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:26:06.121648"
+    },
+    "ASSOCIATION PERSONNELS APSAP VP": {
+      "activite_verifiee": "APSAP-VP (Association des Personnels Sportifs des Administrations Parisiennes de la Ville de Paris), association omnisports loi 1901 fondée en 1929, reconnue d'utilité publique en 1971. Propose plus de 25 activités sportives aux agents de la Ville de Paris et de l'AP-HP, leurs familles et les Franciliens.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "apsapvp.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:26:06.121648"
+    },
+    "AS PERSONNELS APSAP VP": {
+      "activite_verifiee": "APSAP-VP (Association des Personnels Sportifs des Administrations Parisiennes de la Ville de Paris), association omnisports loi 1901 fondée en 1929, reconnue d'utilité publique en 1971. Propose plus de 25 activités sportives aux agents de la Ville de Paris et de l'AP-HP, leurs familles et les Franciliens.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "apsapvp.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:26:06.121648"
+    },
+    "CAISSE DES REGLEMENTS PECUNIAIRES": {
+      "activite_verifiee": "CARPA de Paris — Caisse des Règlements Pécuniaires effectués par les Avocats à la Cour de Paris (association créée en 1976, SIREN 784181216). Sécurise les maniements de fonds réalisés par les avocats pour le compte de leurs clients et intervient dans le règlement de l'aide juridictionnelle.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "fr.wikipedia.org/wiki/Caisse_des_règlements_pécuniaires_des_avocats",
+        "annuaire-entreprises.data.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:26:06.121648"
+    },
+    "ASSOCIATION BELLEVILLE CITOYENNE": {
+      "activite_verifiee": "Association de quartier fondée en 2010, 18 rue Bisson Paris 20e. Éducation populaire et expression artistique des jeunes via ateliers (théâtre, cinéma, médias, musique) et médiation / formation numérique depuis 2016.",
+      "perimetre_geographique": "Paris 20e (Belleville)",
+      "sources": [
+        "bellevillecitoyenne.fr",
+        "monpetit20e.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:26:06.121648"
+    },
+    "BELLEVILLE CITOYENNE": {
+      "activite_verifiee": "Association de quartier fondée en 2010, 18 rue Bisson Paris 20e. Éducation populaire et expression artistique des jeunes via ateliers (théâtre, cinéma, médias, musique) et médiation / formation numérique depuis 2016.",
+      "perimetre_geographique": "Paris 20e (Belleville)",
+      "sources": [
+        "bellevillecitoyenne.fr",
+        "monpetit20e.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:26:06.121648"
+    },
+    "ESPACES": {
+      "activite_verifiee": "Association d'insertion par l'écologie urbaine créée en 1994, siège à Chaville (92). Crée des emplois en transition écologique pour des personnes en difficulté via chantiers d'entretien des berges, parcs, espaces verts d'Île-de-France, agriculture urbaine et activités de réemploi.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        "association-espaces.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:26:06.121648"
+    },
+    "PROTECTION CIVILE DE PARIS": {
+      "activite_verifiee": "Protection Civile Paris Seine (PCPS), association loi 1901 affiliée à la Fédération nationale de Protection civile (reconnue d'utilité publique). Plus de 2 000 bénévoles dans 43 antennes : postes de secours, formations aux premiers secours (PSC1, PSE, SST), actions sociales (maraudes).",
+      "perimetre_geographique": "Paris et Île-de-France",
+      "sources": [
+        "protectioncivile.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:26:06.121648"
+    },
+    "SOLINUM": {
+      "activite_verifiee": "Association loi 1901 créée en 2016, lutte contre la précarité par le numérique. Projets principaux : Soliguide (guide solidaire en ligne des services pour personnes en précarité) et Merci pour l'invit' (hébergement citoyen pour femmes sans-abri). Présente dans 8 départements dont Paris.",
+      "perimetre_geographique": "Paris et France (8 départements)",
+      "sources": [
+        "solinum.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:26:06.121648"
+    },
+    "SCINTILLO": {
+      "activite_verifiee": "Scintillo (SIREN 522661289), groupement de structures culturelles indépendantes intégré au Groupe SOS, siège 15 rue de la Fontaine au Roi Paris 11e. Anime une quinzaine de sociétés filiales en ingénierie, exploitation de lieux culturels et innovation. Porte notamment Creatis (incubateur d'industries culturelles et créatives).",
+      "perimetre_geographique": "Paris et France",
+      "sources": [
+        "pappers.fr",
+        "groupe-sos.org",
+        "scintillo.eu"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:26:06.121648"
+    },
+    "MAIA AUTISME": {
+      "activite_verifiee": "MAIA Autisme — Maison pour l'Apprentissage et l'Intégration des enfants avec Autisme, association loi 1901 reconnue d'utilité publique basée à Paris 12e. Gère un IME, un SESSAD, six unités d'enseignement, un EAM à Paris et un MAS à Suresnes. Accompagne 150 enfants et jeunes adultes autistes (approche ABA).",
+      "perimetre_geographique": "Paris et Hauts-de-Seine",
+      "sources": [
+        "maia-autisme.com",
+        "handicap.paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:26:06.121648"
+    },
+    "ASSOCIATION PRIMO LEVI": {
+      "activite_verifiee": "Centre Primo Levi, association créée en mai 1995 (ACAT, Amnesty, MdM, Trêves, JSF). Centre de référence en France pour le soin aux victimes de la torture et de la violence politique exilées : soins pluridisciplinaires (médecins, psychologues, kinés, interprètes, juristes). 63 rue de Croulebarbe, Paris 13e.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "primolevi.org",
+        "maisondesrefugies.paris"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:26:06.121648"
+    },
+    "PRIMO LEVI": {
+      "activite_verifiee": "Centre Primo Levi, association créée en mai 1995 (ACAT, Amnesty, MdM, Trêves, JSF). Centre de référence en France pour le soin aux victimes de la torture et de la violence politique exilées : soins pluridisciplinaires (médecins, psychologues, kinés, interprètes, juristes). 63 rue de Croulebarbe, Paris 13e.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "primolevi.org",
+        "maisondesrefugies.paris"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:26:06.121648"
+    },
+    "100 ETS CULTUREL SOLIDAIRE": {
+      "activite_verifiee": "Le 100ECS — Établissement Culturel Solidaire, SCIC fondée en 2008 au 100 rue de Charenton, Paris 12e. 1 800 m² dédiés aux arts visuels et vivants : ateliers partagés à tarifs solidaires, plateaux de répétition, résidences d'artistes. Porte le festival 12×12.",
+      "perimetre_geographique": "Paris 12e",
+      "sources": [
+        "100ecs.fr",
+        "artcena.fr",
+        "annuaire-entreprises.data.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:27:54.317620"
+    },
+    "COMITE D ORGA DES CHAMP DU MONDE": {
+      "activite_verifiee": "Comité d'organisation des Championnats du monde d'athlétisme paralympiques Paris 2023 (SIREN 911300739). Structure temporaire créée par la Fédération Française Handisport pour organiser l'édition 2023 au stade Charléty (8-17 juillet 2023).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "wpaparis23.org",
+        "societe.com",
+        "handisport.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:27:54.317620"
+    },
+    "COLLEGE THOMAS MANN": {
+      "activite_verifiee": "Collège public situé 91 avenue de France Paris 13e, fondé en 1975. Accueille ~494 élèves et héberge le seul internat d'excellence public de l'académie de Paris pour élèves en difficulté sociale.",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        "education.gouv.fr",
+        "ac-paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:27:54.317620"
+    },
+    "SYND INTERDEP PARC DES SPORTS": {
+      "activite_verifiee": "Syndicat mixte ouvert Parc de Choisy-le-Roi Paris – Val-de-Marne, gère depuis 1970 les 150 hectares du parc interdépartemental des sports (22 courts de tennis, 23 terrains de football, base nautique, 5 km de pistes cyclables). Copiloté par Paris et le Val-de-Marne.",
+      "perimetre_geographique": "Choisy-le-Roi (94) / Paris",
+      "sources": [
+        "fr.wikipedia.org/wiki/Parc_interdépartemental_des_sports_de_Paris-Val-de-Marne",
+        "valdemarne.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:27:54.317620"
+    },
+    "MARIE THERESE": {
+      "activite_verifiee": "Association Maison de Retraite Marie-Thérèse — EHPAD privé à but non lucratif à dimension confessionnelle, 277 bd Raspail Paris 14e. 128 lits dont 13 en unité Alzheimer, accueille majoritairement des prêtres âgés. Gérée par la Compagnie des Filles de la Charité.",
+      "perimetre_geographique": "Paris 14e",
+      "sources": [
+        "pour-les-personnes-agees.gouv.fr",
+        "dioceseparis.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:27:54.317620"
+    },
+    "ASSOCIATION POUR DEVELOPPE SANTE DES FEMME": {
+      "activite_verifiee": "ADSF — Agir pour la Santé des Femmes, association apolitique et aconfessionnelle créée en 2001. Améliore l'accès aux soins des femmes en situation de grande exclusion (SDF, victimes de violences, traite) via maraudes, accueils de jour à Paris 18e et à Lille.",
+      "perimetre_geographique": "Paris 18e / Lille",
+      "sources": [
+        "adsfasso.org",
+        "jemengage.paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:27:54.317620"
+    },
+    "CITETHEATRE": {
+      "activite_verifiee": "Association Cité-Théâtre (SIREN 820959682), 21 bd Jourdan Paris 14e. Association loi 1901 créée en 2016, porteuse du projet du Théâtre de la Cité internationale, héritière de l'utopie pacifiste de la Cité universitaire de 1925. Subventionnée par le ministère de la Culture (DRAC IdF).",
+      "perimetre_geographique": "Paris 14e (Cité universitaire)",
+      "sources": [
+        "theatredelacite.com",
+        "societe.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:27:54.317620"
+    },
+    "PROJETS19": {
+      "activite_verifiee": "Projets-19, association de développement local créée en décembre 1997, implantée dans les 18e et 19e arrondissements de Paris (siège 9 rue Mathis 75019). Accompagnement à l'emploi et à la création d'entreprise, principalement dans les quartiers Politique de la ville du Nord-Est parisien.",
+      "perimetre_geographique": "Paris 18e et 19e",
+      "sources": [
+        "projets19.org",
+        "helloasso.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:27:54.317620"
+    },
+    "AOCSA LA 20 EME CHAISE": {
+      "activite_verifiee": "AOCSA — La 20e Chaise, centre social et socioculturel fondé en 2006-2007 par les habitants du quartier des Amandiers (Paris 20e), 38 rue des Amandiers. Ateliers (cuisine, yoga, couture), cours de français, accompagnement à la scolarité, soutien à la parentalité.",
+      "perimetre_geographique": "Paris 20e (quartier des Amandiers)",
+      "sources": [
+        "la20emechaise.org",
+        "annuaire-entreprises.data.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:27:54.317620"
+    },
+    "CROCOS CRECHE PARENTAL": {
+      "activite_verifiee": "Les Crocos, crèche parentale associative créée en 1984, 180 avenue Daumesnil Paris 12e. Accueille 20 enfants de 2,5 mois à moins de 4 ans ; fonctionnement participatif avec permanences parentales hebdomadaires aux côtés d'une équipe de 6 professionnels de la petite enfance.",
+      "perimetre_geographique": "Paris 12e",
+      "sources": [
+        "lescrocos.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:27:54.317620"
+    },
+    "ASSOCIATION LES CROCOS CRECHE PARENTAL": {
+      "activite_verifiee": "Les Crocos, crèche parentale associative créée en 1984, 180 avenue Daumesnil Paris 12e. Accueille 20 enfants de 2,5 mois à moins de 4 ans ; fonctionnement participatif avec permanences parentales hebdomadaires aux côtés d'une équipe de 6 professionnels de la petite enfance.",
+      "perimetre_geographique": "Paris 12e",
+      "sources": [
+        "lescrocos.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:27:54.317620"
+    },
+    "HUMANDO": {
+      "activite_verifiee": "Humando — Entreprise de Travail Temporaire d'Insertion (ETTI) conventionnée par l'État, réseau de 63 agences en France (dont plusieurs en Île-de-France, agence Paris 15 au 4 rue Firmin Gillot). Place en intérim des personnes éloignées de l'emploi sur les métiers du BTP, espaces verts, logistique, restauration.",
+      "perimetre_geographique": "France (Paris et IdF)",
+      "sources": [
+        "humando.fr",
+        "grafie.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:27:54.317620"
+    },
+    "FONDATION AGIR CONTRE L EXCLUSION": {
+      "activite_verifiee": "FACE — Fondation Agir Contre l'Exclusion, reconnue d'utilité publique en 1994 (créée en 1993 par Martine Aubry). Mobilise entreprises et salariés pour l'inclusion : 77 structures, 40 clubs territoriaux. FACE Paris est un club créé en 2006 avec la Ville de Paris pour lier entreprises et territoire.",
+      "perimetre_geographique": "France (club Paris depuis 2006)",
+      "sources": [
+        "fondationface.org",
+        "en.wikipedia.org/wiki/Fondation_Agir_Contre_l'Exclusion",
+        "face-paris.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:27:54.317620"
+    },
+    "ENTREPRENEURS DU MONDE": {
+      "activite_verifiee": "Entrepreneurs du Monde, association française reconnue d'utilité publique créée en 1998, siège à Lyon. Soutient l'insertion socio-économique de personnes en grande précarité en Afrique, Asie, Haïti et France via microcrédit, épargne, formation, accompagnement énergie.",
+      "perimetre_geographique": "International (Lyon / Paris / 12 pays)",
+      "sources": [
+        "entrepreneursdumonde.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:27:54.317620"
+    },
+    "ASSOCIATION CHARONNE": {
+      "activite_verifiee": "Association Charonne — opérateur médico-social parisien dans la prise en charge des addictions et la réduction des risques. Gère plusieurs CAARUD et CSAPA (Beaurepaire Paris 10e, bd Ney Paris 18e dont un espace femmes). Depuis, rapprochée du groupe associatif Aurore.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "aurore.asso.fr",
+        "annuaire.action-sociale.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:27:54.317620"
+    },
+    "MOTIVEA": {
+      "activite_verifiee": "Association / organisme intervenant dans le champ de l'insertion professionnelle à Paris (informations publiques limitées).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "paris.fr (organismes insertion)"
+      ],
+      "confiance": 0.5,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:27:54.317620"
     }
-  }
+  },
+  "total": 814
 }
