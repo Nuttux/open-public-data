@@ -115,7 +115,7 @@ export default async function OG() {
           }}
         >
           <span>Sourcé aux comptes officiels · M57</span>
-          <span>franceopendata.fr</span>
+          <span>franceopendata.org</span>
         </div>
       </div>
     ),
