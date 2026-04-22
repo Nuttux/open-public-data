@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T11:44:13.533648",
+  "generated_at": "2026-04-22T11:45:54.572330",
   "model": "gemini-3-flash-preview",
   "count": 780,
   "items": {
@@ -20525,7 +20525,185 @@
       "confiance": 0.8,
       "source_type": "claude_web",
       "enriched_at": "2026-04-22T11:44:13.533648"
+    },
+    "SANTE MENTALE LUTTE CONTRE": {
+      "activite_verifiee": "Structure active sur la santé mentale et/ou la prévention du suicide (SMFLCE / CPS Paris / SOS Amitié / UNPS). À Paris, Centre de Prévention du Suicide (porté par la Fondation Élan Retrouvé) : accueil de crise et soutien psychologique ; UNPS fédère ~40 structures.",
+      "perimetre_geographique": "Paris / France",
+      "sources": [
+        "cpsparis.fr",
+        "unps.fr",
+        "lavita.paris"
+      ],
+      "confiance": 0.4,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:45:54.572330"
+    },
+    "ILE AUX LANGUE": {
+      "activite_verifiee": "L'île aux langues, association loi 1901 créée en 2011, organisme de formation spécialisé en FLE. 21 rue Émile Duployé Paris 18e (quartier Goutte d'Or). Enseignement du français (alphabétisation, FLE général, français professionnel, ateliers sociolinguistiques) pour ~350 apprenants/an.",
+      "perimetre_geographique": "Paris 18e (Goutte d'Or)",
+      "sources": [
+        "lial.fr",
+        "reseau-alpha.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:45:54.572330"
+    },
+    "LOGEMENT GEST IMMOBILIERE REG PARIS": {
+      "activite_verifiee": "RIVP — Régie Immobilière de la Ville de Paris, société d'économie mixte créée en 1923. Capital : Ville de Paris (79 %), Caisse des Dépôts (10 %), Groupe Habitat en région (10 %). Un des 3 principaux bailleurs sociaux parisiens (>80 % du parc social parisien avec Paris Habitat et Elogie-Siemp). Construit aussi crèches, écoles, équipements publics.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "fr.wikipedia.org/wiki/Régie_immobilière_de_la_ville_de_Paris",
+        "en.wikipedia.org/wiki/RIVP"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:45:54.572330"
+    },
+    "OBSERV MOND VILLES SUR QUAL AIR GUA": {
+      "activite_verifiee": "GUAPO — Global Urban Air Pollution Observatory, observatoire lancé par la Ville de Paris, la Métropole du Grand Paris et l'OMS (avec le soutien du C40 et 100 Resilient Cities). Fédère les grandes villes mondiales sur la qualité de l'air : partage de connaissances, mesures et impacts sanitaires.",
+      "perimetre_geographique": "International (Paris)",
+      "sources": [
+        "innovapresse.com",
+        "paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:45:54.572330"
+    },
+    "CAPSKILLS": {
+      "activite_verifiee": "CAPSKILLS (SIREN 852854181), association parisienne (Paris 16e) active depuis 2019, créée par le président du Groupe NAXIS. Organisme de formation pour adultes : qualifiante, certifiante, apprentissage, professionnelle. Met en œuvre le programme Paris Tous En Jeux (PTEJ) pré-qualifiant dans les QPV, adossé aux JOP 2024.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "naxis.fr",
+        "societe.com",
+        "pappers.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:45:54.572330"
+    },
+    "MINI COCCINELLES": {
+      "activite_verifiee": "Association Mini Coccinelles, crèche collective associative, 29-31 rue Robert et Sonia Delaunay Paris 11e. Accueille des enfants de 2,5 mois à 3 ans en temps plein ou partiel (incluant enfants en situation de handicap). Équipe pluridisciplinaire (EJE, aux. puériculture, CAP petite enfance).",
+      "perimetre_geographique": "Paris 11e",
+      "sources": [
+        "paris.fr",
+        "alentoor.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:45:54.572330"
+    },
+    "MSP QUAI DE SEINE": {
+      "activite_verifiee": "Maison de Santé Pluriprofessionnelle (MSP) Quai de Seine, 11 passage de Flandres / 52 av. de Flandre Paris 19e (face au canal de l'Ourcq). 9 spécialités, 255 m². Équipe : 3 médecins généralistes, sage-femme, kiné, ostéopathe, 2 IDE, psychologue, diététicienne.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        "santequaideseine.paris",
+        "maiia.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:45:54.572330"
+    },
+    "MEDICALE BELLEVILLE": {
+      "activite_verifiee": "Centre médical de Belleville — Groupe des Œuvres Sociales de Belleville (GOSB), association RUP depuis 1922, 162 rue de Belleville Paris 20e. Gère 8 établissements santé/médico-social/petite enfance. Centre de santé polyvalent en secteur 1 (médecine générale/spécialisée, dentaire, paramédical).",
+      "perimetre_geographique": "Paris 20e",
+      "sources": [
+        "gosb.eu",
+        "centredesantedebelleville.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:45:54.572330"
+    },
+    "SOCIAL BUILDER": {
+      "activite_verifiee": "Social Builder, association créée en 2011. Oriente, forme et reconverti les femmes vers les métiers du numérique. ~75 000 femmes accompagnées en 11 ans ; programme Women In Digital (440 femmes formées en IdF). Labellisée Paris Code, Grande École du Numérique, lauréate La France s'engage.",
+      "perimetre_geographique": "Paris / France",
+      "sources": [
+        "socialbuilder.org",
+        "banquedesterritoires.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:45:54.572330"
+    },
+    "ASSOCIATION LE MOULIN": {
+      "activite_verifiee": "Association Le Moulin, maison de quartier dans le Moulin de la Vierge (Paris 14e). 23 bis rue du Moulin de la Vierge. Médiation sociale et culturelle, accueil familles, soutien scolaire, accompagnement à la parentalité, accès au droit, inclusion numérique, FLE.",
+      "perimetre_geographique": "Paris 14e",
+      "sources": [
+        "assolemoulin.fr",
+        "jemengage.paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:45:54.572330"
+    },
+    "AMIS DE FARINEZVOUS": {
+      "activite_verifiee": "Les Amis de Farinez'vous, association de soutien à Farinez'vous — boulangerie SCIC artisanale, durable et solidaire créée en 2008 par Domitille Flichy. Insertion professionnelle dans les métiers de la boulangerie (vente et production). Boulangeries : 9 bis rue Villiot Paris 12e, 19 rue du Château des Rentiers Paris 13e, école inclusive rue Clisson.",
+      "perimetre_geographique": "Paris 12e / 13e",
+      "sources": [
+        "farinez-vous.com",
+        "paris.fr",
+        "acteursduparisdurable.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:45:54.572330"
+    },
+    "UNIVERSITE PARIS 1 PANTHEON SORBONN": {
+      "activite_verifiee": "Université Paris 1 Panthéon-Sorbonne, université publique parisienne issue de la refonte de la Sorbonne en 1971. 14 UFR, ~45 000 étudiants, spécialisée en droit, économie-gestion, sciences humaines et arts. Campus principal : 12 place du Panthéon Paris 5e.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "pantheonsorbonne.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:45:54.572330"
+    },
+    "RESEAU TREIZE": {
+      "activite_verifiee": "Réseau du 13e / Réseau Treize, écosystème associatif d'insertion et d'emploi dans le 13e arrondissement (13 Avenir, SNC Paris 13e, RJD 13, 13 Pour Tous). Détails exacts selon dénomination légale.",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        "13avenir.fr",
+        "snc.asso.fr"
+      ],
+      "confiance": 0.4,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:45:54.572330"
+    },
+    "NOVIGERE SOCIETE ANONYME": {
+      "activite_verifiee": "Novigère — Société Anonyme d'HLM (SIREN 558200507), créée le 27 mars 1974. Siège 141 avenue de Clichy Paris 17e. Filiale HLM de CILGERE (collecteur du 1% logement). Locations de logements sociaux en Île-de-France. Inactive depuis juin 2018.",
+      "perimetre_geographique": "Île-de-France (Paris 17e)",
+      "sources": [
+        "verif.com",
+        "legifrance.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:45:54.572330"
+    },
+    "LULU DANS MA RUE": {
+      "activite_verifiee": "Lulu dans ma rue — association créée en 2014 par Charles-Édouard Vincent. Conciergerie de quartier solidaire : services de proximité (bricolage, ménage, livraisons, couture, garde d'enfants) par des « Lulus » auto-entrepreneurs rémunérés 12-30 €/h, avec accompagnement et formation. Premier kiosque rue Saint-Paul Paris 4e (mai 2015), ~1 000 Lulus actifs.",
+      "perimetre_geographique": "Paris (+8 kiosques)",
+      "sources": [
+        "luludansmarue.org",
+        "fondation.veolia.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:45:54.572330"
+    },
+    "BELLEVILLE ASSOCIATION": {
+      "activite_verifiee": "La Maison du Bas Belleville (groupe CRESCENDO / Groupe SOS), centre social et culturel 5 bd de Tourtille Paris 20e. Accueil, accès aux droits, pôle familles-loisirs, enfance-jeunesse, soutien scolaire, programmation culturelle. À l'intersection des 10e, 11e, 19e et 20e.",
+      "perimetre_geographique": "Paris 20e (Belleville)",
+      "sources": [
+        "maisondubasbelleville.fr",
+        "crescendo.asso.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:45:54.572330"
     }
   },
-  "total": 1039
+  "total": 1055
 }
