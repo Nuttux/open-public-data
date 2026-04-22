@@ -185,6 +185,16 @@ def year_from_delib(delib_id: str | None) -> int | None:
     return int(m.group(1)) if m else None
 
 
+def _load_bp_supplement(year: int) -> list[dict]:
+    """Structural transfers sourced from the Budget Primitif `year` doc
+    (voted year-1). These don't appear as individual subvention delibs in
+    the Conseil de Paris ordre-du-jour — they're bundled in the BP vote."""
+    path = DELIBS_DIR / f"bp_{year}_supplement.json"
+    if not path.exists():
+        return []
+    return json.loads(path.read_text(encoding="utf-8")).get("entries", [])
+
+
 def aggregate(year: int) -> dict:
     rows_by_key: dict[str, dict] = {}
     sessions_used: list[int] = []
@@ -286,6 +296,28 @@ def aggregate(year: int) -> dict:
         rows.append(cur)
     if dropped_junk_only:
         print(f"  (skipped {dropped_junk_only} buckets with no readable name)")
+
+    # Inject structural transfers from the Budget Primitif supplement
+    bp_entries = _load_bp_supplement(year)
+    for e in bp_entries:
+        rows.append({
+            "annee": year,
+            "beneficiaire": e["beneficiary"],
+            "beneficiaire_normalise": norm_name(e["beneficiary"]).upper(),
+            "nature_juridique": "Etablissements publics",
+            "direction": e.get("direction_name"),
+            "secteurs_activite": None,
+            "thematique": e.get("thematique") or "Non classifié",
+            "sous_categorie": None,
+            "source_thematique": "budget_primitif",
+            "montant_total": float(e["amount_eur"]),
+            "nb_subventions": 1,
+            "objet_principal": e.get("motif", "")[:280],
+            "siret": e.get("siret"),
+        })
+    if bp_entries:
+        print(f"  (injected {len(bp_entries)} BP structural transfers: "
+              f"{sum(e['amount_eur'] for e in bp_entries)/1e6:.0f} M€)")
 
     rows.sort(key=lambda r: -r["montant_total"])
 

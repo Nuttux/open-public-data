@@ -1,6 +1,6 @@
 {
   "year": 2025,
-  "generated_at": "2026-04-22T11:41:32.215713",
+  "generated_at": "2026-04-22T16:16:35.962187",
   "source": "Conseil de Paris — ordres du jour (non consolidé)",
   "preview": true,
   "sessions_used": [
@@ -12,10 +12,25 @@
     155,
     156
   ],
-  "total_montant": 1301033420.68,
-  "nb_beneficiaires": 2961,
-  "nb_subventions_total": 7349,
+  "total_montant": 1843433420.68,
+  "nb_beneficiaires": 2964,
+  "nb_subventions_total": 7352,
   "data": [
+    {
+      "annee": 2025,
+      "beneficiaire": "Centre d'Action Sociale de la Ville de Paris (CASVP)",
+      "beneficiaire_normalise": "CENTRE D ACTION SOCIALE DE LA VILLE DE PARIS CASVP",
+      "nature_juridique": "Etablissements publics",
+      "direction": "Direction des Solidarités",
+      "secteurs_activite": null,
+      "thematique": "Social - Solidarité",
+      "sous_categorie": null,
+      "source_thematique": "budget_primitif",
+      "montant_total": 410400000.0,
+      "nb_subventions": 1,
+      "objet_principal": "Contribution annuelle d'équilibre au CASVP (BP 2025 = 419,6 M€). Entrée nette après soustraction des petites subventions déjà captées via délibérations (9,2 M€).",
+      "siret": "21750055700010"
+    },
     {
       "annee": 2025,
       "beneficiaire": "Regie Immobiliere De La Ville De Paris",
@@ -45,6 +60,21 @@
       "nb_subventions": 6,
       "objet_principal": "Festival et prix des littératures urbaines, 2e édition",
       "siret": "20003277900213"
+    },
+    {
+      "annee": 2025,
+      "beneficiaire": "Caisses des écoles de Paris (ensemble des 20 caisses d'arrondissement)",
+      "beneficiaire_normalise": "CAISSES DES ÉCOLES DE PARIS ENSEMBLE DES 20 CAISSES D ARRONDISSEMENT",
+      "nature_juridique": "Etablissements publics",
+      "direction": "Direction des affaires scolaires",
+      "secteurs_activite": null,
+      "thematique": "Éducation",
+      "sous_categorie": null,
+      "source_thematique": "budget_primitif",
+      "montant_total": 125000000.0,
+      "nb_subventions": 1,
+      "objet_principal": "Subventions aux caisses des écoles pour la restauration scolaire (BP 2025 = 132,4 M€). Entrée nette après soustraction des montants piecemeal déjà captés dans les délibérations session 148 (~7 M€).",
+      "siret": null
     },
     {
       "annee": 2025,
@@ -375,6 +405,21 @@
       "nb_subventions": 4,
       "objet_principal": "le projet Corpo Zéro Déchet (numéro Paris Asso 488843, dossier 2025_03485)",
       "siret": "52800732100011"
+    },
+    {
+      "annee": 2025,
+      "beneficiaire": "AGOSPAP — Association pour la Gestion des Œuvres Sociales des Personnels des Administrations Parisiennes",
+      "beneficiaire_normalise": "AGOSPAP ASSOCIATION POUR LA GESTION DES ŒUVRES SOCIALES DES PERSONNELS DES ADMINISTRATIONS PARISIENNES",
+      "nature_juridique": "Etablissements publics",
+      "direction": "Direction des Solidarités",
+      "secteurs_activite": null,
+      "thematique": "Social - Solidarité",
+      "sous_categorie": null,
+      "source_thematique": "budget_primitif",
+      "montant_total": 7000000.0,
+      "nb_subventions": 1,
+      "objet_principal": "Subvention annuelle pour les œuvres sociales des personnels (BP 2025).",
+      "siret": "78472773900012"
     },
     {
       "annee": 2025,
