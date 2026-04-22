@@ -1,15 +1,15 @@
 {
   "year": 2022,
-  "generated_at": "2026-04-22T17:51:50.342872",
+  "generated_at": "2026-04-22T18:17:23.109388",
   "total_montant": 1167565895.0,
   "nb_thematiques": 15,
   "data": [
     {
       "annee": 2022,
       "thematique": "Social - Solidarité",
-      "nb_beneficiaires": 261,
-      "nb_subventions": 261,
-      "montant_total": 450026763.0,
+      "nb_beneficiaires": 258,
+      "nb_subventions": 258,
+      "montant_total": 449927963.0,
       "pct_total": 38.54
     },
     {
@@ -23,9 +23,9 @@
     {
       "annee": 2022,
       "thematique": "Culture",
-      "nb_beneficiaires": 345,
-      "nb_subventions": 345,
-      "montant_total": 157431915.0,
+      "nb_beneficiaires": 346,
+      "nb_subventions": 346,
+      "montant_total": 157441915.0,
       "pct_total": 13.48
     },
     {
@@ -55,17 +55,17 @@
     {
       "annee": 2022,
       "thematique": "Social - Petite enfance",
-      "nb_beneficiaires": 103,
-      "nb_subventions": 103,
-      "montant_total": 40452732.0,
-      "pct_total": 3.46
+      "nb_beneficiaires": 104,
+      "nb_subventions": 104,
+      "montant_total": 40465732.0,
+      "pct_total": 3.47
     },
     {
       "annee": 2022,
       "thematique": "Non classifié",
-      "nb_beneficiaires": 2172,
-      "nb_subventions": 2172,
-      "montant_total": 20906912.0,
+      "nb_beneficiaires": 2174,
+      "nb_subventions": 2174,
+      "montant_total": 20918912.0,
       "pct_total": 1.79
     },
     {
@@ -79,9 +79,9 @@
     {
       "annee": 2022,
       "thematique": "Santé",
-      "nb_beneficiaires": 58,
-      "nb_subventions": 58,
-      "montant_total": 18740434.0,
+      "nb_beneficiaires": 59,
+      "nb_subventions": 59,
+      "montant_total": 18819234.0,
       "pct_total": 1.61
     },
     {
@@ -89,7 +89,7 @@
       "thematique": "Sport",
       "nb_beneficiaires": 191,
       "nb_subventions": 191,
-      "montant_total": 12641221.0,
+      "montant_total": 12645221.0,
       "pct_total": 1.08
     },
     {
@@ -103,17 +103,17 @@
     {
       "annee": 2022,
       "thematique": "International",
-      "nb_beneficiaires": 50,
-      "nb_subventions": 50,
-      "montant_total": 3884006.0,
+      "nb_beneficiaires": 49,
+      "nb_subventions": 49,
+      "montant_total": 3874006.0,
       "pct_total": 0.33
     },
     {
       "annee": 2022,
       "thematique": "Environnement",
-      "nb_beneficiaires": 36,
-      "nb_subventions": 36,
-      "montant_total": 2672806.0,
+      "nb_beneficiaires": 35,
+      "nb_subventions": 35,
+      "montant_total": 2663806.0,
       "pct_total": 0.23
     },
     {
