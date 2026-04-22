@@ -3,9 +3,9 @@ import "./fusion.css";
 
 import { loadLandingStats } from "@/lib/fusion-data";
 import { getAllPosts } from "@/lib/blog";
+import { SITE_URL } from "@/lib/seo";
 import LandingClient from "./LandingClient";
 
-const SITE_URL = "https://franceopendata.fr";
 const OG_TITLE = "Où va l'argent public à Paris ? — France Open Data";
 const OG_DESCRIPTION =
   "Les finances publiques françaises, rendues lisibles. Budget, dépenses, subventions, dette — sourcés, vérifiables, publiés en licence ouverte.";
