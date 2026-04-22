@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-22T10:59:14",
+  "generated_at": "2026-04-22T11:35:56",
   "source": "recherche-entreprises.api.gouv.fr",
-  "count": 3078,
+  "count": 3120,
   "items": {
     "le théâtre paris-villette": {
       "denomination": "THEATRE PARIS VILLETTE",
@@ -21386,6 +21386,272 @@
       "activite_principale": "94.99Z",
       "ville_siege": "PARIS 19",
       "matched_name": "École des Arts de la Scène – Les Petits Riens"
+    },
+    "espace culturel et universitaire juif d'europe - ecuje": null,
+    "action contre lafaim": null,
+    "cgad île-de-france": null,
+    "paris je t'aime": {
+      "denomination": "PARIS JE T'AIME",
+      "siren": "482216538",
+      "siret": "48221653800017",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Paris Je T'Aime"
+    },
+    "institut de recherche appliquée pour l'enfant et le couple": null,
+    "l'arbre bleu": {
+      "denomination": "ARBRE BLEU",
+      "siren": "384111019",
+      "siret": "38411101900012",
+      "nature_juridique": "9220",
+      "activite_principale": "88.91A",
+      "ville_siege": "PARIS",
+      "matched_name": "L'Arbre Bleu"
+    },
+    "casp": {
+      "denomination": "CENTRE D ACTION SOCIALE PROTESTANT",
+      "siren": "318732161",
+      "siret": "31873216100035",
+      "nature_juridique": "9220",
+      "activite_principale": "87.90B",
+      "ville_siege": "PARIS",
+      "matched_name": "CASP"
+    },
+    "de l'infans à l'enfant": {
+      "denomination": "DE L'INFANS A L'ENFANT",
+      "siren": "482088663",
+      "siret": "48208866300026",
+      "nature_juridique": "9220",
+      "activite_principale": "86.90F",
+      "ville_siege": "PARIS",
+      "matched_name": "De l'Infans à L'Enfant"
+    },
+    "le picoulet –mission populaire xième": null,
+    "club de maquettisme –camo75": {
+      "denomination": "CLUB DE MAQUETTISME - CAMO75",
+      "siren": "921764346",
+      "siret": "92176434600026",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Club de Maquettisme –CAMO75"
+    },
+    "association pour le dialogue et l'orientation scolaire (ados)": {
+      "denomination": "ASS POUR DIALOGUE & ORIENTATION SCOLAIRE",
+      "siren": "378248199",
+      "siret": "37824819900036",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Association pour le Dialogue et l'Orientation Scolaire (ADOS)"
+    },
+    "mon quartier bouge !": {
+      "denomination": "ASSOCIATION BOUGE TON QUARTIER",
+      "siren": "492336466",
+      "siret": "49233646600015",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Mon Quartier Bouge !"
+    },
+    "association pour le dialogue et l'orientation scolaire": {
+      "denomination": "ASS POUR DIALOGUE & ORIENTATION SCOLAIRE",
+      "siren": "378248199",
+      "siret": "37824819900036",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Association pour le Dialogue et l'Orientation Scolaire"
+    },
+    "ugsel paris –comité de paris de l'union générale sportive de l'enseignement libre": null,
+    "volley-vous +": {
+      "denomination": "VOLLEY-VOUS +",
+      "siren": "923979868",
+      "siret": "92397986800026",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Volley-vous +"
+    },
+    "association pour la promotion du karaté traditionnel et kobudo-apktk": null,
+    "club populaire et sportif du 10e": {
+      "denomination": "CLUB POPULAIRE SPORTIF DU 10EME",
+      "siren": "428139711",
+      "siret": "42813971100033",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Club Populaire et Sportif du 10e"
+    },
+    "club basket paris xi- cpb xi": null,
+    "judo club paris xii": {
+      "denomination": "ASSOCIATION JUDO CLUB PARIS XII",
+      "siren": "752853564",
+      "siret": "75285356400017",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Judo Club Paris XII"
+    },
+    "association sportive de canne d'arme paris xi": null,
+    "association pour le nouvel age apna 12": {
+      "denomination": "ASSOCIATION POUR LE NOUVEL AGE APNA 12",
+      "siren": "334784345",
+      "siret": "33478434500103",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "association pour le Nouvel Age APNA 12"
+    },
+    "apna 12": {
+      "denomination": "ASSOCIATION POUR LE NOUVEL AGE APNA 12",
+      "siren": "334784345",
+      "siret": "33478434500103",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "APNA 12"
+    },
+    "action educative et sociale des jeunes jeunesse et avenir": null,
+    "batigere habitat": {
+      "denomination": "BATIGERE HABITAT",
+      "siren": "645520164",
+      "siret": "64552016400064",
+      "nature_juridique": "5546",
+      "activite_principale": "68.20A",
+      "ville_siege": "NANCY",
+      "matched_name": "BATIGERE Habitat"
+    },
+    "hustle paris –hp": {
+      "denomination": "HUSTLE PARIS - HP",
+      "siren": "844286526",
+      "siret": "84428652600026",
+      "nature_juridique": "9220",
+      "activite_principale": "93.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "HUSTLE PARIS –HP"
+    },
+    "linkee": {
+      "denomination": "LINKEE",
+      "siren": "819611864",
+      "siret": "81961186400029",
+      "nature_juridique": "5710",
+      "activite_principale": "58.29C",
+      "ville_siege": "PARIS",
+      "matched_name": "Linkee"
+    },
+    "alteralia": {
+      "denomination": "SALIMOU TANDIA",
+      "siren": "985124577",
+      "siret": "98512457700018",
+      "nature_juridique": "1000",
+      "activite_principale": "53.20Z",
+      "ville_siege": "PARIS 18",
+      "matched_name": "Alteralia"
+    },
+    "des loisirs résidentiels des mariniers": {
+      "denomination": "LOISIRS RESIDENTIELS DES MARINIERS",
+      "siren": "387575087",
+      "siret": "38757508700029",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "des Loisirs Résidentiels des Mariniers"
+    },
+    "association pour l'insertion des jeunes -a.p.i. j": null,
+    "association science technologie société – asts": {
+      "denomination": "HUB FRANCIL'IN",
+      "siren": "884350729",
+      "siret": "88435072900015",
+      "nature_juridique": "6220",
+      "activite_principale": "63.12Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Association Science Technologie Société – ASTS"
+    },
+    "association des loisirs résidentiels des mariniers – lorem": {
+      "denomination": "LOISIRS RESIDENTIELS DES MARINIERS",
+      "siren": "387575087",
+      "siret": "38757508700029",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Association des Loisirs Résidentiels des Mariniers – LOREM"
+    },
+    "association pour l'insertion des jeunes – a.p.i.j": {
+      "denomination": "ASS INSERTION PROFESSIONNELLE DES JEUNES",
+      "siren": "421413469",
+      "siret": "42141346900014",
+      "nature_juridique": "9220",
+      "activite_principale": "85.31Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Association pour l'insertion des jeunes – A.P.I.J"
+    },
+    "association nationale de réadaptation sociale": {
+      "denomination": "NATIONALE DE READAPTATION SOCIALE",
+      "siren": "775659501",
+      "siret": "77565950100057",
+      "nature_juridique": "9220",
+      "activite_principale": "88.99B",
+      "ville_siege": "PARIS",
+      "matched_name": "Association Nationale de Réadaptation Sociale"
+    },
+    "croix-rouge française": {
+      "denomination": "CROIX ROUGE FRANCAISE",
+      "siren": "775672272",
+      "siret": "77567227221138",
+      "nature_juridique": "9230",
+      "activite_principale": "88.99B",
+      "ville_siege": "PARIS",
+      "matched_name": "Croix-Rouge Française"
+    },
+    "jeunesse feu vert - fondation robert steindecker": null,
+    "association de prévention du site de la villette": {
+      "denomination": "ASSOC PREVENTION SITE VILLETTE",
+      "siren": "340635176",
+      "siret": "34063517600019",
+      "nature_juridique": "9220",
+      "activite_principale": "88.99B",
+      "ville_siege": "PARIS",
+      "matched_name": "Association de Prévention du Site de la Villette"
+    },
+    "centre corot entraide d'auteuil": {
+      "denomination": "CENTRE COROT - ENTRAIDE D'AUTEUIL",
+      "siren": "342266731",
+      "siret": "34226673100013",
+      "nature_juridique": "9220",
+      "activite_principale": "87.90B",
+      "ville_siege": "PARIS",
+      "matched_name": "Centre Corot Entraide D'Auteuil"
+    },
+    "solidaritéroquette": null,
+    "foyer des israélites réfugiés": {
+      "denomination": "FOYER ISRAELITES REFUGIES",
+      "siren": "784655474",
+      "siret": "78465547400012",
+      "nature_juridique": "9220",
+      "activite_principale": "87.10A",
+      "ville_siege": "PARIS",
+      "matched_name": "Foyer des Israélites réfugiés"
+    },
+    "fondation des diaconnesses de reuilly": null,
+    "gaia paris": {
+      "denomination": "GAIA PARIS",
+      "siren": "493692784",
+      "siret": "49369278400025",
+      "nature_juridique": "9220",
+      "activite_principale": "87.20B",
+      "ville_siege": "PARIS",
+      "matched_name": "GAIA PARIS"
+    },
+    "l.i.r.e, le livre pour l'insertion et le refus de l'exclusion": {
+      "denomination": "LIRE - LE LIVRE POUR L'INSERTION ET LE REFUS DE L'EXCLUSION",
+      "siren": "420600140",
+      "siret": "42060014000032",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "L.I.R.E, le Livre pour l'Insertion et le Refus de l'Exclusion"
     }
   }
 }

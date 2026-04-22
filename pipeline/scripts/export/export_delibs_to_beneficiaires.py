@@ -30,13 +30,35 @@ OUTPUT_DIR = ROOT / "website" / "public" / "data" / "subventions"
 SIRENE_CACHE = ROOT / "website" / "public" / "data" / "enrichment" / "deliberations_sirene.json"
 
 JUNK_BENEF_PATTERNS = [
-    re.compile(r"^\s*titre\s+de\b", re.I),
+    re.compile(r"^\s*(au\s+)?titre\s+de\b", re.I),
     re.compile(r"^\s*budget\b", re.I),
     re.compile(r"^\s*autorisation\b", re.I),
     re.compile(r"^\s*(la\s+)?présente\s+délibération", re.I),
     re.compile(r"^\s*public\s+", re.I),  # "public Paris Musées" — truncated
     re.compile(r"^\s*d['’]?investissement\b", re.I),
+    re.compile(r"^\s*d['’]?action\s+sociale\b", re.I),  # phrase fragment
+    re.compile(r"^\s*en\s+faveur\s+", re.I),
+    re.compile(r"^\s*(le|la|les|l['’])\s+présent", re.I),
+    re.compile(r"^\s*ses?\s+(activités|mission)", re.I),
 ]
+
+# Regex-extracted names sometimes glue a trailing postal-address clause
+# ("... ayant son siège social au 16 ..."). Trim at that clause so we keep
+# just the beneficiary name.
+_TRUNCATE_AT = [
+    re.compile(r",?\s+ayant\s+son\s+siège\s+", re.I),
+    re.compile(r",?\s+sis[e]?\s+", re.I),
+    re.compile(r",?\s+domicilié[e]?\s+", re.I),
+    re.compile(r"\s+\(siret\b", re.I),
+    re.compile(r"\s+au\s+titre\s+de\b", re.I),
+]
+
+# Kerning artefacts: "Emmaü s" / "Fondatio n" — collapse a stray single-letter
+# suffix glued to the previous word with a single space. Only applies when the
+# letter-gap matches the PDF dekern pattern (single space between two
+# lowercase letters where the right-hand side is a single letter then word
+# boundary).
+_KERN_FIX = re.compile(r"(\w)\s([a-zà-öø-ÿ])\b")
 
 INSEE_NATURE_PREFIX = {
     "1": "Personnes physiques",
@@ -99,21 +121,61 @@ def is_junk_benef(beneficiary: str) -> bool:
     return any(p.match(beneficiary) for p in JUNK_BENEF_PATTERNS)
 
 
-def load_sirene_nature_index() -> dict[str, str]:
+def _cleaner(candidate: str, incumbent: str) -> bool:
+    """Return True if `candidate` looks cleaner than `incumbent`.
+
+    A name that contains spaces between words is almost always more readable
+    than a glued one. Between two well-spaced names, keep the longer.
+    """
+    if not incumbent:
+        return True
+    cand_glued = " " not in candidate.strip() and len(candidate) > 18
+    incb_glued = " " not in incumbent.strip() and len(incumbent) > 18
+    if incb_glued and not cand_glued:
+        return True
+    if cand_glued and not incb_glued:
+        return False
+    return len(candidate) > len(incumbent)
+
+
+def clean_benef_name(raw: str) -> str:
+    """Trim trailing address/junk clauses and conservative dekern fix."""
+    s = raw.strip()
+    for pat in _TRUNCATE_AT:
+        m = pat.search(s)
+        if m:
+            s = s[: m.start()].rstrip(",;: ")
+    # Only apply kerning fix if the raw had the pattern "Xx Yy" where the
+    # right side is a single letter immediately followed by a real space,
+    # not inside known multi-word names. Heuristic: fix only when the tail
+    # is one lowercase letter glued at the end of a short fragment.
+    m = re.search(r"^(\S{3,})\s([a-zà-öø-ÿ])\s(\S)", s)
+    if m:
+        s = re.sub(r"^(\S{3,})\s([a-zà-öø-ÿ])\s(\S)", r"\1\2 \3", s, count=1)
+    return s.strip()
+
+
+def load_sirene_index() -> tuple[dict[str, str], dict[str, str]]:
+    """Return (nature_by_siret, denomination_by_siret)."""
     if not SIRENE_CACHE.exists():
-        return {}
+        return {}, {}
     payload = json.loads(SIRENE_CACHE.read_text(encoding="utf-8"))
     items = payload.get("items", {})
-    idx: dict[str, str] = {}
+    nature: dict[str, str] = {}
+    name: dict[str, str] = {}
     for rec in (items.values() if isinstance(items, dict) else items):
         if not rec:
             continue
-        code = (rec.get("nature_juridique") or "").strip()
         siret = (rec.get("siret") or "").strip()
-        if not code or not siret:
+        if not siret:
             continue
-        idx[siret] = INSEE_NATURE_PREFIX.get(code[:1], "Autres")
-    return idx
+        code = (rec.get("nature_juridique") or "").strip()
+        if code:
+            nature[siret] = INSEE_NATURE_PREFIX.get(code[:1], "Autres")
+        denom = (rec.get("denomination") or "").strip()
+        if denom:
+            name[siret] = denom
+    return nature, name
 
 
 def year_from_delib(delib_id: str | None) -> int | None:
@@ -127,7 +189,7 @@ def aggregate(year: int) -> dict:
     rows_by_key: dict[str, dict] = {}
     sessions_used: list[int] = []
     total_articles = 0
-    sirene_nature = load_sirene_nature_index()
+    sirene_nature, sirene_name = load_sirene_index()
 
     for path in sorted(DELIBS_DIR.glob("session_*.json")):
         payload = json.loads(path.read_text(encoding="utf-8"))
@@ -138,11 +200,15 @@ def aggregate(year: int) -> dict:
             y = year_from_delib(art.get("delib_id"))
             if y != year:
                 continue
-            benef = (art.get("beneficiary") or "").strip()
+            benef = clean_benef_name(art.get("beneficiary") or "")
             amount = art.get("amount_eur")
             if not benef or amount in (None, 0):
                 continue
-            if is_junk_benef(benef):
+            siret = (art.get("siret") or "").strip() or None
+            # A junk-named row is only kept if we have a SIRET to anchor it
+            # to a real entity (we'll use the SIRENE denomination for display).
+            benef_is_junk = is_junk_benef(benef)
+            if benef_is_junk and not siret:
                 continue
             try:
                 amount = float(amount)
@@ -151,7 +217,6 @@ def aggregate(year: int) -> dict:
             session_year_hits += 1
             total_articles += 1
 
-            siret = (art.get("siret") or "").strip() or None
             key = siret or norm_name(benef) or benef.lower()
             cur = rows_by_key.get(key)
             if cur is None:
@@ -186,13 +251,22 @@ def aggregate(year: int) -> dict:
                 cur["_motifs"].append(art["motif"])
             if not cur["siret"] and siret:
                 cur["siret"] = siret
-            if len(benef) > len(cur["beneficiaire"]):
+            # Prefer SIRENE denomination when available, else the cleanest
+            # non-junk raw name. Avoid picking the longest (it often is a
+            # glued / truncated variant).
+            if cur["siret"] and cur["siret"] in sirene_name:
+                cur["beneficiaire"] = sirene_name[cur["siret"]].title()
+            elif not benef_is_junk and (
+                is_junk_benef(cur["beneficiaire"])
+                or _cleaner(benef, cur["beneficiaire"])
+            ):
                 cur["beneficiaire"] = benef
 
         if session_year_hits:
             sessions_used.append(payload.get("session_id"))
 
     rows: list[dict] = []
+    dropped_junk_only = 0
     for cur in rows_by_key.values():
         directions = cur.pop("_directions")
         motifs = cur.pop("_motifs")
@@ -204,7 +278,14 @@ def aggregate(year: int) -> dict:
             cur["thematique"] = "Non classifié"
         if motifs:
             cur["objet_principal"] = motifs[0][:280]
+        # Drop buckets where every candidate name was junk AND SIRENE did
+        # not resolve the SIRET — we have no readable label to show.
+        if is_junk_benef(cur["beneficiaire"]):
+            dropped_junk_only += 1
+            continue
         rows.append(cur)
+    if dropped_junk_only:
+        print(f"  (skipped {dropped_junk_only} buckets with no readable name)")
 
     rows.sort(key=lambda r: -r["montant_total"])
 
