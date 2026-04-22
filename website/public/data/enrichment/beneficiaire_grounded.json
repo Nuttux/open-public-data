@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T15:30:01.227245",
+  "generated_at": "2026-04-22T15:32:10.735535",
   "model": "gemini-3-flash-preview",
   "count": 780,
   "items": {
@@ -21306,7 +21306,249 @@
       "confiance": 0.4,
       "source_type": "claude_web",
       "enriched_at": "2026-04-22T15:30:01.227245"
+    },
+    "ACTI COLLTERR INIT SOCI SPOR CULT E": {
+      "activite_verifiee": "Actions des Collectivités Territoriales en matière d'Initiatives Sociales, Sportives et Culturelles — dispositif financier utilisé par la Ville de Paris pour flécher des subventions collectivités/structures porteuses d'initiatives sociales, sportives et culturelles.",
+      "perimetre_geographique": "Paris / France",
+      "sources": [
+        "paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:32:10.735535"
+    },
+    "SOCIETE CIVILE DE MOYENS": {
+      "activite_verifiee": "Société Civile de Moyens (SCM), structure mutualisant des moyens matériels et humains entre professionnels (généralement médicaux, juridiques ou artistiques) — dénomination générique, détails selon entité précise.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.3,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:32:10.735535"
+    },
+    "ASSOCIATION GESTION LOCAL INTERASSOCIATIONSOCIATIF": {
+      "activite_verifiee": "Association de gestion d'un local inter-associatif parisien (mutualisation d'un lieu entre plusieurs associations).",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.3,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:32:10.735535"
+    },
+    "COMITE DEPARTEMENTAL": {
+      "activite_verifiee": "Comité départemental (fédération sportive ou institutionnel) à Paris — détails précis selon le domaine (sport, olympique, handisport).",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.3,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:32:10.735535"
+    },
+    "ASSOCIATION DE MEDIATION POUR UN USAGE OPTIMAL DE LA NUIT LES PIERROTS DE LA NUIT": {
+      "activite_verifiee": "AMUON / Les Pierrots de la Nuit, médiateurs artistiques intervenant dans les quartiers festifs de Paris depuis 2011 (créé par le réseau MAP et la CSCAD). Prévention des conflits liés au bruit nocturne, médiation entre riverains et établissements, actions de sensibilisation.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "lespierrotsdelanuit.org",
+        "amuon.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:32:10.735535"
+    },
+    "MAGRO HUERTAS": {
+      "activite_verifiee": "Magro Huertas — structure parisienne (détails publics limités, potentiellement une SCI ou SARL immobilière/commerciale liée aux patronymes Magro et Huertas).",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.3,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:32:10.735535"
+    },
+    "ENTR AIDE": {
+      "activite_verifiee": "Entr'Aide — association parisienne d'éducation populaire, 53 rue de l'Ourcq Paris 19e (SIREN 444154553). Activités d'aide aux personnes sans-abri et en précarité, accompagnement vers la réinsertion.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        "entr-aide.org",
+        "pappers.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:32:10.735535"
+    },
+    "DECK": {
+      "activite_verifiee": "Deck, association / structure parisienne (détails publics limités selon dénomination exacte).",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.3,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:32:10.735535"
+    },
+    "SCI MAKOVEC SCHLAPPI": {
+      "activite_verifiee": "SCI Makovec Schlappi, Société Civile Immobilière parisienne (structure de gestion de patrimoine immobilier à Paris).",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.3,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:32:10.735535"
+    },
+    "CONSEIL DEPARTEMENT PARENTS D ELEVE": {
+      "activite_verifiee": "Conseil départemental des Parents d'élèves de Paris (CDPE) — fédération parisienne des associations de parents d'élèves (probablement FCPE Paris ou PEEP Paris), relais entre parents et instances académiques.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.3,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:32:10.735535"
+    },
+    "CONSEIL DEPARTEMENT PARENTS": {
+      "activite_verifiee": "Conseil départemental des Parents d'élèves de Paris (CDPE) — fédération parisienne des associations de parents d'élèves (probablement FCPE Paris ou PEEP Paris), relais entre parents et instances académiques.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.3,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:32:10.735535"
+    },
+    "CONSULTATION LIEU ACCUEIL PSYCH": {
+      "activite_verifiee": "CLAP — Consultation et Lieu d'Accueil Psychanalytique, association loi 1901. Lieux d'accueil parents-enfants (enfants < 5 ans) dont « Passage des Tout-Petits », 23 rue Rodier Paris 9e. Consultations gratuites (jusqu'à 5 séances) et espace de parole pour les familles avec jeunes enfants.",
+      "perimetre_geographique": "Paris (9e, 12e)",
+      "sources": [
+        "clap-passagedestoutpetits.com",
+        "net1901.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:32:10.735535"
+    },
+    "MARGUERITE": {
+      "activite_verifiee": "Association Marguerite à Paris — plusieurs entités homonymes (ex. La Maison Marguerite-Marie du diocèse, Association MaMaMa co-fondée par Marguerite pour les bébés en précarité, Association Marguerite & Cie). Identification précise selon contexte de la subvention.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "fondationnotredame.fr",
+        "asso-mamama.fr"
+      ],
+      "confiance": 0.3,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:32:10.735535"
+    },
+    "LIGUE FRCAISE DEFENSE DROITS DE L H": {
+      "activite_verifiee": "LDH — Ligue française pour la Défense des Droits de l'Homme et du Citoyen, fondée le 4 juin 1898 par Ludovic Trarieux (affaire Dreyfus). Siège national 138 rue Marcadet Paris 18e. Défense des droits et libertés (civils, politiques, sociaux), lutte contre les discriminations, +200 sections locales. RUP.",
+      "perimetre_geographique": "France (siège Paris 18e)",
+      "sources": [
+        "ldh-france.org",
+        "fr.wikipedia.org/wiki/Ligue_des_droits_de_l'homme_(France)"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:32:10.735535"
+    },
+    "CITHEA FAMILLE ET PROFESSIONNEL": {
+      "activite_verifiee": "CIThéA Famille et Professionnel, association créée le 12 septembre 2005 à l'initiative de psychologues. Prévention et protection de l'enfance, soutien à la parentalité : ~60 actions collectives sur 4 départements (Paris, 91, 93, 94). Porte notamment L'Atelier des Familles du 15e (19 rue Rosenwald Paris 15e).",
+      "perimetre_geographique": "Paris / Essonne / 93 / 94",
+      "sources": [
+        "cithea.org",
+        "cnape.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:32:10.735535"
+    },
+    "AGETA": {
+      "activite_verifiee": "AGETA — Association pour la Gestion d'Espaces Temporaires Artistiques (SIREN 533214722), active depuis le 19 février 2011. 1 rue Frédérick Lemaître Paris 20e. Liée au collectif Curry Vavart, gère des espaces artistiques temporaires (expositions, concerts, performances, ateliers) à destination d'artistes émergents.",
+      "perimetre_geographique": "Paris 20e",
+      "sources": [
+        "societe.com",
+        "fraap.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:32:10.735535"
+    },
+    "UNION DEFENS SANTE MENTALE REG EST": {
+      "activite_verifiee": "UDSM — Union pour la Défense de la Santé Mentale dans la Région Est de Paris (SIREN 785705922), créée en 1959 par Guy Rivière et Dr Henri Duchêne, RUP en 1972. Siège Champigny-sur-Marne (94). Gère 20 structures (prévention, diagnostic, soins) en Val-de-Marne et Paris : CSAPA Meltem, CMP, etc. ~5 500 personnes accompagnées, 350 professionnels.",
+      "perimetre_geographique": "Paris / Val-de-Marne",
+      "sources": [
+        "udsm-asso.fr",
+        "annuaire-entreprises.data.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:32:10.735535"
+    },
+    "EMMAUS CONNECT FONDATEUR ABBE PIERRE": {
+      "activite_verifiee": "Emmaüs Connect — Fondateur Abbé Pierre (SIREN 792272916), association créée en 2013, lien avec la Fondation Abbé Pierre et le mouvement Emmaüs. Lutte contre l'exclusion sociale et numérique via 3 piliers : équipement (terminaux à prix solidaires), connexion (forfaits) et formation. +170 000 personnes accompagnées en France.",
+      "perimetre_geographique": "France (siège Paris)",
+      "sources": [
+        "pappers.fr",
+        "emmaus-france.org",
+        "friendsoffdf.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:32:10.735535"
+    },
+    "A CHACUN SES VACANCES": {
+      "activite_verifiee": "À Chacun Ses Vacances, association parisienne (Paris 20e) créée en 2004. Loisirs et séjours adaptés pour enfants, adolescents et adultes avec handicap mental ou TSA. 16 séjours à tarification sociale (~80 places) priorisant les enfants autistes.",
+      "perimetre_geographique": "Paris 20e",
+      "sources": [
+        "achacunsesvacances.fr",
+        "handicap.paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:32:10.735535"
+    },
+    "CAMILLIENNE SPORT 12": {
+      "activite_verifiee": "La Camillienne — LCS12 (Sports 12e, SIREN 392781340), association culturelle, artistique et sportive du 12e arrondissement fondée en 1894 par l'Abbé Delamaire (paroisse de Bercy) ; devenue association loi 1901 en 1972. Multi-activités sports (capoeira, karaté, judo, football, gym, natation, yoga), culture et théâtre.",
+      "perimetre_geographique": "Paris 12e",
+      "sources": [
+        "lacamillienne.fr",
+        "pappers.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:32:10.735535"
+    },
+    "FABRIQUE DE LA GOUTTE D OR": {
+      "activite_verifiee": "La Fabrique de la Goutte d'Or (SIREN 802639856), SCARL coopérative créée en 2014. Rassemble tailleurs et couturiers de la Goutte d'Or (Paris 18e, QPV). Production de collections Made in Paris pour designers, maisons de haute couture, marques et institutions. A habillé les danseurs aéroportuaires des JO 2024.",
+      "perimetre_geographique": "Paris 18e (Goutte d'Or)",
+      "sources": [
+        "lafabriquedelagouttedor.com",
+        "paris.fr",
+        "societe.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:32:10.735535"
+    },
+    "CENTRE DE RESSOURCES POUR MINI": {
+      "activite_verifiee": "Centre de Ressources pour Mineurs Isolés (CRMI) — structure parisienne d'appui aux acteurs de l'accompagnement des mineurs non accompagnés (MNA) et mineurs isolés étrangers (MIE). Détails précis selon l'entité référencée.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "migrants-info.eu",
+        "france-terre-asile.org"
+      ],
+      "confiance": 0.3,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:32:10.735535"
+    },
+    "ACTIONS SOLIDARITE INTERNATIONALE": {
+      "activite_verifiee": "ASI — Actions de Solidarité Internationale, ONG de développement créée en 1983, 14 bd de Douaumont Paris 17e. Santé, développement économique, agriculture ; accompagne des initiatives locales en RDC, Burkina Faso, Mali, Côte d'Ivoire, Congo-Brazzaville, Gabon. Approche pluridisciplinaire (médical, psycho-social, éducatif, économique).",
+      "perimetre_geographique": "International (siège Paris 17e)",
+      "sources": [
+        "asi-france.org",
+        "portail-humanitaire.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:32:10.735535"
+    },
+    "ASSOCIATION POLITIQUE CRIMINELLE APPLIQUEE": {
+      "activite_verifiee": "APCARS — Association de Politique Criminelle Appliquée et de Réinsertion Sociale (SIREN 320734288), créée le 3 octobre 1980 à Paris 9e. Association socio-judiciaire partenaire de la Justice : enquêtes sociales rapides, mesures alternatives à la détention, victimes. Fusions avec ESTRAN (2009), SAJIR (2010), VERLAN (2011), SPES Marseille (2015).",
+      "perimetre_geographique": "France (siège Paris 9e)",
+      "sources": [
+        "apcars.fr",
+        "societe.com",
+        "justice.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T15:32:10.735535"
     }
   },
-  "total": 1110
+  "total": 1134
 }
