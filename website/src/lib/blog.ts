@@ -14,6 +14,9 @@ export interface BlogPost {
   author?: string;
   tags?: string[];
   image?: string;
+  /** Editorial category (Analyse / Enquête / Explication / Portrait) — drives
+   *  the chips filter on /analyses. Falls back to tag-based inference if absent. */
+  category?: string;
   readingTime: string;
   content: string;
 }
@@ -26,6 +29,7 @@ export interface BlogPostMeta {
   author?: string;
   tags?: string[];
   image?: string;
+  category?: string;
   readingTime: string;
 }
 
@@ -59,6 +63,7 @@ function parseMDXFile(fileName: string): BlogPost {
     author: data.author,
     tags: data.tags || [],
     image: data.image,
+    category: typeof data.category === "string" ? data.category : undefined,
     readingTime: stats.text,
     content,
   };

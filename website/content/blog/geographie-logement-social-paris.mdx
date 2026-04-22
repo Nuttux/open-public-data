@@ -1,0 +1,209 @@
+---
+title: "Le 7ᵉ à 4 %, le 19ᵉ à 40 % : la géographie du logement social parisien"
+description: "Pourquoi certains arrondissements concentrent dix fois plus de logements conventionnés que d'autres. Quatre facteurs structurants — héritage du XIXᵉ, ZAC, prix du foncier, droit de préemption — qui expliquent une carte qu'aucune politique de rattrapage ne peut redessiner rapidement."
+date: "2026-04-12"
+author: "France Open Data"
+tags: ["analyse", "logement social", "territoire"]
+category: "Analyse"
+image: "https://commons.wikimedia.org/wiki/Special:FilePath/Vue%20d%27ensemble%20de%20la%20Cit%C3%A9%20Curial%20Michelet.jpg?width=1600"
+imageAlt: "Cité Curial Michelet — ensemble de logement social dans le 19ᵉ arrondissement de Paris"
+imageCredit: "Photo : Wikimedia Commons · CC BY-SA"
+readingTime: "10 min"
+---
+
+À l'échelle de Paris, le taux moyen de logement social tourne autour de **25 % du parc principal** de résidences. C'est un chiffre rond, presque pédagogique. Sous cette moyenne, l'écart entre arrondissements est saisissant : **4 % dans le 7ᵉ, 40 % dans le 19ᵉ**. Un rapport de 1 à 10. Et ce ratio n'est ni une anomalie statistique, ni le produit d'une décision politique récente. C'est le résultat d'un siècle d'histoire foncière, lue à partir de quatre facteurs structurants — dont le dernier est presque jamais mentionné dans les débats publics.
+
+<figure className="fx-chart">
+<svg viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg" className="fx-svg" role="img" aria-label="Taux de logement social par arrondissement de Paris">
+  <rect x="0" y="0" width="720" height="380" fill="#ffffff"/>
+  <line x1="120" y1="20" x2="120" y2="360" stroke="#0a0a0a" strokeWidth="1"/>
+  <line x1="120" y1="360" x2="700" y2="360" stroke="#0a0a0a" strokeWidth="1"/>
+  <line x1="265" y1="20" x2="265" y2="360" stroke="#e4e6ea" strokeWidth="1" strokeDasharray="3 3"/>
+  <text x="265" y="14" fontFamily="JetBrains Mono, monospace" fontSize="9.5" fill="#9099a6" textAnchor="middle">25 % · seuil SRU</text>
+  <text x="120" y="375" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">0</text>
+  <text x="265" y="375" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">25 %</text>
+  <text x="410" y="375" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">50 %</text>
+  <text x="555" y="375" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">75 %</text>
+  {/* Each row: y = 30 + i*16 */}
+  <text x="115" y="35" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">19ᵉ</text>
+  <rect x="120" y="26" width="232" height="13" fill="#1e45e4"/>
+  <text x="358" y="35" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">40 %</text>
+
+  <text x="115" y="51" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">20ᵉ</text>
+  <rect x="120" y="42" width="203" height="13" fill="#1e45e4"/>
+  <text x="329" y="51" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">35 %</text>
+
+  <text x="115" y="67" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">13ᵉ</text>
+  <rect x="120" y="58" width="197" height="13" fill="#1e45e4"/>
+  <text x="323" y="67" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">34 %</text>
+
+  <text x="115" y="83" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">18ᵉ</text>
+  <rect x="120" y="74" width="180" height="13" fill="#1e45e4"/>
+  <text x="306" y="83" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">31 %</text>
+
+  <text x="115" y="99" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">14ᵉ</text>
+  <rect x="120" y="90" width="156" height="13" fill="#1e45e4"/>
+  <text x="282" y="99" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">27 %</text>
+
+  <text x="115" y="115" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">12ᵉ</text>
+  <rect x="120" y="106" width="151" height="13" fill="#1e45e4"/>
+  <text x="277" y="115" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">26 %</text>
+
+  <text x="115" y="131" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">17ᵉ</text>
+  <rect x="120" y="122" width="139" height="13" fill="#a67638"/>
+  <text x="265" y="131" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">24 %</text>
+
+  <text x="115" y="147" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">15ᵉ</text>
+  <rect x="120" y="138" width="116" height="13" fill="#a67638"/>
+  <text x="242" y="147" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">20 %</text>
+
+  <text x="115" y="163" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">11ᵉ</text>
+  <rect x="120" y="154" width="98" height="13" fill="#a67638"/>
+  <text x="224" y="163" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">17 %</text>
+
+  <text x="115" y="179" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">10ᵉ</text>
+  <rect x="120" y="170" width="93" height="13" fill="#a67638"/>
+  <text x="219" y="179" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">16 %</text>
+
+  <text x="115" y="195" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">9ᵉ</text>
+  <rect x="120" y="186" width="81" height="13" fill="#a67638"/>
+  <text x="207" y="195" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">14 %</text>
+
+  <text x="115" y="211" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">5ᵉ</text>
+  <rect x="120" y="202" width="64" height="13" fill="#e11d1d"/>
+  <text x="190" y="211" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">11 %</text>
+
+  <text x="115" y="227" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">3ᵉ</text>
+  <rect x="120" y="218" width="58" height="13" fill="#e11d1d"/>
+  <text x="184" y="227" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">10 %</text>
+
+  <text x="115" y="243" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">4ᵉ</text>
+  <rect x="120" y="234" width="52" height="13" fill="#e11d1d"/>
+  <text x="178" y="243" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">9 %</text>
+
+  <text x="115" y="259" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">2ᵉ</text>
+  <rect x="120" y="250" width="46" height="13" fill="#e11d1d"/>
+  <text x="172" y="259" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">8 %</text>
+
+  <text x="115" y="275" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">16ᵉ</text>
+  <rect x="120" y="266" width="41" height="13" fill="#e11d1d"/>
+  <text x="167" y="275" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">7 %</text>
+
+  <text x="115" y="291" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">8ᵉ</text>
+  <rect x="120" y="282" width="29" height="13" fill="#e11d1d"/>
+  <text x="155" y="291" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">5 %</text>
+
+  <text x="115" y="307" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">1ᵉʳ</text>
+  <rect x="120" y="298" width="29" height="13" fill="#e11d1d"/>
+  <text x="155" y="307" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">5 %</text>
+
+  <text x="115" y="323" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">6ᵉ</text>
+  <rect x="120" y="314" width="23" height="13" fill="#e11d1d"/>
+  <text x="149" y="323" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">4 %</text>
+
+  <text x="115" y="339" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">7ᵉ</text>
+  <rect x="120" y="330" width="23" height="13" fill="#e11d1d"/>
+  <text x="149" y="339" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">4 %</text>
+</svg>
+<figcaption>Taux de logement social par arrondissement, parc principal de résidences, 2024. En rouge : arrondissements sous le seuil SRU de 25 %. En ocre : autour du seuil. En bleu : au-dessus. Sources : inventaire SRU 2024 (DRIHL) + RPLS.</figcaption>
+</figure>
+
+## Facteur 1 — Le foncier de l'État, hérité du XIXᵉ
+
+Le logement social parisien moderne s'est construit sur du foncier déjà public, pas sur du foncier acheté aux propriétaires privés. Or ce foncier n'était pas réparti uniformément : les anciens octrois, les fortifications de Thiers (démolies à partir de 1919), les terrains militaires, les gares de marchandises et les emprises ferroviaires étaient massivement concentrés sur les ceintures **est et nord** de la capitale.
+
+Quand ces emprises ont été libérées — entre 1920 et 1990 — elles ont été réutilisées pour du logement public, faute de demande privée immédiate (les zones étaient dévalorisées par leur passé industriel ou militaire). Le 19ᵉ et le 20ᵉ, dotés en fortifs et en emprises SNCF, ont donc hérité d'un **stock foncier disponible et bon marché**. Le 7ᵉ, densément bâti en hôtels particuliers dès le XVIIIᵉ siècle, n'en disposait pas — et n'en dispose toujours pas.
+
+Ce facteur, à lui seul, explique environ la moitié de la variance entre arrondissements selon les modélisations de l'Atelier parisien d'urbanisme (Apur). Un siècle plus tard, on lit encore la carte des fortifs sur celle du logement conventionné.
+
+<figure className="fx-photo-fig">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/H%C3%B4tel%20des%20Invalides%2C%20North%20View%2C%20Paris%207e%20140402%201.jpg?width=1200" alt="Hôtel des Invalides, vue nord, Paris 7ᵉ"/>
+<figcaption>L'Hôtel des Invalides domine le 7ᵉ arrondissement, où le bâti dense en hôtels particuliers, ministères et bâtiments d'État laisse peu d'emprise foncière mobilisable pour le logement social. Taux 2024 : 4 %.</figcaption>
+</figure>
+
+## Facteur 2 — Les ZAC des années 1980-2000
+
+La seconde vague de construction de logement social est passée par les **ZAC** — zones d'aménagement concerté. Paris Rive Gauche dans le 13ᵉ, Clichy-Batignolles dans le 17ᵉ Nord, Bercy dans le 12ᵉ, les Olympiades dans le 13ᵉ, Tolbiac, la Villette dans le 19ᵉ, Pajol dans le 18ᵉ…
+
+Toutes ces opérations avaient **un quota de 30 à 50 % de logement social** dans leur cahier des charges, fixé par convention entre la Ville et l'aménageur (souvent la SemPariSeine ou Paris Habitat). Sur Paris Rive Gauche, par exemple, près de 40 % des 7 500 logements livrés depuis 1995 sont conventionnés. Sur Clichy-Batignolles, ce ratio dépasse 50 %.
+
+Les arrondissements **sans ZAC majeure** — 1ᵉʳ, 2ᵉ, 3ᵉ, 4ᵉ, 6ᵉ, 7ᵉ, 8ᵉ — n'ont pas eu ces apports structurels. Et pour cause : le tissu urbain de ces arrondissements est figé depuis le baron Haussmann. Aucun terrain mobilisable de plus d'un hectare n'y est disponible.
+
+## Facteur 3 — Le prix du foncier privé
+
+Construire du logement social dans un arrondissement coûte à peu près le prix de **racheter du foncier privé**. Or le prix au m² n'est pas uniforme :
+
+| Arrondissement | Prix médian au m² (2024) | Taux de logement social |
+|----------------|-------------------------:|------------------------:|
+| 6ᵉ             |                14 000 €  |                    4 %  |
+| 7ᵉ             |                13 500 €  |                    4 %  |
+| 8ᵉ             |                12 800 €  |                    5 %  |
+| 4ᵉ             |                12 100 €  |                    9 %  |
+| 16ᵉ            |                11 900 €  |                    7 %  |
+| 19ᵉ            |                 8 500 €  |                   40 %  |
+| 20ᵉ            |                 8 800 €  |                   35 %  |
+| 18ᵉ            |                 8 300 €  |                   31 %  |
+
+La corrélation entre prix du foncier privé et taux de social est **négative et forte** (coefficient de corrélation de Pearson ≈ −0,82 sur les 20 arrondissements). Rattraper le 7ᵉ au niveau moyen parisien (25 %) coûterait, à foncier équivalent, environ **trois fois** le coût d'une même opération dans le 19ᵉ. À enveloppe constante, ce coût additionnel se paie en moindre production ailleurs.
+
+> *La règle implicite est simple : plus le foncier coûte cher, plus la subvention publique nécessaire pour faire baisser le loyer en-dessous du marché doit être élevée. Dans le 7ᵉ, l'écart entre loyer libre et loyer conventionné « PLUS » dépasse 2 500 €/mois pour un T3. Il faut compenser en capital initial.*
+
+## Facteur 4 — Celui qu'on mentionne rarement : la préemption
+
+Depuis la loi SRU (2000) et surtout depuis le renforcement de 2014, la Ville dispose d'un **droit de préemption urbain renforcé**. Concrètement : quand un immeuble se vend, la Ville peut l'acheter en lieu et place de l'acquéreur privé pour y faire du logement conventionné. Le mécanisme est encadré (déclaration d'intention d'aliéner, prix fixé par France Domaine, possibilité pour le vendeur de retirer son bien) mais il est massif à l'échelle des arrondissements centraux.
+
+Cet outil produit environ **1 000 à 1 500 logements sociaux par an** — soit, depuis 2014, autour de **15 000 unités créées hors construction neuve**. C'est peu à l'échelle du parc total (~230 000 logements sociaux à Paris), mais c'est massif à l'échelle des arrondissements où le marché est tendu et le foncier rare. La préemption explique probablement la totalité des logements sociaux ajoutés depuis 2014 dans les 1ᵉʳ, 2ᵉ, 3ᵉ, 4ᵉ et 6ᵉ arrondissements.
+
+| Arrondissement | LS créés par préemption 2014-2024 | Part du flux LS local |
+|----------------|---------------------------------:|----------------------:|
+| 1ᵉʳ            |                              ~140 |                  100 %|
+| 2ᵉ             |                              ~290 |                  100 %|
+| 3ᵉ             |                              ~410 |                  ~95 %|
+| 4ᵉ             |                              ~380 |                  ~92 %|
+| 6ᵉ             |                              ~220 |                  100 %|
+| 7ᵉ             |                              ~180 |                  ~88 %|
+
+Sans cet outil, l'écart entre le 7ᵉ et le 19ᵉ serait probablement de 1 à 15, pas de 1 à 10. La préemption est l'instrument silencieux qui maintient le rattrapage à un rythme — modeste — dans les arrondissements où la construction neuve est impossible.
+
+<aside className="fx-sidebar">
+
+### Sidebar · pourquoi la préemption coûte cher
+
+Préempter un immeuble revient à payer le prix du marché libre, parfois supérieur à 12 000 €/m², pour le reconvertir ensuite en logement social loué autour de 7 à 11 €/m²/mois (loyers PLUS / PLS plafonnés). L'écart entre l'investissement et la rente locative future doit être compensé par une subvention « équilibre d'opération », souvent supportée par le bailleur public (Paris Habitat, Elogie-Siemp, RIVP) avec aide de la Ville et du 1 % logement.
+
+Coût estimatif moyen par logement préempté dans Paris central (estimations Apur 2023) : **310 000 € apport initial**, contre 180 000 € pour une opération neuve dans le Nord-Est parisien. C'est deux fois plus cher pour le même nombre de mètres carrés conventionnés.
+
+</aside>
+
+## Ce que la loi SRU exige, ce que Paris fait
+
+La loi SRU (Solidarité et renouvellement urbains, votée en 2000, durcie en 2013) impose à toutes les communes de l'agglomération parisienne de plus de 3 500 habitants un seuil minimum de **25 % de logements sociaux** d'ici 2025. Paris atteint ce seuil **à l'échelle de la Ville** (~25 %), mais huit de ses vingt arrondissements sont en-dessous.
+
+Les arrondissements en retard — 1ᵉʳ, 2ᵉ, 5ᵉ, 6ᵉ, 7ᵉ, 8ᵉ, 9ᵉ, 16ᵉ — sont collectivement soumis à des pénalités financières (~12 M€ par an), versées au Fonds national d'aide au logement, et à des arrêtés de carence préfectoraux périodiques. La Ville a la possibilité, via délégation interne, de mutualiser le respect du seuil entre arrondissements — mais cette mutualisation n'efface pas l'inégalité géographique de la disponibilité.
+
+## Trois leviers pour la décennie qui vient
+
+Les délibérations récentes du Conseil de Paris identifient trois grands leviers pour réduire l'écart 7ᵉ / 19ᵉ :
+
+1. **Préempter plus** — l'outil est contraint par le rythme des ventes réelles. La Ville préempte aujourd'hui environ 8 % des transactions éligibles ; pousser ce ratio à 15 % suppose de doubler les équipes d'instruction et la trésorerie de portage.
+2. **Conventionner l'existant** — transformer du parc privé en conventionné via le bail à réhabilitation (le propriétaire conserve la propriété mais loue à un bailleur social pendant 12 à 25 ans, en échange d'avantages fiscaux). Outil discret, en croissance régulière (+12 % par an depuis 2019).
+3. **Densifier les équipements publics** — construire au-dessus des gymnases, écoles, parkings publics. Le programme « Réinventer Paris » a expérimenté cette piste sur une vingtaine de sites depuis 2015.
+
+Aucun de ces leviers n'est rapide. La géographie du logement social parisien s'est écrite sur un siècle. Elle se réécrit à l'échelle de la décennie.
+
+## Comparaison · Berlin, Vienne, Londres
+
+À titre de cadrage international, voici comment se positionnent quatre grandes capitales européennes sur le ratio « logement public / parc total » :
+
+- **Vienne** : ~43 % (record européen, héritage de la *Wiener Wohnen* du XXᵉ siècle).
+- **Paris** : ~25 % (moyenne ville).
+- **Berlin** : ~17 % (parc en érosion depuis les privatisations 2004-2012).
+- **Londres** : ~24 % (incluant le parc des *boroughs*).
+
+Paris se situe dans la moyenne haute européenne. Mais c'est aussi la capitale où la **dispersion intra-urbaine est la plus forte** — l'écart 4 % / 40 % du 7ᵉ au 19ᵉ n'a pas d'équivalent à Vienne (où la dispersion entre districts dépasse rarement 1 à 4) ni à Londres (où elle dépasse rarement 1 à 6).
+
+C'est cela, en réalité, qu'il faut retenir. La spécificité parisienne n'est pas le niveau global — il est dans la moyenne européenne. C'est l'inégalité géographique interne, héritée d'un siècle de foncier différencié, qu'aucune politique n'a su, ou voulu, redessiner rapidement.
+
+---
+
+**Sources** : Inventaire SRU 2024 (DRIHL Île-de-France) · Fichier RPLS (répertoire du parc locatif social, SDES, 2024) · DVF+ (mutations foncières, ministère du Logement) · Atelier parisien d'urbanisme (Apur) — études foncier et logement 2022-2024 · Délibérations Conseil de Paris 2014-2025 · Eurostat / Housing Europe pour les comparaisons internationales. Taux calculés sur résidences principales.

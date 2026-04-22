@@ -26,7 +26,7 @@ from google.cloud import bigquery
 
 # Configuration
 PROJECT_ID = "open-data-france-484717"
-DATASET = "dbt_paris"
+DATASET = "dbt_paris_marts"
 OUTPUT_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data" / "subventions"
 
 
@@ -70,20 +70,24 @@ def fetch_treemap_data(client: bigquery.Client, year: int = None) -> list:
     return results
 
 
-def fetch_beneficiaires_data(client: bigquery.Client, year: int = None, limit: int = 500) -> list:
+def fetch_beneficiaires_data(client: bigquery.Client, year: int = None, limit: int | None = None) -> list:
     """
     Récupère les bénéficiaires depuis mart_subventions_beneficiaires.
-    
+
     Args:
         client: Client BigQuery
         year: Année spécifique (optionnel)
-        limit: Nombre max de bénéficiaires par année (top N par montant)
-    
+        limit: Nombre max de bénéficiaires par année (None = tous, défaut).
+               Un cap top-N est une optimisation historique — on exporte
+               désormais l'intégralité du mart pour que l'UI long-tail voie
+               les petits bénéficiaires (cf. fetch_subventions_opendata.py).
+
     Returns:
         Liste des bénéficiaires avec filtres et montants
     """
     year_filter = f"WHERE annee = {year}" if year else ""
-    
+    limit_clause = f"LIMIT {limit * 10 if not year else limit}" if limit else ""
+
     query = f"""
     SELECT
         annee,
@@ -102,9 +106,9 @@ def fetch_beneficiaires_data(client: bigquery.Client, year: int = None, limit: i
     FROM `{PROJECT_ID}.{DATASET}.mart_subventions_beneficiaires`
     {year_filter}
     ORDER BY annee DESC, montant_total DESC
-    LIMIT {limit * 10 if not year else limit}
+    {limit_clause}
     """
-    
+
     results = []
     for row in client.query(query).result():
         nature = row.nature_juridique
@@ -128,11 +132,15 @@ def fetch_beneficiaires_data(client: bigquery.Client, year: int = None, limit: i
     return results
 
 
+MIN_YEAR_EXPORTED = 2018  # Frontend / UI scope starts at 2018 (Loi NOTRe + M57)
+
+
 def get_available_years(client: bigquery.Client) -> list:
-    """Récupère les années disponibles dans les données."""
+    """Récupère les années disponibles dans les données (bornées à MIN_YEAR_EXPORTED)."""
     query = f"""
     SELECT DISTINCT annee
     FROM `{PROJECT_ID}.{DATASET}.mart_subventions_treemap`
+    WHERE annee >= {MIN_YEAR_EXPORTED}
     ORDER BY annee DESC
     """
     return [row.annee for row in client.query(query).result()]
@@ -245,14 +253,16 @@ def export_treemap_year(client: bigquery.Client, year: int):
     print(f"    → {output_file.name} ({len(data)} thématiques, {total/1e6:.1f}M€)")
 
 
-def export_beneficiaires_year(client: bigquery.Client, year: int, limit: int = 500):
-    """Exporte les bénéficiaires pour une année."""
+def export_beneficiaires_year(client: bigquery.Client, year: int, limit: int | None = None):
+    """Exporte les bénéficiaires pour une année (tous par défaut)."""
     print(f"  Bénéficiaires {year}...")
-    
+
     data = fetch_beneficiaires_data(client, year, limit)
-    
+
     # Filtrer pour cette année uniquement
-    data = [d for d in data if d["annee"] == year][:limit]
+    data = [d for d in data if d["annee"] == year]
+    if limit:
+        data = data[:limit]
     
     total = sum(d["montant_total"] for d in data)
     
@@ -294,7 +304,78 @@ NATURE_TO_TYPE = {
 }
 
 
-def export_tendances(client: bigquery.Client, years: list, limit: int = 500):
+def export_beneficiaires_search(years: list):
+    """Fichier slim agrégé pour la recherche long tail côté client.
+
+    Post-traite les `beneficiaires_{year}.json` déjà écrits pour produire
+    un seul fichier dédupliqué par `beneficiaire_normalise` (fallback nom),
+    avec montants par année → évite de ré-interroger BigQuery. Chaque ligne
+    pèse quelques centaines d'octets : charge client raisonnable même à 10k
+    bénéficiaires uniques.
+    """
+    print("  Index recherche slim (long tail)...")
+
+    merged: dict[str, dict] = {}
+    years_seen: set[int] = set()
+
+    for year in sorted(years):
+        path = OUTPUT_DIR / f"beneficiaires_{year}.json"
+        if not path.exists():
+            continue
+        with path.open(encoding="utf-8") as f:
+            payload = json.load(f)
+        years_seen.add(year)
+
+        for row in payload.get("data", []):
+            name = (row.get("beneficiaire") or "").strip()
+            if not name:
+                continue
+            # Dédup par normalise en priorité, sinon par nom brut
+            key = (row.get("beneficiaire_normalise") or name).strip().lower() or name
+            cur = merged.get(key)
+            if cur is None:
+                cur = {
+                    "name": name,
+                    "norm": key,
+                    "siret": row.get("siret") or None,
+                    "theme": row.get("thematique") or None,
+                    "totalAmount": 0.0,
+                    "lastActiveYear": year,
+                    "nb": 0,
+                    "byYear": {},
+                }
+                merged[key] = cur
+            amount = float(row.get("montant_total") or 0)
+            cur["byYear"][str(year)] = cur["byYear"].get(str(year), 0.0) + amount
+            cur["totalAmount"] += amount
+            cur["nb"] += int(row.get("nb_subventions") or 0)
+            if amount > 0 and year > cur["lastActiveYear"]:
+                cur["lastActiveYear"] = year
+            # Garde le thème le plus récent non null rencontré
+            if not cur["theme"] and row.get("thematique"):
+                cur["theme"] = row["thematique"]
+            # SIRET : premier rencontré, on ne réécrit pas
+            if not cur["siret"] and row.get("siret"):
+                cur["siret"] = row["siret"]
+
+    data = sorted(merged.values(), key=lambda r: -r["totalAmount"])
+
+    output = {
+        "generated_at": datetime.now().isoformat(),
+        "source": "post-processing beneficiaires_{year}.json",
+        "years": sorted(years_seen),
+        "count": len(data),
+        "data": data,
+    }
+    output_file = OUTPUT_DIR / "beneficiaires_search.json"
+    with output_file.open("w", encoding="utf-8") as f:
+        json.dump(output, f, ensure_ascii=False, separators=(",", ":"))
+
+    size_kb = output_file.stat().st_size / 1024
+    print(f"    → {output_file.name} ({len(data)} bénéficiaires uniques, {size_kb:.0f} Ko)")
+
+
+def export_tendances(client: bigquery.Client, years: list, limit: int | None = None):
     """
     Exporte les données de tendances multi-dimensions.
 
@@ -308,7 +389,9 @@ def export_tendances(client: bigquery.Client, years: list, limit: int = 500):
     years_data = []
     for year in sorted(years):
         data = fetch_beneficiaires_data(client, year, limit)
-        data = [d for d in data if d["annee"] == year][:limit]
+        data = [d for d in data if d["annee"] == year]
+        if limit:
+            data = data[:limit]
 
         total_montant = sum(d["montant_total"] for d in data)
         nb_subventions = sum(d.get("nb_subventions", 1) for d in data)
@@ -353,7 +436,11 @@ def export_tendances(client: bigquery.Client, years: list, limit: int = 500):
     output = {
         "generated_at": datetime.now().isoformat(),
         "source": "dbt marts (mart_subventions_beneficiaires)",
-        "note_perimetre": f"Top {limit} bénéficiaires par année, couvrant >95% du total.",
+        "note_perimetre": (
+            f"Top {limit} bénéficiaires par année (long tail inclus)."
+            if limit
+            else "Tous les bénéficiaires (long tail complet, aucun cap)."
+        ),
         "years": years_data,
     }
 
@@ -372,8 +459,8 @@ def main():
     
     parser = argparse.ArgumentParser(description="Export données subventions depuis dbt")
     parser.add_argument('--year', type=int, help="Année spécifique (sinon toutes)")
-    parser.add_argument('--limit', type=int, default=500, 
-                       help="Limite de bénéficiaires par année")
+    parser.add_argument('--limit', type=int, default=None,
+                       help="Cap top-N par année (défaut: aucun, tous les bénéficiaires)")
     args = parser.parse_args()
     
     log = Logger("export_subventions")
@@ -400,12 +487,17 @@ def main():
         log.progress(i, len(years), f"Année {year}")
         export_treemap_year(client, year)
         export_beneficiaires_year(client, year, args.limit)
-        log.success(f"Année {year}", extra=f"treemap + {args.limit} bénéficiaires")
+        log.success(f"Année {year}", extra=f"treemap + {args.limit or 'tous'} bénéficiaires")
 
     # Tendances multi-dimensions
     log.section("Export des tendances")
     export_tendances(client, years, args.limit)
     log.success("Tendances", extra="thématique + direction + type organisme")
+
+    # Index recherche slim (post-traitement des fichiers déjà écrits)
+    log.section("Index recherche long tail")
+    export_beneficiaires_search(years)
+    log.success("Recherche", extra="beneficiaires_search.json")
 
     log.summary()
 

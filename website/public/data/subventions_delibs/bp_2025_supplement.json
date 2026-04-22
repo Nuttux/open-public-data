@@ -1,0 +1,37 @@
+{
+  "source": "Conseil de Paris — 2024 DFA 70, Projet de Budget Primitif 2025 (voté décembre 2024)",
+  "note": "Transferts structurels absents des délibérations de subvention individuelle du Conseil de Paris, injectés pour rapprocher l'agrégat 2025 aperçu du périmètre du consolidé open-data.",
+  "generated_at": "2026-04-22",
+  "entries": [
+    {
+      "beneficiary": "Centre d'Action Sociale de la Ville de Paris (CASVP)",
+      "siret": "21750055700010",
+      "amount_eur": 410400000,
+      "direction_name": "Direction des Solidarités",
+      "thematique": "Social - Solidarité",
+      "motif": "Contribution annuelle d'équilibre au CASVP (BP 2025 = 419,6 M€). Entrée nette après soustraction des petites subventions déjà captées via délibérations (9,2 M€).",
+      "source_flag": "budget_primitif_2025",
+      "delib_id": "2024 DFA 70"
+    },
+    {
+      "beneficiary": "AGOSPAP — Association pour la Gestion des Œuvres Sociales des Personnels des Administrations Parisiennes",
+      "siret": "78472773900012",
+      "amount_eur": 7000000,
+      "direction_name": "Direction des Solidarités",
+      "thematique": "Social - Solidarité",
+      "motif": "Subvention annuelle pour les œuvres sociales des personnels (BP 2025).",
+      "source_flag": "budget_primitif_2025",
+      "delib_id": "2024 DFA 70"
+    },
+    {
+      "beneficiary": "Caisses des écoles de Paris (ensemble des 20 caisses d'arrondissement)",
+      "siret": null,
+      "amount_eur": 125000000,
+      "direction_name": "Direction des affaires scolaires",
+      "thematique": "Éducation",
+      "motif": "Subventions aux caisses des écoles pour la restauration scolaire (BP 2025 = 132,4 M€). Entrée nette après soustraction des montants piecemeal déjà captés dans les délibérations session 148 (~7 M€).",
+      "source_flag": "budget_primitif_2025",
+      "delib_id": "2024 DFA 70"
+    }
+  ]
+}

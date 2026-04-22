@@ -1,32 +1,54 @@
 beneficiaire_normalise,ode_thematique,ode_sous_categorie,ode_confiance,ode_date_recherche,ode_source
-,Autre,,0.0,2026-02-18,llm_claude
 100 ETABLISS CULTUREL SOLIDAIRE,Culture,Réseau d'établissements culturels solidaires,0.85,2026-02-18,llm_claude
 100 ETABLISSEMENT CULTUREL SOLIDAIRE,Culture,Établissement culturel solidaire - accès à la culture,0.85,2026-02-18,llm_claude
 100 ETS CULTUREL SOLIDAIRE,Culture,Établissement culturel et solidaire (Le CENTQUATRE-PARIS),0.85,2026-02-18,llm_claude
 1001 VIES HABITAT,Logement,Bailleur social,0.93,2026-02-18,llm_claude
+104 CENT QUATRE,Culture,Établissement culturel pluridisciplinaire,1.0,2026-04-20,llm_gemini
 13 AVENIR,Social - Solidarité,Association de solidarité et insertion dans le 13e arrondissement,0.5,2026-02-18,llm_claude
 13ONZE15 FRATERNITE ET VERITE,Social - Solidarité,Association des victimes des attentats du 13 novembre 2015,0.85,2026-02-18,llm_claude
 19EME RUGISSANTS,Culture,Compagnie artistique / événements culturels dans le 19e arrondissement,0.75,2026-02-18,llm_claude
+3 CHEMINS,Social - Solidarité,Animation locale et lien social,0.85,2026-04-20,llm_gemini
 3 S SEJOUR SPORTIF SOLIDAIRE,Sport,Séjours sportifs et solidaires,0.75,2026-02-18,llm_claude
 3F RESIDENCES,Logement,Bailleur social (Groupe 3F),0.92,2026-02-18,llm_claude
+42,Éducation,Formation supérieure en informatique,1.0,2026-04-20,llm_gemini
+A CHACUN SES VACANCES,Social - Solidarité,Loisirs et vacances pour personnes handicapées,0.95,2026-04-20,llm_gemini
 A L ADRESSE DU JEU,Culture,Jeu et ludothèque,0.55,2026-02-18,llm_claude
 A S L OLYMPIADES,Administration,Association syndicale libre (copropriété du 13e),0.97,2026-02-18,llm_claude
 A SUIVRE,Culture,Compagnie ou production artistique,0.45,2026-02-18,llm_claude
+A.S.L. OLYMPIADES,Administration,Copropriété (ASL),1.0,2026-04-20,llm_gemini
 ABC PUERICULTURE,Social - Petite enfance,Puériculture et petite enfance,0.92,2026-02-18,llm_claude
 ABC PUÉRICULTURE,Social - Petite enfance,Puériculture,0.95,2026-02-18,llm_claude
 ACADEMIE FOOTBALL PARIS 18,Sport,Club de football - 18e arrondissement,0.97,2026-02-18,llm_claude
 ACCELER PARISIEN D INNOVATION,Économie,Accélérateur d'innovation parisien,0.9,2026-02-18,llm_claude
+ACCESSIJEUX,Social - Solidarité,Loisirs et jeux accessibles aux personnes handicapées,0.95,2026-04-20,llm_gemini
 ACCOMPAG GLOBAL CONTRE EXCLUSION,Social - Solidarité,Accompagnement global contre l'exclusion,0.95,2026-02-18,llm_claude
+ACCORDS CROISES,Culture,Musiques du monde,0.95,2026-04-20,llm_gemini
 ACCUEIL GOUTTE D OR,Social - Solidarité,Accueil et insertion des populations du quartier Goutte d'Or,0.9,2026-02-18,llm_claude
+ACCUEIL GOUTTE D'OR,Social - Solidarité,Centre social et insertion quartier Goutte d'Or,1.0,2026-04-20,llm_gemini
+ACIDULES ET A CROQUER,Social - Petite enfance,Crèche parentale,0.95,2026-04-20,llm_gemini
+ACORE,Social - Solidarité,Coordination des œuvres d'entraide et reclassement,0.9,2026-04-20,llm_gemini
 ACP LA MANUFACTURE CHANSON,Culture,Manufacture Chanson - formation et diffusion chanson/musique,0.95,2026-02-18,llm_claude
+ACTEURS DE LA REUSSITE EDUCATIVE,Éducation,Accompagnement et réussite scolaire,1.0,2026-04-20,llm_gemini
+ACTI COLLTERR INIT SOCI SPOR CULT E,Social - Solidarité,Gestion de centres d'animation (ACTISCE),0.9,2026-04-20,llm_gemini
+ACTION ET TRANSITION,Environnement,Transition écologique et développement durable,0.8,2026-04-20,llm_gemini
 ACTION SOCIA PERSON VIL PARISDEP PA,Social - Solidarité,Action sociale - personnes vulnérables (Ville de Paris / Département de Paris),0.9,2026-02-18,llm_claude
 ACTIONS ET RESSOUR POUR L INSERT,Social - Solidarité,Insertion sociale et accompagnement des publics en difficulté,0.9,2026-02-18,llm_claude
+ACTIONS ET RESSOUR POUR L'INSERT,Social - Solidarité,Insertion sociale et professionnelle,1.0,2026-04-20,llm_gemini
+ACTIONS SOLIDARITE INTERNATIONALE,International,Aide au développement et solidarité internationale,1.0,2026-04-20,llm_gemini
+ACTIV'18,Social - Solidarité,Animation locale et lien social,0.85,2026-04-20,llm_gemini
 ADDEL,Économie,Association pour le développement économique local,0.55,2026-02-18,llm_claude
 ADOMA,Logement,Hébergement et logement social (ex-Sonacotra),0.9,2026-02-18,llm_claude
+AFG,Social - Solidarité,Handicap (Autisme),0.8,2026-04-20,llm_gemini
 AGCE METRO DES MOBILITES PARTAGEES,Transport,Agence métropolitaine des mobilités partagées,0.9,2026-02-18,llm_claude
+AGCE METRO. DES MOBILITES PARTAGEES,Transport,Mobilités partagées et douces,0.95,2026-04-20,llm_gemini
 AGENCE D AIDE A LA COOPERATION,International,Coopération internationale et aide au développement,0.85,2026-02-18,llm_claude
+AGENCE D'AIDE A LA COOPERATION,International,Aide au développement et coopération,0.95,2026-04-20,llm_gemini
+AGENCE DEPARTEMENTALE DINFORMATION SUR LE LOGEMENT 75,Logement,Agence Départementale d'Information sur le Logement,1.0,2026-04-20,llm_gemini
 AGENCE NATIONALE DE L HABITAT,Logement,Agence nationale de l'habitat - amélioration du logement,0.95,2026-02-18,llm_claude
+AGENCE NATIONALE DE L'HABITAT,Logement,Amélioration de l'habitat,1.0,2026-04-20,llm_gemini
 AGENCE PARISIENNE DU CLIMAT,Environnement,Transition écologique et climat,0.95,2026-02-18,llm_claude
+AGETA,Social - Solidarité,Insertion par le travail et handicap,0.85,2026-04-20,llm_gemini
+AGIR SOIGNER EDUQUER INCLURE,Social - Solidarité,Accompagnement du handicap et inclusion,0.95,2026-04-20,llm_gemini
 AGOSPAP,Social - Solidarité,Action sociale des personnels de la Ville de Paris et AP-HP,0.8,2026-02-18,llm_claude
 AGRIPARIS SEINE,Environnement,Agriculture urbaine / circuits courts en Île-de-France,0.85,2026-02-18,llm_claude
 AIDE JEUNES HANDIC INTEGR REUSSIE,Social - Solidarité,Aide à l'intégration des jeunes handicapés,0.95,2026-02-18,llm_claude
@@ -34,131 +56,276 @@ AIDES,Santé,Lutte contre le VIH/SIDA et prévention santé,0.93,2026-02-18,llm_
 AISON PRATIQUES ARTISTIQUES AMATEU,Culture,Maison des pratiques artistiques amateurs,0.9,2026-02-18,llm_claude
 ALLO MALTRAITANCE PERSONNES AGEES,Social - Solidarité,Lutte contre la maltraitance des personnes âgées,0.95,2026-02-18,llm_claude
 ALTERALIA,Social - Solidarité,Insertion et solidarité,0.5,2026-02-18,llm_claude
+ALTRIMENTI,Environnement,Lutte contre le gaspillage alimentaire,0.9,2026-04-20,llm_gemini
 AMICALE MANIN SPORT PARIS EST,Sport,Club sportif amicale Manin Paris Est,0.95,2026-02-18,llm_claude
+AMUON  LES PIERROTS DE LA NUIT,Culture,Médiation culturelle et vie nocturne,0.9,2026-04-20,llm_gemini
+AMUON - LES PIERROTS DE LA NUIT,Culture,Médiation culturelle et vie nocturne,0.9,2026-04-20,llm_gemini
 ANTIN RESIDENCES SA HABITAT,Logement,Bailleur social / résidences habitat,0.88,2026-02-18,llm_claude
 AOCSA LA 20 EME CHAISE,Culture,Association culturelle / spectacle vivant (théâtre),0.7,2026-02-18,llm_claude
 AOUT SECOURS ALIMENTAIRE,Social - Solidarité,Aide alimentaire d'urgence estivale,0.97,2026-02-18,llm_claude
 APACHES DES VIGNOLES,Culture,"Association culturelle de quartier (Vignoles, 20e)",0.55,2026-02-18,llm_claude
 APASO,Social - Solidarité,Accompagnement social et psychologique (APASO),0.75,2026-02-18,llm_claude
 APATE,Autre,"Association au nom ambigu, activité non identifiable",0.3,2026-02-18,llm_claude
+APATE BALOO,Social - Petite enfance,Crèche et accueil de jeunes enfants,1.0,2026-04-20,llm_gemini
 APATE LA MAISON DAGOBERT,Social - Solidarité,Hébergement d'urgence et aide aux personnes en précarité,0.85,2026-02-18,llm_claude
+APATE MOWGLI,Social - Petite enfance,Établissement d'accueil de la petite enfance (crèche),1.0,2026-04-20,llm_gemini
+APHP,Santé,Assistance Publique - Hôpitaux de Paris,1.0,2026-04-20,llm_gemini
 ARAIGNEE GENTILLE,Culture,Compagnie de spectacle vivant / arts de la rue,0.6,2026-02-18,llm_claude
 ARBRE BLEU,Social - Petite enfance,Structure petite enfance / crèche associative,0.65,2026-02-18,llm_claude
+ARC  EQUIPES D'AMITIE ARCEA,Social - Solidarité,Prévention spécialisée et aide à la jeunesse,0.95,2026-04-20,llm_gemini
+ARC - EQUIPES D'AMITIE ARC-EA,Social - Solidarité,Prévention spécialisée et aide à la jeunesse,0.95,2026-04-20,llm_gemini
 ARC EQUIPES D AMITIE ARC EA,Social - Solidarité,"Aide sociale et amitié, insertion",0.7,2026-02-18,llm_claude
 ARC EQUIPES D AMITIE ARCEA,Social - Solidarité,"Équipes d'amitié, lien social et solidarité",0.6,2026-02-18,llm_claude
+ARC EQUIPES D'AMITIE ARC EA,Social - Solidarité,Prévention spécialisée et insertion des jeunes,0.95,2026-04-20,llm_gemini
 ARCAL,Culture,Art lyrique / opéra (ARCAL),0.9,2026-02-18,llm_claude
 ARCAT,Santé,Lutte contre le VIH/SIDA et maladies infectieuses,0.92,2026-02-18,llm_claude
 ARCHIPELIA,Social - Solidarité,Hébergement et accompagnement social,0.7,2026-02-18,llm_claude
 AREMEDIA,Santé,"Prévention santé et réduction des risques (VIH, addictions)",0.85,2026-02-18,llm_claude
+ARES ASSOCIATION,Social - Solidarité,Insertion par l'activité économique,1.0,2026-04-20,llm_gemini
+ARES ATELIER,Économie,Insertion par l'activité économique,1.0,2026-04-20,llm_gemini
 ARES SERVICES,Social - Solidarité,Insertion par l'activité économique - groupe ARES,0.88,2026-02-18,llm_claude
 ARFOG LAFAYETTE,Social - Solidarité,Hébergement et insertion des personnes en difficulté,0.92,2026-02-18,llm_claude
+ARFOG-LAFAYETTE,Social - Solidarité,Hébergement d'urgence et réinsertion,1.0,2026-04-20,llm_gemini
 ARMEE DU SALUT,Social - Solidarité,"Hébergement d'urgence, aide aux sans-abri",0.95,2026-02-18,llm_claude
+ARS LONGA,Culture,Arts numériques et création,0.9,2026-04-20,llm_gemini
 ARTEMISIA,Culture,Arts visuels / bande dessinée féminine (association Artémisia),0.75,2026-02-18,llm_claude
+ARTHUR ET MARINE,Social - Petite enfance,Crèche et accueil du jeune enfant,0.95,2026-04-20,llm_gemini
+ARTSTOCK,Culture,Recyclage et économie circulaire pour le secteur culturel,0.95,2026-04-20,llm_gemini
+AS JOSEPHINE POUR LA,Social - Solidarité,Insertion sociale et estime de soi,0.95,2026-04-20,llm_gemini
 AS PERSONNELS APSAP VP,Sport,Association sportive des personnels de la Ville de Paris (APSAP-VP),0.85,2026-02-18,llm_claude
+AS PERSONNELS APSAP-VP,Sport,Association sportive des personnels de la Ville de Paris,0.9,2026-04-20,llm_gemini
+AS PERSONNELS APSAPVP,Sport,Association sportive des personnels,1.0,2026-04-20,llm_gemini
 ASL 33 51 RUE SAINT BLAISE,Administration,Association syndicale libre - copropriété rue Saint-Blaise,0.95,2026-02-18,llm_claude
+ASL 33/51 RUE SAINT BLAISE,Administration,Association Syndicale Libre (Copropriété),1.0,2026-04-20,llm_gemini
+ASL OLYMPIADES,Administration,Association syndicale libre (copropriété),1.0,2026-04-20,llm_gemini
+ASS 13 POUR TOUS,Social - Solidarité,Animation locale et lien social,0.95,2026-04-20,llm_gemini
+ASS AU RENDEZ VOUS BOUT'CHOU,Social - Petite enfance,Structure d'accueil petite enfance,1.0,2026-04-20,llm_gemini
 ASS AUTREMONDE,Social - Solidarité,Insertion sociale et solidarité (association Autremonde),0.9,2026-02-18,llm_claude
+ASS AYYEM ZAMEN,Social - Solidarité,Aide aux personnes âgées immigrées,1.0,2026-04-20,llm_gemini
+ASS CAFEZOIDE,Social - Petite enfance,Espace de jeux et parentalité (Café des enfants),0.95,2026-04-20,llm_gemini
+ASS CRECHE GAN ESTHER,Social - Petite enfance,Crèche,1.0,2026-04-20,llm_gemini
+ASS DEPARTEMENTALE INFORMATION LOGE,Logement,Information et conseil sur le logement (ADIL),1.0,2026-04-20,llm_gemini
+ASS DES CINEMAS INDEPENDANTS,Culture,Cinéma indépendant,1.0,2026-04-20,llm_gemini
+ASS DES CITES DU SECOURS CATHOLIQUE,Social - Solidarité,Hébergement d'urgence et insertion,1.0,2026-04-20,llm_gemini
+ASS DROIT A L INITIATIVE ECONOMIQUE,Économie,Microfinance et insertion économique,1.0,2026-04-20,llm_gemini
+ASS ECOLE SCHOOL FOR TODAY,Éducation,Enseignement et pédagogie,0.95,2026-04-20,llm_gemini
 ASS FLORIMONT,Social - Solidarité,Association d'aide sociale / hébergement,0.5,2026-02-18,llm_claude
 ASS FONDATION ETUDIANTE POUR LA VIL,Social - Solidarité,Fondation Étudiante pour la Ville (AFEV) - accompagnement solidaire,0.92,2026-02-18,llm_claude
 ASS GAN YAEL CRECHE JARDIN ENF,Social - Petite enfance,Crèche et jardin d'enfants,0.98,2026-02-18,llm_claude
+ASS GAN YOSSEF CR JARDIN D ENFANTS,Social - Petite enfance,Jardin d'enfants,1.0,2026-04-20,llm_gemini
+ASS GAN YOSSEF CRECHE JARDIN D ENFA,Social - Petite enfance,Crèche et jardin d'enfants,1.0,2026-04-20,llm_gemini
+ASS GENERALE DES FAMILLES,Social - Petite enfance,Soutien à la parentalité et aux familles,0.95,2026-04-20,llm_gemini
+ASS GESTION CENTRE ANIMATION CULTUR,Culture,Gestion de centre d'animation socioculturelle,0.95,2026-04-20,llm_gemini
+ASS GESTION RESEAU MESUR POLLUT ATM,Environnement,Surveillance de la qualité de l'air (Airparif),1.0,2026-04-20,llm_gemini
 ASS INITIAT RENC ET SOLID 10,Social - Solidarité,"Association d'initiatives, rencontres et solidarité du 10e arrondissement",0.8,2026-02-18,llm_claude
+ASS INTERNATIONALE MAIRES FRANCOPHO,International,Coopération francophone,1.0,2026-04-20,llm_gemini
+ASS JUDO AMICALE PARIS XX,Sport,Club de judo,1.0,2026-04-20,llm_gemini
+ASS L INST D ETUDES AVANCEES - PARI,Éducation,Recherche et études supérieures,1.0,2026-04-20,llm_gemini
 ASS L INST D ETUDES AVANCEES PARI,Éducation,Recherche - Institut d'Études Avancées de Paris,0.93,2026-02-18,llm_claude
 ASS LA PASSERELLE,Social - Solidarité,Accompagnement et insertion sociale,0.7,2026-02-18,llm_claude
 ASS LE DAUPHIN BLEU,Social - Petite enfance,Structure d'accueil petite enfance,0.75,2026-02-18,llm_claude
+ASS LES AMIS DU BUS DES FEMMES,Social - Solidarité,Aide aux femmes et prévention,1.0,2026-04-20,llm_gemini
+ASS LES CROCOS CRECHE PARENTAL,Social - Petite enfance,Crèche parentale,1.0,2026-04-20,llm_gemini
+ASS LOGEMENT JEUNES TRAVAILLEURS,Logement,Logement pour jeunes travailleurs,1.0,2026-04-20,llm_gemini
+ASS MEDIATION USAGE OPTIMAL NUIT,Sécurité,Médiation nocturne et prévention,0.9,2026-04-20,llm_gemini
 ASS MIEUX ETRE LOGEMENT ISOLES,Logement,Aide au logement pour personnes isolées,0.85,2026-02-18,llm_claude
+ASS MIEUX-ETRE & LOGEMENT ISOLES,Logement,Accès au logement pour personnes isolées,1.0,2026-04-20,llm_gemini
 ASS MUSIQUE ET DANSE 20,Culture,Association de musique et danse du 20e arrondissement,0.95,2026-02-18,llm_claude
+ASS NAL PREVENTION ALCOOL ADDICTOLO,Santé,Prévention des addictions et alcoologie,1.0,2026-04-20,llm_gemini
+ASS PARENT ELEVE JARDIN ENFANT FR A,Social - Petite enfance,Association de parents d'élèves en jardin d'enfants,1.0,2026-04-20,llm_gemini
+ASS PARIS AIDE AUX VICTIMES,Social - Solidarité,Aide aux victimes et accès au droit,0.9,2026-04-20,llm_gemini
 ASS PARIS ANIMATION CULT ET SPORT,Culture,Animation culturelle et sportive de proximité (dominante culturelle),0.55,2026-02-18,llm_claude
+ASS PARIS TOUT-P'TITS,Social - Solidarité,Aide alimentaire et matérielle pour nourrissons,0.95,2026-04-20,llm_gemini
+ASS PARRAINS PAR'MILLE,Social - Solidarité,Parrainage et mentorat de la jeunesse,1.0,2026-04-20,llm_gemini
+ASS PETITE ENFANCE ET PARENTAL,Social - Petite enfance,Soutien à la parentalité et accueil du jeune enfant,1.0,2026-04-20,llm_gemini
+ASS POUR DEVELOPPEMENT SANTE FEMMES,Santé,Accès aux soins pour les femmes,1.0,2026-04-20,llm_gemini
 ASS POUR DROIT A L INITIATIVE ECONO,Économie,Microfinance et insertion économique (ADIE),0.95,2026-02-18,llm_claude
+ASS PREVENTION ACCUEIL SOUTIEN ET O,Social - Solidarité,Médiation sociale et prévention,0.95,2026-04-20,llm_gemini
 ASS PREVENTION ACCUEIL SOUTIEN ORIE,Social - Solidarité,"Prévention, accueil, soutien et orientation des personnes en difficulté",0.9,2026-02-18,llm_claude
+ASS PROMO ARTS PLASTIQ URBAINS CONT,Culture,Arts plastiques et art urbain,1.0,2026-04-20,llm_gemini
 ASS PUC RUGBY,Sport,Club de rugby (Paris Université Club),0.98,2026-02-18,llm_claude
+ASS REGION INSERTION ECONOMIQUE SOC,Économie,Insertion économique et sociale,0.9,2026-04-20,llm_gemini
 ASS SAFE,Social - Solidarité,Association SAFE - soutien aux femmes excisées / violences,0.6,2026-02-18,llm_claude
+ASS SOUTIEN DU THEATRE PRIVE,Culture,Soutien au spectacle vivant et théâtre privé,1.0,2026-04-20,llm_gemini
+ASS TRANSITION NUMERIQUE EDUC,Éducation,Transition numérique et éducation,1.0,2026-04-20,llm_gemini
 ASS VOTRE ECOLE CHEZ VOUS,Éducation,Enseignement à domicile pour enfants malades ou handicapés,0.92,2026-02-18,llm_claude
+ASS. AMBROISE CROIZAT SANTE,Santé,Centres de santé et offre de soins,1.0,2026-04-20,llm_gemini
+ASS. NAT. PREVENT. ALCOOL. ADDICT.,Santé,Prévention des addictions (ANPAA),1.0,2026-04-20,llm_gemini
+ASS. ORCHESTRE CONCERTS LAMOUREUX,Culture,Musique classique et orchestre,1.0,2026-04-20,llm_gemini
+ASS. OZAR HATORAH PARIS ONZE CRECHE,Social - Petite enfance,Crèche associative,1.0,2026-04-20,llm_gemini
+ASSISTANCE PUBLIQUE DES HOPITAUX DE PARIS,Santé,Établissement public hospitalier,1.0,2026-04-20,llm_gemini
+ASSISTANCE PUBLIQUE HOPITAUX DE PAR,Santé,Établissement hospitalier (AP-HP),1.0,2026-04-20,llm_gemini
 ASSO ACIDULES ET A CROQUER,Social - Petite enfance,Association liée à l'enfance / activités pour enfants,0.55,2026-02-18,llm_claude
 ASSO AU SERV DES AUTISTES ET LA PED,Santé,Accompagnement des personnes autistes et pédagogie spécialisée,0.72,2026-02-18,llm_claude
+ASSO LOISIRS PLURIEL DE PARIS 6,Social - Solidarité,Inclusion handicap et loisirs,0.95,2026-04-20,llm_gemini
+ASSO PRIMO LEVI,Social - Solidarité,Soutien aux victimes de torture et réfugiés,1.0,2026-04-20,llm_gemini
 ASSOC CENTRE ALPHA CHOISY,Éducation,Alphabétisation et apprentissage du français - quartier Choisy (13e),0.9,2026-02-18,llm_claude
 ASSOC DEVELOPP DE LA DANSE A PARIS,Culture,Association pour le développement de la danse à Paris,0.95,2026-02-18,llm_claude
+ASSOC LA PORTE ENTR'OUVERTE,Social - Solidarité,Lieu d'accueil et d'écoute sociale,0.85,2026-04-20,llm_gemini
+ASSOC MOSAIQUE L ATELIER DES ENFANT,Éducation,Activités périscolaires et jeunesse,0.85,2026-04-20,llm_gemini
 ASSOC NOTRE DAME DE BON SECOURS,Santé,Établissement de santé / centre de soins,0.7,2026-02-18,llm_claude
 ASSOC POUR L AIDE AUX MERES DE FAMI,Social - Solidarité,Aide aux mères de famille en difficulté,0.9,2026-02-18,llm_claude
+ASSOC PREVENTION SITE VILLETTE,Social - Solidarité,Prévention et médiation sociale,0.9,2026-04-20,llm_gemini
 ASSOCIAT POUR L INSTITUT D ETUDES,Éducation,Institut d'études et recherche,0.75,2026-02-18,llm_claude
 ASSOCIAT SYNDICALE LIBRE OLYMPIADES,Administration,Association syndicale libre - copropriété Olympiades (13e),0.95,2026-02-18,llm_claude
+ASSOCIAT.POUR L INSTITUT D ETUDES,Éducation,Recherche et enseignement supérieur,0.9,2026-04-20,llm_gemini
+ASSOCIATION 1000 COLLECTES,Social - Solidarité,Aide alimentaire et collectes solidaires,0.9,2026-04-20,llm_gemini
 ASSOCIATION 11 EME EVENEMENTS,Culture,Événements culturels et festifs dans le 11e arrondissement,0.55,2026-02-18,llm_claude
 ASSOCIATION ACIDULES ET A CROQUER,Social - Petite enfance,Association dédiée aux enfants / activités petite enfance,0.55,2026-02-18,llm_claude
 ASSOCIATION ACTION SOCIALE EN FAVEUR DES PERSONNELS DE LA VILLE DE PARIS ET DU DEPARTEMENT DE PARIS,Social - Solidarité,Action sociale pour les personnels de la Ville de Paris,0.9,2026-02-18,llm_claude
+ASSOCIATION AMBROISE CROIZAT,Santé,Gestion de centres de santé et protection sociale,0.95,2026-04-20,llm_gemini
 ASSOCIATION ARTHUR ET MARINE,Social - Solidarité,Association d'aide aux enfants malades ou en situation de handicap,0.65,2026-02-18,llm_claude
+ASSOCIATION ARTISTIQUE CONCERT COLONNE,Culture,Musique classique et orchestre,1.0,2026-04-20,llm_gemini
 ASSOCIATION ATD QUART MONDE,Social - Solidarité,Lutte contre la grande pauvreté et l'exclusion sociale,0.98,2026-02-18,llm_claude
+ASSOCIATION AU RENDEZ VOUS BOUT'CHOU,Social - Petite enfance,Petite enfance,1.0,2026-04-20,llm_gemini
+ASSOCIATION AURORE,Social - Solidarité,Réinsertion sociale et hébergement,1.0,2026-04-20,llm_gemini
 ASSOCIATION AUTREMONDE,Social - Solidarité,Aide aux personnes en situation d'exclusion et réfugiés,0.9,2026-02-18,llm_claude
 ASSOCIATION BELLEVILLE CITOYENNE,Social - Solidarité,Association citoyenne de quartier - lien social,0.7,2026-02-18,llm_claude
 ASSOCIATION CENTRE ALPHA CHOISY,Éducation,Alphabétisation et apprentissage du français,0.9,2026-02-18,llm_claude
+ASSOCIATION CHARONNE,Santé,Prévention des addictions,0.95,2026-04-20,llm_gemini
+ASSOCIATION CITE-THEATRE,Culture,Théâtre,1.0,2026-04-20,llm_gemini
+ASSOCIATION CONCERTS PASDELOUP,Culture,Musique symphonique,1.0,2026-04-20,llm_gemini
+ASSOCIATION COUP DE MAIN,Social - Solidarité,Insertion par l'activité économique,1.0,2026-04-20,llm_gemini
 ASSOCIATION CRECHE AVENIR,Social - Petite enfance,Crèche associative,0.99,2026-02-18,llm_claude
+ASSOCIATION CRECHE GAN ESTHER,Social - Petite enfance,Crèche,1.0,2026-04-20,llm_gemini
+ASSOCIATION CULTURE 2 +,Culture,Activités culturelles,1.0,2026-04-20,llm_gemini
+ASSOCIATION DE LA FONDATION ETUDIANTE POUR LA VILLE,Éducation,Accompagnement scolaire et engagement étudiant (AFEV),1.0,2026-04-20,llm_gemini
+ASSOCIATION DE MEDIATION POUR UN USAGE OPTIMAL DE LA NUIT LES PIERROTS DE LA NUIT,Sécurité,Médiation nocturne et prévention des nuisances,0.9,2026-04-20,llm_gemini
 ASSOCIATION DE SOUTIEN A FOND,Social - Solidarité,Association de soutien / solidarité (nom tronqué),0.5,2026-02-18,llm_claude
+ASSOCIATION DE SOUTIEN A FOND.,Culture,Soutien au patrimoine et à la mémoire,0.7,2026-04-20,llm_gemini
 ASSOCIATION DEDALE,Culture,Art numérique et création contemporaine,0.75,2026-02-18,llm_claude
+ASSOCIATION DEPARTEMENTALE INFORMATION LOGE,Logement,Information et conseil juridique sur le logement (ADIL),1.0,2026-04-20,llm_gemini
+ASSOCIATION DES CINEMAS INDEPENDANTS,Culture,Cinéma indépendant,1.0,2026-04-20,llm_gemini
+ASSOCIATION DES CITES DU SECOURS CATHOLIQUE,Social - Solidarité,Hébergement d'urgence et insertion sociale,1.0,2026-04-20,llm_gemini
+ASSOCIATION DES ORGANISATIONS SYNDICALES DE LA BOURSE DU TRAVAIL DE PARIS,Administration,Syndicats et Bourse du travail,1.0,2026-04-20,llm_gemini
 ASSOCIATION DEVELOPP DE LA DANSE A PARIS,Culture,Développement de la danse,0.95,2026-02-18,llm_claude
+ASSOCIATION DROIT A L INITIATIVE ECONOMIQUE,Économie,Microcrédit et aide à la création d'entreprise,1.0,2026-04-20,llm_gemini
 ASSOCIATION DU STADE FRANCAIS,Sport,Club sportif omnisports (Stade Français),0.97,2026-02-18,llm_claude
+ASSOCIATION DYNAMO,Social - Solidarité,Médiation sociale et insertion,0.7,2026-04-20,llm_gemini
+ASSOCIATION ECOLE SCHOOL FOR TODAY,Éducation,Établissement scolaire,1.0,2026-04-20,llm_gemini
+ASSOCIATION ESPACE,Social - Solidarité,Animation locale et centres sociaux (Espace 19),0.85,2026-04-20,llm_gemini
 ASSOCIATION ESPACES,Environnement,Association Espaces – insertion par l'écologie urbaine et jardins,0.7,2026-02-18,llm_claude
+ASSOCIATION ESTRELIA,Social - Petite enfance,Soutien à la parentalité et accueil des jeunes enfants,0.95,2026-04-20,llm_gemini
+ASSOCIATION FAMILLE CATHOLIQUE,Social - Petite enfance,Soutien à la parentalité et aux familles,0.9,2026-04-20,llm_gemini
 ASSOCIATION FLORIMONT,Social - Solidarité,Association de quartier / solidarité locale,0.5,2026-02-18,llm_claude
+ASSOCIATION FONDATION ETUDIANTE POUR LA VIL,Éducation,Accompagnement scolaire et engagement étudiant (AFEV),1.0,2026-04-20,llm_gemini
 ASSOCIATION FRANCOIS XAVIER BAGNOUD,International,Association François-Xavier Bagnoud - aide humanitaire internationale et droits de l'enfant,0.8,2026-02-18,llm_claude
 ASSOCIATION GAN YAEL CRECHE JARDIN ENF,Social - Petite enfance,Crèche et jardin d'enfants,0.97,2026-02-18,llm_claude
+ASSOCIATION GAN YOSSEF CR JARDIN D ENFANTS,Social - Petite enfance,Crèche et jardin d'enfants,1.0,2026-04-20,llm_gemini
+ASSOCIATION GAN YOSSEF CRECHE JARDIN D ENFA,Social - Petite enfance,Crèche et jardin d'enfants,1.0,2026-04-20,llm_gemini
+ASSOCIATION GENERALE DES FAMILLES,Social - Petite enfance,Soutien à la parentalité et aux familles,0.9,2026-04-20,llm_gemini
+ASSOCIATION GESTION  LOCAL INTERASSOCIATIONSOCIATIF,Social,Gestion de locaux inter-associatifs,0.8,2026-04-20,llm_gemini
 ASSOCIATION GESTION CENTRE ANIMATION CULTUR,Culture,Gestion de centre d'animation culturelle,0.9,2026-02-18,llm_claude
+ASSOCIATION GESTION RESEAU MESUR POLLUT ATM,Environnement,Surveillance de la qualité de l'air,1.0,2026-04-20,llm_gemini
+ASSOCIATION HALLE SAINT PIERRE,Culture,Musée et centre d'art (Art Brut),1.0,2026-04-20,llm_gemini
+ASSOCIATION HALLE ST PIERRE,Culture,Musée et centre culturel (Art Brut),1.0,2026-04-20,llm_gemini
+ASSOCIATION INCUBATEUR PARIS BIOTECH,Économie,Incubateur de startups et biotechnologies,1.0,2026-04-20,llm_gemini
+ASSOCIATION INSTITUT D ETUDES AVANCEES DE PARIS,Éducation,Recherche et institut d'études supérieures,1.0,2026-04-20,llm_gemini
+ASSOCIATION INTERNATIONALE MAIRES FRANCOPHO,International,Coopération francophone et diplomatie territoriale,1.0,2026-04-20,llm_gemini
+ASSOCIATION JEUNESSE LOUBAVITCH,Éducation,Mouvement de jeunesse et éducation,0.9,2026-04-20,llm_gemini
+ASSOCIATION JUDO AMICALE PARIS XX,Sport,Club de Judo,1.0,2026-04-20,llm_gemini
 ASSOCIATION L ILE AUX LANGUE,Éducation,Apprentissage des langues,0.8,2026-02-18,llm_claude
+ASSOCIATION L INST D ETUDES AVANCEES - PARI,Éducation,Recherche et études supérieures,1.0,2026-04-20,llm_gemini
 ASSOCIATION L INST D ETUDES AVANCEES PARI,Éducation,Recherche - Institut d'Études Avancées de Paris,0.93,2026-02-18,llm_claude
+ASSOCIATION L'ETAPE - PARCOURS LOGE JEUNES,Logement,Accès au logement pour les jeunes,1.0,2026-04-20,llm_gemini
+ASSOCIATION L'ILE AUX LANGUE,Éducation,Apprentissage du français et alphabétisation,0.95,2026-04-20,llm_gemini
+ASSOCIATION LA CASERNE EPHEMERE,Culture,Lieu culturel pluridisciplinaire (Point Éphémère),1.0,2026-04-20,llm_gemini
 ASSOCIATION LA PASSOCIATIONERELLE,Social - Solidarité,Accompagnement et insertion sociale (nom tronqué/erroné de La Passerelle),0.65,2026-02-18,llm_claude
 ASSOCIATION LE DAUPHIN BLEU,Social - Petite enfance,Structure petite enfance / crèche,0.75,2026-02-18,llm_claude
 ASSOCIATION LE FIGUIER,Social - Solidarité,Association Le Figuier - accueil et insertion sociale,0.6,2026-02-18,llm_claude
+ASSOCIATION LE GARAGE NUMERIQUE,Éducation,Médiation numérique et formation,0.9,2026-04-20,llm_gemini
 ASSOCIATION LE MOULIN,Culture,Lieu culturel associatif,0.55,2026-02-18,llm_claude
+ASSOCIATION LES CROCOS CRECHE PARENTAL,Social - Petite enfance,Crèche parentale,1.0,2026-04-20,llm_gemini
 ASSOCIATION LES ENFANCES,Social - Petite enfance,Enfance et parentalité,0.75,2026-02-18,llm_claude
 ASSOCIATION LES PETITS DU CANARD,Social - Petite enfance,Structure d'accueil petite enfance,0.9,2026-02-18,llm_claude
 ASSOCIATION LES PETITS RIENS,Culture,Compagnie de spectacle vivant / théâtre,0.5,2026-02-18,llm_claude
+ASSOCIATION LOGEMENT JEUNES TRAVAILLEURS,Logement,Logement social pour jeunes,1.0,2026-04-20,llm_gemini
+ASSOCIATION LOISIRS PLURIEL DE PARI,Social - Solidarité,Loisirs adaptés pour enfants handicapés,1.0,2026-04-20,llm_gemini
+ASSOCIATION LOISIRS PLURIEL DE PARIS 6,Social - Solidarité,Inclusion handicap et loisirs,1.0,2026-04-20,llm_gemini
 ASSOCIATION MARMITE D AFRIQUE,Social - Solidarité,Aide alimentaire et solidarité interculturelle,0.75,2026-02-18,llm_claude
+ASSOCIATION MARMITE D'AFRIQUE,Social - Solidarité,Aide alimentaire et insertion sociale,0.95,2026-04-20,llm_gemini
+ASSOCIATION MEDIATION USAGE OPTIMAL NUIT,Social - Solidarité,Médiation sociale et prévention nocturne,0.9,2026-04-20,llm_gemini
 ASSOCIATION MERKAZ BETH MYRIAM,Social - Solidarité,Association communautaire d'entraide et solidarité,0.6,2026-02-18,llm_claude
 ASSOCIATION MIEUX ETRE LOGEMENT ISOLES,Logement,Aide au logement pour personnes isolées,0.85,2026-02-18,llm_claude
+ASSOCIATION MIEUX-ETRE & LOGEMENT ISOLES,Logement,Accompagnement social et logement,0.95,2026-04-20,llm_gemini
+ASSOCIATION MISSION ENFANCE,International,Aide humanitaire internationale pour l'enfance,0.9,2026-04-20,llm_gemini
 ASSOCIATION NAT PREVENT ALCOOL ADDICT,Santé,Prévention de l'alcoolisme et des addictions (ANPAA),0.97,2026-02-18,llm_claude
+ASSOCIATION NAT. PREVENT. ALCOOL. ADDICT.,Santé,Prévention des addictions (ANPAA),1.0,2026-04-20,llm_gemini
 ASSOCIATION NOTRE DAME DE BON SECOURS,Santé,Établissement de soins / centre de santé,0.75,2026-02-18,llm_claude
+ASSOCIATION OEUVRES DES OTAGES,Social - Solidarité,Action sociale et centre social,0.85,2026-04-20,llm_gemini
 ASSOCIATION OLGA SPITZER,Social - Solidarité,Protection de l'enfance et aide sociale,0.92,2026-02-18,llm_claude
 ASSOCIATION ORCHESTRE CONCERTS LAMO,Culture,Orchestre et concerts - musique classique,0.95,2026-02-18,llm_claude
 ASSOCIATION OZAR HATORAH,Éducation,Réseau d'écoles juives / enseignement confessionnel,0.85,2026-02-18,llm_claude
+ASSOCIATION OZAR HATORAH PARIS ONZE CRECHE,Social - Petite enfance,Crèche,1.0,2026-04-20,llm_gemini
+ASSOCIATION PARENT ELEVE JARDIN ENFANT FR A,Social - Petite enfance,Association de parents d'élèves en jardin d'enfants,1.0,2026-04-20,llm_gemini
+ASSOCIATION PARIS AIDE AUX VICTIMES,Social - Solidarité,Aide aux victimes et accès au droit,1.0,2026-04-20,llm_gemini
 ASSOCIATION PARIS ANIMATION CULT ET SPORT,Culture,Animation culturelle et sportive de proximité (dominante culturelle),0.55,2026-02-18,llm_claude
+ASSOCIATION PARIS TOUT-P'TITS,Social - Petite enfance,Aide alimentaire et produits d'hygiène pour nourrissons,1.0,2026-04-20,llm_gemini
 ASSOCIATION PARRAINS PAR MILLE,Social - Solidarité,Parrainage de proximité pour enfants et familles en difficulté,0.9,2026-02-18,llm_claude
+ASSOCIATION PARRAINS PAR'MILLE,Social - Solidarité,Protection de l'enfance et parrainage,1.0,2026-04-20,llm_gemini
+ASSOCIATION PERSONNELS APSAP-VP,Administration,Association du personnel de la Ville de Paris,0.95,2026-04-20,llm_gemini
+ASSOCIATION PETITE ENFANCE ET PARENTAL,Social - Petite enfance,Soutien à la parentalité et accueil du jeune enfant,1.0,2026-04-20,llm_gemini
+ASSOCIATION PIMMS DE PARIS,Social - Solidarité,Médiation sociale et accès aux droits,0.95,2026-04-20,llm_gemini
 ASSOCIATION PIROUETT,Social - Petite enfance,Crèche ou structure petite enfance,0.7,2026-02-18,llm_claude
 ASSOCIATION PLUS LOIN,Social - Solidarité,Accompagnement et insertion sociale,0.7,2026-02-18,llm_claude
+ASSOCIATION POLITIQUE CRIMINELLE APPLIQUEE,Social - Solidarité,Réinsertion sociale et politique criminelle,0.95,2026-04-20,llm_gemini
 ASSOCIATION POUR DEPISTAGE CANCERS,Santé,Dépistage et prévention des cancers,0.98,2026-02-18,llm_claude
+ASSOCIATION POUR DEVELOPPE SANTE DES FEMME,Santé,Accès aux soins pour les femmes précaires,0.95,2026-04-20,llm_gemini
 ASSOCIATION POUR DROIT A L INITIATIVE ECONO,Économie,Droit à l'initiative économique - insertion économique,0.9,2026-02-18,llm_claude
 ASSOCIATION POUR INSERTION DES JEUNES,Économie,Insertion professionnelle des jeunes,0.7,2026-02-18,llm_claude
 ASSOCIATION POUR L AIDE AUX MERES DE FAMI,Social - Solidarité,Aide aux mères de famille en difficulté,0.9,2026-02-18,llm_claude
 ASSOCIATION POUR LA PREVENTION L ACCUEIL LE,Social - Solidarité,"Prévention, accueil et accompagnement social (nom tronqué, probablement aide aux personnes en difficulté)",0.75,2026-02-18,llm_claude
+ASSOCIATION POUR LA PREVENTION L'ACCUEIL LE,Social - Solidarité,Prévention et accueil social,0.85,2026-04-20,llm_gemini
+ASSOCIATION PREVENTION ACCUEIL SOUTIEN ET,Social - Solidarité,Médiation sociale et prévention,0.95,2026-04-20,llm_gemini
+ASSOCIATION PREVENTION SITE VILLETTE,Sécurité,Prévention et médiation urbaine,0.95,2026-04-20,llm_gemini
+ASSOCIATION PRIMO LEVI,Social - Solidarité,Aide aux réfugiés et victimes de violence,1.0,2026-04-20,llm_gemini
 ASSOCIATION PROCESSUS RECHERCHE,Éducation,Association de recherche,0.55,2026-02-18,llm_claude
+ASSOCIATION PSYCHOFORM,Santé,Soutien psychologique et prévention,0.9,2026-04-20,llm_gemini
 ASSOCIATION PUC RUGBY,Sport,Club de rugby universitaire (Paris Université Club),0.99,2026-02-18,llm_claude
 ASSOCIATION REGION INSERTION ECONOMIQUE SOC,Économie,Insertion économique et sociale,0.9,2026-02-18,llm_claude
 ASSOCIATION RELAIS ACCUEIL,Social - Solidarité,Accueil et accompagnement de personnes en difficulté,0.85,2026-02-18,llm_claude
 ASSOCIATION RESEAU TREIZE,Social - Solidarité,Réseau associatif du 13e arrondissement - insertion sociale,0.65,2026-02-18,llm_claude
 ASSOCIATION SAFE,Social - Solidarité,Association SAFE - soutien aux femmes excisées / violences,0.6,2026-02-18,llm_claude
+ASSOCIATION SOUTIEN DU THEATRE PRIVE,Culture,Soutien au secteur du théâtre,1.0,2026-04-20,llm_gemini
 ASSOCIATION SYNDICALE LIBRE OLYMPIADES,Administration,ASL Olympiades - copropriété du 13e arrondissement,0.97,2026-02-18,llm_claude
 ASSOCIATION TECHNO PLUS,Santé,Réduction des risques en milieu festif (prévention addictions),0.9,2026-02-18,llm_claude
 ASSOCIATION VOTRE ECOLE CHEZ VOUS,Éducation,Enseignement à domicile pour enfants malades ou handicapés,0.92,2026-02-18,llm_claude
+ASSOCIATION. NAT. PREVENT. ALCOOL. ADDICT.,Santé,Prévention des addictions,1.0,2026-04-20,llm_gemini
+ASSOCIATION.POUR LA GESTION D ESPACES,Social - Solidarité,Gestion d'équipements sociaux de proximité,0.75,2026-04-20,llm_gemini
 ATELIER BERLIOZ ADPS,Culture,Atelier de pratique musicale / arts - ADPS,0.7,2026-02-18,llm_claude
 ATELIER DE PARIS CAROLYN CARLSON,Culture,Danse contemporaine - Centre chorégraphique,0.97,2026-02-18,llm_claude
 ATELIER DES ARTISTES EN EXIL,Culture,Soutien artistique aux artistes en exil,0.9,2026-02-18,llm_claude
 ATELIER PARISIEN D URBANISME,Administration,APUR - Urbanisme et aménagement du territoire parisien,0.9,2026-02-18,llm_claude
+ATELIER PARISIEN D'URBANISME,Administration,Agence d'urbanisme et d'études institutionnelles,0.95,2026-04-20,llm_gemini
 ATELIERS DE LA DANSE CAROLYN CARLSON,Culture,Danse - compagnie Carolyn Carlson,0.99,2026-02-18,llm_claude
+ATELIERS MEDICIS,Culture,Lieu de création artistique et résidences,1.0,2026-04-20,llm_gemini
 ATELIERS POUR PETITS,Social - Petite enfance,Ateliers pour jeunes enfants,0.85,2026-02-18,llm_claude
 ATLA,Culture,ATLA - école de musiques actuelles et jazz,0.9,2026-02-18,llm_claude
+AU FIL DU RAIL,Environnement,Agriculture urbaine et jardins partagés,0.9,2026-04-20,llm_gemini
 AU TEMPS DU JEU,Social - Petite enfance,Au Temps du Jeu - ludothèque / activités ludiques pour enfants,0.55,2026-02-18,llm_claude
 AURORE,Social - Solidarité,"Hébergement d'urgence, insertion, aide aux personnes en précarité",0.95,2026-02-18,llm_claude
 AUTISME EN ILE DE FRANCE,Social - Solidarité,Accompagnement des personnes autistes et de leurs familles,0.92,2026-02-18,llm_claude
 AUTOLIB VELIB METROPOLE,Transport,Mobilité partagée (Autolib/Vélib),0.95,2026-02-18,llm_claude
 AUX CAPTIFS LA LIBERATION,Social - Solidarité,Aide aux personnes en grande exclusion,0.95,2026-02-18,llm_claude
 AXIMO,Logement,Bailleur social / organisme HLM,0.8,2026-02-18,llm_claude
+AYYEM ZAMEN,Social - Solidarité,Soutien aux migrants âgés (Café social),1.0,2026-04-20,llm_gemini
 BABILLAGES,Social - Petite enfance,Structure petite enfance / crèche,0.85,2026-02-18,llm_claude
 BAGAGERIE SOLIDAIRE 14,Social - Solidarité,Consigne solidaire de bagages pour personnes sans-abri (14e),0.95,2026-02-18,llm_claude
 BAL,Culture,Lieu d'exposition photographique et artistique (Le BAL),0.85,2026-02-18,llm_claude
 BALUSTRADE,Culture,Compagnie de spectacle vivant / théâtre,0.7,2026-02-18,llm_claude
 BANQUE POSTALE,Économie,Établissement bancaire / services financiers,0.7,2026-02-18,llm_claude
+BASILIADE,Santé,Accompagnement des personnes vivant avec le VIH/SIDA,0.95,2026-04-20,llm_gemini
 BATIGERE EN ILE DE FRANCE,Logement,Bailleur social en Île-de-France,0.92,2026-02-18,llm_claude
 BATIGERE HABITAT,Logement,Logement social et habitat,0.95,2026-02-18,llm_claude
 BATIGERE ILE DE FRANCE SA D HLM,Logement,Bailleur social HLM Île-de-France,0.95,2026-02-18,llm_claude
 BELLEVILLE ASSOCIATION,Culture,Association culturelle et sociale du quartier Belleville,0.45,2026-02-18,llm_claude
+BELLEVILLE CITOYENNE,Social - Solidarité,Citoyenneté et vie de quartier,0.9,2026-04-20,llm_gemini
 BETONSALON,Culture,Centre d'art contemporain et de recherche,0.9,2026-02-18,llm_claude
 BIMBAMJOB,Économie,Insertion professionnelle des réfugiés,0.85,2026-02-18,llm_claude
 BIS BOUTIQUE SOLIDAIRE,Social - Solidarité,Boutique solidaire / aide vestimentaire et matérielle,0.85,2026-02-18,llm_claude
+BLUE PROJECT,Environnement,Protection de l'environnement et sensibilisation,0.8,2026-04-20,llm_gemini
 BNP PARIBAS,Économie,Établissement bancaire / partenariat financier,0.6,2026-02-18,llm_claude
+BOOLOFOOD SASU,Économie,Restauration solidaire et insertion,0.9,2026-04-20,llm_gemini
 BOUFFESQUETAIRES,Culture,Compagnie théâtrale / spectacle vivant,0.75,2026-02-18,llm_claude
 BOURSE DU TRAVAIL DE PARIS,Administration,Bourse du travail – lieu syndical et institutionnel,0.85,2026-02-18,llm_claude
 BOUTIQUES DE GESTION,Économie,Accompagnement à la création d'entreprise,0.9,2026-02-18,llm_claude
@@ -166,8 +333,11 @@ BOUTIQUES DE GESTION PARIS ILE DE F,Économie,Accompagnement à la création d'e
 BPIFRANCE,Économie,Banque publique d'investissement - soutien aux entreprises,0.95,2026-02-18,llm_claude
 BPIFRANCE REGIONS,Économie,Financement et soutien aux entreprises,0.92,2026-02-18,llm_claude
 BRASSERIE DE L ETRE,Économie,Brasserie artisanale – entreprise d'insertion ou économie sociale,0.55,2026-02-18,llm_claude
+"BUDGET ANNEXE ""AIDE SOCIALE A L'ENFANCE""",Social - Solidarité,Protection de l'enfance (ASE),1.0,2026-04-20,llm_gemini
 BUDGET ANNEXE AIDE SOCIALE A L ENFANCE,Social - Solidarité,Aide sociale à l'enfance (budget annexe),0.9,2026-02-18,llm_claude
 BUS DES FEMMES,Social - Solidarité,"Aide aux personnes prostituées, prévention et accompagnement",0.9,2026-02-18,llm_claude
+CABANE A JEUX,Éducation,Jeunesse et loisirs éducatifs,0.85,2026-04-20,llm_gemini
+CAFETE CAFE COLL. PLACE DES FETES,Social - Solidarité,Café solidaire et lien social de quartier,0.9,2026-04-20,llm_gemini
 CAISSE DES ECOLES,Éducation,Caisse des écoles - restauration et activités scolaires,0.9,2026-02-18,llm_claude
 CAISSE DES ECOLES 15EME ARRONDISSEM,Éducation,Caisse des écoles du 15e arrondissement,0.95,2026-02-18,llm_claude
 CAISSE DES ECOLES DU 10E ARRONDISSE,Éducation,Caisse des écoles du 10e arrondissement - restauration et activités scolaires,0.95,2026-02-18,llm_claude
@@ -181,44 +351,67 @@ CAISSE DES ECOLES DU 3E ARRONDISSEM,Éducation,Caisse des écoles - restauration
 CAISSE DES ECOLES DU 6E ARRONDISSEM,Éducation,Caisse des écoles du 6e arrondissement (restauration scolaire),0.95,2026-02-18,llm_claude
 CAISSE DES ECOLES DU 7EME ARRONDISS,Éducation,Caisse des écoles du 7e arrondissement (restauration scolaire),0.95,2026-02-18,llm_claude
 CAISSE DES ECOLES DU 8E ARROND,Éducation,Caisse des écoles du 8e arrondissement - restauration scolaire et activités périscolaires,0.95,2026-02-18,llm_claude
+CAISSE DES ECOLES DU 8E ARROND.,Éducation,Restauration et gestion scolaire,1.0,2026-04-20,llm_gemini
 CAISSE DES ECOLES DU 8E ARRONDISSEM,Éducation,Caisse des écoles du 8e arrondissement - restauration scolaire,0.95,2026-02-18,llm_claude
 CAISSE DES ECOLES DU 9E ARRONDISSEM,Éducation,Caisse des écoles du 9e arrondissement - restauration scolaire,0.95,2026-02-18,llm_claude
 CAISSE DES REGLEMENTS PECUNIAIRES,Administration,Caisse de règlements des avocats (CARPA),0.85,2026-02-18,llm_claude
+CAISSE DES REGLEMENTS PECUNIAIRES EFFECTUES PAR LES AVOCATS A LA COUR DE PARIS (CARPA),Administration,Institution publique et juridique (CARPA),1.0,2026-04-20,llm_gemini
 CAISSE DES REGLEMENTS PECUNIAIRES EFFECTUES PAR LES AVOCATS A LA COUR DE PARIS CARPA,Administration,Caisse de règlements des avocats (CARPA),0.9,2026-02-18,llm_claude
 CAISSE ECOLES 12 EME ARRON PARIS,Éducation,Caisse des écoles du 12e arrondissement - restauration et activités scolaires,0.95,2026-02-18,llm_claude
 CAISSE ECOLES 16 EME ARRON PARIS,Éducation,Caisse des écoles du 16e arrondissement,0.9,2026-02-18,llm_claude
 CAISSE ECOLES 19 EME ARRON PARIS,Éducation,Caisse des écoles du 19e arrondissement,0.95,2026-02-18,llm_claude
+CAISSE ECOLES 1ER ARR  PARIS,Éducation,Gestion scolaire et périscolaire,1.0,2026-04-20,llm_gemini
 CAISSE ECOLES 1ER ARR PARIS,Éducation,Caisse des écoles du 1er arrondissement,0.95,2026-02-18,llm_claude
 CAISSE ECOLES 20 EME ARRON PARIS,Éducation,Caisse des écoles du 20e arrondissement,0.95,2026-02-18,llm_claude
 CAISSE ECOLES 4 EME ARRONDISSEMENT,Éducation,Caisse des écoles du 4e arrondissement,0.9,2026-02-18,llm_claude
 CAISSE ECOLES 5 EME ARRONDISSEMENT,Éducation,Caisse des écoles du 5e arrondissement,0.9,2026-02-18,llm_claude
+CAISSE FEDERALE DE CREDIT MUTUEL,Économie,Services financiers,0.8,2026-04-20,llm_gemini
 CAISSE REGLEMENT PECUNIAIRES CARPA,Administration,Caisse de règlements des avocats (CARPA),0.9,2026-02-18,llm_claude
 CAISSE REGLEMENTS PECUNIAIRES,Administration,Caisse de règlements pécuniaires - gestion financière institutionnelle,0.8,2026-02-18,llm_claude
 CAMELIA CINEMAS,Culture,Cinéma - exploitation de salles,0.95,2026-02-18,llm_claude
 CANAUX,Économie,Les Canaux - maison des économies solidaires et innovantes,0.85,2026-02-18,llm_claude
 CAP SPORTS ARTS AVENTURES AMITI,Sport,"Association multisports, arts et aventures",0.8,2026-02-18,llm_claude
+CAPS,Social - Solidarité,Action et promotion sociale,0.85,2026-04-20,llm_gemini
+CAPSKILLS,Éducation,Formation professionnelle et développement des compétences,0.9,2026-04-20,llm_gemini
 CARAMEL,Social - Petite enfance,Structure d'accueil petite enfance / crèche associative,0.55,2026-02-18,llm_claude
+CARREFOURS EMPLOI ARMEES COLLECT EN,Économie,Insertion professionnelle et emploi,0.9,2026-04-20,llm_gemini
 CARTON PLEIN 75,Social - Solidarité,"Carton Plein 75 - insertion par le réemploi de cartons, économie solidaire",0.85,2026-02-18,llm_claude
 CASERNE EPHEMERE,Culture,Lieu de création artistique / ateliers d'artistes,0.9,2026-02-18,llm_claude
+CCENTRE OROT ENTRAIDE,Social - Solidarité,Entraide et action sociale,0.95,2026-04-20,llm_gemini
 CDC HAB SOCIAL SA HAB LOYER MODERE,Logement,CDC Habitat Social - HLM / logement social,0.95,2026-02-18,llm_claude
 CDC HABITAT,Logement,Bailleur social - Caisse des Dépôts Habitat,0.95,2026-02-18,llm_claude
 CENT D ACTIONS LOCALE DU XVIII,Social - Solidarité,Centre d'actions locales du 18e arrondissement - aide sociale de proximité,0.8,2026-02-18,llm_claude
+CENT QUATRE,Culture,Lieu de création et d'exposition,1.0,2026-04-20,llm_gemini
 CENTR ISRAELITE MONTMARTRE,Social - Solidarité,Centre communautaire israélite - action sociale et cultuelle Montmartre,0.55,2026-02-18,llm_claude
+CENTRE ACCUEIL MEDIC REINSER,Santé,Centre médico-social et réinsertion,0.9,2026-04-20,llm_gemini
 CENTRE ACTION SOCIALE VILLE PARIS,Social - Solidarité,Action sociale municipale (CASVP),0.95,2026-02-18,llm_claude
 CENTRE ALPHA CHOISY,Éducation,Alphabétisation et apprentissage du français,0.9,2026-02-18,llm_claude
 CENTRE AUDIOVISUEL SIMONE DE BEAUVO,Culture,Centre audiovisuel / cinéma / arts visuels féministes,0.95,2026-02-18,llm_claude
+CENTRE COROT  ENTRAIDE D'AUTEUIL,Social - Solidarité,Entraide et lutte contre la précarité,1.0,2026-04-20,llm_gemini
+CENTRE COROT - ENTRAIDE D'AUTEUIL,Social - Solidarité,"Entraide, aide alimentaire et accompagnement social",1.0,2026-04-20,llm_gemini
 CENTRE COROT ENTRAIDE D AUTEUIL,Social - Solidarité,Centre d'entraide et solidarité de proximité (Auteuil),0.88,2026-02-18,llm_claude
 CENTRE D ACTION SOCIAL PROTESTANT HUDA L ESQUISE,Social - Solidarité,Hébergement d'urgence (HUDA) et action sociale protestante,0.95,2026-02-18,llm_claude
+CENTRE D ACTION SOCIALE DE LA VILLE DE PARIS,Social - Solidarité,Action sociale municipale,1.0,2026-04-20,llm_gemini
 CENTRE D ACTION SOCIALE PROTESTANT,Social - Solidarité,"Action sociale, aide aux personnes en difficulté",0.93,2026-02-18,llm_claude
 CENTRE D ACTION SOCIALE PROTESTANT UVRE DE SECOURS AUX ENFANTS,Social - Solidarité,CASP et OSE - aide sociale et protection de l'enfance,0.92,2026-02-18,llm_claude
+CENTRE D ACTION SOCIALE PROTESTANT ŒUVRE DE SECOURS AUX ENFANTS,Social - Solidarité,Action sociale et protection de l'enfance,1.0,2026-04-20,llm_gemini
+CENTRE D'ACTION SOCIAL PROTESTANT HUDA L'ESQUISE,Social - Solidarité,Hébergement d'urgence pour demandeurs d'asile (HUDA),1.0,2026-04-20,llm_gemini
 CENTRE DE RESSOURCES POUR MINI,Social - Petite enfance,Centre de ressources pour mineurs / petite enfance,0.65,2026-02-18,llm_claude
+CENTRE DE RESSOURCES POUR MINI/,Éducation,Soutien scolaire et apprentissage linguistique (Mini-écoles),0.8,2026-04-20,llm_gemini
+CENTRE FORMATION FOOTBALL PARIS,Sport,Formation football,1.0,2026-04-20,llm_gemini
+CENTRE GAI ET LESBIEN,Social - Solidarité,Lutte contre les discriminations et droits LGBT,1.0,2026-04-20,llm_gemini
+CENTRE INFORMATION DOCUMENT JEUNESS,Éducation,Information et orientation jeunesse (CIDJ),1.0,2026-04-20,llm_gemini
 CENTRE LESBIEN GAI BI ET TRANS,Social - Solidarité,Centre communautaire LGBT+ / lutte contre les discriminations,0.8,2026-02-18,llm_claude
+"CENTRE LESBIEN, GAI, BI ET TRANS",Social - Solidarité,Lutte contre les discriminations et droits LGBTQ+,1.0,2026-04-20,llm_gemini
 CENTRE NATIONAL CHANSON VARIETES JA,Culture,"Centre National de la Chanson, des Variétés et du Jazz (CNV) - nom tronqué",0.98,2026-02-18,llm_claude
 CENTRE NATIONAL CHANSON VARIETES JAZZ,Culture,"Centre National de la Chanson, des Variétés et du Jazz (CNV)",0.98,2026-02-18,llm_claude
+CENTRE NATIONAL DE LA MUSIQUE,Culture,Musique,1.0,2026-04-20,llm_gemini
 CENTRE REGIONAL DE COORDINATION,Santé,Centre régional de coordination (dépistage cancers / santé publique),0.6,2026-02-18,llm_claude
 CENTRE REGIONAL OEUVRES UNIV SCOLAI,Éducation,CROUS - œuvres universitaires et scolaires,0.95,2026-02-18,llm_claude
+CENTRE SOCIAL ET CULTUREL SOLIDARITE ROQUETTE,Social - Solidarité,Centre social de quartier,1.0,2026-04-20,llm_gemini
 CERCLE DES ESCRIMEURS PARISIENS,Sport,Club d'escrime,0.99,2026-02-18,llm_claude
 CEREP,Santé,Centre de recherche en psychopathologie et psychothérapie,0.7,2026-02-18,llm_claude
+CETEC A2F,Éducation,Formation professionnelle,0.9,2026-04-20,llm_gemini
 CHAMPIONNET SPORTS,Sport,Club sportif multisports (18e arrondissement),0.95,2026-02-18,llm_claude
 CHAMPS DES POSSIBLES,Social - Solidarité,Insertion sociale et accompagnement,0.5,2026-02-18,llm_claude
 CHANTIER ECOLE ILE DE FRANCE,Économie,Insertion professionnelle par les chantiers-école,0.88,2026-02-18,llm_claude
@@ -229,39 +422,96 @@ CINELBA SA,Culture,Cinéma / production audiovisuelle,0.85,2026-02-18,llm_claude
 CINEMA CHAPLIN,Culture,Cinéma,0.95,2026-02-18,llm_claude
 CINEMAS 21,Culture,Cinéma - exploitation de salles,0.95,2026-02-18,llm_claude
 CINEPOQUE,Culture,Cinéma / association cinématographique,0.9,2026-02-18,llm_claude
+CIRCUSNEXT,Culture,Arts du cirque,1.0,2026-04-20,llm_gemini
+CIRQUE A L ANCIENNE,Culture,Arts du cirque,0.95,2026-04-20,llm_gemini
 CITE DE LA MUSIQUE,Culture,Musique - établissement culturel,0.99,2026-02-18,llm_claude
 CITE INTERNAT UNIVERSIT DE PARIS,Éducation,Cité Internationale Universitaire de Paris - hébergement et vie étudiante,0.95,2026-02-18,llm_claude
+CITE INTERNAT. UNIVERSIT. DE PARIS,Éducation,Hébergement et services pour étudiants et chercheurs,0.95,2026-04-20,llm_gemini
 CITE INTERNATION UNIVERSITAIRE DE P,Éducation,Cité Internationale Universitaire de Paris - hébergement et vie étudiante,0.85,2026-02-18,llm_claude
 CITE INTERNATIONALE DES ARTS,Culture,Résidences artistiques et arts visuels,0.97,2026-02-18,llm_claude
 CITES CARITAS,Social - Solidarité,Hébergement et accompagnement des personnes en difficulté,0.95,2026-02-18,llm_claude
+CITETHEATRE,Culture,Théâtre et spectacle vivant,1.0,2026-04-20,llm_gemini
+CITHEA FAMILLE ET PROFESSIONNEL,Social - Petite enfance,Soutien à la parentalité et protection de l'enfance,0.9,2026-04-20,llm_gemini
+CLAIR ET NET,Social - Solidarité,Insertion par l'activité économique,0.85,2026-04-20,llm_gemini
 CLUB ATHLETIQUE DE PARIS,Sport,Club d'athlétisme parisien,0.95,2026-02-18,llm_claude
 CLUB D ESCRIME TOUR D AUVERGNE,Sport,Club d'escrime,0.99,2026-02-18,llm_claude
 CLUB DES FRANCAIS VOLANTS,Sport,"Club de sports de glace (patinage, hockey)",0.95,2026-02-18,llm_claude
 CLUB DES PETITS GAVROCHES,Sport,Club sportif pour enfants,0.6,2026-02-18,llm_claude
 CNRS,Éducation,Recherche scientifique (Centre National de la Recherche Scientifique),0.95,2026-02-18,llm_claude
+CO P1  SOLIDARITES ETUDIANTES,Social - Solidarité,Aide sociale et solidarité étudiante (Paris 1),1.0,2026-04-20,llm_gemini
+CO P1 - SOLIDARITES ETUDIANTES,Social - Solidarité,Aide sociale et solidarité étudiante,0.9,2026-04-20,llm_gemini
 CO P1 SOLIDARITES ETUDIANTES,Social - Solidarité,Solidarités étudiantes - aide alimentaire et sociale,0.85,2026-02-18,llm_claude
 COALITION INTERNATIONALE SIDA,International,Coopération internationale - lutte contre le VIH/SIDA,0.75,2026-02-18,llm_claude
 COALLIA,Social - Solidarité,"Hébergement, insertion, aide aux réfugiés et personnes vulnérables",0.95,2026-02-18,llm_claude
 COALLIA HABITAT,Logement,Hébergement et logement accompagné,0.8,2026-02-18,llm_claude
 COLLECTIF CAFE CULTURE CUISINE,Culture,Collectif culturel (café culture cuisine),0.75,2026-02-18,llm_claude
 COLLECTIF DES VOUTES,Culture,Collectif artistique/culturel (Voûtes - lieu culturel parisien),0.75,2026-02-18,llm_claude
+COLLEGE AIME CESAIRE,Éducation,Enseignement secondaire,1.0,2026-04-20,llm_gemini
 COLLEGE ALBERTO GIACOMETTI,Éducation,Collège public,0.95,2026-02-18,llm_claude
+COLLEGE ANDRE CITROEN,Éducation,Collège,1.0,2026-04-20,llm_gemini
+COLLEGE ANDRE MALRAUX,Éducation,Enseignement secondaire (Collège),1.0,2026-04-20,llm_gemini
+COLLEGE ANNE FRANK,Éducation,Collège,1.0,2026-04-20,llm_gemini
+COLLEGE BERNARD PALISSY,Éducation,Collège,1.0,2026-04-20,llm_gemini
+COLLEGE BORIS VIAN,Éducation,Collège,1.0,2026-04-20,llm_gemini
+COLLEGE CAMILLE CLAUDEL,Éducation,Collège (enseignement secondaire),1.0,2026-04-20,llm_gemini
+COLLEGE CAMILLE SEE,Éducation,Collège,1.0,2026-04-20,llm_gemini
 COLLEGE CLAUDE CHAPPE,Éducation,Collège public,0.97,2026-02-18,llm_claude
 COLLEGE CLAUDE DEBUSSY,Éducation,Collège public,0.99,2026-02-18,llm_claude
+COLLEGE CLAUDE MONET,Éducation,Enseignement secondaire (Collège),1.0,2026-04-20,llm_gemini
+COLLEGE COLETTE BESSON,Éducation,Collège (enseignement secondaire),1.0,2026-04-20,llm_gemini
+COLLEGE DANIEL MAYER,Éducation,Enseignement secondaire (Collège),1.0,2026-04-20,llm_gemini
+COLLEGE DE STAEL,Éducation,Enseignement secondaire (Collège),1.0,2026-04-20,llm_gemini
+COLLEGE EDGAR VARESE,Éducation,Collège,1.0,2026-04-20,llm_gemini
+COLLEGE EDMOND MICHELET,Éducation,Enseignement secondaire (Collège),1.0,2026-04-20,llm_gemini
+COLLEGE EDOUARD PAILLERON,Éducation,Collège,1.0,2026-04-20,llm_gemini
+COLLEGE ELSA TRIOLET,Éducation,Collège,1.0,2026-04-20,llm_gemini
+COLLEGE FRANCOIS COUPERIN,Éducation,Enseignement secondaire (Collège),1.0,2026-04-20,llm_gemini
 COLLEGE FRANCOIS VILLON,Éducation,Collège,0.98,2026-02-18,llm_claude
+COLLEGE FRANCOISE SELIGMANN,Éducation,Établissement scolaire (Collège),1.0,2026-04-20,llm_gemini
+COLLEGE GEORGES BRASSENS,Éducation,Collège,1.0,2026-04-20,llm_gemini
+COLLEGE GEORGES CLEMENCEAU,Éducation,Collège,1.0,2026-04-20,llm_gemini
+COLLEGE GEORGES COURTELINE,Éducation,Établissement scolaire (Collège),1.0,2026-04-20,llm_gemini
+COLLEGE GEORGES ROUAULT,Éducation,Enseignement secondaire (Collège),1.0,2026-04-20,llm_gemini
+COLLEGE GERMAINE TILLION,Éducation,Enseignement secondaire,1.0,2026-04-20,llm_gemini
+COLLEGE GUILLAUME APOLLINAIRE,Éducation,Collège,1.0,2026-04-20,llm_gemini
+COLLEGE GUILLAUME BUDE,Éducation,Collège (enseignement secondaire),1.0,2026-04-20,llm_gemini
 COLLEGE GUSTAVE FLAUBERT,Éducation,Collège,0.99,2026-02-18,llm_claude
+COLLEGE GUY FLAVIEN,Éducation,Collège,1.0,2026-04-20,llm_gemini
 COLLEGE HECTOR BERLIOZ,Éducation,Collège public,0.99,2026-02-18,llm_claude
+COLLEGE HONORE DE BALZAC,Éducation,Enseignement secondaire (Collège),1.0,2026-04-20,llm_gemini
+COLLEGE JACQUES PREVERT,Éducation,Établissement scolaire (Collège),1.0,2026-04-20,llm_gemini
 COLLEGE JANSON DE SAILLY,Éducation,Collège public,0.99,2026-02-18,llm_claude
+COLLEGE JEAN BAPTISTE SAY,Éducation,Enseignement secondaire (Collège),1.0,2026-04-20,llm_gemini
+COLLEGE JEAN-BAPTISTE POQUELIN,Éducation,Établissement scolaire (Collège),1.0,2026-04-20,llm_gemini
+COLLEGE JEAN-BAPTISTE-CLEMENT,Éducation,Collège (enseignement secondaire),1.0,2026-04-20,llm_gemini
+COLLEGE JULES ROMAINS,Éducation,Établissement scolaire (Collège),1.0,2026-04-20,llm_gemini
+COLLEGE LA GRANGE AUX BELLES,Éducation,Collège,1.0,2026-04-20,llm_gemini
+COLLEGE LEON GAMBETTA,Éducation,Collège (enseignement secondaire),1.0,2026-04-20,llm_gemini
+COLLEGE LOUISE MICHEL,Éducation,Établissement scolaire (Collège),1.0,2026-04-20,llm_gemini
+COLLEGE MODIGLIANI,Éducation,Enseignement secondaire (Collège),1.0,2026-04-20,llm_gemini
+COLLEGE OCTAVE GREARD,Éducation,Enseignement secondaire (Collège),1.0,2026-04-20,llm_gemini
+COLLEGE PAUL VERLAINE,Éducation,Établissement scolaire (Collège),1.0,2026-04-20,llm_gemini
 COLLEGE PIERRE ALVISET,Éducation,Collège Pierre Alviset,0.97,2026-02-18,llm_claude
+COLLEGE PIERRE MENDES FRANCE,Éducation,Collège,1.0,2026-04-20,llm_gemini
+COLLEGE RAYMOND QUENEAU,Éducation,Collège,1.0,2026-04-20,llm_gemini
+COLLEGE RODIN,Éducation,Établissement scolaire (Collège),1.0,2026-04-20,llm_gemini
+COLLEGE SAINT-EXUPERY,Éducation,Enseignement secondaire (Collège),1.0,2026-04-20,llm_gemini
+COLLEGE SUZANNE LACORE,Éducation,Enseignement secondaire,1.0,2026-04-20,llm_gemini
 COLLEGE THOMAS MANN,Éducation,Collège Thomas Mann,0.97,2026-02-18,llm_claude
+COLLEGE W.A. MOZART,Éducation,Enseignement secondaire (Collège),1.0,2026-04-20,llm_gemini
 COLOMBBUS,Économie,Insertion professionnelle et entrepreneuriat,0.75,2026-02-18,llm_claude
 COMEDE COMITE SANTE DES EXILES,Santé,Santé des exilés et réfugiés,0.9,2026-02-18,llm_claude
 COMIT LOCAL LE LOGEMENT AUTO JEUNE,Logement,Comité local pour le logement autonome des jeunes,0.9,2026-02-18,llm_claude
 COMIT NAT OLYMPIQ SPORTIF FRAN,Sport,Comité National Olympique et Sportif Français (CNOSF),0.99,2026-02-18,llm_claude
 COMITE ACTION SOCIAL OUTRE MER,Social - Solidarité,Action sociale en faveur des ultramarins,0.9,2026-02-18,llm_claude
+COMITE ACTIONS LOGEMENT,Logement,Défense du droit au logement,1.0,2026-04-20,llm_gemini
 COMITE CHAMPS ELYSEES,Économie,Comité des Champs-Élysées - promotion commerciale et animation,0.85,2026-02-18,llm_claude
 COMITE CONTRE L ESCLAVAGE MODERNE,International,Lutte contre l'esclavage moderne et la traite des êtres humains,0.75,2026-02-18,llm_claude
 COMITE D ORGA DES CHAMP DU MONDE,Sport,Comité d'organisation des championnats du monde,0.8,2026-02-18,llm_claude
+COMITE D ORGANI FRANCE VOLLEY,Sport,Fédération et organisation sportive,1.0,2026-04-20,llm_gemini
+COMITE D'ORGA DES CHAMP DU MONDE,Sport,Organisation de grands événements sportifs,0.95,2026-04-20,llm_gemini
+COMITE D'ORGA. DES CHAMP. DU MONDE,Sport,Événement sportif international,1.0,2026-04-20,llm_gemini
+COMITE D'ORGAN FRANCE TIR A L'ARC,Sport,Organisation d'événements sportifs (Tir à l'arc),1.0,2026-04-20,llm_gemini
 COMITE DE PARIS F S G T,Sport,Fédération Sportive et Gymnique du Travail - comité parisien,0.95,2026-02-18,llm_claude
 COMITE DEP OLYMPIQUE ET SPORTIF DE,Sport,Comité départemental olympique et sportif,0.98,2026-02-18,llm_claude
 COMITE DEPARTEMENTAL,Sport,"Comité départemental sportif (nom tronqué, probablement olympique ou sportif)",0.6,2026-02-18,llm_claude
@@ -273,30 +523,50 @@ COMPAGNIE A L AFFUT,Culture,Compagnie de spectacle vivant (théâtre/danse),0.92
 COMPAGNIE DU 20E,Culture,Compagnie théâtrale ou artistique du 20e arrondissement,0.8,2026-02-18,llm_claude
 COMPAGNONS BATISSEURS ILE DE FRANCE,Logement,Auto-réhabilitation et amélioration de l'habitat,0.8,2026-02-18,llm_claude
 COMPAGNONS DE LA NUIT,Social - Solidarité,Aide aux sans-abri et hébergement d'urgence,0.95,2026-02-18,llm_claude
+CONCERTS PASDELOUP,Culture,Musique symphonique,1.0,2026-04-20,llm_gemini
 CONNAITRE PROTEGER NATURE VAL DE SE,Environnement,Protection de la nature dans le Val-de-Seine,0.95,2026-02-18,llm_claude
 CONSEIL DEP DE L ACCES AU DROIT,Administration,Conseil départemental de l'accès au droit - aide juridique,0.85,2026-02-18,llm_claude
+CONSEIL DEP DE L'ACCES AU DROIT,Social - Solidarité,Accès au droit et aide juridique,0.95,2026-04-20,llm_gemini
+CONSEIL DEPARTEMENT PARENTS,Éducation,Fédération de parents d'élèves,0.95,2026-04-20,llm_gemini
+CONSEIL DEPARTEMENT PARENTS D'ELEVE,Éducation,Association de parents d'élèves,1.0,2026-04-20,llm_gemini
+CONSEIL DEPARTEMENT PARENTS ELEVES,Éducation,Association de parents d'élèves,1.0,2026-04-20,llm_gemini
 CONSERVATOIRE NATIONAL ARTS ET METI,Éducation,Enseignement supérieur et formation professionnelle (CNAM),0.97,2026-02-18,llm_claude
 CONST ARCHITECT URBAIN ENVIRONNEMEN,Environnement,"Architecture, urbanisme et environnement",0.6,2026-02-18,llm_claude
+CONSULTATION LIEU ACCUEIL PSYCH,Santé,Santé mentale et accueil psychologique,1.0,2026-04-20,llm_gemini
 COOP MIJOTEE,Économie,Coopérative alimentaire / insertion économique,0.6,2026-02-18,llm_claude
 COOPERATIVE DE RUE ET DE CIRQUE,Culture,Arts du cirque et spectacle vivant,0.9,2026-02-18,llm_claude
 COOPERATIVE DE SANTE RICHERAND,Santé,Coopérative de santé / centre de soins,0.95,2026-02-18,llm_claude
+COUP DE MAIN,Social - Solidarité,Insertion par l'activité économique et réemploi,0.9,2026-04-20,llm_gemini
 COUP DE POUCE,Éducation,Association Coup de Pouce - soutien éducatif / accompagnement scolaire,0.65,2026-02-18,llm_claude
 CRAVATE SOLIDARE,Économie,Insertion professionnelle par le don de vêtements et coaching vestimentaire,0.85,2026-02-18,llm_claude
+CRECHE AVENIR,Social - Petite enfance,Crèche,1.0,2026-04-20,llm_gemini
+CRECHE GAN ESTHER,Social - Petite enfance,Crèche,1.0,2026-04-20,llm_gemini
 CRECHE GAN MENAHEM,Social - Petite enfance,Crèche associative,0.97,2026-02-18,llm_claude
 CRECHE LAIQUE ST FARGEAU,Social - Petite enfance,Crèche,0.99,2026-02-18,llm_claude
+CRECHE PARENTALE CALINOT SINGE,Social - Petite enfance,Crèche parentale,1.0,2026-04-20,llm_gemini
 CRECHE PARENTALE FARANDOLE,Social - Petite enfance,Crèche parentale,0.99,2026-02-18,llm_claude
 CRECHE PARENTALE LES PETITS LOUPS,Social - Petite enfance,Crèche parentale,0.99,2026-02-18,llm_claude
+CREDIT AGRICOLE SA,Économie,Secteur bancaire,0.9,2026-04-20,llm_gemini
 CRESCENDO,Social - Petite enfance,Réseau de crèches et établissements petite enfance,0.85,2026-02-18,llm_claude
+CROIX ROUGE,Social - Solidarité,Aide humanitaire et sociale d'urgence,1.0,2026-04-20,llm_gemini
+CROIX ROUGE FRANCAISE,Social - Solidarité,Secours humanitaire et action sociale,1.0,2026-04-20,llm_gemini
 CTE FR DE SOUTIEN GK SAVAR BANGLA,International,Coopération internationale / soutien au Bangladesh (Gonoshasthaya Kendra Savar),0.88,2026-02-18,llm_claude
+CTE ORG CHAMP MONDE HANDBALL MAS 20,Sport,Organisation de grands événements sportifs,1.0,2026-04-20,llm_gemini
+CTE PARALYMPIQUE SPORTIF FR C P S F,Sport,Comité paralympique et handisport,1.0,2026-04-20,llm_gemini
 CTR REGION INFORMATION PREVENTION,Santé,"Centre régional d'information et de prévention (CRIPS) - prévention santé, VIH/SIDA",0.82,2026-02-18,llm_claude
 CTRE ACCU MEDIC REINSER ECON ET SOC,Social - Solidarité,Centre d'accueil médical et de réinsertion économique et sociale,0.85,2026-02-18,llm_claude
 CTRE ETUDES FORMATION D INSERT LANG,Social - Solidarité,Centre d'études et formation pour l'insertion par la langue (public migrant/réfugié),0.8,2026-02-18,llm_claude
+CTRE INFORMAT DROITS FEMMES PARIS,Social - Solidarité,Information sur les droits des femmes et des familles,1.0,2026-04-20,llm_gemini
 CTRE INTERNATIONAL CREATIONS THEATR,Culture,Créations théâtrales - Centre international,0.95,2026-02-18,llm_claude
 CTRE LOGEME JEUNES,Logement,Centre de logement pour jeunes (FJT/résidence jeunes travailleurs),0.95,2026-02-18,llm_claude
 CTRE LOGEME JEUNES TRAVAI ETUDIA,Logement,Centre de logement pour jeunes travailleurs et étudiants,0.9,2026-02-18,llm_claude
+CTRE LOGEME JEUNES TRAVAI ETUDIA ST,Logement,Foyer de jeunes travailleurs et étudiants,1.0,2026-04-20,llm_gemini
+CTRE NAL DRAMAT CONTEMP - THEAT OUV,Culture,Théâtre contemporain,1.0,2026-04-20,llm_gemini
 CTRE NAL DRAMAT CONTEMP THEAT OUV,Culture,Centre national dramatique contemporain - théâtre ouvert,0.97,2026-02-18,llm_claude
 CTRE NAT DE LA RECHERCHE SCIENTIF,Éducation,Recherche scientifique (CNRS),0.95,2026-02-18,llm_claude
 CTRE NAT DE LA RECHERCHE SCIENTIFIQ,Éducation,Recherche scientifique (CNRS),0.95,2026-02-18,llm_claude
+CTRE NATION  RECHERCHE SCIENTIFIQUE,Éducation,Recherche scientifique (CNRS),1.0,2026-04-20,llm_gemini
+CTRE NATION DRAMATURG CONTEMPORAIN,Culture,Centre National de Dramaturgie Contemporaine,1.0,2026-04-20,llm_gemini
 CULTURE DU COEUR PARIS,Culture,Accès à la culture pour les personnes en précarité,0.85,2026-02-18,llm_claude
 CYCLOFFICINE DE PARIS,Transport,Atelier participatif de réparation de vélos / mobilité douce,0.85,2026-02-18,llm_claude
 CYGOGNE,Social - Petite enfance,Structure petite enfance / crèche associative,0.55,2026-02-18,llm_claude
@@ -304,20 +574,35 @@ D UNE LANGUE A L AUTRE DULALA,Éducation,Éducation au plurilinguisme et langues
 D2L,Économie,Insertion économique ou développement local,0.4,2026-02-18,llm_claude
 DADOUN PERE ET FILS,Économie,Commerce / entreprise familiale,0.5,2026-02-18,llm_claude
 DALLE AUX CHAPS,Culture,Compagnie de spectacle vivant / arts de rue,0.55,2026-02-18,llm_claude
+DE L'INFANS A L'ENFANT,Social - Petite enfance,Soutien à la parentalité et développement de l'enfant,0.95,2026-04-20,llm_gemini
 DEBROUILLE COMPAGNIE,Culture,Compagnie de spectacle vivant / théâtre,0.8,2026-02-18,llm_claude
+DECK,Social - Solidarité,Insertion sociale,0.7,2026-04-20,llm_gemini
+DEMOCRATIE ET ENTRAIDE EN SYRIE,International,Aide humanitaire et soutien à la démocratie,0.9,2026-04-20,llm_gemini
+DEPARTEMENTALE INFORMATION LOGE,Logement,Information et conseil sur le logement (ADIL),0.95,2026-04-20,llm_gemini
+DEPAUL FRANCE,Social - Solidarité,Lutte contre l'exclusion et aide aux sans-abri,1.0,2026-04-20,llm_gemini
+DES CINEMAS INDEPENDANTS,Culture,Cinéma,1.0,2026-04-20,llm_gemini
+DES THEATRES DE LA CARTOUCHERIE,Culture,Théâtre et spectacle vivant,1.0,2026-04-20,llm_gemini
+DESCODEUSES,Éducation,Formation professionnelle au numérique,0.95,2026-04-20,llm_gemini
 DEVELOPP DE LA DANSE A PARIS,Culture,Développement de la danse à Paris,0.97,2026-02-18,llm_claude
 DIAGNOSTIC ET TRAJECTOIRES,Social - Solidarité,Diagnostic social et accompagnement de parcours,0.55,2026-02-18,llm_claude
 DIR REG FINANCES PUBLIQUES IDF PARI,Administration,Direction régionale des finances publiques,0.97,2026-02-18,llm_claude
 DISTRICT PARISIEN DE FOOTBALL,Sport,Fédération sportive - football parisien,0.99,2026-02-18,llm_claude
 DIVERS CREANCIERS GRATUITE TITRES TRANSPORT,Transport,Gratuité des titres de transport,0.9,2026-02-18,llm_claude
+DIVERS CULTUR SOC  ENFANCE COULEUR,Social - Petite enfance,Soutien à l'enfance et mixité,0.85,2026-04-20,llm_gemini
+DIVERS CULTUR SOC - ENFANCE COULEUR,Social - Petite enfance,Petite enfance et parentalité,0.9,2026-04-20,llm_gemini
 DIVERS CULTUR SOC ENFANCE COULEUR,Culture,Activités culturelles et socioculturelles pour l'enfance,0.6,2026-02-18,llm_claude
 DOMREMY BASKET 13,Sport,Club de basket-ball (13e arrondissement),0.99,2026-02-18,llm_claude
+DROIT A L INITIATIVE ECONOMIQUE,Économie,Microfinance et insertion économique,1.0,2026-04-20,llm_gemini
+DROITS D'URGENCE,Social - Solidarité,Accès au droit pour les personnes précaires,1.0,2026-04-20,llm_gemini
+DU BLEU DANS LES YEUX,Culture,Spectacle vivant et théâtre,0.9,2026-04-20,llm_gemini
 DULAC CINEMAS,Culture,Cinéma / exploitation de salles de cinéma,0.97,2026-02-18,llm_claude
 EAU DE PARIS,Environnement,Régie municipale de l'eau potable,0.8,2026-02-18,llm_claude
+ECOD'AIR EI,Économie,Insertion par l'activité économique (EI),0.95,2026-04-20,llm_gemini
 ECOLE CHIEN GUIDE AVEUGLE PARIS REG,Social - Solidarité,Formation de chiens guides pour personnes aveugles / handicap visuel,0.93,2026-02-18,llm_claude
 ECOLE D ECONOMIE DE PARIS,Éducation,Enseignement supérieur et recherche en économie (Paris School of Economics),0.95,2026-02-18,llm_claude
 ECOLE DE LA 2E CHANCE DE PARIS,Éducation,Formation et insertion des jeunes décrocheurs,0.95,2026-02-18,llm_claude
 ECOLE DE LA DEUXIEME CHANCE,Éducation,Formation et insertion des jeunes décrocheurs (E2C),0.95,2026-02-18,llm_claude
+ECOLE DES HAUTES ETUDES EN,Éducation,Enseignement supérieur et recherche (EHESS),1.0,2026-04-20,llm_gemini
 ECOLE DU BREUIL,Éducation,École d'horticulture et de paysage de la Ville de Paris,0.9,2026-02-18,llm_claude
 ECOLE HAUTES ETUDES SCIENCES SOCIAL,Éducation,École des Hautes Études en Sciences Sociales (EHESS),0.99,2026-02-18,llm_claude
 ECOLE NAT SUP DE CHIMIE DE PARIS,Éducation,École nationale supérieure de chimie - enseignement supérieur,0.97,2026-02-18,llm_claude
@@ -325,12 +610,25 @@ ECOLE NORMALE SOCIALE,Éducation,Formation en travail social,0.92,2026-02-18,llm
 ECOLE NORMALE SUPERIEURE,Éducation,Enseignement supérieur et recherche,0.97,2026-02-18,llm_claude
 ECOLE PARENTS EDUCATEURS IDF,Éducation,Soutien à la parentalité et éducation,0.82,2026-02-18,llm_claude
 ECOLE PRATIQUE DES HAUTES ETUDES,Éducation,Enseignement supérieur et recherche,0.95,2026-02-18,llm_claude
+ECOLE SCHOOL FOR TODAY,Éducation,Enseignement et pédagogie,1.0,2026-04-20,llm_gemini
 ECOUTE INTERCULT DISPOSIT INTER PSY,Santé,Soutien psychologique interculturel / santé mentale,0.82,2026-02-18,llm_claude
 EFIDIS SA HABITATION LOYER MODERE,Logement,HLM - habitation à loyer modéré,0.99,2026-02-18,llm_claude
 ELECTRICIENS SANS FRONTIERES,International,Coopération internationale – accès à l'énergie dans les pays en développement,0.95,2026-02-18,llm_claude
+ELOGIE  SIEMP,Logement,Bailleur social,1.0,2026-04-20,llm_gemini
+ELOGIE - SIEMP,Logement,Bailleur social,1.0,2026-04-20,llm_gemini
 ELOGIE SIEMP,Logement,Bailleur social parisien (ex-SIEMP / Elogie),0.97,2026-02-18,llm_claude
+ELOGIE-SIEMP,Logement,Bailleur social,1.0,2026-04-20,llm_gemini
+ELOQUENTIA,Éducation,Art oratoire et jeunesse,1.0,2026-04-20,llm_gemini
 EMBIX,Environnement,Réseaux de chaleur et énergie urbaine,0.6,2026-02-18,llm_claude
 EMILE ET ROSA,Social - Petite enfance,Structure d'accueil petite enfance,0.65,2026-02-18,llm_claude
+EMMAUS ALTERNATIVE,Social - Solidarité,Lutte contre l'exclusion et insertion,1.0,2026-04-20,llm_gemini
+EMMAUS ALTERNATIVES,Social - Solidarité,Insertion sociale et lutte contre l'exclusion,1.0,2026-04-20,llm_gemini
+EMMAUS CONNECT FONDATEUR ABBE PIERRE,Social - Solidarité,Inclusion numérique et précarité,1.0,2026-04-20,llm_gemini
+EMMAUS DEFI,Social - Solidarité,Insertion par l'activité économique,1.0,2026-04-20,llm_gemini
+EMMAUS DEFI - FONDATEUR ABBE PIERRE,Social - Solidarité,Lutte contre l'exclusion et insertion,1.0,2026-04-20,llm_gemini
+EMMAUS HABITAT,Logement,Logement social et gestion immobilière sociale,1.0,2026-04-20,llm_gemini
+EMMAUS SOLIDARITE,Social - Solidarité,Lutte contre l'exclusion et hébergement d'urgence,1.0,2026-04-20,llm_gemini
+ENERCITIF,Environnement,Énergies renouvelables citoyennes,1.0,2026-04-20,llm_gemini
 ENFANCES AU CINEMA,Culture,Éducation à l'image et cinéma jeune public,0.9,2026-02-18,llm_claude
 ENFANT PRESENT,Social - Petite enfance,Protection de l'enfance / soutien à la parentalité,0.78,2026-02-18,llm_claude
 ENFANTS DE LA GOUTTE D OR,Social - Solidarité,Association d'aide aux enfants et familles du quartier Goutte d'Or (18e),0.85,2026-02-18,llm_claude
@@ -338,164 +636,406 @@ ENFANTS DU CANAL,Social - Solidarité,Aide aux sans-abri et personnes en grande 
 ENSEMBLE ET SOLIDAIRES UNION NATION,Social - Solidarité,Union nationale d'entraide et de solidarité,0.85,2026-02-18,llm_claude
 ENSEMBLE INTER CONTEMPORAIN,Culture,Ensemble de musique contemporaine (EIC),0.98,2026-02-18,llm_claude
 ENSEMBLE PARIS EMPLOI COMPETENCES,Économie,Insertion professionnelle et emploi,0.9,2026-02-18,llm_claude
+ENTOURAGE,Social - Solidarité,Lien social et personnes sans-abri,1.0,2026-04-20,llm_gemini
+ENTR'AIDE,Social - Solidarité,Entraide et action sociale,0.9,2026-04-20,llm_gemini
 ENTREPRENDRE POUR HUMANISER,Social - Solidarité,Insertion et aide humanitaire,0.7,2026-02-18,llm_claude
+ENTREPRENEURS DU MONDE,International,Aide au développement et microfinance,0.95,2026-04-20,llm_gemini
 ENTREPRISE SOCIALE POUR L HABITAT,Logement,Bailleur social / entreprise sociale pour l'habitat,0.95,2026-02-18,llm_claude
+ENTREPRISE SOCIALE POUR L'HABITAT,Logement,Logement social (ESH),1.0,2026-04-20,llm_gemini
+ENVIE TRAPPES EN YVELINES,Social - Solidarité,Insertion et économie circulaire,0.95,2026-04-20,llm_gemini
 ENVOLUDIA,Social - Solidarité,"Accompagnement du handicap (polyhandicap, enfants et adultes)",0.9,2026-02-18,llm_claude
+EOS IMAGING,Santé,Imagerie médicale et innovation,0.95,2026-04-20,llm_gemini
 EPCS CAMPUS CONDORCET,Éducation,Campus universitaire et recherche (Campus Condorcet),0.95,2026-02-18,llm_claude
+EPITECH ECOLE INFORMAT NOUV TECHNO,Éducation,Enseignement supérieur et informatique,1.0,2026-04-20,llm_gemini
 ERDA,Culture,Éducation Recherche Développement Artistique,0.75,2026-02-18,llm_claude
 ERDA EDUCAT RECHER DEVEL ARTIST,Culture,Éducation et recherche artistique (ERDA),0.9,2026-02-18,llm_claude
+ERDA EDUCATION RECHERCHE,Éducation,Enseignement et recherche,0.95,2026-04-20,llm_gemini
 ERIGERE,Logement,Bailleur social (logement social),0.93,2026-02-18,llm_claude
 ERILIA,Logement,Bailleur social / logement social,0.9,2026-02-18,llm_claude
+ERNEST CIRCUITCOURT RESTAURATION,Social - Solidarité,Aide alimentaire et circuits courts,0.95,2026-04-20,llm_gemini
 ESP CULTURE UNIVERSITAIRE JUIF EURO,Culture,Espace de culture universitaire juif européen,0.8,2026-02-18,llm_claude
 ESPACE 19,Social - Solidarité,Centre social et culturel du 19e arrondissement,0.8,2026-02-18,llm_claude
+ESPACE PSYCHANALYTIQUE ORIENT CONSU,Santé,Santé mentale et psychanalyse,0.95,2026-04-20,llm_gemini
+ESPACES,Environnement,Écologie urbaine et insertion par les métiers de l'environnement,0.9,2026-04-20,llm_gemini
 ESPACIL HABITAT SA D HABITATIONS,Logement,Société d'habitations / logement social,0.92,2026-02-18,llm_claude
 ESPERANCE SPORTIVE PARISIENNE,Sport,Club sportif parisien,0.95,2026-02-18,llm_claude
 ESPEREM,Social - Solidarité,ESPEREM - association d'insertion et d'hébergement pour personnes en difficulté,0.9,2026-02-18,llm_claude
+ESPERO,Social - Solidarité,Insertion des réfugiés et exilés,0.95,2026-04-20,llm_gemini
 ESPOIR CENTRES FAMILIAUX JEUNE,Social - Solidarité,Aide aux familles et jeunes en difficulté,0.85,2026-02-18,llm_claude
+ESTRELIA,Social - Petite enfance,Soutien à la parentalité et petite enfance,0.9,2026-04-20,llm_gemini
 ETE PARISIEN,Culture,Animations et événements estivaux parisiens,0.55,2026-02-18,llm_claude
+ETERNEL SOLIDAIRE,Social - Solidarité,Tiers-lieu solidaire et lien social,0.95,2026-04-20,llm_gemini
 ETOILE DU NORD,Culture,Salle de spectacle / théâtre (18e arrondissement),0.85,2026-02-18,llm_claude
 ETS PUB AMENAGEMENT UNIVERSITAIRE I,Éducation,Aménagement universitaire (EPAURIF ou similaire),0.9,2026-02-18,llm_claude
 ETS PUB PAL DECOUVERTE CI SCI INDUS,Culture,Établissement public du Palais de la Découverte - Cité des Sciences et de l'Industrie,0.9,2026-02-18,llm_claude
 ETS PUBLIC PARC GRANDE,Culture,Établissement public du Parc et de la Grande Halle de la Villette,0.95,2026-02-18,llm_claude
+ETS PUBLIC PARC GRANDE HALLE VILLET,Culture,Établissement culturel et parc urbain,1.0,2026-04-20,llm_gemini
 ETUDES ET CHANTIERS ILE DE FRANCE,Économie,Insertion professionnelle par les chantiers,0.8,2026-02-18,llm_claude
 EXPERIMENTATION TERRIT CTRE CHOMAGE,Économie,Expérimentation Territoires Zéro Chômeur de Longue Durée,0.95,2026-02-18,llm_claude
 EXPERIMENTATION TERRITORIALE CONTRE,Économie,Expérimentation territoriale contre le chômage de longue durée (ETCLD / Territoires zéro chômeur),0.9,2026-02-18,llm_claude
 EXTRAMUROS L ASSOCIATION,Environnement,"Réemploi de matériaux, économie circulaire, menuiserie solidaire",0.85,2026-02-18,llm_claude
+EXTRAMUROS L'ASSOCIATION,Environnement,Économie circulaire et réemploi (menuiserie solidaire),0.85,2026-04-20,llm_gemini
+FAB CITY GRAND PARIS,Économie,Économie circulaire et innovation urbaine,0.9,2026-04-20,llm_gemini
 FACE PARIS,Économie,Insertion économique et lutte contre les discriminations en entreprise,0.85,2026-02-18,llm_claude
+FAMILLE CATHOLIQUE,Social - Petite enfance,Soutien à la parentalité et aux familles,0.85,2026-04-20,llm_gemini
 FED ACTEURS SOLIDARIT ILE DE FRANCE,Social - Solidarité,Fédération des acteurs de la solidarité - lutte contre l'exclusion,0.97,2026-02-18,llm_claude
 FEDER CENTRE SOCIAUX ET SOC CULTUR,Social - Solidarité,Fédération des centres sociaux et socioculturels,0.8,2026-02-18,llm_claude
 FEDER FRANCAISE GYMNASTIQUE,Sport,Fédération Française de Gymnastique,0.99,2026-02-18,llm_claude
+FEDERATION DE LA LIGUE DE L ENSEIGNEMENT,Éducation,Éducation populaire,1.0,2026-04-20,llm_gemini
 FEDERATION DES CRECHES GRIBOUILLE,Social - Petite enfance,Fédération de crèches,0.99,2026-02-18,llm_claude
+FEDERATION ENVIE,Économie,Insertion par l'activité économique et recyclage,0.95,2026-04-20,llm_gemini
 FEDERATION PARIS LIGUE DE L ENSEIGN,Éducation,Éducation populaire - Ligue de l'Enseignement,0.95,2026-02-18,llm_claude
+FEDERATION UNIE DES AUBERGES DE JEU,Éducation,Jeunesse et auberges de jeunesse,0.9,2026-04-20,llm_gemini
+FERRAILLE,Culture,Arts visuels et édition culturelle,0.8,2026-04-20,llm_gemini
+FESTIVAL D AUTOMNE A PARIS,Culture,Festival pluridisciplinaire,1.0,2026-04-20,llm_gemini
 FIT UNE FEMME UN TOIT,Social - Solidarité,Hébergement et aide aux femmes victimes de violences,0.95,2026-02-18,llm_claude
 FLORA TRISTAN LA REGIE DE QUARTIER,Social - Solidarité,Régie de quartier – insertion et lien social,0.85,2026-02-18,llm_claude
+FLORA TRISTAN REGIE QUARTIER 14EME,Social - Solidarité,Régie de quartier et insertion par l'activité,0.95,2026-04-20,llm_gemini
+FLORIMONT,Social - Solidarité,Centre social et vie de quartier,0.85,2026-04-20,llm_gemini
+FONCIERE D'HABITAT ET HUMANISME,Logement,Logement social et lutte contre le mal-logement,1.0,2026-04-20,llm_gemini
 FONCIERE DE LA VILLE DE PARIS,Logement,Foncière publique / gestion immobilière Ville de Paris,0.85,2026-02-18,llm_claude
+FONCIERE PARIS COMMERCES,Économie,Commerce de proximité et revitalisation,1.0,2026-04-20,llm_gemini
+FOND CITE INTERNATIONALE ARTS,Culture,Résidence d'artistes,1.0,2026-04-20,llm_gemini
 FOND MAISON CHAMPS ST FRAN ASSISE,Social - Solidarité,Fondation Maison des Champs Saint-François d'Assise - hébergement/accueil solidaire,0.75,2026-02-18,llm_claude
 FOND MAISON CHAMPS ST FRANC ASSISE,Social - Solidarité,Fondation Maison des Champs Saint-François d'Assise - hébergement/accueil solidaire,0.8,2026-02-18,llm_claude
 FOND MAISON CHAMPS STFRAN ASSISE,Social - Solidarité,Hébergement et accueil solidaire (Fondation Maison des Champs Saint-François d'Assise),0.8,2026-02-18,llm_claude
 FOND OEUVRE DE LA CROIX ST SIMON,Santé,Fondation Œuvre de la Croix Saint-Simon - soins et accompagnement médico-social,0.82,2026-02-18,llm_claude
+FOND. MAISON CHAMPS ST FRANC ASSISE,Social - Solidarité,Services aux personnes âgées et soins de suite,0.95,2026-04-20,llm_gemini
+FOND. MAISON CHAMPS ST-FRAN. ASSISE,Social - Solidarité,Aide aux personnes âgées et handicapées,1.0,2026-04-20,llm_gemini
+FOND. OEUVRE DE LA CROIX ST- SIMON,Social - Petite enfance,Gestion de crèches et services à la petite enfance,0.9,2026-04-20,llm_gemini
 FONDAT ABBE PIERRE LOGEMENT DEFAVOR,Logement,Fondation Abbé Pierre pour le logement des défavorisés,0.98,2026-02-18,llm_claude
 FONDAT MAISON CHAMPS ST FRANC D ASS,Social - Solidarité,Fondation Maison des Champs - hébergement/accueil social (Saint-François d'Assise),0.85,2026-02-18,llm_claude
+FONDATION AGIR CONTRE L'EXCLUSION,Social - Solidarité,Lutte contre l'exclusion,1.0,2026-04-20,llm_gemini
+FONDATION CASIP-COJASOR,Social - Solidarité,Action sociale et aide aux personnes âgées,1.0,2026-04-20,llm_gemini
+FONDATION CASIPCOJASOR,Social - Solidarité,"Action sociale, handicap et personnes âgées",1.0,2026-04-20,llm_gemini
+FONDATION CITE INTERNATIONALE ARTS,Culture,Résidence d'artistes et arts visuels,1.0,2026-04-20,llm_gemini
+FONDATION D'ENTREPRISE P.S.G.,Social - Solidarité,Insertion sociale par le sport,0.95,2026-04-20,llm_gemini
 FONDATION DE L ARMEE DU SALUT,Social - Solidarité,Hébergement d'urgence et aide aux personnes en difficulté,0.97,2026-02-18,llm_claude
+FONDATION DE L'ARMEE DU SALUT,Social - Solidarité,Lutte contre l'exclusion et hébergement d'urgence,1.0,2026-04-20,llm_gemini
+FONDATION DE ROTHSCHILD,Social - Solidarité,"Action sociale, handicap et personnes âgées",0.9,2026-04-20,llm_gemini
 FONDATION DES PETITS FRERES DES PAU,Social - Solidarité,Accompagnement des personnes âgées isolées,0.95,2026-02-18,llm_claude
+FONDATION ETUDIANTE POUR LA VIL,Éducation,Accompagnement scolaire et engagement étudiant (AFEV),1.0,2026-04-20,llm_gemini
 FONDATION L ELAN RETROUVE,Santé,Santé mentale et psychiatrie,0.92,2026-02-18,llm_claude
+FONDATION LEOPOLD BELLAN,Social - Solidarité,Établissements médico-sociaux et handicap,0.95,2026-04-20,llm_gemini
+FONDATION LOUIS LEPINE,Sécurité,Œuvres sociales de la Préfecture de Police,0.9,2026-04-20,llm_gemini
+FONDATION NATIONALE SCIENCES,Éducation,Enseignement supérieur et recherche (Sciences Po),1.0,2026-04-20,llm_gemini
+FONDATION NATIONALE SCIENCES POLITI,Éducation,Enseignement supérieur (Sciences Po),1.0,2026-04-20,llm_gemini
 FONDATION OEUVRE DE LA CROIX,Social - Solidarité,Œuvre caritative et sociale (Croix Saint-Simon),0.8,2026-02-18,llm_claude
 FONDATION OEUVRE DE LA CROIX ST SIM,Social - Solidarité,Œuvre caritative et sociale (Croix Saint-Simon),0.85,2026-02-18,llm_claude
 FONDATION OLGA SPITZER,Social - Solidarité,Protection de l'enfance et aide sociale à l'enfance,0.92,2026-02-18,llm_claude
+FONDATION PARTAGE ET VIE,Social - Solidarité,Accompagnement des personnes âgées et handicap,1.0,2026-04-20,llm_gemini
+FONDATION SCIENCES MATHEMATIQUES,Éducation,Recherche scientifique et mathématiques,1.0,2026-04-20,llm_gemini
+FONDATION SCIENCES MATHEMATIQUES PA,Éducation,Recherche scientifique et mathématiques,1.0,2026-04-20,llm_gemini
+FONDATION TERRE DE LIENS,Environnement,Préservation du foncier agricole et écologie,1.0,2026-04-20,llm_gemini
+FONDATION VOIR ET ENTENDRE,Santé,Recherche médicale (vision et audition),1.0,2026-04-20,llm_gemini
+FONDS REGIONAL ART CONTEMPORAI,Culture,Fonds Régional d'Art Contemporain (FRAC),1.0,2026-04-20,llm_gemini
+FONDS SOCIAL JUIF UNIFIE,Social - Solidarité,Action sociale et aide humanitaire,0.95,2026-04-20,llm_gemini
+FONDS SOLIDARITE SIDA AFRIQUE,International,Santé et solidarité internationale (SIDA),0.95,2026-04-20,llm_gemini
+FOOD DE RUE FOOD2RUE,Social - Solidarité,Insertion sociale et professionnelle des femmes,0.95,2026-04-20,llm_gemini
+FOOD SWEET FOOD,Social - Solidarité,Insertion sociale et aide aux réfugiés,0.95,2026-04-20,llm_gemini
+FOODSWEETFOOD,Social - Solidarité,Insertion des réfugiés par la cuisine,0.95,2026-04-20,llm_gemini
 FOOTBALL CLUB DES GOBELINS,Sport,Club de football - quartier des Gobelins,0.97,2026-02-18,llm_claude
 FORUM DES IMAGES,Culture,Cinéma et patrimoine audiovisuel,0.95,2026-02-18,llm_claude
 FRANCAIS LANGUE D ACCUEIL,Social - Solidarité,Apprentissage du français pour migrants et réfugiés,0.9,2026-02-18,llm_claude
 FRANCE HORIZON,Social - Solidarité,"Hébergement, insertion et accompagnement des réfugiés et personnes vulnérables",0.95,2026-02-18,llm_claude
+FRANCE TERRE D ASILE,Social - Solidarité,Aide aux réfugiés et demandeurs d'asile,1.0,2026-04-20,llm_gemini
+FRANCE TERRE D'ASILE,Social - Solidarité,Aide aux réfugiés et demandeurs d'asile,1.0,2026-04-20,llm_gemini
+FRANCO ASIATIQUE POUR L ENFANCE,International,Aide au développement et parrainage d'enfants,0.85,2026-04-20,llm_gemini
+FRANCO ASIATIQUE POUR L'ENFANCE,International,Aide internationale à l'enfance,0.85,2026-04-20,llm_gemini
 FREHA,Social - Solidarité,Hébergement et insertion des réfugiés et personnes précaires,0.8,2026-02-18,llm_claude
 GABY SOURIRE,Social - Solidarité,Association d'aide aux enfants malades / solidarité,0.6,2026-02-18,llm_claude
 GAIA PARIS,Environnement,Écologie et biodiversité urbaine,0.55,2026-02-18,llm_claude
 GAN YAEL CRECHE JARDIN ENF,Social - Petite enfance,Crèche et jardin d'enfants,0.98,2026-02-18,llm_claude
+GAN YOSSEF CR JARDIN D ENFANTS,Social - Petite enfance,Jardin d'enfants / Crèche,1.0,2026-04-20,llm_gemini
+GENERATION PLUS TON EMPLOI,Économie,Insertion professionnelle et emploi,0.9,2026-04-20,llm_gemini
 GEST CENTRE ANIMAT CULTUR,Culture,Gestion de centre d'animation culturelle,0.9,2026-02-18,llm_claude
+GESTION RESEAU MESUR POLLUT ATM,Environnement,Surveillance de la qualité de l'air (Airparif),1.0,2026-04-20,llm_gemini
 GIP HASHTAG FRANCE RUGBY 2023,Sport,Organisation de la Coupe du monde de rugby 2023,0.95,2026-02-18,llm_claude
+GIP POUR LA REUSSITE EDUCATIVE A PA,Éducation,Réussite éducative,1.0,2026-04-20,llm_gemini
+GOOD DOCTOR,Santé,Services de santé,0.85,2026-04-20,llm_gemini
 GOUTTE LAIT SAINT LEON,Social - Petite enfance,Goutte de lait - protection maternelle et infantile,0.9,2026-02-18,llm_claude
+GOZULTING,Économie,Conseil en insertion et entrepreneuriat social,0.85,2026-04-20,llm_gemini
+GRAND-MAM'AYOKA,Économie,Insertion par l'activité économique (restauration),0.9,2026-04-20,llm_gemini
 GREEN CLIMATE FUND,International,Fonds international pour le climat - coopération internationale,0.9,2026-02-18,llm_claude
 GROUP EXPLOITANT FORUM HALLES,Économie,Gestion et exploitation du Forum des Halles (centre commercial/espace public),0.65,2026-02-18,llm_claude
 GROUP INTER PUBLIC CAFES CULTURES,Culture,"Cafés-cultures, programmation artistique en cafés et lieux conviviaux",0.9,2026-02-18,llm_claude
+GROUP RECHER REALISAT DEVELOP RURAL,International,Coopération internationale et développement rural,1.0,2026-04-20,llm_gemini
 GROUPE HOSPITAL UNIVERSITAIRE PARIS,Santé,Hôpital universitaire (GHU Paris),0.97,2026-02-18,llm_claude
 GROUPE OEUVRES SOCIALES BELLEVILLE,Social - Solidarité,Œuvres sociales et solidarité de quartier,0.9,2026-02-18,llm_claude
+GROUPE RECHERCHE ECHANGES TECHNOLOG,International,ONG de développement (GRET),0.95,2026-04-20,llm_gemini
+GROUPE SEB FRANCE,Économie,Innovation et économie circulaire,0.9,2026-04-20,llm_gemini
+GROUPE SOS JEUNESSE,Social - Solidarité,Protection et insertion de la jeunesse,1.0,2026-04-20,llm_gemini
 GROUPE SOS SOLIDARITES,Social - Solidarité,"Insertion, hébergement, aide aux personnes vulnérables",0.95,2026-02-18,llm_claude
 GROUPEMENT D AGRICULTURE BIOLOGI,Environnement,Agriculture biologique / promotion du bio,0.9,2026-02-18,llm_claude
+GROUPEMENT D'AGRICULTURE BIOLOGI.,Environnement,Agriculture biologique,1.0,2026-04-20,llm_gemini
 GRPT PARISIEN INTER BAILL SURVEILL,Logement,Groupement parisien inter-bailleurs de surveillance,0.75,2026-02-18,llm_claude
+GRPT PARISIEN INTER-BAILL SURVEILL,Sécurité,Surveillance et tranquillité dans le logement social,1.0,2026-04-20,llm_gemini
 GRPT PARISIEN INTERBAILL SURVEILL,Administration,Groupement parisien inter-bailleurs de surveillance,0.8,2026-02-18,llm_claude
 GUINGETTE PIRATE,Culture,Lieu culturel festif - guinguette / bar culturel flottant,0.8,2026-02-18,llm_claude
+H.A.W.A AU FEMININ,Social - Solidarité,Insertion sociale et professionnelle des femmes,0.9,2026-04-20,llm_gemini
 HALAGE,Environnement,Insertion par le maraîchage et l'entretien d'espaces verts,0.8,2026-02-18,llm_claude
+HALLE SAINTPIERRE,Culture,Musée et centre d'art,1.0,2026-04-20,llm_gemini
+HALTE GARDERIE DU GRAND PAVOIS,Social - Petite enfance,Halte-garderie,1.0,2026-04-20,llm_gemini
 HAUT COMME 3 POMMES,Social - Petite enfance,Structure d'accueil petite enfance,0.9,2026-02-18,llm_claude
+HAWA AU FEMININ,Social - Solidarité,Insertion et droits des femmes,0.95,2026-04-20,llm_gemini
 HENEO,Économie,Entreprise d'insertion ou de services,0.45,2026-02-18,llm_claude
 HOME SWEET MOMES,Social - Petite enfance,Garde d'enfants / crèche / accueil petite enfance,0.85,2026-02-18,llm_claude
+HOMEMAKERS,Économie,Insertion économique et économie circulaire,0.8,2026-04-20,llm_gemini
 HORS LA RUE,Social - Solidarité,Protection des mineurs étrangers isolés et en errance,0.95,2026-02-18,llm_claude
+HOTEL DE FRANCE,Social - Solidarité,Hébergement d'urgence et social,0.8,2026-04-20,llm_gemini
+HUMANDO,Social - Solidarité,Insertion par l'activité économique,0.9,2026-04-20,llm_gemini
 ICF LA SABLIERE SA D HLM,Logement,Bailleur social HLM,0.95,2026-02-18,llm_claude
+ICF LA SABLIERE SA D'HLM,Logement,Société anonyme d'HLM,1.0,2026-04-20,llm_gemini
 IERFAS,Éducation,"Institut d'études, recherche et formation",0.6,2026-02-18,llm_claude
 ILE DE FRANCE MOBILITES,Transport,Autorité organisatrice des transports en Île-de-France,0.95,2026-02-18,llm_claude
+ILE-DE-FRANCE MOBILITES,Transport,Autorité organisatrice des transports,1.0,2026-04-20,llm_gemini
 IMMOBILIERE 3F,Logement,Bailleur social - logement social,0.95,2026-02-18,llm_claude
 INALCO,Éducation,Institut National des Langues et Civilisations Orientales - enseignement supérieur,0.95,2026-02-18,llm_claude
 INCUBATEUR AU FEMININ,Économie,Incubateur entrepreneuriat féminin,0.9,2026-02-18,llm_claude
+INCUBATEUR PARIS BIOTECH,Économie,Incubateur de startups et biotechnologies,1.0,2026-04-20,llm_gemini
 INDIGO STATIONNEMENT SB,Transport,Gestion de stationnement,0.95,2026-02-18,llm_claude
 INFANS A L ENFANT,Social - Petite enfance,Accueil et accompagnement de la petite enfance,0.92,2026-02-18,llm_claude
+INITIAT RENC ET SOLID 10,Social - Solidarité,Insertion et lien social de proximité,0.95,2026-04-20,llm_gemini
+INNOVATION FACTORY,Économie,Innovation et startups,0.95,2026-04-20,llm_gemini
+INSERM,Santé,Recherche médicale,1.0,2026-04-20,llm_gemini
 INST CERVEAU MOELLE EPINIERE,Santé,Recherche médicale - Institut du Cerveau et de la Moelle Épinière (ICM),0.97,2026-02-18,llm_claude
 INST INTERDEP DU PARC DU TREMBLAY,Sport,Institut interdépartemental du Parc du Tremblay - équipements sportifs,0.75,2026-02-18,llm_claude
 INST NATIONAL SANTE RECHERCHE MEDIC,Santé,INSERM - recherche médicale,0.98,2026-02-18,llm_claude
 INSTITUT CURIE,Santé,Recherche médicale et soins contre le cancer,0.97,2026-02-18,llm_claude
+INSTITUT D'EDUCATION ET PRATIQUES,Éducation,Pratiques pédagogiques et citoyennes,0.9,2026-04-20,llm_gemini
+INSTITUT DES CULTURES D ISLAM,Culture,Établissement culturel et cultuel,1.0,2026-04-20,llm_gemini
+INSTITUT DES CULTURES D'ISLAM,Culture,Établissement culturel,1.0,2026-04-20,llm_gemini
 INSTITUT FRANCAIS,International,Institut Français – coopération culturelle internationale et francophonie,0.8,2026-02-18,llm_claude
 INSTITUT KURDE DE PARIS,Culture,"Institut culturel kurde, promotion de la culture et langue kurdes",0.8,2026-02-18,llm_claude
 INSTITUT NATIONAL DE LA SANTE,Santé,Institut National de la Santé (INSERM ou similaire),0.95,2026-02-18,llm_claude
+INSTITUT PASTEUR,Santé,Recherche médicale et santé publique,1.0,2026-04-20,llm_gemini
 INSTITUT PHYSIQUE DU GLOBE,Éducation,Institut de Physique du Globe de Paris - recherche scientifique,0.9,2026-02-18,llm_claude
 INSTITUTIONS GANONE YAD,Éducation,Institution éducative confessionnelle (Ganon / jardin d'enfants),0.65,2026-02-18,llm_claude
 INSTUT RECHERCHE APPLIQUEE ENFANT,Social - Petite enfance,Recherche appliquée sur l'enfant et la parentalité,0.7,2026-02-18,llm_claude
+INTERFACE FORMATION,Éducation,Formation professionnelle et insertion,0.95,2026-04-20,llm_gemini
 INTERNATIONAL VISUAL THEATRE,Culture,Théâtre visuel / langue des signes (IVT),0.95,2026-02-18,llm_claude
+INTERNATIONALE MAIRES FRANCOPHO,International,Coopération internationale et francophonie (AIMF),1.0,2026-04-20,llm_gemini
+IRONHACK FRANCE ALUMNI,Éducation,Formation professionnelle et numérique,0.95,2026-04-20,llm_gemini
 JANUS SAS,Autre,Société commerciale (SAS) - activité non identifiable,0.4,2026-02-18,llm_claude
+JARDIN DES TRAVERSES,Environnement,Jardin partagé,1.0,2026-04-20,llm_gemini
+JAURES PANTIN PETIT,Éducation,Établissement scolaire ou périscolaire (secteur Jaurès/Petit),0.85,2026-04-20,llm_gemini
 JETUIL,Social - Solidarité,JETUIL - association d'insertion ou solidarité (nom tronqué probable),0.35,2026-02-18,llm_claude
 JEUNESSE FEU VERT,Social - Solidarité,Prévention et insertion des jeunes,0.9,2026-02-18,llm_claude
+JEUNESSE LOUBAVITCH,Éducation,Jeunesse et formation,0.9,2026-04-20,llm_gemini
 JOANNAISE DU GROS CAILLOU,Sport,Association sportive (pétanque/boules),0.75,2026-02-18,llm_claude
 JOURS HEUREUX,Social - Solidarité,Association d'éducation populaire et séjours solidaires,0.65,2026-02-18,llm_claude
+JUDO AMICALE PARIS XX,Sport,Club de Judo,1.0,2026-04-20,llm_gemini
 JUSTICE DEUXIEME CHANCE,Social - Solidarité,Réinsertion et aide aux personnes judiciarisées,0.8,2026-02-18,llm_claude
+KELBONGOO,Social - Solidarité,Accès à une alimentation de qualité et circuits courts,0.95,2026-04-20,llm_gemini
 KEUR KAMER,Culture,Association culturelle camerounaise,0.6,2026-02-18,llm_claude
+KONEXIO,Éducation,Formation professionnelle et inclusion numérique,0.95,2026-04-20,llm_gemini
 L AGENCE PARISIENNE DU CLIMAT,Environnement,Climat et transition énergétique,0.95,2026-02-18,llm_claude
+L ARAIGNEE GENTILLE,Social - Petite enfance,Crèche et accueil de jeunes enfants,0.95,2026-04-20,llm_gemini
 L HABITAT SOCIAL FRANCAIS,Logement,Habitat social / logement social,0.9,2026-02-18,llm_claude
+L HABITATION CONFORTABLE,Logement,Logement social et gestion immobilière,0.95,2026-04-20,llm_gemini
 L ILE AUX TRESORS,Social - Petite enfance,Crèche / structure petite enfance,0.7,2026-02-18,llm_claude
+L INST D ETUDES AVANCEES  PARI,Éducation,Recherche et études supérieures,1.0,2026-04-20,llm_gemini
 L INST D ETUDES AVANCEES PARI,Éducation,Institut d'études avancées - recherche académique,0.92,2026-02-18,llm_claude
 L UN EST L AUTRE,Social - Solidarité,"Solidarité, lien social, inclusion",0.6,2026-02-18,llm_claude
+L'ACCELER. PARISIEN D'INNOVATION,Économie,Innovation et accélération de startups,1.0,2026-04-20,llm_gemini
+L'ARAIGNEE GENTILLE,Social - Petite enfance,Crèche parentale,1.0,2026-04-20,llm_gemini
+L'ETAPE  PARCOURS LOGE JEUNES,Logement,Accompagnement vers le logement des jeunes,1.0,2026-04-20,llm_gemini
+L'ETE PARISIEN,Culture,Événements culturels et loisirs,0.85,2026-04-20,llm_gemini
+L'ETOILE DU NORD,Culture,Théâtre et spectacle vivant,0.95,2026-04-20,llm_gemini
+L'HABITATION CONFORTABLE,Logement,Entreprise sociale pour l'habitat,1.0,2026-04-20,llm_gemini
+L'ILE AUX LANGUE,Éducation,Apprentissage des langues et alphabétisation,0.95,2026-04-20,llm_gemini
+LA BANANE,Social - Solidarité,Association de quartier et lien social (Quartier La Banane),0.85,2026-04-20,llm_gemini
+LA BANQUE POSTALE,Économie,Services financiers et microfinance,0.9,2026-04-20,llm_gemini
+LA BRICOLETTE,Environnement,Économie circulaire et atelier de réparation,0.9,2026-04-20,llm_gemini
+LA CAMILLIENNE SPORT 12,Sport,Club omnisports et activités physiques,1.0,2026-04-20,llm_gemini
+LA CHORBA,Social - Solidarité,Aide alimentaire et insertion,1.0,2026-04-20,llm_gemini
+LA CHOUINE,Culture,Arts et spectacles,0.9,2026-04-20,llm_gemini
+LA CITE DE LA MUSIQUE,Culture,Musique et spectacle vivant,1.0,2026-04-20,llm_gemini
+LA COMPAGNIE DU 20E,Culture,Compagnie de théâtre,0.95,2026-04-20,llm_gemini
+LA COOL DOUCHE,Social - Solidarité,Hygiène et aide aux sans-abris,1.0,2026-04-20,llm_gemini
+LA COOP MIJOTEE,Économie,Commerce et économie sociale et solidaire,0.85,2026-04-20,llm_gemini
+LA COOPERATIVE INDIGO,Social - Solidarité,Économie sociale et solidaire,0.9,2026-04-20,llm_gemini
+LA CRAVATE SOLIDARE,Social - Solidarité,Insertion professionnelle et aide vestimentaire,1.0,2026-04-20,llm_gemini
+LA DALLE AUX CHAPS,Culture,Arts du cirque et chapiteaux,0.9,2026-04-20,llm_gemini
+LA DOMREMY BASKET 13,Sport,Club de basketball,1.0,2026-04-20,llm_gemini
+LA FABRIQUE DE LA GOUTTE D'OR,Économie,Insertion économique et artisanat local,0.95,2026-04-20,llm_gemini
+LA FABRIQUE NOMADE,Social - Solidarité,Insertion professionnelle des réfugiés et artisans,0.95,2026-04-20,llm_gemini
+LA FONCIERE DE LA VILLE DE PARIS,Logement,Organisme de foncier solidaire (OFS),1.0,2026-04-20,llm_gemini
+LA GOUTTE LAIT SAINT LEON,Social - Petite enfance,Crèche et protection infantile,0.95,2026-04-20,llm_gemini
+LA JOANNAISE DU GROS CAILLOU,Éducation,Loisirs éducatifs et jeunesse,0.85,2026-04-20,llm_gemini
+LA LOGE CDC PRODUCTIONS,Culture,Spectacle vivant et production,1.0,2026-04-20,llm_gemini
+LA LUCARNE D'ARIANE,Culture,Activités artistiques et culturelles,0.9,2026-04-20,llm_gemini
+LA MAISON DE L'ENFANCE,Social - Petite enfance,Accueil de l'enfance,0.9,2026-04-20,llm_gemini
+LA MAISON DES BOUT CHOU,Social - Petite enfance,Accueil de la petite enfance,1.0,2026-04-20,llm_gemini
+LA MAISON DES BOUT'CHOU,Social - Petite enfance,Crèches et accueil des jeunes enfants,1.0,2026-04-20,llm_gemini
+LA MAISON DES JOURNALISTES,Social - Solidarité,Accueil et hébergement de journalistes exilés,0.95,2026-04-20,llm_gemini
+LA MAISON KANGOUROU,Social - Petite enfance,Gestion de crèches et haltes-garderies,1.0,2026-04-20,llm_gemini
+LA MAISON OUVERTE,Social - Petite enfance,Lieu d'accueil enfants-parents,0.9,2026-04-20,llm_gemini
+LA MANUFACTURE,Culture,Théâtre et spectacle vivant,0.9,2026-04-20,llm_gemini
+LA MENAGERIE DE VERRE,Culture,Danse contemporaine et spectacle vivant,1.0,2026-04-20,llm_gemini
+LA PASSERELLE,Social - Solidarité,Centre social et insertion,0.8,2026-04-20,llm_gemini
+LA PAUSE DU 6EME,Social - Petite enfance,Halte-garderie,0.9,2026-04-20,llm_gemini
+LA PETITE LILI,Social - Petite enfance,Crèche / Halte-garderie,0.9,2026-04-20,llm_gemini
+LA PETITE ROCKETTE,Environnement,Ressourcerie et réduction des déchets,0.95,2026-04-20,llm_gemini
+LA PLACE  CENTRE CULTUREL HIP HOP,Culture,Musiques urbaines et centre culturel,1.0,2026-04-20,llm_gemini
+LA PLACE - CENTRE CULTUREL HIPHOP,Culture,Centre culturel dédié aux cultures urbaines,1.0,2026-04-20,llm_gemini
+LA PLANETE DES ENFANTS,Social - Petite enfance,Crèche / Accueil de jeunes enfants,0.95,2026-04-20,llm_gemini
+LA PORTE ENTR'OUVERTE,Social - Petite enfance,Accompagnement de l'enfant et parentalité,0.85,2026-04-20,llm_gemini
+LA RIBAMBELLE,Social - Petite enfance,Petite enfance,0.9,2026-04-20,llm_gemini
+LA SIERRA PROD,Culture,Production audiovisuelle et culturelle,0.9,2026-04-20,llm_gemini
+LA STATION C,Culture,Lieu culturel et artistique,0.85,2026-04-20,llm_gemini
+LA TABLE DE CANA,Social - Solidarité,Insertion par l'activité économique (traiteur solidaire),0.95,2026-04-20,llm_gemini
+LA TABLE DE CANA PARIS NORDOUEST,Économie,Insertion par l'activité économique (IAE),0.95,2026-04-20,llm_gemini
+LA TABLE DU RECHO,Social - Solidarité,Insertion sociale et aide aux réfugiés,0.95,2026-04-20,llm_gemini
 LANGUES PLURIELLES,Éducation,Apprentissage du français et des langues,0.85,2026-02-18,llm_claude
 LASER ASSOCIATION,Autre,Association LASER – activité non identifiable avec certitude,0.3,2026-02-18,llm_claude
+LE 100 ETABLISS. CULTUREL SOLIDAIRE,Culture,Établissement culturel solidaire,1.0,2026-04-20,llm_gemini
+LE 100 ETABLISSEMENT CULTUREL SOLIDAIRE,Culture,Établissement culturel et solidaire,1.0,2026-04-20,llm_gemini
+"LE 100, ETS CULTUREL SOLIDAIRE",Culture,Établissement culturel,1.0,2026-04-20,llm_gemini
+LE BAL,Culture,Arts visuels et photographie,1.0,2026-04-20,llm_gemini
+LE BUS DES FEMMES,Social - Solidarité,Accompagnement des femmes en situation de prostitution,1.0,2026-04-20,llm_gemini
+LE CI'NEY 18,Culture,Cinéma,0.95,2026-04-20,llm_gemini
+LE COLLECTIF DES VOUTES,Culture,Lieu culturel et artistique,0.9,2026-04-20,llm_gemini
+LE COMEDE COMITE SANTE DES EXILES,Social - Solidarité,Santé des exilés et réfugiés,0.95,2026-04-20,llm_gemini
+LE CREDIT LYONNAIS,Économie,Secteur bancaire et financier,0.9,2026-04-20,llm_gemini
+LE DAUPHIN BLEU,Social - Petite enfance,Crèche ou structure petite enfance,0.9,2026-04-20,llm_gemini
+LE FIGUIER,Social - Solidarité,Centre social ou accueil de proximité,0.85,2026-04-20,llm_gemini
+LE KIOSQUE INFOS SIDA,Santé,Prévention VIH/SIDA,1.0,2026-04-20,llm_gemini
+LE MOULIN BLEU,Social - Petite enfance,Crèche et multi-accueil,0.95,2026-04-20,llm_gemini
+LE PAYSAN URBAIN,Environnement,Agriculture urbaine et biodiversité,1.0,2026-04-20,llm_gemini
+LE PETIT NEY,Culture,Café littéraire et animation de quartier,0.85,2026-04-20,llm_gemini
+LE PICOULET MISSION POPULAIRE XIE,Social - Solidarité,Centre social et mission populaire,1.0,2026-04-20,llm_gemini
+LE TEMPS DES RUES,Culture,Arts de la rue et festivals,0.9,2026-04-20,llm_gemini
+LEO LAGRANGE NORD -ILE-DE-FRANCE,Éducation,Éducation populaire et jeunesse,0.9,2026-04-20,llm_gemini
 LEO LAGRANGE NORD ILE DE FRANCE,Éducation,Éducation populaire et jeunesse (Léo Lagrange),0.8,2026-02-18,llm_claude
 LEO LAGRANGE NORD ILEDEFRANCE,Éducation,"Éducation populaire, animation jeunesse",0.8,2026-02-18,llm_claude
+LES 19EME RUGISSANTS,Culture,Compagnie de théâtre et action culturelle,0.9,2026-04-20,llm_gemini
+LES AMIS DE FARINEZVOUS,Économie,Insertion économique (Boulangerie solidaire),0.95,2026-04-20,llm_gemini
+LES APACHES DES VIGNOLES,Culture,Compagnie de théâtre et spectacle vivant,0.9,2026-04-20,llm_gemini
+LES ATELIERS POUR PETITS,Social - Petite enfance,Activités pour jeunes enfants,0.9,2026-04-20,llm_gemini
+LES ATHEVAINS,Culture,Théâtre et spectacle vivant,1.0,2026-04-20,llm_gemini
+LES BOUFFESQUETAIRES,Culture,Théâtre et spectacle vivant,0.9,2026-04-20,llm_gemini
+LES CANAUX,Économie,Économie circulaire et solidaire,0.95,2026-04-20,llm_gemini
+LES CHAMPS DES POSSIBLES,Environnement,Agriculture urbaine et transition écologique,0.9,2026-04-20,llm_gemini
+LES CROCOS CRECHE PARENTAL,Social - Petite enfance,Crèche parentale,1.0,2026-04-20,llm_gemini
+LES ENFANCES,Social - Solidarité,Soutien à l'enfance et à la famille,0.9,2026-04-20,llm_gemini
+LES ENFANTS DE LA GOUTTE D OR,Éducation,Animation jeunesse et soutien scolaire,0.95,2026-04-20,llm_gemini
+LES ENFANTS DE LA GOUTTE D'OR,Éducation,Jeunesse et accompagnement scolaire,0.9,2026-04-20,llm_gemini
+LES ENFANTS DU CANAL,Social - Solidarité,Lutte contre l'exclusion et aide aux sans-abri,1.0,2026-04-20,llm_gemini
+LES GRAINS DE SEL,Social - Solidarité,Lien social et vie de quartier,0.85,2026-04-20,llm_gemini
+LES GRANDS MOYENS CONSTRUCTION,Économie,Insertion économique par le bâtiment,0.9,2026-04-20,llm_gemini
+LES IDEES HEUREUSES,Culture,Production et diffusion artistique,0.9,2026-04-20,llm_gemini
+LES JOURS HEUREUX,Social - Solidarité,Handicap mental,0.95,2026-04-20,llm_gemini
+LES KYKLOS,Culture,Compagnie de théâtre et arts de la rue,0.9,2026-04-20,llm_gemini
+LES PIEDS TENDRES,Culture,Compagnie de théâtre et arts de la rue,0.85,2026-04-20,llm_gemini
+LES PLATEAUX SAUVAGES,Culture,Établissement culturel (théâtre et création),1.0,2026-04-20,llm_gemini
+LES POUSSINS D'ANNAM,Social - Petite enfance,Crèche (rue d'Annam),1.0,2026-04-20,llm_gemini
+LEVALLOIS PARIS SAINT-CLOUD,Sport,Club de volley-ball professionnel,0.9,2026-04-20,llm_gemini
 LEVALLOIS PARIS SAINTCLOUD,Sport,Club sportif (probable club de rugby ou football inter-communes),0.6,2026-02-18,llm_claude
 LIFE FOR PARIS 13 NOVEMBRE 2015,Social - Solidarité,Soutien aux victimes des attentats du 13 novembre 2015,0.95,2026-02-18,llm_claude
 LIGUE FRCAISE DEFENSE DROITS DE L H,Social - Solidarité,Ligue Française de Défense des Droits de l'Homme,0.85,2026-02-18,llm_claude
+LIGUE FRCAISE DEFENSE DROITS DE L'H,Social - Solidarité,Défense des droits de l'homme,1.0,2026-04-20,llm_gemini
 LINKEE FRANCE,Social - Solidarité,Aide alimentaire et lutte contre le gaspillage,0.95,2026-02-18,llm_claude
 LINKEE PARIS,Social - Solidarité,Aide alimentaire anti-gaspillage,0.93,2026-02-18,llm_claude
+LIRE A PARIS,Éducation,Promotion de la lecture et lutte contre l'illettrisme,0.9,2026-04-20,llm_gemini
+LOGEMENT GEST IMMOBILIERE REG PARIS,Logement,Gestion immobilière et logement social (RIVP),1.0,2026-04-20,llm_gemini
+LOGEMENT JEUNES TRAVAILLEURS,Logement,Foyers de jeunes travailleurs,1.0,2026-04-20,llm_gemini
 LOGIREP,Logement,Logement social (bailleur social),0.93,2026-02-18,llm_claude
+LOISIRS PLURIEL 19EME,Social - Solidarité,Inclusion handicap et loisirs,1.0,2026-04-20,llm_gemini
+LOISIRS PLURIEL DE PARIS 6,Social - Solidarité,Loisirs adaptés (handicap),0.95,2026-04-20,llm_gemini
 LOISIRS PLURIEL DU 19EME,Social - Solidarité,Loisirs pour enfants en situation de handicap dans le 19e,0.8,2026-02-18,llm_claude
 LOISIRS RESIDENTIELS DES MARINIERS,Social - Solidarité,Loisirs et hébergement pour mariniers / gens du voyage,0.6,2026-02-18,llm_claude
+LULU DANS MA RUE,Économie,Insertion par l'activité économique / Conciergerie solidaire,0.95,2026-04-20,llm_gemini
 LYCEE DES METIERS BOULLE E S A A,Éducation,"Lycée des métiers (École Boulle, arts appliqués)",0.95,2026-02-18,llm_claude
+LYCEE DES METIERS BOULLE E.S.A.A.,Éducation,Enseignement supérieur et métiers d'art,1.0,2026-04-20,llm_gemini
+LYCEE PROFESSIONNEL CAMILLE JENATZY,Éducation,Lycée professionnel,1.0,2026-04-20,llm_gemini
+LYCEE PROFESSIONNEL GASTON BACHELAR,Éducation,Lycée professionnel,1.0,2026-04-20,llm_gemini
+LYCEE PROFESSIONNEL MARIA DERAISMES,Éducation,Lycée professionnel,1.0,2026-04-20,llm_gemini
+LYCEE PROFESSIONNEL PIERRE LESCOT,Éducation,Lycée professionnel,1.0,2026-04-20,llm_gemini
+LYCEE PROFESSIONNEL RENE CASSIN,Éducation,Enseignement professionnel (Lycée),1.0,2026-04-20,llm_gemini
+LYCEE PROFESSIONNEL SUZANNE VALADON,Éducation,Enseignement professionnel (Lycée),1.0,2026-04-20,llm_gemini
 LYCEE PROFESSIONNEL THEOPHILE GAUTI,Éducation,Lycée professionnel Théophile Gautier,0.97,2026-02-18,llm_claude
+LYCEE TECHNOLOGIQ-EC.NAT.SUP.ARTS A,Éducation,Lycée et enseignement supérieur (Arts appliqués),1.0,2026-04-20,llm_gemini
 LYCEE TECHNOLOGIQUE ESTIENNE E S A,Éducation,"Lycée technologique (École Estienne, arts graphiques)",0.92,2026-02-18,llm_claude
+LYCEE TECHNOLOGIQUE ESTIENNE E.S.A.,Éducation,Enseignement supérieur et technique,1.0,2026-04-20,llm_gemini
 LYCEE TECHNOLOGIQUE ESTIENNE ESA,Éducation,Lycée technologique - École Estienne (arts graphiques),0.95,2026-02-18,llm_claude
+LYCEE TECHNOLOGIQUE JACQUES MONOD,Éducation,Enseignement secondaire technologique,1.0,2026-04-20,llm_gemini
+LYCEE TECHNOLOGIQUE LUCAS DE NEHOU,Éducation,Enseignement secondaire technologique,1.0,2026-04-20,llm_gemini
+LYCEE TECHNOLOGIQUE M VOX-ART-DESSI,Éducation,Lycée technologique d'arts appliqués,1.0,2026-04-20,llm_gemini
 LYCEE TECHNOLOGIQUE MUN DUPERRE ESA,Éducation,Lycée technologique municipal (École Duperré - arts appliqués),0.95,2026-02-18,llm_claude
+M.U,Culture,Collectif artistique et sonore (MU),0.85,2026-04-20,llm_gemini
 MADLINE,Autre,,0.25,2026-02-18,llm_claude
+MAGRO HUERTAS,Culture,Compagnie de spectacle vivant (danse/théâtre),0.85,2026-04-20,llm_gemini
+MAIA AUTISME,Social - Solidarité,Accompagnement du handicap (autisme),1.0,2026-04-20,llm_gemini
+MAIRIE DE VALENCE,Administration,Collectivité territoriale,1.0,2026-04-20,llm_gemini
 MAISON BAKHITA,Social - Solidarité,Hébergement et accompagnement de femmes en situation de précarité / réfugiées,0.88,2026-02-18,llm_claude
 MAISON CANAL,Social - Solidarité,Maison de quartier / espace solidaire,0.5,2026-02-18,llm_claude
 MAISON DE L ENFANCE,Social - Petite enfance,Structure d'accueil de la petite enfance / enfance,0.85,2026-02-18,llm_claude
 MAISON DE L EUROPE DE PARIS,International,Promotion de la citoyenneté européenne et affaires européennes,0.85,2026-02-18,llm_claude
 MAISON DE L EUROPE DE PARIS CTRE,International,Affaires européennes et citoyenneté européenne,0.85,2026-02-18,llm_claude
+MAISON DE L'EUROPE DE PARIS,International,Affaires européennes et citoyenneté,1.0,2026-04-20,llm_gemini
+MAISON DE L'EUROPE DE PARIS CTRE,International,Affaires européennes,1.0,2026-04-20,llm_gemini
 MAISON DE LA CONVERSATION,Culture,Lien social et échanges culturels / art de la conversation,0.6,2026-02-18,llm_claude
 MAISON DE LA POESIE,Culture,Maison de la Poésie - lieu culturel dédié à la poésie et à la littérature,0.98,2026-02-18,llm_claude
 MAISON DES ADOS ROBERT DEBRE GCSMS,Santé,Maison des adolescents - structure médico-sociale (hôpital Robert Debré),0.85,2026-02-18,llm_claude
 MAISON DES BOUT CHOU,Social - Petite enfance,Structure d'accueil petite enfance,0.92,2026-02-18,llm_claude
+MAISON DES METALLOS,Culture,Établissement culturel pluridisciplinaire,1.0,2026-04-20,llm_gemini
+MAISON DES PRATIQUES ARTISTIQUES AMATEURS,Culture,Pratiques artistiques amateurs,1.0,2026-04-20,llm_gemini
+MAISON GESTE IMAGE,Culture,Arts visuels et spectacle vivant,0.95,2026-04-20,llm_gemini
+MAISON GESTE IMAGE CTRE RECHERC EDU,Éducation,Éducation artistique et recherche,0.9,2026-04-20,llm_gemini
 MAISON KANGOUROU,Social - Petite enfance,Garde d'enfants / crèche familiale,0.85,2026-02-18,llm_claude
 MAISON OUVERTE,Social - Petite enfance,Lieu d'accueil enfants-parents / halte-garderie,0.7,2026-02-18,llm_claude
+MAISON PRATIQUES ARTISTIQUES AMATEU,Culture,Pratiques artistiques amateurs,1.0,2026-04-20,llm_gemini
+MAKE ICI,Économie,Artisanat et insertion économique,0.9,2026-04-20,llm_gemini
 MAMA,Culture,Art contemporain / lieu culturel,0.7,2026-02-18,llm_claude
 MANUFACTURE,Culture,Lieu de création artistique / spectacle vivant,0.6,2026-02-18,llm_claude
+MARGUERITE,Social - Petite enfance,Gestion de structures petite enfance,0.85,2026-04-20,llm_gemini
+MARIE THERESE,Social - Solidarité,Hébergement pour personnes âgées (EHPAD),0.8,2026-04-20,llm_gemini
 MEDECINS DU MONDE,International,Aide humanitaire et coopération internationale,0.95,2026-02-18,llm_claude
+MEDIATION-INSERTION-FORMATION,Social - Solidarité,Insertion sociale et professionnelle,0.95,2026-04-20,llm_gemini
+MEDIATIONINSERTIONFORMATION,Social - Solidarité,Insertion professionnelle et formation,1.0,2026-04-20,llm_gemini
+MEDICALE BELLEVILLE,Santé,Centre ou association médicale,1.0,2026-04-20,llm_gemini
+MEMORIAL DE LA SHOAH,Culture,Musée et mémoire,1.0,2026-04-20,llm_gemini
+MENAGERIE VERRE S.A.R.L ATELIERS DA,Culture,Lieu de création chorégraphique et danse contemporaine,1.0,2026-04-20,llm_gemini
+MEP - MAISON EUROPEENNE,Culture,Photographie et arts visuels,1.0,2026-04-20,llm_gemini
 MEP MAISON EUROPEENNE,Culture,Maison Européenne de la Photographie - arts visuels / photographie,0.99,2026-02-18,llm_claude
 METRAMOMES,Social - Petite enfance,Structure d'accueil petite enfance (crèche/halte-garderie),0.8,2026-02-18,llm_claude
 MEXICO À PARIS,Culture,Échanges culturels franco-mexicains,0.7,2026-02-18,llm_claude
+MINI COCCINELLES,Social - Petite enfance,Crèche / Accueil de la petite enfance,1.0,2026-04-20,llm_gemini
 MINISTER ENSEI SUPERI RECHER INNOVA,Éducation,"Ministère de l'Enseignement Supérieur, de la Recherche et de l'Innovation",0.99,2026-02-18,llm_claude
 MISSION LOCALE DE PARIS,Économie,Insertion professionnelle des jeunes,0.92,2026-02-18,llm_claude
 MISSION LOCALE PARIS,Économie,Insertion professionnelle des jeunes (Mission Locale),0.88,2026-02-18,llm_claude
 MOTEUR,Social - Solidarité,Insertion et handicap moteur,0.5,2026-02-18,llm_claude
 MOTIVEA,Économie,Insertion professionnelle / accompagnement vers l'emploi,0.5,2026-02-18,llm_claude
 MOULIN BLEU,Culture,Compagnie ou lieu de spectacle vivant,0.6,2026-02-18,llm_claude
+MOULINOT COMPOST & BIOGAZ,Environnement,Gestion des biodéchets et économie circulaire,1.0,2026-04-20,llm_gemini
+MSP QUAI DE SEINE,Santé,Maison de Santé Pluriprofessionnelle (MSP),1.0,2026-04-20,llm_gemini
+MSP VINCENT AURIOL,Santé,Maison de Santé Pluriprofessionnelle,1.0,2026-04-20,llm_gemini
 MUSEE D ART ET D HISTOIRE DU JUDAIS,Culture,Musée d'Art et d'Histoire du Judaïsme,0.98,2026-02-18,llm_claude
 MUSEE D ART ET D HISTOIRE DU JUDAISME,Culture,Musée - patrimoine et histoire du judaïsme,0.99,2026-02-18,llm_claude
+MUSEE D'ART ET D'HISTOIRE DU JUDAISME,Culture,Musée et patrimoine,1.0,2026-04-20,llm_gemini
 MUSEE EN HERBE,Culture,Musée ludique et pédagogique pour enfants,0.92,2026-02-18,llm_claude
 MUSEUM NATIONAL HISTOIRE NATURELLE,Culture,Muséum national d'Histoire naturelle – musée et patrimoine scientifique,0.9,2026-02-18,llm_claude
+MUSIQUE SACREE A NOTRE DAME DE PARI,Culture,Musique et patrimoine,1.0,2026-04-20,llm_gemini
+MUSIQUES ET CULTURES DIGITALES,Culture,Musique et arts numériques,1.0,2026-04-20,llm_gemini
 MUTUELLE LA MAYOTTE,Social - Petite enfance,Crèche parentale / mutuelle petite enfance,0.6,2026-02-18,llm_claude
 NAT PREVENT ALCOOL ADDICT,Santé,Prévention des addictions à l'alcool (Association Nationale de Prévention en Alcoologie et Addictologie - ANPAA),0.95,2026-02-18,llm_claude
 NATIONALE DE READAPTATION SOCIALE,Social - Solidarité,Réadaptation sociale - insertion et réinsertion,0.85,2026-02-18,llm_claude
+NEAG 3,Économie,Développement économique et nouveaux espaces d'activités,0.7,2026-04-20,llm_gemini
 NOUVELLE ETOILE DES ENFANTS DE,Culture,Association d'activités pour enfants (danse/spectacle),0.5,2026-02-18,llm_claude
 NOUVELLE ETOILE DES ENFANTS DE F,Culture,Association culturelle/éducative pour enfants (probablement danse ou spectacle),0.5,2026-02-18,llm_claude
+NOUVELLE IDEE DE LA CRECHE PARIS,Social - Petite enfance,Établissement d'accueil du jeune enfant (Crèche),1.0,2026-04-20,llm_gemini
+NOVEMPLOI,Économie,Emploi et insertion,0.95,2026-04-20,llm_gemini
+NOVIGERE SOCIETE ANONYME,Logement,Bailleur social (HLM),1.0,2026-04-20,llm_gemini
 OBSERV MOND VILLES SUR QUAL AIR GUA,Environnement,Observatoire mondial des villes sur la qualité de l'air (garantie),0.9,2026-02-18,llm_claude
 OBSERVAT LOYERS AGGLO PARISIENNE,Logement,Observatoire des loyers de l'agglomération parisienne,0.9,2026-02-18,llm_claude
 OBSERVATOIRE REGION DU BRUIT EN IDF,Environnement,Bruitparif - Observatoire régional du bruit en Île-de-France,0.85,2026-02-18,llm_claude
+OEUV CHAUSS MAI-CENT ETU ACT SOC IN,Social - Solidarité,Insertion et action sociale,1.0,2026-04-20,llm_gemini
 OEUVRE DE LA MIE DE PAIN,Social - Solidarité,Hébergement d'urgence et aide alimentaire,0.95,2026-02-18,llm_claude
 OEUVRE DE SECOURS AUX ENFANTS,Social - Solidarité,Protection de l'enfance et aide humanitaire (OSE),0.95,2026-02-18,llm_claude
 OEUVRE HOSPITALITE TRAVAIL,Social - Solidarité,Hébergement et insertion par le travail,0.8,2026-02-18,llm_claude
 OEUVRES D AVENIR,Social - Solidarité,Œuvres caritatives et solidarité,0.7,2026-02-18,llm_claude
+OEUVRES DES OTAGES,Social - Solidarité,Action sociale et personnes âgées,0.9,2026-04-20,llm_gemini
 OEUVRES HOSP FR DE L ORDRE DE MALTE,Social - Solidarité,"Aide humanitaire, hébergement et soins aux personnes vulnérables",0.92,2026-02-18,llm_claude
 OFFICE CENTR COOPERAT ECOLE PARIS,Éducation,Office Central de la Coopération à l'École (OCCE) - coopératives scolaires,0.95,2026-02-18,llm_claude
 OFFICE DE TOURISME ET DES CONGRES P,Économie,Office de tourisme et des congrès de Paris - promotion touristique et économique,0.85,2026-02-18,llm_claude
@@ -504,17 +1044,30 @@ OFFICE TOURISME CONGRES PARIS,Économie,Office du tourisme et des congrès de Pa
 OFFICE TOURISME ET CONGRES PARIS,Économie,Office de tourisme et des congrès de Paris,0.88,2026-02-18,llm_claude
 OHEL ESTHER,Social - Petite enfance,Structure d'accueil petite enfance communautaire,0.55,2026-02-18,llm_claude
 OLGA SPITZER,Social - Solidarité,Protection de l'enfance et aide sociale,0.9,2026-02-18,llm_claude
+ONZIEME EVENEMENTS  FESTIVAL ONZE BOUGE,Culture,Festival pluridisciplinaire,1.0,2026-04-20,llm_gemini
+OPERATEUR DE COMPETENCES,Économie,Formation professionnelle (OPCO),0.95,2026-04-20,llm_gemini
 OPPELIA,Santé,Prévention des addictions et accompagnement médico-social,0.92,2026-02-18,llm_claude
+OPTIM EMPLOI,Économie,Insertion professionnelle et emploi,1.0,2026-04-20,llm_gemini
+ORCHESTRE COLONNE,Culture,Musique symphonique,1.0,2026-04-20,llm_gemini
+ORCHESTRE CONCERTS LAMO,Culture,Musique symphonique (Orchestre Lamoureux),1.0,2026-04-20,llm_gemini
 ORCHESTRE DE CHAMBRE DE PARIS,Culture,Orchestre / musique classique,0.99,2026-02-18,llm_claude
 ORCHESTRE DE PARIS,Culture,Orchestre symphonique,0.99,2026-02-18,llm_claude
 ORGANIS PAN AFRICAINE LUTTE P SANTE,Santé,Organisation panafricaine de lutte pour la santé,0.92,2026-02-18,llm_claude
+ORGANISATION INTERNAT MIGRATIONS,International,Organisation internationale et migrations,1.0,2026-04-20,llm_gemini
+OZAR HATORAH PARIS ONZE CRECHE,Social - Petite enfance,Crèche,1.0,2026-04-20,llm_gemini
 OZAR HATORAH PARIS TREIZE CRECHE,Social - Petite enfance,"Crèche associative (réseau Ozar Hatorah, Paris 13e)",0.95,2026-02-18,llm_claude
+PARADOXES,Culture,Compagnie de théâtre / Spectacle vivant,0.8,2026-04-20,llm_gemini
 PARCOURS INSERTION FLES PARIS,Social - Solidarité,Insertion par l'apprentissage du français (FLE) pour publics migrants,0.9,2026-02-18,llm_claude
+PARENT ELEVE JARDIN ENFANT FR A,Social - Petite enfance,Association de parents d'élèves en jardin d'enfants,1.0,2026-04-20,llm_gemini
 PARIS 13 ATLETICO,Sport,Club sportif (football/athlétisme) du 13e arrondissement,0.95,2026-02-18,llm_claude
+PARIS 2018,Sport,Organisation des Gay Games 2018,0.95,2026-04-20,llm_gemini
 PARIS 2024 COMITE D ORGANISAT DES,Sport,Comité d'organisation des Jeux Olympiques Paris 2024,0.98,2026-02-18,llm_claude
 PARIS 2024 COMITE D ORGANISATION,Sport,Comité d'organisation des Jeux Olympiques Paris 2024,0.99,2026-02-18,llm_claude
+PARIS 2024 COMITE D'ORGANISAT DES,Sport,Organisation des Jeux Olympiques et Paralympiques,1.0,2026-04-20,llm_gemini
+PARIS 2024 COMITE D'ORGANISATION,Sport,Organisation des Jeux Olympiques et Paralympiques,1.0,2026-04-20,llm_gemini
 PARIS 92,Sport,Club sportif (football/rugby),0.75,2026-02-18,llm_claude
 PARIS ACASA FUTSAL,Sport,Club de futsal,0.95,2026-02-18,llm_claude
+PARIS AIDE AUX VICTIMES,Social - Solidarité,Aide aux victimes et accès au droit,1.0,2026-04-20,llm_gemini
 PARIS ANIMATION CULT ET SPORT,Culture,Animation culturelle et sportive parisienne - dominante culturelle,0.55,2026-02-18,llm_claude
 PARIS ATELIERS,Culture,Ateliers d'arts plastiques et pratiques artistiques,0.95,2026-02-18,llm_claude
 PARIS ATHLE 2020,Sport,Athlétisme,0.95,2026-02-18,llm_claude
@@ -522,87 +1075,153 @@ PARIS AUDIO VISUEL MEP,Culture,Maison Européenne de la Photographie - photograp
 PARIS BASKET 18E,Sport,Club de basketball du 18e arrondissement,0.98,2026-02-18,llm_claude
 PARIS BASKETBALL,Sport,Club de basketball professionnel,0.99,2026-02-18,llm_claude
 PARIS CINE,Culture,Cinéma - promotion et diffusion cinématographique,0.9,2026-02-18,llm_claude
+PARIS DANCE PROJECT,Culture,Danse,1.0,2026-04-20,llm_gemini
 PARIS ET COMPAGNIE,Économie,Paris&Co - agence de développement économique et innovation de Paris,0.9,2026-02-18,llm_claude
 PARIS FOOTBALL CLUB,Sport,Club de football professionnel,0.99,2026-02-18,llm_claude
 PARIS HABITAT OPH,Logement,Office public de l'habitat - logement social,0.97,2026-02-18,llm_claude
+PARIS HABITAT-OPH,Logement,Logement social (OPH),1.0,2026-04-20,llm_gemini
 PARIS INITIATIVE ENTREPRISE,Économie,Aide à la création d'entreprise / microfinance,0.95,2026-02-18,llm_claude
 PARIS INITIATIVES ENTREPRISES,Économie,Paris Initiatives Entreprises - microfinance et aide à la création d'entreprise,0.95,2026-02-18,llm_claude
 PARIS MUSEES,Culture,Musées municipaux parisiens,0.99,2026-02-18,llm_claude
+PARIS MUSIC,Culture,Musique et festivals,1.0,2026-04-20,llm_gemini
+PARIS SAINT-GERMAIN HANDBALL,Sport,Club de handball professionnel,1.0,2026-04-20,llm_gemini
 PARIS UNIVERSITE CLUB,Sport,Club sportif universitaire omnisports,0.95,2026-02-18,llm_claude
 PARIS VOLLEY AVENIR,Sport,Club de volley-ball parisien,0.95,2026-02-18,llm_claude
 PARLER A D AUTRES,Santé,Soutien psychologique et écoute - santé mentale,0.6,2026-02-18,llm_claude
+PARLER A D'AUTRES,Social - Solidarité,Lien social et lutte contre l'isolement,0.9,2026-04-20,llm_gemini
 PAROLES VOYAGEUSES,Culture,"Littérature, contes et arts de la parole",0.8,2026-02-18,llm_claude
+PARRAINS PAR'MILLE,Social - Solidarité,Parrainage d'enfants et mentorat,1.0,2026-04-20,llm_gemini
+PASS SPORT S POUR L EMPLOI,Économie,Insertion professionnelle par le sport,0.9,2026-04-20,llm_gemini
+PASS W,Social - Solidarité,Insertion sociale et professionnelle,0.8,2026-04-20,llm_gemini
+PASSERELLE  17 AS POUR LA REGIE,Économie,Insertion économique (Régie de quartier),0.9,2026-04-20,llm_gemini
 PASSERELLE 17 AS POUR LA REGIE,Social - Solidarité,Régie de quartier du 17e - insertion et lien social,0.7,2026-02-18,llm_claude
 PASSERELLE ASSIST AIDANT RESAF,Social - Solidarité,Aide aux aidants familiaux et réseau d'assistance,0.85,2026-02-18,llm_claude
+PAVILLON DE L ARSENAL,Culture,Architecture et urbanisme,1.0,2026-04-20,llm_gemini
 PAX PROGRES PALLAS,Sport,Club sportif multisports (association sportive parisienne),0.6,2026-02-18,llm_claude
 PETIT BAIN,Culture,Salle de concerts et lieu culturel flottant,0.92,2026-02-18,llm_claude
 PETIT NEY,Culture,Lieu culturel associatif (18e arrondissement),0.8,2026-02-18,llm_claude
+PETITE ENFANCE ET PARENTAL,Social - Petite enfance,Soutien à la parentalité et petite enfance,1.0,2026-04-20,llm_gemini
 PETITE REINE,Transport,Livraison urbaine à vélo / mobilité douce,0.85,2026-02-18,llm_claude
 PETITE ROCKETTE,Économie,"La Petite Rockette - ressourcerie, réemploi, économie sociale et solidaire",0.75,2026-02-18,llm_claude
 PICOULET MISSION POPULAIRE XIE,Social - Solidarité,Mission populaire évangélique - hébergement et aide sociale,0.8,2026-02-18,llm_claude
 PIEDS TENDRES,Social - Petite enfance,Structure d'accueil petite enfance / crèche associative,0.65,2026-02-18,llm_claude
+PIMMS DE PARIS,Social - Solidarité,Médiation sociale et accès aux droits,0.95,2026-04-20,llm_gemini
+PIROUETT,Social - Petite enfance,Crèche ou halte-garderie,0.9,2026-04-20,llm_gemini
+PLAISIR D ENFANCE,Social - Petite enfance,Éducation alternative et petite enfance,0.95,2026-04-20,llm_gemini
+PLAN INTERNATIONAL FRANCE,International,ONG aide au développement et droits de l'enfant,1.0,2026-04-20,llm_gemini
 PLANETE DES ENFANTS,Social - Petite enfance,Structure d'accueil petite enfance,0.85,2026-02-18,llm_claude
 PLATEAUX SAUVAGES,Culture,Lieu de création artistique (spectacle vivant),0.93,2026-02-18,llm_claude
 POLE SUP ENSEIGNEM ARTISTIQ PARIS,Éducation,Pôle supérieur d'enseignement artistique de Paris (PSPBB),0.85,2026-02-18,llm_claude
+POLE SUP ENSEIGNEM ARTISTIQ PARIS-,Éducation,Enseignement supérieur artistique,1.0,2026-04-20,llm_gemini
 POLYNOTES 75,Culture,Association musicale,0.75,2026-02-18,llm_claude
+POSITIVE,Économie,Insertion économique et entrepreneuriat,0.85,2026-04-20,llm_gemini
+POSITIVE PLANET,Économie,Insertion économique et microfinance,0.95,2026-04-20,llm_gemini
+POUR DEVELOPPEMENT SANTE FEMMES,Santé,Santé des femmes,1.0,2026-04-20,llm_gemini
 POUR L AIDE AUX MERES DE FAMI,Social - Solidarité,Aide aux mères de famille en difficulté,0.9,2026-02-18,llm_claude
 POUSSINS D ANNAM,Social - Petite enfance,Crèche / halte-garderie (Les Poussins d'Annam),0.85,2026-02-18,llm_claude
 PREFECTURE DE POLICE DE PARIS,Sécurité,Préfecture de police de Paris,0.99,2026-02-18,llm_claude
+PREVENTION SITE VILLETTE,Social - Solidarité,Prévention spécialisée et médiation sociale,0.9,2026-04-20,llm_gemini
+PRIBON BELLEVILLE,Social - Solidarité,Prévention spécialisée (Belleville),0.85,2026-04-20,llm_gemini
+PRIBON CRIMEE,Logement,Résidence sociale ou foyer,0.9,2026-04-20,llm_gemini
+PRIMO LEVI,Social - Solidarité,Aide aux réfugiés et victimes de torture,0.95,2026-04-20,llm_gemini
 PRO INSERT,Économie,Insertion professionnelle,0.85,2026-02-18,llm_claude
 PROJETS 19,Social - Solidarité,Association d'insertion et solidarité dans le 19e arrondissement,0.6,2026-02-18,llm_claude
+PROJETS-19,Social - Solidarité,Insertion et développement local,0.9,2026-04-20,llm_gemini
+PROJETS19,Économie,Insertion économique et développement local,0.9,2026-04-20,llm_gemini
+PROTECTION CIVILE DE PARIS,Sécurité,Secours et protection civile,0.95,2026-04-20,llm_gemini
 PROTECTION CIVILE PARIS SEINE,Sécurité,Protection civile - secourisme et prévention,0.9,2026-02-18,llm_claude
+PUC RUGBY,Sport,Club de rugby (Paris Université Club),1.0,2026-04-20,llm_gemini
 PUC VOLLEY BALL,Sport,Club de volley-ball (Paris Université Club),0.99,2026-02-18,llm_claude
 QUEL UNIVERS INVENTER,Culture,Compagnie de spectacle vivant / création artistique,0.7,2026-02-18,llm_claude
+R.G.F DE PARIS - ETS INTERDEPART,Administration,Établissement public interdépartemental,0.9,2026-04-20,llm_gemini
+RACING MULTI ATHLON,Sport,Club omnisports,1.0,2026-04-20,llm_gemini
 RATP,Transport,Régie Autonome des Transports Parisiens - transports en commun,0.98,2026-02-18,llm_claude
 RATP HABITAT,Logement,RATP Habitat - bailleur social du groupe RATP,0.93,2026-02-18,llm_claude
 RECTORAT DE L ACADEMIE DE PARIS,Éducation,Rectorat - institution éducative publique,0.98,2026-02-18,llm_claude
+RECTORAT DE L'ACADEMIE DE PARIS,Éducation,Administration de l'enseignement scolaire,1.0,2026-04-20,llm_gemini
+REFER RESEAU FRANCILIEN DU REEMPLOI,Environnement,Réseau de ressourceries et recyclage,1.0,2026-04-20,llm_gemini
 REGIE AUTONOME TRANSPORTS PARISIENS,Transport,RATP - transports en commun parisiens,0.99,2026-02-18,llm_claude
 REGIE DE QUARTIER DU 19E,Social - Solidarité,Régie de quartier - insertion et lien social,0.85,2026-02-18,llm_claude
+REGIE DE QUARTIER FONTAINE AU ROI,Social - Solidarité,Régie de quartier et insertion,0.95,2026-04-20,llm_gemini
 REGIE DE QUARTIER PARIS CENTRE,Social - Solidarité,Régie de quartier - insertion et lien social,0.85,2026-02-18,llm_claude
+REGIE DE QUARTIERS TELA 13,Social - Solidarité,Régie de quartier et insertion par l'activité économique,0.95,2026-04-20,llm_gemini
 REGIE ECOLE INGENIEURS VILLE PARIS,Éducation,EIVP - École des Ingénieurs de la Ville de Paris,0.95,2026-02-18,llm_claude
 REGIE ECOLE SUP PHYSIQUE CHIMIE IND,Éducation,École supérieure de physique et chimie industrielles (ESPCI),0.95,2026-02-18,llm_claude
 REGIE IMMOBILIERE DE LA VILLE DE PA,Logement,Régie immobilière de la Ville de Paris (RIVP) - logement social (nom tronqué),0.95,2026-02-18,llm_claude
 REGIE IMMOBILIERE DE LA VILLE DE PARIS,Logement,Régie immobilière de la Ville de Paris (RIVP) - logement social,0.95,2026-02-18,llm_claude
 REGIE IMMOBILIERE DE LA VILLE PARIS,Logement,Gestion immobilière et logement social,0.95,2026-02-18,llm_claude
 REGIE IMMOBILIERE VILLE DE PARIS,Logement,Régie Immobilière de la Ville de Paris - logement social,0.95,2026-02-18,llm_claude
+REGION INSERTION ECONOMIQUE SOC,Économie,Insertion économique,1.0,2026-04-20,llm_gemini
 REHABAIL,Logement,Aide au logement / réhabilitation de logements,0.8,2026-02-18,llm_claude
+REJOUE,Économie,Insertion économique et recyclage,0.95,2026-04-20,llm_gemini
 RELAIS 59,Social - Solidarité,Centre social et maison de quartier (12e arrondissement),0.88,2026-02-18,llm_claude
 RELAIS MENILMONTANT,Social - Solidarité,Centre social et d'animation de quartier (Ménilmontant),0.75,2026-02-18,llm_claude
 REMG REMISE GRACIEUSE,Administration,Remise gracieuse de créance - procédure administrative,0.6,2026-02-18,llm_claude
+REMG Remise gracieuse,Administration,Remise gracieuse / Opération comptable,0.9,2026-04-20,llm_gemini
 REMISES GRACIEUSES,Administration,Remises gracieuses de dettes/créances,0.85,2026-02-18,llm_claude
+REPARESEB,Économie,Insertion économique et économie circulaire,0.9,2026-04-20,llm_gemini
 REPUBLIQUE ENFANTS,Social - Petite enfance,Accueil et éducation des jeunes enfants,0.65,2026-02-18,llm_claude
 RES PARIS ATEL VELO PART SOLID,Transport,Atelier vélo participatif et solidaire,0.82,2026-02-18,llm_claude
+RES. PARIS. ATEL. VELO PART. SOLID.,Environnement,Ateliers vélo et mobilité durable,0.95,2026-04-20,llm_gemini
+RESEAU FRANCILIEN DU REEMPLOI,Environnement,Économie circulaire et réemploi,0.95,2026-04-20,llm_gemini
 RESEAU MOM ARTRE,Social - Petite enfance,Garde d'enfants et soutien à la parentalité,0.93,2026-02-18,llm_claude
+RESEAU MOM'ARTRE,Éducation,Accueil périscolaire et artistique,0.9,2026-04-20,llm_gemini
+RESEAU TREIZE,Santé,Réseau de santé et gérontologie,0.9,2026-04-20,llm_gemini
 RESOQUARTIER,Social - Solidarité,Réseau de solidarité de quartier / lien social,0.6,2026-02-18,llm_claude
 RESSOURCERIE CREATIVE,Environnement,Ressourcerie - réemploi et économie circulaire créative,0.85,2026-02-18,llm_claude
 RESSOURCES,Social - Solidarité,Association d'insertion / accompagnement social (nom générique),0.45,2026-02-18,llm_claude
 RESTAURANTS DU C UR,Social - Solidarité,Aide alimentaire,0.99,2026-02-18,llm_claude
+RESTAURANTS DU CŒUR,Social - Solidarité,Aide alimentaire et insertion,1.0,2026-04-20,llm_gemini
 RESTAUS DU COEUR LES RELAIS COEUR P,Social - Solidarité,Aide alimentaire - Restos du Cœur relais de Paris,0.97,2026-02-18,llm_claude
 RETRAITE CONSEILLERS MUNICIPAUX PAR,Administration,Caisse de retraite des conseillers municipaux de Paris,0.92,2026-02-18,llm_claude
+REUZ FRANCE,Environnement,Économie circulaire et réduction des déchets,0.95,2026-04-20,llm_gemini
 REVOIR NOTRE DAME DE PARIS,Culture,Patrimoine - Notre-Dame de Paris,0.9,2026-02-18,llm_claude
+REVOIR NOTRE-DAME DE PARIS,Culture,Patrimoine et restauration de monuments,0.95,2026-04-20,llm_gemini
+REZ DE RAIL,Environnement,"Tiers-lieu, écologie urbaine et jardins partagés",0.85,2026-04-20,llm_gemini
 REZOSOCIAL,Social - Solidarité,Aide numérique et sociale pour personnes en précarité,0.85,2026-02-18,llm_claude
 RIVP,Logement,Régie Immobilière de la Ville de Paris - logement social,0.95,2026-02-18,llm_claude
 RÉGIE AUTONOME DES TRANSPORTS PARISIENS,Transport,RATP - Transports en commun parisiens,1.0,2026-02-18,llm_claude
+RÉGIE DE QUARTIER DU 19EME,Économie,Insertion par l'activité économique (IAE),0.9,2026-04-20,llm_gemini
 SA D H L M FRANCE HABITATION,Logement,SA d'HLM - logement social,0.97,2026-02-18,llm_claude
 SA D HLM TOIT ET JOIE,Logement,SA d'HLM Toit et Joie - logement social,0.99,2026-02-18,llm_claude
+SA D'H L M FRANCE HABITATION,Logement,Logement social / HLM,1.0,2026-04-20,llm_gemini
+SA D'HLM TOIT ET JOIE,Logement,Bailleur social (HLM),1.0,2026-04-20,llm_gemini
 SA HLM LOGIS TRANSPORTS,Logement,SA HLM – logement social lié aux transports,0.9,2026-02-18,llm_claude
+SA HLM PIERRES ET LUMIERES,Logement,Bailleur social HLM,1.0,2026-04-20,llm_gemini
+SA IMMO MOULIN VERT SA HAB,Logement,Bailleur social et HLM,1.0,2026-04-20,llm_gemini
 SAEM EXPLOITATION STATIONNEM VILLE,Transport,Société d'exploitation de stationnement de la Ville de Paris,0.95,2026-02-18,llm_claude
+SAFE,Santé,Réduction des risques et addictions,0.95,2026-04-20,llm_gemini
 SALLE SAINT BRUNO,Culture,Salle Saint-Bruno - espace culturel et associatif (18e),0.75,2026-02-18,llm_claude
+SAMU SOCIAL DE PARIS,Social - Solidarité,Aide d'urgence aux personnes sans abri,1.0,2026-04-20,llm_gemini
+SAMU-SOCIAL DE PARIS,Social - Solidarité,Hébergement d'urgence et aide aux sans-abri,1.0,2026-04-20,llm_gemini
+SANTE DAVIEL ASD,Santé,Centre de santé,1.0,2026-04-20,llm_gemini
+SANTE MENTALE LUTTE CONTRE,Santé,Santé mentale,1.0,2026-04-20,llm_gemini
 SARL DES AUTEURS REALIS PRODUCT,Culture,Production audiovisuelle / cinéma (SARL des Auteurs Réalisateurs Producteurs),0.9,2026-02-18,llm_claude
 SBC INSERTION,Économie,Insertion professionnelle,0.8,2026-02-18,llm_claude
+SCI MAKOVEC SCHLAPPI,Logement,Gestion immobilière (SCI),0.85,2026-04-20,llm_gemini
 SCIC D HLM GAMBETTA,Logement,SCIC d'HLM - logement social coopératif,0.97,2026-02-18,llm_claude
 SCIENCE TECHNOLOGIE ET SOCIETE,Éducation,Diffusion de la culture scientifique et technologique,0.75,2026-02-18,llm_claude
+SCINTILLO,Culture,Ingénierie et entrepreneuriat culturel,0.85,2026-04-20,llm_gemini
 SCIRE SCIEN CREAT INTERDISC RECH ED,Éducation,Recherche interdisciplinaire en éducation (SCIRE - Sciences Création Interdisciplinaire Recherche Éducation),0.8,2026-02-18,llm_claude
 SDT MIXTE DES PARCS DU TREMBLAY,Sport,Syndicat mixte - gestion de parcs sportifs,0.7,2026-02-18,llm_claude
+SECOURS CATHOLIQUE,Social - Solidarité,Lutte contre la pauvreté et exclusion,1.0,2026-04-20,llm_gemini
+SECOURS POPULAIRE FRANCAIS,Social - Solidarité,Lutte contre la pauvreté et aide alimentaire,1.0,2026-04-20,llm_gemini
 SEMAEST,Économie,Société d'économie mixte - commerce et aménagement économique,0.92,2026-02-18,llm_claude
 SEQENS STE A HABITAT LOYER MODERE,Logement,SEQENS - société HLM / habitat à loyer modéré,0.98,2026-02-18,llm_claude
+SEQENS STE A HABITATLOYER MODERE,Logement,Logement social (HLM),1.0,2026-04-20,llm_gemini
+SEQENS STE A. HABITAT.LOYER MODERE,Logement,Bailleur social (HLM),1.0,2026-04-20,llm_gemini
 SEQUENS SOLIDARITES,Social - Solidarité,Accompagnement social et solidarités,0.9,2026-02-18,llm_claude
 SIDACTION,Santé,Lutte contre le VIH/SIDA - prévention et recherche,0.97,2026-02-18,llm_claude
 SIERRA PROD,Culture,Production audiovisuelle / spectacle vivant,0.7,2026-02-18,llm_claude
 SIMPLON CO,Éducation,Formation au numérique et inclusion digitale,0.92,2026-02-18,llm_claude
+SIMPLON.CO,Éducation,Formation professionnelle au numérique,0.95,2026-04-20,llm_gemini
 SINGA FRANCE,Social - Solidarité,Inclusion des réfugiés et nouveaux arrivants,0.9,2026-02-18,llm_claude
+SIPRHEM STE IMMOB POUR  RESIDENCES,Logement,Résidences sociales et spécifiques,0.95,2026-04-20,llm_gemini
 SIPRHEM STE IMMOB POUR RESIDENCES,Logement,Société immobilière pour résidences,0.85,2026-02-18,llm_claude
+SISA DES ENVIERGES,Santé,Maison de santé (SISA),1.0,2026-04-20,llm_gemini
 SM AUTOLIB ET VELIB METROPOLE,Transport,Syndicat mixte Autolib' et Vélib' Métropole - mobilité urbaine,0.95,2026-02-18,llm_claude
+SM AUTOLIB' ET VELIB' METROPOLE,Transport,Mobilité partagée et vélos en libre-service,1.0,2026-04-20,llm_gemini
+SNCF GARES & CONNEXIONS,Transport,Infrastructures ferroviaires,1.0,2026-04-20,llm_gemini
 SNCF GARES CONNEXIONS,Transport,Gestion de gares et mobilité ferroviaire,0.95,2026-02-18,llm_claude
 SNCF RESEAU,Transport,Infrastructure ferroviaire,0.95,2026-02-18,llm_claude
 SNCF VOYAGEURS,Transport,Transport ferroviaire de voyageurs,0.95,2026-02-18,llm_claude
@@ -613,24 +1232,34 @@ SOC PHILANTHROPIQUE,Social - Solidarité,Société philanthropique - aide social
 SOC PUBLIQUE LOCALE CARREAU TEMPLE,Culture,"Gestion du Carreau du Temple, lieu culturel et événementiel parisien",0.9,2026-02-18,llm_claude
 SOC REQUALICATION QUARTIERS ANCIENS,Logement,Société de requalification des quartiers anciens (SOREQA) - réhabilitation habitat,0.9,2026-02-18,llm_claude
 SOC RET CONSE MUN PARIS CONS GEN SE,Administration,Société de retraite des conseillers municipaux de Paris et conseillers généraux de la Seine,0.9,2026-02-18,llm_claude
+SOCIAL BUILDER,Économie,Insertion professionnelle et numérique,0.95,2026-04-20,llm_gemini
+SOCIETE CIVILE DE MOYENS,Administration,Structure de gestion (SCM),0.7,2026-04-20,llm_gemini
 SOCIETE D ECONOMIE MIXTE,Économie,Société d'économie mixte - développement économique local,0.6,2026-02-18,llm_claude
+SOCIETE D'ECONOMIE MIXTE,Administration,Société d'économie mixte / Gestion publique,0.85,2026-04-20,llm_gemini
+SOCIETE DE PRODUCTION AG,Culture,Production audiovisuelle et cinématographique,0.9,2026-04-20,llm_gemini
+SOCIETE PUBLIQUE LOCALE LE CARREAU DU TEMPLE,Culture,Équipement culturel pluridisciplinaire,1.0,2026-04-20,llm_gemini
 SOLIDARITE CHRETIENNE,Social - Solidarité,Solidarité et entraide d'inspiration chrétienne,0.85,2026-02-18,llm_claude
 SOLIDARITE ROQUETTE,Social - Solidarité,"Solidarité de quartier, aide aux personnes en difficulté",0.8,2026-02-18,llm_claude
 SOLIDARITE SIDA,Santé,Lutte contre le VIH/SIDA,0.95,2026-02-18,llm_claude
 SOLIDARITE THERAPEUT ET INITIATIVES,Santé,Solidarité thérapeutique - prévention et soins,0.85,2026-02-18,llm_claude
+SOLIDARITE THERAPEUTIQ INITIATIVE S,Santé,Solidarité thérapeutique et accès aux soins,0.95,2026-04-20,llm_gemini
 SOLIDEO,Sport,SOLIDEO - Société de livraison des ouvrages olympiques (JO 2024),0.95,2026-02-18,llm_claude
 SOLIHA GRAND PARIS,Logement,Amélioration de l'habitat et lutte contre le mal-logement,0.95,2026-02-18,llm_claude
 SOLIHA PARIS HAUTS DE SEINE VAL D O,Logement,Amélioration de l'habitat et lutte contre le mal-logement (SOLIHA),0.95,2026-02-18,llm_claude
+SOLINUM,Social - Solidarité,Outils numériques pour l'orientation des précaires,0.95,2026-04-20,llm_gemini
 SORBONNE UNIVERSITE,Éducation,Université,0.98,2026-02-18,llm_claude
 SOS MEDITERRANEE FRANCE,International,Sauvetage en mer / aide aux réfugiés en Méditerranée,0.9,2026-02-18,llm_claude
+SOUTIEN DU THEATRE PRIVE,Culture,Soutien au spectacle vivant et théâtres,1.0,2026-04-20,llm_gemini
 SPL PARIS ET METROPOLE AMENAGEMEN,Logement,Aménagement urbain et logement - SPL Paris & Métropole Aménagement,0.8,2026-02-18,llm_claude
 SPLA PARIS BATIGNOLLES AMENAGEMENT,Logement,Société publique locale d'aménagement – ZAC Paris Batignolles,0.8,2026-02-18,llm_claude
 SPORTING CLUB DE PARIS,Sport,Club sportif parisien,0.95,2026-02-18,llm_claude
 SPORTING CLUB UNIVERS FRANCE,Sport,Club sportif,0.95,2026-02-18,llm_claude
+SPORTING CLUB UNIVERSITAIRE DE FRANCE - SCUF,Sport,Club omnisports,1.0,2026-04-20,llm_gemini
 SQUARE BANDE CRECHE PARENTALE,Social - Petite enfance,Crèche parentale,0.99,2026-02-18,llm_claude
 STADE FRANCAIS,Sport,Club omnisports parisien (Stade Français),0.95,2026-02-18,llm_claude
 STADE FRANCAIS PARIS,Sport,"Club sportif omnisports (rugby, etc.)",0.97,2026-02-18,llm_claude
 STADE FRANCAIS PARIS SAINT CLOUD,Sport,Club sportif omnisports - Stade Français Paris Saint-Cloud,0.95,2026-02-18,llm_claude
+STAGE ENTERTAINMENT FRANCE,Culture,Spectacle vivant et comédies musicales,1.0,2026-04-20,llm_gemini
 STATION C,Économie,Incubateur / startup / innovation,0.9,2026-02-18,llm_claude
 STE DE REQUALICATION DES,Logement,Société de requalification des quartiers / copropriétés dégradées,0.65,2026-02-18,llm_claude
 STE DE RETRAITES CONSEILLERS PA,Administration,Société de retraites des conseillers de Paris,0.88,2026-02-18,llm_claude
@@ -638,21 +1267,31 @@ STE ECONOMIE MIXTE PARIS COMMERCE,Économie,Société d'économie mixte - commer
 STE LIVRAISON OUVRAGES OLYMPIQUES,Sport,Société de livraison des ouvrages olympiques (JO 2024),0.9,2026-02-18,llm_claude
 STE REQUALICATION QUARTIER ANCIEN,Logement,Requalification de quartiers anciens / réhabilitation urbaine,0.85,2026-02-18,llm_claude
 STRATA J M PARIS,Culture,Compagnie de théâtre / arts de la scène,0.55,2026-02-18,llm_claude
+STRATA'J'M PARIS,Éducation,Médiation par le jeu et jeunesse,0.9,2026-04-20,llm_gemini
+STUDYSPACE,Éducation,Espaces de travail et vie étudiante,0.85,2026-04-20,llm_gemini
 SUBVENTIONS TRANSPORTS ET ACQUISITIONS VEHICULES A ASSISTANCE ELECTRIQUE ET TAXIS HYBRIDES,Transport,Subventions pour transports et acquisition de véhicules à assistance électrique et taxis hybrides,0.95,2026-02-18,llm_claude
+SUEZ RV REBOND INSERTION,Social - Solidarité,Insertion par l'activité économique (IAE),1.0,2026-04-20,llm_gemini
 SYND COPR 96 BD MASSENA 75013 PARIS,Administration,Syndicat de copropriété - 96 bd Masséna 75013,0.97,2026-02-18,llm_claude
 SYND INTERDEP PARC DES SPORTS,Sport,Syndicat interdépartemental du Parc des Sports - gestion d'équipement sportif,0.9,2026-02-18,llm_claude
 SYND INTERDEP PARC SPORTS CHOISY,Sport,Syndicat interdépartemental - parc des sports de Choisy,0.9,2026-02-18,llm_claude
 SYNDICAT MIXTE AUTOLIB ET VELIB METROPOLE,Transport,Mobilité partagée (Autolib et Vélib Métropole),0.95,2026-02-18,llm_claude
+SYNDICAT MIXTE AUTOLIB’ ET VELIB’ METROPOLE,Transport,Mobilités partagées (Vélib'),1.0,2026-04-20,llm_gemini
 SYNDICAT MIXTE EAUX DE L AUVEZERE,Environnement,Gestion des eaux / syndicat mixte,0.8,2026-02-18,llm_claude
+SYNDICAT MIXTE EAUX DE L'AUVEZERE,Administration,Syndicat mixte / Institution publique,0.95,2026-04-20,llm_gemini
 SYNDICAT TRANSPORT ILE DE FRANCE,Transport,Syndicat des transports (Île-de-France Mobilités / ex-STIF),0.99,2026-02-18,llm_claude
+Ste LIVRAISON OUVRAGES OLYMPIQUES,Sport,Infrastructures pour les Jeux Olympiques (SOLIDEO),1.0,2026-04-20,llm_gemini
 TABLE DE CANA,Social - Solidarité,Table de Cana - insertion par l'activité économique et aide alimentaire,0.85,2026-02-18,llm_claude
 TABLE DU RECHO,Social - Solidarité,Aide alimentaire et lien social (La Table du RECHO),0.9,2026-02-18,llm_claude
+TATANE,Sport,Sport citoyen et football,0.95,2026-04-20,llm_gemini
 TAXICOP,Transport,Service de taxi / mobilité,0.5,2026-02-18,llm_claude
 TEMPS DES RUES,Culture,Arts de rue / spectacle vivant dans l'espace public,0.75,2026-02-18,llm_claude
 TERRA,Autre,Nom trop générique pour classification fiable,0.25,2026-02-18,llm_claude
 THE 42 AGENCY,Culture,Agence de production artistique / événementiel culturel,0.45,2026-02-18,llm_claude
+THE C40 CITIES CLIMATE LEADERSHIP,Environnement,Lutte contre le changement climatique,0.95,2026-04-20,llm_gemini
+THE SMALL PROJECTS FUND,International,Coopération internationale et fonds de soutien,0.85,2026-04-20,llm_gemini
 THEATRE AUX MAINS NUES,Culture,Théâtre de marionnettes,0.95,2026-02-18,llm_claude
 THEATRE DAUNOU,Culture,Théâtre,0.99,2026-02-18,llm_claude
+THEATRE DE LA MARIONNETTE  THEATRE MOUFFETARD,Culture,Théâtre et arts de la marionnette,1.0,2026-04-20,llm_gemini
 THEATRE DE LA MARIONNETTE A PARIS,Culture,Théâtre et arts de la marionnette,0.97,2026-02-18,llm_claude
 THEATRE DE LA MARIONNETTE THEATRE MOUFFETARD,Culture,Théâtre de marionnettes - Théâtre Mouffetard,0.98,2026-02-18,llm_claude
 THEATRE DE LA VILLE,Culture,Théâtre,0.99,2026-02-18,llm_claude
@@ -665,27 +1304,57 @@ THEATRE SILVIA MONFORT,Culture,Théâtre,0.99,2026-02-18,llm_claude
 THEATRE SYLVIA MONFORT,Culture,Théâtre Sylvia Monfort - salle de spectacle et programmation théâtrale,0.99,2026-02-18,llm_claude
 TOIT ET JOIE,Logement,Bailleur social / logement social,0.9,2026-02-18,llm_claude
 TOWARDS CONSEIL,Économie,Conseil aux entreprises / accompagnement professionnel,0.5,2026-02-18,llm_claude
+TRANSITION ECOLOGIQUE FRANCE,Environnement,Transition écologique,1.0,2026-04-20,llm_gemini
 TRAVAIL ET PARTAGE,Social - Solidarité,Insertion par le travail et solidarité,0.85,2026-02-18,llm_claude
 TRAVAIL ET VIE,Social - Solidarité,Insertion sociale et professionnelle,0.75,2026-02-18,llm_claude
 TRESORERIE CENTRE ACTION SOCIALE PA,Social - Solidarité,Centre d'action sociale (CASVP - trésorerie),0.92,2026-02-18,llm_claude
 UN TOIT POUR TOI,Social - Solidarité,Hébergement d'urgence / aide au logement pour personnes sans-abri,0.85,2026-02-18,llm_claude
+UNE CHORBA POUR TOUS,Social - Solidarité,Aide alimentaire,1.0,2026-04-20,llm_gemini
+UNE GOUTTE ORGANISATION PRODUCTION,Culture,Production audiovisuelle et culturelle,0.9,2026-04-20,llm_gemini
 UNE NOUVELLE IDEE DE LA CRECHE PARI,Social - Petite enfance,Crèche parentale / innovante à Paris,0.95,2026-02-18,llm_claude
+UNION DEFENS SANTE MENTALE REG EST,Santé,Santé mentale,1.0,2026-04-20,llm_gemini
+UNION DEPARTE ASS FAMILIAL PARIS,Social - Solidarité,UDAF - Aide aux familles,1.0,2026-04-20,llm_gemini
+UNION DEPARTE. ASS FAMILIAL PARIS,Social - Solidarité,Défense des familles et action sociale (UDAF),0.95,2026-04-20,llm_gemini
+UNION DEPARTE. ASSOCIATION FAMILIAL PARIS,Social - Solidarité,Défense des familles et action sociale (UDAF),0.95,2026-04-20,llm_gemini
+UNION DEPARTEM SYNDICATS CGT FO PA,Administration,Syndicat de salariés (CGT-FO),1.0,2026-04-20,llm_gemini
+UNION DEPARTEM. SYNDICATS CGT FO PA,Administration,Syndicat de travailleurs,1.0,2026-04-20,llm_gemini
+UNION DEPARTEMEN ASS FAMILIAL PARIS,Social - Solidarité,Défense des intérêts des familles et aide sociale,0.95,2026-04-20,llm_gemini
 UNION DEPARTEMENTALE DE PARIS CFE C,Administration,Syndicat CFE-CGC - Union départementale de Paris,0.95,2026-02-18,llm_claude
+UNION DEPARTEMENTALE DE PARIS CFE-C,Administration,Syndicat de salariés (CFE-CGC),1.0,2026-04-20,llm_gemini
 UNION DEPARTEMENTALE PARIS CFE CGC,Administration,Syndicat CFE-CGC - Union départementale Paris,0.95,2026-02-18,llm_claude
+UNION DEPARTEMENTALE PARIS CFE-CGC,Administration,Syndicat de salariés,1.0,2026-04-20,llm_gemini
 UNION DEPARTEMENTALE PARIS CFECGC,Administration,Syndicat CFE-CGC - Union départementale Paris,0.95,2026-02-18,llm_claude
 UNION DEPARTEMENTALE UNSA DE PARIS,Administration,Syndicat UNSA - union départementale Paris,0.95,2026-02-18,llm_claude
 UNION DEPARTENTALE SYNDICAT CFTC PA,Administration,Syndicat CFTC - Union départementale Paris,0.97,2026-02-18,llm_claude
 UNION NATIONALE DU SPORT SCOLAIRE,Sport,Sport scolaire - fédération nationale (UNSS),0.92,2026-02-18,llm_claude
 UNION SYNDICALE SOLIDAIRES PARIS,Administration,Syndicat - Union Solidaires Paris,0.95,2026-02-18,llm_claude
+UNION SYNDICATS CFDT PARIS,Administration,Syndicat de travailleurs,1.0,2026-04-20,llm_gemini
+UNION SYNDICATS CGT PARIS,Administration,Syndicat de salariés (CGT),1.0,2026-04-20,llm_gemini
 UNIS CITE,Social - Solidarité,Unis-Cité - service civique et engagement solidaire des jeunes,0.9,2026-02-18,llm_claude
+UNIS-CITE,Social - Solidarité,Service civique et engagement de la jeunesse,0.9,2026-04-20,llm_gemini
 UNIVERSITE DE PARIS,Éducation,Université et recherche,0.99,2026-02-18,llm_claude
 UNIVERSITE GUSTAVE EIFFEL,Éducation,Université / enseignement supérieur et recherche,0.99,2026-02-18,llm_claude
 UNIVERSITE PARIS 1 PANTHEON SORBONN,Éducation,Université Paris 1 Panthéon-Sorbonne,0.99,2026-02-18,llm_claude
+UNIVERSITE PARIS 1 PANTHEON-SORBONN,Éducation,Enseignement supérieur et recherche,1.0,2026-04-20,llm_gemini
 UNIVERSITE PARIS CITE,Éducation,Université Paris Cité - enseignement supérieur et recherche,0.99,2026-02-18,llm_claude
 UNIVERSITE PARIS DIDEROT PARIS 7,Éducation,Université Paris Diderot (Paris 7),0.98,2026-02-18,llm_claude
 UP,Éducation,Université populaire / formation,0.45,2026-02-18,llm_claude
 URGENCE JEUNES,Social - Solidarité,Aide d'urgence pour les jeunes en difficulté,0.85,2026-02-18,llm_claude
+VENI VERDI,Environnement,Agriculture urbaine et jardins partagés,1.0,2026-04-20,llm_gemini
 VERS PARIS SANS SIDA,Santé,Lutte contre le VIH/SIDA,0.97,2026-02-18,llm_claude
+VIF TRANSPORT & LOGISTIQUE,Transport,Logistique et mobilité,1.0,2026-04-20,llm_gemini
+VILLE DE  BETHLEEM,International,Coopération décentralisée,1.0,2026-04-20,llm_gemini
 VILLE DE BETHLEEM,International,Coopération internationale - jumelage avec Bethléem,0.92,2026-02-18,llm_claude
+VILLETTE EMPLOI,Économie,Insertion professionnelle et emploi,1.0,2026-04-20,llm_gemini
+VILLETTE SERVICE PLUS,Social - Solidarité,Régie de quartier et insertion,0.9,2026-04-20,llm_gemini
 VILOGIA SOCIETE ANONYME D HLM,Logement,HLM - logement social,0.98,2026-02-18,llm_claude
+VILOGIA SOCIETE ANONYME D'HLM,Logement,Bailleur social HLM,1.0,2026-04-20,llm_gemini
+VIVRES,Social - Solidarité,Aide alimentaire et lutte contre la précarité,0.95,2026-04-20,llm_gemini
+VOTRE ECOLE CHEZ VOUS,Éducation,Scolarisation à domicile pour enfants malades ou handicapés,1.0,2026-04-20,llm_gemini
+VOX'POP COLLECTIVE,Culture,Collectif artistique et musical,0.9,2026-04-20,llm_gemini
+WATIZAT,Social - Solidarité,Information et aide aux réfugiés,1.0,2026-04-20,llm_gemini
+WEBFORCE3 PARIS,Éducation,Formation professionnelle au numérique,1.0,2026-04-20,llm_gemini
+WIMOOV,Transport,Mobilité solidaire,0.95,2026-04-20,llm_gemini
 YES WE CAMP,Social - Solidarité,Urbanisme transitoire et inclusion sociale par l'occupation temporaire de lieux,0.65,2026-02-18,llm_claude
+YOLO CONSEIL & COACHING,Économie,Accompagnement et coaching professionnel,0.85,2026-04-20,llm_gemini
+YOTI PARIS,Social - Solidarité,Inclusion sociale et aide aux publics vulnérables,0.8,2026-04-20,llm_gemini

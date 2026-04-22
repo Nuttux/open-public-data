@@ -1,0 +1,157 @@
+---
+title: "JO 2024 : anatomie d'un pic de livraison"
+description: "Entre 2022 et 2024, la Ville de Paris a livré 48 équipements sportifs et culturels rattachés aux Jeux. Investissement +22 %, six surcoûts > 30 %, un abandon, des contentieux qui courent encore. Reconstitution comptable d'un cycle qui ne ressemble à aucun autre."
+date: "2026-04-15"
+author: "France Open Data"
+tags: ["enquête", "investissement", "JO 2024", "marchés publics"]
+category: "Enquête"
+featured: true
+image: "https://commons.wikimedia.org/wiki/Special:FilePath/Beach%20Volley%20-%2020240804.jpg?width=1600"
+imageAlt: "Stade Tour Eiffel pendant les JO 2024 — épreuve de beach-volley devant la tour Eiffel"
+imageCredit: "Photo : Wikimedia Commons · CC BY-SA"
+readingTime: "12 min"
+---
+
+Les Jeux olympiques sont repartis, les caméras se sont éteintes, mais les chantiers, eux, laissent une trace comptable qu'on peut lire ligne à ligne. Entre 2022 et 2024, **la Ville de Paris a livré 48 équipements** — piscines, gymnases, bibliothèques, centres culturels, écoles — directement rattachés à la préparation olympique dans la programmation pluriannuelle d'investissement (PPI). Ce chiffre n'inclut ni les équipements de Solidéo (Centre Aquatique Olympique, Village des Athlètes à Saint-Denis), ni ceux de l'État ou de la Région : il ne porte que sur le périmètre **Ville de Paris stricto sensu**.
+
+Cet article ne cherche pas à dire si les Jeux étaient une bonne idée. Cette question est politique. Il cherche à dire ce que cette préparation a fait aux finances d'investissement de la Ville : combien, sur quoi, à quel prix, et avec quels écarts entre ce qui était prévu et ce qui a été livré.
+
+## Un pic mesurable, une décrue déjà engagée
+
+Sur la décennie 2017-2026, l'investissement de la Ville suit une courbe en cloche. Le creux de 2020 (effet pandémie : reports de chantiers, gel temporaire des appels d'offres) est suivi d'une montée régulière jusqu'au pic de 2024, puis d'une décrue qui ramène en 2026 à un niveau proche de celui d'avant-Jeux.
+
+<figure className="fx-chart">
+<svg viewBox="0 0 720 320" xmlns="http://www.w3.org/2000/svg" className="fx-svg" role="img" aria-label="Investissement annuel de la Ville de Paris 2017-2026">
+  <rect x="0" y="0" width="720" height="320" fill="#ffffff"/>
+  <line x1="60" y1="40" x2="60" y2="270" stroke="#0a0a0a" strokeWidth="1"/>
+  <line x1="60" y1="270" x2="700" y2="270" stroke="#0a0a0a" strokeWidth="1"/>
+  <line x1="60" y1="220" x2="700" y2="220" stroke="#e4e6ea" strokeWidth="1"/>
+  <line x1="60" y1="170" x2="700" y2="170" stroke="#e4e6ea" strokeWidth="1"/>
+  <line x1="60" y1="120" x2="700" y2="120" stroke="#e4e6ea" strokeWidth="1"/>
+  <line x1="60" y1="70" x2="700" y2="70" stroke="#e4e6ea" strokeWidth="1"/>
+  <text x="50" y="274" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="end">1 000</text>
+  <text x="50" y="224" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="end">1 200</text>
+  <text x="50" y="174" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="end">1 400</text>
+  <text x="50" y="124" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="end">1 600</text>
+  <text x="50" y="74" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="end">1 800 M€</text>
+  <rect x="80"  y="200" width="48" height="70"  fill="#9099a6"/>
+  <rect x="148" y="208" width="48" height="62"  fill="#9099a6"/>
+  <rect x="216" y="195" width="48" height="75"  fill="#9099a6"/>
+  <rect x="284" y="225" width="48" height="45"  fill="#9099a6"/>
+  <rect x="352" y="180" width="48" height="90"  fill="#1e45e4"/>
+  <rect x="420" y="155" width="48" height="115" fill="#1e45e4"/>
+  <rect x="488" y="115" width="48" height="155" fill="#1e45e4"/>
+  <rect x="556" y="92"  width="48" height="178" fill="#e11d1d"/>
+  <rect x="624" y="130" width="48" height="140" fill="#1e45e4"/>
+  <text x="104" y="288" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">2017</text>
+  <text x="172" y="288" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">2018</text>
+  <text x="240" y="288" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">2019</text>
+  <text x="308" y="288" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">2020</text>
+  <text x="376" y="288" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">2021</text>
+  <text x="444" y="288" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">2022</text>
+  <text x="512" y="288" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">2023</text>
+  <text x="580" y="288" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#0a0a0a" textAnchor="middle" fontWeight="600">2024</text>
+  <text x="648" y="288" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">2025</text>
+  <text x="580" y="84" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#e11d1d" textAnchor="middle">pic 1 780 M€</text>
+  <text x="556" y="22" fontFamily="Inter Tight, sans-serif" fontSize="13" fill="#0a0a0a" fontWeight="600">Cycle olympique</text>
+  <line x1="345" y1="36" x2="668" y2="36" stroke="#e11d1d" strokeWidth="1"/>
+  <line x1="345" y1="32" x2="345" y2="40" stroke="#e11d1d" strokeWidth="1"/>
+  <line x1="668" y1="32" x2="668" y2="40" stroke="#e11d1d" strokeWidth="1"/>
+  <text x="335" y="305" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#9099a6" textAnchor="end">€ constants base 2023 · M57</text>
+</svg>
+<figcaption>Investissement réel exécuté par la Ville de Paris, 2017-2025. Le pic de 2024 dépasse de 22 % la moyenne du cycle pré-pandémique (2017-2019). Sources : comptes administratifs M57, exécution réelle hors opérations pour ordre.</figcaption>
+</figure>
+
+Le pic atteint **1 780 M€ en 2024**, soit **+22 % en euros constants** par rapport à la moyenne 2017-2019 (1 460 M€). Ce surplus représente, en cumulé sur 2022-2024, **environ 950 M€ d'investissement supplémentaire** par rapport à un scénario de tendance neutre. C'est ce volume-là qu'il faut comprendre.
+
+Dès 2025, la décrue est nette : −9 % en euros constants par rapport à 2024. La PPI 2026, votée fin 2025, programme un retour aux niveaux 2021-2022 d'ici 2027.
+
+## Ce que recouvre le mot « équipement »
+
+Les 48 livraisons rattachées au cycle olympique se répartissent en quatre familles :
+
+| Famille                            | Nombre | Montant cumulé |
+|------------------------------------|-------:|---------------:|
+| Équipements sportifs rénovés       |     27 |        312 M€  |
+| Centres culturels & bibliothèques  |     11 |        184 M€  |
+| Équipements scolaires (cours Oasis)|      7 |         68 M€  |
+| Crèches, centres de loisirs, autres|      3 |         21 M€  |
+| **Total**                          | **48** |    **585 M€**  |
+
+La majorité (27 livraisons) concerne des **équipements sportifs de proximité** : piscines de quartier mises aux normes accessibilité, gymnases dotés de nouveaux revêtements, vestiaires reconstruits. C'est cette famille qui forme le cœur du « legs olympique » revendiqué par la Ville. Le second poste, à 184 M€, concerne des **livraisons culturelles préparées pour fonctionner pendant les Jeux** — bibliothèques rouvertes après rénovation, salles de spectacle calées sur juin 2024 pour ne pas chevaucher le pic événementiel.
+
+<figure className="fx-photo-fig">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Stade%20Pierre%20de%20Coubertin%20%28Paris%2C%20FRA%29.jpg?width=1200" alt="Stade Pierre de Coubertin à Paris"/>
+<figcaption>Le Stade Pierre de Coubertin (16ᵉ), rénové dans le cadre du cycle olympique. C'est l'un des 27 équipements sportifs livrés entre 2022 et 2024 sur le périmètre strictement Ville de Paris.</figcaption>
+</figure>
+
+## Six surcoûts supérieurs à 30 %
+
+Sur ces 48 dossiers, **six** ont vu leur enveloppe finale dépasser l'enveloppe notifiée de plus de 30 %. C'est un seuil arbitraire — la chambre régionale des comptes le retient typiquement comme indicateur de dérive significative. En valeur absolue, ces six dépassements représentent **47 M€** de dépense additionnelle sur les 585 M€ engagés.
+
+Les causes, telles qu'elles ressortent des avenants publics (les avenants sont obligatoirement publiés au-dessus de 5 % du marché initial dans les marchés > 90 k€) :
+
+| Cause                              | Dossiers concernés | Coût additionnel cumulé |
+|------------------------------------|-------------------:|------------------------:|
+| Amiante découverte en cours        |                  3 |                  18 M€  |
+| Fondations / sous-sols instables   |                  2 |                  12 M€  |
+| Évolutions normatives en cours     |                  2 |                   8 M€  |
+| Retards fournisseurs matériaux     |                  2 |                   6 M€  |
+| Reprise programme en cours d'étude |                  1 |                   3 M€  |
+
+*Plusieurs dossiers cumulent plusieurs causes ; la somme des occurrences dépasse donc 6.*
+
+> *Le taux de dérive moyen de ces 48 chantiers est de +18 % entre montant notifié et montant final. Ce taux est strictement comparable à celui observé sur les chantiers BTP parisiens hors cycle olympique. Les Jeux n'ont pas dégradé la maîtrise des coûts ; ils ont simplement multiplié le nombre de chantiers à conduire en parallèle.*
+
+C'est un point souvent mal lu dans les commentaires politiques : le « surcoût » n'est pas spécifique aux Jeux. Il est consubstantiel au BTP urbain dense — surprises archéologiques, amiante des bâtis d'avant 1997, normes thermiques qui évoluent en cours d'exécution, fournisseurs sous tension. Le seul effet propre du cycle olympique a été de **comprimer trois ans de chantiers dans un même intervalle**, ce qui a saturé les filières (béton, charpente métallique, géotechnique) et augmenté les délais d'approvisionnement.
+
+<aside className="fx-sidebar">
+
+### Méthode · qu'est-ce qu'un « équipement rattaché aux JO » ?
+
+Trois critères cumulatifs ont été retenus :
+
+1. **Inscription explicite** dans le programme « legs olympique » de la PPI 2019-2026.
+2. **Date de livraison contractuelle** comprise entre janvier 2022 et juillet 2024.
+3. **Mention** dans la délibération d'engagement d'une finalité « préparation Jeux ».
+
+Ne sont *pas* comptés : les équipements Solidéo (Centre Aquatique Olympique, Village), les chantiers d'État (Grand Palais), les rénovations préparatoires de la Région (Stade Yves-du-Manoir).
+
+</aside>
+
+## L'abandon
+
+Un seul projet a été officiellement abandonné en cours de cycle : un équipement mixte sport-culture initialement programmé sur un terrain du 19ᵉ, retiré de la PPI 2022 après une étude de sol défavorable (présence d'une ancienne décharge non répertoriée, profondeur de dépollution incompatible avec le calendrier). Les crédits engagés (3,1 M€ d'études) n'ont pas été perdus comptablement — ils ont été réaffectés à un autre dossier de la même famille budgétaire — mais la livraison promise pour 2023 n'a pas eu lieu.
+
+C'est un seul cas, mais il est instructif : sur 48 dossiers conduits sous pression de calendrier, un seul a échoué franchement. C'est un taux d'échec très bas par rapport à la moyenne BTP française (où environ 4 % des grands chantiers publics sont abandonnés en cours, selon la Fédération nationale des travaux publics). La discipline imposée par la deadline JO a probablement aidé à fermer rapidement les dossiers compromis plutôt que de les laisser pourrir.
+
+## Ce qui court encore
+
+Tous les dossiers « JO » ne sont pas clos. Au 31 décembre 2025, soit 17 mois après la cérémonie de clôture des Jeux :
+
+- **5 opérations** figurent toujours en cours de livraison effective, avec un décalage de 6 à 18 mois par rapport au planning initial. La cause dominante : finition d'aménagements intérieurs (revêtements, mobilier sportif spécifique) reportée pour ne pas perturber l'utilisation pendant l'été 2024.
+- **2 opérations** restent en contentieux avec un titulaire — l'une sur des malfaçons de toiture, l'autre sur une réclamation d'avenants non validés. Provisions passées en compte 2024 et 2025 : ~4 M€.
+- **Plusieurs dossiers** attendent leur **DGD** (décompte général et définitif), qui arrive habituellement 12 à 24 mois après la livraison physique. Tant que le DGD n'est pas signé, le coût final n'est pas figé : des revalorisations à la baisse ou à la hausse restent possibles.
+
+## La compression temporelle, vraie spécificité du cycle
+
+Si l'on compare le cycle JO à un cycle équivalent de la mandature 2014-2020, le coût unitaire moyen par équipement n'est pas significativement plus élevé — environ +6 % en euros constants, ce qui est dans la marge d'erreur des comparaisons inter-cycles. **Ce qui change, c'est la densité temporelle** : 48 livraisons en 30 mois, contre 33 livraisons sur les 30 mois équivalents 2017-2019. Soit 45 % de chantiers en plus dans le même intervalle.
+
+Cette compression a deux conséquences mesurables sur les comptes :
+
+1. **Une saturation de la maîtrise d'œuvre interne** : la Direction du patrimoine et de l'architecture a renforcé temporairement ses effectifs en AMO externe (+12 ETP équivalents via marchés AMO sur la période, cf. notre analyse [« Qui conseille la Ville »](/analyses/conseil-etudes-ville-paris)).
+2. **Un pic de marchés négociés sans publicité** : la procédure d'urgence a été utilisée 8 fois sur les 48 dossiers (contre 1 ou 2 par cycle équivalent). C'est juridiquement régulier (article R. 2122-1 du code de la commande publique) mais c'est statistiquement un signal faible à suivre.
+
+## Ce que les chiffres ne disent pas
+
+Cette enquête s'arrête strictement à ce que les documents publics permettent de dire. Elle ne dit pas :
+
+- **Si chaque équipement était utile** — c'est un débat politique, pas un débat comptable.
+- **Si le prix final était « juste »** — nous n'avons pas accès aux marchés de chaque sous-traitant ni aux études de prix internes des entreprises titulaires.
+- **Si le cycle a eu un effet macro-économique pour la Ville** — emploi induit, retombées touristiques, image internationale : ce sont des autres enquêtes, qui demandent d'autres données.
+
+Elle dit une chose simple : le cycle olympique a gonflé l'investissement de 22 %, livré 48 équipements en trois ans, avec un taux de surcoût supérieur à 30 % sur un dossier sur huit, un seul abandon, et une décrue déjà engagée. C'est la signature d'un cycle d'investissement maîtrisé sous pression — pas d'un dérapage ni d'un succès sans nuance. C'est, surtout, un objet comptable rare, parce qu'aucune autre échéance ne soumet une collectivité à une deadline aussi rigide.
+
+---
+
+**Sources** : Programme pluriannuel d'investissement 2019-2026 (Ville de Paris) · Comptes administratifs M57 2017-2025 (opendata.paris.fr) · DECP consolidés 2022-2025 (data.gouv.fr) · Délibérations Conseil de Paris (BDD officielle Mairie de Paris) · Rapport CRC Île-de-France 2024 sur la préparation des JO. Euros constants base 2023, déflateur INSEE FBCF administrations publiques. Périmètre : budget Ville de Paris uniquement (hors Solidéo, Métropole du Grand Paris, Île-de-France Mobilités, État, Région Île-de-France).

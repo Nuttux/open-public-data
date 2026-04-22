@@ -52,9 +52,10 @@ OUTPUT_DIR = PROJECT_ROOT / "website" / "public" / "data" / "map"
 SEEDS_DIR = PROJECT_ROOT / "pipeline" / "seeds"
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
-# Utilise gemini-2.5-flash pour l'extraction (bon rapport qualité/quota)
-# ou gemini-3-pro-preview pour meilleure qualité si quota disponible
-GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
+# Gemini 3 Flash — PDF multi-page extraction (images 150 DPI + tables).
+# Benchmarked by Google as frontier-grade on document understanding while
+# keeping Flash-level latency/cost. Override via GEMINI_MODEL env.
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3-flash-preview")
 
 # PDFs disponibles par année
 # Ces URLs pointent vers les annexes "Investissements Localisés" dédiées
