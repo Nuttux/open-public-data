@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T11:34:56.455262",
+  "generated_at": "2026-04-22T11:36:18.939970",
   "model": "gemini-3-flash-preview",
   "count": 780,
   "items": {
@@ -19433,7 +19433,169 @@
       "confiance": 0.75,
       "source_type": "knowledge_base",
       "enriched_at": "2026-04-22T11:34:56.455262"
+    },
+    "ENFANCES": {
+      "activite_verifiee": "Les Enfances (association), crèche parentale / structure d'accueil de la petite enfance dans le 18e arrondissement (Porte de la Chapelle). Accueille des familles d'origines diverses, initiation à la LSF, ancrage dans la vie du quartier.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        "acepprif.org/project/les-enfances-75018"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:36:18.939970"
+    },
+    "OPTIM EMPLOI": {
+      "activite_verifiee": "Optim'Emploi (SIREN 390232916), association d'insertion professionnelle 17-19 rue de Cîteaux Paris 12e. 30+ ans d'activité en accueil social, restauration collective, services à domicile puis BTP, logistique, chauffeur-livreur. 100-199 salariés en 2023 (SIAE / association intermédiaire).",
+      "perimetre_geographique": "Paris / petite couronne",
+      "sources": [
+        "societe.com",
+        "grafie.org",
+        "optim-emploi.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:36:18.939970"
+    },
+    "CCENTRE OROT ENTRAIDE": {
+      "activite_verifiee": "Centre Orot Entraide, association d'aide sociale de la communauté juive à Paris. Informations publiques détaillées limitées ; référencée dans le répertoire du Fonds Social Juif Unifié (FSJU).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "fsju.org"
+      ],
+      "confiance": 0.3,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:36:18.939970"
+    },
+    "CETEC A2F": {
+      "activite_verifiee": "CETEC A2F (SIREN 392655346), association créée en 1993 par sociologues, psychologues, médecins et travailleurs sociaux. 6 bis rue de Châtillon Paris 14e. Organisme de formation Qualiopi : formations pour les professionnels de la petite enfance, SST, partenariat Ville de Paris pour la formation des personnels des crèches.",
+      "perimetre_geographique": "Paris 14e",
+      "sources": [
+        "ceteca2f.fr",
+        "societe.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:36:18.939970"
+    },
+    "COMITE ACTIONS LOGEMENT": {
+      "activite_verifiee": "Comité Actions Logement (CAL) — aujourd'hui Association Droits & Habitats, créé en 2004, 25 rue de la Charbonnière Paris 18e. Accompagne les personnes mal-logées, menacées d'expulsion ou sans-abri. ~2 000 ménages accompagnés, ~800 relogés. Participe au programme SOS Taudis de la Fondation Abbé-Pierre.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        "gouttedor-et-vous.org",
+        "helloasso.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:36:18.939970"
+    },
+    "PARIS 2018": {
+      "activite_verifiee": "Paris 2018 — 10e édition des Gay Games, événement international multisports et culturel LGBT tenu à Paris du 4 au 12 août 2018. ~10 000 athlètes de 91 pays, 36 disciplines sportives et culturelles, sous l'organisation d'un comité associatif porté par la Ville de Paris. Impact économique évalué à ~100 M€.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "paris2018.com",
+        "en.wikipedia.org/wiki/2018_Gay_Games"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:36:18.939970"
+    },
+    "CIRQUE A L ANCIENNE": {
+      "activite_verifiee": "Le Cirque à l'Ancienne, compagnie fondée en mai 1974 par Silvia Monfort et Alexis Gruss. Pionnier du renouveau du cirque équestre en France (École au Carré, spectacles thématiques annuels). Inspiration historique (19e siècle) ; place le cheval au cœur de la création.",
+      "perimetre_geographique": "France (Paris et tournées)",
+      "sources": [
+        "cirque-cnac.bnf.fr",
+        "circopedia.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:36:18.939970"
+    },
+    "RIBAMBELLE": {
+      "activite_verifiee": "La Ribambelle, crèche associative parisienne 41-45 rue de Javel Paris 15e (réseau La Maison des Bout'chou). Accueil des enfants de la marche à 4 ans du lundi au vendredi, équipe pluridisciplinaire de la petite enfance, activités d'éveil et ateliers artistiques.",
+      "perimetre_geographique": "Paris 15e",
+      "sources": [
+        "paris.fr",
+        "lamaisondesboutchou.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:36:18.939970"
+    },
+    "INITIAT RENC ET SOLID 10": {
+      "activite_verifiee": "AIRES 10 — Association Initiatives, Rencontres et Solidarité 10e. Centre social du 10e arrondissement à vocation globale et intergénérationnelle. Animation du quartier, développement du lien social et de solidarités.",
+      "perimetre_geographique": "Paris 10e",
+      "sources": [
+        "tousbenevoles.org",
+        "conseilsdequartierparis10.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:36:18.939970"
+    },
+    "OEUV CHAUSS MAI CENT ETU ACT SOC IN": {
+      "activite_verifiee": "Œuvre des Chaussetiers (May) — Centre d'Études et d'Action Sociale. Structure parisienne historique dans le champ de l'action sociale et de l'insertion. Détails publics limités.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.3,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:36:18.939970"
+    },
+    "UNION NATIONALE DU SPORT SCOLAIRE": {
+      "activite_verifiee": "UNSS — Union Nationale du Sport Scolaire (SIREN 775675655), fédération du sport scolaire du second degré sous tutelle du ministère de l'Éducation nationale. Siège 13 rue Saint-Lazare Paris 9e. 2e fédération sportive française avec ~1 040 000 licenciés (collégiens et lycéens) dans les AS des établissements.",
+      "perimetre_geographique": "France (siège Paris 9e)",
+      "sources": [
+        "unss.org",
+        "fr.wikipedia.org/wiki/Union_nationale_du_sport_scolaire"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:36:18.939970"
+    },
+    "HOMEMAKERS": {
+      "activite_verifiee": "HomeMakers (SIREN 793013293), fab lab inclusif parisien (Paris 16e) actif depuis janvier 2019, dédié aux métiers textile, design et nouvelles professions du futur. Membre de Fab City Grand Paris et du Réseau Français des Fablabs. Transmission de compétences aux femmes et jeunes en difficulté ; ESS, économie circulaire. (Activité clôturée en juillet 2024.)",
+      "perimetre_geographique": "Paris 16e",
+      "sources": [
+        "homemakers.fr",
+        "grandpariscirculaire.org",
+        "societe.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:36:18.939970"
+    },
+    "COMITE D ORGANI FRANCE VOLLEY": {
+      "activite_verifiee": "Comité d'Organisation France Volley (CO France Volley), association sportive basée à Choisy-le-Roi (94). Prépare, finance et organise les grands événements sportifs confiés à la Fédération Française de Volley-ball (FFVB) sur le territoire national.",
+      "perimetre_geographique": "France (siège Choisy-le-Roi 94)",
+      "sources": [
+        "gralon.net",
+        "ffvb.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:36:18.939970"
+    },
+    "ARS LONGA": {
+      "activite_verifiee": "Ars Longa, association d'art contemporain parisienne, 67 avenue Parmentier Paris 11e. Résidences d'artistes émergents, ateliers, diffusion de la création contemporaine.",
+      "perimetre_geographique": "Paris 11e",
+      "sources": [
+        "paris-art.com/lieux/ars-longa",
+        "paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:36:18.939970"
+    },
+    "SOLIDARITE THERAPEUTIQ INITIATIVE S": {
+      "activite_verifiee": "SOLTHIS — Solidarité Thérapeutique et Initiatives pour la Santé, ONG de solidarité internationale fondée par des chercheurs médicaux, basée à Paris. Renforce durablement les systèmes de santé dans les pays à ressources limitées (VIH, santé maternelle, infectiologie).",
+      "perimetre_geographique": "International (siège Paris)",
+      "sources": [
+        "solthis.org",
+        "idealist.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:36:18.939970"
     }
   },
-  "total": 939
+  "total": 954
 }
