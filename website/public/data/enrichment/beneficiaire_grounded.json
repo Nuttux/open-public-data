@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T15:32:10.735535",
+  "generated_at": "2026-04-22T21:33:55.139632",
   "model": "gemini-3-flash-preview",
   "count": 780,
   "items": {
@@ -21548,7 +21548,210 @@
       "confiance": 0.8,
       "source_type": "claude_web",
       "enriched_at": "2026-04-22T15:32:10.735535"
+    },
+    "400 COUPS": {
+      "activite_verifiee": "Les 400 Coups — Association pour l'éducation populaire, fondée en 2015 par des animateurs et pratiquants d'arts/nature. Base : La Fourmilière, Monestier-de-Clermont (38). Organise séjours d'été et centres de loisirs 4-17 ans avec tarification familiale et fonds de solidarité pour enfants des quartiers populaires (Grenoble, Paris).",
+      "perimetre_geographique": "France (IdF via séjours)",
+      "sources": [
+        "les400coups-colo.fr",
+        "assoce.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "FEDERATION FRANCAISE D ATHLETISME": {
+      "activite_verifiee": "FFA — Fédération Française d'Athlétisme (SIREN 784448730), association loi 1901 fondée en 1920, reconnue d'utilité publique. Siège 33 avenue Pierre-de-Coubertin Paris 13e depuis 1995. Fédération délégataire sous tutelle du ministère des Sports. ~315 000 licenciés, organise les championnats de France d'athlétisme.",
+      "perimetre_geographique": "France (siège Paris 13e)",
+      "sources": [
+        "athle.fr",
+        "sports.gouv.fr",
+        "annuaire-entreprises.data.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "ANIMA FAC": {
+      "activite_verifiee": "Animafac, réseau national des associations étudiantes, créé en 1996. Siège 153-155 avenue Jean Lolive, Pantin (93). Accompagne ~12 000 associations étudiantes (ressources, formations, guides pratiques, campagnes de sensibilisation). Mission de reconnaissance de l'engagement étudiant, ressources pour porteurs de projets solidaires.",
+      "perimetre_geographique": "France (siège Pantin 93)",
+      "sources": [
+        "animafac.net",
+        "fr.wikipedia.org/wiki/Animafac"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "ESPOIR 18": {
+      "activite_verifiee": "Espoir 18, association loi 1901 créée le 16 septembre 2002 par 6 acteurs sociaux du quartier La Chapelle (Paris 18e). Insertion et socialisation des 13-30 ans des quartiers populaires du 18e via éducation, art, culture, sport, insertion pro. Gère 6 Centres Paris Jeunes (Goutte d'Or, La Chapelle, Aubervilliers-Chapelle, Simplon-Clignancourt, Mont-Cenis). ~2 000 usagers.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        "espoir18.org",
+        "resolis.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "GRENADINE ET MENTHE A L EAU": {
+      "activite_verifiee": "Crèche parentale Grenadine et Menthe à l'eau (SIREN 333976439), association parisienne créée il y a 39 ans, 9 rue du Docteur Potain Paris 19e (Télégraphe). Petite structure ; projet pédagogique autour de la qualité d'accueil, cuisine bio préparée sur place, éveil à l'écologie.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        "creche-grenadine.org",
+        "paris.fr",
+        "acepprif.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "JETUIL": {
+      "activite_verifiee": "je.tu.il… — association créée en 1981, 18 rue de Saussure Paris 17e. Conçoit, produit et diffuse des programmes audiovisuels de prévention et d'éducation pour les jeunes (responsabilité affective, sexuelle, citoyenne) ; prévention des violences et des conduites à risque. Équipe de professionnels en sciences de l'éducation, philo, linguistique, santé.",
+      "perimetre_geographique": "Paris 17e / France",
+      "sources": [
+        "jetuil.asso.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "COMITE DE PARIS F S G T": {
+      "activite_verifiee": "Comité FSGT 75 — Comité de Paris de la Fédération Sportive et Gymnique du Travail (SIREN 784778797), association loi 1901. 35 avenue de Flandre Paris 19e. +12 500 adhérents et 2 000 bénévoles, double agrément Sport / Éducation populaire. Un des comités départementaux de la FSGT (200 000 pratiquants, 4 200 clubs).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "fsgt75.org",
+        "fsgt.org",
+        "pappers.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "COUP DE POUCE": {
+      "activite_verifiee": "Association Coup de Pouce, créée en 1989. Clubs de réussite scolaire (Coup de Pouce Clé pour les CP, Coup de Pouce CLEM pour les CE1) à destination d'enfants fragiles dans l'acquisition des fondamentaux, en partenariat avec l'Éducation nationale et la Ville de Paris. Séances 3 soirs/semaine après l'école, gratuites, groupes de 5-6, animateurs formés.",
+      "perimetre_geographique": "France / Paris",
+      "sources": [
+        "coupdepouceassociation.fr",
+        "ac-paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "ASSOCIATION COUP DE POUCE": {
+      "activite_verifiee": "Association Coup de Pouce, créée en 1989. Clubs de réussite scolaire (Coup de Pouce Clé pour les CP, Coup de Pouce CLEM pour les CE1) à destination d'enfants fragiles dans l'acquisition des fondamentaux, en partenariat avec l'Éducation nationale et la Ville de Paris. Séances 3 soirs/semaine après l'école, gratuites, groupes de 5-6, animateurs formés.",
+      "perimetre_geographique": "France / Paris",
+      "sources": [
+        "coupdepouceassociation.fr",
+        "ac-paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "CLUB D ESCRIME TOUR D AUVERGNE": {
+      "activite_verifiee": "Club d'Escrime de la Tour d'Auvergne (TA), 26 rue Buffault Paris 9e (gymnase Buffault). Établi dans le 9e depuis 1884. Fleuret tous âges (enfants dès 4 ans à vétérans), 538 licenciés en 2024-2025 (2e club français par nb de licenciés). 7 champions du monde, 5 d'Europe, 66 de France issus du club.",
+      "perimetre_geographique": "Paris 9e",
+      "sources": [
+        "escrime-ta.com",
+        "citizenkid.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "FEMMES INITIATIVES": {
+      "activite_verifiee": "Association Femmes Initiatives (Paris). Organisme de formation Qualiopi. Apprentissage du français (FLE, alphabétisation) et médiation socioculturelle pour l'insertion sociale ; cours accessibles à tous niveaux avec accompagnement humain. Intervient à Paris.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "paris.fr",
+        "jemengage.paris.fr",
+        "pagesjaunes.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "ATELIER DU PLATEAU THEATRE ECARLATE": {
+      "activite_verifiee": "Atelier du Plateau — Théâtre Écarlate (SIREN 324192210), lieu pluridisciplinaire de résidences et création (cirque, musique, théâtre). Ancienne usine de pipes Paris 19e, ouverte en 1999 par Gilles Zaepffel. Soutenu par Ville de Paris et DRAC IdF depuis 2001. Autoproclamé « 1er Centre Dramatique National de Quartier ». Dirigé par Matthieu Malgrange et Laetitia Zaepffel depuis 2005.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        "atelierduplateau.org",
+        "actesif.com",
+        "pappers.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "CINEMA CHAPLIN": {
+      "activite_verifiee": "Les Cinémas Chaplin — réseau associatif de deux salles d'art et essai parisiennes : Chaplin Denfert (24 place Denfert-Rochereau Paris 14e, ouvert en 2011) et Chaplin Saint-Lambert (Paris 15e). Cinéma d'auteur pluriel ouvert à tous : films en sortie + rétrospectives thématiques, documentaires, classiques, avant-premières presse.",
+      "perimetre_geographique": "Paris 14e / 15e",
+      "sources": [
+        "lescinemaschaplin.fr",
+        "cip-paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "A P S A J": {
+      "activite_verifiee": "APSAJ — Association de Prévention Spécialisée et d'Accompagnement des Jeunes, issue en 2018 de la fusion ADCLJC (créée 1968) + Maison des Copains de Villette. ~24 salariés (éducateurs, chefs de service, direction). Locaux : 76 rue Philippe de Girard et 25 rue Léon (Paris 18e), 156 rue d'Aubervilliers (Paris 19e). Éducation de rue, médiation, prévention spécialisée.",
+      "perimetre_geographique": "Paris 18e / 19e",
+      "sources": [
+        "apsaj.com",
+        "cpsp-asso.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "COLLEGE PIERRE DE RONSARD": {
+      "activite_verifiee": "Collège public parisien (Pierre de Ronsard), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville pour équipement, projets pédagogiques, voyages et restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "GYM PARIS 15": {
+      "activite_verifiee": "Gym' Paris 15, club de gymnastique du 15e arrondissement créé en 1996. Gymnastique artistique (F/M), rythmique, parkour, baby gym, fitness tous âges. Principaux lieux : Gymnase Falguière (144 rue Falguière) et Gymnase des Cévennes. Entraineurs brevetés.",
+      "perimetre_geographique": "Paris 15e",
+      "sources": [
+        "gymparis15.fr",
+        "sportiche.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "COLLEGE JEAN MOULIN": {
+      "activite_verifiee": "Collège public parisien (Jean Moulin), établissement d'enseignement secondaire de l'académie de Paris. Subventions Ville de Paris pour équipement et projets éducatifs.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
+    },
+    "REGIE DE QUARTIER FECAMP 12": {
+      "activite_verifiee": "Régie de Quartier Fécamp 12 (Paris 12e), association créée en 2010 en partenariat Ville / bailleurs sociaux / associations / habitants. Entreprise d'Insertion agréée DRIEETS. Insère en CDDI des résidents du 12e (demandeurs d'emploi longue durée, bénéficiaires de minima sociaux, seniors). 63 salariés en insertion en 2023 : nettoyage, espaces verts, voirie.",
+      "perimetre_geographique": "Paris 12e",
+      "sources": [
+        "regie12.fr",
+        "grafie.org",
+        "emplois.inclusion.beta.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T21:33:55.139632"
     }
   },
-  "total": 1134
+  "total": 1152
 }
