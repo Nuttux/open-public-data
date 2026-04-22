@@ -251,17 +251,19 @@ export default function ChatPanel() {
       {!open && (
         <button
           onClick={() => setOpen(true)}
-          className="group fixed bottom-5 right-5 z-40 flex items-center gap-2.5 rounded-full bg-[#2a3680]! pl-4 pr-5 py-3 text-white shadow-lg shadow-[#2a3680]/30 hover:scale-[1.03] hover:bg-[#1e45e4]! transition"
-          aria-label="Poser une question aux données"
+          className="group fixed bottom-5 right-5 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-[#2a3680]! text-white shadow-lg shadow-[#2a3680]/30 hover:scale-[1.03] hover:bg-[#1e45e4]! transition md:h-auto md:w-auto md:justify-start md:gap-2.5 md:py-3 md:pl-4 md:pr-5"
+          aria-label="Interroger les données"
+          title="Interroger les données"
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
           </svg>
-          <span className="text-sm font-medium leading-none">
+          <span className="hidden text-sm font-medium leading-none md:inline">
             Interroger les données
           </span>
-          <span className="ml-1 rounded-full bg-[#e11d1d] px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider leading-none">
-            IA
+          <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5 md:hidden">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#e11d1d] opacity-75" />
+            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#e11d1d]" />
           </span>
         </button>
       )}
