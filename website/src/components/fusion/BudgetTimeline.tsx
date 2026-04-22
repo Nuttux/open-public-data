@@ -121,14 +121,16 @@ export default function BudgetTimeline({
           ))}
         </g>
 
-        {/* Annotations */}
+        {/* Annotations — rect width & x clamped to stay inside the viewBox */}
         {annotations.map((a, i) => {
           const x = xFor(a.year);
+          const annotW = Math.max(60, a.label.length * 6.2 + 16);
+          const rectX = Math.max(2, Math.min(W - annotW - 2, x - annotW / 2));
           return (
             <g key={i}>
               <line x1={x} y1={TOP} x2={x} y2={BOTTOM} stroke="#9099a6" strokeWidth="1" strokeDasharray="3 3" opacity="0.6" />
-              <rect x={x - 60} y={16} width="120" height="18" fill="#fafaf7" stroke="#9099a6" strokeWidth="0.8" />
-              <text x={x} y={29} textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" letterSpacing="0.5">
+              <rect x={rectX} y={16} width={annotW} height="18" fill="#fafaf7" stroke="#9099a6" strokeWidth="0.8" />
+              <text x={rectX + annotW / 2} y={29} textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" letterSpacing="0.5">
                 {a.label}
               </text>
             </g>
@@ -155,19 +157,45 @@ export default function BudgetTimeline({
           return <circle key={p.year} cx={x} cy={y} r="4" fill="#fff" stroke="#0a0a0a" strokeWidth="2" />;
         })}
 
-        {/* Active year — ink + badge (neutral emphasis, no red) */}
-        <g>
-          <circle cx={xFor(active.year)} cy={yFor(active.value)} r="8" fill="#0a0a0a" />
-          <circle cx={xFor(active.year)} cy={yFor(active.value)} r="3.5" fill="#fafaf7" />
-          <g transform={`translate(${xFor(active.year)}, ${yFor(active.value)})`}>
-            <rect x="-44" y="-60" width="88" height="28" fill="#0a0a0a" />
-            <text x="0" y="-40" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="12" fontWeight="700" fill="#fff">
-              {activeBadge ??
-                `${active.year} ${active.type === "vote" ? "voté" : active.type === "estimate" ? "est." : "exéc."}`}
-            </text>
-            <line x1="0" y1="-31" x2="0" y2="-10" stroke="#0a0a0a" strokeWidth="1.5" />
-          </g>
-        </g>
+        {/* Active year — ink + badge. Badge width scales with the label so
+            custom activeBadge strings ("2024 · 2 657 logements") don't clip;
+            the whole badge is shifted left/right when the point is close to
+            a viewBox edge so it never overflows. The leader line stays
+            anchored to the dot. */}
+        {(() => {
+          const activeX = xFor(active.year);
+          const activeY = yFor(active.value);
+          const badgeText =
+            activeBadge ??
+            `${active.year} ${active.type === "vote" ? "voté" : active.type === "estimate" ? "est." : "exéc."}`;
+          const badgeW = Math.max(88, badgeText.length * 7.2 + 20);
+          const halfW = badgeW / 2;
+          const MARGIN = 4;
+          let shift = 0;
+          if (activeX + halfW > W - MARGIN) shift = W - MARGIN - (activeX + halfW);
+          else if (activeX - halfW < MARGIN) shift = MARGIN - (activeX - halfW);
+          return (
+            <g>
+              <circle cx={activeX} cy={activeY} r="8" fill="#0a0a0a" />
+              <circle cx={activeX} cy={activeY} r="3.5" fill="#fafaf7" />
+              <g transform={`translate(${activeX}, ${activeY})`}>
+                <rect x={-halfW + shift} y="-60" width={badgeW} height="28" fill="#0a0a0a" />
+                <text
+                  x={shift}
+                  y="-40"
+                  textAnchor="middle"
+                  fontFamily="Inter, sans-serif"
+                  fontSize="12"
+                  fontWeight="700"
+                  fill="#fff"
+                >
+                  {badgeText}
+                </text>
+                <line x1="0" y1="-31" x2="0" y2="-10" stroke="#0a0a0a" strokeWidth="1.5" />
+              </g>
+            </g>
+          );
+        })()}
 
         {/* X labels */}
         <g fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#5f6672" textAnchor="middle">
