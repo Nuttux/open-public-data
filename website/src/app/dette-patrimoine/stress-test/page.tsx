@@ -9,8 +9,7 @@ export const dynamic = "force-dynamic";
 
 import { Navbar, Footer } from "@/components/fusion";
 import StressTest from "@/components/fusion/StressTest";
-import TaPartAToi from "@/components/fusion/TaPartAToi";
-import { loadPatrimoineData, loadPatrimoineStructure, loadHorsBilan } from "@/lib/fusion-data";
+import { loadPatrimoineData, loadPatrimoineStructure } from "@/lib/fusion-data";
 
 type Search = Promise<{ t?: string; r?: string; i?: string }>;
 
@@ -52,7 +51,6 @@ export async function generateMetadata({ searchParams }: { searchParams: Search 
 export default async function StressTestPage() {
   const d = loadPatrimoineData();
   const structure = loadPatrimoineStructure(d.year);
-  const horsBilan = loadHorsBilan(d.year);
   const tauxBaseline = structure?.structure_dette.taux.taux_fixe_moyen_pondere_pct ?? 2.4;
 
   return (
@@ -85,14 +83,6 @@ export default async function StressTestPage() {
               urlSync
             />
           </Suspense>
-
-          <TaPartAToi
-            dette={d.detteFinanciere}
-            fondsPropres={d.fondsPropres}
-            actif={d.actif}
-            horsBilan={horsBilan?.totals.capital_restant ?? 0}
-            tauxMoyen={tauxBaseline}
-          />
         </div>
       </section>
 

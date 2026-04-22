@@ -70,20 +70,24 @@ def fetch_treemap_data(client: bigquery.Client, year: int = None) -> list:
     return results
 
 
-def fetch_beneficiaires_data(client: bigquery.Client, year: int = None, limit: int = 5000) -> list:
+def fetch_beneficiaires_data(client: bigquery.Client, year: int = None, limit: int | None = None) -> list:
     """
     Récupère les bénéficiaires depuis mart_subventions_beneficiaires.
-    
+
     Args:
         client: Client BigQuery
         year: Année spécifique (optionnel)
-        limit: Nombre max de bénéficiaires par année (top N par montant)
-    
+        limit: Nombre max de bénéficiaires par année (None = tous, défaut).
+               Un cap top-N est une optimisation historique — on exporte
+               désormais l'intégralité du mart pour que l'UI long-tail voie
+               les petits bénéficiaires (cf. fetch_subventions_opendata.py).
+
     Returns:
         Liste des bénéficiaires avec filtres et montants
     """
     year_filter = f"WHERE annee = {year}" if year else ""
-    
+    limit_clause = f"LIMIT {limit * 10 if not year else limit}" if limit else ""
+
     query = f"""
     SELECT
         annee,
@@ -102,9 +106,9 @@ def fetch_beneficiaires_data(client: bigquery.Client, year: int = None, limit: i
     FROM `{PROJECT_ID}.{DATASET}.mart_subventions_beneficiaires`
     {year_filter}
     ORDER BY annee DESC, montant_total DESC
-    LIMIT {limit * 10 if not year else limit}
+    {limit_clause}
     """
-    
+
     results = []
     for row in client.query(query).result():
         nature = row.nature_juridique
@@ -128,11 +132,15 @@ def fetch_beneficiaires_data(client: bigquery.Client, year: int = None, limit: i
     return results
 
 
+MIN_YEAR_EXPORTED = 2018  # Frontend / UI scope starts at 2018 (Loi NOTRe + M57)
+
+
 def get_available_years(client: bigquery.Client) -> list:
-    """Récupère les années disponibles dans les données."""
+    """Récupère les années disponibles dans les données (bornées à MIN_YEAR_EXPORTED)."""
     query = f"""
     SELECT DISTINCT annee
     FROM `{PROJECT_ID}.{DATASET}.mart_subventions_treemap`
+    WHERE annee >= {MIN_YEAR_EXPORTED}
     ORDER BY annee DESC
     """
     return [row.annee for row in client.query(query).result()]
@@ -245,14 +253,16 @@ def export_treemap_year(client: bigquery.Client, year: int):
     print(f"    → {output_file.name} ({len(data)} thématiques, {total/1e6:.1f}M€)")
 
 
-def export_beneficiaires_year(client: bigquery.Client, year: int, limit: int = 5000):
-    """Exporte les bénéficiaires pour une année."""
+def export_beneficiaires_year(client: bigquery.Client, year: int, limit: int | None = None):
+    """Exporte les bénéficiaires pour une année (tous par défaut)."""
     print(f"  Bénéficiaires {year}...")
-    
+
     data = fetch_beneficiaires_data(client, year, limit)
-    
+
     # Filtrer pour cette année uniquement
-    data = [d for d in data if d["annee"] == year][:limit]
+    data = [d for d in data if d["annee"] == year]
+    if limit:
+        data = data[:limit]
     
     total = sum(d["montant_total"] for d in data)
     
@@ -365,7 +375,7 @@ def export_beneficiaires_search(years: list):
     print(f"    → {output_file.name} ({len(data)} bénéficiaires uniques, {size_kb:.0f} Ko)")
 
 
-def export_tendances(client: bigquery.Client, years: list, limit: int = 5000):
+def export_tendances(client: bigquery.Client, years: list, limit: int | None = None):
     """
     Exporte les données de tendances multi-dimensions.
 
@@ -379,7 +389,9 @@ def export_tendances(client: bigquery.Client, years: list, limit: int = 5000):
     years_data = []
     for year in sorted(years):
         data = fetch_beneficiaires_data(client, year, limit)
-        data = [d for d in data if d["annee"] == year][:limit]
+        data = [d for d in data if d["annee"] == year]
+        if limit:
+            data = data[:limit]
 
         total_montant = sum(d["montant_total"] for d in data)
         nb_subventions = sum(d.get("nb_subventions", 1) for d in data)
@@ -424,7 +436,11 @@ def export_tendances(client: bigquery.Client, years: list, limit: int = 5000):
     output = {
         "generated_at": datetime.now().isoformat(),
         "source": "dbt marts (mart_subventions_beneficiaires)",
-        "note_perimetre": f"Top {limit} bénéficiaires par année (long tail inclus au-delà du top 500 historique).",
+        "note_perimetre": (
+            f"Top {limit} bénéficiaires par année (long tail inclus)."
+            if limit
+            else "Tous les bénéficiaires (long tail complet, aucun cap)."
+        ),
         "years": years_data,
     }
 
@@ -443,8 +459,8 @@ def main():
     
     parser = argparse.ArgumentParser(description="Export données subventions depuis dbt")
     parser.add_argument('--year', type=int, help="Année spécifique (sinon toutes)")
-    parser.add_argument('--limit', type=int, default=5000,
-                       help="Limite de bénéficiaires par année (long tail inclus)")
+    parser.add_argument('--limit', type=int, default=None,
+                       help="Cap top-N par année (défaut: aucun, tous les bénéficiaires)")
     args = parser.parse_args()
     
     log = Logger("export_subventions")
@@ -471,7 +487,7 @@ def main():
         log.progress(i, len(years), f"Année {year}")
         export_treemap_year(client, year)
         export_beneficiaires_year(client, year, args.limit)
-        log.success(f"Année {year}", extra=f"treemap + {args.limit} bénéficiaires")
+        log.success(f"Année {year}", extra=f"treemap + {args.limit or 'tous'} bénéficiaires")
 
     # Tendances multi-dimensions
     log.section("Export des tendances")

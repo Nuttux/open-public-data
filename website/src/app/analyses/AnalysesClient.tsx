@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useT, useLocale } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
+import Tip from "@/components/fusion/Tip";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
@@ -65,11 +66,11 @@ export default function AnalysesClient({
   const locStr = locale === "en" ? "en-GB" : "fr-FR";
 
   const CATEGORIES = [
-    { key: "all", label: t("fx.analyses.cat.all"), raw: "Toutes" },
-    { key: "enquetes", label: t("fx.analyses.cat.enquetes"), raw: "Enquêtes" },
-    { key: "analyses", label: t("fx.analyses.cat.analyses"), raw: "Analyses" },
-    { key: "explications", label: t("fx.analyses.cat.explications"), raw: "Explications" },
-    { key: "portraits", label: t("fx.analyses.cat.portraits"), raw: "Portraits" },
+    { key: "all", label: t("fx.analyses.cat.all"), raw: "Toutes", tip: null as string | null },
+    { key: "enquetes", label: t("fx.analyses.cat.enquetes"), raw: "Enquêtes", tip: t("fx.analyses.cat.enquetes.tip") },
+    { key: "analyses", label: t("fx.analyses.cat.analyses"), raw: "Analyses", tip: t("fx.analyses.cat.analyses.tip") },
+    { key: "explications", label: t("fx.analyses.cat.explications"), raw: "Explications", tip: t("fx.analyses.cat.explications.tip") },
+    { key: "portraits", label: t("fx.analyses.cat.portraits"), raw: "Portraits", tip: t("fx.analyses.cat.portraits.tip") },
   ] as const;
 
   type CatKey = (typeof CATEGORIES)[number]["key"];
@@ -143,7 +144,7 @@ export default function AnalysesClient({
                 }}
                 className={c.key === active ? "fx-cat fx-cat-on" : "fx-cat"}
               >
-                {c.label}
+                {c.tip ? <Tip label={c.tip}>{c.label}</Tip> : c.label}
               </button>
             ))}
             <span className="fx-cat-meta">
@@ -283,7 +284,7 @@ export default function AnalysesClient({
                 <span className="fx-sec-kind">{t("fx.analyses.planned.kind")}</span>
               </div>
               <h2 className="fx-sec-title">
-                {renderTitle(t("fx.analyses.planned.title"))}
+                Les <em><Tip label={t("fx.analyses.fondamentaux.tip")}>fondamentaux</Tip></em>
               </h2>
               <p className="fx-sec-sub">{t("fx.analyses.planned.sub")}</p>
             </div>

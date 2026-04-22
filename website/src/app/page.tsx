@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./fusion.css";
 
 import { loadLandingStats } from "@/lib/fusion-data";
+import { getAllPosts } from "@/lib/blog";
 import LandingClient from "./LandingClient";
 
 const SITE_URL = "https://franceopendata.fr";
@@ -21,24 +22,16 @@ export const metadata: Metadata = {
     description: OG_DESCRIPTION,
     url: SITE_URL,
     locale: "fr_FR",
-    images: [
-      {
-        url: "/og/landing.png",
-        width: 1200,
-        height: 630,
-        alt: "France Open Data — où va l'argent public",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: OG_TITLE,
     description: OG_DESCRIPTION,
-    images: ["/og/landing.png"],
   },
 };
 
 export default function LandingPage() {
   const stats = loadLandingStats();
-  return <LandingClient stats={stats} />;
+  const posts = getAllPosts().slice(0, 3);
+  return <LandingClient stats={stats} posts={posts} />;
 }

@@ -18,6 +18,7 @@ import PatrimoineDrillList from "@/components/fusion/PatrimoineDrillList";
 import StressTestTeaser from "@/components/fusion/StressTestTeaser";
 import CityComparator from "@/components/fusion/CityComparator";
 import HorsBilanMap from "@/components/fusion/HorsBilanMap";
+import TaPartAToi from "@/components/fusion/TaPartAToi";
 import { slugifyBailleur } from "@/lib/projet-utils";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import type { PatrimoineData, PatrimoineStructure, HorsBilanData, CityDebtSnapshot } from "@/lib/fusion-data";
@@ -61,6 +62,7 @@ export default function DettePatrimoineClient({
       <PageTOC
         items={[
           { id: "sec-overview", label: t("fx.det.toc.overview") },
+          { id: "sec-tapart", label: t("fx.det.toc.tapart") },
           { id: "sec-stress", label: t("fx.det.toc.stress") },
           { id: "sec-bilan", label: t("fx.det.toc.bilan") },
           { id: "sec-trajectoire", label: t("fx.det.toc.trajectoire") },
@@ -84,7 +86,18 @@ export default function DettePatrimoineClient({
             <b>{t("fx.det.title.b_b")}</b>
             {t("fx.det.title.b_after")}
           </h1>
-          <p className="fx-page-lede">{fill(t("fx.det.lede"), { year: d.year })}</p>
+          <p className="fx-page-lede">
+            <Tip label={t("fx.det.lede.bilan.tip")}>{t("fx.det.lede.bilan")}</Tip>
+            {fill(t("fx.det.lede.consolid"), { year: d.year })}
+            <Tip label={t("fx.det.lede.actif.tip")}>{t("fx.det.lede.actif")}</Tip>
+            {t("fx.det.lede.c1")}
+            <Tip label={t("fx.det.lede.passif.tip")}>{t("fx.det.lede.passif")}</Tip>
+            {t("fx.det.lede.c2")}
+            <Tip label={t("fx.det.lede.dette.tip")}>{t("fx.det.lede.dette")}</Tip>
+            {t("fx.det.lede.c3")}
+            <Tip label={t("fx.det.lede.regleor.tip")}>{t("fx.det.lede.regleor")}</Tip>
+            {t("fx.det.lede.post")}
+          </p>
           <div className="fx-page-actions">
             <YearPicker
               years={d.availableYears}
@@ -177,6 +190,30 @@ export default function DettePatrimoineClient({
         </div>
       </section>
 
+      <section className="fx-section" id="sec-tapart">
+        <div className="fx-wrap">
+          <SectionHead
+            number="01b"
+            kind={t("fx.tp.kicker")}
+            title={
+              <>
+                {t("fx.tp.section.title.before")}
+                <em>{t("fx.tp.section.title.em")}</em>
+                {t("fx.tp.section.title.after")}
+              </>
+            }
+            subtitle={t("fx.tp.section.subtitle")}
+          />
+          <TaPartAToi
+            dette={d.detteFinanciere}
+            fondsPropres={d.fondsPropres}
+            actif={d.actif}
+            horsBilan={horsBilan?.totals.capital_restant ?? 0}
+            tauxMoyen={structure?.structure_dette.taux.taux_fixe_moyen_pondere_pct ?? 2.4}
+          />
+        </div>
+      </section>
+
       <section className="fx-section" id="sec-stress">
         <div className="fx-wrap">
           <SectionHead
@@ -204,7 +241,7 @@ export default function DettePatrimoineClient({
         <div className="fx-wrap">
           <SectionHead
             number="03"
-            kind={t("fx.det.s03.kind")}
+            kind={<Tip label={t("fx.det.s03.kind.tip")}>{t("fx.det.s03.kind")}</Tip>}
             title={
               <>
                 <em>{t("fx.det.s03.title.em_a")}</em>
@@ -305,7 +342,7 @@ export default function DettePatrimoineClient({
         <div className="fx-wrap">
           <SectionHead
             number="05"
-            kind={t("fx.det.s04b.kind")}
+            kind={<Tip label={t("fx.det.s04b.kind.tip")}>{t("fx.det.s04b.kind")}</Tip>}
             title={
               <>
                 {t("fx.det.s04b.title.before")}
@@ -327,7 +364,7 @@ export default function DettePatrimoineClient({
         <div className="fx-wrap">
           <SectionHead
             number="06"
-            kind={t("fx.det.s04.kind")}
+            kind={<Tip label={t("fx.det.s04.kind.tip")}>{t("fx.det.s04.kind")}</Tip>}
             title={
               <>
                 {t("fx.det.s04.title.before")}

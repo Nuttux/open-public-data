@@ -14,13 +14,20 @@ import BrandMark from "@/components/fusion/BrandMark";
 import HeroBg from "@/components/fusion/HeroBg";
 import { fmtDec, fmtInt, fmtBillions, fmtMillions } from "@/lib/fmt";
 import type { LandingStats } from "@/lib/fusion-data";
+import type { BlogPostMeta } from "@/lib/blog";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 
-type Props = { stats: LandingStats };
+type Props = { stats: LandingStats; posts: BlogPostMeta[] };
 
 function cleanTopName(n: string): string {
   return n.replace(/\s{2,}/g, " ").trim();
+}
+
+function fmtTopAmount(n: number): { v: string; u: string } {
+  if (n >= 1e9) return { v: fmtBillions(n), u: "Md €" };
+  if (n >= 1e6) return { v: fmtMillions(n), u: "M €" };
+  return { v: fmtInt(Math.round(n / 1000)), u: "k €" };
 }
 
 function TopListPreview({
@@ -30,18 +37,21 @@ function TopListPreview({
 }) {
   return (
     <div className="fx-tile-top3">
-      {items.map((it, i) => (
-        <div className="fx-tile-top3-row" key={`${i}-${it.name}`}>
-          <span className="fx-tile-top3-rank">{String(i + 1).padStart(2, "0")}</span>
-          <span className="fx-tile-top3-name" title={it.name}>{cleanTopName(it.name)}</span>
-          <span className="fx-tile-top3-amt tnum">{fmtMillions(it.amount)} M €</span>
-        </div>
-      ))}
+      {items.map((it, i) => {
+        const a = fmtTopAmount(it.amount);
+        return (
+          <div className="fx-tile-top3-row" key={`${i}-${it.name}`}>
+            <span className="fx-tile-top3-rank">{String(i + 1).padStart(2, "0")}</span>
+            <span className="fx-tile-top3-name" title={it.name}>{cleanTopName(it.name)}</span>
+            <span className="fx-tile-top3-amt tnum">{a.v} {a.u}</span>
+          </div>
+        );
+      })}
     </div>
   );
 }
 
-export default function LandingClient({ stats }: Props) {
+export default function LandingClient({ stats, posts }: Props) {
   const t = useT();
   const { locale } = useLocale();
   const deltaPct = stats.deltaVsLastExecutedPct;
@@ -138,6 +148,27 @@ export default function LandingClient({ stats }: Props) {
         </div>
       </section>
 
+      {/* MÉTHODE STRIP — prominence en haut de page */}
+      <section className="fx-meth-strip" id="meth-strip">
+        <div className="fx-wrap">
+          <Link href="/methode" className="fx-meth-strip-link">
+            <span className="fx-meth-strip-label">
+              {t("fx.land.meth_strip.label")}
+            </span>
+            <span className="fx-meth-strip-tags">
+              <span>{t("fx.land.meth_strip.tag1")}</span>
+              <span>·</span>
+              <span>{t("fx.land.meth_strip.tag2")}</span>
+              <span>·</span>
+              <span>{t("fx.land.meth_strip.tag3")}</span>
+            </span>
+            <span className="fx-meth-strip-cta">
+              {t("fx.land.meth_strip.cta")} <span aria-hidden="true">→</span>
+            </span>
+          </Link>
+        </div>
+      </section>
+
       {/* INSIDE — tiles */}
       <section className="fx-inside" id="inside">
         <div className="fx-wrap">
@@ -149,6 +180,7 @@ export default function LandingClient({ stats }: Props) {
           <p className="fx-sub">{t("fx.land.inside.sub")}</p>
 
           <div className="fx-grid-tiles">
+            {/* ROW 1 : Budget (SVG) · Évolution (SVG) · Patrimoine (SVG) */}
             <TileCard
               href="/budget"
               kind={t("fx.land.tile.01.kind")}
@@ -172,37 +204,6 @@ export default function LandingClient({ stats }: Props) {
                   {arrow} <b>{fmtDec(Math.abs(deltaPct), 1)} %</b> {t("fx.land.tile.vs")}{stats.lastExecutedYear}
                 </>
               }
-            />
-
-            <TileCard
-              href="/investissements"
-              kind={t("fx.land.tile.03.kind")}
-              title={t("fx.land.tile.03.title")}
-              description={t("fx.land.tile.03.desc")}
-              preview={
-                <svg viewBox="0 0 200 100">
-                  <path d="M 28 30 Q 36 14 70 12 Q 110 10 140 18 Q 172 26 184 48 Q 188 72 168 86 Q 130 94 90 92 Q 50 90 28 72 Q 18 52 28 30 Z" className="stroke" fill="none" stroke="#0a0a0a" strokeWidth="1.5" />
-                  <path d="M 22 58 Q 60 50 90 60 Q 120 70 160 58 Q 180 52 190 48" className="stroke" stroke="#0a0a0a" strokeWidth="2" fill="none" opacity=".55" />
-                  {[[60,34],[86,42],[110,30],[140,36],[72,70],[104,78],[132,72],[158,68]].map(([x,y]) => (
-                    <circle key={`${x}-${y}`} cx={x} cy={y} r="2.5" className="fill" fill="#0a0a0a" />
-                  ))}
-                  <circle cx="118" cy="54" r="4" className="fill-sig" fill="#5f6672" />
-                </svg>
-              }
-              kpi="2,6"
-              kpiUnit="Md €"
-              kpiDelta={<>↑ <b>8,4 %</b> {t("fx.land.tile.vs")}{stats.lastExecutedYear}</>}
-            />
-
-            <TileCard
-              href="/qui-recoit"
-              kind={t("fx.land.tile.04.kind")}
-              title={t("fx.land.tile.04.title")}
-              description={t("fx.land.tile.04.desc")}
-              preview={<TopListPreview items={stats.topBeneficiaires} />}
-              kpi="312"
-              kpiUnit="M €"
-              kpiDelta={<>↑ <b>3,3 %</b> {t("fx.land.tile.vs")}2023</>}
             />
 
             <TileCard
@@ -252,6 +253,27 @@ export default function LandingClient({ stats }: Props) {
               }
             />
 
+            {/* ROW 2 : Investissements (SVG) · Voté-vs-exécuté (SVG) · Subventions (TEXT) */}
+            <TileCard
+              href="/investissements"
+              kind={t("fx.land.tile.03.kind")}
+              title={t("fx.land.tile.03.title")}
+              description={t("fx.land.tile.03.desc")}
+              preview={
+                <svg viewBox="0 0 200 100">
+                  <path d="M 28 30 Q 36 14 70 12 Q 110 10 140 18 Q 172 26 184 48 Q 188 72 168 86 Q 130 94 90 92 Q 50 90 28 72 Q 18 52 28 30 Z" className="stroke" fill="none" stroke="#0a0a0a" strokeWidth="1.5" />
+                  <path d="M 22 58 Q 60 50 90 60 Q 120 70 160 58 Q 180 52 190 48" className="stroke" stroke="#0a0a0a" strokeWidth="2" fill="none" opacity=".55" />
+                  {[[60,34],[86,42],[110,30],[140,36],[72,70],[104,78],[132,72],[158,68]].map(([x,y]) => (
+                    <circle key={`${x}-${y}`} cx={x} cy={y} r="2.5" className="fill" fill="#0a0a0a" />
+                  ))}
+                  <circle cx="118" cy="54" r="4" className="fill-sig" fill="#5f6672" />
+                </svg>
+              }
+              kpi="2,6"
+              kpiUnit="Md €"
+              kpiDelta={<>↑ <b>8,4 %</b> {t("fx.land.tile.vs")}{stats.lastExecutedYear}</>}
+            />
+
             <TileCard
               href="/budget"
               kind={t("fx.land.tile.06.kind")}
@@ -276,13 +298,24 @@ export default function LandingClient({ stats }: Props) {
             />
 
             <TileCard
+              href="/qui-recoit"
+              kind={t("fx.land.tile.04.kind")}
+              title={t("fx.land.tile.04.title")}
+              description={t("fx.land.tile.04.desc")}
+              preview={<TopListPreview items={stats.topBeneficiaires} />}
+              kpi="312"
+              kpiUnit="M €"
+              kpiDelta={<>↑ <b>3,3 %</b> {t("fx.land.tile.vs")}2023</>}
+            />
+
+            {/* ROW 3 : Stress-test · Logement social · Marchés (TEXT) */}
+            <TileCard
               href="/dette-patrimoine/stress-test"
               kind={t("fx.land.tile.stress.kind")}
               title={t("fx.land.tile.stress.title")}
               description={t("fx.land.tile.stress.desc")}
               preview={(() => {
                 const cap = stats.capaciteDesendettement;
-                // Jauge : 0 → x=10, seuil 12 → x=108, critique 20 → x=152, max 30 → x=190
                 const toX = (yr: number) => 10 + Math.min(yr, 30) * 6;
                 const cursorX = toX(cap);
                 return (
@@ -342,7 +375,12 @@ export default function LandingClient({ stats }: Props) {
               href="/marches-publics"
               kind={t("fx.land.tile.08.kind")}
               title={t("fx.land.tile.08.title")}
-              description={t("fx.land.tile.08.desc")}
+              description={
+                <>
+                  {t("fx.land.tile.08.desc")}
+                  <span className="fx-tile-caveat">{t("fx.land.tile.08.caveat")}</span>
+                </>
+              }
               preview={<TopListPreview items={stats.topFournisseurs} />}
               kpi="2,5"
               kpiUnit="Md €"
@@ -360,6 +398,60 @@ export default function LandingClient({ stats }: Props) {
           </div>
         </div>
       </section>
+
+      {/* ANALYSES — teaser éditorial */}
+      {posts.length > 0 && (
+        <section className="fx-analyses" id="analyses">
+          <div className="fx-wrap">
+            <div className="fx-analyses-head">
+              <h2>
+                {t("fx.land.analyses.h2.before")}
+                <em>{t("fx.land.analyses.h2.em")}</em>
+                {t("fx.land.analyses.h2.dot")}
+              </h2>
+              <p className="fx-sub">{t("fx.land.analyses.sub")}</p>
+            </div>
+
+            <div className="fx-analyses-grid">
+              {posts.slice(0, 3).map((p) => (
+                <Link
+                  key={p.slug}
+                  href={`/analyses/${p.slug}`}
+                  className="fx-analyses-card"
+                >
+                  {p.image && (
+                    <div className="fx-analyses-media">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={p.image} alt="" loading="lazy" />
+                    </div>
+                  )}
+                  <div className="fx-analyses-body">
+                    {p.category && (
+                      <span className="fx-analyses-cat">{p.category}</span>
+                    )}
+                    <h3 className="fx-analyses-title">{p.title}</h3>
+                    <p className="fx-analyses-desc">{p.description}</p>
+                    <div className="fx-analyses-foot">
+                      <span>
+                        {new Date(p.date).toLocaleDateString(
+                          locale === "en" ? "en-GB" : "fr-FR",
+                          { day: "numeric", month: "long", year: "numeric" },
+                        )}
+                      </span>
+                      <span aria-hidden="true">·</span>
+                      <span>{p.readingTime}</span>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+
+            <div className="fx-analyses-foot-all">
+              <Link href="/analyses">{t("fx.land.analyses.see_all")} →</Link>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* MÉTHODE */}
       <section className="fx-meth" id="meth">

@@ -149,11 +149,20 @@ export type SireneCompany = {
   dirigeants?: { nom: string; prenom: string; qualite: string }[];
 };
 
+export type BeneficiaireGrounded = {
+  activite_verifiee: string;
+  perimetre_geographique?: string;
+  sources?: ({ url?: string; title?: string } | string)[];
+  confiance?: number;
+  source_type?: string;
+};
+
 // Cache loaders are memoised at module level — these JSON blobs are small
 // and re-reading them on every request wastes IO.
 let _marchesVulg: Record<string, MarcheVulgarization> | null = null;
 let _subvVulg: Record<string, SubventionVulgarization> | null = null;
 let _sirene: Record<string, SireneCompany> | null = null;
+let _benefGrounded: Record<string, BeneficiaireGrounded> | null = null;
 
 export function loadMarcheVulgarization(numero: string): MarcheVulgarization | null {
   if (_marchesVulg === null) {
@@ -177,6 +186,26 @@ export function loadSirene(siren: string): SireneCompany | null {
     _sirene = data?.items ?? {};
   }
   return _sirene[siren] ?? null;
+}
+
+const normalizeBenefKey = (s: string) =>
+  s
+    .toUpperCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^A-Z0-9]+/g, " ")
+    .trim()
+    .replace(/\s+/g, " ");
+
+export function loadBeneficiaireGrounded(name: string): BeneficiaireGrounded | null {
+  if (_benefGrounded === null) {
+    const data = readJsonOrNull<{ items?: Record<string, BeneficiaireGrounded> }>("enrichment/beneficiaire_grounded.json");
+    const raw = data?.items ?? {};
+    const reindexed: Record<string, BeneficiaireGrounded> = {};
+    for (const [k, v] of Object.entries(raw)) reindexed[normalizeBenefKey(k)] = v;
+    _benefGrounded = reindexed;
+  }
+  return _benefGrounded[normalizeBenefKey(decodeURIComponent(name))] ?? null;
 }
 
 export type LandingStats = {

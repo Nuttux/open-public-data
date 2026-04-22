@@ -99,7 +99,9 @@ export default function BudgetSankey({ nodes, links, central, height = 520 }: Pr
 
   return (
     <div className="fx-sankey">
-      <ReactECharts option={option} style={{ height, width: "100%" }} />
+      <div className="fx-sankey-inner">
+        <ReactECharts option={option} style={{ height, width: "100%" }} />
+      </div>
     </div>
   );
 }

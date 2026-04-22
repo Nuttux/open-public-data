@@ -79,9 +79,16 @@ export default function InvestissementsClient({ d }: { d: InvestissementsData })
             {t("fx.inv.title.after")}
           </h1>
           <p className="fx-page-lede">
-            {fmtInt(d.nbProjets)}{t("fx.inv.lede.a")}{d.year},{t("fx.inv.lede.b")}
-            <b>{fill(t("fx.inv.lede.pct"), { pct: fmtDec(d.pctGeo, 0) })}</b>
-            {t("fx.inv.lede.c")}
+            {fmtInt(d.nbProjets)}{t("fx.inv.lede.a.pre")}
+            <Tip label={t("fx.inv.lede.a.operations.tip")}>{t("fx.inv.lede.a.operations")}</Tip>
+            {t("fx.inv.lede.a.post")}{d.year}{t("fx.inv.lede.b")}
+            <b>
+              {fill(t("fx.inv.lede.pct.val"), { pct: fmtDec(d.pctGeo, 0) })}{" "}
+              <Tip label={t("fx.inv.lede.pct.term.tip")}>{t("fx.inv.lede.pct.term")}</Tip>
+            </b>
+            {t("fx.inv.lede.c.pre")}
+            <Tip label={t("fx.inv.lede.c.ca.tip")}>{t("fx.inv.lede.c.ca")}</Tip>
+            {t("fx.inv.lede.c.post")}
           </p>
           <div className="fx-page-actions">
             <YearPicker
@@ -164,7 +171,8 @@ export default function InvestissementsClient({ d }: { d: InvestissementsData })
               }}
               caption={
                 <>
-                  {t("fx.inv.s02.hero_cap.a")}
+                  <Tip label={t("fx.inv.s02.hero_cap.a.term.tip")}>{t("fx.inv.s02.hero_cap.a.term")}</Tip>
+                  {t("fx.inv.s02.hero_cap.a.post")}
                   <b>{fmtBillions(d.totalHorsDette)} {t("fx.s.md_eur")}</b>.{" "}
                   {t("fx.inv.s02.hero_cap.b")}
                 </>
@@ -228,7 +236,7 @@ export default function InvestissementsClient({ d }: { d: InvestissementsData })
         <div className="fx-wrap">
           <SectionHead
             number="04"
-            kind={t("fx.inv.s04.kind")}
+            kind={<Tip label={t("fx.inv.classif_fonct.tip")}>{t("fx.inv.s04.kind")}</Tip>}
             title={
               <>
                 {t("fx.inv.s04.title.before")}
@@ -302,7 +310,7 @@ export default function InvestissementsClient({ d }: { d: InvestissementsData })
         <div className="fx-wrap">
           <SectionHead
             number="07"
-            kind={t("fx.inv.s07.kind")}
+            kind={<Tip label={t("fx.inv.signaux.tip")}>{t("fx.inv.s07.kind")}</Tip>}
             title={
               <>
                 {t("fx.inv.s07.title.before")}
