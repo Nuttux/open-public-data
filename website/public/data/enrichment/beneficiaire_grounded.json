@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T11:32:56.209270",
+  "generated_at": "2026-04-22T11:34:56.455262",
   "model": "gemini-3-flash-preview",
   "count": 780,
   "items": {
@@ -19181,7 +19181,259 @@
       "confiance": 0.3,
       "source_type": "claude_web",
       "enriched_at": "2026-04-22T11:32:56.209270"
+    },
+    "BUDGET ANNEXE AIDE SOCIALE A L ENFANCE": {
+      "activite_verifiee": "Budget Annexe de l'Aide Sociale à l'Enfance (ASE) de la Ville de Paris — budget autonome consacré aux établissements parisiens de protection de l'enfance. Financé en très large majorité par le budget général de la Ville (~97 % en 2024), couvre charges d'exploitation (~75 M€) et investissements (~4 M€).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "paris.fr",
+        "ccomptes.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:34:30.903352"
+    },
+    "FLORA TRISTAN REGIE QUARTIER 14EME": {
+      "activite_verifiee": "Flora Tristan — Régie de quartier du 14e arrondissement, implantée dans le QPV Didot-Porte de Vanves depuis 2007. SIREN 500266408, 2 rue Prévost Paradol Paris 14e. Insertion par l'activité économique (entretien espaces verts, rues, bâtiments) pour bailleurs sociaux et entreprises du quartier.",
+      "perimetre_geographique": "Paris 14e",
+      "sources": [
+        "regieparis14.org",
+        "grafie.org",
+        "pappers.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:34:30.903352"
+    },
+    "PASS SPORT S POUR L EMPLOI": {
+      "activite_verifiee": "Pass'Sport(s) pour l'Emploi (SIREN 923620801), association créée en 2017 à Paris 20e par Benoît Campargue (ex-judoka de haut niveau) et Thierry Marx. Forme en 12 semaines des personnes éloignées de l'emploi aux métiers d'agent de sécurité et d'animateur sportif, avec promesse d'embauche en partenariat avec des entreprises.",
+      "perimetre_geographique": "Paris / France",
+      "sources": [
+        "sport-pour-l-emploi.com",
+        "jeveuxaider.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:34:30.903352"
+    },
+    "ASS VOTRE ECOLE CHEZ VOUS": {
+      "activite_verifiee": "Votre École Chez Vous (VECV), association fondée en 1954, reconnue d'utilité publique en 1985. Siège 29 rue Merlin Paris 11e. Seule association française à assurer gratuitement une scolarisation individuelle à domicile (maternelle-lycée) pour enfants et adolescents malades ou handicapés — ~150 élèves/an, +5 000 jeunes en 70 ans.",
+      "perimetre_geographique": "Île-de-France + Rouen (siège Paris 11e)",
+      "sources": [
+        "vecv.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:34:30.903352"
+    },
+    "ASSOCIATION VOTRE ECOLE CHEZ VOUS": {
+      "activite_verifiee": "Votre École Chez Vous (VECV), association fondée en 1954, reconnue d'utilité publique en 1985. Siège 29 rue Merlin Paris 11e. Seule association française à assurer gratuitement une scolarisation individuelle à domicile (maternelle-lycée) pour enfants et adolescents malades ou handicapés — ~150 élèves/an, +5 000 jeunes en 70 ans.",
+      "perimetre_geographique": "Île-de-France + Rouen (siège Paris 11e)",
+      "sources": [
+        "vecv.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:34:30.903352"
+    },
+    "VOTRE ECOLE CHEZ VOUS": {
+      "activite_verifiee": "Votre École Chez Vous (VECV), association fondée en 1954, reconnue d'utilité publique en 1985. Siège 29 rue Merlin Paris 11e. Seule association française à assurer gratuitement une scolarisation individuelle à domicile (maternelle-lycée) pour enfants et adolescents malades ou handicapés — ~150 élèves/an, +5 000 jeunes en 70 ans.",
+      "perimetre_geographique": "Île-de-France + Rouen (siège Paris 11e)",
+      "sources": [
+        "vecv.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:34:30.903352"
+    },
+    "IRONHACK FRANCE ALUMNI": {
+      "activite_verifiee": "Ironhack, école tech internationale proposant des bootcamps intensifs (développement web, data analytics, UX/UI, cybersécurité, IA) sur campus Paris et en ligne. Formations certifiantes (RNCP34066, RNCP39618 niveau bac+3). Placement ~75 % dans les 3 mois. Présente à Paris.",
+      "perimetre_geographique": "Paris / International",
+      "sources": [
+        "ironhack.com/fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:34:30.903352"
+    },
+    "SQUARE BANDE CRECHE PARENTALE": {
+      "activite_verifiee": "Square Bande Crèche Parentale (SIREN 332061126), crèche parentale associative créée en 1984, 5 rue du Général Guilhem Paris 11e. 12 places pour enfants de 3 mois à 3 ans, fort engagement parental (permanences, gestion associative), pédagogie active.",
+      "perimetre_geographique": "Paris 11e",
+      "sources": [
+        "paris.fr",
+        "societe.com",
+        "acepprif.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:34:30.903352"
+    },
+    "CENTRE ACCUEIL MEDIC REINSER": {
+      "activite_verifiee": "CAMRES — Centre d'Accueil Médicalisé et de Réinsertion Économique et Sociale, association parisienne (Paris 10e, SIREN 403184260). Accueil et accompagnement des personnes en situation de précarité via une médiation sociale et éducative, travail sur l'insertion économique et sociale.",
+      "perimetre_geographique": "Paris 10e",
+      "sources": [
+        "pappers.fr",
+        "sursaut-citoyen.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:34:30.903352"
+    },
+    "AOUT SECOURS ALIMENTAIRE": {
+      "activite_verifiee": "Août Secours Alimentaire (ASA), association créée en 1994 à Saint-Lambert de Vaugirard. 57 rue Bobillot Paris 13e. Distribue +1 million de paniers repas du 15 juillet à fin août dans 9 centres (dont 5 à Paris), quand la plupart des associations d'aide alimentaire sont fermées. ~15 000 personnes aidées à Paris.",
+      "perimetre_geographique": "Paris / Île-de-France",
+      "sources": [
+        "aout-secours-alimentaire.org",
+        "dioceseparis.fr",
+        "bapif.banquealimentaire.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:34:30.903352"
+    },
+    "SAFE": {
+      "activite_verifiee": "SAFE Association, structure associative parisienne référencée sur la plateforme citoyenne Je m'engage Paris. Activités détaillées publiquement limitées.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "jemengage.paris.fr"
+      ],
+      "confiance": 0.3,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:34:30.903352"
+    },
+    "3 CHEMINS": {
+      "activite_verifiee": "3 Chemins, association créée le 13 janvier 2020 à Paris. Restaurant solidaire et lieu multiculturel et festif ; organise événements culturels, solidaires et culinaires, ateliers de formation, restauration solidaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "net1901.org",
+        "helloasso.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:34:30.903352"
+    },
+    "ERDA EDUCATION RECHERCHE": {
+      "activite_verifiee": "ERDA — Éducation Recherche Développement Artistique (SIREN 391961513), association créée le 14 septembre 1988, 23 rue d'Anjou Paris 8e. Porte deux ensembles musicaux majeurs : le chœur de chambre Accentus et l'orchestre sur instruments d'époque Insula Orchestra (Laurence Equilbey). Éducation artistique, recherche musicologique, création contemporaine.",
+      "perimetre_geographique": "Paris (siège 8e) / France",
+      "sources": [
+        "societe.com",
+        "annuaire-entreprises.data.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:34:30.903352"
+    },
+    "HALTE GARDERIE DU GRAND PAVOIS": {
+      "activite_verifiee": "Le Grand Pavois, halte-garderie parentale associative, 189 rue de Lourmel Paris 15e. 20 places pour enfants de 3 mois à 3 ans, ouverture lundi-jeudi 8h45-17h45 et vendredi 8h45-16h45. Accueille chaque enfant jusqu'à 3 demi-journées ou journées par semaine.",
+      "perimetre_geographique": "Paris 15e",
+      "sources": [
+        "paris.fr",
+        "haltegarderiedugrandpavois.fr",
+        "acepprif.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:34:30.903352"
+    },
+    "CIRCUSNEXT": {
+      "activite_verifiee": "circusnext, association basée à Paris née du programme Jeunes Talents Cirque (2001-2002, ministère de la Culture). Coordonne la seule plateforme européenne de cirque contemporain soutenue par la Commission européenne, fédérant 24 lieux membres dans 15 pays. Repère et accompagne les auteurs émergents du cirque contemporain (résidences, bourses, diffusion).",
+      "perimetre_geographique": "Paris / Europe",
+      "sources": [
+        "circusnext.eu",
+        "artcena.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:34:30.903352"
+    },
+    "CONCERTS PASDELOUP": {
+      "activite_verifiee": "Orchestre Pasdeloup (Concerts Pasdeloup), plus ancien orchestre symphonique associatif de Paris, fondé en 1861 par Jules Pasdeloup sous le nom « Concerts populaires ». Se produit à la Philharmonie de Paris, Salle Gaveau, La Seine Musicale. Répertoire éclectique du classique au contemporain, avec créations jazz/cinéma/danse.",
+      "perimetre_geographique": "Paris / France",
+      "sources": [
+        "concertspasdeloup.fr",
+        "fr.wikipedia.org/wiki/Concerts_Pasdeloup"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:34:30.903352"
+    },
+    "CENTRE INFORMATION DOCUMENT JEUNESS": {
+      "activite_verifiee": "CIDJ — Centre d'Information et de Documentation Jeunesse, association créée en 1969 par le ministère de la Jeunesse et des Sports. 4 place du Louvre Paris 1er. Informe gratuitement tous les jeunes sur études, orientation, emploi, apprentissage, mobilité internationale, logement, droits. Tête de réseau de 1 300 structures Info Jeunesse (BIJ/PIJ).",
+      "perimetre_geographique": "Paris / France",
+      "sources": [
+        "cidj.com",
+        "paris.fr",
+        "fr.wikipedia.org/wiki/Centre_d'information_et_de_documentation_jeunesse"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:34:30.903352"
+    },
+    "OEUVRES DES OTAGES": {
+      "activite_verifiee": "Œuvre des Otages — informations publiques détaillées limitées ; vraisemblablement une association d'aide à des publics précaires à Paris.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.3,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:34:30.903352"
+    },
+    "ASSOCIATION OEUVRES DES OTAGES": {
+      "activite_verifiee": "Œuvre des Otages — informations publiques détaillées limitées ; vraisemblablement une association d'aide à des publics précaires à Paris.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.3,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:34:30.903352"
+    },
+    "ASSOCIATION CULTURE 2": {
+      "activite_verifiee": "Association Culture 2+ — structure culturelle parisienne, informations publiques détaillées limitées.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.3,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:34:30.903352"
+    },
+    "CREDIT AGRICOLE SA": {
+      "activite_verifiee": "Crédit Agricole SA, société anonyme cotée (SIREN 784608416), organe central coté du groupe bancaire mutualiste Crédit Agricole. Activité de banque de détail, banque de financement et d'investissement, gestion d'actifs. Siège : 12 place des États-Unis, Montrouge (92).",
+      "perimetre_geographique": "France / International",
+      "sources": [
+        "fr.wikipedia.org/wiki/Crédit_agricole_S.A."
+      ],
+      "confiance": 0.75,
+      "source_type": "knowledge_base",
+      "enriched_at": "2026-04-22T11:34:56.455262"
+    },
+    "CREDIT LYONNAIS": {
+      "activite_verifiee": "LCL — Le Crédit Lyonnais (SIREN 954509741), banque de détail filiale du groupe Crédit Agricole depuis 2003. Réseau national d'agences ; siège : 20 avenue de Paris, Villejuif (94).",
+      "perimetre_geographique": "France",
+      "sources": [
+        "fr.wikipedia.org/wiki/LCL_(banque)"
+      ],
+      "confiance": 0.75,
+      "source_type": "knowledge_base",
+      "enriched_at": "2026-04-22T11:34:56.455262"
+    },
+    "BNP PARIBAS": {
+      "activite_verifiee": "BNP Paribas (SIREN 662042449), groupe bancaire et financier international coté, siège 16 boulevard des Italiens Paris 9e. Banque de détail en France, banque de financement et d'investissement, gestion d'actifs et services financiers spécialisés.",
+      "perimetre_geographique": "France / International",
+      "sources": [
+        "fr.wikipedia.org/wiki/BNP_Paribas"
+      ],
+      "confiance": 0.75,
+      "source_type": "knowledge_base",
+      "enriched_at": "2026-04-22T11:34:56.455262"
+    },
+    "CTRE NATION RECHERCHE SCIENTIFIQUE": {
+      "activite_verifiee": "CNRS — Centre National de la Recherche Scientifique, établissement public à caractère scientifique et technologique (EPST) créé en 1939, sous tutelle du ministère chargé de la recherche. Siège : 3 rue Michel-Ange Paris 16e. ~33 000 agents, 1 000 laboratoires couvrant toutes disciplines scientifiques.",
+      "perimetre_geographique": "France (siège Paris 16e)",
+      "sources": [
+        "cnrs.fr",
+        "fr.wikipedia.org/wiki/Centre_national_de_la_recherche_scientifique"
+      ],
+      "confiance": 0.75,
+      "source_type": "knowledge_base",
+      "enriched_at": "2026-04-22T11:34:56.455262"
     }
   },
-  "total": 915
+  "total": 939
 }
