@@ -14,6 +14,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import AnalyticsProvider from "@/components/AnalyticsProvider";
+import ChatPanel from "@/components/ChatPanel";
 import { LocaleProvider } from "@/lib/localeContext";
 import { SITE_URL, SITE_NAME, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 
@@ -123,6 +124,7 @@ export default function RootLayout({
         <AnalyticsProvider>
           <LocaleProvider>
             {children}
+            <ChatPanel />
           </LocaleProvider>
         </AnalyticsProvider>
       </body>
