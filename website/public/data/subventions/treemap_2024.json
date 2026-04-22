@@ -1,6 +1,6 @@
 {
   "year": 2024,
-  "generated_at": "2026-04-22T17:51:44.270846",
+  "generated_at": "2026-04-22T18:17:17.685980",
   "total_montant": 1353488225.0,
   "nb_thematiques": 15,
   "data": [
@@ -9,7 +9,7 @@
       "thematique": "Social - Solidarité",
       "nb_beneficiaires": 292,
       "nb_subventions": 294,
-      "montant_total": 509458535.0,
+      "montant_total": 509479835.0,
       "pct_total": 37.64
     },
     {
@@ -23,17 +23,17 @@
     {
       "annee": 2024,
       "thematique": "Éducation",
-      "nb_beneficiaires": 246,
-      "nb_subventions": 246,
-      "montant_total": 177351142.0,
+      "nb_beneficiaires": 245,
+      "nb_subventions": 245,
+      "montant_total": 177345792.0,
       "pct_total": 13.1
     },
     {
       "annee": 2024,
       "thematique": "Culture",
-      "nb_beneficiaires": 417,
-      "nb_subventions": 417,
-      "montant_total": 175066117.0,
+      "nb_beneficiaires": 415,
+      "nb_subventions": 415,
+      "montant_total": 175051617.0,
       "pct_total": 12.93
     },
     {
@@ -55,9 +55,9 @@
     {
       "annee": 2024,
       "thematique": "Sport",
-      "nb_beneficiaires": 179,
-      "nb_subventions": 179,
-      "montant_total": 39841146.0,
+      "nb_beneficiaires": 178,
+      "nb_subventions": 178,
+      "montant_total": 39839146.0,
       "pct_total": 2.94
     },
     {
@@ -71,10 +71,10 @@
     {
       "annee": 2024,
       "thematique": "Non classifié",
-      "nb_beneficiaires": 3581,
-      "nb_subventions": 3583,
-      "montant_total": 28345960.0,
-      "pct_total": 2.09
+      "nb_beneficiaires": 3586,
+      "nb_subventions": 3588,
+      "montant_total": 28371810.0,
+      "pct_total": 2.1
     },
     {
       "annee": 2024,
@@ -95,10 +95,10 @@
     {
       "annee": 2024,
       "thematique": "Santé",
-      "nb_beneficiaires": 66,
-      "nb_subventions": 66,
-      "montant_total": 8301247.0,
-      "pct_total": 0.61
+      "nb_beneficiaires": 67,
+      "nb_subventions": 67,
+      "montant_total": 8349947.0,
+      "pct_total": 0.62
     },
     {
       "annee": 2024,
@@ -111,10 +111,10 @@
     {
       "annee": 2024,
       "thematique": "International",
-      "nb_beneficiaires": 55,
-      "nb_subventions": 55,
-      "montant_total": 4469668.0,
-      "pct_total": 0.33
+      "nb_beneficiaires": 53,
+      "nb_subventions": 53,
+      "montant_total": 4395668.0,
+      "pct_total": 0.32
     },
     {
       "annee": 2024,
