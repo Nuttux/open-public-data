@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T10:35:18.694676",
+  "generated_at": "2026-04-22T10:59:14.761177",
   "source": "dbt marts (mart_subventions_treemap, mart_subventions_beneficiaires)",
   "availableYears": [
     2025,
@@ -31,8 +31,8 @@
       "nb_subventions": 10266
     },
     "2025": {
-      "montant_total": 1028029049.97,
-      "nb_subventions": 5637
+      "montant_total": 1094129647.99,
+      "nb_subventions": 6784
     }
   },
   "filters": {

@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-22T10:24:29",
+  "generated_at": "2026-04-22T10:59:14",
   "source": "recherche-entreprises.api.gouv.fr",
-  "count": 3020,
+  "count": 3078,
   "items": {
     "le théâtre paris-villette": {
       "denomination": "THEATRE PARIS VILLETTE",
@@ -21064,6 +21064,328 @@
       "activite_principale": "71.11Z",
       "ville_siege": "MELLIONNEC",
       "matched_name": "Conseil d'Architecture, d'Urbanisme et de l'Environnement (CAUE)"
+    },
+    "association des amis du musée de la résistance nationale": {
+      "denomination": "ASSOCIATION DES AMIS PARISIENS DU MUSEE DE LA RESISTANCE NATIONALE",
+      "siren": "840320089",
+      "siret": "84032008900013",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Association des Amis du Musée de la Résistance Nationale"
+    },
+    "festival d'automne à paris": {
+      "denomination": "FESTIVAL D AUTOMNE A PARIS",
+      "siren": "784396459",
+      "siret": "78439645900041",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Festival d'Automne à Paris"
+    },
+    "société historique du 6e arrondissement": null,
+    "société historique et archéologique des 8e et 17e arrondissements": null,
+    "9e histoire société pour l'étude du patrimoine et de l'histoire du 9e arrondissement": null,
+    "université gustave eiffel": null,
+    "groupe de diffusion d'informations sur l'environnement –gdie": null,
+    "les passeurs de curiosités": {
+      "denomination": "LES PASSEURS DE CURIOSITES",
+      "siren": "843192436",
+      "siret": "84319243600023",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Les passeurs de curiosités"
+    },
+    "les petits débrouillards –idf": {
+      "denomination": "LES PETITS DEBROUILLARDS ILE DE FRANCE",
+      "siren": "429943269",
+      "siret": "42994326900051",
+      "nature_juridique": "9220",
+      "activite_principale": "93.29Z",
+      "ville_siege": "MONTREUIL",
+      "matched_name": "Les petits Débrouillards –IDF"
+    },
+    "ligue de l'enseignement fédération départementale de paris mouvement d'éducation populaire fédération de paris de la ligue de l'enseignement": null,
+    "régie immobilière de la ville de paris (rivp)": {
+      "denomination": "REGIE IMMOBILIERE DE LA VILLE DE PARIS",
+      "siren": "552032708",
+      "siret": "55203270800216",
+      "nature_juridique": "5599",
+      "activite_principale": "68.20A",
+      "ville_siege": "PARIS",
+      "matched_name": "Régie Immobilière de la Ville de Paris (RIVP)"
+    },
+    "nouvelle association rendez-vous marsoulan": null,
+    "association pour l'insertion des jeunes (apij)": {
+      "denomination": "ASS INSERTION PROFESSIONNELLE DES JEUNES",
+      "siren": "421413469",
+      "siret": "42141346900014",
+      "nature_juridique": "9220",
+      "activite_principale": "85.31Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Association Pour l'Insertion des Jeunes (APIJ)"
+    },
+    "incubateur au féminin –willa": null,
+    "france esports": {
+      "denomination": "FRANCE ESPORTS",
+      "siren": "844201251",
+      "siret": "84420125100015",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "France Esports"
+    },
+    "association judo amicale paris xx ajaparis xx": null,
+    "international visual theatre ivt": null,
+    "ligue de l'enseignement federation departementale de paris mouvement d'education populaire federation de paris de la ligue de l'enseignement": null,
+    "adapeila": {
+      "denomination": "ADAPEILA",
+      "siren": "775605405",
+      "siret": "77560540500593",
+      "nature_juridique": "9220",
+      "activite_principale": "87.20A",
+      "ville_siege": "NANTES",
+      "matched_name": "ADAPEILA"
+    },
+    "adapei de loire-atlantique": {
+      "denomination": "OPTIMAL",
+      "siren": "934068586",
+      "siret": "93406858600015",
+      "nature_juridique": "6220",
+      "activite_principale": "82.99Z",
+      "ville_siege": "NANTES",
+      "matched_name": "ADAPEI DE LOIRE-ATLANTIQUE"
+    },
+    "caisse des écoles du 18ème arrondissement": null,
+    "conseil départemental des parents d'elèves de l'enseignement public de paris": null,
+    "union de paris des delegues departementaux de l'education nationale": {
+      "denomination": "UNION DEPARTEMENTALE DES DELEGUES DEPARTEMENTAUX DE L'EDUCATION NATIONALE DU PAS DE CALAIS",
+      "siren": "490278199",
+      "siret": "49027819900032",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "BETHUNE",
+      "matched_name": "UNION DE PARIS DES DELEGUES DEPARTEMENTAUX DE L'EDUCATION NATIONALE"
+    },
+    "mikado jeunes": {
+      "denomination": "MIKADO JEUNES",
+      "siren": "841938871",
+      "siret": "84193887100016",
+      "nature_juridique": "9220",
+      "activite_principale": "88.99A",
+      "ville_siege": "PARIS",
+      "matched_name": "MIKADO JEUNES"
+    },
+    "ecole à l'hôpital marie-louise imbert": null,
+    "association pour l'education à la réduction du temps écran – alerte": {
+      "denomination": "ASSOCIATION POUR L'EDUCATION A LA REDUCTION DU TEMPS ECRAN",
+      "siren": "807885777",
+      "siret": "80788577700019",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Association pour l'Education à la réduction du temps écran – ALERTE"
+    },
+    "jrs france – service jésuite des réfugiés": {
+      "denomination": "JRS FRANCE SERVICE JESUITE DES REFUGIES",
+      "siren": "518238290",
+      "siret": "51823829000036",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "JRS France – Service jésuite des réfugiés"
+    },
+    "remembeur": {
+      "denomination": "REMEMBEUR",
+      "siren": "794002683",
+      "siret": "79400268300025",
+      "nature_juridique": "9220",
+      "activite_principale": "59.11B",
+      "ville_siege": "PARIS",
+      "matched_name": "Remembeur"
+    },
+    "ne rougissez pas!": {
+      "denomination": "NE ROUGISSEZ PAS!",
+      "siren": "537984940",
+      "siret": "53798494000016",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "IVRY SUR SEINE",
+      "matched_name": "NE ROUGISSEZ PAS!"
+    },
+    "paris let's go": {
+      "denomination": "PARIS LET'S GO 'PLG'",
+      "siren": "918382359",
+      "siret": "91838235900027",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "PARIS LET'S GO"
+    },
+    "#talents15": {
+      "denomination": "#TALENTS15",
+      "siren": "913015392",
+      "siret": "91301539200016",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "#TALENTS15"
+    },
+    "avvife": null,
+    "léo lagrange – centre socioculturel maurice noguès": null,
+    "respire, association nationale pour l'amelioration de la qualite de l'air et la defense des victimes de la pollution": null,
+    "association slice": {
+      "denomination": "SLICE",
+      "siren": "935377234",
+      "siret": "93537723400015",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Association Slice"
+    },
+    "fondation de l'armée du salut –palais de la femme": {
+      "denomination": "FONDATION DE L ARMEE DU SALUT",
+      "siren": "431968601",
+      "siret": "43196860100010",
+      "nature_juridique": "9300",
+      "activite_principale": "87.90B",
+      "ville_siege": "PARIS",
+      "matched_name": "Fondation de l'Armée du Salut –Palais de la Femme"
+    },
+    "la fondation de l'armée du salut – palais de la femme": {
+      "denomination": "FONDATION DE L ARMEE DU SALUT",
+      "siren": "431968601",
+      "siret": "43196860100010",
+      "nature_juridique": "9300",
+      "activite_principale": "87.90B",
+      "ville_siege": "PARIS",
+      "matched_name": "La Fondation de l'Armée du Salut – Palais de la Femme"
+    },
+    "parenthèse médiation": {
+      "denomination": "PARENTHESE MEDIATION",
+      "siren": "804476240",
+      "siret": "80447624000010",
+      "nature_juridique": "9220",
+      "activite_principale": "88.99B",
+      "ville_siege": "PARIS",
+      "matched_name": "Parenthèse Médiation"
+    },
+    "association franco-asiatique pour l'enfance": {
+      "denomination": "FRANCO ASIATIQUE POUR L'ENFANCE",
+      "siren": "482623063",
+      "siret": "48262306300013",
+      "nature_juridique": "9230",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Association Franco-Asiatique pour l'Enfance"
+    },
+    "institut d'éducation et des pratiques citoyennes (iepc)": null,
+    "afc st-pierre/st-dominique": null,
+    "fondation de l'armée du salut": null,
+    "les poussins d'annam": {
+      "denomination": "LES POUSSINS D'ANNAM",
+      "siren": "349349696",
+      "siret": "34934969600097",
+      "nature_juridique": "9220",
+      "activite_principale": "88.91A",
+      "ville_siege": "PARIS",
+      "matched_name": "LES POUSSINS D'ANNAM"
+    },
+    "gan yossef": {
+      "denomination": "ASS GAN YOSSEF CRECHE JARDIN D ENFANTS",
+      "siren": "339735573",
+      "siret": "33973557300026",
+      "nature_juridique": "9220",
+      "activite_principale": "88.91A",
+      "ville_siege": "PARIS",
+      "matched_name": "GAN YOSSEF"
+    },
+    "fondation léopold bellan": {
+      "denomination": "FONDATION LEOPOLD BELLAN",
+      "siren": "775672165",
+      "siret": "77567216500013",
+      "nature_juridique": "9300",
+      "activite_principale": "88.99B",
+      "ville_siege": "PARIS",
+      "matched_name": "Fondation Léopold Bellan"
+    },
+    "fondation maison des champs de saint françois d'assise": {
+      "denomination": "FONDATION  MAISON DES CHAMPS DE SAINT FRANCOIS D ASSISE",
+      "siren": "775694763",
+      "siret": "77569476300068",
+      "nature_juridique": "9300",
+      "activite_principale": "88.10A",
+      "ville_siege": "PARIS",
+      "matched_name": "Fondation Maison des Champs de Saint François d'Assise"
+    },
+    "le picoulet – mission populaire 11eme": null,
+    "talents15": {
+      "denomination": "#TALENTS15",
+      "siren": "913015392",
+      "siret": "91301539200016",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Talents15"
+    },
+    "star – science technologie art recherche": null,
+    "100% handinamique": {
+      "denomination": "100% HANDINAMIQUE POUR LA REUSSITE DES JEUNES HANDICAPES (100% HANDINAMIQUE)",
+      "siren": "525024121",
+      "siret": "52502412100051",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS",
+      "matched_name": "100% Handinamique"
+    },
+    "le picoulet –mission populaire 11eme": null,
+    "école des arts de la scène –les petits riens": {
+      "denomination": "ECOLE DES ARTS DE LA SCENE-LES PETITS RIENS",
+      "siren": "450874441",
+      "siret": "45087444100048",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS 19",
+      "matched_name": "École des Arts de la Scène –Les Petits Riens"
+    },
+    "association pour l'unité et le développement du mali (audm)": null,
+    "ani international – agis, note et innove": null,
+    "moteur !": {
+      "denomination": "S.O.S MOTEUR",
+      "siren": "528539133",
+      "siret": "52853913300058",
+      "nature_juridique": "5499",
+      "activite_principale": "33.12Z",
+      "ville_siege": "CORMEILLES-EN-PARISIS",
+      "matched_name": "Moteur !"
+    },
+    "paris let's go « plg »": {
+      "denomination": "PARIS LET'S GO 'PLG'",
+      "siren": "918382359",
+      "siret": "91838235900027",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Paris Let's Go « PLG »"
+    },
+    "paris let's go (plg)": {
+      "denomination": "PARIS LET'S GO 'PLG'",
+      "siren": "918382359",
+      "siret": "91838235900027",
+      "nature_juridique": "9220",
+      "activite_principale": "90.01Z",
+      "ville_siege": "PARIS",
+      "matched_name": "Paris Let's Go (PLG)"
+    },
+    "école des arts de la scène – les petits riens": {
+      "denomination": "ECOLE DES ARTS DE LA SCENE-LES PETITS RIENS",
+      "siren": "450874441",
+      "siret": "45087444100048",
+      "nature_juridique": "9220",
+      "activite_principale": "94.99Z",
+      "ville_siege": "PARIS 19",
+      "matched_name": "École des Arts de la Scène – Les Petits Riens"
     }
   }
 }
