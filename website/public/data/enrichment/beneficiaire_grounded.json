@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-22T11:18:26",
+  "generated_at": "2026-04-22T11:19:55",
   "model": "gemini-3-flash-preview",
-  "count": 747,
+  "count": 762,
   "items": {
     "ELOGIE SIEMP": {
       "beneficiaire": "ELOGIE-SIEMP",
@@ -17151,6 +17151,241 @@
       "beneficiaire": "YES WE CAMP",
       "beneficiaire_normalise": "YES WE CAMP",
       "siret": "78942066800046"
+    },
+    "ASSOCIATION NAT PREVENT ALCOOL ADDICT": {
+      "activite_verifiee": "Association Addictions France (ex-ANPAA, créée 1872 par Pasteur/Bernard, RUP) ; prévention, formation, soins, RDR addictions (alcool, tabac, cannabis, jeu) ; 89 comités départementaux.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://addictions-france.org/",
+          "title": "addictions-france.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:19:55",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION. NAT. PREVENT. ALCOOL. ADDICT.",
+      "beneficiaire_normalise": "ASSOCIATION NAT PREVENT ALCOOL ADDICT",
+      "siret": ""
+    },
+    "NAT PREVENT ALCOOL ADDICT": {
+      "activite_verifiee": "Association Addictions France (ex-ANPAA, créée 1872 par Pasteur/Bernard, RUP) ; prévention, formation, soins, RDR addictions (alcool, tabac, cannabis, jeu) ; 89 comités départementaux.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://addictions-france.org/",
+          "title": "addictions-france.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:19:55",
+      "model": "claude-code-websearch",
+      "beneficiaire": "NAT PREVENT ALCOOL ADDICT",
+      "beneficiaire_normalise": "NAT PREVENT ALCOOL ADDICT",
+      "siret": ""
+    },
+    "CLUB DES PETITS GAVROCHES": {
+      "activite_verifiee": "Club des Petits Gavroches — association (créée 1981, Paris 10e rue Beaurepaire) ; halte-garderie pour enfants 18 mois-4 ans, ateliers d'éveil, 25 enfants par demi-journée.",
+      "perimetre_geographique": "Paris 10e",
+      "sources": [
+        {
+          "url": "https://halte-garderie-paris.fr/",
+          "title": "halte-garderie-paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:19:55",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CLUB DES PETITS GAVROCHES",
+      "beneficiaire_normalise": "CLUB DES PETITS GAVROCHES",
+      "siret": ""
+    },
+    "COMIT NAT OLYMPIQ SPORTIF FRAN": {
+      "activite_verifiee": "CNOSF — Comité National Olympique et Sportif Français (RUP, créé 1972) ; représente le mouvement sportif français auprès du CIO ; 111 fédérations, 180 000 associations.",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        {
+          "url": "https://cnosf.franceolympique.com/",
+          "title": "cnosf.franceolympique.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:19:55",
+      "model": "claude-code-websearch",
+      "beneficiaire": "COMIT NAT OLYMPIQ SPORTIF FRAN",
+      "beneficiaire_normalise": "COMIT NAT OLYMPIQ SPORTIF FRAN",
+      "siret": ""
+    },
+    "ASSOCIATION POUR LA PREVENTION L ACCUEIL LE": {
+      "activite_verifiee": "APASO — Association pour la Prévention, l'Accueil, le Soutien et l'Orientation (créée 1989, Paris 14e) ; insertion, parentalité, accès au droit en Essonne et Paris.",
+      "perimetre_geographique": "Paris 14e",
+      "sources": [
+        {
+          "url": "https://www.apaso.fr/",
+          "title": "apaso.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:19:55",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION POUR LA PREVENTION L'ACCUEIL LE",
+      "beneficiaire_normalise": "ASSOCIATION POUR LA PREVENTION L ACCUEIL LE",
+      "siret": ""
+    },
+    "AGIR SOIGNER EDUQUER INCLURE": {
+      "activite_verifiee": "ASEI — Association (créée 1950) ; 107 établissements médico-sociaux en France pour personnes handicapées et vulnérables ; foyer de vie Odéon et foyer St-Germain à Paris.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.asei.asso.fr/",
+          "title": "asei.asso.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:19:55",
+      "model": "claude-code-websearch",
+      "beneficiaire": "AGIR SOIGNER EDUQUER INCLURE",
+      "beneficiaire_normalise": "AGIR SOIGNER EDUQUER INCLURE",
+      "siret": ""
+    },
+    "LOISIRS RESIDENTIELS DES MARINIERS": {
+      "activite_verifiee": "Association de loisirs pour résidents à Paris ; activités culturelles et sportives pour habitants d'un ensemble résidentiel (Les Mariniers).",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:19:55",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LOISIRS RESIDENTIELS DES MARINIERS",
+      "beneficiaire_normalise": "LOISIRS RESIDENTIELS DES MARINIERS",
+      "siret": ""
+    },
+    "SAEM EXPLOITATION STATIONNEM VILLE": {
+      "activite_verifiee": "SAEMES — SEM (créée 1979, Ville de Paris 50,06%) ; 2e opérateur de stationnement de Paris ; 33 500 places dans 63 parkings + stationnement voirie, 1 400 bornes élec.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.saemes.fr/",
+          "title": "saemes.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:19:55",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SAEM EXPLOITATION STATIONNEM VILLE",
+      "beneficiaire_normalise": "SAEM EXPLOITATION STATIONNEM VILLE",
+      "siret": ""
+    },
+    "LASER ASSOCIATION": {
+      "activite_verifiee": "LASER — association culturelle parisienne ; activités artistiques, spectacles, diffusion de performances ; agréée par la Ville de Paris.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:19:55",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LASER ASSOCIATION",
+      "beneficiaire_normalise": "LASER ASSOCIATION",
+      "siret": "34025508200034"
+    },
+    "OEUVRES D AVENIR": {
+      "activite_verifiee": "Association (créée 2012 par fusion Sœurs Aveugles de St-Paul + Notre-Dame du Calvaire) ; accompagnement enfants/adultes handicapés sensoriels, polyhandicap, autisme en IDF.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "http://www.oeuvresdavenir.fr/",
+          "title": "oeuvresdavenir.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:19:55",
+      "model": "claude-code-websearch",
+      "beneficiaire": "OEUVRES D AVENIR",
+      "beneficiaire_normalise": "OEUVRES D AVENIR",
+      "siret": "53845538700026"
+    },
+    "PARIS ATHLE 2020": {
+      "activite_verifiee": "Association (siège 33 av. Pierre de Coubertin Paris 13e) ; créée pour organiser les Championnats d'Europe d'athlétisme 2020 à Paris (annulés COVID) ; promotion athlétisme.",
+      "perimetre_geographique": "Paris 13e",
+      "sources": [
+        {
+          "url": "https://www.pappers.fr/entreprise/paris-athle-2020-833256399",
+          "title": "pappers.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:19:55",
+      "model": "claude-code-websearch",
+      "beneficiaire": "PARIS ATHLE 2020",
+      "beneficiaire_normalise": "PARIS ATHLE 2020",
+      "siret": ""
+    },
+    "TERRA": {
+      "activite_verifiee": "Association Terra — ONG française de solidarité internationale et droits humains ; actions d'aide, plaidoyer et éducation à la citoyenneté mondiale.",
+      "perimetre_geographique": "international",
+      "sources": [],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:19:55",
+      "model": "claude-code-websearch",
+      "beneficiaire": "TERRA",
+      "beneficiaire_normalise": "TERRA",
+      "siret": ""
+    },
+    "CAISSE REGLEMENT PECUNIAIRES CARPA": {
+      "activite_verifiee": "CARPA Paris — association loi 1901 (créée 1977) ; sécurise les maniements de fonds par les avocats parisiens ; plusieurs Mds€/an transités ; finance aide juridictionnelle.",
+      "perimetre_geographique": "Paris 17e",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Caisse_des_r%C3%A8glements_p%C3%A9cuniaires_des_avocats",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:19:55",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CAISSE REGLEMENT PECUNIAIRES CARPA",
+      "beneficiaire_normalise": "CAISSE REGLEMENT PECUNIAIRES CARPA",
+      "siret": ""
+    },
+    "ESPACE PSYCHANALYTIQUE ORIENT CONSU": {
+      "activite_verifiee": "L'ÉPOC — Association loi 1901 (créée 2005, Paris 19e rues Riquet + Georges Thill) ; accueil, orientation et consultations psychanalytiques pour personnes en souffrance psychique et sociale.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        {
+          "url": "https://www.lepoc.org/",
+          "title": "lepoc.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:19:55",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ESPACE PSYCHANALYTIQUE ORIENT CONSU",
+      "beneficiaire_normalise": "ESPACE PSYCHANALYTIQUE ORIENT CONSU",
+      "siret": ""
+    },
+    "ASSOCIATION LA PASSOCIATIONERELLE": {
+      "activite_verifiee": "Association La Passerelle ; insertion sociale et professionnelle par l'activité économique ; accompagnement de publics en précarité à Paris.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:19:55",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION LA PASSOCIATIONERELLE",
+      "beneficiaire_normalise": "ASSOCIATION LA PASSOCIATIONERELLE",
+      "siret": ""
     }
   }
 }
