@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T11:30:56.034754",
+  "generated_at": "2026-04-22T11:32:56.209270",
   "model": "gemini-3-flash-preview",
   "count": 780,
   "items": {
@@ -18457,7 +18457,731 @@
       "confiance": 0.8,
       "source_type": "claude_web",
       "enriched_at": "2026-04-22T11:30:56.034754"
+    },
+    "COLLEGE PIERRE MENDES FRANCE": {
+      "activite_verifiee": "Collège public parisien (PIERRE MENDES FRANCE), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE AIME CESAIRE": {
+      "activite_verifiee": "Collège public parisien (AIME CESAIRE), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE GEORGES ROUAULT": {
+      "activite_verifiee": "Collège public parisien (GEORGES ROUAULT), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE SAINT EXUPERY": {
+      "activite_verifiee": "Collège public parisien (SAINT EXUPERY), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE CAMILLE SEE": {
+      "activite_verifiee": "Collège public parisien (CAMILLE SEE), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE JEAN BAPTISTE POQUELIN": {
+      "activite_verifiee": "Collège public parisien (JEAN BAPTISTE POQUELIN), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE ANDRE MALRAUX": {
+      "activite_verifiee": "Collège public parisien (ANDRE MALRAUX), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE ANNE FRANK": {
+      "activite_verifiee": "Collège public parisien (ANNE FRANK), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE JULES ROMAINS": {
+      "activite_verifiee": "Collège public parisien (JULES ROMAINS), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "LYCEE PROFESSIONNEL MARIA DERAISMES": {
+      "activite_verifiee": "Lycée professionnel public parisien (MARIA DERAISMES), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages ou la restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE PAUL VERLAINE": {
+      "activite_verifiee": "Collège public parisien (PAUL VERLAINE), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE GEORGES COURTELINE": {
+      "activite_verifiee": "Collège public parisien (GEORGES COURTELINE), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE EDOUARD PAILLERON": {
+      "activite_verifiee": "Collège public parisien (EDOUARD PAILLERON), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE GUILLAUME BUDE": {
+      "activite_verifiee": "Collège public parisien (GUILLAUME BUDE), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE ANDRE CITROEN": {
+      "activite_verifiee": "Collège public parisien (ANDRE CITROEN), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE CAMILLE CLAUDEL": {
+      "activite_verifiee": "Collège public parisien (CAMILLE CLAUDEL), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE W A MOZART": {
+      "activite_verifiee": "Collège public parisien (W A MOZART), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE GERMAINE TILLION": {
+      "activite_verifiee": "Collège public parisien (GERMAINE TILLION), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE HONORE DE BALZAC": {
+      "activite_verifiee": "Collège public parisien (HONORE DE BALZAC), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE DANIEL MAYER": {
+      "activite_verifiee": "Collège public parisien (DANIEL MAYER), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE DE STAEL": {
+      "activite_verifiee": "Collège public parisien (DE STAEL), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE SUZANNE LACORE": {
+      "activite_verifiee": "Collège public parisien (SUZANNE LACORE), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE BORIS VIAN": {
+      "activite_verifiee": "Collège public parisien (BORIS VIAN), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "LYCEE PROFESSIONNEL PIERRE LESCOT": {
+      "activite_verifiee": "Lycée professionnel public parisien (PIERRE LESCOT), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages ou la restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE RODIN": {
+      "activite_verifiee": "Collège public parisien (RODIN), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE LOUISE MICHEL": {
+      "activite_verifiee": "Collège public parisien (LOUISE MICHEL), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "LYCEE PROFESSIONNEL SUZANNE VALADON": {
+      "activite_verifiee": "Lycée professionnel public parisien (SUZANNE VALADON), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages ou la restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE ELSA TRIOLET": {
+      "activite_verifiee": "Collège public parisien (ELSA TRIOLET), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE OCTAVE GREARD": {
+      "activite_verifiee": "Collège public parisien (OCTAVE GREARD), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE FRANCOISE SELIGMANN": {
+      "activite_verifiee": "Collège public parisien (FRANCOISE SELIGMANN), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE COLETTE BESSON": {
+      "activite_verifiee": "Collège public parisien (COLETTE BESSON), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE JACQUES PREVERT": {
+      "activite_verifiee": "Collège public parisien (JACQUES PREVERT), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE RAYMOND QUENEAU": {
+      "activite_verifiee": "Collège public parisien (RAYMOND QUENEAU), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "LYCEE TECHNOLOGIQ EC NAT SUP ARTS A": {
+      "activite_verifiee": "Lycée public parisien (TECHNOLOGIQ EC NAT SUP ARTS A), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages ou la restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE JANSON DE SAILLY": {
+      "activite_verifiee": "Collège public parisien (JANSON DE SAILLY), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE GUY FLAVIEN": {
+      "activite_verifiee": "Collège public parisien (GUY FLAVIEN), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE LEON GAMBETTA": {
+      "activite_verifiee": "Collège public parisien (LEON GAMBETTA), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE GEORGES BRASSENS": {
+      "activite_verifiee": "Collège public parisien (GEORGES BRASSENS), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE FRANCOIS COUPERIN": {
+      "activite_verifiee": "Collège public parisien (FRANCOIS COUPERIN), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE MODIGLIANI": {
+      "activite_verifiee": "Collège public parisien (MODIGLIANI), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "LYCEE PROFESSIONNEL GASTON BACHELAR": {
+      "activite_verifiee": "Lycée professionnel public parisien (GASTON BACHELAR), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages ou la restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE GEORGES CLEMENCEAU": {
+      "activite_verifiee": "Collège public parisien (GEORGES CLEMENCEAU), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE LA GRANGE AUX BELLES": {
+      "activite_verifiee": "Collège public parisien (LA GRANGE AUX BELLES), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE BERNARD PALISSY": {
+      "activite_verifiee": "Collège public parisien (BERNARD PALISSY), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE JEAN BAPTISTE CLEMENT": {
+      "activite_verifiee": "Collège public parisien (JEAN BAPTISTE CLEMENT), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE CLAUDE MONET": {
+      "activite_verifiee": "Collège public parisien (CLAUDE MONET), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE CLAUDE DEBUSSY": {
+      "activite_verifiee": "Collège public parisien (CLAUDE DEBUSSY), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE EDGAR VARESE": {
+      "activite_verifiee": "Collège public parisien (EDGAR VARESE), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "COLLEGE JEAN BAPTISTE SAY": {
+      "activite_verifiee": "Collège public parisien (JEAN BAPTISTE SAY), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages scolaires et/ou la restauration.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "LYCEE PROFESSIONNEL RENE CASSIN": {
+      "activite_verifiee": "Lycée professionnel public parisien (RENE CASSIN), établissement d'enseignement secondaire relevant de l'académie de Paris. Subventions versées par la Ville de Paris pour l'équipement, les projets pédagogiques, les voyages ou la restauration scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "education.gouv.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.7,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:31:34.768495"
+    },
+    "SUEZ RV REBOND INSERTION": {
+      "activite_verifiee": "SUEZ RV Rebond Insertion, entreprise de travail temporaire d'insertion (ETTI) créée en 2002 par SUEZ (11 établissements en France). Siège parisien 3 rue Rouvet Paris 19e. Insère des personnes éloignées de l'emploi sur 2 ans dans les métiers du recyclage, bâtiment, logistique, propreté. +10 000 personnes accompagnées, 6 500 retours à l'emploi.",
+      "perimetre_geographique": "Île-de-France (Paris 19e)",
+      "sources": [
+        "suez.fr",
+        "emplois.inclusion.beta.gouv.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:32:56.209270"
+    },
+    "PETITE LILI": {
+      "activite_verifiee": "Association La Petite Lili, structure associative parisienne 100% inclusive ; porte notamment le restaurant Le République, création d'emplois et intégration de personnes en situation de handicap ou éloignées de l'emploi.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "lapetitelili.org",
+        "helloasso.com"
+      ],
+      "confiance": 0.3,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:32:56.209270"
+    },
+    "RES PARIS ATEL VELO PART SOLID": {
+      "activite_verifiee": "RéPAR — Réseau Parisien des Ateliers Vélo Participatifs et Solidaires, créé en 2018. Fédère les ateliers vélo solidaires parisiens (Cyclofficine, SoliCycle, Vélorution, Le Petit Biclou, La Cycklette, Paillettes et Cambouis, etc.) pour développer la pratique du vélo, l'apprentissage de la mécanique, le réemploi et la lutte contre l'obsolescence.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "repar.paris",
+        "heureux-cyclage.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:32:56.209270"
+    },
+    "CRECHE AVENIR": {
+      "activite_verifiee": "Association Crèche Avenir (SIREN 339735318), crèche collective associative créée en 1989, 38-40 rue des Annelets Paris 19e. 22 places, accueille des enfants de 3 mois à 3 ans du lundi au vendredi 7h30-19h.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        "paris.fr",
+        "pappers.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:32:56.209270"
+    },
+    "ASSOCIATION ECOLE SCHOOL FOR TODAY": {
+      "activite_verifiee": "L'École Aujourd'hui — School for Today, école primaire privée laïque et mixte sous contrat avec l'État, fondée en 1975 par des enseignants. 24 boulevard Edgar Quinet Paris 14e, ~140 élèves de PS au CM2. Pédagogie inspirée de l'éducation nouvelle et institutionnelle.",
+      "perimetre_geographique": "Paris 14e",
+      "sources": [
+        "ecoleaujourdhui.com",
+        "anen.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:32:56.209270"
+    },
+    "ECOLE SCHOOL FOR TODAY": {
+      "activite_verifiee": "L'École Aujourd'hui — School for Today, école primaire privée laïque et mixte sous contrat avec l'État, fondée en 1975 par des enseignants. 24 boulevard Edgar Quinet Paris 14e, ~140 élèves de PS au CM2. Pédagogie inspirée de l'éducation nouvelle et institutionnelle.",
+      "perimetre_geographique": "Paris 14e",
+      "sources": [
+        "ecoleaujourdhui.com",
+        "anen.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:32:56.209270"
+    },
+    "PIMMS DE PARIS": {
+      "activite_verifiee": "Association PIMMS de Paris (Points d'Information Médiation Multi Services), créée le 27 mai 2004. Structure de médiation sociale : facilite le lien entre habitants parisiens, services publics et administrations. 5 points fixes (Paris Est, Nord-Est, Nord-Ouest, Sud, Sud-Est) labellisés France Services. 44 136 usagers en 2024.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "paris.fr",
+        "pimmsdeparis.asso-web.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:32:56.209270"
+    },
+    "COOPERATIVE INDIGO": {
+      "activite_verifiee": "La Coopérative Indigo (SIREN 795097112), association créée en 2012 par Stéphane de Freitas (Paris 16e). Plateforme solidaire d'échanges (monnaie collaborative Digo) et programme Eloquentia (apprentissage de la prise de parole dans les lycées et universités). ~7 000 utilisateurs en IdF.",
+      "perimetre_geographique": "Paris / France",
+      "sources": [
+        "societe.com",
+        "jemengage.paris.fr",
+        "fondationlafrancesengage.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:32:56.209270"
+    },
+    "ECOD AIR EI": {
+      "activite_verifiee": "Ecodair, entreprise solidaire de reconditionnement informatique créée à Paris en 2004. Trois structures (ESAT, Entreprise Adaptée, Entreprise d'Insertion) ; 70 % du personnel en situation de handicap psychique ou d'insertion. ~50 000 équipements reconditionnés/an. 5 sites en France (Paris, Saclay, Marseille, Lyon, Nantes).",
+      "perimetre_geographique": "France (Paris 18e)",
+      "sources": [
+        "ecodair.com",
+        "ess-europe.eu"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:32:56.209270"
+    },
+    "NOVEMPLOI": {
+      "activite_verifiee": "Novemploi, association intermédiaire parisienne fondée en 1990 (agréée par l'État). Met à disposition de particuliers, associations et entreprises des personnes sans emploi en difficulté sociale, avec accompagnement socio-professionnel (bâtiment, nettoyage, restauration collective, gardiennage). +10 000 Parisiens accompagnés en 34 ans.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "novemploi.fr",
+        "grafie.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:32:56.209270"
+    },
+    "NATIONALE DE READAPTATION SOCIALE": {
+      "activite_verifiee": "ANRS — Association Nationale de Réadaptation Sociale, créée en 1961, reconnue d'utilité publique en 1975. Siège 18 avenue Victoria Paris 1er. Mission initiale de prévention de la prostitution étendue à la protection des jeunes en danger (MNA notamment, service Synergie). Gère 10 structures à Paris et Val-d'Oise.",
+      "perimetre_geographique": "Paris / Val-d'Oise",
+      "sources": [
+        "anrs.asso.fr",
+        "sanitaire-social.com"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:32:56.209270"
+    },
+    "COOP MIJOTEE": {
+      "activite_verifiee": "La Coop Mijotée, association ESS créée en 2017, 77 rue de la Fontaine au Roi Paris 11e. Traiteur solidaire et cantines solidaires (Cantine de Babelville, Cantine des Mûriers dans le 20e). ~450 repas/jour à tarifs solidaires ; ~70 salariés en insertion en 5 ans.",
+      "perimetre_geographique": "Paris 11e / 20e",
+      "sources": [
+        "lacoopmijotee.org",
+        "paris.fr",
+        "resto-passerelle.org"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:32:56.209270"
+    },
+    "PARIS BASKET 18E": {
+      "activite_verifiee": "Paris Basket 18 (PB18), club de basket-ball parisien exclusivement féminin, 15 passage Ramey Paris 18e. 3 500 jeunes initiés chaque année (à partir de 8 ans) via écoles de basket (gymnases Maryse-Hiltz dans le 20e, Doudeauville dans le 18e) et initiations dans ~2 500 jeunes scolarisés. Accompagnement scolaire, sorties, projets d'insertion des jeunes filles des quartiers populaires.",
+      "perimetre_geographique": "Paris 18e / 20e",
+      "sources": [
+        "pb18.fr",
+        "paris.fr"
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:32:56.209270"
+    },
+    "AFG": {
+      "activite_verifiee": "Entité figurant sous l'acronyme AFG dans les subventions parisiennes : vraisemblablement la France Généalogique (CEGF), association parisienne de généalogie créée en 1953, ou la Fédération Française de Généalogie (FFG). Recherche complémentaire recommandée.",
+      "perimetre_geographique": "Paris / Île-de-France",
+      "sources": [
+        "cegf.org",
+        "genefede.eu"
+      ],
+      "confiance": 0.3,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:32:56.209270"
+    },
+    "FIGUIER": {
+      "activite_verifiee": "Association Le Figuier (Paris), structure associative. Informations publiques limitées — probablement active dans le champ social / solidarité parisienne.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        "linkedin.com/company/association-le-figuier"
+      ],
+      "confiance": 0.3,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:32:56.209270"
+    },
+    "TOWARDS CONSEIL": {
+      "activite_verifiee": "Towards Conseil, structure d'accompagnement (conseil) à Paris — informations publiques limitées sur l'identité exacte.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.3,
+      "source_type": "claude_web",
+      "enriched_at": "2026-04-22T11:32:56.209270"
     }
   },
-  "total": 849
+  "total": 915
 }
