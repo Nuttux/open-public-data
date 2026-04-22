@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-22T11:05:24",
+  "generated_at": "2026-04-22T11:13:32",
   "model": "gemini-3-flash-preview",
-  "count": 624,
+  "count": 692,
   "items": {
     "ELOGIE SIEMP": {
       "beneficiaire": "ELOGIE-SIEMP",
@@ -15140,6 +15140,1112 @@
       ],
       "confiance": 0.8,
       "source_type": "claude_web"
+    },
+    "SUBVENTIONS TRANSPORTS ET ACQUISITIONS VEHICULES A ASSISTANCE ELECTRIQUE ET TAXIS HYBRIDES": {
+      "activite_verifiee": "Ligne budgétaire (non-entité) — subventions Ville de Paris versées à diverses associations pour acquisition de véhicules et transports solidaires.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:10:06",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SUBVENTIONS TRANSPORTS ET ACQUISITIONS VEHICULES A ASSISTANCE ELECTRIQUE ET TAXIS HYBRIDES",
+      "beneficiaire_normalise": "SUBVENTIONS TRANSPORTS ET ACQUISITIONS VEHICULES A ASSISTANCE ELECTRIQUE ET TAXIS HYBRIDES",
+      "siret": ""
+    },
+    "DIVERS CREANCIERS GRATUITE TITRES TRANSPORT": {
+      "activite_verifiee": "Ligne budgétaire (non-entité) — gratuité des titres de transport versée à divers créanciers.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:10:06",
+      "model": "claude-code-websearch",
+      "beneficiaire": "DIVERS CREANCIERS GRATUITE TITRES TRANSPORT",
+      "beneficiaire_normalise": "DIVERS CREANCIERS GRATUITE TITRES TRANSPORT",
+      "siret": ""
+    },
+    "REMG REMISE GRACIEUSE": {
+      "activite_verifiee": "Ligne budgétaire administrative (non-entité) — remise gracieuse sur créances publiques.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:10:06",
+      "model": "claude-code-websearch",
+      "beneficiaire": "REMG REMISE GRACIEUSE",
+      "beneficiaire_normalise": "REMG REMISE GRACIEUSE",
+      "siret": ""
+    },
+    "ASSOCIATION PARENT ELEVE JARDIN ENFANT FR A": {
+      "activite_verifiee": "AJEFA — Association des parents d'élèves des jardins d'enfants franco-allemands (créée 1974) ; 4 kinder-écoles, 110 places, enseignement biculturel français-allemand 2-6 ans.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.ajefa.eu/fr/presentation-generale/",
+          "title": "ajefa.eu"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:10:06",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION PARENT ELEVE JARDIN ENFANT FR A",
+      "beneficiaire_normalise": "ASSOCIATION PARENT ELEVE JARDIN ENFANT FR A",
+      "siret": ""
+    },
+    "PARENT ELEVE JARDIN ENFANT FR A": {
+      "activite_verifiee": "AJEFA — Association des parents d'élèves des jardins d'enfants franco-allemands (créée 1974) ; 4 kinder-écoles, 110 places, enseignement biculturel français-allemand 2-6 ans.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.ajefa.eu/fr/presentation-generale/",
+          "title": "ajefa.eu"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:10:06",
+      "model": "claude-code-websearch",
+      "beneficiaire": "PARENT ELEVE JARDIN ENFANT FR A",
+      "beneficiaire_normalise": "PARENT ELEVE JARDIN ENFANT FR A",
+      "siret": ""
+    },
+    "CENTRE NATIONAL CHANSON VARIETES JA": {
+      "activite_verifiee": "CNV — Centre National des Variétés, de la Chanson et du Jazz (2002-2019) ; aujourd'hui intégré au CNM (Centre National de la Musique) depuis 2020.",
+      "perimetre_geographique": "Paris 8e",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Centre_national_de_la_musique",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:10:06",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CENTRE NATIONAL CHANSON VARIETES JA",
+      "beneficiaire_normalise": "CENTRE NATIONAL CHANSON VARIETES JA",
+      "siret": ""
+    },
+    "CENTRE NATIONAL CHANSON VARIETES JAZZ": {
+      "activite_verifiee": "CNV — Centre National des Variétés, de la Chanson et du Jazz (2002-2019) ; aujourd'hui intégré au CNM (Centre National de la Musique) depuis 2020.",
+      "perimetre_geographique": "Paris 8e",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Centre_national_de_la_musique",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:10:06",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CENTRE NATIONAL CHANSON VARIETES JAZZ",
+      "beneficiaire_normalise": "CENTRE NATIONAL CHANSON VARIETES JAZZ",
+      "siret": ""
+    },
+    "EMMAUS ALTERNATIVES": {
+      "activite_verifiee": "Association (créée 1991, Montreuil) ; accompagne +3 500 personnes en précarité, +180 salariés en insertion ; ateliers, 8 boutiques solidaires à Paris Est, Montreuil, Saint-Mandé.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.emmaus-alternatives.org/",
+          "title": "emmaus-alternatives.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:10:06",
+      "model": "claude-code-websearch",
+      "beneficiaire": "EMMAUS ALTERNATIVES",
+      "beneficiaire_normalise": "EMMAUS ALTERNATIVES",
+      "siret": "38238754600023"
+    },
+    "REHABAIL": {
+      "activite_verifiee": "Association (fondée par Bail Pour Tous, 1989) ; intermédiation locative — prend en location des logements privés pour les sous-louer à des familles en difficulté.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:10:06",
+      "model": "claude-code-websearch",
+      "beneficiaire": "REHABAIL",
+      "beneficiaire_normalise": "REHABAIL",
+      "siret": ""
+    },
+    "PAX PROGRES PALLAS": {
+      "activite_verifiee": "SA d'HLM (siège 44 rue Saint-Charles 75015 Paris, SIREN 304537525) ; bailleur social parisien, filiale du groupe Domaxis (intégré à Seqens en 2019).",
+      "perimetre_geographique": "Paris 15e",
+      "sources": [
+        {
+          "url": "https://www.ancols.fr/publications/rapports-de-controle/sa-dhlm-pax-progres-pallas-paris",
+          "title": "ancols.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:10:06",
+      "model": "claude-code-websearch",
+      "beneficiaire": "PAX PROGRES PALLAS",
+      "beneficiaire_normalise": "PAX PROGRES PALLAS",
+      "siret": ""
+    },
+    "ASSOCIATION POUR DEPISTAGE CANCERS": {
+      "activite_verifiee": "CRCDC Île-de-France (créé 2019) ; coordonne dépistages organisés des cancers sein, colorectal et col de l'utérus sur 8 sites franciliens.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://depistage-cancers-idf.com/",
+          "title": "depistage-cancers-idf.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:10:06",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION POUR DEPISTAGE CANCERS",
+      "beneficiaire_normalise": "ASSOCIATION POUR DEPISTAGE CANCERS",
+      "siret": ""
+    },
+    "INSTITUT PHYSIQUE DU GLOBE": {
+      "activite_verifiee": "IPGP — Établissement public de recherche (Paris 5e, face Jardin des Plantes) ; ~500 personnels ; sciences de la Terre et des planètes ; observatoires volcaniques Réunion/Antilles.",
+      "perimetre_geographique": "Paris 5e",
+      "sources": [
+        {
+          "url": "https://www.ipgp.fr/en/",
+          "title": "ipgp.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:10:06",
+      "model": "claude-code-websearch",
+      "beneficiaire": "INSTITUT PHYSIQUE DU GLOBE",
+      "beneficiaire_normalise": "INSTITUT PHYSIQUE DU GLOBE",
+      "siret": ""
+    },
+    "SA HLM LOGIS TRANSPORTS": {
+      "activite_verifiee": "SA d'HLM (SIREN 592025811, siège 158 rue de Bagnolet, Paris 20e) ; devenue RATP Habitat ; logements sociaux pour salariés RATP et collectivités en Île-de-France.",
+      "perimetre_geographique": "Paris 20e",
+      "sources": [
+        {
+          "url": "https://ratphabitat.com/",
+          "title": "ratphabitat.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:10:06",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SA HLM LOGIS TRANSPORTS",
+      "beneficiaire_normalise": "SA HLM LOGIS TRANSPORTS",
+      "siret": ""
+    },
+    "EXPERIMENTATION TERRIT CTRE CHOMAGE": {
+      "activite_verifiee": "Territoires Zéro Chômeur de Longue Durée (TZCLD, ATD Quart Monde, 2016) ; 80+ territoires en France ; EBE embauchent chômeurs longue durée en CDI au SMIC pour travaux utiles.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.tzcld.fr/",
+          "title": "tzcld.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:10:06",
+      "model": "claude-code-websearch",
+      "beneficiaire": "EXPERIMENTATION TERRIT CTRE CHOMAGE",
+      "beneficiaire_normalise": "EXPERIMENTATION TERRIT CTRE CHOMAGE",
+      "siret": ""
+    },
+    "MAISON DE L EUROPE DE PARIS": {
+      "activite_verifiee": "Maison de l'Europe de Paris — CIED (Centre d'Information Europe Direct) ; informe les Parisiens sur l'UE, visites guidées, conférences, actions éducatives jumelages.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://paris-europe.eu/",
+          "title": "paris-europe.eu"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:10:06",
+      "model": "claude-code-websearch",
+      "beneficiaire": "MAISON DE L EUROPE DE PARIS",
+      "beneficiaire_normalise": "MAISON DE L EUROPE DE PARIS",
+      "siret": ""
+    },
+    "ARFOG LAFAYETTE": {
+      "activite_verifiee": "Association reconnue d'utilité publique (fusionnée avec Henri Rollet dans ESPEREM en 2018) ; CHRS pour femmes victimes de violences (21 av. Gén. Michel Bizot, 75012).",
+      "perimetre_geographique": "Paris 12e",
+      "sources": [
+        {
+          "url": "https://www.arfog-lafayette.org/",
+          "title": "arfog-lafayette.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:10:06",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ARFOG LAFAYETTE",
+      "beneficiaire_normalise": "ARFOG LAFAYETTE",
+      "siret": ""
+    },
+    "COMMIS ADM BOURSE TRAVAIL": {
+      "activite_verifiee": "Commission Administrative de la Bourse du Travail de Paris (3 rue Château d'Eau, 75010) ; gère l'attribution des 26 salles aux syndicats (CGT, CFDT, CFTC, CGC, FO, UNSA, Solidaires).",
+      "perimetre_geographique": "Paris 10e",
+      "sources": [
+        {
+          "url": "https://boursedutravail-paris.fr/",
+          "title": "boursedutravail-paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:10:06",
+      "model": "claude-code-websearch",
+      "beneficiaire": "COMMIS ADM BOURSE TRAVAIL",
+      "beneficiaire_normalise": "COMMIS ADM BOURSE TRAVAIL",
+      "siret": ""
+    },
+    "SPL PARIS ET METROPOLE AMENAGEMEN": {
+      "activite_verifiee": "SPL Paris & Métropole Aménagement (actionnaires Ville Paris 60% + Département 40%) ; aménageur de 6 opérations dont Clichy-Batignolles, Gare des Mines (Arena JO 2024).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.parisetmetropole-amenagement.fr/",
+          "title": "parisetmetropole-amenagement.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:10:06",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SPL PARIS ET METROPOLE AMENAGEMEN",
+      "beneficiaire_normalise": "SPL PARIS ET METROPOLE AMENAGEMEN",
+      "siret": ""
+    },
+    "FONDATION NATIONALE SCIENCES POLITI": {
+      "activite_verifiee": "FNSP — Fondation privée reconnue d'utilité publique (créée 1945) ; gère Sciences Po (IEP de Paris), héritière de l'École libre des sciences politiques.",
+      "perimetre_geographique": "Paris 7e",
+      "sources": [
+        {
+          "url": "https://www.sciencespo.fr/fr/a-propos/gouvernance-budget/fnsp/",
+          "title": "sciencespo.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:10:06",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FONDATION NATIONALE SCIENCES POLITI",
+      "beneficiaire_normalise": "FONDATION NATIONALE SCIENCES POLITI",
+      "siret": ""
+    },
+    "COUP DE MAIN": {
+      "activite_verifiee": "Association d'insertion par l'activité économique (agréée 1996) ; place salariés en insertion et travailleurs handicapés à Paris.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.coupdmain.com/",
+          "title": "coupdmain.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:10:06",
+      "model": "claude-code-websearch",
+      "beneficiaire": "COUP DE MAIN",
+      "beneficiaire_normalise": "COUP DE MAIN",
+      "siret": "41190781900022"
+    },
+    "ASSOCIATION INSTITUT D ETUDES AVANCEES DE PARIS": {
+      "activite_verifiee": "IEA de Paris (créé 2008, Hôtel de Lauzun 4e) ; institut de recherche en SHS inspiré de Princeton.",
+      "perimetre_geographique": "Paris 4e",
+      "sources": [
+        {
+          "url": "https://www.paris-iea.fr/fr/",
+          "title": "paris-iea.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:10:06",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION INSTITUT D ETUDES AVANCEES DE PARIS",
+      "beneficiaire_normalise": "ASSOCIATION INSTITUT D ETUDES AVANCEES DE PARIS",
+      "siret": ""
+    },
+    "SOCIETE D ECONOMIE MIXTE": {
+      "activite_verifiee": "SEM (Société d'économie mixte) — société publique à capitaux mixtes (public/privé), au service d'une collectivité territoriale.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:10:06",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SOCIETE D'ECONOMIE MIXTE",
+      "beneficiaire_normalise": "SOCIETE D ECONOMIE MIXTE",
+      "siret": ""
+    },
+    "KIOSQUE INFOS SIDA": {
+      "activite_verifiee": "Checkpoint (ex-Le Kiosque, créé 1992 par AJCS) 4e rue Geoffroy-l'Asnier ; dépistage VIH/IST gratuit, PrEP, traitement post-exposition ; membre Groupe SOS et UNALS.",
+      "perimetre_geographique": "Paris 4e",
+      "sources": [
+        {
+          "url": "https://www.groupe-sos.org/structure/checkpoint-paris/",
+          "title": "groupe-sos.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:11:47",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LE KIOSQUE INFOS SIDA",
+      "beneficiaire_normalise": "KIOSQUE INFOS SIDA",
+      "siret": ""
+    },
+    "UNE NOUVELLE IDEE DE LA CRECHE PARI": {
+      "activite_verifiee": "UNIC — Crèche associative (25 rue Stephenson, Paris 18e) ; établissement collectif d'accueil petite enfance géré par association.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/lieux/creche-associative-une-nouvelle-idee-de-la-creche-paris-unic-20022",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:11:47",
+      "model": "claude-code-websearch",
+      "beneficiaire": "UNE NOUVELLE IDEE DE LA CRECHE PARI",
+      "beneficiaire_normalise": "UNE NOUVELLE IDEE DE LA CRECHE PARI",
+      "siret": ""
+    },
+    "CAISSE REGLEMENTS PECUNIAIRES": {
+      "activite_verifiee": "Caisse des règlements pécuniaires (ligne comptable administrative) — versements regroupés par la Ville de Paris pour divers créanciers.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:11:47",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CAISSE REGLEMENTS PECUNIAIRES",
+      "beneficiaire_normalise": "CAISSE REGLEMENTS PECUNIAIRES",
+      "siret": ""
+    },
+    "VILLE DE BETHLEEM": {
+      "activite_verifiee": "Coopération décentralisée Paris-Bethléem ; subventions pour projets urbains (réinvention place de la Nativité 2019-2022, Centre pour la Paix) ; co-financement AFD.",
+      "perimetre_geographique": "international",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/pages/reinventer-l-espace-public-a-bethleem-2019-2021-16007",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:11:47",
+      "model": "claude-code-websearch",
+      "beneficiaire": "VILLE DE BETHLEEM",
+      "beneficiaire_normalise": "VILLE DE BETHLEEM",
+      "siret": ""
+    },
+    "ASSISTANCE PUBLIQUE HOPITAUX DE PAR": {
+      "activite_verifiee": "AP-HP — Assistance Publique-Hôpitaux de Paris ; EPIC, CHU de l'Île-de-France ; plus grand groupe hospitalier européen, 38 hôpitaux, ~100 000 salariés.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.aphp.fr/",
+          "title": "aphp.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:11:47",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSISTANCE PUBLIQUE HOPITAUX DE PAR",
+      "beneficiaire_normalise": "ASSISTANCE PUBLIQUE HOPITAUX DE PAR",
+      "siret": ""
+    },
+    "ASSOCIATION LOGEMENT JEUNES TRAVAILLEURS": {
+      "activite_verifiee": "ALJT — Association (créée 1956, Paris 19e) ; +8 500 logements pour jeunes travailleurs 18-32 ans (résidences R'JT, R'JAM, HOME'R) en Île-de-France.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.aljt.com/",
+          "title": "aljt.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:11:47",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION LOGEMENT JEUNES TRAVAILLEURS",
+      "beneficiaire_normalise": "ASSOCIATION LOGEMENT JEUNES TRAVAILLEURS",
+      "siret": ""
+    },
+    "LOGEMENT JEUNES TRAVAILLEURS": {
+      "activite_verifiee": "ALJT — Association (créée 1956, Paris 19e) ; +8 500 logements pour jeunes travailleurs 18-32 ans (résidences R'JT, R'JAM, HOME'R) en Île-de-France.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.aljt.com/",
+          "title": "aljt.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:11:47",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LOGEMENT JEUNES TRAVAILLEURS",
+      "beneficiaire_normalise": "LOGEMENT JEUNES TRAVAILLEURS",
+      "siret": ""
+    },
+    "GEST CENTRE ANIMAT CULTUR": {
+      "activite_verifiee": "Gestion de centres d'animation et culturels parisiens (centres Paris Anim' souvent gérés par la Ligue de l'Enseignement), activités loisirs/culture pour tous publics.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:11:47",
+      "model": "claude-code-websearch",
+      "beneficiaire": "GEST CENTRE ANIMAT CULTUR",
+      "beneficiaire_normalise": "GEST CENTRE ANIMAT CULTUR",
+      "siret": ""
+    },
+    "SOC PHILANTHROPIQUE": {
+      "activite_verifiee": "Société Philanthropique (créée 1780) ; 20 établissements à Paris et IDF en enfance, handicap, santé, logement-insertion, personnes âgées ; 690 logements sociaux.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://societe-philanthropique.fr/",
+          "title": "societe-philanthropique.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:11:47",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SOC PHILANTHROPIQUE",
+      "beneficiaire_normalise": "SOC PHILANTHROPIQUE",
+      "siret": ""
+    },
+    "AGENCE DEPARTEMENTALE DINFORMATION SUR LE LOGEMENT 75": {
+      "activite_verifiee": "ADIL 75 — Association agréée (réseau ANIL) ; conseil gratuit juridique/fiscal/financier sur le logement ; 46 bis bd Edgar Quinet, Paris 14e.",
+      "perimetre_geographique": "Paris 14e",
+      "sources": [
+        {
+          "url": "https://www.adil75.org/",
+          "title": "adil75.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:11:47",
+      "model": "claude-code-websearch",
+      "beneficiaire": "AGENCE DEPARTEMENTALE DINFORMATION SUR LE LOGEMENT 75",
+      "beneficiaire_normalise": "AGENCE DEPARTEMENTALE DINFORMATION SUR LE LOGEMENT 75",
+      "siret": ""
+    },
+    "ECOLE DE LA DEUXIEME CHANCE": {
+      "activite_verifiee": "E2C Paris — association loi 1901 ; 2 sites (13e, 18e) ; accompagne 430 jeunes/an de 16-25 ans (sans qualif) vers l'emploi, taux de sortie positif 70%.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://e2c-paris.fr/",
+          "title": "e2c-paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:11:47",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ECOLE DE LA DEUXIEME CHANCE",
+      "beneficiaire_normalise": "ECOLE DE LA DEUXIEME CHANCE",
+      "siret": ""
+    },
+    "INSTITUT CURIE": {
+      "activite_verifiee": "Fondation reconnue d'utilité publique (fondée 1909 par Marie Curie) ; centre français de recherche et traitement du cancer ; 3 300 personnels sur 3 sites (Paris, Orsay, Saint-Cloud).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://curie.fr/",
+          "title": "curie.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:11:47",
+      "model": "claude-code-websearch",
+      "beneficiaire": "INSTITUT CURIE",
+      "beneficiaire_normalise": "INSTITUT CURIE",
+      "siret": ""
+    },
+    "ASSOCIATION DEVELOPP DE LA DANSE A PARIS": {
+      "activite_verifiee": "ADDP — Association pour le Développement de la Danse à Paris (créée 2001) ; festival Faits d'hiver + micadanses (4e, 5 studios de création et diffusion).",
+      "perimetre_geographique": "Paris 4e",
+      "sources": [
+        {
+          "url": "https://micadanses.com/",
+          "title": "micadanses.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:11:47",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION DEVELOPP DE LA DANSE A PARIS",
+      "beneficiaire_normalise": "ASSOCIATION DEVELOPP DE LA DANSE A PARIS",
+      "siret": ""
+    },
+    "ETS PUB PAL DECOUVERTE CI SCI INDUS": {
+      "activite_verifiee": "Universcience — EPIC créé 2009, tutelle Culture + Recherche ; regroupe le Palais de la Découverte (Champs-Élysées) et la Cité des Sciences (La Villette).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.universcience.fr/fr/nous-connaitre/universcience",
+          "title": "universcience.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:11:47",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ETS PUB PAL DECOUVERTE CI SCI INDUS",
+      "beneficiaire_normalise": "ETS PUB PAL DECOUVERTE CI SCI INDUS",
+      "siret": ""
+    },
+    "CITE INTERNATION UNIVERSITAIRE DE P": {
+      "activite_verifiee": "Fondation nationale CIUP (reconnue d'utilité publique, décret 1925) ; campus universitaire dans le 14e ; 40 résidences, 12 000 étudiants/chercheurs de 150 nationalités.",
+      "perimetre_geographique": "Paris 14e",
+      "sources": [
+        {
+          "url": "https://www.ciup.fr/en/",
+          "title": "ciup.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:11:47",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CITE INTERNATION UNIVERSITAIRE DE P",
+      "beneficiaire_normalise": "CITE INTERNATION UNIVERSITAIRE DE P",
+      "siret": ""
+    },
+    "DIR REG FINANCES PUBLIQUES IDF PARI": {
+      "activite_verifiee": "DRFiP Île-de-France Paris — service déconcentré de la DGFiP ; recouvrement et gestion des finances publiques pour l'État en IDF et à Paris.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:11:47",
+      "model": "claude-code-websearch",
+      "beneficiaire": "DIR REG FINANCES PUBLIQUES IDF PARI",
+      "beneficiaire_normalise": "DIR REG FINANCES PUBLIQUES IDF PARI",
+      "siret": ""
+    },
+    "ASSOCIATION OZAR HATORAH": {
+      "activite_verifiee": "Association (créée 1945, implantée en France depuis 1961) ; 1er réseau d'enseignement juif en France : 16 écoles, 3 300 élèves de la maternelle au post-bac.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://ozarhatorah.com/",
+          "title": "ozarhatorah.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:11:47",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION OZAR HATORAH",
+      "beneficiaire_normalise": "ASSOCIATION OZAR HATORAH",
+      "siret": ""
+    },
+    "ASSOCIATION OZAR HATORAH PARIS ONZE CRECHE": {
+      "activite_verifiee": "Association (créée 1945, implantée en France depuis 1961) ; 1er réseau d'enseignement juif en France : 16 écoles, 3 300 élèves de la maternelle au post-bac.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://ozarhatorah.com/",
+          "title": "ozarhatorah.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:11:47",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION OZAR HATORAH PARIS ONZE CRECHE",
+      "beneficiaire_normalise": "ASSOCIATION OZAR HATORAH PARIS ONZE CRECHE",
+      "siret": ""
+    },
+    "OZAR HATORAH PARIS ONZE CRECHE": {
+      "activite_verifiee": "Association (créée 1945, implantée en France depuis 1961) ; 1er réseau d'enseignement juif en France : 16 écoles, 3 300 élèves de la maternelle au post-bac.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://ozarhatorah.com/",
+          "title": "ozarhatorah.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:11:47",
+      "model": "claude-code-websearch",
+      "beneficiaire": "OZAR HATORAH PARIS ONZE CRECHE",
+      "beneficiaire_normalise": "OZAR HATORAH PARIS ONZE CRECHE",
+      "siret": ""
+    },
+    "COOPERATIVE DE SANTE RICHERAND": {
+      "activite_verifiee": "SCIC (créée 2018) gérant le Centre de Santé Richerand (créé 1974) ; 4 av. Richerand Paris 10e ; 1er centre de santé coopératif de France ; médecine générale, spécialités, dentaire.",
+      "perimetre_geographique": "Paris 10e",
+      "sources": [
+        {
+          "url": "https://centre-de-sante-richerand.fr/",
+          "title": "centre-de-sante-richerand.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:11:47",
+      "model": "claude-code-websearch",
+      "beneficiaire": "COOPERATIVE DE SANTE RICHERAND",
+      "beneficiaire_normalise": "COOPERATIVE DE SANTE RICHERAND",
+      "siret": ""
+    },
+    "GIP HASHTAG FRANCE RUGBY 2023": {
+      "activite_verifiee": "GIP France 2023 — Groupement d'Intérêt Public (FFR 62% + État 37% + CNOSF 1%) chargé de l'organisation de la Coupe du Monde de Rugby 2023.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.rugbyworldcup.com/2023/governance?lang=fr",
+          "title": "rugbyworldcup.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:11:47",
+      "model": "claude-code-websearch",
+      "beneficiaire": "GIP HASHTAG FRANCE RUGBY 2023",
+      "beneficiaire_normalise": "GIP HASHTAG FRANCE RUGBY 2023",
+      "siret": ""
+    },
+    "ASS GAN YOSSEF CRECHE JARDIN D ENFA": {
+      "activite_verifiee": "Association (créée 1986, Paris 20e rue de la Mare, ~20 salariés) ; gère crèche collective + crèche familiale à Belleville, accueil enfants 3 mois-3 ans.",
+      "perimetre_geographique": "Paris 20e",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/lieux/creche-associative-gan-yossef-3569",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:11:47",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASS GAN YOSSEF CRECHE JARDIN D ENFA",
+      "beneficiaire_normalise": "ASS GAN YOSSEF CRECHE JARDIN D ENFA",
+      "siret": ""
+    },
+    "ASSOCIATION GAN YOSSEF CRECHE JARDIN D ENFA": {
+      "activite_verifiee": "Association (créée 1986, Paris 20e rue de la Mare, ~20 salariés) ; gère crèche collective + crèche familiale à Belleville, accueil enfants 3 mois-3 ans.",
+      "perimetre_geographique": "Paris 20e",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/lieux/creche-associative-gan-yossef-3569",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:11:47",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION GAN YOSSEF CRECHE JARDIN D ENFA",
+      "beneficiaire_normalise": "ASSOCIATION GAN YOSSEF CRECHE JARDIN D ENFA",
+      "siret": ""
+    },
+    "ASSOCIATION GAN YOSSEF CR JARDIN D ENFANTS": {
+      "activite_verifiee": "Association (créée 1986, Paris 20e rue de la Mare, ~20 salariés) ; gère crèche collective + crèche familiale à Belleville, accueil enfants 3 mois-3 ans.",
+      "perimetre_geographique": "Paris 20e",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/lieux/creche-associative-gan-yossef-3569",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:11:47",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION GAN YOSSEF CR JARDIN D ENFANTS",
+      "beneficiaire_normalise": "ASSOCIATION GAN YOSSEF CR JARDIN D ENFANTS",
+      "siret": ""
+    },
+    "GAN YOSSEF CR JARDIN D ENFANTS": {
+      "activite_verifiee": "Association (créée 1986, Paris 20e rue de la Mare, ~20 salariés) ; gère crèche collective + crèche familiale à Belleville, accueil enfants 3 mois-3 ans.",
+      "perimetre_geographique": "Paris 20e",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/lieux/creche-associative-gan-yossef-3569",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:11:47",
+      "model": "claude-code-websearch",
+      "beneficiaire": "GAN YOSSEF CR JARDIN D ENFANTS",
+      "beneficiaire_normalise": "GAN YOSSEF CR JARDIN D ENFANTS",
+      "siret": ""
+    },
+    "ECOLE PRATIQUE DES HAUTES ETUDES": {
+      "activite_verifiee": "EPHE — Grande école publique fondée 1868 à la Sorbonne ; établissement constitutif de PSL ; 3 sections (Sciences de la Vie/Terre, Sciences Historiques/Philologiques, Sciences Religieuses).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.ephe.psl.eu/",
+          "title": "ephe.psl.eu"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:11:47",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ECOLE PRATIQUE DES HAUTES ETUDES",
+      "beneficiaire_normalise": "ECOLE PRATIQUE DES HAUTES ETUDES",
+      "siret": ""
+    },
+    "CARAMEL": {
+      "activite_verifiee": "Caramel — association gérant des mini-crèches collectives en appartement à Paris 12e (48 rue de Wattignies) et 19e ; places pour enfants en situation de handicap.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/lieux/creche-collective-en-appartement-caramel-12-20062",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:13:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CARAMEL",
+      "beneficiaire_normalise": "CARAMEL",
+      "siret": "42984735300019"
+    },
+    "ASSOCIATION LES PETITS DU CANARD": {
+      "activite_verifiee": "Les Petits du Canard — association gérant crèches collectives à Paris 3e (10 rue Dupetit-Thouars, 220 rue Saint-Martin) ; accueil collectif petite enfance.",
+      "perimetre_geographique": "Paris 3e",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/lieux/creche-associative-les-petits-du-canard-charlot-3756",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:13:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION LES PETITS DU CANARD",
+      "beneficiaire_normalise": "ASSOCIATION LES PETITS DU CANARD",
+      "siret": ""
+    },
+    "ASSOC NOTRE DAME DE BON SECOURS": {
+      "activite_verifiee": "Association (créée 1887 par Augustines de Notre-Dame), reconnue d'utilité publique 1923 ; maternité fusionnée 2006 dans Groupe hospitalier Paris Saint-Joseph + EHPAD + accueil de jour Alzheimer.",
+      "perimetre_geographique": "Paris 14e",
+      "sources": [
+        {
+          "url": "https://www.ndbs.org/",
+          "title": "ndbs.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:13:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOC NOTRE DAME DE BON SECOURS",
+      "beneficiaire_normalise": "ASSOC NOTRE DAME DE BON SECOURS",
+      "siret": ""
+    },
+    "ASSOCIATION NOTRE DAME DE BON SECOURS": {
+      "activite_verifiee": "Association (créée 1887 par Augustines de Notre-Dame), reconnue d'utilité publique 1923 ; maternité fusionnée 2006 dans Groupe hospitalier Paris Saint-Joseph + EHPAD + accueil de jour Alzheimer.",
+      "perimetre_geographique": "Paris 14e",
+      "sources": [
+        {
+          "url": "https://www.ndbs.org/",
+          "title": "ndbs.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:13:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION NOTRE DAME DE BON SECOURS",
+      "beneficiaire_normalise": "ASSOCIATION NOTRE DAME DE BON SECOURS",
+      "siret": ""
+    },
+    "ASSOCIATION ORCHESTRE CONCERTS LAMO": {
+      "activite_verifiee": "Société des Nouveaux-Concerts — Orchestre Lamoureux (fondé 1881 par Charles Lamoureux) ; diffusion de Wagner et créations (Debussy La Mer, Ravel, Fauré, Chabrier).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Orchestre_Lamoureux",
+          "title": "en.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:13:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION ORCHESTRE CONCERTS LAMO",
+      "beneficiaire_normalise": "ASSOCIATION ORCHESTRE CONCERTS LAMO",
+      "siret": ""
+    },
+    "ORCHESTRE CONCERTS LAMO": {
+      "activite_verifiee": "Société des Nouveaux-Concerts — Orchestre Lamoureux (fondé 1881 par Charles Lamoureux) ; diffusion de Wagner et créations (Debussy La Mer, Ravel, Fauré, Chabrier).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Orchestre_Lamoureux",
+          "title": "en.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:13:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ORCHESTRE CONCERTS LAMO",
+      "beneficiaire_normalise": "ORCHESTRE CONCERTS LAMO",
+      "siret": ""
+    },
+    "ASS POUR DROIT A L INITIATIVE ECONO": {
+      "activite_verifiee": "ADIE — Association pour le Droit à l'Initiative Économique (créée 1988 par Maria Nowak, RUP 2005) ; microcrédit jusqu'à 10k€ accompagné.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.adie.org/",
+          "title": "adie.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:13:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASS POUR DROIT A L INITIATIVE ECONO",
+      "beneficiaire_normalise": "ASS POUR DROIT A L INITIATIVE ECONO",
+      "siret": ""
+    },
+    "ASSOCIATION POUR DROIT A L INITIATIVE ECONO": {
+      "activite_verifiee": "ADIE — Association pour le Droit à l'Initiative Économique (créée 1988 par Maria Nowak, RUP 2005) ; microcrédit jusqu'à 10k€ accompagné.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.adie.org/",
+          "title": "adie.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:13:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION POUR DROIT A L INITIATIVE ECONO",
+      "beneficiaire_normalise": "ASSOCIATION POUR DROIT A L INITIATIVE ECONO",
+      "siret": ""
+    },
+    "SOC GESTION MAINTENAN AMENAGEM CONS": {
+      "activite_verifiee": "Société Publique Locale d'aménagement — opérations d'aménagement, maintenance et gestion de parcs pour le compte de collectivités territoriales.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:13:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SOC GESTION MAINTENAN AMENAGEM CONS",
+      "beneficiaire_normalise": "SOC GESTION MAINTENAN AMENAGEM CONS",
+      "siret": ""
+    },
+    "AUTISME EN ILE DE FRANCE": {
+      "activite_verifiee": "AeIDF — Association de parents (créée 1990, +35 ans) gestionnaire d'établissements et services médico-sociaux ; accompagne ~600 personnes avec TSA (18 mois à 63 ans).",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.autisme-en-idf.org/",
+          "title": "autisme-en-idf.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:13:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "AUTISME EN ILE DE FRANCE",
+      "beneficiaire_normalise": "AUTISME EN ILE DE FRANCE",
+      "siret": "44180735100016"
+    },
+    "PARIS INITIATIVE ENTREPRISE": {
+      "activite_verifiee": "PIE — Paris Initiative Entreprises (France Active + Initiative Paris) ; 1er financeur de création et reprise d'entreprises à Paris via prêts d'honneur et garanties.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.pie.paris/",
+          "title": "pie.paris"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:13:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "PARIS INITIATIVE ENTREPRISE",
+      "beneficiaire_normalise": "PARIS INITIATIVE ENTREPRISE",
+      "siret": ""
+    },
+    "FONDATION DES PETITS FRERES DES PAU": {
+      "activite_verifiee": "Association reconnue d'utilité publique (créée 1946) ; lutte contre l'isolement et la solitude des personnes âgées précaires ; 12 fraternités régionales, accompagnement à domicile.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.petitsfreresdespauvres.fr/",
+          "title": "petitsfreresdespauvres.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:13:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FONDATION DES PETITS FRERES DES PAU",
+      "beneficiaire_normalise": "FONDATION DES PETITS FRERES DES PAU",
+      "siret": ""
+    },
+    "THEATRE AUX MAINS NUES": {
+      "activite_verifiee": "Théâtre + école de marionnettistes (créée 1995 par Alain Recoing, nouveau théâtre 45 rue du Clos Paris 20e) ; plateforme d'essai du théâtre de marionnette et diplôme RNCP.",
+      "perimetre_geographique": "Paris 20e",
+      "sources": [
+        {
+          "url": "https://www.theatre-aux-mains-nues.fr/",
+          "title": "theatre-aux-mains-nues.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:13:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "THEATRE AUX MAINS NUES",
+      "beneficiaire_normalise": "THEATRE AUX MAINS NUES",
+      "siret": ""
+    },
+    "REMISES GRACIEUSES": {
+      "activite_verifiee": "Ligne budgétaire administrative (non-entité) — remises gracieuses accordées par la Ville de Paris sur créances publiques.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:13:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "REMISES GRACIEUSES",
+      "beneficiaire_normalise": "REMISES GRACIEUSES",
+      "siret": ""
+    },
+    "AIDE JEUNES HANDIC INTEGR REUSSIE": {
+      "activite_verifiee": "AJHIR — Association loi 1901 (créée 1994, SIREN 412285348, Paris 11e) ; accompagnement de jeunes en situation de handicap intellectuel via SESSAD La Courte Échelle.",
+      "perimetre_geographique": "Paris 11e",
+      "sources": [
+        {
+          "url": "https://www.ajhir.fr/",
+          "title": "ajhir.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:13:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "AIDE JEUNES HANDIC INTEGR REUSSIE",
+      "beneficiaire_normalise": "AIDE JEUNES HANDIC INTEGR REUSSIE",
+      "siret": ""
+    },
+    "FONDAT MAISON CHAMPS ST FRANC D ASS": {
+      "activite_verifiee": "Fondation Maison des Champs (créée 1931, RUP 1932) 16 rue Gén Brunet, Paris 19e ; services à domicile personnes âgées dépendantes, soins infirmiers, hébergement familial.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        {
+          "url": "https://www.fmdc.fr/",
+          "title": "fmdc.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:13:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FONDAT MAISON CHAMPS ST FRANC D ASS",
+      "beneficiaire_normalise": "FONDAT MAISON CHAMPS ST FRANC D ASS",
+      "siret": ""
+    },
+    "FOND MAISON CHAMPS ST FRANC ASSISE": {
+      "activite_verifiee": "Fondation Maison des Champs (créée 1931, RUP 1932) 16 rue Gén Brunet, Paris 19e ; services à domicile personnes âgées dépendantes, soins infirmiers, hébergement familial.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        {
+          "url": "https://www.fmdc.fr/",
+          "title": "fmdc.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:13:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FOND. MAISON CHAMPS ST FRANC ASSISE",
+      "beneficiaire_normalise": "FOND MAISON CHAMPS ST FRANC ASSISE",
+      "siret": ""
+    },
+    "COLLEGE CLAUDE CHAPPE": {
+      "activite_verifiee": "Collège public de l'Éducation nationale (Académie de Paris, 9 rue des Alouettes Paris 19e) ; 406 élèves, section bilingue et ULIS.",
+      "perimetre_geographique": "Paris 19e",
+      "sources": [
+        {
+          "url": "https://www.education.gouv.fr/annuaire/75019/paris-19e/college/0750360j/college-claude-chappe.html",
+          "title": "education.gouv.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:13:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "COLLEGE CLAUDE CHAPPE",
+      "beneficiaire_normalise": "COLLEGE CLAUDE CHAPPE",
+      "siret": ""
+    },
+    "COLLEGE FRANCOIS VILLON": {
+      "activite_verifiee": "Collège public (Cité scolaire Villon, 10-16 av. Marc Sangnier Paris 14e) ; 419 élèves ; sections sport (foot féminin), danse, musique (CHAM Darius Milhaud), bilingue anglais-italien.",
+      "perimetre_geographique": "Paris 14e",
+      "sources": [
+        {
+          "url": "https://citescolairevillon.paris/",
+          "title": "citescolairevillon.paris"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:13:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "COLLEGE FRANCOIS VILLON",
+      "beneficiaire_normalise": "COLLEGE FRANCOIS VILLON",
+      "siret": ""
+    },
+    "UNIVERSITE PARIS DIDEROT PARIS 7": {
+      "activite_verifiee": "Université Paris Diderot-Paris 7 (1970-2019) — université publique qui a fusionné avec Paris-Descartes + IPGP pour former Université Paris Cité au 1er janvier 2020.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Universit%C3%A9_Paris-Diderot",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:13:32",
+      "model": "claude-code-websearch",
+      "beneficiaire": "UNIVERSITE PARIS DIDEROT PARIS 7",
+      "beneficiaire_normalise": "UNIVERSITE PARIS DIDEROT PARIS 7",
+      "siret": ""
     }
   }
 }
