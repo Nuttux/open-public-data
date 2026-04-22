@@ -8,6 +8,7 @@ import KPIGrid from "@/components/fusion/KPIGrid";
 import TileCard from "@/components/fusion/TileCard";
 import YearPicker from "@/components/fusion/YearPicker";
 import ExportRow from "@/components/fusion/ExportRow";
+import Tip from "@/components/fusion/Tip";
 import PullQuote from "@/components/fusion/PullQuote";
 import BilanBoard from "@/components/fusion/BilanBoard";
 import BudgetTimeline from "@/components/fusion/BudgetTimeline";
@@ -128,31 +129,31 @@ export default function DettePatrimoineClient({
               cols={3}
               items={[
                 {
-                  label: t("fx.det.s02.kpi.per_hab"),
+                  label: <Tip label={t("fx.det.s02.kpi.per_hab.tip")}>{t("fx.det.s02.kpi.per_hab")}</Tip>,
                   value: fmtInt(detteParHab),
                   unit: "€",
                   delta: t("fx.det.s02.kpi.per_hab_delta"),
                 },
                 {
-                  label: t("fx.det.s02.kpi.actif"),
+                  label: <Tip label={t("fx.det.s02.kpi.actif.tip")}>{t("fx.det.s02.kpi.actif")}</Tip>,
                   value: fmtBillions(d.actif),
                   unit: t("fx.s.md_eur"),
                   delta: t("fx.det.s02.kpi.actif_delta"),
                 },
                 {
-                  label: t("fx.det.s02.kpi.dette_fin"),
+                  label: <Tip label={t("fx.det.s02.kpi.dette_fin.tip")}>{t("fx.det.s02.kpi.dette_fin")}</Tip>,
                   value: fmtBillions(d.detteFinanciere),
                   unit: t("fx.s.md_eur"),
                   delta: fill(t("fx.det.s02.kpi.dette_fin_delta"), { n: fmtInt(detteParHab) }),
                 },
                 {
-                  label: t("fx.det.s02.kpi.cap_desen"),
+                  label: <Tip label={t("fx.det.s02.kpi.cap_desen.tip")}>{t("fx.det.s02.kpi.cap_desen")}</Tip>,
                   value: fmtDec(d.capaciteDesendettement, 1),
                   unit: t("fx.det.s02.kpi.ans"),
                   delta: t("fx.det.s02.kpi.cap_desen_delta"),
                 },
                 {
-                  label: t("fx.det.s02.kpi.provisions"),
+                  label: <Tip label={t("fx.det.s02.kpi.provisions.tip")}>{t("fx.det.s02.kpi.provisions")}</Tip>,
                   value:
                     d.provisions >= 1e9
                       ? fmtBillions(d.provisions)
@@ -161,7 +162,7 @@ export default function DettePatrimoineClient({
                   delta: t("fx.det.s02.kpi.provisions_delta"),
                 },
                 {
-                  label: t("fx.det.s02.kpi.ratio"),
+                  label: <Tip label={t("fx.det.s02.kpi.ratio.tip")}>{t("fx.det.s02.kpi.ratio")}</Tip>,
                   value: fmtDec((d.detteFinanciere / d.actif) * 100, 0),
                   unit: "%",
                   delta: t("fx.det.s02.kpi.ratio_delta"),
@@ -353,7 +354,7 @@ export default function DettePatrimoineClient({
             title={
               <>
                 {t("fx.det.s04c.title.before")}
-                <em>{t("fx.det.s04c.title.em")}</em>
+                <em><Tip label={t("fx.det.s04c.horsbilan.tip")}>{t("fx.det.s04c.title.em")}</Tip></em>
               </>
             }
             subtitle={t("fx.det.s04c.sub")}
@@ -378,7 +379,7 @@ export default function DettePatrimoineClient({
                 cols={3}
                 items={[
                   {
-                    label: t("fx.det.s04c.kpi.annuite"),
+                    label: <Tip label={t("fx.det.s04c.kpi.annuite.tip")}>{t("fx.det.s04c.kpi.annuite")}</Tip>,
                     value: fmtMillions(horsBilan.totals.annuite_totale, 0),
                     unit: t("fx.s.m_eur"),
                     delta: t("fx.det.s04c.kpi.annuite_delta"),
@@ -564,9 +565,17 @@ export default function DettePatrimoineClient({
           <div className="fx-sources">
             <div>
               <div className="n">{t("fx.det.src.c1.n")}</div>
-              <h3>{fill(t("fx.det.src.c1.h"), { year: d.year })}</h3>
+              <h3>
+                {t("fx.det.src.c1.h.prefix")}{d.year}{t("fx.det.src.c1.h.open")}
+                <Tip label={t("fx.det.src.c1.m57.tip")}>M57</Tip>
+                {t("fx.det.src.c1.h.close")}
+              </h3>
               <p>{t("fx.det.src.c1.p")}</p>
-              <a href="https://opendata.paris.fr" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://opendata.paris.fr/explore/dataset/bilan-comptable/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {t("fx.s.opendata")}
               </a>
             </div>
@@ -574,7 +583,7 @@ export default function DettePatrimoineClient({
               <div className="n">{t("fx.det.src.c2.n")}</div>
               <h3>{t("fx.det.src.c2.h")}</h3>
               <p>{t("fx.det.src.c2.p")}</p>
-              <a href="/methode#dette-patrimoine">{t("fx.s.methode_lien")}</a>
+              <a href="/methode?tool=dette-patrimoine#outils">{t("fx.s.methode_lien")}</a>
             </div>
             <div>
               <div className="n">{t("fx.det.src.c3.n")}</div>
@@ -594,7 +603,7 @@ export default function DettePatrimoineClient({
               },
               { label: t("fx.det.src.export.json"), href: `/data/bilan_sankey_${d.year}.json` },
               { label: t("fx.det.src.export.index"), href: "/data/bilan_index.json" },
-              { label: t("fx.det.src.export.method"), href: "/methode#dette-patrimoine" },
+              { label: t("fx.det.src.export.method"), href: "/methode?tool=dette-patrimoine#outils" },
             ]}
           />
         </div>

@@ -572,7 +572,7 @@ export default function MarchesPublicsClient({
                   { label: t("fx.mp.s06.sig3.stat2"), value: fmtInt(d.nb) },
                   { label: t("fx.mp.s06.sig3.stat3"), value: t("fx.mp.s06.sig3.cp") },
                 ],
-                cta: { href: "/methode#marches-publics", label: t("fx.mp.s06.sig3.cta") },
+                cta: { href: "/methode?tool=marches-publics#outils", label: t("fx.mp.s06.sig3.cta") },
               },
               {
                 flag: t("fx.mp.s06.sig4.flag"),
@@ -636,7 +636,11 @@ export default function MarchesPublicsClient({
               <div className="n">{t("fx.mp.src.c1.n")}</div>
               <h3>{fill(t("fx.mp.src.c1.h"), { year: d.year })}</h3>
               <p>{t("fx.mp.src.c1.p")}</p>
-              <a href="https://opendata.paris.fr" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {t("fx.s.opendata")}
               </a>
             </div>
@@ -655,7 +659,7 @@ export default function MarchesPublicsClient({
                   )
                 )}
               </p>
-              <a href="/methode#marches-publics">{t("fx.s.methode_lien")}</a>
+              <a href="/methode?tool=marches-publics#outils">{t("fx.s.methode_lien")}</a>
             </div>
             <div>
               <div className="n">{t("fx.mp.src.c3.n")}</div>
@@ -675,7 +679,7 @@ export default function MarchesPublicsClient({
               },
               { label: t("fx.mp.src.export.json"), href: `/data/marches-publics/marches_${d.year}.json` },
               { label: t("fx.mp.src.export.index"), href: "/data/marches-publics/index.json" },
-              { label: t("fx.mp.src.export.method"), href: "/methode#marches-publics" },
+              { label: t("fx.mp.src.export.method"), href: "/methode?tool=marches-publics#outils" },
             ]}
           />
         </div>

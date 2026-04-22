@@ -8,6 +8,7 @@ import KPIGrid from "@/components/fusion/KPIGrid";
 import TileCard from "@/components/fusion/TileCard";
 import YearPicker from "@/components/fusion/YearPicker";
 import ExportRow from "@/components/fusion/ExportRow";
+import Tip from "@/components/fusion/Tip";
 import SignauxFaibles from "@/components/fusion/SignauxFaibles";
 import ProjectMap from "@/components/fusion/ProjectMap";
 import ProjetThumb from "@/components/fusion/ProjetThumb";
@@ -27,10 +28,21 @@ const fill = (s: string, vars: Record<string, string | number>) => {
   return r;
 };
 
+// Pour chaque année, la source primaire est soit un PDF d'annexe CA
+// (2022+), soit le dataset OpenData AP (gelé 2018-2022). On lie vers la
+// vraie source d'origine des chiffres affichés.
+const INVEST_SOURCE_BY_YEAR: Record<number, { url: string; kind: "pdf" | "dataset" }> = {
+  2022: { url: "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf", kind: "pdf" },
+  2023: { url: "https://cdn.paris.fr/paris/2024/07/03/ca-2023-investissements-localises-tJO3.pdf", kind: "pdf" },
+  2024: { url: "https://cdn.paris.fr/paris/2025/06/25/ca-2024-annexe-il-UtMj.PDF", kind: "pdf" },
+};
+const INVEST_FALLBACK_DATASET = "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/";
+
 export default function InvestissementsClient({ d }: { d: InvestissementsData }) {
   const t = useT();
   const { locale } = useLocale();
   const trL = (s: string | undefined) => trLabel(s, locale);
+  const sourceForYear = INVEST_SOURCE_BY_YEAR[d.year] ?? { url: INVEST_FALLBACK_DATASET, kind: "dataset" as const };
   const ytrend = d.yearsSummary;
   const delta5y =
     ytrend.length >= 2
@@ -368,7 +380,7 @@ export default function InvestissementsClient({ d }: { d: InvestissementsData })
                   { label: t("fx.inv.s07.sig3.stat2"), value: fmtInt(d.nbProjets - d.nbGeo) },
                   { label: t("fx.inv.s07.sig3.stat3"), value: t("fx.inv.s07.sig3.to_produce") },
                 ],
-                cta: { href: "/methode#investissements", label: t("fx.inv.s07.sig3.cta") },
+                cta: { href: "/methode?tool=investissements#outils", label: t("fx.inv.s07.sig3.cta") },
               },
               {
                 flag: t("fx.inv.s07.sig4.flag"),
@@ -408,17 +420,25 @@ export default function InvestissementsClient({ d }: { d: InvestissementsData })
           <div className="fx-sources">
             <div>
               <div className="n">{t("fx.inv.src.c1.n")}</div>
-              <h3>{fill(t("fx.inv.src.c1.h"), { year: d.year })}</h3>
+              <h3>
+                {t("fx.inv.src.c1.h.prefix")}{d.year}{t("fx.inv.src.c1.h.open")}
+                <Tip label={t("fx.inv.src.c1.m57.tip")}>M57</Tip>
+                {t("fx.inv.src.c1.h.close")}
+              </h3>
               <p>{fill(t("fx.inv.src.c1.p"), { n: fmtInt(d.nbProjets), year: d.year })}</p>
-              <a href="https://opendata.paris.fr" target="_blank" rel="noopener noreferrer">
-                {t("fx.s.opendata")}
+              <a
+                href={sourceForYear.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {sourceForYear.kind === "pdf" ? t("fx.s.pdf_annexe") : t("fx.s.opendata")}
               </a>
             </div>
             <div>
               <div className="n">{t("fx.inv.src.c2.n")}</div>
               <h3>{t("fx.inv.src.c2.h")}</h3>
               <p>{t("fx.inv.src.c2.p")}</p>
-              <a href="/methode#investissements">{t("fx.s.methode_lien")}</a>
+              <a href="/methode#outils">{t("fx.s.methode_lien")}</a>
             </div>
             <div>
               <div className="n">{t("fx.inv.src.c3.n")}</div>
@@ -438,7 +458,7 @@ export default function InvestissementsClient({ d }: { d: InvestissementsData })
               },
               { label: t("fx.inv.src.export.json"), href: `/data/map/investissements_complet_${d.year}.json` },
               { label: t("fx.inv.src.export.trend"), href: "/data/investissement_tendances.json" },
-              { label: t("fx.inv.src.export.method"), href: "/methode#investissements" },
+              { label: t("fx.inv.src.export.method"), href: "/methode?tool=investissements#outils" },
             ]}
           />
         </div>

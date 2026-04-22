@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
@@ -61,7 +61,7 @@ const TOOLS_FR: ToolMethod[] = [
   {
     id: "budget", number: "04", kicker: "Budget",
     title: "Budget principal — voté & exécuté", route: "/budget",
-    source: { name: "Comptes administratifs M57 + budgets primitifs", dataset: "comptes-administratifs-budgets-principaux-…-m57", coverage: "2019-2024 (exécuté) · 2019-2026 (voté)", href: "https://opendata.paris.fr", hrefLabel: "opendata.paris.fr" },
+    source: { name: "Comptes administratifs M57 + budgets primitifs", dataset: "comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement", coverage: "2019-2024 (exécuté) · 2019-2026 (voté)", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/", hrefLabel: "opendata.paris.fr" },
     objectif: "Rendre lisible en un coup d'œil ce qui entre et ce qui sort du budget de la Ville, sur un exercice, sous forme de Sankey.",
     pipeline: [
       { label: "Sync", detail: <>7 datasets OpenData → <code>BigQuery raw</code></> },
@@ -107,7 +107,7 @@ const TOOLS_FR: ToolMethod[] = [
   {
     id: "marches-publics", number: "06", kicker: "Marchés publics",
     title: "Marchés notifiés (commande publique)", route: "/marches-publics",
-    source: { name: "Marchés publics de la Ville de Paris", dataset: "marches-publics-de-la-ville-de-paris", coverage: "2013-2024 · ~17 000 contrats", href: "https://opendata.paris.fr", hrefLabel: "opendata.paris.fr" },
+    source: { name: "Marchés publics de la Ville de Paris", dataset: "liste-des-marches-de-la-collectivite-parisienne", coverage: "2013-2024 · 17 639 contrats", href: "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/", hrefLabel: "opendata.paris.fr" },
     objectif: "Voir qui la Ville paie pour travaux, fournitures et services, quel volume, et quels titulaires concentrent les contrats.",
     pipeline: [
       { label: "Sync", detail: <>Dataset marchés → <code>BigQuery raw</code></> },
@@ -131,7 +131,7 @@ const TOOLS_FR: ToolMethod[] = [
   {
     id: "investissements", number: "07", kicker: "Investissements",
     title: "Projets d'investissement (AP)", route: "/investissements",
-    source: { name: "Annexes AP du CA + PDF « Investissements Localisés »", dataset: "comptes-administratifs-autorisations-de-programmes-… + PDF cdn.paris.fr", coverage: "Dataset gelé 2018-2022 · PDF IL 2018-2026", href: "https://opendata.paris.fr", hrefLabel: "opendata.paris.fr" },
+    source: { name: "Annexes AP du CA + PDF « Investissements Localisés »", dataset: "comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de + PDF cdn.paris.fr", coverage: "Dataset gelé 2018-2022 · PDF IL 2018-2026", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/", hrefLabel: "opendata.paris.fr" },
     objectif: "Cartographier, quand c'est possible, les projets d'investissement de la Ville avec leur montant et leur statut.",
     pipeline: [
       { label: "Dataset AP", detail: <>2018-2022 via OpenData (~7 000 projets)</> },
@@ -178,7 +178,7 @@ const TOOLS_FR: ToolMethod[] = [
   {
     id: "dette-patrimoine", number: "09", kicker: "Dette & patrimoine",
     title: "Bilan comptable : dette, actif, fonds propres", route: "/dette-patrimoine",
-    source: { name: "Bilan comptable M57 (compte de gestion)", dataset: "compte de gestion au 31/12, publié avec le CA", coverage: "2019-2024", href: "https://opendata.paris.fr", hrefLabel: "opendata.paris.fr" },
+    source: { name: "Bilan comptable M57 (compte de gestion)", dataset: "bilan-comptable", coverage: "2019-2024", href: "https://opendata.paris.fr/explore/dataset/bilan-comptable/", hrefLabel: "opendata.paris.fr" },
     objectif: "Sortir du seul chiffre de la dette et replacer la Ville dans son bilan complet : ce qu'elle doit, ce qu'elle possède, ses fonds propres.",
     pipeline: [
       { label: "Upload", detail: <><code>upload_bilan_comptable.py</code> → <code>BigQuery raw</code></> },
@@ -248,7 +248,7 @@ const TOOLS_EN: ToolMethod[] = [
   {
     id: "budget", number: "04", kicker: "Budget",
     title: "Main budget — voted & executed", route: "/budget",
-    source: { name: "Administrative accounts M57 + draft budgets", dataset: "comptes-administratifs-budgets-principaux-…-m57", coverage: "2019-2024 (executed) · 2019-2026 (voted)", href: "https://opendata.paris.fr", hrefLabel: "opendata.paris.fr" },
+    source: { name: "Administrative accounts M57 + draft budgets", dataset: "comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement", coverage: "2019-2024 (executed) · 2019-2026 (voted)", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/", hrefLabel: "opendata.paris.fr" },
     objectif: "Make it readable at a glance what flows in and out of the City's budget, for a given fiscal year, as a Sankey diagram.",
     pipeline: [
       { label: "Sync", detail: <>7 OpenData datasets → <code>BigQuery raw</code></> },
@@ -294,7 +294,7 @@ const TOOLS_EN: ToolMethod[] = [
   {
     id: "marches-publics", number: "06", kicker: "Public contracts",
     title: "Awarded contracts (public procurement)", route: "/marches-publics",
-    source: { name: "Public contracts of the City of Paris", dataset: "marches-publics-de-la-ville-de-paris", coverage: "2013-2024 · ~17,000 contracts", href: "https://opendata.paris.fr", hrefLabel: "opendata.paris.fr" },
+    source: { name: "Public contracts of the City of Paris", dataset: "liste-des-marches-de-la-collectivite-parisienne", coverage: "2013-2024 · 17,639 contracts", href: "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/", hrefLabel: "opendata.paris.fr" },
     objectif: "See who the City pays for works, supplies and services, what volume, and which contractors concentrate the contracts.",
     pipeline: [
       { label: "Sync", detail: <>Contracts dataset → <code>BigQuery raw</code></> },
@@ -318,7 +318,7 @@ const TOOLS_EN: ToolMethod[] = [
   {
     id: "investissements", number: "07", kicker: "Investments",
     title: "Investment projects (AP)", route: "/investissements",
-    source: { name: "CA AP appendices + 'Localised Investments' PDFs", dataset: "comptes-administratifs-autorisations-de-programmes-… + PDF cdn.paris.fr", coverage: "Dataset frozen 2018-2022 · PDF IL 2018-2026", href: "https://opendata.paris.fr", hrefLabel: "opendata.paris.fr" },
+    source: { name: "CA AP appendices + 'Localised Investments' PDFs", dataset: "comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de + PDF cdn.paris.fr", coverage: "Dataset frozen 2018-2022 · PDF IL 2018-2026", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/", hrefLabel: "opendata.paris.fr" },
     objectif: "Map, where possible, the City's investment projects with their amounts and status.",
     pipeline: [
       { label: "AP dataset", detail: <>2018-2022 via OpenData (~7,000 projects)</> },
@@ -365,7 +365,7 @@ const TOOLS_EN: ToolMethod[] = [
   {
     id: "dette-patrimoine", number: "09", kicker: "Debt & assets",
     title: "Balance sheet: debt, assets, equity", route: "/dette-patrimoine",
-    source: { name: "M57 accounting balance sheet (management account)", dataset: "management account at 31/12, published with the CA", coverage: "2019-2024", href: "https://opendata.paris.fr", hrefLabel: "opendata.paris.fr" },
+    source: { name: "M57 accounting balance sheet (management account)", dataset: "bilan-comptable", coverage: "2019-2024", href: "https://opendata.paris.fr/explore/dataset/bilan-comptable/", hrefLabel: "opendata.paris.fr" },
     objectif: "Go beyond the single debt figure and place the City within its full balance sheet: what it owes, what it owns, its equity.",
     pipeline: [
       { label: "Upload", detail: <><code>upload_bilan_comptable.py</code> → <code>BigQuery raw</code></> },
@@ -488,6 +488,15 @@ export default function MethodeClient() {
 
   const [activeToolId, setActiveToolId] = useState<string>(TOOLS[0]?.id ?? "budget");
   const activeTool = TOOLS.find((t) => t.id === activeToolId) ?? TOOLS[0];
+
+  // Deep-link : /methode?tool=<id>#outils → pré-sélectionne le tab demandé.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const toolParam = params.get("tool");
+    if (toolParam && TOOLS.some((tl) => tl.id === toolParam)) {
+      setActiveToolId(toolParam);
+    }
+  }, [TOOLS]);
 
   const years: number[] = [];
   for (let y = AXIS_START; y <= AXIS_END; y++) years.push(y);

@@ -11,6 +11,7 @@ import TileCard from "@/components/fusion/TileCard";
 import WaitSimulator from "@/components/fusion/WaitSimulator";
 import YearPicker from "@/components/fusion/YearPicker";
 import ExportRow from "@/components/fusion/ExportRow";
+import Tip from "@/components/fusion/Tip";
 import { fmtDec, fmtInt } from "@/lib/fmt";
 import type { LogementSocialData } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
@@ -78,14 +79,14 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
             title={
               <>
                 {t("fx.log.s01.title.before")}
-                <em>{t("fx.log.s01.title.em")}</em>
+                <em><Tip label={t("fx.log.sru.tip")}>{t("fx.log.s01.title.em")}</Tip></em>
                 {t("fx.log.s01.title.after")}
               </>
             }
           />
           <div className="fx-overview">
             <HeroNumber
-              label={fill(t("fx.log.s01.hero_label"), { year: d.year })}
+              label={fill(t("fx.log.s01.hero_label"), { year: d.sruYear })}
               value={fmtDec(d.sruRatio, 1)}
               unit="%"
               delta={{
@@ -99,7 +100,7 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
               cols={2}
               items={[
                 {
-                  label: t("fx.log.s01.kpi.stock"),
+                  label: <Tip label={t("fx.log.s01.kpi.stock.tip")}>{t("fx.log.s01.kpi.stock")}</Tip>,
                   value: fmtInt(d.stockTotal),
                   delta: t("fx.log.s01.kpi.stock_delta"),
                 },
@@ -149,7 +150,6 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
             }))}
             formatValue={(n) => `${fmtInt(n)} ${t("fx.log.s02.unit_long")}`}
             unitLabel={t("fx.log.s02.unit_ops")}
-            hrefFor={() => null}
           />
         </div>
       </section>
@@ -346,7 +346,7 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
               <div className="n">{t("fx.log.src.c2.n")}</div>
               <h3>{t("fx.log.src.c2.h")}</h3>
               <p>{t("fx.log.src.c2.p")}</p>
-              <a href="/methode#logement-social">{t("fx.s.methode_lien")}</a>
+              <a href="/methode?tool=logement-social#outils">{t("fx.s.methode_lien")}</a>
             </div>
             <div>
               <div className="n">{t("fx.log.src.c3.n")}</div>
@@ -365,7 +365,7 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
                 href: `/data/map/arrondissements_stats_${d.year}.json`,
               },
               { label: t("fx.log.src.export.geo"), href: "/data/map/arrondissements.geojson" },
-              { label: t("fx.log.src.export.method"), href: "/methode#logement-social" },
+              { label: t("fx.log.src.export.method"), href: "/methode?tool=logement-social#outils" },
             ]}
           />
         </div>

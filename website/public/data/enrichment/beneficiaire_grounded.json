@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-22T11:19:55",
+  "generated_at": "2026-04-22T11:22:10",
   "model": "gemini-3-flash-preview",
-  "count": 762,
+  "count": 780,
   "items": {
     "ELOGIE SIEMP": {
       "beneficiaire": "ELOGIE-SIEMP",
@@ -17385,6 +17385,312 @@
       "model": "claude-code-websearch",
       "beneficiaire": "ASSOCIATION LA PASSOCIATIONERELLE",
       "beneficiaire_normalise": "ASSOCIATION LA PASSOCIATIONERELLE",
+      "siret": ""
+    },
+    "KYKLOS": {
+      "activite_verifiee": "Les Kyklos — association (créée 2017, rejoint France Horizon 2020) dans Hôpital Saint-Louis Paris 10e ; 1re crèche d'hôpital en France pour enfants de patients/soignants, 20 places.",
+      "perimetre_geographique": "Paris 10e",
+      "sources": [
+        {
+          "url": "https://www.france-horizon.fr/etablissement/multi_accueil_les_kyklos",
+          "title": "france-horizon.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:22:10",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LES KYKLOS",
+      "beneficiaire_normalise": "KYKLOS",
+      "siret": "81029511300015"
+    },
+    "ASSO AU SERV DES AUTISTES ET LA PED": {
+      "activite_verifiee": "ASAP — Association au Service des Autistes et de la Pédagogie (créée 2000, 21 rue Fg St-Antoine Paris 11e) ; IME Les Petites Victoires, CAJM, foyer semaine ; approche ABA.",
+      "perimetre_geographique": "Paris 11e",
+      "sources": [
+        {
+          "url": "https://www.lespetitesvictoires.fr/",
+          "title": "lespetitesvictoires.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:22:10",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSO AU SERV DES AUTISTES ET LA PED",
+      "beneficiaire_normalise": "ASSO AU SERV DES AUTISTES ET LA PED",
+      "siret": ""
+    },
+    "TABLE DE CANA": {
+      "activite_verifiee": "Association (créée 1985, siège Paris depuis 2015) ; réseau national de 10 traiteurs d'insertion ; 2/3 des salariés en parcours d'insertion, CDI 2 ans max.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://latabledecana.com/",
+          "title": "latabledecana.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:22:10",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LA TABLE DE CANA",
+      "beneficiaire_normalise": "TABLE DE CANA",
+      "siret": ""
+    },
+    "TABLE DE CANA PARIS NORDOUEST": {
+      "activite_verifiee": "Association (créée 1985, siège Paris depuis 2015) ; réseau national de 10 traiteurs d'insertion ; 2/3 des salariés en parcours d'insertion, CDI 2 ans max.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://latabledecana.com/",
+          "title": "latabledecana.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:22:10",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LA TABLE DE CANA PARIS NORDOUEST",
+      "beneficiaire_normalise": "TABLE DE CANA PARIS NORDOUEST",
+      "siret": ""
+    },
+    "MAISON DE LA CONVERSATION": {
+      "activite_verifiee": "Tiers-lieu associatif (ouvert 2021, 10 rue Maurice Grimaud Paris 18e Porte de Montmartre) ; favorise la conversation inclusive, workshops, restaurant, programmation culturelle.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://maisondelaconversation.org/",
+          "title": "maisondelaconversation.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:22:10",
+      "model": "claude-code-websearch",
+      "beneficiaire": "MAISON DE LA CONVERSATION",
+      "beneficiaire_normalise": "MAISON DE LA CONVERSATION",
+      "siret": "89203455400014"
+    },
+    "LEVALLOIS PARIS SAINTCLOUD": {
+      "activite_verifiee": "Levallois Paris Saint-Cloud — club féminin de volley-ball (fusion 2023, joue Palais des Sports Marcel-Cerdan Levallois) ; champion de France 2024 et 2025 en Ligue A.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Levallois_Paris_Saint-Cloud",
+          "title": "fr.wikipedia.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:22:10",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LEVALLOIS PARIS SAINTCLOUD",
+      "beneficiaire_normalise": "LEVALLOIS PARIS SAINTCLOUD",
+      "siret": ""
+    },
+    "COLLEGE HECTOR BERLIOZ": {
+      "activite_verifiee": "Collège Hector Berlioz — collège public (ouvert 1974, 17 rue Georgette Agutte Paris 18e) ; 345 élèves sur 2 sites (Berlioz 1 général + Berlioz 2 SEGPA).",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://pia.ac-paris.fr/serail/jcms/s1_2542358/fr/accueil",
+          "title": "pia.ac-paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:22:10",
+      "model": "claude-code-websearch",
+      "beneficiaire": "COLLEGE HECTOR BERLIOZ",
+      "beneficiaire_normalise": "COLLEGE HECTOR BERLIOZ",
+      "siret": ""
+    },
+    "SYNDICAT TRANSPORT ILE DE FRANCE": {
+      "activite_verifiee": "STIF — Syndicat des Transports d'Île-de-France (renommé Île-de-France Mobilités en juin 2017) ; autorité organisatrice des transports en IDF.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://www.iledefrance-mobilites.fr/",
+          "title": "iledefrance-mobilites.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:22:10",
+      "model": "claude-code-websearch",
+      "beneficiaire": "SYNDICAT TRANSPORT ILE DE FRANCE",
+      "beneficiaire_normalise": "SYNDICAT TRANSPORT ILE DE FRANCE",
+      "siret": ""
+    },
+    "CLUB DES FRANCAIS VOLANTS": {
+      "activite_verifiee": "Club des Français Volants — club de hockey sur glace et patinage (fondé 1933 par Jacques Lacarrière) ; basé à l'Accor Arena Bercy ; 300 membres, 3x champions de France.",
+      "perimetre_geographique": "Paris 12e",
+      "sources": [
+        {
+          "url": "https://francais-volants.org/",
+          "title": "francais-volants.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:22:10",
+      "model": "claude-code-websearch",
+      "beneficiaire": "CLUB DES FRANCAIS VOLANTS",
+      "beneficiaire_normalise": "CLUB DES FRANCAIS VOLANTS",
+      "siret": ""
+    },
+    "OBSERVAT LOYERS AGGLO PARISIENNE": {
+      "activite_verifiee": "OLAP — Observatoire des Loyers de l'Agglomération Parisienne (association loi 1901, agréée 1993) ; statistiques officielles sur les loyers du parc locatif privé parisien.",
+      "perimetre_geographique": "Paris 15e",
+      "sources": [
+        {
+          "url": "https://www.observatoire-des-loyers.fr/",
+          "title": "observatoire-des-loyers.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:22:10",
+      "model": "claude-code-websearch",
+      "beneficiaire": "OBSERVAT LOYERS AGGLO PARISIENNE",
+      "beneficiaire_normalise": "OBSERVAT LOYERS AGGLO PARISIENNE",
+      "siret": ""
+    },
+    "FONDATION L ELAN RETROUVE": {
+      "activite_verifiee": "Fondation l'Élan Retrouvé (créée 1948 par Paul Sivadon et Suzanne Baumé) ; +9 400 personnes accompagnées (troubles psy, addictions, autisme) ; 1 100 salariés, 54 sites en IDF.",
+      "perimetre_geographique": "Paris 9e",
+      "sources": [
+        {
+          "url": "https://www.elan-retrouve.org/",
+          "title": "elan-retrouve.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:22:10",
+      "model": "claude-code-websearch",
+      "beneficiaire": "FONDATION L ELAN RETROUVE",
+      "beneficiaire_normalise": "FONDATION L ELAN RETROUVE",
+      "siret": ""
+    },
+    "BANQUE POSTALE": {
+      "activite_verifiee": "La Banque Postale — banque française publique (groupe La Poste) ; fondation mécénat axée éducation, insertion jeunesse et santé mentale via Fondation Groupe LBP AM.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.labanquepostale.com/responsabilite-societale-des-entreprises/nos-engagements/solidarite-et-mecenat.html",
+          "title": "labanquepostale.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:22:10",
+      "model": "claude-code-websearch",
+      "beneficiaire": "LA BANQUE POSTALE",
+      "beneficiaire_normalise": "BANQUE POSTALE",
+      "siret": ""
+    },
+    "ARTHUR ET MARINE": {
+      "activite_verifiee": "Association Arthur et Marine — crèches collectives associatives à Paris 13e (6 villa Nieuport) et 18e (3 bis rue Christiani), ~20 places/établissement.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://www.paris.fr/lieux/creche-associative-arthur-et-marine-christiani-3824",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:22:10",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ARTHUR ET MARINE",
+      "beneficiaire_normalise": "ARTHUR ET MARINE",
+      "siret": "47772890100018"
+    },
+    "ASSOCIATION ACIDULES ET A CROQUER": {
+      "activite_verifiee": "Association (créée 1982) — crèche parentale au 70 bis rue Championnet Paris 18e ; accueille enfants 6 mois-3 ans ; équipe de 6 pros petite enfance et parents partenaires.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://acidulesetacroquer.org/",
+          "title": "acidulesetacroquer.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:22:10",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ASSOCIATION ACIDULES ET A CROQUER",
+      "beneficiaire_normalise": "ASSOCIATION ACIDULES ET A CROQUER",
+      "siret": ""
+    },
+    "ACIDULES ET A CROQUER": {
+      "activite_verifiee": "Association (créée 1982) — crèche parentale au 70 bis rue Championnet Paris 18e ; accueille enfants 6 mois-3 ans ; équipe de 6 pros petite enfance et parents partenaires.",
+      "perimetre_geographique": "Paris 18e",
+      "sources": [
+        {
+          "url": "https://acidulesetacroquer.org/",
+          "title": "acidulesetacroquer.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:22:10",
+      "model": "claude-code-websearch",
+      "beneficiaire": "ACIDULES ET A CROQUER",
+      "beneficiaire_normalise": "ACIDULES ET A CROQUER",
+      "siret": "32733670700036"
+    },
+    "DROITS D URGENCE": {
+      "activite_verifiee": "Association loi 1901 (créée 1995, Paris 10e rue du Buisson St-Louis) ; 12 000 permanences juridiques/an auprès de 85 000 personnes dans 92 lieux ; gère PAD du 18e et 20e.",
+      "perimetre_geographique": "Paris 10e",
+      "sources": [
+        {
+          "url": "https://www.droitsdurgence.org/",
+          "title": "droitsdurgence.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:22:10",
+      "model": "claude-code-websearch",
+      "beneficiaire": "DROITS D'URGENCE",
+      "beneficiaire_normalise": "DROITS D URGENCE",
+      "siret": "45101859200027"
+    },
+    "INSTITUT NATIONAL DE LA SANTE": {
+      "activite_verifiee": "Inserm — Institut National de la Santé et de la Recherche Médicale (EPST, créé 1964) ; 339 unités de recherche, ~13 000 scientifiques, budget 1,2 Md€ ; 2 Nobel médecine.",
+      "perimetre_geographique": "national",
+      "sources": [
+        {
+          "url": "https://www.inserm.fr/en/home/",
+          "title": "inserm.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:22:10",
+      "model": "claude-code-websearch",
+      "beneficiaire": "INSTITUT NATIONAL DE LA SANTE",
+      "beneficiaire_normalise": "INSTITUT NATIONAL DE LA SANTE",
+      "siret": ""
+    },
+    "DEVELOPP DE LA DANSE A PARIS": {
+      "activite_verifiee": "ADDP — Association pour le Développement de la Danse à Paris (créée 2001) ; festival Faits d'hiver + micadanses (4e, 5 studios de création et diffusion).",
+      "perimetre_geographique": "Paris 4e",
+      "sources": [
+        {
+          "url": "https://micadanses.com/",
+          "title": "micadanses.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "claude_web",
+      "generated_at": "2026-04-22T11:22:10",
+      "model": "claude-code-websearch",
+      "beneficiaire": "DEVELOPP DE LA DANSE A PARIS",
+      "beneficiaire_normalise": "DEVELOPP DE LA DANSE A PARIS",
       "siret": ""
     }
   }

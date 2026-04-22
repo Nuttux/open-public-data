@@ -158,7 +158,7 @@ export default function InstrumentDetteFiche({ instrument, year, bondIssuances, 
           <p className="muted">{t("fx.fiche.instr.limites_desc")}</p>
 
           <div className="fx-fiche-foot-cta">
-            <a className="fx-btn" href="/methode#dette-patrimoine">{t("fx.fiche.instr.methode")}</a>
+            <a className="fx-btn" href="/methode?tool=dette-patrimoine#outils">{t("fx.fiche.instr.methode")}</a>
             <a className="fx-btn" href={`/data/patrimoine_structure_${year}.json`} target="_blank" rel="noopener noreferrer">{t("fx.fiche.instr.json")}</a>
           </div>
         </div>

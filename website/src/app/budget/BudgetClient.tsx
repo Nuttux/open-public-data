@@ -493,7 +493,13 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
                   ? fill("fx.bud.s06.c1.p.voted", { prev: d.year - 1, next: d.year + 1 })
                   : t("fx.bud.s06.c1.p.exec")}
               </p>
-              <a href="https://opendata.paris.fr" target="_blank" rel="noopener noreferrer">
+              <a
+                href={isVoted
+                  ? "https://opendata.paris.fr/explore/dataset/budgets-votes-principaux-a-partir-de-2019-m57-ville-departement/"
+                  : "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {t("fx.bud.s06.c1.link")}
               </a>
             </div>
@@ -506,7 +512,7 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
                 {t("fx.bud.s06.c2.h.suffix")}
               </h3>
               <p>{t("fx.bud.s06.c2.p")}</p>
-              <a href="#">{t("fx.bud.s06.c2.link")}</a>
+              <a href="/methode#couverture">{t("fx.bud.s06.c2.link")}</a>
             </div>
             <div>
               <div className="n">{t("fx.bud.s06.c3.n")}</div>
@@ -531,7 +537,7 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
                 download: `budget-paris-${d.year}.json`,
               },
               { label: t("fx.bud.s06.export.api"), href: undefined },
-              { label: t("fx.bud.s06.export.method"), href: "/methode#budget" },
+              { label: t("fx.bud.s06.export.method"), href: "/methode?tool=budget#outils" },
             ]}
           />
         </div>
