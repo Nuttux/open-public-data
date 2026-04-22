@@ -28615,7 +28615,522 @@
       ],
       "confiance": 0.9,
       "source_type": "grounded_search"
+    },
+    "HALAYE": {
+      "beneficiaire": "Halaye",
+      "beneficiaire_normalise": "HALAYE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (18e, 15 passage Ramey / 9 rue Eugène Fournière) créée en 2015 : inclusion numérique — ateliers individuels et collectifs pour publics vulnérables en quartiers prioritaires (ordinateur, smartphone, services en ligne). 6-9 salariés. SIRET 81415159300021.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://halaye.com",
+          "title": "halaye.com"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "ACCES CULTURE": {
+      "beneficiaire": "Accès Culture",
+      "beneficiaire_normalise": "ACCES CULTURE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association créée en 1993 par Frédéric Le Du : accessibilité des théâtres et opéras pour publics sourds/malentendants (LSF, surtitres) et aveugles/malvoyants (audiodescription). Partenaire de 150+ salles en France — maquettes tactiles, médiation culturelle. SIRET 39902396900021.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://accesculture.org",
+          "title": "accesculture.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ACADEMIE DE PARIS": {
+      "beneficiaire": "Académie de Paris",
+      "beneficiaire_normalise": "ACADEMIE DE PARIS",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Services académiques de l'Éducation nationale pour Paris (rectorat) : pilotage des écoles, collèges et lycées parisiens.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://ac-paris.fr",
+          "title": "ac-paris.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "OASIS 18": {
+      "beneficiaire": "Oasis 18",
+      "beneficiaire_normalise": "OASIS 18",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (18e, 12 rue Camille Flammarion) créée en 1998 : soutien éducatif, activités culturelles et loisirs, écoute et médiation pour jeunes et familles multiculturelles. ~40 familles, ~100 enfants/jeunes. 3 salariés. SIRET 42304179700030.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://net1901.org",
+          "title": "net1901.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "FOYER DE CHAILLOT GALLIERA": {
+      "beneficiaire": "Foyer de Chaillot-Galliera",
+      "beneficiaire_normalise": "FOYER DE CHAILLOT GALLIERA",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association loi 1901 catholique (8e — à l'initiative de la paroisse Saint-Pierre de Chaillot, héritière d'un legs de la duchesse de Galliera en 1877) : FJT pour jeunes femmes 18-25 ans (hébergement + restauration + accompagnement pro). SIRET 78485727800013.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://foyer-galliera.com",
+          "title": "foyer-galliera.com"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "TRACES RESEAU CLINIQUE INTERNATIO": {
+      "beneficiaire": "TRACES — Réseau Clinique International",
+      "beneficiaire_normalise": "TRACES RESEAU CLINIQUE INTERNATIO",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (10e, 23 rue Beaurepaire) fondée en janvier 2006 par 3 psychanalystes (Diana Kolnikoff, Juan Boggino, Béatrice Patsalides-Hofmann) : prise en charge clinique des traumatismes liés aux conflits armés, à la torture et aux persécutions politiques. Réseau international.",
+      "perimetre_geographique": "International",
+      "sources": [
+        {
+          "url": "https://traces-reseaucliniqueinternational.org",
+          "title": "traces-reseaucliniqueinternational.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "TALACATAK": {
+      "beneficiaire": "Talacatak",
+      "beneficiaire_normalise": "TALACATAK",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association ESS (20e, 13 rue Boyer) : ateliers de fabrication d'instruments de musique à partir de matériaux récupérés, sensibilisation au développement durable, animations intergénérationnelles. Agrément JEP 75 JEP 11-06. SIRET 48053404900030.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://talacatak.org",
+          "title": "talacatak.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "FEDERATION ASS SOLIDARITE AVEC TOU": {
+      "beneficiaire": "FAS — Fédération des Acteurs de la Solidarité (ex-FNARS)",
+      "beneficiaire_normalise": "FEDERATION ASS SOLIDARITE AVEC TOU",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Fédération (10e, 76 rue du Faubourg Saint-Denis) créée en 1956 : réseau de 900+ associations / 2800+ structures de lutte contre la pauvreté. ~800 CHRS, 900 ACI, 75 000 places d'hébergement, 30 000 emplois en insertion, 12 000 places CADA.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://federationsolidarite.org",
+          "title": "federationsolidarite.org"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "CLICHES URBAINS": {
+      "beneficiaire": "Clichés Urbains",
+      "beneficiaire_normalise": "CLICHES URBAINS",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (19e, quartier Flandre) fondée en 2007 par la photographe Marich Devise (après expérience au Brésil, Montreuil) : ateliers photo gratuits pour enfants et ados des quartiers populaires, actions participatives. SIRET 50793413100032.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://cliches-urbains.org",
+          "title": "cliches-urbains.org"
+        },
+        {
+          "url": "https://paris.fr",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "BAGAGERIE COEUR DU CINQ": {
+      "beneficiaire": "La Bagagerie Cœur du Cinq",
+      "beneficiaire_normalise": "BAGAGERIE COEUR DU CINQ",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (5e, 12 rue Daubenton) créée en 2016 : consigne sécurisée et lieu de rencontre pour personnes sans abri — 54 casiers, accès matin 7-9h et soir 19-21h. Partenariats Aux Captifs la Libération, Aurore, Montparnasse Rencontres. SIRET 81403315500015.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://lbcc05.fr",
+          "title": "lbcc05.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "LABEL EMMAUS": {
+      "beneficiaire": "Label Emmaüs",
+      "beneficiaire_normalise": "LABEL EMMAUS",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "SCIC-SA créée en 2016 : marketplace solidaire du mouvement Emmaüs et de l'ESS — 80 boutiques, 700 000 références (brocante, livres, mode, high-tech reconditionné). 100% des bénéfices réinvestis, 1/3 des salariés en insertion. Levée de 1,5 M€.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://label-emmaus.co",
+          "title": "label-emmaus.co"
+        },
+        {
+          "url": "https://emmaus-international.org",
+          "title": "emmaus-international.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "FRANCAIS POUR L INSERTION SOCIALE": {
+      "beneficiaire": "Français pour l'Insertion Sociale et Professionnelle en Europe",
+      "beneficiaire_normalise": "FRANCAIS POUR L INSERTION SOCIALE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Organisation privée à but non lucratif, indépendante : apprentissage du FLE et accompagnement pour l'insertion sociale et pro en Europe.",
+      "perimetre_geographique": "Europe",
+      "sources": [
+        {
+          "url": "https://reseau-alpha.org",
+          "title": "reseau-alpha.org"
+        }
+      ],
+      "confiance": 0.7,
+      "source_type": "grounded_search"
+    },
+    "POP": {
+      "beneficiaire": "La Pop",
+      "beneficiaire_normalise": "POP",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association loi 1901 (19e, 5 rue de Rouen) créée le 21 juin 1989 — spectacle vivant (code 9001Z). Présidée par Catherine Ruggeri. SIRET 32566565100049.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://lapop.fr",
+          "title": "lapop.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "AVENIR SANTE FRANCE": {
+      "beneficiaire": "Avenir Santé",
+      "beneficiaire_normalise": "AVENIR SANTE FRANCE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association créée en 1999, couvrant 7 régions : prévention santé des 12-25 ans (alcool, cannabis, tabac, accidents, sexualité, risques auditifs) — interventions dans établissements scolaires, milieux festifs, espace public, numérique (montetasoiree.com, Auvernight). Particularité : bénévoles eux-mêmes jeunes formés.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://avenir-sante.com",
+          "title": "avenir-sante.com"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ARCHIVES OF WOMEN ARTISTS": {
+      "beneficiaire": "AWARE — Archives of Women Artists, Research and Exhibitions",
+      "beneficiaire_normalise": "ARCHIVES OF WOMEN ARTISTS",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association co-fondée en 2014 par Camille Morineau : valorisation et recherche sur les artistes femmes du XVIIe au XXIe siècle — base de données trilingue FR/EN/JP. Prix AWARE (mid-career / career) en partenariat avec le Ministère de la Culture. Intégrée au Centre Pompidou depuis 2026 (ex-Villa Vassilieff 15e, 2021-2025).",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://awarewomenartists.com",
+          "title": "awarewomenartists.com"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION KOLONE": {
+      "beneficiaire": "Kolone",
+      "beneficiaire_normalise": "ASSOCIATION KOLONE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (19e, 7 bd d'Algérie) fondée en 2011 : cours de FLE pour personnes exilées en précarité, accompagnement social, insertion pro, reprise d'études supérieures — groupes de 15 apprenants max, lundi-vendredi. SIRET 53521602200033.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://kolone.org",
+          "title": "kolone.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "UNION REG HABITAT JEUNES IDFRANCE": {
+      "beneficiaire": "URHAJ Île-de-France",
+      "beneficiaire_normalise": "UNION REG HABITAT JEUNES IDFRANCE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Fédération (11e, 166 rue de Charonne) : ~40 adhérents, 128 résidences FJT en IDF, 17 000+ jeunes 16-32 ans accueillis/an. Représentation politique jeunesse/habitat.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://habitatjeunes-idf.fr",
+          "title": "habitatjeunes-idf.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "MONDIAL BOISSONS": {
+      "beneficiaire": "Mondial Boissons",
+      "beneficiaire_normalise": "MONDIAL BOISSONS",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Distributeur de boissons — informations publiques limitées quant à la dimension associative/sociale.",
+      "perimetre_geographique": "France",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "grounded_search"
+    },
+    "FEDERATION FRANCAISE DE TRIATHLON": {
+      "beneficiaire": "FFTRI — Fédération Française de Triathlon",
+      "beneficiaire_normalise": "FEDERATION FRANCAISE DE TRIATHLON",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Fédération sportive fondée le 21 octobre 1989 : triathlon, duathlon, aquathlon, bike & run, raid. 200 000 pratiquants, 70 000 licenciés, 1000+ clubs, 17 ligues. Affiliée CNOSF, CPSF, ETU, ITU.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://fftri.com",
+          "title": "fftri.com"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "COLLECTIF FEMINISTE CONTRE LE VIOL": {
+      "beneficiaire": "CFCV — Collectif Féministe Contre le Viol",
+      "beneficiaire_normalise": "COLLECTIF FEMINISTE CONTRE LE VIOL",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (13e, 9 villa d'Este) fondée en 1985 : soutien des victimes de viol et agressions sexuelles via le 0 800 05 95 95 (« Viols Femmes Informations », lun-ven 10-19h). Groupes de parole, formation des pros.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://cfcv.asso.fr",
+          "title": "cfcv.asso.fr"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "CINELOUXOR": {
+      "beneficiaire": "Les Amis du Louxor / Paris-Louxor",
+      "beneficiaire_normalise": "CINELOUXOR",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Associations (10e, cinéma Le Louxor bd Magenta) : Les Amis du Louxor (2009) et Paris-Louxor (2010) — soutien, promotion et médiation autour du cinéma emblématique Art déco restauré, propriété de la Ville de Paris.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://lesamisdulouxor.fr",
+          "title": "lesamisdulouxor.fr"
+        },
+        {
+          "url": "https://cinemalouxor.fr",
+          "title": "cinemalouxor.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "CENTRE FRANCAIS PROTECTION ENFANCE": {
+      "beneficiaire": "CFPE / France Parrainages",
+      "beneficiaire_normalise": "CENTRE FRANCAIS PROTECTION ENFANCE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association créée en 1947 (siège Le Kremlin-Bicêtre ; ét. 12e, 87 bd Diderot + 19 rue Véga) : protection de l'enfance en France et à l'international — ~13 000 enfants et familles accompagnés, parrainage, accueil.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://france-parrainages.org",
+          "title": "france-parrainages.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "CCI REGION PARIS IDF": {
+      "beneficiaire": "CCI Paris Île-de-France",
+      "beneficiaire_normalise": "CCI REGION PARIS IDF",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Chambre de commerce et d'industrie de région (siège depuis 2026 au 11 rue Léon-Jouhaux, 10e) représentant ~915 000 entreprises dans les 8 départements IDF. Voir entrée complète CCI REGION PARIS ILE DE FRANCE.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://cci-paris-idf.fr",
+          "title": "cci-paris-idf.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ASSOC OEUVRES DES OTAGES": {
+      "beneficiaire": "Association des Œuvres des Otages",
+      "beneficiaire_normalise": "ASSOC OEUVRES DES OTAGES",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association dédiée au soutien des otages et à la mémoire. Informations publiques limitées — à vérifier auprès des organisations militaires/mémoire.",
+      "perimetre_geographique": "France",
+      "sources": [],
+      "confiance": 0.3,
+      "source_type": "grounded_search"
+    },
+    "LEARNEO ACADEMIE": {
+      "beneficiaire": "Learneo Académie",
+      "beneficiaire_normalise": "LEARNEO ACADEMIE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Entreprise sociale et solidaire labellisée ESUS (18e, 130 rue de Clignancourt), filiale de Learneo : formations métiers (cybersécurité, réseaux, automatisation) de ~3 mois pour demandeurs d'emploi — dispositifs ParisCode, POE. Cisco Networking Academy, Qualiopi.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://learneo.fr",
+          "title": "learneo.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "COOP ACT EMP COOP LIAIS ARTIST": {
+      "beneficiaire": "CAE Clara — Coopérative de Liaisons des Activités et des Ressources Artistiques",
+      "beneficiaire_normalise": "COOP ACT EMP COOP LIAIS ARTIST",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "SCOP-SA créée en 2006 : coopérative d'activités et d'emploi pour artistes et pros de la culture — 900 artistes accompagnés, 40 M€ de richesse collective en 20 ans. A cessé son accompagnement d'artistes-entrepreneurs (liquidation / fin d'activité).",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://cae-clara.fr",
+          "title": "cae-clara.fr"
+        },
+        {
+          "url": "https://avise.org",
+          "title": "avise.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "ASS COMMUNICAT ESPACE REINSERT ALCO": {
+      "beneficiaire": "ACERMA — Association Communication Espace Réinsertion Malades Addictifs (établissement secondaire)",
+      "beneficiaire_normalise": "ASS COMMUNICAT ESPACE REINSERT ALCO",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Voir entrée complète ACERMA (22 quai de la Loire, 19e) : espace culturel d'utilité sociale — ateliers pour personnes souffrant d'addictions. Partenariat AP-HP.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://acerma.org",
+          "title": "acerma.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "PARIS DES FAUBOURGS": {
+      "beneficiaire": "Le Pari's des Faubourgs",
+      "beneficiaire_normalise": "PARIS DES FAUBOURGS",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Centre social et culturel (10e, 107 bis rue du Faubourg Saint-Denis) créé en 2000 : 7 salariés, 60+ bénévoles, ~400 adhérents (familles, jeunes, seniors). Ateliers FLE, soutien scolaire, animations culturelles.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://lepfb.net",
+          "title": "lepfb.net"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "DIFE KAKO": {
+      "beneficiaire": "Difé Kako — Compagnie Chantal Loïal",
+      "beneficiaire_normalise": "DIFE KAKO",
+      "siret": "",
+      "generated_at": "2026-04-23T00:34:55",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Compagnie de danse (13e, 54 rue Vergniaud) créée en 1995 par Chantal Loïal (chorégraphe née 1969 à Pointe-à-Pitre, diplômée CND Pantin, Légion d'honneur 2015) : danses afro-caribéennes et contemporaines. 30 ans en 2025. SIRET 40266469200041.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://difekako.fr",
+          "title": "difekako.fr"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
     }
   },
-  "total": 1629
+  "total": 1658
 }
