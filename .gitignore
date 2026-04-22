@@ -60,3 +60,11 @@ pipeline/output/
 # Scraped PDF deliberation cache (rebuilt by scrape_deliberations.py)
 pipeline/cache/delibs/pdf/
 pipeline/cache/delibs/html/
+
+# Chat conversations (file-based store)
+data/conversations/
+website/data/conversations/
+
+# Python bytecode (pipeline scripts)
+__pycache__/
+*.pyc
