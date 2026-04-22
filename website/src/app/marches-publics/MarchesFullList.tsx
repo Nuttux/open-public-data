@@ -3,6 +3,8 @@
 import { useMemo, useState } from "react";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
+import { useTrack } from "@/lib/analyticsContext";
+import { useDebouncedTrack, hashQuery, queryShape } from "@/lib/analytics-helpers";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
@@ -44,6 +46,8 @@ export default function MarchesFullList({ items }: { items: Item[] }) {
   const [q, setQ] = useState("");
   const [cat, setCat] = useState("");
   const [shown, setShown] = useState(PAGE_SIZE);
+  const track = useTrack();
+  const trackDebounced = useDebouncedTrack(700);
 
   const categories = useMemo(() => {
     const s = new Set<string>();
@@ -74,9 +78,19 @@ export default function MarchesFullList({ items }: { items: Item[] }) {
             type="search"
             placeholder={t("fx.mfl.search_placeholder")}
             value={q}
-            onChange={(e) => {
-              setQ(e.target.value);
+            onChange={async (e) => {
+              const next = e.target.value;
+              setQ(next);
               setShown(PAGE_SIZE);
+              if (next.trim().length >= 2) {
+                const qHash = await hashQuery(next);
+                trackDebounced("search_submit", {
+                  page: "marches-publics",
+                  source: "full_list",
+                  q_hash: qHash,
+                  ...queryShape(next),
+                });
+              }
             }}
           />
         </div>
@@ -87,6 +101,12 @@ export default function MarchesFullList({ items }: { items: Item[] }) {
             onChange={(e) => {
               setCat(e.target.value);
               setShown(PAGE_SIZE);
+              track("filter_change", {
+                page: "marches-publics",
+                source: "full_list",
+                field: "category",
+                value: e.target.value || "all",
+              });
             }}
           >
             <option value="">{t("fx.mfl.all")}</option>
@@ -142,7 +162,17 @@ export default function MarchesFullList({ items }: { items: Item[] }) {
           <button
             type="button"
             className="fx-btn"
-            onClick={() => setShown(shown + PAGE_SIZE)}
+            onClick={() => {
+              const next = shown + PAGE_SIZE;
+              track("load_more", {
+                page: "marches-publics",
+                source: "full_list",
+                visible_before: shown,
+                visible_after: next,
+                total: filtered.length,
+              });
+              setShown(next);
+            }}
           >
             {fill(t("fx.mfl.show_more"), { n: Math.min(PAGE_SIZE, filtered.length - shown) })}
           </button>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useTrack } from "@/lib/analyticsContext";
 
 export type TOCItem = {
   id: string;
@@ -20,6 +22,8 @@ type Props = {
  */
 export default function PageTOC({ items, scrollOffset = 96 }: Props) {
   const [activeId, setActiveId] = useState<string | null>(items[0]?.id ?? null);
+  const track = useTrack();
+  const pathname = usePathname();
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -47,6 +51,7 @@ export default function PageTOC({ items, scrollOffset = 96 }: Props) {
     e.preventDefault();
     const el = document.getElementById(id);
     if (!el) return;
+    track("toc_click", { section_id: id, page: pathname });
     const y = el.getBoundingClientRect().top + window.scrollY - scrollOffset;
     window.scrollTo({ top: y, behavior: "smooth" });
     setActiveId(id);

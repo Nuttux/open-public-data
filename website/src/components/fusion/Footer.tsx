@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useT } from "@/lib/localeContext";
+import { useTrack } from "@/lib/analyticsContext";
 
 type Col = {
   headingKey: string;
@@ -46,6 +47,7 @@ const COLUMNS: Col[] = [
 
 export default function Footer() {
   const t = useT();
+  const track = useTrack();
   const year = new Date().getFullYear();
   return (
     <footer className="fx-foot">
@@ -74,7 +76,19 @@ export default function Footer() {
                   if (l.external) {
                     return (
                       <li key={i}>
-                        <a href={l.href} target="_blank" rel="noopener noreferrer">
+                        <a
+                          href={l.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() =>
+                            track("external_link_click", {
+                              url: l.href,
+                              domain: new URL(l.href).hostname,
+                              label: l.labelKey,
+                              source_page: "footer",
+                            })
+                          }
+                        >
                           {t(l.labelKey)}
                         </a>
                       </li>
@@ -82,7 +96,18 @@ export default function Footer() {
                   }
                   return (
                     <li key={i}>
-                      <Link href={l.href}>{t(l.labelKey)}</Link>
+                      <Link
+                        href={l.href}
+                        onClick={() =>
+                          track("nav_click", {
+                            href: l.href,
+                            label: l.labelKey,
+                            surface: "footer",
+                          })
+                        }
+                      >
+                        {t(l.labelKey)}
+                      </Link>
                     </li>
                   );
                 })}

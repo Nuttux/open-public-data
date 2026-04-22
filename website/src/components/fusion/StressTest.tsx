@@ -4,6 +4,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { fmtDec } from "@/lib/fmt";
 import { useT } from "@/lib/localeContext";
+import { useTrack } from "@/lib/analyticsContext";
+import { useDebouncedTrack } from "@/lib/analytics-helpers";
 
 type Props = {
   /** Dette financière actuelle en €. */
@@ -147,6 +149,8 @@ export default function StressTest({ dette, capaciteBaseline, tauxBaseline, year
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const track = useTrack();
+  const trackDebounced = useDebouncedTrack(500);
 
   // Épargne brute déduite des valeurs actuelles.
   const epargneBaseline = dette / capaciteBaseline;
@@ -252,7 +256,16 @@ export default function StressTest({ dette, capaciteBaseline, tauxBaseline, year
             max={10}
             step={0.1}
             value={taux}
-            onChange={setTaux}
+            onChange={(v) => {
+              setTaux(v);
+              trackDebounced("stress_test_run", {
+                field: "taux",
+                value: v,
+                taux: v,
+                recettes_delta: recettesDelta,
+                invest_mult: investMult,
+              });
+            }}
             format={(v) => `${fmtDec(v, 1)} %`}
             baseline={tauxBaseline}
             baselineFormat={(v) => `${fmtDec(v, 1)} %`}
@@ -264,7 +277,16 @@ export default function StressTest({ dette, capaciteBaseline, tauxBaseline, year
             max={10}
             step={1}
             value={recettesDelta}
-            onChange={setRecettesDelta}
+            onChange={(v) => {
+              setRecettesDelta(v);
+              trackDebounced("stress_test_run", {
+                field: "recettes_delta",
+                value: v,
+                taux,
+                recettes_delta: v,
+                invest_mult: investMult,
+              });
+            }}
             format={(v) => `${v >= 0 ? "+" : ""}${v} %`}
             baseline={0}
             baselineFormat={() => "0 %"}
@@ -276,7 +298,16 @@ export default function StressTest({ dette, capaciteBaseline, tauxBaseline, year
             max={2.5}
             step={0.05}
             value={investMult}
-            onChange={setInvestMult}
+            onChange={(v) => {
+              setInvestMult(v);
+              trackDebounced("stress_test_run", {
+                field: "invest_mult",
+                value: v,
+                taux,
+                recettes_delta: recettesDelta,
+                invest_mult: v,
+              });
+            }}
             format={(v) => `× ${fmtDec(v, 2)}`}
             baseline={1}
             baselineFormat={() => "× 1,00"}
@@ -284,7 +315,10 @@ export default function StressTest({ dette, capaciteBaseline, tauxBaseline, year
           <button
             type="button"
             className="fx-stress-reset"
-            onClick={resetBaseline}
+            onClick={() => {
+              track("filter_reset", { page: "dette-patrimoine", source: "stress_test" });
+              resetBaseline();
+            }}
           >
             {t("fx.det.stress.reset")}
           </button>
@@ -374,7 +408,16 @@ export default function StressTest({ dette, capaciteBaseline, tauxBaseline, year
                 key={p.id}
                 type="button"
                 className="fx-stress-preset"
-                onClick={() => applyPreset(p)}
+                onClick={() => {
+                  track("stress_test_run", {
+                    field: "preset",
+                    preset_id: p.id,
+                    taux_delta_pp: p.taux_delta_pp,
+                    recettes_delta_pct: p.recettes_delta_pct,
+                    invest_mult: p.invest_mult,
+                  });
+                  applyPreset(p);
+                }}
               >
                 <div className="l">{t(p.labelKey)}</div>
                 <div className="d muted">{t(p.descKey)}</div>

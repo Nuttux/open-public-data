@@ -7,6 +7,7 @@ import "leaflet.markercluster/dist/MarkerCluster.css";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 import { useT, useLocale } from "@/lib/localeContext";
 import { TYPO_BUCKETS, type TypoBucket } from "@/lib/projet-utils";
+import { useTrack } from "@/lib/analyticsContext";
 import type { Map as LMap, MarkerClusterGroup } from "leaflet";
 
 type Point = {
@@ -71,6 +72,7 @@ export default function ProjectMap({ points, year, height = 620 }: Props) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const track = useTrack();
 
   const fmtEur = (n: number) => {
     if (n >= 1e6) return new Intl.NumberFormat(locStr, { maximumFractionDigits: 1 }).format(n / 1e6) + " " + t("fx.s.m_eur");
@@ -290,6 +292,15 @@ export default function ProjectMap({ points, year, height = 620 }: Props) {
           { direction: "top", offset: [0, -4] },
         );
         marker.on("click", () => {
+          track("map_marker_click", {
+            page: "investissements",
+            entity_id: p.id,
+            entity_type: "projet",
+            typo: p.typo,
+            amount: p.amount,
+            arr: p.arr,
+            is_jo: p.isJO,
+          });
           router.push(`/investissements/projet/${encodeURIComponent(p.id)}`, { scroll: false });
         });
         cluster.addLayer(marker);
@@ -302,6 +313,7 @@ export default function ProjectMap({ points, year, height = 620 }: Props) {
   const applyPreset = (key: string) => {
     const p = presets.find((pp) => pp.key === key);
     if (!p) return;
+    track("filter_change", { page: "investissements", field: "map_preset", value: key });
     const applied = p.apply(makeInitialState());
     setState({ ...applied, preset: key });
   };
@@ -309,11 +321,23 @@ export default function ProjectMap({ points, year, height = 620 }: Props) {
     setState((s) => {
       const next = new Set(s.typos);
       if (next.has(k)) next.delete(k); else next.add(k);
+      track("filter_change", {
+        page: "investissements",
+        field: "map_typo",
+        value: k,
+        active: !s.typos.has(k),
+      });
       return { ...s, typos: next, preset: "all" };
     });
   };
-  const setArr = (v: string) => setState((s) => ({ ...s, arr: v, preset: "all" }));
-  const setMinAmt = (v: number) => setState((s) => ({ ...s, minAmt: v, preset: "all" }));
+  const setArr = (v: string) => {
+    track("filter_change", { page: "investissements", field: "map_arr", value: v || "all" });
+    setState((s) => ({ ...s, arr: v, preset: "all" }));
+  };
+  const setMinAmt = (v: number) => {
+    track("filter_change", { page: "investissements", field: "map_min_amt", value: v });
+    setState((s) => ({ ...s, minAmt: v, preset: "all" }));
+  };
 
   const [copied, setCopied] = useState(false);
   const copyLink = async () => {
@@ -321,6 +345,7 @@ export default function ProjectMap({ points, year, height = 620 }: Props) {
       await navigator.clipboard.writeText(window.location.href);
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
+      track("share_click", { method: "copy", entity_type: "map_view", url: window.location.href });
     } catch {}
   };
 

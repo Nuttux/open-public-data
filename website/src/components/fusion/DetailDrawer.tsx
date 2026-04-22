@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useT } from "@/lib/localeContext";
+import { useTrack } from "@/lib/analyticsContext";
 
 type DrawerReferrer = { url: string; label: string };
 
@@ -55,10 +56,17 @@ export default function DetailDrawer({
 }: Props) {
   const t = useT();
   const router = useRouter();
+  const track = useTrack();
   const [copied, setCopied] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [previous, setPrevious] = useState<DrawerReferrer | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
+  const openedAtRef = useRef<number>(Date.now());
+  const entityType = (() => {
+    if (!shareUrl) return "unknown";
+    const seg = shareUrl.split("/").filter(Boolean)[1];
+    return seg || "unknown";
+  })();
 
   // Scroll lock that actually preserves the user's scroll position. Plain
   // `overflow: hidden` on body loses scrollY when the page behind reflows
@@ -109,6 +117,13 @@ export default function DetailDrawer({
     };
     const filtered = stack.filter((e) => e.url !== shareUrl);
     writeStack([...filtered, selfEntry]);
+    openedAtRef.current = Date.now();
+    track("drawer_open", {
+      entity_type: entityType,
+      url: shareUrl,
+      has_parent: Boolean(top && top.url !== shareUrl),
+      parent_url: top?.url || null,
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shareUrl]);
 
@@ -116,7 +131,7 @@ export default function DetailDrawer({
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         if (menuOpen) setMenuOpen(false);
-        else close();
+        else close("esc");
       }
     };
     document.addEventListener("keydown", onKey);
@@ -135,10 +150,13 @@ export default function DetailDrawer({
     return () => document.removeEventListener("mousedown", onDown);
   }, [menuOpen]);
 
-  const close = () => {
-    // Si un drawer parent existe dans la pile, on y remonte plutôt que de
-    // retomber directement sur la racine. Click × sur drawer B ouvert depuis
-    // drawer A → on revient sur A, pas sur /investissements.
+  const close = (method: "x" | "backdrop" | "esc" = "x") => {
+    track("drawer_close", {
+      entity_type: entityType,
+      url: shareUrl || null,
+      method,
+      dwell_ms: Date.now() - openedAtRef.current,
+    });
     if (previous) {
       const stack = readStack().slice(0, -1);
       writeStack(stack);
@@ -155,8 +173,11 @@ export default function DetailDrawer({
 
   const goBackToPrevious = () => {
     if (!previous) return;
-    // Pop the current entry off the stack so we don't re-read it as previous
-    // after we land.
+    track("drawer_back", {
+      from_type: entityType,
+      from_url: shareUrl || null,
+      to_url: previous.url,
+    });
     const stack = readStack().slice(0, -1);
     writeStack(stack);
     router.back();
@@ -177,10 +198,10 @@ export default function DetailDrawer({
 
   const onShareClick = async () => {
     const { url, text } = shareBody();
-    // Use native share sheet on mobile (iOS/Android) for best UX.
     if (typeof navigator !== "undefined" && "share" in navigator) {
       try {
         await navigator.share({ title: typeof title === "string" ? title : undefined, text, url });
+        track("share_click", { method: "native", entity_type: entityType, url });
         return;
       } catch {
         /* user cancelled */
@@ -196,6 +217,7 @@ export default function DetailDrawer({
       setCopied(true);
       setTimeout(() => setCopied(false), 1800);
       setMenuOpen(false);
+      track("share_click", { method: "copy", entity_type: entityType, url });
     } catch {
       /* clipboard blocked */
     }
@@ -210,6 +232,7 @@ export default function DetailDrawer({
         : where === "linkedin"
           ? `https://www.linkedin.com/sharing/share-offsite/?url=${enc(url)}`
           : `mailto:?subject=${enc(text)}&body=${enc(text + "\n\n" + url)}`;
+    track("share_click", { method: where, entity_type: entityType, url });
     window.open(href, "_blank", "noopener,noreferrer");
     setMenuOpen(false);
   };
@@ -219,7 +242,7 @@ export default function DetailDrawer({
       <div
         className="fx-drawer-backdrop"
         aria-hidden="true"
-        onClick={close}
+        onClick={() => close("backdrop")}
       />
       <aside
         className="fx-drawer"
@@ -277,7 +300,7 @@ export default function DetailDrawer({
             <button
               type="button"
               className="fx-drawer-close"
-              onClick={close}
+              onClick={() => close("x")}
               aria-label={t("fx.drawer.close_aria")}
               title={t("fx.drawer.close_title")}
             >

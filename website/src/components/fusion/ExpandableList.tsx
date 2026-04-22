@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
+import { usePathname } from "next/navigation";
+import { useTrack } from "@/lib/analyticsContext";
 
 export type ExpandableItem = {
   key: string;
@@ -33,6 +35,8 @@ type Props = {
  */
 export default function ExpandableList({ items, initialOpen, header }: Props) {
   const [openKey, setOpenKey] = useState<string | null>(initialOpen ?? null);
+  const track = useTrack();
+  const pathname = usePathname();
 
   return (
     <div className="fx-expand">
@@ -51,7 +55,15 @@ export default function ExpandableList({ items, initialOpen, header }: Props) {
                 type="button"
                 className="fx-expand-head"
                 aria-expanded={isOpen}
-                onClick={() => setOpenKey(isOpen ? null : it.key)}
+                onClick={() => {
+                  track("details_toggle", {
+                    page: pathname,
+                    section_id: it.key,
+                    open: !isOpen,
+                    source: "expandable_list",
+                  });
+                  setOpenKey(isOpen ? null : it.key);
+                }}
               >
                 <span className="fx-expand-label">{it.label}</span>
                 <span className="fx-expand-bar">

@@ -38,6 +38,8 @@ type ToolMethod = {
 
 type CoverageRow = {
   label: string;
+  volume?: string;
+  href?: string;
   status: "ok" | "warn" | "info";
   statusLabel: string;
   segments: { start: number; end: number; text: string; kind?: "frozen" | "partial" }[];
@@ -201,7 +203,15 @@ const GLOSSARY_FR: { term: string; def: string }[] = [
   { term: "CA (compte administratif)", def: "Budget réellement exécuté, voté après la clôture. Publié ~6 mois après." },
   { term: "BP (budget primitif) / voté", def: "Budget prévisionnel adopté avant le début de l'exercice. Peut être modifié en cours d'année." },
   { term: "AP / CP", def: "Autorisation de Programme (enveloppe pluriannuelle) vs Crédit de Paiement (décaissement annuel). Un AP 100 M€ peut se consommer sur 4 ans." },
+  { term: "SIRET / SIREN", def: "Numéro d'identification d'une entreprise ou d'un opérateur public. SIREN = 9 chiffres (l'entité), SIRET = 14 chiffres (l'établissement). Utilisé pour faire le lien entre un bénéficiaire et son profil officiel." },
+  { term: "RNA", def: "Répertoire National des Associations (numéro W + 9 chiffres). Les associations en ont un à la place du SIRET si elles ne sont pas immatriculées au répertoire SIRENE. Si vous cherchez une asso et ne trouvez rien par SIRET, tentez son nom." },
+  { term: "Délibération", def: "Décision prise en séance du Conseil de Paris et inscrite au registre officiel. Chaque subvention, marché ou investissement est adossé à une ou plusieurs délibérations." },
+  { term: "Encours (de dette)", def: "Montant total restant dû à un instant donné. Différent de l'annuité (ce qu'on rembourse dans l'année) et du flux (nouveaux emprunts de l'année)." },
+  { term: "Provisions pour risques et charges", def: "Sommes mises de côté au bilan pour couvrir des dépenses futures probables mais incertaines (litiges, garanties d'emprunt qui pourraient être appelées…). Apparaissent au passif." },
+  { term: "Immobilisations", def: "Actifs durables au bilan : bâtiments, routes, terrains, réseaux, équipements. S'opposent à l'actif circulant (trésorerie, créances court terme). Évaluées au coût historique, pas à la valeur de marché." },
+  { term: "Capacité de désendettement", def: "Nombre d'années qu'il faudrait pour rembourser toute la dette si on y consacrait toute l'épargne brute. Comme la durée restante d'un crédit immobilier. Au-delà de 12 ans, la situation est jugée tendue." },
   { term: "SRU", def: "Loi Solidarité et Renouvellement Urbain — quota de logements sociaux. Calculé chaque 1er janvier par la DDT." },
+  { term: "DDT / DRIHL", def: "Direction Départementale des Territoires / Direction Régionale et Interdépartementale de l'Hébergement et du Logement. Services de l'État qui contrôlent le respect des quotas SRU et gèrent la politique du logement en Île-de-France." },
   { term: "CASVP", def: "Centre d'Action Sociale de la Ville de Paris. Bénéficiaire n°1 des subventions." },
   { term: "SEM / OPH", def: "Société d'Économie Mixte / Office Public de l'Habitat. Comptes non consolidés dans nos chiffres." },
   { term: "Accord-cadre", def: "Marché public avec plafonds mais pas d'engagement ferme. 97 % des marchés parisiens en sont." },
@@ -222,14 +232,14 @@ const FAQ_FR: { q: string; a: string }[] = [
 ];
 
 const COVERAGE_FR: CoverageRow[] = [
-  { label: "Budget exécuté (CA)", status: "ok", statusLabel: "À jour", segments: [{ start: 2018, end: 2024, text: "2018-2024" }] },
-  { label: "Budget voté (BP)", status: "ok", statusLabel: "À jour", segments: [{ start: 2019, end: 2026, text: "2019-2026" }] },
-  { label: "Subventions", status: "ok", statusLabel: "À jour", segments: [{ start: 2018, end: 2024, text: "2018-2024" }] },
-  { label: "Marchés publics", status: "ok", statusLabel: "À jour", segments: [{ start: 2013, end: 2024, text: "2013-2024 (~17k)" }] },
-  { label: "Investissements (dataset AP)", status: "warn", statusLabel: "Gelé", segments: [{ start: 2018, end: 2022, text: "2018-2022 · gelé", kind: "frozen" }] },
-  { label: "Investissements (PDF IL)", status: "info", statusLabel: "Partiel", segments: [{ start: 2018, end: 2024, text: "2018-2024 (CA)", kind: "partial" }, { start: 2025, end: 2026, text: "2025-2026 (BP)", kind: "partial" }] },
-  { label: "Logements sociaux financés", status: "ok", statusLabel: "À jour", segments: [{ start: 2013, end: 2024, text: "2001-2024 (affiché 2013+)" }] },
-  { label: "Bilan comptable", status: "ok", statusLabel: "À jour", segments: [{ start: 2019, end: 2024, text: "2019-2024" }] },
+  { label: "Budget exécuté (CA)", volume: "25 629 lignes", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/", status: "ok", statusLabel: "À jour", segments: [{ start: 2018, end: 2024, text: "2018-2024" }] },
+  { label: "Budget voté (BP)", volume: "8 598 lignes", href: "https://opendata.paris.fr/explore/dataset/budgets-votes-principaux-a-partir-de-2019-m57-ville-departement/", status: "ok", statusLabel: "À jour", segments: [{ start: 2019, end: 2026, text: "2019-2026" }] },
+  { label: "Subventions", volume: "47 381 lignes", href: "https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/", status: "ok", statusLabel: "À jour", segments: [{ start: 2018, end: 2024, text: "2018-2024" }] },
+  { label: "Marchés publics", volume: "17 639 contrats", href: "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/", status: "ok", statusLabel: "À jour", segments: [{ start: 2013, end: 2024, text: "2013-2024" }] },
+  { label: "Investissements (dataset AP)", volume: "dataset gelé", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/", status: "warn", statusLabel: "Gelé", segments: [{ start: 2018, end: 2022, text: "2018-2022 · gelé", kind: "frozen" }] },
+  { label: "Investissements (PDF IL)", volume: "~450 projets/an", href: "https://cdn.paris.fr/paris/2025/06/25/ca-2024-annexe-il-UtMj.PDF", status: "info", statusLabel: "Partiel", segments: [{ start: 2018, end: 2024, text: "2018-2024 (CA)", kind: "partial" }, { start: 2025, end: 2026, text: "2025-2026 (BP)", kind: "partial" }] },
+  { label: "Logements sociaux financés", volume: "4 174 opérations", href: "https://opendata.paris.fr/explore/dataset/logements-sociaux-finances-a-paris/", status: "ok", statusLabel: "À jour", segments: [{ start: 2013, end: 2024, text: "2001-2024 (affiché 2013+)" }] },
+  { label: "Bilan comptable", volume: "1 bilan/an", href: "https://opendata.paris.fr/explore/dataset/bilan-comptable/", status: "ok", statusLabel: "À jour", segments: [{ start: 2019, end: 2024, text: "2019-2024" }] },
 ];
 
 // ── English data ─────────────────────────────────────────────────────────────
@@ -380,7 +390,15 @@ const GLOSSARY_EN: { term: string; def: string }[] = [
   { term: "CA (administrative account)", def: "Actually executed budget, voted after year-end. Published ~6 months later." },
   { term: "BP (draft budget) / voted", def: "Provisional budget adopted before the start of the fiscal year. May be amended during the year." },
   { term: "AP / CP", def: "Programme Authorisation (multi-year envelope) vs Payment Appropriation (annual disbursement). A €100M AP may be consumed over 4 years." },
+  { term: "SIRET / SIREN", def: "Official identifier for a business or public operator. SIREN = 9 digits (the entity), SIRET = 14 digits (a specific site). Used to link a recipient to its official profile." },
+  { term: "RNA", def: "National Register of Associations (W + 9 digits). Associations have one instead of a SIRET if not registered in SIRENE. If a SIRET search returns nothing for a non-profit, try its name." },
+  { term: "Deliberation", def: "Decision taken in a Paris City Council session and entered in the official register. Every grant, contract or investment is backed by one or more deliberations." },
+  { term: "Outstanding debt", def: "Total amount still owed at a given point in time. Different from the annuity (what's repaid in the year) and the flow (new borrowing in the year)." },
+  { term: "Provisions for risks and charges", def: "Amounts set aside on the balance sheet to cover probable but uncertain future expenses (lawsuits, loan guarantees that may be called…). Appear on the liabilities side." },
+  { term: "Fixed assets (Immobilisations)", def: "Long-term balance-sheet assets: buildings, roads, land, networks, equipment. Opposed to current assets (cash, short-term receivables). Valued at historical cost, not market value." },
+  { term: "Debt payoff capacity", def: "Number of years it would take to repay all the debt if gross savings were entirely devoted to it. Like the remaining term of a home loan. Above 12 years is considered tight." },
   { term: "SRU", def: "Urban Solidarity and Renewal Act — social housing quota. Calculated each 1 January by the DDT." },
+  { term: "DDT / DRIHL", def: "Departmental Directorate of Territories / Regional and Interdepartmental Housing Directorate. State services that check compliance with SRU quotas and run housing policy in Île-de-France." },
   { term: "CASVP", def: "Paris City Social Action Centre. The no. 1 grant recipient." },
   { term: "SEM / OPH", def: "Mixed-economy company / Social housing office. Accounts not consolidated in our figures." },
   { term: "Framework agreement", def: "Public contract with ceilings but no firm commitment. 97% of Paris contracts are framework agreements." },
@@ -401,14 +419,14 @@ const FAQ_EN: { q: string; a: string }[] = [
 ];
 
 const COVERAGE_EN: CoverageRow[] = [
-  { label: "Executed budget (CA)", status: "ok", statusLabel: "Up to date", segments: [{ start: 2018, end: 2024, text: "2018-2024" }] },
-  { label: "Voted budget (BP)", status: "ok", statusLabel: "Up to date", segments: [{ start: 2019, end: 2026, text: "2019-2026" }] },
-  { label: "Grants", status: "ok", statusLabel: "Up to date", segments: [{ start: 2018, end: 2024, text: "2018-2024" }] },
-  { label: "Public contracts", status: "ok", statusLabel: "Up to date", segments: [{ start: 2013, end: 2024, text: "2013-2024 (~17k)" }] },
-  { label: "Investments (AP dataset)", status: "warn", statusLabel: "Frozen", segments: [{ start: 2018, end: 2022, text: "2018-2022 · frozen", kind: "frozen" }] },
-  { label: "Investments (IL PDFs)", status: "info", statusLabel: "Partial", segments: [{ start: 2018, end: 2024, text: "2018-2024 (CA)", kind: "partial" }, { start: 2025, end: 2026, text: "2025-2026 (BP)", kind: "partial" }] },
-  { label: "Funded social housing", status: "ok", statusLabel: "Up to date", segments: [{ start: 2013, end: 2024, text: "2001-2024 (shown 2013+)" }] },
-  { label: "Balance sheet", status: "ok", statusLabel: "Up to date", segments: [{ start: 2019, end: 2024, text: "2019-2024" }] },
+  { label: "Executed budget (CA)", volume: "25,629 rows", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/", status: "ok", statusLabel: "Up to date", segments: [{ start: 2018, end: 2024, text: "2018-2024" }] },
+  { label: "Voted budget (BP)", volume: "8,598 rows", href: "https://opendata.paris.fr/explore/dataset/budgets-votes-principaux-a-partir-de-2019-m57-ville-departement/", status: "ok", statusLabel: "Up to date", segments: [{ start: 2019, end: 2026, text: "2019-2026" }] },
+  { label: "Grants", volume: "47,381 rows", href: "https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/", status: "ok", statusLabel: "Up to date", segments: [{ start: 2018, end: 2024, text: "2018-2024" }] },
+  { label: "Public contracts", volume: "17,639 contracts", href: "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/", status: "ok", statusLabel: "Up to date", segments: [{ start: 2013, end: 2024, text: "2013-2024" }] },
+  { label: "Investments (AP dataset)", volume: "dataset frozen", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/", status: "warn", statusLabel: "Frozen", segments: [{ start: 2018, end: 2022, text: "2018-2022 · frozen", kind: "frozen" }] },
+  { label: "Investments (IL PDFs)", volume: "~450 projects/yr", href: "https://cdn.paris.fr/paris/2025/06/25/ca-2024-annexe-il-UtMj.PDF", status: "info", statusLabel: "Partial", segments: [{ start: 2018, end: 2024, text: "2018-2024 (CA)", kind: "partial" }, { start: 2025, end: 2026, text: "2025-2026 (BP)", kind: "partial" }] },
+  { label: "Funded social housing", volume: "4,174 operations", href: "https://opendata.paris.fr/explore/dataset/logements-sociaux-finances-a-paris/", status: "ok", statusLabel: "Up to date", segments: [{ start: 2013, end: 2024, text: "2001-2024 (shown 2013+)" }] },
+  { label: "Balance sheet", volume: "1 bs/yr", href: "https://opendata.paris.fr/explore/dataset/bilan-comptable/", status: "ok", statusLabel: "Up to date", segments: [{ start: 2019, end: 2024, text: "2019-2024" }] },
 ];
 
 // ── Sources (table synthétique) ──────────────────────────────────────────────
@@ -504,7 +522,7 @@ export default function MethodeClient() {
             <div className="fx-meth-stat">
               <span className="n">{isFr ? "Lignes traitées" : "Rows processed"}</span>
               <span className="v">~100 k</span>
-              <span className="c">{isFr ? "53 k subventions + 24 k budget + 17 k marchés…" : "53k grants + 24k budget + 17k contracts…"}</span>
+              <span className="c">{isFr ? "47k subv. + 26k budget CA + 18k marchés + 9k budget voté + 4k logements" : "47k grants + 26k exec. budget + 18k contracts + 9k voted budget + 4k housing"}</span>
             </div>
             <div className="fx-meth-stat">
               <span className="n">{isFr ? "Historique" : "History"}</span>
@@ -624,7 +642,10 @@ export default function MethodeClient() {
             {COVERAGE.map((row) => (
               <div key={row.label} className="fx-timeline-row">
                 <div className="fx-timeline-label">
-                  <span className="t">{row.label}</span>
+                  <div className="fx-timeline-label-main">
+                    <span className="t">{row.label}</span>
+                    {row.volume && <span className="vol">{row.volume}</span>}
+                  </div>
                   <span className={`fx-timeline-status ${row.status}`}>{row.statusLabel}</span>
                 </div>
                 <div className="fx-timeline-bar">
@@ -633,6 +654,13 @@ export default function MethodeClient() {
                       {s.text}
                     </span>
                   ))}
+                </div>
+                <div className="fx-timeline-link">
+                  {row.href && (
+                    <a href={row.href} target="_blank" rel="noopener noreferrer" aria-label={isFr ? `Source de ${row.label}` : `Source for ${row.label}`}>
+                      {isFr ? "source ↗" : "source ↗"}
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
@@ -667,8 +695,8 @@ export default function MethodeClient() {
               <div className="k">02</div>
               <h4>{isFr ? "Relier & nettoyer" : "Stitch & clean"}</h4>
               <p>{isFr
-                ? "On normalise les nomenclatures (chapitres M57 → libellés lisibles), on joint les datasets entre eux (SIRET ↔ SIRENE pour l'identité des bénéficiaires), on géocode les projets avec la BAN. Un LLM aide à classer par thème et géocoder ; il ne calcule jamais de montant."
-                : "We normalise nomenclatures (M57 chapters → readable labels), we join datasets (SIRET ↔ SIRENE for recipient identity), we geocode projects via BAN. An LLM helps classify by theme and geocode; it never computes an amount."}</p>
+                ? "On traduit les nomenclatures comptables en français courant, on joint les datasets entre eux (via le SIRET pour l'identité des bénéficiaires), on retrouve l'adresse des projets grâce à la Base Adresse Nationale. Un LLM aide à classer par thème et à résoudre les adresses ambiguës — jamais à calculer de montant."
+                : "We translate accounting nomenclatures into plain language, we join datasets (via SIRET for recipient identity), we resolve project addresses using the National Address Base. An LLM helps classify by theme and resolve ambiguous addresses — never to compute an amount."}</p>
             </div>
             <span className="fx-flow-simple-arrow">→</span>
             <div className="fx-flow-simple-step">
@@ -859,6 +887,15 @@ export default function MethodeClient() {
               ? <><b>À retenir</b> : entre la source et l&apos;affichage, aucune étape n&apos;invente de chiffre. Seulement du nettoyage, des jointures et des sommes. Le code de chaque étape est public.</>
               : <><b>Key point</b>: between source and display, no step invents a figure. Only cleaning, joins and sums. Each step's code is public.</>}
           </p>
+
+          <div style={{ marginTop: 24, display: "flex", gap: 10, flexWrap: "wrap" }}>
+            <Button href="https://github.com/Nuttux/open-public-data/tree/main/pipeline">
+              {isFr ? "Voir les modèles dbt ↗" : "See dbt models ↗"}
+            </Button>
+            <Button href="/data/subventions/beneficiaires_2024.json">
+              {isFr ? "Télécharger le JSON final" : "Download final JSON"}
+            </Button>
+          </div>
         </div>
       </section>
 

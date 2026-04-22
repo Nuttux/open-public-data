@@ -2129,6 +2129,14 @@ export type LogementSocialData = {
   byArrondissement: { arr: number; logements: number; operations: number }[];
   bailleurs: { name: string; type: string; color: string; share: number; description: string }[];
   yearsSummary: { year: number; logements: number }[];
+  tension: {
+    demandesActives: number;
+    passeesCommission: number;
+    attributions: number;
+    ratio: number;
+    delaiMedian: number;
+    nonPourvus: number;
+  };
 };
 
 export function loadLogementSocialData(requestedYear?: number): LogementSocialData {
@@ -2180,6 +2188,17 @@ export function loadLogementSocialData(requestedYear?: number): LogementSocialDa
   // Stock SRU inventaire 2024 : 258 400 logements sociaux sur 1 055 000 résidences principales
   const stockTotal = 258_400;
 
+  // Tension locative — DRIHL Île-de-France, Ville de Paris (référence 2024).
+  // Centralisé ici pour éviter de figer les valeurs dans les strings de traduction.
+  const tension = {
+    demandesActives: 228_400,
+    passeesCommission: 45_600,
+    attributions: 12_100,
+    ratio: 19,
+    delaiMedian: 4.2,
+    nonPourvus: 3_900,
+  };
+
   return {
     year: latest.year,
     availableYears,
@@ -2191,6 +2210,7 @@ export function loadLogementSocialData(requestedYear?: number): LogementSocialDa
     byArrondissement,
     bailleurs,
     yearsSummary,
+    tension,
   };
 }
 

@@ -6,30 +6,49 @@ import { BigQuery } from '@google-cloud/bigquery';
 // ---------------------------------------------------------------------------
 
 const KNOWN_EVENTS = new Set([
+  // auto
   'session_start',
   'page_view',
+  'page_exit',
   'scroll_depth',
-  'tab_change',
-  'year_change',
-  'year_range_change',
+  // chrome
   'nav_click',
-  'glossary_open',
-  'glossary_term_view',
-  'glossary_section_toggle',
+  'toc_click',
+  'scope_change',
+  'lang_switch',
+  'mobile_menu_toggle',
+  // selection
+  'year_change',
+  'tab_change',
+  // drawer
+  'drawer_open',
+  'drawer_close',
+  'drawer_back',
+  // share
+  'share_click',
+  // viz
+  'choropleth_click',
+  'map_marker_click',
+  'chart_element_click',
+  'timeline_point_click',
   'sankey_node_click',
-  'sankey_drilldown',
-  'drilldown_close',
-  'chart_click',
-  'donut_click',
-  'treemap_click',
+  // tools
+  'stress_test_run',
+  'city_compare_change',
+  'ta_part_change',
+  'logement_simulator_change',
+  // filters / search
   'filter_change',
   'filter_reset',
-  'table_sort',
-  'table_paginate',
-  'view_toggle',
-  'map_view_toggle',
-  'cta_click',
+  'search_submit',
+  'search_seed_click',
+  'search_result_click',
+  'load_more',
+  // disclosure
+  'details_toggle',
+  // outbound / CTA
   'external_link_click',
+  'cta_click',
 ]);
 
 const MAX_EVENTS_PER_REQUEST = 100;
@@ -105,6 +124,7 @@ interface ClientEvent {
   event_id?: string;
   event_name?: string;
   event_timestamp?: string;
+  event_seq?: number;
   visitor_id?: string;
   session_id?: string;
   page_path?: string;
@@ -115,6 +135,7 @@ interface ClientEvent {
   utm_campaign?: string | null;
   device_type?: string;
   viewport_width?: number;
+  viewport_height?: number;
   screen_width?: number;
   locale?: string;
   properties?: string;
@@ -198,6 +219,7 @@ export async function POST(request: NextRequest) {
         data: JSON.stringify({
           visitor_id: e.visitor_id || null,
           session_id: e.session_id || null,
+          event_seq: e.event_seq ?? null,
           page_path: e.page_path,
           page_locale: extractPageLocale(e.page_path || '/'),
           page_tab: e.page_tab || null,
@@ -207,6 +229,7 @@ export async function POST(request: NextRequest) {
           utm_campaign: e.utm_campaign || null,
           device_type: e.device_type || null,
           viewport_width: e.viewport_width || null,
+          viewport_height: e.viewport_height || null,
           screen_width: e.screen_width || null,
           user_agent: request.headers.get('user-agent') || null,
           locale: e.locale || null,

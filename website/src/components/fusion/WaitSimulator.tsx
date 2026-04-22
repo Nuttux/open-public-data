@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useT } from "@/lib/localeContext";
+import { useTrack } from "@/lib/analyticsContext";
 
 type Taille = "t1" | "t2" | "t3" | "t4" | "t5plus";
 type Zone = "any" | `arr${number}`;
@@ -123,9 +124,19 @@ const writeToURL = (p: Profile) => {
 
 export default function WaitSimulator() {
   const t = useT();
+  const track = useTrack();
   const [profile, setProfile] = useState<Profile>(DEFAULT_PROFILE);
   const [ready, setReady] = useState(false);
   const [copied, setCopied] = useState(false);
+
+  const updateProfile = (next: Profile, changedField: keyof Profile) => {
+    track("logement_simulator_change", {
+      field: changedField,
+      value: next[changedField],
+      profile: { ...next },
+    });
+    setProfile(next);
+  };
 
   useEffect(() => {
     const fromUrl = readFromURL();
@@ -175,7 +186,7 @@ export default function WaitSimulator() {
       key: "taille",
       label: t("fx.sim.f.taille"),
       value: profile.taille,
-      set: (v: string) => isTaille(v) && setProfile({ ...profile, taille: v }),
+      set: (v: string) => isTaille(v) && updateProfile({ ...profile, taille: v }, "taille"),
       options: [
         { value: "t1", label: t("fx.sim.opt.t1") },
         { value: "t2", label: t("fx.sim.opt.t2") },
@@ -188,7 +199,7 @@ export default function WaitSimulator() {
       key: "menage",
       label: t("fx.sim.f.menage"),
       value: profile.menage,
-      set: (v: string) => isMenage(v) && setProfile({ ...profile, menage: v }),
+      set: (v: string) => isMenage(v) && updateProfile({ ...profile, menage: v }, "menage"),
       options: [
         { value: "seul", label: t("fx.sim.opt.seul") },
         { value: "couple", label: t("fx.sim.opt.couple") },
@@ -200,7 +211,7 @@ export default function WaitSimulator() {
       key: "prio",
       label: t("fx.sim.f.prio"),
       value: profile.prio,
-      set: (v: string) => isPrio(v) && setProfile({ ...profile, prio: v }),
+      set: (v: string) => isPrio(v) && updateProfile({ ...profile, prio: v }, "prio"),
       options: [
         { value: "dalo", label: t("fx.sim.opt.dalo") },
         { value: "standard", label: t("fx.sim.opt.standard") },
@@ -211,7 +222,7 @@ export default function WaitSimulator() {
       key: "revenus",
       label: t("fx.sim.f.revenus"),
       value: profile.revenus,
-      set: (v: string) => isRevenus(v) && setProfile({ ...profile, revenus: v }),
+      set: (v: string) => isRevenus(v) && updateProfile({ ...profile, revenus: v }, "revenus"),
       options: [
         { value: "plai", label: t("fx.sim.opt.plai") },
         { value: "plus", label: t("fx.sim.opt.plus") },
@@ -243,8 +254,14 @@ export default function WaitSimulator() {
       await navigator.clipboard.writeText(window.location.href);
       setCopied(true);
       setTimeout(() => setCopied(false), 1800);
+      track("share_click", {
+        method: "copy",
+        entity_type: "wait_simulator",
+        url: window.location.href,
+        profile: { ...profile },
+      });
     } catch {
-      // clipboard unavailable — silently fail (no feedback is better than misleading success)
+      // clipboard unavailable — silently fail
     }
   };
 
@@ -259,7 +276,7 @@ export default function WaitSimulator() {
               <select
                 className="fx-sim-select"
                 value={profile.zone}
-                onChange={(e) => isZone(e.target.value) && setProfile({ ...profile, zone: e.target.value })}
+                onChange={(e) => isZone(e.target.value) && updateProfile({ ...profile, zone: e.target.value }, "zone")}
               >
                 {zoneOptgroups.map((g) => (
                   <optgroup key={g.label} label={g.label}>

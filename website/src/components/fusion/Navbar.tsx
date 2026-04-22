@@ -8,11 +8,13 @@ import ScopeDropdown from "./ScopeDropdown";
 import LangSwitcher from "./LangSwitcher";
 import { NAV_LINKS } from "./nav-links";
 import { useT } from "@/lib/localeContext";
+import { useTrack } from "@/lib/analyticsContext";
 
 export default function Navbar() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const t = useT();
+  const track = useTrack();
 
   useEffect(() => {
     if (menuOpen) {
@@ -28,10 +30,18 @@ export default function Navbar() {
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
+  const trackNav = (href: string, labelKey: string, surface: "nav" | "overlay" | "brand") => {
+    track("nav_click", { href, label: labelKey, surface, from: pathname });
+  };
+
   return (
     <>
       <header className="fx-nav">
-        <Link href="/" className="fx-brand">
+        <Link
+          href="/"
+          className="fx-brand"
+          onClick={() => trackNav("/", "fx.nav.brand", "brand")}
+        >
           <BrandMark />
           <span>{t("fx.nav.brand")}</span>
         </Link>
@@ -41,6 +51,7 @@ export default function Navbar() {
               key={l.href}
               href={l.href}
               className={isActive(l.href) ? "fx-link fx-link-on" : "fx-link"}
+              onClick={() => trackNav(l.href, l.labelKey, "nav")}
             >
               {t(l.labelKey)}
             </Link>
@@ -53,7 +64,10 @@ export default function Navbar() {
           className="fx-menu-btn"
           aria-label={t("fx.nav.menu_aria")}
           aria-expanded={menuOpen}
-          onClick={() => setMenuOpen(true)}
+          onClick={() => {
+            setMenuOpen(true);
+            track("mobile_menu_toggle", { open: true });
+          }}
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
             <line x1="4" y1="8" x2="20" y2="8" />
@@ -72,7 +86,10 @@ export default function Navbar() {
             type="button"
             className="fx-overlay-close"
             aria-label={t("fx.nav.close")}
-            onClick={() => setMenuOpen(false)}
+            onClick={() => {
+              setMenuOpen(false);
+              track("mobile_menu_toggle", { open: false });
+            }}
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
               <line x1="6" y1="6" x2="18" y2="18" />
@@ -82,7 +99,11 @@ export default function Navbar() {
         </div>
         <nav className="fx-overlay-nav" aria-label={t("fx.nav.main_aria")}>
           {NAV_LINKS.map((l, i) => (
-            <Link key={l.href} href={l.href}>
+            <Link
+              key={l.href}
+              href={l.href}
+              onClick={() => trackNav(l.href, l.labelKey, "overlay")}
+            >
               <span className="fx-overlay-n">{String(i + 1).padStart(2, "0")}</span>
               {t(l.labelKey)}
             </Link>

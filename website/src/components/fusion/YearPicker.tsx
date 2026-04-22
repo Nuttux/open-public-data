@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useTrack } from "@/lib/analyticsContext";
 
 type Props = {
   years: number[];
@@ -15,9 +19,10 @@ type Props = {
 };
 
 /**
- * Year picker — Link-based, works without JavaScript. Server-component safe.
- * Matches the mockup: ghost label on the left, each year as a button with
- * an active state (dark) and a distinct treatment for voted-only years (red).
+ * Year picker — Link-based, works without JavaScript (client component for
+ * analytics tracking). Matches the mockup: ghost label on the left, each year
+ * as a button with an active state (dark) and a distinct treatment for
+ * voted-only years (red).
  */
 export default function YearPicker({
   years,
@@ -29,6 +34,8 @@ export default function YearPicker({
 }: Props) {
   const votedSet = new Set(votedYears);
   const previewSet = new Set(previewYears);
+  const track = useTrack();
+  const pathname = usePathname();
   return (
     <div className="fx-year-picker">
       <span className="fx-yp-label">{label}</span>
@@ -53,6 +60,16 @@ export default function YearPicker({
             className={cls}
             scroll={false}
             title={isPreview ? "Aperçu non-consolidé (délibérations)" : undefined}
+            onClick={() => {
+              if (y === current) return;
+              track("year_change", {
+                page: pathname,
+                year_from: current,
+                year_to: y,
+                is_voted: isVoted,
+                is_preview: isPreview,
+              });
+            }}
           >
             {y}
             {isPreview && <span className="fx-yp-preview-dot" aria-hidden>•</span>}

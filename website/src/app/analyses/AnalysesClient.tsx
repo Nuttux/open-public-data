@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useT, useLocale } from "@/lib/localeContext";
+import { useTrack } from "@/lib/analyticsContext";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
@@ -74,6 +75,7 @@ export default function AnalysesClient({
   type CatKey = (typeof CATEGORIES)[number]["key"];
 
   const [active, setActive] = useState<CatKey>("all");
+  const track = useTrack();
 
   const activeRaw = CATEGORIES.find((c) => c.key === active)?.raw ?? "Toutes";
   const activeLabel = CATEGORIES.find((c) => c.key === active)?.label ?? "";
@@ -129,7 +131,16 @@ export default function AnalysesClient({
               <button
                 key={c.key}
                 type="button"
-                onClick={() => setActive(c.key)}
+                onClick={() => {
+                  if (c.key !== active) {
+                    track("filter_change", {
+                      page: "analyses",
+                      field: "category",
+                      value: c.key,
+                    });
+                  }
+                  setActive(c.key);
+                }}
                 className={c.key === active ? "fx-cat fx-cat-on" : "fx-cat"}
               >
                 {c.label}
@@ -152,7 +163,17 @@ export default function AnalysesClient({
       {hero && (
         <section className="fx-section">
           <div className="fx-wrap">
-            <Link href={`/analyses/${hero.slug}`} className="fx-hero-article">
+            <Link
+              href={`/analyses/${hero.slug}`}
+              className="fx-hero-article"
+              onClick={() =>
+                track("chart_element_click", {
+                  chart: "analyses_hero",
+                  slug: hero.slug,
+                  category: hero.category,
+                })
+              }
+            >
               <div className="fx-hero-article-photo">
                 <div className="fx-hero-article-photo-placeholder" aria-hidden="true" />
                 {hero.image && (
@@ -212,8 +233,20 @@ export default function AnalysesClient({
               </p>
             </div>
             <div className="fx-articles-grid">
-              {rest.map((p) => (
-                <Link key={p.slug} href={`/analyses/${p.slug}`} className="fx-article-card">
+              {rest.map((p, idx) => (
+                <Link
+                  key={p.slug}
+                  href={`/analyses/${p.slug}`}
+                  className="fx-article-card"
+                  onClick={() =>
+                    track("chart_element_click", {
+                      chart: "analyses_card",
+                      slug: p.slug,
+                      category: p.category,
+                      rank: idx + 1,
+                    })
+                  }
+                >
                   <div className="fx-article-photo">
                     <div className="fx-article-photo-placeholder" aria-hidden="true" />
                     {p.image && (
@@ -285,7 +318,14 @@ export default function AnalysesClient({
               <h3>{t("fx.analyses.empty.title")}</h3>
               <p>{t("fx.analyses.empty.desc")}</p>
               <div className="fx-empty-actions">
-                <button type="button" className="fx-btn fx-btn-primary" onClick={() => setActive("all")}>
+                <button
+                  type="button"
+                  className="fx-btn fx-btn-primary"
+                  onClick={() => {
+                    track("filter_reset", { page: "analyses", source: "empty_state" });
+                    setActive("all");
+                  }}
+                >
                   {t("fx.analyses.empty.cta")}
                 </button>
               </div>
