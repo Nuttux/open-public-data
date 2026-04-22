@@ -89,12 +89,14 @@ export default function QuiRecoitClient({
                 complétées par les transferts structurels du Budget Primitif
                 (CASVP, AGOSPAP, caisses des écoles). Non-consolidées — la
                 version officielle paraît sur data.gouv l&apos;année suivante.
-                Deux écarts connus&nbsp;:
-                {" "}(i) les subventions en capital aux bailleurs sociaux sont
-                comptées en totalité au vote, vs étalées sur la durée des
-                prêts dans le consolidé ;
-                {" "}(ii) certaines subventions pluri-annuelles (CPO) sont
-                comptabilisées en année de vote.
+                {" "}<b>La répartition par thématique diffère sensiblement
+                des années consolidées</b> : les subventions en capital aux
+                bailleurs sociaux et les conventions pluri-annuelles sont
+                ici comptées en totalité au vote, tandis que le consolidé
+                les étale sur la durée des prêts ou des conventions. Les
+                montants par <b>bénéficiaire</b> sont fiables, la
+                <b> part par thème</b> ne l&apos;est pas — à utiliser pour
+                explorer les votes, pas pour comparer les poids.
               </span>
             </div>
           )}
