@@ -236,6 +236,15 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   left: auto;
   right: 0;
 }
+/* In the mobile overlay, the trigger sits at the bottom of the screen — open
+   the dropdown UPWARD so the menu doesn't spill off-viewport. */
+.theme-fusion .fx-scope-overlay + .fx-scope-menu,
+.theme-fusion .fx-scope-wrap:has(.fx-scope-overlay) .fx-scope-menu {
+  top: auto;
+  bottom: calc(100% + 14px);
+  left: 0;
+  right: auto;
+}
 .theme-fusion .fx-sm-head {
   padding: 10px 16px;
   font-family: var(--f-mono);
