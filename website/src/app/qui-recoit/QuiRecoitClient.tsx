@@ -63,9 +63,14 @@ export default function QuiRecoitClient({
             {t("fx.qr.title.after")}
           </h1>
           <p className="fx-page-lede">
-            <b>{fmtInt(d.nbSubventions)}{t("fx.qr.lede.a")}</b>
-            {fill(t("fx.qr.lede.b"), { year: d.year })}
-            {t("fx.qr.lede.c")}
+            <b>
+              {fmtInt(d.nbSubventions)}{" "}
+              <Tip label={t("fx.qr.subv.tip")}>{t("fx.qr.lede.subv")}</Tip>
+            </b>
+            {fill(t("fx.qr.lede.versees"), { year: d.year })}
+            {t("fx.qr.lede.c.pre")}
+            <Tip label={t("fx.qr.lede.operateurs.tip")}>{t("fx.qr.lede.operateurs")}</Tip>
+            {t("fx.qr.lede.c.post")}
           </p>
           <div className="fx-page-actions">
             <YearPicker
@@ -80,9 +85,16 @@ export default function QuiRecoitClient({
             <div className="fx-preview-banner" role="note">
               <span className="fx-preview-tag">Aperçu</span>
               <span>
-                Données {d.year} extraites des délibérations du Conseil de Paris.
-                Non-consolidées (data.gouv publie la version officielle l&apos;année
-                suivante).
+                Données {d.year} issues des délibérations du Conseil de Paris,
+                complétées par les transferts structurels du Budget Primitif
+                (CASVP, AGOSPAP, caisses des écoles). Non-consolidées — la
+                version officielle paraît sur data.gouv l&apos;année suivante.
+                Deux écarts connus&nbsp;:
+                {" "}(i) les subventions en capital aux bailleurs sociaux sont
+                comptées en totalité au vote, vs étalées sur la durée des
+                prêts dans le consolidé ;
+                {" "}(ii) certaines subventions pluri-annuelles (CPO) sont
+                comptabilisées en année de vote.
               </span>
             </div>
           )}
@@ -123,7 +135,9 @@ export default function QuiRecoitClient({
                 <>
                   {t("fx.qr.s01.hero_cap.a")}
                   <b>{fmtInt(d.nbSubventions)}</b>
-                  {t("fx.qr.s01.hero_cap.b")}
+                  {t("fx.qr.s01.hero_cap.b.pre")}
+                  <Tip label={t("fx.qr.avenants.tip")}>{t("fx.qr.s01.hero_cap.b.avenants")}</Tip>
+                  {t("fx.qr.s01.hero_cap.b.post")}
                 </>
               }
             />
@@ -160,7 +174,7 @@ export default function QuiRecoitClient({
         <div className="fx-wrap">
           <SectionHead
             number="02"
-            kind={t("fx.qr.s02.kind")}
+            kind={<Tip label={t("fx.qr.s02.kind.tip")}>{t("fx.qr.s02.kind")}</Tip>}
             title={
               <>
                 {t("fx.qr.s02.title.before")}
