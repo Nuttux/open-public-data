@@ -29,7 +29,10 @@ DATASET = "dbt_paris_analytics"
 SEED_PATH = Path(__file__).parent.parent / "paris-public-open-data" / "seeds" / "seed_cache_geo_ap.csv"
 
 GEMINI_API_KEY = os.environ.get("GOOGLE_API_KEY", "")
-GEMINI_MODEL = "gemini-2.5-flash"
+# Gemini 3 Flash — spatial reasoning + landmark recognition for Paris arr.
+# Strict validation downstream (arrondissement in 1..20), so we can afford a
+# slightly cheaper model here if cost becomes an issue. Override via env.
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3-flash-preview")
 GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent"
 
 # Batching config

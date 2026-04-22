@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-04-22T08:23:43.125017+00:00",
+  "source": "opendata.paris.fr · dette-garantie",
+  "description": "Garanties d'emprunt accordées par la Ville de Paris (engagements hors bilan).",
+  "availableYears": [
+    2024,
+    2023,
+    2022,
+    2021,
+    2020,
+    2019
+  ],
+  "latestYear": 2024
+}

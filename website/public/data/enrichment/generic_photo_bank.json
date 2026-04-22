@@ -1,0 +1,159 @@
+{
+  "items": {
+    "ecole": {
+      "typologie": "ecole",
+      "label": "École primaire parisienne",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/64/%C3%89cole_%C3%A9l%C3%A9mentaire%2C_8_rue_Chernoviz%2C_Paris_16e_5-1.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:École_élémentaire,_8_rue_Chernoviz,_Paris_16e_5-1.jpg",
+      "source_label": "Wikimedia Commons",
+      "credit": "<a href=\"//commons.wikimedia.org/wiki/User:Polymagou\" title=\"User:Polymagou\">Polymagou</a>",
+      "license": "CC BY-SA 4.0",
+      "score": 8,
+      "reason": "Façade typique d'une école publique parisienne avec son architecture caractéristique en briques et pierres. Le cadrage est frontal, neutre et de haute qualité, idéal pour une illustration générique."
+    },
+    "college": {
+      "typologie": "college",
+      "label": "Collège parisien",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/7/77/M%C3%A9daille_de_prix_du_coll%C3%A8ge_de_Charlemagne%2C_1848%2C_ND7795%282%29.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Médaille_de_prix_du_collège_de_Charlemagne,_1848,_ND7795(2).jpg",
+      "source_label": "Wikimedia Commons",
+      "credit": "Rogat, Emile (Mauperthuis, en 1799 - Paris, 16–12–1852), graveur en médailles - Médailleur",
+      "license": "CC0",
+      "score": 5,
+      "reason": "Il s'agit d'une photographie de haute qualité d'un objet institutionnel (médaille de prix) appartenant à un collège public parisien. C'est le seul support photographique réel parmi les candidats qui identifie explicitement la typologie demandée, les autres étant des dessins ou des cartes."
+    },
+    "lycee": {
+      "typologie": "lycee",
+      "label": "Lycée parisien",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Lyc%C3%A9e_Janson-de-Sailly%2C_106_rue_de_la_Pompe%2C_Paris_16e_1.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Lycée_Janson-de-Sailly,_106_rue_de_la_Pompe,_Paris_16e_1.jpg",
+      "source_label": "Wikimedia Commons",
+      "credit": "<a href=\"//commons.wikimedia.org/wiki/User:Celette\" title=\"User:Celette\">Celette</a>",
+      "license": "CC BY-SA 4.0",
+      "score": 8,
+      "reason": "Cette photo illustre parfaitement un lycée public parisien prestigieux. La présence de l'inscription 'LYCÉE' et de la devise républicaine 'Liberté Égalité Fraternité' sur la façade ancre immédiatement l'image dans le contexte des services publics et des finances de la ville."
+    },
+    "creche": {
+      "typologie": "creche",
+      "label": "Crèche parisienne",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/b/be/Cr%C3%A8che_municipale%2C_Paris_August_25%2C_2006.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Crèche_municipale,_Paris_August_25,_2006.jpg",
+      "source_label": "Wikimedia Commons",
+      "credit": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/16782093@N03\">Metro Centric</a>",
+      "license": "CC BY 2.0",
+      "score": 8,
+      "reason": "L'identification est immédiate grâce à l'inscription 'CRECHE MUNICIPALE' gravée en façade. L'architecture est typique des équipements publics parisiens du XXe siècle, sobre et fonctionnelle. Le format paysage et la luminosité conviennent parfaitement à une banque d'images."
+    },
+    "gymnase": {
+      "typologie": "gymnase",
+      "label": "Gymnase municipal",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/F8495_Paris_13e_bd_Massena_Halle_G_Carpentier_rwk.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:F8495_Paris_13e_bd_Massena_Halle_G_Carpentier_rwk.jpg",
+      "source_label": "Wikimedia Commons",
+      "credit": "<a href=\"//commons.wikimedia.org/wiki/User:Mbzt\" title=\"User:Mbzt\">Mbzt</a>",
+      "license": "CC BY 4.0",
+      "score": 9,
+      "reason": "Cette photo présente la Halle Georges Carpentier, un équipement emblématique de la Ville de Paris. On y voit clairement la signalétique officielle 'Paris Sports' et le logo de la mairie, ce qui en fait l'illustration parfaite et authentique d'un équipement municipal sans être luxueux."
+    },
+    "piscine": {
+      "typologie": "piscine",
+      "label": "Piscine municipale",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/3/32/%C2%A9camillegharbi_PIERRE_MARCHAND_ARCHITECTES_PONTOISE_02.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:©camillegharbi_PIERRE_MARCHAND_ARCHITECTES_PONTOISE_02.jpg",
+      "source_label": "Wikimedia Commons",
+      "credit": "<a href=\"//commons.wikimedia.org/w/index.php?title=User:Newstoneseller&amp;action=edit&amp;redlink=1\" class=\"new\" title=",
+      "license": "CC BY-SA 4.0",
+      "score": 9,
+      "reason": "Illustration parfaite d'une piscine municipale parisienne emblématique (Pontoise). L'architecture Art Déco avec ses cabines en coursive est caractéristique du patrimoine public de la ville. La photo est de haute qualité, lumineuse, et l'absence de public garantit une neutralité idéale pour un usage générique."
+    },
+    "bibliotheque": {
+      "typologie": "bibliotheque",
+      "label": "Bibliothèque municipale",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Salle_de_lecture_Bibliotheque_Sainte-Genevieve_n01.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Salle_de_lecture_Bibliotheque_Sainte-Genevieve_n01.jpg",
+      "source_label": "Wikimedia Commons",
+      "credit": "<a href=\"//commons.wikimedia.org/wiki/User:Jastrow\" title=\"User:Jastrow\">Marie-Lan Nguyen</a>",
+      "license": "CC BY 2.0 fr",
+      "score": 8,
+      "reason": "Illustration majestueuse d'une salle de lecture publique parisienne (Sainte-Geneviève). Bien que noble, elle est explicitement acceptée comme référence de service public. La photo est nette, de haute qualité et sans présence humaine, ce qui assure une neutralité maximale."
+    },
+    "espace-vert": {
+      "typologie": "espace-vert",
+      "label": "Espace vert parisien",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/All%C3%A9e_Sud_Ouest_Parc_Monceau_-_Paris_VIII_%28FR75%29_-_2021-09-14_-_2.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Allée_Sud_Ouest_Parc_Monceau_-_Paris_VIII_(FR75)_-_2021-09-14_-_2.jpg",
+      "source_label": "Wikimedia Commons",
+      "credit": "<a href=\"//commons.wikimedia.org/wiki/User:Chabe01\" title=\"User:Chabe01\">Chabe01</a>",
+      "license": "CC BY-SA 4.0",
+      "score": 9,
+      "reason": "Cette photo est l'archétype de l'espace vert municipal parisien : on y voit les bancs verts emblématiques, une allée de parc entretenue et des immeubles haussmanniens en arrière-plan qui situent parfaitement le contexte géographique sans être un monument touristique."
+    },
+    "voirie": {
+      "typologie": "voirie",
+      "label": "Voirie parisienne",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/0/0f/V%C3%A9lo_parisien_axe_nord-sud.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Vélo_parisien_axe_nord-sud.jpg",
+      "source_label": "Wikimedia Commons",
+      "credit": "<a href=\"//commons.wikimedia.org/w/index.php?title=User:EcologieParis5&amp;action=edit&amp;redlink=1\" class=\"new\" title=",
+      "license": "CC BY-SA 4.0",
+      "score": 9,
+      "reason": "Cette photo illustre parfaitement la voirie parisienne contemporaine avec ses aménagements typiques : piste cyclable, marquages au sol jaunes, potelets de protection et trottoirs. C'est le sujet principal des budgets de voirie actuels."
+    },
+    "logement-social": {
+      "typologie": "logement-social",
+      "label": "Logement social",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Bruxelles_-_Bloc_Malibran_or_Victory_House.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Bruxelles_-_Bloc_Malibran_or_Victory_House.jpg",
+      "source_label": "Wikimedia Commons",
+      "credit": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/129231073@N06\">Fred Romero</a> from Paris, F",
+      "license": "CC BY 2.0",
+      "score": 6,
+      "reason": "Bâtiment de type HBM (Habitation à Bon Marché) dont l'architecture en brique et béton est quasi identique aux ensembles sociaux parisiens des années 30. C'est l'illustration la plus proche de la typologie demandée malgré sa localisation à Bruxelles."
+    },
+    "equipement-culturel": {
+      "typologie": "equipement-culturel",
+      "label": "Équipement culturel",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Fa%C3%A7ade_du_th%C3%A9%C3%A2tre_de_l%27Od%C3%A9on%2C_6%C3%A8me_arrondissement%2C_Paris%2C_PH77163.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Façade_du_théâtre_de_l'Odéon,_6ème_arrondissement,_Paris,_PH77163.jpg",
+      "source_label": "Wikimedia Commons",
+      "credit": "Blancard, Hippolyte (1843 - 1924), photographe",
+      "license": "CC0",
+      "score": 8,
+      "reason": "Le Théâtre de l'Odéon est une institution culturelle publique emblématique. Son architecture classique et monumentale illustre parfaitement la notion d'équipement culturel de prestige mais à vocation publique, contrairement aux théâtres privés de boulevard."
+    },
+    "equipement-sante": {
+      "typologie": "equipement-sante",
+      "label": "Équipement santé",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/4/48/Paris_20e_-_H%C3%B4pital_Tenon_-_Cour_principale_et_chapelle_Saint-Louis.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Paris_20e_-_Hôpital_Tenon_-_Cour_principale_et_chapelle_Saint-Louis.jpg",
+      "source_label": "Wikimedia Commons",
+      "credit": "<a href=\"//commons.wikimedia.org/wiki/User:Romainbehar\" title=\"User:Romainbehar\">Romainbehar</a>",
+      "license": "CC0",
+      "score": 8,
+      "reason": "Cette photo de l'hôpital Tenon offre une vue d'ensemble claire, moderne et institutionnelle d'un grand équipement de santé public parisien. L'architecture est sobre et le lieu est immédiatement identifiable comme un espace public de soin."
+    },
+    "administration": {
+      "typologie": "administration",
+      "label": "Bâtiment administratif",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Paris_Mairie_XIIIe_fa%C3%A7ade_2014.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Paris_Mairie_XIIIe_façade_2014.jpg",
+      "source_label": "Wikimedia Commons",
+      "credit": "<p><a href=\"//commons.wikimedia.org/wiki/User:JLPC\" title=\"User:JLPC\">JLPC</a>\n</p>",
+      "license": "CC BY-SA 3.0",
+      "score": 9,
+      "reason": "Cette photo de la mairie du 13e arrondissement est la plus adaptée : elle est moderne, en couleur, et montre l'intégralité d'un bâtiment administratif municipal emblématique avec ses drapeaux et son architecture institutionnelle reconnaissable."
+    },
+    "autre": {
+      "typologie": "autre",
+      "label": "Équipement public divers",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/d/dc/AED_dans_le_hall_du_b%C3%A2timent_Olympe_de_Gouges%2C_universit%C3%A9_Paris_Diderot.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:AED_dans_le_hall_du_bâtiment_Olympe_de_Gouges,_université_Paris_Diderot.jpg",
+      "source_label": "Wikimedia Commons",
+      "credit": "<bdi><a href=\"https://www.wikidata.org/wiki/Q42790984\" class=\"extiw\" title=\"d:Q42790984\"><span title=\"French computing e",
+      "license": "CC0",
+      "score": 6,
+      "reason": "Seule photo moderne, nette et techniquement exploitable illustrant un équipement de service public (sécurité/santé) que l'on retrouve dans tous les bâtiments municipaux. L'aspect fonctionnel et sobre correspond bien à l'idée d'un investissement public ordinaire."
+    }
+  },
+  "generated_at": "2026-04-20T22:46:31"
+}

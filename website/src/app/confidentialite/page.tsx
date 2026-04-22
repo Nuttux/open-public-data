@@ -1,15 +1,24 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { optOut, optIn, isCurrentlyOptedOut } from '@/lib/hooks/useAnalytics';
+import {
+  optOutAnalytics as optOut,
+  optInAnalytics as optIn,
+  isOptedOutAnalytics as isCurrentlyOptedOut,
+  isReplayOptedIn,
+  enableReplay,
+  disableReplay,
+} from '@/components/AnalyticsProvider';
 import { useT } from '@/lib/localeContext';
 
 export default function ConfidentialitePage() {
   const t = useT();
   const [isOptedOut, setIsOptedOut] = useState(false);
+  const [replayOn, setReplayOn] = useState(false);
 
   useEffect(() => {
     setIsOptedOut(isCurrentlyOptedOut());
+    setReplayOn(isReplayOptedIn());
   }, []);
 
   const handleToggle = () => {
@@ -19,6 +28,17 @@ export default function ConfidentialitePage() {
     } else {
       optOut();
       setIsOptedOut(true);
+      setReplayOn(false);
+    }
+  };
+
+  const handleReplayToggle = () => {
+    if (replayOn) {
+      disableReplay();
+      setReplayOn(false);
+    } else {
+      enableReplay();
+      setReplayOn(true);
     }
   };
 
@@ -124,7 +144,44 @@ export default function ConfidentialitePage() {
             </p>
           </section>
 
-          {/* Opt-out toggle */}
+          {/* Session replay opt-in */}
+          <section className="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <h3 className="text-base font-semibold text-slate-100">
+                  Enregistrement de session (optionnel)
+                </h3>
+                <p className="text-slate-400 text-sm mt-1">
+                  {replayOn
+                    ? "Activé — merci, votre session est enregistrée de façon anonyme et masquée. Révocable à tout moment."
+                    : "Désactivé — vous pouvez nous aider à repérer les bugs et friction UX en autorisant l'enregistrement anonyme de votre session. Les saisies clavier sont masquées, aucun partage tiers, hébergement UE, rétention 30 jours."}
+                </p>
+              </div>
+              <button
+                onClick={handleReplayToggle}
+                disabled={isOptedOut}
+                className={`
+                  relative inline-flex h-7 w-12 shrink-0 cursor-pointer rounded-full border-2 border-transparent
+                  transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-900
+                  disabled:opacity-40 disabled:cursor-not-allowed
+                  ${replayOn ? 'bg-emerald-600' : 'bg-slate-600'}
+                `}
+                role="switch"
+                aria-checked={replayOn}
+                aria-label="Toggle session replay"
+              >
+                <span
+                  className={`
+                    pointer-events-none inline-block h-6 w-6 transform rounded-full bg-white shadow ring-0
+                    transition duration-200 ease-in-out
+                    ${replayOn ? 'translate-x-5' : 'translate-x-0'}
+                  `}
+                />
+              </button>
+            </div>
+          </section>
+
+          {/* Full opt-out toggle */}
           <section className="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
             <div className="flex items-center justify-between gap-4">
               <div>

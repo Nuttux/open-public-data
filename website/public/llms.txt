@@ -1,0 +1,34 @@
+# Données Lumières
+
+> Open data de la Ville de Paris et des 20 plus grandes villes françaises, rendue lisible. Budget, subventions, marchés publics, logements sociaux, investissements : visualisations interactives et données téléchargeables.
+
+Site produit par Données Lumières, une initiative citoyenne indépendante. Pipeline open source qui transforme les Comptes administratifs (Open Data Paris) et les données DGFiP / OFGL / DECP en visualisations Sankey, tableaux de bord et cartes.
+
+## Sections principales
+
+- [Accueil](https://franceopendata.org/): vue d'ensemble du budget de Paris.
+- [Budget de Paris](https://franceopendata.org/budget): 11,7 Md€ en 2026 (budget voté), ventilés en Sankey par section (fonctionnement / investissement), par thématique et par entité. Séries 2019-2026. Source : Open Data Paris (Comptes administratifs).
+- [Évolution pluriannuelle](https://franceopendata.org/evolution): recettes, dépenses, solde, épargne brute depuis 2019, avec comparaison voté vs exécuté.
+- [Subventions](https://franceopendata.org/subventions): plus de 6 000 subventions / an versées par Paris aux associations et organismes. Années 2018-2024 (2020-2021 manquantes pour cause COVID).
+- [Investissements](https://franceopendata.org/investissements): projets municipaux géolocalisés arrondissement par arrondissement, extraits des PDFs du Conseil de Paris.
+- [Patrimoine & dette](https://franceopendata.org/patrimoine): bilan comptable annuel (actif, passif, fonds propres, dette financière).
+- [Marchés publics](https://franceopendata.org/marches-publics): commande publique de Paris depuis 2017 (source DECP).
+- [Logements sociaux](https://franceopendata.org/logements): carte des logements sociaux financés par Paris depuis 2010.
+- [Tableau de bord](https://franceopendata.org/tableau-de-bord): KPI financiers synthétiques (coût par habitant, taux d'épargne, part de l'investissement).
+- [Prévision / voté vs exécuté](https://franceopendata.org/prevision): écarts entre budget voté et dépenses réellement exécutées.
+- [Blog](https://franceopendata.org/blog): articles méthodologiques et décryptages.
+- [Villes françaises](https://franceopendata.org/fr/villes): comparaison des finances des 20 plus grandes villes de France (source DGFiP normalisée).
+
+## Données et méthodologie
+
+- **Paris** : principale source = Open Data Paris (Comptes administratifs), complétée par les PDFs du Conseil de Paris (investissements localisés) et la SCDL (subventions).
+- **Villes françaises** : source = DGFiP (Comptes individuels des collectivités) + OFGL + DECP. Ces données sont normalisées au format national, ce qui permet la comparaison inter-villes. Attention : pour Paris, les chiffres DGFiP de la section Villes diffèrent du Compte administratif officiel utilisé sur `/budget` (périmètres comptables différents, écart possible de plusieurs centaines de millions d'euros).
+- Pipeline : open source (Python, BigQuery, dbt) — transformation reproductible.
+- Population Paris utilisée pour les ratios par habitant : 2 133 111 (INSEE).
+- Années COVID (2020, 2021) marquées d'un astérisque sur les graphiques d'évolution et exclues de certaines comparaisons.
+
+## Licence
+
+- Données brutes : licences d'origine (Licence Ouverte pour Open Data Paris, ODbL pour certaines).
+- Code source : open source sur GitHub.
+- Contenu éditorial : libre de réutilisation avec attribution.

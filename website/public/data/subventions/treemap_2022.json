@@ -1,48 +1,40 @@
 {
   "year": 2022,
-  "generated_at": "2026-02-18T16:41:42.841874",
+  "generated_at": "2026-04-22T18:17:23.109388",
   "total_montant": 1167565895.0,
   "nb_thematiques": 15,
   "data": [
     {
       "annee": 2022,
       "thematique": "Social - Solidarité",
-      "nb_beneficiaires": 242,
-      "nb_subventions": 242,
-      "montant_total": 448207376.0,
-      "pct_total": 38.39
+      "nb_beneficiaires": 258,
+      "nb_subventions": 258,
+      "montant_total": 449927963.0,
+      "pct_total": 38.54
     },
     {
       "annee": 2022,
       "thematique": "Logement",
-      "nb_beneficiaires": 39,
-      "nb_subventions": 39,
-      "montant_total": 212400111.0,
-      "pct_total": 18.19
+      "nb_beneficiaires": 40,
+      "nb_subventions": 40,
+      "montant_total": 212540111.0,
+      "pct_total": 18.2
     },
     {
       "annee": 2022,
       "thematique": "Culture",
-      "nb_beneficiaires": 341,
-      "nb_subventions": 341,
-      "montant_total": 157378298.0,
+      "nb_beneficiaires": 346,
+      "nb_subventions": 346,
+      "montant_total": 157441915.0,
       "pct_total": 13.48
     },
     {
       "annee": 2022,
       "thematique": "Éducation",
-      "nb_beneficiaires": 248,
-      "nb_subventions": 249,
-      "montant_total": 125824698.0,
-      "pct_total": 10.78
-    },
-    {
-      "annee": 2022,
-      "thematique": "Économie",
-      "nb_beneficiaires": 1814,
-      "nb_subventions": 1814,
-      "montant_total": 46005334.0,
-      "pct_total": 3.94
+      "nb_beneficiaires": 251,
+      "nb_subventions": 252,
+      "montant_total": 126127956.0,
+      "pct_total": 10.8
     },
     {
       "annee": 2022,
@@ -54,19 +46,27 @@
     },
     {
       "annee": 2022,
+      "thematique": "Économie",
+      "nb_beneficiaires": 1801,
+      "nb_subventions": 1801,
+      "montant_total": 44773938.0,
+      "pct_total": 3.83
+    },
+    {
+      "annee": 2022,
       "thematique": "Social - Petite enfance",
-      "nb_beneficiaires": 101,
-      "nb_subventions": 101,
-      "montant_total": 40160203.0,
-      "pct_total": 3.44
+      "nb_beneficiaires": 104,
+      "nb_subventions": 104,
+      "montant_total": 40465732.0,
+      "pct_total": 3.47
     },
     {
       "annee": 2022,
       "thematique": "Non classifié",
-      "nb_beneficiaires": 2198,
-      "nb_subventions": 2198,
-      "montant_total": 22954929.0,
-      "pct_total": 1.97
+      "nb_beneficiaires": 2174,
+      "nb_subventions": 2174,
+      "montant_total": 20918912.0,
+      "pct_total": 1.79
     },
     {
       "annee": 2022,
@@ -79,42 +79,42 @@
     {
       "annee": 2022,
       "thematique": "Santé",
-      "nb_beneficiaires": 55,
-      "nb_subventions": 55,
-      "montant_total": 18580312.0,
-      "pct_total": 1.59
+      "nb_beneficiaires": 59,
+      "nb_subventions": 59,
+      "montant_total": 18819234.0,
+      "pct_total": 1.61
     },
     {
       "annee": 2022,
       "thematique": "Sport",
-      "nb_beneficiaires": 192,
-      "nb_subventions": 192,
-      "montant_total": 12685221.0,
-      "pct_total": 1.09
+      "nb_beneficiaires": 191,
+      "nb_subventions": 191,
+      "montant_total": 12645221.0,
+      "pct_total": 1.08
     },
     {
       "annee": 2022,
       "thematique": "Administration",
-      "nb_beneficiaires": 13,
-      "nb_subventions": 13,
-      "montant_total": 11288681.0,
+      "nb_beneficiaires": 14,
+      "nb_subventions": 14,
+      "montant_total": 11379681.0,
       "pct_total": 0.97
     },
     {
       "annee": 2022,
       "thematique": "International",
-      "nb_beneficiaires": 46,
-      "nb_subventions": 46,
-      "montant_total": 3740006.0,
-      "pct_total": 0.32
+      "nb_beneficiaires": 49,
+      "nb_subventions": 49,
+      "montant_total": 3874006.0,
+      "pct_total": 0.33
     },
     {
       "annee": 2022,
       "thematique": "Environnement",
-      "nb_beneficiaires": 33,
-      "nb_subventions": 33,
-      "montant_total": 2353306.0,
-      "pct_total": 0.2
+      "nb_beneficiaires": 35,
+      "nb_subventions": 35,
+      "montant_total": 2663806.0,
+      "pct_total": 0.23
     },
     {
       "annee": 2022,

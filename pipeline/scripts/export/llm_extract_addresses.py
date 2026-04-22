@@ -44,6 +44,10 @@ MIN_CONFIDENCE = 0.85
 
 # API
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+# Gemini 3 Flash — address extraction with double-validation via BAN
+# downstream. Default to full 3 Flash for reliability; try 3.1 Flash-Lite
+# (GEMINI_MODEL=gemini-3-1-flash-lite) when optimising cost on bulk reruns.
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3-flash-preview")
 BAN_API_URL = "https://api-adresse.data.gouv.fr/search"
 
 # Rate limiting
@@ -89,7 +93,7 @@ def init_gemini():
     if not GEMINI_API_KEY:
         raise ValueError("GEMINI_API_KEY non définie")
     genai.configure(api_key=GEMINI_API_KEY)
-    return genai.GenerativeModel('gemini-2.0-flash')
+    return genai.GenerativeModel(GEMINI_MODEL)
 
 
 def extract_address_llm(model, project_name: str, arrondissement: int | None) -> dict | None:

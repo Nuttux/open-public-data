@@ -49,7 +49,7 @@ def run_script(script_name: str, args: list = None) -> bool:
 
 def main():
     parser = argparse.ArgumentParser(description="Pipeline d'enrichissement LLM")
-    parser.add_argument('--step', type=int, choices=[1, 2], 
+    parser.add_argument('--step', type=int, choices=[1, 2, 3],
                        help="Exécuter uniquement cette étape")
     parser.add_argument('--limit', type=int, 
                        help="Limiter le nombre d'éléments par étape (Pareto filter)")
@@ -71,14 +71,15 @@ def main():
     # Étapes d'enrichissement restantes (LLM uniquement)
     steps = {
         1: ('enrich_geo_ap_llm.py', 'Géolocalisation AP/CP (LLM Gemini)'),
-        2: ('enrich_thematique_llm.py', 'Classification thématique (LLM Gemini)')
+        2: ('enrich_thematique_llm.py', 'Classification thématique (LLM Gemini)'),
+        3: ('enrich_beneficiaire_grounded_llm.py', 'Vérification long tail (grounded search Gemini)'),
     }
-    
+
     # Déterminer quelles étapes exécuter
     if args.step:
         steps_to_run = [args.step]
     else:
-        steps_to_run = [1, 2]
+        steps_to_run = [1, 2, 3]
     
     print(f"\nÉtapes à exécuter: {steps_to_run}")
     if args.limit:

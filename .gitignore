@@ -45,3 +45,18 @@ __pycache__/
 # Temp files
 *.json.bak
 *.log
+
+# Large local assets
+mockups/
+archive/
+instagram-stories/
+
+# Pipeline outputs
+pipeline/output/
+
+# Backup directories
+.git.broken/
+
+# Scraped PDF deliberation cache (rebuilt by scrape_deliberations.py)
+pipeline/cache/delibs/pdf/
+pipeline/cache/delibs/html/
