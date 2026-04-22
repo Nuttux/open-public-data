@@ -188,6 +188,8 @@ export type LandingStats = {
   deltaVsLastExecutedPerMonth: number;
   lastExecutedYear: number;
   breakdown: { label: string; annual: number; perMonth: number }[];
+  nbMarchesCumul: number;
+  nbSubventionsCumul: number;
 };
 
 /**
@@ -220,6 +222,21 @@ export function loadLandingStats(): LandingStats {
     }))
     .sort((a, b) => b.annual - a.annual);
 
+  const marchesIdx = readJson<{ totalsByYear: Record<string, { nb_marches: number }> }>(
+    "marches-publics/index.json",
+  );
+  const subventionsIdx = readJson<{ totalsByYear: Record<string, { nb_subventions: number }> }>(
+    "subventions/index.json",
+  );
+  const nbMarchesCumul = Object.values(marchesIdx.totalsByYear).reduce(
+    (s, v) => s + (v.nb_marches ?? 0),
+    0,
+  );
+  const nbSubventionsCumul = Object.values(subventionsIdx.totalsByYear).reduce(
+    (s, v) => s + (v.nb_subventions ?? 0),
+    0,
+  );
+
   return {
     year,
     totalDepenses,
@@ -229,6 +246,8 @@ export function loadLandingStats(): LandingStats {
     deltaVsLastExecutedPerMonth,
     lastExecutedYear,
     breakdown,
+    nbMarchesCumul,
+    nbSubventionsCumul,
   };
 }
 
@@ -2125,6 +2144,9 @@ export type LogementSocialData = {
   nbOperations: number;
   sruRatio: number;
   sruTarget: number;
+  /** Year the SRU ratio and stock total refer to — fixed to the latest
+   *  official DDT inventory even when the YearPicker is on an earlier year. */
+  sruYear: number;
   stockTotal: number;
   byArrondissement: { arr: number; logements: number; operations: number }[];
   bailleurs: { name: string; type: string; color: string; share: number; description: string }[];
@@ -2182,9 +2204,13 @@ export function loadLogementSocialData(requestedYear?: number): LogementSocialDa
     { name: "Autres bailleurs", type: "Divers", color: "#e4e6ea", share: 6, description: "Dizaines de petits bailleurs sociaux et coopératifs." },
   ];
 
-  // SRU officiel : Paris à 24,5 % au 31/12/2024 (source : DDT Paris)
+  // SRU officiel : Paris à 24,5 % au 31/12/2024 (source : DDT Paris).
+  // Figé à l'inventaire le plus récent même si l'utilisateur sélectionne une
+  // année antérieure dans le YearPicker — pas de jeu de valeurs historiques
+  // dans nos sources ouvertes actuelles.
   const sruRatio = 24.5;
   const sruTarget = 25;
+  const sruYear = 2024;
   // Stock SRU inventaire 2024 : 258 400 logements sociaux sur 1 055 000 résidences principales
   const stockTotal = 258_400;
 
@@ -2206,6 +2232,7 @@ export function loadLogementSocialData(requestedYear?: number): LogementSocialDa
     nbOperations,
     sruRatio,
     sruTarget,
+    sruYear,
     stockTotal,
     byArrondissement,
     bailleurs,

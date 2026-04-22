@@ -5,6 +5,7 @@ import type { FournisseurFiche as FournisseurFicheType, SireneCompany } from "@/
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
+import Tip from "./Tip";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
@@ -114,13 +115,13 @@ export default function FournisseurFiche({
           <dl>
             {fournisseur.siret !== "#" && (
               <div className="fx-fiche-prop">
-                <dt>SIRET</dt>
+                <dt><Tip label={t("fx.fiche.siret.tip")}>SIRET</Tip></dt>
                 <dd style={{ fontFamily: "var(--f-mono)" }}>{fournisseur.siret}</dd>
               </div>
             )}
             {fournisseur.siren && fournisseur.siren !== "#" && (
               <div className="fx-fiche-prop">
-                <dt>SIREN</dt>
+                <dt><Tip label={t("fx.fiche.siren.tip")}>SIREN</Tip></dt>
                 <dd style={{ fontFamily: "var(--f-mono)" }}>{fournisseur.siren}</dd>
               </div>
             )}

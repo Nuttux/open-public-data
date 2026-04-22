@@ -306,7 +306,7 @@ export default function QuiRecoitClient({
               <h3>{fill(t("fx.qr.src.c1.h"), { year: d.year })}</h3>
               <p>{t("fx.qr.src.c1.p")}</p>
               <a
-                href="https://opendata.paris.fr/explore/dataset/subventions-accordees-et-refusees"
+                href="https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -317,7 +317,7 @@ export default function QuiRecoitClient({
               <div className="n">{t("fx.qr.src.c2.n")}</div>
               <h3>{t("fx.qr.src.c2.h")}</h3>
               <p>{t("fx.qr.src.c2.p")}</p>
-              <a href="/methode#subventions">{t("fx.s.methode_lien")}</a>
+              <a href="/methode?tool=subventions#outils">{t("fx.s.methode_lien")}</a>
             </div>
             <div>
               <div className="n">{t("fx.qr.src.c3.n")}</div>
@@ -343,7 +343,7 @@ export default function QuiRecoitClient({
               },
               { label: t("fx.qr.src.export.json"), href: `/data/subventions/beneficiaires_${d.year}.json` },
               { label: t("fx.qr.src.export.treemap"), href: `/data/subventions/treemap_${d.year}.json` },
-              { label: t("fx.qr.src.export.method"), href: "/methode#subventions" },
+              { label: t("fx.qr.src.export.method"), href: "/methode?tool=subventions#outils" },
             ]}
           />
         </div>

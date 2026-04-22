@@ -5,6 +5,7 @@ import type { ContratFiche as ContratFicheType, ContratRanking, MarcheVulgarizat
 import { normalizeObjet, isObjetCryptic } from "@/lib/objet-normalizer";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
+import Tip from "./Tip";
 
 export default function ContratFiche({
   contrat,
@@ -168,7 +169,7 @@ export default function ContratFiche({
             )}
             {contrat.fournisseurSiret && contrat.fournisseurSiret !== "#" && (
               <div className="fx-fiche-prop">
-                <dt>SIRET</dt>
+                <dt><Tip label={t("fx.fiche.siret.tip")}>SIRET</Tip></dt>
                 <dd style={{ fontFamily: "var(--f-mono)" }}>{contrat.fournisseurSiret}</dd>
               </div>
             )}

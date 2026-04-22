@@ -48,7 +48,13 @@ export default function LandingClient({ stats }: Props) {
             <ScopeDropdown variant="h1" />
             {t("fx.land.h1.after")}
           </h1>
-          <p className="fx-lede">{t("fx.land.lede")}</p>
+          <p className="fx-lede">
+            {fill("fx.land.lede", {
+              budget: fmtBillions(stats.totalDepenses),
+              nbMarches: fmtInt(Math.floor(stats.nbMarchesCumul / 1000) * 1000),
+              nbSubventions: fmtInt(Math.floor(stats.nbSubventionsCumul / 1000) * 1000),
+            })}
+          </p>
           <div className="fx-ctas">
             <Button variant="primary" href="/budget">
               {fill("fx.land.cta.explore", { year: stats.year })}
