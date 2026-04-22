@@ -1,6 +1,6 @@
 {
   "year": 2022,
-  "generated_at": "2026-04-21T23:16:31.502377+00:00",
+  "generated_at": "2026-04-22T08:23:41.238224+00:00",
   "totals": {
     "capital_restant": 11409948308,
     "montant_initial": 14229563721,
@@ -69,121 +69,3261 @@
       "arr": 1,
       "capital_restant": 58933384,
       "count_emprunts": 136,
-      "share_of_localized": 0.007363149453593267
+      "share_of_localized": 0.007363149453593267,
+      "top_beneficiaires": [
+        {
+          "name": "ELOGIE-SIEMP (SEML)",
+          "capital_restant": 24409528,
+          "count_emprunts": 89,
+          "share_of_arr": 0.4141884775765061
+        },
+        {
+          "name": "RIVP (SEM)",
+          "capital_restant": 19891458,
+          "count_emprunts": 21,
+          "share_of_arr": 0.3375244580942322
+        },
+        {
+          "name": "PARIS Habitat OPH (EP)",
+          "capital_restant": 8616150,
+          "count_emprunts": 13,
+          "share_of_arr": 0.1462015233260079
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "Diverses réhabilitation - 75001 - RGT",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "capital_restant": 6360808,
+          "taux_type": "FIXE",
+          "taux_actuariel": 2.15
+        },
+        {
+          "objet": "42, rue du Louvre - 75001 - RGT - NSG",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 2962626,
+          "taux_type": "FIXE",
+          "taux_actuariel": 0.98
+        },
+        {
+          "objet": "Rue Arbre Sec - 75001",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 2863802,
+          "taux_type": "V",
+          "taux_actuariel": 2.81
+        },
+        {
+          "objet": "Rue Arbre Sec - 75001",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 2786901,
+          "taux_type": "V",
+          "taux_actuariel": 1.53
+        },
+        {
+          "objet": "Rue Rambuteau - 75001 - 75003 - 75004",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 2751486,
+          "taux_type": "FIXE",
+          "taux_actuariel": 1.67
+        },
+        {
+          "objet": "85, rue Rambuteau - 75001",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "LBP",
+          "annee_mobilisation": 2017,
+          "capital_restant": 1713833,
+          "taux_type": "FIXE",
+          "taux_actuariel": 1.44
+        },
+        {
+          "objet": "10 rue Molière et 21 rue Richelieu - 75001 - RGT",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 1604352,
+          "taux_type": "V",
+          "taux_actuariel": 2.36
+        },
+        {
+          "objet": "112 - 118 rue Rambuteau - 75001",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2013,
+          "capital_restant": 1547922,
+          "taux_type": "FIXE",
+          "taux_actuariel": 2.35
+        },
+        {
+          "objet": "8 rue Molière et 19 rue Richelieu - 75001 - RGT",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "capital_restant": 1474965,
+          "taux_type": "V",
+          "taux_actuariel": 2.74
+        },
+        {
+          "objet": "85, rue Rambuteau - 75001 - TRST - RGT",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2004,
+          "capital_restant": 1289630,
+          "taux_type": "V",
+          "taux_actuariel": 2.93
+        },
+        {
+          "objet": "5-11 rue des Deux Boules - 75001 - RGT",
+          "beneficiaire": "Immobilière 3F - I3F (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 1264000,
+          "taux_type": "V",
+          "taux_actuariel": 2.48
+        },
+        {
+          "objet": "65, rue Jean-Jacques Rousseau - 75001 - NSG",
+          "beneficiaire": "Toit et Joie (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "capital_restant": 1114000,
+          "taux_type": "V",
+          "taux_actuariel": 1.72
+        },
+        {
+          "objet": "42 rue du Louvre - 75001",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2013,
+          "capital_restant": 1034810,
+          "taux_type": "V",
+          "taux_actuariel": 1.28
+        },
+        {
+          "objet": "8 rue Molière et 19 rue Richelieu - 75001 - RGT",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 972053,
+          "taux_type": "V",
+          "taux_actuariel": 2.36
+        },
+        {
+          "objet": "90 rue Saint Denis - 75001",
+          "beneficiaire": "Toit et Joie (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2011,
+          "capital_restant": 799362,
+          "taux_type": "V",
+          "taux_actuariel": 2.2
+        }
+      ]
     },
     {
       "arr": 2,
       "capital_restant": 48731633,
       "count_emprunts": 126,
-      "share_of_localized": 0.0060885405366022625
+      "share_of_localized": 0.0060885405366022625,
+      "top_beneficiaires": [
+        {
+          "name": "PARIS Habitat OPH (EP)",
+          "capital_restant": 16426982,
+          "count_emprunts": 22,
+          "share_of_arr": 0.3370907275137235
+        },
+        {
+          "name": "ELOGIE-SIEMP (SEML)",
+          "capital_restant": 15103601,
+          "count_emprunts": 57,
+          "share_of_arr": 0.3099342241287956
+        },
+        {
+          "name": "RIVP (SEM)",
+          "capital_restant": 5900070,
+          "count_emprunts": 13,
+          "share_of_arr": 0.12107269664157257
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "25 boulevard Poissonnière - 75002 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 4019381,
+          "taux_type": "V",
+          "taux_actuariel": 2.28
+        },
+        {
+          "objet": "24 rue de la Banque - 75002 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 2994269,
+          "taux_type": "V",
+          "taux_actuariel": 2.29
+        },
+        {
+          "objet": "13 rue Léopold Bellan - 75002 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 1561691,
+          "taux_type": "V",
+          "taux_actuariel": 2.44
+        },
+        {
+          "objet": "24 rue de la Banque - 75002",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2010,
+          "capital_restant": 1515228,
+          "taux_type": "V",
+          "taux_actuariel": 1.34
+        },
+        {
+          "objet": "54 rue d'Aboukir - 75002",
+          "beneficiaire": "Toit et Joie (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2011,
+          "capital_restant": 1494313,
+          "taux_type": "V",
+          "taux_actuariel": 2.2
+        },
+        {
+          "objet": "6 rue des Jeûneurs - 75002 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 1356428,
+          "taux_type": "V",
+          "taux_actuariel": 2.43
+        },
+        {
+          "objet": "13, bld Saint Denis - 75002 - TRST - RGT",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2006,
+          "capital_restant": 1170520,
+          "taux_type": "V",
+          "taux_actuariel": 2.76
+        },
+        {
+          "objet": "18, rue Poissonnière - 75002 - RGT",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 1165141,
+          "taux_type": "V",
+          "taux_actuariel": 2.73
+        },
+        {
+          "objet": "4 rue d'Aboukir - 75002 - TRST",
+          "beneficiaire": "L'Habitation Confortable (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2008,
+          "capital_restant": 1086783,
+          "taux_type": "V",
+          "taux_actuariel": 1.27
+        },
+        {
+          "objet": "13 Boulevard St Denis - 75002 - TRST",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2006,
+          "capital_restant": 1066077,
+          "taux_type": "V",
+          "taux_actuariel": 2.3
+        },
+        {
+          "objet": "Avenue Montmartre - 75002 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "LBP",
+          "annee_mobilisation": 2015,
+          "capital_restant": 1015754,
+          "taux_type": "FIXE",
+          "taux_actuariel": 1.19
+        },
+        {
+          "objet": "75-77 rue Réaumur - 75002",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "capital_restant": 998032,
+          "taux_type": "V",
+          "taux_actuariel": 1.46
+        },
+        {
+          "objet": "Rue Saint Augustin - 75002",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 976607,
+          "taux_type": "FIXE",
+          "taux_actuariel": 1.67
+        },
+        {
+          "objet": "25 boulevard Poissonnière - 75002",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2010,
+          "capital_restant": 929162,
+          "taux_type": "V",
+          "taux_actuariel": 1.33
+        },
+        {
+          "objet": "13 rue Léopold Bellan -75002",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2010,
+          "capital_restant": 800552,
+          "taux_type": "V",
+          "taux_actuariel": 1.3
+        }
+      ]
     },
     {
       "arr": 3,
       "capital_restant": 91744345,
       "count_emprunts": 190,
-      "share_of_localized": 0.011462557873808451
+      "share_of_localized": 0.011462557873808451,
+      "top_beneficiaires": [
+        {
+          "name": "RIVP (SEM)",
+          "capital_restant": 32928663,
+          "count_emprunts": 54,
+          "share_of_arr": 0.35891763499442864
+        },
+        {
+          "name": "ELOGIE-SIEMP (SEML)",
+          "capital_restant": 27541730,
+          "count_emprunts": 89,
+          "share_of_arr": 0.3002008467670719
+        },
+        {
+          "name": "PARIS Habitat OPH (EP)",
+          "capital_restant": 12382058,
+          "count_emprunts": 22,
+          "share_of_arr": 0.13496263329072963
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "Acquisition siège Beaubourg - 75003",
+          "beneficiaire": "Association Office Tourisme CP",
+          "preteur": "SG",
+          "annee_mobilisation": 2021,
+          "capital_restant": 6345685,
+          "taux_type": "FIXE",
+          "taux_actuariel": 1.5
+        },
+        {
+          "objet": "59 rue Olivier Métra - 75003",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "capital_restant": 5098329,
+          "taux_type": "V",
+          "taux_actuariel": 2.83
+        },
+        {
+          "objet": "4/26-19/23 Passage Molière - 75003",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "capital_restant": 3685339,
+          "taux_type": "V",
+          "taux_actuariel": 2.22
+        },
+        {
+          "objet": "59, rue Olivier Métra - 75003 - RGT",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 3475416,
+          "taux_type": "V",
+          "taux_actuariel": 2.71
+        },
+        {
+          "objet": "60, rue Notre Dame de Nazareth - 75003 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 3142074,
+          "taux_type": "V",
+          "taux_actuariel": 1.8
+        },
+        {
+          "objet": "21, rue des Fontaines du Temple - 75003 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 2760592,
+          "taux_type": "V",
+          "taux_actuariel": 3.11
+        },
+        {
+          "objet": "25 rue Michel Lecomte - 75003",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CE",
+          "annee_mobilisation": 2013,
+          "capital_restant": 2438309,
+          "taux_type": "FIXE",
+          "taux_actuariel": 3.19
+        },
+        {
+          "objet": "12, rue de Béarn - 75003",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 2228696,
+          "taux_type": "V",
+          "taux_actuariel": 2.33
+        },
+        {
+          "objet": "25, rue Michel le Comte - 75003 - RGT - NSG",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 1975582,
+          "taux_type": "FIXE",
+          "taux_actuariel": 0.98
+        },
+        {
+          "objet": "12, rue de Béarn - 75003",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "capital_restant": 1964313,
+          "taux_type": "V",
+          "taux_actuariel": 2.33
+        },
+        {
+          "objet": "21, rue des Fontaines du Temple - 75003 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 1874056,
+          "taux_type": "V",
+          "taux_actuariel": 3.11
+        },
+        {
+          "objet": "25 rue Michel le Compte - 75003",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "capital_restant": 1763161,
+          "taux_type": "V",
+          "taux_actuariel": 1.28
+        },
+        {
+          "objet": "66-70 rue Réaumur - 75003 - RGT",
+          "beneficiaire": "Immobilière 3F - I3F (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 1704253,
+          "taux_type": "V",
+          "taux_actuariel": 2.62
+        },
+        {
+          "objet": "23 bd du Temple - 75003",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 1667011,
+          "taux_type": "V",
+          "taux_actuariel": 1.53
+        },
+        {
+          "objet": "33, rue Chapon - 75003 - NSG",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 1548572,
+          "taux_type": "V",
+          "taux_actuariel": 3.11
+        }
+      ]
     },
     {
       "arr": 4,
       "capital_restant": 91308797,
       "count_emprunts": 163,
-      "share_of_localized": 0.011408140448010504
+      "share_of_localized": 0.011408140448010504,
+      "top_beneficiaires": [
+        {
+          "name": "PARIS Habitat OPH (EP)",
+          "capital_restant": 21698342,
+          "count_emprunts": 40,
+          "share_of_arr": 0.23763693177092943
+        },
+        {
+          "name": "Immobilière 3F - I3F (SA HLM)",
+          "capital_restant": 20724480,
+          "count_emprunts": 11,
+          "share_of_arr": 0.2269713430881675
+        },
+        {
+          "name": "RIVP (SEM)",
+          "capital_restant": 20070200,
+          "count_emprunts": 26,
+          "share_of_arr": 0.2198057658077024
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "Village Saint Paul - 75004",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 7592165,
+          "taux_type": "FIXE",
+          "taux_actuariel": 1.67
+        },
+        {
+          "objet": "17, bd Morland - 75004 - NSG",
+          "beneficiaire": "Immobilière 3F - I3F (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 4928000,
+          "taux_type": "V",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "47, rue des Francs Bourgeois  - 75004 - RGT",
+          "beneficiaire": "Immobilière 3F - I3F (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2002,
+          "capital_restant": 3834573,
+          "taux_type": "V",
+          "taux_actuariel": 3.69
+        },
+        {
+          "objet": "2 rue Crillon - 75004 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 3401877,
+          "taux_type": "V",
+          "taux_actuariel": 2.25
+        },
+        {
+          "objet": "17, bd Morland - 75004 - NSG",
+          "beneficiaire": "Immobilière 3F - I3F (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 3075000,
+          "taux_type": "V",
+          "taux_actuariel": 2.24
+        },
+        {
+          "objet": "Village Saint Paul - 75004",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 2976117,
+          "taux_type": "V",
+          "taux_actuariel": 1.43
+        },
+        {
+          "objet": "17, bd Morland - 75004 - NSG",
+          "beneficiaire": "Immobilière 3F - I3F (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 2836000,
+          "taux_type": "V",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "17, bd Morland - 75004 - NSG",
+          "beneficiaire": "Immobilière 3F - I3F (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 2542000,
+          "taux_type": "V",
+          "taux_actuariel": 2.24
+        },
+        {
+          "objet": "10 bis rue de Moussy - 75004",
+          "beneficiaire": "Toit et Joie (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2011,
+          "capital_restant": 2429067,
+          "taux_type": "V",
+          "taux_actuariel": 2.2
+        },
+        {
+          "objet": "50 rue Ste Croix de la Bretonnerie - 75004 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 2235151,
+          "taux_type": "V",
+          "taux_actuariel": 2.25
+        },
+        {
+          "objet": "Rue de l'Hôtel de Ville - 75004",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 2223980,
+          "taux_type": "FIXE",
+          "taux_actuariel": 0.63
+        },
+        {
+          "objet": "34 Bd Sébastopol - 75004 - RGT",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 2196937,
+          "taux_type": "V",
+          "taux_actuariel": 2.78
+        },
+        {
+          "objet": "Quai Henri IV - 75004 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2015,
+          "capital_restant": 2108214,
+          "taux_type": "V",
+          "taux_actuariel": 2.45
+        },
+        {
+          "objet": "17, bd Morland - 75004 - NSG",
+          "beneficiaire": "Immobilière 3F - I3F (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 1830000,
+          "taux_type": "V",
+          "taux_actuariel": 1.8
+        },
+        {
+          "objet": "Rues Rambuteau / Geoffroy Langevin - 75004",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 1676576,
+          "taux_type": "V",
+          "taux_actuariel": 1.72
+        }
+      ]
     },
     {
       "arr": 5,
       "capital_restant": 158805812,
       "count_emprunts": 149,
-      "share_of_localized": 0.01984123181445199
+      "share_of_localized": 0.01984123181445199,
+      "top_beneficiaires": [
+        {
+          "name": "RIVP (SEM)",
+          "capital_restant": 85316316,
+          "count_emprunts": 30,
+          "share_of_arr": 0.537236738062894
+        },
+        {
+          "name": "PARIS Habitat OPH (EP)",
+          "capital_restant": 53806639,
+          "count_emprunts": 56,
+          "share_of_arr": 0.3388203413153738
+        },
+        {
+          "name": "ELOGIE-SIEMP (SEML)",
+          "capital_restant": 6618749,
+          "count_emprunts": 31,
+          "share_of_arr": 0.041678256085612056
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "4-8 bis, rue Cuvier - 75005 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 19842471,
+          "taux_type": "V",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "4-8 bis, rue Cuvier - 75005 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 19566760,
+          "taux_type": "V",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "4-8 bis, rue Cuvier - 75005 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 15415529,
+          "taux_type": "V",
+          "taux_actuariel": 3.11
+        },
+        {
+          "objet": "4-8 bis, rue Cuvier - 75005 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 14531148,
+          "taux_type": "V",
+          "taux_actuariel": 3.11
+        },
+        {
+          "objet": "21bis rue Claude Bernard - 75005",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CE",
+          "annee_mobilisation": 2005,
+          "capital_restant": 12400000,
+          "taux_type": "FIXE",
+          "taux_actuariel": 4.15
+        },
+        {
+          "objet": "7-11 rue Nicolas Houel - 75005 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 11868904,
+          "taux_type": "V",
+          "taux_actuariel": 2.25
+        },
+        {
+          "objet": "4-8 bis, rue Cuvier - 75005 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 7029912,
+          "taux_type": "V",
+          "taux_actuariel": 3.11
+        },
+        {
+          "objet": "Rue Nicolas Houel - 75005 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "LBP",
+          "annee_mobilisation": 2015,
+          "capital_restant": 5744822,
+          "taux_type": "FIXE",
+          "taux_actuariel": 1.24
+        },
+        {
+          "objet": "Groupe Censier / Santeuil - 75005 - NSG",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 2693567,
+          "taux_type": "V",
+          "taux_actuariel": 1.55
+        },
+        {
+          "objet": "7-11 rue Nicolas Houel - 75005",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2009,
+          "capital_restant": 2608611,
+          "taux_type": "V",
+          "taux_actuariel": 1.35
+        },
+        {
+          "objet": "Tolbiac Moulinet (Bâtiment C) - 75005 - NSG",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 1802433,
+          "taux_type": "V",
+          "taux_actuariel": 1.55
+        },
+        {
+          "objet": "41 rue Henri Barbusse - 75005",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CA IdF",
+          "annee_mobilisation": 2017,
+          "capital_restant": 1613815,
+          "taux_type": "FIXE",
+          "taux_actuariel": 1.8
+        },
+        {
+          "objet": "Place d'Italie - 75005 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2013,
+          "capital_restant": 1585186,
+          "taux_type": "FIXE",
+          "taux_actuariel": 3.37
+        },
+        {
+          "objet": "51 rue du Cardinal Lemoine - 75005 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 1421332,
+          "taux_type": "V",
+          "taux_actuariel": 2.44
+        },
+        {
+          "objet": "CHI Val de Grâce - 75005",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 1376699,
+          "taux_type": "V",
+          "taux_actuariel": 1.8
+        }
+      ]
     },
     {
       "arr": 6,
       "capital_restant": 40715803,
       "count_emprunts": 73,
-      "share_of_localized": 0.005087041065640093
+      "share_of_localized": 0.005087041065640093,
+      "top_beneficiaires": [
+        {
+          "name": "RIVP (SEM)",
+          "capital_restant": 17164522,
+          "count_emprunts": 24,
+          "share_of_arr": 0.42156903549218955
+        },
+        {
+          "name": "ELOGIE-SIEMP (SEML)",
+          "capital_restant": 7771608,
+          "count_emprunts": 33,
+          "share_of_arr": 0.19087447937598084
+        },
+        {
+          "name": "Association Monsieur Vincent",
+          "capital_restant": 7683648,
+          "count_emprunts": 1,
+          "share_of_arr": 0.18871415160349406
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "EHPAD - 88, rue du Cherche Midi - 75006",
+          "beneficiaire": "Association Monsieur Vincent",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "capital_restant": 7683648,
+          "taux_type": "V",
+          "taux_actuariel": 2.56
+        },
+        {
+          "objet": "EHPAD Abbé Grégoire - 75006",
+          "beneficiaire": "Association Chemins d'Espérance",
+          "preteur": "CF",
+          "annee_mobilisation": 2012,
+          "capital_restant": 2915769,
+          "taux_type": "V",
+          "taux_actuariel": 2.51
+        },
+        {
+          "objet": "76-76bis rue de Rennes - 75006 - RGT",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2015,
+          "capital_restant": 1765763,
+          "taux_type": "V",
+          "taux_actuariel": 2.13
+        },
+        {
+          "objet": "141 Bld Raspail - 75006 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 1741964,
+          "taux_type": "V",
+          "taux_actuariel": 2.25
+        },
+        {
+          "objet": "93 Boulevard Montparnasse - 75006",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "capital_restant": 1661199,
+          "taux_type": "V",
+          "taux_actuariel": 1.32
+        },
+        {
+          "objet": "Rue de l'Ecole de Médecine - 75006",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CA IdF",
+          "annee_mobilisation": 2017,
+          "capital_restant": 1513734,
+          "taux_type": "FIXE",
+          "taux_actuariel": 1.8
+        },
+        {
+          "objet": "Rue des Ecole de Médecine - 75006 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 1375921,
+          "taux_type": "V",
+          "taux_actuariel": 3.11
+        },
+        {
+          "objet": "46, rue Notre Dame des Champs - 75006",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 1259929,
+          "taux_type": "V",
+          "taux_actuariel": 1.96
+        },
+        {
+          "objet": "76-76 bis, rue de Rennes - 75006 - RGT",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 1228090,
+          "taux_type": "FIXE",
+          "taux_actuariel": 1.59
+        },
+        {
+          "objet": "93 Boulevard Montparnasse - 75006 - RGT",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "capital_restant": 1144558,
+          "taux_type": "FIXE",
+          "taux_actuariel": 0.8
+        },
+        {
+          "objet": "Bd Montparnasse - 75006",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CFCM",
+          "annee_mobilisation": 2013,
+          "capital_restant": 907107,
+          "taux_type": "V",
+          "taux_actuariel": 2.44
+        },
+        {
+          "objet": "76-76bis rue de Rennes - 75006 - RGT",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "capital_restant": 895704,
+          "taux_type": "V",
+          "taux_actuariel": 2.74
+        },
+        {
+          "objet": "12 rue Jean Bart - 75006",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 828469,
+          "taux_type": "V",
+          "taux_actuariel": 2.38
+        },
+        {
+          "objet": "5/5 bis rue Mazet - 75006 - RGT - TRST",
+          "beneficiaire": "L'Habitation Confortable (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2007,
+          "capital_restant": 828434,
+          "taux_type": "V",
+          "taux_actuariel": 3.5
+        },
+        {
+          "objet": "Rue du Four / Rue Princesse - 75006 - RGT",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 748384,
+          "taux_type": "V",
+          "taux_actuariel": 2.39
+        }
+      ]
     },
     {
       "arr": 7,
       "capital_restant": 161100884,
       "count_emprunts": 48,
-      "share_of_localized": 0.020127978573347128
+      "share_of_localized": 0.020127978573347128,
+      "top_beneficiaires": [
+        {
+          "name": "Fondation Nationale SciencesPo",
+          "capital_restant": 106434122,
+          "count_emprunts": 2,
+          "share_of_arr": 0.6606675263227837
+        },
+        {
+          "name": "RIVP (SEM)",
+          "capital_restant": 34361362,
+          "count_emprunts": 7,
+          "share_of_arr": 0.21329095850180455
+        },
+        {
+          "name": "PARIS Habitat OPH (EP)",
+          "capital_restant": 9016075,
+          "count_emprunts": 10,
+          "share_of_arr": 0.05596539709009154
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "Hôtel Artillerie - Place St Thomas d'Aquin - 75007",
+          "beneficiaire": "Fondation Nationale SciencesPo",
+          "preteur": "DP AG",
+          "annee_mobilisation": 2018,
+          "capital_restant": 54305955,
+          "taux_type": "FIXE",
+          "taux_actuariel": 1.65
+        },
+        {
+          "objet": "Hôtel Artillerie - Place St Thomas d'Aquin - 75007",
+          "beneficiaire": "Fondation Nationale SciencesPo",
+          "preteur": "DP AG",
+          "annee_mobilisation": 2016,
+          "capital_restant": 52128167,
+          "taux_type": "FIXE",
+          "taux_actuariel": 2.3
+        },
+        {
+          "objet": "8-10, rue Saint Dominique - 75007 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "capital_restant": 10752684,
+          "taux_type": "V",
+          "taux_actuariel": 2.33
+        },
+        {
+          "objet": "8-10, rue Saint Dominique - 75007 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "capital_restant": 10625443,
+          "taux_type": "V",
+          "taux_actuariel": 1.8
+        },
+        {
+          "objet": "8-10, rue Saint Dominique - 75007 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "capital_restant": 7043946,
+          "taux_type": "V",
+          "taux_actuariel": 2.33
+        },
+        {
+          "objet": "8-10, rue Saint Dominique - 75007 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "capital_restant": 4838560,
+          "taux_type": "V",
+          "taux_actuariel": 2.33
+        },
+        {
+          "objet": "4 impasse Oudinot - 75007",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2013,
+          "capital_restant": 3781041,
+          "taux_type": "V",
+          "taux_actuariel": 1.86
+        },
+        {
+          "objet": "Passage de la Vierge / 56 rue Cler - 75007",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "capital_restant": 1603555,
+          "taux_type": "V",
+          "taux_actuariel": 2.07
+        },
+        {
+          "objet": "79 rue Vaneau - 75007 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2013,
+          "capital_restant": 1268959,
+          "taux_type": "V",
+          "taux_actuariel": 2.42
+        },
+        {
+          "objet": "71, rue St Dominique - 75007 - RGT",
+          "beneficiaire": "BATIGERE Ile de France (ESH)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 1251972,
+          "taux_type": "V",
+          "taux_actuariel": 2.37
+        },
+        {
+          "objet": "67 avenue de Breteuil- 75007",
+          "beneficiaire": "Immobilière 3F - I3F (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2008,
+          "capital_restant": 947187,
+          "taux_type": "V",
+          "taux_actuariel": 2.39
+        },
+        {
+          "objet": "29/55 quai Branly - 75007",
+          "beneficiaire": "SAEMES (SEM)",
+          "preteur": "AUXIFIP",
+          "annee_mobilisation": 2006,
+          "capital_restant": 888889,
+          "taux_type": "V",
+          "taux_actuariel": 1.92
+        },
+        {
+          "objet": "8-10, rue Saint Dominique - 75007 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "capital_restant": 835713,
+          "taux_type": "V",
+          "taux_actuariel": 3.05
+        },
+        {
+          "objet": "4 impasse Oudinot - 75007",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2013,
+          "capital_restant": 768314,
+          "taux_type": "V",
+          "taux_actuariel": 1.09
+        },
+        {
+          "objet": "71, rue Saint Dominique - 75007 - NSG",
+          "beneficiaire": "BATIGERE Ile de France (ESH)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 750607,
+          "taux_type": "V",
+          "taux_actuariel": 1.8
+        }
+      ]
     },
     {
       "arr": 8,
       "capital_restant": 75143531,
       "count_emprunts": 116,
-      "share_of_localized": 0.009388448646645125
+      "share_of_localized": 0.009388448646645125,
+      "top_beneficiaires": [
+        {
+          "name": "ELOGIE-SIEMP (SEML)",
+          "capital_restant": 41191813,
+          "count_emprunts": 55,
+          "share_of_arr": 0.5481751040302332
+        },
+        {
+          "name": "PARIS Habitat OPH (EP)",
+          "capital_restant": 13365437,
+          "count_emprunts": 20,
+          "share_of_arr": 0.17786543295889845
+        },
+        {
+          "name": "RIVP (SEM)",
+          "capital_restant": 9772766,
+          "count_emprunts": 20,
+          "share_of_arr": 0.13005465330643345
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "26 bis, rue Petersbourg - 75008",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 5554244,
+          "taux_type": "V",
+          "taux_actuariel": 2.34
+        },
+        {
+          "objet": "36, rue Washington - 75008 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 3071660,
+          "taux_type": "V",
+          "taux_actuariel": 2.5
+        },
+        {
+          "objet": "Plusieurs adresses - 75008",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CF",
+          "annee_mobilisation": 2014,
+          "capital_restant": 2583252,
+          "taux_type": "FIXE",
+          "taux_actuariel": 4.04
+        },
+        {
+          "objet": "39-41 rue de Rome - 75008 - RGT",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2015,
+          "capital_restant": 2278033,
+          "taux_type": "V",
+          "taux_actuariel": 2.12
+        },
+        {
+          "objet": "26 bis, rue Petersbourg - 75008",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 2210787,
+          "taux_type": "V",
+          "taux_actuariel": 1.55
+        },
+        {
+          "objet": "39-41 rue de Londres - 75008",
+          "beneficiaire": "ICF Habitat La Sablière (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2008,
+          "capital_restant": 2016173,
+          "taux_type": "V",
+          "taux_actuariel": 2.42
+        },
+        {
+          "objet": "26 bis, rue Petersbourg - 75008",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 2010715,
+          "taux_type": "V",
+          "taux_actuariel": 2.38
+        },
+        {
+          "objet": "ZAC Beaujon Lot 7 - 75008",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 2006648,
+          "taux_type": "V",
+          "taux_actuariel": 1.6
+        },
+        {
+          "objet": "17bis-19-21, rue d'Amsterdam - 75008",
+          "beneficiaire": "ICF Habitat La Sablière (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2008,
+          "capital_restant": 1898838,
+          "taux_type": "V",
+          "taux_actuariel": 2.4
+        },
+        {
+          "objet": "ZAC Beaujon Lot 7 - 75008",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "capital_restant": 1878908,
+          "taux_type": "V",
+          "taux_actuariel": 2.39
+        },
+        {
+          "objet": "43-45, rue de Rome - 75008 - RGT - NSG",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 1773546,
+          "taux_type": "V",
+          "taux_actuariel": 2.46
+        },
+        {
+          "objet": "137 rue du Faubourg Saint-Honoré - 75008 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 1715194,
+          "taux_type": "V",
+          "taux_actuariel": 2.31
+        },
+        {
+          "objet": "LLI - 43-45, rue de Laborde - 75008 - NSG",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "capital_restant": 1662590,
+          "taux_type": "FIXE",
+          "taux_actuariel": 2.0
+        },
+        {
+          "objet": "43 - 45 rue de Rome - 75008",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2012,
+          "capital_restant": 1459943,
+          "taux_type": "V",
+          "taux_actuariel": 2.14
+        },
+        {
+          "objet": "ZAC Beaujon/Lot 2 - 75008 - RGT - NSG",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 1344563,
+          "taux_type": "V",
+          "taux_actuariel": 2.46
+        }
+      ]
     },
     {
       "arr": 9,
       "capital_restant": 170954205,
       "count_emprunts": 342,
-      "share_of_localized": 0.02135905468840487
+      "share_of_localized": 0.02135905468840487,
+      "top_beneficiaires": [
+        {
+          "name": "RIVP (SEM)",
+          "capital_restant": 55169765,
+          "count_emprunts": 110,
+          "share_of_arr": 0.3227166281581034
+        },
+        {
+          "name": "ELOGIE-SIEMP (SEML)",
+          "capital_restant": 41673552,
+          "count_emprunts": 104,
+          "share_of_arr": 0.24377026768473117
+        },
+        {
+          "name": "PARIS Habitat OPH (EP)",
+          "capital_restant": 35977380,
+          "count_emprunts": 47,
+          "share_of_arr": 0.21045039322865655
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "8-12 rue de la Tour des Dames - 75009 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 6563602,
+          "taux_type": "V",
+          "taux_actuariel": 2.25
+        },
+        {
+          "objet": "49, rue Blanche - 75009 - CPCT - RGT",
+          "beneficiaire": "AXIMO (ESH)",
+          "preteur": "CE",
+          "annee_mobilisation": 2021,
+          "capital_restant": 6394616,
+          "taux_type": "FIXE",
+          "taux_actuariel": 1.06
+        },
+        {
+          "objet": "Rues Massé / Pigalle - 75009 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 4506875,
+          "taux_type": "V",
+          "taux_actuariel": 2.51
+        },
+        {
+          "objet": "Couvent des Cordeliers - 75009 - RGT",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 3081760,
+          "taux_type": "V",
+          "taux_actuariel": 2.72
+        },
+        {
+          "objet": "49 rue Blanche - 75009",
+          "beneficiaire": "AXIMO (ESH)",
+          "preteur": "CE",
+          "annee_mobilisation": 2009,
+          "capital_restant": 2954830,
+          "taux_type": "FIXE",
+          "taux_actuariel": 4.53
+        },
+        {
+          "objet": "Rue de Duperré - 75009",
+          "beneficiaire": "SEQENS (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "capital_restant": 2794982,
+          "taux_type": "V",
+          "taux_actuariel": 2.03
+        },
+        {
+          "objet": "59-61 rue St-Lazare - 75009 - TRST",
+          "beneficiaire": "L'Habitation Confortable (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2009,
+          "capital_restant": 2027633,
+          "taux_type": "V",
+          "taux_actuariel": 1.36
+        },
+        {
+          "objet": "9, rue de Chateaudun - 75009 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 1980056,
+          "taux_type": "V",
+          "taux_actuariel": 1.8
+        },
+        {
+          "objet": "5, rue Mayran - 75009 - RGT",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 1944062,
+          "taux_type": "V",
+          "taux_actuariel": 2.36
+        },
+        {
+          "objet": "Rue Tour des Dames - 75009 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "LBP",
+          "annee_mobilisation": 2015,
+          "capital_restant": 1850656,
+          "taux_type": "FIXE",
+          "taux_actuariel": 1.24
+        },
+        {
+          "objet": "8-12 rue de la Tour des Dames - 75009",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2010,
+          "capital_restant": 1753142,
+          "taux_type": "V",
+          "taux_actuariel": 1.33
+        },
+        {
+          "objet": "90, rue de Rochechouart - 75009 - RGT",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 1742313,
+          "taux_type": "V",
+          "taux_actuariel": 2.15
+        },
+        {
+          "objet": "8, rue Chaussée d'Antin - 75009 - RGT",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 1672969,
+          "taux_type": "V",
+          "taux_actuariel": 2.73
+        },
+        {
+          "objet": "173-175 rue du Faubourg Poissonnière - 75009",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 1668165,
+          "taux_type": "V",
+          "taux_actuariel": 2.78
+        },
+        {
+          "objet": "9, rue de Chateaudun - 75009 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 1659847,
+          "taux_type": "V",
+          "taux_actuariel": 2.01
+        }
+      ]
     },
     {
       "arr": 10,
       "capital_restant": 352076653,
       "count_emprunts": 555,
-      "share_of_localized": 0.043988531748444554
+      "share_of_localized": 0.043988531748444554,
+      "top_beneficiaires": [
+        {
+          "name": "RIVP (SEM)",
+          "capital_restant": 102324299,
+          "count_emprunts": 122,
+          "share_of_arr": 0.29063074290413904
+        },
+        {
+          "name": "ELOGIE-SIEMP (SEML)",
+          "capital_restant": 68670526,
+          "count_emprunts": 187,
+          "share_of_arr": 0.19504424880692808
+        },
+        {
+          "name": "PARIS Habitat OPH (EP)",
+          "capital_restant": 68244722,
+          "count_emprunts": 99,
+          "share_of_arr": 0.19383484103686952
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "166-172 quai Jemmapes - 75010 - RGT",
+          "beneficiaire": "AXIMO (ESH)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2015,
+          "capital_restant": 9869564,
+          "taux_type": "V",
+          "taux_actuariel": 2.51
+        },
+        {
+          "objet": "43-45 rue du Faubourg du Temple - 75010",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2013,
+          "capital_restant": 8949802,
+          "taux_type": "V",
+          "taux_actuariel": 1.89
+        },
+        {
+          "objet": "Rues Grange aux Belles/Ecluses Saint-Martin- 75010",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "capital_restant": 8940330,
+          "taux_type": "V",
+          "taux_actuariel": 2.08
+        },
+        {
+          "objet": "129-131 rue du Faubourg du Temple - 75010",
+          "beneficiaire": "Immobilière 3F - I3F (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2015,
+          "capital_restant": 5629959,
+          "taux_type": "V",
+          "taux_actuariel": 2.11
+        },
+        {
+          "objet": "13 rue des Ecluses Saint-Martin - 75010",
+          "beneficiaire": "3F Résidences (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "capital_restant": 5184639,
+          "taux_type": "V",
+          "taux_actuariel": 2.36
+        },
+        {
+          "objet": "4-14 Passage Delessert - 75010",
+          "beneficiaire": "ICF Habitat La Sablière (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "capital_restant": 5092718,
+          "taux_type": "V",
+          "taux_actuariel": 2.06
+        },
+        {
+          "objet": "209-213 rue Lafayette - 75010 - RGT",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "capital_restant": 5043159,
+          "taux_type": "V",
+          "taux_actuariel": 2.74
+        },
+        {
+          "objet": "209-213 rue Lafayette - 75010 - RGT",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "capital_restant": 4385300,
+          "taux_type": "V",
+          "taux_actuariel": 2.74
+        },
+        {
+          "objet": "58 boulevard de Strasbourg - 75010",
+          "beneficiaire": "ERIGERE (ESH)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2013,
+          "capital_restant": 4338720,
+          "taux_type": "V",
+          "taux_actuariel": 2.17
+        },
+        {
+          "objet": "5/9, rue Louis Blanc - 75010 - NSG",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 3956612,
+          "taux_type": "FIXE",
+          "taux_actuariel": 0.83
+        },
+        {
+          "objet": "3 au 11, avenue Richerand - 75010 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 3842762,
+          "taux_type": "V",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "27 rue du Château d'Eau - 75010 - RGT",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 3647712,
+          "taux_type": "V",
+          "taux_actuariel": 2.37
+        },
+        {
+          "objet": "3 au 11, avenue Richerand - 75010 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 3391054,
+          "taux_type": "V",
+          "taux_actuariel": 1.8
+        },
+        {
+          "objet": "13 rue des Ecluses Saint-Martin - 75010",
+          "beneficiaire": "3F Résidences (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "capital_restant": 3348698,
+          "taux_type": "V",
+          "taux_actuariel": 2.27
+        },
+        {
+          "objet": "Passage Reilhac / 54rue du fg st Denis - 75010",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2011,
+          "capital_restant": 3249090,
+          "taux_type": "V",
+          "taux_actuariel": 2.14
+        }
+      ]
     },
     {
       "arr": 11,
       "capital_restant": 367446729,
       "count_emprunts": 671,
-      "share_of_localized": 0.04590887227752267
+      "share_of_localized": 0.04590887227752267,
+      "top_beneficiaires": [
+        {
+          "name": "RIVP (SEM)",
+          "capital_restant": 104646438,
+          "count_emprunts": 160,
+          "share_of_arr": 0.28479349485307204
+        },
+        {
+          "name": "PARIS Habitat OPH (EP)",
+          "capital_restant": 102284822,
+          "count_emprunts": 114,
+          "share_of_arr": 0.2783663970347068
+        },
+        {
+          "name": "ELOGIE-SIEMP (SEML)",
+          "capital_restant": 70766739,
+          "count_emprunts": 183,
+          "share_of_arr": 0.1925904724807865
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "Immeuble Bouvier - Impasse Bouvier - 75011",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CA IdF",
+          "annee_mobilisation": 2015,
+          "capital_restant": 22264729,
+          "taux_type": "FIXE",
+          "taux_actuariel": 2.29
+        },
+        {
+          "objet": "170/176 rue de la Roquette - 75011",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "capital_restant": 11639734,
+          "taux_type": "V",
+          "taux_actuariel": 2.22
+        },
+        {
+          "objet": "5-14 rue Carrière Mainguet - 75011 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 8769256,
+          "taux_type": "V",
+          "taux_actuariel": 2.25
+        },
+        {
+          "objet": "45-53 avenue Philippe Auguste - 75011 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 6186847,
+          "taux_type": "V",
+          "taux_actuariel": 2.25
+        },
+        {
+          "objet": "Passage de la Bonne Graine - 75011",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 3648803,
+          "taux_type": "V",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "170/176 rue de la Roquette - 75011",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "capital_restant": 3195145,
+          "taux_type": "V",
+          "taux_actuariel": 0.94
+        },
+        {
+          "objet": "Divers programmes - 75011 - 75020 - CPCT",
+          "beneficiaire": "LOGIREP (ESH)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2011,
+          "capital_restant": 2945965,
+          "taux_type": "V",
+          "taux_actuariel": 0.92
+        },
+        {
+          "objet": "Rue de la Fontaine-au-Roi - 75011",
+          "beneficiaire": "ADOMA (SEM)",
+          "preteur": "ASTRIA-OCIL",
+          "annee_mobilisation": 2015,
+          "capital_restant": 2920620,
+          "taux_type": "FIXE",
+          "taux_actuariel": 1.0
+        },
+        {
+          "objet": "Passage de la Bonne Graine - 75011",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 2910556,
+          "taux_type": "V",
+          "taux_actuariel": 1.8
+        },
+        {
+          "objet": "Rues Nanette / Des Bluets - 75011 - NSG",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 2825250,
+          "taux_type": "FIXE",
+          "taux_actuariel": 0.87
+        },
+        {
+          "objet": "15/21, rue des Nanettes - 75011 - RGT",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2003,
+          "capital_restant": 2811044,
+          "taux_type": "V",
+          "taux_actuariel": 3.02
+        },
+        {
+          "objet": "Divers programmes - 75011 - 75020 - CPCT",
+          "beneficiaire": "LOGIREP (ESH)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2011,
+          "capital_restant": 2804067,
+          "taux_type": "V",
+          "taux_actuariel": 0.8
+        },
+        {
+          "objet": "8 bis-10, rue Lacharrière - 75011 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 2792393,
+          "taux_type": "V",
+          "taux_actuariel": 2.24
+        },
+        {
+          "objet": "11/13, rue Ponpincourt - 75011 - RGT",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2015,
+          "capital_restant": 2776360,
+          "taux_type": "FIXE",
+          "taux_actuariel": 3.31
+        },
+        {
+          "objet": "49-53 bd de Ménilmontant - 75011",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 2763705,
+          "taux_type": "V",
+          "taux_actuariel": 2.88
+        }
+      ]
     },
     {
       "arr": 12,
       "capital_restant": 777799955,
       "count_emprunts": 633,
-      "share_of_localized": 0.09717849146381946
+      "share_of_localized": 0.09717849146381946,
+      "top_beneficiaires": [
+        {
+          "name": "PARIS Habitat OPH (EP)",
+          "capital_restant": 265471852,
+          "count_emprunts": 147,
+          "share_of_arr": 0.3413112198405782
+        },
+        {
+          "name": "ELOGIE-SIEMP (SEML)",
+          "capital_restant": 138774210,
+          "count_emprunts": 139,
+          "share_of_arr": 0.1784188971159394
+        },
+        {
+          "name": "RIVP (SEM)",
+          "capital_restant": 107628250,
+          "count_emprunts": 172,
+          "share_of_arr": 0.1383752330074992
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "POPB - Travaux de modernisation - 75012 - RGT",
+          "beneficiaire": "POPB - AccorHotels Arena (SEM)",
+          "preteur": "LBP",
+          "annee_mobilisation": 2018,
+          "capital_restant": 100238076,
+          "taux_type": "FIXE",
+          "taux_actuariel": 3.5
+        },
+        {
+          "objet": "Groupe Porte Dorée - Diverses adresses - 75012",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 34174660,
+          "taux_type": "V",
+          "taux_actuariel": 2.37
+        },
+        {
+          "objet": "Rue de Reuilly - 75012 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "LBP",
+          "annee_mobilisation": 2015,
+          "capital_restant": 13353458,
+          "taux_type": "FIXE",
+          "taux_actuariel": 1.19
+        },
+        {
+          "objet": "Groupe Porte Dorée - Diverses adresses - 75012",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 11111319,
+          "taux_type": "V",
+          "taux_actuariel": 1.59
+        },
+        {
+          "objet": "Groupe Porte Dorée - Diverses adresses - 75012",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 10643871,
+          "taux_type": "V",
+          "taux_actuariel": 2.31
+        },
+        {
+          "objet": "1-7, rue Corbineau - 75012 - RGT",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2003,
+          "capital_restant": 10330275,
+          "taux_type": "V",
+          "taux_actuariel": 2.88
+        },
+        {
+          "objet": "Groupe Ponatiowski - Diverses adresses - 75012",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 10102465,
+          "taux_type": "V",
+          "taux_actuariel": 2.31
+        },
+        {
+          "objet": "Programme Porte Dorée - 75012",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 9666619,
+          "taux_type": "V",
+          "taux_actuariel": 1.7
+        },
+        {
+          "objet": "Groupe Porte Dorée - Diverses adresses - 75012",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 9212056,
+          "taux_type": "V",
+          "taux_actuariel": 1.62
+        },
+        {
+          "objet": "Programme Porte Dorée - 75012",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 8081313,
+          "taux_type": "V",
+          "taux_actuariel": 1.76
+        },
+        {
+          "objet": "7 rue de Gravelle - 75012",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2015,
+          "capital_restant": 7553110,
+          "taux_type": "V",
+          "taux_actuariel": 2.88
+        },
+        {
+          "objet": "Bd Reuilly / Rue Taine - 75012 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 7247237,
+          "taux_type": "V",
+          "taux_actuariel": 3.05
+        },
+        {
+          "objet": "Gare de Lyon/Les Messageries L2-L7 - 75012 - NSG",
+          "beneficiaire": "ICF Habitat La Sablière (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 6961474,
+          "taux_type": "V",
+          "taux_actuariel": 1.8
+        },
+        {
+          "objet": "Groupe Porte Dorée - Diverses adresses - 75012",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 6915506,
+          "taux_type": "V",
+          "taux_actuariel": 2.88
+        },
+        {
+          "objet": "EHPAD - 71, rue Picpus - 75012",
+          "beneficiaire": "Congrégation Petites Soeurs des Pauvres",
+          "preteur": "SG",
+          "annee_mobilisation": 2016,
+          "capital_restant": 6750000,
+          "taux_type": "V",
+          "taux_actuariel": 2.46
+        }
+      ]
     },
     {
       "arr": 13,
       "capital_restant": 878512632,
       "count_emprunts": 608,
-      "share_of_localized": 0.10976155466429019
+      "share_of_localized": 0.10976155466429019,
+      "top_beneficiaires": [
+        {
+          "name": "RIVP (SEM)",
+          "capital_restant": 225046395,
+          "count_emprunts": 123,
+          "share_of_arr": 0.2561675117709252
+        },
+        {
+          "name": "PARIS Habitat OPH (EP)",
+          "capital_restant": 201036402,
+          "count_emprunts": 163,
+          "share_of_arr": 0.2288372353469273
+        },
+        {
+          "name": "ELOGIE-SIEMP (SEML)",
+          "capital_restant": 111066326,
+          "count_emprunts": 129,
+          "share_of_arr": 0.12642541664069654
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "Acquisition siège social - 75013",
+          "beneficiaire": "REGIE Eau de PARIS (EPIC)",
+          "preteur": "LBP",
+          "annee_mobilisation": 2022,
+          "capital_restant": 50000000,
+          "taux_type": "FIXE",
+          "taux_actuariel": 2.89
+        },
+        {
+          "objet": "3-5, rue Fulton - 75013 - NSG",
+          "beneficiaire": "ICF Habitat La Sablière (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 16258362,
+          "taux_type": "V",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "Arc Innovation - Rue Barrault - 75013",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 15815000,
+          "taux_type": "V",
+          "taux_actuariel": 3.0
+        },
+        {
+          "objet": "Rues Barrault /Vergniaud / De Tolbiac - 75013",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 15217931,
+          "taux_type": "V",
+          "taux_actuariel": 2.47
+        },
+        {
+          "objet": "Rues Barrault /Vergniaud / De Tolbiac - 75013",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 12554996,
+          "taux_type": "V",
+          "taux_actuariel": 2.5
+        },
+        {
+          "objet": "ZAC Rive Gauche / Lot M6B2 - 75013",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2015,
+          "capital_restant": 11849552,
+          "taux_type": "V",
+          "taux_actuariel": 2.13
+        },
+        {
+          "objet": "Rue Jean-Baptiste Berlier - 75013",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 11754220,
+          "taux_type": "V",
+          "taux_actuariel": 2.43
+        },
+        {
+          "objet": "Résidence étudiante/ZAC Paris Rive Gauche - 75013",
+          "beneficiaire": "L'Habitation Confortable (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "capital_restant": 10845516,
+          "taux_type": "V",
+          "taux_actuariel": 2.54
+        },
+        {
+          "objet": "Résidence Etudiante - ZAC PRG - 75013 - NSG",
+          "beneficiaire": "L'Habitation Confortable (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "capital_restant": 10597085,
+          "taux_type": "V",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "ZAC \"Paris Rive Gauche\" lot M6B2 - 75013 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "capital_restant": 9018750,
+          "taux_type": "V",
+          "taux_actuariel": 2.43
+        },
+        {
+          "objet": "ZAC Paris Rive Gauche - 75013",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 8919549,
+          "taux_type": "V",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "Ilôt 13 Blanqui Glacière - 75013 - TRST",
+          "beneficiaire": "CDC Habitat Social (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2010,
+          "capital_restant": 8788816,
+          "taux_type": "V",
+          "taux_actuariel": 2.21
+        },
+        {
+          "objet": "Hébergement Urgce - Rue Charles Fourier - 75013",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 8725202,
+          "taux_type": "V",
+          "taux_actuariel": 1.43
+        },
+        {
+          "objet": "Rue Jeanne d'Arc/Rue Docteur Richet - 75013 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "capital_restant": 8143777,
+          "taux_type": "V",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "ZAC Joseph Bédier - Rue Maryse Bastié - 75013",
+          "beneficiaire": "GAMBETTA Locatif (SA HLM)",
+          "preteur": "CE",
+          "annee_mobilisation": 2014,
+          "capital_restant": 8058731,
+          "taux_type": "V",
+          "taux_actuariel": 2.69
+        }
+      ]
     },
     {
       "arr": 14,
       "capital_restant": 535482526,
       "count_emprunts": 476,
-      "share_of_localized": 0.06690330039622458
+      "share_of_localized": 0.06690330039622458,
+      "top_beneficiaires": [
+        {
+          "name": "RIVP (SEM)",
+          "capital_restant": 138606259,
+          "count_emprunts": 161,
+          "share_of_arr": 0.25884366397838
+        },
+        {
+          "name": "PARIS Habitat OPH (EP)",
+          "capital_restant": 69169196,
+          "count_emprunts": 71,
+          "share_of_arr": 0.1291717149853066
+        },
+        {
+          "name": "Paris et Métropole Aménagement (SPL)",
+          "capital_restant": 47000000,
+          "count_emprunts": 3,
+          "share_of_arr": 0.08777130481431991
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "ZAC Saint Vincent de Paul - 75014",
+          "beneficiaire": "Paris et Métropole Aménagement (SPL)",
+          "preteur": "CCOOP",
+          "annee_mobilisation": 2017,
+          "capital_restant": 24000000,
+          "taux_type": "FIXE",
+          "taux_actuariel": 0.76
+        },
+        {
+          "objet": "1, rue Gergovie - 75014 - RGT",
+          "beneficiaire": "ICF Habitat La Sablière (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 22301322,
+          "taux_type": "FIXE",
+          "taux_actuariel": 0.57
+        },
+        {
+          "objet": "ZAC Saint Vincent de Paul - 75014",
+          "beneficiaire": "Paris et Métropole Aménagement (SPL)",
+          "preteur": "CCOOP",
+          "annee_mobilisation": 2018,
+          "capital_restant": 18600000,
+          "taux_type": "V",
+          "taux_actuariel": 0.43
+        },
+        {
+          "objet": "Rue Denfert Rochereau - 75014",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 12863306,
+          "taux_type": "V",
+          "taux_actuariel": 2.81
+        },
+        {
+          "objet": "17, bd Jourdan - Construction 300 Lgts - 75014",
+          "beneficiaire": "Fondation CIUP",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "capital_restant": 12535714,
+          "taux_type": "V",
+          "taux_actuariel": 2.94
+        },
+        {
+          "objet": "Av. Denfert Rochereau/Rue Boissonade - 75014 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "capital_restant": 11771169,
+          "taux_type": "V",
+          "taux_actuariel": 1.8
+        },
+        {
+          "objet": "Av. Denfert Rochereau/Rue Boissonade - 75014 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "capital_restant": 11248879,
+          "taux_type": "V",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "66-68 rue des Plantes - 75014",
+          "beneficiaire": "3F Résidences (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2013,
+          "capital_restant": 10645746,
+          "taux_type": "V",
+          "taux_actuariel": 1.89
+        },
+        {
+          "objet": "144-146 rue de la Tombe Issoire - 75014",
+          "beneficiaire": "RATP Habitat (ESH)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "capital_restant": 10499164,
+          "taux_type": "V",
+          "taux_actuariel": 2.23
+        },
+        {
+          "objet": "CiuP - 1 av Pierre Massé - Lgts Etudiants - 75014",
+          "beneficiaire": "Fondation Maison Arts Métiers",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "capital_restant": 10451668,
+          "taux_type": "V",
+          "taux_actuariel": 2.76
+        },
+        {
+          "objet": "17, bd Jourdan - Construction 300 Lgts - 75014",
+          "beneficiaire": "Fondation CIUP",
+          "preteur": "LCL",
+          "annee_mobilisation": 2018,
+          "capital_restant": 10298893,
+          "taux_type": "FIXE",
+          "taux_actuariel": 1.81
+        },
+        {
+          "objet": "62/68  rue des Plantes - 75014",
+          "beneficiaire": "3F Résidences (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "capital_restant": 9628122,
+          "taux_type": "V",
+          "taux_actuariel": 2.22
+        },
+        {
+          "objet": "CiuP - 27 Bd Jourdan - Lgt Etudiants - 75014",
+          "beneficiaire": "Fondation Maison Arts Métiers",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 8797042,
+          "taux_type": "V",
+          "taux_actuariel": 2.83
+        },
+        {
+          "objet": "80, bd Jourdan - 75014",
+          "beneficiaire": "RATP Habitat (ESH)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "capital_restant": 6558128,
+          "taux_type": "V",
+          "taux_actuariel": 2.24
+        },
+        {
+          "objet": "Av. Denfert Rochereau/Rue Boissonade - 75014 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "capital_restant": 5897261,
+          "taux_type": "V",
+          "taux_actuariel": 2.16
+        }
+      ]
     },
     {
       "arr": 15,
       "capital_restant": 674692338,
       "count_emprunts": 775,
-      "share_of_localized": 0.08429620390038009
+      "share_of_localized": 0.08429620390038009,
+      "top_beneficiaires": [
+        {
+          "name": "PARIS Habitat OPH (EP)",
+          "capital_restant": 261813307,
+          "count_emprunts": 228,
+          "share_of_arr": 0.38804843672273187
+        },
+        {
+          "name": "RIVP (SEM)",
+          "capital_restant": 121334713,
+          "count_emprunts": 151,
+          "share_of_arr": 0.1798370989270824
+        },
+        {
+          "name": "ELOGIE-SIEMP (SEML)",
+          "capital_restant": 88576144,
+          "count_emprunts": 194,
+          "share_of_arr": 0.13128375613671492
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "Rues Bartolomé / Theuriet - 75015",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2015,
+          "capital_restant": 13900452,
+          "taux_type": "V",
+          "taux_actuariel": 2.13
+        },
+        {
+          "objet": "26 rue de Cauchy - 75015 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 12705608,
+          "taux_type": "V",
+          "taux_actuariel": 2.25
+        },
+        {
+          "objet": "Groupe Saint Lambert - 75015",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 11188490,
+          "taux_type": "V",
+          "taux_actuariel": 2.38
+        },
+        {
+          "objet": "Groupe Saint Lambert - 75015",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 11038070,
+          "taux_type": "V",
+          "taux_actuariel": 1.59
+        },
+        {
+          "objet": "9-15 Bld de Grenelle - 75015",
+          "beneficiaire": "CDC Habitat (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2010,
+          "capital_restant": 9377224,
+          "taux_type": "V",
+          "taux_actuariel": 2.12
+        },
+        {
+          "objet": "51-53 rue Lourmel - 75015 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 7881910,
+          "taux_type": "V",
+          "taux_actuariel": 2.25
+        },
+        {
+          "objet": "86 rue Lourmel - 75015",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "capital_restant": 7721064,
+          "taux_type": "V",
+          "taux_actuariel": 2.09
+        },
+        {
+          "objet": "28, rue du Colonel Avia - 75015",
+          "beneficiaire": "L'Habitation Confortable (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "capital_restant": 6467156,
+          "taux_type": "V",
+          "taux_actuariel": 2.39
+        },
+        {
+          "objet": "33 rue Olivier de Serres - 75015",
+          "beneficiaire": "SEQENS (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2015,
+          "capital_restant": 6209981,
+          "taux_type": "V",
+          "taux_actuariel": 2.19
+        },
+        {
+          "objet": "Rue Castagnary - 75015",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2015,
+          "capital_restant": 6164567,
+          "taux_type": "V",
+          "taux_actuariel": 2.13
+        },
+        {
+          "objet": "40 rue Lacordaire - 75015 - RGT",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "capital_restant": 5948351,
+          "taux_type": "V",
+          "taux_actuariel": 2.74
+        },
+        {
+          "objet": "16-26 rue du Hameau - 75015 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 5877404,
+          "taux_type": "V",
+          "taux_actuariel": 2.47
+        },
+        {
+          "objet": "Groupe Saint Lambert - 75015",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 5718815,
+          "taux_type": "V",
+          "taux_actuariel": 2.05
+        },
+        {
+          "objet": "20-26 rue Cronstadt - 75015 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 5323330,
+          "taux_type": "V",
+          "taux_actuariel": 2.24
+        },
+        {
+          "objet": "Rue Thureau Dangin/Av Porte de la Plainte - 75015",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "capital_restant": 5259853,
+          "taux_type": "V",
+          "taux_actuariel": 1.72
+        }
+      ]
     },
     {
       "arr": 16,
       "capital_restant": 267944786,
       "count_emprunts": 241,
-      "share_of_localized": 0.033477078476130434
+      "share_of_localized": 0.033477078476130434,
+      "top_beneficiaires": [
+        {
+          "name": "PARIS Habitat OPH (EP)",
+          "capital_restant": 114561285,
+          "count_emprunts": 101,
+          "share_of_arr": 0.42755556716159504
+        },
+        {
+          "name": "ELOGIE-SIEMP (SEML)",
+          "capital_restant": 54210128,
+          "count_emprunts": 44,
+          "share_of_arr": 0.20231828044917008
+        },
+        {
+          "name": "RIVP (SEM)",
+          "capital_restant": 41848779,
+          "count_emprunts": 53,
+          "share_of_arr": 0.15618433658159644
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "Avenue de Versailles/Rue Félicien David - 75016",
+          "beneficiaire": "Immobilière Moulin Vert (SAIMV)",
+          "preteur": "CF",
+          "annee_mobilisation": 2014,
+          "capital_restant": 8702896,
+          "taux_type": "V",
+          "taux_actuariel": 2.28
+        },
+        {
+          "objet": "78-82 rue d'Auteuil - 75016",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2012,
+          "capital_restant": 6793517,
+          "taux_type": "V",
+          "taux_actuariel": 1.91
+        },
+        {
+          "objet": "Place du Docteur Michaux - Groupe Princes - 75016",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 6070775,
+          "taux_type": "V",
+          "taux_actuariel": 2.83
+        },
+        {
+          "objet": "Rue Chanez et rue Erlanger - 75016 - RGT",
+          "beneficiaire": "Immobilière 3F - I3F (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2002,
+          "capital_restant": 6048087,
+          "taux_type": "V",
+          "taux_actuariel": 3.69
+        },
+        {
+          "objet": "52, avenue de Versailles - 75016",
+          "beneficiaire": "Immobilière Moulin Vert (SAIMV)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "capital_restant": 5854251,
+          "taux_type": "V",
+          "taux_actuariel": 2.14
+        },
+        {
+          "objet": "47 avenue du Maréchal Fayolle - 75016 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 5716184,
+          "taux_type": "V",
+          "taux_actuariel": 2.44
+        },
+        {
+          "objet": "EHPAD - Rues de la Fontaine / De la Source - 75016",
+          "beneficiaire": "SCI JOB 12-12",
+          "preteur": "CCOOP",
+          "annee_mobilisation": 2021,
+          "capital_restant": 5586997,
+          "taux_type": "FIXE",
+          "taux_actuariel": 0.86
+        },
+        {
+          "objet": "Place du Docteur Michaux - Groupe Princes - 75016",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 5065248,
+          "taux_type": "V",
+          "taux_actuariel": 2.4
+        },
+        {
+          "objet": "Diverses adresses - 75016",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "capital_restant": 4904785,
+          "taux_type": "V",
+          "taux_actuariel": 2.7
+        },
+        {
+          "objet": "120 rue Lauriston - 75016",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2010,
+          "capital_restant": 4812422,
+          "taux_type": "V",
+          "taux_actuariel": 2.17
+        },
+        {
+          "objet": "Avenue de Versailles/Rue Félicien David - 75016",
+          "beneficiaire": "Immobilière Moulin Vert (SAIMV)",
+          "preteur": "CF",
+          "annee_mobilisation": 2014,
+          "capital_restant": 4774837,
+          "taux_type": "V",
+          "taux_actuariel": 2.27
+        },
+        {
+          "objet": "Avenue de Versailles/Rue Félicien David - 75016",
+          "beneficiaire": "Immobilière Moulin Vert (SAIMV)",
+          "preteur": "CF",
+          "annee_mobilisation": 2014,
+          "capital_restant": 4664049,
+          "taux_type": "V",
+          "taux_actuariel": 2.28
+        },
+        {
+          "objet": "78-82 rue  d'Auteuil - 75016",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2012,
+          "capital_restant": 4592271,
+          "taux_type": "V",
+          "taux_actuariel": 2.12
+        },
+        {
+          "objet": "Diverses adresses - 75016",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "capital_restant": 4401645,
+          "taux_type": "V",
+          "taux_actuariel": 1.42
+        },
+        {
+          "objet": "Place du Docteur Michaux - Groupe Princes - 75016",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 3869755,
+          "taux_type": "V",
+          "taux_actuariel": 1.54
+        }
+      ]
     },
     {
       "arr": 17,
       "capital_restant": 593033349,
       "count_emprunts": 560,
-      "share_of_localized": 0.07409371239263128
+      "share_of_localized": 0.07409371239263128,
+      "top_beneficiaires": [
+        {
+          "name": "PARIS Habitat OPH (EP)",
+          "capital_restant": 202868860,
+          "count_emprunts": 101,
+          "share_of_arr": 0.3420867657264918
+        },
+        {
+          "name": "RIVP (SEM)",
+          "capital_restant": 141588401,
+          "count_emprunts": 211,
+          "share_of_arr": 0.23875284807941938
+        },
+        {
+          "name": "ELOGIE-SIEMP (SEML)",
+          "capital_restant": 98647851,
+          "count_emprunts": 87,
+          "share_of_arr": 0.16634452555301146
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "Groupe Berthier - 75017",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "capital_restant": 23281721,
+          "taux_type": "V",
+          "taux_actuariel": 2.26
+        },
+        {
+          "objet": "Groupe Courcelles - 75017",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "capital_restant": 19349827,
+          "taux_type": "V",
+          "taux_actuariel": 2.26
+        },
+        {
+          "objet": "Groupe Saint-Cyr - 75017",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "capital_restant": 12657800,
+          "taux_type": "V",
+          "taux_actuariel": 2.26
+        },
+        {
+          "objet": "ZAC Clichy Batignolles / Lot 04 A - 75017",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2015,
+          "capital_restant": 12367928,
+          "taux_type": "V",
+          "taux_actuariel": 2.13
+        },
+        {
+          "objet": "ZAC Clichy Batignolles / Lot E10 B1 et B2 - 75017",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "capital_restant": 11533086,
+          "taux_type": "V",
+          "taux_actuariel": 2.1
+        },
+        {
+          "objet": "Avenue de Clichy - Rue Boulay - 75017 - NSG",
+          "beneficiaire": "ICF Habitat La Sablière (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "capital_restant": 9486220,
+          "taux_type": "V",
+          "taux_actuariel": 2.53
+        },
+        {
+          "objet": "Groupe Berthier - 75017",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "capital_restant": 9470884,
+          "taux_type": "V",
+          "taux_actuariel": 1.47
+        },
+        {
+          "objet": "Groupe Berthier - 75017",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "capital_restant": 8878279,
+          "taux_type": "V",
+          "taux_actuariel": 2.75
+        },
+        {
+          "objet": "Groupe Courcelles - 75017",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "capital_restant": 7869823,
+          "taux_type": "V",
+          "taux_actuariel": 1.47
+        },
+        {
+          "objet": "Groupe Berthier - 75017",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "capital_restant": 7773585,
+          "taux_type": "V",
+          "taux_actuariel": 1.53
+        },
+        {
+          "objet": "Groupe Courcelles - 75017",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "capital_restant": 7349948,
+          "taux_type": "V",
+          "taux_actuariel": 2.75
+        },
+        {
+          "objet": "ZAC Clichy Batignolles Lot E9 - 75017 - RGT",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "capital_restant": 6950354,
+          "taux_type": "FIXE",
+          "taux_actuariel": 0.8
+        },
+        {
+          "objet": "Groupe Clichy II - 75017 - NSG",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 6869648,
+          "taux_type": "V",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "Groupe Courcelles - 75017",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "capital_restant": 6462378,
+          "taux_type": "V",
+          "taux_actuariel": 1.53
+        },
+        {
+          "objet": "ZAC Clichy Batignolles - 75017 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "capital_restant": 5973999,
+          "taux_type": "V",
+          "taux_actuariel": 2.6
+        }
+      ]
     },
     {
       "arr": 18,
       "capital_restant": 887544778,
       "count_emprunts": 1136,
-      "share_of_localized": 0.11089003289066884
+      "share_of_localized": 0.11089003289066884,
+      "top_beneficiaires": [
+        {
+          "name": "RIVP (SEM)",
+          "capital_restant": 264905914,
+          "count_emprunts": 191,
+          "share_of_arr": 0.29847047753929573
+        },
+        {
+          "name": "ICF Habitat La Sablière (SA HLM)",
+          "capital_restant": 143595422,
+          "count_emprunts": 43,
+          "share_of_arr": 0.16178949546160604
+        },
+        {
+          "name": "PARIS Habitat OPH (EP)",
+          "capital_restant": 137199565,
+          "count_emprunts": 200,
+          "share_of_arr": 0.15458326020706512
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "18-30, rue Boucry - 75018 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 24492376,
+          "taux_type": "V",
+          "taux_actuariel": 3.11
+        },
+        {
+          "objet": "18-30, rue Boucry - 75018 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 22319678,
+          "taux_type": "V",
+          "taux_actuariel": 2.95
+        },
+        {
+          "objet": "ZAC Gare Mines-Fillettes - 75018",
+          "beneficiaire": "Paris et Métropole Aménagement (SPL)",
+          "preteur": "LBP",
+          "annee_mobilisation": 2020,
+          "capital_restant": 17600000,
+          "taux_type": "FIXE",
+          "taux_actuariel": 0.64
+        },
+        {
+          "objet": "ZAC Gare Mines-Fillettes - 75018",
+          "beneficiaire": "Paris et Métropole Aménagement (SPL)",
+          "preteur": "CE",
+          "annee_mobilisation": 2020,
+          "capital_restant": 17600000,
+          "taux_type": "FIXE",
+          "taux_actuariel": 0.49
+        },
+        {
+          "objet": "Pépinière Entreprises - Entrepôt Macdonald - 75018",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 16947112,
+          "taux_type": "V",
+          "taux_actuariel": 2.39
+        },
+        {
+          "objet": "3-17, rue Andrézieux - 75018 - RGT",
+          "beneficiaire": "ICF Habitat La Sablière (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 13264118,
+          "taux_type": "FIXE",
+          "taux_actuariel": 0.57
+        },
+        {
+          "objet": "245-251 rue Marcadet - 75018 - RGT",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 10587754,
+          "taux_type": "V",
+          "taux_actuariel": 2.18
+        },
+        {
+          "objet": "18-30, rue Boucry - 75018 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 10529411,
+          "taux_type": "V",
+          "taux_actuariel": 2.95
+        },
+        {
+          "objet": "2/16 Allée Valentin Abeille - 75018 - RGT",
+          "beneficiaire": "Antin Résidences (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "capital_restant": 10385468,
+          "taux_type": "V",
+          "taux_actuariel": 2.25
+        },
+        {
+          "objet": "Rue Doudeauville - Ilôt Custine - 75018 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "capital_restant": 9763843,
+          "taux_type": "V",
+          "taux_actuariel": 2.83
+        },
+        {
+          "objet": "ZAC Chapelle Chardon - 75018",
+          "beneficiaire": "Paris et Métropole Aménagement (SPL)",
+          "preteur": "LBP",
+          "annee_mobilisation": 2018,
+          "capital_restant": 9680000,
+          "taux_type": "FIXE",
+          "taux_actuariel": 0.35
+        },
+        {
+          "objet": "3-17, rue Andrézieux - 75018 - RGT",
+          "beneficiaire": "ICF Habitat La Sablière (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 9352683,
+          "taux_type": "V",
+          "taux_actuariel": 2.75
+        },
+        {
+          "objet": "Hôtel - Porte Montmartre/Ilot Binet - 75018 - RGT",
+          "beneficiaire": "SAS 32 PARIS Porte Montmartre",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 9327841,
+          "taux_type": "V",
+          "taux_actuariel": 2.38
+        },
+        {
+          "objet": "Hôtel d'activités Ilôt Binet - 75018",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CE",
+          "annee_mobilisation": 2017,
+          "capital_restant": 9274993,
+          "taux_type": "FIXE",
+          "taux_actuariel": 2.15
+        },
+        {
+          "objet": "Secteur Ordener/Poissonniers (Lot 3) - 75018 - NSG",
+          "beneficiaire": "ICF Habitat La Sablière (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 8747883,
+          "taux_type": "V",
+          "taux_actuariel": 1.8
+        }
+      ]
     },
     {
       "arr": 19,
       "capital_restant": 844977486,
       "count_emprunts": 586,
-      "share_of_localized": 0.10557166633156267
+      "share_of_localized": 0.10557166633156267,
+      "top_beneficiaires": [
+        {
+          "name": "RIVP (SEM)",
+          "capital_restant": 247638437,
+          "count_emprunts": 129,
+          "share_of_arr": 0.2930710471736275
+        },
+        {
+          "name": "PARIS Habitat OPH (EP)",
+          "capital_restant": 191209259,
+          "count_emprunts": 129,
+          "share_of_arr": 0.22628917644650545
+        },
+        {
+          "name": "ELOGIE-SIEMP (SEML)",
+          "capital_restant": 94319582,
+          "count_emprunts": 141,
+          "share_of_arr": 0.11162378084445881
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "Réalisation salle - 211 avenue Jean Jaurès - 75019",
+          "beneficiaire": "EP Cité Musique - Philharmonie",
+          "preteur": "SG",
+          "annee_mobilisation": 2011,
+          "capital_restant": 78018528,
+          "taux_type": "FIXE",
+          "taux_actuariel": 5.0
+        },
+        {
+          "objet": "64-66 rue de Meaux - 75019 - RGT",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "capital_restant": 22106999,
+          "taux_type": "V",
+          "taux_actuariel": 2.37
+        },
+        {
+          "objet": "64-66 rue de Meaux - 75019 - RGT",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2017,
+          "capital_restant": 22009735,
+          "taux_type": "V",
+          "taux_actuariel": 2.3
+        },
+        {
+          "objet": "Groupe Serrurier / Indochine - 75019 - NSG",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "capital_restant": 16312851,
+          "taux_type": "V",
+          "taux_actuariel": 2.6
+        },
+        {
+          "objet": "Groupe Alphonse Karr - 75019 - NSG",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 15168076,
+          "taux_type": "FIXE",
+          "taux_actuariel": 0.79
+        },
+        {
+          "objet": "25-33 rue Pradier Fessart - 75019",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2014,
+          "capital_restant": 14760537,
+          "taux_type": "V",
+          "taux_actuariel": 2.07
+        },
+        {
+          "objet": "ZAC Claude Bernard A3 B1 C1 B3 - 75019 - RGT",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2015,
+          "capital_restant": 10111515,
+          "taux_type": "FIXE",
+          "taux_actuariel": 2.7
+        },
+        {
+          "objet": "22-32, rue des Lilas - 75019",
+          "beneficiaire": "1001 Vies Habitat (ESH)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "capital_restant": 8892661,
+          "taux_type": "V",
+          "taux_actuariel": 3.03
+        },
+        {
+          "objet": "27 rue du Docteur Potain - 75019",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "capital_restant": 8482406,
+          "taux_type": "V",
+          "taux_actuariel": 2.22
+        },
+        {
+          "objet": "Stade J. Ladoumègue Voie BJ19 - 75019 - RGT",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "capital_restant": 8451939,
+          "taux_type": "V",
+          "taux_actuariel": 2.74
+        },
+        {
+          "objet": "Résidence Sociale / Triangle Eole Evangile - 75019",
+          "beneficiaire": "ICF Habitat La Sablière (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 8159188,
+          "taux_type": "V",
+          "taux_actuariel": 2.51
+        },
+        {
+          "objet": "ZAC Claude Bernard - 75019",
+          "beneficiaire": "AXENTIA (SA HLM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2009,
+          "capital_restant": 7901146,
+          "taux_type": "V",
+          "taux_actuariel": 2.15
+        },
+        {
+          "objet": "8, Boulevard d'Indochine - 75019",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 7708091,
+          "taux_type": "V",
+          "taux_actuariel": 2.34
+        },
+        {
+          "objet": "LLI - 27-31, avenue de Flandre - 75019",
+          "beneficiaire": "SEQENS (SA HLM)",
+          "preteur": "CE",
+          "annee_mobilisation": 2021,
+          "capital_restant": 7520204,
+          "taux_type": "FIXE",
+          "taux_actuariel": 1.21
+        },
+        {
+          "objet": "Entrepôts Mc Donald - Lots N1 et N6 - 75019 - RGT",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "capital_restant": 7449909,
+          "taux_type": "FIXE",
+          "taux_actuariel": 0.8
+        }
+      ]
     },
     {
       "arr": 20,
       "capital_restant": 926878627,
       "count_emprunts": 1078,
-      "share_of_localized": 0.11580441235782156
+      "share_of_localized": 0.11580441235782156,
+      "top_beneficiaires": [
+        {
+          "name": "RIVP (SEM)",
+          "capital_restant": 357878970,
+          "count_emprunts": 269,
+          "share_of_arr": 0.3861120098441789
+        },
+        {
+          "name": "PARIS Habitat OPH (EP)",
+          "capital_restant": 180921327,
+          "count_emprunts": 217,
+          "share_of_arr": 0.1951941948765919
+        },
+        {
+          "name": "ELOGIE-SIEMP (SEML)",
+          "capital_restant": 177423056,
+          "count_emprunts": 377,
+          "share_of_arr": 0.19141994482178454
+        }
+      ],
+      "emprunts_top": [
+        {
+          "objet": "113 à 117 rue des Orteaux - 75020",
+          "beneficiaire": "BATIGERE Ile de France (ESH)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2009,
+          "capital_restant": 22765637,
+          "taux_type": "V",
+          "taux_actuariel": 2.27
+        },
+        {
+          "objet": "20-26 rue Saint-Fargeau - 75020 - RGT",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2016,
+          "capital_restant": 14459141,
+          "taux_type": "V",
+          "taux_actuariel": 2.74
+        },
+        {
+          "objet": "2-14 avenue de la Porte de Vincennes - 75020",
+          "beneficiaire": "CDC Habitat Social (SEM)",
+          "preteur": "CA IdF",
+          "annee_mobilisation": 2012,
+          "capital_restant": 14211934,
+          "taux_type": "V",
+          "taux_actuariel": 2.78
+        },
+        {
+          "objet": "20-26 rue Saint-Fargeau - 75020 - RGT",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2015,
+          "capital_restant": 13827176,
+          "taux_type": "V",
+          "taux_actuariel": 2.13
+        },
+        {
+          "objet": "29-39, rue Villiers de l'Isle d'Adam - 75020 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 13460112,
+          "taux_type": "V",
+          "taux_actuariel": 3.06
+        },
+        {
+          "objet": "29-39, rue Villiers de l'Isle d'Adam - 75020 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 13434604,
+          "taux_type": "V",
+          "taux_actuariel": 3.06
+        },
+        {
+          "objet": "118-122, bd de Charonne - 75020 - RGT",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2020,
+          "capital_restant": 11581660,
+          "taux_type": "FIXE",
+          "taux_actuariel": 0.8
+        },
+        {
+          "objet": "Foyer - 56 rue du Surmelin - 75020",
+          "beneficiaire": "Fondation CASIP-COJASOR",
+          "preteur": "CF",
+          "annee_mobilisation": 2010,
+          "capital_restant": 10460904,
+          "taux_type": "V",
+          "taux_actuariel": 2.56
+        },
+        {
+          "objet": "2-14 avenue de la Porte de Vincennes - 75020",
+          "beneficiaire": "CDC Habitat Social (SEM)",
+          "preteur": "CA IdF",
+          "annee_mobilisation": 2012,
+          "capital_restant": 9603258,
+          "taux_type": "V",
+          "taux_actuariel": 2.72
+        },
+        {
+          "objet": "2-14 avenue de la Porte de Vincennes - 75020",
+          "beneficiaire": "CDC Habitat Social (SEM)",
+          "preteur": "CA IdF",
+          "annee_mobilisation": 2011,
+          "capital_restant": 9089195,
+          "taux_type": "V",
+          "taux_actuariel": 0.56
+        },
+        {
+          "objet": "Groupe Got Marie-Laurent - 75020",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 8602142,
+          "taux_type": "V",
+          "taux_actuariel": 2.38
+        },
+        {
+          "objet": "Groupe Got Marie-Laurent - 75020",
+          "beneficiaire": "PARIS Habitat OPH (EP)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2019,
+          "capital_restant": 8499795,
+          "taux_type": "V",
+          "taux_actuariel": 1.59
+        },
+        {
+          "objet": "Rue de Bagnolet - 75020",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2018,
+          "capital_restant": 7525417,
+          "taux_type": "FIXE",
+          "taux_actuariel": 1.67
+        },
+        {
+          "objet": "28, rue de Ménilmontant - 75020 - NSG",
+          "beneficiaire": "RIVP (SEM)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2022,
+          "capital_restant": 7238563,
+          "taux_type": "V",
+          "taux_actuariel": 3.11
+        },
+        {
+          "objet": "35-43, rue Duris - 75020 - NSG",
+          "beneficiaire": "ELOGIE-SIEMP (SEML)",
+          "preteur": "CDC",
+          "annee_mobilisation": 2021,
+          "capital_restant": 7179240,
+          "taux_type": "FIXE",
+          "taux_actuariel": 0.83
+        }
+      ]
     }
   ],
   "non_localised": {

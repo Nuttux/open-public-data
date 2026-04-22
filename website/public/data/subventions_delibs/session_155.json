@@ -2782,12 +2782,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Financement du programme de réalisation d'un atelier d'artiste collectif à la Villa Corot Paris 14e.",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DAC 145",
@@ -4390,12 +4391,13 @@
       "session_id": 155,
       "article_num": 3,
       "beneficiary": "Sensecube",
-      "siret": null,
+      "siret": "80214537500027",
       "amount_eur": 40000.0,
       "amount_raw": "40 000",
       "motif": "Aide en nature correspondant à la valeur locative annuelle des locaux de la mairie du 20e arrondissement.",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DAE 197",
@@ -4463,13 +4465,14 @@
       "session_id": 155,
       "article_num": 24,
       "beneficiary": "Café associatif Pernety",
-      "siret": null,
+      "siret": "48332094100022",
       "amount_eur": 6000.0,
       "amount_raw": "000",
       "motif": "Subvention à l'association Café associatif Pernety.",
       "dossier": null,
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DAE 221",
@@ -4493,13 +4496,14 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "Cop1",
-      "siret": null,
+      "siret": "88910542500017",
       "amount_eur": 120000.0,
       "amount_raw": null,
       "motif": "Subvention à l'association Cop1.",
       "dossier": null,
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DAE 223",
@@ -4553,12 +4557,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "PariSeine Immo",
-      "siret": null,
+      "siret": "90837588400016",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "« Des lieux de collecte, transformation, production, vente et logistique pour une économie solidaire et engagée à Paris »",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DAE 26",
@@ -4582,12 +4587,13 @@
       "session_id": 155,
       "article_num": 3,
       "beneficiary": "PariSeine Immo",
-      "siret": null,
+      "siret": "90837588400016",
       "amount_eur": 630000.0,
       "amount_raw": "630 000",
       "motif": "Subvention pour projet immobilier de collecte, transformation et production.",
       "dossier": "2025",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DAE 26",
@@ -5189,12 +5195,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "Fontaine O Livres",
-      "siret": null,
+      "siret": "42890588900021",
       "amount_eur": 500.0,
       "amount_raw": "500",
       "motif": "Subvention de fonctionnement au titre de l'exercice 2025.",
       "dossier": "2025",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DAE 137",
@@ -5218,13 +5225,14 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "La Tables des matières",
-      "siret": null,
+      "siret": "81283075000012",
       "amount_eur": 2000.0,
       "amount_raw": "000",
       "motif": "Subvention de fonctionnement au titre de l'exercice 2025.",
       "dossier": "2025",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DAE 138",
@@ -5248,12 +5256,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "Disquaire Day – Record Day",
-      "siret": null,
+      "siret": "89357470700012",
       "amount_eur": 500.0,
       "amount_raw": "500",
       "motif": "Subvention de fonctionnement au titre de l'exercice 2025.",
       "dossier": "2025",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DAE 139",
@@ -5616,12 +5625,13 @@
       "session_id": 155,
       "article_num": 4,
       "beneficiary": "Mission Locale de Paris",
-      "siret": null,
+      "siret": "53132862300149",
       "amount_eur": 5.0,
       "amount_raw": "005",
       "motif": "la location de l’immeuble communal 24-26 rue de Châtillon (14e) est fixé à 68",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DAE 195",
@@ -5909,12 +5919,13 @@
       "session_id": 155,
       "article_num": null,
       "beneficiary": "OPCO EP",
-      "siret": null,
+      "siret": "92457922000014",
       "amount_eur": 400.0,
       "amount_raw": "400",
       "motif": "la premièr e fois en 2023, a répondu à un besoin émana n t des entrep rise s du Service à la Personn e, avec un taux de retour à l’emploi encoura g e a n t",
       "dossier": "2025",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DAE 206",
@@ -6183,12 +6194,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "Paris Biotech Santé",
-      "siret": null,
+      "siret": "30833175000015",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Convention d'investissement",
       "dossier": "2025 DAE 217",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DAE 217",
@@ -6267,12 +6279,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "Cap Sport Art Aventure et Amitié",
-      "siret": null,
+      "siret": "45289733300012",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "l’attribution d’une subvention",
       "dossier": "2025 DASCO 22",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DASCO 22",
@@ -6676,12 +6689,13 @@
       "session_id": 155,
       "article_num": 27,
       "beneficiary": "Quai De Jemmapes X",
-      "siret": null,
+      "siret": "88024726700011",
       "amount_eur": 10300.0,
       "amount_raw": "10 300",
       "motif": "Subvention pour l'exercice 2025-2026.",
       "dossier": "2025",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DASCO 31",
@@ -6957,12 +6971,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "Coup de Pouce",
-      "siret": null,
+      "siret": "44954294300013",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Partenaire de la réussite à l'école",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DASCO 141",
@@ -7652,13 +7667,14 @@
       "session_id": 155,
       "article_num": 3,
       "beneficiary": "Collectif Archives LGBTQI",
-      "siret": null,
+      "siret": "83854008600025",
       "amount_eur": 282000.0,
       "amount_raw": "000",
       "motif": "son projet (2025_11493) est abrogée",
       "dossier": "2025_11493",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DDCT 182",
@@ -7667,13 +7683,14 @@
       "session_id": 155,
       "article_num": 4,
       "beneficiary": "Collectif Archives LGBTQI",
-      "siret": null,
+      "siret": "83854008600025",
       "amount_eur": 18000.0,
       "amount_raw": "000",
       "motif": "son projet (2024_07343) est abrogé",
       "dossier": "2024_07343",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DDCT 182",
@@ -7726,13 +7743,14 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "La Ressourcerie créative",
-      "siret": null,
+      "siret": "80956195400029",
       "amount_eur": 100000.0,
       "amount_raw": "000",
       "motif": "Subvention d'investissement",
       "dossier": "2025_09253",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DEVE 102",
@@ -7933,12 +7951,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "Crescendo",
-      "siret": null,
+      "siret": "78481011100251",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "l’attribution d’une subvention de fonctionnement",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DFPE 8",
@@ -7947,12 +7966,13 @@
       "session_id": 155,
       "article_num": 3,
       "beneficiary": "Crescendo",
-      "siret": null,
+      "siret": "78481011100251",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "la gestion du Lieu d’Accueil Enfants Parents itinérant situé dans La crèche « La Souris Verte », 112 rue Brancion (15e) et au Cabanon de la Place des Fêtes (CAPLA), 1 Place des Fêtes (19e)",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DFPE 8",
@@ -7975,12 +7995,13 @@
       "session_id": 155,
       "article_num": 5,
       "beneficiary": "Le Petit Ney",
-      "siret": null,
+      "siret": "40287922500033",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "la gestion du Lieu d’Accueil Enfants Parents itinérant dans le 18eme nommé « Poussiney »",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DFPE 8",
@@ -8003,12 +8024,13 @@
       "session_id": 155,
       "article_num": 7,
       "beneficiary": "Ressources Enfances Parentalités",
-      "siret": null,
+      "siret": "81079974200020",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "l’attribution d’une subvention de fonctionnement",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DFPE 8",
@@ -8044,12 +8066,13 @@
       "session_id": 155,
       "article_num": 10,
       "beneficiary": "13 pour tous",
-      "siret": null,
+      "siret": "48905531900029",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "tous » pour l’attribution d’une subvention de fonctionnement",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DFPE 8",
@@ -8101,12 +8124,13 @@
       "session_id": 155,
       "article_num": 3,
       "beneficiary": "Association Pour l'Accueil, le Soutien et l'Orientation (A.P.A.S.O)",
-      "siret": null,
+      "siret": "37937216200022",
       "amount_eur": 4300.0,
       "amount_raw": "4 300",
       "motif": "l’Accueil, le Soutien et l’Orientation » (A",
       "dossier": "2025",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DFPE 109",
@@ -8341,12 +8365,13 @@
       "session_id": 155,
       "article_num": 20,
       "beneficiary": "LE MOULIN",
-      "siret": null,
+      "siret": "49142455200017",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "l'attribution d'une subvention de fonctionnement",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DFPE 109",
@@ -8382,12 +8407,13 @@
       "session_id": 155,
       "article_num": 23,
       "beneficiary": "LE PICOULET",
-      "siret": null,
+      "siret": "81261159800010",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "l'attribution d'une subvention de fonctionnement",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DFPE 109",
@@ -8410,12 +8436,13 @@
       "session_id": 155,
       "article_num": 25,
       "beneficiary": "Lire –le livre pour l'insertion et le refus de l'exclusion",
-      "siret": null,
+      "siret": "42060014000032",
       "amount_eur": 6000.0,
       "amount_raw": "6 000",
       "motif": "l’insertion et le refus de l’exclusion ayant son siège social 69, rue Curial 75019 Paris, pour son projet intitulé «Histoire de LIRE avec les parents » (PARIS ASSO : 16396 ; n° dossier : 2025_12050), d’un montant de 6 000 € au titre des familles (DFPE)",
       "dossier": "2025",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DFPE 109",
@@ -8424,12 +8451,13 @@
       "session_id": 155,
       "article_num": 26,
       "beneficiary": "Les Jeunes Ambitieux",
-      "siret": null,
+      "siret": "94189541900013",
       "amount_eur": 4100.0,
       "amount_raw": "4 100",
       "motif": "son projet intitulé «L'ambition au service de l'éducation » dans le 19earrondissement (PARIS ASSO : 196649 ; n° dossier : 2025_10197), d’un montant de 4 100 € au titre des familles (DFPE)",
       "dossier": "2025",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DFPE 109",
@@ -8438,12 +8466,13 @@
       "session_id": 155,
       "article_num": 27,
       "beneficiary": "Médiation de traverse",
-      "siret": null,
+      "siret": "92771146500017",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "l'attribution d'une subvention de fonctionnement",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DFPE 109",
@@ -8466,12 +8495,13 @@
       "session_id": 155,
       "article_num": 29,
       "beneficiary": "PLUS LOIN",
-      "siret": null,
+      "siret": "49378291600024",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "l'attribution d'une subvention de fonctionnement",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DFPE 109",
@@ -8955,12 +8985,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "La Maison Kangourou",
-      "siret": null,
+      "siret": "39498299500026",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "l'attribution d'une subvention d’investissement",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DFPE 2",
@@ -9011,12 +9042,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "Fondation Œuvre de la Croix Saint-Simon",
-      "siret": null,
+      "siret": "78480968300484",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Fixation du montant de la subvention 2025.",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DFPE 9",
@@ -9212,12 +9244,13 @@
       "session_id": 155,
       "article_num": 14,
       "beneficiary": "Une Nouvelle Idée de la Crèche Paris",
-      "siret": null,
+      "siret": "82822702500040",
       "amount_eur": 10000.0,
       "amount_raw": "10 000",
       "motif": "sa structure multi-accueil située 25, rue Stephenson (18e)",
       "dossier": "2025",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DFPE 77",
@@ -9280,12 +9313,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "La Maison Kangourou",
-      "siret": null,
+      "siret": "39498299500026",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "l'attribution de deux subventions d’investissement",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DFPE 155",
@@ -9337,12 +9371,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "Capucine et Papillons, Jardin d'Enfance",
-      "siret": null,
+      "siret": "48158696400027",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "l'attribution d'une subvention d’investissement",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DFPE 173",
@@ -9380,12 +9415,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "Régie Immobilière de la Ville de Paris",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "l’attribution de deux subventions d’investissement",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DFPE 174",
@@ -9394,13 +9430,14 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 2046000.0,
       "amount_raw": "000",
       "motif": "la création d’un établissement d’accueil du jeune enfant de 66 places, situé 4 rue Elisabeth Vigée Le Brun (15e)",
       "dossier": "183555",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DFPE 174",
@@ -9409,13 +9446,14 @@
       "session_id": 155,
       "article_num": 3,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 550000.0,
       "amount_raw": "000",
       "motif": "la restructuration d’un centre de Protection Maternelle et Infantile, situé 4 rue Elisabeth Vigée Le Brun (15e)",
       "dossier": "183555",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DFPE 174",
@@ -9570,12 +9608,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "Lutin Lune",
-      "siret": null,
+      "siret": "84459227900021",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "l’attribution d’une subvention d’investissement",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DFPE 189",
@@ -9584,12 +9623,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "Lutin Lune",
-      "siret": null,
+      "siret": "84459227900021",
       "amount_eur": 647.0,
       "amount_raw": "647",
       "motif": "des travaux de mises aux normes et l’achat d’équipement pour la crèche parentale «Lutin Lune »(16 places), située 37 rue de la Réunion (20e)",
       "dossier": "2025",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DFPE 189",
@@ -10039,12 +10079,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "Les Jeunes Économes",
-      "siret": null,
+      "siret": "78429535400020",
       "amount_eur": 200.0,
       "amount_raw": "200",
       "motif": "Gestion du foyer Alma Bosquet",
       "dossier": "20511/2025_04562",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 63",
@@ -10068,13 +10109,14 @@
       "session_id": 155,
       "article_num": 4,
       "beneficiary": "Foyer de Chaillot-Galliera",
-      "siret": null,
+      "siret": "78485727800013",
       "amount_eur": 28000.0,
       "amount_raw": "000",
       "motif": "Subvention pour l'exercice 2025",
       "dossier": "15905/2025_05695",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 63",
@@ -10083,12 +10125,13 @@
       "session_id": 155,
       "article_num": 5,
       "beneficiary": "Jeune Cordée",
-      "siret": null,
+      "siret": "78438514800019",
       "amount_eur": 400.0,
       "amount_raw": "400",
       "motif": "Subvention pour l'exercice 2025",
       "dossier": "20838/2025_05449",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 63",
@@ -10097,12 +10140,13 @@
       "session_id": 155,
       "article_num": 6,
       "beneficiary": "L'Etape -Parcours Logement Jeunes",
-      "siret": null,
+      "siret": "31058032900012",
       "amount_eur": 600.0,
       "amount_raw": "600",
       "motif": "la gestion de trois foyers, répartie comme suit : -Foyer Voltaire (11e) :23",
       "dossier": "19646/2025_03561",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 63",
@@ -10125,13 +10169,14 @@
       "session_id": 155,
       "article_num": 8,
       "beneficiary": "Œuvres de la Mie de Pain",
-      "siret": null,
+      "siret": "77568219800053",
       "amount_eur": 35000.0,
       "amount_raw": "000",
       "motif": "Gestion du Foyer Paulin Enfert",
       "dossier": "2569/2025_08113",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 63",
@@ -10140,12 +10185,13 @@
       "session_id": 155,
       "article_num": 9,
       "beneficiary": "Société Hénéo",
-      "siret": null,
+      "siret": "56211864600149",
       "amount_eur": 300.0,
       "amount_raw": "300",
       "motif": "la gestion de deux foyers, répartie comme suit : -Foyer Yvette Guilbert (17e) :15",
       "dossier": "2025 DJS 63",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 63",
@@ -10154,12 +10200,13 @@
       "session_id": 155,
       "article_num": 10,
       "beneficiary": "Association des Foyers de Jeunes",
-      "siret": null,
+      "siret": "77568234700015",
       "amount_eur": 800.0,
       "amount_raw": "800",
       "motif": "Gestion du Foyer Tolbiac.",
       "dossier": "2025 DJS 63",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 63",
@@ -10182,12 +10229,13 @@
       "session_id": 155,
       "article_num": 12,
       "beneficiary": "Service Social Breton",
-      "siret": null,
+      "siret": "78462273000025",
       "amount_eur": 100.0,
       "amount_raw": "100",
       "motif": "Gestion de foyers pour jeunes en difficulté.",
       "dossier": "2025 DJS 63",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 63",
@@ -10210,12 +10258,13 @@
       "session_id": 155,
       "article_num": 14,
       "beneficiary": "Relais Accueil du Vallona",
-      "siret": null,
+      "siret": "33311091400012",
       "amount_eur": 500.0,
       "amount_raw": "500",
       "motif": "Gestion du foyer Davy.",
       "dossier": "2025 DJS 63",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 63",
@@ -10224,12 +10273,13 @@
       "session_id": 155,
       "article_num": 15,
       "beneficiary": "Championnet",
-      "siret": null,
+      "siret": "50383778300011",
       "amount_eur": 300.0,
       "amount_raw": "300",
       "motif": "Gestion de foyers pour jeunes en difficulté.",
       "dossier": "2025 DJS 63",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 63",
@@ -10238,13 +10288,14 @@
       "session_id": 155,
       "article_num": 16,
       "beneficiary": "L'Initiative",
-      "siret": null,
+      "siret": "82297581900027",
       "amount_eur": 28000.0,
       "amount_raw": "000",
       "motif": "Gestion du foyer Daubenton.",
       "dossier": "2025 DJS 63",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 63",
@@ -10253,13 +10304,14 @@
       "session_id": 155,
       "article_num": 17,
       "beneficiary": "Association pour le Logement des Jeunes Travailleurs - ALJT",
-      "siret": null,
+      "siret": "77566643101007",
       "amount_eur": 296000.0,
       "amount_raw": "000",
       "motif": "le Logement des Jeunes Travailleurs - ALJT (19779/ 2025_04614)-18-26, rue Goubet, (19e)",
       "dossier": "19779/2025_04614",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 63",
@@ -10268,12 +10320,13 @@
       "session_id": 155,
       "article_num": 18,
       "beneficiary": "Les Hauts de Belleville",
-      "siret": null,
+      "siret": "33300628600012",
       "amount_eur": 200.0,
       "amount_raw": "200",
       "motif": "Subvention d'exploitation pour l'association en 2025.",
       "dossier": "20675/2025_07240",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 63",
@@ -10296,12 +10349,13 @@
       "session_id": 155,
       "article_num": 20,
       "beneficiary": "Association Vivre et Devenir – Villepinte – Saint-Michel",
-      "siret": null,
+      "siret": "77567245400268",
       "amount_eur": 300.0,
       "amount_raw": "300",
       "motif": "Gestion du foyer Pierre Olivaint (15e) en 2025.",
       "dossier": "195814/2025_05524",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 63",
@@ -10310,13 +10364,14 @@
       "session_id": 155,
       "article_num": 21,
       "beneficiary": "Union Régionale pour l'Habitat des Jeunes Ile-de-France (URHAJ Ile-de-France)",
-      "siret": null,
+      "siret": "31806948100071",
       "amount_eur": 30000.0,
       "amount_raw": "000",
       "motif": "l’Habitat des Jeunes Ile-de-France (URHAJ Ile-de-France) (20065/2025_06313)-166, rue de Charonne (11e)",
       "dossier": "20065/2025_06313",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 63",
@@ -10692,12 +10747,13 @@
       "session_id": 155,
       "article_num": 21,
       "beneficiary": "Up Sport !Unis pour le Sport",
-      "siret": null,
+      "siret": "81979441300032",
       "amount_eur": 500.0,
       "amount_raw": "500",
       "motif": "le Sport (186722 / 2025_11960) –20 Rue Brillat-Savarin (13e) au titre de l’exercice 2025",
       "dossier": "2025_11960",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 21",
@@ -10841,13 +10897,14 @@
       "session_id": 155,
       "article_num": 31,
       "beneficiary": "Maison Bleue –Porte Montmartre",
-      "siret": null,
+      "siret": "79394484400026",
       "amount_eur": 3000.0,
       "amount_raw": "000",
       "motif": "Subvention annuelle d'objectif pour l'exercice 2025",
       "dossier": "163481/2025_12032",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 21",
@@ -11415,13 +11472,14 @@
       "session_id": 155,
       "article_num": 38,
       "beneficiary": "UP Sport !Unis Pour le Sport",
-      "siret": null,
+      "siret": "81979441300032",
       "amount_eur": 12000.0,
       "amount_raw": "000",
       "motif": "le Sport (186722 / 2025_11966) –20 Rue Brillat Savarin (13e) au titre de l’exercice 2025",
       "dossier": "2025_11966",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 22",
@@ -11488,13 +11546,14 @@
       "session_id": 155,
       "article_num": 43,
       "beneficiary": "La Maison Bleue – Porte Montmartre",
-      "siret": null,
+      "siret": "79394484400026",
       "amount_eur": 2000.0,
       "amount_raw": "000",
       "motif": "Subvention annuelle au titre de l'exercice 2025.",
       "dossier": "2025_12030",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 22",
@@ -11547,13 +11606,14 @@
       "session_id": 155,
       "article_num": 47,
       "beneficiary": "RJD 13",
-      "siret": null,
+      "siret": "92437841700019",
       "amount_eur": 3000.0,
       "amount_raw": "000",
       "motif": "Subvention annuelle d'objectif pour l'exercice 2025.",
       "dossier": "204167 / 2025_11989",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 22",
@@ -11708,12 +11768,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "Fédération Française d'Athlétisme",
-      "siret": null,
+      "siret": "78444873000027",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "l’organisation d’événements sportifs et d’animations à Paris en 2025",
       "dossier": "2025_12502",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 51",
@@ -11751,12 +11812,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "Racing Multi-Athlon",
-      "siret": null,
+      "siret": "79370818100045",
       "amount_eur": null,
       "amount_raw": null,
       "motif": null,
       "dossier": "159341/2025_",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 125",
@@ -11794,12 +11856,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "Association Judo Amicale Paris XX",
-      "siret": null,
+      "siret": "47912090900037",
       "amount_eur": null,
       "amount_raw": null,
       "motif": null,
       "dossier": "23/2025_04955",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 151",
@@ -11836,12 +11899,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "Paris Université Club",
-      "siret": null,
+      "siret": "78425962400020",
       "amount_eur": null,
       "amount_raw": null,
       "motif": null,
       "dossier": "16598/2025_12469",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 152",
@@ -11879,12 +11943,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "Sporting Club de Paris",
-      "siret": null,
+      "siret": "39910766300011",
       "amount_eur": null,
       "amount_raw": null,
       "motif": null,
       "dossier": "23/2025_12498",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DJS 153",
@@ -12053,12 +12118,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 2000000.0,
       "amount_raw": "2 000 000",
       "motif": "ce programme, la RIVP bénéficiera d’une subvention de la Ville de Paris complémentaire d’un montant maximum de 2 000 000 euros ;la dépense correspondante sera imputée au budget d’investissement de la Ville de Paris de l’exercice 2025 sous réserve de la disponibilité des crédits",
       "dossier": "2025 DLH 155",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 155",
@@ -12240,12 +12306,13 @@
       "session_id": 155,
       "article_num": 4,
       "beneficiary": "CDC HABITAT SOCIAL",
-      "siret": null,
+      "siret": "55204648400325",
       "amount_eur": 803079.0,
       "amount_raw": "803 079",
       "motif": "Rénovation de 16 logements sociaux à 8 rue de l'Encheval (19e) - Garantie des emprunts",
       "dossier": "2025 DLH 180",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 180",
@@ -12284,12 +12351,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "Paris Habitat",
-      "siret": null,
+      "siret": "38906067400048",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Acquisition en VIR de 42 logements (21 PLAI, 13 PLUS, 8 PLS) à 10-12 rue Jean-Baptiste Pigalle (9e)",
       "dossier": "2025 DLH 183",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 183",
@@ -12298,12 +12366,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "Paris Habitat",
-      "siret": null,
+      "siret": "38906067400048",
       "amount_eur": 2446439.0,
       "amount_raw": "2 446 439",
       "motif": "ce programme, Paris Habitat bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 2 446 439 euros",
       "dossier": "2025 DLH 183",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 183",
@@ -12357,12 +12426,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "Paris Habitat",
-      "siret": null,
+      "siret": "38906067400048",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Réalisation d'un programme d'acquisition-amélioration de 28 logements (8 PLA I, 12 PLUS, 8 PLS).",
       "dossier": "2025 DLH 187",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 187",
@@ -12371,12 +12441,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "Paris Habitat",
-      "siret": null,
+      "siret": "38906067400048",
       "amount_eur": 3733599.0,
       "amount_raw": "3 733 599",
       "motif": "ce programme, Paris Habitat bénéficiera d’une subvention municipale d’un montant maximum global de 3 733 599 euros",
       "dossier": "2025 DLH 187",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 187",
@@ -13145,12 +13216,13 @@
       "session_id": 155,
       "article_num": 4,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 4587422.0,
       "amount_raw": "4 587 422",
       "motif": "Garantie des emprunts pour un programme de rénovation de 87 logements sociaux.",
       "dossier": "2025 DLH 210",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 210",
@@ -13217,12 +13289,13 @@
       "session_id": 155,
       "article_num": 4,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 523270.0,
       "amount_raw": "523 270",
       "motif": "Rénovation de 10 logements sociaux au 19 passage du Nord (19e) – Garantie des emprunts",
       "dossier": "2025 DLH 218",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 218",
@@ -13289,12 +13362,13 @@
       "session_id": 155,
       "article_num": 4,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 1183133.0,
       "amount_raw": "1 183 133",
       "motif": "Rénovation de 15 logements sociaux au 4 Boulevard de Belleville (20e) – Garantie des emprunts",
       "dossier": "2025 DLH 220",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 220",
@@ -13376,12 +13450,13 @@
       "session_id": 155,
       "article_num": 4,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 264925.0,
       "amount_raw": "264 925",
       "motif": "Participation au financement d'un programme de rénovation de 3 logements sociaux au 3 rue Melingue (19e).",
       "dossier": "2025 DLH 221",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 221",
@@ -13463,12 +13538,13 @@
       "session_id": 155,
       "article_num": 4,
       "beneficiary": "HENEO",
-      "siret": null,
+      "siret": "56211864600149",
       "amount_eur": 3145021.0,
       "amount_raw": "3 145 021",
       "motif": "Rénovation d'une résidence sociale de 96 logements sociaux à 193 rue Saint-Charles (15e)",
       "dossier": "2025 DLH 222",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 222",
@@ -13668,12 +13744,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 160657.0,
       "amount_raw": "160 657",
       "motif": "ce programme, Elogie-Siemp bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 160 657 euros",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 252",
@@ -13712,12 +13789,13 @@
       "session_id": 155,
       "article_num": 4,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 1051123.0,
       "amount_raw": "1 051 123",
       "motif": "Rénovation de 10 logements sociaux à 9 rue Pierre Lescot / 92-94 rue Rambuteau (Paris Centre)",
       "dossier": "2025 DLH 252",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 252",
@@ -13771,12 +13849,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "Paris Habitat",
-      "siret": null,
+      "siret": "38906067400048",
       "amount_eur": 700334.0,
       "amount_raw": "700 334",
       "motif": "ce programme, Paris Habitat bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 700 334 euros",
       "dossier": "2025 DLH 254",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 254",
@@ -13845,12 +13924,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "Paris Habitat",
-      "siret": null,
+      "siret": "38906067400048",
       "amount_eur": 678340.0,
       "amount_raw": "678 340",
       "motif": "ce programme, Paris Habitat bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 678 340 euros",
       "dossier": "2025 DLH 255",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 255",
@@ -13962,12 +14042,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "Paris Habitat",
-      "siret": null,
+      "siret": "38906067400048",
       "amount_eur": 1592458.0,
       "amount_raw": "1 592 458",
       "motif": "ce programme, Paris Habitat bénéficiera d’une subvention municipale d’un montant maximum global de 1 592 458 euros",
       "dossier": "2025 DLH 258",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 258",
@@ -14036,12 +14117,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "Paris Habitat",
-      "siret": null,
+      "siret": "38906067400048",
       "amount_eur": 320064.0,
       "amount_raw": "320 064",
       "motif": "ce programme, Paris Habitat bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 320 064 euros",
       "dossier": "2025 DLH 261",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 261",
@@ -14095,12 +14177,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "Paris Habitat",
-      "siret": null,
+      "siret": "38906067400048",
       "amount_eur": 4875615.0,
       "amount_raw": "4 875 615",
       "motif": "ce programme, Paris Habitat bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 4 875 615 euros",
       "dossier": "2025 DLH 262",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 262",
@@ -14197,12 +14280,13 @@
       "session_id": 155,
       "article_num": 4,
       "beneficiary": "Immobilière 3F",
-      "siret": null,
+      "siret": "55214153300018",
       "amount_eur": 1679294.0,
       "amount_raw": "1 679 294",
       "motif": "Rénovation de 31 logements sociaux rue de Charenton (12e) - Garantie des emprunts",
       "dossier": "2025 DLH 266",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 266",
@@ -14299,13 +14383,14 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 458148.0,
       "amount_raw": null,
       "motif": "Travaux de création d'îlots de fraîcheur et amélioration de la qualité de service dans trois immeubles",
       "dossier": "2025 DLH 280",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 280",
@@ -14314,12 +14399,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 129643.0,
       "amount_raw": "129 643",
       "motif": "ces programmes, Elogie-Siemp bénéficiera de subventions de la Ville de Paris d’un montant maximum décliné dans le tableau suivant : BailleurAdresseSubvention Ville IDF Subvention Ville AQS Elogie-Siemp45-47 rue Lacépède129 643 €39 601 € Elogie-Siemp10 rue Maitre Albert33 346 €19",
       "dossier": "2025 DLH 280",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 280",
@@ -14358,12 +14444,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Création d'îlot de fraîcheur et amélioration de la qualité de service au 17 rue de Seine (6e).",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 281",
@@ -14415,12 +14502,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Création d'îlot de fraîcheur au 11-17 rue Louis Blanc/180 quai de Jemmapes (10e).",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 283",
@@ -14472,12 +14560,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": null,
       "amount_raw": null,
       "motif": null,
       "dossier": "2025 DLH 284",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 284",
@@ -14586,12 +14675,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "Paris Habitat",
-      "siret": null,
+      "siret": "38906067400048",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Travaux de création d'îlots de fraîcheur et amélioration de la qualité de service.",
       "dossier": "2025 DLH 286",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 286",
@@ -14600,12 +14690,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "Paris Habitat",
-      "siret": null,
+      "siret": "38906067400048",
       "amount_eur": 40233.0,
       "amount_raw": "40 233",
       "motif": "ces programmes, les bailleurs bénéficieront de subventions de la Ville de Paris d’un montant maximum décliné dans le tableau suivant : BailleurAdresseSubvention Ville IDF Subvention Ville AQS Total subvention Paris Habitat 14-24 rue de la Vistule40 233 €135 519 €175 752 € RIVP41-",
       "dossier": "2025 DLH 286",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 286",
@@ -14644,12 +14735,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Travaux de création d'îlots de fraîcheur et amélioration de la qualité de service.",
       "dossier": "2025 DLH 287",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 287",
@@ -14658,12 +14750,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 219597.0,
       "amount_raw": "219 597",
       "motif": "ces programmes, les bailleurs bénéficieront de subventions de la Ville de Paris d’un montant maximum décliné dans le tableau suivant : Baille urAdresseSubventio n Ville IDF Subventio n Ville AQS RIVP67-69 rue Balard219 597 €0 € RIVP55-63 rue Balard ;68-80 rue Gutenberg99 817 €0 €",
       "dossier": "2025 DLH 287",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 287",
@@ -14717,12 +14810,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "Hénéo",
-      "siret": null,
+      "siret": "56211864600149",
       "amount_eur": 50718.0,
       "amount_raw": "50 718",
       "motif": "ces programmes, les bailleurs bénéficieront de subventions de la Ville de Paris d’un montant maximum décliné dans le tableau suivant : Bailleu rAdresseSubvention Ville IDF Subvention Ville AQS Hénéo8 Allée Yvette Guilbert/50 718 € Elogie- Siemp Groupes Clichy Iet II- 3-11 Level/4",
       "dossier": "2025 DLH 289",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 289",
@@ -14731,13 +14825,14 @@
       "session_id": 155,
       "article_num": 3,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 260179.0,
       "amount_raw": null,
       "motif": "une durée de 40 ans en contrepartie de sa participation au financement de chacun de ces programmes, selon les volumes suivants : BailleurAdresse Nombre de droits de réservation accordés à la Ville de Paris Hénéo8 Allée Yvette Guilbert1 Elogie-Siemp Groupes Clichy Iet II- 3-11 Lev",
       "dossier": "2025 DLH 289",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 289",
@@ -14791,13 +14886,14 @@
       "session_id": 155,
       "article_num": 3,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 23760.0,
       "amount_raw": null,
       "motif": "une durée de 40 ans en contrepartie de sa participation au financement de chacun de ces programmes, selon les volumes suivants : BailleurAdresse Nombre de droits de réservation accordés à la Ville de Paris RIVP96 rue du Ruisseau1 HENEO5 rue Dejean1 RIVP30/36 rue Jean Cottin 28/34",
       "dossier": "2025 DLH 290",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 290",
@@ -14806,13 +14902,14 @@
       "session_id": 155,
       "article_num": 4,
       "beneficiary": "HENEO",
-      "siret": null,
+      "siret": "56211864600149",
       "amount_eur": 8175.0,
       "amount_raw": null,
       "motif": "Travaux d'amélioration de la qualité de service à 5 rue Dejean.",
       "dossier": "2025 DLH 290",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 291",
@@ -14836,12 +14933,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 3330418.0,
       "amount_raw": "3 330 418",
       "motif": "ces programmes, les bailleurs bénéficieront de subventions de la Ville de Paris d’un montant maximum décliné dans le tableau suivant : BailleurAdresseSubvention Ville IDF Subvention Ville AQS RIVPGroupe Brunet (22-26 avenue de la Porte Brunet)3 330 418 €0 € RIVP27-31 rue de Tange",
       "dossier": "2025 DLH 291",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 291",
@@ -14895,12 +14993,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 62766.0,
       "amount_raw": "62 766",
       "motif": "ces programmes, les bailleurs bénéficieront de subventions de la Ville de Paris d’un montant maximum décliné dans le tableau suivant : BailleurAdresseSubvention Ville IDF Subvention Ville AQS Total subvention RIVP24 -26 rue des Prairies62 766 €0 €62 766 € RIVP9 -9 bis rue des Pra",
       "dossier": "2025 DLH 292",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 292",
@@ -14909,13 +15008,14 @@
       "session_id": 155,
       "article_num": 3,
       "beneficiary": "BATIGERE",
-      "siret": null,
+      "siret": "64552016400064",
       "amount_eur": 611458.0,
       "amount_raw": null,
       "motif": "une durée de 40 ans en contrepartie de sa participation au financement de chacun de ces programmes, selon les volumes suivants : BailleurAdresse Nombre de droits de réservation accordés à la Ville de Paris RIVP24 -26 rue des Prairies2 RIVP9 -9 bis rue des Prairies2 RIVP13-17 rue",
       "dossier": "2025 DLH 292",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 292",
@@ -14924,13 +15024,14 @@
       "session_id": 155,
       "article_num": 4,
       "beneficiary": "Paris Habitat",
-      "siret": null,
+      "siret": "38906067400048",
       "amount_eur": 114736.0,
       "amount_raw": null,
       "motif": "Financement de travaux d'amélioration de la qualité de service et création d'îlots de fraîcheur dans les immeubles.",
       "dossier": "2025 DLH 292",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 307",
@@ -14939,12 +15040,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "CDC Habitat Social",
-      "siret": null,
+      "siret": "55204648400325",
       "amount_eur": 40708.0,
       "amount_raw": "40 708",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLAI, à souscrire par CDC Habitat Social auprès de la Caisse des Dépôts et Consignations, destiné à financer la création de 7 logements PLAI (dont un PLAI Adapté)",
       "dossier": "2025 DLH 307",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 307",
@@ -14953,12 +15055,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "CDC Habitat Social",
-      "siret": null,
+      "siret": "55204648400325",
       "amount_eur": 1753844.0,
       "amount_raw": "1 753 844",
       "motif": "ce programme, CDC Habitat Social bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 1 753 844 euros",
       "dossier": "2025 DLH 307",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 307",
@@ -14997,12 +15100,13 @@
       "session_id": 155,
       "article_num": 5,
       "beneficiary": "CDC Habitat Social",
-      "siret": null,
+      "siret": "55204648400325",
       "amount_eur": 1558397.0,
       "amount_raw": "1 558 397",
       "motif": "Garantie des prêts PLAI et PLUS par la Ville de Paris pour programme de 12 logements sociaux.",
       "dossier": "2025 DLH 307",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 307",
@@ -15099,12 +15203,13 @@
       "session_id": 155,
       "article_num": 4,
       "beneficiary": "ELOGIE - SIEMP",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 1786404.0,
       "amount_raw": "1 786 404",
       "motif": "Réalisation d'un programme de rénovation de 20 logements sociaux au 35 rue Quincampoix. Garantie des emprunts.",
       "dossier": "2025 DLH 315",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 315",
@@ -15158,12 +15263,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "Toit et Joie",
-      "siret": null,
+      "siret": "57215017500022",
       "amount_eur": 3345148.0,
       "amount_raw": "3 345 148",
       "motif": "ce programme, Toit et Joie bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 3 345 148 euros",
       "dossier": "2025 DLH 323",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 323",
@@ -15217,12 +15323,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 771598.0,
       "amount_raw": "771 598",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLAI, à souscrire par la RIVP auprès de la Caisse des Dépôts et Consignations, destiné à financer la création de 10 logements PLAI situés 63 Rue Dulong (17e)",
       "dossier": "2025 DLH 335",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 335",
@@ -15231,12 +15338,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 1558466.0,
       "amount_raw": "1 558 466",
       "motif": "ce programme, la RIVP bénéficiera d’une subvention d’un montant maximum global de 1 558 466 euros",
       "dossier": "2025 DLH 335",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 335",
@@ -15290,13 +15398,14 @@
       "session_id": 155,
       "article_num": 6,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 2731815.0,
       "amount_raw": null,
       "motif": "en refuser ou en retarder le paiement",
       "dossier": "2025 DLH 335",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 335",
@@ -15320,12 +15429,13 @@
       "session_id": 155,
       "article_num": 8,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 851841.0,
       "amount_raw": "851 841",
       "motif": "Acquisition-amélioration de 21 logements sociaux (10 PLAI-7 PLUS, 4 PLS) à 63 Rue Dulong (17e)",
       "dossier": "2025 DLH 335",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 336",
@@ -15349,12 +15459,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 1957632.0,
       "amount_raw": "1 957 632",
       "motif": "ce programme, la RIVP bénéficiera d’une subvention d’un montant maximum global de 1 957 632 euros",
       "dossier": "2025 DLH 336",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 336",
@@ -15438,12 +15549,13 @@
       "session_id": 155,
       "article_num": 8,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 1868199.0,
       "amount_raw": "1 868 199",
       "motif": "Acquisition-amélioration de 20 logements sociaux (6 PLAI-8 PLUS-6 PLS) au 4/6 Rue Boissonade (14e)",
       "dossier": "2025 DLH 336",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 340",
@@ -15497,12 +15609,13 @@
       "session_id": 155,
       "article_num": 4,
       "beneficiary": "SEQENS SOLIDARITES",
-      "siret": null,
+      "siret": "30453752500111",
       "amount_eur": 79754.0,
       "amount_raw": "79 754",
       "motif": "les exercices 2025 et suivants",
       "dossier": "2025 DLH 340",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 340",
@@ -15511,12 +15624,13 @@
       "session_id": 155,
       "article_num": 5,
       "beneficiary": "SEQENS SOLIDARITES",
-      "siret": null,
+      "siret": "30453752500111",
       "amount_eur": 1191883.0,
       "amount_raw": "1 191 883",
       "motif": "Construction de 7 logements sociaux (7 PLAI) au 77 Rue de la Croix Nivert (15e) - Garantie des prêts PLAI",
       "dossier": "2025 DLH 340",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 340",
@@ -15555,12 +15669,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 6434787.0,
       "amount_raw": "6 434 787",
       "motif": "ce programme, la RIVP bénéficiera d’une subvention municipale d’un montant maximum global de 6 434 787 euros",
       "dossier": "2025 DLH 342",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 342",
@@ -15717,12 +15832,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "CDC Habitat Social",
-      "siret": null,
+      "siret": "55204648400325",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Réalisation d'un programme d'acquisition-amélioration comportant 17 logements sociaux.",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 361",
@@ -15731,12 +15847,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "CDC Habitat Social",
-      "siret": null,
+      "siret": "55204648400325",
       "amount_eur": 2300101.0,
       "amount_raw": "2 300 101",
       "motif": "ce programme, CDC Habitat Social bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 2 300 101 euros",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 361",
@@ -15790,12 +15907,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 3698842.0,
       "amount_raw": "3 698 842",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLS, à souscrire par la RIVP auprès de la Caisse des Dépôts et des Consignations, destiné à financer la création de 16 logements PLS situés 10 Villa Sainte Marie",
       "dossier": "2025 DLH 362",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 362",
@@ -15804,12 +15922,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 665500.0,
       "amount_raw": "665 500",
       "motif": "ce programme, la RIVP bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 665 500 euros",
       "dossier": "2025 DLH 362",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 362",
@@ -15878,12 +15997,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 850143.0,
       "amount_raw": "850 143",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLAI foncier à souscrire par la RIVP auprès de la Caisse des Dépôts et Consignations, destiné à financer la création de 12 logements PLAI situés 155 Rue Pelleport",
       "dossier": "2025 DLH 363",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 363",
@@ -15892,12 +16012,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 5842407.0,
       "amount_raw": "5 842 407",
       "motif": "ce programme, la RIVP bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 5 842 407 euros",
       "dossier": "2025 DLH 363",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 363",
@@ -15981,12 +16102,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "Paris Habitat",
-      "siret": null,
+      "siret": "38906067400048",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Réalisation d'un programme d'acquisition de 13 logements sociaux (7 PLAI-6 PLUS) au 80 rue Taitbout (9e).",
       "dossier": "2025 DLH 365",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 365",
@@ -15995,12 +16117,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "Paris Habitat",
-      "siret": null,
+      "siret": "38906067400048",
       "amount_eur": 3138840.0,
       "amount_raw": "3 138 840",
       "motif": "ce programme, Paris Habitat bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 3 138 840 euros",
       "dossier": "2025 DLH 365",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 365",
@@ -16139,12 +16262,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 8263549.0,
       "amount_raw": "8 263 549",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLUS, à souscrire par la RIVP auprès de la Caisse des Dépôt et Consignations, destiné à financer l’opération de construction neuve d'une résidence étudiants compo",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 339",
@@ -16153,12 +16277,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 5584780.0,
       "amount_raw": "5 584 780",
       "motif": "ce programme, la RIVP bénéficiera d’une subvention municipale d’un montant maximum global de 5 584 780 euros",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 339",
@@ -16197,12 +16322,13 @@
       "session_id": 155,
       "article_num": 5,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 12261827.0,
       "amount_raw": "12 261 827",
       "motif": "Garantie des prêts PLUS pour la réalisation d'une résidence étudiante de 234 logements au 27 Boulevard Ney (18e).",
       "dossier": "2025 DLH 339",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 339",
@@ -16211,12 +16337,13 @@
       "session_id": 155,
       "article_num": 6,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 6109449.0,
       "amount_raw": "6 109 449",
       "motif": "le service des intérêts et l'amortissement des prêts PLS à contracter par la RIVP en vue du financement du programme de construction neuve d’une résidence étudiante comportant 234 logements (175 PLUS et 59 PLS) à réaliser par la RIVP au 27 Boulevard Ney (18e) ; Vul’avis du Consei",
       "dossier": "2025 DLH 339",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DPMP 11",
@@ -16285,12 +16412,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "Paris Aide aux Victimes",
-      "siret": null,
+      "siret": "34958524000030",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Convention annuelle d'objectifs",
       "dossier": "2025 DPMP 12",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DPMP 12",
@@ -16327,12 +16455,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "ASPP",
-      "siret": null,
+      "siret": "32385721900345",
       "amount_eur": 13677000.0,
       "amount_raw": "13 677 000",
       "motif": "le renouvellement des équipements obsolètes",
       "dossier": "2025 DRH 42",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DRH 47",
@@ -16729,13 +16858,14 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "ESPEREM",
-      "siret": null,
+      "siret": "77573009600127",
       "amount_eur": 30000.0,
       "amount_raw": "000",
       "motif": "une action d’aide à l’insertion et de mobilisation dans le cadre du jardin solidaire sur le toit (20ème), dont le texte, joint au présent délibéré, prévoit l’attribution d’une subvention de 30",
       "dossier": "2025_05251",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSOL 161",
@@ -16811,13 +16941,14 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "Espace Universel",
-      "siret": null,
+      "siret": "43809885700032",
       "amount_eur": 3000.0,
       "amount_raw": "000",
       "motif": "les ateliers sociolinguistiques, dont le texte joint au présent délibéré, prévoit l’attribution d’une subvention de 3",
       "dossier": "2025_09807",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSOL 162",
@@ -16855,13 +16986,14 @@
       "session_id": 155,
       "article_num": 4,
       "beneficiary": "Juris Secours",
-      "siret": null,
+      "siret": "40437164300036",
       "amount_eur": 4000.0,
       "amount_raw": "000",
       "motif": "son action d’aide à l’accès aux droits « Solidarité sur la zone blanche de la Porte d’Asnières », dont le texte joint au présent délibéré prévoit l’attribution d’une subvention de 4",
       "dossier": "2025_04949",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSOL 162",
@@ -16883,12 +17015,13 @@
       "session_id": 155,
       "article_num": 6,
       "beneficiary": "Choron Jeunes",
-      "siret": null,
+      "siret": "50471838800011",
       "amount_eur": 500.0,
       "amount_raw": "500",
       "motif": "son action d’accompagnement à la scolarité dont le texte joint au présent délibéré prévoit l’attribution d’une subvention de 1",
       "dossier": "2025_00539",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSOL 162",
@@ -16897,12 +17030,13 @@
       "session_id": 155,
       "article_num": 7,
       "beneficiary": "Mosaïques 9",
-      "siret": null,
+      "siret": "48414617000010",
       "amount_eur": 200.0,
       "amount_raw": "200",
       "motif": "son action d’accompagnement à la scolarité (2025_05288) , 7",
       "dossier": "2025 DSOL 162",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSOL 162",
@@ -16911,13 +17045,14 @@
       "session_id": 155,
       "article_num": 8,
       "beneficiary": "Jeunesse Saint Vincent de Paul",
-      "siret": null,
+      "siret": "83199089000012",
       "amount_eur": 2000.0,
       "amount_raw": "000",
       "motif": "son action d’accompagnement à la scolarité dont le texte joint au présent délibéré prévoit l’attribution d’une subvention de 2",
       "dossier": "2025 DSOL 162",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSOL 162",
@@ -16926,13 +17061,14 @@
       "session_id": 155,
       "article_num": 9,
       "beneficiary": "Association de soutien et d'accompagnement culturel du quartier",
-      "siret": null,
+      "siret": "48327783600019",
       "amount_eur": 1000.0,
       "amount_raw": "000",
       "motif": "son action d’accompagnement à la scolarité dont le texte joint au présent délibéré prévoit l’attribution d’une subvention de 1",
       "dossier": "2025 DSOL 162",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSOL 162",
@@ -16955,13 +17091,14 @@
       "session_id": 155,
       "article_num": 11,
       "beneficiary": "Paris Basket 18",
-      "siret": null,
+      "siret": "90943290800012",
       "amount_eur": 1000.0,
       "amount_raw": "000",
       "motif": "son action d’accompagnement à la scolarité dont le texte joint au présent délibéré prévoit l’attribution d’une subvention de 1",
       "dossier": "2025 DSOL 162",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSOL 162",
@@ -16984,13 +17121,14 @@
       "session_id": 155,
       "article_num": 13,
       "beneficiary": "Tamerantong",
-      "siret": null,
+      "siret": "38933648800041",
       "amount_eur": 2000.0,
       "amount_raw": "000",
       "motif": "son action d’accompagnement à la scolarité dont le texte joint au présent délibéré prévoit l’attribution d’une subvention de 2",
       "dossier": "2025 DSOL 162",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSOL 162",
@@ -17029,12 +17167,13 @@
       "session_id": 155,
       "article_num": 16,
       "beneficiary": "Inter 7",
-      "siret": null,
+      "siret": "40131661700018",
       "amount_eur": 500.0,
       "amount_raw": "500",
       "motif": "son action de permanences d’écrivain public (2025_00826) dont le texte joint au présent délibéré prévoit l’attribution d’une subvention de 5",
       "dossier": "2025_00826",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSOL 162",
@@ -17043,13 +17182,14 @@
       "session_id": 155,
       "article_num": 17,
       "beneficiary": "Droits d'Urgence",
-      "siret": null,
+      "siret": "45101859200027",
       "amount_eur": 30000.0,
       "amount_raw": "000",
       "motif": "des permanences juridiques gratuites",
       "dossier": "2025_04433",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSOL 162",
@@ -17071,13 +17211,14 @@
       "session_id": 155,
       "article_num": 19,
       "beneficiary": "Groupe SOS Solidarités",
-      "siret": null,
+      "siret": "34106240400478",
       "amount_eur": 80000.0,
       "amount_raw": "000",
       "motif": "son action d’accès aux droits et appui technique au titre de l’année 2025 (2025_05098)",
       "dossier": "2025_05098",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSOL 162",
@@ -17126,13 +17267,14 @@
       "session_id": 155,
       "article_num": 23,
       "beneficiary": "Centre d'Études, de Formation et d'Insertion par la langue",
-      "siret": null,
+      "siret": "51815788800026",
       "amount_eur": 2000.0,
       "amount_raw": "000",
       "motif": "son action sociolinguistique « Les portes du français 17ème » dont le texte joint au présent délibéré prévoit l’attribution d’une subvention de 2",
       "dossier": "2025_12275",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSOL 162",
@@ -17141,13 +17283,14 @@
       "session_id": 155,
       "article_num": 24,
       "beneficiary": "L'ile aux langues",
-      "siret": null,
+      "siret": "53512444000038",
       "amount_eur": 2000.0,
       "amount_raw": "000",
       "motif": "son action sociolinguistique « ateliers d’apprentissage du français visées A2/B1/B2, dont le texte joint au présent délibéré prévoit l’attribution d’une subvention de 2",
       "dossier": "2025_12274",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSOL 162",
@@ -17170,12 +17313,13 @@
       "session_id": 155,
       "article_num": 26,
       "beneficiary": "Axes pluriels",
-      "siret": null,
+      "siret": "40292544000024",
       "amount_eur": 500.0,
       "amount_raw": "500",
       "motif": "son action « d’accompagnement à la scolarité, aux loisirs et aux activités culturelles » dont le texte joint au présent délibéré prévoit l’attribution d’une subvention de 2",
       "dossier": "2025_03144",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSOL 162",
@@ -17212,13 +17356,14 @@
       "session_id": 155,
       "article_num": 29,
       "beneficiary": "Jaurès Pantin Petit –J2P",
-      "siret": null,
+      "siret": "41225455900013",
       "amount_eur": 3000.0,
       "amount_raw": "000",
       "motif": "l’année 2025 (2025_05209)",
       "dossier": "2025_05209",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSOL 162",
@@ -17400,12 +17545,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "Centre d'Action Sociale de la Ville de Paris",
-      "siret": null,
+      "siret": "26750004902888",
       "amount_eur": 2500000.0,
       "amount_raw": "2 500 000,00",
       "motif": "Subvention amortissable pour restructuration lourde de la Résidence Autonomie Les Epinettes",
       "dossier": "2025 DSOL 173",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSOL 173",
@@ -17414,12 +17560,13 @@
       "session_id": 155,
       "article_num": 2,
       "beneficiary": "Centre d'Action Sociale de la Ville de Paris",
-      "siret": null,
+      "siret": "26750004902888",
       "amount_eur": 5500000.0,
       "amount_raw": "5 500 000,00",
       "motif": "Subvention amortissable pour restructuration lourde de la Résidence Autonomie Beaunier",
       "dossier": "2025 DSOL 173",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSOL 173",
@@ -17473,12 +17620,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "Croix Rouge Française",
-      "siret": null,
+      "siret": "77567227221138",
       "amount_eur": 240409.0,
       "amount_raw": "240 409",
       "motif": "Dotation de fonctionnement 2025 pour 5 centres de PMI",
       "dossier": "2025 DSP 29",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSP 29",
@@ -17560,12 +17708,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "Ambroise Croizat Santé",
-      "siret": null,
+      "siret": "30051264700128",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "l’année 2025 avec l’association Ambroise Croizat Santé, sise 4, rue Lasson à Paris 12ème pour permettre le fonctionnement du projet « Équilibre » porté par le centre Netter situé au 72 avenue du Dr Arnold Netter à Paris (12ème), dont le texte est joint à la présente délibération",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSP 68",
@@ -17776,12 +17925,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "Espace 19",
-      "siret": null,
+      "siret": "32228389600056",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Avenant à la convention pluriannuelle d'objectifs.",
       "dossier": "246",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSP 91",
@@ -17831,12 +17981,13 @@
       "session_id": 155,
       "article_num": 5,
       "beneficiary": "Chinois de France –Français de Chine",
-      "siret": null,
+      "siret": "53139474000025",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Avenant à la convention pluriannuelle d'objectifs.",
       "dossier": "19009",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSP 91",
@@ -17874,12 +18025,13 @@
       "session_id": 155,
       "article_num": 1,
       "beneficiary": "Association Nationale de Prévention en Alcoologie et Addictologie",
-      "siret": null,
+      "siret": "77566008700013",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "l’activité de son comité parisien (ANPAA 75) 13, rue d’Aubervilliers à Paris (18e) (Paris Asso 87241)",
       "dossier": "87241",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSP 92",
@@ -17901,12 +18053,13 @@
       "session_id": 155,
       "article_num": 3,
       "beneficiary": "Aux Captifs La Libération",
-      "siret": null,
+      "siret": "32591041200080",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Avenant relatif au projet Marcel Olivier d'amélioration de la prise en charge des sans domicile fixe consommatrices d'alcool.",
       "dossier": "17393",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSP 92",
@@ -18115,7 +18268,7 @@
       "_admin_source": "llm"
     }
   ],
-  "sirene_enriched_at": "2026-04-22T00:19:01",
+  "sirene_enriched_at": "2026-04-22T10:24:18",
   "llm_enriched_at": "2026-04-22T00:58:54",
   "llm_model": "claude-haiku-4-5",
   "llm_provider": "anthropic"

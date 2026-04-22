@@ -38,6 +38,9 @@ type Props = {
    *  or c_ar=0 for Paris Centre. Return null to make tiles non-clickable.
    *  Defaults to /investissements/arrondissement/{n}. */
   hrefFor?: (arr: number) => string | null;
+  /** When provided, overrides href navigation with a local callback —
+   *  useful for opening a drawer with in-page state rather than routing. */
+  onTileClick?: (arr: number) => void;
   /** Show the top-5 ranking list in the sidebar. Defaults to true.
    *  Turn off when a richer exhaustive ranking is rendered below the map. */
   showRanking?: boolean;
@@ -49,6 +52,7 @@ export default function ParisChoropleth({
   formatValue,
   unitLabel,
   hrefFor,
+  onTileClick,
   showRanking = true,
 }: Props) {
   const t = useT();
@@ -84,9 +88,15 @@ export default function ParisChoropleth({
   };
   const resolveHref = hrefFor ?? defaultHref;
   const openArr = (cAr: number) => {
+    if (onTileClick) {
+      onTileClick(cAr);
+      return;
+    }
     const href = resolveHref(cAr);
     if (href) router.push(href, { scroll: false });
   };
+  // `cursor: pointer` si un handler ou une route est défini.
+  const isInteractive = (cAr: number) => Boolean(onTileClick) || Boolean(resolveHref(cAr));
 
   const amounts = [...byCar.values()].map((v) => v.amount).sort((a, b) => a - b);
   const quantiles: number[] = [];
@@ -127,7 +137,7 @@ export default function ParisChoropleth({
                   stroke={isHover ? "#0a0a0a" : "#faf9f5"}
                   strokeWidth={isHover ? 0.8 : 0.5}
                   style={{
-                    cursor: resolveHref(cAr) ? "pointer" : "default",
+                    cursor: isInteractive(cAr) ? "pointer" : "default",
                     transition: "fill 120ms ease, stroke 120ms ease, stroke-width 120ms ease",
                     opacity: hovered != null && !isHover ? 0.75 : 1,
                   }}

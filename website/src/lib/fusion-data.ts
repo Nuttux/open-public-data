@@ -294,6 +294,7 @@ type BudgetSankeyFull = {
 
 type SubvIndex = {
   availableYears: number[];
+  previewYears?: number[];
   totalsByYear: Record<string, { montant_total: number; nb_subventions: number }>;
 };
 
@@ -323,6 +324,7 @@ type SubvTreemap = {
 export type QuiRecoitData = {
   year: number;
   previousYear: number;
+  isPreview: boolean;
   total: number;
   nbSubventions: number;
   nbBeneficiaires: number;
@@ -348,7 +350,7 @@ export type QuiRecoitData = {
     count: number;
     topBen: { name: string; amount: number; nb: number }[];
   }[];
-  yearsSummary: { year: number; total: number; count: number }[];
+  yearsSummary: { year: number; total: number; count: number; preview: boolean }[];
   availableThemes: string[];
   movers: {
     hausses: { name: string; amount: number; delta: number }[];
@@ -792,9 +794,12 @@ export function loadBailleur(slug: string): BailleurFiche | null {
 
 export function loadQuiRecoitData(requestedYear?: number): QuiRecoitData {
   const idx = readJson<SubvIndex>("subventions/index.json");
+  const preview = new Set(idx.previewYears ?? []);
+  const consolidated = idx.availableYears.filter((y) => !preview.has(y));
+  const defaultYear = consolidated[0] ?? idx.availableYears[0];
   const yr = requestedYear && idx.availableYears.includes(requestedYear)
     ? requestedYear
-    : idx.availableYears[0];
+    : defaultYear;
   const prev = idx.availableYears.find((y) => y !== yr) ?? yr;
   const ben = readJson<SubvBen>(`subventions/beneficiaires_${yr}.json`);
 
@@ -860,8 +865,14 @@ export function loadQuiRecoitData(requestedYear?: number): QuiRecoitData {
     }))
     .sort((a, b) => b.amount - a.amount);
 
+  const previewSet = new Set(idx.previewYears ?? []);
   const yearsSummary = idx.availableYears
-    .map((y) => ({ year: y, total: idx.totalsByYear[String(y)]?.montant_total ?? 0, count: idx.totalsByYear[String(y)]?.nb_subventions ?? 0 }))
+    .map((y) => ({
+      year: y,
+      total: idx.totalsByYear[String(y)]?.montant_total ?? 0,
+      count: idx.totalsByYear[String(y)]?.nb_subventions ?? 0,
+      preview: previewSet.has(y),
+    }))
     .sort((a, b) => a.year - b.year);
 
   // Median subvention amount — rough proxy from the top 500 values
@@ -892,6 +903,7 @@ export function loadQuiRecoitData(requestedYear?: number): QuiRecoitData {
   return {
     year: yr,
     previousYear: prev,
+    isPreview: previewSet.has(yr),
     total: ty.montant_total,
     nbSubventions: ty.nb_subventions,
     nbBeneficiaires: ben.nb_beneficiaires,
@@ -1967,6 +1979,21 @@ export type HorsBilanData = {
     capital_restant: number;
     count_emprunts: number;
     share_of_localized: number;
+    top_beneficiaires: Array<{
+      name: string;
+      capital_restant: number;
+      count_emprunts: number;
+      share_of_arr: number;
+    }>;
+    emprunts_top: Array<{
+      objet: string;
+      beneficiaire: string;
+      preteur: string;
+      annee_mobilisation: number | null;
+      capital_restant: number;
+      taux_type: string;
+      taux_actuariel: number | null;
+    }>;
   }>;
   non_localised: {
     capital_restant: number;

@@ -3261,12 +3261,13 @@
       "session_id": 156,
       "article_num": 8,
       "beneficiary": "Forum des Images",
-      "siret": null,
+      "siret": "33212365200023",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Attribution d'une subvention de fonctionnement et d'investissement",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DAE 232",
@@ -4545,13 +4546,14 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "GIP pour la Réussite Éducative à Paris",
-      "siret": null,
+      "siret": "13000245400010",
       "amount_eur": 50000.0,
       "amount_raw": "000",
       "motif": "la Réussite Éducative à Paris pour lui permettre de poursuivre l’accompagnement de 1",
       "dossier": null,
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DASCO 105",
@@ -5051,12 +5053,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "Office Central de Coopération à l'Ecole de Paris",
-      "siret": null,
+      "siret": "39333748000031",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Convention annuelle d'objectifs",
       "dossier": "2025 DASCO 140",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DASCO 140",
@@ -5300,12 +5303,13 @@
       "session_id": 156,
       "article_num": 3,
       "beneficiary": "France terre d'Asile",
-      "siret": null,
+      "siret": "78454750700433",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "le projet Réseau EIF-FEL 4 correspondant au projet présenté",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DDCT 148",
@@ -5774,12 +5778,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "AgriParis Seine",
-      "siret": null,
+      "siret": "92392391600020",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Subvention de fonctionnement.",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DEVE 106",
@@ -6056,12 +6061,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 312880.0,
       "amount_raw": "312 880",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLUS, à souscrire par la RIVP auprès de la Caisse des Dépôts et Consignations, destiné à financer la création de 5 logements PLUS situés 3 Chemin des Gravilliers",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 415",
@@ -6070,12 +6076,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 978130.0,
       "amount_raw": "978 130",
       "motif": "ce programme, la RIVP bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 978 130 euros",
       "dossier": "2025 DLH 415",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 415",
@@ -6144,12 +6151,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "CDC Habitat Social",
-      "siret": null,
+      "siret": "55204648400325",
       "amount_eur": 342148.0,
       "amount_raw": "342 148",
       "motif": "ce programme, CDC Habitat Social bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 342 148 euros",
       "dossier": "2025 DLH 160",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 160",
@@ -6248,12 +6256,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "Immobilière 3F",
-      "siret": null,
+      "siret": "55214153300018",
       "amount_eur": 133900.0,
       "amount_raw": "133 900",
       "motif": "ce programme, Immobilière 3F bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 133 900 euros",
       "dossier": "2025 DLH 162",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 162",
@@ -6337,12 +6346,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "ELOGIE-SIEMP",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 485065.0,
       "amount_raw": "485 065",
       "motif": "ce programme, ELOGIE-SIEMP bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 485 065 euros",
       "dossier": "2025 DLH 165",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 165",
@@ -6396,12 +6406,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "ELOGIE-SIEMP",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 289070.0,
       "amount_raw": "289 070",
       "motif": "ce programme, ELOGIE-SIEMP bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 289 070 euros",
       "dossier": "2025 DLH 167",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 167",
@@ -6455,12 +6466,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "Paris Habitat",
-      "siret": null,
+      "siret": "38906067400048",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Réalisation de 48 logements sociaux (14 PLA I-24 PLUS - 10 PLS)",
       "dossier": "2025 DLH 185",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 185",
@@ -6469,12 +6481,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "Paris Habitat",
-      "siret": null,
+      "siret": "38906067400048",
       "amount_eur": 5095214.0,
       "amount_raw": "5 095 214",
       "motif": "ce programme, Paris Habitat bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 5 095 214 euros",
       "dossier": "2025 DLH 185",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 185",
@@ -6528,12 +6541,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "ELOGIE-SIEMP",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 53430.0,
       "amount_raw": "53 430",
       "motif": "ce programme, ELOGIE-SIEMP bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 53 430 euros",
       "dossier": "2025 DLH 227",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 227",
@@ -6587,12 +6601,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "ELOGIE-SIEMP",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 111915.0,
       "amount_raw": "111 915",
       "motif": "ce programme, ELOGIE-SIEMP bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 111 915 euros",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 228",
@@ -6646,12 +6661,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "ELOGIE SIEMP",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Programme d'acquisition-amélioration de 18 logements sociaux au 7 rue Choron.",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 243",
@@ -6660,12 +6676,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "ELOGIE SIEMP",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 2267924.0,
       "amount_raw": "2 267 924",
       "motif": "ce programme, ELOGIE SIEMP bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 2 267 924 euros",
       "dossier": "2025 DLH 243",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 243",
@@ -6719,12 +6736,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "CDC Habitat Social",
-      "siret": null,
+      "siret": "55204648400325",
       "amount_eur": 538292.0,
       "amount_raw": "538 292",
       "motif": "ce programme, CDC Habitat Social bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 538 292 euros",
       "dossier": "2025 DLH 248",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 248",
@@ -6808,12 +6826,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "ELOGIE SIEMP",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 1565913.0,
       "amount_raw": "1 565 913",
       "motif": "ce programme, ELOGIE SIEMP bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 1 565 913 euros",
       "dossier": "2025 DLH 249",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 249",
@@ -6867,12 +6886,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 3537446.0,
       "amount_raw": "3 537 446",
       "motif": "ce programme, Elogie-Siemp bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 3 537 446 euros",
       "dossier": "2025 DLH 250",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 250",
@@ -6926,12 +6946,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 166658.0,
       "amount_raw": "166 658",
       "motif": "ce programme, Elogie-Siemp bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 166 658 euros",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 263",
@@ -7000,12 +7021,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 1163220.0,
       "amount_raw": "1 163 220",
       "motif": "ce programme, Elogie-Siemp bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 1 163 220 euros",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 264",
@@ -7044,12 +7066,13 @@
       "session_id": 156,
       "article_num": 5,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 563091.0,
       "amount_raw": "563 091",
       "motif": "Garantie des prêts PLAI et PLUS pour acquisition-amélioration de 6 logements sociaux.",
       "dossier": "2025 DLH 264",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 264",
@@ -7088,12 +7111,13 @@
       "session_id": 156,
       "article_num": 8,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 274130.0,
       "amount_raw": "274 130",
       "motif": "Garantie des prêts PLS pour acquisition-amélioration de 6 logements sociaux.",
       "dossier": "2025 DLH 264",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 265",
@@ -7145,12 +7169,13 @@
       "session_id": 156,
       "article_num": 4,
       "beneficiary": "Immobilière 3F",
-      "siret": null,
+      "siret": "55214153300018",
       "amount_eur": 1180354.0,
       "amount_raw": "1 180 354",
       "motif": "Rénovation de 28 logements sociaux à 7 rue de Suez (18e) - Garantie des emprunts",
       "dossier": "2025 DLH 265",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 265",
@@ -7217,12 +7242,13 @@
       "session_id": 156,
       "article_num": 4,
       "beneficiary": "CDC HABITAT SOCIAL",
-      "siret": null,
+      "siret": "55204648400325",
       "amount_eur": 1566098.0,
       "amount_raw": "1 566 098",
       "motif": "Rénovation de 40 logements sociaux à 46A rue de l'Ouest (14e) - Garantie des emprunts",
       "dossier": "2025 DLH 267",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 267",
@@ -7276,12 +7302,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 583886.0,
       "amount_raw": "583 886",
       "motif": "ce programme, Elogie-Siemp bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 583 886 euros",
       "dossier": "2025 DLH 268",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 268",
@@ -7393,12 +7420,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 172636.0,
       "amount_raw": "172 636",
       "motif": "ce programme, Elogie-Siemp bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 172 636 euros",
       "dossier": "2025 DLH 271",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 271",
@@ -7452,12 +7480,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "ELOGIE-SIEMP",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 236005.0,
       "amount_raw": "236 005",
       "motif": "ce programme, ELOGIE-SIEMP bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 236 005 euros",
       "dossier": "2025 DLH 275",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 275",
@@ -7511,12 +7540,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "Paris Habitat",
-      "siret": null,
+      "siret": "38906067400048",
       "amount_eur": 149381.0,
       "amount_raw": "149 381",
       "motif": "ce programme, Paris Habitat bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 149 381 euros",
       "dossier": "2025 DLH 295",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 295",
@@ -7570,12 +7600,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "ELOGIE-SIEMP",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 185332.0,
       "amount_raw": "185 332",
       "motif": "ce programme, ELOGIE-SIEMP bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 185 332 euros",
       "dossier": "2025 DLH 314",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 314",
@@ -7760,12 +7791,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 1002557.0,
       "amount_raw": "1 002 557",
       "motif": "ce programme, Elogie-Siemp bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 1 002 557 euros",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 328",
@@ -7804,12 +7836,13 @@
       "session_id": 156,
       "article_num": 5,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 1454836.0,
       "amount_raw": "1 454 836",
       "motif": "Acquisition-amélioration de 21 logements sociaux (7 PLAI, 7 PLUS, 7 PLS) au 24 rue Nicolaï (12e).",
       "dossier": "2025 DLH 328",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 328",
@@ -7848,12 +7881,13 @@
       "session_id": 156,
       "article_num": 8,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 1140956.0,
       "amount_raw": "1 140 956",
       "motif": "Acquisition-amélioration de 21 logements sociaux (7 PLAI, 7 PLUS, 7 PLS) au 24 rue Nicolaï (12e), garantie PLS.",
       "dossier": "2025 DLH 328",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 329",
@@ -7862,12 +7896,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 286622.0,
       "amount_raw": "286 622",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLAI, à souscrire par Elogie-Siemp auprès de la Caisse des Dépôts et Consignations, destiné à financer la création de 6 logements PLAI situés 80 rue Javel /7 rue",
       "dossier": "2025 DLH 329",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 329",
@@ -7876,12 +7911,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 2291300.0,
       "amount_raw": "2 291 300",
       "motif": "ce programme, Elogie-Siemp bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 2 291 300 euros",
       "dossier": "2025 DLH 329",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 329",
@@ -7995,12 +8031,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 1201626.0,
       "amount_raw": "1 201 626",
       "motif": "ce programme, Elogie-Siemp bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 1 201 626 euros",
       "dossier": "2025 DLH 331",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 331",
@@ -8039,12 +8076,13 @@
       "session_id": 156,
       "article_num": 5,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 1817960.0,
       "amount_raw": "1 817 960",
       "motif": "Garantie des prêts PLAI et PLUS pour acquisition-amélioration de 8 logements sociaux au 32 rue Réaumur.",
       "dossier": "2025 DLH 331",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 331",
@@ -8113,12 +8151,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 62350.0,
       "amount_raw": "62 350",
       "motif": "ce programme, Elogie-Siemp bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 62 350 euros",
       "dossier": "2025 DLH 332",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 332",
@@ -8157,12 +8196,13 @@
       "session_id": 156,
       "article_num": 5,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 1418676.0,
       "amount_raw": "1 418 676",
       "motif": "Garantie des prêts PLS pour programme d'acquisition-amélioration de 29 logements (8 PLS, 21 intermédiaires) au 3 avenue Secrétan (19e)",
       "dossier": "2025 DLH 332",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 332",
@@ -8186,12 +8226,13 @@
       "session_id": 156,
       "article_num": 7,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 2351783.0,
       "amount_raw": "2 351 783",
       "motif": "Garantie des prêts LLI pour programme d'acquisition-amélioration de 29 logements (8 PLS, 21 intermédiaires) au 3 avenue Secrétan (19e)",
       "dossier": "2025 DLH 332",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 334",
@@ -8215,12 +8256,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 2781403.0,
       "amount_raw": "2 781 403",
       "motif": "ce programme, la RIVP bénéficiera d’une subvention municipale d’un montant maximum global de 2 781 403 euros",
       "dossier": "2025 DLH 334",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 334",
@@ -8319,12 +8361,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 450306.0,
       "amount_raw": "450 306",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLAI, à souscrire par Elogie-Siemp auprès de la Caisse des Dépôts et Consignations, destiné à financer la création de 7 logements PLAI situés 12 rue des Petites É",
       "dossier": "2025 DLH 351",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 351",
@@ -8333,12 +8376,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 1663607.0,
       "amount_raw": "1 663 607",
       "motif": "ce programme, Elogie-Siemp bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 1 663 607 euros",
       "dossier": "2025 DLH 351",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 351",
@@ -8437,12 +8481,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 283679.0,
       "amount_raw": "283 679",
       "motif": "ce programme, Elogie-Siemp bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 283 679 euros",
       "dossier": "2025 DLH 352",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 352",
@@ -8496,12 +8541,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "Paris Habitat",
-      "siret": null,
+      "siret": "38906067400048",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Création de 10 logements PLS au 58 impasse Marty et 1-3-5 passage Châtelet (17e).",
       "dossier": "2025 DLH 353",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 353",
@@ -8510,12 +8556,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "Paris Habitat",
-      "siret": null,
+      "siret": "38906067400048",
       "amount_eur": 538402.0,
       "amount_raw": "538 402",
       "motif": "ce programme, Paris Habitat bénéficiera d’une subvention municipale d’un montant maximum global de 538 402 euros",
       "dossier": "2025 DLH 353",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 353",
@@ -8569,12 +8616,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 1217608.0,
       "amount_raw": "1 217 608",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLAI, à souscrire par la RIVP auprès de la Caisse des Dépôts et Consignations, destiné à financer la création de 10 logements PLAI situés 78 Boulevard Ornano (18e",
       "dossier": "2025 DLH 358",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 358",
@@ -8583,12 +8631,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 4304465.0,
       "amount_raw": "4 304 465",
       "motif": "ce programme, la RIVP bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 4 304 465 euros",
       "dossier": "2025 DLH 358",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 358",
@@ -8627,12 +8676,13 @@
       "session_id": 156,
       "article_num": 5,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 3906930.0,
       "amount_raw": "3 906 930",
       "motif": "Acquisition-amélioration de 16 logements sociaux (10 PLAI-6 PLUS) au 78 Boulevard Ornano (18e) avec garantie des prêts.",
       "dossier": "2025 DLH 358",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 358",
@@ -8686,12 +8736,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "Immobilière 3F",
-      "siret": null,
+      "siret": "55214153300018",
       "amount_eur": 746216.0,
       "amount_raw": "746 216",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLAI, à souscrire par Immobilière 3F auprès de la Caisse des Dépôts et Consignations, destiné à financer la création de 9 logements PLAI situés 242-244 rue Saint-",
       "dossier": "2025 DLH 375",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 375",
@@ -8743,12 +8794,13 @@
       "session_id": 156,
       "article_num": 5,
       "beneficiary": "Immobilière 3F",
-      "siret": null,
+      "siret": "55214153300018",
       "amount_eur": 2667428.0,
       "amount_raw": "2 667 428",
       "motif": "Garantie des prêts PLAI et PLUS pour acquisition-amélioration de 16 logements sociaux rue Saint-Martin.",
       "dossier": "2025 DLH 375",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 375",
@@ -8802,12 +8854,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "ELOGIE-SIEMP",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 251878.0,
       "amount_raw": "251 878",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLAI, à souscrire par ELOGIE-SIEMP auprès de la Caisse des Dépôts et Consignations, destiné à financer la création de 4 logements PLAI situés 23 boulevard de Cour",
       "dossier": "2025 DLH 378",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 378",
@@ -8816,12 +8869,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "ELOGIE-SIEMP",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 259426.0,
       "amount_raw": "259 426",
       "motif": "ce programme, ELOGIE-SIEMP bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 259 426 euros",
       "dossier": "2025 DLH 378",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 378",
@@ -8860,12 +8914,13 @@
       "session_id": 156,
       "article_num": 5,
       "beneficiary": "ELOGIE-SIEMP",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 785039.0,
       "amount_raw": "785 039",
       "motif": "Garantie des prêts PLAI et PLUS pour acquisition-amélioration de 10 logements sociaux à 23 boulevard de Courcelles (8e).",
       "dossier": "2025 DLH 378",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 378",
@@ -8904,12 +8959,13 @@
       "session_id": 156,
       "article_num": 8,
       "beneficiary": "ELOGIE-SIEMP",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 330270.0,
       "amount_raw": "330 270",
       "motif": "Garantie des prêts PLS pour acquisition-amélioration de 10 logements sociaux à 23 boulevard de Courcelles (8e).",
       "dossier": "2025 DLH 378",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 379",
@@ -8933,12 +8989,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 5700423.0,
       "amount_raw": "5 700 423",
       "motif": "ce programme, Elogie-Siemp bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 5 700 423 euros",
       "dossier": "2025 DLH 379",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 379",
@@ -8977,12 +9034,13 @@
       "session_id": 156,
       "article_num": 5,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 5321077.0,
       "amount_raw": "5 321 077",
       "motif": "Garantie des prêts PLAI et PLUS pour acquisition-amélioration de 27 logements sociaux à Paris.",
       "dossier": "2025 DLH 379",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 379",
@@ -9021,12 +9079,13 @@
       "session_id": 156,
       "article_num": 8,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 2061194.0,
       "amount_raw": "2 061 194",
       "motif": "Garantie des prêts PLS pour acquisition-amélioration de 27 logements sociaux à Paris.",
       "dossier": "2025 DLH 379",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 380",
@@ -9035,12 +9094,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 88607.0,
       "amount_raw": "88 607",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLS, à souscrire par Elogie-Siemp auprès de la Caisse des Dépôts et Consignations, destiné à financer la création de 9 logements PLS situés 7-9 rue de l'Atlas (19",
       "dossier": "2025 DLH 380",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 380",
@@ -9049,12 +9109,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 409850.0,
       "amount_raw": "409 850",
       "motif": "ce programme, Elogie-Siemp bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 409 850 euros",
       "dossier": "2025 DLH 380",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 380",
@@ -9093,12 +9154,13 @@
       "session_id": 156,
       "article_num": 5,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 2273327.0,
       "amount_raw": "2 273 327",
       "motif": "Garantie des prêts PLS pour acquisition-amélioration de 36 logements sociaux et intermédiaires rue de l'Atlas (19e).",
       "dossier": "2025 DLH 380",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 380",
@@ -9122,12 +9184,13 @@
       "session_id": 156,
       "article_num": 7,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 10383945.0,
       "amount_raw": "10 383 945",
       "motif": "Garantie des prêts LLI pour acquisition-amélioration de 36 logements sociaux et intermédiaires rue de l'Atlas (19e).",
       "dossier": "2025 DLH 380",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 381",
@@ -9151,12 +9214,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "Immobilière 3F",
-      "siret": null,
+      "siret": "55214153300018",
       "amount_eur": 5263995.0,
       "amount_raw": "5 263 995",
       "motif": "ce programme, Immobilière 3F bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 5 263 995 euros",
       "dossier": "2025 DLH 381",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 381",
@@ -9195,12 +9259,13 @@
       "session_id": 156,
       "article_num": 5,
       "beneficiary": "Immobilière 3F",
-      "siret": null,
+      "siret": "55214153300018",
       "amount_eur": 2110491.0,
       "amount_raw": "2 110 491",
       "motif": "Garantie des prêts PLAI et PLUS pour construction neuve de 22 logements sociaux rue de Sambre et Meuse (10e).",
       "dossier": "2025 DLH 381",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 381",
@@ -9239,12 +9304,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 828861.0,
       "amount_raw": "828 861",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLAI, à souscrire par la RIVP auprès de la Caisse des Dépôts et Consignations, destiné à financer la création de 17 logements PLAI situés 210 Rue Championnet (18e",
       "dossier": "2025 DLH 383",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 383",
@@ -9253,12 +9319,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 6463859.0,
       "amount_raw": "6 463 859",
       "motif": "ce programme, la RIVP bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 6 463 859 euros",
       "dossier": "2025 DLH 383",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 383",
@@ -9342,12 +9409,13 @@
       "session_id": 156,
       "article_num": 8,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 4850768.0,
       "amount_raw": "4 850 768",
       "motif": "Garantie des prêts PLS pour l'acquisition-amélioration de 47 logements sociaux (17 PLAI-17 PLUS-13 PLS) à 210 rue Championnet (18e).",
       "dossier": "2025 DLH 383",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 384",
@@ -9371,12 +9439,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 974917.0,
       "amount_raw": "974 917",
       "motif": "ce programme, la RIVP bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 974 917 euros",
       "dossier": "2025 DLH 384",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 384",
@@ -9475,12 +9544,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 1404871.0,
       "amount_raw": "1 404 871",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLAI, à souscrire par la RIVP auprès de la Caisse des Dépôts et Consignations, destiné à financer la création de 11 logements PLAI situés 155 Rue de Rennes (6e)",
       "dossier": "2025 DLH 386",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 386",
@@ -9489,12 +9559,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 2692578.0,
       "amount_raw": "2 692 578",
       "motif": "ce programme, la RIVP bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 2 692 578 euros",
       "dossier": "2025 DLH 386",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 386",
@@ -9593,12 +9664,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 543658.0,
       "amount_raw": "543 658",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLAI, à souscrire par la RIVP auprès de la Caisse des Dépôts et Consignations, destiné à financer la création de logements PLAI situés 3 Avenue Gambetta (20e)",
       "dossier": "2025 DLH 387",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 387",
@@ -9607,12 +9679,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 1539259.0,
       "amount_raw": "1 539 259",
       "motif": "ce programme, la RIVP bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 1 539 259 euros",
       "dossier": "2025 DLH 387",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 387",
@@ -9711,12 +9784,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 512520.0,
       "amount_raw": "512 520",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLAI à souscrire par Elogie-Siemp auprès de la Caisse des Dépôts et Consignations, destiné à financer le programme de création de 8 logements PLAI situé 57 rue de",
       "dossier": "2025 DLH 391",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 391",
@@ -9725,12 +9799,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 3876927.0,
       "amount_raw": "3 876 927",
       "motif": "ce programme, Elogie-Siemp bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 3 876 927 euros",
       "dossier": "2025 DLH 391",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 391",
@@ -9814,12 +9889,13 @@
       "session_id": 156,
       "article_num": 8,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 2036113.0,
       "amount_raw": "2 036 113",
       "motif": "Garantie des prêts PLS pour acquisition-amélioration de 20 logements sociaux à 57 rue de Bagnolet (20e).",
       "dossier": "2025 DLH 391",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 392",
@@ -9843,12 +9919,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "Paris Habitat",
-      "siret": null,
+      "siret": "38906067400048",
       "amount_eur": 9261605.0,
       "amount_raw": "9 261 605",
       "motif": "ce programme, Paris Habitat bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 9 261 605 euros",
       "dossier": "2025 DLH 392",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 392",
@@ -9947,12 +10024,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 894791.0,
       "amount_raw": "894 791",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLAI, à souscrire par la RIVP auprès de la Caisse des Dépôts et Consignations, destiné à financer la création de 18 logements PLAI situés 102 Rue Mouffetard (5e)",
       "dossier": "2025 DLH 393",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 393",
@@ -9961,12 +10039,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 94770.0,
       "amount_raw": "94 770",
       "motif": "ce programme, la RIVP bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 94 770 euros",
       "dossier": "2025 DLH 393",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 393",
@@ -10035,12 +10114,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 1001215.0,
       "amount_raw": "1 001 215",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLAI, à souscrire par la RIVP auprès de la Caisse des Dépôts et Consignations, destiné à financer la création de 6 logements PLAI situés 135 bis rue Castagnary (1",
       "dossier": "2025 DLH 394",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 394",
@@ -10049,12 +10129,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 2194630.0,
       "amount_raw": "2 194 630",
       "motif": "ce programme, la RIVP bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 2 194 630 euros",
       "dossier": "2025 DLH 394",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 394",
@@ -10093,12 +10174,13 @@
       "session_id": 156,
       "article_num": 5,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 3316120.0,
       "amount_raw": "3 316 120",
       "motif": "Garantie des prêts PLAI-PLUS pour financement de 12 logements sociaux (6 PLAI-6 PLUS).",
       "dossier": "2025 DLH 394",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 394",
@@ -10152,12 +10234,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 926892.0,
       "amount_raw": "926 892",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLAI, à souscrire par la RIVP auprès de la Caisse des Dépôts et Consignations, destiné à financer la création de logements PLAI situés 76 rue de Lourmel (15e)",
       "dossier": "2025 DLH 395",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 395",
@@ -10166,12 +10249,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 2443200.0,
       "amount_raw": "2 443 200",
       "motif": "ce programme, la RIVP bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 2 443 200 euros",
       "dossier": "2025 DLH 395",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 395",
@@ -10285,12 +10369,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 9134837.0,
       "amount_raw": "9 134 837",
       "motif": "ce programme, la RIVP bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 9 134 837 euros",
       "dossier": "2025 DLH 396",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 396",
@@ -10507,12 +10592,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 40135.0,
       "amount_raw": "40 135",
       "motif": "être portée à 75 ans ; -les autres clauses et conditions du bail demeurent inchangées ; -tous les frais entraînés tant par la rédaction que par la publicité de cet avenant qui sera passé par devant notaire, seront à la charge du preneur à bail",
       "dossier": "2025 DLH 398",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 398",
@@ -10611,12 +10697,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 755220.0,
       "amount_raw": "755 220",
       "motif": "ce programme, la RIVP bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 755 220 euros",
       "dossier": "2025 DLH 399",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 399",
@@ -10730,12 +10817,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 5202816.0,
       "amount_raw": "5 202 816",
       "motif": "ce programme, la RIVP bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 5 202 816 euros",
       "dossier": "2025 DLH 400",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 400",
@@ -10774,12 +10862,13 @@
       "session_id": 156,
       "article_num": 5,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 8509482.0,
       "amount_raw": "8 509 482",
       "motif": "Acquisition-amélioration de 35 logements sociaux (21 PLAI-14 PLUS) à réaliser au 2-6 rue Saint-Hyacinthe.",
       "dossier": "2025 DLH 400",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 400",
@@ -10848,12 +10937,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 4202606.0,
       "amount_raw": "4 202 606",
       "motif": "ce programme, Elogie-Siemp bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 4 202 606 euros",
       "dossier": "2025 DLH 419",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 419",
@@ -10892,12 +10982,13 @@
       "session_id": 156,
       "article_num": 5,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 3203686.0,
       "amount_raw": "3 203 686",
       "motif": "Garantie des prêts PLAI et PLUS pour acquisition-amélioration de 29 logements sociaux.",
       "dossier": "2025 DLH 419",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 419",
@@ -10936,12 +11027,13 @@
       "session_id": 156,
       "article_num": 8,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 1770487.0,
       "amount_raw": "1 770 487",
       "motif": "Garantie des prêts PLS pour acquisition-amélioration de 29 logements sociaux.",
       "dossier": "2025 DLH 419",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 426",
@@ -10950,12 +11042,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "Paris Habitat",
-      "siret": null,
+      "siret": "38906067400048",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Acquisition-amélioration de 15 logements (9 PLAI - 6 PLUS).",
       "dossier": "2025 DLH 426",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 426",
@@ -10964,12 +11057,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "Paris Habitat",
-      "siret": null,
+      "siret": "38906067400048",
       "amount_eur": 1639196.0,
       "amount_raw": "1 639 196",
       "motif": "ce programme, PARIS Habitat bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 1 639 196 euros",
       "dossier": "2025 DLH 426",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 426",
@@ -11023,12 +11117,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "Toit & Joie",
-      "siret": null,
+      "siret": "57215017500022",
       "amount_eur": 512000.0,
       "amount_raw": "512 000",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLAI, à souscrire par Toit & Joie auprès de la Caisse des Dépôts et Consignations, destiné à financer la création de 14 logements PLAI situés 33 Rue Rodier (9e)",
       "dossier": "2025 DLH 427",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 427",
@@ -11037,12 +11132,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "Toit & Joie",
-      "siret": null,
+      "siret": "57215017500022",
       "amount_eur": 1293016.0,
       "amount_raw": "1 293 016",
       "motif": "ce programme, Toit & Joie bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 1 293 016 euros",
       "dossier": "2025 DLH 427",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 427",
@@ -11126,12 +11222,13 @@
       "session_id": 156,
       "article_num": 8,
       "beneficiary": "Toit & Joie",
-      "siret": null,
+      "siret": "57215017500022",
       "amount_eur": 815000.0,
       "amount_raw": "815 000",
       "motif": "Garantie des prêts PLS pour acquisition-amélioration de 27 logements sociaux (14 PLAI, 8 PLUS, 5 PLS) au 33 Rue Rodier (9e).",
       "dossier": "2025 DLH 427",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 428",
@@ -11155,12 +11252,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "SEQENS",
-      "siret": null,
+      "siret": "44446573600049",
       "amount_eur": 2906363.0,
       "amount_raw": "2 906 363",
       "motif": "ce programme, SEQENS bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 2 906 363 euros",
       "dossier": "2025 DLH 428",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 428",
@@ -11244,12 +11342,13 @@
       "session_id": 156,
       "article_num": 8,
       "beneficiary": "SEQENS",
-      "siret": null,
+      "siret": "44446573600049",
       "amount_eur": 3419433.0,
       "amount_raw": "3 419 433",
       "motif": "Garantie des prêts PLS pour réalisation de 48 logements sociaux et intermédiaires au 62 avenue de la République (11e).",
       "dossier": "2025 DLH 428",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 429",
@@ -11273,12 +11372,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 56248.0,
       "amount_raw": "56 248",
       "motif": "ce programme, la RIVP bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 56 248 euros",
       "dossier": "2025 DLH 429",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 429",
@@ -11362,12 +11462,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "CDC Habitat Social",
-      "siret": null,
+      "siret": "55204648400325",
       "amount_eur": 3767064.0,
       "amount_raw": "3 767 064",
       "motif": "ce programme, CDC Habitat Social bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 3 767 064 euros",
       "dossier": "2025 DLH 432",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 432",
@@ -11451,12 +11552,13 @@
       "session_id": 156,
       "article_num": 8,
       "beneficiary": "CDC Habitat Social",
-      "siret": null,
+      "siret": "55204648400325",
       "amount_eur": 1262828.0,
       "amount_raw": "1 262 828",
       "motif": "Garantie des prêts PLS pour acquisition-amélioration de 32 logements sociaux (16 rue Eugène Varlin, 10e).",
       "dossier": "2025 DLH 432",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 437",
@@ -11465,12 +11567,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "Paris Habitat",
-      "siret": null,
+      "siret": "38906067400048",
       "amount_eur": 2554758.0,
       "amount_raw": "2 554 758",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLAI, à souscrire par Paris Habitat auprès de la Caisse des Dépôts et Consignations, destiné à financer la création de 23 logements PLAI situés 87-89 Boulevard de",
       "dossier": "2025 DLH 437",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 437",
@@ -11479,12 +11582,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "Paris Habitat",
-      "siret": null,
+      "siret": "38906067400048",
       "amount_eur": 6543520.0,
       "amount_raw": "6 543 520",
       "motif": "ce programme, Paris Habitat bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 6 543 520 euros",
       "dossier": "2025 DLH 437",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 437",
@@ -11568,12 +11672,13 @@
       "session_id": 156,
       "article_num": 8,
       "beneficiary": "Paris Habitat",
-      "siret": null,
+      "siret": "38906067400048",
       "amount_eur": 3534790.0,
       "amount_raw": "3 534 790",
       "motif": "Garantie des prêts PLS pour acquisition-amélioration de 46 logements sociaux, 87-89 Boulevard de Charonne (11e).",
       "dossier": "2025 DLH 437",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 341",
@@ -11597,12 +11702,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 3226147.0,
       "amount_raw": "3 226 147",
       "motif": "ce programme, Elogie-Siemp bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 3 226 147 euros",
       "dossier": "2025 DLH 341",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 341",
@@ -11728,12 +11834,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 812750.0,
       "amount_raw": "812 750",
       "motif": "ce programme, Elogie-Siemp bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 812 750 euros",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 377",
@@ -11787,12 +11894,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "CDC Habitat Social",
-      "siret": null,
+      "siret": "55204648400325",
       "amount_eur": 320000.0,
       "amount_raw": "320 000",
       "motif": "ce programme, CDC Habitat Social bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 320 000 euros dont 85 250 euros pour les logements sociaux PLS et 234 750 euros pour les logements en bail réel solidaire",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 418",
@@ -11876,12 +11984,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "Seqens Solidarités",
-      "siret": null,
+      "siret": "30453752500111",
       "amount_eur": 464555.0,
       "amount_raw": "464 555",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLAI à souscrire par Seqens Solidarités auprès de la Caisse des Dépôt et Consignations, destiné à financer l’opération de création d'une pension de famille compor",
       "dossier": "2025 DLH 349",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 349",
@@ -11890,12 +11999,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "Seqens Solidarités",
-      "siret": null,
+      "siret": "30453752500111",
       "amount_eur": 38320.0,
       "amount_raw": "38 320",
       "motif": "ce programme, Seqens Solidarités bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 38 320 euros",
       "dossier": "2025 DLH 349",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 349",
@@ -11964,12 +12074,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "HENEO",
-      "siret": null,
+      "siret": "56211864600149",
       "amount_eur": 296980.0,
       "amount_raw": "296 980",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLAI à souscrire par HENEO auprès de la Caisse des Dépôt et Consignations, destiné à financer l’opération de construction neuve comportant 3 logements PLA-Iau sei",
       "dossier": "2025 DLH 370",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 370",
@@ -11978,12 +12089,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "HENEO",
-      "siret": null,
+      "siret": "56211864600149",
       "amount_eur": 95366.0,
       "amount_raw": "95 366",
       "motif": "ce programme, HENEO bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 95 366 euros",
       "dossier": "2025 DLH 370",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 370",
@@ -12052,12 +12164,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "HENEO",
-      "siret": null,
+      "siret": "56211864600149",
       "amount_eur": 987458.0,
       "amount_raw": "987 458",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLAI à souscrire par HENEO auprès de la Caisse des Dépôt et Consignations, destiné à financer l’opération de création d'une résidence sociale ordinaire située 60-",
       "dossier": "2025 DLH 373",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 373",
@@ -12066,12 +12179,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "HENEO",
-      "siret": null,
+      "siret": "56211864600149",
       "amount_eur": 956943.0,
       "amount_raw": "956 943",
       "motif": "ce programme, HENEO bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 956 943 euros",
       "dossier": "2025 DLH 373",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 373",
@@ -12140,12 +12254,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "SEQENS SOLIDARITES",
-      "siret": null,
+      "siret": "30453752500111",
       "amount_eur": 625406.0,
       "amount_raw": "625 406",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLAI à souscrire par SEQENS SOLIDARITES auprès de la Caisse des Dépôt et Consignations, destiné à financer l’opération de création d'une pension de famille (logem",
       "dossier": "2025 DLH 374",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 374",
@@ -12154,12 +12269,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "SEQENS SOLIDARITES",
-      "siret": null,
+      "siret": "30453752500111",
       "amount_eur": 121690.0,
       "amount_raw": "121 690",
       "motif": "ce programme, SEQENS SOLIDARITES bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 121 690 euros",
       "dossier": "2025 DLH 374",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 374",
@@ -12198,12 +12314,13 @@
       "session_id": 156,
       "article_num": 5,
       "beneficiary": "SEQENS SOLIDARITES",
-      "siret": null,
+      "siret": "30453752500111",
       "amount_eur": 1064582.0,
       "amount_raw": "1 064 582",
       "motif": "Garantie des prêts PLA-I pour création pension de famille 26 logements Villa Mozart",
       "dossier": "2025 DLH 374",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 374",
@@ -12227,12 +12344,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 1007743.0,
       "amount_raw": "1 007 743",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLAI à souscrire par Elogie-Siemp auprès de la Caisse des Dépôt et Consignations, destiné à financer l’opération de construction neuve d'une Pension de famille co",
       "dossier": "2025 DLH 423",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 423",
@@ -12241,12 +12359,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 4295150.0,
       "amount_raw": "4 295 150",
       "motif": "ce programme, Elogie-Siemp bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 4 295 150 euros",
       "dossier": "2025 DLH 423",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 423",
@@ -12285,12 +12404,13 @@
       "session_id": 156,
       "article_num": 5,
       "beneficiary": "Elogie-Siemp",
-      "siret": null,
+      "siret": "55203820000069",
       "amount_eur": 1043286.0,
       "amount_raw": "1 043 286",
       "motif": "Garantie des prêts PLA-I pour la réalisation d'une pension de famille de 27 logements au 9-11 avenue Trudaine (9e).",
       "dossier": "2025 DLH 423",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 423",
@@ -12314,12 +12434,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "3F Résidences",
-      "siret": null,
+      "siret": "49528609800043",
       "amount_eur": 286503.0,
       "amount_raw": "286 503",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLAI à souscrire par 3F Résidences auprès de la Caisse des Dépôt et Consignations, destiné à financer l’opération d’acquisition-amélioration d’une résidence auton",
       "dossier": "2025 DLH 313",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 313",
@@ -12328,12 +12449,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "3F Résidences",
-      "siret": null,
+      "siret": "49528609800043",
       "amount_eur": 5361250.0,
       "amount_raw": "5 361 250",
       "motif": "ce programme, 3F Résidences bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 5 361 250 euros",
       "dossier": "2025 DLH 313",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 313",
@@ -12357,12 +12479,13 @@
       "session_id": 156,
       "article_num": 4,
       "beneficiary": "3F Résidences",
-      "siret": null,
+      "siret": "49528609800043",
       "amount_eur": 1221131.0,
       "amount_raw": "1 221 131",
       "motif": "Garantie des prêts PLUS pour l'acquisition-amélioration d'une résidence autonomie de 56 logements au 49 boulevard Arago (13e).",
       "dossier": "2025 DLH 313",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 313",
@@ -12401,12 +12524,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 13416000.0,
       "amount_raw": "13 416 000",
       "motif": "ce programme, la RIVP bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 13 416 000 euros",
       "dossier": "2025 DLH 430",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 430",
@@ -12460,12 +12584,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "CDC HABITAT SOCIAL",
-      "siret": null,
+      "siret": "55204648400325",
       "amount_eur": 3287550.0,
       "amount_raw": "3 287 550",
       "motif": "ce programme, CDC HABITAT SOCIAL bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 3 287 550 euros",
       "dossier": "2025 DLH 420",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 420",
@@ -12519,12 +12644,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "L'Habitation Confortable",
-      "siret": null,
+      "siret": "57219645900083",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Financement d'une résidence étudiante de 153 logements PLUS à Paris Rive Gauche (13e).",
       "dossier": "2025 DLH 172",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 172",
@@ -12533,12 +12659,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "L'Habitation Confortable",
-      "siret": null,
+      "siret": "57219645900083",
       "amount_eur": 6833736.0,
       "amount_raw": "6 833 736",
       "motif": "ce programme, L'Habitation Confortable bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 6 833 736 euros",
       "dossier": "2025 DLH 172",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 172",
@@ -12577,12 +12704,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 2985274.0,
       "amount_raw": "2 985 274",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLUS, à souscrire par la RIVP auprès de la Caisse des Dépôt et Consignations, destiné à financer l’opération de création d’une résidence étudiante comportant 47 l",
       "dossier": "2025 DLH 235",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 235",
@@ -12591,12 +12719,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 9570018.0,
       "amount_raw": "9 570 018",
       "motif": "ce programme, la RIVP bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 9 570 018 euros",
       "dossier": "2025 DLH 235",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 235",
@@ -12635,12 +12764,13 @@
       "session_id": 156,
       "article_num": 5,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 5690565.0,
       "amount_raw": "5 690 565",
       "motif": "Garantie des prêts PLUS pour la création d'une résidence étudiante de 95 logements sociaux.",
       "dossier": "2025 DLH 235",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 235",
@@ -12649,12 +12779,13 @@
       "session_id": 156,
       "article_num": 6,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 9214991.0,
       "amount_raw": "9 214 991",
       "motif": "le service des intérêts et l'amortissement des prêts PLS à contracter par la RIVP en vue du financement du programme de création d'une résidence étudiante comportant (47 logements PLUS et 48 logements PLS) à réaliser au 32-34 Avenue Simon Bolivar (19e) ; Vul’avis du Conseil du 19",
       "dossier": "2025 DLH 235",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 348",
@@ -12720,12 +12851,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "CROUS de Paris",
-      "siret": null,
+      "siret": "82802759900020",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Participation au financement d'une résidence étudiante de 86 logements PLS.",
       "dossier": "2025 DLH 350",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 350",
@@ -12734,12 +12866,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "CROUS de Paris",
-      "siret": null,
+      "siret": "82802759900020",
       "amount_eur": 1720000.0,
       "amount_raw": "1 720 000",
       "motif": "ce programme, le CROUS de Paris bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 1 720 000 euros",
       "dossier": "2025 DLH 350",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 350",
@@ -12778,12 +12911,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 19360167.0,
       "amount_raw": "19 360 167",
       "motif": "la totalité de sa durée et jusqu’au complet remboursement du prêt, le service des intérêts et l’amortissement du prêt PLS à souscrire par la RIVP auprès de la Caisse des Dépôt et Consignations, destiné à financer l’opération de construction neuve d'une résidence étudiants comport",
       "dossier": "2025 DLH 388",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 388",
@@ -12792,12 +12926,13 @@
       "session_id": 156,
       "article_num": 2,
       "beneficiary": "RIVP",
-      "siret": null,
+      "siret": "55203270800216",
       "amount_eur": 10605000.0,
       "amount_raw": "10 605 000",
       "motif": "ce programme, la RIVP bénéficiera d’une subvention de la Ville de Paris d’un montant maximum global de 10 605 000 euros",
       "dossier": "2025 DLH 388",
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DLH 388",
@@ -12952,13 +13087,14 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "Association Science Technologie Société –ASTS",
-      "siret": null,
+      "siret": "88435072900015",
       "amount_eur": 90000.0,
       "amount_raw": "000",
       "motif": "son action d’inclusion numérique (2026_00522), conformément à la convention pluriannuelle signée entre la Ville de Paris et l’association le 3 novembre 2022, et modifiée par l’avenant soumis au vote du présent Conseil de Paris",
       "dossier": "2026_00522",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSOL 198",
@@ -12982,13 +13118,14 @@
       "session_id": 156,
       "article_num": 3,
       "beneficiary": "Association des Loisirs Résidentiels des Mariniers –LOREM",
-      "siret": null,
+      "siret": "38757508700029",
       "amount_eur": 40000.0,
       "amount_raw": "000",
       "motif": "son action d’inclusion numérique (2026_01035), conformément à la convention pluriannuelle signée entre la Ville de Paris et l’association le 3 novembre 2022, et modifiée par l’avenant soumis au vote du présent Conseil de Paris",
       "dossier": "2026_01035",
       "beneficiary_source": "llm",
-      "amount_source": "llm"
+      "amount_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DSOL 198",
@@ -13069,12 +13206,13 @@
       "session_id": 156,
       "article_num": 1,
       "beneficiary": "Conseil d'Architecture, d'Urbanisme et de l'Environnement (CAUE)",
-      "siret": null,
+      "siret": "83794244000012",
       "amount_eur": null,
       "amount_raw": null,
       "motif": "Convention-cadre pluriannuelle 2026-2028.",
       "dossier": null,
-      "beneficiary_source": "llm"
+      "beneficiary_source": "llm",
+      "siret_source": "sirene"
     },
     {
       "delib_id": "2025 DU 104",
@@ -13281,7 +13419,7 @@
       "_admin_source": "llm"
     }
   ],
-  "sirene_enriched_at": "2026-04-22T00:19:34",
+  "sirene_enriched_at": "2026-04-22T10:24:29",
   "llm_enriched_at": "2026-04-22T01:07:29",
   "llm_model": "claude-haiku-4-5",
   "llm_provider": "anthropic"
