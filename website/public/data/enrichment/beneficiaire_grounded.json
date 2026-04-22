@@ -27259,7 +27259,902 @@
       ],
       "confiance": 0.9,
       "source_type": "grounded_search"
+    },
+    "CREPI ILE DE FRANCE": {
+      "beneficiaire": "CREPI Île-de-France",
+      "beneficiaire_normalise": "CREPI ILE DE FRANCE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:28:14",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Club régional d'entreprises partenaires de l'insertion (17e, 14 rue André Suarès) : mobilise ~2400 entreprises françaises (CAC 40 aux PME) pour créer un pont entre employeurs et chercheurs d'emploi, accompagner l'insertion.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://crepi.org",
+          "title": "crepi.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "OSEZ LA MEDIATION": {
+      "beneficiaire": "Osez la Médiation",
+      "beneficiaire_normalise": "OSEZ LA MEDIATION",
+      "siret": "",
+      "generated_at": "2026-04-23T00:28:14",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (15e, 18 rue du Docteur Finlay) créée en 2014 : développement de la médiation en France — médiation scolaire, entreprise, quartier, copro, numérique ; formations. SIRET 81976513200017.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://osezlamediation.fr",
+          "title": "osezlamediation.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "PETITS DEBROUILLARDS": {
+      "beneficiaire": "Les Petits Débrouillards",
+      "beneficiaire_normalise": "PETITS DEBROUILLARDS",
+      "siret": "",
+      "generated_at": "2026-04-23T00:28:14",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Mouvement associatif d'éducation populaire aux sciences créé en 1986 (inspiré du Canada, 1978) : critique scientifique chez les jeunes. Réseau de 13 régions, 60 antennes locales, 3000 animateurs, 200 salariés permanents.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://lespetitsdebrouillards-idf.org",
+          "title": "lespetitsdebrouillards-idf.org"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "PAIN ET DES ROSES": {
+      "beneficiaire": "Du Pain & des Roses",
+      "beneficiaire_normalise": "PAIN ET DES ROSES",
+      "siret": "",
+      "generated_at": "2026-04-23T00:28:14",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (20e, 83 rue Haxo) fondée en 2017 : formation gratuite et certifiante (CQP assistant·e fleuriste, 4 mois) pour femmes éloignées de l'emploi. 100% de réussite à l'examen. Kiosque à fleurs 1 place d'Estienne d'Orves (9e). SIRET 82971051600024.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://dupainetdesroses.org",
+          "title": "dupainetdesroses.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "SOC EXPLOITATION DU CINEMA DU PANTH": {
+      "beneficiaire": "Société d'Exploitation du Cinéma du Panthéon",
+      "beneficiaire_normalise": "SOC EXPLOITATION DU CINEMA DU PANTH",
+      "siret": "",
+      "generated_at": "2026-04-23T00:28:14",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "SARL (5e, 3 rue Paillet) créée en 2001 par Why Not Production (Pascal Caucheteux, gérant) : exploite le Cinéma du Panthéon, une salle art et essai ouverte en 1907 près de la Sorbonne. 10-19 salariés.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://cinemadupantheon.fr",
+          "title": "cinemadupantheon.fr"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "UNION NATIONALE DES ETUDIANTS DE FR": {
+      "beneficiaire": "UNEF — Union Nationale des Étudiants de France",
+      "beneficiaire_normalise": "UNION NATIONALE DES ETUDIANTS DE FR",
+      "siret": "",
+      "generated_at": "2026-04-23T00:28:14",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Syndicat étudiant français fondé en 1907 : défense des intérêts matériels et moraux des étudiants, lutte contre racisme et discriminations. Présent dans toutes les universités via les AGE (associations générales d'étudiants).",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://unef.fr",
+          "title": "unef.fr"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "PARIS TOUT P TITS": {
+      "beneficiaire": "Paris Tout P'tits",
+      "beneficiaire_normalise": "PARIS TOUT P TITS",
+      "siret": "",
+      "generated_at": "2026-04-23T00:28:14",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association créée en 1992 (centres Hermite 18e et Didot 14e) : aide matérielle (lait infantile, petits pots, couches) aux familles démunies avec bébés jusqu'à 18 mois. 60 bénévoles, 34 000+ colis distribués/an. SIRET 42847375500059.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://paristoutptits.com",
+          "title": "paristoutptits.com"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "COLOSSE AUX PIEDS D ARGILE": {
+      "beneficiaire": "Colosse aux Pieds d'Argile",
+      "beneficiaire_normalise": "COLOSSE AUX PIEDS D ARGILE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:28:14",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (créée en 2013 par Sébastien Boueilh, ex-rugbyman) : lutte contre violences sexuelles, bizutage et harcèlement dans le sport et l'école. RUP depuis 2020. Partenariats avec 40+ fédérations sportives. 100 000 personnes sensibilisées en 2024. SIRET 80475584100108.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://colosse.fr",
+          "title": "colosse.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "AXES PLURIELS": {
+      "beneficiaire": "Axes Pluriels",
+      "beneficiaire_normalise": "AXES PLURIELS",
+      "siret": "",
+      "generated_at": "2026-04-23T00:28:14",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (10e, 55 rue du Château d'Eau) — ex-Afrique Conseil, renommée en 2019 : accompagnement social, familial, psychologique et pôle enfants/familles pour publics du 10e. 6-9 salariés. SIRET 40292544000024.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://axespluriels.org",
+          "title": "axespluriels.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "RESSOURCES ENFANCES ET PARENTALITES": {
+      "beneficiaire": "Ressources Enfances et Parentalités",
+      "beneficiaire_normalise": "RESSOURCES ENFANCES ET PARENTALITES",
+      "siret": "",
+      "generated_at": "2026-04-23T00:28:14",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association petite enfance/parentalité : anime « Le parc avec un toit » (5e, 38 rue Poliveau) — espace d'accueil parents-enfants 0-4 ans, mercredi 15h30-18h30 et samedi 9h30-12h30. SIRET 81079974200020.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://paris.fr",
+          "title": "paris.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "FONDATION FALRET": {
+      "beneficiaire": "Fondation Falret",
+      "beneficiaire_normalise": "FONDATION FALRET",
+      "siret": "",
+      "generated_at": "2026-04-23T00:28:14",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Fondation médico-sociale pionnière en santé mentale, créée en 1841 par le psychiatre Jean-Pierre Falret : accompagne 5500 enfants et adultes en handicap psychique dans 62 établissements/services, 800 pros. Recherche-action, lutte contre la stigmatisation.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://fondation-falret.org",
+          "title": "fondation-falret.org"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "MARCHE SOLIDAIRE": {
+      "beneficiaire": "Le Marché Solidaire",
+      "beneficiaire_normalise": "MARCHE SOLIDAIRE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:28:14",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (14e, 12 rue de l'Eure) créée en 2009 : épicerie solidaire du 14e — prix jusqu'à 5× inférieurs au commerce, ateliers cuisine/couture, éducation à la nutrition. SIRET 52755358000020.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://lemarchesolidaire.fr",
+          "title": "lemarchesolidaire.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "MI FUGUE MI RAISON": {
+      "beneficiaire": "Mi-Fugue Mi-Raison (MFMR)",
+      "beneficiaire_normalise": "MI FUGUE MI RAISON",
+      "siret": "",
+      "generated_at": "2026-04-23T00:28:14",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Compagnie théâtrale (Pantin, 61 rue Victor Hugo) créée en 2002 par Alice Luce et Caroline Sahuquet : création et diffusion de spectacles vivants, actions pour droits des femmes, lutte contre violences. Basée aussi en Côtes-d'Armor. SIRET 45395459600053.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://mfmr.fr",
+          "title": "mfmr.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "PIMP YOUR WASTE": {
+      "beneficiaire": "Pimp Your Waste",
+      "beneficiaire_normalise": "PIMP YOUR WASTE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:28:14",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Entreprise ESS (Romainville, atelier 500 m²) fondée en 2019 par d'anciens étudiants de l'ENSA Paris-Malaquais, agréée ESUS : mobilier sur-mesure fabriqué à partir de chutes de bois et de matériaux issus de déconstruction/événementiel. Insertion socio-pro (réfugiés, longue durée). Mobilier du Village des Athlètes.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://pimpyourwaste.com",
+          "title": "pimpyourwaste.com"
+        },
+        {
+          "url": "https://lescanaux.com",
+          "title": "lescanaux.com"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "CENTRE INFORMAT DOCUM JEUNESSE": {
+      "beneficiaire": "CIDJ — Centre d'Information et de Documentation Jeunesse",
+      "beneficiaire_normalise": "CENTRE INFORMAT DOCUM JEUNESSE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:28:14",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association créée en 1969 (1er, 4 place du Louvre) à l'initiative du Ministère Jeunesse et Sports : information des 11-30 ans (orientation, études, emploi, mobilité, logement, santé). Tête de réseau Info Jeunesse (1300 structures).",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://cidj.com",
+          "title": "cidj.com"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ENGLISH AT SCHOOL": {
+      "beneficiaire": "English at School",
+      "beneficiaire_normalise": "ENGLISH AT SCHOOL",
+      "siret": "",
+      "generated_at": "2026-04-23T00:28:14",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association Paris (créée vers 2016-2017) : cours d'anglais en milieu scolaire. SIRET 82477905200011. Informations publiques limitées.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "grounded_search"
+    },
+    "ENSEMBLE ET SOLIDAIRES UNION NATION": {
+      "beneficiaire": "Ensemble & Solidaires — UNRPA (Union Nationale des Retraités et Personnes Âgées)",
+      "beneficiaire_normalise": "ENSEMBLE ET SOLIDAIRES UNION NATION",
+      "siret": "",
+      "generated_at": "2026-04-23T00:28:14",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Fédération de Paris de l'UNRPA, fondée en 1945 (héritage du CNR) : défense des retraités, activités culturelles/loisirs, solidarité santé (audio, dentaire, optique). Valeurs : proximité, convivialité, solidarité, combativité.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://unrpa.com",
+          "title": "unrpa.com"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "MUSEUM NATIONAL HISTOIRE NATURELLE": {
+      "beneficiaire": "MNHN — Muséum National d'Histoire Naturelle",
+      "beneficiaire_normalise": "MUSEUM NATIONAL HISTOIRE NATURELLE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:28:14",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Grand établissement public d'enseignement supérieur et de recherche (5e, 57 rue Cuvier, Jardin des Plantes) fondé en 1635 (Jardin royal) et refondé en 1793. 14 sites en France, ~2350 personnels dont 600 chercheurs. Master, doctorat, HDR.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://mnhn.fr",
+          "title": "mnhn.fr"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION SCIENCE ET TELEVISION": {
+      "beneficiaire": "Association Science et Télévision (AST)",
+      "beneficiaire_normalise": "ASSOCIATION SCIENCE ET TELEVISION",
+      "siret": "",
+      "generated_at": "2026-04-23T00:28:14",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association d'intérêt général (créée ~1997) : fédère les producteurs français de documentaires scientifiques pour la télévision. Organise le Festival International du Film Scientifique de Paris. SIRET 43930898200032.",
+      "perimetre_geographique": "France",
+      "sources": [],
+      "confiance": 0.75,
+      "source_type": "grounded_search"
+    },
+    "ELECTRICIENS SANS FRONTIERES": {
+      "beneficiaire": "Électriciens Sans Frontières",
+      "beneficiaire_normalise": "ELECTRICIENS SANS FRONTIERES",
+      "siret": "",
+      "generated_at": "2026-04-23T00:28:14",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "ONG internationale française créée en 1986 : lutte contre les inégalités d'accès à l'électricité et à l'eau. 1200 bénévoles, interventions dans ~40 pays (Afrique, Asie, Amérique latine) ; 89% des projets en énergies renouvelables. Interventions d'urgence (Ukraine, Turquie, Maroc, Gaza).",
+      "perimetre_geographique": "International",
+      "sources": [
+        {
+          "url": "https://electriciens-sans-frontieres.org",
+          "title": "electriciens-sans-frontieres.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ACCORDERIE PARIS SUD": {
+      "beneficiaire": "Accorderie Paris Sud",
+      "beneficiaire_normalise": "ACCORDERIE PARIS SUD",
+      "siret": "",
+      "generated_at": "2026-04-23T00:28:14",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (14e, 6 rue Maurice Bouchor) : échanges de services entre habitants via monnaie-temps (1h = 1h), sans argent. Lutte contre l'isolement et la pauvreté, mixité sociale. SIRET 83333142400014.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://accorderie.fr",
+          "title": "accorderie.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "RESERVE DES ARTS": {
+      "beneficiaire": "La Réserve des Arts",
+      "beneficiaire_normalise": "RESERVE DES ARTS",
+      "siret": "",
+      "generated_at": "2026-04-23T00:28:14",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (créée en 2008 par Sylvie Bétard et Jeanne Granger, inspirée de Materials for the Arts NYC) : 3 plateformes de réemploi de matériaux pour le secteur culturel (Paris 130 m², Pantin 3000 m², Marseille 850 m²). 600 tonnes valorisées/an. SIRET 50742995900046.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://lareservedesarts.org",
+          "title": "lareservedesarts.org"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ACCEPTESS T": {
+      "beneficiaire": "Acceptess-T — Actions Concrètes pour les Personnes Trans",
+      "beneficiaire_normalise": "ACCEPTESS T",
+      "siret": "",
+      "generated_at": "2026-04-23T00:28:14",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (18e) créée en 2010 par Giovanna Rincon, agréée ARS IDF représentation des usagers : lutte contre exclusions et discriminations envers les personnes trans. Santé sexuelle, TROD mensuel, accompagnement social/juridique/psy, sport (Paris TSG).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://acceptess-t.com",
+          "title": "acceptess-t.com"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "CLUB DES NAGEURS DE PARIS 4": {
+      "beneficiaire": "CNP — Club des Nageurs de Paris",
+      "beneficiaire_normalise": "CLUB DES NAGEURS DE PARIS 4",
+      "siret": "",
+      "generated_at": "2026-04-23T00:28:14",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Club de natation (12e, Centre Roger Le Gall, 34 bd Carnot) fondé en 1905 : seul club parisien labellisé « Club Formateur » FFN. École de natation (depuis 1907), compétitions, masters, adultes, triathlon.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://cnparis.org",
+          "title": "cnparis.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "CTRE TUDE RECH ACCOMP FAMILIAL": {
+      "beneficiaire": "CERAF — Centre d'Étude et de Recherche sur l'Accompagnement Familial",
+      "beneficiaire_normalise": "CTRE TUDE RECH ACCOMP FAMILIAL",
+      "siret": "",
+      "generated_at": "2026-04-23T00:30:17",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association agréée justice : médiation familiale (coparentalité, séparations, pensions, successions) à Paris et en IDF. Permanences au Point d'Accès au Droit du 19e, Les Auxiliaires des Aveugles (15e), Chelles (77), Bondy (93).",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://cerafmediation.com",
+          "title": "cerafmediation.com"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "ASOC GESTION APPART TEMPORAIRE": {
+      "beneficiaire": "AGATE — Association de Gestion des Appartements Temporaires",
+      "beneficiaire_normalise": "ASOC GESTION APPART TEMPORAIRE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:30:17",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (12e, 181 avenue Daumesnil) agréée « ingénierie sociale » et « IML/GLS » : 82 places / 45 appartements en IDF pour adultes suivis en psychiatrie (hôpitaux Saint-Maurice et Les Murets) en transition vers le logement pérenne.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://association-agate.fr",
+          "title": "association-agate.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "UNION NATIONALE DES ASSOCIATIONS": {
+      "beneficiaire": "UNAF — Union Nationale des Associations Familiales",
+      "beneficiaire_normalise": "UNION NATIONALE DES ASSOCIATIONS",
+      "siret": "",
+      "generated_at": "2026-04-23T00:30:17",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Union nationale (9e, 28 place Saint-Georges) représentant officiellement 18,6 M de familles en France : fédère 73 mouvements et 5 838 associations familiales. Accompagnement parental, logement, santé, dépendance, budget. Réseau UDAF/URAF.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://unaf.fr",
+          "title": "unaf.fr"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "CERCLE SPORT INST NAT INVALIDES": {
+      "beneficiaire": "CSINI — Cercle Sportif de l'Institution Nationale des Invalides",
+      "beneficiaire_normalise": "CERCLE SPORT INST NAT INVALIDES",
+      "siret": "",
+      "generated_at": "2026-04-23T00:30:17",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association fondée le 10 octobre 1966 (7e, INI) : un des plus grands clubs handisport de France — rééducation par le sport pour militaires blessés et civils handicapés. 141 médailles paralympiques cumulées.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://csini.fr",
+          "title": "csini.fr"
+        },
+        {
+          "url": "https://defense.gouv.fr",
+          "title": "defense.gouv.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "SEINE ST DENIS TOURISME AGENCE DE": {
+      "beneficiaire": "Seine-Saint-Denis Tourisme — Agence de Développement Touristique",
+      "beneficiaire_normalise": "SEINE ST DENIS TOURISME AGENCE DE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:30:17",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (Pantin, 140 avenue Jean Lolive) créée fin 1997 par le Conseil départemental 93 : développement et promotion touristique du 93 — « Nord-Est Parisien ». 20 salariés.",
+      "perimetre_geographique": "Seine-Saint-Denis",
+      "sources": [
+        {
+          "url": "https://tourisme93.com",
+          "title": "tourisme93.com"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "ASS MUSIQUE ET DANSE 20": {
+      "beneficiaire": "Association Musique et Danse 20",
+      "beneficiaire_normalise": "ASS MUSIQUE ET DANSE 20",
+      "siret": "",
+      "generated_at": "2026-04-23T00:30:17",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (20e, 210 rue de Belleville) fondée en 1983 : pratiques musicales et chorégraphiques dans le 20e. 3-5 salariés.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://societe.com",
+          "title": "societe.com"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "ACCUEIL LAGHOUAT": {
+      "beneficiaire": "Accueil Laghouat",
+      "beneficiaire_normalise": "ACCUEIL LAGHOUAT",
+      "siret": "",
+      "generated_at": "2026-04-23T00:30:17",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (18e, 2 rue Richomme — Goutte d'Or) déclarée en 1998 : médiation sociale, alphabétisation/FLE, écrivain public, soutien scolaire, domiciliation, inclusion numérique. Lutte contre les discriminations. SIRET 42439841000037.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://accueil-laghouat.org",
+          "title": "accueil-laghouat.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "BRASSERIE DE L ETRE": {
+      "beneficiaire": "Brasserie de l'Être",
+      "beneficiaire_normalise": "BRASSERIE DE L ETRE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:30:17",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Micro-brasserie artisanale bio (19e) fondée en 2015 par Edward et Loïc — première brasserie d'IDF labellisée ESUS. Malts bio IDF/Champagne/Picardie. Élue meilleure nouvelle brasserie française 2016 par RateBeer. Projet d'extension rue Armand Carrel.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://brasseriedeletre.paris",
+          "title": "brasseriedeletre.paris"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "KEM PARIS": {
+      "beneficiaire": "KEM Paris",
+      "beneficiaire_normalise": "KEM PARIS",
+      "siret": "",
+      "generated_at": "2026-04-23T00:30:17",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "SAS (20e/18e) créée le 3 mai 2021 : restauration rapide. SIREN 899059422. Informations publiques limitées quant à l'activité associative.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://societe.com",
+          "title": "societe.com"
+        }
+      ],
+      "confiance": 0.4,
+      "source_type": "grounded_search"
+    },
+    "ATELIER DE MAURICE ARNOULT": {
+      "beneficiaire": "L'Atelier de Maurice Arnoult (AMA)",
+      "beneficiaire_normalise": "ATELIER DE MAURICE ARNOULT",
+      "siret": "",
+      "generated_at": "2026-04-23T00:30:17",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (18e, 8 rue des Gardes — anciennement 20e Belleville) créée en mars 2005 : préservation du savoir-faire bottier de Maurice Arnoult (bottier à Belleville jusqu'à 102 ans), transmission aux apprentis, boutique. Organisme de formation CAP. SIRET 53123666900010.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://maurice-arnoult.fr",
+          "title": "maurice-arnoult.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "COMITE DEPARTEMENTAL DE PARIS FOOTB": {
+      "beneficiaire": "CDPF — Comité Départemental de Paris de Football",
+      "beneficiaire_normalise": "COMITE DEPARTEMENTAL DE PARIS FOOTB",
+      "siret": "",
+      "generated_at": "2026-04-23T00:30:17",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Comité départemental FFF (13e, 10 square Dunois) : organisation et développement du football parisien. Président Philippe Surmon. District de Paris créé pour 2020-2021 après décennie de batailles juridiques avec la FFF.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://cdpf.fr",
+          "title": "cdpf.fr"
+        },
+        {
+          "url": "https://district75foot.fff.fr",
+          "title": "district75foot.fff.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "CLUB SPORTIF PARIS 19EME": {
+      "beneficiaire": "CSP 19 — Club Sportif Paris 19e",
+      "beneficiaire_normalise": "CLUB SPORTIF PARIS 19EME",
+      "siret": "",
+      "generated_at": "2026-04-23T00:30:17",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association loi 1901 (19e, 8 avenue Moderne) fondée en 1972 (ex-Association Sportive des Buttes Chaumont, renommée 1992) : omnisports — basket, tennis, gymnastique. SIRET 41479104600033.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://csp19.fr",
+          "title": "csp19.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "MAISON D ACCUEIL L ILOT": {
+      "beneficiaire": "L'Îlot — Maisons d'Accueil",
+      "beneficiaire_normalise": "MAISON D ACCUEIL L ILOT",
+      "siret": "",
+      "generated_at": "2026-04-23T00:30:17",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (19e, 88 bd de la Villette) créée en 1969 : accueil, hébergement (5 centres — 4 CHRS + 1 CHU) et accompagnement de personnes à la sortie de prison ou sous main de justice. 4 piliers : logement, emploi, santé, liens familiaux. 2200 personnes suivies en 2024 (60% sortants/justiciables). Ateliers d'insertion (restauration, mécanique, textile).",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://ilot.asso.fr",
+          "title": "ilot.asso.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "MUSIQUE ENSEMBLE XXEME": {
+      "beneficiaire": "Musique Ensemble 20e",
+      "beneficiaire_normalise": "MUSIQUE ENSEMBLE XXEME",
+      "siret": "",
+      "generated_at": "2026-04-23T00:30:17",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "École de musique associative (20e, siège 3 square Roland Garros — inscriptions 32 rue du Capitaine Marchal) implantée depuis 2000 : cours instrumentaux individuels et collectifs, orchestres amateurs (klezmer, jazz, argentin, chambre, ukulélé). 500+ élèves.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://musique-ensemble.com",
+          "title": "musique-ensemble.com"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "SECOURS EMPLOI INTERIM": {
+      "beneficiaire": "Secours Emploi Intérim",
+      "beneficiaire_normalise": "SECOURS EMPLOI INTERIM",
+      "siret": "",
+      "generated_at": "2026-04-23T00:30:17",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Entité intérim liée au groupe Secours Emploi (association intermédiaire 11e, depuis 1987) : mises à disposition intérimaires d'insertion (aide à domicile, ménage, jardinage, peinture).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://secoursemploi.fr",
+          "title": "secoursemploi.fr"
+        }
+      ],
+      "confiance": 0.75,
+      "source_type": "grounded_search"
+    },
+    "EMPLOI SPORT SOLUTIONS": {
+      "beneficiaire": "Emploi Sport Solutions",
+      "beneficiaire_normalise": "EMPLOI SPORT SOLUTIONS",
+      "siret": "",
+      "generated_at": "2026-04-23T00:30:17",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "ACI — Atelier Chantier d'Insertion (18e, 12 rue Boucry) créée le 27/07/2017 : préparation au métier de maître-nageur sauveteur en parcours qualifiant pour personnes éloignées de l'emploi. 7 salariés en insertion, 3 chantiers (20 personnes chacun). SIRET 83271743300029.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://emplois.inclusion.beta.gouv.fr",
+          "title": "emplois.inclusion.beta.gouv.fr"
+        },
+        {
+          "url": "https://fondation.credit-cooperatif.coop",
+          "title": "fondation.credit-cooperatif.coop"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "ATHLETIC CLUB PARIS 15": {
+      "beneficiaire": "Athletic Club Paris 15",
+      "beneficiaire_normalise": "ATHLETIC CLUB PARIS 15",
+      "siret": "",
+      "generated_at": "2026-04-23T00:30:17",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Club (15e) — selon sources le plus grand club de football du 15e créé en 2004 (à ne pas confondre avec XVe Athletic Club / ESC 15 Athlétisme). SIRET 51168229600039.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://xv-athletic-club.org",
+          "title": "xv-athletic-club.org"
+        }
+      ],
+      "confiance": 0.75,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION CIE GRAINES DE SOLEIL": {
+      "beneficiaire": "Compagnie Graines de Soleil",
+      "beneficiaire_normalise": "ASSOCIATION CIE GRAINES DE SOLEIL",
+      "siret": "",
+      "generated_at": "2026-04-23T00:30:17",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Compagnie théâtrale (18e, 7 rue de la Charbonnière — Goutte d'Or) fondée en 1998 : créations contemporaines, ateliers avec enfants et habitants du quartier. Gestionnaire depuis 2014 du Lavoir Moderne Parisien (dernier théâtre de la Goutte d'Or).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://gouttedor-et-vous.org",
+          "title": "gouttedor-et-vous.org"
+        },
+        {
+          "url": "https://lavoirmoderneparisien.com",
+          "title": "lavoirmoderneparisien.com"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "PARIS LADY BASKET": {
+      "beneficiaire": "Paris Lady Basket (PLB)",
+      "beneficiaire_normalise": "PARIS LADY BASKET",
+      "siret": "",
+      "generated_at": "2026-04-23T00:30:17",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Club basket féminin (20e) créé en avril 2014, label FFBB Citoyen 3 étoiles : équipe senior D2 IDF. Actions sociales, soutien scolaire, sorties culturelles, collectes de solidarité. SIRET 80441026400019.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://parisladybasket.fr",
+          "title": "parisladybasket.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ETHNOART": {
+      "beneficiaire": "EthnoArt",
+      "beneficiaire_normalise": "ETHNOART",
+      "siret": "",
+      "generated_at": "2026-04-23T00:30:17",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (20e, 39 rue des Cascades) déclarée en 2002 : ethnologues, médiateurs scientifiques et artistes — diffusion des savoirs ethnologiques, éducation culturelle, musique, danse, théâtre, photo, arts visuels. Promotion de la diversité culturelle en IDF. SIRET 44992063600031.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://ethnoart.org",
+          "title": "ethnoart.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "PARIS EST MOUV": {
+      "beneficiaire": "Paris Est Mouv'",
+      "beneficiaire_normalise": "PARIS EST MOUV",
+      "siret": "",
+      "generated_at": "2026-04-23T00:30:17",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Club de football / association sportive du nord-est parisien. Informations publiques limitées. SIRET 42384579100023.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.5,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION LA PORTE ENTR OUVERTE": {
+      "beneficiaire": "La Porte Entr'Ouverte",
+      "beneficiaire_normalise": "ASSOCIATION LA PORTE ENTR OUVERTE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:30:17",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Crèche parentale associative (14e), réseau ACEPPRIF : accueil petite enfance en gestion parentale participative.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://acepprif.org",
+          "title": "acepprif.org"
+        },
+        {
+          "url": "https://laporteentrouverte.org",
+          "title": "laporteentrouverte.org"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "L ACADEMIE DES RUCHES": {
+      "beneficiaire": "L'Académie des Ruches",
+      "beneficiaire_normalise": "L ACADEMIE DES RUCHES",
+      "siret": "",
+      "generated_at": "2026-04-23T00:30:17",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (20e, 24 rue de l'Est) : promotion de l'innovation sociale — entrepreneuriat social, créativité, empowerment. Développement économique et humain par les compétences.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://gralon.net",
+          "title": "gralon.net"
+        }
+      ],
+      "confiance": 0.75,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION FRANCO CHINOISE PIERRE DUCER": {
+      "beneficiaire": "Association Franco-Chinoise Pierre Ducerf",
+      "beneficiaire_normalise": "ASSOCIATION FRANCO CHINOISE PIERRE DUCER",
+      "siret": "",
+      "generated_at": "2026-04-23T00:30:17",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (3e, 29 rue Michel Le Comte) fondée en 1993 : intégration des Chinois de France — FLE, soutien scolaire, parrainage emploi, médiation sociale et interculturelle, cours de mandarin. ~2000 bénéficiaires/an (85% issus de provinces chinoises, notamment Zhejiang). SIRET 40330988300029.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://pierreducerf.com",
+          "title": "pierreducerf.com"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "100 HANDINAMIQUE PR LA REU DES JEU": {
+      "beneficiaire": "100% Handinamique",
+      "beneficiaire_normalise": "100 HANDINAMIQUE PR LA REU DES JEU",
+      "siret": "",
+      "generated_at": "2026-04-23T00:30:17",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Mouvement national créé en 2010 : entraide entre étudiants et jeunes diplômés en situation de handicap. Bourses, label « Associations étudiantes 100% Handinamique » (depuis 2021), Handicafés© (10-15/an), DuoDay. Partenariat France Universités.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://handinamique.org",
+          "title": "handinamique.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "CULTURE PRIORITAIRE": {
+      "beneficiaire": "Culture Prioritaire",
+      "beneficiaire_normalise": "CULTURE PRIORITAIRE",
+      "siret": "",
+      "generated_at": "2026-04-23T00:30:17",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (fondée en 2013) : accompagnement éducatif en culture générale et culture de carrière pour jeunes de quartiers populaires de la 3e au lycée. Modules histoire, arts, littérature, théâtre, sciences, institutions. SIRET 79767216900019.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://cultureprioritaire.org",
+          "title": "cultureprioritaire.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
     }
   },
-  "total": 1554
+  "total": 1604
 }
