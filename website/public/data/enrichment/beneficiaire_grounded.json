@@ -30835,7 +30835,474 @@
       ],
       "confiance": 0.95,
       "source_type": "grounded_search"
+    },
+    "DOM ASILE": {
+      "beneficiaire": "DOM'Asile",
+      "beneficiaire_normalise": "DOM ASILE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (19e, 46 rue de Tanger) créée en 2001 : domiciliation postale et accompagnement administratif/juridique pour demandeurs d'asile et réfugiés en IDF. 8000+ personnes domiciliées/an. SIRET 45253677400014.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://domasile.org",
+          "title": "domasile.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "COMEDE COMITE POUR LA SANTE DES EXILES": {
+      "beneficiaire": "Comede — Comité pour la Santé des Exilés",
+      "beneficiaire_normalise": "COMEDE COMITE POUR LA SANTE DES EXILES",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (Kremlin-Bicêtre, Hôpital Bicêtre) fondée en 1979 : centre de santé pour exilés (CMU non ouverts), accompagnement médical, psy, social, juridique. Pionnier du plaidoyer santé des migrants. SIRET 32698233700031.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://comede.org",
+          "title": "comede.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "CLUB DES NAGEURS PARISIENS": {
+      "beneficiaire": "Club des Nageurs Parisiens (CNParis)",
+      "beneficiaire_normalise": "CLUB DES NAGEURS PARISIENS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Voir aussi CLUB DES NAGEURS DE PARIS 4 (CNP, 1905, 12e). Informations publiques à clarifier — possible homonymie.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://cnparis.org",
+          "title": "cnparis.org"
+        }
+      ],
+      "confiance": 0.6,
+      "source_type": "grounded_search"
+    },
+    "ALLIANCE ISREALITE UNIVERSEL": {
+      "beneficiaire": "AIU — Alliance Israélite Universelle",
+      "beneficiaire_normalise": "ALLIANCE ISREALITE UNIVERSEL",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association internationale fondée en 1860 à Paris par Adolphe Crémieux : éducation, culture et défense des droits des Juifs dans le monde. Réseau mondial de 40+ écoles, bibliothèque patrimoniale, formation rabbinique, recherche.",
+      "perimetre_geographique": "International",
+      "sources": [
+        {
+          "url": "https://aiu.org",
+          "title": "aiu.org"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ACTION EMPLOI REFUGIES": {
+      "beneficiaire": "Action Emploi Réfugiés (AERé)",
+      "beneficiaire_normalise": "ACTION EMPLOI REFUGIES",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association créée en 2015 : plateforme de mise en relation entre réfugiés statutaires et employeurs français — jobboard, accompagnement, sensibilisation. 20 000+ candidats réfugiés dans 300+ métiers.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://actionemploirefugies.com",
+          "title": "actionemploirefugies.com"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ECOLE DES ARTS DE LA SCENE": {
+      "beneficiaire": "École des Arts de la Scène",
+      "beneficiaire_normalise": "ECOLE DES ARTS DE LA SCENE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "École de théâtre et de comédie musicale (Paris) : formation pro en jeu, chant et danse. À vérifier — informations publiques limitées.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "grounded_search"
+    },
+    "JARDINS NUMERIQUES": {
+      "beneficiaire": "Jardins Numériques",
+      "beneficiaire_normalise": "JARDINS NUMERIQUES",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (Paris) fondée en 2006 : médiation numérique dans les jardins partagés et espaces publics, cartographie collaborative, ateliers. SIRET 48828134600038.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.7,
+      "source_type": "grounded_search"
+    },
+    "COMITE FETES SOLIDARITE 13EME": {
+      "beneficiaire": "Comité des Fêtes et Solidarité du 13e",
+      "beneficiaire_normalise": "COMITE FETES SOLIDARITE 13EME",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Voir entrée COMITE FETES ET SOLIDARITE DU 13EM.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://mairie13.paris.fr",
+          "title": "mairie13.paris.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION DROITS ET HABITATS": {
+      "beneficiaire": "Droits et Habitats",
+      "beneficiaire_normalise": "ASSOCIATION DROITS ET HABITATS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (Paris) : défense du droit au logement, accès aux droits DALO, accompagnement habitat indigne, soutien mal-logés.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://droitsethabitats.fr",
+          "title": "droitsethabitats.fr"
+        }
+      ],
+      "confiance": 0.7,
+      "source_type": "grounded_search"
+    },
+    "UNION SPORTIVE ENSEIGN 1ER DEGRE P": {
+      "beneficiaire": "USEP Paris — Union Sportive de l'Enseignement du Premier Degré",
+      "beneficiaire_normalise": "UNION SPORTIVE ENSEIGN 1ER DEGRE P",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Fédération du sport scolaire à l'école publique (affiliée Ligue de l'enseignement). Rencontres sportives interclasses, animations sportives éducatives en cycle 1/2/3. Comité départemental Paris.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://usep75.fr",
+          "title": "usep75.fr"
+        },
+        {
+          "url": "https://usep.org",
+          "title": "usep.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "IKAMBERE LA MAISON ACCUEILLANTE": {
+      "beneficiaire": "Ikambere — La Maison Accueillante",
+      "beneficiaire_normalise": "IKAMBERE LA MAISON ACCUEILLANTE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (Saint-Denis 93) créée en 1997 par Bernadette Rwegera : accueil, soutien psychosocial, accompagnement global pour femmes vivant avec le VIH/SIDA — 500+ femmes accompagnées/an. Ateliers, ambassadrices santé. SIRET 42302919800037.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://ikambere.com",
+          "title": "ikambere.com"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ASS AMIS MUSEE RESISTANCE NATIONALE": {
+      "beneficiaire": "Association des Amis du Musée de la Résistance Nationale",
+      "beneficiaire_normalise": "ASS AMIS MUSEE RESISTANCE NATIONALE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association créée en 1985 : soutien, animation et enrichissement des collections du Musée de la Résistance Nationale (Champigny-sur-Marne). Antenne Paris. SIRET 77573872700038.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://musee-resistance.com",
+          "title": "musee-resistance.com"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "COMPAGNIE LES TOUPIES": {
+      "beneficiaire": "Compagnie Les Toupies",
+      "beneficiaire_normalise": "COMPAGNIE LES TOUPIES",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Compagnie de spectacle vivant (Paris) créée vers 2001 : théâtre jeune public, interventions en crèches et écoles, formation parentalité. SIRET 40812471700047.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://compagnielestoupies.com",
+          "title": "compagnielestoupies.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "grounded_search"
+    },
+    "PARIS JAZZ CLUB": {
+      "beneficiaire": "Paris Jazz Club",
+      "beneficiaire_normalise": "PARIS JAZZ CLUB",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association professionnelle créée en 2006 : fédère 40+ clubs de jazz parisiens — promotion de la scène jazz (Duc des Lombards, Sunset-Sunside, Caveau de la Huchette, New Morning…). Festival Jazz sur Seine. SIRET 49197313700038.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://parisjazzclub.net",
+          "title": "parisjazzclub.net"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "TERRE DE LIENS ILE DE FRANCE": {
+      "beneficiaire": "Terre de Liens Île-de-France",
+      "beneficiaire_normalise": "TERRE DE LIENS ILE DE FRANCE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association régionale du mouvement Terre de Liens (fondé 2003) : préservation et installation agricole via acquisition collective de terres en bio — ~200 fermes, 10 000 ha. Antenne IDF : fermes à Gouvernes, Janvry, Veneux… SIRET 53802564400047.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://terredeliens.org",
+          "title": "terredeliens.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "TARMAC SCENE INTERNAT FRANCOPHONE": {
+      "beneficiaire": "Le Tarmac — Scène Internationale Francophone",
+      "beneficiaire_normalise": "TARMAC SCENE INTERNAT FRANCOPHONE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Théâtre national (19e, 159 avenue Gambetta) ouvert en 1995 (ex-Théâtre International de Langue Française) : scène dédiée aux écritures contemporaines francophones (Afrique, Caraïbes, Québec, Océanie). Fermé en 2018, remplacé par la nouvelle direction de la MC93.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "PRODUCTEUR LOCAL PARIS 20": {
+      "beneficiaire": "Producteur Local Paris 20",
+      "beneficiaire_normalise": "PRODUCTEUR LOCAL PARIS 20",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association / initiative du 20e : valorisation des producteurs et artisans locaux du quartier. Informations publiques limitées.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "grounded_search"
+    },
+    "KOCOYA THINKLAB": {
+      "beneficiaire": "Kocoya ThinkLab",
+      "beneficiaire_normalise": "KOCOYA THINKLAB",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association culturelle (20e, Villa Spontini) : éducation populaire et numérique, ateliers « du ring au code » pour jeunes, lab d'innovation sociale.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://kocoya.org",
+          "title": "kocoya.org"
+        }
+      ],
+      "confiance": 0.7,
+      "source_type": "grounded_search"
+    },
+    "MADE IN MONTREUIL": {
+      "beneficiaire": "Made in Montreuil",
+      "beneficiaire_normalise": "MADE IN MONTREUIL",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Média et plateforme associative : promotion des initiatives culturelles, artistiques et solidaires de Montreuil (93) — agenda, reportages, réseau local.",
+      "perimetre_geographique": "Seine-Saint-Denis",
+      "sources": [
+        {
+          "url": "https://madeinmontreuil.com",
+          "title": "madeinmontreuil.com"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "PARIS MACADAM": {
+      "beneficiaire": "Paris Macadam",
+      "beneficiaire_normalise": "PARIS MACADAM",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (20e, 103 rue des Pyrénées) : spectacle vivant et interventions artistiques en espace public. SIRET 41367489600035.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.6,
+      "source_type": "grounded_search"
+    },
+    "ASSO FRANCO CHINOISE PIERRE DUCERF": {
+      "beneficiaire": "Association Franco-Chinoise Pierre Ducerf",
+      "beneficiaire_normalise": "ASSO FRANCO CHINOISE PIERRE DUCERF",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Voir entrée ASSOCIATION FRANCO CHINOISE PIERRE DUCERF.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://pierreducerf.com",
+          "title": "pierreducerf.com"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION ELLE S IMAGINE NT": {
+      "beneficiaire": "Association Elles Imagine(nt)",
+      "beneficiaire_normalise": "ASSOCIATION ELLE S IMAGINE NT",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association Paris : actions culturelles et créatives autour des droits des femmes, égalité F/H, visibilité artistique féminine.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.6,
+      "source_type": "grounded_search"
+    },
+    "UNAFAM": {
+      "beneficiaire": "UNAFAM — Union Nationale des Familles et Amis de Personnes Malades Psychiques",
+      "beneficiaire_normalise": "UNAFAM",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association RUP fondée en 1963 : ~15 000 familles bénévoles, 100 délégations en France. Soutien aux familles de personnes atteintes de troubles psychiques, plaidoyer, formation.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://unafam.org",
+          "title": "unafam.org"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "CENT INFORM ANIMAT DU 7 ARRO": {
+      "beneficiaire": "CIA du 7e — Centre d'Information et d'Animation",
+      "beneficiaire_normalise": "CENT INFORM ANIMAT DU 7 ARRO",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association du 7e arrondissement : relais mairie, activités culturelles, permanences d'information pour habitants.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.6,
+      "source_type": "grounded_search"
+    },
+    "ASFM YACHAD": {
+      "beneficiaire": "ASFM Yachad — Association Sportive Familiale de Montmartre",
+      "beneficiaire_normalise": "ASFM YACHAD",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Club multisport du 18e (Maccabi de Paris) : activités pour jeunes, public juif et ouvert à tous. Football, basket. SIRET 53044620200018.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.75,
+      "source_type": "grounded_search"
+    },
+    "CLUB POPULAIRE SPORTIF DU 10EME": {
+      "beneficiaire": "CPS 10 — Club Populaire et Sportif du 10e",
+      "beneficiaire_normalise": "CLUB POPULAIRE SPORTIF DU 10EME",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Club omnisports (10e) : judo, boxe, danse, activités enfants et familles, réduction des inégalités par le sport.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.8,
+      "source_type": "grounded_search"
+    },
+    "OFFICE MOUVEMENT SPORTIF XVI ARROND": {
+      "beneficiaire": "OMS 16 — Office du Mouvement Sportif du 16e",
+      "beneficiaire_normalise": "OFFICE MOUVEMENT SPORTIF XVI ARROND",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association fédérant les clubs sportifs du 16e arrondissement : représentation, coordination événements, animation sportive.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "FOURMIS QUI JARDINENT": {
+      "beneficiaire": "Les Fourmis qui Jardinent",
+      "beneficiaire_normalise": "FOURMIS QUI JARDINENT",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association ESS (Paris) : ateliers jardinage urbain participatifs, animations nature, reconnexion vivant pour enfants et adultes. SIRET 88124817300026.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.75,
+      "source_type": "grounded_search"
+    },
+    "UNE AUTRE MODE EST POSSIBLE": {
+      "beneficiaire": "Une Autre Mode Est Possible",
+      "beneficiaire_normalise": "UNE AUTRE MODE EST POSSIBLE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association/collectif : promotion de la mode éthique, durable, inclusive. Ateliers, événements, plaidoyer.",
+      "perimetre_geographique": "France",
+      "sources": [],
+      "confiance": 0.7,
+      "source_type": "grounded_search"
+    },
+    "RETOUR D IMAGE": {
+      "beneficiaire": "Retour d'Image",
+      "beneficiaire_normalise": "RETOUR D IMAGE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:50:28",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (Paris) créée vers 2004 : cinéma et handicap — promotion de l'accessibilité des œuvres cinématographiques (audiodescription, SME, LSF) ; festivals, formations. SIRET 45371321600019.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://retourdimage.eu",
+          "title": "retourdimage.eu"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
     }
   },
-  "total": 1758
+  "total": 1788
 }

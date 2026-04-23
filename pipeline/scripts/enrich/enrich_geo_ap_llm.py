@@ -28,12 +28,12 @@ PROJECT_ID = "open-data-france-484717"
 DATASET = "dbt_paris_analytics"
 SEED_PATH = Path(__file__).parent.parent / "paris-public-open-data" / "seeds" / "seed_cache_geo_ap.csv"
 
-GEMINI_API_KEY = os.environ.get("GOOGLE_API_KEY", "")
-# Gemini 3 Flash — spatial reasoning + landmark recognition for Paris arr.
-# Strict validation downstream (arrondissement in 1..20), so we can afford a
-# slightly cheaper model here if cost becomes an issue. Override via env.
+GEMINI_API_KEY = os.environ.get("GOOGLE_API_KEY", "") or os.environ.get("GEMINI_API_KEY", "")
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3-flash-preview")
 GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent"
+
+ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
+CLAUDE_MODEL = os.environ.get("CLAUDE_MODEL", "claude-haiku-4-5")
 
 # Batching config
 BATCH_SIZE = 10  # Réduit pour éviter troncature JSON
@@ -117,6 +117,77 @@ def save_cache(cache: dict):
                 'ode_date_recherche': data.get('date_recherche', ''),
                 'ode_source': data.get('source', '')
             })
+
+
+def _parse_geo_json(text: str) -> list:
+    """Parse un JSON array de résultats géoloc, tolérant aux ``` wrappers."""
+    if '```json' in text:
+        text = text.split('```json')[1].split('```')[0]
+    elif '```' in text:
+        text = text.split('```')[1].split('```')[0]
+    results = json.loads(text.strip())
+    for r in results:
+        arr = r.get('arrondissement')
+        if arr is not None:
+            try:
+                if not (1 <= int(arr) <= 20):
+                    r['arrondissement'] = None
+            except Exception:
+                r['arrondissement'] = None
+    return results
+
+
+def call_claude_batch(projects: list) -> list:
+    """Appelle Claude (Haiku 4.5 par défaut) avec un batch de projets."""
+    if not ANTHROPIC_API_KEY:
+        raise ValueError("ANTHROPIC_API_KEY non défini")
+
+    projects_text = "\n".join([
+        f"- AP_CODE: {p['ap_code']}, DESCRIPTION: {p['ap_texte'][:200]}"
+        for p in projects
+    ])
+    payload = {
+        "model": CLAUDE_MODEL,
+        "max_tokens": 8192,
+        "temperature": 0.1,
+        "messages": [{"role": "user",
+                      "content": f"{SYSTEM_PROMPT}\n\nProjets à analyser:\n{projects_text}"}],
+    }
+    headers = {
+        "x-api-key": ANTHROPIC_API_KEY,
+        "anthropic-version": "2023-06-01",
+        "content-type": "application/json",
+    }
+    try:
+        r = requests.post("https://api.anthropic.com/v1/messages",
+                          headers=headers, json=payload, timeout=120)
+        if r.status_code == 429:
+            print("    [RATE LIMIT] Attente 30s...", flush=True)
+            time.sleep(30)
+            r = requests.post("https://api.anthropic.com/v1/messages",
+                              headers=headers, json=payload, timeout=120)
+        if r.status_code != 200:
+            print(f"    [ERREUR API Claude] Status {r.status_code}: {r.text[:200]}", flush=True)
+            return []
+        text = r.json().get('content', [{}])[0].get('text', '')
+        print(f"    [DEBUG] Réponse: {len(text)} chars", flush=True)
+        return _parse_geo_json(text)
+    except json.JSONDecodeError as e:
+        try:
+            import re
+            matches = list(re.finditer(r'\{[^{}]+\}', text))
+            if matches:
+                fixed = '[' + ','.join(m.group() for m in matches) + ']'
+                results = json.loads(fixed)
+                print(f"    [RÉPARÉ] Récupéré {len(results)} résultats", flush=True)
+                return results
+        except Exception:
+            pass
+        print(f"    [ERREUR JSON Claude] {e}", flush=True)
+        return []
+    except Exception as e:
+        print(f"    [ERREUR Claude] {e}", flush=True)
+        return []
 
 
 def call_gemini_batch(projects: list) -> list:
@@ -260,16 +331,22 @@ def main():
     parser = argparse.ArgumentParser(description="Géoloc AP via LLM (batch)")
     parser.add_argument('--limit', type=int, help=f"Nombre max d'AP (default: {PARETO_LIMIT})")
     parser.add_argument('--dry-run', action='store_true', help="Simulation")
+    parser.add_argument('--provider', choices=['claude', 'gemini'], default='gemini',
+                        help="LLM provider (default: gemini)")
     args = parser.parse_args()
-    
+
+    provider_label = f"Claude ({CLAUDE_MODEL})" if args.provider == 'claude' else f"Gemini ({GEMINI_MODEL})"
     print("=" * 60)
-    print("GÉOLOCALISATION AP - LLM Batch (20/req)")
+    print(f"GÉOLOCALISATION AP - {provider_label}")
     print("=" * 60)
     print(f"Timestamp: {datetime.now().isoformat()}")
     print()
-    
-    if not GEMINI_API_KEY and not args.dry_run:
-        print("ERREUR: Variable GOOGLE_API_KEY non définie")
+
+    if args.provider == 'claude' and not ANTHROPIC_API_KEY and not args.dry_run:
+        print("ERREUR: Variable ANTHROPIC_API_KEY non définie")
+        return
+    if args.provider == 'gemini' and not GEMINI_API_KEY and not args.dry_run:
+        print("ERREUR: Variable GOOGLE_API_KEY/GEMINI_API_KEY non définie")
         return
     
     cache = load_existing_cache()
@@ -303,14 +380,17 @@ def main():
     
     print("Démarrage...")
     print("-" * 40)
-    
+
+    call_fn = call_claude_batch if args.provider == 'claude' else call_gemini_batch
+    source_label = f"llm_{args.provider}"
+
     for i in range(0, len(to_process), BATCH_SIZE):
         batch = to_process[i:i+BATCH_SIZE]
         batch_num = (i // BATCH_SIZE) + 1
         total_batches = (len(to_process) + BATCH_SIZE - 1) // BATCH_SIZE
-        
-        print(f"  [Batch {batch_num}/{total_batches}] Appel API...", flush=True)
-        batch_results = call_gemini_batch(batch)
+
+        print(f"  [Batch {batch_num}/{total_batches}] Appel API ({args.provider})...", flush=True)
+        batch_results = call_fn(batch)
         
         # Mapper les résultats
         results_map = {r.get('ap_code'): r for r in batch_results if r.get('ap_code')}
@@ -327,7 +407,7 @@ def main():
                     'longitude': '',
                     'confiance': str(result.get('confiance', 0.5)),
                     'date_recherche': datetime.now().strftime('%Y-%m-%d'),
-                    'source': 'llm_gemini'
+                    'source': source_label
                 }
                 found += 1
             elif result:
