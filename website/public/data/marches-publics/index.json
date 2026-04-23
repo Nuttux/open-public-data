@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-02-16T14:13:07.723821",
-  "source": "OpenData Paris API (bootstrap direct)",
+  "generated_at": "2026-04-23T17:00:36.835017",
+  "source": "dbt marts (mart_marches_par_nature, mart_marches_fournisseurs)",
   "note": "Les montants sont des enveloppes pluriannuelles (plafonds contractuels), pas des dépenses annuelles.",
   "availableYears": [
     2024,
@@ -18,24 +18,24 @@
   ],
   "totalsByYear": {
     "2024": {
-      "nb_marches": 1407,
-      "enveloppe_max_totale": 2495665169.6699977
+      "nb_marches": 1833,
+      "enveloppe_max_totale": 5032761693.23
     },
     "2023": {
-      "nb_marches": 1335,
-      "enveloppe_max_totale": 2603719521.330001
+      "nb_marches": 1336,
+      "enveloppe_max_totale": 2606711521.3300004
     },
     "2022": {
       "nb_marches": 1281,
-      "enveloppe_max_totale": 3824590460.8399935
+      "enveloppe_max_totale": 3824590460.84
     },
     "2021": {
       "nb_marches": 1570,
-      "enveloppe_max_totale": 5483477436.48991
+      "enveloppe_max_totale": 5483477436.49
     },
     "2020": {
       "nb_marches": 1196,
-      "enveloppe_max_totale": 3282280032.529943
+      "enveloppe_max_totale": 3282280032.52999
     },
     "2019": {
       "nb_marches": 1338,
@@ -43,34 +43,38 @@
     },
     "2018": {
       "nb_marches": 1458,
-      "enveloppe_max_totale": 2836151932.3100047
+      "enveloppe_max_totale": 2836151932.31
     },
     "2017": {
       "nb_marches": 1698,
-      "enveloppe_max_totale": 3465550059.5099964
+      "enveloppe_max_totale": 3465550059.5100007
     },
     "2016": {
       "nb_marches": 1601,
-      "enveloppe_max_totale": 1916840484.300001
+      "enveloppe_max_totale": 1916840484.2999997
     },
     "2015": {
       "nb_marches": 1556,
-      "enveloppe_max_totale": 1538504362.6999986
+      "enveloppe_max_totale": 1538504362.6999998
     },
     "2014": {
       "nb_marches": 1483,
-      "enveloppe_max_totale": 1530498987.8500016
+      "enveloppe_max_totale": 1530498987.8500004
     },
     "2013": {
-      "nb_marches": 1714,
-      "enveloppe_max_totale": 1901084589.8700004
+      "nb_marches": 1713,
+      "enveloppe_max_totale": 1901057959.87
     }
   },
   "filters": {
     "natures": [
       "FOURNITURE",
+      "Fournitures",
+      "Marché",
       "SERVICES",
-      "TRAVAUX"
+      "Services",
+      "TRAVAUX",
+      "Travaux"
     ],
     "categories": [
       "Travaux d'entretien, préservation équipements publics",
@@ -90,27 +94,27 @@
       "Services de centres de vacances et de centres de loisirs",
       "AMOA BTP,  urbanisme et espace public",
       "Services annexes pour manifestations et évènements (hors rég",
+      "Fournitures courantes et services",
       "Travaux d'aménagement d'espaces verts",
-      "Service de qualification et d'insertion professionnelles",
       "Services de conseils et représentations juridiques",
+      "Service de qualification et d'insertion professionnelles",
       "Impression offset",
       "travaux de génie civil et ouvrages d'art",
       "Organisation et promotion des manifestations sportives",
       "Coordination sécurité et protection santé des travailleurs",
       "Services d'accueil à la petite enfance",
-      "entretien des espaces verts",
       "Etudes à caractère scientifique et technologique",
+      "entretien des espaces verts",
       "nettoyage vitre et locaux",
-      "Instruments, partitions, matériels musicaux (et maintenance)",
-      "Livres"
+      "Prestations intellectuelles"
     ],
     "perimetres": [
-      "M22 ASE",
-      "M4 TAM",
-      "M49 Assainissement",
+      "M57 Ville",
       "M57 Département",
       "M57 MGP",
-      "M57 Ville"
+      "M22 ASE",
+      "M4 TAM",
+      "M49 Assainissement"
     ]
   }
 }

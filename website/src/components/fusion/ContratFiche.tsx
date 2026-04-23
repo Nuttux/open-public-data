@@ -43,6 +43,38 @@ export default function ContratFiche({
     ? (contrat.dureeJours / 365).toFixed(1).replace(".", locale === "en" ? "." : ",")
     : "—";
 
+  // Enrichissement DECP — affichage conditionnel.
+  const decp = contrat.decp;
+  const showNotifie = Boolean(decp?.afficherDeuxMontants && decp?.montantNotifie != null && decp.montantNotifie > 0);
+  const notifie = showNotifie ? fmtEur(decp!.montantNotifie!) : null;
+
+  // Tags DECP (affichés en ligne sous l'objet, uniquement si ≠ null/vide).
+  type Tag = { label: string; title?: string };
+  const decpTags: Tag[] = [];
+  if (decp?.ccag) {
+    decpTags.push({ label: decp.ccag, title: "Type de prestation (CCAG)" });
+  }
+  if (decp?.cpvFamille && decp.cpvFamille !== decp.ccag) {
+    decpTags.push({ label: decp.cpvFamille, title: "Catégorie standardisée (CPV)" });
+  }
+  if (decp?.lieuExecution) {
+    decpTags.push({ label: `📍 ${decp.lieuExecution}`, title: "Lieu d'exécution déclaré" });
+  }
+  if (decp?.offresRecues != null && decp.offresRecues > 0) {
+    decpTags.push({
+      label: decp.offresRecues === 1 ? "1 seule offre reçue" : `${decp.offresRecues} offres reçues`,
+      title: decp.offresRecues === 1
+        ? "Un seul candidat a répondu à l'appel d'offres — signal de faible concurrence"
+        : "Nombre d'offres reçues par la Ville lors de l'appel d'offres",
+    });
+  }
+  if (decp?.hasConsiderationSociale) {
+    decpTags.push({ label: "Clauses sociales", title: "Le marché contient des clauses sociales (insertion, etc.)" });
+  }
+  if (decp?.hasConsiderationEnvironnementale) {
+    decpTags.push({ label: "Clauses environnementales", title: "Le marché contient des clauses environnementales" });
+  }
+
   return (
     <div>
       {vulgarization ? (
@@ -76,12 +108,33 @@ export default function ContratFiche({
 
       <div className="fx-fiche-kpis">
         <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">{t("fx.fiche.contrat.enveloppe")}</div>
+          <div className="fx-fiche-kpi-label">
+            {showNotifie ? (
+              <Tip label="Montant maximum autorisé par le contrat (plafond). Pour un accord-cadre, c'est la somme maximum pouvant être commandée sur toute la durée — pas nécessairement ce qui sera réellement dépensé.">
+                Plafond autorisé
+              </Tip>
+            ) : (
+              t("fx.fiche.contrat.enveloppe")
+            )}
+          </div>
           <div className="fx-fiche-kpi-value tnum">
             {vMax}
             <span className="u">{uMax}</span>
           </div>
         </div>
+        {showNotifie && notifie && (
+          <div className="fx-fiche-kpi">
+            <div className="fx-fiche-kpi-label">
+              <Tip label="Montant déclaré par la Ville à l'État (DECP) lors de la signature du contrat. Souvent plus réaliste que le plafond pour les accords-cadres, mais ce n'est pas le cumul réel des commandes (non-public au niveau du contrat individuel).">
+                Montant notifié
+              </Tip>
+            </div>
+            <div className="fx-fiche-kpi-value tnum" style={{ color: "var(--bleu)" }}>
+              {notifie.v}
+              <span className="u">{notifie.u}</span>
+            </div>
+          </div>
+        )}
         <div className="fx-fiche-kpi">
           <div className="fx-fiche-kpi-label">{t("fx.fiche.contrat.duree")}</div>
           <div className="fx-fiche-kpi-value tnum">
@@ -102,6 +155,30 @@ export default function ContratFiche({
           </div>
         </div>
       </div>
+
+      {decpTags.length > 0 && (
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 6, margin: "12px 0 0" }}>
+          {decpTags.map((tg) => (
+            <span
+              key={tg.label}
+              title={tg.title}
+              style={{
+                fontFamily: "var(--f-mono)",
+                fontSize: 11,
+                letterSpacing: ".02em",
+                padding: "3px 8px",
+                background: "rgba(59, 99, 173, 0.06)",
+                border: "1px solid rgba(59, 99, 173, 0.25)",
+                color: "var(--ink-2)",
+                borderRadius: 2,
+                cursor: tg.title ? "help" : "default",
+              }}
+            >
+              {tg.label}
+            </span>
+          ))}
+        </div>
+      )}
 
       <section className="fx-fiche-section">
         <div className="fx-fiche-h">{t("fx.fiche.contrat.objet")}</div>

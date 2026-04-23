@@ -19,6 +19,8 @@ import StressTestTeaser from "@/components/fusion/StressTestTeaser";
 import CityComparator from "@/components/fusion/CityComparator";
 import HorsBilanMap from "@/components/fusion/HorsBilanMap";
 import TaPartAToi from "@/components/fusion/TaPartAToi";
+import InteractiveWrap from "@/components/fusion/InteractiveWrap";
+import ChartSource from "@/components/fusion/ChartSource";
 import { slugifyBailleur } from "@/lib/projet-utils";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import type { PatrimoineData, PatrimoineStructure, HorsBilanData, CityDebtSnapshot } from "@/lib/fusion-data";
@@ -204,13 +206,15 @@ export default function DettePatrimoineClient({
             }
             subtitle={t("fx.tp.section.subtitle")}
           />
-          <TaPartAToi
-            dette={d.detteFinanciere}
-            fondsPropres={d.fondsPropres}
-            actif={d.actif}
-            horsBilan={horsBilan?.totals.capital_restant ?? 0}
-            tauxMoyen={structure?.structure_dette.taux.taux_fixe_moyen_pondere_pct ?? 2.4}
-          />
+          <InteractiveWrap>
+            <TaPartAToi
+              dette={d.detteFinanciere}
+              fondsPropres={d.fondsPropres}
+              actif={d.actif}
+              horsBilan={horsBilan?.totals.capital_restant ?? 0}
+              tauxMoyen={structure?.structure_dette.taux.taux_fixe_moyen_pondere_pct ?? 2.4}
+            />
+          </InteractiveWrap>
         </div>
       </section>
 
@@ -228,12 +232,14 @@ export default function DettePatrimoineClient({
             }
             subtitle={t("fx.det.stress.sub")}
           />
-          <StressTestTeaser
-            dette={d.detteFinanciere}
-            capaciteBaseline={d.capaciteDesendettement}
-            tauxBaseline={structure?.structure_dette.taux.taux_fixe_moyen_pondere_pct ?? 2.4}
-            year={d.year}
-          />
+          <InteractiveWrap>
+            <StressTestTeaser
+              dette={d.detteFinanciere}
+              capaciteBaseline={d.capaciteDesendettement}
+              tauxBaseline={structure?.structure_dette.taux.taux_fixe_moyen_pondere_pct ?? 2.4}
+              year={d.year}
+            />
+          </InteractiveWrap>
         </div>
       </section>
 
@@ -261,6 +267,11 @@ export default function DettePatrimoineClient({
           ) : (
             <p className="fx-note">{t("fx.det.s03.actif")} — indisponible.</p>
           )}
+          <ChartSource
+            source={<>Ville de Paris · Compte administratif M57 {d.year} (bilan consolidé)</>}
+            dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
+            methodAnchor="dette-patrimoine"
+          />
         </div>
       </section>
 
@@ -588,49 +599,15 @@ export default function DettePatrimoineClient({
         </div>
       </section>
 
-      <section className="fx-section" id="sec-sources">
+      <section className="fx-footer-sources" id="sec-sources">
         <div className="fx-wrap">
-          <SectionHead
-            number="09"
-            kind={t("fx.det.src.kind")}
-            title={
-              <>
-                {t("fx.s.verifiable")} <em>{t("fx.s.line_by_line")}</em>
-              </>
-            }
-          />
-          <div className="fx-sources">
-            <div>
-              <div className="n">{t("fx.det.src.c1.n")}</div>
-              <h3>
-                {t("fx.det.src.c1.h.prefix")}{d.year}{t("fx.det.src.c1.h.open")}
-                <Tip label={t("fx.det.src.c1.m57.tip")}>M57</Tip>
-                {t("fx.det.src.c1.h.close")}
-              </h3>
-              <p>{t("fx.det.src.c1.p")}</p>
-              <a
-                href="https://opendata.paris.fr/explore/dataset/bilan-comptable/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {t("fx.s.opendata")}
-              </a>
-            </div>
-            <div>
-              <div className="n">{t("fx.det.src.c2.n")}</div>
-              <h3>{t("fx.det.src.c2.h")}</h3>
-              <p>{t("fx.det.src.c2.p")}</p>
-              <a href="/methode?tool=dette-patrimoine#outils">{t("fx.s.methode_lien")}</a>
-            </div>
-            <div>
-              <div className="n">{t("fx.det.src.c3.n")}</div>
-              <h3>{t("fx.det.src.c3.h")}</h3>
-              <p>{t("fx.det.src.c3.p")}</p>
-              <a href="https://github.com/AbstractsMachine" target="_blank" rel="noopener noreferrer">
-                {t("fx.s.github")}
-              </a>
-            </div>
+          <div className="fx-footer-sources-head">
+            <span className="fx-footer-sources-label">{t("fx.s.sources_exports")}</span>
+            <a href="/methode#dette-patrimoine" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</a>
           </div>
+          <p className="fx-footer-sources-meta">
+            <b>Source</b> : Ville de Paris — Bilan comptable M57 + Rapport d'Orientation Budgétaire (opendata.paris.fr) <span className="sep">·</span> <b>Couverture</b> : 2019-2024.
+          </p>
           <ExportRow
             items={[
               {

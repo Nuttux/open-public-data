@@ -30,6 +30,7 @@ type ToolMethod = {
   title: string;
   route: string;
   source: { name: string; dataset: string; coverage: string; href: string; hrefLabel: string };
+  enClair: ReactNode;
   objectif: string;
   pipeline: { label: string; detail: ReactNode }[];
   choix: string[];
@@ -62,6 +63,13 @@ const TOOLS_FR: ToolMethod[] = [
     id: "budget", number: "04", kicker: "Budget",
     title: "Budget principal — voté & exécuté", route: "/budget",
     source: { name: "Comptes administratifs M57 + budgets primitifs", dataset: "comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement", coverage: "2019-2024 (exécuté) · 2019-2026 (voté)", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/", hrefLabel: "opendata.paris.fr" },
+    enClair: (
+      <>
+        <p>Chaque année la Ville vote un budget — ce qu'elle compte encaisser et dépenser. En fin d'exercice, elle publie ce qu'elle a vraiment fait : le compte administratif. Les deux documents sont publics, mais rédigés dans un plan comptable (« M57 ») qui parle aux trésoriers plus qu'aux habitants.</p>
+        <p>On reprend ces chiffres tels quels — sans les recalculer — et on traduit les intitulés techniques en français courant : « Charges à caractère général » devient « Achats & charges courantes », par exemple. On sépare toujours le <b>voté</b> (l'intention) et l'<b>exécuté</b> (ce qui est vraiment sorti du compte) pour que tu puisses comparer les deux.</p>
+        <p><b>Ce que ça ne montre pas :</b> les budgets annexes (eau, assainissement) sont gérés à part et ne sont pas inclus. Le compte définitif d'une année N n'est consolidé que vers juin N+1 — avant ça, les chiffres sont provisoires.</p>
+      </>
+    ),
     objectif: "Rendre lisible en un coup d'œil ce qui entre et ce qui sort du budget de la Ville, sur un exercice, sous forme de Sankey.",
     pipeline: [
       { label: "Sync", detail: <>7 datasets OpenData → <code>BigQuery raw</code></> },
@@ -84,13 +92,19 @@ const TOOLS_FR: ToolMethod[] = [
     id: "subventions", number: "05", kicker: "Subventions",
     title: "Subventions versées aux bénéficiaires", route: "/qui-recoit",
     source: { name: "Subventions versées — annexes CA", dataset: "subventions-versees-annexe-compte-administratif-a-partir-de-2018", coverage: "2018-2024 · ~53 000 lignes", href: "https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/", hrefLabel: "opendata.paris.fr" },
+    enClair: (
+      <>
+        <p>La Ville verse chaque année des subventions à des associations, fondations, opérateurs, bailleurs sociaux. Elle est obligée par la loi de publier la liste en annexe de ses comptes : qui reçoit quoi, pour quel montant, et pour faire quoi (l'« objet » de la subvention).</p>
+        <p>On récupère cette liste (~53 000 lignes sur 2018-2024), on réconcilie les bénéficiaires qui apparaissent sous plusieurs orthographes, et on va chercher dans le registre des associations et le fichier SIRENE pour savoir à qui on a vraiment affaire. Pour rendre le paysage lisible, on classe chaque ligne par thématique (Social, Logement, Culture, Sport…) via un modèle de langage ; l'objet brut et le SIRET restent visibles pour vérification ligne par ligne.</p>
+        <p><b>Ce que ça ne montre pas :</b> on ne géolocalise pas les subventions. Une association peut avoir son siège dans le 9ᵉ et mener ses actions dans le 18ᵉ — l'adresse du siège ne dit rien d'où l'argent atterrit. Les subventions en nature (mise à disposition de locaux, de matériel) sont signalées mais pas chiffrées.</p>
+      </>
+    ),
     objectif: "Savoir qui reçoit l'argent public en subvention, pour quoi, et dans quelle proportion — du CASVP aux plus petites associations.",
     pipeline: [
       { label: "Sync + jointure", detail: <>Dataset subventions + dataset associations (SIRET, objet)</> },
       { label: "Normalisation", detail: <>Clé <code>beneficiaire_normalise</code> quand le SIRET est absent</> },
       { label: "LLM thématique", detail: <>Gemini 3 Flash / Claude Opus (selon tâche) sur top 500 cumulés → seed cache</> },
       { label: "Type organisme", detail: <>Colonnes <code>ode_*</code> (public / asso / entreprise / PP)</> },
-      { label: "Revue humaine", detail: <>Contrôle manuel systématique &gt; 1 M€</> },
       { label: "Marts", detail: <><code>mart_subventions_treemap</code> + <code>mart_subventions_beneficiaires</code></> },
     ],
     choix: [
@@ -108,6 +122,13 @@ const TOOLS_FR: ToolMethod[] = [
     id: "marches-publics", number: "06", kicker: "Marchés publics",
     title: "Marchés notifiés (commande publique)", route: "/marches-publics",
     source: { name: "Marchés publics de la Ville de Paris", dataset: "liste-des-marches-de-la-collectivite-parisienne", coverage: "2013-2024 · 17 639 contrats", href: "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/", hrefLabel: "opendata.paris.fr" },
+    enClair: (
+      <>
+        <p>Quand la Ville achète quelque chose à une entreprise — construction d'une école, collecte des déchets, fournitures de bureau, maintenance informatique — elle publie un avis de marché : qui a été choisi, pour combien, pour quoi. Ces données s'appellent les DECP (Données Essentielles de la Commande Publique) et sont obligatoires depuis 2016.</p>
+        <p>On reprend tous les marchés notifiés par la Ville depuis 2013, on reclasse les milliers d'intitulés techniques par grandes catégories (travaux, services, fournitures, énergie…) pour voir où part l'enveloppe, et on agrège par titulaire pour voir quelles entreprises captent le plus de contrats en cumulé.</p>
+        <p><b>Ce que ça ne montre pas :</b> le montant publié est une <b>enveloppe maximale contractuelle</b>, pas toujours ce qui est finalement dépensé — 97 % des marchés sont des accords-cadres pluriannuels dont la consommation réelle est souvent bien inférieure au plafond. Les avenants en cours d'exécution sont mal tracés dans le fichier source. Les marchés en dessous de 40 k€ ne sont pas obligatoirement publiés.</p>
+      </>
+    ),
     objectif: "Voir qui la Ville paie pour travaux, fournitures et services, quel volume, et quels titulaires concentrent les contrats.",
     pipeline: [
       { label: "Sync", detail: <>Dataset marchés → <code>BigQuery raw</code></> },
@@ -132,6 +153,13 @@ const TOOLS_FR: ToolMethod[] = [
     id: "investissements", number: "07", kicker: "Investissements",
     title: "Projets d'investissement (AP)", route: "/investissements",
     source: { name: "Annexes AP du CA + PDF « Investissements Localisés »", dataset: "comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de + PDF cdn.paris.fr", coverage: "Dataset gelé 2018-2022 · PDF IL 2018-2026", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/", hrefLabel: "opendata.paris.fr" },
+    enClair: (
+      <>
+        <p>L'investissement, c'est ce que la Ville dépense pour construire, rénover, équiper : une école, une piscine, une crèche, refaire une rue. Contrairement au fonctionnement (salaires, énergie, entretien…), ces dépenses laissent une trace physique dans la ville et s'amortissent sur des années.</p>
+        <p>La Ville publie chaque année en annexe de ses comptes la liste des opérations d'investissement localisées — typiquement un PDF de plusieurs centaines de pages avec les montants votés projet par projet. On extrait ces données automatiquement, on les géolocalise quand c'est possible (adresse, arrondissement), et on les rattache à un chapitre budgétaire pour savoir à quelle politique publique chaque projet appartient.</p>
+        <p><b>Ce que ça ne montre pas :</b> les chiffres sont des <b>autorisations de programme</b> — l'argent voté pour un projet, pas forcément ce qui a été payé (les paiements peuvent s'étaler sur plusieurs années). Environ 20-30 % des projets n'ont pas de localisation précise car ils sont « transverses » (informatique municipale, matériel partagé, études multi-sites). Et le surcoût éventuel en fin de chantier n'est pas systématiquement republié.</p>
+      </>
+    ),
     objectif: "Cartographier, quand c'est possible, les projets d'investissement de la Ville avec leur montant et leur statut.",
     pipeline: [
       { label: "Dataset AP", detail: <>2018-2022 via OpenData (~7 000 projets)</> },
@@ -157,6 +185,14 @@ const TOOLS_FR: ToolMethod[] = [
     id: "logement-social", number: "08", kicker: "Logement social",
     title: "Logement social (SRU, opérations, parc)", route: "/logement-social",
     source: { name: "Inventaire SRU (DDT) + logements sociaux financés", dataset: "logements-sociaux-finances-a-paris + inventaire SRU", coverage: "2001-2024 (financés) · SRU année en cours", href: "https://www.paris.fr/logement-social", hrefLabel: "paris.fr" },
+    enClair: (
+      <>
+        <p>Deux questions sont traitées ensemble sur cette page, parce qu'elles se répondent.</p>
+        <p><b>Où en est Paris sur la loi SRU ?</b> La loi impose aux grandes villes d'avoir au moins 25 % de logements sociaux dans leur parc. On prend les chiffres officiels de l'inventaire SRU publié par le ministère, arrondissement par arrondissement, pour voir qui atteint la cible et qui en est loin. On ajoute les volumes de logements sociaux financés chaque année par la Ville, pour voir si le rythme de production suit.</p>
+        <p><b>Quel délai d'attente pour obtenir un logement social ?</b> La réponse officielle — 4,2 ans en médiane à Paris en 2024 — cache d'énormes écarts selon la taille du logement demandé, l'arrondissement, la situation du ménage, le niveau de revenus. Le simulateur donne un ordre de grandeur à partir de multiplicateurs calibrés sur les statistiques publiques disponibles. Ce n'est pas une estimation officielle DRIHL : c'est un outil pour se faire une idée, pas une promesse.</p>
+        <p><b>Ce que ça ne montre pas :</b> on n'a pas de heatmap de tension (nombre de demandes / attributions par arrondissement) parce que ce jeu n'est pas publié en open data. Le profil socio-économique des bénéficiaires effectifs n'est pas non plus ouvert.</p>
+      </>
+    ),
     objectif: "Montrer où en est Paris sur l'objectif SRU, combien d'opérations sont financées, et quels bailleurs portent le parc.",
     pipeline: [
       { label: "Sync", detail: <>Dataset logements sociaux financés → <code>BigQuery raw</code></> },
@@ -179,6 +215,13 @@ const TOOLS_FR: ToolMethod[] = [
     id: "dette-patrimoine", number: "09", kicker: "Dette & patrimoine",
     title: "Bilan comptable : dette, actif, fonds propres", route: "/dette-patrimoine",
     source: { name: "Bilan comptable M57 (compte de gestion)", dataset: "bilan-comptable", coverage: "2019-2024", href: "https://opendata.paris.fr/explore/dataset/bilan-comptable/", hrefLabel: "opendata.paris.fr" },
+    enClair: (
+      <>
+        <p>Comme une entreprise, une collectivité a un <b>bilan</b> : à gauche ce qu'elle possède (bâtiments, terrains, équipements, liquidités), à droite ce qu'elle doit (dette bancaire et obligataire, provisions pour charges futures). La différence entre les deux, c'est le <b>patrimoine net</b> — ce qui resterait à la Ville si elle soldait toutes ses dettes demain matin.</p>
+        <p>On prend le bilan tel qu'il est publié chaque année dans le compte administratif, et on va chercher en complément dans le <i>Rapport d'Orientation Budgétaire</i> des informations qui ne sont pas publiées en open data ligne par ligne : le taux moyen pondéré de la dette, l'échéancier de remboursement, la répartition entre taux fixe et taux variable. Ce sont ces chiffres qui permettent de calculer la fameuse capacité de désendettement (combien d'années faudrait-il pour rembourser la dette si on y consacrait toute l'épargne brute).</p>
+        <p><b>Ce que ça ne montre pas :</b> le patrimoine est évalué à sa <b>valeur comptable historique</b> (coût d'acquisition moins amortissement), pas à la valeur de marché. Certains actifs majeurs — monuments classés, œuvres d'art, terrains anciens — sont structurellement sous-évalués, parfois inscrits à 1 € symbolique. La dette ici est celle du budget principal : les garanties d'emprunt aux bailleurs sociaux (le « hors-bilan ») sont mentionnées mais pas additionnées.</p>
+      </>
+    ),
     objectif: "Sortir du seul chiffre de la dette et replacer la Ville dans son bilan complet : ce qu'elle doit, ce qu'elle possède, ses fonds propres.",
     pipeline: [
       { label: "Upload", detail: <><code>upload_bilan_comptable.py</code> → <code>BigQuery raw</code></> },
@@ -225,7 +268,7 @@ const GLOSSARY_FR: { term: string; def: string }[] = [
 
 const FAQ_FR: { q: string; a: string }[] = [
   { q: "Pourquoi votre chiffre diffère-t-il parfois de celui annoncé par la mairie ?", a: "Trois causes : (1) périmètre — on publie le budget principal, la mairie peut communiquer un « groupe Ville » qui inclut les satellites ; (2) timing — notre chiffre vient du dernier dataset ouvert ; (3) retraitement — on renomme et regroupe les chapitres, mais les agrégats sont identiques. Si l'écart persiste, dites-le-nous." },
-  { q: "Qu'est-ce que le LLM fait exactement dans votre pipeline ?", a: "Plusieurs tâches ciblées : classifier la thématique des subventions, géolocaliser des projets d'investissement, vérifier l'activité des bénéficiaires par grounded search, vulgariser les intitulés techniques de marchés. Modèles : Gemini 3 Flash et Claude Opus selon la tâche. Il ne calcule jamais un montant. Il tourne hors dbt, ses résultats sont mis en cache dans des seeds CSV publics, et on repasse manuellement sur les décisions > 1 M€." },
+  { q: "Qu'est-ce que le LLM fait exactement dans votre pipeline ?", a: "Plusieurs tâches ciblées : classifier la thématique des subventions, géolocaliser des projets d'investissement, vérifier l'activité des bénéficiaires par grounded search, vulgariser les intitulés techniques de marchés. Modèles : Gemini 3 Flash et Claude Opus selon la tâche. Il ne calcule jamais un montant. Il tourne hors dbt, ses résultats sont mis en cache dans des seeds CSV publics pour être inspectables et reproductibles ; l'objet brut et le SIRET restent affichés pour vérification." },
   { q: "Comment évitez-vous le double comptage entre budget, subventions et marchés ?", a: "Chaque entité est modélisée séparément, jamais UNIONée aux autres. Le budget contient une ligne agrégée de subventions ; notre page « Subventions » détaille cette même ligne côté bénéficiaires. On n'additionne pas les deux. Documenté dans docs/architecture-modelling.md." },
   { q: "Vos totaux sont-ils identiques à ceux du site de la Ville ?", a: "Oui pour les agrégats issus d'un même dataset M57 : notre pipeline ne change pas les montants, il regroupe et renomme. Les écarts viennent des cas décrits plus haut (périmètre, timing, nomenclature)." },
   { q: "Pourquoi certaines années sont-elles absentes ou provisoires ?", a: "Chaque source a sa couverture documentée dans le tableau de couverture plus haut. L'exemple le plus visible : le dataset AP OpenData est gelé depuis 2022, donc pour 2023-2024 on bascule sur les PDF « Investissements Localisés ». On préfère afficher un manque que combler au doigt." },
@@ -249,6 +292,13 @@ const TOOLS_EN: ToolMethod[] = [
     id: "budget", number: "04", kicker: "Budget",
     title: "Main budget — voted & executed", route: "/budget",
     source: { name: "Administrative accounts M57 + draft budgets", dataset: "comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement", coverage: "2019-2024 (executed) · 2019-2026 (voted)", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/", hrefLabel: "opendata.paris.fr" },
+    enClair: (
+      <>
+        <p>Every year the City votes a budget — what it plans to collect and spend. At year-end, it publishes what actually happened: the administrative account. Both are public, but written in an accounting format (« M57 ») designed for treasurers, not residents.</p>
+        <p>We take these figures as-is — without recomputing them — and translate the technical labels into plain English: « General operating charges » becomes « Purchases &amp; current charges », for instance. We always separate the <b>voted</b> budget (intent) from the <b>executed</b> budget (what really left the account) so you can compare the two.</p>
+        <p><b>What this doesn't show:</b> annex budgets (water, sanitation) are managed separately and aren't included. A year's final account is only consolidated around June of the following year — before that, figures are provisional.</p>
+      </>
+    ),
     objectif: "Make it readable at a glance what flows in and out of the City's budget, for a given fiscal year, as a Sankey diagram.",
     pipeline: [
       { label: "Sync", detail: <>7 OpenData datasets → <code>BigQuery raw</code></> },
@@ -271,13 +321,19 @@ const TOOLS_EN: ToolMethod[] = [
     id: "subventions", number: "05", kicker: "Grants",
     title: "Grants paid to recipients", route: "/qui-recoit",
     source: { name: "Grants paid — CA appendices", dataset: "subventions-versees-annexe-compte-administratif-a-partir-de-2018", coverage: "2018-2024 · ~53,000 lines", href: "https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/", hrefLabel: "opendata.paris.fr" },
+    enClair: (
+      <>
+        <p>The City pays grants every year to non-profits, foundations, operators, social landlords. By law it must publish the list as an appendix to its accounts: who receives what, how much, and for what purpose.</p>
+        <p>We retrieve that list (~53,000 rows over 2018-2024), reconcile recipients that appear under several spellings, and cross-check with the national non-profit registry and the SIRENE business file to know who we're really dealing with. To make the landscape readable we classify each line by topic (Social, Housing, Culture, Sport…) via a language model ; the raw purpose and SIRET remain visible for line-by-line verification.</p>
+        <p><b>What this doesn't show:</b> we do not geolocate grants. A non-profit may have its registered office in the 9th and run its programs in the 18th — the office address tells you nothing about where the money lands. In-kind grants (premises, equipment) are flagged but not valued.</p>
+      </>
+    ),
     objectif: "Know who receives public money in grants, for what, and in what proportion — from CASVP to the smallest associations.",
     pipeline: [
       { label: "Sync + join", detail: <>Grants dataset + associations dataset (SIRET, purpose)</> },
       { label: "Normalisation", detail: <>Key <code>beneficiaire_normalise</code> when SIRET absent</> },
       { label: "LLM theme", detail: <>Gemini 3 Flash / Claude Opus (per task) on top 500 cumulative → seed cache</> },
       { label: "Org type", detail: <>Columns <code>ode_*</code> (public / non-profit / company / individual)</> },
-      { label: "Human review", detail: <>Systematic manual check &gt; €1M</> },
       { label: "Marts", detail: <><code>mart_subventions_treemap</code> + <code>mart_subventions_beneficiaires</code></> },
     ],
     choix: [
@@ -295,6 +351,13 @@ const TOOLS_EN: ToolMethod[] = [
     id: "marches-publics", number: "06", kicker: "Public contracts",
     title: "Awarded contracts (public procurement)", route: "/marches-publics",
     source: { name: "Public contracts of the City of Paris", dataset: "liste-des-marches-de-la-collectivite-parisienne", coverage: "2013-2024 · 17,639 contracts", href: "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/", hrefLabel: "opendata.paris.fr" },
+    enClair: (
+      <>
+        <p>When the City buys something from a company — building a school, collecting waste, office supplies, IT maintenance — it publishes a procurement notice: who was selected, for how much, for what. This data is called DECP (Essential Public Procurement Data) and has been mandatory since 2016.</p>
+        <p>We take every contract notified by the City since 2013, reclassify the thousands of technical labels into broad categories (works, services, supplies, energy…) to see where the envelope goes, and aggregate by contractor to spot which companies capture the most cumulative contracts.</p>
+        <p><b>What this doesn't show:</b> the published amount is a <b>maximum contractual ceiling</b>, not always what is ultimately spent — 97% of contracts are multi-year framework agreements whose actual consumption is often much lower than the cap. Amendments during execution are poorly tracked in the source file. Contracts below €40k are not mandatorily published.</p>
+      </>
+    ),
     objectif: "See who the City pays for works, supplies and services, what volume, and which contractors concentrate the contracts.",
     pipeline: [
       { label: "Sync", detail: <>Contracts dataset → <code>BigQuery raw</code></> },
@@ -319,6 +382,13 @@ const TOOLS_EN: ToolMethod[] = [
     id: "investissements", number: "07", kicker: "Investments",
     title: "Investment projects (AP)", route: "/investissements",
     source: { name: "CA AP appendices + 'Localised Investments' PDFs", dataset: "comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de + PDF cdn.paris.fr", coverage: "Dataset frozen 2018-2022 · PDF IL 2018-2026", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/", hrefLabel: "opendata.paris.fr" },
+    enClair: (
+      <>
+        <p>Investment is what the City spends to build, renovate, equip — a school, a swimming pool, a nursery, repaving a street. Unlike operating spend (salaries, energy, maintenance), these expenses leave a physical trace in the city and are amortised over years.</p>
+        <p>Each year the City publishes as an appendix to its accounts the list of localised investment operations — typically a PDF several hundred pages long with voted amounts per project. We extract that data automatically, geolocate it when possible (address, district), and link each project to a budget chapter so you can tell which public policy it belongs to.</p>
+        <p><b>What this doesn't show:</b> the figures are <b>programme authorisations</b> — money voted for a project, not necessarily paid (payments can be staggered over several years). Around 20-30% of projects lack a precise location because they are « transverse » (municipal IT, shared equipment, multi-site studies). And any end-of-project cost overrun isn't systematically republished.</p>
+      </>
+    ),
     objectif: "Map, where possible, the City's investment projects with their amounts and status.",
     pipeline: [
       { label: "AP dataset", detail: <>2018-2022 via OpenData (~7,000 projects)</> },
@@ -344,6 +414,14 @@ const TOOLS_EN: ToolMethod[] = [
     id: "logement-social", number: "08", kicker: "Social housing",
     title: "Social housing (SRU, operations, stock)", route: "/logement-social",
     source: { name: "SRU inventory (DDT) + funded social housing", dataset: "logements-sociaux-finances-a-paris + SRU inventory", coverage: "2001-2024 (funded) · SRU current year", href: "https://www.paris.fr/logement-social", hrefLabel: "paris.fr" },
+    enClair: (
+      <>
+        <p>Two questions are treated together on this page, because they answer each other.</p>
+        <p><b>Where does Paris stand on the SRU law?</b> The law requires major French cities to have at least 25% social housing in their stock. We use the official SRU inventory published by the ministry, district by district, to see who hits the target and who is far from it. We add the yearly volumes of social housing funded by the City to check whether the production pace keeps up.</p>
+        <p><b>How long is the wait for social housing?</b> The official answer — 4.2 years median in Paris in 2024 — hides huge gaps by flat size, district, household situation, income bracket. The simulator produces an order of magnitude from multipliers calibrated on available public statistics. It is not an official DRIHL estimate: it's a tool to form intuition, not a promise.</p>
+        <p><b>What this doesn't show:</b> we have no pressure heatmap (applications / allocations by district) because that dataset is not open. The socio-economic profile of actual beneficiaries is also not open.</p>
+      </>
+    ),
     objectif: "Show where Paris stands on the SRU target, how many operations are funded, and which landlords carry the stock.",
     pipeline: [
       { label: "Sync", detail: <>Funded social housing dataset → <code>BigQuery raw</code></> },
@@ -366,6 +444,13 @@ const TOOLS_EN: ToolMethod[] = [
     id: "dette-patrimoine", number: "09", kicker: "Debt & assets",
     title: "Balance sheet: debt, assets, equity", route: "/dette-patrimoine",
     source: { name: "M57 accounting balance sheet (management account)", dataset: "bilan-comptable", coverage: "2019-2024", href: "https://opendata.paris.fr/explore/dataset/bilan-comptable/", hrefLabel: "opendata.paris.fr" },
+    enClair: (
+      <>
+        <p>Like a company, a local authority has a <b>balance sheet</b>: on the left, what it owns (buildings, land, equipment, cash); on the right, what it owes (bank and bond debt, provisions for future charges). The difference between the two is <b>net equity</b> — what would remain to the City if it settled all its debts tomorrow.</p>
+        <p>We use the balance sheet as published each year in the administrative account, and we cross-reference the <i>Budget Orientation Report</i> for information that isn't published line by line as open data: the debt's weighted average rate, the repayment schedule, the fixed vs variable split. These figures are what make the much-cited « debt-repayment capacity » computable (how many years would it take to repay the debt if all gross savings went to it).</p>
+        <p><b>What this doesn't show:</b> the balance sheet values assets at <b>historical accounting cost</b> (acquisition price minus depreciation), not market value. Some major assets — listed monuments, artworks, old plots — are structurally undervalued, sometimes booked at €1 symbolic. The debt here is that of the main budget: loan guarantees to social landlords (« off-balance-sheet ») are mentioned but not added.</p>
+      </>
+    ),
     objectif: "Go beyond the single debt figure and place the City within its full balance sheet: what it owes, what it owns, its equity.",
     pipeline: [
       { label: "Upload", detail: <><code>upload_bilan_comptable.py</code> → <code>BigQuery raw</code></> },
@@ -412,7 +497,7 @@ const GLOSSARY_EN: { term: string; def: string }[] = [
 
 const FAQ_EN: { q: string; a: string }[] = [
   { q: "Why does your figure sometimes differ from the one announced by the City?", a: "Three reasons: (1) scope — we publish the main budget; the City may communicate a 'City group' that includes subsidiaries; (2) timing — our figure comes from the latest open dataset; (3) reprocessing — we rename and regroup chapters, but aggregates are identical. If the gap persists, let us know." },
-  { q: "What exactly does the LLM do in your pipeline?", a: "Several targeted tasks: classify the theme of grants, geolocate investment projects, verify recipient activity via grounded search, vulgarise technical contract labels. Models: Gemini 3 Flash and Claude Opus depending on the task. It never calculates an amount. It runs outside dbt, results are cached in public CSV seeds, and we manually review decisions > €1M." },
+  { q: "What exactly does the LLM do in your pipeline?", a: "Several targeted tasks: classify the theme of grants, geolocate investment projects, verify recipient activity via grounded search, vulgarise technical contract labels. Models: Gemini 3 Flash and Claude Opus depending on the task. It never calculates an amount. It runs outside dbt, results are cached in public CSV seeds so they are inspectable and reproducible; the raw purpose and SIRET remain displayed for verification." },
   { q: "How do you avoid double-counting between budget, grants and contracts?", a: "Each entity is modelled separately, never UNIONed with others. The budget contains an aggregated grants line; our Grants page details that same line from the recipients' side. We don't add them together. Documented in docs/architecture-modelling.md." },
   { q: "Are your totals identical to those on the City's website?", a: "Yes for aggregates from the same M57 dataset: our pipeline doesn't change amounts, it regroups and renames. Differences come from the cases described above (scope, timing, nomenclature)." },
   { q: "Why are some years absent or provisional?", a: "Each source has its coverage documented in the coverage table above. The most visible example: the AP OpenData dataset has been frozen since 2022, so for 2023-2024 we switch to the 'Localised Investments' PDFs. We prefer to show a gap rather than fill it with guesswork." },
@@ -489,13 +574,26 @@ export default function MethodeClient() {
   const [activeToolId, setActiveToolId] = useState<string>(TOOLS[0]?.id ?? "budget");
   const activeTool = TOOLS.find((t) => t.id === activeToolId) ?? TOOLS[0];
 
-  // Deep-link : /methode?tool=<id>#outils → pré-sélectionne le tab demandé.
+  // Deep-link : /methode?tool=<id>#outils OR /methode#<tool-id> → pré-sélectionne le tab + scroll.
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const toolParam = params.get("tool");
-    if (toolParam && TOOLS.some((tl) => tl.id === toolParam)) {
-      setActiveToolId(toolParam);
-    }
+    const applyFromLocation = () => {
+      const params = new URLSearchParams(window.location.search);
+      const toolParam = params.get("tool");
+      const hashRaw = window.location.hash.replace(/^#/, "");
+      const fromHash = TOOLS.some((tl) => tl.id === hashRaw) ? hashRaw : null;
+      const pick = (toolParam && TOOLS.some((tl) => tl.id === toolParam)) ? toolParam : fromHash;
+      if (pick) {
+        setActiveToolId(pick);
+        if (fromHash) {
+          requestAnimationFrame(() => {
+            document.getElementById("outils")?.scrollIntoView({ behavior: "smooth", block: "start" });
+          });
+        }
+      }
+    };
+    applyFromLocation();
+    window.addEventListener("hashchange", applyFromLocation);
+    return () => window.removeEventListener("hashchange", applyFromLocation);
   }, [TOOLS]);
 
   const years: number[] = [];
@@ -815,51 +913,68 @@ export default function MethodeClient() {
                 <Link href={activeTool.route} className="t-link">{activeTool.route} ↗</Link>
               </div>
 
-              <div className="fx-tool-meta">
-                <div>
-                  <div className="k">{isFr ? "Source" : "Source"}</div>
-                  <div className="v">{activeTool.source.name}</div>
+              <div className="fx-tool-enclair">
+                <div className="fx-tool-enclair-head">
+                  <span className="fx-tool-enclair-icon" aria-hidden>📖</span>
+                  <span className="fx-tool-enclair-label">{isFr ? "En clair" : "In plain language"}</span>
                 </div>
-                <div>
-                  <div className="k">Dataset</div>
-                  <div className="v"><code>{activeTool.source.dataset}</code></div>
-                </div>
-                <div>
-                  <div className="k">{isFr ? "Couverture" : "Coverage"}</div>
-                  <div className="v">{activeTool.source.coverage}</div>
-                </div>
+                <div className="fx-tool-enclair-body">{activeTool.enClair}</div>
               </div>
 
-              <div className="fx-tool-body">
-                <div className="objectif">
-                  <span className="k">{isFr ? "Objectif" : "Goal"}</span>
-                  <p>{activeTool.objectif}</p>
-                </div>
-                <div>
-                  <div className="fx-stepper">
-                    <span className="k">Pipeline</span>
-                    {activeTool.pipeline.map((step, i) => (
-                      <div key={i} className="fx-step">
-                        <div className="fx-step-num">{String(i + 1).padStart(2, "0")}</div>
-                        <div className="fx-step-text">
-                          <b>{step.label}.</b> {step.detail}
-                        </div>
-                      </div>
-                    ))}
+              <details className="fx-tool-tech">
+                <summary>
+                  <span className="fx-tool-tech-icon" aria-hidden>⚙️</span>
+                  <span className="fx-tool-tech-label">
+                    {isFr ? "Voir le détail technique (source, pipeline, choix, limites)" : "See technical detail (source, pipeline, choices, limits)"}
+                  </span>
+                </summary>
+
+                <div className="fx-tool-meta">
+                  <div>
+                    <div className="k">{isFr ? "Source" : "Source"}</div>
+                    <div className="v">{activeTool.source.name}</div>
+                  </div>
+                  <div>
+                    <div className="k">Dataset</div>
+                    <div className="v"><code>{activeTool.source.dataset}</code></div>
+                  </div>
+                  <div>
+                    <div className="k">{isFr ? "Couverture" : "Coverage"}</div>
+                    <div className="v">{activeTool.source.coverage}</div>
                   </div>
                 </div>
-              </div>
 
-              <div className="fx-tool-collapse">
-                <details>
-                  <summary>{isFr ? `Choix éditoriaux (${activeTool.choix.length})` : `Editorial choices (${activeTool.choix.length})`}</summary>
-                  <ul>{activeTool.choix.map((c, i) => <li key={i}>{c}</li>)}</ul>
-                </details>
-                <details>
-                  <summary>{isFr ? `Cadre & périmètre (${activeTool.limites.length})` : `Scope & framing (${activeTool.limites.length})`}</summary>
-                  <ul>{activeTool.limites.map((l, i) => <li key={i}>{l}</li>)}</ul>
-                </details>
-              </div>
+                <div className="fx-tool-body">
+                  <div className="objectif">
+                    <span className="k">{isFr ? "Objectif" : "Goal"}</span>
+                    <p>{activeTool.objectif}</p>
+                  </div>
+                  <div>
+                    <div className="fx-stepper">
+                      <span className="k">Pipeline</span>
+                      {activeTool.pipeline.map((step, i) => (
+                        <div key={i} className="fx-step">
+                          <div className="fx-step-num">{String(i + 1).padStart(2, "0")}</div>
+                          <div className="fx-step-text">
+                            <b>{step.label}.</b> {step.detail}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="fx-tool-collapse">
+                  <details open>
+                    <summary>{isFr ? `Choix éditoriaux (${activeTool.choix.length})` : `Editorial choices (${activeTool.choix.length})`}</summary>
+                    <ul>{activeTool.choix.map((c, i) => <li key={i}>{c}</li>)}</ul>
+                  </details>
+                  <details open>
+                    <summary>{isFr ? `Cadre & périmètre (${activeTool.limites.length})` : `Scope & framing (${activeTool.limites.length})`}</summary>
+                    <ul>{activeTool.limites.map((l, i) => <li key={i}>{l}</li>)}</ul>
+                  </details>
+                </div>
+              </details>
             </div>
           )}
         </div>

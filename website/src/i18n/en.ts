@@ -1800,9 +1800,9 @@ const en: Record<string, string> = {
   'fx.inv.s04.kicker': 'For every €100 of investment in {year}',
   'fx.inv.s04.entity_noun': 'projects',
   'fx.inv.s04.pareto_contrast': 'over a quarter of the annual budget concentrated on 10 projects',
-  'fx.inv.s05.kind': 'By district',
-  'fx.inv.s05.title.before': 'By ',
-  'fx.inv.s05.title.em': 'district',
+  'fx.inv.s05.kind': 'Where',
+  'fx.inv.s05.title.before': '',
+  'fx.inv.s05.title.em': 'Where',
   'fx.inv.s05.sub': 'Sum of located projects per district. Non-geolocated amounts (cross-cutting projects, central acquisitions) are not included.',
   'fx.inv.s06.kind': 'Trend',
   'fx.inv.s06.title.before': 'Trajectory ',
@@ -2286,9 +2286,9 @@ const en: Record<string, string> = {
   'fx.log.s01.kpi.ecart': 'Gap to target',
   'fx.log.s01.kpi.deficit': 'SRU deficit',
   'fx.log.s01.kpi.atteinte': 'Target reached',
-  'fx.log.s02.kind': 'By district',
-  'fx.log.s02.title.before': 'The stock ',
-  'fx.log.s02.title.em': 'district by district',
+  'fx.log.s02.kind': 'Where',
+  'fx.log.s02.title.before': '',
+  'fx.log.s02.title.em': 'Where',
   'fx.log.s02.sub': 'Social housing operations funded locally in 2024. The north-east and east districts concentrate production. Click a district to see its operations.',
   'fx.log.s02.paris_centre_note': 'Paris Centre groups the 1st, 2nd, 3rd and 4th districts, merged administratively in 2020.',
   'fx.arr_log.kpi.logements': 'Units funded {year}',
@@ -2839,6 +2839,14 @@ const en: Record<string, string> = {
   'fx.toc.carte': 'Map',
   'fx.toc.chapitres': 'Chapters',
   'fx.toc.arrondissements': 'Districts',
+  'fx.toc.analyses': 'Analyses',
+
+  // ── Related analyses (per-page) ─────────────────────────────────────────────
+  'fx.s.analyses.kind': 'Analyses',
+  'fx.s.analyses.title.before': 'Further ',
+  'fx.s.analyses.title.em': 'reading',
+  'fx.s.analyses.sub': 'Articles, investigations and profiles connected to the numbers on this page.',
+  'fx.s.analyses.planned': 'Coming soon',
 
   // ── MarchesFullList ─────────────────────────────────────────────────────────
   'fx.mfl.search': 'Search',
@@ -2891,6 +2899,23 @@ const en: Record<string, string> = {
   'fx.analyses.empty.title': 'No articles in this category yet.',
   'fx.analyses.empty.desc': 'Check back soon or browse all publications.',
   'fx.analyses.empty.cta': 'See all articles',
+
+  // Interactive simulator wrap
+  'fx.interactive.badge': 'Interactive tool',
+  'fx.interactive.caveat': 'Simulation based on public data — not an official City figure.',
+
+  // Contextual méthode link
+  'fx.meth.inline.label': 'How is this computed?',
+  'fx.meth.inline.target': 'Method for this page →',
+
+  // Chart source prefix
+  'fx.chart.source': 'Source',
+  'fx.chart.data': 'Data',
+  'fx.chart.method': 'Method',
+
+  // Compact footer sources
+  'fx.s.sources_exports': 'Sources & exports',
+  'fx.s.methode_complete': 'Full method for this page →',
 };
 
 export default en;

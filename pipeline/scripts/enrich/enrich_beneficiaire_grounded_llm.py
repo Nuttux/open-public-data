@@ -30,8 +30,10 @@ import json
 import os
 import re
 import sys
+import threading
 import time
 import unicodedata
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any
 
@@ -792,6 +794,10 @@ def main() -> int:
                         help="tier1 = web-grounded ≥80k€ (LLM). "
                              "tier2 = SIRENE only ≥10k€ (gratuit, API INSEE, pas de LLM). "
                              "custom = pas de preset, utilise --min-montant.")
+    parser.add_argument("--workers", type=int, default=1,
+                        help="Nombre de workers parallèles (défaut 1). "
+                             "En tier2 recommande 20 (API Sirene supporte). "
+                             "En tier1 garder 1 (rate-limit Anthropic/Gemini).")
     args = parser.parse_args()
 
     # Presets — tier1 vise le haut de traîne via LLM grounded, tier2 rattrape le
@@ -804,6 +810,9 @@ def main() -> int:
         if args.min_montant == 0:
             args.min_montant = 10_000
         args.skip_web = True
+        # API Sirene supporte la concurrence ; on bump sauf override explicite.
+        if args.workers == 1:
+            args.workers = 20
     else:
         args.skip_web = False
 
@@ -848,15 +857,16 @@ def main() -> int:
     processed = 0
     total = len(pending)
     t_start = time.time()
+    # Verrou pour cache + dict sirene partagés entre threads. En tier1 on
+    # garde workers=1 (rate-limit LLM), le lock reste no-op.
+    state_lock = threading.Lock()
 
-    for b in pending:
+    def handle(b: dict[str, Any]) -> dict[str, Any]:
+        """Thread-safe handler: renvoie (key, result)."""
         key = b.get("beneficiaire_normalise") or ""
         name = (b.get("beneficiaire") or "")[:70]
-        if args.verbose:
-            print(f"[{processed + 1}/{total}] {name}")
-
         if args.dry_run:
-            cache[key] = {
+            return {"_key": key, "_name": name, "_result": {
                 "beneficiaire": b.get("beneficiaire", ""),
                 "beneficiaire_normalise": key,
                 "siret": b.get("siret") or "",
@@ -867,43 +877,61 @@ def main() -> int:
                 "source_type": "fallback_none",
                 "generated_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
                 "model": "dry-run",
-            }
-        else:
-            try:
-                result = process_beneficiaire(b, sirene, sirene_name_index,
-                                              provider=args.provider, verbose=args.verbose,
-                                              skip_web=args.skip_web)
-            except Exception as e:
-                stats["errors"] += 1
-                print(f"  ⚠ {name}: {e}", flush=True)
-                processed += 1
+            }}
+        try:
+            result = process_beneficiaire(b, sirene, sirene_name_index,
+                                          provider=args.provider, verbose=args.verbose,
+                                          skip_web=args.skip_web)
+            return {"_key": key, "_name": name, "_result": result}
+        except Exception as e:
+            return {"_key": key, "_name": name, "_error": str(e)[:200]}
+
+    if args.workers > 1:
+        print(f"🧵 {args.workers} workers parallèles")
+
+    with ThreadPoolExecutor(max_workers=args.workers) as pool:
+        futures = [pool.submit(handle, b) for b in pending]
+        for fut in as_completed(futures):
+            out = fut.result()
+            name = out.get("_name", "")
+            if "_error" in out:
+                with state_lock:
+                    stats["errors"] += 1
+                    processed += 1
+                print(f"  ⚠ {name}: {out['_error']}", flush=True)
                 continue
-            cache[key] = result
-            stats[result.get("source_type", "fallback_none")] = (
-                stats.get(result.get("source_type", "fallback_none"), 0) + 1
-            )
-            # Rate-limit uniquement après un appel LLM effectif (Claude/Gemini)
-            if result.get("source_type") in ("grounded_search", "claude_web", "fallback_none"):
+
+            key = out["_key"]
+            result = out["_result"]
+            with state_lock:
+                cache[key] = result
+                st = result.get("source_type", "fallback_none")
+                stats[st] = stats.get(st, 0) + 1
+                processed += 1
+                p = processed
+
+            # Rate-limit LLM uniquement en single-worker (tier1).
+            if args.workers == 1 and result.get("source_type") in ("grounded_search", "claude_web", "fallback_none"):
                 if "_error" not in result and result.get("source_type") != "sirene_ape":
                     time.sleep(CALL_DELAY)
 
-        processed += 1
-        if processed % 10 == 0 or processed == total:
-            elapsed = time.time() - t_start
-            rate = processed / elapsed if elapsed > 0 else 0
-            eta = int((total - processed) / rate) if rate > 0 else 0
-            pct = 100 * processed / total
-            print(
-                f"  [{processed:>4}/{total}] {pct:5.1f}%  ·  {rate:4.1f} items/s  ·  "
-                f"ETA {eta//60:02d}m{eta%60:02d}s  ·  "
-                f"APE={stats['sirene_ape']} claude={stats['claude_web']} "
-                f"gemini={stats['grounded_search']} wiki={stats['wikipedia']} "
-                f"libelle={stats['sirene_libelle']} "
-                f"none={stats['fallback_none']} err={stats['errors']}",
-                flush=True,
-            )
-        if processed % SAVE_EVERY == 0 and not args.dry_run:
-            save_cache(cache)
+            if p % 20 == 0 or p == total:
+                elapsed = time.time() - t_start
+                rate = p / elapsed if elapsed > 0 else 0
+                eta = int((total - p) / rate) if rate > 0 else 0
+                pct = 100 * p / total
+                print(
+                    f"  [{p:>4}/{total}] {pct:5.1f}%  ·  {rate:4.1f} items/s  ·  "
+                    f"ETA {eta//60:02d}m{eta%60:02d}s  ·  "
+                    f"APE={stats['sirene_ape']} claude={stats['claude_web']} "
+                    f"gemini={stats['grounded_search']} wiki={stats['wikipedia']} "
+                    f"libelle={stats['sirene_libelle']} "
+                    f"none={stats['fallback_none']} err={stats['errors']}",
+                    flush=True,
+                )
+            if p % SAVE_EVERY == 0 and not args.dry_run:
+                with state_lock:
+                    save_cache(cache)
 
     if not args.dry_run:
         save_cache(cache)

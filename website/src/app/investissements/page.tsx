@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "../fusion.css";
 import { loadInvestissementsData } from "@/lib/fusion-data";
+import { getPostsForPage } from "@/lib/page-articles";
 import InvestissementsClient from "./InvestissementsClient";
 
 export const metadata: Metadata = {
@@ -18,5 +19,6 @@ export default async function InvestissementsPage({
   const sp = await searchParams;
   const requestedYear = sp.year ? Number(sp.year) : undefined;
   const d = loadInvestissementsData(requestedYear);
-  return <InvestissementsClient d={d} />;
+  const posts = getPostsForPage("investissements");
+  return <InvestissementsClient d={d} posts={posts} />;
 }

@@ -10,6 +10,7 @@ import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import Button from "@/components/fusion/Button";
 import SectionHead from "@/components/fusion/SectionHead";
+import ChartSource from "@/components/fusion/ChartSource";
 import PageTOC from "@/components/fusion/PageTOC";
 import HeroNumber from "@/components/fusion/HeroNumber";
 import KPIGrid from "@/components/fusion/KPIGrid";
@@ -39,27 +40,6 @@ type Props = {
 };
 
 // Mapping exact des sources utilisées par le pipeline (cf. pipeline/scripts/tools/extract_pdf_budget_vote.py).
-// Budget voté (BP) : dataset OpenData pour 2019, puis PDFs éditique à partir de 2020.
-// Budget exécuté (CA) : dataset OpenData M57 pour toutes les années.
-const BP_PDF_BY_YEAR: Record<number, string> = {
-  2020: "https://cdn.paris.fr/paris/2025/01/31/bp-2020-editique-bg-avec-est-q1et.pdf",
-  2021: "https://cdn.paris.fr/paris/2021/02/04/7afb2a3b598405ef955f947999fcdbd5.pdf",
-  2022: "https://cdn.paris.fr/paris/2022/02/17/1654e867ca0ef70cbbab53e821cd9dc0.pdf",
-  2023: "https://cdn.paris.fr/paris/2023/02/15/bp-2023-editique-bg_partie01-QLeA.pdf",
-  2024: "https://cdn.paris.fr/paris/2024/02/21/1-bp-2024-editique-premierepartie-bg-ZFnH.pdf",
-  2025: "https://cdn.paris.fr/paris/2025/01/17/bp-2025-editique-premiere-parite-bg-weCs.pdf",
-  2026: "https://cdn.paris.fr/paris/2026/01/21/bp-2026-editique-premiere-partie-bg-bxlu.pdf",
-};
-const BP_DATASET_URL = "https://opendata.paris.fr/explore/dataset/budgets-votes-principaux-a-partir-de-2019-m57-ville-departement/";
-const CA_DATASET_URL = "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/";
-
-function budgetSourceFor(year: number, isVoted: boolean): { url: string; kind: "pdf" | "dataset" } {
-  if (!isVoted) return { url: CA_DATASET_URL, kind: "dataset" };
-  const pdf = BP_PDF_BY_YEAR[year];
-  if (pdf) return { url: pdf, kind: "pdf" };
-  return { url: BP_DATASET_URL, kind: "dataset" };
-}
-
 export default function BudgetClient({ index, d, voteExec }: Props) {
   const t = useT();
   const { locale } = useLocale();
@@ -360,6 +340,11 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
               </>
             }
           />
+          <ChartSource
+            source={<>Ville de Paris · Comptes administratifs M57 {d.year}</>}
+            dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
+            methodAnchor="budget"
+          />
         </div>
       </section>
 
@@ -524,57 +509,15 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
         </div>
       </section>
 
-      <section className="fx-section" id="sec-sources">
+      <section className="fx-footer-sources" id="sec-sources">
         <div className="fx-wrap">
-          <SectionHead
-            number="06"
-            kind={t("fx.bud.s06.kind")}
-            title={<>{t("fx.bud.s06.title.before")}<em>{t("fx.bud.s06.title.em")}</em></>}
-          />
-          <div className="fx-sources">
-            <div>
-              <div className="n">{t("fx.bud.s06.c1.n")}</div>
-              <h3>
-                {t("fx.bud.s06.c1.h.prefix")}
-                {isVoted ? t("fx.bud.s06.c1.h.voted") : t("fx.bud.s06.c1.h.exec")}
-                {fill("fx.bud.s06.c1.h.suffix_a", { year: d.year })}
-                <Tip label={t("fx.bud.s06.c1.m57.tip")}>M57</Tip>
-                {t("fx.bud.s06.c1.h.suffix_b")}
-              </h3>
-              <p>
-                {isVoted
-                  ? fill("fx.bud.s06.c1.p.voted", { prev: d.year - 1, next: d.year + 1 })
-                  : t("fx.bud.s06.c1.p.exec")}
-              </p>
-              {(() => {
-                const src = budgetSourceFor(d.year, isVoted);
-                return (
-                  <a href={src.url} target="_blank" rel="noopener noreferrer">
-                    {src.kind === "pdf" ? t("fx.s.pdf_annexe") : t("fx.bud.s06.c1.link")}
-                  </a>
-                );
-              })()}
-            </div>
-            <div>
-              <div className="n">{t("fx.bud.s06.c2.n")}</div>
-              <h3>
-                {isVoted
-                  ? fill("fx.bud.s06.c2.h.voted", { prev: d.year - 1 })
-                  : fill("fx.bud.s06.c2.h.exec", { next: d.year + 1 })}
-                {t("fx.bud.s06.c2.h.suffix")}
-              </h3>
-              <p>{t("fx.bud.s06.c2.p")}</p>
-              <a href="/methode#couverture">{t("fx.bud.s06.c2.link")}</a>
-            </div>
-            <div>
-              <div className="n">{t("fx.bud.s06.c3.n")}</div>
-              <h3>{t("fx.bud.s06.c3.h")}</h3>
-              <p>{t("fx.bud.s06.c3.p")}</p>
-              <a href="https://github.com/AbstractsMachine" target="_blank" rel="noopener noreferrer">
-                {t("fx.bud.s06.c3.link")}
-              </a>
-            </div>
+          <div className="fx-footer-sources-head">
+            <span className="fx-footer-sources-label">{t("fx.s.sources_exports")}</span>
+            <a href="/methode#budget" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</a>
           </div>
+          <p className="fx-footer-sources-meta">
+            <b>Source</b> : Ville de Paris — Comptes administratifs M57 + Budgets primitifs (opendata.paris.fr) <span className="sep">·</span> <b>Couverture</b> : 2019-2024 exécuté · 2019-2026 voté.
+          </p>
           <ExportRow
             items={[
               {

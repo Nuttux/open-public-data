@@ -244,12 +244,30 @@ sources:
       # CONTEXTE - Ne pas sommer avec le budget
       # =========================================================================
       
+      - name: decp_marches_paris
+        description: |
+          DECP (Données Essentielles de la Commande Publique) filtrée Ville de Paris.
+          Source: data.gouv.fr (fichiers annuels consolidés).
+
+          Apporte par rapport à `liste_des_marches_de_la_collectivite_parisienne` :
+          - lieu_execution_code / lieu_execution_type_code (dépt du chantier)
+          - ccag (Travaux / Fournitures / PI / MOE / TIC)
+          - code_cpv (catégorisation standardisée européenne)
+          - offres_recues (signal concurrence)
+          - considerations_sociales / environnementales
+          - montant (= montant NOTIFIÉ à la signature, ≠ max plafond Paris)
+
+          Jointure avec liste_des_marches: SUBSTR(num_marche, 5) = decp.id
+
+          Ingéré via pipeline/scripts/sync/fetch_decp_paris.py
+          ~1k lignes / an, 2024+ (années à compléter via --year).
+
       - name: liste_des_marches_de_la_collectivite_parisienne
         description: |
           Marchés publics de la collectivité parisienne.
           ATTENTION: montant_min/max sont des ENVELOPPES PLURIANNUELLES.
           NE PAS SOMMER comme dépense annuelle !
-          
+
           ~17k lignes, années 2013-2024
         columns:
           - name: annee_de_notification

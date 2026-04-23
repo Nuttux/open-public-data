@@ -3,6 +3,7 @@ import Link from "next/link";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import SectionHead from "@/components/fusion/SectionHead";
+import ChartSource from "@/components/fusion/ChartSource";
 import PageTOC from "@/components/fusion/PageTOC";
 import HeroNumber from "@/components/fusion/HeroNumber";
 import KPIGrid from "@/components/fusion/KPIGrid";
@@ -53,11 +54,12 @@ export default function MarchesPublicsClient({
           { id: "sec-overview", label: t("fx.toc.chiffres") },
           { id: "sec-categorie", label: t("fx.toc.categories") },
           { id: "sec-titulaires", label: t("fx.toc.titulaires") },
-          { id: "sec-recherche", label: t("fx.toc.recherche") },
           { id: "sec-procedure", label: t("fx.toc.procedure") },
-          { id: "sec-signaux", label: t("fx.toc.signaux") },
           { id: "sec-evolution", label: t("fx.toc.evolution") },
+          { id: "sec-signaux", label: t("fx.toc.signaux") },
+          { id: "sec-recherche", label: t("fx.toc.recherche") },
           { id: "sec-sources", label: t("fx.toc.sources") },
+          { id: "sec-explorer", label: t("fx.toc.explorer") },
         ]}
       />
 
@@ -178,6 +180,11 @@ export default function MarchesPublicsClient({
             kicker={fill(t("fx.mp.s02.kicker"), { year: d.year })}
             entityNoun={t("fx.mp.s02.entity_noun")}
             paretoContrast={t("fx.mp.s02.pareto_contrast")}
+          />
+          <ChartSource
+            source={<>DECP · Données essentielles de la commande publique · Ville de Paris</>}
+            dataHref="https://opendata.paris.fr/explore/dataset/marches-publics-conclus-par-la-ville-de-paris/"
+            methodAnchor="marches-publics"
           />
         </div>
       </section>
@@ -390,34 +397,10 @@ export default function MarchesPublicsClient({
         </div>
       </section>
 
-      <section className="fx-section" id="sec-recherche">
-        <div className="fx-wrap">
-          <SectionHead
-            number="04"
-            kind={t("fx.mp.s04.kind")}
-            title={
-              <>
-                {t("fx.mp.s04.title.before")}
-                <em>{t("fx.mp.s04.title.em1")}</em>
-                {t("fx.mp.s04.title.mid")}
-                <em>{t("fx.mp.s04.title.em2")}</em>
-              </>
-            }
-            subtitle={fill(t("fx.mp.s04.sub"), { n: fmtInt(d.nb), year: d.year })}
-          />
-          <MarchesSearch
-            items={d.allMarches}
-            categories={d.byCategory.map((c) => c.category)}
-            natures={d.byNature.map((n) => n.nature)}
-            year={d.year}
-          />
-        </div>
-      </section>
-
       <section className="fx-section" id="sec-procedure">
         <div className="fx-wrap">
           <SectionHead
-            number="05"
+            number="04"
             kind={<Tip label={t("fx.mp.s05.kind.tip")}>{t("fx.mp.s05.kind")}</Tip>}
             title={
               <>
@@ -524,6 +507,36 @@ export default function MarchesPublicsClient({
         </div>
       </section>
 
+      <section className="fx-section" id="sec-evolution">
+        <div className="fx-wrap">
+          <SectionHead
+            number="05"
+            kind={t("fx.mp.s07.kind")}
+            title={
+              <>
+                {t("fx.mp.s07.title.before")}
+                <em>{fill(t("fx.mp.s07.title.em"), { year: String(d.yearsSummary[0]?.year ?? "") })}</em>
+                {t("fx.mp.s07.title.after")}
+              </>
+            }
+            subtitle={t("fx.mp.s07.sub")}
+          />
+          <BudgetTimeline
+            points={d.yearsSummary
+              .filter((y) => y.total > 0)
+              .map((y) => ({
+                year: y.year,
+                value: y.total / 1_000_000_000,
+                type: "execute" as const,
+              }))}
+            activeYear={d.year}
+          />
+          <p className="fx-note">
+            <b>{t("fx.s.note")}</b> : {t("fx.mp.s07.note")}
+          </p>
+        </div>
+      </section>
+
       <section className="fx-section" id="sec-signaux">
         <div className="fx-wrap">
           <SectionHead
@@ -602,86 +615,39 @@ export default function MarchesPublicsClient({
         </div>
       </section>
 
-      <section className="fx-section" id="sec-evolution">
+      <section className="fx-section" id="sec-recherche">
         <div className="fx-wrap">
           <SectionHead
             number="07"
-            kind={t("fx.mp.s07.kind")}
+            kind={t("fx.mp.s04.kind")}
             title={
               <>
-                {t("fx.mp.s07.title.before")}
-                <em>{fill(t("fx.mp.s07.title.em"), { year: String(d.yearsSummary[0]?.year ?? "") })}</em>
-                {t("fx.mp.s07.title.after")}
+                {t("fx.mp.s04.title.before")}
+                <em>{t("fx.mp.s04.title.em1")}</em>
+                {t("fx.mp.s04.title.mid")}
+                <em>{t("fx.mp.s04.title.em2")}</em>
               </>
             }
-            subtitle={t("fx.mp.s07.sub")}
+            subtitle={fill(t("fx.mp.s04.sub"), { n: fmtInt(d.nb), year: d.year })}
           />
-          <BudgetTimeline
-            points={d.yearsSummary
-              .filter((y) => y.total > 0)
-              .map((y) => ({
-                year: y.year,
-                value: y.total / 1_000_000_000,
-                type: "execute" as const,
-              }))}
-            activeYear={d.year}
+          <MarchesSearch
+            items={d.allMarches}
+            categories={d.byCategory.map((c) => c.category)}
+            natures={d.byNature.map((n) => n.nature)}
+            year={d.year}
           />
-          <p className="fx-note">
-            <b>{t("fx.s.note")}</b> : {t("fx.mp.s07.note")}
-          </p>
         </div>
       </section>
 
-      <section className="fx-section" id="sec-sources">
+      <section className="fx-footer-sources" id="sec-sources">
         <div className="fx-wrap">
-          <SectionHead
-            number="08"
-            kind={t("fx.mp.src.kind")}
-            title={
-              <>
-                {t("fx.s.verifiable")} <em>{t("fx.s.line_by_line")}</em>
-              </>
-            }
-          />
-          <div className="fx-sources">
-            <div>
-              <div className="n">{t("fx.mp.src.c1.n")}</div>
-              <h3>{fill(t("fx.mp.src.c1.h"), { year: d.year })}</h3>
-              <p>{t("fx.mp.src.c1.p")}</p>
-              <a
-                href="https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {t("fx.s.opendata")}
-              </a>
-            </div>
-            <div>
-              <div className="n">{t("fx.mp.src.c2.n")}</div>
-              <h3>{t("fx.mp.src.c2.h")}</h3>
-              <p>
-                {t("fx.mp.src.c2.p").split(t("fx.mp.src.c2.p.b")).map((part, i, arr) =>
-                  i < arr.length - 1 ? (
-                    <span key={i}>
-                      {part}
-                      <b>{t("fx.mp.src.c2.p.b")}</b>
-                    </span>
-                  ) : (
-                    <span key={i}>{part}</span>
-                  )
-                )}
-              </p>
-              <a href="/methode?tool=marches-publics#outils">{t("fx.s.methode_lien")}</a>
-            </div>
-            <div>
-              <div className="n">{t("fx.mp.src.c3.n")}</div>
-              <h3>{t("fx.mp.src.c3.h")}</h3>
-              <p>{t("fx.mp.src.c3.p")}</p>
-              <a href="https://github.com/AbstractsMachine" target="_blank" rel="noopener noreferrer">
-                {t("fx.s.github")}
-              </a>
-            </div>
+          <div className="fx-footer-sources-head">
+            <span className="fx-footer-sources-label">{t("fx.s.sources_exports")}</span>
+            <a href="/methode#marches-publics" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</a>
           </div>
+          <p className="fx-footer-sources-meta">
+            <b>Source</b> : DECP — Ville de Paris (opendata.paris.fr) <span className="sep">·</span> <b>Couverture</b> : marchés notifiés depuis 2013. Montants affichés = plafonds contractuels maximaux.
+          </p>
           <ExportRow
             items={[
               {
@@ -697,10 +663,10 @@ export default function MarchesPublicsClient({
         </div>
       </section>
 
-      <section className="fx-section">
+      <section className="fx-section" id="sec-explorer">
         <div className="fx-wrap">
           <SectionHead
-            number="06"
+            number="09"
             kind={t("fx.mp.s08.kind")}
             title={t("fx.mp.s08.title")}
             subtitle={t("fx.mp.s08.sub")}

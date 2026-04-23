@@ -1800,9 +1800,9 @@ const fr: Record<string, string> = {
   'fx.inv.s04.kicker': "Sur chaque 100 € d'investissement en {year}",
   'fx.inv.s04.entity_noun': 'projets',
   'fx.inv.s04.pareto_contrast': 'soit plus du quart du budget annuel concentré sur 10 chantiers',
-  'fx.inv.s05.kind': 'Par arrondissement',
-  'fx.inv.s05.title.before': 'Par ',
-  'fx.inv.s05.title.em': 'arrondissement',
+  'fx.inv.s05.kind': 'Où',
+  'fx.inv.s05.title.before': '',
+  'fx.inv.s05.title.em': 'Où',
   'fx.inv.s05.sub': "Somme des projets localisés par arrondissement. Les montants non géolocalisés (projets transverses, acquisitions centrales) ne sont pas inclus.",
   'fx.inv.s06.kind': 'Évolution',
   'fx.inv.s06.title.before': 'Trajectoire ',
@@ -2286,9 +2286,9 @@ const fr: Record<string, string> = {
   'fx.log.s01.kpi.ecart': 'Écart à la cible',
   'fx.log.s01.kpi.deficit': 'Déficit SRU',
   'fx.log.s01.kpi.atteinte': 'Cible atteinte',
-  'fx.log.s02.kind': 'Par arrondissement',
-  'fx.log.s02.title.before': 'Le parc ',
-  'fx.log.s02.title.em': 'arrondissement par arrondissement',
+  'fx.log.s02.kind': 'Où',
+  'fx.log.s02.title.before': '',
+  'fx.log.s02.title.em': 'Où',
   'fx.log.s02.sub': "Les opérations de logement social financées localement en 2024. Les arrondissements du Nord-Est et de l'Est concentrent la production. Cliquez sur un arrondissement pour voir ses opérations.",
   'fx.log.s02.paris_centre_note': 'Paris Centre regroupe les 1er, 2ᵉ, 3ᵉ et 4ᵉ arrondissements depuis leur fusion administrative en 2020.',
   'fx.arr_log.kpi.logements': 'Logements financés {year}',
@@ -2839,6 +2839,14 @@ const fr: Record<string, string> = {
   'fx.toc.carte': 'Carte',
   'fx.toc.chapitres': 'Chapitres',
   'fx.toc.arrondissements': 'Arrondissements',
+  'fx.toc.analyses': 'Analyses',
+
+  // ── Related analyses (per-page) ─────────────────────────────────────────────
+  'fx.s.analyses.kind': 'Analyses',
+  'fx.s.analyses.title.before': 'À ',
+  'fx.s.analyses.title.em': "lire",
+  'fx.s.analyses.sub': "Articles, enquêtes et portraits liés aux chiffres de cette page.",
+  'fx.s.analyses.planned': 'À paraître',
 
   // ── MarchesFullList ─────────────────────────────────────────────────────────
   'fx.mfl.search': 'Rechercher',
@@ -2891,6 +2899,23 @@ const fr: Record<string, string> = {
   'fx.analyses.empty.title': "Pas d'article dans cette catégorie pour le moment.",
   'fx.analyses.empty.desc': "Revenez prochainement ou consultez l'ensemble des publications.",
   'fx.analyses.empty.cta': 'Voir toutes les analyses',
+
+  // Interactive simulator wrap
+  'fx.interactive.badge': 'Outil interactif',
+  'fx.interactive.caveat': 'Simulation à partir de données publiques — pas un chiffre officiel de la Ville.',
+
+  // Contextual méthode link
+  'fx.meth.inline.label': "Comment on calcule ?",
+  'fx.meth.inline.target': 'Méthode de cette page →',
+
+  // Chart source prefix
+  'fx.chart.source': 'Source',
+  'fx.chart.data': 'Données',
+  'fx.chart.method': 'Méthode',
+
+  // Compact footer sources
+  'fx.s.sources_exports': 'Sources & exports',
+  'fx.s.methode_complete': 'Méthode complète de cette page →',
 };
 
 export default fr;

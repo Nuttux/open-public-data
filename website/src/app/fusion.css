@@ -1869,50 +1869,104 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 }
 @media (max-width: 768px) { .theme-fusion .fx-dual { grid-template-columns: 1fr; } }
 
-/* Simple source cards grid (3 cols) */
+/* Compact source recap — one line per card, long descriptions hidden (→ /methode) */
 .theme-fusion .fx-sources {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--ink);
-  border: 1px solid var(--ink);
-  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line, #e5e5e5);
+  border-radius: 10px;
+  background: var(--bg-soft, #fafafa);
+  margin-top: 20px;
+  overflow: hidden;
 }
-.theme-fusion .fx-sources > * { background: var(--bg); padding: 24px; }
-.theme-fusion .fx-sources h3 {
-  font-family: var(--f-disp);
-  font-weight: 600;
-  font-size: 18px;
-  margin: 8px 0 8px;
+.theme-fusion .fx-sources > * {
+  display: grid;
+  grid-template-columns: 170px 1fr auto;
+  align-items: baseline;
+  gap: 18px;
+  padding: 12px 18px;
+  background: transparent;
+}
+.theme-fusion .fx-sources > * + * {
+  border-top: 1px dashed var(--line, #e5e5e5);
 }
 .theme-fusion .fx-sources .n {
   font-family: var(--f-mono);
-  font-size: 11px;
+  font-size: 10.5px;
   color: var(--ocre);
   letter-spacing: .08em;
   text-transform: uppercase;
+  font-weight: 500;
 }
-.theme-fusion .fx-sources p {
+.theme-fusion .fx-sources h3 {
+  font-family: var(--f-ui);
+  font-weight: 600;
+  font-size: 14.5px;
+  margin: 0;
+  color: var(--ink, #111);
+  line-height: 1.35;
+}
+.theme-fusion .fx-sources p { display: none; }
+.theme-fusion .fx-sources a {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  color: var(--bleu);
+  border-bottom: 1px solid var(--bleu);
+  padding-bottom: 1px;
+  white-space: nowrap;
+}
+
+/* Variants fx-sources-2 / fx-sources-4 keep the card grid (used where desc matters) */
+.theme-fusion .fx-sources-2,
+.theme-fusion .fx-sources-4 {
+  display: grid;
+  flex-direction: initial;
+  gap: 0;
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 0;
+}
+.theme-fusion .fx-sources-2 { grid-template-columns: repeat(2, 1fr); }
+.theme-fusion .fx-sources-4 { grid-template-columns: repeat(4, 1fr); }
+.theme-fusion .fx-sources-2 > *,
+.theme-fusion .fx-sources-4 > * {
+  display: block;
+  background: var(--bg);
+  padding: 24px;
+  gap: 0;
+  grid-template-columns: none;
+}
+.theme-fusion .fx-sources-2 > * + *,
+.theme-fusion .fx-sources-4 > * + * {
+  border-top: none;
+  outline: 1px solid var(--ink);
+  outline-offset: 0;
+}
+.theme-fusion .fx-sources-2 h3,
+.theme-fusion .fx-sources-4 h3 {
+  font-family: var(--f-disp);
+  font-size: 18px;
+  margin: 8px 0 8px;
+}
+.theme-fusion .fx-sources-2 p,
+.theme-fusion .fx-sources-4 p {
+  display: block;
   font-family: var(--f-ui);
   font-size: 14px;
   color: var(--muted);
   line-height: 1.55;
   margin: 0 0 14px;
 }
-.theme-fusion .fx-sources a {
-  font-family: var(--f-mono);
-  font-size: 12.5px;
-  color: var(--bleu);
-  border-bottom: 1px solid var(--bleu);
-  padding-bottom: 1px;
-}
-.theme-fusion .fx-sources-2 { grid-template-columns: repeat(2, 1fr); }
-.theme-fusion .fx-sources-4 { grid-template-columns: repeat(4, 1fr); }
+
 @media (max-width: 900px) {
   .theme-fusion .fx-sources-4 { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
-  .theme-fusion .fx-sources,
+  .theme-fusion .fx-sources > * {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .theme-fusion .fx-sources a { justify-self: start; }
   .theme-fusion .fx-sources-2,
   .theme-fusion .fx-sources-4 { grid-template-columns: 1fr; }
 }
@@ -3808,6 +3862,35 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   background: rgba(166, 118, 56, 0.04);
 }
 .theme-fusion .fx-note b { color: var(--ocre); font-weight: 600; }
+
+/* View toggle (carte / liste, etc.) */
+.theme-fusion .fx-view-toggle {
+  display: inline-flex;
+  gap: 0;
+  border: 1px solid var(--ink);
+  margin: 0 0 20px;
+  font-family: var(--f-ui);
+}
+.theme-fusion .fx-view-toggle-btn {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 8px 16px;
+  font: inherit;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--ink-2);
+  cursor: pointer;
+  border-right: 1px solid var(--ink);
+}
+.theme-fusion .fx-view-toggle-btn:last-child { border-right: 0; }
+.theme-fusion .fx-view-toggle-btn.is-active {
+  background: var(--ink);
+  color: var(--paper, #fff);
+}
+.theme-fusion .fx-view-toggle-btn:hover:not(.is-active) {
+  background: rgba(10, 10, 10, 0.06);
+}
 
 /* Hero */
 .theme-fusion .fx-hero {
@@ -8609,4 +8692,267 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
     grid-template-columns: 1fr;
     gap: 8px;
   }
+}
+
+/* ───────── Interactive simulator wrap (A) ──────────────────────────── */
+.theme-fusion .fx-interactive {
+  position: relative;
+  border: 1px dashed var(--teal, #0d9488);
+  border-radius: 14px;
+  background:
+    linear-gradient(180deg, rgba(13, 148, 136, 0.045), rgba(13, 148, 136, 0) 180px),
+    var(--bg, #fff);
+  margin: 6px 0 12px;
+  overflow: hidden;
+}
+.theme-fusion .fx-interactive-badge {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  background: var(--teal, #0d9488);
+  color: #fff;
+  padding: 8px 16px 9px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.25);
+}
+.theme-fusion .fx-interactive-icon { font-size: 14px; line-height: 1; }
+.theme-fusion .fx-interactive-label { text-transform: uppercase; letter-spacing: 0.04em; font-size: 11.5px; }
+.theme-fusion .fx-interactive-caveat {
+  font-weight: 400;
+  font-size: 12px;
+  opacity: 0.95;
+  font-style: italic;
+}
+.theme-fusion .fx-interactive-body { padding: 18px 20px 20px; }
+@media (max-width: 700px) {
+  .theme-fusion .fx-interactive-body { padding: 14px 12px 16px; }
+  .theme-fusion .fx-interactive-caveat { flex-basis: 100%; margin-top: 2px; }
+}
+
+/* ───────── Contextual méthode link (D) ─────────────────────────────── */
+.theme-fusion .fx-meth-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0 6px;
+  padding: 6px 12px;
+  border: 1px solid var(--line, #e5e5e5);
+  border-radius: 999px;
+  background: var(--bg-soft, #fafafa);
+  font-size: 13px;
+  color: var(--ink, #111);
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+.theme-fusion .fx-meth-inline:hover {
+  background: var(--bg, #fff);
+  border-color: var(--ink, #111);
+}
+.theme-fusion .fx-meth-inline-ico { font-size: 13px; }
+.theme-fusion .fx-meth-inline-lbl { color: var(--muted, #666); }
+.theme-fusion .fx-meth-inline-target { color: var(--ink, #111); font-weight: 600; }
+
+/* ───────── Chart source caption (E, media-style) ───────────────────── */
+.theme-fusion .fx-chart-source {
+  display: block;
+  font-size: 11.5px;
+  color: var(--muted, #666);
+  line-height: 1.5;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dotted var(--line, #e5e5e5);
+  letter-spacing: 0.005em;
+}
+.theme-fusion .fx-chart-source b { color: var(--ink, #222); font-weight: 600; }
+.theme-fusion .fx-chart-source a {
+  color: var(--muted, #666);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+.theme-fusion .fx-chart-source a:hover { color: var(--ink, #111); }
+.theme-fusion .fx-chart-source .sep { margin: 0 6px; opacity: 0.5; }
+
+/* ───────── Méthode · "En clair" dual-layer ─────────────────────────── */
+.theme-fusion .fx-tool-enclair {
+  margin-top: 18px;
+  padding: 20px 22px 4px;
+  border-radius: 10px;
+  background: var(--bg-soft, #fafafa);
+  border-left: 3px solid var(--ink, #111);
+}
+.theme-fusion .fx-tool-enclair-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.theme-fusion .fx-tool-enclair-icon { font-size: 16px; line-height: 1; }
+.theme-fusion .fx-tool-enclair-label {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--ink, #111);
+}
+.theme-fusion .fx-tool-enclair-body p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink, #222);
+  margin: 0 0 14px;
+}
+.theme-fusion .fx-tool-enclair-body p:last-child { margin-bottom: 14px; }
+.theme-fusion .fx-tool-enclair-body b { font-weight: 600; }
+
+.theme-fusion details.fx-tool-tech {
+  margin-top: 14px;
+  border-top: 1px dashed var(--line, #e5e5e5);
+  padding-top: 12px;
+}
+.theme-fusion details.fx-tool-tech > summary {
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--bg, #fff);
+  border: 1px solid var(--line, #e5e5e5);
+  border-radius: 999px;
+  font-size: 13px;
+  color: var(--muted, #555);
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  user-select: none;
+}
+.theme-fusion details.fx-tool-tech > summary::-webkit-details-marker { display: none; }
+.theme-fusion details.fx-tool-tech > summary::before {
+  content: "▸";
+  display: inline-block;
+  font-size: 10px;
+  transition: transform 0.15s;
+  color: var(--muted, #888);
+}
+.theme-fusion details.fx-tool-tech[open] > summary::before { transform: rotate(90deg); }
+.theme-fusion details.fx-tool-tech > summary:hover {
+  background: var(--bg-soft, #fafafa);
+  border-color: var(--ink, #111);
+  color: var(--ink, #111);
+}
+.theme-fusion details.fx-tool-tech[open] > summary {
+  margin-bottom: 20px;
+}
+.theme-fusion .fx-tool-tech-icon { font-size: 13px; }
+.theme-fusion .fx-tool-tech-label { font-weight: 500; }
+
+/* ───────── Slim footer sources section (replaces heavy fx-section) ─── */
+.theme-fusion .fx-footer-sources {
+  padding: 20px 0 28px;
+  border-top: 1px solid var(--line, #e5e5e5);
+  margin-top: 36px;
+}
+.theme-fusion .fx-footer-sources .fx-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.theme-fusion .fx-footer-sources-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.theme-fusion .fx-footer-sources-label {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted, #777);
+  font-weight: 500;
+}
+.theme-fusion .fx-footer-sources-methode {
+  font-family: var(--f-ui);
+  font-size: 13px;
+  color: var(--ink, #111);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink, #111);
+  padding-bottom: 1px;
+}
+.theme-fusion .fx-footer-sources-methode:hover {
+  color: var(--bleu, #1a4fde);
+  border-color: var(--bleu, #1a4fde);
+}
+.theme-fusion .fx-footer-sources-note {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted, #555);
+}
+
+/* Bailleurs grid — visually similar to old card style, separate from fx-sources */
+.theme-fusion .fx-bailleurs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  margin-top: 20px;
+}
+.theme-fusion .fx-bailleurs-grid > .fx-bailleur-card {
+  background: var(--bg);
+  padding: 20px 22px;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: background 0.15s;
+}
+.theme-fusion .fx-bailleurs-grid > .fx-bailleur-card:hover {
+  background: var(--bg-soft, #fafafa);
+}
+.theme-fusion .fx-bailleurs-grid .n {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: var(--ocre);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.theme-fusion .fx-bailleurs-grid h3 {
+  font-family: var(--f-disp);
+  font-size: 17px;
+  font-weight: 600;
+  margin: 6px 0 4px;
+  color: var(--ink, #111);
+}
+.theme-fusion .fx-bailleurs-grid p {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0 0 10px;
+}
+@media (max-width: 900px) {
+  .theme-fusion .fx-bailleurs-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .theme-fusion .fx-bailleurs-grid { grid-template-columns: 1fr; }
+}
+
+.theme-fusion .fx-footer-sources-meta {
+  margin: 4px 0 0;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--muted, #555);
+}
+.theme-fusion .fx-footer-sources-meta b {
+  color: var(--ink, #222);
+  font-weight: 600;
+}
+.theme-fusion .fx-footer-sources-meta .sep {
+  margin: 0 4px;
+  opacity: 0.5;
 }
