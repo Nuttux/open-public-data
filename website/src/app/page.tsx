@@ -2,9 +2,17 @@ import type { Metadata } from "next";
 import "./fusion.css";
 
 import { loadLandingStats } from "@/lib/fusion-data";
-import { getAllPosts } from "@/lib/blog";
+import { getAllPosts, type BlogPostMeta } from "@/lib/blog";
 import { SITE_URL } from "@/lib/seo";
 import LandingClient from "./LandingClient";
+
+// Curation éditoriale — 3 articles mis en avant sur la landing.
+// Ordre = ordre d'affichage. Mix hook + scoop + data cred.
+const LANDING_FEATURED_SLUGS = [
+  "top-10-associations-subventionnees-paris",
+  "regle-or-communes-article-l-1612-4",
+  "jo-2024-anatomie-pic-livraison",
+] as const;
 
 const OG_TITLE = "Où va l'argent public à Paris ? — France Open Data";
 const OG_DESCRIPTION =
@@ -32,6 +40,10 @@ export const metadata: Metadata = {
 
 export default function LandingPage() {
   const stats = loadLandingStats();
-  const posts = getAllPosts().slice(0, 3);
+  const all = getAllPosts();
+  const bySlug = new Map(all.map((p) => [p.slug, p]));
+  const posts: BlogPostMeta[] = LANDING_FEATURED_SLUGS
+    .map((slug) => bySlug.get(slug))
+    .filter((p): p is BlogPostMeta => !!p);
   return <LandingClient stats={stats} posts={posts} />;
 }

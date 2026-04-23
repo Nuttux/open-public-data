@@ -35,7 +35,6 @@ const COLUMNS: Col[] = [
     links: [
       { href: "/analyses", labelKey: "fx.foot.link.analyses" },
       { href: "/methode", labelKey: "fx.foot.link.methode" },
-      { href: "/llms.txt", labelKey: "fx.foot.link.api" },
       {
         href: "https://github.com/Nuttux/open-public-data",
         labelKey: "fx.foot.link.github",

@@ -253,7 +253,7 @@ export default function LandingClient({ stats, posts }: Props) {
               }
             />
 
-            {/* ROW 2 : Investissements (SVG) · Voté-vs-exécuté (SVG) · Subventions (TEXT) */}
+            {/* ROW 2 : Investissements (SVG) · Subventions (TEXT) · Marchés (TEXT) */}
             <TileCard
               href="/investissements"
               kind={t("fx.land.tile.03.kind")}
@@ -275,29 +275,6 @@ export default function LandingClient({ stats, posts }: Props) {
             />
 
             <TileCard
-              href="/budget"
-              kind={t("fx.land.tile.06.kind")}
-              title={t("fx.land.tile.06.title")}
-              description={t("fx.land.tile.06.desc")}
-              preview={
-                <svg viewBox="0 0 200 100">
-                  <line x1="6" y1="90" x2="194" y2="90" className="stroke-muted" stroke="#9099a6" strokeWidth="1" />
-                  <rect x="18"  y="22" width="14" height="68" className="stroke" fill="none" stroke="#0a0a0a" strokeWidth="1.5" />
-                  <rect x="34"  y="34" width="14" height="56" className="fill" fill="#0a0a0a" />
-                  <rect x="58"  y="38" width="14" height="52" className="stroke" fill="none" stroke="#0a0a0a" strokeWidth="1.5" />
-                  <rect x="74"  y="44" width="14" height="46" className="fill" fill="#0a0a0a" />
-                  <rect x="98"  y="48" width="14" height="42" className="stroke" fill="none" stroke="#0a0a0a" strokeWidth="1.5" />
-                  <rect x="114" y="30" width="14" height="60" className="fill-sig" fill="#5f6672" />
-                  <rect x="138" y="26" width="14" height="64" className="stroke" fill="none" stroke="#0a0a0a" strokeWidth="1.5" />
-                  <rect x="154" y="36" width="14" height="54" className="fill" fill="#0a0a0a" />
-                </svg>
-              }
-              kpi="± 3,8"
-              kpiUnit="%"
-              kpiDelta={<>{t("fx.land.tile.06.delta.before")}<b>{t("fx.land.tile.06.delta.em")}</b></>}
-            />
-
-            <TileCard
               href="/qui-recoit"
               kind={t("fx.land.tile.04.kind")}
               title={t("fx.land.tile.04.title")}
@@ -306,69 +283,6 @@ export default function LandingClient({ stats, posts }: Props) {
               kpi="312"
               kpiUnit="M €"
               kpiDelta={<>↑ <b>3,3 %</b> {t("fx.land.tile.vs")}2023</>}
-            />
-
-            {/* ROW 3 : Stress-test · Logement social · Marchés (TEXT) */}
-            <TileCard
-              href="/dette-patrimoine/stress-test"
-              kind={t("fx.land.tile.stress.kind")}
-              title={t("fx.land.tile.stress.title")}
-              description={t("fx.land.tile.stress.desc")}
-              preview={(() => {
-                const cap = stats.capaciteDesendettement;
-                const toX = (yr: number) => 10 + Math.min(yr, 30) * 6;
-                const cursorX = toX(cap);
-                return (
-                  <svg viewBox="0 0 200 100">
-                    <line x1="10" y1="80" x2="190" y2="80" stroke="#9099a6" strokeWidth="1" />
-                    <rect x="10" y="70" width="62" height="12" fill="#0a0a0a" opacity="0.12" />
-                    <rect x="72" y="70" width="48" height="12" fill="#a67638" opacity="0.28" />
-                    <rect x="120" y="70" width="60" height="12" fill="#e11d1d" opacity="0.28" />
-                    <line x1={toX(12)} y1="62" x2={toX(12)} y2="90" stroke="#a67638" strokeWidth="2" />
-                    <line x1={cursorX} y1="58" x2={cursorX} y2="94" stroke="#0a0a0a" strokeWidth="3" />
-                    <circle cx={cursorX} cy="52" r="4" fill="#0a0a0a" />
-                    <text x={cursorX} y="42" textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#0a0a0a" fontWeight="700">
-                      {fmtDec(cap, 1)}
-                    </text>
-                    <text x={toX(12)} y="42" textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="8" fill="#a67638">seuil 12</text>
-                  </svg>
-                );
-              })()}
-              kpi={fmtDec(stats.capaciteDesendettement, 1)}
-              kpiUnit="ans"
-              kpiDelta={<>{t("fx.land.tile.stress.delta")}</>}
-            />
-
-            <TileCard
-              href="/logement-social"
-              kind={t("fx.land.tile.07.kind")}
-              title={t("fx.land.tile.07.title")}
-              description={t("fx.land.tile.07.desc")}
-              preview={
-                <svg viewBox="0 0 200 100">
-                  <line x1="10" y1="90" x2="190" y2="90" className="stroke-muted" stroke="#9099a6" strokeWidth="1" />
-                  {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i) => {
-                    const x = 14 + i * 14;
-                    const isYou = i === 8;
-                    return (
-                      <rect
-                        key={i}
-                        x={x}
-                        y={isYou ? 40 : 56}
-                        width="10"
-                        height={isYou ? 48 : 32}
-                        className={isYou ? "fill-sig" : "fill"}
-                        fill={isYou ? "#a67638" : "#0a0a0a"}
-                        opacity={isYou ? 1 : 0.85 - i * 0.05}
-                      />
-                    );
-                  })}
-                  <text x="126" y="32" textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="9" fill="#a67638" fontWeight="700">vous</text>
-                </svg>
-              }
-              kpi="4,2"
-              kpiUnit="ans"
-              kpiDelta={<>{t("fx.land.tile.07.delta")}</>}
             />
 
             <TileCard
