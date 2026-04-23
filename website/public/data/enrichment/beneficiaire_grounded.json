@@ -32297,7 +32297,823 @@
       ],
       "confiance": 0.9,
       "source_type": "grounded_search"
+    },
+    "SARL TPL FRANCE": {
+      "beneficiaire": "SARL TPL France",
+      "beneficiaire_normalise": "SARL TPL FRANCE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "SARL française — informations publiques limitées. Possiblement société prestataire.",
+      "perimetre_geographique": "France",
+      "sources": [],
+      "confiance": 0.3,
+      "source_type": "grounded_search"
+    },
+    "ECOLE NUMERIQUE SOLIDAIRE QUARTIERS": {
+      "beneficiaire": "École Numérique Solidaire des Quartiers",
+      "beneficiaire_normalise": "ECOLE NUMERIQUE SOLIDAIRE QUARTIERS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association / programme : formation numérique accessible pour publics éloignés des quartiers prioritaires.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.5,
+      "source_type": "grounded_search"
+    },
+    "CIRCE": {
+      "beneficiaire": "CIRCE — Centre de Recherche Interuniversitaire sur le Cinéma Expérimental",
+      "beneficiaire_normalise": "CIRCE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association académique : recherche, diffusion et conservation du cinéma expérimental européen.",
+      "perimetre_geographique": "France",
+      "sources": [],
+      "confiance": 0.7,
+      "source_type": "grounded_search"
+    },
+    "AMIS DES JARDINS DU RUISSEAU": {
+      "beneficiaire": "Les Amis des Jardins du Ruisseau",
+      "beneficiaire_normalise": "AMIS DES JARDINS DU RUISSEAU",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (18e) fondée en 2003 : jardin partagé ~1 km le long de la Petite Ceinture ferroviaire (entre rue du Ruisseau et rue Arthur Ranc). Animation écologique, ruches, lombricompostage. SIRET 47956990700013.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://jardinsduruisseau.fr",
+          "title": "jardinsduruisseau.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "LINKLUSION": {
+      "beneficiaire": "Linklusion",
+      "beneficiaire_normalise": "LINKLUSION",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (Paris) : mise en relation freelance en situation de handicap avec entreprises — première plateforme freelance inclusive.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://linklusion.fr",
+          "title": "linklusion.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "REV ELLES": {
+      "beneficiaire": "Rev'Elles",
+      "beneficiaire_normalise": "REV ELLES",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (créée en 2013) : orientation et ambition professionnelle de jeunes filles de quartiers prioritaires (14-20 ans) — programmes Rev'Elles Ton Potentiel, Rev'Elles Ta Voie, mentorat.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://revelles.org",
+          "title": "revelles.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION AMIS MUSEE RESISTANCE NATIONALE": {
+      "beneficiaire": "Association des Amis du Musée de la Résistance Nationale",
+      "beneficiaire_normalise": "ASSOCIATION AMIS MUSEE RESISTANCE NATIONALE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Voir ASS AMIS MUSEE RESISTANCE NATIONALE.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://musee-resistance.com",
+          "title": "musee-resistance.com"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "IOO": {
+      "beneficiaire": "IOO",
+      "beneficiaire_normalise": "IOO",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Structure — informations publiques limitées.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.2,
+      "source_type": "grounded_search"
+    },
+    "POLARIS 14": {
+      "beneficiaire": "Polaris 14",
+      "beneficiaire_normalise": "POLARIS 14",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Centre social associatif (14e) : accueil, ateliers socio-linguistiques, activités enfants/jeunes, animation de quartier. SIRET 87803413100036.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "KASBAH SUR SCENE": {
+      "beneficiaire": "Kasbah sur Scène",
+      "beneficiaire_normalise": "KASBAH SUR SCENE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association / compagnie (Paris) : diffusion culturelle maghrébine / arabo-berbère — concerts, contes, spectacles. SIRET 45374770100036.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.7,
+      "source_type": "grounded_search"
+    },
+    "BARCO": {
+      "beneficiaire": "Barco",
+      "beneficiaire_normalise": "BARCO",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Société coopérative de taxis parisiens (années 2000) membre du groupement GESCOP — voir entrée TAXICOP.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://gescop.fr",
+          "title": "gescop.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "grounded_search"
+    },
+    "ASTROLABE CONSEIL": {
+      "beneficiaire": "Astrolabe Conseil",
+      "beneficiaire_normalise": "ASTROLABE CONSEIL",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Bureau d'études / structure de conseil — information publique limitée.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.3,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION STARTING BLOCK": {
+      "beneficiaire": "Starting-Block",
+      "beneficiaire_normalise": "ASSOCIATION STARTING BLOCK",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association étudiante d'éducation à la citoyenneté et à la solidarité internationale — ateliers handicap, interculturel, environnement en milieu scolaire.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://starting-block.org",
+          "title": "starting-block.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "COMITE DES METALLOS": {
+      "beneficiaire": "Maison des Métallos / Comité des Métallos",
+      "beneficiaire_normalise": "COMITE DES METALLOS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Établissement culturel de la Ville de Paris (11e, 94 rue Jean-Pierre Timbaud) — ancien siège CGT Métallurgie, transformé en équipement culturel en 2007. Programmation pluridisciplinaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://maisondesmetallos.paris",
+          "title": "maisondesmetallos.paris"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "ASS FRANCAISE ASTRONOMIE": {
+      "beneficiaire": "AFA — Association Française d'Astronomie",
+      "beneficiaire_normalise": "ASS FRANCAISE ASTRONOMIE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Voir entrée ASSOCIATION FRANCAISE ASTRONOMIE.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://afastronomie.fr",
+          "title": "afastronomie.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "CRIS DES VILLES": {
+      "beneficiaire": "Les Cris des Villes",
+      "beneficiaire_normalise": "CRIS DES VILLES",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (Paris) : projets urbanistiques participatifs, médiation avec habitants, animations de l'espace public. SIRET 88414240700029.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.6,
+      "source_type": "grounded_search"
+    },
+    "ECOLE GUSTAVE": {
+      "beneficiaire": "École Gustave",
+      "beneficiaire_normalise": "ECOLE GUSTAVE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "École privée hors-contrat (92, Levallois-Perret) lancée en 2022 : collège et lycée pour jeunes à haut potentiel et neurodiversité (TDAH, dys, TSA). Pédagogie individualisée.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://ecolegustave.com",
+          "title": "ecolegustave.com"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "PARCOURS LE MONDE IDF": {
+      "beneficiaire": "Parcours le Monde Île-de-France",
+      "beneficiaire_normalise": "PARCOURS LE MONDE IDF",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (Paris) : accompagnement de jeunes 16-30 ans en mobilité internationale (volontariat, service civique, stages à l'étranger). Antenne IDF. SIRET 81794775700040.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://parcourslemonde.org",
+          "title": "parcourslemonde.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "LIG INTER CONTR RACISM ANTISEM": {
+      "beneficiaire": "LICRA — Ligue Internationale Contre le Racisme et l'Antisémitisme",
+      "beneficiaire_normalise": "LIG INTER CONTR RACISM ANTISEM",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association fondée en 1927 (8e, 42 rue du Louvre / 11e, 10 rue du Séminaire de Conflans Charenton) : lutte contre le racisme, l'antisémitisme et les discriminations. Service juridique, actions éducatives.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://licra.org",
+          "title": "licra.org"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "INSTITUT MINES TELECOM": {
+      "beneficiaire": "IMT — Institut Mines-Télécom",
+      "beneficiaire_normalise": "INSTITUT MINES TELECOM",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Grand établissement public d'enseignement supérieur et de recherche (Palaiseau) : réseau de 8 grandes écoles d'ingénieurs et de management (Mines ParisTech, Télécom Paris…).",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://imt.fr",
+          "title": "imt.fr"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "FONDATION GRANCHER": {
+      "beneficiaire": "Fondation Grancher",
+      "beneficiaire_normalise": "FONDATION GRANCHER",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Fondation RUP fondée en 1903 par le Dr Jacques-Joseph Grancher : protection de l'enfance — accueil familial thérapeutique, MECS, placement éducatif pour enfants en danger ou en rupture familiale.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://fondation-grancher.fr",
+          "title": "fondation-grancher.fr"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "FEDERATION FRANCAISE DE HANDBALL": {
+      "beneficiaire": "FFHB — Fédération Française de Handball",
+      "beneficiaire_normalise": "FEDERATION FRANCAISE DE HANDBALL",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Fédération sportive fondée en 1941 (Créteil) : ~560 000 licenciés, 2300 clubs. Équipes de France multi-titrées (multiples champions olympiques/monde). SIRET 78454476900028.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://ffhandball.fr",
+          "title": "ffhandball.fr"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "EQUIPAGE": {
+      "beneficiaire": "Équipage",
+      "beneficiaire_normalise": "EQUIPAGE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association Paris : informations publiques limitées.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.3,
+      "source_type": "grounded_search"
+    },
+    "EN AVANT TOUTES": {
+      "beneficiaire": "En Avant Toute(s)",
+      "beneficiaire_normalise": "EN AVANT TOUTES",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association créée en 2013 par Louise Delavier et Ynaée Benaben : lutte contre les violences dans le couple et les violences sexistes chez les jeunes — tchat commentonsaime.fr (15 000+ jeunes/an), ateliers scolaires.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://enavanttoutes.fr",
+          "title": "enavanttoutes.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "BALCON": {
+      "beneficiaire": "Le Balcon",
+      "beneficiaire_normalise": "BALCON",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Ensemble musical contemporain (Paris) fondé en 2008 par Maxime Pascal : interpretations amplifiées d'œuvres contemporaines, création, résidences. SIRET 50895539000010.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://lebalcon.com",
+          "title": "lebalcon.com"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION SON RE": {
+      "beneficiaire": "Association Son Ré",
+      "beneficiaire_normalise": "ASSOCIATION SON RE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association artistique Paris : création et diffusion de musique contemporaine. SIRET 32618470200024.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.5,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION LE LIEU MAINS D OEUVRES": {
+      "beneficiaire": "Mains d'Œuvres",
+      "beneficiaire_normalise": "ASSOCIATION LE LIEU MAINS D OEUVRES",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Lieu culturel (Saint-Ouen 93, 1 rue Charles Garnier) ouvert en 1998 dans les anciens centres sociaux Valeo : laboratoire artistique pluridisciplinaire, résidences, spectacles, concerts.",
+      "perimetre_geographique": "Seine-Saint-Denis",
+      "sources": [
+        {
+          "url": "https://mainsdoeuvres.org",
+          "title": "mainsdoeuvres.org"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "AGIS NOTE ET INNOVE": {
+      "beneficiaire": "Agis Note & Innove",
+      "beneficiaire_normalise": "AGIS NOTE ET INNOVE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Structure de conseil/accompagnement entrepreneurial / innovation sociale — information publique limitée. SIRET 45287605500032.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "grounded_search"
+    },
+    "ACCUEIL LOUISE ET ROSALIE": {
+      "beneficiaire": "Accueil Louise et Rosalie",
+      "beneficiaire_normalise": "ACCUEIL LOUISE ET ROSALIE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (11e, 47 rue de la Roquette) : accueil, accompagnement et aide alimentaire aux personnes précaires, notamment familles. SIRET 85358705300010.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "COM LOCAL ANIM SOC SOLIDARITE XVII": {
+      "beneficiaire": "Comité Local d'Animation Sociale et de Solidarité du 17e",
+      "beneficiaire_normalise": "COM LOCAL ANIM SOC SOLIDARITE XVII",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Collectif associatif du 17e : coordination solidarités, animation sociale, permanences associatives locales.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.7,
+      "source_type": "grounded_search"
+    },
+    "PARIS STREET CULTURE": {
+      "beneficiaire": "Paris Street Culture",
+      "beneficiaire_normalise": "PARIS STREET CULTURE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (Paris) : valorisation des cultures urbaines — street art, skate, hip-hop, danse. Événements et ateliers.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.6,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION PARIS AMICALE CAMOU": {
+      "beneficiaire": "Amicale Camou",
+      "beneficiaire_normalise": "ASSOCIATION PARIS AMICALE CAMOU",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Voir entrée ASS PARIS AMICALE CAMOU.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "grounded_search"
+    },
+    "FONDATION DES AMIS DE L ATELIER": {
+      "beneficiaire": "Fondation des Amis de l'Atelier",
+      "beneficiaire_normalise": "FONDATION DES AMIS DE L ATELIER",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Fondation RUP (Châtenay-Malabry) créée en 1961 : accompagnement des personnes en situation de handicap mental/psychique — foyers de vie, ESAT, SAVS, 60+ établissements en IDF et Limousin.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://fondation-amisdelatelier.org",
+          "title": "fondation-amisdelatelier.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "JUDO FRANCE PARIS": {
+      "beneficiaire": "Judo France Paris",
+      "beneficiaire_normalise": "JUDO FRANCE PARIS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Ligue ou comité parisien de judo — informations publiques limitées. SIRET 42486753900035.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "grounded_search"
+    },
+    "ECRANS DE PARIS": {
+      "beneficiaire": "Écrans de Paris",
+      "beneficiaire_normalise": "ECRANS DE PARIS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Société d'exploitation cinématographique (9e/6e) : exploite plusieurs cinémas d'art et essai parisiens (Les Écrans de Paris — Le Luminor, L'Entrepôt, Le Majestic Bastille, Le Majestic Passy, Les 7 Parnassiens…).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://lesecransdeparis.fr",
+          "title": "lesecransdeparis.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "LIGUE FRANCAISE PROTECTION OISEAUX": {
+      "beneficiaire": "LPO — Ligue pour la Protection des Oiseaux",
+      "beneficiaire_normalise": "LIGUE FRANCAISE PROTECTION OISEAUX",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association RUP fondée en 1912 (Rochefort) : protection de la biodiversité et des oiseaux sauvages. 70 000 adhérents, 10 000 bénévoles. Délégation Île-de-France.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://lpo.fr",
+          "title": "lpo.fr"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "INTERASSOCIA LESBIEN GAIE BI TRANS": {
+      "beneficiaire": "Inter-LGBT",
+      "beneficiaire_normalise": "INTERASSOCIA LESBIEN GAIE BI TRANS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Fédération d'associations LGBT+ créée en 1999 : organise la Marche des Fiertés de Paris depuis 2001 ; 60+ associations membres. Plaidoyer, sensibilisation, visibilité.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://inter-lgbt.org",
+          "title": "inter-lgbt.org"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "COMITE DEPARTEMENTAL UFOLEP PARIS": {
+      "beneficiaire": "UFOLEP Paris — Comité Départemental",
+      "beneficiaire_normalise": "COMITE DEPARTEMENTAL UFOLEP PARIS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Comité parisien de l'UFOLEP (Union Française des Œuvres Laïques d'Éducation Physique, 1928) : sport pour tous, multisport, compétitions loisirs.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://ufolep75.org",
+          "title": "ufolep75.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION RESEAU ALPHA": {
+      "beneficiaire": "Réseau Alpha",
+      "beneficiaire_normalise": "ASSOCIATION RESEAU ALPHA",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association Paris (20e) : portail des cours de français (alpha/FLE) en IDF — annuaire, formation, accompagnement à la pratique pédagogique. 500+ associations partenaires.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://reseau-alpha.org",
+          "title": "reseau-alpha.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "STUDIO GALANDE": {
+      "beneficiaire": "Studio Galande",
+      "beneficiaire_normalise": "STUDIO GALANDE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Cinéma indépendant (5e, 42 rue Galande) fondé en 1977 : 2 salles art et essai, programmation Rocky Horror Picture Show tous les vendredis depuis 1978.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://studiogalande.fr",
+          "title": "studiogalande.fr"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ARTS TRADITION NOUVELLES TECH 18EME": {
+      "beneficiaire": "ATNT 18 — Arts Tradition Nouvelles Technologies 18e",
+      "beneficiaire_normalise": "ARTS TRADITION NOUVELLES TECH 18EME",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (18e) : rencontres art/technologie, ateliers créatifs, pratiques amateurs.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.5,
+      "source_type": "grounded_search"
+    },
+    "ASSO L ETAPE PARCOURS LOGE JEUNES": {
+      "beneficiaire": "L'Étape — Parcours Logement Jeunes",
+      "beneficiaire_normalise": "ASSO L ETAPE PARCOURS LOGE JEUNES",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association parisienne : accompagnement au logement pour jeunes en insertion — résidences sociales, baux glissants, accompagnement social.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.8,
+      "source_type": "grounded_search"
+    },
+    "BANDE A GODOT": {
+      "beneficiaire": "La Bande à Godot",
+      "beneficiaire_normalise": "BANDE A GODOT",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Compagnie de théâtre Paris : créations et interventions. SIRET 75200941500015.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.5,
+      "source_type": "grounded_search"
+    },
+    "PIECES A EMPORTER": {
+      "beneficiaire": "Pièces à Emporter",
+      "beneficiaire_normalise": "PIECES A EMPORTER",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Compagnie de théâtre et médiation culturelle (Paris) : lectures, mini-spectacles, interventions en lieux non théâtraux. SIRET 81773556600017.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.7,
+      "source_type": "grounded_search"
+    },
+    "FABRIQUE DE LA DANSE": {
+      "beneficiaire": "La Fabrique de la Danse",
+      "beneficiaire_normalise": "FABRIQUE DE LA DANSE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Incubateur de chorégraphes créé en 2014 : accompagnement artistique, juridique et économique — 130+ chorégraphes accompagnés. SIRET 82440307500032.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://lafabriquedeladanse.fr",
+          "title": "lafabriquedeladanse.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "SYTTEEN": {
+      "beneficiaire": "Sytteen",
+      "beneficiaire_normalise": "SYTTEEN",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association/entreprise Paris — information publique limitée. SIRET 90073085400016.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.3,
+      "source_type": "grounded_search"
+    },
+    "SOS HOMOPHOBIE": {
+      "beneficiaire": "SOS homophobie",
+      "beneficiaire_normalise": "SOS HOMOPHOBIE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association RUP fondée en 1994 : lutte contre les LGBTIphobies — ligne d'écoute 0 1 48 06 42 41, rapport annuel des discriminations, interventions scolaires.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://sos-homophobie.org",
+          "title": "sos-homophobie.org"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION FRANCO CHINOISE PIERRE DUCERF": {
+      "beneficiaire": "Association Franco-Chinoise Pierre Ducerf",
+      "beneficiaire_normalise": "ASSOCIATION FRANCO CHINOISE PIERRE DUCERF",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Voir entrée ASSOCIATION FRANCO CHINOISE PIERRE DUCERF complète.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://pierreducerf.com",
+          "title": "pierreducerf.com"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION ESPRIT SAVOIR SPORT ET EQUITE": {
+      "beneficiaire": "ESSE — Esprit, Savoir, Sport et Équité",
+      "beneficiaire_normalise": "ASSOCIATION ESPRIT SAVOIR SPORT ET EQUITE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Voir entrée ASSO ESPRIT SAVOIR SPORT ET EQUITE.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "NGUYEN": {
+      "beneficiaire": "Nguyen (personne physique)",
+      "beneficiaire_normalise": "NGUYEN",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Bénéficiaire individuel — information publique limitée (nom propre isolé).",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.2,
+      "source_type": "grounded_search"
+    },
+    "STATIONW": {
+      "beneficiaire": "StationW",
+      "beneficiaire_normalise": "STATIONW",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Entreprise sociale / tiers-lieu Paris. Information publique limitée.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.3,
+      "source_type": "grounded_search"
+    },
+    "SOCIETE DE DIFFUSION AUDIO VISUELLE": {
+      "beneficiaire": "Société de Diffusion Audio Visuelle",
+      "beneficiaire_normalise": "SOCIETE DE DIFFUSION AUDIO VISUELLE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Société (Paris) : diffusion audiovisuelle — exploitation / distribution.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.3,
+      "source_type": "grounded_search"
+    },
+    "ZINGAM": {
+      "beneficiaire": "Le Zingam",
+      "beneficiaire_normalise": "ZINGAM",
+      "siret": "",
+      "generated_at": "2026-04-23T15:54:49",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Supérette paysanne coopérative (20e, 46 rue Julien Lacroix) : circuit court, produits locaux et bio — modèle coopératif de producteurs et consommateurs.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://lezingam.com",
+          "title": "lezingam.com"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
     }
   },
-  "total": 1852
+  "total": 1905
 }
