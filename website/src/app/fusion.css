@@ -1288,6 +1288,9 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 }
 .theme-fusion .fx-article-card:hover { background: #fafaf7; }
 .theme-fusion .fx-article-card-planned { opacity: .7; pointer-events: none; }
+/* Slot vide pour compléter la dernière row de la grille articles
+   (évite d'exposer le fond noir de fx-articles-grid quand la row est partielle). */
+.theme-fusion .fx-article-card-empty { background: var(--bg); pointer-events: none; }
 .theme-fusion .fx-article-photo {
   aspect-ratio: 16 / 10;
   background: linear-gradient(135deg, #c12323 0%, #a67638 100%);
