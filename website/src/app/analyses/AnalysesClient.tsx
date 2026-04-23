@@ -266,6 +266,11 @@ export default function AnalysesClient({
                   </div>
                 </Link>
               ))}
+              {/* Combler les slots vides de la dernière row pour ne pas exposer
+                  le background noir de la grille (gap: 1px sur fond ink). */}
+              {Array.from({ length: (3 - (rest.length % 3)) % 3 }).map((_, i) => (
+                <div key={`pad-${i}`} className="fx-article-card fx-article-card-empty" aria-hidden="true" />
+              ))}
             </div>
           </div>
         </section>
