@@ -21,9 +21,9 @@ const PLANNED: { title: string; description: string; tag: string }[] = [
   },
   {
     tag: "Portrait",
-    title: "Le 13ᵉ arrondissement par ses chiffres : ZAC Paris Rive Gauche, Olympiades, héritage chinois.",
+    title: "Le 7ᵉ arrondissement par ses chiffres : SRU à 4 %, foncier d'État, ministères.",
     description:
-      "Deuxième de la série « Portraits d'arrondissement ». Le 13ᵉ s'est structuré par la plus grande opération d'aménagement parisienne de la fin du XXᵉ siècle.",
+      "Troisième de la série « Portraits d'arrondissement ». L'envers du 19ᵉ et du 13ᵉ : le taux SRU le plus bas de Paris, et un foncier verrouillé par l'État depuis le XVIIᵉ siècle.",
   },
 ];
 
