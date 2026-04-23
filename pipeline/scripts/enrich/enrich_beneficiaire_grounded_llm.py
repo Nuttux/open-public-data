@@ -63,6 +63,68 @@ CALL_DELAY = float(os.environ.get("CLAUDE_CALL_DELAY", "3.0"))
 # Codes APE génériques à rejeter (on les remplacera par grounded search)
 GENERIC_APE_CODES = {"9499Z", "9412Z", "9499", "9412", ""}
 
+# Mini-table NAF rev.2 — libellés officiels INSEE pour les codes les plus
+# fréquents dans les subventions (assos, culture, sport, social, enseignement).
+# Utilisée en fallback parce que recherche-entreprises.api.gouv.fr ne renvoie
+# plus le libellé depuis ~2024. Table exhaustive : cf. https://www.insee.fr/fr/information/2028155
+NAF_LABELS: dict[str, str] = {
+    # Assos / organisations
+    "9499Z": "Autre organisation fonctionnant par adhésion volontaire",
+    "9412Z": "Activités des organisations professionnelles",
+    "9411Z": "Activités des organisations patronales et consulaires",
+    "9420Z": "Activités des syndicats de salariés",
+    "8899B": "Action sociale sans hébergement n.c.a.",
+    "8899A": "Autre accueil ou accompagnement sans hébergement d'enfants et d'adolescents",
+    "8891A": "Accueil de jeunes enfants",
+    "8891B": "Accueil ou accompagnement sans hébergement d'enfants handicapés",
+    # Culture
+    "9001Z": "Arts du spectacle vivant",
+    "9002Z": "Activités de soutien au spectacle vivant",
+    "9003A": "Création artistique relevant des arts plastiques",
+    "9003B": "Autre création artistique",
+    "9004Z": "Gestion de salles de spectacles",
+    "5914Z": "Projection de films cinématographiques",
+    "5911C": "Production de films pour le cinéma",
+    "5911A": "Production de films et de programmes pour la télévision",
+    "5912Z": "Post-production de films cinématographiques, de vidéo et de programmes de télévision",
+    "5913A": "Distribution de films cinématographiques",
+    "9102Z": "Gestion des musées",
+    "9101Z": "Gestion des bibliothèques et des archives",
+    "9103Z": "Gestion des sites et monuments historiques et des attractions touristiques similaires",
+    "5811Z": "Édition de livres",
+    "5813Z": "Édition de journaux",
+    "5814Z": "Édition de revues et périodiques",
+    "4761Z": "Commerce de détail de livres en magasin spécialisé",
+    # Sport
+    "9312Z": "Activités de clubs de sports",
+    "9311Z": "Gestion d'installations sportives",
+    "9313Z": "Activités des centres de culture physique",
+    "9319Z": "Autres activités liées au sport",
+    # Éducation
+    "8559A": "Formation continue d'adultes",
+    "8559B": "Autres enseignements",
+    "8552Z": "Enseignement culturel",
+    "8551Z": "Enseignement de disciplines sportives et d'activités de loisirs",
+    "8542Z": "Enseignement supérieur",
+    # Santé
+    "8690F": "Activités de santé humaine non classées ailleurs",
+    "8610Z": "Activités hospitalières",
+    "8621Z": "Activité des médecins généralistes",
+    # Recherche
+    "7219Z": "Recherche-développement en autres sciences physiques et naturelles",
+    "7220Z": "Recherche-développement en sciences humaines et sociales",
+    # Restauration / hébergement
+    "5629B": "Autres services de restauration n.c.a.",
+    "5610C": "Restauration de type rapide",
+    "5510Z": "Hôtels et hébergement similaire",
+    "5590Z": "Autres hébergements",
+    # Services
+    "7021Z": "Conseil en relations publiques et communication",
+    "7022Z": "Conseil pour les affaires et autres conseils de gestion",
+    "6399Z": "Autres services d'information n.c.a.",
+    "8299Z": "Autres activités de soutien aux entreprises n.c.a.",
+}
+
 # API publique recherche-entreprises — gratuite, rate-limit ~7 req/s.
 RECHERCHE_API_URL = "https://recherche-entreprises.api.gouv.fr/search"
 RECHERCHE_DELAY = 0.15
@@ -230,12 +292,17 @@ def fetch_siren_by_name(name: str) -> dict[str, Any] | None:
         return None
     e = results[0]
     siege = e.get("siege", {}) or {}
+    # L'API renvoie le CODE APE (activite_principale) mais pas le libellé
+    # INSEE depuis quelques versions. On garde le code, le libellé sera
+    # dérivé via NAF_LABELS plus bas si besoin.
+    # L'API renvoie parfois avec point ("94.99Z"), on aligne sur NAF_LABELS ("9499Z").
+    ape = (e.get("activite_principale") or siege.get("activite_principale") or "").strip().replace(".", "")
     return {
         "siren": e.get("siren") or "",
-        "nom": e.get("nom_complete") or e.get("nom_raison_sociale") or "",
-        "activite_principale": siege.get("activite_principale"),
-        "libelle_activite": siege.get("libelle_activite_principale") or "",
-        "commune": siege.get("libelle_commune") or "",
+        "nom": e.get("nom_complet") or e.get("nom_raison_sociale") or "",
+        "activite_principale": ape,
+        "libelle_activite": NAF_LABELS.get(ape, ""),
+        "commune": siege.get("commune") or siege.get("libelle_commune") or "",
         "adresse": siege.get("adresse") or "",
         "etat": e.get("etat_administratif") or "",
         "_source": "recherche-entreprises.api",
@@ -244,8 +311,8 @@ def fetch_siren_by_name(name: str) -> dict[str, Any] | None:
 
 def sirene_to_activity(entry: dict[str, Any]) -> dict[str, Any] | None:
     """Extrait activite + code APE. Retourne None si APE générique ou vide."""
-    ape = (entry.get("activite_principale") or "").strip().upper()
-    libelle = (entry.get("libelle_activite") or "").strip()
+    ape = (entry.get("activite_principale") or "").strip().upper().replace(".", "")
+    libelle = (entry.get("libelle_activite") or "").strip() or NAF_LABELS.get(ape, "")
     if not libelle:
         return None
     # On rejette les codes génériques (autres orgas associatives etc.)
@@ -491,12 +558,12 @@ def save_cache(items: dict[str, dict[str, Any]]) -> None:
 
 
 def iter_beneficiaires(year: int | None) -> list[dict[str, Any]]:
-    """Dédup par beneficiaire_normalise, toutes années confondues (sauf filtre)."""
+    """Dédup par beneficiaire_normalise + cumul montant_total toutes années,
+    trié par montant cumul décroissant (top € d'abord)."""
     files = sorted(SUBVENTIONS_DIR.glob("beneficiaires_*.json"), reverse=True)
     if year:
         files = [f for f in files if f.stem.endswith(str(year))]
-    seen: set[str] = set()
-    items: list[dict[str, Any]] = []
+    agg: dict[str, dict[str, Any]] = {}
     for f in files:
         try:
             with f.open(encoding="utf-8") as fh:
@@ -505,11 +572,12 @@ def iter_beneficiaires(year: int | None) -> list[dict[str, Any]]:
             continue
         for b in data.get("data", []):
             key = (b.get("beneficiaire_normalise") or "").strip()
-            if not key or key in seen:
+            if not key:
                 continue
-            seen.add(key)
-            items.append(b)
-    return items
+            if key not in agg:
+                agg[key] = {**b, "montant_cumul": 0.0}
+            agg[key]["montant_cumul"] += float(b.get("montant_total") or 0)
+    return sorted(agg.values(), key=lambda x: -x.get("montant_cumul", 0.0))
 
 
 # --- Orchestration par item ---------------------------------------------------
@@ -521,6 +589,7 @@ def process_beneficiaire(
     sirene_name_index: dict[str, dict[str, Any]],
     provider: str = "claude",
     verbose: bool = False,
+    skip_web: bool = False,
 ) -> dict[str, Any]:
     name = b.get("beneficiaire") or ""
     key = b.get("beneficiaire_normalise") or ""
@@ -569,6 +638,46 @@ def process_beneficiaire(
                 "confiance": 0.9,
                 "source_type": "sirene_ape",
             }
+
+    # Mode tier2 (skip_web) : pas de LLM. On produit un fait SIRENE même
+    # quand l'APE est générique (9499Z etc.) : libellé NAF + commune suffit
+    # comme catégorisation factuelle pour la traîne. Utilisé pour backfill
+    # massif via APIs gratuites uniquement.
+    if skip_web:
+        if sirene_entry:
+            ape = (sirene_entry.get("activite_principale") or "").strip()
+            libelle = (sirene_entry.get("libelle_activite") or "").strip() or NAF_LABELS.get(ape, "")
+            commune = (sirene_entry.get("commune") or "").strip() or None
+            nom = (sirene_entry.get("nom") or name).strip()
+            # Compose un fait bref même sans libellé connu.
+            parts: list[str] = []
+            if libelle:
+                parts.append(libelle)
+            elif ape:
+                parts.append(f"Code NAF {ape}")
+            if commune and commune.lower() not in (libelle or "").lower():
+                parts.append(commune)
+            fact = " · ".join(parts) if parts else nom
+            if fact:
+                if verbose:
+                    print(f"  ✓ SIRENE fact (tier2) → {fact[:70]}")
+                return {
+                    **base,
+                    "activite_verifiee": fact,
+                    "perimetre_geographique": commune,
+                    "sources": [],
+                    "confiance": 0.55 if libelle else 0.4,
+                    "source_type": "sirene_libelle",
+                }
+        # Pas de SIRENE, pas de LLM autorisé → on skip proprement.
+        return {
+            **base,
+            "activite_verifiee": None,
+            "perimetre_geographique": None,
+            "sources": [],
+            "confiance": 0.0,
+            "source_type": "fallback_none",
+        }
 
     # Étape 2 : LLM grounded (provider=claude par défaut, gemini en option)
     grounded_source_type = "claude_web" if provider == "claude" else "grounded_search"
@@ -677,19 +786,40 @@ def main() -> int:
                         help="LLM provider (défaut: claude, plus fiable)")
     parser.add_argument("--delay", type=float, default=None,
                         help=f"Délai entre appels LLM en secondes (défaut: {CALL_DELAY})")
+    parser.add_argument("--min-montant", type=float, default=0,
+                        help="Seuil cumul € : ignore les bénéfs sous ce montant (défaut 0)")
+    parser.add_argument("--mode", choices=["tier1", "tier2", "custom"], default="custom",
+                        help="tier1 = web-grounded ≥80k€ (LLM). "
+                             "tier2 = SIRENE only ≥10k€ (gratuit, API INSEE, pas de LLM). "
+                             "custom = pas de preset, utilise --min-montant.")
     args = parser.parse_args()
+
+    # Presets — tier1 vise le haut de traîne via LLM grounded, tier2 rattrape le
+    # milieu de traîne via API gratuite SIRENE sans toucher au LLM.
+    if args.mode == "tier1":
+        if args.min_montant == 0:
+            args.min_montant = 80_000
+        args.skip_web = False
+    elif args.mode == "tier2":
+        if args.min_montant == 0:
+            args.min_montant = 10_000
+        args.skip_web = True
+    else:
+        args.skip_web = False
 
     # Override delay si fourni
     if args.delay is not None:
         CALL_DELAY = args.delay
         print(f"⏱  Délai entre appels : {CALL_DELAY}s")
 
-    if args.provider == "claude" and not ANTHROPIC_API_KEY and not args.dry_run:
-        print("❌ ANTHROPIC_API_KEY non définie (requis pour --provider claude).", file=sys.stderr)
-        return 1
-    if args.provider == "gemini" and not GEMINI_API_KEY and not args.dry_run:
-        print("❌ GOOGLE_API_KEY / GEMINI_API_KEY non définie (requis pour --provider gemini).", file=sys.stderr)
-        return 1
+    # Clé LLM requise seulement si on va réellement appeler le LLM.
+    if not args.skip_web and not args.dry_run:
+        if args.provider == "claude" and not ANTHROPIC_API_KEY:
+            print("❌ ANTHROPIC_API_KEY non définie (requis pour --provider claude).", file=sys.stderr)
+            return 1
+        if args.provider == "gemini" and not GEMINI_API_KEY:
+            print("❌ GOOGLE_API_KEY / GEMINI_API_KEY non définie (requis pour --provider gemini).", file=sys.stderr)
+            return 1
 
     cache = load_cache()
     sirene = load_sirene_cache()
@@ -698,8 +828,13 @@ def main() -> int:
     print(f"📦 Cache SIRENE : {len(sirene)} entreprises · index nom : {len(sirene_name_index)}")
 
     bens = iter_beneficiaires(args.year)
-    pending = [b for b in bens if (b.get("beneficiaire_normalise") or "") not in cache]
-    print(f"📋 Bénéficiaires uniques : {len(bens)} · à traiter : {len(pending)}")
+    pending = [
+        b for b in bens
+        if (b.get("beneficiaire_normalise") or "") not in cache
+        and b.get("montant_cumul", 0.0) >= args.min_montant
+    ]
+    mode_label = f"mode={args.mode}" + (" · LLM désactivé" if args.skip_web else "")
+    print(f"📋 Bénéficiaires uniques : {len(bens)} · à traiter ≥{args.min_montant:,.0f}€ : {len(pending)}  ({mode_label})")
 
     if args.limit:
         pending = pending[: args.limit]
@@ -736,7 +871,8 @@ def main() -> int:
         else:
             try:
                 result = process_beneficiaire(b, sirene, sirene_name_index,
-                                              provider=args.provider, verbose=args.verbose)
+                                              provider=args.provider, verbose=args.verbose,
+                                              skip_web=args.skip_web)
             except Exception as e:
                 stats["errors"] += 1
                 print(f"  ⚠ {name}: {e}", flush=True)
@@ -766,10 +902,11 @@ def main() -> int:
                 f"none={stats['fallback_none']} err={stats['errors']}",
                 flush=True,
             )
-        if processed % SAVE_EVERY == 0:
+        if processed % SAVE_EVERY == 0 and not args.dry_run:
             save_cache(cache)
 
-    save_cache(cache)
+    if not args.dry_run:
+        save_cache(cache)
     print(f"💾 Cache écrit : {CACHE_PATH.relative_to(PROJECT_ROOT)} ({len(cache)} entrées)")
     print(
         f"📊 Résumé : SIRENE-APE={stats['sirene_ape']}  ·  "
