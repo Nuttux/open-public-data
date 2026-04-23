@@ -1,0 +1,98 @@
+---
+title: "Les bénéficiaires fantômes : 2 années de subventions absentes du portail Open Data Paris"
+description: "Sur les sept derniers exercices, deux années entières de subventions (2020 et 2021) sont absentes du portail Open Data Paris. L'année 2018 a 400 lignes sans nom de bénéficiaire sur 10 266. À partir de 2022, la donnée est complète. Anatomie d'un trou de transparence et de ce qu'il signifie pour l'auditabilité de l'argent public parisien."
+date: "2026-05-04"
+author: "France Open Data"
+tags: ["enquête", "subventions", "transparence", "open-data"]
+category: "Enquête"
+image: "https://commons.wikimedia.org/wiki/Special:FilePath/Hotel%20de%20Ville%20Paris%20Wikimedia%20Commons.jpg?width=1600"
+imageAlt: "Hôtel de Ville de Paris — siège politique et administratif où se vote chaque année la liste des subventions"
+imageCredit: "Photo : Wikimedia Commons · CC BY-SA"
+readingTime: "6 min"
+---
+
+L'engagement Open Data de la Ville de Paris est ancien et public. Le portail [opendata.paris.fr](https://opendata.paris.fr) publie des dizaines de jeux de données financières, dont l'agrégat annuel des **subventions versées aux associations** — un fichier essentiel pour comprendre où va une part significative de l'argent public municipal. Sur les sept derniers exercices pour lesquels une publication serait attendue (2018, 2019, 2020, 2021, 2022, 2023, 2024), **deux années sont totalement absentes du portail** : **2020 et 2021**. Et l'année 2018 a un trou plus discret : **400 lignes sans nom de bénéficiaire** sur 10 266.
+
+Cet article documente ce trou. Il n'est ni un réquisitoire ni une accusation. C'est un constat factuel, vérifiable dans le **fichier `data_availability.json`** du pipeline open-public-data — qui indexe pour chaque dataset ce qui est disponible, et ce qui ne l'est pas.
+
+## Ce que le portail publie, ce qu'il ne publie pas
+
+Voici la couverture annuelle des subventions associations sur les sept exercices concernés :
+
+| Année | Statut | Nb subventions | Nb bénéficiaires nommés | Trou |
+|---|---|---:|---:|---:|
+| 2018 | publié | 10 266 | 9 863 | **403 sans nom** (4 %) |
+| 2019 | publié | 12 093 | 12 093 | 0 |
+| **2020** | **❌ absent** | — | — | **année entière** |
+| **2021** | **❌ absent** | — | — | **année entière** |
+| 2022 | publié | 5 336 | 5 336 | 0 |
+| 2023 | publié | 5 167 | 5 167 | 0 |
+| 2024 | publié | 5 977 | 5 948 | 29 sans nom (0,5 %) |
+
+Trois faits ressortent :
+
+1. **Deux années entières manquent** au portail : aucun fichier subventions 2020 ni 2021 n'est téléchargeable. Une commune qui a voté plus d'1 milliard d'euros de subventions cette année-là n'apparaît pas dans la base ouverte.
+2. **L'année 2018 a un sous-trou de 400 noms manquants** : sur 10 266 lignes de subventions, 403 ont un champ « bénéficiaire » vide ou non renseigné. Cela représente environ 4 % des lignes — minoritaire, mais non négligeable.
+3. **À partir de 2022, la donnée est propre** : le ratio « nombre de subventions = nombre de bénéficiaires nommés » est respecté (à 29 lignes près en 2024, soit 0,5 % — vraisemblablement des aides individuelles à des personnes physiques, pour lesquelles l'anonymisation est légalement requise).
+
+## Pourquoi ce trou existe — ce qu'on sait et ce qu'on ne sait pas
+
+Le pipeline open-public-data ne publie aucune justification officielle de ce trou — et nous n'avons trouvé aucune communication explicite de la Ville sur la non-publication des exercices 2020 et 2021. Plusieurs hypothèses sont possibles ; aucune n'est documentée publiquement à notre connaissance :
+
+- **Hypothèse 1 — transition de système d'information.** La Ville a basculé sa comptabilité au format M57 en 2019, puis a probablement migré son outil de gestion des subventions sur la même période. Une transition technique qui aurait impacté la publication automatique des fichiers d'export pourrait expliquer un trou ponctuel — sans expliquer pourquoi le trou n'a jamais été comblé après-coup.
+- **Hypothèse 2 — effet pandémie sur les processus de publication.** 2020 et 2021 ont été des années de forte mobilisation administrative (gestion de la crise, dispositifs d'urgence, télétravail des agents). La publication systématique des fichiers d'export annuels n'a pas été une priorité — et les rétro-publications n'ont jamais été faites.
+- **Hypothèse 3 — choix éditorial implicite.** La période 2020-2021 a vu des subventions exceptionnelles (soutien aux associations en difficulté, dispositifs sanitaires délégués) dont le détail aurait pu être politiquement sensible à publier. Cette hypothèse est spéculative et ne peut pas être vérifiée à partir des données publiques.
+
+Aucune de ces hypothèses n'est confirmée. Ce qui est confirmé, c'est **le trou lui-même** — vérifiable en deux clics sur le portail Open Data Paris.
+
+## Ce qu'on perd en ne publiant pas 2020 et 2021
+
+Sur les exercices publiés, la Ville verse entre **1,17 Md€** (2022) et **1,35 Md€** (2024) de subventions chaque année. En extrapolation prudente, le **volume cumulé des subventions 2020-2021 manquantes représente vraisemblablement 2 à 2,5 Md€** — un ordre de grandeur considérable de transactions financières absentes du portail.
+
+Concrètement, cela signifie qu'**aucun citoyen, journaliste ou chercheur ne peut**, à partir des seules données ouvertes parisiennes :
+
+- Vérifier qui a touché des subventions exceptionnelles pendant la pandémie
+- Comparer la concentration des bénéficiaires sur les exercices touchés vs les autres
+- Reconstituer la trajectoire pluriannuelle des opérateurs majeurs (CASVP, Croix-Rouge, etc.) sans interpolation
+- Suivre l'évolution du tissu associatif financé sur la période la plus difficile de la décennie
+
+Pour pallier ce trou, il faut soit :
+- **Reconstituer manuellement** depuis les annexes des comptes administratifs (fichiers PDF de plus de 1 500 pages par an, format de tableau changeant, extraction non triviale)
+- **Faire une demande CADA** (Commission d'accès aux documents administratifs) pour obtenir les fichiers en format exploitable
+- **Croiser** avec les rapports d'activité des opérateurs concernés (qui publient leurs propres comptes)
+
+Aucune de ces trois voies n'est ouverte sans effort important. Et aucune n'est aussi simple qu'un téléchargement CSV depuis un portail public.
+
+## Le sous-trou 2018 : 400 noms manquants
+
+Outre les années entières manquantes, l'exercice 2018 présente une particularité moindre mais notable : **403 lignes de subventions ne portent pas de nom de bénéficiaire**. Le montant est inscrit, la direction émettrice aussi, mais la colonne « bénéficiaire » est vide.
+
+Ce sous-trou représente environ 4 % du nombre de lignes. Il pourrait correspondre à :
+
+- Des aides à des personnes physiques anonymisées (légitime mais devrait être marqué « personne physique »)
+- Des subventions à des bénéficiaires multiples non détaillés ligne par ligne
+- Des erreurs de saisie ou d'export
+
+Sans documentation officielle, on ne peut pas trancher. Ce sous-trou est documenté dans les seuils du pipeline (`data_availability.json` ne le marque pas comme « warning » mais le compte des bénéficiaires distincts est inférieur au compte de subventions, ce qui révèle l'écart).
+
+À partir de 2019, ce sous-trou disparaît. À partir de 2022, l'écart est négligeable (0 à 0,5 %).
+
+## Comparaison avec d'autres jeux de données du portail
+
+Le trou des subventions n'est pas un cas isolé. Notre [manifeste sur la qualité de l'open data](/analyses/histoire-du-projet) (article masqué du flux mais accessible par URL directe) avait noté que **20 jeux de données financières sur 28 publiés par la Ville n'avaient pas été mis à jour depuis 2020 ou 2021**. La dette propre de la ville était figée depuis juillet 2019. Les budgets votés par arrondissement n'étaient plus alimentés depuis 2021. Le personnel municipal : décembre 2018.
+
+L'open data parisien n'est pas un mensonge. C'est un **engagement à intensité variable**, qui produit des données de bonne qualité sur certains périmètres et des trous structurels sur d'autres. Les subventions 2020-2021 sont un cas particulièrement gênant parce qu'elles concernent une année charnière de la mandature et un volume massif de transactions.
+
+## Ce que ces chiffres ne disent pas
+
+Cette analyse s'arrête à ce que le pipeline open-public-data permet de mesurer. Elle ne dit pas :
+
+- **Si la Ville pourrait re-publier 2020 et 2021** — c'est une question administrative pour les services compétents (Direction des Affaires Juridiques + Direction de l'Information et des Systèmes d'Information)
+- **Quels bénéficiaires précis sont manquants** sur les 400 lignes de 2018 — il faudrait pour cela accéder à la base interne, qui n'est pas en open data
+- **Pourquoi le format de publication a changé** (10 266 lignes en 2018 → ~5 500 en 2022) — cette baisse de volume pourrait refléter un changement de granularité (regroupement de lignes) ou un changement de périmètre
+
+Ce qu'elle dit, en une phrase : **deux années entières de subventions parisiennes (2020 et 2021) sont absentes du portail Open Data Paris, ce qui crée un trou de transparence d'environ 2 Md€ sur la période la plus mouvementée de la décennie**. Ce trou peut être comblé techniquement (re-publication ou reconstitution PDF) — mais il ne l'a pas été à cette date. C'est une dette d'open data que la Ville pourrait combler si la décision était prise.
+
+---
+
+**Sources** : Pipeline open-public-data, fichier `data_availability.json` qui indexe les datasets disponibles et leurs warnings · Portail Open Data Paris ([opendata.paris.fr](https://opendata.paris.fr)) — recherche directe « subventions associations ». Périmètre : Ville de Paris, fichier `subventions-associations` (millésimes annuels). Constat vérifiable en deux clics sur le portail.
