@@ -14,12 +14,6 @@ export const metadata: Metadata = {
 
 const PLANNED: { title: string; description: string; tag: string }[] = [
   {
-    tag: "Explication",
-    title: "La règle d'or des communes : ce que dit vraiment le CGCT.",
-    description:
-      "Une commune ne peut pas emprunter pour payer ses salaires. L'article L.1612-4 explique pourquoi, et ce qui se passe si la règle est cassée.",
-  },
-  {
     tag: "Enquête",
     title: "Les avenants BTP : +18 % en moyenne, pourquoi ?",
     description:
