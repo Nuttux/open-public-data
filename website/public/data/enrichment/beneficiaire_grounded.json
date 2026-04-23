@@ -30414,7 +30414,428 @@
       ],
       "confiance": 0.9,
       "source_type": "grounded_search"
+    },
+    "AGROF ILE": {
+      "beneficiaire": "Agrof'Île",
+      "beneficiaire_normalise": "AGROF ILE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:49:16",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association francilienne d'agroforesterie : promotion et accompagnement des pratiques agroforestières en IDF (haies, arbres champêtres, vergers-maraîchers). Conseils aux agriculteurs, formations, animation de réseau. SIRET 82318584800012.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://agrof-ile.fr",
+          "title": "agrof-ile.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "KILOGRAMME": {
+      "beneficiaire": "Kilogramme",
+      "beneficiaire_normalise": "KILOGRAMME",
+      "siret": "",
+      "generated_at": "2026-04-23T15:49:16",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association ESS parisienne — collecte et redistribution alimentaire / anti-gaspi (présumé). Informations publiques limitées.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "grounded_search"
+    },
+    "COMPAGNIE DES REVES AYEZ": {
+      "beneficiaire": "Compagnie des Rêves",
+      "beneficiaire_normalise": "COMPAGNIE DES REVES AYEZ",
+      "siret": "",
+      "generated_at": "2026-04-23T15:49:16",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Compagnie de spectacle vivant. SIRET 75023283700013. Informations publiques limitées.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "grounded_search"
+    },
+    "ASSOCE": {
+      "beneficiaire": "Association ASSOCE — Épicerie Solidaire",
+      "beneficiaire_normalise": "ASSOCE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:49:16",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Épicerie solidaire étudiante (6e, 5 rue Antoine Dubois, CROUS Paris) : aide alimentaire à prix solidaires (10% du prix) pour étudiants précaires. SIRET 78943227500012.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://crous-paris.fr",
+          "title": "crous-paris.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "TRACES THEORIE REFL APP COM EDU SCI": {
+      "beneficiaire": "TRACES — Théorie et Réflexions sur l'Apprendre, la Communication et l'Éducation Scientifiques",
+      "beneficiaire_normalise": "TRACES THEORIE REFL APP COM EDU SCI",
+      "siret": "",
+      "generated_at": "2026-04-23T15:49:16",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (12e) créée en 2006 : médiation scientifique critique et innovante — ESPGG (Espace Pierre Gilles de Gennes, ESPCI Paris, 5e), café des sciences, projets européens.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://groupe-traces.fr",
+          "title": "groupe-traces.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ESPERANCE DE REUILLY": {
+      "beneficiaire": "Association L'Espérance de Reuilly",
+      "beneficiaire_normalise": "ESPERANCE DE REUILLY",
+      "siret": "",
+      "generated_at": "2026-04-23T15:49:16",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (12e, rue de Reuilly) : établissement de soins/accompagnement. Informations publiques limitées. SIRET 42948046000014.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "grounded_search"
+    },
+    "COMITE DES FAMILLES": {
+      "beneficiaire": "Comité des Familles",
+      "beneficiaire_normalise": "COMITE DES FAMILLES",
+      "siret": "",
+      "generated_at": "2026-04-23T15:49:16",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (11e) créée en 2002 par des personnes séropositives et leurs familles : soutien à la parentalité, prévention VIH chez les couples, émission « Survivre au sida ». Plaidoyer pour l'accès aux traitements. SIRET 48249488700037.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://comitedesfamilles.net",
+          "title": "comitedesfamilles.net"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "ZARTS PROD": {
+      "beneficiaire": "Zarts Prod",
+      "beneficiaire_normalise": "ZARTS PROD",
+      "siret": "",
+      "generated_at": "2026-04-23T15:49:16",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (20e) : production et diffusion de spectacles et événements culturels. SIRET 51792060900024.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.5,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION MUSIQUE ET DANSE 20": {
+      "beneficiaire": "Musique et Danse 20",
+      "beneficiaire_normalise": "ASSOCIATION MUSIQUE ET DANSE 20",
+      "siret": "",
+      "generated_at": "2026-04-23T15:49:16",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (20e, 210 rue de Belleville) fondée en 1983 : pratiques musicales et chorégraphiques dans le 20e — voir entrée ASS MUSIQUE ET DANSE 20.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://societe.com",
+          "title": "societe.com"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "CTE DEP DE BADMINTON PARIS": {
+      "beneficiaire": "CDBP 75 — Comité Départemental de Badminton de Paris",
+      "beneficiaire_normalise": "CTE DEP DE BADMINTON PARIS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:49:16",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Comité FFBaD (15e, 91 quai Jacques Chirac) : 20+ clubs parisiens, développement du badminton, formation arbitrale, compétitions interclubs.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://paris.ffbad.club",
+          "title": "paris.ffbad.club"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION SAINT SIMON": {
+      "beneficiaire": "Association Saint-Simon",
+      "beneficiaire_normalise": "ASSOCIATION SAINT SIMON",
+      "siret": "",
+      "generated_at": "2026-04-23T15:49:16",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (17e, rue Jouffroy-d'Abbans) gestionnaire du FJT Saint-Simon pour jeunes femmes : hébergement, accompagnement socio-pro, restauration. SIRET 78431368600015.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://habitatjeunes-idf.fr",
+          "title": "habitatjeunes-idf.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "OPTIM E T T I": {
+      "beneficiaire": "Optima ETTI",
+      "beneficiaire_normalise": "OPTIM E T T I",
+      "siret": "",
+      "generated_at": "2026-04-23T15:49:16",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Entreprise de Travail Temporaire d'Insertion (18e) : missions d'intérim et accompagnement socio-pro de personnes éloignées de l'emploi dans BTP, industrie, logistique, services.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://optima-emploi.fr",
+          "title": "optima-emploi.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "ISM INTERPRETARIAT": {
+      "beneficiaire": "ISM Interprétariat",
+      "beneficiaire_normalise": "ISM INTERPRETARIAT",
+      "siret": "",
+      "generated_at": "2026-04-23T15:49:16",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (10e, 251 rue du Faubourg Saint-Martin) fondée en 1970 : interprétariat et traduction en 100+ langues pour services publics, associations et hôpitaux — présentiel, téléphone, visio 24/7. SIRET 32243407700036.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://ism-interpretariat.fr",
+          "title": "ism-interpretariat.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "DEMOCRATIE OUVERTE": {
+      "beneficiaire": "Démocratie Ouverte",
+      "beneficiaire_normalise": "DEMOCRATIE OUVERTE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:49:16",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Collectif d'intérêt général fondé en 2013 : plaidoyer et accompagnement des transitions démocratiques — open gov, participation citoyenne, budgets participatifs, conventions citoyennes. ~100 organisations membres.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://democratieouverte.org",
+          "title": "democratieouverte.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "CYCLOCARE": {
+      "beneficiaire": "Cyclocare",
+      "beneficiaire_normalise": "CYCLOCARE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:49:16",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Coopérative de livraison à vélo (Paris) : alternative mutualiste aux plateformes type Uber Eats/Deliveroo — livraisons logistique urbaine à vélo cargo. Membre CoopCycle.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://cyclocare.fr",
+          "title": "cyclocare.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "ROLLER SQUAD INSTITUT": {
+      "beneficiaire": "Roller Squad Institut",
+      "beneficiaire_normalise": "ROLLER SQUAD INSTITUT",
+      "siret": "",
+      "generated_at": "2026-04-23T15:49:16",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (20e, Espace Sportif Louis Lumière) créée en 1994 : enseignement du roller acrobatique (rampes, halfpipe, street) — 300+ membres, stages enfants/ados, cours adultes. École labellisée FFRS.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://rollersquadinstitut.fr",
+          "title": "rollersquadinstitut.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "13 NOVEMBRE 2015 FRATERNITE ET VERI": {
+      "beneficiaire": "13onze15 — Fraternité et Vérité (ét. secondaire)",
+      "beneficiaire_normalise": "13 NOVEMBRE 2015 FRATERNITE ET VERI",
+      "siret": "",
+      "generated_at": "2026-04-23T15:49:16",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Voir entrée 13ONZE15 FRATERNITE ET VERITE : association de victimes et proches des attentats du 13 novembre 2015.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://13onze15.org",
+          "title": "13onze15.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "RNS TENNIS": {
+      "beneficiaire": "Racing Club de France — Section Tennis",
+      "beneficiaire_normalise": "RNS TENNIS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:49:16",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Section tennis du Racing Club de France (historique, fondé 1882) : courts Croix-Catelan (16e, Bois de Boulogne) et La Faluère. SIRET 39859533000042.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://racingclubdefrance.fr",
+          "title": "racingclubdefrance.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "grounded_search"
+    },
+    "UNIVERSITE PARIS III SORBONNE": {
+      "beneficiaire": "Université Sorbonne Nouvelle (Paris 3)",
+      "beneficiaire_normalise": "UNIVERSITE PARIS III SORBONNE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:49:16",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Université publique (siège 5e, campus Nation depuis 2022) créée en 1970 : langues, littératures, sciences humaines, arts du spectacle, cinéma, communication. ~20 000 étudiants.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://sorbonne-nouvelle.fr",
+          "title": "sorbonne-nouvelle.fr"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "UNIVERSITE PARIS 5 RENE DESCARTES": {
+      "beneficiaire": "Université Paris Cité (ex-Paris Descartes)",
+      "beneficiaire_normalise": "UNIVERSITE PARIS 5 RENE DESCARTES",
+      "siret": "",
+      "generated_at": "2026-04-23T15:49:16",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Université publique issue de la fusion Paris Descartes + Paris Diderot + IPGP en 2019. Sciences, santé, sciences humaines. ~60 000 étudiants.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://u-paris.fr",
+          "title": "u-paris.fr"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "RAINBOW SUBMARINE": {
+      "beneficiaire": "Rainbow Submarine",
+      "beneficiaire_normalise": "RAINBOW SUBMARINE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:49:16",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (11e) créée en 2014 : éducation musicale pour enfants et ados — chorales, ateliers, créations originales. SIRET 80281380800010.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://rainbowsubmarine.org",
+          "title": "rainbowsubmarine.org"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "MUTUALITE FONCTION PUBLIQUE ACTION": {
+      "beneficiaire": "MFP Action Sanitaire et Sociale",
+      "beneficiaire_normalise": "MUTUALITE FONCTION PUBLIQUE ACTION",
+      "siret": "",
+      "generated_at": "2026-04-23T15:49:16",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Mutuelle de la fonction publique : action sanitaire, sociale et culturelle pour les agents publics et retraités — colonies, aides financières, prévention santé.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://mfp.fr",
+          "title": "mfp.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "INSTITUT RECHERCHE POUR LE DEVELOPP": {
+      "beneficiaire": "IRD — Institut de Recherche pour le Développement",
+      "beneficiaire_normalise": "INSTITUT RECHERCHE POUR LE DEVELOPP",
+      "siret": "",
+      "generated_at": "2026-04-23T15:49:16",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "EPST français fondé en 1944 (ex-ORSTOM) : recherche et enseignement en partenariat avec les pays du Sud — santé, environnement, climat, ressources. Siège Marseille, antenne IDF (Bondy 93).",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://ird.fr",
+          "title": "ird.fr"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "FEDE FR JUDO JUJITSU KENDO DISC ASS": {
+      "beneficiaire": "FFJDA — Fédération Française de Judo, Jujitsu, Kendo et Disciplines Associées",
+      "beneficiaire_normalise": "FEDE FR JUDO JUJITSU KENDO DISC ASS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:49:16",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Fédération sportive (12e, 21-25 avenue de la Porte de Châtillon) fondée en 1946 : ~500 000 licenciés, 5000+ clubs. Une des premières fédérations de judo au monde.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://ffjudo.com",
+          "title": "ffjudo.com"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "DROITS DEVANT": {
+      "beneficiaire": "Droits Devant !!",
+      "beneficiaire_normalise": "DROITS DEVANT",
+      "siret": "",
+      "generated_at": "2026-04-23T15:49:16",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (10e, 34 rue Beaurepaire) créée en 1995 dans la foulée des occupations d'églises/bâtiments : défense des sans-papiers, accès aux droits, soutien juridique, mobilisations. SIRET 40206283000045.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://droitsdevant.org",
+          "title": "droitsdevant.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
     }
   },
-  "total": 1733
+  "total": 1758
 }
