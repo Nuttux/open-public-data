@@ -28448,12 +28448,12 @@
       "source_type": "grounded_search"
     },
     "ASSOCIATION COMMUNICAT ESPACE REINSERT ALC": {
-      "beneficiaire": "ACERMA — Association pour la Communication, l'Espace et la Réinsertion des Malades Addictifs",
+      "beneficiaire": "ACERMA (ét. secondaire)",
       "beneficiaire_normalise": "ASSOCIATION COMMUNICAT ESPACE REINSERT ALC",
       "siret": "",
-      "generated_at": "2026-04-23T00:32:38",
+      "generated_at": "2026-04-23T15:51:51",
       "model": "claude-opus-4-7-websearch",
-      "activite_verifiee": "Espace culturel d'utilité sociale (19e, 22 quai de la Loire) : ateliers créatifs et culturels (parole, musique, image, mouvement, numérique) pour personnes souffrant d'addictions — abstinence, lien social, cognitif. Adhésion 35 €/an. Partenariat AP-HP.",
+      "activite_verifiee": "Voir entrée ACERMA complète.",
       "perimetre_geographique": "Paris",
       "sources": [
         {
@@ -28461,7 +28461,7 @@
           "title": "acerma.org"
         }
       ],
-      "confiance": 0.95,
+      "confiance": 0.9,
       "source_type": "grounded_search"
     },
     "THARGO": {
@@ -31302,7 +31302,479 @@
       ],
       "confiance": 0.9,
       "source_type": "grounded_search"
+    },
+    "MAISON DU ZERO DECHET": {
+      "beneficiaire": "La Maison du Zéro Déchet",
+      "beneficiaire_normalise": "MAISON DU ZERO DECHET",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Espace ouvert en 2017 par Zero Waste France (11e, 7 rue Bouvier) : sensibilisation au zéro déchet, ateliers DIY, conférences, boutique écoresponsable.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://zerowastefrance.org",
+          "title": "zerowastefrance.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "BECOMTECH": {
+      "beneficiaire": "BecomTech",
+      "beneficiaire_normalise": "BECOMTECH",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (Paris, 18 rue de la Pépinière 8e) fondée en 2016 : accompagnement des jeunes filles (14-17 ans) vers les métiers tech — programmes Jump In Tech (4 semaines), Ambition Tech. 4000+ adolescentes formées. SIRET 82812043600021.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://becomtech.fr",
+          "title": "becomtech.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION DANUBE SOCIAL ET CULTUR": {
+      "beneficiaire": "ADSC — Association Danube Sociale et Culturelle",
+      "beneficiaire_normalise": "ASSOCIATION DANUBE SOCIAL ET CULTUR",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (19e, quartier Danube) : actions sociales et culturelles pour familles, aide à la scolarité, animation de territoire zéro déchet avec Débrouille Compagnie.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "EDUCAT POPUL CHARONNE REUNION": {
+      "beneficiaire": "EPCR — Éducation Populaire Charonne Réunion",
+      "beneficiaire_normalise": "EDUCAT POPUL CHARONNE REUNION",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Centre socioculturel (20e, 105 rue de Bagnolet) : CLSH, ateliers enfants/ados, cours adultes, cafés-débats, animation de quartier.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://epcr.org",
+          "title": "epcr.org"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "PROXITE": {
+      "beneficiaire": "Proxité",
+      "beneficiaire_normalise": "PROXITE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association créée en 2003 : parrainage scolaire de jeunes (CM2 à Bac+3) par des bénévoles actifs en entreprise — 2000+ jeunes accompagnés/an, 8 antennes en IDF. Agrément éducation nationale. SIRET 45037469900178.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://proxite.com",
+          "title": "proxite.com"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "PETITS BONHEURS": {
+      "beneficiaire": "Petits Bonheurs",
+      "beneficiaire_normalise": "PETITS BONHEURS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (75) : actions pour faciliter l'accès à la culture des publics les plus isolés — seniors en EHPAD, personnes empêchées. Concerts, lectures, spectacles à domicile ou en institutions. SIRET 50757196600039.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://petitsbonheurs.fr",
+          "title": "petitsbonheurs.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "GROUPE INFORM SOUTIEN TRAVAIL IMMIG": {
+      "beneficiaire": "GISTI — Groupe d'Information et de Soutien des Immigré·es",
+      "beneficiaire_normalise": "GROUPE INFORM SOUTIEN TRAVAIL IMMIG",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (10e, 3 villa Marcès) fondée en 1972 : défense des droits des personnes étrangères — contentieux, veille juridique, publications, formations. Référence francophone en droit des étrangers.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://gisti.org",
+          "title": "gisti.org"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "CITOYENNES INTERCULTURELLES DE PARI": {
+      "beneficiaire": "CIP — Citoyennes Interculturelles de Paris",
+      "beneficiaire_normalise": "CITOYENNES INTERCULTURELLES DE PARI",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (20e) : émancipation et citoyenneté des femmes issues de l'immigration, ateliers FLE, accès aux droits, rencontres interculturelles.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.7,
+      "source_type": "grounded_search"
+    },
+    "ASS PARIS AMICALE CAMOU": {
+      "beneficiaire": "Amicale Camou Paris",
+      "beneficiaire_normalise": "ASS PARIS AMICALE CAMOU",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association de résidents/habitants du quartier Camou (7e). Informations publiques limitées.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "grounded_search"
+    },
+    "CRECHE PARENTALE DU MARAIS": {
+      "beneficiaire": "Crèche Parentale du Marais",
+      "beneficiaire_normalise": "CRECHE PARENTALE DU MARAIS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Crèche parentale associative (4e/3e, rue des Archives) : ~20 enfants, gestion coopérative par les parents. Réseau ACEPPRIF. SIRET 37953076900023.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://acepprif.org",
+          "title": "acepprif.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "LUCARNE": {
+      "beneficiaire": "La Lucarne",
+      "beneficiaire_normalise": "LUCARNE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (18e/19e) : ateliers photo, vidéo et arts visuels pour enfants et ados des quartiers populaires. SIRET 81745022400016.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.7,
+      "source_type": "grounded_search"
+    },
+    "LIGUE DE L ENSEIGNEMENT": {
+      "beneficiaire": "Ligue de l'Enseignement",
+      "beneficiaire_normalise": "LIGUE DE L ENSEIGNEMENT",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Confédération laïque d'éducation populaire fondée en 1866 par Jean Macé : 102 fédérations départementales, 24 000 associations affiliées, 1,6 M adhérents. Siège national 21 rue Saint-Fargeau (20e). SIRET 77566641500010.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://laligue.org",
+          "title": "laligue.org"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "CRL 10": {
+      "beneficiaire": "CRL 10 — Centre de Ressources et de Loisirs",
+      "beneficiaire_normalise": "CRL 10",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (10e, 20 rue Alexandre Parodi) : animation socioculturelle, accueil de loisirs, ateliers adultes, lien social. SIRET 31742600500052.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://crl10.net",
+          "title": "crl10.net"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "TABLE DES MATIERES": {
+      "beneficiaire": "La Table des Matières",
+      "beneficiaire_normalise": "TABLE DES MATIERES",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (Paris) : ateliers de cuisine interculturelle, ateliers socio-linguistiques, insertion par la gastronomie. SIRET 81054127600012.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.75,
+      "source_type": "grounded_search"
+    },
+    "LIBRES TERRES DES FEMMES": {
+      "beneficiaire": "Libres Terres des Femmes",
+      "beneficiaire_normalise": "LIBRES TERRES DES FEMMES",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (19e) : accueil, hébergement et accompagnement des femmes victimes de violences — centre d'hébergement, accompagnement juridique, soutien psy.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://libres-terres-des-femmes.com",
+          "title": "libres-terres-des-femmes.com"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION CREATION SERVICES PARIS": {
+      "beneficiaire": "ACSP — Association Création Services Paris",
+      "beneficiaire_normalise": "ASSOCIATION CREATION SERVICES PARIS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association Paris : services à la personne / insertion par l'activité économique. Info publique limitée.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "grounded_search"
+    },
+    "PARIS LIBRAIRIES ASS LIBRAIRIES PA": {
+      "beneficiaire": "Paris Librairies",
+      "beneficiaire_normalise": "PARIS LIBRAIRIES ASS LIBRAIRIES PA",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (créée 2013) : réseau ~150 librairies indépendantes parisiennes — portail commun (parislibrairies.fr), promotion, livraison mutualisée, Fête de la Librairie.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://parislibrairies.fr",
+          "title": "parislibrairies.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "CTE FETES ACTION SOC 6EME ARRT PARI": {
+      "beneficiaire": "Comité des Fêtes et d'Action Sociale du 6e",
+      "beneficiaire_normalise": "CTE FETES ACTION SOC 6EME ARRT PARI",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (6e, mairie) : fêtes de quartier, Bal du 14 juillet, actions solidaires locales.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://mairie6.paris.fr",
+          "title": "mairie6.paris.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "SACREBLEU PRODUCTIONS": {
+      "beneficiaire": "Sacrebleu Productions",
+      "beneficiaire_normalise": "SACREBLEU PRODUCTIONS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "SARL (11e) fondée en 1999 par Ron Dyens : production de courts métrages d'animation et documentaires — Oscar 2010 pour « Logorama ». 300+ films produits.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://sacrebleuprod.com",
+          "title": "sacrebleuprod.com"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "RELAIS FREMICOURT": {
+      "beneficiaire": "Relais Frémicourt",
+      "beneficiaire_normalise": "RELAIS FREMICOURT",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Centre social / association (15e, 32 rue Frémicourt) : accueil familles, ateliers enfants, cours de FLE, permanences sociales. SIRET 41894238900036.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "FLE ET COMPAGNIE": {
+      "beneficiaire": "FLE et Compagnie",
+      "beneficiaire_normalise": "FLE ET COMPAGNIE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (20e, 16 rue du Général Brunet) : cours de français langue étrangère pour adultes migrants, alphabétisation, accompagnement linguistique vers l'emploi. SIRET 79417704800020.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://fleetcompagnie.com",
+          "title": "fleetcompagnie.com"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "CLUBHOUSE FRANCE": {
+      "beneficiaire": "Clubhouse France",
+      "beneficiaire_normalise": "CLUBHOUSE FRANCE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (11e, 7 rue Saint-Bernard) fondée en 2011 : lieu d'entraide et réinsertion pour personnes atteintes de troubles psychiques — modèle international Clubhouse (1948 New York). 4 Clubhouses en France (Paris, Bordeaux, Nantes, Lyon). SIRET 52438736200014.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://clubhousefrance.org",
+          "title": "clubhousefrance.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIAITON MAISON DES VOLONTAIRES": {
+      "beneficiaire": "La Maison des Volontaires",
+      "beneficiaire_normalise": "ASSOCIAITON MAISON DES VOLONTAIRES",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (18e, 13 rue Château-Landon) : hébergement et accompagnement de volontaires en service civique international (France Volontaires, Scouts et Guides de France…).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://maisondesvolontaires.com",
+          "title": "maisondesvolontaires.com"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "BOUFFES PARISIENS": {
+      "beneficiaire": "Théâtre des Bouffes-Parisiens",
+      "beneficiaire_normalise": "BOUFFES PARISIENS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Théâtre à l'italienne (2e, 4 rue Monsigny) fondé en 1855 par Jacques Offenbach : 650 places. Classé MH en 1974. Dirigé par Jean-Claude Camus puis (2017) Olivier Meyer.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://bouffesparisiens.com",
+          "title": "bouffesparisiens.com"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "AGCE NAL POUR FORMATION PROF ADULTE": {
+      "beneficiaire": "AFPA — Agence Nationale pour la Formation Professionnelle des Adultes",
+      "beneficiaire_normalise": "AGCE NAL POUR FORMATION PROF ADULTE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "EPIC national créé en 1949 : formation pro continue des demandeurs d'emploi et salariés — ~150 000 stagiaires/an, 200+ centres. Siège Montreuil (93).",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://afpa.fr",
+          "title": "afpa.fr"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "JEUNES EUROPEENS FRANCE": {
+      "beneficiaire": "Les Jeunes Européens - France",
+      "beneficiaire_normalise": "JEUNES EUROPEENS FRANCE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association pro-européenne créée en 1992 : mouvement de jeunes 16-35 ans militant pour une Europe fédérale — ~40 sections locales, actions de sensibilisation, simulations du Parlement. SIRET 41938746900036.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://jeunes-europeens.org",
+          "title": "jeunes-europeens.org"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "CORDEE": {
+      "beneficiaire": "La Cordée",
+      "beneficiaire_normalise": "CORDEE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (Paris) : Point Accueil Écoute Jeunes (PAEJ) — accueil, écoute, orientation d'adolescents et jeunes adultes en difficulté.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.7,
+      "source_type": "grounded_search"
+    },
+    "FRIPONS": {
+      "beneficiaire": "Les Fripons",
+      "beneficiaire_normalise": "FRIPONS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (Paris) créée en 2015 : friperie solidaire / ressourcerie textile ; ateliers de couture et surcyclage. SIRET 81970401600032.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.75,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION CONSULTATION LIEU ACCUEIL PSYCH": {
+      "beneficiaire": "CLAP (ét. secondaire)",
+      "beneficiaire_normalise": "ASSOCIATION CONSULTATION LIEU ACCUEIL PSYCH",
+      "siret": "",
+      "generated_at": "2026-04-23T15:51:51",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Voir entrée ASS CONSULTATION LIEU ACCUEIL PSYCH / CLAP — consultations psychanalytiques enfants/parents, 9e.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://net1901.org",
+          "title": "net1901.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
     }
   },
-  "total": 1788
+  "total": 1817
 }
