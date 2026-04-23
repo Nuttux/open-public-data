@@ -21,9 +21,9 @@ const PLANNED: { title: string; description: string; tag: string }[] = [
   },
   {
     tag: "Enquête",
-    title: "Hors-bilan : les engagements financiers que la dette officielle ne montre pas.",
+    title: "Les avenants BTP : pourquoi un chantier finit en moyenne plus cher que prévu.",
     description:
-      "Garanties d'emprunt accordées à des opérateurs publics, engagements de retraite, dépôts et cautionnements : un agrégat plurimilliardaire qui n'apparaît pas dans le ratio de désendettement. Ce qu'on peut lire dans le hors-bilan.",
+      "Entre montant notifié et montant final, la dérive est structurelle sur les chantiers urbains parisiens. Cinq causes — archéologie, amiante, normes, fournisseurs, programme — quantifiées sur 14 ans de marchés publics.",
   },
 ];
 
