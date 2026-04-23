@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-22T21:46:19.106981",
+  "generated_at": "2026-04-23T11:31:22",
   "model": "gemini-3-flash-preview",
-  "count": 780,
+  "count": 1708,
   "items": {
     "ELOGIE SIEMP": {
       "beneficiaire": "ELOGIE-SIEMP",
@@ -29975,7 +29975,446 @@
       "sources": [],
       "confiance": 0.5,
       "source_type": "grounded_search"
+    },
+    "CROIX ROUGE INSERTION": {
+      "beneficiaire": "CROIX ROUGE INSERTION",
+      "beneficiaire_normalise": "CROIX ROUGE INSERTION",
+      "siret": "",
+      "activite_verifiee": "(dry-run stub)",
+      "perimetre_geographique": null,
+      "sources": [],
+      "confiance": 0.0,
+      "source_type": "fallback_none",
+      "generated_at": "2026-04-23T11:31:22",
+      "model": "dry-run"
+    },
+    "CHECKPOINT": {
+      "beneficiaire": "CHECKPOINT",
+      "beneficiaire_normalise": "CHECKPOINT",
+      "siret": "39072518200047",
+      "activite_verifiee": "(dry-run stub)",
+      "perimetre_geographique": null,
+      "sources": [],
+      "confiance": 0.0,
+      "source_type": "fallback_none",
+      "generated_at": "2026-04-23T11:31:22",
+      "model": "dry-run"
+    },
+    "ASSOCIATION JEUNESSE EDUCATION": {
+      "beneficiaire": "Association Jeunesse Éducation (AJE)",
+      "beneficiaire_normalise": "ASSOCIATION JEUNESSE EDUCATION",
+      "siret": "",
+      "generated_at": "2026-04-23T15:48:08",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (17e) : accompagnement scolaire, loisirs et activités culturelles pour jeunes — 3-5 salariés. SIRET 42894726100023.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.6,
+      "source_type": "grounded_search"
+    },
+    "COMITE FETES ET SOLIDARITE DU 13EM": {
+      "beneficiaire": "Comité des Fêtes et Solidarité du 13e",
+      "beneficiaire_normalise": "COMITE FETES ET SOLIDARITE DU 13EM",
+      "siret": "",
+      "generated_at": "2026-04-23T15:48:08",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (13e, mairie du 13e) : organise les fêtes de quartier, le Bal du 14 juillet et actions solidaires dans l'arrondissement.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://mairie13.paris.fr",
+          "title": "mairie13.paris.fr"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION COMPAGNIE CAMBALACHE": {
+      "beneficiaire": "Compagnie Cambalache",
+      "beneficiaire_normalise": "ASSOCIATION COMPAGNIE CAMBALACHE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:48:08",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Compagnie de tango argentin et de danses populaires d'Amérique latine : spectacles, stages, événements. Interventions en milieu scolaire et socio-culturel.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://cambalache.fr",
+          "title": "cambalache.fr"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "grounded_search"
+    },
+    "PINCES A LINGE": {
+      "beneficiaire": "Les Pinces à Linge",
+      "beneficiaire_normalise": "PINCES A LINGE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:48:08",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association Paris — jardin partagé / atelier créatif du réseau Main Verte. Info publique limitée.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.5,
+      "source_type": "grounded_search"
+    },
+    "MIGRATIONS SANTE": {
+      "beneficiaire": "Migrations Santé",
+      "beneficiaire_normalise": "MIGRATIONS SANTE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:48:08",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (10e, 23 rue du Château d'Eau) fondée en 1969 : santé des populations immigrées et issues des migrations — prévention, interprétariat médical, recherche, formations. Médiatrices santé en 25+ langues.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://migrationssante.org",
+          "title": "migrationssante.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "CRESUS ILE DE FRANCE": {
+      "beneficiaire": "Crésus Île-de-France",
+      "beneficiaire_normalise": "CRESUS ILE DE FRANCE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:48:08",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Fédération régionale IDF de Crésus (réseau national fondé en 1992) : prévention et lutte contre le surendettement et l'exclusion bancaire — permanences gratuites, accompagnement budgétaire, médiation. Label Point Conseil Budget.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://cresus-idf.org",
+          "title": "cresus-idf.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "CONCIERGERIE SOLIDAIRE 75": {
+      "beneficiaire": "La Conciergerie Solidaire 75",
+      "beneficiaire_normalise": "CONCIERGERIE SOLIDAIRE 75",
+      "siret": "",
+      "generated_at": "2026-04-23T15:48:08",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Agence portée par Groupe SOS Transition (créée à Bordeaux en 2011, implantée Paris 2017) : conciergerie éco-solidaire pour salariés, entreprises et territoires — services à la personne via partenaires ESS.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://conciergerie-solidaire.fr",
+          "title": "conciergerie-solidaire.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "CULTURE LOISIR ANIMATION JEU EDUCAT": {
+      "beneficiaire": "CLAJE — Culture Loisirs Animation Jeu Éducation",
+      "beneficiaire_normalise": "CULTURE LOISIR ANIMATION JEU EDUCAT",
+      "siret": "",
+      "generated_at": "2026-04-23T15:48:08",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association parisienne : centre social, accueil de loisirs, actions jeunesse et familiales. Réseau des MJC/centres sociaux.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://claje.asso.fr",
+          "title": "claje.asso.fr"
+        }
+      ],
+      "confiance": 0.7,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION LES PETITS LARDONS": {
+      "beneficiaire": "Crèche Parentale Les Petits Lardons",
+      "beneficiaire_normalise": "ASSOCIATION LES PETITS LARDONS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:48:08",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Crèche parentale associative (10e, 20 rue des Écluses Saint-Martin) fondée en 1992 : 24 enfants 3 mois-3 ans répartis en 3 groupes. Parents présents une demi-journée/semaine (ACEPPRIF).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://lespetitslardons.fr",
+          "title": "lespetitslardons.fr"
+        },
+        {
+          "url": "https://acepprif.org",
+          "title": "acepprif.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "JEUNES ECONOMES": {
+      "beneficiaire": "Les Jeunes Économes",
+      "beneficiaire_normalise": "JEUNES ECONOMES",
+      "siret": "",
+      "generated_at": "2026-04-23T15:48:08",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Crèche parentale associative (10e, 60 rue de Lancry — proche Canal Saint-Martin) créée en 1978 : 20 enfants, gestion coopérative par les parents. Réseau ACEPPRIF. SIRET 78429535400020.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://acepprif.org",
+          "title": "acepprif.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "UA16 ES16": {
+      "beneficiaire": "UA16 — Union Athlétique du XVIe / ES16",
+      "beneficiaire_normalise": "UA16 ES16",
+      "siret": "",
+      "generated_at": "2026-04-23T15:48:08",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Club sportif du 16e arrondissement — athlétisme / omnisports (présumé).",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "grounded_search"
+    },
+    "PANDOBAC": {
+      "beneficiaire": "Pandobac",
+      "beneficiaire_normalise": "PANDOBAC",
+      "siret": "",
+      "generated_at": "2026-04-23T15:48:08",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Entreprise ESS ( créée en 2019 par Flore Berlingen et Léo Bliemez) : système de location de bacs réutilisables en inox pour remplacer les emballages jetables dans la restauration et distribution pro — gestion logistique circulaire.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://pandobac.com",
+          "title": "pandobac.com"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ATELIERS PLURICULTURELS": {
+      "beneficiaire": "Ateliers Pluriculturels",
+      "beneficiaire_normalise": "ATELIERS PLURICULTURELS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:48:08",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (20e) : ateliers linguistiques, soutien scolaire, interculturalité. Informations publiques limitées. SIRET 43760588400026.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.6,
+      "source_type": "grounded_search"
+    },
+    "PERSONIMAGES": {
+      "beneficiaire": "Personimages",
+      "beneficiaire_normalise": "PERSONIMAGES",
+      "siret": "",
+      "generated_at": "2026-04-23T15:48:08",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (12e, 26 bis rue de Château-Landon / site 12e) créée en 1983 : ateliers d'expression artistique (danse, théâtre, arts plastiques, musique) pour personnes avec handicap mental/psychique et public tout-venant. Pédagogie mixte. SIRET 33164751100046.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://personimages.org",
+          "title": "personimages.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION 13 POUR TOUS": {
+      "beneficiaire": "13 Pour Tous",
+      "beneficiaire_normalise": "ASSOCIATION 13 POUR TOUS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:48:08",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association du 13e arrondissement : actions de proximité, lien social. Informations publiques limitées.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION TRIBUDOM": {
+      "beneficiaire": "Tribudom",
+      "beneficiaire_normalise": "ASSOCIATION TRIBUDOM",
+      "siret": "",
+      "generated_at": "2026-04-23T15:48:08",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (19e) — ateliers audiovisuels participatifs : vidéo-reportages par et avec des habitants des quartiers populaires.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://tribudom.fr",
+          "title": "tribudom.fr"
+        }
+      ],
+      "confiance": 0.7,
+      "source_type": "grounded_search"
+    },
+    "OSEZ LE FEMINISME": {
+      "beneficiaire": "Osez le Féminisme !",
+      "beneficiaire_normalise": "OSEZ LE FEMINISME",
+      "siret": "",
+      "generated_at": "2026-04-23T15:48:08",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association féministe fondée en 2009 (10e, 56 rue de Paradis) : lutte pour l'égalité femmes/hommes, contre les violences sexistes et sexuelles, pour les droits reproductifs. Collectif « Nous Toutes ». Revue « Osez le Féminisme ». SIRET 51874029500044.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://osezlefeminisme.fr",
+          "title": "osezlefeminisme.fr"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "MAISON SANTE PLURIPROF BICHAT": {
+      "beneficiaire": "MSP Bichat — Maison de Santé Pluriprofessionnelle",
+      "beneficiaire_normalise": "MAISON SANTE PLURIPROF BICHAT",
+      "siret": "",
+      "generated_at": "2026-04-23T15:48:08",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Maison de santé pluripro (18e, autour de l'hôpital Bichat-Claude Bernard) : médecins généralistes, infirmiers, kinés, sages-femmes, psy — coordination des soins de premier recours, projet de santé territorial.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://fmfparis.org",
+          "title": "fmfparis.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION LES JEUNES HEURES": {
+      "beneficiaire": "Les Jeunes Heures",
+      "beneficiaire_normalise": "ASSOCIATION LES JEUNES HEURES",
+      "siret": "",
+      "generated_at": "2026-04-23T15:48:08",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Crèche parentale associative (11e) — réseau ACEPPRIF : accueil petite enfance géré par les parents.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://acepprif.org",
+          "title": "acepprif.org"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "grounded_search"
+    },
+    "PAILLETTES CAMBOUIS": {
+      "beneficiaire": "Paillettes & Cambouis",
+      "beneficiaire_normalise": "PAILLETTES CAMBOUIS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:48:08",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (créée 2020) : atelier-vélo solidaire, stages pour femmes et LGBTQI+, déconstruction des stéréotypes de genre dans la mécanique et l'espace public. SIRET 88878356000020.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://paillettes-cambouis.fr",
+          "title": "paillettes-cambouis.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "VILLETTE MAKERZ BY WOMA": {
+      "beneficiaire": "Villette Makerz by WoMa",
+      "beneficiaire_normalise": "VILLETTE MAKERZ BY WOMA",
+      "siret": "",
+      "generated_at": "2026-04-23T15:48:08",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Fablab et espace culturel (19e, 211 avenue Jean Jaurès — Folie des Merveilles, Parc de la Villette) : co-makers, coworking, École des Makerz (dès 6 ans), programmation culturelle DIY. SIRET 82265962900015.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://villettemakerz.com",
+          "title": "villettemakerz.com"
+        },
+        {
+          "url": "https://woma.fr",
+          "title": "woma.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "STE D EXPLOITATION DE LA GAITE LYRI": {
+      "beneficiaire": "SEGL — Société d'Exploitation de la Gaîté Lyrique",
+      "beneficiaire_normalise": "STE D EXPLOITATION DE LA GAITE LYRI",
+      "siret": "",
+      "generated_at": "2026-04-23T15:48:08",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "SAEML (3e, 3 bis rue Papin) gestionnaire de la Gaîté Lyrique (établissement culturel de la Ville de Paris consacré aux cultures numériques, rouvert en 2011).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://gaite-lyrique.net",
+          "title": "gaite-lyrique.net"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "ORIZA": {
+      "beneficiaire": "Oriza",
+      "beneficiaire_normalise": "ORIZA",
+      "siret": "",
+      "generated_at": "2026-04-23T15:48:08",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Entité — informations publiques limitées. À vérifier (possiblement compagnie de théâtre ou entreprise ESS).",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.3,
+      "source_type": "grounded_search"
+    },
+    "INST RECHER COORD ACOUST MUSICALE": {
+      "beneficiaire": "IRCAM — Institut de Recherche et Coordination Acoustique/Musique",
+      "beneficiaire_normalise": "INST RECHER COORD ACOUST MUSICALE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:48:08",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Institut (4e, 1 place Igor-Stravinsky, Centre Pompidou) fondé en 1970 par Pierre Boulez, ouvert 1977 : recherche fondamentale et appliquée à la musique contemporaine — acoustique, informatique musicale, création. Associé CNRS/Sorbonne Université.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://ircam.fr",
+          "title": "ircam.fr"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "COLLECT CULTURE BAR BARS PARIS IDF": {
+      "beneficiaire": "Collectif Culture Bar-Bars Paris IDF",
+      "beneficiaire_normalise": "COLLECT CULTURE BAR BARS PARIS IDF",
+      "siret": "",
+      "generated_at": "2026-04-23T15:48:08",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Antenne IDF du Collectif Culture Bar-Bars (fédération nationale créée à Nantes en 2002) : défense de la diversité culturelle et musicale dans les cafés-concerts et bars culturels. Plaidoyer, formations, festival.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://bar-bars.com",
+          "title": "bar-bars.com"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
     }
   },
-  "total": 1706
+  "total": 1733
 }
