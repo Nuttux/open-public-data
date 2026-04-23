@@ -3113,6 +3113,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   background: var(--ocre);
   border: 1px solid var(--ocre);
 }
+.theme-fusion .fx-signaux-single { grid-template-columns: 1fr; }
 .theme-fusion .fx-signal {
   background: var(--bg);
   padding: 28px 32px;

@@ -359,56 +359,6 @@ export default function InvestissementsClient({
             }
             items={[
               {
-                flag: t("fx.inv.s07.sig1.flag"),
-                title: (d.topProjets[0]?.name ?? "—").slice(0, 60),
-                body: fill(t("fx.inv.s07.sig1.body"), {
-                  year: d.year,
-                  m: fmtMillions(d.topProjets[0]?.amount ?? 0, 1),
-                  pct: fmtDec(((d.topProjets[0]?.amount ?? 0) / d.total) * 100, 2),
-                }),
-                stats: [
-                  {
-                    label: t("fx.inv.s07.sig1.stat1"),
-                    value: `${fmtMillions(d.topProjets[0]?.amount ?? 0, 1)} M €`,
-                  },
-                  {
-                    label: t("fx.inv.s07.sig1.stat2"),
-                    value:
-                      d.topProjets[0] && d.topProjets[0].arr > 0
-                        ? `${d.topProjets[0].arr}${arrSuf(d.topProjets[0].arr)}`
-                        : t("fx.inv.s07.sig1.transv"),
-                  },
-                  {
-                    label: t("fx.inv.s07.sig1.stat3"),
-                    value: trL(d.topProjets[0]?.chapitre).slice(0, 14),
-                  },
-                ],
-              },
-              {
-                flag: t("fx.inv.s07.sig2.flag"),
-                title: d.byArrondissement[0]
-                  ? `${d.byArrondissement[0].arr}${arrSuf(d.byArrondissement[0].arr)} ${t("fx.inv.s07.sig2.title.suffix")}`
-                  : "—",
-                body: fill(t("fx.inv.s07.sig2.body"), {
-                  m: fmtMillions(d.byArrondissement[0]?.amount ?? 0, 0),
-                  pct: fmtDec(
-                    ((d.byArrondissement[0]?.amount ?? 0) / (geoLocTotal || 1)) * 100,
-                    0
-                  ),
-                }),
-                stats: [
-                  {
-                    label: t("fx.inv.s07.sig2.stat1"),
-                    value: `${fmtMillions(d.byArrondissement[0]?.amount ?? 0, 0)} M €`,
-                  },
-                  { label: t("fx.inv.s07.sig2.stat2"), value: String(d.byArrondissement[0]?.count ?? 0) },
-                  {
-                    label: t("fx.inv.s07.sig2.stat3"),
-                    value: `${fmtDec(((d.byArrondissement[0]?.amount ?? 0) / (geoLocTotal || 1)) * 100, 0)} %`,
-                  },
-                ],
-              },
-              {
                 flag: t("fx.inv.s07.sig3.flag"),
                 title: t("fx.inv.s07.sig3.title"),
                 body: fill(t("fx.inv.s07.sig3.body"), {
@@ -421,25 +371,6 @@ export default function InvestissementsClient({
                   { label: t("fx.inv.s07.sig3.stat3"), value: t("fx.inv.s07.sig3.to_produce") },
                 ],
                 cta: { href: "/methode?tool=investissements#outils", label: t("fx.inv.s07.sig3.cta") },
-              },
-              {
-                flag: t("fx.inv.s07.sig4.flag"),
-                title: trL(d.byChapitre[0]?.label) || "—",
-                body: fill(t("fx.inv.s07.sig4.body"), {
-                  m: fmtMillions(d.byChapitre[0]?.amount ?? 0, 0),
-                  pct: fmtDec(((d.byChapitre[0]?.amount ?? 0) / d.total) * 100, 0),
-                }),
-                stats: [
-                  {
-                    label: t("fx.inv.s07.sig4.stat1"),
-                    value: `${fmtMillions(d.byChapitre[0]?.amount ?? 0, 0)} M €`,
-                  },
-                  {
-                    label: t("fx.inv.s07.sig4.stat2"),
-                    value: `${fmtDec(((d.byChapitre[0]?.amount ?? 0) / d.total) * 100, 0)} %`,
-                  },
-                  { label: t("fx.inv.s07.sig4.stat3"), value: "#01" },
-                ],
               },
             ]}
           />

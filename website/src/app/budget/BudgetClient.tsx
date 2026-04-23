@@ -238,36 +238,6 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
                   unit: "M €",
                   delta: d.solde < 0 ? t("fx.bud.s01.kpi.need") : t("fx.bud.s01.kpi.excess"),
                 },
-                {
-                  label: (
-                    <Tip label={t("fx.bud.s01.kpi.fonct.tip")}>
-                      {t("fx.bud.s01.kpi.fonct")}
-                    </Tip>
-                  ),
-                  value: fmtBillions(d.fonctionnement),
-                  unit: "Md €",
-                  delta: fill("fx.bud.s01.kpi.of_total", { pct: Math.round((d.fonctionnement / d.depenses) * 100) }),
-                },
-                {
-                  label: (
-                    <Tip label={t("fx.bud.s01.kpi.invest.tip")}>
-                      {t("fx.bud.s01.kpi.invest")}
-                    </Tip>
-                  ),
-                  value: fmtBillions(d.investissement),
-                  unit: "Md €",
-                  delta: fill("fx.bud.s01.kpi.of_total", { pct: Math.round((d.investissement / d.depenses) * 100) }),
-                },
-                {
-                  label: (
-                    <Tip label={t("fx.bud.s01.kpi.epargne.tip")}>
-                      {t("fx.bud.s01.kpi.epargne")}
-                    </Tip>
-                  ),
-                  value: fmtBillions(d.epargneBrute),
-                  unit: "Md €",
-                  delta: fill("fx.bud.s01.kpi.of_total", { pct: Math.round((d.epargneBrute / d.recettes) * 100) }),
-                },
               ]}
             />
           </div>
