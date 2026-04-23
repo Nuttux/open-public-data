@@ -10,6 +10,8 @@ export type { TOCItem } from "./PageTOC";
 export { default as HeroNumber } from "./HeroNumber";
 export { default as KPIGrid } from "./KPIGrid";
 export { default as BarRow } from "./BarRow";
+export { default as BlogTimeBars } from "./BlogTimeBars";
+export type { BlogTimeBarsItem } from "./BlogTimeBars";
 export { default as TileCard } from "./TileCard";
 export { default as PageHeader } from "./PageHeader";
 export { default as HeroBg } from "./HeroBg";
