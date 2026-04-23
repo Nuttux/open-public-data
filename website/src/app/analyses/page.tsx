@@ -21,9 +21,9 @@ const PLANNED: { title: string; description: string; tag: string }[] = [
   },
   {
     tag: "Portrait",
-    title: "Le 19ᵉ arrondissement par ses chiffres.",
+    title: "Le 13ᵉ arrondissement par ses chiffres : ZAC Paris Rive Gauche, Olympiades, héritage chinois.",
     description:
-      "Subventions reçues, chantiers livrés, projets actifs, taux de logement social. Premier épisode d'une série « Portraits d'arrondissement » réplicable sur les 20.",
+      "Deuxième de la série « Portraits d'arrondissement ». Le 13ᵉ s'est structuré par la plus grande opération d'aménagement parisienne de la fin du XXᵉ siècle.",
   },
 ];
 
