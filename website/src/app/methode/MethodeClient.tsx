@@ -8,6 +8,7 @@ import Footer from "@/components/fusion/Footer";
 import SectionHead from "@/components/fusion/SectionHead";
 import Button from "@/components/fusion/Button";
 import { useLocale } from "@/lib/localeContext";
+import { TIMELINE_AXIS_START, TIMELINE_AXIS_END } from "@/lib/methodology";
 
 type SourceRow = {
   portal: string;
@@ -46,8 +47,8 @@ type CoverageRow = {
   segments: { start: number; end: number; text: string; kind?: "frozen" | "partial" }[];
 };
 
-const AXIS_START = 2013;
-const AXIS_END = 2026;
+const AXIS_START = TIMELINE_AXIS_START;
+const AXIS_END = TIMELINE_AXIS_END;
 const AXIS_SPAN = AXIS_END - AXIS_START + 1;
 
 function barStyle(start: number, end: number): CSSProperties {
@@ -121,32 +122,41 @@ const TOOLS_FR: ToolMethod[] = [
   {
     id: "marches-publics", number: "06", kicker: "Marchés publics",
     title: "Marchés notifiés (commande publique)", route: "/marches-publics",
-    source: { name: "Marchés publics de la Ville de Paris", dataset: "liste-des-marches-de-la-collectivite-parisienne", coverage: "2013-2024 · 17 639 contrats", href: "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/", hrefLabel: "opendata.paris.fr" },
+    source: { name: "opendata.paris.fr + DECP nationale data.gouv.fr", dataset: "liste-des-marches-de-la-collectivite-parisienne + decp-consolides", coverage: "2013-2026 · ~20 000 contrats consolidés", href: "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/", hrefLabel: "opendata.paris.fr" },
     enClair: (
       <>
         <p>Quand la Ville achète quelque chose à une entreprise — construction d'une école, collecte des déchets, fournitures de bureau, maintenance informatique — elle publie un avis de marché : qui a été choisi, pour combien, pour quoi. Ces données s'appellent les DECP (Données Essentielles de la Commande Publique) et sont obligatoires depuis 2016.</p>
-        <p>On reprend tous les marchés notifiés par la Ville depuis 2013, on reclasse les milliers d'intitulés techniques par grandes catégories (travaux, services, fournitures, énergie…) pour voir où part l'enveloppe, et on agrège par titulaire pour voir quelles entreprises captent le plus de contrats en cumulé.</p>
-        <p><b>Ce que ça ne montre pas :</b> le montant publié est une <b>enveloppe maximale contractuelle</b>, pas toujours ce qui est finalement dépensé — 97 % des marchés sont des accords-cadres pluriannuels dont la consommation réelle est souvent bien inférieure au plafond. Les avenants en cours d'exécution sont mal tracés dans le fichier source. Les marchés en dessous de 40 k€ ne sont pas obligatoirement publiés.</p>
+        <p>On fusionne <b>deux sources</b> : le dataset publié par la Ville sur opendata.paris.fr et la DECP nationale consolidée par l'État sur data.gouv.fr. Les deux alimentent des pipelines distincts (Coriolis interne Ville vs plateforme AIFE/ATLINE État) et ne se recouvrent qu'à 50-60 % — une source à elle seule en rate ~30 %. On joint par numéro de marché (<code>num_marche[4:] = decp.id</code>) et on ajoute les marchés qui n'existent que dans DECP. La DECP apporte aussi les colonnes qui manquent côté Paris : type CCAG (Travaux/Fournitures…), code CPV (catégorie européenne standardisée), lieu d'exécution, nombre d'offres reçues, clauses sociales/environnementales.</p>
+        <p>On reclasse les intitulés techniques par grandes catégories (travaux, services, fournitures, énergie…) et on agrège par titulaire pour voir quelles entreprises captent le plus de contrats en cumulé.</p>
+        <p><b>Deux chiffres, deux sens.</b> Sur la fiche d'un contrat, on affiche parfois <b>deux montants</b> :</p>
+        <ul>
+          <li><b>Plafond autorisé</b> (source Ville) — le maximum que la Ville peut dépenser sur toute la durée du contrat. Pour un accord-cadre de 4 ans à 2 M€/an, c'est 8 M€. Ce n'est pas ce qui sera réellement dépensé.</li>
+          <li><b>Montant notifié</b> (source DECP) — ce que la Ville a déclaré à l'État au moment de la signature. Souvent plus réaliste que le plafond pour les accords-cadres, mais ce n'est pas non plus le cumul des bons de commande effectivement émis (cette donnée n'est pas publique au niveau du contrat individuel).</li>
+        </ul>
+        <p><b>Ce que ça ne montre pas :</b> 97 % des marchés sont des accords-cadres pluriannuels ; la consommation réelle n'est disponible qu'au niveau agrégé (compte administratif). Les avenants sont mal remontés. Les marchés &lt; 40 k€ HT ne sont pas obligatoirement publiés. Les marchés des satellites (ParisHabitat, Eau de Paris, SEM, CASVP) ne sont pas inclus — ils ont leur propre ligne DECP qu'on n'a pas encore intégrée.</p>
       </>
     ),
     objectif: "Voir qui la Ville paie pour travaux, fournitures et services, quel volume, et quels titulaires concentrent les contrats.",
     pipeline: [
-      { label: "Sync", detail: <>Dataset marchés → <code>BigQuery raw</code></> },
-      { label: "Staging", detail: <>Filtre montant_max &gt; 0, durée cohérente</> },
-      { label: "Core", detail: <><code>core_marches_publics</code> : 1 ligne par contrat</> },
+      { label: "Sync Paris", detail: <>opendata.paris.fr → <code>raw.liste_des_marches_de_la_collectivite_parisienne</code></> },
+      { label: "Sync DECP", detail: <>data.gouv.fr (fichiers annuels) → <code>raw.decp_marches_paris</code> via <code>fetch_decp_paris.py</code>, filtre SIRET 217500*</> },
+      { label: "Staging", detail: <>Normalisation + dédup DECP par <code>id</code> (dernier état gagne)</> },
+      { label: "Core", detail: <>LEFT JOIN sur <code>SUBSTR(num_marche, 5) = decp.id</code> + UNION des DECP-exclusifs, dédup multi-titulaires par (objet, montant, date)</> },
       { label: "Marts", detail: <><code>mart_marches_fournisseurs</code> + <code>mart_marches_par_nature</code></> },
-      { label: "Signaux faibles", detail: <>Heuristique : &gt; 10 M€ mono-attributaires, concentration</> },
+      { label: "Enrichissement lisible", detail: <>Traduction <code>codeCPV</code> → famille française, dérivation <code>afficher_deux_montants</code> si écart plafond ↔ notifié &gt; 5 %</> },
     ],
     choix: [
-      "Totaux affichés = montants maximum contractuels (plafonds pluriannuels), pas des dépenses exécutées.",
-      "Les critères de repérage sont publiés — signaux, pas accusations.",
-      "Pas de cartographie des titulaires tant que l'adresse du chantier n'est pas une colonne fiable.",
+      "Total affiché = plafonds contractuels autorisés (somme des enveloppes maximum), pas des dépenses exécutées.",
+      "Dédup DECP multi-titulaires : un accord-cadre à N titulaires = 1 ligne, plafond compté une seule fois.",
+      "Deuxième chiffre « montant notifié » affiché uniquement quand l'écart est significatif (> 5 %) — évite d'alourdir la lecture sur les marchés simples.",
+      "Les critères de repérage (signaux faibles) sont publiés — signaux, pas accusations.",
     ],
     limites: [
-      "97 % des marchés sont des accords-cadres ; 66 % ont montant_min = 0 — consommation réelle parfois bien inférieure.",
-      "Contrat peut être résilié : le montant affiché reste le plafond initial.",
-      "Avenants incomplets dans le fichier source — sous-estimation possible.",
-      "Satellites (SEM, OPH, CASVP) non inclus.",
+      "97 % des marchés sont des accords-cadres ; 66 % ont montant_min = 0 — consommation réelle parfois bien inférieure au plafond.",
+      "Les deux sources ne se recouvrent qu'à ~55 %. On capture le superset, mais les règles de publication divergent (seuils, timing, formats de numéro).",
+      "Avenants partiellement remontés — sous-estimation possible.",
+      "Lieu d'exécution DECP au niveau département (« Paris 75 ») : pas d'arrondissement précis, géocodage fin non encore implémenté.",
+      "Satellites (SEM, OPH, CASVP, Eau de Paris) non inclus — leur DECP existe mais reste à rapatrier.",
     ],
   },
   {
@@ -270,6 +280,8 @@ const FAQ_FR: { q: string; a: string }[] = [
   { q: "Pourquoi votre chiffre diffère-t-il parfois de celui annoncé par la mairie ?", a: "Trois causes : (1) périmètre — on publie le budget principal, la mairie peut communiquer un « groupe Ville » qui inclut les satellites ; (2) timing — notre chiffre vient du dernier dataset ouvert ; (3) retraitement — on renomme et regroupe les chapitres, mais les agrégats sont identiques. Si l'écart persiste, dites-le-nous." },
   { q: "Qu'est-ce que le LLM fait exactement dans votre pipeline ?", a: "Plusieurs tâches ciblées : classifier la thématique des subventions, géolocaliser des projets d'investissement, vérifier l'activité des bénéficiaires par grounded search, vulgariser les intitulés techniques de marchés. Modèles : Gemini 3 Flash et Claude Opus selon la tâche. Il ne calcule jamais un montant. Il tourne hors dbt, ses résultats sont mis en cache dans des seeds CSV publics pour être inspectables et reproductibles ; l'objet brut et le SIRET restent affichés pour vérification." },
   { q: "Comment évitez-vous le double comptage entre budget, subventions et marchés ?", a: "Chaque entité est modélisée séparément, jamais UNIONée aux autres. Le budget contient une ligne agrégée de subventions ; notre page « Subventions » détaille cette même ligne côté bénéficiaires. On n'additionne pas les deux. Documenté dans docs/architecture-modelling.md." },
+  { q: "Combien la Ville dépense-t-elle vraiment en marchés publics une année donnée ?", a: "Notre page Marchés affiche le total des PLAFONDS de contrats signés cette année-là (ex. 3,22 Mds€ pour 2024). Ce n'est PAS la dépense annuelle réelle : un accord-cadre de 4 ans à 2 M€/an est compté 8 M€ à la signature. La dépense effective en marchés cette année-là se lit uniquement dans le compte administratif agrégé (chapitres 011 charges générales + 20/21/23 immobilisations), pas au niveau du contrat individuel. Les deux chiffres ne sont pas comparables et ne se somment pas." },
+  { q: "Pourquoi Budget, Investissements et Marchés donnent-ils des totaux différents ?", a: "Ce sont trois lectures complémentaires, pas trois calculs du même chiffre. BUDGET = toutes les dépenses annuelles (salaires + investissement + subventions + marchés + dettes…). INVESTISSEMENTS = ce qui est voté pour des projets physiques (AP, pluriannuel). MARCHÉS = ce qui est signé avec des entreprises (plafonds contractuels, pluriannuels). Un même euro peut apparaître dans les trois sous des angles différents. On ne les additionne jamais." },
   { q: "Vos totaux sont-ils identiques à ceux du site de la Ville ?", a: "Oui pour les agrégats issus d'un même dataset M57 : notre pipeline ne change pas les montants, il regroupe et renomme. Les écarts viennent des cas décrits plus haut (périmètre, timing, nomenclature)." },
   { q: "Pourquoi certaines années sont-elles absentes ou provisoires ?", a: "Chaque source a sa couverture documentée dans le tableau de couverture plus haut. L'exemple le plus visible : le dataset AP OpenData est gelé depuis 2022, donc pour 2023-2024 on bascule sur les PDF « Investissements Localisés ». On préfère afficher un manque que combler au doigt." },
 ];
@@ -278,7 +290,7 @@ const COVERAGE_FR: CoverageRow[] = [
   { label: "Budget exécuté (CA)", volume: "25 629 lignes", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/", status: "ok", statusLabel: "À jour", segments: [{ start: 2018, end: 2024, text: "2018-2024" }] },
   { label: "Budget voté (BP)", volume: "8 598 lignes", href: "https://opendata.paris.fr/explore/dataset/budgets-votes-principaux-a-partir-de-2019-m57-ville-departement/", status: "ok", statusLabel: "À jour", segments: [{ start: 2019, end: 2026, text: "2019-2026" }] },
   { label: "Subventions", volume: "47 381 lignes", href: "https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/", status: "ok", statusLabel: "À jour", segments: [{ start: 2018, end: 2024, text: "2018-2024" }] },
-  { label: "Marchés publics", volume: "17 639 contrats", href: "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/", status: "ok", statusLabel: "À jour", segments: [{ start: 2013, end: 2024, text: "2013-2024" }] },
+  { label: "Marchés publics", volume: "~23 000 contrats (Ville + DECP national)", href: "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/", status: "ok", statusLabel: "À jour", segments: [{ start: 2013, end: 2026, text: "2013-2026 · fusion opendata.paris.fr + DECP nationale" }] },
   { label: "Investissements (dataset AP)", volume: "dataset gelé", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/", status: "warn", statusLabel: "Gelé", segments: [{ start: 2018, end: 2022, text: "2018-2022 · gelé", kind: "frozen" }] },
   { label: "Investissements (PDF IL)", volume: "~450 projets/an", href: "https://cdn.paris.fr/paris/2025/06/25/ca-2024-annexe-il-UtMj.PDF", status: "info", statusLabel: "Partiel", segments: [{ start: 2018, end: 2024, text: "2018-2024 (CA)", kind: "partial" }, { start: 2025, end: 2026, text: "2025-2026 (BP)", kind: "partial" }] },
   { label: "Logements sociaux financés", volume: "4 174 opérations", href: "https://opendata.paris.fr/explore/dataset/logements-sociaux-finances-a-paris/", status: "ok", statusLabel: "À jour", segments: [{ start: 2013, end: 2024, text: "2001-2024 (affiché 2013+)" }] },
@@ -350,32 +362,40 @@ const TOOLS_EN: ToolMethod[] = [
   {
     id: "marches-publics", number: "06", kicker: "Public contracts",
     title: "Awarded contracts (public procurement)", route: "/marches-publics",
-    source: { name: "Public contracts of the City of Paris", dataset: "liste-des-marches-de-la-collectivite-parisienne", coverage: "2013-2024 · 17,639 contracts", href: "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/", hrefLabel: "opendata.paris.fr" },
+    source: { name: "opendata.paris.fr + national DECP on data.gouv.fr", dataset: "liste-des-marches-de-la-collectivite-parisienne + decp-consolides", coverage: "2013-2026 · ~23,000 merged contracts", href: "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/", hrefLabel: "opendata.paris.fr" },
     enClair: (
       <>
         <p>When the City buys something from a company — building a school, collecting waste, office supplies, IT maintenance — it publishes a procurement notice: who was selected, for how much, for what. This data is called DECP (Essential Public Procurement Data) and has been mandatory since 2016.</p>
-        <p>We take every contract notified by the City since 2013, reclassify the thousands of technical labels into broad categories (works, services, supplies, energy…) to see where the envelope goes, and aggregate by contractor to spot which companies capture the most cumulative contracts.</p>
-        <p><b>What this doesn't show:</b> the published amount is a <b>maximum contractual ceiling</b>, not always what is ultimately spent — 97% of contracts are multi-year framework agreements whose actual consumption is often much lower than the cap. Amendments during execution are poorly tracked in the source file. Contracts below €40k are not mandatorily published.</p>
+        <p>We merge <b>two sources</b>: the dataset published by the City on opendata.paris.fr and the national DECP consolidated by the State on data.gouv.fr. These feed distinct pipelines (Coriolis internal vs AIFE/ATLINE State) and overlap only 50–60% — either source alone misses ~30%. We join by contract number and add DECP-only contracts. DECP also brings columns missing on the Paris side: CCAG type (Works/Supplies…), CPV code (European standardised category), execution location, number of bids received, social/environmental clauses.</p>
+        <p><b>Two numbers, two meanings.</b> On a contract's card we sometimes show <b>two amounts</b>:</p>
+        <ul>
+          <li><b>Maximum ceiling</b> (Paris source) — the most the City may spend over the whole contract. For a 4-year framework at €2M/year it's €8M. This is not what will actually be spent.</li>
+          <li><b>Notified amount</b> (DECP source) — what the City declared to the State upon signature. Often more realistic than the ceiling for framework agreements, but it is not the cumulative sum of purchase orders either (that data is not public at the individual-contract level).</li>
+        </ul>
+        <p><b>What this doesn't show:</b> 97% are framework agreements; actual consumption is only visible at aggregate level (executed budget). Amendments are poorly tracked. Contracts below €40k HT are not mandatorily published. Contracts from satellites (ParisHabitat, Eau de Paris, SEM, CASVP) are not yet included — they have their own DECP we haven't pulled yet.</p>
       </>
     ),
     objectif: "See who the City pays for works, supplies and services, what volume, and which contractors concentrate the contracts.",
     pipeline: [
-      { label: "Sync", detail: <>Contracts dataset → <code>BigQuery raw</code></> },
-      { label: "Staging", detail: <>Filter montant_max &gt; 0, consistent duration</> },
-      { label: "Core", detail: <><code>core_marches_publics</code>: 1 row per contract</> },
+      { label: "Sync Paris", detail: <>opendata.paris.fr → <code>raw.liste_des_marches_de_la_collectivite_parisienne</code></> },
+      { label: "Sync DECP", detail: <>data.gouv.fr (yearly files) → <code>raw.decp_marches_paris</code> via <code>fetch_decp_paris.py</code>, SIRET 217500* filter</> },
+      { label: "Staging", detail: <>Normalisation + dedup on <code>id</code> (latest state wins)</> },
+      { label: "Core", detail: <>LEFT JOIN on <code>SUBSTR(num_marche, 5) = decp.id</code> + UNION of DECP-exclusives, dedup multi-awardees by (object, amount, date)</> },
       { label: "Marts", detail: <><code>mart_marches_fournisseurs</code> + <code>mart_marches_par_nature</code></> },
-      { label: "Weak signals", detail: <>Heuristic: &gt; €10M single-award, concentration</> },
+      { label: "Readable enrichment", detail: <>CPV → French family label, derive <code>afficher_deux_montants</code> when ceiling ↔ notified diverge &gt; 5%</> },
     ],
     choix: [
-      "Displayed totals = maximum contractual amounts (multi-year ceilings), not executed spending.",
-      "Detection criteria are published — signals, not accusations.",
-      "No mapping of contractors until the site address is a reliable column.",
+      "Displayed total = contractual ceilings (sum of maximum envelopes), not executed spending.",
+      "DECP multi-awardees deduplication: a framework with N awardees = 1 row, ceiling counted once.",
+      "Second « notified amount » only shown when the gap is significant (> 5%) — keeps simple contracts readable.",
+      "Detection criteria (weak signals) are published — signals, not accusations.",
     ],
     limites: [
-      "97% of contracts are framework agreements; 66% have montant_min = 0 — actual consumption often much lower.",
-      "Contract may be terminated: the displayed amount remains the initial ceiling.",
-      "Incomplete amendments in source file — possible underestimation.",
-      "Satellites (SEM, OPH, CASVP) not included.",
+      "97% are framework agreements; 66% have montant_min = 0 — actual consumption often well below the ceiling.",
+      "The two sources overlap at only ~55%. We capture the superset but publication rules diverge (thresholds, timing, number formats).",
+      "Amendments partially reported — possible underestimation.",
+      "DECP execution location at department level (« Paris 75 »): no precise arrondissement, fine-grained geocoding not yet implemented.",
+      "Satellites (SEM, OPH, CASVP, Eau de Paris) not included — their DECP exists but has yet to be pulled.",
     ],
   },
   {
@@ -507,7 +527,7 @@ const COVERAGE_EN: CoverageRow[] = [
   { label: "Executed budget (CA)", volume: "25,629 rows", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/", status: "ok", statusLabel: "Up to date", segments: [{ start: 2018, end: 2024, text: "2018-2024" }] },
   { label: "Voted budget (BP)", volume: "8,598 rows", href: "https://opendata.paris.fr/explore/dataset/budgets-votes-principaux-a-partir-de-2019-m57-ville-departement/", status: "ok", statusLabel: "Up to date", segments: [{ start: 2019, end: 2026, text: "2019-2026" }] },
   { label: "Grants", volume: "47,381 rows", href: "https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/", status: "ok", statusLabel: "Up to date", segments: [{ start: 2018, end: 2024, text: "2018-2024" }] },
-  { label: "Public contracts", volume: "17,639 contracts", href: "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/", status: "ok", statusLabel: "Up to date", segments: [{ start: 2013, end: 2024, text: "2013-2024" }] },
+  { label: "Public contracts", volume: "~23,000 contracts (City + national DECP)", href: "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/", status: "ok", statusLabel: "Up to date", segments: [{ start: 2013, end: 2026, text: "2013-2026 · opendata.paris.fr + national DECP merge" }] },
   { label: "Investments (AP dataset)", volume: "dataset frozen", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/", status: "warn", statusLabel: "Frozen", segments: [{ start: 2018, end: 2022, text: "2018-2022 · frozen", kind: "frozen" }] },
   { label: "Investments (IL PDFs)", volume: "~450 projects/yr", href: "https://cdn.paris.fr/paris/2025/06/25/ca-2024-annexe-il-UtMj.PDF", status: "info", statusLabel: "Partial", segments: [{ start: 2018, end: 2024, text: "2018-2024 (CA)", kind: "partial" }, { start: 2025, end: 2026, text: "2025-2026 (BP)", kind: "partial" }] },
   { label: "Funded social housing", volume: "4,174 operations", href: "https://opendata.paris.fr/explore/dataset/logements-sociaux-finances-a-paris/", status: "ok", statusLabel: "Up to date", segments: [{ start: 2013, end: 2024, text: "2001-2024 (shown 2013+)" }] },

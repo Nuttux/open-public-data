@@ -1,12 +1,18 @@
 import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
+import {
+  LEVERAGE_RECETTES_MAX,
+  BORROW_RATIO_MAX,
+  CAPACITE_DESENDETTEMENT_ALERTE_ANS,
+  CAPACITE_DESENDETTEMENT_CRITIQUE_ANS,
+} from "@/lib/methodology";
 
 export const runtime = "nodejs";
 
-const LEVERAGE_RECETTES = 5.0;
-const BORROW_RATIO = 0.5;
-const THRESHOLD = 12;
-const CRITICAL = 20;
+const LEVERAGE_RECETTES = LEVERAGE_RECETTES_MAX;
+const BORROW_RATIO = BORROW_RATIO_MAX;
+const THRESHOLD = CAPACITE_DESENDETTEMENT_ALERTE_ANS;
+const CRITICAL = CAPACITE_DESENDETTEMENT_CRITIQUE_ANS;
 
 // Baselines Paris 2024 (cohérent avec le simulateur — ces valeurs sont aussi
 // utilisées pour la page /dette-patrimoine/stress-test).

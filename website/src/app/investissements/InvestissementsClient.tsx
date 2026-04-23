@@ -19,12 +19,14 @@ import BudgetTimeline from "@/components/fusion/BudgetTimeline";
 import StackedBarTheme from "@/components/fusion/StackedBarTheme";
 import PageTOC from "@/components/fusion/PageTOC";
 import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/RelatedArticles";
+import PageHook from "@/components/fusion/PageHook";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import type { BlogPostMeta } from "@/lib/blog";
 import type { InvestissementsData } from "@/lib/fusion-data";
 import { slugifyChapitre } from "@/lib/projet-utils";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
+import { PARIS_POPULATION } from "@/lib/methodology";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
@@ -79,8 +81,9 @@ export default function InvestissementsClient({
           { id: "sec-territoire", label: t("fx.inv.s05.kind") },
           { id: "sec-evolution", label: t("fx.toc.evolution") },
           { id: "sec-signaux", label: t("fx.toc.signaux") },
-          { id: "sec-analyses", label: t("fx.toc.analyses") },
           { id: "sec-projets", label: t("fx.toc.projets") },
+          { id: "sec-analyses", label: t("fx.toc.analyses") },
+          { id: "sec-explorer", label: t("fx.toc.explorer") },
           { id: "sec-sources", label: t("fx.toc.sources") },
         ]}
       />
@@ -115,6 +118,30 @@ export default function InvestissementsClient({
           </div>
         </div>
       </section>
+
+      {(() => {
+        const parHab = d.total / PARIS_POPULATION;
+        const topChap = d.byChapitre[0];
+        return (
+          <PageHook
+            cite={<>Ville de Paris · Annexes « Investissements localisés » · CA {d.year}</>}
+            shareText={
+              `Investissements Ville de Paris ${d.year} : ${fmtBillions(d.total)} Md€ sur ${fmtInt(d.nbProjets)} projets — ${fmtInt(parHab)} € par habitant.` +
+              (topChap ? ` Premier poste : ${topChap.label} (${fmtMillions(topChap.amount, 0)} M€).` : "")
+            }
+          >
+            En {d.year}, Paris a investi <b>{fmtBillions(d.total)} Md€</b> sur{" "}
+            <b>{fmtInt(d.nbProjets)} projets</b> — soit{" "}
+            <b>{fmtInt(parHab)} € par Parisien</b> sur l&apos;année.
+            {topChap ? (
+              <>
+                {" "}Le premier poste, <b>{trL(topChap.label)}</b>, pèse à lui seul{" "}
+                <b>{fmtMillions(topChap.amount, 0)} M€</b>.
+              </>
+            ) : null}
+          </PageHook>
+        );
+      })()}
 
       <section className="fx-section" id="sec-overview">
         <div className="fx-wrap">
@@ -205,6 +232,11 @@ export default function InvestissementsClient({
             paretoContrast={t("fx.inv.s04.pareto_contrast")}
             hrefBuilder={(theme) => `/investissements/chapitre/${slugifyChapitre(theme)}`}
           />
+          <ChartSource
+            source={<>Ville de Paris · Annexes investissement au CA {d.year}, ventilation par chapitre M57</>}
+            dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
+            methodAnchor="investissements"
+          />
         </div>
       </section>
 
@@ -252,6 +284,11 @@ export default function InvestissementsClient({
                 <b>{t("fx.inv.s03.note.b")}</b> :{" "}
                 {fill(t("fx.inv.s03.note"), { pct: fmtDec(100 - d.pctGeo, 0) })}
               </p>
+              <ChartSource
+                source={<>Ville de Paris · Annexes investissement au CA {d.year} — projets géocodés via BAN</>}
+                dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
+                methodAnchor="investissements"
+              />
             </>
           ) : (
             <>
@@ -288,6 +325,11 @@ export default function InvestissementsClient({
               type: "execute" as const,
             }))}
             activeYear={d.year}
+          />
+          <ChartSource
+            source={<>Ville de Paris · Investissements localisés (CA), série annuelle depuis 2018</>}
+            dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
+            methodAnchor="investissements"
           />
           <p className="fx-note">
             <b>{t("fx.inv.s06.note.b")}</b> :{" "}
@@ -404,12 +446,10 @@ export default function InvestissementsClient({
         </div>
       </section>
 
-      <RelatedArticles number="06" posts={posts} placeholders={INV_PLACEHOLDERS} />
-
       <section className="fx-section" id="sec-projets">
         <div className="fx-wrap">
           <SectionHead
-            number="07"
+            number="06"
             kind={t("fx.inv.s01.kind")}
             title={
               <>
@@ -451,33 +491,11 @@ export default function InvestissementsClient({
         </div>
       </section>
 
-      <section className="fx-footer-sources" id="sec-sources">
-        <div className="fx-wrap">
-          <div className="fx-footer-sources-head">
-            <span className="fx-footer-sources-label">{t("fx.s.sources_exports")}</span>
-            <a href="/methode#investissements" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</a>
-          </div>
-          <p className="fx-footer-sources-meta">
-            <b>Source</b> : Ville de Paris — Annexes AP du CA + PDF « Investissements Localisés » <span className="sep">·</span> <b>Couverture</b> : dataset AP OpenData gelé depuis 2022 ; 2023-2026 reconstitués par parsing PDF.
-          </p>
-          <ExportRow
-            items={[
-              {
-                label: fill(t("fx.inv.src.export.csv"), { year: d.year }),
-                primary: true,
-                href: `/data/map/investissements_complet_${d.year}.json`,
-              },
-              { label: t("fx.inv.src.export.json"), href: `/data/map/investissements_complet_${d.year}.json` },
-              { label: t("fx.inv.src.export.trend"), href: "/data/investissement_tendances.json" },
-              { label: t("fx.inv.src.export.method"), href: "/methode?tool=investissements#outils" },
-            ]}
-          />
-        </div>
-      </section>
+      <RelatedArticles number="07" posts={posts} placeholders={INV_PLACEHOLDERS} />
 
-      <section className="fx-section">
+      <section className="fx-section" id="sec-explorer">
         <div className="fx-wrap">
-          <SectionHead number="09" kind={t("fx.inv.s09.kind")} title={t("fx.inv.s09.title")} />
+          <SectionHead number="08" kind={t("fx.inv.s09.kind")} />
           <div className="fx-grid-tiles">
             <TileCard
               href="/marches-publics"
@@ -535,6 +553,30 @@ export default function InvestissementsClient({
               kpiDelta={t("fx.inv.s09.t3.delta")}
             />
           </div>
+        </div>
+      </section>
+
+      <section className="fx-footer-sources" id="sec-sources">
+        <div className="fx-wrap">
+          <div className="fx-footer-sources-head">
+            <span className="fx-footer-sources-label">{t("fx.s.sources_exports")}</span>
+            <a href="/methode#investissements" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</a>
+          </div>
+          <p className="fx-footer-sources-meta">
+            <b>Source</b> : Ville de Paris — Annexes AP du CA + PDF « Investissements Localisés » <span className="sep">·</span> <b>Couverture</b> : dataset AP OpenData gelé depuis 2022 ; 2023-2026 reconstitués par parsing PDF.
+          </p>
+          <ExportRow
+            items={[
+              {
+                label: fill(t("fx.inv.src.export.csv"), { year: d.year }),
+                primary: true,
+                href: `/data/map/investissements_complet_${d.year}.json`,
+              },
+              { label: t("fx.inv.src.export.json"), href: `/data/map/investissements_complet_${d.year}.json` },
+              { label: t("fx.inv.src.export.trend"), href: "/data/investissement_tendances.json" },
+              { label: t("fx.inv.src.export.method"), href: "/methode?tool=investissements#outils" },
+            ]}
+          />
         </div>
       </section>
 

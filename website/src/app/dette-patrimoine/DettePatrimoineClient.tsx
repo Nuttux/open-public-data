@@ -15,16 +15,17 @@ import BudgetTimeline from "@/components/fusion/BudgetTimeline";
 import DetteStructurePanel from "@/components/fusion/DetteStructurePanel";
 import PageTOC from "@/components/fusion/PageTOC";
 import PatrimoineDrillList from "@/components/fusion/PatrimoineDrillList";
-import StressTestTeaser from "@/components/fusion/StressTestTeaser";
 import CityComparator from "@/components/fusion/CityComparator";
 import HorsBilanMap from "@/components/fusion/HorsBilanMap";
-import TaPartAToi from "@/components/fusion/TaPartAToi";
-import InteractiveWrap from "@/components/fusion/InteractiveWrap";
 import ChartSource from "@/components/fusion/ChartSource";
+import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/RelatedArticles";
+import PageHook from "@/components/fusion/PageHook";
 import { slugifyBailleur } from "@/lib/projet-utils";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
+import type { BlogPostMeta } from "@/lib/blog";
 import type { PatrimoineData, PatrimoineStructure, HorsBilanData, CityDebtSnapshot } from "@/lib/fusion-data";
 import { useT } from "@/lib/localeContext";
+import { PARIS_POPULATION, parisCrcDebtYearsFor } from "@/lib/methodology";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
@@ -32,22 +33,49 @@ const fill = (s: string, vars: Record<string, string | number>) => {
   return r;
 };
 
+const DET_PLACEHOLDERS: ArticlePlaceholder[] = [
+  {
+    category: "Analyse",
+    title: "Le patrimoine parisien : 17 Md€ nets, et pourquoi c'est approximatif.",
+    description:
+      "Valeur comptable M57 vs valeur de marché — un écart qu'on ne peut pas chiffrer, mais qu'on peut expliquer. Ce que le bilan dit, et ne dit pas.",
+  },
+  {
+    category: "Explication",
+    title: "Capacité de désendettement : le chiffre à ne pas lire seul.",
+    description:
+      "10 ans, 12 ans, 15 ans — ce que ce ratio mesure vraiment, et pourquoi il dit autre chose que « combien Paris est endettée ».",
+  },
+];
+
 export default function DettePatrimoineClient({
   d,
   structure,
   horsBilan,
   horsBilanTrajectory,
   citiesSnapshot,
+  posts,
 }: {
   d: PatrimoineData;
   structure: PatrimoineStructure | null;
   horsBilan: HorsBilanData | null;
   horsBilanTrajectory: Array<{ year: number; capital_restant: number }>;
   citiesSnapshot: CityDebtSnapshot[];
+  posts: BlogPostMeta[];
 }) {
   const t = useT();
   const net = d.fondsPropres;
-  const detteParHab = d.detteFinanciere / 2_133_111;
+  const detteParHab = d.detteFinanciere / PARIS_POPULATION;
+
+  // Évolution de la dette depuis 2020 pour le hook viral (fallback 0 si
+  // l'année de référence n'est pas dans la série).
+  const dette2020 = d.yearsSummary.find((y) => y.year === 2020)?.dette ?? 0;
+  const deltaDetteDepuis2020Pct = dette2020 > 0
+    ? ((d.detteFinanciere - dette2020) / dette2020) * 100
+    : 0;
+
+  // Chiffre CRC pour le hook "deux lectures" (méthodologie Ville vs CRC).
+  const crcSnap = parisCrcDebtYearsFor(d.year);
 
   // Unité auto Md € / M € pour les montants hors bilan
   const mdLabel = t("fx.s.md_eur");
@@ -64,14 +92,13 @@ export default function DettePatrimoineClient({
       <PageTOC
         items={[
           { id: "sec-overview", label: t("fx.det.toc.overview") },
-          { id: "sec-tapart", label: t("fx.det.toc.tapart") },
-          { id: "sec-stress", label: t("fx.det.toc.stress") },
           { id: "sec-bilan", label: t("fx.det.toc.bilan") },
-          { id: "sec-trajectoire", label: t("fx.det.toc.trajectoire") },
           { id: "sec-actifs", label: t("fx.det.toc.actifs") },
           { id: "sec-dette", label: t("fx.det.toc.dette") },
+          { id: "sec-trajectoire", label: t("fx.det.toc.trajectoire") },
           { id: "sec-hors-bilan", label: t("fx.det.toc.hors_bilan") },
           { id: "sec-regles", label: t("fx.det.toc.regles") },
+          { id: "sec-analyses", label: t("fx.toc.analyses") },
           { id: "sec-sources", label: t("fx.det.toc.sources") },
         ]}
       />
@@ -95,9 +122,9 @@ export default function DettePatrimoineClient({
             {t("fx.det.lede.c1")}
             <Tip label={t("fx.det.lede.passif.tip")}>{t("fx.det.lede.passif")}</Tip>
             {t("fx.det.lede.c2")}
-            <Tip label={t("fx.det.lede.dette.tip")}>{t("fx.det.lede.dette")}</Tip>
+            {t("fx.det.lede.dette")}
             {t("fx.det.lede.c3")}
-            <Tip label={t("fx.det.lede.regleor.tip")}>{t("fx.det.lede.regleor")}</Tip>
+            {t("fx.det.lede.regleor")}
             {t("fx.det.lede.post")}
           </p>
           <div className="fx-page-actions">
@@ -110,6 +137,42 @@ export default function DettePatrimoineClient({
           </div>
         </div>
       </section>
+
+      <PageHook
+        cite={
+          <>
+            Ville de Paris · Bilan M57 {d.year}
+            {crcSnap ? (
+              <>
+                {" · "}CRC Île-de-France · Rapport IDR2025-42, octobre 2025
+              </>
+            ) : null}
+          </>
+        }
+        shareText={
+          `Dette Ville de Paris ${d.year} : ${fmtBillions(d.detteFinanciere)} Md€ (${fmtInt(detteParHab)} € par habitant` +
+          (deltaDetteDepuis2020Pct > 0 ? `, +${fmtDec(deltaDetteDepuis2020Pct, 0)}% depuis 2020` : "") +
+          `). Capacité de désendettement : ${fmtDec(d.capaciteDesendettement, 1).replace(".", ",")} ans selon la Ville` +
+          (crcSnap ? ` / ${fmtDec(crcSnap.value_crc_ans, 1).replace(".", ",")} ans selon la Chambre régionale des comptes` : "") +
+          `. Deux lectures coexistent.`
+        }
+      >
+        En {d.year}, Paris porte <b>{fmtBillions(d.detteFinanciere)} Md€</b> de
+        dette — <b>{fmtInt(detteParHab)} € par habitant</b>
+        {deltaDetteDepuis2020Pct > 0 ? (
+          <>, en hausse de <b>+{fmtDec(deltaDetteDepuis2020Pct, 0)} % depuis 2020</b></>
+        ) : null}
+        . Capacité de désendettement :{" "}
+        <b>{fmtDec(d.capaciteDesendettement, 1).replace(".", ",")} ans</b> selon les
+        comptes certifiés de la Ville
+        {crcSnap ? (
+          <>
+            , <b>{fmtDec(crcSnap.value_crc_ans, 1).replace(".", ",")} ans</b> selon
+            la Chambre régionale des comptes
+          </>
+        ) : null}
+        .
+      </PageHook>
 
       <section className="fx-section" id="sec-overview">
         <div className="fx-wrap">
@@ -130,13 +193,7 @@ export default function DettePatrimoineClient({
               unit={t("fx.s.md_eur")}
               caption={
                 <>
-                  {t("fx.det.s02.hero_cap.eq")}
-                  <b>
-                    {fmtBillions(d.actif)} {t("fx.s.md_eur")} − {fmtBillions(d.detteTotale + d.provisions)}{" "}
-                    {t("fx.s.md_eur")} = {fmtBillions(net)} {t("fx.s.md_eur")}
-                  </b>
-                  {". "}
-                  {t("fx.det.s02.hero_cap.per_hab").replace("{n}", fmtInt(net / 2_133_111))}
+                  {t("fx.det.s02.hero_cap.per_hab").replace("{n}", fmtInt(net / PARIS_POPULATION))}
                 </>
               }
             />
@@ -150,12 +207,6 @@ export default function DettePatrimoineClient({
                   delta: t("fx.det.s02.kpi.per_hab_delta"),
                 },
                 {
-                  label: <Tip label={t("fx.det.s02.kpi.actif.tip")}>{t("fx.det.s02.kpi.actif")}</Tip>,
-                  value: fmtBillions(d.actif),
-                  unit: t("fx.s.md_eur"),
-                  delta: t("fx.det.s02.kpi.actif_delta"),
-                },
-                {
                   label: <Tip label={t("fx.det.s02.kpi.dette_fin.tip")}>{t("fx.det.s02.kpi.dette_fin")}</Tip>,
                   value: fmtBillions(d.detteFinanciere),
                   unit: t("fx.s.md_eur"),
@@ -167,79 +218,19 @@ export default function DettePatrimoineClient({
                   unit: t("fx.det.s02.kpi.ans"),
                   delta: t("fx.det.s02.kpi.cap_desen_delta"),
                 },
-                {
-                  label: <Tip label={t("fx.det.s02.kpi.provisions.tip")}>{t("fx.det.s02.kpi.provisions")}</Tip>,
-                  value:
-                    d.provisions >= 1e9
-                      ? fmtBillions(d.provisions)
-                      : fmtMillions(d.provisions, 0),
-                  unit: d.provisions >= 1e9 ? t("fx.s.md_eur") : t("fx.s.m_eur"),
-                  delta: t("fx.det.s02.kpi.provisions_delta"),
-                },
-                {
-                  label: <Tip label={t("fx.det.s02.kpi.ratio.tip")}>{t("fx.det.s02.kpi.ratio")}</Tip>,
-                  value: fmtDec((d.detteFinanciere / d.actif) * 100, 0),
-                  unit: "%",
-                  delta: t("fx.det.s02.kpi.ratio_delta"),
-                },
               ]}
             />
           </div>
 
           {citiesSnapshot.length > 0 && (
-            <CityComparator cities={citiesSnapshot} highlightSlug="paris" />
+            <>
+              <CityComparator cities={citiesSnapshot} highlightSlug="paris" />
+              <ChartSource
+                source={<>Comptes administratifs M57 des grandes villes françaises (Lyon, Marseille, Toulouse, Nice, Nantes…)</>}
+                methodAnchor="dette-patrimoine"
+              />
+            </>
           )}
-        </div>
-      </section>
-
-      <section className="fx-section" id="sec-tapart">
-        <div className="fx-wrap">
-          <SectionHead
-            number="01b"
-            kind={t("fx.tp.kicker")}
-            title={
-              <>
-                {t("fx.tp.section.title.before")}
-                <em>{t("fx.tp.section.title.em")}</em>
-                {t("fx.tp.section.title.after")}
-              </>
-            }
-            subtitle={t("fx.tp.section.subtitle")}
-          />
-          <InteractiveWrap>
-            <TaPartAToi
-              dette={d.detteFinanciere}
-              fondsPropres={d.fondsPropres}
-              actif={d.actif}
-              horsBilan={horsBilan?.totals.capital_restant ?? 0}
-              tauxMoyen={structure?.structure_dette.taux.taux_fixe_moyen_pondere_pct ?? 2.4}
-            />
-          </InteractiveWrap>
-        </div>
-      </section>
-
-      <section className="fx-section" id="sec-stress">
-        <div className="fx-wrap">
-          <SectionHead
-            number="02"
-            kind={t("fx.det.stress.kind")}
-            title={
-              <>
-                {t("fx.det.stress.title.before")}
-                <em>{t("fx.det.stress.title.em")}</em>
-                {t("fx.det.stress.title.after")}
-              </>
-            }
-            subtitle={t("fx.det.stress.sub")}
-          />
-          <InteractiveWrap>
-            <StressTestTeaser
-              dette={d.detteFinanciere}
-              capaciteBaseline={d.capaciteDesendettement}
-              tauxBaseline={structure?.structure_dette.taux.taux_fixe_moyen_pondere_pct ?? 2.4}
-              year={d.year}
-            />
-          </InteractiveWrap>
         </div>
       </section>
 
@@ -272,80 +263,6 @@ export default function DettePatrimoineClient({
             dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
             methodAnchor="dette-patrimoine"
           />
-        </div>
-      </section>
-
-      <section className="fx-section" id="sec-trajectoire">
-        <div className="fx-wrap">
-          <SectionHead
-            number="04"
-            kind={t("fx.det.s04d.kind")}
-            title={
-              <>
-                {t("fx.det.s04d.title.before")}
-                <em>{fill(t("fx.det.s04d.title.em"), { year: d.year })}</em>
-                {t("fx.det.s04d.title.after")}
-              </>
-            }
-            subtitle={t("fx.det.s04d.sub")}
-          />
-          {d.yearsSummary.length >= 2 && (() => {
-            const first = d.yearsSummary[0];
-            const last = d.yearsSummary[d.yearsSummary.length - 1];
-            const ratio = (last.dette / last.actif) * 100;
-            const ratio0 = (first.dette / first.actif) * 100;
-            return (
-              <>
-                <BudgetTimeline
-                  points={d.yearsSummary.map((y) => ({
-                    year: y.year,
-                    value: y.dette / 1_000_000_000,
-                    type: "execute" as const,
-                  }))}
-                  activeYear={d.year}
-                  annotations={[
-                    { year: 2020, label: "Covid-19" },
-                    { year: 2024, label: "JO" },
-                  ]}
-                />
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(3, 1fr)",
-                    gap: 1,
-                    background: "var(--ink)",
-                    border: "1px solid var(--ink)",
-                    marginTop: 28,
-                  }}
-                >
-                  {([
-                    { k: "actif", val: last.actif, val0: first.actif, labelKey: "fx.det.s04d.legend.actif" },
-                    { k: "fp", val: last.fondsPropres, val0: first.fondsPropres, labelKey: "fx.det.s04d.legend.fp" },
-                    { k: "dette", val: last.dette, val0: first.dette, labelKey: "fx.det.s04d.legend.dette" },
-                  ] as const).map((r) => {
-                    const delta = ((r.val - r.val0) / r.val0) * 100;
-                    return (
-                      <div key={r.k} style={{ background: "var(--bg)", padding: "18px 20px" }}>
-                        <div style={{ fontFamily: "var(--f-mono)", fontSize: 10.5, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 6 }}>
-                          {t(r.labelKey)}
-                        </div>
-                        <div className="tnum" style={{ fontFamily: "var(--f-disp)", fontWeight: 700, fontSize: 24, letterSpacing: "-0.02em", lineHeight: 1 }}>
-                          {fmtBillions(r.val)}
-                          <span style={{ fontSize: ".5em", color: "var(--muted)", fontWeight: 500, marginLeft: 4 }}>{t("fx.s.md_eur")}</span>
-                        </div>
-                        <div style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--ink-2)", marginTop: 8, letterSpacing: ".02em" }}>
-                          {delta >= 0 ? "+" : "−"} {fmtDec(Math.abs(delta), 0)} % vs {first.year}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-                <p className="fx-note" style={{ marginTop: 18 }}>
-                  {fill(t("fx.det.s04d.note"), { ratio: fmtDec(ratio, 0), year: d.year, ratio0: fmtDec(ratio0, 0), y0: first.year })}
-                </p>
-              </>
-            );
-          })()}
         </div>
       </section>
 
@@ -390,7 +307,90 @@ export default function DettePatrimoineClient({
           ) : (
             <p className="fx-note">Indisponible.</p>
           )}
-          <p className="fx-note">{t("fx.det.s04.note")}</p>
+          <ChartSource
+            source={<>Encours par instrument : bilan M57 · Taux, maturité, structure fixe/variable : Rapport d'Orientation Budgétaire Paris {d.year}</>}
+            dataHref="https://opendata.paris.fr/explore/dataset/bilan-comptable/"
+            methodAnchor="dette-patrimoine"
+          />
+        </div>
+      </section>
+
+      <section className="fx-section" id="sec-trajectoire">
+        <div className="fx-wrap">
+          <SectionHead
+            number="04"
+            kind={t("fx.det.s04d.kind")}
+            title={
+              <>
+                {t("fx.det.s04d.title.before")}
+                <em>{fill(t("fx.det.s04d.title.em"), { year: d.year })}</em>
+                {t("fx.det.s04d.title.after")}
+              </>
+            }
+            subtitle={t("fx.det.s04d.sub")}
+          />
+          {d.yearsSummary.length >= 2 && (() => {
+            const first = d.yearsSummary[0];
+            const last = d.yearsSummary[d.yearsSummary.length - 1];
+            const ratio = (last.dette / last.actif) * 100;
+            const ratio0 = (first.dette / first.actif) * 100;
+            return (
+              <>
+                <BudgetTimeline
+                  points={d.yearsSummary.map((y) => ({
+                    year: y.year,
+                    value: y.dette / 1_000_000_000,
+                    type: "execute" as const,
+                  }))}
+                  activeYear={d.year}
+                  annotations={[
+                    { year: 2020, label: "Covid-19" },
+                    { year: 2024, label: "JO" },
+                  ]}
+                />
+                <ChartSource
+                  source={<>Ville de Paris · Bilan comptable M57, encours de dette financière</>}
+                  dataHref="https://opendata.paris.fr/explore/dataset/bilan-comptable/"
+                  methodAnchor="dette-patrimoine"
+                />
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(3, 1fr)",
+                    gap: 1,
+                    background: "var(--ink)",
+                    border: "1px solid var(--ink)",
+                    marginTop: 28,
+                  }}
+                >
+                  {([
+                    { k: "actif", val: last.actif, val0: first.actif, labelKey: "fx.det.s04d.legend.actif" },
+                    { k: "fp", val: last.fondsPropres, val0: first.fondsPropres, labelKey: "fx.det.s04d.legend.fp" },
+                    { k: "dette", val: last.dette, val0: first.dette, labelKey: "fx.det.s04d.legend.dette" },
+                  ] as const).map((r) => {
+                    const delta = ((r.val - r.val0) / r.val0) * 100;
+                    return (
+                      <div key={r.k} style={{ background: "var(--bg)", padding: "18px 20px" }}>
+                        <div style={{ fontFamily: "var(--f-mono)", fontSize: 10.5, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 6 }}>
+                          {t(r.labelKey)}
+                        </div>
+                        <div className="tnum" style={{ fontFamily: "var(--f-disp)", fontWeight: 700, fontSize: 24, letterSpacing: "-0.02em", lineHeight: 1 }}>
+                          {fmtBillions(r.val)}
+                          <span style={{ fontSize: ".5em", color: "var(--muted)", fontWeight: 500, marginLeft: 4 }}>{t("fx.s.md_eur")}</span>
+                        </div>
+                        <div style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--ink-2)", marginTop: 8, letterSpacing: ".02em" }}>
+                          {delta >= 0 ? "+" : "−"} {fmtDec(Math.abs(delta), 0)} % vs {first.year}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+                <p className="fx-note" style={{ marginTop: 18 }}>
+                  {fill(t("fx.det.s04d.note"), { ratio: fmtDec(ratio, 0), year: d.year, ratio0: fmtDec(ratio0, 0), y0: first.year })}
+                </p>
+              </>
+            );
+          })()}
         </div>
       </section>
 
@@ -410,22 +410,21 @@ export default function DettePatrimoineClient({
 
           {horsBilan ? (
             <>
-              <HeroNumber
-                label={fill(t("fx.det.s04c.hero_label"), { year: horsBilan.year })}
-                value={fmtBillions(horsBilan.totals.capital_restant)}
-                unit={t("fx.s.md_eur")}
-                caption={
-                  <>
-                    {fill(t("fx.det.s04c.hero_cap"), {
-                      count: horsBilan.totals.count_emprunts.toLocaleString("fr-FR"),
-                      benef: horsBilan.totals.count_beneficiaires,
-                    })}
-                  </>
-                }
-              />
+              <p className="fx-hb-lead muted">
+                {fill(t("fx.det.s04c.hero_cap"), {
+                  count: horsBilan.totals.count_emprunts.toLocaleString("fr-FR"),
+                  benef: horsBilan.totals.count_beneficiaires,
+                })}
+              </p>
               <KPIGrid
-                cols={3}
+                cols={4}
                 items={[
+                  {
+                    label: <Tip label={t("fx.det.s04c.hero.tip")}>{fill(t("fx.det.s04c.hero_label"), { year: horsBilan.year })}</Tip>,
+                    value: fmtBillions(horsBilan.totals.capital_restant),
+                    unit: t("fx.s.md_eur"),
+                    delta: t("fx.det.s04c.kpi.capital_delta"),
+                  },
                   {
                     label: <Tip label={t("fx.det.s04c.kpi.annuite.tip")}>{t("fx.det.s04c.kpi.annuite")}</Tip>,
                     value: fmtMillions(horsBilan.totals.annuite_totale, 0),
@@ -436,10 +435,7 @@ export default function DettePatrimoineClient({
                     label: t("fx.det.s04c.kpi.taux"),
                     value: fmtDec(horsBilan.taux.taux_moyen_pondere_pct, 2),
                     unit: "%",
-                    delta: fill(t("fx.det.s04c.kpi.taux_delta"), {
-                      fixe: Math.round(horsBilan.taux.part_fixe * 100),
-                      var: Math.round(horsBilan.taux.part_variable * 100),
-                    }),
+                    delta: t("fx.det.s04c.kpi.taux_delta"),
                   },
                   {
                     label: t("fx.det.s04c.kpi.duree"),
@@ -514,6 +510,10 @@ export default function DettePatrimoineClient({
                 nonLocalised={horsBilan.non_localised}
                 totalCapital={horsBilan.totals.capital_restant}
                 year={horsBilan.year}
+              />
+              <ChartSource
+                source={<>Ville de Paris · Annexe IV-B du compte administratif {horsBilan.year} — garanties d'emprunt aux bailleurs sociaux</>}
+                methodAnchor="dette-patrimoine"
               />
 
               <p className="fx-hb-preteur">
@@ -599,33 +599,11 @@ export default function DettePatrimoineClient({
         </div>
       </section>
 
-      <section className="fx-footer-sources" id="sec-sources">
-        <div className="fx-wrap">
-          <div className="fx-footer-sources-head">
-            <span className="fx-footer-sources-label">{t("fx.s.sources_exports")}</span>
-            <a href="/methode#dette-patrimoine" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</a>
-          </div>
-          <p className="fx-footer-sources-meta">
-            <b>Source</b> : Ville de Paris — Bilan comptable M57 + Rapport d'Orientation Budgétaire (opendata.paris.fr) <span className="sep">·</span> <b>Couverture</b> : 2019-2024.
-          </p>
-          <ExportRow
-            items={[
-              {
-                label: fill(t("fx.det.src.export.csv"), { year: d.year }),
-                primary: true,
-                href: `/data/bilan_sankey_${d.year}.json`,
-              },
-              { label: t("fx.det.src.export.json"), href: `/data/bilan_sankey_${d.year}.json` },
-              { label: t("fx.det.src.export.index"), href: "/data/bilan_index.json" },
-              { label: t("fx.det.src.export.method"), href: "/methode?tool=dette-patrimoine#outils" },
-            ]}
-          />
-        </div>
-      </section>
+      <RelatedArticles number="10" posts={posts} placeholders={DET_PLACEHOLDERS} />
 
       <section className="fx-section">
         <div className="fx-wrap">
-          <SectionHead number="10" kind={t("fx.det.s07.kind")} title={t("fx.det.s07.title")} />
+          <SectionHead number="10" kind={t("fx.det.s07.kind")} />
           <div className="fx-grid-tiles">
             <TileCard
               href="/budget"
@@ -696,6 +674,30 @@ export default function DettePatrimoineClient({
               kpiDelta={t("fx.det.s07.t3.delta")}
             />
           </div>
+        </div>
+      </section>
+
+      <section className="fx-footer-sources" id="sec-sources">
+        <div className="fx-wrap">
+          <div className="fx-footer-sources-head">
+            <span className="fx-footer-sources-label">{t("fx.s.sources_exports")}</span>
+            <a href="/methode#dette-patrimoine" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</a>
+          </div>
+          <p className="fx-footer-sources-meta">
+            <b>Source</b> : Ville de Paris — Bilan comptable M57 + Rapport d'Orientation Budgétaire (opendata.paris.fr) <span className="sep">·</span> <b>Couverture</b> : 2019-2024.
+          </p>
+          <ExportRow
+            items={[
+              {
+                label: fill(t("fx.det.src.export.csv"), { year: d.year }),
+                primary: true,
+                href: `/data/bilan_sankey_${d.year}.json`,
+              },
+              { label: t("fx.det.src.export.json"), href: `/data/bilan_sankey_${d.year}.json` },
+              { label: t("fx.det.src.export.index"), href: "/data/bilan_index.json" },
+              { label: t("fx.det.src.export.method"), href: "/methode?tool=dette-patrimoine#outils" },
+            ]}
+          />
         </div>
       </section>
 

@@ -35,6 +35,56 @@ decp AS (
     FROM {{ ref('stg_decp_marches_paris') }}
 ),
 
+-- =============================================================================
+-- MATCHING PARIS ↔ DECP multi-critères
+--
+-- Contexte : le fichier DECP "2019" (cumulatif, 944 MB) contient des marchés
+-- au format legacy `20211120005759` alors que Paris publie `20212021T05759`.
+-- Une règle SUBSTR unique rate ~96% des matchs pour 2019-2023 (vérifié en prod).
+--
+-- Règles de match, par ordre de priorité :
+--   1. SUBSTR(num_marche, 5) == decp_id           (format moderne 2024+)
+--   2. (fournisseur_siret, date_notification)     (attrape les legacy)
+--      avec tolérance montant |o.max - d.notifie| / o.max < 15%
+--
+-- Un Paris row = 1 DECP match max (ROW_NUMBER sur match_rank).
+-- =============================================================================
+paris_decp_candidates AS (
+    SELECT
+        o.numero_marche                             AS paris_num,
+        d.decp_id,
+        CASE
+            WHEN SUBSTR(o.numero_marche, 5) = d.decp_id THEN 1
+            ELSE 2
+        END AS match_rank
+    FROM ours AS o
+    JOIN decp AS d
+      ON SUBSTR(o.numero_marche, 5) = d.decp_id
+      OR (
+            o.fournisseur_siret IS NOT NULL
+        AND o.fournisseur_siret = d.titulaire_siret
+        AND o.date_notification = d.date_notification
+        AND SAFE_DIVIDE(
+                ABS(COALESCE(o.montant_max, 0) - COALESCE(d.montant_notifie, 0)),
+                NULLIF(o.montant_max, 0)
+            ) < 0.15
+      )
+),
+
+paris_decp_best AS (
+    SELECT paris_num, decp_id
+    FROM (
+        SELECT
+            paris_num, decp_id, match_rank,
+            ROW_NUMBER() OVER (
+                PARTITION BY paris_num
+                ORDER BY match_rank, decp_id
+            ) AS rn
+        FROM paris_decp_candidates
+    )
+    WHERE rn = 1
+),
+
 -- Partie 1 : marchés source Paris, enrichis DECP quand possible.
 ours_enriched AS (
     SELECT
@@ -69,7 +119,7 @@ ours_enriched AS (
         o.perimetre_financier,
 
         -- =====================================================================
-        -- ENRICHISSEMENT DECP
+        -- ENRICHISSEMENT DECP (via paris_decp_best)
         -- =====================================================================
         d.decp_id,
         d.ccag                                      AS decp_ccag,
@@ -92,21 +142,80 @@ ours_enriched AS (
 
         'paris' AS _source_origin  -- ligne provient de opendata.paris.fr
     FROM ours AS o
-    LEFT JOIN decp AS d
-      ON SUBSTR(o.numero_marche, 5) = d.decp_id
+    LEFT JOIN paris_decp_best AS pd ON pd.paris_num = o.numero_marche
+    LEFT JOIN decp AS d ON d.decp_id = pd.decp_id
 ),
 
 -- Partie 2 : marchés présents UNIQUEMENT dans DECP (non-matchés côté Paris).
+--
+-- ⚠️ DECP publie les accords-cadres multi-titulaires en N lignes (une par
+-- titulaire) avec le MÊME montant dupliqué (le plafond est global, pas par
+-- titulaire). Si on somme tel quel, on multiplie le plafond par le nombre
+-- de titulaires → gros sur-comptage.
+--
+-- Dédup: on garde une seule ligne par (objet normalisé, montant, date).
+-- Les titulaires multiples sont concaténés.
+decp_only_raw AS (
+    SELECT
+        d.*,
+        -- Clé de dédup : même objet / même plafond / même date = même marché
+        FARM_FINGERPRINT(CONCAT(
+            COALESCE(UPPER(TRIM(d.objet)), ''), '|',
+            CAST(COALESCE(d.montant_notifie, 0) AS STRING), '|',
+            CAST(COALESCE(d.date_notification, DATE '1900-01-01') AS STRING)
+        )) AS _dedup_key
+    FROM decp AS d
+    -- Anti-join : exclure tous les DECP déjà matchés à un marché Paris
+    -- (via SUBSTR ou via SIRET+date+montant).
+    LEFT JOIN paris_decp_best AS pd ON pd.decp_id = d.decp_id
+    WHERE pd.decp_id IS NULL
+      AND d.montant_notifie > 0
+      AND d.annee_notification IS NOT NULL
+),
+
+decp_only_collapsed AS (
+    SELECT
+        ANY_VALUE(annee_notification)              AS annee_notification,
+        -- id canonique : le plus petit id alphabétique parmi les doublons
+        MIN(decp_id)                               AS decp_id,
+        ANY_VALUE(decp_uid)                        AS decp_uid,
+        ANY_VALUE(nature)                          AS nature,
+        ANY_VALUE(objet)                           AS objet,
+        ANY_VALUE(type_procedure)                  AS type_procedure,
+        ANY_VALUE(date_notification)               AS date_notification,
+        ANY_VALUE(duree_mois)                      AS duree_mois,
+        ANY_VALUE(ccag)                            AS ccag,
+        ANY_VALUE(code_cpv)                        AS code_cpv,
+        ANY_VALUE(cpv_division)                    AS cpv_division,
+        ANY_VALUE(montant_notifie)                 AS montant_notifie,
+        ANY_VALUE(lieu_execution_code)             AS lieu_execution_code,
+        ANY_VALUE(lieu_execution_type_code)        AS lieu_execution_type_code,
+        ANY_VALUE(arrondissement_exec)             AS arrondissement_exec,
+        ANY_VALUE(offres_recues)                   AS offres_recues,
+        ANY_VALUE(sous_traitance_declaree)         AS sous_traitance_declaree,
+        ANY_VALUE(nb_modifications)                AS nb_modifications,
+        ANY_VALUE(has_consideration_sociale)       AS has_consideration_sociale,
+        ANY_VALUE(has_consideration_environnementale) AS has_consideration_environnementale,
+        ANY_VALUE(marche_innovant)                 AS marche_innovant,
+        -- Titulaires : concaténés si multi-attributaire
+        STRING_AGG(DISTINCT CAST(titulaire_siret AS STRING), '|') AS titulaire_siret,
+        ANY_VALUE(titulaire_nom)                   AS titulaire_nom,
+        COUNT(DISTINCT titulaire_siret)            AS titulaires_count,
+        COUNT(*)                                   AS _nb_decp_rows  -- diagnostic
+    FROM decp_only_raw
+    GROUP BY _dedup_key
+),
+
 decp_only AS (
     SELECT
         d.annee_notification                                   AS annee,
-        CONCAT(CAST(d.annee_notification AS STRING),
-               CAST(d.annee_notification AS STRING),
-               SUBSTR(d.decp_id, 5))                           AS numero_marche,
+        -- numero_marche synthétique unique : préfixe "decp-" + id complet.
+        -- (Ancienne version SUBSTR(decp_id, 5) pouvait collider entre
+        -- formats legacy 14c `20201120014054` et recent 10c `2024T05699`.)
+        CONCAT('decp-', d.decp_id)                             AS numero_marche,
         CONCAT('decp-', d.decp_id)                             AS cle_technique,
 
         d.objet,
-        -- Map DECP nature → Paris nature vocabulary (approximation).
         CASE
             WHEN d.ccag = 'Travaux' THEN 'Travaux'
             WHEN d.ccag = 'Fournitures courantes et services' THEN 'Fournitures'
@@ -116,30 +225,28 @@ decp_only AS (
             ELSE d.nature
         END AS nature,
 
-        -- Fournisseur (depuis DECP). titulaire_nom souvent NULL en DECP v3 →
-        -- CAST pour éviter les mismatches de type dans l'UNION.
-        CAST(d.titulaire_nom AS STRING)                        AS fournisseur_nom,
+        -- Fournisseur : si multi-titulaire (titulaires_count>1 après dédup),
+        -- on affiche le badge "MARCHE MULTIATTRIBUTAIRE" comme côté Paris.
+        CASE
+            WHEN d.titulaires_count > 1 THEN 'MARCHE MULTIATTRIBUTAIRE'
+            ELSE CAST(d.titulaire_nom AS STRING)
+        END AS fournisseur_nom,
         CAST(d.titulaire_siret AS STRING)                      AS fournisseur_siret,
         CAST(NULL AS STRING)                                   AS fournisseur_code_postal,
         CAST(NULL AS STRING)                                   AS fournisseur_ville,
 
-        -- Montants : DECP n'a qu'un seul montant (= notifié). On le met en max
-        -- pour compatibilité frontend ; min reste 0.
         CAST(0 AS FLOAT64)                                     AS montant_min,
         d.montant_notifie                                      AS montant_max,
 
-        -- Dates
         d.date_notification,
         CAST(NULL AS DATE)                                     AS date_debut,
         CAST(NULL AS DATE)                                     AS date_fin,
         SAFE_CAST(d.duree_mois * 30 AS INT64)                  AS duree_jours,
 
-        -- Catégorie — pas d'équivalent Paris, on expose DECP
         CAST(NULL AS STRING)                                   AS categorie_code,
         d.ccag                                                 AS categorie_libelle,
         CAST(NULL AS STRING)                                   AS perimetre_financier,
 
-        -- DECP enrichment (identique mais pas de join — c'est la ligne DECP elle-même)
         d.decp_id,
         d.ccag                                      AS decp_ccag,
         d.code_cpv                                  AS decp_code_cpv,
@@ -159,13 +266,8 @@ decp_only AS (
         d.has_consideration_environnementale        AS decp_has_consideration_environnementale,
         d.marche_innovant                           AS decp_marche_innovant,
 
-        'decp' AS _source_origin  -- ligne reconstruite depuis DECP
-    FROM decp AS d
-    LEFT JOIN ours AS o
-      ON SUBSTR(o.numero_marche, 5) = d.decp_id
-    WHERE o.numero_marche IS NULL
-      AND d.montant_notifie > 0
-      AND d.annee_notification IS NOT NULL
+        'decp' AS _source_origin
+    FROM decp_only_collapsed AS d
 ),
 
 unioned AS (

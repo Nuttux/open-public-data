@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "../fusion.css";
 import { loadLogementSocialData } from "@/lib/fusion-data";
+import { getPostsForPage } from "@/lib/page-articles";
 import LogementSocialClient from "./LogementSocialClient";
 
 export const metadata: Metadata = {
@@ -18,5 +19,6 @@ export default async function LogementSocialPage({
   const sp = await searchParams;
   const requestedYear = sp.year ? Number(sp.year) : undefined;
   const d = loadLogementSocialData(requestedYear);
-  return <LogementSocialClient d={d} />;
+  const posts = getPostsForPage("logement-social");
+  return <LogementSocialClient d={d} posts={posts} />;
 }

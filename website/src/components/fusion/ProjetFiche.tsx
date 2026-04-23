@@ -216,6 +216,78 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
         </section>
       )}
 
+      {projet.marches.length > 0 && (
+        <section className="fx-fiche-section">
+          <div className="fx-fiche-h">
+            Entreprises identifiées
+            <span
+              style={{
+                fontSize: 10.5,
+                fontFamily: "var(--f-mono)",
+                color: "var(--muted)",
+                marginLeft: 10,
+                textTransform: "uppercase",
+                letterSpacing: ".05em",
+              }}
+              title="Rapprochement automatique projet d'investissement ↔ marchés publics par analyse des libellés et métadonnées. Peut contenir des erreurs ou manquer certains fournisseurs (travaux en régie, marchés < 40 k€, accords-cadres multi-sites non attribuables à un projet précis)."
+            >
+              rapprochement auto ⓘ
+            </span>
+          </div>
+
+          <p style={{ margin: "0 0 14px", fontSize: 13, color: "var(--muted)", lineHeight: 1.5 }}>
+            Ces marchés publics semblent contribuer à la réalisation de ce projet.
+            {" "}
+            <b>Ce rapprochement est automatique</b> et peut contenir des erreurs — toujours vérifier l'objet du marché.
+          </p>
+
+          <div>
+            {projet.marches.map((m) => {
+              const f = fmtEur(m.montant_max);
+              const confidence = m.label === "confirmed" ? "Confirmé" : "Probable";
+              const badgeColor = m.label === "confirmed" ? "var(--vert)" : "var(--ocre)";
+              return (
+                <a
+                  key={m.numero_marche}
+                  href={`/marches-publics/contrat/${encodeURIComponent(m.numero_marche)}`}
+                  style={{
+                    display: "block",
+                    padding: "12px 0",
+                    borderBottom: "1px solid var(--rule)",
+                    fontFamily: "var(--f-ui)",
+                    fontSize: 13.5,
+                    color: "var(--ink)",
+                    textDecoration: "none",
+                  }}
+                >
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 4, gap: 12 }}>
+                    <span style={{ fontWeight: 600 }}>
+                      {m.fournisseur_nom || "Fournisseur non renseigné"}
+                    </span>
+                    <span style={{ fontFamily: "var(--f-disp)", fontWeight: 700, letterSpacing: "-0.01em", whiteSpace: "nowrap" }}>
+                      {f.v}
+                      <span style={{ fontSize: ".7em", color: "var(--muted)", fontWeight: 500 }}> {f.u}</span>
+                    </span>
+                  </div>
+                  <div style={{ fontSize: 12, color: "var(--ink-2)", lineHeight: 1.45, marginBottom: 4 }}>
+                    {m.objet.length > 120 ? m.objet.slice(0, 120) + "…" : m.objet}
+                  </div>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 6, fontSize: 10.5, fontFamily: "var(--f-mono)", color: "var(--muted)", textTransform: "uppercase", letterSpacing: ".04em" }}>
+                    <span style={{ color: badgeColor, fontWeight: 600 }}>
+                      {confidence}
+                    </span>
+                    {m.annee && <span>· {m.annee}</span>}
+                    {m.ccag && <span>· {m.ccag}</span>}
+                    {m.cpv_famille && <span>· {m.cpv_famille}</span>}
+                    {m.lieu_execution && <span>· {m.lieu_execution}</span>}
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
       {projet.similaires.length > 0 && typoLabel && (
         <section className="fx-fiche-section">
           <div className="fx-fiche-h">{fill(t("fx.fiche.projet.similaires"), { typo: typoLabel.toLowerCase(), year: projet.year })}</div>

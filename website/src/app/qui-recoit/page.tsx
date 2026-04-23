@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "../fusion.css";
 import { loadQuiRecoitData, loadQuiRecoitIndex } from "@/lib/fusion-data";
+import { getPostsForPage } from "@/lib/page-articles";
 import QuiRecoitClient from "./QuiRecoitClient";
 
 export const metadata: Metadata = {
@@ -19,5 +20,6 @@ export default async function QuiRecoitPage({
   const requestedYear = sp.year ? Number(sp.year) : undefined;
   const idx = loadQuiRecoitIndex();
   const d = loadQuiRecoitData(requestedYear);
-  return <QuiRecoitClient idx={idx} d={d} />;
+  const posts = getPostsForPage("qui-recoit");
+  return <QuiRecoitClient idx={idx} d={d} posts={posts} />;
 }

@@ -16,6 +16,19 @@
 
 type Rule = [RegExp, string];
 
+// Articles/prépositions/conjonctions fr. à forcer en minuscules quand on
+// re-casse un libellé tout-MAJ. Sans ça, "DES MARCHES A LA SAUVETTE" se
+// retrouve "DES Marches A LA Sauvette" (la règle "≤3 chars" garde MAJ).
+// Le mapping restaure aussi les accents perdus (A → à, DES reste "des").
+const FR_STOPWORDS_LOWER = new Map<string, string>([
+  ["le", "le"], ["la", "la"], ["les", "les"], ["l'", "l'"],
+  ["un", "un"], ["une", "une"], ["des", "des"], ["du", "du"], ["de", "de"], ["d'", "d'"],
+  ["à", "à"], ["a", "à"], ["au", "au"], ["aux", "aux"],
+  ["en", "en"], ["par", "par"], ["sur", "sur"], ["sous", "sous"], ["dans", "dans"], ["pour", "pour"],
+  ["chez", "chez"], ["vers", "vers"], ["dès", "dès"], ["sans", "sans"], ["avec", "avec"],
+  ["et", "et"], ["ou", "ou"], ["ni", "ni"], ["mais", "mais"], ["car", "car"], ["donc", "donc"],
+]);
+
 // Abréviations métier → forme longue. Ordre important : on va du plus
 // spécifique au plus générique.
 const ABBREVIATIONS: Rule[] = [
@@ -113,14 +126,18 @@ export function normalizeObjet(raw: string): string {
   let s = raw.trim();
 
   // Si tout est en MAJUSCULES, passe en casse plus lisible avant substitutions.
-  // On garde les mots < 4 caractères en majuscules (acronymes SA3, etc.)
+  // Les mots courts (≤3 car.) restent MAJ par défaut (acronymes : SA3, CPV,
+  // UTB, MOE…), sauf articles/prépositions fr. qui passent en minuscules.
   if (s === s.toUpperCase() && s.length > 8) {
     s = s
       .split(/(\s+|[_])/)
       .map((w) => {
         if (!w.trim()) return w;
-        if (w.length <= 3) return w; // garde acronymes courts
         if (/^\d/.test(w)) return w; // préfixes numériques
+        const lower = w.toLowerCase();
+        const stop = FR_STOPWORDS_LOWER.get(lower);
+        if (stop) return stop;
+        if (w.length <= 3) return w; // garde acronymes courts
         return w[0] + w.slice(1).toLowerCase();
       })
       .join("");

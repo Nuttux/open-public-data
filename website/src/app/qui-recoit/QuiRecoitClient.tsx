@@ -15,7 +15,10 @@ import Tip from "@/components/fusion/Tip";
 import BudgetTimeline from "@/components/fusion/BudgetTimeline";
 import StackedBarTheme from "@/components/fusion/StackedBarTheme";
 import QuiRecoitExplorer from "./QuiRecoitExplorer";
+import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/RelatedArticles";
+import PageHook from "@/components/fusion/PageHook";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
+import type { BlogPostMeta } from "@/lib/blog";
 import type { QuiRecoitData } from "@/lib/fusion-data";
 import { slugifyLabel } from "@/lib/projet-utils";
 import { useT } from "@/lib/localeContext";
@@ -28,12 +31,29 @@ const fill = (s: string, vars: Record<string, string | number>) => {
   return r;
 };
 
+const QR_PLACEHOLDERS: ArticlePlaceholder[] = [
+  {
+    category: "Enquête",
+    title: "Subventions aux opérateurs : ce que la Ville finance hors vote annuel.",
+    description:
+      "CASVP, AGOSPAP, caisses des écoles — les transferts structurels représentent plus de la moitié du total. Anatomie d'un budget invisible.",
+  },
+  {
+    category: "Explication",
+    title: "Conventions pluri-annuelles : comment lire une ligne de subvention sur plusieurs exercices.",
+    description:
+      "Engagement, versement, solde — trois moments comptables pour un même euro. Ce que le CA publie, et ce qu'il ne publie pas.",
+  },
+];
+
 export default function QuiRecoitClient({
   idx,
   d,
+  posts,
 }: {
   idx: QuiRecoitIndex;
   d: QuiRecoitData;
+  posts: BlogPostMeta[];
 }) {
   const t = useT();
   const dir: "up" | "down" | "flat" =
@@ -51,8 +71,9 @@ export default function QuiRecoitClient({
           { id: "sec-top-benef", label: t("fx.toc.top_benef") },
           { id: "recherche", label: t("fx.toc.recherche") },
           { id: "sec-evolution", label: t("fx.toc.evolution") },
-          { id: "sec-sources", label: t("fx.toc.sources") },
+          { id: "sec-analyses", label: t("fx.toc.analyses") },
           { id: "sec-explorer", label: t("fx.toc.explorer") },
+          { id: "sec-sources", label: t("fx.toc.sources") },
         ]}
       />
 
@@ -105,6 +126,33 @@ export default function QuiRecoitClient({
           )}
         </div>
       </section>
+
+      {(() => {
+        const medianStr = d.medianSubvention >= 1_000_000
+          ? `${fmtMillions(d.medianSubvention, 1)} M€`
+          : `${fmtInt(d.medianSubvention / 1_000)} k€`;
+        const concentr = Math.round(d.concentrationTop10Pct);
+        return (
+          <PageHook
+            cite={<>Ville de Paris · Subventions versées (annexe CA) · {d.year}</>}
+            shareText={
+              `Subventions Ville de Paris ${d.year} : ${fmtBillions(d.total)} Md€ versés via ${fmtInt(d.nbSubventions)} subventions. ` +
+              `Médiane ${medianStr}. Le top 10 concentre ${concentr}% de l'enveloppe.`
+            }
+          >
+            En {d.year}, Paris a versé <b>{fmtBillions(d.total)} Md€</b> via{" "}
+            <b>{fmtInt(d.nbSubventions)} subventions</b>
+            {!d.isPreview && Math.abs(d.deltaMontantPct) > 1 ? (
+              <>
+                {" "}({d.deltaMontantPct >= 0 ? "+" : "−"}
+                <b>{fmtDec(Math.abs(d.deltaMontantPct), 1)} %</b> vs {d.previousYear})
+              </>
+            ) : null}
+            . La subvention médiane tient à <b>{medianStr}</b> ; le top 10 des
+            bénéficiaires capte à lui seul <b>{concentr} %</b> de l&apos;enveloppe.
+          </PageHook>
+        );
+      })()}
 
       <section className="fx-section" id="sec-overview">
         <div className="fx-wrap">
@@ -265,6 +313,11 @@ export default function QuiRecoitClient({
                   }))}
                   activeYear={activeForChart}
                 />
+                <ChartSource
+                  source={<>Ville de Paris · Subventions versées (annexes CA), séries 2018-2024</>}
+                  dataHref="https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/"
+                  methodAnchor="subventions"
+                />
               </>
             );
           })()}
@@ -337,39 +390,13 @@ export default function QuiRecoitClient({
         </div>
       </section>
 
-      <section className="fx-footer-sources" id="sec-sources">
-        <div className="fx-wrap">
-          <div className="fx-footer-sources-head">
-            <span className="fx-footer-sources-label">{t("fx.s.sources_exports")}</span>
-            <a href="/methode#subventions" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</a>
-          </div>
-          <p className="fx-note fx-footer-sources-note">
-            {t("fx.qr.src.scope_note")}
-          </p>
-          <p className="fx-note fx-footer-sources-note">
-            {t("fx.qr.src.freshness_note")}
-          </p>
-          <ExportRow
-            items={[
-              {
-                label: fill(t("fx.qr.src.export.csv"), { year: d.year }),
-                primary: true,
-                href: `/data/subventions/beneficiaires_${d.year}.json`,
-              },
-              { label: t("fx.qr.src.export.json"), href: `/data/subventions/beneficiaires_${d.year}.json` },
-              { label: t("fx.qr.src.export.treemap"), href: `/data/subventions/treemap_${d.year}.json` },
-              { label: t("fx.qr.src.export.method"), href: "/methode?tool=subventions#outils" },
-            ]}
-          />
-        </div>
-      </section>
+      <RelatedArticles number="06" posts={posts} placeholders={QR_PLACEHOLDERS} />
 
       <section className="fx-section" id="sec-explorer">
         <div className="fx-wrap">
           <SectionHead
             number="07"
             kind={t("fx.qr.s06.kind")}
-            title={t("fx.qr.s06.title")}
             subtitle={t("fx.qr.s06.sub")}
           />
           <div className="fx-grid-tiles">
@@ -432,6 +459,30 @@ export default function QuiRecoitClient({
               kpiDelta={t("fx.qr.s06.t3.delta")}
             />
           </div>
+        </div>
+      </section>
+
+      <section className="fx-footer-sources" id="sec-sources">
+        <div className="fx-wrap">
+          <div className="fx-footer-sources-head">
+            <span className="fx-footer-sources-label">{t("fx.s.sources_exports")}</span>
+            <a href="/methode#subventions" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</a>
+          </div>
+          <p className="fx-footer-sources-meta">
+            <b>Source</b> : Ville de Paris — Subventions versées, annexes CA (opendata.paris.fr) <span className="sep">·</span> <b>Couverture</b> : 2018-2024. Les exercices 2020 et 2021 sont absents du jeu open data amont. Pas de géolocalisation — voir « Investissements » pour les projets localisés.
+          </p>
+          <ExportRow
+            items={[
+              {
+                label: fill(t("fx.qr.src.export.csv"), { year: d.year }),
+                primary: true,
+                href: `/data/subventions/beneficiaires_${d.year}.json`,
+              },
+              { label: t("fx.qr.src.export.json"), href: `/data/subventions/beneficiaires_${d.year}.json` },
+              { label: t("fx.qr.src.export.treemap"), href: `/data/subventions/treemap_${d.year}.json` },
+              { label: t("fx.qr.src.export.method"), href: "/methode?tool=subventions#outils" },
+            ]}
+          />
         </div>
       </section>
 

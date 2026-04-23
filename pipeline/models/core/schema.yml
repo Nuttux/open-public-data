@@ -208,3 +208,48 @@ models:
           - not_null
       - name: nb_logements
         description: "Nombre total de logements"
+
+  # ===========================================================================
+  # MARCHÉS PUBLICS (fusion opendata.paris.fr + DECP national)
+  # ===========================================================================
+  - name: core_marches_publics
+    description: |
+      Marchés publics consolidés = opendata.paris.fr LEFT JOIN DECP national
+      + UNION des marchés DECP-exclusifs.
+
+      Deux chiffres distincts :
+        - montant_max = plafond contractuel (source Paris)
+        - decp_montant_notifie = montant déclaré à la signature (source DECP)
+      Voir afficher_deux_montants pour le seuil d'écart (5%).
+
+      Dédup DECP multi-titulaires par (objet, montant, date_notification)
+      pour éviter le sur-comptage des accords-cadres.
+
+      Grain: (annee, numero_marche)
+    config:
+      materialized: table
+    columns:
+      - name: numero_marche
+        description: "Numéro du marché (14 chars Paris ou reconstruit depuis DECP)"
+        tests:
+          - unique
+          - not_null
+      - name: annee
+        description: "Année de notification"
+        tests:
+          - not_null
+      - name: montant_max
+        description: "Plafond contractuel (ENVELOPPE pluriannuelle)"
+        tests:
+          - not_null
+      - name: _source_origin
+        description: "Origine de la ligne: 'paris' ou 'decp'"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['paris', 'decp']
+      - name: cle_technique
+        description: "Clé technique unique"
+        tests:
+          - unique
+          - not_null

@@ -21,11 +21,15 @@ import EmptyState from "@/components/fusion/EmptyState";
 import DualFlowBars from "@/components/fusion/DualFlowBars";
 import Tip from "@/components/fusion/Tip";
 import BudgetTimeline from "@/components/fusion/BudgetTimeline";
+import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/RelatedArticles";
+import PageHook from "@/components/fusion/PageHook";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
+import type { BlogPostMeta } from "@/lib/blog";
 import type { BudgetPageData, VoteExecuteData } from "@/lib/fusion-data";
 import { slugifyLabel } from "@/lib/projet-utils";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
+import { PARIS_POPULATION } from "@/lib/methodology";
 
 type BudgetIndexLite = {
   availableYears: number[];
@@ -37,10 +41,26 @@ type Props = {
   index: BudgetIndexLite;
   d: BudgetPageData;
   voteExec: VoteExecuteData;
+  posts: BlogPostMeta[];
 };
 
+const BUD_PLACEHOLDERS: ArticlePlaceholder[] = [
+  {
+    category: "Explication",
+    title: "Vote, exécution, report : trois chiffres différents pour une même ligne budgétaire.",
+    description:
+      "Ce qu'une Ville annonce en décembre, paie sur l'année, puis reporte à l'année suivante — lecture pas-à-pas d'un même chapitre.",
+  },
+  {
+    category: "Analyse",
+    title: "Opérations pour ordre : pourquoi la moitié du budget parisien apparaît deux fois.",
+    description:
+      "Écritures internes, reversements, amortissements. Ce qui gonfle artificiellement le total, et ce que cela signifie pour comparer Paris à d'autres villes.",
+  },
+];
+
 // Mapping exact des sources utilisées par le pipeline (cf. pipeline/scripts/tools/extract_pdf_budget_vote.py).
-export default function BudgetClient({ index, d, voteExec }: Props) {
+export default function BudgetClient({ index, d, voteExec, posts }: Props) {
   const t = useT();
   const { locale } = useLocale();
 
@@ -72,8 +92,9 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
           { id: "sec-flux", label: t("fx.toc.flux") },
           { id: "sec-evolution", label: t("fx.toc.evolution") },
           { id: "execution", label: t("fx.toc.execution") },
-          { id: "sec-sources", label: t("fx.toc.sources") },
+          { id: "sec-analyses", label: t("fx.toc.analyses") },
           { id: "sec-explorer", label: t("fx.toc.explorer") },
+          { id: "sec-sources", label: t("fx.toc.sources") },
         ]}
       />
 
@@ -141,6 +162,26 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
         </div>
       </section>
 
+      {(() => {
+        const parHab = d.depenses / PARIS_POPULATION;
+        const pctFonct = Math.round((d.fonctionnement / d.depenses) * 100);
+        const pctInvest = Math.round((d.investissement / d.depenses) * 100);
+        return (
+          <PageHook
+            cite={<>Ville de Paris · Comptes administratifs M57 · exercice {d.year}</>}
+            shareText={
+              `Budget Ville de Paris ${d.year} : ${fmtBillions(d.depenses)} Md€ dépensés, ${fmtInt(parHab)} € par habitant. ` +
+              `${pctFonct}% couvrent le quotidien (salaires, écoles, services), ${pctInvest}% financent les chantiers.`
+            }
+          >
+            En {d.year}, Paris dépense <b>{fmtBillions(d.depenses)} Md€</b> — soit{" "}
+            <b>{fmtInt(parHab)} € par habitant</b>. Sur ces 100 €, <b>{pctFonct}</b>{" "}
+            couvrent le quotidien (salaires, écoles, services), <b>{pctInvest}</b>{" "}
+            financent les chantiers en cours.
+          </PageHook>
+        );
+      })()}
+
       <section className="fx-section" id="sec-overview">
         <div className="fx-wrap">
           <SectionHead
@@ -181,7 +222,7 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
               items={[
                 {
                   label: <Tip label={t("fx.bud.s01.kpi.per_hab.tip")}>{t("fx.bud.s01.kpi.per_hab")}</Tip>,
-                  value: fmtInt(d.depenses / 2_133_111),
+                  value: fmtInt(d.depenses / PARIS_POPULATION),
                   unit: "€",
                   delta: fill("fx.bud.s01.kpi.per_hab.delta", { pop: "2,13 M" }),
                 },
@@ -329,13 +370,9 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
                   <b>{t("fx.bud.s02.callout.word.invest")}</b>
                 </Tip>
                 {t("fx.bud.s02.callout.p4")}
-                <Tip label={t("fx.bud.s02.callout.tip.emprunt")}>
-                  <b>{t("fx.bud.s02.callout.word.emprunt")}</b>
-                </Tip>
+                <b>{t("fx.bud.s02.callout.word.emprunt")}</b>
                 {t("fx.bud.s02.callout.p5")}
-                <Tip label={t("fx.bud.s02.callout.tip.regle")}>
-                  {t("fx.bud.s02.callout.word.regle")}
-                </Tip>
+                {t("fx.bud.s02.callout.word.regle")}
                 {t("fx.bud.s02.callout.p6")}
               </>
             }
@@ -367,6 +404,11 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
               { year: 2020, label: t("fx.bud.s04.annot.covid") },
               { year: 2024, label: t("fx.bud.s04.annot.jo") },
             ]}
+          />
+          <ChartSource
+            source={<>Ville de Paris · Comptes administratifs M57 (séries voté + exécuté)</>}
+            dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
+            methodAnchor="budget"
           />
           {d.yearsSummary.length >= 2 && (() => {
             const first = d.yearsSummary[0];
@@ -509,41 +551,13 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
         </div>
       </section>
 
-      <section className="fx-footer-sources" id="sec-sources">
-        <div className="fx-wrap">
-          <div className="fx-footer-sources-head">
-            <span className="fx-footer-sources-label">{t("fx.s.sources_exports")}</span>
-            <a href="/methode#budget" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</a>
-          </div>
-          <p className="fx-footer-sources-meta">
-            <b>Source</b> : Ville de Paris — Comptes administratifs M57 + Budgets primitifs (opendata.paris.fr) <span className="sep">·</span> <b>Couverture</b> : 2019-2024 exécuté · 2019-2026 voté.
-          </p>
-          <ExportRow
-            items={[
-              {
-                label: fill("fx.bud.s06.export.csv", { year: d.year, status: isVoted ? t("fx.bud.s01.kpi.voted").toLowerCase() : t("fx.bud.s01.kpi.executed").toLowerCase() }),
-                primary: true,
-                href: `/api/budget/${d.year}/csv`,
-                download: `budget-paris-${d.year}.csv`,
-              },
-              {
-                label: t("fx.bud.s06.export.json"),
-                href: `/data/budget_sankey_${d.year}.json`,
-                download: `budget-paris-${d.year}.json`,
-              },
-              { label: t("fx.bud.s06.export.api"), href: undefined },
-              { label: t("fx.bud.s06.export.method"), href: "/methode?tool=budget#outils" },
-            ]}
-          />
-        </div>
-      </section>
+      <RelatedArticles number="06" posts={posts} placeholders={BUD_PLACEHOLDERS} />
 
       <section className="fx-section" id="sec-explorer">
         <div className="fx-wrap">
           <SectionHead
             number="07"
             kind={t("fx.bud.s07.kind")}
-            title={t("fx.bud.s07.title")}
             subtitle={t("fx.bud.s07.sub")}
           />
           <div className="fx-grid-tiles fx-grid-tiles-4">
@@ -592,6 +606,35 @@ export default function BudgetClient({ index, d, voteExec }: Props) {
               kpiDelta={<>{t("fx.bud.s07.t4.delta")}</>}
             />
           </div>
+        </div>
+      </section>
+
+      <section className="fx-footer-sources" id="sec-sources">
+        <div className="fx-wrap">
+          <div className="fx-footer-sources-head">
+            <span className="fx-footer-sources-label">{t("fx.s.sources_exports")}</span>
+            <a href="/methode#budget" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</a>
+          </div>
+          <p className="fx-footer-sources-meta">
+            <b>Source</b> : Ville de Paris — Comptes administratifs M57 + Budgets primitifs (opendata.paris.fr) <span className="sep">·</span> <b>Couverture</b> : 2019-2024 exécuté · 2019-2026 voté.
+          </p>
+          <ExportRow
+            items={[
+              {
+                label: fill("fx.bud.s06.export.csv", { year: d.year, status: isVoted ? t("fx.bud.s01.kpi.voted").toLowerCase() : t("fx.bud.s01.kpi.executed").toLowerCase() }),
+                primary: true,
+                href: `/api/budget/${d.year}/csv`,
+                download: `budget-paris-${d.year}.csv`,
+              },
+              {
+                label: t("fx.bud.s06.export.json"),
+                href: `/data/budget_sankey_${d.year}.json`,
+                download: `budget-paris-${d.year}.json`,
+              },
+              { label: t("fx.bud.s06.export.api"), href: undefined },
+              { label: t("fx.bud.s06.export.method"), href: "/methode?tool=budget#outils" },
+            ]}
+          />
         </div>
       </section>
 
