@@ -1,0 +1,100 @@
+name: Enrichment pipeline (subventions)
+
+# Incremental par design — les scripts lisent un cache JSON et ne
+# re-traitent que les nouveaux bénéficiaires. Re-run sûr.
+#
+# Utilisation :
+#   · GitHub → Actions → "Enrichment pipeline" → Run workflow
+#     Coche ce que tu veux exécuter.
+#   · Déclenchement auto : désactivé par défaut. Dé-commente le bloc
+#     `schedule` ci-dessous si tu veux un run hebdo / mensuel.
+
+on:
+  workflow_dispatch:
+    inputs:
+      sync:
+        description: "1. Re-télécharger subventions depuis OpenData Paris"
+        type: boolean
+        default: true
+      tier1:
+        description: "2. Enrichir les nouveaux bénéfs ≥80k€ via LLM (coût ~quelques €)"
+        type: boolean
+        default: false
+      tier2:
+        description: "3. Backfill SIRENE sur traîne ≥10k€ (gratuit, pas de LLM)"
+        type: boolean
+        default: false
+      commit:
+        description: "Commit + push les changements sur la branche"
+        type: boolean
+        default: true
+
+  # schedule:
+  #   - cron: "0 6 * * 1"   # Tous les lundis 6h UTC — décommenter si besoin
+
+permissions:
+  contents: write
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Besoin du historique pour pouvoir commit.
+          fetch-depth: 1
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: 1/ Sync subventions from OpenData Paris
+        if: ${{ inputs.sync }}
+        run: |
+          python pipeline/scripts/sync/fetch_subventions_opendata.py
+          echo "Sync done."
+
+      - name: 2/ Enrich tier1 (LLM grounded, ≥80k€)
+        if: ${{ inputs.tier1 }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python pipeline/scripts/enrich/enrich_beneficiaire_grounded_llm.py \
+            --mode tier1 \
+            --provider claude
+
+      - name: 3/ Enrich tier2 (SIRENE only, ≥10k€)
+        if: ${{ inputs.tier2 }}
+        run: |
+          python pipeline/scripts/enrich/enrich_beneficiaire_grounded_llm.py \
+            --mode tier2
+
+      - name: Show diff summary
+        if: always()
+        run: |
+          git status --short
+          echo "---"
+          git diff --stat
+
+      - name: Commit & push
+        if: ${{ inputs.commit }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet && git diff --cached --quiet; then
+            echo "Rien à committer."
+            exit 0
+          fi
+          git add website/public/data/subventions/ website/public/data/enrichment/
+          git commit -m "chore(pipeline): auto-refresh subventions + enrich [skip ci]"
+          git push

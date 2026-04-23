@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-23T11:31:22",
+  "generated_at": "2026-04-23T16:18:56",
   "model": "gemini-3-flash-preview",
-  "count": 1708,
+  "count": 1911,
   "items": {
     "ELOGIE SIEMP": {
       "beneficiaire": "ELOGIE-SIEMP",
@@ -29976,30 +29976,6 @@
       "confiance": 0.5,
       "source_type": "grounded_search"
     },
-    "CROIX ROUGE INSERTION": {
-      "beneficiaire": "CROIX ROUGE INSERTION",
-      "beneficiaire_normalise": "CROIX ROUGE INSERTION",
-      "siret": "",
-      "activite_verifiee": "(dry-run stub)",
-      "perimetre_geographique": null,
-      "sources": [],
-      "confiance": 0.0,
-      "source_type": "fallback_none",
-      "generated_at": "2026-04-23T11:31:22",
-      "model": "dry-run"
-    },
-    "CHECKPOINT": {
-      "beneficiaire": "CHECKPOINT",
-      "beneficiaire_normalise": "CHECKPOINT",
-      "siret": "39072518200047",
-      "activite_verifiee": "(dry-run stub)",
-      "perimetre_geographique": null,
-      "sources": [],
-      "confiance": 0.0,
-      "source_type": "fallback_none",
-      "generated_at": "2026-04-23T11:31:22",
-      "model": "dry-run"
-    },
     "ASSOCIATION JEUNESSE EDUCATION": {
       "beneficiaire": "Association Jeunesse Éducation (AJE)",
       "beneficiaire_normalise": "ASSOCIATION JEUNESSE EDUCATION",
@@ -33113,7 +33089,102 @@
       ],
       "confiance": 0.85,
       "source_type": "grounded_search"
+    },
+    "EDEN PLUS": {
+      "beneficiaire": "EDEN PLUS",
+      "beneficiaire_normalise": "EDEN PLUS",
+      "siret": "953320819",
+      "generated_at": "2026-04-23T16:18:42",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Code NAF 4759B · 87085",
+      "perimetre_geographique": "87085",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "sirene_libelle"
+    },
+    "SDC 96 BD MASSENA 75013 PARIS": {
+      "beneficiaire": "SDC 96 BD MASSENA 75013  PARIS",
+      "beneficiaire_normalise": "SDC 96 BD MASSENA 75013 PARIS",
+      "siret": "",
+      "generated_at": "2026-04-23T16:18:42",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": null,
+      "perimetre_geographique": null,
+      "sources": [],
+      "confiance": 0.0,
+      "source_type": "fallback_none"
+    },
+    "CROIX ROUGE INSERTION": {
+      "beneficiaire": "CROIX ROUGE INSERTION",
+      "beneficiaire_normalise": "CROIX ROUGE INSERTION",
+      "siret": "751703430",
+      "generated_at": "2026-04-23T16:18:45",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Autre organisation fonctionnant par adhésion volontaire · 92049",
+      "perimetre_geographique": "92049",
+      "sources": [],
+      "confiance": 0.55,
+      "source_type": "sirene_libelle"
+    },
+    "CHECKPOINT": {
+      "beneficiaire": "CHECKPOINT",
+      "beneficiaire_normalise": "CHECKPOINT",
+      "siret": "39072518200047",
+      "generated_at": "2026-04-23T16:18:46",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Code NAF 9329Z · 75111",
+      "perimetre_geographique": "75111",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "sirene_libelle"
+    },
+    "LIGUE FRANCAISE DEFENSE DROITS DE L H": {
+      "beneficiaire": "LIGUE FRANCAISE DEFENSE DROITS DE L'H",
+      "beneficiaire_normalise": "LIGUE FRANCAISE DEFENSE DROITS DE L H",
+      "siret": "",
+      "generated_at": "2026-04-23T16:18:46",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": null,
+      "perimetre_geographique": null,
+      "sources": [],
+      "confiance": 0.0,
+      "source_type": "fallback_none"
+    },
+    "ASS JOSEPHINE POUR BEAUTE FEMMES": {
+      "beneficiaire": "ASS JOSEPHINE POUR BEAUTE FEMMES",
+      "beneficiaire_normalise": "ASS JOSEPHINE POUR BEAUTE FEMMES",
+      "siret": "",
+      "generated_at": "2026-04-23T16:18:49",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": null,
+      "perimetre_geographique": null,
+      "sources": [],
+      "confiance": 0.0,
+      "source_type": "fallback_none"
+    },
+    "LAITERIE DE PARIS": {
+      "beneficiaire": "LA LAITERIE DE PARIS",
+      "beneficiaire_normalise": "LAITERIE DE PARIS",
+      "siret": "831822325",
+      "generated_at": "2026-04-23T16:18:53",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": "Code NAF 1051D · 75118",
+      "perimetre_geographique": "75118",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "sirene_libelle"
+    },
+    "J ACCEDE COM RESEAU PERS A MOB RED": {
+      "beneficiaire": "J ACCEDE COM RESEAU PERS A MOB RED",
+      "beneficiaire_normalise": "J ACCEDE COM RESEAU PERS A MOB RED",
+      "siret": "",
+      "generated_at": "2026-04-23T16:18:53",
+      "model": "gemini-3-flash-preview",
+      "activite_verifiee": null,
+      "perimetre_geographique": null,
+      "sources": [],
+      "confiance": 0.0,
+      "source_type": "fallback_none"
     }
-  },
-  "total": 1905
+  }
 }
