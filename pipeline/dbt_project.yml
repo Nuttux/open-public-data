@@ -200,6 +200,21 @@ seeds:
         source_page: INT64
         source_pdf: STRING
 
+    seed_pdf_investissements_2022:
+      +column_types:
+        id: STRING
+        annee: INT64
+        arrondissement: INT64
+        chapitre_code: STRING
+        chapitre_libelle: STRING
+        nom_projet: STRING
+        montant: FLOAT64
+        type_ap: STRING
+        confidence: FLOAT64
+        source_page: INT64
+        source_pdf: STRING
+        date_extraction: STRING
+
 # =============================================================================
 # Configuration des modèles par couche
 # =============================================================================
