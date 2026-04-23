@@ -26,7 +26,7 @@ import requests
 
 PROJECT_ID = "open-data-france-484717"
 DATASET = "dbt_paris_analytics"
-SEED_PATH = Path(__file__).parent.parent / "paris-public-open-data" / "seeds" / "seed_cache_geo_ap.csv"
+SEED_PATH = Path(__file__).parent.parent.parent / "seeds" / "seed_cache_geo_ap.csv"
 
 GEMINI_API_KEY = os.environ.get("GOOGLE_API_KEY", "") or os.environ.get("GEMINI_API_KEY", "")
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3-flash-preview")

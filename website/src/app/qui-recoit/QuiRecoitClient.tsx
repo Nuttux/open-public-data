@@ -4,6 +4,7 @@ import Link from "next/link";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import SectionHead from "@/components/fusion/SectionHead";
+import ChartSource from "@/components/fusion/ChartSource";
 import PageTOC from "@/components/fusion/PageTOC";
 import HeroNumber from "@/components/fusion/HeroNumber";
 import KPIGrid from "@/components/fusion/KPIGrid";
@@ -47,9 +48,11 @@ export default function QuiRecoitClient({
         items={[
           { id: "sec-overview", label: t("fx.toc.chiffres") },
           { id: "sec-themes", label: t("fx.toc.themes") },
-          { id: "sec-top", label: t("fx.toc.top_benef") },
+          { id: "sec-top-benef", label: t("fx.toc.top_benef") },
+          { id: "recherche", label: t("fx.toc.recherche") },
           { id: "sec-evolution", label: t("fx.toc.evolution") },
           { id: "sec-sources", label: t("fx.toc.sources") },
+          { id: "sec-explorer", label: t("fx.toc.explorer") },
         ]}
       />
 
@@ -198,6 +201,11 @@ export default function QuiRecoitClient({
               `/qui-recoit/theme/${slugifyLabel(theme)}?year=${d.year}`
             }
           />
+          <ChartSource
+            source={<>Ville de Paris · Subventions versées (annexes CA) {d.year}</>}
+            dataHref="https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/"
+            methodAnchor="subventions"
+          />
         </div>
       </section>
 
@@ -210,7 +218,7 @@ export default function QuiRecoitClient({
         />
       </Suspense>
 
-      <section className="fx-section" id="sec-top">
+      <section className="fx-section" id="sec-evolution">
         <div className="fx-wrap">
           <SectionHead
             number="05"
@@ -329,51 +337,16 @@ export default function QuiRecoitClient({
         </div>
       </section>
 
-      <section className="fx-section" id="sec-evolution">
+      <section className="fx-footer-sources" id="sec-sources">
         <div className="fx-wrap">
-          <SectionHead
-            number="05"
-            kind={t("fx.qr.src.kind")}
-            title={
-              <>
-                {t("fx.s.verifiable")} <em>{t("fx.s.line_by_line")}</em>
-              </>
-            }
-          />
-          <div className="fx-sources">
-            <div>
-              <div className="n">{t("fx.qr.src.c1.n")}</div>
-              <h3>{fill(t("fx.qr.src.c1.h"), { year: d.year })}</h3>
-              <p>{t("fx.qr.src.c1.p")}</p>
-              <a
-                href={d.isPreview
-                  ? "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page_id=3"
-                  : "https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/"}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {d.isPreview ? t("fx.s.deliberations") : t("fx.s.opendata")}
-              </a>
-            </div>
-            <div>
-              <div className="n">{t("fx.qr.src.c2.n")}</div>
-              <h3>{t("fx.qr.src.c2.h")}</h3>
-              <p>{t("fx.qr.src.c2.p")}</p>
-              <a href="/methode?tool=subventions#outils">{t("fx.s.methode_lien")}</a>
-            </div>
-            <div>
-              <div className="n">{t("fx.qr.src.c3.n")}</div>
-              <h3>{t("fx.qr.src.c3.h")}</h3>
-              <p>{t("fx.qr.src.c3.p")}</p>
-              <a href="https://github.com/AbstractsMachine" target="_blank" rel="noopener noreferrer">
-                {t("fx.s.github")}
-              </a>
-            </div>
+          <div className="fx-footer-sources-head">
+            <span className="fx-footer-sources-label">{t("fx.s.sources_exports")}</span>
+            <a href="/methode#subventions" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</a>
           </div>
-          <p className="fx-note" style={{ marginTop: 22 }}>
+          <p className="fx-note fx-footer-sources-note">
             {t("fx.qr.src.scope_note")}
           </p>
-          <p className="fx-note" style={{ marginTop: 10 }}>
+          <p className="fx-note fx-footer-sources-note">
             {t("fx.qr.src.freshness_note")}
           </p>
           <ExportRow
@@ -391,10 +364,10 @@ export default function QuiRecoitClient({
         </div>
       </section>
 
-      <section className="fx-section" id="sec-sources">
+      <section className="fx-section" id="sec-explorer">
         <div className="fx-wrap">
           <SectionHead
-            number="06"
+            number="07"
             kind={t("fx.qr.s06.kind")}
             title={t("fx.qr.s06.title")}
             subtitle={t("fx.qr.s06.sub")}

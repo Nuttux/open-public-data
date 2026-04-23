@@ -11,6 +11,8 @@ import PageTOC from "@/components/fusion/PageTOC";
 import ParisChoropleth from "@/components/fusion/ParisChoropleth";
 import TileCard from "@/components/fusion/TileCard";
 import WaitSimulator from "@/components/fusion/WaitSimulator";
+import InteractiveWrap from "@/components/fusion/InteractiveWrap";
+import ChartSource from "@/components/fusion/ChartSource";
 import YearPicker from "@/components/fusion/YearPicker";
 import ExportRow from "@/components/fusion/ExportRow";
 import Tip from "@/components/fusion/Tip";
@@ -124,11 +126,11 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
       <PageTOC
         items={[
           { id: "sec-sru", label: t("fx.toc.sru") },
-          { id: "sec-carte", label: t("fx.toc.carte") },
           { id: "sec-bailleurs", label: t("fx.toc.bailleurs") },
+          { id: "sec-territoire", label: t("fx.log.s02.kind") },
+          { id: "sec-production", label: t("fx.toc.production") },
           { id: "sec-tension", label: t("fx.toc.tension") },
           { id: "sec-simulateur", label: t("fx.toc.simulateur") },
-          { id: "sec-production", label: t("fx.toc.production") },
           { id: "sec-sources", label: t("fx.toc.sources") },
           { id: "sec-explorer", label: t("fx.toc.explorer") },
         ]}
@@ -282,41 +284,11 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
         </div>
       </section>
 
-      {/* §02 — Par arrondissement */}
-      <section className="fx-section" id="sec-carte">
-        <div className="fx-wrap">
-          <SectionHead
-            number="02"
-            kind={<Tip label={t("fx.log.s02.kind.tip")}>{t("fx.log.s02.kind")}</Tip>}
-            title={
-              <>
-                {t("fx.log.s02.title.before")}
-                <em>{t("fx.log.s02.title.em")}</em>
-              </>
-            }
-            subtitle={t("fx.log.s02.sub")}
-          />
-          <ParisChoropleth
-            items={d.byArrondissement.map((a) => ({
-              arr: a.arr,
-              amount: a.logements,
-              count: a.operations,
-            }))}
-            formatValue={(n) => `${fmtInt(n)} ${t("fx.log.s02.unit_long")}`}
-            unitLabel={t("fx.log.s02.unit_ops")}
-            hrefFor={(cAr) =>
-              `/logement-social/arrondissement/${cAr === 0 ? "paris-centre" : cAr}`
-            }
-          />
-          <p className="fx-mini-note">{t("fx.log.s02.paris_centre_note")}</p>
-        </div>
-      </section>
-
-      {/* §03 — Bailleurs */}
+      {/* §02 — Bailleurs */}
       <section className="fx-section" id="sec-bailleurs">
         <div className="fx-wrap">
           <SectionHead
-            number="03"
+            number="02"
             kind={<Tip label={t("fx.log.bailleur.tip")}>{t("fx.log.s03.kind")}</Tip>}
             title={
               <>
@@ -327,7 +299,7 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
             }
             subtitle={t("fx.log.s03.sub")}
           />
-          <div className="fx-sources">
+          <div className="fx-bailleurs-grid">
             {d.bailleurs.map((b) => (
               <Link
                 key={b.name}
@@ -350,11 +322,92 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
         </div>
       </section>
 
-      {/* §04 — Tension locative */}
-      <section className="fx-section" id="sec-tension">
+      {/* §03 — Où */}
+      <section className="fx-section" id="sec-territoire">
+        <div className="fx-wrap">
+          <SectionHead
+            number="03"
+            kind={<Tip label={t("fx.log.s02.kind.tip")}>{t("fx.log.s02.kind")}</Tip>}
+            title={
+              <>
+                {t("fx.log.s02.title.before")}
+                <em>{t("fx.log.s02.title.em")}</em>
+              </>
+            }
+            subtitle={t("fx.log.s02.sub")}
+          />
+          <ParisChoropleth
+            items={d.byArrondissement.map((a) => ({
+              arr: a.arr,
+              amount: a.logements,
+              count: a.operations,
+            }))}
+            formatValue={(n) => `${fmtInt(n)} ${t("fx.log.s02.unit_long")}`}
+            unitLabel={t("fx.log.s02.unit_ops")}
+            hrefFor={(cAr) =>
+              `/logement-social/arrondissement/${cAr === 0 ? "paris-centre" : cAr}`
+            }
+          />
+          <p className="fx-mini-note">{t("fx.log.s02.paris_centre_note")}</p>
+          <ChartSource
+            source={<>Inventaire SRU · Ministère du Logement · Ville de Paris</>}
+            dataHref="https://www.ecologie.gouv.fr/article-55-loi-solidarite-renouvellement-urbain-sru"
+            methodAnchor="logement-social"
+          />
+        </div>
+      </section>
+
+      {/* §04 — Production annuelle */}
+      <section className="fx-section" id="sec-production">
         <div className="fx-wrap">
           <SectionHead
             number="04"
+            kind={<Tip label={t("fx.log.s04.kind.tip")}>{t("fx.log.s04.kind")}</Tip>}
+            title={
+              <>
+                {t("fx.log.s04.title.before")}
+                <em>{t("fx.log.s04.title.em")}</em>
+              </>
+            }
+            subtitle={t("fx.log.s04.sub")}
+          />
+          {(() => {
+            const vals = d.yearsSummary.map((y) => y.logements);
+            const ticks = niceYTicks(Math.min(...vals), Math.max(...vals));
+            return (
+              <>
+                <div className="fx-y-axis-label">{t("fx.log.s04.y_label")}</div>
+                <BudgetTimeline
+                  points={d.yearsSummary.map((y) => ({
+                    year: y.year,
+                    value: y.logements,
+                    type: "execute" as const,
+                  }))}
+                  activeYear={d.year}
+                  annotations={[
+                    { year: 2020, label: t("fx.log.s04.ann.covid") },
+                    { year: 2024, label: t("fx.log.s04.ann.jo") },
+                  ]}
+                  yTicks={ticks}
+                  formatYTick={(v) => fmtInt(v)}
+                  activeBadge={`${d.year} · ${fmtInt(d.nouveauxParAn)} ${t("fx.log.s02.unit_long")}`}
+                  showStatus={false}
+                  ariaLabel={t("fx.log.s04.aria")}
+                />
+              </>
+            );
+          })()}
+          <p className="fx-note">
+            <b>{t("fx.s.limite")}</b> : {t("fx.log.s04.note")}
+          </p>
+        </div>
+      </section>
+
+      {/* §05 — Tension locative */}
+      <section className="fx-section" id="sec-tension">
+        <div className="fx-wrap">
+          <SectionHead
+            number="05"
             kind={t("fx.log.tension.kind")}
             title={
               <>
@@ -406,11 +459,11 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
         </div>
       </section>
 
-      {/* §05 — Simulateur */}
+      {/* §06 — Simulateur */}
       <section className="fx-section" id="sec-simulateur">
         <div className="fx-wrap">
           <SectionHead
-            number="05"
+            number="06"
             kind={t("fx.log.sim.kind")}
             title={
               <>
@@ -421,96 +474,22 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
             }
             subtitle={t("fx.log.sim.sub")}
           />
-          <WaitSimulator />
+          <InteractiveWrap>
+            <WaitSimulator />
+          </InteractiveWrap>
         </div>
       </section>
 
-      {/* §06 — Production annuelle */}
-      <section className="fx-section" id="sec-production">
+      {/* §07 — Sources & exports */}
+      <section className="fx-footer-sources" id="sec-sources">
         <div className="fx-wrap">
-          <SectionHead
-            number="06"
-            kind={<Tip label={t("fx.log.s04.kind.tip")}>{t("fx.log.s04.kind")}</Tip>}
-            title={
-              <>
-                {t("fx.log.s04.title.before")}
-                <em>{t("fx.log.s04.title.em")}</em>
-              </>
-            }
-            subtitle={t("fx.log.s04.sub")}
-          />
-          {(() => {
-            const vals = d.yearsSummary.map((y) => y.logements);
-            const ticks = niceYTicks(Math.min(...vals), Math.max(...vals));
-            return (
-              <>
-                <div className="fx-y-axis-label">{t("fx.log.s04.y_label")}</div>
-                <BudgetTimeline
-                  points={d.yearsSummary.map((y) => ({
-                    year: y.year,
-                    value: y.logements,
-                    type: "execute" as const,
-                  }))}
-                  activeYear={d.year}
-                  annotations={[
-                    { year: 2020, label: t("fx.log.s04.ann.covid") },
-                    { year: 2024, label: t("fx.log.s04.ann.jo") },
-                  ]}
-                  yTicks={ticks}
-                  formatYTick={(v) => fmtInt(v)}
-                  activeBadge={`${d.year} · ${fmtInt(d.nouveauxParAn)} ${t("fx.log.s02.unit_long")}`}
-                  showStatus={false}
-                  ariaLabel={t("fx.log.s04.aria")}
-                />
-              </>
-            );
-          })()}
-          <p className="fx-note">
-            <b>{t("fx.s.limite")}</b> : {t("fx.log.s04.note")}
-          </p>
-        </div>
-      </section>
-
-      {/* §07 — Sources & méthode */}
-      <section className="fx-section" id="sec-sources">
-        <div className="fx-wrap">
-          <SectionHead
-            number="07"
-            kind={t("fx.log.src.kind")}
-            title={
-              <>
-                {t("fx.s.verifiable")} <em>{t("fx.s.line_by_line")}</em>
-              </>
-            }
-          />
-          <div className="fx-sources">
-            <div>
-              <div className="n">{t("fx.log.src.c1.n")}</div>
-              <h3>{t("fx.log.src.c1.h")}</h3>
-              <p>{t("fx.log.src.c1.p")}</p>
-              <a
-                href="https://opendata.paris.fr/explore/dataset/logements-sociaux-finances-a-paris/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {t("fx.s.opendata")}
-              </a>
-            </div>
-            <div>
-              <div className="n">{t("fx.log.src.c2.n")}</div>
-              <h3>{t("fx.log.src.c2.h")}</h3>
-              <p>{t("fx.log.src.c2.p")}</p>
-              <a href="/methode?tool=logement-social#outils">{t("fx.s.methode_lien")}</a>
-            </div>
-            <div>
-              <div className="n">{t("fx.log.src.c3.n")}</div>
-              <h3>{t("fx.log.src.c3.h")}</h3>
-              <p>{t("fx.log.src.c3.p")}</p>
-              <a href="https://github.com/AbstractsMachine" target="_blank" rel="noopener noreferrer">
-                {t("fx.s.github")}
-              </a>
-            </div>
+          <div className="fx-footer-sources-head">
+            <span className="fx-footer-sources-label">{t("fx.s.sources_exports")}</span>
+            <a href="/methode#logement-social" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</a>
           </div>
+          <p className="fx-footer-sources-meta">
+            <b>Source</b> : Inventaire SRU (DDT Paris) + logements sociaux financés (opendata.paris.fr) <span className="sep">·</span> <b>Couverture</b> : 2001-2024 (financés) · SRU mis à jour annuellement au 1ᵉʳ janvier.
+          </p>
           <ExportRow
             items={[
               {

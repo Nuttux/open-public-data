@@ -22,7 +22,7 @@ from google.cloud import bigquery
 
 # Configuration
 PROJECT_ID = "open-data-france-484717"
-DATASET = "dbt_paris"
+DATASET = "dbt_paris_analytics"
 OUTPUT_PATH = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data" / "data_availability.json"
 
 
@@ -164,14 +164,14 @@ def check_logements_availability(client: bigquery.Client) -> dict:
     """
     query = f"""
     SELECT 
-        annee_financement as annee,
+        annee as annee,
         COUNT(*) as nb_operations,
-        SUM(nombre_logements) as total_logements,
+        SUM(nb_logements) as total_logements,
         COUNTIF(latitude IS NOT NULL) as nb_geolocalises
     FROM `{PROJECT_ID}.{DATASET}.core_logements_sociaux`
-    WHERE annee_financement IS NOT NULL
-    GROUP BY annee_financement
-    ORDER BY annee_financement
+    WHERE annee IS NOT NULL
+    GROUP BY annee
+    ORDER BY annee
     """
     
     years = {}

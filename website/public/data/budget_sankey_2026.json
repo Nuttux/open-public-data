@@ -1760,11 +1760,11 @@
           "value": 2800.0
         },
         {
-          "name": "Invest. Éducation: Agencements et aménagements de terrains",
+          "name": "Invest. Éducation: Licences, procédés, droits similaires",
           "value": 2000.0
         },
         {
-          "name": "Invest. Éducation: Licences, procédés, droits similaires",
+          "name": "Invest. Éducation: Agencements et aménagements de terrains",
           "value": 2000.0
         }
       ],
@@ -2012,19 +2012,19 @@
           "value": 100000.0
         },
         {
-          "name": "Autres: Autres immobilisations incorporelles",
-          "value": 50000.0
-        },
-        {
           "name": "Autres: Sub nat privé - Bât. et installations",
           "value": 50000.0
         },
         {
-          "name": "Autres: Terrains aménagés autres que voirie",
+          "name": "Autres: Autres immobilisations incorporelles",
           "value": 50000.0
         },
         {
           "name": "Autres: Terrains de voirie",
+          "value": 50000.0
+        },
+        {
+          "name": "Autres: Terrains aménagés autres que voirie",
           "value": 50000.0
         },
         {
@@ -2993,11 +2993,11 @@
             "value": 10000.0
           },
           {
-            "name": "Invest. Éducation: Agencements et aménagements de terrains",
+            "name": "Invest. Éducation: Licences, procédés, droits similaires",
             "value": 2000.0
           },
           {
-            "name": "Invest. Éducation: Licences, procédés, droits similaires",
+            "name": "Invest. Éducation: Agencements et aménagements de terrains",
             "value": 2000.0
           }
         ]

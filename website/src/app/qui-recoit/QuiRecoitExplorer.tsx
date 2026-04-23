@@ -212,7 +212,7 @@ export default function QuiRecoitExplorer({
   return (
     <>
       {/* === SECTION 03 : TOP 10 === */}
-      <section className="fx-section">
+      <section className="fx-section" id="sec-top-benef">
         <div className="fx-wrap">
           <SectionHead
             number="03"

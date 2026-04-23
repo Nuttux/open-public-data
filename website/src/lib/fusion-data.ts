@@ -1143,6 +1143,25 @@ export type ContratFiche = {
   dureeJours: number;
   perimetre: string;
   year: number;
+  // Enrichissement DECP (tous optionnels — absents si marché non remonté à l'État
+  // ou source Paris uniquement).
+  decp?: {
+    ccag?: string | null;
+    cpvFamille?: string | null;
+    procedure?: string | null;
+    montantNotifie?: number | null;
+    dureeMois?: number | null;
+    offresRecues?: number | null;
+    lieuExecution?: string | null;
+    titulairesCount?: number | null;
+    nbModifications?: number | null;
+    sousTraitanceDeclaree?: boolean | null;
+    hasConsiderationSociale?: boolean | null;
+    hasConsiderationEnvironnementale?: boolean | null;
+    ecartPlafondVsNotifie?: number | null;
+    afficherDeuxMontants?: boolean;
+    sourceOrigin?: "paris" | "decp";
+  };
 };
 
 export type ContratRanking = {
@@ -1203,7 +1222,33 @@ export function loadContrat(numero: string): ContratFiche | null {
       const rows = f.data ?? f.marches ?? [];
       const row = rows.find((m) => (m as MarcheRow & { numero_marche?: string }).numero_marche === numero);
       if (!row) continue;
-      const r = row as MarcheRow & { numero_marche?: string; fournisseur_siret?: string; montant_min?: number; duree_jours?: number; perimetre_financier?: string; is_multiattributaire?: boolean };
+      const r = row as MarcheRow & {
+        numero_marche?: string;
+        fournisseur_siret?: string;
+        montant_min?: number;
+        duree_jours?: number;
+        perimetre_financier?: string;
+        is_multiattributaire?: boolean;
+        _source_origin?: "paris" | "decp";
+        decp_ccag?: string | null;
+        decp_cpv_famille?: string | null;
+        decp_procedure?: string | null;
+        decp_montant_notifie?: number | null;
+        decp_duree_mois?: number | null;
+        decp_offres_recues?: number | null;
+        decp_lieu_execution_lisible?: string | null;
+        decp_titulaires_count?: number | null;
+        decp_nb_modifications?: number | null;
+        decp_sous_traitance_declaree?: boolean | null;
+        decp_has_consideration_sociale?: boolean | null;
+        decp_has_consideration_environnementale?: boolean | null;
+        ecart_plafond_vs_notifie?: number | null;
+        afficher_deux_montants?: boolean;
+      };
+      const hasDecp = r.decp_ccag != null
+        || r.decp_cpv_famille != null
+        || r.decp_montant_notifie != null
+        || r.decp_lieu_execution_lisible != null;
       return {
         numero: r.numero_marche ?? numero,
         objet: r.objet ?? "",
@@ -1218,6 +1263,23 @@ export function loadContrat(numero: string): ContratFiche | null {
         dureeJours: Number(r.duree_jours ?? 0),
         perimetre: r.perimetre_financier ?? "—",
         year: y,
+        decp: hasDecp ? {
+          ccag: r.decp_ccag ?? null,
+          cpvFamille: r.decp_cpv_famille ?? null,
+          procedure: r.decp_procedure ?? null,
+          montantNotifie: r.decp_montant_notifie ?? null,
+          dureeMois: r.decp_duree_mois ?? null,
+          offresRecues: r.decp_offres_recues ?? null,
+          lieuExecution: r.decp_lieu_execution_lisible ?? null,
+          titulairesCount: r.decp_titulaires_count ?? null,
+          nbModifications: r.decp_nb_modifications ?? null,
+          sousTraitanceDeclaree: r.decp_sous_traitance_declaree ?? null,
+          hasConsiderationSociale: r.decp_has_consideration_sociale ?? null,
+          hasConsiderationEnvironnementale: r.decp_has_consideration_environnementale ?? null,
+          ecartPlafondVsNotifie: r.ecart_plafond_vs_notifie ?? null,
+          afficherDeuxMontants: Boolean(r.afficher_deux_montants),
+          sourceOrigin: r._source_origin,
+        } : undefined,
       };
     } catch {}
   }

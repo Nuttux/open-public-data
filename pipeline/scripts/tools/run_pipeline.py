@@ -35,7 +35,7 @@ PIPELINE_ROOT = Path(__file__).resolve().parent.parent.parent
 SCRIPTS_DIR = PIPELINE_ROOT / "scripts"
 DBT_DIR = PIPELINE_ROOT  # dbt_project.yml lives at pipeline/ root
 
-ALL_STEPS = ["sync", "dbt", "enrich", "reseed", "export"]
+ALL_STEPS = ["sync", "dbt", "test", "enrich", "reseed", "export"]
 
 
 def run(cmd: list, cwd: Path = None) -> bool:
@@ -70,6 +70,16 @@ def step_dbt(use_caches: bool) -> bool:
     if use_caches:
         cmd += ["--vars", "{use_llm_cache_ap: true, use_llm_cache_theme: true}"]
     return run(cmd, cwd=DBT_DIR)
+
+
+def step_test(strict: bool) -> bool:
+    """Run dbt data tests. In non-strict mode, warnings don't block."""
+    print("\n🧪 STEP 2b — dbt test (data quality)")
+    ok = run(["dbt", "test"], cwd=DBT_DIR)
+    if not ok and not strict:
+        print("⚠️ dbt test reported failures — continuing (strict=False)")
+        return True
+    return ok
 
 
 def step_enrich(limit: int | None, dry_run: bool) -> bool:
@@ -113,6 +123,8 @@ def main():
                    help="cap LLM rows per sub-step (cost control)")
     p.add_argument("--no-cache-vars", action="store_true",
                    help="do NOT pass use_llm_cache_*=true to dbt (first run from scratch)")
+    p.add_argument("--strict-tests", action="store_true",
+                   help="fail the pipeline on dbt test errors (default: warn but continue)")
     args = p.parse_args()
 
     steps = [s.strip() for s in args.steps.split(",") if s.strip()]
@@ -130,6 +142,8 @@ def main():
         results["sync"] = step_sync(args.dry_run)
     if "dbt" in steps:
         results["dbt"] = step_dbt(use_caches)
+    if "test" in steps:
+        results["test"] = step_test(args.strict_tests)
     if "enrich" in steps:
         results["enrich"] = step_enrich(args.enrich_limit, args.dry_run)
     if "reseed" in steps:

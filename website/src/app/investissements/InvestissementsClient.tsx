@@ -1,8 +1,10 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import SectionHead from "@/components/fusion/SectionHead";
+import ChartSource from "@/components/fusion/ChartSource";
 import HeroNumber from "@/components/fusion/HeroNumber";
 import KPIGrid from "@/components/fusion/KPIGrid";
 import TileCard from "@/components/fusion/TileCard";
@@ -16,7 +18,9 @@ import ParisChoropleth from "@/components/fusion/ParisChoropleth";
 import BudgetTimeline from "@/components/fusion/BudgetTimeline";
 import StackedBarTheme from "@/components/fusion/StackedBarTheme";
 import PageTOC from "@/components/fusion/PageTOC";
+import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/RelatedArticles";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
+import type { BlogPostMeta } from "@/lib/blog";
 import type { InvestissementsData } from "@/lib/fusion-data";
 import { slugifyChapitre } from "@/lib/projet-utils";
 import { useT, useLocale } from "@/lib/localeContext";
@@ -28,21 +32,31 @@ const fill = (s: string, vars: Record<string, string | number>) => {
   return r;
 };
 
-// Pour chaque année, la source primaire est soit un PDF d'annexe CA
-// (2022+), soit le dataset OpenData AP (gelé 2018-2022). On lie vers la
-// vraie source d'origine des chiffres affichés.
-const INVEST_SOURCE_BY_YEAR: Record<number, { url: string; kind: "pdf" | "dataset" }> = {
-  2022: { url: "https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf", kind: "pdf" },
-  2023: { url: "https://cdn.paris.fr/paris/2024/07/03/ca-2023-investissements-localises-tJO3.pdf", kind: "pdf" },
-  2024: { url: "https://cdn.paris.fr/paris/2025/06/25/ca-2024-annexe-il-UtMj.PDF", kind: "pdf" },
-};
-const INVEST_FALLBACK_DATASET = "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/";
+const INV_PLACEHOLDERS: ArticlePlaceholder[] = [
+  {
+    category: "Analyse",
+    title: "Le 13ᵉ et le 17ᵉ : deux géographies d'investissement.",
+    description:
+      "ZAC Paris Rive Gauche vs Clichy-Batignolles. Deux stratégies de foncier public, deux trajectoires de livraison.",
+  },
+  {
+    category: "Explication",
+    title: "AP, CP, CA : comprendre ce que comptabilise un investissement.",
+    description:
+      "Autorisations de programme, crédits de paiement, comptes administratifs — la chaîne budgétaire d'un chantier, expliquée sans jargon.",
+  },
+];
 
-export default function InvestissementsClient({ d }: { d: InvestissementsData }) {
+export default function InvestissementsClient({
+  d,
+  posts,
+}: {
+  d: InvestissementsData;
+  posts: BlogPostMeta[];
+}) {
   const t = useT();
   const { locale } = useLocale();
   const trL = (s: string | undefined) => trLabel(s, locale);
-  const sourceForYear = INVEST_SOURCE_BY_YEAR[d.year] ?? { url: INVEST_FALLBACK_DATASET, kind: "dataset" as const };
   const ytrend = d.yearsSummary;
   const delta5y =
     ytrend.length >= 2
@@ -52,6 +66,7 @@ export default function InvestissementsClient({ d }: { d: InvestissementsData })
 
   const arrSuf = (n: number) => (n === 1 ? t("fx.s.arr.1_suffix") : t("fx.s.arr.suffix"));
   const geoLocTotal = d.byArrondissement.reduce((s, a) => s + a.amount, 0);
+  const [territoryView, setTerritoryView] = useState<"carte" | "liste">("liste");
 
   return (
     <div className="theme-fusion">
@@ -59,13 +74,13 @@ export default function InvestissementsClient({ d }: { d: InvestissementsData })
 
       <PageTOC
         items={[
-          { id: "sec-projets", label: t("fx.toc.projets") },
           { id: "sec-overview", label: t("fx.toc.chiffres") },
-          { id: "sec-carte", label: t("fx.toc.carte") },
           { id: "sec-chapitre", label: t("fx.toc.chapitres") },
-          { id: "sec-arrondissement", label: t("fx.toc.arrondissements") },
+          { id: "sec-territoire", label: t("fx.inv.s05.kind") },
           { id: "sec-evolution", label: t("fx.toc.evolution") },
           { id: "sec-signaux", label: t("fx.toc.signaux") },
+          { id: "sec-analyses", label: t("fx.toc.analyses") },
+          { id: "sec-projets", label: t("fx.toc.projets") },
           { id: "sec-sources", label: t("fx.toc.sources") },
         ]}
       />
@@ -101,55 +116,10 @@ export default function InvestissementsClient({ d }: { d: InvestissementsData })
         </div>
       </section>
 
-      <section className="fx-section" id="sec-projets">
-        <div className="fx-wrap">
-          <SectionHead
-            number="01"
-            kind={t("fx.inv.s01.kind")}
-            title={
-              <>
-                {t("fx.inv.s01.title.before")}
-                <em>{t("fx.inv.s01.title.em")}</em>
-                {fill(t("fx.inv.s01.title.after"), { year: d.year })}
-              </>
-            }
-          />
-          <div className="fx-projet-grid">
-            {d.topProjets.slice(0, 12).map((p, i) => (
-              <Link
-                key={p.id}
-                href={`/investissements/projet/${encodeURIComponent(p.id)}`}
-                className="fx-projet-card"
-                scroll={false}
-              >
-                <div className="fx-projet-card-thumb">
-                  <ProjetThumb photo={p.photo.photo} generic={p.photo.generic} typologie={p.photo.typologie} aspectRatio="4 / 3" fallbackLabel={p.name} />
-                </div>
-                <div className="fx-projet-card-body">
-                  <div className="fx-projet-card-rank">{String(i + 1).padStart(2, "0")}</div>
-                  <div className="fx-projet-card-name">{(p.name ?? "—").slice(0, 90)}</div>
-                  <div className="fx-projet-card-meta">
-                    <span>
-                      {p.arr > 0
-                        ? fill(t("fx.inv.s01.arr"), { n: p.arr }) + arrSuf(p.arr)
-                        : t("fx.s.transverse")}
-                    </span>
-                    <span className="fx-projet-card-amount">
-                      {p.amount >= 1e6 ? `${fmtMillions(p.amount, 1)} M€` : `${fmtInt(p.amount / 1000)} k€`}
-                    </span>
-                  </div>
-                  <div className="fx-projet-card-chapitre">{trL(p.chapitre)}</div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="fx-section" id="sec-overview">
         <div className="fx-wrap">
           <SectionHead
-            number="02"
+            number="01"
             kind={t("fx.inv.s02.kind")}
             title={
               <>
@@ -211,31 +181,10 @@ export default function InvestissementsClient({ d }: { d: InvestissementsData })
         </div>
       </section>
 
-      <section className="fx-section" id="sec-carte">
-        <div className="fx-wrap">
-          <SectionHead
-            number="03"
-            kind={t("fx.inv.s03.kind")}
-            title={
-              <>
-                {t("fx.inv.s03.title.before")}
-                <em>{t("fx.inv.s03.title.em")}</em>
-              </>
-            }
-            subtitle={fill(t("fx.inv.s03.sub"), { n: fmtInt(d.nbGeo) })}
-          />
-          <ProjectMap points={d.geoPoints} year={d.year} height={620} />
-          <p className="fx-note">
-            <b>{t("fx.inv.s03.note.b")}</b> :{" "}
-            {fill(t("fx.inv.s03.note"), { pct: fmtDec(100 - d.pctGeo, 0) })}
-          </p>
-        </div>
-      </section>
-
       <section className="fx-section" id="sec-chapitre">
         <div className="fx-wrap">
           <SectionHead
-            number="04"
+            number="02"
             kind={<Tip label={t("fx.inv.classif_fonct.tip")}>{t("fx.inv.s04.kind")}</Tip>}
             title={
               <>
@@ -259,10 +208,10 @@ export default function InvestissementsClient({ d }: { d: InvestissementsData })
         </div>
       </section>
 
-      <section className="fx-section" id="sec-arrondissement">
+      <section className="fx-section" id="sec-territoire">
         <div className="fx-wrap">
           <SectionHead
-            number="05"
+            number="03"
             kind={t("fx.inv.s05.kind")}
             title={
               <>
@@ -270,19 +219,60 @@ export default function InvestissementsClient({ d }: { d: InvestissementsData })
                 <em>{t("fx.inv.s05.title.em")}</em>
               </>
             }
-            subtitle={t("fx.inv.s05.sub")}
+            subtitle={
+              territoryView === "carte"
+                ? fill(t("fx.inv.s03.sub"), { n: fmtInt(d.nbGeo) })
+                : t("fx.inv.s05.sub")
+            }
           />
-          <ParisChoropleth
-            items={d.byArrondissement.map((a) => ({ arr: a.arr, amount: a.amount, count: a.count }))}
-            height={420}
-          />
+          <div className="fx-view-toggle" role="tablist" aria-label={t("fx.inv.s05.kind")}>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={territoryView === "carte"}
+              className={`fx-view-toggle-btn ${territoryView === "carte" ? "is-active" : ""}`}
+              onClick={() => setTerritoryView("carte")}
+            >
+              {t("fx.toc.carte")}
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={territoryView === "liste"}
+              className={`fx-view-toggle-btn ${territoryView === "liste" ? "is-active" : ""}`}
+              onClick={() => setTerritoryView("liste")}
+            >
+              {t("fx.toc.arrondissements")}
+            </button>
+          </div>
+          {territoryView === "carte" ? (
+            <>
+              <ProjectMap points={d.geoPoints} year={d.year} height={620} />
+              <p className="fx-note">
+                <b>{t("fx.inv.s03.note.b")}</b> :{" "}
+                {fill(t("fx.inv.s03.note"), { pct: fmtDec(100 - d.pctGeo, 0) })}
+              </p>
+            </>
+          ) : (
+            <>
+              <ParisChoropleth
+                items={d.byArrondissement.map((a) => ({ arr: a.arr, amount: a.amount, count: a.count }))}
+                height={420}
+              />
+              <ChartSource
+                source={<>Ville de Paris · Annexes investissement au CA {d.year}</>}
+                dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
+                methodAnchor="investissements"
+              />
+            </>
+          )}
         </div>
       </section>
 
       <section className="fx-section" id="sec-evolution">
         <div className="fx-wrap">
           <SectionHead
-            number="06"
+            number="04"
             kind={t("fx.inv.s06.kind")}
             title={
               <>
@@ -309,7 +299,7 @@ export default function InvestissementsClient({ d }: { d: InvestissementsData })
       <section className="fx-section" id="sec-signaux">
         <div className="fx-wrap">
           <SectionHead
-            number="07"
+            number="05"
             kind={<Tip label={t("fx.inv.signaux.tip")}>{t("fx.inv.s07.kind")}</Tip>}
             title={
               <>
@@ -414,49 +404,62 @@ export default function InvestissementsClient({ d }: { d: InvestissementsData })
         </div>
       </section>
 
-      <section className="fx-section" id="sec-sources">
+      <RelatedArticles number="06" posts={posts} placeholders={INV_PLACEHOLDERS} />
+
+      <section className="fx-section" id="sec-projets">
         <div className="fx-wrap">
           <SectionHead
-            number="08"
-            kind={t("fx.inv.src.kind")}
+            number="07"
+            kind={t("fx.inv.s01.kind")}
             title={
               <>
-                {t("fx.s.verifiable")} <em>{t("fx.s.line_by_line")}</em>
+                {t("fx.inv.s01.title.before")}
+                <em>{t("fx.inv.s01.title.em")}</em>
+                {fill(t("fx.inv.s01.title.after"), { year: d.year })}
               </>
             }
           />
-          <div className="fx-sources">
-            <div>
-              <div className="n">{t("fx.inv.src.c1.n")}</div>
-              <h3>
-                {t("fx.inv.src.c1.h.prefix")}{d.year}{t("fx.inv.src.c1.h.open")}
-                <Tip label={t("fx.inv.src.c1.m57.tip")}>M57</Tip>
-                {t("fx.inv.src.c1.h.close")}
-              </h3>
-              <p>{fill(t("fx.inv.src.c1.p"), { n: fmtInt(d.nbProjets), year: d.year })}</p>
-              <a
-                href={sourceForYear.url}
-                target="_blank"
-                rel="noopener noreferrer"
+          <div className="fx-projet-grid">
+            {d.topProjets.slice(0, 12).map((p, i) => (
+              <Link
+                key={p.id}
+                href={`/investissements/projet/${encodeURIComponent(p.id)}`}
+                className="fx-projet-card"
+                scroll={false}
               >
-                {sourceForYear.kind === "pdf" ? t("fx.s.pdf_annexe") : t("fx.s.opendata")}
-              </a>
-            </div>
-            <div>
-              <div className="n">{t("fx.inv.src.c2.n")}</div>
-              <h3>{t("fx.inv.src.c2.h")}</h3>
-              <p>{t("fx.inv.src.c2.p")}</p>
-              <a href="/methode#outils">{t("fx.s.methode_lien")}</a>
-            </div>
-            <div>
-              <div className="n">{t("fx.inv.src.c3.n")}</div>
-              <h3>{fill(t("fx.inv.src.c3.h"), { pct: fmtDec(100 - d.pctGeo, 0) })}</h3>
-              <p>{t("fx.inv.src.c3.p")}</p>
-              <a href="https://github.com/AbstractsMachine" target="_blank" rel="noopener noreferrer">
-                {t("fx.s.github")}
-              </a>
-            </div>
+                <div className="fx-projet-card-thumb">
+                  <ProjetThumb photo={p.photo.photo} generic={p.photo.generic} typologie={p.photo.typologie} aspectRatio="4 / 3" fallbackLabel={p.name} />
+                </div>
+                <div className="fx-projet-card-body">
+                  <div className="fx-projet-card-rank">{String(i + 1).padStart(2, "0")}</div>
+                  <div className="fx-projet-card-name">{(p.name ?? "—").slice(0, 90)}</div>
+                  <div className="fx-projet-card-meta">
+                    <span>
+                      {p.arr > 0
+                        ? fill(t("fx.inv.s01.arr"), { n: p.arr }) + arrSuf(p.arr)
+                        : t("fx.s.transverse")}
+                    </span>
+                    <span className="fx-projet-card-amount">
+                      {p.amount >= 1e6 ? `${fmtMillions(p.amount, 1)} M€` : `${fmtInt(p.amount / 1000)} k€`}
+                    </span>
+                  </div>
+                  <div className="fx-projet-card-chapitre">{trL(p.chapitre)}</div>
+                </div>
+              </Link>
+            ))}
           </div>
+        </div>
+      </section>
+
+      <section className="fx-footer-sources" id="sec-sources">
+        <div className="fx-wrap">
+          <div className="fx-footer-sources-head">
+            <span className="fx-footer-sources-label">{t("fx.s.sources_exports")}</span>
+            <a href="/methode#investissements" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</a>
+          </div>
+          <p className="fx-footer-sources-meta">
+            <b>Source</b> : Ville de Paris — Annexes AP du CA + PDF « Investissements Localisés » <span className="sep">·</span> <b>Couverture</b> : dataset AP OpenData gelé depuis 2022 ; 2023-2026 reconstitués par parsing PDF.
+          </p>
           <ExportRow
             items={[
               {

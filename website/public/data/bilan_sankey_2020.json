@@ -1,10 +1,10 @@
 {
   "year": 2020,
-  "generated_at": "2026-02-18T16:41:33.144582",
+  "generated_at": "2026-04-23T15:58:28.466174",
   "totals": {
-    "actif_net": 41413298762.60999,
+    "actif_net": 41413298762.61,
     "passif_net": 41887016870.71001,
-    "ecart_equilibre": 473718108.10001373,
+    "ecart_equilibre": 473718108.1000061,
     "fonds_propres": 32909100906.180004,
     "dette_totale": 8396699763.04,
     "dettes_financieres": 7766804361.71,
