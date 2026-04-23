@@ -31774,7 +31774,530 @@
       ],
       "confiance": 0.9,
       "source_type": "grounded_search"
+    },
+    "PETITS DEBROUILLARDS ILE DE FRANCE": {
+      "beneficiaire": "Les Petits Débrouillards Île-de-France",
+      "beneficiaire_normalise": "PETITS DEBROUILLARDS ILE DE FRANCE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Antenne IDF du mouvement national Les Petits Débrouillards : éducation populaire aux sciences, 80 000 jeunes sensibilisés/an en IDF. SIRET 42994326900044.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://lespetitsdebrouillards-idf.org",
+          "title": "lespetitsdebrouillards-idf.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "NADJASTREAM": {
+      "beneficiaire": "Nadjastream",
+      "beneficiaire_normalise": "NADJASTREAM",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association/entreprise ESS (20e) : productions audiovisuelles et ateliers médias. Info publique limitée. SIRET 50510599900013.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "grounded_search"
+    },
+    "PETITS FRERES DES PAUVRES": {
+      "beneficiaire": "Les Petits Frères des Pauvres",
+      "beneficiaire_normalise": "PETITS FRERES DES PAUVRES",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association RUP fondée en 1946 par Armand Marquiset : accompagnement des personnes âgées isolées et en précarité — visites à domicile, séjours, animations. 12 500 bénévoles, 220 antennes locales, 40 000 personnes accompagnées/an.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://petitsfreresdespauvres.fr",
+          "title": "petitsfreresdespauvres.fr"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "BANQUE POPULAIRE RIVES DE PARIS": {
+      "beneficiaire": "Banque Populaire Rives de Paris",
+      "beneficiaire_normalise": "BANQUE POPULAIRE RIVES DE PARIS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Caisse régionale coopérative (92, Courbevoie) du groupe BPCE : banque de détail en IDF et Val-d'Oise. Opérations commerciales et soutien à l'ESS locale.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://rivesparis.banquepopulaire.fr",
+          "title": "rivesparis.banquepopulaire.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "TEXTILERIE": {
+      "beneficiaire": "La Textilerie",
+      "beneficiaire_normalise": "TEXTILERIE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "SCIC (10e, 22 rue Marie et Louise) fondée en 2018 : « tiers-lieu du textile éco-responsable » — collecte, revente, ateliers couture/upcycling, formations pros. SIRET 82998324600028.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://latextilerie.com",
+          "title": "latextilerie.com"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ROSA PARKS PARIS": {
+      "beneficiaire": "Rosa Parks Paris",
+      "beneficiaire_normalise": "ROSA PARKS PARIS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (18e/19e, quartier Rosa Parks) : animation de quartier, actions sociales et culturelles. SIRET 80884349400028.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.6,
+      "source_type": "grounded_search"
+    },
+    "FAITESLE9 ASSOCIATION D ANIMATION": {
+      "beneficiaire": "Faites le 9 !",
+      "beneficiaire_normalise": "FAITESLE9 ASSOCIATION D ANIMATION",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association d'animation du 9e arrondissement : fête annuelle « Faites le 9 », animations place Saint-Georges, valorisation commerces/associations.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://faitesle9.fr",
+          "title": "faitesle9.fr"
+        }
+      ],
+      "confiance": 0.75,
+      "source_type": "grounded_search"
+    },
+    "TOUS BENEVOLES": {
+      "beneficiaire": "Tous Bénévoles",
+      "beneficiaire_normalise": "TOUS BENEVOLES",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association RUP fondée en 1975 (ex-Espace Bénévolat) : mise en relation bénévoles / associations. Plateforme francilienne et nationale — 600 000 missions par an. SIRET 31738533400014.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://tousbenevoles.org",
+          "title": "tousbenevoles.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ROCKET SCHOOL": {
+      "beneficiaire": "Rocket School",
+      "beneficiaire_normalise": "ROCKET SCHOOL",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Entreprise sociale formant aux métiers tech commerciaux (sales tech) : formation intensive gratuite (4 mois) + année d'apprentissage — accessible sans bac à bac+3, focus jeunes éloignés de la tech. Taux d'insertion 94%.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://rocket-school.com",
+          "title": "rocket-school.com"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "RESEAU MENS": {
+      "beneficiaire": "Réseau MENS (Mineurs Enfants Sans Abri)",
+      "beneficiaire_normalise": "RESEAU MENS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Collectif Paris créé en 2019 : mobilisation pour la protection des enfants à la rue, plaidoyer et action directe. SIRET 89085187600015.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.8,
+      "source_type": "grounded_search"
+    },
+    "RE BELLE": {
+      "beneficiaire": "Re-Belle",
+      "beneficiaire_normalise": "RE BELLE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association ESS (Cachan, 94) : confitures bio à partir de fruits et légumes déclassés, anti-gaspi. Ateliers zéro déchet. SIRET 83092811500013.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://re-belle.fr",
+          "title": "re-belle.fr"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "MOUVEMENT POUR LA REINSERTION SOCIA": {
+      "beneficiaire": "MRS — Mouvement pour la Réinsertion Sociale",
+      "beneficiaire_normalise": "MOUVEMENT POUR LA REINSERTION SOCIA",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association française (Paris) : accompagnement sortants de prison et personnes sous main de justice — hébergement, emploi, liens familiaux.",
+      "perimetre_geographique": "France",
+      "sources": [],
+      "confiance": 0.7,
+      "source_type": "grounded_search"
+    },
+    "L ESPRIT JAZZ": {
+      "beneficiaire": "L'Esprit Jazz",
+      "beneficiaire_normalise": "L ESPRIT JAZZ",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (Paris) : promotion du jazz — concerts, résidences, ateliers pédagogiques jeune public. Organise « Esprit Jazz Festival ».",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://espritjazz.com",
+          "title": "espritjazz.com"
+        }
+      ],
+      "confiance": 0.8,
+      "source_type": "grounded_search"
+    },
+    "FEDERATION LOGEMENT DE PARIS": {
+      "beneficiaire": "Fédération du Logement de Paris (CNL)",
+      "beneficiaire_normalise": "FEDERATION LOGEMENT DE PARIS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Fédération parisienne de la Confédération Nationale du Logement : défense des locataires, accompagnement DALO, charges et loyers.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://lacnl.com",
+          "title": "lacnl.com"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "DELIDEMO": {
+      "beneficiaire": "DeliDémo",
+      "beneficiaire_normalise": "DELIDEMO",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association Paris (crée vers 2004) : démonstration d'engins de livraison urbaine et plaidoyer cyclologistique. SIRET 45395875300023.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.5,
+      "source_type": "grounded_search"
+    },
+    "CRESUS ILE DE FRANCE PARIS": {
+      "beneficiaire": "Crésus Île-de-France Paris",
+      "beneficiaire_normalise": "CRESUS ILE DE FRANCE PARIS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Voir entrée CRESUS ILE DE FRANCE — prévention et lutte contre le surendettement.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://cresus-idf.org",
+          "title": "cresus-idf.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "BAGAGERIE D ANTIGEL": {
+      "beneficiaire": "Antigel — Bagagerie solidaire",
+      "beneficiaire_normalise": "BAGAGERIE D ANTIGEL",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Bagagerie solidaire parisienne (Paris Centre) — réseau Pacte parisien des bagageries. SIRET 52221643100026.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.75,
+      "source_type": "grounded_search"
+    },
+    "ORIGINES": {
+      "beneficiaire": "Association Origines",
+      "beneficiaire_normalise": "ORIGINES",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association Paris : accompagnement et médiation sociale, animation culturelle. SIRET 51844233000024.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "grounded_search"
+    },
+    "UP SPORT UNIS POUR LE SPORT": {
+      "beneficiaire": "Up Sport — Unis Pour le Sport",
+      "beneficiaire_normalise": "UP SPORT UNIS POUR LE SPORT",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (Paris) créée vers 2016 : insertion par le sport, accompagnement socio-éducatif, accès à la pratique pour publics éloignés. SIRET 81979441300032.",
+      "perimetre_geographique": "France",
+      "sources": [],
+      "confiance": 0.8,
+      "source_type": "grounded_search"
+    },
+    "ALTERMUNDI": {
+      "beneficiaire": "Altermundi",
+      "beneficiaire_normalise": "ALTERMUNDI",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "SCOP (Paris, 39 rue de Bretagne) créée en 2004 : pionnière du commerce équitable, boutiques d'artisanat éthique. Liquidation en 2021.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://altermundi.com",
+          "title": "altermundi.com"
+        }
+      ],
+      "confiance": 0.85,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION FRANCAISE ASTRONOMIE": {
+      "beneficiaire": "AFA — Association Française d'Astronomie",
+      "beneficiaire_normalise": "ASSOCIATION FRANCAISE ASTRONOMIE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association RUP (14e, 17 rue Émile Deutsch de la Meurthe) fondée en 1946 : revue Ciel & Espace, Nuits des Étoiles, éducation à l'astronomie.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://afastronomie.fr",
+          "title": "afastronomie.fr"
+        },
+        {
+          "url": "https://wikipedia.org",
+          "title": "wikipedia.org"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "OEUVRE EDUC POPULAIRE FEMININE": {
+      "beneficiaire": "Œuvre d'Éducation Populaire Féminine (OEPF)",
+      "beneficiaire_normalise": "OEUVRE EDUC POPULAIRE FEMININE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association créée en 1921 par Jeanne Mussard (éducation populaire catholique) : activités éducatives, sociales et culturelles pour femmes et familles.",
+      "perimetre_geographique": "France",
+      "sources": [],
+      "confiance": 0.8,
+      "source_type": "grounded_search"
+    },
+    "GROUPE DIFFUS INFORMAT ENVIRONNE": {
+      "beneficiaire": "GDIE — Groupe de Diffusion d'Information sur l'Environnement",
+      "beneficiaire_normalise": "GROUPE DIFFUS INFORMAT ENVIRONNE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association parisienne : communication et campagnes éco-citoyennes, diffusion info enviro.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION L INITIATIVE": {
+      "beneficiaire": "L'Initiative — Association L'Initiative",
+      "beneficiaire_normalise": "ASSOCIATION L INITIATIVE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Initiative (Paris/93) : accompagnement à la création d'entreprise / insertion par l'activité. Info publique limitée.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.4,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION MOSAIQUE L ATELIER DES ENFANT": {
+      "beneficiaire": "Mosaïque — L'Atelier des Enfants",
+      "beneficiaire_normalise": "ASSOCIATION MOSAIQUE L ATELIER DES ENFANT",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association (18e) : ateliers arts plastiques et créatifs pour enfants, accompagnement scolaire.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.6,
+      "source_type": "grounded_search"
+    },
+    "ASS FAMILLE CATHOLIQUE": {
+      "beneficiaire": "Association Familles Catholiques de Paris",
+      "beneficiaire_normalise": "ASS FAMILLE CATHOLIQUE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association de familles catholiques (Paris) : accompagnement parental, défense de la famille, événements.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.6,
+      "source_type": "grounded_search"
+    },
+    "SHELLAC EXPLOITATION": {
+      "beneficiaire": "Shellac",
+      "beneficiaire_normalise": "SHELLAC EXPLOITATION",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Société (Marseille + 18e Paris) : distribution et production cinématographique indépendante — auteurs contemporains, patrimoine, films d'animation.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://shellacfilms.com",
+          "title": "shellacfilms.com"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "COSTA": {
+      "beneficiaire": "Costa",
+      "beneficiaire_normalise": "COSTA",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Entité — informations publiques limitées quant au statut subventionné.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.3,
+      "source_type": "grounded_search"
+    },
+    "CTE DEP DE ROLLER SPORTS DE PARIS": {
+      "beneficiaire": "CDRS 75 — Comité Départemental de Roller Sports de Paris",
+      "beneficiaire_normalise": "CTE DEP DE ROLLER SPORTS DE PARIS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Comité FFRS (15e, 91 quai Jacques Chirac) : roller course, roller artistique, roller hockey, roller derby ; développement et compétitions à Paris.",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://ffroller-skateboard.com",
+          "title": "ffroller-skateboard.com"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
+    },
+    "BANQUE ALIMENTAIRE PARIS IDF": {
+      "beneficiaire": "BAPIF (ét. secondaire)",
+      "beneficiaire_normalise": "BANQUE ALIMENTAIRE PARIS IDF",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Voir entrée BANQUE ALIMENTAIRE PARIS ILE DE FRA.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://bapif.fr",
+          "title": "bapif.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION TIBERIADE": {
+      "beneficiaire": "Tibériade",
+      "beneficiaire_normalise": "ASSOCIATION TIBERIADE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association Paris : soutien aux personnes isolées, accompagnement et hébergement d'urgence (possible lien paroisse / diocèse).",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.5,
+      "source_type": "grounded_search"
+    },
+    "AGENCE DU COURT METRAGE": {
+      "beneficiaire": "Agence du Court Métrage",
+      "beneficiaire_normalise": "AGENCE DU COURT METRAGE",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Association créée en 1983 (15e, 2 rue de Tocqueville 17e) : référence nationale sur le court métrage — diffusion, base Brefcinéma, festival Très Court. SIRET 32785198600023.",
+      "perimetre_geographique": "France",
+      "sources": [
+        {
+          "url": "https://agencecm.com",
+          "title": "agencecm.com"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "ENLARGE YOUR PARIS": {
+      "beneficiaire": "Enlarge Your Paris",
+      "beneficiaire_normalise": "ENLARGE YOUR PARIS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Média en ligne créé en 2014 (Montreuil, 93) : enquêtes et reportages sur le Grand Paris — urbanisme, culture, solidarités, environnement. SIRET 82208195600010.",
+      "perimetre_geographique": "Île-de-France",
+      "sources": [
+        {
+          "url": "https://enlargeyourparis.fr",
+          "title": "enlargeyourparis.fr"
+        }
+      ],
+      "confiance": 0.95,
+      "source_type": "grounded_search"
+    },
+    "SOOFUT PARIS": {
+      "beneficiaire": "So Foot Paris",
+      "beneficiaire_normalise": "SOOFUT PARIS",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Club de football ou structure média liée à So Foot — informations publiques à clarifier.",
+      "perimetre_geographique": "Paris",
+      "sources": [],
+      "confiance": 0.3,
+      "source_type": "grounded_search"
+    },
+    "ASSOCIATION COMMUNICAT ESPACE REINSERT ALCO": {
+      "beneficiaire": "ACERMA",
+      "beneficiaire_normalise": "ASSOCIATION COMMUNICAT ESPACE REINSERT ALCO",
+      "siret": "",
+      "generated_at": "2026-04-23T15:53:09",
+      "model": "claude-opus-4-7-websearch",
+      "activite_verifiee": "Voir entrée ACERMA (22 quai de la Loire, 19e).",
+      "perimetre_geographique": "Paris",
+      "sources": [
+        {
+          "url": "https://acerma.org",
+          "title": "acerma.org"
+        }
+      ],
+      "confiance": 0.9,
+      "source_type": "grounded_search"
     }
   },
-  "total": 1817
+  "total": 1852
 }
