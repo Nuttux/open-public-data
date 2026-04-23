@@ -31,44 +31,22 @@ Sur les six derniers exercices pour lesquels le portail Open Data Paris publie l
 | 2023 | 405,5 M€ | 1 201 M€ | 33,8 % |
 | 2024 | 416,6 M€ | 1 353 M€ | 30,8 % |
 
-<figure className="fx-chart">
-<svg viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg" className="fx-svg" role="img" aria-label="Évolution de la subvention CASVP 2018-2024">
-  <rect x="0" y="0" width="720" height="280" fill="#ffffff"/>
-  <line x1="80" y1="40" x2="80" y2="230" stroke="#0a0a0a" strokeWidth="1"/>
-  <line x1="80" y1="230" x2="700" y2="230" stroke="#0a0a0a" strokeWidth="1"/>
-  <line x1="80" y1="180" x2="700" y2="180" stroke="#e4e6ea" strokeWidth="1"/>
-  <line x1="80" y1="130" x2="700" y2="130" stroke="#e4e6ea" strokeWidth="1"/>
-  <line x1="80" y1="80" x2="700" y2="80" stroke="#e4e6ea" strokeWidth="1"/>
-  <text x="70" y="234" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="end">300</text>
-  <text x="70" y="184" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="end">350</text>
-  <text x="70" y="134" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="end">400</text>
-  <text x="70" y="84" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="end">450 M€</text>
-  <rect x="120" y="171" width="55" height="59" fill="#1e45e4"/>
-  <text x="148" y="245" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">2018</text>
-  <text x="148" y="166" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#0a0a0a" textAnchor="middle">358,8</text>
-  <rect x="200" y="157" width="55" height="73" fill="#1e45e4"/>
-  <text x="228" y="245" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">2019</text>
-  <text x="228" y="152" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#0a0a0a" textAnchor="middle">373,1</text>
-  <rect x="280" y="200" width="55" height="30" fill="#e4e6ea"/>
-  <text x="308" y="245" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#9099a6" textAnchor="middle">2020</text>
-  <text x="308" y="218" fontFamily="JetBrains Mono, monospace" fontSize="9" fill="#9099a6" textAnchor="middle">n/a</text>
-  <rect x="360" y="200" width="55" height="30" fill="#e4e6ea"/>
-  <text x="388" y="245" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#9099a6" textAnchor="middle">2021</text>
-  <text x="388" y="218" fontFamily="JetBrains Mono, monospace" fontSize="9" fill="#9099a6" textAnchor="middle">n/a</text>
-  <rect x="440" y="144" width="55" height="86" fill="#1e45e4"/>
-  <text x="468" y="245" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">2022</text>
-  <text x="468" y="139" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#0a0a0a" textAnchor="middle">386,2</text>
-  <rect x="520" y="125" width="55" height="105" fill="#1e45e4"/>
-  <text x="548" y="245" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">2023</text>
-  <text x="548" y="120" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#0a0a0a" textAnchor="middle">405,5</text>
-  <rect x="600" y="114" width="55" height="116" fill="#1e45e4"/>
-  <text x="628" y="245" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#0a0a0a" textAnchor="middle" fontWeight="600">2024</text>
-  <text x="628" y="109" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#0a0a0a" textAnchor="middle" fontWeight="600">416,6</text>
-  <text x="395" y="22" fontFamily="Inter Tight, sans-serif" fontSize="13" fill="#0a0a0a" textAnchor="middle" fontWeight="600">Subvention Ville → CASVP, 2018-2024 (M€ courants)</text>
-  <text x="395" y="265" fontFamily="JetBrains Mono, monospace" fontSize="9" fill="#9099a6" textAnchor="middle">2020-2021 absents du portail Open Data Paris</text>
-</svg>
-<figcaption>Subvention versée par la Ville de Paris au CASVP, 2018-2024, en montants courants. La hausse cumulée est de +16 % en six ans, soit l'ordre de grandeur de l'inflation cumulée sur la période — l'enveloppe est quasi-stable en euros constants. Source : pipeline open-public-data, fichiers `subventions-associations` annuels.</figcaption>
-</figure>
+<BlogTimeBars
+  title="Subvention Ville → CASVP, 2018-2024 (M€ courants)"
+  unit="M€"
+  yMin={300}
+  data={[
+    { year: 2018, value: 358.8 },
+    { year: 2019, value: 373.1 },
+    { year: 2020, value: null },
+    { year: 2021, value: null },
+    { year: 2022, value: 386.2 },
+    { year: 2023, value: 405.5 },
+    { year: 2024, value: 416.6 },
+  ]}
+  caption="Subvention versée par la Ville de Paris au CASVP, 2018-2024, en montants courants. La hausse cumulée est de +16 % en six ans, soit l'ordre de grandeur de l'inflation cumulée sur la période — l'enveloppe est quasi-stable en euros constants. 2020-2021 sont absents du portail Open Data Paris."
+  source="pipeline open-public-data, fichiers subventions-associations annuels"
+/>
 
 Hausse cumulée 2018 → 2024 : **+16,1 %** en montants courants. Sur la même période, l'inflation cumulée (indice INSEE des prix à la consommation) est d'environ **+17 %**. La subvention CASVP est donc, en termes réels, à peu près **étale** — elle suit l'inflation, sans rattrapage ni érosion. Ce n'est ni un désengagement ni un effort budgétaire spécifique : c'est un **pilote automatique**.
 

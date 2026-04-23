@@ -5,8 +5,11 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import "../../fusion.css";
 
-import { Navbar, Footer } from "@/components/fusion";
+import { Navbar, Footer, BlogTimeBars } from "@/components/fusion";
 import { getAllPostSlugs, getPostBySlug } from "@/lib/blog";
+
+/** Composants exposés aux articles MDX. À étendre au fur et à mesure. */
+const mdxComponents = { BlogTimeBars };
 
 type Params = { slug: string };
 
@@ -74,6 +77,7 @@ export default async function AnalyseArticlePage({ params }: { params: Promise<P
         <article className="fx-article-full">
           <MDXRemote
             source={post.content}
+            components={mdxComponents}
             options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
           />
         </article>

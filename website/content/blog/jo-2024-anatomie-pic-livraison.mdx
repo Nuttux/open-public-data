@@ -20,47 +20,21 @@ Cet article ne cherche pas à dire si les Jeux étaient une bonne idée. Cette q
 
 Sur la décennie 2017-2026, l'investissement de la Ville suit une courbe en cloche. Le creux de 2020 (effet pandémie : reports de chantiers, gel temporaire des appels d'offres) est suivi d'une montée régulière jusqu'au pic de 2024, puis d'une décrue qui ramène en 2026 à un niveau proche de celui d'avant-Jeux.
 
-<figure className="fx-chart">
-<svg viewBox="0 0 720 320" xmlns="http://www.w3.org/2000/svg" className="fx-svg" role="img" aria-label="Investissement annuel de la Ville de Paris 2017-2026">
-  <rect x="0" y="0" width="720" height="320" fill="#ffffff"/>
-  <line x1="60" y1="40" x2="60" y2="270" stroke="#0a0a0a" strokeWidth="1"/>
-  <line x1="60" y1="270" x2="700" y2="270" stroke="#0a0a0a" strokeWidth="1"/>
-  <line x1="60" y1="220" x2="700" y2="220" stroke="#e4e6ea" strokeWidth="1"/>
-  <line x1="60" y1="170" x2="700" y2="170" stroke="#e4e6ea" strokeWidth="1"/>
-  <line x1="60" y1="120" x2="700" y2="120" stroke="#e4e6ea" strokeWidth="1"/>
-  <line x1="60" y1="70" x2="700" y2="70" stroke="#e4e6ea" strokeWidth="1"/>
-  <text x="50" y="274" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="end">1 000</text>
-  <text x="50" y="224" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="end">1 200</text>
-  <text x="50" y="174" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="end">1 400</text>
-  <text x="50" y="124" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="end">1 600</text>
-  <text x="50" y="74" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="end">1 800 M€</text>
-  <rect x="80"  y="200" width="48" height="70"  fill="#9099a6"/>
-  <rect x="148" y="208" width="48" height="62"  fill="#9099a6"/>
-  <rect x="216" y="195" width="48" height="75"  fill="#9099a6"/>
-  <rect x="284" y="225" width="48" height="45"  fill="#9099a6"/>
-  <rect x="352" y="180" width="48" height="90"  fill="#1e45e4"/>
-  <rect x="420" y="155" width="48" height="115" fill="#1e45e4"/>
-  <rect x="488" y="115" width="48" height="155" fill="#1e45e4"/>
-  <rect x="556" y="92"  width="48" height="178" fill="#e11d1d"/>
-  <rect x="624" y="130" width="48" height="140" fill="#1e45e4"/>
-  <text x="104" y="288" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">2017</text>
-  <text x="172" y="288" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">2018</text>
-  <text x="240" y="288" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">2019</text>
-  <text x="308" y="288" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">2020</text>
-  <text x="376" y="288" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">2021</text>
-  <text x="444" y="288" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">2022</text>
-  <text x="512" y="288" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">2023</text>
-  <text x="580" y="288" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#0a0a0a" textAnchor="middle" fontWeight="600">2024</text>
-  <text x="648" y="288" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">2025</text>
-  <text x="580" y="84" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#e11d1d" textAnchor="middle">pic 1 733 M€</text>
-  <text x="556" y="22" fontFamily="Inter Tight, sans-serif" fontSize="13" fill="#0a0a0a" fontWeight="600">Cycle olympique</text>
-  <line x1="345" y1="36" x2="668" y2="36" stroke="#e11d1d" strokeWidth="1"/>
-  <line x1="345" y1="32" x2="345" y2="40" stroke="#e11d1d" strokeWidth="1"/>
-  <line x1="668" y1="32" x2="668" y2="40" stroke="#e11d1d" strokeWidth="1"/>
-  <text x="335" y="305" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#9099a6" textAnchor="end">€ constants base 2023 · M57</text>
-</svg>
-<figcaption>Investissement réel hors dette de la Ville de Paris, 2019-2024 (Compte Administratif M57). Le pic de 2024 (1 733 M€) dépasse de 15 % le niveau de 2019 (1 510 M€). Source : pipeline open-public-data, dataset `comptes-administratifs-budgets-principaux-m57-ville-departement`.</figcaption>
-</figure>
+<BlogTimeBars
+  title="Investissement réel hors dette · Ville de Paris, 2019-2024 (M€ courants)"
+  unit="M€"
+  yMin={1000}
+  data={[
+    { year: 2019, value: 1510 },
+    { year: 2020, value: 1354 },
+    { year: 2021, value: 1309 },
+    { year: 2022, value: 1575 },
+    { year: 2023, value: 1711 },
+    { year: 2024, value: 1733 },
+  ]}
+  caption="Investissement réel hors dette de la Ville de Paris, 2019-2024 (Compte Administratif M57). Le pic de 2024 (1 733 M€) dépasse de 15 % le niveau de 2019 (1 510 M€). Le creux 2020-2021 reflète les reports de chantiers liés à la pandémie."
+  source="pipeline open-public-data, dataset comptes-administratifs-budgets-principaux-m57-ville-departement"
+/>
 
 Le pic atteint **1 733 M€ en 2024** (investissement réel hors dette), soit **+15 % en euros constants** par rapport à 2019 (1 510 M€). Ce surplus représente, en cumulé sur 2022-2024, **près de 490 M€ d'investissement supplémentaire** par rapport à un scénario de tendance constante au niveau 2019. C'est ce volume-là qu'il faut comprendre.
 
