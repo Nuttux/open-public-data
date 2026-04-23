@@ -20,12 +20,6 @@ const PLANNED: { title: string; description: string; tag: string }[] = [
       "Une commune ne peut pas emprunter pour payer ses salaires. L'article L.1612-4 explique pourquoi, et ce qui se passe si la règle est cassée.",
   },
   {
-    tag: "Analyse",
-    title: "Le 13ᵉ et le 17ᵉ : deux géographies d'investissement.",
-    description:
-      "ZAC Paris Rive Gauche vs Clichy-Batignolles. Deux stratégies de foncier public, deux trajectoires de livraison, deux taux SRU différents.",
-  },
-  {
     tag: "Enquête",
     title: "Les avenants BTP : +18 % en moyenne, pourquoi ?",
     description:
@@ -33,15 +27,15 @@ const PLANNED: { title: string; description: string; tag: string }[] = [
   },
   {
     tag: "Portrait",
-    title: "CASVP, le bénéficiaire n°1 de la Ville.",
+    title: "Paris Habitat : 80 000 logements, 1ᵉʳ bailleur social de France.",
     description:
-      "Le Centre d'Action Sociale de la Ville de Paris reçoit 416 M€ par an. Anatomie d'un opérateur public — budget, effectifs, dispositifs.",
+      "Géographie du parc, modèle économique, place dans la politique de logement social parisienne. Anatomie d'un EPL devenu inséparable de la Ville.",
   },
   {
     tag: "Explication",
-    title: "Le patrimoine parisien : 17 Md€ nets, et pourquoi c'est approximatif.",
+    title: "Loi SRU à Paris : qui est en retard, qui paie, qui mutualise.",
     description:
-      "Valeur comptable M57 vs valeur de marché : un écart qu'on ne peut pas chiffrer, mais qu'on peut expliquer. Ce que le bilan dit, et ne dit pas.",
+      "Huit arrondissements sous le seuil de 25 % de logement social. Le mécanisme des pénalités, la mutualisation interne et ce que la loi exige vraiment.",
   },
 ];
 
@@ -49,16 +43,14 @@ function inferCategory(tags?: string[], categoryMeta?: string): string {
   if (categoryMeta) {
     const c = categoryMeta.toLowerCase();
     if (c.startsWith("enquê")) return "Enquêtes";
-    if (c.startsWith("explic") || c.startsWith("méth") || c.startsWith("meth")) return "Explications";
     if (c.startsWith("portr")) return "Portraits";
-    if (c.startsWith("analyse")) return "Analyses";
+    // explic / méth / analyse (legacy) → Explications
+    return "Explications";
   }
   const t = new Set((tags ?? []).map((x) => x.toLowerCase()));
   if (t.has("enquête") || t.has("transparence")) return "Enquêtes";
-  if (t.has("guide") || t.has("pédagogie") || t.has("explication") || t.has("méthode")) return "Explications";
   if (t.has("portrait")) return "Portraits";
-  if (t.has("analyse")) return "Analyses";
-  return "Analyses";
+  return "Explications";
 }
 
 export default function AnalysesPage() {

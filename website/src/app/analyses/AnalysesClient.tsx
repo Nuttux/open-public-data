@@ -31,12 +31,11 @@ type Planned = {
 };
 
 function categorySlug(category: string | undefined): string {
-  const c = (category ?? "Analyse").toLowerCase();
+  const c = (category ?? "Explication").toLowerCase();
   if (c.startsWith("enquê") || c.startsWith("invest")) return "enquete";
-  if (c.startsWith("explic") || c.startsWith("explain")) return "explication";
   if (c.startsWith("portr") || c.startsWith("profil")) return "portrait";
-  if (c.startsWith("méth") || c.startsWith("meth")) return "explication";
-  return "analyse";
+  // explication / explain / méthode / analyse (legacy) → explication
+  return "explication";
 }
 
 /**
@@ -68,7 +67,6 @@ export default function AnalysesClient({
   const CATEGORIES = [
     { key: "all", label: t("fx.analyses.cat.all"), raw: "Toutes", tip: null as string | null },
     { key: "enquetes", label: t("fx.analyses.cat.enquetes"), raw: "Enquêtes", tip: t("fx.analyses.cat.enquetes.tip") },
-    { key: "analyses", label: t("fx.analyses.cat.analyses"), raw: "Analyses", tip: t("fx.analyses.cat.analyses.tip") },
     { key: "explications", label: t("fx.analyses.cat.explications"), raw: "Explications", tip: t("fx.analyses.cat.explications.tip") },
     { key: "portraits", label: t("fx.analyses.cat.portraits"), raw: "Portraits", tip: t("fx.analyses.cat.portraits.tip") },
   ] as const;
@@ -93,14 +91,13 @@ export default function AnalysesClient({
   function categoryLabel(category: string | undefined): string {
     const slug = categorySlug(category);
     if (slug === "enquete") return t("fx.analyses.cat.enquetes").replace(/s$/, "");
-    if (slug === "explication") return t("fx.analyses.cat.explications").replace(/s$/, "");
     if (slug === "portrait") return t("fx.analyses.cat.portraits").replace(/s$/, "");
-    return t("fx.analyses.cat.analyses").replace(/s$/, "");
+    return t("fx.analyses.cat.explications").replace(/s$/, "");
   }
 
   const filtered = useMemo(() => {
     if (active === "all") return posts;
-    return posts.filter((p) => (p.category ?? "Analyses") === activeRaw);
+    return posts.filter((p) => (p.category ?? "Explications") === activeRaw);
   }, [active, activeRaw, posts]);
 
   const filteredPlanned = useMemo(() => {

@@ -14,9 +14,12 @@ export interface BlogPost {
   author?: string;
   tags?: string[];
   image?: string;
-  /** Editorial category (Analyse / Enquête / Explication / Portrait) — drives
-   *  the chips filter on /analyses. Falls back to tag-based inference if absent. */
+  /** Editorial category (Enquête / Explication / Portrait) — drives the chips
+   *  filter on /analyses. Falls back to tag-based inference if absent. */
   category?: string;
+  /** When true, post is reachable by direct URL but excluded from the listing
+   *  (used for the manifesto / about page that lives in the blog dir). */
+  hidden?: boolean;
   readingTime: string;
   content: string;
 }
@@ -30,6 +33,7 @@ export interface BlogPostMeta {
   tags?: string[];
   image?: string;
   category?: string;
+  hidden?: boolean;
   readingTime: string;
 }
 
@@ -64,6 +68,7 @@ function parseMDXFile(fileName: string): BlogPost {
     tags: data.tags || [],
     image: data.image,
     category: typeof data.category === "string" ? data.category : undefined,
+    hidden: data.hidden === true,
     readingTime: stats.text,
     content,
   };
@@ -74,12 +79,14 @@ function parseMDXFile(fileName: string): BlogPost {
  */
 export function getAllPosts(): BlogPostMeta[] {
   const files = getMDXFiles();
-  const posts = files.map((file) => {
-    const post = parseMDXFile(file);
-    // Return metadata only (not content)
-    const { content: _, ...meta } = post;
-    return meta;
-  });
+  const posts = files
+    .map((file) => {
+      const post = parseMDXFile(file);
+      // Return metadata only (not content)
+      const { content: _, ...meta } = post;
+      return meta;
+    })
+    .filter((p) => !p.hidden);
 
   // Sort by date, newest first
   return posts.sort(
