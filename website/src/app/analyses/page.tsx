@@ -50,7 +50,8 @@ export default function AnalysesPage() {
   return (
     <div className="theme-fusion">
       <Navbar />
-      <AnalysesClient posts={posts} planned={PLANNED} />
+      {/* PLANNED list intentionally not rendered for now — section "Les fondamentaux / En préparation" retirée du flux public. La constante PLANNED reste définie en repo comme roadmap interne. */}
+      <AnalysesClient posts={posts} planned={[]} />
       <Footer />
     </div>
   );
