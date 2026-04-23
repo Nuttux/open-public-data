@@ -1,0 +1,147 @@
+---
+title: "Hors-bilan : 12 milliards d'engagements que la dette officielle ne montre pas"
+description: "Au 31 décembre 2024, la Ville de Paris a accordé 12,28 milliards d'euros de garanties d'emprunt — un agrégat plus important que sa propre dette financière (10,7 Md€). Concentré à 88 % sur le logement social et à 79 % sur la Caisse des Dépôts, cet engagement n'apparaît dans aucun ratio de désendettement. Anatomie d'une dette « invisible ».”
+date: "2026-04-29"
+author: "France Open Data"
+tags: ["enquête", "dette", "hors-bilan", "logement social", "CDC"]
+category: "Enquête"
+image: "https://commons.wikimedia.org/wiki/Special:FilePath/Caisse%20des%20d%C3%A9p%C3%B4ts%20et%20consignations%20-%20fa%C3%A7ade%20rue%20de%20Lille.jpg?width=1600"
+imageAlt: "Façade de la Caisse des Dépôts et Consignations, rue de Lille — l'unique grand prêteur de la quasi-totalité des emprunts garantis par la Ville"
+imageCredit: "Photo : Wikimedia Commons · CC BY-SA"
+readingTime: "9 min"
+---
+
+Quand on parle de la dette de Paris, le chiffre qui revient est celui de la **dette financière propre** au bilan : **10,7 milliards d'euros** au 31 décembre 2024. C'est la dette que la Ville a contractée elle-même, pour financer ses propres investissements, et qu'elle rembourse sur ses propres recettes. C'est ce chiffre qui sert de base aux ratios CRC, à la note des agences, et au débat public.
+
+Mais ce chiffre est incomplet. Au même bilan, la Ville inscrit **12,28 milliards d'euros de garanties d'emprunt** accordées à des tiers. Ces garanties, dites « hors-bilan », ne sont **pas comptabilisées comme dette de la Ville** parce qu'elles ne deviendront effectivement à sa charge que si le bénéficiaire fait défaut. Statistiquement, cela arrive très rarement. Mais en encours, ces engagements sont **plus importants que la dette propre de la Ville**.
+
+Cet article décrit ce qu'est ce hors-bilan, à qui il bénéficie, qui sont les prêteurs, et pourquoi son volume — invisible dans les commentaires habituels — mérite d'être nommé.
+
+## Une trajectoire qui dépasse celle de la dette propre
+
+Sur les six derniers exercices publiés par le portail Open Data Paris, l'encours de garanties d'emprunt accordé par la Ville suit une progression régulière :
+
+<BlogTimeBars
+  title="Garanties d'emprunt accordées par la Ville de Paris (capital restant dû, Md€)"
+  unit="Md€"
+  yMin={9}
+  data={[
+    { year: 2019, value: 10.15 },
+    { year: 2020, value: 10.52 },
+    { year: 2021, value: 11.24 },
+    { year: 2022, value: 11.41 },
+    { year: 2023, value: 12.31 },
+    { year: 2024, value: 12.28 },
+  ]}
+  caption="Encours des garanties d'emprunt accordées par la Ville à des tiers (capital restant dû au 31 décembre), 2019-2024. Croissance cumulée de +21 % en six ans, soit un rythme proche de celui de la dette propre Ville sur la même période. Le très léger recul 2024 (-0,2 %) reflète l'amortissement des emprunts en cours, pour la première fois supérieur aux nouvelles garanties accordées."
+  source="pipeline open-public-data, fichier hors_bilan_*.json (annexe IV des comptes administratifs Ville de Paris)"
+/>
+
+À retenir : **l'encours hors-bilan a crû de +21 % entre 2019 et 2024**, à un rythme comparable à la dette propre Ville (+55 % sur la même période — l'écart vient du fait que le hors-bilan a démarré beaucoup plus haut). Surtout, **l'agrégat hors-bilan dépasse aujourd'hui l'agrégat dette propre** : 12,28 Md€ contre 10,70 Md€.
+
+Ce dépassement ne signifie pas que la Ville est « plus endettée que ce qu'on dit ». Une garantie n'est pas une dette : elle ne devient à la charge du garant que si le débiteur principal fait défaut. Mais elle représente un **engagement contingent réel**, qui mérite d'être rendu visible.
+
+## À qui la Ville garantit : 88 % au logement social
+
+Sur les 12,28 Md€ d'encours en 2024, la quasi-totalité concerne le logement social :
+
+| Catégorie | Encours | Part | Nb emprunts |
+|---|---:|---:|---:|
+| Logement social aidé par l'État | 10,83 Md€ | **88,2 %** | 9 760 |
+| Logement hors aide d'État | 1,45 Md€ | 11,8 % | 200 |
+| Autres opérations (aménagement, équipements, assos) | 0 Md€ | 0,0 % | 0 |
+| **Total** | **12,28 Md€** | **100 %** | **9 960** |
+
+C'est une concentration extraordinaire. **Une garantie hors-bilan de la Ville est, à 88 % de probabilité, une garantie sur un emprunt de logement social aidé par l'État** — typiquement un prêt PLAI, PLUS ou PLS souscrit par un bailleur public auprès de la Caisse des Dépôts.
+
+Cette concentration n'est pas un accident. Elle découle d'un mécanisme légal : pour qu'un bailleur public puisse souscrire un prêt aidé par l'État (sur les fonds Livret A déposés à la CDC), il a besoin que la **collectivité de rattachement garantisse l'emprunt à hauteur d'au moins 50 %**, et le plus souvent à 100 %. Sans cette garantie, le prêt aidé n'est pas accordé. Le mécanisme transfère donc une partie du risque résiduel sur la collectivité — la Ville en l'occurrence — en échange du soutien à la production de logement social.
+
+## Trois bailleurs concentrent les trois quarts des garanties
+
+Sur les 109 bénéficiaires distincts identifiés par le pipeline en 2024, les **dix premiers concentrent 90 % de l'encours**. Et trois bailleurs — les mêmes que dans nos analyses précédentes — captent à eux seuls **près des trois quarts** :
+
+| Rang | Bénéficiaire | Statut | Encours garanti | Nb emprunts |
+|---|---|---|---:|---:|
+| 1 | RIVP | SEM | 4,25 Md€ | 2 507 |
+| 2 | Paris Habitat-OPH | EPIC | 2,72 Md€ | 1 867 |
+| 3 | Elogie-Siemp | SEM | 1,68 Md€ | 2 937 |
+| 4 | Immobilière 3F (I3F) | SA HLM | 0,56 Md€ | 478 |
+| 5 | ICF Habitat La Sablière | SA HLM | 0,51 Md€ | 184 |
+| 6 | SEMAPA (aménagement) | SPLA | 0,27 Md€ | 17 |
+| 7 | Batigère Habitat IDF | ESH | 0,17 Md€ | 142 |
+| 8 | CDC Habitat Social | SEM | 0,17 Md€ | 158 |
+| 9 | L'Habitation Confortable | SA HLM | 0,13 Md€ | 99 |
+| 10 | RATP Habitat | ESH | 0,12 Md€ | 71 |
+
+*Cumul top 10 : ~10,6 Md€, soit ~86 % de l'encours total des garanties Ville. Les 99 autres bénéficiaires se partagent ~14 %.*
+
+La structure est cohérente avec ce qu'on a vu sur les flux de subventions ([CASVP](/analyses/casvp-416-millions-bouclier-social), [Paris Habitat](/analyses/paris-habitat-premier-bailleur-social), [top-10 subventions](/analyses/top-10-associations-subventionnees-paris)) : Paris a externalisé l'essentiel de sa politique de logement social vers un petit nombre d'opérateurs publics, et son hors-bilan est la matérialisation comptable de cette dépendance réciproque.
+
+## Un seul grand prêteur : la Caisse des Dépôts (79 %)
+
+L'autre concentration extrême est du côté des prêteurs. Sur 35 prêteurs distincts identifiés, **un seul** — la **Caisse des Dépôts (Banque des Territoires)** — porte 79 % de l'encours total :
+
+| Rang | Prêteur | Encours garanti par la Ville | Part |
+|---|---|---:|---:|
+| 1 | **CDC** (Caisse des Dépôts / Banque des Territoires) | 9,70 Md€ | **79 %** |
+| 2 | LBP (La Banque Postale) | 0,51 Md€ | 4,2 % |
+| 3 | CE (Caisse d'Épargne) | 0,48 Md€ | 3,9 % |
+| 4 | CA-IdF (Crédit Agricole Île-de-France) | 0,27 Md€ | 2,2 % |
+| 5 | SG (Société Générale) | 0,23 Md€ | 1,9 % |
+| 6+ | 30 autres prêteurs | 1,09 Md€ | 8,9 % |
+
+Cette concentration s'explique mécaniquement : la quasi-totalité des prêts aidés (PLAI, PLUS, PLS) sont distribués par la Caisse des Dépôts à partir de la collecte du Livret A. C'est l'**architecture historique du financement du logement social français**, héritée de l'après-guerre et stable depuis. Les autres prêteurs interviennent surtout sur les opérations annexes (foncier, prêts complémentaires, financements bonifiés régionaux).
+
+<aside className="fx-sidebar">
+
+### Sidebar · pourquoi 74 % des emprunts sont à taux variable Livret A
+
+Les prêts CDC pour le logement social sont presque tous indexés sur le **taux du Livret A**, parce qu'ils sont eux-mêmes adossés à la collecte du Livret A par les épargnants. C'est une cohérence de bilan : la CDC ne peut pas prêter à long terme à taux fixe ce qu'elle reçoit à taux variable des épargnants.
+
+Conséquence : quand le taux du Livret A monte (comme en 2022-2023, passé de 0,5 % à 3 %), les annuités des prêts hors-bilan augmentent mécaniquement. Le bailleur encaisse plus de loyers (les loyers conventionnés sont eux-mêmes indexés sur l'indice de référence des loyers, qui évolue dans le même sens) — mais le décalage temporel entre les deux peut créer des tensions de trésorerie significatives. C'est précisément à ce moment-là que la garantie de la Ville prend un peu plus de valeur opérationnelle.
+
+</aside>
+
+## Pourquoi la Ville garantit, et quel est le risque
+
+La Ville garantit pour deux raisons cumulatives :
+
+1. **C'est juridiquement nécessaire** pour que le bailleur public puisse accéder aux prêts aidés (cf. supra)
+2. **C'est politiquement souhaitable** parce que le logement social parisien dépend de ces prêts pour exister à grande échelle
+
+Le risque pour la Ville n'est pas nul, mais il est faible :
+
+- **Historiquement, les bailleurs publics français ne font quasiment jamais défaut sur leurs prêts CDC.** Les cas répertoriés sur les vingt dernières années concernent des opérations isolées sur des bailleurs très en difficulté — pas des grands opérateurs urbains.
+- **La CDC dispose de mécanismes de réaménagement** qui interviennent bien avant tout appel de garantie : moratoires d'amortissement, allongement de durée, prêts de renégociation.
+- **Les bailleurs garantis par Paris sont les mieux structurés du paysage** (RIVP, Paris Habitat, Elogie-Siemp sont des opérateurs de très grande taille, surveillés par la CRC, audités annuellement).
+
+Le scénario où la Ville devrait honorer une garantie significative supposerait une crise systémique du logement social francilien, pas une défaillance ponctuelle. C'est précisément ce caractère « contingent à un événement de très faible probabilité » qui justifie le traitement hors-bilan plutôt qu'une comptabilisation directe en dette.
+
+## Comment lire ce chiffre vs la dette propre
+
+Trois lectures non-exclusives sont possibles :
+
+### 1. Lecture rassurante (« la dette n'est pas si élevée »)
+La dette propre Ville (10,7 Md€) est le seul agrégat dont le service (intérêts + capital) figure réellement dans le budget Ville. Le hors-bilan, lui, est servi par les **bailleurs eux-mêmes**, sur leurs **propres loyers**. Tant que les bailleurs encaissent leurs loyers, la Ville n'a rien à payer.
+
+### 2. Lecture vigilante (« la dette consolidée est en réalité ~23 Md€ »)
+Si l'on additionne dette propre + hors-bilan, le total des engagements financiers Ville-et-rattachés atteint près de 23 Md€. C'est le chiffre que retiendraient les agences de notation pour une analyse consolidée — même si elles ne le publient pas tel quel.
+
+### 3. Lecture systémique (« le risque est sectoriel, pas isolé »)
+Le hors-bilan parisien est **massivement concentré sur un seul secteur** (logement social) et **un seul prêteur** (CDC). Cette double concentration crée un risque de corrélation : si une crise touchait le logement social francilien (effondrement des loyers, défaut massif d'un grand bailleur, blocage politique), elle toucherait potentiellement plusieurs garanties à la fois. La probabilité reste faible, mais l'exposition est concentrée.
+
+Aucune de ces trois lectures n'est fausse. Elles éclairent des dimensions différentes du même chiffre.
+
+## Ce que ces chiffres ne disent pas
+
+Cette analyse s'arrête à ce que le pipeline et l'annexe IV des comptes administratifs Ville permettent de mesurer. Elle ne dit pas :
+
+- **Si les bailleurs garantis sont en bonne santé financière** — pour cela, il faudrait consulter les rapports d'activité et les comptes de chaque bailleur (Paris Habitat, RIVP, Elogie-Siemp publient leur bilan séparément) ainsi que les rapports périodiques de la CRC Île-de-France
+- **Quel est le profil d'amortissement** de l'encours — combien tombe chaque année jusqu'à 2050+, et quels sont les pics de refinancement à venir
+- **Quels autres engagements hors-bilan existent** (engagements de retraite des agents, contrats de partenariat public-privé, dépôts et cautionnements) qui ne sont pas couverts par cet agrégat « garanties d'emprunt » spécifique
+
+Ce qu'elle dit, en une phrase : **les 12,28 Md€ de garanties d'emprunt accordées par la Ville à des tiers représentent un engagement contingent réel, plus important que la dette propre de la Ville, presque entièrement concentré sur le logement social et la Caisse des Dépôts**. Ce n'est pas une dette dissimulée — c'est une dette **dont le service ne pèse pas sur la Ville tant que le système fonctionne**. Mais c'est un agrégat qu'aucun débat public sur la dette parisienne ne devrait omettre.
+
+---
+
+**Sources** : Pipeline open-public-data, fichiers `hors_bilan_2019.json` à `hors_bilan_2024.json` (extraction de l'annexe IV des comptes administratifs Ville de Paris) · Code général des collectivités territoriales (régime des garanties d'emprunt) · Code de la construction et de l'habitation (mécanisme des prêts aidés CDC pour le logement social). Périmètre : encours capital restant dû au 31 décembre. Une garantie n'est pas une dette de la Ville — elle ne le devient qu'en cas de défaut du bénéficiaire.
