@@ -23,7 +23,7 @@ export default function SignauxFaibles({ items, note }: Props) {
   return (
     <div>
       {note && <p className="fx-note">{note}</p>}
-      <div className="fx-signaux">
+      <div className={`fx-signaux${items.length === 1 ? " fx-signaux-single" : ""}`}>
         {items.map((s, i) => (
           <div key={i} className="fx-signal">
             <div className="fx-signal-flag">{s.flag}</div>

@@ -412,42 +412,22 @@ export default function MarchesPublicsClient({
           />
           {(() => {
             const total = d.total || 1;
-            const tiers = [1, 3, 5, 10];
-            const cum = tiers.map((n) => ({
-              n,
-              pct: (d.top10.slice(0, n).reduce((s, ti) => s + ti.amount, 0) / total) * 100,
-            }));
+            const top1 = (d.top10.slice(0, 1).reduce((s, ti) => s + ti.amount, 0) / total) * 100;
+            const top3 = (d.top10.slice(0, 3).reduce((s, ti) => s + ti.amount, 0) / total) * 100;
+            const top5 = (d.top10.slice(0, 5).reduce((s, ti) => s + ti.amount, 0) / total) * 100;
+            const top10cum = (d.top10.reduce((s, ti) => s + ti.amount, 0) / total) * 100;
             return (
-              <div
-                style={{
-                  marginTop: 22,
-                  display: "grid",
-                  gridTemplateColumns: "repeat(4, 1fr)",
-                  gap: 1,
-                  background: "var(--ink)",
-                  border: "1px solid var(--ink)",
-                }}
-              >
-                {cum.map((c) => (
-                  <div key={c.n} style={{ background: "var(--bg)", padding: "18px 20px" }}>
-                    <div style={{ fontFamily: "var(--f-mono)", fontSize: 10.5, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 6 }}>
-                      {fill(t("fx.mp.s03.concentration.tier"), { n: c.n })}
-                    </div>
-                    <div className="tnum" style={{ fontFamily: "var(--f-disp)", fontWeight: 700, fontSize: 26, letterSpacing: "-0.02em", lineHeight: 1 }}>
-                      {fmtDec(c.pct, 0)}
-                      <span style={{ fontSize: ".5em", color: "var(--muted)", fontWeight: 500, marginLeft: 2 }}>%</span>
-                    </div>
-                    <div style={{ position: "relative", height: 4, background: "var(--rule)", marginTop: 10 }}>
-                      <span style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: `${c.pct}%`, background: "var(--ink)" }} />
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <p className="fx-note" style={{ marginTop: 18 }}>
+                {fill(t("fx.mp.s03.concentration.note"), {
+                  total: fmtBillions(d.total),
+                  top1: fmtDec(top1, 0),
+                  top3: fmtDec(top3, 0),
+                  top5: fmtDec(top5, 0),
+                  top10: fmtDec(top10cum, 0),
+                })}
+              </p>
             );
           })()}
-          <p className="fx-note" style={{ marginTop: 14 }}>
-            {fill(t("fx.mp.s03.concentration.note"), { total: fmtBillions(d.total) })}
-          </p>
         </div>
       </section>
 
@@ -712,6 +692,11 @@ export default function MarchesPublicsClient({
               </>
             );
           })()}
+          <ChartSource
+            source={<>DECP · Données essentielles de la commande publique · champ <code>offresRecues</code> · année {d.year}</>}
+            dataHref="https://opendata.paris.fr/explore/dataset/marches-publics-conclus-par-la-ville-de-paris/"
+            methodAnchor="marches-publics"
+          />
         </div>
       </section>
 
@@ -783,45 +768,6 @@ export default function MarchesPublicsClient({
                   { label: t("fx.mp.s06.sig1.stat2"), value: String(d.top10[0]?.nbContrats ?? 0) },
                   { label: t("fx.mp.s06.sig1.stat3"), value: "#01" },
                 ],
-              },
-              {
-                flag: t("fx.mp.s06.sig2.flag"),
-                title: t("fx.mp.s06.sig2.title"),
-                body: fill(t("fx.mp.s06.sig2.body"), {
-                  cat: trL(d.byCategory[0]?.category) || "—",
-                  pct: fmtDec(((d.byCategory[0]?.amount ?? 0) / d.total) * 100, 1),
-                  n: d.byCategory[0]?.count ?? 0,
-                }),
-                stats: [
-                  { label: t("fx.mp.s06.sig2.stat1"), value: `${fmtMillions(d.byCategory[0]?.amount ?? 0, 0)} M €` },
-                  { label: t("fx.mp.s06.sig2.stat2"), value: String(d.byCategory[0]?.count ?? 0) },
-                  {
-                    label: t("fx.mp.s06.sig2.stat3"),
-                    value: `${fmtDec(((d.byCategory[0]?.amount ?? 0) / d.total) * 100, 0)} %`,
-                  },
-                ],
-              },
-              {
-                flag: t("fx.mp.s06.sig3.flag"),
-                title: t("fx.mp.s06.sig3.title"),
-                body: t("fx.mp.s06.sig3.body"),
-                stats: [
-                  { label: t("fx.mp.s06.sig3.stat1"), value: `${fmtBillions(d.total)} ${t("fx.s.md_eur")}` },
-                  { label: t("fx.mp.s06.sig3.stat2"), value: fmtInt(d.nb) },
-                  { label: t("fx.mp.s06.sig3.stat3"), value: t("fx.mp.s06.sig3.cp") },
-                ],
-                cta: { href: "/methode?tool=marches-publics#outils", label: t("fx.mp.s06.sig3.cta") },
-              },
-              {
-                flag: t("fx.mp.s06.sig4.flag"),
-                title: t("fx.mp.s06.sig4.title"),
-                body: t("fx.mp.s06.sig4.body"),
-                stats: [
-                  { label: t("fx.mp.s06.sig4.stat1"), value: fmtInt(d.nbTitulaires) },
-                  { label: t("fx.mp.s06.sig4.stat2"), value: "≈ 95 %" },
-                  { label: t("fx.mp.s06.sig4.stat3"), value: t("fx.mp.s06.sig4.limits_v") },
-                ],
-                cta: { href: "/analyses", label: t("fx.mp.s06.sig4.cta") },
               },
             ]}
           />

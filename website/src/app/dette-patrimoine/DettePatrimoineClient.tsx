@@ -99,6 +99,7 @@ export default function DettePatrimoineClient({
           { id: "sec-hors-bilan", label: t("fx.det.toc.hors_bilan") },
           { id: "sec-regles", label: t("fx.det.toc.regles") },
           { id: "sec-analyses", label: t("fx.toc.analyses") },
+          { id: "sec-explorer", label: t("fx.toc.explorer") },
           { id: "sec-sources", label: t("fx.det.toc.sources") },
         ]}
       />
@@ -601,9 +602,9 @@ export default function DettePatrimoineClient({
 
       <RelatedArticles number="10" posts={posts} placeholders={DET_PLACEHOLDERS} />
 
-      <section className="fx-section">
+      <section className="fx-section" id="sec-explorer">
         <div className="fx-wrap">
-          <SectionHead number="10" kind={t("fx.det.s07.kind")} />
+          <SectionHead number="11" kind={t("fx.det.s07.kind")} />
           <div className="fx-grid-tiles">
             <TileCard
               href="/budget"

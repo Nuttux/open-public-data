@@ -1165,7 +1165,13 @@ type MarchesIndexRaw = {
 };
 
 export function loadMarchesIndex() {
-  return readJson<MarchesIndexRaw>("marches-publics/index.json");
+  const raw = readJson<MarchesIndexRaw>("marches-publics/index.json");
+  // Masquer l'année calendaire en cours (données DECP partielles jusqu'à clôture).
+  const currentYear = new Date().getFullYear();
+  return {
+    ...raw,
+    availableYears: (raw.availableYears ?? []).filter((y) => y < currentYear),
+  };
 }
 
 // Fiche-level loaders — read a single contract or supplier across years.
@@ -1426,7 +1432,14 @@ export function loadFournisseur(key: string): FournisseurFiche | null {
 
 export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
   const indexRaw = readJson<MarchesIndexRaw>("marches-publics/index.json");
-  const years = (indexRaw.availableYears ?? []).slice().sort((a, b) => a - b);
+  // Exclure l'année calendaire en cours : DECP est en remontée continue, un
+  // "2026" consulté en avril n'a que quelques centaines de contrats notifiés
+  // et son montant agrégé est non représentatif. On masque jusqu'à clôture.
+  const currentYear = new Date().getFullYear();
+  const years = (indexRaw.availableYears ?? [])
+    .filter((y) => y < currentYear)
+    .slice()
+    .sort((a, b) => a - b);
   const yr = requestedYear && years.includes(requestedYear)
     ? requestedYear
     : years[years.length - 1] ?? 2024;

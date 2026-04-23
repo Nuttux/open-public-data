@@ -340,7 +340,7 @@ export default function QuiRecoitClient({
                     </span>
                     <span>{t("fx.qr.s05.movers.variation")}</span>
                   </div>
-                  {d.movers.hausses.map((m, i) => (
+                  {d.movers.hausses.slice(0, 5).map((m, i) => (
                     <Link
                       key={i}
                       href={`/qui-recoit/association/${encodeURIComponent(m.name)}`}
@@ -366,7 +366,7 @@ export default function QuiRecoitClient({
                     </span>
                     <span>{t("fx.qr.s05.movers.variation")}</span>
                   </div>
-                  {d.movers.baisses.map((m, i) => (
+                  {d.movers.baisses.slice(0, 5).map((m, i) => (
                     <Link
                       key={i}
                       href={`/qui-recoit/association/${encodeURIComponent(m.name)}`}
