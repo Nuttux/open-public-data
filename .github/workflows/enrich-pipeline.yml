@@ -1,36 +1,35 @@
-name: Enrichment pipeline (subventions)
+name: Pipeline (sync + enrich)
 
-# Incremental par design — les scripts lisent un cache JSON et ne
-# re-traitent que les nouveaux bénéficiaires. Re-run sûr.
+# Appelle `pipeline/run_all.sh` qui orchestre les 4 phases sync → dbt →
+# export → enrich. Incremental par design : re-run gratuit si rien n'a
+# bougé côté sources.
 #
-# Utilisation :
-#   · GitHub → Actions → "Enrichment pipeline" → Run workflow
-#     Coche ce que tu veux exécuter.
-#   · Déclenchement auto : désactivé par défaut. Dé-commente le bloc
-#     `schedule` ci-dessous si tu veux un run hebdo / mensuel.
+# Déclenchement : Actions → "Pipeline (sync + enrich)" → Run workflow.
+# Cron désactivé par défaut (Annexe CA ne bouge qu'une fois/an).
 
 on:
   workflow_dispatch:
     inputs:
-      sync:
-        description: "1. Re-télécharger subventions depuis OpenData Paris"
-        type: boolean
-        default: true
+      phases:
+        description: "Phases à exécuter (séparées par virgule)"
+        type: choice
+        options:
+          - "sync,enrich"
+          - "enrich"
+          - "sync"
+          - "sync,dbt,export,enrich"
+        default: "sync,enrich"
       tier1:
-        description: "2. Enrichir les nouveaux bénéfs ≥80k€ via LLM (coût ~quelques €)"
-        type: boolean
-        default: false
-      tier2:
-        description: "3. Backfill SIRENE sur traîne ≥10k€ (gratuit, pas de LLM)"
+        description: "Activer l'enrich tier1 (LLM payant ≥80k€)"
         type: boolean
         default: false
       commit:
-        description: "Commit + push les changements sur la branche"
+        description: "Commit + push les changements"
         type: boolean
         default: true
 
   # schedule:
-  #   - cron: "0 6 * * 1"   # Tous les lundis 6h UTC — décommenter si besoin
+  #   - cron: "0 6 1 * *"   # 1er du mois 6h UTC — décommenter si besoin
 
 permissions:
   contents: write
@@ -38,13 +37,12 @@ permissions:
 jobs:
   pipeline:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 120
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          # Besoin du historique pour pouvoir commit.
           fetch-depth: 1
 
       - name: Setup Python
@@ -56,45 +54,37 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests
+          pip install -r requirements.txt || pip install requests
 
-      - name: 1/ Sync subventions from OpenData Paris
-        if: ${{ inputs.sync }}
-        run: |
-          python pipeline/scripts/sync/fetch_subventions_opendata.py
-          echo "Sync done."
-
-      - name: 2/ Enrich tier1 (LLM grounded, ≥80k€)
-        if: ${{ inputs.tier1 }}
+      - name: Run pipeline
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GOOGLE_API_KEY:    ${{ secrets.GOOGLE_API_KEY }}
+          PYTHON: python
         run: |
-          python pipeline/scripts/enrich/enrich_beneficiaire_grounded_llm.py \
-            --mode tier1 \
-            --provider claude
-
-      - name: 3/ Enrich tier2 (SIRENE only, ≥10k€)
-        if: ${{ inputs.tier2 }}
-        run: |
-          python pipeline/scripts/enrich/enrich_beneficiaire_grounded_llm.py \
-            --mode tier2
+          chmod +x pipeline/run_all.sh
+          # Convertit "sync,enrich" en "--only=sync,enrich" SAUF si = all.
+          PHASES_FLAG="--only=${{ inputs.phases }}"
+          TIER1_FLAG=""
+          if [[ "${{ inputs.tier1 }}" == "true" ]]; then TIER1_FLAG="--tier1"; fi
+          bash pipeline/run_all.sh $PHASES_FLAG $TIER1_FLAG
 
       - name: Show diff summary
         if: always()
         run: |
-          git status --short
+          git status --short || true
           echo "---"
-          git diff --stat
+          git diff --stat || true
 
       - name: Commit & push
         if: ${{ inputs.commit }}
         run: |
-          git config user.name "github-actions[bot]"
+          git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if git diff --quiet && git diff --cached --quiet; then
             echo "Rien à committer."
             exit 0
           fi
-          git add website/public/data/subventions/ website/public/data/enrichment/
+          git add website/public/data/
           git commit -m "chore(pipeline): auto-refresh subventions + enrich [skip ci]"
           git push
