@@ -24,11 +24,17 @@ export default function RelatedArticles({
   number,
   posts,
   placeholders = [],
+  maxItems = 3,
 }: {
   id?: string;
   number: string;
   posts: BlogPostMeta[];
   placeholders?: ArticlePlaceholder[];
+  /** Total maximum cards rendered (posts + placeholders). Defaults to 3 — the
+   *  placeholders are only shown when there are fewer than `maxItems` real
+   *  posts to feature on this page. Avoids the "5 cards = 3 published + 2
+   *  À paraître" anti-pattern when a page already has its 3 featured posts. */
+  maxItems?: number;
 }) {
   const t = useT();
   const { locale } = useLocale();
@@ -39,7 +45,13 @@ export default function RelatedArticles({
       day: "numeric",
     });
 
-  if (posts.length === 0 && placeholders.length === 0) return null;
+  // Keep at most `maxItems` cards in total : real posts in priority,
+  // then fill remaining slots with planned placeholders.
+  const visiblePosts = posts.slice(0, maxItems);
+  const remainingSlots = Math.max(0, maxItems - visiblePosts.length);
+  const visiblePlaceholders = placeholders.slice(0, remainingSlots);
+
+  if (visiblePosts.length === 0 && visiblePlaceholders.length === 0) return null;
 
   return (
     <section className="fx-section" id={id}>
@@ -56,7 +68,7 @@ export default function RelatedArticles({
           subtitle={t("fx.s.analyses.sub")}
         />
         <div className="fx-articles-grid">
-          {posts.map((p) => (
+          {visiblePosts.map((p) => (
             <Link key={p.slug} href={`/analyses/${p.slug}`} className="fx-article-card">
               <div className="fx-article-photo">
                 <div className="fx-article-photo-placeholder" aria-hidden="true" />
@@ -81,7 +93,7 @@ export default function RelatedArticles({
               </div>
             </Link>
           ))}
-          {placeholders.map((pl, i) => (
+          {visiblePlaceholders.map((pl, i) => (
             <div key={`pl-${i}`} className="fx-article-card fx-article-card-planned">
               <div className="fx-article-photo">
                 <div className="fx-article-photo-placeholder" aria-hidden="true" />
