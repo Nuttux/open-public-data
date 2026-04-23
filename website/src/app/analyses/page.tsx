@@ -20,12 +20,6 @@ const PLANNED: { title: string; description: string; tag: string }[] = [
       "Entre montant notifié et montant final, la dérive est structurelle sur les chantiers urbains. Cinq causes — archéologie, amiante, normes, fournisseurs, programme.",
   },
   {
-    tag: "Portrait",
-    title: "Paris Habitat : 80 000 logements, 1ᵉʳ bailleur social de France.",
-    description:
-      "Géographie du parc, modèle économique, place dans la politique de logement social parisienne. Anatomie d'un EPL devenu inséparable de la Ville.",
-  },
-  {
     tag: "Enquête",
     title: "Hors-bilan : les engagements financiers que la dette officielle ne montre pas.",
     description:
