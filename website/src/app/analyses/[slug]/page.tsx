@@ -78,7 +78,13 @@ export default async function AnalyseArticlePage({ params }: { params: Promise<P
           <MDXRemote
             source={post.content}
             components={mdxComponents}
-            options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+            options={{
+              mdxOptions: { remarkPlugins: [remarkGfm] },
+              // Autorise les expressions JS dans le MDX (data={[...]}, yMin={300}).
+              // Contenu blog = auteurs internes, pas d'input utilisateur → sûr.
+              // blockDangerousJS reste à true (défaut) comme filet de sécurité.
+              blockJS: false,
+            }}
           />
         </article>
       </div>
