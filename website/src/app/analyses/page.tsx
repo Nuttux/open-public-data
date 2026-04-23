@@ -15,15 +15,15 @@ export const metadata: Metadata = {
 const PLANNED: { title: string; description: string; tag: string }[] = [
   {
     tag: "Enquête",
-    title: "Les avenants BTP : +18 % en moyenne, pourquoi ?",
-    description:
-      "Entre montant notifié et montant final, la dérive est structurelle sur les chantiers urbains. Cinq causes — archéologie, amiante, normes, fournisseurs, programme.",
-  },
-  {
-    tag: "Enquête",
     title: "Les avenants BTP : pourquoi un chantier finit en moyenne plus cher que prévu.",
     description:
-      "Entre montant notifié et montant final, la dérive est structurelle sur les chantiers urbains parisiens. Cinq causes — archéologie, amiante, normes, fournisseurs, programme — quantifiées sur 14 ans de marchés publics.",
+      "Entre montant notifié et montant final, la dérive sur les chantiers urbains parisiens. À paraître quand le pipeline aura enrichi les codes CPV historiques et reconstitué les montants finaux exécutés.",
+  },
+  {
+    tag: "Portrait",
+    title: "Le 19ᵉ arrondissement par ses chiffres.",
+    description:
+      "Subventions reçues, chantiers livrés, projets actifs, taux de logement social. Premier épisode d'une série « Portraits d'arrondissement » réplicable sur les 20.",
   },
 ];
 
