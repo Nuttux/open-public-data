@@ -11,7 +11,6 @@ import TileCard from "@/components/fusion/TileCard";
 import YearPicker from "@/components/fusion/YearPicker";
 import ExportRow from "@/components/fusion/ExportRow";
 import ExpandableList from "@/components/fusion/ExpandableList";
-import SignauxFaibles from "@/components/fusion/SignauxFaibles";
 import BudgetTimeline from "@/components/fusion/BudgetTimeline";
 import Tip from "@/components/fusion/Tip";
 import StackedBarTheme from "@/components/fusion/StackedBarTheme";
@@ -77,7 +76,6 @@ export default function MarchesPublicsClient({
           { id: "sec-recherche", label: t("fx.toc.recherche") },
           { id: "sec-procedure", label: t("fx.toc.procedure") },
           { id: "sec-evolution", label: t("fx.toc.evolution") },
-          { id: "sec-signaux", label: t("fx.toc.signaux") },
           { id: "sec-analyses", label: t("fx.toc.analyses") },
           { id: "sec-explorer", label: t("fx.toc.explorer") },
           { id: "sec-sources", label: t("fx.toc.sources") },
@@ -735,51 +733,12 @@ export default function MarchesPublicsClient({
         </div>
       </section>
 
-      <section className="fx-section" id="sec-signaux">
-        <div className="fx-wrap">
-          <SectionHead
-            number="07"
-            kind={<Tip label={t("fx.mp.s06.kind.tip")}>{t("fx.mp.s06.kind")}</Tip>}
-            title={
-              <>
-                {t("fx.mp.s06.title.before")}
-                <em>{t("fx.mp.s06.title.em")}</em>
-              </>
-            }
-            subtitle={t("fx.mp.s06.sub")}
-          />
-          <SignauxFaibles
-            note={
-              <>
-                <b>{t("fx.s.methode")}</b> : {t("fx.mp.s06.signal.note")}
-              </>
-            }
-            items={[
-              {
-                flag: t("fx.mp.s06.sig1.flag"),
-                title: (d.top10[0]?.name ?? "—").slice(0, 60),
-                body: fill(t("fx.mp.s06.sig1.body"), {
-                  pct: fmtDec(((d.top10[0]?.amount ?? 0) / d.total) * 100, 1),
-                  year: d.year,
-                  n: d.top10[0]?.nbContrats ?? 0,
-                }),
-                stats: [
-                  { label: t("fx.mp.s06.sig1.stat1"), value: `${fmtMillions(d.top10[0]?.amount ?? 0, 0)} M €` },
-                  { label: t("fx.mp.s06.sig1.stat2"), value: String(d.top10[0]?.nbContrats ?? 0) },
-                  { label: t("fx.mp.s06.sig1.stat3"), value: "#01" },
-                ],
-              },
-            ]}
-          />
-        </div>
-      </section>
-
-      <RelatedArticles number="08" posts={posts} placeholders={MP_PLACEHOLDERS} />
+      <RelatedArticles number="07" posts={posts} placeholders={MP_PLACEHOLDERS} />
 
       <section className="fx-section" id="sec-explorer">
         <div className="fx-wrap">
           <SectionHead
-            number="09"
+            number="08"
             kind={t("fx.mp.s08.kind")}
             subtitle={t("fx.mp.s08.sub")}
           />

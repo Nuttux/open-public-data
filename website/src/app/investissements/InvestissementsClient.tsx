@@ -11,7 +11,6 @@ import TileCard from "@/components/fusion/TileCard";
 import YearPicker from "@/components/fusion/YearPicker";
 import ExportRow from "@/components/fusion/ExportRow";
 import Tip from "@/components/fusion/Tip";
-import SignauxFaibles from "@/components/fusion/SignauxFaibles";
 import ProjectMap from "@/components/fusion/ProjectMap";
 import ProjetThumb from "@/components/fusion/ProjetThumb";
 import ParisChoropleth from "@/components/fusion/ParisChoropleth";
@@ -80,7 +79,6 @@ export default function InvestissementsClient({
           { id: "sec-chapitre", label: t("fx.toc.chapitres") },
           { id: "sec-territoire", label: t("fx.inv.s05.kind") },
           { id: "sec-evolution", label: t("fx.toc.evolution") },
-          { id: "sec-signaux", label: t("fx.toc.signaux") },
           { id: "sec-projets", label: t("fx.toc.projets") },
           { id: "sec-analyses", label: t("fx.toc.analyses") },
           { id: "sec-explorer", label: t("fx.toc.explorer") },
@@ -338,49 +336,11 @@ export default function InvestissementsClient({
         </div>
       </section>
 
-      <section className="fx-section" id="sec-signaux">
-        <div className="fx-wrap">
-          <SectionHead
-            number="05"
-            kind={<Tip label={t("fx.inv.signaux.tip")}>{t("fx.inv.s07.kind")}</Tip>}
-            title={
-              <>
-                {t("fx.inv.s07.title.before")}
-                <em>{t("fx.inv.s07.title.em")}</em>
-              </>
-            }
-            subtitle={t("fx.inv.s07.sub")}
-          />
-          <SignauxFaibles
-            note={
-              <>
-                <b>{t("fx.s.methode")}</b> : {t("fx.inv.s07.signal.note")}
-              </>
-            }
-            items={[
-              {
-                flag: t("fx.inv.s07.sig3.flag"),
-                title: t("fx.inv.s07.sig3.title"),
-                body: fill(t("fx.inv.s07.sig3.body"), {
-                  pct: fmtDec(100 - d.pctGeo, 0),
-                  year: d.year,
-                }),
-                stats: [
-                  { label: t("fx.inv.s07.sig3.stat1"), value: `${fmtDec(100 - d.pctGeo, 0)} %` },
-                  { label: t("fx.inv.s07.sig3.stat2"), value: fmtInt(d.nbProjets - d.nbGeo) },
-                  { label: t("fx.inv.s07.sig3.stat3"), value: t("fx.inv.s07.sig3.to_produce") },
-                ],
-                cta: { href: "/methode?tool=investissements#outils", label: t("fx.inv.s07.sig3.cta") },
-              },
-            ]}
-          />
-        </div>
-      </section>
 
       <section className="fx-section" id="sec-projets">
         <div className="fx-wrap">
           <SectionHead
-            number="06"
+            number="05"
             kind={t("fx.inv.s01.kind")}
             title={
               <>
@@ -422,11 +382,11 @@ export default function InvestissementsClient({
         </div>
       </section>
 
-      <RelatedArticles number="07" posts={posts} placeholders={INV_PLACEHOLDERS} />
+      <RelatedArticles number="06" posts={posts} placeholders={INV_PLACEHOLDERS} />
 
       <section className="fx-section" id="sec-explorer">
         <div className="fx-wrap">
-          <SectionHead number="08" kind={t("fx.inv.s09.kind")} />
+          <SectionHead number="07" kind={t("fx.inv.s09.kind")} />
           <div className="fx-grid-tiles">
             <TileCard
               href="/marches-publics"
