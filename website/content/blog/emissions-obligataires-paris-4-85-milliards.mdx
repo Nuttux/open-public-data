@@ -1,0 +1,152 @@
+---
+title: "Les obligations Paris : 4,85 Md€ levés en bourse en 11 ans, à qui et à quel taux"
+description: "Depuis 2013, la Ville de Paris a émis 8 obligations publiques pour 4,85 milliards d'euros — c'est aujourd'hui 76 % de sa dette financière. Anatomie de chaque émission, de l'évolution spectaculaire des taux (0,25 % en 2020 → 3,38 % en 2024), des deux émissions thématiques (Social Bond COVID, Green Bond rénovation thermique), et du mur de remboursement qui se profile en mai 2028."
+date: "2026-05-06"
+author: "France Open Data"
+tags: ["enquête", "dette", "obligations", "marchés financiers", "patrimoine"]
+category: "Enquête"
+image: "https://commons.wikimedia.org/wiki/Special:FilePath/Palais%20Brongniart%20Paris.jpg?width=1600"
+imageAlt: "Palais Brongniart à Paris — ancienne Bourse, symbole des marchés financiers où la Ville lève l'essentiel de sa dette"
+imageCredit: "Photo : Wikimedia Commons · CC BY-SA"
+readingTime: "9 min"
+---
+
+Quand la Ville de Paris s'endette aujourd'hui, elle ne se rend pas en majorité chez son banquier. Elle émet des **obligations publiques** sur les marchés financiers, vendues à des investisseurs institutionnels — assureurs, fonds d'investissement, banques centrales étrangères. Cette pratique, ancienne pour l'État français, est plus récente pour les collectivités locales et fait de Paris l'une des très rares communes françaises présentes régulièrement sur le marché obligataire benchmark.
+
+Sur les douze derniers exercices (2013-2024), la Ville a réalisé **8 émissions obligataires** pour un montant cumulé de **4,85 milliards d'euros**. Cet encours obligataire représente, fin 2024, **76 % de la dette financière propre** de la commune (8,12 Md€ sur 10,70 Md€). Le reste vient d'emprunts bancaires classiques (Banque des Territoires, La Banque Postale) et d'engagements financiers divers.
+
+Cet article documente chaque émission, l'évolution des conditions de marché, les deux émissions thématiques (Social Bond, Green Bond), et l'échéance de mai 2028 qui sera le premier vrai test de refinancement obligataire pour la Ville.
+
+## La liste complète des 8 émissions
+
+Depuis 2013, le rythme est à peu près constant : une émission tous les 12 à 24 mois, pour un montant compris entre 450 et 800 M€. Voici le détail :
+
+| Année | Montant | Taux d'intérêt | Maturité | Nature | Échéance |
+|---:|---:|---:|---:|---|---|
+| 2013 | 750 M€ | 2,125 % | 15 ans | Benchmark, **in fine** | mai 2028 |
+| 2015 | 750 M€ | 1,75 % | 12 ans | Benchmark | nov. 2027 |
+| 2019 | 450 M€ | 1,00 % | 15 ans | Benchmark long | oct. 2034 |
+| 2020 | 500 M€ | 0,25 % | 10 ans | **Social Bond ICMA** (soutien COVID) | 2030 |
+| 2021 | 500 M€ | 0,75 % | 10 ans | Benchmark classique | mai 2031 |
+| 2022 | 500 M€ | 1,875 % | 10 ans | Benchmark, **3× sursouscrite** | juin 2032 |
+| 2023 | 600 M€ | 3,125 % | 10 ans | **Green Bond ICMA** (rénovation thermique) | 2033 |
+| 2024 | 800 M€ | 3,375 % | 15 ans | Benchmark, financement PLU bioclimatique | mai 2039 |
+| **Total** | **4 850 M€** | | | | |
+
+Le coupon — c'est-à-dire le taux d'intérêt nominal annuel que la Ville paie à ses porteurs — a varié dans une fourchette spectaculaire de **0,25 % en 2020** à **3,375 % en 2024**. Ce n'est pas un choix politique de la Ville, c'est la traduction directe des conditions de marché : la politique monétaire de la Banque centrale européenne, qui a maintenu des taux directeurs proches de zéro de 2014 à 2022, puis les a brutalement remontés en 2022-2023 pour lutter contre l'inflation post-COVID.
+
+<BlogTimeBars
+  title="Coupon des obligations émises par la Ville de Paris (% par an)"
+  unit="%"
+  data={[
+    { year: 2013, value: 2.125 },
+    { year: 2015, value: 1.75 },
+    { year: 2019, value: 1.00 },
+    { year: 2020, value: 0.25 },
+    { year: 2021, value: 0.75 },
+    { year: 2022, value: 1.875 },
+    { year: 2023, value: 3.125 },
+    { year: 2024, value: 3.375 },
+  ]}
+  caption="Taux d'intérêt nominal des 8 obligations publiques émises par la Ville de Paris depuis 2013. La courbe en U inversé reflète directement la politique monétaire de la BCE — taux planchers en 2020-2021 (0,25 % puis 0,75 %), remontée brutale dès 2022. Le coût marginal de la dette neuve a triplé en deux ans."
+  source="pipeline open-public-data, fichier patrimoine_structure_*.json (champ bond_issuances)"
+/>
+
+## L'effet « rétroviseur » : pourquoi le taux moyen reste à 2,1 %
+
+Malgré ces 3,4 % sur la dernière émission, le taux moyen pondéré de l'**encours obligataire entier** ne s'élève qu'à **2,1 %**. La raison : 94 % de l'encours est en taux fixe, et la Ville bénéficie encore des conditions extrêmement favorables négociées entre 2019 et 2022 — ces obligations resteront à leur coupon d'émission jusqu'à leur maturité (souvent 2030-2034).
+
+C'est ce qu'on appelle l'**effet de stock** vs **effet de flux** :
+
+- **Stock** (encours total) = moyenne pondérée historique → 2,1 %, avantage hérité de la décennie de taux bas
+- **Flux** (chaque nouvelle émission) = taux du moment → 3,4 % en 2024, traduit la nouvelle réalité monétaire
+
+Tant que la Ville n'émet pas trop souvent, le stock évolue lentement et l'effet flux ne pèse que marginalement chaque année. Mais à mesure que les anciennes émissions arrivent à maturité (cf. infra), elles devront être remboursées et potentiellement refinancées — au taux du marché de l'époque.
+
+## Les deux émissions thématiques
+
+Sur les 8 obligations émises, **deux ont été labellisées selon les standards ICMA** (International Capital Market Association) — une certification volontaire qui contraint l'émetteur à utiliser les fonds pour des objectifs précis et à publier un reporting d'impact :
+
+### Social Bond 2020 (500 M€, 0,25 %, COVID)
+La Ville a profité du contexte de taux ultra-bas du printemps 2020 pour lever 500 M€ sur 10 ans à un taux historiquement faible — 0,25 %, soit le niveau le plus bas jamais obtenu par une collectivité française sur cette maturité. L'émission a été labellisée **Social Bond** au sens ICMA, fléchant les fonds vers les dépenses de soutien aux populations vulnérables touchées par la crise sanitaire (hébergement d'urgence, action sociale, soutien aux acteurs culturels en difficulté).
+
+### Green Bond 2023 (600 M€, 3,125 %, rénovation thermique)
+En septembre 2023, la Ville a émis sa première obligation labellisée **Green Bond** au sens ICMA pour 600 M€ sur 10 ans, à un taux beaucoup plus élevé (3,125 %) reflétant la nouvelle ère de taux. Les fonds sont fléchés vers des opérations de rénovation thermique de bâtiments municipaux (écoles principalement) et de mobilité décarbonée. C'est l'une des premières émissions Green Bond d'une collectivité française d'envergure.
+
+Ces labellisations ne réduisent pas le coût de la dette de manière significative (l'avantage tarifaire — appelé *greenium* — reste de 1 à 5 points de base seulement, selon les estimations Banque de France). Elles ouvrent surtout l'accès à des poches d'investisseurs spécialisés (fonds ESG, fonds dédiés à l'investissement responsable) qui ne pourraient pas acheter une obligation classique de même nature.
+
+<figure className="fx-photo-fig">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Op%C3%A9ra%20Garnier%20Paris.jpg?width=1200" alt="Opéra Garnier — institution patrimoniale parisienne" />
+<figcaption>Émettre une obligation publique sur 15 ans, c'est s'engager à payer un coupon fixe pendant toute la période — y compris sous des mandatures politiques différentes. La rigidité de l'engagement obligataire est l'une des raisons pour lesquelles Paris privilégie cet outil pour les financements de long terme.</figcaption>
+</figure>
+
+## Le mur 2028 : 750 M€ à rembourser en bloc
+
+L'**échéance 2028** est la première vraie séquence de refinancement obligataire que la Ville aura à gérer. En mai 2028, l'obligation émise en 2013 (Paris 2,125 % mai 2028) arrivera à maturité. Particularité : cette obligation est **« in fine »** — c'est-à-dire que le capital est remboursé **en bloc à l'échéance**, pas progressivement chaque année. La Ville devra donc trouver **750 M€** d'un seul coup en mai 2028.
+
+Trois scénarios sont théoriquement possibles :
+
+1. **Remboursement sur trésorerie propre** : peu probable, la trésorerie courante de la Ville n'absorberait pas un choc de cette taille.
+2. **Refinancement par nouvelle émission obligataire** : le scénario standard. Émettre une nouvelle obligation peu avant l'échéance, utiliser le produit pour rembourser l'ancienne. Le coût change selon les conditions de marché de 2027-2028 — si les taux sont à ~3 % comme aujourd'hui, le coût annuel passera de 16 M€ (2,125 % × 750 M€) à environ 22 M€ (3 % × 750 M€), soit un **alourdissement annuel de 6 M€** strictement lié à l'effet refinancement.
+3. **Mix refinancement + emprunt bancaire classique** : la Banque des Territoires reste un canal complémentaire pour les collectivités, à des conditions parfois plus avantageuses que le marché obligataire pour des montants moyens.
+
+Une seconde échéance importante suit : **novembre 2027**, l'obligation 2015 (750 M€ à 1,75 %) arrive aussi à maturité. Soit, sur 6 mois, **1,5 Md€ à refinancer** (15 % de la dette obligataire totale).
+
+C'est la première fois que la Ville sera confrontée à ce type d'enchaînement obligataire — les émissions précédentes des années 2000 étaient pour la plupart amortissables progressivement, pas in fine.
+
+## Qui prête à Paris en bourse ?
+
+Les obligations publiques sont placées via un **syndicat bancaire** (5 à 8 banques d'investissement, dont Crédit Agricole CIB, Société Générale, Natixis, BNP Paribas) qui les distribuent ensuite aux investisseurs finaux. Sur les émissions Paris récentes, la composition typique des souscripteurs est documentée par les communiqués post-émission de la Ville :
+
+- **Assureurs et fonds de pension** : ~50 % de chaque émission
+- **Banques centrales étrangères et institutions souveraines** : ~20-25 %
+- **Banques commerciales** (pour leur portefeuille HQLA — High Quality Liquid Assets) : ~15-20 %
+- **Autres investisseurs institutionnels** (gérants d'actifs, fondations) : ~5-10 %
+
+Cette structure — dominée par les assureurs européens — explique pourquoi Paris peut emprunter à des conditions très proches de celles de l'État français. Les assureurs cherchent du papier en euros, à long terme, à risque très faible. La Ville de Paris, notée **Aa2 (Moody's) / AA (Fitch)** — soit le même niveau que l'État français — est l'une des très rares signatures locales européennes à offrir cette combinaison.
+
+L'émission 2022, 3× sursouscrite (les souscripteurs ont demandé 1,5 Md€ pour 500 M€ disponibles), illustre cette appétence : même dans un contexte de remontée des taux, la signature Paris reste très demandée.
+
+<aside className="fx-sidebar">
+
+### Pourquoi Paris note Aa2 et pas plus haut
+
+La notation Aa2 / AA place Paris **un cran en-dessous de la note maximale** des agences (Aaa / AAA, réservée à très peu d'États : Allemagne, Pays-Bas, Suède, etc.). Trois raisons techniques :
+
+1. **Les agences appliquent un plafond** : une collectivité ne peut pas être notée plus haut que son État de tutelle. La France étant elle-même Aa2 / AA, Paris l'est mécaniquement aussi.
+2. **La dépendance aux dotations d'État** (DGF, FCTVA) crée un risque de transmission : si l'État dégrade sa propre note, Paris suit.
+3. **L'absence de souveraineté monétaire** : Paris ne peut pas émettre de monnaie, contrairement à l'État dans les rares pays gardant cette prérogative (États-Unis, Royaume-Uni). Le remboursement dépend exclusivement des recettes courantes.
+
+À ce niveau de notation, le coût de la dette parisienne est **inférieur de 10 à 30 points de base** à celui d'une commune française médiane non notée — soit une économie d'intérêts substantielle sur la durée.
+
+</aside>
+
+## Comment Paris se compare
+
+Très peu de collectivités françaises émettent régulièrement des obligations publiques. Sur la décennie 2014-2024, on identifie principalement :
+
+- **Région Île-de-France** : émissions annuelles, plusieurs milliards par an cumulés
+- **Métropole de Lyon, Métropole du Grand Paris** : émissions ponctuelles
+- **Quelques régions** (Auvergne-Rhône-Alpes, Occitanie) : émissions ponctuelles
+
+La quasi-totalité des autres collectivités françaises se finance via :
+- l'**Agence France Locale (AFL)** — agence mutualisée créée en 2013 spécifiquement pour donner aux collectivités françaises moyennes l'accès au marché obligataire à coût modéré
+- la **Banque des Territoires** (Caisse des Dépôts) — prêts amortissables long terme
+- les banques commerciales — La Banque Postale, Crédit Agricole, etc.
+
+Paris fait partie du tout petit groupe de collectivités françaises **émettant en propre** sur les marchés benchmark — à côté de la Région Île-de-France, qui est sa principale comparaison nationale.
+
+## Ce que ces chiffres ne disent pas
+
+Cette analyse s'arrête à ce que le pipeline open-public-data permet de mesurer (émissions inscrites au passif obligataire, conditions financières publiées au moment de l'émission). Elle ne dit pas :
+
+- **Le détail des spreads sur la courbe OAT** (écart de taux par rapport à l'État) — ces données ne sont publiques qu'au moment de chaque émission, dans les communiqués Bloomberg, et ne sont pas systématiquement archivées
+- **La performance des obligations sur le marché secondaire** — une fois émise, une obligation se négocie entre investisseurs ; Paris n'a aucune visibilité sur ces transactions et le coupon reste fixe quoi qu'il arrive
+- **L'identité précise des souscripteurs finaux** — les structures d'allocation post-émission donnent des moyennes par catégorie, pas des noms d'investisseurs
+- **L'efficacité des labels Social et Green** — le reporting d'impact existe (publié annuellement) mais reste qualitatif sur de nombreux postes
+
+Ce qu'elle dit, en une phrase : **la Ville de Paris a levé 4,85 milliards d'euros sur les marchés obligataires en 11 ans, à un taux moyen historiquement bas (2,1 %) qu'elle ne pourra probablement pas reproduire sur les refinancements à venir** — notamment le mur de 1,5 Md€ de mai 2027 et mai 2028. C'est une signature financière de qualité, mais l'effet « rétroviseur » des taux bas s'épuisera mécaniquement à mesure que les anciennes émissions arrivent à maturité.
+
+---
+
+**Sources** : Pipeline open-public-data, fichiers `patrimoine_structure_2019.json` à `patrimoine_structure_2024.json` (champs `bond_issuances` et `instruments[obligataire]` extraits de l'annexe IV des comptes administratifs Ville de Paris) · Communiqués officiels d'émission de la Ville de Paris (2013-2024) · Notations financières publiques Moody's et Fitch · Standards ICMA pour les Social Bonds et Green Bonds. Périmètre : obligations publiques émises en propre par la Ville de Paris, hors emprunts bancaires et engagements financiers divers.

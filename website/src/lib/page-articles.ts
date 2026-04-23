@@ -19,9 +19,9 @@ export type PageKey =
  */
 const PAGE_FEATURED_SLUGS: Record<PageKey, string[]> = {
   budget: [
-    "vote-vs-execute-postes-sur-sous-executes",
-    "regle-or-communes-article-l-1612-4",
     "decrypter-finances-paris-budget-bilan",
+    "regle-or-communes-article-l-1612-4",
+    "paris-peut-elle-faire-faillite",
   ],
   "qui-recoit": [
     "top-10-associations-subventionnees-paris",
@@ -39,9 +39,9 @@ const PAGE_FEATURED_SLUGS: Record<PageKey, string[]> = {
     "13e-arrondissement-par-ses-chiffres",
   ],
   "dette-patrimoine": [
-    "paris-peut-elle-faire-faillite",
     "patrimoine-paris-bilan-cout-historique",
     "hors-bilan-12-milliards-garanties-emprunt",
+    "emissions-obligataires-paris-4-85-milliards",
   ],
   "logement-social": [
     "geographie-logement-social-paris",
