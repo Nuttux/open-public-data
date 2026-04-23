@@ -26,10 +26,10 @@ const PLANNED: { title: string; description: string; tag: string }[] = [
       "Géographie du parc, modèle économique, place dans la politique de logement social parisienne. Anatomie d'un EPL devenu inséparable de la Ville.",
   },
   {
-    tag: "Explication",
-    title: "Loi SRU à Paris : qui est en retard, qui paie, qui mutualise.",
+    tag: "Enquête",
+    title: "Hors-bilan : les engagements financiers que la dette officielle ne montre pas.",
     description:
-      "Huit arrondissements sous le seuil de 25 % de logement social. Le mécanisme des pénalités, la mutualisation interne et ce que la loi exige vraiment.",
+      "Garanties d'emprunt accordées à des opérateurs publics, engagements de retraite, dépôts et cautionnements : un agrégat plurimilliardaire qui n'apparaît pas dans le ratio de désendettement. Ce qu'on peut lire dans le hors-bilan.",
   },
 ];
 
