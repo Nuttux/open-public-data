@@ -498,26 +498,69 @@ export default function QuiRecoitExplorer({
             )}
 
             {!hasQuery && (
-              <div className="fx-search-placeholder">
-                <p>
-                  Tapez au moins <b>{t("fx.qr.search.hint_two")}</b> {t("fx.qr.search.hint_after")}
-                </p>
-                <div className="fx-search-seeds">
-                  {SEEDS.map((s) => (
-                    <button
-                      key={s}
-                      type="button"
-                      className="fx-search-seed"
-                      onClick={() => {
-                        track("search_seed_click", { page: "qui-recoit", seed: s });
-                        setQuery(s);
-                      }}
-                    >
-                      « {s} »
-                    </button>
-                  ))}
+              <>
+                <div className="fx-search-placeholder">
+                  <p>
+                    Tapez au moins <b>{t("fx.qr.search.hint_two")}</b> {t("fx.qr.search.hint_after")}
+                  </p>
+                  <div className="fx-search-seeds">
+                    {SEEDS.map((s) => (
+                      <button
+                        key={s}
+                        type="button"
+                        className="fx-search-seed"
+                        onClick={() => {
+                          track("search_seed_click", { page: "qui-recoit", seed: s });
+                          setQuery(s);
+                        }}
+                      >
+                        « {s} »
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </div>
+                <div className="fx-results-grid">
+                  {top10.slice(0, 3).map((it, i) => {
+                    const { v, u } = fmtEur(it.amount);
+                    return (
+                      <Link
+                        key={i}
+                        href={ficheHref(it.name)}
+                        scroll={false}
+                        className="fx-result-card"
+                        onClick={() =>
+                          track("search_result_click", {
+                            page: "qui-recoit",
+                            entity_name: it.name,
+                            theme: it.theme,
+                            rank: i,
+                            results_count: 3,
+                            source: "idle_top",
+                          })
+                        }
+                      >
+                        <div className="fx-result-card-top">
+                          <span className="fx-result-card-type">{t("fx.qr.search.card.grant")}</span>
+                          <span>{year}</span>
+                        </div>
+                        <h3>{it.name}</h3>
+                        <div className="fx-result-card-amount tnum">
+                          {v}
+                          <span className="u">{u}</span>
+                        </div>
+                        <div className="fx-result-card-meta">
+                          <span className="fx-result-card-arr">
+                            {trLabel(it.theme ?? undefined, locale) || "—"}
+                          </span>
+                          <span className="fx-result-card-cta">
+                            {t("fx.qr.search.card.fiche")} <span className="chev">→</span>
+                          </span>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </>
             )}
           </div>
         </div>

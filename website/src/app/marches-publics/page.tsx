@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "../fusion.css";
 import { loadMarchesIndex, loadMarchesPageData } from "@/lib/fusion-data";
+import { getPostsForPage } from "@/lib/page-articles";
 import MarchesPublicsClient from "./MarchesPublicsClient";
 
 export const metadata: Metadata = {
@@ -19,5 +20,6 @@ export default async function MarchesPublicsPage({
   const requestedYear = sp.year ? Number(sp.year) : undefined;
   const idx = loadMarchesIndex();
   const d = loadMarchesPageData(requestedYear);
-  return <MarchesPublicsClient idx={idx} d={d} />;
+  const posts = getPostsForPage("marches-publics");
+  return <MarchesPublicsClient idx={idx} d={d} posts={posts} />;
 }

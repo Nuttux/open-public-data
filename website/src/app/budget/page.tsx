@@ -6,6 +6,7 @@ import {
   loadBudgetPageData,
   loadVoteExecute,
 } from "@/lib/fusion-data";
+import { getPostsForPage } from "@/lib/page-articles";
 import BudgetClient from "./BudgetClient";
 
 export const metadata: Metadata = {
@@ -27,6 +28,7 @@ export default async function BudgetPage({
   const index = loadBudgetIndex();
   const d = loadBudgetPageData(requestedYear);
   const voteExec = loadVoteExecute();
+  const posts = getPostsForPage("budget");
 
-  return <BudgetClient index={index} d={d} voteExec={voteExec} />;
+  return <BudgetClient index={index} d={d} voteExec={voteExec} posts={posts} />;
 }

@@ -21,6 +21,18 @@ Format numéros confirmé compatible (`20232023S06216` identique des deux côté
 3. Géocodage adresse dans `nom_projet` ↔ adresse dans `objet` marché.
 4. Signal fournisseurs spécialisés patrimoine (Pradeau Morin, Lefèvre, UTB, Freyssinet…) pour booster candidats une fois un lot identifié.
 
+## Exploré et abandonné
+
+### chantiers-a-paris (dataset opendata.paris.fr)
+Testé : ingestion BQ + dbt staging/core/mart + export JSON (5 568 chantiers dont 525 Ville).
+
+**Conclusion** : **ne correspond pas au modèle mental citoyen "projets Ville"**.
+Le dataset mesure les *autorisations d'occuper temporairement l'espace public* pour des travaux — concept différent d'un projet d'investissement. 93% des entrées sont privés (copropriétés, concessionnaires RATP/Enedis/GRDF) qui n'apparaissent pas dans le budget Ville. Les chantiers Ville qu'il contient sont majoritairement voirie — pas les rénovations d'école/équipement que le citoyen attend quand il entend "chantier".
+
+**Décision** : purge complète du pipeline (2026-04-23). Réversible si un jour on trouve un usage clair (ex. outil utilitaire "travaux en cours dans ma rue" — mais ce n'est pas la mission du site).
+
+**À ne pas refaire** : ne pas réintégrer ce dataset sans un cadrage UX clair qui distingue sémantiquement "chantier autorisation d'emprise" de "chantier projet d'investissement" (le mot "chantier" est déjà utilisé sur la page `/investissements`).
+
 ## Moyen terme — budgets annexes & opérateurs publics
 
 ### Contexte

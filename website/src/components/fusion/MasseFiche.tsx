@@ -5,6 +5,7 @@ import type { PatrimoineMasse } from "@/lib/fusion-data";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
+import { PARIS_POPULATION } from "@/lib/methodology";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
@@ -69,7 +70,7 @@ export default function MasseFiche({ masse, year, onClose }: Props) {
           <div className="fk">
             <div className="fk-label">{t("fx.fiche.masse.par_hab")}</div>
             <div className="fk-value tnum">
-              {fmtInt(masse.value / 2_133_111)}<span className="u">€</span>
+              {fmtInt(masse.value / PARIS_POPULATION)}<span className="u">€</span>
             </div>
           </div>
           <div className="fk">

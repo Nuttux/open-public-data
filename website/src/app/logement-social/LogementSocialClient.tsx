@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import Link from "next/link";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
@@ -10,13 +9,15 @@ import BudgetTimeline from "@/components/fusion/BudgetTimeline";
 import PageTOC from "@/components/fusion/PageTOC";
 import ParisChoropleth from "@/components/fusion/ParisChoropleth";
 import TileCard from "@/components/fusion/TileCard";
-import WaitSimulator from "@/components/fusion/WaitSimulator";
-import InteractiveWrap from "@/components/fusion/InteractiveWrap";
+import TensionParArrondissement from "@/components/fusion/TensionParArrondissement";
 import ChartSource from "@/components/fusion/ChartSource";
 import YearPicker from "@/components/fusion/YearPicker";
 import ExportRow from "@/components/fusion/ExportRow";
 import Tip from "@/components/fusion/Tip";
+import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/RelatedArticles";
+import PageHook from "@/components/fusion/PageHook";
 import { fmtDec, fmtInt } from "@/lib/fmt";
+import type { BlogPostMeta } from "@/lib/blog";
 import type { LogementSocialData } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
@@ -92,32 +93,32 @@ const niceYTicks = (min: number, max: number, target = 5): number[] => {
   return ticks;
 };
 
-export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
+const LOG_PLACEHOLDERS: ArticlePlaceholder[] = [
+  {
+    category: "Enquête",
+    title: "Bailleurs sociaux parisiens : qui détient quoi, qui finance quoi.",
+    description:
+      "Paris Habitat, RIVP, Elogie-Siemp — structure, gouvernance, dette. Une cartographie comparée des trois principaux opérateurs du parc.",
+  },
+  {
+    category: "Explication",
+    title: "SRU, PLU-bioclimatique, conventionnement : comment le stock évolue.",
+    description:
+      "Les trois leviers qui font bouger la part de logement social dans un arrondissement, leur rythme et leurs limites.",
+  },
+];
+
+export default function LogementSocialClient({
+  d,
+  posts,
+}: {
+  d: LogementSocialData;
+  posts: BlogPostMeta[];
+}) {
   const t = useT();
   const { locale } = useLocale();
   const gap = d.sruRatio - d.sruTarget;
   const gapDir: "up" | "down" | "flat" = gap > 0.1 ? "up" : gap < -0.1 ? "down" : "flat";
-  const [hookCopied, setHookCopied] = useState(false);
-
-  const copyHookText = async () => {
-    if (typeof window === "undefined") return;
-    const line = fill(t("fx.log.hook.share.text"), {
-      year: d.year,
-      logements: fmtInt(d.nouveauxParAn),
-      operations: fmtInt(d.nbOperations),
-      demandes: fmtInt(d.tension.demandesActives),
-      ratio: d.tension.ratio,
-      delai: fmtDec(d.tension.delaiMedian, 1),
-      url: window.location.origin + "/logement-social",
-    });
-    try {
-      await navigator.clipboard.writeText(line);
-      setHookCopied(true);
-      setTimeout(() => setHookCopied(false), 1800);
-    } catch {
-      /* clipboard unavailable */
-    }
-  };
 
   return (
     <div className="theme-fusion">
@@ -130,9 +131,10 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
           { id: "sec-territoire", label: t("fx.log.s02.kind") },
           { id: "sec-production", label: t("fx.toc.production") },
           { id: "sec-tension", label: t("fx.toc.tension") },
-          { id: "sec-simulateur", label: t("fx.toc.simulateur") },
-          { id: "sec-sources", label: t("fx.toc.sources") },
+          { id: "sec-tension-arr", label: "Par arrondissement" },
+          { id: "sec-analyses", label: t("fx.toc.analyses") },
           { id: "sec-explorer", label: t("fx.toc.explorer") },
+          { id: "sec-sources", label: t("fx.toc.sources") },
         ]}
       />
 
@@ -168,55 +170,33 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
         </div>
       </section>
 
-      {/* Hook · production de l'année (bouge avec le YearPicker) + tension DRIHL en contre-pied */}
-      <section className="fx-log-hook" aria-label={t("fx.log.hook.aria")}>
-        <div className="fx-wrap">
-          <div className="fx-log-hook-head">
-            <span className="fx-log-hook-kicker">
-              {fill(t("fx.log.hook.kicker"), { year: d.year })}
-            </span>
-            <span className="fx-log-hook-sep">·</span>
-            <span className="fx-log-hook-src">{t("fx.log.hook.source")}</span>
-          </div>
-          <div className="fx-log-hook-grid">
-            <div className="fx-log-hook-item">
-              <div className="fx-log-hook-v tnum">{fmtInt(d.nouveauxParAn)}</div>
-              <div className="fx-log-hook-l">{t("fx.log.hook.logements")}</div>
-            </div>
-            <div className="fx-log-hook-item">
-              <div className="fx-log-hook-v tnum">{fmtInt(d.nbOperations)}</div>
-              <div className="fx-log-hook-l">{t("fx.log.hook.operations")}</div>
-            </div>
-            <div className="fx-log-hook-item">
-              <div className="fx-log-hook-v tnum">
-                {d.byArrondissement.filter((a) => a.logements > 0).length}
-                <span className="fx-log-hook-u">/ 20</span>
-              </div>
-              <div className="fx-log-hook-l">{t("fx.log.hook.arrs")}</div>
-            </div>
-          </div>
-          <p className="fx-log-hook-tension">
-            <span className="fx-log-hook-tension-lbl">{t("fx.log.hook.tension.label")}</span>
-            <b>{fmtInt(d.tension.demandesActives)}</b> {t("fx.log.hook.demandes")}
-            <span className="fx-log-hook-tension-sep">·</span>
-            <b>{d.tension.ratio}:1</b>
-            <span className="fx-log-hook-tension-sep">·</span>
-            <b>{fmtDec(d.tension.delaiMedian, 1)} {t("fx.log.hook.annees")}</b>{" "}
-            {t("fx.log.hook.tension.wait")}
-            <span className="fx-log-hook-tension-src">{t("fx.log.hook.tension.src")}</span>
-          </p>
-          <div className="fx-log-hook-actions">
-            <button
-              type="button"
-              className="fx-log-hook-share"
-              onClick={copyHookText}
-              aria-live="polite"
-            >
-              {hookCopied ? t("fx.log.hook.share.copied") : t("fx.log.hook.share.cta")}
-            </button>
-          </div>
-        </div>
-      </section>
+      {(() => {
+        const arrsCouverts = d.byArrondissement.filter((a) => a.logements > 0).length;
+        const demandes = d.tension.paris.demandesActives;
+        const attribs = d.tension.paris.attributions;
+        const ratio = attribs > 0 ? Math.round(demandes / attribs) : 0;
+        return (
+          <PageHook
+            cite={
+              <>
+                Ville de Paris · Logements sociaux financés {d.year} (opendata.paris.fr){" · "}
+                DRIHL · Demandes et attributions {d.year}
+              </>
+            }
+            shareText={
+              `Logement social Paris ${d.year} : ${fmtInt(demandes)} ménages en attente d'un HLM, ` +
+              `${fmtInt(attribs)} attributions sur l'année et ${fmtInt(d.nouveauxParAn)} nouveaux logements financés. ` +
+              `Un HLM pour ${ratio} demandeurs actifs.`
+            }
+          >
+            <b>{fmtInt(demandes)} ménages</b> attendent un HLM à Paris. En {d.year},
+            la Ville en a attribué <b>{fmtInt(attribs)}</b> et financé{" "}
+            <b>{fmtInt(d.nouveauxParAn)} nouveaux logements</b> dans{" "}
+            <b>{arrsCouverts} arrondissements sur 20</b> — soit{" "}
+            <b>un HLM pour {ratio} demandeurs actifs</b>.
+          </PageHook>
+        );
+      })()}
 
       {/* §01 — Vue d'ensemble SRU */}
       <section className="fx-section" id="sec-sru">
@@ -400,6 +380,11 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
           <p className="fx-note">
             <b>{t("fx.s.limite")}</b> : {t("fx.log.s04.note")}
           </p>
+          <ChartSource
+            source={<>Ville de Paris · Logements sociaux financés (annexes CA)</>}
+            dataHref="https://opendata.paris.fr/explore/dataset/logements-sociaux-finances-a-paris/"
+            methodAnchor="logement-social"
+          />
         </div>
       </section>
 
@@ -419,13 +404,11 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
             subtitle={t("fx.log.tension.lede")}
           />
           {(() => {
-            const s1 = d.tension.demandesActives;
-            const s2 = d.tension.passeesCommission;
-            const s3 = d.tension.attributions;
+            const s1 = d.tension.paris.demandesActives;
+            const s3 = d.tension.paris.attributions;
             const pct = (n: number) => (n / s1) * 100;
             const steps = [
               { idx: 1, v: s1, lbl: t("fx.log.tension.funnel.s1.lbl"), pct: pct(s1) },
-              { idx: 2, v: s2, lbl: t("fx.log.tension.funnel.s2.lbl"), pct: pct(s2) },
               { idx: 3, v: s3, lbl: t("fx.log.tension.funnel.s3.lbl"), pct: pct(s3) },
             ];
             return (
@@ -451,7 +434,7 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
                   ))}
                 </div>
                 <p className="fx-funnel-foot">
-                  {fill(t("fx.log.tension.funnel.foot"), { ratio: d.tension.ratio })}
+                  {fill(t("fx.log.tension.funnel.foot"), { ratio: fmtDec(d.tension.paris.ratio, 1) })}
                 </p>
               </div>
             );
@@ -459,55 +442,36 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
         </div>
       </section>
 
-      {/* §06 — Simulateur */}
-      <section className="fx-section" id="sec-simulateur">
+      {/* §06 — Tension par arrondissement (source DRIHL) */}
+      <section className="fx-section" id="sec-tension-arr">
         <div className="fx-wrap">
           <SectionHead
             number="06"
-            kind={t("fx.log.sim.kind")}
+            kind="Dashboard"
             title={
               <>
-                {t("fx.log.sim.title.before")}
-                <em>{t("fx.log.sim.title.em")}</em>
-                {t("fx.log.sim.title.after")}
+                La file d'attente, <em>arrondissement par arrondissement</em>.
               </>
             }
-            subtitle={t("fx.log.sim.sub")}
+            subtitle={`Combien de demandes actives pour 1 attribution en ${d.tension.year}, dans chaque arrondissement de Paris. Source directe : DRIHL.`}
           />
-          <InteractiveWrap>
-            <WaitSimulator />
-          </InteractiveWrap>
-        </div>
-      </section>
-
-      {/* §07 — Sources & exports */}
-      <section className="fx-footer-sources" id="sec-sources">
-        <div className="fx-wrap">
-          <div className="fx-footer-sources-head">
-            <span className="fx-footer-sources-label">{t("fx.s.sources_exports")}</span>
-            <a href="/methode#logement-social" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</a>
-          </div>
-          <p className="fx-footer-sources-meta">
-            <b>Source</b> : Inventaire SRU (DDT Paris) + logements sociaux financés (opendata.paris.fr) <span className="sep">·</span> <b>Couverture</b> : 2001-2024 (financés) · SRU mis à jour annuellement au 1ᵉʳ janvier.
-          </p>
-          <ExportRow
-            items={[
-              {
-                label: fill(t("fx.log.src.export.csv"), { year: d.year }),
-                primary: true,
-                href: `/data/map/arrondissements_stats_${d.year}.json`,
-              },
-              { label: t("fx.log.src.export.geo"), href: "/data/map/arrondissements.geojson" },
-              { label: t("fx.log.src.export.method"), href: "/methode?tool=logement-social#outils" },
-            ]}
+          <TensionParArrondissement
+            year={d.tension.year}
+            source={d.tension.source}
+            sourceUrl={d.tension.sourceUrl}
+            paris={d.tension.paris}
+            parArrondissement={d.tension.parArrondissement}
+            methodology={d.tension.methodology}
           />
         </div>
       </section>
 
-      {/* §08 — Explorer plus loin */}
+      <RelatedArticles number="07" posts={posts} placeholders={LOG_PLACEHOLDERS} />
+
+      {/* §08 — Sources & exports */}
       <section className="fx-section" id="sec-explorer">
         <div className="fx-wrap">
-          <SectionHead number="08" kind={t("fx.log.s06.kind")} title={t("fx.log.s06.title")} />
+          <SectionHead number="08" kind={t("fx.log.s06.kind")} />
           <div className="fx-grid-tiles">
             <TileCard
               href="/investissements"
@@ -578,6 +542,30 @@ export default function LogementSocialClient({ d }: { d: LogementSocialData }) {
               kpiDelta={t("fx.log.s06.t3.delta")}
             />
           </div>
+        </div>
+      </section>
+
+      {/* §08 — Explorer plus loin */}
+      <section className="fx-footer-sources" id="sec-sources">
+        <div className="fx-wrap">
+          <div className="fx-footer-sources-head">
+            <span className="fx-footer-sources-label">{t("fx.s.sources_exports")}</span>
+            <a href="/methode#logement-social" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</a>
+          </div>
+          <p className="fx-footer-sources-meta">
+            <b>Source</b> : Inventaire SRU (DDT Paris) + logements sociaux financés (opendata.paris.fr) <span className="sep">·</span> <b>Couverture</b> : 2001-2024 (financés) · SRU mis à jour annuellement au 1ᵉʳ janvier.
+          </p>
+          <ExportRow
+            items={[
+              {
+                label: fill(t("fx.log.src.export.csv"), { year: d.year }),
+                primary: true,
+                href: `/data/map/arrondissements_stats_${d.year}.json`,
+              },
+              { label: t("fx.log.src.export.geo"), href: "/data/map/arrondissements.geojson" },
+              { label: t("fx.log.src.export.method"), href: "/methode?tool=logement-social#outils" },
+            ]}
+          />
         </div>
       </section>
 

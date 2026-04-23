@@ -82,6 +82,51 @@ def list_annual_resources() -> dict[int, dict]:
     return out
 
 
+def get_global_resource() -> dict | None:
+    """Discover the decp-global.json resource on data.gouv (all years in one file)."""
+    r = requests.get(DATAGOUV_API, timeout=30)
+    r.raise_for_status()
+    for res in r.json().get("resources", []):
+        if res.get("title") == "decp-global.json":
+            return res
+    return None
+
+
+def download_global(resource: dict) -> Path:
+    """Download decp-global.json (cumulative ~844MB). Cached."""
+    path = CACHE / "decp_global_raw.json"
+    if path.exists() and path.stat().st_size > 500_000_000:
+        print(f"  ↺ cache hit: {path.name} ({path.stat().st_size / 1e6:.0f} MB)")
+        return path
+    size_mb = (resource.get("filesize") or 0) / 1e6
+    print(f"  ↓ downloading decp-global.json ({size_mb:.0f} MB)...")
+    with requests.get(resource["url"], stream=True, timeout=1800) as r:
+        r.raise_for_status()
+        with open(path, "wb") as f:
+            for chunk in r.iter_content(chunk_size=1024 * 1024):
+                f.write(chunk)
+    print(f"    saved {path.stat().st_size / 1e6:.0f} MB")
+    return path
+
+
+def filter_paris_global(raw_path: Path) -> list[dict]:
+    """Filter Paris from decp-global.json. Cached to decp_global_paris.json."""
+    out_path = CACHE / "decp_global_paris.json"
+    if out_path.exists() and out_path.stat().st_size > 0:
+        return json.loads(out_path.read_text())
+    print(f"  parsing {raw_path.name}...")
+    d = json.loads(raw_path.read_text())
+    marches = d.get("marches", {})
+    if isinstance(marches, dict):
+        items = marches.get("marche", [])
+    else:
+        items = marches
+    paris = [m for m in items if _acheteur_id(m).startswith(PARIS_SIRET_PREFIX)]
+    out_path.write_text(json.dumps(paris, ensure_ascii=False))
+    print(f"    {len(items):,} marchés total → {len(paris):,} Paris")
+    return paris
+
+
 def download_annual(year: int, resource: dict) -> Path:
     path = CACHE / f"decp_{year}_raw.json"
     if path.exists() and path.stat().st_size > 1_000_000:
@@ -99,6 +144,18 @@ def download_annual(year: int, resource: dict) -> Path:
     return path
 
 
+def _acheteur_id(m: dict) -> str:
+    """Extract acheteur SIRET, tolerating both DECP v3 format
+    (`acheteur: {id: ...}`) and older flat format (`acheteur.id: "..."`)."""
+    ach = m.get("acheteur")
+    if isinstance(ach, dict):
+        return str(ach.get("id") or "")
+    if isinstance(ach, str):
+        return ach
+    # Flat-key fallback (2019 format)
+    return str(m.get("acheteur.id") or m.get("acheteurId") or "")
+
+
 def filter_paris(raw_path: Path, year: int) -> list[dict]:
     """Load annual file, filter Paris buyer. Cached per-year."""
     out_path = CACHE / f"decp_{year}_paris.json"
@@ -111,10 +168,7 @@ def filter_paris(raw_path: Path, year: int) -> list[dict]:
         items = marches.get("marche", [])
     else:
         items = marches
-    paris = [
-        m for m in items
-        if str(m.get("acheteur", {}).get("id", "")).startswith(PARIS_SIRET_PREFIX)
-    ]
+    paris = [m for m in items if _acheteur_id(m).startswith(PARIS_SIRET_PREFIX)]
     out_path.write_text(json.dumps(paris, ensure_ascii=False))
     print(f"    {len(items):,} marchés total → {len(paris):,} Paris")
     return paris
@@ -149,8 +203,20 @@ def flatten_record(m: dict, source_year: int) -> dict:
     - `considerations*` (dict with list) → pipe-joined string; `has_*` bool flag.
     - `modifications` (list of avenants) → count + total modified montant.
     """
-    acheteur = m.get("acheteur") or {}
+    # Acheteur: handle v3 nested ({id: ...}) vs legacy flat (acheteur.id)
+    acheteur = m.get("acheteur")
+    if not isinstance(acheteur, dict):
+        acheteur = {
+            "id": acheteur if isinstance(acheteur, str) else m.get("acheteur.id"),
+            "nom": m.get("acheteur.nom") or m.get("nomAcheteur"),
+        }
     lieu = m.get("lieuExecution") or {}
+    # Legacy flat `lieuExecution.code` / `lieuExecution.typeCode` — retry.
+    if not lieu or (isinstance(lieu, dict) and not lieu.get("code")):
+        legacy_code = m.get("lieuExecution.code")
+        legacy_type = m.get("lieuExecution.typeCode")
+        if legacy_code:
+            lieu = {"code": legacy_code, "typeCode": legacy_type, "nom": m.get("lieuExecution.nom")}
     considerations_soc = m.get("considerationsSociales") or {}
     considerations_env = m.get("considerationsEnvironnementales") or {}
     modalites = m.get("modalitesExecution") or {}
@@ -158,11 +224,14 @@ def flatten_record(m: dict, source_year: int) -> dict:
     types_prix = m.get("typesPrix") or {}
 
     titulaires_raw = m.get("titulaires") or []
-    # In the JSON format each element is {"titulaire": {...}} OR {...} directly.
+    # Tolerate three formats: {"titulaire": {...}} (v3), flat dict (2019),
+    # list of strings (unlikely but seen).
     t_items = []
     for t in titulaires_raw:
         if isinstance(t, dict):
             t_items.append(t.get("titulaire") or t)
+        elif isinstance(t, str):
+            t_items.append({"id": t})
     t_sirets = [str(t.get("id")) for t in t_items if t.get("id")]
     t_nom_first = next((str(t.get("denominationSociale") or "") for t in t_items if t.get("denominationSociale")), None)
 
@@ -236,28 +305,49 @@ def flatten_record(m: dict, source_year: int) -> dict:
     }
 
 
-def run(years: list[int] | None, dry_run: bool = False) -> None:
+def run(years: list[int] | None, dry_run: bool = False, use_global: bool = False) -> None:
     print(f"{'='*60}")
     print(f"  DECP PARIS — ingestion depuis data.gouv")
     print(f"{'='*60}")
-    resources = list_annual_resources()
-    available = sorted(resources.keys())
-    print(f"\n  Années disponibles sur data.gouv: {available}")
 
-    target_years = years or available
-    missing = [y for y in target_years if y not in resources]
-    if missing:
-        print(f"  ⚠️ manquantes: {missing} — ignorées")
-    target_years = [y for y in target_years if y in resources]
-
+    target_years: list[int] = []
     all_flat: list[dict] = []
-    for y in target_years:
-        print(f"\n─── {y} ───")
-        raw = download_annual(y, resources[y])
-        paris = filter_paris(raw, y)
-        flat = [flatten_record(m, y) for m in paris]
-        all_flat.extend(flat)
-        print(f"  {len(flat):,} lignes flattened")
+    if use_global:
+        # Mode GLOBAL : un seul fichier decp-global.json (~844 MB) contenant
+        # tout l'historique (dernier état connu de chaque marché).
+        print("\n  Mode GLOBAL — un seul fichier cumulatif")
+        resource = get_global_resource()
+        if not resource:
+            print("  ⚠️ decp-global.json introuvable sur data.gouv")
+            return
+        raw = download_global(resource)
+        paris = filter_paris_global(raw)
+        for m in paris:
+            date_notif = m.get("dateNotification") or ""
+            try:
+                year = int(date_notif[:4]) if date_notif else 0
+            except ValueError:
+                year = 0
+            all_flat.append(flatten_record(m, year))
+        print(f"  {len(all_flat):,} lignes Paris flattened (toutes années)")
+    else:
+        resources = list_annual_resources()
+        available = sorted(resources.keys())
+        print(f"\n  Années disponibles sur data.gouv: {available}")
+
+        target_years = years or available
+        missing = [y for y in target_years if y not in resources]
+        if missing:
+            print(f"  ⚠️ manquantes: {missing} — ignorées")
+        target_years = [y for y in target_years if y in resources]
+
+        for y in target_years:
+            print(f"\n─── {y} ───")
+            raw = download_annual(y, resources[y])
+            paris = filter_paris(raw, y)
+            flat = [flatten_record(m, y) for m in paris]
+            all_flat.extend(flat)
+            print(f"  {len(flat):,} lignes flattened")
 
     if not all_flat:
         print("\n  Aucune ligne à charger.")
@@ -277,6 +367,9 @@ def run(years: list[int] | None, dry_run: bool = False) -> None:
         print(f"  → dump local: {out.relative_to(ROOT)}")
         return
 
+    # Guarantee that filtered results replace existing BQ rows
+    # (WRITE_TRUNCATE in upload_to_bigquery default).
+
     print("\n  Upload BQ...")
     rows = upload_to_bigquery(
         df, TABLE_NAME, project_id=PROJECT_ID, dataset_id=DATASET_ID,
@@ -287,9 +380,11 @@ def run(years: list[int] | None, dry_run: bool = False) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--year", type=int, action="append", help="Year(s) to sync. Default: all.")
+    ap.add_argument("--global", dest="use_global", action="store_true",
+                    help="Use decp-global.json (single 844MB file, all years)")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
-    run(years=args.year, dry_run=args.dry_run)
+    run(years=args.year, dry_run=args.dry_run, use_global=args.use_global)
 
 
 if __name__ == "__main__":

@@ -28,6 +28,21 @@ type Props = {
   year: number;
 };
 
+// Curated to span themes & scales: voirie (Eiffage, Eurovia), bâtiment
+// (Bouygues), énergie (TotalEnergies), mobilier urbain (JCDecaux), espaces
+// verts (Idverde), eau (Veolia), conseil (BearingPoint). Verified against
+// 2024 DECP data — each returns >=1 hit via fournisseur or objet.
+const SEEDS = [
+  "Eiffage",
+  "Eurovia",
+  "Bouygues",
+  "TotalEnergies",
+  "JCDecaux",
+  "Idverde",
+  "Veolia",
+  "BearingPoint",
+];
+
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
   for (const [k, v] of Object.entries(vars)) r = r.replace(`{${k}}`, String(v));
@@ -77,7 +92,8 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
   const isFilterActive = Boolean(category) || Boolean(nature) || !hideMulti;
   const hasActiveSelection = isQueryActive || isFilterActive;
 
-  const displayed = filtered.slice(0, 24);
+  const displayCap = hasActiveSelection ? 24 : 3;
+  const displayed = filtered.slice(0, displayCap);
 
   const reset = () => {
     setQuery("");
@@ -91,7 +107,7 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
     if (category && nature) return <>{t("fx.mp.search.ctx.cat")} <b>{category}</b> · {t("fx.mp.search.ctx.nat")} <b>{nature}</b></>;
     if (category) return <>{t("fx.mp.search.ctx.cat")} <b>{category}</b></>;
     if (nature) return <>{t("fx.mp.search.ctx.nat")} <b>{nature}</b></>;
-    return <>{fill(t("fx.mp.search.ctx.top"), { year })}</>;
+    return <>{fill(t("fx.mp.search.ctx.top"), { n: displayCap, year })}</>;
   })();
 
   return (
@@ -181,6 +197,26 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
             </button>
           )}
         </div>
+        {!hasActiveSelection && (
+          <div className="fx-search-filters">
+            <span className="fx-search-filter-label">{t("fx.mp.search.seeds_label")}</span>
+            <div className="fx-search-seeds">
+              {SEEDS.map((s) => (
+                <button
+                  key={s}
+                  type="button"
+                  className="fx-search-seed"
+                  onClick={() => {
+                    track("search_seed_click", { page: "marches-publics", seed: s });
+                    setQuery(s);
+                  }}
+                >
+                  « {s} »
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="fx-search-meta">

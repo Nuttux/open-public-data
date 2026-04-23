@@ -6,6 +6,12 @@ import { fmtDec } from "@/lib/fmt";
 import { useT } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
 import { useDebouncedTrack } from "@/lib/analytics-helpers";
+import {
+  LEVERAGE_RECETTES_MAX,
+  BORROW_RATIO_MAX,
+  CAPACITE_DESENDETTEMENT_ALERTE_ANS,
+  CAPACITE_DESENDETTEMENT_CRITIQUE_ANS,
+} from "@/lib/methodology";
 
 type Props = {
   /** Dette financière actuelle en €. */
@@ -118,31 +124,13 @@ function computeCapacite(i: ComputeInput) {
   return { capacite, pos, status, detteNew, epargneNew, isCollapsed };
 }
 
-// Seuil d'alerte réglementaire (préfet / CRC).
-const THRESHOLD_YEARS = 12;
-// Seuil au-delà duquel on considère que la tutelle préfectorale est quasi
-// inévitable (pratique observée : les CRC placent en procédure d'alerte
-// grave au-dessus de 20 ans).
-const CRITICAL_YEARS = 20;
+// Seuils & paramètres du modèle — source unique de vérité :
+// pipeline/seeds/seed_legal_thresholds.csv (avec source + source_url)
+const THRESHOLD_YEARS = CAPACITE_DESENDETTEMENT_ALERTE_ANS;
+const CRITICAL_YEARS = CAPACITE_DESENDETTEMENT_CRITIQUE_ANS;
 const SCALE_MAX = 30;
-
-// ─── Paramètres du modèle (observés Paris 2019-2024) ────────────────────
-//
-// LEVERAGE_RECETTES : une baisse de 1 % des recettes de fonctionnement
-// n'entraîne pas 1 % de baisse d'épargne brute, mais beaucoup plus. Pour
-// Paris les recettes valent ~8 Md € mais l'épargne brute n'est que ~1,1 Md €
-// — donc une variation absolue de recettes se projette directement sur
-// l'épargne après absorption par les dépenses rigides (personnel, aide
-// sociale). L'élasticité observée des dépenses aux recettes est ~0,35 :
-// 65 % d'un choc de recettes passe à l'épargne, démultipliée par le ratio
-// recettes/épargne (~7,5). Soit un levier global d'environ 5.
-// Observation 2020 : recettes −5 %, épargne −33 % (levier ≈ 6,5).
-const LEVERAGE_RECETTES = 5.0;
-
-// BORROW_RATIO : part de l'investissement supplémentaire financée par
-// emprunt (le reste venant de l'autofinancement et des subventions).
-// Paris finance historiquement ~50 % de ses invest par nouvelle dette.
-const BORROW_RATIO = 0.5;
+const LEVERAGE_RECETTES = LEVERAGE_RECETTES_MAX;
+const BORROW_RATIO = BORROW_RATIO_MAX;
 
 export default function StressTest({ dette, capaciteBaseline, tauxBaseline, year, urlSync }: Props) {
   const t = useT();

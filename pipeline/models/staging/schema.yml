@@ -273,18 +273,20 @@ models:
   # ===========================================================================
   - name: stg_marches_publics
     description: |
-      Marchés publics de la collectivité parisienne.
+      Marchés publics de la collectivité parisienne (source opendata.paris.fr).
 
       ⚠️ ATTENTION: montant_min/max sont des ENVELOPPES PLURIANNUELLES.
       NE PAS SOMMER comme dépense annuelle !
-      Usage: contexte uniquement.
+      Usage: contexte uniquement. Fusion avec DECP dans core_marches_publics.
 
       Années: 2013-2024
     columns:
       - name: annee
         description: "Année de notification"
+        tests:
+          - not_null
       - name: numero_marche
-        description: "Numéro du marché"
+        description: "Numéro du marché (14 chars format Paris: AAAAAAAALNNNNN)"
       - name: objet
         description: "Objet du marché"
       - name: nature
@@ -302,6 +304,45 @@ models:
         tests:
           - unique
           - not_null
+
+  # ===========================================================================
+  # DECP MARCHÉS PARIS - Enrichissement national
+  # ===========================================================================
+  - name: stg_decp_marches_paris
+    description: |
+      DECP (Données Essentielles de la Commande Publique) filtrée Ville de Paris.
+      Source: data.gouv.fr fichiers annuels consolidés.
+
+      Apporte les colonnes qui manquent côté opendata.paris.fr:
+      ccag, code_cpv, lieu_execution, offres_recues, considerations RSE,
+      montant notifié à la signature.
+
+      Clé de jointure avec stg_marches_publics:
+        SUBSTR(liste_des_marches.num_marche, 5) = stg_decp.decp_id
+
+      Dédup: par `id` (ROW_NUMBER sur source_year DESC) pour gérer les
+      republications. Le dédup multi-titulaires (N lignes = 1 accord-cadre)
+      est fait dans core_marches_publics.
+    columns:
+      - name: decp_id
+        description: "Identifiant DECP (10 char, ex: '2024T05699')"
+        tests:
+          - not_null
+          - unique
+      - name: annee_notification
+        description: "Année d'extraction depuis date_notification"
+      - name: objet
+        description: "Objet du marché"
+      - name: ccag
+        description: "Type CCAG: Travaux | Fournitures | PI | MOE | TIC"
+      - name: code_cpv
+        description: "Code CPV européen (8 chiffres)"
+      - name: montant_notifie
+        description: "Montant déclaré à la signature (≠ plafond)"
+      - name: lieu_execution_code
+        description: "Code lieu exec (département ou code postal)"
+      - name: titulaire_siret
+        description: "SIRET du premier titulaire"
 
   # ===========================================================================
   # BILAN COMPTABLE - État patrimonial

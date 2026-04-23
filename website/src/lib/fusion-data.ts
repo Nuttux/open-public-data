@@ -1,8 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 
-/** INSEE — population Paris, stable enough to inline. */
-export const PARIS_POPULATION = 2_133_111;
+export { PARIS_POPULATION } from "@/lib/methodology";
+import { PARIS_POPULATION } from "@/lib/methodology";
 
 type BudgetIndex = {
   availableYears: number[];
@@ -285,7 +285,10 @@ export function loadLandingStats(): LandingStats {
     const emprunts = budget.links
       .filter((l) => l.source === "Emprunts" && l.target === "Budget Paris")
       .reduce((s, l) => s + l.value, 0);
-    const recettesFonct = budget.totals.recettes - emprunts;
+    const recettesInvest = budget.links
+      .filter((l) => l.source === "Investissement" && l.target === "Budget Paris")
+      .reduce((s, l) => s + l.value, 0);
+    const recettesFonct = budget.totals.recettes - emprunts - recettesInvest;
     const epargneBrute = Math.max(0, recettesFonct - fonctionnement);
     capaciteDesendettement = epargneBrute > 0
       ? bilan.totals.dettes_financieres / epargneBrute
@@ -649,6 +652,22 @@ export type ProjetVulgarization = {
   model?: string;
 };
 
+export type ProjetMarche = {
+  numero_marche: string;
+  fournisseur_nom: string | null;
+  fournisseur_siret: string | null;
+  objet: string;
+  annee: number | null;
+  montant_max: number;
+  montant_notifie: number | null;
+  date_notification: string | null;
+  ccag: string | null;
+  cpv_famille: string | null;
+  lieu_execution: string | null;
+  score: number;
+  label: "confirmed" | "probable";
+};
+
 export type ProjetFiche = {
   id: string;
   name: string;
@@ -679,7 +698,19 @@ export type ProjetFiche = {
     arrondissement: number;
     typologie: string | null;
   }[];
+  /** Matchs projet ↔ marchés publics (rapprochement heuristique). */
+  marches: ProjetMarche[];
 };
+
+let _projetMarches: Record<string, ProjetMarche[]> | null = null;
+
+export function loadProjetMarches(id: string): ProjetMarche[] {
+  if (_projetMarches === null) {
+    const raw = readJsonOrNull<{ projets?: Record<string, ProjetMarche[]> }>("map/projet_marches.json");
+    _projetMarches = raw?.projets ?? {};
+  }
+  return _projetMarches[id] ?? [];
+}
 
 let _projetsVulg: Record<string, ProjetVulgarization> | null = null;
 
@@ -823,6 +854,7 @@ export function loadProjet(id: string): ProjetFiche | null {
       arrRank,
       similaires,
       photo: resolveProjetPhoto(r.id, r.nom_projet),
+      marches: loadProjetMarches(r.id),
     };
   }
   return null;
@@ -1069,6 +1101,7 @@ type MarcheRow = {
   categorie_libelle?: string;
   nature?: string;
   date_notification?: string;
+  decp_offres_recues?: number | null;
 };
 
 type MarchesFile = {
@@ -1103,6 +1136,14 @@ export type MarchesPageData = {
     topTitulaires: { name: string; siret: string; amount: number; nb: number }[];
   }[];
   byNature: { nature: string; amount: number; count: number }[];
+  concurrence: {
+    coverageCount: number;       // contrats avec offresRecues >= 1
+    coverageTotal: number;       // contrats totaux cette année
+    monoCount: number;           // contrats mono-candidat
+    monoPct: number;             // % par count (des couverts)
+    avgOffres: number;           // moyenne des offres reçues (sur les couverts)
+    buckets: { bucket: "1" | "2-3" | "4-5" | "6+"; count: number; amount: number }[];
+  };
   allMarches: {
     numeroMarche: string;
     titulaire: string;
@@ -1409,11 +1450,28 @@ export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
   const catAgg = new Map<string, CatAgg>();
   const natureAgg = new Map<string, { amount: number; count: number }>();
   const multi = { count: 0, amount: 0 };
+  const concurrenceBuckets = {
+    "1": { count: 0, amount: 0 },
+    "2-3": { count: 0, amount: 0 },
+    "4-5": { count: 0, amount: 0 },
+    "6+": { count: 0, amount: 0 },
+  } as Record<"1" | "2-3" | "4-5" | "6+", { count: number; amount: number }>;
+  let concurrenceCovered = 0;
+  let concurrenceSumOffres = 0;
   let total = 0;
   for (const m of marches) {
     const r = m as MarcheRow & { numero_marche?: string; fournisseur_siret?: string; is_multiattributaire?: boolean };
     const v = Number(r.montant_max ?? r.montant_min ?? 0);
     total += v;
+    const offres = Number(r.decp_offres_recues ?? 0);
+    if (Number.isFinite(offres) && offres >= 1) {
+      concurrenceCovered += 1;
+      concurrenceSumOffres += offres;
+      const bucket: "1" | "2-3" | "4-5" | "6+" =
+        offres === 1 ? "1" : offres <= 3 ? "2-3" : offres <= 5 ? "4-5" : "6+";
+      concurrenceBuckets[bucket].count += 1;
+      concurrenceBuckets[bucket].amount += v;
+    }
     const isMulti = r.fournisseur_nom === MULTI_NAME || Boolean(r.is_multiattributaire);
     if (isMulti) {
       multi.count += 1;
@@ -1491,6 +1549,19 @@ export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
     .map(([nature, v]) => ({ nature, amount: v.amount, count: v.count }))
     .sort((a, b) => b.amount - a.amount);
 
+  const concurrence: MarchesPageData["concurrence"] = {
+    coverageCount: concurrenceCovered,
+    coverageTotal: marches.length,
+    monoCount: concurrenceBuckets["1"].count,
+    monoPct: concurrenceCovered > 0 ? (concurrenceBuckets["1"].count / concurrenceCovered) * 100 : 0,
+    avgOffres: concurrenceCovered > 0 ? concurrenceSumOffres / concurrenceCovered : 0,
+    buckets: (["1", "2-3", "4-5", "6+"] as const).map((bucket) => ({
+      bucket,
+      count: concurrenceBuckets[bucket].count,
+      amount: concurrenceBuckets[bucket].amount,
+    })),
+  };
+
   const allMarches = marches
     .map((m) => {
       const r = m as MarcheRow & { numero_marche?: string; fournisseur_siret?: string; is_multiattributaire?: boolean };
@@ -1529,6 +1600,7 @@ export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
     top10,
     byCategory,
     byNature,
+    concurrence,
     allMarches,
     yearsSummary,
   };
@@ -1983,11 +2055,21 @@ export function loadPatrimoineData(requestedYear?: number): PatrimoineData {
     const emprunts = budget.links
       .filter((l) => l.source === "Emprunts" && l.target === "Budget Paris")
       .reduce((s, l) => s + l.value, 0);
-    recettesFonctionnement = budget.totals.recettes - emprunts;
+    // Retrait aussi des recettes d'investissement (FCTVA, cessions, subventions
+    // équipement) qui ne sont pas des RRF. Sans ça on surestimait l'épargne
+    // brute d'environ 150 M€/an.
+    const recettesInvest = budget.links
+      .filter((l) => l.source === "Investissement" && l.target === "Budget Paris")
+      .reduce((s, l) => s + l.value, 0);
+    recettesFonctionnement = budget.totals.recettes - emprunts - recettesInvest;
     epargneBrute = Math.max(0, recettesFonctionnement - fonctionnement);
   } catch {}
 
-  // Capacité de désendettement = dette financière / épargne brute annuelle
+  // Capacité de désendettement (méthode Ville, épargne brute non retraitée).
+  // ⚠️ La CRC Île-de-France publie un chiffre nettement plus élevé après
+  // retraitement des recettes non récurrentes (loyers capitalisés, cessions).
+  // Voir `parisCrcDebtYearsFor()` dans lib/methodology.ts et la section
+  // éditoriale "Deux lectures coexistent" sur la page dette-patrimoine.
   const capaciteDesendettement = epargneBrute > 0
     ? bilan.totals.dettes_financieres / epargneBrute
     : bilan.totals.dettes_financieres / 900_000_000;
@@ -2332,13 +2414,32 @@ export type LogementSocialData = {
   byArrondissement: { arr: number; logements: number; operations: number }[];
   bailleurs: { name: string; type: string; color: string; share: number; description: string }[];
   yearsSummary: { year: number; logements: number }[];
+  /** Tension SLS Paris — issue directement de la data DRIHL (seed +
+   *  core_logement_attente_arr → logement_attente_paris.json). Zéro hardcode.
+   *  Le délai médian est un délai d'ATTRIBUTION (biais survivant). */
   tension: {
-    demandesActives: number;
-    passeesCommission: number;
-    attributions: number;
-    ratio: number;
-    delaiMedian: number;
-    nonPourvus: number;
+    year: number;
+    source: string;
+    sourceUrl: string;
+    paris: {
+      demandesActives: number;
+      attributions: number;
+      ratio: number;
+      delaiMedianMois: number | null;
+    };
+    parArrondissement: Array<{
+      arr: number;
+      demandesActives: number;
+      attributions: number;
+      ratio: number;
+      delaiMedianMois: number | null;
+      rangTension: number;
+    }>;
+    methodology: {
+      ratioDefinition: string;
+      delaiMedianCaveat: string;
+      partAnciennete5ansDefinition: string;
+    };
   };
 };
 
@@ -2395,15 +2496,56 @@ export function loadLogementSocialData(requestedYear?: number): LogementSocialDa
   // Stock SRU inventaire 2024 : 258 400 logements sociaux sur 1 055 000 résidences principales
   const stockTotal = 258_400;
 
-  // Tension locative — DRIHL Île-de-France, Ville de Paris (référence 2024).
-  // Centralisé ici pour éviter de figer les valeurs dans les strings de traduction.
+  // Tension SLS — chargée depuis logement_attente_paris.json (pipeline dbt →
+  // seed DRIHL XLSX annuel). Zéro hardcode, tout sourcé.
+  type LogementAttenteFile = {
+    year: number;
+    source: string;
+    source_url: string;
+    paris_total: {
+      demandes_choix1: number;
+      attributions: number;
+      ratio_dem_attrib: number;
+      delai_median_attribution_mois: number | null;
+    };
+    arrondissements: Array<{
+      arrondissement: number;
+      demandes_choix1: number;
+      attributions: number;
+      ratio_dem_attrib: number;
+      delai_median_attribution_mois: number | null;
+      rang_tension: number;
+    }>;
+    methodology: {
+      ratio_definition: string;
+      delai_median_caveat: string;
+      part_anciennete_definition: string;
+    };
+  };
+  const att = readJson<LogementAttenteFile>("logement_attente_paris.json");
   const tension = {
-    demandesActives: 228_400,
-    passeesCommission: 45_600,
-    attributions: 12_100,
-    ratio: 19,
-    delaiMedian: 4.2,
-    nonPourvus: 3_900,
+    year: att.year,
+    source: att.source,
+    sourceUrl: att.source_url,
+    paris: {
+      demandesActives: att.paris_total.demandes_choix1,
+      attributions: att.paris_total.attributions,
+      ratio: att.paris_total.ratio_dem_attrib,
+      delaiMedianMois: att.paris_total.delai_median_attribution_mois,
+    },
+    parArrondissement: att.arrondissements.map((a) => ({
+      arr: a.arrondissement,
+      demandesActives: a.demandes_choix1,
+      attributions: a.attributions,
+      ratio: a.ratio_dem_attrib,
+      delaiMedianMois: a.delai_median_attribution_mois,
+      rangTension: a.rang_tension,
+    })),
+    methodology: {
+      ratioDefinition: att.methodology.ratio_definition,
+      delaiMedianCaveat: att.methodology.delai_median_caveat,
+      partAnciennete5ansDefinition: att.methodology.part_anciennete_definition,
+    },
   };
 
   return {
@@ -2640,11 +2782,15 @@ export function loadBudgetPageData(requestedYear?: number): BudgetPageData {
     investissement += cat.Investissement?.total ?? 0;
   }
   // épargne brute ≈ recettes de fonctionnement - dépenses de fonctionnement
-  // approximation : total recettes hors emprunts - fonctionnement
+  // approximation : total recettes hors emprunts + recettes d'investissement
+  // (FCTVA, cessions, subventions équipement) - fonctionnement.
   const emprunts = sankey.links
     .filter((l) => l.source === "Emprunts" && l.target === "Budget Paris")
     .reduce((s, l) => s + l.value, 0);
-  const epargneBrute = Math.max(0, sankey.totals.recettes - emprunts - fonctionnement);
+  const recettesInvest = sankey.links
+    .filter((l) => l.source === "Investissement" && l.target === "Budget Paris")
+    .reduce((s, l) => s + l.value, 0);
+  const epargneBrute = Math.max(0, sankey.totals.recettes - emprunts - recettesInvest - fonctionnement);
 
   // Load previous year's sankey to compute per-category YoY deltas. Silent
   // failure if absent (first year of the series).

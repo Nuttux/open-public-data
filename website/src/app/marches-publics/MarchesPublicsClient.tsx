@@ -16,8 +16,11 @@ import BudgetTimeline from "@/components/fusion/BudgetTimeline";
 import Tip from "@/components/fusion/Tip";
 import StackedBarTheme from "@/components/fusion/StackedBarTheme";
 import MarchesSearch from "./MarchesSearch";
+import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/RelatedArticles";
+import PageHook from "@/components/fusion/PageHook";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
+import type { BlogPostMeta } from "@/lib/blog";
 import type { MarchesPageData } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
@@ -32,12 +35,29 @@ const fill = (s: string, vars: Record<string, string | number>) => {
 
 const cleanName = (n: string) => n.replace(/\s{2,}/g, " ").trim().slice(0, 60);
 
+const MP_PLACEHOLDERS: ArticlePlaceholder[] = [
+  {
+    category: "Enquête",
+    title: "Les avenants BTP : +18 % en moyenne, pourquoi ?",
+    description:
+      "Entre montant notifié et montant final, la dérive est structurelle sur les chantiers urbains. Cinq causes qui reviennent partout.",
+  },
+  {
+    category: "Explication",
+    title: "CPV, MAPA, accord-cadre : lire un marché sans se perdre.",
+    description:
+      "Le vocabulaire de la commande publique en version courte, illustré avec des cas réels de la Ville de Paris.",
+  },
+];
+
 export default function MarchesPublicsClient({
   idx,
   d,
+  posts,
 }: {
   idx: MarchesIndex;
   d: MarchesPageData;
+  posts: BlogPostMeta[];
 }) {
   const t = useT();
   const { locale } = useLocale();
@@ -54,12 +74,13 @@ export default function MarchesPublicsClient({
           { id: "sec-overview", label: t("fx.toc.chiffres") },
           { id: "sec-categorie", label: t("fx.toc.categories") },
           { id: "sec-titulaires", label: t("fx.toc.titulaires") },
+          { id: "sec-recherche", label: t("fx.toc.recherche") },
           { id: "sec-procedure", label: t("fx.toc.procedure") },
           { id: "sec-evolution", label: t("fx.toc.evolution") },
           { id: "sec-signaux", label: t("fx.toc.signaux") },
-          { id: "sec-recherche", label: t("fx.toc.recherche") },
-          { id: "sec-sources", label: t("fx.toc.sources") },
+          { id: "sec-analyses", label: t("fx.toc.analyses") },
           { id: "sec-explorer", label: t("fx.toc.explorer") },
+          { id: "sec-sources", label: t("fx.toc.sources") },
         ]}
       />
 
@@ -93,6 +114,19 @@ export default function MarchesPublicsClient({
           </div>
         </div>
       </section>
+
+      <PageHook
+        cite={<>DECP · Données essentielles de la commande publique · Ville de Paris · {d.year}</>}
+        shareText={
+          `Marchés publics Ville de Paris ${d.year} : ${fmtBillions(d.total)} Md€ d'enveloppes contractuelles via ${fmtInt(d.nb)} contrats passés avec ${fmtInt(d.nbTitulaires)} fournisseurs. ` +
+          `Top 10 = ${fmtDec(top10Pct, 0)}%.`
+        }
+      >
+        En {d.year}, Paris a notifié <b>{fmtBillions(d.total)} Md€</b>{" "}
+        d&apos;enveloppes contractuelles via <b>{fmtInt(d.nb)} contrats</b> passés
+        avec <b>{fmtInt(d.nbTitulaires)} fournisseurs</b> distincts — top 10 à{" "}
+        <b>{fmtDec(top10Pct, 0)} %</b> du total.
+      </PageHook>
 
       <section className="fx-section" id="sec-overview">
         <div className="fx-wrap">
@@ -154,6 +188,26 @@ export default function MarchesPublicsClient({
                 },
               ]}
             />
+          </div>
+          <div
+            style={{
+              marginTop: 24,
+              padding: "14px 18px",
+              border: "1px solid var(--line)",
+              background: "rgba(59, 99, 173, 0.04)",
+              fontFamily: "var(--f-ui)",
+              fontSize: 13,
+              lineHeight: 1.6,
+              color: "var(--ink-2)",
+            }}
+          >
+            <b style={{ color: "var(--ink)" }}>{t("fx.mp.s01.cross.title")}</b> {t("fx.mp.s01.cross.body")}
+            {" "}
+            <Link href="/budget" style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}>{t("fx.mp.s01.cross.link_budget")}</Link>
+            {" · "}
+            <Link href="/investissements" style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}>{t("fx.mp.s01.cross.link_invest")}</Link>
+            {" · "}
+            <Link href="/methode#marches-publics" style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}>{t("fx.mp.s01.cross.link_methode")}</Link>
           </div>
         </div>
       </section>
@@ -397,10 +451,34 @@ export default function MarchesPublicsClient({
         </div>
       </section>
 
-      <section className="fx-section" id="sec-procedure">
+      <section className="fx-section" id="sec-recherche">
         <div className="fx-wrap">
           <SectionHead
             number="04"
+            kind={t("fx.mp.s04.kind")}
+            title={
+              <>
+                {t("fx.mp.s04.title.before")}
+                <em>{t("fx.mp.s04.title.em1")}</em>
+                {t("fx.mp.s04.title.mid")}
+                <em>{t("fx.mp.s04.title.em2")}</em>
+              </>
+            }
+            subtitle={fill(t("fx.mp.s04.sub"), { n: fmtInt(d.nb), year: d.year })}
+          />
+          <MarchesSearch
+            items={d.allMarches}
+            categories={d.byCategory.map((c) => c.category)}
+            natures={d.byNature.map((n) => n.nature)}
+            year={d.year}
+          />
+        </div>
+      </section>
+
+      <section className="fx-section" id="sec-procedure">
+        <div className="fx-wrap">
+          <SectionHead
+            number="05"
             kind={<Tip label={t("fx.mp.s05.kind.tip")}>{t("fx.mp.s05.kind")}</Tip>}
             title={
               <>
@@ -411,106 +489,236 @@ export default function MarchesPublicsClient({
             }
             subtitle={t("fx.mp.s05.sub")}
           />
-          <div style={{ border: "1px solid var(--ink)" }}>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                padding: "14px 22px",
-                borderBottom: "1px solid var(--ink)",
-                background: "var(--bg)",
-                fontFamily: "var(--f-mono)",
-                fontSize: 11.5,
-                letterSpacing: ".02em",
-                color: "var(--ink)",
-              }}
-            >
-              <span>
-                {t("fx.mp.s05.bar_left")} <b>{fmtBillions(d.total)} {t("fx.s.md_eur")}</b>
-              </span>
-              <span>{t("fx.mp.s05.bar_right")}</span>
-            </div>
-            <div style={{ padding: "4px 0" }}>
-              {d.byNature.map((n) => {
-                const refMax = d.byNature[0]?.amount || 1;
-                const pct = (n.amount / d.total) * 100;
-                const avgK = n.count > 0 ? Math.round(n.amount / n.count / 1000) : 0;
-                return (
+          {(() => {
+            const c = d.concurrence;
+            const coveragePct = c.coverageTotal > 0 ? (c.coverageCount / c.coverageTotal) * 100 : 0;
+            // Le champ offresRecues n'est pas historisé avant 2024 dans DECP :
+            // on affiche un état vide honnête si la couverture est trop faible.
+            if (coveragePct < 20 || c.coverageCount < 50) {
+              return (
+                <div
+                  style={{
+                    border: "1px solid var(--ink)",
+                    padding: "28px 22px",
+                    background: "var(--bg)",
+                    fontFamily: "var(--f-ui)",
+                    fontSize: 14,
+                    color: "var(--muted)",
+                    lineHeight: 1.55,
+                  }}
+                >
                   <div
-                    key={n.nature}
                     style={{
-                      display: "grid",
-                      gridTemplateColumns: "minmax(220px, 1fr) minmax(180px, 2fr) 100px",
-                      gap: 20,
-                      padding: "14px 22px",
-                      borderBottom: "1px solid var(--rule)",
-                      alignItems: "center",
+                      fontFamily: "var(--f-mono)",
+                      fontSize: 11,
+                      letterSpacing: ".08em",
+                      textTransform: "uppercase",
+                      color: "var(--ink)",
+                      marginBottom: 10,
                     }}
                   >
-                    <div>
-                      <div style={{ fontFamily: "var(--f-ui)", fontSize: 15, fontWeight: 500 }}>
-                        {trL(n.nature)}
-                      </div>
-                      <div
-                        style={{
-                          fontFamily: "var(--f-mono)",
-                          fontSize: 11,
-                          color: "var(--muted)",
-                          marginTop: 2,
-                        }}
-                      >
-                        {fill(t("fx.mp.s05.avg"), { n: fmtInt(n.count), avgk: fmtInt(avgK) })}
-                      </div>
-                    </div>
-                    <div style={{ position: "relative", height: 12 }}>
-                      <span
-                        style={{
-                          position: "absolute",
-                          left: 0,
-                          top: 0,
-                          height: "100%",
-                          width: `${(n.amount / refMax) * 100}%`,
-                          background: "var(--ink)",
-                        }}
-                      />
+                    {t("fx.mp.s05.empty.kicker")}
+                  </div>
+                  <p style={{ margin: 0 }}>
+                    {fill(t("fx.mp.s05.empty.body"), {
+                      year: d.year,
+                      n: fmtInt(c.coverageCount),
+                      total: fmtInt(c.coverageTotal),
+                    })}
+                  </p>
+                </div>
+              );
+            }
+            const refMax = Math.max(...c.buckets.map((b) => b.count), 1);
+            return (
+              <>
+                <div
+                  style={{
+                    border: "1px solid var(--ink)",
+                    padding: "22px 22px 18px",
+                    marginBottom: 0,
+                    background: "var(--bg)",
+                    display: "grid",
+                    gridTemplateColumns: "minmax(220px, 1fr) minmax(0, 1fr)",
+                    gap: 28,
+                    alignItems: "baseline",
+                    borderBottom: "none",
+                  }}
+                >
+                  <div>
+                    <div
+                      style={{
+                        fontFamily: "var(--f-mono)",
+                        fontSize: 11,
+                        letterSpacing: ".08em",
+                        textTransform: "uppercase",
+                        color: "var(--muted)",
+                        marginBottom: 8,
+                      }}
+                    >
+                      <Tip label={t("fx.mp.s05.mono.tip")}>{t("fx.mp.s05.mono.label")}</Tip>
                     </div>
                     <div
                       style={{
                         fontFamily: "var(--f-disp)",
+                        fontSize: 56,
                         fontWeight: 700,
-                        fontSize: 18,
-                        letterSpacing: "-0.02em",
-                        textAlign: "right",
+                        letterSpacing: "-0.03em",
+                        lineHeight: 1,
                       }}
                     >
-                      {fmtDec(pct, 0)}
-                      <span
-                        style={{
-                          fontSize: ".6em",
-                          color: "var(--muted)",
-                          fontWeight: 500,
-                          marginLeft: 2,
-                        }}
-                      >
-                        %
-                      </span>
+                      {fmtDec(c.monoPct, 0)}
+                      <span style={{ fontSize: ".45em", fontWeight: 500, marginLeft: 4 }}>%</span>
+                    </div>
+                    <div
+                      style={{
+                        fontFamily: "var(--f-mono)",
+                        fontSize: 11.5,
+                        color: "var(--muted)",
+                        marginTop: 6,
+                      }}
+                    >
+                      {fill(t("fx.mp.s05.mono.sub"), { n: fmtInt(c.monoCount) })}
                     </div>
                   </div>
-                );
-              })}
-            </div>
-          </div>
-          <p className="fx-note">
-            <b>{t("fx.mp.s05.note.b1")}</b> : {t("fx.mp.s05.sub")}{" "}
-            <b>{t("fx.mp.s05.note.b2")}</b>.
-          </p>
+                  <div>
+                    <div
+                      style={{
+                        fontFamily: "var(--f-mono)",
+                        fontSize: 11,
+                        letterSpacing: ".08em",
+                        textTransform: "uppercase",
+                        color: "var(--muted)",
+                        marginBottom: 8,
+                      }}
+                    >
+                      {t("fx.mp.s05.avg.label")}
+                    </div>
+                    <div
+                      style={{
+                        fontFamily: "var(--f-disp)",
+                        fontSize: 56,
+                        fontWeight: 700,
+                        letterSpacing: "-0.03em",
+                        lineHeight: 1,
+                      }}
+                    >
+                      {fmtDec(c.avgOffres, 1)}
+                    </div>
+                    <div
+                      style={{
+                        fontFamily: "var(--f-mono)",
+                        fontSize: 11.5,
+                        color: "var(--muted)",
+                        marginTop: 6,
+                      }}
+                    >
+                      {t("fx.mp.s05.avg.sub")}
+                    </div>
+                  </div>
+                </div>
+                <div style={{ border: "1px solid var(--ink)", borderTop: "none" }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      padding: "14px 22px",
+                      borderBottom: "1px solid var(--ink)",
+                      background: "var(--bg)",
+                      fontFamily: "var(--f-mono)",
+                      fontSize: 11.5,
+                      letterSpacing: ".02em",
+                      color: "var(--ink)",
+                    }}
+                  >
+                    <span>{t("fx.mp.s05.hist.left")}</span>
+                    <span>{t("fx.mp.s05.hist.right")}</span>
+                  </div>
+                  <div style={{ padding: "4px 0" }}>
+                    {c.buckets.map((b) => {
+                      const pct = c.coverageCount > 0 ? (b.count / c.coverageCount) * 100 : 0;
+                      return (
+                        <div
+                          key={b.bucket}
+                          style={{
+                            display: "grid",
+                            gridTemplateColumns: "minmax(220px, 1fr) minmax(180px, 2fr) 100px",
+                            gap: 20,
+                            padding: "14px 22px",
+                            borderBottom: "1px solid var(--rule)",
+                            alignItems: "center",
+                          }}
+                        >
+                          <div>
+                            <div style={{ fontFamily: "var(--f-ui)", fontSize: 15, fontWeight: 500 }}>
+                              {t(`fx.mp.s05.bucket.${b.bucket}`)}
+                            </div>
+                            <div
+                              style={{
+                                fontFamily: "var(--f-mono)",
+                                fontSize: 11,
+                                color: "var(--muted)",
+                                marginTop: 2,
+                              }}
+                            >
+                              {fill(t("fx.mp.s05.bucket.sub"), { n: fmtInt(b.count) })}
+                            </div>
+                          </div>
+                          <div style={{ position: "relative", height: 12 }}>
+                            <span
+                              style={{
+                                position: "absolute",
+                                left: 0,
+                                top: 0,
+                                height: "100%",
+                                width: `${(b.count / refMax) * 100}%`,
+                                background: "var(--ink)",
+                              }}
+                            />
+                          </div>
+                          <div
+                            style={{
+                              fontFamily: "var(--f-disp)",
+                              fontWeight: 700,
+                              fontSize: 18,
+                              letterSpacing: "-0.02em",
+                              textAlign: "right",
+                            }}
+                          >
+                            {fmtDec(pct, 0)}
+                            <span
+                              style={{
+                                fontSize: ".6em",
+                                color: "var(--muted)",
+                                fontWeight: 500,
+                                marginLeft: 2,
+                              }}
+                            >
+                              %
+                            </span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+                <p className="fx-note">
+                  {fill(t("fx.mp.s05.note"), {
+                    n: fmtInt(c.coverageCount),
+                    total: fmtInt(c.coverageTotal),
+                    pct: fmtDec(coveragePct, 0),
+                  })}
+                </p>
+              </>
+            );
+          })()}
         </div>
       </section>
 
       <section className="fx-section" id="sec-evolution">
         <div className="fx-wrap">
           <SectionHead
-            number="05"
+            number="06"
             kind={t("fx.mp.s07.kind")}
             title={
               <>
@@ -534,13 +742,18 @@ export default function MarchesPublicsClient({
           <p className="fx-note">
             <b>{t("fx.s.note")}</b> : {t("fx.mp.s07.note")}
           </p>
+          <ChartSource
+            source={<>DECP — Ville de Paris · cumul annuel des plafonds notifiés</>}
+            dataHref="https://opendata.paris.fr/explore/dataset/marches-publics-conclus-par-la-ville-de-paris/"
+            methodAnchor="marches-publics"
+          />
         </div>
       </section>
 
       <section className="fx-section" id="sec-signaux">
         <div className="fx-wrap">
           <SectionHead
-            number="06"
+            number="07"
             kind={<Tip label={t("fx.mp.s06.kind.tip")}>{t("fx.mp.s06.kind")}</Tip>}
             title={
               <>
@@ -615,60 +828,13 @@ export default function MarchesPublicsClient({
         </div>
       </section>
 
-      <section className="fx-section" id="sec-recherche">
-        <div className="fx-wrap">
-          <SectionHead
-            number="07"
-            kind={t("fx.mp.s04.kind")}
-            title={
-              <>
-                {t("fx.mp.s04.title.before")}
-                <em>{t("fx.mp.s04.title.em1")}</em>
-                {t("fx.mp.s04.title.mid")}
-                <em>{t("fx.mp.s04.title.em2")}</em>
-              </>
-            }
-            subtitle={fill(t("fx.mp.s04.sub"), { n: fmtInt(d.nb), year: d.year })}
-          />
-          <MarchesSearch
-            items={d.allMarches}
-            categories={d.byCategory.map((c) => c.category)}
-            natures={d.byNature.map((n) => n.nature)}
-            year={d.year}
-          />
-        </div>
-      </section>
-
-      <section className="fx-footer-sources" id="sec-sources">
-        <div className="fx-wrap">
-          <div className="fx-footer-sources-head">
-            <span className="fx-footer-sources-label">{t("fx.s.sources_exports")}</span>
-            <a href="/methode#marches-publics" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</a>
-          </div>
-          <p className="fx-footer-sources-meta">
-            <b>Source</b> : DECP — Ville de Paris (opendata.paris.fr) <span className="sep">·</span> <b>Couverture</b> : marchés notifiés depuis 2013. Montants affichés = plafonds contractuels maximaux.
-          </p>
-          <ExportRow
-            items={[
-              {
-                label: fill(t("fx.mp.src.export.csv"), { year: d.year }),
-                primary: true,
-                href: `/data/marches-publics/marches_${d.year}.json`,
-              },
-              { label: t("fx.mp.src.export.json"), href: `/data/marches-publics/marches_${d.year}.json` },
-              { label: t("fx.mp.src.export.index"), href: "/data/marches-publics/index.json" },
-              { label: t("fx.mp.src.export.method"), href: "/methode?tool=marches-publics#outils" },
-            ]}
-          />
-        </div>
-      </section>
+      <RelatedArticles number="08" posts={posts} placeholders={MP_PLACEHOLDERS} />
 
       <section className="fx-section" id="sec-explorer">
         <div className="fx-wrap">
           <SectionHead
             number="09"
             kind={t("fx.mp.s08.kind")}
-            title={t("fx.mp.s08.title")}
             subtitle={t("fx.mp.s08.sub")}
           />
           <div className="fx-grid-tiles">
@@ -742,6 +908,30 @@ export default function MarchesPublicsClient({
               kpiDelta={`Total ${d.year}`}
             />
           </div>
+        </div>
+      </section>
+
+      <section className="fx-footer-sources" id="sec-sources">
+        <div className="fx-wrap">
+          <div className="fx-footer-sources-head">
+            <span className="fx-footer-sources-label">{t("fx.s.sources_exports")}</span>
+            <a href="/methode#marches-publics" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</a>
+          </div>
+          <p className="fx-footer-sources-meta">
+            <b>Source</b> : DECP — Ville de Paris (opendata.paris.fr) <span className="sep">·</span> <b>Couverture</b> : marchés notifiés depuis 2013. Montants affichés = plafonds contractuels maximaux.
+          </p>
+          <ExportRow
+            items={[
+              {
+                label: fill(t("fx.mp.src.export.csv"), { year: d.year }),
+                primary: true,
+                href: `/data/marches-publics/marches_${d.year}.json`,
+              },
+              { label: t("fx.mp.src.export.json"), href: `/data/marches-publics/marches_${d.year}.json` },
+              { label: t("fx.mp.src.export.index"), href: "/data/marches-publics/index.json" },
+              { label: t("fx.mp.src.export.method"), href: "/methode?tool=marches-publics#outils" },
+            ]}
+          />
         </div>
       </section>
 
