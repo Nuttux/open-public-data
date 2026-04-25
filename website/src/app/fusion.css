@@ -3891,9 +3891,13 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 }
 /* Les chiffres bolded dans le hook doivent rester indissociables de leur
  * unité (« 2,12 Md€ », « 5 015 € », « 21 demandeurs ») — sinon en mobile la
- * ligne casse entre le nombre et son suffixe. */
+ * ligne casse entre le nombre et son suffixe.
+ * Le padding-inline compense le side-bearing serré du sans-serif bold qui,
+ * combiné au slant italique du Tiempos sur le texte courant, mange l'espace
+ * visuel entre l'italique et le chiffre (cf. « dépense11,72 », « seul791 »). */
 .theme-fusion .fx-page-hook-quote p b {
   white-space: nowrap;
+  padding-left: 0.14em;
 }
 .theme-fusion .fx-page-hook-actions {
   max-width: 860px;
