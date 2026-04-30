@@ -205,8 +205,6 @@ const EN: Record<string, string> = {
   "Prêts amortissables — Banque des Territoires, Banque Postale": "Amortising loans — Banque des Territoires, La Banque Postale",
   "Capital restant au 31 décembre": "Capital outstanding at 31 December",
   "DRIHL - Socle de données demandes et attributions": "DRIHL — Requests and allocations data set",
-  "Théâtre": "Theatre",
-  "ICF Habitat La Sablière(SAHLM)": "ICF Habitat La Sablière (SAHLM)",
   "Une ligne = un emprunt garanti par la Ville de Paris. Le capital restant dû au 31/12 représente l'engagement hors bilan : Paris rembourse à la place du bénéficiaire uniquement en cas de défaut. Majoritairement des emprunts de bailleurs sociaux auprès de la CDC, donc un risque jugé faible par les agences de notation.": "One line = one loan guaranteed by the City of Paris. The capital outstanding at 31/12 represents off-balance-sheet exposure: Paris repays in place of the beneficiary only in the event of default. Mostly social-housing operator loans from the CDC, so the risk is rated low by credit-rating agencies.",
   "Le capital restant dû au 31/12 représente l'engagement hors bilan : Paris rembourse à la place du bénéficiaire uniquement en cas de défaut. Majoritairement des emprunts de bailleurs sociaux auprès de la CDC, donc un risque jugé faible par les agences de notation.": "The capital outstanding at 31/12 represents off-balance-sheet exposure: Paris repays in place of the beneficiary only in the event of default. Mostly social-housing operator loans from the CDC, so the risk is rated low by credit-rating agencies.",
   "Le capital restant dû au 31/12 représente l'engagement hors bilan :": "The capital outstanding at 31/12 represents off-balance-sheet exposure:",
@@ -216,13 +214,11 @@ const EN: Record<string, string> = {
   "passif ventilé": "liabilities breakdown",
   "Detail Dettes financières diverses": "Detail of other financial debts",
   "Immobilière 3F - I3F (SA HLM)": "Immobilière 3F - I3F (SA HLM)",
-  "ICF Habitat La Sablière(SAHLM)": "ICF Habitat La Sablière (SAHLM)",
 
   // ── Marchés generic chapitres ─────────────────────────────────────────────
   "Bâtiment": "Building",
   "Voirie": "Roads",
   "Propreté": "Cleaning",
-  "Mobilier urbain": "Street furniture",
   "Travaux": "Works",
   "Conseil-études": "Consulting & studies",
   "Conseil & études": "Consulting & studies",

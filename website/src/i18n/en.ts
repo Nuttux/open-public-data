@@ -2995,7 +2995,6 @@ const en: Record<string, string> = {
   'fx.tension.note.in': 'in {year}',
 
   // WaffleTheme
-  'fx.waffle.aria': '100 cells representing 100% of grants by theme',
   'fx.waffle.tip_top10': 'among the 10 largest beneficiaries',
   'fx.waffle.kicker': 'For every €100 of grants paid in {year}',
   'fx.waffle.pareto': 'By themselves, the <b>10 largest beneficiaries</b> capture <b>€{pct}</b> out of 100.',
