@@ -2995,7 +2995,6 @@ const fr: Record<string, string> = {
   'fx.tension.note.in': 'en {year}',
 
   // WaffleTheme
-  'fx.waffle.aria': '100 cases représentant 100 % des subventions par thématique',
   'fx.waffle.tip_top10': 'dans les 10 plus gros bénéficiaires',
   'fx.waffle.kicker': 'Sur chaque 100 € de subventions versées en {year}',
   'fx.waffle.pareto': 'À eux seuls, les <b>10 plus gros bénéficiaires</b> captent <b>{pct} €</b> sur 100.',

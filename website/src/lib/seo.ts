@@ -46,18 +46,21 @@ export function buildPageMetadata({
   const canonical = path;
   const ogImage = image ?? DEFAULT_OG_IMAGE;
 
+  // Server-side metadata defaults to FR canonical because the user's locale
+  // lives in localStorage (client-only). We still emit alternates.languages
+  // so search engines and link-preview crawlers know the site is bilingual,
+  // even though both URLs currently point at the same canonical path.
+  const languages = alternates
+    ? { 'fr-FR': alternates.fr, 'en-US': alternates.en }
+    : { 'fr-FR': canonical, 'en-US': canonical };
+
   return {
     title,
     description,
     keywords,
     alternates: {
       canonical,
-      languages: alternates
-        ? {
-            'fr-FR': alternates.fr,
-            'en-US': alternates.en,
-          }
-        : undefined,
+      languages,
     },
     openGraph: {
       title,
@@ -65,6 +68,7 @@ export function buildPageMetadata({
       url: `${SITE_URL}${canonical}`,
       siteName: SITE_NAME,
       locale: DEFAULT_LOCALE,
+      alternateLocale: ['en_US'],
       type: 'website',
       images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
     },
