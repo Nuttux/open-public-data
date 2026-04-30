@@ -138,20 +138,19 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
         )}
       </div>
 
-      {/* Bloc vulgarisation LLM */}
-      {vulg && (vulg.description_claire || vulg.quoi_concretement) && (
-        <div className="fx-fiche-lead">
-          {vulg.description_claire && (
-            <p className="fx-fiche-lead-main">{vulg.description_claire}</p>
-          )}
-          {vulg.quoi_concretement && (
-            <p className="fx-fiche-lead-sub">{vulg.quoi_concretement}</p>
-          )}
-          {vulg.pourquoi_ca_compte && (
-            <p className="fx-fiche-lead-impact">→ {vulg.pourquoi_ca_compte}</p>
-          )}
-        </div>
-      )}
+      {/* Bloc vulgarisation LLM — EN sibling fields populated when vulgarization_projets_en.json is present */}
+      {vulg && (vulg.description_claire || vulg.quoi_concretement) && (() => {
+        const descClair = locale === "en" && vulg.description_claire_en ? vulg.description_claire_en : vulg.description_claire;
+        const quoi = locale === "en" && vulg.quoi_concretement_en ? vulg.quoi_concretement_en : vulg.quoi_concretement;
+        const pourquoi = locale === "en" && vulg.pourquoi_ca_compte_en ? vulg.pourquoi_ca_compte_en : vulg.pourquoi_ca_compte;
+        return (
+          <div className="fx-fiche-lead">
+            {descClair && <p className="fx-fiche-lead-main">{descClair}</p>}
+            {quoi && <p className="fx-fiche-lead-sub">{quoi}</p>}
+            {pourquoi && <p className="fx-fiche-lead-impact">→ {pourquoi}</p>}
+          </div>
+        );
+      })()}
 
       <div className="fx-fiche-kpis">
         <div className="fx-fiche-kpi">

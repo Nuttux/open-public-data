@@ -125,6 +125,10 @@ export type MarcheVulgarization = {
   pourquoi_ca_compte: string;
   year?: number;
   model?: string;
+  /** EN siblings — populated when vulgarization_marches_en.json is present */
+  objet_clair_en?: string;
+  quoi_concretement_en?: string;
+  pourquoi_ca_compte_en?: string;
 };
 
 export type SubventionVulgarization = {
@@ -132,6 +136,10 @@ export type SubventionVulgarization = {
   pourquoi_subvention: string;
   impact_citoyen: string;
   model?: string;
+  /** EN siblings — populated when vulgarization_subventions_en.json is present */
+  activite_claire_en?: string;
+  pourquoi_subvention_en?: string;
+  impact_citoyen_en?: string;
 };
 
 export type SireneCompany = {
@@ -155,6 +163,9 @@ export type BeneficiaireGrounded = {
   sources?: ({ url?: string; title?: string } | string)[];
   confiance?: number;
   source_type?: string;
+  /** EN siblings — populated when beneficiaire_grounded_en.json is present */
+  activite_verifiee_en?: string;
+  perimetre_geographique_en?: string;
 };
 
 // Cache loaders are memoised at module level — these JSON blobs are small
@@ -167,7 +178,20 @@ let _benefGrounded: Record<string, BeneficiaireGrounded> | null = null;
 export function loadMarcheVulgarization(numero: string): MarcheVulgarization | null {
   if (_marchesVulg === null) {
     const data = readJsonOrNull<VulgarizationCache<MarcheVulgarization>>("enrichment/vulgarization_marches.json");
-    _marchesVulg = data?.items ?? {};
+    const en = readJsonOrNull<VulgarizationCache<MarcheVulgarization>>("enrichment/vulgarization_marches_en.json");
+    const merged: Record<string, MarcheVulgarization> = {};
+    for (const [k, v] of Object.entries(data?.items ?? {})) {
+      const e = en?.items?.[k];
+      merged[k] = e
+        ? {
+            ...v,
+            objet_clair_en: e.objet_clair,
+            quoi_concretement_en: e.quoi_concretement,
+            pourquoi_ca_compte_en: e.pourquoi_ca_compte,
+          }
+        : v;
+    }
+    _marchesVulg = merged;
   }
   return _marchesVulg[numero] ?? null;
 }
@@ -175,7 +199,20 @@ export function loadMarcheVulgarization(numero: string): MarcheVulgarization | n
 export function loadSubventionVulgarization(name: string): SubventionVulgarization | null {
   if (_subvVulg === null) {
     const data = readJsonOrNull<VulgarizationCache<SubventionVulgarization>>("enrichment/vulgarization_subventions.json");
-    _subvVulg = data?.items ?? {};
+    const en = readJsonOrNull<VulgarizationCache<SubventionVulgarization>>("enrichment/vulgarization_subventions_en.json");
+    const merged: Record<string, SubventionVulgarization> = {};
+    for (const [k, v] of Object.entries(data?.items ?? {})) {
+      const e = en?.items?.[k];
+      merged[k] = e
+        ? {
+            ...v,
+            activite_claire_en: e.activite_claire,
+            pourquoi_subvention_en: e.pourquoi_subvention,
+            impact_citoyen_en: e.impact_citoyen,
+          }
+        : v;
+    }
+    _subvVulg = merged;
   }
   return _subvVulg[name] ?? null;
 }
@@ -200,9 +237,25 @@ const normalizeBenefKey = (s: string) =>
 export function loadBeneficiaireGrounded(name: string): BeneficiaireGrounded | null {
   if (_benefGrounded === null) {
     const data = readJsonOrNull<{ items?: Record<string, BeneficiaireGrounded> }>("enrichment/beneficiaire_grounded.json");
+    const en = readJsonOrNull<{ items?: Record<string, BeneficiaireGrounded> } | Record<string, BeneficiaireGrounded>>("enrichment/beneficiaire_grounded_en.json");
     const raw = data?.items ?? {};
+    // EN file may use the same shape (with `items`) or be a flat dict — handle both.
+    const enRaw: Record<string, BeneficiaireGrounded> =
+      en && typeof en === "object" && "items" in en && en.items
+        ? (en.items as Record<string, BeneficiaireGrounded>)
+        : ((en as Record<string, BeneficiaireGrounded>) ?? {});
     const reindexed: Record<string, BeneficiaireGrounded> = {};
-    for (const [k, v] of Object.entries(raw)) reindexed[normalizeBenefKey(k)] = v;
+    for (const [k, v] of Object.entries(raw)) {
+      const e = enRaw[k];
+      const merged: BeneficiaireGrounded = e
+        ? {
+            ...v,
+            activite_verifiee_en: e.activite_verifiee,
+            perimetre_geographique_en: e.perimetre_geographique,
+          }
+        : v;
+      reindexed[normalizeBenefKey(k)] = merged;
+    }
     _benefGrounded = reindexed;
   }
   return _benefGrounded[normalizeBenefKey(decodeURIComponent(name))] ?? null;
@@ -650,6 +703,10 @@ export type ProjetVulgarization = {
   pourquoi_ca_compte: string;
   typologie_normalisee: string;
   model?: string;
+  /** EN siblings — populated when vulgarization_projets_en.json is present */
+  description_claire_en?: string;
+  quoi_concretement_en?: string;
+  pourquoi_ca_compte_en?: string;
 };
 
 export type ProjetMarche = {
@@ -717,7 +774,20 @@ let _projetsVulg: Record<string, ProjetVulgarization> | null = null;
 export function loadProjetVulgarization(id: string): ProjetVulgarization | null {
   if (_projetsVulg === null) {
     const data = readJsonOrNull<VulgarizationCache<ProjetVulgarization>>("enrichment/vulgarization_projets.json");
-    _projetsVulg = data?.items ?? {};
+    const en = readJsonOrNull<VulgarizationCache<ProjetVulgarization>>("enrichment/vulgarization_projets_en.json");
+    const merged: Record<string, ProjetVulgarization> = {};
+    for (const [k, v] of Object.entries(data?.items ?? {})) {
+      const e = en?.items?.[k];
+      merged[k] = e
+        ? {
+            ...v,
+            description_claire_en: e.description_claire,
+            quoi_concretement_en: e.quoi_concretement,
+            pourquoi_ca_compte_en: e.pourquoi_ca_compte,
+          }
+        : v;
+    }
+    _projetsVulg = merged;
   }
   return _projetsVulg[id] ?? null;
 }
@@ -1127,7 +1197,7 @@ export type MarchesPageData = {
     siret: string;
     amount: number;
     nbContrats: number;
-    contrats: { numero: string; objet: string; objetClair: string | null; montant: number; categorie: string; nature: string; date: string }[];
+    contrats: { numero: string; objet: string; objetClair: string | null; objetClairEn: string | null; montant: number; categorie: string; nature: string; date: string }[];
   }[];
   byCategory: {
     category: string;
@@ -1150,6 +1220,7 @@ export type MarchesPageData = {
     titulaireSiret: string;
     objet: string;
     objetClair: string | null;
+    objetClairEn: string | null;
     montant: number;
     categorie: string;
     nature: string;
@@ -1456,7 +1527,7 @@ export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
     amount: number;
     count: number;
     siret: string;
-    contrats: { numero: string; objet: string; objetClair: string | null; montant: number; categorie: string; nature: string; date: string }[];
+    contrats: { numero: string; objet: string; objetClair: string | null; objetClairEn: string | null; montant: number; categorie: string; nature: string; date: string }[];
   };
   const titAgg = new Map<string, TitAgg>();
   type CatAgg = { amount: number; count: number; items: Map<string, { amount: number; count: number }> };
@@ -1502,6 +1573,7 @@ export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
       numero,
       objet: r.objet || "",
       objetClair: (numero && vulgMap[numero]?.objet_clair) || null,
+      objetClairEn: (numero && vulgMap[numero]?.objet_clair_en) || null,
       montant: v,
       categorie: r.categorie_libelle || "—",
       nature: r.nature || "—",
@@ -1585,6 +1657,7 @@ export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
         titulaireSiret: (r.fournisseur_siret ?? "").replace(/\s/g, ""),
         objet: r.objet || "",
         objetClair: (numeroMarche && vulgMap[numeroMarche]?.objet_clair) || null,
+        objetClairEn: (numeroMarche && vulgMap[numeroMarche]?.objet_clair_en) || null,
         montant: Number(r.montant_max ?? r.montant_min ?? 0),
         categorie: r.categorie_libelle || r.nature || "Autres",
         nature: r.nature || "Autres",
@@ -3075,7 +3148,7 @@ export type MarcheCategorieFiche = {
   nbContrats: number;
   nbTitulaires: number;
   topTitulaires: { name: string; siret: string; amount: number; nb: number }[];
-  topContrats: { numero: string; objet: string; objetClair: string | null; montant: number; fournisseur: string; fournisseurSiret: string; date: string; nature: string }[];
+  topContrats: { numero: string; objet: string; objetClair: string | null; objetClairEn: string | null; montant: number; fournisseur: string; fournisseurSiret: string; date: string; nature: string }[];
 };
 
 /** Charge la fiche agrégée pour une catégorie de marchés publics. */
@@ -3134,6 +3207,7 @@ export function loadMarcheCategorie(slug: string, requestedYear?: number): March
         numero,
         objet: r.objet ?? "",
         objetClair: (numero && vulg[numero]?.objet_clair) || null,
+        objetClairEn: (numero && vulg[numero]?.objet_clair_en) || null,
         montant: Number(r.montant_max ?? 0),
         fournisseur: r.fournisseur_nom ?? "Non précisé",
         fournisseurSiret: (r.fournisseur_siret ?? "").replace(/\s/g, ""),
@@ -3161,5 +3235,18 @@ export function loadMarcheCategorie(slug: string, requestedYear?: number): March
 
 function loadMarcheVulgMap(): Record<string, MarcheVulgarization> {
   const data = readJsonOrNull<VulgarizationCache<MarcheVulgarization>>("enrichment/vulgarization_marches.json");
-  return data?.items ?? {};
+  const en = readJsonOrNull<VulgarizationCache<MarcheVulgarization>>("enrichment/vulgarization_marches_en.json");
+  const merged: Record<string, MarcheVulgarization> = {};
+  for (const [k, v] of Object.entries(data?.items ?? {})) {
+    const e = en?.items?.[k];
+    merged[k] = e
+      ? {
+          ...v,
+          objet_clair_en: e.objet_clair,
+          quoi_concretement_en: e.quoi_concretement,
+          pourquoi_ca_compte_en: e.pourquoi_ca_compte,
+        }
+      : v;
+  }
+  return merged;
 }
