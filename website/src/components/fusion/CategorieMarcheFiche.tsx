@@ -5,10 +5,11 @@ import Link from "next/link";
 import type { MarcheCategorieFiche } from "@/lib/fusion-data";
 import { fmtCompactEur, fmtInt, fmtDec } from "@/lib/fmt";
 import { normalizeObjet } from "@/lib/objet-normalizer";
-import { useT } from "@/lib/localeContext";
+import { useT, useLocale } from "@/lib/localeContext";
 
 export default function CategorieMarcheFiche({ fiche }: { fiche: MarcheCategorieFiche }) {
   const t = useT();
+  const { locale } = useLocale();
   const fill = (s: string, vars: Record<string, string | number>) => {
     let r = s;
     for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
@@ -56,7 +57,9 @@ export default function CategorieMarcheFiche({ fiche }: { fiche: MarcheCategorie
           <tbody>
             {fiche.topContrats.map((c) => {
               const { value, unit } = fmtCompactEur(c.montant);
-              const objet = c.objetClair || normalizeObjet(c.objet || "");
+              const preferred =
+                locale === "en" && c.objetClairEn ? c.objetClairEn : c.objetClair;
+              const objet = preferred || normalizeObjet(c.objet || "");
               return (
                 <tr key={c.numero}>
                   <td style={{ maxWidth: 360 }}>

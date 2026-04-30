@@ -14,6 +14,7 @@ type Item = {
   numeroMarche?: string;
   objet: string;
   objetClair?: string | null;
+  objetClairEn?: string | null;
   montant: number;
   categorie: string;
   nature: string;
@@ -83,7 +84,7 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
       if (hideMulti && it.multiAttributaire) return false;
       if (category && it.categorie !== category) return false;
       if (nature && it.nature !== nature) return false;
-      if (q && !it.objet.toLowerCase().includes(q) && !it.titulaire.toLowerCase().includes(q) && !(it.objetClair || "").toLowerCase().includes(q)) return false;
+      if (q && !it.objet.toLowerCase().includes(q) && !it.titulaire.toLowerCase().includes(q) && !(it.objetClair || "").toLowerCase().includes(q) && !(it.objetClairEn || "").toLowerCase().includes(q)) return false;
       return true;
     });
   }, [items, query, category, nature, hideMulti]);
@@ -254,7 +255,8 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
                   <span>{fmtDate(it.date)}</span>
                 </div>
                 <h3>{(() => {
-                  const clean = it.objetClair || normalizeObjet(it.objet);
+                  const preferred = locale === "en" && it.objetClairEn ? it.objetClairEn : it.objetClair;
+                  const clean = preferred || normalizeObjet(it.objet);
                   return clean.length > 90 ? clean.slice(0, 90) + "…" : clean;
                 })()}</h3>
                 <div className="fx-result-card-amount tnum">

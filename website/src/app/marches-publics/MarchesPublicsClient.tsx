@@ -333,7 +333,8 @@ export default function MarchesPublicsClient({
                           <tr key={i}>
                             <td style={{ fontWeight: 500, maxWidth: 360 }}>
                               {(() => {
-                                const clean = c.objetClair || normalizeObjet(c.objet);
+                                const preferred = locale === "en" && c.objetClairEn ? c.objetClairEn : c.objetClair;
+                                const clean = preferred || normalizeObjet(c.objet);
                                 const shown = clean.length > 100 ? clean.slice(0, 100) + "…" : clean;
                                 return c.numero ? (
                                   <Link

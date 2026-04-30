@@ -42,11 +42,16 @@ export default function AssociationFiche({
       {grounded && (grounded.confiance ?? 0) >= 0.6 && grounded.activite_verifiee ? (
         <div className="fx-fiche-grounded">
           <div className="fx-fiche-grounded-head">{t("fx.fiche.asso.activity_h")}</div>
-          <p className="fx-fiche-grounded-body">{grounded.activite_verifiee}</p>
+          <p className="fx-fiche-grounded-body">
+            {locale === "en" && grounded.activite_verifiee_en ? grounded.activite_verifiee_en : grounded.activite_verifiee}
+          </p>
           <div className="fx-fiche-grounded-meta">
             {grounded.perimetre_geographique ? (
               <span>
-                <b>{t("fx.fiche.asso.scope_label")} :</b> {grounded.perimetre_geographique}
+                <b>{t("fx.fiche.asso.scope_label")} :</b>{" "}
+                {locale === "en" && grounded.perimetre_geographique_en
+                  ? grounded.perimetre_geographique_en
+                  : grounded.perimetre_geographique}
               </span>
             ) : null}
             {grounded.sources && grounded.sources.length > 0 ? (
@@ -74,25 +79,18 @@ export default function AssociationFiche({
             ) : null}
           </div>
         </div>
-      ) : vulgarization ? (
-        <div className="fx-fiche-lead">
-          {vulgarization.activite_claire && (
-            <p className="fx-fiche-lead-main">
-              {vulgarization.activite_claire}
-            </p>
-          )}
-          {vulgarization.pourquoi_subvention && (
-            <p className="fx-fiche-lead-sub">
-              {vulgarization.pourquoi_subvention}
-            </p>
-          )}
-          {vulgarization.impact_citoyen && (
-            <p className="fx-fiche-lead-impact">
-              → {vulgarization.impact_citoyen}
-            </p>
-          )}
-        </div>
-      ) : null}
+      ) : vulgarization ? (() => {
+        const activite = locale === "en" && vulgarization.activite_claire_en ? vulgarization.activite_claire_en : vulgarization.activite_claire;
+        const pourquoi = locale === "en" && vulgarization.pourquoi_subvention_en ? vulgarization.pourquoi_subvention_en : vulgarization.pourquoi_subvention;
+        const impact = locale === "en" && vulgarization.impact_citoyen_en ? vulgarization.impact_citoyen_en : vulgarization.impact_citoyen;
+        return (
+          <div className="fx-fiche-lead">
+            {activite && <p className="fx-fiche-lead-main">{activite}</p>}
+            {pourquoi && <p className="fx-fiche-lead-sub">{pourquoi}</p>}
+            {impact && <p className="fx-fiche-lead-impact">→ {impact}</p>}
+          </div>
+        );
+      })() : null}
 
       <div className="fx-fiche-kpis">
         <div className="fx-fiche-kpi">

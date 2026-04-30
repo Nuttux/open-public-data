@@ -85,25 +85,30 @@ export default function ContratFiche({
 
   return (
     <div>
-      {vulgarization ? (
-        <div className="fx-fiche-lead">
-          {vulgarization.objet_clair && (
-            <p style={{ margin: 0, fontWeight: 600, color: "var(--ink)", fontSize: 17, lineHeight: 1.45 }}>
-              {vulgarization.objet_clair}
-            </p>
-          )}
-          {vulgarization.quoi_concretement && (
-            <p style={{ margin: "10px 0 0", fontSize: 14.5, color: "var(--ink-2)" }}>
-              {vulgarization.quoi_concretement}
-            </p>
-          )}
-          {vulgarization.pourquoi_ca_compte && (
-            <p style={{ margin: "10px 0 0", fontSize: 13, color: "var(--muted)", fontStyle: "italic" }}>
-              → {vulgarization.pourquoi_ca_compte}
-            </p>
-          )}
-        </div>
-      ) : (
+      {vulgarization ? (() => {
+        const objet = locale === "en" && vulgarization.objet_clair_en ? vulgarization.objet_clair_en : vulgarization.objet_clair;
+        const quoi = locale === "en" && vulgarization.quoi_concretement_en ? vulgarization.quoi_concretement_en : vulgarization.quoi_concretement;
+        const pourquoi = locale === "en" && vulgarization.pourquoi_ca_compte_en ? vulgarization.pourquoi_ca_compte_en : vulgarization.pourquoi_ca_compte;
+        return (
+          <div className="fx-fiche-lead">
+            {objet && (
+              <p style={{ margin: 0, fontWeight: 600, color: "var(--ink)", fontSize: 17, lineHeight: 1.45 }}>
+                {objet}
+              </p>
+            )}
+            {quoi && (
+              <p style={{ margin: "10px 0 0", fontSize: 14.5, color: "var(--ink-2)" }}>
+                {quoi}
+              </p>
+            )}
+            {pourquoi && (
+              <p style={{ margin: "10px 0 0", fontSize: 13, color: "var(--muted)", fontStyle: "italic" }}>
+                → {pourquoi}
+              </p>
+            )}
+          </div>
+        );
+      })() : (
         <div className="fx-fiche-lead">
           <p style={{ margin: 0, fontWeight: 600, color: "var(--ink)", fontSize: 17, lineHeight: 1.45 }}>
             {normalizeObjet(contrat.objet)}
