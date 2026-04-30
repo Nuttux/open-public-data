@@ -24,29 +24,15 @@ import { slugifyBailleur } from "@/lib/projet-utils";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import type { BlogPostMeta } from "@/lib/blog";
 import type { PatrimoineData, PatrimoineStructure, HorsBilanData, CityDebtSnapshot } from "@/lib/fusion-data";
-import { useT } from "@/lib/localeContext";
+import { useT, useLocale } from "@/lib/localeContext";
+import { trLabel } from "@/lib/label-translate";
 import { PARIS_POPULATION, parisCrcDebtYearsFor } from "@/lib/methodology";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.replace(`{${k}}`, String(v));
+  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
   return r;
 };
-
-const DET_PLACEHOLDERS: ArticlePlaceholder[] = [
-  {
-    category: "Analyse",
-    title: "Le patrimoine parisien : 17 Md€ nets, et pourquoi c'est approximatif.",
-    description:
-      "Valeur comptable M57 vs valeur de marché — un écart qu'on ne peut pas chiffrer, mais qu'on peut expliquer. Ce que le bilan dit, et ne dit pas.",
-  },
-  {
-    category: "Explication",
-    title: "Capacité de désendettement : le chiffre à ne pas lire seul.",
-    description:
-      "10 ans, 12 ans, 15 ans — ce que ce ratio mesure vraiment, et pourquoi il dit autre chose que « combien Paris est endettée ».",
-  },
-];
 
 export default function DettePatrimoineClient({
   d,
@@ -64,6 +50,19 @@ export default function DettePatrimoineClient({
   posts: BlogPostMeta[];
 }) {
   const t = useT();
+  const { locale } = useLocale();
+  const DET_PLACEHOLDERS: ArticlePlaceholder[] = [
+    {
+      category: t("fx.dp.placeholders.a1.cat"),
+      title: t("fx.dp.placeholders.a1.title"),
+      description: t("fx.dp.placeholders.a1.desc"),
+    },
+    {
+      category: t("fx.dp.placeholders.a2.cat"),
+      title: t("fx.dp.placeholders.a2.title"),
+      description: t("fx.dp.placeholders.a2.desc"),
+    },
+  ];
   const net = d.fondsPropres;
   const detteParHab = d.detteFinanciere / PARIS_POPULATION;
 
@@ -142,34 +141,45 @@ export default function DettePatrimoineClient({
       <PageHook
         cite={
           <>
-            Ville de Paris · Bilan M57 {d.year}
+            {fill(t("fx.dp.hook.cite.bilan"), { year: d.year })}
             {crcSnap ? (
               <>
-                {" · "}CRC Île-de-France · Rapport IDR2025-42, octobre 2025
+                {" · "}{t("fx.dp.hook.cite.crc")}
               </>
             ) : null}
           </>
         }
         shareText={
-          `Dette Ville de Paris ${d.year} : ${fmtBillions(d.detteFinanciere)} Md€ (${fmtInt(detteParHab)} € par habitant` +
-          (deltaDetteDepuis2020Pct > 0 ? `, +${fmtDec(deltaDetteDepuis2020Pct, 0)}% depuis 2020` : "") +
-          `). Capacité de désendettement : ${fmtDec(d.capaciteDesendettement, 1).replace(".", ",")} ans selon la Ville` +
-          (crcSnap ? ` / ${fmtDec(crcSnap.value_crc_ans, 1).replace(".", ",")} ans selon la Chambre régionale des comptes` : "") +
-          `. Deux lectures coexistent.`
+          fill(t("fx.dp.hook.share.head"), {
+            year: d.year,
+            total: fmtBillions(d.detteFinanciere),
+            perHab: fmtInt(detteParHab),
+          }) +
+          (deltaDetteDepuis2020Pct > 0
+            ? fill(t("fx.dp.hook.share.delta"), { pct: fmtDec(deltaDetteDepuis2020Pct, 0) })
+            : "") +
+          fill(t("fx.dp.hook.share.cap.ville"), { ans: fmtDec(d.capaciteDesendettement, 1).replace(".", ",") }) +
+          (crcSnap
+            ? fill(t("fx.dp.hook.share.cap.crc"), { ans: fmtDec(crcSnap.value_crc_ans, 1).replace(".", ",") })
+            : "") +
+          t("fx.dp.hook.share.tail")
         }
       >
-        En {d.year}, Paris porte <b>{fmtBillions(d.detteFinanciere)} Md€</b> de
-        dette — <b>{fmtInt(detteParHab)} € par habitant</b>
+        {fill(t("fx.dp.hook.body.intro"), { year: d.year })}
+        <b>{fmtBillions(d.detteFinanciere)}{t("fx.dp.hook.body.md")}</b>
+        {t("fx.dp.hook.body.dette")}
+        <b>{fmtInt(detteParHab)}{t("fx.dp.hook.body.perhab")}</b>
         {deltaDetteDepuis2020Pct > 0 ? (
-          <>, en hausse de <b>+{fmtDec(deltaDetteDepuis2020Pct, 0)} % depuis 2020</b></>
+          <>{t("fx.dp.hook.body.delta.before")}<b>+{fmtDec(deltaDetteDepuis2020Pct, 0)}{t("fx.dp.hook.body.delta.after")}</b></>
         ) : null}
-        . Capacité de désendettement :{" "}
-        <b>{fmtDec(d.capaciteDesendettement, 1).replace(".", ",")} ans</b> selon les
-        comptes certifiés de la Ville
+        {t("fx.dp.hook.body.cap.before")}
+        <b>{fmtDec(d.capaciteDesendettement, 1).replace(".", ",")}{t("fx.dp.hook.body.cap.ans")}</b>
+        {t("fx.dp.hook.body.cap.ville")}
         {crcSnap ? (
           <>
-            , <b>{fmtDec(crcSnap.value_crc_ans, 1).replace(".", ",")} ans</b> selon
-            la Chambre régionale des comptes
+            {t("fx.dp.hook.body.cap.crc.before")}
+            <b>{fmtDec(crcSnap.value_crc_ans, 1).replace(".", ",")}{t("fx.dp.hook.body.cap.ans")}</b>
+            {t("fx.dp.hook.body.cap.crc.after")}
           </>
         ) : null}
         .
@@ -227,7 +237,7 @@ export default function DettePatrimoineClient({
             <>
               <CityComparator cities={citiesSnapshot} highlightSlug="paris" />
               <ChartSource
-                source={<>Comptes administratifs M57 des grandes villes françaises (Lyon, Marseille, Toulouse, Nice, Nantes…)</>}
+                source={<>{t("fx.dp.cities.source")}</>}
                 methodAnchor="dette-patrimoine"
               />
             </>
@@ -257,10 +267,10 @@ export default function DettePatrimoineClient({
               totals={{ actif: d.actif, passif: d.passif }}
             />
           ) : (
-            <p className="fx-note">{t("fx.det.s03.actif")} — indisponible.</p>
+            <p className="fx-note">{fill(t("fx.dp.bilan.actif_unavailable"), { label: t("fx.det.s03.actif") })}</p>
           )}
           <ChartSource
-            source={<>Ville de Paris · Compte administratif M57 {d.year} (bilan consolidé)</>}
+            source={<>{fill(t("fx.dp.bilan.source"), { year: d.year })}</>}
             dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
             methodAnchor="dette-patrimoine"
           />
@@ -283,7 +293,7 @@ export default function DettePatrimoineClient({
           {structure && structure.masses_actif.length > 0 ? (
             <PatrimoineDrillList masses={structure.masses_actif} year={d.year} />
           ) : (
-            <p className="fx-note">Indisponible.</p>
+            <p className="fx-note">{t("fx.dp.unavailable")}</p>
           )}
           <p className="fx-note">{t("fx.det.s04b.note")}</p>
         </div>
@@ -306,10 +316,10 @@ export default function DettePatrimoineClient({
           {structure ? (
             <DetteStructurePanel structure={structure.structure_dette} year={d.year} />
           ) : (
-            <p className="fx-note">Indisponible.</p>
+            <p className="fx-note">{t("fx.dp.unavailable")}</p>
           )}
           <ChartSource
-            source={<>Encours par instrument : bilan M57 · Taux, maturité, structure fixe/variable : Rapport d'Orientation Budgétaire Paris {d.year}</>}
+            source={<>{fill(t("fx.dp.dette.source"), { year: d.year })}</>}
             dataHref="https://opendata.paris.fr/explore/dataset/bilan-comptable/"
             methodAnchor="dette-patrimoine"
           />
@@ -345,12 +355,12 @@ export default function DettePatrimoineClient({
                   }))}
                   activeYear={d.year}
                   annotations={[
-                    { year: 2020, label: "Covid-19" },
-                    { year: 2024, label: "JO" },
+                    { year: 2020, label: t("fx.dp.timeline.covid") },
+                    { year: 2024, label: t("fx.dp.timeline.jo") },
                   ]}
                 />
                 <ChartSource
-                  source={<>Ville de Paris · Bilan comptable M57, encours de dette financière</>}
+                  source={<>{t("fx.dp.traj.source")}</>}
                   dataHref="https://opendata.paris.fr/explore/dataset/bilan-comptable/"
                   methodAnchor="dette-patrimoine"
                 />
@@ -380,7 +390,7 @@ export default function DettePatrimoineClient({
                           <span style={{ fontSize: ".5em", color: "var(--muted)", fontWeight: 500, marginLeft: 4 }}>{t("fx.s.md_eur")}</span>
                         </div>
                         <div style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--ink-2)", marginTop: 8, letterSpacing: ".02em" }}>
-                          {delta >= 0 ? "+" : "−"} {fmtDec(Math.abs(delta), 0)} % vs {first.year}
+                          {delta >= 0 ? "+" : "−"} {fmtDec(Math.abs(delta), 0)} {fill(t("fx.dp.traj.delta_vs"), { year: first.year })}
                         </div>
                       </div>
                     );
@@ -513,7 +523,7 @@ export default function DettePatrimoineClient({
                 year={horsBilan.year}
               />
               <ChartSource
-                source={<>Ville de Paris · Annexe IV-B du compte administratif {horsBilan.year} — garanties d'emprunt aux bailleurs sociaux</>}
+                source={<>{fill(t("fx.dp.hb.source"), { year: horsBilan.year })}</>}
                 methodAnchor="dette-patrimoine"
               />
 
@@ -541,7 +551,7 @@ export default function DettePatrimoineClient({
                 );
               })()}
 
-              <p className="fx-note">{horsBilan.sources.note}</p>
+              <p className="fx-note">{trLabel(horsBilan.sources.note, locale)}</p>
             </>
           ) : (
             <p className="fx-note">{t("fx.det.s04c.note")}</p>
@@ -685,7 +695,7 @@ export default function DettePatrimoineClient({
             <a href="/methode#dette-patrimoine" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</a>
           </div>
           <p className="fx-footer-sources-meta">
-            <b>Source</b> : Ville de Paris — Bilan comptable M57 + Rapport d'Orientation Budgétaire (opendata.paris.fr) <span className="sep">·</span> <b>Couverture</b> : 2019-2024.
+            <b>{t("fx.footer.source_label")}</b> : {t("fx.dp.footer.source")} <span className="sep">·</span> <b>{t("fx.footer.coverage_label")}</b> : {t("fx.dp.footer.coverage")}
           </p>
           <ExportRow
             items={[

@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import { ArrondissementLogementFiche } from "@/components/fusion";
+import { LogementArrKicker, LogementArrBackLink } from "@/components/fusion/EntityPageHeaders";
 import { loadArrondissementLogement, PARIS_CENTRE_SLUG } from "@/lib/fusion-data";
 import "../../../fusion.css";
 
@@ -16,6 +16,7 @@ const isValidSlug = (s: string) => {
   return Number.isInteger(n) && n >= 1 && n <= 20;
 };
 
+// NOTE: server-side metadata is FR-canonical (no locale detection at request time).
 export async function generateMetadata({
   params,
 }: {
@@ -25,10 +26,23 @@ export async function generateMetadata({
   if (!isValidSlug(arr)) return {};
   const data = loadArrondissementLogement(arr);
   if (!data) return {};
+  const canonical = `/logement-social/arrondissement/${data.slug}`;
+  const title = `${data.label} · logement social — France Open Data`;
+  const description = `Opérations de logement social financées · ${data.label} · Paris.`;
   return {
-    title: `${data.label} · logement social — France Open Data`,
-    description: `Opérations de logement social financées · ${data.label} · Paris.`,
-    alternates: { canonical: `/logement-social/arrondissement/${data.slug}` },
+    title,
+    description,
+    alternates: {
+      canonical,
+      languages: { "fr-FR": canonical, "en-US": canonical },
+    },
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      locale: "fr_FR",
+      alternateLocale: ["en_US"],
+    },
   };
 }
 
@@ -48,11 +62,11 @@ export default async function ArrondissementLogementPage({
       <Navbar />
       <section className="fx-page-header">
         <div className="fx-wrap">
-          <div className="fx-page-kicker">Logement social · {data.year}</div>
+          <div className="fx-page-kicker">
+            <LogementArrKicker year={data.year} />
+          </div>
           <h1 className="fx-page-title">{data.label}</h1>
-          <p className="fx-page-lede">
-            <Link href="/logement-social">← Revenir à la vue d'ensemble</Link>
-          </p>
+          <LogementArrBackLink />
         </div>
       </section>
 

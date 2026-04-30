@@ -8,7 +8,7 @@ import Tip from "@/components/fusion/Tip";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.replace(`{${k}}`, String(v));
+  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
   return r;
 };
 
@@ -22,6 +22,10 @@ type Post = {
   image?: string;
   readingTime: string;
   category?: string;
+  title_en?: string;
+  description_en?: string;
+  category_en?: string;
+  tags_en?: string[];
 };
 
 type Planned = {
@@ -188,20 +192,25 @@ export default function AnalysesClient({
                 <div className={`fx-hero-article-kicker fx-kicker-${categorySlug(hero.category)}`}>
                   {categoryLabel(hero.category)} · {hero.readingTime}
                 </div>
-                <h2>{renderTitle(hero.title)}</h2>
-                <p className="fx-hero-article-deck">{hero.description}</p>
+                <h2>{renderTitle(locale === "en" && hero.title_en ? hero.title_en : hero.title)}</h2>
+                <p className="fx-hero-article-deck">
+                  {locale === "en" && hero.description_en ? hero.description_en : hero.description}
+                </p>
                 <div className="fx-hero-article-meta">
                   <span>
                     {t("fx.analyses.hero.by")} <b>{hero.author ?? "France Open Data"}</b>
                   </span>
                   <span>·</span>
                   <span>{t("fx.analyses.hero.published")} {formatDate(hero.date)}</span>
-                  {hero.tags && hero.tags.length > 0 && (
-                    <>
-                      <span>·</span>
-                      <span>{hero.tags.slice(1, 4).join(" · ")}</span>
-                    </>
-                  )}
+                  {(() => {
+                    const tags = locale === "en" && hero.tags_en && hero.tags_en.length > 0 ? hero.tags_en : hero.tags;
+                    return tags && tags.length > 0 ? (
+                      <>
+                        <span>·</span>
+                        <span>{tags.slice(1, 4).join(" · ")}</span>
+                      </>
+                    ) : null;
+                  })()}
                 </div>
                 <span className="fx-hero-article-cta">{t("fx.analyses.hero.cta")}</span>
               </div>
@@ -256,8 +265,8 @@ export default function AnalysesClient({
                     </span>
                   </div>
                   <div className="fx-article-body">
-                    <h3>{renderTitle(p.title)}</h3>
-                    <p>{p.description}</p>
+                    <h3>{renderTitle(locale === "en" && p.title_en ? p.title_en : p.title)}</h3>
+                    <p>{locale === "en" && p.description_en ? p.description_en : p.description}</p>
                     <div className="fx-article-meta">
                       <span>{t("fx.analyses.card.published")} <b>{formatDate(p.date)}</b></span>
                       <span>·</span>

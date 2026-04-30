@@ -2004,6 +2004,7 @@ const en: Record<string, string> = {
   'fx.det.s04c.title.em': 'commitments',
   'fx.det.s04c.sub': 'Primarily loan guarantees granted to social housing landlords: Paris repays in their place only if they default.',
   'fx.det.s04c.hero_label': 'Outstanding guaranteed capital · 31.12.{year}',
+  'fx.det.s04c.kpi.capital_delta': 'Capital outstanding at 31 December',
   'fx.det.s04c.hero_cap': 'Across {count} guaranteed loans spread over {benef} beneficiaries (social housing landlords, SEM developers, non-profit operators).',
   'fx.det.s04c.kpi.annuite': 'Guaranteed annuity',
   'fx.det.s04c.kpi.annuite_delta': 'Interest + principal — potential annual charge',
@@ -2918,6 +2919,318 @@ const en: Record<string, string> = {
   // Compact footer sources
   'fx.s.sources_exports': 'Sources & exports',
   'fx.s.methode_complete': 'Full method for this page →',
+
+  // ── i18n batch — components (PageHook, ExportRow, BudgetTimeline, ReplayOptIn) ─
+  'fx.pagehook.aria': 'Shareable page summary',
+  'fx.pagehook.share': 'Share',
+  'fx.pagehook.copied': 'Copied ✓',
+  'fx.export.label': 'Downloads',
+  'fx.timeline.aria_evolution': 'Budget evolution {from} to {to}',
+  'fx.timeline.status.exec': 'EXEC.',
+  'fx.timeline.status.vote': 'VOTED',
+  'fx.timeline.status.est': 'EST.',
+  'fx.timeline.badge.exec': 'exec.',
+  'fx.timeline.badge.vote': 'voted',
+  'fx.timeline.badge.est': 'est.',
+  'fx.replay.thanks': 'Thank you — recording enabled',
+  'fx.replay.active': 'Anonymous recording active · disable',
+  'fx.replay.inactive': 'Help this site: allow anonymous recording',
+  'fx.replay.more': 'details →',
+
+  // PosteFiche
+  'fx.poste.kind.depense': 'Expense',
+  'fx.poste.kind.recette': 'Revenue',
+  'fx.poste.share.depenses': 'Share of total expenses',
+  'fx.poste.share.recettes': 'Share of total revenues',
+  'fx.poste.vs_year': 'Vs {year}',
+  'fx.poste.no_subpostes': 'No sub-items available for {year}.',
+  'fx.poste.page.lede': '{kind} · Year {year} · {n} sub-items listed.',
+  'fx.poste.share_text': '{label} — {amount} ({year}, {kind}) · {n} sub-items.',
+  'fx.poste.kicker.budget': 'Budget',
+  'fx.poste.back': '← Budget',
+  'fx.poste.drawer.kicker': '{kind} · Budget {year}',
+  'fx.poste.notfound.title': 'Item not found — France Open Data',
+  'fx.poste.meta.title': '{label} — Budget {year} · France Open Data',
+  'fx.poste.meta.desc': '{label} — {kind_lower} of the Paris budget for fiscal year {year}. {n} sub-items detailed.',
+
+  // CategorieMarcheFiche
+  'fx.categorie.kpi.enveloppe_max': 'Max envelope {year}',
+  'fx.categorie.kpi.share_paris': 'Share of Paris total',
+  'fx.categorie.kpi.contrats': 'Contracts',
+  'fx.categorie.kpi.titulaires': 'Distinct contractors',
+  'fx.categorie.top_contrats': 'Top 10 contracts in category · {year}',
+  'fx.categorie.col.objet': 'Object',
+  'fx.categorie.col.titulaire': 'Contractor',
+  'fx.categorie.col.enveloppe': 'Envelope',
+  'fx.categorie.top_titulaires': 'Top contractors · share of category',
+  'fx.categorie.contrats_count_one': '{n} contract',
+  'fx.categorie.contrats_count_many': '{n} contracts',
+  'fx.categorie.share_of_category': '{pct} % of category',
+
+  // ProjetFiche extra
+  'fx.fiche.projet.entreprises': 'Identified companies',
+  'fx.fiche.projet.entreprises_auto': 'auto match ⓘ',
+  'fx.fiche.projet.entreprises_auto_title': 'Automatic match between investment project and public contracts via label and metadata analysis. May contain errors or miss some suppliers (in-house works, contracts < €40k, multi-site framework agreements that cannot be tied to a specific project).',
+  'fx.fiche.projet.entreprises_intro': "These public contracts appear to contribute to this project. <b>This match is automatic</b> and may contain errors — always check the contract object.",
+  'fx.fiche.projet.confidence.confirmed': 'Confirmed',
+  'fx.fiche.projet.confidence.probable': 'Probable',
+  'fx.fiche.projet.fournisseur_unknown': 'Supplier not specified',
+
+  // TensionParArrondissement
+  'fx.tension.demands_active': 'Active requests',
+  'fx.tension.attributions': 'Attributions',
+  'fx.tension.tension_paris': 'Paris tension overall',
+  'fx.tension.demands_per_one': 'requests per 1 attribution',
+  'fx.tension.delai_median': 'Median delay ⚠️',
+  'fx.tension.delai_caveat_unit': 'months — only for those allocated',
+  'fx.tension.col.arr': 'Arrondissement',
+  'fx.tension.col.ratio': 'Requests per 1 attribution',
+  'fx.tension.arr_label_first': '1st arrondissement',
+  'fx.tension.arr_label_other': '{n}th arrondissement',
+  'fx.tension.method_h': 'Method.',
+  'fx.tension.delai_h': 'About the median delay.',
+  'fx.tension.source_prefix': 'Source:',
+  'fx.tension.source_year_suffix': '· reference year {year}',
+  'fx.tension.note.at_31_12': 'at 31/12/{year}',
+  'fx.tension.note.in': 'in {year}',
+
+  // WaffleTheme
+  'fx.waffle.aria': '100 cells representing 100% of grants by theme',
+  'fx.waffle.tip_top10': 'among the 10 largest beneficiaries',
+  'fx.waffle.kicker': 'For every €100 of grants paid in {year}',
+  'fx.waffle.pareto': 'By themselves, the <b>10 largest beneficiaries</b> capture <b>€{pct}</b> out of 100.',
+
+  // AssociationFiche
+  'fx.fiche.asso.activity_h': 'Activity',
+  'fx.fiche.asso.scope_label': 'Scope',
+  'fx.fiche.asso.sources_label': 'Sources',
+
+  // Page kickers (dynamic kicker quote on /budget /qui-recoit /marches-publics)
+  'fx.bud.hook.cite': 'Ville de Paris · Comptes administratifs M57 · fiscal year {year}',
+  'fx.bud.hook.share': 'Paris budget {year}: €{depenses}Bn spent, €{perHab} per inhabitant. {pctFonct}% covers daily life (salaries, schools, services), {pctInvest}% funds construction projects.',
+  'fx.bud.hook.body.l1': 'In {year}, Paris spends <b>€{depenses}Bn</b> — that is <b>€{perHab} per inhabitant</b>.',
+  'fx.bud.hook.body.l2': 'Out of every €100, <b>{pctFonct}</b> covers daily life (salaries, schools, services), <b>{pctInvest}</b> funds construction projects.',
+  'fx.qr.hook.cite': 'Ville de Paris · Grants paid (CA appendix) · {year}',
+  'fx.qr.hook.share': 'Paris grants {year}: €{total}Bn paid via {nb} grants. Median {median}. The top 10 captures {concentr}% of the envelope.',
+  'fx.qr.hook.body.intro': 'In {year}, Paris paid <b>€{total}Bn</b> via <b>{nb} grants</b>',
+  'fx.qr.hook.body.delta_up': ' (+<b>{pct} %</b> vs {prev})',
+  'fx.qr.hook.body.delta_down': ' (−<b>{pct} %</b> vs {prev})',
+  'fx.qr.hook.body.tail': '. The median grant stands at <b>{median}</b>; the top 10 beneficiaries alone capture <b>{concentr} %</b> of the envelope.',
+  'fx.mp.hook.cite': 'DECP · Essential public procurement data · Ville de Paris · {year}',
+  'fx.mp.hook.share': 'Paris public contracts {year}: €{total}Bn in contractual envelopes via {nb} contracts with {nbT} suppliers. Top 10 = {top10}%.',
+  'fx.mp.hook.body': "In {year}, Paris notified <b>€{total}Bn</b> in contractual envelopes via <b>{nb} contracts</b> awarded to <b>{nbT} distinct suppliers</b> — top 10 at <b>{top10} %</b> of total.",
+
+  // Source-card cite labels (used by ChartSource on each section)
+  'fx.qr.s02.source.cite': 'Ville de Paris · Grants paid (CA appendices) {year}',
+  'fx.mp.s02.source.cite': 'DECP · Essential public procurement data · Ville de Paris',
+
+  // QuiRecoit preview banner (year not yet consolidated)
+  'fx.qr.preview.tag': 'Preview',
+  'fx.qr.preview.body': "Data for {year} comes from Paris City Council resolutions, complemented by the structural transfers of the Primary Budget (CASVP, AGOSPAP, school funds). Non-consolidated — the official version is published on data.gouv the following year. <b>The breakdown by theme differs significantly from consolidated years</b>: capital grants to social-housing operators and multi-year agreements are counted in full at vote time here, whereas the consolidated version spreads them over the loan or agreement duration. Per-<b>beneficiary</b> amounts are reliable; the <b>share by theme</b> is not — use this to explore votes, not to compare weights.",
+  'fx.qr.preview.partial': 'partial',
+  'fx.qr.preview.aperçu_label': 'preview, non-consolidated',
+  'fx.qr.preview.extraction': 'extraction in progress',
+  'fx.qr.preview.hors_courbe': 'Off-chart',
+
+  // Source-card / footer text per page
+  'fx.bud.s03.source.cite': 'Ville de Paris · Comptes administratifs M57 (voted + executed series)',
+  'fx.bud.footer.coverage': '2019–2024 executed · 2019–2026 voted.',
+  'fx.qr.s05.source.cite': 'Ville de Paris · Grants paid (CA appendices), 2018–2024 series',
+  'fx.qr.footer.source': 'Source: Ville de Paris — Grants paid, CA appendices (opendata.paris.fr)',
+  'fx.qr.footer.coverage': 'Coverage: 2018–2024. Fiscal years 2020 and 2021 are missing from the upstream open-data set. No geolocation — see "Investments" for located projects.',
+  'fx.mp.s03.source.cite': 'DECP · Essential public procurement data · field offresRecues · year {year}',
+  'fx.mp.s05.source.cite': 'DECP — Ville de Paris · annual cumulative notified caps',
+  'fx.mp.footer.source': 'Source: DECP — Ville de Paris (opendata.paris.fr)',
+  'fx.mp.footer.coverage': 'Coverage: contracts notified since 2013. Amounts shown = maximum contractual caps.',
+  'fx.inv.s01.source.cite': 'Ville de Paris · "Localised Investments" appendices · CA {year}',
+  'fx.inv.s02.source.cite': 'Ville de Paris · Investment appendices to CA {year}, breakdown by M57 chapter',
+  'fx.inv.s03.source.cite': 'Ville de Paris · Investment appendices to CA {year} — projects geocoded via BAN',
+  'fx.inv.s04.source.cite': 'Ville de Paris · Investment appendices to CA {year}',
+  'fx.inv.s05.source.cite': 'Ville de Paris · Localised investments (CA), annual series since 2018',
+  'fx.inv.footer.source': 'Source: Ville de Paris — AP appendices to the CA + "Localised Investments" PDFs',
+  'fx.inv.footer.coverage': 'Coverage: AP OpenData dataset frozen since 2022; 2023–2026 reconstructed by PDF parsing.',
+  'fx.inv.kicker.top1': 'The top item, <b>{label}</b>, alone weighs <b>{amount} M€</b> ({pct} %) for the year.',
+
+  // Generic footer source/coverage labels
+  'fx.footer.source_label': 'Source',
+  'fx.footer.coverage_label': 'Coverage',
+  'fx.bud.footer.source': 'Ville de Paris — Comptes administratifs M57 + Primary Budgets (opendata.paris.fr)',
+
+  // Investissements page hook (kicker)
+  'fx.inv.hook.cite': 'Ville de Paris · "Localised Investments" appendices · CA {year}',
+  'fx.inv.hook.share': "Paris investments {year}: €{total}Bn across {nb} projects — €{perHab} per inhabitant.{topPart}",
+  'fx.inv.hook.share.top': ' Top item: {label} (€{topAmt}M).',
+  'fx.inv.hook.body.intro': "In {year}, Paris invested <b>€{total}Bn</b> across <b>{nb} projects</b> — that is <b>€{perHab} per Parisian</b> over the year.",
+  'fx.inv.hook.body.top': ' The top item, <b>{label}</b>, alone weighs <b>€{topAmt}M</b>.',
+
+  // dette-patrimoine — i18n batch
+  'fx.dp.hook.cite.bilan': 'Ville de Paris · M57 balance sheet {year}',
+  'fx.dp.hook.cite.crc': 'CRC Île-de-France · Report IDR2025-42, October 2025',
+  'fx.dp.hook.share.head': 'Ville de Paris debt {year}: €{total}bn (€{perHab} per inhabitant',
+  'fx.dp.hook.share.delta': ', +{pct}% since 2020',
+  'fx.dp.hook.share.cap.ville': "). Debt-repayment capacity: {ans} years per the City's accounts",
+  'fx.dp.hook.share.cap.crc': ' / {ans} years per the Regional Chamber of Accounts',
+  'fx.dp.hook.share.tail': '. Two readings coexist.',
+  'fx.dp.hook.body.intro': 'In {year}, Paris carries ',
+  'fx.dp.hook.body.md': 'bn',
+  'fx.dp.hook.body.dette': ' of debt — ',
+  'fx.dp.hook.body.perhab': '€ per inhabitant',
+  'fx.dp.hook.body.delta.before': ', up by ',
+  'fx.dp.hook.body.delta.after': '% since 2020',
+  'fx.dp.hook.body.cap.before': '. Debt-repayment capacity: ',
+  'fx.dp.hook.body.cap.ans': ' years',
+  'fx.dp.hook.body.cap.ville': " according to the City's certified accounts",
+  'fx.dp.hook.body.cap.crc.before': ', ',
+  'fx.dp.hook.body.cap.crc.after': ' according to the Regional Chamber of Accounts',
+  'fx.dp.bilan.source': 'Ville de Paris · M57 administrative accounts {year} (consolidated balance sheet)',
+  'fx.dp.dette.source': "Outstanding by instrument: M57 balance sheet · Rate, maturity, fixed/variable mix: Paris Budget Orientation Report {year}",
+  'fx.dp.traj.source': 'Ville de Paris · M57 accounting balance sheet, financial-debt outstanding',
+  'fx.dp.traj.delta_vs': '% vs {year}',
+  'fx.dp.cities.source': 'M57 administrative accounts of large French cities (Lyon, Marseille, Toulouse, Nice, Nantes…)',
+  'fx.dp.hb.source': "Ville de Paris · Appendix IV-B of administrative accounts {year} — loan guarantees to social-housing landlords",
+  'fx.dp.unavailable': 'Unavailable.',
+  'fx.dp.bilan.actif_unavailable': '{label} — unavailable.',
+  'fx.dp.timeline.covid': 'Covid-19',
+  'fx.dp.timeline.jo': 'Olympics',
+  'fx.dp.footer.source': 'Ville de Paris — M57 accounting balance sheet + Budget Orientation Report (opendata.paris.fr)',
+  'fx.dp.footer.coverage': '2019–2024.',
+  'fx.dp.placeholders.a1.cat': 'Analysis',
+  'fx.dp.placeholders.a1.title': "The Paris asset base: €17bn net, and why that figure is approximate.",
+  'fx.dp.placeholders.a1.desc': 'M57 book value vs market value — a gap we cannot quantify, but can explain. What the balance sheet says, and what it does not.',
+  'fx.dp.placeholders.a2.cat': 'Explainer',
+  'fx.dp.placeholders.a2.title': 'Debt-repayment capacity: a figure not to read alone.',
+  'fx.dp.placeholders.a2.desc': '10 years, 12 years, 15 years — what this ratio actually measures, and why it says something other than "how indebted Paris is".',
+
+  // /confidentialite — replay opt-in panel
+  'privacy.replay.title': 'Session recording (optional)',
+  'privacy.replay.on': 'Enabled — thank you, your session is recorded anonymously and masked. Revocable at any time.',
+  'privacy.replay.off': 'Disabled — you can help us spot bugs and UX friction by allowing anonymous recording of your session. Keyboard inputs are masked, no third-party sharing, EU hosting, 30-day retention.',
+
+  // /logement-social — remaining strings (hook block, sources, §06 dashboard, footer, DRIHL methodology)
+  'fx.log.toc.par_arr': 'By arrondissement',
+  'fx.log.hookblock.cite': 'Ville de Paris · Funded social housing {year} (opendata.paris.fr) · DRIHL · Requests and allocations {year}',
+  'fx.log.hookblock.share': 'Social housing Paris {year}: {demandes} households waiting for a unit, {attribs} allocations during the year and {nouveaux} newly funded units. One unit for {ratio} active applicants.',
+  'fx.log.hookblock.body.menages': '{n} households',
+  'fx.log.hookblock.body.attendent': ' are waiting for a social-housing unit in Paris.',
+  'fx.log.hookblock.body.en_year': ' In {year}, the City allocated ',
+  'fx.log.hookblock.body.et_finance': ' and funded',
+  'fx.log.hookblock.body.nouveaux': '{n} newly funded units',
+  'fx.log.hookblock.body.dans': ' across',
+  'fx.log.hookblock.body.arrs': '{n} of 20 arrondissements',
+  'fx.log.hookblock.body.soit': ' — i.e.',
+  'fx.log.hookblock.body.ratio': 'one unit for {ratio} active applicants',
+  'fx.log.s02.source': 'SRU Inventory · Ministry of Housing · Ville de Paris',
+  'fx.log.s04.source': 'Ville de Paris · Funded social housing (CA appendices)',
+  'fx.log.s06b.kind': 'Dashboard',
+  'fx.log.s06b.title.before': 'The waiting line, ',
+  'fx.log.s06b.title.em': 'arrondissement by arrondissement',
+  'fx.log.s06b.title.after': '.',
+  'fx.log.s06b.subtitle': 'How many active requests for 1 allocation in {year}, in each Paris arrondissement. Direct source: DRIHL.',
+  'fx.log.footer.source_label': 'Source:',
+  'fx.log.footer.source_value': 'SRU Inventory (DDT Paris) + funded social housing (opendata.paris.fr)',
+  'fx.log.footer.coverage_label': 'Coverage:',
+  'fx.log.footer.coverage_value': '2001–2024 (funded) · SRU updated annually on 1 January.',
+  'fx.log.methodology.ratio_definition': 'Ratio between active social-housing requests at 31/12 (targeting this area as first choice) and allocations made during the year. A ratio of 20 means: 20 households apply for 1 annual allocation.',
+  'fx.log.methodology.delai_median_caveat': 'The median allocation delay applies ONLY to households that received an allocation. Applicants who give up, move, or stay in the waiting line are not counted. Interpret with caution — survivor bias.',
+
+  // ─────────────────────────────────────────────────────────────────────
+  // i18n cleanup pass — page headers (lede + back links) on dynamic routes
+  // and remaining hardcoded strings inside fiche components.
+  // ─────────────────────────────────────────────────────────────────────
+
+  // Drawer breadcrumb (DetailDrawer)
+  'fx.drawer.crumb.back': '← Back',
+  'fx.drawer.crumb.back_aria': 'Go back to {label}',
+
+  // Page headers — back-links shared
+  'fx.fiche.back.marches': '← Public contracts',
+  'fx.fiche.back.invest': '← Investments',
+  'fx.fiche.back.subventions': '← Grants',
+  'fx.fiche.back.budget': '← Budget',
+  'fx.fiche.back.logement': '← Back to overview',
+
+  // Contrat page header lede
+  'fx.fiche.contrat.lede.prefix': 'Contract',
+  'fx.fiche.contrat.lede.notifie_year': 'notified in {year}',
+  'fx.fiche.contrat.lede.multi': 'multi-award',
+  'fx.fiche.contrat.lede.attribue_a': 'awarded to {fournisseur}',
+  'fx.fiche.contrat.title.fallback': 'Contract without subject',
+  'fx.fiche.contrat.notfound.title': 'Contract not found — France Open Data',
+
+  // Fournisseur page header lede
+  'fx.fiche.fourn.lede.contracts_n': '{n} contracts',
+  'fx.fiche.fourn.lede.notified_by': 'notified by the City of Paris',
+  'fx.fiche.fourn.lede.between': 'between {a} and {b}',
+  'fx.fiche.fourn.lede.cumul_eur': 'cumulative {value} {unit}',
+  'fx.fiche.fourn.notfound.title': 'Supplier not found — France Open Data',
+
+  // Projet page header lede
+  'fx.fiche.projet.lede.exercice': 'Fiscal year {year}',
+  'fx.fiche.projet.notfound.title': 'Project not found — France Open Data',
+
+  // Theme (subventions) page header lede
+  'fx.fiche.theme.lede.benef_n': '{n} beneficiaries',
+  'fx.fiche.theme.lede.subv_n': '{n} grants',
+  'fx.fiche.theme.lede.exercice': 'fiscal year {year}',
+  'fx.fiche.theme.notfound.title': 'Theme not found — France Open Data',
+
+  // Bailleur page header
+  'fx.fiche.bail.kicker.bailleur_type': 'Landlord · {type}',
+  'fx.fiche.bail.kicker.beneficiaire': 'Beneficiary · loan guarantee',
+  'fx.fiche.bail.notfound.title': 'Landlord not found — France Open Data',
+
+  // Categorie marche page header lede
+  'fx.fiche.categorie.lede.contrats_n': '{n} contracts',
+  'fx.fiche.categorie.lede.titulaires_n': '{n} distinct contractors',
+  'fx.fiche.categorie.lede.exercice': 'fiscal year {year}',
+  'fx.fiche.categorie.notfound.title': 'Category not found — France Open Data',
+
+  // Chapitre invest page header lede
+  'fx.fiche.chap.lede.invest': 'Municipal investments',
+  'fx.fiche.chap.lede.exercice': 'Fiscal year {year}',
+  'fx.fiche.chap.lede.projets_n': '{n} projects identified',
+  'fx.fiche.chap.notfound.title': 'Chapter not found — France Open Data',
+
+  // Arrondissement invest page header
+  'fx.fiche.arr_invest.title.suffix': 'arrondissement',
+  'fx.fiche.arr_invest.notfound.title': 'Arrondissement not found — France Open Data',
+
+  // Poste budget page header lede
+  'fx.fiche.poste.kind.depense': 'Expense',
+  'fx.fiche.poste.kind.recette': 'Revenue',
+  'fx.fiche.poste.lede.exercice': 'Fiscal year {year}',
+  'fx.fiche.poste.lede.sous_postes_n': '{n} sub-items identified',
+  'fx.fiche.poste.notfound.title': 'Item not found — France Open Data',
+
+  // Logement social arrondissement page kicker
+  'fx.fiche.log_arr.kicker': 'Social housing · {year}',
+
+  // Generic fallback fiche
+  'fx.fiche.coming_soon': 'Coming soon',
+  'fx.fiche.fourn.no_sirene_pre_link': 'The detailed profile (sector, headcount, directors) is available on the',
+
+  // Contrat fiche — Tip labels (DECP)
+  'fx.fiche.contrat.kpi.plafond': 'Authorized cap',
+  'fx.fiche.contrat.kpi.plafond_tip': 'Maximum amount authorized by the contract (cap). For a framework agreement, this is the maximum that can be ordered over the entire duration — not necessarily what will actually be spent.',
+  'fx.fiche.contrat.kpi.notifie': 'Notified amount',
+  'fx.fiche.contrat.kpi.notifie_tip': 'Amount declared by the City to the State (DECP) when the contract was signed. Often more realistic than the cap for framework agreements, but it is not the actual cumulative spend (not public at the individual contract level).',
+
+  // Contrat fiche — DECP tags (chips below the title)
+  'fx.fiche.contrat.tag.ccag_title': 'Service type (CCAG)',
+  'fx.fiche.contrat.tag.cpv_title': 'Standardized category (CPV)',
+  'fx.fiche.contrat.tag.lieu_title': 'Declared place of execution',
+  'fx.fiche.contrat.tag.offres_singular': '1 single bid received',
+  'fx.fiche.contrat.tag.offres_plural': '{n} bids received',
+  'fx.fiche.contrat.tag.offres_singular_title': 'Only one candidate replied to the tender — signal of weak competition',
+  'fx.fiche.contrat.tag.offres_plural_title': 'Number of bids received by the City during the tender',
+  'fx.fiche.contrat.tag.clauses_sociales': 'Social clauses',
+  'fx.fiche.contrat.tag.clauses_sociales_title': 'The contract contains social clauses (workforce reintegration, etc.)',
+  'fx.fiche.contrat.tag.clauses_env': 'Environmental clauses',
+  'fx.fiche.contrat.tag.clauses_env_title': 'The contract contains environmental clauses',
+
+  // BalanceStack aria
+  'fx.bb.actif_aria': 'assets breakdown',
+  'fx.bb.passif_aria': 'liabilities breakdown',
 };
 
 export default en;

@@ -18,11 +18,19 @@ const OG_TITLE = "Où va l'argent public à Paris ? — France Open Data";
 const OG_DESCRIPTION =
   "Les finances publiques françaises, rendues lisibles. Budget, dépenses, subventions, dette — sourcés, vérifiables, publiés en licence ouverte.";
 
+// NOTE: server-side metadata is FR-canonical because user locale lives in
+// localStorage (client-only — set by the language toggle in the navbar).
+// EN users see French meta tags until/unless we add a `?lang=en` query
+// mechanism; the alternates.languages signals bilingual availability to
+// search engines and link-preview crawlers.
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: OG_TITLE,
   description: OG_DESCRIPTION,
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    languages: { "fr-FR": "/", "en-US": "/" },
+  },
   openGraph: {
     type: "website",
     siteName: "France Open Data",
@@ -30,6 +38,7 @@ export const metadata: Metadata = {
     description: OG_DESCRIPTION,
     url: SITE_URL,
     locale: "fr_FR",
+    alternateLocale: ["en_US"],
   },
   twitter: {
     card: "summary_large_image",

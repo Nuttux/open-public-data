@@ -27,7 +27,7 @@ type QuiRecoitIndex = { availableYears: number[]; previewYears?: number[] };
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.replace(`{${k}}`, String(v));
+  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
   return r;
 };
 
@@ -107,21 +107,8 @@ export default function QuiRecoitClient({
           </div>
           {(idx.previewYears ?? []).includes(d.year) && (
             <div className="fx-preview-banner" role="note">
-              <span className="fx-preview-tag">Aperçu</span>
-              <span>
-                Données {d.year} issues des délibérations du Conseil de Paris,
-                complétées par les transferts structurels du Budget Primitif
-                (CASVP, AGOSPAP, caisses des écoles). Non-consolidées — la
-                version officielle paraît sur data.gouv l&apos;année suivante.
-                {" "}<b>La répartition par thématique diffère sensiblement
-                des années consolidées</b> : les subventions en capital aux
-                bailleurs sociaux et les conventions pluri-annuelles sont
-                ici comptées en totalité au vote, tandis que le consolidé
-                les étale sur la durée des prêts ou des conventions. Les
-                montants par <b>bénéficiaire</b> sont fiables, la
-                <b> part par thème</b> ne l&apos;est pas — à utiliser pour
-                explorer les votes, pas pour comparer les poids.
-              </span>
+              <span className="fx-preview-tag">{t("fx.qr.preview.tag")}</span>
+              <span dangerouslySetInnerHTML={{ __html: fill(t("fx.qr.preview.body"), { year: d.year }) }} />
             </div>
           )}
         </div>
@@ -132,24 +119,28 @@ export default function QuiRecoitClient({
           ? `${fmtMillions(d.medianSubvention, 1)} M€`
           : `${fmtInt(d.medianSubvention / 1_000)} k€`;
         const concentr = Math.round(d.concentrationTop10Pct);
+        const vars = {
+          year: d.year,
+          total: fmtBillions(d.total),
+          nb: fmtInt(d.nbSubventions),
+          median: medianStr,
+          concentr,
+          prev: d.previousYear,
+          pct: fmtDec(Math.abs(d.deltaMontantPct), 1),
+        };
+        const showDelta = !d.isPreview && Math.abs(d.deltaMontantPct) > 1;
+        const deltaKey =
+          d.deltaMontantPct >= 0 ? "fx.qr.hook.body.delta_up" : "fx.qr.hook.body.delta_down";
         return (
           <PageHook
-            cite={<>Ville de Paris · Subventions versées (annexe CA) · {d.year}</>}
-            shareText={
-              `Subventions Ville de Paris ${d.year} : ${fmtBillions(d.total)} Md€ versés via ${fmtInt(d.nbSubventions)} subventions. ` +
-              `Médiane ${medianStr}. Le top 10 concentre ${concentr}% de l'enveloppe.`
-            }
+            cite={fill(t("fx.qr.hook.cite"), { year: d.year })}
+            shareText={fill(t("fx.qr.hook.share"), vars)}
           >
-            En {d.year}, Paris a versé <b>{fmtBillions(d.total)} Md€</b> via{" "}
-            <b>{fmtInt(d.nbSubventions)} subventions</b>
-            {!d.isPreview && Math.abs(d.deltaMontantPct) > 1 ? (
-              <>
-                {" "}({d.deltaMontantPct >= 0 ? "+" : "−"}
-                <b>{fmtDec(Math.abs(d.deltaMontantPct), 1)} %</b> vs {d.previousYear})
-              </>
+            <span dangerouslySetInnerHTML={{ __html: fill(t("fx.qr.hook.body.intro"), vars) }} />
+            {showDelta ? (
+              <span dangerouslySetInnerHTML={{ __html: fill(t(deltaKey), vars) }} />
             ) : null}
-            . La subvention médiane tient à <b>{medianStr}</b> ; le top 10 des
-            bénéficiaires capte à lui seul <b>{concentr} %</b> de l&apos;enveloppe.
+            <span dangerouslySetInnerHTML={{ __html: fill(t("fx.qr.hook.body.tail"), vars) }} />
           </PageHook>
         );
       })()}
@@ -250,7 +241,7 @@ export default function QuiRecoitClient({
             }
           />
           <ChartSource
-            source={<>Ville de Paris · Subventions versées (annexes CA) {d.year}</>}
+            source={fill(t("fx.qr.s02.source.cite"), { year: d.year })}
             dataHref="https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/"
             methodAnchor="subventions"
           />
@@ -314,7 +305,7 @@ export default function QuiRecoitClient({
                   activeYear={activeForChart}
                 />
                 <ChartSource
-                  source={<>Ville de Paris · Subventions versées (annexes CA), séries 2018-2024</>}
+                  source={t("fx.qr.s05.source.cite")}
                   dataHref="https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/"
                   methodAnchor="subventions"
                 />
@@ -469,7 +460,7 @@ export default function QuiRecoitClient({
             <a href="/methode#subventions" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</a>
           </div>
           <p className="fx-footer-sources-meta">
-            <b>Source</b> : Ville de Paris — Subventions versées, annexes CA (opendata.paris.fr) <span className="sep">·</span> <b>Couverture</b> : 2018-2024. Les exercices 2020 et 2021 sont absents du jeu open data amont. Pas de géolocalisation — voir « Investissements » pour les projets localisés.
+            <b>{t("fx.footer.source_label")}</b> : {t("fx.qr.footer.source")} <span className="sep">·</span> <b>{t("fx.footer.coverage_label")}</b> : {t("fx.qr.footer.coverage")}
           </p>
           <ExportRow
             items={[

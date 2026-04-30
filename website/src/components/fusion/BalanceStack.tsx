@@ -35,7 +35,7 @@ function Column({ side, headLeft, headRight, total, segments, legend }: ColumnPr
         <span className="fx-bc-total tnum">{headRight}</span>
       </div>
       {clickable && <div className="fx-bc-hint">{t("fx.bb.click_hint")}</div>}
-      <div className="fx-bc-stack" aria-label={`${side} ventilé`}>
+      <div className="fx-bc-stack" aria-label={t(side === "actif" ? "fx.bb.actif_aria" : "fx.bb.passif_aria")}>
         {segments.map((s, i) => {
           const pct = total > 0 ? (s.value / total) * 100 : 0;
           const isTiny = s.tiny || (pct > 0 && pct < 4);

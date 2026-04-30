@@ -2919,6 +2919,318 @@ const fr: Record<string, string> = {
   // Compact footer sources
   'fx.s.sources_exports': 'Sources & exports',
   'fx.s.methode_complete': 'Méthode complète de cette page →',
+
+  // ── i18n batch — components (PageHook, ExportRow, BudgetTimeline, ReplayOptIn) ─
+  'fx.pagehook.aria': 'Résumé partageable de la page',
+  'fx.pagehook.share': 'Partager',
+  'fx.pagehook.copied': 'Copié ✓',
+  'fx.export.label': 'Téléchargements',
+  'fx.timeline.aria_evolution': 'Évolution du budget {from} à {to}',
+  'fx.timeline.status.exec': 'EXÉC.',
+  'fx.timeline.status.vote': 'VOTÉ',
+  'fx.timeline.status.est': 'EST.',
+  'fx.timeline.badge.exec': 'exéc.',
+  'fx.timeline.badge.vote': 'voté',
+  'fx.timeline.badge.est': 'est.',
+  'fx.replay.thanks': 'Merci — enregistrement activé',
+  'fx.replay.active': 'Enregistrement anonyme activé · désactiver',
+  'fx.replay.inactive': "Aider ce site : autoriser l'enregistrement anonyme",
+  'fx.replay.more': 'détails →',
+
+  // PosteFiche
+  'fx.poste.kind.depense': 'Dépense',
+  'fx.poste.kind.recette': 'Recette',
+  'fx.poste.share.depenses': 'Part du total dépenses',
+  'fx.poste.share.recettes': 'Part du total recettes',
+  'fx.poste.vs_year': 'Vs {year}',
+  'fx.poste.no_subpostes': 'Pas de sous-postes disponibles pour {year}.',
+  'fx.poste.page.lede': '{kind} · Exercice {year} · {n} sous-postes recensés.',
+  'fx.poste.share_text': '{label} — {amount} ({year}, {kind}) · {n} sous-postes.',
+  'fx.poste.kicker.budget': 'Budget',
+  'fx.poste.back': '← Budget',
+  'fx.poste.drawer.kicker': '{kind} · Budget {year}',
+  'fx.poste.notfound.title': 'Poste introuvable — France Open Data',
+  'fx.poste.meta.title': '{label} — Budget {year} · France Open Data',
+  'fx.poste.meta.desc': "{label} — {kind_lower} du budget de Paris pour l'exercice {year}. {n} sous-postes détaillés.",
+
+  // CategorieMarcheFiche
+  'fx.categorie.kpi.enveloppe_max': 'Enveloppe max {year}',
+  'fx.categorie.kpi.share_paris': 'Part du total Paris',
+  'fx.categorie.kpi.contrats': 'Contrats',
+  'fx.categorie.kpi.titulaires': 'Titulaires distincts',
+  'fx.categorie.top_contrats': '10 plus gros marchés de la catégorie · {year}',
+  'fx.categorie.col.objet': 'Objet',
+  'fx.categorie.col.titulaire': 'Titulaire',
+  'fx.categorie.col.enveloppe': 'Enveloppe',
+  'fx.categorie.top_titulaires': 'Top titulaires · part de la catégorie',
+  'fx.categorie.contrats_count_one': '{n} contrat',
+  'fx.categorie.contrats_count_many': '{n} contrats',
+  'fx.categorie.share_of_category': '{pct} % de la catégorie',
+
+  // ProjetFiche extra
+  'fx.fiche.projet.entreprises': 'Entreprises identifiées',
+  'fx.fiche.projet.entreprises_auto': 'rapprochement auto ⓘ',
+  'fx.fiche.projet.entreprises_auto_title': "Rapprochement automatique projet d'investissement ↔ marchés publics par analyse des libellés et métadonnées. Peut contenir des erreurs ou manquer certains fournisseurs (travaux en régie, marchés < 40 k€, accords-cadres multi-sites non attribuables à un projet précis).",
+  'fx.fiche.projet.entreprises_intro': "Ces marchés publics semblent contribuer à la réalisation de ce projet. <b>Ce rapprochement est automatique</b> et peut contenir des erreurs — toujours vérifier l'objet du marché.",
+  'fx.fiche.projet.confidence.confirmed': 'Confirmé',
+  'fx.fiche.projet.confidence.probable': 'Probable',
+  'fx.fiche.projet.fournisseur_unknown': 'Fournisseur non renseigné',
+
+  // TensionParArrondissement
+  'fx.tension.demands_active': 'Demandes actives',
+  'fx.tension.attributions': 'Attributions',
+  'fx.tension.tension_paris': 'Tension Paris global',
+  'fx.tension.demands_per_one': 'demandes pour 1 attribution',
+  'fx.tension.delai_median': 'Délai médian ⚠️',
+  'fx.tension.delai_caveat_unit': 'mois — uniquement pour les attribués',
+  'fx.tension.col.arr': 'Arrondissement',
+  'fx.tension.col.ratio': 'Demandes pour 1 attribution',
+  'fx.tension.arr_label_first': '1er arrondissement',
+  'fx.tension.arr_label_other': '{n}e arrondissement',
+  'fx.tension.method_h': 'Méthode.',
+  'fx.tension.delai_h': 'À savoir sur le délai médian.',
+  'fx.tension.source_prefix': 'Source :',
+  'fx.tension.source_year_suffix': '· année de référence {year}',
+  'fx.tension.note.at_31_12': 'au 31/12/{year}',
+  'fx.tension.note.in': 'en {year}',
+
+  // WaffleTheme
+  'fx.waffle.aria': '100 cases représentant 100 % des subventions par thématique',
+  'fx.waffle.tip_top10': 'dans les 10 plus gros bénéficiaires',
+  'fx.waffle.kicker': 'Sur chaque 100 € de subventions versées en {year}',
+  'fx.waffle.pareto': 'À eux seuls, les <b>10 plus gros bénéficiaires</b> captent <b>{pct} €</b> sur 100.',
+
+  // AssociationFiche
+  'fx.fiche.asso.activity_h': 'Activité',
+  'fx.fiche.asso.scope_label': 'Périmètre',
+  'fx.fiche.asso.sources_label': 'Sources',
+
+  // Page kickers (dynamic kicker quote on /budget /qui-recoit /marches-publics)
+  'fx.bud.hook.cite': 'Ville de Paris · Comptes administratifs M57 · exercice {year}',
+  'fx.bud.hook.share': 'Budget Ville de Paris {year} : {depenses} Md€ dépensés, {perHab} € par habitant. {pctFonct}% couvrent le quotidien (salaires, écoles, services), {pctInvest}% financent les chantiers.',
+  'fx.bud.hook.body.l1': 'En {year}, Paris dépense <b>{depenses} Md€</b> — soit <b>{perHab} € par habitant</b>.',
+  'fx.bud.hook.body.l2': 'Sur ces 100 €, <b>{pctFonct}</b> couvrent le quotidien (salaires, écoles, services), <b>{pctInvest}</b> financent les chantiers en cours.',
+  'fx.qr.hook.cite': 'Ville de Paris · Subventions versées (annexe CA) · {year}',
+  'fx.qr.hook.share': "Subventions Ville de Paris {year} : {total} Md€ versés via {nb} subventions. Médiane {median}. Le top 10 concentre {concentr}% de l'enveloppe.",
+  'fx.qr.hook.body.intro': 'En {year}, Paris a versé <b>{total} Md€</b> via <b>{nb} subventions</b>',
+  'fx.qr.hook.body.delta_up': ' (+<b>{pct} %</b> vs {prev})',
+  'fx.qr.hook.body.delta_down': ' (−<b>{pct} %</b> vs {prev})',
+  'fx.qr.hook.body.tail': ". La subvention médiane tient à <b>{median}</b> ; le top 10 des bénéficiaires capte à lui seul <b>{concentr} %</b> de l'enveloppe.",
+  'fx.mp.hook.cite': 'DECP · Données essentielles de la commande publique · Ville de Paris · {year}',
+  'fx.mp.hook.share': "Marchés publics Ville de Paris {year} : {total} Md€ d'enveloppes contractuelles via {nb} contrats passés avec {nbT} fournisseurs. Top 10 = {top10}%.",
+  'fx.mp.hook.body': "En {year}, Paris a notifié <b>{total} Md€</b> d'enveloppes contractuelles via <b>{nb} contrats</b> passés avec <b>{nbT} fournisseurs</b> distincts — top 10 à <b>{top10} %</b> du total.",
+
+  // Source-card cite labels (used by ChartSource on each section)
+  'fx.qr.s02.source.cite': 'Ville de Paris · Subventions versées (annexes CA) {year}',
+  'fx.mp.s02.source.cite': 'DECP · Données essentielles de la commande publique · Ville de Paris',
+
+  // QuiRecoit preview banner (year not yet consolidated)
+  'fx.qr.preview.tag': 'Aperçu',
+  'fx.qr.preview.body': "Données {year} issues des délibérations du Conseil de Paris, complétées par les transferts structurels du Budget Primitif (CASVP, AGOSPAP, caisses des écoles). Non-consolidées — la version officielle paraît sur data.gouv l'année suivante. <b>La répartition par thématique diffère sensiblement des années consolidées</b> : les subventions en capital aux bailleurs sociaux et les conventions pluri-annuelles sont ici comptées en totalité au vote, tandis que le consolidé les étale sur la durée des prêts ou des conventions. Les montants par <b>bénéficiaire</b> sont fiables, la <b>part par thème</b> ne l'est pas — à utiliser pour explorer les votes, pas pour comparer les poids.",
+  'fx.qr.preview.partial': 'partiel',
+  'fx.qr.preview.aperçu_label': 'aperçu non consolidé',
+  'fx.qr.preview.extraction': 'extraction en cours',
+  'fx.qr.preview.hors_courbe': 'Hors courbe',
+
+  // Source-card / footer text per page
+  'fx.bud.s03.source.cite': 'Ville de Paris · Comptes administratifs M57 (séries voté + exécuté)',
+  'fx.bud.footer.coverage': '2019-2024 exécuté · 2019-2026 voté.',
+  'fx.qr.s05.source.cite': 'Ville de Paris · Subventions versées (annexes CA), séries 2018-2024',
+  'fx.qr.footer.source': 'Source : Ville de Paris — Subventions versées, annexes CA (opendata.paris.fr)',
+  'fx.qr.footer.coverage': "Couverture : 2018-2024. Les exercices 2020 et 2021 sont absents du jeu open data amont. Pas de géolocalisation — voir « Investissements » pour les projets localisés.",
+  'fx.mp.s03.source.cite': 'DECP · Données essentielles de la commande publique · champ offresRecues · année {year}',
+  'fx.mp.s05.source.cite': 'DECP — Ville de Paris · cumul annuel des plafonds notifiés',
+  'fx.mp.footer.source': 'Source : DECP — Ville de Paris (opendata.paris.fr)',
+  'fx.mp.footer.coverage': 'Couverture : marchés notifiés depuis 2013. Montants affichés = plafonds contractuels maximaux.',
+  'fx.inv.s01.source.cite': 'Ville de Paris · Annexes « Investissements localisés » · CA {year}',
+  'fx.inv.s02.source.cite': 'Ville de Paris · Annexes investissement au CA {year}, ventilation par chapitre M57',
+  'fx.inv.s03.source.cite': 'Ville de Paris · Annexes investissement au CA {year} — projets géocodés via BAN',
+  'fx.inv.s04.source.cite': 'Ville de Paris · Annexes investissement au CA {year}',
+  'fx.inv.s05.source.cite': 'Ville de Paris · Investissements localisés (CA), série annuelle depuis 2018',
+  'fx.inv.footer.source': 'Source : Ville de Paris — Annexes AP du CA + PDF « Investissements Localisés »',
+  'fx.inv.footer.coverage': 'Couverture : dataset AP OpenData gelé depuis 2022 ; 2023-2026 reconstitués par parsing PDF.',
+  'fx.inv.kicker.top1': "Le premier poste, <b>{label}</b>, pèse à lui seul <b>{amount} M€</b> ({pct} %) sur l'année.",
+
+  // Generic footer source/coverage labels
+  'fx.footer.source_label': 'Source',
+  'fx.footer.coverage_label': 'Couverture',
+  'fx.bud.footer.source': 'Ville de Paris — Comptes administratifs M57 + Budgets primitifs (opendata.paris.fr)',
+
+  // Investissements page hook (kicker)
+  'fx.inv.hook.cite': 'Ville de Paris · Annexes « Investissements localisés » · CA {year}',
+  'fx.inv.hook.share': "Investissements Ville de Paris {year} : {total} Md€ sur {nb} projets — {perHab} € par habitant.{topPart}",
+  'fx.inv.hook.share.top': ' Premier poste : {label} ({topAmt} M€).',
+  'fx.inv.hook.body.intro': "En {year}, Paris a investi <b>{total} Md€</b> sur <b>{nb} projets</b> — soit <b>{perHab} € par Parisien</b> sur l'année.",
+  'fx.inv.hook.body.top': ' Le premier poste, <b>{label}</b>, pèse à lui seul <b>{topAmt} M€</b>.',
+
+  // dette-patrimoine — i18n batch
+  'fx.dp.hook.cite.bilan': 'Ville de Paris · Bilan M57 {year}',
+  'fx.dp.hook.cite.crc': 'CRC Île-de-France · Rapport IDR2025-42, octobre 2025',
+  'fx.dp.hook.share.head': 'Dette Ville de Paris {year} : {total} Md€ ({perHab} € par habitant',
+  'fx.dp.hook.share.delta': ', +{pct}% depuis 2020',
+  'fx.dp.hook.share.cap.ville': '). Capacité de désendettement : {ans} ans selon la Ville',
+  'fx.dp.hook.share.cap.crc': ' / {ans} ans selon la Chambre régionale des comptes',
+  'fx.dp.hook.share.tail': '. Deux lectures coexistent.',
+  'fx.dp.hook.body.intro': 'En {year}, Paris porte ',
+  'fx.dp.hook.body.md': ' Md€',
+  'fx.dp.hook.body.dette': ' de dette — ',
+  'fx.dp.hook.body.perhab': ' € par habitant',
+  'fx.dp.hook.body.delta.before': ', en hausse de ',
+  'fx.dp.hook.body.delta.after': ' % depuis 2020',
+  'fx.dp.hook.body.cap.before': '. Capacité de désendettement : ',
+  'fx.dp.hook.body.cap.ans': ' ans',
+  'fx.dp.hook.body.cap.ville': ' selon les comptes certifiés de la Ville',
+  'fx.dp.hook.body.cap.crc.before': ', ',
+  'fx.dp.hook.body.cap.crc.after': ' selon la Chambre régionale des comptes',
+  'fx.dp.bilan.source': 'Ville de Paris · Compte administratif M57 {year} (bilan consolidé)',
+  'fx.dp.dette.source': "Encours par instrument : bilan M57 · Taux, maturité, structure fixe/variable : Rapport d'Orientation Budgétaire Paris {year}",
+  'fx.dp.traj.source': 'Ville de Paris · Bilan comptable M57, encours de dette financière',
+  'fx.dp.traj.delta_vs': '% vs {year}',
+  'fx.dp.cities.source': 'Comptes administratifs M57 des grandes villes françaises (Lyon, Marseille, Toulouse, Nice, Nantes…)',
+  'fx.dp.hb.source': "Ville de Paris · Annexe IV-B du compte administratif {year} — garanties d'emprunt aux bailleurs sociaux",
+  'fx.dp.unavailable': 'Indisponible.',
+  'fx.dp.bilan.actif_unavailable': '{label} — indisponible.',
+  'fx.dp.timeline.covid': 'Covid-19',
+  'fx.dp.timeline.jo': 'JO',
+  'fx.dp.footer.source': 'Ville de Paris — Bilan comptable M57 + Rapport d\'Orientation Budgétaire (opendata.paris.fr)',
+  'fx.dp.footer.coverage': '2019-2024.',
+  'fx.dp.placeholders.a1.cat': 'Analyse',
+  'fx.dp.placeholders.a1.title': 'Le patrimoine parisien : 17 Md€ nets, et pourquoi c\'est approximatif.',
+  'fx.dp.placeholders.a1.desc': 'Valeur comptable M57 vs valeur de marché — un écart qu\'on ne peut pas chiffrer, mais qu\'on peut expliquer. Ce que le bilan dit, et ne dit pas.',
+  'fx.dp.placeholders.a2.cat': 'Explication',
+  'fx.dp.placeholders.a2.title': 'Capacité de désendettement : le chiffre à ne pas lire seul.',
+  'fx.dp.placeholders.a2.desc': '10 ans, 12 ans, 15 ans — ce que ce ratio mesure vraiment, et pourquoi il dit autre chose que « combien Paris est endettée ».',
+
+  // /confidentialite — replay opt-in panel
+  'privacy.replay.title': 'Enregistrement de session (optionnel)',
+  'privacy.replay.on': "Activé — merci, votre session est enregistrée de façon anonyme et masquée. Révocable à tout moment.",
+  'privacy.replay.off': "Désactivé — vous pouvez nous aider à repérer les bugs et friction UX en autorisant l'enregistrement anonyme de votre session. Les saisies clavier sont masquées, aucun partage tiers, hébergement UE, rétention 30 jours.",
+
+  // /logement-social — strings restants (hook block, sources, §06 dashboard, footer, méthodologie DRIHL)
+  'fx.log.toc.par_arr': 'Par arrondissement',
+  'fx.log.hookblock.cite': 'Ville de Paris · Logements sociaux financés {year} (opendata.paris.fr) · DRIHL · Demandes et attributions {year}',
+  'fx.log.hookblock.share': "Logement social Paris {year} : {demandes} ménages en attente d'un HLM, {attribs} attributions sur l'année et {nouveaux} nouveaux logements financés. Un HLM pour {ratio} demandeurs actifs.",
+  'fx.log.hookblock.body.menages': '{n} ménages',
+  'fx.log.hookblock.body.attendent': ' attendent un HLM à Paris.',
+  'fx.log.hookblock.body.en_year': ' En {year}, la Ville en a attribué ',
+  'fx.log.hookblock.body.et_finance': ' et financé',
+  'fx.log.hookblock.body.nouveaux': '{n} nouveaux logements',
+  'fx.log.hookblock.body.dans': ' dans',
+  'fx.log.hookblock.body.arrs': '{n} arrondissements sur 20',
+  'fx.log.hookblock.body.soit': ' — soit',
+  'fx.log.hookblock.body.ratio': 'un HLM pour {ratio} demandeurs actifs',
+  'fx.log.s02.source': 'Inventaire SRU · Ministère du Logement · Ville de Paris',
+  'fx.log.s04.source': 'Ville de Paris · Logements sociaux financés (annexes CA)',
+  'fx.log.s06b.kind': 'Dashboard',
+  'fx.log.s06b.title.before': "La file d'attente, ",
+  'fx.log.s06b.title.em': 'arrondissement par arrondissement',
+  'fx.log.s06b.title.after': '.',
+  'fx.log.s06b.subtitle': 'Combien de demandes actives pour 1 attribution en {year}, dans chaque arrondissement de Paris. Source directe : DRIHL.',
+  'fx.log.footer.source_label': 'Source :',
+  'fx.log.footer.source_value': 'Inventaire SRU (DDT Paris) + logements sociaux financés (opendata.paris.fr)',
+  'fx.log.footer.coverage_label': 'Couverture :',
+  'fx.log.footer.coverage_value': '2001-2024 (financés) · SRU mis à jour annuellement au 1ᵉʳ janvier.',
+  'fx.log.methodology.ratio_definition': "Rapport entre demandes actives de logement social au 31/12 (ciblant ce territoire en choix 1) et attributions réalisées dans l'année. Un ratio de 20 signifie : 20 ménages demandent pour 1 attribution annuelle.",
+  'fx.log.methodology.delai_median_caveat': "Le délai médian d'attribution ne concerne QUE les ménages ayant été attribués. Les demandeurs qui renoncent, déménagent ou restent en file d'attente ne sont pas comptés. Indicateur à interpréter avec prudence — biais du survivant.",
+
+  // ─────────────────────────────────────────────────────────────────────
+  // i18n cleanup pass — page headers (lede + back links) on dynamic routes
+  // and remaining hardcoded strings inside fiche components.
+  // ─────────────────────────────────────────────────────────────────────
+
+  // Drawer breadcrumb (DetailDrawer)
+  'fx.drawer.crumb.back': '← Retour',
+  'fx.drawer.crumb.back_aria': 'Revenir à {label}',
+
+  // Page headers — back-links shared
+  'fx.fiche.back.marches': '← Marchés publics',
+  'fx.fiche.back.invest': '← Investissements',
+  'fx.fiche.back.subventions': '← Subventions',
+  'fx.fiche.back.budget': '← Budget',
+  'fx.fiche.back.logement': '← Revenir à la vue d\'ensemble',
+
+  // Contrat page header lede
+  'fx.fiche.contrat.lede.prefix': 'Marché',
+  'fx.fiche.contrat.lede.notifie_year': 'notifié en {year}',
+  'fx.fiche.contrat.lede.multi': 'multi-attributaire',
+  'fx.fiche.contrat.lede.attribue_a': 'attribué à {fournisseur}',
+  'fx.fiche.contrat.title.fallback': 'Marché sans objet',
+  'fx.fiche.contrat.notfound.title': 'Contrat introuvable — France Open Data',
+
+  // Fournisseur page header lede
+  'fx.fiche.fourn.lede.contracts_n': '{n} contrats',
+  'fx.fiche.fourn.lede.notified_by': 'notifiés par la Ville de Paris',
+  'fx.fiche.fourn.lede.between': 'entre {a} et {b}',
+  'fx.fiche.fourn.lede.cumul_eur': 'cumul {value} {unit}',
+  'fx.fiche.fourn.notfound.title': 'Fournisseur introuvable — France Open Data',
+
+  // Projet page header lede
+  'fx.fiche.projet.lede.exercice': 'Exercice {year}',
+  'fx.fiche.projet.notfound.title': 'Projet introuvable — France Open Data',
+
+  // Theme (subventions) page header lede
+  'fx.fiche.theme.lede.benef_n': '{n} bénéficiaires',
+  'fx.fiche.theme.lede.subv_n': '{n} subventions',
+  'fx.fiche.theme.lede.exercice': 'exercice {year}',
+  'fx.fiche.theme.notfound.title': 'Thématique introuvable — France Open Data',
+
+  // Bailleur page header
+  'fx.fiche.bail.kicker.bailleur_type': 'Bailleur · {type}',
+  'fx.fiche.bail.kicker.beneficiaire': 'Bénéficiaire · garantie d\'emprunt',
+  'fx.fiche.bail.notfound.title': 'Bailleur introuvable — France Open Data',
+
+  // Categorie marche page header lede
+  'fx.fiche.categorie.lede.contrats_n': '{n} contrats',
+  'fx.fiche.categorie.lede.titulaires_n': '{n} titulaires distincts',
+  'fx.fiche.categorie.lede.exercice': 'exercice {year}',
+  'fx.fiche.categorie.notfound.title': 'Catégorie introuvable — France Open Data',
+
+  // Chapitre invest page header lede
+  'fx.fiche.chap.lede.invest': 'Investissements municipaux',
+  'fx.fiche.chap.lede.exercice': 'Exercice {year}',
+  'fx.fiche.chap.lede.projets_n': '{n} projets recensés',
+  'fx.fiche.chap.notfound.title': 'Chapitre introuvable — France Open Data',
+
+  // Arrondissement invest page header
+  'fx.fiche.arr_invest.title.suffix': 'arrondissement',
+  'fx.fiche.arr_invest.notfound.title': 'Arrondissement introuvable — France Open Data',
+
+  // Poste budget page header lede
+  'fx.fiche.poste.kind.depense': 'Dépense',
+  'fx.fiche.poste.kind.recette': 'Recette',
+  'fx.fiche.poste.lede.exercice': 'Exercice {year}',
+  'fx.fiche.poste.lede.sous_postes_n': '{n} sous-postes recensés',
+  'fx.fiche.poste.notfound.title': 'Poste introuvable — France Open Data',
+
+  // Logement social arrondissement page kicker
+  'fx.fiche.log_arr.kicker': 'Logement social · {year}',
+
+  // Generic fallback fiche
+  'fx.fiche.coming_soon': 'À venir',
+  'fx.fiche.fourn.no_sirene_pre_link': 'Le profil détaillé (secteur, effectifs, dirigeants) est disponible sur l\'',
+
+  // Contrat fiche — Tip labels (DECP)
+  'fx.fiche.contrat.kpi.plafond': 'Plafond autorisé',
+  'fx.fiche.contrat.kpi.plafond_tip': 'Montant maximum autorisé par le contrat (plafond). Pour un accord-cadre, c\'est la somme maximum pouvant être commandée sur toute la durée — pas nécessairement ce qui sera réellement dépensé.',
+  'fx.fiche.contrat.kpi.notifie': 'Montant notifié',
+  'fx.fiche.contrat.kpi.notifie_tip': 'Montant déclaré par la Ville à l\'État (DECP) lors de la signature du contrat. Souvent plus réaliste que le plafond pour les accords-cadres, mais ce n\'est pas le cumul réel des commandes (non-public au niveau du contrat individuel).',
+
+  // Contrat fiche — DECP tags (chips below the title)
+  'fx.fiche.contrat.tag.ccag_title': 'Type de prestation (CCAG)',
+  'fx.fiche.contrat.tag.cpv_title': 'Catégorie standardisée (CPV)',
+  'fx.fiche.contrat.tag.lieu_title': 'Lieu d\'exécution déclaré',
+  'fx.fiche.contrat.tag.offres_singular': '1 seule offre reçue',
+  'fx.fiche.contrat.tag.offres_plural': '{n} offres reçues',
+  'fx.fiche.contrat.tag.offres_singular_title': 'Un seul candidat a répondu à l\'appel d\'offres — signal de faible concurrence',
+  'fx.fiche.contrat.tag.offres_plural_title': 'Nombre d\'offres reçues par la Ville lors de l\'appel d\'offres',
+  'fx.fiche.contrat.tag.clauses_sociales': 'Clauses sociales',
+  'fx.fiche.contrat.tag.clauses_sociales_title': 'Le marché contient des clauses sociales (insertion, etc.)',
+  'fx.fiche.contrat.tag.clauses_env': 'Clauses environnementales',
+  'fx.fiche.contrat.tag.clauses_env_title': 'Le marché contient des clauses environnementales',
+
+  // BalanceStack aria
+  'fx.bb.actif_aria': 'actif ventilé',
+  'fx.bb.passif_aria': 'passif ventilé',
 };
 
 export default fr;

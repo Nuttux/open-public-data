@@ -25,7 +25,7 @@ import { slugifyBailleur } from "@/lib/projet-utils";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.replace(`{${k}}`, String(v));
+  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
   return r;
 };
 
@@ -131,7 +131,7 @@ export default function LogementSocialClient({
           { id: "sec-territoire", label: t("fx.log.s02.kind") },
           { id: "sec-production", label: t("fx.toc.production") },
           { id: "sec-tension", label: t("fx.toc.tension") },
-          { id: "sec-tension-arr", label: "Par arrondissement" },
+          { id: "sec-tension-arr", label: t("fx.log.toc.par_arr") },
           { id: "sec-analyses", label: t("fx.toc.analyses") },
           { id: "sec-explorer", label: t("fx.toc.explorer") },
           { id: "sec-sources", label: t("fx.toc.sources") },
@@ -179,21 +179,27 @@ export default function LogementSocialClient({
           <PageHook
             cite={
               <>
-                Ville de Paris · Logements sociaux financés {d.year} (opendata.paris.fr){" · "}
-                DRIHL · Demandes et attributions {d.year}
+                {fill(t("fx.log.hookblock.cite"), { year: d.year })}
               </>
             }
-            shareText={
-              `Logement social Paris ${d.year} : ${fmtInt(demandes)} ménages en attente d'un HLM, ` +
-              `${fmtInt(attribs)} attributions sur l'année et ${fmtInt(d.nouveauxParAn)} nouveaux logements financés. ` +
-              `Un HLM pour ${ratio} demandeurs actifs.`
-            }
+            shareText={fill(t("fx.log.hookblock.share"), {
+              year: d.year,
+              demandes: fmtInt(demandes),
+              attribs: fmtInt(attribs),
+              nouveaux: fmtInt(d.nouveauxParAn),
+              ratio,
+            })}
           >
-            <b>{fmtInt(demandes)} ménages</b> attendent un HLM à Paris. En {d.year},
-            la Ville en a attribué <b>{fmtInt(attribs)}</b> et financé{" "}
-            <b>{fmtInt(d.nouveauxParAn)} nouveaux logements</b> dans{" "}
-            <b>{arrsCouverts} arrondissements sur 20</b> — soit{" "}
-            <b>un HLM pour {ratio} demandeurs actifs</b>.
+            <b>{fill(t("fx.log.hookblock.body.menages"), { n: fmtInt(demandes) })}</b>
+            {t("fx.log.hookblock.body.attendent")}
+            {fill(t("fx.log.hookblock.body.en_year"), { year: d.year })}
+            <b>{fmtInt(attribs)}</b>
+            {t("fx.log.hookblock.body.et_finance")}{" "}
+            <b>{fill(t("fx.log.hookblock.body.nouveaux"), { n: fmtInt(d.nouveauxParAn) })}</b>
+            {t("fx.log.hookblock.body.dans")}{" "}
+            <b>{fill(t("fx.log.hookblock.body.arrs"), { n: arrsCouverts })}</b>
+            {t("fx.log.hookblock.body.soit")}{" "}
+            <b>{fill(t("fx.log.hookblock.body.ratio"), { ratio })}</b>.
           </PageHook>
         );
       })()}
@@ -330,7 +336,7 @@ export default function LogementSocialClient({
           />
           <p className="fx-mini-note">{t("fx.log.s02.paris_centre_note")}</p>
           <ChartSource
-            source={<>Inventaire SRU · Ministère du Logement · Ville de Paris</>}
+            source={<>{t("fx.log.s02.source")}</>}
             dataHref="https://www.ecologie.gouv.fr/article-55-loi-solidarite-renouvellement-urbain-sru"
             methodAnchor="logement-social"
           />
@@ -381,7 +387,7 @@ export default function LogementSocialClient({
             <b>{t("fx.s.limite")}</b> : {t("fx.log.s04.note")}
           </p>
           <ChartSource
-            source={<>Ville de Paris · Logements sociaux financés (annexes CA)</>}
+            source={<>{t("fx.log.s04.source")}</>}
             dataHref="https://opendata.paris.fr/explore/dataset/logements-sociaux-finances-a-paris/"
             methodAnchor="logement-social"
           />
@@ -447,13 +453,15 @@ export default function LogementSocialClient({
         <div className="fx-wrap">
           <SectionHead
             number="06"
-            kind="Dashboard"
+            kind={t("fx.log.s06b.kind")}
             title={
               <>
-                La file d'attente, <em>arrondissement par arrondissement</em>.
+                {t("fx.log.s06b.title.before")}
+                <em>{t("fx.log.s06b.title.em")}</em>
+                {t("fx.log.s06b.title.after")}
               </>
             }
-            subtitle={`Combien de demandes actives pour 1 attribution en ${d.tension.year}, dans chaque arrondissement de Paris. Source directe : DRIHL.`}
+            subtitle={fill(t("fx.log.s06b.subtitle"), { year: d.tension.year })}
           />
           <TensionParArrondissement
             year={d.tension.year}
@@ -461,7 +469,10 @@ export default function LogementSocialClient({
             sourceUrl={d.tension.sourceUrl}
             paris={d.tension.paris}
             parArrondissement={d.tension.parArrondissement}
-            methodology={d.tension.methodology}
+            methodology={{
+              ratioDefinition: t("fx.log.methodology.ratio_definition"),
+              delaiMedianCaveat: t("fx.log.methodology.delai_median_caveat"),
+            }}
           />
         </div>
       </section>
@@ -553,7 +564,7 @@ export default function LogementSocialClient({
             <a href="/methode#logement-social" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</a>
           </div>
           <p className="fx-footer-sources-meta">
-            <b>Source</b> : Inventaire SRU (DDT Paris) + logements sociaux financés (opendata.paris.fr) <span className="sep">·</span> <b>Couverture</b> : 2001-2024 (financés) · SRU mis à jour annuellement au 1ᵉʳ janvier.
+            <b>{t("fx.log.footer.source_label")}</b> {t("fx.log.footer.source_value")} <span className="sep">·</span> <b>{t("fx.log.footer.coverage_label")}</b> {t("fx.log.footer.coverage_value")}
           </p>
           <ExportRow
             items={[

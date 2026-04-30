@@ -340,11 +340,13 @@ export default function LandingClient({ stats, posts }: Props) {
                     </div>
                   )}
                   <div className="fx-analyses-body">
-                    {p.category && (
-                      <span className="fx-analyses-cat">{p.category}</span>
-                    )}
-                    <h3 className="fx-analyses-title">{p.title}</h3>
-                    <p className="fx-analyses-desc">{p.description}</p>
+                    {(locale === "en" && p.category_en) || p.category ? (
+                      <span className="fx-analyses-cat">
+                        {locale === "en" && p.category_en ? p.category_en : p.category}
+                      </span>
+                    ) : null}
+                    <h3 className="fx-analyses-title">{locale === "en" && p.title_en ? p.title_en : p.title}</h3>
+                    <p className="fx-analyses-desc">{locale === "en" && p.description_en ? p.description_en : p.description}</p>
                     <div className="fx-analyses-foot">
                       <span>
                         {new Date(p.date).toLocaleDateString(

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { ReactNode } from "react";
+import { useT } from "@/lib/localeContext";
 
 type Props = {
   /** Claim éditorial avec chiffres `<b>` embeddés. */
@@ -23,6 +24,7 @@ type Props = {
  * première `<section className="fx-section">` numérotée.
  */
 export default function PageHook({ children, cite, shareText, shareUrl }: Props) {
+  const t = useT();
   const [copied, setCopied] = useState(false);
 
   const onShare = async () => {
@@ -49,7 +51,7 @@ export default function PageHook({ children, cite, shareText, shareUrl }: Props)
   };
 
   return (
-    <section className="fx-page-hook" aria-label="Résumé partageable de la page">
+    <section className="fx-page-hook" aria-label={t("fx.pagehook.aria")}>
       <div className="fx-wrap">
         <blockquote className="fx-pull-quote fx-page-hook-quote">
           <p>{children}</p>
@@ -62,7 +64,7 @@ export default function PageHook({ children, cite, shareText, shareUrl }: Props)
             onClick={onShare}
             aria-live="polite"
           >
-            {copied ? "Copié ✓" : "Partager"}
+            {copied ? t("fx.pagehook.copied") : t("fx.pagehook.share")}
           </button>
         </div>
       </div>
