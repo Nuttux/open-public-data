@@ -8,6 +8,7 @@ export type Locale = 'fr' | 'en';
 
 const DICTIONARIES: Record<Locale, Record<string, string>> = { fr, en };
 const STORAGE_KEY = 'dl_locale';
+const COOKIE_KEY = 'dl_locale';
 
 interface LocaleContextValue {
   locale: Locale;
@@ -21,20 +22,34 @@ const LocaleContext = createContext<LocaleContextValue>({
   t: (key) => key,
 });
 
+function writeCookie(value: Locale) {
+  if (typeof document === 'undefined') return;
+  // 1 year, root path. Lax SameSite is the right default for a same-site preference.
+  const oneYear = 60 * 60 * 24 * 365;
+  document.cookie = `${COOKIE_KEY}=${value}; max-age=${oneYear}; path=/; SameSite=Lax`;
+}
+
 export function LocaleProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>('fr');
 
-  // Hydrate from localStorage once on mount
+  // Hydrate from localStorage once on mount, and mirror to cookie so server-side
+  // generateMetadata() can read it via next/headers cookies().
   useEffect(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored === 'en') setLocaleState('en');
+      if (stored === 'en') {
+        setLocaleState('en');
+        writeCookie('en');
+      } else if (stored === 'fr') {
+        writeCookie('fr');
+      }
     } catch { /* SSR / private browsing */ }
   }, []);
 
   const setLocale = useCallback((l: Locale) => {
     setLocaleState(l);
     try { localStorage.setItem(STORAGE_KEY, l); } catch { /* ignore */ }
+    writeCookie(l);
   }, []);
 
   const t = useCallback(
