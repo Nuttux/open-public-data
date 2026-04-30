@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useT } from "@/lib/localeContext";
 import {
   enableReplay,
   disableReplay,
@@ -18,6 +19,7 @@ import {
  * PostHog session recording live without reload.
  */
 export default function ReplayOptIn() {
+  const t = useT();
   const [mounted, setMounted] = useState(false);
   const [on, setOn] = useState(false);
   const [optedOut, setOptedOut] = useState(false);
@@ -58,13 +60,13 @@ export default function ReplayOptIn() {
         <span className="fx-replay-label">
           {on
             ? confirming
-              ? "Merci — enregistrement activé"
-              : "Enregistrement anonyme activé · désactiver"
-            : "Aider ce site : autoriser l'enregistrement anonyme"}
+              ? t("fx.replay.thanks")
+              : t("fx.replay.active")
+            : t("fx.replay.inactive")}
         </span>
       </button>
       <Link href="/confidentialite" className="fx-replay-more">
-        détails →
+        {t("fx.replay.more")}
       </Link>
     </div>
   );

@@ -68,31 +68,36 @@ export default function RelatedArticles({
           subtitle={t("fx.s.analyses.sub")}
         />
         <div className="fx-articles-grid">
-          {visiblePosts.map((p) => (
-            <Link key={p.slug} href={`/analyses/${p.slug}`} className="fx-article-card">
-              <div className="fx-article-photo">
-                <div className="fx-article-photo-placeholder" aria-hidden="true" />
-                {p.image && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img className="fx-photo-img" src={p.image} alt="" loading="lazy" />
-                )}
-                <span className={`fx-photo-tag fx-tag-${categorySlug(p.category)}`}>
-                  {p.category ?? "Analyse"}
-                </span>
-              </div>
-              <div className="fx-article-body">
-                <h3>{p.title}</h3>
-                <p>{p.description}</p>
-                <div className="fx-article-meta">
-                  <span>
-                    {t("fx.analyses.card.published")} <b>{formatDate(p.date)}</b>
+          {visiblePosts.map((p) => {
+            const title = locale === "en" && p.title_en ? p.title_en : p.title;
+            const description = locale === "en" && p.description_en ? p.description_en : p.description;
+            const category = locale === "en" && p.category_en ? p.category_en : (p.category ?? "Analyse");
+            return (
+              <Link key={p.slug} href={`/analyses/${p.slug}`} className="fx-article-card">
+                <div className="fx-article-photo">
+                  <div className="fx-article-photo-placeholder" aria-hidden="true" />
+                  {p.image && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img className="fx-photo-img" src={p.image} alt="" loading="lazy" />
+                  )}
+                  <span className={`fx-photo-tag fx-tag-${categorySlug(p.category)}`}>
+                    {category}
                   </span>
-                  <span>·</span>
-                  <span>{p.readingTime}</span>
                 </div>
-              </div>
-            </Link>
-          ))}
+                <div className="fx-article-body">
+                  <h3>{title}</h3>
+                  <p>{description}</p>
+                  <div className="fx-article-meta">
+                    <span>
+                      {t("fx.analyses.card.published")} <b>{formatDate(p.date)}</b>
+                    </span>
+                    <span>·</span>
+                    <span>{p.readingTime}</span>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
           {visiblePlaceholders.map((pl, i) => (
             <div key={`pl-${i}`} className="fx-article-card fx-article-card-planned">
               <div className="fx-article-photo">

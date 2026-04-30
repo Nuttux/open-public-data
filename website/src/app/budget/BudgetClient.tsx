@@ -166,18 +166,21 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
         const parHab = d.depenses / PARIS_POPULATION;
         const pctFonct = Math.round((d.fonctionnement / d.depenses) * 100);
         const pctInvest = Math.round((d.investissement / d.depenses) * 100);
+        const vars = {
+          year: d.year,
+          depenses: fmtBillions(d.depenses),
+          perHab: fmtInt(parHab),
+          pctFonct,
+          pctInvest,
+        };
         return (
           <PageHook
-            cite={<>Ville de Paris · Comptes administratifs M57 · exercice {d.year}</>}
-            shareText={
-              `Budget Ville de Paris ${d.year} : ${fmtBillions(d.depenses)} Md€ dépensés, ${fmtInt(parHab)} € par habitant. ` +
-              `${pctFonct}% couvrent le quotidien (salaires, écoles, services), ${pctInvest}% financent les chantiers.`
-            }
+            cite={fill("fx.bud.hook.cite", { year: d.year })}
+            shareText={fill("fx.bud.hook.share", vars)}
           >
-            En {d.year}, Paris dépense <b>{fmtBillions(d.depenses)} Md€</b> — soit{" "}
-            <b>{fmtInt(parHab)} € par habitant</b>. Sur ces 100 €, <b>{pctFonct}</b>{" "}
-            couvrent le quotidien (salaires, écoles, services), <b>{pctInvest}</b>{" "}
-            financent les chantiers en cours.
+            <span dangerouslySetInnerHTML={{ __html: fill("fx.bud.hook.body.l1", vars) }} />
+            {" "}
+            <span dangerouslySetInnerHTML={{ __html: fill("fx.bud.hook.body.l2", vars) }} />
           </PageHook>
         );
       })()}
@@ -376,7 +379,7 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
             ]}
           />
           <ChartSource
-            source={<>Ville de Paris · Comptes administratifs M57 (séries voté + exécuté)</>}
+            source={t("fx.bud.s03.source.cite")}
             dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
             methodAnchor="budget"
           />
@@ -586,7 +589,7 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
             <a href="/methode#budget" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</a>
           </div>
           <p className="fx-footer-sources-meta">
-            <b>Source</b> : Ville de Paris — Comptes administratifs M57 + Budgets primitifs (opendata.paris.fr) <span className="sep">·</span> <b>Couverture</b> : 2019-2024 exécuté · 2019-2026 voté.
+            <b>{t("fx.footer.source_label")}</b> : {t("fx.bud.footer.source")} <span className="sep">·</span> <b>{t("fx.footer.coverage_label")}</b> : {t("fx.bud.footer.coverage")}
           </p>
           <ExportRow
             items={[

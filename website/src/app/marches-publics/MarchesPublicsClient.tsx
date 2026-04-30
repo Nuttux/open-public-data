@@ -28,7 +28,7 @@ type MarchesIndex = { availableYears?: number[] };
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.replace(`{${k}}`, String(v));
+  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
   return r;
 };
 
@@ -113,18 +113,23 @@ export default function MarchesPublicsClient({
         </div>
       </section>
 
-      <PageHook
-        cite={<>DECP · Données essentielles de la commande publique · Ville de Paris · {d.year}</>}
-        shareText={
-          `Marchés publics Ville de Paris ${d.year} : ${fmtBillions(d.total)} Md€ d'enveloppes contractuelles via ${fmtInt(d.nb)} contrats passés avec ${fmtInt(d.nbTitulaires)} fournisseurs. ` +
-          `Top 10 = ${fmtDec(top10Pct, 0)}%.`
-        }
-      >
-        En {d.year}, Paris a notifié <b>{fmtBillions(d.total)} Md€</b>{" "}
-        d&apos;enveloppes contractuelles via <b>{fmtInt(d.nb)} contrats</b> passés
-        avec <b>{fmtInt(d.nbTitulaires)} fournisseurs</b> distincts — top 10 à{" "}
-        <b>{fmtDec(top10Pct, 0)} %</b> du total.
-      </PageHook>
+      {(() => {
+        const hookVars = {
+          year: d.year,
+          total: fmtBillions(d.total),
+          nb: fmtInt(d.nb),
+          nbT: fmtInt(d.nbTitulaires),
+          top10: fmtDec(top10Pct, 0),
+        };
+        return (
+          <PageHook
+            cite={fill(t("fx.mp.hook.cite"), { year: d.year })}
+            shareText={fill(t("fx.mp.hook.share"), hookVars)}
+          >
+            <span dangerouslySetInnerHTML={{ __html: fill(t("fx.mp.hook.body"), hookVars) }} />
+          </PageHook>
+        );
+      })()}
 
       <section className="fx-section" id="sec-overview">
         <div className="fx-wrap">
@@ -234,7 +239,7 @@ export default function MarchesPublicsClient({
             paretoContrast={t("fx.mp.s02.pareto_contrast")}
           />
           <ChartSource
-            source={<>DECP · Données essentielles de la commande publique · Ville de Paris</>}
+            source={t("fx.mp.s02.source.cite")}
             dataHref="https://opendata.paris.fr/explore/dataset/marches-publics-conclus-par-la-ville-de-paris/"
             methodAnchor="marches-publics"
           />
@@ -691,7 +696,7 @@ export default function MarchesPublicsClient({
             );
           })()}
           <ChartSource
-            source={<>DECP · Données essentielles de la commande publique · champ <code>offresRecues</code> · année {d.year}</>}
+            source={fill(t("fx.mp.s03.source.cite"), { year: d.year })}
             dataHref="https://opendata.paris.fr/explore/dataset/marches-publics-conclus-par-la-ville-de-paris/"
             methodAnchor="marches-publics"
           />
@@ -726,7 +731,7 @@ export default function MarchesPublicsClient({
             <b>{t("fx.s.note")}</b> : {t("fx.mp.s07.note")}
           </p>
           <ChartSource
-            source={<>DECP — Ville de Paris · cumul annuel des plafonds notifiés</>}
+            source={t("fx.mp.s05.source.cite")}
             dataHref="https://opendata.paris.fr/explore/dataset/marches-publics-conclus-par-la-ville-de-paris/"
             methodAnchor="marches-publics"
           />
@@ -823,7 +828,7 @@ export default function MarchesPublicsClient({
             <a href="/methode#marches-publics" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</a>
           </div>
           <p className="fx-footer-sources-meta">
-            <b>Source</b> : DECP — Ville de Paris (opendata.paris.fr) <span className="sep">·</span> <b>Couverture</b> : marchés notifiés depuis 2013. Montants affichés = plafonds contractuels maximaux.
+            <b>{t("fx.footer.source_label")}</b> : {t("fx.mp.footer.source")} <span className="sep">·</span> <b>{t("fx.footer.coverage_label")}</b> : {t("fx.mp.footer.coverage")}
           </p>
           <ExportRow
             items={[

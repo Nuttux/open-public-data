@@ -7,7 +7,7 @@ import { trLabel } from "@/lib/label-translate";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.replace(`{${k}}`, String(v));
+  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
   return r;
 };
 
@@ -41,17 +41,17 @@ export default function AssociationFiche({
     <div>
       {grounded && (grounded.confiance ?? 0) >= 0.6 && grounded.activite_verifiee ? (
         <div className="fx-fiche-grounded">
-          <div className="fx-fiche-grounded-head">{locale === "en" ? "Activity" : "Activité"}</div>
+          <div className="fx-fiche-grounded-head">{t("fx.fiche.asso.activity_h")}</div>
           <p className="fx-fiche-grounded-body">{grounded.activite_verifiee}</p>
           <div className="fx-fiche-grounded-meta">
             {grounded.perimetre_geographique ? (
               <span>
-                <b>{locale === "en" ? "Scope" : "Périmètre"} :</b> {grounded.perimetre_geographique}
+                <b>{t("fx.fiche.asso.scope_label")} :</b> {grounded.perimetre_geographique}
               </span>
             ) : null}
             {grounded.sources && grounded.sources.length > 0 ? (
               <span className="fx-fiche-grounded-sources">
-                <b>{locale === "en" ? "Sources" : "Sources"} :</b>{" "}
+                <b>{t("fx.fiche.asso.sources_label")} :</b>{" "}
                 {grounded.sources.map((src, i) => {
                   const s = typeof src === "string" ? { title: src } : src;
                   const label = s.title || s.url || "";

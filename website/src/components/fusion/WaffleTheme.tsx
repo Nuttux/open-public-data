@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useT } from "@/lib/localeContext";
 
 type Slice = {
   theme: string;
@@ -68,6 +71,12 @@ function buildCells(items: Slice[], total: number): { theme: string; cells: numb
 }
 
 export default function WaffleTheme({ items, total, concentrationTop10Pct, topTotal, year, basePath }: Props) {
+  const t = useT();
+  const fill = (s: string, vars: Record<string, string | number>) => {
+    let r = s;
+    for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
+    return r;
+  };
   const cells = buildCells(items, total);
   const concentrationCells = Math.round((topTotal / total) * 100);
 
@@ -85,7 +94,7 @@ export default function WaffleTheme({ items, total, concentrationTop10Pct, topTo
 
   return (
     <div className="fx-waffle">
-      <div className="fx-waffle-grid" role="img" aria-label="100 cases représentant 100 % des subventions par thématique">
+      <div className="fx-waffle-grid" role="img" aria-label={t("fx.waffle.aria")}>
         {sequence.slice(0, 100).map((c, i) => {
           const isTop10 = i < concentrationCells;
           return (
@@ -93,7 +102,7 @@ export default function WaffleTheme({ items, total, concentrationTop10Pct, topTo
               key={i}
               className="fx-waffle-cell"
               style={{ background: c.color }}
-              title={`${c.theme} · ${isTop10 ? "dans les 10 plus gros bénéficiaires" : ""}`}
+              title={`${c.theme} · ${isTop10 ? t("fx.waffle.tip_top10") : ""}`}
               aria-hidden="true"
             />
           );
@@ -102,7 +111,7 @@ export default function WaffleTheme({ items, total, concentrationTop10Pct, topTo
 
       <div className="fx-waffle-legend">
         <div className="fx-waffle-kicker">
-          Sur chaque 100 € de subventions versées en {year}
+          {fill(t("fx.waffle.kicker"), { year })}
         </div>
         <ul>
           {cells
@@ -127,10 +136,11 @@ export default function WaffleTheme({ items, total, concentrationTop10Pct, topTo
         </ul>
         <div className="fx-waffle-pareto">
           <span className="fx-waffle-pareto-dot" />
-          <span>
-            À eux seuls, les <b>10 plus gros bénéficiaires</b> captent{" "}
-            <b>{Math.round(concentrationTop10Pct)} €</b> sur 100.
-          </span>
+          <span
+            dangerouslySetInnerHTML={{
+              __html: fill(t("fx.waffle.pareto"), { pct: Math.round(concentrationTop10Pct) }),
+            }}
+          />
         </div>
       </div>
     </div>

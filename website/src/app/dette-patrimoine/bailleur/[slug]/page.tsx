@@ -3,11 +3,13 @@ import { notFound } from "next/navigation";
 import "../../../fusion.css";
 
 import { Navbar, Footer, BailleurFiche } from "@/components/fusion";
+import { BailleurKickerText } from "@/components/fusion/EntityPageHeaders";
 import { loadBailleur } from "@/lib/fusion-data";
 import { fmtBillions, fmtMillions } from "@/lib/fmt";
 
 type Params = { slug: string };
 
+// NOTE: server-side metadata is FR-canonical (no locale detection at request time).
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { slug } = await params;
   const b = loadBailleur(slug);
@@ -17,10 +19,23 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
       ? `${fmtBillions(b.garanties.capital_restant)} Md € garantis`
       : `${fmtMillions(b.garanties.capital_restant, 0)} M € garantis`
     : "bailleur social parisien";
+  const canonical = `/dette-patrimoine/bailleur/${encodeURIComponent(b.slug)}`;
+  const title = `${b.name} — Bailleur · France Open Data`;
+  const description = `${b.name} : ${capital} par la Ville de Paris.`;
   return {
-    title: `${b.name} — Bailleur · France Open Data`,
-    description: `${b.name} : ${capital} par la Ville de Paris.`,
-    alternates: { canonical: `/dette-patrimoine/bailleur/${encodeURIComponent(b.slug)}` },
+    title,
+    description,
+    alternates: {
+      canonical,
+      languages: { "fr-FR": canonical, "en-US": canonical },
+    },
+    openGraph: {
+      title,
+      description,
+      type: "profile",
+      locale: "fr_FR",
+      alternateLocale: ["en_US"],
+    },
   };
 }
 
@@ -35,7 +50,7 @@ export default async function BailleurPage({ params }: { params: Promise<Params>
       <section className="fx-page-header">
         <div className="fx-wrap">
           <div className="fx-kicker-mono" style={{ marginBottom: 10 }}>
-            {bailleur.type ? `Bailleur · ${bailleur.type}` : "Bénéficiaire · garantie d'emprunt"}
+            <BailleurKickerText type={bailleur.type} />
           </div>
           <h1 className="fx-page-title" style={{ fontSize: "clamp(28px, 4vw, 48px)" }}>
             {bailleur.name}

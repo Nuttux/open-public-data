@@ -4,11 +4,12 @@ import { useState } from "react";
 import type { DetteInstrument, PatrimoineStructure } from "@/lib/fusion-data";
 import { fmtBillions, fmtDec, fmtMillions, fmtInt } from "@/lib/fmt";
 import InstrumentDetteFiche from "./InstrumentDetteFiche";
-import { useT } from "@/lib/localeContext";
+import { useT, useLocale } from "@/lib/localeContext";
+import { trLabel } from "@/lib/label-translate";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.replace(`{${k}}`, String(v));
+  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
   return r;
 };
 
@@ -115,6 +116,7 @@ type RowProps = {
 
 function Row({ inst, maxValue, onClick, first }: RowProps) {
   const t = useT();
+  const { locale } = useLocale();
   const pct = Math.max(0, Math.min(100, (inst.encours / maxValue) * 100));
   const unit = inst.encours >= 1e9 ? t("fx.s.md_eur") : t("fx.s.m_eur");
   const display = inst.encours >= 1e9 ? fmtBillions(inst.encours) : fmtMillions(inst.encours, 0);
@@ -123,11 +125,11 @@ function Row({ inst, maxValue, onClick, first }: RowProps) {
       type="button"
       className={`fx-inst-row${first ? " first" : ""}`}
       onClick={onClick}
-      aria-label={fill(t("fx.ds.row_aria"), { label: inst.label })}
+      aria-label={fill(t("fx.ds.row_aria"), { label: trLabel(inst.label, locale) })}
     >
       <span className="l">
-        {inst.label}
-        <span className="sub">{inst.subtitle}</span>
+        {trLabel(inst.label, locale)}
+        <span className="sub">{trLabel(inst.subtitle, locale)}</span>
       </span>
       <span className="bar">
         <span className="fill" style={{ width: `${pct}%` }} />

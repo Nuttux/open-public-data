@@ -9,7 +9,7 @@ import { PARIS_POPULATION } from "@/lib/methodology";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.replace(`{${k}}`, String(v));
+  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
   return r;
 };
 
@@ -55,7 +55,7 @@ export default function MasseFiche({ masse, year, onClose }: Props) {
             <span>{fill(t("fx.fiche.masse.bilan"), { year })}</span>
           </div>
           <h2>{trLabel(masse.label, locale)} · {display} {unit}</h2>
-          {masse.sub && <div className="fx-fiche-sub">{masse.sub}</div>}
+          {masse.sub && <div className="fx-fiche-sub">{trLabel(masse.sub, locale)}</div>}
         </div>
 
         <div className="fx-fiche-kpis">

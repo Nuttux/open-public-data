@@ -52,27 +52,35 @@ export default function ContratFiche({
   type Tag = { label: string; title?: string };
   const decpTags: Tag[] = [];
   if (decp?.ccag) {
-    decpTags.push({ label: decp.ccag, title: "Type de prestation (CCAG)" });
+    decpTags.push({ label: decp.ccag, title: t("fx.fiche.contrat.tag.ccag_title") });
   }
   if (decp?.cpvFamille && decp.cpvFamille !== decp.ccag) {
-    decpTags.push({ label: decp.cpvFamille, title: "Catégorie standardisée (CPV)" });
+    decpTags.push({ label: decp.cpvFamille, title: t("fx.fiche.contrat.tag.cpv_title") });
   }
   if (decp?.lieuExecution) {
-    decpTags.push({ label: `📍 ${decp.lieuExecution}`, title: "Lieu d'exécution déclaré" });
+    decpTags.push({ label: `📍 ${decp.lieuExecution}`, title: t("fx.fiche.contrat.tag.lieu_title") });
   }
   if (decp?.offresRecues != null && decp.offresRecues > 0) {
     decpTags.push({
-      label: decp.offresRecues === 1 ? "1 seule offre reçue" : `${decp.offresRecues} offres reçues`,
+      label: decp.offresRecues === 1
+        ? t("fx.fiche.contrat.tag.offres_singular")
+        : t("fx.fiche.contrat.tag.offres_plural").replace("{n}", String(decp.offresRecues)),
       title: decp.offresRecues === 1
-        ? "Un seul candidat a répondu à l'appel d'offres — signal de faible concurrence"
-        : "Nombre d'offres reçues par la Ville lors de l'appel d'offres",
+        ? t("fx.fiche.contrat.tag.offres_singular_title")
+        : t("fx.fiche.contrat.tag.offres_plural_title"),
     });
   }
   if (decp?.hasConsiderationSociale) {
-    decpTags.push({ label: "Clauses sociales", title: "Le marché contient des clauses sociales (insertion, etc.)" });
+    decpTags.push({
+      label: t("fx.fiche.contrat.tag.clauses_sociales"),
+      title: t("fx.fiche.contrat.tag.clauses_sociales_title"),
+    });
   }
   if (decp?.hasConsiderationEnvironnementale) {
-    decpTags.push({ label: "Clauses environnementales", title: "Le marché contient des clauses environnementales" });
+    decpTags.push({
+      label: t("fx.fiche.contrat.tag.clauses_env"),
+      title: t("fx.fiche.contrat.tag.clauses_env_title"),
+    });
   }
 
   return (
@@ -110,8 +118,8 @@ export default function ContratFiche({
         <div className="fx-fiche-kpi">
           <div className="fx-fiche-kpi-label">
             {showNotifie ? (
-              <Tip label="Montant maximum autorisé par le contrat (plafond). Pour un accord-cadre, c'est la somme maximum pouvant être commandée sur toute la durée — pas nécessairement ce qui sera réellement dépensé.">
-                Plafond autorisé
+              <Tip label={t("fx.fiche.contrat.kpi.plafond_tip")}>
+                {t("fx.fiche.contrat.kpi.plafond")}
               </Tip>
             ) : (
               t("fx.fiche.contrat.enveloppe")
@@ -125,8 +133,8 @@ export default function ContratFiche({
         {showNotifie && notifie && (
           <div className="fx-fiche-kpi">
             <div className="fx-fiche-kpi-label">
-              <Tip label="Montant déclaré par la Ville à l'État (DECP) lors de la signature du contrat. Souvent plus réaliste que le plafond pour les accords-cadres, mais ce n'est pas le cumul réel des commandes (non-public au niveau du contrat individuel).">
-                Montant notifié
+              <Tip label={t("fx.fiche.contrat.kpi.notifie_tip")}>
+                {t("fx.fiche.contrat.kpi.notifie")}
               </Tip>
             </div>
             <div className="fx-fiche-kpi-value tnum" style={{ color: "var(--bleu)" }}>
@@ -323,7 +331,7 @@ export default function ContratFiche({
       </section>
 
       <p style={{ fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)", letterSpacing: ".02em", lineHeight: 1.5 }}>
-        <b>{locale === "en" ? "Coming soon" : "À venir"}</b> : {t("fx.fiche.contrat.avenir")}
+        <b>{t("fx.fiche.coming_soon")}</b> : {t("fx.fiche.contrat.avenir")}
       </p>
     </div>
   );

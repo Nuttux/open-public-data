@@ -29,7 +29,7 @@ import { PARIS_POPULATION } from "@/lib/methodology";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.replace(`{${k}}`, String(v));
+  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
   return r;
 };
 
@@ -120,22 +120,25 @@ export default function InvestissementsClient({
       {(() => {
         const parHab = d.total / PARIS_POPULATION;
         const topChap = d.byChapitre[0];
+        const topAmt = topChap ? fmtMillions(topChap.amount, 0) : "";
+        const topLabel = topChap ? trL(topChap.label) : "";
+        const baseVars = {
+          year: d.year,
+          total: fmtBillions(d.total),
+          nb: fmtInt(d.nbProjets),
+          perHab: fmtInt(parHab),
+        };
+        const topPart = topChap
+          ? fill(t("fx.inv.hook.share.top"), { label: topLabel, topAmt })
+          : "";
         return (
           <PageHook
-            cite={<>Ville de Paris · Annexes « Investissements localisés » · CA {d.year}</>}
-            shareText={
-              `Investissements Ville de Paris ${d.year} : ${fmtBillions(d.total)} Md€ sur ${fmtInt(d.nbProjets)} projets — ${fmtInt(parHab)} € par habitant.` +
-              (topChap ? ` Premier poste : ${topChap.label} (${fmtMillions(topChap.amount, 0)} M€).` : "")
-            }
+            cite={fill(t("fx.inv.hook.cite"), { year: d.year })}
+            shareText={fill(t("fx.inv.hook.share"), { ...baseVars, topPart })}
           >
-            En {d.year}, Paris a investi <b>{fmtBillions(d.total)} Md€</b> sur{" "}
-            <b>{fmtInt(d.nbProjets)} projets</b> — soit{" "}
-            <b>{fmtInt(parHab)} € par Parisien</b> sur l&apos;année.
+            <span dangerouslySetInnerHTML={{ __html: fill(t("fx.inv.hook.body.intro"), baseVars) }} />
             {topChap ? (
-              <>
-                {" "}Le premier poste, <b>{trL(topChap.label)}</b>, pèse à lui seul{" "}
-                <b>{fmtMillions(topChap.amount, 0)} M€</b>.
-              </>
+              <span dangerouslySetInnerHTML={{ __html: fill(t("fx.inv.hook.body.top"), { label: topLabel, topAmt }) }} />
             ) : null}
           </PageHook>
         );
@@ -231,7 +234,7 @@ export default function InvestissementsClient({
             hrefBuilder={(theme) => `/investissements/chapitre/${slugifyChapitre(theme)}`}
           />
           <ChartSource
-            source={<>Ville de Paris · Annexes investissement au CA {d.year}, ventilation par chapitre M57</>}
+            source={fill(t("fx.inv.s02.source.cite"), { year: d.year })}
             dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
             methodAnchor="investissements"
           />
@@ -283,7 +286,7 @@ export default function InvestissementsClient({
                 {fill(t("fx.inv.s03.note"), { pct: fmtDec(100 - d.pctGeo, 0) })}
               </p>
               <ChartSource
-                source={<>Ville de Paris · Annexes investissement au CA {d.year} — projets géocodés via BAN</>}
+                source={fill(t("fx.inv.s03.source.cite"), { year: d.year })}
                 dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
                 methodAnchor="investissements"
               />
@@ -295,7 +298,7 @@ export default function InvestissementsClient({
                 height={420}
               />
               <ChartSource
-                source={<>Ville de Paris · Annexes investissement au CA {d.year}</>}
+                source={fill(t("fx.inv.s04.source.cite"), { year: d.year })}
                 dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
                 methodAnchor="investissements"
               />
@@ -325,7 +328,7 @@ export default function InvestissementsClient({
             activeYear={d.year}
           />
           <ChartSource
-            source={<>Ville de Paris · Investissements localisés (CA), série annuelle depuis 2018</>}
+            source={t("fx.inv.s05.source.cite")}
             dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
             methodAnchor="investissements"
           />
@@ -454,7 +457,7 @@ export default function InvestissementsClient({
             <a href="/methode#investissements" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</a>
           </div>
           <p className="fx-footer-sources-meta">
-            <b>Source</b> : Ville de Paris — Annexes AP du CA + PDF « Investissements Localisés » <span className="sep">·</span> <b>Couverture</b> : dataset AP OpenData gelé depuis 2022 ; 2023-2026 reconstitués par parsing PDF.
+            <b>{t("fx.footer.source_label")}</b> : {t("fx.inv.footer.source")} <span className="sep">·</span> <b>{t("fx.footer.coverage_label")}</b> : {t("fx.inv.footer.coverage")}
           </p>
           <ExportRow
             items={[

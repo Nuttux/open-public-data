@@ -7,7 +7,7 @@ import { trLabel } from "@/lib/label-translate";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.replace(`{${k}}`, String(v));
+  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
   return r;
 };
 
@@ -219,7 +219,7 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
       {projet.marches.length > 0 && (
         <section className="fx-fiche-section">
           <div className="fx-fiche-h">
-            Entreprises identifiées
+            {t("fx.fiche.projet.entreprises")}
             <span
               style={{
                 fontSize: 10.5,
@@ -229,22 +229,21 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
                 textTransform: "uppercase",
                 letterSpacing: ".05em",
               }}
-              title="Rapprochement automatique projet d'investissement ↔ marchés publics par analyse des libellés et métadonnées. Peut contenir des erreurs ou manquer certains fournisseurs (travaux en régie, marchés < 40 k€, accords-cadres multi-sites non attribuables à un projet précis)."
+              title={t("fx.fiche.projet.entreprises_auto_title")}
             >
-              rapprochement auto ⓘ
+              {t("fx.fiche.projet.entreprises_auto")}
             </span>
           </div>
 
-          <p style={{ margin: "0 0 14px", fontSize: 13, color: "var(--muted)", lineHeight: 1.5 }}>
-            Ces marchés publics semblent contribuer à la réalisation de ce projet.
-            {" "}
-            <b>Ce rapprochement est automatique</b> et peut contenir des erreurs — toujours vérifier l'objet du marché.
-          </p>
+          <p
+            style={{ margin: "0 0 14px", fontSize: 13, color: "var(--muted)", lineHeight: 1.5 }}
+            dangerouslySetInnerHTML={{ __html: t("fx.fiche.projet.entreprises_intro") }}
+          />
 
           <div>
             {projet.marches.map((m) => {
               const f = fmtEur(m.montant_max);
-              const confidence = m.label === "confirmed" ? "Confirmé" : "Probable";
+              const confidence = m.label === "confirmed" ? t("fx.fiche.projet.confidence.confirmed") : t("fx.fiche.projet.confidence.probable");
               const badgeColor = m.label === "confirmed" ? "var(--vert)" : "var(--ocre)";
               return (
                 <a
@@ -262,7 +261,7 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 4, gap: 12 }}>
                     <span style={{ fontWeight: 600 }}>
-                      {m.fournisseur_nom || "Fournisseur non renseigné"}
+                      {m.fournisseur_nom || t("fx.fiche.projet.fournisseur_unknown")}
                     </span>
                     <span style={{ fontFamily: "var(--f-disp)", fontWeight: 700, letterSpacing: "-0.01em", whiteSpace: "nowrap" }}>
                       {f.v}

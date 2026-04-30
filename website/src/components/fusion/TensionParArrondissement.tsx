@@ -44,6 +44,11 @@ export default function TensionParArrondissement({
   methodology,
 }: Props) {
   const t = useT();
+  const fill = (s: string, vars: Record<string, string | number>) => {
+    let r = s;
+    for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
+    return r;
+  };
   const maxRatio = Math.max(...parArrondissement.map((a) => a.ratio));
   // Sorted by tension desc — most tense first
   const sorted = [...parArrondissement].sort((a, b) => b.ratio - a.ratio);
@@ -54,42 +59,42 @@ export default function TensionParArrondissement({
       <div className="fx-tension-paris">
         <div className="fx-tension-paris-grid">
           <div className="fx-tension-paris-cell">
-            <div className="fx-tension-paris-lbl">Demandes actives</div>
+            <div className="fx-tension-paris-lbl">{t("fx.tension.demands_active")}</div>
             <div className="fx-tension-paris-val tnum">
               {fmtInt(paris.demandesActives)}
             </div>
-            <div className="fx-tension-paris-note">au 31/12/{year}</div>
+            <div className="fx-tension-paris-note">{fill(t("fx.tension.note.at_31_12"), { year })}</div>
           </div>
           <div className="fx-tension-paris-cell">
-            <div className="fx-tension-paris-lbl">Attributions</div>
+            <div className="fx-tension-paris-lbl">{t("fx.tension.attributions")}</div>
             <div className="fx-tension-paris-val tnum">
               {fmtInt(paris.attributions)}
             </div>
-            <div className="fx-tension-paris-note">en {year}</div>
+            <div className="fx-tension-paris-note">{fill(t("fx.tension.note.in"), { year })}</div>
           </div>
           <div className="fx-tension-paris-cell fx-tension-paris-cell-hero">
             <div className="fx-tension-paris-lbl">
-              <Tip label={methodology.ratioDefinition}>Tension Paris global</Tip>
+              <Tip label={methodology.ratioDefinition}>{t("fx.tension.tension_paris")}</Tip>
             </div>
             <div className="fx-tension-paris-val tnum">
               {fmtDec(paris.ratio, 1)}
             </div>
             <div className="fx-tension-paris-note">
-              demandes pour 1 attribution
+              {t("fx.tension.demands_per_one")}
             </div>
           </div>
           {paris.delaiMedianMois != null && (
             <div className="fx-tension-paris-cell">
               <div className="fx-tension-paris-lbl">
                 <Tip label={methodology.delaiMedianCaveat}>
-                  Délai médian ⚠️
+                  {t("fx.tension.delai_median")}
                 </Tip>
               </div>
               <div className="fx-tension-paris-val tnum">
                 {fmtDec(paris.delaiMedianMois, 1)}
               </div>
               <div className="fx-tension-paris-note">
-                mois — uniquement pour les attribués
+                {t("fx.tension.delai_caveat_unit")}
               </div>
             </div>
           )}
@@ -99,9 +104,9 @@ export default function TensionParArrondissement({
       {/* Arr-level bars */}
       <div className="fx-tension-arr-list">
         <div className="fx-tension-arr-header">
-          <span>Arrondissement</span>
+          <span>{t("fx.tension.col.arr")}</span>
           <span className="fx-tension-arr-ratio-lbl">
-            Demandes pour 1 attribution
+            {t("fx.tension.col.ratio")}
           </span>
         </div>
         {sorted.map((a) => (
@@ -110,9 +115,8 @@ export default function TensionParArrondissement({
               <span className="fx-tension-arr-rank tnum">#{a.rangTension}</span>
               <span className="fx-tension-arr-name">
                 {a.arr === 1
-                  ? "1er"
-                  : `${a.arr}e`}{" "}
-                arrondissement
+                  ? t("fx.tension.arr_label_first")
+                  : fill(t("fx.tension.arr_label_other"), { n: a.arr })}
               </span>
             </div>
             <div className="fx-tension-arr-bar-wrap">
@@ -134,18 +138,18 @@ export default function TensionParArrondissement({
       {/* Caveats */}
       <div className="fx-tension-arr-caveats">
         <p>
-          <strong>Méthode.</strong> {methodology.ratioDefinition}
+          <strong>{t("fx.tension.method_h")}</strong> {methodology.ratioDefinition}
         </p>
         <p>
-          <strong>À savoir sur le délai médian.</strong>{" "}
+          <strong>{t("fx.tension.delai_h")}</strong>{" "}
           {methodology.delaiMedianCaveat}
         </p>
         <p className="fx-tension-arr-source">
-          Source :{" "}
+          {t("fx.tension.source_prefix")}{" "}
           <a href={sourceUrl} target="_blank" rel="noreferrer noopener">
             {source}
           </a>{" "}
-          · année de référence {year}
+          {fill(t("fx.tension.source_year_suffix"), { year })}
         </p>
       </div>
     </div>

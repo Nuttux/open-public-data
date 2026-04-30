@@ -9,7 +9,7 @@ import Tip from "./Tip";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.replace(`{${k}}`, String(v));
+  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
   return r;
 };
 
@@ -75,7 +75,7 @@ export default function FournisseurFiche({
         </div>
       ) : (
         <p style={{ margin: "8px 0 0", fontSize: 13, color: "var(--muted)" }}>
-          {t("fx.fiche.fourn.no_sirene")}{fournisseur.siren ? ` ${fournisseur.siren}` : ""}. {locale === "en" ? "The detailed profile (sector, headcount, directors) is available on the" : "Le profil détaillé (secteur, effectifs, dirigeants) est disponible sur l'"}{" "}
+          {t("fx.fiche.fourn.no_sirene")}{fournisseur.siren ? ` ${fournisseur.siren}` : ""}. {t("fx.fiche.fourn.no_sirene_pre_link")}{" "}
           <a
             href={`https://annuaire-entreprises.data.gouv.fr/entreprise/${fournisseur.siren}`}
             target="_blank"
@@ -296,7 +296,7 @@ export default function FournisseurFiche({
       </section>
 
       <p style={{ fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)", letterSpacing: ".02em", lineHeight: 1.5 }}>
-        <b>{locale === "en" ? "Coming soon" : "À venir"}</b> : {t("fx.fiche.fourn.avenir")}
+        <b>{t("fx.fiche.coming_soon")}</b> : {t("fx.fiche.fourn.avenir")}
       </p>
     </div>
   );

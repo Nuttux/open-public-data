@@ -22,6 +22,11 @@ export interface BlogPost {
   hidden?: boolean;
   readingTime: string;
   content: string;
+  /** EN frontmatter overrides — populated when locale === "en" */
+  title_en?: string;
+  description_en?: string;
+  category_en?: string;
+  tags_en?: string[];
 }
 
 export interface BlogPostMeta {
@@ -35,6 +40,10 @@ export interface BlogPostMeta {
   category?: string;
   hidden?: boolean;
   readingTime: string;
+  title_en?: string;
+  description_en?: string;
+  category_en?: string;
+  tags_en?: string[];
 }
 
 /**
@@ -71,6 +80,10 @@ function parseMDXFile(fileName: string): BlogPost {
     hidden: data.hidden === true,
     readingTime: stats.text,
     content,
+    title_en: typeof data.title_en === "string" ? data.title_en : undefined,
+    description_en: typeof data.description_en === "string" ? data.description_en : undefined,
+    category_en: typeof data.category_en === "string" ? data.category_en : undefined,
+    tags_en: Array.isArray(data.tags_en) ? data.tags_en : undefined,
   };
 }
 

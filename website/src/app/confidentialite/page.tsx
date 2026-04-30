@@ -149,12 +149,12 @@ export default function ConfidentialitePage() {
             <div className="flex items-center justify-between gap-4">
               <div>
                 <h3 className="text-base font-semibold text-slate-100">
-                  Enregistrement de session (optionnel)
+                  {t('privacy.replay.title')}
                 </h3>
                 <p className="text-slate-400 text-sm mt-1">
                   {replayOn
-                    ? "Activé — merci, votre session est enregistrée de façon anonyme et masquée. Révocable à tout moment."
-                    : "Désactivé — vous pouvez nous aider à repérer les bugs et friction UX en autorisant l'enregistrement anonyme de votre session. Les saisies clavier sont masquées, aucun partage tiers, hébergement UE, rétention 30 jours."}
+                    ? t('privacy.replay.on')
+                    : t('privacy.replay.off')}
                 </p>
               </div>
               <button
