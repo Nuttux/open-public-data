@@ -9,12 +9,35 @@
  */
 
 import type { Metadata } from 'next';
+import { cookies, headers } from 'next/headers';
 
 export const SITE_URL = 'https://franceopendata.org';
 export const SITE_NAME = 'Données Lumières';
 export const DEFAULT_OG_IMAGE = '/og-default.png';
 export const DEFAULT_LOCALE = 'fr_FR';
 export const TWITTER_HANDLE = '@donneeslumieres';
+
+/** Read the user's locale server-side. Order: dl_locale cookie → ?lang= query → Accept-Language → 'fr'. */
+export async function readLocale(): Promise<'fr' | 'en'> {
+  try {
+    const c = await cookies();
+    const fromCookie = c.get('dl_locale')?.value;
+    if (fromCookie === 'en') return 'en';
+    if (fromCookie === 'fr') return 'fr';
+  } catch { /* cookies() may throw at module load — ignore */ }
+  try {
+    const h = await headers();
+    const url = h.get('x-url') ?? h.get('referer') ?? '';
+    if (/[?&]lang=en\b/.test(url)) return 'en';
+    const al = (h.get('accept-language') ?? '').toLowerCase();
+    // Prefer FR if it's listed before EN; otherwise EN.
+    const frPos = al.indexOf('fr');
+    const enPos = al.indexOf('en');
+    if (frPos >= 0 && (enPos < 0 || frPos <= enPos)) return 'fr';
+    if (enPos >= 0) return 'en';
+  } catch { /* ignore */ }
+  return 'fr';
+}
 
 type BuildMetadataInput = {
   title: string;
@@ -23,6 +46,8 @@ type BuildMetadataInput = {
   path?: string;
   /** Localised alternates, keys: 'fr' | 'en' */
   alternates?: { fr?: string; en?: string };
+  /** Pre-translated EN strings — used when the user's locale is `en` (cookie/header). */
+  en?: { title?: string; description?: string };
   keywords?: string[];
   /** Block indexing for A/B test / WIP pages */
   noindex?: boolean;
@@ -30,58 +55,66 @@ type BuildMetadataInput = {
   image?: string;
 };
 
-/**
- * Build Next.js Metadata with canonical, OpenGraph, Twitter and robots.
- * Title template is inherited from root layout, so pass only the page-specific title.
- */
-export function buildPageMetadata({
-  title,
-  description,
-  path = '/',
-  alternates,
-  keywords,
-  noindex,
-  image,
-}: BuildMetadataInput): Metadata {
-  const canonical = path;
-  const ogImage = image ?? DEFAULT_OG_IMAGE;
-
-  // Server-side metadata defaults to FR canonical because the user's locale
-  // lives in localStorage (client-only). We still emit alternates.languages
-  // so search engines and link-preview crawlers know the site is bilingual,
-  // even though both URLs currently point at the same canonical path.
-  const languages = alternates
-    ? { 'fr-FR': alternates.fr, 'en-US': alternates.en }
+/** Internal: assemble the Metadata object given resolved (already locale-picked) strings. */
+function _assemble(
+  resolvedTitle: string,
+  resolvedDescription: string,
+  locale: 'fr' | 'en',
+  input: BuildMetadataInput,
+): Metadata {
+  const canonical = input.path ?? '/';
+  const ogImage = input.image ?? DEFAULT_OG_IMAGE;
+  const ogLocale = locale === 'en' ? 'en_US' : DEFAULT_LOCALE;
+  const altLocale = locale === 'en' ? ['fr_FR'] : ['en_US'];
+  const languages = input.alternates
+    ? { 'fr-FR': input.alternates.fr, 'en-US': input.alternates.en }
     : { 'fr-FR': canonical, 'en-US': canonical };
 
   return {
-    title,
-    description,
-    keywords,
-    alternates: {
-      canonical,
-      languages,
-    },
+    title: resolvedTitle,
+    description: resolvedDescription,
+    keywords: input.keywords,
+    alternates: { canonical, languages },
     openGraph: {
-      title,
-      description,
+      title: resolvedTitle,
+      description: resolvedDescription,
       url: `${SITE_URL}${canonical}`,
       siteName: SITE_NAME,
-      locale: DEFAULT_LOCALE,
-      alternateLocale: ['en_US'],
+      locale: ogLocale,
+      alternateLocale: altLocale,
       type: 'website',
-      images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: resolvedTitle }],
     },
     twitter: {
       card: 'summary_large_image',
-      title,
-      description,
+      title: resolvedTitle,
+      description: resolvedDescription,
       images: [ogImage],
     },
-    robots: noindex
+    robots: input.noindex
       ? { index: false, follow: false, nocache: true }
       : { index: true, follow: true },
   };
+}
+
+/**
+ * Build Next.js Metadata (synchronous — for use as `export const metadata = ...`).
+ * Always returns FR strings since cookies aren't accessible in module-level evaluation.
+ */
+export function buildPageMetadata(input: BuildMetadataInput): Metadata {
+  return _assemble(input.title, input.description, 'fr', input);
+}
+
+/**
+ * Locale-aware metadata builder for use inside `generateMetadata()` async functions.
+ * Reads the `dl_locale` cookie (set by `LocaleProvider` on toggle) and picks the
+ * EN strings if both the cookie says `en` AND `input.en` is provided.
+ */
+export async function buildLocaleAwareMetadata(input: BuildMetadataInput): Promise<Metadata> {
+  const locale = await readLocale();
+  const resolvedTitle = locale === 'en' && input.en?.title ? input.en.title : input.title;
+  const resolvedDescription = locale === 'en' && input.en?.description ? input.en.description : input.description;
+  return _assemble(resolvedTitle, resolvedDescription, locale, input);
 }
 
 /**

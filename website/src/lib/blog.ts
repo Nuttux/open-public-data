@@ -47,7 +47,9 @@ export interface BlogPostMeta {
 }
 
 /**
- * Get all MDX files from the blog directory
+ * Get all FR (canonical) MDX files from the blog directory.
+ * EN siblings are named `<slug>.en.mdx` and are excluded from this list —
+ * they're loaded on demand by `getPostBySlug(slug, "en")`.
  */
 function getMDXFiles(): string[] {
   if (!fs.existsSync(POSTS_PATH)) {
@@ -55,7 +57,7 @@ function getMDXFiles(): string[] {
   }
   return fs
     .readdirSync(POSTS_PATH)
-    .filter((file) => file.endsWith(".mdx") || file.endsWith(".md"));
+    .filter((file) => (file.endsWith(".mdx") || file.endsWith(".md")) && !file.endsWith(".en.mdx"));
 }
 
 /**
@@ -108,9 +110,14 @@ export function getAllPosts(): BlogPostMeta[] {
 }
 
 /**
- * Get a single post by slug
+ * Get a single post by slug.
+ *
+ * When `locale === "en"` and a `<slug>.en.mdx` sibling exists, the EN body is
+ * substituted for `content`. Frontmatter-derived EN strings (title_en /
+ * description_en) live on the FR file and are exposed regardless. Falls back
+ * to FR body if the EN sibling doesn't exist yet.
  */
-export function getPostBySlug(slug: string): BlogPost | null {
+export function getPostBySlug(slug: string, locale: "fr" | "en" = "fr"): BlogPost | null {
   const files = getMDXFiles();
   const fileName = files.find(
     (file) => file.replace(/\.mdx?$/, "") === slug
@@ -120,7 +127,20 @@ export function getPostBySlug(slug: string): BlogPost | null {
     return null;
   }
 
-  return parseMDXFile(fileName);
+  const post = parseMDXFile(fileName);
+
+  if (locale === "en") {
+    const enFileName = `${slug}.en.mdx`;
+    const enPath = path.join(POSTS_PATH, enFileName);
+    if (fs.existsSync(enPath)) {
+      const enFile = fs.readFileSync(enPath, "utf-8");
+      const { content: enContent } = matter(enFile);
+      const stats = readingTime(enContent);
+      return { ...post, content: enContent, readingTime: stats.text };
+    }
+  }
+
+  return post;
 }
 
 /**
