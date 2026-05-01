@@ -1,0 +1,757 @@
+{
+  "generated_at": "2026-05-01T21:36:24",
+  "model": "claude-opus-4-7-in-session",
+  "count": 150,
+  "items": {
+    "2022_00_9_000": {
+      "description_claire": "Renovation of the Charlotte Delbo Library staircase.",
+      "quoi_concretement": "Full refurbishment of the building's stairwell. The works will renew the steps and walls to improve the welcome of the public.",
+      "pourquoi_ca_compte": "Improves user safety and comfort when moving around the library."
+    },
+    "2022_00_9_001": {
+      "description_claire": "Transformation of the primary-school yard into a planted, safer space.",
+      "quoi_concretement": "An Oasis schoolyard with more vegetation and permeable surfaces. Safety works are also carried out in the building to protect pupils.",
+      "pourquoi_ca_compte": "Children get a cooler play area in summer and a setting better suited to biodiversity."
+    },
+    "2022_00_9_002": {
+      "description_claire": "Oasis schoolyard at the rue Saint-Louis-en-l'Île primary school.",
+      "quoi_concretement": "Tarmac is replaced with natural materials and trees are planted. The renovation manages rainwater better and reduces heat.",
+      "pourquoi_ca_compte": "A more natural, calmer setting for pupils during their breaks."
+    },
+    "2022_00_9_003": {
+      "description_claire": "Window replacement and a planted yard at the primary school.",
+      "quoi_concretement": "The works include outer-frame replacement for better insulation. The yard is also turned into an Oasis with new planting.",
+      "pourquoi_ca_compte": "Pupils enjoy better thermal insulation in classrooms and a cooler yard."
+    },
+    "2022_00_9_004": {
+      "description_claire": "Full renovation of the toilets in the nursery school's outdoor yard.",
+      "quoi_concretement": "Modernisation of the outdoor sanitary facilities. Old equipment is replaced to ensure better hygiene for young children.",
+      "pourquoi_ca_compte": "Improves daily comfort and hygiene for nursery-age pupils."
+    },
+    "2022_00_9_005": {
+      "description_claire": "Modernisation of the school canteen and safety upgrade of the school.",
+      "quoi_concretement": "Bringing the catering service up to standard. Safety works are also carried out across the school building.",
+      "pourquoi_ca_compte": "Ensures a safer setting and meals prepared in good conditions."
+    },
+    "2022_00_9_006": {
+      "description_claire": "Floor refurbishment and accessible toilets at Square Louis XIII.",
+      "quoi_concretement": "The square's surfacing is refurbished to make walking easier. Disabled-access toilets are also installed on site.",
+      "pourquoi_ca_compte": "The square becomes more accessible and comfortable for all visitors, including disabled people."
+    },
+    "2022_00_9_007": {
+      "description_claire": "Tree and plant planting along Boulevard Bourdon.",
+      "quoi_concretement": "An urban-greening operation creating an ecological corridor. New plants and shrubs are installed to bring more nature into the city.",
+      "pourquoi_ca_compte": "Improves residents' surroundings and helps fight urban heat islands."
+    },
+    "2022_00_9_008": {
+      "description_claire": "Reshaping rue du Temple to share public space better.",
+      "quoi_concretement": "Roadway redesign. The street layout is changed to share space more evenly between users, especially pedestrians.",
+      "pourquoi_ca_compte": "Improves pedestrian comfort and safety in the Marais quarter."
+    },
+    "2022_00_9_009": {
+      "description_claire": "Roadway resurfacing on rue Réaumur.",
+      "quoi_concretement": "Full roadway refurbishment. Worn tarmac is replaced for smoother traffic and quieter rolling.",
+      "pourquoi_ca_compte": "Smoother traffic and less noise for residents."
+    },
+    "2022_00_9_010": {
+      "description_claire": "Roadway resurfacing at Place André Malraux.",
+      "quoi_concretement": "Roadway refurbishment on the square. Damaged surfacing is replaced to stabilise the ground and improve the square's condition.",
+      "pourquoi_ca_compte": "Safer and more comfortable circulation on this busy square."
+    },
+    "2022_00_9_011": {
+      "description_claire": "Redevelopment of rue de la Verrerie to ease movement.",
+      "quoi_concretement": "Roadway works. The street's configuration is modified to make pedestrian travel safer and easier.",
+      "pourquoi_ca_compte": "Makes the street more pleasant and safer for residents and passers-by."
+    },
+    "2022_00_9_012": {
+      "description_claire": "Modernisation and safety upgrade of the rue Rambuteau day-care.",
+      "quoi_concretement": "Restructuring the day-care premises. The works include a safety bring-up-to-standard for welcoming young children.",
+      "pourquoi_ca_compte": "Provides a safer, better-suited setting for toddlers and early-childhood staff."
+    },
+    "2022_00_9_013": {
+      "description_claire": "Yard and garden upgrade at the rue des Barres school.",
+      "quoi_concretement": "Yard and outdoor-garden redevelopment. The project refurbishes the surfaces and enhances the school's green spaces.",
+      "pourquoi_ca_compte": "Better setting and more nature for the children at school."
+    },
+    "2022_00_9_014": {
+      "description_claire": "Partial renovation of the rue des Blancs Manteaux school.",
+      "quoi_concretement": "Partial structural restructuring of the school building. Some interior spaces are upgraded to better fit pupils' needs.",
+      "pourquoi_ca_compte": "Improves welcome and learning conditions for pupils in the area."
+    },
+    "2022_00_9_015": {
+      "description_claire": "Parquet renovation and toilet creation at Jean Dame Sports Centre.",
+      "quoi_concretement": "Full renovation of the sports-hall parquet and creation of new toilet blocks to maintain the equipment's quality.",
+      "pourquoi_ca_compte": "Better hygiene and practice conditions for athletes and local clubs."
+    },
+    "2022_00_9_016": {
+      "description_claire": "Acoustic improvement of Saint-Merri Gymnasium.",
+      "quoi_concretement": "Renovation works to reduce noise and echo inside the sports hall.",
+      "pourquoi_ca_compte": "More comfortable acoustics for athletes and pupils using the facility."
+    },
+    "2022_00_9_017": {
+      "description_claire": "Restoration of the main entrance of Saint-Eustache Church.",
+      "quoi_concretement": "Renovation works on the entrance facade and various consolidation works on the historic building.",
+      "pourquoi_ca_compte": "Preserves the historic heritage and ensures visitor safety at this landmark."
+    },
+    "2022_00_9_018": {
+      "description_claire": "Roof and facade renovation of Saint-Louis-en-l'Île Church.",
+      "quoi_concretement": "Roof refurbishment for water-tightness and facade refurbishment to protect the stonework.",
+      "pourquoi_ca_compte": "Long-term upkeep of a central-Paris historic monument for future generations."
+    },
+    "2022_00_9_019": {
+      "description_claire": "Restoration of the bell tower and part of Saint-Gervais Church.",
+      "quoi_concretement": "Technical renovation of the bell tower and the north arm of the transept to stabilise and beautify the structure.",
+      "pourquoi_ca_compte": "Safeguards the architectural heritage of the 4th district."
+    },
+    "2022_00_9_020": {
+      "description_claire": "Restoration of the main facade of the Temple des Billettes.",
+      "quoi_concretement": "Cleaning and stone repair on the street-facing facade to restore the building's appearance.",
+      "pourquoi_ca_compte": "Improves the look of the area and preserves a historic place of worship."
+    },
+    "2022_00_9_021": {
+      "description_claire": "Tree planting and green-space creation on Boulevard Bourdon.",
+      "quoi_concretement": "New planted areas and greening of the public space to reduce city heat.",
+      "pourquoi_ca_compte": "A more pleasant, cooler setting for the boulevard's residents."
+    },
+    "2022_00_9_022": {
+      "description_claire": "Full modernisation of Saint-Merri Swimming Pool.",
+      "quoi_concretement": "Restructuring of the pools and changing rooms to improve welcome and hygiene at the facility.",
+      "pourquoi_ca_compte": "Provides Paris swimmers with a more modern and comfortable sports facility."
+    },
+    "2022_00_9_023": {
+      "description_claire": "Renovation of the rue Saint-Roch municipal health centre.",
+      "quoi_concretement": "Internal restructuring to modernise the reception areas and consultation rooms.",
+      "pourquoi_ca_compte": "Improves access to care and patient comfort in the 1st district."
+    },
+    "2022_00_9_025": {
+      "description_claire": "Full renovation of the Niki de Saint Phalle monumental fountain.",
+      "quoi_concretement": "Restoration of the sculptures and overhaul of the hydraulic system. Cleaning, mechanism repair and protection of the artworks.",
+      "pourquoi_ca_compte": "Preserves an iconic Paris-heritage artwork and beautifies the public space."
+    },
+    "2022_00_9_026": {
+      "description_claire": "Extension of the Charlotte Delbo Library reading areas.",
+      "quoi_concretement": "Enlarging the library's floor area to create new reading zones. Includes interior fit-out and new furniture.",
+      "pourquoi_ca_compte": "Users will have more seats and better comfort to read, work or meet."
+    },
+    "2022_00_9_027": {
+      "description_claire": "Conversion of the École des Tournelles attic into usable rooms.",
+      "quoi_concretement": "The attic is converted to create extra space. Works include insulation, electrics and floor and wall refurbishment.",
+      "pourquoi_ca_compte": "Provides more room for pupils and teachers within the school."
+    },
+    "2022_00_9_028": {
+      "description_claire": "Adapting the city to the effects of climate change.",
+      "quoi_concretement": "Funds installations to reduce urban heat, such as planting and use of less heat-absorbent materials. Public-space transformation works.",
+      "pourquoi_ca_compte": "Helps make the city more breathable and comfortable during heatwaves."
+    },
+    "2022_00_9_029": {
+      "description_claire": "Heritage restoration of the Molière fountain.",
+      "quoi_concretement": "Stone cleaning, sculpture repair and restart of the water circuit. A full renovation of this historic structure.",
+      "pourquoi_ca_compte": "Safeguards a major historic monument and improves the area's setting."
+    },
+    "2022_00_9_030": {
+      "description_claire": "New equipment to clean the streets of Paris.",
+      "quoi_concretement": "The City invests in higher-performing cleaning vehicles and collection equipment, replacing older tools with more efficient and quieter models.",
+      "pourquoi_ca_compte": "Ensures cleaner streets and reduces noise for residents."
+    },
+    "2022_00_9_031": {
+      "description_claire": "Modernisation of water management and distribution systems.",
+      "quoi_concretement": "Pipe replacement and installation of more accurate monitoring tools. The aim is to track consumption and limit leaks.",
+      "pourquoi_ca_compte": "Better management preserves water resources and reduces waste city-wide."
+    },
+    "2022_00_9_032": {
+      "description_claire": "Creation and fit-out of new solidarity venues.",
+      "quoi_concretement": "Renovation or acquisition of premises to help people in need. The works bring these social-support spaces up to standard and equip them.",
+      "pourquoi_ca_compte": "These places provide concrete support and local help to the most vulnerable citizens."
+    },
+    "2022_00_9_033": {
+      "description_claire": "Plant installation on the walls and roofs of Saint-Merri and Renard schools.",
+      "quoi_concretement": "Greening of facades and roofs. Includes planter supports and automatic irrigation systems.",
+      "pourquoi_ca_compte": "Brings cooler air to the schoolyards and improves natural insulation of school buildings."
+    },
+    "2022_05_12_001": {
+      "description_claire": "Renovation and modernisation of the rue Victor Cousin primary-school covered playground.",
+      "quoi_concretement": "Refurbishment of the covered playground to make it more modern. The shelter structures are renovated to improve children's comfort during breaks.",
+      "pourquoi_ca_compte": "Provides pupils with a sheltered, more welcoming play area whatever the weather."
+    },
+    "2022_05_12_003": {
+      "description_claire": "Safety and accessibility upgrade of the Capitant Hall.",
+      "quoi_concretement": "Hall restoration to meet safety rules and ease access for people with reduced mobility. The works modernise this meeting space.",
+      "pourquoi_ca_compte": "Enables all residents to access this public meeting place easily and safely."
+    },
+    "2022_05_12_004": {
+      "description_claire": "Plant-wall creation in rue Rollin.",
+      "quoi_concretement": "Installation of a green wall on a street wall. Various plant species are planted to green the public space.",
+      "pourquoi_ca_compte": "Beautifies the area and fights urban heat for the comfort of passers-by and residents."
+    },
+    "2022_05_12_005": {
+      "description_claire": "Repair of part of the floor surfaces in Tino Rossi Garden.",
+      "quoi_concretement": "Renovation of walkways and walking surfaces. The aim is to replace damaged sections to ensure smooth, safe circulation.",
+      "pourquoi_ca_compte": "Ensures the safety of walkers and improves enjoyment in this Seine-side garden."
+    },
+    "2022_05_12_006": {
+      "description_claire": "Window replacement and bottle-room renovation at the rue Censier day-care.",
+      "quoi_concretement": "Window replacement for better thermal insulation. Includes the full renovation of the bottle-preparation room.",
+      "pourquoi_ca_compte": "Better comfort for the children and impeccable hygiene for meal preparation."
+    },
+    "2022_05_12_007": {
+      "description_claire": "Window and door replacement at the rue Jean Calvin day-care.",
+      "quoi_concretement": "Higher-performance windows and doors are installed to limit heat loss. The works also improve sound insulation against street noise.",
+      "pourquoi_ca_compte": "Ensures a comfortable temperature and quieter conditions for young children to sleep and play."
+    },
+    "2022_05_12_008": {
+      "description_claire": "Insulation and ventilation upgrade of a public building.",
+      "quoi_concretement": "Energy-efficiency renovation to retain heat better and ensure good air renewal. Includes insulation and technical upgrades.",
+      "pourquoi_ca_compte": "Cuts energy bills and provides cleaner air for building users."
+    },
+    "2022_05_12_009": {
+      "description_claire": "Maintenance and repair works on Boulevard Saint-Marcel.",
+      "quoi_concretement": "Various works on the roadway and pavements to maintain the road's condition. Spot repairs ensure user safety.",
+      "pourquoi_ca_compte": "Ensures safe, smooth traffic on this major 5th-district route."
+    },
+    "2022_05_12_010": {
+      "description_claire": "Resurfacing of the bus lane on Boulevard de Port-Royal.",
+      "quoi_concretement": "Full refurbishment of the bus-only lane to correct ground deformations. Stabilises the road subjected to heavy-vehicle traffic.",
+      "pourquoi_ca_compte": "Improves passenger comfort and bus-line reliability."
+    },
+    "2022_05_12_011": {
+      "description_claire": "Repair of several damaged pavements in the 5th district.",
+      "quoi_concretement": "Pavement refurbishment works to remove holes and bumps. The works target the most damaged areas to make walking easier.",
+      "pourquoi_ca_compte": "Makes pedestrian travel safer and pavements more accessible."
+    },
+    "2022_05_12_012": {
+      "description_claire": "Modernisation of kitchen equipment in two area colleges.",
+      "quoi_concretement": "Replacement of cooking and meal-prep equipment at Pierre Alviset and Raymond Queneau colleges. Installations are renewed to meet the latest hygiene standards.",
+      "pourquoi_ca_compte": "Ensures quality, safe school catering for pupils."
+    },
+    "2022_05_12_013": {
+      "description_claire": "Works to make the town hall more accessible and secure.",
+      "quoi_concretement": "Disabled-access equipment and safety-system upgrades. The administrative building is brought up to current public-welcome standards.",
+      "pourquoi_ca_compte": "Ensures all citizens can access town-hall services safely."
+    },
+    "2022_05_12_014": {
+      "description_claire": "Full renovation of the historic rue de Pontoise swimming pool.",
+      "quoi_concretement": "Restoration of the structure, pools and changing rooms. The project also modernises the filtration and heating systems for better energy performance.",
+      "pourquoi_ca_compte": "Provides a modern sports facility while preserving an iconic local landmark."
+    },
+    "2022_05_12_016": {
+      "description_claire": "Equipment purchases to improve street cleanliness.",
+      "quoi_concretement": "Acquisition of new cleaning machines and additional street bins. These investments boost the district's public-space upkeep.",
+      "pourquoi_ca_compte": "Makes streets cleaner and more pleasant for everyone."
+    },
+    "2022_05_12_017": {
+      "description_claire": "Renovation and modernisation of the École Arbalète schoolyard.",
+      "quoi_concretement": "Transformation of the play area with new surfaces and play features. The works provide a more welcoming environment better suited to children's activities.",
+      "pourquoi_ca_compte": "Improves the school setting and pupil well-being during breaks."
+    },
+    "2022_06_15_000": {
+      "description_claire": "Renovation of the outer parts of a municipal building.",
+      "quoi_concretement": "Refurbishment or modernisation of the facades or external areas of a public facility.",
+      "pourquoi_ca_compte": "Improves the overall condition and look of local facilities for users."
+    },
+    "2022_06_15_001": {
+      "description_claire": "Renovation of toilets in a public facility.",
+      "quoi_concretement": "Replacement or modernisation of toilets and plumbing equipment to improve hygiene and comfort.",
+      "pourquoi_ca_compte": "Ensures better welcome and hygiene for Parisians using this facility."
+    },
+    "2024_18_51_021": {
+      "description_claire": "Porte de la Chapelle redevelopment for the 2024 Olympics.",
+      "quoi_concretement": "A full redesign of the roadway and public spaces. The project includes new cycle lanes, wider pavements and tree planting.",
+      "pourquoi_ca_compte": "The area becomes greener and easier to cross on foot or by bike for residents."
+    },
+    "2024_18_51_019": {
+      "description_claire": "New municipal swimming pool on rue Belliard.",
+      "quoi_concretement": "A major project to build a complete new aquatic centre. It will include several pools and modern spaces for swimmers and pupils.",
+      "pourquoi_ca_compte": "A new place for swimming and learning to swim, accessible to all 18th-district residents."
+    },
+    "2023_18_51_023": {
+      "description_claire": "New large sports and entertainment arena at Porte de la Chapelle.",
+      "quoi_concretement": "Construction of a high-capacity multi-sport venue. The building is designed to host international competitions and cultural events.",
+      "pourquoi_ca_compte": "A high-level venue for sport and culture in northern Paris."
+    },
+    "2024_18_51_020": {
+      "description_claire": "Redesign of the road axis between Porte de la Chapelle and rue Marx Dormoy.",
+      "quoi_concretement": "Roadway and pavement renovation along this major route. The project aims to organise traffic better and beautify the surrounding public space.",
+      "pourquoi_ca_compte": "Transforms the northern entrance of Paris, making it more pleasant and better shared between users."
+    },
+    "2023_18_51_028": {
+      "description_claire": "Transformation of public spaces and roadway at Porte de la Chapelle.",
+      "quoi_concretement": "A full roadway renovation with wide cycle lanes and enlarged pavements. Tree planting is also planned to green the area.",
+      "pourquoi_ca_compte": "Improves residents' quality of life and supports soft mobility."
+    },
+    "2024_16_45_019": {
+      "description_claire": "Full redevelopment of Place de la Porte Maillot.",
+      "quoi_concretement": "The square is reshaped with new circulation routes. The project includes tree planting, wider pavements and protected cycle lanes.",
+      "pourquoi_ca_compte": "Eases travel and makes this major junction more pleasant and accessible for all users."
+    },
+    "2022_17_52_019": {
+      "description_claire": "Full transformation of Place de la Porte Maillot.",
+      "quoi_concretement": "Traffic reorganisation, large pedestrian areas and extensive tree planting. The project turns this road junction into a more welcoming urban square.",
+      "pourquoi_ca_compte": "Better connection between Paris and Neuilly and a more breathable setting for residents."
+    },
+    "2024_19_54_014": {
+      "description_claire": "New major cultural facility on Avenue Jean Jaurès.",
+      "quoi_concretement": "Construction and fit-out of a modern multimedia library. The project includes reading areas, digital zones and meeting spaces.",
+      "pourquoi_ca_compte": "New free access to culture, information and digital tools for the entire district."
+    },
+    "2023_19_54_016": {
+      "description_claire": "New cultural hub combining a multimedia library and a reception centre.",
+      "quoi_concretement": "A new building that will house the James Baldwin Library and the Refugee Centre. It will offer reading and working spaces and social-support services.",
+      "pourquoi_ca_compte": "Provides residents easier access to culture and strengthens solidarity in the district."
+    },
+    "2022_09_24_010": {
+      "description_claire": "Restoration of the entrance facade of La Trinité Church.",
+      "quoi_concretement": "Full renovation of the entrance, including stone cleaning and structural consolidation. The aim is to preserve this major historic landmark.",
+      "pourquoi_ca_compte": "Safeguards the area's architectural beauty and protects passers-by from falling stones."
+    },
+    "2024_20_57_022": {
+      "description_claire": "Major redevelopment of Place de la Porte de Montreuil.",
+      "quoi_concretement": "A large urban project that reshapes the square to reduce car space. Works include new pedestrian areas, cycle lanes and large-scale tree planting.",
+      "pourquoi_ca_compte": "Creates a more breathable, safer and more enjoyable public space for residents and passers-by."
+    },
+    "2023_05_12_023": {
+      "description_claire": "Energy-efficiency renovation of a public building.",
+      "quoi_concretement": "Wall insulation, window replacement or heating modernisation to cut energy consumption. The aim is to improve thermal comfort.",
+      "pourquoi_ca_compte": "Reduces the city's ecological footprint and improves user comfort while saving energy."
+    },
+    "2022_19_59_018": {
+      "description_claire": "New reception and support centre for refugees.",
+      "quoi_concretement": "Fit-out of a building dedicated to welcoming and orienting refugees. The site offers social-support services, legal advice and integration activities.",
+      "pourquoi_ca_compte": "Provides a dignified, centralised welcome point to ease the integration of refugees."
+    },
+    "2022_13_38_015": {
+      "description_claire": "Modernisation of the canteen at Baudricourt Primary School.",
+      "quoi_concretement": "Full renovation of the kitchen and dining hall. Equipment is replaced to improve meal preparation and the acoustic and thermal comfort of pupils.",
+      "pourquoi_ca_compte": "Improves the quality of mealtimes and pupils' well-being at school."
+    },
+    "2023_20_57_020": {
+      "description_claire": "Extension of the Davout Primary School with ten new classrooms.",
+      "quoi_concretement": "Construction of an extension to the school building to accommodate ten new classrooms. The project increases the school's capacity.",
+      "pourquoi_ca_compte": "Welcomes more pupils in better learning conditions."
+    },
+    "2022_20_62_033": {
+      "description_claire": "Ten new classrooms at the Boulevard Davout school.",
+      "quoi_concretement": "Construction of an extension or fit-out of new premises to add ten classrooms. The project expands the school's capacity.",
+      "pourquoi_ca_compte": "Meets families' needs by creating new school places in the area."
+    },
+    "2024_09_24_013": {
+      "description_claire": "Restoration of the entrance facade of La Trinité Church.",
+      "quoi_concretement": "Major renovation works on the structure and stones of the entrance. The aim is to consolidate the building and restore its original appearance.",
+      "pourquoi_ca_compte": "Preserves an iconic historic monument of the 9th district."
+    },
+    "2023_00_9_031": {
+      "description_claire": "Restoration of the entrance facade of Saint-Eustache Church.",
+      "quoi_concretement": "Renovation of the main facade, including stone cleaning and repair of carved features. The aim is to restore the monumental entrance.",
+      "pourquoi_ca_compte": "Highlights an iconic central-Paris monument and ensures its long-term preservation."
+    },
+    "2024_13_36_014": {
+      "description_claire": "Structural consolidation works at Sainte-Anne Church.",
+      "quoi_concretement": "Major renovation to stabilise the building and ensure long-term solidity. Works mainly target the foundations and load-bearing elements of this historic structure.",
+      "pourquoi_ca_compte": "Preserves an iconic historic monument and a community gathering place in the area."
+    },
+    "2023_20_57_022": {
+      "description_claire": "Creation of the new Python-Duvernois park at Porte de Bagnolet.",
+      "quoi_concretement": "A large new green space is created as part of the area's urban renewal. Includes planting, walkways and rest zones.",
+      "pourquoi_ca_compte": "Brings more nature and cooler air to residents in a fast-changing area."
+    },
+    "2024_20_57_018": {
+      "description_claire": "New day-care in the Paul Meurice sector at Porte des Lilas.",
+      "quoi_concretement": "Construction of a new building dedicated to welcoming young children. The project includes suitable play, rest and meal areas.",
+      "pourquoi_ca_compte": "Strengthens day-care provision in a fast-developing area."
+    },
+    "2023_13_36_027": {
+      "description_claire": "Consolidation works at Sainte-Anne de la Butte-aux-Cailles Church.",
+      "quoi_concretement": "Structural renovation works to ensure the building's long-term solidity. The interventions stabilise the building to prevent any major deterioration.",
+      "pourquoi_ca_compte": "Preserves the area's historic heritage and ensures public safety."
+    },
+    "2023_09_24_019": {
+      "description_claire": "Renovation of the main entrance of La Sainte-Trinité Church.",
+      "quoi_concretement": "Restoration works on the entrance facade. The works refurbish the structures and facades of this historic part to ensure its preservation.",
+      "pourquoi_ca_compte": "Preserves an iconic local monument and ensures the safety of passers-by and visitors."
+    },
+    "2023_14_39_019": {
+      "description_claire": "New school in the Saint-Vincent-de-Paul quarter.",
+      "quoi_concretement": "Construction of a new school building to welcome local pupils. It will include several modern classrooms.",
+      "pourquoi_ca_compte": "A new local school option for families settling into this new sector."
+    },
+    "2022_08_21_015": {
+      "description_claire": "Restoration of the facades of La Madeleine Church.",
+      "quoi_concretement": "Cleaning and full repair of the building's outer walls. These renovation works preserve the stone and historic sculptures from wear and tear.",
+      "pourquoi_ca_compte": "Preserves and showcases an iconic Paris-heritage monument."
+    },
+    "2024_20_57_015": {
+      "description_claire": "New large public park in the Python-Duvernois quarter.",
+      "quoi_concretement": "A vast green space is created with tree planting, lawns and walkways. The project turns former tarmac areas into a natural zone.",
+      "pourquoi_ca_compte": "Provides a green lung and a relaxing space for residents of a fast-changing area."
+    },
+    "2023_13_36_029": {
+      "description_claire": "Renovation of the kitchen and canteen at Baudricourt Primary School.",
+      "quoi_concretement": "Modernisation of kitchen equipment and redesign of the dining hall. The space is rethought to be more functional and welcoming for children.",
+      "pourquoi_ca_compte": "Pupils enjoy a more pleasant, higher-quality setting at lunchtime."
+    },
+    "2024_15_42_015": {
+      "description_claire": "Refurbishment of the Grand Canal at Parc André Citroën.",
+      "quoi_concretement": "Works on water-tightness and technical refurbishment of the central pool. The intervention restores the hydraulic operation and aesthetics of this ornamental water feature.",
+      "pourquoi_ca_compte": "Maintains the appeal of this iconic walking spot for Parisians."
+    },
+    "2023_08_21_013": {
+      "description_claire": "Restoration of the outer facades of La Madeleine Church.",
+      "quoi_concretement": "Stone cleaning, sculpture repair and column consolidation. The renovation protects the building from erosion and weather damage.",
+      "pourquoi_ca_compte": "Preserves a major historic monument and ensures the safety of passers-by around the building."
+    },
+    "2023_00_9_030": {
+      "description_claire": "Restoration of the bell tower and transept of Saint-Gervais-Saint-Protais Church.",
+      "quoi_concretement": "Consolidation and renovation of the bell tower and north transept masonry. A safeguarding operation for the structure.",
+      "pourquoi_ca_compte": "Ensures the safety of the building and the integrity of this Paris historic monument."
+    },
+    "2023_14_39_021": {
+      "description_claire": "New gymnasium in the Saint-Vincent-de-Paul quarter.",
+      "quoi_concretement": "Creation of a new covered sports facility for school and club activities. The building will support indoor practice of various sports.",
+      "pourquoi_ca_compte": "Easier access to sport and leisure for all district residents."
+    },
+    "2024_13_36_018": {
+      "description_claire": "New eight-classroom school in the Bruneseau quarter.",
+      "quoi_concretement": "Construction of a new school building with eight classrooms and after-school spaces. This new build supports the urban development of the new quarter.",
+      "pourquoi_ca_compte": "Strengthened school provision to welcome new families settling in the area."
+    },
+    "2023_20_57_023": {
+      "description_claire": "New day-care centre on Boulevard Davout.",
+      "quoi_concretement": "Full construction of a new building dedicated to welcoming young children. The works include the activity rooms, sleeping areas and outdoor spaces.",
+      "pourquoi_ca_compte": "Increases the number of day-care places available in the district."
+    },
+    "2024_12_33_009": {
+      "description_claire": "Redevelopment and renovation of streets in the Aligre quarter.",
+      "quoi_concretement": "Roadway and pavement renovation works. The project includes tree planting and the creation of calmer areas for pedestrians.",
+      "pourquoi_ca_compte": "Improves pedestrian comfort and makes the area greener and more pleasant to live in."
+    },
+    "2024_16_45_018": {
+      "description_claire": "New early-childhood facility on Boulevard Exelmans.",
+      "quoi_concretement": "Fit-out of a multi-care facility. The premises will be equipped to welcome children in a modern, healthy and safe environment.",
+      "pourquoi_ca_compte": "Increases the number of day-care places available for 16th-district families."
+    },
+    "2023_20_57_024": {
+      "description_claire": "New day-care centre on rue des Maraîchers.",
+      "quoi_concretement": "Construction of a new early-childhood facility. The project covers the building structure and the interior fit-out.",
+      "pourquoi_ca_compte": "Eases parents' lives by creating new local childcare options."
+    },
+    "2024_19_54_018": {
+      "description_claire": "Modernisation and redesign of the allée des Eiders day-care.",
+      "quoi_concretement": "Full restructuring of the building to optimise living spaces. The works include bringing equipment up to standard and improving insulation.",
+      "pourquoi_ca_compte": "Optimised welcome conditions for families and a more energy-efficient building."
+    },
+    "2022_20_62_036": {
+      "description_claire": "New day-care on Boulevard Davout.",
+      "quoi_concretement": "Full construction of a new building for early-childhood welcome. Includes structural works and the interior fit-out.",
+      "pourquoi_ca_compte": "Increases the number of day-care places available for 20th-district families."
+    },
+    "2024_17_48_014": {
+      "description_claire": "Redesign and greening of the Épinettes quarter.",
+      "quoi_concretement": "The project includes pavement renovation, the creation of meeting zones and tree planting. A transformation of the public space.",
+      "pourquoi_ca_compte": "Aims to make the area calmer, greener and more pedestrian-friendly."
+    },
+    "2024_10_27_018": {
+      "description_claire": "Cycle-priority street near Canal Saint-Martin.",
+      "quoi_concretement": "Creation of a cycle street where cyclists have priority over cars. Includes specific ground markings and adapted signage to make cycling safer.",
+      "pourquoi_ca_compte": "Eases cycling and ensures safer road sharing between users."
+    },
+    "2024_05_12_017": {
+      "description_claire": "Modernisation works at the Jardin des Plantes nursing home.",
+      "quoi_concretement": "Renovation of the living spaces and rooms of the facility. The aim is to improve thermal comfort and accessibility for elderly residents.",
+      "pourquoi_ca_compte": "Improves the quality of life and comfort of the elderly residents."
+    },
+    "2023_11_30_033": {
+      "description_claire": "Renovation of the kitchen at Souzy Nursery School.",
+      "quoi_concretement": "Bring-up to standard and replacement of cooking equipment. The full renovation modernises the meal-preparation chain.",
+      "pourquoi_ca_compte": "Ensures optimal hygiene conditions for preparing pupils' meals."
+    },
+    "2024_15_42_020": {
+      "description_claire": "Continuation of the 15th-district Conservatory modernisation.",
+      "quoi_concretement": "This phase continues the overall renovation. It includes bringing classrooms up to standard and improving the spaces dedicated to artistic practice.",
+      "pourquoi_ca_compte": "Ensures quality arts teaching in modern, suitable premises."
+    },
+    "2024_00_9_025": {
+      "description_claire": "Renovation and reorganisation of the rue Saint-Roch day-care.",
+      "quoi_concretement": "Full restructuring of the interior spaces to modernise the welcome. The works include bringing the premises up to standard and improving comfort for children.",
+      "pourquoi_ca_compte": "Improves the quality of welcome for young children and the working conditions for staff."
+    },
+    "2022_14_41_026": {
+      "description_claire": "New school in the Saint-Vincent-de-Paul quarter.",
+      "quoi_concretement": "The project is a new school building. This modern facility will welcome future pupils in this new residential area.",
+      "pourquoi_ca_compte": "This new school meets the needs of families moving into this fast-changing area."
+    },
+    "2024_08_21_011": {
+      "description_claire": "Full restoration of the outer facades of La Madeleine Church.",
+      "quoi_concretement": "A major project to clean, repair and consolidate the facade stones of the building. Carved elements and architectural ornaments are also restored.",
+      "pourquoi_ca_compte": "Preserves the historic heritage of Paris and ensures the longevity of this iconic monument."
+    },
+    "2023_18_51_022": {
+      "description_claire": "Redevelopment of rue de la Goutte d'Or to improve the local setting.",
+      "quoi_concretement": "Roadway and pavement refurbishment. The works also rebalance space between pedestrians and cars to make journeys safer.",
+      "pourquoi_ca_compte": "Makes residents' journeys safer and the street more pleasant day-to-day."
+    },
+    "2023_13_36_026": {
+      "description_claire": "School streets and street renovation in the Choisy - Jeanne d'Arc quarter.",
+      "quoi_concretement": "The project covers pedestrianisation and safety upgrades around schools. It also includes roadway and pavement refurbishment in several area streets.",
+      "pourquoi_ca_compte": "Aims to make children's school journeys safer and the area calmer for residents."
+    },
+    "2024_13_36_016": {
+      "description_claire": "Full kitchen modernisation at Gustave Flaubert College.",
+      "quoi_concretement": "Renovation of meal-preparation premises and replacement of cooking equipment. The project brings installations up to standard to improve school catering quality.",
+      "pourquoi_ca_compte": "Better meal quality and improved working conditions for staff."
+    },
+    "2024_11_30_017": {
+      "description_claire": "Facade and roof renovation of the 11th district Town Hall.",
+      "quoi_concretement": "Facade refurbishment to clean the outer walls and full roof refurbishment. The intervention protects the building from weather and leaks.",
+      "pourquoi_ca_compte": "Preserves the area's historic heritage and ensures a good welcome for citizens at public services."
+    },
+    "2023_18_51_025": {
+      "description_claire": "New municipal swimming pool on rue Belliard.",
+      "quoi_concretement": "Construction of a complete new aquatic facility. The project includes modern swimming pools and changing rooms suited to all users.",
+      "pourquoi_ca_compte": "Lets more Parisians swim in a modern facility."
+    },
+    "2024_12_33_022": {
+      "description_claire": "Place Félix Eboué redesign.",
+      "quoi_concretement": "Floor renovation and reorganisation of the public space on the square. The works improve pedestrian flow and modernise the road surface.",
+      "pourquoi_ca_compte": "Makes the square more accessible, safer and more enjoyable for everyone."
+    },
+    "2024_09_24_017": {
+      "description_claire": "Full redesign of rue de Clichy.",
+      "quoi_concretement": "Roadway renovation and wider pavements to ease pedestrian movement. The project also includes new planting.",
+      "pourquoi_ca_compte": "A calmer, better-shared and more pleasant street for passers-by."
+    },
+    "2024_10_27_014": {
+      "description_claire": "Facade and window renovation of the 10th district Town Hall.",
+      "quoi_concretement": "External restoration works on the historic building. The project includes cleaning the stone walls and repairing or replacing the window frames to improve the building's overall condition.",
+      "pourquoi_ca_compte": "Preserves the area's architectural heritage while improving thermal insulation."
+    },
+    "2024_20_57_028": {
+      "description_claire": "New sections of the former railway line opened up for walking.",
+      "quoi_concretement": "Safety works and landscape redesign on the former railway line. Includes public access creation, biodiversity preservation and street furniture.",
+      "pourquoi_ca_compte": "Provides Parisians with a new wild walking space and a place to relax in the city."
+    },
+    "2024_12_33_020": {
+      "description_claire": "New day-care on Avenue du Docteur Netter.",
+      "quoi_concretement": "Full fit-out of a new early-childhood facility. The project includes building the play rooms, sleeping areas and suitable outdoor spaces.",
+      "pourquoi_ca_compte": "Meets parents' needs by increasing the number of childcare places in the district."
+    },
+    "2023_13_36_006": {
+      "description_claire": "Modernisation of electrical installations in 13th-district public buildings.",
+      "quoi_concretement": "The project renovates electrical circuits and updates technical drawings. These works secure the equipment and optimise energy management in municipal premises.",
+      "pourquoi_ca_compte": "Ensures user safety and the smooth running of local public services."
+    },
+    "2024_00_9_019": {
+      "description_claire": "Restoration of the bell tower and part of the structure of Saint-Gervais Church.",
+      "quoi_concretement": "Major renovation works on the bell tower and the north transept arm. The works cover masonry consolidation and roof refurbishment.",
+      "pourquoi_ca_compte": "Ensures the building's longevity and the safety of the surrounding public space."
+    },
+    "2024_19_54_020": {
+      "description_claire": "Public-space redesign around the new Îlot Fertile quarter.",
+      "quoi_concretement": "Roadway works to create new streets, widen pavements and install public lighting. The project supports the construction of new housing and shops.",
+      "pourquoi_ca_compte": "Improves pedestrian flow and accessibility in this fast-changing area."
+    },
+    "2024_15_42_012": {
+      "description_claire": "Full renovation of the Avenue de la Porte Brancion Nursery School.",
+      "quoi_concretement": "Full restructuring of the building to modernise classrooms and shared spaces. The works refurbish the equipment to meet children's needs.",
+      "pourquoi_ca_compte": "Ensures young children a modern, safe school setting suited to their development."
+    },
+    "2024_10_27_016": {
+      "description_claire": "Renovation works at Château Landon Swimming Pool.",
+      "quoi_concretement": "The works refurbish the pools and technical installations. The aim is to modernise the facility for long-term durability and swimmer comfort.",
+      "pourquoi_ca_compte": "Residents enjoy a more modern, clean and safe swimming facility."
+    },
+    "2023_11_30_031": {
+      "description_claire": "Public-space transformation in the République - Saint-Ambroise sector.",
+      "quoi_concretement": "New pedestrian zones and tree planting. The project also makes crossings safer and reduces car space.",
+      "pourquoi_ca_compte": "Creates a more breathable, quieter and safer area for families."
+    },
+    "2024_19_54_019": {
+      "description_claire": "Reception and support venue for refugees.",
+      "quoi_concretement": "Fit-out of premises to welcome, orient and offer activities to people in exile. The works cover interior renovation and equipping the living spaces.",
+      "pourquoi_ca_compte": "Eases the integration of newcomers and creates a place of solidarity in the heart of the area."
+    },
+    "2024_07_18_015": {
+      "description_claire": "Restoration and maintenance works at the Champ-de-Mars park.",
+      "quoi_concretement": "Renovation of the lawns, walkways and planting at this iconic site. The project also refurbishes some damaged equipment.",
+      "pourquoi_ca_compte": "Preserves a major green space for Parisians and visitors to walk and relax in."
+    },
+    "2024_17_48_020": {
+      "description_claire": "Stand rebuild at the Max Rousié Sports Centre.",
+      "quoi_concretement": "The project demolishes and fully rebuilds the stadium stands. The new equipment will welcome the public in better safety and comfort.",
+      "pourquoi_ca_compte": "Provides spectators and sports clubs with modern, safe facilities."
+    },
+    "2024_12_33_021": {
+      "description_claire": "New urban skate area at Bercy.",
+      "quoi_concretement": "Construction of an outdoor structure for roller-skating and skate sports. The facility includes technical modules and safe tracks for users.",
+      "pourquoi_ca_compte": "Provides a modern, free leisure space for Paris's young people and athletes."
+    },
+    "2022_14_41_028": {
+      "description_claire": "New gymnasium in the Saint-Vincent-de-Paul quarter.",
+      "quoi_concretement": "The project is a complete new sports facility. It will include rooms suited to the indoor practice of several disciplines.",
+      "pourquoi_ca_compte": "This gymnasium provides new sports and leisure space for residents and local clubs."
+    },
+    "2022_16_48_024": {
+      "description_claire": "Restoration of the paintings and stained glass of Notre-Dame d'Auteuil Church.",
+      "quoi_concretement": "Renovation of the painted decor inside the building and restoration of the old stained-glass windows. These works preserve and showcase the building's historic heritage.",
+      "pourquoi_ca_compte": "Visitors and worshippers enjoy a better-maintained historic monument and the highlighting of its artworks."
+    },
+    "2023_18_51_031": {
+      "description_claire": "Sports-facility renovation at Centre Bertrand Dauvin.",
+      "quoi_concretement": "Modernisation of existing sports equipment. The works include bringing the rooms up to standard and improving the practice spaces.",
+      "pourquoi_ca_compte": "Improves comfort and safety for athletes, pupils and local clubs."
+    },
+    "2024_06_15_012": {
+      "description_claire": "Renovation and maintenance of Saint-Sulpice Church.",
+      "quoi_concretement": "The project covers restoration works on the church structure. The interventions repair the parts damaged by time and weather to protect the building.",
+      "pourquoi_ca_compte": "Ensures public safety and safeguards an iconic 6th-district monument."
+    },
+    "2023_15_42_032": {
+      "description_claire": "Public-space transformation between rues Bargue and Falguière.",
+      "quoi_concretement": "Roadway works to widen pavements, plant trees and ease pedestrian movement.",
+      "pourquoi_ca_compte": "Makes the streets calmer and greener for residents."
+    },
+    "2024_15_42_019": {
+      "description_claire": "Renovation and reorganisation of the 15th-district Conservatory.",
+      "quoi_concretement": "Restructuring of the interior spaces to better welcome students. The works aim to optimise acoustics and accessibility of the cultural building.",
+      "pourquoi_ca_compte": "Provides better conditions for learning music, dance and theatre."
+    },
+    "2024_08_21_009": {
+      "description_claire": "Comprehensive redesign to make the Europe quarter more pleasant and better shared.",
+      "quoi_concretement": "The programme includes pavement renovation, new planted areas and street furniture. The aim is to better balance space between pedestrians, cyclists and cars.",
+      "pourquoi_ca_compte": "Transforms the area into a greener, quieter and more welcoming place to live."
+    },
+    "2024_11_30_018": {
+      "description_claire": "Renovation of the Mercoeur animation centre in the 11th district.",
+      "quoi_concretement": "Modernisation of the Centre Paris Anim' premises. The project upgrades spaces dedicated to cultural, sports and leisure activities for residents.",
+      "pourquoi_ca_compte": "Provides a more modern, comfortable space for the area's club and cultural activities."
+    },
+    "2022_11_31_015": {
+      "description_claire": "Kitchen renovation at the cité Souzy Nursery School.",
+      "quoi_concretement": "Full refurbishment of the meal-preparation area. Includes modernisation of cooking equipment and bringing the premises up to hygiene standards.",
+      "pourquoi_ca_compte": "Improves the quality of daily meal preparation for the school's young children."
+    },
+    "2023_17_48_023": {
+      "description_claire": "Full modernisation of a collective canteen.",
+      "quoi_concretement": "Restructuring of the kitchen and dining halls. The project brings the equipment up to standard and improves user welcome.",
+      "pourquoi_ca_compte": "Provides better mealtimes and quality food in a renovated setting."
+    },
+    "2022_19_59_020": {
+      "description_claire": "Urban redesign of the Éole-Évangile sector around rue d'Aubervilliers.",
+      "quoi_concretement": "Roadway works and creation of public spaces as part of the new quarter. The project improves pavements and access to ease pedestrian flow.",
+      "pourquoi_ca_compte": "Improves the local setting and pedestrian travel in this fast-changing area."
+    },
+    "2024_09_24_011": {
+      "description_claire": "Redesign of streets in the Blanche quarter for more greenery and comfort.",
+      "quoi_concretement": "The project includes tree planting, wider pavements and the creation of calmer areas. The works aim to reduce car space in favour of pedestrians.",
+      "pourquoi_ca_compte": "Provides a calmer, greener and safer setting for residents."
+    },
+    "2024_20_57_019": {
+      "description_claire": "Third sports field at the Louis Lumière Sports Centre.",
+      "quoi_concretement": "Creation of a new sports field on the existing site. The works include surfacing, line marking and equipment installation for sport.",
+      "pourquoi_ca_compte": "Allows more athletes and clubs to train at the same time in good conditions."
+    },
+    "2024_15_42_018": {
+      "description_claire": "New day-care on rue Théodore Deck.",
+      "quoi_concretement": "Construction or full redevelopment works to host an early-childhood facility. The premises will meet current safety and comfort standards.",
+      "pourquoi_ca_compte": "Increases day-care provision for 15th-district families."
+    },
+    "2023_18_51_021": {
+      "description_claire": "Full renovation of the Place Mac Orlan day-care.",
+      "quoi_concretement": "The project restructures the interior spaces to modernise the welcome. The works reorganise the activity rooms and improve the building's thermal comfort.",
+      "pourquoi_ca_compte": "Provides a more modern, comfortable welcome for the area's young children."
+    },
+    "2022_14_41_031": {
+      "description_claire": "Roadway and pavement renovation on Avenue du Maine.",
+      "quoi_concretement": "Roadway resurfacing and wider pavements. The intervention follows major construction projects in the area to finalise the public space.",
+      "pourquoi_ca_compte": "Makes pedestrian journeys safer and improves walking comfort near the station."
+    },
+    "2023_20_57_025": {
+      "description_claire": "Lawn renovation in 20th-district public spaces.",
+      "quoi_concretement": "Replacement of worn turf with new grassed surfaces. This maintenance covers several sites in the district.",
+      "pourquoi_ca_compte": "Improves the look and comfort of outdoor relaxation spaces."
+    },
+    "2024_19_54_016": {
+      "description_claire": "Restoration of the Île de la Falaise in Parc des Buttes-Chaumont.",
+      "quoi_concretement": "Consolidation and renovation works on the island's structures. The project preserves this iconic site while ensuring visitor safety.",
+      "pourquoi_ca_compte": "Safeguards a major historic and landscape feature of the district's most visited park."
+    },
+    "2024_15_42_022": {
+      "description_claire": "Surface renovation of the Oasis schoolyard at the rue Mademoiselle school.",
+      "quoi_concretement": "Replacement of the current floor with a more modern, permeable surface. Part of the schoolyard's transformation into a planted, cooler space.",
+      "pourquoi_ca_compte": "Improves pupil comfort and fights urban heat islands."
+    },
+    "2024_11_30_011": {
+      "description_claire": "Transformation of streets in the Belleville quarter to favour nature and pedestrians.",
+      "quoi_concretement": "Urban redesign works including resurfacing and planting. The aim is to create calmer, quieter shared zones.",
+      "pourquoi_ca_compte": "Improves pedestrian comfort and helps cool the area thanks to new planting."
+    },
+    "2024_10_27_017": {
+      "description_claire": "Redesign and renovation of Place de la Bataille de Stalingrad.",
+      "quoi_concretement": "The project reshapes the public space to make it more pleasant. Includes floor renovation and street-furniture upgrades on this central 10th-district square.",
+      "pourquoi_ca_compte": "The square becomes more welcoming for pedestrians, easing travel and relaxation in the area."
+    },
+    "2023_14_39_020": {
+      "description_claire": "New day-care in the Saint-Vincent-de-Paul quarter.",
+      "quoi_concretement": "Construction of a new early-childhood facility to expand local childcare capacity.",
+      "pourquoi_ca_compte": "More day-care places to ease daily life for parents in the area."
+    },
+    "2023_10_27_012": {
+      "description_claire": "Facade and window renovation of the 10th district Town Hall.",
+      "quoi_concretement": "The project restores the building's outer walls and repairs or replaces the old window frames. These works preserve the architectural heritage while improving water-tightness.",
+      "pourquoi_ca_compte": "Maintains a historic public building and improves its thermal insulation."
+    },
+    "2023_11_30_034": {
+      "description_claire": "Facade refurbishment and roof renewal of the district Town Hall.",
+      "quoi_concretement": "Outer-wall cleaning and roof works. The renovation ensures water-tightness and preserves the building's architectural appearance.",
+      "pourquoi_ca_compte": "Keeps the district's main public-service venue in good condition."
+    },
+    "2024_13_36_022": {
+      "description_claire": "Full renovation of the rue de la Glacière day-care.",
+      "quoi_concretement": "Major restructuring works to modernise the welcome of young children. The project includes full reorganisation of the interior spaces and bringing installations up to standard.",
+      "pourquoi_ca_compte": "Improves the quality of welcome for toddlers and the working conditions for staff."
+    },
+    "2023_19_54_015": {
+      "description_claire": "Urban redesign and renovation in the Meaux-Secrétan quarter.",
+      "quoi_concretement": "The project covers public-space interventions between rues de Meaux and Secrétan. Roadway renovation and improvements to the local setting make the area more accessible.",
+      "pourquoi_ca_compte": "Aims to make the area more pleasant and better maintained for all residents."
+    },
+    "2022_20_62_031": {
+      "description_claire": "Full renovation of the 29 rue du Télégraphe Primary School.",
+      "quoi_concretement": "Restructuring of the premises and restoration of the building. The project modernises the interior spaces to better welcome pupils.",
+      "pourquoi_ca_compte": "Provides children and teachers a more modern, comfortable learning setting."
+    },
+    "2024_06_15_010": {
+      "description_claire": "Redesign and greening of the Odéon quarter.",
+      "quoi_concretement": "This comprehensive project includes pavement renovation, the creation of pedestrian areas and tree planting. The aim is to make the streets more pleasant and limit car space.",
+      "pourquoi_ca_compte": "A calmer, greener and more accessible setting for residents and shopkeepers."
+    },
+    "2022_13_38_010": {
+      "description_claire": "Redesign of streets in the Choisy quarter to make them more pleasant and greener.",
+      "quoi_concretement": "Public-space redesign with new planting and improved pedestrian safety. The project transforms the streets to limit car space and favour soft mobility.",
+      "pourquoi_ca_compte": "Provides a calmer, greener and safer setting for residents."
+    },
+    "2022_13_38_013": {
+      "description_claire": "Structural consolidation works at Sainte-Anne de la Butte-aux-Cailles Church.",
+      "quoi_concretement": "Structural reinforcement of the building. The works stabilise the foundations and walls to ensure the building's safety and long-term survival.",
+      "pourquoi_ca_compte": "Preserves an iconic historic monument in the Butte-aux-Cailles area."
+    },
+    "2023_00_9_008": {
+      "description_claire": "Toilet, storage and canteen renovation at a nursery school.",
+      "quoi_concretement": "New toilets and storage suited to small children. Full renovation of the dining hall and kitchen for pupil welcome.",
+      "pourquoi_ca_compte": "Provides better hygiene and catering conditions for young children at school."
+    },
+    "2024_11_30_013": {
+      "description_claire": "Continuing the redesign for a greener, more accessible République quarter.",
+      "quoi_concretement": "Continuation of the roadway renovation with wider pedestrian areas. Additional planting is planned to fight urban heat.",
+      "pourquoi_ca_compte": "Creates a healthier setting and eases cycling and walking."
+    },
+    "2024_06_15_013": {
+      "description_claire": "Renovation works at the Garancière day-care.",
+      "quoi_concretement": "The project modernises the premises for welcoming young children. Living and rest spaces are reorganised to meet current comfort and safety standards.",
+      "pourquoi_ca_compte": "Improves the quality of welcome and the well-being of toddlers and the working conditions for staff."
+    },
+    "2023_19_54_029": {
+      "description_claire": "New shelter facilities for homeless people in the district.",
+      "quoi_concretement": "Fit-out of premises dedicated to emergency accommodation and welcoming the most vulnerable. The project includes bring-up to standard and equipping the living spaces.",
+      "pourquoi_ca_compte": "Improves care and dignity for people facing severe exclusion."
+    }
+  }
+}
