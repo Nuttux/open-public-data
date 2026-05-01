@@ -1648,7 +1648,20 @@ export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
   const MULTI_NAME = "MARCHE MULTIATTRIBUTAIRE";
   if (_marchesVulg === null) {
     const data = readJsonOrNull<VulgarizationCache<MarcheVulgarization>>("enrichment/vulgarization_marches.json");
-    _marchesVulg = data?.items ?? {};
+    const en = readJsonOrNull<VulgarizationCache<MarcheVulgarization>>("enrichment/vulgarization_marches_en.json");
+    const merged: Record<string, MarcheVulgarization> = {};
+    for (const [k, v] of Object.entries(data?.items ?? {})) {
+      const e = en?.items?.[k];
+      merged[k] = e
+        ? {
+            ...v,
+            objet_clair_en: e.objet_clair,
+            quoi_concretement_en: e.quoi_concretement,
+            pourquoi_ca_compte_en: e.pourquoi_ca_compte,
+          }
+        : v;
+    }
+    _marchesVulg = merged;
   }
   const vulgMap = _marchesVulg;
   type TitAgg = {
