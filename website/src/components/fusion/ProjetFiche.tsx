@@ -116,7 +116,7 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
               borderRadius: 2,
             }}
           >
-            {projet.typeAp}
+            {trLabel(projet.typeAp, locale)}
           </span>
         )}
         {projet.confidence != null && projet.confidence < 0.7 && (
@@ -212,6 +212,46 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
               {t("fx.fiche.projet.voir_osm")}
             </a>
           )}
+        </section>
+      )}
+
+      {projet.marches.length === 0 && projet.marchesCoverage.total > 0 && (
+        <section className="fx-fiche-section">
+          <div
+            style={{
+              padding: "16px 18px",
+              border: "1px solid var(--rule)",
+              background: "rgba(166, 118, 56, 0.04)",
+              borderLeft: "3px solid var(--ocre)",
+              fontFamily: "var(--f-ui)",
+              fontSize: 13.5,
+              lineHeight: 1.55,
+              color: "var(--ink-2)",
+            }}
+          >
+            <div
+              style={{
+                fontFamily: "var(--f-mono)",
+                fontSize: 11,
+                letterSpacing: 1,
+                textTransform: "uppercase",
+                color: "var(--ocre)",
+                marginBottom: 8,
+                fontWeight: 600,
+              }}
+            >
+              {t("fx.fiche.projet.entreprises_empty_title")}
+            </div>
+            <p style={{ margin: 0 }}>
+              {fill(t("fx.fiche.projet.entreprises_empty_body"), {
+                pct: projet.marchesCoverage.pct.toFixed(0),
+                matched: new Intl.NumberFormat(locale === "en" ? "en-GB" : "fr-FR").format(projet.marchesCoverage.matched),
+                total: new Intl.NumberFormat(locale === "en" ? "en-GB" : "fr-FR").format(projet.marchesCoverage.total),
+                minYear: projet.marchesCoverage.scopeYears[0],
+                maxYear: projet.marchesCoverage.scopeYears[1],
+              })}
+            </p>
+          </div>
         </section>
       )}
 

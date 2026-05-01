@@ -55,6 +55,8 @@ export default async function ProjetPage({ params }: { params: Promise<Params> }
   const projet = loadProjet(id);
   if (!projet) return notFound();
   const photo = resolveProjetPhoto(projet.id, projet.name);
+  const locale = await readLocale();
+  const displayName = locale === "en" && projet.name_en ? projet.name_en : projet.name;
 
   return (
     <div className="theme-fusion">
@@ -63,7 +65,7 @@ export default async function ProjetPage({ params }: { params: Promise<Params> }
         <div className="fx-wrap">
           <InvestBackKicker />
           <h1 className="fx-page-title" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>
-            {projet.name}
+            {displayName}
           </h1>
           <ProjetLede year={projet.year} chapitre={projet.chapitre} montant={projet.montant} />
         </div>
