@@ -3,14 +3,22 @@ import "../fusion.css";
 
 import { Navbar, Footer } from "@/components/fusion";
 import { getAllPosts } from "@/lib/blog";
+import { buildLocaleAwareMetadata } from "@/lib/seo";
 import AnalysesClient from "./AnalysesClient";
 
-export const metadata: Metadata = {
-  title: "Analyses — France Open Data",
-  description:
-    "Analyses, enquêtes, portraits et explications : ce que les données publiques permettent de comprendre sur les finances des collectivités françaises.",
-  alternates: { canonical: "/analyses" },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildLocaleAwareMetadata({
+    title: "Analyses — France Open Data",
+    description:
+      "Analyses, enquêtes, portraits et explications : ce que les données publiques permettent de comprendre sur les finances des collectivités françaises.",
+    en: {
+      title: "Analyses — France Open Data",
+      description:
+        "Investigations, profiles, and explainers — what public data lets us understand about French local-government finance.",
+    },
+    path: "/analyses",
+  });
+}
 
 const PLANNED: { title: string; description: string; tag: string }[] = [
   {

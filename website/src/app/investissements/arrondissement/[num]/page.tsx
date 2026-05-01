@@ -5,20 +5,40 @@ import "../../../fusion.css";
 import { Navbar, Footer, ArrondissementFiche } from "@/components/fusion";
 import { InvestBackKicker, ArrInvestTitleAndLede } from "@/components/fusion/EntityPageHeaders";
 import { loadArrondissement } from "@/lib/fusion-data";
+import { readLocale } from "@/lib/seo";
 
 type Params = { num: string };
 
-const suf = (n: number) => (n === 1 ? "er" : "ᵉ");
+const sufFr = (n: number) => (n === 1 ? "er" : "ᵉ");
+const sufEn = (n: number) => {
+  if (n === 1) return "st";
+  if (n === 2) return "nd";
+  if (n === 3) return "rd";
+  return "th";
+};
 
-// NOTE: server-side metadata is FR-canonical (no locale detection at request time).
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { num } = await params;
+  const locale = await readLocale();
   const arrNum = parseInt(num, 10);
   const a = loadArrondissement(arrNum);
-  if (!a) return { title: "Arrondissement introuvable — France Open Data", robots: { index: false } };
+  if (!a) {
+    return {
+      title: locale === "en" ? "Arrondissement not found — France Open Data" : "Arrondissement introuvable — France Open Data",
+      robots: { index: false },
+    };
+  }
   const canonical = `/investissements/arrondissement/${a.arr}`;
-  const title = `${a.arr}${suf(a.arr)} arrondissement — Investissements ${a.year} · France Open Data`;
-  const description = `Projets d'investissement dans le ${a.arr}${suf(a.arr)} arrondissement de Paris, exercice ${a.year}. ${a.nbProjets} projets, ${a.total.toLocaleString("fr-FR")} € au total.`;
+  const arrLabel = locale === "en"
+    ? `${a.arr}${sufEn(a.arr)} arrondissement`
+    : `${a.arr}${sufFr(a.arr)} arrondissement`;
+  const totalFmt = a.total.toLocaleString(locale === "en" ? "en-GB" : "fr-FR");
+  const title = locale === "en"
+    ? `${arrLabel} — Paris investments ${a.year} · France Open Data`
+    : `${arrLabel} — Investissements ${a.year} · France Open Data`;
+  const description = locale === "en"
+    ? `Investment projects in Paris's ${arrLabel}, fiscal year ${a.year}. ${a.nbProjets} projects, €${totalFmt} total.`
+    : `Projets d'investissement dans le ${arrLabel} de Paris, exercice ${a.year}. ${a.nbProjets} projets, ${totalFmt} € au total.`;
   return {
     title,
     description,
@@ -30,8 +50,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
       title,
       description,
       type: "article",
-      locale: "fr_FR",
-      alternateLocale: ["en_US"],
+      locale: locale === "en" ? "en_US" : "fr_FR",
+      alternateLocale: locale === "en" ? ["fr_FR"] : ["en_US"],
     },
   };
 }

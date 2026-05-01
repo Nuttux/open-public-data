@@ -6,22 +6,41 @@ import { Navbar, Footer, BailleurFiche } from "@/components/fusion";
 import { BailleurKickerText } from "@/components/fusion/EntityPageHeaders";
 import { loadBailleur } from "@/lib/fusion-data";
 import { fmtBillions, fmtMillions } from "@/lib/fmt";
+import { readLocale } from "@/lib/seo";
 
 type Params = { slug: string };
 
-// NOTE: server-side metadata is FR-canonical (no locale detection at request time).
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { slug } = await params;
+  const locale = await readLocale();
   const b = loadBailleur(slug);
-  if (!b) return { title: "Bailleur introuvable — France Open Data", robots: { index: false } };
-  const capital = b.garanties
-    ? b.garanties.capital_restant >= 1e9
-      ? `${fmtBillions(b.garanties.capital_restant)} Md € garantis`
-      : `${fmtMillions(b.garanties.capital_restant, 0)} M € garantis`
-    : "bailleur social parisien";
+  if (!b) {
+    return {
+      title: locale === "en" ? "Operator not found — France Open Data" : "Bailleur introuvable — France Open Data",
+      robots: { index: false },
+    };
+  }
+  let capital: string;
+  if (b.garanties) {
+    if (locale === "en") {
+      capital = b.garanties.capital_restant >= 1e9
+        ? `€${fmtBillions(b.garanties.capital_restant)}Bn guaranteed`
+        : `€${fmtMillions(b.garanties.capital_restant, 0)}M guaranteed`;
+    } else {
+      capital = b.garanties.capital_restant >= 1e9
+        ? `${fmtBillions(b.garanties.capital_restant)} Md € garantis`
+        : `${fmtMillions(b.garanties.capital_restant, 0)} M € garantis`;
+    }
+  } else {
+    capital = locale === "en" ? "Paris social-housing operator" : "bailleur social parisien";
+  }
   const canonical = `/dette-patrimoine/bailleur/${encodeURIComponent(b.slug)}`;
-  const title = `${b.name} — Bailleur · France Open Data`;
-  const description = `${b.name} : ${capital} par la Ville de Paris.`;
+  const title = locale === "en"
+    ? `${b.name} — Operator · France Open Data`
+    : `${b.name} — Bailleur · France Open Data`;
+  const description = locale === "en"
+    ? `${b.name}: ${capital} by the Ville de Paris.`
+    : `${b.name} : ${capital} par la Ville de Paris.`;
   return {
     title,
     description,
@@ -33,8 +52,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
       title,
       description,
       type: "profile",
-      locale: "fr_FR",
-      alternateLocale: ["en_US"],
+      locale: locale === "en" ? "en_US" : "fr_FR",
+      alternateLocale: locale === "en" ? ["fr_FR"] : ["en_US"],
     },
   };
 }

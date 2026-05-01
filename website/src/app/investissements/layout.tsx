@@ -1,20 +1,27 @@
 import type { Metadata } from 'next';
-import { buildPageMetadata, datasetJsonLd } from '@/lib/seo';
+import { buildLocaleAwareMetadata, datasetJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = buildPageMetadata({
-  title: 'Investissements de Paris — Projets géolocalisés par arrondissement',
-  description:
-    "Écoles, gymnases, voirie, parcs : tous les projets d'investissement de la Ville de Paris, géolocalisés arrondissement par arrondissement. Extraits des PDF du Conseil de Paris.",
-  path: '/investissements',
-  keywords: [
-    'investissements Paris',
-    'projets municipaux',
-    'travaux arrondissement',
-    'écoles Paris',
-    'gymnases Paris',
-    'voirie Paris',
-  ],
-});
+export async function generateMetadata(): Promise<Metadata> {
+  return buildLocaleAwareMetadata({
+    title: 'Investissements de Paris — Projets géolocalisés par arrondissement',
+    description:
+      "Écoles, gymnases, voirie, parcs : tous les projets d'investissement de la Ville de Paris, géolocalisés arrondissement par arrondissement. Extraits des PDF du Conseil de Paris.",
+    en: {
+      title: 'Paris investments — Geolocated projects by arrondissement',
+      description:
+        "Schools, gyms, roads, parks: every Ville de Paris investment project, geolocated arrondissement by arrondissement. Extracted from Conseil de Paris PDFs.",
+    },
+    path: '/investissements',
+    keywords: [
+      'investissements Paris',
+      'projets municipaux',
+      'travaux arrondissement',
+      'écoles Paris',
+      'gymnases Paris',
+      'voirie Paris',
+    ],
+  });
+}
 
 const dataset = datasetJsonLd({
   name: "Projets d'investissement de la Ville de Paris",

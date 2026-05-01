@@ -6,19 +6,33 @@ import { Navbar, Footer } from "@/components/fusion";
 import ProjetFiche from "@/components/fusion/ProjetFiche";
 import { InvestBackKicker, ProjetLede } from "@/components/fusion/EntityPageHeaders";
 import { loadProjet, resolveProjetPhoto } from "@/lib/fusion-data";
+import { readLocale } from "@/lib/seo";
+import { trLabel } from "@/lib/label-translate";
 
 type Params = { id: string };
 
-// NOTE: server-side metadata is FR-canonical because locale lives in
-// localStorage (client-only). EN users see French meta until a
-// query-string locale mechanism is added.
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { id } = await params;
+  const locale = await readLocale();
   const p = loadProjet(id);
-  if (!p) return { title: "Projet introuvable — France Open Data", robots: { index: false } };
+  if (!p) {
+    return {
+      title: locale === "en" ? "Project not found — France Open Data" : "Projet introuvable — France Open Data",
+      robots: { index: false },
+    };
+  }
   const canonical = `/investissements/projet/${encodeURIComponent(p.id)}`;
-  const title = `${p.name.slice(0, 60)} — Projet · France Open Data`;
-  const description = `Projet d'investissement ${p.year} · ${p.montant.toLocaleString("fr-FR")} € · ${p.chapitre}.`;
+  const projectName = locale === "en" && (p as { name_en?: string }).name_en
+    ? (p as { name_en?: string }).name_en!
+    : p.name;
+  const title = locale === "en"
+    ? `${projectName.slice(0, 60)} — Project · France Open Data`
+    : `${projectName.slice(0, 60)} — Projet · France Open Data`;
+  const amountFmt = p.montant.toLocaleString(locale === "en" ? "en-GB" : "fr-FR");
+  const chapitreLabel = trLabel(p.chapitre, locale);
+  const description = locale === "en"
+    ? `Investment project ${p.year} · €${amountFmt} · ${chapitreLabel}.`
+    : `Projet d'investissement ${p.year} · ${amountFmt} € · ${chapitreLabel}.`;
   return {
     title,
     description,
@@ -30,8 +44,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
       title,
       description,
       type: "article",
-      locale: "fr_FR",
-      alternateLocale: ["en_US"],
+      locale: locale === "en" ? "en_US" : "fr_FR",
+      alternateLocale: locale === "en" ? ["fr_FR"] : ["en_US"],
     },
   };
 }

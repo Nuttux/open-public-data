@@ -6,17 +6,30 @@ import { Navbar, Footer } from "@/components/fusion";
 import CategorieMarcheFiche from "@/components/fusion/CategorieMarcheFiche";
 import { MarchesBackKicker, CategorieLede } from "@/components/fusion/EntityPageHeaders";
 import { loadMarcheCategorie } from "@/lib/fusion-data";
+import { readLocale } from "@/lib/seo";
+import { trLabel } from "@/lib/label-translate";
 
 type Params = { slug: string };
 
-// NOTE: server-side metadata is FR-canonical (no locale detection at request time).
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { slug } = await params;
+  const locale = await readLocale();
   const f = loadMarcheCategorie(slug);
-  if (!f) return { title: "Catégorie introuvable — France Open Data", robots: { index: false } };
+  if (!f) {
+    return {
+      title: locale === "en" ? "Category not found — France Open Data" : "Catégorie introuvable — France Open Data",
+      robots: { index: false },
+    };
+  }
   const canonical = `/marches-publics/categorie/${f.slug}`;
-  const title = `${f.category} — Marchés publics Paris ${f.year} · France Open Data`;
-  const description = `${f.nbContrats} contrats pour un total de ${Math.round(f.total / 1e6)} M € dans la catégorie ${f.category}.`;
+  const categoryLabel = trLabel(f.category, locale);
+  const totalM = Math.round(f.total / 1e6);
+  const title = locale === "en"
+    ? `${categoryLabel} — Paris public contracts ${f.year} · France Open Data`
+    : `${f.category} — Marchés publics Paris ${f.year} · France Open Data`;
+  const description = locale === "en"
+    ? `${f.nbContrats} contracts for a total of €${totalM}M in the ${categoryLabel} category.`
+    : `${f.nbContrats} contrats pour un total de ${totalM} M € dans la catégorie ${f.category}.`;
   return {
     title,
     description,
@@ -28,8 +41,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
       title,
       description,
       type: "article",
-      locale: "fr_FR",
-      alternateLocale: ["en_US"],
+      locale: locale === "en" ? "en_US" : "fr_FR",
+      alternateLocale: locale === "en" ? ["fr_FR"] : ["en_US"],
     },
   };
 }

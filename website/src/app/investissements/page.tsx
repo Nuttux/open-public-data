@@ -2,14 +2,22 @@ import type { Metadata } from "next";
 import "../fusion.css";
 import { loadInvestissementsData } from "@/lib/fusion-data";
 import { getPostsForPage } from "@/lib/page-articles";
+import { buildLocaleAwareMetadata } from "@/lib/seo";
 import InvestissementsClient from "./InvestissementsClient";
 
-export const metadata: Metadata = {
-  title: "Investissements — France Open Data",
-  description:
-    "Les chantiers de Paris en un coup d'œil : projets, budgets, arrondissements. Investissements extraits des comptes administratifs et classifiés.",
-  alternates: { canonical: "/investissements" },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildLocaleAwareMetadata({
+    title: "Investissements — France Open Data",
+    description:
+      "Les chantiers de Paris en un coup d'œil : projets, budgets, arrondissements. Investissements extraits des comptes administratifs et classifiés.",
+    en: {
+      title: "Investments — France Open Data",
+      description:
+        "Paris construction projects at a glance: projects, budgets, districts. Investments extracted from the administrative accounts and classified.",
+    },
+    path: "/investissements",
+  });
+}
 
 export default async function InvestissementsPage({
   searchParams,

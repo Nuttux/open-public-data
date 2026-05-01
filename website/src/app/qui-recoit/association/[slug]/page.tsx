@@ -5,17 +5,39 @@ import "../../../fusion.css";
 import { Navbar, Footer, AssociationFiche } from "@/components/fusion";
 import { AssoPageHeader } from "@/components/fusion/AssoKicker";
 import { loadAssociation, loadSubventionVulgarization, loadBeneficiaireGrounded } from "@/lib/fusion-data";
+import { readLocale } from "@/lib/seo";
 
 type Params = { slug: string };
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { slug } = await params;
+  const locale = await readLocale();
   const a = loadAssociation(slug);
-  if (!a) return { title: "Association introuvable — France Open Data", robots: { index: false } };
+  if (!a) {
+    return {
+      title: locale === "en" ? "Beneficiary not found — France Open Data" : "Association introuvable — France Open Data",
+      robots: { index: false },
+    };
+  }
+  const amountFmt = a.totalAmount.toLocaleString(locale === "en" ? "en-GB" : "fr-FR");
+  const title = locale === "en"
+    ? `${a.name} — Beneficiary · France Open Data`
+    : `${a.name} — Association · France Open Data`;
+  const description = locale === "en"
+    ? `${a.name}: ${a.subventionCount} grants, total €${amountFmt} from the Ville de Paris.`
+    : `${a.name} : ${a.subventionCount} subventions, cumul ${amountFmt} € de la Ville de Paris.`;
+  const canonical = `/qui-recoit/association/${encodeURIComponent(a.name)}`;
   return {
-    title: `${a.name} — Association · France Open Data`,
-    description: `${a.name} : ${a.subventionCount} subventions, cumul ${a.totalAmount.toLocaleString("fr-FR")} € de la Ville de Paris.`,
-    alternates: { canonical: `/qui-recoit/association/${encodeURIComponent(a.name)}` },
+    title,
+    description,
+    alternates: { canonical, languages: { "fr-FR": canonical, "en-US": canonical } },
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      locale: locale === "en" ? "en_US" : "fr_FR",
+      alternateLocale: locale === "en" ? ["fr_FR"] : ["en_US"],
+    },
   };
 }
 

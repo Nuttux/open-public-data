@@ -3,7 +3,7 @@ import "./fusion.css";
 
 import { loadLandingStats } from "@/lib/fusion-data";
 import { getAllPosts, type BlogPostMeta } from "@/lib/blog";
-import { SITE_URL } from "@/lib/seo";
+import { SITE_URL, readLocale } from "@/lib/seo";
 import LandingClient from "./LandingClient";
 
 // Curation éditoriale — 3 articles mis en avant sur la landing.
@@ -14,38 +14,44 @@ const LANDING_FEATURED_SLUGS = [
   "jo-2024-anatomie-pic-livraison",
 ] as const;
 
-const OG_TITLE = "Où va l'argent public à Paris ? — France Open Data";
-const OG_DESCRIPTION =
-  "Les finances publiques françaises, rendues lisibles. Budget, dépenses, subventions, dette — sourcés, vérifiables, publiés en licence ouverte.";
-
-// NOTE: server-side metadata is FR-canonical because user locale lives in
-// localStorage (client-only — set by the language toggle in the navbar).
-// EN users see French meta tags until/unless we add a `?lang=en` query
-// mechanism; the alternates.languages signals bilingual availability to
-// search engines and link-preview crawlers.
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: OG_TITLE,
-  description: OG_DESCRIPTION,
-  alternates: {
-    canonical: "/",
-    languages: { "fr-FR": "/", "en-US": "/" },
-  },
-  openGraph: {
-    type: "website",
-    siteName: "France Open Data",
-    title: OG_TITLE,
-    description: OG_DESCRIPTION,
-    url: SITE_URL,
-    locale: "fr_FR",
-    alternateLocale: ["en_US"],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: OG_TITLE,
-    description: OG_DESCRIPTION,
-  },
+const OG_FR = {
+  title: "Où va l'argent public à Paris ? — France Open Data",
+  description:
+    "Les finances publiques françaises, rendues lisibles. Budget, dépenses, subventions, dette — sourcés, vérifiables, publiés en licence ouverte.",
 };
+const OG_EN = {
+  title: "Where does public money go in Paris? — France Open Data",
+  description:
+    "French public finance, made readable. Budget, spending, grants, debt — sourced, verifiable, open-licensed.",
+};
+
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await readLocale();
+  const og = locale === "en" ? OG_EN : OG_FR;
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: og.title,
+    description: og.description,
+    alternates: {
+      canonical: "/",
+      languages: { "fr-FR": "/", "en-US": "/" },
+    },
+    openGraph: {
+      type: "website",
+      siteName: "France Open Data",
+      title: og.title,
+      description: og.description,
+      url: SITE_URL,
+      locale: locale === "en" ? "en_US" : "fr_FR",
+      alternateLocale: locale === "en" ? ["fr_FR"] : ["en_US"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: og.title,
+      description: og.description,
+    },
+  };
+}
 
 export default function LandingPage() {
   const stats = loadLandingStats();

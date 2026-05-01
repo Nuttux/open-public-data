@@ -6,17 +6,30 @@ import { Navbar, Footer } from "@/components/fusion";
 import ThemeFiche from "@/components/fusion/ThemeFiche";
 import { SubventionsBackKicker, ThemeLede } from "@/components/fusion/EntityPageHeaders";
 import { loadThemeSubventions } from "@/lib/fusion-data";
+import { readLocale } from "@/lib/seo";
+import { trLabel } from "@/lib/label-translate";
 
 type Params = { slug: string };
 
-// NOTE: server-side metadata is FR-canonical (no locale detection at request time).
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { slug } = await params;
+  const locale = await readLocale();
   const f = loadThemeSubventions(slug);
-  if (!f) return { title: "Thématique introuvable — France Open Data", robots: { index: false } };
+  if (!f) {
+    return {
+      title: locale === "en" ? "Theme not found — France Open Data" : "Thématique introuvable — France Open Data",
+      robots: { index: false },
+    };
+  }
   const canonical = `/qui-recoit/theme/${f.slug}`;
-  const title = `${f.theme} — Subventions Paris ${f.year} · France Open Data`;
-  const description = `${f.nbBeneficiaires} bénéficiaires, ${f.nbSubventions} subventions pour un total de ${Math.round(f.total / 1e6)} M € dans la thématique ${f.theme}.`;
+  const themeLabel = trLabel(f.theme, locale);
+  const totalM = Math.round(f.total / 1e6);
+  const title = locale === "en"
+    ? `${themeLabel} — Paris grants ${f.year} · France Open Data`
+    : `${f.theme} — Subventions Paris ${f.year} · France Open Data`;
+  const description = locale === "en"
+    ? `${f.nbBeneficiaires} beneficiaries, ${f.nbSubventions} grants for a total of €${totalM}M in the ${themeLabel} theme.`
+    : `${f.nbBeneficiaires} bénéficiaires, ${f.nbSubventions} subventions pour un total de ${totalM} M € dans la thématique ${f.theme}.`;
   return {
     title,
     description,
@@ -28,8 +41,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
       title,
       description,
       type: "article",
-      locale: "fr_FR",
-      alternateLocale: ["en_US"],
+      locale: locale === "en" ? "en_US" : "fr_FR",
+      alternateLocale: locale === "en" ? ["fr_FR"] : ["en_US"],
     },
   };
 }

@@ -7,11 +7,12 @@ import Footer from "@/components/fusion/Footer";
 import PosteFiche from "@/components/fusion/PosteFiche";
 import { BudgetBackKicker, PosteLede } from "@/components/fusion/EntityPageHeaders";
 import { loadBudgetPoste } from "@/lib/fusion-data";
+import { readLocale } from "@/lib/seo";
+import { trLabel } from "@/lib/label-translate";
 
 type Params = { slug: string };
 type SP = { year?: string };
 
-// NOTE: server-side metadata is FR-canonical (no locale detection at request time).
 export async function generateMetadata({
   params,
   searchParams,
@@ -21,12 +22,26 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const sp = await searchParams;
+  const locale = await readLocale();
   const year = sp.year ? Number(sp.year) : undefined;
   const p = loadBudgetPoste(slug, year);
-  if (!p) return { title: "Poste introuvable — France Open Data", robots: { index: false } };
+  if (!p) {
+    return {
+      title: locale === "en" ? "Item not found — France Open Data" : "Poste introuvable — France Open Data",
+      robots: { index: false },
+    };
+  }
   const canonical = `/budget/poste/${p.slug}`;
-  const title = `${p.label} — Budget ${p.year} · France Open Data`;
-  const description = `${p.label} — ${p.kind === "depense" ? "dépense" : "recette"} du budget de Paris pour l'exercice ${p.year}. ${p.subPostes.length} sous-postes détaillés.`;
+  const labelEn = trLabel(p.label, locale);
+  const kindLabel = locale === "en"
+    ? (p.kind === "depense" ? "expense" : "revenue")
+    : (p.kind === "depense" ? "dépense" : "recette");
+  const title = locale === "en"
+    ? `${labelEn} — Paris budget ${p.year} · France Open Data`
+    : `${p.label} — Budget ${p.year} · France Open Data`;
+  const description = locale === "en"
+    ? `${labelEn} — Paris budget ${kindLabel} for fiscal year ${p.year}. ${p.subPostes.length} sub-items detailed.`
+    : `${p.label} — ${kindLabel} du budget de Paris pour l'exercice ${p.year}. ${p.subPostes.length} sous-postes détaillés.`;
   return {
     title,
     description,
@@ -38,8 +53,8 @@ export async function generateMetadata({
       title,
       description,
       type: "article",
-      locale: "fr_FR",
-      alternateLocale: ["en_US"],
+      locale: locale === "en" ? "en_US" : "fr_FR",
+      alternateLocale: locale === "en" ? ["fr_FR"] : ["en_US"],
     },
   };
 }

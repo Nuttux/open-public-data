@@ -2,14 +2,22 @@ import type { Metadata } from "next";
 import "../fusion.css";
 import { loadPatrimoineData, loadPatrimoineStructure, loadHorsBilan, loadHorsBilanTrajectory, loadCitiesDebtSnapshot } from "@/lib/fusion-data";
 import { getPostsForPage } from "@/lib/page-articles";
+import { buildLocaleAwareMetadata } from "@/lib/seo";
 import DettePatrimoineClient from "./DettePatrimoineClient";
 
-export const metadata: Metadata = {
-  title: "Dette & patrimoine — France Open Data",
-  description:
-    "Le bilan consolidé de la Ville de Paris : actif, passif, dette, fonds propres. Règle d'or et garde-fous d'équilibre.",
-  alternates: { canonical: "/dette-patrimoine" },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildLocaleAwareMetadata({
+    title: "Dette & patrimoine — France Open Data",
+    description:
+      "Le bilan consolidé de la Ville de Paris : actif, passif, dette, fonds propres. Règle d'or et garde-fous d'équilibre.",
+    en: {
+      title: "Debt & assets — France Open Data",
+      description:
+        "The Ville de Paris consolidated balance sheet: assets, liabilities, debt, equity. Golden rule and balance safeguards.",
+    },
+    path: "/dette-patrimoine",
+  });
+}
 
 export default async function DettePatrimoinePage({
   searchParams,

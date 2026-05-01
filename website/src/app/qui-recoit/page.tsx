@@ -2,14 +2,22 @@ import type { Metadata } from "next";
 import "../fusion.css";
 import { loadQuiRecoitData, loadQuiRecoitIndex } from "@/lib/fusion-data";
 import { getPostsForPage } from "@/lib/page-articles";
+import { buildLocaleAwareMetadata } from "@/lib/seo";
 import QuiRecoitClient from "./QuiRecoitClient";
 
-export const metadata: Metadata = {
-  title: "Qui reçoit l'argent public ? — France Open Data",
-  description:
-    "Subventions versées par la Ville de Paris : bénéficiaires, thématiques, évolution. Données publiées en open data, reventilées et classifiées.",
-  alternates: { canonical: "/qui-recoit" },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildLocaleAwareMetadata({
+    title: "Qui reçoit l'argent public ? — France Open Data",
+    description:
+      "Subventions versées par la Ville de Paris : bénéficiaires, thématiques, évolution. Données publiées en open data, reventilées et classifiées.",
+    en: {
+      title: "Who receives public money? — France Open Data",
+      description:
+        "Grants paid by the Ville de Paris: beneficiaries, themes, trends. Open-data figures reaggregated and classified.",
+    },
+    path: "/qui-recoit",
+  });
+}
 
 export default async function QuiRecoitPage({
   searchParams,
