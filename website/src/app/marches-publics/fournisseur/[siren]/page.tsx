@@ -5,19 +5,28 @@ import "../../../fusion.css";
 import { Navbar, Footer, FournisseurFiche } from "@/components/fusion";
 import { MarchesBackKicker, FournisseurLede } from "@/components/fusion/EntityPageHeaders";
 import { loadFournisseur, loadSirene } from "@/lib/fusion-data";
+import { readLocale } from "@/lib/seo";
 
 type Params = { siren: string };
 
-// NOTE: server-side metadata is FR-canonical because locale lives in
-// localStorage (client-only). EN users see French meta until a
-// query-string locale mechanism is added.
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { siren } = await params;
+  const locale = await readLocale();
   const f = loadFournisseur(siren);
-  if (!f) return { title: "Fournisseur introuvable — France Open Data", robots: { index: false } };
+  if (!f) {
+    return {
+      title: locale === "en" ? "Supplier not found — France Open Data" : "Fournisseur introuvable — France Open Data",
+      robots: { index: false },
+    };
+  }
   const canonical = `/marches-publics/fournisseur/${f.siret || f.siren}`;
-  const title = `${f.nom} — Fournisseur · France Open Data`;
-  const description = `${f.nom} : ${f.contratCount} contrats, cumul ${f.totalAmount.toLocaleString("fr-FR")} € avec la Ville de Paris.`;
+  const amountFmt = f.totalAmount.toLocaleString(locale === "en" ? "en-GB" : "fr-FR");
+  const title = locale === "en"
+    ? `${f.nom} — Supplier · France Open Data`
+    : `${f.nom} — Fournisseur · France Open Data`;
+  const description = locale === "en"
+    ? `${f.nom}: ${f.contratCount} contracts, total €${amountFmt} with the Ville de Paris.`
+    : `${f.nom} : ${f.contratCount} contrats, cumul ${amountFmt} € avec la Ville de Paris.`;
   return {
     title,
     description,
@@ -29,8 +38,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
       title,
       description,
       type: "profile",
-      locale: "fr_FR",
-      alternateLocale: ["en_US"],
+      locale: locale === "en" ? "en_US" : "fr_FR",
+      alternateLocale: locale === "en" ? ["fr_FR"] : ["en_US"],
     },
   };
 }

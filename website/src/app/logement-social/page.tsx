@@ -2,14 +2,22 @@ import type { Metadata } from "next";
 import "../fusion.css";
 import { loadLogementSocialData } from "@/lib/fusion-data";
 import { getPostsForPage } from "@/lib/page-articles";
+import { buildLocaleAwareMetadata } from "@/lib/seo";
 import LogementSocialClient from "./LogementSocialClient";
 
-export const metadata: Metadata = {
-  title: "Logement social — France Open Data",
-  description:
-    "Le parc social parisien, la loi SRU et la tension locative. Données publiques reventilées par arrondissement et par bailleur.",
-  alternates: { canonical: "/logement-social" },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildLocaleAwareMetadata({
+    title: "Logement social — France Open Data",
+    description:
+      "Le parc social parisien, la loi SRU et la tension locative. Données publiques reventilées par arrondissement et par bailleur.",
+    en: {
+      title: "Social housing — France Open Data",
+      description:
+        "The Paris social-housing stock, the SRU law, and rental pressure. Public data reaggregated by arrondissement and operator.",
+    },
+    path: "/logement-social",
+  });
+}
 
 export default async function LogementSocialPage({
   searchParams,

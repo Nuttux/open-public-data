@@ -5,17 +5,30 @@ import "../../../fusion.css";
 import { Navbar, Footer, ChapitreFiche } from "@/components/fusion";
 import { InvestBackKicker, ChapitreInvestLede } from "@/components/fusion/EntityPageHeaders";
 import { loadChapitre } from "@/lib/fusion-data";
+import { readLocale } from "@/lib/seo";
+import { trLabel } from "@/lib/label-translate";
 
 type Params = { slug: string };
 
-// NOTE: server-side metadata is FR-canonical (no locale detection at request time).
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { slug } = await params;
+  const locale = await readLocale();
   const c = loadChapitre(slug);
-  if (!c) return { title: "Chapitre introuvable — France Open Data", robots: { index: false } };
+  if (!c) {
+    return {
+      title: locale === "en" ? "Chapter not found — France Open Data" : "Chapitre introuvable — France Open Data",
+      robots: { index: false },
+    };
+  }
   const canonical = `/investissements/chapitre/${c.slug}`;
-  const title = `${c.label} — Investissements ${c.year} · France Open Data`;
-  const description = `Investissements de la Ville de Paris dans le chapitre ${c.label}, exercice ${c.year}. ${c.nbProjets} projets, ${c.total.toLocaleString("fr-FR")} € au total.`;
+  const labelEn = trLabel(c.label, locale);
+  const totalFmt = c.total.toLocaleString(locale === "en" ? "en-GB" : "fr-FR");
+  const title = locale === "en"
+    ? `${labelEn} — Paris investments ${c.year} · France Open Data`
+    : `${c.label} — Investissements ${c.year} · France Open Data`;
+  const description = locale === "en"
+    ? `Ville de Paris investments in the ${labelEn} chapter, fiscal year ${c.year}. ${c.nbProjets} projects, €${totalFmt} total.`
+    : `Investissements de la Ville de Paris dans le chapitre ${c.label}, exercice ${c.year}. ${c.nbProjets} projets, ${totalFmt} € au total.`;
   return {
     title,
     description,
@@ -27,8 +40,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
       title,
       description,
       type: "article",
-      locale: "fr_FR",
-      alternateLocale: ["en_US"],
+      locale: locale === "en" ? "en_US" : "fr_FR",
+      alternateLocale: locale === "en" ? ["fr_FR"] : ["en_US"],
     },
   };
 }

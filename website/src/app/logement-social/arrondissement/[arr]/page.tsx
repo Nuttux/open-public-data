@@ -6,6 +6,7 @@ import Footer from "@/components/fusion/Footer";
 import { ArrondissementLogementFiche } from "@/components/fusion";
 import { LogementArrKicker, LogementArrBackLink } from "@/components/fusion/EntityPageHeaders";
 import { loadArrondissementLogement, PARIS_CENTRE_SLUG } from "@/lib/fusion-data";
+import { readLocale } from "@/lib/seo";
 import "../../../fusion.css";
 
 type Params = { arr: string };
@@ -16,7 +17,6 @@ const isValidSlug = (s: string) => {
   return Number.isInteger(n) && n >= 1 && n <= 20;
 };
 
-// NOTE: server-side metadata is FR-canonical (no locale detection at request time).
 export async function generateMetadata({
   params,
 }: {
@@ -26,9 +26,14 @@ export async function generateMetadata({
   if (!isValidSlug(arr)) return {};
   const data = loadArrondissementLogement(arr);
   if (!data) return {};
+  const locale = await readLocale();
   const canonical = `/logement-social/arrondissement/${data.slug}`;
-  const title = `${data.label} · logement social — France Open Data`;
-  const description = `Opérations de logement social financées · ${data.label} · Paris.`;
+  const title = locale === "en"
+    ? `${data.label} · social housing — France Open Data`
+    : `${data.label} · logement social — France Open Data`;
+  const description = locale === "en"
+    ? `Funded social-housing operations · ${data.label} · Paris.`
+    : `Opérations de logement social financées · ${data.label} · Paris.`;
   return {
     title,
     description,
@@ -40,8 +45,8 @@ export async function generateMetadata({
       title,
       description,
       type: "article",
-      locale: "fr_FR",
-      alternateLocale: ["en_US"],
+      locale: locale === "en" ? "en_US" : "fr_FR",
+      alternateLocale: locale === "en" ? ["fr_FR"] : ["en_US"],
     },
   };
 }

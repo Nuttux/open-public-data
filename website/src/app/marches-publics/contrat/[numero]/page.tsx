@@ -5,20 +5,34 @@ import "../../../fusion.css";
 import { Navbar, Footer, ContratFiche } from "@/components/fusion";
 import { MarchesBackKicker, ContratLede, ContratTitleFallback } from "@/components/fusion/EntityPageHeaders";
 import { loadContrat, loadContratRanking, loadMarcheVulgarization, loadSirene } from "@/lib/fusion-data";
+import { readLocale } from "@/lib/seo";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 
 type Params = { numero: string };
 
-// NOTE: server-side metadata is FR-canonical because locale lives in
-// localStorage (client-only, no cookie/header). EN users see French meta
-// until a query-string locale mechanism is added.
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { numero } = await params;
+  const locale = await readLocale();
   const c = loadContrat(numero);
-  if (!c) return { title: "Contrat introuvable — France Open Data", robots: { index: false } };
+  if (!c) {
+    return {
+      title: locale === "en" ? "Contract not found — France Open Data" : "Contrat introuvable — France Open Data",
+      robots: { index: false },
+    };
+  }
   const canonical = `/marches-publics/contrat/${c.numero}`;
-  const title = `${c.objet.slice(0, 60)} — Marché ${c.numero} · France Open Data`;
-  const description = `Contrat ${c.numero} notifié en ${c.year} à ${c.fournisseur}. Enveloppe max ${c.montantMax.toLocaleString("fr-FR")} €.`;
+  // Prefer EN object name when available (vulgarization_marches_en.json)
+  const v = loadMarcheVulgarization(c.numero);
+  const objetSnippet = locale === "en"
+    ? (v?.objet_clair_en || v?.objet_clair || c.objet).slice(0, 60)
+    : (v?.objet_clair || c.objet).slice(0, 60);
+  const title = locale === "en"
+    ? `${objetSnippet} — Contract ${c.numero} · France Open Data`
+    : `${objetSnippet} — Marché ${c.numero} · France Open Data`;
+  const amountFmt = c.montantMax.toLocaleString(locale === "en" ? "en-GB" : "fr-FR");
+  const description = locale === "en"
+    ? `Contract ${c.numero} notified in ${c.year} to ${c.fournisseur}. Max envelope €${amountFmt}.`
+    : `Contrat ${c.numero} notifié en ${c.year} à ${c.fournisseur}. Enveloppe max ${amountFmt} €.`;
   return {
     title,
     description,
@@ -30,8 +44,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
       title,
       description,
       type: "article",
-      locale: "fr_FR",
-      alternateLocale: ["en_US"],
+      locale: locale === "en" ? "en_US" : "fr_FR",
+      alternateLocale: locale === "en" ? ["fr_FR"] : ["en_US"],
     },
   };
 }

@@ -7,14 +7,22 @@ import {
   loadVoteExecute,
 } from "@/lib/fusion-data";
 import { getPostsForPage } from "@/lib/page-articles";
+import { buildLocaleAwareMetadata } from "@/lib/seo";
 import BudgetClient from "./BudgetClient";
 
-export const metadata: Metadata = {
-  title: "Le budget de Paris — France Open Data",
-  description:
-    "Recettes, dépenses et exécution du budget de la Ville de Paris. Flux complet, détail par thématique, évolution 2019-2026. Source : comptes administratifs M57.",
-  alternates: { canonical: "/budget" },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildLocaleAwareMetadata({
+    title: "Le budget de Paris — France Open Data",
+    description:
+      "Recettes, dépenses et exécution du budget de la Ville de Paris. Flux complet, détail par thématique, évolution 2019-2026. Source : comptes administratifs M57.",
+    en: {
+      title: "Paris budget — France Open Data",
+      description:
+        "Revenue, spending and execution of the Ville de Paris budget. Full flow, breakdown by theme, 2019–2026 trend. Source: M57 administrative accounts.",
+    },
+    path: "/budget",
+  });
+}
 
 type SP = { year?: string };
 

@@ -1,19 +1,26 @@
 import type { Metadata } from 'next';
-import { buildPageMetadata, datasetJsonLd } from '@/lib/seo';
+import { buildLocaleAwareMetadata, datasetJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = buildPageMetadata({
-  title: 'Marchés publics de Paris — Titulaires, montants, objets',
-  description:
-    "Marchés publics passés par la Ville de Paris : titulaires, montants, objets et catégories. Données essentielles de la commande publique (DECP) 2017-2025.",
-  path: '/marches-publics',
-  keywords: [
-    'marchés publics Paris',
-    'commande publique',
-    'DECP',
-    'titulaires marchés',
-    "appels d'offres Paris",
-  ],
-});
+export async function generateMetadata(): Promise<Metadata> {
+  return buildLocaleAwareMetadata({
+    title: 'Marchés publics de Paris — Titulaires, montants, objets',
+    description:
+      "Marchés publics passés par la Ville de Paris : titulaires, montants, objets et catégories. Données essentielles de la commande publique (DECP) 2017-2025.",
+    en: {
+      title: 'Paris public contracts — Contractors, amounts, objects',
+      description:
+        "Public contracts awarded by the Ville de Paris: contractors, amounts, objects, and categories. DECP (Essential Public Procurement Data) 2017–2025.",
+    },
+    path: '/marches-publics',
+    keywords: [
+      'marchés publics Paris',
+      'commande publique',
+      'DECP',
+      'titulaires marchés',
+      "appels d'offres Paris",
+    ],
+  });
+}
 
 const dataset = datasetJsonLd({
   name: 'Marchés publics de la Ville de Paris',
