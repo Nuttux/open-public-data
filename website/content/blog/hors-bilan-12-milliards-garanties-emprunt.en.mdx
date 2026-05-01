@@ -1,0 +1,163 @@
+---
+title: "Hors-bilan : 12 milliards d'engagements que la dette officielle ne montre pas"
+description: "Au 31 décembre 2024, la Ville de Paris a accordé 12,28 milliards d'euros de garanties d'emprunt — un agrégat plus important que sa propre dette financière (10,7 Md€). Concentré à 88 % sur le logement social et à 79 % sur la Caisse des Dépôts, cet engagement n'apparaît dans aucun ratio de désendettement. Anatomie d'une dette « invisible »."
+date: "2026-04-29"
+author: "France Open Data"
+tags: ["enquête", "dette", "hors-bilan", "logement social", "CDC"]
+category: "Enquête"
+image: "https://commons.wikimedia.org/wiki/Special:FilePath/Op%C3%A9ra%20Garnier%20Paris.jpg?width=1600"
+imageAlt: "Opéra Garnier — institution patrimoniale parisienne, métaphore des engagements long terme de la Ville"
+imageCredit: "Photo : Wikimedia Commons · CC BY-SA"
+readingTime: "9 min"
+title_en: "Off-balance-sheet: €12 billion of commitments the official debt does not show"
+description_en: "As of 31 December 2024, the Ville de Paris had granted €12.28 billion in loan guarantees — a larger aggregate than its own financial debt (€10.7Bn). Concentrated 88% on social housing and 79% on the Caisse des Dépôts, this commitment appears in no debt-reduction ratio. Anatomy of an 'invisible' debt."
+imageAlt_en: "Opéra Garnier — a Parisian heritage institution, metaphor for the City's long-term commitments"
+imageCredit_en: "Photo: Wikimedia Commons · CC BY-SA"
+category_en: "Investigation"
+tags_en: ["investigation", "debt", "off-balance-sheet", "social housing", "CDC"]
+---
+
+When people talk about Paris's debt, the figure that comes up is the **financial debt on the balance sheet**: **€10.7 billion** as of 31 December 2024. That is the debt the City has taken on itself, to finance its own investments, and that it repays from its own revenue. It is the figure that underpins CRC ratios, rating-agency assessments, and public debate.
+
+But that figure is incomplete. On the same balance sheet, the City records **€12.28 billion in loan guarantees** granted to third parties. These guarantees, known as "off-balance-sheet", are **not counted as City debt** because they only effectively become a charge on the City if the beneficiary defaults. Statistically, that happens very rarely. But in outstanding amount, these commitments are **larger than the City's own debt**.
+
+This article describes what this off-balance-sheet aggregate is, who benefits from it, who the lenders are, and why its volume — invisible in the usual commentary — deserves to be named.
+
+## A trajectory that exceeds the City's own debt
+
+Across the six most recent fiscal years published on the Open Data Paris portal, the outstanding loan guarantees granted by the City follow a steady upward path:
+
+<BlogTimeBars
+  title="Loan guarantees granted by the Ville de Paris (outstanding principal, €Bn)"
+  unit="€Bn"
+  yMin={9}
+  data={[
+    { year: 2019, value: 10.15 },
+    { year: 2020, value: 10.52 },
+    { year: 2021, value: 11.24 },
+    { year: 2022, value: 11.41 },
+    { year: 2023, value: 12.31 },
+    { year: 2024, value: 12.28 },
+  ]}
+  caption="Outstanding loan guarantees granted by the City to third parties (principal still due as of 31 December), 2019-2024. Cumulative growth of +21% over six years, close to the pace of the City's own debt over the same period. The very slight 2024 dip (-0.2%) reflects amortisation of existing loans, for the first time exceeding new guarantees granted."
+  source="open-public-data pipeline, hors_bilan_*.json files (annex IV of Ville de Paris administrative accounts)"
+/>
+
+Key takeaway: **the off-balance-sheet outstanding amount grew by +21% between 2019 and 2024**, at a pace comparable to the City's own debt (+55% over the same period — the gap comes from the fact that the off-balance-sheet aggregate started much higher). More importantly, **the off-balance-sheet aggregate now exceeds the own-debt aggregate**: €12.28Bn versus €10.70Bn.
+
+This crossing does not mean the City is "more indebted than what people say". A guarantee is not a debt: it only becomes payable by the guarantor if the principal debtor defaults. But it represents a **real contingent commitment** that deserves to be made visible.
+
+## Who the City guarantees: 88% to social housing
+
+Of the €12.28Bn outstanding in 2024, almost all of it concerns social housing:
+
+| Category | Outstanding | Share | Number of loans |
+|---|---:|---:|---:|
+| Social housing supported by the State | €10.83Bn | **88.2%** | 9,760 |
+| Housing outside State support | €1.45Bn | 11.8% | 200 |
+| Other operations (urban development, equipment, associations) | €0Bn | 0.0% | 0 |
+| **Total** | **€12.28Bn** | **100%** | **9,960** |
+
+This is an extraordinary concentration. **An off-balance-sheet guarantee from the City is, with 88% probability, a guarantee on a State-supported social-housing loan** — typically a PLAI, PLUS or PLS loan taken out by a public social-housing operator with the Caisse des Dépôts.
+
+This concentration is not an accident. It stems from a legal mechanism: for a public social-housing operator to be able to take out a State-supported loan (drawn on Livret A funds deposited at the CDC), it needs the **parent local authority to guarantee the loan to at least 50%**, most often 100%. Without this guarantee, the supported loan is not granted. The mechanism therefore transfers part of the residual risk onto the local authority — the City in this case — in exchange for backing social-housing production.
+
+<figure className="fx-photo-fig">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Vue%20d%27ensemble%20de%20la%20Cit%C3%A9%20Curial%20Michelet.jpg?width=1200" alt="Large Parisian social-housing complex — illustration of social housing backed by debt guaranteed by the City" />
+<figcaption>Parisian social housing (here the Cité Curial-Michelet, 19th arrondissement) is almost entirely financed by CDC loans guaranteed by the City. Without the municipal guarantee, the State-supported housing finance mechanism could not function — which is why 88% of Paris's off-balance-sheet aggregate is concentrated in this sector.</figcaption>
+</figure>
+
+## Three social-housing operators concentrate three quarters of the guarantees
+
+Of the 109 distinct beneficiaries identified by the pipeline in 2024, the **top ten concentrate 90% of the outstanding amount**. And three social-housing operators — the same ones as in our previous analyses — capture by themselves **close to three quarters**:
+
+| Rank | Beneficiary | Status | Guaranteed outstanding | Number of loans |
+|---|---|---|---:|---:|
+| 1 | RIVP | SEM | €4.25Bn | 2,507 |
+| 2 | Paris Habitat-OPH | EPIC | €2.72Bn | 1,867 |
+| 3 | Elogie-Siemp | SEM | €1.68Bn | 2,937 |
+| 4 | Immobilière 3F (I3F) | SA HLM | €0.56Bn | 478 |
+| 5 | ICF Habitat La Sablière | SA HLM | €0.51Bn | 184 |
+| 6 | SEMAPA (urban development) | SPLA | €0.27Bn | 17 |
+| 7 | Batigère Habitat IDF | ESH | €0.17Bn | 142 |
+| 8 | CDC Habitat Social | SEM | €0.17Bn | 158 |
+| 9 | L'Habitation Confortable | SA HLM | €0.13Bn | 99 |
+| 10 | RATP Habitat | ESH | €0.12Bn | 71 |
+
+*Top 10 cumulative: ~€10.6Bn, or ~86% of total City guarantees outstanding. The other 99 beneficiaries share ~14%.*
+
+The structure is consistent with what we have seen on grant flows ([CASVP](/analyses/casvp-416-millions-bouclier-social), [Paris Habitat](/analyses/paris-habitat-premier-bailleur-social), [top-10 grants](/analyses/top-10-associations-subventionnees-paris)): Paris has outsourced most of its social-housing policy to a small number of public operators, and its off-balance-sheet aggregate is the accounting materialisation of this reciprocal dependency.
+
+<figure className="fx-photo-fig">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Hotel%20de%20Ville%20Paris%20Wikimedia%20Commons.jpg?width=1200" alt="Façade of the Caisse des Dépôts et Consignations, rue de Lille" />
+<figcaption>The historic headquarters of the Caisse des Dépôts, rue de Lille in Paris. The CDC is the sole lender of 79% of the loans guaranteed by the City in 2024 — a legacy of the French architecture for social-housing finance, backed by the collection of Livret A savings.</figcaption>
+</figure>
+
+## A single major lender: the Caisse des Dépôts (79%)
+
+The other extreme concentration is on the lender side. Out of 35 distinct lenders identified, **a single one** — the **Caisse des Dépôts (Banque des Territoires)** — carries 79% of the total outstanding:
+
+| Rank | Lender | Outstanding guaranteed by the City | Share |
+|---|---|---:|---:|
+| 1 | **CDC** (Caisse des Dépôts / Banque des Territoires) | €9.70Bn | **79%** |
+| 2 | LBP (La Banque Postale) | €0.51Bn | 4.2% |
+| 3 | CE (Caisse d'Épargne) | €0.48Bn | 3.9% |
+| 4 | CA-IdF (Crédit Agricole Île-de-France) | €0.27Bn | 2.2% |
+| 5 | SG (Société Générale) | €0.23Bn | 1.9% |
+| 6+ | 30 other lenders | €1.09Bn | 8.9% |
+
+This concentration is mechanical: almost all supported loans (PLAI, PLUS, PLS) are distributed by the Caisse des Dépôts from Livret A collection. This is the **historical architecture of French social-housing finance**, inherited from the post-war period and stable ever since. Other lenders intervene mostly on ancillary operations (land, complementary loans, regional subsidised financing).
+
+<aside className="fx-sidebar">
+
+### Why 74% of loans are at variable Livret A rate
+
+CDC loans for social housing are almost all indexed to the **Livret A rate**, because they are themselves backed by Livret A savings collection. This is a balance-sheet consistency: the CDC cannot lend long-term at a fixed rate what it receives from savers at a variable rate.
+
+Consequence: when the Livret A rate rises (as in 2022-2023, from 0.5% to 3%), the annual payments on off-balance-sheet loans automatically increase. The social-housing operator collects more rent (capped rents are themselves indexed to the rent reference index, which moves in the same direction) — but the time lag between the two can create significant cash-flow pressure. That is precisely when the City's guarantee gains a little more operational value.
+
+</aside>
+
+## Why the City guarantees, and what the risk is
+
+The City guarantees for two cumulative reasons:
+
+1. **It is legally necessary** for the public social-housing operator to access supported loans (see above)
+2. **It is politically desirable** because Parisian social housing depends on these loans to exist at scale
+
+The risk for the City is not zero, but it is low:
+
+- **Historically, French public social-housing operators almost never default on their CDC loans.** The cases recorded over the last twenty years involve isolated operations with very distressed operators — not large urban operators.
+- **The CDC has restructuring mechanisms** that kick in well before any guarantee call: amortisation moratoria, term extensions, refinancing loans.
+- **The operators guaranteed by Paris are the best-structured in the landscape** (RIVP, Paris Habitat, Elogie-Siemp are very large operators, supervised by the CRC, audited annually).
+
+The scenario in which the City would have to honour a significant guarantee would require a systemic crisis of social housing in the Île-de-France region, not a one-off failure. It is precisely this "contingent on a very-low-probability event" character that justifies off-balance-sheet treatment rather than direct accounting as debt.
+
+## How to read this figure vs the own debt
+
+Three non-exclusive readings are possible:
+
+### 1. Reassuring reading ("debt isn't that high")
+The City's own debt (€10.7Bn) is the only aggregate whose servicing (interest + principal) actually appears in the City budget. The off-balance-sheet amount, by contrast, is serviced by the **operators themselves**, out of their **own rental income**. As long as the operators collect their rents, the City has nothing to pay.
+
+### 2. Vigilant reading ("consolidated debt is actually ~€23Bn")
+If you add the own debt and the off-balance-sheet aggregate, total financial commitments of the City and its affiliates reach close to €23Bn. This is the figure that rating agencies would retain for a consolidated analysis — even if they do not publish it as such.
+
+### 3. Systemic reading ("the risk is sectoral, not isolated")
+The Parisian off-balance-sheet aggregate is **massively concentrated on a single sector** (social housing) and **a single lender** (CDC). This double concentration creates correlation risk: if a crisis hit Île-de-France social housing (rent collapse, mass default of a major operator, political deadlock), it would potentially affect several guarantees at once. The probability remains low, but the exposure is concentrated.
+
+None of these three readings is wrong. They illuminate different dimensions of the same figure.
+
+## What these figures do not say
+
+This analysis stops at what the pipeline and annex IV of the City's administrative accounts allow us to measure. It does not say:
+
+- **Whether the guaranteed operators are in good financial health** — for that, you would have to consult the activity reports and accounts of each operator (Paris Habitat, RIVP, Elogie-Siemp publish their balance sheets separately) as well as the periodic reports of the CRC Île-de-France
+- **What the amortisation profile of the outstanding amount is** — how much falls due each year through 2050+, and what the upcoming refinancing peaks are
+- **What other off-balance-sheet commitments exist** (pension obligations to staff, public-private partnership contracts, deposits and sureties) that are not covered by this specific "loan guarantees" aggregate
+
+What it does say, in one sentence: **the €12.28Bn of loan guarantees granted by the City to third parties represents a real contingent commitment, larger than the City's own debt, almost entirely concentrated on social housing and the Caisse des Dépôts**. This is not a hidden debt — it is a debt **whose servicing does not weigh on the City as long as the system functions**. But it is an aggregate that no public debate on Parisian debt should omit.
+
+---
+
+**Sources**: open-public-data pipeline, files `hors_bilan_2019.json` to `hors_bilan_2024.json` (extraction from annex IV of Ville de Paris administrative accounts) · Code général des collectivités territoriales (regime governing loan guarantees) · Code de la construction et de l'habitation (mechanism of CDC supported loans for social housing). Scope: outstanding principal as of 31 December. A guarantee is not a City debt — it only becomes one if the beneficiary defaults.

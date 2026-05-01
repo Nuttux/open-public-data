@@ -366,7 +366,7 @@ export default function InvestissementsClient({
                 </div>
                 <div className="fx-projet-card-body">
                   <div className="fx-projet-card-rank">{String(i + 1).padStart(2, "0")}</div>
-                  <div className="fx-projet-card-name">{(p.name ?? "—").slice(0, 90)}</div>
+                  <div className="fx-projet-card-name">{((locale === 'en' && p.name_en) ? p.name_en : p.name ?? "—").slice(0, 90)}</div>
                   <div className="fx-projet-card-meta">
                     <span>
                       {p.arr > 0

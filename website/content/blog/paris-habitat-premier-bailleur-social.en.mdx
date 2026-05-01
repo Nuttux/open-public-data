@@ -1,0 +1,130 @@
+---
+title: "Paris Habitat-OPH : le 1ᵉʳ bailleur social de France, et l'un des plus discrets"
+description: "Avec environ 130 000 logements gérés en Île-de-France dont la majorité à Paris, Paris Habitat est le premier office public de l'habitat français. Anatomie d'un opérateur qui ne fait jamais la une, et de la subvention Ville qui ne dit qu'une partie de son histoire."
+date: "2026-04-28"
+author: "France Open Data"
+tags: ["portrait", "logement social", "bailleur", "Paris Habitat"]
+category: "Portrait"
+image: "https://commons.wikimedia.org/wiki/Special:FilePath/Mairie%20de%20Paris.jpg?width=1600"
+imageAlt: "Mairie de Paris — la commune qui détient et finance Paris Habitat-OPH"
+imageCredit: "Photo : Wikimedia Commons · CC BY-SA"
+readingTime: "8 min"
+title_en: "Paris Habitat-OPH: France's largest social-housing operator, and one of its quietest"
+description_en: "With roughly 130,000 dwellings managed across Île-de-France — most of them in Paris — Paris Habitat is France's largest public-housing office. Anatomy of an operator that never makes headlines, and of a City grant that tells only part of its story."
+imageAlt_en: "Paris City Hall — the municipality that owns and funds Paris Habitat-OPH"
+imageCredit_en: "Photo: Wikimedia Commons · CC BY-SA"
+category_en: "Portrait"
+tags_en: ["portrait", "social housing", "social-housing operator", "Paris Habitat"]
+---
+
+When people discuss the major actors of Parisian social housing, the names that circulate in the press are most often those of campaigning associations (Fondation Abbé Pierre, DAL) or supervisory authorities (Ministry of Housing, DRIHL). The largest operator in the housing stock, **Paris Habitat-OPH**, remains largely absent from public debate. Yet it owns and manages the largest share of the capital's social-rented stock, with a portfolio that has long placed it **at the top of France's public-housing offices (OPH)**.
+
+This article describes what can be known about Paris Habitat from open data: the grant flow it receives from the City, its legal status, its relative position among Parisian public social-housing operators, and the limits of what the open-public-data pipeline allows us to say about it.
+
+## What the City pays Paris Habitat — and why it varies
+
+Paris Habitat receives an annual grant from the Ville de Paris, voted by the Conseil de Paris in the framework of annual deliberations. Across the fiscal years for which the Open Data Paris portal publishes these flows:
+
+<BlogTimeBars
+  title="City grant → Paris Habitat-OPH, 2018-2024 (€M, current)"
+  unit="€M"
+  data={[
+    { year: 2018, value: 41.2 },
+    { year: 2019, value: 59.9 },
+    { year: 2020, value: null },
+    { year: 2021, value: null },
+    { year: 2022, value: 44.4 },
+    { year: 2023, value: 32.5 },
+    { year: 2024, value: 48.9 },
+  ]}
+  caption="Grant paid by the Ville de Paris to Paris Habitat-OPH, 2018-2024. Annual variation does not reflect the operator's 'health' or its overall activity — it corresponds to the specific operations co-financed by the City that year (heavy renovations, deficit-balanced new builds, land carrying linked to pre-emption). 2020-2021 are absent from the portal."
+  source="open-public-data pipeline, annual subventions-associations files (CASVP excluded, Paris Musées excluded)"
+/>
+
+At first glance, the trajectory is erratic: €41M in 2018, €60M in 2019, €44M in 2022, €33M in 2023, €49M in 2024. This volatility reflects neither a political shift nor a financing crisis. It reflects the **operation logic**: the City grant to Paris Habitat is not a global operating endowment, it is the aggregation of **contributions to specific operations** approved by the Conseil de Paris that year.
+
+Concretely, Paris Habitat finances its day-to-day operations through other channels — primarily the **rents collected** on its portfolio, **loans from the Banque des Territoires** (Caisse des Dépôts) which constitute the specific debt of social-housing operators, and the **1% logement** scheme (Action Logement contributions). The City grant only comes in as a complement, for operations whose economic balance cannot be ensured by capped rents alone (typically heavy renovations of the older stock and new builds in arrondissements with high land costs).
+
+<figure className="fx-photo-fig">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Vue%20d%27ensemble%20de%20la%20Cit%C3%A9%20Curial%20Michelet.jpg?width=1200" alt="Cité Curial-Michelet, in the 19th arrondissement of Paris" />
+<figcaption>The Cité Curial-Michelet (19th) is one of the emblematic large complexes managed by Paris Habitat-OPH. The operator has historically specialised in long-term asset management — the housing complexes inherited from the 1920s-1930s and the post-war large estates.</figcaption>
+</figure>
+
+## Three City social-housing operators, three legal statuses
+
+Paris Habitat is not the only public housing operator of the City. The triumvirate of Parisian public social-housing operators — covering most of the municipal capped-rent stock — comprises three entities, with different legal statuses:
+
+| Operator | Status | 2024 City grant |
+|---|---|---:|
+| Paris Habitat-OPH | Office Public de l'Habitat | €48.9M |
+| RIVP (Régie Immobilière Ville de Paris) | SEM (mixed-economy company) | €44.2M |
+| Elogie-Siemp | SPL (local public company) | €24.8M |
+| **Triumvirate total** | | **€117.9M** |
+
+This diversity of statuses is not neutral:
+
+- **Paris Habitat-OPH** is a **public establishment** attached to the City. It is the oldest and most legally constrained status — it can only intervene on social housing and habitat, and all its activity is governed by the Code de la construction et de l'habitation.
+- **RIVP** is a **mixed-economy company**: the City holds the majority of capital, but private shareholders (banks, institutional investors) are also present. The SEM status allows more flexible management and intervention on intermediate products (controlled free-market housing, business premises).
+- **Elogie-Siemp** is a **local public company**: 100% of shareholders are public (City majority). It is the most recent status (2010 law), designed to combine the flexibility of an SA with the fully public nature of capital.
+
+This structural tripartite split is long-standing and reflects different urban-development logics: Paris Habitat has historically specialised in long-term asset management (post-war large estates, HBM complexes inherited from the 1920s-1930s), RIVP in mixed operations in urban-renewal zones, and Elogie-Siemp in acquisition-improvement in the older urban fabric (notably via pre-emption of scattered plots).
+
+<figure className="fx-photo-fig">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/H%C3%B4tel%20de%20Ville%20de%20Paris%20-%20Journ%C3%A9e%20du%20Patrimoine%202013%20039.jpg?width=1200" alt="Salle des Fêtes of the Hôtel de Ville de Paris" />
+<figcaption>The Hôtel de Ville de Paris, the political seat of the municipality that owns and funds Paris Habitat-OPH. The legal separation between the City (local authority) and the operator (public establishment) is purely organic — operationally, the two entities are inseparable.</figcaption>
+</figure>
+
+## Paris Habitat in the French landscape
+
+According to public data aggregated by the **Fédération nationale des offices publics de l'habitat (FOPH)**, Paris Habitat is regularly ranked **the largest French OPH by managed-stock size**. The order of magnitude often quoted — **around 130,000 dwellings managed** across Île-de-France, most of them in inner Paris — makes it a European-class operator, comparable to the major German HLM-style companies or the top-tier British *housing associations*.
+
+This size has two consequences:
+
+1. **A structurally higher investment capacity** than that of an average municipal operator. Paris Habitat can absorb complex operations (thermal renovation of high-rise apartment blocks, demolition-reconstruction of degraded blocks) that smaller operators could not carry alone.
+2. **A very strong reciprocal dependency with the City**. As with the CASVP (cf. our [CASVP portrait](/analyses/casvp-416-millions-bouclier-social)), a withdrawal — even partial — of the City from Paris Habitat is not operationally possible in the short term: no other actor could absorb the portfolio within a few years.
+
+<aside className="fx-sidebar">
+
+### OPH, ESH, SEM, SPL — who's who
+
+The French social-housing landscape includes four main statuses, often coexisting in the same territory:
+
+- **OPH** (Office Public de l'Habitat) — local public status, attached to a municipality or intermunicipal authority. Activity strictly limited to social housing. Paris Habitat, OPH 92, etc.
+- **ESH** (Entreprise Sociale pour l'Habitat) — formerly "SA d'HLM", limited companies with majority non-profit shareholders (Action Logement, local authorities, foundations). More operational flexibility.
+- **SEM** (Société d'Économie Mixte) — majority public capital + private shareholders. Can intervene beyond strict social housing (functional mix).
+- **SPL** (Société Publique Locale) — 100% public capital. Recent status (2010), often used for urban-development operations and land carrying.
+
+The choice of status largely depends on history: you inherit an OPH created in the 1920s, you create a SEM in the 1980s for a specific programme, you switch to a SPL to integrate land carrying for pre-emption.
+
+</aside>
+
+## What the City grant does not say
+
+The City grant to Paris Habitat (between €33M and €60M depending on the year, excluding the 2020-2021 period absent from the portal) **represents a minority share of the operator's revenue**, the bulk of which comes from rents collected on its capped-rent portfolio. To get a complete picture of Paris Habitat's activity, one would need to consult:
+
+- The **annual activity report** published by Paris Habitat (HQ: 21bis rue Claude-Bernard, 75005), which details revenue, completed operations, ongoing works, financial ratios
+- The **RPLS file** (Répertoire du parc locatif social) managed by SDES, which makes it possible to measure the housing stock precisely (number of dwellings, by funding category, by arrondissement)
+- The **CRC Île-de-France reports**, which periodically examine the accounts of major public social-housing operators
+
+The open-public-data pipeline only covers, at this stage, the **City → operator flow** (which is a precise and public accounting event, voted in deliberation). It is a good basis for measuring **the City's effort**, but a poor basis for judging the **overall health of the operator**.
+
+## How Paris Habitat positions itself vs RIVP and Elogie-Siemp
+
+In 2024, the three City social-housing operators share €117.9M of grants in roughly balanced proportions — Paris Habitat at 41%, RIVP at 38%, Elogie-Siemp at 21%. This split is neither stable nor meaningful in itself: it reflects the operations brought to a vote that year, not any kind of annual strategic arbitrage.
+
+Over the long term (2018-2024 cumulative), however, the relative share is very different: Paris Habitat remains the top beneficiary in absolute cumulative terms, followed by RIVP, then Elogie-Siemp. This is consistent with their respective stock sizes, and it also reflects the long cycles of major renovation programmes (typically 5 to 10 years between commitment decision and final settlement).
+
+## What these figures do not say
+
+This analysis stops at what the open-public-data pipeline allows us to measure — that is, the City → operator flow, exhaustive across the fiscal years published on the Open Data Paris portal. It does not say:
+
+- **The exact size of the stock managed by Paris Habitat** — you have to consult the RPLS and activity reports for an accurate, up-to-date figure
+- **The state of the building portfolio** — wear, energy compliance, renovation schedule
+- **Operational performance** — occupancy rate, arrears rate, average allocation time
+- **Financial ratios** — self-financing capacity, specific debt ratio, Anafi-bailleur ratio
+
+What it does say, in one sentence: **Paris Habitat is the largest Parisian public social-housing operator and France's largest OPH, but it operates in a structural reciprocal dependency with the City that is only partially captured by the annual grant flow**. Most of what it does does not appear on the Open Data Paris portal, because most of what it does is not an act of the City — it is an act of the operator itself, legally autonomous, which has to be looked up in its own publications.
+
+---
+
+**Sources**: open-public-data pipeline, Open Data Paris `subventions-associations` files 2018-2024 (extraction of beneficiaries Paris Habitat-OPH, RIVP, Elogie-Siemp) · Code de la construction et de l'habitation (OPH, ESH, SEM, SPL statuses) · Fédération nationale des offices publics de l'habitat (FOPH) for the OPH ranking · Paris Habitat-OPH annual activity report · RPLS (Répertoire du parc locatif social, SDES) for stock data · CRC Île-de-France reports for periodic account reviews. Scope: Ville de Paris, public operators listed in the grant beneficiary file.

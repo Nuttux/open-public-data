@@ -106,7 +106,13 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
                 className="fx-arr-top-item"
               >
                 <div className="fx-arr-top-thumb">
-                  <ProjetThumb projetId={p.id} aspectRatio="4 / 3" fallbackLabel={p.name} />
+                  <ProjetThumb
+                    photo={p.photo.photo}
+                    generic={p.photo.generic}
+                    typologie={p.photo.typologie}
+                    aspectRatio="4 / 3"
+                    fallbackLabel={p.name}
+                  />
                 </div>
                 <div className="fx-arr-top-meta">
                   <div className="fx-arr-top-rank">{String(i + 1).padStart(2, "0")}</div>

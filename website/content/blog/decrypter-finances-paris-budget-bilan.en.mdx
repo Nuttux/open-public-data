@@ -1,0 +1,121 @@
+---
+title: "Lire les finances de Paris : le guide sans jargon"
+description: "Budget, bilan, M57, opérations pour ordre — tout ce qu'il faut savoir pour lire les fichiers financiers de Paris sans être expert-comptable."
+date: "2026-02-06"
+author: "France Open Data"
+tags: ["guide", "open-data", "finances publiques", "citoyenneté"]
+category: "Explication"
+image: "https://commons.wikimedia.org/wiki/Special:FilePath/Le%20conseil%20municipal%20de%20Paris%20en%20s%C3%A9ance%20Rapport%20g%C3%A9n%C3%A9ral%20du%20budget%201897.%20--%20Session%20de%201896%20par%20H.%20Co%C3%ABylas.%20Paris%20Mus%C3%A9es%2020230620191438.jpg?width=1600"
+imageAlt: "Le Conseil Municipal de Paris en séance — Rapport général du budget 1897, gravure de H. Coëylas"
+imageCredit: "Paris Musées · domaine public"
+readingTime: "5 min"
+title_en: "Reading Paris's finances: the no-jargon guide"
+description_en: "Budget, balance sheet, M57, internal accounting entries — everything you need to read Paris's financial files without being a chartered accountant."
+imageAlt_en: "The Paris City Council in session — General report on the 1897 budget, engraving by H. Coëylas"
+imageCredit_en: "Paris Musées · public domain"
+category_en: "Explanation"
+tags_en: ["guide", "open-data", "public finance", "civic engagement"]
+---
+
+Paris publishes its finances as Open Data. The main file is called `comptes-administratifs-budgets-principaux-m57-ville.csv`. Thousands of rows, codes like "Chapitre 012", columns of figures. This guide explains how to read it.
+
+## Two documents, two questions
+
+Public finances rest on two documents:
+
+- The **Budget** answers: *how much money came in and went out this year?* It is a flow.
+- The **Balance sheet** answers: *what does the city own and what does it owe?* It is a snapshot at 31 December.
+
+## The Budget: inflows, outflows
+
+The budget is split into two ring-fenced sections.
+
+### Operating — day-to-day
+
+What keeps the city running day to day. In 2024 (administrative account): **€9.38 billion** in recorded spending.
+
+**Spending:** staff salaries (the largest item), electricity, school canteens, grants to associations.
+**Revenues:** property tax, parking, State allocations.
+
+A fundamental rule: operating revenues must exceed operating spending. The surplus is called **gross savings**. It is what allows the city to repay debt and finance projects. If gross savings are negative, the city is living beyond its current means.
+
+### Investment — projects
+
+What builds the city of tomorrow. Schools, renovations, parks, networks.
+
+**Spending:** construction, renovation, equipment.
+**Revenues:** gross savings (transferred from operating), capital grants, borrowing.
+
+This is where debt is contracted. That is normal: you borrow to build, not to pay salaries. The useful question is not "is there debt?" but "what did it allow to be built?".
+
+<figure className="fx-photo-fig">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/H%C3%B4tel%20de%20Ville%20de%20Paris%20-%20Journ%C3%A9e%20du%20Patrimoine%202013%20039.jpg?width=1200" alt="Council chamber at the Hôtel de Ville de Paris" />
+<figcaption>The Conseil de Paris each year votes the initial budget and then approves the administrative account the following year. The distinction between voted budget (BP) and administrative account (CA) structures the entire reading of French municipal finances.</figcaption>
+</figure>
+
+## The pitfall of "internal" accounting entries
+
+In the raw files, some lines are internal accounting entries. The money does not leave city hall — it moves from one box to another. Those lines are flagged "Pour Ordre" in the `type_operation` column.
+
+If you sum all rows without filtering, you get a budget **twice as large** as reality. Nothing in the file warns you.
+
+**What to do:** keep only the rows where `type_operation = "Réel"`.
+
+## Voted vs executed
+
+Two versions of the budget exist:
+
+- The **Initial Budget (Budget Primitif, BP)**: the forecast voted at the start of the year by the Conseil de Paris. It is a political promise.
+- The **Administrative Account (Compte Administratif, CA)**: reality recorded at year-end. It is the bill.
+
+Comparing the two reveals gaps between what was announced and what was done. A line item executed at 60% of the voted amount raises questions. So does one executed at 140%.
+
+On the Open Data portal, these two documents are in separate files with different formats. We link them line by line on the dashboard.
+
+## The balance sheet: what Paris owns and what it owes
+
+The balance sheet is a snapshot at 31 December. Two columns, always equal.
+
+### Assets — what the city owns
+
+Land, buildings (schools, town halls, gyms, swimming pools), networks (streets, sewers, lighting), equipment. The physical heritage accumulated over decades.
+
+We often talk about debt. We forget to look at what it has financed.
+
+### Liabilities — how it is funded
+
+- **Equity**: money the city has saved or received definitively. Usually the largest share.
+- **Financial debt**: bank loans.
+
+High debt against an immense, well-maintained asset base is an investment. High debt against a deteriorating asset base is a problem. The balance sheet lets you tell the difference.
+
+## Glossary
+
+| Term | What it means |
+| :--- | :--- |
+| **M57** | The accounting standard used by Paris since 2019. Just a format. |
+| **AP (Autorisation de Programme)** | Multi-year envelope for a large project. E.g. €10M for a library over 3 years. |
+| **CP (Crédits de Paiement)** | The money actually paid out from that envelope, in a given year. |
+| **Chapitre 012** | Accounting code for salaries. Often the largest line. |
+| **Chapitre 65** | Code for current management expenses. This is where grants sit. |
+| **Gross savings** | Operating revenues minus operating spending. The surplus that funds investment. |
+| **Pour ordre** | Internal accounting entry. Not a real cash movement. To filter out. |
+
+## What the dashboard shows
+
+Each dashboard visualisation answers a question:
+
+| Question | Where to look |
+| :--- | :--- |
+| Where does the money go, from revenue to spending? | Sankey diagram |
+| Does city hall spend what it voted? | Voted vs executed |
+| Which associations receive how much? | Grants treemap |
+| Which projects are funded in my neighbourhood? | Investment map |
+| How are finances trending over 6 years? | Time trends |
+| Is the city in good financial shape? | Patrimony (assets/liabilities) |
+
+The figures shown are the actual flows from the Administrative Account, unless stated otherwise. Where a figure is estimated rather than recorded, it is flagged.
+
+## Sources
+
+All data come from the [Open Data Paris](https://opendata.paris.fr) portal and the official budget annexes of the Ville de Paris. The processing pipeline is open-source and auditable on GitHub.

@@ -1,0 +1,15 @@
+flowchart LR
+    B1[bilan-comptable.csv<br/>at repo root] -->|upload_bilan_<br/>comptable.py| R1[(raw.bilan_comptable)]
+    R1 --> STGB[stg_bilan_comptable.sql]
+    STGB --> CB[core_bilan_comptable.sql<br/>grain: annee×actif_pasif×compte<br/>hierarchical parent/child]
+    CB --> MB[mart_bilan_sankey<br/>nodes+links per year]
+    MB -->|export_bilan_data.py| J1[bilan_sankey_*.json<br/>2019–2024]
+    CB --> BP[build_patrimoine_<br/>structure.py<br/>⚠️ hardcoded constants<br/>DETTE_QUALITATIVE dict]
+    BP --> J2[patrimoine_structure_*.json<br/>taux_fixe · maturite · emissions]
+    CB --> BH[build_hors_bilan.py<br/>editorial seed]
+    BH --> J3[hors_bilan_*.json]
+    J1 & J2 & J3 --> UID[/dette-patrimoine/]
+    J1 --> JIDX[bilan_index.json]
+
+    classDef warn fill:#fee2e2,stroke:#991b1b,color:#111
+    class BP warn

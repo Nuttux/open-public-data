@@ -1,0 +1,80 @@
+---
+title: "11,7 milliards d'euros, 28 fichiers, et un PDF de 2 000 pages"
+description: "Paris publie ses finances en Open Data. En théorie. Voici ce qu'on a trouvé en creusant, et ce qu'on a construit pour que les chiffres deviennent lisibles."
+date: "2026-02-06"
+author: "France Open Data"
+tags: ["transparence", "open-data", "données publiques", "citoyenneté"]
+hidden: true
+image: "https://commons.wikimedia.org/wiki/Special:FilePath/Aerial%20photograph%20of%20Eiffel%20Tower%20and%20Front%20de%20Seine%2C%20Paris%202005.jpg?width=1600"
+imageAlt: "Vue aérienne de Paris — tour Eiffel et front de Seine"
+imageCredit: "Photo : Wikimedia Commons · CC BY-SA"
+readingTime: "6 min"
+title_en: "€11.7 billion, 28 files, and a 2,000-page PDF"
+description_en: "Paris publishes its finances as Open Data. In theory. Here is what we found when we dug in, and what we built to make the numbers readable."
+imageAlt_en: "Aerial view of Paris — Eiffel Tower and Front de Seine"
+imageCredit_en: "Photo: Wikimedia Commons · CC BY-SA"
+tags_en: ["transparency", "open-data", "public data", "civic engagement"]
+---
+
+Paris manages €11.7 billion a year. The law requires the city to publish its financial data. It does. The portal [opendata.paris.fr](https://opendata.paris.fr) makes available 28 datasets related to budget and finances.
+
+We wanted to use them. Here is what we found.
+
+## What "Open Data" means in practice
+
+Of the 28 financial datasets published by the Ville de Paris, **20 have not been updated since 2020 or 2021**. The city's own debt? Frozen since July 2019. Staff status? December 2018. Voted budgets by arrondissement? Nothing since 2021.
+
+These files have a URL, a description card, sometimes even a nice thumbnail. No one feeds them.
+
+For the files that are up to date, the level of detail is uneven. Detailed investments — "Authorisations de Programme" — stop at 2022. To find out which projects were funded in 2023 or 2024, you have to open Appendix 5, Volume 3, page 1418 of a scanned PDF of more than 2,000 pages.
+
+And in the grants files: fiscal years **2020 and 2021 are entirely missing** from the portal. The 2018 file has about **400 lines without a beneficiary name** out of 10,266. The vintage jumps from 2019 to 2022 in the downloadable files.
+
+## The double-counting trap
+
+If you download the Compte Administratif file and add up all the lines, you get a budget twice the actual figure. It is not an error. In public accounting, certain lines are internal entries known as "pour ordre" — money moves from one box to another without leaving City Hall. Nothing flags this in the file. No warning.
+
+The Centre d'Action Sociale de la Ville de Paris appears under 4 different names depending on the file: "CASVP", "CENTRE ACTION SOCIALE VILLE PARIS", "C.A.S.V.P.", "Centre d'Action Sociale de la Ville de Paris". Search for the total: you get 4 partial results.
+
+The data is public. It is not usable.
+
+## No villains
+
+This is not an indictment of the administration. Behind these files are public agents working with accounting software that sometimes dates back to the 1990s. They apply the M57 nomenclature — an accounting standard designed for chartered accountants, not for citizens.
+
+The law says the data must be published. It does not say it must be understandable.
+
+## What we built
+
+A data pipeline that collects, cleans, links and verifies Paris's financial files. Concretely:
+
+**Collection.** The data comes from the Open Data Paris API (CSV), and when CSVs are incomplete, from automatic extraction of PDF appendices (`pdfplumber`, `PyMuPDF`). We wrote parsers for two different formats: the legacy format (2020-2022) and the cross-tabulated format (2023-2026). Our coverage: 2019 to 2026, where the official portal often stops at 2021.
+
+**Cleaning.** We filter out "pour ordre" operations. We harmonize column names between the Voted Budget and the Compte Administratif (which do not use the same labels). We reconcile entity variants — the CASVP is a single body, €1,940M cumulative. We verify that every total matches the official documents to the cent.
+
+**Classification.** Raw data is organized by accounting codes (Chapter 012, Chapter 65). Not by themes. We built a classification system that translates this into readable categories — Education, Culture, Sport, Solidarity. For the 40,000+ grant beneficiaries, it works as a cascade: pattern recognition (74%), AI (21%), department-based attachment (4.5%). Result: **99.5% of grants classified by theme**. On the raw portal: 0%.
+
+**Geolocation.** The investment projects in the raw files have textual descriptions, no coordinates. We extract addresses by regex, match known public-building names, use an AI model for ambiguous cases, then verify via the government Address API. **43% of projects are placed on a map**, with a confidence score. On the raw portal: 0.
+
+**Verification.** 42 automatic tests run at every pipeline update. If a total does not match, if a year is incomplete, if a classification has gone off-track, the pipeline halts.
+
+## What it produces
+
+We connect the Budget Primitif (what is voted) to the Compte Administratif (what is actually spent), year by year, line by line. We compute execution rates. We flag discrepancies.
+
+When a figure is displayed on the dashboard, it carries a badge:
+- **Executed** — final figure, recorded in the Compte Administratif
+- **Voted** — forecast voted by the Conseil de Paris
+- **Estimated** — projection based on historical trends, with confidence intervals
+
+If a data point is missing, it is stated. If a figure is estimated, it is stated.
+
+## Verifiable
+
+The entire pipeline is open-source. The collection code, the SQL models (dbt), the classification algorithms, the AI prompts, the export scripts, the Next.js frontend. From the first API request to the last pixel.
+
+If you read "€9.3 billion in operating expenses in 2024" on the dashboard, you can trace the thread: from the displayed figure to the JSON file, from the JSON to the SQL model, from the SQL to the raw source. You can clone the repo and reproduce the result. You can challenge a filter, a classification, a methodological choice. Everything is documented, everything is testable.
+
+That is the difference between "trust us" and "verify it yourself".
+
+The code is on GitHub. No political affiliation, no funding, no advertising. A citizen project, independent, that turns technical files into answers.
