@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-01T22:41:17",
+  "generated_at": "2026-05-01T22:53:18",
   "model": "claude-opus-4-7-in-session",
-  "count": 400,
+  "count": 500,
   "items": {
     "20242024T09532": {
       "objet_clair": "Roadway works to better manage rainwater on major street works.",
@@ -1946,6 +1946,499 @@
       "objet_clair": "Floor fit-out works and street-furniture installation.",
       "quoi_concretement": "This site covers floor surfacing renovation and small-outdoor-equipment installation. Refurbishes public spaces to make them more pleasant and safer.",
       "pourquoi_ca_compte": "Improves the quality of circulation spaces and pedestrian comfort in the city."
+    },
+    "20232024S10990": {
+      "objet_clair": "Maintenance and tuning of the Paris Conservatory pianos.",
+      "quoi_concretement": "A specialist tunes, repairs and maintains the pianos used by students and teachers of the regional conservatory. Ensures instrument quality for classes and concerts.",
+      "pourquoi_ca_compte": "Lets music students practise on quality, perfectly tuned instruments."
+    },
+    "20242024T03892": {
+      "objet_clair": "Heating and ventilation works at the avenue de Bouvines schools.",
+      "quoi_concretement": "The company installs or renovates heating and air-renewal systems in nursery and primary classrooms. The aim is to ensure pleasant temperature and healthy air for children.",
+      "pourquoi_ca_compte": "Improves pupil and teacher comfort while cutting building energy use."
+    },
+    "20242024T02661": {
+      "objet_clair": "Ventilation-system modernisation at the rue Clisson day-care.",
+      "quoi_concretement": "Old ventilation equipment is replaced with higher-performance systems. Better renews the air inside the premises welcoming young children throughout the day.",
+      "pourquoi_ca_compte": "Ensures better indoor air quality for the health of toddlers and staff."
+    },
+    "20242024S02174": {
+      "objet_clair": "Renovation and redesign of the columbarium at Père-Lachaise Cemetery.",
+      "quoi_concretement": "An architect directs studies and works to restructure the space where funeral urns are placed. The project restores this historic site while optimising family welcome.",
+      "pourquoi_ca_compte": "Preserves Paris funeral heritage and improves remembrance conditions for relatives."
+    },
+    "20242024T04828": {
+      "objet_clair": "Heating-system replacement at the rue de la Fontaine au Roi gymnasium.",
+      "quoi_concretement": "Current heating installations are replaced with a greener new energy mode. The works cover the entire gymnasium to ensure consistent heat during sports activities.",
+      "pourquoi_ca_compte": "Contributes to the city's ecological transition by using less polluting energy for public facilities."
+    },
+    "20242024T04616": {
+      "objet_clair": "Heating and ventilation renovation at the rue Pihet Primary School.",
+      "quoi_concretement": "Technicians install new radiators and air-extraction systems in classrooms. The works remove heating breakdowns and better ventilate school premises.",
+      "pourquoi_ca_compte": "Ensures optimal learning conditions by maintaining a stable, healthy temperature in winter."
+    },
+    "20242024F04974": {
+      "objet_clair": "Music-score and book purchases for Paris facilities.",
+      "quoi_concretement": "The city orders original scores and music-teaching books. These documents go to specialist libraries or conservatories for music learning.",
+      "pourquoi_ca_compte": "Lets musicians and students access a wide catalogue of musical works for their practice."
+    },
+    "20242024T00884": {
+      "objet_clair": "Restoration of the Maison Rousseau: masonry, roof and heating.",
+      "quoi_concretement": "Specialist craftspeople work on this historic building to repair walls, locksmithing and roof. They also install a new heating and ventilation system to protect the building.",
+      "pourquoi_ca_compte": "Safeguards Paris architectural heritage for future generations."
+    },
+    "20242024T12700": {
+      "objet_clair": "Green-space creation and greening around Gare du Nord (10th).",
+      "quoi_concretement": "Fit-out works will plant trees and create greenery zones near Gare du Nord. The company will transform the soil to let vegetation develop sustainably.",
+      "pourquoi_ca_compte": "More cool air and nature in a very mineral, busy area to fight heat."
+    },
+    "20242024S03536": {
+      "objet_clair": "Linen cleaning and maintenance for municipal services.",
+      "quoi_concretement": "A specialist company provides washing, drying and ironing of linen used by the City. Covers especially workwear or linen at Paris welcome facilities.",
+      "pourquoi_ca_compte": "Ensures impeccable hygiene for staff and users of Paris public services."
+    },
+    "20242024S13742": {
+      "objet_clair": "Maintenance of the social-housing booking-management software.",
+      "quoi_concretement": "IT specialists ensure proper running of the digital tool used by the City to allocate social housing. The system tracks cases and manages booking rights.",
+      "pourquoi_ca_compte": "Ensures effective, bug-free handling of housing applications for Paris families."
+    },
+    "20242024S05133": {
+      "objet_clair": "Secure transport of cash collected at municipal sites.",
+      "quoi_concretement": "Cash-in-transit officers collect cash at various City facilities such as swimming pools or museums. They safely transport this money to the bank.",
+      "pourquoi_ca_compte": "Secures City revenues and protects staff from theft risks."
+    },
+    "20242024S00545": {
+      "objet_clair": "Safety training for staff working in sewers.",
+      "quoi_concretement": "Municipal staff learn the safety actions essential for working in underground networks. They train to detect dangerous gases and use specific protective equipment.",
+      "pourquoi_ca_compte": "Prevents serious accidents and protects the lives of staff maintaining Paris's invisible networks."
+    },
+    "20242024S07239": {
+      "objet_clair": "Gardening and planting workshops in 18th-district schools.",
+      "quoi_concretement": "Leaders work in schools to teach children to plant and maintain vegetation. Pupils take part directly in greening their yard or area.",
+      "pourquoi_ca_compte": "Raises young children's awareness of urban nature and improves the school setting."
+    },
+    "20232023S11577": {
+      "objet_clair": "Technical inspection and pollution testing of City vans.",
+      "quoi_concretement": "The municipality's light and utility vehicles undergo their mandatory safety and pollution tests. Tests are carried out at a specialist centre in Ivry.",
+      "pourquoi_ca_compte": "Ensures service vehicles run safely and meet environmental standards."
+    },
+    "20242024S07232": {
+      "objet_clair": "Participatory gardening workshops in central-Paris schools.",
+      "quoi_concretement": "Urban-agriculture experts run planting sessions with central-school pupils. The aim is to create vegetable patches or flower spaces within the schools.",
+      "pourquoi_ca_compte": "Provides children living in the densest neighbourhoods with concrete contact with the soil."
+    },
+    "20242024S07241": {
+      "objet_clair": "Participatory gardening workshops in 20th-district schools.",
+      "quoi_concretement": "Le Paysan Urbain association runs planting sessions with pupils. They learn to grow plants and maintain green spaces within their schools.",
+      "pourquoi_ca_compte": "Lets children discover urban nature and try urban agriculture from school."
+    },
+    "20242024F01345": {
+      "objet_clair": "Tableware and kitchen-utensil purchases for adults and seniors.",
+      "quoi_concretement": "The city buys plates, cutlery and professional kitchen accessories. This equipment goes to collective restaurants and senior facilities.",
+      "pourquoi_ca_compte": "Ensures quality catering suited to Paris seniors' needs."
+    },
+    "20242024S03336": {
+      "objet_clair": "Green-space maintenance at the Paris Cemetery in Ivry.",
+      "quoi_concretement": "A specialist association handles mowing, trimming and cleaning of planted zones at the cemetery. The aim is to keep the site clean and welcoming for visitors.",
+      "pourquoi_ca_compte": "Ensures respect and dignity at remembrance venues while preserving local biodiversity."
+    },
+    "20242024S07233": {
+      "objet_clair": "Gardening workshops in schools of the 5th, 6th and 13th districts.",
+      "quoi_concretement": "Leaders work in schools to plant vegetation with the children. They support them in creating and following up vegetable patches or educational gardens.",
+      "pourquoi_ca_compte": "Raises young children's environmental awareness and greens schoolyards."
+    },
+    "20242024S07235": {
+      "objet_clair": "Gardening workshops in schools of the 7th and 15th districts.",
+      "quoi_concretement": "Urban-agriculture experts run participatory planting sessions. Pupils learn to grow plants and care for their school's biodiversity.",
+      "pourquoi_ca_compte": "Provides school children living in dense areas with concrete contact with the soil."
+    },
+    "20242024S03531": {
+      "objet_clair": "Sheet and table-linen cleaning for Paris schools.",
+      "quoi_concretement": "A specialist company provides washing, drying and ironing of linen used in schools (tablecloths, napkins, dormitory sheets). Linen is collected and delivered clean regularly.",
+      "pourquoi_ca_compte": "Ensures impeccable hygiene for children, especially at meals and naptime."
+    },
+    "20242024S07234": {
+      "objet_clair": "Gardening workshops in schools of the 6th and 14th districts.",
+      "quoi_concretement": "Leaders guide pupils to plant and maintain vegetation in their schools. These hands-on activities let them discover the plant life cycle.",
+      "pourquoi_ca_compte": "Turns schools into venues for hands-on ecology learning."
+    },
+    "20242024S07236": {
+      "objet_clair": "Gardening workshops and green-space follow-up in the 8th, 9th and 10th districts.",
+      "quoi_concretement": "The association supports users in planting and maintaining outdoor gardens. It also provides regular follow-up so plants thrive long-term.",
+      "pourquoi_ca_compte": "Encourages the return of nature and social ties in central-Paris neighbourhoods."
+    },
+    "20242024S07240": {
+      "objet_clair": "Participatory gardening workshops in 19th-district schools.",
+      "quoi_concretement": "Leaders work in schools to teach pupils to plant and maintain vegetation. The aim is to create edible or decorative green spaces directly with the children.",
+      "pourquoi_ca_compte": "Raises young children's awareness of urban nature and sustainable food from school."
+    },
+    "20242024F01058": {
+      "objet_clair": "Pallet-truck purchase and maintenance for municipal services.",
+      "quoi_concretement": "The city buys handling equipment to move heavy loads in its warehouses or buildings. The contract also includes regular repairs to ensure proper equipment operation."
+    },
+    "20242024S07238": {
+      "objet_clair": "Gardening workshops for pupils in the 16th and 17th districts.",
+      "quoi_concretement": "Urban-gardening specialists run planting sessions with school children. They install and maintain growing tubs while sharing knowledge about biodiversity.",
+      "pourquoi_ca_compte": "Lets children in dense areas discover the life cycle and green their schoolyard."
+    },
+    "20242024T04812": {
+      "objet_clair": "Automatic-irrigation installation at Paris cemeteries.",
+      "quoi_concretement": "The company installs pipework and programmer networks to autonomously water the cemeteries' green spaces. Maintains vegetation health, even in summer.",
+      "pourquoi_ca_compte": "Preserves the freshness and beauty of remembrance venues while optimising water use."
+    },
+    "20242024F10110": {
+      "objet_clair": "Powerful electric-motorbike purchases for City services.",
+      "quoi_concretement": "The City of Paris equips itself with high-displacement electric motorbikes. These vehicles are for staff needing to move quickly and effectively, such as municipal police.",
+      "pourquoi_ca_compte": "Cuts noise and air pollution from public-service travel in the streets."
+    },
+    "20242024S00880": {
+      "objet_clair": "Family help and parenting support in the 11th and 12th districts.",
+      "quoi_concretement": "A specialist association provides technical and human support to child-protection services. It helps welcome, listen to and orient parents in difficulty.",
+      "pourquoi_ca_compte": "Reinforces support for vulnerable families to ensure children's well-being and safety."
+    },
+    "20242024S02304": {
+      "objet_clair": "Maintenance of the food-safety lab management software.",
+      "quoi_concretement": "The company ensures proper running and updates of the IT program used by the City's labs. The software tracks food-safety analyses.",
+      "pourquoi_ca_compte": "Ensures the reliability of food-safety checks, especially in canteens."
+    },
+    "20242024S03254": {
+      "objet_clair": "Field surveys and accurate-plan production for the City.",
+      "quoi_concretement": "Surveying experts take precise field measurements to map soils and underground networks. These plans are essential before launching roadway or construction works."
+    },
+    "20242024T10318": {
+      "objet_clair": "Locksmith works for the Riquet Garden redesign in the 19th district.",
+      "quoi_concretement": "Craftspeople will install or repair fences, gates and metal structures in this public garden. These works are part of an overall green-space renovation project.",
+      "pourquoi_ca_compte": "Improves safety and look of a relaxation space for area residents."
+    },
+    "20242024S08991": {
+      "objet_clair": "Premises management by people in integration in central Paris.",
+      "quoi_concretement": "A neighbourhood agency employs people far from work to maintain and run premises made available to associations. Covers sites on rues Elzevir and Villeneuve.",
+      "pourquoi_ca_compte": "Supports local employment while providing meeting and activity venues for residents."
+    },
+    "20242024S07084": {
+      "objet_clair": "Return-to-work support via public-space upkeep at Batignolles.",
+      "quoi_concretement": "People on professional-integration paths handle cleaning and small upkeep of the Batignolles area. They get supervision to help them return to lasting work.",
+      "pourquoi_ca_compte": "Combines area cleanliness with a social return-to-work mission."
+    },
+    "20242024S05260": {
+      "objet_clair": "Architecture studies for full renovation of Dunand Swimming Pool in the 14th district.",
+      "quoi_concretement": "An architecture firm designs plans and supervises future modernisation works of the pool. The aim is to refurbish the entire building and equipment.",
+      "pourquoi_ca_compte": "Prepares modernisation of an essential sports facility for area swimmers and schools."
+    },
+    "20242024T12894": {
+      "objet_clair": "Ventilation modernisation of the cinema library at Forum des Halles.",
+      "quoi_concretement": "Technicians replace air-treatment units to improve air renewal in offices and public spaces. Provides better thermal comfort and hygiene.",
+      "pourquoi_ca_compte": "Ensures healthier air and better comfort for library visitors and staff."
+    },
+    "20242024S13300": {
+      "objet_clair": "Maintenance of the high-voltage electrical network at Forum des Halles.",
+      "quoi_concretement": "Specialist electricians check and repair high-power electrical installations supplying the centre. These interventions ensure power continuity across the complex.",
+      "pourquoi_ca_compte": "Prevents major power cuts at one of the capital's most-visited venues."
+    },
+    "20242024T04844": {
+      "objet_clair": "Planted, cooler 'Oasis' schoolyard creation.",
+      "quoi_concretement": "Public-works companies replace tarmac with natural materials and plant trees in school yards. These fit-outs better absorb rainwater and cut heat.",
+      "pourquoi_ca_compte": "Provides children more pleasant break spaces better suited to heatwaves."
+    },
+    "20242024T03863": {
+      "objet_clair": "Heating and ventilation renovation at a 5th-district day-care.",
+      "quoi_concretement": "The works install higher-performance ventilation and change the heating mode to use less energy. The site is at the day-care on rue Saint-Médard.",
+      "pourquoi_ca_compte": "Ensures a healthy setting and consistent temperature for toddlers' well-being."
+    },
+    "20242024T13332": {
+      "objet_clair": "Demolition and major works in the Vignoles quarter.",
+      "quoi_concretement": "The company demolishes existing structures and builds the foundations and main walls. It also handles connections to water and electricity networks in this 20th-district sector.",
+      "pourquoi_ca_compte": "This site prepares the ground for new housing or public facilities in the area."
+    },
+    "20242024S11909": {
+      "objet_clair": "New Year's Eve organisation for the 2025 transition.",
+      "quoi_concretement": "An artistic agency designs and stages the New Year's Eve event in Paris. Includes visual creation, technical logistics and artist coordination for the evening.",
+      "pourquoi_ca_compte": "The major popular gathering bringing Parisians and tourists together to celebrate the new year."
+    },
+    "20242024T03726": {
+      "objet_clair": "Heating and ventilation renovation of the 20th district Town Hall.",
+      "quoi_concretement": "Technicians replace or repair the town hall's boilers and ventilation systems. The aim is to ensure stable temperature and healthy air in offices and public-reception rooms.",
+      "pourquoi_ca_compte": "Improves user comfort and cuts municipal-building energy use."
+    },
+    "20242024S04753": {
+      "objet_clair": "Subsoil-state analysis of Paris streets via radio waves.",
+      "quoi_concretement": "Experts use radar to scan the soil without digging. They detect cavities, pipework or roadway weaknesses to plan future repair works.",
+      "pourquoi_ca_compte": "These exams anticipate collapse risks and avoid digging the roadway unnecessarily."
+    },
+    "20242024S02456": {
+      "objet_clair": "Technical maintenance of municipal facilities in the Abbesses area.",
+      "quoi_concretement": "A company ensures proper running of electrics, plumbing and locksmithing at City sites in Abbesses. It intervenes for routine repairs and safety inspections."
+    },
+    "20232023S11576": {
+      "objet_clair": "Technical inspection and pollution test of City of Paris light vehicles.",
+      "quoi_concretement": "The municipal cars and vans undergo their mandatory technical inspection. Technicians check vehicle safety and ensure compliance with anti-pollution standards.",
+      "pourquoi_ca_compte": "Ensures the City's vehicle fleet runs safely and limits its ecological impact."
+    },
+    "20242024T06344": {
+      "objet_clair": "Ventilation modernisation at 9 rue Richomme School.",
+      "quoi_concretement": "Works are carried out to bring this 18th-district school's ventilation system up to standard. Replaces old equipment to ensure effective air renewal in classrooms.",
+      "pourquoi_ca_compte": "Better-renewed air improves daily pupil and teacher health and concentration."
+    },
+    "20242024T11341": {
+      "objet_clair": "Metal-stairway installation in Paris green spaces.",
+      "quoi_concretement": "The company manufactures and installs metal stairways with anti-slip steps. These structures are placed in parks or gardens to ease travel on sloped grounds.",
+      "pourquoi_ca_compte": "These fit-outs secure and ease access to public gardens for all walkers."
+    },
+    "20242024T03744": {
+      "objet_clair": "Heating and ventilation modernisation at the Delbet day-care.",
+      "quoi_concretement": "La Louisiane will replace the old heating and ventilation systems at 10 rue Delbet. The works install higher-performance and less energy-hungry equipment.",
+      "pourquoi_ca_compte": "Improves toddler thermal comfort and ensures better air quality at the facility."
+    },
+    "20242024F10112": {
+      "objet_clair": "Powerful electric-motorbike purchase for City services.",
+      "quoi_concretement": "The City acquires high-displacement electric motorbikes from manufacturer Energica Motor Company. These vehicles are for municipal staff travel and interventions.",
+      "pourquoi_ca_compte": "Cuts air pollution and noise nuisance from public-service travel."
+    },
+    "20242024T12992": {
+      "objet_clair": "Kitchen renovation at the Jean-Baptiste Nursery School in the 18th.",
+      "quoi_concretement": "Edile Construction transforms and modernises this school's kitchen premises. The works refurbish the space where children's meals are prepared.",
+      "pourquoi_ca_compte": "Ensures optimal hygiene conditions for pupil-meal preparation."
+    },
+    "20242024T04363": {
+      "objet_clair": "New ventilation system at the Choisy Gymnasium.",
+      "quoi_concretement": "Works will be carried out at 4 bis avenue de Choisy to renovate the gymnasium's air extraction. The aim is to ensure effective air renewal during sports activities.",
+      "pourquoi_ca_compte": "Provides a healthier, better-ventilated setting for athletes and 13th-district associations."
+    },
+    "20242024T11407": {
+      "objet_clair": "Earthworks for the Bonneuil training-centre annex.",
+      "quoi_concretement": "Colas France will level and prepare the soil of this municipal annex's outdoor spaces. These roadway works stabilise the ground for site activities."
+    },
+    "20242024T01919": {
+      "objet_clair": "Waterproofing and ceiling refurbishment of Foncin School.",
+      "quoi_concretement": "Etancheco will remove old ceilings and refurbish roof insulation to stop water leaks. These renovation works protect the school building's structure.",
+      "pourquoi_ca_compte": "Prevents water leaks and ensures pupil safety in classrooms."
+    },
+    "20242024T03757": {
+      "objet_clair": "Heating modernisation at the Poissy - Cardinal Lemoine school cluster.",
+      "quoi_concretement": "CRAM intervenes to update the school's heating and ventilation installations. The aim is to ensure consistent, better-regulated temperature in the rooms.",
+      "pourquoi_ca_compte": "Provides better comfort for pupils and teachers during winter."
+    },
+    "20242024000025": {
+      "objet_clair": "Educational and leisure activity organisation for Paris school children.",
+      "quoi_concretement": "Léo Lagrange association will run workshops and outings for primary-school classes during the school year. The programme offers cultural and sports discoveries to children.",
+      "pourquoi_ca_compte": "Lets children freely benefit from varied, enriching activities during school time."
+    },
+    "20242024S00882": {
+      "objet_clair": "Psychological and social support for families in the 19th and 20th districts.",
+      "quoi_concretement": "Professionals support families and social-and-health-services staff. The aim is to reinforce help to parents and children in these areas.",
+      "pourquoi_ca_compte": "Improves the well-being of vulnerable families and the support of young children in east Paris."
+    },
+    "20242024F10145": {
+      "objet_clair": "Material purchase for ceiling renovation in municipal buildings.",
+      "quoi_concretement": "The city buys slabs, rails and accessories to install or repair suspended ceilings. These materials go to the municipal workshops maintaining schools or town halls.",
+      "pourquoi_ca_compte": "Maintains clean, insulated and safe public premises for users and staff."
+    },
+    "20242024T03246": {
+      "objet_clair": "Heating and ventilation works in 20th-district schools.",
+      "quoi_concretement": "Technicians work at the rue de la Plaine school cluster and the Grands Champs Nursery School. They renovate heating and air-renewal systems.",
+      "pourquoi_ca_compte": "Ensures better thermal comfort and good air quality for pupils and teachers."
+    },
+    "20242024T04600": {
+      "objet_clair": "Planted yard fit-out at the rue de Picpus Nursery School.",
+      "quoi_concretement": "Tarmac is replaced with natural materials and vegetation to create a cool island. Play features and shaded zones are installed to better cope with heatwaves.",
+      "pourquoi_ca_compte": "Protects children from heatwaves and provides a more natural, pleasant school setting."
+    },
+    "20242024S07083": {
+      "objet_clair": "Return-to-work support via public-space upkeep in the 19th district.",
+      "quoi_concretement": "The Régie de Quartier hires residents far from work for cleaning and small-upkeep missions. They get supervision to build their professional project.",
+      "pourquoi_ca_compte": "Supports local employment while improving the area's cleanliness and setting."
+    },
+    "20242024F12107": {
+      "objet_clair": "Modernisation of City of Paris IT and network equipment.",
+      "quoi_concretement": "Installation of new servers, routers and security systems to ensure the internet connection of municipal services. Makes administration data exchange more reliable.",
+      "pourquoi_ca_compte": "Ensures continuity and security of the digital public services used by Parisians."
+    },
+    "20242024S03033": {
+      "objet_clair": "Technical help to create the IT tool for the new Paris urban-planning plan.",
+      "quoi_concretement": "Experts advise the city to adapt its software to the rules of the future ecological urban-planning plan. Ensures digital tools properly handle the new standards.",
+      "pourquoi_ca_compte": "Lets the new building rules be effectively applied for a greener city."
+    },
+    "20242024S00805": {
+      "objet_clair": "Selection of architects and urbanists to transform the Porte de la Villette area.",
+      "quoi_concretement": "A specialist team is in charge of selecting the professionals who will design the area's future face. They will coordinate studies to redesign public spaces and housing.",
+      "pourquoi_ca_compte": "Launches the renovation of a strategic area to make it more welcoming and better designed."
+    },
+    "20242024S04840": {
+      "objet_clair": "Installation and storage of swimming structures at Bassin de la Villette.",
+      "quoi_concretement": "A specialist company transports, lifts and stores the equipment needed for the summer swimming zone. Includes pontoons and floating structures installed each year on the canal.",
+      "pourquoi_ca_compte": "Lets Parisians enjoy a free, secure outdoor swimming zone during summer."
+    },
+    "20242024T03747": {
+      "objet_clair": "Heating and ventilation renovation at the rue de la Convention school.",
+      "quoi_concretement": "Works are carried out at this 15th-district facility to modernise the heating and air-renewal installations.",
+      "pourquoi_ca_compte": "Ensures better thermal comfort and healthy air quality for pupils and teachers."
+    },
+    "20242024T04555": {
+      "objet_clair": "Oasis schoolyard fit-out at an 11th-district school.",
+      "quoi_concretement": "Conversion of the schoolyard to make it greener and less tarmacked. Permeable surfacing and plantings are installed to better manage heat.",
+      "pourquoi_ca_compte": "Creates cool islands to protect children from heatwaves and provides a more natural play space."
+    },
+    "20242024T04108": {
+      "objet_clair": "Heating and ventilation modernisation at the Rampal Nursery School.",
+      "quoi_concretement": "New heating equipment and ventilation systems are installed at this 19th-district school to better regulate temperature.",
+      "pourquoi_ca_compte": "Ensures well-heated classrooms in winter and better-ventilated rooms for young children's health."
+    },
+    "20242024S09979": {
+      "objet_clair": "River transport of materials on Canal Saint-Martin.",
+      "quoi_concretement": "Use of the waterway to transport works or maintenance materials along the canal. This solution replaces lorry transport in Paris streets.",
+      "pourquoi_ca_compte": "Cuts road traffic, noise and pollution by favouring greener river transport."
+    },
+    "20242024S00784": {
+      "objet_clair": "Durable information-panel installation at 42 Paris sports sites.",
+      "quoi_concretement": "Manufacture and installation of permanent signage at gymnasiums or stadiums following the Olympic Games. These panels help users orient themselves in City facilities.",
+      "pourquoi_ca_compte": "Improves welcome and orientation of Paris athletes in the renovated municipal infrastructure."
+    },
+    "20232023S10900": {
+      "objet_clair": "Maintenance of City of Paris high-pressure cleaners.",
+      "quoi_concretement": "Technical maintenance of machines used by cleanliness services to clean floors and walls. This contract covers heavy cleaning equipment.",
+      "pourquoi_ca_compte": "Ensures equipment stays operational to keep streets and public spaces clean."
+    },
+    "20242024F11915": {
+      "objet_clair": "Salt purchase for street snow-clearing in winter.",
+      "quoi_concretement": "Delivery of large quantities of bulk-stored salt and grit. These stocks are used by municipal services as soon as temperatures drop.",
+      "pourquoi_ca_compte": "Prevents accidents and falls by making roadways and pavements less slippery in case of frost or snow."
+    },
+    "20232023S11911": {
+      "objet_clair": "Fire-safety training for City of Paris staff.",
+      "quoi_concretement": "Specialist trainers teach municipal employees first-aid actions and how to use extinguishers. These sessions prepare staff to react effectively in case of fire in public buildings.",
+      "pourquoi_ca_compte": "Ensures user and staff safety in town halls, schools and other venues welcoming the public."
+    },
+    "20242024S07197": {
+      "objet_clair": "Health diagnostic and tree expertise of the capital's trees.",
+      "quoi_concretement": "Specialists examine Paris trees' health to detect diseases or weaknesses. They advise the City on care to provide or the need to fell some that have become dangerous.",
+      "pourquoi_ca_compte": "Prevents branch falls during storms and preserves the city's green heritage."
+    },
+    "20242024F06233": {
+      "objet_clair": "Self-watering pot and tub purchases for city plants.",
+      "quoi_concretement": "The City buys horticultural containers fitted with bottom-up automatic watering. These pots keep plants hydrated longer while saving water.",
+      "pourquoi_ca_compte": "Optimises urban green-space irrigation and cuts water waste."
+    },
+    "20242024S04521": {
+      "objet_clair": "Maintenance of the software used for civil-registry management.",
+      "quoi_concretement": "Technicians ensure proper running and updates of the Cityweb software. It's the IT tool that lets town-hall staff register births, marriages and deaths.",
+      "pourquoi_ca_compte": "Ensures continuity of public service for obtaining your official documents and ID papers."
+    },
+    "20242024S00041": {
+      "objet_clair": "Creation and delivery of the City of Paris fireworks.",
+      "quoi_concretement": "A specialist company designs the staging, installs the explosives and runs the firing of the pyrotechnic show. Includes site safety and artistic coordination of the event.",
+      "pourquoi_ca_compte": "Provides a free, large-scale show to Parisians and tourists at national celebrations."
+    },
+    "20242024T02889": {
+      "objet_clair": "New judo room fit-out in the 18th district.",
+      "quoi_concretement": "Construction and interior fit-out works are carried out to create a dojo at 11 rue du Pré. The project converts an existing space into a sports room equipped with tatami mats for local clubs.",
+      "pourquoi_ca_compte": "Develops local sports provision and lets area residents practise martial arts."
+    },
+    "20242024T04839": {
+      "objet_clair": "Heating and ventilation works for three 15th-district public facilities.",
+      "quoi_concretement": "Workers operate on the air-conditioning and heating systems of the Cévennes Gymnasium, an animation centre and the Gutenberg Library. The aim is to improve user thermal comfort.",
+      "pourquoi_ca_compte": "Ensures pleasant temperature and good air quality at the area's sports and culture venues."
+    },
+    "20242024T04499": {
+      "objet_clair": "Demolition and major works for a fit-out on Avenue d'Italie.",
+      "quoi_concretement": "This site covers the first renovation phase of a public building at 93 avenue d'Italie. Workers install barriers, demolish old structures and consolidate load-bearing walls."
+    },
+    "20242024S00083": {
+      "objet_clair": "Design of a Seine swimming site at Bercy.",
+      "quoi_concretement": "Architects and engineers will design the fit-outs needed for swimming in the Seine at Bercy (12th). They prepare plans and supervise future river-access works.",
+      "pourquoi_ca_compte": "Parisians will soon be able to swim outdoors in the Seine safely."
+    },
+    "20242024T00228": {
+      "objet_clair": "Heating-system replacement of an office building on Boulevard Diderot.",
+      "quoi_concretement": "Technicians will replace the old heating installation with a more modern, greener system in an administrative building of the 12th district.",
+      "pourquoi_ca_compte": "Cuts energy use and the carbon footprint of City buildings."
+    },
+    "20242024T00885": {
+      "objet_clair": "Roof structure and window renovation at Maison de Rousseau.",
+      "quoi_concretement": "Specialist craftspeople will restore the wooden structures and joinery of this 4th-district historic building to preserve its old architecture.",
+      "pourquoi_ca_compte": "Safeguards Paris's historic heritage for future generations."
+    },
+    "20242024F11833": {
+      "objet_clair": "Fair-trade cotton protective-clothing purchase for staff.",
+      "quoi_concretement": "The City orders grey work outfits for its technical staff. These clothes are made from fair-trade cotton and treated to be fire-resistant.",
+      "pourquoi_ca_compte": "Ensures municipal-staff safety while supporting responsible textile production."
+    },
+    "20232023F11697": {
+      "objet_clair": "Organic-cotton polo purchase for City gardeners.",
+      "quoi_concretement": "Supply of green polos for staff working in Paris parks and gardens. The fabric used meets organic-cotton and fair-trade standards.",
+      "pourquoi_ca_compte": "Equips city gardeners with environmentally friendly clothing."
+    },
+    "20242024T04211": {
+      "objet_clair": "Schoolyard renovation and modernisation.",
+      "quoi_concretement": "Workers will transform a schoolyard to make it more modern and pleasant. Includes new surfacing and improvement of the play space.",
+      "pourquoi_ca_compte": "Provides children a cooler play space better suited to climate change."
+    },
+    "20242024000019": {
+      "objet_clair": "School-trip organisation for Paris school children.",
+      "quoi_concretement": "An association organises stays and educational activities for Paris primary-school classes over a four-year period.",
+      "pourquoi_ca_compte": "Lets all Paris children access varied educational activities outside school."
+    },
+    "20242024000024": {
+      "objet_clair": "Artistic and cultural workshops for Paris pupils.",
+      "quoi_concretement": "Speakers offer artistic-awakening workshops and themed visits to Paris classes to introduce children to art.",
+      "pourquoi_ca_compte": "Encourages access to culture from an early age for all young Parisians."
+    },
+    "20242024T12949": {
+      "objet_clair": "Bedroom renovation at the Thomas Mann boarding school.",
+      "quoi_concretement": "Full renovation works will be carried out in the bedrooms of this 13th-district boarding school. The company handles all trades to modernise the venue and improve resident comfort.",
+      "pourquoi_ca_compte": "Improves the housing and living conditions of students and pupils boarding on site."
+    },
+    "20242024T12998": {
+      "objet_clair": "Cabin and changing-room installation for swimming at Quai de Grenelle.",
+      "quoi_concretement": "Shipping containers will be converted and fitted out at the Quai de Grenelle swimming site. They will serve as changing rooms, toilets and technical premises to welcome swimmers.",
+      "pourquoi_ca_compte": "Lets Parisians enjoy new safe, equipped swimming venues by the Seine."
+    },
+    "20242024F01206": {
+      "objet_clair": "Modernisation of City IT and network equipment.",
+      "quoi_concretement": "The company supplies and installs equipment to reinforce IT networks and data security. Covers servers and connections used by municipal services."
+    },
+    "20242024T04830": {
+      "objet_clair": "Heating and ventilation modernisation at the rue Cavé school.",
+      "quoi_concretement": "Works will be carried out at this 18th-district school to replace the heating system and improve classroom ventilation. The aim is to ensure stable temperature and healthier air.",
+      "pourquoi_ca_compte": "Ensures better thermal comfort and air quality for children and teachers."
+    },
+    "20242024S07311": {
+      "objet_clair": "Free sports-activity organisation in several central districts.",
+      "quoi_concretement": "An association organises sports sessions for young people in the 5th, 6th, 7th and 11th districts. These activities encourage social mix and prevent isolation through supervised sports practice.",
+      "pourquoi_ca_compte": "Provides young people free access to local sports leisure during their free time."
+    },
+    "20242024S07332": {
+      "objet_clair": "Sports activities for young people in the 15th district.",
+      "quoi_concretement": "Sports educators will run discovery activities at 15th-district sports centres. The programme lets children and teenagers practise different sports for free.",
+      "pourquoi_ca_compte": "Encourages sports practice and social integration for area young people."
+    },
+    "20242024S00879": {
+      "objet_clair": "Support for Child Welfare and family services in central Paris.",
+      "quoi_concretement": "An association provides technical support to professionals supporting families and young children. Covers social and child-protection facilities in seven central districts.",
+      "pourquoi_ca_compte": "Reinforces support for vulnerable families and the protection of Paris young children."
+    },
+    "20242024S01472": {
+      "objet_clair": "Recycling and secure destruction of old IT equipment.",
+      "quoi_concretement": "The company collects old computers, screens and phones from the City of Paris. It destroys confidential data and ecologically recycles electronic components.",
+      "pourquoi_ca_compte": "Cuts the city's digital-waste environmental impact while protecting sensitive data."
+    },
+    "20242024F06235": {
+      "objet_clair": "Tub and planter purchases for plants in Paris streets.",
+      "quoi_concretement": "The city buys containers to install flowers and shrubs on pavements and squares. The company delivers these tubs that let public space be greened where direct ground planting isn't possible.",
+      "pourquoi_ca_compte": "Brings more nature and cool air to the capital's most-built-up areas."
+    },
+    "20242024S11870": {
+      "objet_clair": "Waste disposal and recycling at the Bonneuil maintenance centre.",
+      "quoi_concretement": "The company collects material remains and waste from city maintenance activities. These rejects are transported from the Bonneuil centre to be sorted and turned into new materials.",
+      "pourquoi_ca_compte": "Ensures ecological, responsible management of waste produced by municipal technical services."
+    },
+    "20242024F03405": {
+      "objet_clair": "Server and IT-storage equipment purchase.",
+      "quoi_concretement": "The city's IT department equips itself with new equipment to back up and manage digital data. This equipment ensures proper running of online services and software used by the town hall."
+    },
+    "20242024T04881": {
+      "objet_clair": "Planted, cooler schoolyard fit-out at Godefroy School.",
+      "quoi_concretement": "The works replace the schoolyard tarmac with natural materials and plant trees. The aim is to create a more pleasant space that stays cool during heatwaves.",
+      "pourquoi_ca_compte": "Children enjoy a healthier break space better suited to heatwaves."
     }
   }
 }
