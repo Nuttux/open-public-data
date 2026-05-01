@@ -549,6 +549,11 @@ export type QuiRecoitData = {
   movers: {
     hausses: { name: string; amount: number; delta: number }[];
     baisses: { name: string; amount: number; delta: number }[];
+    /** Nombre total de bénéficiaires passant les seuils de bruit
+     *  (montant courant ≥ 100 k€ ET année précédente ≥ 50 k€). */
+    qualifiedCount: number;
+    thresholdCurrentEur: number;
+    thresholdPrevEur: number;
   };
 };
 
@@ -728,6 +733,7 @@ export type ProjetMarche = {
 export type ProjetFiche = {
   id: string;
   name: string;
+  name_en?: string;
   arrondissement: number;
   chapitre: string;
   typeAp: string | null;
@@ -757,6 +763,11 @@ export type ProjetFiche = {
   }[];
   /** Matchs projet ↔ marchés publics (rapprochement heuristique). */
   marches: ProjetMarche[];
+  /** Couverture du rapprochement projet↔marchés sur les projets NOMMÉS
+   *  (PDF Investissements Localisés 2022-2024). Les lignes AP des années
+   *  antérieures n'étant pas des projets identifiables, elles ne sont pas
+   *  comptées dans le dénominateur. */
+  marchesCoverage: { matched: number; total: number; pct: number; scopeYears: [number, number] };
 };
 
 let _projetMarches: Record<string, ProjetMarche[]> | null = null;
@@ -767,6 +778,68 @@ export function loadProjetMarches(id: string): ProjetMarche[] {
     _projetMarches = raw?.projets ?? {};
   }
   return _projetMarches[id] ?? [];
+}
+
+let _projetMarchesCoverage: {
+  matched: number;
+  total: number;
+  pct: number;
+  scopeYears: [number, number];
+} | null = null;
+
+/** Couverture du rapprochement projet↔marchés. Le dénominateur est limité
+ *  aux PROJETS NOMMÉS (avec `nom_projet` non vide), c'est-à-dire ceux
+ *  extraits du PDF Investissements Localisés (2022-2024). Les lignes AP
+ *  2018-2021 ne sont PAS des projets mais des enveloppes budgétaires
+ *  agrégées et ne se prêtent pas au rapprochement marché. Mémoïsé. */
+export function loadProjetMarchesCoverage(): {
+  matched: number;
+  total: number;
+  pct: number;
+  scopeYears: [number, number];
+} {
+  if (_projetMarchesCoverage !== null) return _projetMarchesCoverage;
+  if (_projetMarches === null) {
+    const raw = readJsonOrNull<{ projets?: Record<string, ProjetMarche[]> }>("map/projet_marches.json");
+    _projetMarches = raw?.projets ?? {};
+  }
+  const matchedIds = new Set(Object.keys(_projetMarches));
+  const namedIds = new Set<string>();
+  let minYear = Infinity;
+  let maxYear = -Infinity;
+  // Scan des deux sources : 'complet' (priorité, contient géoloc) et
+  // 'localises' (PDF IL extraits, contient les vrais projets nommés
+  // 2019-2021 absents de 'complet'). Un même id présent dans les deux
+  // n'est compté qu'une fois (Set).
+  for (let y = 2024; y >= 2018; y--) {
+    const filesToScan = [
+      readJsonOrNull<InvComplet>(`map/investissements_complet_${y}.json`),
+      readJsonOrNull<InvComplet>(`map/investissements_localises_${y}.json`),
+    ].filter(Boolean) as InvComplet[];
+    for (const file of filesToScan) {
+      for (const p of file.data) {
+        const nom = (p.nom_projet ?? "").trim();
+        if (nom.length > 0) {
+          namedIds.add(p.id);
+          if (y < minYear) minYear = y;
+          if (y > maxYear) maxYear = y;
+        }
+      }
+    }
+  }
+  const total = namedIds.size;
+  const matched = [...matchedIds].filter((id) => namedIds.has(id)).length;
+  const pct = total > 0 ? (matched / total) * 100 : 0;
+  _projetMarchesCoverage = {
+    matched,
+    total,
+    pct,
+    scopeYears: [
+      Number.isFinite(minYear) ? minYear : 2022,
+      Number.isFinite(maxYear) ? maxYear : 2024,
+    ],
+  };
+  return _projetMarchesCoverage;
 }
 
 let _projetsVulg: Record<string, ProjetVulgarization> | null = null;
@@ -842,16 +915,23 @@ export function resolveProjetPhoto(projetId: string, name?: string | null): Proj
 
 export function loadProjet(id: string): ProjetFiche | null {
   const decoded = decodeURIComponent(id);
-  // Scan all years
+  // Scan toutes les années — d'abord investissements_complet (priorité,
+  // car contient géoloc + métadonnées riches), puis investissements_localises
+  // en fallback (pour les projets PDF 2019-2021 absents du complet).
   for (let y = 2024; y >= 2018; y--) {
-    let year: InvComplet;
+    let year: InvComplet | null = null;
     try {
       year = readJson<InvComplet>(`map/investissements_complet_${y}.json`);
-    } catch {
-      continue;
+    } catch { /* fichier absent */ }
+    const localises = readJsonOrNull<InvComplet>(`map/investissements_localises_${y}.json`);
+    let row = year?.data.find((p) => p.id === decoded);
+    if (!row && localises) {
+      row = localises.data.find((p) => p.id === decoded);
     }
-    const row = year.data.find((p) => p.id === decoded);
     if (!row) continue;
+    // Cohort = jeu de données utilisé pour calculer les ranks. Préfère
+    // 'complet' s'il existe (plus large), sinon 'localises'.
+    const cohort: InvComplet = year ?? localises ?? { data: [] } as unknown as InvComplet;
     const r = row as typeof row & {
       type_ap?: string;
       source_pdf?: string;
@@ -868,7 +948,7 @@ export function loadProjet(id: string): ProjetFiche | null {
     // Rank by typologie + same year — requires vulgarization cache to be useful
     let typologieRank: ProjetFiche["typologieRank"] = null;
     if (typologie) {
-      const sameTypo = year.data
+      const sameTypo = cohort.data
         .filter((p) => {
           const vv = loadProjetVulgarization(p.id);
           return vv?.typologie_normalisee === typologie;
@@ -882,7 +962,7 @@ export function loadProjet(id: string): ProjetFiche | null {
     // Rank by arrondissement + same year
     let arrRank: ProjetFiche["arrRank"] = null;
     if (arrondissement > 0) {
-      const sameArr = year.data
+      const sameArr = cohort.data
         .filter((p) => Number(p.arrondissement) === arrondissement)
         .slice()
         .sort((a, b) => Number(b.montant ?? 0) - Number(a.montant ?? 0));
@@ -893,7 +973,7 @@ export function loadProjet(id: string): ProjetFiche | null {
     // Similar projects — same typologie, different id, top montants
     const similaires: ProjetFiche["similaires"] = [];
     if (typologie) {
-      const peers = year.data
+      const peers = cohort.data
         .filter((p) => {
           if (p.id === r.id) return false;
           const vv = loadProjetVulgarization(p.id);
@@ -917,6 +997,7 @@ export function loadProjet(id: string): ProjetFiche | null {
     return {
       id: r.id,
       name: r.nom_projet ?? "Projet sans nom",
+      name_en: getProjetNameEn(r.id) ?? undefined,
       arrondissement,
       chapitre: r.chapitre_libelle ?? "—",
       typeAp: r.type_ap ?? null,
@@ -934,6 +1015,7 @@ export function loadProjet(id: string): ProjetFiche | null {
       similaires,
       photo: resolveProjetPhoto(r.id, r.nom_projet),
       marches: loadProjetMarches(r.id),
+      marchesCoverage: loadProjetMarchesCoverage(),
     };
   }
   return null;
@@ -995,8 +1077,11 @@ export function loadBailleur(slug: string): BailleurFiche | null {
   const target = canonicalBailleurSlug(decodeURIComponent(slug));
 
   // ─── Volet éditorial logement social ─────────────────────────────────
+  // Cherche dans `bailleursAll` (vue complète : 5 grands bailleurs +
+  // aménageurs + EPIC/fondations garanties) et non dans `bailleurs` (vue
+  // restreinte aux cards de la page logement-social).
   const ls = loadLogementSocialData();
-  const lsMatch = ls.bailleurs.find(
+  const lsMatch = ls.bailleursAll.find(
     (b) => canonicalBailleurSlug(b.name) === target,
   );
 
@@ -1136,14 +1221,16 @@ export function loadQuiRecoitData(requestedYear?: number): QuiRecoitData {
   const prevFile = yearlyData.get(prev);
   const prevMap = new Map<string, number>();
   if (prevFile) for (const b of prevFile.data) prevMap.set(b.beneficiaire, b.montant_total);
+  const MOVERS_MIN_CURRENT = 100_000;
+  const MOVERS_MIN_PREV = 50_000;
   const moversAll = ben.data
     .map((b) => {
       const pv = prevMap.get(b.beneficiaire) ?? 0;
       const delta = pv > 0 ? ((b.montant_total - pv) / pv) * 100 : b.montant_total > 0 ? 999 : 0;
       return { name: b.beneficiaire, amount: b.montant_total, delta, prev: pv };
     })
-    // Require at least €100k this year AND a baseline previous year ≥ €50k to avoid noise
-    .filter((m) => m.amount >= 100_000 && m.prev >= 50_000);
+    // Seuils anti-bruit : montant courant ≥ 100 k€ ET année précédente ≥ 50 k€
+    .filter((m) => m.amount >= MOVERS_MIN_CURRENT && m.prev >= MOVERS_MIN_PREV);
   const hausses = moversAll.slice().sort((a, b) => b.delta - a.delta).slice(0, 5).map(({ name, amount, delta }) => ({ name, amount, delta }));
   const baisses = moversAll.slice().sort((a, b) => a.delta - b.delta).slice(0, 5).map(({ name, amount, delta }) => ({ name, amount, delta }));
 
@@ -1166,7 +1253,13 @@ export function loadQuiRecoitData(requestedYear?: number): QuiRecoitData {
     byTheme,
     yearsSummary,
     availableThemes,
-    movers: { hausses, baisses },
+    movers: {
+      hausses,
+      baisses,
+      qualifiedCount: moversAll.length,
+      thresholdCurrentEur: MOVERS_MIN_CURRENT,
+      thresholdPrevEur: MOVERS_MIN_PREV,
+    },
   };
 }
 
@@ -1423,6 +1516,10 @@ export type FournisseurFiche = {
   byYear: { year: number; amount: number; count: number }[];
   byCategory: { category: string; amount: number; count: number }[];
   contrats: { numero: string; objet: string; montant: number; year: number; date: string; categorie: string; nature: string }[];
+  /** Détail de l'agrégation par SIREN : un même SIREN peut couvrir plusieurs
+   *  établissements (SIRETs) qui apparaissent sous des libellés différents
+   *  dans DECP. Les montants ci-dessus somment tous ces SIRETs. */
+  siretBreakdown: { siret: string; nom: string; amount: number; count: number }[];
 };
 
 /**
@@ -1439,6 +1536,9 @@ export function loadFournisseur(key: string): FournisseurFiche | null {
   const contrats: FournisseurFiche["contrats"] = [];
   const byYearMap = new Map<number, { amount: number; count: number }>();
   const byCatMap = new Map<string, { amount: number; count: number }>();
+  // Agrégation par SIRET (établissement) sous le SIREN, pour pouvoir
+  // afficher la décomposition quand plusieurs établissements sont fusionnés.
+  const bySiretMap = new Map<string, { siret: string; nom: string; amount: number; count: number }>();
   let nom = "";
   let fullSiret = "";
 
@@ -1481,6 +1581,20 @@ export function loadFournisseur(key: string): FournisseurFiche | null {
         cc.amount += v;
         cc.count += 1;
         byCatMap.set(cat, cc);
+
+        if (thisSiret) {
+          const ss = bySiretMap.get(thisSiret) ?? {
+            siret: thisSiret,
+            nom: r.fournisseur_nom || "—",
+            amount: 0,
+            count: 0,
+          };
+          ss.amount += v;
+          ss.count += 1;
+          // Garder le nom le plus long (souvent le plus descriptif)
+          if (r.fournisseur_nom && r.fournisseur_nom.length > ss.nom.length) ss.nom = r.fournisseur_nom;
+          bySiretMap.set(thisSiret, ss);
+        }
       }
     } catch {}
   }
@@ -1497,6 +1611,8 @@ export function loadFournisseur(key: string): FournisseurFiche | null {
     .map(([category, v]) => ({ category, amount: v.amount, count: v.count }))
     .sort((a, b) => b.amount - a.amount);
 
+  const siretBreakdown = [...bySiretMap.values()].sort((a, b) => b.amount - a.amount);
+
   return {
     nom,
     siret: fullSiret,
@@ -1507,6 +1623,7 @@ export function loadFournisseur(key: string): FournisseurFiche | null {
     byYear,
     byCategory,
     contrats,
+    siretBreakdown,
   };
 }
 
@@ -1533,11 +1650,16 @@ export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
   }
   const vulgMap = _marchesVulg;
   type TitAgg = {
+    name: string;
     amount: number;
     count: number;
     siret: string;
     contrats: { numero: string; objet: string; objetClair: string | null; objetClairEn: string | null; montant: number; categorie: string; nature: string; date: string }[];
   };
+  // Clé d'agrégation : SIREN (9 premiers chiffres du SIRET) si dispo, sinon
+  // nom normalisé. Évite la fragmentation quand un même groupe (SIREN) a
+  // plusieurs établissements (SIRETs) avec des libellés DECP variants
+  // ("EIFFAGE ROUTE IDF" vs "EIFFAGE ROUTE IDF/CENTRE").
   const titAgg = new Map<string, TitAgg>();
   type CatAgg = { amount: number; count: number; items: Map<string, { amount: number; count: number }> };
   const catAgg = new Map<string, CatAgg>();
@@ -1570,13 +1692,19 @@ export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
       multi.count += 1;
       multi.amount += v;
     }
-    const t = r.fournisseur_nom || "Non précisé";
-    const tA = titAgg.get(t) ?? { amount: 0, count: 0, siret: "", contrats: [] };
+    const rawSiret = (r.fournisseur_siret ?? "").replace(/\s/g, "");
+    const validSiret = rawSiret && rawSiret !== "#" && !rawSiret.includes("|") && rawSiret.length >= 9
+      ? rawSiret
+      : "";
+    const tName = r.fournisseur_nom || "Non précisé";
+    const aggKey = validSiret ? validSiret.slice(0, 9) : `name:${tName.toLowerCase()}`;
+    const tA = titAgg.get(aggKey) ?? { name: tName, amount: 0, count: 0, siret: validSiret, contrats: [] };
     tA.amount += v;
     tA.count += 1;
-    if (!tA.siret && r.fournisseur_siret && r.fournisseur_siret !== "#") {
-      tA.siret = r.fournisseur_siret.replace(/\s/g, "");
-    }
+    if (!tA.siret && validSiret) tA.siret = validSiret;
+    // Garder le nom le plus long (souvent le plus descriptif, ex.
+    // "EIFFAGE ROUTE ILE DE FRANCE/CENTRE" plutôt que "EIFFAGE ROUTE IDF")
+    if (tName.length > tA.name.length && tName !== "Non précisé") tA.name = tName;
     const numero = r.numero_marche ?? "";
     tA.contrats.push({
       numero,
@@ -1588,15 +1716,15 @@ export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
       nature: r.nature || "—",
       date: r.date_notification || "",
     });
-    titAgg.set(t, tA);
+    titAgg.set(aggKey, tA);
     const c = r.categorie_libelle || r.nature || "Autres";
     const cA = catAgg.get(c) ?? { amount: 0, count: 0, items: new Map() };
     cA.amount += v;
     cA.count += 1;
-    const titInCat = cA.items.get(t) ?? { amount: 0, count: 0 };
+    const titInCat = cA.items.get(aggKey) ?? { amount: 0, count: 0 };
     titInCat.amount += v;
     titInCat.count += 1;
-    cA.items.set(t, titInCat);
+    cA.items.set(aggKey, titInCat);
     catAgg.set(c, cA);
     const nature = (r.nature || "Autres").trim() || "Autres";
     const nA = natureAgg.get(nature) ?? { amount: 0, count: 0 };
@@ -1607,13 +1735,13 @@ export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
 
   // Exclude "MARCHE MULTIATTRIBUTAIRE" from the top 10 — it's a placeholder
   // name for contracts with multiple co-attributaires, not a real fournisseur.
-  const top10 = [...titAgg.entries()]
-    .filter(([name]) => name !== MULTI_NAME)
-    .sort((a, b) => b[1].amount - a[1].amount)
+  const top10 = [...titAgg.values()]
+    .filter((v) => v.name !== MULTI_NAME)
+    .sort((a, b) => b.amount - a.amount)
     .slice(0, 10)
-    .map(([name, v], i) => ({
+    .map((v, i) => ({
       rank: i + 1,
-      name,
+      name: v.name,
       siret: v.siret,
       amount: v.amount,
       nbContrats: v.count,
@@ -1626,13 +1754,12 @@ export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
       amount: v.amount,
       count: v.count,
       topTitulaires: [...v.items.entries()]
-        .filter(([name]) => name !== MULTI_NAME)
-        .map(([name, x]) => ({
-          name,
-          siret: titAgg.get(name)?.siret ?? "",
-          amount: x.amount,
-          nb: x.count,
-        }))
+        .map(([key, x]) => {
+          const t = titAgg.get(key);
+          return { key, name: t?.name ?? key, siret: t?.siret ?? "", amount: x.amount, nb: x.count };
+        })
+        .filter((it) => it.name !== MULTI_NAME)
+        .map(({ name, siret, amount, nb }) => ({ name, siret, amount, nb }))
         .sort((a, b) => b.amount - a.amount)
         .slice(0, 5),
     }))
@@ -2525,7 +2652,13 @@ export type LogementSocialData = {
   sruYear: number;
   stockTotal: number;
   byArrondissement: { arr: number; logements: number; operations: number }[];
+  /** Bailleurs sociaux principaux (5 + "Autres") avec part de marché — pour
+   *  la grille de cards de la page logement-social. */
   bailleurs: { name: string; type: string; color: string; share: number; description: string }[];
+  /** Toutes les entités éditorialisées (bailleurs sociaux + aménageurs +
+   *  EPIC/fondations garanties par la Ville). Source canonique pour
+   *  `loadBailleur(slug)` — couvre les 14 entités hors-bilan. */
+  bailleursAll: { name: string; type: string; color: string; share?: number; description: string }[];
   yearsSummary: { year: number; logements: number }[];
   /** Tension SLS Paris — issue directement de la data DRIHL (seed +
    *  core_logement_attente_arr → logement_attente_paris.json). Zéro hardcode.
@@ -2589,15 +2722,50 @@ export function loadLogementSocialData(requestedYear?: number): LogementSocialDa
     .filter((x) => x.arr > 0)
     .sort((a, b) => b.logements - a.logements);
 
-  // Bailleurs principaux — références publiques ; à terme chargés depuis /data/logements
-  const bailleurs = [
+  // Bailleurs et entités garanties par la Ville. Les `share` (parts du parc
+  // social parisien) ne concernent que les vrais bailleurs sociaux ; les
+  // autres entités (aménagement, EPIC, fondations) sont garanties par la
+  // Ville sans gérer de parc — leur fiche existe pour expliquer la nature
+  // de l'entité, pas une part de marché logement.
+  const bailleursAll: LogementSocialData["bailleursAll"] = [
+    // ─── Cinq grands bailleurs sociaux historiques ─────────────────────
     { name: "Paris Habitat", type: "OPH (Ville)", color: "#2a3680", share: 49, description: "Office Public de l'Habitat de la Ville — plus grand bailleur social français." },
-    { name: "RIVP", type: "SEM", color: "#1e45e4", share: 18, description: "Régie Immobilière de la Ville de Paris — SEM axée sur l'innovation habitat." },
-    { name: "Elogie-Siemp", type: "SEM", color: "#a67638", share: 14, description: "Issue de la fusion Elogie et Siemp — réhabilitation et mixité sociale." },
-    { name: "ICF Habitat", type: "Privé", color: "#5f6672", share: 7, description: "Filiale SNCF — logement des salariés et social." },
-    { name: "3F Résidences", type: "Privé", color: "#9099a6", share: 6, description: "Groupe Action Logement — bailleur national présent à Paris." },
-    { name: "Autres bailleurs", type: "Divers", color: "#e4e6ea", share: 6, description: "Dizaines de petits bailleurs sociaux et coopératifs." },
+    { name: "RIVP", type: "SEM (Ville)", color: "#1e45e4", share: 18, description: "Régie Immobilière de la Ville de Paris — SEM axée sur l'innovation habitat." },
+    { name: "Elogie-Siemp", type: "SEM (Ville)", color: "#a67638", share: 14, description: "Issue de la fusion Elogie et Siemp — réhabilitation et mixité sociale." },
+    { name: "ICF Habitat", type: "ESH / SA HLM", color: "#5f6672", share: 7, description: "Filiale SNCF (groupe ICF) — logement des salariés et logement social." },
+    { name: "3F Résidences", type: "ESH / SA HLM", color: "#9099a6", share: 6, description: "Groupe Action Logement (Immobilière 3F) — bailleur national présent à Paris." },
+
+    // ─── Autres bailleurs sociaux (ESH / SA HLM nationaux) ────────────
+    { name: "CDC Habitat Social", type: "ESH (CDC)", color: "#7a8295", description: "Filiale logement social du groupe Caisse des Dépôts — opérations en VEFA et accession sociale." },
+    { name: "Toit et Joie", type: "ESH (Poste Habitat)", color: "#7a8295", description: "Bailleur social du groupe La Poste Habitat — patrimoine francilien." },
+    { name: "SEQENS", type: "ESH (Action Logement)", color: "#7a8295", description: "ESH du groupe Action Logement (ex-Logement Français) — IDF étendu." },
+    { name: "BATIGERE Habitat IDF", type: "ESH (BATIGERE)", color: "#7a8295", description: "ESH régionale du groupe BATIGERE — couvre principalement la grande couronne." },
+    { name: "RATP Habitat", type: "ESH (RATP)", color: "#7a8295", description: "Filiale logement de la RATP — historique du logement des agents, ouverte au logement social." },
+    { name: "1001 Vies Habitat", type: "ESH (Action Logement)", color: "#7a8295", description: "ESH du groupe Action Logement — patrimoine national, présence parisienne." },
+    { name: "L'Habitation Confortable", type: "SA HLM", color: "#7a8295", description: "Société anonyme HLM historique parisienne — petit patrimoine résidentiel." },
+    { name: "HSF", type: "ESH", color: "#7a8295", description: "Habitat Social Français — ESH au patrimoine majoritairement francilien." },
+
+    // ─── Aménageurs publics (SPL/SPLA) — pas de parc social ───────────
+    { name: "SEMAPA", type: "SPLA (Ville)", color: "#a67638", description: "Société Publique Locale d'Aménagement Paris — opérateur des grandes ZAC parisiennes (Paris Rive Gauche, Bercy-Charenton). Garantie d'emprunt Ville pour ses opérations d'aménagement, pas de parc locatif." },
+    { name: "Paris Métropole Aménagement", type: "SPL (Ville+métropole)", color: "#a67638", description: "Société Publique Locale d'aménagement à l'échelle métropolitaine — mêmes mécanismes de garantie que la SEMAPA." },
+
+    // ─── Autres entités garanties (EPIC, fondations, ESS) ─────────────
+    { name: "Régie Eau de Paris", type: "EPIC (Ville)", color: "#5f6672", description: "Établissement Public Industriel et Commercial de la Ville — production et distribution d'eau potable. Garantie Ville sur ses emprunts d'investissement réseau." },
+    { name: "AccorHotels Arena POPB", type: "SAEM (Ville)", color: "#5f6672", description: "Société anonyme d'économie mixte exploitant le Palais Omnisports de Paris-Bercy. Garantie historique sur les emprunts de construction/rénovation." },
+    { name: "Fondation Sciences Po", type: "Fondation reconnue d'utilité publique", color: "#5f6672", description: "Fondation gestionnaire de l'Institut d'Études Politiques. Garantie Ville sur les emprunts immobiliers du campus parisien." },
+    { name: "Fondation Rothschild (OPTH A.)", type: "Fondation hospitalière", color: "#5f6672", description: "Fondation OPTH Adolphe de Rothschild — hôpital ophtalmologique. Garantie Ville sur emprunts d'investissement médical." },
+
+    // ─── Catch-all dynamique pour les bailleurs non listés ─────────────
+    { name: "Autres bailleurs", type: "Divers", color: "#e4e6ea", share: 6, description: "Dizaines de petits bailleurs sociaux et coopératifs non listés individuellement." },
   ];
+
+  // Vue restreinte pour la grille principale de la page logement-social :
+  // seuls les bailleurs ayant une part de marché documentée (les 5 grands
+  // historiques + "Autres"). Les autres entités (aménageurs, EPIC, etc.)
+  // restent accessibles via /dette-patrimoine/bailleur/<slug>.
+  const featuredBailleurs = bailleursAll.filter(
+    (b): b is typeof b & { share: number } => typeof b.share === "number",
+  );
 
   // SRU officiel : Paris à 24,5 % au 31/12/2024 (source : DDT Paris).
   // Figé à l'inventaire le plus récent même si l'utilisateur sélectionne une
@@ -2671,7 +2839,8 @@ export function loadLogementSocialData(requestedYear?: number): LogementSocialDa
     sruYear,
     stockTotal,
     byArrondissement,
-    bailleurs,
+    bailleurs: featuredBailleurs,
+    bailleursAll,
     yearsSummary,
     tension,
   };
@@ -3206,20 +3375,26 @@ export function loadMarcheCategorie(slug: string, requestedYear?: number): March
   const firstCat = matching[0].categorie_libelle || matching[0].nature || "Autres";
   const total = matching.reduce((s, r) => s + Number(r.montant_max ?? 0), 0);
 
-  const titMap = new Map<string, { amount: number; count: number; siret: string }>();
+  // Agrégation par SIREN (cf. note dans loadMarchesPageData) pour éviter
+  // les doublons quand un même SIREN a plusieurs SIRETs/libellés DECP.
+  const titMap = new Map<string, { name: string; amount: number; count: number; siret: string }>();
   for (const r of matching) {
     const name = r.fournisseur_nom || "Non précisé";
     if (name === "MARCHE MULTIATTRIBUTAIRE") continue;
-    const cur = titMap.get(name) ?? { amount: 0, count: 0, siret: "" };
+    const rawSiret = (r.fournisseur_siret ?? "").replace(/\s/g, "");
+    const validSiret = rawSiret && rawSiret !== "#" && !rawSiret.includes("|") && rawSiret.length >= 9
+      ? rawSiret
+      : "";
+    const aggKey = validSiret ? validSiret.slice(0, 9) : `name:${name.toLowerCase()}`;
+    const cur = titMap.get(aggKey) ?? { name, amount: 0, count: 0, siret: validSiret };
     cur.amount += Number(r.montant_max ?? 0);
     cur.count += 1;
-    if (!cur.siret && r.fournisseur_siret && r.fournisseur_siret !== "#") {
-      cur.siret = r.fournisseur_siret.replace(/\s/g, "");
-    }
-    titMap.set(name, cur);
+    if (!cur.siret && validSiret) cur.siret = validSiret;
+    if (name.length > cur.name.length && name !== "Non précisé") cur.name = name;
+    titMap.set(aggKey, cur);
   }
-  const topTitulaires = [...titMap.entries()]
-    .map(([name, v]) => ({ name, siret: v.siret, amount: v.amount, nb: v.count }))
+  const topTitulaires = [...titMap.values()]
+    .map((v) => ({ name: v.name, siret: v.siret, amount: v.amount, nb: v.count }))
     .sort((a, b) => b.amount - a.amount)
     .slice(0, 8);
 

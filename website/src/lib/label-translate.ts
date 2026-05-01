@@ -82,11 +82,36 @@ const EN: Record<string, string> = {
   "Enseignement": "Education",
   "Santé & Social": "Health & Social",
   "Rsa": "RSA welfare",
+  // M57 chapitres (project drawer "Chapter" KPI)
+  // (Voirie, Environnement also exist further below — kept here for grouping clarity)
+  "Affaires Scolaires": "Schools",
+  "Jeunesse et Sports": "Youth & Sports",
+  "Affaires Culturelles": "Culture",
+  "Famille": "Family",
+  "Décentralisation": "Decentralisation",
+
+  // ── Project typeAp tags ───────────────────────────────────────────────────
+  "grands_projets": "Major projects",
+  "GRANDS_PROJETS": "MAJOR PROJECTS",
+  "grand_projet": "Major project",
+  "GRAND_PROJET": "MAJOR PROJECT",
+  "entretien": "Maintenance",
+  "ENTRETIEN": "MAINTENANCE",
+  "budget_participatif": "Participatory budget",
+  "BUDGET_PARTICIPATIF": "PARTICIPATORY BUDGET",
+  "autre": "Other",
+  "AUTRE": "OTHER",
 
   // ── Marché natures ────────────────────────────────────────────────────────
+  // (Travaux, Marché also exist further below in CPV / chapitres sections)
   "SERVICES": "SERVICES",
+  "Services": "Services",
   "TRAVAUX": "WORKS",
   "FOURNITURE": "SUPPLIES",
+  "FOURNITURES": "SUPPLIES",
+  "Fournitures": "Supplies",
+  "Fourniture": "Supplies",
+  "MARCHÉ": "CONTRACT",
 
   // ── Marché CPV categories ─────────────────────────────────────────────────
   "Acheminement lettres,colis et courrier express": "Mail, parcel and express delivery",
