@@ -350,7 +350,7 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
                   }}
                 >
                   <span style={{ fontWeight: 500, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                    {s.name}
+                    {locale === "en" && s.name_en ? s.name_en : s.name}
                     {s.arrondissement > 0 && (
                       <span className="muted" style={{ marginLeft: 8, fontSize: 11, fontFamily: "var(--f-mono)" }}>
                         {s.arrondissement}{suf(s.arrondissement)}
