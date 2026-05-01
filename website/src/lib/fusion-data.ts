@@ -2000,6 +2000,14 @@ export type ChapitreFiche = {
   share: number;
   rank: number;
   nbChapitres: number;
+  /** Couverture du dump projet vs total chapitre M57. `pct` ∈ [0, 100].
+   *  La source A (M57) est exhaustive ; la source B (PDF Investissements
+   *  localisés) ne couvre que les chantiers géolocalisables. */
+  coverage: {
+    amount: number;
+    pct: number;
+    sourceLabel: string;
+  };
   topArrondissements: { arr: number; amount: number; count: number }[];
   topProjets: {
     id: string;
@@ -2039,6 +2047,8 @@ export function loadChapitre(slug: string, year?: number): ChapitreFiche | null 
   const projets = complet?.data ?? [];
   const inChap = projets.filter((p) => serviceToM57(p.chapitre_libelle) === label);
   const agg = { amount: match.amount, count: inChap.length };
+  const coveredAmount = inChap.reduce((s, p) => s + Number(p.montant ?? 0), 0);
+  const coveragePct = match.amount > 0 ? (coveredAmount / match.amount) * 100 : 0;
 
   const arrAgg = new Map<number, { amount: number; count: number }>();
   for (const p of inChap) {
@@ -2076,6 +2086,11 @@ export function loadChapitre(slug: string, year?: number): ChapitreFiche | null 
     share: pick.depenses_total > 0 ? (agg.amount / pick.depenses_total) * 100 : 0,
     rank,
     nbChapitres: ranking.length,
+    coverage: {
+      amount: coveredAmount,
+      pct: coveragePct,
+      sourceLabel: `PDF Investissements localisés ${targetYear}`,
+    },
     topArrondissements,
     topProjets,
   };
