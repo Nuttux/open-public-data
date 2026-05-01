@@ -757,6 +757,7 @@ export type ProjetFiche = {
   similaires: {
     id: string;
     name: string;
+    name_en?: string;
     montant: number;
     arrondissement: number;
     typologie: string | null;
@@ -987,6 +988,7 @@ export function loadProjet(id: string): ProjetFiche | null {
         similaires.push({
           id: peer.id,
           name: peer.nom_projet ?? "Projet sans nom",
+          name_en: getProjetNameEn(peer.id) ?? undefined,
           montant: Number(peer.montant ?? 0),
           arrondissement: Number(peer.arrondissement) || 0,
           typologie: pvv?.typologie_normalisee ?? null,
