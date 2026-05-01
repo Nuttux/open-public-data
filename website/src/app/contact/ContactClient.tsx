@@ -18,7 +18,7 @@ export default function ContactClient() {
           <div className="fx-page-kicker">{t("fx.contact.kicker")}</div>
           <h1 className="fx-page-title">
             {t("fx.contact.title.before")}<br />
-            une <em>{t("fx.contact.title.em")}</em>{t("fx.contact.title.after")}
+            {t("fx.contact.title.em_prefix")}<em>{t("fx.contact.title.em")}</em>{t("fx.contact.title.after")}
           </h1>
           <p className="fx-page-lede">{t("fx.contact.lede")}</p>
         </div>

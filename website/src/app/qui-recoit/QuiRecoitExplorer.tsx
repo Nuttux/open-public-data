@@ -501,7 +501,7 @@ export default function QuiRecoitExplorer({
               <>
                 <div className="fx-search-placeholder">
                   <p>
-                    Tapez au moins <b>{t("fx.qr.search.hint_two")}</b> {t("fx.qr.search.hint_after")}
+                    {t("fx.qr.search.hint_before")}<b>{t("fx.qr.search.hint_two")}</b> {t("fx.qr.search.hint_after")}
                   </p>
                   <div className="fx-search-seeds">
                     {SEEDS.map((s) => (

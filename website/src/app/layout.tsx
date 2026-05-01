@@ -15,7 +15,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import AnalyticsProvider from "@/components/AnalyticsProvider";
 import { LocaleProvider } from "@/lib/localeContext";
-import { SITE_URL, SITE_NAME, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
+import { SITE_URL, SITE_NAME, organizationJsonLd, websiteJsonLd, readLocale } from "@/lib/seo";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -103,13 +103,14 @@ export const viewport: Viewport = {
  * Applies font class, dark theme, navigation, and glossary provider
  * to the entire application
  */
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const initialLocale = await readLocale();
   return (
-    <html lang="fr">
+    <html lang={initialLocale === 'en' ? 'en' : 'fr'}>
       <body className={`${inter.variable} font-sans antialiased`}>
         {/* GEO: structured data for AI search engines */}
         <script
@@ -121,7 +122,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd()) }}
         />
         <AnalyticsProvider>
-          <LocaleProvider>
+          <LocaleProvider initialLocale={initialLocale}>
             {children}
           </LocaleProvider>
         </AnalyticsProvider>
