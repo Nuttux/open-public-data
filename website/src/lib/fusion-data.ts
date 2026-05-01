@@ -1741,12 +1741,13 @@ export type InvestissementsData = {
   /** % du montant total capté par les 10 plus gros projets (pour la bannière Pareto). */
   top10ProjetsPct: number;
   byArrondissement: { arr: number; amount: number; count: number }[];
-  topProjets: { id: string; name: string; arr: number; chapitre: string; amount: number; photo: ProjetPhotoResolved }[];
+  topProjets: { id: string; name: string; name_en?: string; arr: number; chapitre: string; amount: number; photo: ProjetPhotoResolved }[];
   geoPoints: {
     id: string;
     lat: number;
     lon: number;
     name: string;
+    name_en?: string;
     amount: number;
     chapitre: string;
     arr: number;
