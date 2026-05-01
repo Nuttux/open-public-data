@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useTrack } from "@/lib/analyticsContext";
+import { useT } from "@/lib/localeContext";
 
 export type TOCItem = {
   id: string;
@@ -24,6 +25,7 @@ export default function PageTOC({ items, scrollOffset = 96 }: Props) {
   const [activeId, setActiveId] = useState<string | null>(items[0]?.id ?? null);
   const track = useTrack();
   const pathname = usePathname();
+  const t = useT();
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -58,7 +60,7 @@ export default function PageTOC({ items, scrollOffset = 96 }: Props) {
   };
 
   return (
-    <nav className="fx-page-toc" aria-label="Navigation dans la page">
+    <nav className="fx-page-toc" aria-label={t("fx.toc.aria")}>
       <ul>
         {items.map((it) => (
           <li key={it.id}>

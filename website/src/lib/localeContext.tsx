@@ -29,22 +29,35 @@ function writeCookie(value: Locale) {
   document.cookie = `${COOKIE_KEY}=${value}; max-age=${oneYear}; path=/; SameSite=Lax`;
 }
 
-export function LocaleProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>('fr');
+export function LocaleProvider({
+  children,
+  initialLocale = 'fr',
+}: {
+  children: ReactNode;
+  initialLocale?: Locale;
+}) {
+  const [locale, setLocaleState] = useState<Locale>(initialLocale);
 
-  // Hydrate from localStorage once on mount, and mirror to cookie so server-side
-  // generateMetadata() can read it via next/headers cookies().
+  // Reconcile with localStorage on mount so a tab opened with a stale cookie still
+  // honours the user's last explicit choice. Mirror back to cookie so SSR + future
+  // tabs stay in sync.
   useEffect(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored === 'en') {
+      if (stored === 'en' && locale !== 'en') {
         setLocaleState('en');
         writeCookie('en');
-      } else if (stored === 'fr') {
+      } else if (stored === 'fr' && locale !== 'fr') {
+        setLocaleState('fr');
         writeCookie('fr');
+      } else if (!stored) {
+        // No localStorage choice yet: persist the SSR-determined locale so future
+        // tabs without a cookie still get a stable preference.
+        try { localStorage.setItem(STORAGE_KEY, locale); } catch {}
+        writeCookie(locale);
       }
     } catch { /* SSR / private browsing */ }
-  }, []);
+  }, [locale]);
 
   const setLocale = useCallback((l: Locale) => {
     setLocaleState(l);

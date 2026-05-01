@@ -293,7 +293,7 @@ export default function LogementSocialClient({
                 className="fx-bailleur-card"
               >
                 <div className="n">{trLabel(b.type, locale)}</div>
-                <h3>{b.name}</h3>
+                <h3>{trLabel(b.name, locale)}</h3>
                 <p>{trLabel(b.description, locale)}</p>
                 <div className="fx-bailleur-share-row">
                   <span className="fx-bailleur-share">~{b.share} %</span>
