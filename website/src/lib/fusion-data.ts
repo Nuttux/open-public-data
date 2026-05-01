@@ -792,6 +792,15 @@ export function loadProjetVulgarization(id: string): ProjetVulgarization | null 
   return _projetsVulg[id] ?? null;
 }
 
+let _projetNamesEn: Record<string, string> | null = null;
+
+export function getProjetNameEn(id: string): string | null {
+  if (_projetNamesEn === null) {
+    _projetNamesEn = readJsonOrNull<Record<string, string>>("enrichment/projet_names_en.json") ?? {};
+  }
+  return _projetNamesEn[id] ?? null;
+}
+
 // `guessTypologieFromName`, types photos — déplacés vers `@/lib/projet-utils`
 // pour être importables depuis les composants client sans embarquer fs/path.
 import { guessTypologieFromName } from "./projet-utils";
@@ -1817,6 +1826,7 @@ export function loadInvestissementsData(requestedYear?: number): Investissements
     .map((p) => ({
       id: p.id,
       name: p.nom_projet as string,
+      name_en: getProjetNameEn(p.id) ?? undefined,
       arr: p.arrondissement,
       chapitre: p.chapitre_libelle ?? "—",
       amount: p.montant,
@@ -1834,6 +1844,7 @@ export function loadInvestissementsData(requestedYear?: number): Investissements
         lat: p.lat as number,
         lon: p.lon as number,
         name: p.nom_projet ?? "Projet",
+        name_en: getProjetNameEn(p.id) ?? undefined,
         amount: Number(p.montant ?? 0),
         chapitre: p.chapitre_libelle ?? "",
         arr: Number(p.arrondissement) || 0,

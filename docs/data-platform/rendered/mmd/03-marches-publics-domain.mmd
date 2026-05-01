@@ -1,0 +1,17 @@
+flowchart LR
+    M1[OpenData<br/>liste-des-marches-<br/>de-la-collectivite-<br/>parisienne] -->|sync_opendata.py| R1[(raw.liste_des_marches_*)]
+    M2[data.gouv.fr DECP<br/>dataset 5cd57bf68b4c4179299eb0e9<br/>~944 MB/year] -->|fetch_decp_paris.py<br/>filter SIRET 217500*| R2[(raw.decp_marches_paris)]
+    R1 --> STG1[stg_marches_publics.sql]
+    R2 --> STG2[stg_decp_marches_paris.sql]
+    STG1 & STG2 --> CM[core_marches_publics.sql<br/>grain: annee × numero_marche<br/>~17k Paris + ~30% DECP-exclusive<br/>join: SUBSTR numero_marche,5 = decp.id<br/>fallback: SIRET + date notif.]
+    CM --> EN1[vulgarize_marches_llm.py<br/>Claude Opus / Gemini]
+    EN1 --> CV[(enrichment/<br/>vulgarization_marches.json)]
+    CM --> EN2[enrich_sirene.py<br/>apply_sirene_to_marches.py]
+    EN2 --> CSIR[(enrichment/<br/>sirene_companies.json)]
+    CM --> MN[mart_marches_par_nature]
+    CM --> MF[mart_marches_fournisseurs]
+    CM --> MC[mart_concentration<br/>Herfindahl/Gini by supplier]
+    MN & MF & MC -->|export_marches_data.py| JM[marches-publics/<br/>marches_*.json<br/>2013–2026]
+    CM --> JT[marches-publics/<br/>marches_tendances.json]
+    JM & JT --> UIM[/marches-publics<br/>MarchesSearch.tsx/]
+    CV & CSIR -->|lazy-load per click| UIM

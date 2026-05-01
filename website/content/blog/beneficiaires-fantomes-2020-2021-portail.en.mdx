@@ -1,0 +1,109 @@
+---
+title: "Les bénéficiaires fantômes : 2 années de subventions absentes du portail Open Data Paris"
+description: "Sur les sept derniers exercices, deux années entières de subventions (2020 et 2021) sont absentes du portail Open Data Paris. L'année 2018 a 400 lignes sans nom de bénéficiaire sur 10 266. À partir de 2022, la donnée est complète. Anatomie d'un trou de transparence et de ce qu'il signifie pour l'auditabilité de l'argent public parisien."
+date: "2026-05-04"
+author: "France Open Data"
+tags: ["enquête", "subventions", "transparence", "open-data"]
+category: "Enquête"
+image: "https://commons.wikimedia.org/wiki/Special:FilePath/Hotel%20de%20Ville%20Paris%20Wikimedia%20Commons.jpg?width=1600"
+imageAlt: "Hôtel de Ville de Paris — siège politique et administratif où se vote chaque année la liste des subventions"
+imageCredit: "Photo : Wikimedia Commons · CC BY-SA"
+readingTime: "6 min"
+title_en: "Phantom beneficiaries: 2 years of grants missing from the Open Data Paris portal"
+description_en: "Across the last seven fiscal years, two full years of grants (2020 and 2021) are absent from the Open Data Paris portal. The 2018 file has 400 lines without a beneficiary name out of 10,266. From 2022 onward, the data is complete. Anatomy of a transparency gap and what it means for the auditability of Paris public money."
+imageAlt_en: "Hôtel de Ville de Paris — the political and administrative seat where the grants list is voted on each year"
+imageCredit_en: "Photo: Wikimedia Commons · CC BY-SA"
+category_en: "Investigation"
+tags_en: ["investigation", "grants", "transparency", "open-data"]
+---
+
+The Ville de Paris's Open Data commitment is long-standing and public. The portal [opendata.paris.fr](https://opendata.paris.fr) publishes dozens of financial datasets, including the annual aggregate of **grants paid to associations** — an essential file for understanding where a significant share of municipal public money goes. Across the last seven fiscal years for which publication would be expected (2018, 2019, 2020, 2021, 2022, 2023, 2024), **two years are entirely missing from the portal**: **2020 and 2021**. And the 2018 file has a more discreet gap: **400 lines without a beneficiary name** out of 10,266.
+
+This article documents that gap. It is neither an indictment nor an accusation. It is a factual finding, verifiable in the **`data_availability.json` file** of the open-public-data pipeline — which indexes for each dataset what is available, and what is not.
+
+## What the portal publishes, what it does not
+
+Here is the annual coverage of association grants for the seven fiscal years in question:
+
+| Year | Status | Grants | Named beneficiaries | Gap |
+|---|---|---:|---:|---:|
+| 2018 | published | 10,266 | 9,863 | **403 unnamed** (4%) |
+| 2019 | published | 12,093 | 12,093 | 0 |
+| **2020** | **missing** | — | — | **entire year** |
+| **2021** | **missing** | — | — | **entire year** |
+| 2022 | published | 5,336 | 5,336 | 0 |
+| 2023 | published | 5,167 | 5,167 | 0 |
+| 2024 | published | 5,977 | 5,948 | 29 unnamed (0.5%) |
+
+Three facts stand out:
+
+1. **Two entire years are missing** from the portal: no 2020 or 2021 grants file is downloadable. A municipality that voted more than €1 billion in grants those years does not appear in the open database.
+2. **The 2018 file has a sub-gap of 400 missing names**: of 10,266 grant lines, 403 have an empty or unfilled "beneficiary" field. That is about 4% of lines — minority, but not negligible.
+3. **From 2022 onward, the data is clean**: the ratio "number of grants = number of named beneficiaries" is respected (within 29 lines in 2024, or 0.5% — presumably individual aid to natural persons, for whom anonymization is legally required).
+
+## Why this gap exists — what we know and what we don't
+
+The open-public-data pipeline publishes no official justification for this gap — and we have found no explicit communication from the City about the non-publication of fiscal years 2020 and 2021. Several hypotheses are possible; none is publicly documented to our knowledge:
+
+- **Hypothesis 1 — IT system transition.** The City switched its accounting to the M57 format in 2019, then probably migrated its grants-management tool over the same period. A technical transition that would have impacted the automatic publication of export files could explain a one-off gap — without explaining why the gap was never filled afterwards.
+- **Hypothesis 2 — pandemic effect on publication processes.** 2020 and 2021 were years of intense administrative mobilization (crisis management, emergency mechanisms, agent telework). The systematic publication of annual export files was not a priority — and back-publication was never carried out.
+- **Hypothesis 3 — implicit editorial choice.** The 2020-2021 period saw exceptional grants (support for associations in difficulty, delegated health mechanisms) whose detail might have been politically sensitive to publish. This hypothesis is speculative and cannot be verified from public data.
+
+None of these hypotheses is confirmed. What is confirmed is **the gap itself** — verifiable in two clicks on the Open Data Paris portal.
+
+<figure className="fx-photo-fig">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Aerial%20photograph%20of%20Eiffel%20Tower%20and%20Front%20de%20Seine%2C%20Paris%202005.jpg?width=1200" alt="Aerial view of Paris" />
+<figcaption>The Ville de Paris's Open Data commitment is long-standing and public. But multi-year coverage is uneven across datasets — a gap of two entire fiscal years (2020-2021) on association grants likely represents more than €2Bn in financial transactions absent from the public portal.</figcaption>
+</figure>
+
+## What is lost by not publishing 2020 and 2021
+
+For published fiscal years, the City pays out between **€1.17Bn** (2022) and **€1.35Bn** (2024) in grants each year. By cautious extrapolation, the **cumulative volume of missing 2020-2021 grants likely represents €2 to €2.5Bn** — a considerable order of magnitude of financial transactions absent from the portal.
+
+Concretely, this means that **no citizen, journalist or researcher can**, from Paris open data alone:
+
+- Verify who received exceptional grants during the pandemic
+- Compare the concentration of beneficiaries during the affected fiscal years vs. others
+- Reconstruct the multi-year trajectory of major operators (CASVP, Croix-Rouge, etc.) without interpolation
+- Track the evolution of the funded association sector during the most difficult period of the decade
+
+To make up for this gap, one must either:
+- **Reconstruct manually** from the appendices of the comptes administratifs (PDF files of more than 1,500 pages per year, with changing table format, non-trivial extraction)
+- **File a CADA request** (Commission d'accès aux documents administratifs) to obtain the files in a usable format
+- **Cross-reference** with the activity reports of the operators concerned (which publish their own accounts)
+
+None of these three paths is open without significant effort. And none is as simple as a CSV download from a public portal.
+
+## The 2018 sub-gap: 400 missing names
+
+Beyond the entirely missing years, fiscal year 2018 presents a smaller but notable peculiarity: **403 grant lines do not bear a beneficiary name**. The amount is recorded, the issuing department too, but the "beneficiary" column is empty.
+
+This sub-gap represents about 4% of the line count. It could correspond to:
+
+- Anonymized aid to natural persons (legitimate but should be marked as "natural person")
+- Grants to multiple beneficiaries not detailed line by line
+- Data-entry or export errors
+
+Without official documentation, we cannot decide. This sub-gap is documented in the pipeline's thresholds (`data_availability.json` does not flag it as a "warning" but the count of distinct beneficiaries is lower than the count of grants, which reveals the discrepancy).
+
+From 2019 onward, this sub-gap disappears. From 2022 onward, the discrepancy is negligible (0 to 0.5%).
+
+## Comparison with other portal datasets
+
+The grants gap is not an isolated case. Our [manifesto on open-data quality](/analyses/histoire-du-projet) (article hidden from the feed but accessible by direct URL) noted that **20 out of 28 financial datasets published by the City had not been updated since 2020 or 2021**. The City's own debt was frozen since July 2019. The voted budgets by arrondissement were no longer fed since 2021. Municipal staff: December 2018.
+
+Paris open data is not a lie. It is a **commitment of variable intensity**, which produces good-quality data on certain perimeters and structural gaps on others. Grants 2020-2021 are a particularly awkward case because they concern a pivotal year of the mandate and a massive volume of transactions.
+
+## What these numbers do not say
+
+This analysis stops at what the open-public-data pipeline allows us to measure. It does not say:
+
+- **Whether the City could re-publish 2020 and 2021** — that is an administrative question for the relevant departments (Direction des Affaires Juridiques + Direction de l'Information et des Systèmes d'Information)
+- **Which specific beneficiaries are missing** in the 400 lines of 2018 — that would require access to the internal database, which is not in open data
+- **Why the publication format changed** (10,266 lines in 2018 → ~5,500 in 2022) — this volume drop could reflect a change in granularity (line aggregation) or a change in scope
+
+What it does say, in a sentence: **two entire years of Paris grants (2020 and 2021) are missing from the Open Data Paris portal, creating a transparency gap of about €2Bn over the most turbulent period of the decade**. This gap can be filled technically (re-publication or PDF reconstruction) — but it has not been to date. It is an open-data debt the City could settle if the decision were made.
+
+---
+
+**Sources**: open-public-data pipeline, file `data_availability.json` which indexes available datasets and their warnings · Open Data Paris portal ([opendata.paris.fr](https://opendata.paris.fr)) — direct search "subventions associations". Scope: Ville de Paris, file `subventions-associations` (annual vintages). Finding verifiable in two clicks on the portal.

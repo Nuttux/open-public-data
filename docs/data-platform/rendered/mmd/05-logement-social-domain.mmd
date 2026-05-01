@@ -1,0 +1,17 @@
+flowchart LR
+    L1[OpenData<br/>logements-sociaux-<br/>finances-a-paris] -->|sync_opendata.py| R1[(raw.logements_sociaux_*)]
+    R1 --> STGL[stg_logements_sociaux.sql<br/>geo_point_2d already present]
+    STGL --> CL[core_logements_sociaux.sql<br/>grain: id_livraison]
+    CL -->|export_map_data.py| J1[map/logements_*.json<br/>2010–2024]
+    CL --> J2[map/logements_sociaux.json<br/>program-level detail]
+    CL --> J3[map/logements_par_<br/>arrondissement.json]
+
+    D1[DRIHL xlsx] -->|extract_drihl_xlsx.py| SEED[(seed_drihl_paris_<br/>2024.csv)]
+    SEED --> STGDR[—]
+    STGDR --> CLA[core_logement_<br/>attente_arr.sql<br/>grain: arrondissement×annee]
+    CLA -->|export_logement_attente.py| J4[logement_attente_paris.json]
+
+    J1 & J2 & J3 & J4 --> UIL[/logement-social/]
+    CL --> MSA2[mart_stats_arrondissements<br/>shared with investissements]
+    MSA2 --> J5[map/arrondissements_<br/>stats_*.json]
+    J5 --> UIL
