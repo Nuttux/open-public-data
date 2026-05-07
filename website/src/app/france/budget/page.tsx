@@ -19,6 +19,10 @@ import { loadDrilldown } from "@/lib/budget-drilldown";
 import { listCrossCuttingThemes } from "@/lib/cross-cutting";
 import { CrossCuttingPanel } from "@/components/fusion";
 import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
+import {
+  buildProfileQueryString,
+  parseDailyBreadProfile,
+} from "@/lib/daily-bread-profile";
 import fr from "@/i18n/fr";
 import en from "@/i18n/en";
 
@@ -91,33 +95,58 @@ function fmtPct(share: number, locale: "fr" | "en"): string {
 // déclencher l'intercept Next.js depuis cette page (drawer overlay au
 // lieu d'une nav full-page). Les routes standalone sous le même
 // préfixe servent de fallback (deep-link, refresh, partage).
-function urlSecuLevel2(level2Key: string) {
-  return `/france/budget/bucket/secu/${level2Key}`;
+//
+// `qs` (optional) = query string profil propagé pour que le drawer
+// affiche les €/mois sur le profil quand l'utilisateur arrive depuis le
+// cross-link Daily Bread (`?net=...&parts=...&c=...`). Sans ça, le
+// drawer Budget Explorer perd le profil et n'affiche QUE les Md€.
+function suffixQs(url: string, qs?: string): string {
+  if (!qs) return url;
+  const sep = url.includes("?") ? "&" : "?";
+  return `${url}${sep}${qs}`;
 }
-function urlEtatAggregation(aggKey: string) {
-  return `/france/budget/bucket/etat/agg/${aggKey}`;
+function urlSecuLevel2(level2Key: string, qs?: string) {
+  return suffixQs(`/france/budget/bucket/secu/${level2Key}`, qs);
 }
-function urlEtatMission(missionCode: string) {
-  return `/france/budget/bucket/etat/${missionCode.toLowerCase()}`;
+function urlEtatAggregation(aggKey: string, qs?: string) {
+  return suffixQs(`/france/budget/bucket/etat/agg/${aggKey}`, qs);
 }
-function urlLocalLevel2(level2Key: string) {
-  return `/france/budget/bucket/local/${level2Key}`;
+function urlEtatMission(missionCode: string, qs?: string) {
+  return suffixQs(`/france/budget/bucket/etat/${missionCode.toLowerCase()}`, qs);
 }
-function urlLocalDeptLevel2(level2Key: string) {
-  return `/france/budget/bucket/local/dept/${level2Key}`;
+function urlLocalLevel2(level2Key: string, qs?: string) {
+  return suffixQs(`/france/budget/bucket/local/${level2Key}`, qs);
 }
-function urlLocalRegionLevel2(level2Key: string) {
-  return `/france/budget/bucket/local/region/${level2Key}`;
+function urlLocalDeptLevel2(level2Key: string, qs?: string) {
+  return suffixQs(`/france/budget/bucket/local/dept/${level2Key}`, qs);
+}
+function urlLocalRegionLevel2(level2Key: string, qs?: string) {
+  return suffixQs(`/france/budget/bucket/local/region/${level2Key}`, qs);
 }
 
 // ─── Page ─────────────────────────────────────────────────────────────────
 
-export default async function FranceBudgetPage() {
+type Search = Promise<Record<string, string | string[] | undefined>>;
+
+export default async function FranceBudgetPage({
+  searchParams,
+}: {
+  searchParams?: Search;
+}) {
   const locale = await readLocale();
   const t = tFor(locale);
   const db = loadDailyBread();
   const drilldown = loadDrilldown();
   const crossCuttingThemes = listCrossCuttingThemes();
+
+  // Cross-link profil (?net=...&parts=...&c=...) — propagé aux drill links
+  // pour que le drawer Budget Explorer affiche AUSSI les €/mois sur le profil
+  // (sinon il n'affiche que Md€/an, perdant le contexte personnel).
+  const sp = (await searchParams) ?? {};
+  const profile = parseDailyBreadProfile(sp);
+  const profileQs = profile.hasProfile
+    ? buildProfileQueryString(profile)
+    : undefined;
 
   // ── Totaux institutions (Stage 1 absolus) ───────────────────────────────
   const inst = db?.apu_subsectors.institutions;
@@ -170,7 +199,7 @@ export default async function FranceBudgetPage() {
     if (value <= 0) continue;
     treemapItems.push({
       id: `secu-${b.key}`,
-      href: urlSecuLevel2(b.key),
+      href: urlSecuLevel2(b.key, profileQs),
       shortLabel: locale === "en" ? b.label_en : b.label_fr,
       fullLabel: locale === "en"
         ? `${b.label_en} — Social security`
@@ -189,7 +218,7 @@ export default async function FranceBudgetPage() {
     if (value <= 0) continue;
     treemapItems.push({
       id: `etat-${a.key}`,
-      href: urlEtatAggregation(a.key),
+      href: urlEtatAggregation(a.key, profileQs),
       shortLabel: locale === "en" ? a.label_en : a.label_fr,
       fullLabel: locale === "en"
         ? `${a.label_en} — Central government`
@@ -210,7 +239,7 @@ export default async function FranceBudgetPage() {
     if (value <= 0) continue;
     treemapItems.push({
       id: `local-bloc-${e.key}`,
-      href: urlLocalLevel2(e.key),
+      href: urlLocalLevel2(e.key, profileQs),
       shortLabel: locale === "en" ? e.label_en : e.label_fr,
       fullLabel: locale === "en"
         ? `${e.label_en} — Municipal block`
@@ -229,11 +258,11 @@ export default async function FranceBudgetPage() {
   const regL2List = drilldown?.buckets.local.region?.level2 ?? [];
   const deptFirstHref =
     deptL2List.length > 0
-      ? urlLocalDeptLevel2(deptL2List[0].key)
+      ? urlLocalDeptLevel2(deptL2List[0].key, profileQs)
       : "/france/budget#bucket-local";
   const regFirstHref =
     regL2List.length > 0
-      ? urlLocalRegionLevel2(regL2List[0].key)
+      ? urlLocalRegionLevel2(regL2List[0].key, profileQs)
       : "/france/budget#bucket-local";
   if (deptAnnual > 0) {
     treemapItems.push({
@@ -313,11 +342,16 @@ export default async function FranceBudgetPage() {
                 fontWeight: 500,
                 color: "var(--muted)",
                 letterSpacing: 0,
+                whiteSpace: "nowrap",
               }}
             >
               {t("budget.hero.amount_unit")}
             </span>
+            {/* Caption forcée en bloc sur mobile (sinon "publiques (S13)"
+                wrap seul sous "administrations" → fragmente une expression
+                INSEE inviolable). Sur desktop, reste inline à droite. */}
             <span
+              className="fx-budget-hero-caption"
               style={{
                 fontSize: "0.16em",
                 marginLeft: "0.5em",
@@ -553,7 +587,7 @@ export default async function FranceBudgetPage() {
               return {
                 label: locale === "en" ? b.label_en : b.label_fr,
                 value,
-                href: urlSecuLevel2(b.key),
+                href: urlSecuLevel2(b.key, profileQs),
                 display: (
                   <>
                     {fmtBnEur(value, locale)}
@@ -594,7 +628,7 @@ export default async function FranceBudgetPage() {
               return {
                 label: locale === "en" ? a.label_en : a.label_fr,
                 value,
-                href: urlEtatAggregation(a.key),
+                href: urlEtatAggregation(a.key, profileQs),
                 display: (
                   <>
                     {fmtBnEur(value, locale)}
@@ -643,7 +677,7 @@ export default async function FranceBudgetPage() {
                   // ou la plus grosse) si dispo, sinon scroll vers la liste.
                   href:
                     blocCommunalSorted.length > 0
-                      ? urlLocalLevel2(blocCommunalSorted[0].key)
+                      ? urlLocalLevel2(blocCommunalSorted[0].key, profileQs)
                       : "/france/budget#bucket-local",
                   rank: "06.1",
                   title: locale === "en"
@@ -785,7 +819,7 @@ export default async function FranceBudgetPage() {
                 return {
                   label: locale === "en" ? e.label_en : e.label_fr,
                   value,
-                  href: urlLocalLevel2(e.key),
+                  href: urlLocalLevel2(e.key, profileQs),
                   display: (
                     <>
                       {fmtBnEur(value, locale)}
@@ -827,7 +861,7 @@ export default async function FranceBudgetPage() {
                 {(drilldown?.buckets.local.departement?.level2 ?? []).map((e) => (
                   <li key={e.key}>
                     <Link
-                      href={urlLocalDeptLevel2(e.key)}
+                      href={urlLocalDeptLevel2(e.key, profileQs)}
                       scroll={false}
                       style={{
                         fontSize: 14,
@@ -865,7 +899,7 @@ export default async function FranceBudgetPage() {
                 {(drilldown?.buckets.local.region?.level2 ?? []).map((e) => (
                   <li key={e.key}>
                     <Link
-                      href={urlLocalRegionLevel2(e.key)}
+                      href={urlLocalRegionLevel2(e.key, profileQs)}
                       scroll={false}
                       style={{
                         fontSize: 14,
@@ -935,7 +969,7 @@ export default async function FranceBudgetPage() {
             subtitle={t("budget.cta.daily_bread.body")}
           />
           <Link
-            href="/ville/paris/daily-bread"
+            href={profileQs ? `/ville/paris/daily-bread?${profileQs}` : "/ville/paris/daily-bread"}
             className="fx-btn fx-btn-primary"
             style={{ marginTop: 8 }}
           >

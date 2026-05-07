@@ -285,6 +285,9 @@ export default function DailyBreadClient({
   // Helper : construit une Map<inPageKey, fullUrl> en intersectant un alias
   // statique avec les keys publiées par Agent P. Les keys absentes du drilldown
   // restent non-cliquables — pas de lien mort possible.
+  // Le query string profil (`?net=...`) est injecté plus bas via
+  // `appendProfileQuery` — sans lui, les drawers L2/L3/agg perdent le
+  // contexte profil et n'affichent plus les €/mois (lead + sub-rows).
   const makeTopUrlMap = useCallback(
     (bucket: "secu" | "etat" | "local", alias: Record<string, string>) => {
       const m = new Map<string, string>();
@@ -462,6 +465,37 @@ export default function DailyBreadClient({
     indepType,
     pathname,
     router,
+  ]);
+
+  // Query string profil — propagé aux liens drill (drawer) pour que les
+  // pages `@drawer/(.)bucket/...` reçoivent ?net=...&parts=...&c=... et
+  // affichent les €/mois sur le profil. Sans ce param, le drawer perd le
+  // contexte profil (lead "SUR TON PROFIL · X €/MOIS" + sub-rows €/mois).
+  // Doit rester aligné avec la logique du `useEffect` URL sync ci-dessus.
+  const profileQuery = useMemo(() => {
+    const params = new URLSearchParams();
+    params.set("net", String(salaireMonthly));
+    params.set("parts", String(parts));
+    if (commune) params.set("c", commune.slug);
+    if (isOwner) params.set("owner", "1");
+    if (tfCustom > 0) params.set("tf", String(tfCustom));
+    if (pensionMonthly > 0) params.set("pension", String(pensionMonthly));
+    if (capitalAnnuel > 0) params.set("capital", String(capitalAnnuel));
+    if (indepCaAnnuel > 0) {
+      params.set("indep_ca", String(indepCaAnnuel));
+      if (indepType !== "services_bic") params.set("indep_type", indepType);
+    }
+    return params.toString();
+  }, [
+    salaireMonthly,
+    pensionMonthly,
+    capitalAnnuel,
+    indepCaAnnuel,
+    parts,
+    commune,
+    isOwner,
+    tfCustom,
+    indepType,
   ]);
 
   // ─── Initial commune fetch ─────────────────────────────────────────
@@ -1694,6 +1728,7 @@ export default function DailyBreadClient({
                   color="c-secu"
                   locale={locale}
                   clickableUrls={secuTopUrls}
+                  profileQuery={profileQuery}
                 />
               </div>
 
@@ -1758,6 +1793,7 @@ export default function DailyBreadClient({
                   color="c-etat"
                   locale={locale}
                   clickableUrls={etatTopUrls}
+                  profileQuery={profileQuery}
                 />
               </div>
 
@@ -1937,6 +1973,7 @@ export default function DailyBreadClient({
                   // ouvre les 9 fonctions cliquables). Dept et Région ouvrent
                   // leur 1re fonction (porte d'entrée vers le scope OFGL).
                   clickableUrls={localLevelsUrls}
+                  profileQuery={profileQuery}
                 />
               </div>
 
@@ -2331,7 +2368,7 @@ export default function DailyBreadClient({
               }}
             >
               <Link
-                href="/france/budget"
+                href={profileQuery ? `/france/budget?${profileQuery}` : "/france/budget"}
                 style={{
                   fontFamily: "var(--pf-sans, 'Inter Tight', Inter, sans-serif)",
                   fontSize: 15,
@@ -2520,6 +2557,7 @@ function BarList({
   color,
   locale,
   clickableUrls,
+  profileQuery,
 }: {
   items: Array<{
     key?: string;
@@ -2534,13 +2572,24 @@ function BarList({
   /** Optional : si l'item a une `key` présente dans cette map, la barre
    *  devient cliquable (drill vers `/ville/paris/daily-bread/bucket/<bucket>/<level2>`). */
   clickableUrls?: Map<string, string>;
+  /** Query string profil (sans `?`), append à l'URL drill — propage le
+   *  contexte ?net=...&parts=...&c=... pour que le drawer affiche les
+   *  €/mois projetés (lead + sub-rows). Sans ça, les pages drawer reçoivent
+   *  un `searchParams` vide et `personalMonthlyLabel` est null. */
+  profileQuery?: string;
 }) {
   const max = Math.max(...items.map((i) => i.share), 0.01);
+  const appendProfile = (u: string): string => {
+    if (!profileQuery) return u;
+    const sep = u.includes("?") ? "&" : "?";
+    return `${u}${sep}${profileQuery}`;
+  };
   return (
     <div className="db-p-zoom-bars">
       {items.map((item, i) => {
         const pct = (item.share / max) * 100;
-        const url = item.key ? clickableUrls?.get(item.key) : undefined;
+        const rawUrl = item.key ? clickableUrls?.get(item.key) : undefined;
+        const url = rawUrl ? appendProfile(rawUrl) : undefined;
         const isClickable = Boolean(url);
         const inner = (
           <>
