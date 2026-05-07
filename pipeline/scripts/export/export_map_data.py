@@ -21,7 +21,7 @@ from google.cloud import bigquery
 
 # Configuration
 PROJECT_ID = "open-data-france-484717"
-DATASET = "dbt_paris_analytics"
+MARTS_DATASET = "dbt_paris_marts"
 OUTPUT_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data" / "map"
 
 # Population par arrondissement (INSEE 2021)
@@ -86,8 +86,7 @@ def export_investissements(client):
         ode_nom_lieu,
         ode_source_geo,
         ode_confiance
-    FROM `{PROJECT_ID}.{DATASET}.core_ap_projets`
-    WHERE annee >= 2018
+    FROM `{PROJECT_ID}.{MARTS_DATASET}.mart_investissements_map`
     ORDER BY annee DESC, montant DESC
     """
     
@@ -216,7 +215,7 @@ def export_logements_sociaux(client):
         mode_realisation,
         commentaires,
         cle_technique
-    FROM `{PROJECT_ID}.{DATASET}.core_logements_sociaux`
+    FROM `{PROJECT_ID}.{MARTS_DATASET}.mart_logements_map`
     ORDER BY annee DESC, nb_logements DESC
     """
     

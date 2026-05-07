@@ -340,8 +340,7 @@ def export_marches(client: bigquery.Client):
     # Detail data (top contracts per city per year)
     query_detail = f"""
     SELECT *
-    FROM `{PROJECT_ID}.{NATIONAL_CORE}.core_marches_national`
-    ORDER BY commune_slug, annee, montant DESC
+    FROM `{PROJECT_ID}.{NATIONAL_MARTS}.mart_marches_national_detail`
     """
     detail_rows = query_bq(client, query_detail)
 
@@ -420,8 +419,7 @@ def export_subventions(client: bigquery.Client):
 
     query_detail = f"""
     SELECT *
-    FROM `{PROJECT_ID}.{NATIONAL_CORE}.core_subventions_national`
-    ORDER BY commune_slug, annee, montant DESC
+    FROM `{PROJECT_ID}.{NATIONAL_MARTS}.mart_subventions_national_detail`
     """
     detail_rows = query_bq(client, query_detail)
 

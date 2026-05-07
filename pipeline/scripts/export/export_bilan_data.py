@@ -31,34 +31,16 @@ from utils.logger import Logger
 
 # Configuration
 PROJECT_ID = "open-data-france-484717"
-DATASET = "dbt_paris_analytics"
+DATASET = "dbt_paris_marts"
 OUTPUT_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data"
 
 
 def fetch_bilan_data(client: bigquery.Client, year: int = None) -> list:
-    """
-    Récupère les données du bilan comptable depuis core_bilan_comptable.
-    
-    Args:
-        client: Client BigQuery
-        year: Année spécifique (optionnel, sinon toutes les années)
-    
-    Returns:
-        Liste des enregistrements avec type_bilan, poste, detail et montants
-    """
+    """Récupère les données depuis mart_bilan_comptable (row-level)."""
     year_filter = f"WHERE annee = {year}" if year else ""
-    
     query = f"""
-    SELECT
-        annee,
-        type_bilan,
-        poste,
-        detail,
-        montant_brut,
-        montant_amortissements,
-        montant_net,
-        categorie_analytique
-    FROM `{PROJECT_ID}.{DATASET}.core_bilan_comptable`
+    SELECT *
+    FROM `{PROJECT_ID}.{DATASET}.mart_bilan_comptable`
     {year_filter}
     ORDER BY annee DESC, type_bilan, poste, montant_net DESC
     """
@@ -83,7 +65,7 @@ def get_available_years(client: bigquery.Client) -> list:
     """Récupère les années disponibles dans les données."""
     query = f"""
     SELECT DISTINCT annee
-    FROM `{PROJECT_ID}.{DATASET}.core_bilan_comptable`
+    FROM `{PROJECT_ID}.{DATASET}.mart_bilan_comptable`
     ORDER BY annee DESC
     """
     return [row.annee for row in client.query(query).result()]

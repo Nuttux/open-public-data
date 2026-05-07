@@ -27,7 +27,7 @@ from pathlib import Path
 from google.cloud import bigquery
 
 PROJECT_ID = "open-data-france-484717"
-DATASET = "dbt_paris_analytics"
+DATASET = "dbt_paris_marts"
 OUTPUT_PATH = (
     Path(__file__).parent.parent.parent.parent
     / "website" / "public" / "data" / "logement_attente_paris.json"
@@ -37,13 +37,7 @@ OUTPUT_PATH = (
 def main():
     c = bigquery.Client(project=PROJECT_ID)
     q = f"""
-    SELECT
-        code_insee, nom, scope, arrondissement, annee,
-        demandes_choix1, attributions,
-        ratio_dem_attrib, delai_median_attribution_mois,
-        part_anciennete_5ans_plus, rang_tension,
-        source, source_url
-    FROM `{PROJECT_ID}.{DATASET}.core_logement_attente_arr`
+    SELECT * FROM `{PROJECT_ID}.{DATASET}.mart_logement_attente`
     ORDER BY scope DESC, arrondissement ASC
     """
     rows = [dict(r) for r in c.query(q).result()]
