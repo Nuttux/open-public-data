@@ -19,6 +19,29 @@
 version: 2
 
 sources:
+  # ===========================================================================
+  # MARSEILLE — Sources data.gouv.fr (synced via sync_city.py marseille)
+  # ===========================================================================
+  - name: marseille_raw
+    description: "Données brutes Marseille (data.gouv.fr → BigQuery raw.marseille_*)"
+    database: open-data-france-484717
+    schema: raw
+    tables:
+      # Budget primitif — 7 années annuelles (M57 par nature)
+      - name: marseille_budget_primitif_2018
+      - name: marseille_budget_primitif_2019
+      - name: marseille_budget_primitif_2020
+      - name: marseille_budget_primitif_2021
+      - name: marseille_budget_primitif_2022
+      - name: marseille_budget_primitif_2023
+      - name: marseille_budget_primitif_2024
+      # Compte administratif — 5 années annuelles, ⚠ 2 schémas (2018-2019 vs 2020+)
+      - name: marseille_compte_administratif_2018
+      - name: marseille_compte_administratif_2019
+      - name: marseille_compte_administratif_2020
+      - name: marseille_compte_administratif_2021
+      - name: marseille_compte_administratif_2022
+
   - name: paris_raw
     description: "Données brutes du budget de Paris (OpenData Paris)"
     database: open-data-france-484717
@@ -304,7 +327,7 @@ sources:
           Bilan comptable de la Ville de Paris.
           État patrimonial annuel (Actif/Passif).
           Contient les valeurs brutes, amortissements et nettes.
-          
+
           ~500 lignes, années 2016-2024
         columns:
           - name: Exercice comptable
@@ -321,3 +344,202 @@ sources:
             description: "Amortissements et provisions (FLOAT)"
           - name: NET
             description: "Valeur nette = BRUT - Amortissements (FLOAT)"
+
+      # =========================================================================
+      # HORS BILAN - Garanties d'emprunt accordées par la Ville
+      # =========================================================================
+
+      - name: enrichment_caches_paris
+        description: |
+          Table polymorphe des caches d'enrichissement (LLM, SIRENE,
+          photos, vulgarisations…). Chaque ligne = un fichier JSON sous
+          `pipeline/cache/enrichment/`. Chargée par
+          pipeline/scripts/sync/sync_enrichment_caches.py.
+        # TODO Issue #6: ajouter freshness quand sync_*.py écrira generated_at
+        # comme TIMESTAMP plutôt que STRING ISO.
+        columns:
+          - name: relative_path
+            description: "Chemin relatif sous pipeline/cache/enrichment/"
+          - name: payload
+            description: "JSON sérialisé (STRING)"
+          - name: size_bytes
+          - name: generated_at
+            description: "Horodatage du sync (STRING ISO; à passer en TIMESTAMP via Issue #6)"
+
+      - name: sirene_companies_paris
+        description: |
+          Cache SIRENE (recherche-entreprises.api.gouv.fr) chargé depuis
+          public/data/enrichment/sirene_companies.json via
+          pipeline/scripts/sync/sync_sirene_companies.py. Utilisé en JOIN
+          par les marts marchés pour combler `fournisseur_nom` quand
+          DECP/OpenData Paris ne le fournit pas.
+        loaded_at_field: loaded_at
+        freshness:
+          warn_after: {count: 30, period: day}
+          error_after: {count: 90, period: day}
+        columns:
+          - name: siren
+            description: "SIREN à 9 chiffres (STRING)"
+          - name: nom
+            description: "Raison sociale"
+          - name: forme_juridique
+          - name: commune
+          - name: code_postal
+          - name: adresse
+          - name: loaded_at
+            description: "Horodatage du sync (TIMESTAMP UTC)"
+
+      - name: deliberations_sessions_paris
+        description: |
+          Métadonnées des sessions du Conseil de Paris (subventions extraites
+          des projets de délibération). Une ligne = une session.
+          Source: scrape Conseil de Paris + LLM extraction → JSON →
+          chargé via pipeline/scripts/sync/sync_deliberations.py.
+        loaded_at_field: loaded_at
+        freshness:
+          warn_after: {count: 30, period: day}
+          error_after: {count: 90, period: day}
+        columns:
+          - name: session_id
+            description: "Identifiant de session (INTEGER)"
+          - name: generated_at
+            description: "Date de génération du JSON source"
+          - name: source
+            description: "Étiquette source"
+          - name: nb_delibs
+            description: "Nombre de délibérations dans la session (INTEGER)"
+          - name: nb_articles
+            description: "Nombre d'articles (subventions individuelles, INTEGER)"
+
+      - name: deliberations_delibs_paris
+        description: |
+          Délibérations du Conseil de Paris (titres + direction). Une ligne =
+          une délibération.
+        columns:
+          - name: session_id
+          - name: delib_id
+            description: "Identifiant délib (ex: '2024 DAC 102')"
+          - name: id_entite
+          - name: title
+          - name: direction_id
+          - name: direction_name
+
+      - name: deliberations_articles_paris
+        description: |
+          Articles individuels (subventions) extraits des délibérations.
+          Une ligne = un bénéficiaire-article.
+        columns:
+          - name: session_id
+          - name: delib_id
+          - name: direction_id
+          - name: direction_name
+          - name: article_num
+          - name: beneficiary
+          - name: siret
+          - name: amount_eur
+          - name: amount_raw
+          - name: motif
+          - name: dossier
+
+      - name: pdf_investissements_localises_paris
+        description: |
+          Investissements localisés extraits des PDFs Annexe IL des Comptes
+          Administratifs Paris (2019-2024). Chaque ligne = un projet.
+          Métadonnées d'extraction (page-total reconciliation, confidence
+          LLM) embarquées par projet.
+
+          Source: extraction Gemini Vision via
+          pipeline/scripts/tools/extract_pdf_investments.py, puis chargé
+          en BQ via pipeline/scripts/sync/sync_pdf_investissements_localises.py.
+          ~3k projets sur 6 années (2019-2024).
+        loaded_at_field: loaded_at
+        freshness:
+          warn_after: {count: 90, period: day}
+          error_after: {count: 365, period: day}
+        columns:
+          - name: year_publication
+            description: "Année de publication CA (INTEGER)"
+          - name: source
+            description: "Étiquette source (PDF Compte Administratif)"
+          - name: extraction_date
+            description: "Date de l'extraction Gemini Vision (STRING YYYY-MM-DD)"
+          - name: pages_traitees
+            description: "Nombre total de pages PDF analysées (INTEGER)"
+          - name: pages_il
+            description: "Nombre de pages IL réellement utiles (INTEGER)"
+          - name: total_attendu_m_eur
+            description: "Total attendu Annexe IL en M€ (FLOAT) — pour réconciliation"
+          - name: ecart_pourcent
+            description: "Écart % entre total extrait et total attendu (FLOAT)"
+          - name: valide
+            description: "Réconciliation OK (BOOL, true si ecart < seuil)"
+          - name: id
+            description: "Identifiant unique du projet (STRING)"
+          - name: annee
+            description: "Année comptable (INTEGER)"
+          - name: arrondissement
+            description: "Arrondissement extrait (INTEGER, 0 = non spécifié)"
+          - name: chapitre_code
+            description: "Code chapitre (STRING)"
+          - name: chapitre_libelle
+            description: "Libellé chapitre"
+          - name: nom_projet
+            description: "Nom du projet"
+          - name: montant
+            description: "Montant en € (FLOAT)"
+          - name: type_ap
+            description: "Type AP (entretien, equipement, voirie, …)"
+          - name: confidence
+            description: "Confiance LLM 0..1 (FLOAT)"
+          - name: source_page
+            description: "Page PDF de provenance (INTEGER)"
+          - name: source_pdf
+            description: "URL du PDF source"
+          - name: date_extraction
+            description: "Date d'extraction de cette ligne"
+
+      - name: dette_garantie_paris
+        description: |
+          Annexe IV-B du compte administratif : emprunts garantis par
+          la Ville de Paris (engagements hors bilan). Une ligne = un
+          emprunt garanti, avec bénéficiaire, banque prêteuse, montant
+          initial, capital restant dû, taux, durée.
+
+          Source: opendata.paris.fr / dataset `dette-garantie`
+          Ingéré via pipeline/scripts/sync/sync_dette_garantie.py
+          ~10k lignes / année, 2019-2024
+        loaded_at_field: loaded_at
+        freshness:
+          warn_after: {count: 90, period: day}
+          error_after: {count: 365, period: day}
+        columns:
+          - name: annee_de_publication
+            description: "Année de publication de l'annexe (INTEGER)"
+          - name: collectivite
+            description: "Émetteur (Ville de Paris)"
+          - name: nature
+            description: "Nature de l'opération garantie (logement, équipement…)"
+          - name: annee_de_mobilisation
+            description: "Année de souscription de l'emprunt (INTEGER)"
+          - name: designation_du_beneficiaire
+            description: "Bénéficiaire (organisme dont l'emprunt est garanti)"
+          - name: objet_de_l_emprunt_garanti
+            description: "Objet (souvent l'adresse de l'opération)"
+          - name: organisme_preteur_ou_chef_de_file
+            description: "Banque prêteuse"
+          - name: montant_initial
+            description: "Montant initial de l'emprunt (FLOAT, €)"
+          - name: capital_restant_du_au_31_12_de_l_annee_de_publication
+            description: "Capital restant dû au 31/12 (FLOAT, €) — engagement HB courant"
+          - name: duree_residuelle
+            description: "Durée résiduelle (FLOAT, années)"
+          - name: taux_initial_taux
+            description: "Type de taux: F=fixe, V=variable"
+          - name: taux_initial_index
+            description: "Index si variable (Euribor 3M, Livret A…)"
+          - name: taux_initial_taux_actuariel
+            description: "Taux actuariel à l'initial (FLOAT, %)"
+          - name: annuite_garantie_au_cours_de_l_exercice_en_interets
+            description: "Annuité intérêts (FLOAT, €)"
+          - name: annuite_garantie_au_cours_de_l_exercice_en_capital
+            description: "Annuité capital (FLOAT, €)"

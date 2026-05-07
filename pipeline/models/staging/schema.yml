@@ -430,3 +430,179 @@ models:
         description: "Clé technique unique"
         tests:
           - not_null
+
+  # ===========================================================================
+  # LOGEMENT — DRIHL FILE D'ATTENTE
+  # ===========================================================================
+  - name: stg_drihl_paris
+    description: |
+      Wrapper staging de seed_drihl_paris_2024 (extrait XLSX DRIHL).
+      Existe pour que core_logement_attente_arr ne référence pas le seed
+      directement (règle layering raw → stg → core).
+
+      Grain: code_insee × annee (75 + 75056 + 75101..75120)
+    columns:
+      - name: code_insee
+        description: "Code INSEE (75=Paris global ; 75056=non-précisé ; 75101..75120)"
+        tests:
+          - not_null
+      - name: annee
+        description: "Année du snapshot"
+        tests:
+          - not_null
+      - name: source
+        description: "Citation de la source (DRIHL)"
+        tests:
+          - not_null
+      - name: source_url
+        description: "URL pointant la publication DRIHL"
+
+  # ===========================================================================
+  # NOUVEAUX STG (Phases 1-18 du refactor layering)
+  # Tous les seeds-mappings et seeds-cache LLM sont désormais wrappés ici.
+  # ===========================================================================
+
+  - name: stg_dette_garantie
+    description: "Annexe IV-B Paris (emprunts garantis) — wrapper de raw.dette_garantie_paris."
+    columns:
+      - name: annee
+        tests: [not_null]
+      - name: beneficiaire
+        tests: [not_null]
+      - name: capital_restant
+        description: "Capital restant dû au 31/12 (€)"
+        tests: [not_null]
+      - name: taux_type
+        description: "F (fixe), V (variable), ou autre"
+
+  - name: stg_pdf_investissements_localises
+    description: "Investissements localisés extraits PDF Annexe IL — wrapper raw."
+    columns:
+      - name: annee_publication
+        tests: [not_null]
+      - name: projet_id
+        tests: [not_null]
+      - name: montant
+        tests: [not_null]
+      - name: confidence
+        description: "Confiance LLM 0..1"
+
+  - name: stg_deliberations_sessions
+    description: "Métadonnées sessions Conseil de Paris."
+    columns:
+      - name: session_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_deliberations_delibs
+    description: "Délibérations Conseil de Paris (titres + direction)."
+    columns:
+      - name: session_id
+        tests: [not_null]
+      - name: delib_id
+        tests: [not_null]
+
+  - name: stg_deliberations_articles
+    description: "Articles individuels (subventions) extraits des délibérations."
+    columns:
+      - name: session_id
+        tests: [not_null]
+      - name: delib_id
+        tests: [not_null]
+      - name: amount_eur
+        description: "Montant article (€) — peut être null si non extrait"
+
+  - name: stg_sirene_companies
+    description: "Cache SIRENE entreprises (recherche-entreprises.api.gouv.fr)."
+    columns:
+      - name: siren
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_enrichment_caches
+    description: |
+      Table polymorphe des caches d'enrichissement (LLM/SIRENE/photos).
+      Chaque ligne = un fichier JSON sous pipeline/cache/enrichment/.
+      Le payload est conservé en STRING — lossy par design.
+    columns:
+      - name: relative_path
+        tests:
+          - not_null
+          - unique
+
+  # (stg_drihl_paris défini plus haut — ligne 437)
+
+  # ─── Seed wrappers (mappings + caches LLM) ──────────────────────────────────
+
+  - name: stg_mapping_thematiques
+    description: "Mapping (chapitre, fonction) → thématique pour budget."
+    columns:
+      - name: thematique
+        tests: [not_null]
+
+  - name: stg_mapping_beneficiaires
+    description: "Regex pattern → thématique/sous-catégorie pour subventions."
+    columns:
+      - name: pattern
+        tests: [not_null]
+      - name: thematique
+        tests: [not_null]
+      - name: priorite
+        tests: [not_null]
+
+  - name: stg_mapping_directions
+    description: "Direction municipale → thématique."
+    columns:
+      - name: direction
+        tests:
+          - not_null
+          - unique
+      - name: thematique
+        tests: [not_null]
+
+  - name: stg_mapping_entites
+    description: "Regex pattern → nom canonique pour déduplication entités."
+    columns:
+      - name: pattern
+        tests: [not_null]
+      - name: nom_canonique
+        tests: [not_null]
+
+  - name: stg_cache_thematique_beneficiaires
+    description: "Cache LLM thématique par bénéficiaire normalisé."
+    columns:
+      - name: beneficiaire_normalise
+        tests:
+          - not_null
+          - unique
+      - name: ode_thematique
+        tests: [not_null]
+
+  - name: stg_lieux_connus
+    description: "Mapping pattern_match → lieu (adresse, arrondissement, coords)."
+    columns:
+      - name: pattern_match
+        tests: [not_null]
+      - name: nom_complet
+        tests: [not_null]
+      - name: arrondissement
+        description: "Arrondissement 1-20"
+
+  - name: stg_cache_geo_ap
+    description: "Cache LLM géolocalisation par ap_code."
+    columns:
+      - name: ap_code
+        tests:
+          - not_null
+          - unique
+      - name: ode_confiance
+        description: "Confiance 0..1 du géocodage LLM"
+
+  - name: stg_match_projet_marches
+    description: "Décisions de match scorées projet × marché."
+    columns:
+      - name: projet_id
+        tests: [not_null]
+      - name: numero_marche

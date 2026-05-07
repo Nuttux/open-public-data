@@ -11,6 +11,10 @@ models:
   # BUDGET PRINCIPAL
   # ===========================================================================
   - name: core_budget
+    meta:
+      domain: "budget"
+      criticality: "high"
+      freshness_slo: "annual (CA published ~Jun N+1)"
     description: |
       Budget principal Ville de Paris (OBT).
       Source de vérité pour les totaux macro.
@@ -60,6 +64,10 @@ models:
   # BUDGET VOTÉ (prévisionnel) - Entité séparée du CA
   # ===========================================================================
   - name: core_budget_vote
+    meta:
+      domain: "budget"
+      criticality: "high"
+      freshness_slo: "annual (BP published Dec N-1)"
     description: |
       Budget voté de la Ville de Paris (OBT) - Budget Primitif.
       Entité SÉPARÉE de core_budget (exécuté).
@@ -112,6 +120,10 @@ models:
   # SUBVENTIONS
   # ===========================================================================
   - name: core_subventions
+    meta:
+      domain: "subventions"
+      criticality: "high"
+      freshness_slo: "monthly (delib chain) + annual (annexe CA)"
     description: |
       Subventions aux associations et autres bénéficiaires (OBT).
 
@@ -148,6 +160,10 @@ models:
   # AP PROJETS
   # ===========================================================================
   - name: core_ap_projets
+    meta:
+      domain: "investissements"
+      criticality: "high"
+      freshness_slo: "annual (PDF Annexe IL ~Jun N+1)"
     description: |
       Projets d'investissement (Autorisations de Programme) (OBT).
 
@@ -182,6 +198,10 @@ models:
   # LOGEMENTS SOCIAUX
   # ===========================================================================
   - name: core_logements_sociaux
+    meta:
+      domain: "logement"
+      criticality: "medium"
+      freshness_slo: "annual"
     description: |
       Programmes de logements sociaux financés (OBT).
       Déjà géolocalisés dans la source (geo_point_2d).
@@ -213,6 +233,10 @@ models:
   # MARCHÉS PUBLICS (fusion opendata.paris.fr + DECP national)
   # ===========================================================================
   - name: core_marches_publics
+    meta:
+      domain: "marches"
+      criticality: "high"
+      freshness_slo: "monthly (DECP refresh)"
     description: |
       Marchés publics consolidés = opendata.paris.fr LEFT JOIN DECP national
       + UNION des marchés DECP-exclusifs.
@@ -253,3 +277,104 @@ models:
         tests:
           - unique
           - not_null
+
+  # ===========================================================================
+  # NOUVEAUX CORE (Phases 1-18)
+  # ===========================================================================
+
+  - name: core_dette_garantie
+    meta:
+      domain: "bilan"
+      criticality: "low"
+      freshness_slo: "annual"
+    description: |
+      Emprunts garantis Paris (engagements hors bilan).
+      Source: stg_dette_garantie. Filtre: capital_restant > 0.
+      Enrichissements: bucket_nature, arrondissement (regex sur objet), is_taux_fixe.
+    columns:
+      - name: annee
+        tests: [not_null]
+      - name: beneficiaire
+        tests: [not_null]
+      - name: capital_restant
+        description: "Capital restant dû (€)"
+        tests: [not_null]
+      - name: bucket_nature
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['logement_social_aide', 'logement_hors_aide', 'autres_operations']
+      - name: is_taux_fixe
+        tests: [not_null]
+
+  - name: core_sirene_companies
+    description: "Cache SIRENE — passthrough de stg pour respect du layering."
+    columns:
+      - name: siren
+        tests:
+          - not_null
+          - unique
+
+  - name: core_pdf_investissements_localises
+    description: "Investissements localisés extraits PDF Annexe IL."
+    columns:
+      - name: annee_publication
+        tests: [not_null]
+      - name: projet_id
+        tests: [not_null]
+      - name: montant
+        tests: [not_null]
+
+  - name: core_deliberations
+    meta:
+      domain: "subventions"
+      criticality: "medium"
+      freshness_slo: "per Conseil de Paris session (~6/year)"
+    description: |
+      OBT articles × delibs × sessions du Conseil de Paris.
+      Grain: une ligne par article (subvention individuelle).
+      Dédup interne sur (session_id, delib_id) côté delibs.
+    columns:
+      - name: session_id
+        tests: [not_null]
+      - name: delib_id
+        tests: [not_null]
+
+  - name: core_enrichment_caches
+    description: |
+      Caches d'enrichissement (passthrough polymorphe). À éclater par cache type
+      (Issue #3 du backlog) — l'absence de typage est connue.
+    columns:
+      - name: relative_path
+        tests:
+          - not_null
+          - unique
+
+  - name: core_bilan_comptable
+    meta:
+      domain: "bilan"
+      criticality: "medium"
+      freshness_slo: "annual"
+    description: "Bilan comptable Paris (actif/passif annuel). Grain: annee × type_bilan × poste × detail."
+    columns:
+      - name: annee
+        tests: [not_null]
+      - name: type_bilan
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Actif', 'Passif']
+      - name: poste
+        tests: [not_null]
+
+  - name: core_logement_attente_arr
+    meta:
+      domain: "logement"
+      criticality: "medium"
+      freshness_slo: "annual (DRIHL XLSX)"
+    description: "Tension SLS par arrondissement (DRIHL 2024). Grain: code_insee × annee."
+    columns:
+      - name: code_insee
+        tests: [not_null]
+      - name: annee
+        tests: [not_null]
