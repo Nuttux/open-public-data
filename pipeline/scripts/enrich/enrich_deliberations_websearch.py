@@ -33,8 +33,8 @@ from pathlib import Path
 import requests
 
 ROOT = Path(__file__).resolve().parents[3]
-DELIBS_DIR = ROOT / "website" / "public" / "data" / "subventions_delibs"
-CACHE_PATH = ROOT / "website" / "public" / "data" / "enrichment" / "deliberations_sirene.json"
+DELIBS_DIR = ROOT / "pipeline" / "cache" / "delibs" / "sessions"
+CACHE_PATH = ROOT / "pipeline" / "cache" / "enrichment" / "deliberations_sirene.json"
 
 API_KEY = os.environ.get("ANTHROPIC_API_KEY")
 MODEL = os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-4-5")
