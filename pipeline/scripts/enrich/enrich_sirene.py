@@ -36,8 +36,8 @@ import requests
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent
 MARCHES_DIR = PROJECT_ROOT / "website" / "public" / "data" / "marches-publics"
-SUBVENTIONS_DIR = PROJECT_ROOT / "website" / "public" / "data" / "subventions"
-CACHE_PATH = PROJECT_ROOT / "website" / "public" / "data" / "enrichment" / "sirene_companies.json"
+SUBVENTIONS_DIR = PROJECT_ROOT / "pipeline" / "cache" / "subventions_pre_enrichment"
+CACHE_PATH = PROJECT_ROOT / "pipeline" / "cache" / "enrichment" / "sirene_companies.json"
 
 # API publique (pas de clé), 7 req/s max
 API_URL = "https://recherche-entreprises.api.gouv.fr/search"

@@ -47,7 +47,7 @@ import requests
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent
 DATA_DIR = PROJECT_ROOT / "website" / "public" / "data" / "map"
-CACHE_PATH = PROJECT_ROOT / "website" / "public" / "data" / "enrichment" / "vulgarization_projets.json"
+CACHE_PATH = PROJECT_ROOT / "pipeline" / "cache" / "enrichment" / "vulgarization_projets.json"
 
 GEMINI_API_KEY = os.environ.get("GOOGLE_API_KEY", "") or os.environ.get("GEMINI_API_KEY", "")
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3-flash-preview")
@@ -225,10 +225,20 @@ def save_cache(items: dict[str, dict[str, Any]]) -> None:
 
 
 def iter_projets(year: int | None, min_montant: float) -> list[dict[str, Any]]:
-    files = sorted(DATA_DIR.glob("investissements_complet_20*.json"))
+    """Itère sur tous les projets nommés disponibles, en scannant DEUX
+    sources :
+      - investissements_complet_*.json (source historique 2018-2024)
+      - investissements_localises_*.json (PDFs IL extraits, 2019-2024)
+    Un id présent dans les deux n'est gardé qu'une fois (priorité au complet
+    qui a la géoloc + métadonnées riches)."""
+    patterns = ("investissements_complet_20*.json", "investissements_localises_20*.json")
+    files: list[Path] = []
+    for pat in patterns:
+        files.extend(sorted(DATA_DIR.glob(pat)))
     if year:
         files = [f for f in files if f.stem.endswith(str(year))]
     items: list[dict[str, Any]] = []
+    seen_ids: set[str] = set()
     for f in files:
         try:
             with f.open(encoding="utf-8") as fh:
@@ -237,11 +247,15 @@ def iter_projets(year: int | None, min_montant: float) -> list[dict[str, Any]]:
             print(f"  ⚠ skip {f.name}: {e}")
             continue
         for row in data.get("data", []):
-            if not row.get("id") or not row.get("nom_projet"):
+            pid = row.get("id")
+            if not pid or not row.get("nom_projet"):
+                continue
+            if pid in seen_ids:
                 continue
             if float(row.get("montant") or 0) < min_montant:
                 continue
             items.append(row)
+            seen_ids.add(pid)
     return items
 
 

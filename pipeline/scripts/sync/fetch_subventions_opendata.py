@@ -1,10 +1,17 @@
 #!/usr/bin/env python3
 """
-Fetch subventions data directly from OpenData Paris API, bypassing BigQuery.
+Fetch subventions data from OpenData Paris API → produit le snapshot
+pré-enrichissement consommé par les scripts d'enrichissement LLM.
 
 Hits two datasets via the bulk `/exports/json` endpoint, merges them, and
-writes one beneficiaires_<year>.json per year (plus index.json + treemap
-files) in the format expected by the Next.js frontend.
+writes one beneficiaires_<year>.json per year + index/treemap into the
+INTERNAL cache directory `pipeline/cache/subventions_pre_enrichment/`.
+
+Cette sortie n'est PAS publiée — elle alimente les scripts
+`enrich_*_llm.py` et `enrich_sirene.py` qui produisent à leur tour les
+seeds `seed_cache_*.csv` consommés par dbt. La sortie publique
+`website/public/data/subventions/*.json` est produite par
+`pipeline/scripts/export/export_subventions_data.py` à partir des marts.
 
 Sources:
     1. subventions-associations-votees-                   (rich: siret, direction,
@@ -39,7 +46,8 @@ from typing import Any
 import requests
 
 ROOT = Path(__file__).resolve().parents[3]
-OUTPUT = ROOT / "website" / "public" / "data" / "subventions"
+# Sortie interne (cache) — pas publiée. Consommée par les scripts d'enrich.
+OUTPUT = ROOT / "pipeline" / "cache" / "subventions_pre_enrichment"
 
 OPENDATA_API = "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets"
 DATASET_VOTEES = "subventions-associations-votees-"
@@ -268,7 +276,11 @@ def write_treemap_year(year: int, rows: list[dict], dry_run: bool) -> Path:
     return path
 
 
-def write_index(years: list[int], dry_run: bool) -> Path:
+def write_index(years: list[int], dry_run: bool, totals_by_year: dict[int, dict] | None = None) -> Path:
+    """Réécrit index.json en mergeant les années nouvelles avec les
+    existantes et en auto-détectant les années 'preview' (volume très
+    inférieur à la médiane → données partielles, ex. 2020/2021 dans la
+    source OpenData)."""
     path = OUTPUT / "index.json"
     existing: dict = {}
     if path.exists():
@@ -276,13 +288,51 @@ def write_index(years: list[int], dry_run: bool) -> Path:
             existing = json.loads(path.read_text())
         except Exception:
             pass
-    existing["availableYears"] = sorted(set(years), reverse=True)
+
+    # Merge des années (ne pas écraser celles déjà connues)
+    prev_years = set(existing.get("availableYears", []))
+    merged_years = sorted(prev_years | set(years), reverse=True)
+    existing["availableYears"] = merged_years
+
+    # Merge totalsByYear
+    totals = dict(existing.get("totalsByYear", {}))
+    if totals_by_year:
+        for y, t in totals_by_year.items():
+            totals[str(y)] = t
+    existing["totalsByYear"] = totals
+
+    # Auto-détection des années 'preview' : montant_total < 50 % de la
+    # médiane des autres années. Plus robuste que `nb_subventions` qui peut
+    # rester gonflé si le dataset 'votées' contient des annee_budgetaire
+    # historiques pour une année où la donnée Annexe CA est incomplète
+    # (ex: 2020/2021 où il manque les grosses subventions aux EPL).
+    montants_per_year: list[tuple[int, float]] = []
+    for y_str, t in totals.items():
+        m = (t or {}).get("montant_total") or 0
+        if m > 0:
+            montants_per_year.append((int(y_str), m))
+    if len(montants_per_year) >= 3:
+        sorted_m = sorted(m for _, m in montants_per_year)
+        median_m = sorted_m[len(sorted_m) // 2]
+        threshold = median_m * 0.5
+        preview = sorted(
+            {y for y, m in montants_per_year if m < threshold}, reverse=True,
+        )
+        if preview:
+            existing["previewYears"] = preview
+            print(
+                f"  → previewYears auto-détectés "
+                f"(montant_total < 50% médiane {median_m/1e6:.0f} M€) : {preview}"
+            )
+        else:
+            existing.pop("previewYears", None)
+
     existing["generated_at"] = datetime.now(timezone.utc).isoformat()
     if dry_run:
-        print(f"  [dry-run] would write {path} with years={existing['availableYears']}")
+        print(f"  [dry-run] would write {path} with years={merged_years}")
         return path
     path.write_text(json.dumps(existing, ensure_ascii=False, indent=2))
-    print(f"  wrote {path}  (years={existing['availableYears']})")
+    print(f"  wrote {path}  (years={merged_years})")
     return path
 
 
@@ -335,17 +385,22 @@ def main() -> int:
 
     print(f"[3/3] write {len(by_year)} year files to {OUTPUT}")
     years_written: list[int] = []
+    totals_by_year: dict[int, dict] = {}
     for year in sorted(by_year):
         rows = by_year[year]
         write_beneficiaires_year(year, rows, args.dry_run)
         write_treemap_year(year, rows, args.dry_run)
         years_written.append(year)
+        totals_by_year[year] = {
+            "montant_total": sum(r["montant_total"] for r in rows),
+            "nb_subventions": sum(r["nb_subventions"] for r in rows),
+        }
 
     # Merge years list with existing (keep 2025 if it exists and we're not overwriting)
     if (OUTPUT / "beneficiaires_2025.json").exists():
         years_written.append(2025)
 
-    write_index(years_written, args.dry_run)
+    write_index(years_written, args.dry_run, totals_by_year=totals_by_year)
 
     print("\nSUMMARY")
     for year in sorted(by_year):

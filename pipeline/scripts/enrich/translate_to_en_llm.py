@@ -43,7 +43,7 @@ import anthropic
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent
 INV_DIR = PROJECT_ROOT / "website" / "public" / "data" / "map"
-ENRICH_DIR = PROJECT_ROOT / "website" / "public" / "data" / "enrichment"
+ENRICH_DIR = PROJECT_ROOT / "pipeline" / "cache" / "enrichment"
 
 NAMES_OUT = ENRICH_DIR / "projet_names_en.json"
 VULG_PROJ_FR = ENRICH_DIR / "vulgarization_projets.json"
