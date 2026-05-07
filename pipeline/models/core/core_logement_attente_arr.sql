@@ -20,7 +20,7 @@
 
 WITH drihl_src AS (
     SELECT *
-    FROM {{ ref('seed_drihl_paris_2024') }}
+    FROM {{ ref('stg_drihl_paris') }}
 ),
 
 cleaned AS (
