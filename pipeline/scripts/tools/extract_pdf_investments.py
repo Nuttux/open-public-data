@@ -76,10 +76,28 @@ PDF_SOURCES = {
         "total_attendu_millions": None,
     },
     2021: {
-        "url": "https://cdn.paris.fr/paris/2022/06/28/c86533a2c6f36bfe643e8dffb782c772.pdf",
-        "description": "Compte Administratif 2021 - Annexes (IL inclus)",
+        # URL canonique de l'annexe IL 2021 (récupérée depuis paris.fr en
+        # 2026-05). L'ancienne URL (c86533a2…) renvoyait vers le CA 2021
+        # complet — ce PDF-ci cible spécifiquement les Investissements
+        # Localisés.
+        "url": "https://cdn.paris.fr/paris/2022/06/28/0d712de76bf95015e948204164b17823.pdf",
+        "description": "Compte Administratif 2021 - Annexe Investissements Localisés",
         "total_attendu_millions": None,
     },
+    2020: {
+        "url": "https://cdn.paris.fr/paris/2021/06/29/77cdc4ae35e532f18323707de79fa49a.pdf",
+        "description": "Compte Administratif 2020 - Annexe Investissements Localisés",
+        "total_attendu_millions": None,
+    },
+    2019: {
+        "url": "https://cdn.paris.fr/paris/2020/07/24/a553a4550362175f3d609b65a5998072.pdf",
+        "description": "Compte Administratif 2019 - Annexe Investissements Localisés",
+        "total_attendu_millions": None,
+    },
+    # 2018 et antérieures : pas de PDF Annexe IL distinct sur paris.fr
+    # (introduit à partir du CA 2019). Pour étendre la couverture, il
+    # faudrait extraire les sections IL des rapports CA généraux ou
+    # demander la donnée directement à la Ville.
 }
 
 # Arrondissements de Paris
@@ -911,11 +929,21 @@ def extract_year(year: int, validate_only: bool = False, mode: str = "auto") -> 
 
 
 def save_results(data: dict, year: int):
-    """Sauvegarde les résultats en JSON et CSV."""
-    
-    # JSON pour le frontend
-    json_path = OUTPUT_DIR / f"investissements_localises_{year}.json"
-    with open(json_path, "w", encoding="utf-8") as f:
+    """Sauvegarde les résultats en seed CSV (et un JSON intermédiaire en cache).
+
+    Le JSON public (`investissements_localises_{year}.json`) est désormais
+    produit par `pipeline/scripts/export/export_investissements_localises.py`
+    qui lit `mart_investissements_localises`. Cette fonction n'écrit plus
+    sous `website/public/data/` — elle alimente uniquement la chaîne dbt
+    via le seed CSV (et un cache interne pour audit/débug).
+    """
+    # Cache interne pour audit (pas publié — pipeline/cache/pdf_invest/)
+    cache_dir = (
+        Path(__file__).parent.parent.parent / "cache" / "pdf_invest"
+    )
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    cache_path = cache_dir / f"investissements_localises_{year}.json"
+    with open(cache_path, "w", encoding="utf-8") as f:
         json.dump({
             "year": year,
             "source": "PDF Compte Administratif",
@@ -924,48 +952,31 @@ def save_results(data: dict, year: int):
             "validation": data["validation"],
             "data": data["projets"],
         }, f, ensure_ascii=False, indent=2)
-    print(f"  ✓ Sauvegardé: {json_path}")
-    
-    # CSV pour dbt seed
+    print(f"  ✓ Cache: {cache_path}")
+
+    # CSV pour dbt seed (alimenté → seed_pdf_investissements_{year} →
+    # éventuellement via sync_pdf_investissements_localises.py vers raw.*)
     SEEDS_DIR.mkdir(parents=True, exist_ok=True)
     csv_path = SEEDS_DIR / f"seed_pdf_investissements_{year}.csv"
-    
+
     if data["projets"]:
         fieldnames = list(data["projets"][0].keys())
         with open(csv_path, "w", encoding="utf-8", newline="") as f:
             writer = csv.DictWriter(f, fieldnames=fieldnames)
             writer.writeheader()
             writer.writerows(data["projets"])
-        print(f"  ✓ Sauvegardé: {csv_path}")
+        print(f"  ✓ Seed: {csv_path}")
 
 
 def update_index(years_extracted: list[int]):
-    """Met à jour l'index des investissements localisés."""
-    index_path = OUTPUT_DIR / "investissements_localises_index.json"
-    
-    # Charger les stats de chaque année
-    all_stats = {}
-    for year in years_extracted:
-        json_path = OUTPUT_DIR / f"investissements_localises_{year}.json"
-        if json_path.exists():
-            with open(json_path) as f:
-                data = json.load(f)
-            all_stats[year] = {
-                "nb_projets": data["stats"]["projets_extraits"],
-                "total_millions": data["stats"]["total_extrait"] / 1e6,
-                "validation": data["validation"],
-            }
-    
-    index = {
-        "availableYears": sorted(years_extracted, reverse=True),
-        "source": "Extraction PDF Comptes Administratifs",
-        "lastUpdate": datetime.now().strftime("%Y-%m-%d"),
-        "yearStats": all_stats,
-    }
-    
-    with open(index_path, "w", encoding="utf-8") as f:
-        json.dump(index, f, ensure_ascii=False, indent=2)
-    print(f"  ✓ Index mis à jour: {index_path}")
+    """Plus d'écriture d'index ici — produit par
+    `pipeline/scripts/export/export_investissements_localises.py` à partir
+    de `mart_investissements_localises`. Cette fonction est conservée pour
+    compat des appelants existants mais ne fait plus rien."""
+    print(
+        "  ℹ️ update_index: aucune écriture (l'index est produit par "
+        "export_investissements_localises.py depuis le mart)"
+    )
 
 
 # =============================================================================
