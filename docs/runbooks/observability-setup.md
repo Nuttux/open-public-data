@@ -8,31 +8,37 @@ Ce runbook liste les outils à câbler, classés par priorité, avec instruction
 
 ## Statut actuel
 
-| Outil | Statut | PR / Config |
-|-------|--------|-------------|
-| **Vercel Speed Insights** | ✅ activé | cette PR (`@vercel/speed-insights` + `<SpeedInsights />` dans layout) |
-| **Vercel Analytics** | ✅ activé | cette PR (`@vercel/analytics` + `<Analytics />` dans layout) |
-| **PostHog (mesure d'audience CNIL-exempt)** | ✅ déjà actif | `AnalyticsProvider.tsx` (cf [`/confidentialite`](../../website/src/app/confidentialite/)) |
-| Sentry front | ❌ TODO | voir étape 1 ci-dessous |
-| Sentry back / pipeline | ❌ TODO | voir étape 2 |
-| Uptime monitoring | ❌ TODO | voir étape 3 |
-| Status page publique | ❌ TODO | voir étape 4 |
-| Logs centralisés | ❌ TODO | voir étape 5 |
-| Plausible (alternative PostHog) | non requis | redondant avec PostHog mode privacy |
+| Outil | Statut code | Statut compte | Activation |
+|-------|-------------|---------------|------------|
+| **Vercel Speed Insights** | ✅ câblé | auto avec Vercel | en prod |
+| **Vercel Analytics** | ✅ câblé | auto avec Vercel | en prod |
+| **PostHog (CNIL-exempt)** | ✅ câblé | ✅ compte créé | en prod |
+| **Sentry frontend** | ✅ câblé (`sentry.client.config.ts`) | ❌ compte à créer | dès `NEXT_PUBLIC_SENTRY_DSN` set |
+| **Sentry server / edge** | ✅ câblé (`sentry.server/edge.config.ts`) | ❌ compte à créer | dès `SENTRY_DSN` set |
+| **Plausible** | ✅ câblé (`<Script data-domain>`) | ❌ compte à créer | dès `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` set |
+| **Better Stack uptime** | n/a (externe) | ❌ compte à créer | étape 3 ci-dessous |
+| **Status page publique** | ✅ lien footer | ❌ status page à créer | dès `NEXT_PUBLIC_STATUS_PAGE_URL` set |
+| Sentry pipeline Python | ❌ TODO impl | ❌ compte à créer | voir étape 2 |
+| Logs centralisés Axiom | n/a (config Vercel) | ❌ compte à créer | étape 5 |
 
-## Étape 1 — Sentry frontend (priorité haute, ~30 min)
+## Étape 1 — Sentry frontend / server / edge (priorité haute, ~10 min)
 
 **Pourquoi** : capter les erreurs JS qui plantent silencieusement chez l'utilisateur (TypeError, fetch fail, hydration mismatch). Sans ça, un bug de rendu sur Safari iOS reste invisible jusqu'à signalement.
 
-**Setup** :
-1. Créer un compte sur https://sentry.io (free tier : 5 k events/mois — largement suffisant)
+**Code déjà câblé** : `@sentry/nextjs` installé, `sentry.client.config.ts` + `sentry.server.config.ts` + `sentry.edge.config.ts` lisent le DSN depuis env. Sans DSN, no-op silencieux.
+
+**Activation** :
+1. Créer un compte sur https://sentry.io (free tier : 5 k events/mois)
 2. Créer un projet → choisir "Next.js"
 3. Récupérer le DSN (format `https://xxx@oXXX.ingest.sentry.io/XXX`)
-4. `cd website && npx @sentry/wizard@latest -i nextjs` — l'installer interactif Sentry crée `sentry.client.config.ts` + `sentry.server.config.ts` + ajoute la config à `next.config.ts`
-5. Ajouter `SENTRY_AUTH_TOKEN` et `NEXT_PUBLIC_SENTRY_DSN` dans `website/.env.example`
-6. Côté Vercel dashboard → Settings → Environment Variables → ajouter ces 2 vars (prod + preview)
+4. Côté Vercel dashboard → Settings → Environment Variables — ajouter pour Production :
+   - `NEXT_PUBLIC_SENTRY_DSN` = le DSN
+   - `SENTRY_DSN` = le même DSN (server-side)
+5. Redéployer (vide le cache build)
 
-**Validation** : déclencher une erreur volontaire dans une page de test, vérifier qu'elle apparaît dans le dashboard Sentry sous 1 minute.
+**Validation** : sur la prod, ouvrir DevTools console et exécuter `throw new Error("sentry-test-" + Date.now())`. L'erreur doit apparaître dans le dashboard Sentry sous 1 minute. Si elle n'arrive pas, vérifier `VERCEL_ENV === "production"` (cf `enabled` flag dans `sentry.*.config.ts`).
+
+**Optionnel — source map upload** : pour avoir des stack traces lisibles (pas minifiées), wrap `next.config.ts` avec `withSentryConfig` (besoin de `SENTRY_AUTH_TOKEN`). À faire en PR de suivi.
 
 ## Étape 2 — Sentry pipeline Python (priorité haute, ~20 min)
 
@@ -72,6 +78,22 @@ Ce runbook liste les outils à câbler, classés par priorité, avec instruction
 
 **Validation** : faire `vercel rollback` vers une version 404, vérifier l'alerte arrive en ≤ 3 min.
 
+## Étape 3.5 — Plausible (alternative PostHog, ~5 min)
+
+**Pourquoi** : PostHog est déjà en place mais a un overhead de 50 KB JS. Plausible est plus léger (< 1 KB), CNIL-exempt par construction, et fournit un dashboard ultra-simple à partager publiquement (URL `https://plausible.io/franceopendata.org`).
+
+**Code déjà câblé** : tag `<Script data-domain={NEXT_PUBLIC_PLAUSIBLE_DOMAIN}>` dans `src/app/layout.tsx` — actif dès que la var est set.
+
+**Activation** :
+1. Créer compte sur https://plausible.io (free trial 30j puis $9/mois pour 10k pageviews) ou self-host (https://plausible.io/docs/self-hosting)
+2. Add site → domain : `franceopendata.org`
+3. Côté Vercel dashboard → Environment Variables → `NEXT_PUBLIC_PLAUSIBLE_DOMAIN=franceopendata.org`
+4. Optionnel : passer le dashboard Plausible en **public** pour le partager
+
+**Validation** : visiter une page du site en prod, ouvrir DevTools Network, filtrer "plausible". Une requête `event` doit apparaître. Le dashboard montre le pageview en temps réel.
+
+**Choix éditorial — PostHog vs Plausible ?** Garder les deux côte-à-côte 30j → choisir lequel répond mieux aux besoins (PostHog plus complet pour funnel/heatmap ; Plausible plus simple pour stats publiques). Ne pas en garder deux à terme (overhead JS).
+
 ## Étape 4 — Status page publique (priorité moyenne, ~15 min)
 
 **Pourquoi** : crédibilité côté décideur public. Un site officiel a une status page. Un blog perso n'en a pas.
@@ -86,6 +108,10 @@ Ce runbook liste les outils à câbler, classés par priorité, avec instruction
    - API chat (lié au monitor `/api/chat`)
 
 **Validation** : visiter `status.franceopendata.org`, voir 4 composants verts.
+
+**Lien footer auto** : une fois la URL configurée, ajouter dans Vercel Env Variables :
+`NEXT_PUBLIC_STATUS_PAGE_URL=https://status.franceopendata.org`
+→ un lien "Statut" apparaît dans le footer (déjà câblé en code).
 
 ## Étape 5 — Logs centralisés (priorité basse, ~30 min)
 
@@ -115,11 +141,22 @@ Ce runbook liste les outils à câbler, classés par priorité, avec instruction
 
 Pour un projet en phase grant / PoC, le free tier de tous ces outils suffit largement. À reconsidérer si SaaS B2B avec >10k users actifs.
 
+## Doc d'exploitation — où aller voir quoi
+
+Cinq endroits à consulter en cas d'incident, par ordre de pertinence :
+
+1. **Vercel dashboard** (`https://vercel.com/nuttuxs-projects/open-public-data`) — déploiements, build logs, runtime logs (1h), Speed Insights, Analytics
+2. **Sentry** (`https://sentry.io/organizations/<org>/issues/`) — JS errors front + server, regroupées par fingerprint, avec breadcrumb
+3. **Better Stack** (`https://uptime.betterstack.com/team/<id>/incidents`) — incidents uptime, response time graphs, status page management
+4. **Plausible** (`https://plausible.io/franceopendata.org`) — pageviews, sources, top pages (alternative simple à PostHog)
+5. **Axiom** (`https://app.axiom.co/<org>/datasets/vercel-logs`) — logs Vercel archivés, requêtes APL pour rechercher dans plusieurs jours
+
 ## Voir aussi
 
 - [`rollback.md`](rollback.md) — quoi faire quand l'observabilité te dit que la prod est cassée
 - [`source-correction-retroactive.md`](source-correction-retroactive.md) — corrections rétroactives de données
 - Vercel Speed Insights : https://vercel.com/docs/speed-insights
 - Sentry Next.js : https://docs.sentry.io/platforms/javascript/guides/nextjs/
+- Plausible script extensions : https://plausible.io/docs/script-extensions
 - Better Stack : https://betterstack.com/uptime
 - Axiom Vercel integration : https://axiom.co/docs/integrations/vercel

@@ -18,6 +18,9 @@ import { LocaleProvider } from "@/lib/localeContext";
 import { SITE_URL, SITE_NAME, organizationJsonLd, websiteJsonLd, readLocale } from "@/lib/seo";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
+
+const PLAUSIBLE_DOMAIN = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
 
 const inter = Inter({
   variable: "--font-inter",
@@ -114,6 +117,22 @@ export default async function RootLayout({
   const skipLabel = initialLocale === 'en' ? 'Skip to main content' : 'Aller au contenu principal';
   return (
     <html lang={initialLocale === 'en' ? 'en' : 'fr'}>
+      <head>
+        {/* Plausible Analytics — alternative privacy-friendly à PostHog,
+            CNIL-exempt par construction (pas de cookie, pas de fingerprint).
+            Active uniquement si NEXT_PUBLIC_PLAUSIBLE_DOMAIN est set en
+            prod. Coexiste avec PostHog (cf AnalyticsProvider) — choix
+            actuel : garder les deux jusqu'à valider laquelle on garde.
+            Tag officiel Plausible : https://plausible.io/docs/script-extensions */}
+        {PLAUSIBLE_DOMAIN ? (
+          <Script
+            defer
+            data-domain={PLAUSIBLE_DOMAIN}
+            src="https://plausible.io/js/script.outbound-links.js"
+            strategy="afterInteractive"
+          />
+        ) : null}
+      </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         {/* RGAA 12.7 — skip-to-content link, first focusable element */}
         <a href="#main-content" className="skip-to-content">{skipLabel}</a>
