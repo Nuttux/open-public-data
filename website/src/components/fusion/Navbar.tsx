@@ -98,7 +98,7 @@ export default function Navbar() {
         </button>
       </header>
 
-      <div className={menuOpen ? "fx-overlay fx-overlay-open" : "fx-overlay"} aria-hidden={!menuOpen}>
+      <div className={menuOpen ? "fx-overlay fx-overlay-open" : "fx-overlay"} aria-hidden={!menuOpen} inert={!menuOpen}>
         <div className="fx-overlay-top">
           <div className="fx-overlay-brand">
             <BrandMark />

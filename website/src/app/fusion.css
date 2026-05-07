@@ -931,7 +931,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   line-height: 1.55;
 }
 .theme-fusion .fx-foot-blurb b { color: var(--ink); font-weight: 600; }
-.theme-fusion .fx-foot h4 {
+.theme-fusion .fx-foot h3 {
   font-family: var(--f-mono);
   font-size: 11px;
   font-weight: 500;
@@ -2255,10 +2255,10 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   display: flex;
   align-items: center;
   padding: 0 10px;
-  color: #faf9f5;
+  color: #ffffff;
   text-decoration: none;
   transition: filter .12s, transform .12s;
-  border-right: 1px solid rgba(250, 249, 245, 0.35);
+  border-right: 1px solid rgba(255, 255, 255, 0.35);
   min-width: 0;
   overflow: hidden;
 }
@@ -2284,7 +2284,6 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion .fx-stackbar-seg-label span {
   font-family: var(--f-mono);
   font-size: 10.5px;
-  opacity: 0.85;
   margin-top: 2px;
 }
 .theme-fusion .fx-stackbar-scale {
@@ -8618,7 +8617,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   letter-spacing: .1em;
   text-transform: uppercase;
 }
-.theme-fusion .fx-flow-simple-step h4 {
+.theme-fusion .fx-flow-simple-step h3 {
   font-family: var(--f-disp);
   font-weight: 600;
   font-size: 20px;
@@ -8701,7 +8700,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion .fx-tool-tab.active {
   background: var(--ink);
 }
-.theme-fusion .fx-tool-tab.active .num { color: var(--ocre); }
+.theme-fusion .fx-tool-tab.active .num { color: #c19357; /* lighter ocre — AA 7.1:1 on --ink */ }
 .theme-fusion .fx-tool-tab.active .lbl { color: var(--bg); }
 @media (max-width: 900px) {
   .theme-fusion .fx-tool-tabs { grid-template-columns: repeat(3, 1fr); }
@@ -8854,7 +8853,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   align-items: start;
 }
 .theme-fusion .fx-engagement:last-child { border-bottom: 0; }
-.theme-fusion .fx-engagement h4 {
+.theme-fusion .fx-engagement h3 {
   font-family: var(--f-disp);
   font-weight: 600;
   font-size: 18px;
