@@ -1,0 +1,54 @@
+kind,script,reads,layer_read,writes,violation
+export,pipeline/scripts/export/export_bilan_data.py,mart_bilan_comptable,mart,,
+export,pipeline/scripts/export/export_budget_nature.py,mart_budget_nature,mart,,
+export,pipeline/scripts/export/export_data_availability.py,mart_data_availability,mart,,
+export,pipeline/scripts/export/export_evolution_data.py,mart_budget_recettes_par_chapitre,mart,,
+export,pipeline/scripts/export/export_evolution_data.py,mart_evolution_budget,mart,,
+export,pipeline/scripts/export/export_hors_bilan.py,mart_hors_bilan,mart,,
+export,pipeline/scripts/export/export_logement_attente.py,mart_logement_attente,mart,,
+export,pipeline/scripts/export/export_map_data.py,mart_investissements_map,mart,,
+export,pipeline/scripts/export/export_map_data.py,mart_logements_map,mart,,
+export,pipeline/scripts/export/export_marches_data.py,mart_marches_fournisseurs,mart,,
+export,pipeline/scripts/export/export_marches_data.py,mart_marches_par_nature,mart,,
+export,pipeline/scripts/export/export_national.py,mart_benchmarking,mart,,
+export,pipeline/scripts/export/export_national.py,mart_bilan_national,mart,,
+export,pipeline/scripts/export/export_national.py,mart_evolution_national,mart,,
+export,pipeline/scripts/export/export_national.py,mart_marches_national,mart,,
+export,pipeline/scripts/export/export_national.py,mart_marches_national_detail,mart,,
+export,pipeline/scripts/export/export_national.py,mart_sankey_national,mart,,
+export,pipeline/scripts/export/export_national.py,mart_subventions_national,mart,,
+export,pipeline/scripts/export/export_national.py,mart_subventions_national_detail,mart,,
+export,pipeline/scripts/export/export_patrimoine_structure.py,mart_bilan_comptable,mart,,
+export,pipeline/scripts/export/export_projet_marches.py,mart_projet_marches,mart,,
+export,pipeline/scripts/export/export_sankey_data.py,mart_budget_sankey_lines,mart,,
+export,pipeline/scripts/export/export_subventions_data.py,mart_subventions_beneficiaires,mart,,
+export,pipeline/scripts/export/export_subventions_data.py,mart_subventions_treemap,mart,,
+export,pipeline/scripts/export/export_vote_vs_execute.py,mart_vote_vs_execute,mart,,
+ingest,pipeline/scripts/sync/scrape_deliberations.py,(external source),ingest,(public/data/*.json),ingest writes JSON direct (should land in raw.* then mart→export)
+ingest,pipeline/scripts/sync/scrape_marches_delibs.py,(external source),ingest,(public/data/*.json),ingest writes JSON direct (should land in raw.* then mart→export)
+ingest,pipeline/scripts/sync/sync_communes_fonctionnelle.py,(external source),ingest,(public/data/*.json),ingest writes JSON direct (should land in raw.* then mart→export)
+ingest,pipeline/scripts/sync/sync_decp_communes.py,(external source),ingest,(public/data/*.json),ingest writes JSON direct (should land in raw.* then mart→export)
+ingest,pipeline/scripts/sync/sync_etat_lfi.py,(external source),ingest,(public/data/*.json),ingest writes JSON direct (should land in raw.* then mart→export)
+ingest,pipeline/scripts/sync/sync_eurostat_apu_subsectors.py,(external source),ingest,(public/data/*.json),ingest writes JSON direct (should land in raw.* then mart→export)
+ingest,pipeline/scripts/sync/sync_eurostat_cofog.py,(external source),ingest,(public/data/*.json),ingest writes JSON direct (should land in raw.* then mart→export)
+ingest,pipeline/scripts/sync/sync_eurostat_dette.py,(external source),ingest,(public/data/*.json),ingest writes JSON direct (should land in raw.* then mart→export)
+ingest,pipeline/scripts/sync/sync_eurostat_fiscalite.py,(external source),ingest,(public/data/*.json),ingest writes JSON direct (should land in raw.* then mart→export)
+ingest,pipeline/scripts/sync/sync_ofgl_all_communes.py,(external source),ingest,(public/data/*.json),ingest writes JSON direct (should land in raw.* then mart→export)
+ingest,pipeline/scripts/sync/sync_ofgl_communes.py,(external source),ingest,(public/data/*.json),ingest writes JSON direct (should land in raw.* then mart→export)
+ingest,pipeline/scripts/sync/sync_ofgl_communes_fonctionnelle.py,(external source),ingest,(public/data/*.json),ingest writes JSON direct (should land in raw.* then mart→export)
+ingest,pipeline/scripts/sync/sync_ofgl_departements_fonctionnelle.py,(external source),ingest,(public/data/*.json),ingest writes JSON direct (should land in raw.* then mart→export)
+ingest,pipeline/scripts/tools/assign_thematique_post_pdf.py,(external source),ingest,(public/data/*.json),ingest writes JSON direct (should land in raw.* then mart→export)
+ingest,pipeline/scripts/tools/extract_pdf_investments.py,(external source),ingest,(public/data/*.json),ingest writes JSON direct (should land in raw.* then mart→export)
+ingest,pipeline/scripts/tools/extract_pdf_via_pdftotext.py,(external source),ingest,(public/data/*.json),ingest writes JSON direct (should land in raw.* then mart→export)
+ingest,pipeline/scripts/tools/merge_subv_pdf_into_opendata.py,(external source),ingest,(public/data/*.json),ingest writes JSON direct (should land in raw.* then mart→export)
+ingest,pipeline/scripts/tools/parse_subv_pdf_text.py,(external source),ingest,(public/data/*.json),ingest writes JSON direct (should land in raw.* then mart→export)
+enrich_build,pipeline/scripts/enrich/build_generic_photo_bank.py,(core_* + hardcoded constants),core+constants,(none),enrich build script writes JSON direct (should be mart+export)
+dbt_seed_ref,pipeline/models/core/core_budget.sql,seed_mapping_thematiques,seed,core_budget (core),(soft) mapping/parameter seed ref'd from non-stg — convention call
+dbt_seed_ref,pipeline/models/core/core_budget_vote.sql,seed_mapping_thematiques,seed,core_budget_vote (core),(soft) mapping/parameter seed ref'd from non-stg — convention call
+dbt_seed_ref,pipeline/models/intermediate/int_projet_marches.sql,seed_match_projet_marches,seed,int_projet_marches (intermediate),(soft) mapping/parameter seed ref'd from non-stg — convention call
+dbt_seed_ref,pipeline/models/intermediate/int_ap_projets_enrichis.sql,seed_cache_geo_ap,seed,int_ap_projets_enrichis (intermediate),(soft) LLM cache seed ref'd from int — convention call
+dbt_seed_ref,pipeline/models/intermediate/int_ap_projets_enrichis.sql,seed_lieux_connus,seed,int_ap_projets_enrichis (intermediate),(soft) mapping/parameter seed ref'd from non-stg — convention call
+dbt_seed_ref,pipeline/models/intermediate/int_subventions_enrichies.sql,seed_cache_thematique_beneficiaires,seed,int_subventions_enrichies (intermediate),(soft) LLM cache seed ref'd from int — convention call
+dbt_seed_ref,pipeline/models/intermediate/int_subventions_enrichies.sql,seed_mapping_beneficiaires,seed,int_subventions_enrichies (intermediate),(soft) mapping/parameter seed ref'd from non-stg — convention call
+dbt_seed_ref,pipeline/models/intermediate/int_subventions_enrichies.sql,seed_mapping_directions,seed,int_subventions_enrichies (intermediate),(soft) mapping/parameter seed ref'd from non-stg — convention call
+dbt_seed_ref,pipeline/models/intermediate/int_subventions_enrichies.sql,seed_mapping_entites,seed,int_subventions_enrichies (intermediate),(soft) mapping/parameter seed ref'd from non-stg — convention call

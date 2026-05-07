@@ -31,7 +31,7 @@ def main() -> None:
     blocks: list[tuple[str, str, list[str]]] = []  # (num, slug, lines)
     block_idx_in_section = 0
 
-    h2_re = re.compile(r"^##\s+(\d+)\.\s+(.+?)\s*$")
+    h2_re = re.compile(r"^##\s+(\d+[a-z]?)\.\s+(.+?)\s*$")
 
     for line in lines:
         m = h2_re.match(line)

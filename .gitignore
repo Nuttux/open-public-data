@@ -48,8 +48,10 @@ __pycache__/
 
 # Large local assets
 mockups/
-archive/
+/archive/
 instagram-stories/
+# Note: docs/archive/ is intentionally NOT ignored (refactor audit trail).
+# The /archive/ pattern is anchored to repo root to avoid matching it.
 
 # Pipeline outputs
 pipeline/output/

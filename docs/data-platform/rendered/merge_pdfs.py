@@ -10,7 +10,8 @@ SRC = HERE / "pdf"
 OUT = HERE / "pipeline-diagram.pdf"
 
 SECTION_TITLES = {
-    "00": "0. Master overview",
+    "0a": "0a. L0 — Conceptual view",
+    "0b": "0b. L1 — Master overview",
     "01": "1. Budget domain",
     "02": "2. Subventions domain",
     "03": "3. Marchés publics domain",
@@ -22,9 +23,19 @@ SECTION_TITLES = {
 }
 
 
+def _sort_key(p: Path) -> tuple:
+    """Order: 0a, 0b, 01, 02, ..., 08."""
+    name = p.name
+    prefix = name[:2]
+    # 0a, 0b sort before 01..09 → use a tuple where letter beats digit
+    if len(prefix) >= 2 and prefix[0] == "0" and prefix[1].isalpha():
+        return (0, prefix[1])
+    return (1, prefix)
+
+
 def main() -> None:
     writer = PdfWriter()
-    files = sorted(SRC.glob("*.pdf"))
+    files = sorted(SRC.glob("*.pdf"), key=_sort_key)
     page_counter = 0
     for f in files:
         num = f.name[:2]

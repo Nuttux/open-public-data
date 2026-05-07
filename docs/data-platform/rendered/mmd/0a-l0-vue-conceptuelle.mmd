@@ -1,0 +1,16 @@
+flowchart LR
+    SRC["🌐 Sources publiques<br/><i>~10 jeux de données externes</i>"]
+    PROD["⚙️ Pipeline de production<br/><i>nettoie · joint · agrège</i>"]
+    OUT["📦 Fichiers publiés<br/><i>~140 JSONs sous /data/</i>"]
+    UI["🖥️ Site web<br/><i>8 pages — opendata-paris.fr</i>"]
+
+    SRC --> PROD --> OUT --> UI
+
+    classDef src fill:#dbeafe,stroke:#1e40af,color:#111
+    classDef prod fill:#fef3c7,stroke:#92400e,color:#111
+    classDef out fill:#ffedd5,stroke:#9a3412,color:#111
+    classDef ui fill:#ccfbf1,stroke:#115e59,color:#111
+    class SRC src
+    class PROD prod
+    class OUT out
+    class UI ui
