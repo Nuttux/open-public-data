@@ -68,7 +68,7 @@ export default function CityClient({
     return (
       <div className="theme-fusion">
         <Navbar />
-        <main className="fx-wrap" style={{ padding: "80px 0 120px", minHeight: "60vh" }}>
+        <main id="main-content" tabIndex={-1} className="fx-wrap" style={{ padding: "80px 0 120px", minHeight: "60vh" }}>
           <SectionHead
             number="01"
             kind={t("city.section.kind")}
@@ -235,7 +235,7 @@ export default function CityClient({
     <div className="theme-fusion">
       <Navbar />
 
-      <main>
+      <main id="main-content" tabIndex={-1}>
         {/* Hero ─────────────────────────────────────────────────────── */}
         <section className="fx-wrap" style={{ padding: "60px 0 32px" }}>
           <SectionHead

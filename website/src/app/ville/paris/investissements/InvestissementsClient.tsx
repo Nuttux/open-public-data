@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import SectionHead from "@/components/fusion/SectionHead";
@@ -26,7 +27,7 @@ import type { InvestissementsData } from "@/lib/fusion-data";
 import { slugifyChapitre } from "@/lib/projet-utils";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
-import { PARIS_POPULATION } from "@/lib/methodology";
+import { cityPopulation, citySlugFromPathname } from "@/lib/methodology";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
@@ -59,6 +60,16 @@ export default function InvestissementsClient({
   const t = useT();
   const { locale } = useLocale();
   const trL = (s: string | undefined) => trLabel(s, locale);
+  // Multi-cities awareness — derive city slug from URL so the same client
+  // can render under /ville/paris/... and /ville/marseille/... without
+  // hardcoded paths or constants. cf. project_marseille_v1_decisions.
+  const pathname = usePathname();
+  const citySlug = citySlugFromPathname(pathname);
+  const cityBasePath = `/ville/${citySlug}/investissements`;
+  const cityMarchesPath = `/ville/${citySlug}/marches`;
+  const cityLogementPath = `/ville/${citySlug}/logement`;
+  const cityDettePath = `/ville/${citySlug}/dette`;
+  const isParis = citySlug === "paris";
   const ytrend = d.yearsSummary;
   const delta5y =
     ytrend.length >= 2
@@ -67,12 +78,18 @@ export default function InvestissementsClient({
   const delta5yDir: "up" | "down" | "flat" = delta5y > 0.1 ? "up" : delta5y < -0.1 ? "down" : "flat";
 
   const arrSuf = (n: number) => (n === 1 ? t("fx.s.arr.1_suffix") : t("fx.s.arr.suffix"));
-  const geoLocTotal = d.byArrondissement.reduce((s, a) => s + a.amount, 0);
+  // Paris has both a geolocated map (ProjectMap) and a SVG choropleth wired
+  // to its 1-20 arrondissements. Non-Paris cities fall back to a simple
+  // ranking list (P3.2 option a stricte: the map+choropleth section
+  // disappears when the underlying data isn't there). The toggle is hidden
+  // for non-Paris.
+  const supportsTerritoryViews = isParis && d.geoPoints.length > 0;
   const [territoryView, setTerritoryView] = useState<"carte" | "liste">("liste");
 
   return (
     <div className="theme-fusion">
       <Navbar />
+      <main id="main-content" tabIndex={-1}>
 
       <PageTOC
         items={[
@@ -111,7 +128,7 @@ export default function InvestissementsClient({
             <YearPicker
               years={d.availableYears}
               current={d.year}
-              basePath="/ville/paris/investissements"
+              basePath={cityBasePath}
               label={t("fx.s.year_label")}
             />
           </div>
@@ -119,7 +136,7 @@ export default function InvestissementsClient({
       </section>
 
       {(() => {
-        const parHab = d.total / PARIS_POPULATION;
+        const parHab = d.total / cityPopulation(citySlug);
         const topChap = d.byChapitre[0];
         const topAmt = topChap ? fmtMillions(topChap.amount, 0) : "";
         const topLabel = topChap ? trL(topChap.label) : "";
@@ -228,15 +245,15 @@ export default function InvestissementsClient({
             total={d.total}
             concentrationTop10Pct={d.top10ProjetsPct}
             year={d.year}
-            basePath="/ville/paris/investissements"
+            basePath={cityBasePath}
             kicker={fill(t("fx.inv.s04.kicker"), { year: d.year })}
             entityNoun={t("fx.inv.s04.entity_noun")}
             paretoContrast={t("fx.inv.s04.pareto_contrast")}
-            hrefBuilder={(theme) => `/ville/paris/investissements/chapitre/${slugifyChapitre(theme)}`}
+            hrefBuilder={(theme) => `${cityBasePath}/chapitre/${slugifyChapitre(theme)}`}
           />
           <ChartSource
             source={fill(t("fx.inv.s02.source.cite"), { year: d.year })}
-            dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
+            dataHref={isParis ? "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/" : undefined}
             methodAnchor="investissements"
           />
         </div>
@@ -260,48 +277,78 @@ export default function InvestissementsClient({
                 : t("fx.inv.s05.sub")
             }
           />
-          <div className="fx-view-toggle" role="tablist" aria-label={t("fx.inv.s05.kind")}>
-            <button
-              type="button"
-              role="tab"
-              aria-selected={territoryView === "carte"}
-              className={`fx-view-toggle-btn ${territoryView === "carte" ? "is-active" : ""}`}
-              onClick={() => setTerritoryView("carte")}
-            >
-              {t("fx.toc.carte")}
-            </button>
-            <button
-              type="button"
-              role="tab"
-              aria-selected={territoryView === "liste"}
-              className={`fx-view-toggle-btn ${territoryView === "liste" ? "is-active" : ""}`}
-              onClick={() => setTerritoryView("liste")}
-            >
-              {t("fx.toc.arrondissements")}
-            </button>
-          </div>
-          {territoryView === "carte" ? (
+          {supportsTerritoryViews ? (
             <>
-              <ProjectMap points={d.geoPoints} year={d.year} height={620} />
-              <p className="fx-note">
-                <b>{t("fx.inv.s03.note.b")}</b> :{" "}
-                {fill(t("fx.inv.s03.note"), { pct: fmtDec(100 - d.pctGeo, 0) })}
-              </p>
-              <ChartSource
-                source={fill(t("fx.inv.s03.source.cite"), { year: d.year })}
-                dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
-                methodAnchor="investissements"
-              />
+              <div className="fx-view-toggle" role="tablist" aria-label={t("fx.inv.s05.kind")}>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={territoryView === "carte"}
+                  className={`fx-view-toggle-btn ${territoryView === "carte" ? "is-active" : ""}`}
+                  onClick={() => setTerritoryView("carte")}
+                >
+                  {t("fx.toc.carte")}
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={territoryView === "liste"}
+                  className={`fx-view-toggle-btn ${territoryView === "liste" ? "is-active" : ""}`}
+                  onClick={() => setTerritoryView("liste")}
+                >
+                  {t("fx.toc.arrondissements")}
+                </button>
+              </div>
+              {territoryView === "carte" ? (
+                <>
+                  <ProjectMap points={d.geoPoints} year={d.year} height={620} />
+                  <p className="fx-note">
+                    <b>{t("fx.inv.s03.note.b")}</b> :{" "}
+                    {fill(t("fx.inv.s03.note"), { pct: fmtDec(100 - d.pctGeo, 0) })}
+                  </p>
+                  <ChartSource
+                    source={fill(t("fx.inv.s03.source.cite"), { year: d.year })}
+                    dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
+                    methodAnchor="investissements"
+                  />
+                </>
+              ) : (
+                <>
+                  <ParisChoropleth
+                    items={d.byArrondissement.map((a) => ({ arr: a.arr, amount: a.amount, count: a.count }))}
+                    height={420}
+                  />
+                  <ChartSource
+                    source={fill(t("fx.inv.s04.source.cite"), { year: d.year })}
+                    dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
+                    methodAnchor="investissements"
+                  />
+                </>
+              )}
             </>
           ) : (
+            // Non-Paris: simple ranking list (no SVG choropleth, no map).
+            // Source: pre-aggregated byArrondissement coming from the city loader.
             <>
-              <ParisChoropleth
-                items={d.byArrondissement.map((a) => ({ arr: a.arr, amount: a.amount, count: a.count }))}
-                height={420}
-              />
+              <ol className="fx-arr-ranking" aria-label={t("fx.toc.arrondissements")}>
+                {d.byArrondissement.map((a, i) => (
+                  <li key={a.arr} className="fx-arr-ranking-item">
+                    <span className="fx-arr-ranking-rank">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="fx-arr-ranking-label">
+                      {a.arr}
+                      {arrSuf(a.arr)} {t("fx.inv.rank.district")}
+                    </span>
+                    <span className="fx-arr-ranking-amount">
+                      {a.amount >= 1e6 ? `${fmtMillions(a.amount, 1)} M€` : `${fmtInt(a.amount / 1000)} k€`}
+                    </span>
+                    <span className="fx-arr-ranking-count">
+                      {fmtInt(a.count)} {a.count === 1 ? t("fx.inv.rank.project_one") : t("fx.inv.rank.project_many")}
+                    </span>
+                  </li>
+                ))}
+              </ol>
               <ChartSource
                 source={fill(t("fx.inv.s04.source.cite"), { year: d.year })}
-                dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
                 methodAnchor="investissements"
               />
             </>
@@ -331,7 +378,7 @@ export default function InvestissementsClient({
           />
           <ChartSource
             source={t("fx.inv.s05.source.cite")}
-            dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
+            dataHref={isParis ? "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/" : undefined}
             methodAnchor="investissements"
           />
           <p className="fx-note">
@@ -359,7 +406,7 @@ export default function InvestissementsClient({
             {d.topProjets.slice(0, 12).map((p, i) => (
               <Link
                 key={p.id}
-                href={`/ville/paris/investissements/projet/${encodeURIComponent(p.id)}`}
+                href={`${cityBasePath}/projet/${encodeURIComponent(p.id)}`}
                 className="fx-projet-card"
                 scroll={false}
               >
@@ -394,7 +441,7 @@ export default function InvestissementsClient({
           <SectionHead number="07" kind={t("fx.inv.s09.kind")} />
           <div className="fx-grid-tiles">
             <TileCard
-              href="/ville/paris/marches"
+              href={cityMarchesPath}
               number={t("fx.inv.s09.t1.n")}
               kind={t("fx.inv.s09.t1.kind")}
               title={t("fx.inv.s09.t1.title")}
@@ -412,7 +459,7 @@ export default function InvestissementsClient({
               kpiDelta={fill(t("fx.inv.s09.t1.delta"), { year: d.year })}
             />
             <TileCard
-              href="/ville/paris/logement"
+              href={cityLogementPath}
               number={t("fx.inv.s09.t2.n")}
               kind={t("fx.inv.s09.t2.kind")}
               title={t("fx.inv.s09.t2.title")}
@@ -431,7 +478,7 @@ export default function InvestissementsClient({
               kpiDelta={t("fx.inv.s09.t2.delta")}
             />
             <TileCard
-              href="/ville/paris/dette"
+              href={cityDettePath}
               number={t("fx.inv.s09.t3.n")}
               kind={t("fx.inv.s09.t3.kind")}
               title={t("fx.inv.s09.t3.title")}
@@ -466,16 +513,29 @@ export default function InvestissementsClient({
               {
                 label: fill(t("fx.inv.src.export.csv"), { year: d.year }),
                 primary: true,
-                href: `/data/map/investissements_complet_${d.year}.json`,
+                href: isParis
+                  ? `/data/map/investissements_complet_${d.year}.json`
+                  : `/data/${citySlug}/investissements/investissements_${d.year}.json`,
               },
-              { label: t("fx.inv.src.export.json"), href: `/data/map/investissements_complet_${d.year}.json` },
-              { label: t("fx.inv.src.export.trend"), href: "/data/investissement_tendances.json" },
+              {
+                label: t("fx.inv.src.export.json"),
+                href: isParis
+                  ? `/data/map/investissements_complet_${d.year}.json`
+                  : `/data/${citySlug}/investissements/investissements_${d.year}.json`,
+              },
+              {
+                label: t("fx.inv.src.export.trend"),
+                href: isParis
+                  ? "/data/investissement_tendances.json"
+                  : `/data/${citySlug}/investissements/investissement_tendances.json`,
+              },
               { label: t("fx.inv.src.export.method"), href: "/methode?tool=investissements#outils" },
             ]}
           />
         </div>
       </section>
 
+      </main>
       <Footer />
     </div>
   );

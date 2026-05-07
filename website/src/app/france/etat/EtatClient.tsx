@@ -47,7 +47,7 @@ export default function EtatClient({
     return (
       <div className="theme-fusion">
         <Navbar />
-        <main className="fx-wrap" style={{ padding: "120px 0", minHeight: "60vh" }}>
+        <main id="main-content" tabIndex={-1} className="fx-wrap" style={{ padding: "120px 0", minHeight: "60vh" }}>
           <p>{t("etat.no_data")}</p>
         </main>
         <Footer />
@@ -102,7 +102,8 @@ export default function EtatClient({
       <Navbar />
       <FranceMacroNav />
 
-      <main>
+      <main id="main-content" tabIndex={-1}>
+        <h1 className="fx-sr-only">{t("etat.hero.title")}</h1>
         {/* Hero ─────────────────────────────────────────────────────── */}
         <section className="fx-wrap" style={{ padding: "60px 0 36px" }}>
           <SectionHead

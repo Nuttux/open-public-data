@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import SectionHead from "@/components/fusion/SectionHead";
@@ -23,6 +24,7 @@ import type { LogementSocialData } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 import { slugifyBailleur } from "@/lib/projet-utils";
+import { citySlugFromPathname } from "@/lib/methodology";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
@@ -118,21 +120,36 @@ export default function LogementSocialClient({
 }) {
   const t = useT();
   const { locale } = useLocale();
+  // Detect current city from URL — Paris uses the rich Choropleth + Tension
+  // pipeline ; other cities (Marseille v1) drop §02/§05/§06 silently when
+  // their data is unavailable (P3.2 option a).
+  const pathname = usePathname();
+  const citySlug = citySlugFromPathname(pathname);
+  const isParis = citySlug === "paris";
+  const cityBasePath = `/ville/${citySlug}/logement`;
+  const tension = d.tension;
+  const hasTension = tension !== null;
+  const hasBailleurs = d.bailleurs.length > 0;
   const gap = d.sruRatio - d.sruTarget;
   const gapDir: "up" | "down" | "flat" = gap > 0.1 ? "up" : gap < -0.1 ? "down" : "flat";
 
   return (
     <div className="theme-fusion">
       <Navbar />
+      <main id="main-content" tabIndex={-1}>
 
       <PageTOC
         items={[
           { id: "sec-sru", label: t("fx.toc.sru") },
-          { id: "sec-bailleurs", label: t("fx.toc.bailleurs") },
+          ...(hasBailleurs ? [{ id: "sec-bailleurs", label: t("fx.toc.bailleurs") }] : []),
           { id: "sec-territoire", label: t("fx.log.s02.kind") },
           { id: "sec-production", label: t("fx.toc.production") },
-          { id: "sec-tension", label: t("fx.toc.tension") },
-          { id: "sec-tension-arr", label: t("fx.log.toc.par_arr") },
+          ...(hasTension
+            ? [
+                { id: "sec-tension", label: t("fx.toc.tension") },
+                { id: "sec-tension-arr", label: t("fx.log.toc.par_arr") },
+              ]
+            : []),
           { id: "sec-analyses", label: t("fx.toc.analyses") },
           { id: "sec-explorer", label: t("fx.toc.explorer") },
           { id: "sec-sources", label: t("fx.toc.sources") },
@@ -164,17 +181,17 @@ export default function LogementSocialClient({
             <YearPicker
               years={d.availableYears}
               current={d.year}
-              basePath="/ville/paris/logement"
+              basePath={cityBasePath}
               label={t("fx.s.year_label")}
             />
           </div>
         </div>
       </section>
 
-      {(() => {
+      {hasTension && tension && (() => {
         const arrsCouverts = d.byArrondissement.filter((a) => a.logements > 0).length;
-        const demandes = d.tension.paris.demandesActives;
-        const attribs = d.tension.paris.attributions;
+        const demandes = tension.paris.demandesActives;
+        const attribs = tension.paris.attributions;
         const ratio = attribs > 0 ? Math.round(demandes / attribs) : 0;
         return (
           <PageHook
@@ -271,43 +288,58 @@ export default function LogementSocialClient({
         </div>
       </section>
 
-      {/* §02 — Bailleurs */}
-      <section className="fx-section" id="sec-bailleurs">
-        <div className="fx-wrap">
-          <SectionHead
-            number="02"
-            kind={<Tip label={t("fx.log.bailleur.tip")}>{t("fx.log.s03.kind")}</Tip>}
-            title={
-              <>
-                {t("fx.log.s03.title.before")}
-                <em>{t("fx.log.s03.title.em")}</em>
-                {t("fx.log.s03.title.after")}
-              </>
-            }
-            subtitle={t("fx.log.s03.sub")}
-          />
-          <div className="fx-bailleurs-grid">
-            {d.bailleurs.map((b) => (
-              <Link
-                key={b.name}
-                href={`/ville/paris/dette/bailleur/${slugifyBailleur(b.name)}`}
-                className="fx-bailleur-card"
-              >
-                <div className="n">{trLabel(b.type, locale)}</div>
-                <h3>{trLabel(b.name, locale)}</h3>
-                <p>{trLabel(b.description, locale)}</p>
-                <div className="fx-bailleur-share-row">
-                  <span className="fx-bailleur-share">~{b.share} %</span>
-                  <span className="fx-bailleur-share-unit">{t("fx.log.s03.du_parc")}</span>
-                </div>
-              </Link>
-            ))}
+      {/* §02 — Bailleurs (Paris : cards cliquables vers /dette/bailleur ;
+          autres villes : cards rendues comme blocs simples — pas de routes
+          drill-down en POC). */}
+      {hasBailleurs && (
+        <section className="fx-section" id="sec-bailleurs">
+          <div className="fx-wrap">
+            <SectionHead
+              number="02"
+              kind={<Tip label={t("fx.log.bailleur.tip")}>{t("fx.log.s03.kind")}</Tip>}
+              title={
+                <>
+                  {t("fx.log.s03.title.before")}
+                  <em>{t("fx.log.s03.title.em")}</em>
+                  {t("fx.log.s03.title.after")}
+                </>
+              }
+              subtitle={t("fx.log.s03.sub")}
+            />
+            <div className="fx-bailleurs-grid">
+              {d.bailleurs.map((b) => {
+                const cardContent = (
+                  <>
+                    <div className="n">{trLabel(b.type, locale)}</div>
+                    <h3>{trLabel(b.name, locale)}</h3>
+                    <p>{trLabel(b.description, locale)}</p>
+                    <div className="fx-bailleur-share-row">
+                      <span className="fx-bailleur-share">~{b.share} %</span>
+                      <span className="fx-bailleur-share-unit">{t("fx.log.s03.du_parc")}</span>
+                    </div>
+                  </>
+                );
+                return isParis ? (
+                  <Link
+                    key={b.name}
+                    href={`/ville/${citySlug}/dette/bailleur/${slugifyBailleur(b.name)}`}
+                    className="fx-bailleur-card"
+                  >
+                    {cardContent}
+                  </Link>
+                ) : (
+                  <div key={b.name} className="fx-bailleur-card">
+                    {cardContent}
+                  </div>
+                );
+              })}
+            </div>
+            <p className="fx-note">
+              <b>{t("fx.s.methode")}</b> : {t("fx.log.s03.note")}
+            </p>
           </div>
-          <p className="fx-note">
-            <b>{t("fx.s.methode")}</b> : {t("fx.log.s03.note")}
-          </p>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* §03 — Où */}
       <section className="fx-section" id="sec-territoire">
@@ -319,24 +351,54 @@ export default function LogementSocialClient({
               <>
                 {t("fx.log.s02.title.before")}
                 <em>{t("fx.log.s02.title.em")}</em>
-                {t("fx.log.s02.title.after")}
+                {fill(t("fx.log.s02.title.after"), { city: citySlug.charAt(0).toUpperCase() + citySlug.slice(1) })}
               </>
             }
             subtitle={t("fx.log.s02.sub")}
           />
-          <ParisChoropleth
-            items={d.byArrondissement.map((a) => ({
-              arr: a.arr,
-              amount: a.logements,
-              count: a.operations,
-            }))}
-            formatValue={(n) => `${fmtInt(n)} ${t("fx.log.s02.unit_long")}`}
-            unitLabel={t("fx.log.s02.unit_ops")}
-            hrefFor={(cAr) =>
-              `/ville/paris/logement/arrondissement/${cAr === 0 ? "paris-centre" : cAr}`
-            }
-          />
-          <p className="fx-mini-note">{t("fx.log.s02.paris_centre_note")}</p>
+          {isParis ? (
+            <>
+              <ParisChoropleth
+                items={d.byArrondissement.map((a) => ({
+                  arr: a.arr,
+                  amount: a.logements,
+                  count: a.operations,
+                }))}
+                formatValue={(n) => `${fmtInt(n)} ${t("fx.log.s02.unit_long")}`}
+                unitLabel={t("fx.log.s02.unit_ops")}
+                hrefFor={(cAr) =>
+                  `${cityBasePath}/arrondissement/${cAr === 0 ? "paris-centre" : cAr}`
+                }
+              />
+              <p className="fx-mini-note">{t("fx.log.s02.paris_centre_note")}</p>
+            </>
+          ) : (
+            // Non-Paris cities : ParisChoropleth is hard-coded to Paris SVG paths.
+            // Until DistrictChoropleth (PA.4 GeoJSON) ships, render the same data
+            // as horizontal bars — no drill-down (routes /arrondissement/[arr]
+            // not created for Marseille v1).
+            <ul className="fx-arr-bars" aria-label={t("fx.log.s02.unit_ops")}>
+              {(() => {
+                const sorted = [...d.byArrondissement].sort((a, b) => b.logements - a.logements);
+                const max = sorted.length > 0 ? sorted[0].logements : 0;
+                return sorted.map((a) => {
+                  const w = max > 0 ? Math.max(2, Math.round((a.logements / max) * 100)) : 0;
+                  return (
+                    <li key={a.arr} className="fx-arr-bar">
+                      <span className="fx-arr-bar-label">
+                        {a.arr}
+                        {a.arr === 1 ? "er" : "ᵉ"} arr.
+                      </span>
+                      <span className="fx-arr-bar-track" aria-hidden>
+                        <span className="fx-arr-bar-fill" style={{ width: `${w}%` }} />
+                      </span>
+                      <span className="fx-arr-bar-value tnum">{fmtInt(a.logements)}</span>
+                    </li>
+                  );
+                });
+              })()}
+            </ul>
+          )}
           <ChartSource
             source={<>{t("fx.log.s02.source")}</>}
             dataHref="https://www.ecologie.gouv.fr/article-55-loi-solidarite-renouvellement-urbain-sru"
@@ -373,10 +435,10 @@ export default function LogementSocialClient({
                     type: "execute" as const,
                   }))}
                   activeYear={d.year}
-                  annotations={[
+                  annotations={isParis ? [
                     { year: 2020, label: t("fx.log.s04.ann.covid") },
                     { year: 2024, label: t("fx.log.s04.ann.jo") },
-                  ]}
+                  ] : []}
                   yTicks={ticks}
                   formatYTick={(v) => fmtInt(v)}
                   activeBadge={`${d.year} · ${fmtInt(d.nouveauxParAn)} ${t("fx.log.s02.unit_long")}`}
@@ -397,24 +459,26 @@ export default function LogementSocialClient({
         </div>
       </section>
 
-      {/* §05 — Tension locative */}
-      <section className="fx-section" id="sec-tension">
-        <div className="fx-wrap">
-          <SectionHead
-            number="05"
-            kind={t("fx.log.tension.kind")}
-            title={
-              <>
-                {t("fx.log.tension.title.before")}
-                <em>{t("fx.log.tension.title.em")}</em>
-                {t("fx.log.tension.title.after")}
-              </>
-            }
-            subtitle={t("fx.log.tension.lede")}
-          />
-          {(() => {
-            const s1 = d.tension.paris.demandesActives;
-            const s3 = d.tension.paris.attributions;
+      {/* §05 — Tension locative (Paris : DRIHL ; villes hors IDF : section
+          absente — SNE national publie sur portail web sans CSV exploitable). */}
+      {hasTension && tension && (
+        <section className="fx-section" id="sec-tension">
+          <div className="fx-wrap">
+            <SectionHead
+              number="05"
+              kind={t("fx.log.tension.kind")}
+              title={
+                <>
+                  {t("fx.log.tension.title.before")}
+                  <em>{t("fx.log.tension.title.em")}</em>
+                  {t("fx.log.tension.title.after")}
+                </>
+              }
+              subtitle={t("fx.log.tension.lede")}
+            />
+            {(() => {
+              const s1 = tension.paris.demandesActives;
+              const s3 = tension.paris.attributions;
             const pct = (n: number) => (n / s1) * 100;
             const steps = [
               { idx: 1, v: s1, lbl: t("fx.log.tension.funnel.s1.lbl"), pct: pct(s1) },
@@ -442,43 +506,46 @@ export default function LogementSocialClient({
                     </div>
                   ))}
                 </div>
-                <p className="fx-funnel-foot">
-                  {fill(t("fx.log.tension.funnel.foot"), { ratio: fmtDec(d.tension.paris.ratio, 1) })}
-                </p>
-              </div>
-            );
-          })()}
-        </div>
-      </section>
+                  <p className="fx-funnel-foot">
+                    {fill(t("fx.log.tension.funnel.foot"), { ratio: fmtDec(tension.paris.ratio, 1) })}
+                  </p>
+                </div>
+              );
+            })()}
+          </div>
+        </section>
+      )}
 
-      {/* §06 — Tension par arrondissement (source DRIHL) */}
-      <section className="fx-section" id="sec-tension-arr">
-        <div className="fx-wrap">
-          <SectionHead
-            number="06"
-            kind={t("fx.log.s06b.kind")}
-            title={
-              <>
-                {t("fx.log.s06b.title.before")}
-                <em>{t("fx.log.s06b.title.em")}</em>
-                {t("fx.log.s06b.title.after")}
-              </>
-            }
-            subtitle={fill(t("fx.log.s06b.subtitle"), { year: d.tension.year })}
-          />
-          <TensionParArrondissement
-            year={d.tension.year}
-            source={d.tension.source}
-            sourceUrl={d.tension.sourceUrl}
-            paris={d.tension.paris}
-            parArrondissement={d.tension.parArrondissement}
-            methodology={{
-              ratioDefinition: t("fx.log.methodology.ratio_definition"),
-              delaiMedianCaveat: t("fx.log.methodology.delai_median_caveat"),
-            }}
-          />
-        </div>
-      </section>
+      {/* §06 — Tension par arrondissement (source DRIHL — IDF-only) */}
+      {hasTension && tension && (
+        <section className="fx-section" id="sec-tension-arr">
+          <div className="fx-wrap">
+            <SectionHead
+              number="06"
+              kind={t("fx.log.s06b.kind")}
+              title={
+                <>
+                  {t("fx.log.s06b.title.before")}
+                  <em>{t("fx.log.s06b.title.em")}</em>
+                  {t("fx.log.s06b.title.after")}
+                </>
+              }
+              subtitle={fill(t("fx.log.s06b.subtitle"), { year: tension.year })}
+            />
+            <TensionParArrondissement
+              year={tension.year}
+              source={tension.source}
+              sourceUrl={tension.sourceUrl}
+              paris={tension.paris}
+              parArrondissement={tension.parArrondissement}
+              methodology={{
+                ratioDefinition: t("fx.log.methodology.ratio_definition"),
+                delaiMedianCaveat: t("fx.log.methodology.delai_median_caveat"),
+              }}
+            />
+          </div>
+        </section>
+      )}
 
       <RelatedArticles number="07" posts={posts} placeholders={LOG_PLACEHOLDERS} />
 
@@ -488,7 +555,7 @@ export default function LogementSocialClient({
           <SectionHead number="08" kind={t("fx.log.s06.kind")} />
           <div className="fx-grid-tiles">
             <TileCard
-              href="/ville/paris/investissements"
+              href={`/ville/${citySlug}/investissements`}
               number={t("fx.log.s06.t1.n")}
               kind={t("fx.log.s06.t1.kind")}
               title={t("fx.log.s06.t1.title")}
@@ -518,7 +585,7 @@ export default function LogementSocialClient({
               kpiDelta={t("fx.log.s06.t1.delta")}
             />
             <TileCard
-              href="/ville/paris/subventions"
+              href={`/ville/${citySlug}/subventions`}
               number={t("fx.log.s06.t2.n")}
               kind={t("fx.log.s06.t2.kind")}
               title={t("fx.log.s06.t2.title")}
@@ -538,7 +605,7 @@ export default function LogementSocialClient({
               kpiDelta={t("fx.log.s06.t2.delta")}
             />
             <TileCard
-              href="/ville/paris/dette"
+              href={`/ville/${citySlug}/dette`}
               number={t("fx.log.s06.t3.n")}
               kind={t("fx.log.s06.t3.kind")}
               title={t("fx.log.s06.t3.title")}
@@ -570,19 +637,31 @@ export default function LogementSocialClient({
             <b>{t("fx.log.footer.source_label")}</b> {t("fx.log.footer.source_value")} <span className="sep">·</span> <b>{t("fx.log.footer.coverage_label")}</b> {t("fx.log.footer.coverage_value")}
           </p>
           <ExportRow
-            items={[
-              {
-                label: fill(t("fx.log.src.export.csv"), { year: d.year }),
-                primary: true,
-                href: `/data/map/arrondissements_stats_${d.year}.json`,
-              },
-              { label: t("fx.log.src.export.geo"), href: "/data/map/arrondissements.geojson" },
-              { label: t("fx.log.src.export.method"), href: "/methode?tool=logement-social#outils" },
-            ]}
+            items={
+              isParis
+                ? [
+                    {
+                      label: fill(t("fx.log.src.export.csv"), { year: d.year }),
+                      primary: true,
+                      href: `/data/map/arrondissements_stats_${d.year}.json`,
+                    },
+                    { label: t("fx.log.src.export.geo"), href: "/data/map/arrondissements.geojson" },
+                    { label: t("fx.log.src.export.method"), href: "/methode?tool=logement-social#outils" },
+                  ]
+                : [
+                    {
+                      label: t("fx.log.src.export.csv_city"),
+                      primary: true,
+                      href: `/data/${citySlug}/logement/logement_data.json`,
+                    },
+                    { label: t("fx.log.src.export.method"), href: "/methode?tool=logement-social#outils" },
+                  ]
+            }
           />
         </div>
       </section>
 
+      </main>
       <Footer />
     </div>
   );

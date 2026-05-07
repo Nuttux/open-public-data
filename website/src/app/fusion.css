@@ -25,14 +25,15 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   --ink:        #0a0a0a;
   --ink-2:      #262a33;
   --muted:      #5f6672;
-  --muted-2:    #9099a6;
+  --muted-2:    #62697a; /* WCAG 2.1 AA: 5.23:1 on --bg #fafaf7 */
   --rule:       #e4e6ea;
   --rule-hard:  #0a0a0a;
   --bleu:       #2a3680;
   --bleu-vif:   #1e45e4;
   --rouge:      #c12323;
   --rouge-vif:  #e11d1d;
-  --ocre:       #a67638;
+  --ocre:       #8c5e2a; /* WCAG 2.1 AA: 5.34:1 on --bg #fafaf7 */
+  --cream:      #f4efe3;
 
   --f-disp: "Inter Tight", var(--font-inter), "Inter", -apple-system, sans-serif;
   --f-ui:   var(--font-inter), "Inter", -apple-system, sans-serif;
@@ -369,7 +370,8 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   flex: 1;
   overflow-y: auto;
 }
-.theme-fusion .fx-overlay-nav a {
+.theme-fusion .fx-overlay-nav a,
+.theme-fusion .fx-overlay-nav button.fx-overlay-scope-search {
   display: flex;
   align-items: baseline;
   gap: 16px;
@@ -380,9 +382,27 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   color: var(--ink);
   padding: 12px 0;
   border-bottom: 1px solid var(--rule);
+  background: none;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
 }
 .theme-fusion .fx-overlay-nav a:hover,
-.theme-fusion .fx-overlay-nav a:active { color: var(--bleu); }
+.theme-fusion .fx-overlay-nav a:active,
+.theme-fusion .fx-overlay-nav button.fx-overlay-scope-search:hover,
+.theme-fusion .fx-overlay-nav button.fx-overlay-scope-search:active { color: var(--bleu); }
+.theme-fusion .fx-overlay-scope-tag {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: .14em;
+  font-weight: 500;
+  margin-left: auto;
+  align-self: center;
+}
 .theme-fusion .fx-overlay-n {
   font-family: var(--f-mono);
   font-size: 11px;
@@ -5046,6 +5066,59 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   color: var(--ocre);
 }
 
+/* District ranking — used on non-Paris investissements pages where the
+ * SVG choropleth (Paris-only) is not available. P3.2 option a stricte:
+ * the section degrades gracefully into a ranked list. */
+.theme-fusion .fx-arr-ranking {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+}
+.theme-fusion .fx-arr-ranking-item {
+  display: grid;
+  grid-template-columns: 36px 1fr auto auto;
+  gap: 16px;
+  align-items: baseline;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.theme-fusion .fx-arr-ranking-rank {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+.theme-fusion .fx-arr-ranking-label {
+  font-size: 14px;
+  color: var(--ink);
+}
+.theme-fusion .fx-arr-ranking-amount {
+  font-family: var(--f-disp);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  text-align: right;
+  min-width: 90px;
+}
+.theme-fusion .fx-arr-ranking-count {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: var(--muted);
+  text-align: right;
+  min-width: 90px;
+}
+@media (max-width: 640px) {
+  .theme-fusion .fx-arr-ranking-item {
+    grid-template-columns: 28px 1fr auto;
+  }
+  .theme-fusion .fx-arr-ranking-count {
+    grid-column: 2 / 4;
+    text-align: left;
+    margin-top: 2px;
+  }
+}
+
 @media (max-width: 960px) {
   .theme-fusion .fx-projet-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -8303,6 +8376,15 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   opacity: 1;
   color: var(--ink);
 }
+/* Static variant — non-clickable cards (e.g. Marseille investissements POC
+ * where drill-down routes don't exist yet). Suppresses the chevron and the
+ * hover affordance so users don't expect a click target. */
+.theme-fusion .fx-projet-card--static {
+  cursor: default;
+}
+.theme-fusion .fx-projet-card--static::after {
+  content: none;
+}
 
 /* (B) StackedBar segments : indice hover plus net pour desktop */
 .theme-fusion .fx-stackbar-seg {
@@ -9076,12 +9158,12 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion .fx-tension-arr-header { display: grid; grid-template-columns: 200px 1fr 60px 120px; gap: 12px; padding: 8px 0; font-size: 11px; text-transform: uppercase; letter-spacing: .05em; opacity: .6; border-bottom: 1px solid var(--line); }
 .theme-fusion .fx-tension-arr-row { display: grid; grid-template-columns: 200px 1fr 60px 120px; gap: 12px; padding: 10px 0; align-items: center; border-bottom: 1px solid var(--line-2, #eee); }
 .theme-fusion .fx-tension-arr-lbl { display: flex; gap: 10px; align-items: baseline; }
-.theme-fusion .fx-tension-arr-rank { font-size: 11px; color: var(--ink-3, #999); min-width: 24px; }
+.theme-fusion .fx-tension-arr-rank { font-size: 11px; color: var(--muted); min-width: 24px; }
 .theme-fusion .fx-tension-arr-name { font-size: 13px; }
 .theme-fusion .fx-tension-arr-bar-wrap { background: var(--bg-2); height: 10px; border-radius: 5px; overflow: hidden; }
 .theme-fusion .fx-tension-arr-bar { background: var(--bleu); height: 100%; transition: width .3s; }
 .theme-fusion .fx-tension-arr-ratio { font-size: 16px; font-weight: 600; text-align: right; }
-.theme-fusion .fx-tension-arr-detail { font-size: 11px; color: var(--ink-3, #999); text-align: right; font-family: var(--f-mono); }
+.theme-fusion .fx-tension-arr-detail { font-size: 11px; color: var(--muted); text-align: right; font-family: var(--f-mono); }
 .theme-fusion .fx-tension-arr-caveats { font-size: 13px; line-height: 1.5; padding: 16px; background: var(--bg-2); border-radius: 8px; }
 .theme-fusion .fx-tension-arr-caveats p { margin: 6px 0; }
 .theme-fusion .fx-tension-arr-source { opacity: .6; font-size: 11px; }
@@ -9142,4 +9224,2414 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 }
 @media (max-width: 700px) {
   .theme-fusion .fx-mode-toggle-hint { flex-basis: 100%; margin-top: 4px; }
+}
+
+/* ── Daily Bread — drill-down drawer (rows cliquables + fiche) ─────────
+ *
+ * Étend le DeepDive existant pour rendre les rows légende cliquables
+ * (ouverture du drawer `/daily-bread/bucket/<bucket>/<key>`). Le drawer
+ * lui-même réutilise les styles `.theme-fusion .fx-drawer-*` (l'enveloppe
+ * de la page drawer ajoute `.theme-fusion`). On scope tout au theme
+ * `.theme-db-scrolly` pour les rows in-page, et on ajoute un mini-namespace
+ * `.db-fiche-*` pour le contenu de la fiche (drawer + standalone).
+ */
+
+/* ── BarList top-level click-through (drill macro→niveau 2) ───────────
+ * Quand une barre top-level (ex: assoBranches CNAM, stateBuckets education)
+ * a un alias drilldown, elle devient cliquable ET reçoit un chevron pour
+ * signaler l'interaction. Style aligné avec la legend item clickable. */
+.theme-db-scrolly button.db-p-zoom-bar.db-p-zoom-bar-clickable {
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 8px 10px;
+  margin: -8px -10px;
+  width: calc(100% + 20px);
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  display: block;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+.theme-db-scrolly button.db-p-zoom-bar.db-p-zoom-bar-clickable:hover,
+.theme-db-scrolly button.db-p-zoom-bar.db-p-zoom-bar-clickable:focus-visible {
+  background: rgba(10, 10, 10, 0.04);
+  border-color: rgba(10, 10, 10, 0.12);
+  outline: none;
+}
+.theme-db-scrolly button.db-p-zoom-bar.db-p-zoom-bar-clickable:focus-visible {
+  border-color: var(--p-ink);
+}
+.theme-db-scrolly .db-p-zoom-bar-chevron {
+  font-family: var(--pf-mono);
+  font-size: 12px;
+  color: var(--p-muted-2, var(--p-muted));
+  margin-left: 6px;
+  transition: transform 0.12s ease, color 0.12s ease;
+  display: inline-block;
+}
+.theme-db-scrolly button.db-p-zoom-bar.db-p-zoom-bar-clickable:hover .db-p-zoom-bar-chevron,
+.theme-db-scrolly button.db-p-zoom-bar.db-p-zoom-bar-clickable:focus-visible .db-p-zoom-bar-chevron {
+  transform: translateX(2px);
+  color: var(--p-ink);
+}
+
+/* ── Fiche drill-down (composant partagé drawer + standalone) ──────── */
+.theme-fusion .db-fiche {
+  font-family: var(--f-ui);
+  color: var(--ink);
+}
+.theme-fusion .db-fiche-stub-warn {
+  margin: 0 0 14px;
+  padding: 8px 12px;
+  background: rgba(166, 118, 56, 0.08);
+  border: 1px dashed var(--ocre);
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ocre);
+}
+.theme-fusion .db-fiche-lead {
+  margin: 0 0 18px;
+  padding: 16px 18px;
+  background: #f5f5f2;
+  border-left: 3px solid var(--bleu);
+}
+.theme-fusion .db-fiche-secu .db-fiche-lead { border-left-color: #2a3680; }
+.theme-fusion .db-fiche-etat .db-fiche-lead { border-left-color: #1a1d26; }
+.theme-fusion .db-fiche-local .db-fiche-lead { border-left-color: #c12323; }
+.theme-fusion .db-fiche-lead-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.theme-fusion .db-fiche-lead-pct {
+  font-family: var(--f-disp);
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.theme-fusion .db-fiche-lead-pct-label {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.theme-fusion .db-fiche-lead-name {
+  margin: 6px 0 0;
+  font-family: var(--f-disp);
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.35;
+  color: var(--ink);
+}
+.theme-fusion .db-fiche-section { margin: 22px 0; }
+.theme-fusion .db-fiche-section-head {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+.theme-fusion .db-fiche-source {
+  margin: 0;
+  font-family: var(--f-ui);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.theme-fusion .db-fiche-source-link {
+  color: var(--bleu);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.theme-fusion .db-fiche-source-link:hover { color: var(--ink); }
+.theme-fusion .db-fiche-detail-unavailable {
+  margin: 0;
+  padding: 10px 14px;
+  background: #fbfaf6;
+  border: 1px dashed rgba(10, 10, 10, 0.18);
+  font-size: 13.5px;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.5;
+}
+.theme-fusion .db-fiche-children {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.theme-fusion .db-fiche-child {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 14px;
+  border: 1px solid var(--rule);
+  background: var(--bg);
+  color: var(--ink);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease, transform 0.12s ease;
+}
+.theme-fusion .db-fiche-child:hover,
+.theme-fusion .db-fiche-child:focus-visible {
+  background: rgba(10, 10, 10, 0.04);
+  border-color: var(--ink);
+  outline: none;
+}
+.theme-fusion .db-fiche-child-pct {
+  font-family: var(--f-disp);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.theme-fusion .db-fiche-child-name {
+  font-family: var(--f-ui);
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--ink);
+  min-width: 0;
+}
+.theme-fusion .db-fiche-child-chevron {
+  font-family: var(--f-mono);
+  font-size: 14px;
+  color: var(--muted);
+  transition: transform 0.12s ease, color 0.12s ease;
+}
+.theme-fusion .db-fiche-child:hover .db-fiche-child-chevron,
+.theme-fusion .db-fiche-child:focus-visible .db-fiche-child-chevron {
+  transform: translateX(2px);
+  color: var(--ink);
+}
+
+/* Drawer host : la page intercepteur ajoute `.db-drawer-shell` à côté
+ * de `.theme-fusion`. Réservé pour overrides éventuels (ex. accent
+ * couleur). Pour l'instant, hérite tel quel du theme-fusion drawer. */
+.theme-fusion.db-drawer-shell { /* placeholder */ }
+
+/* ── Aggregation drawer (État) ───────────────────────────────────────────
+ * Liste des missions PLF qui composent un bucket éditorial. Layout grid
+ * 2 colonnes desktop, 1 colonne mobile. Mêmes vars que .db-fiche-child
+ * pour rester cohérent avec l'esthétique drawer. */
+.theme-fusion .db-fiche-agg-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.theme-fusion .db-fiche-agg-card {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--paper);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.12s ease, border-color 0.12s ease;
+  min-height: 56px;
+}
+.theme-fusion .db-fiche-agg-card:hover,
+.theme-fusion .db-fiche-agg-card:focus-visible {
+  background: rgba(10, 10, 10, 0.04);
+  border-color: var(--ink);
+  outline: none;
+}
+.theme-fusion .db-fiche-agg-card-pct {
+  font-family: var(--f-disp);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.theme-fusion .db-fiche-agg-card-name {
+  font-family: var(--f-ui);
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--ink);
+  min-width: 0;
+}
+.theme-fusion .db-fiche-agg-card-chevron {
+  font-family: var(--f-mono);
+  font-size: 14px;
+  color: var(--muted);
+  transition: transform 0.12s ease, color 0.12s ease;
+}
+.theme-fusion .db-fiche-agg-card:hover .db-fiche-agg-card-chevron,
+.theme-fusion .db-fiche-agg-card:focus-visible .db-fiche-agg-card-chevron {
+  transform: translateX(2px);
+  color: var(--ink);
+}
+
+/* ── Drilldown breadcrumb (drawer + standalone) ────────────────────────── */
+.theme-fusion .db-breadcrumb {
+  margin: 0 0 14px;
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.theme-fusion .db-breadcrumb-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+.theme-fusion .db-breadcrumb-item {
+  display: inline-flex;
+  align-items: baseline;
+}
+.theme-fusion .db-breadcrumb-link {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(10, 10, 10, 0.25);
+  transition: color 0.12s ease, border-color 0.12s ease;
+}
+.theme-fusion .db-breadcrumb-link:hover,
+.theme-fusion .db-breadcrumb-link:focus-visible {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+  outline: none;
+}
+.theme-fusion .db-breadcrumb-current {
+  color: var(--ink);
+  font-weight: 600;
+}
+.theme-fusion .db-breadcrumb-sep {
+  margin: 0 6px;
+  color: var(--muted);
+}
+
+/* ── Dual amounts (€/an national + €/mois personnel) ──────────────────── */
+.theme-fusion .db-fiche-amounts {
+  margin: 12px 0 0;
+  padding: 10px 0 0;
+  border-top: 1px dashed rgba(10, 10, 10, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.theme-fusion .db-fiche-amount-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 25%) 1fr;
+  align-items: baseline;
+  gap: 14px;
+  margin: 0;
+}
+.theme-fusion .db-fiche-amount-key {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
+}
+.theme-fusion .db-fiche-amount-val {
+  font-family: var(--f-disp);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.theme-fusion .db-fiche-amount-row-personal .db-fiche-amount-val {
+  font-weight: 700;
+  font-size: 22px;
+}
+.theme-fusion .db-fiche-amount-unit {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
+/* Sub-row €/mois personnel à côté du % enfant. */
+.theme-fusion .db-fiche-child {
+  grid-template-columns: 48px 1fr auto auto;
+}
+.theme-fusion .db-fiche-child-monthly {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-2);
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+.theme-fusion .db-fiche-agg-card {
+  grid-template-columns: 56px 1fr auto auto;
+}
+.theme-fusion .db-fiche-agg-card-monthly {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-2);
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+
+@media (max-width: 640px) {
+  .theme-fusion .db-fiche-lead-pct { font-size: 24px; }
+  .theme-fusion .db-fiche-lead-name { font-size: 15.5px; }
+  .theme-fusion .db-fiche-child {
+    grid-template-columns: 44px 1fr auto;
+    padding: 9px 12px;
+    row-gap: 4px;
+  }
+  /* Mobile : pousse le €/mois sur une 2e ligne sous le nom. */
+  .theme-fusion .db-fiche-child-monthly {
+    grid-column: 2 / -1;
+    margin-top: 2px;
+  }
+  .theme-fusion .db-fiche-child-pct { font-size: 15px; }
+  .theme-fusion .db-fiche-child-name { font-size: 13.5px; }
+  .theme-fusion .db-fiche-agg-grid {
+    grid-template-columns: 1fr;
+  }
+  .theme-fusion .db-fiche-agg-card {
+    grid-template-columns: 48px 1fr auto;
+    padding: 11px 13px;
+    row-gap: 4px;
+  }
+  .theme-fusion .db-fiche-agg-card-monthly {
+    grid-column: 2 / -1;
+    margin-top: 2px;
+  }
+  .theme-fusion .db-fiche-agg-card-pct { font-size: 16px; }
+  .theme-fusion .db-fiche-agg-card-name { font-size: 13.5px; }
+  .theme-fusion .db-fiche-amount-row {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+  .theme-fusion .db-fiche-amount-row-personal .db-fiche-amount-val {
+    font-size: 20px;
+  }
+}
+
+/* ── Accessibilité : respect de prefers-reduced-motion ──────────────────
+ *
+ * On scope au theme `theme-db-scrolly` pour ne pas affecter les autres
+ * pages du site (pas de side-effect global). Toutes les transitions et
+ * animations sont aplaties à 0.01ms (équivalent snap), tout en laissant
+ * le navigateur exécuter le callback de fin de transition (utile pour
+ * les hooks qui en dépendent).
+ */
+@media (prefers-reduced-motion: reduce) {
+  .theme-db-scrolly *,
+  .theme-db-scrolly *::before,
+  .theme-db-scrolly *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* ───── Daily Bread — scrollytelling (page /daily-bread) ─────────────── */
+/* Palette alignée sur theme-fusion : fond presque-blanc + bleu sombre +
+ * rouge républicain éditorial (Local) + ocre comme accent secondaire.
+ * --p-accent (ocre) reste l'accent éditorial pour eyebrows numériques,
+ * foot-cues et hovers ; --p-local (rouge fusion) marque le territoire. */
+.theme-db-scrolly {
+  --p-ink: #0a0a0a;
+  --p-ink-2: #2a2f38;
+  --p-muted: #5f6672;
+  --p-muted-2: #6e7480;
+  --p-rule: #e6e2d6;
+  --p-rule-strong: #d4cfc0;
+  --p-ivoire: #fafaf7;
+  --p-paper: #ffffff;
+  --p-secu: #2a3680;
+  --p-etat: #1a1d26;
+  --p-local: #c12323;
+  --p-reste: #a67638;
+  --p-accent: #a67638;
+  --pf-disp: "Inter Tight", var(--font-inter), "Inter", -apple-system, sans-serif;
+  --pf-serif: "Instrument Serif", Georgia, serif;
+  --pf-ui: "Inter", -apple-system, sans-serif;
+  --pf-mono: "JetBrains Mono", monospace;
+
+  background: var(--p-ivoire);
+  color: var(--p-ink);
+  font-family: var(--pf-ui);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+.theme-db-scrolly a { color: inherit; text-decoration: none; }
+.theme-db-scrolly .tnum { font-variant-numeric: tabular-nums; }
+
+/* host-body neutralisation (inherits .theme-fusion behaviour) */
+html:has(.theme-db-scrolly) { color-scheme: light; }
+body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink) !important; }
+
+/* Panel generic */
+.theme-db-scrolly .db-panel {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 100px 0 100px;
+  position: relative;
+}
+.theme-db-scrolly .db-panel-wrap {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 0 64px;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.theme-db-scrolly .db-panel-num {
+  font-family: var(--pf-mono);
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--p-muted-2);
+  margin-bottom: 48px;
+}
+.theme-db-scrolly .db-panel-num em {
+  color: var(--p-accent);
+  font-style: normal;
+}
+.theme-db-scrolly .db-panel-foot-cue {
+  font-family: var(--pf-mono);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--p-muted-2);
+  align-self: center;
+  margin-top: auto;
+  padding-top: 60px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.theme-db-scrolly .db-panel-foot-cue::after {
+  content: "↓";
+  font-size: 12px;
+}
+
+/* Panel 0 — Calculator */
+.theme-db-scrolly .db-p-calc { background: var(--p-ivoire); }
+.theme-db-scrolly .db-p-calc-q {
+  font-family: var(--pf-disp);
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--p-ink);
+  margin: 0 0 24px;
+  max-width: 880px;
+}
+.theme-db-scrolly .db-p-calc-q em {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--p-accent);
+}
+.theme-db-scrolly .db-p-calc-deck {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--p-ink-2);
+  max-width: 580px;
+  margin: 0 0 32px;
+}
+/* Live preview — chiffre visible immédiatement dans le fold */
+.theme-db-scrolly .db-p-calc-preview {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  column-gap: 16px;
+  row-gap: 6px;
+  padding: 24px 0 32px;
+  border-top: 0.5px solid var(--p-rule-strong);
+  margin: 0 0 12px;
+}
+.theme-db-scrolly .db-p-calc-preview-label {
+  font-family: var(--pf-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--p-muted);
+  flex-basis: 100%;
+  margin-bottom: 4px;
+}
+.theme-db-scrolly .db-p-calc-preview-num {
+  font-family: var(--pf-disp);
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--p-ink);
+  transition: color 0.2s ease-out;
+}
+/* Mini preview compact : ligne mono, pas un gros chiffre. Le hero §01
+   reste l'asset principal scénographique. */
+.theme-db-scrolly .db-p-calc-preview-mini {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 12px 0 16px;
+  border-top: 0.5px solid var(--p-rule-strong);
+  margin: 0 0 8px;
+}
+.theme-db-scrolly .db-p-calc-preview-mini .db-p-calc-preview-label {
+  flex-basis: 100%;
+  margin-bottom: 0;
+}
+.theme-db-scrolly .db-p-calc-preview-num-mini {
+  font-family: var(--pf-disp);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.015em;
+  color: var(--p-ink);
+}
+.theme-db-scrolly .db-p-calc-preview-mini .db-p-calc-preview-annual {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--p-muted);
+  margin-left: 0;
+}
+.theme-db-scrolly .db-p-calc-preview-eur {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.42em;
+  color: var(--p-muted);
+  vertical-align: 0.5em;
+  margin-left: 2px;
+}
+.theme-db-scrolly .db-p-calc-preview-unit {
+  font-family: var(--pf-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--p-muted);
+  text-transform: uppercase;
+}
+.theme-db-scrolly .db-p-calc-preview-annual {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--p-muted);
+  margin-left: auto;
+}
+@media (max-width: 800px) {
+  .theme-db-scrolly .db-p-calc-preview-num { font-size: 64px; }
+  .theme-db-scrolly .db-p-calc-preview-annual { margin-left: 0; flex-basis: 100%; }
+}
+.theme-db-scrolly .db-p-calc-form {
+  display: grid;
+  grid-template-columns: 2fr 1.4fr 1.6fr;
+  gap: 32px;
+  padding: 32px 0;
+  border-top: 1px solid var(--p-ink);
+  border-bottom: 1px solid var(--p-ink);
+  align-items: end;
+}
+.theme-db-scrolly .db-p-calc-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+.theme-db-scrolly .db-p-calc-field label {
+  font-family: var(--pf-mono);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--p-muted);
+}
+.theme-db-scrolly .db-p-calc-field-input,
+.theme-db-scrolly .db-p-calc-field-select {
+  font-family: var(--pf-disp);
+  font-weight: 700;
+  font-size: 36px;
+  letter-spacing: -0.02em;
+  color: var(--p-ink);
+  border: 0;
+  border-bottom: 1px solid var(--p-ink);
+  background: transparent;
+  padding: 4px 0 8px;
+  outline: none;
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.theme-db-scrolly .db-p-calc-field-input:focus,
+.theme-db-scrolly .db-p-calc-field-select:focus {
+  border-bottom-color: var(--p-accent);
+}
+.theme-db-scrolly .db-p-calc-field-help {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-size: 13.5px;
+  color: var(--p-muted);
+  line-height: 1.5;
+}
+.theme-db-scrolly .db-p-calc-hits {
+  position: absolute;
+  z-index: 60;
+  left: 0;
+  right: 0;
+  top: calc(100% + 4px);
+  background: var(--p-paper);
+  border: 1px solid var(--p-ink);
+  max-height: 280px;
+  overflow-y: auto;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+.theme-db-scrolly .db-p-calc-hit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--p-rule);
+  padding: 10px 14px;
+  cursor: pointer;
+  font-family: var(--pf-ui);
+}
+.theme-db-scrolly .db-p-calc-hit:last-child { border-bottom: 0; }
+.theme-db-scrolly .db-p-calc-hit:hover { background: var(--p-ivoire); }
+.theme-db-scrolly .db-p-calc-hit-name {
+  font-size: 14px;
+  color: var(--p-ink);
+  font-weight: 600;
+}
+.theme-db-scrolly .db-p-calc-hit-meta {
+  font-family: var(--pf-mono);
+  font-size: 11px;
+  color: var(--p-muted);
+  margin-top: 2px;
+}
+/* Toggle propriétaire + input TF custom */
+.theme-db-scrolly .db-p-calc-tf {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--p-ink);
+}
+.theme-db-scrolly .db-p-calc-tf-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  align-self: flex-start;
+  user-select: none;
+}
+.theme-db-scrolly .db-p-calc-tf-toggle input {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--p-ink);
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+}
+.theme-db-scrolly .db-p-calc-tf-toggle input:checked {
+  background: var(--p-ink);
+}
+.theme-db-scrolly .db-p-calc-tf-toggle input:checked::after {
+  content: "✓";
+  color: var(--p-paper);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+}
+.theme-db-scrolly .db-p-calc-tf-toggle-label {
+  font-family: var(--pf-disp);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--p-ink);
+  letter-spacing: -0.005em;
+}
+.theme-db-scrolly .db-p-calc-tf-input-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 0 0 30px;
+}
+.theme-db-scrolly .db-p-calc-tf-input-wrap label {
+  font-family: var(--pf-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--p-muted);
+}
+.theme-db-scrolly .db-p-calc-tf-input-row {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  border-bottom: 1px solid var(--p-ink);
+  width: max-content;
+  padding-bottom: 4px;
+}
+.theme-db-scrolly .db-p-calc-tf-input {
+  font-family: var(--pf-disp);
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  color: var(--p-ink);
+  border: 0;
+  background: transparent;
+  padding: 0;
+  outline: none;
+  width: 130px;
+}
+.theme-db-scrolly .db-p-calc-tf-unit {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--p-muted);
+}
+.theme-db-scrolly .db-p-calc-tf-help {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--p-muted);
+  max-width: 540px;
+}
+.theme-db-scrolly .db-p-calc-tf-note {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--p-muted);
+  max-width: 720px;
+  padding-left: 30px;
+}
+.theme-db-scrolly .db-p-calc-presets {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+  align-items: center;
+}
+.theme-db-scrolly .db-p-calc-presets-label {
+  font-family: var(--pf-mono);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--p-muted-2);
+  margin-right: 8px;
+}
+.theme-db-scrolly .db-p-calc-preset {
+  background: transparent;
+  border: 1px solid var(--p-rule-strong);
+  padding: 8px 14px;
+  font-family: var(--pf-mono);
+  font-size: 11px;
+  color: var(--p-ink-2);
+  cursor: pointer;
+  letter-spacing: .04em;
+  transition: all 0.15s;
+}
+.theme-db-scrolly .db-p-calc-preset:hover {
+  background: var(--p-paper);
+  border-color: var(--p-ink);
+}
+.theme-db-scrolly .db-p-calc-preset.is-active {
+  background: var(--p-ink);
+  color: var(--p-paper);
+  border-color: var(--p-ink);
+}
+
+/* "+ J'ai d'autres revenus" — toggle <details> sous le form principal */
+.theme-db-scrolly .db-other-incomes {
+  margin: 28px 0 4px;
+  border-top: 1px solid var(--p-rule);
+  padding-top: 18px;
+}
+.theme-db-scrolly .db-other-incomes-summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--pf-mono);
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--p-ink);
+  padding: 6px 0;
+  user-select: none;
+}
+.theme-db-scrolly .db-other-incomes-summary::-webkit-details-marker { display: none; }
+.theme-db-scrolly .db-other-incomes-chevron {
+  font-size: 14px;
+  transition: transform 0.2s;
+}
+.theme-db-scrolly .db-other-incomes[open] .db-other-incomes-chevron {
+  transform: rotate(180deg);
+}
+.theme-db-scrolly .db-other-incomes-help {
+  font-family: var(--pf-serif);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--p-muted);
+  margin: 8px 0 16px;
+}
+.theme-db-scrolly .db-other-incomes-form {
+  margin-top: 8px;
+}
+.theme-db-scrolly .db-p-calc-field-unit {
+  font-family: var(--pf-mono);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--p-muted-2);
+  margin-left: 6px;
+}
+
+/* Equity callout (under hero) — neutral, factual, pedagogical */
+.theme-db-scrolly .db-equity-callout {
+  margin: 48px 0 24px;
+  padding: 24px 28px;
+  background: var(--p-paper);
+  border-left: 3px solid var(--p-ink);
+  max-width: 720px;
+}
+.theme-db-scrolly .db-equity-callout-title {
+  font-family: var(--pf-mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--p-ink);
+  margin: 0 0 8px;
+}
+.theme-db-scrolly .db-equity-callout-lead {
+  font-family: var(--pf-serif);
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--p-ink);
+  margin: 0 0 16px;
+}
+.theme-db-scrolly .db-equity-callout-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+}
+.theme-db-scrolly .db-equity-callout-list li {
+  display: grid;
+  grid-template-columns: 130px 90px 1fr;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--p-rule);
+  font-family: var(--pf-sans);
+  font-size: 13px;
+  color: var(--p-ink-2);
+  align-items: baseline;
+}
+.theme-db-scrolly .db-equity-callout-list li:last-child {
+  border-bottom: 0;
+}
+.theme-db-scrolly .db-equity-row-label {
+  font-weight: 600;
+  color: var(--p-ink);
+}
+.theme-db-scrolly .db-equity-row-rate {
+  font-family: var(--pf-mono);
+  font-weight: 600;
+  color: var(--p-ink);
+}
+.theme-db-scrolly .db-equity-row-detail {
+  color: var(--p-muted);
+  font-size: 12px;
+}
+.theme-db-scrolly .db-equity-callout-foot {
+  font-family: var(--pf-sans);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--p-muted);
+  margin: 0;
+}
+@media (max-width: 720px) {
+  .theme-db-scrolly .db-equity-callout-list li {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}
+
+/* Panel 1 — Hero */
+.theme-db-scrolly .db-p-hero { background: var(--p-ivoire); }
+.theme-db-scrolly .db-p-hero-eyebrow {
+  font-family: var(--pf-mono);
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--p-accent);
+  margin-bottom: 32px;
+}
+.theme-db-scrolly .db-p-hero-q {
+  font-family: var(--pf-disp);
+  font-weight: 700;
+  font-size: 76px;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--p-ink);
+  margin: 0 0 8px;
+  max-width: 1100px;
+}
+.theme-db-scrolly .db-p-hero-q em {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--p-muted);
+}
+.theme-db-scrolly .db-p-hero-num-block {
+  margin: 100px 0 48px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 80px;
+  align-items: end;
+}
+.theme-db-scrolly .db-p-hero-num {
+  font-family: var(--pf-disp);
+  font-weight: 700;
+  font-size: 280px;
+  line-height: 0.82;
+  letter-spacing: -0.065em;
+  color: var(--p-ink);
+  margin: 0;
+}
+.theme-db-scrolly .db-p-hero-num-eur {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.32em;
+  color: var(--p-muted);
+  margin-left: 8px;
+  vertical-align: 0.6em;
+}
+.theme-db-scrolly .db-p-hero-meta { padding-bottom: 16px; }
+.theme-db-scrolly .db-p-hero-meta-label {
+  font-family: var(--pf-mono);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--p-muted);
+  margin: 0 0 8px;
+}
+.theme-db-scrolly .db-p-hero-meta-val {
+  font-family: var(--pf-disp);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--p-ink);
+  margin: 0;
+  letter-spacing: -0.005em;
+}
+.theme-db-scrolly .db-p-hero-meta-val .lite { font-weight: 400; color: var(--p-muted); }
+.theme-db-scrolly .db-p-hero-meta hr {
+  border: 0;
+  border-top: 0.5px solid var(--p-rule-strong);
+  margin: 14px 0;
+}
+.theme-db-scrolly .db-p-hero-deck {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-size: 24px;
+  line-height: 1.4;
+  color: var(--p-ink-2);
+  max-width: 640px;
+  margin: 0;
+}
+
+/* ── Share FAB sticky bottom-right ── */
+.db-share-fab-wrap {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+}
+.theme-db-scrolly + .db-share-fab,
+.theme-db-scrolly .db-share-fab,
+.db-share-fab {
+  /* When wrapped in .db-share-fab-wrap, position is handled by the wrap.
+     We still keep `position: fixed` as a no-op fallback for older markup. */
+  position: relative;
+  background: var(--p-ink, #0a0a0a);
+  color: var(--p-paper, #ffffff);
+  padding: 14px 22px;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--pf-disp, "Inter Tight", "Inter", sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  box-shadow: 0 8px 32px rgba(10, 10, 10, 0.22);
+  transition: all 0.15s ease-out;
+}
+/* Secondary variant — outlined, lower visual weight than the primary share. */
+.db-share-fab.db-share-fab-secondary {
+  background: var(--p-paper, #ffffff);
+  color: var(--p-ink, #0a0a0a);
+  border: 1px solid var(--p-ink, #0a0a0a);
+  box-shadow: 0 4px 18px rgba(10, 10, 10, 0.12);
+}
+.db-share-fab:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(13, 16, 20, 0.28);
+}
+.db-share-fab.db-share-fab-secondary:hover {
+  box-shadow: 0 8px 26px rgba(13, 16, 20, 0.18);
+}
+.db-share-fab:active {
+  transform: translateY(0);
+}
+@media (max-width: 600px) {
+  .db-share-fab-wrap {
+    bottom: 16px;
+    right: 16px;
+    gap: 8px;
+  }
+  .db-share-fab {
+    padding: 12px 18px;
+    font-size: 13px;
+  }
+  /* Réserve l'espace du FAB en bas du contenu — sinon le FAB recouvre
+     les derniers items du dernier panel (constaté sur le tri-stack
+     dispatch sur viewport < 600px). */
+  .theme-db-scrolly {
+    padding-bottom: 140px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   Share actions — icônes alignées en bas du panel synthèse (db-p-end)
+   ══════════════════════════════════════════════════════════════════════ */
+.theme-db-scrolly .db-p-end-share {
+  margin-top: 32px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.theme-db-scrolly .db-p-end-share-label {
+  font-family: var(--pf-mono);
+  font-size: 10.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.55);
+}
+.theme-db-scrolly .db-p-end-share-icons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.theme-db-scrolly .db-share-icon {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.20);
+  color: rgba(0, 0, 0, 0.72);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 0;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+.theme-db-scrolly .db-share-icon:hover {
+  border-color: var(--p-ink);
+  color: var(--p-ink);
+  background: rgba(0, 0, 0, 0.04);
+}
+.theme-db-scrolly .db-share-icon.is-copied {
+  border-color: var(--p-ink);
+  color: var(--p-ink);
+}
+.theme-db-scrolly .db-share-divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(0, 0, 0, 0.15);
+  margin: 0 6px;
+}
+@media (max-width: 600px) {
+  .theme-db-scrolly .db-p-end-share {
+    justify-content: center;
+    gap: 14px;
+  }
+  .theme-db-scrolly .db-share-icon { width: 38px; height: 38px; }
+}
+
+/* ── OpenFisca opt-in toggle (Phase 5) ── */
+.theme-db-scrolly .db-openfisca-toggle {
+  margin: 24px 0 28px;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.theme-db-scrolly .db-openfisca-btn {
+  appearance: none;
+  border: 1px solid var(--p-rule-strong);
+  background: var(--p-paper);
+  color: var(--p-ink);
+  font-family: var(--pf-ui);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  padding: 12px 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  align-self: flex-start;
+  line-height: 1.2;
+}
+.theme-db-scrolly .db-openfisca-btn:hover:not(:disabled) {
+  background: var(--p-secu);
+  border-color: var(--p-secu);
+  color: var(--p-paper);
+}
+.theme-db-scrolly .db-openfisca-btn:disabled {
+  cursor: default;
+  opacity: 0.85;
+}
+.theme-db-scrolly .db-openfisca-btn[data-state="loading"] {
+  background: var(--p-rule);
+  color: var(--p-muted);
+}
+.theme-db-scrolly .db-openfisca-btn[data-state="active"] {
+  background: var(--p-secu);
+  border-color: var(--p-secu);
+  color: var(--p-paper);
+  opacity: 1;
+}
+.theme-db-scrolly .db-openfisca-btn[data-state="error"] {
+  border-color: var(--p-accent);
+  color: var(--p-accent);
+}
+.theme-db-scrolly .db-openfisca-note {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--p-muted);
+  margin: 0;
+  max-width: 580px;
+}
+.theme-db-scrolly .db-openfisca-ecart {
+  font-family: var(--pf-mono);
+  font-style: normal;
+  font-size: 12px;
+  color: var(--p-secu);
+  font-weight: 600;
+}
+.theme-db-scrolly .db-openfisca-badge {
+  display: inline-block;
+  font-family: var(--pf-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--p-secu);
+  background: rgba(4, 81, 214, 0.08);
+  padding: 4px 8px;
+  border-radius: 3px;
+  margin-left: 14px;
+  vertical-align: middle;
+  position: relative;
+  top: -8px;
+  white-space: nowrap;
+}
+
+/* Panel 2 — Dispatch */
+.theme-db-scrolly .db-p-disp { background: var(--p-paper); }
+.theme-db-scrolly .db-p-disp-q {
+  font-family: var(--pf-disp);
+  font-weight: 700;
+  font-size: 116px;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  color: var(--p-ink);
+  margin: 0 0 32px;
+  max-width: 1240px;
+}
+.theme-db-scrolly .db-p-disp-q em {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--p-accent);
+}
+.theme-db-scrolly .db-p-disp-deck {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.55;
+  color: var(--p-muted);
+  max-width: 760px;
+  margin: 0 0 80px;
+}
+.theme-db-scrolly .db-p-disp-deck b { color: var(--p-ink); }
+.theme-db-scrolly .db-stack-tri {
+  display: grid;
+  height: 132px;
+  margin-top: 40px;
+  border: 0.5px solid var(--p-ink);
+}
+.theme-db-scrolly .db-stack-tri > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 32px;
+  color: #fff;
+}
+.theme-db-scrolly .db-stack-tri-pct {
+  font-family: var(--pf-disp);
+  font-weight: 700;
+  font-size: 48px;
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+.theme-db-scrolly .db-stack-tri-name {
+  font-family: var(--pf-mono);
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  opacity: 0.9;
+  margin-top: 8px;
+}
+.theme-db-scrolly .db-stack-tri-amt {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-size: 17px;
+  margin-top: 8px;
+  opacity: 0.9;
+}
+
+/* ── Couche cinétique : reveal on scroll du tri-stack (panneau 02) ──
+ *
+ * État par défaut (avant trigger IntersectionObserver) : segments
+ * compressés à scaleX(0) depuis la gauche. Quand le ref entre dans le
+ * viewport, le hook `useRevealOnScroll` ajoute `.is-revealed` au div parent,
+ * et chaque segment grandit en cascade (delay 0/150/300ms).
+ *
+ * Régression zéro : si JS désactivé OU si l'IntersectionObserver n'est pas
+ * dispo, le hook renvoie immédiatement `true` → `.is-revealed` posée → état
+ * final affiché. `prefers-reduced-motion` : rules ci-dessous toujours
+ * actives, mais `transition-duration` est forcé à 0.01ms via le bloc
+ * media-query global plus bas.
+ */
+.theme-db-scrolly .db-stack-tri > div {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+.theme-db-scrolly .db-stack-tri.is-revealed > div { transform: scaleX(1); }
+.theme-db-scrolly .db-stack-tri.is-revealed > div:nth-child(2) {
+  transition-delay: 150ms;
+}
+.theme-db-scrolly .db-stack-tri.is-revealed > div:nth-child(3) {
+  transition-delay: 300ms;
+}
+
+/* ── Couche cinétique : reveal séquentiel des panels (§03-§08) ─────────
+ *
+ * Progressive enhancement strict : les règles "hidden initial" sont
+ * scopées sous `.theme-db-scrolly.is-armed` — la classe `is-armed` est
+ * posée par le composant client après mount via `useEffect`. Donc :
+ * - SSR / JS désactivé : pas de `.is-armed` → règles fade inactives →
+ *   panels rendus dans leur état naturel (opacity 1, pas de transform) →
+ *   contenu lisible et indexable. Promesse régression zéro respectée.
+ * - JS activé, après mount : `.is-armed` posée → panels initialement
+ *   à opacity 0 + translateY(30px). Comme §03-§08 sont sous la ligne de
+ *   flottaison, l'utilisateur ne voit pas la transition visible→hidden.
+ * - Quand `useRevealOnScroll` (threshold 0.15, one-shot) bascule à
+ *   `true`, la classe `.is-revealed` est posée → opacity 1 +
+ *   translateY(0) sur 500ms, easing cubic-bezier standard.
+ *
+ * `prefers-reduced-motion` est géré par le bloc @media plus bas
+ * (transitions aplaties à 0.01ms — snap direct).
+ *
+ * Les panels §00 (Calc) et §01 (Hero) n'ont PAS la classe `db-panel-fade`
+ * pour rester toujours visibles d'emblée (sinon hero invisible au mount).
+ * Le panel §02 (Disp) garde son reveal localisé au tri-stack interne.
+ */
+.theme-db-scrolly.is-armed .db-panel-fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+.theme-db-scrolly.is-armed .db-panel-fade.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Panels 3, 4, 5 — Zoom institution */
+.theme-db-scrolly .db-p-zoom { padding: 120px 0 120px; }
+.theme-db-scrolly .db-p-zoom-l {
+  background: var(--p-paper);
+  border-top: 0.5px solid var(--p-rule-strong);
+  border-bottom: 0.5px solid var(--p-rule-strong);
+}
+.theme-db-scrolly .db-p-zoom-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 96px;
+  align-items: start;
+}
+.theme-db-scrolly .db-p-zoom-l-text { position: sticky; top: 80px; }
+.theme-db-scrolly .db-p-zoom-pct {
+  font-family: var(--pf-disp);
+  font-weight: 700;
+  font-size: 220px;
+  line-height: 0.82;
+  letter-spacing: -0.06em;
+  margin: 0 0 16px;
+}
+.theme-db-scrolly .db-p-zoom-pct .pct-symbol {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.42em;
+  color: var(--p-muted);
+  margin-left: 10px;
+  vertical-align: 0.4em;
+}
+.theme-db-scrolly .db-p-zoom-pct.c-secu { color: var(--p-secu); }
+.theme-db-scrolly .db-p-zoom-pct.c-etat { color: var(--p-etat); }
+.theme-db-scrolly .db-p-zoom-pct.c-local { color: var(--p-local); }
+.theme-db-scrolly .db-p-zoom-name {
+  font-family: var(--pf-disp);
+  font-weight: 600;
+  font-size: 36px;
+  letter-spacing: -0.025em;
+  margin: 0 0 12px;
+  color: var(--p-ink);
+}
+.theme-db-scrolly .db-p-zoom-amt {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-size: 26px;
+  color: var(--p-muted);
+  margin: 0 0 40px;
+}
+.theme-db-scrolly .db-p-zoom-amt b {
+  font-family: var(--pf-disp);
+  font-style: normal;
+  font-weight: 700;
+  color: var(--p-ink);
+}
+.theme-db-scrolly .db-p-zoom-deck {
+  font-family: var(--pf-serif);
+  font-size: 21px;
+  line-height: 1.55;
+  color: var(--p-ink-2);
+  max-width: 480px;
+}
+.theme-db-scrolly .db-p-zoom-deck p { margin: 0 0 18px; }
+.theme-db-scrolly .db-p-zoom-deck b { font-weight: 600; color: var(--p-ink); }
+.theme-db-scrolly .db-p-zoom-deck em {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  color: var(--p-ink);
+}
+.theme-db-scrolly .db-p-zoom-source {
+  font-family: var(--pf-mono);
+  font-size: 13px;
+  font-style: normal;
+  color: var(--p-muted-2);
+  margin-top: 8px;
+}
+
+.theme-db-scrolly .db-p-zoom-method-note {
+  font-family: var(--pf-mono);
+  font-size: 12px;
+  color: var(--p-muted);
+  letter-spacing: 0.02em;
+  margin: 0 0 18px 0;
+  font-style: italic;
+  max-width: 720px;
+  line-height: 1.5;
+}
+.theme-db-scrolly .db-p-zoom-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.theme-db-scrolly .db-p-zoom-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.theme-db-scrolly .db-p-zoom-bar-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+.theme-db-scrolly .db-p-zoom-bar-name {
+  font-family: var(--pf-disp);
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  color: var(--p-ink);
+}
+.theme-db-scrolly .db-p-zoom-bar-val {
+  font-family: var(--pf-disp);
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: -0.025em;
+  color: var(--p-ink);
+  white-space: nowrap;
+  line-height: 1;
+}
+.theme-db-scrolly .db-p-zoom-bar-val .pct {
+  font-family: var(--pf-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--p-muted-2);
+  margin-left: 8px;
+  letter-spacing: .04em;
+}
+.theme-db-scrolly .db-p-zoom-bar-track {
+  height: 32px;
+  background: var(--p-rule);
+  position: relative;
+  overflow: hidden;
+}
+.theme-db-scrolly .db-p-zoom-bar-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  color: #fff;
+  font-family: var(--pf-mono);
+  font-size: 10.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  /* Couche cinétique : interpole les widths quand l'utilisateur change la
+   * commune (Paris → Marseille). Default = snap si reduced-motion. */
+  transition: width 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.theme-db-scrolly .db-p-zoom-bar-fill.c-secu { background: var(--p-secu); }
+.theme-db-scrolly .db-p-zoom-bar-fill.c-etat { background: var(--p-etat); }
+.theme-db-scrolly .db-p-zoom-bar-fill.c-local { background: var(--p-local); }
+.theme-db-scrolly .db-p-zoom-bar-sub {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-size: 14.5px;
+  color: var(--p-muted);
+  line-height: 1.5;
+}
+
+/* ─── Deep-dive "À l'intérieur de…" ─── */
+/* On utilise <details>/<summary> natif HTML5 pour expand/collapse sans JS. */
+.theme-db-scrolly .db-p-zoom-deepdive {
+  margin-top: 56px;
+  padding-top: 36px;
+  border-top: 0.5px solid var(--p-rule-strong, #1a1d26);
+}
+/* Supprime le triangle natif Chrome / Safari / Firefox */
+.theme-db-scrolly .db-p-zoom-deepdive > summary {
+  list-style: none;
+}
+.theme-db-scrolly .db-p-zoom-deepdive > summary::-webkit-details-marker {
+  display: none;
+}
+.theme-db-scrolly .db-p-zoom-deepdive > summary::marker {
+  display: none;
+}
+.theme-db-scrolly .db-p-zoom-deepdive-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  cursor: pointer;
+  padding: 4px 0;
+  margin-bottom: 0;
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
+.theme-db-scrolly .db-p-zoom-deepdive[open] > .db-p-zoom-deepdive-head {
+  margin-bottom: 32px;
+}
+.theme-db-scrolly .db-p-zoom-deepdive > summary:hover .db-p-zoom-deepdive-title,
+.theme-db-scrolly .db-p-zoom-deepdive > summary:focus-visible .db-p-zoom-deepdive-title {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+.theme-db-scrolly .db-p-zoom-deepdive > summary:focus-visible {
+  outline: 1.5px solid var(--p-ink);
+  outline-offset: 4px;
+}
+/* Chevron qui tourne quand le détail est ouvert */
+.theme-db-scrolly .db-p-zoom-deepdive-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.theme-db-scrolly .db-p-zoom-deepdive-meta-text {
+  display: inline-block;
+}
+.theme-db-scrolly .db-p-zoom-deepdive-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-family: var(--pf-mono);
+  font-size: 14px;
+  line-height: 1;
+  color: var(--p-ink);
+  transition: transform 0.25s ease;
+}
+.theme-db-scrolly .db-p-zoom-deepdive[open] .db-p-zoom-deepdive-chevron {
+  transform: rotate(180deg);
+}
+/* Border-left souligné par couleur du panneau */
+.theme-db-scrolly .db-p-zoom-deepdive.c-secu { border-top-color: var(--p-secu); }
+.theme-db-scrolly .db-p-zoom-deepdive.c-etat { border-top-color: var(--p-etat); }
+.theme-db-scrolly .db-p-zoom-deepdive.c-local { border-top-color: var(--p-local); }
+.theme-db-scrolly .db-p-zoom-deepdive-body {
+  /* Animation height via details::details-content (modern Chrome 131+) */
+  interpolate-size: allow-keywords;
+}
+@supports (interpolate-size: allow-keywords) {
+  .theme-db-scrolly .db-p-zoom-deepdive::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition: block-size 0.3s ease, content-visibility 0.3s allow-discrete;
+  }
+  .theme-db-scrolly .db-p-zoom-deepdive[open]::details-content {
+    block-size: auto;
+  }
+}
+.theme-db-scrolly .db-p-zoom-deepdive-eyebrow {
+  font-family: var(--pf-mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--p-accent);
+  margin: 0 0 8px;
+}
+.theme-db-scrolly .db-p-zoom-deepdive-title {
+  font-family: var(--pf-disp);
+  font-weight: 700;
+  font-size: 38px;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  color: var(--p-ink);
+  margin: 0;
+}
+.theme-db-scrolly .db-p-zoom-deepdive-title em {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--p-muted);
+}
+.theme-db-scrolly .db-p-zoom-deepdive-meta {
+  font-family: var(--pf-mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--p-muted);
+  text-align: right;
+}
+/* Asides chiffrés (style Le Poster du 1) — bandeau éditorial sourcé,
+ * sole chose qui survit dans le body du <details> depuis le refactor 2026-05.
+ * Layout : 3 cartes côte-à-côte sur desktop, empilées sur mobile. */
+.theme-db-scrolly .db-p-zoom-deepdive-asides {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+.theme-db-scrolly .db-p-zoom-deepdive-aside {
+  border-left: 2px solid var(--p-rule-strong, var(--p-ink));
+  padding: 4px 0 4px 20px;
+}
+.theme-db-scrolly .db-p-zoom-deepdive-aside.c-secu { border-left-color: var(--p-secu); }
+.theme-db-scrolly .db-p-zoom-deepdive-aside.c-etat { border-left-color: var(--p-etat); }
+.theme-db-scrolly .db-p-zoom-deepdive-aside.c-local { border-left-color: var(--p-local); }
+.theme-db-scrolly .db-p-zoom-deepdive-aside-num {
+  font-family: var(--pf-disp);
+  font-weight: 700;
+  font-size: 30px;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  color: var(--p-ink);
+  margin: 0 0 6px;
+}
+.theme-db-scrolly .db-p-zoom-deepdive-aside-num em {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.7em;
+  color: var(--p-muted);
+}
+.theme-db-scrolly .db-p-zoom-deepdive-aside-text {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--p-ink-2, var(--p-ink));
+  margin: 0;
+}
+.theme-db-scrolly .db-p-zoom-deepdive-aside-source {
+  font-family: var(--pf-mono);
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--p-muted-2, var(--p-muted));
+  display: block;
+  margin-top: 4px;
+}
+
+/* Panel 6 — Synthèse / Equivalents (light theme — bg hérite de la page) */
+.theme-db-scrolly .db-p-end {
+  background: transparent;
+  color: var(--p-ink);
+}
+.theme-db-scrolly .db-p-end .db-panel-num em { color: var(--p-accent); }
+.theme-db-scrolly .db-p-end .db-panel-num { color: rgba(0,0,0,0.55); }
+.theme-db-scrolly .db-p-end-q {
+  font-family: var(--pf-disp);
+  font-weight: 700;
+  font-size: 72px;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  color: var(--p-ink);
+  margin: 0 0 24px;
+  max-width: 980px;
+}
+.theme-db-scrolly .db-p-end-q em {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--p-accent);
+}
+.theme-db-scrolly .db-p-end-deck {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.55;
+  color: rgba(0,0,0,0.65);
+  max-width: 580px;
+  margin: 0 0 80px;
+}
+.theme-db-scrolly .db-p-end-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+  margin-bottom: 80px;
+}
+.theme-db-scrolly .db-p-end-item {
+  padding: 24px 0;
+  border-top: 1px solid rgba(0,0,0,0.15);
+}
+.theme-db-scrolly .db-p-end-item-tag {
+  font-family: var(--pf-mono);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.55);
+  margin: 0 0 12px;
+}
+.theme-db-scrolly .db-p-end-item-headline {
+  font-family: var(--pf-disp);
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  color: var(--p-ink);
+  margin: 0 0 6px;
+}
+.theme-db-scrolly .db-p-end-item-unit {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-size: 15px;
+  color: rgba(0,0,0,0.65);
+  line-height: 1.4;
+  margin: 0 0 16px;
+}
+.theme-db-scrolly .db-p-end-item-amt {
+  font-family: var(--pf-disp);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--p-ink);
+  border-top: 0.5px solid rgba(0,0,0,0.18);
+  padding-top: 10px;
+}
+.theme-db-scrolly .db-p-end-item-amt .lite {
+  color: rgba(0,0,0,0.55);
+  font-weight: 400;
+}
+.theme-db-scrolly .db-p-end-foot {
+  margin-top: 80px;
+  padding-top: 24px;
+  border-top: 0.5px solid rgba(0,0,0,0.15);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-family: var(--pf-mono);
+  font-size: 11px;
+  letter-spacing: .04em;
+  color: rgba(0,0,0,0.55);
+}
+.theme-db-scrolly .db-p-end-foot a {
+  color: var(--p-ink);
+  text-decoration: underline;
+  text-decoration-color: rgba(0,0,0,0.25);
+}
+.theme-db-scrolly .db-p-end-foot a:hover { text-decoration-color: var(--p-ink); }
+
+/* Local CTA */
+.theme-db-scrolly .db-local-cta {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 12px 20px;
+  background: var(--p-ink);
+  color: var(--p-paper);
+  font-family: var(--pf-disp);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.005em;
+  border: 0;
+  cursor: pointer;
+}
+.theme-db-scrolly .db-local-cta:hover { background: var(--p-accent); }
+
+/* Mobile */
+@media (max-width: 800px) {
+  .theme-db-scrolly .db-panel { padding: 60px 0; min-height: auto; }
+  .theme-db-scrolly .db-panel-wrap { padding: 0 24px; }
+  .theme-db-scrolly .db-p-calc-q { font-size: 40px; }
+  .theme-db-scrolly .db-p-calc-form {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .theme-db-scrolly .db-p-calc-field-input,
+  .theme-db-scrolly .db-p-calc-field-select { font-size: 28px; }
+  .theme-db-scrolly .db-p-hero-q { font-size: 36px; }
+  .theme-db-scrolly .db-p-hero-num { font-size: 116px; }
+  .theme-db-scrolly .db-p-hero-num-block {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin: 60px 0 32px;
+  }
+  .theme-db-scrolly .db-p-hero-deck { font-size: 19px; }
+  .theme-db-scrolly .db-p-disp-q { font-size: 48px; }
+  .theme-db-scrolly .db-p-zoom { padding: 60px 0; }
+  .theme-db-scrolly .db-p-zoom-grid { grid-template-columns: 1fr; gap: 40px; }
+  .theme-db-scrolly .db-p-zoom-pct { font-size: 96px; }
+  .theme-db-scrolly .db-p-zoom-l-text { position: static; }
+  .theme-db-scrolly .db-stack-tri {
+    grid-template-columns: 1fr !important;
+    height: auto;
+  }
+  .theme-db-scrolly .db-stack-tri > div { padding: 22px; }
+  .theme-db-scrolly .db-p-end-q { font-size: 44px; }
+  .theme-db-scrolly .db-p-end-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .theme-db-scrolly .db-p-zoom-deepdive { margin-top: 56px; padding-top: 32px; }
+  .theme-db-scrolly .db-p-zoom-deepdive-asides {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .theme-db-scrolly .db-p-zoom-deepdive-title { font-size: 28px; }
+  .theme-db-scrolly .db-p-zoom-deepdive-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .theme-db-scrolly .db-p-zoom-deepdive-meta { text-align: left; }
+}
+
+/* ─── MACRO → MICRO : passerelle vers le portail Paris détaillé ─── */
+.theme-db-scrolly .db-macro-to-micro {
+  margin-top: 80px;
+  padding: 40px 0 0;
+  border-top: 0.5px solid var(--p-rule-strong);
+}
+.theme-db-scrolly .db-macro-to-micro-eyebrow {
+  font-family: var(--pf-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--p-accent);
+  margin: 0 0 12px;
+}
+.theme-db-scrolly .db-macro-to-micro-title {
+  font-family: var(--pf-disp);
+  font-weight: 700;
+  font-size: 44px;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--p-ink);
+  margin: 0 0 16px;
+  max-width: 860px;
+}
+.theme-db-scrolly .db-macro-to-micro-deck {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--p-muted);
+  max-width: 720px;
+  margin: 0 0 36px;
+}
+.theme-db-scrolly .db-macro-to-micro-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.theme-db-scrolly .db-macro-to-micro-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 22px 24px 22px;
+  background: var(--p-paper);
+  border: 0.5px solid var(--p-rule-strong);
+  text-decoration: none;
+  color: var(--p-ink);
+  transition: all 0.15s ease-out;
+  position: relative;
+  min-height: 110px;
+}
+.theme-db-scrolly .db-macro-to-micro-card:hover {
+  background: var(--p-ink);
+  color: var(--p-paper);
+  border-color: var(--p-ink);
+  transform: translateY(-2px);
+}
+.theme-db-scrolly .db-macro-to-micro-card-label {
+  font-family: var(--pf-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--p-muted);
+  transition: color 0.15s;
+}
+.theme-db-scrolly .db-macro-to-micro-card:hover .db-macro-to-micro-card-label {
+  color: var(--p-accent);
+}
+.theme-db-scrolly .db-macro-to-micro-card-title {
+  font-family: var(--pf-disp);
+  font-weight: 600;
+  font-size: 21px;
+  letter-spacing: -0.015em;
+  color: inherit;
+  line-height: 1.2;
+}
+.theme-db-scrolly .db-macro-to-micro-card-arrow {
+  position: absolute;
+  bottom: 18px;
+  right: 24px;
+  font-family: var(--pf-disp);
+  font-size: 18px;
+  color: var(--p-muted-2);
+  transition: all 0.15s;
+}
+.theme-db-scrolly .db-macro-to-micro-card:hover .db-macro-to-micro-card-arrow {
+  color: var(--p-accent);
+  transform: translateX(4px);
+}
+
+/* Variante "autre commune" : message + lien sobre vers fiche OFGL */
+.theme-db-scrolly .db-macro-to-micro-other {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 32px 0;
+}
+.theme-db-scrolly .db-macro-to-micro-other-text {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--p-muted);
+  margin: 0;
+  max-width: 720px;
+}
+.theme-db-scrolly .db-macro-to-micro-other-link {
+  font-family: var(--pf-disp);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--p-ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--p-ink);
+  padding-bottom: 2px;
+  letter-spacing: -0.01em;
+  transition: color 0.15s;
+}
+.theme-db-scrolly .db-macro-to-micro-other-link:hover {
+  color: var(--p-accent);
+  border-bottom-color: var(--p-accent);
+}
+@media (max-width: 800px) {
+  .theme-db-scrolly .db-macro-to-micro-grid {
+    grid-template-columns: 1fr;
+  }
+  .theme-db-scrolly .db-macro-to-micro-title {
+    font-size: 32px;
+  }
+}
+
+/* ── Daily Bread — drill-down drawer (rows cliquables + fiche) ─────────
+ *
+ * Étend le DeepDive existant pour rendre les rows légende cliquables
+ * (ouverture du drawer `/daily-bread/bucket/<bucket>/<key>`). Le drawer
+ * lui-même réutilise les styles `.theme-fusion .fx-drawer-*` (l'enveloppe
+ * de la page drawer ajoute `.theme-fusion`). On scope tout au theme
+ * `.theme-db-scrolly` pour les rows in-page, et on ajoute un mini-namespace
+ * `.db-fiche-*` pour le contenu de la fiche (drawer + standalone).
+ */
+
+/* ── BarList top-level click-through (drill macro→niveau 2) ───────────
+ * Quand une barre top-level (ex: assoBranches CNAM, stateBuckets education)
+ * a un alias drilldown, elle devient cliquable ET reçoit un chevron pour
+ * signaler l'interaction. Style aligné avec la legend item clickable. */
+.theme-db-scrolly button.db-p-zoom-bar.db-p-zoom-bar-clickable {
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 8px 10px;
+  margin: -8px -10px;
+  width: calc(100% + 20px);
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  display: block;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+.theme-db-scrolly button.db-p-zoom-bar.db-p-zoom-bar-clickable:hover,
+.theme-db-scrolly button.db-p-zoom-bar.db-p-zoom-bar-clickable:focus-visible {
+  background: rgba(10, 10, 10, 0.04);
+  border-color: rgba(10, 10, 10, 0.12);
+  outline: none;
+}
+.theme-db-scrolly button.db-p-zoom-bar.db-p-zoom-bar-clickable:focus-visible {
+  border-color: var(--p-ink);
+}
+.theme-db-scrolly .db-p-zoom-bar-chevron {
+  font-family: var(--pf-mono);
+  font-size: 12px;
+  color: var(--p-muted-2, var(--p-muted));
+  margin-left: 6px;
+  transition: transform 0.12s ease, color 0.12s ease;
+  display: inline-block;
+}
+.theme-db-scrolly button.db-p-zoom-bar.db-p-zoom-bar-clickable:hover .db-p-zoom-bar-chevron,
+.theme-db-scrolly button.db-p-zoom-bar.db-p-zoom-bar-clickable:focus-visible .db-p-zoom-bar-chevron {
+  transform: translateX(2px);
+  color: var(--p-ink);
+}
+
+/* ── Fiche drill-down (composant partagé drawer + standalone) ──────── */
+.theme-fusion .db-fiche {
+  font-family: var(--f-ui);
+  color: var(--ink);
+}
+.theme-fusion .db-fiche-stub-warn {
+  margin: 0 0 14px;
+  padding: 8px 12px;
+  background: rgba(166, 118, 56, 0.08);
+  border: 1px dashed var(--ocre);
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ocre);
+}
+.theme-fusion .db-fiche-lead {
+  margin: 0 0 18px;
+  padding: 16px 18px;
+  background: #f5f5f2;
+  border-left: 3px solid var(--bleu);
+}
+.theme-fusion .db-fiche-secu .db-fiche-lead { border-left-color: #2a3680; }
+.theme-fusion .db-fiche-etat .db-fiche-lead { border-left-color: #1a1d26; }
+.theme-fusion .db-fiche-local .db-fiche-lead { border-left-color: #c12323; }
+.theme-fusion .db-fiche-lead-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.theme-fusion .db-fiche-lead-pct {
+  font-family: var(--f-disp);
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.theme-fusion .db-fiche-lead-pct-label {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.theme-fusion .db-fiche-lead-name {
+  margin: 6px 0 0;
+  font-family: var(--f-disp);
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.35;
+  color: var(--ink);
+}
+.theme-fusion .db-fiche-section { margin: 22px 0; }
+.theme-fusion .db-fiche-section-head {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+.theme-fusion .db-fiche-source {
+  margin: 0;
+  font-family: var(--f-ui);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.theme-fusion .db-fiche-source-link {
+  color: var(--bleu);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.theme-fusion .db-fiche-source-link:hover { color: var(--ink); }
+.theme-fusion .db-fiche-detail-unavailable {
+  margin: 0;
+  padding: 10px 14px;
+  background: #fbfaf6;
+  border: 1px dashed rgba(10, 10, 10, 0.18);
+  font-size: 13.5px;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.5;
+}
+.theme-fusion .db-fiche-children {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.theme-fusion .db-fiche-child {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 14px;
+  border: 1px solid var(--rule);
+  background: var(--bg);
+  color: var(--ink);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease, transform 0.12s ease;
+}
+.theme-fusion .db-fiche-child:hover,
+.theme-fusion .db-fiche-child:focus-visible {
+  background: rgba(10, 10, 10, 0.04);
+  border-color: var(--ink);
+  outline: none;
+}
+.theme-fusion .db-fiche-child-pct {
+  font-family: var(--f-disp);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.theme-fusion .db-fiche-child-name {
+  font-family: var(--f-ui);
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--ink);
+  min-width: 0;
+}
+.theme-fusion .db-fiche-child-chevron {
+  font-family: var(--f-mono);
+  font-size: 14px;
+  color: var(--muted);
+  transition: transform 0.12s ease, color 0.12s ease;
+}
+.theme-fusion .db-fiche-child:hover .db-fiche-child-chevron,
+.theme-fusion .db-fiche-child:focus-visible .db-fiche-child-chevron {
+  transform: translateX(2px);
+  color: var(--ink);
+}
+
+/* Drawer host : la page intercepteur ajoute `.db-drawer-shell` à côté
+ * de `.theme-fusion`. Réservé pour overrides éventuels (ex. accent
+ * couleur). Pour l'instant, hérite tel quel du theme-fusion drawer. */
+.theme-fusion.db-drawer-shell { /* placeholder */ }
+
+/* ── Aggregation drawer (État) ───────────────────────────────────────────
+ * Liste des missions PLF qui composent un bucket éditorial. Layout grid
+ * 2 colonnes desktop, 1 colonne mobile. Mêmes vars que .db-fiche-child
+ * pour rester cohérent avec l'esthétique drawer. */
+.theme-fusion .db-fiche-agg-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.theme-fusion .db-fiche-agg-card {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--paper);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.12s ease, border-color 0.12s ease;
+  min-height: 56px;
+}
+.theme-fusion .db-fiche-agg-card:hover,
+.theme-fusion .db-fiche-agg-card:focus-visible {
+  background: rgba(10, 10, 10, 0.04);
+  border-color: var(--ink);
+  outline: none;
+}
+.theme-fusion .db-fiche-agg-card-pct {
+  font-family: var(--f-disp);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.theme-fusion .db-fiche-agg-card-name {
+  font-family: var(--f-ui);
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--ink);
+  min-width: 0;
+}
+.theme-fusion .db-fiche-agg-card-chevron {
+  font-family: var(--f-mono);
+  font-size: 14px;
+  color: var(--muted);
+  transition: transform 0.12s ease, color 0.12s ease;
+}
+.theme-fusion .db-fiche-agg-card:hover .db-fiche-agg-card-chevron,
+.theme-fusion .db-fiche-agg-card:focus-visible .db-fiche-agg-card-chevron {
+  transform: translateX(2px);
+  color: var(--ink);
+}
+
+/* ── Drilldown breadcrumb (drawer + standalone) ────────────────────────── */
+.theme-fusion .db-breadcrumb {
+  margin: 0 0 14px;
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.theme-fusion .db-breadcrumb-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+.theme-fusion .db-breadcrumb-item {
+  display: inline-flex;
+  align-items: baseline;
+}
+.theme-fusion .db-breadcrumb-link {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(10, 10, 10, 0.25);
+  transition: color 0.12s ease, border-color 0.12s ease;
+}
+.theme-fusion .db-breadcrumb-link:hover,
+.theme-fusion .db-breadcrumb-link:focus-visible {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+  outline: none;
+}
+.theme-fusion .db-breadcrumb-current {
+  color: var(--ink);
+  font-weight: 600;
+}
+.theme-fusion .db-breadcrumb-sep {
+  margin: 0 6px;
+  color: var(--muted);
+}
+
+/* ── Dual amounts (€/an national + €/mois personnel) ──────────────────── */
+.theme-fusion .db-fiche-amounts {
+  margin: 12px 0 0;
+  padding: 10px 0 0;
+  border-top: 1px dashed rgba(10, 10, 10, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.theme-fusion .db-fiche-amount-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 25%) 1fr;
+  align-items: baseline;
+  gap: 14px;
+  margin: 0;
+}
+.theme-fusion .db-fiche-amount-key {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
+}
+.theme-fusion .db-fiche-amount-val {
+  font-family: var(--f-disp);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.theme-fusion .db-fiche-amount-row-personal .db-fiche-amount-val {
+  font-weight: 700;
+  font-size: 22px;
+}
+.theme-fusion .db-fiche-amount-unit {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
+/* Sub-row €/mois personnel à côté du % enfant. */
+.theme-fusion .db-fiche-child {
+  grid-template-columns: 48px 1fr auto auto;
+}
+.theme-fusion .db-fiche-child-monthly {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-2);
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+.theme-fusion .db-fiche-agg-card {
+  grid-template-columns: 56px 1fr auto auto;
+}
+.theme-fusion .db-fiche-agg-card-monthly {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-2);
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+
+@media (max-width: 640px) {
+  .theme-fusion .db-fiche-lead-pct { font-size: 24px; }
+  .theme-fusion .db-fiche-lead-name { font-size: 15.5px; }
+  .theme-fusion .db-fiche-child {
+    grid-template-columns: 44px 1fr auto;
+    padding: 9px 12px;
+    row-gap: 4px;
+  }
+  /* Mobile : pousse le €/mois sur une 2e ligne sous le nom. */
+  .theme-fusion .db-fiche-child-monthly {
+    grid-column: 2 / -1;
+    margin-top: 2px;
+  }
+  .theme-fusion .db-fiche-child-pct { font-size: 15px; }
+  .theme-fusion .db-fiche-child-name { font-size: 13.5px; }
+  .theme-fusion .db-fiche-agg-grid {
+    grid-template-columns: 1fr;
+  }
+  .theme-fusion .db-fiche-agg-card {
+    grid-template-columns: 48px 1fr auto;
+    padding: 11px 13px;
+    row-gap: 4px;
+  }
+  .theme-fusion .db-fiche-agg-card-monthly {
+    grid-column: 2 / -1;
+    margin-top: 2px;
+  }
+  .theme-fusion .db-fiche-agg-card-pct { font-size: 16px; }
+  .theme-fusion .db-fiche-agg-card-name { font-size: 13.5px; }
+  .theme-fusion .db-fiche-amount-row {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+  .theme-fusion .db-fiche-amount-row-personal .db-fiche-amount-val {
+    font-size: 20px;
+  }
+}
+
+/* ── Accessibilité : respect de prefers-reduced-motion ──────────────────
+ *
+ * On scope au theme `theme-db-scrolly` pour ne pas affecter les autres
+ * pages du site (pas de side-effect global). Toutes les transitions et
+ * animations sont aplaties à 0.01ms (équivalent snap), tout en laissant
+ * le navigateur exécuter le callback de fin de transition (utile pour
+ * les hooks qui en dépendent).
+ */
+@media (prefers-reduced-motion: reduce) {
+  .theme-db-scrolly *,
+  .theme-db-scrolly *::before,
+  .theme-db-scrolly *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
 }
