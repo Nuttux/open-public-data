@@ -99,13 +99,14 @@ export default function BudgetTimeline({
   const dashedD = dashedPoints.map((p) => `${xFor(p.year)},${yFor(p.value)}`).join(" ");
 
   const active = sorted.find((p) => p.year === activeYear) ?? sorted[sorted.length - 1];
+  const computedAriaLabel = ariaLabel ?? t("fx.timeline.aria_evolution").replace("{from}", String(sorted[0]?.year ?? "")).replace("{to}", String(sorted[sorted.length - 1]?.year ?? ""));
 
   return (
-    <div className="fx-timechart">
+    <div className="fx-timechart" tabIndex={0} role="group" aria-label={computedAriaLabel}>
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
-        aria-label={ariaLabel ?? t("fx.timeline.aria_evolution").replace("{from}", String(sorted[0]?.year ?? "")).replace("{to}", String(sorted[sorted.length - 1]?.year ?? ""))}
+        aria-label={computedAriaLabel}
         preserveAspectRatio="xMidYMid meet"
         style={{ width: "100%", height }}
       >

@@ -1236,7 +1236,7 @@ export default function DailyBreadClient({
       <div className="theme-fusion">
         <Navbar />
       </div>
-      <main>
+      <main id="main-content" tabIndex={-1}>
         {/* ── PANNEAU 0 — Calculator ── */}
         <section className="db-panel db-p-calc">
           <div className="db-panel-wrap">

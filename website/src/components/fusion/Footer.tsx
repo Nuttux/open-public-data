@@ -63,7 +63,7 @@ export default function Footer() {
           </div>
           {COLUMNS.map((c) => (
             <div key={c.headingKey}>
-              <h4>{t(c.headingKey)}</h4>
+              <h3>{t(c.headingKey)}</h3>
               <ul>
                 {c.links.map((l, i) => {
                   if (l.disabled) {
@@ -118,6 +118,15 @@ export default function Footer() {
         <div className="fx-foot-optin">
           <ReplayOptIn />
         </div>
+        <nav aria-label={t("fx.foot.legal.aria")} style={{ paddingTop: 18, display: "flex", gap: 16, flexWrap: "wrap", fontFamily: "var(--f-mono)", fontSize: 11, letterSpacing: ".04em" }}>
+          <Link href="/accessibilite">{t("fx.foot.legal.accessibilite")}</Link>
+          <span aria-hidden="true">·</span>
+          <Link href="/confidentialite">{t("fx.foot.legal.confidentialite")}</Link>
+          <span aria-hidden="true">·</span>
+          <Link href="/mentions-legales">{t("fx.foot.legal.mentions")}</Link>
+          <span aria-hidden="true">·</span>
+          <Link href="/licence">{t("fx.foot.legal.licence")}</Link>
+        </nav>
         <div className="fx-foot-base">
           <span>{t("fx.foot.license").replace("{year}", String(year))}</span>
           <span>{t("fx.foot.domain")}</span>
