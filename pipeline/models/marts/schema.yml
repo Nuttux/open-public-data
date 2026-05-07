@@ -11,6 +11,9 @@ models:
   # SANKEY BUDGET
   # ===========================================================================
   - name: mart_sankey
+    meta:
+      domain: "budget"
+      criticality: "high"
     description: |
       Données agrégées pour le diagramme Sankey du budget.
       Liens: catégorie_flux → thématique avec montants.
@@ -42,6 +45,9 @@ models:
   # SUBVENTIONS TREEMAP
   # ===========================================================================
   - name: mart_subventions_treemap
+    meta:
+      domain: "subventions"
+      criticality: "high"
     description: |
       Agrégation des subventions par thématique pour visualisation treemap.
       PAS DE GÉOLOCALISATION - les subventions vont à des organisations, pas des lieux.
@@ -71,6 +77,9 @@ models:
   # SUBVENTIONS BÉNÉFICIAIRES
   # ===========================================================================
   - name: mart_subventions_beneficiaires
+    meta:
+      domain: "subventions"
+      criticality: "high"
     description: |
       Liste des bénéficiaires pour table filtrable.
       Colonnes de filtrage: thematique, nature_juridique, direction, secteurs_activite.
@@ -102,6 +111,9 @@ models:
   # CARTE INVESTISSEMENTS
   # ===========================================================================
   - name: mart_carte_investissements
+    meta:
+      domain: "investissements"
+      criticality: "high"
     description: |
       Projets d'investissement (AP) localisés pour la carte.
       Filtrés: avec arrondissement au minimum.
@@ -155,6 +167,9 @@ models:
   # ÉVOLUTION BUDGET
   # ===========================================================================
   - name: mart_evolution_budget
+    meta:
+      domain: "budget"
+      criticality: "high"
     description: |
       Agrégations temporelles du budget pour graphiques d'évolution.
       Vues disponibles: par_sens, par_section, metriques, par_thematique.
@@ -375,3 +390,192 @@ models:
         tests:
           - accepted_values:
               values: ['top_80', 'top_95', 'reste']
+
+  # ===========================================================================
+  # NOUVEAUX MARTS (Phases 1-18)
+  # ===========================================================================
+
+  - name: mart_logement_attente
+    description: |
+      Tension SLS par arrondissement parisien (DRIHL 2024).
+      Consommé par export_logement_attente.py → logement_attente_paris.json.
+    columns:
+      - name: code_insee
+        tests: [not_null]
+      - name: scope
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['paris_total', 'paris_non_precise', 'arrondissement', 'autre']
+      - name: arrondissement
+        description: "1-20 ou NULL"
+      - name: rang_tension
+        description: "1 = plus tendu (parmi 20 arr.)"
+
+  - name: mart_bilan_comptable
+    description: |
+      Slice row-level core_bilan_comptable pour Sankey + index.
+      Note (Issue #2): mart passthrough — à supprimer si export_bilan
+      peut lire core directement (déco-couplage de la règle).
+    columns:
+      - name: annee
+        tests: [not_null]
+      - name: type_bilan
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Actif', 'Passif']
+
+  - name: mart_budget_recettes_par_chapitre
+    description: |
+      Recettes UNION exec+vote par (annee × chapitre_code).
+      Consommé par export_evolution_data.py.
+    columns:
+      - name: annee
+        tests: [not_null]
+      - name: chapitre_code
+        tests: [not_null]
+
+  # Issue #4 — mart_data_availability polymorphe supprimé. Remplacé par 4
+  # marts typés ci-dessous (un par dataset).
+
+  - name: mart_data_availability_budget
+    description: "Disponibilité dataset budget par année (typed)."
+    columns:
+      - name: annee
+        tests: [not_null]
+      - name: nb_lignes
+        tests: [not_null]
+
+  - name: mart_data_availability_subventions
+    description: "Disponibilité dataset subventions par année (typed)."
+    columns:
+      - name: annee
+        tests: [not_null]
+      - name: nb_subventions
+        tests: [not_null]
+
+  - name: mart_data_availability_ap_projets
+    description: "Disponibilité dataset AP/investissements par année (typed)."
+    columns:
+      - name: annee
+        tests: [not_null]
+      - name: nb_projets
+        tests: [not_null]
+
+  - name: mart_data_availability_logements
+    description: "Disponibilité dataset logements sociaux par année (typed)."
+    columns:
+      - name: annee
+        tests: [not_null]
+      - name: nb_operations
+        tests: [not_null]
+
+  - name: mart_investissements_map
+    description: |
+      Slice row-level core_ap_projets pour la carte.
+      Note (Issue #2): passthrough avec ORDER BY uniquement.
+    columns:
+      - name: annee
+        tests: [not_null]
+      - name: ap_code
+        tests: [not_null]
+      - name: cle_technique
+        tests: [not_null]
+
+  - name: mart_logements_map
+    description: |
+      Slice row-level core_logements_sociaux pour la carte.
+      Note (Issue #2): passthrough avec ORDER BY uniquement.
+    columns:
+      - name: id_livraison
+        tests: [not_null]
+
+  - name: mart_budget_sankey_lines
+    description: |
+      Lignes budget UNION exec+vote pour le Sankey.
+      Filtre: montant > 0.
+    columns:
+      - name: annee
+        tests: [not_null]
+      - name: type_budget
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['execute', 'vote']
+      - name: sens_flux
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Dépense', 'Recette']
+
+  - name: mart_hors_bilan
+    description: |
+      Slice row-level core_dette_garantie pour export.
+      L'agrégation top-N reste en Python (export hors_bilan).
+    columns:
+      - name: annee
+        tests: [not_null]
+      - name: capital_restant
+        tests: [not_null]
+      - name: bucket_nature
+        tests: [not_null]
+
+  - name: mart_investissements_localises
+    description: |
+      Investissements localisés (PDF Annexe IL) — row-level.
+      Consommé par export_investissements_localises.py.
+    columns:
+      - name: annee_publication
+        tests: [not_null]
+      - name: projet_id
+        tests: [not_null]
+
+  - name: mart_deliberations
+    description: |
+      Deliberations Conseil de Paris (article × delib × session).
+      Consommé par export_deliberations.py.
+    columns:
+      - name: session_id
+        tests: [not_null]
+      - name: delib_id
+        tests: [not_null]
+
+  - name: mart_enrichment_caches
+    meta:
+      domain: "meta"
+      criticality: "medium"
+      linked_adr: "0004"
+      caveat: "STRING-typed payload; rely on cat10 singular tests"
+    description: |
+      Polymorphic — payload STRING JSON.
+      Note (Issue #3): à éclater en marts typés par cache.
+    columns:
+      - name: relative_path
+        tests:
+          - not_null
+          - unique
+
+  - name: mart_projet_marches
+    description: "Match scoré projet d'investissement × marché public."
+    columns:
+      - name: projet_id
+        tests: [not_null]
+
+  - name: mart_marches_fournisseurs
+    meta:
+      domain: "marches"
+      criticality: "high"
+      linked_adr: "0003"
+    description: "Marchés publics + SIRENE-aware fournisseur_nom."
+    columns:
+      - name: numero_marche
+        tests: [not_null]
+      - name: cle_technique
+        tests: [not_null]
+
+  - name: mart_marches_par_nature
+    description: "Agrégation marchés par nature/catégorie."
+    columns:
+      - name: annee
+        tests: [not_null]
