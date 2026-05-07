@@ -2,6 +2,7 @@
 
 > Transparence des finances publiques de Paris — [franceopendata.org](https://franceopendata.org)
 
+[![CI](https://github.com/Nuttux/open-public-data/actions/workflows/ci.yml/badge.svg)](https://github.com/Nuttux/open-public-data/actions/workflows/ci.yml)
 [![Next.js](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org/)
 [![dbt](https://img.shields.io/badge/dbt-BigQuery-orange)](https://www.getdbt.com/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -100,6 +101,23 @@ npm install
 npm run dev
 # → http://localhost:3000
 ```
+
+### CI
+
+PR vers `main` déclenche [`.github/workflows/ci.yml`](.github/workflows/ci.yml) :
+
+| Job | Étapes |
+|-----|--------|
+| **website** | `npm ci` → `npm run lint` → `npm run typecheck` → `npm run build` |
+| **pipeline-python** | `python -m compileall pipeline/scripts/` (sanity check syntaxe) |
+
+À reproduire en local avant de pousser :
+```bash
+cd website && npm run lint && npm run typecheck && npm run build
+python3 -m compileall -q pipeline/scripts/
+```
+
+Tests unitaires à venir — voir [`docs/testing.md`](docs/testing.md) pour la liste priorisée.
 
 ### Sync vers le repo public
 
