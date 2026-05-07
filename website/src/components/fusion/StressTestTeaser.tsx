@@ -87,7 +87,7 @@ export default function StressTestTeaser({ dette, capaciteBaseline, tauxBaseline
     params.set("t", String(tauxBaseline + p.taux_dp));
     params.set("r", String(p.rec_p));
     params.set("i", p.inv_m.toFixed(2));
-    return `/dette-patrimoine/stress-test?${params.toString()}`;
+    return `/ville/paris/dette/stress-test?${params.toString()}`;
   };
 
   return (
@@ -108,7 +108,7 @@ export default function StressTestTeaser({ dette, capaciteBaseline, tauxBaseline
             )}
           </div>
         </div>
-        <Link href="/dette-patrimoine/stress-test" className="fx-stress-teaser-cta">
+        <Link href="/ville/paris/dette/stress-test" className="fx-stress-teaser-cta">
           {t("fx.det.stress.teaser.cta")} →
         </Link>
       </div>
