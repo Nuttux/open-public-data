@@ -12,6 +12,7 @@ import BarRow from "@/components/fusion/BarRow";
 import TileCard from "@/components/fusion/TileCard";
 import BrandMark from "@/components/fusion/BrandMark";
 import HeroBg from "@/components/fusion/HeroBg";
+import CountUpOnReveal from "@/components/fusion/CountUpOnReveal";
 import { fmtDec, fmtInt, fmtBillions, fmtMillions } from "@/lib/fmt";
 import type { LandingStats } from "@/lib/fusion-data";
 import type { BlogPostMeta } from "@/lib/blog";
@@ -69,6 +70,7 @@ export default function LandingClient({ stats, posts }: Props) {
   return (
     <div className="theme-fusion">
       <Navbar />
+      <main id="main-content" tabIndex={-1}>
 
       {/* HERO */}
       <section className="fx-hero" id="hero">
@@ -88,7 +90,7 @@ export default function LandingClient({ stats, posts }: Props) {
             })}
           </p>
           <div className="fx-ctas">
-            <Button variant="primary" href="/budget">
+            <Button variant="primary" href="/ville/paris/budget">
               {fill("fx.land.cta.explore", { year: stats.year })}
             </Button>
           </div>
@@ -100,7 +102,7 @@ export default function LandingClient({ stats, posts }: Props) {
         <div className="fx-wrap">
           <p className="fx-hero-num-line">{t("fx.land.scale.line")}</p>
           <p className="fx-hero-num-big tnum">
-            {fmtInt(stats.perCapitaMonth)}
+            <CountUpOnReveal value={stats.perCapitaMonth} format={(n) => fmtInt(n)} />
             <span className="fx-hero-num-u">€</span>
             <span className="fx-hero-num-per">{t("fx.land.scale.per_inhabitant")}</span>
           </p>
@@ -142,7 +144,7 @@ export default function LandingClient({ stats, posts }: Props) {
               value: b.perMonth,
               unit: "€",
               display: fmtInt(b.perMonth),
-              href: `/budget?year=${stats.year}#sec-flux`,
+              href: `/ville/paris/budget?year=${stats.year}#sec-flux`,
             }))}
           />
         </div>
@@ -182,7 +184,7 @@ export default function LandingClient({ stats, posts }: Props) {
           <div className="fx-grid-tiles">
             {/* ROW 1 : Budget (SVG) · Évolution (SVG) · Patrimoine (SVG) */}
             <TileCard
-              href="/budget"
+              href="/ville/paris/budget"
               kind={t("fx.land.tile.01.kind")}
               title={t("fx.land.tile.01.title")}
               description={t("fx.land.tile.01.desc")}
@@ -207,7 +209,7 @@ export default function LandingClient({ stats, posts }: Props) {
             />
 
             <TileCard
-              href="/budget"
+              href="/ville/paris/budget"
               kind={t("fx.land.tile.02.kind")}
               title={t("fx.land.tile.02.title")}
               description={t("fx.land.tile.02.desc")}
@@ -227,7 +229,7 @@ export default function LandingClient({ stats, posts }: Props) {
             />
 
             <TileCard
-              href="/dette-patrimoine"
+              href="/ville/paris/dette"
               kind={t("fx.land.tile.05.kind")}
               title={t("fx.land.tile.05.title")}
               description={t("fx.land.tile.05.desc")}
@@ -255,7 +257,7 @@ export default function LandingClient({ stats, posts }: Props) {
 
             {/* ROW 2 : Investissements (SVG) · Subventions (TEXT) · Marchés (TEXT) */}
             <TileCard
-              href="/investissements"
+              href="/ville/paris/investissements"
               kind={t("fx.land.tile.03.kind")}
               title={t("fx.land.tile.03.title")}
               description={t("fx.land.tile.03.desc")}
@@ -275,7 +277,7 @@ export default function LandingClient({ stats, posts }: Props) {
             />
 
             <TileCard
-              href="/qui-recoit"
+              href="/ville/paris/subventions"
               kind={t("fx.land.tile.04.kind")}
               title={t("fx.land.tile.04.title")}
               description={t("fx.land.tile.04.desc")}
@@ -286,7 +288,7 @@ export default function LandingClient({ stats, posts }: Props) {
             />
 
             <TileCard
-              href="/marches-publics"
+              href="/ville/paris/marches"
               kind={t("fx.land.tile.08.kind")}
               title={t("fx.land.tile.08.title")}
               description={
@@ -308,7 +310,7 @@ export default function LandingClient({ stats, posts }: Props) {
           </div>
 
           <div className="fx-grid-foot">
-            <Link href="/budget">{t("fx.land.inside.see_all")}</Link>
+            <Link href="/ville/paris/budget">{t("fx.land.inside.see_all")}</Link>
           </div>
         </div>
       </section>
@@ -433,6 +435,7 @@ export default function LandingClient({ stats, posts }: Props) {
         </div>
       </section>
 
+      </main>
       <Footer />
     </div>
   );

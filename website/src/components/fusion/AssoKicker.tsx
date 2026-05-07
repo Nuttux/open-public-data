@@ -31,7 +31,7 @@ export function AssoPageHeader({
   return (
     <>
       <div className="fx-page-kicker">
-        <Link href="/qui-recoit" style={{ color: "var(--ocre)" }}>{t("fx.asso.back")}</Link>
+        <Link href="/ville/paris/subventions" style={{ color: "var(--ocre)" }}>{t("fx.asso.back")}</Link>
       </div>
       <p className="fx-page-lede">
         {themeLabel} · <b>{count}</b> {t("fx.asso.subventions")}

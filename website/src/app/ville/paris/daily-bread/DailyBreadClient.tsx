@@ -1,0 +1,3370 @@
+"use client";
+import Link from "next/link";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useT, useLocale } from "@/lib/localeContext";
+import { useCountUp } from "@/lib/use-count-up";
+import { useRevealOnScroll } from "@/lib/use-reveal-on-scroll";
+import type { EurostatCofog, DailyBreadConstants } from "@/lib/national-data";
+import {
+  computeBreakdown,
+  computeBreakdownRetraite,
+  computeBreakdownCapital,
+  computeBreakdownIndependant,
+  computeCofogShares,
+  computeInstitutionShares,
+  computeAssoBreakdown,
+  computeStateBuckets,
+  computeLocalLevels,
+  computeDeepDiveStack,
+  computeDeepDiveLocal,
+  type DeepDiveStackEntry,
+  type IndepActivityType,
+} from "@/lib/daily-bread";
+
+// ─── Sources de revenus (cumulatif) ──────────────────────────────────────
+// L'utilisateur peut cumuler plusieurs sources simultanément (cas réel :
+// cadre + dividendes, retraité + revenus fonciers, indépendant + salaire
+// complémentaire, etc.). Chaque source a son propre montant ; 0 = pas
+// concerné. Le total est la somme des 4 breakdowns.
+//
+// Caveat : l'IR du foyer est en réalité agrégé sur le RFR consolidé (somme
+// de tous les revenus). Ici chaque source est calculée séparément, ce qui
+// est une approximation acceptable pour un MVP éducatif. Phase 5 OpenFisca
+// intégrera le calcul consolidé exact (RFR → IR par foyer).
+const INDEP_TYPES: IndepActivityType[] = [
+  "vente",
+  "services_bic",
+  "services_bnc",
+];
+
+// ─── Types ───────────────────────────────────────────────────────────────
+
+type CommuneHit = {
+  insee: string;
+  slug: string;
+  nom: string;
+  dep_name: string;
+  pop: number;
+};
+
+type SelectedCommune = {
+  insee: string;
+  slug: string;
+  nom: string;
+  dep_name: string;
+  reg_name: string;
+  pop: number;
+  eur_hab: number; // dépenses totales €/hab (OFGL)
+  impots_locaux_eur_hab: number; // recettes fiscales totales €/hab — sert à estimer la TF du ménage
+};
+
+/**
+ * Shape of `public/data/communes-all/dept-fonctionnelle.json` — produit par
+ * `pipeline/scripts/sync/sync_ofgl_departements_fonctionnelle.py`.
+ * Permet d'afficher la ventilation fonctionnelle réelle du département de
+ * la commune sélectionnée (au lieu de la moyenne nationale).
+ */
+type DeptFonctionnelle = {
+  generated_at: string;
+  source: string;
+  source_url: string;
+  year: number;
+  fonctions: string[]; // ordre canonique des buckets
+  by_dep_code: Record<
+    string,
+    {
+      nom: string;
+      ptot: number;
+      total_eur_hab: number;
+      fonctions: Record<string, { share: number; eur_hab: number }>;
+    }
+  >;
+  by_dep_name: Record<string, string>; // nom → dep_code (incl. aliases)
+};
+
+/**
+ * Shape de `public/data/communes-all/fonctionnelle-by-insee.json` — produit
+ * par `pipeline/scripts/sync/sync_communes_fonctionnelle.py` à partir des
+ * balances comptables DGFiP "présentation croisée nature × fonction" 2024.
+ *
+ * Couvre les communes >3 500 hab qui votent par fonction (~3 384 communes,
+ * ~50-60% de la population FR). Pour les autres, fallback sur le seed
+ * `db.deepdive.bloc_communal` qui donne la moyenne nationale pondérée.
+ */
+type CommuneFonctionnelle = {
+  generated_at: string;
+  source: string;
+  source_url: string;
+  year: number;
+  scope: string;
+  scope_note_fr: string;
+  fonctions: string[]; // ordre canonique des keys (f0_services_generaux, f1_securite, …)
+  moyenne_nationale_ponderee: Record<string, { share: number }>;
+  by_insee: Record<
+    string,
+    {
+      libelle: string;
+      total: number;
+      fonctions: Record<string, { share: number; montant: number }>;
+    }
+  >;
+};
+
+/**
+ * TF estimée pour 1 ménage propriétaire moyen.
+ *
+ * Hypothèse : OFGL "impôts locaux" = TF + TH (résidences secondaires) + CFE + CVAE + autres.
+ * Part TF + TH ménages dans ce total ≈ 40 % (40 % du reste = entreprises et autres taxes).
+ * Taille moyenne d'un ménage France ≈ 2,2 hab (INSEE 2022).
+ *
+ * → TF estimée par ménage = impots_locaux × 0,4 × 2,2
+ */
+const estimateTaxeFonciereFromCommune = (impots_locaux_eur_hab: number) =>
+  Math.round(impots_locaux_eur_hab * 0.4 * 2.2);
+
+// ─── Helpers ─────────────────────────────────────────────────────────────
+
+const PRESETS = [
+  { key: "smic", net: 1426 },
+  { key: "median", net: 2100 },
+  { key: "cadre", net: 3750 },
+  { key: "cadre_sup", net: 6000 },
+] as const;
+
+const PARTS_OPTIONS = [
+  { value: 1, key: "single" as const },
+  { value: 1.5, key: "single_1kid" as const },
+  { value: 2, key: "couple" as const },
+  { value: 2.5, key: "couple_1kid" as const },
+  { value: 3, key: "couple_2kids" as const },
+  { value: 4, key: "couple_3kids" as const },
+];
+
+const fmtEur = (n: number, locale: string, decimals = 0) =>
+  n.toLocaleString(locale === "en" ? "en-GB" : "fr-FR", {
+    maximumFractionDigits: decimals,
+    minimumFractionDigits: decimals,
+  });
+
+// Chaque fonction COFOG est colorée selon l'administration qui la
+// finance majoritairement en France (APU consolidé) — réutilise les
+// variables CSS --p-secu/--p-etat/--p-local pour rester cohérent avec
+// les panels 03/04/05. Une légende au-dessus du graphe rend la clé
+// explicite ; sans elle, les 3 couleurs paraissent décoratives.
+const COFOG_COLORS: Record<string, string> = {
+  GF10: "var(--p-secu)",  // Protection sociale → Sécu (ASSO domine)
+  GF07: "var(--p-secu)",  // Santé → Sécu (CNAM)
+  GF01: "var(--p-etat)",  // Services généraux → État (charge dette)
+  GF02: "var(--p-etat)",  // Défense → État
+  GF03: "var(--p-etat)",  // Ordre & sécurité → État (police, justice)
+  GF04: "var(--p-etat)",  // Affaires économiques → État (transports, soutien éco)
+  GF09: "var(--p-etat)",  // Enseignement → État (profs, programmes)
+  GF05: "var(--p-local)", // Environnement → Local (déchets, eau)
+  GF06: "var(--p-local)", // Logement → Local (OPH, urbanisme)
+  GF08: "var(--p-local)", // Loisirs/culture → Local (équipements de quartier)
+};
+
+/**
+ * Inline-render a tagged string like "le {b1}truc{/b1} et {b2}machin{/b2}"
+ * by mapping each tag to a span with custom styling. Lightweight to avoid
+ * pulling in a markdown lib for a couple of bold spans.
+ */
+function renderTagged(
+  tpl: string,
+  styles: Record<string, React.CSSProperties> = {},
+): React.ReactNode {
+  const re = /\{(b\d?|em)\}([^{]*?)\{\/\1\}/g;
+  const parts: React.ReactNode[] = [];
+  let last = 0;
+  let m: RegExpExecArray | null;
+  let i = 0;
+  while ((m = re.exec(tpl))) {
+    if (m.index > last) parts.push(tpl.slice(last, m.index));
+    const tag = m[1];
+    const inner = m[2];
+    const style = styles[tag] ?? { color: "var(--p-ink)", fontWeight: 600 };
+    parts.push(
+      <b key={i++} style={style}>
+        {inner}
+      </b>,
+    );
+    last = m.index + m[0].length;
+  }
+  if (last < tpl.length) parts.push(tpl.slice(last));
+  return parts;
+}
+
+// ─── RevealCountNum ──────────────────────────────────────────────────────
+//
+// Petit wrapper réutilisable pour les chiffres dont l'animation count-up
+// doit être déclenchée au moment où la zone parente entre dans le viewport
+// (et pas avant). Utilisé par le tri-stack §02 dont les 3 % et 3 montants
+// doivent compter en synchro avec l'animation `scaleX` des segments.
+//
+// Régression zéro côté SSR :
+// - Tant que `revealed === false` ET qu'aucune animation n'a démarré, on
+//   rend `format(value)` directement → SSR et premier render client
+//   affichent la valeur finale (pas de "0" visible si JS désactivé).
+// - Quand `revealed` bascule à `true`, on arme `started`, on pousse
+//   `target = value` à `useCountUp` qui était initialisé à 0 → animation
+//   `0 → value`. Pas de saut "value → 0 → value" : on bascule directement
+//   du rendu statique au rendu animé.
+// - Updates ultérieurs de `value` (changement de profil après le reveal)
+//   sont propagés au target → useCountUp gère l'interpolation.
+//
+// Limite connue : 1 frame possible à 0 lors du switch (le hook useCountUp
+// retourne son state interne courant — 0 — pour le render qui suit le
+// setTarget, avant que le rAF ne produise la première valeur > 0). Sur
+// 600ms d'animation, c'est ~16ms invisibles à l'œil.
+function RevealCountNum({
+  value,
+  revealed,
+  duration = 600,
+  format,
+}: {
+  value: number;
+  revealed: boolean;
+  duration?: number;
+  format: (v: number) => string;
+}) {
+  const [started, setStarted] = useState(false);
+  const [target, setTarget] = useState(0);
+  const animated = useCountUp(target, duration);
+
+  useEffect(() => {
+    if (revealed && !started) {
+      setTarget(value);
+      setStarted(true);
+    } else if (started) {
+      setTarget(value);
+    }
+  }, [revealed, value, started]);
+
+  if (!started) return <>{format(value)}</>;
+  return <>{format(animated)}</>;
+}
+
+// ─── Component ───────────────────────────────────────────────────────────
+
+type DrilldownIndex = Record<
+  "secu" | "etat" | "local",
+  { level2: string[]; level3: Record<string, string[]> }
+>;
+
+// ─── Alias rules (in-page row.key → drilldown.key) ────────────────────────
+//
+// Pourquoi : les rows DeepDive en page sont calculées à partir de
+// `daily_bread.json` (seeds éditoriales : ONDAM/DREES/DEPP/AFT…) tandis que
+// le drilldown.json (Agent P) suit la nomenclature officielle PLF/PLFSS/OFGL.
+// Les `key` ne matchent pas naturellement → alias explicite par bucket.
+//
+// Toute clé NON listée ici sera juste non-cliquable (graceful) — ne pas
+// inventer d'alias spéculatifs : mieux vaut une row passive qu'un lien mort.
+
+const SECU_TOP_ALIAS: Record<string, string> = {
+  part_cnam_maladie: "cnam_maladie",
+  part_cnav_retraites: "cnav_retraites",
+  part_caf_famille: "cnaf_famille",
+  part_unedic_chomage: "unedic_chomage",
+  part_atmp_autonomie: "atmp_autonomie",
+};
+
+// État stateBuckets agrège missions PLF en 5 buckets éditoriaux
+// (education / regaliens / travail_cohesion_ecologie / dette / autres).
+// Seuls 2 buckets ont un alias 1:1 propre vers une mission unique :
+//   - education → mission `ec` (Enseignement scolaire ; recherche `ra` séparée)
+//   - dette → mission `eb` (Engagements financiers de l'État)
+// Les buckets `regaliens` / `travail_cohesion_ecologie` / `autres` agrègent
+// plusieurs missions → pas de drill 1:1 (TODO: niveau bucket virtuel dans
+// drilldown.json pour permettre de cliquer "Régaliens" et voir les 4 missions).
+const ETAT_TOP_ALIAS: Record<string, string> = {
+  education: "ec",
+  dette: "eb",
+};
+
+// OFGL fonctionnelle communale (codes DGFiP F0..F9 réels) → libellés Agent P.
+// Plusieurs F-keys peuvent pointer au même level2 (ex: f3+f4 → culture_sport)
+// car OFGL groupe plus haut que DGFiP — c'est le bon comportement.
+// Clés alignées sur fonctionnelle-by-insee.json (réel) pas OFGL (agrégé).
+const LOCAL_FONCTIONNELLE_ALIAS: Record<string, string> = {
+  f0_services_generaux: "administration_generale",
+  f1_securite: "securite",
+  f2_enseignement: "enseignement",
+  f3_culture: "culture_sport",
+  f4_sport_jeunesse: "culture_sport",
+  f5_social_sante: "action_sociale",
+  f6_famille: "action_sociale",
+  f7_logement: "amenagement_urbain",
+  f8_amenagement_env: "amenagement_urbain",
+  f9_action_eco: "autres",
+};
+
+export default function DailyBreadClient({
+  cofog,
+  db,
+  drilldownIndex,
+}: {
+  cofog: EurostatCofog | null;
+  db: DailyBreadConstants | null;
+  /** Index compact des keys de drilldown.json (level2 + level3 par parent).
+   *  Construit côté server (page.tsx) ; sert ici à filtrer les alias en ne
+   *  rendant cliquable QUE ce que l'Agent P a effectivement publié. */
+  drilldownIndex?: DrilldownIndex;
+}) {
+  // Helper : construit une Map<inPageKey, fullUrl> en intersectant un alias
+  // statique avec les keys publiées par Agent P. Les keys absentes du drilldown
+  // restent non-cliquables — pas de lien mort possible.
+  const makeTopUrlMap = useCallback(
+    (bucket: "secu" | "etat" | "local", alias: Record<string, string>) => {
+      const m = new Map<string, string>();
+      const available = new Set(drilldownIndex?.[bucket]?.level2 ?? []);
+      for (const [inPage, drillKey] of Object.entries(alias)) {
+        if (available.has(drillKey)) {
+          m.set(inPage, `/ville/paris/daily-bread/bucket/${bucket}/${drillKey}`);
+        }
+      }
+      return m;
+    },
+    [drilldownIndex],
+  );
+  // Helper level3 : règle préfixe `{level2}_{inPageKey}`. On vérifie que la
+  // key préfixée existe bien dans `drilldownIndex.<bucket>.level3[level2]`
+  // avant de la rendre cliquable.
+  const makeLevel3UrlMap = useCallback(
+    (
+      bucket: "secu" | "etat" | "local",
+      level2Key: string,
+      inPageKeys: string[],
+    ) => {
+      const m = new Map<string, string>();
+      const available = new Set(
+        drilldownIndex?.[bucket]?.level3?.[level2Key] ?? [],
+      );
+      for (const inPage of inPageKeys) {
+        const fullKey = `${level2Key}_${inPage}`;
+        if (available.has(fullKey)) {
+          m.set(inPage, `/ville/paris/daily-bread/bucket/${bucket}/${level2Key}/${fullKey}`);
+        }
+      }
+      return m;
+    },
+    [drilldownIndex],
+  );
+
+  const secuTopUrls = useMemo(
+    () => makeTopUrlMap("secu", SECU_TOP_ALIAS),
+    [makeTopUrlMap],
+  );
+  const etatTopUrls = useMemo(
+    () => makeTopUrlMap("etat", ETAT_TOP_ALIAS),
+    [makeTopUrlMap],
+  );
+  const localFonctionnelleUrls = useMemo(
+    () => makeTopUrlMap("local", LOCAL_FONCTIONNELLE_ALIAS),
+    [makeTopUrlMap],
+  );
+  // Helper léger pour passer une factory level3 aux 4 deepdives Sécu, qui se
+  // résolvent toutes par règle de préfixe `{level2}_{inPageKey}`. Les factories
+  // sont closes sur `makeLevel3UrlMap` (qui dépend de drilldownIndex).
+  const buildSecuL3 = useCallback(
+    (level2: string, items: { key: string }[]) =>
+      makeLevel3UrlMap("secu", level2, items.map((x) => x.key)),
+    [makeLevel3UrlMap],
+  );
+  const t = useT();
+  const { locale } = useLocale();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  // ─── Form state (URL-driven, cumulatif) ────────────────────────────
+  // Defaults : profil médian français INSEE (~2 100 €/mois net) · célibataire · Paris
+  // Toutes les sources non-salaire défaut à 0 (= "pas concerné").
+  // Clamps de sécurité : valeurs ≥ 0, parts dans [1; 10] — protège des URLs mal formées.
+  const clampNonNeg = (n: number) => (Number.isFinite(n) && n >= 0 ? n : 0);
+  // Param "net" : present → cast (incl. 0 explicite), absent → défaut 2100.
+  // Important : pour ?net=0&capital=120000, salaire DOIT être 0 (pas le défaut).
+  const rawNetParam = searchParams?.get("net");
+  const initialSalaire = rawNetParam !== null && rawNetParam !== undefined
+    ? clampNonNeg(Number(rawNetParam))
+    : 2100;
+  const initialPension = clampNonNeg(Number(searchParams?.get("pension") ?? 0));
+  const initialCapital = clampNonNeg(Number(searchParams?.get("capital") ?? 0));
+  const initialIndepCa = clampNonNeg(Number(searchParams?.get("indep_ca") ?? 0));
+  const rawParts = Number(searchParams?.get("parts") || 1);
+  const initialParts = Number.isFinite(rawParts)
+    ? Math.min(10, Math.max(1, rawParts))
+    : 1;
+  const initialCommuneSlug = searchParams?.get("c") || "paris";
+  const initialOwner = searchParams?.get("owner") === "1";
+  const initialTf = clampNonNeg(Number(searchParams?.get("tf") || 0)); // 0 = auto-estimation
+  const rawIndepType = (searchParams?.get("indep_type") || "services_bic") as IndepActivityType;
+  const initialIndepType: IndepActivityType = INDEP_TYPES.includes(rawIndepType)
+    ? rawIndepType
+    : "services_bic";
+
+  // Renommé `netMonthly` → `salaireMonthly` pour refléter le modèle cumulatif.
+  const [salaireMonthly, setSalaireMonthly] = useState<number>(initialSalaire);
+  const [pensionMonthly, setPensionMonthly] = useState<number>(initialPension);
+  const [capitalAnnuel, setCapitalAnnuel] = useState<number>(initialCapital);
+  const [indepCaAnnuel, setIndepCaAnnuel] = useState<number>(initialIndepCa);
+  const [parts, setParts] = useState<number>(initialParts);
+  const [commune, setCommune] = useState<SelectedCommune | null>(null);
+  const [isOwner, setIsOwner] = useState<boolean>(initialOwner);
+  // tfCustom = 0 → auto-estimation depuis la commune ; sinon valeur saisie par user
+  const [tfCustom, setTfCustom] = useState<number>(initialTf);
+  const [indepType, setIndepType] = useState<IndepActivityType>(initialIndepType);
+
+  // ─── Ventilation fonctionnelle départementale (OFGL M52/M57) ───────
+  // Permet d'afficher les % réels du département de la commune sélectionnée
+  // (Bouches-du-Rhône, Hauts-de-Seine, Paris...) au lieu de la moyenne
+  // nationale. Le fichier est statique (~75 KB) et chargé une fois.
+  // Si fetch échoue → fallback gracieux sur la moyenne nationale.
+  const [deptFonc, setDeptFonc] = useState<DeptFonctionnelle | null>(null);
+  useEffect(() => {
+    fetch("/data/communes-all/dept-fonctionnelle.json")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d: DeptFonctionnelle | null) => {
+        if (d && d.by_dep_code) setDeptFonc(d);
+      })
+      .catch(() => {
+        // ignore — deepdive falls back to national avg
+      });
+  }, []);
+
+  // Fonctionnelle commune par INSEE (DGFiP balance comptable 2024) — ~3 384
+  // communes >3 500 hab qui votent par fonction. Pour les autres, fallback
+  // sur le seed national.
+  const [communeFonc, setCommuneFonc] = useState<CommuneFonctionnelle | null>(
+    null,
+  );
+  useEffect(() => {
+    fetch("/data/communes-all/fonctionnelle-by-insee.json")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d: CommuneFonctionnelle | null) => {
+        if (d && d.by_insee) setCommuneFonc(d);
+      })
+      .catch(() => {
+        // ignore — deepdive falls back to seed national avg
+      });
+  }, []);
+
+  /**
+   * Labels FR/EN pour les 10 fonctions M14/M57. Mapping standardisé pour
+   * être lisibles côté UI (le seed `db.deepdive.bloc_communal` utilisait
+   * des keys différentes — ici on parse les fonctions DGFiP directement).
+   */
+  // Clés alignées sur la nomenclature réelle DGFiP (cf.
+  // fonctionnelle-by-insee.json — `by_insee.<code>.fonctions`). Avant ce fix,
+  // f5/f8/f9 utilisaient les noms OFGL agrégés et tombaient en raw key.
+  const FONCTION_LABELS: Record<string, { fr: string; en: string }> = {
+    f0_services_generaux: { fr: "Administration générale", en: "General services" },
+    f1_securite: { fr: "Sécurité (police municipale, hygiène)", en: "Security" },
+    f2_enseignement: { fr: "Enseignement (écoles primaires, cantines)", en: "Education" },
+    f3_culture: { fr: "Culture (bibliothèques, musées, conservatoires)", en: "Culture" },
+    f4_sport_jeunesse: { fr: "Sport et jeunesse", en: "Sport & youth" },
+    f5_social_sante: { fr: "Social et santé (CCAS, aide sociale)", en: "Social & health" },
+    f6_famille: { fr: "Famille (crèches, périscolaire)", en: "Family" },
+    f7_logement: { fr: "Logement (aides, gestion patrimoine)", en: "Housing" },
+    f8_amenagement_env: {
+      fr: "Aménagement, voirie, propreté, environnement",
+      en: "Planning, roads, cleaning, environment",
+    },
+    f9_action_eco: { fr: "Action économique", en: "Economic action" },
+  };
+
+  // ─── OpenFisca (Phase 5 MVP, opt-in) ───────────────────────────────
+  // Calcul exact via l'API publique Etalab pour le profil **salarié**.
+  // - Activé sur clic du bouton "Affiner avec calcul officiel"
+  // - Si l'API timeout / erreur : fallback silencieux sur le calcul JS local
+  // - Reset automatique dès que les inputs salaire/parts/commune changent
+  //   (pour éviter d'afficher un breakdown OF stale).
+  type OpenFiscaBreakdownLite = {
+    cotisations_sal: number;
+    csg: number;
+    ir: number;
+    tva_estimee: number;
+    total: number;
+  };
+  const [openFiscaResult, setOpenFiscaResult] =
+    useState<OpenFiscaBreakdownLite | null>(null);
+  const [isLoadingOpenFisca, setIsLoadingOpenFisca] = useState(false);
+  const [openFiscaError, setOpenFiscaError] = useState<string | null>(null);
+
+  // Auto-reset OpenFisca result si inputs salaire-pertinents changent.
+  useEffect(() => {
+    setOpenFiscaResult(null);
+    setOpenFiscaError(null);
+  }, [salaireMonthly, parts, commune?.insee]);
+
+  // "Autres revenus" déplié si une source non-salaire est non nulle (URL deep-link)
+  const initialOtherIncomesOpen =
+    initialPension > 0 || initialCapital > 0 || initialIndepCa > 0;
+
+  // Sync URL when inputs change. Cas par défaut salarié = URL minimale
+  // (?net=2100&parts=1&c=paris) ; on omet les zéros pour rester propre.
+  //
+  // ⚠ Skip si on a navigué vers une sous-route (drawer drill-down) — sinon le
+  // replace écrase l'URL `/ville/paris/daily-bread/bucket/<bucket>/...` et tue l'intercept
+  // parallel-route. Le client reste monté pendant l'intercept (layout persiste)
+  // donc l'effect tourne encore.
+  const pathname = usePathname();
+  useEffect(() => {
+    if (pathname && pathname !== "/ville/paris/daily-bread") return;
+    const params = new URLSearchParams();
+    params.set("net", String(salaireMonthly));
+    params.set("parts", String(parts));
+    if (commune) params.set("c", commune.slug);
+    if (isOwner) params.set("owner", "1");
+    if (tfCustom > 0) params.set("tf", String(tfCustom));
+    if (pensionMonthly > 0) params.set("pension", String(pensionMonthly));
+    if (capitalAnnuel > 0) params.set("capital", String(capitalAnnuel));
+    if (indepCaAnnuel > 0) {
+      params.set("indep_ca", String(indepCaAnnuel));
+      if (indepType !== "services_bic") params.set("indep_type", indepType);
+    }
+    router.replace(`/ville/paris/daily-bread?${params.toString()}`, { scroll: false });
+  }, [
+    salaireMonthly,
+    pensionMonthly,
+    capitalAnnuel,
+    indepCaAnnuel,
+    parts,
+    commune,
+    isOwner,
+    tfCustom,
+    indepType,
+    pathname,
+    router,
+  ]);
+
+  // ─── Initial commune fetch ─────────────────────────────────────────
+  useEffect(() => {
+    if (commune) return;
+    (async () => {
+      try {
+        const res = await fetch(
+          `/api/commune/${encodeURIComponent(initialCommuneSlug)}`,
+        );
+        if (!res.ok) return;
+        const data = await res.json();
+        const e = data.entry;
+        if (!e) return;
+        const eur_hab = e.kpis?.depenses_totales?.eur_hab ?? 1500;
+        const impots_locaux_eur_hab = e.kpis?.impots_locaux?.eur_hab ?? 1100;
+        setCommune({
+          insee: e.insee,
+          slug: e.slug,
+          nom: e.nom,
+          dep_name: e.dep_name,
+          reg_name: e.reg_name ?? "",
+          pop: e.pop,
+          eur_hab,
+          impots_locaux_eur_hab,
+        });
+      } catch {
+        // ignore
+      }
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // ─── Warm up search API in background ─────────────────────────────
+  // Next.js dev compile-on-demand peut prendre ~10s la première fois ;
+  // on lance un fetch idle au mount pour que la compile arrive avant
+  // que l'utilisateur tape. En prod c'est gratuit (déjà compilé).
+  useEffect(() => {
+    const t = setTimeout(() => {
+      fetch("/api/search-communes?q=__warm").catch(() => {});
+    }, 600);
+    return () => clearTimeout(t);
+  }, []);
+
+  // ─── Commune autocomplete ──────────────────────────────────────────
+  const [communeQuery, setCommuneQuery] = useState("");
+  const [communeHits, setCommuneHits] = useState<CommuneHit[]>([]);
+  const [communeFocused, setCommuneFocused] = useState(false);
+  const [communeLoading, setCommuneLoading] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const searchAbortRef = useRef<AbortController | null>(null);
+
+  useEffect(() => {
+    const q = communeQuery.trim();
+    if (q.length < 2) {
+      setCommuneHits([]);
+      return;
+    }
+    // Abort any in-flight search
+    searchAbortRef.current?.abort();
+    const ac = new AbortController();
+    searchAbortRef.current = ac;
+    const id = setTimeout(async () => {
+      try {
+        const res = await fetch(
+          `/api/search-communes?q=${encodeURIComponent(q)}`,
+          { signal: ac.signal },
+        );
+        const data = await res.json();
+        // Only update if this controller is still the active one
+        if (!ac.signal.aborted) setCommuneHits(data.results ?? []);
+      } catch {
+        // aborted or network error
+      }
+    }, 180);
+    return () => {
+      ac.abort();
+      clearTimeout(id);
+    };
+  }, [communeQuery]);
+
+  const pickCommune = useCallback(async (hit: CommuneHit) => {
+    // Abort any pending search and clear UI state immediately
+    searchAbortRef.current?.abort();
+    setCommuneQuery("");
+    setCommuneHits([]);
+    setCommuneFocused(false);
+    setCommuneLoading(true);
+    // Optimistic update — set commune from hit data right away (no eur_hab yet)
+    setCommune({
+      insee: hit.insee,
+      slug: hit.slug,
+      nom: hit.nom,
+      dep_name: hit.dep_name,
+      reg_name: "",
+      pop: hit.pop,
+      eur_hab: 0, // placeholder, refreshed below
+      impots_locaux_eur_hab: 0,
+    });
+    inputRef.current?.blur();
+    try {
+      const res = await fetch(`/api/commune/${encodeURIComponent(hit.slug)}`);
+      const data = await res.json();
+      const e = data.entry;
+      const eur_hab = e?.kpis?.depenses_totales?.eur_hab ?? 1500;
+      const impots_locaux_eur_hab = e?.kpis?.impots_locaux?.eur_hab ?? 1100;
+      setCommune({
+        insee: hit.insee,
+        slug: hit.slug,
+        nom: hit.nom,
+        dep_name: hit.dep_name,
+        reg_name: e?.reg_name ?? "",
+        pop: hit.pop,
+        eur_hab,
+        impots_locaux_eur_hab,
+      });
+    } catch {
+      // ignore — the optimistic update remains
+    } finally {
+      setCommuneLoading(false);
+    }
+  }, []);
+
+  // ─── OpenFisca request handler ─────────────────────────────────────
+  // POST /api/openfisca-calc avec le profil salaire courant.
+  // Sur succès : setOpenFiscaResult → tout le hero/composition/dispatch
+  // utilise désormais le breakdown OpenFisca pour le salaire.
+  // Sur fail : setOpenFiscaError + fallback silencieux (le JS local reste actif).
+  const requestOpenFiscaCalc = useCallback(async () => {
+    if (salaireMonthly <= 0) return;
+    setIsLoadingOpenFisca(true);
+    setOpenFiscaError(null);
+    try {
+      const res = await fetch("/api/openfisca-calc", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          salaireMonthly,
+          parts,
+          departementInsee: commune?.insee,
+        }),
+      });
+      const data = await res.json();
+      if (!data?.ok || !data.breakdown) {
+        setOpenFiscaError(data?.error || "openfisca_unavailable");
+        return;
+      }
+      const b = data.breakdown;
+      setOpenFiscaResult({
+        cotisations_sal: b.cotisations_sal ?? 0,
+        csg: b.csg ?? 0,
+        ir: b.ir ?? 0,
+        tva_estimee: b.tva_estimee ?? 0,
+        total: b.total ?? 0,
+      });
+    } catch {
+      setOpenFiscaError("network_error");
+    } finally {
+      setIsLoadingOpenFisca(false);
+    }
+  }, [salaireMonthly, parts, commune?.insee]);
+
+  // ─── Compute breakdowns (cumulatif) ────────────────────────────────
+  // Chaque source = 1 breakdown indépendant. Si montant = 0 → breakdown 0
+  // (skip silencieux). Le total final = somme des 4 + TF.
+  //
+  // CAVEAT MVP : l'IR du foyer est calculé séparément par source (salaire,
+  // pension, indépendant) — en réalité l'IR est calculé sur le RFR consolidé
+  // (somme des revenus). Approximation acceptable pour un calculateur
+  // pédagogique — Phase 5 OpenFisca pour le calcul exact.
+  const breakdownSalaireJsLocal = useMemo(() => {
+    if (!db || salaireMonthly <= 0) {
+      return { cotisations_sal: 0, csg: 0, ir: 0, tva_estimee: 0, total: 0 };
+    }
+    return computeBreakdown({ net_annuel: salaireMonthly * 12, parts }, db);
+  }, [salaireMonthly, parts, db]);
+
+  // breakdownSalaire = OpenFisca si actif, sinon JS local. Le reste de l'UI
+  // (composition, dispatch institutionnel, deep-dives) lit `breakdownSalaire`
+  // — donc activer OpenFisca propage automatiquement le calcul exact partout
+  // où le salaire compte. Les autres sources (pension/capital/indep) restent
+  // toujours en calcul JS local pour la Phase 5 MVP.
+  const breakdownSalaire = openFiscaResult ?? breakdownSalaireJsLocal;
+
+  const breakdownRetraite = useMemo(() => {
+    if (!db || pensionMonthly <= 0) {
+      return { csg_crds_casa: 0, ir: 0, tva_estimee: 0, total: 0, taux_csg_applied: 0 };
+    }
+    return computeBreakdownRetraite(pensionMonthly * 12, parts, db);
+  }, [pensionMonthly, parts, db]);
+
+  const breakdownCapital = useMemo(() => {
+    if (!db || capitalAnnuel <= 0) {
+      return { ir: 0, prelevements_sociaux: 0, tva_estimee: 0, total: 0 };
+    }
+    return computeBreakdownCapital(capitalAnnuel, db);
+  }, [capitalAnnuel, db]);
+
+  const breakdownIndep = useMemo(() => {
+    if (!db || indepCaAnnuel <= 0) {
+      return { cotisations_urssaf: 0, ir: 0, tva_estimee: 0, total: 0, benefice_imposable: 0 };
+    }
+    return computeBreakdownIndependant(indepCaAnnuel, indepType, parts, db);
+  }, [indepCaAnnuel, indepType, parts, db]);
+
+  // Sources actives = montant > 0 (pour adapter UI eyebrow / composition)
+  const activeSources = useMemo(() => {
+    const s: Array<"salaire" | "pension" | "capital" | "indep"> = [];
+    if (salaireMonthly > 0) s.push("salaire");
+    if (pensionMonthly > 0) s.push("pension");
+    if (capitalAnnuel > 0) s.push("capital");
+    if (indepCaAnnuel > 0) s.push("indep");
+    return s;
+  }, [salaireMonthly, pensionMonthly, capitalAnnuel, indepCaAnnuel]);
+
+  // Total cumulé (annuel) — somme des 4 breakdowns
+  const breakdownTotalCumule =
+    breakdownSalaire.total +
+    breakdownRetraite.total +
+    breakdownCapital.total +
+    breakdownIndep.total;
+
+  // ─── Taxe foncière estimée (varie selon commune si propriétaire) ──
+  const tfEstimated = useMemo(() => {
+    if (!isOwner) return 0;
+    if (tfCustom > 0) return tfCustom;
+    if (commune && commune.impots_locaux_eur_hab > 0) {
+      return estimateTaxeFonciereFromCommune(commune.impots_locaux_eur_hab);
+    }
+    return 0;
+  }, [isOwner, tfCustom, commune]);
+
+  const totalAnnuel = breakdownTotalCumule + tfEstimated;
+  const totalMonthly = totalAnnuel / 12;
+
+  // Count-up animations — easing material standard, 600ms.
+  // Le rendu utilise la valeur animée pour les chiffres "vedettes" (preview
+  // en haut + grand chiffre du panneau profil). Voir `useCountUp` pour la
+  // gestion mount/SSR/reduced-motion.
+  const totalMonthlyAnim = useCountUp(totalMonthly, 600);
+  const totalAnnuelAnim = useCountUp(totalAnnuel, 600);
+
+  // Reveal-on-scroll pour le tri-stack du panneau Dispatch (02). Les 3
+  // segments grandissent depuis la gauche en stagger (0/150/300ms) la
+  // première fois que le panneau entre dans le viewport. One-shot.
+  const triStackRef = useRef<HTMLDivElement | null>(null);
+  const triStackRevealed = useRevealOnScroll(triStackRef, { threshold: 0.3 });
+
+  // ─── Count-up §01 — composition adaptative du hero ───────────────────
+  //
+  // Les 4 (ou 3) montants de la ligne "Composition" sautent sec lors d'un
+  // changement de profil (SMIC → Cadre, etc.). On les anime en cascade
+  // légère via des durations échelonnées (600/650/700/750 ms) — toutes
+  // démarrent ensemble mais finissent à 50 ms d'écart, ce qui donne
+  // l'impression visuelle d'une cascade sans nécessiter un délai de
+  // démarrage (que `useCountUp` ne supporte pas). Tous les hooks sont
+  // appelés au top-level (Rules of Hooks) ; seule la branche affichée
+  // utilise réellement les valeurs animées.
+  const compoSalCotis = useCountUp(breakdownSalaire.cotisations_sal / 12, 600);
+  const compoSalCsg = useCountUp(breakdownSalaire.csg / 12, 650);
+  const compoSalIr = useCountUp(breakdownSalaire.ir / 12, 700);
+  const compoSalTva = useCountUp(breakdownSalaire.tva_estimee / 12, 750);
+
+  const compoRetCsg = useCountUp(breakdownRetraite.csg_crds_casa / 12, 600);
+  const compoRetIr = useCountUp(breakdownRetraite.ir / 12, 650);
+  const compoRetTva = useCountUp(breakdownRetraite.tva_estimee / 12, 700);
+
+  const compoCapIr = useCountUp(breakdownCapital.ir / 12, 600);
+  const compoCapPs = useCountUp(breakdownCapital.prelevements_sociaux / 12, 650);
+  const compoCapTva = useCountUp(breakdownCapital.tva_estimee / 12, 700);
+
+  const compoIndCotis = useCountUp(breakdownIndep.cotisations_urssaf / 12, 600);
+  const compoIndIr = useCountUp(breakdownIndep.ir / 12, 650);
+  const compoIndTva = useCountUp(breakdownIndep.tva_estimee / 12, 700);
+
+  // ─── Reveal-on-scroll §03–§08 — fade-in + slide-up des panels ────────
+  //
+  // Chaque panel (Sécu, État, Local, COFOG, Synthèse, Caveats) entre
+  // depuis 30px en bas avec opacité 0, transition 500ms cubic-bezier
+  // standard. Threshold 0.15 (panel apparaît dès qu'on en voit ~15%, soit
+  // après quelques pixels de scroll), one-shot.
+  //
+  // Régression zéro : si IntersectionObserver indispo OU JS désactivé,
+  // `useRevealOnScroll` renvoie `true` immédiatement → `.is-revealed`
+  // posée → état final affiché. Avec JS dispo mais avant scroll, le panel
+  // est temporairement opacity 0 jusqu'au reveal — c'est l'effet voulu.
+  //
+  // §00 (Calc) et §01 (Hero) restent toujours visibles d'emblée pour ne
+  // pas masquer le hero au mount. §02 (Disp) garde son reveal limité au
+  // tri-stack interne (déjà fait) — pas de panel-level fade pour éviter
+  // d'enchaîner deux animations sur le même panel.
+  const panel3Ref = useRef<HTMLElement | null>(null);
+  const panel3Revealed = useRevealOnScroll(panel3Ref, { threshold: 0.15 });
+  const panel4Ref = useRef<HTMLElement | null>(null);
+  const panel4Revealed = useRevealOnScroll(panel4Ref, { threshold: 0.15 });
+  const panel5Ref = useRef<HTMLElement | null>(null);
+  const panel5Revealed = useRevealOnScroll(panel5Ref, { threshold: 0.15 });
+  const panel6Ref = useRef<HTMLElement | null>(null);
+  const panel6Revealed = useRevealOnScroll(panel6Ref, { threshold: 0.15 });
+  const panel7Ref = useRef<HTMLElement | null>(null);
+  const panel7Revealed = useRevealOnScroll(panel7Ref, { threshold: 0.15 });
+  const panel8Ref = useRef<HTMLElement | null>(null);
+  const panel8Revealed = useRevealOnScroll(panel8Ref, { threshold: 0.15 });
+
+  // Client-armed flag pour la couche cinétique des panels.
+  // Tant que `clientArmed === false` (SSR + premier paint client), les
+  // panels n'ont pas la classe modifier `is-armed` → ils sont rendus
+  // dans leur état final (opacity 1, pas de translation) → JS désactivé
+  // = panels visibles, valeurs lisibles. Promesse "régression zéro" :
+  // l'animation est strictement progressive enhancement.
+  // Après mount, on bascule à `true` → la classe `is-armed` active la
+  // règle CSS qui pose opacity 0 + translateY(30px) jusqu'à ce que
+  // `is-revealed` soit posé par `useRevealOnScroll`. Comme les panels
+  // §03-§08 sont tous sous la ligne de flottaison initiale, le passage
+  // visible→invisible→reveal ne produit aucun flash perceptible.
+  const [clientArmed, setClientArmed] = useState(false);
+  useEffect(() => {
+    setClientArmed(true);
+  }, []);
+
+  // Écart pédagogique OpenFisca vs JS local sur la part salaire (en %).
+  // Affiché seulement si > 1 % et résultat OpenFisca présent.
+  const openFiscaEcartPct = useMemo(() => {
+    if (!openFiscaResult || breakdownSalaireJsLocal.total <= 0) return null;
+    const diff =
+      ((openFiscaResult.total - breakdownSalaireJsLocal.total) /
+        breakdownSalaireJsLocal.total) *
+      100;
+    return Math.abs(diff) > 1 ? diff : null;
+  }, [openFiscaResult, breakdownSalaireJsLocal.total]);
+
+  const institutionShares = useMemo(
+    () => (db ? computeInstitutionShares(totalAnnuel, db) : []),
+    [db, totalAnnuel],
+  );
+
+  const secuShare = institutionShares.find((i) => i.code === "S1314");
+  const etatShare = institutionShares.find((i) => i.code === "S1311");
+  const localShare = institutionShares.find((i) => i.code === "S1313");
+
+  const secuMonthly = secuShare ? secuShare.annual_eur / 12 : 0;
+  const etatMonthly = etatShare ? etatShare.annual_eur / 12 : 0;
+  const localMonthly = localShare ? localShare.annual_eur / 12 : 0;
+
+  const assoBranches = useMemo(
+    () => (db && secuShare ? computeAssoBreakdown(secuShare.annual_eur, db) : []),
+    [db, secuShare],
+  );
+
+  const stateBuckets = useMemo(
+    () => (db && etatShare ? computeStateBuckets(etatShare.annual_eur, db) : []),
+    [db, etatShare],
+  );
+
+  const localLevels = useMemo(() => {
+    if (!db || !localShare) return [];
+    const nationalAvg = db.local_avg_dep_eur_hab.value_eur_hab ?? 1500;
+    const ratio = commune && commune.eur_hab > 0 && nationalAvg > 0
+      ? commune.eur_hab / nationalAvg
+      : 1;
+    return computeLocalLevels(localShare.annual_eur, db, ratio);
+  }, [db, localShare, commune]);
+
+  const cofogShares = useMemo(() => {
+    if (!cofog) return [];
+    return computeCofogShares(totalAnnuel, cofog.functions);
+  }, [cofog, totalAnnuel]);
+
+  // ─── Deep-dives ("À l'intérieur de…") ─────────────────────────────
+  // Santé : applique la stack ONDAM PLFSS 2025 sur la part CNAM/maladie de la Sécu.
+  const cnamMonthly = useMemo(
+    () => assoBranches.find((b) => b.key === "part_cnam_maladie")?.monthly_eur ?? 0,
+    [assoBranches],
+  );
+  const deepdiveSante = useMemo<DeepDiveStackEntry[]>(
+    () => (db ? computeDeepDiveStack(cnamMonthly, db.deepdive?.sante) : []),
+    [db, cnamMonthly],
+  );
+
+  // Défense : part Mission Défense de l'État central, ventilée par titre.
+  // Total État ≈ 480 Md€ net BG (LFI 2025) ; total Mission Défense ≈ 50,1 Md€ ↦ part ~10.4%.
+  const defenseShareOfState = useMemo(() => {
+    const totalDefense = db?.deepdive?.defense?.total_md_eur;
+    const totalEtat = db?.state_breakdown?.total_net_cp_eur;
+    if (!totalDefense || !totalEtat || totalEtat <= 0) return 0.104; // fallback raisonné
+    // total_net_cp_eur est en €, total_defense en Md€
+    return Math.min(Math.max((totalDefense * 1e9) / totalEtat, 0.05), 0.25);
+  }, [db]);
+  const defenseMonthly = etatMonthly * defenseShareOfState;
+  const deepdiveDefense = useMemo<DeepDiveStackEntry[]>(
+    () => (db ? computeDeepDiveStack(defenseMonthly, db.deepdive?.defense) : []),
+    [db, defenseMonthly],
+  );
+
+  // Bloc communal : ventile la 1ère ligne de localLevels ("bloc_communal")
+  // selon la fonctionnelle OFGL (overlay top-200 par INSEE si dispo, sinon
+  // moyenne nationale).
+  const blocCommunalMonthly = useMemo(
+    () => localLevels.find((l) => l.key === "bloc_communal")?.monthly_eur ?? 0,
+    [localLevels],
+  );
+  // Bloc communal : si la commune est dans la fonctionnelle DGFiP (commune
+  // >3 500 hab qui vote par fonction), utilise sa vraie ventilation par
+  // fonction. Sinon, fallback sur le seed national (moyenne pondérée).
+  const communeFoncEntry = useMemo(() => {
+    if (!communeFonc || !commune?.insee) return null;
+    return communeFonc.by_insee[commune.insee] ?? null;
+  }, [communeFonc, commune?.insee]);
+
+  const deepdiveLocal = useMemo<DeepDiveStackEntry[]>(() => {
+    if (!db) return [];
+    if (communeFoncEntry) {
+      // Vraie ventilation DGFiP de la commune sélectionnée
+      const items = Object.entries(communeFoncEntry.fonctions);
+      const sum = items.reduce((acc, [, v]) => acc + (v.share || 0), 0) || 1;
+      return items
+        .map(([key, v]) => {
+          const lbl = FONCTION_LABELS[key];
+          const share = (v.share || 0) / sum;
+          return {
+            key,
+            label_fr: lbl?.fr ?? key,
+            label_en: lbl?.en ?? key,
+            share,
+            monthly_eur: blocCommunalMonthly * share,
+          };
+        })
+        .sort((a, b) => b.share - a.share);
+    }
+    // Fallback : seed national (moyenne pondérée)
+    return computeDeepDiveLocal(
+      blocCommunalMonthly,
+      db.deepdive?.bloc_communal,
+      commune?.insee,
+    );
+  }, [db, blocCommunalMonthly, communeFoncEntry, commune?.insee]);
+
+  // Sécu : Retraites — applique la stack DREES sur la part CNAV de la Sécu.
+  const cnavMonthly = useMemo(
+    () => assoBranches.find((b) => b.key === "part_cnav_retraites")?.monthly_eur ?? 0,
+    [assoBranches],
+  );
+  const deepdiveRetraites = useMemo<DeepDiveStackEntry[]>(
+    () => (db ? computeDeepDiveStack(cnavMonthly, db.deepdive?.retraites) : []),
+    [db, cnavMonthly],
+  );
+
+  // Sécu : Famille — applique la stack CCSS/CAF sur la part CAF de la Sécu.
+  const cafMonthly = useMemo(
+    () => assoBranches.find((b) => b.key === "part_caf_famille")?.monthly_eur ?? 0,
+    [assoBranches],
+  );
+  const deepdiveFamille = useMemo<DeepDiveStackEntry[]>(
+    () => (db ? computeDeepDiveStack(cafMonthly, db.deepdive?.famille) : []),
+    [db, cafMonthly],
+  );
+
+  // Sécu : Chômage — applique la stack UNEDIC sur la part UNEDIC de la Sécu.
+  const unedicMonthly = useMemo(
+    () => assoBranches.find((b) => b.key === "part_unedic_chomage")?.monthly_eur ?? 0,
+    [assoBranches],
+  );
+  const deepdiveChomage = useMemo<DeepDiveStackEntry[]>(
+    () => (db ? computeDeepDiveStack(unedicMonthly, db.deepdive?.chomage) : []),
+    [db, unedicMonthly],
+  );
+
+  // État : Éducation — applique la stack DEPP sur le bucket Éducation.
+  const educationMonthly = useMemo(
+    () => stateBuckets.find((b) => b.key === "education")?.monthly_eur ?? 0,
+    [stateBuckets],
+  );
+  const deepdiveEducation = useMemo<DeepDiveStackEntry[]>(
+    () => (db ? computeDeepDiveStack(educationMonthly, db.deepdive?.education) : []),
+    [db, educationMonthly],
+  );
+
+  // État : Charge dette — stack AFT sur le bucket Charge dette.
+  const detteMonthly = useMemo(
+    () => stateBuckets.find((b) => b.key === "dette")?.monthly_eur ?? 0,
+    [stateBuckets],
+  );
+  const deepdiveDette = useMemo<DeepDiveStackEntry[]>(
+    () => (db ? computeDeepDiveStack(detteMonthly, db.deepdive?.dette) : []),
+    [db, detteMonthly],
+  );
+
+  // État : Autres ministères + opérateurs — stack PLF sur le bucket "autres".
+  const autresMinisteresMonthly = useMemo(
+    () => stateBuckets.find((b) => b.key === "autres")?.monthly_eur ?? 0,
+    [stateBuckets],
+  );
+  const deepdiveAutresMinisteres = useMemo<DeepDiveStackEntry[]>(
+    () =>
+      db
+        ? computeDeepDiveStack(autresMinisteresMonthly, db.deepdive?.autres_ministeres)
+        : [],
+    [db, autresMinisteresMonthly],
+  );
+
+  // Local : Département — stack OFGL fonctionnelle.
+  // Si on connaît le département de la commune et qu'on a la data spécifique,
+  // on utilise les % réels du département. Sinon → moyenne nationale (status quo).
+  const departementMonthly = useMemo(
+    () => localLevels.find((l) => l.key === "departement")?.monthly_eur ?? 0,
+    [localLevels],
+  );
+  const departementSpecific = useMemo(() => {
+    if (!deptFonc || !commune?.dep_name) return null;
+    const code = deptFonc.by_dep_name?.[commune.dep_name];
+    if (!code) return null;
+    const entry = deptFonc.by_dep_code?.[code];
+    if (!entry) return null;
+    return { code, entry };
+  }, [deptFonc, commune?.dep_name]);
+
+  const deepdiveDepartementSource = useMemo(() => {
+    if (!db?.deepdive?.departement) return null;
+    if (!departementSpecific) return db.deepdive.departement;
+    // Override `national_avg_weighted` avec les valeurs spécifiques du
+    // département en gardant les `label_fr/label_en` de la moyenne nationale
+    // (i18n stable). Schema DailyBreadDeepDiveLocal inchangé → typage strict OK.
+    const base = db.deepdive.departement;
+    const baseAvg = base.national_avg_weighted ?? {};
+    const overlay: typeof baseAvg = {};
+    for (const [bucket, baseVal] of Object.entries(baseAvg)) {
+      const specVal = departementSpecific.entry.fonctions[bucket];
+      overlay[bucket] = specVal
+        ? {
+            share: specVal.share,
+            eur_hab: specVal.eur_hab,
+            label_fr: baseVal.label_fr,
+            label_en: baseVal.label_en,
+          }
+        : baseVal;
+    }
+    return { ...base, national_avg_weighted: overlay };
+  }, [db, departementSpecific]);
+
+  const deepdiveDepartement = useMemo<DeepDiveStackEntry[]>(
+    () =>
+      db ? computeDeepDiveLocal(departementMonthly, deepdiveDepartementSource) : [],
+    [db, departementMonthly, deepdiveDepartementSource],
+  );
+
+  // Local : Région — stack OFGL fonctionnelle moyenne nationale.
+  const regionMonthly = useMemo(
+    () => localLevels.find((l) => l.key === "region")?.monthly_eur ?? 0,
+    [localLevels],
+  );
+  const deepdiveRegion = useMemo<DeepDiveStackEntry[]>(
+    () => (db ? computeDeepDiveLocal(regionMonthly, db.deepdive?.region) : []),
+    [db, regionMonthly],
+  );
+
+  // ─── Equivalents (concrete units for synthèse panel) ───────────────
+  const equivalents = useMemo(() => {
+    if (!db) return [];
+    const items = db.equivalents.items;
+    const consult = items.consultation_medecin_generaliste?.value ?? 30;
+    const pension = items.pension_retraite_mensuelle_moyenne?.value ?? 1626;
+    const eleveJour = items.cout_eleve_jour_scolaire_public?.value ?? 52;
+    const ticket = items.trajet_metro_paris?.value ?? 2.5;
+
+    // CNAM = "part_cnam_maladie"
+    const cnam = assoBranches.find((b) => b.key === "part_cnam_maladie");
+    const cnav = assoBranches.find((b) => b.key === "part_cnav_retraites");
+    const educ = stateBuckets.find((b) => b.key === "education");
+    const dette = stateBuckets.find((b) => b.key === "dette");
+    const blocCommunal = localLevels.find((l) => l.key === "bloc_communal");
+
+    return [
+      cnam && {
+        tagFr: "Santé",
+        tagEn: "Health",
+        headline: `≈ ${(cnam.monthly_eur / consult).toLocaleString(
+          locale === "en" ? "en-GB" : "fr-FR",
+          { maximumFractionDigits: 0 },
+        )}`,
+        unitFr: "consultations généralistes / mois",
+        unitEn: "GP consultations / month",
+        amount: cnam.monthly_eur,
+        sub: "CNAM",
+      },
+      cnav && {
+        tagFr: "Retraites",
+        tagEn: "Pensions",
+        headline: `≈ ${((cnav.monthly_eur / pension) * 100).toLocaleString(
+          locale === "en" ? "en-GB" : "fr-FR",
+          { maximumFractionDigits: 0 },
+        )} %`,
+        unitFr: "d'une pension moyenne",
+        unitEn: "of an average pension",
+        amount: cnav.monthly_eur,
+        sub: "CNAV",
+      },
+      educ && {
+        tagFr: "Éducation",
+        tagEn: "Education",
+        headline: `≈ ${(educ.monthly_eur / eleveJour).toLocaleString(
+          locale === "en" ? "en-GB" : "fr-FR",
+          { maximumFractionDigits: 1 },
+        )}`,
+        unitFr: "jours d'école / 1 élève",
+        unitEn: "days of school / 1 student",
+        amount: educ.monthly_eur,
+        sub: locale === "en" ? "State" : "État",
+      },
+      blocCommunal && {
+        tagFr: "Local",
+        tagEn: "Local",
+        headline: `≈ ${(blocCommunal.monthly_eur / ticket).toLocaleString(
+          locale === "en" ? "en-GB" : "fr-FR",
+          { maximumFractionDigits: 0 },
+        )}`,
+        unitFr: "tickets de transport / mois",
+        unitEn: "transit tickets / month",
+        amount: blocCommunal.monthly_eur,
+        sub: commune?.nom ?? (locale === "en" ? "Municipal" : "Bloc communal"),
+      },
+      dette && {
+        tagFr: "Dette",
+        tagEn: "Debt",
+        headline: `≈ ${fmtEur(dette.monthly_eur, locale, 0)} €`,
+        unitFr: "d'intérêts de la dette / mois",
+        unitEn: "in debt interest / month",
+        amount: dette.monthly_eur,
+        sub: locale === "en" ? "Interest" : "Intérêts",
+      },
+    ].filter(Boolean) as Array<{
+      tagFr: string;
+      tagEn: string;
+      headline: string;
+      unitFr: string;
+      unitEn: string;
+      amount: number;
+      sub: string;
+    }>;
+  }, [db, assoBranches, stateBuckets, localLevels, commune, locale]);
+
+  // ─── Helpers ───────────────────────────────────────────────────────
+  const labelFor = (s: { label_fr: string; label_en: string }) =>
+    locale === "en" ? s.label_en : s.label_fr;
+
+  const eyebrow = useMemo(() => {
+    const partsLbl = PARTS_OPTIONS.find((p) => p.value === parts);
+    const partKey = partsLbl?.key ?? "couple";
+    // Profil = dépend des sources actives.
+    //  - 0 source → "Aucun revenu"
+    //  - 1 source non salaire → label dédié (Retraité / Capital / Indépendant)
+    //  - >1 source → "Multi-revenus"
+    //  - 1 source salaire → bracket par montant (SMIC / Médian / Cadre / Cadre sup)
+    let profileLabel: string;
+    if (activeSources.length === 0) {
+      profileLabel = t("db.hero.profile.zero");
+    } else if (activeSources.length > 1) {
+      profileLabel = t("db.hero.profile.multi");
+    } else if (activeSources[0] !== "salaire") {
+      const key = activeSources[0]; // "pension" | "capital" | "indep"
+      const mapped = key === "pension" ? "retraite" : key === "indep" ? "independant" : "capital";
+      profileLabel = t(`db.hero.profile.${mapped}`);
+    } else {
+      profileLabel =
+        salaireMonthly <= 1500
+          ? locale === "en"
+            ? "Min. wage"
+            : "SMIC"
+          : salaireMonthly <= 2500
+            ? locale === "en"
+              ? "Median"
+              : "Médian"
+            : salaireMonthly <= 4500
+              ? locale === "en"
+                ? "Manager"
+                : "Cadre"
+              : locale === "en"
+                ? "Senior"
+                : "Cadre sup";
+    }
+    const partsLabel = t(`db.form.parts.${partKey}`);
+    return `${profileLabel} · ${partsLabel}${commune ? ` · ${commune.nom}` : ""}`;
+  }, [salaireMonthly, activeSources, parts, commune, locale, t]);
+
+  const presetActiveKey = useMemo(() => {
+    // Le preset n'est "actif" que si l'utilisateur est uniquement en mode salaire.
+    if (activeSources.length !== 1 || activeSources[0] !== "salaire") return undefined;
+    const found = PRESETS.find((p) => p.net === salaireMonthly);
+    return found?.key;
+  }, [salaireMonthly, activeSources]);
+
+  const onPickPreset = (net: number) => setSalaireMonthly(net);
+
+  // ─── Render ────────────────────────────────────────────────────────
+  return (
+    <div className={`theme-db-scrolly${clientArmed ? " is-armed" : ""}`}>
+      <main>
+        {/* ── PANNEAU 0 — Calculator ── */}
+        <section className="db-panel db-p-calc">
+          <div className="db-panel-wrap">
+            <p className="db-panel-num">
+              <em>00</em> · {t("db.calc.num")}
+            </p>
+
+            <h1 className="db-p-calc-q">
+              {t("db.calc.q_a")} <em>{t("db.calc.q_b")}</em>
+            </h1>
+            <p className="db-p-calc-deck">{t("db.calc.deck")}</p>
+
+            {/* Mini preview discret — feedback live sans dupliquer le hero §01.
+                Ligne mono compacte, le grand chiffre est révélé au scroll. */}
+            <div className="db-p-calc-preview db-p-calc-preview-mini">
+              <span className="db-p-calc-preview-label">
+                {t("db.calc.preview_label")}
+              </span>
+              <span className="db-p-calc-preview-num-mini tnum">
+                ≈ {fmtEur(totalMonthlyAnim, locale, 0)} €/mois
+              </span>
+              <span className="db-p-calc-preview-annual tnum">
+                ({fmtEur(totalAnnuelAnim, locale, 0)} €/an)
+              </span>
+            </div>
+
+            {/* Bouton OpenFisca — affiner le calcul avec le code officiel Etalab */}
+            {salaireMonthly > 0 && (
+              <div className="db-openfisca-toggle">
+                <button
+                  type="button"
+                  className="db-openfisca-btn"
+                  data-state={
+                    isLoadingOpenFisca
+                      ? "loading"
+                      : openFiscaResult
+                        ? "active"
+                        : openFiscaError
+                          ? "error"
+                          : "idle"
+                  }
+                  onClick={requestOpenFiscaCalc}
+                  disabled={isLoadingOpenFisca || !!openFiscaResult}
+                >
+                  {isLoadingOpenFisca
+                    ? t("db.openfisca.button.loading")
+                    : openFiscaResult
+                      ? t("db.openfisca.button.active")
+                      : t("db.openfisca.button.idle")}
+                </button>
+                <p className="db-openfisca-note">
+                  {openFiscaError
+                    ? t("db.openfisca.error")
+                    : t("db.openfisca.note")}
+                  {openFiscaResult && openFiscaEcartPct !== null && (
+                    <>
+                      {" "}
+                      <span className="db-openfisca-ecart">
+                        {t("db.openfisca.ecart").replace(
+                          "{pct}",
+                          (openFiscaEcartPct >= 0 ? "+" : "") +
+                            openFiscaEcartPct.toFixed(1),
+                        )}
+                      </span>
+                    </>
+                  )}
+                </p>
+              </div>
+            )}
+
+            <div className="db-p-calc-form">
+              {/* Salaire net mensuel — input principal toujours visible */}
+              <div className="db-p-calc-field">
+                <label htmlFor="db-net">
+                  {t("db.form.salaire_label")}
+                  <span className="db-p-calc-field-unit">
+                    {" "}
+                    {t("db.form.unit.per_month")}
+                  </span>
+                </label>
+                <input
+                  id="db-net"
+                  type="number"
+                  className="db-p-calc-field-input tnum"
+                  value={salaireMonthly}
+                  min={0}
+                  max={50_000}
+                  step={50}
+                  onChange={(e) =>
+                    setSalaireMonthly(Math.max(0, Number(e.target.value) || 0))
+                  }
+                />
+                <span className="db-p-calc-field-help">
+                  {t("db.form.salaire_help")}
+                </span>
+              </div>
+
+              {/* Parts (toujours visible — utilisé pour salaire / pension / indépendant) */}
+              <div className="db-p-calc-field">
+                <label htmlFor="db-parts">{t("db.form.parts_label")}</label>
+                <select
+                  id="db-parts"
+                  className="db-p-calc-field-select tnum"
+                  value={parts}
+                  onChange={(e) => setParts(Number(e.target.value))}
+                >
+                  {PARTS_OPTIONS.map((p) => (
+                    <option key={p.value} value={p.value}>
+                      {p.value.toLocaleString(
+                        locale === "en" ? "en-GB" : "fr-FR",
+                      )}
+                    </option>
+                  ))}
+                </select>
+                <span className="db-p-calc-field-help">
+                  {t("db.form.parts_help")}
+                </span>
+              </div>
+
+              {/* Commune */}
+              <div className="db-p-calc-field">
+                <label htmlFor="db-commune">
+                  {t("db.form.commune_label")}
+                </label>
+                <input
+                  ref={inputRef}
+                  id="db-commune"
+                  type="search"
+                  className="db-p-calc-field-input"
+                  placeholder={t("db.form.commune_placeholder")}
+                  value={
+                    communeFocused
+                      ? communeQuery
+                      : commune
+                        ? commune.nom
+                        : ""
+                  }
+                  onFocus={() => {
+                    setCommuneFocused(true);
+                    setCommuneQuery("");
+                  }}
+                  onBlur={() => {
+                    // delay to allow click on hit
+                    setTimeout(() => setCommuneFocused(false), 150);
+                  }}
+                  onChange={(e) => setCommuneQuery(e.target.value)}
+                  autoComplete="off"
+                />
+                <span className="db-p-calc-field-help">
+                  {commune
+                    ? `${commune.dep_name} · ${commune.pop.toLocaleString(
+                        locale === "en" ? "en-GB" : "fr-FR",
+                      )} hab`
+                    : t("db.form.commune_help")}
+                </span>
+                {communeFocused &&
+                  communeQuery.trim().length >= 2 &&
+                  communeHits.length > 0 && (
+                    <div className="db-p-calc-hits">
+                      {communeHits.slice(0, 7).map((h) => (
+                        <button
+                          key={h.insee}
+                          type="button"
+                          className="db-p-calc-hit"
+                          onMouseDown={(e) => {
+                            // mousedown to fire before blur
+                            e.preventDefault();
+                            pickCommune(h);
+                          }}
+                        >
+                          <span className="db-p-calc-hit-name">{h.nom}</span>
+                          <span className="db-p-calc-hit-meta">
+                            {h.dep_name} ·{" "}
+                            {h.pop.toLocaleString(
+                              locale === "en" ? "en-GB" : "fr-FR",
+                            )}{" "}
+                            hab
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+              </div>
+            </div>
+
+            {/* "+ J'ai d'autres revenus" — toggle <details> natif, collapsed
+                par défaut. Open par défaut SEULEMENT si l'URL deep-linke
+                vers une source non-salaire (cas de partage). */}
+            <details
+              className="db-other-incomes"
+              open={initialOtherIncomesOpen || undefined}
+            >
+              <summary className="db-other-incomes-summary">
+                <span>{t("db.form.other_incomes_summary")}</span>
+                <span aria-hidden className="db-other-incomes-chevron">↓</span>
+              </summary>
+              <p className="db-other-incomes-help">
+                {t("db.form.other_incomes_help")}
+              </p>
+              <div className="db-p-calc-form db-other-incomes-form">
+                {/* Pension brute mensuelle */}
+                <div className="db-p-calc-field">
+                  <label htmlFor="db-pension">
+                    {t("db.form.retraite_label")}
+                    <span className="db-p-calc-field-unit">
+                      {" "}
+                      {t("db.form.unit.per_month")}
+                    </span>
+                  </label>
+                  <input
+                    id="db-pension"
+                    type="number"
+                    className="db-p-calc-field-input tnum"
+                    value={pensionMonthly}
+                    min={0}
+                    max={20_000}
+                    step={50}
+                    onChange={(e) =>
+                      setPensionMonthly(Math.max(0, Number(e.target.value) || 0))
+                    }
+                  />
+                  <span className="db-p-calc-field-help">
+                    {t("db.form.retraite_help")}
+                  </span>
+                </div>
+
+                {/* Revenus du capital bruts annuels */}
+                <div className="db-p-calc-field">
+                  <label htmlFor="db-capital">
+                    {t("db.form.capital_label")}
+                    <span className="db-p-calc-field-unit">
+                      {" "}
+                      {t("db.form.unit.per_year")}
+                    </span>
+                  </label>
+                  <input
+                    id="db-capital"
+                    type="number"
+                    className="db-p-calc-field-input tnum"
+                    value={capitalAnnuel}
+                    min={0}
+                    max={1_000_000}
+                    step={500}
+                    onChange={(e) =>
+                      setCapitalAnnuel(Math.max(0, Number(e.target.value) || 0))
+                    }
+                  />
+                  <span className="db-p-calc-field-help">
+                    {t("db.form.capital_help")}
+                  </span>
+                </div>
+
+                {/* CA annuel HT (micro-entrepreneur) + type d'activité */}
+                <div className="db-p-calc-field">
+                  <label htmlFor="db-indep-ca">
+                    {t("db.form.independant_label")}
+                    <span className="db-p-calc-field-unit">
+                      {" "}
+                      {t("db.form.unit.per_year")}
+                    </span>
+                  </label>
+                  <input
+                    id="db-indep-ca"
+                    type="number"
+                    className="db-p-calc-field-input tnum"
+                    value={indepCaAnnuel}
+                    min={0}
+                    max={1_000_000}
+                    step={500}
+                    onChange={(e) =>
+                      setIndepCaAnnuel(Math.max(0, Number(e.target.value) || 0))
+                    }
+                  />
+                  <span className="db-p-calc-field-help">
+                    {t("db.form.independant_help")}
+                  </span>
+                </div>
+
+                {/* Type d'activité — visible seulement si CA > 0 */}
+                {indepCaAnnuel > 0 && (
+                  <div className="db-p-calc-field">
+                    <label htmlFor="db-indep-type">
+                      {t("db.form.indep_type_label")}
+                    </label>
+                    <select
+                      id="db-indep-type"
+                      className="db-p-calc-field-select"
+                      value={indepType}
+                      onChange={(e) =>
+                        setIndepType(e.target.value as IndepActivityType)
+                      }
+                    >
+                      {INDEP_TYPES.map((it) => (
+                        <option key={it} value={it}>
+                          {t(`db.form.indep_type.${it}`)}
+                        </option>
+                      ))}
+                    </select>
+                    <span className="db-p-calc-field-help">
+                      {t("db.form.indep_type_help")}
+                    </span>
+                  </div>
+                )}
+              </div>
+            </details>
+
+            {/* TF — toggle propriétaire + estimation auto par commune */}
+            <div className="db-p-calc-tf">
+              <label className="db-p-calc-tf-toggle">
+                <input
+                  type="checkbox"
+                  checked={isOwner}
+                  onChange={(e) => {
+                    setIsOwner(e.target.checked);
+                    if (!e.target.checked) setTfCustom(0);
+                  }}
+                />
+                <span className="db-p-calc-tf-toggle-label">
+                  {t("db.form.owner_label")}
+                </span>
+              </label>
+              {isOwner && (
+                <div className="db-p-calc-tf-input-wrap">
+                  <label htmlFor="db-tf">{t("db.form.tf_label")}</label>
+                  <div className="db-p-calc-tf-input-row">
+                    <input
+                      id="db-tf"
+                      type="number"
+                      className="db-p-calc-tf-input tnum"
+                      value={
+                        tfCustom > 0
+                          ? tfCustom
+                          : commune
+                            ? estimateTaxeFonciereFromCommune(
+                                commune.impots_locaux_eur_hab,
+                              )
+                            : 0
+                      }
+                      min={0}
+                      max={20000}
+                      step={50}
+                      onChange={(e) =>
+                        setTfCustom(Number(e.target.value) || 0)
+                      }
+                    />
+                    <span className="db-p-calc-tf-unit">€/an</span>
+                  </div>
+                  <span className="db-p-calc-tf-help">
+                    {tfCustom > 0
+                      ? t("db.form.tf_help_custom")
+                      : t("db.form.tf_help_auto").replace(
+                          "{commune}",
+                          commune?.nom || "—",
+                        )}
+                  </span>
+                </div>
+              )}
+              {!isOwner && (
+                <span className="db-p-calc-tf-note">
+                  {t("db.form.owner_note")}
+                </span>
+              )}
+            </div>
+
+            <div className="db-p-calc-presets">
+              <span className="db-p-calc-presets-label">
+                {t("db.calc.presets_label")}
+              </span>
+              {PRESETS.map((p) => (
+                <button
+                  key={p.key}
+                  type="button"
+                  className={`db-p-calc-preset${
+                    presetActiveKey === p.key ? " is-active" : ""
+                  }`}
+                  onClick={() => onPickPreset(p.net)}
+                >
+                  {t(`db.calc.preset.${p.key}`)}
+                </button>
+              ))}
+            </div>
+
+            <p className="db-panel-foot-cue">{t("db.calc.foot_cue")}</p>
+          </div>
+        </section>
+
+        {/* ── PANNEAU 1 — HERO ── */}
+        <section className="db-panel db-p-hero">
+          <div className="db-panel-wrap">
+            <p className="db-panel-num">
+              <em>01</em> · {t("db.hero.num")}
+            </p>
+
+            <p className="db-p-hero-eyebrow">{eyebrow}</p>
+            <h1 className="db-p-hero-q">
+              {(() => {
+                // Question adaptative selon les sources actives :
+                //  - 0 source         → "zero" ("Sans revenu déclaré,…")
+                //  - 1 source         → message dédié (salaire / pension / capital / indep)
+                //  - >1 sources       → "multi" ("Sur tes revenus cumulés (X €/mois),…")
+                if (activeSources.length === 0) {
+                  return t("db.hero.q_a.zero");
+                }
+                if (activeSources.length > 1) {
+                  // Total revenus bruts mensuels (salaire net + pension brute + capital/12 + CA/12).
+                  const cumuleMonthly =
+                    salaireMonthly +
+                    pensionMonthly +
+                    capitalAnnuel / 12 +
+                    indepCaAnnuel / 12;
+                  return t("db.hero.q_a.multi").replace(
+                    "{amount}",
+                    fmtEur(cumuleMonthly, locale, 0),
+                  );
+                }
+                const only = activeSources[0];
+                if (only === "salaire") {
+                  return t("db.hero.q_a.salaire").replace(
+                    "{amount}",
+                    fmtEur(salaireMonthly, locale, 0),
+                  );
+                }
+                if (only === "pension") {
+                  return t("db.hero.q_a.retraite").replace(
+                    "{amount}",
+                    fmtEur(pensionMonthly, locale, 0),
+                  );
+                }
+                if (only === "capital") {
+                  return t("db.hero.q_a.capital").replace(
+                    "{amount}",
+                    fmtEur(capitalAnnuel, locale, 0),
+                  );
+                }
+                // indep
+                return t("db.hero.q_a.independant").replace(
+                  "{amount}",
+                  fmtEur(indepCaAnnuel, locale, 0),
+                );
+              })()}{" "}
+              <em>
+                {t("db.hero.q_b").replace(
+                  "{result}",
+                  `${fmtEur(totalMonthly, locale, 0)} €`,
+                )}
+              </em>
+            </h1>
+
+            <div className="db-p-hero-num-block">
+              <p className="db-p-hero-num tnum">
+                {fmtEur(totalMonthlyAnim, locale, 0)}
+                <span className="db-p-hero-num-eur">€</span>
+                {openFiscaResult && (
+                  <span
+                    className="db-openfisca-badge"
+                    title={t("db.openfisca.badge.tooltip")}
+                  >
+                    {t("db.openfisca.badge")}
+                  </span>
+                )}
+              </p>
+              <div className="db-p-hero-meta">
+                <p className="db-p-hero-meta-label">
+                  {t("db.hero.meta_label_top")}
+                </p>
+                <p className="db-p-hero-meta-val tnum">
+                  {t("db.hero.meta_year").replace(
+                    "{annual}",
+                    fmtEur(totalAnnuelAnim, locale, 0),
+                  )}
+                </p>
+                <hr />
+                <p className="db-p-hero-meta-label">
+                  {t("db.hero.meta_label_compo")}
+                </p>
+                <p
+                  className="db-p-hero-meta-val tnum"
+                  style={{ fontSize: 14, fontWeight: 500 }}
+                >
+                  {/*
+                    Composition adaptative :
+                     - 1 seule source active → ventilation détaillée par poste
+                       (cotisations + CSG + IR + TVA, ou variantes selon source)
+                     - >1 sources actives → ligne agrégée par source ("Salaire X €
+                       · Pension Y € · Capital Z € · Indépendant W €" +
+                       éventuellement TF), chaque montant = total prélèvements
+                       de la source / 12.
+                  */}
+                  {activeSources.length === 0 && (
+                    <span className="lite">—</span>
+                  )}
+                  {activeSources.length === 1 && activeSources[0] === "salaire" && (
+                    <>
+                      {t("db.hero.compo.cotisations")}{" "}
+                      <span className="lite">
+                        {fmtEur(compoSalCotis, locale, 0)}
+                      </span>{" "}
+                      · {t("db.hero.compo.csg")}{" "}
+                      <span className="lite">
+                        {fmtEur(compoSalCsg, locale, 0)}
+                      </span>{" "}
+                      · {t("db.hero.compo.ir")}{" "}
+                      <span className="lite">
+                        {fmtEur(compoSalIr, locale, 0)}
+                      </span>{" "}
+                      · {t("db.hero.compo.tva")}{" "}
+                      <span className="lite">
+                        {fmtEur(compoSalTva, locale, 0)}
+                      </span>
+                    </>
+                  )}
+                  {activeSources.length === 1 && activeSources[0] === "pension" && (
+                    <>
+                      {t("db.hero.compo.csg_casa")}{" "}
+                      <span className="lite">
+                        {fmtEur(compoRetCsg, locale, 0)}
+                      </span>{" "}
+                      · {t("db.hero.compo.ir")}{" "}
+                      <span className="lite">
+                        {fmtEur(compoRetIr, locale, 0)}
+                      </span>{" "}
+                      · {t("db.hero.compo.tva")}{" "}
+                      <span className="lite">
+                        {fmtEur(compoRetTva, locale, 0)}
+                      </span>
+                    </>
+                  )}
+                  {activeSources.length === 1 && activeSources[0] === "capital" && (
+                    <>
+                      {t("db.hero.compo.pfu_ir")}{" "}
+                      <span className="lite">
+                        {fmtEur(compoCapIr, locale, 0)}
+                      </span>{" "}
+                      · {t("db.hero.compo.pfu_ps")}{" "}
+                      <span className="lite">
+                        {fmtEur(compoCapPs, locale, 0)}
+                      </span>{" "}
+                      · {t("db.hero.compo.tva")}{" "}
+                      <span className="lite">
+                        {fmtEur(compoCapTva, locale, 0)}
+                      </span>
+                    </>
+                  )}
+                  {activeSources.length === 1 && activeSources[0] === "indep" && (
+                    <>
+                      {t("db.hero.compo.cotis_urssaf")}{" "}
+                      <span className="lite">
+                        {fmtEur(compoIndCotis, locale, 0)}
+                      </span>{" "}
+                      · {t("db.hero.compo.ir")}{" "}
+                      <span className="lite">
+                        {fmtEur(compoIndIr, locale, 0)}
+                      </span>{" "}
+                      · {t("db.hero.compo.tva")}{" "}
+                      <span className="lite">
+                        {fmtEur(compoIndTva, locale, 0)}
+                      </span>
+                    </>
+                  )}
+                  {activeSources.length > 1 && (
+                    <>
+                      {breakdownSalaire.total > 0 && (
+                        <>
+                          {t("db.hero.compo.src.salaire")}{" "}
+                          <span className="lite">
+                            {fmtEur(breakdownSalaire.total / 12, locale, 0)}
+                          </span>
+                        </>
+                      )}
+                      {breakdownRetraite.total > 0 && (
+                        <>
+                          {breakdownSalaire.total > 0 && " · "}
+                          {t("db.hero.compo.src.pension")}{" "}
+                          <span className="lite">
+                            {fmtEur(breakdownRetraite.total / 12, locale, 0)}
+                          </span>
+                        </>
+                      )}
+                      {breakdownCapital.total > 0 && (
+                        <>
+                          {(breakdownSalaire.total > 0 ||
+                            breakdownRetraite.total > 0) &&
+                            " · "}
+                          {t("db.hero.compo.src.capital")}{" "}
+                          <span className="lite">
+                            {fmtEur(breakdownCapital.total / 12, locale, 0)}
+                          </span>
+                        </>
+                      )}
+                      {breakdownIndep.total > 0 && (
+                        <>
+                          {(breakdownSalaire.total > 0 ||
+                            breakdownRetraite.total > 0 ||
+                            breakdownCapital.total > 0) &&
+                            " · "}
+                          {t("db.hero.compo.src.indep")}{" "}
+                          <span className="lite">
+                            {fmtEur(breakdownIndep.total / 12, locale, 0)}
+                          </span>
+                        </>
+                      )}
+                      {tfEstimated > 0 && (
+                        <>
+                          {" · "}
+                          {t("db.hero.compo.src.tf")}{" "}
+                          <span className="lite">
+                            {fmtEur(tfEstimated / 12, locale, 0)}
+                          </span>
+                        </>
+                      )}
+                    </>
+                  )}
+                </p>
+              </div>
+            </div>
+
+            {/* ── Toggle OpenFisca (Phase 5 MVP, opt-in) ── */}
+            <p className="db-p-hero-deck">{t("db.hero.deck")}</p>
+
+            {/* Encart "L'angle équité" retiré (2026-05-07) — les % par
+                source sont techniquement justes mais éthiquement
+                contestables sans le contexte (retraités ont déjà cotisé
+                pendant 40 ans, indépendants ont moins de protection
+                sociale, etc.). Risque éditorial inutile. */}
+
+            <p className="db-panel-foot-cue">{t("db.hero.foot_cue")}</p>
+          </div>
+        </section>
+
+        {/* ── PANNEAU 2 — DISPATCH ── */}
+        {institutionShares.length === 3 && (
+          <section className="db-panel db-p-disp">
+            <div className="db-panel-wrap">
+              <p className="db-panel-num">
+                <em>02</em> · {t("db.disp.num")}
+              </p>
+
+              <h2 className="db-p-disp-q">
+                {t("db.disp.q_a")} <em>{t("db.disp.q_b")}</em>
+              </h2>
+              <p className="db-p-disp-deck">
+                {renderTagged(
+                  t("db.disp.deck")
+                    .replace("{monthly}", fmtEur(totalMonthly, locale, 0))
+                    .replace("{year}", String(db?.apu_subsectors.year ?? "")),
+                  {
+                    b1: { color: "var(--p-secu)", fontWeight: 600 },
+                    b2: { color: "var(--p-etat)", fontWeight: 600 },
+                    b3: { color: "var(--p-local)", fontWeight: 600 },
+                  },
+                )}
+              </p>
+
+              <div
+                ref={triStackRef}
+                className={`db-stack-tri${triStackRevealed ? " is-revealed" : ""}`}
+                style={{
+                  gridTemplateColumns: institutionShares
+                    .map((i) => `${i.share * 100}fr`)
+                    .join(" "),
+                }}
+              >
+                <div style={{ background: "var(--p-secu)" }}>
+                  <div className="db-stack-tri-pct tnum">
+                    <RevealCountNum
+                      value={(secuShare?.share ?? 0) * 100}
+                      revealed={triStackRevealed}
+                      duration={600}
+                      format={(v) => `${Math.round(v)} %`}
+                    />
+                  </div>
+                  <div className="db-stack-tri-name">
+                    {locale === "en" ? "Social security" : "Sécurité sociale"}
+                  </div>
+                  <div className="db-stack-tri-amt tnum">
+                    <RevealCountNum
+                      value={secuMonthly}
+                      revealed={triStackRevealed}
+                      duration={650}
+                      format={(v) => `${fmtEur(v, locale, 0)} €/${locale === "en" ? "mo" : "mois"}`}
+                    />
+                  </div>
+                </div>
+                <div style={{ background: "var(--p-etat)" }}>
+                  <div className="db-stack-tri-pct tnum">
+                    <RevealCountNum
+                      value={(etatShare?.share ?? 0) * 100}
+                      revealed={triStackRevealed}
+                      duration={600}
+                      format={(v) => `${Math.round(v)} %`}
+                    />
+                  </div>
+                  <div className="db-stack-tri-name">
+                    {locale === "en" ? "Central government" : "État central"}
+                  </div>
+                  <div className="db-stack-tri-amt tnum">
+                    <RevealCountNum
+                      value={etatMonthly}
+                      revealed={triStackRevealed}
+                      duration={650}
+                      format={(v) => `${fmtEur(v, locale, 0)} €/${locale === "en" ? "mo" : "mois"}`}
+                    />
+                  </div>
+                </div>
+                <div style={{ background: "var(--p-local)" }}>
+                  <div className="db-stack-tri-pct tnum">
+                    <RevealCountNum
+                      value={(localShare?.share ?? 0) * 100}
+                      revealed={triStackRevealed}
+                      duration={600}
+                      format={(v) => `${Math.round(v)} %`}
+                    />
+                  </div>
+                  <div className="db-stack-tri-name">
+                    {locale === "en" ? "Local" : "Local"}
+                  </div>
+                  <div className="db-stack-tri-amt tnum">
+                    <RevealCountNum
+                      value={localMonthly}
+                      revealed={triStackRevealed}
+                      duration={650}
+                      format={(v) => `${fmtEur(v, locale, 0)} €/${locale === "en" ? "mo" : "mois"}`}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <p className="db-panel-foot-cue">{t("db.disp.foot_cue")}</p>
+            </div>
+          </section>
+        )}
+
+        {/* ── PANNEAU 3 — Zoom Sécu ── */}
+        {assoBranches.length > 0 && secuShare && (
+          <section
+            ref={panel3Ref}
+            className={`db-panel db-p-zoom db-panel-fade${panel3Revealed ? " is-revealed" : ""}`}
+          >
+            <div className="db-panel-wrap">
+              <p className="db-panel-num">
+                <em>03</em> ·{" "}
+                {t("db.secu.num").replace(
+                  "{monthly}",
+                  fmtEur(secuMonthly, locale, 0),
+                )}
+              </p>
+
+              <div className="db-p-zoom-grid">
+                <div className="db-p-zoom-l-text">
+                  <p className="db-p-zoom-pct c-secu tnum">
+                    {Math.round((secuShare.share ?? 0) * 100)}
+                    <span className="pct-symbol">%</span>
+                  </p>
+                  <p className="db-p-zoom-name">{t("db.secu.name")}</p>
+                  <p className="db-p-zoom-amt tnum">
+                    <b>
+                      {fmtEur(secuMonthly, locale, 0)} €/
+                      {locale === "en" ? "mo" : "mois"}
+                    </b>{" "}
+                    {locale === "en"
+                      ? "of your contribution"
+                      : "de ta contribution"}
+                  </p>
+                  <div className="db-p-zoom-deck">
+                    <p>{renderTagged(t("db.secu.deck1"))}</p>
+                    <p>{t("db.secu.deck2")}</p>
+                    <p className="db-p-zoom-source">
+                      {t("db.secu.source")}
+                    </p>
+                  </div>
+                </div>
+
+                <BarList
+                  items={assoBranches.map((b) => ({
+                    key: b.key,
+                    name: locale === "en" ? b.label_en : b.label_fr,
+                    monthly: b.monthly_eur,
+                    share: b.share,
+                    // pas de sub-label : le titre porte déjà le nom complet
+                  }))}
+                  color="c-secu"
+                  locale={locale}
+                  clickableUrls={secuTopUrls}
+                />
+              </div>
+
+              {deepdiveSante.length > 0 && cnamMonthly > 0 && (
+                <DailyBreadDeepDive
+                  eyebrow={t("db.deepdive.eyebrow")}
+                  title={t("db.deepdive.sante.title")}
+                  amountMonthly={cnamMonthly}
+                  meta={t("db.deepdive.sante.meta")}
+                  items={deepdiveSante.map((x) => ({
+                    ...x,
+                    label_fr: t(`db.deepdive.sante.${x.key}`),
+                    label_en: t(`db.deepdive.sante.${x.key}`),
+                  }))}
+                  color="c-secu"
+                  clickableUrls={buildSecuL3("cnam_maladie", deepdiveSante)}
+                  asides={[
+                    {
+                      num: t("db.deepdive.aside.sante1.num"),
+                      numEm: t("db.deepdive.aside.sante1.num_em"),
+                      text: t("db.deepdive.aside.sante1.text"),
+                      source: t("db.deepdive.aside.sante1.source"),
+                    },
+                    {
+                      num: t("db.deepdive.aside.sante2.num"),
+                      numEm: t("db.deepdive.aside.sante2.num_em"),
+                      text: t("db.deepdive.aside.sante2.text"),
+                      source: t("db.deepdive.aside.sante2.source"),
+                    },
+                    {
+                      num: t("db.deepdive.aside.sante3.num"),
+                      numEm: t("db.deepdive.aside.sante3.num_em"),
+                      text: t("db.deepdive.aside.sante3.text"),
+                      source: t("db.deepdive.aside.sante3.source"),
+                    },
+                  ]}
+                  locale={locale}
+                />
+              )}
+
+              {deepdiveRetraites.length > 0 && cnavMonthly > 0 && (
+                <DailyBreadDeepDive
+                  eyebrow={t("db.deepdive.eyebrow")}
+                  title={t("db.deepdive.retraites.title")}
+                  amountMonthly={cnavMonthly}
+                  meta={t("db.deepdive.retraites.meta")}
+                  items={deepdiveRetraites.map((x) => ({
+                    ...x,
+                    label_fr: t(`db.deepdive.retraites.${x.key}`),
+                    label_en: t(`db.deepdive.retraites.${x.key}`),
+                  }))}
+                  color="c-secu"
+                  clickableUrls={buildSecuL3("cnav_retraites", deepdiveRetraites)}
+                  asides={[
+                    {
+                      num: t("db.deepdive.aside.retraites1.num"),
+                      numEm: t("db.deepdive.aside.retraites1.num_em"),
+                      text: t("db.deepdive.aside.retraites1.text"),
+                      source: t("db.deepdive.aside.retraites1.source"),
+                    },
+                    {
+                      num: t("db.deepdive.aside.retraites2.num"),
+                      numEm: t("db.deepdive.aside.retraites2.num_em"),
+                      text: t("db.deepdive.aside.retraites2.text"),
+                      source: t("db.deepdive.aside.retraites2.source"),
+                    },
+                    {
+                      num: t("db.deepdive.aside.retraites3.num"),
+                      numEm: t("db.deepdive.aside.retraites3.num_em"),
+                      text: t("db.deepdive.aside.retraites3.text"),
+                      source: t("db.deepdive.aside.retraites3.source"),
+                    },
+                  ]}
+                  locale={locale}
+                />
+              )}
+
+              {deepdiveFamille.length > 0 && cafMonthly > 0 && (
+                <DailyBreadDeepDive
+                  eyebrow={t("db.deepdive.eyebrow")}
+                  title={t("db.deepdive.famille.title")}
+                  amountMonthly={cafMonthly}
+                  meta={t("db.deepdive.famille.meta")}
+                  items={deepdiveFamille.map((x) => ({
+                    ...x,
+                    label_fr: t(`db.deepdive.famille.${x.key}`),
+                    label_en: t(`db.deepdive.famille.${x.key}`),
+                  }))}
+                  color="c-secu"
+                  clickableUrls={buildSecuL3("cnaf_famille", deepdiveFamille)}
+                  asides={[
+                    {
+                      num: t("db.deepdive.aside.famille1.num"),
+                      numEm: t("db.deepdive.aside.famille1.num_em"),
+                      text: t("db.deepdive.aside.famille1.text"),
+                      source: t("db.deepdive.aside.famille1.source"),
+                    },
+                    {
+                      num: t("db.deepdive.aside.famille2.num"),
+                      numEm: t("db.deepdive.aside.famille2.num_em"),
+                      text: t("db.deepdive.aside.famille2.text"),
+                      source: t("db.deepdive.aside.famille2.source"),
+                    },
+                    {
+                      num: t("db.deepdive.aside.famille3.num"),
+                      numEm: t("db.deepdive.aside.famille3.num_em"),
+                      text: t("db.deepdive.aside.famille3.text"),
+                      source: t("db.deepdive.aside.famille3.source"),
+                    },
+                  ]}
+                  locale={locale}
+                />
+              )}
+
+              {deepdiveChomage.length > 0 && unedicMonthly > 0 && (
+                <DailyBreadDeepDive
+                  eyebrow={t("db.deepdive.eyebrow")}
+                  title={t("db.deepdive.chomage.title")}
+                  amountMonthly={unedicMonthly}
+                  meta={t("db.deepdive.chomage.meta")}
+                  items={deepdiveChomage.map((x) => ({
+                    ...x,
+                    label_fr: t(`db.deepdive.chomage.${x.key}`),
+                    label_en: t(`db.deepdive.chomage.${x.key}`),
+                  }))}
+                  color="c-secu"
+                  clickableUrls={buildSecuL3("unedic_chomage", deepdiveChomage)}
+                  asides={[
+                    {
+                      num: t("db.deepdive.aside.chomage1.num"),
+                      numEm: t("db.deepdive.aside.chomage1.num_em"),
+                      text: t("db.deepdive.aside.chomage1.text"),
+                      source: t("db.deepdive.aside.chomage1.source"),
+                    },
+                    {
+                      num: t("db.deepdive.aside.chomage2.num"),
+                      numEm: t("db.deepdive.aside.chomage2.num_em"),
+                      text: t("db.deepdive.aside.chomage2.text"),
+                      source: t("db.deepdive.aside.chomage2.source"),
+                    },
+                    {
+                      num: t("db.deepdive.aside.chomage3.num"),
+                      numEm: t("db.deepdive.aside.chomage3.num_em"),
+                      text: t("db.deepdive.aside.chomage3.text"),
+                      source: t("db.deepdive.aside.chomage3.source"),
+                    },
+                  ]}
+                  locale={locale}
+                />
+              )}
+
+              <p className="db-panel-foot-cue">{t("db.secu.foot_cue")}</p>
+            </div>
+          </section>
+        )}
+
+        {/* ── PANNEAU 4 — Zoom État ── */}
+        {stateBuckets.length > 0 && etatShare && (
+          <section
+            ref={panel4Ref}
+            className={`db-panel db-p-zoom db-p-zoom-l db-panel-fade${panel4Revealed ? " is-revealed" : ""}`}
+          >
+            <div className="db-panel-wrap">
+              <p className="db-panel-num">
+                <em>04</em> ·{" "}
+                {t("db.etat.num").replace(
+                  "{monthly}",
+                  fmtEur(etatMonthly, locale, 0),
+                )}
+              </p>
+
+              <div className="db-p-zoom-grid">
+                <div className="db-p-zoom-l-text">
+                  <p className="db-p-zoom-pct c-etat tnum">
+                    {Math.round((etatShare.share ?? 0) * 100)}
+                    <span className="pct-symbol">%</span>
+                  </p>
+                  <p className="db-p-zoom-name">{t("db.etat.name")}</p>
+                  <p className="db-p-zoom-amt tnum">
+                    <b>
+                      {fmtEur(etatMonthly, locale, 0)} €/
+                      {locale === "en" ? "mo" : "mois"}
+                    </b>{" "}
+                    {locale === "en"
+                      ? "of your contribution"
+                      : "de ta contribution"}
+                  </p>
+                  <div className="db-p-zoom-deck">
+                    <p>{renderTagged(t("db.etat.deck1"))}</p>
+                    <p>{t("db.etat.deck2")}</p>
+                    <p className="db-p-zoom-source">
+                      {t("db.etat.source")}
+                    </p>
+                  </div>
+                </div>
+
+                <BarList
+                  items={stateBuckets.map((b) => ({
+                    key: b.key,
+                    name: locale === "en" ? b.label_en : b.label_fr,
+                    monthly: b.monthly_eur,
+                    share: b.share_of_state,
+                    sub:
+                      b.missions.length > 1
+                        ? b.missions
+                            .map((m) => m.label)
+                            .slice(0, 3)
+                            .join(" · ")
+                        : undefined,
+                  }))}
+                  color="c-etat"
+                  locale={locale}
+                  clickableUrls={etatTopUrls}
+                />
+              </div>
+
+              {deepdiveEducation.length > 0 && educationMonthly > 0 && (
+                <DailyBreadDeepDive
+                  eyebrow={t("db.deepdive.eyebrow_l")}
+                  title={t("db.deepdive.education.title")}
+                  amountMonthly={educationMonthly}
+                  meta={t("db.deepdive.education.meta")}
+                  items={deepdiveEducation.map((x) => ({
+                    ...x,
+                    label_fr: t(`db.deepdive.education.${x.key}`),
+                    label_en: t(`db.deepdive.education.${x.key}`),
+                  }))}
+                  color="c-etat"
+                  // Pas de clickableUrls : les rows sont une décomposition DEPP
+                  // (pédagogique) ≠ programmes PLF d'Agent P. Le drill macro→
+                  // micro pour État passe par le BarList stateBuckets au-dessus.
+                  asides={[
+                    {
+                      num: t("db.deepdive.aside.education1.num"),
+                      numEm: t("db.deepdive.aside.education1.num_em"),
+                      text: t("db.deepdive.aside.education1.text"),
+                      source: t("db.deepdive.aside.education1.source"),
+                    },
+                    {
+                      num: t("db.deepdive.aside.education2.num"),
+                      numEm: t("db.deepdive.aside.education2.num_em"),
+                      text: t("db.deepdive.aside.education2.text"),
+                      source: t("db.deepdive.aside.education2.source"),
+                    },
+                    {
+                      num: t("db.deepdive.aside.education3.num"),
+                      numEm: t("db.deepdive.aside.education3.num_em"),
+                      text: t("db.deepdive.aside.education3.text"),
+                      source: t("db.deepdive.aside.education3.source"),
+                    },
+                  ]}
+                  locale={locale}
+                />
+              )}
+
+              {deepdiveDefense.length > 0 && defenseMonthly > 0 && (
+                <DailyBreadDeepDive
+                  eyebrow={t("db.deepdive.eyebrow")}
+                  title={t("db.deepdive.defense.title")}
+                  amountMonthly={defenseMonthly}
+                  meta={t("db.deepdive.defense.meta")}
+                  items={deepdiveDefense.map((x) => ({
+                    ...x,
+                    label_fr: t(`db.deepdive.defense.${x.key}`),
+                    label_en: t(`db.deepdive.defense.${x.key}`),
+                  }))}
+                  color="c-etat"
+                  // Décomposition par titre budgétaire ≠ programmes PLF.
+                  asides={[
+                    {
+                      num: t("db.deepdive.aside.defense1.num"),
+                      numEm: t("db.deepdive.aside.defense1.num_em"),
+                      text: t("db.deepdive.aside.defense1.text"),
+                      source: t("db.deepdive.aside.defense1.source"),
+                    },
+                    {
+                      num: t("db.deepdive.aside.defense2.num"),
+                      numEm: t("db.deepdive.aside.defense2.num_em"),
+                      text: t("db.deepdive.aside.defense2.text"),
+                      source: t("db.deepdive.aside.defense2.source"),
+                    },
+                    {
+                      num: t("db.deepdive.aside.defense3.num"),
+                      numEm: t("db.deepdive.aside.defense3.num_em"),
+                      text: t("db.deepdive.aside.defense3.text"),
+                      source: t("db.deepdive.aside.defense3.source"),
+                    },
+                  ]}
+                  locale={locale}
+                />
+              )}
+
+              {deepdiveDette.length > 0 && detteMonthly > 0 && (
+                <DailyBreadDeepDive
+                  eyebrow={t("db.deepdive.eyebrow_la")}
+                  title={t("db.deepdive.dette.title")}
+                  amountMonthly={detteMonthly}
+                  meta={t("db.deepdive.dette.meta")}
+                  items={deepdiveDette.map((x) => ({
+                    ...x,
+                    label_fr: t(`db.deepdive.dette.${x.key}`),
+                    label_en: t(`db.deepdive.dette.${x.key}`),
+                  }))}
+                  color="c-etat"
+                  // Décomposition AFT (intérêts CT/LT) ≠ programmes PLF.
+                  asides={[
+                    {
+                      num: t("db.deepdive.aside.dette1.num"),
+                      numEm: t("db.deepdive.aside.dette1.num_em"),
+                      text: t("db.deepdive.aside.dette1.text"),
+                      source: t("db.deepdive.aside.dette1.source"),
+                    },
+                    {
+                      num: t("db.deepdive.aside.dette2.num"),
+                      numEm: t("db.deepdive.aside.dette2.num_em"),
+                      text: t("db.deepdive.aside.dette2.text"),
+                      source: t("db.deepdive.aside.dette2.source"),
+                    },
+                    {
+                      num: t("db.deepdive.aside.dette3.num"),
+                      numEm: t("db.deepdive.aside.dette3.num_em"),
+                      text: t("db.deepdive.aside.dette3.text"),
+                      source: t("db.deepdive.aside.dette3.source"),
+                    },
+                  ]}
+                  locale={locale}
+                />
+              )}
+
+              {deepdiveAutresMinisteres.length > 0 && autresMinisteresMonthly > 0 && (
+                <DailyBreadDeepDive
+                  eyebrow={t("db.deepdive.eyebrow")}
+                  title={t("db.deepdive.autres_ministeres.title")}
+                  amountMonthly={autresMinisteresMonthly}
+                  meta={t("db.deepdive.autres_ministeres.meta")}
+                  items={deepdiveAutresMinisteres.map((x) => ({
+                    ...x,
+                    label_fr: t(`db.deepdive.autres_ministeres.${x.key}`),
+                    label_en: t(`db.deepdive.autres_ministeres.${x.key}`),
+                  }))}
+                  color="c-etat"
+                  // Agrégation éditoriale ≠ programmes PLF.
+                  asides={[
+                    {
+                      num: t("db.deepdive.aside.autres_ministeres1.num"),
+                      numEm: t("db.deepdive.aside.autres_ministeres1.num_em"),
+                      text: t("db.deepdive.aside.autres_ministeres1.text"),
+                      source: t("db.deepdive.aside.autres_ministeres1.source"),
+                    },
+                    {
+                      num: t("db.deepdive.aside.autres_ministeres2.num"),
+                      numEm: t("db.deepdive.aside.autres_ministeres2.num_em"),
+                      text: t("db.deepdive.aside.autres_ministeres2.text"),
+                      source: t("db.deepdive.aside.autres_ministeres2.source"),
+                    },
+                    {
+                      num: t("db.deepdive.aside.autres_ministeres3.num"),
+                      numEm: t("db.deepdive.aside.autres_ministeres3.num_em"),
+                      text: t("db.deepdive.aside.autres_ministeres3.text"),
+                      source: t("db.deepdive.aside.autres_ministeres3.source"),
+                    },
+                  ]}
+                  locale={locale}
+                />
+              )}
+
+              <p className="db-panel-foot-cue">{t("db.etat.foot_cue")}</p>
+            </div>
+          </section>
+        )}
+
+        {/* ── PANNEAU 5 — Zoom Local ── */}
+        {localLevels.length > 0 && localShare && (
+          <section
+            ref={panel5Ref}
+            className={`db-panel db-p-zoom db-panel-fade${panel5Revealed ? " is-revealed" : ""}`}
+          >
+            <div className="db-panel-wrap">
+              <p className="db-panel-num">
+                <em>05</em> ·{" "}
+                {t("db.local.num").replace(
+                  "{monthly}",
+                  fmtEur(localMonthly, locale, 0),
+                )}
+              </p>
+
+              <div className="db-p-zoom-grid">
+                <div className="db-p-zoom-l-text">
+                  <p className="db-p-zoom-pct c-local tnum">
+                    {Math.round((localShare.share ?? 0) * 100)}
+                    <span className="pct-symbol">%</span>
+                  </p>
+                  <p className="db-p-zoom-name">{t("db.local.title")}</p>
+                  <p className="db-p-zoom-amt tnum">
+                    <b>
+                      {fmtEur(localMonthly, locale, 0)} €/
+                      {locale === "en" ? "mo" : "mois"}
+                    </b>{" "}
+                    {locale === "en"
+                      ? "of your contribution"
+                      : "de ta contribution"}
+                  </p>
+                  <div className="db-p-zoom-deck">
+                    <p>
+                      {renderTagged(
+                        t("db.local.deck1")
+                          .replace("{city}", commune?.nom ?? "")
+                          .replace(
+                            "{monthly}",
+                            fmtEur(localMonthly, locale, 0),
+                          ),
+                      )}
+                    </p>
+                    <p>{renderTagged(t("db.local.deck2"))}</p>
+                    <p className="db-p-zoom-source">
+                      {t("db.local.source")}
+                    </p>
+                    {commune && (
+                      <Link
+                        href={`/ville/${commune.slug}`}
+                        className="db-local-cta"
+                      >
+                        {t("db.local.cta").replace("{city}", commune.nom)} →
+                      </Link>
+                    )}
+                  </div>
+                </div>
+
+                <BarList
+                  items={localLevels.map((l) => ({
+                    name: locale === "en" ? l.label_en : l.label_fr,
+                    monthly: l.monthly_eur,
+                    share: l.share_of_local,
+                    sub:
+                      l.key === "bloc_communal"
+                        ? locale === "en"
+                          ? "Cities + EPCI consolidated (transfers between local levels netted out)."
+                          : "Communes + intercommunalité, dépenses consolidées (transferts inter-niveaux nets)."
+                        : undefined,
+                  }))}
+                  color="c-local"
+                  locale={locale}
+                />
+              </div>
+
+              {deepdiveLocal.length > 0 && blocCommunalMonthly > 0 && (
+                <DailyBreadDeepDive
+                  eyebrow={t("db.deepdive.eyebrow_du")}
+                  title={
+                    commune?.nom
+                      ? `Bloc communal · ${commune.nom}`
+                      : t("db.deepdive.local.title")
+                  }
+                  amountMonthly={blocCommunalMonthly}
+                  meta={
+                    communeFoncEntry
+                      ? `DGFiP balance comptable ${communeFonc?.year ?? 2024} · ${commune?.nom}`
+                      : t("db.deepdive.local.meta")
+                  }
+                  items={deepdiveLocal.map((x) => {
+                    // Si l'entrée vient du seed national, on a une clé i18n
+                    // (ex `db.deepdive.local.administration_generale`).
+                    // Si elle vient de la fonctionnelle DGFiP par INSEE, le
+                    // label_fr est déjà rempli depuis FONCTION_LABELS.
+                    const i18nKey = `db.deepdive.local.${x.key}`;
+                    const tr = t(i18nKey);
+                    const useTr = tr && tr !== i18nKey;
+                    return {
+                      ...x,
+                      label_fr: useTr ? tr : x.label_fr,
+                      label_en: useTr ? tr : x.label_en,
+                    };
+                  })}
+                  color="c-local"
+                  // F-codes DGFiP communaux mappés vers les libellés OFGL
+                  // d'Agent P (cf. LOCAL_FONCTIONNELLE_ALIAS).
+                  clickableUrls={localFonctionnelleUrls}
+                  asides={[
+                    {
+                      num: t("db.deepdive.aside.local1.num"),
+                      numEm: t("db.deepdive.aside.local1.num_em"),
+                      text: t("db.deepdive.aside.local1.text"),
+                      source: t("db.deepdive.aside.local1.source"),
+                    },
+                    {
+                      num: t("db.deepdive.aside.local2.num"),
+                      numEm: t("db.deepdive.aside.local2.num_em"),
+                      text: t("db.deepdive.aside.local2.text"),
+                      source: t("db.deepdive.aside.local2.source"),
+                    },
+                    {
+                      num: t("db.deepdive.aside.local3.num"),
+                      numEm: t("db.deepdive.aside.local3.num_em"),
+                      text: t("db.deepdive.aside.local3.text"),
+                      source: t("db.deepdive.aside.local3.source"),
+                    },
+                  ]}
+                  locale={locale}
+                />
+              )}
+
+              {deepdiveDepartement.length > 0 && departementMonthly > 0 && (
+                <DailyBreadDeepDive
+                  eyebrow={t("db.deepdive.eyebrow_du")}
+                  title={
+                    commune?.dep_name
+                      ? `Département · ${commune.dep_name}`
+                      : t("db.deepdive.departement.title")
+                  }
+                  amountMonthly={departementMonthly}
+                  meta={
+                    departementSpecific && deptFonc
+                      ? `OFGL fonctionnelle ${deptFonc.year} · ${departementSpecific.entry.nom}`
+                      : t("db.deepdive.departement.meta")
+                  }
+                  items={deepdiveDepartement.map((x) => ({
+                    ...x,
+                    label_fr: t(`db.deepdive.departement.${x.key}`),
+                    label_en: t(`db.deepdive.departement.${x.key}`),
+                  }))}
+                  color="c-local"
+                  // OFGL départemental : decomposition différente d'Agent P
+                  // (qui couvre seulement le bloc communal). Drill non câblé.
+                  asides={[
+                    {
+                      num: t("db.deepdive.aside.departement1.num"),
+                      numEm: t("db.deepdive.aside.departement1.num_em"),
+                      text: t("db.deepdive.aside.departement1.text"),
+                      source: t("db.deepdive.aside.departement1.source"),
+                    },
+                    {
+                      num: t("db.deepdive.aside.departement2.num"),
+                      numEm: t("db.deepdive.aside.departement2.num_em"),
+                      text: t("db.deepdive.aside.departement2.text"),
+                      source: t("db.deepdive.aside.departement2.source"),
+                    },
+                    {
+                      num: t("db.deepdive.aside.departement3.num"),
+                      numEm: t("db.deepdive.aside.departement3.num_em"),
+                      text: t("db.deepdive.aside.departement3.text"),
+                      source: t("db.deepdive.aside.departement3.source"),
+                    },
+                  ]}
+                  locale={locale}
+                />
+              )}
+
+              {deepdiveRegion.length > 0 && regionMonthly > 0 && (
+                <DailyBreadDeepDive
+                  eyebrow={t("db.deepdive.eyebrow_de_la")}
+                  title={
+                    commune?.reg_name
+                      ? `Région · ${commune.reg_name}`
+                      : t("db.deepdive.region.title")
+                  }
+                  amountMonthly={regionMonthly}
+                  meta={t("db.deepdive.region.meta")}
+                  items={deepdiveRegion.map((x) => ({
+                    ...x,
+                    label_fr: t(`db.deepdive.region.${x.key}`),
+                    label_en: t(`db.deepdive.region.${x.key}`),
+                  }))}
+                  color="c-local"
+                  // OFGL régional : decomposition différente d'Agent P. Idem.
+                  asides={[
+                    {
+                      num: t("db.deepdive.aside.region1.num"),
+                      numEm: t("db.deepdive.aside.region1.num_em"),
+                      text: t("db.deepdive.aside.region1.text"),
+                      source: t("db.deepdive.aside.region1.source"),
+                    },
+                    {
+                      num: t("db.deepdive.aside.region2.num"),
+                      numEm: t("db.deepdive.aside.region2.num_em"),
+                      text: t("db.deepdive.aside.region2.text"),
+                      source: t("db.deepdive.aside.region2.source"),
+                    },
+                    {
+                      num: t("db.deepdive.aside.region3.num"),
+                      numEm: t("db.deepdive.aside.region3.num_em"),
+                      text: t("db.deepdive.aside.region3.text"),
+                      source: t("db.deepdive.aside.region3.source"),
+                    },
+                  ]}
+                  locale={locale}
+                />
+              )}
+
+              {/* MACRO → MICRO : pour Paris (et plus tard d'autres villes du portail détaillé), passerelle vers les pages où l'on peut voir QUI reçoit quel euro. */}
+              {commune?.slug === "paris" && (
+                <div className="db-macro-to-micro">
+                  <div className="db-macro-to-micro-head">
+                    <p className="db-macro-to-micro-eyebrow">
+                      {t("db.macro_micro.eyebrow")}
+                    </p>
+                    <h3 className="db-macro-to-micro-title">
+                      {renderTagged(t("db.macro_micro.title"), {
+                        em: {
+                          fontFamily: "var(--pf-serif)",
+                          fontStyle: "italic",
+                          fontWeight: 400,
+                          color: "var(--p-local)",
+                        },
+                      })}
+                    </h3>
+                    <p className="db-macro-to-micro-deck">
+                      {t("db.macro_micro.deck")}
+                    </p>
+                  </div>
+                  <div className="db-macro-to-micro-grid">
+                    <Link
+                      href="/ville/paris/budget"
+                      className="db-macro-to-micro-card"
+                    >
+                      <span className="db-macro-to-micro-card-label">
+                        {t("db.macro_micro.card.budget.label")}
+                      </span>
+                      <span className="db-macro-to-micro-card-title">
+                        {t("db.macro_micro.card.budget.title")}
+                      </span>
+                      <span className="db-macro-to-micro-card-arrow">→</span>
+                    </Link>
+                    <Link
+                      href="/ville/paris/subventions"
+                      className="db-macro-to-micro-card"
+                    >
+                      <span className="db-macro-to-micro-card-label">
+                        {t("db.macro_micro.card.qui_recoit.label")}
+                      </span>
+                      <span className="db-macro-to-micro-card-title">
+                        {t("db.macro_micro.card.qui_recoit.title")}
+                      </span>
+                      <span className="db-macro-to-micro-card-arrow">→</span>
+                    </Link>
+                    <Link
+                      href="/ville/paris/marches"
+                      className="db-macro-to-micro-card"
+                    >
+                      <span className="db-macro-to-micro-card-label">
+                        {t("db.macro_micro.card.marches.label")}
+                      </span>
+                      <span className="db-macro-to-micro-card-title">
+                        {t("db.macro_micro.card.marches.title")}
+                      </span>
+                      <span className="db-macro-to-micro-card-arrow">→</span>
+                    </Link>
+                    <Link
+                      href="/ville/paris/investissements"
+                      className="db-macro-to-micro-card"
+                    >
+                      <span className="db-macro-to-micro-card-label">
+                        {t("db.macro_micro.card.investissements.label")}
+                      </span>
+                      <span className="db-macro-to-micro-card-title">
+                        {t("db.macro_micro.card.investissements.title")}
+                      </span>
+                      <span className="db-macro-to-micro-card-arrow">→</span>
+                    </Link>
+                    <Link
+                      href="/ville/paris/logement"
+                      className="db-macro-to-micro-card"
+                    >
+                      <span className="db-macro-to-micro-card-label">
+                        {t("db.macro_micro.card.logement.label")}
+                      </span>
+                      <span className="db-macro-to-micro-card-title">
+                        {t("db.macro_micro.card.logement.title")}
+                      </span>
+                      <span className="db-macro-to-micro-card-arrow">→</span>
+                    </Link>
+                    <Link
+                      href="/ville/paris/dette"
+                      className="db-macro-to-micro-card"
+                    >
+                      <span className="db-macro-to-micro-card-label">
+                        {t("db.macro_micro.card.dette.label")}
+                      </span>
+                      <span className="db-macro-to-micro-card-title">
+                        {t("db.macro_micro.card.dette.title")}
+                      </span>
+                      <span className="db-macro-to-micro-card-arrow">→</span>
+                    </Link>
+                  </div>
+                </div>
+              )}
+              {commune && commune.slug !== "paris" && (
+                <div className="db-macro-to-micro db-macro-to-micro-other">
+                  <p className="db-macro-to-micro-eyebrow">
+                    {t("db.macro_micro.eyebrow")}
+                  </p>
+                  <p className="db-macro-to-micro-other-text">
+                    {t("db.macro_micro.other_text").replace(
+                      "{commune}",
+                      commune.nom,
+                    )}
+                  </p>
+                  <Link
+                    href={`/ville/${commune.slug}`}
+                    className="db-macro-to-micro-other-link"
+                  >
+                    {t("db.macro_micro.other_link").replace(
+                      "{commune}",
+                      commune.nom,
+                    )}{" "}
+                    →
+                  </Link>
+                </div>
+              )}
+
+              <p className="db-panel-foot-cue">{t("db.local.foot_cue")}</p>
+            </div>
+          </section>
+        )}
+
+        {/* ── PANNEAU 6 — Vue par mission ── */}
+        {cofogShares.length > 0 && (
+          <section
+            ref={panel7Ref}
+            className={`db-panel db-panel-fade${panel7Revealed ? " is-revealed" : ""}`}
+            style={{ minHeight: "auto", padding: "60px 0" }}
+          >
+            <div className="db-panel-wrap">
+              <p className="db-panel-num">
+                <em>06</em> · {t("db.cofog.kind")}
+              </p>
+              <h2
+                className="db-p-disp-q"
+                style={{ fontSize: 56, marginBottom: 16 }}
+              >
+                {t("db.cofog.title")}
+              </h2>
+              <p className="db-p-disp-deck" style={{ marginBottom: 24 }}>
+                {t("db.cofog.subtitle")}
+              </p>
+              <p
+                className="db-p-zoom-source"
+                style={{
+                  marginBottom: 12,
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "16px 24px",
+                  alignItems: "center",
+                }}
+              >
+                <span style={{ opacity: 0.7 }}>
+                  {t("db.cofog.legend.intro")}
+                </span>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      width: 14,
+                      height: 14,
+                      background: "var(--p-secu)",
+                      display: "inline-block",
+                      borderRadius: 2,
+                    }}
+                  />
+                  {t("db.cofog.legend.secu")}
+                </span>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      width: 14,
+                      height: 14,
+                      background: "var(--p-etat)",
+                      display: "inline-block",
+                      borderRadius: 2,
+                    }}
+                  />
+                  {t("db.cofog.legend.etat")}
+                </span>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      width: 14,
+                      height: 14,
+                      background: "var(--p-local)",
+                      display: "inline-block",
+                      borderRadius: 2,
+                    }}
+                  />
+                  {t("db.cofog.legend.local")}
+                </span>
+              </p>
+              <BarList
+                items={cofogShares.map((s) => ({
+                  name: labelFor(s),
+                  monthly: (s.share * totalAnnuel) / 12,
+                  share: s.share,
+                  color: COFOG_COLORS[s.code],
+                }))}
+                color="c-secu"
+                locale={locale}
+              />
+              <p
+                className="db-p-zoom-source"
+                style={{ marginTop: 24 }}
+              >
+                {db
+                  ? `Eurostat gov_10a_exp ${cofog?.year ?? ""} — calcul barèmes URSSAF / CGI ${db.fiscal_constants.ir.year} / INSEE.`
+                  : `Eurostat gov_10a_exp ${cofog?.year ?? ""}`}
+              </p>
+            </div>
+          </section>
+        )}
+
+        {/* ── PANNEAU 7 — Synthèse / Equivalents ── */}
+        {equivalents.length > 0 && (
+          <section
+            ref={panel6Ref}
+            id="db-share-section"
+            className={`db-panel db-p-end db-panel-fade${panel6Revealed ? " is-revealed" : ""}`}
+          >
+            <div className="db-panel-wrap">
+              <p className="db-panel-num">
+                <em>07</em> · {t("db.end.num")}
+              </p>
+
+              <h2 className="db-p-end-q">
+                {t("db.end.q_a").replace(
+                  "{monthly}",
+                  fmtEur(totalMonthly, locale, 0),
+                )}{" "}
+                <em>{t("db.end.q_b")}</em>
+              </h2>
+              <p className="db-p-end-deck">{t("db.end.deck")}</p>
+
+              <div className="db-p-end-grid">
+                {equivalents.slice(0, 5).map((eq, i) => (
+                  <div key={i} className="db-p-end-item">
+                    <p className="db-p-end-item-tag">
+                      {locale === "en" ? eq.tagEn : eq.tagFr}
+                    </p>
+                    <p className="db-p-end-item-headline tnum">
+                      {eq.headline}
+                    </p>
+                    <p className="db-p-end-item-unit">
+                      {locale === "en" ? eq.unitEn : eq.unitFr}
+                    </p>
+                    <p className="db-p-end-item-amt tnum">
+                      {fmtEur(eq.amount, locale, 0)} €{" "}
+                      <span className="lite">{eq.sub}</span>
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <DailyBreadShareActions locale={locale} />
+
+              <div className="db-p-end-foot">
+                <span>
+                  Sources :{" "}
+                  <a
+                    href="https://www.urssaf.fr/portail/home/taux-et-baremes/taux-de-cotisations.html"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    URSSAF
+                  </a>{" "}
+                  ·{" "}
+                  <a
+                    href="https://www.impots.gouv.fr/particulier/calcul-de-limpot-sur-le-revenu"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    CGI
+                  </a>{" "}
+                  ·{" "}
+                  <a
+                    href="https://www.insee.fr/fr/statistiques/serie/010003222"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    INSEE
+                  </a>{" "}
+                  ·{" "}
+                  <a
+                    href="https://ec.europa.eu/eurostat/databrowser/view/gov_10a_main"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Eurostat
+                  </a>{" "}
+                  ·{" "}
+                  <a
+                    href="https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe5.pdf"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    PLFSS 2025
+                  </a>{" "}
+                  ·{" "}
+                  <a
+                    href="https://www.data.gouv.fr/datasets/plf-2025-depenses-2025-selon-destination/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    LFI 2025
+                  </a>{" "}
+                  ·{" "}
+                  <a
+                    href="https://data.ofgl.fr/explore/dataset/ofgl-base-communes-consolidee/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    OFGL
+                  </a>
+                </span>
+                <span>
+                  franceopendata.org ·{" "}
+                  {locale === "en"
+                    ? "open public data"
+                    : "données publiques ouvertes"}
+                </span>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* ── Caveats ── */}
+        <section
+          ref={panel8Ref}
+          className={`db-panel db-panel-fade${panel8Revealed ? " is-revealed" : ""}`}
+          style={{ minHeight: "auto", padding: "40px 0 100px", background: "var(--p-paper)" }}
+        >
+          <div className="db-panel-wrap">
+            <p className="db-panel-num">
+              <em>08</em> · {t("db.caveats.kicker")}
+            </p>
+            <h3
+              className="db-p-end-q"
+              style={{ color: "var(--p-ink)", fontSize: 40 }}
+            >
+              {t("db.caveats.title")}
+            </h3>
+            <ul
+              style={{
+                fontFamily: "var(--pf-serif)",
+                fontStyle: "italic",
+                fontSize: 16,
+                lineHeight: 1.6,
+                color: "var(--p-ink-2)",
+                maxWidth: 820,
+                paddingLeft: 20,
+              }}
+            >
+              <li style={{ marginBottom: 10 }}>{t("db.caveats.li1")}</li>
+              <li style={{ marginBottom: 10 }}>{t("db.caveats.li2")}</li>
+              <li style={{ marginBottom: 10 }}>{t("db.caveats.li3")}</li>
+              <li style={{ marginBottom: 10 }}>{t("db.caveats.li4")}</li>
+              <li style={{ marginBottom: 10 }}>{t("db.caveats.li5")}</li>
+            </ul>
+          </div>
+        </section>
+      </main>
+
+      {/* FAB sticky : copier le lien du profil. URL déjà persistante via
+          query-string, donc le copier suffit pour partager. */}
+      <ShareFab />
+    </div>
+  );
+}
+
+function ShareFab() {
+  const t = useT();
+  const onScrollToShare = useCallback(() => {
+    if (typeof document === "undefined") return;
+    const el = document.getElementById("db-share-section");
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, []);
+  return (
+    <div className="db-share-fab-wrap">
+      <button
+        type="button"
+        onClick={onScrollToShare}
+        className="db-share-fab"
+        aria-label={t("db.share.aria")}
+      >
+        {t("db.share.cta")}
+      </button>
+    </div>
+  );
+}
+
+// ─── Share actions sub-component (intégré dans le panel synthèse) ──────
+function DailyBreadShareActions({ locale }: { locale: string }) {
+  const t = useT();
+  const [copied, setCopied] = useState(false);
+
+  const onDownloadPoster = useCallback(() => {
+    if (typeof window === "undefined") return;
+    const search = window.location.search || "";
+    const sep = search ? "&" : "?";
+    const url = `/api/og-poster${search}${sep}lang=${locale}`;
+    window.open(url, "_blank", "noopener");
+  }, [locale]);
+
+  const onCopy = useCallback(() => {
+    if (typeof window === "undefined") return;
+    navigator.clipboard
+      .writeText(window.location.href)
+      .then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2200);
+      })
+      .catch(() => {});
+  }, []);
+
+  const buildShareText = useCallback(() => t("db.share_section.share_text"), [t]);
+
+  const onShareX = useCallback(() => {
+    if (typeof window === "undefined") return;
+    const url = window.location.href;
+    window.open(
+      `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+        buildShareText(),
+      )}&url=${encodeURIComponent(url)}`,
+      "_blank",
+      "noopener",
+    );
+  }, [buildShareText]);
+
+  const onShareWhatsApp = useCallback(() => {
+    if (typeof window === "undefined") return;
+    const url = window.location.href;
+    window.open(
+      `https://wa.me/?text=${encodeURIComponent(buildShareText() + " " + url)}`,
+      "_blank",
+      "noopener",
+    );
+  }, [buildShareText]);
+
+  const onShareMail = useCallback(() => {
+    if (typeof window === "undefined") return;
+    const url = window.location.href;
+    const subject = t("db.share_section.mail_subject");
+    window.location.href = `mailto:?subject=${encodeURIComponent(
+      subject,
+    )}&body=${encodeURIComponent(buildShareText() + "\n\n" + url)}`;
+  }, [buildShareText, t]);
+
+  return (
+    <div className="db-p-end-share">
+      <span className="db-p-end-share-label">{t("db.share_section.eyebrow")}</span>
+      <div className="db-p-end-share-icons">
+        <button
+          type="button"
+          className="db-share-icon"
+          onClick={onShareX}
+          aria-label="X (Twitter)"
+          title="X (Twitter)"
+        >
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M9.3 7.1L13.5 2h-1L8.8 6.4 5.9 2H2.5l4.4 6.4L2.5 14h1l3.9-4.6L10.5 14h3.4L9.3 7.1z" />
+          </svg>
+        </button>
+        <button
+          type="button"
+          className="db-share-icon"
+          onClick={onShareWhatsApp}
+          aria-label="WhatsApp"
+          title="WhatsApp"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.4-1.5-.9-.8-1.5-1.8-1.6-2.1-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 .9-1 2.3 0 1.4 1 2.7 1.1 2.9.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.4z M12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.3-1.6c1.7.9 3.7 1.4 5.7 1.4 6.6 0 12-5.4 12-12S18.6 0 12 0zm0 21.6c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-3.8 1 1-3.7-.2-.4c-1-1.6-1.5-3.4-1.5-5.3 0-5.5 4.5-10 10-10s10 4.5 10 10c0 5.5-4.5 10-10 10z" />
+          </svg>
+        </button>
+        <button
+          type="button"
+          className="db-share-icon"
+          onClick={onShareMail}
+          aria-label={t("db.share_section.mail")}
+          title={t("db.share_section.mail")}
+        >
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+            <rect x="2" y="4" width="12" height="9" />
+            <path d="M2 4l6 5 6-5" />
+          </svg>
+        </button>
+        <button
+          type="button"
+          className={`db-share-icon${copied ? " is-copied" : ""}`}
+          onClick={onCopy}
+          aria-label={copied ? t("db.share_section.copied") : t("db.share_section.copy")}
+          title={copied ? t("db.share_section.copied") : t("db.share_section.copy")}
+        >
+          {copied ? (
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+              <path d="M3 8.5l3 3 7-7" />
+            </svg>
+          ) : (
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+              <path d="M6 6V3.5A1.5 1.5 0 0 1 7.5 2h5A1.5 1.5 0 0 1 14 3.5v5A1.5 1.5 0 0 1 12.5 10H10" />
+              <rect x="2" y="6" width="8" height="8" rx="1" />
+            </svg>
+          )}
+        </button>
+        <span className="db-share-divider" aria-hidden="true" />
+        <button
+          type="button"
+          className="db-share-icon"
+          onClick={onDownloadPoster}
+          aria-label={t("db.share_section.download")}
+          title={t("db.share_section.download")}
+        >
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+            <path d="M3 11v2h10v-2M8 2v9M5 8l3 3 3-3" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ─── DeepDive sub-component ─────────────────────────────────────────────
+
+type DeepDiveColor = "c-secu" | "c-etat" | "c-local";
+
+const DEEPDIVE_PALETTES: Record<DeepDiveColor, string[]> = {
+  // 5 nuances bleu Sécu (ONDAM)
+  "c-secu": ["#0451d6", "#1a64db", "#4078e0", "#6a8de6", "#93a8ec"],
+  // 4 nuances gris État
+  "c-etat": ["#1a1d26", "#2a2f38", "#4a4f58", "#6a6f78"],
+  // 9 nuances ocre Local
+  "c-local": [
+    "#c98215", "#b87410", "#d8943a", "#c98215", "#d8a060",
+    "#b88848", "#d8b078", "#c89858", "#e0c098",
+  ],
+};
+
+function DailyBreadDeepDive({
+  eyebrow,
+  title,
+  amountMonthly,
+  meta,
+  items,
+  color,
+  asides,
+  locale,
+  defaultOpen = false,
+  clickableUrls,
+}: {
+  eyebrow: string;
+  title: string;
+  amountMonthly: number;
+  meta: string;
+  items: DeepDiveStackEntry[];
+  color: DeepDiveColor;
+  asides: Array<{ num: string; numEm: string; text: string; source: string }>;
+  locale: string;
+  defaultOpen?: boolean;
+  /** Map row.key → URL absolue de drill-down. Une row n'est cliquable que si
+   *  sa key est présente dans la map. La résolution alias / niveau 2 vs 3
+   *  vit en amont (côté DailyBreadClient) — c'est là qu'on connaît le contrat
+   *  drilldown.json + les conventions de naming spécifiques par bucket. */
+  clickableUrls?: Map<string, string>;
+}) {
+  const t = useT();
+  const palette = DEEPDIVE_PALETTES[color];
+  const totalShare = items.reduce((acc, x) => acc + x.share, 0) || 1;
+  return (
+    <details
+      className={`db-p-zoom-deepdive ${color}`}
+      open={defaultOpen || undefined}
+    >
+      <summary className="db-p-zoom-deepdive-head">
+        <div>
+          <p className="db-p-zoom-deepdive-eyebrow">{eyebrow}</p>
+          <h3 className="db-p-zoom-deepdive-title">
+            {title} ·{" "}
+            <em>
+              {fmtEur(amountMonthly, locale, 0)} €/{locale === "en" ? "mo" : "mois"}
+            </em>
+          </h3>
+        </div>
+        <div className="db-p-zoom-deepdive-meta">
+          <span className="db-p-zoom-deepdive-meta-text">{meta}</span>
+          <span aria-hidden className="db-p-zoom-deepdive-chevron">↓</span>
+        </div>
+      </summary>
+
+      <div className="db-p-zoom-deepdive-body">
+        <div className="db-p-zoom-deepdive-grid">
+          <div className="db-p-zoom-deepdive-stack-wrap">
+            <div className="db-p-zoom-deepdive-stack">
+              {items.map((it, i) => {
+                const flex = (it.share / totalShare) * 100;
+                const bg = palette[i % palette.length];
+                const showAmt = it.share >= 0.07;
+                return (
+                  <div key={it.key} style={{ background: bg, flex }}>
+                    <div className="db-p-zoom-deepdive-stack-pct">
+                      {Math.round(it.share * 100)} %
+                    </div>
+                    <div className="db-p-zoom-deepdive-stack-name">
+                      {locale === "en" ? it.label_en : it.label_fr}
+                    </div>
+                    {showAmt && (
+                      <div className="db-p-zoom-deepdive-stack-amt">
+                        {fmtEur(it.monthly_eur, locale, 0)} €
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+            <div className="db-p-zoom-deepdive-legend">
+              {items.map((it, i) => {
+                const bg = palette[i % palette.length];
+                const label = locale === "en" ? it.label_en : it.label_fr;
+                const url = clickableUrls?.get(it.key);
+                if (url) {
+                  // Link + scroll={false} pour déclencher l'intercept slot
+                  // (cf. BarList — router.push casse l'intercept).
+                  return (
+                    <Link
+                      key={it.key}
+                      href={url}
+                      scroll={false}
+                      prefetch={false}
+                      className="db-p-zoom-deepdive-legend-item db-p-zoom-deepdive-legend-item-clickable"
+                      aria-label={t("db.drilldown.row_open_aria").replace(
+                        "{label}",
+                        label,
+                      )}
+                    >
+                      <i style={{ background: bg }} />
+                      <span>{label}</span>
+                      <b className="tnum">{fmtEur(it.monthly_eur, locale, 0)} €</b>
+                      <span aria-hidden className="db-p-zoom-deepdive-legend-chevron">
+                        →
+                      </span>
+                    </Link>
+                  );
+                }
+                return (
+                  <span key={it.key} className="db-p-zoom-deepdive-legend-item">
+                    <i style={{ background: bg }} />
+                    <span>{label}</span>
+                    <b className="tnum">{fmtEur(it.monthly_eur, locale, 0)} €</b>
+                  </span>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="db-p-zoom-deepdive-asides">
+            {asides.map((a, i) => (
+              <div key={i} className={`db-p-zoom-deepdive-aside ${color}`}>
+                <p className="db-p-zoom-deepdive-aside-num">
+                  {a.num} <em>{a.numEm}</em>
+                </p>
+                <p className="db-p-zoom-deepdive-aside-text">{a.text}</p>
+                <span className="db-p-zoom-deepdive-aside-source">{a.source}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </details>
+  );
+}
+
+// ─── BarList sub-component ─────────────────────────────────────────────
+
+function BarList({
+  items,
+  color,
+  locale,
+  clickableUrls,
+}: {
+  items: Array<{
+    key?: string;
+    name: string;
+    monthly: number;
+    share: number;
+    sub?: string;
+    color?: string;
+  }>;
+  color: "c-secu" | "c-etat" | "c-local";
+  locale: string;
+  /** Optional : si l'item a une `key` présente dans cette map, la barre
+   *  devient cliquable (drill vers `/ville/paris/daily-bread/bucket/<bucket>/<level2>`). */
+  clickableUrls?: Map<string, string>;
+}) {
+  const max = Math.max(...items.map((i) => i.share), 0.01);
+  return (
+    <div className="db-p-zoom-bars">
+      {items.map((item, i) => {
+        const pct = (item.share / max) * 100;
+        const url = item.key ? clickableUrls?.get(item.key) : undefined;
+        const isClickable = Boolean(url);
+        const inner = (
+          <>
+            <div className="db-p-zoom-bar-head">
+              <span className="db-p-zoom-bar-name">
+                {item.name}
+                {isClickable && (
+                  <span aria-hidden className="db-p-zoom-bar-chevron">→</span>
+                )}
+              </span>
+              <span className="db-p-zoom-bar-val tnum">
+                {fmtEur(item.monthly, locale, 0)} €
+                <span className="pct">
+                  {(item.share * 100).toLocaleString(
+                    locale === "en" ? "en-GB" : "fr-FR",
+                    { maximumFractionDigits: 0 },
+                  )}{" "}
+                  %
+                </span>
+              </span>
+            </div>
+            <div className="db-p-zoom-bar-track">
+              <div
+                className={`db-p-zoom-bar-fill ${color}`}
+                style={{
+                  width: `${pct}%`,
+                  background: item.color ?? undefined,
+                }}
+              />
+            </div>
+            {item.sub && <div className="db-p-zoom-bar-sub">{item.sub}</div>}
+          </>
+        );
+        if (isClickable && url) {
+          // Link avec scroll={false} = soft nav qui déclenche l'intercept
+          // parallel-route `@drawer/(.)bucket/...` au lieu d'un router.push
+          // qui forçait une full-nav (perte du slot drawer).
+          return (
+            <Link
+              key={i}
+              href={url}
+              scroll={false}
+              prefetch={false}
+              className="db-p-zoom-bar db-p-zoom-bar-clickable"
+            >
+              {inner}
+            </Link>
+          );
+        }
+        return (
+          <div key={i} className="db-p-zoom-bar">
+            {inner}
+          </div>
+        );
+      })}
+    </div>
+  );
+}

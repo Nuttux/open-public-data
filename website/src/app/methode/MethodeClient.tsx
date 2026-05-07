@@ -62,7 +62,7 @@ function barStyle(start: number, end: number): CSSProperties {
 const TOOLS_FR: ToolMethod[] = [
   {
     id: "budget", number: "04", kicker: "Budget",
-    title: "Budget principal — voté & exécuté", route: "/budget",
+    title: "Budget principal — voté & exécuté", route: "/ville/paris/budget",
     source: { name: "Comptes administratifs M57 + budgets primitifs", dataset: "comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement", coverage: "2019-2024 (exécuté) · 2019-2026 (voté)", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/", hrefLabel: "opendata.paris.fr" },
     enClair: (
       <>
@@ -91,7 +91,7 @@ const TOOLS_FR: ToolMethod[] = [
   },
   {
     id: "subventions", number: "05", kicker: "Subventions",
-    title: "Subventions versées aux bénéficiaires", route: "/qui-recoit",
+    title: "Subventions versées aux bénéficiaires", route: "/ville/paris/subventions",
     source: { name: "Subventions versées — annexes CA", dataset: "subventions-versees-annexe-compte-administratif-a-partir-de-2018", coverage: "2018-2024 · ~53 000 lignes", href: "https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/", hrefLabel: "opendata.paris.fr" },
     enClair: (
       <>
@@ -121,7 +121,7 @@ const TOOLS_FR: ToolMethod[] = [
   },
   {
     id: "marches-publics", number: "06", kicker: "Marchés publics",
-    title: "Marchés notifiés (commande publique)", route: "/marches-publics",
+    title: "Marchés notifiés (commande publique)", route: "/ville/paris/marches",
     source: { name: "opendata.paris.fr + DECP nationale data.gouv.fr", dataset: "liste-des-marches-de-la-collectivite-parisienne + decp-consolides", coverage: "2013-2026 · 23 053 contrats consolidés", href: "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/", hrefLabel: "opendata.paris.fr" },
     enClair: (
       <>
@@ -166,7 +166,7 @@ const TOOLS_FR: ToolMethod[] = [
   },
   {
     id: "investissements", number: "07", kicker: "Investissements",
-    title: "Projets d'investissement (AP)", route: "/investissements",
+    title: "Projets d'investissement (AP)", route: "/ville/paris/investissements",
     source: { name: "Annexes AP du CA + PDF « Investissements Localisés »", dataset: "comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de + PDF cdn.paris.fr", coverage: "Dataset gelé 2018-2022 · PDF IL 2018-2026", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/", hrefLabel: "opendata.paris.fr" },
     enClair: (
       <>
@@ -198,7 +198,7 @@ const TOOLS_FR: ToolMethod[] = [
   },
   {
     id: "logement-social", number: "08", kicker: "Logement social",
-    title: "Logement social (SRU, opérations, parc)", route: "/logement-social",
+    title: "Logement social (SRU, opérations, parc)", route: "/ville/paris/logement",
     source: { name: "Inventaire SRU (DDT) + logements sociaux financés + Socle DRIHL", dataset: "logements-sociaux-finances-a-paris + inventaire SRU + Socle demandes et attributions DRIHL", coverage: "2001-2024 (financés) · SRU année en cours · Socle 2024", href: "https://www.paris.fr/logement-social", hrefLabel: "paris.fr" },
     enClair: (
       <>
@@ -231,7 +231,7 @@ const TOOLS_FR: ToolMethod[] = [
   },
   {
     id: "dette-patrimoine", number: "09", kicker: "Dette & patrimoine",
-    title: "Bilan comptable : dette, actif, fonds propres", route: "/dette-patrimoine",
+    title: "Bilan comptable : dette, actif, fonds propres", route: "/ville/paris/dette",
     source: { name: "Bilan comptable M57 + dataset dette-garantie (annexe IV-B) + ROB", dataset: "bilan-comptable + dette-garantie", coverage: "2019-2024 · 9 960 emprunts garantis 2024", href: "https://opendata.paris.fr/explore/dataset/bilan-comptable/", hrefLabel: "opendata.paris.fr" },
     enClair: (
       <>
@@ -320,7 +320,7 @@ const COVERAGE_FR: CoverageRow[] = [
 const TOOLS_EN: ToolMethod[] = [
   {
     id: "budget", number: "04", kicker: "Budget",
-    title: "Main budget — voted & executed", route: "/budget",
+    title: "Main budget — voted & executed", route: "/ville/paris/budget",
     source: { name: "Administrative accounts M57 + draft budgets", dataset: "comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement", coverage: "2019-2024 (executed) · 2019-2026 (voted)", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/", hrefLabel: "opendata.paris.fr" },
     enClair: (
       <>
@@ -349,7 +349,7 @@ const TOOLS_EN: ToolMethod[] = [
   },
   {
     id: "subventions", number: "05", kicker: "Grants",
-    title: "Grants paid to recipients", route: "/qui-recoit",
+    title: "Grants paid to recipients", route: "/ville/paris/subventions",
     source: { name: "Grants paid — CA appendices", dataset: "subventions-versees-annexe-compte-administratif-a-partir-de-2018", coverage: "2018-2024 · ~53,000 lines", href: "https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/", hrefLabel: "opendata.paris.fr" },
     enClair: (
       <>
@@ -379,7 +379,7 @@ const TOOLS_EN: ToolMethod[] = [
   },
   {
     id: "marches-publics", number: "06", kicker: "Public contracts",
-    title: "Awarded contracts (public procurement)", route: "/marches-publics",
+    title: "Awarded contracts (public procurement)", route: "/ville/paris/marches",
     source: { name: "opendata.paris.fr + national DECP on data.gouv.fr", dataset: "liste-des-marches-de-la-collectivite-parisienne + decp-consolides", coverage: "2013-2026 · 23,053 merged contracts", href: "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/", hrefLabel: "opendata.paris.fr" },
     enClair: (
       <>
@@ -424,7 +424,7 @@ const TOOLS_EN: ToolMethod[] = [
   },
   {
     id: "investissements", number: "07", kicker: "Investments",
-    title: "Investment projects (AP)", route: "/investissements",
+    title: "Investment projects (AP)", route: "/ville/paris/investissements",
     source: { name: "CA AP appendices + 'Localised Investments' PDFs", dataset: "comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de + PDF cdn.paris.fr", coverage: "Dataset frozen 2018-2022 · PDF IL 2018-2026", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/", hrefLabel: "opendata.paris.fr" },
     enClair: (
       <>
@@ -456,7 +456,7 @@ const TOOLS_EN: ToolMethod[] = [
   },
   {
     id: "logement-social", number: "08", kicker: "Social housing",
-    title: "Social housing (SRU, operations, stock)", route: "/logement-social",
+    title: "Social housing (SRU, operations, stock)", route: "/ville/paris/logement",
     source: { name: "SRU inventory (DDT) + funded social housing + DRIHL Socle", dataset: "logements-sociaux-finances-a-paris + SRU inventory + DRIHL applications/allocations Socle", coverage: "2001-2024 (funded) · SRU current year · Socle 2024", href: "https://www.paris.fr/logement-social", hrefLabel: "paris.fr" },
     enClair: (
       <>
@@ -489,7 +489,7 @@ const TOOLS_EN: ToolMethod[] = [
   },
   {
     id: "dette-patrimoine", number: "09", kicker: "Debt & assets",
-    title: "Balance sheet: debt, assets, equity", route: "/dette-patrimoine",
+    title: "Balance sheet: debt, assets, equity", route: "/ville/paris/dette",
     source: { name: "M57 accounting balance sheet + dette-garantie dataset (CA appendix IV-B) + BOR", dataset: "bilan-comptable + dette-garantie", coverage: "2019-2024 · 9,960 guaranteed loans in 2024", href: "https://opendata.paris.fr/explore/dataset/bilan-comptable/", hrefLabel: "opendata.paris.fr" },
     enClair: (
       <>
@@ -661,6 +661,7 @@ export default function MethodeClient() {
   return (
     <div className="theme-fusion">
       <Navbar />
+      <main id="main-content" tabIndex={-1}>
 
       <section className="fx-page-header">
         <div className="fx-wrap">
@@ -760,7 +761,7 @@ export default function MethodeClient() {
           <SectionHead
             number="01"
             kind={isFr ? "Sources" : "Sources"}
-            title={isFr ? <>D&apos;<em>où</em> vient chaque chiffre</> : <>Where <em>each</em> figure comes from</>}
+            title={isFr ? <>D&apos;où vient <em>chaque chiffre</em></> : <>Where <em>each figure</em> comes from</>}
             subtitle={isFr ? "Six portails officiels. Aucun autre." : "Six official portals. Nothing else."}
           />
           <div className="fx-sources-table">
@@ -851,7 +852,7 @@ export default function MethodeClient() {
           <div className="fx-flow-simple">
             <div className="fx-flow-simple-step">
               <div className="k">01</div>
-              <h4>{isFr ? "On récupère" : "We fetch"}</h4>
+              <h3>{isFr ? "On récupère" : "We fetch"}</h3>
               <p>{isFr
                 ? "On télécharge les datasets publiés par la Ville, par l'État (DECP, INSEE) et par les services déconcentrés (DRIHL). On lit aussi les PDFs joints aux comptes annuels. Rien n'est transformé à cette étape : on archive la source telle quelle."
                 : "We download datasets published by the City, by the State (DECP, INSEE) and by decentralised services (DRIHL). We also read the PDFs attached to annual accounts. Nothing is transformed here: the source is archived as-is."}</p>
@@ -859,7 +860,7 @@ export default function MethodeClient() {
             <span className="fx-flow-simple-arrow">→</span>
             <div className="fx-flow-simple-step">
               <div className="k">02</div>
-              <h4>{isFr ? "On relie & traduit" : "We stitch & translate"}</h4>
+              <h3>{isFr ? "On relie & traduit" : "We stitch & translate"}</h3>
               <p>{isFr
                 ? "On traduit les nomenclatures comptables en français courant et on joint les sources entre elles — par SIRET pour savoir qui reçoit, par adresse pour savoir où, par numéro de marché pour relier un contrat à son projet."
                 : "We translate accounting nomenclatures into plain language and stitch the sources together — by SIRET to know who receives, by address to know where, by contract number to link a contract to its project."}</p>
@@ -867,7 +868,7 @@ export default function MethodeClient() {
             <span className="fx-flow-simple-arrow">→</span>
             <div className="fx-flow-simple-step">
               <div className="k">03</div>
-              <h4>{isFr ? "On enrichit" : "We enrich"}</h4>
+              <h3>{isFr ? "On enrichit" : "We enrich"}</h3>
               <p>{isFr
                 ? "Les datasets bruts ne disent pas qui est vraiment une association, ni à quelle politique publique une ligne correspond. Alors on va chercher du contexte ailleurs : l'API publique SIRENE pour obtenir la forme juridique, l'activité et le siège d'un bénéficiaire (~5 800 profils vérifiés) ; un modèle de langage pour classer les subventions par thème (Social, Culture, Sport…), résumer l'objet de la subvention en une phrase, et retrouver l'arrondissement des projets dont le libellé est ambigu."
                 : "Raw datasets don't tell you what kind of non-profit a recipient is, nor which public policy a line belongs to. So we fetch context elsewhere: the public SIRENE API for legal form, activity and registered office of a recipient (~5,800 verified profiles); a language model to tag grants by theme (Social, Culture, Sport…), summarise a grant's purpose in one sentence, and resolve the district of projects with ambiguous labels."}</p>
@@ -875,7 +876,7 @@ export default function MethodeClient() {
             <span className="fx-flow-simple-arrow">→</span>
             <div className="fx-flow-simple-step">
               <div className="k">04</div>
-              <h4>{isFr ? "On publie" : "We publish"}</h4>
+              <h3>{isFr ? "On publie" : "We publish"}</h3>
               <p>{isFr
                 ? "Le résultat est figé en fichiers JSON, versionnés avec le code. Un fichier par année et par outil. Le site lit ces fichiers directement — pas de base de données live, pas de calcul côté navigateur. Ce que vous voyez est exactement ce qui a été calculé."
                 : "The result is frozen as JSON files, versioned with the code. One file per year per tool. The site reads these files directly — no live database, no browser-side computation. What you see is exactly what was computed."}</p>
@@ -1145,19 +1146,19 @@ export default function MethodeClient() {
           />
           <div className="fx-engagements">
             <div className="fx-engagement">
-              <h4>{isFr ? "Pas de contenu sponsorisé, pas de ligne politique" : "No sponsored content, no political line"}</h4>
+              <h3>{isFr ? "Pas de contenu sponsorisé, pas de ligne politique" : "No sponsored content, no political line"}</h3>
               <p>{isFr
                 ? "Aucun article, chiffre ou visualisation n'est sponsorisé. Les textes évitent les jugements sur les choix politiques et s'en tiennent à la donnée. Les financements que nous recevons sont publiés avec leur montant."
                 : "No article, figure or visualisation is sponsored. Texts avoid judgements on political choices and stick to the data. Any funding we receive is published with its amount."}</p>
             </div>
             <div className="fx-engagement">
-              <h4>{isFr ? "Code & données ouverts" : "Open code & data"}</h4>
+              <h3>{isFr ? "Code & données ouverts" : "Open code & data"}</h3>
               <p>{isFr
                 ? <>Les pipelines (Python + dbt) sont sous licence MIT. Chaque chiffre peut être recalculé depuis un CSV source, et chaque page expose un export CSV/JSON. Code sur <a href="https://github.com/Nuttux/open-public-data" target="_blank" rel="noopener noreferrer">github.com/Nuttux/open-public-data ↗</a>.</>
                 : <>Pipelines (Python + dbt) are MIT-licensed. Every figure can be recalculated from a source CSV, and every page exposes a CSV/JSON export. Code at <a href="https://github.com/Nuttux/open-public-data" target="_blank" rel="noopener noreferrer">github.com/Nuttux/open-public-data ↗</a>.</>}</p>
             </div>
             <div className="fx-engagement">
-              <h4>{isFr ? "Corrections publiques, jamais de chiffre supprimé" : "Public corrections, no figure ever deleted"}</h4>
+              <h3>{isFr ? "Corrections publiques, jamais de chiffre supprimé" : "Public corrections, no figure ever deleted"}</h3>
               <p>{isFr
                 ? <>Erreur signalée = corrigée dans le code et consignée dans le changelog avec la date et l&apos;origine du signalement. On corrige en place et on garde la trace — pour que tout ancien screenshot reste traçable. <a href="https://github.com/Nuttux/open-public-data/commits/main" target="_blank" rel="noopener noreferrer">Voir les commits ↗</a></>
                 : <>Error reported = corrected in the code and recorded in the changelog with the date and source of the report. We correct in place and keep a record — so any old screenshot remains traceable. <a href="https://github.com/Nuttux/open-public-data/commits/main" target="_blank" rel="noopener noreferrer">View commits ↗</a></>}</p>
@@ -1172,6 +1173,161 @@ export default function MethodeClient() {
         </div>
       </section>
 
+      {/* ─── Méthode des pages France macro & villes ─────────────── */}
+      <section id="france-macro" className="fx-section">
+        <div className="fx-wrap">
+          <SectionHead
+            number="09"
+            kind={isFr ? "France macro & villes" : "France macro & cities"}
+            title={
+              isFr ? (
+                <>Les <em>5 nouvelles</em> pages France & multi-villes</>
+              ) : (
+                <>The <em>5 new</em> France & multi-city pages</>
+              )
+            }
+            subtitle={
+              isFr
+                ? "Source, périmètre, choix, limites pour /apu, /etat, /dette, /fiscalite et les pages /ville/[ville]."
+                : "Source, scope, choices, limits for /apu, /etat, /dette, /fiscalite and the /ville/[city] pages."
+            }
+          />
+
+          <div className="fx-france-method-grid" style={{ marginTop: 32 }}>
+            {/* /apu ─────────────────────────────── */}
+            <article id="apu-cofog" className="fx-france-method">
+              <header>
+                <span className="fx-france-method-route">/apu</span>
+                <h3>{isFr ? "Dépenses publiques par fonction COFOG" : "Public spending by COFOG function"}</h3>
+              </header>
+              <dl>
+                <dt>{isFr ? "Source" : "Source"}</dt>
+                <dd>
+                  Eurostat — <code>gov_10a_exp</code> · <a href="https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp/default/table" target="_blank" rel="noopener noreferrer">databrowser ↗</a>
+                </dd>
+                <dt>{isFr ? "Périmètre" : "Scope"}</dt>
+                <dd>{isFr
+                  ? "Sector S13 (administrations publiques consolidées : État + Sécu + collectivités + opérateurs). Unité : % PIB. Pas de retraitement maison."
+                  : "Sector S13 (consolidated general government: central + social security + local + operators). Unit: % GDP. No in-house adjustment."}</dd>
+                <dt>{isFr ? "Comparateurs" : "Comparators"}</dt>
+                <dd>FR · DE · IT · ES · NL · UE27</dd>
+                <dt>{isFr ? "Limites" : "Limits"}</dt>
+                <dd>{isFr
+                  ? "Données annuelles, dernier exercice publié par Eurostat (souvent N-1 ou N-2). 10 fonctions COFOG niveau 1 ; pas de drill-down vers les programmes nationaux."
+                  : "Annual data, latest year published by Eurostat (typically N-1 or N-2). 10 level-1 COFOG functions; no drill-down to national programmes."}</dd>
+              </dl>
+            </article>
+
+            {/* /etat ────────────────────────────── */}
+            <article id="etat" className="fx-france-method">
+              <header>
+                <span className="fx-france-method-route">/etat</span>
+                <h3>{isFr ? "Budget Général de l'État (PLF)" : "State General Budget (PLF)"}</h3>
+              </header>
+              <dl>
+                <dt>{isFr ? "Source" : "Source"}</dt>
+                <dd>
+                  data.economie.gouv.fr — PLF par mission/programme · <a href="https://www.data.gouv.fr/datasets/plf-2025-depenses-2025-selon-destination/" target="_blank" rel="noopener noreferrer">PLF 2025 ↗</a> · <a href="https://www.data.gouv.fr/datasets/plf-2024-depenses-2024-selon-nomenclatures-destination-et-nature/" target="_blank" rel="noopener noreferrer">PLF 2024 ↗</a>
+                </dd>
+                <dt>{isFr ? "Périmètre" : "Scope"}</dt>
+                <dd>{isFr
+                  ? "Type budget = BG (Budget Général) uniquement. Comptes spéciaux et budgets annexes exclus. Total ~25 % des dépenses publiques (le reste : Sécu, collectivités, opérateurs)."
+                  : "Type budget = BG (General Budget) only. Special accounts and annex budgets excluded. Represents ~25% of total public spending (the rest: social security, local authorities, operators)."}</dd>
+                <dt>{isFr ? "Brut vs net" : "Gross vs net"}</dt>
+                <dd>{isFr
+                  ? "« Net » exclut la mission Remboursements & dégrèvements (~147 Md€) qui regroupe les restitutions d'impôts (CIR, TVA déductible…) — comptablement BG mais conceptuellement réduction de recettes."
+                  : "« Net » excludes the Remboursements & dégrèvements mission (~€147B) which covers tax refunds (R&D credit, deductible VAT…) — accounted in BG but conceptually a revenue reduction."}</dd>
+                <dt>{isFr ? "YoY" : "YoY"}</dt>
+                <dd>{isFr
+                  ? "Évolution PLF 2025 vs PLF 2024 affichée par mission. Comparaison à périmètre constant (mission code identique)."
+                  : "Evolution PLF 2025 vs PLF 2024 shown per mission. Constant-scope comparison (same mission code)."}</dd>
+              </dl>
+            </article>
+
+            {/* /dette ───────────────────────────── */}
+            <article id="dette" className="fx-france-method">
+              <header>
+                <span className="fx-france-method-route">/dette</span>
+                <h3>{isFr ? "Dette publique trimestrielle (Maastricht)" : "Quarterly government debt (Maastricht)"}</h3>
+              </header>
+              <dl>
+                <dt>{isFr ? "Source" : "Source"}</dt>
+                <dd>
+                  Eurostat — <code>gov_10q_ggdebt</code> · <a href="https://ec.europa.eu/eurostat/databrowser/view/gov_10q_ggdebt/default/table" target="_blank" rel="noopener noreferrer">databrowser ↗</a>
+                </dd>
+                <dt>{isFr ? "Indicateur" : "Indicator"}</dt>
+                <dd><code>na_item = GD</code> ({isFr ? "dette consolidée brute, définition Maastricht" : "Maastricht consolidated gross debt"})</dd>
+                <dt>{isFr ? "Sous-secteurs" : "Sub-sectors"}</dt>
+                <dd>S13 (APU) · S1311 (État central) · S1313 (collectivités) · S1314 (Sécu)</dd>
+                <dt>{isFr ? "À retenir" : "Key caveat"}</dt>
+                <dd>{isFr
+                  ? "S13 ≠ S1311 + S1313 + S1314 : la consolidation élimine les détentions croisées entre sous-secteurs. Lire chaque trait pour ce qu'il représente, ne pas les additionner."
+                  : "S13 ≠ S1311 + S1313 + S1314: consolidation removes cross-holdings between sub-sectors. Read each line for what it represents, do not sum them."}</dd>
+              </dl>
+            </article>
+
+            {/* /fiscalite ───────────────────────── */}
+            <article id="fiscalite" className="fx-france-method">
+              <header>
+                <span className="fx-france-method-route">/fiscalite</span>
+                <h3>{isFr ? "Prélèvements obligatoires (taxes + cotisations)" : "Compulsory levies (taxes + contributions)"}</h3>
+              </header>
+              <dl>
+                <dt>{isFr ? "Source" : "Source"}</dt>
+                <dd>
+                  Eurostat — <code>gov_10a_taxag</code> · <a href="https://ec.europa.eu/eurostat/databrowser/view/gov_10a_taxag/default/table" target="_blank" rel="noopener noreferrer">databrowser ↗</a>
+                </dd>
+                <dt>{isFr ? "Total" : "Total"}</dt>
+                <dd><code>D2_D5_D91_D61_M_D612_M_D614_M_D995</code> ({isFr ? "taxes nettes + cotisations sociales nettes" : "net taxes + net social contributions"})</dd>
+                <dt>{isFr ? "Décomposition" : "Breakdown"}</dt>
+                <dd>{isFr
+                  ? "6 catégories mutuellement exclusives : Cotisations · TVA · Autres impôts production · IR (incl. CSG, classée comme impôt par Eurostat) · IS · Autres directs+capital."
+                  : "6 mutually-exclusive categories: Contributions · VAT · Other production taxes · Personal income tax (incl. CSG, classified as a tax by Eurostat) · Corporate tax · Other direct + capital."}</dd>
+                <dt>{isFr ? "Limites" : "Limits"}</dt>
+                <dd>{isFr
+                  ? "Ratio rapporté au PIB nominal (pas au revenu disponible). Le total Eurostat (~43-44 % PIB) est légèrement inférieur au « ratio prélèvements obligatoires » DGFiP (~46 %) à cause de méthodos de consolidation différentes."
+                  : "Ratio relative to nominal GDP (not disposable income). Eurostat's total (~43-44% GDP) is slightly below DGFiP's « ratio prélèvements obligatoires » (~46%) due to different consolidation methodologies."}</dd>
+              </dl>
+            </article>
+
+            {/* /ville/[slug] ──────────────────────── */}
+            <article id="c-villes" className="fx-france-method">
+              <header>
+                <span className="fx-france-method-route">/ville/[slug]</span>
+                <h3>{isFr ? "Pages communes (10 plus grandes villes)" : "City pages (10 largest cities)"}</h3>
+              </header>
+              <dl>
+                <dt>{isFr ? "Sources" : "Sources"}</dt>
+                <dd>
+                  OFGL <code>ofgl-base-communes-consolidee</code> ({isFr ? "agrégats financiers M14/M57 harmonisés" : "M14/M57 harmonised financial aggregates"}) ·{" "}
+                  <a href="https://data.ofgl.fr/explore/dataset/ofgl-base-communes-consolidee/" target="_blank" rel="noopener noreferrer">OFGL ↗</a>
+                  <br />
+                  data.gouv DECP consolidée ({isFr ? "marchés publics filtrés par SIREN acheteur" : "public procurement filtered by buyer SIREN"}) ·{" "}
+                  <a href="https://www.data.gouv.fr/datasets/donnees-essentielles-de-la-commande-publique-consolidees-format-tabulaire/" target="_blank" rel="noopener noreferrer">DECP ↗</a>
+                </dd>
+                <dt>{isFr ? "Cutoff M14/M57" : "M14/M57 cutoff"}</dt>
+                <dd>{isFr
+                  ? "OFGL republie les séries harmonisées sous un libellé unique : pas de hachurage gris à l'écran, la transition 2024 est lissée à la source."
+                  : "OFGL republishes harmonised series under a single label: no on-screen hatching, the 2024 transition is smoothed at source."}</dd>
+                <dt>{isFr ? "Capacité de désendettement" : "Debt repayment capacity"}</dt>
+                <dd>{isFr
+                  ? "= Encours de dette / Épargne brute (en années). Seuil légal d'alerte : 12 ans. Tag vert < 8 · jaune 8-12 · rouge > 12."
+                  : "= Outstanding debt / Gross savings (in years). Statutory alert threshold: 12 years. Green tag < 8 · yellow 8-12 · red > 12."}</dd>
+                <dt>{isFr ? "Marchés DECP — qualité data" : "DECP procurement — data quality"}</dt>
+                <dd>{isFr
+                  ? "DECP est déclaratif et de qualité variable (certaines villes ne publient quasi rien — Strasbourg = 5 marchés). 3 couches de défense côté pipeline : dedup par uid (Nice publiait 1 ligne par lot), détecteur de valeurs sentinelles type 399 999 996 €, et cap absolu à 200 M€ par marché."
+                  : "DECP is self-declared with variable quality (some cities publish almost nothing — Strasbourg = 5 contracts). 3 defense layers in the pipeline: dedup by uid (Nice publishes 1 row per lot), detector for sentinel values like €399 999 996, and 200 M€ cap per single contract."}</dd>
+                <dt>{isFr ? "Comparaison aux pairs" : "Peer comparison"}</dt>
+                <dd>{isFr
+                  ? "Brute en € par habitant. À nuancer : richesse fiscale, statut administratif (Paris = ville-département, Lyon dans la métropole) et transferts d'État varient fortement entre communes."
+                  : "Raw € per resident. Caveats: fiscal wealth, administrative status (Paris is city-department, Lyon belongs to the Lyon metropolis) and State transfers vary widely between cities."}</dd>
+              </dl>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      </main>
       <Footer />
     </div>
   );
