@@ -19,6 +19,10 @@ logs/
 .env
 .env.local
 .env.*
+# Templates (no real values) MUST stay tracked so a fresh clone has the
+# documented variables list. Re-include after the broad .env.* pattern.
+!.env.example
+!**/.env.example
 credentials.json
 *-credentials.json
 service-account*.json
