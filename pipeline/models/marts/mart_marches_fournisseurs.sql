@@ -11,12 +11,37 @@
 -- Grain: (annee, numero_marche) — un marché par ligne
 -- =============================================================================
 
+-- LEFT JOIN avec stg_sirene_companies pour combler `fournisseur_nom` quand
+-- DECP/OpenData Paris ne le fournit pas. Remplace l'ancien patcher
+-- post-export `apply_sirene_to_marches.py` (Cat-D supprimée).
+WITH base AS (
+    SELECT * FROM {{ ref('core_marches_publics') }}
+),
+sirene AS (
+    SELECT siren, nom FROM {{ ref('core_sirene_companies') }}
+),
+joined AS (
+    SELECT
+        b.*,
+        s.nom AS sirene_nom
+    FROM base b
+    LEFT JOIN sirene s
+      ON LENGTH(b.fournisseur_siret) = 14
+     AND SUBSTR(b.fournisseur_siret, 1, 9) = s.siren
+)
+
 SELECT
     annee,
     numero_marche,
     objet,
     nature,
-    fournisseur_nom,
+    -- COALESCE: garde fournisseur_nom si déjà non vide, sinon prend nom SIRENE
+    -- (les deux NULLIF traitent les chaînes vides comme NULL pour ne pas
+    -- exposer un nom vide quand le cache SIRENE n'a pas le nom).
+    COALESCE(
+        NULLIF(TRIM(fournisseur_nom), ''),
+        NULLIF(TRIM(sirene_nom), '')
+    ) AS fournisseur_nom,
     fournisseur_siret,
     montant_min,
     montant_max,
@@ -58,5 +83,5 @@ SELECT
     afficher_deux_montants,
 
     CURRENT_TIMESTAMP() AS _dbt_updated_at
-FROM {{ ref('core_marches_publics') }}
+FROM joined
 ORDER BY annee DESC, montant_max DESC
