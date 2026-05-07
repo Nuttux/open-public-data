@@ -5,8 +5,65 @@ import type { NextConfig } from 'next';
  *
  * Redirects map the old (pre-fusion) routes to the new canonical slugs.
  * Old aliases left in place for bookmarks and external links.
+ *
+ * Security headers (cat. 4 roadmap) :
+ *   - HSTS preload-ready (2 years, includeSubDomains, preload)
+ *   - X-Content-Type-Options: nosniff
+ *   - X-Frame-Options: DENY (jamais embarqué en iframe sauf intention explicite)
+ *   - Referrer-Policy: strict-origin-when-cross-origin
+ *   - Permissions-Policy: désactive features non utilisées
+ *   - CSP : pas activé en strict mode (PostHog + Vercel + Leaflet + ECharts
+ *     demandent un whitelist long, à provisioner précisément). Voir
+ *     `docs/runbooks/csp-rollout.md` quand on l'activera.
+ *
+ * Cible : note A sur https://securityheaders.com après merge.
  */
+const SECURITY_HEADERS = [
+  // HSTS — force HTTPS pendant 2 ans, inclut les sous-domaines.
+  // `preload` rend le site éligible à la liste preload des navigateurs
+  // (https://hstspreload.org/) — à soumettre manuellement après merge.
+  {
+    key: 'Strict-Transport-Security',
+    value: 'max-age=63072000; includeSubDomains; preload',
+  },
+  // Empêche les navigateurs de "deviner" un MIME type — bloque XSS via
+  // upload d'asset trompeur.
+  {
+    key: 'X-Content-Type-Options',
+    value: 'nosniff',
+  },
+  // Refuse l'embedding du site en iframe — anti-clickjacking.
+  // À passer en SAMEORIGIN si on doit s'embarquer nous-mêmes (preview drawer).
+  {
+    key: 'X-Frame-Options',
+    value: 'DENY',
+  },
+  // Préserve la vie privée des users : on n'envoie le path complet que sur
+  // navigation interne, pas sur les liens sortants en HTTPS.
+  {
+    key: 'Referrer-Policy',
+    value: 'strict-origin-when-cross-origin',
+  },
+  // Désactive les API navigateur non utilisées par le site, par défense
+  // en profondeur (si un script tiers compromis tente d'y accéder, refus).
+  {
+    key: 'Permissions-Policy',
+    value:
+      'accelerometer=(), camera=(), geolocation=(), gyroscope=(), ' +
+      'magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()',
+  },
+];
+
 const nextConfig: NextConfig = {
+  async headers() {
+    return [
+      {
+        // Apply to every route (the matcher matches all paths).
+        source: '/:path*',
+        headers: SECURITY_HEADERS,
+      },
+    ];
+  },
   async redirects() {
     return [
       // Blog rename (kept from earlier)
