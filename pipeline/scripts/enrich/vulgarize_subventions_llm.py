@@ -29,8 +29,8 @@ from typing import Any
 import requests
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent
-DATA_DIR = PROJECT_ROOT / "website" / "public" / "data" / "subventions"
-CACHE_PATH = PROJECT_ROOT / "website" / "public" / "data" / "enrichment" / "vulgarization_subventions.json"
+DATA_DIR = PROJECT_ROOT / "pipeline" / "cache" / "subventions_pre_enrichment"
+CACHE_PATH = PROJECT_ROOT / "pipeline" / "cache" / "enrichment" / "vulgarization_subventions.json"
 
 GEMINI_API_KEY = os.environ.get("GOOGLE_API_KEY", "") or os.environ.get("GEMINI_API_KEY", "")
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3-flash-preview")

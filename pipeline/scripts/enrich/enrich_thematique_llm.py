@@ -25,7 +25,7 @@ import requests
 # =============================================================================
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent
-SUBVENTIONS_DIR = PROJECT_ROOT / "website" / "public" / "data" / "subventions"
+SUBVENTIONS_DIR = PROJECT_ROOT / "pipeline" / "cache" / "subventions_pre_enrichment"
 SEED_PATH = Path(__file__).parent.parent.parent / "seeds" / "seed_cache_thematique_beneficiaires.csv"
 
 GEMINI_API_KEY = os.environ.get("GOOGLE_API_KEY", "")

@@ -40,9 +40,9 @@ from typing import Any
 import requests
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent
-SUBVENTIONS_DIR = PROJECT_ROOT / "website" / "public" / "data" / "subventions"
-SIRENE_CACHE = PROJECT_ROOT / "website" / "public" / "data" / "enrichment" / "sirene_companies.json"
-CACHE_PATH = PROJECT_ROOT / "website" / "public" / "data" / "enrichment" / "beneficiaire_grounded.json"
+SUBVENTIONS_DIR = PROJECT_ROOT / "pipeline" / "cache" / "subventions_pre_enrichment"
+SIRENE_CACHE = PROJECT_ROOT / "pipeline" / "cache" / "enrichment" / "sirene_companies.json"
+CACHE_PATH = PROJECT_ROOT / "pipeline" / "cache" / "enrichment" / "beneficiaire_grounded.json"
 
 GEMINI_API_KEY = os.environ.get("GOOGLE_API_KEY", "") or os.environ.get("GEMINI_API_KEY", "")
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3-flash-preview")
