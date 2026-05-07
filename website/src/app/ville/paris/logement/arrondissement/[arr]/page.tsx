@@ -65,6 +65,7 @@ export default async function ArrondissementLogementPage({
   return (
     <div className="theme-fusion">
       <Navbar />
+      <main id="main-content" tabIndex={-1}>
       <section className="fx-page-header">
         <div className="fx-wrap">
           <div className="fx-page-kicker">
@@ -81,6 +82,7 @@ export default async function ArrondissementLogementPage({
         </div>
       </section>
 
+      </main>
       <Footer />
     </div>
   );

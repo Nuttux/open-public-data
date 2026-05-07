@@ -69,6 +69,7 @@ export default async function ContratPage({ params }: { params: Promise<Params> 
   return (
     <div className="theme-fusion">
       <Navbar />
+      <main id="main-content" tabIndex={-1}>
       <section className="fx-page-header">
         <div className="fx-wrap">
           <MarchesBackKicker />
@@ -92,6 +93,7 @@ export default async function ContratPage({ params }: { params: Promise<Params> 
           ranking={ranking}
         />
       </div>
+      </main>
       <Footer />
     </div>
   );

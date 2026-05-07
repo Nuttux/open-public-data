@@ -20,6 +20,9 @@ const frDec = (n: number, d = 1) =>
  */
 export default async function OG() {
   const d = loadLogementSocialData();
+  // Paris route: DRIHL tension always present. Type is `... | null` to
+  // accommodate non-Paris cities, but here it is guaranteed non-null.
+  const tension = d.tension!;
 
   return new ImageResponse(
     (
@@ -92,7 +95,7 @@ export default async function OG() {
         >
           <span>{fr(d.nouveauxParAn)} logements produits face à</span>
           <span style={{ color: "#b8551c" }}>
-            {fr(d.tension.paris.demandesActives)}
+            {fr(tension.paris.demandesActives)}
           </span>
           <span>demandes.</span>
         </div>
@@ -143,7 +146,7 @@ export default async function OG() {
                 lineHeight: 1,
               }}
             >
-              {`${d.tension.paris.ratio.toFixed(1)}:1`}
+              {`${tension.paris.ratio.toFixed(1)}:1`}
             </div>
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
@@ -169,8 +172,8 @@ export default async function OG() {
                 gap: 10,
               }}
             >
-              {d.tension.paris.delaiMedianMois != null
-                ? frDec(d.tension.paris.delaiMedianMois / 12)
+              {tension.paris.delaiMedianMois != null
+                ? frDec(tension.paris.delaiMedianMois / 12)
                 : "—"}
               <span style={{ fontSize: 36, fontWeight: 700, color: "#666" }}>ans</span>
             </div>

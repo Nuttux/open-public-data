@@ -75,7 +75,7 @@ export default function LicenceClient() {
                 </td>
                 <td>
                   <a
-                    href="https://www.etalab.gouv.fr/licence-ouverte-open-licence/"
+                    href="https://www.data.gouv.fr/pages/legal/licences/etalab-2.0"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

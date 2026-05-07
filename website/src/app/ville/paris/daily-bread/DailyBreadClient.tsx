@@ -18,11 +18,15 @@ import {
   computeAssoBreakdown,
   computeStateBuckets,
   computeLocalLevels,
-  computeDeepDiveStack,
-  computeDeepDiveLocal,
-  type DeepDiveStackEntry,
   type IndepActivityType,
 } from "@/lib/daily-bread";
+import {
+  EditableNumber,
+  EditableSelect,
+  EditableCommune,
+} from "@/components/fusion/EditableInlineSpan";
+import DailyBreadEquivalentCard from "@/components/fusion/DailyBreadEquivalentCard";
+import { getPictoForKey } from "@/components/fusion/DailyBreadPictograms";
 
 // ─── Sources de revenus (cumulatif) ──────────────────────────────────────
 // L'utilisateur peut cumuler plusieurs sources simultanément (cas réel :
@@ -62,58 +66,6 @@ type SelectedCommune = {
 };
 
 /**
- * Shape of `public/data/communes-all/dept-fonctionnelle.json` — produit par
- * `pipeline/scripts/sync/sync_ofgl_departements_fonctionnelle.py`.
- * Permet d'afficher la ventilation fonctionnelle réelle du département de
- * la commune sélectionnée (au lieu de la moyenne nationale).
- */
-type DeptFonctionnelle = {
-  generated_at: string;
-  source: string;
-  source_url: string;
-  year: number;
-  fonctions: string[]; // ordre canonique des buckets
-  by_dep_code: Record<
-    string,
-    {
-      nom: string;
-      ptot: number;
-      total_eur_hab: number;
-      fonctions: Record<string, { share: number; eur_hab: number }>;
-    }
-  >;
-  by_dep_name: Record<string, string>; // nom → dep_code (incl. aliases)
-};
-
-/**
- * Shape de `public/data/communes-all/fonctionnelle-by-insee.json` — produit
- * par `pipeline/scripts/sync/sync_communes_fonctionnelle.py` à partir des
- * balances comptables DGFiP "présentation croisée nature × fonction" 2024.
- *
- * Couvre les communes >3 500 hab qui votent par fonction (~3 384 communes,
- * ~50-60% de la population FR). Pour les autres, fallback sur le seed
- * `db.deepdive.bloc_communal` qui donne la moyenne nationale pondérée.
- */
-type CommuneFonctionnelle = {
-  generated_at: string;
-  source: string;
-  source_url: string;
-  year: number;
-  scope: string;
-  scope_note_fr: string;
-  fonctions: string[]; // ordre canonique des keys (f0_services_generaux, f1_securite, …)
-  moyenne_nationale_ponderee: Record<string, { share: number }>;
-  by_insee: Record<
-    string,
-    {
-      libelle: string;
-      total: number;
-      fonctions: Record<string, { share: number; montant: number }>;
-    }
-  >;
-};
-
-/**
  * TF estimée pour 1 ménage propriétaire moyen.
  *
  * Hypothèse : OFGL "impôts locaux" = TF + TH (résidences secondaires) + CFE + CVAE + autres.
@@ -148,6 +100,17 @@ const fmtEur = (n: number, locale: string, decimals = 0) =>
     maximumFractionDigits: decimals,
     minimumFractionDigits: decimals,
   });
+
+/** Format €/an au format compact "X Md€" / "€X bn" — pour la note méthodo
+ *  §04 État (mention 447 / 676 / 229 Md€). */
+const fmtBnEur = (amountEur: number, locale: string): string => {
+  if (!Number.isFinite(amountEur) || amountEur <= 0) return "—";
+  const md = amountEur / 1e9;
+  const rounded = md >= 100 ? md.toFixed(0) : md.toFixed(1);
+  return locale === "fr"
+    ? `${rounded.replace(".", ",")} Md€`
+    : `€${rounded} bn`;
+};
 
 // Chaque fonction COFOG est colorée selon l'administration qui la
 // finance majoritairement en France (APU consolidé) — réutilise les
@@ -249,10 +212,23 @@ function RevealCountNum({
 
 // ─── Component ───────────────────────────────────────────────────────────
 
+/**
+ * Index compact des keys publiées par Agent P. Sert à filtrer les alias
+ * en ne rendant cliquable QUE ce qui existe vraiment côté drilldown.json
+ * (zéro lien mort par construction).
+ *
+ * - level2/level3 : nomenclature officielle PLFSS/PLF/OFGL
+ * - aggregations (État seulement) : 10 buckets éditoriaux du pipeline
+ * - departement/region (Local seulement) : niveaux administratifs distincts
+ */
 type DrilldownIndex = Record<
   "secu" | "etat" | "local",
   { level2: string[]; level3: Record<string, string[]> }
->;
+> & {
+  etat_aggregations?: string[];
+  local_dept?: { level2: string[]; level3: Record<string, string[]> };
+  local_region?: { level2: string[]; level3: Record<string, string[]> };
+};
 
 // ─── Alias rules (in-page row.key → drilldown.key) ────────────────────────
 //
@@ -269,38 +245,30 @@ const SECU_TOP_ALIAS: Record<string, string> = {
   part_cnav_retraites: "cnav_retraites",
   part_caf_famille: "cnaf_famille",
   part_unedic_chomage: "unedic_chomage",
-  part_atmp_autonomie: "atmp_autonomie",
+  part_at_mp_autonomie: "atmp_autonomie",
 };
 
-// État stateBuckets agrège missions PLF en 5 buckets éditoriaux
-// (education / regaliens / travail_cohesion_ecologie / dette / autres).
-// Seuls 2 buckets ont un alias 1:1 propre vers une mission unique :
-//   - education → mission `ec` (Enseignement scolaire ; recherche `ra` séparée)
-//   - dette → mission `eb` (Engagements financiers de l'État)
-// Les buckets `regaliens` / `travail_cohesion_ecologie` / `autres` agrègent
-// plusieurs missions → pas de drill 1:1 (TODO: niveau bucket virtuel dans
-// drilldown.json pour permettre de cliquer "Régaliens" et voir les 4 missions).
-const ETAT_TOP_ALIAS: Record<string, string> = {
-  education: "ec",
-  dette: "eb",
+// État stateBuckets agrège missions PLF en 10 buckets éditoriaux. Le pipeline
+// publie ces mêmes 10 buckets sous `drilldown.etat.aggregations` — donc on
+// route directement vers `/bucket/etat/agg/<bucketKey>` (la route drawer
+// `etat/agg/[agg]` liste les missions PLF composantes et chaque mission
+// pointe vers son `level2/level3/level4`).
+// Les keys ici sont identiques à celles de `STATE_BUCKET_DEFS` (lib/daily-bread.ts).
+const ETAT_TOP_ALIAS_AGG: Record<string, string> = {
+  education_recherche: "education_recherche",
+  defense: "defense",
+  securite: "securite",
+  justice: "justice",
+  solidarite_insertion: "solidarite_insertion",
+  travail_emploi: "travail_emploi",
+  ecologie_logement_transports: "ecologie_logement_transports",
+  culture_medias_sport: "culture_medias_sport",
+  dette: "dette",
+  autres: "autres",
 };
 
-// OFGL fonctionnelle communale (codes DGFiP F0..F9 réels) → libellés Agent P.
-// Plusieurs F-keys peuvent pointer au même level2 (ex: f3+f4 → culture_sport)
-// car OFGL groupe plus haut que DGFiP — c'est le bon comportement.
-// Clés alignées sur fonctionnelle-by-insee.json (réel) pas OFGL (agrégé).
-const LOCAL_FONCTIONNELLE_ALIAS: Record<string, string> = {
-  f0_services_generaux: "administration_generale",
-  f1_securite: "securite",
-  f2_enseignement: "enseignement",
-  f3_culture: "culture_sport",
-  f4_sport_jeunesse: "culture_sport",
-  f5_social_sante: "action_sociale",
-  f6_famille: "action_sociale",
-  f7_logement: "amenagement_urbain",
-  f8_amenagement_env: "amenagement_urbain",
-  f9_action_eco: "autres",
-};
+// (Alias LOCAL_* — supprimés en mai 2026 : ils alimentaient les rows
+//  cliquables des DeepDive, désormais migrés dans le drawer.)
 
 export default function DailyBreadClient({
   cofog,
@@ -330,50 +298,64 @@ export default function DailyBreadClient({
     },
     [drilldownIndex],
   );
-  // Helper level3 : règle préfixe `{level2}_{inPageKey}`. On vérifie que la
-  // key préfixée existe bien dans `drilldownIndex.<bucket>.level3[level2]`
-  // avant de la rendre cliquable.
-  const makeLevel3UrlMap = useCallback(
-    (
-      bucket: "secu" | "etat" | "local",
-      level2Key: string,
-      inPageKeys: string[],
-    ) => {
-      const m = new Map<string, string>();
-      const available = new Set(
-        drilldownIndex?.[bucket]?.level3?.[level2Key] ?? [],
-      );
-      for (const inPage of inPageKeys) {
-        const fullKey = `${level2Key}_${inPage}`;
-        if (available.has(fullKey)) {
-          m.set(inPage, `/ville/paris/daily-bread/bucket/${bucket}/${level2Key}/${fullKey}`);
-        }
-      }
-      return m;
-    },
-    [drilldownIndex],
-  );
+  // (Helper makeLevel3UrlMap — supprimé en mai 2026 avec les DeepDive Sécu
+  //  qui en étaient le seul caller. Les drills niveau 3 restent accessibles
+  //  via le drawer ouvert depuis BarList.)
+
 
   const secuTopUrls = useMemo(
     () => makeTopUrlMap("secu", SECU_TOP_ALIAS),
     [makeTopUrlMap],
   );
-  const etatTopUrls = useMemo(
-    () => makeTopUrlMap("etat", ETAT_TOP_ALIAS),
-    [makeTopUrlMap],
-  );
-  const localFonctionnelleUrls = useMemo(
-    () => makeTopUrlMap("local", LOCAL_FONCTIONNELLE_ALIAS),
-    [makeTopUrlMap],
-  );
-  // Helper léger pour passer une factory level3 aux 4 deepdives Sécu, qui se
-  // résolvent toutes par règle de préfixe `{level2}_{inPageKey}`. Les factories
-  // sont closes sur `makeLevel3UrlMap` (qui dépend de drilldownIndex).
-  const buildSecuL3 = useCallback(
-    (level2: string, items: { key: string }[]) =>
-      makeLevel3UrlMap("secu", level2, items.map((x) => x.key)),
-    [makeLevel3UrlMap],
-  );
+  // État buckets éditoriaux → routes drawer `/bucket/etat/agg/<aggKey>`
+  // (la route agg liste les missions PLF puis chaque mission ouvre son level2).
+  // On intersecte avec les aggregations effectivement publiées par Agent P.
+  const etatTopUrls = useMemo(() => {
+    const m = new Map<string, string>();
+    const available = new Set(drilldownIndex?.etat_aggregations ?? []);
+    for (const [inPage, aggKey] of Object.entries(ETAT_TOP_ALIAS_AGG)) {
+      if (available.has(aggKey)) {
+        m.set(inPage, `/ville/paris/daily-bread/bucket/etat/agg/${aggKey}`);
+      }
+    }
+    return m;
+  }, [drilldownIndex]);
+  // (URLs alias bloc-communal-seed / fonctionnelle / dept / region —
+  //  servaient à rendre les rows DeepDive cliquables. Supprimées avec la
+  //  migration des asides dans le drawer en mai 2026.)
+
+  // BarList §05 — 3 niveaux administratifs tous cliquables.
+  // - Bloc communal : ouvre la 1re fonction OFGL (services_generaux ≈ 32%),
+  //   permet d'entrer dans le drill par fonction du bloc communal.
+  // - Département : 1re fonction dept (sante_action_sociale ≈ 50%).
+  // - Région : 1re fonction région (transports_routes_voiries).
+  const localLevelsUrls = useMemo(() => {
+    const m = new Map<string, string>();
+    const blocKeys = drilldownIndex?.local?.level2 ?? [];
+    const deptKeys = drilldownIndex?.local_dept?.level2 ?? [];
+    const regKeys = drilldownIndex?.local_region?.level2 ?? [];
+    if (blocKeys.length > 0) {
+      m.set(
+        "bloc_communal",
+        `/ville/paris/daily-bread/bucket/local/${blocKeys[0]}`,
+      );
+    }
+    if (deptKeys.length > 0) {
+      m.set(
+        "departement",
+        `/ville/paris/daily-bread/bucket/local/dept/${deptKeys[0]}`,
+      );
+    }
+    if (regKeys.length > 0) {
+      m.set(
+        "region",
+        `/ville/paris/daily-bread/bucket/local/region/${regKeys[0]}`,
+      );
+    }
+    return m;
+  }, [drilldownIndex]);
+  // (Helper buildSecuL3 — supprimé avec les DeepDive Sécu ; les drilldowns
+  //  niveau 3 restent accessibles via le drawer level2 ouvert depuis BarList.)
   const t = useT();
   const { locale } = useLocale();
   const router = useRouter();
@@ -416,64 +398,6 @@ export default function DailyBreadClient({
   // tfCustom = 0 → auto-estimation depuis la commune ; sinon valeur saisie par user
   const [tfCustom, setTfCustom] = useState<number>(initialTf);
   const [indepType, setIndepType] = useState<IndepActivityType>(initialIndepType);
-
-  // ─── Ventilation fonctionnelle départementale (OFGL M52/M57) ───────
-  // Permet d'afficher les % réels du département de la commune sélectionnée
-  // (Bouches-du-Rhône, Hauts-de-Seine, Paris...) au lieu de la moyenne
-  // nationale. Le fichier est statique (~75 KB) et chargé une fois.
-  // Si fetch échoue → fallback gracieux sur la moyenne nationale.
-  const [deptFonc, setDeptFonc] = useState<DeptFonctionnelle | null>(null);
-  useEffect(() => {
-    fetch("/data/communes-all/dept-fonctionnelle.json")
-      .then((r) => (r.ok ? r.json() : null))
-      .then((d: DeptFonctionnelle | null) => {
-        if (d && d.by_dep_code) setDeptFonc(d);
-      })
-      .catch(() => {
-        // ignore — deepdive falls back to national avg
-      });
-  }, []);
-
-  // Fonctionnelle commune par INSEE (DGFiP balance comptable 2024) — ~3 384
-  // communes >3 500 hab qui votent par fonction. Pour les autres, fallback
-  // sur le seed national.
-  const [communeFonc, setCommuneFonc] = useState<CommuneFonctionnelle | null>(
-    null,
-  );
-  useEffect(() => {
-    fetch("/data/communes-all/fonctionnelle-by-insee.json")
-      .then((r) => (r.ok ? r.json() : null))
-      .then((d: CommuneFonctionnelle | null) => {
-        if (d && d.by_insee) setCommuneFonc(d);
-      })
-      .catch(() => {
-        // ignore — deepdive falls back to seed national avg
-      });
-  }, []);
-
-  /**
-   * Labels FR/EN pour les 10 fonctions M14/M57. Mapping standardisé pour
-   * être lisibles côté UI (le seed `db.deepdive.bloc_communal` utilisait
-   * des keys différentes — ici on parse les fonctions DGFiP directement).
-   */
-  // Clés alignées sur la nomenclature réelle DGFiP (cf.
-  // fonctionnelle-by-insee.json — `by_insee.<code>.fonctions`). Avant ce fix,
-  // f5/f8/f9 utilisaient les noms OFGL agrégés et tombaient en raw key.
-  const FONCTION_LABELS: Record<string, { fr: string; en: string }> = {
-    f0_services_generaux: { fr: "Administration générale", en: "General services" },
-    f1_securite: { fr: "Sécurité (police municipale, hygiène)", en: "Security" },
-    f2_enseignement: { fr: "Enseignement (écoles primaires, cantines)", en: "Education" },
-    f3_culture: { fr: "Culture (bibliothèques, musées, conservatoires)", en: "Culture" },
-    f4_sport_jeunesse: { fr: "Sport et jeunesse", en: "Sport & youth" },
-    f5_social_sante: { fr: "Social et santé (CCAS, aide sociale)", en: "Social & health" },
-    f6_famille: { fr: "Famille (crèches, périscolaire)", en: "Family" },
-    f7_logement: { fr: "Logement (aides, gestion patrimoine)", en: "Housing" },
-    f8_amenagement_env: {
-      fr: "Aménagement, voirie, propreté, environnement",
-      en: "Planning, roads, cleaning, environment",
-    },
-    f9_action_eco: { fr: "Action économique", en: "Economic action" },
-  };
 
   // ─── OpenFisca (Phase 5 MVP, opt-in) ───────────────────────────────
   // Calcul exact via l'API publique Etalab pour le profil **salarié**.
@@ -582,51 +506,12 @@ export default function DailyBreadClient({
     return () => clearTimeout(t);
   }, []);
 
-  // ─── Commune autocomplete ──────────────────────────────────────────
-  const [communeQuery, setCommuneQuery] = useState("");
-  const [communeHits, setCommuneHits] = useState<CommuneHit[]>([]);
-  const [communeFocused, setCommuneFocused] = useState(false);
-  const [communeLoading, setCommuneLoading] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
-  const searchAbortRef = useRef<AbortController | null>(null);
-
-  useEffect(() => {
-    const q = communeQuery.trim();
-    if (q.length < 2) {
-      setCommuneHits([]);
-      return;
-    }
-    // Abort any in-flight search
-    searchAbortRef.current?.abort();
-    const ac = new AbortController();
-    searchAbortRef.current = ac;
-    const id = setTimeout(async () => {
-      try {
-        const res = await fetch(
-          `/api/search-communes?q=${encodeURIComponent(q)}`,
-          { signal: ac.signal },
-        );
-        const data = await res.json();
-        // Only update if this controller is still the active one
-        if (!ac.signal.aborted) setCommuneHits(data.results ?? []);
-      } catch {
-        // aborted or network error
-      }
-    }, 180);
-    return () => {
-      ac.abort();
-      clearTimeout(id);
-    };
-  }, [communeQuery]);
-
+  // ─── Commune pick handler ──────────────────────────────────────────
+  // L'autocomplete de search est géré par <EditableCommune> dans le hero ;
+  // ici on garde uniquement le callback qui refetch les KPIs (eur_hab,
+  // impots_locaux) après un pick. L'état est mis à jour de façon optimiste
+  // (depuis la donnée de la hit), puis enrichi quand l'API répond.
   const pickCommune = useCallback(async (hit: CommuneHit) => {
-    // Abort any pending search and clear UI state immediately
-    searchAbortRef.current?.abort();
-    setCommuneQuery("");
-    setCommuneHits([]);
-    setCommuneFocused(false);
-    setCommuneLoading(true);
-    // Optimistic update — set commune from hit data right away (no eur_hab yet)
     setCommune({
       insee: hit.insee,
       slug: hit.slug,
@@ -634,10 +519,9 @@ export default function DailyBreadClient({
       dep_name: hit.dep_name,
       reg_name: "",
       pop: hit.pop,
-      eur_hab: 0, // placeholder, refreshed below
+      eur_hab: 0,
       impots_locaux_eur_hab: 0,
     });
-    inputRef.current?.blur();
     try {
       const res = await fetch(`/api/commune/${encodeURIComponent(hit.slug)}`);
       const data = await res.json();
@@ -656,8 +540,6 @@ export default function DailyBreadClient({
       });
     } catch {
       // ignore — the optimistic update remains
-    } finally {
-      setCommuneLoading(false);
     }
   }, []);
 
@@ -906,192 +788,17 @@ export default function DailyBreadClient({
     return computeCofogShares(totalAnnuel, cofog.functions);
   }, [cofog, totalAnnuel]);
 
-  // ─── Deep-dives ("À l'intérieur de…") ─────────────────────────────
-  // Santé : applique la stack ONDAM PLFSS 2025 sur la part CNAM/maladie de la Sécu.
-  const cnamMonthly = useMemo(
-    () => assoBranches.find((b) => b.key === "part_cnam_maladie")?.monthly_eur ?? 0,
-    [assoBranches],
-  );
-  const deepdiveSante = useMemo<DeepDiveStackEntry[]>(
-    () => (db ? computeDeepDiveStack(cnamMonthly, db.deepdive?.sante) : []),
-    [db, cnamMonthly],
-  );
-
-  // Défense : part Mission Défense de l'État central, ventilée par titre.
-  // Total État ≈ 480 Md€ net BG (LFI 2025) ; total Mission Défense ≈ 50,1 Md€ ↦ part ~10.4%.
-  const defenseShareOfState = useMemo(() => {
-    const totalDefense = db?.deepdive?.defense?.total_md_eur;
-    const totalEtat = db?.state_breakdown?.total_net_cp_eur;
-    if (!totalDefense || !totalEtat || totalEtat <= 0) return 0.104; // fallback raisonné
-    // total_net_cp_eur est en €, total_defense en Md€
-    return Math.min(Math.max((totalDefense * 1e9) / totalEtat, 0.05), 0.25);
-  }, [db]);
-  const defenseMonthly = etatMonthly * defenseShareOfState;
-  const deepdiveDefense = useMemo<DeepDiveStackEntry[]>(
-    () => (db ? computeDeepDiveStack(defenseMonthly, db.deepdive?.defense) : []),
-    [db, defenseMonthly],
-  );
-
-  // Bloc communal : ventile la 1ère ligne de localLevels ("bloc_communal")
-  // selon la fonctionnelle OFGL (overlay top-200 par INSEE si dispo, sinon
-  // moyenne nationale).
-  const blocCommunalMonthly = useMemo(
-    () => localLevels.find((l) => l.key === "bloc_communal")?.monthly_eur ?? 0,
-    [localLevels],
-  );
-  // Bloc communal : si la commune est dans la fonctionnelle DGFiP (commune
-  // >3 500 hab qui vote par fonction), utilise sa vraie ventilation par
-  // fonction. Sinon, fallback sur le seed national (moyenne pondérée).
-  const communeFoncEntry = useMemo(() => {
-    if (!communeFonc || !commune?.insee) return null;
-    return communeFonc.by_insee[commune.insee] ?? null;
-  }, [communeFonc, commune?.insee]);
-
-  const deepdiveLocal = useMemo<DeepDiveStackEntry[]>(() => {
-    if (!db) return [];
-    if (communeFoncEntry) {
-      // Vraie ventilation DGFiP de la commune sélectionnée
-      const items = Object.entries(communeFoncEntry.fonctions);
-      const sum = items.reduce((acc, [, v]) => acc + (v.share || 0), 0) || 1;
-      return items
-        .map(([key, v]) => {
-          const lbl = FONCTION_LABELS[key];
-          const share = (v.share || 0) / sum;
-          return {
-            key,
-            label_fr: lbl?.fr ?? key,
-            label_en: lbl?.en ?? key,
-            share,
-            monthly_eur: blocCommunalMonthly * share,
-          };
-        })
-        .sort((a, b) => b.share - a.share);
-    }
-    // Fallback : seed national (moyenne pondérée)
-    return computeDeepDiveLocal(
-      blocCommunalMonthly,
-      db.deepdive?.bloc_communal,
-      commune?.insee,
-    );
-  }, [db, blocCommunalMonthly, communeFoncEntry, commune?.insee]);
-
-  // Sécu : Retraites — applique la stack DREES sur la part CNAV de la Sécu.
-  const cnavMonthly = useMemo(
-    () => assoBranches.find((b) => b.key === "part_cnav_retraites")?.monthly_eur ?? 0,
-    [assoBranches],
-  );
-  const deepdiveRetraites = useMemo<DeepDiveStackEntry[]>(
-    () => (db ? computeDeepDiveStack(cnavMonthly, db.deepdive?.retraites) : []),
-    [db, cnavMonthly],
-  );
-
-  // Sécu : Famille — applique la stack CCSS/CAF sur la part CAF de la Sécu.
-  const cafMonthly = useMemo(
-    () => assoBranches.find((b) => b.key === "part_caf_famille")?.monthly_eur ?? 0,
-    [assoBranches],
-  );
-  const deepdiveFamille = useMemo<DeepDiveStackEntry[]>(
-    () => (db ? computeDeepDiveStack(cafMonthly, db.deepdive?.famille) : []),
-    [db, cafMonthly],
-  );
-
-  // Sécu : Chômage — applique la stack UNEDIC sur la part UNEDIC de la Sécu.
-  const unedicMonthly = useMemo(
-    () => assoBranches.find((b) => b.key === "part_unedic_chomage")?.monthly_eur ?? 0,
-    [assoBranches],
-  );
-  const deepdiveChomage = useMemo<DeepDiveStackEntry[]>(
-    () => (db ? computeDeepDiveStack(unedicMonthly, db.deepdive?.chomage) : []),
-    [db, unedicMonthly],
-  );
-
-  // État : Éducation — applique la stack DEPP sur le bucket Éducation.
-  const educationMonthly = useMemo(
-    () => stateBuckets.find((b) => b.key === "education")?.monthly_eur ?? 0,
-    [stateBuckets],
-  );
-  const deepdiveEducation = useMemo<DeepDiveStackEntry[]>(
-    () => (db ? computeDeepDiveStack(educationMonthly, db.deepdive?.education) : []),
-    [db, educationMonthly],
-  );
-
-  // État : Charge dette — stack AFT sur le bucket Charge dette.
-  const detteMonthly = useMemo(
-    () => stateBuckets.find((b) => b.key === "dette")?.monthly_eur ?? 0,
-    [stateBuckets],
-  );
-  const deepdiveDette = useMemo<DeepDiveStackEntry[]>(
-    () => (db ? computeDeepDiveStack(detteMonthly, db.deepdive?.dette) : []),
-    [db, detteMonthly],
-  );
-
-  // État : Autres ministères + opérateurs — stack PLF sur le bucket "autres".
-  const autresMinisteresMonthly = useMemo(
-    () => stateBuckets.find((b) => b.key === "autres")?.monthly_eur ?? 0,
-    [stateBuckets],
-  );
-  const deepdiveAutresMinisteres = useMemo<DeepDiveStackEntry[]>(
-    () =>
-      db
-        ? computeDeepDiveStack(autresMinisteresMonthly, db.deepdive?.autres_ministeres)
-        : [],
-    [db, autresMinisteresMonthly],
-  );
-
-  // Local : Département — stack OFGL fonctionnelle.
-  // Si on connaît le département de la commune et qu'on a la data spécifique,
-  // on utilise les % réels du département. Sinon → moyenne nationale (status quo).
-  const departementMonthly = useMemo(
-    () => localLevels.find((l) => l.key === "departement")?.monthly_eur ?? 0,
-    [localLevels],
-  );
-  const departementSpecific = useMemo(() => {
-    if (!deptFonc || !commune?.dep_name) return null;
-    const code = deptFonc.by_dep_name?.[commune.dep_name];
-    if (!code) return null;
-    const entry = deptFonc.by_dep_code?.[code];
-    if (!entry) return null;
-    return { code, entry };
-  }, [deptFonc, commune?.dep_name]);
-
-  const deepdiveDepartementSource = useMemo(() => {
-    if (!db?.deepdive?.departement) return null;
-    if (!departementSpecific) return db.deepdive.departement;
-    // Override `national_avg_weighted` avec les valeurs spécifiques du
-    // département en gardant les `label_fr/label_en` de la moyenne nationale
-    // (i18n stable). Schema DailyBreadDeepDiveLocal inchangé → typage strict OK.
-    const base = db.deepdive.departement;
-    const baseAvg = base.national_avg_weighted ?? {};
-    const overlay: typeof baseAvg = {};
-    for (const [bucket, baseVal] of Object.entries(baseAvg)) {
-      const specVal = departementSpecific.entry.fonctions[bucket];
-      overlay[bucket] = specVal
-        ? {
-            share: specVal.share,
-            eur_hab: specVal.eur_hab,
-            label_fr: baseVal.label_fr,
-            label_en: baseVal.label_en,
-          }
-        : baseVal;
-    }
-    return { ...base, national_avg_weighted: overlay };
-  }, [db, departementSpecific]);
-
-  const deepdiveDepartement = useMemo<DeepDiveStackEntry[]>(
-    () =>
-      db ? computeDeepDiveLocal(departementMonthly, deepdiveDepartementSource) : [],
-    [db, departementMonthly, deepdiveDepartementSource],
-  );
-
-  // Local : Région — stack OFGL fonctionnelle moyenne nationale.
-  const regionMonthly = useMemo(
-    () => localLevels.find((l) => l.key === "region")?.monthly_eur ?? 0,
-    [localLevels],
-  );
-  const deepdiveRegion = useMemo<DeepDiveStackEntry[]>(
-    () => (db ? computeDeepDiveLocal(regionMonthly, db.deepdive?.region) : []),
-    [db, regionMonthly],
-  );
+  // ─── Deep-dives — supprimés (2026-05) ──────────────────────────────
+  //   La section "À l'intérieur de…" sur la page principale était
+  //   redondante avec le drawer ouvert depuis BarList. Les chiffres clés
+  //   éditoriaux (asides) sont maintenant rendus DANS le drawer via
+  //   `getEditorialAsidesForLevel2()` (lib/editorial-asides.ts), passés à
+  //   `BudgetDrilldownFiche` par les pages drawer/standalone.
+  //
+  //   Les `xxxMonthly` et `deepdiveXxx` correspondants ont donc été
+  //   retirés ici — ils ne servaient qu'à alimenter `<DailyBreadDeepDive>`.
+  //   Le sub-component `DailyBreadDeepDive` plus bas est conservé en cas
+  //   de réintroduction ponctuelle, mais n'est plus rendu.
 
   // ─── Equivalents (concrete units for synthèse panel) ───────────────
   const equivalents = useMemo(() => {
@@ -1105,12 +812,15 @@ export default function DailyBreadClient({
     // CNAM = "part_cnam_maladie"
     const cnam = assoBranches.find((b) => b.key === "part_cnam_maladie");
     const cnav = assoBranches.find((b) => b.key === "part_cnav_retraites");
-    const educ = stateBuckets.find((b) => b.key === "education");
+    // key alignée sur STATE_BUCKET_DEFS (`education_recherche`).
+    const educ = stateBuckets.find((b) => b.key === "education_recherche");
     const dette = stateBuckets.find((b) => b.key === "dette");
     const blocCommunal = localLevels.find((l) => l.key === "bloc_communal");
 
     return [
       cnam && {
+        key: "sante" as const,
+        institution: "secu" as const,
         tagFr: "Santé",
         tagEn: "Health",
         headline: `≈ ${(cnam.monthly_eur / consult).toLocaleString(
@@ -1121,8 +831,12 @@ export default function DailyBreadClient({
         unitEn: "GP consultations / month",
         amount: cnam.monthly_eur,
         sub: "CNAM",
+        viaFr: "via CNAM",
+        viaEn: "via CNAM",
       },
       cnav && {
+        key: "retraite" as const,
+        institution: "secu" as const,
         tagFr: "Retraites",
         tagEn: "Pensions",
         headline: `≈ ${((cnav.monthly_eur / pension) * 100).toLocaleString(
@@ -1133,8 +847,12 @@ export default function DailyBreadClient({
         unitEn: "of an average pension",
         amount: cnav.monthly_eur,
         sub: "CNAV",
+        viaFr: "via CNAV",
+        viaEn: "via CNAV",
       },
       educ && {
+        key: "ecole" as const,
+        institution: "etat" as const,
         tagFr: "Éducation",
         tagEn: "Education",
         headline: `≈ ${(educ.monthly_eur / eleveJour).toLocaleString(
@@ -1145,8 +863,12 @@ export default function DailyBreadClient({
         unitEn: "days of school / 1 student",
         amount: educ.monthly_eur,
         sub: locale === "en" ? "State" : "État",
+        viaFr: "via État",
+        viaEn: "via State",
       },
       blocCommunal && {
+        key: "transport" as const,
+        institution: "local" as const,
         tagFr: "Local",
         tagEn: "Local",
         headline: `≈ ${(blocCommunal.monthly_eur / ticket).toLocaleString(
@@ -1157,8 +879,12 @@ export default function DailyBreadClient({
         unitEn: "transit tickets / month",
         amount: blocCommunal.monthly_eur,
         sub: commune?.nom ?? (locale === "en" ? "Municipal" : "Bloc communal"),
+        viaFr: commune?.nom ? `via ${commune.nom}` : "via Bloc communal",
+        viaEn: commune?.nom ? `via ${commune.nom}` : "via municipal",
       },
       dette && {
+        key: "dette" as const,
+        institution: "etat" as const,
         tagFr: "Dette",
         tagEn: "Debt",
         headline: `≈ ${fmtEur(dette.monthly_eur, locale, 0)} €`,
@@ -1166,8 +892,12 @@ export default function DailyBreadClient({
         unitEn: "in debt interest / month",
         amount: dette.monthly_eur,
         sub: locale === "en" ? "Interest" : "Intérêts",
+        viaFr: "via service de la dette",
+        viaEn: "via debt service",
       },
     ].filter(Boolean) as Array<{
+      key: "sante" | "retraite" | "ecole" | "transport" | "dette";
+      institution: "secu" | "etat" | "local";
       tagFr: string;
       tagEn: string;
       headline: string;
@@ -1175,6 +905,8 @@ export default function DailyBreadClient({
       unitEn: string;
       amount: number;
       sub: string;
+      viaFr: string;
+      viaEn: string;
     }>;
   }, [db, assoBranches, stateBuckets, localLevels, commune, locale]);
 
@@ -1182,44 +914,10 @@ export default function DailyBreadClient({
   const labelFor = (s: { label_fr: string; label_en: string }) =>
     locale === "en" ? s.label_en : s.label_fr;
 
-  const eyebrow = useMemo(() => {
-    const partsLbl = PARTS_OPTIONS.find((p) => p.value === parts);
-    const partKey = partsLbl?.key ?? "couple";
-    // Profil = dépend des sources actives.
-    //  - 0 source → "Aucun revenu"
-    //  - 1 source non salaire → label dédié (Retraité / Capital / Indépendant)
-    //  - >1 source → "Multi-revenus"
-    //  - 1 source salaire → bracket par montant (SMIC / Médian / Cadre / Cadre sup)
-    let profileLabel: string;
-    if (activeSources.length === 0) {
-      profileLabel = t("db.hero.profile.zero");
-    } else if (activeSources.length > 1) {
-      profileLabel = t("db.hero.profile.multi");
-    } else if (activeSources[0] !== "salaire") {
-      const key = activeSources[0]; // "pension" | "capital" | "indep"
-      const mapped = key === "pension" ? "retraite" : key === "indep" ? "independant" : "capital";
-      profileLabel = t(`db.hero.profile.${mapped}`);
-    } else {
-      profileLabel =
-        salaireMonthly <= 1500
-          ? locale === "en"
-            ? "Min. wage"
-            : "SMIC"
-          : salaireMonthly <= 2500
-            ? locale === "en"
-              ? "Median"
-              : "Médian"
-            : salaireMonthly <= 4500
-              ? locale === "en"
-                ? "Manager"
-                : "Cadre"
-              : locale === "en"
-                ? "Senior"
-                : "Cadre sup";
-    }
-    const partsLabel = t(`db.form.parts.${partKey}`);
-    return `${profileLabel} · ${partsLabel}${commune ? ` · ${commune.nom}` : ""}`;
-  }, [salaireMonthly, activeSources, parts, commune, locale, t]);
+  // Note : l'ancien `eyebrow` (Médian · Célibataire (1 part) · Paris) a été
+  // retiré du hero — redondant avec la phrase éditable principale qui contient
+  // déjà ces 3 paramètres. Le bandeau "01 · PROFIL" (db-panel-num) suffit pour
+  // le numérotage de section.
 
   const presetActiveKey = useMemo(() => {
     // Le preset n'est "actif" que si l'utilisateur est uniquement en mode salaire.
@@ -1228,8 +926,6 @@ export default function DailyBreadClient({
     return found?.key;
   }, [salaireMonthly, activeSources]);
 
-  const onPickPreset = (net: number) => setSalaireMonthly(net);
-
   // ─── Render ────────────────────────────────────────────────────────
   return (
     <div className={`theme-db-scrolly${clientArmed ? " is-armed" : ""}`}>
@@ -1237,38 +933,29 @@ export default function DailyBreadClient({
         <Navbar />
       </div>
       <main id="main-content" tabIndex={-1}>
-        {/* ── PANNEAU 0 — Calculator ── */}
-        <section className="db-panel db-p-calc">
-          <div className="db-panel-wrap">
-            <p className="db-panel-num">
-              <em>00</em> · {t("db.calc.num")}
+        {/* ── PANNEAU 1 — HERO ÉDITABLE (fusion §00 + §01) ── */}
+        {/* Le hero fusionné NYT-style : les paramètres du calcul (salaire,
+            parts, commune) sont des spans cliquables intégrés DANS la phrase
+            narrative. Plus de formulaire séparé §00. Big number + composition
+            en aside-droite (desktop) ou stacked-below (mobile). Réglages
+            avancés (autres revenus + propriétaire/TF) cachés dans un
+            <details> discret. Bouton OpenFisca top-right, plus un bloc. */}
+        <section
+          id="db-hero-fold"
+          className="db-panel db-p-hero db-p-hero-edit"
+        >
+          <div className="db-panel-wrap db-p-hero-wrap">
+            {/* numéro de section */}
+            <p className="db-panel-num db-p-hero-num-top">
+              <em>01</em> · {t("db.hero.num")}
             </p>
 
-            <h1 className="db-p-calc-q">
-              {t("db.calc.q_a")} <em>{t("db.calc.q_b")}</em>
-            </h1>
-            <p className="db-p-calc-deck">{t("db.calc.deck")}</p>
-
-            {/* Mini preview discret — feedback live sans dupliquer le hero §01.
-                Ligne mono compacte, le grand chiffre est révélé au scroll. */}
-            <div className="db-p-calc-preview db-p-calc-preview-mini">
-              <span className="db-p-calc-preview-label">
-                {t("db.calc.preview_label")}
-              </span>
-              <span className="db-p-calc-preview-num-mini tnum">
-                ≈ {fmtEur(totalMonthlyAnim, locale, 0)} €/mois
-              </span>
-              <span className="db-p-calc-preview-annual tnum">
-                ({fmtEur(totalAnnuelAnim, locale, 0)} €/an)
-              </span>
-            </div>
-
-            {/* Bouton OpenFisca — affiner le calcul avec le code officiel Etalab */}
-            {salaireMonthly > 0 && (
-              <div className="db-openfisca-toggle">
+            {/* CTA OpenFisca (top-right desktop, sous le num en mobile) */}
+            <div className="db-p-hero-cta-area">
+              {salaireMonthly > 0 && (
                 <button
                   type="button"
-                  className="db-openfisca-btn"
+                  className="db-p-hero-cta-affine"
                   data-state={
                     isLoadingOpenFisca
                       ? "loading"
@@ -1280,415 +967,140 @@ export default function DailyBreadClient({
                   }
                   onClick={requestOpenFiscaCalc}
                   disabled={isLoadingOpenFisca || !!openFiscaResult}
+                  title={t("db.openfisca.note")}
                 >
                   {isLoadingOpenFisca
                     ? t("db.openfisca.button.loading")
                     : openFiscaResult
                       ? t("db.openfisca.button.active")
-                      : t("db.openfisca.button.idle")}
+                      : t("db.openfisca.button.idle")}{" "}
+                  →
                 </button>
-                <p className="db-openfisca-note">
-                  {openFiscaError
-                    ? t("db.openfisca.error")
-                    : t("db.openfisca.note")}
-                  {openFiscaResult && openFiscaEcartPct !== null && (
-                    <>
-                      {" "}
-                      <span className="db-openfisca-ecart">
-                        {t("db.openfisca.ecart").replace(
-                          "{pct}",
-                          (openFiscaEcartPct >= 0 ? "+" : "") +
-                            openFiscaEcartPct.toFixed(1),
-                        )}
-                      </span>
-                    </>
-                  )}
-                </p>
-              </div>
-            )}
-
-            <div className="db-p-calc-form">
-              {/* Salaire net mensuel — input principal toujours visible */}
-              <div className="db-p-calc-field">
-                <label htmlFor="db-net">
-                  {t("db.form.salaire_label")}
-                  <span className="db-p-calc-field-unit">
-                    {" "}
-                    {t("db.form.unit.per_month")}
-                  </span>
-                </label>
-                <input
-                  id="db-net"
-                  type="number"
-                  className="db-p-calc-field-input tnum"
-                  value={salaireMonthly}
-                  min={0}
-                  max={50_000}
-                  step={50}
-                  onChange={(e) =>
-                    setSalaireMonthly(Math.max(0, Number(e.target.value) || 0))
-                  }
-                />
-                <span className="db-p-calc-field-help">
-                  {t("db.form.salaire_help")}
-                </span>
-              </div>
-
-              {/* Parts (toujours visible — utilisé pour salaire / pension / indépendant) */}
-              <div className="db-p-calc-field">
-                <label htmlFor="db-parts">{t("db.form.parts_label")}</label>
-                <select
-                  id="db-parts"
-                  className="db-p-calc-field-select tnum"
-                  value={parts}
-                  onChange={(e) => setParts(Number(e.target.value))}
-                >
-                  {PARTS_OPTIONS.map((p) => (
-                    <option key={p.value} value={p.value}>
-                      {p.value.toLocaleString(
-                        locale === "en" ? "en-GB" : "fr-FR",
-                      )}
-                    </option>
-                  ))}
-                </select>
-                <span className="db-p-calc-field-help">
-                  {t("db.form.parts_help")}
-                </span>
-              </div>
-
-              {/* Commune */}
-              <div className="db-p-calc-field">
-                <label htmlFor="db-commune">
-                  {t("db.form.commune_label")}
-                </label>
-                <input
-                  ref={inputRef}
-                  id="db-commune"
-                  type="search"
-                  className="db-p-calc-field-input"
-                  placeholder={t("db.form.commune_placeholder")}
-                  value={
-                    communeFocused
-                      ? communeQuery
-                      : commune
-                        ? commune.nom
-                        : ""
-                  }
-                  onFocus={() => {
-                    setCommuneFocused(true);
-                    setCommuneQuery("");
-                  }}
-                  onBlur={() => {
-                    // delay to allow click on hit
-                    setTimeout(() => setCommuneFocused(false), 150);
-                  }}
-                  onChange={(e) => setCommuneQuery(e.target.value)}
-                  autoComplete="off"
-                />
-                <span className="db-p-calc-field-help">
-                  {commune
-                    ? `${commune.dep_name} · ${commune.pop.toLocaleString(
-                        locale === "en" ? "en-GB" : "fr-FR",
-                      )} hab`
-                    : t("db.form.commune_help")}
-                </span>
-                {communeFocused &&
-                  communeQuery.trim().length >= 2 &&
-                  communeHits.length > 0 && (
-                    <div className="db-p-calc-hits">
-                      {communeHits.slice(0, 7).map((h) => (
-                        <button
-                          key={h.insee}
-                          type="button"
-                          className="db-p-calc-hit"
-                          onMouseDown={(e) => {
-                            // mousedown to fire before blur
-                            e.preventDefault();
-                            pickCommune(h);
-                          }}
-                        >
-                          <span className="db-p-calc-hit-name">{h.nom}</span>
-                          <span className="db-p-calc-hit-meta">
-                            {h.dep_name} ·{" "}
-                            {h.pop.toLocaleString(
-                              locale === "en" ? "en-GB" : "fr-FR",
-                            )}{" "}
-                            hab
-                          </span>
-                        </button>
-                      ))}
-                    </div>
-                  )}
-              </div>
+              )}
             </div>
 
-            {/* "+ J'ai d'autres revenus" — toggle <details> natif, collapsed
-                par défaut. Open par défaut SEULEMENT si l'URL deep-linke
-                vers une source non-salaire (cas de partage). */}
-            <details
-              className="db-other-incomes"
-              open={initialOtherIncomesOpen || undefined}
-            >
-              <summary className="db-other-incomes-summary">
-                <span>{t("db.form.other_incomes_summary")}</span>
-                <span aria-hidden className="db-other-incomes-chevron">↓</span>
-              </summary>
-              <p className="db-other-incomes-help">
-                {t("db.form.other_incomes_help")}
-              </p>
-              <div className="db-p-calc-form db-other-incomes-form">
-                {/* Pension brute mensuelle */}
-                <div className="db-p-calc-field">
-                  <label htmlFor="db-pension">
-                    {t("db.form.retraite_label")}
-                    <span className="db-p-calc-field-unit">
-                      {" "}
-                      {t("db.form.unit.per_month")}
-                    </span>
-                  </label>
-                  <input
-                    id="db-pension"
-                    type="number"
-                    className="db-p-calc-field-input tnum"
-                    value={pensionMonthly}
+            {/* Eyebrow retiré : le bandeau "01 · PROFIL" (db-panel-num) au-dessus
+                porte déjà le numérotage de section, et la phrase éditable contient
+                déjà le profil dynamique (salaire, parts, commune). Pas de doublon. */}
+
+            {/* Phrase éditable principale — les inputs sont DANS le texte */}
+            <h1 className="db-p-hero-text">
+              {activeSources.length === 1 && activeSources[0] === "salaire" ? (
+                <>
+                  {t("db.hero.editable.prefix_salaire")}{" "}
+                  <EditableNumber
+                    value={salaireMonthly}
+                    onChange={setSalaireMonthly}
+                    display={`${fmtEur(salaireMonthly, locale, 0)} ${
+                      locale === "en" ? "€/month" : "€/mois"
+                    }`}
+                    suffix={locale === "en" ? "€/month" : "€/mois"}
                     min={0}
-                    max={20_000}
+                    max={50_000}
                     step={50}
-                    onChange={(e) =>
-                      setPensionMonthly(Math.max(0, Number(e.target.value) || 0))
-                    }
+                    presets={PRESETS.map((p) => ({
+                      label: t(`db.calc.preset.${p.key}`),
+                      value: p.net,
+                    }))}
+                    ariaLabel={t("db.hero.editable.aria.salaire")}
+                    pickerLabel={t("db.form.salaire_label")}
+                    locale={locale === "en" ? "en-GB" : "fr-FR"}
                   />
-                  <span className="db-p-calc-field-help">
-                    {t("db.form.retraite_help")}
-                  </span>
-                </div>
-
-                {/* Revenus du capital bruts annuels */}
-                <div className="db-p-calc-field">
-                  <label htmlFor="db-capital">
-                    {t("db.form.capital_label")}
-                    <span className="db-p-calc-field-unit">
-                      {" "}
-                      {t("db.form.unit.per_year")}
-                    </span>
-                  </label>
-                  <input
-                    id="db-capital"
-                    type="number"
-                    className="db-p-calc-field-input tnum"
-                    value={capitalAnnuel}
-                    min={0}
-                    max={1_000_000}
-                    step={500}
-                    onChange={(e) =>
-                      setCapitalAnnuel(Math.max(0, Number(e.target.value) || 0))
+                  ,{" "}
+                  <EditableSelect<number>
+                    value={parts}
+                    onChange={setParts}
+                    options={PARTS_OPTIONS.map((p) => ({
+                      value: p.value,
+                      label: t(`db.form.parts.${p.key}`),
+                    }))}
+                    display={
+                      PARTS_OPTIONS.find((p) => p.value === parts)
+                        ? t(
+                            `db.form.parts.${
+                              PARTS_OPTIONS.find((p) => p.value === parts)!.key
+                            }`,
+                          )
+                        : `${parts} ${locale === "en" ? "parts" : "parts"}`
                     }
+                    ariaLabel={t("db.hero.editable.aria.parts")}
+                    pickerLabel={t("db.form.parts_label")}
+                  />{" "}
+                  {locale === "en" ? "in" : "à"}{" "}
+                  <EditableCommune
+                    display={commune ? commune.nom : "Paris"}
+                    onPick={(h) => pickCommune(h as CommuneHit)}
+                    ariaLabel={t("db.hero.editable.aria.commune")}
+                    pickerLabel={t("db.form.commune_label")}
+                    placeholder={t("db.form.commune_placeholder")}
+                    helpText={t("db.form.commune_help")}
                   />
-                  <span className="db-p-calc-field-help">
-                    {t("db.form.capital_help")}
-                  </span>
-                </div>
-
-                {/* CA annuel HT (micro-entrepreneur) + type d'activité */}
-                <div className="db-p-calc-field">
-                  <label htmlFor="db-indep-ca">
-                    {t("db.form.independant_label")}
-                    <span className="db-p-calc-field-unit">
-                      {" "}
-                      {t("db.form.unit.per_year")}
-                    </span>
-                  </label>
-                  <input
-                    id="db-indep-ca"
-                    type="number"
-                    className="db-p-calc-field-input tnum"
-                    value={indepCaAnnuel}
-                    min={0}
-                    max={1_000_000}
-                    step={500}
-                    onChange={(e) =>
-                      setIndepCaAnnuel(Math.max(0, Number(e.target.value) || 0))
+                  ,
+                </>
+              ) : activeSources.length === 0 ? (
+                <>
+                  {t("db.hero.q_a.zero")}{" "}
+                  <EditableNumber
+                    value={salaireMonthly}
+                    onChange={setSalaireMonthly}
+                    display={t("db.hero.editable.set_salaire")}
+                    suffix={locale === "en" ? "€/month" : "€/mois"}
+                    presets={PRESETS.map((p) => ({
+                      label: t(`db.calc.preset.${p.key}`),
+                      value: p.net,
+                    }))}
+                    ariaLabel={t("db.hero.editable.aria.salaire")}
+                    pickerLabel={t("db.form.salaire_label")}
+                    locale={locale === "en" ? "en-GB" : "fr-FR"}
+                  />
+                </>
+              ) : (
+                <>
+                  {/* multi-sources OU source non-salaire : fallback narratif
+                      ancien (q_a / q_b) — l'édition se fait dans le drawer
+                      "ajustements avancés" plus bas, pour rester lisible. */}
+                  {(() => {
+                    if (activeSources.length > 1) {
+                      const cumuleMonthly =
+                        salaireMonthly +
+                        pensionMonthly +
+                        capitalAnnuel / 12 +
+                        indepCaAnnuel / 12;
+                      return t("db.hero.q_a.multi").replace(
+                        "{amount}",
+                        fmtEur(cumuleMonthly, locale, 0),
+                      );
                     }
-                  />
-                  <span className="db-p-calc-field-help">
-                    {t("db.form.independant_help")}
-                  </span>
-                </div>
-
-                {/* Type d'activité — visible seulement si CA > 0 */}
-                {indepCaAnnuel > 0 && (
-                  <div className="db-p-calc-field">
-                    <label htmlFor="db-indep-type">
-                      {t("db.form.indep_type_label")}
-                    </label>
-                    <select
-                      id="db-indep-type"
-                      className="db-p-calc-field-select"
-                      value={indepType}
-                      onChange={(e) =>
-                        setIndepType(e.target.value as IndepActivityType)
-                      }
-                    >
-                      {INDEP_TYPES.map((it) => (
-                        <option key={it} value={it}>
-                          {t(`db.form.indep_type.${it}`)}
-                        </option>
-                      ))}
-                    </select>
-                    <span className="db-p-calc-field-help">
-                      {t("db.form.indep_type_help")}
-                    </span>
-                  </div>
-                )}
-              </div>
-            </details>
-
-            {/* TF — toggle propriétaire + estimation auto par commune */}
-            <div className="db-p-calc-tf">
-              <label className="db-p-calc-tf-toggle">
-                <input
-                  type="checkbox"
-                  checked={isOwner}
-                  onChange={(e) => {
-                    setIsOwner(e.target.checked);
-                    if (!e.target.checked) setTfCustom(0);
-                  }}
-                />
-                <span className="db-p-calc-tf-toggle-label">
-                  {t("db.form.owner_label")}
-                </span>
-              </label>
-              {isOwner && (
-                <div className="db-p-calc-tf-input-wrap">
-                  <label htmlFor="db-tf">{t("db.form.tf_label")}</label>
-                  <div className="db-p-calc-tf-input-row">
-                    <input
-                      id="db-tf"
-                      type="number"
-                      className="db-p-calc-tf-input tnum"
-                      value={
-                        tfCustom > 0
-                          ? tfCustom
-                          : commune
-                            ? estimateTaxeFonciereFromCommune(
-                                commune.impots_locaux_eur_hab,
-                              )
-                            : 0
-                      }
-                      min={0}
-                      max={20000}
-                      step={50}
-                      onChange={(e) =>
-                        setTfCustom(Number(e.target.value) || 0)
-                      }
-                    />
-                    <span className="db-p-calc-tf-unit">€/an</span>
-                  </div>
-                  <span className="db-p-calc-tf-help">
-                    {tfCustom > 0
-                      ? t("db.form.tf_help_custom")
-                      : t("db.form.tf_help_auto").replace(
-                          "{commune}",
-                          commune?.nom || "—",
-                        )}
-                  </span>
-                </div>
+                    const only = activeSources[0];
+                    if (only === "pension") {
+                      return t("db.hero.q_a.retraite").replace(
+                        "{amount}",
+                        fmtEur(pensionMonthly, locale, 0),
+                      );
+                    }
+                    if (only === "capital") {
+                      return t("db.hero.q_a.capital").replace(
+                        "{amount}",
+                        fmtEur(capitalAnnuel, locale, 0),
+                      );
+                    }
+                    return t("db.hero.q_a.independant").replace(
+                      "{amount}",
+                      fmtEur(indepCaAnnuel, locale, 0),
+                    );
+                  })()}
+                </>
               )}
-              {!isOwner && (
-                <span className="db-p-calc-tf-note">
-                  {t("db.form.owner_note")}
-                </span>
-              )}
-            </div>
-
-            <div className="db-p-calc-presets">
-              <span className="db-p-calc-presets-label">
-                {t("db.calc.presets_label")}
-              </span>
-              {PRESETS.map((p) => (
-                <button
-                  key={p.key}
-                  type="button"
-                  className={`db-p-calc-preset${
-                    presetActiveKey === p.key ? " is-active" : ""
-                  }`}
-                  onClick={() => onPickPreset(p.net)}
-                >
-                  {t(`db.calc.preset.${p.key}`)}
-                </button>
-              ))}
-            </div>
-
-            <p className="db-panel-foot-cue">{t("db.calc.foot_cue")}</p>
-          </div>
-        </section>
-
-        {/* ── PANNEAU 1 — HERO ── */}
-        <section className="db-panel db-p-hero">
-          <div className="db-panel-wrap">
-            <p className="db-panel-num">
-              <em>01</em> · {t("db.hero.num")}
-            </p>
-
-            <p className="db-p-hero-eyebrow">{eyebrow}</p>
-            <h1 className="db-p-hero-q">
-              {(() => {
-                // Question adaptative selon les sources actives :
-                //  - 0 source         → "zero" ("Sans revenu déclaré,…")
-                //  - 1 source         → message dédié (salaire / pension / capital / indep)
-                //  - >1 sources       → "multi" ("Sur tes revenus cumulés (X €/mois),…")
-                if (activeSources.length === 0) {
-                  return t("db.hero.q_a.zero");
-                }
-                if (activeSources.length > 1) {
-                  // Total revenus bruts mensuels (salaire net + pension brute + capital/12 + CA/12).
-                  const cumuleMonthly =
-                    salaireMonthly +
-                    pensionMonthly +
-                    capitalAnnuel / 12 +
-                    indepCaAnnuel / 12;
-                  return t("db.hero.q_a.multi").replace(
-                    "{amount}",
-                    fmtEur(cumuleMonthly, locale, 0),
-                  );
-                }
-                const only = activeSources[0];
-                if (only === "salaire") {
-                  return t("db.hero.q_a.salaire").replace(
-                    "{amount}",
-                    fmtEur(salaireMonthly, locale, 0),
-                  );
-                }
-                if (only === "pension") {
-                  return t("db.hero.q_a.retraite").replace(
-                    "{amount}",
-                    fmtEur(pensionMonthly, locale, 0),
-                  );
-                }
-                if (only === "capital") {
-                  return t("db.hero.q_a.capital").replace(
-                    "{amount}",
-                    fmtEur(capitalAnnuel, locale, 0),
-                  );
-                }
-                // indep
-                return t("db.hero.q_a.independant").replace(
-                  "{amount}",
-                  fmtEur(indepCaAnnuel, locale, 0),
-                );
-              })()}{" "}
-              <em>
-                {t("db.hero.q_b").replace(
-                  "{result}",
-                  `${fmtEur(totalMonthly, locale, 0)} €`,
-                )}
-              </em>
+              {/* Phrase éditable s'arrête sur les inputs — le climax (chiffre
+                  + tagline "financent chaque mois...") vit en aside-droite
+                  pour éviter la duplication avec le big number. */}
             </h1>
 
-            <div className="db-p-hero-num-block">
-              <p className="db-p-hero-num tnum">
+            {/* Aside : big number + composition compacte */}
+            <div className="db-p-hero-aside">
+              <p className="db-p-hero-bignum tnum">
                 {fmtEur(totalMonthlyAnim, locale, 0)}
-                <span className="db-p-hero-num-eur">€</span>
+                <span className="db-p-hero-bignum-eur">€</span>
                 {openFiscaResult && (
                   <span
                     className="db-openfisca-badge"
@@ -1698,169 +1110,429 @@ export default function DailyBreadClient({
                   </span>
                 )}
               </p>
-              <div className="db-p-hero-meta">
-                <p className="db-p-hero-meta-label">
-                  {t("db.hero.meta_label_top")}
-                </p>
-                <p className="db-p-hero-meta-val tnum">
-                  {t("db.hero.meta_year").replace(
+              {/* Tagline italic ocre comme caption du big number — déplacée
+                  ici depuis la phrase <h1> pour éviter la duplication. */}
+              {(() => {
+                const tpl = t("db.hero.q_b");
+                const parts = tpl.split("{result}");
+                const after = (parts.length > 1 ? parts[1] : tpl).trim();
+                return (
+                  <em className="db-p-hero-result-caption">{after}</em>
+                );
+              })()}
+              {/* Meta inline — juste l'annuel ("13 453 €/an"). Le "/mois" a
+                  été retiré car redondant avec la tagline italic au-dessus
+                  ("financent chaque mois..."). */}
+              <p className="db-p-hero-meta-inline tnum">
+                <span className="db-p-hero-meta-inline-year">
+                  {t("db.hero.meta_inline.year").replace(
                     "{annual}",
                     fmtEur(totalAnnuelAnim, locale, 0),
                   )}
-                </p>
-                <hr />
-                <p className="db-p-hero-meta-label">
-                  {t("db.hero.meta_label_compo")}
-                </p>
-                <p
-                  className="db-p-hero-meta-val tnum"
-                  style={{ fontSize: 14, fontWeight: 500 }}
-                >
-                  {/*
-                    Composition adaptative :
-                     - 1 seule source active → ventilation détaillée par poste
-                       (cotisations + CSG + IR + TVA, ou variantes selon source)
-                     - >1 sources actives → ligne agrégée par source ("Salaire X €
-                       · Pension Y € · Capital Z € · Indépendant W €" +
-                       éventuellement TF), chaque montant = total prélèvements
-                       de la source / 12.
-                  */}
-                  {activeSources.length === 0 && (
-                    <span className="lite">—</span>
-                  )}
-                  {activeSources.length === 1 && activeSources[0] === "salaire" && (
-                    <>
-                      {t("db.hero.compo.cotisations")}{" "}
-                      <span className="lite">
-                        {fmtEur(compoSalCotis, locale, 0)}
-                      </span>{" "}
-                      · {t("db.hero.compo.csg")}{" "}
-                      <span className="lite">
-                        {fmtEur(compoSalCsg, locale, 0)}
-                      </span>{" "}
-                      · {t("db.hero.compo.ir")}{" "}
-                      <span className="lite">
-                        {fmtEur(compoSalIr, locale, 0)}
-                      </span>{" "}
-                      · {t("db.hero.compo.tva")}{" "}
-                      <span className="lite">
-                        {fmtEur(compoSalTva, locale, 0)}
-                      </span>
-                    </>
-                  )}
-                  {activeSources.length === 1 && activeSources[0] === "pension" && (
-                    <>
-                      {t("db.hero.compo.csg_casa")}{" "}
-                      <span className="lite">
-                        {fmtEur(compoRetCsg, locale, 0)}
-                      </span>{" "}
-                      · {t("db.hero.compo.ir")}{" "}
-                      <span className="lite">
-                        {fmtEur(compoRetIr, locale, 0)}
-                      </span>{" "}
-                      · {t("db.hero.compo.tva")}{" "}
-                      <span className="lite">
-                        {fmtEur(compoRetTva, locale, 0)}
-                      </span>
-                    </>
-                  )}
-                  {activeSources.length === 1 && activeSources[0] === "capital" && (
-                    <>
-                      {t("db.hero.compo.pfu_ir")}{" "}
-                      <span className="lite">
-                        {fmtEur(compoCapIr, locale, 0)}
-                      </span>{" "}
-                      · {t("db.hero.compo.pfu_ps")}{" "}
-                      <span className="lite">
-                        {fmtEur(compoCapPs, locale, 0)}
-                      </span>{" "}
-                      · {t("db.hero.compo.tva")}{" "}
-                      <span className="lite">
-                        {fmtEur(compoCapTva, locale, 0)}
-                      </span>
-                    </>
-                  )}
-                  {activeSources.length === 1 && activeSources[0] === "indep" && (
-                    <>
-                      {t("db.hero.compo.cotis_urssaf")}{" "}
-                      <span className="lite">
-                        {fmtEur(compoIndCotis, locale, 0)}
-                      </span>{" "}
-                      · {t("db.hero.compo.ir")}{" "}
-                      <span className="lite">
-                        {fmtEur(compoIndIr, locale, 0)}
-                      </span>{" "}
-                      · {t("db.hero.compo.tva")}{" "}
-                      <span className="lite">
-                        {fmtEur(compoIndTva, locale, 0)}
-                      </span>
-                    </>
-                  )}
-                  {activeSources.length > 1 && (
-                    <>
-                      {breakdownSalaire.total > 0 && (
-                        <>
-                          {t("db.hero.compo.src.salaire")}{" "}
-                          <span className="lite">
-                            {fmtEur(breakdownSalaire.total / 12, locale, 0)}
-                          </span>
-                        </>
-                      )}
-                      {breakdownRetraite.total > 0 && (
-                        <>
-                          {breakdownSalaire.total > 0 && " · "}
-                          {t("db.hero.compo.src.pension")}{" "}
-                          <span className="lite">
-                            {fmtEur(breakdownRetraite.total / 12, locale, 0)}
-                          </span>
-                        </>
-                      )}
-                      {breakdownCapital.total > 0 && (
-                        <>
-                          {(breakdownSalaire.total > 0 ||
-                            breakdownRetraite.total > 0) &&
-                            " · "}
-                          {t("db.hero.compo.src.capital")}{" "}
-                          <span className="lite">
-                            {fmtEur(breakdownCapital.total / 12, locale, 0)}
-                          </span>
-                        </>
-                      )}
-                      {breakdownIndep.total > 0 && (
-                        <>
-                          {(breakdownSalaire.total > 0 ||
-                            breakdownRetraite.total > 0 ||
-                            breakdownCapital.total > 0) &&
-                            " · "}
-                          {t("db.hero.compo.src.indep")}{" "}
-                          <span className="lite">
-                            {fmtEur(breakdownIndep.total / 12, locale, 0)}
-                          </span>
-                        </>
-                      )}
-                      {tfEstimated > 0 && (
-                        <>
-                          {" · "}
-                          {t("db.hero.compo.src.tf")}{" "}
-                          <span className="lite">
-                            {fmtEur(tfEstimated / 12, locale, 0)}
-                          </span>
-                        </>
-                      )}
-                    </>
-                  )}
-                </p>
-              </div>
+                </span>
+              </p>
+
+              {/* Fix 5 : mini stack bar 4-segments — visualise la décomposition
+                  des prélèvements en proportions visuelles plutôt qu'en liste
+                  plate. Couleurs alignées sur la palette dispatch §02 (bleu sécu,
+                  bleu-gris CSG, ink état, ocre TVA). Multi-sources reste en
+                  liste plate (5 catégories trop hétérogènes pour une stack
+                  bar lisible). */}
+              {(() => {
+                const segments: Array<{
+                  key: string;
+                  label: string;
+                  value: number;
+                  cssVar: string;
+                }> =
+                  activeSources.length === 1 && activeSources[0] === "salaire"
+                    ? [
+                        { key: "cotis", label: t("db.hero.compo.cotisations"), value: compoSalCotis, cssVar: "var(--p-secu)" },
+                        { key: "csg",   label: t("db.hero.compo.csg"),         value: compoSalCsg,   cssVar: "#5b6aa8" },
+                        { key: "ir",    label: t("db.hero.compo.ir"),          value: compoSalIr,    cssVar: "var(--p-etat)" },
+                        { key: "tva",   label: t("db.hero.compo.tva"),         value: compoSalTva,   cssVar: "var(--p-accent)" },
+                      ]
+                    : activeSources.length === 1 && activeSources[0] === "pension"
+                      ? [
+                          { key: "csg", label: t("db.hero.compo.csg_casa"), value: compoRetCsg, cssVar: "var(--p-secu)" },
+                          { key: "ir",  label: t("db.hero.compo.ir"),       value: compoRetIr,  cssVar: "var(--p-etat)" },
+                          { key: "tva", label: t("db.hero.compo.tva"),      value: compoRetTva, cssVar: "var(--p-accent)" },
+                        ]
+                      : activeSources.length === 1 && activeSources[0] === "capital"
+                        ? [
+                            { key: "pfu_ir", label: t("db.hero.compo.pfu_ir"), value: compoCapIr, cssVar: "var(--p-etat)" },
+                            { key: "pfu_ps", label: t("db.hero.compo.pfu_ps"), value: compoCapPs, cssVar: "var(--p-secu)" },
+                            { key: "tva",    label: t("db.hero.compo.tva"),    value: compoCapTva, cssVar: "var(--p-accent)" },
+                          ]
+                        : activeSources.length === 1 && activeSources[0] === "indep"
+                          ? [
+                              { key: "cotis", label: t("db.hero.compo.cotis_urssaf"), value: compoIndCotis, cssVar: "var(--p-secu)" },
+                              { key: "ir",    label: t("db.hero.compo.ir"),           value: compoIndIr,    cssVar: "var(--p-etat)" },
+                              { key: "tva",   label: t("db.hero.compo.tva"),          value: compoIndTva,   cssVar: "var(--p-accent)" },
+                            ]
+                          : [];
+                const total = segments.reduce((s, x) => s + x.value, 0);
+                if (segments.length > 0 && total > 0) {
+                  return (
+                    <div className="db-p-hero-compo">
+                      <p className="db-p-hero-compo-label">
+                        {t("db.hero.meta_label_compo")}
+                      </p>
+                      <div
+                        className="db-p-hero-compo-bar"
+                        role="img"
+                        aria-label={segments
+                          .map((s) => `${s.label} ${fmtEur(s.value, locale, 0)} €`)
+                          .join(", ")}
+                      >
+                        {segments.map((s) => (
+                          <span
+                            key={s.key}
+                            className="db-p-hero-compo-seg"
+                            style={{
+                              flexGrow: s.value,
+                              background: s.cssVar,
+                            }}
+                          />
+                        ))}
+                      </div>
+                      <ul className="db-p-hero-compo-legend">
+                        {segments.map((s) => (
+                          <li key={s.key}>
+                            <span
+                              aria-hidden
+                              className="db-p-hero-compo-dot"
+                              style={{ background: s.cssVar }}
+                            />
+                            <span className="db-p-hero-compo-legend-lbl">
+                              {s.label}
+                            </span>{" "}
+                            <span className="db-p-hero-compo-legend-val tnum">
+                              {fmtEur(s.value, locale, 0)}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  );
+                }
+                if (activeSources.length > 1) {
+                  return (
+                    <div className="db-p-hero-compo">
+                      <p className="db-p-hero-compo-label">
+                        {t("db.hero.meta_label_compo")}
+                      </p>
+                      <p className="db-p-hero-compo-multi tnum">
+                        {breakdownSalaire.total > 0 && (
+                          <>
+                            {t("db.hero.compo.src.salaire")}{" "}
+                            <span className="lite">
+                              {fmtEur(breakdownSalaire.total / 12, locale, 0)} €
+                            </span>
+                          </>
+                        )}
+                        {breakdownRetraite.total > 0 && (
+                          <>
+                            {breakdownSalaire.total > 0 && " · "}
+                            {t("db.hero.compo.src.pension")}{" "}
+                            <span className="lite">
+                              {fmtEur(breakdownRetraite.total / 12, locale, 0)} €
+                            </span>
+                          </>
+                        )}
+                        {breakdownCapital.total > 0 && (
+                          <>
+                            {(breakdownSalaire.total > 0 ||
+                              breakdownRetraite.total > 0) &&
+                              " · "}
+                            {t("db.hero.compo.src.capital")}{" "}
+                            <span className="lite">
+                              {fmtEur(breakdownCapital.total / 12, locale, 0)} €
+                            </span>
+                          </>
+                        )}
+                        {breakdownIndep.total > 0 && (
+                          <>
+                            {(breakdownSalaire.total > 0 ||
+                              breakdownRetraite.total > 0 ||
+                              breakdownCapital.total > 0) &&
+                              " · "}
+                            {t("db.hero.compo.src.indep")}{" "}
+                            <span className="lite">
+                              {fmtEur(breakdownIndep.total / 12, locale, 0)} €
+                            </span>
+                          </>
+                        )}
+                        {tfEstimated > 0 && (
+                          <>
+                            {" · "}
+                            {t("db.hero.compo.src.tf")}{" "}
+                            <span className="lite">
+                              {fmtEur(tfEstimated / 12, locale, 0)} €
+                            </span>
+                          </>
+                        )}
+                      </p>
+                    </div>
+                  );
+                }
+                return null;
+              })()}
+
+              {/* Presets rapides salaire — chips inline juste sous l'aside.
+                  Visibles uniquement quand le mode est "salaire pur" pour ne
+                  pas créer d'ambiguïté ("appliquer SMIC" remplace les autres
+                  sources actives). */}
+              {(activeSources.length === 0 ||
+                (activeSources.length === 1 &&
+                  activeSources[0] === "salaire")) && (
+                <div className="db-p-hero-presets">
+                  <span className="db-p-hero-presets-label">
+                    {t("db.calc.presets_label")}
+                  </span>
+                  {PRESETS.map((p) => (
+                    <button
+                      key={p.key}
+                      type="button"
+                      className={`db-p-hero-preset${
+                        presetActiveKey === p.key ? " is-active" : ""
+                      }`}
+                      onClick={() => setSalaireMonthly(p.net)}
+                      title={t(`db.calc.preset.${p.key}`)}
+                    >
+                      {/* Fix 6 : label court pour tenir sur une ligne en desktop ;
+                          la version longue (avec le montant) reste dans le picker
+                          EditableNumber et dans l'attr title pour le hover. */}
+                      {t(`db.calc.preset_short.${p.key}`)}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {/* Fix 7 : CTA discret sous les presets (côté droit) qui équilibre
+                  visuellement la colonne avec la colonne gauche plus dense, et
+                  pousse le lecteur vers §02 sans être lourd. */}
+              <a className="db-p-hero-cta-jump" href="#db-disp">
+                {t("db.hero.aside_cta")}{" "}
+                <span aria-hidden>↓</span>
+              </a>
             </div>
 
-            {/* ── Toggle OpenFisca (Phase 5 MVP, opt-in) ── */}
-            <p className="db-p-hero-deck">{t("db.hero.deck")}</p>
+            {/* Drawer "ajustements avancés" — pension, capital, indépendant,
+                propriétaire/TF. Discret par défaut. Ouvert si une source non-
+                salaire est non nulle (URL deep-link), ou si l'utilisateur a
+                coché propriétaire. */}
+            <details
+              className="db-p-hero-advanced"
+              open={
+                initialOtherIncomesOpen || isOwner || undefined
+              }
+            >
+              <summary className="db-p-hero-advanced-summary">
+                <span>{t("db.hero.advanced.summary")}</span>
+                <span aria-hidden className="db-p-hero-advanced-chevron">
+                  ↓
+                </span>
+              </summary>
+              <div className="db-p-hero-advanced-body">
+                <p className="db-p-hero-advanced-help">
+                  {t("db.form.other_incomes_help")}
+                </p>
 
-            {/* Encart "L'angle équité" retiré (2026-05-07) — les % par
-                source sont techniquement justes mais éthiquement
-                contestables sans le contexte (retraités ont déjà cotisé
-                pendant 40 ans, indépendants ont moins de protection
-                sociale, etc.). Risque éditorial inutile. */}
+                <div className="db-p-hero-advanced-grid">
+                  {/* Pension */}
+                  <div className="db-p-calc-field">
+                    <label htmlFor="db-pension">
+                      {t("db.form.retraite_label")}
+                      <span className="db-p-calc-field-unit">
+                        {" "}
+                        {t("db.form.unit.per_month")}
+                      </span>
+                    </label>
+                    <input
+                      id="db-pension"
+                      type="number"
+                      className="db-p-calc-field-input tnum"
+                      value={pensionMonthly}
+                      min={0}
+                      max={20_000}
+                      step={50}
+                      onChange={(e) =>
+                        setPensionMonthly(
+                          Math.max(0, Number(e.target.value) || 0),
+                        )
+                      }
+                    />
+                    <span className="db-p-calc-field-help">
+                      {t("db.form.retraite_help")}
+                    </span>
+                  </div>
+
+                  {/* Capital */}
+                  <div className="db-p-calc-field">
+                    <label htmlFor="db-capital">
+                      {t("db.form.capital_label")}
+                      <span className="db-p-calc-field-unit">
+                        {" "}
+                        {t("db.form.unit.per_year")}
+                      </span>
+                    </label>
+                    <input
+                      id="db-capital"
+                      type="number"
+                      className="db-p-calc-field-input tnum"
+                      value={capitalAnnuel}
+                      min={0}
+                      max={1_000_000}
+                      step={500}
+                      onChange={(e) =>
+                        setCapitalAnnuel(
+                          Math.max(0, Number(e.target.value) || 0),
+                        )
+                      }
+                    />
+                    <span className="db-p-calc-field-help">
+                      {t("db.form.capital_help")}
+                    </span>
+                  </div>
+
+                  {/* Indépendant CA */}
+                  <div className="db-p-calc-field">
+                    <label htmlFor="db-indep-ca">
+                      {t("db.form.independant_label")}
+                      <span className="db-p-calc-field-unit">
+                        {" "}
+                        {t("db.form.unit.per_year")}
+                      </span>
+                    </label>
+                    <input
+                      id="db-indep-ca"
+                      type="number"
+                      className="db-p-calc-field-input tnum"
+                      value={indepCaAnnuel}
+                      min={0}
+                      max={1_000_000}
+                      step={500}
+                      onChange={(e) =>
+                        setIndepCaAnnuel(
+                          Math.max(0, Number(e.target.value) || 0),
+                        )
+                      }
+                    />
+                    <span className="db-p-calc-field-help">
+                      {t("db.form.independant_help")}
+                    </span>
+                  </div>
+
+                  {/* Type d'activité indépendante (si CA > 0) */}
+                  {indepCaAnnuel > 0 && (
+                    <div className="db-p-calc-field">
+                      <label htmlFor="db-indep-type">
+                        {t("db.form.indep_type_label")}
+                      </label>
+                      <select
+                        id="db-indep-type"
+                        className="db-p-calc-field-select"
+                        value={indepType}
+                        onChange={(e) =>
+                          setIndepType(e.target.value as IndepActivityType)
+                        }
+                      >
+                        {INDEP_TYPES.map((it) => (
+                          <option key={it} value={it}>
+                            {t(`db.form.indep_type.${it}`)}
+                          </option>
+                        ))}
+                      </select>
+                      <span className="db-p-calc-field-help">
+                        {t("db.form.indep_type_help")}
+                      </span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Propriétaire + TF */}
+                <div className="db-p-calc-tf db-p-hero-advanced-tf">
+                  <label className="db-p-calc-tf-toggle">
+                    <input
+                      type="checkbox"
+                      checked={isOwner}
+                      onChange={(e) => {
+                        setIsOwner(e.target.checked);
+                        if (!e.target.checked) setTfCustom(0);
+                      }}
+                    />
+                    <span className="db-p-calc-tf-toggle-label">
+                      {t("db.form.owner_label")}
+                    </span>
+                  </label>
+                  {isOwner && (
+                    <div className="db-p-calc-tf-input-wrap">
+                      <label htmlFor="db-tf">{t("db.form.tf_label")}</label>
+                      <div className="db-p-calc-tf-input-row">
+                        <input
+                          id="db-tf"
+                          type="number"
+                          className="db-p-calc-tf-input tnum"
+                          value={
+                            tfCustom > 0
+                              ? tfCustom
+                              : commune
+                                ? estimateTaxeFonciereFromCommune(
+                                    commune.impots_locaux_eur_hab,
+                                  )
+                                : 0
+                          }
+                          min={0}
+                          max={20000}
+                          step={50}
+                          onChange={(e) =>
+                            setTfCustom(Number(e.target.value) || 0)
+                          }
+                        />
+                        <span className="db-p-calc-tf-unit">€/an</span>
+                      </div>
+                      <span className="db-p-calc-tf-help">
+                        {tfCustom > 0
+                          ? t("db.form.tf_help_custom")
+                          : t("db.form.tf_help_auto").replace(
+                              "{commune}",
+                              commune?.nom || "—",
+                            )}
+                      </span>
+                    </div>
+                  )}
+                  {!isOwner && (
+                    <span className="db-p-calc-tf-note">
+                      {t("db.form.owner_note")}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </details>
+
+            {/* OpenFisca caveat (réduit à un petit aside discret sous le hero) */}
+            {(openFiscaResult || openFiscaError) && (
+              <p className="db-p-hero-openfisca-note">
+                {openFiscaError
+                  ? t("db.openfisca.error")
+                  : t("db.openfisca.note")}
+                {openFiscaResult && openFiscaEcartPct !== null && (
+                  <>
+                    {" "}
+                    <span className="db-openfisca-ecart">
+                      {t("db.openfisca.ecart").replace(
+                        "{pct}",
+                        (openFiscaEcartPct >= 0 ? "+" : "") +
+                          openFiscaEcartPct.toFixed(1),
+                      )}
+                    </span>
+                  </>
+                )}
+              </p>
+            )}
+
+            <p className="db-p-hero-deck">{t("db.hero.deck")}</p>
 
             <p className="db-panel-foot-cue">{t("db.hero.foot_cue")}</p>
           </div>
@@ -1868,7 +1540,7 @@ export default function DailyBreadClient({
 
         {/* ── PANNEAU 2 — DISPATCH ── */}
         {institutionShares.length === 3 && (
-          <section className="db-panel db-p-disp">
+          <section id="db-disp" className="db-panel db-p-disp">
             <div className="db-panel-wrap">
               <p className="db-panel-num">
                 <em>02</em> · {t("db.disp.num")}
@@ -1986,16 +1658,18 @@ export default function DailyBreadClient({
 
               <div className="db-p-zoom-grid">
                 <div className="db-p-zoom-l-text">
-                  <p className="db-p-zoom-pct c-secu tnum">
-                    {Math.round((secuShare.share ?? 0) * 100)}
-                    <span className="pct-symbol">%</span>
+                  {/* Hiérarchie : €/mois géant (angle perso) puis nom puis
+                      % en ligne secondaire. Convention figée :
+                      absolu d'abord (display large), pct en secondaire. */}
+                  <p className="db-p-zoom-eur c-secu tnum">
+                    {fmtEur(secuMonthly, locale, 0)}
+                    <span className="eur-unit">
+                      €/{locale === "en" ? "mo" : "mois"}
+                    </span>
                   </p>
                   <p className="db-p-zoom-name">{t("db.secu.name")}</p>
-                  <p className="db-p-zoom-amt tnum">
-                    <b>
-                      {fmtEur(secuMonthly, locale, 0)} €/
-                      {locale === "en" ? "mo" : "mois"}
-                    </b>{" "}
+                  <p className="db-p-zoom-pct-line tnum">
+                    <b>{Math.round((secuShare.share ?? 0) * 100)} %</b>{" "}
                     {locale === "en"
                       ? "of your contribution"
                       : "de ta contribution"}
@@ -2023,155 +1697,7 @@ export default function DailyBreadClient({
                 />
               </div>
 
-              {deepdiveSante.length > 0 && cnamMonthly > 0 && (
-                <DailyBreadDeepDive
-                  eyebrow={t("db.deepdive.eyebrow")}
-                  title={t("db.deepdive.sante.title")}
-                  amountMonthly={cnamMonthly}
-                  meta={t("db.deepdive.sante.meta")}
-                  items={deepdiveSante.map((x) => ({
-                    ...x,
-                    label_fr: t(`db.deepdive.sante.${x.key}`),
-                    label_en: t(`db.deepdive.sante.${x.key}`),
-                  }))}
-                  color="c-secu"
-                  clickableUrls={buildSecuL3("cnam_maladie", deepdiveSante)}
-                  asides={[
-                    {
-                      num: t("db.deepdive.aside.sante1.num"),
-                      numEm: t("db.deepdive.aside.sante1.num_em"),
-                      text: t("db.deepdive.aside.sante1.text"),
-                      source: t("db.deepdive.aside.sante1.source"),
-                    },
-                    {
-                      num: t("db.deepdive.aside.sante2.num"),
-                      numEm: t("db.deepdive.aside.sante2.num_em"),
-                      text: t("db.deepdive.aside.sante2.text"),
-                      source: t("db.deepdive.aside.sante2.source"),
-                    },
-                    {
-                      num: t("db.deepdive.aside.sante3.num"),
-                      numEm: t("db.deepdive.aside.sante3.num_em"),
-                      text: t("db.deepdive.aside.sante3.text"),
-                      source: t("db.deepdive.aside.sante3.source"),
-                    },
-                  ]}
-                  locale={locale}
-                />
-              )}
-
-              {deepdiveRetraites.length > 0 && cnavMonthly > 0 && (
-                <DailyBreadDeepDive
-                  eyebrow={t("db.deepdive.eyebrow")}
-                  title={t("db.deepdive.retraites.title")}
-                  amountMonthly={cnavMonthly}
-                  meta={t("db.deepdive.retraites.meta")}
-                  items={deepdiveRetraites.map((x) => ({
-                    ...x,
-                    label_fr: t(`db.deepdive.retraites.${x.key}`),
-                    label_en: t(`db.deepdive.retraites.${x.key}`),
-                  }))}
-                  color="c-secu"
-                  clickableUrls={buildSecuL3("cnav_retraites", deepdiveRetraites)}
-                  asides={[
-                    {
-                      num: t("db.deepdive.aside.retraites1.num"),
-                      numEm: t("db.deepdive.aside.retraites1.num_em"),
-                      text: t("db.deepdive.aside.retraites1.text"),
-                      source: t("db.deepdive.aside.retraites1.source"),
-                    },
-                    {
-                      num: t("db.deepdive.aside.retraites2.num"),
-                      numEm: t("db.deepdive.aside.retraites2.num_em"),
-                      text: t("db.deepdive.aside.retraites2.text"),
-                      source: t("db.deepdive.aside.retraites2.source"),
-                    },
-                    {
-                      num: t("db.deepdive.aside.retraites3.num"),
-                      numEm: t("db.deepdive.aside.retraites3.num_em"),
-                      text: t("db.deepdive.aside.retraites3.text"),
-                      source: t("db.deepdive.aside.retraites3.source"),
-                    },
-                  ]}
-                  locale={locale}
-                />
-              )}
-
-              {deepdiveFamille.length > 0 && cafMonthly > 0 && (
-                <DailyBreadDeepDive
-                  eyebrow={t("db.deepdive.eyebrow")}
-                  title={t("db.deepdive.famille.title")}
-                  amountMonthly={cafMonthly}
-                  meta={t("db.deepdive.famille.meta")}
-                  items={deepdiveFamille.map((x) => ({
-                    ...x,
-                    label_fr: t(`db.deepdive.famille.${x.key}`),
-                    label_en: t(`db.deepdive.famille.${x.key}`),
-                  }))}
-                  color="c-secu"
-                  clickableUrls={buildSecuL3("cnaf_famille", deepdiveFamille)}
-                  asides={[
-                    {
-                      num: t("db.deepdive.aside.famille1.num"),
-                      numEm: t("db.deepdive.aside.famille1.num_em"),
-                      text: t("db.deepdive.aside.famille1.text"),
-                      source: t("db.deepdive.aside.famille1.source"),
-                    },
-                    {
-                      num: t("db.deepdive.aside.famille2.num"),
-                      numEm: t("db.deepdive.aside.famille2.num_em"),
-                      text: t("db.deepdive.aside.famille2.text"),
-                      source: t("db.deepdive.aside.famille2.source"),
-                    },
-                    {
-                      num: t("db.deepdive.aside.famille3.num"),
-                      numEm: t("db.deepdive.aside.famille3.num_em"),
-                      text: t("db.deepdive.aside.famille3.text"),
-                      source: t("db.deepdive.aside.famille3.source"),
-                    },
-                  ]}
-                  locale={locale}
-                />
-              )}
-
-              {deepdiveChomage.length > 0 && unedicMonthly > 0 && (
-                <DailyBreadDeepDive
-                  eyebrow={t("db.deepdive.eyebrow")}
-                  title={t("db.deepdive.chomage.title")}
-                  amountMonthly={unedicMonthly}
-                  meta={t("db.deepdive.chomage.meta")}
-                  items={deepdiveChomage.map((x) => ({
-                    ...x,
-                    label_fr: t(`db.deepdive.chomage.${x.key}`),
-                    label_en: t(`db.deepdive.chomage.${x.key}`),
-                  }))}
-                  color="c-secu"
-                  clickableUrls={buildSecuL3("unedic_chomage", deepdiveChomage)}
-                  asides={[
-                    {
-                      num: t("db.deepdive.aside.chomage1.num"),
-                      numEm: t("db.deepdive.aside.chomage1.num_em"),
-                      text: t("db.deepdive.aside.chomage1.text"),
-                      source: t("db.deepdive.aside.chomage1.source"),
-                    },
-                    {
-                      num: t("db.deepdive.aside.chomage2.num"),
-                      numEm: t("db.deepdive.aside.chomage2.num_em"),
-                      text: t("db.deepdive.aside.chomage2.text"),
-                      source: t("db.deepdive.aside.chomage2.source"),
-                    },
-                    {
-                      num: t("db.deepdive.aside.chomage3.num"),
-                      numEm: t("db.deepdive.aside.chomage3.num_em"),
-                      text: t("db.deepdive.aside.chomage3.text"),
-                      source: t("db.deepdive.aside.chomage3.source"),
-                    },
-                  ]}
-                  locale={locale}
-                />
-              )}
-
-              <p className="db-panel-foot-cue">{t("db.secu.foot_cue")}</p>
+                                                                      <p className="db-panel-foot-cue">{t("db.secu.foot_cue")}</p>
             </div>
           </section>
         )}
@@ -2193,16 +1719,15 @@ export default function DailyBreadClient({
 
               <div className="db-p-zoom-grid">
                 <div className="db-p-zoom-l-text">
-                  <p className="db-p-zoom-pct c-etat tnum">
-                    {Math.round((etatShare.share ?? 0) * 100)}
-                    <span className="pct-symbol">%</span>
+                  <p className="db-p-zoom-eur c-etat tnum">
+                    {fmtEur(etatMonthly, locale, 0)}
+                    <span className="eur-unit">
+                      €/{locale === "en" ? "mo" : "mois"}
+                    </span>
                   </p>
                   <p className="db-p-zoom-name">{t("db.etat.name")}</p>
-                  <p className="db-p-zoom-amt tnum">
-                    <b>
-                      {fmtEur(etatMonthly, locale, 0)} €/
-                      {locale === "en" ? "mo" : "mois"}
-                    </b>{" "}
+                  <p className="db-p-zoom-pct-line tnum">
+                    <b>{Math.round((etatShare.share ?? 0) * 100)} %</b>{" "}
                     {locale === "en"
                       ? "of your contribution"
                       : "de ta contribution"}
@@ -2236,155 +1761,59 @@ export default function DailyBreadClient({
                 />
               </div>
 
-              {deepdiveEducation.length > 0 && educationMonthly > 0 && (
-                <DailyBreadDeepDive
-                  eyebrow={t("db.deepdive.eyebrow_l")}
-                  title={t("db.deepdive.education.title")}
-                  amountMonthly={educationMonthly}
-                  meta={t("db.deepdive.education.meta")}
-                  items={deepdiveEducation.map((x) => ({
-                    ...x,
-                    label_fr: t(`db.deepdive.education.${x.key}`),
-                    label_en: t(`db.deepdive.education.${x.key}`),
-                  }))}
-                  color="c-etat"
-                  // Pas de clickableUrls : les rows sont une décomposition DEPP
-                  // (pédagogique) ≠ programmes PLF d'Agent P. Le drill macro→
-                  // micro pour État passe par le BarList stateBuckets au-dessus.
-                  asides={[
-                    {
-                      num: t("db.deepdive.aside.education1.num"),
-                      numEm: t("db.deepdive.aside.education1.num_em"),
-                      text: t("db.deepdive.aside.education1.text"),
-                      source: t("db.deepdive.aside.education1.source"),
-                    },
-                    {
-                      num: t("db.deepdive.aside.education2.num"),
-                      numEm: t("db.deepdive.aside.education2.num_em"),
-                      text: t("db.deepdive.aside.education2.text"),
-                      source: t("db.deepdive.aside.education2.source"),
-                    },
-                    {
-                      num: t("db.deepdive.aside.education3.num"),
-                      numEm: t("db.deepdive.aside.education3.num_em"),
-                      text: t("db.deepdive.aside.education3.text"),
-                      source: t("db.deepdive.aside.education3.source"),
-                    },
-                  ]}
-                  locale={locale}
-                />
-              )}
-
-              {deepdiveDefense.length > 0 && defenseMonthly > 0 && (
-                <DailyBreadDeepDive
-                  eyebrow={t("db.deepdive.eyebrow")}
-                  title={t("db.deepdive.defense.title")}
-                  amountMonthly={defenseMonthly}
-                  meta={t("db.deepdive.defense.meta")}
-                  items={deepdiveDefense.map((x) => ({
-                    ...x,
-                    label_fr: t(`db.deepdive.defense.${x.key}`),
-                    label_en: t(`db.deepdive.defense.${x.key}`),
-                  }))}
-                  color="c-etat"
-                  // Décomposition par titre budgétaire ≠ programmes PLF.
-                  asides={[
-                    {
-                      num: t("db.deepdive.aside.defense1.num"),
-                      numEm: t("db.deepdive.aside.defense1.num_em"),
-                      text: t("db.deepdive.aside.defense1.text"),
-                      source: t("db.deepdive.aside.defense1.source"),
-                    },
-                    {
-                      num: t("db.deepdive.aside.defense2.num"),
-                      numEm: t("db.deepdive.aside.defense2.num_em"),
-                      text: t("db.deepdive.aside.defense2.text"),
-                      source: t("db.deepdive.aside.defense2.source"),
-                    },
-                    {
-                      num: t("db.deepdive.aside.defense3.num"),
-                      numEm: t("db.deepdive.aside.defense3.num_em"),
-                      text: t("db.deepdive.aside.defense3.text"),
-                      source: t("db.deepdive.aside.defense3.source"),
-                    },
-                  ]}
-                  locale={locale}
-                />
-              )}
-
-              {deepdiveDette.length > 0 && detteMonthly > 0 && (
-                <DailyBreadDeepDive
-                  eyebrow={t("db.deepdive.eyebrow_la")}
-                  title={t("db.deepdive.dette.title")}
-                  amountMonthly={detteMonthly}
-                  meta={t("db.deepdive.dette.meta")}
-                  items={deepdiveDette.map((x) => ({
-                    ...x,
-                    label_fr: t(`db.deepdive.dette.${x.key}`),
-                    label_en: t(`db.deepdive.dette.${x.key}`),
-                  }))}
-                  color="c-etat"
-                  // Décomposition AFT (intérêts CT/LT) ≠ programmes PLF.
-                  asides={[
-                    {
-                      num: t("db.deepdive.aside.dette1.num"),
-                      numEm: t("db.deepdive.aside.dette1.num_em"),
-                      text: t("db.deepdive.aside.dette1.text"),
-                      source: t("db.deepdive.aside.dette1.source"),
-                    },
-                    {
-                      num: t("db.deepdive.aside.dette2.num"),
-                      numEm: t("db.deepdive.aside.dette2.num_em"),
-                      text: t("db.deepdive.aside.dette2.text"),
-                      source: t("db.deepdive.aside.dette2.source"),
-                    },
-                    {
-                      num: t("db.deepdive.aside.dette3.num"),
-                      numEm: t("db.deepdive.aside.dette3.num_em"),
-                      text: t("db.deepdive.aside.dette3.text"),
-                      source: t("db.deepdive.aside.dette3.source"),
-                    },
-                  ]}
-                  locale={locale}
-                />
-              )}
-
-              {deepdiveAutresMinisteres.length > 0 && autresMinisteresMonthly > 0 && (
-                <DailyBreadDeepDive
-                  eyebrow={t("db.deepdive.eyebrow")}
-                  title={t("db.deepdive.autres_ministeres.title")}
-                  amountMonthly={autresMinisteresMonthly}
-                  meta={t("db.deepdive.autres_ministeres.meta")}
-                  items={deepdiveAutresMinisteres.map((x) => ({
-                    ...x,
-                    label_fr: t(`db.deepdive.autres_ministeres.${x.key}`),
-                    label_en: t(`db.deepdive.autres_ministeres.${x.key}`),
-                  }))}
-                  color="c-etat"
-                  // Agrégation éditoriale ≠ programmes PLF.
-                  asides={[
-                    {
-                      num: t("db.deepdive.aside.autres_ministeres1.num"),
-                      numEm: t("db.deepdive.aside.autres_ministeres1.num_em"),
-                      text: t("db.deepdive.aside.autres_ministeres1.text"),
-                      source: t("db.deepdive.aside.autres_ministeres1.source"),
-                    },
-                    {
-                      num: t("db.deepdive.aside.autres_ministeres2.num"),
-                      numEm: t("db.deepdive.aside.autres_ministeres2.num_em"),
-                      text: t("db.deepdive.aside.autres_ministeres2.text"),
-                      source: t("db.deepdive.aside.autres_ministeres2.source"),
-                    },
-                    {
-                      num: t("db.deepdive.aside.autres_ministeres3.num"),
-                      numEm: t("db.deepdive.aside.autres_ministeres3.num_em"),
-                      text: t("db.deepdive.aside.autres_ministeres3.text"),
-                      source: t("db.deepdive.aside.autres_ministeres3.source"),
-                    },
-                  ]}
-                  locale={locale}
-                />
-              )}
+                                                                      {/* Note méthodo : 229 Md€ S1311 hors missions PLF — la somme
+                  des barres ci-dessus n'égale pas le `etatMonthly` total.
+                  Cf. fix conv. `etat × share_of_parent` (2026-05). */}
+              {db &&
+                db.apu_subsectors.institutions?.S1311?.annual_eur &&
+                db.state_breakdown?.total_net_cp_eur && (
+                  <p
+                    style={{
+                      fontFamily:
+                        "'JetBrains Mono', ui-monospace, monospace",
+                      fontSize: 11,
+                      color: "var(--muted)",
+                      fontStyle: "italic",
+                      borderLeft: "2px solid var(--ocre)",
+                      paddingLeft: 12,
+                      margin: "18px 0 6px",
+                      maxWidth: 760,
+                      lineHeight: 1.55,
+                      letterSpacing: "0.02em",
+                    }}
+                  >
+                    {t("db.etat.scope_note")
+                      .replace(
+                        "{plf_total}",
+                        fmtBnEur(
+                          db.state_breakdown.total_net_cp_eur,
+                          locale,
+                        ),
+                      )
+                      .replace(
+                        "{s1311_total}",
+                        fmtBnEur(
+                          db.apu_subsectors.institutions.S1311.annual_eur,
+                          locale,
+                        ),
+                      )
+                      .replace(
+                        "{delta}",
+                        fmtBnEur(
+                          Math.max(
+                            0,
+                            db.apu_subsectors.institutions.S1311.annual_eur -
+                              db.state_breakdown.total_net_cp_eur,
+                          ),
+                          locale,
+                        ),
+                      )
+                      .replace(
+                        "{monthly}",
+                        fmtEur(etatMonthly, locale, 0),
+                      )}
+                  </p>
+                )}
 
               <p className="db-panel-foot-cue">{t("db.etat.foot_cue")}</p>
             </div>
@@ -2392,7 +1821,35 @@ export default function DailyBreadClient({
         )}
 
         {/* ── PANNEAU 5 — Zoom Local ── */}
-        {localLevels.length > 0 && localShare && (
+        {localLevels.length > 0 && localShare && (() => {
+          // ─── Labels personnalisés selon la commune sélectionnée (Fix 2) ───
+          // Bloc communal = nom de la commune (l'EPCI n'est pas dispo dans
+          // notre dataset OFGL aujourd'hui — on garde le scaffold {city}+{epci}
+          // pour quand on enrichira). Département / Région utilisent les
+          // métadonnées de la commune.
+          const blocLabel = commune?.nom ?? t("db.local.bloc_default");
+          const deptLabel = commune?.dep_name
+            ? t("db.local.dept_label").replace("{dep}", commune.dep_name)
+            : t("db.local.dept_default");
+          const regLabel = commune?.reg_name
+            ? t("db.local.reg_label").replace("{reg}", commune.reg_name)
+            : t("db.local.reg_default");
+          const dynamicTitle = t("db.local.title_dynamic")
+            .replace("{reg}", regLabel)
+            .replace("{dept}", deptLabel)
+            .replace("{bloc}", blocLabel);
+          // Statut particulier : Paris = commune+département confondus,
+          // Lyon = Métropole de Lyon (collectivité unique). On affiche une
+          // note discrète sous le titre.
+          const isParisStatut = commune?.insee === "75056";
+          const isLyonStatut = commune?.insee === "69123";
+          // Map clé OFGL → label personnalisé pour les barres BarList.
+          const personalLabelByKey: Record<string, string> = {
+            bloc_communal: blocLabel,
+            departement: deptLabel,
+            region: regLabel,
+          };
+          return (
           <section
             ref={panel5Ref}
             className={`db-panel db-p-zoom db-panel-fade${panel5Revealed ? " is-revealed" : ""}`}
@@ -2408,16 +1865,24 @@ export default function DailyBreadClient({
 
               <div className="db-p-zoom-grid">
                 <div className="db-p-zoom-l-text">
-                  <p className="db-p-zoom-pct c-local tnum">
-                    {Math.round((localShare.share ?? 0) * 100)}
-                    <span className="pct-symbol">%</span>
+                  <p className="db-p-zoom-eur c-local tnum">
+                    {fmtEur(localMonthly, locale, 0)}
+                    <span className="eur-unit">
+                      €/{locale === "en" ? "mo" : "mois"}
+                    </span>
                   </p>
-                  <p className="db-p-zoom-name">{t("db.local.title")}</p>
-                  <p className="db-p-zoom-amt tnum">
-                    <b>
-                      {fmtEur(localMonthly, locale, 0)} €/
-                      {locale === "en" ? "mo" : "mois"}
-                    </b>{" "}
+                  <p className="db-p-zoom-name">{dynamicTitle}</p>
+                  {(isParisStatut || isLyonStatut) && (
+                    <p className="db-p-zoom-caveat">
+                      {t(
+                        isParisStatut
+                          ? "db.local.paris_statut_note"
+                          : "db.local.lyon_statut_note",
+                      )}
+                    </p>
+                  )}
+                  <p className="db-p-zoom-pct-line tnum">
+                    <b>{Math.round((localShare.share ?? 0) * 100)} %</b>{" "}
                     {locale === "en"
                       ? "of your contribution"
                       : "de ta contribution"}
@@ -2450,7 +1915,13 @@ export default function DailyBreadClient({
 
                 <BarList
                   items={localLevels.map((l) => ({
-                    name: locale === "en" ? l.label_en : l.label_fr,
+                    key: l.key,
+                    // Label personnalisé selon la commune (Fix 2) — fallback
+                    // sur le label OFGL générique si la map ne couvre pas
+                    // la clé (par sécurité — ne devrait pas arriver).
+                    name:
+                      personalLabelByKey[l.key] ??
+                      (locale === "en" ? l.label_en : l.label_fr),
                     monthly: l.monthly_eur,
                     share: l.share_of_local,
                     sub:
@@ -2462,153 +1933,14 @@ export default function DailyBreadClient({
                   }))}
                   color="c-local"
                   locale={locale}
+                  // Bloc communal reste passif (le DeepDive juste en dessous
+                  // ouvre les 9 fonctions cliquables). Dept et Région ouvrent
+                  // leur 1re fonction (porte d'entrée vers le scope OFGL).
+                  clickableUrls={localLevelsUrls}
                 />
               </div>
 
-              {deepdiveLocal.length > 0 && blocCommunalMonthly > 0 && (
-                <DailyBreadDeepDive
-                  eyebrow={t("db.deepdive.eyebrow_du")}
-                  title={
-                    commune?.nom
-                      ? `Bloc communal · ${commune.nom}`
-                      : t("db.deepdive.local.title")
-                  }
-                  amountMonthly={blocCommunalMonthly}
-                  meta={
-                    communeFoncEntry
-                      ? `DGFiP balance comptable ${communeFonc?.year ?? 2024} · ${commune?.nom}`
-                      : t("db.deepdive.local.meta")
-                  }
-                  items={deepdiveLocal.map((x) => {
-                    // Si l'entrée vient du seed national, on a une clé i18n
-                    // (ex `db.deepdive.local.administration_generale`).
-                    // Si elle vient de la fonctionnelle DGFiP par INSEE, le
-                    // label_fr est déjà rempli depuis FONCTION_LABELS.
-                    const i18nKey = `db.deepdive.local.${x.key}`;
-                    const tr = t(i18nKey);
-                    const useTr = tr && tr !== i18nKey;
-                    return {
-                      ...x,
-                      label_fr: useTr ? tr : x.label_fr,
-                      label_en: useTr ? tr : x.label_en,
-                    };
-                  })}
-                  color="c-local"
-                  // F-codes DGFiP communaux mappés vers les libellés OFGL
-                  // d'Agent P (cf. LOCAL_FONCTIONNELLE_ALIAS).
-                  clickableUrls={localFonctionnelleUrls}
-                  asides={[
-                    {
-                      num: t("db.deepdive.aside.local1.num"),
-                      numEm: t("db.deepdive.aside.local1.num_em"),
-                      text: t("db.deepdive.aside.local1.text"),
-                      source: t("db.deepdive.aside.local1.source"),
-                    },
-                    {
-                      num: t("db.deepdive.aside.local2.num"),
-                      numEm: t("db.deepdive.aside.local2.num_em"),
-                      text: t("db.deepdive.aside.local2.text"),
-                      source: t("db.deepdive.aside.local2.source"),
-                    },
-                    {
-                      num: t("db.deepdive.aside.local3.num"),
-                      numEm: t("db.deepdive.aside.local3.num_em"),
-                      text: t("db.deepdive.aside.local3.text"),
-                      source: t("db.deepdive.aside.local3.source"),
-                    },
-                  ]}
-                  locale={locale}
-                />
-              )}
-
-              {deepdiveDepartement.length > 0 && departementMonthly > 0 && (
-                <DailyBreadDeepDive
-                  eyebrow={t("db.deepdive.eyebrow_du")}
-                  title={
-                    commune?.dep_name
-                      ? `Département · ${commune.dep_name}`
-                      : t("db.deepdive.departement.title")
-                  }
-                  amountMonthly={departementMonthly}
-                  meta={
-                    departementSpecific && deptFonc
-                      ? `OFGL fonctionnelle ${deptFonc.year} · ${departementSpecific.entry.nom}`
-                      : t("db.deepdive.departement.meta")
-                  }
-                  items={deepdiveDepartement.map((x) => ({
-                    ...x,
-                    label_fr: t(`db.deepdive.departement.${x.key}`),
-                    label_en: t(`db.deepdive.departement.${x.key}`),
-                  }))}
-                  color="c-local"
-                  // OFGL départemental : decomposition différente d'Agent P
-                  // (qui couvre seulement le bloc communal). Drill non câblé.
-                  asides={[
-                    {
-                      num: t("db.deepdive.aside.departement1.num"),
-                      numEm: t("db.deepdive.aside.departement1.num_em"),
-                      text: t("db.deepdive.aside.departement1.text"),
-                      source: t("db.deepdive.aside.departement1.source"),
-                    },
-                    {
-                      num: t("db.deepdive.aside.departement2.num"),
-                      numEm: t("db.deepdive.aside.departement2.num_em"),
-                      text: t("db.deepdive.aside.departement2.text"),
-                      source: t("db.deepdive.aside.departement2.source"),
-                    },
-                    {
-                      num: t("db.deepdive.aside.departement3.num"),
-                      numEm: t("db.deepdive.aside.departement3.num_em"),
-                      text: t("db.deepdive.aside.departement3.text"),
-                      source: t("db.deepdive.aside.departement3.source"),
-                    },
-                  ]}
-                  locale={locale}
-                />
-              )}
-
-              {deepdiveRegion.length > 0 && regionMonthly > 0 && (
-                <DailyBreadDeepDive
-                  eyebrow={t("db.deepdive.eyebrow_de_la")}
-                  title={
-                    commune?.reg_name
-                      ? `Région · ${commune.reg_name}`
-                      : t("db.deepdive.region.title")
-                  }
-                  amountMonthly={regionMonthly}
-                  meta={t("db.deepdive.region.meta")}
-                  items={deepdiveRegion.map((x) => ({
-                    ...x,
-                    label_fr: t(`db.deepdive.region.${x.key}`),
-                    label_en: t(`db.deepdive.region.${x.key}`),
-                  }))}
-                  color="c-local"
-                  // OFGL régional : decomposition différente d'Agent P. Idem.
-                  asides={[
-                    {
-                      num: t("db.deepdive.aside.region1.num"),
-                      numEm: t("db.deepdive.aside.region1.num_em"),
-                      text: t("db.deepdive.aside.region1.text"),
-                      source: t("db.deepdive.aside.region1.source"),
-                    },
-                    {
-                      num: t("db.deepdive.aside.region2.num"),
-                      numEm: t("db.deepdive.aside.region2.num_em"),
-                      text: t("db.deepdive.aside.region2.text"),
-                      source: t("db.deepdive.aside.region2.source"),
-                    },
-                    {
-                      num: t("db.deepdive.aside.region3.num"),
-                      numEm: t("db.deepdive.aside.region3.num_em"),
-                      text: t("db.deepdive.aside.region3.text"),
-                      source: t("db.deepdive.aside.region3.source"),
-                    },
-                  ]}
-                  locale={locale}
-                />
-              )}
-
-              {/* MACRO → MICRO : pour Paris (et plus tard d'autres villes du portail détaillé), passerelle vers les pages où l'on peut voir QUI reçoit quel euro. */}
+                                                        {/* MACRO → MICRO : pour Paris (et plus tard d'autres villes du portail détaillé), passerelle vers les pages où l'on peut voir QUI reçoit quel euro. */}
               {commune?.slug === "paris" && (
                 <div className="db-macro-to-micro">
                   <div className="db-macro-to-micro-head">
@@ -2732,7 +2064,8 @@ export default function DailyBreadClient({
               <p className="db-panel-foot-cue">{t("db.local.foot_cue")}</p>
             </div>
           </section>
-        )}
+          );
+        })()}
 
         {/* ── PANNEAU 6 — Vue par mission ── */}
         {cofogShares.length > 0 && (
@@ -2837,9 +2170,13 @@ export default function DailyBreadClient({
             className={`db-panel db-p-end db-panel-fade${panel6Revealed ? " is-revealed" : ""}`}
           >
             <div className="db-panel-wrap">
-              <p className="db-panel-num">
-                <em>07</em> · {t("db.end.num")}
-              </p>
+              {/* Top: eyebrow + share global row */}
+              <div className="db-p-end-head">
+                <p className="db-panel-num">
+                  <em>07</em> · {t("db.end.num")}
+                </p>
+                <DailyBreadShareActions locale={locale} />
+              </div>
 
               <h2 className="db-p-end-q">
                 {t("db.end.q_a").replace(
@@ -2850,31 +2187,41 @@ export default function DailyBreadClient({
               </h2>
               <p className="db-p-end-deck">{t("db.end.deck")}</p>
 
-              <div className="db-p-end-grid">
-                {equivalents.slice(0, 5).map((eq, i) => (
-                  <div key={i} className="db-p-end-item">
-                    <p className="db-p-end-item-tag">
-                      {locale === "en" ? eq.tagEn : eq.tagFr}
-                    </p>
-                    <p className="db-p-end-item-headline tnum">
-                      {eq.headline}
-                    </p>
-                    <p className="db-p-end-item-unit">
-                      {locale === "en" ? eq.unitEn : eq.unitFr}
-                    </p>
-                    <p className="db-p-end-item-amt tnum">
-                      {fmtEur(eq.amount, locale, 0)} €{" "}
-                      <span className="lite">{eq.sub}</span>
-                    </p>
-                  </div>
-                ))}
+              <div className="db-p-end-cards-grid">
+                {equivalents
+                  .slice(0, 5)
+                  .slice()
+                  .sort((a, b) => b.amount - a.amount)
+                  .map((eq, i) => {
+                    const Picto = getPictoForKey(eq.key);
+                    const caption = locale === "en" ? eq.unitEn : eq.unitFr;
+                    const via = locale === "en" ? eq.viaEn : eq.viaFr;
+                    const number = eq.headline;
+                    const amountLabel = `${fmtEur(eq.amount, locale, 0)} €`;
+                    const shareText = t("db.end.share_card_text")
+                      .replace("{monthly}", fmtEur(totalMonthly, locale, 0))
+                      .replace("{number}", number)
+                      .replace("{caption}", caption)
+                      .replace("{via}", via);
+                    return (
+                      <DailyBreadEquivalentCard
+                        key={eq.key}
+                        picto={Picto}
+                        pictoColor={eq.institution}
+                        number={number}
+                        caption={caption}
+                        via={via}
+                        amountLabel={amountLabel}
+                        shareText={shareText}
+                        revealDelayMs={i * 80}
+                      />
+                    );
+                  })}
               </div>
-
-              <DailyBreadShareActions locale={locale} />
 
               <div className="db-p-end-foot">
                 <span>
-                  Sources :{" "}
+                  {t("db.end.sources_label")} :{" "}
                   <a
                     href="https://www.urssaf.fr/portail/home/taux-et-baremes/taux-de-cotisations.html"
                     target="_blank"
@@ -2884,7 +2231,7 @@ export default function DailyBreadClient({
                   </a>{" "}
                   ·{" "}
                   <a
-                    href="https://www.impots.gouv.fr/particulier/calcul-de-limpot-sur-le-revenu"
+                    href="https://www.legifrance.gouv.fr/codes/texte_lc/LEGITEXT000006069577/"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -3165,153 +2512,6 @@ function DailyBreadShareActions({ locale }: { locale: string }) {
 }
 
 // ─── DeepDive sub-component ─────────────────────────────────────────────
-
-type DeepDiveColor = "c-secu" | "c-etat" | "c-local";
-
-const DEEPDIVE_PALETTES: Record<DeepDiveColor, string[]> = {
-  // 5 nuances bleu Sécu (ONDAM)
-  "c-secu": ["#0451d6", "#1a64db", "#4078e0", "#6a8de6", "#93a8ec"],
-  // 4 nuances gris État
-  "c-etat": ["#1a1d26", "#2a2f38", "#4a4f58", "#6a6f78"],
-  // 9 nuances ocre Local
-  "c-local": [
-    "#c98215", "#b87410", "#d8943a", "#c98215", "#d8a060",
-    "#b88848", "#d8b078", "#c89858", "#e0c098",
-  ],
-};
-
-function DailyBreadDeepDive({
-  eyebrow,
-  title,
-  amountMonthly,
-  meta,
-  items,
-  color,
-  asides,
-  locale,
-  defaultOpen = false,
-  clickableUrls,
-}: {
-  eyebrow: string;
-  title: string;
-  amountMonthly: number;
-  meta: string;
-  items: DeepDiveStackEntry[];
-  color: DeepDiveColor;
-  asides: Array<{ num: string; numEm: string; text: string; source: string }>;
-  locale: string;
-  defaultOpen?: boolean;
-  /** Map row.key → URL absolue de drill-down. Une row n'est cliquable que si
-   *  sa key est présente dans la map. La résolution alias / niveau 2 vs 3
-   *  vit en amont (côté DailyBreadClient) — c'est là qu'on connaît le contrat
-   *  drilldown.json + les conventions de naming spécifiques par bucket. */
-  clickableUrls?: Map<string, string>;
-}) {
-  const t = useT();
-  const palette = DEEPDIVE_PALETTES[color];
-  const totalShare = items.reduce((acc, x) => acc + x.share, 0) || 1;
-  return (
-    <details
-      className={`db-p-zoom-deepdive ${color}`}
-      open={defaultOpen || undefined}
-    >
-      <summary className="db-p-zoom-deepdive-head">
-        <div>
-          <p className="db-p-zoom-deepdive-eyebrow">{eyebrow}</p>
-          <h3 className="db-p-zoom-deepdive-title">
-            {title} ·{" "}
-            <em>
-              {fmtEur(amountMonthly, locale, 0)} €/{locale === "en" ? "mo" : "mois"}
-            </em>
-          </h3>
-        </div>
-        <div className="db-p-zoom-deepdive-meta">
-          <span className="db-p-zoom-deepdive-meta-text">{meta}</span>
-          <span aria-hidden className="db-p-zoom-deepdive-chevron">↓</span>
-        </div>
-      </summary>
-
-      <div className="db-p-zoom-deepdive-body">
-        <div className="db-p-zoom-deepdive-grid">
-          <div className="db-p-zoom-deepdive-stack-wrap">
-            <div className="db-p-zoom-deepdive-stack">
-              {items.map((it, i) => {
-                const flex = (it.share / totalShare) * 100;
-                const bg = palette[i % palette.length];
-                const showAmt = it.share >= 0.07;
-                return (
-                  <div key={it.key} style={{ background: bg, flex }}>
-                    <div className="db-p-zoom-deepdive-stack-pct">
-                      {Math.round(it.share * 100)} %
-                    </div>
-                    <div className="db-p-zoom-deepdive-stack-name">
-                      {locale === "en" ? it.label_en : it.label_fr}
-                    </div>
-                    {showAmt && (
-                      <div className="db-p-zoom-deepdive-stack-amt">
-                        {fmtEur(it.monthly_eur, locale, 0)} €
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-            <div className="db-p-zoom-deepdive-legend">
-              {items.map((it, i) => {
-                const bg = palette[i % palette.length];
-                const label = locale === "en" ? it.label_en : it.label_fr;
-                const url = clickableUrls?.get(it.key);
-                if (url) {
-                  // Link + scroll={false} pour déclencher l'intercept slot
-                  // (cf. BarList — router.push casse l'intercept).
-                  return (
-                    <Link
-                      key={it.key}
-                      href={url}
-                      scroll={false}
-                      prefetch={false}
-                      className="db-p-zoom-deepdive-legend-item db-p-zoom-deepdive-legend-item-clickable"
-                      aria-label={t("db.drilldown.row_open_aria").replace(
-                        "{label}",
-                        label,
-                      )}
-                    >
-                      <i style={{ background: bg }} />
-                      <span>{label}</span>
-                      <b className="tnum">{fmtEur(it.monthly_eur, locale, 0)} €</b>
-                      <span aria-hidden className="db-p-zoom-deepdive-legend-chevron">
-                        →
-                      </span>
-                    </Link>
-                  );
-                }
-                return (
-                  <span key={it.key} className="db-p-zoom-deepdive-legend-item">
-                    <i style={{ background: bg }} />
-                    <span>{label}</span>
-                    <b className="tnum">{fmtEur(it.monthly_eur, locale, 0)} €</b>
-                  </span>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="db-p-zoom-deepdive-asides">
-            {asides.map((a, i) => (
-              <div key={i} className={`db-p-zoom-deepdive-aside ${color}`}>
-                <p className="db-p-zoom-deepdive-aside-num">
-                  {a.num} <em>{a.numEm}</em>
-                </p>
-                <p className="db-p-zoom-deepdive-aside-text">{a.text}</p>
-                <span className="db-p-zoom-deepdive-aside-source">{a.source}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </details>
-  );
-}
 
 // ─── BarList sub-component ─────────────────────────────────────────────
 

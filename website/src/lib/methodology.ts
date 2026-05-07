@@ -59,6 +59,28 @@ export const PARIS_POPULATION = num(M.city.paris_population);
 export const PARIS_SUPERFICIE_KM2 = num(M.city.paris_superficie_km2);
 export const PARIS_NB_ARRONDISSEMENTS = num(M.city.paris_nb_arrondissements);
 
+// Multi-city helpers (POC v1 Marseille — preparation for full refactor P2.3
+// where seed_city_constants moves to (city_slug, key, value) shape).
+// Reads from methodology.json keys like `marseille_population`.
+export function cityPopulation(slug: string): number {
+  const key = `${slug}_population`;
+  const entry = M.city[key];
+  return entry ? num(entry) : PARIS_POPULATION; // fallback to Paris
+}
+
+export function cityNbArrondissements(slug: string): number {
+  const entry = M.city[`${slug}_nb_arrondissements`];
+  return entry ? num(entry) : PARIS_NB_ARRONDISSEMENTS;
+}
+
+// Detect city from Next.js pathname (/ville/[city]/...). Returns 'paris' for
+// root paths (Paris-rich pages live at the root for rétro-compat).
+export function citySlugFromPathname(pathname: string | null): string {
+  if (!pathname) return "paris";
+  const m = pathname.match(/^\/ville\/([^/]+)/);
+  return m ? m[1] : "paris";
+}
+
 // ─── Legal thresholds ──────────────────────────────────────────────────────
 export const CAPACITE_DESENDETTEMENT_ALERTE_ANS = num(
   M.legal_thresholds.capacite_desendettement_alerte_ans,
@@ -87,6 +109,21 @@ export function parisCrcDebtYearsFor(year: number): DebtSnapshotEntry | null {
     .filter((y) => y <= year)
     .sort((a, b) => b - a);
   return years.length > 0 ? snap[String(years[0])] : null;
+}
+
+/**
+ * Snapshot CRC city-aware. Paris dispose d'une série régulière (rapports CRC
+ * Île-de-France 2018 + 2024). Marseille n'a qu'un rapport ponctuel ("Marseille
+ * en Grand" 2024) qui n'est pas une série stress-testable → on retourne null
+ * et la section "deux lectures" disparaît silencieusement (P3.2 option a).
+ *
+ * Les futures villes pourront brancher leurs propres séries CRC ici en
+ * ajoutant un bloc `<city>_debt_snapshots` dans le seed methodology.
+ */
+export function crcDebtYearsFor(city: string, year: number): DebtSnapshotEntry | null {
+  if (city === "paris") return parisCrcDebtYearsFor(year);
+  // Pas de série CRC pour les autres villes en v1.
+  return null;
 }
 
 // ─── Full methodology object (pour affichage des métadonnées d'audit) ─────

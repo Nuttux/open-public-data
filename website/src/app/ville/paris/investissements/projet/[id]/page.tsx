@@ -61,6 +61,7 @@ export default async function ProjetPage({ params }: { params: Promise<Params> }
   return (
     <div className="theme-fusion">
       <Navbar />
+      <main id="main-content" tabIndex={-1}>
       <section className="fx-page-header">
         <div className="fx-wrap">
           <InvestBackKicker />
@@ -73,6 +74,7 @@ export default async function ProjetPage({ params }: { params: Promise<Params> }
       <div className="fx-fiche-wrap">
         <ProjetFiche projet={projet} photo={photo} />
       </div>
+      </main>
       <Footer />
     </div>
   );

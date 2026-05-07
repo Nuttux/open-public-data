@@ -4,6 +4,7 @@ import "@/app/fusion.css";
 import {
   loadBudgetIndex,
   loadBudgetPageData,
+  type VoteExecuteData,
 } from "@/lib/fusion-data";
 import { getPostsForPage } from "@/lib/page-articles";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
@@ -42,7 +43,14 @@ export default async function BudgetPage({
   const index = loadBudgetIndex("marseille");
   const d = loadBudgetPageData(requestedYear, "marseille");
   // No voteExec data for Marseille (Paris-specific reconciliation not built yet).
-  const voteExec = { years: [], summary: { totalVote: 0, totalExecute: 0, totalEcart: 0 }, byYear: [] } as unknown as Parameters<typeof BudgetClient>[0]["voteExec"];
+  // Empty stub matching the real shape — BudgetClient renders the EmptyState
+  // branch when rows is empty (no execution data available).
+  const voteExec: VoteExecuteData = {
+    comparisonYears: [],
+    forecastYears: [],
+    rows: [],
+    topEcarts: [],
+  };
   const posts = getPostsForPage("budget");
 
   return <BudgetClient index={index} d={d} voteExec={voteExec} posts={posts} />;

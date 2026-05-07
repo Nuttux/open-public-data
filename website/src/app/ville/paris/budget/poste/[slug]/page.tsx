@@ -75,6 +75,7 @@ export default async function PostePage({
   return (
     <div className="theme-fusion">
       <Navbar />
+      <main id="main-content" tabIndex={-1}>
       <section className="fx-page-header">
         <div className="fx-wrap">
           <BudgetBackKicker href={year ? `/ville/paris/budget?year=${year}` : "/ville/paris/budget"} />
@@ -89,6 +90,7 @@ export default async function PostePage({
       <div className="fx-fiche-wrap">
         <PosteFiche poste={poste} />
       </div>
+      </main>
       <Footer />
     </div>
   );

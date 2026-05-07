@@ -1,0 +1,163 @@
+{
+  "generated_at": "2026-05-02T11:14:51.881649+00:00",
+  "source": "data.gouv.fr — DECP consolidés",
+  "source_url": "https://www.data.gouv.fr/datasets/donnees-essentielles-de-la-commande-publique-consolidees-format-tabulaire/",
+  "source_resource_id": "22847056-61df-452d-837d-8b8ceadbfc52",
+  "commune": {
+    "slug": "lille",
+    "nom": "Lille",
+    "siren": "215903501"
+  },
+  "aggregates": {
+    "total_count": 1010,
+    "total_montant": 541325699,
+    "coverage_pct": 99.9,
+    "n_with_montant": 1009,
+    "duplicates_dropped": 295,
+    "outliers_dropped": 0,
+    "sentinels_dropped": 0,
+    "max_plausible_montant": 200000000,
+    "by_year": [
+      {
+        "year": 2018,
+        "montant": 37618541,
+        "count": 64
+      },
+      {
+        "year": 2019,
+        "montant": 62238675,
+        "count": 194
+      },
+      {
+        "year": 2020,
+        "montant": 74835029,
+        "count": 222
+      },
+      {
+        "year": 2021,
+        "montant": 117538274,
+        "count": 245
+      },
+      {
+        "year": 2022,
+        "montant": 108746517,
+        "count": 148
+      },
+      {
+        "year": 2023,
+        "montant": 1178226,
+        "count": 6
+      },
+      {
+        "year": 2024,
+        "montant": 87114725,
+        "count": 50
+      },
+      {
+        "year": 2025,
+        "montant": 23902938,
+        "count": 42
+      },
+      {
+        "year": 2026,
+        "montant": 28152773,
+        "count": 39
+      }
+    ],
+    "top_titulaires_window_years": 5,
+    "top_titulaires": [
+      {
+        "id": "55204695503377",
+        "nom": "ENGIE ENERGIE SERVICES (AGENCE NORD PAS DE CALAIS)",
+        "montant": 40730120,
+        "count": 1
+      },
+      {
+        "id": "44307909000017",
+        "nom": "PROLAIDIS",
+        "montant": 40000000,
+        "count": 4
+      },
+      {
+        "id": "84367054800059",
+        "nom": "SYMBIEAU TECH",
+        "montant": 22576765,
+        "count": 1
+      },
+      {
+        "id": "39337406100025",
+        "nom": "FRANCE ENVIRONNEMENT",
+        "montant": 20000000,
+        "count": 1
+      },
+      {
+        "id": "88138080200028",
+        "nom": "TRAVEE",
+        "montant": 18000000,
+        "count": 1
+      },
+      {
+        "id": "34902695500360",
+        "nom": "SPIE BATIGNOLLES NORD (KARPINSKI)",
+        "montant": 9356689,
+        "count": 5
+      },
+      {
+        "id": "33059904400022",
+        "nom": "SARL SODEWAL",
+        "montant": 7000000,
+        "count": 2
+      },
+      {
+        "id": "32623363200040",
+        "nom": "LUDINA FRANCE SARL",
+        "montant": 6250000,
+        "count": 2
+      },
+      {
+        "id": "31109848700300",
+        "nom": "SOCIETE-MISSENARD QUINT B",
+        "montant": 6017980,
+        "count": 2
+      },
+      {
+        "id": "48276417200078",
+        "nom": "VECCIA SECURITE",
+        "montant": 5634922,
+        "count": 3
+      },
+      {
+        "id": "43961977600024",
+        "nom": "METROPOLE CONSTRUCTION",
+        "montant": 5532753,
+        "count": 5
+      },
+      {
+        "id": "80133952400010",
+        "nom": "SAEM (SAEM ENERGIES)",
+        "montant": 5481325,
+        "count": 1
+      },
+      {
+        "id": "32029116400012",
+        "nom": "LOISON",
+        "montant": 5347892,
+        "count": 5
+      },
+      {
+        "id": "44595007400333",
+        "nom": "RAMERY CONSTRUCTION",
+        "montant": 5150533,
+        "count": 2
+      },
+      {
+        "id": "52886273300037",
+        "nom": "SANTERNE NORD TERTIAIRE (SANTERNE AERONAUTIQUE ET DEFENSE)",
+        "montant": 5064990,
+        "count": 2
+      }
+    ]
+  },
+  "notes_fr": "Marchés publics filtrés par SIREN acheteur (215903501). Couverture estimée de la qualité montant : 99.9% des marchés ont un montant non-nul renseigné. La DECP au national est connue pour avoir une qualité variable selon les acheteurs ; les chiffres ci-dessous sont bruts, non corrigés.",
+  "notes_en": "Public procurement filtered by buyer SIREN (215903501). Estimated quality coverage: 99.9% of contracts have a non-zero amount. DECP is known for variable quality across buyers; numbers below are raw, unadjusted."
+}

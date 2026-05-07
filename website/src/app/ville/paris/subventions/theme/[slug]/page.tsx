@@ -55,6 +55,7 @@ export default async function ThemePage({ params }: { params: Promise<Params> })
   return (
     <div className="theme-fusion">
       <Navbar />
+      <main id="main-content" tabIndex={-1}>
       <section className="fx-page-header">
         <div className="fx-wrap">
           <SubventionsBackKicker />
@@ -69,6 +70,7 @@ export default async function ThemePage({ params }: { params: Promise<Params> })
       <div className="fx-fiche-wrap">
         <ThemeFiche fiche={fiche} />
       </div>
+      </main>
       <Footer />
     </div>
   );

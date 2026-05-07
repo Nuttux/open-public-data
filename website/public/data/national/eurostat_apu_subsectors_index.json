@@ -1,0 +1,9 @@
+{
+  "available_years": [
+    2025
+  ],
+  "latest_year": 2025,
+  "source": "Eurostat — gov_10a_main",
+  "source_url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_main/default/table",
+  "fetched_at": "2026-05-07T17:47:50.728436+00:00"
+}

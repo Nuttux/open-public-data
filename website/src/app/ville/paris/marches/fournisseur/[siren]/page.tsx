@@ -57,6 +57,7 @@ export default async function FournisseurPage({ params }: { params: Promise<Para
   return (
     <div className="theme-fusion">
       <Navbar />
+      <main id="main-content" tabIndex={-1}>
       <section className="fx-page-header">
         <div className="fx-wrap">
           <MarchesBackKicker />
@@ -73,6 +74,7 @@ export default async function FournisseurPage({ params }: { params: Promise<Para
       <div className="fx-fiche-wrap">
         <FournisseurFiche fournisseur={fournisseur} sirene={sirene} />
       </div>
+      </main>
       <Footer />
     </div>
   );

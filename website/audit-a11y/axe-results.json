@@ -1,0 +1,114 @@
+[
+  {
+    "page": "landing",
+    "viewport": "desktop",
+    "url": "http://localhost:3000/",
+    "screenshot": "/Users/daniel/code/open-public-data/website/audit-a11y/screenshots/landing-desktop-before.png",
+    "counts": {
+      "total": 0,
+      "critical": 0,
+      "serious": 0,
+      "moderate": 0,
+      "minor": 0
+    },
+    "violations": []
+  },
+  {
+    "page": "landing",
+    "viewport": "mobile",
+    "url": "http://localhost:3000/",
+    "screenshot": "/Users/daniel/code/open-public-data/website/audit-a11y/screenshots/landing-mobile-before.png",
+    "counts": {
+      "total": 0,
+      "critical": 0,
+      "serious": 0,
+      "moderate": 0,
+      "minor": 0
+    },
+    "violations": []
+  },
+  {
+    "page": "qui-recoit",
+    "viewport": "desktop",
+    "url": "http://localhost:3000/qui-recoit",
+    "screenshot": "/Users/daniel/code/open-public-data/website/audit-a11y/screenshots/qui-recoit-desktop-before.png",
+    "counts": {
+      "total": 0,
+      "critical": 0,
+      "serious": 0,
+      "moderate": 0,
+      "minor": 0
+    },
+    "violations": []
+  },
+  {
+    "page": "qui-recoit",
+    "viewport": "mobile",
+    "url": "http://localhost:3000/qui-recoit",
+    "screenshot": "/Users/daniel/code/open-public-data/website/audit-a11y/screenshots/qui-recoit-mobile-before.png",
+    "counts": {
+      "total": 0,
+      "critical": 0,
+      "serious": 0,
+      "moderate": 0,
+      "minor": 0
+    },
+    "violations": []
+  },
+  {
+    "page": "marches-publics",
+    "viewport": "desktop",
+    "url": "http://localhost:3000/marches-publics",
+    "screenshot": "/Users/daniel/code/open-public-data/website/audit-a11y/screenshots/marches-publics-desktop-before.png",
+    "counts": {
+      "total": 0,
+      "critical": 0,
+      "serious": 0,
+      "moderate": 0,
+      "minor": 0
+    },
+    "violations": []
+  },
+  {
+    "page": "marches-publics",
+    "viewport": "mobile",
+    "url": "http://localhost:3000/marches-publics",
+    "screenshot": "/Users/daniel/code/open-public-data/website/audit-a11y/screenshots/marches-publics-mobile-before.png",
+    "counts": {
+      "total": 0,
+      "critical": 0,
+      "serious": 0,
+      "moderate": 0,
+      "minor": 0
+    },
+    "violations": []
+  },
+  {
+    "page": "methode",
+    "viewport": "desktop",
+    "url": "http://localhost:3000/methode",
+    "screenshot": "/Users/daniel/code/open-public-data/website/audit-a11y/screenshots/methode-desktop-before.png",
+    "counts": {
+      "total": 0,
+      "critical": 0,
+      "serious": 0,
+      "moderate": 0,
+      "minor": 0
+    },
+    "violations": []
+  },
+  {
+    "page": "methode",
+    "viewport": "mobile",
+    "url": "http://localhost:3000/methode",
+    "screenshot": "/Users/daniel/code/open-public-data/website/audit-a11y/screenshots/methode-mobile-before.png",
+    "counts": {
+      "total": 0,
+      "critical": 0,
+      "serious": 0,
+      "moderate": 0,
+      "minor": 0
+    },
+    "violations": []
+  }
+]

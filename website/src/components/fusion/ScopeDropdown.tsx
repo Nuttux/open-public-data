@@ -19,15 +19,6 @@ type Props = {
   variant?: Variant;
 };
 
-const FRANCE_PAGES = [
-  { href: "/france", labelKey: "fx.scope.france.apu" },
-  { href: "/france/etat", labelKey: "fx.scope.france.etat" },
-  { href: "/france/dette", labelKey: "fx.scope.france.dette" },
-  { href: "/france/fiscalite", labelKey: "fx.scope.france.fiscalite" },
-  { href: "/comparer", labelKey: "fx.scope.france.comparer" },
-  { href: "/ville/paris/daily-bread", labelKey: "fx.scope.france.daily_bread" },
-];
-
 export default function ScopeDropdown({ variant = "nav" }: Props) {
   const [open, setOpen] = useState(false);
   const wrapRef = useRef<HTMLSpanElement>(null);
@@ -60,7 +51,11 @@ export default function ScopeDropdown({ variant = "nav" }: Props) {
   const cities = listCities();
   const otherCities = cities.filter((c) => c.slug !== "paris");
 
-  const isOnFrance = FRANCE_PAGES.some((p) => pathname === p.href);
+  // National scope: any /france/* page or the Daily Bread tool (national).
+  const isOnFrance =
+    pathname === "/france" ||
+    pathname.startsWith("/france/") ||
+    /^\/ville\/[^/]+\/daily-bread(\/|$)/.test(pathname);
   const cityMatch = pathname.startsWith("/ville/")
     ? cities.find((c) => pathname === `/ville/${c.slug}`)
     : undefined;
@@ -96,19 +91,18 @@ export default function ScopeDropdown({ variant = "nav" }: Props) {
       </button>
       {open && (
         <div className="fx-scope-menu" role="menu">
-          {/* Paris (rich pages at root) ────────────────────────────── */}
-          <div className="fx-sm-head">{t("fx.scope.heading")}</div>
+          {/* France (national scope) — top entry, lands on /france/budget. */}
           <Link
-            className={`fx-sm-item ${isOnParisRich ? "fx-sm-active" : ""}`}
-            href="/"
+            className={`fx-sm-item ${isOnFrance ? "fx-sm-active" : ""}`}
+            href="/france/budget"
             role="menuitem"
-            onClick={() => handleNav("/")}
+            onClick={() => handleNav("/france/budget")}
           >
-            <span>Paris</span>
-            {isOnParisRich && <span className="fx-sm-check" aria-hidden="true">✓</span>}
+            <span>{t("fx.scope.france")}</span>
+            {isOnFrance && <span className="fx-sm-check" aria-hidden="true">✓</span>}
           </Link>
 
-          {/* Cross-link to global search for any of the 35 000 communes */}
+          {/* Search any of the 35 000 communes */}
           <button
             type="button"
             className="fx-sm-item fx-sm-action"
@@ -122,7 +116,18 @@ export default function ScopeDropdown({ variant = "nav" }: Props) {
             <span className="fx-sm-tag">35 000+</span>
           </button>
 
-          {/* Other registered cities (V2 placeholders) ─────────────── */}
+          {/* Paris (exhaustive city) ─────────────────────────────────── */}
+          <Link
+            className={`fx-sm-item ${isOnParisRich ? "fx-sm-active" : ""}`}
+            href="/"
+            role="menuitem"
+            onClick={() => handleNav("/")}
+          >
+            <span>Paris</span>
+            {isOnParisRich && <span className="fx-sm-check" aria-hidden="true">✓</span>}
+          </Link>
+
+          {/* Other principal cities (V2 placeholders) ───────────────── */}
           {otherCities.map((c) => {
             const isActive = cityMatch?.slug === c.slug;
             return (
@@ -139,25 +144,6 @@ export default function ScopeDropdown({ variant = "nav" }: Props) {
                 ) : (
                   <span className="fx-sm-tag">{t("fx.scope.tag.v2")}</span>
                 )}
-              </Link>
-            );
-          })}
-
-          {/* France macro pages ─────────────────────────────────────── */}
-          <div className="fx-sm-sep" />
-          <div className="fx-sm-head">{t("fx.scope.heading.france")}</div>
-          {FRANCE_PAGES.map((p) => {
-            const isActive = pathname === p.href;
-            return (
-              <Link
-                key={p.href}
-                className={`fx-sm-item ${isActive ? "fx-sm-active" : ""}`}
-                href={p.href}
-                role="menuitem"
-                onClick={() => handleNav(p.href)}
-              >
-                <span>{t(p.labelKey)}</span>
-                {isActive && <span className="fx-sm-check" aria-hidden="true">✓</span>}
               </Link>
             );
           })}

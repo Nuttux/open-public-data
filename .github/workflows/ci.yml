@@ -1,0 +1,83 @@
+name: CI
+
+# MVP CI gate for PRs targeting `main` and pushes to `main`.
+# Three jobs run in parallel — keep total wall time ≲ 5 min.
+#
+# Today's scope:
+#   - website: lint + typecheck + production build
+#   - pipeline: Python syntax check on all scripts (proxy for "no typo got
+#     committed"; real dbt tests need BigQuery credentials → not in MVP)
+#
+# Future (cf docs/data-platform/05-tests-prio.md):
+#   - unit tests on website/src/lib (top-5 prio listed there)
+#   - dbt build on a sample DuckDB profile
+#   - Playwright e2e on /budget, /qui-recoit, /marches-publics
+
+on:
+  pull_request:
+    branches: [main, test]
+  push:
+    branches: [main, test]
+
+# Cancel in-flight runs on the same ref when a new commit is pushed.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  website:
+    name: Website (lint + typecheck + build)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: website
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: website/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build
+        env:
+          # next build reads .env.local in dev; in CI we have no secrets, but
+          # we still want the build to succeed without them. Pages that need
+          # runtime env (chat API, OG renderer with API keys) tolerate missing
+          # vars at build time — only fail at request time.
+          NEXT_TELEMETRY_DISABLED: "1"
+
+  pipeline-python:
+    name: Pipeline (Python syntax)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # We don't install pipeline deps (BigQuery, dbt, pdfplumber, …) here —
+      # syntax check via py_compile catches the regression class we care about
+      # most for a fast PR gate (typo, broken import statement, indentation).
+      # Real test runs require BigQuery credentials and live in a separate
+      # workflow (`enrich-pipeline.yml`).
+      - name: Python syntax check
+        run: python -m compileall -q pipeline/scripts/

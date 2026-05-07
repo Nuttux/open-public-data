@@ -280,6 +280,21 @@ def main() -> int:
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
 
+    # ─ Cross-cutting themes (Stage 2C+2D) ────────────────────────────────
+    # Dépend de daily_bread_drilldown.json qu'on vient d'écrire — on
+    # chaîne ici plutôt que dans run_enrichment.py (qui est LLM-only).
+    try:
+        from build_cross_cutting_themes import main as build_cct_main
+        print()
+        print("=" * 60)
+        print("Cross-cutting themes (Sante / Education / Solidarite)")
+        print("=" * 60)
+        cct_rc = build_cct_main()
+        if cct_rc != 0:
+            print("[WARN] cross-cutting themes build returned non-zero")
+    except Exception as exc:  # pragma: no cover — diagnostic
+        print(f"[WARN] cross-cutting themes build skipped: {exc}")
+
     # Summary
     print()
     for name, bucket in payload["buckets"].items():

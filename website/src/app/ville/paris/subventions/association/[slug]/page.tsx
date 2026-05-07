@@ -51,6 +51,7 @@ export default async function AssociationPage({ params }: { params: Promise<Para
   return (
     <div className="theme-fusion">
       <Navbar />
+      <main id="main-content" tabIndex={-1}>
       <section className="fx-page-header">
         <div className="fx-wrap">
           <AssoPageHeader
@@ -68,6 +69,7 @@ export default async function AssociationPage({ params }: { params: Promise<Para
       <div className="fx-fiche-wrap">
         <AssociationFiche asso={asso} vulgarization={vulgarization} grounded={grounded} />
       </div>
+      </main>
       <Footer />
     </div>
   );
