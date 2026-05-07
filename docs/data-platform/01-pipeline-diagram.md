@@ -3,13 +3,104 @@
 > Companion docs: [02-catalog-and-model.md](./02-catalog-and-model.md) · [03-quality-monitoring.md](./03-quality-monitoring.md)
 > Existing adjacent docs (trackers, not catalogs): [../data-quality.md](../data-quality.md) · [../architecture-modelling.md](../architecture-modelling.md)
 
-This document is the **topological map** of the Open Data Paris data platform: every external source → every ingestion script → every dbt layer (staging → core → intermediate → mart) → every exported JSON → every UI page that consumes it.
+This document is the **topological map** de la data platform : chaque source → chaque ingest → chaque couche dbt → chaque JSON exporté → chaque page UI.
 
-We use several Mermaid graphs. A single graph for the whole platform becomes unreadable (~40 scripts, ~30 dbt models, ~140 JSON files, 8 UI pages), so we split by domain. Section [§0](#0-master-overview) is the high-level overview; sections [§1](#1-budget-domain)–[§6](#6-balancesheet--debt-domain) are the zoomed-in per-domain pipelines.
+**Trois niveaux de zoom**, du conceptuel au détail :
+
+- [§0a — L0 conceptual view](#0a-l0--conceptual-view) : 8 boîtes, vue d'ensemble en une lecture
+- [§0b — L1 master overview](#0b-l1--master-overview) : tous les scripts/marts/JSONs nommés (page dense, pour cherche-rapide)
+- [§1](#1-budget-domain)–[§9](#9-national--comparative-benchmark-domain-partial) : L1 par domaine (un par diagramme)
+- **L2** : `dbt docs generate && dbt docs serve` ouvre le lineage natif au modèle près
 
 ---
 
-## 0. Master overview
+## 0a. L0 — Vue conceptuelle
+
+Le pipeline transforme des **sources publiques** (OpenData Paris, data.gouv.fr, PDFs CDN, scrape Conseil de Paris, enrichissements LLM) en **fichiers JSON** servis par un site Next.js. Trois couches simples :
+
+```mermaid
+flowchart LR
+    SRC["🌐 Sources publiques<br/><i>~10 jeux de données externes</i>"]
+    PROD["⚙️ Pipeline de production<br/><i>nettoie · joint · agrège</i>"]
+    OUT["📦 Fichiers publiés<br/><i>~140 JSONs sous /data/</i>"]
+    UI["🖥️ Site web<br/><i>8 pages — opendata-paris.fr</i>"]
+
+    SRC --> PROD --> OUT --> UI
+
+    classDef src fill:#dbeafe,stroke:#1e40af,color:#111
+    classDef prod fill:#fef3c7,stroke:#92400e,color:#111
+    classDef out fill:#ffedd5,stroke:#9a3412,color:#111
+    classDef ui fill:#ccfbf1,stroke:#115e59,color:#111
+    class SRC src
+    class PROD prod
+    class OUT out
+    class UI ui
+```
+
+### Règles invariantes
+
+1. **Aucune donnée affichée n'est produite hors du pipeline.** Tout chiffre visible dans l'UI vient d'un fichier sous `website/public/data/`, lui-même généré par un script `export_*.py` qui lit BigQuery. Pas de chemin direct.
+2. **Le pipeline est traçable bout-en-bout.** Chaque chiffre doit pouvoir être suivi du JSON publié → mart BigQuery → modèle dbt → table source brute → script d'ingest → URL OpenData externe.
+3. **L'audit est automatisé** (cf. [04-layering-convention.md](./04-layering-convention.md)). Une PR qui violerait la chaîne ci-dessus est refusée par CI.
+
+### Ce qui se passe dans « Pipeline de production »
+
+```mermaid
+flowchart LR
+    subgraph PIPE["⚙️ Pipeline de production (BigQuery + dbt)"]
+        direction LR
+        STG[stg<br/><i>nettoyage</i>]
+        CORE[core<br/><i>entité métier</i>]
+        MART[mart<br/><i>forme JSON</i>]
+        STG --> CORE --> MART
+    end
+    SRC["sources<br/>publiques"] -.->|sync_*.py| STG
+    MART -.->|export_*.py| OUT[".json<br/>publiés"]
+
+    classDef layer fill:#fef9c3,stroke:#a16207,color:#111
+    class STG,CORE,MART layer
+```
+
+**stg / core / mart** sont les trois couches dbt (les noms suivent la convention dbt) :
+- **stg** = chaque source nettoyée (renommage, typage, filtres triviaux). 1 stg = 1 source.
+- **core** = entité métier. Joint plusieurs stg + référentiels pour produire l'entité canonique (exemple : `core_subventions`).
+- **mart** = forme finale prête à être sérialisée en JSON pour 1 page UI.
+
+### Cas spécial : enrichissements LLM/scrape
+
+Les **vulgarisations LLM**, **lookups SIRENE**, **scrape PDF** et **photos** ne sont pas idempotents (deux runs ne donnent pas le même résultat). Ils suivent un chemin parallèle :
+
+```mermaid
+flowchart LR
+    LLM["⚙️ scripts d'enrichissement<br/>LLM · SIRENE · scrape · photos"]
+    CACHE[(pipeline/cache/<br/>JSON par fichier)]
+    BQRAW[("⚠️ BigQuery raw<br/><b>payload STRING JSON</b>")]
+    JSONOUT["public/data/enrichment/<br/>chargés au clic par l'UI"]
+
+    LLM -->|écrit| CACHE
+    CACHE -->|sync_enrichment_caches.py| BQRAW
+    BQRAW -->|export_enrichment_caches.py| JSONOUT
+
+    classDef enr fill:#fce7f3,stroke:#9d174d,color:#111
+    classDef cache fill:#f1f5f9,stroke:#475569,color:#111
+    classDef warn fill:#fee2e2,stroke:#991b1b,color:#111
+    classDef out fill:#ffedd5,stroke:#9a3412,color:#111
+    class LLM enr
+    class CACHE cache
+    class BQRAW warn
+    class JSONOUT out
+```
+
+**⚠️ Limite explicite** : la table BigQuery `raw.enrichment_caches_paris` stocke les payloads **en STRING JSON, pas en colonnes typées**. Donc :
+- BigQuery ne valide PAS la structure interne d'un payload (un champ manquant n'erreure pas).
+- Trois tests singular (`pipeline/tests/cat10_enrichment_quality/enrich_caches_*.sql`) compensent partiellement : présence des caches attendus, parsing JSON valide, champs racine `items`/`generated_at` présents.
+- Si un cache devient critique pour le first-paint UI, il doit être promu en pipeline typé (raw → stg colonnes typées → mart). Voir [ADR-0004](../decisions/0004-polymorphic-vs-typed-caches.md) pour le compromis détaillé.
+
+Pour les détails (qui produit quoi, quel mart alimente quel JSON, quel UI page consomme quoi), voir §0b et §1-§9.
+
+---
+
+## 0b. L1 — Master overview
 
 High-level shape: sources → ingest → BigQuery `raw.*` (+ seeds/caches for non-API paths) → dbt (stg → core → int → mart) → export scripts → JSON files → Next.js UI.
 
@@ -33,17 +124,30 @@ flowchart LR
         EPDF_I[extract_pdf_investments.py]
         SDEL[scrape_deliberations.py]
         UPLD[upload_bilan_comptable.py]
+        SDET[sync_dette_garantie.py]
+    end
+
+    subgraph CACHE["💾 Internal cache<br/>pipeline/cache/"]
+        CACHE_SUBV[(subventions_pre_enrichment/<br/>beneficiaires_*.json<br/>treemap_*.json)]
+        CACHE_INV[(pdf_invest/<br/>investissements_localises_*.json)]
+        CACHE_DEL[(delibs/sessions/<br/>session_*.json)]
+        CACHE_ENR[(enrichment/<br/>17 caches LLM/SIRENE/photos)]
+        CACHE_WIP[(wip/<br/>communes-all/, national/, …)]
+    end
+
+    subgraph SYNC2_BOX["⬇️ Cache → BQ (sync polymorphe)"]
+        SYNC2[sync_pdf_investissements_localises<br/>sync_deliberations<br/>sync_enrichment_caches<br/>sync_sirene_companies<br/>sync_dette_garantie]
     end
 
     subgraph BQ["🗄️ BigQuery raw.*"]
-        RAW[(raw.comptes_administratifs_*<br/>raw.subventions_*<br/>raw.liste_des_marches_*<br/>raw.decp_marches_paris<br/>raw.logements_sociaux_*<br/>raw.bilan_comptable)]
+        RAW[(raw.comptes_administratifs_*<br/>raw.subventions_*<br/>raw.liste_des_marches_*<br/>raw.decp_marches_paris<br/>raw.logements_sociaux_*<br/>raw.bilan_comptable<br/>raw.dette_garantie_paris)]
     end
 
     subgraph DBT["🧪 dbt pipeline/models"]
-        STG[staging/<br/>stg_* × 10]
-        CORE[core/<br/>core_* × 8]
-        INT[intermediate/<br/>int_* × 3]
-        MART[marts/<br/>mart_* × 13]
+        STG[staging/<br/>stg_* × 26<br/><i>tous les seeds wrappés</i>]
+        CORE[core/<br/>core_* × 12<br/><i>OBT enrichis inline</i>]
+        INT[intermediate/<br/>int_* × 1<br/><i>cross-domain post-core uniquement</i>]
+        MART[marts/<br/>mart_* × 24]
     end
 
     subgraph ENRICH["🤖 Enrichment<br/>pipeline/scripts/enrich/"]
@@ -78,27 +182,30 @@ flowchart LR
     end
 
     OD --> SYNC --> RAW
-    OD --> FSUB
+    OD --> FSUB --> CACHE_SUBV
     DGF --> FDECP --> RAW
     PDF --> EPDF_B --> SEEDS
-    PDF --> EPDF_I
-    DELIBS --> SDEL
+    PDF --> EPDF_I --> CACHE_INV
+    DELIBS --> SDEL --> CACHE_DEL
     UPLD --> RAW
     SEEDS --> STG
-    RAW --> STG --> CORE --> INT --> MART
+    RAW --> STG
+    STG --> CORE
+    CORE --> INT
     CORE --> MART
+    INT --> MART
     MART --> EXP
-    CORE -.->|some exports skip mart| EXP
-    FSUB -.->|direct API→JSON bypass| J_SUB
-    EPDF_I -.->|PDF→JSON direct| J_MAP
-    SDEL -.->|scrape→JSON direct| J_SUB
 
     SIRENE --> LLM
     WEB --> LLM
     LLM --> CACHES
     DETER --> CACHES
-    CACHES --> STG
-    CACHES --> EXP
+    CACHE_SUBV --> LLM
+    CACHE_SUBV --> DETER
+    CACHE_INV --> SYNC2
+    CACHE_DEL --> SYNC2
+    CACHES --> SYNC2
+    SYNC2 --> RAW
 
     EXP --> JSONS
     J_BUDGET --> P_LAND & P_BUD
@@ -117,20 +224,32 @@ flowchart LR
     classDef exp fill:#f3e8ff,stroke:#6b21a8,color:#111
     classDef json fill:#ffedd5,stroke:#9a3412,color:#111
     classDef ui fill:#ccfbf1,stroke:#115e59,color:#111
+    classDef cache fill:#f1f5f9,stroke:#475569,color:#111
     class OD,DGF,PDF,DELIBS,SIRENE,WEB,SEEDS src
-    class SYNC,FDECP,FSUB,EPDF_B,EPDF_I,SDEL,UPLD ing
+    class SYNC,FDECP,FSUB,EPDF_B,EPDF_I,SDEL,UPLD,SDET ing
+    class SYNC2 ing
     class RAW bq
     class STG,CORE,INT,MART dbt
     class LLM,DETER,CACHES enr
     class EXP exp
     class J_META,J_BUDGET,J_SUB,J_MARCH,J_MAP,J_BILAN,J_ENR json
     class P_LAND,P_BUD,P_QR,P_MP,P_INV,P_LOG,P_DET,P_MET ui
+    class CACHE_SUBV,CACHE_INV,CACHE_DEL,CACHE_ENR,CACHE_WIP cache
 ```
 
-**Three bypass paths worth noting** (dotted arrows above):
-- `fetch_subventions_opendata.py` goes API→JSON directly (no BigQuery round-trip) because the enrichment pipeline needs raw records.
-- `extract_pdf_investments.py` emits `map/investissements_localises_{year}.json` direct from PDF (Gemini 3 Flash vision + total-per-page reconciliation).
-- `scrape_deliberations.py` emits `subventions_delibs/session_*.json` direct from deliberation PDFs (pypdf + regex). Bridges the gap between OpenData CA (last = 2024) and the current fiscal year.
+**Layering rule and audit gate.** The shape above respects `raw → stg → core → (int) → mart → export → JSON` with **no shortcut anywhere**. Zero dotted arrows: every byte under `website/public/data/` is produced by an export script reading a `mart_*`. Audit gate: `python pipeline/scripts/audit/check_layering.py --strict` returns exit 0 with **0 violations and 0 warnings**.
+
+**Internal cache pattern (Phases 8-12 of the layering refactor).** Scripts that legitimately produce intermediate artifacts (PDF extraction, scraping, LLM enrichment, WIP exploration) write to `pipeline/cache/`, never directly to `public/data/`. A polymorphic family of `sync_*` scripts uploads each cache file to `raw.*`, dbt builds stg → core → mart, and dedicated `export_*` scripts publish the public JSONs.
+
+| Cache | Sync script | Mart | Export |
+|---|---|---|---|
+| `cache/subventions_pre_enrichment/` | (read by enrichment chain) | feeds `mart_subventions_*` via seeds | `export_subventions_data.py` |
+| `cache/pdf_invest/` | `sync_pdf_investissements_localises.py` | `mart_investissements_localises` | `export_investissements_localises.py` |
+| `cache/delibs/sessions/` | `sync_deliberations.py` | `mart_deliberations` | `export_deliberations.py` |
+| `cache/enrichment/` (17 files) | `sync_enrichment_caches.py` | `mart_enrichment_caches` (polymorphic) | `export_enrichment_caches.py` |
+| `cache/wip/` | (TBD when wired into UI) | TBD | TBD |
+
+See [04-layering-convention.md](./04-layering-convention.md) for the full convention and [_layering_refactor_tracker.md](./_layering_refactor_tracker.md) for the refactor history.
 
 **Orchestrators:**
 - Full pipeline: [pipeline/scripts/tools/run_pipeline.py](../../pipeline/scripts/tools/run_pipeline.py)

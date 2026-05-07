@@ -17,17 +17,30 @@ flowchart LR
         EPDF_I[extract_pdf_investments.py]
         SDEL[scrape_deliberations.py]
         UPLD[upload_bilan_comptable.py]
+        SDET[sync_dette_garantie.py]
+    end
+
+    subgraph CACHE["💾 Internal cache<br/>pipeline/cache/"]
+        CACHE_SUBV[(subventions_pre_enrichment/<br/>beneficiaires_*.json<br/>treemap_*.json)]
+        CACHE_INV[(pdf_invest/<br/>investissements_localises_*.json)]
+        CACHE_DEL[(delibs/sessions/<br/>session_*.json)]
+        CACHE_ENR[(enrichment/<br/>17 caches LLM/SIRENE/photos)]
+        CACHE_WIP[(wip/<br/>communes-all/, national/, …)]
+    end
+
+    subgraph SYNC2_BOX["⬇️ Cache → BQ (sync polymorphe)"]
+        SYNC2[sync_pdf_investissements_localises<br/>sync_deliberations<br/>sync_enrichment_caches<br/>sync_sirene_companies<br/>sync_dette_garantie]
     end
 
     subgraph BQ["🗄️ BigQuery raw.*"]
-        RAW[(raw.comptes_administratifs_*<br/>raw.subventions_*<br/>raw.liste_des_marches_*<br/>raw.decp_marches_paris<br/>raw.logements_sociaux_*<br/>raw.bilan_comptable)]
+        RAW[(raw.comptes_administratifs_*<br/>raw.subventions_*<br/>raw.liste_des_marches_*<br/>raw.decp_marches_paris<br/>raw.logements_sociaux_*<br/>raw.bilan_comptable<br/>raw.dette_garantie_paris)]
     end
 
     subgraph DBT["🧪 dbt pipeline/models"]
-        STG[staging/<br/>stg_* × 10]
-        CORE[core/<br/>core_* × 8]
-        INT[intermediate/<br/>int_* × 3]
-        MART[marts/<br/>mart_* × 13]
+        STG[staging/<br/>stg_* × 26<br/><i>tous les seeds wrappés</i>]
+        CORE[core/<br/>core_* × 12<br/><i>OBT enrichis inline</i>]
+        INT[intermediate/<br/>int_* × 1<br/><i>cross-domain post-core uniquement</i>]
+        MART[marts/<br/>mart_* × 24]
     end
 
     subgraph ENRICH["🤖 Enrichment<br/>pipeline/scripts/enrich/"]
@@ -62,27 +75,30 @@ flowchart LR
     end
 
     OD --> SYNC --> RAW
-    OD --> FSUB
+    OD --> FSUB --> CACHE_SUBV
     DGF --> FDECP --> RAW
     PDF --> EPDF_B --> SEEDS
-    PDF --> EPDF_I
-    DELIBS --> SDEL
+    PDF --> EPDF_I --> CACHE_INV
+    DELIBS --> SDEL --> CACHE_DEL
     UPLD --> RAW
     SEEDS --> STG
-    RAW --> STG --> CORE --> INT --> MART
+    RAW --> STG
+    STG --> CORE
+    CORE --> INT
     CORE --> MART
+    INT --> MART
     MART --> EXP
-    CORE -.->|some exports skip mart| EXP
-    FSUB -.->|direct API→JSON bypass| J_SUB
-    EPDF_I -.->|PDF→JSON direct| J_MAP
-    SDEL -.->|scrape→JSON direct| J_SUB
 
     SIRENE --> LLM
     WEB --> LLM
     LLM --> CACHES
     DETER --> CACHES
-    CACHES --> STG
-    CACHES --> EXP
+    CACHE_SUBV --> LLM
+    CACHE_SUBV --> DETER
+    CACHE_INV --> SYNC2
+    CACHE_DEL --> SYNC2
+    CACHES --> SYNC2
+    SYNC2 --> RAW
 
     EXP --> JSONS
     J_BUDGET --> P_LAND & P_BUD
@@ -101,11 +117,14 @@ flowchart LR
     classDef exp fill:#f3e8ff,stroke:#6b21a8,color:#111
     classDef json fill:#ffedd5,stroke:#9a3412,color:#111
     classDef ui fill:#ccfbf1,stroke:#115e59,color:#111
+    classDef cache fill:#f1f5f9,stroke:#475569,color:#111
     class OD,DGF,PDF,DELIBS,SIRENE,WEB,SEEDS src
-    class SYNC,FDECP,FSUB,EPDF_B,EPDF_I,SDEL,UPLD ing
+    class SYNC,FDECP,FSUB,EPDF_B,EPDF_I,SDEL,UPLD,SDET ing
+    class SYNC2 ing
     class RAW bq
     class STG,CORE,INT,MART dbt
     class LLM,DETER,CACHES enr
     class EXP exp
     class J_META,J_BUDGET,J_SUB,J_MARCH,J_MAP,J_BILAN,J_ENR json
     class P_LAND,P_BUD,P_QR,P_MP,P_INV,P_LOG,P_DET,P_MET ui
+    class CACHE_SUBV,CACHE_INV,CACHE_DEL,CACHE_ENR,CACHE_WIP cache
