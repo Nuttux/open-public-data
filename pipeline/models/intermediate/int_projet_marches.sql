@@ -16,7 +16,7 @@
 
 WITH seed AS (
     SELECT *
-    FROM {{ ref('seed_match_projet_marches') }}
+    FROM {{ ref('stg_match_projet_marches') }}
 ),
 
 marches AS (
