@@ -1,0 +1,40 @@
+# Whitelist for pipeline/scripts/audit/check_layering.py
+# ============================================================================
+# Toutes les catégories d'exception sont actuellement vides. La règle
+# layering n'a pas d'exception live :
+#
+#   - tout seed entre via stg_*
+#   - tout core_* lit stg_* (+ optionnel int_*)
+#   - tout int_* lit core_*
+#   - tout mart_* lit core_* ou int_*
+#   - tout export_*.py lit mart_* uniquement
+#   - aucun sync/tools/enrich n'écrit dans website/public/data/
+#
+# Cf. docs/data-platform/04-layering-convention.md pour les règles
+# détaillées et docs/decisions/ pour les ADR figeant les choix.
+#
+# Si une exception future est nécessaire, l'ajouter ICI avec :
+#   - justification: <pourquoi>
+#   - todo: <comment éliminer>
+#   - linked_adr: <numéro de l'ADR qui la documente>
+# ============================================================================
+
+# Whitelist pour scripts d'enrichissement écrivant à public/data/enrichment/
+# (cf ADR-0004 : pattern polymorphe via mart_enrichment_caches).
+enrich_writes_to_enrichment: []
+
+# Whitelist pour bypasses ingest → public/data/ direct
+# (toutes éliminées Phases 8-10, voir ADR-0001).
+ingest_writes_to_data: []
+
+# Whitelist pour scripts WIP non câblés à l'UI
+# (toutes redirigées vers pipeline/cache/wip/ Phase 12).
+wip_not_yet_consumed: []
+
+# Whitelist pour seeds-mappings ref'd hors stg
+# (toutes wrappées en stg_* Phase 15, voir ADR-0001).
+mapping_seeds_allowed_outside_stg: []
+
+# Whitelist pour seeds-cache LLM ref'd hors stg
+# (toutes wrappées en stg_* Phase 15).
+llm_cache_seeds_allowed_in_int: []
