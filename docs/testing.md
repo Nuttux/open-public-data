@@ -1,17 +1,20 @@
 # Tests — état & priorités
 
-> État : pas de tests unitaires côté website ni Python (au-delà des 42 tests
-> dbt qui couvrent l'intégrité du modèle de données). Le gate CI actuel
-> repose sur lint + typecheck + build pour le website, et `py_compile` pour
-> les scripts pipeline.
+> État : 48 tests unitaires Vitest sur `website/src/lib` couvrent les 5
+> fonctions identifiées comme les plus à risque de régression silencieuse
+> (cf section "Top 5" ci-dessous, toutes cochées).
 >
-> Cette doc liste les 5 premiers tests à écrire. Critère de sélection :
-> **régression silencieuse qui ferait publier un faux chiffre / une fiche
-> cassée à un utilisateur final**.
+> Le gate CI actuel (`.github/workflows/ci.yml`) lance pour chaque PR :
+> `lint → typecheck → vitest → next build` côté website, et `py_compile`
+> côté pipeline. Les 42 tests dbt restent dans le pipeline data, hors CI.
+>
+> Critère de sélection des tests prioritaires : **régression silencieuse qui
+> ferait publier un faux chiffre / une fiche cassée à un utilisateur final**.
+> Le top 5 ci-dessous est livré ; la roadmap "à venir" est en bas de page.
 
-## Top 5 tests unit prioritaires (`website/src/lib`)
+## Top 5 tests unit prioritaires (`website/src/lib`) — ✅ livrés
 
-### 1. `fmt.ts` — formats euros (`fmtCompactEur`, `fmtBillions`, `fmtMillions`)
+### 1. ✅ `fmt.ts` — formats euros (`fmtCompactEur`, `fmtBillions`, `fmtMillions`)
 
 **Pourquoi** : utilisés sur tous les KPI affichés (Md/M/k €). Bug d'un seuil
 ou d'un divisor → tous les chiffres affichés sont faux d'un facteur 1 000
@@ -23,7 +26,7 @@ sans que personne ne le voie.
 - Signe négatif (dette, déficit).
 - Valeur 0 et `NaN`.
 
-### 2. `projet-utils.ts` — slugs (`slugifyChapitre`, `slugifyBailleur`)
+### 2. ✅ `projet-utils.ts` — slugs (`slugifyChapitre`, `slugifyBailleur`)
 
 **Pourquoi** : ces slugs construisent les URLs des fiches (chapitres,
 bailleurs). Régression = collision (deux libellés → même slug, fiche
@@ -37,7 +40,7 @@ bailleurs). Régression = collision (deux libellés → même slug, fiche
 - Caractères spéciaux fréquents ('&', "'", '-').
 - Input vide / `null` → ne casse pas.
 
-### 3. `projet-utils.ts` — classification (`resolveTypoBucket`, `guessTypologieFromName`, `detectJO`)
+### 3. ✅ `projet-utils.ts` — classification (`resolveTypoBucket`, `guessTypologieFromName`, `detectJO`)
 
 **Pourquoi** : range les projets dans la légende carte des investissements.
 Bug de regex → une école se retrouve dans "Voirie", un projet JO 2024 ne
@@ -50,7 +53,7 @@ détecte pas son flag.
 - `detectJO` : "Arena Porte de la Chapelle", "Village olympique", false
   positives à éviter ("Olympique de Marseille" hypothétique).
 
-### 4. `objet-normalizer.ts` — `normalizeObjet`, `isObjetCryptic`
+### 4. ✅ `objet-normalizer.ts` — `normalizeObjet`, `isObjetCryptic`
 
 **Pourquoi** : 110 k+ libellés de marchés publics passent par cette fonction
 avant affichage. Bug de regex → libellés illisibles ou faussés en masse.
@@ -63,7 +66,7 @@ avant affichage. Bug de regex → libellés illisibles ou faussés en masse.
 - Input déjà lisible (idempotence : `normalizeObjet(normalizeObjet(x)) === normalizeObjet(x)`).
 - `isObjetCryptic` : true sur tout-MAJ + abrév, false sur libellé propre.
 
-### 5. `methodology.ts` — `parisCrcDebtYearsFor`
+### 5. ✅ `methodology.ts` — `parisCrcDebtYearsFor`
 
 **Pourquoi** : source unique de vérité pour les snapshots CRC affichés sur
 la page dette. Le fallback "année antérieure la plus proche" est subtil et
@@ -79,14 +82,25 @@ courante.
 
 ---
 
-## Outillage suggéré
+## Outillage en place
 
-- **Vitest** (cohérent avec Next 16, support TS/ESM natif, rapide).
-- Stocker les tests à côté des fichiers : `lib/fmt.test.ts`.
-- Ajouter `npm run test` dans `package.json` et un job `tests-unit` dans
-  `ci.yml` une fois les premiers tests écrits.
+- **Vitest** (config dans `website/vitest.config.ts` avec alias `@/` mappé
+  sur `src/`). Tests stockés à côté des fichiers : `lib/fmt.test.ts`, etc.
+- Lancer en local : `npm test` (one-shot) ou `npm run test:watch` (TDD).
+- Bloque les PRs en CI via le job `Website` (étape `Unit tests (Vitest)`).
 
-## Hors scope MVP
+## Roadmap tests — prochaines vagues
+
+### Vague 2 (à écrire prochainement)
+
+- `daily-bread.ts` — calculs déterministes du panier journalier ; à tester
+  avec fixtures JSON figées.
+- `daily-bread-drilldown.ts` — résolution des URLs de drill-down (le bug
+  silencieux ici = mauvais lien depuis le panier).
+- `label-translate.ts` — fallback FR↔EN, cohérence entre `fr.ts` et `en.ts`.
+- `national-data.ts` — schéma Eurostat / DGFiP / OFGL.
+
+### Hors scope MVP
 
 - Tests e2e Playwright sur les pages clés (golden path par section).
 - Visual regression sur composants `fusion/` (graphes ECharts).

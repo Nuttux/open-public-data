@@ -1,15 +1,15 @@
 name: CI
 
-# MVP CI gate for PRs targeting `main` and pushes to `main`.
-# Three jobs run in parallel — keep total wall time ≲ 5 min.
+# MVP CI gate for PRs targeting `main` and `test`.
+# Two jobs run in parallel — keep total wall time ≲ 5 min.
 #
 # Today's scope:
-#   - website: lint + typecheck + production build
+#   - website: lint + typecheck + Vitest unit tests + production build
 #   - pipeline: Python syntax check on all scripts (proxy for "no typo got
 #     committed"; real dbt tests need BigQuery credentials → not in MVP)
 #
-# Future (cf docs/data-platform/05-tests-prio.md):
-#   - unit tests on website/src/lib (top-5 prio listed there)
+# Future (cf docs/testing.md):
+#   - more unit tests on website/src/lib (fusion-data loaders, daily-bread)
 #   - dbt build on a sample DuckDB profile
 #   - Playwright e2e on /budget, /qui-recoit, /marches-publics
 
@@ -51,6 +51,9 @@ jobs:
 
       - name: Typecheck
         run: npm run typecheck
+
+      - name: Unit tests (Vitest)
+        run: npm test
 
       - name: Build
         run: npm run build
