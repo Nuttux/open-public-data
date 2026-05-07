@@ -1,0 +1,118 @@
+{
+  "generated_at": "2026-05-03T16:53:48.886276+00:00",
+  "source_pipeline": "pipeline/seeds/seed_communes_cibles.csv",
+  "source_data": "OFGL — ofgl-base-communes (latest available year)",
+  "source_url": "https://data.ofgl.fr/explore/dataset/ofgl-base-communes/",
+  "cities": [
+    {
+      "slug": "paris",
+      "code_insee": "75056",
+      "nom": "Paris",
+      "siren": "217500016",
+      "population": 2149216,
+      "dep_name": "Paris",
+      "reg_name": "Île-de-France",
+      "lat": 48.8566,
+      "lng": 2.3522
+    },
+    {
+      "slug": "marseille",
+      "code_insee": "13055",
+      "nom": "Marseille",
+      "siren": "211300553",
+      "population": 879238,
+      "dep_name": "Bouches-du-Rhône",
+      "reg_name": "Provence-Alpes-Côte d'Azur",
+      "lat": 43.2965,
+      "lng": 5.3698
+    },
+    {
+      "slug": "lyon",
+      "code_insee": "69123",
+      "nom": "Lyon",
+      "siren": "216901231",
+      "population": 528550,
+      "dep_name": "Rhône",
+      "reg_name": "Auvergne-Rhône-Alpes",
+      "lat": 45.764,
+      "lng": 4.8357
+    },
+    {
+      "slug": "toulouse",
+      "code_insee": "31555",
+      "nom": "Toulouse",
+      "siren": "213105554",
+      "population": 509200,
+      "dep_name": "Haute-Garonne",
+      "reg_name": "Occitanie",
+      "lat": 43.6047,
+      "lng": 1.4442
+    },
+    {
+      "slug": "nice",
+      "code_insee": "06088",
+      "nom": "Nice",
+      "siren": "210600888",
+      "population": 351011,
+      "dep_name": "Alpes-Maritimes",
+      "reg_name": "Provence-Alpes-Côte d'Azur",
+      "lat": 43.7102,
+      "lng": 7.262
+    },
+    {
+      "slug": "nantes",
+      "code_insee": "44109",
+      "nom": "Nantes",
+      "siren": "214401093",
+      "population": 328144,
+      "dep_name": "Loire-Atlantique",
+      "reg_name": "Pays de la Loire",
+      "lat": 47.2184,
+      "lng": -1.5536
+    },
+    {
+      "slug": "montpellier",
+      "code_insee": "34172",
+      "nom": "Montpellier",
+      "siren": "213401722",
+      "population": 305743,
+      "dep_name": "Hérault",
+      "reg_name": "Occitanie",
+      "lat": 43.6108,
+      "lng": 3.8767
+    },
+    {
+      "slug": "strasbourg",
+      "code_insee": "67482",
+      "nom": "Strasbourg",
+      "siren": "216704825",
+      "population": 294229,
+      "dep_name": "Bas-Rhin",
+      "reg_name": "Grand Est",
+      "lat": 48.5734,
+      "lng": 7.7521
+    },
+    {
+      "slug": "bordeaux",
+      "code_insee": "33063",
+      "nom": "Bordeaux",
+      "siren": "213300635",
+      "population": 265255,
+      "dep_name": "Gironde",
+      "reg_name": "Nouvelle-Aquitaine",
+      "lat": 44.8378,
+      "lng": -0.5792
+    },
+    {
+      "slug": "lille",
+      "code_insee": "59350",
+      "nom": "Lille",
+      "siren": "215903501",
+      "population": 238542,
+      "dep_name": "Nord",
+      "reg_name": "Hauts-de-France",
+      "lat": 50.6292,
+      "lng": 3.0573
+    }
+  ]
+}

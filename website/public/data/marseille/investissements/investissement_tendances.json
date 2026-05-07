@@ -1,0 +1,97 @@
+{
+  "generated_at": "2026-05-07T18:10:18Z",
+  "source": "marseille.fr — Rapports de présentation des CA (PDF parsing in-session)",
+  "description": "Tendances investissement Marseille — extraites des sections « Thématique » des rapports CA. POC v1.",
+  "note_perimetre": "POC : pas de séparation dette/hors-dette. Le total inclut tous les projets > 50 k€ détectés par regex. Sous-couverture probable vs CA réel (parsing partiel des sections).",
+  "years": [
+    {
+      "year": 2023,
+      "depenses_total": 99520000.0,
+      "depenses_hors_dette": 99520000.0,
+      "par_chapitre": [
+        {
+          "label": "Urbanisme, habitat",
+          "depenses": 28790000.0,
+          "recettes": 0.0
+        },
+        {
+          "label": "Environnement, cadre de vie",
+          "depenses": 24580000.0,
+          "recettes": 0.0
+        },
+        {
+          "label": "BMPM",
+          "depenses": 23500000.0,
+          "recettes": 0.0
+        },
+        {
+          "label": "Attractivité économique",
+          "depenses": 7560000.0,
+          "recettes": 0.0
+        },
+        {
+          "label": "Sécurité (BMPM, police, vidéo)",
+          "depenses": 6200000.0,
+          "recettes": 0.0
+        },
+        {
+          "label": "Immobilier et patrimoine",
+          "depenses": 6100000.0,
+          "recettes": 0.0
+        },
+        {
+          "label": "Culture",
+          "depenses": 2790000.0,
+          "recettes": 0.0
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "depenses_total": 273378000.0,
+      "depenses_hors_dette": 273378000.0,
+      "par_chapitre": [
+        {
+          "label": "Sécurité (BMPM, police, vidéo)",
+          "depenses": 92527000.0,
+          "recettes": 0.0
+        },
+        {
+          "label": "Écoles, petite enfance, jeunesse",
+          "depenses": 80360000.0,
+          "recettes": 0.0
+        },
+        {
+          "label": "Environnement, cadre de vie",
+          "depenses": 64100000.0,
+          "recettes": 0.0
+        },
+        {
+          "label": "Immobilier et patrimoine",
+          "depenses": 14000000.0,
+          "recettes": 0.0
+        },
+        {
+          "label": "Urbanisme, habitat",
+          "depenses": 6100000.0,
+          "recettes": 0.0
+        },
+        {
+          "label": "Sports, nautisme, plages",
+          "depenses": 5570000.0,
+          "recettes": 0.0
+        },
+        {
+          "label": "Attractivité économique",
+          "depenses": 5421000.0,
+          "recettes": 0.0
+        },
+        {
+          "label": "Social, solidarité, santé",
+          "depenses": 5300000.0,
+          "recettes": 0.0
+        }
+      ]
+    }
+  ]
+}

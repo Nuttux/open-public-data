@@ -1,0 +1,12 @@
+import { chromium } from 'playwright';
+const browser = await chromium.launch({ headless: true });
+const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 });
+const p = await ctx.newPage();
+await p.goto('http://localhost:3000/methode#etat', { waitUntil: 'networkidle', timeout: 30000 });
+await p.waitForTimeout(800);
+await p.screenshot({ path: '/tmp/methode-etat.png' });
+await p.goto('http://localhost:3000/methode#c-villes', { waitUntil: 'networkidle', timeout: 30000 });
+await p.waitForTimeout(800);
+await p.screenshot({ path: '/tmp/methode-c-villes.png' });
+await browser.close();
+console.log('done');

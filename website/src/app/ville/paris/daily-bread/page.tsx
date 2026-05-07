@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import "@/app/fusion.css";
 import { loadEurostatCofog, loadDailyBread } from "@/lib/national-data";
-import { loadDrilldown, type BucketKey } from "@/lib/daily-bread-drilldown";
+import { loadDrilldown, type BucketKey } from "@/lib/budget-drilldown";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
 import DailyBreadClient from "./DailyBreadClient";
 
@@ -80,7 +80,15 @@ export async function generateMetadata({
 export type DrilldownIndex = Record<
   BucketKey,
   { level2: string[]; level3: Record<string, string[]> }
->;
+> & {
+  /** Buckets éditoriaux État (drilldown.etat.aggregations) — keys exposées
+   *  pour permettre au client de filtrer ETAT_TOP_ALIAS_AGG. */
+  etat_aggregations?: string[];
+  /** Drilldown départemental local (drilldown.local.departement). */
+  local_dept?: { level2: string[]; level3: Record<string, string[]> };
+  /** Drilldown régional local (drilldown.local.region). */
+  local_region?: { level2: string[]; level3: Record<string, string[]> };
+};
 
 export default async function DailyBreadPage() {
   const cofog = loadEurostatCofog();
@@ -100,10 +108,30 @@ export default async function DailyBreadPage() {
     }
     return { level2: entries.map((e) => e.key), level3 };
   };
+  const buildScopeIndex = (
+    block:
+      | { level2: { key: string; level3?: { key: string }[] }[] }
+      | null
+      | undefined,
+  ) => {
+    const entries = block?.level2 ?? [];
+    const level3: Record<string, string[]> = {};
+    for (const e of entries) {
+      if (e.level3?.length) {
+        level3[e.key] = e.level3.map((c) => c.key);
+      }
+    }
+    return { level2: entries.map((e) => e.key), level3 };
+  };
   const drilldownIndex: DrilldownIndex = {
     secu: buildIndex("secu"),
     etat: buildIndex("etat"),
     local: buildIndex("local"),
+    etat_aggregations: (drilldown?.buckets?.etat?.aggregations ?? []).map(
+      (a) => a.key,
+    ),
+    local_dept: buildScopeIndex(drilldown?.buckets?.local?.departement),
+    local_region: buildScopeIndex(drilldown?.buckets?.local?.region),
   };
   // Suspense boundary needed because the client uses useSearchParams() to
   // sync form state with the URL — Next.js requires a fallback for SSR/SSG.

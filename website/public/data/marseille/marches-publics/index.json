@@ -1,0 +1,15 @@
+{
+  "generated_at": "2026-05-07T00:00:00Z",
+  "source": "data.gouv.fr — marseille-marches-publics-1 (SCDL Ville)",
+  "note": "POC stub Marseille v1 — 1 année (2020). Phase 2 ajoutera DECP national 2021+.",
+  "availableYears": [
+    2020
+  ],
+  "totalsByYear": {
+    "2020": {
+      "nb_marches": 434,
+      "enveloppe_max_totale": 334579706.0
+    }
+  },
+  "filters": {}
+}

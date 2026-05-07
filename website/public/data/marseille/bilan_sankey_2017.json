@@ -1,0 +1,57 @@
+{
+  "year": 2017,
+  "city": "marseille",
+  "city_label": "Marseille",
+  "generated_at": "2026-05-07T18:08:24.881481+00:00",
+  "totals": {
+    "actif_net": 1911374309.0,
+    "passif_net": 1911374309.0,
+    "ecart_equilibre": 0.0,
+    "fonds_propres": 0.0,
+    "dette_totale": 1911374309.0,
+    "dettes_financieres": 1911374309.0,
+    "dettes_non_financieres": 0.0,
+    "provisions": 0.0
+  },
+  "kpis": {
+    "ratio_endettement": null,
+    "pct_fonds_propres": null,
+    "pct_dette_financiere": 100.0
+  },
+  "nodes": [
+    {
+      "name": "Encours OFGL",
+      "category": "actif"
+    },
+    {
+      "name": "Patrimoine Marseille",
+      "category": "central"
+    },
+    {
+      "name": "Dettes financières",
+      "category": "passif"
+    }
+  ],
+  "links": [
+    {
+      "source": "Encours OFGL",
+      "target": "Patrimoine Marseille",
+      "value": 1911374309.0
+    },
+    {
+      "source": "Patrimoine Marseille",
+      "target": "Dettes financières",
+      "value": 1911374309.0
+    }
+  ],
+  "drilldown": {
+    "actif": {},
+    "passif": {}
+  },
+  "source": {
+    "label": "OFGL — ofgl-base-communes-consolidee",
+    "url": "https://data.ofgl.fr/explore/dataset/ofgl-base-communes-consolidee/",
+    "perimeter": "Comptes consolidés OFGL (M14 + M57 harmonisés)",
+    "epargne_brute": 156558345.0
+  }
+}

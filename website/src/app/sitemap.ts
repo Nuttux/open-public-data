@@ -16,6 +16,7 @@ const MAIN_ROUTES = [
   { path: '/france/dette', priority: 0.8 },
   { path: '/france/fiscalite', priority: 0.8 },
   { path: '/france/etat', priority: 0.8 },
+  { path: '/france/budget', priority: 0.85 },
   { path: '/comparer', priority: 0.7 },
   { path: '/analyses', priority: 0.7 },
   { path: '/methode', priority: 0.6 },

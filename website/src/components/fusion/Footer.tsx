@@ -7,18 +7,10 @@ import ReplayOptIn from "./ReplayOptIn";
 
 type Col = {
   headingKey: string;
-  links: { href: string; labelKey: string; disabled?: boolean; external?: boolean }[];
+  links: { href: string; labelKey: string; external?: boolean }[];
 };
 
 const COLUMNS: Col[] = [
-  {
-    headingKey: "fx.foot.col.collectivite",
-    links: [
-      { href: "/", labelKey: "fx.foot.link.paris" },
-      { href: "#", labelKey: "fx.foot.link.autres", disabled: true },
-      { href: "#", labelKey: "fx.foot.link.france", disabled: true },
-    ],
-  },
   {
     headingKey: "fx.foot.col.pages",
     links: [
@@ -57,22 +49,13 @@ export default function Footer() {
             <div className="fx-foot-word">
               {t("fx.foot.word_line1")}<br />{t("fx.foot.word_line2")}
             </div>
-            <p className="fx-foot-blurb">
-              {t("fx.foot.blurb.before")}<b>{t("fx.foot.blurb.name")}</b>{t("fx.foot.blurb.after")}
-            </p>
+            <p className="fx-foot-blurb">{t("fx.foot.blurb")}</p>
           </div>
           {COLUMNS.map((c) => (
             <div key={c.headingKey}>
               <h3>{t(c.headingKey)}</h3>
               <ul>
                 {c.links.map((l, i) => {
-                  if (l.disabled) {
-                    return (
-                      <li key={i}>
-                        <span style={{ color: "var(--muted-2)", cursor: "default" }}>{t(l.labelKey)}</span>
-                      </li>
-                    );
-                  }
                   if (l.external) {
                     return (
                       <li key={i}>
@@ -118,18 +101,17 @@ export default function Footer() {
         <div className="fx-foot-optin">
           <ReplayOptIn />
         </div>
-        <nav aria-label={t("fx.foot.legal.aria")} style={{ paddingTop: 18, display: "flex", gap: 16, flexWrap: "wrap", fontFamily: "var(--f-mono)", fontSize: 11, letterSpacing: ".04em" }}>
-          <Link href="/accessibilite">{t("fx.foot.legal.accessibilite")}</Link>
-          <span aria-hidden="true">·</span>
-          <Link href="/confidentialite">{t("fx.foot.legal.confidentialite")}</Link>
-          <span aria-hidden="true">·</span>
-          <Link href="/mentions-legales">{t("fx.foot.legal.mentions")}</Link>
-          <span aria-hidden="true">·</span>
-          <Link href="/licence">{t("fx.foot.legal.licence")}</Link>
-        </nav>
         <div className="fx-foot-base">
-          <span>{t("fx.foot.license").replace("{year}", String(year))}</span>
-          <span>{t("fx.foot.domain")}</span>
+          <nav aria-label={t("fx.foot.legal.aria")} className="fx-foot-legal">
+            <Link href="/accessibilite">{t("fx.foot.legal.accessibilite")}</Link>
+            <span aria-hidden="true">·</span>
+            <Link href="/confidentialite">{t("fx.foot.legal.confidentialite")}</Link>
+            <span aria-hidden="true">·</span>
+            <Link href="/mentions-legales">{t("fx.foot.legal.mentions")}</Link>
+            <span aria-hidden="true">·</span>
+            <Link href="/licence">{t("fx.foot.legal.licence")}</Link>
+          </nav>
+          <span className="fx-foot-license">{t("fx.foot.license").replace("{year}", String(year))}</span>
         </div>
       </div>
     </footer>

@@ -65,6 +65,7 @@ export default async function ArrondissementPage({ params }: { params: Promise<P
   return (
     <div className="theme-fusion">
       <Navbar />
+      <main id="main-content" tabIndex={-1}>
       <section className="fx-page-header">
         <div className="fx-wrap">
           <InvestBackKicker />
@@ -74,6 +75,7 @@ export default async function ArrondissementPage({ params }: { params: Promise<P
       <div className="fx-fiche-wrap">
         <ArrondissementFiche arr={arr} />
       </div>
+      </main>
       <Footer />
     </div>
   );

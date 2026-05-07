@@ -1,0 +1,67 @@
+{
+  "generated_at": "2026-05-01T22:19:38.854960+00:00",
+  "source": "OFGL — ofgl-base-communes-consolidee",
+  "source_url": "https://data.ofgl.fr/explore/dataset/ofgl-base-communes-consolidee/",
+  "cities": [
+    {
+      "slug": "paris",
+      "nom": "Paris",
+      "code_insee": "75056",
+      "latest_year": 2024
+    },
+    {
+      "slug": "marseille",
+      "nom": "Marseille",
+      "code_insee": "13055",
+      "latest_year": 2024
+    },
+    {
+      "slug": "lyon",
+      "nom": "Lyon",
+      "code_insee": "69123",
+      "latest_year": 2024
+    },
+    {
+      "slug": "toulouse",
+      "nom": "Toulouse",
+      "code_insee": "31555",
+      "latest_year": 2024
+    },
+    {
+      "slug": "nice",
+      "nom": "Nice",
+      "code_insee": "06088",
+      "latest_year": 2024
+    },
+    {
+      "slug": "nantes",
+      "nom": "Nantes",
+      "code_insee": "44109",
+      "latest_year": 2024
+    },
+    {
+      "slug": "montpellier",
+      "nom": "Montpellier",
+      "code_insee": "34172",
+      "latest_year": 2024
+    },
+    {
+      "slug": "strasbourg",
+      "nom": "Strasbourg",
+      "code_insee": "67482",
+      "latest_year": 2024
+    },
+    {
+      "slug": "bordeaux",
+      "nom": "Bordeaux",
+      "code_insee": "33063",
+      "latest_year": 2024
+    },
+    {
+      "slug": "lille",
+      "nom": "Lille",
+      "code_insee": "59350",
+      "latest_year": 2024
+    }
+  ]
+}

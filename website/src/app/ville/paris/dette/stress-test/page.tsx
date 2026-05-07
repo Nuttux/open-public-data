@@ -56,6 +56,7 @@ export default async function StressTestPage() {
   return (
     <div className="theme-fusion">
       <Navbar />
+      <main id="main-content" tabIndex={-1}>
 
       <section className="fx-page-header">
         <div className="fx-wrap">
@@ -86,6 +87,7 @@ export default async function StressTestPage() {
         </div>
       </section>
 
+      </main>
       <Footer />
     </div>
   );

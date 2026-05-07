@@ -401,7 +401,7 @@ export default function LogementSocialClient({
           )}
           <ChartSource
             source={<>{t("fx.log.s02.source")}</>}
-            dataHref="https://www.ecologie.gouv.fr/article-55-loi-solidarite-renouvellement-urbain-sru"
+            dataHref="https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000207538/"
             methodAnchor="logement-social"
           />
         </div>

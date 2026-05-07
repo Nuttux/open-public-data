@@ -54,6 +54,7 @@ export default async function ChapitrePage({ params }: { params: Promise<Params>
   return (
     <div className="theme-fusion">
       <Navbar />
+      <main id="main-content" tabIndex={-1}>
       <section className="fx-page-header">
         <div className="fx-wrap">
           <InvestBackKicker />
@@ -64,6 +65,7 @@ export default async function ChapitrePage({ params }: { params: Promise<Params>
       <div className="fx-fiche-wrap">
         <ChapitreFiche chap={chap} />
       </div>
+      </main>
       <Footer />
     </div>
   );

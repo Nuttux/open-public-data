@@ -14,8 +14,8 @@ type BudgetIndex = {
   summary: { year: number; type_budget: "vote" | "execute"; recettes: number; depenses: number; solde: number }[];
 };
 
-export function loadBudgetIndex() {
-  return readJson<BudgetIndex>("budget_index.json");
+export function loadBudgetIndex(city: string = "paris") {
+  return readJson<BudgetIndex>(cityJsonPath(city, "budget_index.json"));
 }
 
 // ─── Voté vs exécuté ───────────────────────────────────────────────────────
@@ -113,6 +113,19 @@ function readJsonOrNull<T>(file: string): T | null {
   } catch {
     return null;
   }
+}
+
+// Helpers for multi-city data loading (cf. project_marseille_v1_decisions
+// P0.2). Paris keeps its files at data/ root for rétro-compat ; other cities
+// use data/[city]/. Hoisted to the top of the file so all loaders below can
+// reference it.
+function cityJsonPath(city: string, file: string): string {
+  return city === "paris" ? file : `${city}/${file}`;
+}
+
+function centralNodeFor(city: string): string {
+  if (city === "paris") return "Budget Paris";
+  return `Budget ${city.charAt(0).toUpperCase()}${city.slice(1)}`;
 }
 
 // ─── Enrichment caches (written by pipeline/scripts/enrich/*) ──────────────
@@ -557,8 +570,8 @@ export type QuiRecoitData = {
   };
 };
 
-export function loadQuiRecoitIndex() {
-  return readJson<SubvIndex>("subventions/index.json");
+export function loadQuiRecoitIndex(city: string = "paris") {
+  return readJson<SubvIndex>(cityJsonPath(city, "subventions/index.json"));
 }
 
 // ─── Association fiche ────────────────────────────────────────────────────
@@ -595,8 +608,8 @@ export type AssociationFiche = {
  * Load an association by its decoded name. Scans every available year
  * and aggregates totals. Name must match exactly (case-insensitive).
  */
-export function loadAssociation(name: string): AssociationFiche | null {
-  const idx = readJson<SubvIndex>("subventions/index.json");
+export function loadAssociation(name: string, city: string = "paris"): AssociationFiche | null {
+  const idx = readJson<SubvIndex>(cityJsonPath(city, "subventions/index.json"));
   const target = decodeURIComponent(name).toLowerCase();
   const byYearMap = new Map<number, { amount: number; count: number }>();
   const byThemeMap = new Map<string, { amount: number; count: number }>();
@@ -608,7 +621,7 @@ export function loadAssociation(name: string): AssociationFiche | null {
 
   for (const y of idx.availableYears) {
     try {
-      const f = readJson<SubvBen>(`subventions/beneficiaires_${y}.json`);
+      const f = readJson<SubvBen>(cityJsonPath(city, `subventions/beneficiaires_${y}.json`));
       for (const b of f.data) {
         if (b.beneficiaire.toLowerCase() !== target) continue;
         canonicalName = canonicalName || b.beneficiaire;
@@ -670,7 +683,7 @@ export function loadAssociation(name: string): AssociationFiche | null {
   if (theme) {
     try {
       const latestYear = idx.availableYears[0];
-      const f = readJson<SubvBen>(`subventions/beneficiaires_${latestYear}.json`);
+      const f = readJson<SubvBen>(cityJsonPath(city, `subventions/beneficiaires_${latestYear}.json`));
       const sameTheme = f.data
         .filter((b) => b.thematique === theme)
         .sort((a, b) => b.montant_total - a.montant_total);
@@ -1128,8 +1141,8 @@ export function loadBailleur(slug: string): BailleurFiche | null {
   };
 }
 
-export function loadQuiRecoitData(requestedYear?: number): QuiRecoitData {
-  const idx = readJson<SubvIndex>("subventions/index.json");
+export function loadQuiRecoitData(requestedYear?: number, city: string = "paris"): QuiRecoitData {
+  const idx = readJson<SubvIndex>(cityJsonPath(city, "subventions/index.json"));
   const preview = new Set(idx.previewYears ?? []);
   const consolidated = idx.availableYears.filter((y) => !preview.has(y));
   const defaultYear = consolidated[0] ?? idx.availableYears[0];
@@ -1137,13 +1150,13 @@ export function loadQuiRecoitData(requestedYear?: number): QuiRecoitData {
     ? requestedYear
     : defaultYear;
   const prev = idx.availableYears.find((y) => y !== yr) ?? yr;
-  const ben = readJson<SubvBen>(`subventions/beneficiaires_${yr}.json`);
+  const ben = readJson<SubvBen>(cityJsonPath(city, `subventions/beneficiaires_${yr}.json`));
 
   // Pre-load every available year once — used for the top-10 history and the
   // "movers" section (biggest gains/losses between current year and prev).
   const yearlyData = new Map<number, SubvBen>();
   for (const y of idx.availableYears) {
-    try { yearlyData.set(y, readJson<SubvBen>(`subventions/beneficiaires_${y}.json`)); } catch {}
+    try { yearlyData.set(y, readJson<SubvBen>(cityJsonPath(city, `subventions/beneficiaires_${y}.json`))); } catch {}
   }
   // Quick index: { benefName -> { year -> amount } }
   const benHistory = new Map<string, Map<number, number>>();
@@ -1339,8 +1352,8 @@ type MarchesIndexRaw = {
   totalsByYear?: Record<string, { nb_marches: number; enveloppe_max_totale: number }>;
 };
 
-export function loadMarchesIndex() {
-  const raw = readJson<MarchesIndexRaw>("marches-publics/index.json");
+export function loadMarchesIndex(city: string = "paris") {
+  const raw = readJson<MarchesIndexRaw>(cityJsonPath(city, "marches-publics/index.json"));
   // Masquer l'année calendaire en cours (données DECP partielles jusqu'à clôture).
   const currentYear = new Date().getFullYear();
   return {
@@ -1629,8 +1642,8 @@ export function loadFournisseur(key: string): FournisseurFiche | null {
   };
 }
 
-export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
-  const indexRaw = readJson<MarchesIndexRaw>("marches-publics/index.json");
+export function loadMarchesPageData(requestedYear?: number, city: string = "paris"): MarchesPageData {
+  const indexRaw = readJson<MarchesIndexRaw>(cityJsonPath(city, "marches-publics/index.json"));
   // Exclure l'année calendaire en cours : DECP est en remontée continue, un
   // "2026" consulté en avril n'a que quelques centaines de contrats notifiés
   // et son montant agrégé est non représentatif. On masque jusqu'à clôture.
@@ -1642,7 +1655,7 @@ export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
   const yr = requestedYear && years.includes(requestedYear)
     ? requestedYear
     : years[years.length - 1] ?? 2024;
-  const file = readJson<MarchesFile>(`marches-publics/marches_${yr}.json`);
+  const file = readJson<MarchesFile>(cityJsonPath(city, `marches-publics/marches_${yr}.json`));
   const marches = file.data ?? file.marches ?? [];
 
   const MULTI_NAME = "MARCHE MULTIATTRIBUTAIRE";
@@ -1926,7 +1939,166 @@ function computeUsableYears(allYears: number[]): number[] {
 
 let _usableYears: number[] | null = null;
 
-export function loadInvestissementsData(requestedYear?: number): InvestissementsData {
+// ─── Marseille loader (investissements POC) ────────────────────────────────
+//
+// Marseille exposes investissements in a denormalized format (already
+// aggregated byChapitre / byArrondissement, no geo lat/lon, no typologies)
+// because the source is a CA narrative PDF parsed by regex — not a row-level
+// CSV like Paris. The shape mimics InvestissementsData so the page can reuse
+// the Paris client component, with degraded sections (P3.2 option a):
+//   - geoPoints = [] → no map
+//   - topProjets without photo (uses the generic fallback)
+//   - byArrondissement → fed into a Marseille-aware ranking; the Paris SVG
+//     choropleth is hardcoded for Paris districts so the page switches to
+//     "liste" view by default for Marseille.
+type MarseilleInvFile = {
+  year: number;
+  source: string;
+  source_url: string;
+  stats: { nb_projets: number; nb_geo: number; pct_geo: number; total_montant: number; nb_thematiques: number };
+  byChapitre: Array<{ label: string; label_en?: string; amount: number; count: number }>;
+  byArrondissement: Array<{ arr: number; amount: number; count: number }>;
+  data: Array<{
+    id: string;
+    annee: number;
+    arrondissement: number;
+    thematique: string;
+    thematique_en?: string;
+    nom_projet: string;
+    montant: number;
+    source: string;
+  }>;
+};
+
+type MarseilleInvIndex = {
+  city: string;
+  city_label: string;
+  availableYears: number[];
+  latestYear: number;
+  totalsByYear: Record<string, { nb_projets: number; total_montant: number; nb_thematiques: number }>;
+  source: string;
+  note: string;
+};
+
+type MarseilleInvTrends = {
+  years: Array<{
+    year: number;
+    depenses_total: number;
+    depenses_hors_dette: number;
+    par_chapitre: Array<{ label: string; depenses: number; recettes: number }>;
+  }>;
+};
+
+function loadInvestissementsDataMarseille(requestedYear?: number): InvestissementsData {
+  const index = readJson<MarseilleInvIndex>(cityJsonPath("marseille", "investissements/index.json"));
+  const trends = readJsonOrNull<MarseilleInvTrends>(
+    cityJsonPath("marseille", "investissements/investissement_tendances.json"),
+  );
+  const availableYears = (index.availableYears ?? []).slice().sort((a, b) => a - b);
+  const year =
+    requestedYear != null && availableYears.includes(requestedYear)
+      ? requestedYear
+      : index.latestYear ?? availableYears[availableYears.length - 1];
+  const file = readJson<MarseilleInvFile>(
+    cityJsonPath("marseille", `investissements/investissements_${year}.json`),
+  );
+  // Filter out narrative fragments (non-project text leaked from prosaic PDF
+  // parsing) — see is_project flag added by geocode_marseille_invest.py.
+  // Backwards-compatible: rows without the flag are kept as-is.
+  const allRows = file.data ?? [];
+  const projects = allRows.filter((p) => (p as { is_project?: boolean }).is_project !== false);
+  const total = projects.reduce((s, p) => s + (p.montant ?? 0), 0);
+  const nbGeo = projects.filter((p) => (p as { lat?: number | null }).lat != null).length;
+
+  const emptyPhoto: ProjetPhotoResolved = { photo: null, generic: null, typologie: null };
+  const topProjets = projects
+    .slice()
+    .sort((a, b) => b.montant - a.montant)
+    .slice(0, 24)
+    .map((p) => ({
+      id: p.id,
+      name: p.nom_projet,
+      arr: p.arrondissement,
+      chapitre: p.thematique,
+      amount: p.montant,
+      photo: emptyPhoto,
+    }));
+
+  // Recompute byArrondissement on the filtered set so the ranking only
+  // shows real localised projects (not narrative fragments at arr=0).
+  const arrAgg = new Map<number, { amount: number; count: number }>();
+  for (const p of projects) {
+    if (!p.arrondissement || p.arrondissement === 0) continue;
+    const cur = arrAgg.get(p.arrondissement) ?? { amount: 0, count: 0 };
+    cur.amount += p.montant ?? 0;
+    cur.count += 1;
+    arrAgg.set(p.arrondissement, cur);
+  }
+  const byArrondissementFiltered = [...arrAgg.entries()]
+    .map(([arr, v]) => ({ arr, amount: v.amount, count: v.count }))
+    .sort((a, b) => b.amount - a.amount);
+
+  // geoPoints: list of project markers with lat/lon (from BAN geocoding when
+  // available, fallback to arrondissement centre). Useful for any future map.
+  // typo/isJO defaulted (Marseille has no project typology nor JO marker).
+  const geoPoints: InvestissementsData["geoPoints"] = projects
+    .filter((p) => {
+      const r = p as unknown as { lat?: number | null; lon?: number | null };
+      return r.lat != null && r.lon != null;
+    })
+    .map((p) => {
+      const r = p as unknown as { lat: number; lon: number };
+      return {
+        id: p.id,
+        name: p.nom_projet,
+        arr: p.arrondissement,
+        chapitre: p.thematique,
+        amount: p.montant,
+        lat: r.lat,
+        lon: r.lon,
+        typo: "autre" as import("./projet-utils").TypoBucket,
+        isJO: false,
+      };
+    });
+
+  const sortedByAmount = projects.slice().sort((a, b) => b.montant - a.montant);
+  const top10Sum = sortedByAmount.slice(0, 10).reduce((s, p) => s + (p.montant ?? 0), 0);
+  const top10ProjetsPct = total > 0 ? (top10Sum / total) * 100 : 0;
+
+  const yearsSummary = (
+    trends?.years ?? [
+      { year, depenses_total: total, depenses_hors_dette: total, par_chapitre: [] },
+    ]
+  )
+    .map((y) => ({ year: y.year, total: y.depenses_total, horsDette: y.depenses_hors_dette }))
+    .sort((a, b) => a.year - b.year);
+
+  return {
+    year,
+    availableYears,
+    total,
+    totalHorsDette: total,
+    nbProjets: projects.length,
+    nbGeo,
+    pctGeo: file.stats?.pct_geo ?? 0,
+    byChapitre: (file.byChapitre ?? []).map((c) => ({
+      label: c.label,
+      amount: c.amount,
+      count: c.count,
+    })),
+    top10ProjetsPct,
+    byArrondissement: byArrondissementFiltered,
+    topProjets,
+    geoPoints,
+    yearsSummary,
+  };
+}
+
+export function loadInvestissementsData(
+  requestedYear?: number,
+  city: string = "paris",
+): InvestissementsData {
+  if (city === "marseille") return loadInvestissementsDataMarseille(requestedYear);
   const trends = readJson<InvTrends>("investissement_tendances.json");
   const allYears = trends.years.map((y) => y.year).sort((a, b) => a - b);
 
@@ -2280,16 +2452,34 @@ export type PatrimoineData = {
 
 const BILAN_CENTRAL = "Patrimoine Paris";
 
-export function loadPatrimoineData(requestedYear?: number): PatrimoineData {
-  const idx = readJson<BilanIndex>("bilan_index.json");
+function bilanCentralFor(city: string): string {
+  if (city === "paris") return BILAN_CENTRAL;
+  return `Patrimoine ${city.charAt(0).toUpperCase()}${city.slice(1)}`;
+}
+
+// Optional `source` block emitted by city POC stubs (e.g. Marseille) that
+// derive épargne brute from OFGL aggregates rather than from a row-level
+// budget sankey. Paris keeps the canonical compute path (no `source` block).
+type BilanSankeyExt = BilanSankey & {
+  source?: {
+    label?: string;
+    url?: string;
+    perimeter?: string;
+    epargne_brute?: number;
+  };
+};
+
+export function loadPatrimoineData(requestedYear?: number, city: string = "paris"): PatrimoineData {
+  const idx = readJson<BilanIndex>(cityJsonPath(city, "bilan_index.json"));
   const availableYears = idx.availableYears.slice().sort((a, b) => a - b);
   const year = requestedYear && availableYears.includes(requestedYear)
     ? requestedYear
     : idx.latestYear;
-  const bilan = readJson<BilanSankey>(`bilan_sankey_${year}.json`);
+  const bilan = readJson<BilanSankeyExt>(cityJsonPath(city, `bilan_sankey_${year}.json`));
+  const central = bilanCentralFor(city);
 
-  const actifLinks = bilan.links.filter((l) => l.target === BILAN_CENTRAL);
-  const passifLinks = bilan.links.filter((l) => l.source === BILAN_CENTRAL);
+  const actifLinks = bilan.links.filter((l) => l.target === central);
+  const passifLinks = bilan.links.filter((l) => l.source === central);
 
   const actifBreakdown = actifLinks
     .map((l) => ({ label: l.source, value: l.value }))
@@ -2298,27 +2488,35 @@ export function loadPatrimoineData(requestedYear?: number): PatrimoineData {
     .map((l) => ({ label: l.target, value: l.value }))
     .sort((a, b) => b.value - a.value);
 
-  // Épargne brute = recettes fonctionnement − dépenses fonctionnement, via budget sankey
+  // Épargne brute = recettes fonctionnement − dépenses fonctionnement, via
+  // budget sankey (Paris). Pour les villes POC sans rapprochement Sankey ↔
+  // bilan, on lit la valeur OFGL embarquée dans `bilan.source.epargne_brute`.
   let epargneBrute = 0;
   let recettesFonctionnement = 0;
-  try {
-    const budget = readJson<BudgetSankeyFull>(`budget_sankey_${year}.json`);
-    let fonctionnement = 0;
-    for (const cat of Object.values(budget.bySection)) {
-      fonctionnement += cat.Fonctionnement?.total ?? 0;
-    }
-    const emprunts = budget.links
-      .filter((l) => l.source === "Emprunts" && l.target === "Budget Paris")
-      .reduce((s, l) => s + l.value, 0);
-    // Retrait aussi des recettes d'investissement (FCTVA, cessions, subventions
-    // équipement) qui ne sont pas des RRF. Sans ça on surestimait l'épargne
-    // brute d'environ 150 M€/an.
-    const recettesInvest = budget.links
-      .filter((l) => l.source === "Investissement" && l.target === "Budget Paris")
-      .reduce((s, l) => s + l.value, 0);
-    recettesFonctionnement = budget.totals.recettes - emprunts - recettesInvest;
-    epargneBrute = Math.max(0, recettesFonctionnement - fonctionnement);
-  } catch {}
+  if (city === "paris") {
+    try {
+      const budget = readJson<BudgetSankeyFull>(cityJsonPath(city, `budget_sankey_${year}.json`));
+      const centralBudget = centralNodeFor(city);
+      let fonctionnement = 0;
+      for (const cat of Object.values(budget.bySection)) {
+        fonctionnement += cat.Fonctionnement?.total ?? 0;
+      }
+      const emprunts = budget.links
+        .filter((l) => l.source === "Emprunts" && l.target === centralBudget)
+        .reduce((s, l) => s + l.value, 0);
+      // Retrait aussi des recettes d'investissement (FCTVA, cessions, subventions
+      // équipement) qui ne sont pas des RRF. Sans ça on surestimait l'épargne
+      // brute d'environ 150 M€/an.
+      const recettesInvest = budget.links
+        .filter((l) => l.source === "Investissement" && l.target === centralBudget)
+        .reduce((s, l) => s + l.value, 0);
+      recettesFonctionnement = budget.totals.recettes - emprunts - recettesInvest;
+      epargneBrute = Math.max(0, recettesFonctionnement - fonctionnement);
+    } catch {}
+  } else {
+    // POC ville (Marseille v1) — épargne brute injectée par le stub OFGL.
+    epargneBrute = Math.max(0, bilan.source?.epargne_brute ?? 0);
+  }
 
   // Capacité de désendettement (méthode Ville, épargne brute non retraitée).
   // ⚠️ La CRC Île-de-France publie un chiffre nettement plus élevé après
@@ -2332,7 +2530,7 @@ export function loadPatrimoineData(requestedYear?: number): PatrimoineData {
   const yearsSummary: PatrimoineData["yearsSummary"] = [];
   for (const y of idx.availableYears.slice().sort((a, b) => a - b)) {
     try {
-      const f = readJson<BilanSankey>(`bilan_sankey_${y}.json`);
+      const f = readJson<BilanSankey>(cityJsonPath(city, `bilan_sankey_${y}.json`));
       yearsSummary.push({
         year: y,
         actif: f.totals.actif_net,
@@ -2438,9 +2636,9 @@ export type PatrimoineStructure = {
   };
 };
 
-export function loadPatrimoineStructure(year: number): PatrimoineStructure | null {
+export function loadPatrimoineStructure(year: number, city: string = "paris"): PatrimoineStructure | null {
   try {
-    return readJson<PatrimoineStructure>(`patrimoine_structure_${year}.json`);
+    return readJson<PatrimoineStructure>(cityJsonPath(city, `patrimoine_structure_${year}.json`));
   } catch {
     return null;
   }
@@ -2558,18 +2756,21 @@ export type HorsBilanData = {
   };
 };
 
-export function loadHorsBilan(year: number): HorsBilanData | null {
+export function loadHorsBilan(year: number, city: string = "paris"): HorsBilanData | null {
   try {
-    return readJson<HorsBilanData>(`hors_bilan_${year}.json`);
+    return readJson<HorsBilanData>(cityJsonPath(city, `hors_bilan_${year}.json`));
   } catch {
     return null;
   }
 }
 
-export function loadHorsBilanTrajectory(years: number[]): Array<{ year: number; capital_restant: number }> {
+export function loadHorsBilanTrajectory(
+  years: number[],
+  city: string = "paris",
+): Array<{ year: number; capital_restant: number }> {
   const out: Array<{ year: number; capital_restant: number }> = [];
   for (const y of years) {
-    const d = loadHorsBilan(y);
+    const d = loadHorsBilan(y, city);
     if (d) out.push({ year: y, capital_restant: d.totals.capital_restant });
   }
   return out;
@@ -2675,9 +2876,13 @@ export type LogementSocialData = {
    *  `loadBailleur(slug)` — couvre les 14 entités hors-bilan. */
   bailleursAll: { name: string; type: string; color: string; share?: number; description: string }[];
   yearsSummary: { year: number; logements: number }[];
-  /** Tension SLS Paris — issue directement de la data DRIHL (seed +
+  /** Tension SLS — issue directement de la data DRIHL pour Paris (seed +
    *  core_logement_attente_arr → logement_attente_paris.json). Zéro hardcode.
-   *  Le délai médian est un délai d'ATTRIBUTION (biais survivant). */
+   *  Le délai médian est un délai d'ATTRIBUTION (biais survivant).
+   *
+   *  null pour les villes hors IDF (ex Marseille) : DRIHL est IDF-only et
+   *  le SNE national ne publie pas de CSV exploitable. Les sections §05/§06
+   *  du client se masquent silencieusement (P3.2 option a). */
   tension: {
     year: number;
     source: string;
@@ -2701,10 +2906,46 @@ export type LogementSocialData = {
       delaiMedianCaveat: string;
       partAnciennete5ansDefinition: string;
     };
-  };
+  } | null;
 };
 
-export function loadLogementSocialData(requestedYear?: number): LogementSocialData {
+export function loadLogementSocialData(
+  requestedYear?: number,
+  city: string = "paris",
+): LogementSocialData {
+  // Non-Paris cities use a single pre-aggregated file produced by the POC
+  // stub (`pipeline/scripts/poc/generate_marseille_logement_stub.py` for
+  // Marseille). The schema mirrors `LogementSocialData` 1-to-1 — we just
+  // pick the requested year if available and pass through the rest.
+  if (city !== "paris") {
+    type LogementCityFile = Omit<LogementSocialData, "year"> & {
+      year: number;
+      // Some cities may add an _meta block — kept loose to avoid type drift.
+      _meta?: unknown;
+    };
+    const raw = readJson<LogementCityFile>(cityJsonPath(city, "logement/logement_data.json"));
+    const availableYears = (raw.availableYears ?? []).slice().sort((a, b) => a - b);
+    const pickedYear =
+      requestedYear && availableYears.includes(requestedYear)
+        ? requestedYear
+        : (raw.year ?? availableYears[availableYears.length - 1]);
+    return {
+      year: pickedYear,
+      availableYears,
+      nouveauxParAn: raw.nouveauxParAn ?? 0,
+      nbOperations: raw.nbOperations ?? 0,
+      sruRatio: raw.sruRatio,
+      sruTarget: raw.sruTarget,
+      sruYear: raw.sruYear ?? pickedYear,
+      stockTotal: raw.stockTotal,
+      byArrondissement: raw.byArrondissement ?? [],
+      bailleurs: raw.bailleurs ?? [],
+      bailleursAll: raw.bailleursAll ?? raw.bailleurs ?? [],
+      yearsSummary: raw.yearsSummary ?? [],
+      tension: raw.tension ?? null,
+    };
+  }
+
   const years = [2018, 2019, 2020, 2021, 2022, 2023, 2024];
   const yearsSummary: LogementSocialData["yearsSummary"] = [];
   const files: Record<number, ArrStats> = {};
@@ -3058,16 +3299,24 @@ export function loadArrondissementLogement(
   };
 }
 
-export function loadBudgetPageData(requestedYear?: number): BudgetPageData {
-  const index = readJson<BudgetIndex>("budget_index.json");
+export function loadBudgetPageData(requestedYear?: number, city: string = "paris"): BudgetPageData {
+  const index = readJson<BudgetIndex>(cityJsonPath(city, "budget_index.json"));
   const year = requestedYear && index.availableYears.includes(requestedYear)
     ? requestedYear
     : index.latestYear;
-  const sankey = readJson<BudgetSankeyFull>(`budget_sankey_${year}.json`);
+  const sankey = readJson<BudgetSankeyFull>(cityJsonPath(city, `budget_sankey_${year}.json`));
+  const centralNode = centralNodeFor(city);
 
   const byYear = Object.fromEntries(index.summary.map((s) => [s.year, s]));
-  const ref = byYear[index.latestCompleteYear];
-  const previousYear = index.latestCompleteYear;
+  // Reference year for YoY deltas: prefer latestCompleteYear (Paris CA);
+  // fallback to most recent year strictly < year (cities with BP only, like
+  // Marseille v1).
+  const fallbackPrevYear = index.summary
+    .map((s) => s.year)
+    .filter((y) => y < year)
+    .sort((a, b) => b - a)[0];
+  const previousYear = index.latestCompleteYear ?? fallbackPrevYear ?? null;
+  const ref = previousYear ? byYear[previousYear] : undefined;
   const deltaDepensesPct = ref
     ? ((sankey.totals.depenses - ref.depenses) / ref.depenses) * 100
     : 0;
@@ -3082,10 +3331,10 @@ export function loadBudgetPageData(requestedYear?: number): BudgetPageData {
   // approximation : total recettes hors emprunts + recettes d'investissement
   // (FCTVA, cessions, subventions équipement) - fonctionnement.
   const emprunts = sankey.links
-    .filter((l) => l.source === "Emprunts" && l.target === "Budget Paris")
+    .filter((l) => l.source === "Emprunts" && l.target === centralNode)
     .reduce((s, l) => s + l.value, 0);
   const recettesInvest = sankey.links
-    .filter((l) => l.source === "Investissement" && l.target === "Budget Paris")
+    .filter((l) => l.source === "Investissement" && l.target === centralNode)
     .reduce((s, l) => s + l.value, 0);
   const epargneBrute = Math.max(0, sankey.totals.recettes - emprunts - recettesInvest - fonctionnement);
 
@@ -3093,16 +3342,16 @@ export function loadBudgetPageData(requestedYear?: number): BudgetPageData {
   // failure if absent (first year of the series).
   const prevDepByLabel = new Map<string, number>();
   try {
-    const prev = readJson<BudgetSankeyFull>(`budget_sankey_${year - 1}.json`);
+    const prev = readJson<BudgetSankeyFull>(cityJsonPath(city, `budget_sankey_${year - 1}.json`));
     for (const l of prev.links) {
-      if (l.source === "Budget Paris") prevDepByLabel.set(l.target, l.value);
+      if (l.source === centralNode) prevDepByLabel.set(l.target, l.value);
     }
   } catch {
     /* previous year unavailable */
   }
 
   const topDepenses = sankey.links
-    .filter((l) => l.source === "Budget Paris")
+    .filter((l) => l.source === centralNode)
     .map((l) => {
       const cat = sankey.bySection[l.target];
       const items = [
@@ -3122,7 +3371,7 @@ export function loadBudgetPageData(requestedYear?: number): BudgetPageData {
     .sort((a, b) => b.value - a.value);
 
   const recettesBreakdown = sankey.links
-    .filter((l) => l.target === "Budget Paris")
+    .filter((l) => l.target === centralNode)
     .map((l) => {
       const items = sankey.drilldown?.revenue?.[l.source] ?? [];
       // Keep raw names — the page splits N2/N3 for display.
@@ -3182,19 +3431,20 @@ export type BudgetPosteFiche = {
   subPostes: { name: string; value: number }[];
 };
 
-export function loadBudgetPoste(slug: string, requestedYear?: number): BudgetPosteFiche | null {
-  const index = readJson<BudgetIndex>("budget_index.json");
+export function loadBudgetPoste(slug: string, requestedYear?: number, city: string = "paris"): BudgetPosteFiche | null {
+  const index = readJson<BudgetIndex>(cityJsonPath(city, "budget_index.json"));
   const year = requestedYear && index.availableYears.includes(requestedYear)
     ? requestedYear
     : index.latestYear;
-  const sankey = readJson<BudgetSankeyFull>(`budget_sankey_${year}.json`);
+  const sankey = readJson<BudgetSankeyFull>(cityJsonPath(city, `budget_sankey_${year}.json`));
+  const centralNode = centralNodeFor(city);
 
   const depLink = sankey.links.find(
-    (l) => l.source === "Budget Paris" && slugifyLabel(l.target) === slug,
+    (l) => l.source === centralNode && slugifyLabel(l.target) === slug,
   );
   const recLink = !depLink
     ? sankey.links.find(
-        (l) => l.target === "Budget Paris" && slugifyLabel(l.source) === slug,
+        (l) => l.target === centralNode && slugifyLabel(l.source) === slug,
       )
     : null;
 
@@ -3223,11 +3473,11 @@ export function loadBudgetPoste(slug: string, requestedYear?: number): BudgetPos
   const previousYear = year - 1;
   let deltaPct: number | null = null;
   try {
-    const prev = readJson<BudgetSankeyFull>(`budget_sankey_${previousYear}.json`);
+    const prev = readJson<BudgetSankeyFull>(cityJsonPath(city, `budget_sankey_${previousYear}.json`));
     const prevLink =
       kind === "depense"
-        ? prev.links.find((l) => l.source === "Budget Paris" && l.target === label)
-        : prev.links.find((l) => l.target === "Budget Paris" && l.source === label);
+        ? prev.links.find((l) => l.source === centralNode && l.target === label)
+        : prev.links.find((l) => l.target === centralNode && l.source === label);
     if (prevLink && prevLink.value > 0) {
       deltaPct = ((total - prevLink.value) / prevLink.value) * 100;
     }
@@ -3277,8 +3527,8 @@ export type ThemeSubventionsFiche = {
 };
 
 /** Charge la fiche agrégée pour un thème (page + drawer intercepting). */
-export function loadThemeSubventions(slug: string, requestedYear?: number): ThemeSubventionsFiche | null {
-  const idx = readJson<SubvIndex>("subventions/index.json");
+export function loadThemeSubventions(slug: string, requestedYear?: number, city: string = "paris"): ThemeSubventionsFiche | null {
+  const idx = readJson<SubvIndex>(cityJsonPath(city, "subventions/index.json"));
   const years = idx.availableYears.slice().sort((a, b) => a - b);
   const yr = requestedYear && years.includes(requestedYear) ? requestedYear : years[years.length - 1];
   const prev = years[years.length - 2] ?? yr;
@@ -3299,7 +3549,7 @@ export function loadThemeSubventions(slug: string, requestedYear?: number): Them
 
   for (const y of years) {
     try {
-      const file = readJson<SubvBen>(`subventions/beneficiaires_${y}.json`);
+      const file = readJson<SubvBen>(cityJsonPath(city, `subventions/beneficiaires_${y}.json`));
       const yearAgg = { amount: 0, count: 0, benes: new Map<string, { amount: number; nb: number; direction: string | null; objet: string | null }>() };
       for (const b of file.data) {
         if (!matchTheme(b.thematique ?? null)) continue;

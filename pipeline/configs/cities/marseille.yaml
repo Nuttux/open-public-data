@@ -1,0 +1,71 @@
+# =============================================================================
+# Marseille — sources configuration
+#
+# Read by `pipeline/scripts/sync/sync_city.py marseille`.
+# Each source declares how to ingest one dataset into BigQuery `raw.marseille_*`.
+#
+# Source types:
+#   - datagouv_dataset : data.gouv.fr resource (CSV download via dataset slug)
+#   - ods_dataset      : OpenDataSoft API (e.g. data.ampmetropole.fr)
+#   - pdf_municipal    : PDF download + text extraction (parsed in-session)
+#
+# Decision reference: project_marseille_v1_decisions (PA.2)
+# =============================================================================
+
+city_slug: marseille
+city_name: Marseille
+siren_collectivite: "211300553"
+siret_principal: "21130055300016"
+code_insee: "13055"
+codes_insee_arrondissements:
+  ["13201", "13202", "13203", "13204", "13205", "13206", "13207", "13208",
+   "13209", "13210", "13211", "13212", "13213", "13214", "13215", "13216"]
+
+# BigQuery destination dataset for raw tables.
+# All tables created here will be prefixed with `marseille_`.
+bq_raw_dataset: raw
+
+sources:
+  # ---------------------------------------------------------------------------
+  # Budget primitif (BP) — annuel 2018-2024
+  # Schema: "Doc","Exercice","Budget","Section","Inscription","Type mvt",
+  #         "Chap","Lib Chap","Nature","Lib. article / nature","Montant BP en euros"
+  # Grain: une ligne par (annee, section, sens, chap, nature)
+  # ---------------------------------------------------------------------------
+  - id: marseille_budget_primitif
+    target_table: marseille_budget_primitif
+    type: datagouv_dataset
+    description: "Budget primitif Marseille (M57, par nature)"
+    slug_pattern: "marseille-budget-primitif-{year}"
+    years: [2018, 2019, 2020, 2021, 2022, 2023, 2024]
+    csv_encoding: "utf-8"
+    csv_separator: ","
+    add_year_column: false  # year already in CSV via Exercice column
+
+  # ---------------------------------------------------------------------------
+  # Compte administratif (CA) — annuel 2018-2022 (PDF only après)
+  # ⚠ 2 schémas selon année (cf. docs/marseille-data-inventory.md)
+  #   2018-2019 : "Exercice budgétaire,Budget,Section,Inscription,Type mvt,Chap,Nature,Alloué,Réalisé"
+  #   2020+     : "BGT_NATDEC,BGT_ANNEE,BGT_SIRET,BGT_NOM,BGT_CONTNAT,BGT_CONTNAT_LABEL,..."
+  # Le stg `stg_marseille_budget` gère les 2 schémas.
+  # ---------------------------------------------------------------------------
+  - id: marseille_compte_administratif
+    target_table: marseille_compte_administratif
+    type: datagouv_dataset
+    description: "Compte administratif Marseille (M57, par nature) — 2 schémas"
+    slug_pattern: "marseille-compte-administratif-{year}"
+    years: [2018, 2019, 2020, 2021, 2022]
+    csv_encoding: "utf-8"
+    csv_separator: ","
+    add_year_column: false  # year encoded in source column (BGT_ANNEE or Exercice)
+    # Note: schemas vary across years — staging layer normalises.
+
+  # ---------------------------------------------------------------------------
+  # Sources NON incluses dans le POC (à activer plus tard) :
+  # ---------------------------------------------------------------------------
+  # - marseille_subventions_ville     (datagouv, marseille-subventions-{year}, 2017-2022)
+  # - marseille_subventions_metropole (ods, data.ampmetropole.fr, subventions-attribuees-depuis-2022)
+  # - marseille_marches_ville         (datagouv, marseille-marches-publics-1, 2020 only)
+  # - marseille_deliberations         (datagouv, marseille-deliberations-{year}, 2019/2021/2024)
+  # - marseille_pdf_ca                (pdf_municipal, marseille.fr CA reports 2019-2024)
+  # - marseille_amp_logement          (ods, data.ampmetropole.fr, parc-locatif-social, sru-taux)

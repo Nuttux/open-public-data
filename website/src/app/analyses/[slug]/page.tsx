@@ -67,6 +67,7 @@ export default async function AnalyseArticlePage({ params }: { params: Promise<P
   return (
     <div className="theme-fusion">
       <Navbar />
+      <main id="main-content" tabIndex={-1}>
 
       <section className="fx-page-header">
         <div className="fx-wrap">
@@ -109,6 +110,7 @@ export default async function AnalyseArticlePage({ params }: { params: Promise<P
         </article>
       </div>
 
+      </main>
       <Footer />
     </div>
   );

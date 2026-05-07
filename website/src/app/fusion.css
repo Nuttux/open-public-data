@@ -731,6 +731,100 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   .theme-fusion .fx-br-bar { height: 10px; }
 }
 
+/* ───── BarRow institutional fills (Sécu/État/Local) ──── */
+/* Aligné sur la palette Daily Bread `--p-secu`/`--p-etat`/`--p-local` —
+   les variables sont locales à `theme-fusion` mais reprennent les mêmes
+   valeurs hex (#2a3680 / #1a1d26 / #c12323) pour garantir la cohérence
+   visuelle inter-pages. Le hover passe à la teinte institutionnelle au
+   lieu du `--bleu-vif` neutre. */
+.theme-fusion .fx-barbox-c-secu .fx-br-fill { background: #2a3680; }
+.theme-fusion .fx-barbox-c-etat .fx-br-fill { background: #1a1d26; }
+.theme-fusion .fx-barbox-c-local .fx-br-fill { background: #c12323; }
+.theme-fusion .fx-barbox-c-secu a.fx-br-row:hover .fx-br-fill { background: #1c2459; }
+.theme-fusion .fx-barbox-c-etat a.fx-br-row:hover .fx-br-fill { background: #0a0b10; }
+.theme-fusion .fx-barbox-c-local a.fx-br-row:hover .fx-br-fill { background: #8d1818; }
+.theme-fusion .fx-barbox-c-secu a.fx-br-row::after { color: #2a3680; }
+.theme-fusion .fx-barbox-c-etat a.fx-br-row::after { color: #1a1d26; }
+.theme-fusion .fx-barbox-c-local a.fx-br-row::after { color: #c12323; }
+
+/* ───── BarRow stagger reveal-on-scroll ───────────────── */
+/* État initial = barre compressée à scaleX(0) depuis la gauche, puis
+   chaque row entre en cascade (delay = `--row-i` × 80ms) quand le
+   `fx-barbox-reveal` reçoit `.is-revealed`. Mirroir de la cinétique
+   Daily Bread (cf. `db-stack-tri.is-revealed`).
+   Régression zéro : pas armée tant que `is-revealed` absent → l'observer
+   pose la classe au scroll-in. Si JS off, l'observer n'attache jamais →
+   la barre reste à scaleX(0). On scope donc la règle initiale sous
+   `.is-armed` (posée côté client via `useRevealOnScroll` sur le wrapper).
+   Comme on ne peut pas garantir le `is-armed`, on bascule sur une stratégie
+   plus simple : l'animation est portée par `.fx-barbox-reveal:not(.is-revealed)`
+   uniquement et on accepte que SSR rende l'état initial — au mount,
+   l'observer pose immédiatement `is-revealed` si visible (cf. hook).
+   Pour les utilisateurs sans JS, la règle `prefers-reduced-motion` les
+   met dans le même état que `.is-revealed` (snap direct). */
+.theme-fusion .fx-barbox-reveal .fx-br-fill {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: calc(var(--row-i, 0) * 80ms);
+}
+.theme-fusion .fx-barbox-reveal .fx-br-row {
+  opacity: 0;
+  transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: calc(var(--row-i, 0) * 80ms);
+}
+.theme-fusion .fx-barbox-reveal.is-revealed .fx-br-fill { transform: scaleX(1); }
+.theme-fusion .fx-barbox-reveal.is-revealed .fx-br-row { opacity: 1; }
+
+/* ───── Generic reveal-on-scroll for sections ───────── */
+.theme-fusion .fx-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+.theme-fusion .fx-reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* CTA section warm bg — porting the inline style we replaced when we
+   wrapped §08 dans `<RevealOnScroll>` (les sections custom acceptent
+   className mais l'inline `background` était plus simple — on le scope ici
+   pour que `RevealOnScroll` reste neutre). */
+.theme-fusion .fx-section-cta-warm { background: var(--bg-warm); }
+
+/* ───── Method note (italic mono small + ocre side rule) ─ */
+/* Mirroir de `.db-p-zoom-method-note` (Daily Bread). Utilisé pour les
+   notes méthodo §04/§05 du Budget Explorer. */
+.theme-fusion .fx-method-note {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+  border-left: 2px solid var(--ocre);
+  padding-left: 14px;
+  line-height: 1.55;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+/* ───── Reduced motion : snap reveals ──────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .theme-fusion .fx-reveal,
+  .theme-fusion .fx-reveal.is-revealed,
+  .theme-fusion .fx-barbox-reveal .fx-br-fill,
+  .theme-fusion .fx-barbox-reveal .fx-br-row,
+  .theme-fusion .fx-barbox-reveal.is-revealed .fx-br-fill,
+  .theme-fusion .fx-barbox-reveal.is-revealed .fx-br-row {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 /* ───── TILE CARD ─────────────────────────────────────── */
 .theme-fusion .fx-grid-tiles {
   display: grid;
@@ -790,6 +884,28 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 }
 .theme-fusion .fx-tile-n { color: var(--ocre); font-weight: 500; }
 .theme-fusion .fx-tile-kind { color: var(--muted); }
+
+/* Institution tiles (Sécu/État/Local) — préserver la couleur signature de
+ * l'eyebrow au hover (sinon le hover global rend l'eyebrow rouge sur fond
+ * noir, ce qui crée une incohérence visuelle entre les 3 cards si l'une
+ * est survolée et pas les autres). On garde un hover plus discret : le
+ * border accent passe à la couleur signature, pas le fond entier. */
+.theme-fusion .fx-tile-institution {
+  border: 1px solid transparent;
+  transition: background .15s, color .15s, border-color .15s;
+}
+.theme-fusion .fx-tile-institution:hover {
+  background: var(--bg);
+  color: inherit;
+  border-color: var(--inst-color, var(--ink));
+}
+.theme-fusion .fx-tile-institution:hover .fx-tile-n {
+  /* Inline style on the span sets the institution colour — let it win. */
+  color: var(--inst-color, var(--ocre)) !important;
+}
+.theme-fusion .fx-tile-institution:hover .fx-tile-kind {
+  color: var(--muted);
+}
 .theme-fusion .fx-tile-preview {
   flex: 1;
   display: flex;
@@ -910,7 +1026,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion .fx-foot { padding: 56px 0 36px; border-top: 1px solid var(--ink); }
 .theme-fusion .fx-foot-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr;
   gap: 40px;
   padding-bottom: 28px;
   border-bottom: 1px solid var(--ink);
@@ -956,9 +1072,14 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   letter-spacing: .04em;
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 16px 24px;
 }
+.theme-fusion .fx-foot-legal { display: flex; gap: 14px; flex-wrap: wrap; }
+.theme-fusion .fx-foot-legal a { color: var(--muted); }
+.theme-fusion .fx-foot-legal a:hover { color: var(--bleu); }
+.theme-fusion .fx-foot-license { max-width: 100%; }
 
 /* Replay opt-in widget in footer */
 .theme-fusion .fx-foot-optin {
@@ -1009,6 +1130,8 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   .theme-fusion .fx-foot { padding: 40px 0 24px; }
   .theme-fusion .fx-foot-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
   .theme-fusion .fx-foot-word { font-size: 28px; }
+  .theme-fusion .fx-foot-legal { flex-direction: column; gap: 8px; }
+  .theme-fusion .fx-foot-legal span[aria-hidden="true"] { display: none; }
 }
 
 /* Timeline chart wrapper */
@@ -9563,9 +9686,20 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   letter-spacing: 0.02em;
 }
 
-/* Sub-row €/mois personnel à côté du % enfant. */
+/* Sub-row : Md€ national + €/mois personnel à côté du % enfant.
+ * Layout 5 cols : annual (Md€) | pct | name | monthly (€/mois) | chevron.
+ * Le Md€ vient EN PREMIER (lecture la plus saillante), le % en second.
+ * Les colonnes auto se collapsent si la cellule est absente (sans data). */
 .theme-fusion .db-fiche-child {
-  grid-template-columns: 48px 1fr auto auto;
+  grid-template-columns: 84px 48px 1fr auto auto;
+}
+.theme-fusion .db-fiche-child-annual {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+  letter-spacing: 0.01em;
 }
 .theme-fusion .db-fiche-child-monthly {
   font-family: var(--f-mono);
@@ -9576,7 +9710,15 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   letter-spacing: 0.01em;
 }
 .theme-fusion .db-fiche-agg-card {
-  grid-template-columns: 56px 1fr auto auto;
+  grid-template-columns: 84px 56px 1fr auto auto;
+}
+.theme-fusion .db-fiche-agg-card-annual {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+  letter-spacing: 0.01em;
 }
 .theme-fusion .db-fiche-agg-card-monthly {
   font-family: var(--f-mono);
@@ -9587,11 +9729,37 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   letter-spacing: 0.01em;
 }
 
+/* Variantes context-aware (Fix 1 — drawer voice perso/impersonal).
+ * Le composant ajoute une classe modifier sur la liste parent (UL) pour
+ * adapter la grille selon les colonnes effectivement rendues :
+ *   - monthly-only      : voice perso (€/mois only, pas de % ni Md€)
+ *   - annual-only       : voice impersonal sans profil (Md€ only)
+ *   - annual-monthly    : voice impersonal + profil cross-link (Md€ + €/mois)
+ * Le % reste TOUJOURS dans le lead header (info de contexte parent). */
+.theme-fusion .db-fiche-children-monthly-only .db-fiche-child {
+  grid-template-columns: 1fr auto auto;
+}
+.theme-fusion .db-fiche-children-annual-only .db-fiche-child {
+  grid-template-columns: 84px 1fr auto;
+}
+.theme-fusion .db-fiche-children-annual-monthly .db-fiche-child {
+  grid-template-columns: 84px 1fr auto auto;
+}
+.theme-fusion .db-fiche-agg-grid.db-fiche-children-monthly-only .db-fiche-agg-card {
+  grid-template-columns: 1fr auto auto;
+}
+.theme-fusion .db-fiche-agg-grid.db-fiche-children-annual-only .db-fiche-agg-card {
+  grid-template-columns: 84px 1fr auto;
+}
+.theme-fusion .db-fiche-agg-grid.db-fiche-children-annual-monthly .db-fiche-agg-card {
+  grid-template-columns: 84px 1fr auto auto;
+}
+
 @media (max-width: 640px) {
   .theme-fusion .db-fiche-lead-pct { font-size: 24px; }
   .theme-fusion .db-fiche-lead-name { font-size: 15.5px; }
   .theme-fusion .db-fiche-child {
-    grid-template-columns: 44px 1fr auto;
+    grid-template-columns: 76px 44px 1fr auto;
     padding: 9px 12px;
     row-gap: 4px;
   }
@@ -9606,7 +9774,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
     grid-template-columns: 1fr;
   }
   .theme-fusion .db-fiche-agg-card {
-    grid-template-columns: 48px 1fr auto;
+    grid-template-columns: 48px auto 1fr auto;
     padding: 11px 13px;
     row-gap: 4px;
   }
@@ -9622,6 +9790,45 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   }
   .theme-fusion .db-fiche-amount-row-personal .db-fiche-amount-val {
     font-size: 20px;
+  }
+  /* Variantes context-aware mobile : ajustent grid + comportement wrap
+   * du €/mois selon la voice. */
+  .theme-fusion .db-fiche-children-monthly-only .db-fiche-child {
+    grid-template-columns: 1fr auto auto;
+    row-gap: 4px;
+  }
+  .theme-fusion .db-fiche-children-monthly-only .db-fiche-child-monthly {
+    grid-column: auto;
+    margin-top: 0;
+  }
+  .theme-fusion .db-fiche-children-annual-only .db-fiche-child {
+    grid-template-columns: 76px 1fr auto;
+    row-gap: 4px;
+  }
+  .theme-fusion .db-fiche-children-annual-monthly .db-fiche-child {
+    grid-template-columns: 76px 1fr auto;
+    row-gap: 4px;
+  }
+  .theme-fusion .db-fiche-children-annual-monthly .db-fiche-child-monthly {
+    grid-column: 1 / -1;
+    margin-top: 2px;
+  }
+  .theme-fusion .db-fiche-agg-grid.db-fiche-children-monthly-only .db-fiche-agg-card {
+    grid-template-columns: 1fr auto auto;
+  }
+  .theme-fusion .db-fiche-agg-grid.db-fiche-children-monthly-only .db-fiche-agg-card-monthly {
+    grid-column: auto;
+    margin-top: 0;
+  }
+  .theme-fusion .db-fiche-agg-grid.db-fiche-children-annual-only .db-fiche-agg-card {
+    grid-template-columns: 56px 1fr auto;
+  }
+  .theme-fusion .db-fiche-agg-grid.db-fiche-children-annual-monthly .db-fiche-agg-card {
+    grid-template-columns: 56px 1fr auto;
+  }
+  .theme-fusion .db-fiche-agg-grid.db-fiche-children-annual-monthly .db-fiche-agg-card-monthly {
+    grid-column: 1 / -1;
+    margin-top: 2px;
   }
 }
 
@@ -10263,7 +10470,737 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   line-height: 1.4;
   color: var(--p-ink-2);
   max-width: 640px;
+  margin: 32px 0 0;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   Hero éditable NYT-style (fusion §00 + §01) — fold redesign
+   ──────────────────────────────────────────────────────────────────────
+   Layout : grid 2 colonnes desktop (texte gauche, big number aside-droite)
+   stacké en mobile. Les inputs (salaire, parts, commune) sont DANS le
+   texte du hero, sous forme de spans cliquables (popover/sheet).
+   ══════════════════════════════════════════════════════════════════════ */
+
+.theme-db-scrolly .db-p-hero-edit { background: var(--p-ivoire); }
+/* Fix 10 : row-gap 40px pour respiration entre la phrase éditable et le block
+   aside-droit. La row "eyebrow" a été retirée (Fix 8 : doublon avec la phrase). */
+.theme-db-scrolly .db-p-hero-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(280px, 1fr);
+  grid-template-areas:
+    "num cta"
+    "text aside"
+    "advanced advanced"
+    "openfisca openfisca"
+    "deck deck"
+    "foot foot";
+  column-gap: 56px;
+  row-gap: 40px;
+}
+.theme-db-scrolly .db-p-hero-num-top { grid-area: num; margin-bottom: 0; }
+.theme-db-scrolly .db-p-hero-cta-area {
+  grid-area: cta;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+.theme-db-scrolly .db-p-hero-edit .db-p-hero-eyebrow {
+  grid-area: eyebrow;
+  margin-bottom: 0;
+}
+.theme-db-scrolly .db-p-hero-text {
+  grid-area: text;
+  font-family: var(--pf-disp);
+  font-weight: 700;
+  font-size: clamp(36px, 4.4vw, 60px);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: var(--p-ink);
   margin: 0;
+  max-width: 100%;
+}
+.theme-db-scrolly .db-p-hero-text em,
+.theme-db-scrolly .db-p-hero-result {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--p-accent);
+  letter-spacing: -0.01em;
+}
+/* Fix 4 : le résultat ("907 €") reste en display bold ink — punch HERO,
+   contraste fort avec la suite italic ocre. */
+.theme-db-scrolly .db-p-hero-result-num {
+  font-family: var(--pf-disp);
+  font-weight: 700;
+  color: var(--p-ink);
+  font-style: normal;
+  letter-spacing: -0.025em;
+  margin-right: 0.18em;
+}
+.theme-db-scrolly .db-p-hero-aside {
+  grid-area: aside;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-self: start;
+  padding-top: 4px;
+}
+.theme-db-scrolly .db-p-hero-bignum {
+  font-family: var(--pf-disp);
+  font-weight: 700;
+  font-size: clamp(72px, 8.5vw, 132px);
+  line-height: 0.88;
+  letter-spacing: -0.06em;
+  color: var(--p-ink);
+  margin: 0;
+}
+.theme-db-scrolly .db-p-hero-bignum-eur {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.32em;
+  color: var(--p-muted);
+  margin-left: 6px;
+  vertical-align: 0.55em;
+}
+.theme-db-scrolly .db-p-hero-aside .db-p-hero-meta {
+  padding: 0;
+  border-top: 0.5px solid var(--p-rule-strong);
+  padding-top: 14px;
+}
+/* Fix 1 : ligne meta inline ultra-compacte sous le big number — remplace le
+   couple header orphelin "PAR MOIS — SOIT" + "10 879 € par an". */
+.theme-db-scrolly .db-p-hero-meta-inline {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: var(--pf-mono);
+  font-size: 12px;
+  letter-spacing: .04em;
+  color: var(--p-muted);
+  margin: -6px 0 0;
+  padding: 0;
+}
+.theme-db-scrolly .db-p-hero-meta-inline-unit {
+  color: var(--p-muted);
+  text-transform: lowercase;
+  letter-spacing: .02em;
+}
+.theme-db-scrolly .db-p-hero-meta-inline-sep {
+  color: var(--p-rule-strong);
+}
+.theme-db-scrolly .db-p-hero-meta-inline-year {
+  color: var(--p-ink-2);
+  font-weight: 500;
+  letter-spacing: .02em;
+}
+/* Tagline italic ocre déplacée depuis la phrase <h1> — caption sous le big
+   number (évite la duplication du chiffre + "financent chaque mois..."
+   dans la phrase ET dans l'aside). */
+.theme-db-scrolly .db-p-hero-result-caption {
+  display: block;
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(20px, 1.4vw, 26px);
+  line-height: 1.25;
+  color: var(--p-ink);
+  margin: 4px 0 12px;
+  letter-spacing: -0.005em;
+  max-width: 18ch;
+}
+@media (max-width: 880px) {
+  .theme-db-scrolly .db-p-hero-result-caption {
+    font-size: 19px;
+    max-width: none;
+  }
+}
+
+/* Fix 5 : mini stack bar (composition des prélèvements) */
+.theme-db-scrolly .db-p-hero-compo {
+  border-top: 0.5px solid var(--p-rule-strong);
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.theme-db-scrolly .db-p-hero-compo-label {
+  font-family: var(--pf-mono);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--p-muted);
+  margin: 0;
+}
+.theme-db-scrolly .db-p-hero-compo-bar {
+  display: flex;
+  width: 100%;
+  height: 8px;
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--p-rule);
+}
+.theme-db-scrolly .db-p-hero-compo-seg {
+  display: block;
+  height: 100%;
+  min-width: 1px;
+  transition: flex-grow 0.35s ease;
+}
+.theme-db-scrolly .db-p-hero-compo-seg + .db-p-hero-compo-seg {
+  border-left: 1px solid var(--p-paper);
+}
+.theme-db-scrolly .db-p-hero-compo-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  font-family: var(--pf-mono);
+  font-size: 11px;
+  color: var(--p-ink-2);
+  letter-spacing: .02em;
+}
+.theme-db-scrolly .db-p-hero-compo-legend li {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+}
+.theme-db-scrolly .db-p-hero-compo-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 1px;
+  transform: translateY(1px);
+  flex-shrink: 0;
+}
+.theme-db-scrolly .db-p-hero-compo-legend-lbl {
+  color: var(--p-muted);
+}
+.theme-db-scrolly .db-p-hero-compo-legend-val {
+  color: var(--p-ink);
+  font-weight: 500;
+}
+.theme-db-scrolly .db-p-hero-compo-multi {
+  font-family: var(--pf-mono);
+  font-size: 12px;
+  color: var(--p-ink-2);
+  margin: 0;
+  letter-spacing: .02em;
+  line-height: 1.6;
+}
+.theme-db-scrolly .db-p-hero-compo-multi .lite {
+  font-weight: 400;
+  color: var(--p-muted);
+}
+
+/* Fix 6 : chips ESSAIS RAPIDES — compact, tiennent sur 1 ligne en desktop. */
+.theme-db-scrolly .db-p-hero-presets {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 0.5px solid var(--p-rule);
+}
+.theme-db-scrolly .db-p-hero-presets-label {
+  font-family: var(--pf-mono);
+  font-size: 9.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--p-muted-2);
+  flex-basis: 100%;
+  margin-bottom: 4px;
+}
+.theme-db-scrolly .db-p-hero-preset {
+  background: transparent;
+  border: 1px solid var(--p-rule-strong);
+  padding: 5px 8px;
+  font-family: var(--pf-mono);
+  font-size: 10px;
+  color: var(--p-ink-2);
+  cursor: pointer;
+  letter-spacing: .03em;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.theme-db-scrolly .db-p-hero-preset:hover {
+  background: var(--p-paper);
+  border-color: var(--p-ink);
+}
+.theme-db-scrolly .db-p-hero-preset.is-active {
+  background: var(--p-ink);
+  color: var(--p-paper);
+  border-color: var(--p-ink);
+}
+
+/* CTA "Affiner OpenFisca" : bouton secondaire discret, top-right */
+.theme-db-scrolly .db-p-hero-cta-affine {
+  background: transparent;
+  border: 1px solid var(--p-rule-strong);
+  padding: 8px 14px;
+  font-family: var(--pf-mono);
+  font-size: 11px;
+  letter-spacing: .04em;
+  color: var(--p-ink-2);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.theme-db-scrolly .db-p-hero-cta-affine:hover:not(:disabled) {
+  background: var(--p-paper);
+  border-color: var(--p-ink);
+  color: var(--p-ink);
+}
+.theme-db-scrolly .db-p-hero-cta-affine:disabled {
+  opacity: 0.65;
+  cursor: default;
+}
+.theme-db-scrolly .db-p-hero-cta-affine[data-state="active"] {
+  background: var(--p-ink);
+  color: var(--p-paper);
+  border-color: var(--p-ink);
+}
+
+/* Fix 7 : CTA jump discret en bas de la colonne aside-droite — équilibre
+   visuel avec la colonne gauche, plus dense. */
+.theme-db-scrolly .db-p-hero-cta-jump {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-top: 6px;
+  font-family: var(--pf-mono);
+  font-size: 11px;
+  letter-spacing: .04em;
+  color: var(--p-muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  align-self: flex-start;
+  transition: color 0.15s, border-color 0.15s;
+}
+.theme-db-scrolly .db-p-hero-cta-jump:hover,
+.theme-db-scrolly .db-p-hero-cta-jump:focus-visible {
+  color: var(--p-accent);
+  border-bottom-color: var(--p-accent);
+  outline: none;
+}
+
+/* Drawer "ajustements avancés" — discret par défaut */
+.theme-db-scrolly .db-p-hero-advanced {
+  grid-area: advanced;
+  margin: 8px 0 0;
+  border-top: 1px solid var(--p-rule);
+  padding-top: 18px;
+  max-width: 880px;
+}
+.theme-db-scrolly .db-p-hero-advanced-summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--pf-mono);
+  font-size: 11.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--p-ink-2);
+  padding: 6px 0;
+  user-select: none;
+  max-width: 480px;
+}
+.theme-db-scrolly
+  .db-p-hero-advanced-summary::-webkit-details-marker {
+  display: none;
+}
+.theme-db-scrolly .db-p-hero-advanced-chevron {
+  font-size: 14px;
+  transition: transform 0.2s;
+}
+.theme-db-scrolly .db-p-hero-advanced[open] .db-p-hero-advanced-chevron {
+  transform: rotate(180deg);
+}
+.theme-db-scrolly .db-p-hero-advanced-help {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--p-muted);
+  margin: 8px 0 16px;
+  max-width: 640px;
+}
+.theme-db-scrolly .db-p-hero-advanced-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 28px;
+  padding: 8px 0 16px;
+  border-bottom: 1px solid var(--p-rule);
+  margin-bottom: 16px;
+}
+.theme-db-scrolly .db-p-hero-advanced-tf {
+  border-bottom: 0;
+  padding-top: 0;
+}
+
+/* OpenFisca caveat sous le hero — ton plus discret */
+.theme-db-scrolly .db-p-hero-openfisca-note {
+  grid-area: openfisca;
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--p-muted);
+  max-width: 720px;
+  margin: 0;
+  padding: 12px 0 0;
+  border-top: 0.5px solid var(--p-rule);
+}
+.theme-db-scrolly .db-p-hero-edit .db-p-hero-deck { grid-area: deck; }
+.theme-db-scrolly .db-p-hero-edit .db-panel-foot-cue { grid-area: foot; }
+
+/* ── Mobile : single column, big number sous le texte ── */
+@media (max-width: 880px) {
+  .theme-db-scrolly .db-p-hero-wrap {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "num"
+      "text"
+      "aside"
+      "cta"
+      "advanced"
+      "openfisca"
+      "deck"
+      "foot";
+    column-gap: 0;
+    row-gap: 24px;
+  }
+  .theme-db-scrolly .db-p-hero-cta-area {
+    justify-content: flex-start;
+  }
+  .theme-db-scrolly .db-p-hero-text {
+    font-size: clamp(28px, 7vw, 40px);
+    line-height: 1.18;
+  }
+  .theme-db-scrolly .db-p-hero-bignum {
+    font-size: clamp(64px, 18vw, 116px);
+  }
+  .theme-db-scrolly .db-p-hero-advanced-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .theme-db-scrolly .db-p-hero-edit .db-p-hero-deck {
+    font-size: 17px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   EditableInlineSpan — span cliquable + popover/sheet
+   ══════════════════════════════════════════════════════════════════════ */
+
+.theme-db-scrolly .db-editable-wrap {
+  position: relative;
+  display: inline-block;
+}
+.theme-db-scrolly .db-editable-span {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  /* Underline pointillée fine (look NYT, pas "lien web 2003"). */
+  text-decoration: underline dotted var(--p-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  padding: 0 4px;
+  border-radius: 4px;
+  transition: background 0.12s ease, color 0.12s ease;
+  font-family: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+}
+.theme-db-scrolly .db-editable-span:hover {
+  background: rgba(166, 118, 56, 0.10);
+  color: var(--p-accent);
+}
+.theme-db-scrolly .db-editable-span:focus-visible {
+  outline: 2px solid var(--p-accent);
+  outline-offset: 3px;
+  background: rgba(166, 118, 56, 0.10);
+}
+.theme-db-scrolly .db-editable-span[aria-expanded="true"] {
+  background: rgba(166, 118, 56, 0.14);
+  color: var(--p-accent);
+}
+/* Chevron SVG inline — scale avec le texte (em), tight gap, ocre.
+   width/height en em pour que le chevron grossisse avec le hero text
+   plutôt que de rester un petit point flottant à côté d'un mot 60px. */
+.theme-db-scrolly .db-editable-span-chevron {
+  display: inline-block;
+  color: var(--p-accent);
+  width: 0.45em;
+  height: 0.45em;
+  /* nudge pour aligner le centre du chevron avec la x-height de la majuscule */
+  transform: translateY(-0.18em);
+  flex-shrink: 0;
+}
+
+.theme-db-scrolly .db-editable-popover {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 60;
+  background: var(--p-paper);
+  border: 1px solid var(--p-rule-strong);
+  border-radius: 8px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.14);
+  padding: 18px;
+  min-width: 280px;
+  max-width: 360px;
+  font-family: var(--pf-ui);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--p-ink);
+  letter-spacing: 0;
+  line-height: 1.4;
+  font-style: normal;
+  text-decoration: none;
+}
+.theme-db-scrolly .db-editable-popover-label {
+  font-family: var(--pf-mono);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--p-muted);
+  margin: 0 0 10px;
+}
+.theme-db-scrolly .db-editable-popover-input-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  border-bottom: 1px solid var(--p-ink);
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+}
+.theme-db-scrolly .db-editable-popover-input {
+  font-family: var(--pf-disp);
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: -0.02em;
+  color: var(--p-ink);
+  border: 0;
+  background: transparent;
+  padding: 0;
+  outline: none;
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.theme-db-scrolly .db-editable-popover-suffix {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--p-muted);
+  white-space: nowrap;
+}
+.theme-db-scrolly .db-editable-popover-slider {
+  width: 100%;
+  margin: 4px 0 14px;
+  accent-color: var(--p-accent);
+}
+.theme-db-scrolly .db-editable-popover-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.theme-db-scrolly .db-editable-popover-preset {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  background: transparent;
+  border: 1px solid var(--p-rule-strong);
+  padding: 6px 10px;
+  font-family: var(--pf-ui);
+  cursor: pointer;
+  transition: all 0.12s;
+  border-radius: 4px;
+}
+.theme-db-scrolly .db-editable-popover-preset:hover {
+  border-color: var(--p-ink);
+  background: var(--p-ivoire);
+}
+.theme-db-scrolly .db-editable-popover-preset.is-active {
+  background: var(--p-ink);
+  color: var(--p-paper);
+  border-color: var(--p-ink);
+}
+.theme-db-scrolly .db-editable-popover-preset .lbl {
+  font-size: 10px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  font-family: var(--pf-mono);
+  color: var(--p-muted);
+}
+.theme-db-scrolly .db-editable-popover-preset.is-active .lbl {
+  color: rgba(255, 255, 255, 0.7);
+}
+.theme-db-scrolly .db-editable-popover-preset .val {
+  font-family: var(--pf-disp);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  color: var(--p-ink);
+}
+.theme-db-scrolly .db-editable-popover-preset.is-active .val {
+  color: var(--p-paper);
+}
+.theme-db-scrolly .db-editable-popover-foot {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+.theme-db-scrolly .db-editable-popover-done {
+  background: var(--p-ink);
+  color: var(--p-paper);
+  border: 0;
+  padding: 8px 18px;
+  font-family: var(--pf-disp);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 4px;
+  letter-spacing: 0;
+}
+.theme-db-scrolly .db-editable-popover-done:hover { opacity: 0.9; }
+
+/* Variant select : liste d'options */
+.theme-db-scrolly .db-editable-popover-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+.theme-db-scrolly .db-editable-popover-option {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  padding: 9px 10px;
+  font-family: var(--pf-ui);
+  font-size: 14px;
+  color: var(--p-ink);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.1s;
+}
+.theme-db-scrolly .db-editable-popover-option:hover {
+  background: var(--p-ivoire);
+}
+.theme-db-scrolly .db-editable-popover-option.is-active {
+  background: var(--p-ink);
+  color: var(--p-paper);
+  font-weight: 600;
+}
+
+/* Variant commune : search + autocomplete */
+.theme-db-scrolly .db-editable-popover-commune {
+  min-width: 320px;
+}
+.theme-db-scrolly .db-editable-popover-search {
+  width: 100%;
+  font-family: var(--pf-ui);
+  font-size: 15px;
+  color: var(--p-ink);
+  border: 0;
+  border-bottom: 1px solid var(--p-ink);
+  background: transparent;
+  padding: 6px 0;
+  outline: none;
+  margin-bottom: 12px;
+  border-radius: 0;
+  letter-spacing: 0;
+}
+.theme-db-scrolly .db-editable-popover-search:focus {
+  border-bottom-color: var(--p-accent);
+}
+.theme-db-scrolly .db-editable-popover-hits {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 280px;
+  overflow-y: auto;
+}
+.theme-db-scrolly .db-editable-popover-hit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-family: var(--pf-ui);
+  border-radius: 4px;
+  transition: background 0.1s;
+}
+.theme-db-scrolly .db-editable-popover-hit:hover {
+  background: var(--p-ivoire);
+}
+.theme-db-scrolly .db-editable-popover-hit-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--p-ink);
+}
+.theme-db-scrolly .db-editable-popover-hit-meta {
+  font-family: var(--pf-mono);
+  font-size: 11px;
+  color: var(--p-muted);
+  margin-top: 2px;
+}
+.theme-db-scrolly .db-editable-popover-help {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-size: 12px;
+  color: var(--p-muted);
+  margin: 12px 0 0;
+}
+.theme-db-scrolly .db-editable-popover-empty {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--p-muted);
+  text-align: center;
+  margin: 16px 0;
+}
+
+/* Mobile : popover devient sheet bottom plein écran */
+@media (max-width: 600px) {
+  .theme-db-scrolly .db-editable-popover {
+    position: fixed;
+    inset: auto 0 0 0;
+    top: auto;
+    left: 0;
+    right: 0;
+    border-radius: 18px 18px 0 0;
+    padding: 24px 22px 28px;
+    box-shadow: 0 -10px 44px rgba(0, 0, 0, 0.20);
+    max-width: 100%;
+    min-width: 0;
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+  .theme-db-scrolly .db-editable-popover-input { font-size: 28px; }
 }
 
 /* ── Share FAB sticky bottom-right ── */
@@ -10653,6 +11590,45 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   font-weight: 700;
   color: var(--p-ink);
 }
+
+/* ── Hiérarchie inversée (2026-05) : €/mois display, % en secondaire.
+ * Convention : absolu d'abord (display large), pct en line secondaire.
+ * Voir DailyBreadClient hero §03/04/05. */
+.theme-db-scrolly .db-p-zoom-eur {
+  font-family: var(--pf-disp);
+  font-weight: 700;
+  font-size: 168px;
+  line-height: 0.88;
+  letter-spacing: -0.05em;
+  margin: 0 0 16px;
+}
+.theme-db-scrolly .db-p-zoom-eur .eur-unit {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.28em;
+  color: var(--p-muted);
+  margin-left: 12px;
+  vertical-align: 0.55em;
+  letter-spacing: 0;
+}
+.theme-db-scrolly .db-p-zoom-eur.c-secu { color: var(--p-secu); }
+.theme-db-scrolly .db-p-zoom-eur.c-etat { color: var(--p-etat); }
+.theme-db-scrolly .db-p-zoom-eur.c-local { color: var(--p-local); }
+.theme-db-scrolly .db-p-zoom-pct-line {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--p-muted);
+  margin: 0 0 40px;
+  line-height: 1.3;
+}
+.theme-db-scrolly .db-p-zoom-pct-line b {
+  font-family: var(--pf-disp);
+  font-style: normal;
+  font-weight: 700;
+  color: var(--p-ink);
+}
 .theme-db-scrolly .db-p-zoom-deck {
   font-family: var(--pf-serif);
   font-size: 21px;
@@ -10673,6 +11649,19 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   font-style: normal;
   color: var(--p-muted-2);
   margin-top: 8px;
+}
+
+/* Note discrète sous le titre §05 (Fix 2 — statut particulier Paris/Lyon).
+ * Ton minimal, mono comme une note de bas de page. */
+.theme-db-scrolly .db-p-zoom-caveat {
+  font-family: var(--pf-mono);
+  font-size: 11.5px;
+  color: var(--p-muted);
+  margin: 4px 0 0;
+  font-style: italic;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  max-width: 560px;
 }
 
 .theme-db-scrolly .db-p-zoom-method-note {
@@ -11021,6 +12010,205 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
 }
 .theme-db-scrolly .db-p-end-foot a:hover { text-decoration-color: var(--p-ink); }
 
+/* ──────────────────────────────────────────────────────────────────────
+   §07 — Refonte share section : top row (eyebrow + share global) +
+   5 cartes émotionnelles avec pictogrammes.
+   ────────────────────────────────────────────────────────────────────── */
+.theme-db-scrolly .db-p-end-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.theme-db-scrolly .db-p-end-head .db-panel-num { margin: 0; }
+/* Sur le head, le row de partage perd son séparateur top + son label
+   (compact pour qu'il tienne en haut-droite). */
+.theme-db-scrolly .db-p-end-head .db-p-end-share {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.theme-db-scrolly .db-p-end-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+  margin-bottom: 64px;
+}
+
+.theme-db-scrolly .db-equiv-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 18px 16px;
+  border: 1px solid var(--p-rule);
+  border-radius: 10px;
+  background: var(--p-paper);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+  position: relative;
+  /* Reveal stagger : on s'aligne sur le fade du parent panel mais on
+     ajoute un petit delay propre à la carte. */
+  animation-delay: var(--db-eq-delay, 0ms);
+}
+.theme-db-scrolly .db-equiv-card[data-color="secu"] {
+  background: linear-gradient(
+    180deg,
+    rgba(42, 54, 128, 0.05),
+    transparent 30%
+  );
+}
+.theme-db-scrolly .db-equiv-card[data-color="etat"] {
+  background: linear-gradient(
+    180deg,
+    rgba(26, 29, 38, 0.05),
+    transparent 30%
+  );
+}
+.theme-db-scrolly .db-equiv-card[data-color="local"] {
+  background: linear-gradient(
+    180deg,
+    rgba(193, 35, 35, 0.05),
+    transparent 30%
+  );
+}
+.theme-db-scrolly .db-equiv-card:hover,
+.theme-db-scrolly .db-equiv-card:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(10, 10, 10, 0.06);
+  border-color: var(--p-rule-strong);
+}
+
+.theme-db-scrolly .db-equiv-card-picto {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-db-scrolly .db-equiv-card-num {
+  font-family: var(--pf-disp);
+  font-size: clamp(40px, 4.6vw, 56px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--p-ink);
+  margin: 4px 0 0;
+}
+
+.theme-db-scrolly .db-equiv-card-caption {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--p-ink-2);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.theme-db-scrolly .db-equiv-card-meta {
+  font-family: var(--pf-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--p-muted);
+  margin: 0;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 0.5px solid var(--p-rule);
+}
+
+.theme-db-scrolly .db-equiv-card-share-wrap {
+  position: relative;
+}
+.theme-db-scrolly .db-equiv-card-share {
+  margin-top: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--pf-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--p-accent);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 6px 0;
+  text-transform: lowercase;
+}
+.theme-db-scrolly .db-equiv-card-share:hover,
+.theme-db-scrolly .db-equiv-card-share:focus-visible {
+  color: var(--p-ink);
+  outline: none;
+}
+.theme-db-scrolly .db-equiv-card-menu {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: auto;
+  margin-bottom: 6px;
+  background: var(--p-paper);
+  border: 1px solid var(--p-rule-strong);
+  border-radius: 8px;
+  padding: 6px;
+  box-shadow: 0 12px 32px rgba(10, 10, 10, 0.12);
+  display: flex;
+  flex-direction: column;
+  min-width: 160px;
+  z-index: 20;
+}
+.theme-db-scrolly .db-equiv-card-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--pf-ui);
+  font-size: 13px;
+  color: var(--p-ink);
+  text-align: left;
+  border-radius: 4px;
+  transition: background 0.12s ease;
+}
+.theme-db-scrolly .db-equiv-card-menu-item:hover,
+.theme-db-scrolly .db-equiv-card-menu-item:focus-visible {
+  background: rgba(10, 10, 10, 0.05);
+  outline: none;
+}
+
+/* Mobile : 1 colonne, share menu plein-largeur. */
+@media (max-width: 880px) {
+  .theme-db-scrolly .db-p-end-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 32px;
+    margin-bottom: 40px;
+  }
+  .theme-db-scrolly .db-equiv-card {
+    padding: 18px 16px 14px;
+  }
+  .theme-db-scrolly .db-equiv-card-num {
+    font-size: clamp(48px, 12vw, 64px);
+  }
+  .theme-db-scrolly .db-p-end-head {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .theme-db-scrolly .db-p-end-head .db-p-end-share {
+    justify-content: flex-start;
+  }
+}
+
 /* Local CTA */
 .theme-db-scrolly .db-local-cta {
   display: inline-block;
@@ -11060,6 +12248,8 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   .theme-db-scrolly .db-p-zoom { padding: 60px 0; }
   .theme-db-scrolly .db-p-zoom-grid { grid-template-columns: 1fr; gap: 40px; }
   .theme-db-scrolly .db-p-zoom-pct { font-size: 96px; }
+  .theme-db-scrolly .db-p-zoom-eur { font-size: 84px; }
+  .theme-db-scrolly .db-p-zoom-pct-line { font-size: 18px; }
   .theme-db-scrolly .db-p-zoom-l-text { position: static; }
   .theme-db-scrolly .db-stack-tri {
     grid-template-columns: 1fr !important;
@@ -11554,9 +12744,20 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   letter-spacing: 0.02em;
 }
 
-/* Sub-row €/mois personnel à côté du % enfant. */
+/* Sub-row : Md€ national + €/mois personnel à côté du % enfant.
+ * Layout 5 cols : annual (Md€) | pct | name | monthly (€/mois) | chevron.
+ * Le Md€ vient EN PREMIER (lecture la plus saillante), le % en second.
+ * Les colonnes auto se collapsent si la cellule est absente (sans data). */
 .theme-fusion .db-fiche-child {
-  grid-template-columns: 48px 1fr auto auto;
+  grid-template-columns: 84px 48px 1fr auto auto;
+}
+.theme-fusion .db-fiche-child-annual {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+  letter-spacing: 0.01em;
 }
 .theme-fusion .db-fiche-child-monthly {
   font-family: var(--f-mono);
@@ -11567,7 +12768,15 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   letter-spacing: 0.01em;
 }
 .theme-fusion .db-fiche-agg-card {
-  grid-template-columns: 56px 1fr auto auto;
+  grid-template-columns: 84px 56px 1fr auto auto;
+}
+.theme-fusion .db-fiche-agg-card-annual {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+  letter-spacing: 0.01em;
 }
 .theme-fusion .db-fiche-agg-card-monthly {
   font-family: var(--f-mono);
@@ -11578,11 +12787,37 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   letter-spacing: 0.01em;
 }
 
+/* Variantes context-aware (Fix 1 — drawer voice perso/impersonal).
+ * Le composant ajoute une classe modifier sur la liste parent (UL) pour
+ * adapter la grille selon les colonnes effectivement rendues :
+ *   - monthly-only      : voice perso (€/mois only, pas de % ni Md€)
+ *   - annual-only       : voice impersonal sans profil (Md€ only)
+ *   - annual-monthly    : voice impersonal + profil cross-link (Md€ + €/mois)
+ * Le % reste TOUJOURS dans le lead header (info de contexte parent). */
+.theme-fusion .db-fiche-children-monthly-only .db-fiche-child {
+  grid-template-columns: 1fr auto auto;
+}
+.theme-fusion .db-fiche-children-annual-only .db-fiche-child {
+  grid-template-columns: 84px 1fr auto;
+}
+.theme-fusion .db-fiche-children-annual-monthly .db-fiche-child {
+  grid-template-columns: 84px 1fr auto auto;
+}
+.theme-fusion .db-fiche-agg-grid.db-fiche-children-monthly-only .db-fiche-agg-card {
+  grid-template-columns: 1fr auto auto;
+}
+.theme-fusion .db-fiche-agg-grid.db-fiche-children-annual-only .db-fiche-agg-card {
+  grid-template-columns: 84px 1fr auto;
+}
+.theme-fusion .db-fiche-agg-grid.db-fiche-children-annual-monthly .db-fiche-agg-card {
+  grid-template-columns: 84px 1fr auto auto;
+}
+
 @media (max-width: 640px) {
   .theme-fusion .db-fiche-lead-pct { font-size: 24px; }
   .theme-fusion .db-fiche-lead-name { font-size: 15.5px; }
   .theme-fusion .db-fiche-child {
-    grid-template-columns: 44px 1fr auto;
+    grid-template-columns: 76px 44px 1fr auto;
     padding: 9px 12px;
     row-gap: 4px;
   }
@@ -11597,7 +12832,7 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
     grid-template-columns: 1fr;
   }
   .theme-fusion .db-fiche-agg-card {
-    grid-template-columns: 48px 1fr auto;
+    grid-template-columns: 48px auto 1fr auto;
     padding: 11px 13px;
     row-gap: 4px;
   }
@@ -11613,6 +12848,45 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   }
   .theme-fusion .db-fiche-amount-row-personal .db-fiche-amount-val {
     font-size: 20px;
+  }
+  /* Variantes context-aware mobile : ajustent grid + comportement wrap
+   * du €/mois selon la voice. */
+  .theme-fusion .db-fiche-children-monthly-only .db-fiche-child {
+    grid-template-columns: 1fr auto auto;
+    row-gap: 4px;
+  }
+  .theme-fusion .db-fiche-children-monthly-only .db-fiche-child-monthly {
+    grid-column: auto;
+    margin-top: 0;
+  }
+  .theme-fusion .db-fiche-children-annual-only .db-fiche-child {
+    grid-template-columns: 76px 1fr auto;
+    row-gap: 4px;
+  }
+  .theme-fusion .db-fiche-children-annual-monthly .db-fiche-child {
+    grid-template-columns: 76px 1fr auto;
+    row-gap: 4px;
+  }
+  .theme-fusion .db-fiche-children-annual-monthly .db-fiche-child-monthly {
+    grid-column: 1 / -1;
+    margin-top: 2px;
+  }
+  .theme-fusion .db-fiche-agg-grid.db-fiche-children-monthly-only .db-fiche-agg-card {
+    grid-template-columns: 1fr auto auto;
+  }
+  .theme-fusion .db-fiche-agg-grid.db-fiche-children-monthly-only .db-fiche-agg-card-monthly {
+    grid-column: auto;
+    margin-top: 0;
+  }
+  .theme-fusion .db-fiche-agg-grid.db-fiche-children-annual-only .db-fiche-agg-card {
+    grid-template-columns: 56px 1fr auto;
+  }
+  .theme-fusion .db-fiche-agg-grid.db-fiche-children-annual-monthly .db-fiche-agg-card {
+    grid-template-columns: 56px 1fr auto;
+  }
+  .theme-fusion .db-fiche-agg-grid.db-fiche-children-annual-monthly .db-fiche-agg-card-monthly {
+    grid-column: 1 / -1;
+    margin-top: 2px;
   }
 }
 
@@ -11634,3 +12908,67 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
     scroll-behavior: auto !important;
   }
 }
+
+/* ── Editorial asides ("Chiffres à retenir") dans la fiche drawer ─────────
+ *   Migrés depuis la page Daily Bread (panel `DailyBreadDeepDive`) — ils
+ *   étaient redondants avec le drawer qui couvre déjà la décompo niveau 3.
+ *   Layout : 3 colonnes desktop, 1 colonne mobile.                         */
+.theme-fusion .db-fiche-asides-section { margin-top: 28px; }
+.theme-fusion .db-fiche-asides {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+@media (max-width: 720px) {
+  .theme-fusion .db-fiche-asides {
+    grid-template-columns: 1fr;
+  }
+}
+.theme-fusion .db-fiche-aside {
+  padding: 14px 16px;
+  background: #f5f5f2;
+  border-left: 3px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.theme-fusion .db-fiche-asides-secu .db-fiche-aside { border-left-color: #2a3680; }
+.theme-fusion .db-fiche-asides-etat .db-fiche-aside { border-left-color: #1a1d26; }
+.theme-fusion .db-fiche-asides-local .db-fiche-aside { border-left-color: #c12323; }
+.theme-fusion .db-fiche-aside-num {
+  margin: 0;
+  font-family: var(--f-disp);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.theme-fusion .db-fiche-aside-num-em {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.7em;
+  color: var(--muted);
+  margin-left: 4px;
+  letter-spacing: 0;
+}
+.theme-fusion .db-fiche-aside-text {
+  margin: 0;
+  font-family: var(--f-ui);
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.theme-fusion .db-fiche-aside-source {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
