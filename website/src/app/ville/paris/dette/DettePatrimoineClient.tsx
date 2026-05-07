@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import SectionHead from "@/components/fusion/SectionHead";
@@ -27,7 +28,7 @@ import type { BlogPostMeta } from "@/lib/blog";
 import type { PatrimoineData, PatrimoineStructure, HorsBilanData, CityDebtSnapshot } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
-import { PARIS_POPULATION, parisCrcDebtYearsFor } from "@/lib/methodology";
+import { cityPopulation, citySlugFromPathname, crcDebtYearsFor } from "@/lib/methodology";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
@@ -52,6 +53,10 @@ export default function DettePatrimoineClient({
 }) {
   const t = useT();
   const { locale } = useLocale();
+  const pathname = usePathname();
+  const citySlug = citySlugFromPathname(pathname);
+  const cityBasePath = `/ville/${citySlug}/dette`;
+  const population = cityPopulation(citySlug);
   const DET_PLACEHOLDERS: ArticlePlaceholder[] = [
     {
       category: t("fx.dp.placeholders.a1.cat"),
@@ -65,7 +70,7 @@ export default function DettePatrimoineClient({
     },
   ];
   const net = d.fondsPropres;
-  const detteParHab = d.detteFinanciere / PARIS_POPULATION;
+  const detteParHab = d.detteFinanciere / population;
 
   // Évolution de la dette depuis 2020 pour le hook viral (fallback 0 si
   // l'année de référence n'est pas dans la série).
@@ -75,7 +80,8 @@ export default function DettePatrimoineClient({
     : 0;
 
   // Chiffre CRC pour le hook "deux lectures" (méthodologie Ville vs CRC).
-  const crcSnap = parisCrcDebtYearsFor(d.year);
+  // City-aware : null pour les villes sans série CRC (Marseille v1).
+  const crcSnap = crcDebtYearsFor(citySlug, d.year);
 
   // Unité auto Md € / M € pour les montants hors bilan
   const mdLabel = t("fx.s.md_eur");
@@ -88,6 +94,7 @@ export default function DettePatrimoineClient({
   return (
     <div className="theme-fusion">
       <Navbar />
+      <main id="main-content" tabIndex={-1}>
 
       <PageTOC
         items={[
@@ -132,7 +139,7 @@ export default function DettePatrimoineClient({
             <YearPicker
               years={d.availableYears}
               current={d.year}
-              basePath="/ville/paris/dette"
+              basePath={cityBasePath}
               label={t("fx.s.year_label")}
             />
           </div>
@@ -205,7 +212,7 @@ export default function DettePatrimoineClient({
               unit={t("fx.s.md_eur")}
               caption={
                 <>
-                  {t("fx.det.s02.hero_cap.per_hab").replace("{n}", fmtInt(net / PARIS_POPULATION))}
+                  {t("fx.det.s02.hero_cap.per_hab").replace("{n}", fmtInt(net / population))}
                 </>
               }
             />
@@ -236,7 +243,7 @@ export default function DettePatrimoineClient({
 
           {citiesSnapshot.length > 0 && (
             <>
-              <CityComparator cities={citiesSnapshot} highlightSlug="paris" />
+              <CityComparator cities={citiesSnapshot} highlightSlug={citySlug} />
               <ChartSource
                 source={<>{t("fx.dp.cities.source")}</>}
                 methodAnchor="dette-patrimoine"
@@ -261,20 +268,22 @@ export default function DettePatrimoineClient({
             subtitle={t("fx.det.s03.sub")}
           />
           {structure ? (
-            <BilanBoard
-              year={d.year}
-              actif={structure.masses_actif}
-              passif={structure.masses_passif}
-              totals={{ actif: d.actif, passif: d.passif }}
-            />
+            <>
+              <BilanBoard
+                year={d.year}
+                actif={structure.masses_actif}
+                passif={structure.masses_passif}
+                totals={{ actif: d.actif, passif: d.passif }}
+              />
+              <ChartSource
+                source={<>{fill(t("fx.dp.bilan.source"), { year: d.year })}</>}
+                dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
+                methodAnchor="dette-patrimoine"
+              />
+            </>
           ) : (
             <p className="fx-note">{fill(t("fx.dp.bilan.actif_unavailable"), { label: t("fx.det.s03.actif") })}</p>
           )}
-          <ChartSource
-            source={<>{fill(t("fx.dp.bilan.source"), { year: d.year })}</>}
-            dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
-            methodAnchor="dette-patrimoine"
-          />
         </div>
       </section>
 
@@ -316,15 +325,17 @@ export default function DettePatrimoineClient({
             subtitle={t("fx.det.s04.sub")}
           />
           {structure ? (
-            <DetteStructurePanel structure={structure.structure_dette} year={d.year} />
+            <>
+              <DetteStructurePanel structure={structure.structure_dette} year={d.year} />
+              <ChartSource
+                source={<>{fill(t("fx.dp.dette.source"), { year: d.year })}</>}
+                dataHref="https://opendata.paris.fr/explore/dataset/bilan-comptable/"
+                methodAnchor="dette-patrimoine"
+              />
+            </>
           ) : (
             <p className="fx-note">{t("fx.dp.unavailable")}</p>
           )}
-          <ChartSource
-            source={<>{fill(t("fx.dp.dette.source"), { year: d.year })}</>}
-            dataHref="https://opendata.paris.fr/explore/dataset/bilan-comptable/"
-            methodAnchor="dette-patrimoine"
-          />
         </div>
       </section>
 
@@ -362,8 +373,14 @@ export default function DettePatrimoineClient({
                   ]}
                 />
                 <ChartSource
-                  source={<>{t("fx.dp.traj.source")}</>}
-                  dataHref="https://opendata.paris.fr/explore/dataset/bilan-comptable/"
+                  source={citySlug === "paris" ? (
+                    <>{t("fx.dp.traj.source")}</>
+                  ) : (
+                    <>OFGL · base consolidée des communes (encours de dette financière)</>
+                  )}
+                  dataHref={citySlug === "paris"
+                    ? "https://opendata.paris.fr/explore/dataset/bilan-comptable/"
+                    : "https://data.ofgl.fr/explore/dataset/ofgl-base-communes-consolidee/"}
                   methodAnchor="dette-patrimoine"
                 />
                 <div
@@ -468,7 +485,7 @@ export default function DettePatrimoineClient({
                   return (
                     <Link
                       key={b.key}
-                      href={`/ville/paris/dette/bailleur/${encodeURIComponent(slug)}`}
+                      href={`${cityBasePath}/bailleur/${encodeURIComponent(slug)}`}
                       scroll={false}
                       className="fx-hb-row clickable"
                       aria-label={b.name}
@@ -619,7 +636,7 @@ export default function DettePatrimoineClient({
           <SectionHead number="11" kind={t("fx.det.s07.kind")} />
           <div className="fx-grid-tiles">
             <TileCard
-              href="/ville/paris/budget"
+              href={`/ville/${citySlug}/budget`}
               number={t("fx.det.s07.t1.n")}
               kind={t("fx.det.s07.t1.kind")}
               title={t("fx.det.s07.t1.title")}
@@ -638,7 +655,7 @@ export default function DettePatrimoineClient({
               kpiDelta={t("fx.det.s07.t1.delta")}
             />
             <TileCard
-              href="/ville/paris/investissements"
+              href={`/ville/${citySlug}/investissements`}
               number={t("fx.det.s07.t2.n")}
               kind={t("fx.det.s07.t2.kind")}
               title={t("fx.det.s07.t2.title")}
@@ -668,7 +685,7 @@ export default function DettePatrimoineClient({
               kpiDelta="2024"
             />
             <TileCard
-              href="/ville/paris/logement"
+              href={`/ville/${citySlug}/logement`}
               number={t("fx.det.s07.t3.n")}
               kind={t("fx.det.s07.t3.kind")}
               title={t("fx.det.s07.t3.title")}
@@ -697,23 +714,37 @@ export default function DettePatrimoineClient({
             <a href="/methode#dette-patrimoine" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</a>
           </div>
           <p className="fx-footer-sources-meta">
-            <b>{t("fx.footer.source_label")}</b> : {t("fx.dp.footer.source")} <span className="sep">·</span> <b>{t("fx.footer.coverage_label")}</b> : {t("fx.dp.footer.coverage")}
+            <b>{t("fx.footer.source_label")}</b> :{" "}
+            {citySlug === "paris"
+              ? t("fx.dp.footer.source")
+              : "OFGL · base consolidée des communes (data.ofgl.fr) — agrégats nationaux"}{" "}
+            <span className="sep">·</span> <b>{t("fx.footer.coverage_label")}</b> :{" "}
+            {citySlug === "paris"
+              ? t("fx.dp.footer.coverage")
+              : `${d.availableYears[0]}-${d.availableYears[d.availableYears.length - 1]}.`}
           </p>
           <ExportRow
             items={[
               {
                 label: fill(t("fx.det.src.export.csv"), { year: d.year }),
                 primary: true,
-                href: `/data/bilan_sankey_${d.year}.json`,
+                href: `/data/${citySlug === "paris" ? "" : `${citySlug}/`}bilan_sankey_${d.year}.json`,
               },
-              { label: t("fx.det.src.export.json"), href: `/data/bilan_sankey_${d.year}.json` },
-              { label: t("fx.det.src.export.index"), href: "/data/bilan_index.json" },
+              {
+                label: t("fx.det.src.export.json"),
+                href: `/data/${citySlug === "paris" ? "" : `${citySlug}/`}bilan_sankey_${d.year}.json`,
+              },
+              {
+                label: t("fx.det.src.export.index"),
+                href: `/data/${citySlug === "paris" ? "" : `${citySlug}/`}bilan_index.json`,
+              },
               { label: t("fx.det.src.export.method"), href: "/methode?tool=dette-patrimoine#outils" },
             ]}
           />
         </div>
       </section>
 
+      </main>
       <Footer />
     </div>
   );

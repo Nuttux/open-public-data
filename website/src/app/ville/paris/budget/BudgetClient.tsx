@@ -86,6 +86,7 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
   return (
     <div className="theme-fusion">
       <Navbar />
+      <main id="main-content" tabIndex={-1}>
 
       <PageTOC
         items={[
@@ -611,6 +612,7 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
         </div>
       </section>
 
+      </main>
       <Footer />
     </div>
   );

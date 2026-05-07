@@ -67,6 +67,7 @@ export default function CitySlimClient({
   return (
     <div className="theme-fusion">
       <Navbar />
+      <main id="main-content" tabIndex={-1}>
 
       <main>
         {/* Hero ─────────────────────────────────────────────────────── */}
@@ -253,6 +254,7 @@ export default function CitySlimClient({
         </section>
       </main>
 
+      </main>
       <Footer />
     </div>
   );

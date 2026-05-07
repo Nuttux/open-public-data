@@ -6,12 +6,34 @@ import { useEffect, useState } from "react";
 import BrandMark from "./BrandMark";
 import ScopeDropdown from "./ScopeDropdown";
 import LangSwitcher from "./LangSwitcher";
-import { NAV_LINKS } from "./nav-links";
+import {
+  NATIONAL_NAV_LINKS,
+  villeNavLinks,
+  EXACT_MATCH_HREFS,
+} from "./nav-links";
 import { useT } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
 
+// Pick the right top-nav link set based on the current pathname.
+// National scope: /france*, /comparer, /ville/*/daily-bread.
+// Ville scope: /ville/[slug]/* (default Paris on root).
+function navLinksForPath(pathname: string) {
+  if (
+    pathname === "/france" ||
+    pathname.startsWith("/france/") ||
+    pathname === "/comparer" ||
+    pathname.startsWith("/comparer/") ||
+    /^\/ville\/[^/]+\/daily-bread(\/|$)/.test(pathname)
+  ) {
+    return NATIONAL_NAV_LINKS;
+  }
+  const m = pathname.match(/^\/ville\/([^/]+)/);
+  return villeNavLinks(m ? m[1] : "paris");
+}
+
 export default function Navbar() {
-  const pathname = usePathname();
+  const pathname = usePathname() ?? "/";
+  const navLinks = navLinksForPath(pathname);
   const [menuOpen, setMenuOpen] = useState(false);
   const t = useT();
   const track = useTrack();
@@ -28,7 +50,7 @@ export default function Navbar() {
   }, [pathname]);
 
   const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
+    EXACT_MATCH_HREFS.has(href) ? pathname === href : pathname.startsWith(href);
 
   const trackNav = (href: string, labelKey: string, surface: "nav" | "overlay" | "brand") => {
     track("nav_click", { href, label: labelKey, surface, from: pathname });
@@ -46,7 +68,7 @@ export default function Navbar() {
           <span>{t("fx.nav.brand")}</span>
         </Link>
         <nav className="fx-links" aria-label={t("fx.nav.main_aria")}>
-          {NAV_LINKS.map((l) => (
+          {navLinks.map((l) => (
             <Link
               key={l.href}
               href={l.href}
@@ -98,7 +120,7 @@ export default function Navbar() {
           </button>
         </div>
         <nav className="fx-overlay-nav" aria-label={t("fx.nav.main_aria")}>
-          {NAV_LINKS.map((l, i) => (
+          {navLinks.map((l, i) => (
             <Link
               key={l.href}
               href={l.href}

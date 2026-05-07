@@ -2,6 +2,8 @@
 import Link from "next/link";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import Navbar from "@/components/fusion/Navbar";
+import Footer from "@/components/fusion/Footer";
 import { useT, useLocale } from "@/lib/localeContext";
 import { useCountUp } from "@/lib/use-count-up";
 import { useRevealOnScroll } from "@/lib/use-reveal-on-scroll";
@@ -1231,6 +1233,9 @@ export default function DailyBreadClient({
   // ─── Render ────────────────────────────────────────────────────────
   return (
     <div className={`theme-db-scrolly${clientArmed ? " is-armed" : ""}`}>
+      <div className="theme-fusion">
+        <Navbar />
+      </div>
       <main>
         {/* ── PANNEAU 0 — Calculator ── */}
         <section className="db-panel db-p-calc">
@@ -2970,6 +2975,28 @@ export default function DailyBreadClient({
               <li style={{ marginBottom: 10 }}>{t("db.caveats.li4")}</li>
               <li style={{ marginBottom: 10 }}>{t("db.caveats.li5")}</li>
             </ul>
+            <div
+              style={{
+                marginTop: 28,
+                paddingTop: 20,
+                borderTop: "1px solid rgba(0,0,0,.1)",
+                maxWidth: 820,
+              }}
+            >
+              <Link
+                href="/france/budget"
+                style={{
+                  fontFamily: "var(--pf-sans, 'Inter Tight', Inter, sans-serif)",
+                  fontSize: 15,
+                  color: "var(--p-ink, #0a0a0a)",
+                  borderBottom: "1px solid currentColor",
+                  paddingBottom: 1,
+                  fontWeight: 500,
+                }}
+              >
+                {t("budget.cross_link.from_db")}
+              </Link>
+            </div>
           </div>
         </section>
       </main>
@@ -2977,6 +3004,10 @@ export default function DailyBreadClient({
       {/* FAB sticky : copier le lien du profil. URL déjà persistante via
           query-string, donc le copier suffit pour partager. */}
       <ShareFab />
+
+      <div className="theme-fusion">
+        <Footer />
+      </div>
     </div>
   );
 }

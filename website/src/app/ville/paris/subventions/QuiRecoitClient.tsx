@@ -1,6 +1,8 @@
 "use client";
 import { Suspense } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { citySlugFromPathname } from "@/lib/methodology";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import SectionHead from "@/components/fusion/SectionHead";
@@ -57,6 +59,12 @@ export default function QuiRecoitClient({
   posts: BlogPostMeta[];
 }) {
   const t = useT();
+  const pathname = usePathname();
+  const citySlug = citySlugFromPathname(pathname);
+  const cityBasePath = `/ville/${citySlug}/subventions`;
+  const cityBudgetPath = `/ville/${citySlug}/budget`;
+  const cityMarchesPath = `/ville/${citySlug}/marches`;
+  const cityLogementPath = "/ville/paris/logement";
   const dir: "up" | "down" | "flat" =
     d.deltaMontantPct > 0.1 ? "up" : d.deltaMontantPct < -0.1 ? "down" : "flat";
   const arrow = dir === "down" ? "↓" : dir === "flat" ? "→" : "↑";
@@ -103,7 +111,7 @@ export default function QuiRecoitClient({
               years={idx.availableYears.slice().sort((a, b) => a - b)}
               previewYears={idx.previewYears ?? []}
               current={d.year}
-              basePath="/ville/paris/subventions"
+              basePath={cityBasePath}
               label={t("fx.s.year_label")}
             />
           </div>
@@ -242,11 +250,11 @@ export default function QuiRecoitClient({
             total={d.total}
             concentrationTop10Pct={d.concentrationTop10Pct}
             year={d.year}
-            basePath="/ville/paris/subventions"
+            basePath={cityBasePath}
             entityNoun={t("fx.qr.s02.entity_noun")}
             paretoContrast={t("fx.qr.s02.pareto_contrast")}
             hrefBuilder={(theme) =>
-              `/ville/paris/subventions/theme/${slugifyLabel(theme)}?year=${d.year}`
+              `${cityBasePath}/theme/${slugifyLabel(theme)}?year=${d.year}`
             }
           />
           <ChartSource
@@ -343,7 +351,7 @@ export default function QuiRecoitClient({
                   {d.movers.hausses.slice(0, 5).map((m, i) => (
                     <Link
                       key={i}
-                      href={`/ville/paris/subventions/association/${encodeURIComponent(m.name)}`}
+                      href={`${cityBasePath}/association/${encodeURIComponent(m.name)}`}
                       scroll={false}
                       className="fx-mover-row"
                     >
@@ -369,7 +377,7 @@ export default function QuiRecoitClient({
                   {d.movers.baisses.slice(0, 5).map((m, i) => (
                     <Link
                       key={i}
-                      href={`/ville/paris/subventions/association/${encodeURIComponent(m.name)}`}
+                      href={`${cityBasePath}/association/${encodeURIComponent(m.name)}`}
                       scroll={false}
                       className="fx-mover-row"
                     >
@@ -421,7 +429,7 @@ export default function QuiRecoitClient({
           />
           <div className="fx-grid-tiles">
             <TileCard
-              href="/ville/paris/budget"
+              href={cityBudgetPath}
               number={t("fx.qr.s06.t1.n")}
               kind={t("fx.qr.s06.t1.kind")}
               title={t("fx.qr.s06.t1.title")}
@@ -440,7 +448,7 @@ export default function QuiRecoitClient({
               kpiDelta={fill(t("fx.qr.s06.t1.delta"), { year: d.year })}
             />
             <TileCard
-              href="/ville/paris/marches"
+              href={cityMarchesPath}
               number={t("fx.qr.s06.t2.n")}
               kind={t("fx.qr.s06.t2.kind")}
               title={t("fx.qr.s06.t2.title")}
@@ -460,7 +468,7 @@ export default function QuiRecoitClient({
               kpiDelta={t("fx.qr.s06.t2.delta")}
             />
             <TileCard
-              href="/ville/paris/logement"
+              href={cityLogementPath}
               number={t("fx.qr.s06.t3.n")}
               kind={t("fx.qr.s06.t3.kind")}
               title={t("fx.qr.s06.t3.title")}
@@ -496,10 +504,19 @@ export default function QuiRecoitClient({
               {
                 label: fill(t("fx.qr.src.export.csv"), { year: d.year }),
                 primary: true,
-                href: `/data/subventions/beneficiaires_${d.year}.json`,
+                href: citySlug === "paris"
+                  ? `/data/subventions/beneficiaires_${d.year}.json`
+                  : `/data/${citySlug}/subventions/beneficiaires_${d.year}.json`,
               },
-              { label: t("fx.qr.src.export.json"), href: `/data/subventions/beneficiaires_${d.year}.json` },
-              { label: t("fx.qr.src.export.treemap"), href: `/data/subventions/treemap_${d.year}.json` },
+              {
+                label: t("fx.qr.src.export.json"),
+                href: citySlug === "paris"
+                  ? `/data/subventions/beneficiaires_${d.year}.json`
+                  : `/data/${citySlug}/subventions/beneficiaires_${d.year}.json`,
+              },
+              ...(citySlug === "paris"
+                ? [{ label: t("fx.qr.src.export.treemap"), href: `/data/subventions/treemap_${d.year}.json` }]
+                : []),
               { label: t("fx.qr.src.export.method"), href: "/methode?tool=subventions#outils" },
             ]}
           />

@@ -121,7 +121,7 @@ export default function FiscaliteClient({ fiscalite }: { fiscalite: EurostatFisc
     return (
       <div className="theme-fusion">
         <Navbar />
-        <main className="fx-wrap" style={{ padding: "120px 0", minHeight: "60vh" }}>
+        <main id="main-content" tabIndex={-1} className="fx-wrap" style={{ padding: "120px 0", minHeight: "60vh" }}>
           <p>{t("fiscalite.no_data")}</p>
         </main>
         <Footer />
@@ -192,7 +192,8 @@ export default function FiscaliteClient({ fiscalite }: { fiscalite: EurostatFisc
       <Navbar />
       <FranceMacroNav />
 
-      <main>
+      <main id="main-content" tabIndex={-1}>
+        <h1 className="fx-sr-only">{t("fiscalite.hero.title")}</h1>
         {/* Hero ─────────────────────────────────────────────────────── */}
         <section className="fx-wrap" style={{ padding: "60px 0 36px" }}>
           <SectionHead

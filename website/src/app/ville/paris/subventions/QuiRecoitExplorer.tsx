@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import SectionHead from "@/components/fusion/SectionHead";
 import { THEME_COLOR } from "@/components/fusion/StackedBarTheme";
+import { citySlugFromPathname } from "@/lib/methodology";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 import { useTrack } from "@/lib/analyticsContext";
@@ -95,6 +96,12 @@ export default function QuiRecoitExplorer({
   const t = useT();
   const { locale } = useLocale();
   const locStr = locale === "en" ? "en-GB" : "fr-FR";
+  const pathname = usePathname();
+  const citySlug = citySlugFromPathname(pathname);
+  const cityBasePath = `/ville/${citySlug}/subventions`;
+  const searchIndexUrl = citySlug === "paris"
+    ? "/data/subventions/beneficiaires_search.json"
+    : `/data/${citySlug}/subventions/beneficiaires_search.json`;
 
   const fmtEur = (n: number) => {
     if (n >= 1e9) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 2 }).format(n / 1e9), u: t("fx.s.md_eur") };
@@ -141,7 +148,7 @@ export default function QuiRecoitExplorer({
     let cancelled = false;
     setSearchLoading(true);
     setSearchError(null);
-    fetch("/data/subventions/beneficiaires_search.json")
+    fetch(searchIndexUrl)
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
       .then((payload: SearchPayload) => {
         if (cancelled) return;
@@ -157,7 +164,7 @@ export default function QuiRecoitExplorer({
     return () => {
       cancelled = true;
     };
-  }, [hasQuery]);
+  }, [hasQuery, searchIndexUrl]);
 
   // Reset pagination à chaque changement de filtre.
   useEffect(() => {
@@ -205,7 +212,7 @@ export default function QuiRecoitExplorer({
     setMaxEur("");
   };
 
-  const ficheHref = (name: string) => `/ville/paris/subventions/association/${encodeURIComponent(name)}`;
+  const ficheHref = (name: string) => `${cityBasePath}/association/${encodeURIComponent(name)}`;
 
   const refMax = top10[0]?.amount ?? 1;
 
