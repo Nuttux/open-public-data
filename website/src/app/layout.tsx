@@ -16,6 +16,8 @@ import "./globals.css";
 import AnalyticsProvider from "@/components/AnalyticsProvider";
 import { LocaleProvider } from "@/lib/localeContext";
 import { SITE_URL, SITE_NAME, organizationJsonLd, websiteJsonLd, readLocale } from "@/lib/seo";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -129,6 +131,13 @@ export default async function RootLayout({
             {children}
           </LocaleProvider>
         </AnalyticsProvider>
+        {/* Vercel Speed Insights — Web Vitals (LCP, CLS, INP) sampled in
+            prod. Cookieless par défaut, cohérent avec le mode CNIL-exempt
+            de PostHog (cf /confidentialite). */}
+        <SpeedInsights />
+        {/* Vercel Analytics — page views agrégés côté edge function, pas
+            de cookies, pas de stockage d'IP côté serveur Vercel. */}
+        <Analytics />
       </body>
     </html>
   );
