@@ -109,9 +109,12 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const initialLocale = await readLocale();
+  const skipLabel = initialLocale === 'en' ? 'Skip to main content' : 'Aller au contenu principal';
   return (
     <html lang={initialLocale === 'en' ? 'en' : 'fr'}>
       <body className={`${inter.variable} font-sans antialiased`}>
+        {/* RGAA 12.7 — skip-to-content link, first focusable element */}
+        <a href="#main-content" className="skip-to-content">{skipLabel}</a>
         {/* GEO: structured data for AI search engines */}
         <script
           type="application/ld+json"

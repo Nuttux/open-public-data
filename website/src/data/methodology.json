@@ -26,6 +26,30 @@
       "source_url": "https://www.legifrance.gouv.fr/loi/id/JORFTEXT000034103673",
       "date_reference": "2020-07-01",
       "notes": "Depuis la fusion Paris Centre (1-4) en juillet 2020 : 1 Paris Centre + 13 arrondissements individuels = 17 secteurs. L'INSEE code toujours 20 arrondissements historiques."
+    },
+    "marseille_population": {
+      "value": 873076,
+      "unit": "habitants",
+      "source": "INSEE - Recensement de la population 2021 (population municipale)",
+      "source_url": "https://www.insee.fr/fr/statistiques/2011101?geo=COM-13055",
+      "date_reference": "2021-01-01",
+      "notes": "Population municipale officielle de Marseille (commune 13055). Source INSEE."
+    },
+    "marseille_superficie_km2": {
+      "value": 240.62,
+      "unit": "km2",
+      "source": "INSEE - Code Officiel Géographique",
+      "source_url": "https://www.insee.fr/fr/metadonnees/cog/commune/COM13055-marseille",
+      "date_reference": "2024-01-01",
+      "notes": "Superficie de Marseille intra-muros."
+    },
+    "marseille_nb_arrondissements": {
+      "value": 16,
+      "unit": "arrondissements",
+      "source": "Loi PLM (Paris Lyon Marseille) du 31 décembre 1982",
+      "source_url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000880035",
+      "date_reference": "1983-03-13",
+      "notes": "16 arrondissements (codes INSEE 13201-13216) groupés en 8 secteurs."
     }
   },
   "legal_thresholds": {

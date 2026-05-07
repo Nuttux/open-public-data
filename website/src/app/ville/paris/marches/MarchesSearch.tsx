@@ -2,11 +2,13 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { usePathname } from "next/navigation";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 import { useTrack } from "@/lib/analyticsContext";
 import { useDebouncedTrack, hashQuery, queryShape } from "@/lib/analytics-helpers";
+import { citySlugFromPathname } from "@/lib/methodology";
 
 type Item = {
   titulaire: string;
@@ -51,6 +53,9 @@ const fill = (s: string, vars: Record<string, string | number>) => {
 };
 
 export default function MarchesSearch({ items, categories, natures, year }: Props) {
+  const _pathname = usePathname();
+  const _citySlug = citySlugFromPathname(_pathname);
+  const _cityBasePath = `/ville/${_citySlug}/marches`;
   const t = useT();
   const { locale } = useLocale();
   const locStr = locale === "en" ? "en-GB" : "fr-FR";
@@ -234,7 +239,7 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
           {displayed.map((it, i) => {
             const { v, u } = fmtAmount(it.montant);
             const href = it.numeroMarche
-              ? `/ville/paris/marches/contrat/${encodeURIComponent(it.numeroMarche)}`
+              ? `${_cityBasePath}/contrat/${encodeURIComponent(it.numeroMarche)}`
               : undefined;
             const CardEl: React.ElementType = href ? Link : "div";
             const onCardClick = href

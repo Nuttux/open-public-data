@@ -6,9 +6,32 @@ import { useEffect, useState } from "react";
 import BrandMark from "./BrandMark";
 import ScopeDropdown from "./ScopeDropdown";
 import LangSwitcher from "./LangSwitcher";
-import { NAV_LINKS } from "./nav-links";
+import SearchModal from "./SearchModal";
+import {
+  NATIONAL_NAV_LINKS,
+  villeNavLinks,
+  EXACT_MATCH_HREFS,
+} from "./nav-links";
 import { useT } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
+
+// Pick the right top-nav link set based on the current pathname.
+// National scope: /france*, /comparer, and /ville/*/daily-bread (Daily Bread
+// is a France-scope tool that happens to be hosted under the Paris URL tree).
+// Ville scope: /ville/[slug]/* (default /ville/paris on root and unmatched).
+function navLinksForPath(pathname: string) {
+  if (
+    pathname === "/france" ||
+    pathname.startsWith("/france/") ||
+    pathname === "/comparer" ||
+    pathname.startsWith("/comparer/") ||
+    /^\/ville\/[^/]+\/daily-bread(\/|$)/.test(pathname)
+  ) {
+    return NATIONAL_NAV_LINKS;
+  }
+  const m = pathname.match(/^\/ville\/([^/]+)/);
+  return villeNavLinks(m ? m[1] : "paris");
+}
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -27,8 +50,9 @@ export default function Navbar() {
     setMenuOpen(false);
   }, [pathname]);
 
+  const navLinks = navLinksForPath(pathname);
   const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
+    EXACT_MATCH_HREFS.has(href) ? pathname === href : pathname.startsWith(href);
 
   const trackNav = (href: string, labelKey: string, surface: "nav" | "overlay" | "brand") => {
     track("nav_click", { href, label: labelKey, surface, from: pathname });
@@ -46,7 +70,7 @@ export default function Navbar() {
           <span>{t("fx.nav.brand")}</span>
         </Link>
         <nav className="fx-links" aria-label={t("fx.nav.main_aria")}>
-          {NAV_LINKS.map((l) => (
+          {navLinks.map((l) => (
             <Link
               key={l.href}
               href={l.href}
@@ -57,6 +81,21 @@ export default function Navbar() {
             </Link>
           ))}
         </nav>
+        <button
+          type="button"
+          className="fx-search-btn"
+          aria-label={t("fx.search.open_aria")}
+          onClick={() => {
+            window.dispatchEvent(new CustomEvent("fx:open-search"));
+            track("nav_click", { href: "search", label: "search", surface: "nav", from: pathname });
+          }}
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" />
+            <line x1="16.5" y1="16.5" x2="21" y2="21" />
+          </svg>
+          <kbd className="fx-search-btn-kbd">⌘K</kbd>
+        </button>
         <ScopeDropdown variant="nav" />
         <LangSwitcher />
         <button
@@ -76,7 +115,7 @@ export default function Navbar() {
         </button>
       </header>
 
-      <div className={menuOpen ? "fx-overlay fx-overlay-open" : "fx-overlay"} aria-hidden={!menuOpen}>
+      <div className={menuOpen ? "fx-overlay fx-overlay-open" : "fx-overlay"} aria-hidden={!menuOpen} inert={!menuOpen}>
         <div className="fx-overlay-top">
           <div className="fx-overlay-brand">
             <BrandMark />
@@ -98,7 +137,7 @@ export default function Navbar() {
           </button>
         </div>
         <nav className="fx-overlay-nav" aria-label={t("fx.nav.main_aria")}>
-          {NAV_LINKS.map((l, i) => (
+          {navLinks.map((l, i) => (
             <Link
               key={l.href}
               href={l.href}
@@ -116,6 +155,8 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+
+      <SearchModal />
     </>
   );
 }

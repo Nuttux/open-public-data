@@ -1,5 +1,7 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { citySlugFromPathname } from "@/lib/methodology";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import SectionHead from "@/components/fusion/SectionHead";
@@ -62,6 +64,11 @@ export default function MarchesPublicsClient({
   const t = useT();
   const { locale } = useLocale();
   const trL = (s: string | undefined) => trLabel(s, locale);
+  // Detect current city from URL so links to drill pages (contrat, fournisseur)
+  // route to the right city — same pattern as BudgetClient.
+  const pathname = usePathname();
+  const citySlug = citySlugFromPathname(pathname);
+  const cityBasePath = `/ville/${citySlug}/marches`;
   const top10Pct = d.total > 0 ? (d.top10.reduce((s, ti) => s + ti.amount, 0) / d.total) * 100 : 0;
   const multiPct = d.total > 0 ? (d.multiAttributaires.amount / d.total) * 100 : 0;
 
@@ -108,7 +115,7 @@ export default function MarchesPublicsClient({
             <YearPicker
               years={(idx.availableYears ?? []).slice().sort((a, b) => a - b)}
               current={d.year}
-              basePath="/ville/paris/marches"
+              basePath={cityBasePath}
               label={t("fx.s.year_label")}
             />
           </div>
@@ -236,7 +243,7 @@ export default function MarchesPublicsClient({
             total={d.total}
             concentrationTop10Pct={top10Pct}
             year={d.year}
-            basePath="/ville/paris/marches"
+            basePath={cityBasePath}
             kicker={fill(t("fx.mp.s02.kicker"), { year: d.year })}
             entityNoun={t("fx.mp.s02.entity_noun")}
             paretoContrast={t("fx.mp.s02.pareto_contrast")}
@@ -278,7 +285,7 @@ export default function MarchesPublicsClient({
               // par SIREN, donc l'URL doit l'être aussi pour éviter les
               // doublons selon quel SIRET du groupe est cliqué.
               const ficheHref = ti.siret
-                ? `/ville/paris/marches/fournisseur/${encodeURIComponent(ti.siret.slice(0, 9))}`
+                ? `${cityBasePath}/fournisseur/${encodeURIComponent(ti.siret.slice(0, 9))}`
                 : null;
               return {
                 key: String(ti.rank),
@@ -344,7 +351,7 @@ export default function MarchesPublicsClient({
                                 const shown = clean.length > 100 ? clean.slice(0, 100) + "…" : clean;
                                 return c.numero ? (
                                   <Link
-                                    href={`/ville/paris/marches/contrat/${encodeURIComponent(c.numero)}`}
+                                    href={`${cityBasePath}/contrat/${encodeURIComponent(c.numero)}`}
                                     style={{ color: "var(--ink)" }}
                                     scroll={false}
                                   >

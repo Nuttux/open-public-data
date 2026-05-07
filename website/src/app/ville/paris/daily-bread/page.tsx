@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import "@/app/fusion.css";
 import { loadEurostatCofog, loadDailyBread } from "@/lib/national-data";
-import { loadDrilldown, type BucketKey } from "@/lib/daily-bread-drilldown";
+import { loadDrilldown, type BucketKey } from "@/lib/budget-drilldown";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
 import DailyBreadClient from "./DailyBreadClient";
 
@@ -79,8 +79,20 @@ export async function generateMetadata({
 
 export type DrilldownIndex = Record<
   BucketKey,
-  { level2: string[]; level3: Record<string, string[]> }
->;
+  {
+    level2: string[];
+    level3: Record<string, string[]>;
+    /** key `${level2}.${level3}` → liste des keys level4. */
+    level4: Record<string, string[]>;
+  }
+> & {
+  /** État seulement — keys d'aggregations dispo (`regaliens`, `education`…). */
+  etatAggregations: string[];
+  /** Local seulement — keys level2 dans le scope département. */
+  localDept: string[];
+  /** Local seulement — keys level2 dans le scope région. */
+  localRegion: string[];
+};
 
 export default async function DailyBreadPage() {
   const cofog = loadEurostatCofog();
@@ -93,17 +105,32 @@ export default async function DailyBreadPage() {
   const buildIndex = (bucket: BucketKey) => {
     const entries = drilldown?.buckets?.[bucket]?.level2 ?? [];
     const level3: Record<string, string[]> = {};
+    const level4: Record<string, string[]> = {};
     for (const e of entries) {
       if (e.level3?.length) {
         level3[e.key] = e.level3.map((c) => c.key);
+        for (const c of e.level3) {
+          if (c.level4?.length) {
+            level4[`${e.key}.${c.key}`] = c.level4.map((g) => g.key);
+          }
+        }
       }
     }
-    return { level2: entries.map((e) => e.key), level3 };
+    return { level2: entries.map((e) => e.key), level3, level4 };
   };
+  const etatAggKeys =
+    drilldown?.buckets?.etat?.aggregations?.map((a) => a.key) ?? [];
+  const localDeptKeys =
+    drilldown?.buckets?.local?.departement?.level2?.map((e) => e.key) ?? [];
+  const localRegionKeys =
+    drilldown?.buckets?.local?.region?.level2?.map((e) => e.key) ?? [];
   const drilldownIndex: DrilldownIndex = {
     secu: buildIndex("secu"),
     etat: buildIndex("etat"),
     local: buildIndex("local"),
+    etatAggregations: etatAggKeys,
+    localDept: localDeptKeys,
+    localRegion: localRegionKeys,
   };
   // Suspense boundary needed because the client uses useSearchParams() to
   // sync form state with the URL — Next.js requires a fallback for SSR/SSG.

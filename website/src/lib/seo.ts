@@ -42,7 +42,7 @@ export async function readLocale(): Promise<'fr' | 'en'> {
 type BuildMetadataInput = {
   title: string;
   description: string;
-  /** Path without domain, ex: "/budget" */
+  /** Path without domain, ex: "/ville/paris/budget" */
   path?: string;
   /** Localised alternates, keys: 'fr' | 'en' */
   alternates?: { fr?: string; en?: string };

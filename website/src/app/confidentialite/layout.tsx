@@ -1,15 +1,16 @@
 import type { Metadata } from 'next';
+import "../fusion.css";
 import { buildLocaleAwareMetadata } from '@/lib/seo';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
-    title: 'Politique de confidentialité',
+    title: "Politique de confidentialité — France Open Data",
     description:
-      "Politique de confidentialité de Données Lumières : analytics, cookies, données personnelles, conformité RGPD.",
+      "Politique RGPD : analytics PostHog en mode CNIL-exempt, aucun cookie tiers, opt-out global, transferts encadrés.",
     en: {
-      title: 'Privacy policy',
+      title: "Privacy policy — France Open Data",
       description:
-        "Données Lumières privacy policy: analytics, cookies, personal data, GDPR compliance.",
+        "GDPR policy: PostHog analytics in CNIL-exempt mode, no third-party cookies, global opt-out, regulated transfers.",
     },
     path: '/confidentialite',
   });

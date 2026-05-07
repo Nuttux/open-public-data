@@ -268,7 +268,10 @@ export default function ContratFiche({
                 <dt>{t("fx.fiche.contrat.voir")}</dt>
                 <dd>
                   <Link
-                    href={`/marches-publics/fournisseur/${contrat.fournisseurSiret.replace(/\s/g, "")}`}
+                    // Lien canonique vers la fiche fournisseur agrégée par
+                    // SIREN (9 premiers chars du SIRET). Évite les URLs en
+                    // doublon quand un même SIREN couvre plusieurs SIRETs.
+                    href={`/ville/paris/marches/fournisseur/${contrat.fournisseurSiret.replace(/\s/g, "").slice(0, 9)}`}
                     style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--bleu)", borderBottom: "1px solid var(--bleu)", paddingBottom: 1 }}
                     scroll={false}
                   >

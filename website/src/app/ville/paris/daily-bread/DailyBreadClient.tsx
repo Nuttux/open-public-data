@@ -2,6 +2,8 @@
 import Link from "next/link";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import Navbar from "@/components/fusion/Navbar";
+import Footer from "@/components/fusion/Footer";
 import { useT, useLocale } from "@/lib/localeContext";
 import { useCountUp } from "@/lib/use-count-up";
 import { useRevealOnScroll } from "@/lib/use-reveal-on-scroll";
@@ -16,9 +18,6 @@ import {
   computeAssoBreakdown,
   computeStateBuckets,
   computeLocalLevels,
-  computeDeepDiveStack,
-  computeDeepDiveLocal,
-  type DeepDiveStackEntry,
   type IndepActivityType,
 } from "@/lib/daily-bread";
 
@@ -249,8 +248,16 @@ function RevealCountNum({
 
 type DrilldownIndex = Record<
   "secu" | "etat" | "local",
-  { level2: string[]; level3: Record<string, string[]> }
->;
+  {
+    level2: string[];
+    level3: Record<string, string[]>;
+    level4: Record<string, string[]>;
+  }
+> & {
+  etatAggregations: string[];
+  localDept: string[];
+  localRegion: string[];
+};
 
 // ─── Alias rules (in-page row.key → drilldown.key) ────────────────────────
 //
@@ -270,34 +277,23 @@ const SECU_TOP_ALIAS: Record<string, string> = {
   part_atmp_autonomie: "atmp_autonomie",
 };
 
-// État stateBuckets agrège missions PLF en 5 buckets éditoriaux
-// (education / regaliens / travail_cohesion_ecologie / dette / autres).
-// Seuls 2 buckets ont un alias 1:1 propre vers une mission unique :
-//   - education → mission `ec` (Enseignement scolaire ; recherche `ra` séparée)
-//   - dette → mission `eb` (Engagements financiers de l'État)
-// Les buckets `regaliens` / `travail_cohesion_ecologie` / `autres` agrègent
-// plusieurs missions → pas de drill 1:1 (TODO: niveau bucket virtuel dans
-// drilldown.json pour permettre de cliquer "Régaliens" et voir les 4 missions).
-const ETAT_TOP_ALIAS: Record<string, string> = {
-  education: "ec",
-  dette: "eb",
-};
-
-// OFGL fonctionnelle communale (codes DGFiP F0..F9 réels) → libellés Agent P.
-// Plusieurs F-keys peuvent pointer au même level2 (ex: f3+f4 → culture_sport)
-// car OFGL groupe plus haut que DGFiP — c'est le bon comportement.
-// Clés alignées sur fonctionnelle-by-insee.json (réel) pas OFGL (agrégé).
-const LOCAL_FONCTIONNELLE_ALIAS: Record<string, string> = {
-  f0_services_generaux: "administration_generale",
-  f1_securite: "securite",
-  f2_enseignement: "enseignement",
-  f3_culture: "culture_sport",
-  f4_sport_jeunesse: "culture_sport",
-  f5_social_sante: "action_sociale",
-  f6_famille: "action_sociale",
-  f7_logement: "amenagement_urbain",
-  f8_amenagement_env: "amenagement_urbain",
-  f9_action_eco: "autres",
+// État stateBuckets agrège missions PLF en 9 buckets dignifiés + autres énuméré.
+// Chaque bucket éditorial a une key d'aggregation côté drilldown.json
+// (`buckets.etat.aggregations[].key`) ; le drawer ouvre la liste des missions
+// composantes plutôt qu'un alias 1:1. Dignité du bucket "autres" préservée
+// par énumération explicite dans son label (cf. STATE_BUCKET_DEFS dans
+// daily-bread.ts).
+const ETAT_TOP_ALIAS_AGG: Record<string, string> = {
+  education_recherche: "education_recherche",
+  defense: "defense",
+  securite: "securite",
+  justice: "justice",
+  solidarite_insertion: "solidarite_insertion",
+  travail_emploi: "travail_emploi",
+  ecologie_logement_transports: "ecologie_logement_transports",
+  culture_medias_sport: "culture_medias_sport",
+  dette: "dette",
+  autres: "autres",
 };
 
 export default function DailyBreadClient({
@@ -328,50 +324,25 @@ export default function DailyBreadClient({
     },
     [drilldownIndex],
   );
-  // Helper level3 : règle préfixe `{level2}_{inPageKey}`. On vérifie que la
-  // key préfixée existe bien dans `drilldownIndex.<bucket>.level3[level2]`
-  // avant de la rendre cliquable.
-  const makeLevel3UrlMap = useCallback(
-    (
-      bucket: "secu" | "etat" | "local",
-      level2Key: string,
-      inPageKeys: string[],
-    ) => {
-      const m = new Map<string, string>();
-      const available = new Set(
-        drilldownIndex?.[bucket]?.level3?.[level2Key] ?? [],
-      );
-      for (const inPage of inPageKeys) {
-        const fullKey = `${level2Key}_${inPage}`;
-        if (available.has(fullKey)) {
-          m.set(inPage, `/ville/paris/daily-bread/bucket/${bucket}/${level2Key}/${fullKey}`);
-        }
-      }
-      return m;
-    },
-    [drilldownIndex],
-  );
-
   const secuTopUrls = useMemo(
     () => makeTopUrlMap("secu", SECU_TOP_ALIAS),
     [makeTopUrlMap],
   );
-  const etatTopUrls = useMemo(
-    () => makeTopUrlMap("etat", ETAT_TOP_ALIAS),
-    [makeTopUrlMap],
-  );
-  const localFonctionnelleUrls = useMemo(
-    () => makeTopUrlMap("local", LOCAL_FONCTIONNELLE_ALIAS),
-    [makeTopUrlMap],
-  );
-  // Helper léger pour passer une factory level3 aux 4 deepdives Sécu, qui se
-  // résolvent toutes par règle de préfixe `{level2}_{inPageKey}`. Les factories
-  // sont closes sur `makeLevel3UrlMap` (qui dépend de drilldownIndex).
-  const buildSecuL3 = useCallback(
-    (level2: string, items: { key: string }[]) =>
-      makeLevel3UrlMap("secu", level2, items.map((x) => x.key)),
-    [makeLevel3UrlMap],
-  );
+  // État : on cible le drawer d'aggregation (ouvre la liste des missions du
+  // bucket éditorial). Cliquer "Régaliens" ouvre un drawer qui liste
+  // Défense + Sécurités + Justice + Action extérieure.
+  // Si Agent P2 n'a pas encore livré les aggregations, l'index reste vide
+  // → la row n'est pas cliquable (graceful).
+  const etatTopUrls = useMemo(() => {
+    const m = new Map<string, string>();
+    const available = new Set(drilldownIndex?.etatAggregations ?? []);
+    for (const [inPage, aggKey] of Object.entries(ETAT_TOP_ALIAS_AGG)) {
+      if (available.has(aggKey)) {
+        m.set(inPage, `/ville/paris/daily-bread/bucket/etat/agg/${aggKey}`);
+      }
+    }
+    return m;
+  }, [drilldownIndex]);
   const t = useT();
   const { locale } = useLocale();
   const router = useRouter();
@@ -449,30 +420,6 @@ export default function DailyBreadClient({
       });
   }, []);
 
-  /**
-   * Labels FR/EN pour les 10 fonctions M14/M57. Mapping standardisé pour
-   * être lisibles côté UI (le seed `db.deepdive.bloc_communal` utilisait
-   * des keys différentes — ici on parse les fonctions DGFiP directement).
-   */
-  // Clés alignées sur la nomenclature réelle DGFiP (cf.
-  // fonctionnelle-by-insee.json — `by_insee.<code>.fonctions`). Avant ce fix,
-  // f5/f8/f9 utilisaient les noms OFGL agrégés et tombaient en raw key.
-  const FONCTION_LABELS: Record<string, { fr: string; en: string }> = {
-    f0_services_generaux: { fr: "Administration générale", en: "General services" },
-    f1_securite: { fr: "Sécurité (police municipale, hygiène)", en: "Security" },
-    f2_enseignement: { fr: "Enseignement (écoles primaires, cantines)", en: "Education" },
-    f3_culture: { fr: "Culture (bibliothèques, musées, conservatoires)", en: "Culture" },
-    f4_sport_jeunesse: { fr: "Sport et jeunesse", en: "Sport & youth" },
-    f5_social_sante: { fr: "Social et santé (CCAS, aide sociale)", en: "Social & health" },
-    f6_famille: { fr: "Famille (crèches, périscolaire)", en: "Family" },
-    f7_logement: { fr: "Logement (aides, gestion patrimoine)", en: "Housing" },
-    f8_amenagement_env: {
-      fr: "Aménagement, voirie, propreté, environnement",
-      en: "Planning, roads, cleaning, environment",
-    },
-    f9_action_eco: { fr: "Action économique", en: "Economic action" },
-  };
-
   // ─── OpenFisca (Phase 5 MVP, opt-in) ───────────────────────────────
   // Calcul exact via l'API publique Etalab pour le profil **salarié**.
   // - Activé sur clic du bouton "Affiner avec calcul officiel"
@@ -509,8 +456,11 @@ export default function DailyBreadClient({
   // parallel-route. Le client reste monté pendant l'intercept (layout persiste)
   // donc l'effect tourne encore.
   const pathname = usePathname();
-  useEffect(() => {
-    if (pathname && pathname !== "/ville/paris/daily-bread") return;
+  // Query string profil — propagé sur tous les Link drill-down (BarList /
+  // DailyBreadDeepDive). Permet aux pages drawer/standalone de reconstruire
+  // les €/mois personnels sans refaire le formulaire. Mêmes règles d'omission
+  // que le useEffect de sync URL ci-dessous (zéros omis).
+  const profileQuery = useMemo(() => {
     const params = new URLSearchParams();
     params.set("net", String(salaireMonthly));
     params.set("parts", String(parts));
@@ -523,7 +473,7 @@ export default function DailyBreadClient({
       params.set("indep_ca", String(indepCaAnnuel));
       if (indepType !== "services_bic") params.set("indep_type", indepType);
     }
-    router.replace(`/ville/paris/daily-bread?${params.toString()}`, { scroll: false });
+    return params.toString();
   }, [
     salaireMonthly,
     pensionMonthly,
@@ -534,9 +484,14 @@ export default function DailyBreadClient({
     isOwner,
     tfCustom,
     indepType,
-    pathname,
-    router,
   ]);
+  useEffect(() => {
+    if (pathname && pathname !== "/ville/paris/daily-bread") return;
+    router.replace(
+      `/ville/paris/daily-bread${profileQuery ? `?${profileQuery}` : ""}`,
+      { scroll: false },
+    );
+  }, [profileQuery, pathname, router]);
 
   // ─── Initial commune fetch ─────────────────────────────────────────
   useEffect(() => {
@@ -905,18 +860,33 @@ export default function DailyBreadClient({
   }, [cofog, totalAnnuel]);
 
   // ─── Deep-dives ("À l'intérieur de…") ─────────────────────────────
-  // Santé : applique la stack ONDAM PLFSS 2025 sur la part CNAM/maladie de la Sécu.
+  // Les blocs DailyBreadDeepDive ont besoin du €/mois personnel de chaque
+  // sous-poste (CNAM, CNAV, CAF, UNEDIC, mission Défense, mission Éducation,
+  // mission Dette, autres ministères, bloc communal, département, région).
+  // Le drill détaillé vit côté drawer (BarList top → drawer drill-down).
+
+  // Sécu — branches ASSO (CNAM/CNAV/CAF/UNEDIC).
   const cnamMonthly = useMemo(
     () => assoBranches.find((b) => b.key === "part_cnam_maladie")?.monthly_eur ?? 0,
     [assoBranches],
   );
-  const deepdiveSante = useMemo<DeepDiveStackEntry[]>(
-    () => (db ? computeDeepDiveStack(cnamMonthly, db.deepdive?.sante) : []),
-    [db, cnamMonthly],
+  const cnavMonthly = useMemo(
+    () => assoBranches.find((b) => b.key === "part_cnav_retraites")?.monthly_eur ?? 0,
+    [assoBranches],
+  );
+  const cafMonthly = useMemo(
+    () => assoBranches.find((b) => b.key === "part_caf_famille")?.monthly_eur ?? 0,
+    [assoBranches],
+  );
+  const unedicMonthly = useMemo(
+    () => assoBranches.find((b) => b.key === "part_unedic_chomage")?.monthly_eur ?? 0,
+    [assoBranches],
   );
 
-  // Défense : part Mission Défense de l'État central, ventilée par titre.
-  // Total État ≈ 480 Md€ net BG (LFI 2025) ; total Mission Défense ≈ 50,1 Md€ ↦ part ~10.4%.
+  // État — Mission Défense (déduite du seed `db.deepdive.defense.total_md_eur`
+  // rapporté au total État LFI). Le seed reste utilisé même si la stack de
+  // titres a été retirée du panneau, parce qu'on a besoin du share Défense
+  // pour afficher le €/mois personnel dans l'aside éditorial.
   const defenseShareOfState = useMemo(() => {
     const totalDefense = db?.deepdive?.defense?.total_md_eur;
     const totalEtat = db?.state_breakdown?.total_net_cp_eur;
@@ -925,120 +895,34 @@ export default function DailyBreadClient({
     return Math.min(Math.max((totalDefense * 1e9) / totalEtat, 0.05), 0.25);
   }, [db]);
   const defenseMonthly = etatMonthly * defenseShareOfState;
-  const deepdiveDefense = useMemo<DeepDiveStackEntry[]>(
-    () => (db ? computeDeepDiveStack(defenseMonthly, db.deepdive?.defense) : []),
-    [db, defenseMonthly],
+
+  // État — autres buckets éditoriaux (Éducation, Dette, Autres ministères).
+  const educationMonthly = useMemo(
+    () => stateBuckets.find((b) => b.key === "education")?.monthly_eur ?? 0,
+    [stateBuckets],
+  );
+  const detteMonthly = useMemo(
+    () => stateBuckets.find((b) => b.key === "dette")?.monthly_eur ?? 0,
+    [stateBuckets],
+  );
+  const autresMinisteresMonthly = useMemo(
+    () => stateBuckets.find((b) => b.key === "autres")?.monthly_eur ?? 0,
+    [stateBuckets],
   );
 
-  // Bloc communal : ventile la 1ère ligne de localLevels ("bloc_communal")
-  // selon la fonctionnelle OFGL (overlay top-200 par INSEE si dispo, sinon
-  // moyenne nationale).
+  // Local — bloc communal (€/mois pour la commune sélectionnée).
   const blocCommunalMonthly = useMemo(
     () => localLevels.find((l) => l.key === "bloc_communal")?.monthly_eur ?? 0,
     [localLevels],
   );
-  // Bloc communal : si la commune est dans la fonctionnelle DGFiP (commune
-  // >3 500 hab qui vote par fonction), utilise sa vraie ventilation par
-  // fonction. Sinon, fallback sur le seed national (moyenne pondérée).
+  // Track si la commune sélectionnée a une fonctionnelle DGFiP — utilisé
+  // pour adapter le label "meta" du DailyBreadDeepDive (DGFiP vs national).
   const communeFoncEntry = useMemo(() => {
     if (!communeFonc || !commune?.insee) return null;
     return communeFonc.by_insee[commune.insee] ?? null;
   }, [communeFonc, commune?.insee]);
 
-  const deepdiveLocal = useMemo<DeepDiveStackEntry[]>(() => {
-    if (!db) return [];
-    if (communeFoncEntry) {
-      // Vraie ventilation DGFiP de la commune sélectionnée
-      const items = Object.entries(communeFoncEntry.fonctions);
-      const sum = items.reduce((acc, [, v]) => acc + (v.share || 0), 0) || 1;
-      return items
-        .map(([key, v]) => {
-          const lbl = FONCTION_LABELS[key];
-          const share = (v.share || 0) / sum;
-          return {
-            key,
-            label_fr: lbl?.fr ?? key,
-            label_en: lbl?.en ?? key,
-            share,
-            monthly_eur: blocCommunalMonthly * share,
-          };
-        })
-        .sort((a, b) => b.share - a.share);
-    }
-    // Fallback : seed national (moyenne pondérée)
-    return computeDeepDiveLocal(
-      blocCommunalMonthly,
-      db.deepdive?.bloc_communal,
-      commune?.insee,
-    );
-  }, [db, blocCommunalMonthly, communeFoncEntry, commune?.insee]);
-
-  // Sécu : Retraites — applique la stack DREES sur la part CNAV de la Sécu.
-  const cnavMonthly = useMemo(
-    () => assoBranches.find((b) => b.key === "part_cnav_retraites")?.monthly_eur ?? 0,
-    [assoBranches],
-  );
-  const deepdiveRetraites = useMemo<DeepDiveStackEntry[]>(
-    () => (db ? computeDeepDiveStack(cnavMonthly, db.deepdive?.retraites) : []),
-    [db, cnavMonthly],
-  );
-
-  // Sécu : Famille — applique la stack CCSS/CAF sur la part CAF de la Sécu.
-  const cafMonthly = useMemo(
-    () => assoBranches.find((b) => b.key === "part_caf_famille")?.monthly_eur ?? 0,
-    [assoBranches],
-  );
-  const deepdiveFamille = useMemo<DeepDiveStackEntry[]>(
-    () => (db ? computeDeepDiveStack(cafMonthly, db.deepdive?.famille) : []),
-    [db, cafMonthly],
-  );
-
-  // Sécu : Chômage — applique la stack UNEDIC sur la part UNEDIC de la Sécu.
-  const unedicMonthly = useMemo(
-    () => assoBranches.find((b) => b.key === "part_unedic_chomage")?.monthly_eur ?? 0,
-    [assoBranches],
-  );
-  const deepdiveChomage = useMemo<DeepDiveStackEntry[]>(
-    () => (db ? computeDeepDiveStack(unedicMonthly, db.deepdive?.chomage) : []),
-    [db, unedicMonthly],
-  );
-
-  // État : Éducation — applique la stack DEPP sur le bucket Éducation.
-  const educationMonthly = useMemo(
-    () => stateBuckets.find((b) => b.key === "education")?.monthly_eur ?? 0,
-    [stateBuckets],
-  );
-  const deepdiveEducation = useMemo<DeepDiveStackEntry[]>(
-    () => (db ? computeDeepDiveStack(educationMonthly, db.deepdive?.education) : []),
-    [db, educationMonthly],
-  );
-
-  // État : Charge dette — stack AFT sur le bucket Charge dette.
-  const detteMonthly = useMemo(
-    () => stateBuckets.find((b) => b.key === "dette")?.monthly_eur ?? 0,
-    [stateBuckets],
-  );
-  const deepdiveDette = useMemo<DeepDiveStackEntry[]>(
-    () => (db ? computeDeepDiveStack(detteMonthly, db.deepdive?.dette) : []),
-    [db, detteMonthly],
-  );
-
-  // État : Autres ministères + opérateurs — stack PLF sur le bucket "autres".
-  const autresMinisteresMonthly = useMemo(
-    () => stateBuckets.find((b) => b.key === "autres")?.monthly_eur ?? 0,
-    [stateBuckets],
-  );
-  const deepdiveAutresMinisteres = useMemo<DeepDiveStackEntry[]>(
-    () =>
-      db
-        ? computeDeepDiveStack(autresMinisteresMonthly, db.deepdive?.autres_ministeres)
-        : [],
-    [db, autresMinisteresMonthly],
-  );
-
-  // Local : Département — stack OFGL fonctionnelle.
-  // Si on connaît le département de la commune et qu'on a la data spécifique,
-  // on utilise les % réels du département. Sinon → moyenne nationale (status quo).
+  // Local — département (€/mois) + département spécifique pour le label.
   const departementMonthly = useMemo(
     () => localLevels.find((l) => l.key === "departement")?.monthly_eur ?? 0,
     [localLevels],
@@ -1052,43 +936,10 @@ export default function DailyBreadClient({
     return { code, entry };
   }, [deptFonc, commune?.dep_name]);
 
-  const deepdiveDepartementSource = useMemo(() => {
-    if (!db?.deepdive?.departement) return null;
-    if (!departementSpecific) return db.deepdive.departement;
-    // Override `national_avg_weighted` avec les valeurs spécifiques du
-    // département en gardant les `label_fr/label_en` de la moyenne nationale
-    // (i18n stable). Schema DailyBreadDeepDiveLocal inchangé → typage strict OK.
-    const base = db.deepdive.departement;
-    const baseAvg = base.national_avg_weighted ?? {};
-    const overlay: typeof baseAvg = {};
-    for (const [bucket, baseVal] of Object.entries(baseAvg)) {
-      const specVal = departementSpecific.entry.fonctions[bucket];
-      overlay[bucket] = specVal
-        ? {
-            share: specVal.share,
-            eur_hab: specVal.eur_hab,
-            label_fr: baseVal.label_fr,
-            label_en: baseVal.label_en,
-          }
-        : baseVal;
-    }
-    return { ...base, national_avg_weighted: overlay };
-  }, [db, departementSpecific]);
-
-  const deepdiveDepartement = useMemo<DeepDiveStackEntry[]>(
-    () =>
-      db ? computeDeepDiveLocal(departementMonthly, deepdiveDepartementSource) : [],
-    [db, departementMonthly, deepdiveDepartementSource],
-  );
-
-  // Local : Région — stack OFGL fonctionnelle moyenne nationale.
+  // Local — région.
   const regionMonthly = useMemo(
     () => localLevels.find((l) => l.key === "region")?.monthly_eur ?? 0,
     [localLevels],
-  );
-  const deepdiveRegion = useMemo<DeepDiveStackEntry[]>(
-    () => (db ? computeDeepDiveLocal(regionMonthly, db.deepdive?.region) : []),
-    [db, regionMonthly],
   );
 
   // ─── Equivalents (concrete units for synthèse panel) ───────────────
@@ -1231,6 +1082,9 @@ export default function DailyBreadClient({
   // ─── Render ────────────────────────────────────────────────────────
   return (
     <div className={`theme-db-scrolly${clientArmed ? " is-armed" : ""}`}>
+      <div className="theme-fusion">
+        <Navbar />
+      </div>
       <main>
         {/* ── PANNEAU 0 — Calculator ── */}
         <section className="db-panel db-p-calc">
@@ -2015,22 +1869,17 @@ export default function DailyBreadClient({
                   color="c-secu"
                   locale={locale}
                   clickableUrls={secuTopUrls}
+                  profileQuery={profileQuery}
                 />
               </div>
 
-              {deepdiveSante.length > 0 && cnamMonthly > 0 && (
+              {cnamMonthly > 0 && (
                 <DailyBreadDeepDive
                   eyebrow={t("db.deepdive.eyebrow")}
                   title={t("db.deepdive.sante.title")}
                   amountMonthly={cnamMonthly}
                   meta={t("db.deepdive.sante.meta")}
-                  items={deepdiveSante.map((x) => ({
-                    ...x,
-                    label_fr: t(`db.deepdive.sante.${x.key}`),
-                    label_en: t(`db.deepdive.sante.${x.key}`),
-                  }))}
                   color="c-secu"
-                  clickableUrls={buildSecuL3("cnam_maladie", deepdiveSante)}
                   asides={[
                     {
                       num: t("db.deepdive.aside.sante1.num"),
@@ -2055,19 +1904,13 @@ export default function DailyBreadClient({
                 />
               )}
 
-              {deepdiveRetraites.length > 0 && cnavMonthly > 0 && (
+              {cnavMonthly > 0 && (
                 <DailyBreadDeepDive
                   eyebrow={t("db.deepdive.eyebrow")}
                   title={t("db.deepdive.retraites.title")}
                   amountMonthly={cnavMonthly}
                   meta={t("db.deepdive.retraites.meta")}
-                  items={deepdiveRetraites.map((x) => ({
-                    ...x,
-                    label_fr: t(`db.deepdive.retraites.${x.key}`),
-                    label_en: t(`db.deepdive.retraites.${x.key}`),
-                  }))}
                   color="c-secu"
-                  clickableUrls={buildSecuL3("cnav_retraites", deepdiveRetraites)}
                   asides={[
                     {
                       num: t("db.deepdive.aside.retraites1.num"),
@@ -2092,19 +1935,13 @@ export default function DailyBreadClient({
                 />
               )}
 
-              {deepdiveFamille.length > 0 && cafMonthly > 0 && (
+              {cafMonthly > 0 && (
                 <DailyBreadDeepDive
                   eyebrow={t("db.deepdive.eyebrow")}
                   title={t("db.deepdive.famille.title")}
                   amountMonthly={cafMonthly}
                   meta={t("db.deepdive.famille.meta")}
-                  items={deepdiveFamille.map((x) => ({
-                    ...x,
-                    label_fr: t(`db.deepdive.famille.${x.key}`),
-                    label_en: t(`db.deepdive.famille.${x.key}`),
-                  }))}
                   color="c-secu"
-                  clickableUrls={buildSecuL3("cnaf_famille", deepdiveFamille)}
                   asides={[
                     {
                       num: t("db.deepdive.aside.famille1.num"),
@@ -2129,19 +1966,13 @@ export default function DailyBreadClient({
                 />
               )}
 
-              {deepdiveChomage.length > 0 && unedicMonthly > 0 && (
+              {unedicMonthly > 0 && (
                 <DailyBreadDeepDive
                   eyebrow={t("db.deepdive.eyebrow")}
                   title={t("db.deepdive.chomage.title")}
                   amountMonthly={unedicMonthly}
                   meta={t("db.deepdive.chomage.meta")}
-                  items={deepdiveChomage.map((x) => ({
-                    ...x,
-                    label_fr: t(`db.deepdive.chomage.${x.key}`),
-                    label_en: t(`db.deepdive.chomage.${x.key}`),
-                  }))}
                   color="c-secu"
-                  clickableUrls={buildSecuL3("unedic_chomage", deepdiveChomage)}
                   asides={[
                     {
                       num: t("db.deepdive.aside.chomage1.num"),
@@ -2211,41 +2042,39 @@ export default function DailyBreadClient({
                   </div>
                 </div>
 
-                <BarList
-                  items={stateBuckets.map((b) => ({
-                    key: b.key,
-                    name: locale === "en" ? b.label_en : b.label_fr,
-                    monthly: b.monthly_eur,
-                    share: b.share_of_state,
-                    sub:
-                      b.missions.length > 1
-                        ? b.missions
-                            .map((m) => m.label)
-                            .slice(0, 3)
-                            .join(" · ")
-                        : undefined,
-                  }))}
-                  color="c-etat"
-                  locale={locale}
-                  clickableUrls={etatTopUrls}
-                />
+                <div>
+                  <p className="db-p-zoom-method-note">
+                    {t("db.etat.method_note")}
+                  </p>
+                  <BarList
+                    items={stateBuckets.map((b) => ({
+                      key: b.key,
+                      name: locale === "en" ? b.label_en : b.label_fr,
+                      monthly: b.monthly_eur,
+                      share: b.share_of_state,
+                      sub:
+                        b.missions.length > 1
+                          ? b.missions
+                              .map((m) => m.label)
+                              .slice(0, 3)
+                              .join(" · ")
+                          : undefined,
+                    }))}
+                    color="c-etat"
+                    locale={locale}
+                    clickableUrls={etatTopUrls}
+                    profileQuery={profileQuery}
+                  />
+                </div>
               </div>
 
-              {deepdiveEducation.length > 0 && educationMonthly > 0 && (
+              {educationMonthly > 0 && (
                 <DailyBreadDeepDive
                   eyebrow={t("db.deepdive.eyebrow_l")}
                   title={t("db.deepdive.education.title")}
                   amountMonthly={educationMonthly}
                   meta={t("db.deepdive.education.meta")}
-                  items={deepdiveEducation.map((x) => ({
-                    ...x,
-                    label_fr: t(`db.deepdive.education.${x.key}`),
-                    label_en: t(`db.deepdive.education.${x.key}`),
-                  }))}
                   color="c-etat"
-                  // Pas de clickableUrls : les rows sont une décomposition DEPP
-                  // (pédagogique) ≠ programmes PLF d'Agent P. Le drill macro→
-                  // micro pour État passe par le BarList stateBuckets au-dessus.
                   asides={[
                     {
                       num: t("db.deepdive.aside.education1.num"),
@@ -2270,19 +2099,13 @@ export default function DailyBreadClient({
                 />
               )}
 
-              {deepdiveDefense.length > 0 && defenseMonthly > 0 && (
+              {defenseMonthly > 0 && (
                 <DailyBreadDeepDive
                   eyebrow={t("db.deepdive.eyebrow")}
                   title={t("db.deepdive.defense.title")}
                   amountMonthly={defenseMonthly}
                   meta={t("db.deepdive.defense.meta")}
-                  items={deepdiveDefense.map((x) => ({
-                    ...x,
-                    label_fr: t(`db.deepdive.defense.${x.key}`),
-                    label_en: t(`db.deepdive.defense.${x.key}`),
-                  }))}
                   color="c-etat"
-                  // Décomposition par titre budgétaire ≠ programmes PLF.
                   asides={[
                     {
                       num: t("db.deepdive.aside.defense1.num"),
@@ -2307,19 +2130,13 @@ export default function DailyBreadClient({
                 />
               )}
 
-              {deepdiveDette.length > 0 && detteMonthly > 0 && (
+              {detteMonthly > 0 && (
                 <DailyBreadDeepDive
                   eyebrow={t("db.deepdive.eyebrow_la")}
                   title={t("db.deepdive.dette.title")}
                   amountMonthly={detteMonthly}
                   meta={t("db.deepdive.dette.meta")}
-                  items={deepdiveDette.map((x) => ({
-                    ...x,
-                    label_fr: t(`db.deepdive.dette.${x.key}`),
-                    label_en: t(`db.deepdive.dette.${x.key}`),
-                  }))}
                   color="c-etat"
-                  // Décomposition AFT (intérêts CT/LT) ≠ programmes PLF.
                   asides={[
                     {
                       num: t("db.deepdive.aside.dette1.num"),
@@ -2344,19 +2161,13 @@ export default function DailyBreadClient({
                 />
               )}
 
-              {deepdiveAutresMinisteres.length > 0 && autresMinisteresMonthly > 0 && (
+              {autresMinisteresMonthly > 0 && (
                 <DailyBreadDeepDive
                   eyebrow={t("db.deepdive.eyebrow")}
                   title={t("db.deepdive.autres_ministeres.title")}
                   amountMonthly={autresMinisteresMonthly}
                   meta={t("db.deepdive.autres_ministeres.meta")}
-                  items={deepdiveAutresMinisteres.map((x) => ({
-                    ...x,
-                    label_fr: t(`db.deepdive.autres_ministeres.${x.key}`),
-                    label_en: t(`db.deepdive.autres_ministeres.${x.key}`),
-                  }))}
                   color="c-etat"
-                  // Agrégation éditoriale ≠ programmes PLF.
                   asides={[
                     {
                       num: t("db.deepdive.aside.autres_ministeres1.num"),
@@ -2460,7 +2271,7 @@ export default function DailyBreadClient({
                 />
               </div>
 
-              {deepdiveLocal.length > 0 && blocCommunalMonthly > 0 && (
+              {blocCommunalMonthly > 0 && (
                 <DailyBreadDeepDive
                   eyebrow={t("db.deepdive.eyebrow_du")}
                   title={
@@ -2474,24 +2285,7 @@ export default function DailyBreadClient({
                       ? `DGFiP balance comptable ${communeFonc?.year ?? 2024} · ${commune?.nom}`
                       : t("db.deepdive.local.meta")
                   }
-                  items={deepdiveLocal.map((x) => {
-                    // Si l'entrée vient du seed national, on a une clé i18n
-                    // (ex `db.deepdive.local.administration_generale`).
-                    // Si elle vient de la fonctionnelle DGFiP par INSEE, le
-                    // label_fr est déjà rempli depuis FONCTION_LABELS.
-                    const i18nKey = `db.deepdive.local.${x.key}`;
-                    const tr = t(i18nKey);
-                    const useTr = tr && tr !== i18nKey;
-                    return {
-                      ...x,
-                      label_fr: useTr ? tr : x.label_fr,
-                      label_en: useTr ? tr : x.label_en,
-                    };
-                  })}
                   color="c-local"
-                  // F-codes DGFiP communaux mappés vers les libellés OFGL
-                  // d'Agent P (cf. LOCAL_FONCTIONNELLE_ALIAS).
-                  clickableUrls={localFonctionnelleUrls}
                   asides={[
                     {
                       num: t("db.deepdive.aside.local1.num"),
@@ -2516,7 +2310,7 @@ export default function DailyBreadClient({
                 />
               )}
 
-              {deepdiveDepartement.length > 0 && departementMonthly > 0 && (
+              {departementMonthly > 0 && (
                 <DailyBreadDeepDive
                   eyebrow={t("db.deepdive.eyebrow_du")}
                   title={
@@ -2530,14 +2324,7 @@ export default function DailyBreadClient({
                       ? `OFGL fonctionnelle ${deptFonc.year} · ${departementSpecific.entry.nom}`
                       : t("db.deepdive.departement.meta")
                   }
-                  items={deepdiveDepartement.map((x) => ({
-                    ...x,
-                    label_fr: t(`db.deepdive.departement.${x.key}`),
-                    label_en: t(`db.deepdive.departement.${x.key}`),
-                  }))}
                   color="c-local"
-                  // OFGL départemental : decomposition différente d'Agent P
-                  // (qui couvre seulement le bloc communal). Drill non câblé.
                   asides={[
                     {
                       num: t("db.deepdive.aside.departement1.num"),
@@ -2562,7 +2349,7 @@ export default function DailyBreadClient({
                 />
               )}
 
-              {deepdiveRegion.length > 0 && regionMonthly > 0 && (
+              {regionMonthly > 0 && (
                 <DailyBreadDeepDive
                   eyebrow={t("db.deepdive.eyebrow_de_la")}
                   title={
@@ -2572,13 +2359,7 @@ export default function DailyBreadClient({
                   }
                   amountMonthly={regionMonthly}
                   meta={t("db.deepdive.region.meta")}
-                  items={deepdiveRegion.map((x) => ({
-                    ...x,
-                    label_fr: t(`db.deepdive.region.${x.key}`),
-                    label_en: t(`db.deepdive.region.${x.key}`),
-                  }))}
                   color="c-local"
-                  // OFGL régional : decomposition différente d'Agent P. Idem.
                   asides={[
                     {
                       num: t("db.deepdive.aside.region1.num"),
@@ -2845,25 +2626,23 @@ export default function DailyBreadClient({
               </h2>
               <p className="db-p-end-deck">{t("db.end.deck")}</p>
 
-              <div className="db-p-end-grid">
+              <ul className="db-p-end-list">
                 {equivalents.slice(0, 5).map((eq, i) => (
-                  <div key={i} className="db-p-end-item">
-                    <p className="db-p-end-item-tag">
+                  <li key={i} className="db-p-end-row">
+                    <span className="db-p-end-row-tag">
                       {locale === "en" ? eq.tagEn : eq.tagFr}
-                    </p>
-                    <p className="db-p-end-item-headline tnum">
-                      {eq.headline}
-                    </p>
-                    <p className="db-p-end-item-unit">
+                    </span>
+                    <span className="db-p-end-row-num tnum">{eq.headline}</span>
+                    <span className="db-p-end-row-unit">
                       {locale === "en" ? eq.unitEn : eq.unitFr}
-                    </p>
-                    <p className="db-p-end-item-amt tnum">
+                    </span>
+                    <span className="db-p-end-row-meta tnum">
                       {fmtEur(eq.amount, locale, 0)} €{" "}
-                      <span className="lite">{eq.sub}</span>
-                    </p>
-                  </div>
+                      <span className="lite">· {eq.sub}</span>
+                    </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
 
               <DailyBreadShareActions locale={locale} />
 
@@ -2977,6 +2756,10 @@ export default function DailyBreadClient({
       {/* FAB sticky : copier le lien du profil. URL déjà persistante via
           query-string, donc le copier suffit pour partager. */}
       <ShareFab />
+
+      <div className="theme-fusion">
+        <Footer />
+      </div>
     </div>
   );
 }
@@ -3134,51 +2917,34 @@ function DailyBreadShareActions({ locale }: { locale: string }) {
 }
 
 // ─── DeepDive sub-component ─────────────────────────────────────────────
+//
+// Bandeau éditorial sourcé qui complète le BarList de chaque panneau zoom.
+// Anciennement : header + stack horizontale + legend cliquable + 3 asides.
+// Refactor 2026-05-07 : la stack et la legend dupliquaient le drill canonique
+// (BarList top → drawer level3/4) → suppression. Reste : eyebrow + titre +
+// amount/mois + meta dans <summary>, et 3 asides éditoriaux dans <details>.
 
 type DeepDiveColor = "c-secu" | "c-etat" | "c-local";
-
-const DEEPDIVE_PALETTES: Record<DeepDiveColor, string[]> = {
-  // 5 nuances bleu Sécu (ONDAM)
-  "c-secu": ["#0451d6", "#1a64db", "#4078e0", "#6a8de6", "#93a8ec"],
-  // 4 nuances gris État
-  "c-etat": ["#1a1d26", "#2a2f38", "#4a4f58", "#6a6f78"],
-  // 9 nuances ocre Local
-  "c-local": [
-    "#c98215", "#b87410", "#d8943a", "#c98215", "#d8a060",
-    "#b88848", "#d8b078", "#c89858", "#e0c098",
-  ],
-};
 
 function DailyBreadDeepDive({
   eyebrow,
   title,
   amountMonthly,
   meta,
-  items,
-  color,
   asides,
   locale,
+  color,
   defaultOpen = false,
-  clickableUrls,
 }: {
   eyebrow: string;
   title: string;
   amountMonthly: number;
   meta: string;
-  items: DeepDiveStackEntry[];
-  color: DeepDiveColor;
   asides: Array<{ num: string; numEm: string; text: string; source: string }>;
   locale: string;
+  color: DeepDiveColor;
   defaultOpen?: boolean;
-  /** Map row.key → URL absolue de drill-down. Une row n'est cliquable que si
-   *  sa key est présente dans la map. La résolution alias / niveau 2 vs 3
-   *  vit en amont (côté DailyBreadClient) — c'est là qu'on connaît le contrat
-   *  drilldown.json + les conventions de naming spécifiques par bucket. */
-  clickableUrls?: Map<string, string>;
 }) {
-  const t = useT();
-  const palette = DEEPDIVE_PALETTES[color];
-  const totalShare = items.reduce((acc, x) => acc + x.share, 0) || 1;
   return (
     <details
       className={`db-p-zoom-deepdive ${color}`}
@@ -3201,81 +2967,16 @@ function DailyBreadDeepDive({
       </summary>
 
       <div className="db-p-zoom-deepdive-body">
-        <div className="db-p-zoom-deepdive-grid">
-          <div className="db-p-zoom-deepdive-stack-wrap">
-            <div className="db-p-zoom-deepdive-stack">
-              {items.map((it, i) => {
-                const flex = (it.share / totalShare) * 100;
-                const bg = palette[i % palette.length];
-                const showAmt = it.share >= 0.07;
-                return (
-                  <div key={it.key} style={{ background: bg, flex }}>
-                    <div className="db-p-zoom-deepdive-stack-pct">
-                      {Math.round(it.share * 100)} %
-                    </div>
-                    <div className="db-p-zoom-deepdive-stack-name">
-                      {locale === "en" ? it.label_en : it.label_fr}
-                    </div>
-                    {showAmt && (
-                      <div className="db-p-zoom-deepdive-stack-amt">
-                        {fmtEur(it.monthly_eur, locale, 0)} €
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
+        <div className="db-p-zoom-deepdive-asides">
+          {asides.map((a, i) => (
+            <div key={i} className={`db-p-zoom-deepdive-aside ${color}`}>
+              <p className="db-p-zoom-deepdive-aside-num">
+                {a.num} <em>{a.numEm}</em>
+              </p>
+              <p className="db-p-zoom-deepdive-aside-text">{a.text}</p>
+              <span className="db-p-zoom-deepdive-aside-source">{a.source}</span>
             </div>
-            <div className="db-p-zoom-deepdive-legend">
-              {items.map((it, i) => {
-                const bg = palette[i % palette.length];
-                const label = locale === "en" ? it.label_en : it.label_fr;
-                const url = clickableUrls?.get(it.key);
-                if (url) {
-                  // Link + scroll={false} pour déclencher l'intercept slot
-                  // (cf. BarList — router.push casse l'intercept).
-                  return (
-                    <Link
-                      key={it.key}
-                      href={url}
-                      scroll={false}
-                      prefetch={false}
-                      className="db-p-zoom-deepdive-legend-item db-p-zoom-deepdive-legend-item-clickable"
-                      aria-label={t("db.drilldown.row_open_aria").replace(
-                        "{label}",
-                        label,
-                      )}
-                    >
-                      <i style={{ background: bg }} />
-                      <span>{label}</span>
-                      <b className="tnum">{fmtEur(it.monthly_eur, locale, 0)} €</b>
-                      <span aria-hidden className="db-p-zoom-deepdive-legend-chevron">
-                        →
-                      </span>
-                    </Link>
-                  );
-                }
-                return (
-                  <span key={it.key} className="db-p-zoom-deepdive-legend-item">
-                    <i style={{ background: bg }} />
-                    <span>{label}</span>
-                    <b className="tnum">{fmtEur(it.monthly_eur, locale, 0)} €</b>
-                  </span>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="db-p-zoom-deepdive-asides">
-            {asides.map((a, i) => (
-              <div key={i} className={`db-p-zoom-deepdive-aside ${color}`}>
-                <p className="db-p-zoom-deepdive-aside-num">
-                  {a.num} <em>{a.numEm}</em>
-                </p>
-                <p className="db-p-zoom-deepdive-aside-text">{a.text}</p>
-                <span className="db-p-zoom-deepdive-aside-source">{a.source}</span>
-              </div>
-            ))}
-          </div>
+          ))}
         </div>
       </div>
     </details>
@@ -3289,6 +2990,7 @@ function BarList({
   color,
   locale,
   clickableUrls,
+  profileQuery,
 }: {
   items: Array<{
     key?: string;
@@ -3303,13 +3005,22 @@ function BarList({
   /** Optional : si l'item a une `key` présente dans cette map, la barre
    *  devient cliquable (drill vers `/ville/paris/daily-bread/bucket/<bucket>/<level2>`). */
   clickableUrls?: Map<string, string>;
+  /** Optional : query string profil à appender à chaque URL (préserve le
+   *  contexte salaire/parts/commune dans le drawer drill-down — sinon
+   *  l'utilisateur verrait "13% de l'État" mais pas son €/mois personnel). */
+  profileQuery?: string;
 }) {
   const max = Math.max(...items.map((i) => i.share), 0.01);
   return (
     <div className="db-p-zoom-bars">
       {items.map((item, i) => {
         const pct = (item.share / max) * 100;
-        const url = item.key ? clickableUrls?.get(item.key) : undefined;
+        const baseUrl = item.key ? clickableUrls?.get(item.key) : undefined;
+        const url = baseUrl
+          ? profileQuery
+            ? `${baseUrl}${baseUrl.includes("?") ? "&" : "?"}${profileQuery}`
+            : baseUrl
+          : undefined;
         const isClickable = Boolean(url);
         const inner = (
           <>

@@ -1,0 +1,95 @@
+[
+  {
+    "page": "landing",
+    "url": "http://localhost:3000/",
+    "score": 96,
+    "failedAudits": [
+      {
+        "id": "color-contrast",
+        "score": 0,
+        "title": "Background and foreground colors do not have a sufficient contrast ratio."
+      },
+      {
+        "id": "label-content-name-mismatch",
+        "score": 0,
+        "title": "Elements with visible text labels do not have matching accessible names."
+      }
+    ]
+  },
+  {
+    "page": "qui-recoit",
+    "url": "http://localhost:3000/qui-recoit",
+    "score": 89,
+    "failedAudits": [
+      {
+        "id": "color-contrast",
+        "score": 0,
+        "title": "Background and foreground colors do not have a sufficient contrast ratio."
+      },
+      {
+        "id": "label-content-name-mismatch",
+        "score": 0,
+        "title": "Elements with visible text labels do not have matching accessible names."
+      },
+      {
+        "id": "select-name",
+        "score": 0,
+        "title": "Select elements do not have associated label elements."
+      },
+      {
+        "id": "target-size",
+        "score": 0,
+        "title": "Touch targets do not have sufficient size or spacing."
+      }
+    ]
+  },
+  {
+    "page": "marches-publics",
+    "url": "http://localhost:3000/marches-publics",
+    "score": 89,
+    "failedAudits": [
+      {
+        "id": "color-contrast",
+        "score": 0,
+        "title": "Background and foreground colors do not have a sufficient contrast ratio."
+      },
+      {
+        "id": "label-content-name-mismatch",
+        "score": 0,
+        "title": "Elements with visible text labels do not have matching accessible names."
+      },
+      {
+        "id": "select-name",
+        "score": 0,
+        "title": "Select elements do not have associated label elements."
+      },
+      {
+        "id": "target-size",
+        "score": 0,
+        "title": "Touch targets do not have sufficient size or spacing."
+      }
+    ]
+  },
+  {
+    "page": "methode",
+    "url": "http://localhost:3000/methode",
+    "score": 95,
+    "failedAudits": [
+      {
+        "id": "color-contrast",
+        "score": 0,
+        "title": "Background and foreground colors do not have a sufficient contrast ratio."
+      },
+      {
+        "id": "heading-order",
+        "score": 0,
+        "title": "Heading elements are not in a sequentially-descending order"
+      },
+      {
+        "id": "label-content-name-mismatch",
+        "score": 0,
+        "title": "Elements with visible text labels do not have matching accessible names."
+      }
+    ]
+  }
+]

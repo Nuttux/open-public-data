@@ -81,7 +81,7 @@ export default function ThemeFiche({ fiche }: { fiche: ThemeSubventionsFiche }) 
             return (
               <Link
                 key={b.name}
-                href={`/qui-recoit/association/${encodeURIComponent(b.name)}`}
+                href={`/ville/paris/subventions/association/${encodeURIComponent(b.name)}`}
                 scroll={false}
                 className="fx-mini-row fx-mini-row-link"
                 style={{ gridTemplateColumns: "32px 1fr auto 90px" }}

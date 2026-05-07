@@ -6,7 +6,8 @@
     "dev": "next dev --webpack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.90.0",
@@ -34,6 +35,7 @@
     "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.3",
     "@playwright/test": "^1.59.1",
     "@tailwindcss/postcss": "^4",
     "@turf/helpers": "^7.3.3",
@@ -41,8 +43,10 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "chrome-launcher": "^1.2.1",
     "eslint": "^9",
     "eslint-config-next": "^16.2.4",
+    "lighthouse": "^12.8.2",
     "playwright": "^1.59.1",
     "tailwindcss": "^4",
     "typescript": "^5"

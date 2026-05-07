@@ -5,7 +5,6 @@ import {
   loadBudgetIndex,
   loadBudgetPageData,
 } from "@/lib/fusion-data";
-import { getPostsForPage } from "@/lib/page-articles";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
 import BudgetClient from "@/app/ville/paris/budget/BudgetClient";
 
@@ -41,9 +40,19 @@ export default async function BudgetPage({
   const requestedYear = sp.year ? Number(sp.year) : undefined;
   const index = loadBudgetIndex("marseille");
   const d = loadBudgetPageData(requestedYear, "marseille");
-  // No voteExec data for Marseille (Paris-specific reconciliation not built yet).
-  const voteExec = { years: [], summary: { totalVote: 0, totalExecute: 0, totalEcart: 0 }, byYear: [] } as unknown as Parameters<typeof BudgetClient>[0]["voteExec"];
-  const posts = getPostsForPage("budget");
+  // No voteExec data for Marseille (Paris-specific BP/CA reconciliation not
+  // built yet — Marseille publishes BP and CA but with different schemas, so
+  // the rapprochement view will come in a later iteration).
+  const voteExec = {
+    comparisonYears: [],
+    forecastYears: index.availableYears ?? [],
+    rows: [],
+    topEcarts: [],
+  };
+  // No Marseille-specific blog posts yet — empty list so RelatedArticles
+  // section is hidden (BudgetClient gates the render on posts.length).
+  // Filter by city tag will come once Marseille articles are written.
+  const posts: Parameters<typeof BudgetClient>[0]["posts"] = [];
 
   return <BudgetClient index={index} d={d} voteExec={voteExec} posts={posts} />;
 }

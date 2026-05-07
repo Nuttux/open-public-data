@@ -391,8 +391,9 @@ export default function QuiRecoitClient({
                     fontSize: 11,
                     letterSpacing: ".04em",
                     color: "var(--muted)",
-                    marginTop: 12,
-                    marginBottom: 0,
+                    background: "var(--bg)",
+                    padding: "12px 24px 0",
+                    margin: 0,
                     lineHeight: 1.5,
                   }}
                 >

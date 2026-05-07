@@ -25,6 +25,39 @@ export default function BailleurFiche({ bailleur }: { bailleur: BailleurFicheTyp
 
   return (
     <div>
+      {!hasEditorial && g && (
+        <div
+          style={{
+            padding: "16px 18px",
+            border: "1px solid var(--rule)",
+            background: "rgba(166, 118, 56, 0.04)",
+            borderLeft: "3px solid var(--ocre)",
+            fontFamily: "var(--f-ui)",
+            fontSize: 13.5,
+            lineHeight: 1.55,
+            color: "var(--ink-2)",
+            marginBottom: 24,
+          }}
+        >
+          <div
+            style={{
+              fontFamily: "var(--f-mono)",
+              fontSize: 11,
+              letterSpacing: 1,
+              textTransform: "uppercase",
+              color: "var(--ocre)",
+              marginBottom: 8,
+              fontWeight: 600,
+            }}
+          >
+            {t("fx.fiche.bail.no_editorial_title")}
+          </div>
+          <p style={{ margin: 0 }}>
+            {t("fx.fiche.bail.no_editorial_body")}
+          </p>
+        </div>
+      )}
+
       {hasEditorial && bailleur.description && (
         <p className="fx-fiche-lead">
           <b>{t("fx.fiche.bail.en_clair")}</b> — {bailleur.description}

@@ -166,6 +166,65 @@ export default function FournisseurFiche({
         </section>
       )}
 
+      {fournisseur.siretBreakdown.length > 1 && (
+        <section className="fx-fiche-section">
+          <div
+            style={{
+              padding: "16px 18px",
+              border: "1px solid var(--rule)",
+              background: "rgba(166, 118, 56, 0.04)",
+              borderLeft: "3px solid var(--ocre)",
+              fontFamily: "var(--f-ui)",
+              fontSize: 13.5,
+              lineHeight: 1.55,
+              color: "var(--ink-2)",
+            }}
+          >
+            <div
+              style={{
+                fontFamily: "var(--f-mono)",
+                fontSize: 11,
+                letterSpacing: 1,
+                textTransform: "uppercase",
+                color: "var(--ocre)",
+                marginBottom: 8,
+                fontWeight: 600,
+              }}
+            >
+              {t("fx.fiche.fourn.siret_agg_title")}
+            </div>
+            <p style={{ margin: "0 0 12px" }}>
+              {fill(t("fx.fiche.fourn.siret_agg_body"), { n: fournisseur.siretBreakdown.length })}
+            </p>
+            <table className="fx-fiche-table" style={{ marginTop: 6 }}>
+              <thead>
+                <tr>
+                  <th>{t("fx.fiche.fourn.siret_agg_col_siret")}</th>
+                  <th>{t("fx.fiche.fourn.siret_agg_col_nom")}</th>
+                  <th className="num">{t("fx.fiche.fourn.siret_agg_col_count")}</th>
+                  <th className="num">{t("fx.fiche.fourn.siret_agg_col_amount")}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {fournisseur.siretBreakdown.map((s) => {
+                  const f = fmtEur(s.amount);
+                  return (
+                    <tr key={s.siret}>
+                      <td style={{ fontFamily: "var(--f-mono)", fontSize: 12 }}>{s.siret}</td>
+                      <td>{s.nom}</td>
+                      <td className="num tnum mono">{s.count}</td>
+                      <td className="num tnum">
+                        <b>{f.v}</b> <span className="muted">{f.u}</span>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
+
       <section className="fx-fiche-section">
         <div className="fx-fiche-h">{t("fx.fiche.fourn.historique")}</div>
         <div>
@@ -267,7 +326,7 @@ export default function FournisseurFiche({
                       const shown = clean.length > 70 ? clean.slice(0, 70) + "…" : clean;
                       return c.numero ? (
                         <Link
-                          href={`/marches-publics/contrat/${c.numero}`}
+                          href={`/ville/paris/marches/contrat/${c.numero}`}
                           style={{ color: "var(--ink)" }}
                           scroll={false}
                         >

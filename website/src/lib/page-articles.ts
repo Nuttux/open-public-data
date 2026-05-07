@@ -24,9 +24,11 @@ const PAGE_FEATURED_SLUGS: Record<PageKey, string[]> = {
     "paris-peut-elle-faire-faillite",
   ],
   "qui-recoit": [
+    // Reconstitution de 2,3 Md€ et 26 000 bénéficiaires absents du portail
+    // Open Data — bumpée en 1ʳᵉ position pour mettre en avant cette enquête.
+    "beneficiaires-fantomes-2020-2021-portail",
     "top-10-associations-subventionnees-paris",
     "casvp-416-millions-bouclier-social",
-    "beneficiaires-fantomes-2020-2021-portail",
   ],
   "marches-publics": [
     "jo-2024-anatomie-pic-livraison",

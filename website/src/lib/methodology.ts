@@ -59,6 +59,28 @@ export const PARIS_POPULATION = num(M.city.paris_population);
 export const PARIS_SUPERFICIE_KM2 = num(M.city.paris_superficie_km2);
 export const PARIS_NB_ARRONDISSEMENTS = num(M.city.paris_nb_arrondissements);
 
+// Multi-city helper (POC v1 Marseille — preparation for full refactor P2.3
+// where seed_city_constants moves to (city_slug, key, value) shape).
+// Reads from methodology.json keys like `marseille_population`.
+export function cityPopulation(slug: string): number {
+  const key = `${slug}_population`;
+  const entry = M.city[key];
+  return entry ? num(entry) : PARIS_POPULATION; // fallback to Paris
+}
+
+export function cityNbArrondissements(slug: string): number {
+  const entry = M.city[`${slug}_nb_arrondissements`];
+  return entry ? num(entry) : PARIS_NB_ARRONDISSEMENTS;
+}
+
+// Detect city from Next.js pathname (/ville/[city]/...). Returns 'paris' for
+// root paths (Paris-rich pages live at the root for rétro-compat).
+export function citySlugFromPathname(pathname: string | null): string {
+  if (!pathname) return "paris";
+  const m = pathname.match(/^\/ville\/([^/]+)/);
+  return m ? m[1] : "paris";
+}
+
 // ─── Legal thresholds ──────────────────────────────────────────────────────
 export const CAPACITE_DESENDETTEMENT_ALERTE_ANS = num(
   M.legal_thresholds.capacite_desendettement_alerte_ans,

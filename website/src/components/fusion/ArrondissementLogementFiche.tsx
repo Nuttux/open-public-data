@@ -76,7 +76,7 @@ export default function ArrondissementLogementFiche({
         </ul>
         {remaining > 0 && (
           <div className="fx-arr-log-more">
-            <Link href={`/logement-social/arrondissement/${data.slug}`} scroll={false}>
+            <Link href={`/ville/paris/logement/arrondissement/${data.slug}`} scroll={false}>
               {fill(t("fx.arr_log.see_all"), { n: remaining })}
             </Link>
           </div>

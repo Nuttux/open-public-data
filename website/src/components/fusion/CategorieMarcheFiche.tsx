@@ -44,6 +44,7 @@ export default function CategorieMarcheFiche({ fiche }: { fiche: MarcheCategorie
         </div>
       </div>
 
+      {fiche.topContrats.length > 0 && (
       <section className="fx-fiche-section">
         <div className="fx-fiche-h">{fill(t("fx.categorie.top_contrats"), { year: fiche.year })}</div>
         <table className="fx-fiche-subv-table">
@@ -65,7 +66,7 @@ export default function CategorieMarcheFiche({ fiche }: { fiche: MarcheCategorie
                   <td style={{ maxWidth: 360 }}>
                     {c.numero ? (
                       <Link
-                        href={`/marches-publics/contrat/${encodeURIComponent(c.numero)}`}
+                        href={`/ville/paris/marches/contrat/${encodeURIComponent(c.numero)}`}
                         scroll={false}
                         style={{ color: "var(--ink)" }}
                       >
@@ -78,7 +79,8 @@ export default function CategorieMarcheFiche({ fiche }: { fiche: MarcheCategorie
                   <td style={{ fontSize: 12 }}>
                     {c.fournisseurSiret ? (
                       <Link
-                        href={`/marches-publics/fournisseur/${encodeURIComponent(c.fournisseurSiret)}`}
+                        // Lien canonique par SIREN (9 premiers chars).
+                        href={`/ville/paris/marches/fournisseur/${encodeURIComponent(c.fournisseurSiret.slice(0, 9))}`}
                         scroll={false}
                         style={{ color: "var(--ink-2)" }}
                       >
@@ -97,14 +99,17 @@ export default function CategorieMarcheFiche({ fiche }: { fiche: MarcheCategorie
           </tbody>
         </table>
       </section>
+      )}
 
+      {fiche.topTitulaires.length > 0 && (
       <section className="fx-fiche-section">
         <div className="fx-fiche-h">{t("fx.categorie.top_titulaires")}</div>
         <div>
           {fiche.topTitulaires.map((tit, i) => {
             const { value, unit } = fmtCompactEur(tit.amount);
             const pct = (tit.amount / fiche.total) * 100;
-            const href = tit.siret ? `/marches-publics/fournisseur/${encodeURIComponent(tit.siret)}` : null;
+            // Liens canoniques par SIREN (9 premiers chars) — agrégation amont par SIREN.
+            const href = tit.siret ? `/ville/paris/marches/fournisseur/${encodeURIComponent(tit.siret.slice(0, 9))}` : null;
             const countLabel = fill(
               tit.nb > 1 ? t("fx.categorie.contrats_count_many") : t("fx.categorie.contrats_count_one"),
               { n: tit.nb },
@@ -130,6 +135,7 @@ export default function CategorieMarcheFiche({ fiche }: { fiche: MarcheCategorie
           })}
         </div>
       </section>
+      )}
     </div>
   );
 }

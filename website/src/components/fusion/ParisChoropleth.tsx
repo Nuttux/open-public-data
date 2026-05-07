@@ -88,7 +88,7 @@ export default function ParisChoropleth({
 
   const defaultHref = (cAr: number) => {
     const target = cAr === 0 ? 1 : cAr;
-    return `/investissements/arrondissement/${target}`;
+    return `/ville/paris/investissements/arrondissement/${target}`;
   };
   const resolveHref = hrefFor ?? defaultHref;
   const openArr = (cAr: number, source: "map" | "ranking", ev?: React.MouseEvent) => {

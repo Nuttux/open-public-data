@@ -1,0 +1,1663 @@
+{
+  "results": [
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/",
+      "counts": {
+        "total": 0,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0,
+        "totalNodes": 0
+      },
+      "violations": []
+    },
+    {
+      "route": "/",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/",
+      "counts": {
+        "total": 0,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0,
+        "totalNodes": 0
+      },
+      "violations": []
+    },
+    {
+      "route": "/accessibilite",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/accessibilite",
+      "counts": {
+        "total": 0,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0,
+        "totalNodes": 0
+      },
+      "violations": []
+    },
+    {
+      "route": "/accessibilite",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/accessibilite",
+      "counts": {
+        "total": 0,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0,
+        "totalNodes": 0
+      },
+      "violations": []
+    },
+    {
+      "route": "/analyses",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/analyses",
+      "counts": {
+        "total": 3,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 3,
+        "minor": 0,
+        "totalNodes": 46
+      },
+      "violations": [
+        {
+          "id": "landmark-one-main",
+          "impact": "moderate",
+          "help": "Document should have one main landmark",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 44,
+          "sampleTargets": [
+            ".skip-to-content",
+            ".fx-page-kicker"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/analyses",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/analyses",
+      "counts": {
+        "total": 3,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 3,
+        "minor": 0,
+        "totalNodes": 46
+      },
+      "violations": [
+        {
+          "id": "landmark-one-main",
+          "impact": "moderate",
+          "help": "Document should have one main landmark",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 44,
+          "sampleTargets": [
+            ".skip-to-content",
+            ".fx-page-kicker"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/comparer",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/comparer",
+      "counts": {
+        "total": 3,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 3,
+        "minor": 0,
+        "totalNodes": 3
+      },
+      "violations": [
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "help": "Page should contain a level-one heading",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/comparer",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/comparer",
+      "counts": {
+        "total": 4,
+        "critical": 0,
+        "serious": 1,
+        "moderate": 3,
+        "minor": 0,
+        "totalNodes": 4
+      },
+      "violations": [
+        {
+          "id": "scrollable-region-focusable",
+          "impact": "serious",
+          "help": "Scrollable region must have keyboard access",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".fx-compare-table-wrap"
+          ]
+        },
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "help": "Page should contain a level-one heading",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/confidentialite",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/confidentialite",
+      "counts": {
+        "total": 0,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0,
+        "totalNodes": 0
+      },
+      "violations": []
+    },
+    {
+      "route": "/confidentialite",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/confidentialite",
+      "counts": {
+        "total": 0,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0,
+        "totalNodes": 0
+      },
+      "violations": []
+    },
+    {
+      "route": "/contact",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/contact",
+      "counts": {
+        "total": 3,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 3,
+        "minor": 0,
+        "totalNodes": 19
+      },
+      "violations": [
+        {
+          "id": "landmark-one-main",
+          "impact": "moderate",
+          "help": "Document should have one main landmark",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 17,
+          "sampleTargets": [
+            ".skip-to-content",
+            ".fx-page-header"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/contact",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/contact",
+      "counts": {
+        "total": 3,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 3,
+        "minor": 0,
+        "totalNodes": 19
+      },
+      "violations": [
+        {
+          "id": "landmark-one-main",
+          "impact": "moderate",
+          "help": "Document should have one main landmark",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 17,
+          "sampleTargets": [
+            ".skip-to-content",
+            ".fx-page-header"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/france",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/france",
+      "counts": {
+        "total": 3,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 3,
+        "minor": 0,
+        "totalNodes": 3
+      },
+      "violations": [
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "help": "Page should contain a level-one heading",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/france",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/france",
+      "counts": {
+        "total": 3,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 3,
+        "minor": 0,
+        "totalNodes": 3
+      },
+      "violations": [
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "help": "Page should contain a level-one heading",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/france/dette",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/france/dette",
+      "counts": {
+        "total": 3,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 3,
+        "minor": 0,
+        "totalNodes": 3
+      },
+      "violations": [
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "help": "Page should contain a level-one heading",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/france/dette",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/france/dette",
+      "counts": {
+        "total": 3,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 3,
+        "minor": 0,
+        "totalNodes": 3
+      },
+      "violations": [
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "help": "Page should contain a level-one heading",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/france/etat",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/france/etat",
+      "counts": {
+        "total": 4,
+        "critical": 0,
+        "serious": 1,
+        "moderate": 3,
+        "minor": 0,
+        "totalNodes": 12
+      },
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "nodeCount": 9,
+          "sampleTargets": [
+            "details:nth-child(1) > summary > .fx-mission-val.tnum > .yoy-up.fx-mission-yoy",
+            "details:nth-child(3) > summary > .fx-mission-val.tnum > .yoy-up.fx-mission-yoy"
+          ],
+          "sampleFg": "#1a7f37",
+          "sampleBg": "#e6f4ea"
+        },
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "help": "Page should contain a level-one heading",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/france/etat",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/france/etat",
+      "counts": {
+        "total": 4,
+        "critical": 0,
+        "serious": 1,
+        "moderate": 3,
+        "minor": 0,
+        "totalNodes": 12
+      },
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "nodeCount": 9,
+          "sampleTargets": [
+            "details:nth-child(1) > summary > .fx-mission-val.tnum > .yoy-up.fx-mission-yoy",
+            "details:nth-child(3) > summary > .fx-mission-val.tnum > .yoy-up.fx-mission-yoy"
+          ],
+          "sampleFg": "#1a7f37",
+          "sampleBg": "#e6f4ea"
+        },
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "help": "Page should contain a level-one heading",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/france/fiscalite",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/france/fiscalite",
+      "counts": {
+        "total": 3,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 3,
+        "minor": 0,
+        "totalNodes": 3
+      },
+      "violations": [
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "help": "Page should contain a level-one heading",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/france/fiscalite",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/france/fiscalite",
+      "counts": {
+        "total": 3,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 3,
+        "minor": 0,
+        "totalNodes": 3
+      },
+      "violations": [
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "help": "Page should contain a level-one heading",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/licence",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/licence",
+      "counts": {
+        "total": 0,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0,
+        "totalNodes": 0
+      },
+      "violations": []
+    },
+    {
+      "route": "/licence",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/licence",
+      "counts": {
+        "total": 0,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0,
+        "totalNodes": 0
+      },
+      "violations": []
+    },
+    {
+      "route": "/mentions-legales",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/mentions-legales",
+      "counts": {
+        "total": 0,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0,
+        "totalNodes": 0
+      },
+      "violations": []
+    },
+    {
+      "route": "/mentions-legales",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/mentions-legales",
+      "counts": {
+        "total": 0,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0,
+        "totalNodes": 0
+      },
+      "violations": []
+    },
+    {
+      "route": "/methode",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/methode",
+      "counts": {
+        "total": 0,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0,
+        "totalNodes": 0
+      },
+      "violations": []
+    },
+    {
+      "route": "/methode",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/methode",
+      "counts": {
+        "total": 0,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0,
+        "totalNodes": 0
+      },
+      "violations": []
+    },
+    {
+      "route": "/ville/paris/budget",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/ville/paris/budget",
+      "counts": {
+        "total": 3,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 3,
+        "minor": 0,
+        "totalNodes": 59
+      },
+      "violations": [
+        {
+          "id": "landmark-one-main",
+          "impact": "moderate",
+          "help": "Document should have one main landmark",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 57,
+          "sampleTargets": [
+            ".skip-to-content",
+            ".fx-page-header"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/ville/paris/budget",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/ville/paris/budget",
+      "counts": {
+        "total": 3,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 3,
+        "minor": 0,
+        "totalNodes": 59
+      },
+      "violations": [
+        {
+          "id": "landmark-one-main",
+          "impact": "moderate",
+          "help": "Document should have one main landmark",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 57,
+          "sampleTargets": [
+            ".skip-to-content",
+            ".fx-page-header"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/ville/paris/daily-bread",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/ville/paris/daily-bread",
+      "counts": {
+        "total": 3,
+        "critical": 0,
+        "serious": 1,
+        "moderate": 2,
+        "minor": 0,
+        "totalNodes": 12
+      },
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "nodeCount": 10,
+          "sampleTargets": [
+            ".db-p-calc > .db-panel-wrap > .db-panel-num",
+            ".db-p-calc > .db-panel-wrap > .db-panel-num > em"
+          ],
+          "sampleFg": "#6e7480",
+          "sampleBg": "#fafaf7"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/ville/paris/daily-bread",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/ville/paris/daily-bread",
+      "counts": {
+        "total": 3,
+        "critical": 0,
+        "serious": 1,
+        "moderate": 2,
+        "minor": 0,
+        "totalNodes": 12
+      },
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "nodeCount": 10,
+          "sampleTargets": [
+            ".db-p-calc > .db-panel-wrap > .db-panel-num",
+            ".db-p-calc > .db-panel-wrap > .db-panel-num > em"
+          ],
+          "sampleFg": "#6e7480",
+          "sampleBg": "#fafaf7"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/ville/paris/dette",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/ville/paris/dette",
+      "counts": {
+        "total": 5,
+        "critical": 0,
+        "serious": 1,
+        "moderate": 4,
+        "minor": 0,
+        "totalNodes": 100
+      },
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "nodeCount": 2,
+          "sampleTargets": [
+            "button[aria-label=\"Trésorerie (Passif)\"] > .fx-bc-seg-l",
+            "button[aria-label=\"Trésorerie (Passif)\"] > .fx-bc-seg-v.tnum"
+          ],
+          "sampleFg": "#fafaf7",
+          "sampleBg": "#767675"
+        },
+        {
+          "id": "heading-order",
+          "impact": "moderate",
+          "help": "Heading levels should only increase by one",
+          "nodeCount": 2,
+          "sampleTargets": [
+            ".fx-ds-col:nth-child(1) > h4:nth-child(1)",
+            ".fx-h4"
+          ]
+        },
+        {
+          "id": "landmark-one-main",
+          "impact": "moderate",
+          "help": "Document should have one main landmark",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 94,
+          "sampleTargets": [
+            ".skip-to-content",
+            ".fx-page-header"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/ville/paris/dette",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/ville/paris/dette",
+      "counts": {
+        "total": 5,
+        "critical": 0,
+        "serious": 1,
+        "moderate": 4,
+        "minor": 0,
+        "totalNodes": 101
+      },
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "nodeCount": 2,
+          "sampleTargets": [
+            "button[aria-label=\"Trésorerie (Passif)\"] > .fx-bc-seg-l",
+            "button[aria-label=\"Trésorerie (Passif)\"] > .fx-bc-seg-v.tnum"
+          ],
+          "sampleFg": "#fafaf7",
+          "sampleBg": "#767675"
+        },
+        {
+          "id": "heading-order",
+          "impact": "moderate",
+          "help": "Heading levels should only increase by one",
+          "nodeCount": 2,
+          "sampleTargets": [
+            ".fx-ds-col:nth-child(1) > h4:nth-child(1)",
+            ".fx-h4"
+          ]
+        },
+        {
+          "id": "landmark-one-main",
+          "impact": "moderate",
+          "help": "Document should have one main landmark",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 95,
+          "sampleTargets": [
+            ".skip-to-content",
+            ".fx-page-header"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/ville/paris/dette/stress-test",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/ville/paris/dette/stress-test",
+      "counts": {
+        "total": 4,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 4,
+        "minor": 0,
+        "totalNodes": 21
+      },
+      "violations": [
+        {
+          "id": "heading-order",
+          "impact": "moderate",
+          "help": "Heading levels should only increase by one",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "div:nth-child(2) > h3"
+          ]
+        },
+        {
+          "id": "landmark-one-main",
+          "impact": "moderate",
+          "help": "Document should have one main landmark",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 18,
+          "sampleTargets": [
+            ".skip-to-content",
+            ".fx-page-header"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/ville/paris/dette/stress-test",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/ville/paris/dette/stress-test",
+      "counts": {
+        "total": 4,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 4,
+        "minor": 0,
+        "totalNodes": 21
+      },
+      "violations": [
+        {
+          "id": "heading-order",
+          "impact": "moderate",
+          "help": "Heading levels should only increase by one",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "div:nth-child(2) > h3"
+          ]
+        },
+        {
+          "id": "landmark-one-main",
+          "impact": "moderate",
+          "help": "Document should have one main landmark",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 18,
+          "sampleTargets": [
+            ".skip-to-content",
+            ".fx-page-header"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/ville/paris/investissements",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/ville/paris/investissements",
+      "counts": {
+        "total": 3,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 3,
+        "minor": 0,
+        "totalNodes": 56
+      },
+      "violations": [
+        {
+          "id": "landmark-one-main",
+          "impact": "moderate",
+          "help": "Document should have one main landmark",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 54,
+          "sampleTargets": [
+            ".skip-to-content",
+            ".fx-page-header"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/ville/paris/investissements",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/ville/paris/investissements",
+      "counts": {
+        "total": 3,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 3,
+        "minor": 0,
+        "totalNodes": 57
+      },
+      "violations": [
+        {
+          "id": "landmark-one-main",
+          "impact": "moderate",
+          "help": "Document should have one main landmark",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 55,
+          "sampleTargets": [
+            ".skip-to-content",
+            ".fx-page-header"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/ville/paris/logement",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/ville/paris/logement",
+      "counts": {
+        "total": 4,
+        "critical": 0,
+        "serious": 1,
+        "moderate": 3,
+        "minor": 0,
+        "totalNodes": 105
+      },
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "nodeCount": 40,
+          "sampleTargets": [
+            ".fx-tension-arr-row:nth-child(2) > .fx-tension-arr-lbl > .fx-tension-arr-rank.tnum",
+            ".fx-tension-arr-row:nth-child(2) > .fx-tension-arr-detail.tnum"
+          ],
+          "sampleFg": "#999999",
+          "sampleBg": "#fafaf7"
+        },
+        {
+          "id": "landmark-one-main",
+          "impact": "moderate",
+          "help": "Document should have one main landmark",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 63,
+          "sampleTargets": [
+            ".skip-to-content",
+            ".fx-page-header"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/ville/paris/logement",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/ville/paris/logement",
+      "counts": {
+        "total": 4,
+        "critical": 0,
+        "serious": 1,
+        "moderate": 3,
+        "minor": 0,
+        "totalNodes": 128
+      },
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "nodeCount": 20,
+          "sampleTargets": [
+            ".fx-tension-arr-row:nth-child(2) > .fx-tension-arr-lbl > .fx-tension-arr-rank.tnum",
+            ".fx-tension-arr-row:nth-child(3) > .fx-tension-arr-lbl > .fx-tension-arr-rank.tnum"
+          ],
+          "sampleFg": "#999999",
+          "sampleBg": "#fafaf7"
+        },
+        {
+          "id": "landmark-one-main",
+          "impact": "moderate",
+          "help": "Document should have one main landmark",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 106,
+          "sampleTargets": [
+            ".skip-to-content",
+            ".fx-page-header"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/ville/paris/marches",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/ville/paris/marches",
+      "counts": {
+        "total": 0,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0,
+        "totalNodes": 0
+      },
+      "violations": []
+    },
+    {
+      "route": "/ville/paris/marches",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/ville/paris/marches",
+      "counts": {
+        "total": 0,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0,
+        "totalNodes": 0
+      },
+      "violations": []
+    },
+    {
+      "route": "/ville/paris/subventions",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/ville/paris/subventions",
+      "counts": {
+        "total": 0,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0,
+        "totalNodes": 0
+      },
+      "violations": []
+    },
+    {
+      "route": "/ville/paris/subventions",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/ville/paris/subventions",
+      "counts": {
+        "total": 0,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0,
+        "totalNodes": 0
+      },
+      "violations": []
+    },
+    {
+      "route": "/ville/marseille/budget",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/ville/marseille/budget",
+      "counts": {
+        "total": 3,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 3,
+        "minor": 0,
+        "totalNodes": 44
+      },
+      "violations": [
+        {
+          "id": "landmark-one-main",
+          "impact": "moderate",
+          "help": "Document should have one main landmark",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 42,
+          "sampleTargets": [
+            ".skip-to-content",
+            ".fx-page-header"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/ville/marseille/budget",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/ville/marseille/budget",
+      "counts": {
+        "total": 3,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 3,
+        "minor": 0,
+        "totalNodes": 44
+      },
+      "violations": [
+        {
+          "id": "landmark-one-main",
+          "impact": "moderate",
+          "help": "Document should have one main landmark",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 42,
+          "sampleTargets": [
+            ".skip-to-content",
+            ".fx-page-header"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/ville/paris/investissements/arrondissement/1",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/ville/paris/investissements/arrondissement/1",
+      "counts": {
+        "total": 4,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 4,
+        "minor": 0,
+        "totalNodes": 6
+      },
+      "violations": [
+        {
+          "id": "heading-order",
+          "impact": "moderate",
+          "help": "Heading levels should only increase by one",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "div:nth-child(2) > h3"
+          ]
+        },
+        {
+          "id": "landmark-one-main",
+          "impact": "moderate",
+          "help": "Document should have one main landmark",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 3,
+          "sampleTargets": [
+            ".skip-to-content",
+            ".fx-page-header"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/ville/paris/investissements/arrondissement/1",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/ville/paris/investissements/arrondissement/1",
+      "counts": {
+        "total": 4,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 4,
+        "minor": 0,
+        "totalNodes": 6
+      },
+      "violations": [
+        {
+          "id": "heading-order",
+          "impact": "moderate",
+          "help": "Heading levels should only increase by one",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "div:nth-child(2) > h3"
+          ]
+        },
+        {
+          "id": "landmark-one-main",
+          "impact": "moderate",
+          "help": "Document should have one main landmark",
+          "nodeCount": 1,
+          "sampleTargets": [
+            "html"
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "help": "All page content should be contained by landmarks",
+          "nodeCount": 3,
+          "sampleTargets": [
+            ".skip-to-content",
+            ".fx-page-header"
+          ]
+        },
+        {
+          "id": "skip-link",
+          "impact": "moderate",
+          "help": "The skip-link target should exist and be focusable",
+          "nodeCount": 1,
+          "sampleTargets": [
+            ".skip-to-content"
+          ]
+        }
+      ]
+    }
+  ],
+  "failures": [
+    {
+      "route": "/ville/paris/logement/arrondissement/1",
+      "viewport": "desktop",
+      "status": 404,
+      "reason": "http_error"
+    },
+    {
+      "route": "/ville/paris/logement/arrondissement/1",
+      "viewport": "mobile",
+      "status": 404,
+      "reason": "http_error"
+    }
+  ]
+}

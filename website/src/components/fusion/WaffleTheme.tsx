@@ -15,7 +15,7 @@ type Props = {
   concentrationTop10Pct: number;
   topTotal: number;
   year: number;
-  /** Base path for clicking a theme to filter search (e.g. "/qui-recoit"). */
+  /** Base path for clicking a theme to filter search (e.g. "/ville/paris/subventions"). */
   basePath: string;
 };
 

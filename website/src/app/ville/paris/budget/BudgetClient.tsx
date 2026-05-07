@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, usePathname } from "next/navigation";
 // Direct imports — the barrel pulls in server-only components (ProjetThumb,
 // ProjetFiche) that fail to bundle client-side (they read node:fs via
 // fusion-data).
@@ -30,7 +30,7 @@ import type { BudgetPageData, VoteExecuteData } from "@/lib/fusion-data";
 import { slugifyLabel } from "@/lib/projet-utils";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
-import { PARIS_POPULATION } from "@/lib/methodology";
+import { PARIS_POPULATION, cityPopulation, citySlugFromPathname } from "@/lib/methodology";
 
 type BudgetIndexLite = {
   availableYears: number[];
@@ -64,6 +64,11 @@ const BUD_PLACEHOLDERS: ArticlePlaceholder[] = [
 export default function BudgetClient({ index, d, voteExec, posts }: Props) {
   const t = useT();
   const { locale } = useLocale();
+  // Detect current city from URL (Paris = root, others = /ville/[city]/...).
+  // Used to pick the right population for per-habitant computations.
+  const pathname = usePathname();
+  const citySlug = citySlugFromPathname(pathname);
+  const population = cityPopulation(citySlug);
 
   const fill = (key: string, vars: Record<string, string | number>) => {
     let s = t(key);
@@ -164,7 +169,7 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
       </section>
 
       {(() => {
-        const parHab = d.depenses / PARIS_POPULATION;
+        const parHab = d.depenses / population;
         const pctFonct = Math.round((d.fonctionnement / d.depenses) * 100);
         const pctInvest = Math.round((d.investissement / d.depenses) * 100);
         const vars = {
@@ -222,11 +227,11 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
               }
             />
             <KPIGrid
-              cols={3}
+              cols={2}
               items={[
                 {
                   label: <Tip label={t("fx.bud.s01.kpi.per_hab.tip")}>{t("fx.bud.s01.kpi.per_hab")}</Tip>,
-                  value: <AnimatedNumber value={d.depenses / PARIS_POPULATION} format={(n) => fmtInt(n)} />,
+                  value: <AnimatedNumber value={d.depenses / population} format={(n) => fmtInt(n)} />,
                   unit: "€",
                   delta: fill("fx.bud.s01.kpi.per_hab.delta", { pop: "2,13 M" }),
                 },
@@ -235,12 +240,6 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
                   value: <AnimatedNumber value={d.recettes} format={(n) => fmtBillions(n)} />,
                   unit: "Md €",
                   delta: isVoted ? t("fx.bud.s01.kpi.voted") : t("fx.bud.s01.kpi.executed"),
-                },
-                {
-                  label: <Tip label={t("fx.bud.s01.kpi.solde.tip")}>{t("fx.bud.s01.kpi.solde")}</Tip>,
-                  value: <AnimatedNumber value={d.solde} format={(n) => (n >= 0 ? "+ " : "− ") + fmtMillions(Math.abs(n))} />,
-                  unit: "M €",
-                  delta: d.solde < 0 ? t("fx.bud.s01.kpi.need") : t("fx.bud.s01.kpi.excess"),
                 },
               ]}
             />
@@ -311,7 +310,7 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
                 value: r.value,
                 display: `${fmtBillions(r.value)} Md €`,
                 rouge: false,
-                href: `/ville/paris/budget/poste/${slugifyLabel(r.label)}?year=${d.year}`,
+                href: `/ville/${citySlug}/budget/poste/${slugifyLabel(r.label)}?year=${d.year}`,
               })),
             }}
             right={{
@@ -321,7 +320,7 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
                 value: x.value,
                 display: `${fmtBillions(x.value)} Md €`,
                 rouge: false,
-                href: `/ville/paris/budget/poste/${slugifyLabel(x.label)}?year=${d.year}`,
+                href: `/ville/${citySlug}/budget/poste/${slugifyLabel(x.label)}?year=${d.year}`,
               })),
             }}
             center={{
@@ -352,8 +351,10 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
             }
           />
           <ChartSource
-            source={<>Ville de Paris · Comptes administratifs M57 {d.year}</>}
-            dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
+            source={<>Ville de {citySlug.charAt(0).toUpperCase() + citySlug.slice(1)} · Comptes administratifs M57 {d.year}</>}
+            dataHref={citySlug === "paris"
+              ? "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
+              : `https://www.data.gouv.fr/datasets/${citySlug}-compte-administratif/`}
             methodAnchor="budget"
           />
         </div>
@@ -364,7 +365,7 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
           <SectionHead
             number="04"
             kind={t("fx.bud.s04.kind")}
-            title={<>{t("fx.bud.s04.title.before")}<em>{t("fx.bud.s04.title.em")}</em>{t("fx.bud.s04.title.after")}</>}
+            title={<>{t("fx.bud.s04.title.before")}<em>{fill("fx.bud.s04.title.em", { from: d.yearsSummary[0]?.year ?? d.year })}</em>{t("fx.bud.s04.title.after")}</>}
             subtitle={t("fx.bud.s04.sub")}
           />
           <BudgetTimeline
@@ -374,14 +375,25 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
               type: (y.type === "vote" ? "vote" : "execute") as "vote" | "execute",
             }))}
             activeYear={d.year}
-            annotations={[
-              { year: 2020, label: t("fx.bud.s04.annot.covid") },
-              { year: 2024, label: t("fx.bud.s04.annot.jo") },
-            ]}
+            annotations={(() => {
+              // Annotations are city-specific editorial events (COVID,
+              // Paris JO 2024). Only show them on Paris for now — other
+              // cities will get their own city-specific annotations later.
+              if (citySlug !== "paris" || !d.yearsSummary.length) return [];
+              const minYear = d.yearsSummary[0].year;
+              const maxYear = d.yearsSummary[d.yearsSummary.length - 1].year;
+              const all: { year: number; label: string }[] = [
+                { year: 2020, label: t("fx.bud.s04.annot.covid") },
+                { year: 2024, label: t("fx.bud.s04.annot.jo") },
+              ];
+              return all.filter((a) => a.year >= minYear && a.year <= maxYear);
+            })()}
           />
           <ChartSource
             source={t("fx.bud.s03.source.cite")}
-            dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
+            dataHref={citySlug === "paris"
+              ? "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
+              : `https://www.data.gouv.fr/datasets/${citySlug}-compte-administratif/`}
             methodAnchor="budget"
           />
           {d.yearsSummary.length >= 2 && (() => {
@@ -405,6 +417,7 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
         </div>
       </section>
 
+      {voteExec.rows.length > 0 && (
       <section className="fx-section" id="execution">
         <div className="fx-wrap">
           <SectionHead
@@ -523,8 +536,11 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
           )}
         </div>
       </section>
+      )}
 
-      <RelatedArticles number="06" posts={posts} placeholders={BUD_PLACEHOLDERS} />
+      {(posts.length > 0 || citySlug === "paris") && (
+        <RelatedArticles number="06" posts={posts} placeholders={BUD_PLACEHOLDERS} />
+      )}
 
       <section className="fx-section" id="sec-explorer">
         <div className="fx-wrap">

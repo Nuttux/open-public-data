@@ -8,8 +8,10 @@ import LandingClient from "./LandingClient";
 
 // Curation éditoriale — 3 articles mis en avant sur la landing.
 // Ordre = ordre d'affichage. Mix hook + scoop + data cred.
+// Le slot 1 met en tête l'enquête la plus récente / à plus haute valeur
+// éditoriale ; les deux suivants tournent sur des piliers stables.
 const LANDING_FEATURED_SLUGS = [
-  "top-10-associations-subventionnees-paris",
+  "beneficiaires-fantomes-2020-2021-portail",  // 2,3 Md€ retrouvés (mai 2026)
   "regle-or-communes-article-l-1612-4",
   "jo-2024-anatomie-pic-livraison",
 ] as const;

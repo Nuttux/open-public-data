@@ -70,6 +70,7 @@ export default function ArrondissementFiche({ arr }: { arr: ArrondissementFicheT
         </div>
       )}
 
+      {arr.topProjets.length > 0 && (
       <section className="fx-fiche-section">
         <div className="fx-fiche-h">{fill(t("fx.fiche.arr.top_projets"), { year: arr.year })}</div>
         <div className="fx-arr-top-grid">
@@ -78,7 +79,7 @@ export default function ArrondissementFiche({ arr }: { arr: ArrondissementFicheT
             return (
               <Link
                 key={p.id}
-                href={`/investissements/projet/${encodeURIComponent(p.id)}`}
+                href={`/ville/paris/investissements/projet/${encodeURIComponent(p.id)}`}
                 scroll={false}
                 className="fx-arr-top-item"
               >
@@ -96,6 +97,7 @@ export default function ArrondissementFiche({ arr }: { arr: ArrondissementFicheT
           })}
         </div>
       </section>
+      )}
 
       {arr.byChapitre.length > 1 && (
         <section className="fx-fiche-section">

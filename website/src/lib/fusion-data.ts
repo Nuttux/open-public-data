@@ -14,8 +14,11 @@ type BudgetIndex = {
   summary: { year: number; type_budget: "vote" | "execute"; recettes: number; depenses: number; solde: number }[];
 };
 
-export function loadBudgetIndex() {
-  return readJson<BudgetIndex>("budget_index.json");
+export function loadBudgetIndex(city: string = "paris") {
+  // For Paris (default) the file lives at data/ root for rétro-compat.
+  // For other cities, files are under data/[city]/. See cityJsonPath helper below.
+  const file = city === "paris" ? "budget_index.json" : `${city}/budget_index.json`;
+  return readJson<BudgetIndex>(file);
 }
 
 // ─── Voté vs exécuté ───────────────────────────────────────────────────────
@@ -1339,8 +1342,8 @@ type MarchesIndexRaw = {
   totalsByYear?: Record<string, { nb_marches: number; enveloppe_max_totale: number }>;
 };
 
-export function loadMarchesIndex() {
-  const raw = readJson<MarchesIndexRaw>("marches-publics/index.json");
+export function loadMarchesIndex(city: string = "paris") {
+  const raw = readJson<MarchesIndexRaw>(cityJsonPath(city, "marches-publics/index.json"));
   // Masquer l'année calendaire en cours (données DECP partielles jusqu'à clôture).
   const currentYear = new Date().getFullYear();
   return {
@@ -1629,8 +1632,8 @@ export function loadFournisseur(key: string): FournisseurFiche | null {
   };
 }
 
-export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
-  const indexRaw = readJson<MarchesIndexRaw>("marches-publics/index.json");
+export function loadMarchesPageData(requestedYear?: number, city: string = "paris"): MarchesPageData {
+  const indexRaw = readJson<MarchesIndexRaw>(cityJsonPath(city, "marches-publics/index.json"));
   // Exclure l'année calendaire en cours : DECP est en remontée continue, un
   // "2026" consulté en avril n'a que quelques centaines de contrats notifiés
   // et son montant agrégé est non représentatif. On masque jusqu'à clôture.
@@ -1642,7 +1645,7 @@ export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
   const yr = requestedYear && years.includes(requestedYear)
     ? requestedYear
     : years[years.length - 1] ?? 2024;
-  const file = readJson<MarchesFile>(`marches-publics/marches_${yr}.json`);
+  const file = readJson<MarchesFile>(cityJsonPath(city, `marches-publics/marches_${yr}.json`));
   const marches = file.data ?? file.marches ?? [];
 
   const MULTI_NAME = "MARCHE MULTIATTRIBUTAIRE";
@@ -3058,16 +3061,34 @@ export function loadArrondissementLogement(
   };
 }
 
-export function loadBudgetPageData(requestedYear?: number): BudgetPageData {
-  const index = readJson<BudgetIndex>("budget_index.json");
+// Helpers for multi-city data loading (cf. project_marseille_v1_decisions P0.2).
+// Paris keeps its files at data/ root for rétro-compat ; other cities use data/[city]/.
+function cityJsonPath(city: string, file: string): string {
+  return city === "paris" ? file : `${city}/${file}`;
+}
+function centralNodeFor(city: string): string {
+  if (city === "paris") return "Budget Paris";
+  return `Budget ${city.charAt(0).toUpperCase()}${city.slice(1)}`;
+}
+
+export function loadBudgetPageData(requestedYear?: number, city: string = "paris"): BudgetPageData {
+  const index = readJson<BudgetIndex>(cityJsonPath(city, "budget_index.json"));
   const year = requestedYear && index.availableYears.includes(requestedYear)
     ? requestedYear
     : index.latestYear;
-  const sankey = readJson<BudgetSankeyFull>(`budget_sankey_${year}.json`);
+  const sankey = readJson<BudgetSankeyFull>(cityJsonPath(city, `budget_sankey_${year}.json`));
+  const centralNode = centralNodeFor(city);
 
   const byYear = Object.fromEntries(index.summary.map((s) => [s.year, s]));
-  const ref = byYear[index.latestCompleteYear];
-  const previousYear = index.latestCompleteYear;
+  // Reference year for YoY deltas. Prefer latestCompleteYear (Paris CA);
+  // fallback to the most recent year strictly before `year` (cities without
+  // CA data yet, like Marseille v1 which only has BP).
+  const fallbackPrevYear = index.summary
+    .map((s) => s.year)
+    .filter((y) => y < year)
+    .sort((a, b) => b - a)[0];
+  const previousYear = index.latestCompleteYear ?? fallbackPrevYear ?? null;
+  const ref = previousYear ? byYear[previousYear] : undefined;
   const deltaDepensesPct = ref
     ? ((sankey.totals.depenses - ref.depenses) / ref.depenses) * 100
     : 0;
@@ -3082,10 +3103,10 @@ export function loadBudgetPageData(requestedYear?: number): BudgetPageData {
   // approximation : total recettes hors emprunts + recettes d'investissement
   // (FCTVA, cessions, subventions équipement) - fonctionnement.
   const emprunts = sankey.links
-    .filter((l) => l.source === "Emprunts" && l.target === "Budget Paris")
+    .filter((l) => l.source === "Emprunts" && l.target === centralNode)
     .reduce((s, l) => s + l.value, 0);
   const recettesInvest = sankey.links
-    .filter((l) => l.source === "Investissement" && l.target === "Budget Paris")
+    .filter((l) => l.source === "Investissement" && l.target === centralNode)
     .reduce((s, l) => s + l.value, 0);
   const epargneBrute = Math.max(0, sankey.totals.recettes - emprunts - recettesInvest - fonctionnement);
 
@@ -3093,16 +3114,16 @@ export function loadBudgetPageData(requestedYear?: number): BudgetPageData {
   // failure if absent (first year of the series).
   const prevDepByLabel = new Map<string, number>();
   try {
-    const prev = readJson<BudgetSankeyFull>(`budget_sankey_${year - 1}.json`);
+    const prev = readJson<BudgetSankeyFull>(cityJsonPath(city, `budget_sankey_${year - 1}.json`));
     for (const l of prev.links) {
-      if (l.source === "Budget Paris") prevDepByLabel.set(l.target, l.value);
+      if (l.source === centralNode) prevDepByLabel.set(l.target, l.value);
     }
   } catch {
     /* previous year unavailable */
   }
 
   const topDepenses = sankey.links
-    .filter((l) => l.source === "Budget Paris")
+    .filter((l) => l.source === centralNode)
     .map((l) => {
       const cat = sankey.bySection[l.target];
       const items = [
@@ -3122,7 +3143,7 @@ export function loadBudgetPageData(requestedYear?: number): BudgetPageData {
     .sort((a, b) => b.value - a.value);
 
   const recettesBreakdown = sankey.links
-    .filter((l) => l.target === "Budget Paris")
+    .filter((l) => l.target === centralNode)
     .map((l) => {
       const items = sankey.drilldown?.revenue?.[l.source] ?? [];
       // Keep raw names — the page splits N2/N3 for display.
@@ -3182,19 +3203,20 @@ export type BudgetPosteFiche = {
   subPostes: { name: string; value: number }[];
 };
 
-export function loadBudgetPoste(slug: string, requestedYear?: number): BudgetPosteFiche | null {
-  const index = readJson<BudgetIndex>("budget_index.json");
+export function loadBudgetPoste(slug: string, requestedYear?: number, city: string = "paris"): BudgetPosteFiche | null {
+  const index = readJson<BudgetIndex>(cityJsonPath(city, "budget_index.json"));
   const year = requestedYear && index.availableYears.includes(requestedYear)
     ? requestedYear
     : index.latestYear;
-  const sankey = readJson<BudgetSankeyFull>(`budget_sankey_${year}.json`);
+  const sankey = readJson<BudgetSankeyFull>(cityJsonPath(city, `budget_sankey_${year}.json`));
+  const centralNode = centralNodeFor(city);
 
   const depLink = sankey.links.find(
-    (l) => l.source === "Budget Paris" && slugifyLabel(l.target) === slug,
+    (l) => l.source === centralNode && slugifyLabel(l.target) === slug,
   );
   const recLink = !depLink
     ? sankey.links.find(
-        (l) => l.target === "Budget Paris" && slugifyLabel(l.source) === slug,
+        (l) => l.target === centralNode && slugifyLabel(l.source) === slug,
       )
     : null;
 
@@ -3223,11 +3245,11 @@ export function loadBudgetPoste(slug: string, requestedYear?: number): BudgetPos
   const previousYear = year - 1;
   let deltaPct: number | null = null;
   try {
-    const prev = readJson<BudgetSankeyFull>(`budget_sankey_${previousYear}.json`);
+    const prev = readJson<BudgetSankeyFull>(cityJsonPath(city, `budget_sankey_${previousYear}.json`));
     const prevLink =
       kind === "depense"
-        ? prev.links.find((l) => l.source === "Budget Paris" && l.target === label)
-        : prev.links.find((l) => l.target === "Budget Paris" && l.source === label);
+        ? prev.links.find((l) => l.source === centralNode && l.target === label)
+        : prev.links.find((l) => l.target === centralNode && l.source === label);
     if (prevLink && prevLink.value > 0) {
       deltaPct = ((total - prevLink.value) / prevLink.value) * 100;
     }

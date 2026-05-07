@@ -287,7 +287,7 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
               return (
                 <a
                   key={m.numero_marche}
-                  href={`/marches-publics/contrat/${encodeURIComponent(m.numero_marche)}`}
+                  href={`/ville/paris/marches/contrat/${encodeURIComponent(m.numero_marche)}`}
                   style={{
                     display: "block",
                     padding: "12px 0",
@@ -335,7 +335,7 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
               return (
                 <a
                   key={s.id}
-                  href={`/investissements/projet/${encodeURIComponent(s.id)}`}
+                  href={`/ville/paris/investissements/projet/${encodeURIComponent(s.id)}`}
                   style={{
                     display: "grid",
                     gridTemplateColumns: "1fr auto",
