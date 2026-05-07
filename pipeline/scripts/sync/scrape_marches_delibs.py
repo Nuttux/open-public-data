@@ -36,7 +36,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 SCRIPT_DIR = Path(__file__).resolve().parent
-OUT = ROOT / "website" / "public" / "data" / "marches_delibs"
+OUT = ROOT / "pipeline" / "cache" / "wip" / "marches_delibs"
 
 # Import sibling module without requiring a package setup.
 # Register in sys.modules BEFORE exec so @dataclass in the module can resolve
