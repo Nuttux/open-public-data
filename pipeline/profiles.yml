@@ -1,38 +1,68 @@
 # =============================================================================
 # Profil dbt : Configuration de connexion BigQuery
-# 
-# Ce fichier configure la connexion au dataset BigQuery contenant
-# les données brutes du budget de Paris.
 #
-# IMPORTANT: Ce fichier peut être copié vers ~/.dbt/profiles.yml
-# pour une utilisation locale, ou utilisé tel quel si dbt est
-# configuré pour lire les profils depuis le répertoire du projet.
+# Trois targets distincts pour matérialiser le séparé dev/prod (Issue #2 du
+# round 3 review). Avant : `dev` et `prod` pointaient vers les MÊMES datasets,
+# rendant tout test potentiellement destructeur.
+#
+# - `dev`     : développement local. Datasets `dbt_paris_dev_*` (préfixés par
+#              user via DBT_USER) pour isolation. Aucune autre target ne lit ça.
+# - `ci`      : pour GitHub Actions. Datasets `dbt_paris_ci_*` éphémères
+#              (drop après chaque run).
+# - `prod`    : datasets canoniques `dbt_paris_*` que l'UI lit. À ne JAMAIS
+#              cibler depuis un dev local ou un test.
+#
+# Usage :
+#   dbt build --target dev         → développement
+#   dbt build --target prod        → release prod (CI uniquement, manuel)
+#   GITHUB_RUN_ID=42 dbt test --target ci  → pendant un run CI
+#
+# IMPORTANT : ce fichier peut être copié vers ~/.dbt/profiles.yml pour une
+# utilisation locale, ou utilisé tel quel si dbt est configuré pour lire
+# les profils depuis le répertoire du projet.
 # =============================================================================
 
 paris_open_data:
   target: dev
   outputs:
     # -------------------------------------------------------------------------
-    # Environnement de développement
+    # DEV — local development. Préfixe le dataset avec l'username pour que
+    # plusieurs devs puissent travailler en parallèle sans collision.
     # -------------------------------------------------------------------------
     dev:
       type: bigquery
-      method: oauth  # Use gcloud Application Default Credentials (ADC)
+      method: oauth
       project: open-data-france-484717
-      dataset: dbt_paris  # Base dataset pour dbt (raw = données OpenData non modifiées)
+      dataset: "dbt_paris_dev_{{ env_var('DBT_USER', 'local') }}"
       location: EU
       threads: 4
       timeout_seconds: 300
       priority: interactive
-    
+
     # -------------------------------------------------------------------------
-    # Environnement de production (optionnel)
+    # CI — éphémère par run GitHub Actions. Doit être nettoyé en post-step.
+    # -------------------------------------------------------------------------
+    ci:
+      type: bigquery
+      method: oauth  # via Workload Identity Federation
+      project: open-data-france-484717
+      dataset: "dbt_paris_ci_{{ env_var('GITHUB_RUN_ID', 'unknown') }}"
+      location: EU
+      threads: 4
+      timeout_seconds: 300
+      priority: interactive
+
+    # -------------------------------------------------------------------------
+    # PROD — datasets canoniques. SEUL endroit où l'UI peut lire.
+    # NE JAMAIS lancer `dbt build --target prod` en dev local : c'est ce que
+    # le site lit en temps réel.
     # -------------------------------------------------------------------------
     prod:
       type: bigquery
       method: oauth
       project: open-data-france-484717
-      dataset: paris_open_data_prod
+      dataset: dbt_paris  # base ; les schemas (staging, analytics, marts) sont
+                          # ajoutés en suffixe par dbt → dbt_paris_staging, etc.
       location: EU
       threads: 4
       timeout_seconds: 300
