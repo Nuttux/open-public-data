@@ -3491,7 +3491,7 @@ const en: Record<string, string> = {
   // "per month — i.e." + "€10,879 per year" pair.
   'db.hero.meta_inline.month': '/month',
   'db.hero.meta_inline.year': '€{annual}/yr',
-  'db.hero.deck': 'The calculation aggregates your compulsory levies: social contributions (employee, self-employed, URSSAF), CSG/CRDS on activity and pension income, income tax (brackets + family quotient), the 30 % flat tax on capital income, estimated VAT on consumption, and property tax if homeowner. Sources: URSSAF, CGI, INSEE, DGFiP, OFGL.',
+  'db.hero.deck': 'Social contributions, CSG/CRDS, income tax, capital flat tax, VAT, property tax if homeowner — aggregated for your profile. Assumptions, sources and limits detailed in the Method section below.',
   'db.hero.foot_cue': 'Where this money goes',
   // ─ Editable NYT-style hero (fold redesign) ─
   'db.hero.editable.prefix_salaire': 'On your net salary of',
