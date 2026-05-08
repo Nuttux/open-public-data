@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import "@/app/fusion.css";
-import { loadEurostatCofog, loadDailyBread } from "@/lib/national-data";
+import { loadDailyBread } from "@/lib/national-data";
 import { loadDrilldown, type BucketKey } from "@/lib/budget-drilldown";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
 import DailyBreadClient from "./DailyBreadClient";
@@ -91,7 +91,6 @@ export type DrilldownIndex = Record<
 };
 
 export default async function DailyBreadPage() {
-  const cofog = loadEurostatCofog();
   const db = loadDailyBread();
   // Index compact des keys disponibles par bucket dans le drilldown.json.
   // Le client utilise cet index + des règles d'alias (préfixe `{level2}_`,
@@ -137,7 +136,7 @@ export default async function DailyBreadPage() {
   // sync form state with the URL — Next.js requires a fallback for SSR/SSG.
   return (
     <Suspense fallback={null}>
-      <DailyBreadClient cofog={cofog} db={db} drilldownIndex={drilldownIndex} />
+      <DailyBreadClient db={db} drilldownIndex={drilldownIndex} />
     </Suspense>
   );
 }

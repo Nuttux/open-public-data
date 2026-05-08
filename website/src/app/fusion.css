@@ -12031,6 +12031,197 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
 .theme-db-scrolly .db-p-end-foot a:hover { text-decoration-color: var(--p-ink); }
 
 /* ──────────────────────────────────────────────────────────────────────
+   §07 — Méthode (refonte 2026-05) : FAQ-style avec dépliants <details>
+   HTML5 natifs (pas de JS). Structure progressive : titre + intro deck,
+   puis 6 dépliants par thème (hypothèses, exclusions, sources, périmètre,
+   pourquoi perso, comparaison). Lecture courte par défaut, détail au click.
+   ────────────────────────────────────────────────────────────────────── */
+.theme-db-scrolly .db-p-method {
+  background: var(--p-paper);
+}
+.theme-db-scrolly .db-p-method .db-panel-num em { color: var(--p-accent); }
+.theme-db-scrolly .db-p-method .db-panel-num { color: var(--p-muted); }
+
+.theme-db-scrolly .db-p-method-q {
+  font-family: var(--pf-disp);
+  font-weight: 700;
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--p-ink);
+  margin: 12px 0 24px;
+  max-width: 820px;
+}
+.theme-db-scrolly .db-p-method-q em {
+  font-family: var(--pf-serif);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--p-ink);
+}
+
+.theme-db-scrolly .db-p-method-deck {
+  font-family: var(--pf-serif);
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--p-ink-2);
+  max-width: 720px;
+  margin: 0 0 48px;
+}
+
+.theme-db-scrolly .db-p-method-faq {
+  max-width: 820px;
+  margin: 0 0 48px;
+  border-top: 1px solid var(--p-rule-strong);
+}
+
+.theme-db-scrolly .db-p-method-faq-item {
+  border-bottom: 1px solid var(--p-rule);
+}
+
+.theme-db-scrolly .db-p-method-faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  align-items: baseline;
+  gap: 16px;
+  padding: 22px 0;
+  font-family: var(--pf-disp);
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 600;
+  color: var(--p-ink);
+  letter-spacing: -0.01em;
+}
+.theme-db-scrolly .db-p-method-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.theme-db-scrolly .db-p-method-faq-item summary::marker {
+  display: none;
+  content: "";
+}
+
+.theme-db-scrolly .db-p-method-faq-num {
+  font-family: var(--pf-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--p-accent);
+  text-transform: uppercase;
+  align-self: center;
+}
+
+.theme-db-scrolly .db-p-method-faq-q {
+  align-self: center;
+  line-height: 1.2;
+}
+
+.theme-db-scrolly .db-p-method-faq-chevron {
+  transition: transform 0.2s ease;
+  font-family: var(--pf-mono);
+  color: var(--p-muted);
+  font-size: 18px;
+  align-self: center;
+}
+.theme-db-scrolly .db-p-method-faq-item[open] .db-p-method-faq-chevron {
+  transform: rotate(180deg);
+}
+
+.theme-db-scrolly .db-p-method-faq-item:hover summary {
+  color: var(--p-accent);
+}
+.theme-db-scrolly .db-p-method-faq-item:hover .db-p-method-faq-chevron {
+  color: var(--p-accent);
+}
+
+.theme-db-scrolly .db-p-method-faq-body {
+  padding: 0 0 28px 64px;
+  font-family: var(--pf-serif);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--p-ink-2);
+  max-width: 720px;
+}
+.theme-db-scrolly .db-p-method-faq-body p {
+  margin: 0 0 12px;
+}
+.theme-db-scrolly .db-p-method-faq-body p:last-child {
+  margin-bottom: 0;
+}
+.theme-db-scrolly .db-p-method-faq-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px 0;
+}
+.theme-db-scrolly .db-p-method-faq-body li {
+  padding: 8px 0;
+  border-bottom: 0.5px dotted var(--p-rule);
+}
+.theme-db-scrolly .db-p-method-faq-body li:last-child {
+  border-bottom: 0;
+}
+.theme-db-scrolly .db-p-method-faq-body a {
+  color: var(--p-ink);
+  text-decoration: underline;
+  text-decoration-color: rgba(0,0,0,0.25);
+  text-underline-offset: 2px;
+}
+.theme-db-scrolly .db-p-method-faq-body a:hover {
+  text-decoration-color: var(--p-accent);
+  color: var(--p-accent);
+}
+.theme-db-scrolly .db-p-method-faq-body b {
+  color: var(--p-ink);
+  font-weight: 600;
+}
+.theme-db-scrolly .db-p-method-faq-srcs {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 0.5px dotted var(--p-rule);
+  font-family: var(--pf-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--p-muted);
+}
+.theme-db-scrolly .db-p-method-faq-srcs a {
+  font-family: var(--pf-mono);
+}
+
+.theme-db-scrolly .db-p-method-foot {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--p-rule);
+  max-width: 820px;
+}
+.theme-db-scrolly .db-p-method-foot-link {
+  font-family: var(--pf-disp);
+  font-size: 15px;
+  color: var(--p-ink);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+  font-weight: 500;
+  text-decoration: none;
+}
+.theme-db-scrolly .db-p-method-foot-link:hover {
+  color: var(--p-accent);
+}
+
+/* Mobile : réduire les paddings + faciliter le tap */
+@media (max-width: 800px) {
+  .theme-db-scrolly .db-p-method-q { font-size: 36px; }
+  .theme-db-scrolly .db-p-method-deck { font-size: 17px; }
+  .theme-db-scrolly .db-p-method-faq-item summary {
+    grid-template-columns: 36px 1fr 24px;
+    gap: 12px;
+    padding: 18px 0;
+    font-size: 18px;
+  }
+  .theme-db-scrolly .db-p-method-faq-num { font-size: 11px; }
+  .theme-db-scrolly .db-p-method-faq-body {
+    padding: 0 0 22px 48px;
+    font-size: 15px;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────────────
    §07 — Refonte share section : top row (eyebrow + share global) +
    5 cartes émotionnelles avec pictogrammes.
    ────────────────────────────────────────────────────────────────────── */
