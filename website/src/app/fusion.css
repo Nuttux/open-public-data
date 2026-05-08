@@ -12053,51 +12053,57 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   gap: 12px;
 }
 
+/* §07 — wrap pour le hero card pleine largeur (avant les compact). */
+.theme-db-scrolly .db-p-end-hero-wrap {
+  margin-top: 48px;
+  margin-bottom: 24px;
+}
+
 .theme-db-scrolly .db-p-end-cards-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 16px;
-  margin-top: 48px;
   margin-bottom: 64px;
 }
 
+/* Card éditoriale — refonte 2026-05 anti "AI slop".
+   Background paper neutre + border-left 3px signature institution.
+   Pas de tinted gradient, pas de pictogramme line-icon. */
 .theme-db-scrolly .db-equiv-card {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 20px 18px 16px;
+  padding: 24px 22px 20px;
   border: 1px solid var(--p-rule);
-  border-radius: 10px;
+  border-left: 3px solid var(--p-rule-strong);
+  border-radius: 8px;
   background: var(--p-paper);
   transition:
     transform 0.18s ease,
     box-shadow 0.18s ease,
     border-color 0.18s ease;
   position: relative;
-  /* Reveal stagger : on s'aligne sur le fade du parent panel mais on
-     ajoute un petit delay propre à la carte. */
   animation-delay: var(--db-eq-delay, 0ms);
 }
 .theme-db-scrolly .db-equiv-card[data-color="secu"] {
-  background: linear-gradient(
-    180deg,
-    rgba(42, 54, 128, 0.05),
-    transparent 30%
-  );
+  border-left-color: var(--p-secu);
 }
 .theme-db-scrolly .db-equiv-card[data-color="etat"] {
-  background: linear-gradient(
-    180deg,
-    rgba(26, 29, 38, 0.05),
-    transparent 30%
-  );
+  border-left-color: var(--p-etat);
 }
 .theme-db-scrolly .db-equiv-card[data-color="local"] {
-  background: linear-gradient(
-    180deg,
-    rgba(193, 35, 35, 0.05),
-    transparent 30%
-  );
+  border-left-color: var(--p-local);
+}
+/* Variant hero — pleine largeur, big number 96-120px, editorial copy. */
+.theme-db-scrolly .db-equiv-card[data-variant="hero"] {
+  padding: 40px 36px 32px;
+  gap: 16px;
+  border-left-width: 4px;
+  border-radius: 10px;
+}
+/* Variant compact — par défaut (4 cards en grid). Padding sobre. */
+.theme-db-scrolly .db-equiv-card[data-variant="compact"] {
+  padding: 22px 20px 18px;
 }
 .theme-db-scrolly .db-equiv-card:hover,
 .theme-db-scrolly .db-equiv-card:focus-within {
@@ -12114,16 +12120,81 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   justify-content: center;
 }
 
+/* Eyebrow tag mono caps (institution + thème). */
+.theme-db-scrolly .db-equiv-card-tag {
+  font-family: var(--pf-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--p-muted);
+  text-transform: uppercase;
+  margin: 0;
+}
+.theme-db-scrolly .db-equiv-card[data-variant="hero"] .db-equiv-card-tag {
+  font-size: 12px;
+}
+
+/* Claim block : big number + claimA + claimB (compact = 1 ligne, hero = 2). */
+.theme-db-scrolly .db-equiv-card-claim {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  margin: 0;
+}
 .theme-db-scrolly .db-equiv-card-num {
   font-family: var(--pf-disp);
-  font-size: clamp(40px, 4.6vw, 56px);
+  font-size: clamp(40px, 5vw, 56px);
   font-weight: 700;
   line-height: 0.95;
   letter-spacing: -0.04em;
   color: var(--p-ink);
-  margin: 4px 0 0;
+}
+.theme-db-scrolly .db-equiv-card[data-variant="hero"] .db-equiv-card-num {
+  font-size: clamp(72px, 9vw, 120px);
+}
+.theme-db-scrolly .db-equiv-card-claim-a,
+.theme-db-scrolly .db-equiv-card-claim-b {
+  font-family: var(--pf-disp);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--p-ink);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+.theme-db-scrolly .db-equiv-card[data-variant="hero"] .db-equiv-card-claim-a,
+.theme-db-scrolly .db-equiv-card[data-variant="hero"] .db-equiv-card-claim-b {
+  font-size: clamp(22px, 2vw, 28px);
 }
 
+/* Editorial copy — italic Serif, charbon institutionnel. */
+.theme-db-scrolly .db-equiv-card-editorial {
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-size: 19px;
+  font-weight: 400;
+  color: var(--p-ink-2);
+  line-height: 1.35;
+  margin: 0;
+  max-width: 32ch;
+}
+
+.theme-db-scrolly .db-equiv-card-source {
+  font-family: var(--pf-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--p-muted);
+  margin: 0;
+  text-transform: uppercase;
+}
+.theme-db-scrolly .db-equiv-card-via {
+  font-family: var(--pf-mono);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--p-ink-2);
+  margin: 6px 0 0;
+}
+
+/* Legacy caption (au cas où d'anciens consommateurs utilisent encore). */
 .theme-db-scrolly .db-equiv-card-caption {
   font-family: var(--pf-serif);
   font-style: italic;
@@ -12208,16 +12279,27 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   outline: none;
 }
 
-/* Mobile : 1 colonne, share menu plein-largeur. */
+/* Mobile : compact en 2x2, hero stacked full-width, share menu plein-largeur. */
 @media (max-width: 880px) {
-  .theme-db-scrolly .db-p-end-cards-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
+  .theme-db-scrolly .db-p-end-hero-wrap {
     margin-top: 32px;
+    margin-bottom: 16px;
+  }
+  .theme-db-scrolly .db-p-end-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
     margin-bottom: 40px;
   }
   .theme-db-scrolly .db-equiv-card {
     padding: 18px 16px 14px;
+  }
+  .theme-db-scrolly .db-equiv-card[data-variant="hero"] {
+    padding: 28px 22px 22px;
+  }
+}
+@media (max-width: 480px) {
+  .theme-db-scrolly .db-p-end-cards-grid {
+    grid-template-columns: 1fr;
   }
   .theme-db-scrolly .db-equiv-card-num {
     font-size: clamp(48px, 12vw, 64px);
