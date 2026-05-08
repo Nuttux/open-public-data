@@ -3567,6 +3567,8 @@ const fr: Record<string, string> = {
   'db.etat.deck2': 'L\'État central et ses opérateurs portent les missions régaliennes (défense, sécurité, justice, affaires étrangères) et l\'éducation nationale, postes les plus visibles du budget national.',
   'db.etat.source': 'Source : LFI 2025',
   'db.etat.scope_note': 'Note méthodo · Les 33 missions PLF totalisent {plf_total} (≈ 66 % du périmètre Eurostat S1311 : {s1311_total}). Les ~{delta} restants correspondent aux opérateurs (ODAC), transferts UE et régimes spéciaux non rattachés à une mission. Ces dépenses sont incluses dans ta part État au niveau global, mais leur attribution thématique n\'est pas publique au PLF — la somme des barres ci-dessus n\'égale donc pas ton {monthly} €/mois État.',
+  'db.etat.bucket.autres.name': 'Autres dépenses (hors missions PLF)',
+  'db.etat.bucket.autres.sub': 'ODAC (universités, France Compétences, ANR, France Travail…) · Comptes spéciaux (pensions militaires, prêts) · Budgets annexes (publications officielles, contrôle aérien) · Régimes spéciaux non rattachés à une mission',
   'db.etat.foot_cue': 'Zoom sur le local',
   // ─ Zoom Local (panneau 5) ─
   'db.local.kind': 'Échelon local',
@@ -3587,7 +3589,11 @@ const fr: Record<string, string> = {
   'db.local.dept_label': 'Département de {dep}',
   'db.local.reg_label': 'Région {reg}',
   'db.local.title_dynamic': '{reg} · {dept} · {bloc}',
-  'db.local.paris_statut_note': 'Paris a un statut particulier : la Ville de Paris est à la fois commune et département.',
+  'db.local.title_dynamic_merged': '{reg} · {bloc}',
+  'db.local.bloc_label_merged': 'Ville de {city} (commune + département)',
+  'db.local.bloc_sub_default': 'Communes + intercommunalité, dépenses consolidées (transferts inter-niveaux nets).',
+  'db.local.bloc_sub_merged': 'Statut particulier : commune et département fusionnés (collectivité unique). Le budget agrège les compétences communales et départementales.',
+  'db.local.paris_statut_note': 'Paris a un statut particulier : la Ville de Paris est à la fois commune et département (fusionnés depuis 2019). Affichés en une seule ligne ci-dessous pour éviter le double-comptage.',
   'db.local.lyon_statut_note': 'La Métropole de Lyon est une collectivité unique qui exerce les compétences de la commune et du département.',
   // ─ Macro → Micro (vers le portail Paris détaillé) ─
   'db.macro_micro.eyebrow': 'MACRO → MICRO',

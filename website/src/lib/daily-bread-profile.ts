@@ -19,6 +19,7 @@ import {
   computeInstitutionShares,
   computeAssoBreakdown,
   computeLocalLevels,
+  isCollectiviteUnique,
   type IndepActivityType,
 } from "@/lib/daily-bread";
 import {
@@ -223,7 +224,12 @@ export function computeProfileMonthlies(
   const communeEurHab = commune?.kpis?.depenses_totales?.eur_hab ?? 0;
   const ratio =
     communeEurHab > 0 && nationalAvg > 0 ? communeEurHab / nationalAvg : 1;
-  const localLevels = computeLocalLevels(localAnnuel, db, ratio);
+  const localLevels = computeLocalLevels(
+    localAnnuel,
+    db,
+    ratio,
+    isCollectiviteUnique(commune?.slug),
+  );
   const blocCommunalMonthly =
     localLevels.find((l) => l.key === "bloc_communal")?.monthly_eur ?? 0;
   const departementMonthly =

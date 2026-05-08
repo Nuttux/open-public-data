@@ -33,10 +33,22 @@
         }
       ],
       "plafond_demi_part_eur": 1791,
+      "abattement_10pct_taux": 0.10,
+      "abattement_10pct_min_eur": 504,
+      "abattement_10pct_max_eur": 14426,
+      "abattement_source": "Article 83-3° CGI — abattement forfaitaire 10% pour frais professionnels (revenus 2024)",
+      "abattement_source_url": "https://www.impots.gouv.fr/particulier/frais-professionnels",
+      "decote_celibataire_seuil_eur": 1964,
+      "decote_celibataire_base_eur": 889,
+      "decote_couple_seuil_eur": 3248,
+      "decote_couple_base_eur": 1470,
+      "decote_taux": 0.4525,
+      "decote_source": "Article 197 I-4 CGI — décote IR (LFI 2025, revenus 2024)",
+      "decote_source_url": "https://bofip.impots.gouv.fr/bofip/2247-PGP.html",
       "source": "Article 197 CGI - barème IR revalorisé par LFI 2025",
       "source_url": "https://www.legifrance.gouv.fr/codes/texte_lc/LEGITEXT000006069577/",
       "date_reference": "2025-01-01",
-      "notes": "Barème IR par tranche en EUR / part fiscale. Le plafond du quotient familial limite l'avantage fiscal procuré par les demi-parts supplémentaires."
+      "notes": "Barème IR par tranche en EUR / part fiscale. Plafond du quotient familial limite l'avantage des demi-parts. Abattement 10% (min 504 €, max 14 426 €) sur salaires pour frais pro. Décote sur IR brut bas (≤ 1 964 € célib / 3 248 € couple) : décote = base - 0,4525 × IR_brut."
     },
     "csg_crds": {
       "taux_total_activite": 0.097,

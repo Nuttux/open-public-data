@@ -17,6 +17,7 @@ import {
   computeAssoBreakdown,
   computeStateBuckets,
   computeLocalLevels,
+  isCollectiviteUnique,
   type IndepActivityType,
 } from "@/lib/daily-bread";
 import {
@@ -784,7 +785,12 @@ export default function DailyBreadClient({
     const ratio = commune && commune.eur_hab > 0 && nationalAvg > 0
       ? commune.eur_hab / nationalAvg
       : 1;
-    return computeLocalLevels(localShare.annual_eur, db, ratio);
+    return computeLocalLevels(
+      localShare.annual_eur,
+      db,
+      ratio,
+      isCollectiviteUnique(commune?.slug),
+    );
   }, [db, localShare, commune]);
 
   // ─── Deep-dives — supprimés (2026-05) ──────────────────────────────
@@ -1815,79 +1821,47 @@ export default function DailyBreadClient({
                 </div>
 
                 <BarList
-                  items={stateBuckets.map((b) => ({
-                    key: b.key,
-                    name: locale === "en" ? b.label_en : b.label_fr,
-                    monthly: b.monthly_eur,
-                    share: b.share_of_state,
-                    sub:
-                      b.missions.length > 1
-                        ? b.missions
-                            .map((m) => m.label)
-                            .slice(0, 3)
-                            .join(" · ")
-                        : undefined,
-                  }))}
+                  items={(() => {
+                    const buckets = stateBuckets.map((b) => ({
+                      key: b.key,
+                      name: locale === "en" ? b.label_en : b.label_fr,
+                      monthly: b.monthly_eur,
+                      share: b.share_of_state,
+                      sub:
+                        b.missions.length > 1
+                          ? b.missions
+                              .map((m) => m.label)
+                              .slice(0, 3)
+                              .join(" · ")
+                          : undefined,
+                    }));
+                    // Résidu S1311 hors missions PLF = ODAC + comptes spéciaux
+                    // + budgets annexes (≈ 230 Md€/an, ~34% de S1311). Sans
+                    // cette ligne, la somme des barres ne matche pas l'État
+                    // monthly (incohérence visuelle vs Sécu/Local qui somment
+                    // à 100%).
+                    const sumShares = buckets.reduce(
+                      (acc, b) => acc + (b.share ?? 0),
+                      0,
+                    );
+                    const residualShare = Math.max(0, 1 - sumShares);
+                    if (residualShare > 0.005) {
+                      buckets.push({
+                        key: "autres_etat_hors_plf",
+                        name: t("db.etat.bucket.autres.name"),
+                        monthly: etatMonthly * residualShare,
+                        share: residualShare,
+                        sub: t("db.etat.bucket.autres.sub"),
+                      });
+                    }
+                    return buckets;
+                  })()}
                   color="c-etat"
                   locale={locale}
                   clickableUrls={etatTopUrls}
                   profileQuery={profileQuery}
                 />
               </div>
-
-                                                                      {/* Note méthodo : 229 Md€ S1311 hors missions PLF — la somme
-                  des barres ci-dessus n'égale pas le `etatMonthly` total.
-                  Cf. fix conv. `etat × share_of_parent` (2026-05). */}
-              {db &&
-                db.apu_subsectors.institutions?.S1311?.annual_eur &&
-                db.state_breakdown?.total_net_cp_eur && (
-                  <p
-                    style={{
-                      fontFamily:
-                        "'JetBrains Mono', ui-monospace, monospace",
-                      fontSize: 11,
-                      color: "var(--muted)",
-                      fontStyle: "italic",
-                      borderLeft: "2px solid var(--ocre)",
-                      paddingLeft: 12,
-                      margin: "18px 0 6px",
-                      maxWidth: 760,
-                      lineHeight: 1.55,
-                      letterSpacing: "0.02em",
-                    }}
-                  >
-                    {t("db.etat.scope_note")
-                      .replace(
-                        "{plf_total}",
-                        fmtBnEur(
-                          db.state_breakdown.total_net_cp_eur,
-                          locale,
-                        ),
-                      )
-                      .replace(
-                        "{s1311_total}",
-                        fmtBnEur(
-                          db.apu_subsectors.institutions.S1311.annual_eur,
-                          locale,
-                        ),
-                      )
-                      .replace(
-                        "{delta}",
-                        fmtBnEur(
-                          Math.max(
-                            0,
-                            db.apu_subsectors.institutions.S1311.annual_eur -
-                              db.state_breakdown.total_net_cp_eur,
-                          ),
-                          locale,
-                        ),
-                      )
-                      .replace(
-                        "{monthly}",
-                        fmtEur(etatMonthly, locale, 0),
-                      )}
-                  </p>
-                )}
 
               <p className="db-panel-foot-cue">{t("db.etat.foot_cue")}</p>
             </div>
@@ -1901,20 +1875,27 @@ export default function DailyBreadClient({
           // notre dataset OFGL aujourd'hui — on garde le scaffold {city}+{epci}
           // pour quand on enrichira). Département / Région utilisent les
           // métadonnées de la commune.
-          const blocLabel = commune?.nom ?? t("db.local.bloc_default");
+          // Collectivité à statut particulier (Paris ville-département) :
+          // dept est merged dans bloc → on n'affiche pas de ligne dept séparée
+          // (sinon double-comptage), et le bloc label reflète la fusion.
+          const isCollUnique = isCollectiviteUnique(commune?.slug);
+          const blocLabel = isCollUnique && commune?.nom
+            ? t("db.local.bloc_label_merged").replace("{city}", commune.nom)
+            : (commune?.nom ?? t("db.local.bloc_default"));
           const deptLabel = commune?.dep_name
             ? t("db.local.dept_label").replace("{dep}", commune.dep_name)
             : t("db.local.dept_default");
           const regLabel = commune?.reg_name
             ? t("db.local.reg_label").replace("{reg}", commune.reg_name)
             : t("db.local.reg_default");
-          const dynamicTitle = t("db.local.title_dynamic")
-            .replace("{reg}", regLabel)
-            .replace("{dept}", deptLabel)
-            .replace("{bloc}", blocLabel);
-          // Statut particulier : Paris = commune+département confondus,
-          // Lyon = Métropole de Lyon (collectivité unique). On affiche une
-          // note discrète sous le titre.
+          const dynamicTitle = isCollUnique
+            ? t("db.local.title_dynamic_merged")
+                .replace("{reg}", regLabel)
+                .replace("{bloc}", blocLabel)
+            : t("db.local.title_dynamic")
+                .replace("{reg}", regLabel)
+                .replace("{dept}", deptLabel)
+                .replace("{bloc}", blocLabel);
           const isParisStatut = commune?.insee === "75056";
           const isLyonStatut = commune?.insee === "69123";
           // Map clé OFGL → label personnalisé pour les barres BarList.
@@ -2000,9 +1981,9 @@ export default function DailyBreadClient({
                     share: l.share_of_local,
                     sub:
                       l.key === "bloc_communal"
-                        ? locale === "en"
-                          ? "Cities + EPCI consolidated (transfers between local levels netted out)."
-                          : "Communes + intercommunalité, dépenses consolidées (transferts inter-niveaux nets)."
+                        ? isCollUnique
+                          ? t("db.local.bloc_sub_merged")
+                          : t("db.local.bloc_sub_default")
                         : undefined,
                   }))}
                   color="c-local"

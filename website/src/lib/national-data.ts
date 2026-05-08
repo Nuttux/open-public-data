@@ -249,6 +249,18 @@ export type DailyBreadConstants = {
       year: number;
       baremes: DailyBreadIRTranche[];
       plafond_demi_part_eur: number;
+      /** Abattement 10% frais professionnels (CGI art. 83-3°). Optionnel —
+       *  si absent, computeIR n'applique pas l'abattement (compat ancienne). */
+      abattement_10pct_taux?: number;
+      abattement_10pct_min_eur?: number;
+      abattement_10pct_max_eur?: number;
+      /** Décote IR (CGI art. 197 I-4). Optionnel — si absent, computeIR
+       *  n'applique pas la décote. */
+      decote_celibataire_seuil_eur?: number;
+      decote_celibataire_base_eur?: number;
+      decote_couple_seuil_eur?: number;
+      decote_couple_base_eur?: number;
+      decote_taux?: number;
     }>;
     csg_crds: DailyBreadSourcedBlock<{
       year: number;
