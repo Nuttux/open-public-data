@@ -306,15 +306,26 @@ export default function DailyBreadClient({
   //  servaient à rendre les rows DeepDive cliquables. Supprimées avec la
   //  migration des asides dans le drawer en mai 2026.)
 
-  // BarList §05 — 3 niveaux administratifs : passifs au top-level pour
-  // ne pas mentir sur la cible. Auto-jumper vers la 1re sous-fonction
-  // (santé/services-généraux/transports) crée une UX trompeuse — l'user
-  // s'attend à un overview "Département" et atterrit sur "Santé". Les
-  // BarList sous-fonctions juste en-dessous sont la vraie porte d'entrée
-  // (chacune cliquable + libellée).
+  // BarList §05 — 3 niveaux administratifs cliquables.
+  // Chaque ligne ouvre la vue scope-overview (drawer) listant TOUTES les
+  // fonctions du bloc — pas auto-jump vers la 1re fonction (qui masquait
+  // le reste du scope, ex : "Dept → Santé" cachait lycées, routes…).
   const localLevelsUrls = useMemo(() => {
-    return new Map<string, string>();
-  }, []);
+    const m = new Map<string, string>();
+    const blocKeys = drilldownIndex?.local?.level2 ?? [];
+    const deptKeys = drilldownIndex?.local_dept?.level2 ?? [];
+    const regKeys = drilldownIndex?.local_region?.level2 ?? [];
+    if (blocKeys.length > 0) {
+      m.set("bloc_communal", `/ville/paris/daily-bread/bucket/local`);
+    }
+    if (deptKeys.length > 0) {
+      m.set("departement", `/ville/paris/daily-bread/bucket/local/dept`);
+    }
+    if (regKeys.length > 0) {
+      m.set("region", `/ville/paris/daily-bread/bucket/local/region`);
+    }
+    return m;
+  }, [drilldownIndex]);
   // (Helper buildSecuL3 — supprimé avec les DeepDive Sécu ; les drilldowns
   //  niveau 3 restent accessibles via le drawer level2 ouvert depuis BarList.)
   const t = useT();
@@ -1028,9 +1039,10 @@ export default function DailyBreadClient({
               )}
             </div>
 
-            {/* Eyebrow retiré : le bandeau "01 · PROFIL" (db-panel-num) au-dessus
-                porte déjà le numérotage de section, et la phrase éditable contient
-                déjà le profil dynamique (salaire, parts, commune). Pas de doublon. */}
+            {/* Deck déplacé en haut — petit, mono, sous l'eyebrow.
+                Référence vers la section Méthode pour le détail des
+                hypothèses, sources, limites. */}
+            <p className="db-p-hero-deck-top">{t("db.hero.deck")}</p>
 
             {/* Phrase éditable principale — les inputs sont DANS le texte */}
             <h1 className="db-p-hero-text">
@@ -1582,9 +1594,14 @@ export default function DailyBreadClient({
               </p>
             )}
 
-            <p className="db-p-hero-deck">{t("db.hero.deck")}</p>
-
-            <p className="db-panel-foot-cue">{t("db.hero.foot_cue")}</p>
+            <a
+              className="db-p-hero-foot-cue-big"
+              href="#db-disp"
+              aria-label={t("db.hero.foot_cue")}
+            >
+              <span>{t("db.hero.foot_cue")}</span>
+              <span aria-hidden className="db-p-hero-foot-cue-arrow">↓</span>
+            </a>
           </div>
         </section>
 
@@ -2456,35 +2473,9 @@ export default function DailyBreadClient({
         </section>
       </main>
 
-      {/* FAB sticky : copier le lien du profil. URL déjà persistante via
-          query-string, donc le copier suffit pour partager. */}
-      <ShareFab />
-
       <div className="theme-fusion">
         <Footer />
       </div>
-    </div>
-  );
-}
-
-function ShareFab() {
-  const t = useT();
-  const onScrollToShare = useCallback(() => {
-    if (typeof document === "undefined") return;
-    const el = document.getElementById("db-share-section");
-    if (!el) return;
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, []);
-  return (
-    <div className="db-share-fab-wrap">
-      <button
-        type="button"
-        onClick={onScrollToShare}
-        className="db-share-fab"
-        aria-label={t("db.share.aria")}
-      >
-        {t("db.share.cta")}
-      </button>
     </div>
   );
 }

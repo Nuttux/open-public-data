@@ -70,6 +70,17 @@ type Mode =
       block: LocalScopeBlock;
       level2: DrilldownLevel2Entry;
       level3: DrilldownLevel3Entry;
+    }
+  | {
+      /**
+       * Vue scope-level (sans level2 sélectionné) : liste les fonctions du
+       * bloc bloc-communal/dept/région pour donner un overview avant le
+       * drill. Évite le bug "auto-jump" où cliquer Département envoyait
+       * direct sur la 1re fonction (Santé) en masquant les autres.
+       */
+      kind: "scope-overview";
+      scope: "bloc_communal" | "dept" | "region";
+      level2List: DrilldownLevel2Entry[];
     };
 
 /**
@@ -168,10 +179,34 @@ type AggregationProps = {
   editorialAsides?: AsideKeys[];
 };
 
-type Props = LegacyProps | ScopeProps | AggregationProps;
+type ScopeOverviewProps = {
+  bucket: DrilldownBucket;
+  bucketKey: "local";
+  /** "bloc_communal" | "dept" | "region" — détermine le préfixe URL des enfants. */
+  scopeOverview: "bloc_communal" | "dept" | "region";
+  /** Label du scope (ex "Bloc communal", "Niveau départemental"). */
+  scopeLabel: string;
+  /** Liste des fonctions level2 du bloc — toutes cliquables. */
+  level2List: DrilldownLevel2Entry[];
+  isStub?: boolean;
+  amounts?: AmountDecorations;
+  breadcrumb?: DrilldownBreadcrumbCrumb[];
+  profileQuery?: string;
+  basePath?: string;
+  editorialAsides?: AsideKeys[];
+};
+
+type Props =
+  | LegacyProps
+  | ScopeProps
+  | AggregationProps
+  | ScopeOverviewProps;
 
 function isAggProps(p: Props): p is AggregationProps {
   return (p as AggregationProps).aggregation !== undefined;
+}
+function isScopeOverviewProps(p: Props): p is ScopeOverviewProps {
+  return (p as ScopeOverviewProps).scopeOverview !== undefined;
 }
 function isScopeProps(p: Props): p is ScopeProps {
   return (p as ScopeProps).scope !== undefined;
@@ -239,7 +274,13 @@ export default function BudgetDrilldownFiche(props: Props) {
   })();
 
   // Résolution du mode (sans assumption sur les optional props).
-  const mode: Mode = isAggProps(props)
+  const mode: Mode = isScopeOverviewProps(props)
+    ? {
+        kind: "scope-overview",
+        scope: props.scopeOverview,
+        level2List: props.level2List,
+      }
+    : isAggProps(props)
     ? {
         kind: "aggregation",
         aggregation: props.aggregation,
@@ -290,6 +331,23 @@ export default function BudgetDrilldownFiche(props: Props) {
       )}
 
       {(() => {
+        if (mode.kind === "scope-overview") {
+          // Cast safe : isScopeOverviewProps a déjà filtré au-dessus.
+          const sp = props as ScopeOverviewProps;
+          return renderScopeOverview({
+            t,
+            locale,
+            scope: mode.scope,
+            scopeLabel: sp.scopeLabel,
+            level2List: mode.level2List,
+            amounts,
+            profileQuery,
+            basePath,
+            showChildAnnual,
+            showChildMonthly,
+            childrenVariant,
+          });
+        }
         if (mode.kind === "aggregation") {
           return renderAggregation({
             t,
@@ -744,6 +802,150 @@ function renderAggregation({
             })}
           </ul>
         )}
+      </div>
+    </>
+  );
+}
+
+/**
+ * Vue scope-overview : liste les fonctions level2 du bloc (bloc-communal,
+ * dept ou région) avec lien direct vers chaque fiche level2. Le total scope
+ * est affiché en lead — chaque enfant porte sa share_of_parent du scope.
+ */
+function renderScopeOverview({
+  t,
+  locale,
+  scope,
+  scopeLabel,
+  level2List,
+  amounts,
+  profileQuery,
+  basePath,
+  showChildAnnual,
+  showChildMonthly,
+  childrenVariant,
+}: {
+  t: (k: string) => string;
+  locale: "fr" | "en";
+  scope: "bloc_communal" | "dept" | "region";
+  scopeLabel: string;
+  level2List: DrilldownLevel2Entry[];
+  amounts?: AmountDecorations;
+  profileQuery?: string;
+  basePath: string;
+  showChildAnnual: boolean;
+  showChildMonthly: boolean;
+  childrenVariant: string;
+}) {
+  const personalMonthlyLabel = amounts?.personalMonthlyLabel ?? null;
+  const nationalAnnualLabel = amounts?.nationalAnnualLabel ?? null;
+  const parentPersonalMonthlyEur = amounts?.parentPersonalMonthlyEur ?? null;
+  const parentNationalAnnualEur = amounts?.parentNationalAnnualEur ?? null;
+
+  const sorted = [...level2List].sort(
+    (a, b) => (b.share_of_parent ?? 0) - (a.share_of_parent ?? 0),
+  );
+
+  const buildHref = (key: string): string => {
+    if (scope === "bloc_communal") {
+      return withProfile(
+        `${basePath}/bucket/local/${encodeURIComponent(key)}`,
+        profileQuery,
+      );
+    }
+    return withProfile(
+      `${basePath}/bucket/local/${scope}/${encodeURIComponent(key)}`,
+      profileQuery,
+    );
+  };
+
+  const intro = t("db.drilldown.scope_overview_intro")
+    .replace("{count}", String(sorted.length))
+    .replace("{label}", scopeLabel);
+
+  return (
+    <>
+      <div className="db-fiche-lead">
+        <p className="db-fiche-lead-name">{scopeLabel}</p>
+
+        {(nationalAnnualLabel || personalMonthlyLabel) && (
+          <dl className="db-fiche-amounts">
+            {nationalAnnualLabel && (
+              <div className="db-fiche-amount-row">
+                <dt className="db-fiche-amount-key">
+                  {t("db.drilldown.amount.national")}
+                </dt>
+                <dd className="db-fiche-amount-val tnum">
+                  {nationalAnnualLabel}
+                </dd>
+              </div>
+            )}
+            {personalMonthlyLabel && (
+              <div className="db-fiche-amount-row db-fiche-amount-row-personal">
+                <dt className="db-fiche-amount-key">
+                  {t("db.drilldown.amount.personal")}
+                </dt>
+                <dd className="db-fiche-amount-val tnum">
+                  {personalMonthlyLabel}
+                  <span className="db-fiche-amount-unit">
+                    {" "}
+                    €/{locale === "en" ? "mo" : "mois"}
+                  </span>
+                </dd>
+              </div>
+            )}
+          </dl>
+        )}
+      </div>
+
+      <div className="db-fiche-section">
+        <p className="db-fiche-section-head">{intro}</p>
+        <ul className={`db-fiche-agg-grid ${childrenVariant}`}>
+          {sorted.map((entry) => {
+            const eLabel =
+              locale === "en" ? entry.label_en : entry.label_fr;
+            const share = entry.share_of_parent ?? 0;
+            const childMonthly =
+              parentPersonalMonthlyEur !== null
+                ? parentPersonalMonthlyEur * share
+                : null;
+            const childAnnualEur =
+              parentNationalAnnualEur !== null
+                ? parentNationalAnnualEur * share
+                : null;
+            const childAnnualLabel =
+              childAnnualEur !== null && childAnnualEur > 0
+                ? fmtAnnualCompactClient(childAnnualEur, locale)
+                : null;
+            return (
+              <li key={entry.key}>
+                <Link
+                  href={buildHref(entry.key)}
+                  className="db-fiche-agg-card"
+                  prefetch={false}
+                >
+                  {showChildAnnual && childAnnualLabel && (
+                    <span className="db-fiche-agg-card-annual tnum">
+                      {childAnnualLabel}
+                    </span>
+                  )}
+                  <span className="db-fiche-agg-card-name">{eLabel}</span>
+                  {showChildMonthly &&
+                    childMonthly !== null &&
+                    childMonthly > 0 && (
+                      <span className="db-fiche-agg-card-monthly tnum">
+                        {fmtMonthly(childMonthly, locale)}{" "}
+                        €/{locale === "en" ? "mo" : "mois"}
+                      </span>
+                    )}
+                  <span aria-hidden className="db-fiche-agg-card-chevron">
+                    →
+                  </span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </>
   );

@@ -10483,6 +10483,56 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   margin: 32px 0 0;
 }
 
+/* Deck "top" — placé sous l'eyebrow, petit + mono, fait office de
+   sous-titre méthodo discret (vs italic Serif gros bloc). */
+.theme-db-scrolly .db-p-hero-deck-top {
+  font-family: var(--pf-mono);
+  font-size: 12.5px;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  color: var(--p-muted);
+  max-width: 56ch;
+  margin: 14px 0 28px;
+}
+
+/* Foot-cue "big" — gros, prend l'œil, avec flèche qui invite à scroll.
+   Remplace le minuscule "Où va cet argent" en bas du fold. */
+.theme-db-scrolly .db-p-hero-foot-cue-big {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 64px 0 0;
+  font-family: var(--pf-serif);
+  font-style: italic;
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--p-ink);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  transition: color 0.15s ease;
+}
+.theme-db-scrolly .db-p-hero-foot-cue-big:hover {
+  color: var(--p-accent);
+}
+.theme-db-scrolly .db-p-hero-foot-cue-arrow {
+  display: inline-block;
+  font-family: var(--pf-mono);
+  font-style: normal;
+  font-size: 0.7em;
+  color: var(--p-accent);
+  animation: db-foot-cue-bounce 1.8s ease-in-out infinite;
+}
+@keyframes db-foot-cue-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .theme-db-scrolly .db-p-hero-foot-cue-arrow {
+    animation: none;
+  }
+}
+
 /* ══════════════════════════════════════════════════════════════════════
    Hero éditable NYT-style (fusion §00 + §01) — fold redesign
    ──────────────────────────────────────────────────────────────────────
@@ -11217,70 +11267,6 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
     overflow-y: auto;
   }
   .theme-db-scrolly .db-editable-popover-input { font-size: 28px; }
-}
-
-/* ── Share FAB sticky bottom-right ── */
-.db-share-fab-wrap {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 50;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: flex-end;
-}
-.theme-db-scrolly + .db-share-fab,
-.theme-db-scrolly .db-share-fab,
-.db-share-fab {
-  /* When wrapped in .db-share-fab-wrap, position is handled by the wrap.
-     We still keep `position: fixed` as a no-op fallback for older markup. */
-  position: relative;
-  background: var(--p-ink, #0a0a0a);
-  color: var(--p-paper, #ffffff);
-  padding: 14px 22px;
-  border: 0;
-  cursor: pointer;
-  font-family: var(--pf-disp, "Inter Tight", "Inter", sans-serif);
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  box-shadow: 0 8px 32px rgba(10, 10, 10, 0.22);
-  transition: all 0.15s ease-out;
-}
-/* Secondary variant — outlined, lower visual weight than the primary share. */
-.db-share-fab.db-share-fab-secondary {
-  background: var(--p-paper, #ffffff);
-  color: var(--p-ink, #0a0a0a);
-  border: 1px solid var(--p-ink, #0a0a0a);
-  box-shadow: 0 4px 18px rgba(10, 10, 10, 0.12);
-}
-.db-share-fab:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(13, 16, 20, 0.28);
-}
-.db-share-fab.db-share-fab-secondary:hover {
-  box-shadow: 0 8px 26px rgba(13, 16, 20, 0.18);
-}
-.db-share-fab:active {
-  transform: translateY(0);
-}
-@media (max-width: 600px) {
-  .db-share-fab-wrap {
-    bottom: 16px;
-    right: 16px;
-    gap: 8px;
-  }
-  .db-share-fab {
-    padding: 12px 18px;
-    font-size: 13px;
-  }
-  /* Réserve l'espace du FAB en bas du contenu — sinon le FAB recouvre
-     les derniers items du dernier panel (constaté sur le tri-stack
-     dispatch sur viewport < 600px). */
-  .theme-db-scrolly {
-    padding-bottom: 140px;
-  }
 }
 
 /* ══════════════════════════════════════════════════════════════════════

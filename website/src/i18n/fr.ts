@@ -3697,6 +3697,7 @@ const fr: Record<string, string> = {
   'db.drilldown.amount.national': 'National (€/an)',
   'db.drilldown.amount.personal': 'Sur ton profil (€/mois)',
   'db.drilldown.aggregation_intro': "{count} missions composent {label} :",
+  'db.drilldown.scope_overview_intro': "{count} fonctions composent {label} :",
   'db.drilldown.crumb.daily_bread': 'Daily Bread',
   'db.drilldown.crumb.budget': 'Le budget',
   'db.drilldown.crumb.bucket.secu': 'Sécurité sociale',
