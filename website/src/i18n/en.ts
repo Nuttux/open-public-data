@@ -3562,6 +3562,8 @@ const en: Record<string, string> = {
   'db.etat.deck2': 'Central government and its operators carry the sovereign missions (defence, security, justice, foreign affairs) and national education — the most visible budget items.',
   'db.etat.source': 'Source: LFI 2025',
   'db.etat.scope_note': 'Method note · The 33 PLF missions total {plf_total} (≈ 66 % of the Eurostat S1311 perimeter: {s1311_total}). The ~{delta} difference covers State operators (ODAC), EU transfers, and special pension schemes not attached to a mission. These amounts are included in your overall State share, but their thematic attribution is not publicly published in the PLF — so the sum of bars above does not equal your {monthly} €/mo State.',
+  'db.etat.bucket.autres.name': 'Other spending (outside PLF missions)',
+  'db.etat.bucket.autres.sub': 'ODAC (universities, France Compétences, ANR, France Travail…) · Special accounts (military pensions, loans) · Annex budgets (official publications, air-traffic control) · Special schemes not tied to a PLF mission',
   'db.etat.foot_cue': 'Zoom on local',
   // ─ Zoom Local ─
   'db.local.kind': 'Local level',
@@ -3582,7 +3584,11 @@ const en: Record<string, string> = {
   'db.local.dept_label': '{dep} department',
   'db.local.reg_label': '{reg} region',
   'db.local.title_dynamic': '{reg} · {dept} · {bloc}',
-  'db.local.paris_statut_note': 'Paris has a special status: the City of Paris is both a municipality and a department.',
+  'db.local.title_dynamic_merged': '{reg} · {bloc}',
+  'db.local.bloc_label_merged': 'City of {city} (municipality + department)',
+  'db.local.bloc_sub_default': 'Cities + EPCI consolidated (transfers between local levels netted out).',
+  'db.local.bloc_sub_merged': 'Special status: municipality and department merged (single authority). The budget aggregates both municipal and departmental competences.',
+  'db.local.paris_statut_note': 'Paris has a special status: the City of Paris is both municipality and department (merged since 2019). Shown as a single line below to avoid double-counting.',
   'db.local.lyon_statut_note': 'The Metropolis of Lyon is a single authority that exercises both municipal and departmental powers.',
   // ─ Macro → Micro (jump to Paris portal) ─
   'db.macro_micro.eyebrow': 'MACRO → MICRO',

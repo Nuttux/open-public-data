@@ -55,8 +55,19 @@ function buildIRBaremes(
 // ─── IR (with quotient familial + plafonnement) ────────────────────────────
 
 /**
- * Compute IR with quotient familial + plafonnement.
- * @param net_imposable Net imposable (after CSG déductible).
+ * Compute IR with abattement 10% frais pro + quotient familial + plafonnement
+ * + décote bas revenus.
+ *
+ * Pipeline complet (article 197 CGI 2025) :
+ *   1. Abattement forfaitaire 10% frais professionnels sur net_imposable
+ *      (min 504 €, max 14 426 € par membre du foyer — LFI 2025).
+ *   2. Bareme par tranche × parts fiscales (quotient familial).
+ *   3. Plafonnement avantage demi-parts (1 791 € / demi-part).
+ *   4. Décote pour bas revenus :
+ *      - célibataire : si IR ≤ 1 964 €, décote = max(0, 889 - 0,4525 × IR)
+ *      - couple : si IR ≤ 3 248 €, décote = max(0, 1 470 - 0,4525 × IR)
+ *
+ * @param net_imposable Net imposable (après CSG déductible).
  * @param parts Number of fiscal parts.
  * @param db Sourced constants from daily_bread.json.
  */
@@ -66,10 +77,31 @@ export function computeIR(
   db: DailyBreadConstants,
 ): number {
   if (net_imposable <= 0 || parts <= 0) return 0;
-  const baremes = buildIRBaremes(db.fiscal_constants.ir.baremes);
-  const plafond_demi_part = db.fiscal_constants.ir.plafond_demi_part_eur;
+  const ir = db.fiscal_constants.ir;
+  const baremes = buildIRBaremes(ir.baremes);
+  const plafond_demi_part = ir.plafond_demi_part_eur;
 
-  const quotient = net_imposable / parts;
+  // 1. Abattement 10% frais professionnels (par membre, plafonné min/max).
+  // Si les constantes ne sont pas dispo (ancienne version JSON) on saute.
+  // Heuristique nb_membres : foyer = 1 célib, 2 couple, sinon ≈ parts (ne
+  // tient pas compte des enfants — limite acceptable, vu que la majorité
+  // des revenus salariaux d'un foyer viennent des 1-2 adultes).
+  let revenu_apres_abattement = net_imposable;
+  if (
+    typeof ir.abattement_10pct_taux === "number" &&
+    typeof ir.abattement_10pct_min_eur === "number" &&
+    typeof ir.abattement_10pct_max_eur === "number"
+  ) {
+    const nb_membres = parts >= 2 ? 2 : 1;
+    const abat_brut = net_imposable * ir.abattement_10pct_taux;
+    const abat_min = ir.abattement_10pct_min_eur * nb_membres;
+    const abat_max = ir.abattement_10pct_max_eur * nb_membres;
+    const abat = Math.min(Math.max(abat_brut, abat_min), abat_max);
+    revenu_apres_abattement = Math.max(0, net_imposable - abat);
+  }
+
+  // 2. Bareme par parts.
+  const quotient = revenu_apres_abattement / parts;
   let ir_par_part = 0;
   let prev = 0;
   for (const { to, rate } of baremes) {
@@ -79,28 +111,51 @@ export function computeIR(
     if (quotient <= to) break;
     prev = to;
   }
-  const ir_total = ir_par_part * parts;
+  let ir_brut = ir_par_part * parts;
 
-  // Plafonnement quotient familial : compare avec IR célibataire et limite
-  // l'avantage à PLAFOND × demi-parts supplémentaires.
+  // 3. Plafonnement quotient familial : compare avec IR célibataire et limite
+  //    l'avantage à PLAFOND × demi-parts supplémentaires.
   if (parts > 1) {
     let ir_seul = 0;
     let p2 = 0;
     for (const { to, rate } of baremes) {
-      if (net_imposable <= p2) break;
-      const taxable = Math.min(net_imposable, to) - p2;
+      if (revenu_apres_abattement <= p2) break;
+      const taxable = Math.min(revenu_apres_abattement, to) - p2;
       if (taxable > 0) ir_seul += taxable * rate;
-      if (net_imposable <= to) break;
+      if (revenu_apres_abattement <= to) break;
       p2 = to;
     }
     const demi_parts_supp = (parts - 1) * 2;
     const plafond_avantage = plafond_demi_part * demi_parts_supp;
-    const avantage_brut = ir_seul - ir_total;
+    const avantage_brut = ir_seul - ir_brut;
     if (avantage_brut > plafond_avantage) {
-      return ir_seul - plafond_avantage;
+      ir_brut = ir_seul - plafond_avantage;
     }
   }
-  return Math.max(0, ir_total);
+
+  // 4. Décote bas revenus. Couple = parts ≥ 2 (heuristique : on ne distingue
+  //    pas couple-avec-enfants vs célib-avec-enfants — limite acceptable).
+  if (
+    typeof ir.decote_taux === "number" &&
+    typeof ir.decote_celibataire_seuil_eur === "number" &&
+    typeof ir.decote_celibataire_base_eur === "number" &&
+    typeof ir.decote_couple_seuil_eur === "number" &&
+    typeof ir.decote_couple_base_eur === "number"
+  ) {
+    const isCouple = parts >= 2;
+    const seuil = isCouple
+      ? ir.decote_couple_seuil_eur
+      : ir.decote_celibataire_seuil_eur;
+    const base = isCouple
+      ? ir.decote_couple_base_eur
+      : ir.decote_celibataire_base_eur;
+    if (ir_brut > 0 && ir_brut <= seuil) {
+      const decote = Math.max(0, base - ir.decote_taux * ir_brut);
+      ir_brut = Math.max(0, ir_brut - decote);
+    }
+  }
+
+  return Math.max(0, ir_brut);
 }
 
 // ─── Full breakdown ────────────────────────────────────────────────────────
@@ -660,10 +715,31 @@ export type LocalLevel = {
   monthly_eur: number;
 };
 
+/**
+ * Vrai si la commune est une collectivité à statut particulier où commune
+ * et département sont fusionnés en une seule entité (budget consolidé).
+ * Pour ces cas, afficher dept séparé du bloc double-compte les dépenses
+ * (exemple : Paris dept = budget de la Ville, pas une entité distincte).
+ *
+ * À enrichir : Lyon Métropole (2015), CTU Martinique/Guyane (2015),
+ * Collectivité de Corse (2018), Paris (2019).
+ */
+export function isCollectiviteUnique(slug: string | undefined | null): boolean {
+  if (!slug) return false;
+  return slug === "paris";
+}
+
 export function computeLocalLevels(
   localAnnuel: number,
   db: DailyBreadConstants,
   ratioBlocCommunal: number = 1, // commune.eur_hab / national_avg
+  /** Pour les collectivités à statut particulier (Paris ville-département,
+   *  Lyon Métropole, Métropole de Lyon, Martinique CTU, Guyane CTU, Corse CTU)
+   *  où commune et département sont fusionnés en une seule entité, on agrège
+   *  la part dept dans bloc et on retire la ligne dept (sinon double-comptage :
+   *  les dépenses dept sont déjà incluses dans le budget consolidé de la
+   *  collectivité unique). */
+  mergeDeptIntoBloc: boolean = false,
 ): LocalLevel[] {
   const items = db.subsector_breakdowns.apul_breakdown.items;
   const blocItem = items.part_communes_epci;
@@ -674,15 +750,20 @@ export function computeLocalLevels(
   // Pondération bloc communal : on multiplie la part nationale par le
   // ratio commune/moyenne. Les autres niveaux restent à la part nationale
   // (re-normalisation pour que la somme = 1).
-  const blocWeighted = blocItem.value * ratioBlocCommunal;
-  const sum = blocWeighted + deptItem.value + regItem.value;
+  // Pour collectivité unique : bloc agrège bloc+dept (dept share absorbé).
+  const blocBaseValue = mergeDeptIntoBloc
+    ? blocItem.value + deptItem.value
+    : blocItem.value;
+  const blocWeighted = blocBaseValue * ratioBlocCommunal;
+  const deptValue = mergeDeptIntoBloc ? 0 : deptItem.value;
+  const sum = blocWeighted + deptValue + regItem.value;
   const norm = sum > 0 ? sum : 1;
 
   const blocShare = blocWeighted / norm;
-  const deptShare = deptItem.value / norm;
+  const deptShare = deptValue / norm;
   const regShare = regItem.value / norm;
 
-  return [
+  const out: LocalLevel[] = [
     {
       key: "bloc_communal",
       label_fr: blocItem.label_fr,
@@ -691,23 +772,26 @@ export function computeLocalLevels(
       annual_eur: localAnnuel * blocShare,
       monthly_eur: (localAnnuel * blocShare) / 12,
     },
-    {
+  ];
+  if (!mergeDeptIntoBloc) {
+    out.push({
       key: "departement",
       label_fr: deptItem.label_fr,
       label_en: deptItem.label_en,
       share_of_local: deptShare,
       annual_eur: localAnnuel * deptShare,
       monthly_eur: (localAnnuel * deptShare) / 12,
-    },
-    {
-      key: "region",
-      label_fr: regItem.label_fr,
-      label_en: regItem.label_en,
-      share_of_local: regShare,
-      annual_eur: localAnnuel * regShare,
-      monthly_eur: (localAnnuel * regShare) / 12,
-    },
-  ];
+    });
+  }
+  out.push({
+    key: "region",
+    label_fr: regItem.label_fr,
+    label_en: regItem.label_en,
+    share_of_local: regShare,
+    annual_eur: localAnnuel * regShare,
+    monthly_eur: (localAnnuel * regShare) / 12,
+  });
+  return out;
 }
 
 // ─── Deep-dive helpers ──────────────────────────────────────────────────
