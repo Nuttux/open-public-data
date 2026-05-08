@@ -28,10 +28,15 @@ from __future__ import annotations
 import csv
 import json
 import re
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent.parent.parent
 SEEDS_DIR = ROOT / "pipeline" / "seeds"
+
+# Local sibling import so this module remains runnable standalone.
+sys.path.insert(0, str(Path(__file__).parent))
+from build_drilldown_secu_level4 import build_secu_level4_overlay  # noqa: E402
 
 _KEY_OK = re.compile(r"^[a-z0-9_]+$")
 
@@ -139,6 +144,10 @@ def build_secu_bucket() -> dict:
         float(asso_rows[k]["value"]) for k, *_ in LEVEL2_DEFS
     )
 
+    # Optional level4 overlay (currently only CNAM > médecine de ville is
+    # populated, cf. build_drilldown_secu_level4.py).
+    l4_overlay = build_secu_level4_overlay()
+
     level2: list[dict] = []
     for asso_key, dd_key, lbl_fr, lbl_en, l3_seed in LEVEL2_DEFS:
         row = asso_rows[asso_key]
@@ -156,6 +165,11 @@ def build_secu_bucket() -> dict:
 
         if l3_seed:
             l3 = _level3_from_seed(l3_seed, key_prefix=dd_key)
+            # Graft level4 onto level3 entries when an overlay is published.
+            for l3_entry in l3:
+                key = (dd_key, l3_entry["key"])
+                if key in l4_overlay:
+                    l3_entry["level4"] = l4_overlay[key]
             if l3:
                 entry["level3"] = l3
         level2.append(entry)
@@ -174,7 +188,10 @@ def build_secu_bucket() -> dict:
             "shares PLFSS 2025 renormalisés. level3 fourni pour CNAM (sous-"
             "objectifs ONDAM), CNAV (régimes), CNAF (prestations) et UNEDIC ; "
             "AT-MP + autonomie (CNSA) sans level3 publié à ce grain — "
-            "détail non disponible côté seeds."
+            "détail non disponible côté seeds. level4 publié uniquement pour "
+            "CNAM > médecine de ville (proxy DREES Comptes de la santé 2024 "
+            "filtré financeur Sécurité sociale) ; autres sous-objectifs ONDAM "
+            "sans source publique structurée à ce grain."
         ),
     }
 
