@@ -855,8 +855,25 @@ export default function DailyBreadClient({
       cnam && {
         key: "sante" as const,
         institution: "secu" as const,
-        tagFr: "Santé",
-        tagEn: "Health",
+        tagFr: "SANTÉ · SÉCURITÉ SOCIALE",
+        tagEn: "HEALTH · SOCIAL SECURITY",
+        // "5" pas "≈ 5" — le ≈ alourdit visuellement, le contexte rend l'idée
+        // d'estimation explicite via les sources.
+        number: (cnam.monthly_eur / consult).toLocaleString(
+          locale === "en" ? "en-GB" : "fr-FR",
+          { maximumFractionDigits: 0 },
+        ),
+        claimAFr: "consultations",
+        claimAEn: "GP visits",
+        claimBFr: "chez le généraliste.",
+        claimBEn: "with your GP.",
+        editorialFr: "Soit presque un check-up par semaine.",
+        editorialEn: "Roughly a check-up per week.",
+        sourceDetailFr: "Convention médicale 2024 · 30 € la consultation.",
+        sourceDetailEn: "Medical agreement 2024 · €30 per visit.",
+        viaDetailFr: `Ta cotisation à la branche maladie : ${fmtEur(cnam.monthly_eur, locale, 0)} €/mois.`,
+        viaDetailEn: `Your contribution to the health branch: €${fmtEur(cnam.monthly_eur, locale, 0)}/month.`,
+        // Fallback pour le partage social et éventuels anciens consommateurs.
         headline: `≈ ${(cnam.monthly_eur / consult).toLocaleString(
           locale === "en" ? "en-GB" : "fr-FR",
           { maximumFractionDigits: 0 },
@@ -871,8 +888,18 @@ export default function DailyBreadClient({
       cnav && {
         key: "retraite" as const,
         institution: "secu" as const,
-        tagFr: "Retraites",
-        tagEn: "Pensions",
+        tagFr: "RETRAITES · CNAV",
+        tagEn: "PENSIONS · CNAV",
+        number: `${((cnav.monthly_eur / pension) * 100).toLocaleString(
+          locale === "en" ? "en-GB" : "fr-FR",
+          { maximumFractionDigits: 0 },
+        )} %`,
+        claimAFr: "d'une pension",
+        claimAEn: "of a pension",
+        editorialFr: "Tu cotises chaque mois pour les pensions actuelles.",
+        editorialEn: "You contribute each month to current pensions.",
+        sourceDetailFr: "DREES 2024 · pension moyenne 1 626 €/mois.",
+        sourceDetailEn: "DREES 2024 · average pension €1,626/month.",
         headline: `≈ ${((cnav.monthly_eur / pension) * 100).toLocaleString(
           locale === "en" ? "en-GB" : "fr-FR",
           { maximumFractionDigits: 0 },
@@ -887,8 +914,18 @@ export default function DailyBreadClient({
       educ && {
         key: "ecole" as const,
         institution: "etat" as const,
-        tagFr: "Éducation",
-        tagEn: "Education",
+        tagFr: "ÉCOLE · ÉTAT",
+        tagEn: "SCHOOL · STATE",
+        number: (educ.monthly_eur / eleveJour).toLocaleString(
+          locale === "en" ? "en-GB" : "fr-FR",
+          { maximumFractionDigits: 1 },
+        ),
+        claimAFr: "jours d'école",
+        claimAEn: "school-days",
+        editorialFr: "Pour un élève public — sur 9 350 €/an de coût total.",
+        editorialEn: "For one student — out of €9,350/year total cost.",
+        sourceDetailFr: "DEPP RERS 2023 · ~9 350 €/an par élève.",
+        sourceDetailEn: "DEPP RERS 2023 · ~€9,350/year per student.",
         headline: `≈ ${(educ.monthly_eur / eleveJour).toLocaleString(
           locale === "en" ? "en-GB" : "fr-FR",
           { maximumFractionDigits: 1 },
@@ -903,8 +940,18 @@ export default function DailyBreadClient({
       blocCommunal && {
         key: "transport" as const,
         institution: "local" as const,
-        tagFr: "Local",
-        tagEn: "Local",
+        tagFr: "TRANSPORT · COLLECTIVITÉS",
+        tagEn: "TRANSPORT · LOCAL",
+        number: (blocCommunal.monthly_eur / ticket).toLocaleString(
+          locale === "en" ? "en-GB" : "fr-FR",
+          { maximumFractionDigits: 0 },
+        ),
+        claimAFr: "trajets en bus",
+        claimAEn: "bus trips",
+        editorialFr: "Soit ton mois de transport quasi gratuit.",
+        editorialEn: "Almost your monthly transit pass.",
+        sourceDetailFr: "UTP 2024 · 2,50 € le trajet urbain.",
+        sourceDetailEn: "UTP 2024 · €2.50 per urban trip.",
         headline: `≈ ${(blocCommunal.monthly_eur / ticket).toLocaleString(
           locale === "en" ? "en-GB" : "fr-FR",
           { maximumFractionDigits: 0 },
@@ -919,8 +966,15 @@ export default function DailyBreadClient({
       dette && {
         key: "dette" as const,
         institution: "etat" as const,
-        tagFr: "Dette",
-        tagEn: "Debt",
+        tagFr: "DETTE · ÉTAT",
+        tagEn: "DEBT · STATE",
+        number: `${fmtEur(dette.monthly_eur, locale, 0)} €`,
+        claimAFr: "d'intérêts",
+        claimAEn: "in interest",
+        editorialFr: "Sur la dette publique — en hausse depuis 2022.",
+        editorialEn: "On public debt — rising since 2022.",
+        sourceDetailFr: "AFT 2025 · charge de la dette votée au PLF.",
+        sourceDetailEn: "AFT 2025 · debt service voted in PLF.",
         headline: `≈ ${fmtEur(dette.monthly_eur, locale, 0)} €`,
         unitFr: "d'intérêts de la dette / mois",
         unitEn: "in debt interest / month",
@@ -934,6 +988,17 @@ export default function DailyBreadClient({
       institution: "secu" | "etat" | "local";
       tagFr: string;
       tagEn: string;
+      number: string;
+      claimAFr: string;
+      claimAEn: string;
+      claimBFr?: string;
+      claimBEn?: string;
+      editorialFr: string;
+      editorialEn: string;
+      sourceDetailFr: string;
+      sourceDetailEn: string;
+      viaDetailFr?: string;
+      viaDetailEn?: string;
       headline: string;
       unitFr: string;
       unitEn: string;
@@ -2225,37 +2290,68 @@ export default function DailyBreadClient({
               </h2>
               <p className="db-p-end-deck">{t("db.end.deck")}</p>
 
-              <div className="db-p-end-cards-grid">
-                {equivalents
+              {(() => {
+                const sorted = equivalents
                   .slice(0, 5)
                   .slice()
-                  .sort((a, b) => b.amount - a.amount)
-                  .map((eq, i) => {
-                    const Picto = getPictoForKey(eq.key);
-                    const caption = locale === "en" ? eq.unitEn : eq.unitFr;
-                    const via = locale === "en" ? eq.viaEn : eq.viaFr;
-                    const number = eq.headline;
-                    const amountLabel = `${fmtEur(eq.amount, locale, 0)} €`;
-                    const shareText = t("db.end.share_card_text")
-                      .replace("{monthly}", fmtEur(totalMonthly, locale, 0))
-                      .replace("{number}", number)
-                      .replace("{caption}", caption)
-                      .replace("{via}", via);
-                    return (
-                      <DailyBreadEquivalentCard
-                        key={eq.key}
-                        picto={Picto}
-                        pictoColor={eq.institution}
-                        number={number}
-                        caption={caption}
-                        via={via}
-                        amountLabel={amountLabel}
-                        shareText={shareText}
-                        revealDelayMs={i * 80}
-                      />
-                    );
-                  })}
-              </div>
+                  .sort((a, b) => b.amount - a.amount);
+                const heroItem = sorted[0];
+                const compactItems = sorted.slice(1);
+                const renderCard = (
+                  eq: (typeof sorted)[number],
+                  variant: "hero" | "compact",
+                  i: number,
+                ) => {
+                  const tag = locale === "en" ? eq.tagEn : eq.tagFr;
+                  const claimA = locale === "en" ? eq.claimAEn : eq.claimAFr;
+                  const claimB = locale === "en" ? eq.claimBEn : eq.claimBFr;
+                  const editorialCopy =
+                    locale === "en" ? eq.editorialEn : eq.editorialFr;
+                  const sourceDetail =
+                    locale === "en" ? eq.sourceDetailEn : eq.sourceDetailFr;
+                  const viaDetail =
+                    locale === "en" ? eq.viaDetailEn : eq.viaDetailFr;
+                  const caption = locale === "en" ? eq.unitEn : eq.unitFr;
+                  const via = locale === "en" ? eq.viaEn : eq.viaFr;
+                  const shareText = t("db.end.share_card_text")
+                    .replace("{monthly}", fmtEur(totalMonthly, locale, 0))
+                    .replace("{number}", eq.headline)
+                    .replace("{caption}", caption)
+                    .replace("{via}", via);
+                  return (
+                    <DailyBreadEquivalentCard
+                      key={eq.key}
+                      variant={variant}
+                      pictoColor={eq.institution}
+                      tag={tag}
+                      number={eq.number}
+                      claimA={claimA}
+                      claimB={claimB}
+                      editorialCopy={editorialCopy}
+                      sourceDetail={sourceDetail}
+                      viaDetail={viaDetail}
+                      shareText={shareText}
+                      revealDelayMs={i * 80}
+                    />
+                  );
+                };
+                return (
+                  <>
+                    {heroItem && (
+                      <div className="db-p-end-hero-wrap">
+                        {renderCard(heroItem, "hero", 0)}
+                      </div>
+                    )}
+                    {compactItems.length > 0 && (
+                      <div className="db-p-end-cards-grid">
+                        {compactItems.map((eq, i) =>
+                          renderCard(eq, "compact", i + 1),
+                        )}
+                      </div>
+                    )}
+                  </>
+                );
+              })()}
 
               <div className="db-p-end-foot">
                 <span>

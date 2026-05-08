@@ -2,10 +2,16 @@
 /**
  * Carte « équivalent » individuelle — section §07 Synthèse de Daily Bread.
  *
- * Frame avec border + bg légèrement teinté par institution (Sécu/État/Local),
- * pictogramme top, big number Display, caption Serif italic, meta mono small,
- * bouton « ↗ part » individuel qui ouvre un menu de partage (X / WhatsApp /
- * Email / Copy) ou Web Share API si dispo.
+ * Refonte 2026-05-07 — format éditorial presse (style Le Monde Décodeurs /
+ * NYT The Upshot) anti « AI slop » :
+ *   - 2 variants : `"hero"` (1 carte pleine largeur, big number 96-120px,
+ *     editorial italic copy, source + via mono) et `"compact"` (4 cartes
+ *     en grille, big number 40-56px, claim + source courte).
+ *   - Plus de pictogramme line-icon (la valeur est dans la typo, pas dans
+ *     l'icône). Le prop `picto` est conservé pour rétro-compatibilité mais
+ *     n'est jamais rendu.
+ *   - Border-left 3px signature institution (--p-secu / --p-etat / --p-local)
+ *     sur fond paper neutre — pas de tinted background.
  *
  * Reveal cascade géré par le parent (`useRevealOnScroll`) ; ici on ajoute
  * juste un délai CSS via `--db-eq-delay` pour stagger les apparitions.
@@ -22,36 +28,62 @@ type IconProps = {
 
 export type PictoColor = "secu" | "etat" | "local";
 
+export type EquivCardVariant = "hero" | "compact";
+
 type Props = {
-  picto: React.ComponentType<IconProps>;
+  /** Variante d'affichage. `"hero"` = pleine largeur ; `"compact"` = grille. */
+  variant?: EquivCardVariant;
+  /**
+   * Pictogramme — DEPRECATED. Conservé pour rétro-compatibilité mais
+   * jamais rendu dans les variants éditoriaux. Le composant accepte
+   * volontairement la prop pour ne pas casser les anciens call-sites.
+   */
+  picto?: React.ComponentType<IconProps>;
   pictoColor: PictoColor;
-  /** Big number, p.ex. "≈ 5", "≈ 8 %", "≈ 1 jour". */
+  /** Tag eyebrow institution + thématique, p.ex. "SANTÉ · SÉCURITÉ SOCIALE". */
+  tag: string;
+  /** Big number, p.ex. "5", "8 %", "1 jour", "27 €". */
   number: string;
-  /** Caption italique, p.ex. "consultations généralistes". */
-  caption: string;
-  /** Source/institution préfixée, p.ex. "via CNAM". */
-  via: string;
-  /** Montant formatté, p.ex. "160 €". */
-  amountLabel: string;
+  /**
+   * Première ligne du claim (suit le big number). Hero : "consultations".
+   * Compact : "d'une pension".
+   */
+  claimA: string;
+  /**
+   * Deuxième ligne du claim — optionnelle (hero seulement en général).
+   * P.ex. "chez le généraliste."
+   */
+  claimB?: string;
+  /**
+   * Editorial copy — phrase italique Serif punchy. Hero seulement.
+   * P.ex. "Soit presque un check-up par semaine."
+   */
+  editorialCopy?: string;
+  /**
+   * Source courte mono caps. P.ex. "CONVENTION MÉDICALE 2024 · 30 € la consultation".
+   */
+  sourceDetail: string;
+  /**
+   * Detail mono small (hero) — décrit la cotisation/contribution.
+   * P.ex. "Ta cotisation à la branche maladie : 184 €/mois."
+   */
+  viaDetail?: string;
   /** Texte custom partagé pour cette carte. */
   shareText: string;
   /** Délai d'apparition (en ms) pour le stagger reveal. */
   revealDelayMs?: number;
 };
 
-const PICTO_COLOR_VAR: Record<PictoColor, string> = {
-  secu: "var(--p-secu, #2a3680)",
-  etat: "var(--p-etat, #1a1d26)",
-  local: "var(--p-local, #c12323)",
-};
-
 export default function DailyBreadEquivalentCard({
-  picto: Picto,
+  variant = "compact",
   pictoColor,
+  tag,
   number,
-  caption,
-  via,
-  amountLabel,
+  claimA,
+  claimB,
+  editorialCopy,
+  sourceDetail,
+  viaDetail,
   shareText,
   revealDelayMs = 0,
 }: Props) {
@@ -153,23 +185,26 @@ export default function DailyBreadEquivalentCard({
     <article
       className="db-equiv-card"
       data-color={pictoColor}
+      data-variant={variant}
       style={{ ["--db-eq-delay" as string]: `${revealDelayMs}ms` }}
     >
-      <div
-        className="db-equiv-card-picto"
-        style={{ color: PICTO_COLOR_VAR[pictoColor] }}
-      >
-        <Picto size={32} />
+      <p className="db-equiv-card-tag">{tag}</p>
+
+      <div className="db-equiv-card-claim">
+        <span className="db-equiv-card-num tnum">{number}</span>
+        <span className="db-equiv-card-claim-a">{claimA}</span>
+        {claimB && <span className="db-equiv-card-claim-b">{claimB}</span>}
       </div>
 
-      <p className="db-equiv-card-num tnum">{number}</p>
-
-      <p className="db-equiv-card-caption">{caption}</p>
+      {variant === "hero" && editorialCopy && (
+        <p className="db-equiv-card-editorial">{editorialCopy}</p>
+      )}
 
       <div className="db-equiv-card-meta">
-        <span>{via}</span>
-        <span aria-hidden="true"> · </span>
-        <span className="tnum">{amountLabel}</span>
+        <p className="db-equiv-card-source">{sourceDetail}</p>
+        {variant === "hero" && viaDetail && (
+          <p className="db-equiv-card-via">{viaDetail}</p>
+        )}
       </div>
 
       <div className="db-equiv-card-share-wrap">
