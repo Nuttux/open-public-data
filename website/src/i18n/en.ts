@@ -3492,7 +3492,6 @@ const en: Record<string, string> = {
   'db.hero.meta_inline.month': '/month',
   'db.hero.meta_inline.year': '€{annual}/yr',
   'db.hero.deck': 'Social contributions, CSG/CRDS, income tax, capital flat tax, VAT, property tax if homeowner — aggregated for your profile. Assumptions, sources and limits detailed in the Method section below.',
-  'db.hero.foot_cue': 'Where this money goes',
   // ─ Editable NYT-style hero (fold redesign) ─
   'db.hero.editable.prefix_salaire': 'On your net salary of',
   'db.hero.editable.set_salaire': 'set your salary',

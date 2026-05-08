@@ -10495,43 +10495,6 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   margin: 14px 0 28px;
 }
 
-/* Foot-cue "big" — gros, prend l'œil, avec flèche qui invite à scroll.
-   Remplace le minuscule "Où va cet argent" en bas du fold. */
-.theme-db-scrolly .db-p-hero-foot-cue-big {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  margin: 64px 0 0;
-  font-family: var(--pf-serif);
-  font-style: italic;
-  font-size: clamp(28px, 3vw, 40px);
-  font-weight: 400;
-  line-height: 1.1;
-  color: var(--p-ink);
-  text-decoration: none;
-  letter-spacing: -0.01em;
-  transition: color 0.15s ease;
-}
-.theme-db-scrolly .db-p-hero-foot-cue-big:hover {
-  color: var(--p-accent);
-}
-.theme-db-scrolly .db-p-hero-foot-cue-arrow {
-  display: inline-block;
-  font-family: var(--pf-mono);
-  font-style: normal;
-  font-size: 0.7em;
-  color: var(--p-accent);
-  animation: db-foot-cue-bounce 1.8s ease-in-out infinite;
-}
-@keyframes db-foot-cue-bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(6px); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .theme-db-scrolly .db-p-hero-foot-cue-arrow {
-    animation: none;
-  }
-}
 
 /* ══════════════════════════════════════════════════════════════════════
    Hero éditable NYT-style (fusion §00 + §01) — fold redesign
@@ -10552,8 +10515,7 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
     "text aside"
     "advanced advanced"
     "openfisca openfisca"
-    "deck deck"
-    "foot foot";
+    "deck deck";
   column-gap: 56px;
   row-gap: 40px;
 }
@@ -10916,7 +10878,6 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   border-top: 0.5px solid var(--p-rule);
 }
 .theme-db-scrolly .db-p-hero-edit .db-p-hero-deck { grid-area: deck; }
-.theme-db-scrolly .db-p-hero-edit .db-panel-foot-cue { grid-area: foot; }
 
 /* ── Mobile : single column, big number sous le texte ── */
 @media (max-width: 880px) {
@@ -10929,8 +10890,7 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
       "cta"
       "advanced"
       "openfisca"
-      "deck"
-      "foot";
+      "deck";
     column-gap: 0;
     row-gap: 24px;
   }

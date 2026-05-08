@@ -1371,10 +1371,23 @@ export default function DailyBreadClient({
                 </div>
               )}
 
-              {/* Fix 7 : CTA discret sous les presets (côté droit) qui équilibre
-                  visuellement la colonne avec la colonne gauche plus dense, et
-                  pousse le lecteur vers §02 sans être lourd. */}
-              <a className="db-p-hero-cta-jump" href="#db-disp">
+              {/* CTA discret sous les presets (côté droit) qui équilibre
+                  visuellement la colonne et pousse le lecteur vers §02 sans
+                  être lourd. Smooth-scroll JS pour éviter le saut brutal. */}
+              <a
+                className="db-p-hero-cta-jump"
+                href="#db-disp"
+                onClick={(e) => {
+                  if (typeof document === "undefined") return;
+                  const target = document.getElementById("db-disp");
+                  if (!target) return;
+                  e.preventDefault();
+                  target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+                }}
+              >
                 {t("db.hero.aside_cta")}{" "}
                 <span aria-hidden>↓</span>
               </a>
@@ -1573,13 +1586,13 @@ export default function DailyBreadClient({
               </div>
             </details>
 
-            {/* OpenFisca caveat (réduit à un petit aside discret sous le hero) */}
-            {(openFiscaResult || openFiscaError) && (
+            {/* OpenFisca caveat — succès uniquement. Échec = silence (le calcul
+                JS local reste actif, pas besoin d'alerter avec une marge
+                d'erreur hardcodée). */}
+            {openFiscaResult && (
               <p className="db-p-hero-openfisca-note">
-                {openFiscaError
-                  ? t("db.openfisca.error")
-                  : t("db.openfisca.note")}
-                {openFiscaResult && openFiscaEcartPct !== null && (
+                {t("db.openfisca.note")}
+                {openFiscaEcartPct !== null && (
                   <>
                     {" "}
                     <span className="db-openfisca-ecart">
@@ -1594,14 +1607,6 @@ export default function DailyBreadClient({
               </p>
             )}
 
-            <a
-              className="db-p-hero-foot-cue-big"
-              href="#db-disp"
-              aria-label={t("db.hero.foot_cue")}
-            >
-              <span>{t("db.hero.foot_cue")}</span>
-              <span aria-hidden className="db-p-hero-foot-cue-arrow">↓</span>
-            </a>
           </div>
         </section>
 

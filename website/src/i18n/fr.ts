@@ -3497,7 +3497,6 @@ const fr: Record<string, string> = {
   'db.hero.meta_inline.month': '/mois',
   'db.hero.meta_inline.year': '{annual} €/an',
   'db.hero.deck': 'Cotisations, CSG/CRDS, impôt sur le revenu, PFU sur capital, TVA, taxe foncière si propriétaire — agrégés selon ton profil. Hypothèses, sources et limites détaillées dans la section Méthode plus bas.',
-  'db.hero.foot_cue': 'Où va cet argent',
   // ─ Hero éditable NYT-style (fold redesign) ─
   'db.hero.editable.prefix_salaire': 'Sur ton salaire net de',
   'db.hero.editable.set_salaire': 'définis ton salaire',
