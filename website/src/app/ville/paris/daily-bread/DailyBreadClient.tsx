@@ -327,36 +327,15 @@ export default function DailyBreadClient({
   //  servaient à rendre les rows DeepDive cliquables. Supprimées avec la
   //  migration des asides dans le drawer en mai 2026.)
 
-  // BarList §05 — 3 niveaux administratifs tous cliquables.
-  // - Bloc communal : ouvre la 1re fonction OFGL (services_generaux ≈ 32%),
-  //   permet d'entrer dans le drill par fonction du bloc communal.
-  // - Département : 1re fonction dept (sante_action_sociale ≈ 50%).
-  // - Région : 1re fonction région (transports_routes_voiries).
+  // BarList §05 — 3 niveaux administratifs : passifs au top-level pour
+  // ne pas mentir sur la cible. Auto-jumper vers la 1re sous-fonction
+  // (santé/services-généraux/transports) crée une UX trompeuse — l'user
+  // s'attend à un overview "Département" et atterrit sur "Santé". Les
+  // BarList sous-fonctions juste en-dessous sont la vraie porte d'entrée
+  // (chacune cliquable + libellée).
   const localLevelsUrls = useMemo(() => {
-    const m = new Map<string, string>();
-    const blocKeys = drilldownIndex?.local?.level2 ?? [];
-    const deptKeys = drilldownIndex?.local_dept?.level2 ?? [];
-    const regKeys = drilldownIndex?.local_region?.level2 ?? [];
-    if (blocKeys.length > 0) {
-      m.set(
-        "bloc_communal",
-        `/ville/paris/daily-bread/bucket/local/${blocKeys[0]}`,
-      );
-    }
-    if (deptKeys.length > 0) {
-      m.set(
-        "departement",
-        `/ville/paris/daily-bread/bucket/local/dept/${deptKeys[0]}`,
-      );
-    }
-    if (regKeys.length > 0) {
-      m.set(
-        "region",
-        `/ville/paris/daily-bread/bucket/local/region/${regKeys[0]}`,
-      );
-    }
-    return m;
-  }, [drilldownIndex]);
+    return new Map<string, string>();
+  }, []);
   // (Helper buildSecuL3 — supprimé avec les DeepDive Sécu ; les drilldowns
   //  niveau 3 restent accessibles via le drawer level2 ouvert depuis BarList.)
   const t = useT();
@@ -1308,7 +1287,7 @@ export default function DailyBreadClient({
                               {s.label}
                             </span>{" "}
                             <span className="db-p-hero-compo-legend-val tnum">
-                              {fmtEur(s.value, locale, 0)}
+                              {fmtEur(s.value, locale, 0)} €
                             </span>
                           </li>
                         ))}
@@ -2273,13 +2252,9 @@ export default function DailyBreadClient({
             className={`db-panel db-p-end db-panel-fade${panel6Revealed ? " is-revealed" : ""}`}
           >
             <div className="db-panel-wrap">
-              {/* Top: eyebrow + share global row */}
-              <div className="db-p-end-head">
-                <p className="db-panel-num">
-                  <em>07</em> · {t("db.end.num")}
-                </p>
-                <DailyBreadShareActions locale={locale} />
-              </div>
+              <p className="db-panel-num">
+                <em>07</em> · {t("db.end.num")}
+              </p>
 
               <h2 className="db-p-end-q">
                 {t("db.end.q_a").replace(
@@ -2352,6 +2327,14 @@ export default function DailyBreadClient({
                   </>
                 );
               })()}
+
+              {/* Share global — déplacé en bottom avec label proéminent. */}
+              <div className="db-p-end-share">
+                <p className="db-p-end-share-label">
+                  {t("db.share_section.eyebrow")}
+                </p>
+                <DailyBreadShareActions locale={locale} />
+              </div>
 
               <div className="db-p-end-foot">
                 <span>
