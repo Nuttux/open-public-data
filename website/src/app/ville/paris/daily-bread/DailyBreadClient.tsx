@@ -7,13 +7,12 @@ import Footer from "@/components/fusion/Footer";
 import { useT, useLocale } from "@/lib/localeContext";
 import { useCountUp } from "@/lib/use-count-up";
 import { useRevealOnScroll } from "@/lib/use-reveal-on-scroll";
-import type { EurostatCofog, DailyBreadConstants } from "@/lib/national-data";
+import type { DailyBreadConstants } from "@/lib/national-data";
 import {
   computeBreakdown,
   computeBreakdownRetraite,
   computeBreakdownCapital,
   computeBreakdownIndependant,
-  computeCofogShares,
   computeInstitutionShares,
   computeAssoBreakdown,
   computeStateBuckets,
@@ -110,24 +109,6 @@ const fmtBnEur = (amountEur: number, locale: string): string => {
   return locale === "fr"
     ? `${rounded.replace(".", ",")} Md€`
     : `€${rounded} bn`;
-};
-
-// Chaque fonction COFOG est colorée selon l'administration qui la
-// finance majoritairement en France (APU consolidé) — réutilise les
-// variables CSS --p-secu/--p-etat/--p-local pour rester cohérent avec
-// les panels 03/04/05. Une légende au-dessus du graphe rend la clé
-// explicite ; sans elle, les 3 couleurs paraissent décoratives.
-const COFOG_COLORS: Record<string, string> = {
-  GF10: "var(--p-secu)",  // Protection sociale → Sécu (ASSO domine)
-  GF07: "var(--p-secu)",  // Santé → Sécu (CNAM)
-  GF01: "var(--p-etat)",  // Services généraux → État (charge dette)
-  GF02: "var(--p-etat)",  // Défense → État
-  GF03: "var(--p-etat)",  // Ordre & sécurité → État (police, justice)
-  GF04: "var(--p-etat)",  // Affaires économiques → État (transports, soutien éco)
-  GF09: "var(--p-etat)",  // Enseignement → État (profs, programmes)
-  GF05: "var(--p-local)", // Environnement → Local (déchets, eau)
-  GF06: "var(--p-local)", // Logement → Local (OPH, urbanisme)
-  GF08: "var(--p-local)", // Loisirs/culture → Local (équipements de quartier)
 };
 
 /**
@@ -271,11 +252,9 @@ const ETAT_TOP_ALIAS_AGG: Record<string, string> = {
 //  cliquables des DeepDive, désormais migrés dans le drawer.)
 
 export default function DailyBreadClient({
-  cofog,
   db,
   drilldownIndex,
 }: {
-  cofog: EurostatCofog | null;
   db: DailyBreadConstants | null;
   /** Index compact des keys de drilldown.json (level2 + level3 par parent).
    *  Construit côté server (page.tsx) ; sert ici à filtrer les alias en ne
@@ -708,9 +687,9 @@ export default function DailyBreadClient({
   const compoIndIr = useCountUp(breakdownIndep.ir / 12, 650);
   const compoIndTva = useCountUp(breakdownIndep.tva_estimee / 12, 700);
 
-  // ─── Reveal-on-scroll §03–§08 — fade-in + slide-up des panels ────────
+  // ─── Reveal-on-scroll §03–§07 — fade-in + slide-up des panels ────────
   //
-  // Chaque panel (Sécu, État, Local, COFOG, Synthèse, Caveats) entre
+  // Chaque panel (Sécu, État, Local, Synthèse, Méthode) entre
   // depuis 30px en bas avec opacité 0, transition 500ms cubic-bezier
   // standard. Threshold 0.15 (panel apparaît dès qu'on en voit ~15%, soit
   // après quelques pixels de scroll), one-shot.
@@ -724,6 +703,9 @@ export default function DailyBreadClient({
   // pas masquer le hero au mount. §02 (Disp) garde son reveal limité au
   // tri-stack interne (déjà fait) — pas de panel-level fade pour éviter
   // d'enchaîner deux animations sur le même panel.
+  //
+  // Renumérotage 2026-05 : ancien §06 (COFOG) retiré → §07 Synthèse devient
+  // §06, §08 Caveats refondu en "Méthode" et devient §07.
   const panel3Ref = useRef<HTMLElement | null>(null);
   const panel3Revealed = useRevealOnScroll(panel3Ref, { threshold: 0.15 });
   const panel4Ref = useRef<HTMLElement | null>(null);
@@ -734,8 +716,6 @@ export default function DailyBreadClient({
   const panel6Revealed = useRevealOnScroll(panel6Ref, { threshold: 0.15 });
   const panel7Ref = useRef<HTMLElement | null>(null);
   const panel7Revealed = useRevealOnScroll(panel7Ref, { threshold: 0.15 });
-  const panel8Ref = useRef<HTMLElement | null>(null);
-  const panel8Revealed = useRevealOnScroll(panel8Ref, { threshold: 0.15 });
 
   // Client-armed flag pour la couche cinétique des panels.
   // Tant que `clientArmed === false` (SSR + premier paint client), les
@@ -795,11 +775,6 @@ export default function DailyBreadClient({
       : 1;
     return computeLocalLevels(localShare.annual_eur, db, ratio);
   }, [db, localShare, commune]);
-
-  const cofogShares = useMemo(() => {
-    if (!cofog) return [];
-    return computeCofogShares(totalAnnuel, cofog.functions);
-  }, [cofog, totalAnnuel]);
 
   // ─── Deep-dives — supprimés (2026-05) ──────────────────────────────
   //   La section "À l'intérieur de…" sur la page principale était
@@ -987,10 +962,6 @@ export default function DailyBreadClient({
       viaEn: string;
     }>;
   }, [db, assoBranches, stateBuckets, localLevels, commune, locale]);
-
-  // ─── Helpers ───────────────────────────────────────────────────────
-  const labelFor = (s: { label_fr: string; label_en: string }) =>
-    locale === "en" ? s.label_en : s.label_fr;
 
   // Note : l'ancien `eyebrow` (Médian · Célibataire (1 part) · Paris) a été
   // retiré du hero — redondant avec la phrase éditable principale qui contient
@@ -2149,102 +2120,12 @@ export default function DailyBreadClient({
           );
         })()}
 
-        {/* ── PANNEAU 6 — Vue par mission ── */}
-        {cofogShares.length > 0 && (
-          <section
-            ref={panel7Ref}
-            className={`db-panel db-panel-fade${panel7Revealed ? " is-revealed" : ""}`}
-            style={{ minHeight: "auto", padding: "60px 0" }}
-          >
-            <div className="db-panel-wrap">
-              <p className="db-panel-num">
-                <em>06</em> · {t("db.cofog.kind")}
-              </p>
-              <h2
-                className="db-p-disp-q"
-                style={{ fontSize: 56, marginBottom: 16 }}
-              >
-                {t("db.cofog.title")}
-              </h2>
-              <p className="db-p-disp-deck" style={{ marginBottom: 24 }}>
-                {t("db.cofog.subtitle")}
-              </p>
-              <p
-                className="db-p-zoom-source"
-                style={{
-                  marginBottom: 12,
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: "16px 24px",
-                  alignItems: "center",
-                }}
-              >
-                <span style={{ opacity: 0.7 }}>
-                  {t("db.cofog.legend.intro")}
-                </span>
-                <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
-                  <span
-                    aria-hidden="true"
-                    style={{
-                      width: 14,
-                      height: 14,
-                      background: "var(--p-secu)",
-                      display: "inline-block",
-                      borderRadius: 2,
-                    }}
-                  />
-                  {t("db.cofog.legend.secu")}
-                </span>
-                <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
-                  <span
-                    aria-hidden="true"
-                    style={{
-                      width: 14,
-                      height: 14,
-                      background: "var(--p-etat)",
-                      display: "inline-block",
-                      borderRadius: 2,
-                    }}
-                  />
-                  {t("db.cofog.legend.etat")}
-                </span>
-                <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
-                  <span
-                    aria-hidden="true"
-                    style={{
-                      width: 14,
-                      height: 14,
-                      background: "var(--p-local)",
-                      display: "inline-block",
-                      borderRadius: 2,
-                    }}
-                  />
-                  {t("db.cofog.legend.local")}
-                </span>
-              </p>
-              <BarList
-                items={cofogShares.map((s) => ({
-                  name: labelFor(s),
-                  monthly: (s.share * totalAnnuel) / 12,
-                  share: s.share,
-                  color: COFOG_COLORS[s.code],
-                }))}
-                color="c-secu"
-                locale={locale}
-              />
-              <p
-                className="db-p-zoom-source"
-                style={{ marginTop: 24 }}
-              >
-                {db
-                  ? `Eurostat gov_10a_exp ${cofog?.year ?? ""} — calcul barèmes URSSAF / CGI ${db.fiscal_constants.ir.year} / INSEE.`
-                  : `Eurostat gov_10a_exp ${cofog?.year ?? ""}`}
-              </p>
-            </div>
-          </section>
-        )}
-
-        {/* ── PANNEAU 7 — Synthèse / Equivalents ── */}
+        {/* ── PANNEAU 6 — Synthèse / Equivalents ──
+         *
+         * Note 2026-05 : ancien §06 "Vue par fonction" (COFOG) RETIRÉ —
+         * redondant avec les cross-cuttings §07 du Budget Explorer
+         * (/france/budget). Le panel Synthèse devient §06, et la Méthode
+         * (anciennement §08) devient §07. */}
         {equivalents.length > 0 && (
           <section
             ref={panel6Ref}
@@ -2253,7 +2134,7 @@ export default function DailyBreadClient({
           >
             <div className="db-panel-wrap">
               <p className="db-panel-num">
-                <em>07</em> · {t("db.end.num")}
+                <em>06</em> · {t("db.end.num")}
               </p>
 
               <h2 className="db-p-end-q">
@@ -2406,57 +2287,193 @@ export default function DailyBreadClient({
           </section>
         )}
 
-        {/* ── Caveats ── */}
+        {/* ── PANNEAU 7 — Méthode (refonte 2026-05) ──
+         *
+         * Anciennement §08 "Limites du calcul" : wall of italic paragraphs
+         * sur les approximations. Refondu en FAQ-style avec dépliants
+         * <details> HTML5 natifs (pas de JS), structure progressive :
+         * intro courte + 6 dépliants par thème. Chaque dépliant a un
+         * numéro court (01-06), un titre lisible et un body détaillé
+         * avec sources cliquables (URSSAF / CGI / INSEE / Eurostat /
+         * PLF / PLFSS / OFGL / DREES). */}
         <section
-          ref={panel8Ref}
-          className={`db-panel db-panel-fade${panel8Revealed ? " is-revealed" : ""}`}
-          style={{ minHeight: "auto", padding: "40px 0 100px", background: "var(--p-paper)" }}
+          ref={panel7Ref}
+          className={`db-panel db-p-method db-panel-fade${panel7Revealed ? " is-revealed" : ""}`}
+          style={{ minHeight: "auto", padding: "60px 0 100px", background: "var(--p-paper)" }}
         >
           <div className="db-panel-wrap">
             <p className="db-panel-num">
-              <em>08</em> · {t("db.caveats.kicker")}
+              <em>07</em> · {t("db.method.num")}
             </p>
-            <h3
-              className="db-p-end-q"
-              style={{ color: "var(--p-ink)", fontSize: 40 }}
-            >
-              {t("db.caveats.title")}
-            </h3>
-            <ul
-              style={{
-                fontFamily: "var(--pf-serif)",
-                fontStyle: "italic",
-                fontSize: 16,
-                lineHeight: 1.6,
-                color: "var(--p-ink-2)",
-                maxWidth: 820,
-                paddingLeft: 20,
-              }}
-            >
-              <li style={{ marginBottom: 10 }}>{t("db.caveats.li1")}</li>
-              <li style={{ marginBottom: 10 }}>{t("db.caveats.li2")}</li>
-              <li style={{ marginBottom: 10 }}>{t("db.caveats.li3")}</li>
-              <li style={{ marginBottom: 10 }}>{t("db.caveats.li4")}</li>
-              <li style={{ marginBottom: 10 }}>{t("db.caveats.li5")}</li>
-            </ul>
-            <div
-              style={{
-                marginTop: 28,
-                paddingTop: 20,
-                borderTop: "1px solid rgba(0,0,0,.1)",
-                maxWidth: 820,
-              }}
-            >
+            <h2 className="db-p-method-q" style={{ whiteSpace: "pre-line" }}>
+              {renderTagged(t("db.method.title"), {
+                em: { color: "var(--p-ink)", fontStyle: "italic", fontWeight: 400 },
+              })}
+            </h2>
+            <p className="db-p-method-deck">{t("db.method.intro")}</p>
+
+            <div className="db-p-method-faq">
+              {/* 01 — Comment on calcule tes prélèvements */}
+              <details className="db-p-method-faq-item">
+                <summary>
+                  <span className="db-p-method-faq-num">01</span>
+                  <span className="db-p-method-faq-q">
+                    {t("db.method.q.hypotheses")}
+                  </span>
+                  <span aria-hidden className="db-p-method-faq-chevron">↓</span>
+                </summary>
+                <div className="db-p-method-faq-body">
+                  <p>{t("db.method.body.hypotheses.intro")}</p>
+                  <ul>
+                    <li>{t("db.method.body.hypotheses.salarie")}</li>
+                    <li>{t("db.method.body.hypotheses.pension")}</li>
+                    <li>{t("db.method.body.hypotheses.capital")}</li>
+                    <li>{t("db.method.body.hypotheses.indep")}</li>
+                    <li>{t("db.method.body.hypotheses.tva")}</li>
+                    <li>{t("db.method.body.hypotheses.ir")}</li>
+                    <li>{t("db.method.body.hypotheses.tf")}</li>
+                  </ul>
+                  <p className="db-p-method-faq-srcs">
+                    {t("db.method.body.hypotheses.srcs_label")} :{" "}
+                    <a href="https://www.urssaf.fr/portail/home/taux-et-baremes/taux-de-cotisations.html" target="_blank" rel="noreferrer">URSSAF</a>
+                    {" · "}
+                    <a href="https://www.legifrance.gouv.fr/codes/texte_lc/LEGITEXT000006069577/" target="_blank" rel="noreferrer">CGI art. 200 A</a>
+                    {" · "}
+                    <a href="https://www.impots.gouv.fr/particulier/calcul-de-limpot" target="_blank" rel="noreferrer">DGFiP barème 2025</a>
+                  </p>
+                </div>
+              </details>
+
+              {/* 02 — Ce qui n'est pas dans le calcul */}
+              <details className="db-p-method-faq-item">
+                <summary>
+                  <span className="db-p-method-faq-num">02</span>
+                  <span className="db-p-method-faq-q">
+                    {t("db.method.q.exclusions")}
+                  </span>
+                  <span aria-hidden className="db-p-method-faq-chevron">↓</span>
+                </summary>
+                <div className="db-p-method-faq-body">
+                  <p>{t("db.method.body.exclusions.intro")}</p>
+                  <ul>
+                    <li>{t("db.method.body.exclusions.credits")}</li>
+                    <li>{t("db.method.body.exclusions.rfr")}</li>
+                    <li>{t("db.method.body.exclusions.prestations")}</li>
+                    <li>{t("db.method.body.exclusions.local_grain")}</li>
+                  </ul>
+                </div>
+              </details>
+
+              {/* 03 — D'où viennent les données nationales */}
+              <details className="db-p-method-faq-item">
+                <summary>
+                  <span className="db-p-method-faq-num">03</span>
+                  <span className="db-p-method-faq-q">
+                    {t("db.method.q.sources")}
+                  </span>
+                  <span aria-hidden className="db-p-method-faq-chevron">↓</span>
+                </summary>
+                <div className="db-p-method-faq-body">
+                  <p>{t("db.method.body.sources.intro")}</p>
+                  <ul>
+                    <li>
+                      <a href="https://www.urssaf.fr/portail/home/taux-et-baremes.html" target="_blank" rel="noreferrer">URSSAF</a> — {t("db.method.body.sources.urssaf")}
+                    </li>
+                    <li>
+                      <a href="https://www.legifrance.gouv.fr/codes/texte_lc/LEGITEXT000006069577/" target="_blank" rel="noreferrer">CGI</a> — {t("db.method.body.sources.cgi")}
+                    </li>
+                    <li>
+                      <a href="https://www.insee.fr/fr/statistiques/serie/010003222" target="_blank" rel="noreferrer">INSEE</a> — {t("db.method.body.sources.insee")}
+                    </li>
+                    <li>
+                      <a href="https://ec.europa.eu/eurostat/databrowser/view/gov_10a_main" target="_blank" rel="noreferrer">Eurostat gov_10a_main</a> — {t("db.method.body.sources.eurostat")}
+                    </li>
+                    <li>
+                      <a href="https://www.data.gouv.fr/datasets/plf-2025-depenses-2025-selon-destination/" target="_blank" rel="noreferrer">PLF 2025</a> — {t("db.method.body.sources.plf")}
+                    </li>
+                    <li>
+                      <a href="https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe5.pdf" target="_blank" rel="noreferrer">PLFSS 2025</a> — {t("db.method.body.sources.plfss")}
+                    </li>
+                    <li>
+                      <a href="https://data.ofgl.fr/explore/dataset/ofgl-base-communes-consolidee/" target="_blank" rel="noreferrer">OFGL 2025</a> — {t("db.method.body.sources.ofgl")}
+                    </li>
+                    <li>
+                      <a href="https://drees.solidarites-sante.gouv.fr/publications-communique-de-presse/panoramas-de-la-drees/les-depenses-de-sante-en-2024" target="_blank" rel="noreferrer">DREES Comptes santé</a> — {t("db.method.body.sources.drees")}
+                    </li>
+                  </ul>
+                </div>
+              </details>
+
+              {/* 04 — Périmètre Sécu / État / Local */}
+              <details className="db-p-method-faq-item">
+                <summary>
+                  <span className="db-p-method-faq-num">04</span>
+                  <span className="db-p-method-faq-q">
+                    {t("db.method.q.perimetre")}
+                  </span>
+                  <span aria-hidden className="db-p-method-faq-chevron">↓</span>
+                </summary>
+                <div className="db-p-method-faq-body">
+                  <p>{t("db.method.body.perimetre.intro")}</p>
+                  <ul>
+                    <li>{t("db.method.body.perimetre.s1311")}</li>
+                    <li>{t("db.method.body.perimetre.s1313")}</li>
+                    <li>{t("db.method.body.perimetre.s1314")}</li>
+                  </ul>
+                  <p>
+                    <b>{t("db.method.body.perimetre.caveat_label")}</b>{" "}
+                    {t("db.method.body.perimetre.caveat_229")}
+                  </p>
+                </div>
+              </details>
+
+              {/* 05 — Pourquoi un calcul perso et pas exact */}
+              <details className="db-p-method-faq-item">
+                <summary>
+                  <span className="db-p-method-faq-num">05</span>
+                  <span className="db-p-method-faq-q">
+                    {t("db.method.q.pourquoi_perso")}
+                  </span>
+                  <span aria-hidden className="db-p-method-faq-chevron">↓</span>
+                </summary>
+                <div className="db-p-method-faq-body">
+                  <p>{t("db.method.body.pourquoi_perso.p1")}</p>
+                  <p>{t("db.method.body.pourquoi_perso.p2")}</p>
+                  <p>{t("db.method.body.pourquoi_perso.p3")}</p>
+                </div>
+              </details>
+
+              {/* 06 — Comparaison avec d'autres outils */}
+              <details className="db-p-method-faq-item">
+                <summary>
+                  <span className="db-p-method-faq-num">06</span>
+                  <span className="db-p-method-faq-q">
+                    {t("db.method.q.comparaison")}
+                  </span>
+                  <span aria-hidden className="db-p-method-faq-chevron">↓</span>
+                </summary>
+                <div className="db-p-method-faq-body">
+                  <p>{t("db.method.body.comparaison.intro")}</p>
+                  <ul>
+                    <li>
+                      <a href="https://www.impots.gouv.fr/simulateurs" target="_blank" rel="noreferrer">impots.gouv.fr</a> — {t("db.method.body.comparaison.impots")}
+                    </li>
+                    <li>
+                      <a href="https://api.fr.openfisca.org/" target="_blank" rel="noreferrer">OpenFisca-web</a> — {t("db.method.body.comparaison.openfisca")}
+                    </li>
+                    <li>
+                      <a href="https://www.budget.gouv.fr/" target="_blank" rel="noreferrer">Bercy «&nbsp;Où va l&apos;argent ?&nbsp;»</a> — {t("db.method.body.comparaison.bercy")}
+                    </li>
+                    <li>{t("db.method.body.comparaison.db")}</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+
+            <div className="db-p-method-foot">
               <Link
                 href={profileQuery ? `/france/budget?${profileQuery}` : "/france/budget"}
-                style={{
-                  fontFamily: "var(--pf-sans, 'Inter Tight', Inter, sans-serif)",
-                  fontSize: 15,
-                  color: "var(--p-ink, #0a0a0a)",
-                  borderBottom: "1px solid currentColor",
-                  paddingBottom: 1,
-                  fontWeight: 500,
-                }}
+                className="db-p-method-foot-link"
               >
                 {t("budget.cross_link.from_db")}
               </Link>
