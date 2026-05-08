@@ -2442,32 +2442,6 @@ export default function DailyBreadClient({
                   <p>{t("db.method.body.pourquoi_perso.p3")}</p>
                 </div>
               </details>
-
-              {/* 06 — Comparaison avec d'autres outils */}
-              <details className="db-p-method-faq-item">
-                <summary>
-                  <span className="db-p-method-faq-num">06</span>
-                  <span className="db-p-method-faq-q">
-                    {t("db.method.q.comparaison")}
-                  </span>
-                  <span aria-hidden className="db-p-method-faq-chevron">↓</span>
-                </summary>
-                <div className="db-p-method-faq-body">
-                  <p>{t("db.method.body.comparaison.intro")}</p>
-                  <ul>
-                    <li>
-                      <a href="https://www.impots.gouv.fr/simulateurs" target="_blank" rel="noreferrer">impots.gouv.fr</a> — {t("db.method.body.comparaison.impots")}
-                    </li>
-                    <li>
-                      <a href="https://api.fr.openfisca.org/" target="_blank" rel="noreferrer">OpenFisca-web</a> — {t("db.method.body.comparaison.openfisca")}
-                    </li>
-                    <li>
-                      <a href="https://www.budget.gouv.fr/" target="_blank" rel="noreferrer">Bercy «&nbsp;Où va l&apos;argent ?&nbsp;»</a> — {t("db.method.body.comparaison.bercy")}
-                    </li>
-                    <li>{t("db.method.body.comparaison.db")}</li>
-                  </ul>
-                </div>
-              </details>
             </div>
 
             <div className="db-p-method-foot">

@@ -3496,7 +3496,7 @@ const fr: Record<string, string> = {
   // qui remplace le couple "PAR MOIS — SOIT" + "10 879 € par an".
   'db.hero.meta_inline.month': '/mois',
   'db.hero.meta_inline.year': '{annual} €/an',
-  'db.hero.deck': 'Le calcul agrège tes prélèvements obligatoires : cotisations sociales (salarié, indépendant, URSSAF), CSG/CRDS sur revenu d\'activité et de pension, impôt sur le revenu (barème + quotient familial), prélèvement forfaitaire unique 30 % sur revenus du capital, TVA estimée sur ta consommation, et taxe foncière si propriétaire. Sources : URSSAF, CGI, INSEE, DGFiP, OFGL.',
+  'db.hero.deck': 'Cotisations, CSG/CRDS, impôt sur le revenu, PFU sur capital, TVA, taxe foncière si propriétaire — agrégés selon ton profil. Hypothèses, sources et limites détaillées dans la section Méthode plus bas.',
   'db.hero.foot_cue': 'Où va cet argent',
   // ─ Hero éditable NYT-style (fold redesign) ─
   'db.hero.editable.prefix_salaire': 'Sur ton salaire net de',
