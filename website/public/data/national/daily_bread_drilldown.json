@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-07T18:30:48.386684+00:00",
+  "generated_at": "2026-05-08T01:45:03.284916+00:00",
   "source_pipeline": "scripts/enrich/build_drilldown.py",
   "audit_promise": "Toute valeur (share_of_parent, label, source) provient d'un seed CSV, d'une donnée synchronisée (etat_lfi_2025.json) ou d'une agrégation directe du dataset PLF (data.economie.gouv.fr) — aucune valeur hardcodée dans ce script.",
   "buckets": {
@@ -31,7 +31,81 @@
               "label_en": "City medicine + outpatient care",
               "share_of_parent": 0.383,
               "source": "PLFSS 2025 - ONDAM voté, sous-objectif 'Soins de ville'",
-              "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe7.pdf"
+              "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe7.pdf",
+              "level4": [
+                {
+                  "key": "cnam_maladie_medecine_ville_soins_ambulatoires_medicaments_remboursables",
+                  "label_fr": "Médicaments délivrés en ville",
+                  "label_en": "Reimbursed prescription drugs",
+                  "share_of_parent": 0.29707,
+                  "source": "DREES — Comptes de la santé édition 2025 (poste p31100, financement Sécurité sociale 2024)",
+                  "source_url": "https://data.drees.solidarites-sante.gouv.fr/explore/dataset/cns_financement/"
+                },
+                {
+                  "key": "cnam_maladie_medecine_ville_soins_ambulatoires_soins_medecins",
+                  "label_fr": "Consultations généralistes + spécialistes",
+                  "label_en": "GP and specialist consultations",
+                  "share_of_parent": 0.186557,
+                  "source": "DREES — Comptes de la santé édition 2025 (poste p21100, financement Sécurité sociale 2024)",
+                  "source_url": "https://data.drees.solidarites-sante.gouv.fr/explore/dataset/cns_financement/"
+                },
+                {
+                  "key": "cnam_maladie_medecine_ville_soins_ambulatoires_auxiliaires_medicaux",
+                  "label_fr": "Soins infirmiers + kinés + autres auxiliaires",
+                  "label_en": "Nursing + physio + other auxiliaries",
+                  "share_of_parent": 0.168965,
+                  "source": "DREES — Comptes de la santé édition 2025 (poste p21200, financement Sécurité sociale 2024)",
+                  "source_url": "https://data.drees.solidarites-sante.gouv.fr/explore/dataset/cns_financement/"
+                },
+                {
+                  "key": "cnam_maladie_medecine_ville_soins_ambulatoires_dispositifs_medicaux",
+                  "label_fr": "Dispositifs médicaux + optique",
+                  "label_en": "Medical devices + optics",
+                  "share_of_parent": 0.109351,
+                  "source": "DREES — Comptes de la santé édition 2025 (postes p32100+p32200, financement Sécurité sociale 2024)",
+                  "source_url": "https://data.drees.solidarites-sante.gouv.fr/explore/dataset/cns_financement/"
+                },
+                {
+                  "key": "cnam_maladie_medecine_ville_soins_ambulatoires_transports_sanitaires",
+                  "label_fr": "Transports sanitaires (VSL, ambulances, taxis)",
+                  "label_en": "Medical transport (VSL, ambulances, taxis)",
+                  "share_of_parent": 0.072302,
+                  "source": "DREES — Comptes de la santé édition 2025 (poste p22300, financement Sécurité sociale 2024)",
+                  "source_url": "https://data.drees.solidarites-sante.gouv.fr/explore/dataset/cns_financement/"
+                },
+                {
+                  "key": "cnam_maladie_medecine_ville_soins_ambulatoires_soins_dentaires",
+                  "label_fr": "Soins dentaires",
+                  "label_en": "Dental care",
+                  "share_of_parent": 0.053672,
+                  "source": "DREES — Comptes de la santé édition 2025 (poste p21300, financement Sécurité sociale 2024)",
+                  "source_url": "https://data.drees.solidarites-sante.gouv.fr/explore/dataset/cns_financement/"
+                },
+                {
+                  "key": "cnam_maladie_medecine_ville_soins_ambulatoires_imagerie_medicale",
+                  "label_fr": "Imagerie médicale",
+                  "label_en": "Medical imaging",
+                  "share_of_parent": 0.049063,
+                  "source": "DREES — Comptes de la santé édition 2025 (poste p22200, financement Sécurité sociale 2024)",
+                  "source_url": "https://data.drees.solidarites-sante.gouv.fr/explore/dataset/cns_financement/"
+                },
+                {
+                  "key": "cnam_maladie_medecine_ville_soins_ambulatoires_biologie_medicale",
+                  "label_fr": "Biologie médicale",
+                  "label_en": "Medical biology",
+                  "share_of_parent": 0.036723,
+                  "source": "DREES — Comptes de la santé édition 2025 (poste p22100, financement Sécurité sociale 2024)",
+                  "source_url": "https://data.drees.solidarites-sante.gouv.fr/explore/dataset/cns_financement/"
+                },
+                {
+                  "key": "cnam_maladie_medecine_ville_soins_ambulatoires_centres_de_sante",
+                  "label_fr": "Centres de santé",
+                  "label_en": "Health centers",
+                  "share_of_parent": 0.026296,
+                  "source": "DREES — Comptes de la santé édition 2025 (poste p21400, financement Sécurité sociale 2024)",
+                  "source_url": "https://data.drees.solidarites-sante.gouv.fr/explore/dataset/cns_financement/"
+                }
+              ]
             },
             {
               "key": "cnam_maladie_medicosocial_ehpad_handicap",
@@ -194,7 +268,7 @@
           "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe5.pdf"
         }
       ],
-      "notes_fr": "level2 = branches ASSO (CNAM / CNAV / CNAF / UNEDIC / AT-MP+CNSA), shares PLFSS 2025 renormalisés. level3 fourni pour CNAM (sous-objectifs ONDAM), CNAV (régimes), CNAF (prestations) et UNEDIC ; AT-MP + autonomie (CNSA) sans level3 publié à ce grain — détail non disponible côté seeds."
+      "notes_fr": "level2 = branches ASSO (CNAM / CNAV / CNAF / UNEDIC / AT-MP+CNSA), shares PLFSS 2025 renormalisés. level3 fourni pour CNAM (sous-objectifs ONDAM), CNAV (régimes), CNAF (prestations) et UNEDIC ; AT-MP + autonomie (CNSA) sans level3 publié à ce grain — détail non disponible côté seeds. level4 publié uniquement pour CNAM > médecine de ville (proxy DREES Comptes de la santé 2024 filtré financeur Sécurité sociale) ; autres sous-objectifs ONDAM sans source publique structurée à ce grain."
     },
     "etat": {
       "code": "S1311",
