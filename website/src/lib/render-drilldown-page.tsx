@@ -80,7 +80,10 @@ export type DrilldownKind =
   | "etat-aggregation"
   | "local-dept"
   | "local-dept-level3"
-  | "local-region";
+  | "local-region"
+  | "local-scope";
+
+export type LocalScope = "bloc_communal" | "dept" | "region";
 
 export type RenderDrilldownOpts = {
   /** Promise<{bucket?, level2?, level3?, level4?, agg?}> selon le `kind`. */
@@ -95,6 +98,8 @@ export type RenderDrilldownOpts = {
   isDrawer: boolean;
   /** Discrimine le lookup de l'entry et la signature du fiche prop. */
   kind: DrilldownKind;
+  /** Pour `kind: "local-scope"` — détermine quel bloc afficher (bloc_communal, dept, région). */
+  localScope?: LocalScope;
 };
 
 /**
@@ -249,6 +254,8 @@ async function resolveByKind(
       return resolveLocalDeptLevel3(ctx);
     case "local-region":
       return resolveLocalRegion(ctx);
+    case "local-scope":
+      return resolveLocalScope(ctx);
   }
 }
 
@@ -928,6 +935,121 @@ function resolveLocalDeptLevel3(ctx: ResolveCtx): ResolvedRender | null {
   return {
     eyebrow,
     title: entryLabel,
+    shareUrl,
+    backHref,
+    breadcrumb,
+    ficheNode,
+  };
+}
+
+// --- local-scope (overview du bloc, sans level2 sélectionné) ------------
+
+function resolveLocalScope(ctx: ResolveCtx): ResolvedRender | null {
+  const { opts, locale, monthlies, profileQuery } = ctx;
+  const scope = opts.localScope;
+  if (!scope) return null;
+
+  const bucket = getBucket("local");
+  if (!bucket) return null;
+
+  const block =
+    scope === "bloc_communal"
+      ? null
+      : scope === "dept"
+        ? getDeptDrilldown()
+        : getRegionDrilldown();
+  // bloc_communal n'a pas de "block" séparé — on utilise bucket.level2.
+  const level2List =
+    scope === "bloc_communal" ? bucket.level2 : (block?.level2 ?? []);
+  if (level2List.length === 0) return null;
+
+  const bucketLabel = locale === "en" ? bucket.label_en : bucket.label_fr;
+  const scopeLabel = (() => {
+    if (scope === "bloc_communal") {
+      return locale === "en" ? "Block communal" : "Bloc communal";
+    }
+    if (scope === "dept") {
+      return locale === "en"
+        ? "Departmental level"
+        : "Niveau départemental";
+    }
+    return locale === "en" ? "Regional level" : "Niveau régional";
+  })();
+  const eyebrow =
+    locale === "en" ? `${bucketLabel} · scope` : `${bucketLabel} · scope`;
+
+  const urlSegment =
+    scope === "bloc_communal"
+      ? "/bucket/local"
+      : scope === "dept"
+        ? "/bucket/local/dept"
+        : "/bucket/local/region";
+  const shareUrl = `${opts.basePath}${urlSegment}`;
+  const backHref = withProfile(opts.basePath, profileQuery);
+
+  // National annuel du scope = total du bloc (level2_share = 1).
+  const db = loadDailyBread();
+  const nationalAnnualEur = db
+    ? nationalLocalLevel2Annual(db, scope, 1)
+    : null;
+  const nationalAnnualLabel = formatNationalAnnualLabel(
+    nationalAnnualEur,
+    locale,
+  );
+
+  // Personal monthly du scope = total du bloc pour le profil.
+  const personalMonthlyEur = monthlies
+    ? scope === "bloc_communal"
+      ? monthlies.blocCommunalMonthly
+      : scope === "dept"
+        ? monthlies.departementMonthly
+        : monthlies.regionMonthly
+    : null;
+  const personalMonthlyLabel =
+    personalMonthlyEur != null
+      ? formatMonthlyEur(personalMonthlyEur, locale)
+      : null;
+
+  const bucketCrumb: DrilldownBreadcrumbCrumb =
+    opts.voice === "perso"
+      ? {
+          label: bucketLabel,
+          href: withProfile(`${opts.basePath}/bucket/local`, profileQuery),
+        }
+      : { label: bucketLabel };
+
+  const breadcrumb: DrilldownBreadcrumbCrumb[] = [
+    rootCrumb(opts.voice, locale, opts.basePath),
+    bucketCrumb,
+    { label: scopeLabel },
+  ];
+
+  const ficheNode = (
+    <BudgetDrilldownFiche
+      bucket={bucket}
+      bucketKey="local"
+      scopeOverview={scope}
+      scopeLabel={scopeLabel}
+      level2List={level2List}
+      isStub={isStub()}
+      amounts={{
+        nationalAnnualLabel,
+        personalMonthlyLabel,
+        parentPersonalMonthlyEur: personalMonthlyEur,
+        parentNationalAnnualEur: nationalAnnualEur,
+      }}
+      breadcrumb={breadcrumb}
+      profileQuery={profileQuery}
+      basePath={opts.basePath}
+    />
+  );
+
+  // eyebrow is unused for the Drawer (just label header), but kept consistent.
+  void eyebrow;
+
+  return {
+    eyebrow,
+    title: scopeLabel,
     shareUrl,
     backHref,
     breadcrumb,
