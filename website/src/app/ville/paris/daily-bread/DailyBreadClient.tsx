@@ -1169,8 +1169,9 @@ export default function DailyBreadClient({
               {/* Fix 5 : mini stack bar 4-segments — visualise la décomposition
                   des prélèvements en proportions visuelles plutôt qu'en liste
                   plate. Couleurs alignées sur la palette dispatch §02 (bleu sécu,
-                  bleu-gris CSG, ink état, ocre TVA). Multi-sources reste en
-                  liste plate (5 catégories trop hétérogènes pour une stack
+                  bleu-gris CSG, ink état, charcoal-tobacco TVA — ocre désaturé
+                  pour rester distinct sans casser la hiérarchie DA). Multi-sources
+                  reste en liste plate (5 catégories trop hétérogènes pour une stack
                   bar lisible). */}
               {(() => {
                 const segments: Array<{
@@ -1184,25 +1185,25 @@ export default function DailyBreadClient({
                         { key: "cotis", label: t("db.hero.compo.cotisations"), value: compoSalCotis, cssVar: "var(--p-secu)" },
                         { key: "csg",   label: t("db.hero.compo.csg"),         value: compoSalCsg,   cssVar: "#5b6aa8" },
                         { key: "ir",    label: t("db.hero.compo.ir"),          value: compoSalIr,    cssVar: "var(--p-etat)" },
-                        { key: "tva",   label: t("db.hero.compo.tva"),         value: compoSalTva,   cssVar: "var(--p-accent)" },
+                        { key: "tva",   label: t("db.hero.compo.tva"),         value: compoSalTva,   cssVar: "#7a6a4f" },
                       ]
                     : activeSources.length === 1 && activeSources[0] === "pension"
                       ? [
                           { key: "csg", label: t("db.hero.compo.csg_casa"), value: compoRetCsg, cssVar: "var(--p-secu)" },
                           { key: "ir",  label: t("db.hero.compo.ir"),       value: compoRetIr,  cssVar: "var(--p-etat)" },
-                          { key: "tva", label: t("db.hero.compo.tva"),      value: compoRetTva, cssVar: "var(--p-accent)" },
+                          { key: "tva", label: t("db.hero.compo.tva"),      value: compoRetTva, cssVar: "#7a6a4f" },
                         ]
                       : activeSources.length === 1 && activeSources[0] === "capital"
                         ? [
                             { key: "pfu_ir", label: t("db.hero.compo.pfu_ir"), value: compoCapIr, cssVar: "var(--p-etat)" },
                             { key: "pfu_ps", label: t("db.hero.compo.pfu_ps"), value: compoCapPs, cssVar: "var(--p-secu)" },
-                            { key: "tva",    label: t("db.hero.compo.tva"),    value: compoCapTva, cssVar: "var(--p-accent)" },
+                            { key: "tva",    label: t("db.hero.compo.tva"),    value: compoCapTva, cssVar: "#7a6a4f" },
                           ]
                         : activeSources.length === 1 && activeSources[0] === "indep"
                           ? [
                               { key: "cotis", label: t("db.hero.compo.cotis_urssaf"), value: compoIndCotis, cssVar: "var(--p-secu)" },
                               { key: "ir",    label: t("db.hero.compo.ir"),           value: compoIndIr,    cssVar: "var(--p-etat)" },
-                              { key: "tva",   label: t("db.hero.compo.tva"),          value: compoIndTva,   cssVar: "var(--p-accent)" },
+                              { key: "tva",   label: t("db.hero.compo.tva"),          value: compoIndTva,   cssVar: "#7a6a4f" },
                             ]
                           : [];
                 const total = segments.reduce((s, x) => s + x.value, 0);
