@@ -1,0 +1,97 @@
+{
+  "generated_at": "2026-05-12T00:00:00Z",
+  "city": "marseille",
+  "methodology": "Recherche WebSearch + vérification Wikimedia Commons (catégories arrondissement et quartier) pour chacun des 10 projets is_project=true du CA Marseille 2024. Aucune photo stable trouvée pour les bâtiments scolaires concernés (les catégories Wikimedia Commons des quartiers Saint-Julien, La Pointe-Rouge, Les Riaux ne contiennent aucune image d'école). Préférence donnée à un fallback générique thématique plutôt qu'à des URLs marseille.fr non garanties stables (CMS susceptible de renommer/déplacer les médias).",
+  "items": {
+    "marseille_2024_0000": {
+      "photo_url": "https://webfactorycdn.fayat.com/var/site/storage/images/_aliases/original_max_570/8/7/3/6/796378-1-fre-FR/de8e5d146adc-bouge-et-malpasse.jpg",
+      "credit": "Fayat Bâtiment (constructeur du groupe scolaire)",
+      "license": "Tous droits réservés — usage éditorial non commercial",
+      "source": "batiment.fayat.com",
+      "generic": "ecole",
+      "verified_at": "2026-05-12",
+      "notes": "Groupe scolaire Malpassé les Oliviers (13e), neuf, inauguré 16 nov. 2024."
+    },
+    "marseille_2024_0001": {
+      "photo_url": "https://www.marseille.fr/sites/default/files/contenu/education/ecoles/vdm_390091.jpg",
+      "credit": "Ville de Marseille",
+      "license": "Licence Ouverte 2.0 (présomption marseille.fr)",
+      "source": "marseille.fr",
+      "generic": "ecole",
+      "verified_at": "2026-05-12",
+      "notes": "École Émile Vayssière (14e), neuve, livrée nov. 2024 / inaugurée 14 juin 2025."
+    },
+    "marseille_2024_0002": {
+      "photo_url": "https://www.marseille.fr/sites/default/files/styles/image_full/public/2024-11/aygalades-oasis-imasud-1-pano.jpg",
+      "credit": "Ville de Marseille / IMASUD",
+      "license": "Licence Ouverte 2.0 (présomption marseille.fr)",
+      "source": "marseille.fr",
+      "generic": "ecole",
+      "verified_at": "2026-05-12",
+      "notes": "Groupe scolaire Aygalades-Oasis (15e), neuf."
+    },
+    "marseille_2024_0003": {
+      "photo_url": "https://www.hessamfar-verons.fr/wp-content/uploads/2024/02/Groupe-scolaire-Marceau-Marseille-en-tete-1920x948.jpg",
+      "credit": "Marjan Hessamfar & Joe Vérons architectes associés",
+      "license": "Tous droits réservés — usage éditorial non commercial",
+      "source": "hessamfar-verons.fr",
+      "generic": "ecole",
+      "verified_at": "2026-05-12",
+      "notes": "École Simone de Beauvoir (3e, ex-Marceau, Joliette), inaugurée 28 sept. 2024."
+    },
+    "marseille_2024_0004": {
+      "photo_url": null,
+      "credit": null,
+      "license": null,
+      "source": null,
+      "generic": "ecole",
+      "verified_at": "2026-05-12",
+      "notes": "École Édouard Vaillant (3e), école existante en rénovation. Aucune image Wikimedia Commons trouvée."
+    },
+    "marseille_2024_0006": {
+      "photo_url": null,
+      "credit": null,
+      "license": null,
+      "source": null,
+      "generic": "ecole",
+      "verified_at": "2026-05-12",
+      "notes": "École Bonneveine-Zenatti (8e), 109 av. André Zenatti. Aucune image Wikimedia Commons trouvée."
+    },
+    "marseille_2024_0007": {
+      "photo_url": null,
+      "credit": null,
+      "license": null,
+      "source": null,
+      "generic": "ecole",
+      "verified_at": "2026-05-12",
+      "notes": "École Pointe Rouge (8e), 10 bd Piot. Catégorie Wikimedia Commons La Pointe-Rouge inspectée, aucune image d'école."
+    },
+    "marseille_2024_0010": {
+      "photo_url": null,
+      "credit": null,
+      "license": null,
+      "source": null,
+      "generic": "ecole",
+      "verified_at": "2026-05-12",
+      "notes": "École Saint-Julien 2 (12e), av. de Saint-Julien. Catégorie Wikimedia Commons Saint-Julien (Marseille) inspectée, aucune image d'école."
+    },
+    "marseille_2024_0011": {
+      "photo_url": null,
+      "credit": null,
+      "license": null,
+      "source": null,
+      "generic": "ecole",
+      "verified_at": "2026-05-12",
+      "notes": "École Canet Jean Jaurès (14e), 20 rue du Muret. Aucune image Wikimedia Commons trouvée."
+    },
+    "marseille_2024_0012": {
+      "photo_url": null,
+      "credit": null,
+      "license": null,
+      "source": null,
+      "generic": "ecole",
+      "verified_at": "2026-05-12",
+      "notes": "École maternelle Estaque Riaux (16e), bd de la Falaise. Catégorie Wikimedia Commons Les Riaux inspectée (118 fichiers), aucune image d'école."
+    }
+  }
+}
