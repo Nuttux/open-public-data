@@ -183,15 +183,18 @@ export type BeneficiaireGrounded = {
 
 // Cache loaders are memoised at module level — these JSON blobs are small
 // and re-reading them on every request wastes IO.
-let _marchesVulg: Record<string, MarcheVulgarization> | null = null;
-let _subvVulg: Record<string, SubventionVulgarization> | null = null;
+// City-aware caches: each city gets its own vulgarization map so the loader
+// can serve Paris and Marseille (and future cities) independently. The path
+// helpers cityJsonPath() route to data/<city>/enrichment/ for non-Paris.
+const _marchesVulgByCity: Record<string, Record<string, MarcheVulgarization>> = {};
+const _subvVulgByCity: Record<string, Record<string, SubventionVulgarization>> = {};
 let _sirene: Record<string, SireneCompany> | null = null;
 let _benefGrounded: Record<string, BeneficiaireGrounded> | null = null;
 
-export function loadMarcheVulgarization(numero: string): MarcheVulgarization | null {
-  if (_marchesVulg === null) {
-    const data = readJsonOrNull<VulgarizationCache<MarcheVulgarization>>("enrichment/vulgarization_marches.json");
-    const en = readJsonOrNull<VulgarizationCache<MarcheVulgarization>>("enrichment/vulgarization_marches_en.json");
+export function loadMarcheVulgarization(numero: string, city: string = "paris"): MarcheVulgarization | null {
+  if (!_marchesVulgByCity[city]) {
+    const data = readJsonOrNull<VulgarizationCache<MarcheVulgarization>>(cityJsonPath(city, "enrichment/vulgarization_marches.json"));
+    const en = readJsonOrNull<VulgarizationCache<MarcheVulgarization>>(cityJsonPath(city, "enrichment/vulgarization_marches_en.json"));
     const merged: Record<string, MarcheVulgarization> = {};
     for (const [k, v] of Object.entries(data?.items ?? {})) {
       const e = en?.items?.[k];
@@ -204,15 +207,15 @@ export function loadMarcheVulgarization(numero: string): MarcheVulgarization | n
           }
         : v;
     }
-    _marchesVulg = merged;
+    _marchesVulgByCity[city] = merged;
   }
-  return _marchesVulg[numero] ?? null;
+  return _marchesVulgByCity[city][numero] ?? null;
 }
 
-export function loadSubventionVulgarization(name: string): SubventionVulgarization | null {
-  if (_subvVulg === null) {
-    const data = readJsonOrNull<VulgarizationCache<SubventionVulgarization>>("enrichment/vulgarization_subventions.json");
-    const en = readJsonOrNull<VulgarizationCache<SubventionVulgarization>>("enrichment/vulgarization_subventions_en.json");
+export function loadSubventionVulgarization(name: string, city: string = "paris"): SubventionVulgarization | null {
+  if (!_subvVulgByCity[city]) {
+    const data = readJsonOrNull<VulgarizationCache<SubventionVulgarization>>(cityJsonPath(city, "enrichment/vulgarization_subventions.json"));
+    const en = readJsonOrNull<VulgarizationCache<SubventionVulgarization>>(cityJsonPath(city, "enrichment/vulgarization_subventions_en.json"));
     const merged: Record<string, SubventionVulgarization> = {};
     for (const [k, v] of Object.entries(data?.items ?? {})) {
       const e = en?.items?.[k];
@@ -225,9 +228,9 @@ export function loadSubventionVulgarization(name: string): SubventionVulgarizati
           }
         : v;
     }
-    _subvVulg = merged;
+    _subvVulgByCity[city] = merged;
   }
-  return _subvVulg[name] ?? null;
+  return _subvVulgByCity[city][name] ?? null;
 }
 
 export function loadSirene(siren: string): SireneCompany | null {
@@ -1659,9 +1662,12 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
   const marches = file.data ?? file.marches ?? [];
 
   const MULTI_NAME = "MARCHE MULTIATTRIBUTAIRE";
-  if (_marchesVulg === null) {
-    const data = readJsonOrNull<VulgarizationCache<MarcheVulgarization>>("enrichment/vulgarization_marches.json");
-    const en = readJsonOrNull<VulgarizationCache<MarcheVulgarization>>("enrichment/vulgarization_marches_en.json");
+  // City-aware vulgarisation cache (Paris cache for /paris, Marseille cache
+  // for /marseille, etc.). Falls back to Paris cache when nothing is found,
+  // so cross-city titulaires like Veolia keep their enriched description.
+  if (!_marchesVulgByCity[city]) {
+    const data = readJsonOrNull<VulgarizationCache<MarcheVulgarization>>(cityJsonPath(city, "enrichment/vulgarization_marches.json"));
+    const en = readJsonOrNull<VulgarizationCache<MarcheVulgarization>>(cityJsonPath(city, "enrichment/vulgarization_marches_en.json"));
     const merged: Record<string, MarcheVulgarization> = {};
     for (const [k, v] of Object.entries(data?.items ?? {})) {
       const e = en?.items?.[k];
@@ -1674,9 +1680,9 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
           }
         : v;
     }
-    _marchesVulg = merged;
+    _marchesVulgByCity[city] = merged;
   }
-  const vulgMap = _marchesVulg;
+  const vulgMap = _marchesVulgByCity[city];
   type TitAgg = {
     name: string;
     amount: number;
@@ -2010,7 +2016,26 @@ function loadInvestissementsDataMarseille(requestedYear?: number): Investissemen
   const total = projects.reduce((s, p) => s + (p.montant ?? 0), 0);
   const nbGeo = projects.filter((p) => (p as { lat?: number | null }).lat != null).length;
 
-  const emptyPhoto: ProjetPhotoResolved = { photo: null, generic: null, typologie: null };
+  // Photos cache (4/10 réelles, 6 fallback "ecole" générique).
+  type PhotoEntry = { photo_url: string | null; credit: string | null; license: string | null; source: string | null; generic: string | null };
+  const photosCache = readJsonOrNull<{ items: Record<string, PhotoEntry> }>(
+    cityJsonPath("marseille", "enrichment/projets_photos.json"),
+  );
+  const photosMap = photosCache?.items ?? {};
+
+  function photoFor(projectId: string): ProjetPhotoResolved {
+    const entry = photosMap[projectId];
+    if (!entry) return { photo: null, generic: null, typologie: null };
+    if (entry.photo_url) {
+      return {
+        photo: { url: entry.photo_url, credit: entry.credit ?? null, license: entry.license ?? null, source: entry.source ?? null } as unknown as ProjetPhotoResolved["photo"],
+        generic: null,
+        typologie: null,
+      };
+    }
+    return { photo: null, generic: (entry.generic ?? null) as ProjetPhotoResolved["generic"], typologie: null };
+  }
+
   const topProjets = projects
     .slice()
     .sort((a, b) => b.montant - a.montant)
@@ -2021,7 +2046,7 @@ function loadInvestissementsDataMarseille(requestedYear?: number): Investissemen
       arr: p.arrondissement,
       chapitre: p.thematique,
       amount: p.montant,
-      photo: emptyPhoto,
+      photo: photoFor(p.id),
     }));
 
   // Recompute byArrondissement on the filtered set so the ranking only

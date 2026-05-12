@@ -32,6 +32,7 @@ import BudgetTimeline from "@/components/fusion/BudgetTimeline";
 import StackedBarTheme from "@/components/fusion/StackedBarTheme";
 import PageTOC from "@/components/fusion/PageTOC";
 import PageHook from "@/components/fusion/PageHook";
+import MarseilleChoropleth from "@/components/fusion/MarseilleChoropleth";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import type { InvestissementsData } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
@@ -265,14 +266,14 @@ export default function MarseilleInvestissementsClient({
             kind={t("fx.toc.arrondissements")}
             title={
               <>
-                {locale === "en" ? "By " : "Par "}
-                <em>{locale === "en" ? "district" : "arrondissement"}</em>
+                {locale === "en" ? "On the " : "Sur la "}
+                <em>{locale === "en" ? "map" : "carte"}</em>
               </>
             }
             subtitle={
               locale === "en"
-                ? `Sum of localised projects per district. Cross-cutting amounts (no district mention) are excluded.`
-                : `Somme des projets localisés par arrondissement. Les montants transverses (sans mention d'arrondissement) ne sont pas inclus.`
+                ? `Localised projects per district (sized by amount). Cross-cutting amounts are excluded.`
+                : `Projets localisés par arrondissement (taille = montant). Les montants transverses ne sont pas inclus.`
             }
           />
           {d.byArrondissement.length === 0 ? (
@@ -282,28 +283,35 @@ export default function MarseilleInvestissementsClient({
                 : "Aucun projet rattaché à un arrondissement dans le récit du CA pour cet exercice."}
             </p>
           ) : (
-            <ol
-              className="fx-arr-ranking"
-              aria-label={t("fx.toc.arrondissements")}
-            >
-              {d.byArrondissement.map((a, i) => (
-                <li key={a.arr} className="fx-arr-ranking-item">
-                  <span className="fx-arr-ranking-rank">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="fx-arr-ranking-label">
-                    {a.arr}
-                    {arrSuf(a.arr)} {districtWord}
-                  </span>
-                  <span className="fx-arr-ranking-amount">
-                    {a.amount >= 1e6
-                      ? `${fmtMillions(a.amount, 1)} M€`
-                      : `${fmtInt(a.amount / 1000)} k€`}
-                  </span>
-                  <span className="fx-arr-ranking-count">
-                    {fmtInt(a.count)} {a.count === 1 ? projectWord : projectsWord}
-                  </span>
-                </li>
-              ))}
-            </ol>
+            <>
+              <MarseilleChoropleth
+                items={d.byArrondissement}
+                geoPoints={d.geoPoints}
+              />
+              <ol
+                className="fx-arr-ranking"
+                aria-label={t("fx.toc.arrondissements")}
+                style={{ marginTop: 24 }}
+              >
+                {d.byArrondissement.map((a, i) => (
+                  <li key={a.arr} className="fx-arr-ranking-item">
+                    <span className="fx-arr-ranking-rank">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="fx-arr-ranking-label">
+                      {a.arr}
+                      {arrSuf(a.arr)} {districtWord}
+                    </span>
+                    <span className="fx-arr-ranking-amount">
+                      {a.amount >= 1e6
+                        ? `${fmtMillions(a.amount, 1)} M€`
+                        : `${fmtInt(a.amount / 1000)} k€`}
+                    </span>
+                    <span className="fx-arr-ranking-count">
+                      {fmtInt(a.count)} {a.count === 1 ? projectWord : projectsWord}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </>
           )}
           <ChartSource
             source={
@@ -370,27 +378,60 @@ export default function MarseilleInvestissementsClient({
             }
           />
           <div className="fx-projet-grid">
-            {d.topProjets.slice(0, 12).map((p, i) => (
+            {d.topProjets.slice(0, 12).map((p, i) => {
+              const photoUrl = (p.photo as unknown as { photo?: { url?: string } | null })?.photo?.url;
+              const photoCredit = (p.photo as unknown as { photo?: { credit?: string } | null })?.photo?.credit;
+              return (
               <div key={p.id} className="fx-projet-card fx-projet-card--static" aria-label={p.name}>
                 <div className="fx-projet-card-thumb">
-                  <div
-                    style={{
-                      width: "100%",
-                      aspectRatio: "4 / 3",
-                      background: "#faf9f5",
-                      borderBottom: "1px solid rgba(10,10,10,0.08)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      color: "#a67638",
-                      fontFamily: "var(--f-mono)",
-                      fontSize: "11px",
-                      letterSpacing: "0.06em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    {p.chapitre}
-                  </div>
+                  {photoUrl ? (
+                    <div style={{ position: "relative", width: "100%", aspectRatio: "4 / 3", borderBottom: "1px solid rgba(10,10,10,0.08)", overflow: "hidden" }}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={photoUrl}
+                        alt={p.name}
+                        loading="lazy"
+                        style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                      />
+                      {photoCredit && (
+                        <span
+                          style={{
+                            position: "absolute",
+                            right: 4,
+                            bottom: 4,
+                            background: "rgba(0,0,0,0.55)",
+                            color: "#fafaf7",
+                            fontFamily: "var(--f-mono)",
+                            fontSize: 9,
+                            padding: "1px 4px",
+                            borderRadius: 2,
+                          }}
+                          aria-label={`Crédit : ${photoCredit}`}
+                        >
+                          © {photoCredit.split(" ")[0]}
+                        </span>
+                      )}
+                    </div>
+                  ) : (
+                    <div
+                      style={{
+                        width: "100%",
+                        aspectRatio: "4 / 3",
+                        background: "#faf9f5",
+                        borderBottom: "1px solid rgba(10,10,10,0.08)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: "#a67638",
+                        fontFamily: "var(--f-mono)",
+                        fontSize: "11px",
+                        letterSpacing: "0.06em",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      {p.chapitre}
+                    </div>
+                  )}
                 </div>
                 <div className="fx-projet-card-body">
                   <div className="fx-projet-card-rank">{String(i + 1).padStart(2, "0")}</div>
@@ -410,7 +451,8 @@ export default function MarseilleInvestissementsClient({
                   <div className="fx-projet-card-chapitre">{p.chapitre}</div>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

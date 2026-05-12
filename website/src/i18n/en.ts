@@ -1113,6 +1113,7 @@ const en: Record<string, string> = {
   'fx.scope.heading.france': 'France view',
   'fx.scope.tag.avenir': 'coming soon',
   'fx.scope.tag.v2': 'V2',
+  'fx.scope.tag.poc': 'poc',
   'fx.scope.tag.roadmap': 'roadmap',
   'fx.scope.france': 'France',
   'fx.scope.france.apu': 'Public spending (APU)',
