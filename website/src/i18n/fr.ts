@@ -3500,9 +3500,13 @@ const fr: Record<string, string> = {
   'db.hero.deck': 'Cotisations et CSG sur ton brut → Sécu. IR sur ton net imposable → État. TVA estimée sur ta consommation → répartie 45 % État / 31 % Sécu / 24 % Local (affectations PLF). Taxe foncière si propriétaire → Local. Méthode détaillée plus bas.',
   // ─ Onboarding intro (au-dessus du fold) — clarifier la promesse ─
   'db.hero.onboarding.kicker': 'DAILY BREAD · FRANCE OPEN DATA',
-  'db.hero.onboarding.title': 'À quoi servent tes impôts ?',
-  'db.hero.onboarding.deck': 'Personnalise ton profil ci-dessous (revenu, foyer, commune) — les valeurs soulignées sont {b}modifiables{/b}. On calcule ta contribution mensuelle et on te montre exactement où va chaque euro : Sécurité sociale, État, collectivités locales.',
-  'db.hero.onboarding.cta': '↓ Commence en personnalisant ton profil',
+  'db.hero.onboarding.title': 'Tes impôts. La dépense publique. Le gap.',
+  'db.hero.onboarding.deck': 'Tu paies. La France dépense. On te montre {b}les trois{/b} :',
+  'db.hero.onboarding.step1': '1. Combien tu paies vraiment chaque mois (cotisations, CSG, IR, TVA estimée).',
+  'db.hero.onboarding.step2': '2. Combien la France dépense par habitant (Sécu, État, collectivités).',
+  'db.hero.onboarding.step3': '3. Qui finance la différence (cotisations employeurs, entreprises, déficit).',
+  'db.hero.onboarding.profile_hint': 'Personnalise ton profil ci-dessous — les valeurs soulignées sont {b}modifiables{/b}.',
+  'db.hero.onboarding.cta': '↓ Commence en remplissant ton profil',
   // ─ Hero éditable NYT-style (fold redesign) ─
   'db.hero.editable.prefix_salaire': 'Sur ton revenu net de',
   'db.hero.editable.set_salaire': 'définis ton salaire',

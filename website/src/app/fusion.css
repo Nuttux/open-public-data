@@ -11067,10 +11067,10 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
 
 .theme-db-scrolly .db-p-onboarding {
   background: var(--p-ivoire);
-  padding: 32px 0 12px;
+  padding: 24px 0 14px;
 }
 .theme-db-scrolly .db-p-onboarding-wrap {
-  max-width: 800px;
+  max-width: 740px;
   margin: 0 auto;
   padding: 0 28px;
 }
@@ -11080,24 +11080,24 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   font-weight: 600;
   letter-spacing: 0.08em;
   color: var(--p-accent);
-  margin: 0 0 14px;
+  margin: 0 0 12px;
   text-transform: uppercase;
 }
 .theme-db-scrolly .db-p-onboarding-title {
   font-family: var(--pf-disp);
-  font-size: clamp(36px, 5vw, 64px);
+  font-size: clamp(26px, 3.2vw, 40px);
   font-weight: 700;
   letter-spacing: -0.025em;
-  line-height: 1.05;
+  line-height: 1.1;
   color: var(--p-ink);
-  margin: 0 0 18px;
+  margin: 0 0 14px;
 }
 .theme-db-scrolly .db-p-onboarding-deck {
   font-family: var(--pf-serif);
-  font-size: clamp(17px, 1.5vw, 21px);
-  line-height: 1.55;
+  font-size: clamp(16px, 1.2vw, 18px);
+  line-height: 1.5;
   color: var(--p-ink-2);
-  margin: 0 0 18px;
+  margin: 0 0 12px;
   max-width: 62ch;
 }
 .theme-db-scrolly .db-p-onboarding-deck b {
@@ -11106,16 +11106,52 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   color: var(--p-accent);
   font-style: normal;
 }
+.theme-db-scrolly .db-p-onboarding-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.theme-db-scrolly .db-p-onboarding-steps li {
+  font-family: var(--pf-serif);
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--p-ink-2);
+  padding-left: 12px;
+  border-left: 2px solid var(--p-accent);
+  max-width: 62ch;
+}
+.theme-db-scrolly .db-p-onboarding-hint {
+  font-family: var(--pf-serif);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--p-muted);
+  margin: 0 0 16px;
+  max-width: 62ch;
+  font-style: italic;
+}
+.theme-db-scrolly .db-p-onboarding-hint b {
+  font-family: var(--pf-disp);
+  font-weight: 600;
+  color: var(--p-accent);
+  font-style: normal;
+}
 .theme-db-scrolly .db-p-onboarding-cta {
   font-family: var(--pf-mono);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 12px;
+  font-weight: 600;
   color: var(--p-accent);
   margin: 0;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.06em;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
+  padding: 8px 14px;
+  background: rgba(166, 118, 56, 0.10);
+  border-radius: 4px;
+  text-transform: uppercase;
 }
 
 .theme-db-scrolly .db-p-hero-edit { background: var(--p-ivoire); }
