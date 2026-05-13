@@ -362,6 +362,11 @@ export type DailyBreadConstants = {
       gdp_total_md_eur?: number | null;
       gdp_source?: string;
       gdp_source_url?: string;
+      /** Population France au 1er janvier (INSEE) — pour per-capita. */
+      population_france?: number;
+      population_year?: number;
+      population_source?: string;
+      population_source_url?: string;
     };
   };
   subsector_breakdowns: {

@@ -767,10 +767,17 @@ export default function DailyBreadClient({
     return Math.abs(diff) > 1 ? diff : null;
   }, [openFiscaResult, breakdownSalaireJsLocal.total]);
 
-  // Dispatch CAUSAL : on mappe chaque composante (cot/CSG/IR/TVA/TF) à son
-  // affectataire légal réel, au lieu d'appliquer les ratios Eurostat S13.
-  // Donne une vue plus juste pour la promesse "où va MA contribution".
-  // Cf. computeInstitutionSharesCausal — coefficients TVA depuis PLF V&M.
+  // ─── Pivot Approche A (mai 2026) ────────────────────────────────────
+  // Daily Bread n'utilise PLUS de dispatch perso (ni causal ni proportionnel).
+  // À la place, les panneaux §02-05 affichent la dépense publique nationale
+  // PER-CAPITA — ce que la France dépense par habitant en moyenne sur chaque
+  // sous-secteur. La §06 synthèse compare la contribution perso (856 €/mois)
+  // à la moyenne per-capita (~2 200 €/mois/hab) et explique le gap (cotisations
+  // employeurs invisibles, IS, déficit, etc.). Promesse honnête : pas de claim
+  // que "TES euros vont précisément à X" (ce qui est conceptuellement faux).
+  //
+  // institutionShares + secuShare/etatShare/localShare gardés pour compat
+  // (notamment pour le total perso utilisé dans §06).
   const institutionShares = useMemo(
     () =>
       db
@@ -787,41 +794,48 @@ export default function DailyBreadClient({
         : [],
     [db, breakdownSalaire, breakdownRetraite, breakdownCapital, breakdownIndep, tfEstimated],
   );
-  // suppress unused-warning : `computeInstitutionShares` reste exporté pour
-  // d'autres callers (Budget Explorer impersonnel) et tests.
   void computeInstitutionShares;
 
   const secuShare = institutionShares.find((i) => i.code === "S1314");
   const etatShare = institutionShares.find((i) => i.code === "S1311");
   const localShare = institutionShares.find((i) => i.code === "S1313");
 
-  const secuMonthly = secuShare ? secuShare.annual_eur / 12 : 0;
-  const etatMonthly = etatShare ? etatShare.annual_eur / 12 : 0;
-  const localMonthly = localShare ? localShare.annual_eur / 12 : 0;
+  // PER-CAPITA national constants (Approche A) — ce que la France dépense
+  // par habitant chaque mois en moyenne, par sous-secteur. Population INSEE
+  // 1er janvier 2024 (~68 M) depuis db.apu_subsectors.totals.population_france.
+  const populationFr =
+    db?.apu_subsectors?.totals?.population_france ?? 68042591;
+  const s1311Total = db?.apu_subsectors?.institutions?.S1311?.annual_eur ?? 0;
+  const s1313Total = db?.apu_subsectors?.institutions?.S1313?.annual_eur ?? 0;
+  const s1314Total = db?.apu_subsectors?.institutions?.S1314?.annual_eur ?? 0;
+  const secuMonthly = populationFr > 0 ? s1314Total / populationFr / 12 : 0;
+  const etatMonthly = populationFr > 0 ? s1311Total / populationFr / 12 : 0;
+  const localMonthly = populationFr > 0 ? s1313Total / populationFr / 12 : 0;
+  const totalPerCapitaMonthly = secuMonthly + etatMonthly + localMonthly;
 
+  // Pour les sub-rows : on utilise les TOTAUX nationaux (pas la share perso)
+  // et on divise par population × 12 pour obtenir le per-capita par branche.
   const assoBranches = useMemo(
-    () => (db && secuShare ? computeAssoBreakdown(secuShare.annual_eur, db) : []),
-    [db, secuShare],
+    () => (db ? computeAssoBreakdown(s1314Total, db) : []),
+    [db, s1314Total],
   );
 
   const stateBuckets = useMemo(
-    () => (db && etatShare ? computeStateBuckets(etatShare.annual_eur, db) : []),
-    [db, etatShare],
+    () => (db ? computeStateBuckets(s1311Total, db) : []),
+    [db, s1311Total],
   );
 
   const localLevels = useMemo(() => {
-    if (!db || !localShare) return [];
-    const nationalAvg = db.local_avg_dep_eur_hab.value_eur_hab ?? 1500;
-    const ratio = commune && commune.eur_hab > 0 && nationalAvg > 0
-      ? commune.eur_hab / nationalAvg
-      : 1;
+    if (!db) return [];
+    // Pour le local, on garde les shares OFGL nationales (55/30/15) sans
+    // pondération commune — c'est de la moyenne nationale par habitant.
     return computeLocalLevels(
-      localShare.annual_eur,
+      s1313Total,
       db,
-      ratio,
-      isCollectiviteUnique(commune?.slug),
+      1, // ratio = 1 → pas de pondération Paris pour le national per-capita
+      false, // pas de collectivité-unique merge ; vue nationale
     );
-  }, [db, localShare, commune]);
+  }, [db, s1313Total]);
 
   // ─── Deep-dives — supprimés (2026-05) ──────────────────────────────
   //   La section "À l'intérieur de…" sur la page principale était
@@ -1668,7 +1682,7 @@ export default function DailyBreadClient({
         </section>
 
         {/* ── PANNEAU 2 — DISPATCH ── */}
-        {institutionShares.length === 3 && (
+        {totalPerCapitaMonthly > 0 && (
           <section id="db-disp" className="db-panel db-p-disp">
             <div className="db-panel-wrap">
               <p className="db-panel-num">
@@ -1682,6 +1696,10 @@ export default function DailyBreadClient({
                 {renderTagged(
                   t("db.disp.deck")
                     .replace("{monthly}", fmtEur(totalMonthly, locale, 0))
+                    .replace(
+                      "{perCapita}",
+                      fmtEur(totalPerCapitaMonthly, locale, 0),
+                    )
                     .replace("{year}", String(db?.apu_subsectors.year ?? "")),
                   {
                     b1: { color: "var(--p-secu)", fontWeight: 600 },
@@ -1691,79 +1709,86 @@ export default function DailyBreadClient({
                 )}
               </p>
 
-              <div
-                ref={triStackRef}
-                className={`db-stack-tri${triStackRevealed ? " is-revealed" : ""}`}
-                style={{
-                  gridTemplateColumns: institutionShares
-                    .map((i) => `${i.share * 100}fr`)
-                    .join(" "),
-                }}
-              >
-                <div style={{ background: "var(--p-secu)" }}>
-                  <div className="db-stack-tri-pct tnum">
-                    <RevealCountNum
-                      value={(secuShare?.share ?? 0) * 100}
-                      revealed={triStackRevealed}
-                      duration={600}
-                      format={(v) => `${Math.round(v)} %`}
-                    />
+              {/* Per-capita national : shares S1314/S1311/S1313 dans S13. */}
+              {(() => {
+                const sumS13 = s1311Total + s1313Total + s1314Total;
+                const secuPctNat = sumS13 > 0 ? s1314Total / sumS13 : 0;
+                const etatPctNat = sumS13 > 0 ? s1311Total / sumS13 : 0;
+                const localPctNat = sumS13 > 0 ? s1313Total / sumS13 : 0;
+                return (
+                  <div
+                    ref={triStackRef}
+                    className={`db-stack-tri${triStackRevealed ? " is-revealed" : ""}`}
+                    style={{
+                      gridTemplateColumns: `${secuPctNat * 100}fr ${etatPctNat * 100}fr ${localPctNat * 100}fr`,
+                    }}
+                  >
+                    <div style={{ background: "var(--p-secu)" }}>
+                      <div className="db-stack-tri-pct tnum">
+                        <RevealCountNum
+                          value={secuPctNat * 100}
+                          revealed={triStackRevealed}
+                          duration={600}
+                          format={(v) => `${Math.round(v)} %`}
+                        />
+                      </div>
+                      <div className="db-stack-tri-name">
+                        {locale === "en" ? "Social security" : "Sécurité sociale"}
+                      </div>
+                      <div className="db-stack-tri-amt tnum">
+                        <RevealCountNum
+                          value={secuMonthly}
+                          revealed={triStackRevealed}
+                          duration={650}
+                          format={(v) => `${fmtEur(v, locale, 0)} €/${locale === "en" ? "mo/hab" : "mois/hab"}`}
+                        />
+                      </div>
+                    </div>
+                    <div style={{ background: "var(--p-etat)" }}>
+                      <div className="db-stack-tri-pct tnum">
+                        <RevealCountNum
+                          value={etatPctNat * 100}
+                          revealed={triStackRevealed}
+                          duration={600}
+                          format={(v) => `${Math.round(v)} %`}
+                        />
+                      </div>
+                      <div className="db-stack-tri-name">
+                        {locale === "en" ? "Central government" : "État central"}
+                      </div>
+                      <div className="db-stack-tri-amt tnum">
+                        <RevealCountNum
+                          value={etatMonthly}
+                          revealed={triStackRevealed}
+                          duration={650}
+                          format={(v) => `${fmtEur(v, locale, 0)} €/${locale === "en" ? "mo/hab" : "mois/hab"}`}
+                        />
+                      </div>
+                    </div>
+                    <div style={{ background: "var(--p-local)" }}>
+                      <div className="db-stack-tri-pct tnum">
+                        <RevealCountNum
+                          value={localPctNat * 100}
+                          revealed={triStackRevealed}
+                          duration={600}
+                          format={(v) => `${Math.round(v)} %`}
+                        />
+                      </div>
+                      <div className="db-stack-tri-name">
+                        {locale === "en" ? "Local" : "Local"}
+                      </div>
+                      <div className="db-stack-tri-amt tnum">
+                        <RevealCountNum
+                          value={localMonthly}
+                          revealed={triStackRevealed}
+                          duration={650}
+                          format={(v) => `${fmtEur(v, locale, 0)} €/${locale === "en" ? "mo/hab" : "mois/hab"}`}
+                        />
+                      </div>
+                    </div>
                   </div>
-                  <div className="db-stack-tri-name">
-                    {locale === "en" ? "Social security" : "Sécurité sociale"}
-                  </div>
-                  <div className="db-stack-tri-amt tnum">
-                    <RevealCountNum
-                      value={secuMonthly}
-                      revealed={triStackRevealed}
-                      duration={650}
-                      format={(v) => `${fmtEur(v, locale, 0)} €/${locale === "en" ? "mo" : "mois"}`}
-                    />
-                  </div>
-                </div>
-                <div style={{ background: "var(--p-etat)" }}>
-                  <div className="db-stack-tri-pct tnum">
-                    <RevealCountNum
-                      value={(etatShare?.share ?? 0) * 100}
-                      revealed={triStackRevealed}
-                      duration={600}
-                      format={(v) => `${Math.round(v)} %`}
-                    />
-                  </div>
-                  <div className="db-stack-tri-name">
-                    {locale === "en" ? "Central government" : "État central"}
-                  </div>
-                  <div className="db-stack-tri-amt tnum">
-                    <RevealCountNum
-                      value={etatMonthly}
-                      revealed={triStackRevealed}
-                      duration={650}
-                      format={(v) => `${fmtEur(v, locale, 0)} €/${locale === "en" ? "mo" : "mois"}`}
-                    />
-                  </div>
-                </div>
-                <div style={{ background: "var(--p-local)" }}>
-                  <div className="db-stack-tri-pct tnum">
-                    <RevealCountNum
-                      value={(localShare?.share ?? 0) * 100}
-                      revealed={triStackRevealed}
-                      duration={600}
-                      format={(v) => `${Math.round(v)} %`}
-                    />
-                  </div>
-                  <div className="db-stack-tri-name">
-                    {locale === "en" ? "Local" : "Local"}
-                  </div>
-                  <div className="db-stack-tri-amt tnum">
-                    <RevealCountNum
-                      value={localMonthly}
-                      revealed={triStackRevealed}
-                      duration={650}
-                      format={(v) => `${fmtEur(v, locale, 0)} €/${locale === "en" ? "mo" : "mois"}`}
-                    />
-                  </div>
-                </div>
-              </div>
+                );
+              })()}
 
               <p className="db-panel-foot-cue">{t("db.disp.foot_cue")}</p>
             </div>
@@ -1771,7 +1796,7 @@ export default function DailyBreadClient({
         )}
 
         {/* ── PANNEAU 3 — Zoom Sécu ── */}
-        {assoBranches.length > 0 && secuShare && (
+        {assoBranches.length > 0 && (
           <section
             ref={panel3Ref}
             className={`db-panel db-p-zoom db-panel-fade${panel3Revealed ? " is-revealed" : ""}`}
@@ -1793,15 +1818,15 @@ export default function DailyBreadClient({
                   <p className="db-p-zoom-eur c-secu tnum">
                     {fmtEur(secuMonthly, locale, 0)}
                     <span className="eur-unit">
-                      €/{locale === "en" ? "mo" : "mois"}
+                      €/{locale === "en" ? "mo/inhab" : "mois/hab"}
                     </span>
                   </p>
                   <p className="db-p-zoom-name">{t("db.secu.name")}</p>
                   <p className="db-p-zoom-pct-line tnum">
-                    <b>{Math.round((secuShare.share ?? 0) * 100)} %</b>{" "}
+                    <b>{Math.round(((s1311Total + s1313Total + s1314Total) > 0 ? s1314Total / (s1311Total + s1313Total + s1314Total) : 0) * 100)} %</b>{" "}
                     {locale === "en"
                       ? "of your contribution"
-                      : "de ta contribution"}
+                      : "des dépenses publiques nationales"}
                   </p>
                   <div className="db-p-zoom-deck">
                     <p>{renderTagged(t("db.secu.deck1"))}</p>
@@ -1814,18 +1839,15 @@ export default function DailyBreadClient({
 
                 <BarList
                   items={assoBranches.map((b) => {
-                    const s1314Total =
-                      db?.apu_subsectors?.institutions?.S1314?.annual_eur ?? 0;
+                    // Per-capita : b.monthly_eur est le national monthly
+                    // total (S1314 × share / 12). Divisé par population pour
+                    // afficher €/mois/habitant.
                     return {
                       key: b.key,
                       name: locale === "en" ? b.label_en : b.label_fr,
-                      monthly: b.monthly_eur,
-                      nationalAnnual: s1314Total * b.share,
+                      monthly: populationFr > 0 ? b.monthly_eur / populationFr : 0,
+                      nationalAnnual: b.annual_eur,
                       share: b.share,
-                      // Note clarification retraite : la branche retraite Sécu
-                      // couvre privé + complémentaires + territorial + indép.
-                      // Les fonctionnaires d'État sont en CAS Pensions (panel
-                      // État ci-dessous).
                       sub:
                         b.key === "part_cnav_retraites"
                           ? t("db.secu.retraite_sub")
@@ -1864,15 +1886,15 @@ export default function DailyBreadClient({
                   <p className="db-p-zoom-eur c-etat tnum">
                     {fmtEur(etatMonthly, locale, 0)}
                     <span className="eur-unit">
-                      €/{locale === "en" ? "mo" : "mois"}
+                      €/{locale === "en" ? "mo/inhab" : "mois/hab"}
                     </span>
                   </p>
                   <p className="db-p-zoom-name">{t("db.etat.name")}</p>
                   <p className="db-p-zoom-pct-line tnum">
-                    <b>{Math.round((etatShare.share ?? 0) * 100)} %</b>{" "}
+                    <b>{Math.round(((s1311Total + s1313Total + s1314Total) > 0 ? s1311Total / (s1311Total + s1313Total + s1314Total) : 0) * 100)} %</b>{" "}
                     {locale === "en"
                       ? "of your contribution"
-                      : "de ta contribution"}
+                      : "des dépenses publiques nationales"}
                   </p>
                   <div className="db-p-zoom-deck">
                     <p>{renderTagged(t("db.etat.deck1"))}</p>
@@ -1888,10 +1910,6 @@ export default function DailyBreadClient({
                     const s1311Total =
                       db?.apu_subsectors?.institutions?.S1311?.annual_eur ?? 0;
                     return stateBuckets.map((b) => {
-                      // Construit la sub-text à partir des composants :
-                      // missions PLF + items overlay (CAS Pensions par
-                      // ministère, opérateurs ODAC, etc.). Sépare les deux
-                      // par " · " pour rester lisible.
                       const missionLabels = b.missions
                         .map((m) => m.label)
                         .slice(0, 3);
@@ -1901,11 +1919,13 @@ export default function DailyBreadClient({
                         )
                         .slice(0, 4);
                       const subParts = [...missionLabels, ...overlayLabels];
+                      // Per-capita : b.monthly_eur est le national monthly
+                      // total (S1311 × share / 12). Divisé par population.
                       return {
                         key: b.key,
                         name: locale === "en" ? b.label_en : b.label_fr,
-                        monthly: b.monthly_eur,
-                        nationalAnnual: s1311Total * b.share_of_state,
+                        monthly: populationFr > 0 ? b.monthly_eur / populationFr : 0,
+                        nationalAnnual: b.annual_eur,
                         share: b.share_of_state,
                         sub:
                           subParts.length > 1
@@ -1981,7 +2001,7 @@ export default function DailyBreadClient({
                   <p className="db-p-zoom-eur c-local tnum">
                     {fmtEur(localMonthly, locale, 0)}
                     <span className="eur-unit">
-                      €/{locale === "en" ? "mo" : "mois"}
+                      €/{locale === "en" ? "mo/inhab" : "mois/hab"}
                     </span>
                   </p>
                   <p className="db-p-zoom-name">{dynamicTitle}</p>
@@ -1995,10 +2015,10 @@ export default function DailyBreadClient({
                     </p>
                   )}
                   <p className="db-p-zoom-pct-line tnum">
-                    <b>{Math.round((localShare.share ?? 0) * 100)} %</b>{" "}
+                    <b>{Math.round(((s1311Total + s1313Total + s1314Total) > 0 ? s1313Total / (s1311Total + s1313Total + s1314Total) : 0) * 100)} %</b>{" "}
                     {locale === "en"
                       ? "of your contribution"
-                      : "de ta contribution"}
+                      : "des dépenses publiques nationales"}
                   </p>
                   <div className="db-p-zoom-deck">
                     <p>
@@ -2028,26 +2048,16 @@ export default function DailyBreadClient({
 
                 <BarList
                   items={localLevels.map((l) => {
-                    // Pas de nationalAnnual ici : l.share_of_local est
-                    // commune-pondérée (ratio Paris/national_avg) → multiplier
-                    // S1313 par cette share donne un montant trompeur (suggère
-                    // que la commune a un budget gigantesque alors que la
-                    // ville de Paris seule ≈ 10 Md€). Le national absolu des
-                    // 3 échelons (bloc 183 / dept 100 / région 50 Md€) est
-                    // dans Budget Explorer §07 si l'utilisateur veut creuser.
+                    // Per-capita national (Approche A) : utilise les shares
+                    // OFGL nationales (55/30/15) × S1313 / pop / 12. Le
+                    // ratio commune n'est PAS appliqué : on montre la
+                    // moyenne nationale par habitant, pas projection Paris.
                     return {
                       key: l.key,
-                      name:
-                        personalLabelByKey[l.key] ??
-                        (locale === "en" ? l.label_en : l.label_fr),
-                      monthly: l.monthly_eur,
+                      name: locale === "en" ? l.label_en : l.label_fr,
+                      monthly: populationFr > 0 ? l.monthly_eur / populationFr : 0,
+                      nationalAnnual: l.annual_eur,
                       share: l.share_of_local,
-                      sub:
-                        l.key === "bloc_communal"
-                          ? isCollUnique
-                            ? t("db.local.bloc_sub_merged")
-                            : t("db.local.bloc_sub_default")
-                          : undefined,
                     };
                   })}
                   color="c-local"
@@ -2212,6 +2222,71 @@ export default function DailyBreadClient({
                 <em>{t("db.end.q_b")}</em>
               </h2>
               <p className="db-p-end-deck">{t("db.end.deck")}</p>
+
+              {/* GAP BLOCK — la révélation honnête : tu paies X, les services
+                  publics coûtent Y par habitant, voici qui finance le reste. */}
+              {totalPerCapitaMonthly > 0 && (
+                <div className="db-p-end-gap">
+                  <div className="db-p-end-gap-grid">
+                    <div className="db-p-end-gap-cell">
+                      <p className="db-p-end-gap-label">
+                        {t("db.end.gap.paid")}
+                      </p>
+                      <p className="db-p-end-gap-num tnum">
+                        {fmtEur(totalMonthly, locale, 0)} €
+                        <span className="db-p-end-gap-unit">
+                          /{locale === "en" ? "mo" : "mois"}
+                        </span>
+                      </p>
+                    </div>
+                    <div className="db-p-end-gap-arrow" aria-hidden>
+                      →
+                    </div>
+                    <div className="db-p-end-gap-cell">
+                      <p className="db-p-end-gap-label">
+                        {t("db.end.gap.received")}
+                      </p>
+                      <p className="db-p-end-gap-num tnum">
+                        {fmtEur(totalPerCapitaMonthly, locale, 0)} €
+                        <span className="db-p-end-gap-unit">
+                          /{locale === "en" ? "mo/hab" : "mois/hab"}
+                        </span>
+                      </p>
+                    </div>
+                    <div className="db-p-end-gap-arrow" aria-hidden>
+                      −
+                    </div>
+                    <div className="db-p-end-gap-cell db-p-end-gap-cell-delta">
+                      <p className="db-p-end-gap-label">
+                        {t("db.end.gap.delta")}
+                      </p>
+                      <p className="db-p-end-gap-num tnum">
+                        {fmtEur(
+                          Math.max(0, totalPerCapitaMonthly - totalMonthly),
+                          locale,
+                          0,
+                        )}{" "}
+                        €
+                        <span className="db-p-end-gap-unit">
+                          /{locale === "en" ? "mo" : "mois"}
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="db-p-end-gap-explain">
+                    <p className="db-p-end-gap-explain-title">
+                      {t("db.end.gap.explain_title")}
+                    </p>
+                    <ul className="db-p-end-gap-explain-list">
+                      <li>{t("db.end.gap.explain.employer")}</li>
+                      <li>{t("db.end.gap.explain.is")}</li>
+                      <li>{t("db.end.gap.explain.tva_entreprises")}</li>
+                      <li>{t("db.end.gap.explain.deficit")}</li>
+                      <li>{t("db.end.gap.explain.divers")}</li>
+                    </ul>
+                  </div>
+                </div>
+              )}
 
               {(() => {
                 const sorted = equivalents
