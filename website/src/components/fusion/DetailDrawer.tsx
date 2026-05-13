@@ -256,9 +256,9 @@ export default function DetailDrawer({
               type="button"
               className="fx-drawer-crumb-btn"
               onClick={goBackToPrevious}
-              aria-label={`Revenir à ${previous.label}`}
+              aria-label={t("fx.drawer.crumb.back_aria").replace("{label}", previous.label)}
             >
-              ← Retour · <span>{previous.label}</span>
+              {t("fx.drawer.crumb.back")} · <span>{previous.label}</span>
             </button>
           </div>
         )}

@@ -1,0 +1,246 @@
+name: data-platform-audit
+
+# Audit gates pour la data platform. Refuse les PRs qui :
+#   - violent le layering stg → core → (int) → mart → export → JSON
+#   - écrivent dans website/public/data/ depuis un script ingest/enrich/tools
+#   - ont un fetch UI vers /pipeline/cache/wip/ (ou autre chemin interdit)
+#   - ne parsent pas en dbt (modèle ou test cassé)
+#
+# ⚠️  Jobs BQ-dependent (dbt-test, verify-exports, source freshness) sont
+# désactivés par défaut et ne tournent QUE si la repository variable
+# `ENABLE_BQ_CI` est définie à `true`. Cela nécessite un setup GCP préalable
+# (Workload Identity Federation + service account avec permissions BQ).
+#
+# Tant que ce setup n'est pas fait, le job `ci-status` annonce VISIBLEMENT
+# que le mode complet n'est pas actif (pas de fausse impression de couverture).
+
+on:
+  pull_request:
+    paths:
+      - 'pipeline/**'
+      - 'website/src/**'
+      - 'website/public/**'
+      - 'docs/data-platform/**'
+      - '.github/workflows/data-platform-audit.yml'
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  ci-status:
+    name: ⚠️  CI Status — BQ-dependent jobs may be disabled
+    runs-on: ubuntu-latest
+    steps:
+      - name: Announce coverage
+        run: |
+          if [[ "${{ vars.ENABLE_BQ_CI }}" == "true" ]]; then
+            echo "✅ Full CI : layering + dbt parse + dbt test + verify_export + source freshness"
+          else
+            echo "⚠️  Partial CI : layering + dbt parse + schema completeness ONLY"
+            echo ""
+            echo "  The following data-quality jobs are DISABLED:"
+            echo "    - dbt test (the 280+ data tests)"
+            echo "    - dbt source freshness"
+            echo "    - verify_export (byte-equality of JSON outputs)"
+            echo ""
+            echo "  To enable full CI, an admin must:"
+            echo "    1. Set up Workload Identity Federation with a GCP service account"
+            echo "    2. Add repository secrets: GCP_WORKLOAD_IDENTITY_PROVIDER, GCP_SERVICE_ACCOUNT"
+            echo "    3. Set repository variable ENABLE_BQ_CI=true"
+            echo ""
+            echo "  See docs/runbooks/dev-prod-separation.md for the recommended setup."
+          fi
+
+  layering-gate:
+    name: Layering audit (--strict)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install minimal deps
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pyyaml
+
+      - name: Run layering audit
+        run: python pipeline/scripts/audit/check_layering.py --strict
+
+      - name: Run frontend fetch audit
+        run: python pipeline/scripts/audit/check_frontend_fetches.py --strict
+
+  dbt-parse:
+    name: dbt parse + compile (no BQ access required)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dbt
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install dbt-core dbt-bigquery
+
+      # dbt parse ne nécessite pas de connexion BQ — il valide la syntaxe
+      # SQL Jinja, les refs et les schemas YAML.
+      - name: dbt parse
+        working-directory: pipeline
+        run: |
+          mkdir -p ~/.dbt
+          # profile factice qui n'a pas besoin de creds BQ pour parse
+          cat > ~/.dbt/profiles.yml <<EOF
+          paris_open_data:
+            target: dev
+            outputs:
+              dev:
+                type: bigquery
+                method: oauth
+                project: dummy
+                dataset: dummy
+                location: EU
+                threads: 1
+          EOF
+          dbt parse --no-partial-parse
+
+  schema-yml-completeness:
+    name: All dbt models have schema.yml entries
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check completeness
+        run: |
+          python <<'PY'
+          import pathlib, re, sys
+
+          schemas = {p: p.read_text() for p in pathlib.Path('pipeline/models').rglob('schema.yml')}
+          missing = []
+          for sql in pathlib.Path('pipeline/models').rglob('*.sql'):
+              if '/national/' in sql.as_posix():
+                  continue  # disabled subproject
+              name = sql.stem
+              if not any(re.search(rf'^\s*-\s*name:\s*{re.escape(name)}\s*$', t, re.MULTILINE) for t in schemas.values()):
+                  missing.append(sql.as_posix())
+          if missing:
+              print(f'❌ {len(missing)} dbt models missing from schema.yml:')
+              for m in missing: print(f'  - {m}')
+              sys.exit(1)
+          print(f'✅ all {sum(1 for _ in pathlib.Path("pipeline/models").rglob("*.sql") if "/national/" not in _.as_posix())} models documented')
+          PY
+
+  # =============================================================================
+  # Jobs nécessitant un accès BigQuery (gated par secret)
+  # =============================================================================
+  # Si le secret GCP_WORKLOAD_IDENTITY_PROVIDER n'est pas défini, ces jobs
+  # sont skippés gracieusement. À configurer une fois pour activer la
+  # validation data réelle en CI.
+
+  dbt-test:
+    name: dbt test (data-quality, full BQ access)
+    runs-on: ubuntu-latest
+    if: ${{ vars.ENABLE_BQ_CI == 'true' }}
+    permissions:
+      id-token: write   # for Workload Identity Federation
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dbt
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install dbt-core dbt-bigquery
+
+      - name: Authenticate to GCP
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      - name: dbt test (data + cross-layer + freshness)
+        working-directory: pipeline
+        run: |
+          mkdir -p ~/.dbt
+          cat > ~/.dbt/profiles.yml <<EOF
+          paris_open_data:
+            target: dev
+            outputs:
+              dev:
+                type: bigquery
+                method: oauth
+                project: open-data-france-484717
+                dataset: dbt_paris
+                location: EU
+                threads: 4
+          EOF
+          dbt deps
+          dbt source freshness
+          dbt test
+
+  verify-exports:
+    name: verify_export (byte-equality of JSON outputs)
+    runs-on: ubuntu-latest
+    if: ${{ vars.ENABLE_BQ_CI == 'true' }}
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install google-cloud-bigquery pandas db-dtypes pyyaml
+
+      - name: Authenticate to GCP
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      # Pour chaque export, on vérifie qu'il produit un JSON sémantiquement
+      # égal à HEAD (modulo timestamps + ordre + précision flottante 6 sig).
+      - name: Verify all exports
+        run: |
+          for script in pipeline/scripts/export/export_*.py; do
+            name=$(basename "$script" .py)
+            # On scanne git pour trouver les .json que ce script écrit usuellement.
+            # Pour l'instant on liste à la main les exports critiques.
+            case "$name" in
+              export_logement_attente)
+                bash pipeline/scripts/audit/verify_export.sh "$script" \
+                  website/public/data/logement_attente_paris.json
+                ;;
+              export_bilan_data)
+                bash pipeline/scripts/audit/verify_export.sh "$script" \
+                  website/public/data/bilan_index.json \
+                  website/public/data/bilan_sankey_2024.json
+                ;;
+              export_data_availability)
+                bash pipeline/scripts/audit/verify_export.sh "$script" \
+                  website/public/data/data_availability.json
+                ;;
+              *)
+                echo "  (skipped — $name pas dans la liste critique)"
+                ;;
+            esac
+          done

@@ -8,7 +8,7 @@ import Tip from "@/components/fusion/Tip";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.replace(`{${k}}`, String(v));
+  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
   return r;
 };
 
@@ -22,6 +22,10 @@ type Post = {
   image?: string;
   readingTime: string;
   category?: string;
+  title_en?: string;
+  description_en?: string;
+  category_en?: string;
+  tags_en?: string[];
 };
 
 type Planned = {
@@ -31,12 +35,11 @@ type Planned = {
 };
 
 function categorySlug(category: string | undefined): string {
-  const c = (category ?? "Analyse").toLowerCase();
+  const c = (category ?? "Explication").toLowerCase();
   if (c.startsWith("enquê") || c.startsWith("invest")) return "enquete";
-  if (c.startsWith("explic") || c.startsWith("explain")) return "explication";
   if (c.startsWith("portr") || c.startsWith("profil")) return "portrait";
-  if (c.startsWith("méth") || c.startsWith("meth")) return "explication";
-  return "analyse";
+  // explication / explain / méthode / analyse (legacy) → explication
+  return "explication";
 }
 
 /**
@@ -68,7 +71,6 @@ export default function AnalysesClient({
   const CATEGORIES = [
     { key: "all", label: t("fx.analyses.cat.all"), raw: "Toutes", tip: null as string | null },
     { key: "enquetes", label: t("fx.analyses.cat.enquetes"), raw: "Enquêtes", tip: t("fx.analyses.cat.enquetes.tip") },
-    { key: "analyses", label: t("fx.analyses.cat.analyses"), raw: "Analyses", tip: t("fx.analyses.cat.analyses.tip") },
     { key: "explications", label: t("fx.analyses.cat.explications"), raw: "Explications", tip: t("fx.analyses.cat.explications.tip") },
     { key: "portraits", label: t("fx.analyses.cat.portraits"), raw: "Portraits", tip: t("fx.analyses.cat.portraits.tip") },
   ] as const;
@@ -93,14 +95,13 @@ export default function AnalysesClient({
   function categoryLabel(category: string | undefined): string {
     const slug = categorySlug(category);
     if (slug === "enquete") return t("fx.analyses.cat.enquetes").replace(/s$/, "");
-    if (slug === "explication") return t("fx.analyses.cat.explications").replace(/s$/, "");
     if (slug === "portrait") return t("fx.analyses.cat.portraits").replace(/s$/, "");
-    return t("fx.analyses.cat.analyses").replace(/s$/, "");
+    return t("fx.analyses.cat.explications").replace(/s$/, "");
   }
 
   const filtered = useMemo(() => {
     if (active === "all") return posts;
-    return posts.filter((p) => (p.category ?? "Analyses") === activeRaw);
+    return posts.filter((p) => (p.category ?? "Explications") === activeRaw);
   }, [active, activeRaw, posts]);
 
   const filteredPlanned = useMemo(() => {
@@ -191,20 +192,25 @@ export default function AnalysesClient({
                 <div className={`fx-hero-article-kicker fx-kicker-${categorySlug(hero.category)}`}>
                   {categoryLabel(hero.category)} · {hero.readingTime}
                 </div>
-                <h2>{renderTitle(hero.title)}</h2>
-                <p className="fx-hero-article-deck">{hero.description}</p>
+                <h2>{renderTitle(locale === "en" && hero.title_en ? hero.title_en : hero.title)}</h2>
+                <p className="fx-hero-article-deck">
+                  {locale === "en" && hero.description_en ? hero.description_en : hero.description}
+                </p>
                 <div className="fx-hero-article-meta">
                   <span>
                     {t("fx.analyses.hero.by")} <b>{hero.author ?? "France Open Data"}</b>
                   </span>
                   <span>·</span>
                   <span>{t("fx.analyses.hero.published")} {formatDate(hero.date)}</span>
-                  {hero.tags && hero.tags.length > 0 && (
-                    <>
-                      <span>·</span>
-                      <span>{hero.tags.slice(1, 4).join(" · ")}</span>
-                    </>
-                  )}
+                  {(() => {
+                    const tags = locale === "en" && hero.tags_en && hero.tags_en.length > 0 ? hero.tags_en : hero.tags;
+                    return tags && tags.length > 0 ? (
+                      <>
+                        <span>·</span>
+                        <span>{tags.slice(1, 4).join(" · ")}</span>
+                      </>
+                    ) : null;
+                  })()}
                 </div>
                 <span className="fx-hero-article-cta">{t("fx.analyses.hero.cta")}</span>
               </div>
@@ -259,8 +265,8 @@ export default function AnalysesClient({
                     </span>
                   </div>
                   <div className="fx-article-body">
-                    <h3>{renderTitle(p.title)}</h3>
-                    <p>{p.description}</p>
+                    <h3>{renderTitle(locale === "en" && p.title_en ? p.title_en : p.title)}</h3>
+                    <p>{locale === "en" && p.description_en ? p.description_en : p.description}</p>
                     <div className="fx-article-meta">
                       <span>{t("fx.analyses.card.published")} <b>{formatDate(p.date)}</b></span>
                       <span>·</span>
@@ -268,6 +274,11 @@ export default function AnalysesClient({
                     </div>
                   </div>
                 </Link>
+              ))}
+              {/* Combler les slots vides de la dernière row pour ne pas exposer
+                  le background noir de la grille (gap: 1px sur fond ink). */}
+              {Array.from({ length: (3 - (rest.length % 3)) % 3 }).map((_, i) => (
+                <div key={`pad-${i}`} className="fx-article-card fx-article-card-empty" aria-hidden="true" />
               ))}
             </div>
           </div>

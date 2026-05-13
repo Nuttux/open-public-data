@@ -1,0 +1,32 @@
+flowchart LR
+    S1[OpenData<br/>subventions-associations-<br/>votees-*] -->|fetch_subventions_<br/>opendata.py| S2
+    S3[OpenData<br/>subventions-versees-<br/>annexe-CA-*] --> S2
+    S2[Merge votées ∪ annexe CA<br/>by year+normalized name]
+    S2 -->|direct JSON emit<br/>bypass BQ| S4[(beneficiaires_*.json<br/>raw form, pre-enrichment)]
+    S2 --> RAWS[(raw.subventions_*)]
+    RAWS --> STGS[stg_subventions_all.sql<br/>stg_associations.sql]
+    STGS --> CS[core_subventions.sql<br/>~53k rows 2018–2024<br/>skip 2020–2021 anonymized]
+
+    D1[a06-v7 HTML+PDF] -->|scrape_deliberations.py<br/>pypdf+regex| D2[cache/delibs/pdf/]
+    D2 -->|enrich_deliberations_llm.py<br/>+ _sirene + _websearch| D3[(subventions_delibs/<br/>session_*.json)]
+    D3 -->|apply_deliberation_results.py| CS
+
+    CS --> EN1[enrich_thematique_llm.py<br/>Gemini 3 Flash · Pareto 500]
+    EN1 --> CACHE1[(seed_cache_thematique_<br/>beneficiaires.csv)]
+    CS --> EN2[enrich_beneficiaire_<br/>grounded_llm.py<br/>Claude Haiku 4.5 + web_search]
+    EN2 --> CACHE2[(enrichment/<br/>beneficiaire_grounded.json)]
+    CS --> EN3[enrich_sirene.py<br/>recherche-entreprises API]
+    EN3 --> CACHE3[(enrichment/<br/>sirene_companies.json)]
+    CS --> EN4[vulgarize_subventions_llm.py<br/>LLM]
+    EN4 --> CACHE4[(enrichment/<br/>vulgarization_subventions.json)]
+
+    CACHE1 --> IE[int_subventions_enrichies.sql]
+    CS --> IE
+    IE --> MT[mart_subventions_treemap]
+    IE --> MB[mart_subventions_beneficiaires]
+    MT -->|export_subventions_data.py| JT[subventions/treemap_*.json<br/>2018–2019, 2022–2024]
+    MB -->|export_subventions_data.py| JB[subventions/beneficiaires_*.json]
+    JB --> JS[subventions/<br/>beneficiaires_search.json]
+    JT & JB & JS --> UIQ[/qui-recoit<br/>QuiRecoitExplorer/]
+    CACHE2 & CACHE3 & CACHE4 -->|lazy-load per click| UIQ
+    D3 --> UIQ

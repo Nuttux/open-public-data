@@ -1,0 +1,158 @@
+{
+  "generated_at": "2026-05-02T11:05:31.623041+00:00",
+  "source": "data.gouv.fr — DECP consolidés",
+  "source_url": "https://www.data.gouv.fr/datasets/donnees-essentielles-de-la-commande-publique-consolidees-format-tabulaire/",
+  "source_resource_id": "22847056-61df-452d-837d-8b8ceadbfc52",
+  "commune": {
+    "slug": "paris",
+    "nom": "Paris",
+    "siren": "217500016"
+  },
+  "aggregates": {
+    "total_count": 15407,
+    "total_montant": 26500180288,
+    "coverage_pct": 86.4,
+    "n_with_montant": 13310,
+    "duplicates_dropped": 2621,
+    "outliers_dropped": 5,
+    "sentinels_dropped": 0,
+    "max_plausible_montant": 200000000,
+    "by_year": [
+      {
+        "year": 2019,
+        "montant": 2120444214,
+        "count": 1274
+      },
+      {
+        "year": 2020,
+        "montant": 3278417511,
+        "count": 1962
+      },
+      {
+        "year": 2021,
+        "montant": 5310668679,
+        "count": 3168
+      },
+      {
+        "year": 2022,
+        "montant": 5411486477,
+        "count": 2966
+      },
+      {
+        "year": 2023,
+        "montant": 2737886312,
+        "count": 3231
+      },
+      {
+        "year": 2024,
+        "montant": 2893154573,
+        "count": 1258
+      },
+      {
+        "year": 2025,
+        "montant": 3778312037,
+        "count": 1188
+      },
+      {
+        "year": 2026,
+        "montant": 957304484,
+        "count": 352
+      }
+    ],
+    "top_titulaires_window_years": 5,
+    "top_titulaires": [
+      {
+        "id": "39436621500041",
+        "nom": "TRAVAUX BATIMENTS ELECTRICITE SECURITE (TBES)",
+        "montant": 418725580,
+        "count": 101
+      },
+      {
+        "id": "42094822600089",
+        "nom": "EUROVIA ILE DE FRANCE",
+        "montant": 372982477,
+        "count": 52
+      },
+      {
+        "id": "?",
+        "nom": "?",
+        "montant": 371203492,
+        "count": 88
+      },
+      {
+        "id": "41302718641302",
+        "nom": "?",
+        "montant": 355116793,
+        "count": 7
+      },
+      {
+        "id": "49475159700035",
+        "nom": "AD2R (AD2R 92-AD2R 75- AD2R ASSISTANCE - MILES AUTO)",
+        "montant": 290243998,
+        "count": 6
+      },
+      {
+        "id": "69201718900097",
+        "nom": "REOLIAN MULTITEC",
+        "montant": 246065089,
+        "count": 19
+      },
+      {
+        "id": "69201718900048",
+        "nom": "REOLIAN MULTITEC",
+        "montant": 243511088,
+        "count": 36
+      },
+      {
+        "id": "56207779200058",
+        "nom": "BALAS",
+        "montant": 220604793,
+        "count": 35
+      },
+      {
+        "id": "53375321600027",
+        "nom": "POLYCEJA (DERICHEBOURG ENVIRONNEMENT)",
+        "montant": 218254551,
+        "count": 4
+      },
+      {
+        "id": "44140881200051",
+        "nom": "KORRIGAN",
+        "montant": 209767531,
+        "count": 11
+      },
+      {
+        "id": "35005058900240",
+        "nom": "SEPUR",
+        "montant": 205064290,
+        "count": 9
+      },
+      {
+        "id": "50163916500015",
+        "nom": "ENTREPRISE DE TRAVAUX FAYOLLE ET FILS",
+        "montant": 201565655,
+        "count": 27
+      },
+      {
+        "id": "32610261300022",
+        "nom": "LA LOUISIANE",
+        "montant": 194409086,
+        "count": 49
+      },
+      {
+        "id": "82436260200032",
+        "nom": "CONTROLE DE STATIONNEMENT EN VOIRIE",
+        "montant": 183044594,
+        "count": 2
+      },
+      {
+        "id": "41797626300018",
+        "nom": "COCHERY ILE DE FRANCE",
+        "montant": 177312492,
+        "count": 69
+      }
+    ]
+  },
+  "notes_fr": "Marchés publics filtrés par SIREN acheteur (217500016). Couverture estimée de la qualité montant : 86.4% des marchés ont un montant non-nul renseigné. La DECP au national est connue pour avoir une qualité variable selon les acheteurs ; les chiffres ci-dessous sont bruts, non corrigés.",
+  "notes_en": "Public procurement filtered by buyer SIREN (217500016). Estimated quality coverage: 86.4% of contracts have a non-zero amount. DECP is known for variable quality across buyers; numbers below are raw, unadjusted."
+}

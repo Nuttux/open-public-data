@@ -1,0 +1,7 @@
+flowchart LR
+    S1[(seed_city_constants.csv<br/>seed_editorial_params.csv<br/>seed_legal_thresholds.csv)] -->|export_methodology.py| J1[methodology.json<br/>paris_population, thresholds,<br/>timeline, editorial choices]
+    ALLCORE[All core_* tables] -->|export_data_availability.py| J2[data_availability.json<br/>per-dataset per-year:<br/>status, nb_lignes, total_montant,<br/>warnings]
+    J1 --> UIMET[/methode MethodeClient.tsx/]
+    J1 --> UILAND[/ LandingClient.tsx<br/>per-capita calc/]
+    J2 --> UIMET
+    CHECK[check_no_hardcoded_factuals.py<br/>CI gate] -.->|scans UI code<br/>fails if metric lacks source_url| J1

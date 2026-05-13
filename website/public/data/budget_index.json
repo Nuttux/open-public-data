@@ -60,9 +60,9 @@
       "year": 2024,
       "type_budget": "execute",
       "dataStatus": "PARTIEL",
-      "recettes": 11526790953.86,
+      "recettes": 11526790953.859999,
       "depenses": 11494727617.75,
-      "solde": 32063336.11000061
+      "solde": 32063336.109998703
     },
     {
       "year": 2023,
@@ -93,8 +93,8 @@
       "type_budget": "execute",
       "dataStatus": "COMPLET",
       "recettes": 10517970419.06,
-      "depenses": 9940645002.640003,
-      "solde": 577325416.4199963
+      "depenses": 9940645002.640001,
+      "solde": 577325416.4199982
     },
     {
       "year": 2019,

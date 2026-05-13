@@ -25,7 +25,7 @@ import requests
 # =============================================================================
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent
-SUBVENTIONS_DIR = PROJECT_ROOT / "website" / "public" / "data" / "subventions"
+SUBVENTIONS_DIR = PROJECT_ROOT / "pipeline" / "cache" / "subventions_pre_enrichment"
 SEED_PATH = Path(__file__).parent.parent.parent / "seeds" / "seed_cache_thematique_beneficiaires.csv"
 
 GEMINI_API_KEY = os.environ.get("GOOGLE_API_KEY", "")
@@ -37,7 +37,7 @@ GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3-flash-preview")
 GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent"
 
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-CLAUDE_MODEL = os.environ.get("CLAUDE_MODEL", "claude-opus-4-7")
+CLAUDE_MODEL = os.environ.get("CLAUDE_MODEL", "claude-haiku-4-5")
 
 BATCH_SIZE = 10
 # Long tail activé : on classe tous les bénéficiaires exportés (cap côté export).
@@ -186,7 +186,7 @@ def call_claude_batch(beneficiaires: list) -> list:
         payload = {
             "model": CLAUDE_MODEL,
             "max_tokens": 8192,
-            "temperature": 0.1,
+            # temperature deprecated for Claude 4.x models — omit it
             "messages": [{
                 "role": "user",
                 "content": f"{SYSTEM_PROMPT}\n\nBénéficiaires à classifier:\n{items_text}"

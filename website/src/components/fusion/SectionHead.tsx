@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 type Props = {
   number?: string;
   kind?: ReactNode;
-  title: ReactNode;
+  title?: ReactNode;
   subtitle?: ReactNode;
   className?: string;
 };
@@ -23,7 +23,7 @@ export default function SectionHead({ number, kind, title, subtitle, className }
           {kind && <span className="fx-sec-kind">{kind}</span>}
         </div>
       )}
-      <h2 className="fx-sec-title">{title}</h2>
+      {title && <h2 className="fx-sec-title">{title}</h2>}
       {subtitle && <p className="fx-sec-sub">{subtitle}</p>}
     </div>
   );

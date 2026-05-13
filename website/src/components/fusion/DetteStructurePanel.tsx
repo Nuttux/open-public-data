@@ -4,11 +4,12 @@ import { useState } from "react";
 import type { DetteInstrument, PatrimoineStructure } from "@/lib/fusion-data";
 import { fmtBillions, fmtDec, fmtMillions, fmtInt } from "@/lib/fmt";
 import InstrumentDetteFiche from "./InstrumentDetteFiche";
-import { useT } from "@/lib/localeContext";
+import { useT, useLocale } from "@/lib/localeContext";
+import { trLabel } from "@/lib/label-translate";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.replace(`{${k}}`, String(v));
+  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
   return r;
 };
 
@@ -69,9 +70,9 @@ export default function DetteStructurePanel({ structure, year }: Props) {
             <span className="u">{t("fx.ds.maturite_unit")}</span>
           </div>
           <div className="fx-maturite-sub">
-            <b>{t("fx.ds.maturite_sub_b")}</b> · {t("fx.ds.maturite_sub")}{" "}
+            {t("fx.ds.maturite_sub")}{" "}
             <b>{structure.prochaine_echeance_lourde.mois} {structure.prochaine_echeance_lourde.annee}</b>{" "}
-            ({fmtInt(structure.prochaine_echeance_lourde.montant_m_eur)} M € · {structure.prochaine_echeance_lourde.libelle})
+            ({fmtInt(structure.prochaine_echeance_lourde.montant_m_eur)} M €)
           </div>
         </div>
 
@@ -90,11 +91,6 @@ export default function DetteStructurePanel({ structure, year }: Props) {
           </div>
           <div className="fx-instruments-note">
             <b>{t("fx.ds.total_b")} · {fmtBillions(structure.total_dette_financiere)} {t("fx.s.md_eur")}</b>
-            {" · "}
-            {structure.instruments
-              .map((i) => `${fmtInt(i.part * 100)} % ${i.label.toLowerCase().split(" ")[0]}`)
-              .join(" · ")}
-            . {t("fx.ds.footer_extinction")}
           </div>
         </div>
       </div>
@@ -120,6 +116,7 @@ type RowProps = {
 
 function Row({ inst, maxValue, onClick, first }: RowProps) {
   const t = useT();
+  const { locale } = useLocale();
   const pct = Math.max(0, Math.min(100, (inst.encours / maxValue) * 100));
   const unit = inst.encours >= 1e9 ? t("fx.s.md_eur") : t("fx.s.m_eur");
   const display = inst.encours >= 1e9 ? fmtBillions(inst.encours) : fmtMillions(inst.encours, 0);
@@ -128,11 +125,11 @@ function Row({ inst, maxValue, onClick, first }: RowProps) {
       type="button"
       className={`fx-inst-row${first ? " first" : ""}`}
       onClick={onClick}
-      aria-label={fill(t("fx.ds.row_aria"), { label: inst.label })}
+      aria-label={fill(t("fx.ds.row_aria"), { label: trLabel(inst.label, locale) })}
     >
       <span className="l">
-        {inst.label}
-        <span className="sub">{inst.subtitle}</span>
+        {trLabel(inst.label, locale)}
+        <span className="sub">{trLabel(inst.subtitle, locale)}</span>
       </span>
       <span className="bar">
         <span className="fill" style={{ width: `${pct}%` }} />

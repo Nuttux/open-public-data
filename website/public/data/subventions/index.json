@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T18:17:16.968113",
+  "generated_at": "2026-04-23T15:59:25.851271",
   "source": "dbt marts (mart_subventions_treemap, mart_subventions_beneficiaires)",
   "availableYears": [
     2024,
@@ -44,8 +44,8 @@
       "Sécurité",
       "Administration",
       "Santé",
-      "Environnement",
       "International",
+      "Environnement",
       "Autre"
     ],
     "natures_juridiques": [
@@ -80,8 +80,8 @@
       "DGOM",
       "DTEC",
       "SG",
-      "DILT",
       "DLH",
+      "DILT",
       "DU",
       "DAJ"
     ]

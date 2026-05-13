@@ -1,3 +1,7 @@
+"use client";
+
+import { useT } from "@/lib/localeContext";
+
 type Point = {
   year: number;
   value: number;
@@ -46,6 +50,7 @@ export default function BudgetTimeline({
   showStatus = true,
   ariaLabel,
 }: Props) {
+  const t = useT();
   // viewBox: 1200x340. Padding: 60 left, 20 right, 40 top, 60 bottom (labels)
   const W = 1200;
   const H = 340;
@@ -94,13 +99,14 @@ export default function BudgetTimeline({
   const dashedD = dashedPoints.map((p) => `${xFor(p.year)},${yFor(p.value)}`).join(" ");
 
   const active = sorted.find((p) => p.year === activeYear) ?? sorted[sorted.length - 1];
+  const computedAriaLabel = ariaLabel ?? t("fx.timeline.aria_evolution").replace("{from}", String(sorted[0]?.year ?? "")).replace("{to}", String(sorted[sorted.length - 1]?.year ?? ""));
 
   return (
-    <div className="fx-timechart">
+    <div className="fx-timechart" tabIndex={0} role="group" aria-label={computedAriaLabel}>
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
-        aria-label={ariaLabel ?? `Évolution du budget ${sorted[0]?.year} à ${sorted[sorted.length - 1]?.year}`}
+        aria-label={computedAriaLabel}
         preserveAspectRatio="xMidYMid meet"
         style={{ width: "100%", height }}
       >
@@ -167,7 +173,7 @@ export default function BudgetTimeline({
           const activeY = yFor(active.value);
           const badgeText =
             activeBadge ??
-            `${active.year} ${active.type === "vote" ? "voté" : active.type === "estimate" ? "est." : "exéc."}`;
+            `${active.year} ${active.type === "vote" ? t("fx.timeline.badge.vote") : active.type === "estimate" ? t("fx.timeline.badge.est") : t("fx.timeline.badge.exec")}`;
           const badgeW = Math.max(88, badgeText.length * 7.2 + 20);
           const halfW = badgeW / 2;
           const MARGIN = 4;
@@ -222,7 +228,7 @@ export default function BudgetTimeline({
                 fill={p.year === activeYear ? "#0a0a0a" : "#9099a6"}
                 fontWeight={p.year === activeYear ? 700 : 400}
               >
-                {p.type === "execute" ? "EXÉC." : p.type === "vote" ? "VOTÉ" : "EST."}
+                {p.type === "execute" ? t("fx.timeline.status.exec") : p.type === "vote" ? t("fx.timeline.status.vote") : t("fx.timeline.status.est")}
               </text>
             ))}
           </g>

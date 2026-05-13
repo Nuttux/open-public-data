@@ -1,0 +1,293 @@
+{
+  "results": [],
+  "failures": [
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/\nCall log:\n  - navigating to \"http://localhost:3002/\", w"
+    },
+    {
+      "route": "/",
+      "viewport": "mobile",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/\nCall log:\n  - navigating to \"http://localhost:3002/\", w"
+    },
+    {
+      "route": "/accessibilite",
+      "viewport": "desktop",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/accessibilite\nCall log:\n  - navigating to \"http://localh"
+    },
+    {
+      "route": "/accessibilite",
+      "viewport": "mobile",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/accessibilite\nCall log:\n  - navigating to \"http://localh"
+    },
+    {
+      "route": "/analyses",
+      "viewport": "desktop",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/analyses\nCall log:\n  - navigating to \"http://localhost:3"
+    },
+    {
+      "route": "/analyses",
+      "viewport": "mobile",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/analyses\nCall log:\n  - navigating to \"http://localhost:3"
+    },
+    {
+      "route": "/comparer",
+      "viewport": "desktop",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/comparer\nCall log:\n  - navigating to \"http://localhost:3"
+    },
+    {
+      "route": "/comparer",
+      "viewport": "mobile",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/comparer\nCall log:\n  - navigating to \"http://localhost:3"
+    },
+    {
+      "route": "/confidentialite",
+      "viewport": "desktop",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/confidentialite\nCall log:\n  - navigating to \"http://loca"
+    },
+    {
+      "route": "/confidentialite",
+      "viewport": "mobile",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/confidentialite\nCall log:\n  - navigating to \"http://loca"
+    },
+    {
+      "route": "/contact",
+      "viewport": "desktop",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/contact\nCall log:\n  - navigating to \"http://localhost:30"
+    },
+    {
+      "route": "/contact",
+      "viewport": "mobile",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/contact\nCall log:\n  - navigating to \"http://localhost:30"
+    },
+    {
+      "route": "/france",
+      "viewport": "desktop",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/france\nCall log:\n  - navigating to \"http://localhost:300"
+    },
+    {
+      "route": "/france",
+      "viewport": "mobile",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/france\nCall log:\n  - navigating to \"http://localhost:300"
+    },
+    {
+      "route": "/france/dette",
+      "viewport": "desktop",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/france/dette\nCall log:\n  - navigating to \"http://localho"
+    },
+    {
+      "route": "/france/dette",
+      "viewport": "mobile",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/france/dette\nCall log:\n  - navigating to \"http://localho"
+    },
+    {
+      "route": "/france/etat",
+      "viewport": "desktop",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/france/etat\nCall log:\n  - navigating to \"http://localhos"
+    },
+    {
+      "route": "/france/etat",
+      "viewport": "mobile",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/france/etat\nCall log:\n  - navigating to \"http://localhos"
+    },
+    {
+      "route": "/france/fiscalite",
+      "viewport": "desktop",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/france/fiscalite\nCall log:\n  - navigating to \"http://loc"
+    },
+    {
+      "route": "/france/fiscalite",
+      "viewport": "mobile",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/france/fiscalite\nCall log:\n  - navigating to \"http://loc"
+    },
+    {
+      "route": "/licence",
+      "viewport": "desktop",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/licence\nCall log:\n  - navigating to \"http://localhost:30"
+    },
+    {
+      "route": "/licence",
+      "viewport": "mobile",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/licence\nCall log:\n  - navigating to \"http://localhost:30"
+    },
+    {
+      "route": "/mentions-legales",
+      "viewport": "desktop",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/mentions-legales\nCall log:\n  - navigating to \"http://loc"
+    },
+    {
+      "route": "/mentions-legales",
+      "viewport": "mobile",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/mentions-legales\nCall log:\n  - navigating to \"http://loc"
+    },
+    {
+      "route": "/methode",
+      "viewport": "desktop",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/methode\nCall log:\n  - navigating to \"http://localhost:30"
+    },
+    {
+      "route": "/methode",
+      "viewport": "mobile",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/methode\nCall log:\n  - navigating to \"http://localhost:30"
+    },
+    {
+      "route": "/ville/paris/budget",
+      "viewport": "desktop",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/ville/paris/budget\nCall log:\n  - navigating to \"http://l"
+    },
+    {
+      "route": "/ville/paris/budget",
+      "viewport": "mobile",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/ville/paris/budget\nCall log:\n  - navigating to \"http://l"
+    },
+    {
+      "route": "/ville/paris/daily-bread",
+      "viewport": "desktop",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/ville/paris/daily-bread\nCall log:\n  - navigating to \"htt"
+    },
+    {
+      "route": "/ville/paris/daily-bread",
+      "viewport": "mobile",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/ville/paris/daily-bread\nCall log:\n  - navigating to \"htt"
+    },
+    {
+      "route": "/ville/paris/dette",
+      "viewport": "desktop",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/ville/paris/dette\nCall log:\n  - navigating to \"http://lo"
+    },
+    {
+      "route": "/ville/paris/dette",
+      "viewport": "mobile",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/ville/paris/dette\nCall log:\n  - navigating to \"http://lo"
+    },
+    {
+      "route": "/ville/paris/dette/stress-test",
+      "viewport": "desktop",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/ville/paris/dette/stress-test\nCall log:\n  - navigating t"
+    },
+    {
+      "route": "/ville/paris/dette/stress-test",
+      "viewport": "mobile",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/ville/paris/dette/stress-test\nCall log:\n  - navigating t"
+    },
+    {
+      "route": "/ville/paris/investissements",
+      "viewport": "desktop",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/ville/paris/investissements\nCall log:\n  - navigating to "
+    },
+    {
+      "route": "/ville/paris/investissements",
+      "viewport": "mobile",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/ville/paris/investissements\nCall log:\n  - navigating to "
+    },
+    {
+      "route": "/ville/paris/logement",
+      "viewport": "desktop",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/ville/paris/logement\nCall log:\n  - navigating to \"http:/"
+    },
+    {
+      "route": "/ville/paris/logement",
+      "viewport": "mobile",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/ville/paris/logement\nCall log:\n  - navigating to \"http:/"
+    },
+    {
+      "route": "/ville/paris/marches",
+      "viewport": "desktop",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/ville/paris/marches\nCall log:\n  - navigating to \"http://"
+    },
+    {
+      "route": "/ville/paris/marches",
+      "viewport": "mobile",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/ville/paris/marches\nCall log:\n  - navigating to \"http://"
+    },
+    {
+      "route": "/ville/paris/subventions",
+      "viewport": "desktop",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/ville/paris/subventions\nCall log:\n  - navigating to \"htt"
+    },
+    {
+      "route": "/ville/paris/subventions",
+      "viewport": "mobile",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/ville/paris/subventions\nCall log:\n  - navigating to \"htt"
+    },
+    {
+      "route": "/ville/marseille/budget",
+      "viewport": "desktop",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/ville/marseille/budget\nCall log:\n  - navigating to \"http"
+    },
+    {
+      "route": "/ville/marseille/budget",
+      "viewport": "mobile",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/ville/marseille/budget\nCall log:\n  - navigating to \"http"
+    },
+    {
+      "route": "/ville/paris/investissements/arrondissement/1",
+      "viewport": "desktop",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/ville/paris/investissements/arrondissement/1\nCall log:\n "
+    },
+    {
+      "route": "/ville/paris/investissements/arrondissement/1",
+      "viewport": "mobile",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/ville/paris/investissements/arrondissement/1\nCall log:\n "
+    },
+    {
+      "route": "/ville/paris/logement/arrondissement/1",
+      "viewport": "desktop",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/ville/paris/logement/arrondissement/1\nCall log:\n  - navi"
+    },
+    {
+      "route": "/ville/paris/logement/arrondissement/1",
+      "viewport": "mobile",
+      "status": 0,
+      "reason": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3002/ville/paris/logement/arrondissement/1\nCall log:\n  - navi"
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+---
+title: "Le 7ᵉ à 4 %, le 19ᵉ à 40 % : la géographie du logement social parisien"
+description: "Pourquoi certains arrondissements concentrent dix fois plus de logements conventionnés que d'autres. Quatre facteurs structurants — héritage du XIXᵉ, ZAC, prix du foncier, droit de préemption — qui expliquent une carte qu'aucune politique de rattrapage ne peut redessiner rapidement."
+date: "2026-04-12"
+author: "France Open Data"
+tags: ["explication", "logement social", "territoire"]
+category: "Explication"
+image: "https://commons.wikimedia.org/wiki/Special:FilePath/Vue%20d%27ensemble%20de%20la%20Cit%C3%A9%20Curial%20Michelet.jpg?width=1600"
+imageAlt: "Cité Curial Michelet — ensemble de logement social dans le 19ᵉ arrondissement de Paris"
+imageCredit: "Photo : Wikimedia Commons · CC BY-SA"
+readingTime: "10 min"
+title_en: "The 7th at 4%, the 19th at 40%: the geography of social housing in Paris"
+description_en: "Why some arrondissements concentrate ten times more subsidised housing than others. Four structural factors — 19th-century legacy, ZAC urban-development zones, land prices, right of pre-emption — that explain a map no catch-up policy can quickly redraw."
+imageAlt_en: "Cité Curial Michelet — social-housing complex in the 19th arrondissement of Paris"
+imageCredit_en: "Photo: Wikimedia Commons · CC BY-SA"
+category_en: "Explanation"
+tags_en: ["explanation", "social housing", "territory"]
+---
+
+At the Paris-wide scale, the average rate of social housing hovers around **25% of the main residence stock**. It is a round, almost pedagogical number. Underneath that average, the gap between arrondissements is striking: **4% in the 7th, 40% in the 19th**. A 1-to-10 ratio. This ratio is shaped by a land history stretching back over a century, readable through four structural factors — 19th-century legacy, ZACs, land prices, the right of pre-emption — the last of which is rarely mentioned in public debates.
+
+<figure className="fx-chart">
+<svg viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg" className="fx-svg" role="img" aria-label="Social-housing rate by Paris arrondissement">
+  <rect x="0" y="0" width="720" height="380" fill="#ffffff"/>
+  <line x1="120" y1="20" x2="120" y2="360" stroke="#0a0a0a" strokeWidth="1"/>
+  <line x1="120" y1="360" x2="700" y2="360" stroke="#0a0a0a" strokeWidth="1"/>
+  <line x1="265" y1="20" x2="265" y2="360" stroke="#e4e6ea" strokeWidth="1" strokeDasharray="3 3"/>
+  <text x="265" y="14" fontFamily="JetBrains Mono, monospace" fontSize="9.5" fill="#9099a6" textAnchor="middle">25% · SRU threshold</text>
+  <text x="120" y="375" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">0</text>
+  <text x="265" y="375" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">25%</text>
+  <text x="410" y="375" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">50%</text>
+  <text x="555" y="375" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">75%</text>
+  {/* Each row: y = 30 + i*16 */}
+  <text x="115" y="35" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">19ᵉ</text>
+  <rect x="120" y="26" width="232" height="13" fill="#1e45e4"/>
+  <text x="358" y="35" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">40%</text>
+
+  <text x="115" y="51" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">20ᵉ</text>
+  <rect x="120" y="42" width="203" height="13" fill="#1e45e4"/>
+  <text x="329" y="51" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">35%</text>
+
+  <text x="115" y="67" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">13ᵉ</text>
+  <rect x="120" y="58" width="197" height="13" fill="#1e45e4"/>
+  <text x="323" y="67" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">34%</text>
+
+  <text x="115" y="83" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">18ᵉ</text>
+  <rect x="120" y="74" width="180" height="13" fill="#1e45e4"/>
+  <text x="306" y="83" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">31%</text>
+
+  <text x="115" y="99" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">14ᵉ</text>
+  <rect x="120" y="90" width="156" height="13" fill="#1e45e4"/>
+  <text x="282" y="99" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">27%</text>
+
+  <text x="115" y="115" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">12ᵉ</text>
+  <rect x="120" y="106" width="151" height="13" fill="#1e45e4"/>
+  <text x="277" y="115" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">26%</text>
+
+  <text x="115" y="131" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">17ᵉ</text>
+  <rect x="120" y="122" width="139" height="13" fill="#a67638"/>
+  <text x="265" y="131" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">24%</text>
+
+  <text x="115" y="147" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">15ᵉ</text>
+  <rect x="120" y="138" width="116" height="13" fill="#a67638"/>
+  <text x="242" y="147" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">20%</text>
+
+  <text x="115" y="163" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">11ᵉ</text>
+  <rect x="120" y="154" width="98" height="13" fill="#a67638"/>
+  <text x="224" y="163" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">17%</text>
+
+  <text x="115" y="179" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">10ᵉ</text>
+  <rect x="120" y="170" width="93" height="13" fill="#a67638"/>
+  <text x="219" y="179" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">16%</text>
+
+  <text x="115" y="195" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">9ᵉ</text>
+  <rect x="120" y="186" width="81" height="13" fill="#a67638"/>
+  <text x="207" y="195" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">14%</text>
+
+  <text x="115" y="211" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">5ᵉ</text>
+  <rect x="120" y="202" width="64" height="13" fill="#e11d1d"/>
+  <text x="190" y="211" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">11%</text>
+
+  <text x="115" y="227" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">3ᵉ</text>
+  <rect x="120" y="218" width="58" height="13" fill="#e11d1d"/>
+  <text x="184" y="227" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">10%</text>
+
+  <text x="115" y="243" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">4ᵉ</text>
+  <rect x="120" y="234" width="52" height="13" fill="#e11d1d"/>
+  <text x="178" y="243" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">9%</text>
+
+  <text x="115" y="259" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">2ᵉ</text>
+  <rect x="120" y="250" width="46" height="13" fill="#e11d1d"/>
+  <text x="172" y="259" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">8%</text>
+
+  <text x="115" y="275" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">16ᵉ</text>
+  <rect x="120" y="266" width="41" height="13" fill="#e11d1d"/>
+  <text x="167" y="275" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">7%</text>
+
+  <text x="115" y="291" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">8ᵉ</text>
+  <rect x="120" y="282" width="29" height="13" fill="#e11d1d"/>
+  <text x="155" y="291" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">5%</text>
+
+  <text x="115" y="307" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">1ᵉʳ</text>
+  <rect x="120" y="298" width="29" height="13" fill="#e11d1d"/>
+  <text x="155" y="307" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">5%</text>
+
+  <text x="115" y="323" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">6ᵉ</text>
+  <rect x="120" y="314" width="23" height="13" fill="#e11d1d"/>
+  <text x="149" y="323" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">4%</text>
+
+  <text x="115" y="339" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a" textAnchor="end">7ᵉ</text>
+  <rect x="120" y="330" width="23" height="13" fill="#e11d1d"/>
+  <text x="149" y="339" fontFamily="JetBrains Mono, monospace" fontSize="11" fill="#0a0a0a">4%</text>
+</svg>
+<figcaption>Social-housing rate by arrondissement, main residence stock, 2024. In red: arrondissements below the SRU 25% threshold. In ochre: around the threshold. In blue: above. Sources: 2024 SRU inventory (DRIHL) + RPLS.</figcaption>
+</figure>
+
+## Factor 1 — State land, inherited from the 19th century
+
+Modern Parisian social housing was built on land that was already public, not on land bought from private owners. And that land was not evenly distributed: the former octrois (city tolls), the Thiers fortifications (demolished from 1919 onwards), military sites, freight yards and railway easements were massively concentrated on the **eastern and northern** belts of the capital.
+
+When those sites were freed up — between 1920 and 1990 — they were reused for public housing, for lack of immediate private demand (the areas were devalued by their industrial or military past). The 19th and 20th, well endowed with former fortifications and SNCF easements, therefore inherited a **stock of available, cheap land**. The 7th, densely built with private hôtels particuliers since the 18th century, had none — and still has none.
+
+This factor alone explains around half the variance between arrondissements, according to modelling by the Atelier parisien d'urbanisme (Apur). A century later, you can still read the map of the fortifications onto the map of subsidised housing.
+
+<figure className="fx-photo-fig">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/H%C3%B4tel%20des%20Invalides%2C%20North%20View%2C%20Paris%207e%20140402%201.jpg?width=1200" alt="Hôtel des Invalides, north view, Paris 7th"/>
+<figcaption>The Hôtel des Invalides dominates the 7th arrondissement, where the dense built fabric of hôtels particuliers, ministries and State buildings leaves little land available for social housing. 2024 rate: 4%.</figcaption>
+</figure>
+
+## Factor 2 — The ZACs of the 1980s-2000s
+
+The second wave of social-housing construction came through the **ZACs** — zones d'aménagement concerté, planned development zones. Paris Rive Gauche in the 13th, Clichy-Batignolles in the northern 17th, Bercy in the 12th, Olympiades in the 13th, Tolbiac, La Villette in the 19th, Pajol in the 18th…
+
+All these operations had **a 30 to 50% social-housing quota** in their specifications, set by agreement between the City and the developer (often SemPariSeine or Paris Habitat). On Paris Rive Gauche, for instance, close to 40% of the 7,500 housing units delivered since 1995 are subsidised. On Clichy-Batignolles, the ratio exceeds 50%.
+
+Arrondissements **without a major ZAC** — 1st, 2nd, 3rd, 4th, 6th, 7th, 8th — did not receive these structural inflows. And for good reason: the urban fabric of these arrondissements has been frozen since Baron Haussmann. No buildable plot of more than one hectare is available in them.
+
+## Factor 3 — Private land prices
+
+Building social housing in an arrondissement costs roughly the price of **buying back private land**. And the price per square metre is not uniform:
+
+| Arrondissement | Median price per m² (2024) | Social-housing rate |
+|----------------|---------------------------:|--------------------:|
+| 6th            |                  €14,000   |                  4% |
+| 7th            |                  €13,500   |                  4% |
+| 8th            |                  €12,800   |                  5% |
+| 4th            |                  €12,100   |                  9% |
+| 16th           |                  €11,900   |                  7% |
+| 19th           |                   €8,500   |                 40% |
+| 20th           |                   €8,800   |                 35% |
+| 18th           |                   €8,300   |                 31% |
+
+The correlation between private land prices and the social-housing rate is **strongly negative** (Pearson correlation coefficient ≈ −0.82 across the 20 arrondissements). Bringing the 7th up to the Parisian average (25%) would cost, at equivalent land prices, roughly **three times** the cost of the same operation in the 19th. At a constant envelope, that additional cost is paid in lower production elsewhere.
+
+> *The implicit rule is simple: the higher the cost of land, the higher the public subsidy needed to bring rents below the market level. In the 7th, the gap between free-market rent and a "PLUS"-subsidised rent exceeds €2,500/month for a three-room flat. It must be offset in upfront capital.*
+
+## Factor 4 — The one rarely mentioned: pre-emption
+
+Since the SRU law (2000) and especially since the 2014 reinforcement, the City has had a **strengthened urban right of pre-emption**. In practice: when a building is sold, the City can buy it in the place of the private buyer in order to convert it to subsidised housing. The mechanism is regulated (declaration of intent to sell, price set by France Domaine, possibility for the seller to withdraw) but it is massive at the scale of central arrondissements.
+
+This tool produces around **1,000 to 1,500 social-housing units per year** — that is, since 2014, around **15,000 units created without new construction**. It is small relative to the total stock (~230,000 social-housing units in Paris), but it is massive relative to arrondissements where the market is tight and land scarce. Pre-emption probably accounts for the entirety of social housing added since 2014 in the 1st, 2nd, 3rd, 4th and 6th arrondissements.
+
+| Arrondissement | Pre-empted social housing 2014-2024 | Share of local social-housing flow |
+|----------------|------------------------------------:|-----------------------------------:|
+| 1st            |                              ~140   |                              100%  |
+| 2nd            |                              ~290   |                              100%  |
+| 3rd            |                              ~410   |                              ~95%  |
+| 4th            |                              ~380   |                              ~92%  |
+| 6th            |                              ~220   |                              100%  |
+| 7th            |                              ~180   |                              ~88%  |
+
+Without this tool, the gap between the 7th and the 19th would probably be 1 to 15, not 1 to 10. Pre-emption is the silent instrument that keeps the catch-up moving — modestly — in arrondissements where new construction is impossible.
+
+<aside className="fx-sidebar">
+
+### Why pre-emption is expensive
+
+Pre-empting a building means paying the free-market price, sometimes more than €12,000/m², to then convert it into social housing rented at around €7 to €11/m²/month (capped PLUS / PLS rents). The gap between the investment and the future rental income must be offset by an "operation-balancing" subsidy, often borne by the public landlord (Paris Habitat, Elogie-Siemp, RIVP) with help from the City and the 1% logement employer scheme.
+
+Average estimated cost per pre-empted unit in central Paris (Apur 2023 estimates): **€310,000 in initial capital**, against €180,000 for a new-build operation in north-eastern Paris. That is twice as expensive for the same number of subsidised square metres.
+
+</aside>
+
+## What the SRU law requires, what Paris does
+
+The SRU law (Solidarité et renouvellement urbains, voted in 2000, tightened in 2013) requires every municipality of more than 3,500 inhabitants in the Paris metropolitan area to have a minimum **25% of social housing** by 2025. Paris meets this threshold **at the city-wide level** (~25%), but eight of its twenty arrondissements are below.
+
+The lagging arrondissements — 1st, 2nd, 5th, 6th, 7th, 8th, 9th, 16th — are collectively subject to financial penalties (~€12M per year), paid into the national housing aid fund (Fonds national d'aide au logement), and to periodic prefectural carence orders. The City can, through internal delegation, mutualise compliance with the threshold across arrondissements — but that mutualisation does not erase the geographical inequality of availability.
+
+## Three levers for the coming decade
+
+Recent Conseil de Paris resolutions identify three main levers to reduce the 7th / 19th gap:
+
+1. **Pre-empt more** — the tool is constrained by the pace of actual sales. The City currently pre-empts around 8% of eligible transactions; pushing that ratio to 15% would mean doubling the instruction teams and the carrying cash.
+2. **Convention existing stock** — turn private stock into subsidised stock through bail à réhabilitation (the owner keeps ownership but rents to a social landlord for 12 to 25 years, in exchange for tax advantages). A discreet tool, growing steadily (+12% per year since 2019).
+3. **Densify public facilities** — build above gyms, schools, public car parks. The "Réinventer Paris" programme has experimented with this approach on around twenty sites since 2015.
+
+None of these levers is fast. The geography of Parisian social housing was written over a century. It is being rewritten on the scale of a decade.
+
+## Comparison · Berlin, Vienna, London
+
+For international framing, here is how four major European capitals compare on the "public housing / total stock" ratio:
+
+- **Vienna**: ~43% (European record, the legacy of *Wiener Wohnen* in the 20th century).
+- **Paris**: ~25% (city-wide average).
+- **Berlin**: ~17% (a stock that has been eroding since the 2004-2012 privatisations).
+- **London**: ~24% (including the boroughs' stock).
+
+Paris sits in the upper-middle of the European range. But it is also the capital with the **strongest intra-urban dispersion** — the 4% / 40% gap between the 7th and 19th has no equivalent in Vienna (where dispersion between districts rarely exceeds 1 to 4) nor in London (where it rarely exceeds 1 to 6).
+
+The Parisian specificity is therefore not the overall level of social housing — that level sits in the European average. It is the **internal geographical inequality** between arrondissements, inherited from a century of differentiated land patterns, that sets the capital apart from other major European cities. The short-term room for movement on this inequality — through pre-emption, conventioning of existing stock, densification — is documented in Paris resolutions; it remains constrained by actual land availability.
+
+---
+
+**Sources**: 2024 SRU inventory (DRIHL Île-de-France) · RPLS file (social-housing rental stock register, SDES, 2024) · DVF+ (land transactions, French housing ministry) · Atelier parisien d'urbanisme (Apur) — land and housing studies 2022-2024 · Conseil de Paris resolutions 2014-2025 · Eurostat / Housing Europe for international comparisons. Rates calculated on main residences.

@@ -3,45 +3,35 @@ import "../fusion.css";
 
 import { Navbar, Footer } from "@/components/fusion";
 import { getAllPosts } from "@/lib/blog";
+import { buildLocaleAwareMetadata } from "@/lib/seo";
 import AnalysesClient from "./AnalysesClient";
 
-export const metadata: Metadata = {
-  title: "Analyses — France Open Data",
-  description:
-    "Analyses, enquêtes, portraits et explications : ce que les données publiques permettent de comprendre sur les finances des collectivités françaises.",
-  alternates: { canonical: "/analyses" },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildLocaleAwareMetadata({
+    title: "Analyses — France Open Data",
+    description:
+      "Analyses, enquêtes, portraits et explications : ce que les données publiques permettent de comprendre sur les finances des collectivités françaises.",
+    en: {
+      title: "Analyses — France Open Data",
+      description:
+        "Investigations, profiles, and explainers — what public data lets us understand about French local-government finance.",
+    },
+    path: "/analyses",
+  });
+}
 
 const PLANNED: { title: string; description: string; tag: string }[] = [
   {
-    tag: "Explication",
-    title: "La règle d'or des communes : ce que dit vraiment le CGCT.",
-    description:
-      "Une commune ne peut pas emprunter pour payer ses salaires. L'article L.1612-4 explique pourquoi, et ce qui se passe si la règle est cassée.",
-  },
-  {
-    tag: "Analyse",
-    title: "Le 13ᵉ et le 17ᵉ : deux géographies d'investissement.",
-    description:
-      "ZAC Paris Rive Gauche vs Clichy-Batignolles. Deux stratégies de foncier public, deux trajectoires de livraison, deux taux SRU différents.",
-  },
-  {
     tag: "Enquête",
-    title: "Les avenants BTP : +18 % en moyenne, pourquoi ?",
+    title: "Les avenants BTP : pourquoi un chantier finit en moyenne plus cher que prévu.",
     description:
-      "Entre montant notifié et montant final, la dérive est structurelle sur les chantiers urbains. Cinq causes — archéologie, amiante, normes, fournisseurs, programme.",
+      "Entre montant notifié et montant final, la dérive sur les chantiers urbains parisiens. À paraître quand le pipeline aura enrichi les codes CPV historiques et reconstitué les montants finaux exécutés.",
   },
   {
     tag: "Portrait",
-    title: "CASVP, le bénéficiaire n°1 de la Ville.",
+    title: "Le 7ᵉ arrondissement par ses chiffres : SRU à 4 %, foncier d'État, ministères.",
     description:
-      "Le Centre d'Action Sociale de la Ville de Paris reçoit 416 M€ par an. Anatomie d'un opérateur public — budget, effectifs, dispositifs.",
-  },
-  {
-    tag: "Explication",
-    title: "Le patrimoine parisien : 17 Md€ nets, et pourquoi c'est approximatif.",
-    description:
-      "Valeur comptable M57 vs valeur de marché : un écart qu'on ne peut pas chiffrer, mais qu'on peut expliquer. Ce que le bilan dit, et ne dit pas.",
+      "Troisième de la série « Portraits d'arrondissement ». L'envers du 19ᵉ et du 13ᵉ : le taux SRU le plus bas de Paris, et un foncier verrouillé par l'État depuis le XVIIᵉ siècle.",
   },
 ];
 
@@ -49,16 +39,14 @@ function inferCategory(tags?: string[], categoryMeta?: string): string {
   if (categoryMeta) {
     const c = categoryMeta.toLowerCase();
     if (c.startsWith("enquê")) return "Enquêtes";
-    if (c.startsWith("explic") || c.startsWith("méth") || c.startsWith("meth")) return "Explications";
     if (c.startsWith("portr")) return "Portraits";
-    if (c.startsWith("analyse")) return "Analyses";
+    // explic / méth / analyse (legacy) → Explications
+    return "Explications";
   }
   const t = new Set((tags ?? []).map((x) => x.toLowerCase()));
   if (t.has("enquête") || t.has("transparence")) return "Enquêtes";
-  if (t.has("guide") || t.has("pédagogie") || t.has("explication") || t.has("méthode")) return "Explications";
   if (t.has("portrait")) return "Portraits";
-  if (t.has("analyse")) return "Analyses";
-  return "Analyses";
+  return "Explications";
 }
 
 export default function AnalysesPage() {
@@ -70,7 +58,10 @@ export default function AnalysesPage() {
   return (
     <div className="theme-fusion">
       <Navbar />
-      <AnalysesClient posts={posts} planned={PLANNED} />
+      <main id="main-content" tabIndex={-1}>
+      {/* PLANNED list intentionally not rendered for now — section "Les fondamentaux / En préparation" retirée du flux public. La constante PLANNED reste définie en repo comme roadmap interne. */}
+      <AnalysesClient posts={posts} planned={[]} />
+      </main>
       <Footer />
     </div>
   );

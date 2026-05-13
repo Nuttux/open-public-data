@@ -930,11 +930,11 @@
           "value": 189271.0
         },
         {
-          "name": "Action Économique: Charges diverses de gestion courante",
+          "name": "Action Économique: Charges interv. cpt propre - Aides pers.",
           "value": 100000.0
         },
         {
-          "name": "Action Économique: Charges interv. cpt propre - Aides pers.",
+          "name": "Action Économique: Charges diverses de gestion courante",
           "value": 100000.0
         },
         {
@@ -1814,11 +1814,11 @@
           "value": 570409.0
         },
         {
-          "name": "Invest. Environnement: Agencements et aménagements de terrains",
+          "name": "Invest. Environnement: Licences, procédés, droits similaires",
           "value": 500000.0
         },
         {
-          "name": "Invest. Environnement: Licences, procédés, droits similaires",
+          "name": "Invest. Environnement: Agencements et aménagements de terrains",
           "value": 500000.0
         },
         {
@@ -1980,11 +1980,11 @@
           "value": 400000.0
         },
         {
-          "name": "Autres: Autres subventions d'équipement transf.",
+          "name": "Autres: Subv. transf. GFP de rattachement",
           "value": 280000.0
         },
         {
-          "name": "Autres: Subv. transf. GFP de rattachement",
+          "name": "Autres: Autres subventions d'équipement transf.",
           "value": 280000.0
         },
         {
@@ -2280,11 +2280,11 @@
           "value": 55950.0
         },
         {
-          "name": "Transports: Titres annulés (sur exercices antérieurs",
+          "name": "Invest. Transports: Agencements et aménagements de terrains",
           "value": 50000.0
         },
         {
-          "name": "Invest. Transports: Agencements et aménagements de terrains",
+          "name": "Transports: Titres annulés (sur exercices antérieurs",
           "value": 50000.0
         },
         {
@@ -2460,11 +2460,11 @@
             "value": 189271.0
           },
           {
-            "name": "Action Économique: Charges diverses de gestion courante",
+            "name": "Action Économique: Charges interv. cpt propre - Aides pers.",
             "value": 100000.0
           },
           {
-            "name": "Action Économique: Charges interv. cpt propre - Aides pers.",
+            "name": "Action Économique: Charges diverses de gestion courante",
             "value": 100000.0
           },
           {
@@ -3105,11 +3105,11 @@
             "value": 1278000.0
           },
           {
-            "name": "Invest. Environnement: Agencements et aménagements de terrains",
+            "name": "Invest. Environnement: Licences, procédés, droits similaires",
             "value": 500000.0
           },
           {
-            "name": "Invest. Environnement: Licences, procédés, droits similaires",
+            "name": "Invest. Environnement: Agencements et aménagements de terrains",
             "value": 500000.0
           }
         ]

@@ -2,25 +2,26 @@
 """
 Pipeline complet pour Paris Budget Dashboard.
 
-Ce script exécute l'ensemble du pipeline de données:
-1. Synchronise les données depuis Paris Open Data vers BigQuery
-2. Exécute dbt pour transformer les données
-3. Enrichit les données via LLM (Gemini 3 Pro)
-4. Exporte les données JSON pour le frontend
+Stages:
+  1. sync    — Paris Open Data API → BigQuery raw.*  (scripts/sync/sync_opendata.py)
+  2. dbt     — raw.* → staging → intermediate → core → marts
+               (dbt deps + dbt seed + dbt run, cwd=pipeline/)
+  3. enrich  — LLM enrichment via Gemini/Claude → seeds/seed_cache_*.csv
+               (scripts/enrich/run_enrichment.py — 3 sub-steps)
+  4. reseed  — reload CSV caches into BigQuery + re-run dbt models that use them
+  5. export  — BigQuery → website/public/data/*.json
+               (scripts/export/export_all.py — 8 child exports)
 
 Usage:
-    # Pipeline complet
-    python scripts/run_pipeline.py
-    
-    # Étapes spécifiques
-    python scripts/run_pipeline.py --steps sync,export
-    
-    # Mode dry-run (pas d'upload)
-    python scripts/run_pipeline.py --dry-run
+    python scripts/tools/run_pipeline.py                      # full pipeline
+    python scripts/tools/run_pipeline.py --steps sync,dbt     # subset
+    python scripts/tools/run_pipeline.py --skip-enrich        # use cached CSVs only
+    python scripts/tools/run_pipeline.py --enrich-limit 10    # cost-controlled micro-run
 
-Configuration requise:
-    export GEMINI_API_KEY='votre_clé_api_gemini'
-    export GOOGLE_APPLICATION_CREDENTIALS='path/to/credentials.json'
+Prerequisites:
+    export GOOGLE_APPLICATION_CREDENTIALS=/path/to/sa-key.json  (or: gcloud auth application-default login)
+    export GEMINI_API_KEY=...      (optional — skipped if absent)
+    export ANTHROPIC_API_KEY=...   (optional — for step 3 grounded search with Claude)
 """
 
 import argparse
@@ -30,217 +31,132 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-# Chemins
-PROJECT_ROOT = Path(__file__).parent.parent
-SCRIPTS_DIR = PROJECT_ROOT / "scripts"
-DBT_DIR = PROJECT_ROOT / "paris-public-open-data"
+PIPELINE_ROOT = Path(__file__).resolve().parent.parent.parent
+SCRIPTS_DIR = PIPELINE_ROOT / "scripts"
+DBT_DIR = PIPELINE_ROOT  # dbt_project.yml lives at pipeline/ root
 
-# Configuration
-STEPS = ["sync", "dbt", "enrich", "export"]
+ALL_STEPS = ["sync", "dbt", "test", "enrich", "reseed", "export"]
 
 
-def run_command(cmd: list, cwd: Path = None, env: dict = None) -> bool:
-    """
-    Exécute une commande et retourne True si succès.
-    """
-    print(f"\n{'='*60}")
-    print(f"  Executing: {' '.join(cmd)}")
-    print(f"{'='*60}\n")
-    
+def run(cmd: list, cwd: Path = None) -> bool:
+    banner = " ".join(str(c) for c in cmd)
+    print(f"\n{'='*70}\n▶ {banner}\n  cwd={cwd or PIPELINE_ROOT}\n{'='*70}")
     try:
-        result = subprocess.run(
-            cmd,
-            cwd=cwd or PROJECT_ROOT,
-            env={**os.environ, **(env or {})},
-            check=True,
-        )
+        subprocess.run(cmd, cwd=cwd or PIPELINE_ROOT, check=True)
         return True
     except subprocess.CalledProcessError as e:
-        print(f"❌ Command failed with exit code {e.returncode}")
+        print(f"❌ exit {e.returncode}")
         return False
     except FileNotFoundError as e:
-        print(f"❌ Command not found: {e}")
+        print(f"❌ not found: {e}")
         return False
 
 
-def step_sync(dry_run: bool = False) -> bool:
-    """
-    Étape 1: Synchroniser les données depuis Paris Open Data.
-    """
-    print("\n" + "="*60)
-    print("📥 ÉTAPE 1: Synchronisation Paris Open Data → BigQuery")
-    print("="*60)
-    
-    cmd = [sys.executable, str(SCRIPTS_DIR / "sync_opendata.py")]
+def step_sync(dry_run: bool) -> bool:
+    print("\n📥 STEP 1 — sync Paris Open Data → BigQuery raw.*")
+    cmd = [sys.executable, str(SCRIPTS_DIR / "sync" / "sync_opendata.py")]
     if dry_run:
         cmd.append("--dry-run")
-    
-    return run_command(cmd)
+    return run(cmd)
 
 
-def step_dbt() -> bool:
-    """
-    Étape 2: Exécuter dbt pour transformer les données.
-    """
-    print("\n" + "="*60)
-    print("🔄 ÉTAPE 2: Transformation dbt")
-    print("="*60)
-    
-    # dbt deps
-    if not run_command(["dbt", "deps"], cwd=DBT_DIR):
-        print("⚠️ dbt deps failed, continuing...")
-    
-    # dbt seed (charger les caches LLM)
-    if not run_command(["dbt", "seed"], cwd=DBT_DIR):
-        print("⚠️ dbt seed failed, continuing...")
-    
-    # dbt run
-    return run_command(["dbt", "run"], cwd=DBT_DIR)
+def step_dbt(use_caches: bool) -> bool:
+    print("\n🔄 STEP 2 — dbt transform")
+    if not run(["dbt", "deps"], cwd=DBT_DIR):
+        print("⚠️ dbt deps failed — continuing")
+    if not run(["dbt", "seed"], cwd=DBT_DIR):
+        return False
+    cmd = ["dbt", "run"]
+    if use_caches:
+        cmd += ["--vars", "{use_llm_cache_ap: true, use_llm_cache_theme: true}"]
+    return run(cmd, cwd=DBT_DIR)
 
 
-def step_enrich(llm_limit: int = 100) -> bool:
-    """
-    Étape 3: Enrichir les données via LLM (Gemini 3 Pro).
-    """
-    print("\n" + "="*60)
-    print("🤖 ÉTAPE 3: Enrichissement LLM (Gemini 3 Pro)")
-    print("="*60)
-    
-    if not os.environ.get("GEMINI_API_KEY"):
-        print("⚠️ GEMINI_API_KEY non configurée, skip enrichissement LLM")
-        print("   Pour activer: export GEMINI_API_KEY='votre_clé'")
-        return True  # Ne pas bloquer le pipeline
-    
-    cmd = [
-        sys.executable, 
-        str(SCRIPTS_DIR / "enrich_geo_data.py"),
-        "--mode", "all",
-        "--llm-limit", str(llm_limit),
-    ]
-    
-    return run_command(cmd)
+def step_test(strict: bool) -> bool:
+    """Run dbt data tests. In non-strict mode, warnings don't block."""
+    print("\n🧪 STEP 2b — dbt test (data quality)")
+    ok = run(["dbt", "test"], cwd=DBT_DIR)
+    if not ok and not strict:
+        print("⚠️ dbt test reported failures — continuing (strict=False)")
+        return True
+    return ok
+
+
+def step_enrich(limit: int | None, dry_run: bool) -> bool:
+    print("\n🤖 STEP 3 — LLM enrichment (geo AP + thématique + grounded)")
+    if not (os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")):
+        print("⚠️ GEMINI_API_KEY/GOOGLE_API_KEY absent — skip enrichment (caches used as-is)")
+        return True
+    cmd = [sys.executable, str(SCRIPTS_DIR / "enrich" / "run_enrichment.py")]
+    if limit is not None:
+        cmd += ["--limit", str(limit)]
+    if dry_run:
+        cmd.append("--dry-run")
+    return run(cmd)
+
+
+def step_reseed() -> bool:
+    print("\n🔁 STEP 4 — reload caches into BQ + re-run cache-consuming models")
+    if not run(["dbt", "seed"], cwd=DBT_DIR):
+        return False
+    return run(
+        ["dbt", "run", "--select", "int_ap_projets_enrichis+ int_subventions_enrichies+",
+         "--vars", "{use_llm_cache_ap: true, use_llm_cache_theme: true}"],
+        cwd=DBT_DIR,
+    )
 
 
 def step_export() -> bool:
-    """
-    Étape 4: Exporter les données JSON pour le frontend.
-    """
-    print("\n" + "="*60)
-    print("📤 ÉTAPE 4: Export JSON pour le frontend")
-    print("="*60)
-    
-    success = True
-    
-    # Export Sankey
-    if not run_command([sys.executable, str(SCRIPTS_DIR / "export_sankey_data.py")]):
-        success = False
-    
-    # Export Map
-    if not run_command([sys.executable, str(SCRIPTS_DIR / "export_map_data.py")]):
-        success = False
-    
-    return success
+    print("\n📤 STEP 5 — export JSON → website/public/data/")
+    return run([sys.executable, str(SCRIPTS_DIR / "export" / "export_all.py")])
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Pipeline complet Paris Budget Dashboard",
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="""
-Exemples:
-    # Pipeline complet
-    python scripts/run_pipeline.py
-    
-    # Synchronisation seule
-    python scripts/run_pipeline.py --steps sync
-    
-    # Export seul (après modifications manuelles)
-    python scripts/run_pipeline.py --steps export
-    
-    # Sync + Export sans dbt/LLM
-    python scripts/run_pipeline.py --steps sync,export
-    
-    # Dry run (pas d'upload BigQuery)
-    python scripts/run_pipeline.py --dry-run
-        """
-    )
-    parser.add_argument(
-        "--steps",
-        default=",".join(STEPS),
-        help=f"Étapes à exécuter (défaut: {','.join(STEPS)})"
-    )
-    parser.add_argument(
-        "--dry-run",
-        action="store_true",
-        help="Mode dry-run (pas d'upload vers BigQuery)"
-    )
-    parser.add_argument(
-        "--llm-limit",
-        type=int,
-        default=100,
-        help="Limite d'items pour l'enrichissement LLM (défaut: 100)"
-    )
-    parser.add_argument(
-        "--skip-dbt",
-        action="store_true",
-        help="Skip l'étape dbt (utile si BigQuery n'est pas configuré)"
-    )
-    
-    args = parser.parse_args()
-    
-    print("\n" + "="*60)
-    print("🚀 PARIS BUDGET DASHBOARD - PIPELINE COMPLET")
-    print("="*60)
-    print(f"  Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    print(f"  Étapes: {args.steps}")
-    print(f"  Dry run: {args.dry_run}")
-    print(f"  LLM limit: {args.llm_limit}")
-    
-    # Parse steps
-    steps_to_run = [s.strip() for s in args.steps.split(",")]
-    
-    # Track results
+    p = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,
+                                description=__doc__)
+    p.add_argument("--steps", default=",".join(ALL_STEPS),
+                   help=f"comma-separated subset of {ALL_STEPS}")
+    p.add_argument("--dry-run", action="store_true", help="no BQ writes / no LLM calls")
+    p.add_argument("--skip-enrich", action="store_true",
+                   help="skip step 3 (use existing CSV caches only — reproducible path)")
+    p.add_argument("--enrich-limit", type=int, default=None,
+                   help="cap LLM rows per sub-step (cost control)")
+    p.add_argument("--no-cache-vars", action="store_true",
+                   help="do NOT pass use_llm_cache_*=true to dbt (first run from scratch)")
+    p.add_argument("--strict-tests", action="store_true",
+                   help="fail the pipeline on dbt test errors (default: warn but continue)")
+    args = p.parse_args()
+
+    steps = [s.strip() for s in args.steps.split(",") if s.strip()]
+    if args.skip_enrich and "enrich" in steps:
+        steps.remove("enrich")
+
+    use_caches = not args.no_cache_vars
+
+    print(f"\n🚀 PIPELINE — {datetime.now():%Y-%m-%d %H:%M}")
+    print(f"  steps: {steps}")
+    print(f"  dry_run: {args.dry_run} | use_caches: {use_caches} | enrich_limit: {args.enrich_limit}")
+
     results = {}
-    
-    # Run steps
-    if "sync" in steps_to_run:
-        results["sync"] = step_sync(dry_run=args.dry_run)
-    
-    if "dbt" in steps_to_run and not args.skip_dbt:
-        results["dbt"] = step_dbt()
-    elif "dbt" in steps_to_run:
-        print("\n⏭️ Skip dbt (--skip-dbt)")
-        results["dbt"] = True
-    
-    if "enrich" in steps_to_run:
-        results["enrich"] = step_enrich(llm_limit=args.llm_limit)
-    
-    if "export" in steps_to_run:
+    if "sync" in steps:
+        results["sync"] = step_sync(args.dry_run)
+    if "dbt" in steps:
+        results["dbt"] = step_dbt(use_caches)
+    if "test" in steps:
+        results["test"] = step_test(args.strict_tests)
+    if "enrich" in steps:
+        results["enrich"] = step_enrich(args.enrich_limit, args.dry_run)
+    if "reseed" in steps:
+        results["reseed"] = step_reseed()
+    if "export" in steps:
         results["export"] = step_export()
-    
-    # Summary
-    print("\n" + "="*60)
-    print("📋 RÉSUMÉ DU PIPELINE")
-    print("="*60)
-    
-    all_success = True
-    for step, success in results.items():
-        icon = "✓" if success else "✗"
-        status = "OK" if success else "ÉCHEC"
-        print(f"  {icon} {step}: {status}")
-        if not success:
-            all_success = False
-    
-    if all_success:
-        print("\n✅ Pipeline terminé avec succès !")
-        print("\nProchaines étapes:")
-        print("  1. cd frontend && npm run dev   # Lancer le serveur de dev")
-        print("  2. Ouvrir http://localhost:3000  # Voir le dashboard")
-    else:
-        print("\n⚠️ Pipeline terminé avec des erreurs")
-        return 1
-    
-    return 0
+
+    print("\n" + "="*70 + "\n📋 SUMMARY\n" + "="*70)
+    ok = True
+    for s, r in results.items():
+        print(f"  {'✓' if r else '✗'} {s}")
+        ok = ok and r
+    return 0 if ok else 1
 
 
 if __name__ == "__main__":

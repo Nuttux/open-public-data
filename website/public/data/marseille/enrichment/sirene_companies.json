@@ -1,0 +1,2940 @@
+{
+  "generated_at": "2026-05-12T00:00:00Z",
+  "city": "marseille",
+  "items": {
+    "056800659": {
+      "denomination": "SNEF",
+      "ape_code": "43.21A",
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": "Marseille 15eme",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "056802499": {
+      "denomination": "Foire internationale de Marseille (SAFIM)",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "056803000": {
+      "denomination": "Entreprise Marion",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "057802001": {
+      "denomination": "Milhe et Avons",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "057806150": {
+      "denomination": "Société des eaux de Marseille",
+      "ape_code": "36.00Z",
+      "ape_libelle": "Captage, traitement et distribution d'eau",
+      "secteur": "services",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "058812173": {
+      "denomination": "Établissements Turron",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "060802741": {
+      "denomination": "Technic Hydro",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "061805057": {
+      "denomination": "Azur Offset",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "062803200": {
+      "denomination": "Société des anciens établissements F. Maury",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "065804569": {
+      "denomination": "Autodistribution Farsy",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "067800425": {
+      "denomination": "ONET Services",
+      "ape_code": "81.21Z",
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "068801109": {
+      "denomination": "HOM",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": "Paris",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "071501936": {
+      "denomination": "Gallin SA",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "072201023": {
+      "denomination": "SOVAM",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "072802689": {
+      "denomination": "Entreprise générale d'électricité Noël Béranger",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "221300015": {
+      "denomination": "Laboratoire départemental d'analyses des Bouches-du-Rhône",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "public",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "302115415": {
+      "denomination": "ProMinent France",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "303375406": {
+      "denomination": "Mirion Technologies (MGPI)",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "303656847": {
+      "denomination": "Europcar France",
+      "ape_code": "77.11A",
+      "ape_libelle": "Location courte durée de voitures",
+      "secteur": "services",
+      "siege_commune": "Saint-Quentin-en-Yvelines",
+      "site_web": "https://www.europcar.fr",
+      "_origin": "claude-code-in-session"
+    },
+    "304601206": {
+      "denomination": "Méditerranée Environnement",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "305800997": {
+      "denomination": "Dyneff",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": "Lattes",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "308101989": {
+      "denomination": "Union des transporteurs de Provence",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "309244325": {
+      "denomination": "Horizon Vertical",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "309304616": {
+      "denomination": "Rexel France",
+      "ape_code": "46.69A",
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": "Paris",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "309306918": {
+      "denomination": "Bureau de Vérifications Techniques",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "310269378": {
+      "denomination": "Sports et Loisirs",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "311916639": {
+      "denomination": "Partenaire Bureautique (Fac Similé)",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "312330806": {
+      "denomination": "Service Industrie Marine",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "312670433": {
+      "denomination": "Sieco",
+      "ape_code": "46.46Z",
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": "Draguignan",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "313915902": {
+      "denomination": "Oxysign",
+      "ape_code": "18.12Z",
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": "Aubagne",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "314928896": {
+      "denomination": "Scotto Musique",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "315549352": {
+      "denomination": "Milee",
+      "ape_code": "73.11Z",
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": "Aix-En-Provence",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "317101020": {
+      "denomination": "Taxi Radio Marseille",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "317735611": {
+      "denomination": "Funéranor",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "317785236": {
+      "denomination": "Henry Blanc",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "318175031": {
+      "denomination": "Rustyle",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "318506623": {
+      "denomination": "France Boissons Sud-Est",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "318520483": {
+      "denomination": "SERAMM",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "318918851": {
+      "denomination": "4D",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "320759269": {
+      "denomination": "Groupe Pierre Le Goff Méditerranée",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "321447955": {
+      "denomination": "Orésys",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": "Paris",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "321920886": {
+      "denomination": "Pertuis Froid",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "323297135": {
+      "denomination": "SOGEPLASS",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "323528448": {
+      "denomination": "Terres de Cuisine",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "323961680": {
+      "denomination": "Dräger France",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "324396258": {
+      "denomination": "Triangle Scop",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "324600980": {
+      "denomination": "Club de tir Provence Nemrod",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "325505808": {
+      "denomination": "Société des cinémas de Bonneveine",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "326298015": {
+      "denomination": "Turquoise Voyages",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "326820065": {
+      "denomination": "Sopra Steria Group",
+      "ape_code": "62.02A",
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": "Annecy",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "328016191": {
+      "denomination": "Gilles Lougassi",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "330285875": {
+      "denomination": "Centre français d'exploitation du droit de copie (CFC)",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Paris",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "331046847": {
+      "denomination": "Ozyme",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "331980235": {
+      "denomination": "ADAY",
+      "ape_code": "63.11Z",
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": "Paris",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "332987858": {
+      "denomination": "Bourgeois",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "333073062": {
+      "denomination": "Société d'informatique de gestion et de communication",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "333659217": {
+      "denomination": "T G Informatique",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "333867299": {
+      "denomination": "Protec Mer",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "334365053": {
+      "denomination": "Systelcom",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "334416336": {
+      "denomination": "1SPATIAL France SAS",
+      "ape_code": "58.29C",
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": "Paris 14",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "334763679": {
+      "denomination": "SAPEC",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "334818515": {
+      "denomination": "Gravotech Marking",
+      "ape_code": "71.12B",
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": "Rillieux-La-Pape",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "335092318": {
+      "denomination": "Oracle France",
+      "ape_code": "62.02A",
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": "Colombes",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "338253131": {
+      "denomination": "Societe Francaise DE Restauration ET Services",
+      "ape_code": "56.29A",
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Guyancourt",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "339724296": {
+      "denomination": "Saluces",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "340119841": {
+      "denomination": "Jean Rachet",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "341021830": {
+      "denomination": "Auto Bilan et Services",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "341539815": {
+      "denomination": "Paris NORD Assurances Services",
+      "ape_code": "66.22Z",
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Courbevoie",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "342221736": {
+      "denomination": "GS4",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "342384625": {
+      "denomination": "Maintenance Systeme",
+      "ape_code": "33.11Z",
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": "Neyron",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "343092912": {
+      "denomination": "Meistre",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "343255535": {
+      "denomination": "Chemoform France",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "343634689": {
+      "denomination": "Société de Maintenance Portuaire (SMP)",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "343681292": {
+      "denomination": "À Propos",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "344362694": {
+      "denomination": "Colaco",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "347427338": {
+      "denomination": "Régie Service Nord Littoral",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "347582231": {
+      "denomination": "Urbanis",
+      "ape_code": "71.12B",
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": "Nimes",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "347839193": {
+      "denomination": "Proludic",
+      "ape_code": "32.30Z",
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": "Vouvray",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "348006446": {
+      "denomination": "Ernst ET Young Advisory",
+      "ape_code": "70.22Z",
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": "Courbevoie",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "350083796": {
+      "denomination": "Imprimerie Trulli (Hop On Print)",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "350973939": {
+      "denomination": "Droit Public Consultants",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "351497649": {
+      "denomination": "Mazars",
+      "ape_code": "69.20Z",
+      "ape_libelle": "Activités comptables",
+      "secteur": "conseil",
+      "siege_commune": "Courbevoie",
+      "site_web": "https://www.mazars.fr",
+      "_origin": "claude-code-in-session"
+    },
+    "351926712": {
+      "denomination": "FCL Gérer la Cité",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": "Paris",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "352290530": {
+      "denomination": "Bernard Cervellini",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "352556369": {
+      "denomination": "RDL",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "352570758": {
+      "denomination": "EIHF",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "352573802": {
+      "denomination": "C2R (Magellan)",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "352683056": {
+      "denomination": "Tambe",
+      "ape_code": "43.32C",
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": "La Motte-Servolex",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "352708655": {
+      "denomination": "Société européenne de fabrication industrielle de cercueils (SEFIC)",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "352885925": {
+      "denomination": "Algoe",
+      "ape_code": "70.22Z",
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": "Ecully",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "354088528": {
+      "denomination": "Esabora",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "356000000": {
+      "denomination": "LA Poste",
+      "ape_code": "53.10Z",
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Paris",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "377505565": {
+      "denomination": "Forvis Mazars SAS",
+      "ape_code": "70.22Z",
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": "Levallois-Perret",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "377732482": {
+      "denomination": "ECUS",
+      "ape_code": "46.52Z",
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": "Brie",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "378217699": {
+      "denomination": "Société Maçonnerie Terrassement Location",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "378424477": {
+      "denomination": "Geoconcept",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "378810188": {
+      "denomination": "LJC Telecom",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "379095342": {
+      "denomination": "LES Celluloses DE Broceliande",
+      "ape_code": "17.22Z",
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": "Ploermel",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "379177389": {
+      "denomination": "Switch On (Sono Concept)",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "379369465": {
+      "denomination": "AIR Liquide Sante France",
+      "ape_code": "46.46Z",
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": "Paris",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "380129866": {
+      "denomination": "Orange",
+      "ape_code": "61.10Z",
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": "Issy-Les-Moulineaux",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "380811018": {
+      "denomination": "Multi Services Entretien",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "380916619": {
+      "denomination": "Société d'exploitation des établissements Baget",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "381855709": {
+      "denomination": "Travaux Électriques du Midi",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "382124626": {
+      "denomination": "Yatou",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "382323541": {
+      "denomination": "Les Compagnons du Barroux",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "382863710": {
+      "denomination": "Kimoce",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "383160348": {
+      "denomination": "Amaury Sport Organisation",
+      "ape_code": "93.19Z",
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Boulogne-Billancourt",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "383355328": {
+      "denomination": "SDEL Vidéo Télécom (Axians Outsourcing Paris)",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "384403416": {
+      "denomination": "Bik & Book",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "384617031": {
+      "denomination": "Digitech",
+      "ape_code": "62.01Z",
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "385221536": {
+      "denomination": "Compagnie Méridionale d'Applications Thermiques (CMT)",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "385365713": {
+      "denomination": "Inetum",
+      "ape_code": "62.02A",
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": "Saint-Ouen-Sur-Seine",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "387528904": {
+      "denomination": "Supeco (Marché U)",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "387830045": {
+      "denomination": "Cabinet Germain et Maureau",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "388758617": {
+      "denomination": "Eiffage Énergie Systèmes — Méditerranée",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": "Vélizy-Villacoublay",
+      "site_web": "https://www.eiffage-energie-systemes.com",
+      "_origin": "claude-code-in-session"
+    },
+    "388852337": {
+      "denomination": "Société Nouvelle de Serrurerie Ferronnerie Méridionale",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "389433350": {
+      "denomination": "Kadence",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "389479718": {
+      "denomination": "Channel Fret International",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "389675018": {
+      "denomination": "Ortec Environnement",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Aubagne",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "390580884": {
+      "denomination": "Ecogom",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "390733814": {
+      "denomination": "Labosport",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "391426442": {
+      "denomination": "Freinage Équipement Marseille",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "391792546": {
+      "denomination": "Centre de loisirs jeunes — Police nationale DDSP 13",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "392417689": {
+      "denomination": "Bureau Veritas Solutions",
+      "ape_code": "71.12B",
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": "Nanterre",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "392631248": {
+      "denomination": "Linde France",
+      "ape_code": "21.20Z",
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": "Lyon",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "392979126": {
+      "denomination": "SPT Maritime et Industriel",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "392985818": {
+      "denomination": "Krut Distribution (sachet-repas.com)",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "393266770": {
+      "denomination": "Falières (Voyager)",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "393455316": {
+      "denomination": "Sacpa",
+      "ape_code": "96.09Z",
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Casteljaloux",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "395155211": {
+      "denomination": "Amoroso Waldeis",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "395620107": {
+      "denomination": "LES DUCS DE Gascogne",
+      "ape_code": "10.13A",
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": "Gimont",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "398020131": {
+      "denomination": "Cireme",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "398272740": {
+      "denomination": "Fleurons de Lomagne",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "398337733": {
+      "denomination": "Audier Michel Communications",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "398480046": {
+      "denomination": "HAGS France",
+      "ape_code": "46.49Z",
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": "Nimes",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "398547448": {
+      "denomination": "Philippe Donjerkovic",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "398635821": {
+      "denomination": "Mardis (Super U)",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "399244325": {
+      "denomination": "Horizon Vertical",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "401428156": {
+      "denomination": "Triangle France — Astérides",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "401462858": {
+      "denomination": "Afficolor",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "401466248": {
+      "denomination": "Groupe Chailan",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "401494828": {
+      "denomination": "Papeteries Pichon",
+      "ape_code": "46.49Z",
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": "Veauche",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "401887401": {
+      "denomination": "Olympique de Marseille",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "403242555": {
+      "denomination": "Acti Sud",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "403419211": {
+      "denomination": "Lapro Environnement",
+      "ape_code": "46.69B",
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": "Goussainville",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "404490476": {
+      "denomination": "Eiffage Démolition",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": "Vélizy-Villacoublay",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "408024719": {
+      "denomination": "ATOS France",
+      "ape_code": "62.02A",
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": "Bezons",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "408165157": {
+      "denomination": "Les Échos Solutions",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Paris",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "408472751": {
+      "denomination": "Systèmes et Technologies Identification",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "409186178": {
+      "denomination": "Atelier Technologies Industrielles et Services",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "410344923": {
+      "denomination": "Terideal Tarvel",
+      "ape_code": "81.30Z",
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Rungis",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "410525018": {
+      "denomination": "CMC Cadeaux Medailles Creations",
+      "ape_code": "46.49Z",
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": "Pantin",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "411253560": {
+      "denomination": "B.S. Industrie",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "411513237": {
+      "denomination": "Nedap France",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "413069337": {
+      "denomination": "Sanogia",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "413824319": {
+      "denomination": "Avenir Deconstruction",
+      "ape_code": "43.11Z",
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": "Artigues-Pres-Bordeaux",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "414154237": {
+      "denomination": "Endemol Shine Production",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Issy-les-Moulineaux",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "414204248": {
+      "denomination": "Musique Conte Etc. Productions",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "415111400": {
+      "denomination": "Eurobus Provence",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "415402858": {
+      "denomination": "Nouvelle Vision Communication",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "417902673": {
+      "denomination": "Mathilde Damour",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "417903408": {
+      "denomination": "Le Fournil des Oliviers",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "418219135": {
+      "denomination": "Agetech",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "418380481": {
+      "denomination": "Fearless Méditerranée",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "418466082": {
+      "denomination": "Ingénierie Développement Management",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "419459862": {
+      "denomination": "D.R. Équipement",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "420327314": {
+      "denomination": "C O 2 Communication",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "420817223": {
+      "denomination": "Com.In",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "421372681": {
+      "denomination": "Corinne Bourgery",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "421993452": {
+      "denomination": "ACSAN",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "422502526": {
+      "denomination": "Caux Loc",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "423145630": {
+      "denomination": "Sud Provence Services",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "423915610": {
+      "denomination": "Altrad Collectivités",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "425009214": {
+      "denomination": "Descours et Cabaud Provence-Alpes-Côte d'Azur",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "428399711": {
+      "denomination": "Gérard Traquandi",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "429133101": {
+      "denomination": "APVL Ingénierie",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "429715378": {
+      "denomination": "ATOL Conseils ET Developpements",
+      "ape_code": "62.02B",
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": "Gevrey Chambertin",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "429811284": {
+      "denomination": "Engie Inéo (Inéo Provence et Côte d'Azur)",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "430290387": {
+      "denomination": "Téléphonie Nouvelle et Terminaux",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "430351296": {
+      "denomination": "Maintenance Professionnelle Électronique (MPE)",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "430358697": {
+      "denomination": "BDJ Développement",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "431455203": {
+      "denomination": "Menuiserie du Pharo Agencement",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "431656263": {
+      "denomination": "Novasud",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "431878727": {
+      "denomination": "AMS Croix Blanche",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "432272078": {
+      "denomination": "Centaure Avocats",
+      "ape_code": "69.10Z",
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": "Paris",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "432475945": {
+      "denomination": "ATEC",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "434084695": {
+      "denomination": "Dell'",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "438734311": {
+      "denomination": "Degréane Horizon",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "438943193": {
+      "denomination": "Massibat",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "439610858": {
+      "denomination": "Paysages Méditerranéens",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "439823568": {
+      "denomination": "Delta S.I.",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "440908713": {
+      "denomination": "Escoubette",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "442006508": {
+      "denomination": "Parvis",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "442395448": {
+      "denomination": "Totalenergies Electricite ET GAZ France",
+      "ape_code": "35.14Z",
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Paris",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "444553465": {
+      "denomination": "Lacoste",
+      "ape_code": "47.62Z",
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": "Le Thor",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "444708176": {
+      "denomination": "Atréal",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "447719097": {
+      "denomination": "Comité départemental de rugby Bouches-du-Rhône",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "448533414": {
+      "denomination": "KFT Fire Trainer GmbH",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "448563932": {
+      "denomination": "Provence Location Chapiteaux — AR Events Sud",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "448924449": {
+      "denomination": "Géraldine Fragione",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "449343953": {
+      "denomination": "BCH Compresseurs",
+      "ape_code": "33.20B",
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": "Porte-De-Savoie",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "450220538": {
+      "denomination": "Michaël Sellam",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "450347034": {
+      "denomination": "Établissements Rogier",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "451668784": {
+      "denomination": "C. Severi Formateur Consultant Informatique",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "451722813": {
+      "denomination": "Automatismes et Multi Services Ascenseurs",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "453664393": {
+      "denomination": "Office Méridional d'Entretien",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "453726721": {
+      "denomination": "Cyclades",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "456789567": {
+      "denomination": "SNEF",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "476980321": {
+      "denomination": "Pomona EpiSaveurs",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": "Antony",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "477587620": {
+      "denomination": "Nouvelle Aire",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "477999718": {
+      "denomination": "Société Nouvelle PLCM",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "479016297": {
+      "denomination": "Territoire",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "480111525": {
+      "denomination": "Safety - Kleen France",
+      "ape_code": "46.69B",
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": "Saint-Denis",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "480255900": {
+      "denomination": "Neotys",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "480650712": {
+      "denomination": "Fiducial Cloud",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "481463081": {
+      "denomination": "Certigna",
+      "ape_code": "58.29A",
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": "Villeneuve-D'ascq",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "481968691": {
+      "denomination": "Alain Piscione",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "483425955": {
+      "denomination": "Pera Paysages",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "483660817": {
+      "denomination": "Sud France",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "485293138": {
+      "denomination": "Securhit Group",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "489626135": {
+      "denomination": "Ingerop Conseil ET Ingenierie (ICI)",
+      "ape_code": "71.12B",
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": "Rueil Malmaison",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "490202843": {
+      "denomination": "Rossi Distribution 13 (Rossi Boissons)",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "491664686": {
+      "denomination": "Morin TP",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "493275804": {
+      "denomination": "Travaux du Midi Marseille",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "493378038": {
+      "denomination": "EGIS EAU SA",
+      "ape_code": "71.12B",
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": "Montpellier",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "494411390": {
+      "denomination": "Hygeco Post Mortem Assistance",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "494941636": {
+      "denomination": "À la Clé des Champs",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "498788249": {
+      "denomination": "IPS",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "500542444": {
+      "denomination": "Educ'Sports 13",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "501615280": {
+      "denomination": "Orange Cloud for Business",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "502062383": {
+      "denomination": "Friche la Belle de Mai",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "504140609": {
+      "denomination": "Draï Associés",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "505307801": {
+      "denomination": "Geotrade",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "508973658": {
+      "denomination": "Europtimum Conseil",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "509797486": {
+      "denomination": "École de Sauvetage Côtier Méditerranée",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "509866760": {
+      "denomination": "Sedel Maintenance et Services",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "510156789": {
+      "denomination": "Locafontaine",
+      "ape_code": "77.39Z",
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Ris-Orangis",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "510691538": {
+      "denomination": "2BPR",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "510742463": {
+      "denomination": "UBIC",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "511604548": {
+      "denomination": "Diar",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "512753179": {
+      "denomination": "Event Etcetera",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "513343269": {
+      "denomination": "A Plus Solutions",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "515198398": {
+      "denomination": "Proact Medical",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "515323079": {
+      "denomination": "Beneylu",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "518248166": {
+      "denomination": "Akssimo",
+      "ape_code": "71.12B",
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": "Reims",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "518425905": {
+      "denomination": "Xdemat",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "518539408": {
+      "denomination": "Novazion",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "522887827": {
+      "denomination": "Cours de langue des signes",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "527584486": {
+      "denomination": "Atelier d'architecture Yvann Pluskwa",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "528704117": {
+      "denomination": "La Fabulerie",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "529975674": {
+      "denomination": "Dushow",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "534268677": {
+      "denomination": "Espelia",
+      "ape_code": "70.22Z",
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": "Paris",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "542057336": {
+      "denomination": "Asten",
+      "ape_code": "43.99A",
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": "Ivry-Sur-Seine",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "542095336": {
+      "denomination": "Lagardère Travel Retail France",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": "Paris",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "544500812": {
+      "denomination": "Rivolier PERE ET FS Armurerie",
+      "ape_code": "46.49Z",
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": "Saint-Just-Saint-Rambert",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "547220137": {
+      "denomination": "Dumont Sécurité",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "551620198": {
+      "denomination": "Société Casino Municipal d'Aix Thermal",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Aix-en-Provence",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "562016774": {
+      "denomination": "Siemens",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": "Saint-Denis",
+      "site_web": "https://www.siemens.fr",
+      "_origin": "claude-code-in-session"
+    },
+    "572028041": {
+      "denomination": "Deloitte et Associés",
+      "ape_code": "69.20Z",
+      "ape_libelle": "Activités comptables",
+      "secteur": "conseil",
+      "siege_commune": "Puteaux",
+      "site_web": "https://www2.deloitte.com",
+      "_origin": "claude-code-in-session"
+    },
+    "572082527": {
+      "denomination": "LP ART",
+      "ape_code": "52.29B",
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Montreuil",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "636680175": {
+      "denomination": "Société Nouvelle Transports Suma",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "642044366": {
+      "denomination": "UP COOP",
+      "ape_code": "66.19B",
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Gennevilliers",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "659501837": {
+      "denomination": "Société Nouvelle Librairie Charlemagne",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "685550659": {
+      "denomination": "Algeco",
+      "ape_code": "77.39Z",
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Charnay-Les-Macon",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "712039098": {
+      "denomination": "Jones LANG Lasalle SAS",
+      "ape_code": "68.31Z",
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Paris",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "722850070": {
+      "denomination": "Dragui Transports",
+      "ape_code": "38.11Z",
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Draguignan",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "750122996": {
+      "denomination": "Studio Gardoni",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "751647702": {
+      "denomination": "Sogema Mines et Énergie",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "752556001": {
+      "denomination": "Sud Sports Loisirs",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "753423011": {
+      "denomination": "Association pour le développement des initiatives économiques et sociales — Événements",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "757501028": {
+      "denomination": "Quadria",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "775558968": {
+      "denomination": "Unapei Alpes Provence",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "775667231": {
+      "denomination": "Institut Français de l'Audit et du Contrôle Internes (IFACI)",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": "Paris",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "775733835": {
+      "denomination": "MAJ",
+      "ape_code": "77.29Z",
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Pantin",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "780109856": {
+      "denomination": "Fayat Bâtiment",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": "Bordeaux",
+      "site_web": "https://www.fayat.com",
+      "_origin": "claude-code-in-session"
+    },
+    "782753628": {
+      "denomination": "Association pour la Coopération Sociale",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "788139913": {
+      "denomination": "Énergétique Sanitaire",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "792069627": {
+      "denomination": "Internexterne",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "792223190": {
+      "denomination": "Association Glisse pour Tous",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "794200014": {
+      "denomination": "Linxeo",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "794503888": {
+      "denomination": "Anspro",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "795126754": {
+      "denomination": "IMB International Machines à Bois",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "797900172": {
+      "denomination": "Intellexi",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "798025532": {
+      "denomination": "Les Coffrets d'Ève (Gustu e Piace)",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "798807350": {
+      "denomination": "Rainbow Pro Cycling",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "799302559": {
+      "denomination": "Cercle Carré",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "799320643": {
+      "denomination": "Horizon Provence",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "799736020": {
+      "denomination": "S.T.A. Maintenance (Paint Expert 42)",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "801064247": {
+      "denomination": "AD Pro Formation",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "802146977": {
+      "denomination": "Cubner",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "803099241": {
+      "denomination": "Leonardo Communication",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "804448587": {
+      "denomination": "Quardina",
+      "ape_code": "71.12B",
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": "Velizy-Villacoublay",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "804450799": {
+      "denomination": "Débrouille Net",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "808002158": {
+      "denomination": "Yamaha Motor Europe NV",
+      "ape_code": "70.10Z",
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "808271225": {
+      "denomination": "Olympic Location",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "808937411": {
+      "denomination": "Mira",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "810353607": {
+      "denomination": "SPQR",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "810868075": {
+      "denomination": "Medinscop",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "810956847": {
+      "denomination": "ES Eleq",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "817964430": {
+      "denomination": "CMT Services",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "820671659": {
+      "denomination": "3B Pro",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "822492740": {
+      "denomination": "Pola",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "823372909": {
+      "denomination": "Shark Robotics",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": "La Rochelle",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "828117150": {
+      "denomination": "Les Saveurs du Mistral",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "828182014": {
+      "denomination": "Arc en Ciel Sud-Est",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "829680503": {
+      "denomination": "C4Diagnostics",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "831036108": {
+      "denomination": "Culbuto",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "831434972": {
+      "denomination": "Land",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "831964762": {
+      "denomination": "VF Events",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "832098669": {
+      "denomination": "Ing-Conseils",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "835058082": {
+      "denomination": "PE2M",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "835076605": {
+      "denomination": "ENJ Maintenance (Bianucci)",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "837916196": {
+      "denomination": "Gabian",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "838976363": {
+      "denomination": "Gimaex Fire Trucks",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "844508408": {
+      "denomination": "STMS Bâtiment",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "849792833": {
+      "denomination": "Exétanch",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "btp",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "850362443": {
+      "denomination": "ARRA",
+      "ape_code": "71.11Z",
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": "Aix-En-Provence",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    },
+    "851461533": {
+      "denomination": "Tanit Évolution",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "852382498": {
+      "denomination": "Charrel & Associés",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "conseil",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "877220095": {
+      "denomination": "Proengin",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "industrie",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "879916799": {
+      "denomination": "SNEF Telecom",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "tech",
+      "siege_commune": "Marseille",
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "884490632": {
+      "denomination": "Newpatinage (NPA)",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "958505521": {
+      "denomination": "Walder et Cie",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "autre",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "961802576": {
+      "denomination": "Papeterie du Dauphiné (Papet Dauphine Exertier et Cie)",
+      "ape_code": null,
+      "ape_libelle": null,
+      "secteur": "distribution",
+      "siege_commune": null,
+      "site_web": null,
+      "_origin": "claude-code-in-session"
+    },
+    "967504945": {
+      "denomination": "Maintronic",
+      "ape_code": "95.11Z",
+      "ape_libelle": null,
+      "secteur": "services",
+      "siege_commune": "Saint-Priest",
+      "site_web": null,
+      "_origin": "copied_from_paris"
+    }
+  }
+}

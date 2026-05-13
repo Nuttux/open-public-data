@@ -4,6 +4,12 @@ import Link from "next/link";
 import { useState } from "react";
 import { fmtDec } from "@/lib/fmt";
 import { useT } from "@/lib/localeContext";
+import {
+  LEVERAGE_RECETTES_MAX,
+  BORROW_RATIO_MAX,
+  CAPACITE_DESENDETTEMENT_ALERTE_ANS,
+  CAPACITE_DESENDETTEMENT_CRITIQUE_ANS,
+} from "@/lib/methodology";
 
 type Preset = {
   id: string;
@@ -15,8 +21,8 @@ type Preset = {
   capFn: (baseline: { capaciteBaseline: number; dette: number; epargne: number; tauxBaseline: number }) => number;
 };
 
-const LEVERAGE_RECETTES = 5.0;
-const BORROW_RATIO = 0.5;
+const LEVERAGE_RECETTES = LEVERAGE_RECETTES_MAX;
+const BORROW_RATIO = BORROW_RATIO_MAX;
 
 function capForScenario(
   baseline: { dette: number; epargne: number; tauxBaseline: number },
@@ -42,8 +48,8 @@ const PRESETS: Array<Omit<Preset, "capFn"> & { taux_dp: number; rec_p: number; i
   { id: "ecroulement", labelKey: "fx.det.stress.preset.ecroulement.label", descKey: "fx.det.stress.preset.ecroulement.desc", t: 4, r: -15, i: 1.3, taux_dp: 4, rec_p: -15, inv_m: 1.3 },
 ];
 
-const THRESHOLD = 12;
-const CRITICAL = 20;
+const THRESHOLD = CAPACITE_DESENDETTEMENT_ALERTE_ANS;
+const CRITICAL = CAPACITE_DESENDETTEMENT_CRITIQUE_ANS;
 const SCALE = 30;
 
 type Props = {
@@ -81,7 +87,7 @@ export default function StressTestTeaser({ dette, capaciteBaseline, tauxBaseline
     params.set("t", String(tauxBaseline + p.taux_dp));
     params.set("r", String(p.rec_p));
     params.set("i", p.inv_m.toFixed(2));
-    return `/dette-patrimoine/stress-test?${params.toString()}`;
+    return `/ville/paris/dette/stress-test?${params.toString()}`;
   };
 
   return (
@@ -102,7 +108,7 @@ export default function StressTestTeaser({ dette, capaciteBaseline, tauxBaseline
             )}
           </div>
         </div>
-        <Link href="/dette-patrimoine/stress-test" className="fx-stress-teaser-cta">
+        <Link href="/ville/paris/dette/stress-test" className="fx-stress-teaser-cta">
           {t("fx.det.stress.teaser.cta")} →
         </Link>
       </div>

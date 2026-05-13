@@ -52,7 +52,9 @@ PIPELINE = ROOT / "pipeline"
 CACHE = PIPELINE / "cache" / "delibs"
 PDF_CACHE = CACHE / "pdf"
 HTML_CACHE = CACHE / "html"
-OUT = ROOT / "website" / "public" / "data" / "subventions_delibs"
+# Sortie interne (cache) — pas publiée. Le JSON public est produit par
+# pipeline/scripts/export/export_deliberations.py à partir du mart.
+OUT = ROOT / "pipeline" / "cache" / "delibs" / "sessions"
 
 BASE = "https://a06-v7.apps.paris.fr/a06/"
 

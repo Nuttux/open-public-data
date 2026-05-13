@@ -40,7 +40,7 @@ import pypdf
 import requests
 
 ROOT = Path(__file__).resolve().parents[3]
-DELIBS_DIR = ROOT / "website" / "public" / "data" / "subventions_delibs"
+DELIBS_DIR = ROOT / "pipeline" / "cache" / "delibs" / "sessions"
 PDF_CACHE = ROOT / "pipeline" / "cache" / "delibs" / "pdf"
 
 GEMINI_API_KEY = os.environ.get("GOOGLE_API_KEY") or os.environ.get("GEMINI_API_KEY")

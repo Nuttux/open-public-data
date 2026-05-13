@@ -12,6 +12,7 @@ import BarRow from "@/components/fusion/BarRow";
 import TileCard from "@/components/fusion/TileCard";
 import BrandMark from "@/components/fusion/BrandMark";
 import HeroBg from "@/components/fusion/HeroBg";
+import CountUpOnReveal from "@/components/fusion/CountUpOnReveal";
 import { fmtDec, fmtInt, fmtBillions, fmtMillions } from "@/lib/fmt";
 import type { LandingStats } from "@/lib/fusion-data";
 import type { BlogPostMeta } from "@/lib/blog";
@@ -69,6 +70,7 @@ export default function LandingClient({ stats, posts }: Props) {
   return (
     <div className="theme-fusion">
       <Navbar />
+      <main id="main-content" tabIndex={-1}>
 
       {/* HERO */}
       <section className="fx-hero" id="hero">
@@ -88,7 +90,7 @@ export default function LandingClient({ stats, posts }: Props) {
             })}
           </p>
           <div className="fx-ctas">
-            <Button variant="primary" href="/budget">
+            <Button variant="primary" href="/ville/paris/budget">
               {fill("fx.land.cta.explore", { year: stats.year })}
             </Button>
           </div>
@@ -100,7 +102,7 @@ export default function LandingClient({ stats, posts }: Props) {
         <div className="fx-wrap">
           <p className="fx-hero-num-line">{t("fx.land.scale.line")}</p>
           <p className="fx-hero-num-big tnum">
-            {fmtInt(stats.perCapitaMonth)}
+            <CountUpOnReveal value={stats.perCapitaMonth} format={(n) => fmtInt(n)} />
             <span className="fx-hero-num-u">€</span>
             <span className="fx-hero-num-per">{t("fx.land.scale.per_inhabitant")}</span>
           </p>
@@ -142,7 +144,7 @@ export default function LandingClient({ stats, posts }: Props) {
               value: b.perMonth,
               unit: "€",
               display: fmtInt(b.perMonth),
-              href: `/budget?year=${stats.year}#sec-flux`,
+              href: `/ville/paris/budget?year=${stats.year}#sec-flux`,
             }))}
           />
         </div>
@@ -182,7 +184,7 @@ export default function LandingClient({ stats, posts }: Props) {
           <div className="fx-grid-tiles">
             {/* ROW 1 : Budget (SVG) · Évolution (SVG) · Patrimoine (SVG) */}
             <TileCard
-              href="/budget"
+              href="/ville/paris/budget"
               kind={t("fx.land.tile.01.kind")}
               title={t("fx.land.tile.01.title")}
               description={t("fx.land.tile.01.desc")}
@@ -207,7 +209,7 @@ export default function LandingClient({ stats, posts }: Props) {
             />
 
             <TileCard
-              href="/budget"
+              href="/ville/paris/budget"
               kind={t("fx.land.tile.02.kind")}
               title={t("fx.land.tile.02.title")}
               description={t("fx.land.tile.02.desc")}
@@ -227,7 +229,7 @@ export default function LandingClient({ stats, posts }: Props) {
             />
 
             <TileCard
-              href="/dette-patrimoine"
+              href="/ville/paris/dette"
               kind={t("fx.land.tile.05.kind")}
               title={t("fx.land.tile.05.title")}
               description={t("fx.land.tile.05.desc")}
@@ -253,9 +255,9 @@ export default function LandingClient({ stats, posts }: Props) {
               }
             />
 
-            {/* ROW 2 : Investissements (SVG) · Voté-vs-exécuté (SVG) · Subventions (TEXT) */}
+            {/* ROW 2 : Investissements (SVG) · Subventions (TEXT) · Marchés (TEXT) */}
             <TileCard
-              href="/investissements"
+              href="/ville/paris/investissements"
               kind={t("fx.land.tile.03.kind")}
               title={t("fx.land.tile.03.title")}
               description={t("fx.land.tile.03.desc")}
@@ -275,30 +277,7 @@ export default function LandingClient({ stats, posts }: Props) {
             />
 
             <TileCard
-              href="/budget"
-              kind={t("fx.land.tile.06.kind")}
-              title={t("fx.land.tile.06.title")}
-              description={t("fx.land.tile.06.desc")}
-              preview={
-                <svg viewBox="0 0 200 100">
-                  <line x1="6" y1="90" x2="194" y2="90" className="stroke-muted" stroke="#9099a6" strokeWidth="1" />
-                  <rect x="18"  y="22" width="14" height="68" className="stroke" fill="none" stroke="#0a0a0a" strokeWidth="1.5" />
-                  <rect x="34"  y="34" width="14" height="56" className="fill" fill="#0a0a0a" />
-                  <rect x="58"  y="38" width="14" height="52" className="stroke" fill="none" stroke="#0a0a0a" strokeWidth="1.5" />
-                  <rect x="74"  y="44" width="14" height="46" className="fill" fill="#0a0a0a" />
-                  <rect x="98"  y="48" width="14" height="42" className="stroke" fill="none" stroke="#0a0a0a" strokeWidth="1.5" />
-                  <rect x="114" y="30" width="14" height="60" className="fill-sig" fill="#5f6672" />
-                  <rect x="138" y="26" width="14" height="64" className="stroke" fill="none" stroke="#0a0a0a" strokeWidth="1.5" />
-                  <rect x="154" y="36" width="14" height="54" className="fill" fill="#0a0a0a" />
-                </svg>
-              }
-              kpi="± 3,8"
-              kpiUnit="%"
-              kpiDelta={<>{t("fx.land.tile.06.delta.before")}<b>{t("fx.land.tile.06.delta.em")}</b></>}
-            />
-
-            <TileCard
-              href="/qui-recoit"
+              href="/ville/paris/subventions"
               kind={t("fx.land.tile.04.kind")}
               title={t("fx.land.tile.04.title")}
               description={t("fx.land.tile.04.desc")}
@@ -308,71 +287,8 @@ export default function LandingClient({ stats, posts }: Props) {
               kpiDelta={<>↑ <b>3,3 %</b> {t("fx.land.tile.vs")}2023</>}
             />
 
-            {/* ROW 3 : Stress-test · Logement social · Marchés (TEXT) */}
             <TileCard
-              href="/dette-patrimoine/stress-test"
-              kind={t("fx.land.tile.stress.kind")}
-              title={t("fx.land.tile.stress.title")}
-              description={t("fx.land.tile.stress.desc")}
-              preview={(() => {
-                const cap = stats.capaciteDesendettement;
-                const toX = (yr: number) => 10 + Math.min(yr, 30) * 6;
-                const cursorX = toX(cap);
-                return (
-                  <svg viewBox="0 0 200 100">
-                    <line x1="10" y1="80" x2="190" y2="80" stroke="#9099a6" strokeWidth="1" />
-                    <rect x="10" y="70" width="62" height="12" fill="#0a0a0a" opacity="0.12" />
-                    <rect x="72" y="70" width="48" height="12" fill="#a67638" opacity="0.28" />
-                    <rect x="120" y="70" width="60" height="12" fill="#e11d1d" opacity="0.28" />
-                    <line x1={toX(12)} y1="62" x2={toX(12)} y2="90" stroke="#a67638" strokeWidth="2" />
-                    <line x1={cursorX} y1="58" x2={cursorX} y2="94" stroke="#0a0a0a" strokeWidth="3" />
-                    <circle cx={cursorX} cy="52" r="4" fill="#0a0a0a" />
-                    <text x={cursorX} y="42" textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#0a0a0a" fontWeight="700">
-                      {fmtDec(cap, 1)}
-                    </text>
-                    <text x={toX(12)} y="42" textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="8" fill="#a67638">seuil 12</text>
-                  </svg>
-                );
-              })()}
-              kpi={fmtDec(stats.capaciteDesendettement, 1)}
-              kpiUnit="ans"
-              kpiDelta={<>{t("fx.land.tile.stress.delta")}</>}
-            />
-
-            <TileCard
-              href="/logement-social"
-              kind={t("fx.land.tile.07.kind")}
-              title={t("fx.land.tile.07.title")}
-              description={t("fx.land.tile.07.desc")}
-              preview={
-                <svg viewBox="0 0 200 100">
-                  <line x1="10" y1="90" x2="190" y2="90" className="stroke-muted" stroke="#9099a6" strokeWidth="1" />
-                  {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i) => {
-                    const x = 14 + i * 14;
-                    const isYou = i === 8;
-                    return (
-                      <rect
-                        key={i}
-                        x={x}
-                        y={isYou ? 40 : 56}
-                        width="10"
-                        height={isYou ? 48 : 32}
-                        className={isYou ? "fill-sig" : "fill"}
-                        fill={isYou ? "#a67638" : "#0a0a0a"}
-                        opacity={isYou ? 1 : 0.85 - i * 0.05}
-                      />
-                    );
-                  })}
-                  <text x="126" y="32" textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="9" fill="#a67638" fontWeight="700">vous</text>
-                </svg>
-              }
-              kpi="4,2"
-              kpiUnit="ans"
-              kpiDelta={<>{t("fx.land.tile.07.delta")}</>}
-            />
-
-            <TileCard
-              href="/marches-publics"
+              href="/ville/paris/marches"
               kind={t("fx.land.tile.08.kind")}
               title={t("fx.land.tile.08.title")}
               description={
@@ -394,7 +310,7 @@ export default function LandingClient({ stats, posts }: Props) {
           </div>
 
           <div className="fx-grid-foot">
-            <Link href="/budget">{t("fx.land.inside.see_all")}</Link>
+            <Link href="/ville/paris/budget">{t("fx.land.inside.see_all")}</Link>
           </div>
         </div>
       </section>
@@ -426,11 +342,13 @@ export default function LandingClient({ stats, posts }: Props) {
                     </div>
                   )}
                   <div className="fx-analyses-body">
-                    {p.category && (
-                      <span className="fx-analyses-cat">{p.category}</span>
-                    )}
-                    <h3 className="fx-analyses-title">{p.title}</h3>
-                    <p className="fx-analyses-desc">{p.description}</p>
+                    {(locale === "en" && p.category_en) || p.category ? (
+                      <span className="fx-analyses-cat">
+                        {locale === "en" && p.category_en ? p.category_en : p.category}
+                      </span>
+                    ) : null}
+                    <h3 className="fx-analyses-title">{locale === "en" && p.title_en ? p.title_en : p.title}</h3>
+                    <p className="fx-analyses-desc">{locale === "en" && p.description_en ? p.description_en : p.description}</p>
                     <div className="fx-analyses-foot">
                       <span>
                         {new Date(p.date).toLocaleDateString(
@@ -517,6 +435,7 @@ export default function LandingClient({ stats, posts }: Props) {
         </div>
       </section>
 
+      </main>
       <Footer />
     </div>
   );

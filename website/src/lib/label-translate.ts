@@ -82,11 +82,36 @@ const EN: Record<string, string> = {
   "Enseignement": "Education",
   "Santé & Social": "Health & Social",
   "Rsa": "RSA welfare",
+  // M57 chapitres (project drawer "Chapter" KPI)
+  // (Voirie, Environnement also exist further below — kept here for grouping clarity)
+  "Affaires Scolaires": "Schools",
+  "Jeunesse et Sports": "Youth & Sports",
+  "Affaires Culturelles": "Culture",
+  "Famille": "Family",
+  "Décentralisation": "Decentralisation",
+
+  // ── Project typeAp tags ───────────────────────────────────────────────────
+  "grands_projets": "Major projects",
+  "GRANDS_PROJETS": "MAJOR PROJECTS",
+  "grand_projet": "Major project",
+  "GRAND_PROJET": "MAJOR PROJECT",
+  "entretien": "Maintenance",
+  "ENTRETIEN": "MAINTENANCE",
+  "budget_participatif": "Participatory budget",
+  "BUDGET_PARTICIPATIF": "PARTICIPATORY BUDGET",
+  "autre": "Other",
+  "AUTRE": "OTHER",
 
   // ── Marché natures ────────────────────────────────────────────────────────
+  // (Travaux, Marché also exist further below in CPV / chapitres sections)
   "SERVICES": "SERVICES",
+  "Services": "Services",
   "TRAVAUX": "WORKS",
   "FOURNITURE": "SUPPLIES",
+  "FOURNITURES": "SUPPLIES",
+  "Fournitures": "Supplies",
+  "Fourniture": "Supplies",
+  "MARCHÉ": "CONTRACT",
 
   // ── Marché CPV categories ─────────────────────────────────────────────────
   "Acheminement lettres,colis et courrier express": "Mail, parcel and express delivery",
@@ -171,19 +196,77 @@ const EN: Record<string, string> = {
   "SEM": "SEM",
   "Privé": "Private",
   "Divers": "Various",
+  "Autres bailleurs": "Other landlords",
   // Bailleur descriptions
   "Office Public de l'Habitat de la Ville — plus grand bailleur social français.": "Public Housing Office of the City — largest social landlord in France.",
   "Régie Immobilière de la Ville de Paris — SEM axée sur l'innovation habitat.": "Paris City Property Board — SEM focused on housing innovation.",
   "Issue de la fusion Elogie et Siemp — réhabilitation et mixité sociale.": "From the merger of Elogie and Siemp — rehabilitation and social mix.",
-  "Filiale SNCF — logement des salariés et social.": "SNCF subsidiary — employee and social housing.",
-  "Groupe Action Logement — bailleur national présent à Paris.": "Action Logement Group — national landlord present in Paris.",
-  "Dizaines de petits bailleurs sociaux et coopératifs.": "Dozens of small social and cooperative landlords.",
+  "Filiale SNCF (groupe ICF) — logement des salariés et logement social.": "SNCF subsidiary (ICF group) — employee and social housing.",
+  "Groupe Action Logement (Immobilière 3F) — bailleur national présent à Paris.": "Action Logement Group (Immobilière 3F) — national landlord present in Paris.",
+  "Dizaines de petits bailleurs sociaux et coopératifs non listés individuellement.": "Dozens of small social and cooperative landlords, not listed individually.",
+  "Filiale logement social du groupe Caisse des Dépôts — opérations en VEFA et accession sociale.": "Social-housing subsidiary of Caisse des Dépôts — VEFA operations and social home-ownership.",
+  "Bailleur social du groupe La Poste Habitat — patrimoine francilien.": "Social landlord of the La Poste Habitat group — Île-de-France portfolio.",
+  "ESH du groupe Action Logement (ex-Logement Français) — IDF étendu.": "ESH of the Action Logement group (formerly Logement Français) — extended Île-de-France.",
+  "ESH régionale du groupe BATIGERE — couvre principalement la grande couronne.": "Regional ESH of the BATIGERE group — covers mainly the outer ring.",
+  "Filiale logement de la RATP — historique du logement des agents, ouverte au logement social.": "Housing subsidiary of RATP — historically employee housing, opened to social housing.",
+  "ESH du groupe Action Logement — patrimoine national, présence parisienne.": "ESH of the Action Logement group — national portfolio, Paris presence.",
+  "Société anonyme HLM historique parisienne — petit patrimoine résidentiel.": "Historic Paris SA HLM — small residential portfolio.",
+  "Habitat Social Français — ESH au patrimoine majoritairement francilien.": "Habitat Social Français — ESH with a mostly Île-de-France portfolio.",
+  "Société Publique Locale d'Aménagement Paris — opérateur des grandes ZAC parisiennes (Paris Rive Gauche, Bercy-Charenton). Garantie d'emprunt Ville pour ses opérations d'aménagement, pas de parc locatif.": "Public Local Development Company for Paris — operator of major Paris ZACs (Paris Rive Gauche, Bercy-Charenton). City loan guarantees on its development operations, no rental stock.",
+  "Société Publique Locale d'aménagement à l'échelle métropolitaine — mêmes mécanismes de garantie que la SEMAPA.": "Metropolitan-scale public local development company — same guarantee mechanisms as SEMAPA.",
+  "Établissement Public Industriel et Commercial de la Ville — production et distribution d'eau potable. Garantie Ville sur ses emprunts d'investissement réseau.": "Public Industrial and Commercial Establishment of the City — drinking water production and distribution. City guarantee on its network-investment loans.",
+  "Société anonyme d'économie mixte exploitant le Palais Omnisports de Paris-Bercy. Garantie historique sur les emprunts de construction/rénovation.": "Mixed-economy company operating the Palais Omnisports de Paris-Bercy. Historic guarantee on construction/renovation loans.",
+  "Fondation gestionnaire de l'Institut d'Études Politiques. Garantie Ville sur les emprunts immobiliers du campus parisien.": "Foundation managing the Institut d'Études Politiques. City guarantee on Paris campus property loans.",
+  "Fondation OPTH Adolphe de Rothschild — hôpital ophtalmologique. Garantie Ville sur emprunts d'investissement médical.": "Adolphe de Rothschild OPTH foundation — ophthalmological hospital. City guarantee on medical-investment loans.",
 
   // ── Rate types (dette) ────────────────────────────────────────────────────
   "taux fixe": "fixed rate",
   "variable": "variable",
   "Taux fixe": "Fixed rate",
   "Variable": "Variable",
+
+  // ── Marchés categories (DECP CPV / functional) ────────────────────────────
+  "Techniques de l'information et de la communication": "Information & communications technology",
+  "Maitrise d'œuvre": "Works management",
+  "Maîtrise d'œuvre": "Works management",
+  "Services de communications électroniques (Internet, interconnexion, données mobiles M2M, t…": "Electronic communications services (Internet, interconnection, M2M mobile data, t…",
+  "Services Généraux": "General Services",
+  "Marché": "Contract",
+  "Théâtre": "Theatre",
+
+  // ── Bilan structure (patrimoine_structure_*.json) ────────────────────────
+  "Émissions publiques · Euro MTN": "Public bond issues · Euro MTN",
+  "Engagements long terme hors crédit bancaire classique": "Long-term commitments outside standard bank lending",
+  "Terrains, bâtiments, voirie, équipements — valeur comptable nette": "Land, buildings, roads, equipment — net book value",
+  "Compte au Trésor · placements court terme": "Treasury account · short-term placements",
+  "Créances, stocks, avances": "Receivables, inventory, advances",
+  "Charges constatées d'avance · produits à recevoir": "Prepaid expenses · accrued income",
+  "Dettes financières diverses": "Other financial debts",
+  "Prêts amortissables — Banque des Territoires, Banque Postale": "Amortising loans — Banque des Territoires, La Banque Postale",
+  "Capital restant au 31 décembre": "Capital outstanding at 31 December",
+  "DRIHL - Socle de données demandes et attributions": "DRIHL — Requests and allocations data set",
+  "Une ligne = un emprunt garanti par la Ville de Paris. Le capital restant dû au 31/12 représente l'engagement hors bilan : Paris rembourse à la place du bénéficiaire uniquement en cas de défaut. Majoritairement des emprunts de bailleurs sociaux auprès de la CDC, donc un risque jugé faible par les agences de notation.": "One line = one loan guaranteed by the City of Paris. The capital outstanding at 31/12 represents off-balance-sheet exposure: Paris repays in place of the beneficiary only in the event of default. Mostly social-housing operator loans from the CDC, so the risk is rated low by credit-rating agencies.",
+  "Le capital restant dû au 31/12 représente l'engagement hors bilan : Paris rembourse à la place du bénéficiaire uniquement en cas de défaut. Majoritairement des emprunts de bailleurs sociaux auprès de la CDC, donc un risque jugé faible par les agences de notation.": "The capital outstanding at 31/12 represents off-balance-sheet exposure: Paris repays in place of the beneficiary only in the event of default. Mostly social-housing operator loans from the CDC, so the risk is rated low by credit-rating agencies.",
+  "Le capital restant dû au 31/12 représente l'engagement hors bilan :": "The capital outstanding at 31/12 represents off-balance-sheet exposure:",
+  "Paris rembourse à la place du bénéficiaire uniquement en cas de défaut.": "Paris repays in place of the beneficiary only in the event of default.",
+  "Majoritairement des emprunts de bailleurs sociaux auprès de la CDC, donc un risque jugé faible par les agences de notation.": "Mostly social-housing operator loans from the CDC, so the risk is rated low by credit-rating agencies.",
+  "actif ventilé": "assets breakdown",
+  "passif ventilé": "liabilities breakdown",
+  "Detail Dettes financières diverses": "Detail of other financial debts",
+  "Immobilière 3F - I3F (SA HLM)": "Immobilière 3F - I3F (SA HLM)",
+
+  // ── Marchés generic chapitres ─────────────────────────────────────────────
+  "Bâtiment": "Building",
+  "Voirie": "Roads",
+  "Propreté": "Cleaning",
+  "Travaux": "Works",
+  "Conseil-études": "Consulting & studies",
+  "Conseil & études": "Consulting & studies",
+  "Espaces verts": "Green spaces",
+  "Mobilier": "Furniture",
+  "Équipement": "Equipment",
+  "Restauration": "Catering",
+  "Énergie": "Energy",
 };
 
 /** Translate a data-driven label. Returns the English version when locale is "en"

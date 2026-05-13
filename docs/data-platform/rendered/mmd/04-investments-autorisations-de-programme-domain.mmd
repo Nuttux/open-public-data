@@ -1,0 +1,28 @@
+flowchart LR
+    AP1[OpenData<br/>comptes_administratifs_<br/>autorisations_de_<br/>programmes_*<br/>⚠️ frozen 2022] -->|sync_opendata.py| R1[(raw.ap_projets_*)]
+    AP2[cdn.paris.fr<br/>Annexe IL PDFs<br/>2018–2024] -->|extract_pdf_investments.py<br/>Gemini 3 Flash vision<br/>page-total reconciliation| SEED[(seed_pdf_investissements_*.csv<br/>per-year)]
+    AP2 -.->|direct JSON| J0[map/investissements_<br/>localises_*.json<br/>2022–2024]
+    R1 --> STG[stg_ap_projets.sql]
+    SEED --> STG
+    STG --> MERGE[merge_investments.py<br/>API ∪ PDF dedup]
+    MERGE --> CA[core_ap_projets.sql<br/>grain: annee × ap_code]
+
+    CA --> GEO1[Regex postal 75001–75020]
+    CA --> GEO2[seed_cache_geo_ap.csv<br/>known places]
+    CA --> GEO3[BAN API<br/>api-adresse.data.gouv.fr]
+    CA --> GEO4[enrich_geo_ap_llm.py<br/>Gemini 3 Flash fallback]
+    GEO1 & GEO2 & GEO3 & GEO4 --> GC[(map/geo_cache.json<br/>ode_arrondissement<br/>ode_lat, ode_lon<br/>ode_confiance)]
+    GC --> IE[int_ap_projets_enrichis.sql]
+    CA --> IE
+    IE --> MCI[mart_carte_investissements]
+    IE --> MSA[mart_stats_arrondissements]
+    IE --> MPM[mart_projet_marches<br/>via int_projet_marches +<br/>match_projet_marches.py]
+
+    MCI -->|export_map_data.py| J1[map/investissements_*.json<br/>geocoded only]
+    MCI --> J2[map/investissements_complet_*.json<br/>incl. non-geo]
+    MSA --> J3[map/arrondissements_stats_*.json]
+    MPM -->|export_projet_marches.py| J4[map/projet_marches.json]
+    J0 & J1 & J2 & J3 & J4 --> UIINV[/investissements<br/>ProjectMap.tsx/]
+
+    classDef warn fill:#fee2e2,stroke:#991b1b,color:#111
+    class AP1 warn

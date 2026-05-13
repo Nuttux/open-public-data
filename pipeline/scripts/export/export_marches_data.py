@@ -26,15 +26,22 @@ from google.cloud import bigquery
 
 # Configuration
 PROJECT_ID = "open-data-france-484717"
-DATASET = "dbt_paris"
+DATASET = "dbt_paris_marts"
 OUTPUT_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data" / "marches-publics"
 
 # Top N catégories à garder (le reste → "Autres")
 TOP_CATEGORIES = 12
 
 
+def _float_or_none(v):
+    return float(v) if v is not None else None
+
+
 def fetch_marches(client: bigquery.Client, year: int) -> list:
-    """Récupère les marchés depuis mart_marches_fournisseurs pour une année."""
+    """Récupère les marchés depuis mart_marches_fournisseurs pour une année.
+
+    Émet les champs Paris + l'enrichissement DECP (NULL quand pas matché).
+    """
     query = f"""
     SELECT *
     FROM `{PROJECT_ID}.{DATASET}.mart_marches_fournisseurs`
@@ -43,7 +50,8 @@ def fetch_marches(client: bigquery.Client, year: int) -> list:
     """
     results = []
     for row in client.query(query).result():
-        results.append({
+        rec = {
+            # Colonnes Paris (historique, conservées)
             "numero_marche": row.numero_marche,
             "objet": row.objet,
             "nature": row.nature,
@@ -56,7 +64,27 @@ def fetch_marches(client: bigquery.Client, year: int) -> list:
             "categorie_libelle": row.categorie_libelle,
             "perimetre_financier": row.perimetre_financier,
             "is_multiattributaire": row.is_multiattributaire,
-        })
+
+            # Origine ligne (paris | decp)
+            "_source_origin": row._source_origin,
+
+            # Enrichissement DECP — affichés dans le drawer
+            "decp_ccag": row.decp_ccag,
+            "decp_cpv_famille": row.decp_cpv_famille,
+            "decp_procedure": row.decp_procedure,
+            "decp_montant_notifie": _float_or_none(row.decp_montant_notifie),
+            "decp_duree_mois": row.decp_duree_mois,
+            "decp_offres_recues": row.decp_offres_recues,
+            "decp_lieu_execution_lisible": row.decp_lieu_execution_lisible,
+            "decp_titulaires_count": row.decp_titulaires_count,
+            "decp_nb_modifications": row.decp_nb_modifications,
+            "decp_sous_traitance_declaree": row.decp_sous_traitance_declaree,
+            "decp_has_consideration_sociale": row.decp_has_consideration_sociale,
+            "decp_has_consideration_environnementale": row.decp_has_consideration_environnementale,
+            "ecart_plafond_vs_notifie": _float_or_none(row.ecart_plafond_vs_notifie),
+            "afficher_deux_montants": row.afficher_deux_montants,
+        }
+        results.append(rec)
     return results
 
 

@@ -1,0 +1,166 @@
+---
+title: "How we recovered €2.3bn in Paris grants missing from the Open Data portal"
+description: "Across two fiscal years (2020 and 2021), €2.3 billion in grants paid by the Ville de Paris to 26,000 beneficiaries do not appear in the standard OpenData file, nor in a journalist's usual searches. The data existed — in a PDF annex of the Administrative Account. Methodical account of a few-hour reconstitution using pdftotext and a 250-line regex parser."
+date: "2026-05-01"
+author: "France Open Data"
+tags: ["investigation", "grants", "transparency", "open-data", "method"]
+category: "Investigation"
+featured: true
+image: "https://commons.wikimedia.org/wiki/Special:FilePath/Hotel%20de%20Ville%20Paris%20Wikimedia%20Commons.jpg?width=1600"
+imageAlt: "Hôtel de Ville de Paris — the political and administrative seat where the grants list is voted on each year"
+imageCredit: "Photo: Wikimedia Commons · CC BY-SA"
+readingTime: "10 min"
+---
+
+Across the last seven published fiscal years of the Paris Administrative Account (CA) — the annual accounting snapshot of executed spending — **the grants paid in 2020 and 2021 cannot be found in the file the City exposes on its Open Data portal**. Not a marginal gap: **€2.3 billion, 26,115 beneficiaries** — half of what is missing across these two years.
+
+This article describes how the data was reconstituted in a few hours, with no privileged access, no FOIA-style request, no language-model call, starting from an official annex mandated by public-accounting standards. It works equally well as a **methodological account** — useful to any public-sector data team that would like to fill that kind of gap — and as a description of the state of the Open Data Paris portal at the time of the analysis.
+
+## Starting observation
+
+The portal [opendata.paris.fr](https://opendata.paris.fr) publishes a central dataset: `subventions-versees-annexe-compte-administratif-a-partir-de-2018`. It is supposed to contain, for every fiscal year since 2018, the list of grants paid by the City. A direct query on this dataset returns this, year by year:
+
+| Year | Records published | Total amount published |
+|---|---:|---:|
+| CA 2018 | 10,572 | €1.24bn |
+| CA 2019 | 12,611 | €1.30bn |
+| **CA 2020** | **2,729** | **€1.29bn** |
+| **CA 2021** | **2,230** | **€1.22bn** |
+| CA 2022 *(published 2022)* | 6,143 | €1.17bn |
+| CA 2023 *(published 2023)* | 6,160 | €1.20bn |
+| CA 2024 *(published 2024)* | 6,936 | €1.35bn |
+
+At first glance, 2020 and 2021 are there. The total is there. **Except that on a row-by-row inspection, the names of the largest beneficiaries are replaced with `null`.** The 18 largest payments of fiscal 2020 — including a €382M line, an €87M line, an €83M line — come back from the public API like this:
+
+```json
+{
+  "publication": "CA 2020",
+  "nom_de_l_organisme_beneficiaire": null,
+  "categorie_du_beneficiaire": null,
+  "nature_juridique_du_beneficiaire": null,
+  "montant_de_la_subvention": 382374840
+}
+```
+
+The exact sum is exposed. The beneficiary is masked. A journalist who wants to know **who** received €382M from the Ville de Paris in 2020 cannot answer that question with what the portal exposes.
+
+## Why the question matters
+
+The usefulness of a grants file is not in the total — which appears in the financial report — but in the **list of beneficiaries**. That is what allows a citizen or journalist to:
+
+- check the multi-year trajectory of an operator (Centre d'Action Sociale, Paris Habitat, AP-HP)
+- compare concentration of funding (what share goes to the top 10?)
+- detect an atypical evolution (a grant that doubles, that stops)
+- track the local non-profit ecosystem beyond press releases
+
+Without the **(name, amount) pair**, none of these readings is possible. The portal therefore exposes, for 2020-2021, **legible aggregates that cannot be audited at the beneficiary level**.
+
+## The data exists — in a PDF
+
+Annex **B8.1.1** of the Administrative Account, titled "List of grants in kind or in subsidies attributed to third parties", is mandated by the M57 accounting standard. It is published every year in **Tome 3** of the CA, in PDF, on [paris.fr](https://www.paris.fr/pages/comptes-administratifs-de-la-ville-retrouvez-toutes-les-infos-27793). It contains, sub-section by sub-section (Associations, Companies, Foundations, Municipalities, Public bodies, State, Régies), **the exhaustive named list** of beneficiaries, with cash and in-kind amounts.
+
+For 2020 and 2021, those two PDFs weigh respectively **4.2 MB and 4.1 MB** and contain the names that do not appear in the portal API. The total announced on page one is:
+
+- **CA 2020: €1,335,350,692** (Section Grand Total)
+- **CA 2021: €1,258,079,952**
+
+Those are the figures a fully exhaustive OpenData file should have exposed.
+
+## The method — three steps, zero LLM, about two hours
+
+The extraction was done with three standard tools:
+
+### 1. Download and text conversion
+
+```bash
+curl -sLo ca_2020_tome3.pdf "https://cdn.paris.fr/.../tome3.pdf"
+pdftotext -layout ca_2020_tome3.pdf ca_2020_tome3.txt
+```
+
+`pdftotext -layout` (poppler utility, open source, present in every Linux distribution and installable in one command on macOS) preserves the tabular alignment in columns. The raw format looks like this:
+
+```
+                                LIST OF GRANTS IN KIND OR IN SUBSIDIES ATTRIBUTED TO THIRD PARTIES
+                                                Amount of fund / subsidy
+                  Beneficiary name                                                          In-kind benefits
+                                                            (cash)
+                  GRAND TOTAL                                                  1 335 350 692,31
+Associations                                                                       266 180 470,20
+ABC PUERICULTURE                                                                     6 944 575,10   79620
+ACADEMIE D ARMES DE FRANCE                                                               2 313,00
+...
+```
+
+### 2. Python regex parser (~250 lines)
+
+The parser ([`parse_subv_pdf_text.py`](https://github.com/anthropics/open-public-data) in the pipeline):
+
+- detects the **real start of the section** (string "LISTE DES CONCOURS ATTRIBUES A DES TIERS EN NATURE OU EN SUBVENTIONS") and the **stop** before the next section (B8.1.2 or B8.3);
+- tracks **sub-sections** (Associations / Companies / Foundations / Municipalities / Public bodies / State / Régies / Other) to assign the correct legal nature to each beneficiary;
+- extracts triplets `(name, cash_amount, in_kind_amount)` line by line via a tabular regex;
+- excludes "TOTAL XXX" lines (which look like beneficiaries but are sub-totals);
+- deduplicates by normalised name.
+
+### 3. Validation by the official total
+
+Precision is measured simply: the first page of the PDF announces the section's "GRAND TOTAL". Compared to the sum of extracted amounts:
+
+| Year | PDF official total | Reconstituted total | Gap |
+|---|---:|---:|---:|
+| **2020** | €1,335,350,692 | €1,343,480,124 | **+0.6 %** |
+| **2021** | €1,258,079,952 | €1,262,624,117 | **+0.3 %** |
+
+Gap below 1 %. It comes from imperfect parsing of a few multi-line labels (a name spread across two lines may produce two partial entries, counted twice). No analytical impact: the top beneficiaries are nominally recognised with their exact amount.
+
+### 4. GDPR anonymisation of natural persons
+
+The PDF exposes **15,244 natural persons** in 2020 and **4,342 in 2021** — typically individual allowances, scholarships, housing aids, amounts between €200 and €500. The pipeline **aggregates them into one anonymous line per year** ("Personnes physiques anonymisées RGPD") to preserve the total without exposing identities.
+
+## What we recover
+
+| | Before (Open Data portal alone) | After (portal + B8.1.1 PDF) | Gain |
+|---|---:|---:|---|
+| **2020** — named beneficiaries | 4,137 | **22,862** | **+18,725** |
+| **2020** — amount nominally attributable | €295M | **€1,475M** | **+€1,180M** |
+| **2021** — named beneficiaries | 3,997 | **11,387** | **+€1,131M** |
+| **2021** — amount nominally attributable | €248M | **€1,379M** | |
+| **Two-year total** | | | **+€2.3bn and +26,115 named beneficiaries** |
+
+### Top beneficiaries missing from the public portal
+
+The six heaviest lines — **€1.2bn over two years, half the gap** — are:
+
+| Beneficiary (recovered from PDF) | Status | 2020 | 2021 |
+|---|---|---:|---:|
+| **CASVP** *(Centre d'Action Sociale de la Ville de Paris)* | Public administrative body | €382M | €371M |
+| **Paris Habitat OPH** | Public Housing Office | €87M | €49M |
+| **Paris Musées** | Public body (14 museums) | €83M | €66M |
+| **RIVP** *(Régie Immobilière de la Ville de Paris)* | SEM social-housing landlord | €56M | €57M |
+| **RATP** *(Régie Autonome des Transports Parisiens)* | EPIC | €53M | — |
+| **Elogie-Siemp** | SEM social-housing landlord | €29M | €42M |
+
+None of these six lines appeared in the named-beneficiaries list of the Open Data portal before this reconstitution. They are now visible in the corresponding association page on [/qui-recoit](/qui-recoit) for 2020 and 2021.
+
+## What this reconstitution shows
+
+**Open data is a production chain**. When an Open Data dataset exposes an aggregated total without the named beneficiaries that compose it, its use becomes that of an accounting summary rather than an analytical file — a journalist or a citizen can no longer link an amount to a recipient. It is a usage distinction, which determines what the published data actually allows people to do.
+
+The data **existed** for these two years — the City published it itself, in PDF, in an official annex mandated by the General Code of Local Authorities (article L. 2313-1). What was missing was the **last mile**: turning that PDF into exploitable CSV/JSON, and pushing it to the portal.
+
+This last mile is technically modest. The work — download, `pdftotext` conversion, 250-line regex parser, merge with the existing dataset, recompute totals, GDPR anonymisation of natural persons — was executed in a few hours by a single person, from public files only.
+
+For the **City**, doing it in-house would mean automating this script in the annual CA publication pipeline, alongside the PDF edit itself. The marginal cost is negligible. The benefit: 26,000 beneficiaries become nominally consultable again — the raw material for any serious analysis of Paris public spending.
+
+## What these numbers do not say
+
+This methodical account does not say:
+
+- **Why the publication chain anonymised the largest beneficiaries** for 2020 and 2021. Possible hypotheses: M14→M57 information-system transition over the same period, pandemic-era constraints on publication processes, or an editorial decision that no public trace documents. Without official communication, it remains open.
+- **The precise purpose of each reconstituted grant**. The B8.1.1 PDF gives the beneficiary and the aggregated annual amount — not the individual motive (operating grant, project, equipment). That detail exists for associations in another dataset (`subventions-associations-votees`), absent for the large operators (CASVP, public bodies).
+- **Whether the mechanism applies as-is to other municipalities**. The B8.1.1 annex is mandated by M57, hence present everywhere — but the PDF format varies between municipalities. The parser here is calibrated for the Ville de Paris format.
+
+What it does say, in a sentence: **the data existed, in an official annex, but not in the directly exploitable format of the portal** — and the work to bring it into CSV/JSON is within reach of a public-sector data team with a workstation, `pdftotext`, and a few hours of parsing.
+
+---
+
+**Sources**: [Comptes Administratifs Ville de Paris, Tome 3 — annex B8.1.1](https://www.paris.fr/pages/comptes-administratifs-de-la-ville-retrouvez-toutes-les-infos-27793) (CA 2020 and CA 2021) · Open Data Paris portal ([opendata.paris.fr](https://opendata.paris.fr)) — dataset `subventions-versees-annexe-compte-administratif-a-partir-de-2018`, queries via the [public ODSQL API](https://opendata.paris.fr/api/explore/v2.1/) · open-public-data pipeline, scripts `pipeline/scripts/tools/parse_subv_pdf_text.py` + `merge_subv_pdf_into_opendata.py`. Scope: Ville de Paris, fiscal years 2020 and 2021. Code and data open under MIT licence.

@@ -1,0 +1,4 @@
+key,value,unit,source,source_url,date_reference,notes
+capacite_desendettement_alerte_ans,12,années,Cour des comptes - rapports sur les finances locales,https://www.ccomptes.fr/fr/publications/les-finances-publiques-locales-2023,2023-09-01,"Seuil d'alerte de capacité de désendettement communément utilisé par les chambres régionales des comptes. Au-delà : risque financier signalé."
+capacite_desendettement_critique_ans,20,années,Cour des comptes - rapports sur les finances locales,https://www.ccomptes.fr/fr/publications/les-finances-publiques-locales-2023,2023-09-01,"Seuil critique : au-delà, la collectivité est considérée en situation financière très préoccupante."
+instruction_comptable,M57,nomenclature,Arrêté du 20 décembre 2018,https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000037889477,2024-01-01,"Nomenclature budgétaire et comptable M57 applicable aux régions, départements et communes de plus de 3500 habitants depuis 2024."

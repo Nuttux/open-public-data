@@ -1,0 +1,158 @@
+{
+  "generated_at": "2026-05-02T11:10:11.526877+00:00",
+  "source": "data.gouv.fr — DECP consolidés",
+  "source_url": "https://www.data.gouv.fr/datasets/donnees-essentielles-de-la-commande-publique-consolidees-format-tabulaire/",
+  "source_resource_id": "22847056-61df-452d-837d-8b8ceadbfc52",
+  "commune": {
+    "slug": "toulouse",
+    "nom": "Toulouse",
+    "siren": "213105554"
+  },
+  "aggregates": {
+    "total_count": 1957,
+    "total_montant": 1537374580,
+    "coverage_pct": 100.0,
+    "n_with_montant": 1957,
+    "duplicates_dropped": 2202,
+    "outliers_dropped": 0,
+    "sentinels_dropped": 0,
+    "max_plausible_montant": 200000000,
+    "by_year": [
+      {
+        "year": 2019,
+        "montant": 46553910,
+        "count": 172
+      },
+      {
+        "year": 2020,
+        "montant": 20032291,
+        "count": 103
+      },
+      {
+        "year": 2021,
+        "montant": 88642974,
+        "count": 197
+      },
+      {
+        "year": 2022,
+        "montant": 244386133,
+        "count": 377
+      },
+      {
+        "year": 2023,
+        "montant": 204104799,
+        "count": 194
+      },
+      {
+        "year": 2024,
+        "montant": 263352638,
+        "count": 430
+      },
+      {
+        "year": 2025,
+        "montant": 197966229,
+        "count": 259
+      },
+      {
+        "year": 2026,
+        "montant": 461492809,
+        "count": 216
+      }
+    ],
+    "top_titulaires_window_years": 5,
+    "top_titulaires": [
+      {
+        "id": "?",
+        "nom": "?",
+        "montant": 129798990,
+        "count": 267
+      },
+      {
+        "id": "42498265000014",
+        "nom": "SCC FRANCE (SCC. SCC DIRECT. SCC EXCHANGE. SCC STORE)",
+        "montant": 49836000,
+        "count": 4
+      },
+      {
+        "id": "51266419400168",
+        "nom": "ORANGE CYBERDEFENSE FRANCE",
+        "montant": 30780000,
+        "count": 3
+      },
+      {
+        "id": "33307306200015",
+        "nom": "SOCIETE D INFORMATIQUE DE GESTION ET DE COMMUNICATION",
+        "montant": 29856950,
+        "count": 10
+      },
+      {
+        "id": "44836172500022",
+        "nom": "MAINTENANCE LOGISTIQUE RESEAU AUTOMAT",
+        "montant": 27553618,
+        "count": 5
+      },
+      {
+        "id": "31820881600021",
+        "nom": "SOCOREM",
+        "montant": 26940621,
+        "count": 6
+      },
+      {
+        "id": "35171353200205",
+        "nom": "LEO LAGRANGE ANIMATION",
+        "montant": 25391735,
+        "count": 10
+      },
+      {
+        "id": "47698032100360",
+        "nom": "POMONA EPISAVEURS",
+        "montant": 25039202,
+        "count": 7
+      },
+      {
+        "id": "31680701501340",
+        "nom": "SYSCO FRANCE SAS",
+        "montant": 24718667,
+        "count": 27
+      },
+      {
+        "id": "31680701501373",
+        "nom": "SYSCO FRANCE SAS",
+        "montant": 23495732,
+        "count": 8
+      },
+      {
+        "id": "44005586101864",
+        "nom": "SPIE BUILDING SOLUTIONS",
+        "montant": 21709672,
+        "count": 9
+      },
+      {
+        "id": "50145647900028",
+        "nom": "TRAVAUX ENTRETIEN BATIMENT MIDI-PYRENEES",
+        "montant": 20760000,
+        "count": 2
+      },
+      {
+        "id": "44317013900036",
+        "nom": "ENTR'OUVERT",
+        "montant": 19818774,
+        "count": 7
+      },
+      {
+        "id": "39297912600027",
+        "nom": "SPT MARITIME ET INDUSTRIEL",
+        "montant": 18960000,
+        "count": 6
+      },
+      {
+        "id": "55204499202382",
+        "nom": "POMONA (POMONA PASSIONFROID)",
+        "montant": 18824352,
+        "count": 7
+      }
+    ]
+  },
+  "notes_fr": "Marchés publics filtrés par SIREN acheteur (213105554). Couverture estimée de la qualité montant : 100.0% des marchés ont un montant non-nul renseigné. La DECP au national est connue pour avoir une qualité variable selon les acheteurs ; les chiffres ci-dessous sont bruts, non corrigés.",
+  "notes_en": "Public procurement filtered by buyer SIREN (213105554). Estimated quality coverage: 100.0% of contracts have a non-zero amount. DECP is known for variable quality across buyers; numbers below are raw, unadjusted."
+}

@@ -3,8 +3,9 @@
 import type { CityDebtSnapshot } from "@/lib/fusion-data";
 import { fmtDec, fmtInt } from "@/lib/fmt";
 import { useT } from "@/lib/localeContext";
+import { CAPACITE_DESENDETTEMENT_ALERTE_ANS } from "@/lib/methodology";
 
-const THRESHOLD = 12; // seuil d'alerte légal
+const THRESHOLD = CAPACITE_DESENDETTEMENT_ALERTE_ANS;
 
 type Props = {
   cities: CityDebtSnapshot[];

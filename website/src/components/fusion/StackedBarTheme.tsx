@@ -8,7 +8,7 @@ import { useTrack } from "@/lib/analyticsContext";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.replace(`{${k}}`, String(v));
+  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
   return r;
 };
 
@@ -38,28 +38,29 @@ type Props = {
 };
 
 // Editorial palette — 10 clear, distinct hues, colorblind-conscious.
+// All colors meet WCAG 2.1 AA (≥4.5:1) against white seg-label text.
 export const THEME_COLOR: Record<string, string> = {
   "Social": "#c12323",
   "Logement": "#546583",
   "Éducation": "#2a3680",
-  "Culture": "#a67638",
-  "Sport": "#3a8f4a",
-  "Environnement": "#6b9c52",
+  "Culture": "#8c5e2a",
+  "Sport": "#2c7339",
+  "Environnement": "#4d7a36",
   "Santé": "#b8495d",
-  "Transport": "#4a8aa6",
+  "Transport": "#36657a",
   "Économie": "#8a5a3b",
-  "Administration": "#6b6f7a",
+  "Administration": "#5a5e68",
   "Sécurité": "#3d4045",
   "International": "#7b6aa3",
-  "Autres": "#9099a6",
+  "Autres": "#6c7484",
 };
 
 // Fallback palette cycled when a theme name isn't in THEME_COLOR — used for
 // marchés public categories (CPV libellés), which have arbitrary labels.
 const FALLBACK_PALETTE = [
-  "#2a3680", "#a67638", "#c12323", "#3a8f4a", "#546583",
-  "#b8495d", "#4a8aa6", "#8a5a3b", "#7b6aa3", "#6b9c52",
-  "#3d4045", "#6b6f7a", "#a33016", "#e06b4c", "#9099a6",
+  "#2a3680", "#8c5e2a", "#c12323", "#2c7339", "#546583",
+  "#b8495d", "#36657a", "#8a5a3b", "#7b6aa3", "#4d7a36",
+  "#3d4045", "#5a5e68", "#a33016", "#b85433", "#6c7484",
 ];
 
 function colorFor(theme: string, index: number): string {
@@ -140,7 +141,7 @@ export default function StackedBarTheme({
       </div>
 
       <div className="fx-stackbar-wrap">
-        <div className="fx-stackbar" role="img" aria-label={t("fx.stacked.aria")}>
+        <div className="fx-stackbar" role="group" aria-label={t("fx.stacked.aria")}>
           {barSegments.map((s, idx) => {
             const pct = (s.amount / total) * 100;
             const wide = pct >= 9;

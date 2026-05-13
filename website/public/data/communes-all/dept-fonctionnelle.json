@@ -1,0 +1,3126 @@
+{
+  "generated_at": "2026-05-06T17:05:26.662258+00:00",
+  "source": "OFGL ofgl-base-departements-fonctionnelle",
+  "source_url": "https://data.ofgl.fr/explore/dataset/ofgl-base-departements-fonctionnelle/",
+  "year": 2024,
+  "n_dep": 97,
+  "fonctions": [
+    "action_sociale_rsa_dependance_enfance",
+    "colleges_education",
+    "routes_transport_voirie_dep",
+    "administration_autres",
+    "securite_civile_sdis_pompiers",
+    "culture_sport_jeunesse"
+  ],
+  "scope_note_fr": "Dépenses totales hors remboursement de dette des départements (M57 majoritaire en 2024, reliquat M52), ventilées par fonction à un chiffre puis regroupées en 6 buckets éditoriaux. Budgets principal + annexes consolidés. APA/RSA/PCH inclus dans la fonction 4 « Santé et action sociale » au niveau 1.",
+  "by_dep_code": {
+    "01": {
+      "nom": "Ain",
+      "ptot": 678981,
+      "total_eur_hab": 1025.2,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5067,
+          "eur_hab": 519.5
+        },
+        "colleges_education": {
+          "share": 0.1256,
+          "eur_hab": 128.8
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1094,
+          "eur_hab": 112.1
+        },
+        "administration_autres": {
+          "share": 0.1693,
+          "eur_hab": 173.5
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0618,
+          "eur_hab": 63.3
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0272,
+          "eur_hab": 27.9
+        }
+      }
+    },
+    "02": {
+      "nom": "Aisne",
+      "ptot": 539099,
+      "total_eur_hab": 1283.0,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5436,
+          "eur_hab": 697.4
+        },
+        "colleges_education": {
+          "share": 0.0732,
+          "eur_hab": 94.0
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0436,
+          "eur_hab": 55.9
+        },
+        "administration_autres": {
+          "share": 0.2839,
+          "eur_hab": 364.2
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0405,
+          "eur_hab": 51.9
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0152,
+          "eur_hab": 19.5
+        }
+      }
+    },
+    "03": {
+      "nom": "Allier",
+      "ptot": 343485,
+      "total_eur_hab": 1453.3,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6013,
+          "eur_hab": 873.9
+        },
+        "colleges_education": {
+          "share": 0.0604,
+          "eur_hab": 87.7
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0882,
+          "eur_hab": 128.2
+        },
+        "administration_autres": {
+          "share": 0.1819,
+          "eur_hab": 264.4
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0418,
+          "eur_hab": 60.7
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0264,
+          "eur_hab": 38.4
+        }
+      }
+    },
+    "04": {
+      "nom": "Alpes-de-Haute-Provence",
+      "ptot": 170650,
+      "total_eur_hab": 1552.5,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.4083,
+          "eur_hab": 633.9
+        },
+        "colleges_education": {
+          "share": 0.0707,
+          "eur_hab": 109.8
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.2044,
+          "eur_hab": 317.4
+        },
+        "administration_autres": {
+          "share": 0.2136,
+          "eur_hab": 331.6
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0501,
+          "eur_hab": 77.8
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0528,
+          "eur_hab": 81.9
+        }
+      }
+    },
+    "05": {
+      "nom": "Hautes-Alpes",
+      "ptot": 145357,
+      "total_eur_hab": 1788.5,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.4227,
+          "eur_hab": 756.1
+        },
+        "colleges_education": {
+          "share": 0.0554,
+          "eur_hab": 99.1
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.2839,
+          "eur_hab": 507.8
+        },
+        "administration_autres": {
+          "share": 0.1581,
+          "eur_hab": 282.8
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0341,
+          "eur_hab": 61.0
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0457,
+          "eur_hab": 81.7
+        }
+      }
+    },
+    "06": {
+      "nom": "Alpes-Maritimes",
+      "ptot": 1117561,
+      "total_eur_hab": 1264.6,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.4906,
+          "eur_hab": 620.4
+        },
+        "colleges_education": {
+          "share": 0.0707,
+          "eur_hab": 89.5
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0889,
+          "eur_hab": 112.4
+        },
+        "administration_autres": {
+          "share": 0.2366,
+          "eur_hab": 299.1
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0703,
+          "eur_hab": 88.9
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.043,
+          "eur_hab": 54.4
+        }
+      }
+    },
+    "07": {
+      "nom": "Ardèche",
+      "ptot": 340043,
+      "total_eur_hab": 1267.1,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5356,
+          "eur_hab": 678.7
+        },
+        "colleges_education": {
+          "share": 0.0394,
+          "eur_hab": 49.9
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1448,
+          "eur_hab": 183.4
+        },
+        "administration_autres": {
+          "share": 0.2001,
+          "eur_hab": 253.5
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0466,
+          "eur_hab": 59.1
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0336,
+          "eur_hab": 42.5
+        }
+      }
+    },
+    "08": {
+      "nom": "Ardennes",
+      "ptot": 274783,
+      "total_eur_hab": 1376.4,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6903,
+          "eur_hab": 950.1
+        },
+        "colleges_education": {
+          "share": 0.0687,
+          "eur_hab": 94.5
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0913,
+          "eur_hab": 125.7
+        },
+        "administration_autres": {
+          "share": 0.1078,
+          "eur_hab": 148.4
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0248,
+          "eur_hab": 34.1
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0171,
+          "eur_hab": 23.6
+        }
+      }
+    },
+    "09": {
+      "nom": "Ariège",
+      "ptot": 158578,
+      "total_eur_hab": 1468.2,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.4128,
+          "eur_hab": 606.1
+        },
+        "colleges_education": {
+          "share": 0.0715,
+          "eur_hab": 105.0
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1451,
+          "eur_hab": 213.0
+        },
+        "administration_autres": {
+          "share": 0.2998,
+          "eur_hab": 440.1
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0273,
+          "eur_hab": 40.1
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0435,
+          "eur_hab": 63.8
+        }
+      }
+    },
+    "10": {
+      "nom": "Aube",
+      "ptot": 318127,
+      "total_eur_hab": 1347.2,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.616,
+          "eur_hab": 829.8
+        },
+        "colleges_education": {
+          "share": 0.0715,
+          "eur_hab": 96.3
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1269,
+          "eur_hab": 171.0
+        },
+        "administration_autres": {
+          "share": 0.1048,
+          "eur_hab": 141.2
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0285,
+          "eur_hab": 38.4
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0523,
+          "eur_hab": 70.4
+        }
+      }
+    },
+    "11": {
+      "nom": "Aude",
+      "ptot": 384450,
+      "total_eur_hab": 1607.5,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6554,
+          "eur_hab": 1053.6
+        },
+        "colleges_education": {
+          "share": 0.0563,
+          "eur_hab": 90.5
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1172,
+          "eur_hab": 188.3
+        },
+        "administration_autres": {
+          "share": 0.1215,
+          "eur_hab": 195.4
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.029,
+          "eur_hab": 46.7
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0205,
+          "eur_hab": 33.0
+        }
+      }
+    },
+    "12": {
+      "nom": "Aveyron",
+      "ptot": 289766,
+      "total_eur_hab": 1428.1,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.4665,
+          "eur_hab": 666.2
+        },
+        "colleges_education": {
+          "share": 0.0373,
+          "eur_hab": 53.3
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1077,
+          "eur_hab": 153.8
+        },
+        "administration_autres": {
+          "share": 0.3413,
+          "eur_hab": 487.4
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0284,
+          "eur_hab": 40.6
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0188,
+          "eur_hab": 26.9
+        }
+      }
+    },
+    "13": {
+      "nom": "Bouches-du-Rhône",
+      "ptot": 2080998,
+      "total_eur_hab": 1367.5,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6096,
+          "eur_hab": 833.6
+        },
+        "colleges_education": {
+          "share": 0.0991,
+          "eur_hab": 135.5
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0595,
+          "eur_hab": 81.3
+        },
+        "administration_autres": {
+          "share": 0.1624,
+          "eur_hab": 222.1
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0407,
+          "eur_hab": 55.6
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0287,
+          "eur_hab": 39.3
+        }
+      }
+    },
+    "14": {
+      "nom": "Calvados",
+      "ptot": 714356,
+      "total_eur_hab": 1147.9,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6103,
+          "eur_hab": 700.6
+        },
+        "colleges_education": {
+          "share": 0.0715,
+          "eur_hab": 82.1
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1008,
+          "eur_hab": 115.6
+        },
+        "administration_autres": {
+          "share": 0.1613,
+          "eur_hab": 185.2
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0323,
+          "eur_hab": 37.1
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0238,
+          "eur_hab": 27.3
+        }
+      }
+    },
+    "15": {
+      "nom": "Cantal",
+      "ptot": 149155,
+      "total_eur_hab": 1766.5,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5095,
+          "eur_hab": 900.1
+        },
+        "colleges_education": {
+          "share": 0.0756,
+          "eur_hab": 133.5
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1966,
+          "eur_hab": 347.4
+        },
+        "administration_autres": {
+          "share": 0.1679,
+          "eur_hab": 296.6
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0293,
+          "eur_hab": 51.8
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.021,
+          "eur_hab": 37.1
+        }
+      }
+    },
+    "16": {
+      "nom": "Charente",
+      "ptot": 359610,
+      "total_eur_hab": 1420.2,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5743,
+          "eur_hab": 815.6
+        },
+        "colleges_education": {
+          "share": 0.0736,
+          "eur_hab": 104.5
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0657,
+          "eur_hab": 93.3
+        },
+        "administration_autres": {
+          "share": 0.2316,
+          "eur_hab": 329.0
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0371,
+          "eur_hab": 52.6
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0177,
+          "eur_hab": 25.1
+        }
+      }
+    },
+    "17": {
+      "nom": "Charente-Maritime",
+      "ptot": 677039,
+      "total_eur_hab": 1256.6,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5796,
+          "eur_hab": 728.2
+        },
+        "colleges_education": {
+          "share": 0.0623,
+          "eur_hab": 78.2
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1287,
+          "eur_hab": 161.7
+        },
+        "administration_autres": {
+          "share": 0.1424,
+          "eur_hab": 178.9
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0535,
+          "eur_hab": 67.2
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0336,
+          "eur_hab": 42.3
+        }
+      }
+    },
+    "18": {
+      "nom": "Cher",
+      "ptot": 306465,
+      "total_eur_hab": 1340.5,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6387,
+          "eur_hab": 856.2
+        },
+        "colleges_education": {
+          "share": 0.0705,
+          "eur_hab": 94.5
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0996,
+          "eur_hab": 133.5
+        },
+        "administration_autres": {
+          "share": 0.1375,
+          "eur_hab": 184.3
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0346,
+          "eur_hab": 46.4
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0191,
+          "eur_hab": 25.6
+        }
+      }
+    },
+    "19": {
+      "nom": "Corrèze",
+      "ptot": 247459,
+      "total_eur_hab": 1533.1,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5672,
+          "eur_hab": 869.6
+        },
+        "colleges_education": {
+          "share": 0.0639,
+          "eur_hab": 98.0
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1477,
+          "eur_hab": 226.4
+        },
+        "administration_autres": {
+          "share": 0.1542,
+          "eur_hab": 236.3
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0282,
+          "eur_hab": 43.3
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0388,
+          "eur_hab": 59.4
+        }
+      }
+    },
+    "21": {
+      "nom": "Côte-d'Or",
+      "ptot": 547138,
+      "total_eur_hab": 1202.4,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5381,
+          "eur_hab": 647.1
+        },
+        "colleges_education": {
+          "share": 0.0787,
+          "eur_hab": 94.6
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.07,
+          "eur_hab": 84.2
+        },
+        "administration_autres": {
+          "share": 0.2671,
+          "eur_hab": 321.2
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.036,
+          "eur_hab": 43.3
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.01,
+          "eur_hab": 12.1
+        }
+      }
+    },
+    "22": {
+      "nom": "Côtes-d'Armor",
+      "ptot": 623633,
+      "total_eur_hab": 1121.9,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6356,
+          "eur_hab": 713.1
+        },
+        "colleges_education": {
+          "share": 0.0732,
+          "eur_hab": 82.1
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0864,
+          "eur_hab": 96.9
+        },
+        "administration_autres": {
+          "share": 0.145,
+          "eur_hab": 162.7
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0387,
+          "eur_hab": 43.4
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0211,
+          "eur_hab": 23.6
+        }
+      }
+    },
+    "23": {
+      "nom": "Creuse",
+      "ptot": 119065,
+      "total_eur_hab": 1747.1,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.577,
+          "eur_hab": 1008.0
+        },
+        "colleges_education": {
+          "share": 0.0699,
+          "eur_hab": 122.1
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1316,
+          "eur_hab": 230.0
+        },
+        "administration_autres": {
+          "share": 0.147,
+          "eur_hab": 256.9
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0374,
+          "eur_hab": 65.3
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0371,
+          "eur_hab": 64.8
+        }
+      }
+    },
+    "24": {
+      "nom": "Dordogne",
+      "ptot": 424030,
+      "total_eur_hab": 1384.6,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6022,
+          "eur_hab": 833.9
+        },
+        "colleges_education": {
+          "share": 0.0522,
+          "eur_hab": 72.2
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0862,
+          "eur_hab": 119.3
+        },
+        "administration_autres": {
+          "share": 0.1841,
+          "eur_hab": 254.9
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.036,
+          "eur_hab": 49.8
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0393,
+          "eur_hab": 54.4
+        }
+      }
+    },
+    "25": {
+      "nom": "Doubs",
+      "ptot": 560754,
+      "total_eur_hab": 1124.7,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5262,
+          "eur_hab": 591.8
+        },
+        "colleges_education": {
+          "share": 0.0711,
+          "eur_hab": 80.0
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0702,
+          "eur_hab": 78.9
+        },
+        "administration_autres": {
+          "share": 0.2665,
+          "eur_hab": 299.7
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0491,
+          "eur_hab": 55.2
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0169,
+          "eur_hab": 19.0
+        }
+      }
+    },
+    "26": {
+      "nom": "Drôme",
+      "ptot": 532390,
+      "total_eur_hab": 1344.0,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5755,
+          "eur_hab": 773.5
+        },
+        "colleges_education": {
+          "share": 0.0842,
+          "eur_hab": 113.1
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.142,
+          "eur_hab": 190.8
+        },
+        "administration_autres": {
+          "share": 0.1366,
+          "eur_hab": 183.6
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0364,
+          "eur_hab": 48.9
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0253,
+          "eur_hab": 34.0
+        }
+      }
+    },
+    "27": {
+      "nom": "Eure",
+      "ptot": 612288,
+      "total_eur_hab": 1050.8,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5803,
+          "eur_hab": 609.8
+        },
+        "colleges_education": {
+          "share": 0.1157,
+          "eur_hab": 121.6
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.091,
+          "eur_hab": 95.6
+        },
+        "administration_autres": {
+          "share": 0.1251,
+          "eur_hab": 131.5
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.052,
+          "eur_hab": 54.6
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0359,
+          "eur_hab": 37.7
+        }
+      }
+    },
+    "28": {
+      "nom": "Eure-et-Loir",
+      "ptot": 441129,
+      "total_eur_hab": 1177.4,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5772,
+          "eur_hab": 679.6
+        },
+        "colleges_education": {
+          "share": 0.1027,
+          "eur_hab": 120.9
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1089,
+          "eur_hab": 128.2
+        },
+        "administration_autres": {
+          "share": 0.1354,
+          "eur_hab": 159.4
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0534,
+          "eur_hab": 62.9
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0224,
+          "eur_hab": 26.4
+        }
+      }
+    },
+    "29": {
+      "nom": "Finistère",
+      "ptot": 946331,
+      "total_eur_hab": 1055.7,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6633,
+          "eur_hab": 700.3
+        },
+        "colleges_education": {
+          "share": 0.0831,
+          "eur_hab": 87.7
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0737,
+          "eur_hab": 77.8
+        },
+        "administration_autres": {
+          "share": 0.1099,
+          "eur_hab": 116.1
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0334,
+          "eur_hab": 35.2
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0366,
+          "eur_hab": 38.6
+        }
+      }
+    },
+    "30": {
+      "nom": "Gard",
+      "ptot": 770043,
+      "total_eur_hab": 1336.8,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6337,
+          "eur_hab": 847.2
+        },
+        "colleges_education": {
+          "share": 0.0601,
+          "eur_hab": 80.3
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0635,
+          "eur_hab": 84.8
+        },
+        "administration_autres": {
+          "share": 0.1664,
+          "eur_hab": 222.5
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0576,
+          "eur_hab": 77.0
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0187,
+          "eur_hab": 25.1
+        }
+      }
+    },
+    "31": {
+      "nom": "Haute-Garonne",
+      "ptot": 1457716,
+      "total_eur_hab": 1269.1,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5574,
+          "eur_hab": 707.4
+        },
+        "colleges_education": {
+          "share": 0.0555,
+          "eur_hab": 70.4
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0817,
+          "eur_hab": 103.6
+        },
+        "administration_autres": {
+          "share": 0.2595,
+          "eur_hab": 329.3
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0347,
+          "eur_hab": 44.1
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0113,
+          "eur_hab": 14.3
+        }
+      }
+    },
+    "32": {
+      "nom": "Gers",
+      "ptot": 198905,
+      "total_eur_hab": 1626.8,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5566,
+          "eur_hab": 905.5
+        },
+        "colleges_education": {
+          "share": 0.0532,
+          "eur_hab": 86.6
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1838,
+          "eur_hab": 299.0
+        },
+        "administration_autres": {
+          "share": 0.1457,
+          "eur_hab": 237.1
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0301,
+          "eur_hab": 49.0
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0305,
+          "eur_hab": 49.6
+        }
+      }
+    },
+    "33": {
+      "nom": "Gironde",
+      "ptot": 1680669,
+      "total_eur_hab": 1182.5,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6718,
+          "eur_hab": 794.4
+        },
+        "colleges_education": {
+          "share": 0.0931,
+          "eur_hab": 110.1
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0401,
+          "eur_hab": 47.4
+        },
+        "administration_autres": {
+          "share": 0.1184,
+          "eur_hab": 140.0
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.054,
+          "eur_hab": 63.9
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0226,
+          "eur_hab": 26.7
+        }
+      }
+    },
+    "34": {
+      "nom": "Hérault",
+      "ptot": 1219776,
+      "total_eur_hab": 1412.3,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6404,
+          "eur_hab": 904.5
+        },
+        "colleges_education": {
+          "share": 0.0745,
+          "eur_hab": 105.2
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.068,
+          "eur_hab": 96.0
+        },
+        "administration_autres": {
+          "share": 0.1612,
+          "eur_hab": 227.7
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0354,
+          "eur_hab": 50.0
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0205,
+          "eur_hab": 29.0
+        }
+      }
+    },
+    "35": {
+      "nom": "Ille-et-Vilaine",
+      "ptot": 1122750,
+      "total_eur_hab": 1048.4,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6831,
+          "eur_hab": 716.1
+        },
+        "colleges_education": {
+          "share": 0.0756,
+          "eur_hab": 79.2
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0455,
+          "eur_hab": 47.7
+        },
+        "administration_autres": {
+          "share": 0.1348,
+          "eur_hab": 141.3
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0369,
+          "eur_hab": 38.7
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0241,
+          "eur_hab": 25.3
+        }
+      }
+    },
+    "36": {
+      "nom": "Indre",
+      "ptot": 222879,
+      "total_eur_hab": 1220.8,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5801,
+          "eur_hab": 708.2
+        },
+        "colleges_education": {
+          "share": 0.0786,
+          "eur_hab": 96.0
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1844,
+          "eur_hab": 225.1
+        },
+        "administration_autres": {
+          "share": 0.0799,
+          "eur_hab": 97.6
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.046,
+          "eur_hab": 56.1
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0311,
+          "eur_hab": 37.9
+        }
+      }
+    },
+    "37": {
+      "nom": "Indre-et-Loire",
+      "ptot": 624289,
+      "total_eur_hab": 1050.6,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.68,
+          "eur_hab": 714.4
+        },
+        "colleges_education": {
+          "share": 0.0758,
+          "eur_hab": 79.6
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0675,
+          "eur_hab": 70.9
+        },
+        "administration_autres": {
+          "share": 0.0988,
+          "eur_hab": 103.8
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.049,
+          "eur_hab": 51.4
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0289,
+          "eur_hab": 30.4
+        }
+      }
+    },
+    "38": {
+      "nom": "Isère",
+      "ptot": 1309888,
+      "total_eur_hab": 1151.9,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5679,
+          "eur_hab": 654.2
+        },
+        "colleges_education": {
+          "share": 0.0969,
+          "eur_hab": 111.6
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1101,
+          "eur_hab": 126.8
+        },
+        "administration_autres": {
+          "share": 0.1428,
+          "eur_hab": 164.5
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0412,
+          "eur_hab": 47.5
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.041,
+          "eur_hab": 47.2
+        }
+      }
+    },
+    "39": {
+      "nom": "Jura",
+      "ptot": 267533,
+      "total_eur_hab": 1210.5,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5481,
+          "eur_hab": 663.5
+        },
+        "colleges_education": {
+          "share": 0.0871,
+          "eur_hab": 105.4
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1735,
+          "eur_hab": 210.0
+        },
+        "administration_autres": {
+          "share": 0.1291,
+          "eur_hab": 156.3
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0336,
+          "eur_hab": 40.6
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0286,
+          "eur_hab": 34.6
+        }
+      }
+    },
+    "40": {
+      "nom": "Landes",
+      "ptot": 435050,
+      "total_eur_hab": 1258.9,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5827,
+          "eur_hab": 733.5
+        },
+        "colleges_education": {
+          "share": 0.0764,
+          "eur_hab": 96.2
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.113,
+          "eur_hab": 142.2
+        },
+        "administration_autres": {
+          "share": 0.15,
+          "eur_hab": 188.8
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0468,
+          "eur_hab": 58.9
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0312,
+          "eur_hab": 39.2
+        }
+      }
+    },
+    "41": {
+      "nom": "Loir-et-Cher",
+      "ptot": 336885,
+      "total_eur_hab": 1284.3,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6271,
+          "eur_hab": 805.3
+        },
+        "colleges_education": {
+          "share": 0.0787,
+          "eur_hab": 101.0
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1134,
+          "eur_hab": 145.6
+        },
+        "administration_autres": {
+          "share": 0.1087,
+          "eur_hab": 139.6
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0498,
+          "eur_hab": 63.9
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0224,
+          "eur_hab": 28.8
+        }
+      }
+    },
+    "42": {
+      "nom": "Loire",
+      "ptot": 782907,
+      "total_eur_hab": 1089.8,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6984,
+          "eur_hab": 761.1
+        },
+        "colleges_education": {
+          "share": 0.0636,
+          "eur_hab": 69.4
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0637,
+          "eur_hab": 69.4
+        },
+        "administration_autres": {
+          "share": 0.1146,
+          "eur_hab": 124.8
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0354,
+          "eur_hab": 38.6
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0243,
+          "eur_hab": 26.5
+        }
+      }
+    },
+    "43": {
+      "nom": "Haute-Loire",
+      "ptot": 233980,
+      "total_eur_hab": 1348.2,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5876,
+          "eur_hab": 792.2
+        },
+        "colleges_education": {
+          "share": 0.0635,
+          "eur_hab": 85.6
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1499,
+          "eur_hab": 202.1
+        },
+        "administration_autres": {
+          "share": 0.1234,
+          "eur_hab": 166.3
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0416,
+          "eur_hab": 56.0
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0341,
+          "eur_hab": 46.0
+        }
+      }
+    },
+    "44": {
+      "nom": "Loire-Atlantique",
+      "ptot": 1486833,
+      "total_eur_hab": 992.1,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6355,
+          "eur_hab": 630.4
+        },
+        "colleges_education": {
+          "share": 0.0853,
+          "eur_hab": 84.6
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0646,
+          "eur_hab": 64.1
+        },
+        "administration_autres": {
+          "share": 0.1341,
+          "eur_hab": 133.1
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.041,
+          "eur_hab": 40.7
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0395,
+          "eur_hab": 39.2
+        }
+      }
+    },
+    "45": {
+      "nom": "Loiret",
+      "ptot": 699096,
+      "total_eur_hab": 1075.6,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6124,
+          "eur_hab": 658.7
+        },
+        "colleges_education": {
+          "share": 0.0838,
+          "eur_hab": 90.2
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.108,
+          "eur_hab": 116.1
+        },
+        "administration_autres": {
+          "share": 0.1262,
+          "eur_hab": 135.8
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0422,
+          "eur_hab": 45.4
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0274,
+          "eur_hab": 29.5
+        }
+      }
+    },
+    "46": {
+      "nom": "Lot",
+      "ptot": 180437,
+      "total_eur_hab": 1573.7,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5396,
+          "eur_hab": 849.2
+        },
+        "colleges_education": {
+          "share": 0.0712,
+          "eur_hab": 112.0
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1571,
+          "eur_hab": 247.3
+        },
+        "administration_autres": {
+          "share": 0.1553,
+          "eur_hab": 244.4
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.033,
+          "eur_hab": 51.9
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0438,
+          "eur_hab": 69.0
+        }
+      }
+    },
+    "47": {
+      "nom": "Lot-et-Garonne",
+      "ptot": 339257,
+      "total_eur_hab": 1391.0,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.63,
+          "eur_hab": 876.3
+        },
+        "colleges_education": {
+          "share": 0.0838,
+          "eur_hab": 116.6
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1163,
+          "eur_hab": 161.7
+        },
+        "administration_autres": {
+          "share": 0.1074,
+          "eur_hab": 149.5
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0443,
+          "eur_hab": 61.7
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0181,
+          "eur_hab": 25.2
+        }
+      }
+    },
+    "48": {
+      "nom": "Lozère",
+      "ptot": 80081,
+      "total_eur_hab": 1947.0,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.4312,
+          "eur_hab": 839.5
+        },
+        "colleges_education": {
+          "share": 0.0619,
+          "eur_hab": 120.6
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.2488,
+          "eur_hab": 484.4
+        },
+        "administration_autres": {
+          "share": 0.1671,
+          "eur_hab": 325.4
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0377,
+          "eur_hab": 73.3
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0533,
+          "eur_hab": 103.8
+        }
+      }
+    },
+    "49": {
+      "nom": "Maine-et-Loire",
+      "ptot": 844693,
+      "total_eur_hab": 980.6,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6827,
+          "eur_hab": 669.4
+        },
+        "colleges_education": {
+          "share": 0.0758,
+          "eur_hab": 74.4
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0584,
+          "eur_hab": 57.3
+        },
+        "administration_autres": {
+          "share": 0.1225,
+          "eur_hab": 120.1
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0415,
+          "eur_hab": 40.6
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0191,
+          "eur_hab": 18.7
+        }
+      }
+    },
+    "50": {
+      "nom": "Manche",
+      "ptot": 510539,
+      "total_eur_hab": 1248.3,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5685,
+          "eur_hab": 709.6
+        },
+        "colleges_education": {
+          "share": 0.0691,
+          "eur_hab": 86.3
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1177,
+          "eur_hab": 146.9
+        },
+        "administration_autres": {
+          "share": 0.1622,
+          "eur_hab": 202.5
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0487,
+          "eur_hab": 60.8
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0338,
+          "eur_hab": 42.2
+        }
+      }
+    },
+    "51": {
+      "nom": "Marne",
+      "ptot": 576399,
+      "total_eur_hab": 953.1,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6947,
+          "eur_hab": 662.2
+        },
+        "colleges_education": {
+          "share": 0.0909,
+          "eur_hab": 86.7
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0783,
+          "eur_hab": 74.6
+        },
+        "administration_autres": {
+          "share": 0.0719,
+          "eur_hab": 68.5
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0443,
+          "eur_hab": 42.2
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0198,
+          "eur_hab": 18.9
+        }
+      }
+    },
+    "52": {
+      "nom": "Haute-Marne",
+      "ptot": 175896,
+      "total_eur_hab": 1459.6,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5547,
+          "eur_hab": 809.6
+        },
+        "colleges_education": {
+          "share": 0.0765,
+          "eur_hab": 111.6
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1471,
+          "eur_hab": 214.7
+        },
+        "administration_autres": {
+          "share": 0.1531,
+          "eur_hab": 223.5
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0429,
+          "eur_hab": 62.6
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0258,
+          "eur_hab": 37.6
+        }
+      }
+    },
+    "53": {
+      "nom": "Mayenne",
+      "ptot": 315118,
+      "total_eur_hab": 1285.8,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.4755,
+          "eur_hab": 611.4
+        },
+        "colleges_education": {
+          "share": 0.0472,
+          "eur_hab": 60.7
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0886,
+          "eur_hab": 113.9
+        },
+        "administration_autres": {
+          "share": 0.3265,
+          "eur_hab": 419.8
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0301,
+          "eur_hab": 38.7
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0321,
+          "eur_hab": 41.2
+        }
+      }
+    },
+    "54": {
+      "nom": "Meurthe-et-Moselle",
+      "ptot": 743895,
+      "total_eur_hab": 1134.2,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6308,
+          "eur_hab": 715.4
+        },
+        "colleges_education": {
+          "share": 0.0444,
+          "eur_hab": 50.4
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0678,
+          "eur_hab": 76.8
+        },
+        "administration_autres": {
+          "share": 0.2169,
+          "eur_hab": 246.1
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0304,
+          "eur_hab": 34.5
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0097,
+          "eur_hab": 11.0
+        }
+      }
+    },
+    "55": {
+      "nom": "Meuse",
+      "ptot": 187041,
+      "total_eur_hab": 1490.2,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.589,
+          "eur_hab": 877.8
+        },
+        "colleges_education": {
+          "share": 0.0652,
+          "eur_hab": 97.2
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1481,
+          "eur_hab": 220.8
+        },
+        "administration_autres": {
+          "share": 0.1427,
+          "eur_hab": 212.7
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0294,
+          "eur_hab": 43.7
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0255,
+          "eur_hab": 38.0
+        }
+      }
+    },
+    "56": {
+      "nom": "Morbihan",
+      "ptot": 789829,
+      "total_eur_hab": 1001.9,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.61,
+          "eur_hab": 611.1
+        },
+        "colleges_education": {
+          "share": 0.0753,
+          "eur_hab": 75.5
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0766,
+          "eur_hab": 76.8
+        },
+        "administration_autres": {
+          "share": 0.1687,
+          "eur_hab": 169.0
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0409,
+          "eur_hab": 41.0
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0284,
+          "eur_hab": 28.5
+        }
+      }
+    },
+    "57": {
+      "nom": "Moselle",
+      "ptot": 1068326,
+      "total_eur_hab": 918.6,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6345,
+          "eur_hab": 582.8
+        },
+        "colleges_education": {
+          "share": 0.08,
+          "eur_hab": 73.5
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0777,
+          "eur_hab": 71.3
+        },
+        "administration_autres": {
+          "share": 0.1205,
+          "eur_hab": 110.7
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0487,
+          "eur_hab": 44.7
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0387,
+          "eur_hab": 35.6
+        }
+      }
+    },
+    "58": {
+      "nom": "Nièvre",
+      "ptot": 207621,
+      "total_eur_hab": 1609.3,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6461,
+          "eur_hab": 1039.7
+        },
+        "colleges_education": {
+          "share": 0.052,
+          "eur_hab": 83.7
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0616,
+          "eur_hab": 99.1
+        },
+        "administration_autres": {
+          "share": 0.1748,
+          "eur_hab": 281.3
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0397,
+          "eur_hab": 63.9
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0258,
+          "eur_hab": 41.6
+        }
+      }
+    },
+    "59": {
+      "nom": "Nord",
+      "ptot": 2641207,
+      "total_eur_hab": 1259.8,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.0277,
+          "eur_hab": 35.0
+        },
+        "colleges_education": {
+          "share": 0.0764,
+          "eur_hab": 96.3
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0,
+          "eur_hab": 0.0
+        },
+        "administration_autres": {
+          "share": 0.8517,
+          "eur_hab": 1073.1
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0314,
+          "eur_hab": 39.6
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0127,
+          "eur_hab": 16.0
+        }
+      }
+    },
+    "60": {
+      "nom": "Oise",
+      "ptot": 846339,
+      "total_eur_hab": 1048.8,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6202,
+          "eur_hab": 650.5
+        },
+        "colleges_education": {
+          "share": 0.0867,
+          "eur_hab": 90.9
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0795,
+          "eur_hab": 83.4
+        },
+        "administration_autres": {
+          "share": 0.1436,
+          "eur_hab": 150.6
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0435,
+          "eur_hab": 45.6
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0264,
+          "eur_hab": 27.7
+        }
+      }
+    },
+    "61": {
+      "nom": "Orne",
+      "ptot": 284521,
+      "total_eur_hab": 1374.5,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.554,
+          "eur_hab": 761.5
+        },
+        "colleges_education": {
+          "share": 0.1204,
+          "eur_hab": 165.5
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.106,
+          "eur_hab": 145.7
+        },
+        "administration_autres": {
+          "share": 0.1703,
+          "eur_hab": 234.0
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0267,
+          "eur_hab": 36.8
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0226,
+          "eur_hab": 31.1
+        }
+      }
+    },
+    "62": {
+      "nom": "Pas-de-Calais",
+      "ptot": 1482950,
+      "total_eur_hab": 1307.1,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.686,
+          "eur_hab": 896.7
+        },
+        "colleges_education": {
+          "share": 0.0785,
+          "eur_hab": 102.5
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0676,
+          "eur_hab": 88.4
+        },
+        "administration_autres": {
+          "share": 0.1063,
+          "eur_hab": 138.9
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0467,
+          "eur_hab": 61.1
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0149,
+          "eur_hab": 19.5
+        }
+      }
+    },
+    "63": {
+      "nom": "Puy-de-Dôme",
+      "ptot": 676534,
+      "total_eur_hab": 1164.8,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5986,
+          "eur_hab": 697.2
+        },
+        "colleges_education": {
+          "share": 0.0625,
+          "eur_hab": 72.8
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1174,
+          "eur_hab": 136.8
+        },
+        "administration_autres": {
+          "share": 0.1452,
+          "eur_hab": 169.1
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0568,
+          "eur_hab": 66.1
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0196,
+          "eur_hab": 22.8
+        }
+      }
+    },
+    "64": {
+      "nom": "Pyrénées-Atlantiques",
+      "ptot": 711741,
+      "total_eur_hab": 1154.0,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6233,
+          "eur_hab": 719.4
+        },
+        "colleges_education": {
+          "share": 0.0734,
+          "eur_hab": 84.7
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0951,
+          "eur_hab": 109.8
+        },
+        "administration_autres": {
+          "share": 0.1346,
+          "eur_hab": 155.4
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0432,
+          "eur_hab": 49.9
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0303,
+          "eur_hab": 35.0
+        }
+      }
+    },
+    "65": {
+      "nom": "Hautes-Pyrénées",
+      "ptot": 236859,
+      "total_eur_hab": 1598.7,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5463,
+          "eur_hab": 873.3
+        },
+        "colleges_education": {
+          "share": 0.0497,
+          "eur_hab": 79.4
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1526,
+          "eur_hab": 244.0
+        },
+        "administration_autres": {
+          "share": 0.1916,
+          "eur_hab": 306.3
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.036,
+          "eur_hab": 57.6
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0238,
+          "eur_hab": 38.1
+        }
+      }
+    },
+    "66": {
+      "nom": "Pyrénées-Orientales",
+      "ptot": 495307,
+      "total_eur_hab": 1260.0,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.4926,
+          "eur_hab": 620.7
+        },
+        "colleges_education": {
+          "share": 0.0661,
+          "eur_hab": 83.3
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.146,
+          "eur_hab": 184.0
+        },
+        "administration_autres": {
+          "share": 0.1901,
+          "eur_hab": 239.5
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0789,
+          "eur_hab": 99.4
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0263,
+          "eur_hab": 33.2
+        }
+      }
+    },
+    "67A": {
+      "nom": "Alsace",
+      "ptot": 1949556,
+      "total_eur_hab": 1051.8,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.56,
+          "eur_hab": 589.1
+        },
+        "colleges_education": {
+          "share": 0.0706,
+          "eur_hab": 74.2
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0787,
+          "eur_hab": 82.8
+        },
+        "administration_autres": {
+          "share": 0.2329,
+          "eur_hab": 244.9
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0342,
+          "eur_hab": 35.9
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0237,
+          "eur_hab": 24.9
+        }
+      }
+    },
+    "69": {
+      "nom": "Rhône",
+      "ptot": 479566,
+      "total_eur_hab": 1078.0,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5404,
+          "eur_hab": 582.6
+        },
+        "colleges_education": {
+          "share": 0.1319,
+          "eur_hab": 142.1
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0965,
+          "eur_hab": 104.0
+        },
+        "administration_autres": {
+          "share": 0.1513,
+          "eur_hab": 163.1
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0489,
+          "eur_hab": 52.7
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.031,
+          "eur_hab": 33.5
+        }
+      }
+    },
+    "691": {
+      "nom": "Métropole de Lyon",
+      "ptot": 1439981,
+      "total_eur_hab": 2157.9,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.3668,
+          "eur_hab": 791.6
+        },
+        "colleges_education": {
+          "share": 0.0542,
+          "eur_hab": 117.0
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1595,
+          "eur_hab": 344.2
+        },
+        "administration_autres": {
+          "share": 0.3577,
+          "eur_hab": 771.9
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0431,
+          "eur_hab": 93.0
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0186,
+          "eur_hab": 40.2
+        }
+      }
+    },
+    "70": {
+      "nom": "Haute-Saône",
+      "ptot": 240393,
+      "total_eur_hab": 1217.1,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5261,
+          "eur_hab": 640.3
+        },
+        "colleges_education": {
+          "share": 0.0651,
+          "eur_hab": 79.2
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1688,
+          "eur_hab": 205.4
+        },
+        "administration_autres": {
+          "share": 0.1645,
+          "eur_hab": 200.2
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0376,
+          "eur_hab": 45.7
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0379,
+          "eur_hab": 46.2
+        }
+      }
+    },
+    "71": {
+      "nom": "Saône-et-Loire",
+      "ptot": 564586,
+      "total_eur_hab": 1228.1,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6212,
+          "eur_hab": 762.9
+        },
+        "colleges_education": {
+          "share": 0.0788,
+          "eur_hab": 96.8
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0798,
+          "eur_hab": 98.0
+        },
+        "administration_autres": {
+          "share": 0.1652,
+          "eur_hab": 202.9
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0343,
+          "eur_hab": 42.1
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0207,
+          "eur_hab": 25.4
+        }
+      }
+    },
+    "72": {
+      "nom": "Sarthe",
+      "ptot": 579051,
+      "total_eur_hab": 1191.8,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6252,
+          "eur_hab": 745.1
+        },
+        "colleges_education": {
+          "share": 0.093,
+          "eur_hab": 110.8
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0922,
+          "eur_hab": 109.9
+        },
+        "administration_autres": {
+          "share": 0.1272,
+          "eur_hab": 151.6
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0383,
+          "eur_hab": 45.6
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0242,
+          "eur_hab": 28.8
+        }
+      }
+    },
+    "73": {
+      "nom": "Savoie",
+      "ptot": 454800,
+      "total_eur_hab": 1397.8,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.4698,
+          "eur_hab": 656.6
+        },
+        "colleges_education": {
+          "share": 0.0912,
+          "eur_hab": 127.4
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1902,
+          "eur_hab": 265.8
+        },
+        "administration_autres": {
+          "share": 0.1537,
+          "eur_hab": 214.8
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0588,
+          "eur_hab": 82.2
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0364,
+          "eur_hab": 50.8
+        }
+      }
+    },
+    "74": {
+      "nom": "Haute-Savoie",
+      "ptot": 862452,
+      "total_eur_hab": 1291.9,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.0284,
+          "eur_hab": 36.7
+        },
+        "colleges_education": {
+          "share": 0.1172,
+          "eur_hab": 151.4
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0025,
+          "eur_hab": 3.2
+        },
+        "administration_autres": {
+          "share": 0.767,
+          "eur_hab": 990.9
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0486,
+          "eur_hab": 62.7
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0364,
+          "eur_hab": 47.0
+        }
+      }
+    },
+    "75": {
+      "nom": "Paris",
+      "ptot": 2149216,
+      "total_eur_hab": 4364.6,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.2864,
+          "eur_hab": 1250.1
+        },
+        "colleges_education": {
+          "share": 0.103,
+          "eur_hab": 449.8
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1025,
+          "eur_hab": 447.6
+        },
+        "administration_autres": {
+          "share": 0.3518,
+          "eur_hab": 1535.4
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0538,
+          "eur_hab": 235.0
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.1024,
+          "eur_hab": 446.7
+        }
+      }
+    },
+    "76": {
+      "nom": "Seine-Maritime",
+      "ptot": 1276398,
+      "total_eur_hab": 1320.6,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.639,
+          "eur_hab": 843.8
+        },
+        "colleges_education": {
+          "share": 0.0962,
+          "eur_hab": 127.1
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0885,
+          "eur_hab": 116.9
+        },
+        "administration_autres": {
+          "share": 0.1202,
+          "eur_hab": 158.7
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0306,
+          "eur_hab": 40.4
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0255,
+          "eur_hab": 33.7
+        }
+      }
+    },
+    "77": {
+      "nom": "Seine-et-Marne",
+      "ptot": 1454221,
+      "total_eur_hab": 1105.6,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5232,
+          "eur_hab": 578.4
+        },
+        "colleges_education": {
+          "share": 0.1287,
+          "eur_hab": 142.3
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1316,
+          "eur_hab": 145.5
+        },
+        "administration_autres": {
+          "share": 0.1216,
+          "eur_hab": 134.5
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0767,
+          "eur_hab": 84.8
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0182,
+          "eur_hab": 20.1
+        }
+      }
+    },
+    "78": {
+      "nom": "Yvelines",
+      "ptot": 1480274,
+      "total_eur_hab": 1018.0,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5253,
+          "eur_hab": 534.8
+        },
+        "colleges_education": {
+          "share": 0.1538,
+          "eur_hab": 156.5
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0658,
+          "eur_hab": 67.0
+        },
+        "administration_autres": {
+          "share": 0.1884,
+          "eur_hab": 191.8
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0549,
+          "eur_hab": 55.9
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0118,
+          "eur_hab": 12.0
+        }
+      }
+    },
+    "79": {
+      "nom": "Deux-Sèvres",
+      "ptot": 384784,
+      "total_eur_hab": 1001.0,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6515,
+          "eur_hab": 652.2
+        },
+        "colleges_education": {
+          "share": 0.0813,
+          "eur_hab": 81.4
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0727,
+          "eur_hab": 72.8
+        },
+        "administration_autres": {
+          "share": 0.1255,
+          "eur_hab": 125.6
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0493,
+          "eur_hab": 49.4
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0196,
+          "eur_hab": 19.6
+        }
+      }
+    },
+    "80": {
+      "nom": "Somme",
+      "ptot": 576070,
+      "total_eur_hab": 1285.8,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6297,
+          "eur_hab": 809.7
+        },
+        "colleges_education": {
+          "share": 0.0767,
+          "eur_hab": 98.6
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0973,
+          "eur_hab": 125.2
+        },
+        "administration_autres": {
+          "share": 0.1209,
+          "eur_hab": 155.4
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0423,
+          "eur_hab": 54.4
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0331,
+          "eur_hab": 42.5
+        }
+      }
+    },
+    "81": {
+      "nom": "Tarn",
+      "ptot": 403762,
+      "total_eur_hab": 1317.3,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6163,
+          "eur_hab": 811.8
+        },
+        "colleges_education": {
+          "share": 0.0649,
+          "eur_hab": 85.5
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1046,
+          "eur_hab": 137.8
+        },
+        "administration_autres": {
+          "share": 0.1444,
+          "eur_hab": 190.2
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0383,
+          "eur_hab": 50.4
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0315,
+          "eur_hab": 41.6
+        }
+      }
+    },
+    "82": {
+      "nom": "Tarn-et-Garonne",
+      "ptot": 269088,
+      "total_eur_hab": 1466.6,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5824,
+          "eur_hab": 854.1
+        },
+        "colleges_education": {
+          "share": 0.0869,
+          "eur_hab": 127.5
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1107,
+          "eur_hab": 162.3
+        },
+        "administration_autres": {
+          "share": 0.1591,
+          "eur_hab": 233.3
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0273,
+          "eur_hab": 40.0
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0337,
+          "eur_hab": 49.4
+        }
+      }
+    },
+    "83": {
+      "nom": "Var",
+      "ptot": 1112053,
+      "total_eur_hab": 1192.5,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6349,
+          "eur_hab": 757.1
+        },
+        "colleges_education": {
+          "share": 0.0868,
+          "eur_hab": 103.5
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0681,
+          "eur_hab": 81.2
+        },
+        "administration_autres": {
+          "share": 0.1314,
+          "eur_hab": 156.7
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0473,
+          "eur_hab": 56.3
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0316,
+          "eur_hab": 37.6
+        }
+      }
+    },
+    "84": {
+      "nom": "Vaucluse",
+      "ptot": 575275,
+      "total_eur_hab": 1265.3,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5784,
+          "eur_hab": 731.9
+        },
+        "colleges_education": {
+          "share": 0.0716,
+          "eur_hab": 90.6
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1023,
+          "eur_hab": 129.4
+        },
+        "administration_autres": {
+          "share": 0.1371,
+          "eur_hab": 173.5
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0549,
+          "eur_hab": 69.4
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0557,
+          "eur_hab": 70.5
+        }
+      }
+    },
+    "85": {
+      "nom": "Vendée",
+      "ptot": 718405,
+      "total_eur_hab": 1076.3,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.4912,
+          "eur_hab": 528.7
+        },
+        "colleges_education": {
+          "share": 0.0881,
+          "eur_hab": 94.8
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0881,
+          "eur_hab": 94.8
+        },
+        "administration_autres": {
+          "share": 0.2205,
+          "eur_hab": 237.4
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0535,
+          "eur_hab": 57.5
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0586,
+          "eur_hab": 63.1
+        }
+      }
+    },
+    "86": {
+      "nom": "Vienne",
+      "ptot": 449593,
+      "total_eur_hab": 1117.1,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6565,
+          "eur_hab": 733.4
+        },
+        "colleges_education": {
+          "share": 0.1046,
+          "eur_hab": 116.9
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0853,
+          "eur_hab": 95.3
+        },
+        "administration_autres": {
+          "share": 0.0988,
+          "eur_hab": 110.4
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0283,
+          "eur_hab": 31.6
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0265,
+          "eur_hab": 29.6
+        }
+      }
+    },
+    "87": {
+      "nom": "Haute-Vienne",
+      "ptot": 378107,
+      "total_eur_hab": 1218.4,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6744,
+          "eur_hab": 821.7
+        },
+        "colleges_education": {
+          "share": 0.0591,
+          "eur_hab": 72.0
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0734,
+          "eur_hab": 89.4
+        },
+        "administration_autres": {
+          "share": 0.1173,
+          "eur_hab": 143.0
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0272,
+          "eur_hab": 33.1
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0486,
+          "eur_hab": 59.2
+        }
+      }
+    },
+    "88": {
+      "nom": "Vosges",
+      "ptot": 371434,
+      "total_eur_hab": 1315.3,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5363,
+          "eur_hab": 705.4
+        },
+        "colleges_education": {
+          "share": 0.041,
+          "eur_hab": 54.0
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0968,
+          "eur_hab": 127.4
+        },
+        "administration_autres": {
+          "share": 0.2644,
+          "eur_hab": 347.8
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0365,
+          "eur_hab": 48.0
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0249,
+          "eur_hab": 32.8
+        }
+      }
+    },
+    "89": {
+      "nom": "Yonne",
+      "ptot": 341738,
+      "total_eur_hab": 1330.3,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.669,
+          "eur_hab": 889.9
+        },
+        "colleges_education": {
+          "share": 0.0774,
+          "eur_hab": 103.0
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1006,
+          "eur_hab": 133.8
+        },
+        "administration_autres": {
+          "share": 0.1029,
+          "eur_hab": 136.9
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.029,
+          "eur_hab": 38.5
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0212,
+          "eur_hab": 28.1
+        }
+      }
+    },
+    "90": {
+      "nom": "Territoire de Belfort",
+      "ptot": 142623,
+      "total_eur_hab": 1235.6,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6063,
+          "eur_hab": 749.2
+        },
+        "colleges_education": {
+          "share": 0.0643,
+          "eur_hab": 79.4
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0648,
+          "eur_hab": 80.0
+        },
+        "administration_autres": {
+          "share": 0.2094,
+          "eur_hab": 258.7
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0319,
+          "eur_hab": 39.4
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0234,
+          "eur_hab": 28.9
+        }
+      }
+    },
+    "91": {
+      "nom": "Essonne",
+      "ptot": 1327467,
+      "total_eur_hab": 1124.2,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6047,
+          "eur_hab": 679.9
+        },
+        "colleges_education": {
+          "share": 0.1161,
+          "eur_hab": 130.5
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0569,
+          "eur_hab": 63.9
+        },
+        "administration_autres": {
+          "share": 0.1283,
+          "eur_hab": 144.3
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.072,
+          "eur_hab": 80.9
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.022,
+          "eur_hab": 24.7
+        }
+      }
+    },
+    "92": {
+      "nom": "Hauts-de-Seine",
+      "ptot": 1651161,
+      "total_eur_hab": 1344.4,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.4611,
+          "eur_hab": 619.9
+        },
+        "colleges_education": {
+          "share": 0.1218,
+          "eur_hab": 163.8
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1148,
+          "eur_hab": 154.3
+        },
+        "administration_autres": {
+          "share": 0.1872,
+          "eur_hab": 251.7
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0257,
+          "eur_hab": 34.6
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0893,
+          "eur_hab": 120.1
+        }
+      }
+    },
+    "93": {
+      "nom": "Seine-Saint-Denis",
+      "ptot": 1675249,
+      "total_eur_hab": 1174.2,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.56,
+          "eur_hab": 657.5
+        },
+        "colleges_education": {
+          "share": 0.1199,
+          "eur_hab": 140.7
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0963,
+          "eur_hab": 113.1
+        },
+        "administration_autres": {
+          "share": 0.1358,
+          "eur_hab": 159.4
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0288,
+          "eur_hab": 33.8
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0593,
+          "eur_hab": 69.7
+        }
+      }
+    },
+    "94": {
+      "nom": "Val-de-Marne",
+      "ptot": 1424088,
+      "total_eur_hab": 1190.0,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5772,
+          "eur_hab": 686.9
+        },
+        "colleges_education": {
+          "share": 0.0895,
+          "eur_hab": 106.5
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0491,
+          "eur_hab": 58.4
+        },
+        "administration_autres": {
+          "share": 0.2042,
+          "eur_hab": 243.0
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0291,
+          "eur_hab": 34.7
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0509,
+          "eur_hab": 60.6
+        }
+      }
+    },
+    "95": {
+      "nom": "Val-d'Oise",
+      "ptot": 1266299,
+      "total_eur_hab": 1091.7,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5874,
+          "eur_hab": 641.3
+        },
+        "colleges_education": {
+          "share": 0.1329,
+          "eur_hab": 145.0
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0598,
+          "eur_hab": 65.3
+        },
+        "administration_autres": {
+          "share": 0.1166,
+          "eur_hab": 127.3
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0652,
+          "eur_hab": 71.1
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0381,
+          "eur_hab": 41.6
+        }
+      }
+    },
+    "971": {
+      "nom": "Guadeloupe",
+      "ptot": 389277,
+      "total_eur_hab": 2102.6,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.6458,
+          "eur_hab": 1357.9
+        },
+        "colleges_education": {
+          "share": 0.0805,
+          "eur_hab": 169.2
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.1021,
+          "eur_hab": 214.7
+        },
+        "administration_autres": {
+          "share": 0.1134,
+          "eur_hab": 238.4
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0344,
+          "eur_hab": 72.3
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0238,
+          "eur_hab": 50.0
+        }
+      }
+    },
+    "974": {
+      "nom": "La Réunion",
+      "ptot": 880875,
+      "total_eur_hab": 1469.7,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5558,
+          "eur_hab": 816.9
+        },
+        "colleges_education": {
+          "share": 0.0896,
+          "eur_hab": 131.6
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.0324,
+          "eur_hab": 47.6
+        },
+        "administration_autres": {
+          "share": 0.239,
+          "eur_hab": 351.2
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0655,
+          "eur_hab": 96.3
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.0177,
+          "eur_hab": 26.1
+        }
+      }
+    },
+    "976": {
+      "nom": "Mayotte",
+      "ptot": 262895,
+      "total_eur_hab": 2232.4,
+      "fonctions": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.2415,
+          "eur_hab": 539.1
+        },
+        "colleges_education": {
+          "share": 0.085,
+          "eur_hab": 189.8
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.2949,
+          "eur_hab": 658.4
+        },
+        "administration_autres": {
+          "share": 0.2986,
+          "eur_hab": 666.6
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.0379,
+          "eur_hab": 84.5
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.042,
+          "eur_hab": 93.9
+        }
+      }
+    }
+  },
+  "by_dep_name": {
+    "Ain": "01",
+    "Aisne": "02",
+    "Allier": "03",
+    "Alpes-de-Haute-Provence": "04",
+    "Hautes-Alpes": "05",
+    "Alpes-Maritimes": "06",
+    "Ardèche": "07",
+    "Ardennes": "08",
+    "Ariège": "09",
+    "Aube": "10",
+    "Aude": "11",
+    "Aveyron": "12",
+    "Bouches-du-Rhône": "13",
+    "Calvados": "14",
+    "Cantal": "15",
+    "Charente": "16",
+    "Charente-Maritime": "17",
+    "Cher": "18",
+    "Corrèze": "19",
+    "Côte-d'Or": "21",
+    "Côtes-d'Armor": "22",
+    "Creuse": "23",
+    "Dordogne": "24",
+    "Doubs": "25",
+    "Drôme": "26",
+    "Eure": "27",
+    "Eure-et-Loir": "28",
+    "Finistère": "29",
+    "Gard": "30",
+    "Haute-Garonne": "31",
+    "Gers": "32",
+    "Gironde": "33",
+    "Hérault": "34",
+    "Ille-et-Vilaine": "35",
+    "Indre": "36",
+    "Indre-et-Loire": "37",
+    "Isère": "38",
+    "Jura": "39",
+    "Landes": "40",
+    "Loir-et-Cher": "41",
+    "Loire": "42",
+    "Haute-Loire": "43",
+    "Loire-Atlantique": "44",
+    "Loiret": "45",
+    "Lot": "46",
+    "Lot-et-Garonne": "47",
+    "Lozère": "48",
+    "Maine-et-Loire": "49",
+    "Manche": "50",
+    "Marne": "51",
+    "Haute-Marne": "52",
+    "Mayenne": "53",
+    "Meurthe-et-Moselle": "54",
+    "Meuse": "55",
+    "Morbihan": "56",
+    "Moselle": "57",
+    "Nièvre": "58",
+    "Nord": "59",
+    "Oise": "60",
+    "Orne": "61",
+    "Pas-de-Calais": "62",
+    "Puy-de-Dôme": "63",
+    "Pyrénées-Atlantiques": "64",
+    "Hautes-Pyrénées": "65",
+    "Pyrénées-Orientales": "66",
+    "Alsace": "67A",
+    "Rhône": "69",
+    "Métropole de Lyon": "691",
+    "Haute-Saône": "70",
+    "Saône-et-Loire": "71",
+    "Sarthe": "72",
+    "Savoie": "73",
+    "Haute-Savoie": "74",
+    "Paris": "75",
+    "Seine-Maritime": "76",
+    "Seine-et-Marne": "77",
+    "Yvelines": "78",
+    "Deux-Sèvres": "79",
+    "Somme": "80",
+    "Tarn": "81",
+    "Tarn-et-Garonne": "82",
+    "Var": "83",
+    "Vaucluse": "84",
+    "Vendée": "85",
+    "Vienne": "86",
+    "Haute-Vienne": "87",
+    "Vosges": "88",
+    "Yonne": "89",
+    "Territoire de Belfort": "90",
+    "Essonne": "91",
+    "Hauts-de-Seine": "92",
+    "Seine-Saint-Denis": "93",
+    "Val-de-Marne": "94",
+    "Val-d'Oise": "95",
+    "Guadeloupe": "971",
+    "La Réunion": "974",
+    "Mayotte": "976",
+    "Bas-Rhin": "67A",
+    "Haut-Rhin": "67A"
+  }
+}

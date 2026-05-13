@@ -1,0 +1,121 @@
+{
+  "generated_at": "2026-04-23T15:16:21.561179+00:00",
+  "source_pipeline": "pipeline/seeds/seed_city_constants.csv + seed_legal_thresholds.csv + seed_editorial_params.csv",
+  "audit_promise": "Toute valeur numérique utilisée par open-public-data doit être rattachée à une source identifiable. Si ce n'est pas le cas, c'est un bug à signaler.",
+  "city": {
+    "paris_population": {
+      "value": 2133111,
+      "unit": "habitants",
+      "source": "INSEE - Recensement de la population 2021 (population municipale)",
+      "source_url": "https://www.insee.fr/fr/statistiques/2011101?geo=COM-75056",
+      "date_reference": "2021-01-01",
+      "notes": "Population municipale officielle de Paris (commune 75056). Mise à jour INSEE annuelle vers octobre N+2."
+    },
+    "paris_superficie_km2": {
+      "value": 105.4,
+      "unit": "km2",
+      "source": "INSEE Chiffres-cles Paris",
+      "source_url": "https://www.insee.fr/fr/statistiques/2011101?geo=COM-75056",
+      "date_reference": "2021-01-01",
+      "notes": "Superficie totale de la commune Paris (75056) incluant bois."
+    },
+    "paris_nb_arrondissements": {
+      "value": 17,
+      "unit": "arrondissements",
+      "source": "Loi n 2017-257 du 28 fevrier 2017",
+      "source_url": "https://www.legifrance.gouv.fr/loi/id/JORFTEXT000034103673",
+      "date_reference": "2020-07-01",
+      "notes": "Depuis la fusion Paris Centre (1-4) en juillet 2020 : 1 Paris Centre + 13 arrondissements individuels = 17 secteurs. L'INSEE code toujours 20 arrondissements historiques."
+    },
+    "marseille_population": {
+      "value": 879238,
+      "unit": "habitants",
+      "source": "INSEE - Recensement de la population (population municipale)",
+      "source_url": "https://www.insee.fr/fr/statistiques/2011101?geo=COM-13055",
+      "date_reference": "2024-01-01",
+      "notes": "Population municipale officielle de Marseille (commune 13055). Valeur reprise par OFGL (base consolidee des communes) — voir website/public/data/communes/marseille.json."
+    },
+    "marseille_superficie_km2": {
+      "value": 240.6,
+      "unit": "km2",
+      "source": "INSEE Chiffres-cles Marseille",
+      "source_url": "https://www.insee.fr/fr/statistiques/2011101?geo=COM-13055",
+      "date_reference": "2021-01-01",
+      "notes": "Superficie totale de la commune Marseille (13055)."
+    },
+    "marseille_nb_arrondissements": {
+      "value": 16,
+      "unit": "arrondissements",
+      "source": "Loi n 87-509 du 9 juillet 1987 (loi PLM)",
+      "source_url": "https://www.legifrance.gouv.fr/loi/id/JORFTEXT000000509925",
+      "date_reference": "1987-07-09",
+      "notes": "Marseille est divisee en 16 arrondissements regroupes en 8 secteurs (PLM). Pour le choropleth on utilise le grain arrondissement (16) plus grand public que les secteurs."
+    }
+  },
+  "legal_thresholds": {
+    "capacite_desendettement_alerte_ans": {
+      "value": 12,
+      "unit": "années",
+      "source": "Cour des comptes - rapports sur les finances locales",
+      "source_url": "https://www.ccomptes.fr/fr/publications/les-finances-publiques-locales-2023",
+      "date_reference": "2023-09-01",
+      "notes": "Seuil d'alerte de capacité de désendettement communément utilisé par les chambres régionales des comptes. Au-delà : risque financier signalé."
+    },
+    "capacite_desendettement_critique_ans": {
+      "value": 20,
+      "unit": "années",
+      "source": "Cour des comptes - rapports sur les finances locales",
+      "source_url": "https://www.ccomptes.fr/fr/publications/les-finances-publiques-locales-2023",
+      "date_reference": "2023-09-01",
+      "notes": "Seuil critique : au-delà, la collectivité est considérée en situation financière très préoccupante."
+    },
+    "leverage_recettes_max": {
+      "value": 5.0,
+      "unit": "ratio",
+      "source": "Analyse méthodo open-public-data",
+      "source_url": null,
+      "date_reference": "2026-04-23",
+      "notes": "Plafond pratique d'endettement rapporté aux recettes réelles de fonctionnement (dette/RRF). Au-dessus : stress test automatique déclenché."
+    },
+    "borrow_ratio_max": {
+      "value": 0.5,
+      "unit": "ratio",
+      "source": "Analyse méthodo open-public-data",
+      "source_url": null,
+      "date_reference": "2026-04-23",
+      "notes": "Ratio emprunt/investissement maximum avant alerte financement. Above : la collectivité finance > 50% de ses investissements par l'emprunt."
+    },
+    "instruction_comptable": {
+      "value": "M57",
+      "unit": "nomenclature",
+      "source": "Arrêté du 20 décembre 2018",
+      "source_url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000037889477",
+      "date_reference": "2024-01-01",
+      "notes": "Nomenclature budgétaire et comptable M57 applicable aux régions, départements et communes de plus de 3500 habitants depuis 2024."
+    }
+  },
+  "editorial_params": {
+    "timeline_axis_start": {
+      "value": 2013,
+      "unit": "année",
+      "rationale": "Début de la série temporelle affichée. Justification : 2013 est la première année avec couverture Paris Open Data cohérente pour les marchés publics (source liste-des-marches...).",
+      "date_reference": "2026-04-23"
+    },
+    "timeline_axis_end": {
+      "value": 2026,
+      "unit": "année",
+      "rationale": "Fin de la série temporelle affichée. Justification : 2026 est la dernière année couverte par un Budget Primitif voté (PDF extracteur + sync).",
+      "date_reference": "2026-04-23"
+    },
+    "subventions_years_excluded": {
+      "value": [
+        2020,
+        2021,
+        2025
+      ],
+      "unit": "années",
+      "rationale": "Années exclues des agrégats subventions : 2020/21 anonymisées par Paris Open Data (protection données personnelles bénéficiaires individuels), 2025 partielle au moment du sync.",
+      "date_reference": "2026-04-23"
+    }
+  }
+}

@@ -2,9 +2,7 @@
 
 import { fmtInt } from "@/lib/fmt";
 import { useT } from "@/lib/localeContext";
-
-// Paris 2024 (approximations calibrées sur les comptes administratifs)
-const PARIS_POPULATION = 2_133_111;
+import { PARIS_POPULATION } from "@/lib/methodology";
 
 type Props = {
   /** Dette financière totale en €. */

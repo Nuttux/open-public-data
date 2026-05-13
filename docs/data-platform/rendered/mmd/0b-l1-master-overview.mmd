@@ -1,0 +1,130 @@
+flowchart LR
+    subgraph SOURCES["🌐 Raw sources"]
+        OD[OpenData Paris API]
+        DGF[data.gouv.fr DECP]
+        PDF[cdn.paris.fr PDFs<br/>Budget voté · Annexe IL]
+        DELIBS[a06-v7.apps.paris.fr<br/>Deliberations HTML+PDF]
+        SIRENE[recherche-entreprises<br/>INSEE SIRENE]
+        WEB[Web search<br/>Wikipedia FR]
+        SEEDS[(Seeds CSV<br/>editorial params<br/>thematiques mapping<br/>DRIHL xlsx)]
+    end
+
+    subgraph INGEST["⬇️ Ingest"]
+        SYNC[sync_opendata.py]
+        FDECP[fetch_decp_paris.py]
+        FSUB[fetch_subventions_opendata.py]
+        EPDF_B[extract_pdf_budget_vote.py]
+        EPDF_I[extract_pdf_investments.py]
+        SDEL[scrape_deliberations.py]
+        UPLD[upload_bilan_comptable.py]
+        SDET[sync_dette_garantie.py]
+    end
+
+    subgraph CACHE["💾 Internal cache<br/>pipeline/cache/"]
+        CACHE_SUBV[(subventions_pre_enrichment/<br/>beneficiaires_*.json<br/>treemap_*.json)]
+        CACHE_INV[(pdf_invest/<br/>investissements_localises_*.json)]
+        CACHE_DEL[(delibs/sessions/<br/>session_*.json)]
+        CACHE_ENR[(enrichment/<br/>17 caches LLM/SIRENE/photos)]
+        CACHE_WIP[(wip/<br/>communes-all/, national/, …)]
+    end
+
+    subgraph SYNC2_BOX["⬇️ Cache → BQ (sync polymorphe)"]
+        SYNC2[sync_pdf_investissements_localises<br/>sync_deliberations<br/>sync_enrichment_caches<br/>sync_sirene_companies<br/>sync_dette_garantie]
+    end
+
+    subgraph BQ["🗄️ BigQuery raw.*"]
+        RAW[(raw.comptes_administratifs_*<br/>raw.subventions_*<br/>raw.liste_des_marches_*<br/>raw.decp_marches_paris<br/>raw.logements_sociaux_*<br/>raw.bilan_comptable<br/>raw.dette_garantie_paris)]
+    end
+
+    subgraph DBT["🧪 dbt pipeline/models"]
+        STG[staging/<br/>stg_* × 26<br/><i>tous les seeds wrappés</i>]
+        CORE[core/<br/>core_* × 12<br/><i>OBT enrichis inline</i>]
+        INT[intermediate/<br/>int_* × 1<br/><i>cross-domain post-core uniquement</i>]
+        MART[marts/<br/>mart_* × 24]
+    end
+
+    subgraph ENRICH["🤖 Enrichment<br/>pipeline/scripts/enrich/"]
+        LLM[LLM scripts<br/>thematique · grounded · vulgarize<br/>geo_ap · deliberations]
+        DETER[Deterministic<br/>sirene · match · patrimoine<br/>hors_bilan · photos]
+        CACHES[(seeds/seed_cache_*.csv<br/>public/data/enrichment/*.json)]
+    end
+
+    subgraph EXPORT["📤 Export<br/>pipeline/scripts/export/"]
+        EXP[export_* × 13]
+    end
+
+    subgraph JSONS["📦 website/public/data/*.json<br/>~140 files"]
+        J_META[data_availability.json<br/>methodology.json]
+        J_BUDGET[budget_sankey_* · budget_nature_*<br/>evolution_budget · vote_vs_execute]
+        J_SUB[subventions/*<br/>subventions_delibs/*]
+        J_MARCH[marches-publics/*]
+        J_MAP[map/investissements_*<br/>map/arrondissements_stats_*<br/>map/logements_*]
+        J_BILAN[bilan_sankey_* · patrimoine_structure_*<br/>hors_bilan_*]
+        J_ENR[enrichment/*.json]
+    end
+
+    subgraph UI["🖥️ Next.js UI<br/>website/src/app"]
+        P_LAND[/ LandingClient/]
+        P_BUD[/budget BudgetClient/]
+        P_QR[/qui-recoit Explorer/]
+        P_MP[/marches-publics Search/]
+        P_INV[/investissements/]
+        P_LOG[/logement-social/]
+        P_DET[/dette-patrimoine/]
+        P_MET[/methode/]
+    end
+
+    OD --> SYNC --> RAW
+    OD --> FSUB --> CACHE_SUBV
+    DGF --> FDECP --> RAW
+    PDF --> EPDF_B --> SEEDS
+    PDF --> EPDF_I --> CACHE_INV
+    DELIBS --> SDEL --> CACHE_DEL
+    UPLD --> RAW
+    SEEDS --> STG
+    RAW --> STG
+    STG --> CORE
+    CORE --> INT
+    CORE --> MART
+    INT --> MART
+    MART --> EXP
+
+    SIRENE --> LLM
+    WEB --> LLM
+    LLM --> CACHES
+    DETER --> CACHES
+    CACHE_SUBV --> LLM
+    CACHE_SUBV --> DETER
+    CACHE_INV --> SYNC2
+    CACHE_DEL --> SYNC2
+    CACHES --> SYNC2
+    SYNC2 --> RAW
+
+    EXP --> JSONS
+    J_BUDGET --> P_LAND & P_BUD
+    J_SUB --> P_QR
+    J_MARCH --> P_MP
+    J_MAP --> P_INV & P_LOG
+    J_BILAN --> P_DET
+    J_ENR --> P_QR & P_MP & P_INV
+    J_META --> P_MET & P_LAND
+
+    classDef src fill:#dbeafe,stroke:#1e40af,color:#111
+    classDef ing fill:#dcfce7,stroke:#166534,color:#111
+    classDef bq fill:#fef3c7,stroke:#92400e,color:#111
+    classDef dbt fill:#e0e7ff,stroke:#3730a3,color:#111
+    classDef enr fill:#fce7f3,stroke:#9d174d,color:#111
+    classDef exp fill:#f3e8ff,stroke:#6b21a8,color:#111
+    classDef json fill:#ffedd5,stroke:#9a3412,color:#111
+    classDef ui fill:#ccfbf1,stroke:#115e59,color:#111
+    classDef cache fill:#f1f5f9,stroke:#475569,color:#111
+    class OD,DGF,PDF,DELIBS,SIRENE,WEB,SEEDS src
+    class SYNC,FDECP,FSUB,EPDF_B,EPDF_I,SDEL,UPLD,SDET ing
+    class SYNC2 ing
+    class RAW bq
+    class STG,CORE,INT,MART dbt
+    class LLM,DETER,CACHES enr
+    class EXP exp
+    class J_META,J_BUDGET,J_SUB,J_MARCH,J_MAP,J_BILAN,J_ENR json
+    class P_LAND,P_BUD,P_QR,P_MP,P_INV,P_LOG,P_DET,P_MET ui
+    class CACHE_SUBV,CACHE_INV,CACHE_DEL,CACHE_ENR,CACHE_WIP cache

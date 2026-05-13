@@ -1,0 +1,13 @@
+flowchart LR
+    subgraph PIPE["⚙️ Pipeline de production (BigQuery + dbt)"]
+        direction LR
+        STG[stg<br/><i>nettoyage</i>]
+        CORE[core<br/><i>entité métier</i>]
+        MART[mart<br/><i>forme JSON</i>]
+        STG --> CORE --> MART
+    end
+    SRC["sources<br/>publiques"] -.->|sync_*.py| STG
+    MART -.->|export_*.py| OUT[".json<br/>publiés"]
+
+    classDef layer fill:#fef9c3,stroke:#a16207,color:#111
+    class STG,CORE,MART layer

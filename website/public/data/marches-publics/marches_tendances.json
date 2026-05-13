@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-02-16T14:13:09.275464",
-  "source": "OpenData Paris API (bootstrap direct)",
+  "generated_at": "2026-04-23T19:40:37.547447",
+  "source": "dbt marts (mart_marches_fournisseurs)",
   "note": "Les montants sont des enveloppes pluriannuelles (plafonds contractuels).",
   "years": [
     {
       "year": 2013,
-      "enveloppe_totale": 1901084589.8700004,
-      "nb_marches": 1714,
+      "enveloppe_totale": 1901057959.8700001,
+      "nb_marches": 1713,
       "par_nature": [
         {
           "label": "SERVICES",
-          "montant": 1131262680.7700005,
-          "count": 909
+          "montant": 1131236050.7700005,
+          "count": 908
         },
         {
           "label": "TRAVAUX",
@@ -87,15 +87,15 @@
         },
         {
           "label": "Autres",
-          "montant": 637919555.39,
-          "count": 938
+          "montant": 637892925.39,
+          "count": 937
         }
       ],
       "par_perimetre": [
         {
           "label": "M57 Ville",
-          "montant": 1721915338.5600011,
-          "count": 1496
+          "montant": 1721888708.5600011,
+          "count": 1495
         },
         {
           "label": "M57 Département",
@@ -121,7 +121,7 @@
     },
     {
       "year": 2014,
-      "enveloppe_totale": 1530498987.8500016,
+      "enveloppe_totale": 1530498987.85,
       "nb_marches": 1483,
       "par_nature": [
         {
@@ -227,7 +227,7 @@
     },
     {
       "year": 2015,
-      "enveloppe_totale": 1538504362.6999986,
+      "enveloppe_totale": 1538504362.7,
       "nb_marches": 1556,
       "par_nature": [
         {
@@ -343,7 +343,7 @@
     },
     {
       "year": 2016,
-      "enveloppe_totale": 1916840484.300001,
+      "enveloppe_totale": 1916840484.3,
       "nb_marches": 1601,
       "par_nature": [
         {
@@ -464,7 +464,7 @@
     },
     {
       "year": 2017,
-      "enveloppe_totale": 3465550059.5099964,
+      "enveloppe_totale": 3465550059.51,
       "nb_marches": 1698,
       "par_nature": [
         {
@@ -575,7 +575,7 @@
     },
     {
       "year": 2018,
-      "enveloppe_totale": 2836151932.3100047,
+      "enveloppe_totale": 2836151932.31,
       "nb_marches": 1458,
       "par_nature": [
         {
@@ -696,7 +696,7 @@
     },
     {
       "year": 2019,
-      "enveloppe_totale": 2302969683.300001,
+      "enveloppe_totale": 2302969683.3,
       "nb_marches": 1338,
       "par_nature": [
         {
@@ -802,7 +802,7 @@
     },
     {
       "year": 2020,
-      "enveloppe_totale": 3282280032.529943,
+      "enveloppe_totale": 3282280032.53,
       "nb_marches": 1196,
       "par_nature": [
         {
@@ -918,7 +918,7 @@
     },
     {
       "year": 2021,
-      "enveloppe_totale": 5483477436.48991,
+      "enveloppe_totale": 5483477436.49,
       "nb_marches": 1570,
       "par_nature": [
         {
@@ -1029,7 +1029,7 @@
     },
     {
       "year": 2022,
-      "enveloppe_totale": 3824590460.8399935,
+      "enveloppe_totale": 3824590460.84,
       "nb_marches": 1281,
       "par_nature": [
         {
@@ -1135,8 +1135,8 @@
     },
     {
       "year": 2023,
-      "enveloppe_totale": 2603719521.330001,
-      "nb_marches": 1335,
+      "enveloppe_totale": 2606711521.33,
+      "nb_marches": 1336,
       "par_nature": [
         {
           "label": "SERVICES",
@@ -1152,6 +1152,11 @@
           "label": "TRAVAUX",
           "montant": 529467117.9199997,
           "count": 450
+        },
+        {
+          "label": "Marché",
+          "montant": 2992000.0,
+          "count": 1
         }
       ],
       "par_categorie": [
@@ -1217,8 +1222,8 @@
         },
         {
           "label": "Autres",
-          "montant": 1319683903.55,
-          "count": 1150
+          "montant": 1322675903.55,
+          "count": 1151
         }
       ],
       "par_perimetre": [
@@ -1226,6 +1231,11 @@
           "label": "M57 Ville",
           "montant": 2603465317.960001,
           "count": 1332
+        },
+        {
+          "label": "Non renseigné",
+          "montant": 2992000.0,
+          "count": 1
         },
         {
           "label": "M4 TAM",
@@ -1236,8 +1246,8 @@
     },
     {
       "year": 2024,
-      "enveloppe_totale": 2495665169.6699977,
-      "nb_marches": 1407,
+      "enveloppe_totale": 3219823753.23,
+      "nb_marches": 1762,
       "par_nature": [
         {
           "label": "TRAVAUX",
@@ -1250,12 +1260,37 @@
           "count": 771
         },
         {
+          "label": "Travaux",
+          "montant": 556798852.9799995,
+          "count": 74
+        },
+        {
           "label": "FOURNITURE",
-          "montant": 403732203.18,
-          "count": 195
+          "montant": 403552203.18,
+          "count": 194
+        },
+        {
+          "label": "Fournitures",
+          "montant": 116026688.73999998,
+          "count": 143
+        },
+        {
+          "label": "Services",
+          "montant": 51457011.84000001,
+          "count": 136
+        },
+        {
+          "label": "Marché",
+          "montant": 56030.0,
+          "count": 3
         }
       ],
       "par_categorie": [
+        {
+          "label": "Travaux",
+          "montant": 556798852.9799995,
+          "count": 74
+        },
         {
           "label": "Travaux d'aménagement de voirie",
           "montant": 372299717.59999996,
@@ -1270,6 +1305,11 @@
           "label": "Maintenance des installations de génie climatique",
           "montant": 180000000.0,
           "count": 4
+        },
+        {
+          "label": "Fournitures courantes et services",
+          "montant": 116026688.73999998,
+          "count": 143
         },
         {
           "label": "Travaux sur le  réseau d'assainissement",
@@ -1307,26 +1347,21 @@
           "count": 13
         },
         {
-          "label": "service d'aide sociale à l'enfance",
-          "montant": 63741546.72,
-          "count": 5
-        },
-        {
-          "label": "Services d'accompagnement (PMI, familles)",
-          "montant": 63292000.019999996,
-          "count": 8
-        },
-        {
           "label": "Autres",
-          "montant": 1012788310.9199998,
-          "count": 1024
+          "montant": 1191154899.4999995,
+          "count": 1175
         }
       ],
       "par_perimetre": [
         {
           "label": "M57 Ville",
-          "montant": 2488976377.5499988,
-          "count": 1395
+          "montant": 2488796377.5499988,
+          "count": 1394
+        },
+        {
+          "label": "Non renseigné",
+          "montant": 724338583.5599993,
+          "count": 356
         },
         {
           "label": "M22 ASE",
@@ -1342,6 +1377,128 @@
           "label": "M4 TAM",
           "montant": 449797.99,
           "count": 6
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "enveloppe_totale": 1608151115.94,
+      "nb_marches": 1122,
+      "par_nature": [
+        {
+          "label": "Fournitures",
+          "montant": 768665422.5000001,
+          "count": 521
+        },
+        {
+          "label": "Travaux",
+          "montant": 505484243.09,
+          "count": 410
+        },
+        {
+          "label": "Services",
+          "montant": 331847663.7,
+          "count": 181
+        },
+        {
+          "label": "Marché",
+          "montant": 2153786.65,
+          "count": 10
+        }
+      ],
+      "par_categorie": [
+        {
+          "label": "Fournitures courantes et services",
+          "montant": 768665422.5000001,
+          "count": 521
+        },
+        {
+          "label": "Travaux",
+          "montant": 505484243.09,
+          "count": 410
+        },
+        {
+          "label": "Techniques de l'information et de la communication",
+          "montant": 274389381.01,
+          "count": 23
+        },
+        {
+          "label": "Prestations intellectuelles",
+          "montant": 43850835.45999999,
+          "count": 132
+        },
+        {
+          "label": "Maitrise d'œuvre",
+          "montant": 13607447.23,
+          "count": 26
+        },
+        {
+          "label": "Pas de CCAG",
+          "montant": 2153786.65,
+          "count": 10
+        }
+      ],
+      "par_perimetre": [
+        {
+          "label": "Non renseigné",
+          "montant": 1608151115.9400008,
+          "count": 1122
+        }
+      ]
+    },
+    {
+      "year": 2026,
+      "enveloppe_totale": 647101024.95,
+      "nb_marches": 266,
+      "par_nature": [
+        {
+          "label": "Travaux",
+          "montant": 409177962.75,
+          "count": 90
+        },
+        {
+          "label": "Fournitures",
+          "montant": 182793902.70000002,
+          "count": 126
+        },
+        {
+          "label": "Services",
+          "montant": 55129159.5,
+          "count": 50
+        }
+      ],
+      "par_categorie": [
+        {
+          "label": "Travaux",
+          "montant": 409177962.75,
+          "count": 90
+        },
+        {
+          "label": "Fournitures courantes et services",
+          "montant": 182793902.70000002,
+          "count": 126
+        },
+        {
+          "label": "Prestations intellectuelles",
+          "montant": 22168476.5,
+          "count": 31
+        },
+        {
+          "label": "Techniques de l'information et de la communication",
+          "montant": 21359000.0,
+          "count": 13
+        },
+        {
+          "label": "Maitrise d'œuvre",
+          "montant": 11601683.0,
+          "count": 6
+        }
+      ],
+      "par_perimetre": [
+        {
+          "label": "Non renseigné",
+          "montant": 647101024.95,
+          "count": 266
         }
       ]
     }

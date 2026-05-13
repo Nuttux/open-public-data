@@ -1,15 +1,15 @@
 {
   "year": 2018,
-  "generated_at": "2026-04-22T18:17:29.653242",
+  "generated_at": "2026-04-23T15:59:39.509551",
   "total_montant": 1241346409.0,
   "nb_thematiques": 15,
   "data": [
     {
       "annee": 2018,
       "thematique": "Social - Solidarité",
-      "nb_beneficiaires": 126,
-      "nb_subventions": 184,
-      "montant_total": 426572707.0,
+      "nb_beneficiaires": 125,
+      "nb_subventions": 182,
+      "montant_total": 426517707.0,
       "pct_total": 34.36
     },
     {
@@ -23,9 +23,9 @@
     {
       "annee": 2018,
       "thematique": "Culture",
-      "nb_beneficiaires": 307,
-      "nb_subventions": 345,
-      "montant_total": 184481938.0,
+      "nb_beneficiaires": 306,
+      "nb_subventions": 344,
+      "montant_total": 184474038.0,
       "pct_total": 14.86
     },
     {
@@ -47,33 +47,33 @@
     {
       "annee": 2018,
       "thematique": "Social - Petite enfance",
-      "nb_beneficiaires": 91,
-      "nb_subventions": 103,
-      "montant_total": 39076313.0,
+      "nb_beneficiaires": 90,
+      "nb_subventions": 101,
+      "montant_total": 39066313.0,
       "pct_total": 3.15
     },
     {
       "annee": 2018,
       "thematique": "Économie",
-      "nb_beneficiaires": 154,
-      "nb_subventions": 187,
-      "montant_total": 36660991.0,
+      "nb_beneficiaires": 155,
+      "nb_subventions": 190,
+      "montant_total": 36672791.0,
       "pct_total": 2.95
     },
     {
       "annee": 2018,
       "thematique": "Sport",
-      "nb_beneficiaires": 185,
+      "nb_beneficiaires": 186,
       "nb_subventions": 193,
-      "montant_total": 29566231.0,
-      "pct_total": 2.38
+      "montant_total": 29628395.0,
+      "pct_total": 2.39
     },
     {
       "annee": 2018,
       "thematique": "Non classifié",
-      "nb_beneficiaires": 8527,
-      "nb_subventions": 8690,
-      "montant_total": 29227929.0,
+      "nb_beneficiaires": 8526,
+      "nb_subventions": 8689,
+      "montant_total": 29185240.0,
       "pct_total": 2.35
     },
     {
@@ -103,9 +103,9 @@
     {
       "annee": 2018,
       "thematique": "International",
-      "nb_beneficiaires": 42,
-      "nb_subventions": 45,
-      "montant_total": 4308116.0,
+      "nb_beneficiaires": 44,
+      "nb_subventions": 48,
+      "montant_total": 4349741.0,
       "pct_total": 0.35
     },
     {

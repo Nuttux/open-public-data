@@ -19,7 +19,7 @@ WITH budget AS (
 ),
 
 mapping_thematiques AS (
-    SELECT * FROM {{ ref('seed_mapping_thematiques') }}
+    SELECT * FROM {{ ref('stg_mapping_thematiques') }}
 ),
 
 -- =============================================================================
@@ -68,6 +68,9 @@ enriched AS (
         -- =====================================================================
         -- COLONNES ORIGINALES (pas de préfixe)
         -- =====================================================================
+        -- City discriminator (préparation unification multi-villes — cf. P2.1)
+        -- Constant 'paris' ici, sera UNION avec stg_marseille_budget en refactor.
+        'paris' AS commune_slug,
         b.annee,
         b.section,
         b.sens_flux,

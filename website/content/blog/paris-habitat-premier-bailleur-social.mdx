@@ -1,0 +1,130 @@
+---
+title: "Paris Habitat-OPH : le 1ᵉʳ bailleur social de France, et l'un des plus discrets"
+description: "Avec environ 130 000 logements gérés en Île-de-France dont la majorité à Paris, Paris Habitat est le premier office public de l'habitat français. Anatomie d'un opérateur qui ne fait jamais la une, et de la subvention Ville qui ne dit qu'une partie de son histoire."
+date: "2026-04-28"
+author: "France Open Data"
+tags: ["portrait", "logement social", "bailleur", "Paris Habitat"]
+category: "Portrait"
+image: "https://commons.wikimedia.org/wiki/Special:FilePath/Mairie%20de%20Paris.jpg?width=1600"
+imageAlt: "Mairie de Paris — la commune qui détient et finance Paris Habitat-OPH"
+imageCredit: "Photo : Wikimedia Commons · CC BY-SA"
+readingTime: "8 min"
+title_en: "Paris Habitat-OPH: France's largest social-housing operator, and one of its quietest"
+description_en: "With roughly 130,000 dwellings managed across Île-de-France — most of them in Paris — Paris Habitat is France's largest public-housing office. Anatomy of an operator that never makes headlines, and of a City grant that tells only part of its story."
+imageAlt_en: "Paris City Hall — the municipality that owns and funds Paris Habitat-OPH"
+imageCredit_en: "Photo: Wikimedia Commons · CC BY-SA"
+category_en: "Portrait"
+tags_en: ["portrait", "social housing", "social-housing operator", "Paris Habitat"]
+---
+
+Quand on parle des grands acteurs du logement social parisien, les noms qui circulent dans la presse sont souvent ceux des associations militantes (Fondation Abbé Pierre, DAL) ou des autorités de tutelle (Ministère du Logement, DRIHL). Le premier bailleur du parc, **Paris Habitat-OPH**, reste largement absent du débat public. Pourtant, c'est lui qui possède et gère la plus grande partie des logements conventionnés de la capitale, avec un parc qui le place depuis longtemps **au premier rang des offices publics de l'habitat (OPH) français**.
+
+Cet article décrit ce qu'on peut savoir de Paris Habitat à partir des données ouvertes : son flux de subventions reçu de la Ville, son statut juridique, sa place relative parmi les bailleurs publics parisiens, et les limites de ce que le pipeline open-public-data permet de dire à son sujet.
+
+## Ce que la Ville verse à Paris Habitat — et pourquoi cela varie
+
+Paris Habitat reçoit chaque année une subvention de la Ville de Paris, votée au Conseil de Paris dans le cadre des délibérations annuelles. Sur les exercices pour lesquels le portail Open Data Paris publie ces flux :
+
+<BlogTimeBars
+  title="Subvention Ville → Paris Habitat-OPH, 2018-2024 (M€ courants)"
+  unit="M€"
+  data={[
+    { year: 2018, value: 41.2 },
+    { year: 2019, value: 59.9 },
+    { year: 2020, value: null },
+    { year: 2021, value: null },
+    { year: 2022, value: 44.4 },
+    { year: 2023, value: 32.5 },
+    { year: 2024, value: 48.9 },
+  ]}
+  caption="Subvention versée par la Ville de Paris à Paris Habitat-OPH, 2018-2024. Les variations annuelles ne reflètent pas la « santé » du bailleur ni son activité globale — elles correspondent aux opérations spécifiques cofinancées par la Ville cette année-là (réhabilitations lourdes, opérations neuves à équilibre déficitaire, portages fonciers liés à la préemption). 2020-2021 sont absents du portail."
+  source="pipeline open-public-data, fichiers subventions-associations annuels (CASVP exclu, Paris Musées exclu)"
+/>
+
+À première vue, la trajectoire est erratique : 41 M€ en 2018, 60 M€ en 2019, 44 M€ en 2022, 33 M€ en 2023, 49 M€ en 2024. Cette volatilité ne traduit ni une réorientation politique ni une crise de financement. Elle traduit la **logique d'opération** : la subvention Ville à Paris Habitat n'est pas une dotation globale de fonctionnement, c'est l'agrégation des **participations à des opérations spécifiques** validées par le Conseil de Paris cette année-là.
+
+Concrètement, Paris Habitat finance ses opérations courantes par d'autres canaux — principalement les **loyers perçus** sur son parc, les **emprunts auprès de la Banque des Territoires** (Caisse des Dépôts) qui constituent la dette spécifique des bailleurs sociaux, et le **1 % logement** (cotisations Action Logement). La subvention Ville n'arrive qu'en complément, pour les opérations dont l'équilibre économique ne peut pas être assuré par les loyers conventionnés seuls (typiquement les réhabilitations lourdes du parc ancien et les opérations neuves dans les arrondissements à fort coût foncier).
+
+<figure className="fx-photo-fig">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Vue%20d%27ensemble%20de%20la%20Cit%C3%A9%20Curial%20Michelet.jpg?width=1200" alt="Cité Curial-Michelet, dans le 19ᵉ arrondissement de Paris" />
+<figcaption>La cité Curial-Michelet (19ᵉ) est l'un des grands ensembles emblématiques du parc géré par Paris Habitat-OPH. Le bailleur s'est historiquement spécialisé sur la gestion patrimoniale longue — les cités héritées des années 1920-1930 et les grands ensembles d'après-guerre.</figcaption>
+</figure>
+
+## Trois bailleurs Ville, trois statuts juridiques
+
+Paris Habitat n'est pas le seul opérateur public de logement de la Ville. Le triumvirat des bailleurs publics parisiens — qui couvre l'essentiel du parc conventionné municipal — comprend trois entités, à statuts juridiques différents :
+
+| Bailleur | Statut | Subvention Ville 2024 |
+|---|---|---:|
+| Paris Habitat-OPH | Office Public de l'Habitat | 48,9 M€ |
+| RIVP (Régie Immobilière Ville de Paris) | SEM (Société d'économie mixte) | 44,2 M€ |
+| Elogie-Siemp | SPL (Société publique locale) | 24,8 M€ |
+| **Total triumvirat** | | **117,9 M€** |
+
+Cette diversité de statuts n'est pas neutre :
+
+- **Paris Habitat-OPH** est un **établissement public** rattaché à la Ville. C'est le statut le plus ancien et le plus contraint juridiquement — il ne peut intervenir que sur le logement social et l'habitat, et toute son activité est encadrée par le Code de la construction et de l'habitation.
+- **RIVP** est une **société d'économie mixte** : la Ville détient la majorité du capital, mais des actionnaires privés (banques, investisseurs institutionnels) sont également présents. Le statut SEM permet une gestion plus souple et l'intervention sur des produits intermédiaires (logement libre maîtrisé, locaux d'activité).
+- **Elogie-Siemp** est une **société publique locale** : 100 % des actionnaires sont publics (Ville majoritaire). Statut le plus récent (loi 2010), conçu pour cumuler la souplesse de la SA avec le caractère intégralement public du capital.
+
+Cette tripartition structurelle est ancienne et reflète des logiques d'aménagement différentes : Paris Habitat s'est historiquement spécialisé sur la gestion patrimoniale longue (les grands ensembles d'après-guerre, les cités HBM héritées des années 1920-1930), RIVP sur les opérations mixtes en zones de renouvellement urbain, et Elogie-Siemp sur l'acquisition-amélioration en tissu ancien (notamment via la préemption du foncier diffus).
+
+<figure className="fx-photo-fig">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/H%C3%B4tel%20de%20Ville%20de%20Paris%20-%20Journ%C3%A9e%20du%20Patrimoine%202013%20039.jpg?width=1200" alt="Salle des Fêtes de l'Hôtel de Ville de Paris" />
+<figcaption>L'Hôtel de Ville de Paris, siège politique de la commune qui détient et finance Paris Habitat-OPH. La séparation juridique entre la Ville (collectivité) et le bailleur (établissement public) est purement organique — opérationnellement, les deux entités sont indissociables.</figcaption>
+</figure>
+
+## Paris Habitat dans le paysage français
+
+Selon les données publiques agrégées par la **Fédération nationale des offices publics de l'habitat (FOPH)**, Paris Habitat est régulièrement classé **premier OPH de France par taille de parc gérée**. L'ordre de grandeur souvent cité — **environ 130 000 logements en gestion** sur l'Île-de-France, dont la majorité à Paris intra-muros — en fait un opérateur de classe européenne, comparable aux grandes sociétés d'HLM allemandes ou aux *housing associations* britanniques de premier rang.
+
+Cette taille a deux conséquences :
+
+1. **Une capacité d'investissement structurellement supérieure** à celle d'un bailleur communal moyen. Paris Habitat peut absorber des opérations complexes (rénovation thermique de tours d'habitat collectif, démolition-reconstruction d'îlots dégradés) que des bailleurs plus petits ne pourraient pas porter seuls.
+2. **Une dépendance réciproque très forte avec la Ville**. Comme pour le CASVP (cf. notre [portrait du CASVP](/analyses/casvp-416-millions-bouclier-social)), un retrait — même partiel — de la Ville sur Paris Habitat n'est pas opérationnellement possible à court terme : aucun autre acteur ne pourrait absorber le portefeuille en quelques années.
+
+<aside className="fx-sidebar">
+
+### OPH, ESH, SEM, SPL — qui est qui
+
+Le paysage des bailleurs sociaux français comprend quatre statuts principaux, qui coexistent souvent sur un même territoire :
+
+- **OPH** (Office Public de l'Habitat) — statut public local, rattaché à une commune ou une intercommunalité. Activité strictement limitée au logement social. Paris Habitat, OPH 92, etc.
+- **ESH** (Entreprise Sociale pour l'Habitat) — anciens « SA d'HLM », sociétés anonymes à actionnaires majoritairement non-lucratifs (Action Logement, collectivités, fondations). Plus de souplesse opérationnelle.
+- **SEM** (Société d'Économie Mixte) — capital majoritairement public + actionnaires privés. Peut intervenir au-delà du strict logement social (mixité fonctionnelle).
+- **SPL** (Société Publique Locale) — capital 100 % public. Statut récent (2010), souvent utilisé pour les opérations d'aménagement et le portage foncier.
+
+Le choix d'un statut dépend largement de l'histoire : on hérite d'un OPH créé dans les années 1920, on crée une SEM dans les années 1980 pour un programme spécifique, on bascule vers une SPL pour intégrer le portage foncier de la préemption.
+
+</aside>
+
+## Ce que la subvention Ville ne dit pas
+
+La subvention Ville à Paris Habitat (entre 33 et 60 M€ selon les années, hors période 2020-2021 absente du portail) **représente une part minoritaire du chiffre d'affaires** du bailleur, dont l'essentiel vient des loyers perçus sur son parc conventionné. Pour avoir une lecture complète de l'activité de Paris Habitat, il faudrait consulter :
+
+- Le **rapport d'activité annuel** publié par Paris Habitat (siège : 21bis rue Claude-Bernard, 75005), qui détaille les recettes, les opérations livrées, les chantiers en cours, les ratios financiers
+- Le **fichier RPLS** (Répertoire du parc locatif social) géré par le SDES, qui permet de mesurer le parc précisément (nombre de logements, par catégorie de financement, par arrondissement)
+- Les **rapports de la CRC Île-de-France** qui examinent périodiquement les comptes des grands bailleurs publics
+
+Le pipeline open-public-data ne couvre, à ce stade, que le **flux Ville → bailleur** (qui est un événement comptable précis et public, voté en délibération). C'est une bonne base pour mesurer l'**effort de la Ville**, mais une mauvaise base pour juger de la **santé globale du bailleur**.
+
+## Comment Paris Habitat se positionne vs RIVP et Elogie-Siemp
+
+Sur 2024, les trois bailleurs Ville se partagent 117,9 M€ de subventions de manière à peu près équilibrée — Paris Habitat à 41 %, RIVP à 38 %, Elogie-Siemp à 21 %. Cette répartition n'est ni stable ni significative en soi : elle reflète les opérations qui ont été présentées au vote cette année-là, pas un quelconque arbitrage stratégique annuel.
+
+En revanche, sur la durée (2018-2024 cumulés), la part relative est très différente : Paris Habitat reste le premier bénéficiaire absolu en cumul, suivi par RIVP, puis Elogie-Siemp. C'est cohérent avec leur taille respective de parc, et cela reflète aussi les cycles longs des grands programmes de réhabilitation (typiquement 5 à 10 ans entre la décision d'engagement et le décompte général définitif).
+
+## Ce que ces chiffres ne disent pas
+
+Cette analyse s'arrête à ce que le pipeline open-public-data permet de mesurer — c'est-à-dire le flux Ville → bailleur, exhaustif sur les exercices publiés au portail Open Data Paris. Elle ne dit pas :
+
+- **La taille exacte du parc géré par Paris Habitat** — il faut consulter le RPLS et les rapports d'activité pour avoir un chiffre précis et actualisé
+- **L'état du patrimoine bâti** — vétusté, conformité énergétique, calendrier de rénovation
+- **La performance opérationnelle** — taux d'occupation, taux d'impayés, durée moyenne d'attribution
+- **Les ratios financiers** — capacité d'autofinancement, taux d'endettement spécifique, ratio Anafi-bailleur
+
+Ce qu'elle dit, en une phrase : **Paris Habitat est le premier bailleur public parisien et le premier OPH de France, mais il opère dans une dépendance réciproque structurelle avec la Ville qui ne se mesure que partiellement par le flux annuel de subventions**. La majorité de ce qu'il fait n'apparaît pas dans le portail Open Data Paris, parce que la majorité de ce qu'il fait n'est pas un acte de la Ville — c'est un acte du bailleur lui-même, autonome juridiquement, qu'il faut aller chercher dans ses propres publications.
+
+---
+
+**Sources** : Pipeline open-public-data, fichiers Open Data Paris `subventions-associations` 2018-2024 (extraction des bénéficiaires Paris Habitat-OPH, RIVP, Elogie-Siemp) · Code de la construction et de l'habitation (statuts OPH, ESH, SEM, SPL) · Fédération nationale des offices publics de l'habitat (FOPH) pour le classement des OPH français · Rapport d'activité annuel Paris Habitat-OPH · RPLS (Répertoire du parc locatif social, SDES) pour les données de parc · Rapports CRC Île-de-France pour l'examen périodique des comptes. Périmètre : Ville de Paris, opérateurs publics inscrits au fichier des bénéficiaires de subventions.

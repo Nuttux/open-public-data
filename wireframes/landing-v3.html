@@ -1,0 +1,921 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>France Open Data — Landing v3 (scrollytelling mockup)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #f5f3eb;
+    --bg-2:      #ebe7d8;
+    --ink:       #161512;
+    --ink-2:     #3b3833;
+    --muted:     #6c6862;
+    --rule:      #ddd7c5;
+    --bleu:      #1f3aa6;
+    --rouge:     #c8102e;
+    --vert:      #4a5d3a;          /* signature : vert oxydé */
+    --terre:     #8a5a2e;          /* signature : brun terre */
+    --highlight: #f7d96a;          /* signature : jaune surlignage */
+
+    --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
+    --sans:  "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    --mono:  "JetBrains Mono", "SF Mono", Menlo, monospace;
+    --pad:  clamp(20px, 4vw, 56px);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: var(--sans); font-size: 16px; line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 9999;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.4 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.16'/></svg>");
+    mix-blend-mode: multiply; opacity: 0.5;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* ─── BANNER MOCKUP ─── */
+  .banner {
+    background: var(--ink); color: var(--bg);
+    padding: 8px 14px; font-family: var(--mono); font-size: 11px;
+    text-align: center; letter-spacing: 0.04em;
+  }
+  .banner b { color: var(--highlight); font-weight: 500; }
+
+  /* ─── NAV ─── */
+  .nav { border-bottom: 1px solid var(--rule); background: var(--bg); position: sticky; top: 0; z-index: 50; }
+  .nav-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; align-items: center; gap: 28px;
+    padding: 14px var(--pad);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 10px; font-weight: 600; font-family: var(--serif); }
+  .nav-mark {
+    width: 24px; height: 24px; border-radius: 50%;
+    background: var(--ink); color: var(--bg);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-style: italic; font-size: 16px;
+  }
+  .nav-links { display: flex; gap: 24px; font-size: 14px; color: var(--ink-2); }
+  .nav-spacer { flex: 1; }
+  .nav-meta { display: flex; gap: 14px; font-size: 12px; color: var(--muted); font-family: var(--mono); }
+  @media (max-width: 860px) { .nav-links { display: none; } }
+
+  /* ─── HERO conservé ─── */
+  .hero {
+    max-width: 1280px; margin: 0 auto;
+    padding: clamp(60px, 8vw, 120px) var(--pad);
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero h1 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: clamp(48px, 8vw, 112px);
+    line-height: 0.96; letter-spacing: -0.025em;
+    margin: 0 0 32px 0; max-width: 16ch;
+  }
+  .hero h1 em {
+    font-style: italic; color: var(--vert); font-weight: 500;
+    font-variation-settings: "opsz" 144;
+  }
+  .hero h1 .scope {
+    color: var(--rouge); border-bottom: 4px solid var(--rouge);
+    padding: 0 6px; cursor: pointer; font-style: normal;
+  }
+  .hero h1 .scope::after { content: "▾"; font-size: 0.5em; margin-left: 6px; color: var(--rouge); }
+  .lede {
+    font-size: clamp(15px, 1.2vw, 18px); color: var(--ink-2);
+    max-width: 56ch; margin: 0 0 32px 0;
+  }
+  .cta-row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--ink); color: var(--bg);
+    padding: 14px 26px; font-size: 14px; font-weight: 500;
+    border: 1px solid var(--ink); cursor: pointer;
+    transition: background 0.15s, transform 0.15s;
+  }
+  .btn:hover { background: var(--vert); border-color: var(--vert); transform: translateY(-1px); }
+  .btn-ghost { background: transparent; color: var(--ink-2); border-color: transparent; font-size: 13px; padding: 14px 0; }
+  .skip {
+    margin-top: 32px; font-family: var(--mono); font-size: 12px; color: var(--muted);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .skip a { border-bottom: 1px solid var(--muted); padding-bottom: 1px; }
+  .skip a:hover { color: var(--vert); border-color: var(--vert); }
+  .scroll-hint {
+    margin-top: 60px; font-family: var(--mono); font-size: 11px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.12em;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .scroll-hint::before {
+    content: ""; width: 1px; height: 30px; background: var(--ink);
+    animation: drop 1.6s ease-in-out infinite;
+  }
+  @keyframes drop { 0%,100% { transform: scaleY(0.3); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } }
+
+  /* ════════════════════════════════════════════════════════════════════
+     SCROLLYTELLING — sticky visuals à droite, texte qui défile à gauche
+     ════════════════════════════════════════════════════════════════════ */
+  .story {
+    position: relative;
+    background: var(--bg);
+  }
+  .story-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding: 0 var(--pad);
+  }
+
+  /* indicateur de progression latéral (signature) */
+  .progress {
+    position: fixed;
+    left: 24px; top: 50%; transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 10px;
+    z-index: 40;
+    pointer-events: none;
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .progress.show { opacity: 1; }
+  .progress .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--muted); opacity: 0.4;
+    transition: all 0.3s;
+  }
+  .progress .dot.active {
+    background: var(--rouge); opacity: 1;
+    transform: scale(1.5);
+  }
+  .progress .label {
+    position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+    font-family: var(--mono); font-size: 10px; color: var(--ink);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    white-space: nowrap;
+    background: var(--bg-2); padding: 2px 6px; border-radius: 2px;
+    opacity: 0; transition: opacity 0.2s;
+  }
+  .progress .dot.active + .label { opacity: 1; }
+  @media (max-width: 1100px) { .progress { display: none; } }
+
+  /* sticky visual à droite */
+  .sticky-col {
+    position: sticky; top: 0;
+    height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: var(--pad);
+    overflow: hidden;
+  }
+  .vis-stage {
+    position: relative; width: 100%; max-width: 540px;
+    aspect-ratio: 1 / 1.05;
+  }
+  .vis {
+    position: absolute; inset: 0;
+    opacity: 0; transform: scale(0.97);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    pointer-events: none;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .vis.active { opacity: 1; transform: scale(1); pointer-events: auto; }
+
+  /* texte à gauche */
+  .text-col { padding: 0; }
+  .pane {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: clamp(40px, 6vw, 80px) clamp(20px, 3vw, 60px) clamp(40px, 6vw, 80px) 0;
+    max-width: 56ch;
+  }
+  .pane .num {
+    font-family: var(--mono); font-size: 12px; color: var(--rouge);
+    text-transform: uppercase; letter-spacing: 0.14em;
+    margin-bottom: 24px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .pane .num::after {
+    content: ""; flex: 1; height: 1px; background: var(--ink); max-width: 60px;
+  }
+  .pane h2 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: clamp(36px, 5.5vw, 76px);
+    line-height: 1; letter-spacing: -0.022em;
+    margin: 0 0 28px;
+    font-variation-settings: "opsz" 144;
+  }
+  .pane h2 em {
+    font-style: italic; color: var(--vert); font-weight: 500;
+    font-variation-settings: "opsz" 144 "wght" 500;
+  }
+  .pane h2 .hl {
+    background: linear-gradient(transparent 60%, var(--highlight) 60%);
+    padding: 0 2px;
+  }
+  .pane p {
+    font-size: clamp(15px, 1.18vw, 18px); color: var(--ink-2);
+    line-height: 1.55; margin: 0 0 20px; max-width: 42ch;
+  }
+  .pane .src {
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+    margin-top: 28px; padding-top: 14px;
+    border-top: 1px solid var(--rule); max-width: 50ch;
+  }
+  .pane .src::before { content: "↓ "; color: var(--rouge); }
+
+  /* ─── VISUAL 1 : Grand chiffre ─── */
+  .v-numbers {
+    background: var(--ink);
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: var(--bg); padding: 30px;
+    position: relative;
+    overflow: hidden;
+  }
+  .v-numbers::before {
+    content: "BUDGET 2026";
+    position: absolute; top: 24px; left: 24px;
+    font-family: var(--mono); font-size: 11px;
+    color: var(--highlight); letter-spacing: 0.18em;
+  }
+  .v-numbers::after {
+    content: "VILLE DE PARIS";
+    position: absolute; bottom: 24px; right: 24px;
+    font-family: var(--mono); font-size: 11px;
+    color: rgba(247, 217, 106, 0.5); letter-spacing: 0.18em;
+  }
+  .v-numbers .big {
+    font-family: var(--serif); font-weight: 500;
+    font-size: clamp(96px, 18vw, 220px);
+    line-height: 1; letter-spacing: -0.045em;
+    font-variation-settings: "opsz" 144;
+  }
+  .v-numbers .big em {
+    font-style: italic; color: var(--highlight);
+    font-weight: 500;
+  }
+  .v-numbers .unit {
+    font-family: var(--sans); font-weight: 400; font-size: 18px;
+    color: rgba(255,255,255,0.5); margin-top: 12px;
+    letter-spacing: 0.04em;
+  }
+  .v-numbers .sub {
+    margin-top: 30px; font-family: var(--mono); font-size: 13px;
+    color: rgba(255,255,255,0.55); text-align: center; line-height: 1.6;
+  }
+  .v-numbers .sub b { color: var(--bg); font-weight: 500; }
+
+  /* ─── VISUAL 2 : Chaos sources ─── */
+  .v-chaos {
+    width: 100%; height: 100%;
+    background: var(--bg-2);
+    position: relative; overflow: hidden;
+  }
+  .chaos-card {
+    position: absolute;
+    background: var(--bg); border: 1px solid var(--rule);
+    padding: 12px 14px; box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    font-size: 11px; color: var(--ink-2); font-family: var(--mono);
+    line-height: 1.4; max-width: 200px;
+  }
+  .chaos-card b { color: var(--ink); font-weight: 600; display: block; margin-bottom: 4px; font-size: 12px; }
+  .chaos-card .url { color: var(--bleu); font-size: 9.5px; }
+  .vis.active .chaos-card { animation: float 6s ease-in-out infinite; }
+  .vis.active .chaos-card:nth-child(odd) { animation-direction: alternate; }
+  @keyframes float {
+    0%,100% { transform: var(--rot, none) translateY(0); }
+    50%     { transform: var(--rot, none) translateY(-4px); }
+  }
+  .chaos-card.c1 { top: 4%;  left: 6%;  --rot: rotate(-3.5deg); transform: var(--rot); }
+  .chaos-card.c2 { top: 7%;  left: 42%; --rot: rotate(2deg);   transform: var(--rot); }
+  .chaos-card.c3 { top: 4%;  left: 70%; --rot: rotate(4deg);   transform: var(--rot); }
+  .chaos-card.c4 { top: 32%; left: 12%; --rot: rotate(1.5deg); transform: var(--rot); }
+  .chaos-card.c5 { top: 38%; left: 48%; --rot: rotate(-2.5deg); transform: var(--rot); z-index: 2; }
+  .chaos-card.c6 { top: 64%; left: 2%;  --rot: rotate(-1deg);  transform: var(--rot); }
+  .chaos-card.c7 { top: 70%; left: 36%; --rot: rotate(3deg);   transform: var(--rot); }
+  .chaos-card.c8 { top: 64%; left: 70%; --rot: rotate(-3deg);  transform: var(--rot); }
+
+  /* ─── VISUAL 3 : Carte unifiée propre ─── */
+  .v-order {
+    width: 100%; height: 100%;
+    background: var(--bg-2);
+    display: flex; align-items: center; justify-content: center;
+    padding: 30px;
+  }
+  .order-card {
+    width: 100%; max-width: 380px;
+    background: var(--bg); border: 1px solid var(--ink);
+    padding: 26px;
+    box-shadow: 0 18px 48px rgba(0,0,0,0.10);
+    position: relative;
+  }
+  .order-card::before {
+    content: ""; position: absolute; left: -3px; top: -3px; right: -3px; bottom: -3px;
+    border: 1px solid var(--vert); pointer-events: none;
+  }
+  .order-card .top {
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--mono); font-size: 10px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 18px;
+    padding-bottom: 12px; border-bottom: 1px solid var(--rule);
+  }
+  .order-card .top .live { color: var(--vert); }
+  .order-card .top .live::before {
+    content: ""; display: inline-block; width: 6px; height: 6px;
+    background: var(--vert); border-radius: 50%; margin-right: 6px;
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .order-card h3 {
+    font-family: var(--serif); font-weight: 500; font-size: 28px;
+    margin: 0 0 6px; letter-spacing: -0.012em;
+    font-variation-settings: "opsz" 144;
+  }
+  .order-card .lab { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-bottom: 22px; }
+  .order-card .num {
+    font-family: var(--serif); font-size: 56px; font-weight: 500;
+    letter-spacing: -0.025em; line-height: 1;
+    font-variation-settings: "opsz" 144;
+  }
+  .order-card .num em {
+    font-family: var(--sans); font-size: 0.32em; font-style: normal;
+    color: var(--muted); margin-left: 8px; font-weight: 400;
+  }
+  .order-card .src {
+    margin-top: 22px; padding-top: 12px; border-top: 1px solid var(--rule);
+    font-family: var(--mono); font-size: 10.5px;
+  }
+  .order-card .src a { color: var(--bleu); border-bottom: 1px dotted var(--bleu); }
+  .order-card .src::before { content: "↳ "; color: var(--rouge); }
+
+  /* ─── VISUAL 4 : Carte Paris ─── */
+  .v-map {
+    width: 100%; height: 100%;
+    background: var(--bg-2);
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px; position: relative;
+  }
+  .map-mock { position: relative; width: 100%; max-width: 500px; aspect-ratio: 1.2 / 1; }
+  .map-mock svg { width: 100%; height: 100%; display: block; }
+  .map-mock svg path {
+    fill: #f1ecdb; stroke: var(--ink-2); stroke-width: 0.5;
+    transition: fill 0.3s;
+  }
+  .map-mock svg path.hot { fill: var(--rouge); }
+  .vis.active .map-mock svg path.hot {
+    animation: glow 2s ease-in-out infinite;
+  }
+  @keyframes glow {
+    0%,100% { fill: var(--rouge); }
+    50%     { fill: #e83a55; }
+  }
+  .map-popup {
+    position: absolute; right: 10px; top: 24%;
+    background: var(--bg); border: 1px solid var(--ink);
+    padding: 16px 18px; max-width: 230px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.14);
+    font-size: 12px;
+  }
+  .map-popup .arr { font-family: var(--mono); font-size: 10px; color: var(--rouge); text-transform: uppercase; letter-spacing: 0.1em; }
+  .map-popup h4 {
+    font-family: var(--serif); font-size: 22px; margin: 6px 0 12px;
+    font-weight: 500; letter-spacing: -0.012em;
+    font-variation-settings: "opsz" 144;
+  }
+  .map-popup ul { list-style: none; padding: 0; margin: 0; font-family: var(--mono); font-size: 11px; color: var(--ink-2); }
+  .map-popup ul li { padding: 6px 0; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 8px; }
+  .map-popup ul li:first-child { border-top: 0; }
+  .map-popup ul li b { color: var(--ink); font-weight: 600; }
+  .map-cursor {
+    position: absolute; left: 47%; top: 64%;
+    width: 18px; height: 18px;
+    border: 2px solid var(--rouge); border-radius: 50%;
+    box-shadow: 0 0 0 6px rgba(200,16,46,0.18);
+    pointer-events: none;
+  }
+  .vis.active .map-cursor {
+    animation: cursor-pulse 1.4s ease-out infinite;
+  }
+  @keyframes cursor-pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(200,16,46,0.4); }
+    100% { box-shadow: 0 0 0 24px rgba(200,16,46,0); }
+  }
+
+  /* ─── VISUAL 5 : Recherche Cielis ─── */
+  .v-search {
+    width: 100%; height: 100%;
+    background: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+  }
+  .search-stage { width: 100%; max-width: 460px; }
+  .search-input-wrap {
+    background: var(--bg); padding: 18px 22px;
+    border: 1px solid var(--bg);
+    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 14px;
+    font-family: var(--mono); font-size: 14px;
+  }
+  .search-input-wrap::before { content: "⌕"; font-size: 22px; color: var(--vert); font-weight: 600; }
+  .search-input-wrap b { color: var(--ink); font-weight: 500; }
+  .vis.active .search-input-wrap b::after {
+    content: "|"; color: var(--rouge); animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  .search-result {
+    background: var(--bg); padding: 22px;
+    border: 1px solid var(--bg);
+  }
+  .search-result-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 14px;
+  }
+  .search-kicker {
+    font-family: var(--mono); font-size: 10px; color: var(--rouge);
+    text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .search-flag {
+    font-family: var(--mono); font-size: 10px; color: var(--vert);
+    border: 1px solid var(--vert); padding: 2px 6px;
+  }
+  .search-result h4 {
+    font-family: var(--serif); font-size: 36px; margin: 0 0 6px;
+    font-weight: 500; letter-spacing: -0.018em;
+    font-variation-settings: "opsz" 144;
+  }
+  .search-result .activity { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-bottom: 18px; }
+  .search-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; }
+  .stat { border-top: 1px solid var(--rule); padding-top: 8px; }
+  .stat-lab { font-family: var(--mono); font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .stat-val {
+    font-family: var(--serif); font-size: 28px; font-weight: 500;
+    letter-spacing: -0.015em; line-height: 1.05;
+    font-variation-settings: "opsz" 144;
+  }
+  .stat-val em { font-family: var(--sans); font-size: 0.55em; font-style: normal; color: var(--muted); margin-left: 4px; font-weight: 400; }
+  .search-source {
+    margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--rule);
+    font-family: var(--mono); font-size: 11px;
+  }
+  .search-source a { color: var(--bleu); border-bottom: 1px dotted; }
+
+  /* ─── VISUAL 6 : Surprises ─── */
+  .v-surprise {
+    width: 100%; height: 100%;
+    background: var(--bg-2);
+    display: flex; flex-direction: column;
+    padding: 0;
+  }
+  .sur-row {
+    flex: 1; display: grid; grid-template-columns: 1.1fr 1fr;
+    align-items: center; gap: 24px;
+    padding: 22px 28px;
+    border-bottom: 1px solid var(--rule);
+    background: var(--bg);
+    margin: 1px;
+  }
+  .sur-row:last-child { border-bottom: 0; }
+  .sur-row .text em {
+    font-family: var(--mono); font-size: 10px; color: var(--muted);
+    font-style: normal; text-transform: uppercase; letter-spacing: 0.1em;
+    display: block; margin-bottom: 6px;
+  }
+  .sur-row .text b {
+    font-family: var(--serif); font-size: clamp(18px, 1.6vw, 22px);
+    font-weight: 500; letter-spacing: -0.015em; display: block; line-height: 1.15;
+    font-variation-settings: "opsz" 144;
+  }
+  .sur-row .vis-mini { display: flex; align-items: center; }
+  .sur-row .vis-mini svg { width: 100%; height: 60px; }
+
+  /* ─── VISUAL 7 : Signature CSV ─── */
+  .v-sign {
+    width: 100%; height: 100%;
+    background: var(--bg-2);
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+  }
+  .sign-stack {
+    width: 100%; max-width: 460px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .sign-tile {
+    background: var(--bg); border: 1px solid var(--ink);
+    padding: 18px 22px;
+    cursor: pointer;
+    position: relative;
+  }
+  .sign-tile .lab {
+    font-family: var(--mono); font-size: 10px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;
+  }
+  .sign-tile .num {
+    font-family: var(--serif); font-size: 36px; font-weight: 500;
+    letter-spacing: -0.018em; line-height: 1;
+    font-variation-settings: "opsz" 144;
+  }
+  .sign-tile .num-u { font-size: 14px; color: var(--muted); margin-left: 6px; font-family: var(--sans); font-weight: 400; }
+  .sign-tile .click-hint {
+    position: absolute; right: 14px; top: 14px;
+    font-family: var(--mono); font-size: 10px; color: var(--rouge);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .sign-tile .click-hint::before {
+    content: ""; width: 8px; height: 8px; background: var(--rouge); border-radius: 50%;
+    animation: pulse 1.4s ease-in-out infinite;
+  }
+  .sign-arrow {
+    text-align: center; color: var(--rouge); font-family: var(--mono); font-size: 22px;
+    line-height: 1;
+  }
+  .sign-csv {
+    background: var(--ink); color: var(--bg);
+    padding: 18px 22px;
+    font-family: var(--mono); font-size: 11px; line-height: 1.7;
+  }
+  .sign-csv .head { color: var(--highlight); margin-bottom: 8px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .sign-csv .row { color: rgba(255,255,255,0.5); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sign-csv .row.hi {
+    background: var(--highlight); color: var(--ink);
+    padding: 3px 6px; margin: 4px -6px; display: block;
+    font-weight: 500;
+  }
+
+  /* ─── MOBILE : on désactive le sticky, on stack ─── */
+  @media (max-width: 860px) {
+    .story-inner { grid-template-columns: 1fr; }
+    .sticky-col {
+      position: relative; height: auto; min-height: 60vh;
+      padding: 30px var(--pad);
+      border-top: 1px solid var(--rule);
+    }
+    .vis-stage { aspect-ratio: 1 / 1; }
+    .vis { position: relative; opacity: 1; transform: none; }
+    /* sur mobile : seul le visuel correspondant à la pane affichée est rendu */
+    .text-col { display: contents; }
+    .pane { min-height: auto; padding: 60px var(--pad) 30px; max-width: none; }
+    .pane h2 { font-size: clamp(32px, 8vw, 48px); }
+    /* alterne ordre : pane, vis, pane, vis... */
+    .mobile-vis { display: block; }
+  }
+  .mobile-vis { display: none; }
+
+  /* ─── FIN — CTA ─── */
+  .end {
+    padding: clamp(80px, 10vw, 160px) var(--pad);
+    text-align: center;
+    background: var(--ink); color: var(--bg);
+    border-top: 1px solid var(--ink);
+  }
+  .end h2 {
+    font-family: var(--serif); font-size: clamp(42px, 6vw, 88px);
+    font-weight: 500; letter-spacing: -0.025em;
+    margin: 0 0 24px; line-height: 1;
+    font-variation-settings: "opsz" 144;
+  }
+  .end h2 em { font-style: italic; color: var(--highlight); font-weight: 500; }
+  .end p { color: rgba(255,255,255,0.6); margin: 0 auto 32px; max-width: 50ch; font-size: 16px; }
+  .end .btn { background: var(--highlight); color: var(--ink); border-color: var(--highlight); font-weight: 600; padding: 16px 30px; font-size: 15px; }
+  .end .btn:hover { background: var(--bg); border-color: var(--bg); }
+
+  .resume {
+    background: var(--bg-2); padding: 50px var(--pad); text-align: center;
+  }
+  .resume p { font-family: var(--mono); font-size: 12px; color: var(--muted); margin: 0; }
+</style>
+</head>
+<body>
+
+<div class="banner">⚐ <b>Mockup landing v3</b> — vrai scrollytelling sticky · scrollez lentement, le visuel à droite change selon le panneau de gauche · Fraunces typo signature</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand"><span class="nav-mark">N</span> France Open Data</div>
+    <nav class="nav-links">
+      <a href="#">Le budget</a><a href="#">Investissements</a><a href="#">Subventions</a><a href="#">Marchés publics</a><a href="#">Logement</a><a href="#">Bilan</a><a href="#">Analyses</a>
+    </nav>
+    <div class="nav-spacer"></div>
+    <div class="nav-meta"><span>Paris ▾</span><span>FR · EN</span></div>
+  </div>
+</header>
+
+<!-- HERO conservé -->
+<section class="hero">
+  <h1>Où va l'<em>argent public</em> à <span class="scope">Paris</span> ?</h1>
+  <p class="lede">11,72 milliards d'euros, 23 000 marchés, 85 000 subventions. Tout est ici, ligne par ligne, sourcé aux comptes officiels.</p>
+  <div class="cta-row">
+    <a class="btn" href="#end">Ouvrir les comptes 2026 →</a>
+    <a class="btn btn-ghost" href="#story">ou découvrir le site ↓</a>
+  </div>
+  <div class="skip"><span>Vous connaissez déjà ?</span><a href="#end">Passer l'intro →</a></div>
+  <div class="scroll-hint">Scrollez pour découvrir</div>
+</section>
+
+<!-- ─── SCROLLYTELLING ─── -->
+
+<!-- progression latérale (signature visuelle) -->
+<div class="progress" id="progress">
+  <div class="dot"><span class="label">01 · Le décor</span></div>
+  <div class="dot"><span class="label">02 · Le problème</span></div>
+  <div class="dot"><span class="label">03 · La promesse</span></div>
+  <div class="dot"><span class="label">04 · Votre quartier</span></div>
+  <div class="dot"><span class="label">05 · Qui reçoit</span></div>
+  <div class="dot"><span class="label">06 · Ce qui surprend</span></div>
+  <div class="dot"><span class="label">07 · La source</span></div>
+</div>
+
+<section class="story" id="story">
+  <div class="story-inner">
+
+    <!-- COL TEXTE GAUCHE -->
+    <div class="text-col">
+
+      <article class="pane" data-pane="1">
+        <div class="num">01 · Le décor</div>
+        <h2>Onze <em>milliards d'euros</em>. Chaque année.</h2>
+        <p>C'est le budget de la Ville de Paris en 2026. Salaires, subventions, travaux, dette, écoles, espaces verts, transports — tout y passe.</p>
+        <p>L'un des plus gros budgets municipaux d'Europe. Et il est entièrement public.</p>
+        <div class="src">Compte administratif 2026 · paris.fr</div>
+      </article>
+
+      <article class="pane" data-pane="2">
+        <div class="num">02 · Le problème</div>
+        <h2>Public, oui. Mais <em>éclaté partout</em>.</h2>
+        <p>Les subventions sur Open Data Paris. Les marchés sur DECP. Le bilan sur les comptes administratifs M57. La dette à la Cour des comptes. Le patrimoine à l'APUR. La population à l'INSEE.</p>
+        <p>Plus de 70 jeux de données, 6 plateformes. Personne ne lit tout en entier.</p>
+        <div class="src">Inventaire · 70+ sources publiques recoupées</div>
+      </article>
+
+      <article class="pane" data-pane="3">
+        <div class="num">03 · La promesse</div>
+        <h2>Une page par sujet. <em>Une source par chiffre</em>.</h2>
+        <p>On a tout assemblé, recoupé, vérifié. Une seule façon de lire : celle qui mène à la ligne CSV qui a produit le chiffre.</p>
+        <p>Pas de "voici nos calculs". Pas de boîte noire. Pipeline open source.</p>
+        <div class="src">github.com/Nuttux/open-public-data · MIT · pipeline reproductible</div>
+      </article>
+
+      <article class="pane" data-pane="4">
+        <div class="num">04 · Capacité 1</div>
+        <h2><span class="hl">Quels travaux</span> dans votre arrondissement ?</h2>
+        <p>Cliquez sur la carte. Vous voyez les chantiers en cours, les montants engagés, les entreprises qui livrent. Et les arrondissements voisins pour comparer.</p>
+        <div class="src">~1 000 projets d'investissement géolocalisés · 2019-2026</div>
+      </article>
+
+      <article class="pane" data-pane="5">
+        <div class="num">05 · Capacité 2</div>
+        <h2>Qui a <em>reçu combien</em>. Pour quoi.</h2>
+        <p>Tapez le nom d'une asso, d'un fournisseur, d'un bailleur. Vous tombez sur sa fiche : montants par année, contrats, catégories.</p>
+        <p>Exemple ↓ Cielis. Vous ne connaissez pas ? La Ville lui a versé 569 M€ sur 14 ans, dont 412 M€ rien qu'en 2021.</p>
+        <div class="src">~9 000 bénéficiaires · ~500 fournisseurs · DECP + Open Data Paris</div>
+      </article>
+
+      <article class="pane" data-pane="6">
+        <div class="num">06 · Capacité 3</div>
+        <h2>Et ce qui <em>surprend</em> dans la donnée brute.</h2>
+        <p>Concentrations, asymétries territoriales, dette qui n'apparaît pas dans la dette officielle. Pas d'opinion : juste les chiffres recoupés que personne ne lit en entier.</p>
+        <div class="src">Constats issus de la lecture systématique des comptes</div>
+      </article>
+
+      <article class="pane" data-pane="7">
+        <div class="num">07 · La signature</div>
+        <h2>Chaque chiffre, <span class="hl">cliquable</span>. Jusqu'à la ligne.</h2>
+        <p>Vous voyez 417 M€ pour le CASVP. Un clic. La ligne du fichier <code style="font-family:var(--mono);background:var(--bg-2);padding:1px 4px;">subventions_2024.csv</code> s'ouvre, surlignée. Le chiffre est vrai parce que vous l'avez vérifié.</p>
+        <div class="src">Ouvrir n'importe quel chiffre → CSV brut publié par la Ville</div>
+      </article>
+
+    </div>
+
+    <!-- COL VISUELS DROITE — sticky -->
+    <div class="sticky-col">
+      <div class="vis-stage">
+
+        <div class="vis vis-1 active">
+          <div class="v-numbers">
+            <div class="big">11<em>,</em>72</div>
+            <div class="unit">milliards d'euros</div>
+            <div class="sub">Budget total · Ville de Paris · 2026<br>≈ <b>458 € / habitant / mois</b></div>
+          </div>
+        </div>
+
+        <div class="vis vis-2">
+          <div class="v-chaos">
+            <div class="chaos-card c1"><b>Comptes administratifs</b><span class="url">paris.fr/budget</span></div>
+            <div class="chaos-card c2"><b>Subventions</b><span class="url">opendata.paris.fr</span></div>
+            <div class="chaos-card c3"><b>Marchés DECP</b><span class="url">data.gouv.fr</span></div>
+            <div class="chaos-card c4"><b>Logement RPLS</b><span class="url">drihl.idf</span></div>
+            <div class="chaos-card c5"><b>Population INSEE</b><span class="url">insee.fr</span></div>
+            <div class="chaos-card c6"><b>Hors-bilan</b><span class="url">cour-comptes.fr</span></div>
+            <div class="chaos-card c7"><b>Patrimoine</b><span class="url">apur.org</span></div>
+            <div class="chaos-card c8"><b>SIRENE</b><span class="url">data.gouv.fr</span></div>
+          </div>
+        </div>
+
+        <div class="vis vis-3">
+          <div class="v-order">
+            <div class="order-card">
+              <div class="top"><span>Subventions · 2024</span><span class="live">Source live</span></div>
+              <h3>CASVP</h3>
+              <div class="lab">Centre d'action sociale de la Ville de Paris</div>
+              <div class="num">417<em>M€ versés en 2024</em></div>
+              <div class="src"><a href="#">opendata.paris.fr/subventions_2024.csv · ligne 1</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="vis vis-4">
+          <div class="v-map">
+            <div class="map-mock">
+              <svg viewBox="0 0 200 140">
+                <path d="M98.3,75.4L93.1,70.5L80.9,65.3L84.2,58.7L84.6,58.1L95.0,55.4L112.9,61.2L115.2,69.3L115.7,78.1L113.5,83.5L112.8,84.2L108.1,80.0L101.1,77.0Z"/>
+                <path d="M112.8,84.2L114.0,85.5L112.9,87.0L110.6,91.2L103.5,94.6L92.5,91.4L98.4,75.4L111.4,82.5Z"/>
+                <path d="M98.3,75.4L92.5,91.4L79.7,84.9L77.8,83.4L85.5,78.1L86.4,77.8L90.0,70.7L89.4,70.4L89.7,69.5L93.1,70.5L97.0,74.5Z"/>
+                <path d="M66.3,78.6L58.2,70.7L64.1,65.4L79.4,64.6L89.7,69.5L89.4,70.4L90.0,70.7L87.1,77.0L86.4,77.8L77.4,83.6L75.6,84.3L73.2,82.1L71.0,83.0Z"/>
+                <path d="M84.6,58.1L84.1,58.2L80.9,65.3L79.2,64.5L66.8,64.9L66.7,63.7L65.6,62.8L63.8,56.6L62.2,53.0L64.7,48.5L72.3,46.0L85.5,42.6L85.1,51.4Z"/>
+                <path d="M94.8,44.3L101.9,42.4L102.2,45.8L100.7,53.2L100.7,56.8L94.7,55.5L84.6,58.1L85.4,53.0L86.5,42.1L87.4,41.5Z"/>
+                <path d="M113.0,41.7L117.1,43.9L117.2,48.9L122.0,55.4L111.3,59.9L100.7,56.8L101.0,50.9L102.1,45.3L102.1,42.3Z"/>
+                <path d="M136.1,75.2L137.8,78.5L137.9,81.9L122.6,78.9L117.1,76.2L116.3,76.2L114.5,65.2L112.5,60.4L122.2,55.5L129.8,65.9L131.5,70.6L133.4,71.4L135.3,73.6Z"/>
+                <path d="M149.1,98.1L152.7,97.1L155.2,95.8L153.6,87.0L155.9,87.2L157.2,89.1L163.5,89.9L166.1,89.9L166.7,85.9L168.6,85.9L168.6,85.5L168.8,85.6L168.8,84.4L173.0,84.8L173.0,85.5L187.7,91.1L190.0,95.2L188.5,98.5L186.5,101.4L186.8,104.8L187.4,105.1L186.6,107.7L184.9,114.3L181.7,116.5L177.9,116.3L175.3,115.5L169.4,115.4L167.8,115.0L166.3,115.2L165.2,113.7L163.9,114.0L164.0,113.0L162.7,111.6L163.0,111.3L162.8,111.1L162.5,111.4L161.1,110.0L161.4,109.6L144.9,106.4L140.7,102.5L131.7,106.8L112.8,84.2L114.4,82.7L116.4,76.3L124.3,79.4L127.4,79.7L150.6,83.6L147.2,97.8Z" class="hot"/>
+                <path d="M120.5,93.2L131.6,106.9L125.4,110.5L112.1,117.6L106.6,117.7L104.0,114.8L99.8,117.8L98.2,117.5L98.1,118.0L97.8,117.9L98.3,113.7L96.2,110.2L96.0,108.1L96.4,92.8L103.6,94.5L110.9,91.0L113.4,86.1L114.0,85.5Z"/>
+                <path d="M90.4,90.3L96.4,92.8L96.0,109.1L96.9,111.9L98.3,113.9L97.8,117.9L95.8,117.3L88.9,116.4L89.3,115.2L66.9,107.0L80.2,90.4L81.3,91.2L81.6,90.8L81.5,89.8L83.7,87.0Z"/>
+                <path d="M65.1,77.4L71.0,83.0L73.3,82.1L75.7,84.4L77.8,83.4L83.7,87.0L81.4,89.9L81.6,90.8L81.1,91.1L80.2,90.4L66.3,107.4L58.9,104.6L50.3,99.4L45.7,104.4L41.9,104.4L41.9,100.2L43.5,98.6L41.7,96.9L38.5,97.8L51.6,78.7L58.2,70.7Z"/>
+                <path d="M46.8,48.3L50.8,48.0L62.1,53.5L64.8,59.2L65.8,63.1L66.7,63.7L66.8,64.9L60.9,67.5L38.4,97.7L32.8,96.8L30.2,91.9L29.9,87.8L30.9,84.8L22.9,81.7L19.8,79.3L10.1,76.0L11.2,69.1L14.8,59.9L16.2,58.0L22.6,54.9L25.8,50.6L33.0,52.9L35.2,46.4L35.5,46.2Z"/>
+                <path d="M62.1,53.2L51.0,47.7L51.8,43.1L55.1,39.2L80.6,23.4L87.7,23.3L84.4,38.2L85.1,42.8L71.9,46.1L64.3,48.6Z"/>
+                <path d="M113.8,40.3L112.8,41.6L99.8,42.8L94.6,44.2L87.2,41.4L85.7,42.5L84.5,37.6L88.0,23.1L117.0,22.7L117.4,28.3L118.2,29.4L116.9,30.9Z"/>
+                <path d="M131.1,22.9L132.3,23.3L135.8,26.6L137.5,31.4L139.0,42.3L142.3,45.1L145.8,46.3L146.8,48.3L140.7,51.0L135.5,51.8L131.2,51.8L130.3,52.4L128.9,52.7L127.5,53.6L122.0,55.3L117.1,48.7L115.1,41.9L113.0,41.7L114.8,38.3L117.3,30.2L118.2,29.3L117.2,28.0L117.5,22.2L127.9,22.0Z"/>
+                <path d="M148.2,51.5L149.2,58.8L149.2,66.5L150.9,81.2L150.6,83.6L138.2,82.0L137.7,78.3L134.8,72.6L133.1,71.3L131.2,70.3L129.6,65.3L126.3,60.5L122.0,55.3L131.9,51.6L138.4,51.4L140.8,50.9L146.8,48.3Z"/>
+              </svg>
+              <div class="map-cursor"></div>
+              <div class="map-popup">
+                <div class="arr">13ᵉ arrondissement</div>
+                <h4>142 M€ d'investissement</h4>
+                <ul>
+                  <li><span>Olympiades, rénovation</span><b>28 M€</b></li>
+                  <li><span>BNF, accès</span><b>17 M€</b></li>
+                  <li><span>P. Salpêtrière</span><b>9 M€</b></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="vis vis-5">
+          <div class="v-search">
+            <div class="search-stage">
+              <div class="search-input-wrap"><b>Cielis</b></div>
+              <div class="search-result">
+                <div class="search-result-head">
+                  <span class="search-kicker">Fournisseur · marchés publics</span>
+                  <span class="search-flag">SIREN actif</span>
+                </div>
+                <h4>Cielis</h4>
+                <div class="activity">Travaux d'éclairage public et signalisation lumineuse</div>
+                <div class="search-stats">
+                  <div class="stat"><div class="stat-lab">Cumul · 14 ans</div><div class="stat-val">569<em>M€</em></div></div>
+                  <div class="stat"><div class="stat-lab">Pic année · 2021</div><div class="stat-val">412<em>M€</em></div></div>
+                  <div class="stat"><div class="stat-lab">Contrats notifiés</div><div class="stat-val">23</div></div>
+                  <div class="stat"><div class="stat-lab">Catégorie CPV</div><div class="stat-val" style="font-size:14px;">Voirie<br>publique</div></div>
+                </div>
+                <div class="search-source"><a href="#">↳ source : DECP · data.gouv.fr</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="vis vis-6">
+          <div class="v-surprise">
+            <div class="sur-row">
+              <div class="text">
+                <em>Concentration · marchés publics</em>
+                <b>Top 15 fournisseurs = 4,2 Md€ en 14 ans.</b>
+              </div>
+              <div class="vis-mini">
+                <svg viewBox="0 0 220 60" preserveAspectRatio="none">
+                  <rect x="0"   y="14" width="14" height="46" fill="#161512"/>
+                  <rect x="16"  y="18" width="14" height="42" fill="#161512"/>
+                  <rect x="32"  y="22" width="14" height="38" fill="#161512"/>
+                  <rect x="48"  y="28" width="14" height="32" fill="#161512"/>
+                  <rect x="64"  y="32" width="14" height="28" fill="#161512"/>
+                  <rect x="80"  y="36" width="14" height="24" fill="#161512"/>
+                  <rect x="96"  y="40" width="14" height="20" fill="#161512"/>
+                  <rect x="112" y="42" width="14" height="18" fill="#161512"/>
+                  <rect x="128" y="44" width="14" height="16" fill="#161512"/>
+                  <rect x="144" y="46" width="14" height="14" fill="#161512"/>
+                  <rect x="160" y="48" width="14" height="12" fill="#161512"/>
+                  <rect x="176" y="50" width="14" height="10" fill="#161512"/>
+                  <rect x="192" y="52" width="14" height="8"  fill="#161512"/>
+                </svg>
+              </div>
+            </div>
+            <div class="sur-row">
+              <div class="text">
+                <em>Asymétrie · logement social</em>
+                <b>19ᵉ : 40 % SRU. 7ᵉ : 4 %.</b>
+              </div>
+              <div class="vis-mini">
+                <svg viewBox="0 0 220 60" preserveAspectRatio="none">
+                  <text x="0"   y="16" font-family="JetBrains Mono" font-size="9" fill="#6c6862">19ᵉ</text>
+                  <rect x="22"  y="6"  width="160" height="16" fill="#161512"/>
+                  <text x="186" y="17" font-family="JetBrains Mono" font-size="9" fill="#161512">40 %</text>
+                  <text x="0"   y="46" font-family="JetBrains Mono" font-size="9" fill="#6c6862">7ᵉ</text>
+                  <rect x="22"  y="36" width="16" height="16" fill="#c8102e"/>
+                  <text x="42"  y="47" font-family="JetBrains Mono" font-size="9" fill="#c8102e">4 %</text>
+                </svg>
+              </div>
+            </div>
+            <div class="sur-row">
+              <div class="text">
+                <em>Hors-bilan · garanties</em>
+                <b>12 Md€ qui n'apparaissent pas dans la dette officielle.</b>
+              </div>
+              <div class="vis-mini">
+                <svg viewBox="0 0 220 60" preserveAspectRatio="none">
+                  <text x="2"   y="14" font-family="JetBrains Mono" font-size="9" fill="#161512">Dette · 18 Md€</text>
+                  <rect x="0"   y="20" width="120" height="22" fill="#161512"/>
+                  <text x="122" y="14" font-family="JetBrains Mono" font-size="9" fill="#c8102e">Hors-bilan · 12 Md€</text>
+                  <rect x="120" y="20" width="80"  height="22" fill="#c8102e" opacity="0.9"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="vis vis-7">
+          <div class="v-sign">
+            <div class="sign-stack">
+              <div class="sign-tile">
+                <span class="click-hint">cliquer</span>
+                <div class="lab">Tuile · subventions</div>
+                <div><span class="num">417</span><span class="num-u">M€ · CASVP · 2024</span></div>
+              </div>
+              <div class="sign-arrow">↓</div>
+              <div class="sign-csv">
+                <div class="head">subventions_2024.csv · ligne 1</div>
+                <div class="row">numero;beneficiaire;objet;montant;date</div>
+                <div class="row hi">2024-001;CASVP;Action sociale ville;417000000;2024-12-31</div>
+                <div class="row">2024-002;PARIS MUSÉES;Subvention fonctionnement;…</div>
+                <div class="row">2024-003;PARIS HABITAT;Aide pierre logement;…</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── FIN — CTA ─── -->
+<section class="end" id="end">
+  <h2>Commencez par <em>chez vous</em>.</h2>
+  <p>Cliquez sur votre arrondissement pour voir où va l'argent dans votre quartier. Ou naviguez par sujet — budget, marchés, subventions, logement, dette.</p>
+  <a class="btn" href="#">Ouvrir la carte de Paris →</a>
+</section>
+
+<section class="resume">
+  <p>↓ La landing classique reprend ici · KPIs · tuiles · analyses · byline · footer</p>
+</section>
+
+<script>
+// ───────── scrollytelling : sync visuel selon panneau visible ─────────
+const panes = document.querySelectorAll('.pane');
+const visuals = document.querySelectorAll('.vis');
+const dots = document.querySelectorAll('#progress .dot');
+const progress = document.getElementById('progress');
+
+const setActive = (idx) => {
+  visuals.forEach((v, i) => v.classList.toggle('active', i === idx - 1));
+  dots.forEach((d, i) => d.classList.toggle('active', i === idx - 1));
+};
+
+const io = new IntersectionObserver((entries) => {
+  // prendre l'intersection la plus visible
+  let best = null;
+  entries.forEach(e => {
+    if (e.isIntersecting && (!best || e.intersectionRatio > best.intersectionRatio)) best = e;
+  });
+  if (best) {
+    const idx = parseInt(best.target.dataset.pane, 10);
+    setActive(idx);
+  }
+}, { rootMargin: '-40% 0px -40% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] });
+
+panes.forEach(p => io.observe(p));
+
+// montrer la progression latérale uniquement quand le scrollytelling est en vue
+const storyEl = document.getElementById('story');
+const progIo = new IntersectionObserver((entries) => {
+  entries.forEach(e => progress.classList.toggle('show', e.isIntersecting));
+}, { threshold: 0.05 });
+progIo.observe(storyEl);
+</script>
+
+</body>
+</html>
