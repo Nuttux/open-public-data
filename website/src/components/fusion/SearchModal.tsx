@@ -97,7 +97,12 @@ export default function SearchModal() {
   const goTo = useCallback(
     (hit: Hit) => {
       track("search_modal_select", { slug: hit.slug, insee: hit.insee });
-      router.push(`/ville/${hit.slug}`);
+      // Paris rich pages live at the root, not under /ville/paris (which would
+      // fall through to the slim generic fiche). Marseille has /ville/marseille
+      // wired to redirect to its rich PoC pages, so /ville/<slug> works for it
+      // and for every other commune (slim fiche).
+      const target = hit.slug === "paris" ? "/" : `/ville/${hit.slug}`;
+      router.push(target);
       setOpen(false);
     },
     [router, track],
@@ -120,7 +125,7 @@ export default function SearchModal() {
 
   return (
     <div
-      className="fx-search-overlay"
+      className="theme-fusion fx-search-overlay"
       role="dialog"
       aria-modal="true"
       aria-label={t("fx.search.aria_dialog")}
