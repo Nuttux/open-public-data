@@ -3493,15 +3493,12 @@ const en: Record<string, string> = {
   'db.hero.meta_inline.month': '/month',
   'db.hero.meta_inline.year': '€{annual}/yr',
   'db.hero.deck': 'Social contributions and CSG on your gross → Social Security. Income tax on your taxable income → State. Estimated VAT on consumption → split 45 % State / 31 % Social Security / 24 % Local (PLF allocations). Property tax if homeowner → Local. Detailed method below.',
-  // ─ Onboarding intro (above the fold) — clarify the promise ─
+  // ─ Onboarding intro (above the fold) — editorial press-style ─
   'db.hero.onboarding.kicker': 'DAILY BREAD · FRANCE OPEN DATA',
-  'db.hero.onboarding.title': 'Your taxes. Public spending. The gap.',
-  'db.hero.onboarding.deck': 'You pay. France spends. We show you {b}all three{/b}:',
-  'db.hero.onboarding.step1': '1. How much you actually pay each month (contributions, CSG, income tax, estimated VAT).',
-  'db.hero.onboarding.step2': '2. How much France spends per inhabitant (Social Security, State, local authorities).',
-  'db.hero.onboarding.step3': '3. Who funds the difference (employer contributions, businesses, deficit).',
-  'db.hero.onboarding.profile_hint': 'Customize your profile below — underlined values are {b}editable{/b}.',
-  'db.hero.onboarding.cta': '↓ Start by filling in your profile',
+  'db.hero.onboarding.title': 'How much public services cost, and who pays for what.',
+  'db.hero.onboarding.standfirst': 'France spends about €2,200 per inhabitant each month on public services. This spending is funded by individuals through direct taxes, by employers through social contributions, by businesses through corporate income tax, and by public borrowing.',
+  'db.hero.onboarding.body': 'This tool quantifies three things from a simple profile: a household\'s personal contribution (social contributions, CSG, income tax, estimated VAT), the average public spending per inhabitant broken down across Social Security, central State and local authorities, and who funds the gap between the two.',
+  'db.hero.onboarding.hint': 'The underlined values in the sentence below are editable — income, household, town. The calculation updates live.',
   // ─ Editable NYT-style hero (fold redesign) ─
   'db.hero.editable.prefix_salaire': 'With a net income of',
   'db.hero.editable.set_salaire': 'set your salary',

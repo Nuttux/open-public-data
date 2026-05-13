@@ -3498,15 +3498,16 @@ const fr: Record<string, string> = {
   'db.hero.meta_inline.month': '/mois',
   'db.hero.meta_inline.year': '{annual} €/an',
   'db.hero.deck': 'Cotisations et CSG sur ton brut → Sécu. IR sur ton net imposable → État. TVA estimée sur ta consommation → répartie 45 % État / 31 % Sécu / 24 % Local (affectations PLF). Taxe foncière si propriétaire → Local. Méthode détaillée plus bas.',
-  // ─ Onboarding intro (au-dessus du fold) — clarifier la promesse ─
+  // ─ Onboarding intro (au-dessus du fold) — ton éditorial sobre ─
+  // Style press / civic data — pas startup. Pas de "On te montre", pas de
+  // bullets numérotés, pas de CTA chip. Juste un kicker, un titre clair,
+  // un standfirst et un paragraphe factuel. Les valeurs soulignées dans
+  // la phrase éditable ci-dessous parlent d'elles-mêmes.
   'db.hero.onboarding.kicker': 'DAILY BREAD · FRANCE OPEN DATA',
-  'db.hero.onboarding.title': 'Tes impôts. La dépense publique. Le gap.',
-  'db.hero.onboarding.deck': 'Tu paies. La France dépense. On te montre {b}les trois{/b} :',
-  'db.hero.onboarding.step1': '1. Combien tu paies vraiment chaque mois (cotisations, CSG, IR, TVA estimée).',
-  'db.hero.onboarding.step2': '2. Combien la France dépense par habitant (Sécu, État, collectivités).',
-  'db.hero.onboarding.step3': '3. Qui finance la différence (cotisations employeurs, entreprises, déficit).',
-  'db.hero.onboarding.profile_hint': 'Personnalise ton profil ci-dessous — les valeurs soulignées sont {b}modifiables{/b}.',
-  'db.hero.onboarding.cta': '↓ Commence en remplissant ton profil',
+  'db.hero.onboarding.title': 'Combien coûte le service public, et qui paie quoi.',
+  'db.hero.onboarding.standfirst': 'La France dépense environ 2 200 € par habitant chaque mois en services publics. Cette dépense est financée par les particuliers via leurs impôts directs, par les employeurs via les cotisations sociales, par les entreprises via l\'impôt sur les sociétés, et par l\'emprunt public.',
+  'db.hero.onboarding.body': 'Cet outil chiffre trois éléments à partir d\'un profil simple : la contribution personnelle d\'un foyer (cotisations, CSG, impôt sur le revenu, TVA estimée), la dépense publique moyenne par habitant ventilée entre Sécurité sociale, État et collectivités locales, et qui finance l\'écart entre les deux.',
+  'db.hero.onboarding.hint': 'Les valeurs soulignées dans la phrase ci-dessous sont modifiables — revenu, foyer, commune. Le calcul s\'actualise en direct.',
   // ─ Hero éditable NYT-style (fold redesign) ─
   'db.hero.editable.prefix_salaire': 'Sur ton revenu net de',
   'db.hero.editable.set_salaire': 'définis ton salaire',
