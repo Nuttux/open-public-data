@@ -99,6 +99,11 @@ class Auditor:
         self.cat_d: dict[str, dict] = {}
         for entry in whitelist.get("ingest_writes_to_data", []):
             self.cat_d[entry["script"]] = entry
+        # Scripts whose AST is too dynamic to analyse statically, but that
+        # a human has manually confirmed don't write to public/data/.
+        self.ast_reviewed_clean: dict[str, dict] = {}
+        for entry in whitelist.get("e5_ast_reviewed_clean", []):
+            self.ast_reviewed_clean[entry["script"]] = entry
 
     def fail(self, **kwargs) -> None:
         self.violations.append(kwargs)
@@ -223,8 +228,11 @@ class Auditor:
                 w = self._writes_to_public_data(text)
                 if not (w["writes_metric"] or w["writes_enrichment"]):
                     if w.get("suspicious"):
-                        self.warn(rule="E5-suspicious", file=rel,
-                                  detail="indirection inanalysable par AST — review manuelle requise")
+                        # Skip warning if a human has reviewed the script and
+                        # confirmed it doesn't actually write to public/data/.
+                        if rel not in self.ast_reviewed_clean:
+                            self.warn(rule="E5-suspicious", file=rel,
+                                      detail="indirection inanalysable par AST — review manuelle requise")
                     continue
 
                 if rel in self.wip_scripts:
@@ -274,8 +282,18 @@ class Auditor:
             print("✅ layering audit clean")
         elif not self.violations:
             print("\n✅ layering audit clean (warnings only)")
-        if self.strict and self.warnings:
-            return 1
+        # In strict mode, treat warnings as errors EXCEPT for documented
+        # bypasses (E5-cat-D / E5-cat-E) — those are already acknowledged
+        # via the whitelist with a TODO. Letting them block CI defeats the
+        # whitelist's purpose. The TODO column still surfaces them in the
+        # output for human review.
+        if self.strict:
+            non_documented = [
+                w for w in self.warnings
+                if w["rule"] not in ("E5-cat-D", "E5-cat-E")
+            ]
+            if non_documented:
+                return 1
         return 1 if self.violations else 0
 
 
