@@ -2661,18 +2661,24 @@ function BarList({
                 )}
               </span>
               <span className="db-p-zoom-bar-val tnum">
-                {fmtEur(item.monthly, locale, 0)} €
-                <span className="pct">
-                  {(item.share * 100).toLocaleString(
-                    locale === "en" ? "en-GB" : "fr-FR",
-                    { maximumFractionDigits: 0 },
-                  )}{" "}
-                  %
+                <span className="db-p-zoom-bar-val-perso">
+                  {fmtEur(item.monthly, locale, 0)}{" "}
+                  <span className="db-p-zoom-bar-val-unit">
+                    €/{locale === "en" ? "mo" : "mois"}
+                  </span>
                 </span>
                 {item.nationalAnnual != null && item.nationalAnnual > 0 && (
                   <span className="db-p-zoom-bar-natl tnum">
                     {fmtBnEur(item.nationalAnnual, locale)}
-                    {locale === "en" ? "/yr" : "/an"}
+                    {locale === "en" ? "/yr" : "/an"}{" "}
+                    <span className="db-p-zoom-bar-natl-pct">
+                      ·{" "}
+                      {(item.share * 100).toLocaleString(
+                        locale === "en" ? "en-GB" : "fr-FR",
+                        { maximumFractionDigits: 0 },
+                      )}{" "}
+                      %
+                    </span>
                   </span>
                 )}
               </span>

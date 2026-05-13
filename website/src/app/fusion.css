@@ -11836,33 +11836,44 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   color: var(--p-ink);
 }
 .theme-db-scrolly .db-p-zoom-bar-val {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   font-family: var(--pf-disp);
   font-weight: 700;
   font-size: 26px;
   letter-spacing: -0.025em;
   color: var(--p-ink);
   white-space: nowrap;
-  line-height: 1;
+  line-height: 1.05;
 }
-.theme-db-scrolly .db-p-zoom-bar-val .pct {
-  font-family: var(--pf-mono);
-  font-size: 11px;
+.theme-db-scrolly .db-p-zoom-bar-val-perso {
+  font-family: var(--pf-disp);
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: -0.025em;
+  color: var(--p-ink);
+}
+.theme-db-scrolly .db-p-zoom-bar-val-unit {
+  font-family: var(--pf-disp);
   font-weight: 500;
-  color: var(--p-muted-2);
-  margin-left: 8px;
-  letter-spacing: .04em;
+  font-size: 13px;
+  color: var(--p-muted);
+  margin-left: 2px;
 }
-/* Montant annuel national à côté de la part — fait apparaître l'échelle
-   absolue (Md€/an) en regard du chiffre personnel (€/mois). */
+/* Sous-ligne : montant national + part en mono petit, en contexte de la
+   primaire €/mois. La barre visualise déjà la part — on garde le % ici
+   pour avoir la valeur exacte en regard. */
 .theme-db-scrolly .db-p-zoom-bar-natl {
-  display: block;
   font-family: var(--pf-mono);
   font-size: 11px;
   font-weight: 500;
   color: var(--p-muted-2);
   letter-spacing: .04em;
-  margin-top: 2px;
-  text-align: right;
+  margin-top: 4px;
+}
+.theme-db-scrolly .db-p-zoom-bar-natl-pct {
+  color: var(--p-muted-2);
 }
 .theme-db-scrolly .db-p-zoom-bar-track {
   height: 32px;
