@@ -3554,6 +3554,7 @@ const en: Record<string, string> = {
   'db.secu.deck1': 'Four mutualised branches: {b}health{/b}, {b}pensions{/b}, {b}family{/b}, {b}unemployment{/b}.',
   'db.secu.deck2': 'Most of it funds healthcare and pensions.',
   'db.secu.source': 'Source: PLFSS 2025',
+  'db.secu.retraite_sub': 'Covers private-sector employees + complementary schemes (AGIRC-ARRCO) + local/hospital civil servants (CNRACL) + self-employed (CIPAV, MSA…). State civil servants\' pensions are paid directly by the State via CAS Pensions — see State panel below.',
   'db.secu.foot_cue': 'Zoom on the State',
   // ─ Zoom État ─
   'db.etat.num': 'Central government — €{monthly}/month',

@@ -409,6 +409,35 @@ export type DailyBreadConstants = {
     }>;
     notes_fr: string;
   };
+  /**
+   * Overlay S1311 hors PLF : CAS Pensions répartis par ministère, opérateurs
+   * ODAC ressources propres, PSR-UE, budgets annexes. Permet à
+   * computeStateBuckets d'atteindre 100 % de la dépense État perçue par
+   * l'utilisateur (vs 66 % avec les seules missions PLF).
+   */
+  state_overlay?: {
+    year: number;
+    description_fr: string;
+    description_en: string;
+    source: string;
+    source_url: string;
+    items: Array<{
+      key: string;
+      parent_bucket: string;
+      label_fr: string;
+      label_en: string;
+      annual_eur: number;
+      type:
+        | "cas_pensions"
+        | "odac_ressources_propres"
+        | "budget_annexe"
+        | "psr_ue"
+        | "residuel";
+      source: string;
+      source_url: string;
+      notes?: string;
+    }>;
+  };
   local_avg_dep_eur_hab: {
     value_eur_hab: number | null;
     year?: number;
