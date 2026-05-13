@@ -3498,16 +3498,13 @@ const fr: Record<string, string> = {
   'db.hero.meta_inline.month': '/mois',
   'db.hero.meta_inline.year': '{annual} €/an',
   'db.hero.deck': 'Cotisations et CSG sur ton brut → Sécu. IR sur ton net imposable → État. TVA estimée sur ta consommation → répartie 45 % État / 31 % Sécu / 24 % Local (affectations PLF). Taxe foncière si propriétaire → Local. Méthode détaillée plus bas.',
-  // ─ Onboarding intro (au-dessus du fold) — ton éditorial sobre ─
-  // Style press / civic data — pas startup. Pas de "On te montre", pas de
-  // bullets numérotés, pas de CTA chip. Juste un kicker, un titre clair,
-  // un standfirst et un paragraphe factuel. Les valeurs soulignées dans
-  // la phrase éditable ci-dessous parlent d'elles-mêmes.
+  // ─ Onboarding intro (au-dessus du fold) — compacte, éditoriale.
+  //   Doit tenir en ~150px pour laisser place au hero §01 + ajustements
+  //   avancés (j'ai d'autres revenus) au-dessus du fold. */
   'db.hero.onboarding.kicker': 'DAILY BREAD · FRANCE OPEN DATA',
   'db.hero.onboarding.title': 'Combien coûte le service public, et qui paie quoi.',
-  'db.hero.onboarding.standfirst': 'La France dépense environ 2 200 € par habitant chaque mois en services publics. Cette dépense est financée par les particuliers via leurs impôts directs, par les employeurs via les cotisations sociales, par les entreprises via l\'impôt sur les sociétés, et par l\'emprunt public.',
-  'db.hero.onboarding.body': 'Cet outil chiffre trois éléments à partir d\'un profil simple : la contribution personnelle d\'un foyer (cotisations, CSG, impôt sur le revenu, TVA estimée), la dépense publique moyenne par habitant ventilée entre Sécurité sociale, État et collectivités locales, et qui finance l\'écart entre les deux.',
-  'db.hero.onboarding.hint': 'Les valeurs soulignées dans la phrase ci-dessous sont modifiables — revenu, foyer, commune. Le calcul s\'actualise en direct.',
+  'db.hero.onboarding.standfirst': 'La France dépense ~2 200 € par habitant chaque mois en services publics, financés par les particuliers (impôts directs), les employeurs (cotisations), les entreprises (IS) et l\'emprunt public. Cet outil chiffre ta contribution, la dépense par habitant, et l\'écart entre les deux.',
+  'db.hero.onboarding.hint': 'Modifie les valeurs soulignées ci-dessous. Si tu as d\'autres revenus (pension, capital, indépendant) ou que tu es propriétaire, déplie {b}Ajustements avancés{/b}.',
   // ─ Hero éditable NYT-style (fold redesign) ─
   'db.hero.editable.prefix_salaire': 'Sur ton revenu net de',
   'db.hero.editable.set_salaire': 'définis ton salaire',
