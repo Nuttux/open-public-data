@@ -1087,11 +1087,8 @@ export default function DailyBreadClient({
             <p className="db-p-onboarding-standfirst">
               {t("db.hero.onboarding.standfirst")}
             </p>
-            <p className="db-p-onboarding-body">
-              {t("db.hero.onboarding.body")}
-            </p>
             <p className="db-p-onboarding-hint">
-              {t("db.hero.onboarding.hint")}
+              {renderTagged(t("db.hero.onboarding.hint"))}
             </p>
           </div>
         </section>
