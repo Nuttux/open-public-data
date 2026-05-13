@@ -29,8 +29,8 @@ from urllib.parse import quote
 import requests
 
 ROOT = Path(__file__).resolve().parents[3]
-DELIBS_DIR = ROOT / "website" / "public" / "data" / "subventions_delibs"
-CACHE_PATH = ROOT / "website" / "public" / "data" / "enrichment" / "deliberations_sirene.json"
+DELIBS_DIR = ROOT / "pipeline" / "cache" / "delibs" / "sessions"
+CACHE_PATH = ROOT / "pipeline" / "cache" / "enrichment" / "deliberations_sirene.json"
 API = "https://recherche-entreprises.api.gouv.fr/search"
 
 SESSION = requests.Session()

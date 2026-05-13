@@ -24,7 +24,7 @@ import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
-DELIBS_DIR = ROOT / "website" / "public" / "data" / "subventions_delibs"
+DELIBS_DIR = ROOT / "pipeline" / "cache" / "delibs" / "sessions"
 
 
 def apply(session_id: int, results_paths: list[Path]) -> None:

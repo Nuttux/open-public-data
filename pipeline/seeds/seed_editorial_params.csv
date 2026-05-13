@@ -1,0 +1,4 @@
+key,value,unit,rationale,date_reference
+timeline_axis_start,2013,année,"Début de la série temporelle affichée. Justification : 2013 est la première année avec couverture Paris Open Data cohérente pour les marchés publics (source liste-des-marches...).",2026-04-23
+timeline_axis_end,2026,année,"Fin de la série temporelle affichée. Justification : 2026 est la dernière année couverte par un Budget Primitif voté (PDF extracteur + sync).",2026-04-23
+subventions_years_excluded,"2020,2021,2025",années,"Années exclues des agrégats subventions : 2020/21 anonymisées par Paris Open Data (protection données personnelles bénéficiaires individuels), 2025 partielle au moment du sync.",2026-04-23

@@ -214,78 +214,11 @@ def load_llm_enrichments() -> dict:
     return enrichments
 
 
-def load_top_beneficiaires(client, year: int) -> dict:
-    """
-    Load top beneficiaries by thematique from BigQuery.
-    
-    Returns a dict mapping thematique to list of top beneficiaries.
-    """
-    try:
-        query = f"""
-        SELECT
-            thematique,
-            beneficiaire,
-            montant_total,
-            rang
-        FROM `{PROJECT_ID}.{DATASET_ID}_intermediate.int_top_beneficiaires`
-        WHERE annee = {year}
-        ORDER BY thematique, rang
-        """
-        results = client.query(query).result()
-        
-        top_by_theme = defaultdict(list)
-        for row in results:
-            top_by_theme[row.thematique].append({
-                "nom": row.beneficiaire,
-                "montant": float(row.montant_total),
-                "rang": row.rang,
-            })
-        
-        if top_by_theme:
-            print(f"  📋 Loaded top beneficiaries for {len(top_by_theme)} themes")
-        return dict(top_by_theme)
-    except Exception as e:
-        print(f"  ⚠️ Could not load top beneficiaries: {e}")
-        return {}
-
-
-def load_top_projets(client, year: int) -> dict:
-    """
-    Load top projects by thematique from BigQuery.
-    
-    Returns a dict mapping thematique to list of top projects.
-    """
-    try:
-        query = f"""
-        SELECT
-            thematique,
-            projet,
-            direction_libelle,
-            arrondissement,
-            montant_total,
-            rang
-        FROM `{PROJECT_ID}.{DATASET_ID}_intermediate.int_top_projets`
-        WHERE annee = {year}
-        ORDER BY thematique, rang
-        """
-        results = client.query(query).result()
-        
-        top_by_theme = defaultdict(list)
-        for row in results:
-            top_by_theme[row.thematique].append({
-                "nom": row.projet[:100] if row.projet else "",
-                "direction": row.direction_libelle,
-                "arrondissement": row.arrondissement,
-                "montant": float(row.montant_total),
-                "rang": row.rang,
-            })
-        
-        if top_by_theme:
-            print(f"  📋 Loaded top projects for {len(top_by_theme)} themes")
-        return dict(top_by_theme)
-    except Exception as e:
-        print(f"  ⚠️ Could not load top projects: {e}")
-        return {}
+# Note: int_top_beneficiaires and int_top_projets were removed from the dbt
+# project. The drill_down field is now always emitted as {} (the upstream
+# tables never materialized in production, so the baseline JSON already had
+# drill_down empty). If we want top-N drill-downs back, build them as proper
+# marts (mart_top_beneficiaires_par_thematique, etc.) and rewire here.
 
 
 def get_data_availability(year: int) -> dict:
@@ -330,32 +263,24 @@ def get_bigquery_client():
 
 def query_budget_data(client, year: int) -> list[dict]:
     """
-    Query budget data for a specific year.
-    
-    Uses core_budget_vote for voted years (2025-2026) and core_budget for
-    executed years (2019-2024).
+    Query budget lines for a specific year from mart_budget_sankey_lines.
+
+    The mart unions core_budget (CA, executed) and core_budget_vote (BP, voted)
+    with a discriminator column. We pick the right slice per year.
     """
-    if year in VOTED_YEARS:
-        # Voted budget — source: core_budget_vote (Budget Primitif)
-        table = f"`{PROJECT_ID}.dbt_paris_analytics.core_budget_vote`"
-        print(f"  Querying VOTED budget for {year} (core_budget_vote)...")
-    else:
-        # Executed budget — source: core_budget (Compte Administratif)
-        table = f"`{PROJECT_ID}.dbt_paris_analytics.core_budget`"
-        print(f"  Querying EXECUTED budget for {year} (core_budget)...")
-    
+    type_budget = "vote" if year in VOTED_YEARS else "execute"
+    print(f"  Querying {type_budget.upper()} budget for {year} (mart_budget_sankey_lines)...")
     query = f"""
-    SELECT 
-        sens_flux as sens,
+    SELECT
+        sens_flux AS sens,
         chapitre_code,
         chapitre_libelle,
         nature_libelle,
         montant
-    FROM {table}
+    FROM `{PROJECT_ID}.dbt_paris_marts.mart_budget_sankey_lines`
     WHERE annee = {year}
-      AND montant > 0
+      AND type_budget = '{type_budget}'
     """
-    
     results = client.query(query).result()
     return [dict(row) for row in results]
 
@@ -597,25 +522,8 @@ def export_year(client, year: int, llm_enrichments: dict = None) -> dict:
             print(f"  Section: Fonct. {pct_fonct:.0f}% ({total_fonct/1e9:.1f} Md€) | "
                   f"Invest. {pct_invest:.0f}% ({total_invest/1e9:.1f} Md€)")
     
-    # Load top beneficiaries and projects for drill-down (skip for voted years — no CA data)
-    if year not in VOTED_YEARS:
-        top_beneficiaires = load_top_beneficiaires(client, year)
-        top_projets = load_top_projets(client, year)
-        
-        # Add drill_down section for contextual examples
-        sankey_data["drill_down"] = {}
-        all_themes = set(list(top_beneficiaires.keys()) + list(top_projets.keys()))
-        for theme in all_themes:
-            sankey_data["drill_down"][theme] = {
-                "top_beneficiaires": top_beneficiaires.get(theme, []),
-                "top_projets": top_projets.get(theme, []),
-            }
-        
-        if sankey_data["drill_down"]:
-            print(f"  📋 Added drill_down data for {len(sankey_data['drill_down'])} themes")
-    else:
-        sankey_data["drill_down"] = {}
-        print(f"  ℹ️ Voted year — no drill_down data (no CA subventions/projets)")
+    # drill_down is always empty until the per-thematique top-N marts are built.
+    sankey_data["drill_down"] = {}
     
     output_file = OUTPUT_DIR / f"budget_sankey_{year}.json"
     with open(output_file, "w", encoding="utf-8") as f:

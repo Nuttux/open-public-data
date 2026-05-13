@@ -16,6 +16,19 @@ WITH source AS (
     FROM {{ source('paris_raw', 'liste_des_marches_de_la_collectivite_parisienne') }}
 ),
 
+-- Déduplication: Paris rapporte parfois le même num_marche sur 2 années
+-- consécutives (notification année N, début exécution année N+1). On garde
+-- la ligne de l'année de notification la plus ancienne pour éviter le
+-- double-count sur les totaux financiers.
+deduped AS (
+    SELECT *
+    FROM source
+    QUALIFY ROW_NUMBER() OVER (
+        PARTITION BY num_marche
+        ORDER BY SAFE_CAST(annee_de_notification AS INT64) ASC
+    ) = 1
+),
+
 cleaned AS (
     SELECT
         -- =====================================================================
@@ -69,8 +82,8 @@ cleaned AS (
                 COALESCE(objet_du_marche, 'X')
             )
         ) AS cle_technique
-        
-    FROM source
+
+    FROM deduped
 )
 
 SELECT * FROM cleaned

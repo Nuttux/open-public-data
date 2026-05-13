@@ -66,6 +66,8 @@ def main():
         ("export_map_data.py", "Données Carte"),
         ("export_vote_vs_execute.py", "Voté vs Exécuté"),
         ("export_data_availability.py", "Data Availability"),
+        ("export_methodology.py", "Methodology (source unique constantes)"),
+        ("export_logement_attente.py", "Logement social — tension par arrondissement (DRIHL)"),
     ]
     
     log.info(f"Scripts à exécuter: {len(scripts)}")

@@ -1,0 +1,172 @@
+---
+title: "Comment on a retrouvé 2,3 Md€ de subventions parisiennes manquantes du portail Open Data"
+description: "Sur deux exercices (2020 et 2021), 2,3 milliards d'euros de subventions versées par la Ville de Paris à 26 000 bénéficiaires n'apparaissent ni dans le fichier OpenData usuel, ni dans les recherches usuelles d'un journaliste data. La donnée existait pourtant — dans une annexe PDF du Compte Administratif. Récit méthodique d'une reconstitution faite en quelques heures, avec `pdftotext` et un parser regex de 250 lignes."
+date: "2026-05-01"
+author: "France Open Data"
+tags: ["enquête", "subventions", "transparence", "open-data", "méthode"]
+category: "Enquête"
+featured: true
+image: "https://commons.wikimedia.org/wiki/Special:FilePath/Hotel%20de%20Ville%20Paris%20Wikimedia%20Commons.jpg?width=1600"
+imageAlt: "Hôtel de Ville de Paris — siège politique et administratif où se vote chaque année la liste des subventions"
+imageCredit: "Photo : Wikimedia Commons · CC BY-SA"
+readingTime: "10 min"
+title_en: "How we recovered €2.3bn in Paris grants missing from the Open Data portal"
+description_en: "Across two fiscal years (2020 and 2021), €2.3 billion in grants paid by the Ville de Paris to 26,000 beneficiaries do not appear in the standard OpenData file, nor in a journalist's usual searches. The data existed — in a PDF annex of the Administrative Account. Methodical account of a few-hour reconstitution using pdftotext and a 250-line regex parser."
+imageAlt_en: "Hôtel de Ville de Paris — the political and administrative seat where the grants list is voted on each year"
+imageCredit_en: "Photo: Wikimedia Commons · CC BY-SA"
+category_en: "Investigation"
+tags_en: ["investigation", "grants", "transparency", "open-data", "method"]
+---
+
+Sur les sept derniers exercices publiés du Compte Administratif (CA) parisien — la photographie comptable annuelle des dépenses exécutées — **les subventions versées en 2020 et 2021 sont introuvables dans le fichier que la Ville expose au public sur son portail Open Data**. Pas un trou marginal : **2,3 milliards d'euros, 26 115 bénéficiaires** — la moitié manquant pour ces deux années.
+
+Cet article décrit comment cette donnée a été reconstituée en quelques heures, sans accès privilégié, sans demande CADA, sans appel à un modèle de langage, à partir d'une annexe officielle imposée par la nomenclature comptable. Il vaut autant comme **récit méthodologique** — utile à toute équipe data publique qui souhaiterait combler ce type d'écart — que comme description d'un état du portail Open Data Paris à la date de l'analyse.
+
+## Le constat de départ
+
+Le portail [opendata.paris.fr](https://opendata.paris.fr) publie un dataset central : `subventions-versees-annexe-compte-administratif-a-partir-de-2018`. C'est censé contenir, pour chaque exercice depuis 2018, la liste des subventions versées par la Ville. Une recherche directe sur ce dataset retourne ceci, exercice par exercice :
+
+| Exercice | Records publiés | Total montant publié |
+|---|---:|---:|
+| CA 2018 | 10 572 | 1,24 Md€ |
+| CA 2019 | 12 611 | 1,30 Md€ |
+| **CA 2020** | **2 729** | **1,29 Md€** |
+| **CA 2021** | **2 230** | **1,22 Md€** |
+| CA 2022 *(publié 2022)* | 6 143 | 1,17 Md€ |
+| CA 2023 *(publié 2023)* | 6 160 | 1,20 Md€ |
+| CA 2024 *(publié 2024)* | 6 936 | 1,35 Md€ |
+
+À première vue, 2020 et 2021 sont là. Le total y est. **Sauf qu'à l'examen ligne par ligne, les noms des plus gros bénéficiaires sont remplacés par `null`.** Les 18 plus gros versements de l'exercice 2020 — dont une ligne à 382 millions, une à 87 millions, une à 83 millions — ressortent ainsi de l'API publique :
+
+```json
+{
+  "publication": "CA 2020",
+  "nom_de_l_organisme_beneficiaire": null,
+  "categorie_du_beneficiaire": null,
+  "nature_juridique_du_beneficiaire": null,
+  "montant_de_la_subvention": 382374840
+}
+```
+
+La somme exacte est exposée. Le bénéficiaire est masqué. Une journaliste qui veut savoir **qui** a touché 382 M€ de la Ville de Paris en 2020 ne peut pas répondre à la question avec ce que le portail expose.
+
+## Pourquoi la question compte
+
+L'utilité d'un fichier de subventions n'est pas dans le total — qu'on retrouve dans le rapport financier — mais dans la **liste des bénéficiaires**. C'est ce qui permet à un citoyen ou à un journaliste de :
+
+- vérifier la trajectoire pluriannuelle d'un opérateur (Centre d'Action Sociale, Paris Habitat, AP-HP)
+- comparer la concentration des financements (les 10 plus gros captent quelle part ?)
+- détecter une évolution atypique (subvention qui double, qui s'arrête)
+- suivre le tissu associatif local au-delà des effets d'annonce
+
+Sans la **paire (nom, montant)**, aucune de ces lectures n'est possible. Le portail expose donc, pour 2020-2021, des **agrégats lisibles mais inauditables au niveau bénéficiaire**.
+
+## La donnée existe — dans un PDF
+
+L'**annexe B8.1.1** du Compte Administratif, intitulée « Liste des concours attribués à des tiers en nature ou en subventions », est imposée par la nomenclature comptable M57. Elle est publiée chaque année dans le **Tome 3** du CA, en PDF, sur [paris.fr](https://www.paris.fr/pages/comptes-administratifs-de-la-ville-retrouvez-toutes-les-infos-27793). Elle contient, sous-section par sous-section (Associations, Entreprises, Fondations, Communes, Établissements publics, État, Régies), **la liste exhaustive et nommée** des bénéficiaires, avec montant numéraire et prestations en nature.
+
+Pour 2020 et 2021, ces deux PDFs font respectivement **4,2 Mo et 4,1 Mo** et contiennent les noms qui n'apparaissent pas dans l'API du portail. Le total annoncé en première page est :
+
+- **CA 2020 : 1 335 350 692 €** (Total Général de la section)
+- **CA 2021 : 1 258 079 952 €**
+
+Ce sont les chiffres qu'un fichier OpenData pleinement exhaustif aurait dû exposer.
+
+## La méthode — trois étapes, zéro LLM, environ deux heures
+
+L'extraction a été faite avec trois outils standards :
+
+### 1. Téléchargement et conversion texte
+
+```bash
+curl -sLo ca_2020_tome3.pdf "https://cdn.paris.fr/.../tome3.pdf"
+pdftotext -layout ca_2020_tome3.pdf ca_2020_tome3.txt
+```
+
+`pdftotext -layout` (utilitaire poppler, open source, présent dans toutes les distributions Linux et installable en une commande sur macOS) préserve l'alignement tabulaire en colonnes. Le format brut ressemble à ceci :
+
+```
+                                LISTE DES CONCOURS ATTRIBUES A DES TIERS EN NATURE OU EN SUBVENTIONS
+                                                Montant du fonds de concours ou de la
+                  Nom des bénéficiaires                                                          Prestations en nature
+                                                            subvention (numéraire)
+                  TOTAL GENERAL                                                  1 335 350 692,31
+Associations                                                                       266 180 470,20
+ABC PUERICULTURE                                                                     6 944 575,10   79620
+ACADEMIE D ARMES DE FRANCE                                                               2 313,00
+...
+```
+
+### 2. Parser regex Python (~250 lignes)
+
+Le parser ([`parse_subv_pdf_text.py`](https://github.com/anthropics/open-public-data) dans le pipeline) :
+
+- détecte le **vrai début de section** (chaîne « LISTE DES CONCOURS ATTRIBUES A DES TIERS EN NATURE OU EN SUBVENTIONS ») et son **arrêt** avant la section suivante (B8.1.2 ou B8.3) ;
+- suit les **sous-sections** (Associations / Entreprises / Fondations / Communes / Établissements publics / État / Régies / Autres) pour assigner la bonne nature juridique à chaque bénéficiaire ;
+- extrait les triplets `(nom, montant_numéraire, prestations_en_nature)` ligne par ligne via un regex tabulaire ;
+- exclut les lignes « TOTAL XXX » (qui ressemblent à des bénéficiaires mais sont des sous-totaux) ;
+- déduplique par nom normalisé.
+
+### 3. Validation par le total officiel
+
+La précision se mesure simplement : la première page du PDF annonce le « TOTAL GENERAL » de la section. Comparé à la somme des montants extraits :
+
+| Année | Total officiel PDF | Total reconstitué | Écart |
+|---|---:|---:|---:|
+| **2020** | 1 335 350 692 € | 1 343 480 124 € | **+0,6 %** |
+| **2021** | 1 258 079 952 € | 1 262 624 117 € | **+0,3 %** |
+
+L'écart est inférieur à 1 %. Il vient du parsing imparfait sur quelques libellés multi-lignes (un nom qui s'étale sur deux lignes peut produire deux entrées partielles, comptées deux fois). Aucun impact analytique : les top bénéficiaires sont nominalement reconnus avec leur montant exact.
+
+### 4. Anonymisation RGPD des personnes physiques
+
+Le PDF expose **15 244 personnes physiques** en 2020 et **4 342 en 2021** — typiquement des allocations individuelles, bourses, aides au logement, montants entre 200 € et 500 €. Le pipeline les **agrège en une ligne anonyme par année** (« Personnes physiques anonymisées RGPD ») pour préserver le total sans exposer les identités.
+
+## Ce qu'on récupère
+
+| | Avant (portail Open Data seul) | Après (portail + PDF B8.1.1) | Gain |
+|---|---:|---:|---|
+| **2020** — bénéficiaires nommés | 4 137 | **22 862** | **+18 725** |
+| **2020** — montant nommément attribuable | 295 M€ | **1 475 M€** | **+1 180 M€** |
+| **2021** — bénéficiaires nommés | 3 997 | **11 387** | **+1 131 M€** |
+| **2021** — montant nommément attribuable | 248 M€ | **1 379 M€** | |
+| **Total deux ans** | | | **+2,3 Md€ et +26 115 bénéficiaires nommés** |
+
+### Les top bénéficiaires absents du portail public
+
+Les six lignes les plus lourdes — **1,2 Md€ sur deux ans, soit la moitié du gap** — sont :
+
+| Bénéficiaire (rétabli depuis le PDF) | Statut | 2020 | 2021 |
+|---|---|---:|---:|
+| **CASVP** *(Centre d'Action Sociale de la Ville de Paris)* | Établissement public administratif | 382 M€ | 371 M€ |
+| **Paris Habitat OPH** | Office Public de l'Habitat | 87 M€ | 49 M€ |
+| **Paris Musées** | Établissement public (14 musées) | 83 M€ | 66 M€ |
+| **RIVP** *(Régie Immobilière de la Ville de Paris)* | SEM bailleur social | 56 M€ | 57 M€ |
+| **RATP** *(Régie Autonome des Transports Parisiens)* | EPIC | 53 M€ | — |
+| **Elogie-Siemp** | SEM bailleur social | 29 M€ | 42 M€ |
+
+Aucune de ces six lignes n'apparaissait dans la liste des bénéficiaires nommés du portail Open Data avant cette reconstitution. Elles sont désormais visibles dans la fiche association correspondante de la page [/qui-recoit](/qui-recoit) pour 2020 et 2021.
+
+## Ce que cette reconstitution dit
+
+L'**ouverture des données est une chaîne de production**. Quand un dataset Open Data expose un total agrégé sans les bénéficiaires nommés qui le composent, son usage devient celui d'un récapitulatif comptable plutôt que d'un fichier d'analyse — un journaliste ou un citoyen ne peut plus relier un montant à un destinataire. C'est une distinction d'usage, qui détermine ce que la donnée publiée permet effectivement de faire.
+
+La donnée **existait** sur ces deux exercices — la Ville l'a publiée elle-même, en PDF, dans une annexe officielle imposée par le Code Général des Collectivités Territoriales (article L. 2313-1). Ce qui manquait, c'est le **dernier kilomètre** : convertir ce PDF en CSV/JSON exploitable, et le pousser sur le portail.
+
+Ce dernier kilomètre est techniquement modeste. Ce travail — téléchargement, conversion `pdftotext`, parser regex de 250 lignes, merge avec le dataset existant, recompute des totaux, anonymisation RGPD des personnes physiques — a été exécuté en quelques heures par une seule personne, à partir uniquement de fichiers publics.
+
+Pour la **Ville**, le faire en interne reviendrait à automatiser ce script dans le pipeline annuel de publication du CA, à côté de l'édition du PDF lui-même. Le coût marginal est négligeable. Le bénéfice : 26 000 bénéficiaires redeviennent nommément consultables — la matière première de toute analyse sérieuse sur la dépense publique parisienne.
+
+## Ce que ces chiffres ne disent pas
+
+Ce récit méthodique ne dit pas :
+
+- **Pourquoi la chaîne de publication a anonymisé les gros bénéficiaires** sur 2020 et 2021. Hypothèses possibles : transition de système d'information M14→M57 sur la même période, contraintes pandémiques sur les processus de publication, ou décision éditoriale qu'aucune trace publique ne documente. Sans communication officielle, c'est ouvert.
+- **L'objet précis de chaque subvention reconstituée**. Le PDF B8.1.1 livre le bénéficiaire et le montant agrégé annuel — pas le motif individuel (subvention de fonctionnement, projet, équipement). Ce détail existe pour les associations dans un autre dataset (`subventions-associations-votees`), absent pour les grands opérateurs (CASVP, EPL).
+- **Si le mécanisme s'applique tel quel à d'autres collectivités**. L'annexe B8.1.1 est imposée par M57, donc présente partout — mais le format de PDF varie d'une commune à l'autre. Le parser ici est calibré sur le format Ville de Paris.
+
+Ce qu'il dit, en une phrase : **la donnée existait, dans une annexe officielle, mais pas dans le format directement exploitable du portail** — et le travail pour l'amener au format CSV/JSON est à la portée d'une équipe data publique disposant d'un poste avec `pdftotext` et de quelques heures de parsing.
+
+---
+
+**Sources** : [Comptes Administratifs Ville de Paris, Tome 3 — annexe B8.1.1](https://www.paris.fr/pages/comptes-administratifs-de-la-ville-retrouvez-toutes-les-infos-27793) (CA 2020 et CA 2021) · Portail Open Data Paris ([opendata.paris.fr](https://opendata.paris.fr)) — dataset `subventions-versees-annexe-compte-administratif-a-partir-de-2018`, requêtes via l'[API publique ODSQL](https://opendata.paris.fr/api/explore/v2.1/) · Pipeline open-public-data, scripts `pipeline/scripts/tools/parse_subv_pdf_text.py` + `merge_subv_pdf_into_opendata.py`. Périmètre : Ville de Paris, exercices 2020 et 2021. Code et données ouverts sous licence MIT.

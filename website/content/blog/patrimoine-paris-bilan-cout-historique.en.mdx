@@ -1,0 +1,170 @@
+---
+title: "Patrimoine 48 Md€ : pourquoi le bilan d'une mairie ne dit jamais la vraie valeur"
+description: "Au 31 décembre 2024, la Ville inscrit 48 milliards d'euros d'actif à son bilan, dont 47 Md€ d'immobilisations corporelles. Ce chiffre est calculé en coût historique amorti — la valeur de marché serait bien plus élevée. Explication d'un écart structurel, et de ce qu'il signifie pour la lecture des comptes."
+date: "2026-04-25"
+author: "France Open Data"
+tags: ["explication", "patrimoine", "bilan", "M57", "dette"]
+category: "Explication"
+image: "https://commons.wikimedia.org/wiki/Special:FilePath/Notre-Dame%20de%20Paris.jpg?width=1600"
+imageAlt: "Notre-Dame de Paris — patrimoine emblématique dont la valeur comptable amortie diffère radicalement de la valeur économique réelle"
+imageCredit: "Photo : Wikimedia Commons · CC BY-SA"
+readingTime: "8 min"
+title_en: "€48Bn in assets: why a city's balance sheet never shows the real value"
+description_en: "On 31 December 2024, the City of Paris booked €48 billion of total assets, of which €47Bn in tangible fixed assets. This figure is computed at amortised historical cost — market value would be considerably higher. Explanation of a structural gap, and what it means when reading the accounts."
+imageAlt_en: "Notre-Dame de Paris — emblematic public asset whose amortised book value differs radically from its real economic value"
+imageCredit_en: "Photo: Wikimedia Commons · CC BY-SA"
+category_en: "Explanation"
+tags_en: ["explanation", "public assets", "balance sheet", "M57", "debt"]
+---
+
+On 31 December 2024, the Ville de Paris booked **€48.07 billion in total assets**, of which **€46.85Bn in fixed assets** — land, buildings, roads, equipment. That is a substantial figure. It is also an accounting figure, calculated under strict rules that, by construction, understate the real economic value of these assets.
+
+This article explains what the balance sheet says, what it does not say, and why this gap is neither an error nor a scandal — it is a structural feature of French public accounting.
+
+## What the 2024 balance sheet says
+
+The City's balance sheet is read in two columns that must be in balance: what the City **owns** (assets), and **how it is financed** (liabilities).
+
+| Side | Item | 2024 amount | Share |
+|---|---|---:|---:|
+| Assets | Fixed assets (land, buildings, roads, equipment) | €46.85Bn | 97.5% |
+| Assets | Current assets (receivables, inventory) | €1.14Bn | 2.4% |
+| Assets | Cash + accruals | €0.07Bn | 0.1% |
+| **Total assets** | | **€48.07Bn** | **100%** |
+| Liabilities | Equity | €36.37Bn | 74.9% |
+| Liabilities | Financial debts | €10.70Bn | 22.0% |
+| Liabilities | Non-financial debts + cash + provisions | €1.46Bn | 3.1% |
+| **Total liabilities** | | **€48.53Bn** | **100%** |
+
+*The €0.46Bn gap between total assets and total liabilities corresponds to year-end accruals and retained earnings; it clears when the result is allocated in the following budget vote.*
+
+Three facts emerge from this snapshot:
+
+1. **Assets are almost exclusively real estate** — 97.5% of what the City owns is buildings, land, or roads. Cash and receivables account for only 2.5%.
+2. **Equity dominates liabilities** — 75% of financing comes from the historical accumulation of positive results and endowments. Debt finances only about a fifth of the assets.
+3. **The debt / assets ratio is 22%** — for €1 of debt, the City holds about €4.5 of assets. That is a comfortable cover margin, which structures the municipality's credit rating.
+
+## 2019-2024 trajectory
+
+Assets and debt evolve at distinct paces. Over the period:
+
+<figure className="fx-chart">
+<svg viewBox="0 0 720 320" xmlns="http://www.w3.org/2000/svg" className="fx-svg" role="img" aria-label="Total assets and financial debt 2019-2024">
+  <rect x="0" y="0" width="720" height="320" fill="#ffffff"/>
+  <line x1="80" y1="40" x2="80" y2="260" stroke="#0a0a0a" strokeWidth="1"/>
+  <line x1="80" y1="260" x2="700" y2="260" stroke="#0a0a0a" strokeWidth="1"/>
+  <line x1="80" y1="210" x2="700" y2="210" stroke="#e4e6ea" strokeWidth="1"/>
+  <line x1="80" y1="160" x2="700" y2="160" stroke="#e4e6ea" strokeWidth="1"/>
+  <line x1="80" y1="110" x2="700" y2="110" stroke="#e4e6ea" strokeWidth="1"/>
+  <line x1="80" y1="60" x2="700" y2="60" stroke="#e4e6ea" strokeWidth="1"/>
+  <text x="70" y="264" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="end">0</text>
+  <text x="70" y="214" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="end">12</text>
+  <text x="70" y="164" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="end">24</text>
+  <text x="70" y="114" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="end">36</text>
+  <text x="70" y="64" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="end">€48Bn</text>
+  {/* Total assets bars : values 39.57, 41.41, 45.38, 46.10, 47.05, 48.07 — scale 0..50 €Bn → 0..220 SVG */}
+  <rect x="115" y="86" width="55" height="174" fill="#1e45e4"/>
+  <text x="142" y="275" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">2019</text>
+  <text x="142" y="80" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#0a0a0a" textAnchor="middle">39.6</text>
+  <rect x="195" y="78" width="55" height="182" fill="#1e45e4"/>
+  <text x="222" y="275" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">2020</text>
+  <text x="222" y="72" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#0a0a0a" textAnchor="middle">41.4</text>
+  <rect x="275" y="60" width="55" height="200" fill="#1e45e4"/>
+  <text x="302" y="275" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">2021</text>
+  <text x="302" y="54" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#0a0a0a" textAnchor="middle">45.4</text>
+  <rect x="355" y="57" width="55" height="203" fill="#1e45e4"/>
+  <text x="382" y="275" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">2022</text>
+  <text x="382" y="51" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#0a0a0a" textAnchor="middle">46.1</text>
+  <rect x="435" y="53" width="55" height="207" fill="#1e45e4"/>
+  <text x="462" y="275" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672" textAnchor="middle">2023</text>
+  <text x="462" y="47" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#0a0a0a" textAnchor="middle">47.1</text>
+  <rect x="515" y="49" width="55" height="211" fill="#1e45e4"/>
+  <text x="542" y="275" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#0a0a0a" textAnchor="middle" fontWeight="600">2024</text>
+  <text x="542" y="43" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#0a0a0a" textAnchor="middle" fontWeight="600">48.1</text>
+  {/* Legend */}
+  <rect x="600" y="100" width="14" height="14" fill="#1e45e4"/>
+  <text x="620" y="111" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672">Total assets</text>
+  <line x1="600" y1="135" x2="615" y2="135" stroke="#e11d1d" strokeWidth="2.5"/>
+  <text x="620" y="139" fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#5f6672">Financial debt</text>
+  {/* Debt trace : 6.9 → 7.77 → 8.43 → 9.29 → 9.85 → 10.70 → scale 0..50 → y = 260 - val*4.4 */}
+  <polyline points="142,229 222,226 302,223 382,219 462,217 542,213" fill="none" stroke="#e11d1d" strokeWidth="2.5"/>
+  <circle cx="142" cy="229" r="3" fill="#e11d1d"/>
+  <circle cx="222" cy="226" r="3" fill="#e11d1d"/>
+  <circle cx="302" cy="223" r="3" fill="#e11d1d"/>
+  <circle cx="382" cy="219" r="3" fill="#e11d1d"/>
+  <circle cx="462" cy="217" r="3" fill="#e11d1d"/>
+  <circle cx="542" cy="213" r="3" fill="#e11d1d"/>
+  <text x="395" y="22" fontFamily="Inter Tight, sans-serif" fontSize="13" fill="#0a0a0a" textAnchor="middle" fontWeight="600">Ville de Paris balance sheet — total assets and financial debt 2019-2024</text>
+</svg>
+<figcaption>Total assets and financial debt of the Ville de Paris as of 31 December, 2019-2024, in billions of current euros. Total assets grew by +21% over six years (from 39.6 to 48.1 €Bn). Debt grew by +55% (from 6.9 to 10.7 €Bn). Source: open-public-data pipeline, `patrimoine_structure_*.json` files.</figcaption>
+</figure>
+
+Total assets grow by **+21% in six years**: the City invests, delivers facilities, and records each delivery on its balance sheet at acquisition or construction value. Debt grows faster — **+55% over the same period** — because a growing share of annual investment is financed by borrowing rather than by gross saving.
+
+The debt / assets ratio rises from 17.4% in 2019 to 22.3% in 2024. That is a deterioration, but at a level still very far from the alert thresholds (cf. our [explanation of financial ratios](/analyses/paris-peut-elle-faire-faillite)).
+
+<figure className="fx-photo-fig">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/H%C3%B4tel%20de%20Ville%20de%20Paris%20-%20Journ%C3%A9e%20du%20Patrimoine%202013%20039.jpg?width=1200" alt="Council Chamber of the Hôtel de Ville de Paris" />
+<figcaption>The Hôtel de Ville de Paris, rebuilt after the 1871 fire, is recorded on the City's balance sheet at amortised historical value. It is the most spectacular illustration of the gap between book value and real economic value of municipal assets — a unique building whose market value is, in practice, unquantifiable.</figcaption>
+</figure>
+
+## The accounting golden rule: amortised historical cost
+
+The figure of **€46.85Bn in tangible fixed assets** is calculated under a strict rule, inherited from French public accounting and codified for municipalities by the **M57** chart of accounts:
+
+> Every fixed asset is recorded on the balance sheet at its **acquisition value** (or construction value), then **amortised on a straight-line basis** over its expected useful life, down to nil or symbolic residual value.
+
+Three practical consequences:
+
+1. **No revaluation to market value.** A piece of land bought in 1965 stays on the books at its 1965 value (in converted francs), even if the Parisian property market has been multiplied by 30 or 40 since. No revaluation.
+2. **Amortisation even without real wear.** A listed-monument building is amortised exactly like a prefab, following the same tables. After the legal duration, its book value falls to a symbolic euro — even though the building itself may be in perfect condition and continue to serve for 100 years.
+3. **"Invisible" old stock.** Buildings delivered before modern public accounting rules were introduced (before the 1980s-1990s) were taken over at often very low flat-rate values, even down to zero for assets donated or inherited without an explicit price.
+
+This is the mechanism that means **the book value of an old municipality's assets always understates their economic value**, sometimes by very large margins.
+
+## Why this gap is not a bug
+
+This rule may seem absurd, but it protects two essential principles of public accounting:
+
+### 1. Legal certainty
+A market value depends on the moment you look, on the neighbourhood, on the appraiser. An acquisition value is fixed, verifiable, enforceable. If the City had to update annually the value of each of its thousands of facilities (schools, gyms, libraries, arrondissement town halls, public gardens), the appraisal cost would exceed the usefulness — and each revision would expose to endless contestation.
+
+### 2. Accounting prudence
+The principle of prudence (common to all public accounting) prohibits booking unrealised capital gains. Only effectively realised income is recorded as a gain. As long as a building is not sold, its market value is not real in the accounting sense. This is an old, stable principle that also applies to companies (with the exception of certain sectors where IFRS standards explicitly authorise revaluations).
+
+<aside className="fx-sidebar">
+
+### Three examples illustrating the gap
+
+- **A school built in 1955 in the 11th arrondissement.** Initial cost converted into euros: ~€1M. Straight-line amortisation over 50 years → net book value today: €0. Market value of the land alone (~3,000 m² buildable): potentially €30M or more. **Gap: factor 30+.**
+- **A plot in the Cité Curial-Michelet (19th), donated for free by the State in the 1930s.** Historically recorded at a symbolic value. Today, several hectares of dense Parisian land — potential market value: several hundred million euros. **Gap: virtually infinite.**
+- **The Hôtel de Ville itself.** Building rebuilt after the 1871 fire, recorded on the balance sheet at amortised historical value. Net book value: presumably symbolic. Real economic value: unquantifiable (unique listed building, in continuous administrative use for 150 years).
+
+</aside>
+
+<figure className="fx-photo-fig">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Stade%20Pierre%20de%20Coubertin%20%28Paris%2C%20FRA%29.jpg?width=1200" alt="Stade Pierre de Coubertin (Paris 16th) — public facility on the City's balance sheet" />
+<figcaption>The Stade Pierre de Coubertin, in the 16th arrondissement, is recorded on the City's balance sheet at amortised acquisition value. Like thousands of comparable municipal facilities (gyms, schools, libraries), it is part of an asset base whose cumulative book value is, by construction, lower than its real economic value.</figcaption>
+</figure>
+
+## How this changes the reading of the debt / assets ratio
+
+Paris's financial-debt / total-assets ratio is **22% in accounting terms** in 2024. This figure is correct, but it must be read carefully: since the real economic value of assets is higher than the book value (cf. the examples above), the "true" coverage ratio is mechanically more favourable. By how much? No one knows precisely, because no systematic appraisal of Parisian assets has been publicly produced.
+
+This nuance is not trivial when commenting on the debt trajectory. Saying "debt accounts for 22% of the City's assets" is correct in accounting terms, but it understates the fact that **the assets covering this debt are in practice larger than the balance sheet says**. This is one of the implicit reasons why rating agencies continue to rank Paris at the level of the French State (Aa2 at Moody's, AA at Fitch on the most recent bond issues): they incorporate an economic appraisal of assets that goes beyond the strictly accounting reading.
+
+Conversely, one cannot conclude that "Paris is rich and can borrow much more": the real value of its assets is not mobilisable, because you do not sell a school to repay a loan. A municipality's assets **are not liquid**. This is what distinguishes a municipality's ratios from those of a company: for a municipality, asset coverage is conceptual, not operational.
+
+## What these figures do not say
+
+This analysis stops at what the official balance sheet and the open-public-data pipeline allow us to measure. It does not say:
+
+- **The real market value of the assets** — that would require an appraisal of each asset, which has never been publicly produced at the City scale
+- **The geographic distribution of value across arrondissements** — the global balance sheet does not show which neighbourhood holds which share of the assets, which makes any geographical analysis impossible from this single document
+- **The share of non-amortisable assets** — historically unvalued land, listed monuments, owned roads vs roads delegated to concessionaires: the balance sheet aggregates without always detailing
+
+What it does say, in one sentence: **the €48Bn recorded on the City's balance sheet is a low bound, dictated by an accounting prudence rule that understates the economic wealth of an old municipality**. It should not be turned into a flag ("Paris is rich!") nor into a minimising argument ("the City has almost no margin"). It should be read for what it is: a management tool designed for legal certainty, not for comparison with market value.
+
+---
+
+**Sources**: open-public-data pipeline, files `patrimoine_structure_2019.json` to `patrimoine_structure_2024.json`, source dataset Open Data Paris "Comptes administratifs M57" · M57 accounting chart (DGFiP codifying instruction) · OFGL for comparative analyses on the assets of major French cities. Figures in net book values as of 31 December, in current euros.

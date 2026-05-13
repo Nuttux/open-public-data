@@ -1,0 +1,18 @@
+flowchart LR
+    LLM["⚙️ scripts d'enrichissement<br/>LLM · SIRENE · scrape · photos"]
+    CACHE[(pipeline/cache/<br/>JSON par fichier)]
+    BQRAW[("⚠️ BigQuery raw<br/><b>payload STRING JSON</b>")]
+    JSONOUT["public/data/enrichment/<br/>chargés au clic par l'UI"]
+
+    LLM -->|écrit| CACHE
+    CACHE -->|sync_enrichment_caches.py| BQRAW
+    BQRAW -->|export_enrichment_caches.py| JSONOUT
+
+    classDef enr fill:#fce7f3,stroke:#9d174d,color:#111
+    classDef cache fill:#f1f5f9,stroke:#475569,color:#111
+    classDef warn fill:#fee2e2,stroke:#991b1b,color:#111
+    classDef out fill:#ffedd5,stroke:#9a3412,color:#111
+    class LLM enr
+    class CACHE cache
+    class BQRAW warn
+    class JSONOUT out

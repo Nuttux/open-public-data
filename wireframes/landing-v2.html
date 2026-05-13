@@ -1,0 +1,1210 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>France Open Data — Landing v2 (mockup)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #fafaf7;
+    --bg-2:      #f3f1ea;
+    --ink:       #0a0a0a;
+    --ink-2:     #2c3038;
+    --muted:     #6c7280;
+    --muted-2:   #9099a6;
+    --rule:      #e2dfd5;
+    --bleu:      #1f3aa6;
+    --rouge:     #c8102e;
+    --ocre:      #b08854;
+    --vert:      #3a5944;
+    --ardoise:   #5a6470;
+
+    --disp:  "Inter Tight", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", system-ui, sans-serif;
+    --mono:  "JetBrains Mono", "SF Mono", Menlo, monospace;
+    --serif: "Inter Tight", "Inter", sans-serif; /* alias kept for backward CSS, no serif used */
+
+    --wrap: 1200px;
+    --pad:  clamp(20px, 4vw, 56px);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    position: relative;
+  }
+
+  /* ─── grain papier ─── */
+  body::before {
+    content: "";
+    position: fixed; inset: 0; pointer-events: none; z-index: 9999;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.4 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.18'/></svg>");
+    mix-blend-mode: multiply;
+    opacity: 0.55;
+  }
+
+  .wrap {
+    max-width: var(--wrap);
+    margin: 0 auto;
+    padding-left: var(--pad);
+    padding-right: var(--pad);
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ─────────────────────────  NAV + TICKER  ───────────────────────── */
+  .ticker {
+    background: var(--ink);
+    color: var(--bg);
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.04em;
+    height: 30px;
+    overflow: hidden;
+    position: relative;
+  }
+  .ticker-inner {
+    display: flex;
+    gap: 36px;
+    white-space: nowrap;
+    align-items: center;
+    height: 100%;
+    padding-left: 100%;
+    animation: ticker-scroll 38s linear infinite;
+  }
+  .ticker-inner span { display: inline-flex; align-items: center; gap: 10px; }
+  .ticker-inner b { font-weight: 600; color: var(--bg); }
+  .ticker-inner em { font-style: normal; color: var(--ocre); }
+  .ticker-dot { width: 4px; height: 4px; background: var(--rouge); border-radius: 50%; }
+  @keyframes ticker-scroll { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+
+  .nav {
+    border-bottom: 1px solid var(--rule);
+    background: var(--bg);
+    position: sticky; top: 0; z-index: 50;
+  }
+  .nav-inner {
+    display: flex; align-items: center; gap: 28px;
+    padding-top: 16px; padding-bottom: 16px;
+  }
+  .nav-brand {
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 600; letter-spacing: -0.01em;
+  }
+  .nav-mark {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--ink); color: var(--bg);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--disp); font-weight: 700; font-size: 13px;
+  }
+  .nav-links { display: flex; gap: 22px; font-size: 14px; color: var(--ink-2); }
+  .nav-links a:hover { color: var(--bleu); }
+  .nav-spacer { flex: 1; }
+  .nav-meta { display: flex; gap: 14px; font-size: 12px; color: var(--muted); font-family: var(--mono); }
+
+  @media (max-width: 720px) {
+    .nav-links { display: none; }
+  }
+
+  /* ─────────────────────────  HERO  ───────────────────────── */
+  .hero {
+    padding-top: clamp(40px, 6vw, 88px);
+    padding-bottom: clamp(40px, 6vw, 96px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: clamp(28px, 5vw, 72px);
+    align-items: center;
+  }
+  .hero h1 {
+    font-family: var(--disp);
+    font-size: clamp(44px, 6vw, 84px);
+    line-height: 1.0;
+    letter-spacing: -0.035em;
+    margin: 0 0 22px 0;
+    font-weight: 700;
+  }
+  .hero h1 em { color: var(--bleu); font-style: italic; font-weight: 700; }
+  .hero h1 .scope {
+    display: inline-flex; align-items: center; gap: 4px;
+    color: var(--rouge); border-bottom: 3px solid var(--rouge);
+    padding: 0 4px; cursor: pointer;
+    font-style: normal;
+  }
+  .hero h1 .scope::after {
+    content: "▾"; font-size: 0.6em; margin-left: 2px; color: var(--rouge);
+  }
+  .lede {
+    font-size: clamp(15px, 1.2vw, 17px);
+    color: var(--ink-2);
+    max-width: 46ch;
+    margin: 0 0 28px 0;
+    line-height: 1.55;
+  }
+  .cta-row { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--ink); color: var(--bg);
+    padding: 13px 22px; font-size: 14px; font-weight: 500;
+    border: 1px solid var(--ink); cursor: pointer; border-radius: 0;
+    transition: background 0.15s, color 0.15s;
+  }
+  .btn:hover { background: var(--bleu); border-color: var(--bleu); }
+  .btn-ghost {
+    background: transparent; color: var(--ink-2); border-color: transparent;
+    font-size: 13px; padding: 13px 0;
+  }
+  .btn-ghost:hover { color: var(--bleu); background: transparent; }
+
+  .hero-vis {
+    background: var(--bg-2);
+    border: 1px solid var(--rule);
+    padding: 22px 24px 18px;
+    position: relative;
+  }
+  .hero-vis-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.07em;
+    margin-bottom: 14px;
+  }
+  /* TREEMAP — flexbox imbriqué, chaque case = aire proportionnelle au % */
+  .treemap {
+    display: flex; flex-direction: column;
+    gap: 2px; height: 320px; width: 100%;
+  }
+  .tm-row { display: flex; gap: 2px; min-height: 0; }
+  .tm {
+    background: var(--ardoise);
+    color: var(--bg);
+    padding: 10px 12px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    transition: background 0.15s;
+    cursor: pointer; min-width: 0; min-height: 0; overflow: hidden;
+  }
+  .tm:hover { background: var(--ink); }
+  .tm-name { font-size: 13px; font-weight: 500; line-height: 1.15; letter-spacing: -0.005em; }
+  .tm-amt  { font-family: var(--mono); font-size: 10.5px; opacity: 0.65; margin-top: 2px; }
+  .tm-pct  { font-family: var(--disp); font-size: 26px; font-weight: 700; letter-spacing: -0.03em; align-self: flex-end; line-height: 1; }
+  .tm.tm-sm .tm-name { font-size: 12px; }
+  .tm.tm-sm .tm-pct  { font-size: 16px; }
+  .tm.tm-xs { padding: 8px 10px; }
+  .tm.tm-xs .tm-name { font-size: 10.5px; line-height: 1.1; }
+  .tm.tm-xs .tm-pct  { font-size: 13px; }
+  .tm.tm-xs .tm-amt  { display: none; }
+  .tm.tm-dette { background: var(--rouge); }
+  .tm.tm-dette:hover { background: #8a0a1f; }
+
+  .hero-vis-foot {
+    margin-top: 12px;
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+    border-top: 1px solid var(--rule); padding-top: 10px;
+    display: flex; justify-content: space-between;
+  }
+
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+    .hero h1 { font-size: clamp(36px, 9vw, 52px); }
+  }
+
+  /* ─────────────────────────  SCALE — grand chiffre  ───────────────────────── */
+  .scale {
+    padding-top: clamp(56px, 7vw, 96px);
+    padding-bottom: clamp(56px, 7vw, 96px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .scale-line { font-size: 14px; color: var(--muted); margin-bottom: 14px; font-family: var(--mono); letter-spacing: 0.05em; text-transform: uppercase; }
+  .scale-grid {
+    display: grid; grid-template-columns: 1.3fr 1fr;
+    gap: clamp(24px, 4vw, 56px);
+    align-items: end;
+  }
+  .scale-num {
+    font-family: var(--disp);
+    font-size: clamp(96px, 14vw, 200px);
+    line-height: 0.92; letter-spacing: -0.05em;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .scale-num em {
+    font-family: var(--sans);
+    font-size: 0.22em; font-style: normal;
+    color: var(--ink-2); margin-left: 8px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .spark-wrap {
+    background: var(--bg-2); border: 1px solid var(--rule);
+    padding: 18px 22px;
+  }
+  .spark-title {
+    font-family: var(--disp); font-size: 22px; font-weight: 700;
+    letter-spacing: -0.025em; color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .spark { width: 100%; height: 90px; display: block; }
+  .spark path.line { fill: none; stroke: var(--ink); stroke-width: 2; }
+  .spark path.area { fill: var(--ocre); opacity: 0.22; }
+  .spark-foot {
+    display: flex; justify-content: space-between;
+    margin-top: 8px;
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+  }
+  .spark-foot b { color: var(--ink-2); font-weight: 500; }
+  .scale-delta {
+    margin-top: 18px;
+    font-family: var(--mono); font-size: 13px; color: var(--ink-2);
+    display: flex; gap: 14px; flex-wrap: wrap; align-items: center;
+  }
+  .scale-delta .up { color: var(--vert); font-weight: 600; }
+  .scale-delta .sep { color: var(--muted-2); }
+  .scale-cap {
+    margin-top: 16px; font-size: 14px; color: var(--ink-2);
+    max-width: 56ch;
+  }
+  .scale-cap b { color: var(--ink); font-weight: 600; }
+
+  @media (max-width: 720px) {
+    .scale-grid { grid-template-columns: 1fr; gap: 20px; }
+  }
+
+  /* ─────────────────────────  BREAKDOWN  ───────────────────────── */
+  .breakdown {
+    padding-top: clamp(40px, 6vw, 80px);
+    padding-bottom: clamp(40px, 6vw, 80px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .breakdown h2 {
+    font-family: var(--disp); font-size: clamp(24px, 2.6vw, 34px);
+    font-weight: 600; letter-spacing: -0.025em;
+    margin: 0 0 22px;
+  }
+  .bar-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .bar-table thead th {
+    text-align: left; font-weight: 500; color: var(--muted);
+    font-family: var(--mono); font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.06em; padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .bar-table thead th.r { text-align: right; }
+  .bar-table tbody tr { border-bottom: 1px solid var(--rule); }
+  .bar-table tbody tr:hover td { background: var(--bg-2); }
+  .bar-table td { padding: 10px 0; vertical-align: middle; }
+  .bar-table td.lab { width: 200px; }
+  .bar-table td.bar-cell { width: auto; padding-right: 16px; }
+  .bar-table td.amt { text-align: right; font-family: var(--mono); width: 70px; }
+  .bar-fill {
+    height: 18px; display: block; width: 0;
+    transition: width 0.7s cubic-bezier(.2,.7,.3,1);
+  }
+  .bar-fill { background: var(--ink); }
+  .source-line {
+    margin-top: 14px;
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+    text-align: right;
+  }
+
+  /* ─────────────────────────  PHOTO + QUOTE (respiration)  ───────────────────────── */
+  .respire {
+    background: var(--ink);
+    color: var(--bg);
+    padding: clamp(60px, 8vw, 120px) 0;
+    position: relative;
+  }
+  .respire .wrap { position: relative; }
+  .quote {
+    font-family: var(--disp); font-style: italic;
+    font-size: clamp(28px, 3.6vw, 48px);
+    line-height: 1.18; letter-spacing: -0.03em;
+    max-width: 22ch; margin: 0; font-weight: 600;
+  }
+  .quote::before { content: "« "; opacity: 0.5; }
+  .quote::after  { content: " »"; opacity: 0.5; }
+  .quote-meta {
+    margin-top: 22px;
+    font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.55);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    display: flex; gap: 18px; flex-wrap: wrap;
+  }
+  .quote-meta a:hover { color: var(--bg); }
+
+  /* ─────────────────────────  EXPLORER ARRONDISSEMENT  ───────────────────────── */
+  .explorer {
+    padding-top: clamp(56px, 7vw, 96px);
+    padding-bottom: clamp(56px, 7vw, 96px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .explorer h2 {
+    font-family: var(--disp); font-size: clamp(28px, 3.2vw, 44px);
+    font-weight: 600; letter-spacing: -0.03em;
+    margin: 0 0 8px;
+  }
+  .explorer h2 em { color: var(--bleu); font-style: italic; font-weight: 700; }
+  .explorer .sub { color: var(--ink-2); font-size: 15px; margin: 0 0 28px; max-width: 56ch; }
+  .explorer-grid {
+    display: grid; grid-template-columns: 1.4fr 1fr;
+    gap: clamp(20px, 3vw, 48px); align-items: stretch;
+  }
+  .map-wrap {
+    background: var(--bg-2);
+    border: 1px solid var(--rule);
+    padding: 20px; aspect-ratio: 1.2 / 1; position: relative;
+  }
+  .map-wrap svg { width: 100%; height: 100%; display: block; }
+  .map-wrap path.arr {
+    fill: var(--bg); stroke: var(--ink-2); stroke-width: 0.6;
+    transition: fill 0.15s; cursor: pointer;
+  }
+  .map-wrap path.arr:hover { fill: var(--ocre); }
+  .map-wrap path.arr.active { fill: var(--rouge); stroke: var(--rouge); }
+  .map-legend {
+    position: absolute; left: 20px; bottom: 16px;
+    font-family: var(--mono); font-size: 10px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .arr-panel {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    padding: 28px;
+    display: flex; flex-direction: column;
+    transition: opacity 0.2s;
+  }
+  .arr-panel-kicker {
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .arr-panel h3 {
+    font-family: var(--disp); font-size: 32px; font-weight: 700;
+    margin: 6px 0 18px; letter-spacing: -0.03em;
+  }
+  .arr-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; margin-bottom: 22px; }
+  .arr-stat { border-top: 1px solid var(--rule); padding-top: 8px; }
+  .arr-stat-lab { font-family: var(--mono); font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .arr-stat-val { font-size: 22px; font-weight: 700; margin-top: 2px; font-family: var(--disp); letter-spacing: -0.025em; }
+  .arr-stat-delta { font-size: 11px; font-family: var(--mono); color: var(--vert); margin-top: 2px; }
+  .arr-stat-delta.down { color: var(--rouge); }
+  .arr-projects { font-size: 13px; color: var(--ink-2); border-top: 1px solid var(--rule); padding-top: 14px; }
+  .arr-projects ol { margin: 8px 0 0; padding: 0 0 0 18px; }
+  .arr-projects li { margin: 4px 0; }
+  .arr-projects li b { font-family: var(--mono); font-size: 12px; color: var(--ink); }
+  .arr-cta { margin-top: auto; padding-top: 18px; }
+  .arr-cta a { font-family: var(--mono); font-size: 12px; color: var(--bleu); border-bottom: 1px solid var(--bleu); padding-bottom: 1px; }
+
+  @media (max-width: 860px) {
+    .explorer-grid { grid-template-columns: 1fr; }
+    .map-wrap { aspect-ratio: 1.4 / 1; }
+  }
+
+  /* ─────────────────────────  INSIDE — TUILES  ───────────────────────── */
+  .inside {
+    padding-top: clamp(56px, 7vw, 96px);
+    padding-bottom: clamp(56px, 7vw, 96px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .inside h2 {
+    font-family: var(--disp); font-size: clamp(28px, 3.2vw, 44px);
+    font-weight: 600; letter-spacing: -0.03em;
+    margin: 0 0 8px;
+  }
+  .inside h2 em { color: var(--bleu); font-style: italic; font-weight: 700; }
+  .inside .sub { color: var(--ink-2); font-size: 15px; margin: 0 0 32px; max-width: 56ch; }
+  .tiles {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .tile {
+    background: var(--bg);
+    padding: 24px 22px;
+    display: flex; flex-direction: column;
+    transition: background 0.18s, color 0.18s;
+    cursor: pointer; position: relative;
+    grid-column: span 3;
+    min-height: 280px;
+  }
+  .tile.wide { grid-column: span 6; }
+  .tile:hover { background: var(--ink); color: var(--bg); }
+  .tile-kicker {
+    font-family: var(--mono); font-size: 10px; color: var(--ocre);
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .tile-vis { margin: 12px 0 16px; flex: 0 0 auto; }
+  .tile-vis svg { width: 100%; height: 84px; display: block; }
+  .tile h3 { font-family: var(--disp); font-size: 22px; font-weight: 600; margin: 0 0 6px; letter-spacing: -0.025em; }
+  .tile p { font-size: 13px; color: var(--muted); margin: 0 0 14px; line-height: 1.5; }
+  .tile:hover p { color: rgba(255,255,255,0.6); }
+  .tile-foot {
+    margin-top: auto; display: flex; justify-content: space-between; align-items: baseline;
+    border-top: 1px solid var(--rule); padding-top: 12px;
+  }
+  .tile:hover .tile-foot { border-top-color: rgba(255,255,255,0.2); }
+  .tile-kpi { font-family: var(--disp); font-size: 32px; font-weight: 700; letter-spacing: -0.03em; }
+  .tile-kpi-u { font-size: 14px; color: var(--muted); margin-left: 4px; font-family: var(--sans); }
+  .tile:hover .tile-kpi-u { color: rgba(255,255,255,0.55); }
+  .tile-arrow { font-family: var(--mono); color: var(--muted); }
+  .tile:hover .tile-arrow { color: var(--rouge); }
+
+  /* sparkline tile */
+  .tile-vis path.line { fill: none; stroke: var(--ink); stroke-width: 1.6; }
+  .tile-vis path.area { fill: var(--ocre); opacity: 0.18; }
+  .tile-vis circle.dot { fill: var(--rouge); }
+  .tile:hover .tile-vis path.line { stroke: var(--bg); }
+  .tile:hover .tile-vis path.area { opacity: 0; }
+  .tile-vis .bar { fill: var(--ardoise); }
+  .tile-vis .bar.alt { fill: var(--ocre); }
+  .tile:hover .tile-vis .bar { fill: var(--bg); }
+  .tile:hover .tile-vis .bar.alt { fill: var(--rouge); }
+
+  .tile-toplist { font-family: var(--mono); font-size: 12px; line-height: 1.7; }
+  .tile-toplist .row { display: grid; grid-template-columns: 22px 1fr auto; gap: 8px; }
+  .tile-toplist .rk { color: var(--muted); }
+  .tile:hover .tile-toplist .rk { color: rgba(255,255,255,0.5); }
+  .tile-toplist .nm { color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tile:hover .tile-toplist .nm { color: var(--bg); }
+  .tile-toplist .am { color: var(--ink-2); }
+  .tile:hover .tile-toplist .am { color: rgba(255,255,255,0.7); }
+
+  @media (max-width: 980px) {
+    .tiles { grid-template-columns: repeat(2, 1fr); }
+    .tile, .tile.wide { grid-column: span 1; }
+  }
+
+  /* ─────────────────────────  PIPELINE  ───────────────────────── */
+  .pipeline {
+    padding-top: clamp(56px, 7vw, 96px);
+    padding-bottom: clamp(56px, 7vw, 96px);
+    border-bottom: 1px solid var(--rule);
+    background: var(--bg-2);
+  }
+  .pipeline h2 {
+    font-family: var(--disp); font-size: clamp(26px, 3vw, 38px);
+    font-weight: 600; letter-spacing: -0.03em; margin: 0 0 8px;
+  }
+  .pipeline .sub { color: var(--ink-2); font-size: 15px; margin: 0 0 36px; max-width: 56ch; }
+  .verify-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+    margin-bottom: 28px;
+  }
+  .verify-step { padding-top: 18px; border-top: 2px solid var(--ink); }
+  .verify-n {
+    font-family: var(--mono); font-size: 12px; font-weight: 500;
+    color: var(--muted); letter-spacing: 0.08em; line-height: 1;
+    margin-bottom: 12px; text-transform: uppercase;
+  }
+  .verify-step h3 {
+    font-family: var(--disp); font-size: 22px; font-weight: 600;
+    margin: 0 0 8px; letter-spacing: -0.025em; line-height: 1.2;
+  }
+  .verify-step p { font-size: 14px; color: var(--ink-2); margin: 0; line-height: 1.55; }
+  .verify-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+  @media (max-width: 860px) {
+    .verify-grid { grid-template-columns: 1fr; gap: 22px; }
+  }
+
+  /* ─────────────────────────  ANALYSES (gardé)  ───────────────────────── */
+  .analyses {
+    padding-top: clamp(56px, 7vw, 96px);
+    padding-bottom: clamp(56px, 7vw, 96px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .analyses h2 {
+    font-family: var(--disp); font-size: clamp(28px, 3.2vw, 44px);
+    font-weight: 600; letter-spacing: -0.03em; margin: 0 0 8px;
+  }
+  .analyses h2 em { color: var(--bleu); font-style: italic; font-weight: 700; }
+  .analyses .sub { color: var(--ink-2); font-size: 15px; margin: 0 0 32px; max-width: 56ch; }
+  .ana-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .ana-card {
+    border: 1px solid var(--rule);
+    background: var(--bg);
+    transition: background 0.15s; cursor: pointer;
+  }
+  .ana-card:hover { background: var(--bg-2); }
+  .ana-photo {
+    aspect-ratio: 16 / 10;
+    background-size: cover; background-position: center;
+    background-color: var(--ardoise);
+    display: block;
+  }
+  .ana-body { padding: 18px 20px 22px; }
+  .ana-cat { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--rouge); }
+  .ana-card h3 { font-family: var(--disp); font-size: 19px; font-weight: 600; margin: 6px 0 8px; letter-spacing: -0.02em; line-height: 1.25; }
+  .ana-card p { font-size: 13.5px; color: var(--ink-2); margin: 0 0 14px; line-height: 1.55; }
+  .ana-meta { font-family: var(--mono); font-size: 11px; color: var(--muted); display: flex; gap: 10px; }
+
+  @media (max-width: 860px) { .ana-grid { grid-template-columns: 1fr; } }
+
+  /* ─────────────────────────  CHANGELOG  ───────────────────────── */
+  .changelog {
+    padding-top: clamp(40px, 5vw, 72px);
+    padding-bottom: clamp(40px, 5vw, 72px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .changelog h2 {
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 18px;
+    font-weight: 500;
+  }
+  .changelog ul { list-style: none; padding: 0; margin: 0; }
+  .changelog li {
+    display: grid; grid-template-columns: 130px 16px 1fr;
+    gap: 14px; align-items: baseline;
+    padding: 12px 0; border-bottom: 1px solid var(--rule);
+  }
+  .changelog li:last-child { border-bottom: 0; }
+  .cl-date { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .cl-dot { width: 6px; height: 6px; background: var(--rouge); border-radius: 50%; margin-top: 6px; }
+  .cl-text { font-size: 14px; color: var(--ink-2); }
+  .cl-text b { color: var(--ink); font-weight: 600; }
+  .cl-foot { margin-top: 18px; font-family: var(--mono); font-size: 12px; color: var(--bleu); }
+
+  /* ─────────────────────────  BYLINE  ───────────────────────── */
+  .byline {
+    padding: clamp(40px, 5vw, 72px) 0;
+    background: var(--ink); color: var(--bg);
+  }
+  .byline-grid { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; justify-content: space-between; }
+  .byline-l { display: flex; gap: 16px; align-items: center; }
+  .byline-mark {
+    width: 54px; height: 54px; border-radius: 50%;
+    background: var(--bg); color: var(--ink);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--disp); font-weight: 700; font-size: 24px;
+  }
+  .byline-name { font-size: 15px; font-weight: 500; }
+  .byline-meta { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.55); }
+  .byline-r { display: flex; gap: 10px; flex-wrap: wrap; }
+  .byline-r a {
+    background: transparent; color: var(--bg);
+    border: 1px solid rgba(255,255,255,0.3); padding: 9px 14px;
+    font-size: 12.5px; font-family: var(--mono);
+  }
+  .byline-r a:hover { background: var(--bg); color: var(--ink); }
+
+  /* ─────────────────────────  FOOTER  ───────────────────────── */
+  .footer { padding: 40px 0; font-family: var(--mono); font-size: 11px; color: var(--muted); border-top: 1px solid var(--rule); }
+  .footer-inner { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+</style>
+</head>
+
+<body>
+
+<!-- ─── 0. TICKER (cohérent : tout 2026) ─── -->
+<div class="ticker" aria-label="Chiffres clés 2026">
+  <div class="ticker-inner">
+    <span><em>●</em> <b>Budget 2026</b></span><span class="ticker-dot"></span>
+    <span><b>11,72 Md€</b> de dépenses</span><span class="ticker-dot"></span>
+    <span><b>458 €</b> / habitant / mois</span><span class="ticker-dot"></span>
+    <span><b>2,6 Md€</b> d'investissements</span><span class="ticker-dot"></span>
+    <span><b>312 M€</b> de subventions versées</span><span class="ticker-dot"></span>
+    <span><b>1 407</b> contrats marchés notifiés</span><span class="ticker-dot"></span>
+    <span><em>Population INSEE</em> <b>2 133 111</b></span><span class="ticker-dot"></span>
+    <span><em>MAJ</em> <b>18 avril 2026</b></span><span class="ticker-dot"></span>
+    <span><em>●</em> <b>Budget 2026</b></span><span class="ticker-dot"></span>
+    <span><b>11,72 Md€</b> de dépenses</span><span class="ticker-dot"></span>
+    <span><b>458 €</b> / habitant / mois</span>
+  </div>
+</div>
+
+<!-- ─── NAV ─── -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="nav-brand"><span class="nav-mark">N</span> France Open Data</div>
+    <nav class="nav-links">
+      <a href="#">Le budget</a>
+      <a href="#">Investissements</a>
+      <a href="#">Subventions</a>
+      <a href="#">Marchés publics</a>
+      <a href="#">Logement social</a>
+      <a href="#">Bilan</a>
+      <a href="#">Analyses</a>
+    </nav>
+    <div class="nav-spacer"></div>
+    <div class="nav-meta"><span>Paris ▾</span><span>FR · EN</span></div>
+  </div>
+</header>
+
+<!-- ─── 1. HERO ─── -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Où va l'<em>argent public</em><br>à <span class="scope">Paris</span> ?</h1>
+      <p class="lede">
+        11,72 milliards d'euros de dépenses publiques, 23 000 marchés, 85 000 subventions.
+        Tout est ici, ligne par ligne, sourcé aux comptes officiels.
+      </p>
+      <div class="cta-row">
+        <a class="btn" href="#">Ouvrir les comptes 2026 →</a>
+        <a class="btn btn-ghost" href="#explorer">ou explorer par arrondissement ↓</a>
+      </div>
+    </div>
+
+    <!-- TREEMAP des dépenses 2026 — chaque cellule = poste, taille = montant -->
+    <div class="hero-vis">
+      <div class="hero-vis-head">
+        <span>Dépenses 2026 par fonction</span>
+        <span>11,72 Md€</span>
+      </div>
+      <!-- TREEMAP : 3 rangées de hauteurs proportionnelles, chaque case = largeur proportionnelle.
+           Rangée 1 (50% = Personnel 26 + Social 24)
+           Rangée 2 (33% = Aménagement 14 + Éducation 10 + Environnement 9)
+           Rangée 3 (17% = Transports 7 + Culture 6 + Dette 4) — Sécurité+Éco regroupés "Autres"
+           TOTAL = 100 % — pas de chevauchement, pas de trou. -->
+      <div class="treemap" role="figure" aria-label="Répartition des dépenses 2026 par fonction">
+        <div class="tm-row" style="flex: 50;">
+          <div class="tm" style="flex: 26;">
+            <div><div class="tm-name">Personnel &amp; admin</div><div class="tm-amt">3,05 Md€</div></div>
+            <div class="tm-pct">26 %</div>
+          </div>
+          <div class="tm" style="flex: 24;">
+            <div><div class="tm-name">Action sociale</div><div class="tm-amt">2,81 Md€</div></div>
+            <div class="tm-pct">24 %</div>
+          </div>
+        </div>
+        <div class="tm-row" style="flex: 33;">
+          <div class="tm" style="flex: 14;">
+            <div><div class="tm-name">Aménagement<br>&amp; logement</div><div class="tm-amt">1,64 Md€</div></div>
+            <div class="tm-pct">14 %</div>
+          </div>
+          <div class="tm tm-sm" style="flex: 10;">
+            <div><div class="tm-name">Éducation</div><div class="tm-amt">1,17 Md€</div></div>
+            <div class="tm-pct">10 %</div>
+          </div>
+          <div class="tm tm-sm" style="flex: 9;">
+            <div><div class="tm-name">Environnement</div><div class="tm-amt">1,05 Md€</div></div>
+            <div class="tm-pct">9 %</div>
+          </div>
+        </div>
+        <div class="tm-row" style="flex: 17;">
+          <div class="tm tm-sm" style="flex: 7;">
+            <div class="tm-name">Transports</div>
+            <div class="tm-pct">7 %</div>
+          </div>
+          <div class="tm tm-sm" style="flex: 6;">
+            <div class="tm-name">Culture &amp; sport</div>
+            <div class="tm-pct">6 %</div>
+          </div>
+          <div class="tm tm-sm" style="flex: 4;">
+            <div class="tm-name">Sécurité, économie…</div>
+            <div class="tm-pct">4 %</div>
+          </div>
+          <div class="tm tm-dette tm-sm" style="flex: 4;">
+            <div class="tm-name">Remb. dette</div>
+            <div class="tm-pct">4 %</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-vis-foot">
+        <span>Source : Compte administratif 2026 · paris.fr</span>
+        <span>Chaque case est cliquable</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 2. SCALE ─── -->
+<section class="scale">
+  <div class="wrap">
+    <p class="scale-line">Chaque mois, la Ville dépense</p>
+    <div class="scale-grid">
+      <div>
+        <div class="scale-num"><span data-countup="458">458</span><em>€ / habitant</em></div>
+        <p class="scale-delta">
+          <span class="up">↑ 9,6 %</span>
+          <span class="sep">·</span>
+          <span>+40 € vs exercice 2022</span>
+        </p>
+        <p class="scale-cap">
+          Soit <b>5 495 € par an</b>. Budget 2026 rapporté aux <b>2 133 111 Parisiens</b> (INSEE) — calcul brut, toutes sections confondues.
+        </p>
+      </div>
+      <div class="spark-wrap">
+        <div class="spark-title">+ 27 % en 12 ans</div>
+        <svg class="spark" viewBox="0 0 400 110" preserveAspectRatio="none" aria-label="Évolution du budget par habitant, 2014 à 2026">
+          <path class="area" d="M 0,82 L 30,80 L 60,76 L 90,72 L 120,68 L 150,90 L 180,94 L 210,82 L 240,70 L 270,60 L 300,50 L 330,42 L 360,30 L 400,18 L 400,100 L 0,100 Z"/>
+          <path class="line"
+                d="M 0,82 L 30,80 L 60,76 L 90,72 L 120,68 L 150,90 L 180,94 L 210,82 L 240,70 L 270,60 L 300,50 L 330,42 L 360,30 L 400,18"/>
+          <circle cx="0"   cy="82" r="3" fill="#0a0a0a"/>
+          <circle cx="400" cy="18" r="4" fill="#c8102e"/>
+        </svg>
+        <div class="spark-foot">
+          <span><b>2014</b> · 360 €</span>
+          <span><b style="color:var(--rouge);">2026</b> · 458 €</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 3. BREAKDOWN ─── -->
+<section class="breakdown">
+  <div class="wrap">
+    <h2>Répartition par thématique · € par habitant et par mois</h2>
+    <table class="bar-table" id="barTable">
+      <thead>
+        <tr><th>Thématique</th><th></th><th class="r">€/hab/mois</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="lab">Personnel &amp; admin</td><td class="bar-cell"><span class="bar-fill" data-w="100"></span></td><td class="amt">99 €</td></tr>
+        <tr><td class="lab">Action sociale</td><td class="bar-cell"><span class="bar-fill" data-w="91"></span></td><td class="amt">90 €</td></tr>
+        <tr><td class="lab">Aménagement &amp; logement</td><td class="bar-cell"><span class="bar-fill" data-w="51"></span></td><td class="amt">51 €</td></tr>
+        <tr><td class="lab">Éducation</td><td class="bar-cell"><span class="bar-fill" data-w="39"></span></td><td class="amt">39 €</td></tr>
+        <tr><td class="lab">Environnement</td><td class="bar-cell"><span class="bar-fill" data-w="36"></span></td><td class="amt">36 €</td></tr>
+        <tr><td class="lab">Transports</td><td class="bar-cell"><span class="bar-fill" data-w="33"></span></td><td class="amt">33 €</td></tr>
+        <tr><td class="lab">Culture &amp; sport</td><td class="bar-cell"><span class="bar-fill" data-w="31"></span></td><td class="amt">31 €</td></tr>
+        <tr><td class="lab">Remboursement dette</td><td class="bar-cell"><span class="bar-fill" data-w="28"></span></td><td class="amt">28 €</td></tr>
+        <tr><td class="lab">Sécurité</td><td class="bar-cell"><span class="bar-fill" data-w="20"></span></td><td class="amt">20 €</td></tr>
+        <tr><td class="lab">Économie</td><td class="bar-cell"><span class="bar-fill" data-w="4"></span></td><td class="amt">4 €</td></tr>
+      </tbody>
+    </table>
+    <div class="source-line">▴ Source : Compte administratif 2026 · paris.fr · Population : INSEE 2024</div>
+  </div>
+</section>
+
+<!-- ─── 4. PHOTO + QUOTE (respiration) ─── -->
+<section class="respire">
+  <div class="wrap">
+    <p class="quote">Chaque ligne du budget est ici. Pas d'estimation, pas d'opinion.</p>
+    <p class="quote-meta">
+      <a href="#">Méthode →</a>
+      <a href="#">Licence MIT</a>
+      <a href="#">Code source GitHub ↗</a>
+      <span style="color:rgba(255,255,255,0.35)">© Hôtel de Ville · cc-by-2.0</span>
+    </p>
+  </div>
+</section>
+
+<!-- ─── 5. EXPLORER ARRONDISSEMENT ─── -->
+<section class="explorer" id="explorer">
+  <div class="wrap">
+    <h2>Et chez <em>vous</em> ?</h2>
+    <p class="sub">Cliquez sur un arrondissement pour voir ses chiffres clés.</p>
+
+    <div class="explorer-grid">
+      <div class="map-wrap">
+        <svg viewBox="0 0 200 140" id="parisMap" aria-label="Carte de Paris par arrondissement">
+          <!-- les paths sont injectés en JS depuis ARRONDISSEMENT_PATHS -->
+        </svg>
+        <div class="map-legend">▸ teinte = dépenses par habitant · 2026</div>
+      </div>
+
+      <div class="arr-panel" id="arrPanel">
+        <span class="arr-panel-kicker">Arrondissement sélectionné</span>
+        <h3 id="arrName">13<sup>e</sup> arrondissement</h3>
+        <div class="arr-stats">
+          <div class="arr-stat">
+            <div class="arr-stat-lab">Population</div>
+            <div class="arr-stat-val" id="arrPop">181 552</div>
+            <div class="arr-stat-delta down">↓ 0,8 % vs 2018</div>
+          </div>
+          <div class="arr-stat">
+            <div class="arr-stat-lab">Investissements 2026</div>
+            <div class="arr-stat-val" id="arrInvest">142 M€</div>
+            <div class="arr-stat-delta">↑ 12,4 % vs 2022</div>
+          </div>
+          <div class="arr-stat">
+            <div class="arr-stat-lab">Logement social</div>
+            <div class="arr-stat-val" id="arrLog">35,2 %</div>
+            <div class="arr-stat-delta">↑ 2,1 pts vs 2018</div>
+          </div>
+          <div class="arr-stat">
+            <div class="arr-stat-lab">Subventions reçues</div>
+            <div class="arr-stat-val" id="arrSubv">28,4 M€</div>
+            <div class="arr-stat-delta">↑ 4,7 % vs 2022</div>
+          </div>
+        </div>
+        <div class="arr-projects">
+          <span class="arr-panel-kicker">Top 3 chantiers 2024-2026</span>
+          <ol id="arrProjects">
+            <li><b>28 M€</b> — Olympiades, rénovation thermique</li>
+            <li><b>17 M€</b> — Bibliothèque F. Mitterrand, accès</li>
+            <li><b>9 M€</b> — Hôpital Pitié-Salpêtrière, voirie</li>
+          </ol>
+        </div>
+        <div class="arr-cta">
+          <a href="#">Voir tout pour le 13ᵉ →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 6. INSIDE ─── -->
+<section class="inside">
+  <div class="wrap">
+    <h2>Un aperçu des <em>analyses possibles</em>.</h2>
+    <p class="sub">Le site contient de multiples pages, onglets et filtres. En voici quelques-uns pour vous donner une idée — où va l'argent, comment ça évolue, dans quels quartiers, pour qui.</p>
+
+    <div class="tiles">
+
+      <a class="tile wide" href="#">
+        <span class="tile-kicker">01 / Flux de l'argent</span>
+        <div class="tile-vis">
+          <svg viewBox="0 0 360 84" preserveAspectRatio="none">
+            <g class="bar-group">
+              <rect class="bar" x="0"   y="40" width="22" height="44"/>
+              <rect class="bar" x="28"  y="34" width="22" height="50"/>
+              <rect class="bar" x="56"  y="38" width="22" height="46"/>
+              <rect class="bar" x="84"  y="30" width="22" height="54"/>
+              <rect class="bar" x="112" y="24" width="22" height="60"/>
+              <rect class="bar" x="140" y="20" width="22" height="64"/>
+              <rect class="bar" x="168" y="16" width="22" height="68"/>
+              <rect class="bar" x="196" y="22" width="22" height="62"/>
+              <rect class="bar" x="224" y="14" width="22" height="70"/>
+              <rect class="bar" x="252" y="10" width="22" height="74"/>
+              <rect class="bar" x="280" y="6"  width="22" height="78"/>
+              <rect class="bar alt" x="308" y="2"  width="22" height="82"/>
+              <rect class="bar alt" x="336" y="0"  width="22" height="84"/>
+            </g>
+          </svg>
+        </div>
+        <h3>Budget de la Ville</h3>
+        <p>Recettes, dépenses, compte administratif. Évolution 2014-2026, ventilée par fonction.</p>
+        <div class="tile-foot">
+          <div><span class="tile-kpi">11,72</span><span class="tile-kpi-u">Md€ · 2026</span></div>
+          <div class="tile-arrow">↑ 9,6 % →</div>
+        </div>
+      </a>
+
+      <a class="tile" href="#">
+        <span class="tile-kicker">02 / Chronologie</span>
+        <div class="tile-vis">
+          <svg viewBox="0 0 200 84" preserveAspectRatio="none">
+            <path class="area" d="M 0,60 L 25,52 L 50,46 L 75,40 L 100,32 L 125,28 L 150,22 L 175,14 L 200,8 L 200,84 L 0,84 Z"/>
+            <path class="line" d="M 0,60 L 25,52 L 50,46 L 75,40 L 100,32 L 125,28 L 150,22 L 175,14 L 200,8"/>
+            <circle class="dot" cx="200" cy="8" r="3"/>
+          </svg>
+        </div>
+        <h3>Évolution</h3>
+        <p>L'épargne brute, la dette, le ratio désendettement — 2019 à 2026.</p>
+        <div class="tile-foot">
+          <div><span class="tile-kpi">+14,2</span><span class="tile-kpi-u">% sur 5 ans</span></div>
+          <div class="tile-arrow">→</div>
+        </div>
+      </a>
+
+      <a class="tile" href="#">
+        <span class="tile-kicker">03 / Bilan</span>
+        <div class="tile-vis">
+          <svg viewBox="0 0 200 84" preserveAspectRatio="none">
+            <rect class="bar"     x="20"  y="14" width="60" height="34"/>
+            <rect class="bar"     x="20"  y="50" width="60" height="20" opacity="0.65"/>
+            <rect class="bar"     x="20"  y="72" width="60" height="10" opacity="0.4"/>
+            <rect class="bar"     x="120" y="6"  width="60" height="40"/>
+            <rect class="bar alt" x="120" y="48" width="60" height="34"/>
+          </svg>
+        </div>
+        <h3>Patrimoine</h3>
+        <p>Ce que la Ville possède (terrains, bâtiments, réseaux) face au passif.</p>
+        <div class="tile-foot">
+          <div><span class="tile-kpi">26</span><span class="tile-kpi-u">Md€ · actif</span></div>
+          <div class="tile-arrow">→</div>
+        </div>
+      </a>
+
+      <a class="tile" href="#">
+        <span class="tile-kicker">04 / Carte</span>
+        <div class="tile-vis">
+          <svg viewBox="0 0 200 84" preserveAspectRatio="none">
+            <g class="bar-group">
+              <rect class="bar"     x="0"   y="50" width="14" height="34"/>
+              <rect class="bar"     x="18"  y="40" width="14" height="44"/>
+              <rect class="bar"     x="36"  y="28" width="14" height="56"/>
+              <rect class="bar alt" x="54"  y="14" width="14" height="70"/>
+              <rect class="bar"     x="72"  y="22" width="14" height="62"/>
+              <rect class="bar"     x="90"  y="36" width="14" height="48"/>
+              <rect class="bar"     x="108" y="44" width="14" height="40"/>
+              <rect class="bar"     x="126" y="48" width="14" height="36"/>
+              <rect class="bar"     x="144" y="52" width="14" height="32"/>
+              <rect class="bar"     x="162" y="56" width="14" height="28"/>
+              <rect class="bar"     x="180" y="64" width="14" height="20"/>
+            </g>
+          </svg>
+        </div>
+        <h3>Investissements</h3>
+        <p>Quels travaux, dans quels arrondissements, pour quels équipements ?</p>
+        <div class="tile-foot">
+          <div><span class="tile-kpi">2,6</span><span class="tile-kpi-u">Md€</span></div>
+          <div class="tile-arrow">→</div>
+        </div>
+      </a>
+
+      <a class="tile" href="#">
+        <span class="tile-kicker">05 / Classement</span>
+        <div class="tile-vis tile-toplist">
+          <div class="row"><span class="rk">01</span><span class="nm">CASVP</span><span class="am">417 M€</span></div>
+          <div class="row"><span class="rk">02</span><span class="nm">Paris Musées</span><span class="am">65 M€</span></div>
+          <div class="row"><span class="rk">03</span><span class="nm">Paris Habitat-OPH</span><span class="am">49 M€</span></div>
+        </div>
+        <h3>Subventions</h3>
+        <p>Qui reçoit, combien, pour quoi — 7 000 associations financées.</p>
+        <div class="tile-foot">
+          <div><span class="tile-kpi">312</span><span class="tile-kpi-u">M€ · 2024</span></div>
+          <div class="tile-arrow">→</div>
+        </div>
+      </a>
+
+      <a class="tile wide" href="#">
+        <span class="tile-kicker">06 / Commande publique</span>
+        <div class="tile-vis tile-toplist" style="display:grid;grid-template-columns:1fr 1fr;gap:6px 32px;">
+          <div class="row"><span class="rk">01</span><span class="nm">Eiffage Route IDF</span><span class="am">94 M€</span></div>
+          <div class="row"><span class="rk">04</span><span class="nm">Colas</span><span class="am">31 M€</span></div>
+          <div class="row"><span class="rk">02</span><span class="nm">La Louisiane</span><span class="am">42 M€</span></div>
+          <div class="row"><span class="rk">05</span><span class="nm">Vinci Construction</span><span class="am">28 M€</span></div>
+          <div class="row"><span class="rk">03</span><span class="nm">Balas</span><span class="am">36 M€</span></div>
+          <div class="row"><span class="rk">06</span><span class="nm">Eurovia Île-de-France</span><span class="am">24 M€</span></div>
+        </div>
+        <h3>Marchés publics</h3>
+        <p>1 407 contrats notifiés en 2024. Plurianuelles, titulaires, concentration du Top 10.</p>
+        <div class="tile-foot">
+          <div><span class="tile-kpi">2,5</span><span class="tile-kpi-u">Md€ · cumul commandes</span></div>
+          <div class="tile-arrow">→</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── 7. VÉRIFIER ─── -->
+<section class="pipeline">
+  <div class="wrap">
+    <h2>Vous ne nous croyez pas ?</h2>
+    <p class="sub">Aucun problème. Chaque chiffre que vous voyez ici vient d'un fichier officiel publié par la Ville. Et chaque chiffre est cliquable pour aller le vérifier.</p>
+
+    <div class="verify-grid">
+      <div class="verify-step">
+        <div class="verify-n">01 / Cliquer</div>
+        <h3>Sur n'importe quel chiffre de la page</h3>
+        <p>Un panneau s'ouvre avec la source exacte : nom du fichier, ligne, date de publication, lien direct.</p>
+      </div>
+      <div class="verify-step">
+        <div class="verify-n">02 / Télécharger</div>
+        <h3>Le fichier officiel original</h3>
+        <p>Pas un fichier qu'on a "préparé" pour vous. Le vrai CSV publié par la Ville, tel quel.</p>
+      </div>
+      <div class="verify-step">
+        <div class="verify-n">03 / Reproduire</div>
+        <h3>Le calcul vous-même</h3>
+        <p>Le code qui produit cette page est public sur GitHub, sous licence MIT. Vous pouvez tout refaire chez vous.</p>
+      </div>
+    </div>
+
+    <div class="verify-cta">
+      <a href="#" class="btn">Lire la méthode complète →</a>
+      <a href="#" class="btn btn-ghost">Code source GitHub ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 8. ANALYSES ─── -->
+<section class="analyses">
+  <div class="wrap">
+    <h2>Les <em>analyses</em>.</h2>
+    <p class="sub">Enquêtes, portraits, explications : ce que les données révèlent quand on les lit ligne par ligne.</p>
+
+    <div class="ana-grid">
+      <a class="ana-card" href="#">
+        <div class="ana-photo" style="background-image:url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80&auto=format&fit=crop');"></div>
+        <div class="ana-body">
+          <span class="ana-cat">Enquête</span>
+          <h3>Subventions à Paris : 1,35 Md€ en 2024, mais 60 % captés par 200 opérateurs publics</h3>
+          <p>Sur 1 353 M€ versés à 9 049 bénéficiaires en 2024, 816 M€ vont à 201 établissements publics — CASVP en tête à 416 M€.</p>
+          <div class="ana-meta"><span>18 avril 2026</span><span>·</span><span>9 min</span></div>
+        </div>
+      </a>
+      <a class="ana-card" href="#">
+        <div class="ana-photo" style="background-image:url('https://picsum.photos/seed/parislaw/800/500');"></div>
+        <div class="ana-body">
+          <span class="ana-cat">Explication</span>
+          <h3>La règle d'or des communes : ce que dit vraiment l'article L.1612-4</h3>
+          <p>Une commune ne peut pas emprunter pour payer ses salaires. Cette règle, codifiée à l'article L.1612-4 du CGCT.</p>
+          <div class="ana-meta"><span>26 avril 2026</span><span>·</span><span>7 min</span></div>
+        </div>
+      </a>
+      <a class="ana-card" href="#">
+        <div class="ana-photo" style="background-image:url('https://images.unsplash.com/photo-1581262208435-41726149a759?w=800&q=80&auto=format&fit=crop');"></div>
+        <div class="ana-body">
+          <span class="ana-cat">Enquête</span>
+          <h3>JO 2024 : anatomie d'un pic de livraison</h3>
+          <p>Entre 2022 et 2024, la Ville livre 48 équipements sportifs. Investissement +22 %, six surcoûts > 3 M€.</p>
+          <div class="ana-meta"><span>15 avril 2026</span><span>·</span><span>9 min</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BYLINE ─── -->
+<section class="byline">
+  <div class="wrap byline-grid">
+    <div class="byline-l">
+      <span class="byline-mark">N</span>
+      <div>
+        <div class="byline-name">France Open Data · collectif indépendant</div>
+        <div class="byline-meta">Toutes les analyses sont reproductibles depuis les CSV bruts · dernière revue 18 avril 2026</div>
+      </div>
+    </div>
+    <div class="byline-r">
+      <a href="#">Documentation</a>
+      <a href="#">Méthode</a>
+      <a href="#">GitHub ↗</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <span>France Open Data · MIT · 2026</span>
+    <span>Mockup landing v2 — donnée illustrative, mise à jour réelle pending pipeline</span>
+  </div>
+</footer>
+
+<script>
+// ───────── carte Paris : injecter les paths ─────────
+const PATHS = [
+  "M98.3,75.4L93.1,70.5L80.9,65.3L84.2,58.7L84.6,58.1L95.0,55.4L112.9,61.2L115.2,69.3L115.7,78.1L113.5,83.5L112.8,84.2L108.1,80.0L101.1,77.0L98.3,75.4Z",
+  "M112.8,84.2L114.0,85.5L112.9,87.0L110.6,91.2L103.5,94.6L92.5,91.4L98.4,75.4L111.4,82.5L112.8,84.2Z",
+  "M98.3,75.4L92.5,91.4L79.7,84.9L77.8,83.4L85.5,78.1L86.4,77.8L90.0,70.7L89.4,70.4L89.7,69.5L93.1,70.5L97.0,74.5L98.3,75.4Z",
+  "M66.3,78.6L58.2,70.7L64.1,65.4L79.4,64.6L89.7,69.5L89.4,70.4L90.0,70.7L87.1,77.0L86.4,77.8L77.4,83.6L75.6,84.3L73.2,82.1L71.0,83.0L66.3,78.6Z",
+  "M84.6,58.1L84.1,58.2L80.9,65.3L79.2,64.5L66.8,64.9L66.7,63.7L65.6,62.8L63.8,56.6L62.2,53.0L64.7,48.5L72.3,46.0L85.5,42.6L85.1,51.4L84.6,58.1Z",
+  "M94.8,44.3L101.9,42.4L102.2,45.8L100.7,53.2L100.7,56.8L94.7,55.5L84.6,58.1L85.4,53.0L86.5,42.1L87.4,41.5L94.8,44.3Z",
+  "M113.0,41.7L117.1,43.9L117.2,48.9L122.0,55.4L111.3,59.9L100.7,56.8L101.0,50.9L102.1,45.3L102.1,42.3L113.0,41.7Z",
+  "M136.1,75.2L137.8,78.5L137.9,81.9L122.6,78.9L117.1,76.2L116.3,76.2L114.5,65.2L112.5,60.4L122.2,55.5L129.8,65.9L131.5,70.6L133.4,71.4L135.3,73.6L136.1,75.2Z",
+  "M149.1,98.1L152.7,97.1L155.2,95.8L153.6,87.0L155.9,87.2L157.2,89.1L163.5,89.9L166.1,89.9L166.7,85.9L168.6,85.9L168.6,85.5L168.8,85.6L168.8,84.4L173.0,84.8L173.0,85.5L187.7,91.1L190.0,95.2L188.5,98.5L186.5,101.4L186.8,104.8L187.4,105.1L186.6,107.7L184.9,114.3L181.7,116.5L177.9,116.3L175.3,115.5L169.4,115.4L167.8,115.0L166.3,115.2L165.2,113.7L163.9,114.0L164.0,113.0L162.7,111.6L163.0,111.3L162.8,111.1L162.5,111.4L161.1,110.0L161.4,109.6L144.9,106.4L140.7,102.5L131.7,106.8L112.8,84.2L114.4,82.7L116.4,76.3L124.3,79.4L127.4,79.7L150.6,83.6L147.2,97.8L149.1,98.1Z",
+  "M120.5,93.2L131.6,106.9L125.4,110.5L112.1,117.6L106.6,117.7L104.0,114.8L99.8,117.8L98.2,117.5L98.1,118.0L97.8,117.9L98.3,113.7L96.2,110.2L96.0,108.1L96.4,92.8L103.6,94.5L110.9,91.0L113.4,86.1L114.0,85.5L120.5,93.2Z",
+  "M90.4,90.3L96.4,92.8L96.0,109.1L96.9,111.9L98.3,113.9L97.8,117.9L95.8,117.3L88.9,116.4L89.3,115.2L66.9,107.0L80.2,90.4L81.3,91.2L81.6,90.8L81.5,89.8L83.7,87.0L90.4,90.3Z",
+  "M65.1,77.4L71.0,83.0L73.3,82.1L75.7,84.4L77.8,83.4L83.7,87.0L81.4,89.9L81.6,90.8L81.1,91.1L80.2,90.4L66.3,107.4L58.9,104.6L50.3,99.4L45.7,104.4L41.9,104.4L41.9,100.2L43.5,98.6L41.7,96.9L38.5,97.8L51.6,78.7L58.2,70.7L65.1,77.4Z",
+  "M46.8,48.3L50.8,48.0L62.1,53.5L64.8,59.2L65.8,63.1L66.7,63.7L66.8,64.9L60.9,67.5L38.4,97.7L32.8,96.8L30.2,91.9L29.9,87.8L30.9,84.8L22.9,81.7L19.8,79.3L10.1,76.0L11.2,69.1L14.8,59.9L16.2,58.0L22.6,54.9L25.8,50.6L33.0,52.9L35.2,46.4L35.5,46.2L46.8,48.3Z",
+  "M62.1,53.2L51.0,47.7L51.8,43.1L55.1,39.2L80.6,23.4L87.7,23.3L84.4,38.2L85.1,42.8L71.9,46.1L64.3,48.6L62.1,53.2Z",
+  "M113.8,40.3L112.8,41.6L99.8,42.8L94.6,44.2L87.2,41.4L85.7,42.5L84.5,37.6L88.0,23.1L117.0,22.7L117.4,28.3L118.2,29.4L116.9,30.9L113.8,40.3Z",
+  "M131.1,22.9L132.3,23.3L135.8,26.6L137.5,31.4L139.0,42.3L142.3,45.1L145.8,46.3L146.8,48.3L140.7,51.0L135.5,51.8L131.2,51.8L130.3,52.4L128.9,52.7L127.5,53.6L122.0,55.3L117.1,48.7L115.1,41.9L113.0,41.7L114.8,38.3L117.3,30.2L118.2,29.3L117.2,28.0L117.5,22.2L127.9,22.0L131.1,22.9Z",
+  "M148.2,51.5L149.2,58.8L149.2,66.5L150.9,81.2L150.6,83.6L138.2,82.0L137.7,78.3L134.8,72.6L133.1,71.3L131.2,70.3L129.6,65.3L126.3,60.5L122.0,55.3L131.9,51.6L138.4,51.4L140.8,50.9L146.8,48.3L148.2,51.5Z"
+];
+// index → numéro arrondissement (0 = Paris Centre fusionné 1-4)
+const ARR_NUM = [0, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+// fake "intensité" pour choropleth (0..1) ; à brancher sur pipeline plus tard
+const ARR_INTENSITY = [0.95, 0.4, 0.55, 0.5, 0.6, 0.7, 0.85, 0.55, 0.6, 0.92, 0.7, 0.58, 0.42, 0.45, 0.65, 0.8, 0.78];
+// fake stats par arrondissement
+const ARR_DATA = {
+  0:  { name: "Paris Centre",   pop: "100 477", invest: "204 M€", log: "21,8 %", subv: "41,2 M€", projects: ["Forum des Halles, modernisation — 35 M€","Tour Saint-Jacques, restauration — 12 M€","Centre Pompidou, abords — 8 M€"] },
+  5:  { name: "5ᵉ",              pop: "57 910",  invest: "62 M€",  log: "19,1 %", subv: "12,8 M€", projects: ["Lutèce, valorisation — 9 M€","Sorbonne, abords — 6 M€","École Polytechnique site — 4 M€"] },
+  6:  { name: "6ᵉ",              pop: "40 519",  invest: "44 M€",  log: "12,5 %", subv: "9,1 M€",  projects: ["Saint-Sulpice, parvis — 5 M€","Luxembourg, voirie — 4 M€","Odéon, sécurisation — 3 M€"] },
+  7:  { name: "7ᵉ",              pop: "51 528",  invest: "58 M€",  log: "11,2 %", subv: "8,4 M€",  projects: ["Invalides, abords — 6 M€","Champ-de-Mars, voirie — 5 M€","UNESCO, sécurité — 3 M€"] },
+  8:  { name: "8ᵉ",              pop: "36 102",  invest: "71 M€",  log: "9,8 %",  subv: "10,2 M€", projects: ["Champs-Élysées, refonte — 22 M€","Madeleine, voirie — 6 M€","Palais Royal abords — 4 M€"] },
+  9:  { name: "9ᵉ",              pop: "59 660",  invest: "84 M€",  log: "16,3 %", subv: "13,7 M€", projects: ["Opéra, abords — 9 M€","Lafayette, voirie — 6 M€","Trinité, restauration — 4 M€"] },
+  10: { name: "10ᵉ",             pop: "90 940",  invest: "118 M€", log: "31,4 %", subv: "21,6 M€", projects: ["Gare du Nord, abords — 18 M€","Canal Saint-Martin, berges — 9 M€","Gare de l'Est, voirie — 7 M€"] },
+  11: { name: "11ᵉ",             pop: "144 575", invest: "97 M€",  log: "27,8 %", subv: "23,1 M€", projects: ["Bastille, abords — 11 M€","Père-Lachaise, voirie — 7 M€","République, refonte — 6 M€"] },
+  12: { name: "12ᵉ",             pop: "138 074", invest: "112 M€", log: "29,4 %", subv: "19,8 M€", projects: ["Bois de Vincennes, équipements — 14 M€","Bercy Village, voirie — 8 M€","Gare de Lyon, abords — 6 M€"] },
+  13: { name: "13ᵉ",             pop: "181 552", invest: "142 M€", log: "35,2 %", subv: "28,4 M€", projects: ["Olympiades, rénovation thermique — 28 M€","Bibliothèque F. Mitterrand, accès — 17 M€","Hôpital Pitié-Salpêtrière, voirie — 9 M€"] },
+  14: { name: "14ᵉ",             pop: "139 029", invest: "108 M€", log: "32,1 %", subv: "22,4 M€", projects: ["Montparnasse, refonte — 19 M€","Catacombes, abords — 6 M€","Cité Universitaire, voirie — 4 M€"] },
+  15: { name: "15ᵉ",             pop: "232 542", invest: "156 M€", log: "24,6 %", subv: "31,2 M€", projects: ["Front de Seine, modernisation — 22 M€","Beaugrenelle, voirie — 11 M€","Parc André-Citroën — 7 M€"] },
+  16: { name: "16ᵉ",             pop: "166 712", invest: "92 M€",  log: "12,8 %", subv: "16,4 M€", projects: ["Trocadéro, refonte — 14 M€","Bois de Boulogne, équipements — 9 M€","Auteuil, voirie — 5 M€"] },
+  17: { name: "17ᵉ",             pop: "168 372", invest: "104 M€", log: "21,4 %", subv: "20,8 M€", projects: ["Clichy-Batignolles, ZAC — 24 M€","Porte d'Asnières, voirie — 8 M€","Wagram, abords — 5 M€"] },
+  18: { name: "18ᵉ",             pop: "194 083", invest: "131 M€", log: "38,9 %", subv: "27,2 M€", projects: ["Goutte d'Or, rénovation — 22 M€","Sacré-Cœur, abords — 11 M€","Porte de la Chapelle, voirie — 8 M€"] },
+  19: { name: "19ᵉ",             pop: "188 067", invest: "148 M€", log: "44,1 %", subv: "29,8 M€", projects: ["Buttes-Chaumont, équipements — 17 M€","Porte de la Villette, ZAC — 21 M€","Stalingrad, refonte — 9 M€"] },
+  20: { name: "20ᵉ",             pop: "195 221", invest: "127 M€", log: "37,6 %", subv: "26,1 M€", projects: ["Belleville, rénovation — 16 M€","Père-Lachaise, abords — 8 M€","Porte de Bagnolet, voirie — 6 M€"] }
+};
+
+const map = document.getElementById('parisMap');
+PATHS.forEach((d, i) => {
+  const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  path.setAttribute('d', d);
+  path.setAttribute('class', 'arr');
+  const ar = ARR_NUM[i];
+  // teinte selon intensité
+  const t = ARR_INTENSITY[i];
+  path.setAttribute('style', `fill: rgba(176, 136, 84, ${0.15 + t*0.55});`);
+  path.dataset.ar = ar;
+  path.addEventListener('mouseenter', () => path.style.fill = '#b08854');
+  path.addEventListener('mouseleave', () => {
+    if (!path.classList.contains('active')) {
+      path.style.fill = `rgba(176, 136, 84, ${0.15 + t*0.55})`;
+    }
+  });
+  path.addEventListener('click', () => selectArr(ar, path));
+  map.appendChild(path);
+});
+
+function selectArr(ar, pathEl) {
+  document.querySelectorAll('#parisMap path.arr').forEach(p => {
+    p.classList.remove('active');
+    const i = Array.from(map.children).indexOf(p);
+    const t = ARR_INTENSITY[i] ?? 0.5;
+    p.style.fill = `rgba(176, 136, 84, ${0.15 + t*0.55})`;
+  });
+  pathEl.classList.add('active');
+  pathEl.style.fill = '#c8102e';
+
+  const d = ARR_DATA[ar];
+  if (!d) return;
+  document.getElementById('arrName').innerHTML = d.name + (ar === 0 ? '' : ' arrondissement');
+  document.getElementById('arrPop').textContent = d.pop;
+  document.getElementById('arrInvest').textContent = d.invest;
+  document.getElementById('arrLog').textContent = d.log;
+  document.getElementById('arrSubv').textContent = d.subv;
+  const ol = document.getElementById('arrProjects');
+  ol.innerHTML = d.projects.map(p => {
+    const m = p.match(/^(.+?) — (.+)$/);
+    return m ? `<li><b>${m[2]}</b> — ${m[1]}</li>` : `<li>${p}</li>`;
+  }).join('');
+}
+
+// ───────── count-up grand chiffre ─────────
+function countUp(el, target) {
+  el.textContent = target.toLocaleString('fr-FR');
+}
+
+// ───────── animations au scroll ─────────
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    if (e.target.dataset.countup) {
+      const target = parseInt(e.target.dataset.countup, 10);
+      countUp(e.target, target);
+      e.target.dataset.countup = '';
+    }
+    if (e.target.id === 'barTable') {
+      e.target.querySelectorAll('.bar-fill').forEach((b, i) => {
+        const w = parseFloat(b.dataset.w);
+        setTimeout(() => { b.style.width = w + '%'; }, i * 50);
+      });
+    }
+    io.unobserve(e.target);
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('[data-countup]').forEach(el => io.observe(el));
+io.observe(document.getElementById('barTable'));
+
+// fallback : si la section breakdown est déjà visible OU même si pas, animer au load
+window.addEventListener('load', () => {
+  // auto-select 13e
+  const target = Array.from(map.children).find(p => p.dataset.ar === '13');
+  if (target) selectArr(13, target);
+
+  // animer les barres au load (graceful, ne dépend pas de l'IO)
+  document.querySelectorAll('#barTable .bar-fill').forEach((b, i) => {
+    setTimeout(() => { b.style.width = b.dataset.w + '%'; }, 200 + i * 60);
+  });
+});
+</script>
+
+</body>
+</html>

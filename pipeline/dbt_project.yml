@@ -77,6 +77,27 @@ seeds:
         longitude: FLOAT64
     
     # -------------------------------------------------------------------------
+    # Match Projet d'investissement → Marché public (peuplé par
+    # pipeline/scripts/enrich/match_projet_marches.py + score_projet_marches.py)
+    # -------------------------------------------------------------------------
+    seed_match_projet_marches:
+      +column_types:
+        projet_id: STRING
+        projet_year: INT64
+        projet_nom: STRING
+        projet_montant: FLOAT64
+        projet_arr: INT64
+        numero_marche: STRING
+        fournisseur_nom: STRING
+        fournisseur_siret: STRING
+        marche_objet: STRING
+        marche_annee: INT64
+        marche_montant: FLOAT64
+        score: FLOAT64
+        label: STRING
+        reason: STRING
+
+    # -------------------------------------------------------------------------
     # Cache AP → Géoloc (peuplé par enrich_geo_ap_llm.py)
     # -------------------------------------------------------------------------
     seed_cache_geo_ap:
@@ -200,6 +221,67 @@ seeds:
         source_page: INT64
         source_pdf: STRING
 
+    seed_pdf_investissements_2022:
+      +column_types:
+        id: STRING
+        annee: INT64
+        arrondissement: INT64
+        chapitre_code: STRING
+        chapitre_libelle: STRING
+        nom_projet: STRING
+        montant: FLOAT64
+        type_ap: STRING
+        confidence: FLOAT64
+        source_page: INT64
+        source_pdf: STRING
+        date_extraction: STRING
+
+    # -------------------------------------------------------------------------
+    # Methodology / référentiels (source unique de vérité pour le frontend)
+    # -------------------------------------------------------------------------
+    seed_city_constants:
+      +column_types:
+        key: STRING
+        value: STRING  # keep flexible: ints, floats and nb_arrondissements mixed
+        unit: STRING
+        source: STRING
+        source_url: STRING
+        date_reference: STRING
+        notes: STRING
+    seed_legal_thresholds:
+      +column_types:
+        key: STRING
+        value: STRING
+        unit: STRING
+        source: STRING
+        source_url: STRING
+        date_reference: STRING
+        notes: STRING
+    seed_editorial_params:
+      +column_types:
+        key: STRING
+        value: STRING
+        unit: STRING
+        rationale: STRING
+        date_reference: STRING
+
+    # -------------------------------------------------------------------------
+    # DRIHL — demandes et attributions logement social (annuel)
+    # -------------------------------------------------------------------------
+    seed_drihl_paris_2024:
+      +column_types:
+        code_insee: STRING
+        nom: STRING
+        niveau_geo: STRING
+        annee: INT64
+        demandes_choix1: INT64
+        attributions: INT64
+        ratio_dem_attrib: FLOAT64
+        delai_median_attribution_mois: FLOAT64
+        part_anciennete_5ans_plus: FLOAT64
+        source: STRING
+        source_url: STRING
+
 # =============================================================================
 # Configuration des modèles par couche
 # =============================================================================
@@ -212,7 +294,11 @@ models:
       +materialized: view
       +schema: staging
       +tags: ['staging']
-    
+      +meta:
+        owner: "danielshavit92@gmail.com"
+        cadence: "on-demand (sync run cadence)"
+        cost_bucket: "low"  # views, no storage
+
     # -------------------------------------------------------------------------
     # Intermediate : Tables intermédiaires avec logique métier
     # -------------------------------------------------------------------------
@@ -220,7 +306,11 @@ models:
       +materialized: table
       +schema: intermediate
       +tags: ['intermediate']
-    
+      +meta:
+        owner: "danielshavit92@gmail.com"
+        cadence: "after stg refresh"
+        cost_bucket: "medium"
+
     # -------------------------------------------------------------------------
     # Core / Analytics : Tables finales dénormalisées (OBT)
     # -------------------------------------------------------------------------
@@ -228,7 +318,11 @@ models:
       +materialized: table
       +schema: analytics
       +tags: ['analytics', 'core']
-    
+      +meta:
+        owner: "danielshavit92@gmail.com"
+        cadence: "after stg refresh"
+        cost_bucket: "medium"
+
     # -------------------------------------------------------------------------
     # Marts : Tables agrégées et optimisées pour l'export frontend
     # -------------------------------------------------------------------------
@@ -236,6 +330,10 @@ models:
       +materialized: table
       +schema: marts
       +tags: ['marts']
+      +meta:
+        owner: "danielshavit92@gmail.com"
+        cadence: "before each export run"
+        cost_bucket: "low-medium"
 
     # -------------------------------------------------------------------------
     # National models (OFGL, DECP nat., etc.) — disabled; require seeds &

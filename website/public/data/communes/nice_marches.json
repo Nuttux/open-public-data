@@ -1,0 +1,158 @@
+{
+  "generated_at": "2026-05-02T11:12:40.753508+00:00",
+  "source": "data.gouv.fr — DECP consolidés",
+  "source_url": "https://www.data.gouv.fr/datasets/donnees-essentielles-de-la-commande-publique-consolidees-format-tabulaire/",
+  "source_resource_id": "22847056-61df-452d-837d-8b8ceadbfc52",
+  "commune": {
+    "slug": "nice",
+    "nom": "Nice",
+    "siren": "210600888"
+  },
+  "aggregates": {
+    "total_count": 4168,
+    "total_montant": 10664671297,
+    "coverage_pct": 93.6,
+    "n_with_montant": 3900,
+    "duplicates_dropped": 11502,
+    "outliers_dropped": 75,
+    "sentinels_dropped": 171,
+    "max_plausible_montant": 200000000,
+    "by_year": [
+      {
+        "year": 2019,
+        "montant": 459751775,
+        "count": 313
+      },
+      {
+        "year": 2020,
+        "montant": 898701866,
+        "count": 334
+      },
+      {
+        "year": 2021,
+        "montant": 2330715008,
+        "count": 563
+      },
+      {
+        "year": 2022,
+        "montant": 2139073219,
+        "count": 820
+      },
+      {
+        "year": 2023,
+        "montant": 1914397576,
+        "count": 786
+      },
+      {
+        "year": 2024,
+        "montant": 1172312631,
+        "count": 375
+      },
+      {
+        "year": 2025,
+        "montant": 848448732,
+        "count": 580
+      },
+      {
+        "year": 2026,
+        "montant": 900080309,
+        "count": 392
+      }
+    ],
+    "top_titulaires_window_years": 5,
+    "top_titulaires": [
+      {
+        "id": "82182209500039",
+        "nom": "A.S.P.",
+        "montant": 1079999892,
+        "count": 9
+      },
+      {
+        "id": "31517561200037",
+        "nom": "SOC DES ETABLISSEMENTS CAPPELLINI",
+        "montant": 839673250,
+        "count": 33
+      },
+      {
+        "id": "45250538100015",
+        "nom": "IMPACT EVENEMENTS SECURITE",
+        "montant": 483008437,
+        "count": 7
+      },
+      {
+        "id": "53350034400056",
+        "nom": "TAMARIS",
+        "montant": 360319964,
+        "count": 4
+      },
+      {
+        "id": "97120154600506",
+        "nom": "SATELEC",
+        "montant": 307409970,
+        "count": 13
+      },
+      {
+        "id": "38434243200034",
+        "nom": "EUROP'ELEC",
+        "montant": 296625144,
+        "count": 36
+      },
+      {
+        "id": "52997567400043",
+        "nom": "DUSHOW",
+        "montant": 234238709,
+        "count": 42
+      },
+      {
+        "id": "42981128400075",
+        "nom": "INEO PROVENCE ET COTE D AZUR",
+        "montant": 205885557,
+        "count": 12
+      },
+      {
+        "id": "49867104900035",
+        "nom": "C 4",
+        "montant": 192400000,
+        "count": 7
+      },
+      {
+        "id": "39336513500358",
+        "nom": "EDENRED FRANCE (TICKET RESTAURANT - ACCENTIV')",
+        "montant": 186960000,
+        "count": 11
+      },
+      {
+        "id": "03662032600078",
+        "nom": "TAMA",
+        "montant": 182400000,
+        "count": 7
+      },
+      {
+        "id": "53162373400021",
+        "nom": "PROJECT INGENIERIE CONSEIL",
+        "montant": 181200000,
+        "count": 6
+      },
+      {
+        "id": "42372347700034",
+        "nom": "SARL GASTAUD",
+        "montant": 179007091,
+        "count": 7
+      },
+      {
+        "id": "33124096000020",
+        "nom": "GARELLI SA",
+        "montant": 164473710,
+        "count": 19
+      },
+      {
+        "id": "45155629400010",
+        "nom": "SUD BATIMENT PAUSELLI",
+        "montant": 133333320,
+        "count": 4
+      }
+    ]
+  },
+  "notes_fr": "Marchés publics filtrés par SIREN acheteur (210600888). Couverture estimée de la qualité montant : 93.6% des marchés ont un montant non-nul renseigné. La DECP au national est connue pour avoir une qualité variable selon les acheteurs ; les chiffres ci-dessous sont bruts, non corrigés.",
+  "notes_en": "Public procurement filtered by buyer SIREN (210600888). Estimated quality coverage: 93.6% of contracts have a non-zero amount. DECP is known for variable quality across buyers; numbers below are raw, unadjusted."
+}

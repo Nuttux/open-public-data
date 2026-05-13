@@ -1,0 +1,22 @@
+flowchart LR
+    EXT[🌐 External sources<br/>OpenData · DECP · PDF · scrape · LLM]
+    INGEST[⬇️ Ingest<br/>sync_*.py · fetch_*.py · scrape_*.py]
+    BQ[(🗄️ BigQuery<br/>raw → stg → core → mart)]
+    JSON[📦 website/public/data/*.json<br/>~140 files]
+    UI[🖥️ Next.js UI<br/>8 pages]
+    CACHE[(💾 pipeline/cache/<br/>scratch interne)]
+
+    EXT --> INGEST --> BQ --> EXP[📤 export_*.py] --> JSON --> UI
+    INGEST -.->|LLM/scrape/PDF<br/>pas idempotents en SQL| CACHE
+    CACHE --> INGEST
+
+    classDef src fill:#dbeafe,stroke:#1e40af
+    classDef bq fill:#fef3c7,stroke:#92400e
+    classDef json fill:#ffedd5,stroke:#9a3412
+    classDef ui fill:#ccfbf1,stroke:#115e59
+    classDef cache fill:#f1f5f9,stroke:#475569
+    class EXT src
+    class BQ bq
+    class JSON json
+    class UI ui
+    class CACHE cache

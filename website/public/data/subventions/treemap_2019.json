@@ -1,6 +1,6 @@
 {
   "year": 2019,
-  "generated_at": "2026-04-22T18:17:25.978598",
+  "generated_at": "2026-04-23T15:59:36.030342",
   "total_montant": 1304037463.0,
   "nb_thematiques": 15,
   "data": [
@@ -25,7 +25,7 @@
       "thematique": "Culture",
       "nb_beneficiaires": 365,
       "nb_subventions": 366,
-      "montant_total": 192271119.0,
+      "montant_total": 192233119.0,
       "pct_total": 14.74
     },
     {
@@ -55,25 +55,25 @@
     {
       "annee": 2019,
       "thematique": "Social - Petite enfance",
-      "nb_beneficiaires": 98,
-      "nb_subventions": 99,
-      "montant_total": 40966832.0,
+      "nb_beneficiaires": 97,
+      "nb_subventions": 98,
+      "montant_total": 40954832.0,
       "pct_total": 3.14
     },
     {
       "annee": 2019,
       "thematique": "Non classifié",
-      "nb_beneficiaires": 9992,
-      "nb_subventions": 10020,
-      "montant_total": 25224589.0,
-      "pct_total": 1.93
+      "nb_beneficiaires": 9995,
+      "nb_subventions": 10023,
+      "montant_total": 25254089.0,
+      "pct_total": 1.94
     },
     {
       "annee": 2019,
       "thematique": "Sport",
-      "nb_beneficiaires": 205,
-      "nb_subventions": 205,
-      "montant_total": 20321106.0,
+      "nb_beneficiaires": 203,
+      "nb_subventions": 203,
+      "montant_total": 20305606.0,
       "pct_total": 1.56
     },
     {
@@ -103,17 +103,17 @@
     {
       "annee": 2019,
       "thematique": "International",
-      "nb_beneficiaires": 38,
-      "nb_subventions": 38,
-      "montant_total": 4198165.0,
+      "nb_beneficiaires": 37,
+      "nb_subventions": 37,
+      "montant_total": 4188165.0,
       "pct_total": 0.32
     },
     {
       "annee": 2019,
       "thematique": "Environnement",
-      "nb_beneficiaires": 41,
-      "nb_subventions": 41,
-      "montant_total": 2220292.0,
+      "nb_beneficiaires": 42,
+      "nb_subventions": 42,
+      "montant_total": 2266292.0,
       "pct_total": 0.17
     },
     {

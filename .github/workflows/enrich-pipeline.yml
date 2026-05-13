@@ -1,0 +1,90 @@
+name: Pipeline (sync + enrich)
+
+# Appelle `pipeline/run_all.sh` qui orchestre les 4 phases sync → dbt →
+# export → enrich. Incremental par design : re-run gratuit si rien n'a
+# bougé côté sources.
+#
+# Déclenchement : Actions → "Pipeline (sync + enrich)" → Run workflow.
+# Cron désactivé par défaut (Annexe CA ne bouge qu'une fois/an).
+
+on:
+  workflow_dispatch:
+    inputs:
+      phases:
+        description: "Phases à exécuter (séparées par virgule)"
+        type: choice
+        options:
+          - "sync,enrich"
+          - "enrich"
+          - "sync"
+          - "sync,dbt,export,enrich"
+        default: "sync,enrich"
+      tier1:
+        description: "Activer l'enrich tier1 (LLM payant ≥80k€)"
+        type: boolean
+        default: false
+      commit:
+        description: "Commit + push les changements"
+        type: boolean
+        default: true
+
+  # schedule:
+  #   - cron: "0 6 1 * *"   # 1er du mois 6h UTC — décommenter si besoin
+
+permissions:
+  contents: write
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt || pip install requests
+
+      - name: Run pipeline
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GOOGLE_API_KEY:    ${{ secrets.GOOGLE_API_KEY }}
+          PYTHON: python
+        run: |
+          chmod +x pipeline/run_all.sh
+          # Convertit "sync,enrich" en "--only=sync,enrich" SAUF si = all.
+          PHASES_FLAG="--only=${{ inputs.phases }}"
+          TIER1_FLAG=""
+          if [[ "${{ inputs.tier1 }}" == "true" ]]; then TIER1_FLAG="--tier1"; fi
+          bash pipeline/run_all.sh $PHASES_FLAG $TIER1_FLAG
+
+      - name: Show diff summary
+        if: always()
+        run: |
+          git status --short || true
+          echo "---"
+          git diff --stat || true
+
+      - name: Commit & push
+        if: ${{ inputs.commit }}
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet && git diff --cached --quiet; then
+            echo "Rien à committer."
+            exit 0
+          fi
+          git add website/public/data/
+          git commit -m "chore(pipeline): auto-refresh subventions + enrich [skip ci]"
+          git push

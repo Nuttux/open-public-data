@@ -48,8 +48,10 @@ __pycache__/
 
 # Large local assets
 mockups/
-archive/
+/archive/
 instagram-stories/
+# Note: docs/archive/ is intentionally NOT ignored (refactor audit trail).
+# The /archive/ pattern is anchored to repo root to avoid matching it.
 
 # Pipeline outputs
 pipeline/output/
@@ -57,9 +59,13 @@ pipeline/output/
 # Backup directories
 .git.broken/
 
-# Scraped PDF deliberation cache (rebuilt by scrape_deliberations.py)
-pipeline/cache/delibs/pdf/
-pipeline/cache/delibs/html/
+# Pipeline cache — large binaries / regenerable artifacts (3+GB)
+# Includes : delibs PDF/HTML, DECP raw dumps, DGFiP, OFGL rapport,
+# enrichment WIP, PDF extracts, sessions
+pipeline/cache/
+
+# Local stdout dumps (foreground/background dev runs)
+nohup.out
 
 # Chat conversations (file-based store)
 data/conversations/

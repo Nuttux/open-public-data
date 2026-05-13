@@ -1,0 +1,1174 @@
+{
+  "generated_at": "2026-05-07T17:48:18.471123+00:00",
+  "source_pipeline": "pipeline/seeds/seed_fiscal_constants.csv + seed_csg_retraite_tranches.csv + seed_db_equivalents.csv + seed_apul_subsectors.csv + seed_ondam_subobjectifs.csv + seed_plf_defense_titres.csv + seed_ofgl_communes_fonctionnelle.csv + seed_drees_retraites_branches.csv + seed_secu_famille_prestations.csv + seed_unedic_prestations.csv + seed_education_niveaux.csv + seed_dette_charges.csv + seed_etat_autres_ministeres.csv + seed_ofgl_departements_fonctionnelle.csv + seed_ofgl_regions_fonctionnelle.csv + sync_eurostat_apu_subsectors.json + sync_etat_lfi.json + sync_ofgl_all_communes/index.json + sync_ofgl_communes_fonctionnelle.json",
+  "audit_promise": "Toute valeur numérique du calculateur Daily Bread est tracée jusqu'à sa source officielle (CGI, URSSAF, Eurostat, INSEE, OFGL, DREES, Sécurité sociale).",
+  "fiscal_constants": {
+    "ir": {
+      "year": 2025,
+      "baremes": [
+        {
+          "tranche": 1,
+          "seuil_haut_eur_par_part": 11497,
+          "taux_marginal": 0.0
+        },
+        {
+          "tranche": 2,
+          "seuil_haut_eur_par_part": 29315,
+          "taux_marginal": 0.11
+        },
+        {
+          "tranche": 3,
+          "seuil_haut_eur_par_part": 83823,
+          "taux_marginal": 0.3
+        },
+        {
+          "tranche": 4,
+          "seuil_haut_eur_par_part": 180294,
+          "taux_marginal": 0.41
+        },
+        {
+          "tranche": 5,
+          "seuil_haut_eur_par_part": null,
+          "taux_marginal": 0.45
+        }
+      ],
+      "plafond_demi_part_eur": 1791,
+      "abattement_10pct_taux": 0.10,
+      "abattement_10pct_min_eur": 504,
+      "abattement_10pct_max_eur": 14426,
+      "abattement_source": "Article 83-3° CGI — abattement forfaitaire 10% pour frais professionnels (revenus 2024)",
+      "abattement_source_url": "https://www.impots.gouv.fr/particulier/frais-professionnels",
+      "decote_celibataire_seuil_eur": 1964,
+      "decote_celibataire_base_eur": 889,
+      "decote_couple_seuil_eur": 3248,
+      "decote_couple_base_eur": 1470,
+      "decote_taux": 0.4525,
+      "decote_source": "Article 197 I-4 CGI — décote IR (LFI 2025, revenus 2024)",
+      "decote_source_url": "https://bofip.impots.gouv.fr/bofip/2247-PGP.html",
+      "source": "Article 197 CGI - barème IR revalorisé par LFI 2025",
+      "source_url": "https://www.legifrance.gouv.fr/codes/texte_lc/LEGITEXT000006069577/",
+      "date_reference": "2025-01-01",
+      "notes": "Barème IR par tranche en EUR / part fiscale. Plafond du quotient familial limite l'avantage des demi-parts. Abattement 10% (min 504 €, max 14 426 €) sur salaires pour frais pro. Décote sur IR brut bas (≤ 1 964 € célib / 3 248 € couple) : décote = base - 0,4525 × IR_brut."
+    },
+    "csg_crds": {
+      "taux_total_activite": 0.097,
+      "taux_csg_seul": 0.092,
+      "taux_crds_seul": 0.005,
+      "taux_csg_deductible_ir": 0.068,
+      "assiette_abattement": 0.9825,
+      "year": 2025,
+      "source": "URSSAF - taux et barèmes 2025",
+      "source_url": "https://www.urssaf.fr/portail/home/taux-et-baremes/taux-de-cotisations.html",
+      "date_reference": "2025-01-01",
+      "notes": "CSG (9,2%) + CRDS (0,5%) sur 98,25% du brut (abattement 1,75% frais professionnels). 6,8% de la CSG est déductible du revenu imposable IR."
+    },
+    "cotisations_salariales": {
+      "taux_hors_csg_moyen": 0.125,
+      "taux_total_sur_brut": 0.222,
+      "year": 2024,
+      "source": "URSSAF - taux et barèmes cotisations salariées 2024 (synthèse privé non-cadre/cadre)",
+      "source_url": "https://www.urssaf.fr/portail/home/taux-et-baremes/taux-de-cotisations.html",
+      "date_reference": "2024-01-01",
+      "notes": "Taux moyen pondéré des cotisations salariales hors CSG/CRDS (privé non-cadre / cadre, vieillesse + maladie + AGIRC-ARRCO). Total sur brut = cotisations (12,5%) + CSG/CRDS (9,7%) ≈ 22%, soit un ratio brut/net standard ~1,29."
+    },
+    "tva": {
+      "taux_moyen_consommation": 0.122,
+      "propension_consommer": 0.85,
+      "taux_effectif_sur_disponible": 0.104,
+      "year": 2024,
+      "source": "INSEE - Comptes nationaux annuels (T_TES)",
+      "source_url": "https://www.insee.fr/fr/statistiques/serie/010003222",
+      "date_reference": "2024-01-01",
+      "notes": "Taux effectif TVA sur revenu disponible = 12,2% (taux moyen pondéré consommation, INSEE T_TES) × 85% (propension à consommer moyenne, INSEE comptes ménages). Lisse les disparités par décile."
+    },
+    "pfu": {
+      "taux_total": 0.3,
+      "taux_ir": 0.128,
+      "taux_prelevements_sociaux": 0.172,
+      "year": 2025,
+      "source": "CGI article 200 A - Prélèvement Forfaitaire Unique (Flat Tax)",
+      "source_url": "https://bofip.impots.gouv.fr/bofip/11255-PGP.html",
+      "date_reference": "2025-01-01",
+      "notes": "PFU global 30 % sur revenus du capital = 12,8 % IR libératoire + 17,2 % prélèvements sociaux. Option barème IR + 17,2 % PS possible (option globale annuelle, intéressante si TMI < 30 %)."
+    },
+    "pension": {
+      "abattement_taux": 0.1,
+      "abattement_plafond_eur": 4399,
+      "abattement_plancher_eur": 449,
+      "year": 2025,
+      "source": "CGI article 158-5-a - abattement de 10% sur les pensions",
+      "source_url": "https://bofip.impots.gouv.fr/bofip/2412-PGP.html",
+      "date_reference": "2025-01-01",
+      "notes": "Abattement de 10 % sur les pensions pour le calcul de l'IR, plafonné à 4 399 € par foyer fiscal et plancher 449 € par bénéficiaire (LFI 2025, revenus 2024)."
+    },
+    "micro": {
+      "cotisations": {
+        "vente": 0.123,
+        "services_bic": 0.212,
+        "services_bnc": 0.211,
+        "services_bnc_cipav": 0.212
+      },
+      "cfp": {
+        "vente": 0.001,
+        "services_bic": 0.003,
+        "services_bnc": 0.002
+      },
+      "abattements_ir": {
+        "vente": 0.71,
+        "services_bic": 0.5,
+        "services_bnc": 0.34
+      },
+      "versement_liberatoire": {
+        "vente": 0.01,
+        "services_bic": 0.017,
+        "services_bnc": 0.022
+      },
+      "year": 2025,
+      "source": "URSSAF - Auto-entrepreneur - taux de cotisations 2025 (BIC vente)",
+      "source_url": "https://www.autoentrepreneur.urssaf.fr/portail/accueil/sinformer-sur-le-statut/lessentiel-du-statut.html",
+      "date_reference": "2025-01-01",
+      "notes": "Cotisations URSSAF micro-entrepreneur sur CA encaissé (pas de déduction de charges) + CFP (formation professionnelle). Abattements forfaitaires CGI art. 50-0 / 102 ter pour calcul de l'IR. Versement libératoire optionnel sous condition de RFR."
+    },
+    "csg_retraite": {
+      "tranches": [
+        {
+          "tranche": 1,
+          "seuil_rfr_par_part_min": 0.0,
+          "seuil_rfr_par_part_max": 12230.0,
+          "taux_csg": 0.0,
+          "taux_crds": 0.0,
+          "taux_casa": 0.0,
+          "taux_total": 0.0
+        },
+        {
+          "tranche": 2,
+          "seuil_rfr_par_part_min": 12230.0,
+          "seuil_rfr_par_part_max": 16410.0,
+          "taux_csg": 0.038,
+          "taux_crds": 0.005,
+          "taux_casa": 0.0,
+          "taux_total": 0.043
+        },
+        {
+          "tranche": 3,
+          "seuil_rfr_par_part_min": 16410.0,
+          "seuil_rfr_par_part_max": 25458.0,
+          "taux_csg": 0.066,
+          "taux_crds": 0.005,
+          "taux_casa": 0.003,
+          "taux_total": 0.074
+        },
+        {
+          "tranche": 4,
+          "seuil_rfr_par_part_min": 25458.0,
+          "seuil_rfr_par_part_max": null,
+          "taux_csg": 0.083,
+          "taux_crds": 0.005,
+          "taux_casa": 0.003,
+          "taux_total": 0.091
+        }
+      ],
+      "year": 2025,
+      "source": "URSSAF - Taux de CSG sur les pensions (taux normal) - BOFiP-IR 2025",
+      "source_url": "https://www.urssaf.fr/portail/home/taux-et-baremes/contributions-sociales-pension-retraite.html",
+      "date_reference": "2025-01-01",
+      "notes": "Taux de CSG/CRDS/CASA sur les pensions de retraite par tranche de RFR/part fiscale (RFR de l'année N-2). Tranche 1 = exonération, tranche 2 = taux réduit (CSG 3,8 % + CRDS 0,5 %), tranche 3 = taux médian (CSG 6,6 % + CRDS 0,5 % + CASA 0,3 %), tranche 4 = taux normal (CSG 8,3 % + CRDS 0,5 % + CASA 0,3 %)."
+    }
+  },
+  "apu_subsectors": {
+    "year": 2025,
+    "source": "Eurostat — gov_10a_main",
+    "source_url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_main/default/table",
+    "fetched_at": "2026-05-07T17:47:50.728436+00:00",
+    "institutions": {
+      "S1311": {
+        "label_fr": "État central et ODAC",
+        "label_en": "Central government + ODAC",
+        "value_pct_gdp": 22.7,
+        "share": 0.374,
+        "annual_eur": 676252317700
+      },
+      "S1313": {
+        "label_fr": "Administrations publiques locales (APUL)",
+        "label_en": "Local government (APUL)",
+        "value_pct_gdp": 11.2,
+        "share": 0.1845,
+        "annual_eur": 333657531200
+      },
+      "S1314": {
+        "label_fr": "Administrations de sécurité sociale (ASSO)",
+        "label_en": "Social security funds (ASSO)",
+        "value_pct_gdp": 26.8,
+        "share": 0.4415,
+        "annual_eur": 798394806800
+      }
+    },
+    "totals": {
+      "s13_consolidated_pct_gdp": 57.2,
+      "sum_subsectors_unconsolidated_pct_gdp": 60.7,
+      "intra_gov_transfers_pct_gdp": 3.5,
+      "gdp_total_md_eur": 2979.1,
+      "gdp_source": "Eurostat — nama_10_gdp (B1GQ, CP_MEUR)",
+      "gdp_source_url": "https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table"
+    },
+    "notes_fr": "Décomposition non consolidée S1311/S1313/S1314 — lecture « qui dépense quoi avant transferts intra-admin ». Les ratios sont normalisés sur leur somme (et non sur S13). `institutions.<code>.annual_eur` est en € (= value_pct_gdp/100 × PIB FR) et permet aux drawers d'afficher le national absolu sans hardcode."
+  },
+  "subsector_breakdowns": {
+    "apul_breakdown": {
+      "description_fr": "Décomposition des dépenses des APUL (S1313) entre niveaux territoriaux.",
+      "description_en": "Breakdown of local government (S1313) by territorial level.",
+      "items": {
+        "part_communes_epci": {
+          "label_fr": "Communes et intercommunalités (bloc communal)",
+          "label_en": "Municipal block (communes + EPCI)",
+          "value": 0.55,
+          "year": 2023,
+          "source": "OFGL - Comptes des collectivités locales 2023",
+          "source_url": "https://www.collectivites-locales.gouv.fr/files/Finances%20locales/Rapports%20OFGL/2024/note_OFGL_finances_locales_2023.pdf",
+          "date_reference": "2024-09-01",
+          "notes": "Part du bloc communal (communes + groupements à fiscalité propre) dans les dépenses totales des APUL 2023. Source OFGL : rapport finances locales 2023."
+        },
+        "part_departements": {
+          "label_fr": "Départements",
+          "label_en": "Departments",
+          "value": 0.3,
+          "year": 2023,
+          "source": "OFGL - Comptes des collectivités locales 2023",
+          "source_url": "https://www.collectivites-locales.gouv.fr/files/Finances%20locales/Rapports%20OFGL/2024/note_OFGL_finances_locales_2023.pdf",
+          "date_reference": "2024-09-01",
+          "notes": "Part des départements dans les dépenses totales des APUL 2023 (~30% : action sociale, RSA, dépendance, collèges, voirie départementale)."
+        },
+        "part_regions": {
+          "label_fr": "Régions",
+          "label_en": "Regions",
+          "value": 0.15,
+          "year": 2023,
+          "source": "OFGL - Comptes des collectivités locales 2023",
+          "source_url": "https://www.collectivites-locales.gouv.fr/files/Finances%20locales/Rapports%20OFGL/2024/note_OFGL_finances_locales_2023.pdf",
+          "date_reference": "2024-09-01",
+          "notes": "Part des régions dans les dépenses totales des APUL 2023 (~15% : lycées, formation professionnelle, transport, développement économique)."
+        }
+      }
+    },
+    "asso_breakdown": {
+      "description_fr": "Décomposition des dépenses ASSO (S1314) par caisse / branche.",
+      "description_en": "Breakdown of social security funds (S1314) by branch.",
+      "items": {
+        "part_cnam_maladie": {
+          "label_fr": "Branche maladie (CNAM / Assurance maladie)",
+          "label_en": "Health branch (CNAM)",
+          "value": 0.46,
+          "year": 2024,
+          "source": "PLFSS 2025 - branche maladie / total ASSO",
+          "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe5.pdf",
+          "date_reference": "2024-10-08",
+          "notes": "Part de la branche maladie (CNAM) dans le total des dépenses ASSO (Sécurité sociale). PLFSS 2025, annexe 5."
+        },
+        "part_cnav_retraites": {
+          "label_fr": "Branche retraite (CNAV) + autres régimes",
+          "label_en": "Pension branch (CNAV) + other schemes",
+          "value": 0.39,
+          "year": 2024,
+          "source": "PLFSS 2025 - branche vieillesse / total ASSO",
+          "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe5.pdf",
+          "date_reference": "2024-10-08",
+          "notes": "Part des retraites (régime général CNAV + régimes alignés + régimes de base) dans le total ASSO 2024."
+        },
+        "part_caf_famille": {
+          "label_fr": "Branche famille (CNAF / CAF)",
+          "label_en": "Family branch (CNAF / CAF)",
+          "value": 0.07,
+          "year": 2024,
+          "source": "PLFSS 2025 - branche famille / total ASSO",
+          "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe5.pdf",
+          "date_reference": "2024-10-08",
+          "notes": "Part de la branche famille (CNAF) dans le total ASSO 2024 : prestations familiales, allocations logement, RSA majoré, etc."
+        },
+        "part_unedic_chomage": {
+          "label_fr": "Assurance chômage (UNEDIC)",
+          "label_en": "Unemployment insurance (UNEDIC)",
+          "value": 0.06,
+          "year": 2024,
+          "source": "UNEDIC - Comptes 2023",
+          "source_url": "https://www.unedic.org/publications/situation-financiere-de-lassurance-chomage-pour-2024-2026",
+          "date_reference": "2024-06-01",
+          "notes": "Part de l'UNEDIC (assurance chômage) dans le total ASSO 2024. Allocations chômage hors solidarité (ASS = État)."
+        },
+        "part_at_mp_autonomie": {
+          "label_fr": "Branche AT/MP + autonomie (CNSA)",
+          "label_en": "Work injury + autonomy branches",
+          "value": 0.02,
+          "year": 2024,
+          "source": "PLFSS 2025 - branches AT-MP et autonomie",
+          "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe5.pdf",
+          "date_reference": "2024-10-08",
+          "notes": "Part résiduelle des branches accidents du travail / maladies professionnelles (AT-MP) et autonomie (CNSA) dans le total ASSO 2024."
+        }
+      }
+    }
+  },
+  "state_breakdown": {
+    "year": 2025,
+    "source": "data.economie.gouv.fr — plf25-depenses-2025-selon-destination",
+    "source_url": "https://www.data.gouv.fr/datasets/plf-2025-depenses-2025-selon-destination/",
+    "perimeter_label_fr": "Budget Général de l'État (BG) — PLF",
+    "total_net_cp_eur": 446895607757,
+    "top_missions_share_total": 1.0,
+    "missions": [
+      {
+        "code": "EC",
+        "label": "Enseignement scolaire",
+        "cp_eur": 88817133670,
+        "share_of_state_net": 0.1987
+      },
+      {
+        "code": "EB",
+        "label": "Engagements financiers de l'État",
+        "cp_eur": 61338164329,
+        "share_of_state_net": 0.1373
+      },
+      {
+        "code": "DA",
+        "label": "Défense",
+        "cp_eur": 60003543448,
+        "share_of_state_net": 0.1343
+      },
+      {
+        "code": "RA",
+        "label": "Recherche et enseignement supérieur",
+        "cp_eur": 31285707922,
+        "share_of_state_net": 0.07
+      },
+      {
+        "code": "SE",
+        "label": "Solidarité, insertion et égalité des chances",
+        "cp_eur": 30373601344,
+        "share_of_state_net": 0.068
+      },
+      {
+        "code": "SB",
+        "label": "Sécurités",
+        "cp_eur": 25215409206,
+        "share_of_state_net": 0.0564
+      },
+      {
+        "code": "VA",
+        "label": "Cohésion des territoires",
+        "cp_eur": 23781229009,
+        "share_of_state_net": 0.0532
+      },
+      {
+        "code": "TB",
+        "label": "Travail, emploi et administration des ministères sociaux",
+        "cp_eur": 21632987399,
+        "share_of_state_net": 0.0484
+      },
+      {
+        "code": "TA",
+        "label": "Écologie, développement et mobilité durables",
+        "cp_eur": 20504444099,
+        "share_of_state_net": 0.0459
+      },
+      {
+        "code": "JA",
+        "label": "Justice",
+        "cp_eur": 12459092589,
+        "share_of_state_net": 0.0279
+      },
+      {
+        "code": "GA",
+        "label": "Gestion des finances publiques",
+        "cp_eur": 10971512721,
+        "share_of_state_net": 0.0246
+      },
+      {
+        "code": "RB",
+        "label": "Régimes sociaux et de retraite",
+        "cp_eur": 5995017245,
+        "share_of_state_net": 0.0134
+      },
+      {
+        "code": "AV",
+        "label": "Investir pour la France de 2030",
+        "cp_eur": 5800000000,
+        "share_of_state_net": 0.013
+      },
+      {
+        "code": "AD",
+        "label": "Aide publique au développement",
+        "cp_eur": 5153965943,
+        "share_of_state_net": 0.0115
+      },
+      {
+        "code": "AB",
+        "label": "Administration générale et territoriale de l'État",
+        "cp_eur": 4960943626,
+        "share_of_state_net": 0.0111
+      },
+      {
+        "code": "AC",
+        "label": "Agriculture, alimentation, forêt et affaires rurales",
+        "cp_eur": 4435643789,
+        "share_of_state_net": 0.0099
+      },
+      {
+        "code": "RC",
+        "label": "Relations avec les collectivités territoriales",
+        "cp_eur": 4060628302,
+        "share_of_state_net": 0.0091
+      },
+      {
+        "code": "AQ",
+        "label": "Audiovisuel public",
+        "cp_eur": 4029162945,
+        "share_of_state_net": 0.009
+      },
+      {
+        "code": "CB",
+        "label": "Culture",
+        "cp_eur": 3919074364,
+        "share_of_state_net": 0.0088
+      },
+      {
+        "code": "DB",
+        "label": "Économie",
+        "cp_eur": 3884818906,
+        "share_of_state_net": 0.0087
+      },
+      {
+        "code": "AA",
+        "label": "Action extérieure de l'État",
+        "cp_eur": 3532510413,
+        "share_of_state_net": 0.0079
+      },
+      {
+        "code": "OA",
+        "label": "Outre-mer",
+        "cp_eur": 2555056198,
+        "share_of_state_net": 0.0057
+      },
+      {
+        "code": "IA",
+        "label": "Immigration, asile et intégration",
+        "cp_eur": 2047753910,
+        "share_of_state_net": 0.0046
+      },
+      {
+        "code": "MB",
+        "label": "Anciens combattants, mémoire et liens avec la Nation",
+        "cp_eur": 1905972102,
+        "share_of_state_net": 0.0043
+      },
+      {
+        "code": "SA",
+        "label": "Santé",
+        "cp_eur": 1643321770,
+        "share_of_state_net": 0.0037
+      },
+      {
+        "code": "SF",
+        "label": "Sport, jeunesse et vie associative",
+        "cp_eur": 1578656919,
+        "share_of_state_net": 0.0035
+      },
+      {
+        "code": "PB",
+        "label": "Pouvoirs publics",
+        "cp_eur": 1156506686,
+        "share_of_state_net": 0.0026
+      },
+      {
+        "code": "DC",
+        "label": "Direction de l'action du Gouvernement",
+        "cp_eur": 1065784558,
+        "share_of_state_net": 0.0024
+      },
+      {
+        "code": "CA",
+        "label": "Conseil et contrôle de l'État",
+        "cp_eur": 899725973,
+        "share_of_state_net": 0.002
+      },
+      {
+        "code": "TR",
+        "label": "Transformation et fonction publiques",
+        "cp_eur": 800578998,
+        "share_of_state_net": 0.0018
+      },
+      {
+        "code": "MA",
+        "label": "Médias, livre et industries culturelles",
+        "cp_eur": 723659374,
+        "share_of_state_net": 0.0016
+      },
+      {
+        "code": "PC",
+        "label": "Crédits non répartis",
+        "cp_eur": 195000000,
+        "share_of_state_net": 0.0004
+      },
+      {
+        "code": "PR",
+        "label": "Plan de relance",
+        "cp_eur": 169000000,
+        "share_of_state_net": 0.0004
+      }
+    ],
+    "notes_fr": "Décomposition du Budget Général de l'État (BG net hors R&D) par mission, exhaustive. Ratios par mission appliqués sur la part S1311 (État + ODAC) du calculateur."
+  },
+  "local_avg_dep_eur_hab": {
+    "value_eur_hab": 1686.6,
+    "year": 2024,
+    "n_communes_used": 34926,
+    "total_pop_used": 68875688,
+    "source": "OFGL — ofgl-base-communes-consolidee",
+    "source_url": "https://data.ofgl.fr/explore/dataset/ofgl-base-communes-consolidee/",
+    "notes_fr": "Moyenne pondérée par la population des dépenses totales communales €/hab (champ « Dépenses totales hors remboursements de dette », OFGL). Ne concerne que le bloc communal (~55% des APUL) — borne basse de ce qu'une commune dépense en moyenne."
+  },
+  "equivalents": {
+    "description_fr": "Équivalences concrètes utilisées pour la section « ce que ça finance » du calculateur Daily Bread. Chaque valeur est une approximation pédagogique avec sa source officielle.",
+    "items": {
+      "consultation_medecin_generaliste": {
+        "label_fr": "Consultation chez le médecin généraliste",
+        "label_en": "GP consultation",
+        "value": 30,
+        "unit": "EUR",
+        "year": 2024,
+        "source": "Convention médicale Assurance Maladie - tarifs 2024",
+        "source_url": "https://www.ameli.fr/medecin/exercice-liberal/facturation-remuneration/consultations-actes",
+        "date_reference": "2024-12-22",
+        "notes": "Tarif conventionné secteur 1 d'une consultation chez un médecin généraliste (consultation G) au 22 décembre 2024."
+      },
+      "boite_paracetamol_500mg": {
+        "label_fr": "Boîte de paracétamol 500mg (16 comprimés)",
+        "label_en": "Paracetamol pack (16 tablets)",
+        "value": 2.18,
+        "unit": "EUR",
+        "year": 2024,
+        "source": "Vidal / Assurance Maladie - tarif Doliprane 500mg",
+        "source_url": "https://base-donnees-publique.medicaments.gouv.fr/",
+        "date_reference": "2024-01-01",
+        "notes": "Prix de référence d'une boîte de Doliprane 500mg 16 comprimés remboursée par la Sécurité sociale."
+      },
+      "pension_retraite_mensuelle_moyenne": {
+        "label_fr": "Pension de retraite mensuelle moyenne",
+        "label_en": "Average monthly pension",
+        "value": 1626,
+        "unit": "EUR",
+        "year": 2022,
+        "source": "DREES - Les retraités et les retraites - édition 2024",
+        "source_url": "https://drees.solidarites-sante.gouv.fr/publications-communique-de-presse/panoramas-de-la-drees/les-retraites-et-les-retraites-edition-2024",
+        "date_reference": "2024-04-15",
+        "notes": "Pension brute mensuelle moyenne (tous régimes confondus, hors majorations enfants), résidents en France, 2022. Source : DREES, EIR 2020-2022 actualisé."
+      },
+      "cout_eleve_jour_scolaire_public": {
+        "label_fr": "Coût d'une journée scolaire (élève public)",
+        "label_en": "Cost of a school day (public student)",
+        "value": 52,
+        "unit": "EUR",
+        "year": 2023,
+        "source": "DEPP - Repères et références statistiques 2024 (RERS) - dépense moyenne par élève",
+        "source_url": "https://www.education.gouv.fr/reperes-et-references-statistiques-2024-378608",
+        "date_reference": "2024-09-01",
+        "notes": "Dépense intérieure d'éducation par élève public, moyenne tous niveaux confondus (~9 470 € / an / élève en 2023, divisée par ~180 jours scolaires) = 52 €/jour. Source DEPP, RERS 2024."
+      },
+      "solde_militaire_du_rang": {
+        "label_fr": "Solde brute militaire du rang",
+        "label_en": "Soldier's gross monthly pay",
+        "value": 1607,
+        "unit": "EUR",
+        "year": 2024,
+        "source": "Code de la défense - solde du soldat de 2e classe",
+        "source_url": "https://www.defense.gouv.fr/defense/etre-militaire/remunerations",
+        "date_reference": "2024-01-01",
+        "notes": "Solde indiciaire brute mensuelle du soldat de 2e classe en début de carrière (indice majoré 332 × valeur du point d'indice 4,9214 en 2024)."
+      },
+      "trajet_metro_paris": {
+        "label_fr": "Ticket de métro Paris (T+ unité)",
+        "label_en": "Paris metro ticket (single ride)",
+        "value": 2.5,
+        "unit": "EUR",
+        "year": 2025,
+        "source": "Île-de-France Mobilités - tarifs au 2 janvier 2025",
+        "source_url": "https://www.iledefrance-mobilites.fr/titres-et-tarifs",
+        "date_reference": "2025-01-02",
+        "notes": "Prix d'un ticket T+ unité (achat à l'unité) sur le réseau RATP / Île-de-France Mobilités au 2 janvier 2025."
+      },
+      "plat_cantine_scolaire": {
+        "label_fr": "Repas en cantine scolaire (tarif moyen)",
+        "label_en": "School canteen meal (average)",
+        "value": 3.4,
+        "unit": "EUR",
+        "year": 2023,
+        "source": "AMF - Étude tarifs cantine scolaire 2022 / Sénat rapport 2023",
+        "source_url": "https://www.senat.fr/rap/r22-558/r22-558.html",
+        "date_reference": "2023-06-01",
+        "notes": "Tarif moyen pondéré d'un repas de cantine scolaire en France (varie 1-7€ selon QF familial). Source AMF / mission Sénat 2023."
+      },
+      "nuit_hospitalisation_publique": {
+        "label_fr": "Nuit en hospitalisation publique (coût pour l'AM)",
+        "label_en": "Night in public hospital (cost to social security)",
+        "value": 1300,
+        "unit": "EUR",
+        "year": 2022,
+        "source": "DREES - Comptes de la santé 2023 - prix moyen de la journée d'hospitalisation MCO",
+        "source_url": "https://drees.solidarites-sante.gouv.fr/publications-communique-de-presse/panoramas-de-la-drees/comptes-de-la-sante-2023",
+        "date_reference": "2023-09-01",
+        "notes": "Prix moyen d'une journée en court séjour MCO (médecine, chirurgie, obstétrique) public en 2022, financé par l'Assurance maladie via la T2A. ~1300€/jour, varie selon la lourdeur du GHM."
+      },
+      "salaire_min_brut_mensuel_smic": {
+        "label_fr": "SMIC mensuel brut (35h)",
+        "label_en": "Minimum wage monthly gross (35h)",
+        "value": 1801,
+        "unit": "EUR",
+        "year": 2025,
+        "source": "Décret n°2024-1032 du 18 novembre 2024 - SMIC au 1er janvier 2025",
+        "source_url": "https://www.service-public.fr/particuliers/actualites/A18004",
+        "date_reference": "2025-01-01",
+        "notes": "SMIC mensuel brut 35h au 1er janvier 2025 (1 801,80 € arrondi)."
+      }
+    }
+  },
+  "deepdive": {
+    "sante": {
+      "scope": "ondam_plfss_2025_subobjectifs",
+      "perimeter_fr": "ONDAM voté PLFSS 2025 ventilé en sous-objectifs",
+      "perimeter_en": "Voted ONDAM PLFSS 2025 split by sub-objective",
+      "total_md_eur": 279.7,
+      "sum_share": 1.0,
+      "source": "PLFSS 2025 - sous-objectifs résiduels (FIR, AME, prévention, soutien aux secteurs en difficulté)",
+      "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe7.pdf",
+      "date_reference": "2024-10-08",
+      "items": {
+        "hopital_etablissements_sante": {
+          "label_fr": "Hôpital + établissements de santé",
+          "label_en": "Hospitals + healthcare facilities",
+          "montant_md_eur": 108.5,
+          "share": 0.388,
+          "notes": "Sous-objectif ONDAM 'Établissements de santé' (MCO public + privé, psychiatrie, SSR) du PLFSS 2025 voté. Ordre de grandeur — TODO: vérifier vs PDF officiel."
+        },
+        "medecine_ville_soins_ambulatoires": {
+          "label_fr": "Médecine de ville + soins ambulatoires",
+          "label_en": "City medicine + outpatient care",
+          "montant_md_eur": 107.2,
+          "share": 0.383,
+          "notes": "Sous-objectif ONDAM 'Soins de ville' (consultations généralistes/spécialistes, médicaments en ville, biologie, dentaire) PLFSS 2025. TODO: vérifier vs PDF officiel."
+        },
+        "medicosocial_ehpad_handicap": {
+          "label_fr": "Médico-social (EHPAD, handicap)",
+          "label_en": "Medico-social (nursing homes, disability)",
+          "montant_md_eur": 30.4,
+          "share": 0.109,
+          "notes": "Sous-objectif ONDAM 'Médico-social' (CNSA / EHPAD personnes âgées + établissements personnes handicapées). TODO: vérifier vs PDF officiel."
+        },
+        "indemnites_journalieres_maternite": {
+          "label_fr": "Indemnités journalières + maternité",
+          "label_en": "Daily allowances + maternity",
+          "montant_md_eur": 16.8,
+          "share": 0.06,
+          "notes": "Indemnités journalières maladie/maternité versées par la branche maladie. CNAM 2024 ≈ 1,4 Md€ par mois. TODO: vérifier vs PDF officiel."
+        },
+        "fir_ame_prevention_autres": {
+          "label_fr": "FIR + AME + prévention + autres",
+          "label_en": "Regional fund + state medical aid + prevention",
+          "montant_md_eur": 16.8,
+          "share": 0.06,
+          "notes": "Reliquat ONDAM : Fonds d'Intervention Régional (FIR), Aide Médicale d'État (AME), prévention santé publique, autres prises en charge. TODO: vérifier vs PDF officiel."
+        }
+      },
+      "notes_fr": "Ventilation de l'ONDAM voté (Objectif national des dépenses d'assurance maladie) en 5 sous-objectifs PLFSS 2025. Appliqué à la part CNAM/maladie de la contribution Sécu de l'utilisateur pour donner le découpage 'à l'intérieur de la Santé'."
+    },
+    "retraites": {
+      "scope": "drees_retraites_branches_2023",
+      "perimeter_fr": "DREES — Pensions versées en 2023 ventilées par grand régime",
+      "perimeter_en": "DREES — Pensions paid in 2023 split by main scheme",
+      "total_md_eur": 325.0,
+      "sum_share": 1.0,
+      "source": "DREES — Les retraites et les retraités, édition 2024",
+      "source_url": "https://drees.solidarites-sante.gouv.fr/publications-communique-de-presse/panoramas-de-la-drees/240725_Panorama_Retraites",
+      "date_reference": "2024-07-25",
+      "items": {
+        "regime_general_salaries_prive": {
+          "label_fr": "Régime général (salariés du privé)",
+          "label_en": "General scheme (private-sector employees)",
+          "montant_md_eur": 150.0,
+          "share": 0.46,
+          "notes": "Pensions de droit direct + dérivés versées par la CNAV (régime général) en 2023. Couvre la majorité des salariés du secteur privé. TODO: vérifier vs PDF officiel DREES 2024."
+        },
+        "fonction_publique": {
+          "label_fr": "Fonction publique (État, territoriale, hospitalière)",
+          "label_en": "Civil service (State, local, hospital)",
+          "montant_md_eur": 85.0,
+          "share": 0.26,
+          "notes": "Pensions versées par le SRE (FP État) + CNRACL (territoriale + hospitalière). Inclut pensions civiles et militaires. TODO: vérifier vs PDF officiel DREES 2024."
+        },
+        "independants_agricoles_autres": {
+          "label_fr": "Indépendants + agricoles (RSI, MSA)",
+          "label_en": "Self-employed + farmers (RSI, MSA)",
+          "montant_md_eur": 65.0,
+          "share": 0.2,
+          "notes": "Régimes des indépendants (ex-RSI intégré au régime général depuis 2018), MSA (exploitants + salariés agricoles), professions libérales (CNAVPL). TODO: vérifier vs PDF officiel DREES 2024."
+        },
+        "regimes_speciaux": {
+          "label_fr": "Régimes spéciaux (SNCF, RATP, EDF, etc.)",
+          "label_en": "Special schemes (SNCF, RATP, EDF, etc.)",
+          "montant_md_eur": 25.0,
+          "share": 0.08,
+          "notes": "Régimes spéciaux historiques : SNCF, RATP, IEG (EDF/GDF), mineurs, marins, Banque de France, Opéra de Paris, Comédie Française. ~4% des affiliés. TODO: vérifier vs PDF officiel DREES 2024."
+        }
+      },
+      "notes_fr": "Ventilation des pensions de retraite versées en France par grand régime (régime général, fonction publique, indépendants, régimes spéciaux). Appliqué à la part CNAV/retraites de la contribution Sécu."
+    },
+    "famille": {
+      "scope": "ccss_caf_prestations_2024",
+      "perimeter_fr": "Branche Famille (CAF/CNAF) — prestations versées 2023",
+      "perimeter_en": "Family branch (CAF/CNAF) — benefits paid 2023",
+      "total_md_eur": 81.5,
+      "sum_share": 1.0,
+      "source": "Comptes de la Sécurité sociale 2024 + DREES Aide sociale",
+      "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/09/CCSS-2024-09.pdf",
+      "date_reference": "2024-09-30",
+      "items": {
+        "prestations_familiales": {
+          "label_fr": "Prestations familiales (allocs, AEEH, AJPP)",
+          "label_en": "Family benefits (allowances, AEEH, AJPP)",
+          "montant_md_eur": 27.0,
+          "share": 0.33,
+          "notes": "Allocations familiales (AF), complément familial, AEEH (enfant handicapé), AJPP (présence parentale), PAJE base, prime à la naissance/adoption. CNAF 2023. TODO: vérifier vs PDF officiel CCSS."
+        },
+        "aides_logement": {
+          "label_fr": "Aides au logement (APL, ALS, ALF)",
+          "label_en": "Housing benefits (APL, ALS, ALF)",
+          "montant_md_eur": 21.0,
+          "share": 0.26,
+          "notes": "APL (aide personnalisée au logement), ALS (allocation logement sociale), ALF (allocation logement familiale). Versées par la CAF pour le compte du Fonds national d'aide au logement (FNAL, hors Sécu stricte). TODO: vérifier vs PDF."
+        },
+        "rsa": {
+          "label_fr": "RSA (versé par la CAF pour l'État)",
+          "label_en": "Active solidarity income (paid by CAF for State)",
+          "montant_md_eur": 18.0,
+          "share": 0.22,
+          "notes": "Revenu de solidarité active : la CAF gère le versement, mais le financement vient des départements (essentiel) + État (recentralisation expérimentale). 1,9 M de bénéficiaires. TODO: vérifier vs PDF."
+        },
+        "prime_activite": {
+          "label_fr": "Prime d'activité",
+          "label_en": "Activity bonus",
+          "montant_md_eur": 9.0,
+          "share": 0.11,
+          "notes": "Complément de revenu pour les actifs aux revenus modestes (salariés + indépendants). Géré par la CAF/MSA, financé par l'État. ~5 M de foyers bénéficiaires. TODO: vérifier vs PDF."
+        },
+        "autres_aides_handicap_aspa": {
+          "label_fr": "Autres (AAH, ASPA, RSO)",
+          "label_en": "Others (AAH, ASPA, RSO)",
+          "montant_md_eur": 6.5,
+          "share": 0.08,
+          "notes": "AAH (allocation adulte handicapé, 1,3 M bénéficiaires) — versée par CAF/MSA, financée par l'État ; ASPA (minimum vieillesse) ; RSO (DOM). TODO: vérifier vs PDF."
+        }
+      },
+      "notes_fr": "Ventilation des prestations versées par la CAF (allocations familiales, aides au logement, RSA, prime d'activité, AAH/ASPA). Certaines sont gérées par la CAF mais financées par l'État ou les départements (RSA, AAH). Appliqué à la part CAF de la contribution Sécu."
+    },
+    "chomage": {
+      "scope": "unedic_prestations_2023",
+      "perimeter_fr": "UNEDIC — Allocations chômage versées 2023",
+      "perimeter_en": "UNEDIC — Unemployment benefits paid 2023",
+      "total_md_eur": 40.0,
+      "sum_share": 1.0,
+      "source": "UNEDIC — Rapport annuel 2024",
+      "source_url": "https://www.unedic.org/publications/rapport-financier-2023",
+      "date_reference": "2024-06-30",
+      "items": {
+        "are_allocation_retour_emploi": {
+          "label_fr": "ARE (Allocation de retour à l'emploi)",
+          "label_en": "ARE (Return-to-work allowance)",
+          "montant_md_eur": 30.0,
+          "share": 0.75,
+          "notes": "Allocation de retour à l'emploi (ARE) : prestation principale d'assurance chômage, versée aux demandeurs d'emploi indemnisés. Durée moyenne 18 mois. ~2,5 M bénéficiaires. TODO: vérifier vs rapport financier UNEDIC officiel."
+        },
+        "autres_indemnisations_aer_asp": {
+          "label_fr": "Autres indemnisations (AER, ASP, ATA)",
+          "label_en": "Other benefits (AER, ASP, ATA)",
+          "montant_md_eur": 6.0,
+          "share": 0.15,
+          "notes": "AER (allocation équivalent retraite), ASP (allocation de sécurisation professionnelle, contrat de sécurisation), ATA (allocation temporaire d'attente, demandeurs d'asile), aides à la mobilité. TODO: vérifier vs rapport UNEDIC."
+        },
+        "aides_formation": {
+          "label_fr": "Aides à la formation",
+          "label_en": "Training assistance",
+          "montant_md_eur": 4.0,
+          "share": 0.1,
+          "notes": "Aides à la formation des demandeurs d'emploi (AREF — allocation d'aide au retour à l'emploi formation), abondements CPF, formation conventionnée. TODO: vérifier vs rapport UNEDIC."
+        }
+      },
+      "notes_fr": "Ventilation des allocations chômage versées par l'UNEDIC : ARE (gros morceau), aides à la formation, autres indemnisations (AER/ASP/ATA). Appliqué à la part UNEDIC de la contribution Sécu."
+    },
+    "defense": {
+      "scope": "plf2025_mission_defense_titres",
+      "perimeter_fr": "PLF 2025 — Mission Défense ventilée par titre budgétaire",
+      "perimeter_en": "PLF 2025 — Defence Mission split by budget title",
+      "total_md_eur": 60.0,
+      "sum_share": 0.9999,
+      "source": "PLF 2025 - Mission Défense, ventilation par titre",
+      "source_url": "https://www.budget.gouv.fr/files/uploads/extract/2025/PLF/BG/PGM/178/FR_2025_PLF_BG_PGM_178_PERF.pdf",
+      "date_reference": "2024-10-10",
+      "items": {
+        "titre_2_personnels": {
+          "label_fr": "Personnels (titre 2)",
+          "label_en": "Personnel (Title 2)",
+          "montant_md_eur": 28.74,
+          "share": 0.479,
+          "notes": "Titre 2 = rémunérations des militaires + civils, charges sociales, pensions militaires. PLF 2025 Mission Défense, programmes 144/146/178/212. Ordre de grandeur ~24 Md€. TODO: vérifier vs PAP officiel."
+        },
+        "titre_5_equipement_invest": {
+          "label_fr": "Équipement (titre 5)",
+          "label_en": "Equipment & investment (Title 5)",
+          "montant_md_eur": 20.6,
+          "share": 0.3433,
+          "notes": "Titre 5 = équipement des forces, investissements (programmes d'armement, modernisation, dissuasion nucléaire). Programme 146 'Équipement des forces' principalement. TODO: vérifier vs PAP officiel."
+        },
+        "titre_3_fonctionnement": {
+          "label_fr": "Fonctionnement (titre 3)",
+          "label_en": "Operations (Title 3)",
+          "montant_md_eur": 5.99,
+          "share": 0.0998,
+          "notes": "Titre 3 = fonctionnement courant (entretien matériels, fluides, déplacements, formation). Programme 178 'Préparation et emploi des forces'. TODO: vérifier vs PAP officiel."
+        },
+        "titre_6_intervention_opex": {
+          "label_fr": "Intervention + OPEX (titre 6)",
+          "label_en": "Intervention + foreign ops (Title 6)",
+          "montant_md_eur": 4.67,
+          "share": 0.0778,
+          "notes": "Titre 6 = transferts (subventions OTAN, aides bilatérales, opérations extérieures - OPEX). TODO: vérifier vs PAP officiel."
+        }
+      },
+      "notes_fr": "Ventilation de la Mission Défense (PLF 2025) en 4 titres budgétaires (T2 personnels, T3 fonctionnement, T5 équipement, T6 intervention/OPEX). Appliqué à la part Défense de la contribution État de l'utilisateur.",
+      "alignment_note_fr": "Total recalé sur PLF Mission « Défense » (DA). Décomposition par titre conservée du seed seed_plf_defense_titres.csv (part T2/T3/T5/T6 stable, montants rescalés).",
+      "alignment_source": "PLF 2025 — state_breakdown.missions[DA].cp_eur",
+      "alignment_source_url": "https://www.data.gouv.fr/datasets/plf-2025-depenses-2025-selon-destination/"
+    },
+    "education": {
+      "scope": "depp_rers_2024_niveaux_education",
+      "perimeter_fr": "DEPP RERS 2024 — Dépenses Éducation par niveau",
+      "perimeter_en": "DEPP RERS 2024 — Education spending by level",
+      "total_md_eur": 120.1,
+      "sum_share": 1.0,
+      "source": "PLF 2025 — Mission Recherche et enseignement supérieur (MIRES)",
+      "source_url": "https://www.budget.gouv.fr/files/uploads/extract/2025/PLF/MISSION/FR_2025_PLF_BG_MISSION_RA_PERF.pdf",
+      "date_reference": "2024-10-10",
+      "items": {
+        "enseignement_second_degre": {
+          "label_fr": "Enseignement second degré (collèges + lycées)",
+          "label_en": "Lower + upper secondary education",
+          "montant_md_eur": 45.48,
+          "share": 0.3787,
+          "notes": "Programme 141 'Enseignement scolaire public du second degré' : collèges + lycées généraux/techno/pro publics. Inclut rémunérations enseignants (l'État paye les profs, le département/région les bâtiments). TODO: vérifier vs PAP PLF 2025."
+        },
+        "enseignement_premier_degre": {
+          "label_fr": "Enseignement premier degré (écoles)",
+          "label_en": "Primary education (preschool + elementary)",
+          "montant_md_eur": 42.64,
+          "share": 0.355,
+          "notes": "Programme 140 'Enseignement scolaire public du premier degré' : écoles maternelles + élémentaires publiques. L'État paie les enseignants, la commune finance bâtiments + matériel. TODO: vérifier vs PAP PLF 2025."
+        },
+        "enseignement_superieur": {
+          "label_fr": "Enseignement supérieur (universités, CROUS)",
+          "label_en": "Higher education (universities, CROUS)",
+          "montant_md_eur": 19.9,
+          "share": 0.1657,
+          "notes": "Programme 150 'Formations supérieures et recherche universitaire' + programme 231 'Vie étudiante' : universités, IUT, INSPÉ, CROUS (bourses + restauration). TODO: vérifier vs PAP PLF 2025."
+        },
+        "recherche_publique": {
+          "label_fr": "Recherche publique (CNRS, INSERM, INRAE, ANR)",
+          "label_en": "Public research (CNRS, INSERM, INRAE, ANR)",
+          "montant_md_eur": 12.08,
+          "share": 0.1006,
+          "notes": "Programmes 172 'Recherches scientifiques et technologiques pluridisciplinaires' + 193 'Recherche spatiale' + 142 'Enseignement supérieur agricole' : CNRS, INSERM, INRAE, ANR, CNES, etc. TODO: vérifier vs PAP."
+        }
+      },
+      "notes_fr": "Ventilation par niveau d'enseignement (1er degré, 2nd degré, supérieur, recherche). État finance les enseignants ; communes/départements/régions financent les bâtiments. Appliqué au bucket Éducation de la contribution État.",
+      "alignment_note_fr": "Total recalé sur PLF Missions « Enseignement scolaire » (EC) + « Recherche et enseignement supérieur » (RA), pour matcher le bucket éditorial UI « Éducation, recherche ». Décomposition par niveau conservée, montants rescalés.",
+      "alignment_source": "PLF 2025 — state_breakdown.missions[EC,RA].cp_eur",
+      "alignment_source_url": "https://www.data.gouv.fr/datasets/plf-2025-depenses-2025-selon-destination/"
+    },
+    "dette": {
+      "scope": "aft_dette_charges_2024",
+      "perimeter_fr": "AFT/Bercy — Charge de la dette 2024 ventilée",
+      "perimeter_en": "AFT/Treasury — Debt service 2024 split",
+      "total_md_eur": 61.3,
+      "sum_share": 1.0,
+      "source": "Bercy / AFT — Rapport annuel sur la dette publique 2024",
+      "source_url": "https://www.aft.gouv.fr/files/medias-aft/3_Dette/3.1_RapportActivite/2024_RapportActivite.pdf",
+      "date_reference": "2024-12-31",
+      "items": {
+        "interets_long_terme": {
+          "label_fr": "Intérêts long terme (OAT)",
+          "label_en": "Long-term interest (OAT)",
+          "montant_md_eur": 52.25,
+          "share": 0.8518,
+          "notes": "Intérêts versés sur les Obligations Assimilables du Trésor (OAT), titres de moyen-long terme (2 à 50 ans) qui constituent l'essentiel de l'encours de dette négociable de l'État. TODO: vérifier vs rapport AFT 2024."
+        },
+        "interets_court_terme": {
+          "label_fr": "Intérêts court terme (BTF)",
+          "label_en": "Short-term interest (BTF)",
+          "montant_md_eur": 6.25,
+          "share": 0.1019,
+          "notes": "Intérêts versés sur les Bons du Trésor à taux Fixe (BTF), titres de court terme (jusqu'à 1 an), utilisés pour la trésorerie. TODO: vérifier vs rapport AFT."
+        },
+        "frais_emission_couverture": {
+          "label_fr": "Frais d'émission + couverture",
+          "label_en": "Issuance + hedging fees",
+          "montant_md_eur": 2.84,
+          "share": 0.0463,
+          "notes": "Coûts opérationnels de la gestion de dette : commissions des spécialistes en valeurs du Trésor (SVT), gestion des swaps, frais techniques, indexation OATi/OATei. TODO: vérifier vs rapport AFT."
+        }
+      },
+      "notes_fr": "Ventilation de la charge de la dette : intérêts long terme (OAT), court terme (BTF), frais d'émission/couverture. Appliqué au bucket Charge dette de la contribution État.",
+      "alignment_note_fr": "Total recalé sur PLF Mission « Engagements financiers de l'État » (EB). Décomposition (OAT/BTF/frais) conservée.",
+      "alignment_source": "PLF 2025 — state_breakdown.missions[EB].cp_eur",
+      "alignment_source_url": "https://www.data.gouv.fr/datasets/plf-2025-depenses-2025-selon-destination/"
+    },
+    "autres_ministeres": {
+      "scope": "plf2025_autres_ministeres_operateurs",
+      "perimeter_fr": "PLF 2025 — Autres missions hors top 5 + opérateurs",
+      "perimeter_en": "PLF 2025 — Other missions beyond top 5 + operators",
+      "total_md_eur": 57.2,
+      "sum_share": 1.0,
+      "source": "PLF 2025 — Mission Agriculture, alimentation, forêt et affaires rurales",
+      "source_url": "https://www.budget.gouv.fr/files/uploads/extract/2025/PLF/MISSION/FR_2025_PLF_BG_MISSION_RA_PERF.pdf",
+      "date_reference": "2024-10-10",
+      "items": {
+        "operateurs_universites_pole_emploi_ademe": {
+          "label_fr": "Opérateurs (universités, France Travail, ADEME)",
+          "label_en": "Operators (universities, France Travail, ADEME)",
+          "montant_md_eur": 19.44,
+          "share": 0.34,
+          "notes": "Subventions pour charges de service public (SCSP) versées aux opérateurs de l'État hors top 5 : universités, France Travail (ex-Pôle Emploi, ~50 000 agents), ADEME, Météo-France, IGN, BPI, INRAE, CEA hors défense, etc. TODO: vérifier vs jaune Opérateurs."
+        },
+        "solidarites_sante_handicap": {
+          "label_fr": "Solidarités, santé, handicap (AAH, AME)",
+          "label_en": "Solidarity, health, disability (AAH, AME)",
+          "montant_md_eur": 16.01,
+          "share": 0.28,
+          "notes": "Mission 'Solidarité, insertion et égalité des chances' : AAH (Allocation Adulte Handicapé, 1,3 M bénéficiaires), AME (Aide Médicale d'État, 466 000 bénéficiaires), prime d'activité (financement État via CAF). TODO: vérifier vs PAP."
+        },
+        "interieur_hors_securite": {
+          "label_fr": "Intérieur (administration, asile, immigration)",
+          "label_en": "Interior (admin, asylum, immigration)",
+          "montant_md_eur": 9.15,
+          "share": 0.16,
+          "notes": "Missions hors sécurité : 'Administration générale et territoriale' (préfectures, élections, état civil), 'Immigration, asile, intégration' (OFPRA, CNDA, CADA, hébergement demandeurs d'asile). TODO: vérifier vs PAP."
+        },
+        "affaires_etrangeres_outre_mer": {
+          "label_fr": "Affaires étrangères + Outre-mer",
+          "label_en": "Foreign affairs + Overseas",
+          "montant_md_eur": 6.86,
+          "share": 0.12,
+          "notes": "Mission 'Action extérieure de l'État' (réseau diplomatique, consulats, AFD partie don, contributions ONU/UE), mission 'Outre-mer' (continuité territoriale, soutien aux entreprises ultramarines, logement social DOM). TODO: vérifier vs PAP."
+        },
+        "agriculture_alimentation": {
+          "label_fr": "Agriculture, alimentation, forêts",
+          "label_en": "Agriculture, food, forests",
+          "montant_md_eur": 5.72,
+          "share": 0.1,
+          "notes": "Mission 'Agriculture, alimentation, forêt et affaires rurales' : aides PAC nationales (en complément des fonds UE), enseignement agricole, sécurité sanitaire (ANSES, FranceAgriMer), ONF. TODO: vérifier vs PAP."
+        }
+      },
+      "notes_fr": "Regroupement des missions hors top 5 du budget État : solidarités/santé/handicap, agriculture, intérieur (hors sécurité), affaires étrangères + outre-mer, opérateurs (universités, France Travail, ADEME). Appliqué au bucket Autres ministères.",
+      "alignment_note_fr": "Total recalé sur la somme PLF des 18 missions du bucket « Autres » (Agriculture, Outre-mer, Action extérieure, Économie, Anciens combattants, Santé mission étatique, etc.). Décomposition conservée, montants rescalés.",
+      "alignment_source": "PLF 2025 — state_breakdown.missions[GA,RB,AV,AD,AB,AC,DB,AA,OA,IA,MB,SA,PB,DC,CA,TR,PC,PR].cp_eur",
+      "alignment_source_url": "https://www.data.gouv.fr/datasets/plf-2025-depenses-2025-selon-destination/"
+    },
+    "bloc_communal": {
+      "scope": "ofgl_communes_fonctionnelle_national_avg",
+      "perimeter_fr": "OFGL/DGCL — Ventilation fonctionnelle moyenne du bloc communal (national pondéré population)",
+      "perimeter_en": "OFGL/DGCL — Functional breakdown of the municipal block (national, pop-weighted)",
+      "year": 2024,
+      "source": "DGCL/OFGL — Rapport annuel finances locales 2024",
+      "source_url": "https://www.collectivites-locales.gouv.fr/files/Finances%20locales/Rapports%20OFGL/2024/note_OFGL_finances_locales_2023.pdf",
+      "scope_note_fr": "Le dataset OFGL ne publie pas la ventilation fonctionnelle au niveau de chaque commune (seul `departements-fonctionnelle` est exposé). Les valeurs ici sont les moyennes nationales du bloc communal (communes + EPCI) issues du rapport annuel OFGL/DGCL. L'overlay `by_insee_top_200` est laissé vide pour l'instant.",
+      "fonctions": [
+        "administration_generale",
+        "enseignement",
+        "culture_sport",
+        "amenagement_urbain",
+        "action_sociale",
+        "voirie",
+        "securite",
+        "proprete_dechets",
+        "autres"
+      ],
+      "national_avg_weighted": {
+        "administration_generale": {
+          "share": 0.32,
+          "eur_hab": 540.0,
+          "label_fr": "Administration générale",
+          "label_en": "General administration"
+        },
+        "enseignement": {
+          "share": 0.14,
+          "eur_hab": 230.0,
+          "label_fr": "Enseignement (écoles primaires)",
+          "label_en": "Education (primary schools)"
+        },
+        "culture_sport": {
+          "share": 0.12,
+          "eur_hab": 200.0,
+          "label_fr": "Culture, sport, loisirs",
+          "label_en": "Culture, sport, recreation"
+        },
+        "amenagement_urbain": {
+          "share": 0.11,
+          "eur_hab": 185.0,
+          "label_fr": "Aménagement urbain",
+          "label_en": "Urban planning"
+        },
+        "action_sociale": {
+          "share": 0.1,
+          "eur_hab": 170.0,
+          "label_fr": "Action sociale (CCAS)",
+          "label_en": "Social action (CCAS)"
+        },
+        "voirie": {
+          "share": 0.08,
+          "eur_hab": 135.0,
+          "label_fr": "Voirie communale",
+          "label_en": "Municipal roads"
+        },
+        "securite": {
+          "share": 0.06,
+          "eur_hab": 100.0,
+          "label_fr": "Sécurité (police municipale)",
+          "label_en": "Security (municipal police)"
+        },
+        "proprete_dechets": {
+          "share": 0.05,
+          "eur_hab": 85.0,
+          "label_fr": "Propreté + déchets",
+          "label_en": "Cleanliness + waste"
+        },
+        "autres": {
+          "share": 0.02,
+          "eur_hab": 35.0,
+          "label_fr": "Autres",
+          "label_en": "Other"
+        }
+      },
+      "by_insee_top_200": {},
+      "notes_fr": "Moyenne nationale du bloc communal (communes + EPCI) ventilée par grande fonction M14. Appliquée à la part bloc communal de la contribution Local de l'utilisateur."
+    },
+    "departement": {
+      "scope": "ofgl_departements_fonctionnelle_national_avg",
+      "perimeter_fr": "OFGL — Ventilation fonctionnelle moyenne des départements (M52)",
+      "perimeter_en": "OFGL — Functional breakdown of departments (M52, national avg)",
+      "year": 2024,
+      "source": "DGCL/OFGL — Comptes des départements 2023 (M52 fonctionnelle)",
+      "source_url": "https://data.ofgl.fr/explore/dataset/ofgl-base-departements-fonctionnelle/",
+      "scope_note_fr": "Fonction 4-5 départementale : RSA versé (compétence département), aide sociale à l'enfance (ASE), allocation personnalisée d'autonomie (APA), prestation de compensation du handicap (PCH). C'est de loin le 1er poste. TODO: vérifier vs rapport OFGL annuel.",
+      "fonctions": [
+        "action_sociale_rsa_dependance_enfance",
+        "colleges_education",
+        "routes_transport_voirie_dep",
+        "administration_autres",
+        "securite_civile_sdis_pompiers",
+        "culture_sport_jeunesse"
+      ],
+      "national_avg_weighted": {
+        "action_sociale_rsa_dependance_enfance": {
+          "share": 0.5,
+          "eur_hab": 475.0,
+          "label_fr": "Action sociale (RSA, dépendance, enfance)",
+          "label_en": "Social action (RSA, dependency, childcare)"
+        },
+        "colleges_education": {
+          "share": 0.12,
+          "eur_hab": 115.0,
+          "label_fr": "Collèges + éducation",
+          "label_en": "Lower secondary + education"
+        },
+        "routes_transport_voirie_dep": {
+          "share": 0.12,
+          "eur_hab": 115.0,
+          "label_fr": "Routes départementales + transport",
+          "label_en": "Departmental roads + transport"
+        },
+        "administration_autres": {
+          "share": 0.12,
+          "eur_hab": 115.0,
+          "label_fr": "Administration + autres",
+          "label_en": "Administration + others"
+        },
+        "securite_civile_sdis_pompiers": {
+          "share": 0.08,
+          "eur_hab": 75.0,
+          "label_fr": "Sécurité civile (SDIS, pompiers)",
+          "label_en": "Civil safety (fire & rescue)"
+        },
+        "culture_sport_jeunesse": {
+          "share": 0.06,
+          "eur_hab": 55.0,
+          "label_fr": "Culture, sport, jeunesse",
+          "label_en": "Culture, sport, youth"
+        }
+      },
+      "by_insee_top_200": {},
+      "notes_fr": "Moyenne nationale des dépenses départementales (M52) par fonction. Action sociale (RSA, APA, ASE, PCH) domine très largement. Appliquée à la part Département de la contribution Local."
+    },
+    "region": {
+      "scope": "ofgl_regions_fonctionnelle_national_avg",
+      "perimeter_fr": "OFGL — Ventilation fonctionnelle moyenne des régions (M71)",
+      "perimeter_en": "OFGL — Functional breakdown of regions (M71, national avg)",
+      "year": 2024,
+      "source": "DGCL/OFGL — Comptes des régions 2023 (M71 fonctionnelle)",
+      "source_url": "https://data.ofgl.fr/explore/dataset/ofgl-base-regions-fonctionnelle/",
+      "scope_note_fr": "Fonction 8 transports : autorité organisatrice des TER (conventions SNCF Voyageurs, ~360 000 voyageurs/jour), transports routiers interurbains (compétence transférée des départements en 2017), liaisons aériennes essentielles. TODO: vérifier.",
+      "fonctions": [
+        "transports_ter_routier",
+        "lycees_enseignement",
+        "formation_professionnelle_apprentissage",
+        "amenagement_environnement",
+        "culture_sport_administration_autres",
+        "developpement_economique_emploi"
+      ],
+      "national_avg_weighted": {
+        "transports_ter_routier": {
+          "share": 0.3,
+          "eur_hab": 135.0,
+          "label_fr": "Transports (TER, routier)",
+          "label_en": "Transport (regional trains, road)"
+        },
+        "lycees_enseignement": {
+          "share": 0.2,
+          "eur_hab": 90.0,
+          "label_fr": "Lycées + enseignement",
+          "label_en": "Upper secondary + education"
+        },
+        "formation_professionnelle_apprentissage": {
+          "share": 0.17,
+          "eur_hab": 75.0,
+          "label_fr": "Formation pro + apprentissage",
+          "label_en": "Vocational training + apprenticeship"
+        },
+        "amenagement_environnement": {
+          "share": 0.12,
+          "eur_hab": 55.0,
+          "label_fr": "Aménagement + environnement",
+          "label_en": "Planning + environment"
+        },
+        "culture_sport_administration_autres": {
+          "share": 0.11,
+          "eur_hab": 50.0,
+          "label_fr": "Culture, sport, administration, autres",
+          "label_en": "Culture, sport, administration, others"
+        },
+        "developpement_economique_emploi": {
+          "share": 0.1,
+          "eur_hab": 45.0,
+          "label_fr": "Développement économique",
+          "label_en": "Economic development"
+        }
+      },
+      "by_insee_top_200": {},
+      "notes_fr": "Moyenne nationale des dépenses régionales (M71) par fonction. Transports (TER), lycées et formation professionnelle constituent le cœur. Appliquée à la part Région de la contribution Local."
+    }
+  },
+  "snapshot_align_applied": true
+}

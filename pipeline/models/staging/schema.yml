@@ -273,18 +273,20 @@ models:
   # ===========================================================================
   - name: stg_marches_publics
     description: |
-      Marchés publics de la collectivité parisienne.
+      Marchés publics de la collectivité parisienne (source opendata.paris.fr).
 
       ⚠️ ATTENTION: montant_min/max sont des ENVELOPPES PLURIANNUELLES.
       NE PAS SOMMER comme dépense annuelle !
-      Usage: contexte uniquement.
+      Usage: contexte uniquement. Fusion avec DECP dans core_marches_publics.
 
       Années: 2013-2024
     columns:
       - name: annee
         description: "Année de notification"
+        tests:
+          - not_null
       - name: numero_marche
-        description: "Numéro du marché"
+        description: "Numéro du marché (14 chars format Paris: AAAAAAAALNNNNN)"
       - name: objet
         description: "Objet du marché"
       - name: nature
@@ -302,6 +304,45 @@ models:
         tests:
           - unique
           - not_null
+
+  # ===========================================================================
+  # DECP MARCHÉS PARIS - Enrichissement national
+  # ===========================================================================
+  - name: stg_decp_marches_paris
+    description: |
+      DECP (Données Essentielles de la Commande Publique) filtrée Ville de Paris.
+      Source: data.gouv.fr fichiers annuels consolidés.
+
+      Apporte les colonnes qui manquent côté opendata.paris.fr:
+      ccag, code_cpv, lieu_execution, offres_recues, considerations RSE,
+      montant notifié à la signature.
+
+      Clé de jointure avec stg_marches_publics:
+        SUBSTR(liste_des_marches.num_marche, 5) = stg_decp.decp_id
+
+      Dédup: par `id` (ROW_NUMBER sur source_year DESC) pour gérer les
+      republications. Le dédup multi-titulaires (N lignes = 1 accord-cadre)
+      est fait dans core_marches_publics.
+    columns:
+      - name: decp_id
+        description: "Identifiant DECP (10 char, ex: '2024T05699')"
+        tests:
+          - not_null
+          - unique
+      - name: annee_notification
+        description: "Année d'extraction depuis date_notification"
+      - name: objet
+        description: "Objet du marché"
+      - name: ccag
+        description: "Type CCAG: Travaux | Fournitures | PI | MOE | TIC"
+      - name: code_cpv
+        description: "Code CPV européen (8 chiffres)"
+      - name: montant_notifie
+        description: "Montant déclaré à la signature (≠ plafond)"
+      - name: lieu_execution_code
+        description: "Code lieu exec (département ou code postal)"
+      - name: titulaire_siret
+        description: "SIRET du premier titulaire"
 
   # ===========================================================================
   # BILAN COMPTABLE - État patrimonial
@@ -389,3 +430,179 @@ models:
         description: "Clé technique unique"
         tests:
           - not_null
+
+  # ===========================================================================
+  # LOGEMENT — DRIHL FILE D'ATTENTE
+  # ===========================================================================
+  - name: stg_drihl_paris
+    description: |
+      Wrapper staging de seed_drihl_paris_2024 (extrait XLSX DRIHL).
+      Existe pour que core_logement_attente_arr ne référence pas le seed
+      directement (règle layering raw → stg → core).
+
+      Grain: code_insee × annee (75 + 75056 + 75101..75120)
+    columns:
+      - name: code_insee
+        description: "Code INSEE (75=Paris global ; 75056=non-précisé ; 75101..75120)"
+        tests:
+          - not_null
+      - name: annee
+        description: "Année du snapshot"
+        tests:
+          - not_null
+      - name: source
+        description: "Citation de la source (DRIHL)"
+        tests:
+          - not_null
+      - name: source_url
+        description: "URL pointant la publication DRIHL"
+
+  # ===========================================================================
+  # NOUVEAUX STG (Phases 1-18 du refactor layering)
+  # Tous les seeds-mappings et seeds-cache LLM sont désormais wrappés ici.
+  # ===========================================================================
+
+  - name: stg_dette_garantie
+    description: "Annexe IV-B Paris (emprunts garantis) — wrapper de raw.dette_garantie_paris."
+    columns:
+      - name: annee
+        tests: [not_null]
+      - name: beneficiaire
+        tests: [not_null]
+      - name: capital_restant
+        description: "Capital restant dû au 31/12 (€)"
+        tests: [not_null]
+      - name: taux_type
+        description: "F (fixe), V (variable), ou autre"
+
+  - name: stg_pdf_investissements_localises
+    description: "Investissements localisés extraits PDF Annexe IL — wrapper raw."
+    columns:
+      - name: annee_publication
+        tests: [not_null]
+      - name: projet_id
+        tests: [not_null]
+      - name: montant
+        tests: [not_null]
+      - name: confidence
+        description: "Confiance LLM 0..1"
+
+  - name: stg_deliberations_sessions
+    description: "Métadonnées sessions Conseil de Paris."
+    columns:
+      - name: session_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_deliberations_delibs
+    description: "Délibérations Conseil de Paris (titres + direction)."
+    columns:
+      - name: session_id
+        tests: [not_null]
+      - name: delib_id
+        tests: [not_null]
+
+  - name: stg_deliberations_articles
+    description: "Articles individuels (subventions) extraits des délibérations."
+    columns:
+      - name: session_id
+        tests: [not_null]
+      - name: delib_id
+        tests: [not_null]
+      - name: amount_eur
+        description: "Montant article (€) — peut être null si non extrait"
+
+  - name: stg_sirene_companies
+    description: "Cache SIRENE entreprises (recherche-entreprises.api.gouv.fr)."
+    columns:
+      - name: siren
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_enrichment_caches
+    description: |
+      Table polymorphe des caches d'enrichissement (LLM/SIRENE/photos).
+      Chaque ligne = un fichier JSON sous pipeline/cache/enrichment/.
+      Le payload est conservé en STRING — lossy par design.
+    columns:
+      - name: relative_path
+        tests:
+          - not_null
+          - unique
+
+  # (stg_drihl_paris défini plus haut — ligne 437)
+
+  # ─── Seed wrappers (mappings + caches LLM) ──────────────────────────────────
+
+  - name: stg_mapping_thematiques
+    description: "Mapping (chapitre, fonction) → thématique pour budget."
+    columns:
+      - name: thematique
+        tests: [not_null]
+
+  - name: stg_mapping_beneficiaires
+    description: "Regex pattern → thématique/sous-catégorie pour subventions."
+    columns:
+      - name: pattern
+        tests: [not_null]
+      - name: thematique
+        tests: [not_null]
+      - name: priorite
+        tests: [not_null]
+
+  - name: stg_mapping_directions
+    description: "Direction municipale → thématique."
+    columns:
+      - name: direction
+        tests:
+          - not_null
+          - unique
+      - name: thematique
+        tests: [not_null]
+
+  - name: stg_mapping_entites
+    description: "Regex pattern → nom canonique pour déduplication entités."
+    columns:
+      - name: pattern
+        tests: [not_null]
+      - name: nom_canonique
+        tests: [not_null]
+
+  - name: stg_cache_thematique_beneficiaires
+    description: "Cache LLM thématique par bénéficiaire normalisé."
+    columns:
+      - name: beneficiaire_normalise
+        tests:
+          - not_null
+          - unique
+      - name: ode_thematique
+        tests: [not_null]
+
+  - name: stg_lieux_connus
+    description: "Mapping pattern_match → lieu (adresse, arrondissement, coords)."
+    columns:
+      - name: pattern_match
+        tests: [not_null]
+      - name: nom_complet
+        tests: [not_null]
+      - name: arrondissement
+        description: "Arrondissement 1-20"
+
+  - name: stg_cache_geo_ap
+    description: "Cache LLM géolocalisation par ap_code."
+    columns:
+      - name: ap_code
+        tests:
+          - not_null
+          - unique
+      - name: ode_confiance
+        description: "Confiance 0..1 du géocodage LLM"
+
+  - name: stg_match_projet_marches
+    description: "Décisions de match scorées projet × marché."
+    columns:
+      - name: projet_id
+        tests: [not_null]
+      - name: numero_marche

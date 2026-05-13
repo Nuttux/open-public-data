@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-18T16:42:00.799050",
+  "generated_at": "2026-04-23T16:00:01.051795",
   "source": "mart_vote_vs_execute",
   "description": "Comparaison Budget Voté (BP) vs Budget Exécuté (CA) de la Ville de Paris. Le Budget Voté provient des PDFs Éditique BG (présentation croisée, opérations ventilées uniquement). Le Budget Exécuté provient du Compte Administratif (Open Data Paris).",
   "coverage": {
@@ -393,7 +393,7 @@
       "sens_flux": "Recette",
       "ecart_moyen_pct": -12.3,
       "vote_total": 275740677.24,
-      "execute_total": 226015960.35,
+      "execute_total": 226015960.35000002,
       "taux_execution": 82.0,
       "nb_annees": 6
     },
@@ -1058,7 +1058,7 @@
       "thematique": "Transferts entre Sections",
       "chapitre_code": "926",
       "chapitre_libelle": "Transferts entre les sections",
-      "montant_vote": 267130107.27,
+      "montant_vote": 267130107.26999998,
       "montant_estime": null,
       "taux_execution_moyen": null,
       "confiance": null
@@ -1130,7 +1130,7 @@
       "thematique": "Transferts entre Sections",
       "chapitre_code": "926",
       "chapitre_libelle": "Transferts entre les sections",
-      "montant_vote": 274130107.27000004,
+      "montant_vote": 274130107.27,
       "montant_estime": null,
       "taux_execution_moyen": null,
       "confiance": null
@@ -1154,7 +1154,7 @@
       "thematique": "Transferts entre Sections",
       "chapitre_code": "926",
       "chapitre_libelle": "Transferts entre les sections",
-      "montant_vote": 233095000.0,
+      "montant_vote": 233094999.99999997,
       "montant_estime": null,
       "taux_execution_moyen": null,
       "confiance": null
@@ -1622,7 +1622,7 @@
       "thematique": "Opérations Patrimoniales",
       "chapitre_code": "925",
       "chapitre_libelle": "Opérations patrimoniales",
-      "montant_vote": 184050399.01,
+      "montant_vote": 184050399.01000002,
       "montant_estime": null,
       "taux_execution_moyen": null,
       "confiance": null

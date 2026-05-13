@@ -7,7 +7,7 @@ import { useT, useLocale } from "@/lib/localeContext";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.replace(`{${k}}`, String(v));
+  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
   return r;
 };
 
@@ -26,6 +26,15 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
   const suf = (n: number) => (locale === "en" ? (n === 1 ? "st" : "th") : n === 1 ? "er" : "ᵉ");
 
   const { v, u } = fmtEur(chap.total);
+  const decimal = locale === "en" ? "." : ",";
+  const coverageAmount = fmtEur(chap.coverage.amount);
+  const hasProjets = chap.nbProjets > 0;
+  const coverageLine = hasProjets
+    ? fill(t("fx.fiche.chap.coverage"), {
+        pct: chap.coverage.pct.toFixed(chap.coverage.pct < 10 ? 1 : 0).replace(".", decimal),
+        amount: `${coverageAmount.v} ${coverageAmount.u}`,
+      })
+    : t("fx.fiche.chap.coverage_zero");
 
   return (
     <div>
@@ -39,7 +48,7 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
         </div>
         <div className="fx-fiche-kpi">
           <div className="fx-fiche-kpi-label">{t("fx.fiche.chap.part")}</div>
-          <div className="fx-fiche-kpi-value tnum">{chap.share.toFixed(1).replace(".", locale === "en" ? "." : ",")} <span className="u">%</span></div>
+          <div className="fx-fiche-kpi-value tnum">{chap.share.toFixed(1).replace(".", decimal)} <span className="u">%</span></div>
         </div>
         <div className="fx-fiche-kpi">
           <div className="fx-fiche-kpi-label">{t("fx.fiche.chap.rang")}</div>
@@ -53,7 +62,58 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
         </div>
       </div>
 
-      {chap.topArrondissements.length > 0 && (
+      <div
+        style={{
+          marginTop: 8,
+          marginBottom: 18,
+          fontFamily: "var(--f-mono)",
+          fontSize: 11,
+          letterSpacing: 0.3,
+          color: "var(--muted)",
+          lineHeight: 1.5,
+        }}
+      >
+        {coverageLine}
+        <span style={{ marginLeft: 6, opacity: 0.75 }}>
+          · {fill(t("fx.fiche.chap.coverage_source"), { source: chap.coverage.sourceLabel })}
+        </span>
+      </div>
+
+      {!hasProjets && (
+        <section className="fx-fiche-section">
+          <div
+            style={{
+              padding: "16px 18px",
+              border: "1px solid var(--rule)",
+              background: "rgba(166, 118, 56, 0.04)",
+              borderLeft: "3px solid var(--ocre)",
+              fontFamily: "var(--f-ui)",
+              fontSize: 13.5,
+              lineHeight: 1.55,
+              color: "var(--ink-2)",
+            }}
+          >
+            <div
+              style={{
+                fontFamily: "var(--f-mono)",
+                fontSize: 11,
+                letterSpacing: 1,
+                textTransform: "uppercase",
+                color: "var(--ocre)",
+                marginBottom: 8,
+                fontWeight: 600,
+              }}
+            >
+              {t("fx.fiche.chap.no_projets_title")}
+            </div>
+            <p style={{ margin: 0 }}>
+              {fill(t("fx.fiche.chap.no_projets_body"), { year: chap.year })}
+            </p>
+          </div>
+        </section>
+      )}
+
+      {hasProjets && chap.topArrondissements.length > 0 && (
         <section className="fx-fiche-section">
           <div className="fx-fiche-h">{fill(t("fx.fiche.chap.top_arr"), { label: chap.label.toLowerCase() })}</div>
           <div>
@@ -93,6 +153,7 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
         </section>
       )}
 
+      {hasProjets && (
       <section className="fx-fiche-section">
         <div className="fx-fiche-h">{fill(t("fx.fiche.chap.top_proj"), { label: chap.label.toLowerCase() })}</div>
         <div className="fx-arr-top-grid">
@@ -106,7 +167,13 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
                 className="fx-arr-top-item"
               >
                 <div className="fx-arr-top-thumb">
-                  <ProjetThumb projetId={p.id} aspectRatio="4 / 3" fallbackLabel={p.name} />
+                  <ProjetThumb
+                    photo={p.photo.photo}
+                    generic={p.photo.generic}
+                    typologie={p.photo.typologie}
+                    aspectRatio="4 / 3"
+                    fallbackLabel={p.name}
+                  />
                 </div>
                 <div className="fx-arr-top-meta">
                   <div className="fx-arr-top-rank">{String(i + 1).padStart(2, "0")}</div>
@@ -121,6 +188,7 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
           })}
         </div>
       </section>
+      )}
     </div>
   );
 }

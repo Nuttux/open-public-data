@@ -3,11 +3,12 @@
 import { useEffect } from "react";
 import type { BondIssuance, DetteInstrument } from "@/lib/fusion-data";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
-import { useT } from "@/lib/localeContext";
+import { useT, useLocale } from "@/lib/localeContext";
+import { trLabel } from "@/lib/label-translate";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.replace(`{${k}}`, String(v));
+  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
   return r;
 };
 
@@ -20,6 +21,7 @@ type Props = {
 
 export default function InstrumentDetteFiche({ instrument, year, bondIssuances, onClose }: Props) {
   const t = useT();
+  const { locale } = useLocale();
 
   useEffect(() => {
     if (!instrument) return;
@@ -48,18 +50,18 @@ export default function InstrumentDetteFiche({ instrument, year, bondIssuances, 
   return (
     <>
       <div className="fx-fiche-backdrop" onClick={onClose} aria-hidden="true" />
-      <aside className="fx-fiche-panel" role="dialog" aria-modal="true" aria-label={instrument.label}>
+      <aside className="fx-fiche-panel" role="dialog" aria-modal="true" aria-label={trLabel(instrument.label, locale)}>
         <button type="button" className="fx-fiche-close" onClick={onClose} aria-label={t("fx.fiche.close_label")}>×</button>
 
         <div className="fx-fiche-head">
           <div className="fx-fiche-meta">
-            <span className="tag sol">{instrument.tag}</span>
+            <span className="tag sol">{trLabel(instrument.tag, locale)}</span>
             <span>{fmtInt(instrument.part * 100)} % {t("fx.fiche.instr.encours_pct")}</span>
             <span className="sep">·</span>
-            <span>{instrument.subtitle}</span>
+            <span>{trLabel(instrument.subtitle, locale)}</span>
           </div>
-          <h2>{instrument.label} · {display} {unit}</h2>
-          <div className="fx-fiche-sub">{instrument.description}</div>
+          <h2>{trLabel(instrument.label, locale)} · {display} {unit}</h2>
+          <div className="fx-fiche-sub">{trLabel(instrument.description, locale)}</div>
         </div>
 
         <div className="fx-fiche-kpis">

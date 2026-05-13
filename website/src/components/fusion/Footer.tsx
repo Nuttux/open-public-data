@@ -7,27 +7,19 @@ import ReplayOptIn from "./ReplayOptIn";
 
 type Col = {
   headingKey: string;
-  links: { href: string; labelKey: string; disabled?: boolean; external?: boolean }[];
+  links: { href: string; labelKey: string; external?: boolean }[];
 };
 
 const COLUMNS: Col[] = [
   {
-    headingKey: "fx.foot.col.collectivite",
-    links: [
-      { href: "/", labelKey: "fx.foot.link.paris" },
-      { href: "#", labelKey: "fx.foot.link.autres", disabled: true },
-      { href: "#", labelKey: "fx.foot.link.france", disabled: true },
-    ],
-  },
-  {
     headingKey: "fx.foot.col.pages",
     links: [
-      { href: "/budget", labelKey: "fx.foot.link.budget" },
-      { href: "/qui-recoit", labelKey: "fx.foot.link.subventions" },
-      { href: "/marches-publics", labelKey: "fx.foot.link.marches" },
-      { href: "/investissements", labelKey: "fx.foot.link.invest" },
-      { href: "/logement-social", labelKey: "fx.foot.link.logement" },
-      { href: "/dette-patrimoine", labelKey: "fx.foot.link.dette" },
+      { href: "/ville/paris/budget", labelKey: "fx.foot.link.budget" },
+      { href: "/ville/paris/subventions", labelKey: "fx.foot.link.subventions" },
+      { href: "/ville/paris/marches", labelKey: "fx.foot.link.marches" },
+      { href: "/ville/paris/investissements", labelKey: "fx.foot.link.invest" },
+      { href: "/ville/paris/logement", labelKey: "fx.foot.link.logement" },
+      { href: "/ville/paris/dette", labelKey: "fx.foot.link.dette" },
     ],
   },
   {
@@ -35,7 +27,6 @@ const COLUMNS: Col[] = [
     links: [
       { href: "/analyses", labelKey: "fx.foot.link.analyses" },
       { href: "/methode", labelKey: "fx.foot.link.methode" },
-      { href: "/llms.txt", labelKey: "fx.foot.link.api" },
       {
         href: "https://github.com/Nuttux/open-public-data",
         labelKey: "fx.foot.link.github",
@@ -58,22 +49,13 @@ export default function Footer() {
             <div className="fx-foot-word">
               {t("fx.foot.word_line1")}<br />{t("fx.foot.word_line2")}
             </div>
-            <p className="fx-foot-blurb">
-              {t("fx.foot.blurb.before")}<b>{t("fx.foot.blurb.name")}</b>{t("fx.foot.blurb.after")}
-            </p>
+            <p className="fx-foot-blurb">{t("fx.foot.blurb")}</p>
           </div>
           {COLUMNS.map((c) => (
             <div key={c.headingKey}>
-              <h4>{t(c.headingKey)}</h4>
+              <h3>{t(c.headingKey)}</h3>
               <ul>
                 {c.links.map((l, i) => {
-                  if (l.disabled) {
-                    return (
-                      <li key={i}>
-                        <span style={{ color: "var(--muted-2)", cursor: "default" }}>{t(l.labelKey)}</span>
-                      </li>
-                    );
-                  }
                   if (l.external) {
                     return (
                       <li key={i}>
@@ -120,8 +102,16 @@ export default function Footer() {
           <ReplayOptIn />
         </div>
         <div className="fx-foot-base">
-          <span>{t("fx.foot.license").replace("{year}", String(year))}</span>
-          <span>{t("fx.foot.domain")}</span>
+          <nav aria-label={t("fx.foot.legal.aria")} className="fx-foot-legal">
+            <Link href="/accessibilite">{t("fx.foot.legal.accessibilite")}</Link>
+            <span aria-hidden="true">·</span>
+            <Link href="/confidentialite">{t("fx.foot.legal.confidentialite")}</Link>
+            <span aria-hidden="true">·</span>
+            <Link href="/mentions-legales">{t("fx.foot.legal.mentions")}</Link>
+            <span aria-hidden="true">·</span>
+            <Link href="/licence">{t("fx.foot.legal.licence")}</Link>
+          </nav>
+          <span className="fx-foot-license">{t("fx.foot.license").replace("{year}", String(year))}</span>
         </div>
       </div>
     </footer>

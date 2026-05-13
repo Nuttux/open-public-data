@@ -238,42 +238,21 @@ def fetch_evolution_data(client: bigquery.Client) -> dict:
 def fetch_revenues_by_source(client: bigquery.Client) -> list:
     """
     Fetch revenue data by chapitre_code for source classification.
-    
-    This allows us to classify revenues by their SOURCE (Impôts, Emprunts, Dotations...)
-    instead of by thematique which is not meaningful for revenues.
-    
-    Sources:
-    - core_budget (exécuté, 2019-2024) from dbt_paris_analytics
-    - core_budget_vote (voté, 2025-2026) from dbt_paris_analytics
-    
+
+    Source: mart_budget_recettes_par_chapitre (UNION exécuté + voté futur,
+    recettes seulement, agrégé par année × chapitre).
+
     Returns list of dicts with: annee, source, montant
     """
     logger.info("Fetching revenue data by chapter for source classification...")
-    
-    # Use dbt_paris_analytics dataset where core models are materialized
-    analytics_dataset = "dbt_paris_analytics"
-    
-    # UNION core_budget (exécuté) + core_budget_vote (voté 2025-2026 only)
     years_str = ','.join(str(y) for y in YEARS)
     query = f"""
-    SELECT annee, chapitre_code, SUM(montant) AS montant
-    FROM (
-        -- Budget exécuté (2019-2024)
-        SELECT annee, chapitre_code, montant
-        FROM `{PROJECT_ID}.{analytics_dataset}.core_budget`
-        WHERE annee IN ({years_str}) AND sens_flux = 'Recette'
-        
-        UNION ALL
-        
-        -- Budget voté (2025-2026 seulement, pour éviter doublons)
-        SELECT annee, chapitre_code, montant
-        FROM `{PROJECT_ID}.{analytics_dataset}.core_budget_vote`
-        WHERE annee > 2024 AND annee IN ({years_str}) AND sens_flux = 'Recette'
-    )
-    GROUP BY annee, chapitre_code
+    SELECT annee, chapitre_code, montant
+    FROM `{PROJECT_ID}.dbt_paris_marts.mart_budget_recettes_par_chapitre`
+    WHERE annee IN ({years_str})
     ORDER BY annee, chapitre_code
     """
-    
+
     results = client.query(query).result()
     
     # Process: chapitre_code → category → source group, aggregate by year + source

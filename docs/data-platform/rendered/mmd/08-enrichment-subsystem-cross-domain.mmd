@@ -1,0 +1,39 @@
+flowchart TB
+    subgraph INPUT["📥 Inputs"]
+        C[core_subventions<br/>core_marches_publics<br/>core_ap_projets]
+    end
+
+    subgraph DET["🔧 Deterministic enrichment"]
+        ES[enrich_sirene.py<br/>recherche-entreprises.api.gouv.fr]
+        MPM[match_projet_marches.py<br/>seed-based scoring]
+        BP[build_patrimoine_structure.py<br/>editorial constants]
+        BH[build_hors_bilan.py<br/>editorial seed]
+        RP[rebuild_paris_centre_path.py<br/>1–4 arr. merger 2020]
+    end
+
+    subgraph LLM["🤖 LLM enrichment"]
+        ET[enrich_thematique_llm.py<br/>Gemini 3 Flash / Claude Haiku 4.5]
+        EG[enrich_beneficiaire_grounded_llm.py<br/>Claude Haiku 4.5 + web_search]
+        EA[enrich_geo_ap_llm.py<br/>Gemini 3 Flash]
+        VM[vulgarize_marches_llm.py<br/>Claude Opus / Gemini]
+        VS[vulgarize_subventions_llm.py]
+        VP[vulgarize_projets_llm.py]
+        ED[enrich_deliberations_llm.py<br/>Gemini 3 Flash]
+        EDW[enrich_deliberations_websearch.py<br/>Claude + web_search]
+    end
+
+    subgraph OUT["📤 Outputs"]
+        SC[(seeds/seed_cache_*.csv<br/>→ feed back into dbt)]
+        JE[(public/data/enrichment/*.json<br/>→ lazy-loaded by UI)]
+    end
+
+    C --> ES & MPM & ET & EG & EA & VM & VS & VP
+    ES --> JE
+    MPM --> SC
+    BP --> JE
+    BH --> JE
+    ET --> SC
+    EG --> JE
+    EA --> SC
+    VM & VS & VP --> JE
+    ED & EDW --> JE

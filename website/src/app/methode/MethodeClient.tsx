@@ -8,6 +8,7 @@ import Footer from "@/components/fusion/Footer";
 import SectionHead from "@/components/fusion/SectionHead";
 import Button from "@/components/fusion/Button";
 import { useLocale } from "@/lib/localeContext";
+import { TIMELINE_AXIS_START, TIMELINE_AXIS_END } from "@/lib/methodology";
 
 type SourceRow = {
   portal: string;
@@ -30,6 +31,7 @@ type ToolMethod = {
   title: string;
   route: string;
   source: { name: string; dataset: string; coverage: string; href: string; hrefLabel: string };
+  enClair: ReactNode;
   objectif: string;
   pipeline: { label: string; detail: ReactNode }[];
   choix: string[];
@@ -45,8 +47,8 @@ type CoverageRow = {
   segments: { start: number; end: number; text: string; kind?: "frozen" | "partial" }[];
 };
 
-const AXIS_START = 2013;
-const AXIS_END = 2026;
+const AXIS_START = TIMELINE_AXIS_START;
+const AXIS_END = TIMELINE_AXIS_END;
 const AXIS_SPAN = AXIS_END - AXIS_START + 1;
 
 function barStyle(start: number, end: number): CSSProperties {
@@ -60,8 +62,15 @@ function barStyle(start: number, end: number): CSSProperties {
 const TOOLS_FR: ToolMethod[] = [
   {
     id: "budget", number: "04", kicker: "Budget",
-    title: "Budget principal — voté & exécuté", route: "/budget",
+    title: "Budget principal — voté & exécuté", route: "/ville/paris/budget",
     source: { name: "Comptes administratifs M57 + budgets primitifs", dataset: "comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement", coverage: "2019-2024 (exécuté) · 2019-2026 (voté)", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/", hrefLabel: "opendata.paris.fr" },
+    enClair: (
+      <>
+        <p>Chaque année la Ville vote un budget — ce qu'elle compte encaisser et dépenser. En fin d'exercice, elle publie ce qu'elle a vraiment fait : le compte administratif. Les deux documents sont publics, mais rédigés dans un plan comptable (« M57 ») qui parle aux trésoriers plus qu'aux habitants.</p>
+        <p>On reprend ces chiffres tels quels — sans les recalculer — et on traduit les intitulés techniques en français courant : « Charges à caractère général » devient « Achats & charges courantes », par exemple. On sépare toujours le <b>voté</b> (l'intention) et l'<b>exécuté</b> (ce qui est vraiment sorti du compte) pour que tu puisses comparer les deux.</p>
+        <p><b>Ce que ça ne montre pas :</b> les budgets annexes (eau, assainissement) sont gérés à part et ne sont pas inclus. Le compte définitif d'une année N n'est consolidé que vers juin N+1 — avant ça, les chiffres sont provisoires.</p>
+      </>
+    ),
     objectif: "Rendre lisible en un coup d'œil ce qui entre et ce qui sort du budget de la Ville, sur un exercice, sous forme de Sankey.",
     pipeline: [
       { label: "Sync", detail: <>7 datasets OpenData → <code>BigQuery raw</code></> },
@@ -82,15 +91,21 @@ const TOOLS_FR: ToolMethod[] = [
   },
   {
     id: "subventions", number: "05", kicker: "Subventions",
-    title: "Subventions versées aux bénéficiaires", route: "/qui-recoit",
+    title: "Subventions versées aux bénéficiaires", route: "/ville/paris/subventions",
     source: { name: "Subventions versées — annexes CA", dataset: "subventions-versees-annexe-compte-administratif-a-partir-de-2018", coverage: "2018-2024 · ~53 000 lignes", href: "https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/", hrefLabel: "opendata.paris.fr" },
+    enClair: (
+      <>
+        <p>La Ville verse chaque année des subventions à des associations, fondations, opérateurs, bailleurs sociaux. Elle est obligée par la loi de publier la liste en annexe de ses comptes : qui reçoit quoi, pour quel montant, et pour faire quoi (l'« objet » de la subvention).</p>
+        <p>On récupère cette liste (~53 000 lignes sur 2018-2024), on réconcilie les bénéficiaires qui apparaissent sous plusieurs orthographes, et on va chercher dans le registre des associations et le fichier SIRENE pour savoir à qui on a vraiment affaire. Pour rendre le paysage lisible, on classe chaque ligne par thématique (Social, Logement, Culture, Sport…) via un modèle de langage ; l'objet brut et le SIRET restent visibles pour vérification ligne par ligne.</p>
+        <p><b>Ce que ça ne montre pas :</b> on ne géolocalise pas les subventions. Une association peut avoir son siège dans le 9ᵉ et mener ses actions dans le 18ᵉ — l'adresse du siège ne dit rien d'où l'argent atterrit. Les subventions en nature (mise à disposition de locaux, de matériel) sont signalées mais pas chiffrées.</p>
+      </>
+    ),
     objectif: "Savoir qui reçoit l'argent public en subvention, pour quoi, et dans quelle proportion — du CASVP aux plus petites associations.",
     pipeline: [
       { label: "Sync + jointure", detail: <>Dataset subventions + dataset associations (SIRET, objet)</> },
       { label: "Normalisation", detail: <>Clé <code>beneficiaire_normalise</code> quand le SIRET est absent</> },
       { label: "LLM thématique", detail: <>Gemini 3 Flash / Claude Opus (selon tâche) sur top 500 cumulés → seed cache</> },
       { label: "Type organisme", detail: <>Colonnes <code>ode_*</code> (public / asso / entreprise / PP)</> },
-      { label: "Revue humaine", detail: <>Contrôle manuel systématique &gt; 1 M€</> },
       { label: "Marts", detail: <><code>mart_subventions_treemap</code> + <code>mart_subventions_beneficiaires</code></> },
     ],
     choix: [
@@ -106,32 +121,60 @@ const TOOLS_FR: ToolMethod[] = [
   },
   {
     id: "marches-publics", number: "06", kicker: "Marchés publics",
-    title: "Marchés notifiés (commande publique)", route: "/marches-publics",
-    source: { name: "Marchés publics de la Ville de Paris", dataset: "liste-des-marches-de-la-collectivite-parisienne", coverage: "2013-2024 · 17 639 contrats", href: "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/", hrefLabel: "opendata.paris.fr" },
+    title: "Marchés notifiés (commande publique)", route: "/ville/paris/marches",
+    source: { name: "opendata.paris.fr + DECP nationale data.gouv.fr", dataset: "liste-des-marches-de-la-collectivite-parisienne + decp-consolides", coverage: "2013-2026 · 23 053 contrats consolidés", href: "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/", hrefLabel: "opendata.paris.fr" },
+    enClair: (
+      <>
+        <p>Quand la Ville achète quelque chose à une entreprise — construction d'une école, collecte des déchets, fournitures de bureau, maintenance informatique — elle publie un avis de marché : qui a été choisi, pour combien, pour quoi. Ces données s'appellent les DECP (Données Essentielles de la Commande Publique) et sont obligatoires depuis 2016.</p>
+        <p>On fusionne <b>deux sources</b> : le dataset publié par la Ville sur opendata.paris.fr et la DECP nationale consolidée par l'État sur data.gouv.fr. Les deux alimentent des pipelines distincts (Coriolis interne Ville vs plateforme AIFE/ATLINE État) et ne se recouvrent qu'à 50-60 % — une source à elle seule en rate ~30 %. On joint par numéro de marché (<code>num_marche[4:] = decp.id</code>) et on ajoute les marchés qui n'existent que dans DECP. La DECP apporte aussi les colonnes qui manquent côté Paris : type CCAG (Travaux/Fournitures…), code CPV (catégorie européenne standardisée), lieu d'exécution, <b>nombre d'offres reçues</b> (c'est ce qui alimente la section « Concurrence »), clauses sociales/environnementales.</p>
+        <p>On reclasse les intitulés techniques par grandes catégories (travaux, services, fournitures, énergie…) et on agrège par titulaire pour voir quelles entreprises captent le plus de contrats en cumulé. Enfin, on <b>relie chaque marché à son projet d'investissement</b> quand c'est possible : 4 322 appariements validés via <code>seed_match_projet_marches.csv</code> (hash stable objet+titulaire), pour qu'une école ouverte sur la carte des investissements affiche aussi les entreprises qui l'ont construite.</p>
+        <p><b>Deux chiffres, deux sens.</b> Sur la fiche d'un contrat, on affiche parfois <b>deux montants</b> :</p>
+        <ul>
+          <li><b>Plafond autorisé</b> (source Ville) — le maximum que la Ville peut dépenser sur toute la durée du contrat. Pour un accord-cadre de 4 ans à 2 M€/an, c'est 8 M€. Ce n'est pas ce qui sera réellement dépensé.</li>
+          <li><b>Montant notifié</b> (source DECP) — ce que la Ville a déclaré à l'État au moment de la signature. Souvent plus réaliste que le plafond pour les accords-cadres, mais ce n'est pas non plus le cumul des bons de commande effectivement émis (cette donnée n'est pas publique au niveau du contrat individuel).</li>
+        </ul>
+        <p><b>Ce que ça ne montre pas :</b> 97 % des marchés sont des accords-cadres pluriannuels ; la consommation réelle n'est disponible qu'au niveau agrégé (compte administratif). Les avenants sont mal remontés. Les marchés &lt; 40 k€ HT ne sont pas obligatoirement publiés. Les marchés des satellites (ParisHabitat, Eau de Paris, SEM, CASVP) ne sont pas inclus — ils ont leur propre ligne DECP qu'on n'a pas encore intégrée.</p>
+      </>
+    ),
     objectif: "Voir qui la Ville paie pour travaux, fournitures et services, quel volume, et quels titulaires concentrent les contrats.",
     pipeline: [
-      { label: "Sync", detail: <>Dataset marchés → <code>BigQuery raw</code></> },
-      { label: "Staging", detail: <>Filtre montant_max &gt; 0, durée cohérente</> },
-      { label: "Core", detail: <><code>core_marches_publics</code> : 1 ligne par contrat</> },
-      { label: "Marts", detail: <><code>mart_marches_fournisseurs</code> + <code>mart_marches_par_nature</code></> },
-      { label: "Signaux faibles", detail: <>Heuristique : &gt; 10 M€ mono-attributaires, concentration</> },
+      { label: "Sync Paris", detail: <>opendata.paris.fr → <code>raw.liste_des_marches_de_la_collectivite_parisienne</code></> },
+      { label: "Sync DECP", detail: <>data.gouv.fr (fichiers annuels 2019-2026) → <code>raw.decp_marches_paris</code> via <code>fetch_decp_paris.py</code>, filtre SIRET 217500*</> },
+      { label: "Staging", detail: <>Normalisation + dédup DECP par <code>id</code> (dernier état gagne)</> },
+      { label: "Core", detail: <>LEFT JOIN sur <code>SUBSTR(num_marche, 5) = decp.id</code> + UNION des DECP-exclusifs, dédup multi-titulaires par (objet, montant, date)</> },
+      { label: "Concurrence", detail: <>Agrégation du champ <code>offresRecues</code> (DECP) par année → buckets 1 / 2 / 3-5 / 6+ offres, taux de mono-offre</> },
+      { label: "Match projets", detail: <><code>match_projet_marches.py</code> + <code>seed_match_projet_marches.csv</code> (4 322 lignes) → table <code>int_projet_marches</code> qui relie un marché à son projet d'investissement AP</> },
+      { label: "Marts", detail: <><code>mart_marches_fournisseurs</code> + <code>mart_marches_par_nature</code> + <code>mart_projet_marches</code></> },
+      { label: "Enrichissement lisible", detail: <>Traduction <code>codeCPV</code> → famille française, dérivation <code>afficher_deux_montants</code> si écart plafond ↔ notifié &gt; 5 %</> },
     ],
     choix: [
-      "Totaux affichés = montants maximum contractuels (plafonds pluriannuels), pas des dépenses exécutées.",
-      "Les critères de repérage sont publiés — signaux, pas accusations.",
-      "Pas de cartographie des titulaires tant que l'adresse du chantier n'est pas une colonne fiable.",
+      "Total affiché = plafonds contractuels autorisés (somme des enveloppes maximum), pas des dépenses exécutées.",
+      "Dédup DECP multi-titulaires : un accord-cadre à N titulaires = 1 ligne, plafond compté une seule fois.",
+      "Deuxième chiffre « montant notifié » affiché uniquement quand l'écart est significatif (> 5 %) — évite d'alourdir la lecture sur les marchés simples.",
+      "Section Concurrence masquée tant que la couverture offresRecues est < 20 % ou < 50 marchés (avant 2024, le champ n'est pas historisé) — état vide honnête plutôt qu'une estimation trompeuse.",
+      "Année en cours (2026) visible dans les tableaux mais signalée comme partielle — les marchés notifiés en fin d'année n'ont pas encore été remontés.",
+      "Les critères de repérage (signaux faibles) sont publiés — signaux, pas accusations.",
     ],
     limites: [
-      "97 % des marchés sont des accords-cadres ; 66 % ont montant_min = 0 — consommation réelle parfois bien inférieure.",
-      "Contrat peut être résilié : le montant affiché reste le plafond initial.",
-      "Avenants incomplets dans le fichier source — sous-estimation possible.",
-      "Satellites (SEM, OPH, CASVP) non inclus.",
+      "97 % des marchés sont des accords-cadres ; 66 % ont montant_min = 0 — consommation réelle parfois bien inférieure au plafond.",
+      "Les deux sources ne se recouvrent qu'à ~55 %. On capture le superset, mais les règles de publication divergent (seuils, timing, formats de numéro).",
+      "Avenants partiellement remontés — sous-estimation possible.",
+      "Champ offresRecues non historisé avant 2024 dans DECP : la section Concurrence ne couvre que les années récentes.",
+      "Lieu d'exécution DECP au niveau département (« Paris 75 ») : pas d'arrondissement précis, géocodage fin non encore implémenté.",
+      "Satellites (SEM, OPH, CASVP, Eau de Paris) non inclus — leur DECP existe mais reste à rapatrier.",
     ],
   },
   {
     id: "investissements", number: "07", kicker: "Investissements",
-    title: "Projets d'investissement (AP)", route: "/investissements",
+    title: "Projets d'investissement (AP)", route: "/ville/paris/investissements",
     source: { name: "Annexes AP du CA + PDF « Investissements Localisés »", dataset: "comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de + PDF cdn.paris.fr", coverage: "Dataset gelé 2018-2022 · PDF IL 2018-2026", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/", hrefLabel: "opendata.paris.fr" },
+    enClair: (
+      <>
+        <p>L'investissement, c'est ce que la Ville dépense pour construire, rénover, équiper : une école, une piscine, une crèche, refaire une rue. Contrairement au fonctionnement (salaires, énergie, entretien…), ces dépenses laissent une trace physique dans la ville et s'amortissent sur des années.</p>
+        <p>La Ville publie chaque année en annexe de ses comptes la liste des opérations d'investissement localisées — typiquement un PDF de plusieurs centaines de pages avec les montants votés projet par projet. On extrait ces données automatiquement, on les géolocalise quand c'est possible (adresse, arrondissement), et on les rattache à un chapitre budgétaire pour savoir à quelle politique publique chaque projet appartient.</p>
+        <p><b>Ce que ça ne montre pas :</b> les chiffres sont des <b>autorisations de programme</b> — l'argent voté pour un projet, pas forcément ce qui a été payé (les paiements peuvent s'étaler sur plusieurs années). Environ 20-30 % des projets n'ont pas de localisation précise car ils sont « transverses » (informatique municipale, matériel partagé, études multi-sites). Et le surcoût éventuel en fin de chantier n'est pas systématiquement republié.</p>
+      </>
+    ),
     objectif: "Cartographier, quand c'est possible, les projets d'investissement de la Ville avec leur montant et leur statut.",
     pipeline: [
       { label: "Dataset AP", detail: <>2018-2022 via OpenData (~7 000 projets)</> },
@@ -155,45 +198,67 @@ const TOOLS_FR: ToolMethod[] = [
   },
   {
     id: "logement-social", number: "08", kicker: "Logement social",
-    title: "Logement social (SRU, opérations, parc)", route: "/logement-social",
-    source: { name: "Inventaire SRU (DDT) + logements sociaux financés", dataset: "logements-sociaux-finances-a-paris + inventaire SRU", coverage: "2001-2024 (financés) · SRU année en cours", href: "https://www.paris.fr/logement-social", hrefLabel: "paris.fr" },
-    objectif: "Montrer où en est Paris sur l'objectif SRU, combien d'opérations sont financées, et quels bailleurs portent le parc.",
+    title: "Logement social (SRU, opérations, parc)", route: "/ville/paris/logement",
+    source: { name: "Inventaire SRU (DDT) + logements sociaux financés + Socle DRIHL", dataset: "logements-sociaux-finances-a-paris + inventaire SRU + Socle demandes et attributions DRIHL", coverage: "2001-2024 (financés) · SRU année en cours · Socle 2024", href: "https://www.paris.fr/logement-social", hrefLabel: "paris.fr" },
+    enClair: (
+      <>
+        <p>Trois questions sont traitées ensemble sur cette page, parce qu'elles se répondent.</p>
+        <p><b>Où en est Paris sur la loi SRU ?</b> La loi impose aux grandes villes d'avoir au moins 25 % de logements sociaux dans leur parc. On prend les chiffres officiels de l'inventaire SRU publié par le ministère, arrondissement par arrondissement, pour voir qui atteint la cible et qui en est loin. On ajoute les volumes de logements sociaux financés chaque année par la Ville, pour voir si le rythme de production suit.</p>
+        <p><b>Où la tension est-elle la plus forte ?</b> Depuis l'ouverture du <i>Socle de données demandes et attributions</i> de la DRIHL, on peut enfin répondre arrondissement par arrondissement. Pour 2024 : 195 828 demandes actives à Paris en choix 1, 9 098 attributions — soit un ratio de 21,5 ménages qui attendent pour 1 attribution annuelle. Ce ratio varie du simple au double selon l'arrondissement ; on l'affiche brut, sans pondération.</p>
+        <p><b>Quel délai d'attente pour obtenir un logement social ?</b> La réponse officielle — 4,2 ans en médiane à Paris en 2024 — cache d'énormes écarts selon la taille du logement demandé, l'arrondissement, la situation du ménage, le niveau de revenus. Le simulateur donne un ordre de grandeur à partir de multiplicateurs calibrés sur les statistiques publiques disponibles. Ce n'est pas une estimation officielle DRIHL : c'est un outil pour se faire une idée, pas une promesse.</p>
+        <p><b>Ce que ça ne montre pas :</b> le Socle DRIHL indique les demandes « choix 1 » (territoire prioritaire) et les attributions réalisées, mais pas le profil socio-économique des ménages qui obtiennent un logement — cette donnée n'est pas ouverte. Le parc existant n'est pas géolocalisé à l'adresse (le SRU ne descend pas plus fin que l'arrondissement).</p>
+      </>
+    ),
+    objectif: "Montrer où en est Paris sur l'objectif SRU, où la tension est la plus forte, et combien d'opérations sont financées chaque année.",
     pipeline: [
       { label: "Sync", detail: <>Dataset logements sociaux financés → <code>BigQuery raw</code></> },
       { label: "SRU", detail: <>Taux officiel DDT Paris, 1er janvier</> },
+      { label: "Socle DRIHL", detail: <>Demandes choix 1 + attributions 2024 par arrondissement → <code>core_logement_attente_arr</code></> },
       { label: "Core", detail: <><code>core_logements_sociaux</code> par arr. × bailleur × catégorie</> },
-      { label: "Mart", detail: <><code>mart_stats_arrondissements</code> → choroplèthe</> },
+      { label: "Mart", detail: <><code>mart_stats_arrondissements</code> → choroplèthe + composant <code>TensionParArrondissement</code></> },
       { label: "Parts bailleurs", detail: <>Indicatives, croisement SDES + rapports annuels</> },
     ],
     choix: [
       "Activité financée (AP), pas livraisons : financement en 2022 ≠ livraison 2025.",
+      "Ratio de tension affiché brut (demandes choix 1 / attributions) — aucune pondération par taille de logement ou profil, pour rester traçable ligne à ligne.",
       "Parts de bailleurs indicatives tant qu'un jeu consolidé officiel n'est pas publié.",
     ],
     limites: [
-      "Pas de heatmap tension (demandes / attributions) — jeu non publié.",
-      "Pas de géoloc du parc existant : SRU ne descend pas à l'adresse.",
-      "Profil socio-économique des bénéficiaires non ouvert.",
+      "Socle DRIHL : la série démarre à 2024, pas d'historique pluri-annuel consolidé pour l'instant.",
+      "Pas de géoloc du parc existant : SRU et Socle ne descendent pas à l'adresse.",
+      "Profil socio-économique des bénéficiaires effectifs non ouvert (ni par la DRIHL, ni par la Ville).",
     ],
   },
   {
     id: "dette-patrimoine", number: "09", kicker: "Dette & patrimoine",
-    title: "Bilan comptable : dette, actif, fonds propres", route: "/dette-patrimoine",
-    source: { name: "Bilan comptable M57 (compte de gestion)", dataset: "bilan-comptable", coverage: "2019-2024", href: "https://opendata.paris.fr/explore/dataset/bilan-comptable/", hrefLabel: "opendata.paris.fr" },
-    objectif: "Sortir du seul chiffre de la dette et replacer la Ville dans son bilan complet : ce qu'elle doit, ce qu'elle possède, ses fonds propres.",
+    title: "Bilan comptable : dette, actif, fonds propres", route: "/ville/paris/dette",
+    source: { name: "Bilan comptable M57 + dataset dette-garantie (annexe IV-B) + ROB", dataset: "bilan-comptable + dette-garantie", coverage: "2019-2024 · 9 960 emprunts garantis 2024", href: "https://opendata.paris.fr/explore/dataset/bilan-comptable/", hrefLabel: "opendata.paris.fr" },
+    enClair: (
+      <>
+        <p>Comme une entreprise, une collectivité a un <b>bilan</b> : à gauche ce qu'elle possède (bâtiments, terrains, équipements, liquidités), à droite ce qu'elle doit (dette bancaire et obligataire, provisions pour charges futures). La différence entre les deux, c'est le <b>patrimoine net</b> — ce qui resterait à la Ville si elle soldait toutes ses dettes demain matin.</p>
+        <p>On prend le bilan tel qu'il est publié chaque année dans le compte administratif, et on va chercher en complément dans le <i>Rapport d'Orientation Budgétaire</i> des informations qui ne sont pas publiées en open data ligne par ligne : le taux moyen pondéré de la dette, l'échéancier de remboursement, la répartition entre taux fixe et taux variable. Ce sont ces chiffres qui permettent de calculer la fameuse capacité de désendettement (combien d'années faudrait-il pour rembourser la dette si on y consacrait toute l'épargne brute).</p>
+        <p><b>Et le hors-bilan, enfin chiffré.</b> La Ville garantit les emprunts des bailleurs sociaux auprès de la CDC : ligne par ligne, ce n'est pas sa dette, mais elle doit payer à leur place en cas de défaut. Le dataset <code>dette-garantie</code> (annexe IV-B du CA) liste les 9 960 emprunts garantis en 2024 — capital restant dû, prêteur, bénéficiaire, indice. On l'agrège dans <code>build_hors_bilan.py</code> et on le présente à côté du bilan, jamais fondu dedans : 12,3 Md€ d'engagements potentiels, distincts des 10,7 Md€ de dette financière directe.</p>
+        <p><b>Ce que ça ne montre pas :</b> le patrimoine est évalué à sa <b>valeur comptable historique</b> (coût d'acquisition moins amortissement), pas à la valeur de marché. Certains actifs majeurs — monuments classés, œuvres d'art, terrains anciens — sont structurellement sous-évalués, parfois inscrits à 1 € symbolique. Les bilans consolidés des satellites (SEM, OPH, CASVP) ne sont pas ouverts — on ne peut pas faire de « bilan groupe Ville ».</p>
+      </>
+    ),
+    objectif: "Sortir du seul chiffre de la dette et replacer la Ville dans son bilan complet : ce qu'elle doit, ce qu'elle possède, ses garanties hors-bilan, ses fonds propres.",
     pipeline: [
       { label: "Upload", detail: <><code>upload_bilan_comptable.py</code> → <code>BigQuery raw</code></> },
       { label: "Normalisation", detail: <>Comptes classe 1 à 5 → grandes masses</> },
       { label: "Core", detail: <><code>core_bilan_comptable</code> (actif, FP, dette, provisions)</> },
+      { label: "Structure dette", detail: <><code>build_patrimoine_structure.py</code> → <code>patrimoine_structure_YYYY.json</code> (obligataire, bancaire, répartition taux)</> },
+      { label: "Hors-bilan", detail: <><code>build_hors_bilan.py</code> sur <code>dette-garantie</code> → <code>hors_bilan_YYYY.json</code> (capital restant dû, top bénéficiaires, top prêteurs, split taux fixe/variable)</> },
       { label: "Mart", detail: <><code>mart_bilan_sankey</code> + ratios (dette/hab, dette/épargne)</> },
     ],
     choix: [
-      "Dette = budget principal seul. Hors-bilan et dette consolidée du groupe Ville mentionnés mais pas totalisés.",
+      "Dette = budget principal seul. Hors-bilan (garanties d'emprunt) calculé et affiché à côté, jamais additionné à la dette directe.",
       "Ratios par habitant : population municipale INSEE la plus récente.",
+      "Taux moyen pondéré, durée résiduelle, répartition fixe/variable : lus dans le Rapport d'Orientation Budgétaire quand l'information manque du dataset ouvert.",
     ],
     limites: [
-      "Structure fine de la dette (instrument, maturité, taux) non publiée.",
-      "Bilans consolidés SEM / OPH / CASVP non ouverts.",
-      "Hors-bilan (garanties d'emprunt) non ouvert.",
+      "Structure fine de la dette (emprunt par emprunt, pour la dette directe) non publiée en open data.",
+      "Bilans consolidés SEM / OPH / CASVP non ouverts — pas de « bilan groupe Ville ».",
+      "Hors-bilan : seul le capital restant dû est publié, pas la probabilité de défaut (jugée faible par les agences de notation mais non chiffrée).",
     ],
   },
 ];
@@ -225,8 +290,12 @@ const GLOSSARY_FR: { term: string; def: string }[] = [
 
 const FAQ_FR: { q: string; a: string }[] = [
   { q: "Pourquoi votre chiffre diffère-t-il parfois de celui annoncé par la mairie ?", a: "Trois causes : (1) périmètre — on publie le budget principal, la mairie peut communiquer un « groupe Ville » qui inclut les satellites ; (2) timing — notre chiffre vient du dernier dataset ouvert ; (3) retraitement — on renomme et regroupe les chapitres, mais les agrégats sont identiques. Si l'écart persiste, dites-le-nous." },
-  { q: "Qu'est-ce que le LLM fait exactement dans votre pipeline ?", a: "Plusieurs tâches ciblées : classifier la thématique des subventions, géolocaliser des projets d'investissement, vérifier l'activité des bénéficiaires par grounded search, vulgariser les intitulés techniques de marchés. Modèles : Gemini 3 Flash et Claude Opus selon la tâche. Il ne calcule jamais un montant. Il tourne hors dbt, ses résultats sont mis en cache dans des seeds CSV publics, et on repasse manuellement sur les décisions > 1 M€." },
+  { q: "Qu'est-ce que le LLM fait exactement dans votre pipeline ?", a: "L'enrichissement tourne en deux tiers. Tier 2 (gratuit) : appel de l'API SIRENE publique pour vérifier ~5 800 bénéficiaires (forme juridique, activité, adresse) — aucun LLM. Tier 1 (LLM payant, opt-in via --tier1) : Claude Opus ou Gemini 3 Flash pour classer les subventions par thème, géolocaliser les projets d'investissement ambigus, vérifier l'activité des bénéficiaires par grounded search et vulgariser les intitulés techniques de marchés. Un LLM ne calcule jamais un montant. Tout tourne hors dbt et ses résultats sont mis en cache dans des seeds CSV publics, inspectables et reproductibles ; l'objet brut et le SIRET restent affichés pour vérification." },
+  { q: "Pourquoi la section Concurrence des marchés ne remonte-t-elle qu'à 2024 ?", a: "Le champ offresRecues (nombre d'offres reçues par marché) n'est historisé dans la DECP qu'à partir de 2024 — avant, il était soit vide soit renseigné de manière anecdotique. Plutôt que d'extrapoler, on masque la section tant que la couverture est < 20 % (ou < 50 marchés sur l'année) et on affiche un état vide honnête." },
+  { q: "Comment chiffrez-vous le hors-bilan maintenant ?", a: "La Ville publie depuis 2024 un dataset OpenData dette-garantie (annexe IV-B du CA) qui liste chaque emprunt garanti : capital restant dû, prêteur, bénéficiaire (majoritairement des bailleurs sociaux), indice. On l'agrège dans build_hors_bilan.py et on l'affiche à côté du bilan, jamais fondu dedans : 12,3 Md€ d'engagements potentiels en 2024, distincts des 10,7 Md€ de dette financière directe." },
   { q: "Comment évitez-vous le double comptage entre budget, subventions et marchés ?", a: "Chaque entité est modélisée séparément, jamais UNIONée aux autres. Le budget contient une ligne agrégée de subventions ; notre page « Subventions » détaille cette même ligne côté bénéficiaires. On n'additionne pas les deux. Documenté dans docs/architecture-modelling.md." },
+  { q: "Combien la Ville dépense-t-elle vraiment en marchés publics une année donnée ?", a: "Notre page Marchés affiche le total des PLAFONDS de contrats signés cette année-là (ex. 3,22 Mds€ pour 2024). Ce n'est PAS la dépense annuelle réelle : un accord-cadre de 4 ans à 2 M€/an est compté 8 M€ à la signature. La dépense effective en marchés cette année-là se lit uniquement dans le compte administratif agrégé (chapitres 011 charges générales + 20/21/23 immobilisations), pas au niveau du contrat individuel. Les deux chiffres ne sont pas comparables et ne se somment pas." },
+  { q: "Pourquoi Budget, Investissements et Marchés donnent-ils des totaux différents ?", a: "Ce sont trois lectures complémentaires, pas trois calculs du même chiffre. BUDGET = toutes les dépenses annuelles (salaires + investissement + subventions + marchés + dettes…). INVESTISSEMENTS = ce qui est voté pour des projets physiques (AP, pluriannuel). MARCHÉS = ce qui est signé avec des entreprises (plafonds contractuels, pluriannuels). Un même euro peut apparaître dans les trois sous des angles différents. On ne les additionne jamais." },
   { q: "Vos totaux sont-ils identiques à ceux du site de la Ville ?", a: "Oui pour les agrégats issus d'un même dataset M57 : notre pipeline ne change pas les montants, il regroupe et renomme. Les écarts viennent des cas décrits plus haut (périmètre, timing, nomenclature)." },
   { q: "Pourquoi certaines années sont-elles absentes ou provisoires ?", a: "Chaque source a sa couverture documentée dans le tableau de couverture plus haut. L'exemple le plus visible : le dataset AP OpenData est gelé depuis 2022, donc pour 2023-2024 on bascule sur les PDF « Investissements Localisés ». On préfère afficher un manque que combler au doigt." },
 ];
@@ -234,12 +303,16 @@ const FAQ_FR: { q: string; a: string }[] = [
 const COVERAGE_FR: CoverageRow[] = [
   { label: "Budget exécuté (CA)", volume: "25 629 lignes", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/", status: "ok", statusLabel: "À jour", segments: [{ start: 2018, end: 2024, text: "2018-2024" }] },
   { label: "Budget voté (BP)", volume: "8 598 lignes", href: "https://opendata.paris.fr/explore/dataset/budgets-votes-principaux-a-partir-de-2019-m57-ville-departement/", status: "ok", statusLabel: "À jour", segments: [{ start: 2019, end: 2026, text: "2019-2026" }] },
-  { label: "Subventions", volume: "47 381 lignes", href: "https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/", status: "ok", statusLabel: "À jour", segments: [{ start: 2018, end: 2024, text: "2018-2024" }] },
-  { label: "Marchés publics", volume: "17 639 contrats", href: "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/", status: "ok", statusLabel: "À jour", segments: [{ start: 2013, end: 2024, text: "2013-2024" }] },
+  { label: "Subventions", volume: "38 839 lignes · gap 2020-2021 (format non-comparable)", href: "https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/", status: "info", statusLabel: "Partiel", segments: [{ start: 2018, end: 2019, text: "2018-2019", kind: "partial" }, { start: 2022, end: 2024, text: "2022-2024" }] },
+  { label: "Marchés publics", volume: "23 053 contrats (Ville + DECP national)", href: "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/", status: "ok", statusLabel: "À jour", segments: [{ start: 2013, end: 2026, text: "2013-2026 · fusion opendata.paris.fr + DECP nationale" }] },
+  { label: "Concurrence (offresRecues DECP)", volume: "champ non historisé avant 2024", href: "https://www.data.gouv.fr/fr/datasets/donnees-essentielles-de-la-commande-publique-fichiers-consolides/", status: "info", statusLabel: "Partiel", segments: [{ start: 2024, end: 2025, text: "2024-2025", kind: "partial" }] },
   { label: "Investissements (dataset AP)", volume: "dataset gelé", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/", status: "warn", statusLabel: "Gelé", segments: [{ start: 2018, end: 2022, text: "2018-2022 · gelé", kind: "frozen" }] },
   { label: "Investissements (PDF IL)", volume: "~450 projets/an", href: "https://cdn.paris.fr/paris/2025/06/25/ca-2024-annexe-il-UtMj.PDF", status: "info", statusLabel: "Partiel", segments: [{ start: 2018, end: 2024, text: "2018-2024 (CA)", kind: "partial" }, { start: 2025, end: 2026, text: "2025-2026 (BP)", kind: "partial" }] },
+  { label: "Match projets ↔ marchés", volume: "4 322 appariements (seed)", href: "https://github.com/Nuttux/open-public-data/blob/main/pipeline/seeds/seed_match_projet_marches.csv", status: "ok", statusLabel: "À jour", segments: [{ start: 2018, end: 2024, text: "2018-2024 · hash stable objet+titulaire" }] },
   { label: "Logements sociaux financés", volume: "4 174 opérations", href: "https://opendata.paris.fr/explore/dataset/logements-sociaux-finances-a-paris/", status: "ok", statusLabel: "À jour", segments: [{ start: 2013, end: 2024, text: "2001-2024 (affiché 2013+)" }] },
+  { label: "Tension logement (Socle DRIHL)", volume: "20 arrondissements · 195 828 demandes / 9 098 attributions", href: "https://www.drihl.ile-de-france.developpement-durable.gouv.fr/socle-de-donnees-demandes-et-attributions-de-a1414.html", status: "info", statusLabel: "Partiel", segments: [{ start: 2024, end: 2024, text: "2024 (série démarrée)", kind: "partial" }] },
   { label: "Bilan comptable", volume: "1 bilan/an", href: "https://opendata.paris.fr/explore/dataset/bilan-comptable/", status: "ok", statusLabel: "À jour", segments: [{ start: 2019, end: 2024, text: "2019-2024" }] },
+  { label: "Hors-bilan (dette garantie)", volume: "9 960 emprunts · 12,3 Md€ capital restant dû 2024", href: "https://opendata.paris.fr/explore/dataset/dette-garantie/", status: "ok", statusLabel: "À jour", segments: [{ start: 2019, end: 2024, text: "2019-2024" }] },
 ];
 
 // ── English data ─────────────────────────────────────────────────────────────
@@ -247,8 +320,15 @@ const COVERAGE_FR: CoverageRow[] = [
 const TOOLS_EN: ToolMethod[] = [
   {
     id: "budget", number: "04", kicker: "Budget",
-    title: "Main budget — voted & executed", route: "/budget",
+    title: "Main budget — voted & executed", route: "/ville/paris/budget",
     source: { name: "Administrative accounts M57 + draft budgets", dataset: "comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement", coverage: "2019-2024 (executed) · 2019-2026 (voted)", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/", hrefLabel: "opendata.paris.fr" },
+    enClair: (
+      <>
+        <p>Every year the City votes a budget — what it plans to collect and spend. At year-end, it publishes what actually happened: the administrative account. Both are public, but written in an accounting format (« M57 ») designed for treasurers, not residents.</p>
+        <p>We take these figures as-is — without recomputing them — and translate the technical labels into plain English: « General operating charges » becomes « Purchases &amp; current charges », for instance. We always separate the <b>voted</b> budget (intent) from the <b>executed</b> budget (what really left the account) so you can compare the two.</p>
+        <p><b>What this doesn't show:</b> annex budgets (water, sanitation) are managed separately and aren't included. A year's final account is only consolidated around June of the following year — before that, figures are provisional.</p>
+      </>
+    ),
     objectif: "Make it readable at a glance what flows in and out of the City's budget, for a given fiscal year, as a Sankey diagram.",
     pipeline: [
       { label: "Sync", detail: <>7 OpenData datasets → <code>BigQuery raw</code></> },
@@ -269,15 +349,21 @@ const TOOLS_EN: ToolMethod[] = [
   },
   {
     id: "subventions", number: "05", kicker: "Grants",
-    title: "Grants paid to recipients", route: "/qui-recoit",
+    title: "Grants paid to recipients", route: "/ville/paris/subventions",
     source: { name: "Grants paid — CA appendices", dataset: "subventions-versees-annexe-compte-administratif-a-partir-de-2018", coverage: "2018-2024 · ~53,000 lines", href: "https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/", hrefLabel: "opendata.paris.fr" },
+    enClair: (
+      <>
+        <p>The City pays grants every year to non-profits, foundations, operators, social landlords. By law it must publish the list as an appendix to its accounts: who receives what, how much, and for what purpose.</p>
+        <p>We retrieve that list (~53,000 rows over 2018-2024), reconcile recipients that appear under several spellings, and cross-check with the national non-profit registry and the SIRENE business file to know who we're really dealing with. To make the landscape readable we classify each line by topic (Social, Housing, Culture, Sport…) via a language model ; the raw purpose and SIRET remain visible for line-by-line verification.</p>
+        <p><b>What this doesn't show:</b> we do not geolocate grants. A non-profit may have its registered office in the 9th and run its programs in the 18th — the office address tells you nothing about where the money lands. In-kind grants (premises, equipment) are flagged but not valued.</p>
+      </>
+    ),
     objectif: "Know who receives public money in grants, for what, and in what proportion — from CASVP to the smallest associations.",
     pipeline: [
       { label: "Sync + join", detail: <>Grants dataset + associations dataset (SIRET, purpose)</> },
       { label: "Normalisation", detail: <>Key <code>beneficiaire_normalise</code> when SIRET absent</> },
       { label: "LLM theme", detail: <>Gemini 3 Flash / Claude Opus (per task) on top 500 cumulative → seed cache</> },
       { label: "Org type", detail: <>Columns <code>ode_*</code> (public / non-profit / company / individual)</> },
-      { label: "Human review", detail: <>Systematic manual check &gt; €1M</> },
       { label: "Marts", detail: <><code>mart_subventions_treemap</code> + <code>mart_subventions_beneficiaires</code></> },
     ],
     choix: [
@@ -293,32 +379,60 @@ const TOOLS_EN: ToolMethod[] = [
   },
   {
     id: "marches-publics", number: "06", kicker: "Public contracts",
-    title: "Awarded contracts (public procurement)", route: "/marches-publics",
-    source: { name: "Public contracts of the City of Paris", dataset: "liste-des-marches-de-la-collectivite-parisienne", coverage: "2013-2024 · 17,639 contracts", href: "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/", hrefLabel: "opendata.paris.fr" },
+    title: "Awarded contracts (public procurement)", route: "/ville/paris/marches",
+    source: { name: "opendata.paris.fr + national DECP on data.gouv.fr", dataset: "liste-des-marches-de-la-collectivite-parisienne + decp-consolides", coverage: "2013-2026 · 23,053 merged contracts", href: "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/", hrefLabel: "opendata.paris.fr" },
+    enClair: (
+      <>
+        <p>When the City buys something from a company — building a school, collecting waste, office supplies, IT maintenance — it publishes a procurement notice: who was selected, for how much, for what. This data is called DECP (Essential Public Procurement Data) and has been mandatory since 2016.</p>
+        <p>We merge <b>two sources</b>: the dataset published by the City on opendata.paris.fr and the national DECP consolidated by the State on data.gouv.fr. These feed distinct pipelines (Coriolis internal vs AIFE/ATLINE State) and overlap only 50–60% — either source alone misses ~30%. We join by contract number and add DECP-only contracts. DECP also brings columns missing on the Paris side: CCAG type (Works/Supplies…), CPV code (European standardised category), execution location, <b>number of bids received</b> (feeds the « Competition » panel), social/environmental clauses.</p>
+        <p>We reclassify technical labels into broad families (works, services, supplies, energy…) and aggregate by contractor to see which companies capture the most contracts cumulatively. We also <b>link each contract to its investment project</b> where possible: 4,322 validated matches via <code>seed_match_projet_marches.csv</code> (stable hash on object+awardee), so that a school opened on the investments map also shows the companies that built it.</p>
+        <p><b>Two numbers, two meanings.</b> On a contract's card we sometimes show <b>two amounts</b>:</p>
+        <ul>
+          <li><b>Maximum ceiling</b> (Paris source) — the most the City may spend over the whole contract. For a 4-year framework at €2M/year it's €8M. This is not what will actually be spent.</li>
+          <li><b>Notified amount</b> (DECP source) — what the City declared to the State upon signature. Often more realistic than the ceiling for framework agreements, but it is not the cumulative sum of purchase orders either (that data is not public at the individual-contract level).</li>
+        </ul>
+        <p><b>What this doesn't show:</b> 97% are framework agreements; actual consumption is only visible at aggregate level (executed budget). Amendments are poorly tracked. Contracts below €40k HT are not mandatorily published. Contracts from satellites (ParisHabitat, Eau de Paris, SEM, CASVP) are not yet included — they have their own DECP we haven't pulled yet.</p>
+      </>
+    ),
     objectif: "See who the City pays for works, supplies and services, what volume, and which contractors concentrate the contracts.",
     pipeline: [
-      { label: "Sync", detail: <>Contracts dataset → <code>BigQuery raw</code></> },
-      { label: "Staging", detail: <>Filter montant_max &gt; 0, consistent duration</> },
-      { label: "Core", detail: <><code>core_marches_publics</code>: 1 row per contract</> },
-      { label: "Marts", detail: <><code>mart_marches_fournisseurs</code> + <code>mart_marches_par_nature</code></> },
-      { label: "Weak signals", detail: <>Heuristic: &gt; €10M single-award, concentration</> },
+      { label: "Sync Paris", detail: <>opendata.paris.fr → <code>raw.liste_des_marches_de_la_collectivite_parisienne</code></> },
+      { label: "Sync DECP", detail: <>data.gouv.fr (yearly files 2019-2026) → <code>raw.decp_marches_paris</code> via <code>fetch_decp_paris.py</code>, SIRET 217500* filter</> },
+      { label: "Staging", detail: <>Normalisation + dedup on <code>id</code> (latest state wins)</> },
+      { label: "Core", detail: <>LEFT JOIN on <code>SUBSTR(num_marche, 5) = decp.id</code> + UNION of DECP-exclusives, dedup multi-awardees by (object, amount, date)</> },
+      { label: "Competition", detail: <>Aggregation of DECP <code>offresRecues</code> by year → 1 / 2 / 3-5 / 6+ bids buckets, single-bid rate</> },
+      { label: "Project match", detail: <><code>match_projet_marches.py</code> + <code>seed_match_projet_marches.csv</code> (4,322 rows) → <code>int_projet_marches</code> table linking contract ↔ AP project</> },
+      { label: "Marts", detail: <><code>mart_marches_fournisseurs</code> + <code>mart_marches_par_nature</code> + <code>mart_projet_marches</code></> },
+      { label: "Readable enrichment", detail: <>CPV → French family label, derive <code>afficher_deux_montants</code> when ceiling ↔ notified diverge &gt; 5%</> },
     ],
     choix: [
-      "Displayed totals = maximum contractual amounts (multi-year ceilings), not executed spending.",
-      "Detection criteria are published — signals, not accusations.",
-      "No mapping of contractors until the site address is a reliable column.",
+      "Displayed total = contractual ceilings (sum of maximum envelopes), not executed spending.",
+      "DECP multi-awardees deduplication: a framework with N awardees = 1 row, ceiling counted once.",
+      "Second « notified amount » only shown when the gap is significant (> 5%) — keeps simple contracts readable.",
+      "Competition panel hidden when offresRecues coverage < 20% or < 50 contracts (before 2024 the field isn't historised) — an honest empty state rather than a misleading estimate.",
+      "Current year (2026) visible in tables but flagged as partial — late-year notifications haven't reached DECP yet.",
+      "Detection criteria (weak signals) are published — signals, not accusations.",
     ],
     limites: [
-      "97% of contracts are framework agreements; 66% have montant_min = 0 — actual consumption often much lower.",
-      "Contract may be terminated: the displayed amount remains the initial ceiling.",
-      "Incomplete amendments in source file — possible underestimation.",
-      "Satellites (SEM, OPH, CASVP) not included.",
+      "97% are framework agreements; 66% have montant_min = 0 — actual consumption often well below the ceiling.",
+      "The two sources overlap at only ~55%. We capture the superset but publication rules diverge (thresholds, timing, number formats).",
+      "Amendments partially reported — possible underestimation.",
+      "offresRecues field not historised before 2024 in DECP: the Competition panel only covers recent years.",
+      "DECP execution location at department level (« Paris 75 »): no precise arrondissement, fine-grained geocoding not yet implemented.",
+      "Satellites (SEM, OPH, CASVP, Eau de Paris) not included — their DECP exists but has yet to be pulled.",
     ],
   },
   {
     id: "investissements", number: "07", kicker: "Investments",
-    title: "Investment projects (AP)", route: "/investissements",
+    title: "Investment projects (AP)", route: "/ville/paris/investissements",
     source: { name: "CA AP appendices + 'Localised Investments' PDFs", dataset: "comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de + PDF cdn.paris.fr", coverage: "Dataset frozen 2018-2022 · PDF IL 2018-2026", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/", hrefLabel: "opendata.paris.fr" },
+    enClair: (
+      <>
+        <p>Investment is what the City spends to build, renovate, equip — a school, a swimming pool, a nursery, repaving a street. Unlike operating spend (salaries, energy, maintenance), these expenses leave a physical trace in the city and are amortised over years.</p>
+        <p>Each year the City publishes as an appendix to its accounts the list of localised investment operations — typically a PDF several hundred pages long with voted amounts per project. We extract that data automatically, geolocate it when possible (address, district), and link each project to a budget chapter so you can tell which public policy it belongs to.</p>
+        <p><b>What this doesn't show:</b> the figures are <b>programme authorisations</b> — money voted for a project, not necessarily paid (payments can be staggered over several years). Around 20-30% of projects lack a precise location because they are « transverse » (municipal IT, shared equipment, multi-site studies). And any end-of-project cost overrun isn't systematically republished.</p>
+      </>
+    ),
     objectif: "Map, where possible, the City's investment projects with their amounts and status.",
     pipeline: [
       { label: "AP dataset", detail: <>2018-2022 via OpenData (~7,000 projects)</> },
@@ -342,45 +456,67 @@ const TOOLS_EN: ToolMethod[] = [
   },
   {
     id: "logement-social", number: "08", kicker: "Social housing",
-    title: "Social housing (SRU, operations, stock)", route: "/logement-social",
-    source: { name: "SRU inventory (DDT) + funded social housing", dataset: "logements-sociaux-finances-a-paris + SRU inventory", coverage: "2001-2024 (funded) · SRU current year", href: "https://www.paris.fr/logement-social", hrefLabel: "paris.fr" },
-    objectif: "Show where Paris stands on the SRU target, how many operations are funded, and which landlords carry the stock.",
+    title: "Social housing (SRU, operations, stock)", route: "/ville/paris/logement",
+    source: { name: "SRU inventory (DDT) + funded social housing + DRIHL Socle", dataset: "logements-sociaux-finances-a-paris + SRU inventory + DRIHL applications/allocations Socle", coverage: "2001-2024 (funded) · SRU current year · Socle 2024", href: "https://www.paris.fr/logement-social", hrefLabel: "paris.fr" },
+    enClair: (
+      <>
+        <p>Three questions are treated together on this page, because they answer each other.</p>
+        <p><b>Where does Paris stand on the SRU law?</b> The law requires major French cities to have at least 25% social housing in their stock. We use the official SRU inventory published by the ministry, district by district, to see who hits the target and who is far from it. We add the yearly volumes of social housing funded by the City to check whether the production pace keeps up.</p>
+        <p><b>Where is pressure highest?</b> Since the DRIHL opened its <i>Socle de données demandes et attributions</i>, we can finally answer district by district. For 2024: 195,828 active Paris applications with Paris as first choice, 9,098 allocations — a ratio of 21.5 households waiting for 1 annual allocation. This ratio varies almost twofold across arrondissements; we display it raw, unweighted.</p>
+        <p><b>How long is the wait for social housing?</b> The official answer — 4.2 years median in Paris in 2024 — hides huge gaps by flat size, district, household situation, income bracket. The simulator produces an order of magnitude from multipliers calibrated on available public statistics. It is not an official DRIHL estimate: it's a tool to form intuition, not a promise.</p>
+        <p><b>What this doesn't show:</b> the DRIHL Socle reports first-choice applications and allocations made, but not the socio-economic profile of households who receive a flat — that data is not open. The existing stock is not geolocated to address (SRU does not go finer than arrondissement).</p>
+      </>
+    ),
+    objectif: "Show where Paris stands on the SRU target, where pressure is highest, and how many operations are funded each year.",
     pipeline: [
       { label: "Sync", detail: <>Funded social housing dataset → <code>BigQuery raw</code></> },
       { label: "SRU", detail: <>Official DDT Paris rate, 1 January</> },
+      { label: "DRIHL Socle", detail: <>First-choice applications + 2024 allocations by arrondissement → <code>core_logement_attente_arr</code></> },
       { label: "Core", detail: <><code>core_logements_sociaux</code> by district × landlord × category</> },
-      { label: "Mart", detail: <><code>mart_stats_arrondissements</code> → choropleth</> },
+      { label: "Mart", detail: <><code>mart_stats_arrondissements</code> → choropleth + <code>TensionParArrondissement</code> component</> },
       { label: "Landlord shares", detail: <>Indicative, cross-referenced SDES + annual reports</> },
     ],
     choix: [
       "Funded activity (AP), not deliveries: funded in 2022 ≠ delivered in 2025.",
+      "Pressure ratio displayed raw (first-choice applications / allocations) — no weighting by flat size or household profile, so it stays traceable row by row.",
       "Landlord shares remain indicative until an official consolidated dataset is published.",
     ],
     limites: [
-      "No pressure heatmap (applications/allocations) — dataset not published.",
-      "No geocoding of existing stock: SRU does not go down to address level.",
-      "Socio-economic profile of beneficiaries not open.",
+      "DRIHL Socle: the series starts in 2024, no consolidated multi-year history yet.",
+      "No geocoding of existing stock: neither SRU nor the Socle go down to address level.",
+      "Socio-economic profile of actual beneficiaries not open (neither by DRIHL nor by the City).",
     ],
   },
   {
     id: "dette-patrimoine", number: "09", kicker: "Debt & assets",
-    title: "Balance sheet: debt, assets, equity", route: "/dette-patrimoine",
-    source: { name: "M57 accounting balance sheet (management account)", dataset: "bilan-comptable", coverage: "2019-2024", href: "https://opendata.paris.fr/explore/dataset/bilan-comptable/", hrefLabel: "opendata.paris.fr" },
-    objectif: "Go beyond the single debt figure and place the City within its full balance sheet: what it owes, what it owns, its equity.",
+    title: "Balance sheet: debt, assets, equity", route: "/ville/paris/dette",
+    source: { name: "M57 accounting balance sheet + dette-garantie dataset (CA appendix IV-B) + BOR", dataset: "bilan-comptable + dette-garantie", coverage: "2019-2024 · 9,960 guaranteed loans in 2024", href: "https://opendata.paris.fr/explore/dataset/bilan-comptable/", hrefLabel: "opendata.paris.fr" },
+    enClair: (
+      <>
+        <p>Like a company, a local authority has a <b>balance sheet</b>: on the left, what it owns (buildings, land, equipment, cash); on the right, what it owes (bank and bond debt, provisions for future charges). The difference between the two is <b>net equity</b> — what would remain to the City if it settled all its debts tomorrow.</p>
+        <p>We use the balance sheet as published each year in the administrative account, and we cross-reference the <i>Budget Orientation Report</i> for information that isn't published line by line as open data: the debt's weighted average rate, the repayment schedule, the fixed vs variable split. These figures are what make the much-cited « debt-repayment capacity » computable (how many years would it take to repay the debt if all gross savings went to it).</p>
+        <p><b>And the off-balance-sheet, finally quantified.</b> The City guarantees loans taken by social landlords with CDC: line by line, it's not its debt, but it must pay in their place on default. The <code>dette-garantie</code> dataset (CA appendix IV-B) lists the 9,960 guaranteed loans in 2024 — capital outstanding, lender, beneficiary, index. We aggregate it in <code>build_hors_bilan.py</code> and present it next to the balance sheet, never merged in: €12.3bn in potential commitments, distinct from the €10.7bn of direct financial debt.</p>
+        <p><b>What this doesn't show:</b> the balance sheet values assets at <b>historical accounting cost</b> (acquisition price minus depreciation), not market value. Some major assets — listed monuments, artworks, old plots — are structurally undervalued, sometimes booked at €1 symbolic. Consolidated accounts of satellites (SEM, OPH, CASVP) are not open — we cannot produce a « City group balance sheet ».</p>
+      </>
+    ),
+    objectif: "Go beyond the single debt figure and place the City within its full balance sheet: what it owes, what it owns, its off-balance-sheet guarantees, its equity.",
     pipeline: [
       { label: "Upload", detail: <><code>upload_bilan_comptable.py</code> → <code>BigQuery raw</code></> },
       { label: "Normalisation", detail: <>Class 1-5 accounts → major aggregates</> },
       { label: "Core", detail: <><code>core_bilan_comptable</code> (assets, equity, debt, provisions)</> },
+      { label: "Debt structure", detail: <><code>build_patrimoine_structure.py</code> → <code>patrimoine_structure_YYYY.json</code> (bonds, bank, rate split)</> },
+      { label: "Off-balance-sheet", detail: <><code>build_hors_bilan.py</code> on <code>dette-garantie</code> → <code>hors_bilan_YYYY.json</code> (capital outstanding, top beneficiaries, top lenders, fixed/variable split)</> },
       { label: "Mart", detail: <><code>mart_bilan_sankey</code> + ratios (debt/resident, debt/savings)</> },
     ],
     choix: [
-      "Debt = main budget only. Off-balance-sheet and consolidated group debt mentioned but not totalled.",
+      "Debt = main budget only. Off-balance-sheet (loan guarantees) computed and shown alongside, never added to direct debt.",
       "Per-resident ratios: most recent INSEE municipal population.",
+      "Weighted average rate, residual duration, fixed/variable split: read from the Budget Orientation Report when the open dataset doesn't include them.",
     ],
     limites: [
-      "Detailed debt structure (instrument, maturity, rate) not published.",
-      "Consolidated accounts for SEM / OPH / CASVP not open.",
-      "Off-balance-sheet (loan guarantees) not open.",
+      "Fine-grained direct-debt structure (loan by loan) not published as open data.",
+      "Consolidated accounts for SEM / OPH / CASVP not open — no « City group balance sheet » possible.",
+      "Off-balance-sheet: only capital outstanding is published, not the default probability (rated low by agencies but not quantified).",
     ],
   },
 ];
@@ -412,7 +548,9 @@ const GLOSSARY_EN: { term: string; def: string }[] = [
 
 const FAQ_EN: { q: string; a: string }[] = [
   { q: "Why does your figure sometimes differ from the one announced by the City?", a: "Three reasons: (1) scope — we publish the main budget; the City may communicate a 'City group' that includes subsidiaries; (2) timing — our figure comes from the latest open dataset; (3) reprocessing — we rename and regroup chapters, but aggregates are identical. If the gap persists, let us know." },
-  { q: "What exactly does the LLM do in your pipeline?", a: "Several targeted tasks: classify the theme of grants, geolocate investment projects, verify recipient activity via grounded search, vulgarise technical contract labels. Models: Gemini 3 Flash and Claude Opus depending on the task. It never calculates an amount. It runs outside dbt, results are cached in public CSV seeds, and we manually review decisions > €1M." },
+  { q: "What exactly does the LLM do in your pipeline?", a: "Enrichment runs in two tiers. Tier 2 (free): calls the public SIRENE API to verify ~5,800 recipients (legal form, activity, address) — no LLM. Tier 1 (paid LLM, opt-in via --tier1): Claude Opus or Gemini 3 Flash to classify grants by theme, geolocate ambiguous investment projects, verify recipient activity via grounded search, and vulgarise technical contract labels. An LLM never calculates an amount. Everything runs outside dbt and results are cached in public CSV seeds — inspectable and reproducible; the raw purpose and SIRET remain displayed for verification." },
+  { q: "Why does the Competition panel only cover 2024+ on contracts?", a: "The offresRecues field (number of bids received per contract) has only been historised in DECP from 2024 onwards — before, it was either empty or filled anecdotally. Rather than extrapolate, we hide the panel whenever coverage is < 20% (or < 50 contracts for the year) and show an honest empty state." },
+  { q: "How do you now quantify the off-balance-sheet?", a: "The City publishes (since 2024) an OpenData dataset dette-garantie (CA appendix IV-B) listing every guaranteed loan: capital outstanding, lender, beneficiary (mostly social landlords), index. We aggregate it in build_hors_bilan.py and display it next to the balance sheet, never merged in: €12.3bn of potential commitments in 2024, distinct from €10.7bn of direct financial debt." },
   { q: "How do you avoid double-counting between budget, grants and contracts?", a: "Each entity is modelled separately, never UNIONed with others. The budget contains an aggregated grants line; our Grants page details that same line from the recipients' side. We don't add them together. Documented in docs/architecture-modelling.md." },
   { q: "Are your totals identical to those on the City's website?", a: "Yes for aggregates from the same M57 dataset: our pipeline doesn't change amounts, it regroups and renames. Differences come from the cases described above (scope, timing, nomenclature)." },
   { q: "Why are some years absent or provisional?", a: "Each source has its coverage documented in the coverage table above. The most visible example: the AP OpenData dataset has been frozen since 2022, so for 2023-2024 we switch to the 'Localised Investments' PDFs. We prefer to show a gap rather than fill it with guesswork." },
@@ -421,30 +559,36 @@ const FAQ_EN: { q: string; a: string }[] = [
 const COVERAGE_EN: CoverageRow[] = [
   { label: "Executed budget (CA)", volume: "25,629 rows", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/", status: "ok", statusLabel: "Up to date", segments: [{ start: 2018, end: 2024, text: "2018-2024" }] },
   { label: "Voted budget (BP)", volume: "8,598 rows", href: "https://opendata.paris.fr/explore/dataset/budgets-votes-principaux-a-partir-de-2019-m57-ville-departement/", status: "ok", statusLabel: "Up to date", segments: [{ start: 2019, end: 2026, text: "2019-2026" }] },
-  { label: "Grants", volume: "47,381 rows", href: "https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/", status: "ok", statusLabel: "Up to date", segments: [{ start: 2018, end: 2024, text: "2018-2024" }] },
-  { label: "Public contracts", volume: "17,639 contracts", href: "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/", status: "ok", statusLabel: "Up to date", segments: [{ start: 2013, end: 2024, text: "2013-2024" }] },
+  { label: "Grants", volume: "38,839 rows · 2020-2021 gap (non-comparable format)", href: "https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/", status: "info", statusLabel: "Partial", segments: [{ start: 2018, end: 2019, text: "2018-2019", kind: "partial" }, { start: 2022, end: 2024, text: "2022-2024" }] },
+  { label: "Public contracts", volume: "23,053 contracts (City + national DECP)", href: "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/", status: "ok", statusLabel: "Up to date", segments: [{ start: 2013, end: 2026, text: "2013-2026 · opendata.paris.fr + national DECP merge" }] },
+  { label: "Competition (DECP offresRecues)", volume: "field not historised before 2024", href: "https://www.data.gouv.fr/fr/datasets/donnees-essentielles-de-la-commande-publique-fichiers-consolides/", status: "info", statusLabel: "Partial", segments: [{ start: 2024, end: 2025, text: "2024-2025", kind: "partial" }] },
   { label: "Investments (AP dataset)", volume: "dataset frozen", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/", status: "warn", statusLabel: "Frozen", segments: [{ start: 2018, end: 2022, text: "2018-2022 · frozen", kind: "frozen" }] },
   { label: "Investments (IL PDFs)", volume: "~450 projects/yr", href: "https://cdn.paris.fr/paris/2025/06/25/ca-2024-annexe-il-UtMj.PDF", status: "info", statusLabel: "Partial", segments: [{ start: 2018, end: 2024, text: "2018-2024 (CA)", kind: "partial" }, { start: 2025, end: 2026, text: "2025-2026 (BP)", kind: "partial" }] },
+  { label: "Project ↔ contract match", volume: "4,322 matches (seed)", href: "https://github.com/Nuttux/open-public-data/blob/main/pipeline/seeds/seed_match_projet_marches.csv", status: "ok", statusLabel: "Up to date", segments: [{ start: 2018, end: 2024, text: "2018-2024 · stable hash object+awardee" }] },
   { label: "Funded social housing", volume: "4,174 operations", href: "https://opendata.paris.fr/explore/dataset/logements-sociaux-finances-a-paris/", status: "ok", statusLabel: "Up to date", segments: [{ start: 2013, end: 2024, text: "2001-2024 (shown 2013+)" }] },
+  { label: "Housing pressure (DRIHL Socle)", volume: "20 districts · 195,828 applications / 9,098 allocations", href: "https://www.drihl.ile-de-france.developpement-durable.gouv.fr/socle-de-donnees-demandes-et-attributions-de-a1414.html", status: "info", statusLabel: "Partial", segments: [{ start: 2024, end: 2024, text: "2024 (series starting)", kind: "partial" }] },
   { label: "Balance sheet", volume: "1 bs/yr", href: "https://opendata.paris.fr/explore/dataset/bilan-comptable/", status: "ok", statusLabel: "Up to date", segments: [{ start: 2019, end: 2024, text: "2019-2024" }] },
+  { label: "Off-balance-sheet (guaranteed debt)", volume: "9,960 loans · €12.3bn outstanding in 2024", href: "https://opendata.paris.fr/explore/dataset/dette-garantie/", status: "ok", statusLabel: "Up to date", segments: [{ start: 2019, end: 2024, text: "2019-2024" }] },
 ];
 
 // ── Sources (table synthétique) ──────────────────────────────────────────────
 
 const SOURCES_FR: SourceRow[] = [
-  { portal: "OpenData Paris", url: "opendata.paris.fr", datasets: "Budget M57, marchés publics, subventions, logements sociaux, AP, bilan comptable — 7 datasets", freshness: "Quotidien à annuel selon dataset" },
-  { portal: "INSEE — SIRENE", url: "data.gouv.fr / sirene", datasets: "Registre entreprises (SIRET, APE, effectifs, établissements)", freshness: "Mensuel" },
+  { portal: "OpenData Paris", url: "opendata.paris.fr", datasets: "Budget M57, marchés publics, subventions, logements sociaux, AP, bilan comptable, dette-garantie — 8 datasets", freshness: "Quotidien à annuel selon dataset" },
+  { portal: "data.gouv.fr — DECP", url: "data.gouv.fr / decp", datasets: "Données Essentielles de la Commande Publique consolidées (filtre SIRET 217500* Paris)", freshness: "Fichiers annuels 2019-2026" },
+  { portal: "INSEE — SIRENE", url: "data.gouv.fr / sirene", datasets: "Registre entreprises (SIRET, APE, effectifs, établissements) · enrichissement tier2 gratuit", freshness: "Mensuel" },
   { portal: "Base Adresse Nationale", url: "api-adresse.data.gouv.fr", datasets: "Géocodage des adresses de projets d'investissement", freshness: "Temps réel" },
   { portal: "cdn.paris.fr (PDFs)", url: "cdn.paris.fr", datasets: "Annexes CA 2024 (investissements localisés), Rapport d'Orientation Budgétaire, compte de gestion", freshness: "Annuel (juin N+1)" },
-  { portal: "DRIHL Île-de-France", url: "drihl.ile-de-france…gouv.fr", datasets: "Inventaire SRU, parc social au 1er janvier", freshness: "Annuel" },
+  { portal: "DRIHL Île-de-France", url: "drihl.ile-de-france…gouv.fr", datasets: "Inventaire SRU, parc social au 1er janvier, Socle demandes/attributions logement social", freshness: "Annuel" },
 ];
 
 const SOURCES_EN: SourceRow[] = [
-  { portal: "OpenData Paris", url: "opendata.paris.fr", datasets: "M57 budget, public contracts, grants, social housing, AP, balance sheet — 7 datasets", freshness: "Daily to annual depending on dataset" },
-  { portal: "INSEE — SIRENE", url: "data.gouv.fr / sirene", datasets: "Business register (SIRET, activity codes, headcount, sites)", freshness: "Monthly" },
+  { portal: "OpenData Paris", url: "opendata.paris.fr", datasets: "M57 budget, public contracts, grants, social housing, AP, balance sheet, guaranteed debt — 8 datasets", freshness: "Daily to annual depending on dataset" },
+  { portal: "data.gouv.fr — DECP", url: "data.gouv.fr / decp", datasets: "Consolidated Essential Public Procurement Data (SIRET 217500* Paris filter)", freshness: "Yearly files 2019-2026" },
+  { portal: "INSEE — SIRENE", url: "data.gouv.fr / sirene", datasets: "Business register (SIRET, activity codes, headcount, sites) · free tier2 enrichment", freshness: "Monthly" },
   { portal: "Base Adresse Nationale", url: "api-adresse.data.gouv.fr", datasets: "Address geocoding for investment projects", freshness: "Real time" },
   { portal: "cdn.paris.fr (PDFs)", url: "cdn.paris.fr", datasets: "CA 2024 appendices (localised investments), Budget Orientation Report, management account", freshness: "Annual (June N+1)" },
-  { portal: "DRIHL Île-de-France", url: "drihl.ile-de-france…gouv.fr", datasets: "SRU inventory, social housing stock at January 1st", freshness: "Annual" },
+  { portal: "DRIHL Île-de-France", url: "drihl.ile-de-france…gouv.fr", datasets: "SRU inventory, social housing stock at January 1st, Socle of applications/allocations", freshness: "Annual" },
 ];
 
 // ── Exemple bout-en-bout (traçabilité d'un chiffre) ──────────────────────────
@@ -489,13 +633,26 @@ export default function MethodeClient() {
   const [activeToolId, setActiveToolId] = useState<string>(TOOLS[0]?.id ?? "budget");
   const activeTool = TOOLS.find((t) => t.id === activeToolId) ?? TOOLS[0];
 
-  // Deep-link : /methode?tool=<id>#outils → pré-sélectionne le tab demandé.
+  // Deep-link : /methode?tool=<id>#outils OR /methode#<tool-id> → pré-sélectionne le tab + scroll.
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const toolParam = params.get("tool");
-    if (toolParam && TOOLS.some((tl) => tl.id === toolParam)) {
-      setActiveToolId(toolParam);
-    }
+    const applyFromLocation = () => {
+      const params = new URLSearchParams(window.location.search);
+      const toolParam = params.get("tool");
+      const hashRaw = window.location.hash.replace(/^#/, "");
+      const fromHash = TOOLS.some((tl) => tl.id === hashRaw) ? hashRaw : null;
+      const pick = (toolParam && TOOLS.some((tl) => tl.id === toolParam)) ? toolParam : fromHash;
+      if (pick) {
+        setActiveToolId(pick);
+        if (fromHash) {
+          requestAnimationFrame(() => {
+            document.getElementById("outils")?.scrollIntoView({ behavior: "smooth", block: "start" });
+          });
+        }
+      }
+    };
+    applyFromLocation();
+    window.addEventListener("hashchange", applyFromLocation);
+    return () => window.removeEventListener("hashchange", applyFromLocation);
   }, [TOOLS]);
 
   const years: number[] = [];
@@ -504,6 +661,7 @@ export default function MethodeClient() {
   return (
     <div className="theme-fusion">
       <Navbar />
+      <main id="main-content" tabIndex={-1}>
 
       <section className="fx-page-header">
         <div className="fx-wrap">
@@ -521,7 +679,7 @@ export default function MethodeClient() {
             <div className="fx-meth-stat">
               <span className="n">{isFr ? "Datasets" : "Datasets"}</span>
               <span className="v">12+</span>
-              <span className="c">{isFr ? "opendata.paris.fr · INSEE SIRENE · BAN · PDFs officiels" : "opendata.paris.fr · INSEE SIRENE · BAN · official PDFs"}</span>
+              <span className="c">{isFr ? "opendata.paris.fr · DECP data.gouv.fr · INSEE SIRENE · DRIHL Socle · BAN · PDFs officiels" : "opendata.paris.fr · DECP data.gouv.fr · INSEE SIRENE · DRIHL Socle · BAN · official PDFs"}</span>
             </div>
             <div className="fx-meth-stat">
               <span className="n">{isFr ? "Outils" : "Tools"}</span>
@@ -531,7 +689,7 @@ export default function MethodeClient() {
             <div className="fx-meth-stat">
               <span className="n">{isFr ? "Lignes traitées" : "Rows processed"}</span>
               <span className="v">~100 k</span>
-              <span className="c">{isFr ? "47k subv. + 26k budget CA + 18k marchés + 9k budget voté + 4k logements" : "47k grants + 26k exec. budget + 18k contracts + 9k voted budget + 4k housing"}</span>
+              <span className="c">{isFr ? "39k subv. + 26k budget CA + 23k marchés + 9k budget voté + 10k hors-bilan + 4k logements" : "39k grants + 26k exec. budget + 23k contracts + 9k voted budget + 10k off-balance-sheet + 4k housing"}</span>
             </div>
             <div className="fx-meth-stat">
               <span className="n">{isFr ? "Historique" : "History"}</span>
@@ -603,8 +761,8 @@ export default function MethodeClient() {
           <SectionHead
             number="01"
             kind={isFr ? "Sources" : "Sources"}
-            title={isFr ? <>D&apos;<em>où</em> vient chaque chiffre</> : <>Where <em>each</em> figure comes from</>}
-            subtitle={isFr ? "Cinq portails officiels. Aucun autre." : "Five official portals. Nothing else."}
+            title={isFr ? <>D&apos;où vient <em>chaque chiffre</em></> : <>Where <em>each figure</em> comes from</>}
+            subtitle={isFr ? "Six portails officiels. Aucun autre." : "Six official portals. Nothing else."}
           />
           <div className="fx-sources-table">
             <div className="fx-sources-table-head">
@@ -687,35 +845,49 @@ export default function MethodeClient() {
           <SectionHead
             number="03"
             kind={isFr ? "Architecture" : "Architecture"}
-            title={isFr ? <>De la source au <em>site</em>, en trois étapes</> : <>From source to <em>site</em>, in three steps</>}
-            subtitle={isFr ? "Un seul pipeline pour les six outils." : "One pipeline for all six tools."}
+            title={isFr ? <>De la source au <em>site</em>, en quatre étapes</> : <>From source to <em>site</em>, in four steps</>}
+            subtitle={isFr ? "Un seul pipeline pour les six outils, rejoué à chaque nouvelle donnée publiée." : "One pipeline for all six tools, replayed whenever new data is published."}
           />
 
           <div className="fx-flow-simple">
             <div className="fx-flow-simple-step">
               <div className="k">01</div>
-              <h4>{isFr ? "Collecter" : "Collect"}</h4>
+              <h3>{isFr ? "On récupère" : "We fetch"}</h3>
               <p>{isFr
-                ? "On télécharge les datasets publiés par la Ville (OpenData Paris), l'INSEE (SIRENE) et data.gouv. On parse les PDFs des annexes comptables. Aucune transformation à cette étape — on garde les CSV bruts."
-                : "We download the datasets published by the City (OpenData Paris), INSEE (SIRENE) and data.gouv. We parse the PDFs of accounting appendices. No transformation at this stage — we keep raw CSVs."}</p>
+                ? "On télécharge les datasets publiés par la Ville, par l'État (DECP, INSEE) et par les services déconcentrés (DRIHL). On lit aussi les PDFs joints aux comptes annuels. Rien n'est transformé à cette étape : on archive la source telle quelle."
+                : "We download datasets published by the City, by the State (DECP, INSEE) and by decentralised services (DRIHL). We also read the PDFs attached to annual accounts. Nothing is transformed here: the source is archived as-is."}</p>
             </div>
             <span className="fx-flow-simple-arrow">→</span>
             <div className="fx-flow-simple-step">
               <div className="k">02</div>
-              <h4>{isFr ? "Relier & nettoyer" : "Stitch & clean"}</h4>
+              <h3>{isFr ? "On relie & traduit" : "We stitch & translate"}</h3>
               <p>{isFr
-                ? "On traduit les nomenclatures comptables en français courant, on joint les datasets entre eux (via le SIRET pour l'identité des bénéficiaires), on retrouve l'adresse des projets grâce à la Base Adresse Nationale. Un LLM aide à classer par thème et à résoudre les adresses ambiguës — jamais à calculer de montant."
-                : "We translate accounting nomenclatures into plain language, we join datasets (via SIRET for recipient identity), we resolve project addresses using the National Address Base. An LLM helps classify by theme and resolve ambiguous addresses — never to compute an amount."}</p>
+                ? "On traduit les nomenclatures comptables en français courant et on joint les sources entre elles — par SIRET pour savoir qui reçoit, par adresse pour savoir où, par numéro de marché pour relier un contrat à son projet."
+                : "We translate accounting nomenclatures into plain language and stitch the sources together — by SIRET to know who receives, by address to know where, by contract number to link a contract to its project."}</p>
             </div>
             <span className="fx-flow-simple-arrow">→</span>
             <div className="fx-flow-simple-step">
               <div className="k">03</div>
-              <h4>{isFr ? "Publier" : "Publish"}</h4>
+              <h3>{isFr ? "On enrichit" : "We enrich"}</h3>
               <p>{isFr
-                ? "Le résultat est exporté en JSON figés, versionnés dans le dépôt. Le site Next.js lit ces JSON en statique — pas d'API live, pas de recalcul côté navigateur. Ce que vous voyez est exactement ce qui a été calculé."
-                : "The result is exported to static JSON, versioned in the repo. The Next.js site reads these JSONs statically — no live API, no browser-side recalculation. What you see is exactly what was computed."}</p>
+                ? "Les datasets bruts ne disent pas qui est vraiment une association, ni à quelle politique publique une ligne correspond. Alors on va chercher du contexte ailleurs : l'API publique SIRENE pour obtenir la forme juridique, l'activité et le siège d'un bénéficiaire (~5 800 profils vérifiés) ; un modèle de langage pour classer les subventions par thème (Social, Culture, Sport…), résumer l'objet de la subvention en une phrase, et retrouver l'arrondissement des projets dont le libellé est ambigu."
+                : "Raw datasets don't tell you what kind of non-profit a recipient is, nor which public policy a line belongs to. So we fetch context elsewhere: the public SIRENE API for legal form, activity and registered office of a recipient (~5,800 verified profiles); a language model to tag grants by theme (Social, Culture, Sport…), summarise a grant's purpose in one sentence, and resolve the district of projects with ambiguous labels."}</p>
+            </div>
+            <span className="fx-flow-simple-arrow">→</span>
+            <div className="fx-flow-simple-step">
+              <div className="k">04</div>
+              <h3>{isFr ? "On publie" : "We publish"}</h3>
+              <p>{isFr
+                ? "Le résultat est figé en fichiers JSON, versionnés avec le code. Un fichier par année et par outil. Le site lit ces fichiers directement — pas de base de données live, pas de calcul côté navigateur. Ce que vous voyez est exactement ce qui a été calculé."
+                : "The result is frozen as JSON files, versioned with the code. One file per year per tool. The site reads these files directly — no live database, no browser-side computation. What you see is exactly what was computed."}</p>
             </div>
           </div>
+
+          <p className="fx-note" style={{ marginTop: 18 }}>
+            {isFr
+              ? <><b>Règle absolue sur l&apos;enrichissement</b> : un modèle de langage n&apos;est utilisé que pour du texte — catégoriser, décrire, résumer, retrouver une adresse. <b>Aucun montant ni aucun agrégat financier ne passe jamais par un LLM.</b> Les chiffres sortent d&apos;un calcul SQL déterministe sur les données brutes.</>
+              : <><b>Hard rule on enrichment</b>: a language model is only used on text — to categorise, describe, summarise, find an address. <b>No amount, no financial aggregate ever goes through an LLM.</b> Numbers come from deterministic SQL run on raw data.</>}
+          </p>
 
           <details className="fx-flow-tech">
             <summary>{isFr ? "Voir le détail technique (pour les devs)" : "See technical detail (for devs)"}</summary>
@@ -772,8 +944,8 @@ export default function MethodeClient() {
               </div>
               <div className="fx-flow-note">
                 {isFr
-                  ? <>{`Règle anti-double comptage — `}<code>core_budget</code>, <code>core_subventions</code>, <code>core_marches_publics</code>, <code>core_ap_projets</code>{` ne sont jamais UNIONés. Chaque entité vit séparément. Détail dans `}<code>docs/architecture-modelling.md</code>.</>
-                  : <>{`Anti-double-counting rule — `}<code>core_budget</code>, <code>core_subventions</code>, <code>core_marches_publics</code>, <code>core_ap_projets</code>{` are never UNIONed. Each entity lives separately. Detail in `}<code>docs/architecture-modelling.md</code>.</>}
+                  ? <>{`Orchestrateur `}<code>pipeline/run_all.sh</code>{` (4 phases sync/dbt/export/enrich, flags `}<code>--skip</code>{`, `}<code>--only</code>{`, `}<code>--tier1</code>{`, `}<code>--dry-run</code>{`). Enrich = tier2 SIRENE gratuit par défaut, tier1 LLM opt-in. Idempotent : caches seeds CSV réutilisés. CI : `}<code>.github/workflows/enrich-pipeline.yml</code>{` relance l'enrichissement quand de nouveaux bénéficiaires arrivent. Règle anti-double-comptage — `}<code>core_budget</code>, <code>core_subventions</code>, <code>core_marches_publics</code>, <code>core_ap_projets</code>{` ne sont jamais UNIONés. Détail dans `}<code>docs/architecture-modelling.md</code>.</>
+                  : <>{`Orchestrator `}<code>pipeline/run_all.sh</code>{` (4 phases sync/dbt/export/enrich, flags `}<code>--skip</code>{`, `}<code>--only</code>{`, `}<code>--tier1</code>{`, `}<code>--dry-run</code>{`). Enrich = free tier2 SIRENE by default, tier1 LLM opt-in. Idempotent: cached CSV seeds reused. CI: `}<code>.github/workflows/enrich-pipeline.yml</code>{` reruns enrichment when new recipients arrive. Anti-double-counting rule — `}<code>core_budget</code>, <code>core_subventions</code>, <code>core_marches_publics</code>, <code>core_ap_projets</code>{` are never UNIONed. Detail in `}<code>docs/architecture-modelling.md</code>.</>}
               </div>
             </div>
           </details>
@@ -815,51 +987,68 @@ export default function MethodeClient() {
                 <Link href={activeTool.route} className="t-link">{activeTool.route} ↗</Link>
               </div>
 
-              <div className="fx-tool-meta">
-                <div>
-                  <div className="k">{isFr ? "Source" : "Source"}</div>
-                  <div className="v">{activeTool.source.name}</div>
+              <div className="fx-tool-enclair">
+                <div className="fx-tool-enclair-head">
+                  <span className="fx-tool-enclair-icon" aria-hidden>📖</span>
+                  <span className="fx-tool-enclair-label">{isFr ? "En clair" : "In plain language"}</span>
                 </div>
-                <div>
-                  <div className="k">Dataset</div>
-                  <div className="v"><code>{activeTool.source.dataset}</code></div>
-                </div>
-                <div>
-                  <div className="k">{isFr ? "Couverture" : "Coverage"}</div>
-                  <div className="v">{activeTool.source.coverage}</div>
-                </div>
+                <div className="fx-tool-enclair-body">{activeTool.enClair}</div>
               </div>
 
-              <div className="fx-tool-body">
-                <div className="objectif">
-                  <span className="k">{isFr ? "Objectif" : "Goal"}</span>
-                  <p>{activeTool.objectif}</p>
-                </div>
-                <div>
-                  <div className="fx-stepper">
-                    <span className="k">Pipeline</span>
-                    {activeTool.pipeline.map((step, i) => (
-                      <div key={i} className="fx-step">
-                        <div className="fx-step-num">{String(i + 1).padStart(2, "0")}</div>
-                        <div className="fx-step-text">
-                          <b>{step.label}.</b> {step.detail}
-                        </div>
-                      </div>
-                    ))}
+              <details className="fx-tool-tech">
+                <summary>
+                  <span className="fx-tool-tech-icon" aria-hidden>⚙️</span>
+                  <span className="fx-tool-tech-label">
+                    {isFr ? "Voir le détail technique (source, pipeline, choix, limites)" : "See technical detail (source, pipeline, choices, limits)"}
+                  </span>
+                </summary>
+
+                <div className="fx-tool-meta">
+                  <div>
+                    <div className="k">{isFr ? "Source" : "Source"}</div>
+                    <div className="v">{activeTool.source.name}</div>
+                  </div>
+                  <div>
+                    <div className="k">Dataset</div>
+                    <div className="v"><code>{activeTool.source.dataset}</code></div>
+                  </div>
+                  <div>
+                    <div className="k">{isFr ? "Couverture" : "Coverage"}</div>
+                    <div className="v">{activeTool.source.coverage}</div>
                   </div>
                 </div>
-              </div>
 
-              <div className="fx-tool-collapse">
-                <details>
-                  <summary>{isFr ? `Choix éditoriaux (${activeTool.choix.length})` : `Editorial choices (${activeTool.choix.length})`}</summary>
-                  <ul>{activeTool.choix.map((c, i) => <li key={i}>{c}</li>)}</ul>
-                </details>
-                <details>
-                  <summary>{isFr ? `Cadre & périmètre (${activeTool.limites.length})` : `Scope & framing (${activeTool.limites.length})`}</summary>
-                  <ul>{activeTool.limites.map((l, i) => <li key={i}>{l}</li>)}</ul>
-                </details>
-              </div>
+                <div className="fx-tool-body">
+                  <div className="objectif">
+                    <span className="k">{isFr ? "Objectif" : "Goal"}</span>
+                    <p>{activeTool.objectif}</p>
+                  </div>
+                  <div>
+                    <div className="fx-stepper">
+                      <span className="k">Pipeline</span>
+                      {activeTool.pipeline.map((step, i) => (
+                        <div key={i} className="fx-step">
+                          <div className="fx-step-num">{String(i + 1).padStart(2, "0")}</div>
+                          <div className="fx-step-text">
+                            <b>{step.label}.</b> {step.detail}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="fx-tool-collapse">
+                  <details open>
+                    <summary>{isFr ? `Choix éditoriaux (${activeTool.choix.length})` : `Editorial choices (${activeTool.choix.length})`}</summary>
+                    <ul>{activeTool.choix.map((c, i) => <li key={i}>{c}</li>)}</ul>
+                  </details>
+                  <details open>
+                    <summary>{isFr ? `Cadre & périmètre (${activeTool.limites.length})` : `Scope & framing (${activeTool.limites.length})`}</summary>
+                    <ul>{activeTool.limites.map((l, i) => <li key={i}>{l}</li>)}</ul>
+                  </details>
+                </div>
+              </details>
             </div>
           )}
         </div>
@@ -879,7 +1068,15 @@ export default function MethodeClient() {
             <p>{TRACE.claim}</p>
           </div>
 
-          <ol className="fx-trace-steps">
+          <div className="fx-trace-summary">
+            {isFr
+              ? <>Ce chiffre vient d&apos;<b>une seule ligne</b> du CSV publié par la Ville : SIRET 267 500 049, montant 416 574 267 €, exercice 2024. Entre ce CSV et l&apos;affichage sur le site, le pipeline fait trois choses : il type les colonnes et normalise le SIRET ; il confirme via SIRENE que le SIRET correspond bien au CASVP ; il somme les lignes du même SIRET sur l&apos;année. Puis il écrit le résultat en JSON, que le site lit tel quel. <b>Aucune étape n&apos;invente un chiffre</b> — uniquement du nettoyage, une vérification d&apos;identité, une somme.</>
+              : <>This figure comes from <b>a single row</b> of the CSV published by the City: SIRET 267 500 049, amount €416,574,267, fiscal year 2024. Between that CSV and the display on the site, the pipeline does three things: it types the columns and normalises the SIRET; it verifies via SIRENE that the SIRET does belong to CASVP; it sums all rows with that same SIRET for the year. Then it writes the result to JSON, which the site reads as-is. <b>No step invents a figure</b> — only cleaning, an identity check, a sum.</>}
+          </div>
+
+          <details className="fx-trace-tech">
+            <summary>{isFr ? "Voir les 6 étapes techniques (SQL, fichiers, code)" : "See the 6 technical steps (SQL, files, code)"}</summary>
+            <ol className="fx-trace-steps">
             {TRACE.steps.map((step, i) => (
               <li key={i}>
                 <div className="fx-trace-stage">{step.stage}</div>
@@ -889,13 +1086,8 @@ export default function MethodeClient() {
                 </div>
               </li>
             ))}
-          </ol>
-
-          <p className="fx-note" style={{ marginTop: 18 }}>
-            {isFr
-              ? <><b>À retenir</b> : entre la source et l&apos;affichage, aucune étape n&apos;invente de chiffre. Seulement du nettoyage, des jointures et des sommes. Le code de chaque étape est public.</>
-              : <><b>Key point</b>: between source and display, no step invents a figure. Only cleaning, joins and sums. Each step's code is public.</>}
-          </p>
+            </ol>
+          </details>
 
           <div style={{ marginTop: 24, display: "flex", gap: 10, flexWrap: "wrap" }}>
             <Button href="https://github.com/Nuttux/open-public-data/tree/main/pipeline">
@@ -954,19 +1146,19 @@ export default function MethodeClient() {
           />
           <div className="fx-engagements">
             <div className="fx-engagement">
-              <h4>{isFr ? "Pas de contenu sponsorisé, pas de ligne politique" : "No sponsored content, no political line"}</h4>
+              <h3>{isFr ? "Pas de contenu sponsorisé, pas de ligne politique" : "No sponsored content, no political line"}</h3>
               <p>{isFr
                 ? "Aucun article, chiffre ou visualisation n'est sponsorisé. Les textes évitent les jugements sur les choix politiques et s'en tiennent à la donnée. Les financements que nous recevons sont publiés avec leur montant."
                 : "No article, figure or visualisation is sponsored. Texts avoid judgements on political choices and stick to the data. Any funding we receive is published with its amount."}</p>
             </div>
             <div className="fx-engagement">
-              <h4>{isFr ? "Code & données ouverts" : "Open code & data"}</h4>
+              <h3>{isFr ? "Code & données ouverts" : "Open code & data"}</h3>
               <p>{isFr
                 ? <>Les pipelines (Python + dbt) sont sous licence MIT. Chaque chiffre peut être recalculé depuis un CSV source, et chaque page expose un export CSV/JSON. Code sur <a href="https://github.com/Nuttux/open-public-data" target="_blank" rel="noopener noreferrer">github.com/Nuttux/open-public-data ↗</a>.</>
                 : <>Pipelines (Python + dbt) are MIT-licensed. Every figure can be recalculated from a source CSV, and every page exposes a CSV/JSON export. Code at <a href="https://github.com/Nuttux/open-public-data" target="_blank" rel="noopener noreferrer">github.com/Nuttux/open-public-data ↗</a>.</>}</p>
             </div>
             <div className="fx-engagement">
-              <h4>{isFr ? "Corrections publiques, jamais de chiffre supprimé" : "Public corrections, no figure ever deleted"}</h4>
+              <h3>{isFr ? "Corrections publiques, jamais de chiffre supprimé" : "Public corrections, no figure ever deleted"}</h3>
               <p>{isFr
                 ? <>Erreur signalée = corrigée dans le code et consignée dans le changelog avec la date et l&apos;origine du signalement. On corrige en place et on garde la trace — pour que tout ancien screenshot reste traçable. <a href="https://github.com/Nuttux/open-public-data/commits/main" target="_blank" rel="noopener noreferrer">Voir les commits ↗</a></>
                 : <>Error reported = corrected in the code and recorded in the changelog with the date and source of the report. We correct in place and keep a record — so any old screenshot remains traceable. <a href="https://github.com/Nuttux/open-public-data/commits/main" target="_blank" rel="noopener noreferrer">View commits ↗</a></>}</p>
@@ -981,6 +1173,161 @@ export default function MethodeClient() {
         </div>
       </section>
 
+      {/* ─── Méthode des pages France macro & villes ─────────────── */}
+      <section id="france-macro" className="fx-section">
+        <div className="fx-wrap">
+          <SectionHead
+            number="09"
+            kind={isFr ? "France macro & villes" : "France macro & cities"}
+            title={
+              isFr ? (
+                <>Les <em>5 nouvelles</em> pages France & multi-villes</>
+              ) : (
+                <>The <em>5 new</em> France & multi-city pages</>
+              )
+            }
+            subtitle={
+              isFr
+                ? "Source, périmètre, choix, limites pour /apu, /etat, /dette, /fiscalite et les pages /ville/[ville]."
+                : "Source, scope, choices, limits for /apu, /etat, /dette, /fiscalite and the /ville/[city] pages."
+            }
+          />
+
+          <div className="fx-france-method-grid" style={{ marginTop: 32 }}>
+            {/* /apu ─────────────────────────────── */}
+            <article id="apu-cofog" className="fx-france-method">
+              <header>
+                <span className="fx-france-method-route">/apu</span>
+                <h3>{isFr ? "Dépenses publiques par fonction COFOG" : "Public spending by COFOG function"}</h3>
+              </header>
+              <dl>
+                <dt>{isFr ? "Source" : "Source"}</dt>
+                <dd>
+                  Eurostat — <code>gov_10a_exp</code> · <a href="https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp/default/table" target="_blank" rel="noopener noreferrer">databrowser ↗</a>
+                </dd>
+                <dt>{isFr ? "Périmètre" : "Scope"}</dt>
+                <dd>{isFr
+                  ? "Sector S13 (administrations publiques consolidées : État + Sécu + collectivités + opérateurs). Unité : % PIB. Pas de retraitement maison."
+                  : "Sector S13 (consolidated general government: central + social security + local + operators). Unit: % GDP. No in-house adjustment."}</dd>
+                <dt>{isFr ? "Comparateurs" : "Comparators"}</dt>
+                <dd>FR · DE · IT · ES · NL · UE27</dd>
+                <dt>{isFr ? "Limites" : "Limits"}</dt>
+                <dd>{isFr
+                  ? "Données annuelles, dernier exercice publié par Eurostat (souvent N-1 ou N-2). 10 fonctions COFOG niveau 1 ; pas de drill-down vers les programmes nationaux."
+                  : "Annual data, latest year published by Eurostat (typically N-1 or N-2). 10 level-1 COFOG functions; no drill-down to national programmes."}</dd>
+              </dl>
+            </article>
+
+            {/* /etat ────────────────────────────── */}
+            <article id="etat" className="fx-france-method">
+              <header>
+                <span className="fx-france-method-route">/etat</span>
+                <h3>{isFr ? "Budget Général de l'État (PLF)" : "State General Budget (PLF)"}</h3>
+              </header>
+              <dl>
+                <dt>{isFr ? "Source" : "Source"}</dt>
+                <dd>
+                  data.economie.gouv.fr — PLF par mission/programme · <a href="https://www.data.gouv.fr/datasets/plf-2025-depenses-2025-selon-destination/" target="_blank" rel="noopener noreferrer">PLF 2025 ↗</a> · <a href="https://www.data.gouv.fr/datasets/plf-2024-depenses-2024-selon-nomenclatures-destination-et-nature/" target="_blank" rel="noopener noreferrer">PLF 2024 ↗</a>
+                </dd>
+                <dt>{isFr ? "Périmètre" : "Scope"}</dt>
+                <dd>{isFr
+                  ? "Type budget = BG (Budget Général) uniquement. Comptes spéciaux et budgets annexes exclus. Total ~25 % des dépenses publiques (le reste : Sécu, collectivités, opérateurs)."
+                  : "Type budget = BG (General Budget) only. Special accounts and annex budgets excluded. Represents ~25% of total public spending (the rest: social security, local authorities, operators)."}</dd>
+                <dt>{isFr ? "Brut vs net" : "Gross vs net"}</dt>
+                <dd>{isFr
+                  ? "« Net » exclut la mission Remboursements & dégrèvements (~147 Md€) qui regroupe les restitutions d'impôts (CIR, TVA déductible…) — comptablement BG mais conceptuellement réduction de recettes."
+                  : "« Net » excludes the Remboursements & dégrèvements mission (~€147B) which covers tax refunds (R&D credit, deductible VAT…) — accounted in BG but conceptually a revenue reduction."}</dd>
+                <dt>{isFr ? "YoY" : "YoY"}</dt>
+                <dd>{isFr
+                  ? "Évolution PLF 2025 vs PLF 2024 affichée par mission. Comparaison à périmètre constant (mission code identique)."
+                  : "Evolution PLF 2025 vs PLF 2024 shown per mission. Constant-scope comparison (same mission code)."}</dd>
+              </dl>
+            </article>
+
+            {/* /dette ───────────────────────────── */}
+            <article id="dette" className="fx-france-method">
+              <header>
+                <span className="fx-france-method-route">/dette</span>
+                <h3>{isFr ? "Dette publique trimestrielle (Maastricht)" : "Quarterly government debt (Maastricht)"}</h3>
+              </header>
+              <dl>
+                <dt>{isFr ? "Source" : "Source"}</dt>
+                <dd>
+                  Eurostat — <code>gov_10q_ggdebt</code> · <a href="https://ec.europa.eu/eurostat/databrowser/view/gov_10q_ggdebt/default/table" target="_blank" rel="noopener noreferrer">databrowser ↗</a>
+                </dd>
+                <dt>{isFr ? "Indicateur" : "Indicator"}</dt>
+                <dd><code>na_item = GD</code> ({isFr ? "dette consolidée brute, définition Maastricht" : "Maastricht consolidated gross debt"})</dd>
+                <dt>{isFr ? "Sous-secteurs" : "Sub-sectors"}</dt>
+                <dd>S13 (APU) · S1311 (État central) · S1313 (collectivités) · S1314 (Sécu)</dd>
+                <dt>{isFr ? "À retenir" : "Key caveat"}</dt>
+                <dd>{isFr
+                  ? "S13 ≠ S1311 + S1313 + S1314 : la consolidation élimine les détentions croisées entre sous-secteurs. Lire chaque trait pour ce qu'il représente, ne pas les additionner."
+                  : "S13 ≠ S1311 + S1313 + S1314: consolidation removes cross-holdings between sub-sectors. Read each line for what it represents, do not sum them."}</dd>
+              </dl>
+            </article>
+
+            {/* /fiscalite ───────────────────────── */}
+            <article id="fiscalite" className="fx-france-method">
+              <header>
+                <span className="fx-france-method-route">/fiscalite</span>
+                <h3>{isFr ? "Prélèvements obligatoires (taxes + cotisations)" : "Compulsory levies (taxes + contributions)"}</h3>
+              </header>
+              <dl>
+                <dt>{isFr ? "Source" : "Source"}</dt>
+                <dd>
+                  Eurostat — <code>gov_10a_taxag</code> · <a href="https://ec.europa.eu/eurostat/databrowser/view/gov_10a_taxag/default/table" target="_blank" rel="noopener noreferrer">databrowser ↗</a>
+                </dd>
+                <dt>{isFr ? "Total" : "Total"}</dt>
+                <dd><code>D2_D5_D91_D61_M_D612_M_D614_M_D995</code> ({isFr ? "taxes nettes + cotisations sociales nettes" : "net taxes + net social contributions"})</dd>
+                <dt>{isFr ? "Décomposition" : "Breakdown"}</dt>
+                <dd>{isFr
+                  ? "6 catégories mutuellement exclusives : Cotisations · TVA · Autres impôts production · IR (incl. CSG, classée comme impôt par Eurostat) · IS · Autres directs+capital."
+                  : "6 mutually-exclusive categories: Contributions · VAT · Other production taxes · Personal income tax (incl. CSG, classified as a tax by Eurostat) · Corporate tax · Other direct + capital."}</dd>
+                <dt>{isFr ? "Limites" : "Limits"}</dt>
+                <dd>{isFr
+                  ? "Ratio rapporté au PIB nominal (pas au revenu disponible). Le total Eurostat (~43-44 % PIB) est légèrement inférieur au « ratio prélèvements obligatoires » DGFiP (~46 %) à cause de méthodos de consolidation différentes."
+                  : "Ratio relative to nominal GDP (not disposable income). Eurostat's total (~43-44% GDP) is slightly below DGFiP's « ratio prélèvements obligatoires » (~46%) due to different consolidation methodologies."}</dd>
+              </dl>
+            </article>
+
+            {/* /ville/[slug] ──────────────────────── */}
+            <article id="c-villes" className="fx-france-method">
+              <header>
+                <span className="fx-france-method-route">/ville/[slug]</span>
+                <h3>{isFr ? "Pages communes (10 plus grandes villes)" : "City pages (10 largest cities)"}</h3>
+              </header>
+              <dl>
+                <dt>{isFr ? "Sources" : "Sources"}</dt>
+                <dd>
+                  OFGL <code>ofgl-base-communes-consolidee</code> ({isFr ? "agrégats financiers M14/M57 harmonisés" : "M14/M57 harmonised financial aggregates"}) ·{" "}
+                  <a href="https://data.ofgl.fr/explore/dataset/ofgl-base-communes-consolidee/" target="_blank" rel="noopener noreferrer">OFGL ↗</a>
+                  <br />
+                  data.gouv DECP consolidée ({isFr ? "marchés publics filtrés par SIREN acheteur" : "public procurement filtered by buyer SIREN"}) ·{" "}
+                  <a href="https://www.data.gouv.fr/datasets/donnees-essentielles-de-la-commande-publique-consolidees-format-tabulaire/" target="_blank" rel="noopener noreferrer">DECP ↗</a>
+                </dd>
+                <dt>{isFr ? "Cutoff M14/M57" : "M14/M57 cutoff"}</dt>
+                <dd>{isFr
+                  ? "OFGL republie les séries harmonisées sous un libellé unique : pas de hachurage gris à l'écran, la transition 2024 est lissée à la source."
+                  : "OFGL republishes harmonised series under a single label: no on-screen hatching, the 2024 transition is smoothed at source."}</dd>
+                <dt>{isFr ? "Capacité de désendettement" : "Debt repayment capacity"}</dt>
+                <dd>{isFr
+                  ? "= Encours de dette / Épargne brute (en années). Seuil légal d'alerte : 12 ans. Tag vert < 8 · jaune 8-12 · rouge > 12."
+                  : "= Outstanding debt / Gross savings (in years). Statutory alert threshold: 12 years. Green tag < 8 · yellow 8-12 · red > 12."}</dd>
+                <dt>{isFr ? "Marchés DECP — qualité data" : "DECP procurement — data quality"}</dt>
+                <dd>{isFr
+                  ? "DECP est déclaratif et de qualité variable (certaines villes ne publient quasi rien — Strasbourg = 5 marchés). 3 couches de défense côté pipeline : dedup par uid (Nice publiait 1 ligne par lot), détecteur de valeurs sentinelles type 399 999 996 €, et cap absolu à 200 M€ par marché."
+                  : "DECP is self-declared with variable quality (some cities publish almost nothing — Strasbourg = 5 contracts). 3 defense layers in the pipeline: dedup by uid (Nice publishes 1 row per lot), detector for sentinel values like €399 999 996, and 200 M€ cap per single contract."}</dd>
+                <dt>{isFr ? "Comparaison aux pairs" : "Peer comparison"}</dt>
+                <dd>{isFr
+                  ? "Brute en € par habitant. À nuancer : richesse fiscale, statut administratif (Paris = ville-département, Lyon dans la métropole) et transferts d'État varient fortement entre communes."
+                  : "Raw € per resident. Caveats: fiscal wealth, administrative status (Paris is city-department, Lyon belongs to the Lyon metropolis) and State transfers vary widely between cities."}</dd>
+              </dl>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      </main>
       <Footer />
     </div>
   );

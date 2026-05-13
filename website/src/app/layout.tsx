@@ -14,9 +14,8 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import AnalyticsProvider from "@/components/AnalyticsProvider";
-import ChatPanel from "@/components/ChatPanel";
 import { LocaleProvider } from "@/lib/localeContext";
-import { SITE_URL, SITE_NAME, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
+import { SITE_URL, SITE_NAME, organizationJsonLd, websiteJsonLd, readLocale } from "@/lib/seo";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -104,14 +103,18 @@ export const viewport: Viewport = {
  * Applies font class, dark theme, navigation, and glossary provider
  * to the entire application
  */
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const initialLocale = await readLocale();
+  const skipLabel = initialLocale === 'en' ? 'Skip to main content' : 'Aller au contenu principal';
   return (
-    <html lang="fr">
+    <html lang={initialLocale === 'en' ? 'en' : 'fr'}>
       <body className={`${inter.variable} font-sans antialiased`}>
+        {/* RGAA 12.7 — skip-to-content link, first focusable element */}
+        <a href="#main-content" className="skip-to-content">{skipLabel}</a>
         {/* GEO: structured data for AI search engines */}
         <script
           type="application/ld+json"
@@ -122,9 +125,8 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd()) }}
         />
         <AnalyticsProvider>
-          <LocaleProvider>
+          <LocaleProvider initialLocale={initialLocale}>
             {children}
-            <ChatPanel />
           </LocaleProvider>
         </AnalyticsProvider>
       </body>

@@ -1,8 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 
-/** INSEE — population Paris, stable enough to inline. */
-export const PARIS_POPULATION = 2_133_111;
+export { PARIS_POPULATION } from "@/lib/methodology";
+import { PARIS_POPULATION } from "@/lib/methodology";
 
 type BudgetIndex = {
   availableYears: number[];
@@ -14,8 +14,8 @@ type BudgetIndex = {
   summary: { year: number; type_budget: "vote" | "execute"; recettes: number; depenses: number; solde: number }[];
 };
 
-export function loadBudgetIndex() {
-  return readJson<BudgetIndex>("budget_index.json");
+export function loadBudgetIndex(city: string = "paris") {
+  return readJson<BudgetIndex>(cityJsonPath(city, "budget_index.json"));
 }
 
 // ─── Voté vs exécuté ───────────────────────────────────────────────────────
@@ -115,6 +115,19 @@ function readJsonOrNull<T>(file: string): T | null {
   }
 }
 
+// Helpers for multi-city data loading (cf. project_marseille_v1_decisions
+// P0.2). Paris keeps its files at data/ root for rétro-compat ; other cities
+// use data/[city]/. Hoisted to the top of the file so all loaders below can
+// reference it.
+function cityJsonPath(city: string, file: string): string {
+  return city === "paris" ? file : `${city}/${file}`;
+}
+
+function centralNodeFor(city: string): string {
+  if (city === "paris") return "Budget Paris";
+  return `Budget ${city.charAt(0).toUpperCase()}${city.slice(1)}`;
+}
+
 // ─── Enrichment caches (written by pipeline/scripts/enrich/*) ──────────────
 
 type VulgarizationCache<T> = { items: Record<string, T>; generated_at?: string; model?: string };
@@ -125,6 +138,10 @@ export type MarcheVulgarization = {
   pourquoi_ca_compte: string;
   year?: number;
   model?: string;
+  /** EN siblings — populated when vulgarization_marches_en.json is present */
+  objet_clair_en?: string;
+  quoi_concretement_en?: string;
+  pourquoi_ca_compte_en?: string;
 };
 
 export type SubventionVulgarization = {
@@ -132,6 +149,10 @@ export type SubventionVulgarization = {
   pourquoi_subvention: string;
   impact_citoyen: string;
   model?: string;
+  /** EN siblings — populated when vulgarization_subventions_en.json is present */
+  activite_claire_en?: string;
+  pourquoi_subvention_en?: string;
+  impact_citoyen_en?: string;
 };
 
 export type SireneCompany = {
@@ -155,29 +176,61 @@ export type BeneficiaireGrounded = {
   sources?: ({ url?: string; title?: string } | string)[];
   confiance?: number;
   source_type?: string;
+  /** EN siblings — populated when beneficiaire_grounded_en.json is present */
+  activite_verifiee_en?: string;
+  perimetre_geographique_en?: string;
 };
 
 // Cache loaders are memoised at module level — these JSON blobs are small
 // and re-reading them on every request wastes IO.
-let _marchesVulg: Record<string, MarcheVulgarization> | null = null;
-let _subvVulg: Record<string, SubventionVulgarization> | null = null;
+// City-aware caches: each city gets its own vulgarization map so the loader
+// can serve Paris and Marseille (and future cities) independently. The path
+// helpers cityJsonPath() route to data/<city>/enrichment/ for non-Paris.
+const _marchesVulgByCity: Record<string, Record<string, MarcheVulgarization>> = {};
+const _subvVulgByCity: Record<string, Record<string, SubventionVulgarization>> = {};
 let _sirene: Record<string, SireneCompany> | null = null;
 let _benefGrounded: Record<string, BeneficiaireGrounded> | null = null;
 
-export function loadMarcheVulgarization(numero: string): MarcheVulgarization | null {
-  if (_marchesVulg === null) {
-    const data = readJsonOrNull<VulgarizationCache<MarcheVulgarization>>("enrichment/vulgarization_marches.json");
-    _marchesVulg = data?.items ?? {};
+export function loadMarcheVulgarization(numero: string, city: string = "paris"): MarcheVulgarization | null {
+  if (!_marchesVulgByCity[city]) {
+    const data = readJsonOrNull<VulgarizationCache<MarcheVulgarization>>(cityJsonPath(city, "enrichment/vulgarization_marches.json"));
+    const en = readJsonOrNull<VulgarizationCache<MarcheVulgarization>>(cityJsonPath(city, "enrichment/vulgarization_marches_en.json"));
+    const merged: Record<string, MarcheVulgarization> = {};
+    for (const [k, v] of Object.entries(data?.items ?? {})) {
+      const e = en?.items?.[k];
+      merged[k] = e
+        ? {
+            ...v,
+            objet_clair_en: e.objet_clair,
+            quoi_concretement_en: e.quoi_concretement,
+            pourquoi_ca_compte_en: e.pourquoi_ca_compte,
+          }
+        : v;
+    }
+    _marchesVulgByCity[city] = merged;
   }
-  return _marchesVulg[numero] ?? null;
+  return _marchesVulgByCity[city][numero] ?? null;
 }
 
-export function loadSubventionVulgarization(name: string): SubventionVulgarization | null {
-  if (_subvVulg === null) {
-    const data = readJsonOrNull<VulgarizationCache<SubventionVulgarization>>("enrichment/vulgarization_subventions.json");
-    _subvVulg = data?.items ?? {};
+export function loadSubventionVulgarization(name: string, city: string = "paris"): SubventionVulgarization | null {
+  if (!_subvVulgByCity[city]) {
+    const data = readJsonOrNull<VulgarizationCache<SubventionVulgarization>>(cityJsonPath(city, "enrichment/vulgarization_subventions.json"));
+    const en = readJsonOrNull<VulgarizationCache<SubventionVulgarization>>(cityJsonPath(city, "enrichment/vulgarization_subventions_en.json"));
+    const merged: Record<string, SubventionVulgarization> = {};
+    for (const [k, v] of Object.entries(data?.items ?? {})) {
+      const e = en?.items?.[k];
+      merged[k] = e
+        ? {
+            ...v,
+            activite_claire_en: e.activite_claire,
+            pourquoi_subvention_en: e.pourquoi_subvention,
+            impact_citoyen_en: e.impact_citoyen,
+          }
+        : v;
+    }
+    _subvVulgByCity[city] = merged;
   }
-  return _subvVulg[name] ?? null;
+  return _subvVulgByCity[city][name] ?? null;
 }
 
 export function loadSirene(siren: string): SireneCompany | null {
@@ -200,9 +253,25 @@ const normalizeBenefKey = (s: string) =>
 export function loadBeneficiaireGrounded(name: string): BeneficiaireGrounded | null {
   if (_benefGrounded === null) {
     const data = readJsonOrNull<{ items?: Record<string, BeneficiaireGrounded> }>("enrichment/beneficiaire_grounded.json");
+    const en = readJsonOrNull<{ items?: Record<string, BeneficiaireGrounded> } | Record<string, BeneficiaireGrounded>>("enrichment/beneficiaire_grounded_en.json");
     const raw = data?.items ?? {};
+    // EN file may use the same shape (with `items`) or be a flat dict — handle both.
+    const enRaw: Record<string, BeneficiaireGrounded> =
+      en && typeof en === "object" && "items" in en && en.items
+        ? (en.items as Record<string, BeneficiaireGrounded>)
+        : ((en as Record<string, BeneficiaireGrounded>) ?? {});
     const reindexed: Record<string, BeneficiaireGrounded> = {};
-    for (const [k, v] of Object.entries(raw)) reindexed[normalizeBenefKey(k)] = v;
+    for (const [k, v] of Object.entries(raw)) {
+      const e = enRaw[k];
+      const merged: BeneficiaireGrounded = e
+        ? {
+            ...v,
+            activite_verifiee_en: e.activite_verifiee,
+            perimetre_geographique_en: e.perimetre_geographique,
+          }
+        : v;
+      reindexed[normalizeBenefKey(k)] = merged;
+    }
     _benefGrounded = reindexed;
   }
   return _benefGrounded[normalizeBenefKey(decodeURIComponent(name))] ?? null;
@@ -285,7 +354,10 @@ export function loadLandingStats(): LandingStats {
     const emprunts = budget.links
       .filter((l) => l.source === "Emprunts" && l.target === "Budget Paris")
       .reduce((s, l) => s + l.value, 0);
-    const recettesFonct = budget.totals.recettes - emprunts;
+    const recettesInvest = budget.links
+      .filter((l) => l.source === "Investissement" && l.target === "Budget Paris")
+      .reduce((s, l) => s + l.value, 0);
+    const recettesFonct = budget.totals.recettes - emprunts - recettesInvest;
     const epargneBrute = Math.max(0, recettesFonct - fonctionnement);
     capaciteDesendettement = epargneBrute > 0
       ? bilan.totals.dettes_financieres / epargneBrute
@@ -493,11 +565,16 @@ export type QuiRecoitData = {
   movers: {
     hausses: { name: string; amount: number; delta: number }[];
     baisses: { name: string; amount: number; delta: number }[];
+    /** Nombre total de bénéficiaires passant les seuils de bruit
+     *  (montant courant ≥ 100 k€ ET année précédente ≥ 50 k€). */
+    qualifiedCount: number;
+    thresholdCurrentEur: number;
+    thresholdPrevEur: number;
   };
 };
 
-export function loadQuiRecoitIndex() {
-  return readJson<SubvIndex>("subventions/index.json");
+export function loadQuiRecoitIndex(city: string = "paris") {
+  return readJson<SubvIndex>(cityJsonPath(city, "subventions/index.json"));
 }
 
 // ─── Association fiche ────────────────────────────────────────────────────
@@ -534,8 +611,8 @@ export type AssociationFiche = {
  * Load an association by its decoded name. Scans every available year
  * and aggregates totals. Name must match exactly (case-insensitive).
  */
-export function loadAssociation(name: string): AssociationFiche | null {
-  const idx = readJson<SubvIndex>("subventions/index.json");
+export function loadAssociation(name: string, city: string = "paris"): AssociationFiche | null {
+  const idx = readJson<SubvIndex>(cityJsonPath(city, "subventions/index.json"));
   const target = decodeURIComponent(name).toLowerCase();
   const byYearMap = new Map<number, { amount: number; count: number }>();
   const byThemeMap = new Map<string, { amount: number; count: number }>();
@@ -547,7 +624,7 @@ export function loadAssociation(name: string): AssociationFiche | null {
 
   for (const y of idx.availableYears) {
     try {
-      const f = readJson<SubvBen>(`subventions/beneficiaires_${y}.json`);
+      const f = readJson<SubvBen>(cityJsonPath(city, `subventions/beneficiaires_${y}.json`));
       for (const b of f.data) {
         if (b.beneficiaire.toLowerCase() !== target) continue;
         canonicalName = canonicalName || b.beneficiaire;
@@ -609,7 +686,7 @@ export function loadAssociation(name: string): AssociationFiche | null {
   if (theme) {
     try {
       const latestYear = idx.availableYears[0];
-      const f = readJson<SubvBen>(`subventions/beneficiaires_${latestYear}.json`);
+      const f = readJson<SubvBen>(cityJsonPath(city, `subventions/beneficiaires_${latestYear}.json`));
       const sameTheme = f.data
         .filter((b) => b.thematique === theme)
         .sort((a, b) => b.montant_total - a.montant_total);
@@ -647,11 +724,32 @@ export type ProjetVulgarization = {
   pourquoi_ca_compte: string;
   typologie_normalisee: string;
   model?: string;
+  /** EN siblings — populated when vulgarization_projets_en.json is present */
+  description_claire_en?: string;
+  quoi_concretement_en?: string;
+  pourquoi_ca_compte_en?: string;
+};
+
+export type ProjetMarche = {
+  numero_marche: string;
+  fournisseur_nom: string | null;
+  fournisseur_siret: string | null;
+  objet: string;
+  annee: number | null;
+  montant_max: number;
+  montant_notifie: number | null;
+  date_notification: string | null;
+  ccag: string | null;
+  cpv_famille: string | null;
+  lieu_execution: string | null;
+  score: number;
+  label: "confirmed" | "probable";
 };
 
 export type ProjetFiche = {
   id: string;
   name: string;
+  name_en?: string;
   arrondissement: number;
   chapitre: string;
   typeAp: string | null;
@@ -675,20 +773,122 @@ export type ProjetFiche = {
   similaires: {
     id: string;
     name: string;
+    name_en?: string;
     montant: number;
     arrondissement: number;
     typologie: string | null;
   }[];
+  /** Matchs projet ↔ marchés publics (rapprochement heuristique). */
+  marches: ProjetMarche[];
+  /** Couverture du rapprochement projet↔marchés sur les projets NOMMÉS
+   *  (PDF Investissements Localisés 2022-2024). Les lignes AP des années
+   *  antérieures n'étant pas des projets identifiables, elles ne sont pas
+   *  comptées dans le dénominateur. */
+  marchesCoverage: { matched: number; total: number; pct: number; scopeYears: [number, number] };
 };
+
+let _projetMarches: Record<string, ProjetMarche[]> | null = null;
+
+export function loadProjetMarches(id: string): ProjetMarche[] {
+  if (_projetMarches === null) {
+    const raw = readJsonOrNull<{ projets?: Record<string, ProjetMarche[]> }>("map/projet_marches.json");
+    _projetMarches = raw?.projets ?? {};
+  }
+  return _projetMarches[id] ?? [];
+}
+
+let _projetMarchesCoverage: {
+  matched: number;
+  total: number;
+  pct: number;
+  scopeYears: [number, number];
+} | null = null;
+
+/** Couverture du rapprochement projet↔marchés. Le dénominateur est limité
+ *  aux PROJETS NOMMÉS (avec `nom_projet` non vide), c'est-à-dire ceux
+ *  extraits du PDF Investissements Localisés (2022-2024). Les lignes AP
+ *  2018-2021 ne sont PAS des projets mais des enveloppes budgétaires
+ *  agrégées et ne se prêtent pas au rapprochement marché. Mémoïsé. */
+export function loadProjetMarchesCoverage(): {
+  matched: number;
+  total: number;
+  pct: number;
+  scopeYears: [number, number];
+} {
+  if (_projetMarchesCoverage !== null) return _projetMarchesCoverage;
+  if (_projetMarches === null) {
+    const raw = readJsonOrNull<{ projets?: Record<string, ProjetMarche[]> }>("map/projet_marches.json");
+    _projetMarches = raw?.projets ?? {};
+  }
+  const matchedIds = new Set(Object.keys(_projetMarches));
+  const namedIds = new Set<string>();
+  let minYear = Infinity;
+  let maxYear = -Infinity;
+  // Scan des deux sources : 'complet' (priorité, contient géoloc) et
+  // 'localises' (PDF IL extraits, contient les vrais projets nommés
+  // 2019-2021 absents de 'complet'). Un même id présent dans les deux
+  // n'est compté qu'une fois (Set).
+  for (let y = 2024; y >= 2018; y--) {
+    const filesToScan = [
+      readJsonOrNull<InvComplet>(`map/investissements_complet_${y}.json`),
+      readJsonOrNull<InvComplet>(`map/investissements_localises_${y}.json`),
+    ].filter(Boolean) as InvComplet[];
+    for (const file of filesToScan) {
+      for (const p of file.data) {
+        const nom = (p.nom_projet ?? "").trim();
+        if (nom.length > 0) {
+          namedIds.add(p.id);
+          if (y < minYear) minYear = y;
+          if (y > maxYear) maxYear = y;
+        }
+      }
+    }
+  }
+  const total = namedIds.size;
+  const matched = [...matchedIds].filter((id) => namedIds.has(id)).length;
+  const pct = total > 0 ? (matched / total) * 100 : 0;
+  _projetMarchesCoverage = {
+    matched,
+    total,
+    pct,
+    scopeYears: [
+      Number.isFinite(minYear) ? minYear : 2022,
+      Number.isFinite(maxYear) ? maxYear : 2024,
+    ],
+  };
+  return _projetMarchesCoverage;
+}
 
 let _projetsVulg: Record<string, ProjetVulgarization> | null = null;
 
 export function loadProjetVulgarization(id: string): ProjetVulgarization | null {
   if (_projetsVulg === null) {
     const data = readJsonOrNull<VulgarizationCache<ProjetVulgarization>>("enrichment/vulgarization_projets.json");
-    _projetsVulg = data?.items ?? {};
+    const en = readJsonOrNull<VulgarizationCache<ProjetVulgarization>>("enrichment/vulgarization_projets_en.json");
+    const merged: Record<string, ProjetVulgarization> = {};
+    for (const [k, v] of Object.entries(data?.items ?? {})) {
+      const e = en?.items?.[k];
+      merged[k] = e
+        ? {
+            ...v,
+            description_claire_en: e.description_claire,
+            quoi_concretement_en: e.quoi_concretement,
+            pourquoi_ca_compte_en: e.pourquoi_ca_compte,
+          }
+        : v;
+    }
+    _projetsVulg = merged;
   }
   return _projetsVulg[id] ?? null;
+}
+
+let _projetNamesEn: Record<string, string> | null = null;
+
+export function getProjetNameEn(id: string): string | null {
+  if (_projetNamesEn === null) {
+    _projetNamesEn = readJsonOrNull<Record<string, string>>("enrichment/projet_names_en.json") ?? {};
+  }
+  return _projetNamesEn[id] ?? null;
 }
 
 // `guessTypologieFromName`, types photos — déplacés vers `@/lib/projet-utils`
@@ -732,16 +932,23 @@ export function resolveProjetPhoto(projetId: string, name?: string | null): Proj
 
 export function loadProjet(id: string): ProjetFiche | null {
   const decoded = decodeURIComponent(id);
-  // Scan all years
+  // Scan toutes les années — d'abord investissements_complet (priorité,
+  // car contient géoloc + métadonnées riches), puis investissements_localises
+  // en fallback (pour les projets PDF 2019-2021 absents du complet).
   for (let y = 2024; y >= 2018; y--) {
-    let year: InvComplet;
+    let year: InvComplet | null = null;
     try {
       year = readJson<InvComplet>(`map/investissements_complet_${y}.json`);
-    } catch {
-      continue;
+    } catch { /* fichier absent */ }
+    const localises = readJsonOrNull<InvComplet>(`map/investissements_localises_${y}.json`);
+    let row = year?.data.find((p) => p.id === decoded);
+    if (!row && localises) {
+      row = localises.data.find((p) => p.id === decoded);
     }
-    const row = year.data.find((p) => p.id === decoded);
     if (!row) continue;
+    // Cohort = jeu de données utilisé pour calculer les ranks. Préfère
+    // 'complet' s'il existe (plus large), sinon 'localises'.
+    const cohort: InvComplet = year ?? localises ?? { data: [] } as unknown as InvComplet;
     const r = row as typeof row & {
       type_ap?: string;
       source_pdf?: string;
@@ -758,7 +965,7 @@ export function loadProjet(id: string): ProjetFiche | null {
     // Rank by typologie + same year — requires vulgarization cache to be useful
     let typologieRank: ProjetFiche["typologieRank"] = null;
     if (typologie) {
-      const sameTypo = year.data
+      const sameTypo = cohort.data
         .filter((p) => {
           const vv = loadProjetVulgarization(p.id);
           return vv?.typologie_normalisee === typologie;
@@ -772,7 +979,7 @@ export function loadProjet(id: string): ProjetFiche | null {
     // Rank by arrondissement + same year
     let arrRank: ProjetFiche["arrRank"] = null;
     if (arrondissement > 0) {
-      const sameArr = year.data
+      const sameArr = cohort.data
         .filter((p) => Number(p.arrondissement) === arrondissement)
         .slice()
         .sort((a, b) => Number(b.montant ?? 0) - Number(a.montant ?? 0));
@@ -783,7 +990,7 @@ export function loadProjet(id: string): ProjetFiche | null {
     // Similar projects — same typologie, different id, top montants
     const similaires: ProjetFiche["similaires"] = [];
     if (typologie) {
-      const peers = year.data
+      const peers = cohort.data
         .filter((p) => {
           if (p.id === r.id) return false;
           const vv = loadProjetVulgarization(p.id);
@@ -797,6 +1004,7 @@ export function loadProjet(id: string): ProjetFiche | null {
         similaires.push({
           id: peer.id,
           name: peer.nom_projet ?? "Projet sans nom",
+          name_en: getProjetNameEn(peer.id) ?? undefined,
           montant: Number(peer.montant ?? 0),
           arrondissement: Number(peer.arrondissement) || 0,
           typologie: pvv?.typologie_normalisee ?? null,
@@ -807,6 +1015,7 @@ export function loadProjet(id: string): ProjetFiche | null {
     return {
       id: r.id,
       name: r.nom_projet ?? "Projet sans nom",
+      name_en: getProjetNameEn(r.id) ?? undefined,
       arrondissement,
       chapitre: r.chapitre_libelle ?? "—",
       typeAp: r.type_ap ?? null,
@@ -823,6 +1032,8 @@ export function loadProjet(id: string): ProjetFiche | null {
       arrRank,
       similaires,
       photo: resolveProjetPhoto(r.id, r.nom_projet),
+      marches: loadProjetMarches(r.id),
+      marchesCoverage: loadProjetMarchesCoverage(),
     };
   }
   return null;
@@ -884,8 +1095,11 @@ export function loadBailleur(slug: string): BailleurFiche | null {
   const target = canonicalBailleurSlug(decodeURIComponent(slug));
 
   // ─── Volet éditorial logement social ─────────────────────────────────
+  // Cherche dans `bailleursAll` (vue complète : 5 grands bailleurs +
+  // aménageurs + EPIC/fondations garanties) et non dans `bailleurs` (vue
+  // restreinte aux cards de la page logement-social).
   const ls = loadLogementSocialData();
-  const lsMatch = ls.bailleurs.find(
+  const lsMatch = ls.bailleursAll.find(
     (b) => canonicalBailleurSlug(b.name) === target,
   );
 
@@ -930,8 +1144,8 @@ export function loadBailleur(slug: string): BailleurFiche | null {
   };
 }
 
-export function loadQuiRecoitData(requestedYear?: number): QuiRecoitData {
-  const idx = readJson<SubvIndex>("subventions/index.json");
+export function loadQuiRecoitData(requestedYear?: number, city: string = "paris"): QuiRecoitData {
+  const idx = readJson<SubvIndex>(cityJsonPath(city, "subventions/index.json"));
   const preview = new Set(idx.previewYears ?? []);
   const consolidated = idx.availableYears.filter((y) => !preview.has(y));
   const defaultYear = consolidated[0] ?? idx.availableYears[0];
@@ -939,13 +1153,13 @@ export function loadQuiRecoitData(requestedYear?: number): QuiRecoitData {
     ? requestedYear
     : defaultYear;
   const prev = idx.availableYears.find((y) => y !== yr) ?? yr;
-  const ben = readJson<SubvBen>(`subventions/beneficiaires_${yr}.json`);
+  const ben = readJson<SubvBen>(cityJsonPath(city, `subventions/beneficiaires_${yr}.json`));
 
   // Pre-load every available year once — used for the top-10 history and the
   // "movers" section (biggest gains/losses between current year and prev).
   const yearlyData = new Map<number, SubvBen>();
   for (const y of idx.availableYears) {
-    try { yearlyData.set(y, readJson<SubvBen>(`subventions/beneficiaires_${y}.json`)); } catch {}
+    try { yearlyData.set(y, readJson<SubvBen>(cityJsonPath(city, `subventions/beneficiaires_${y}.json`))); } catch {}
   }
   // Quick index: { benefName -> { year -> amount } }
   const benHistory = new Map<string, Map<number, number>>();
@@ -1025,14 +1239,16 @@ export function loadQuiRecoitData(requestedYear?: number): QuiRecoitData {
   const prevFile = yearlyData.get(prev);
   const prevMap = new Map<string, number>();
   if (prevFile) for (const b of prevFile.data) prevMap.set(b.beneficiaire, b.montant_total);
+  const MOVERS_MIN_CURRENT = 100_000;
+  const MOVERS_MIN_PREV = 50_000;
   const moversAll = ben.data
     .map((b) => {
       const pv = prevMap.get(b.beneficiaire) ?? 0;
       const delta = pv > 0 ? ((b.montant_total - pv) / pv) * 100 : b.montant_total > 0 ? 999 : 0;
       return { name: b.beneficiaire, amount: b.montant_total, delta, prev: pv };
     })
-    // Require at least €100k this year AND a baseline previous year ≥ €50k to avoid noise
-    .filter((m) => m.amount >= 100_000 && m.prev >= 50_000);
+    // Seuils anti-bruit : montant courant ≥ 100 k€ ET année précédente ≥ 50 k€
+    .filter((m) => m.amount >= MOVERS_MIN_CURRENT && m.prev >= MOVERS_MIN_PREV);
   const hausses = moversAll.slice().sort((a, b) => b.delta - a.delta).slice(0, 5).map(({ name, amount, delta }) => ({ name, amount, delta }));
   const baisses = moversAll.slice().sort((a, b) => a.delta - b.delta).slice(0, 5).map(({ name, amount, delta }) => ({ name, amount, delta }));
 
@@ -1055,7 +1271,13 @@ export function loadQuiRecoitData(requestedYear?: number): QuiRecoitData {
     byTheme,
     yearsSummary,
     availableThemes,
-    movers: { hausses, baisses },
+    movers: {
+      hausses,
+      baisses,
+      qualifiedCount: moversAll.length,
+      thresholdCurrentEur: MOVERS_MIN_CURRENT,
+      thresholdPrevEur: MOVERS_MIN_PREV,
+    },
   };
 }
 
@@ -1069,6 +1291,7 @@ type MarcheRow = {
   categorie_libelle?: string;
   nature?: string;
   date_notification?: string;
+  decp_offres_recues?: number | null;
 };
 
 type MarchesFile = {
@@ -1094,7 +1317,7 @@ export type MarchesPageData = {
     siret: string;
     amount: number;
     nbContrats: number;
-    contrats: { numero: string; objet: string; objetClair: string | null; montant: number; categorie: string; nature: string; date: string }[];
+    contrats: { numero: string; objet: string; objetClair: string | null; objetClairEn: string | null; montant: number; categorie: string; nature: string; date: string }[];
   }[];
   byCategory: {
     category: string;
@@ -1103,12 +1326,21 @@ export type MarchesPageData = {
     topTitulaires: { name: string; siret: string; amount: number; nb: number }[];
   }[];
   byNature: { nature: string; amount: number; count: number }[];
+  concurrence: {
+    coverageCount: number;       // contrats avec offresRecues >= 1
+    coverageTotal: number;       // contrats totaux cette année
+    monoCount: number;           // contrats mono-candidat
+    monoPct: number;             // % par count (des couverts)
+    avgOffres: number;           // moyenne des offres reçues (sur les couverts)
+    buckets: { bucket: "1" | "2-3" | "4-5" | "6+"; count: number; amount: number }[];
+  };
   allMarches: {
     numeroMarche: string;
     titulaire: string;
     titulaireSiret: string;
     objet: string;
     objetClair: string | null;
+    objetClairEn: string | null;
     montant: number;
     categorie: string;
     nature: string;
@@ -1123,8 +1355,14 @@ type MarchesIndexRaw = {
   totalsByYear?: Record<string, { nb_marches: number; enveloppe_max_totale: number }>;
 };
 
-export function loadMarchesIndex() {
-  return readJson<MarchesIndexRaw>("marches-publics/index.json");
+export function loadMarchesIndex(city: string = "paris") {
+  const raw = readJson<MarchesIndexRaw>(cityJsonPath(city, "marches-publics/index.json"));
+  // Masquer l'année calendaire en cours (données DECP partielles jusqu'à clôture).
+  const currentYear = new Date().getFullYear();
+  return {
+    ...raw,
+    availableYears: (raw.availableYears ?? []).filter((y) => y < currentYear),
+  };
 }
 
 // Fiche-level loaders — read a single contract or supplier across years.
@@ -1143,6 +1381,25 @@ export type ContratFiche = {
   dureeJours: number;
   perimetre: string;
   year: number;
+  // Enrichissement DECP (tous optionnels — absents si marché non remonté à l'État
+  // ou source Paris uniquement).
+  decp?: {
+    ccag?: string | null;
+    cpvFamille?: string | null;
+    procedure?: string | null;
+    montantNotifie?: number | null;
+    dureeMois?: number | null;
+    offresRecues?: number | null;
+    lieuExecution?: string | null;
+    titulairesCount?: number | null;
+    nbModifications?: number | null;
+    sousTraitanceDeclaree?: boolean | null;
+    hasConsiderationSociale?: boolean | null;
+    hasConsiderationEnvironnementale?: boolean | null;
+    ecartPlafondVsNotifie?: number | null;
+    afficherDeuxMontants?: boolean;
+    sourceOrigin?: "paris" | "decp";
+  };
 };
 
 export type ContratRanking = {
@@ -1203,7 +1460,33 @@ export function loadContrat(numero: string): ContratFiche | null {
       const rows = f.data ?? f.marches ?? [];
       const row = rows.find((m) => (m as MarcheRow & { numero_marche?: string }).numero_marche === numero);
       if (!row) continue;
-      const r = row as MarcheRow & { numero_marche?: string; fournisseur_siret?: string; montant_min?: number; duree_jours?: number; perimetre_financier?: string; is_multiattributaire?: boolean };
+      const r = row as MarcheRow & {
+        numero_marche?: string;
+        fournisseur_siret?: string;
+        montant_min?: number;
+        duree_jours?: number;
+        perimetre_financier?: string;
+        is_multiattributaire?: boolean;
+        _source_origin?: "paris" | "decp";
+        decp_ccag?: string | null;
+        decp_cpv_famille?: string | null;
+        decp_procedure?: string | null;
+        decp_montant_notifie?: number | null;
+        decp_duree_mois?: number | null;
+        decp_offres_recues?: number | null;
+        decp_lieu_execution_lisible?: string | null;
+        decp_titulaires_count?: number | null;
+        decp_nb_modifications?: number | null;
+        decp_sous_traitance_declaree?: boolean | null;
+        decp_has_consideration_sociale?: boolean | null;
+        decp_has_consideration_environnementale?: boolean | null;
+        ecart_plafond_vs_notifie?: number | null;
+        afficher_deux_montants?: boolean;
+      };
+      const hasDecp = r.decp_ccag != null
+        || r.decp_cpv_famille != null
+        || r.decp_montant_notifie != null
+        || r.decp_lieu_execution_lisible != null;
       return {
         numero: r.numero_marche ?? numero,
         objet: r.objet ?? "",
@@ -1218,6 +1501,23 @@ export function loadContrat(numero: string): ContratFiche | null {
         dureeJours: Number(r.duree_jours ?? 0),
         perimetre: r.perimetre_financier ?? "—",
         year: y,
+        decp: hasDecp ? {
+          ccag: r.decp_ccag ?? null,
+          cpvFamille: r.decp_cpv_famille ?? null,
+          procedure: r.decp_procedure ?? null,
+          montantNotifie: r.decp_montant_notifie ?? null,
+          dureeMois: r.decp_duree_mois ?? null,
+          offresRecues: r.decp_offres_recues ?? null,
+          lieuExecution: r.decp_lieu_execution_lisible ?? null,
+          titulairesCount: r.decp_titulaires_count ?? null,
+          nbModifications: r.decp_nb_modifications ?? null,
+          sousTraitanceDeclaree: r.decp_sous_traitance_declaree ?? null,
+          hasConsiderationSociale: r.decp_has_consideration_sociale ?? null,
+          hasConsiderationEnvironnementale: r.decp_has_consideration_environnementale ?? null,
+          ecartPlafondVsNotifie: r.ecart_plafond_vs_notifie ?? null,
+          afficherDeuxMontants: Boolean(r.afficher_deux_montants),
+          sourceOrigin: r._source_origin,
+        } : undefined,
       };
     } catch {}
   }
@@ -1234,6 +1534,10 @@ export type FournisseurFiche = {
   byYear: { year: number; amount: number; count: number }[];
   byCategory: { category: string; amount: number; count: number }[];
   contrats: { numero: string; objet: string; montant: number; year: number; date: string; categorie: string; nature: string }[];
+  /** Détail de l'agrégation par SIREN : un même SIREN peut couvrir plusieurs
+   *  établissements (SIRETs) qui apparaissent sous des libellés différents
+   *  dans DECP. Les montants ci-dessus somment tous ces SIRETs. */
+  siretBreakdown: { siret: string; nom: string; amount: number; count: number }[];
 };
 
 /**
@@ -1250,6 +1554,9 @@ export function loadFournisseur(key: string): FournisseurFiche | null {
   const contrats: FournisseurFiche["contrats"] = [];
   const byYearMap = new Map<number, { amount: number; count: number }>();
   const byCatMap = new Map<string, { amount: number; count: number }>();
+  // Agrégation par SIRET (établissement) sous le SIREN, pour pouvoir
+  // afficher la décomposition quand plusieurs établissements sont fusionnés.
+  const bySiretMap = new Map<string, { siret: string; nom: string; amount: number; count: number }>();
   let nom = "";
   let fullSiret = "";
 
@@ -1292,6 +1599,20 @@ export function loadFournisseur(key: string): FournisseurFiche | null {
         cc.amount += v;
         cc.count += 1;
         byCatMap.set(cat, cc);
+
+        if (thisSiret) {
+          const ss = bySiretMap.get(thisSiret) ?? {
+            siret: thisSiret,
+            nom: r.fournisseur_nom || "—",
+            amount: 0,
+            count: 0,
+          };
+          ss.amount += v;
+          ss.count += 1;
+          // Garder le nom le plus long (souvent le plus descriptif)
+          if (r.fournisseur_nom && r.fournisseur_nom.length > ss.nom.length) ss.nom = r.fournisseur_nom;
+          bySiretMap.set(thisSiret, ss);
+        }
       }
     } catch {}
   }
@@ -1308,6 +1629,8 @@ export function loadFournisseur(key: string): FournisseurFiche | null {
     .map(([category, v]) => ({ category, amount: v.amount, count: v.count }))
     .sort((a, b) => b.amount - a.amount);
 
+  const siretBreakdown = [...bySiretMap.values()].sort((a, b) => b.amount - a.amount);
+
   return {
     nom,
     siret: fullSiret,
@@ -1318,71 +1641,124 @@ export function loadFournisseur(key: string): FournisseurFiche | null {
     byYear,
     byCategory,
     contrats,
+    siretBreakdown,
   };
 }
 
-export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
-  const indexRaw = readJson<MarchesIndexRaw>("marches-publics/index.json");
-  const years = (indexRaw.availableYears ?? []).slice().sort((a, b) => a - b);
+export function loadMarchesPageData(requestedYear?: number, city: string = "paris"): MarchesPageData {
+  const indexRaw = readJson<MarchesIndexRaw>(cityJsonPath(city, "marches-publics/index.json"));
+  // Exclure l'année calendaire en cours : DECP est en remontée continue, un
+  // "2026" consulté en avril n'a que quelques centaines de contrats notifiés
+  // et son montant agrégé est non représentatif. On masque jusqu'à clôture.
+  const currentYear = new Date().getFullYear();
+  const years = (indexRaw.availableYears ?? [])
+    .filter((y) => y < currentYear)
+    .slice()
+    .sort((a, b) => a - b);
   const yr = requestedYear && years.includes(requestedYear)
     ? requestedYear
     : years[years.length - 1] ?? 2024;
-  const file = readJson<MarchesFile>(`marches-publics/marches_${yr}.json`);
+  const file = readJson<MarchesFile>(cityJsonPath(city, `marches-publics/marches_${yr}.json`));
   const marches = file.data ?? file.marches ?? [];
 
   const MULTI_NAME = "MARCHE MULTIATTRIBUTAIRE";
-  if (_marchesVulg === null) {
-    const data = readJsonOrNull<VulgarizationCache<MarcheVulgarization>>("enrichment/vulgarization_marches.json");
-    _marchesVulg = data?.items ?? {};
+  // City-aware vulgarisation cache (Paris cache for /paris, Marseille cache
+  // for /marseille, etc.). Falls back to Paris cache when nothing is found,
+  // so cross-city titulaires like Veolia keep their enriched description.
+  if (!_marchesVulgByCity[city]) {
+    const data = readJsonOrNull<VulgarizationCache<MarcheVulgarization>>(cityJsonPath(city, "enrichment/vulgarization_marches.json"));
+    const en = readJsonOrNull<VulgarizationCache<MarcheVulgarization>>(cityJsonPath(city, "enrichment/vulgarization_marches_en.json"));
+    const merged: Record<string, MarcheVulgarization> = {};
+    for (const [k, v] of Object.entries(data?.items ?? {})) {
+      const e = en?.items?.[k];
+      merged[k] = e
+        ? {
+            ...v,
+            objet_clair_en: e.objet_clair,
+            quoi_concretement_en: e.quoi_concretement,
+            pourquoi_ca_compte_en: e.pourquoi_ca_compte,
+          }
+        : v;
+    }
+    _marchesVulgByCity[city] = merged;
   }
-  const vulgMap = _marchesVulg;
+  const vulgMap = _marchesVulgByCity[city];
   type TitAgg = {
+    name: string;
     amount: number;
     count: number;
     siret: string;
-    contrats: { numero: string; objet: string; objetClair: string | null; montant: number; categorie: string; nature: string; date: string }[];
+    contrats: { numero: string; objet: string; objetClair: string | null; objetClairEn: string | null; montant: number; categorie: string; nature: string; date: string }[];
   };
+  // Clé d'agrégation : SIREN (9 premiers chiffres du SIRET) si dispo, sinon
+  // nom normalisé. Évite la fragmentation quand un même groupe (SIREN) a
+  // plusieurs établissements (SIRETs) avec des libellés DECP variants
+  // ("EIFFAGE ROUTE IDF" vs "EIFFAGE ROUTE IDF/CENTRE").
   const titAgg = new Map<string, TitAgg>();
   type CatAgg = { amount: number; count: number; items: Map<string, { amount: number; count: number }> };
   const catAgg = new Map<string, CatAgg>();
   const natureAgg = new Map<string, { amount: number; count: number }>();
   const multi = { count: 0, amount: 0 };
+  const concurrenceBuckets = {
+    "1": { count: 0, amount: 0 },
+    "2-3": { count: 0, amount: 0 },
+    "4-5": { count: 0, amount: 0 },
+    "6+": { count: 0, amount: 0 },
+  } as Record<"1" | "2-3" | "4-5" | "6+", { count: number; amount: number }>;
+  let concurrenceCovered = 0;
+  let concurrenceSumOffres = 0;
   let total = 0;
   for (const m of marches) {
     const r = m as MarcheRow & { numero_marche?: string; fournisseur_siret?: string; is_multiattributaire?: boolean };
     const v = Number(r.montant_max ?? r.montant_min ?? 0);
     total += v;
+    const offres = Number(r.decp_offres_recues ?? 0);
+    if (Number.isFinite(offres) && offres >= 1) {
+      concurrenceCovered += 1;
+      concurrenceSumOffres += offres;
+      const bucket: "1" | "2-3" | "4-5" | "6+" =
+        offres === 1 ? "1" : offres <= 3 ? "2-3" : offres <= 5 ? "4-5" : "6+";
+      concurrenceBuckets[bucket].count += 1;
+      concurrenceBuckets[bucket].amount += v;
+    }
     const isMulti = r.fournisseur_nom === MULTI_NAME || Boolean(r.is_multiattributaire);
     if (isMulti) {
       multi.count += 1;
       multi.amount += v;
     }
-    const t = r.fournisseur_nom || "Non précisé";
-    const tA = titAgg.get(t) ?? { amount: 0, count: 0, siret: "", contrats: [] };
+    const rawSiret = (r.fournisseur_siret ?? "").replace(/\s/g, "");
+    const validSiret = rawSiret && rawSiret !== "#" && !rawSiret.includes("|") && rawSiret.length >= 9
+      ? rawSiret
+      : "";
+    const tName = r.fournisseur_nom || "Non précisé";
+    const aggKey = validSiret ? validSiret.slice(0, 9) : `name:${tName.toLowerCase()}`;
+    const tA = titAgg.get(aggKey) ?? { name: tName, amount: 0, count: 0, siret: validSiret, contrats: [] };
     tA.amount += v;
     tA.count += 1;
-    if (!tA.siret && r.fournisseur_siret && r.fournisseur_siret !== "#") {
-      tA.siret = r.fournisseur_siret.replace(/\s/g, "");
-    }
+    if (!tA.siret && validSiret) tA.siret = validSiret;
+    // Garder le nom le plus long (souvent le plus descriptif, ex.
+    // "EIFFAGE ROUTE ILE DE FRANCE/CENTRE" plutôt que "EIFFAGE ROUTE IDF")
+    if (tName.length > tA.name.length && tName !== "Non précisé") tA.name = tName;
     const numero = r.numero_marche ?? "";
     tA.contrats.push({
       numero,
       objet: r.objet || "",
       objetClair: (numero && vulgMap[numero]?.objet_clair) || null,
+      objetClairEn: (numero && vulgMap[numero]?.objet_clair_en) || null,
       montant: v,
       categorie: r.categorie_libelle || "—",
       nature: r.nature || "—",
       date: r.date_notification || "",
     });
-    titAgg.set(t, tA);
+    titAgg.set(aggKey, tA);
     const c = r.categorie_libelle || r.nature || "Autres";
     const cA = catAgg.get(c) ?? { amount: 0, count: 0, items: new Map() };
     cA.amount += v;
     cA.count += 1;
-    const titInCat = cA.items.get(t) ?? { amount: 0, count: 0 };
+    const titInCat = cA.items.get(aggKey) ?? { amount: 0, count: 0 };
     titInCat.amount += v;
     titInCat.count += 1;
-    cA.items.set(t, titInCat);
+    cA.items.set(aggKey, titInCat);
     catAgg.set(c, cA);
     const nature = (r.nature || "Autres").trim() || "Autres";
     const nA = natureAgg.get(nature) ?? { amount: 0, count: 0 };
@@ -1393,13 +1769,13 @@ export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
 
   // Exclude "MARCHE MULTIATTRIBUTAIRE" from the top 10 — it's a placeholder
   // name for contracts with multiple co-attributaires, not a real fournisseur.
-  const top10 = [...titAgg.entries()]
-    .filter(([name]) => name !== MULTI_NAME)
-    .sort((a, b) => b[1].amount - a[1].amount)
+  const top10 = [...titAgg.values()]
+    .filter((v) => v.name !== MULTI_NAME)
+    .sort((a, b) => b.amount - a.amount)
     .slice(0, 10)
-    .map(([name, v], i) => ({
+    .map((v, i) => ({
       rank: i + 1,
-      name,
+      name: v.name,
       siret: v.siret,
       amount: v.amount,
       nbContrats: v.count,
@@ -1412,13 +1788,12 @@ export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
       amount: v.amount,
       count: v.count,
       topTitulaires: [...v.items.entries()]
-        .filter(([name]) => name !== MULTI_NAME)
-        .map(([name, x]) => ({
-          name,
-          siret: titAgg.get(name)?.siret ?? "",
-          amount: x.amount,
-          nb: x.count,
-        }))
+        .map(([key, x]) => {
+          const t = titAgg.get(key);
+          return { key, name: t?.name ?? key, siret: t?.siret ?? "", amount: x.amount, nb: x.count };
+        })
+        .filter((it) => it.name !== MULTI_NAME)
+        .map(({ name, siret, amount, nb }) => ({ name, siret, amount, nb }))
         .sort((a, b) => b.amount - a.amount)
         .slice(0, 5),
     }))
@@ -1428,6 +1803,19 @@ export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
   const byNature = [...natureAgg.entries()]
     .map(([nature, v]) => ({ nature, amount: v.amount, count: v.count }))
     .sort((a, b) => b.amount - a.amount);
+
+  const concurrence: MarchesPageData["concurrence"] = {
+    coverageCount: concurrenceCovered,
+    coverageTotal: marches.length,
+    monoCount: concurrenceBuckets["1"].count,
+    monoPct: concurrenceCovered > 0 ? (concurrenceBuckets["1"].count / concurrenceCovered) * 100 : 0,
+    avgOffres: concurrenceCovered > 0 ? concurrenceSumOffres / concurrenceCovered : 0,
+    buckets: (["1", "2-3", "4-5", "6+"] as const).map((bucket) => ({
+      bucket,
+      count: concurrenceBuckets[bucket].count,
+      amount: concurrenceBuckets[bucket].amount,
+    })),
+  };
 
   const allMarches = marches
     .map((m) => {
@@ -1439,6 +1827,7 @@ export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
         titulaireSiret: (r.fournisseur_siret ?? "").replace(/\s/g, ""),
         objet: r.objet || "",
         objetClair: (numeroMarche && vulgMap[numeroMarche]?.objet_clair) || null,
+        objetClairEn: (numeroMarche && vulgMap[numeroMarche]?.objet_clair_en) || null,
         montant: Number(r.montant_max ?? r.montant_min ?? 0),
         categorie: r.categorie_libelle || r.nature || "Autres",
         nature: r.nature || "Autres",
@@ -1467,6 +1856,7 @@ export function loadMarchesPageData(requestedYear?: number): MarchesPageData {
     top10,
     byCategory,
     byNature,
+    concurrence,
     allMarches,
     yearsSummary,
   };
@@ -1512,12 +1902,13 @@ export type InvestissementsData = {
   /** % du montant total capté par les 10 plus gros projets (pour la bannière Pareto). */
   top10ProjetsPct: number;
   byArrondissement: { arr: number; amount: number; count: number }[];
-  topProjets: { id: string; name: string; arr: number; chapitre: string; amount: number; photo: ProjetPhotoResolved }[];
+  topProjets: { id: string; name: string; name_en?: string; arr: number; chapitre: string; amount: number; photo: ProjetPhotoResolved }[];
   geoPoints: {
     id: string;
     lat: number;
     lon: number;
     name: string;
+    name_en?: string;
     amount: number;
     chapitre: string;
     arr: number;
@@ -1554,7 +1945,185 @@ function computeUsableYears(allYears: number[]): number[] {
 
 let _usableYears: number[] | null = null;
 
-export function loadInvestissementsData(requestedYear?: number): InvestissementsData {
+// ─── Marseille loader (investissements POC) ────────────────────────────────
+//
+// Marseille exposes investissements in a denormalized format (already
+// aggregated byChapitre / byArrondissement, no geo lat/lon, no typologies)
+// because the source is a CA narrative PDF parsed by regex — not a row-level
+// CSV like Paris. The shape mimics InvestissementsData so the page can reuse
+// the Paris client component, with degraded sections (P3.2 option a):
+//   - geoPoints = [] → no map
+//   - topProjets without photo (uses the generic fallback)
+//   - byArrondissement → fed into a Marseille-aware ranking; the Paris SVG
+//     choropleth is hardcoded for Paris districts so the page switches to
+//     "liste" view by default for Marseille.
+type MarseilleInvFile = {
+  year: number;
+  source: string;
+  source_url: string;
+  stats: { nb_projets: number; nb_geo: number; pct_geo: number; total_montant: number; nb_thematiques: number };
+  byChapitre: Array<{ label: string; label_en?: string; amount: number; count: number }>;
+  byArrondissement: Array<{ arr: number; amount: number; count: number }>;
+  data: Array<{
+    id: string;
+    annee: number;
+    arrondissement: number;
+    thematique: string;
+    thematique_en?: string;
+    nom_projet: string;
+    montant: number;
+    source: string;
+  }>;
+};
+
+type MarseilleInvIndex = {
+  city: string;
+  city_label: string;
+  availableYears: number[];
+  latestYear: number;
+  totalsByYear: Record<string, { nb_projets: number; total_montant: number; nb_thematiques: number }>;
+  source: string;
+  note: string;
+};
+
+type MarseilleInvTrends = {
+  years: Array<{
+    year: number;
+    depenses_total: number;
+    depenses_hors_dette: number;
+    par_chapitre: Array<{ label: string; depenses: number; recettes: number }>;
+  }>;
+};
+
+function loadInvestissementsDataMarseille(requestedYear?: number): InvestissementsData {
+  const index = readJson<MarseilleInvIndex>(cityJsonPath("marseille", "investissements/index.json"));
+  const trends = readJsonOrNull<MarseilleInvTrends>(
+    cityJsonPath("marseille", "investissements/investissement_tendances.json"),
+  );
+  const availableYears = (index.availableYears ?? []).slice().sort((a, b) => a - b);
+  const year =
+    requestedYear != null && availableYears.includes(requestedYear)
+      ? requestedYear
+      : index.latestYear ?? availableYears[availableYears.length - 1];
+  const file = readJson<MarseilleInvFile>(
+    cityJsonPath("marseille", `investissements/investissements_${year}.json`),
+  );
+  // Filter out narrative fragments (non-project text leaked from prosaic PDF
+  // parsing) — see is_project flag added by geocode_marseille_invest.py.
+  // Backwards-compatible: rows without the flag are kept as-is.
+  const allRows = file.data ?? [];
+  const projects = allRows.filter((p) => (p as { is_project?: boolean }).is_project !== false);
+  const total = projects.reduce((s, p) => s + (p.montant ?? 0), 0);
+  const nbGeo = projects.filter((p) => (p as { lat?: number | null }).lat != null).length;
+
+  // Photos cache (4/10 réelles, 6 fallback "ecole" générique).
+  type PhotoEntry = { photo_url: string | null; credit: string | null; license: string | null; source: string | null; generic: string | null };
+  const photosCache = readJsonOrNull<{ items: Record<string, PhotoEntry> }>(
+    cityJsonPath("marseille", "enrichment/projets_photos.json"),
+  );
+  const photosMap = photosCache?.items ?? {};
+
+  function photoFor(projectId: string): ProjetPhotoResolved {
+    const entry = photosMap[projectId];
+    if (!entry) return { photo: null, generic: null, typologie: null };
+    if (entry.photo_url) {
+      return {
+        photo: { url: entry.photo_url, credit: entry.credit ?? null, license: entry.license ?? null, source: entry.source ?? null } as unknown as ProjetPhotoResolved["photo"],
+        generic: null,
+        typologie: null,
+      };
+    }
+    return { photo: null, generic: (entry.generic ?? null) as ProjetPhotoResolved["generic"], typologie: null };
+  }
+
+  const topProjets = projects
+    .slice()
+    .sort((a, b) => b.montant - a.montant)
+    .slice(0, 24)
+    .map((p) => ({
+      id: p.id,
+      name: p.nom_projet,
+      arr: p.arrondissement,
+      chapitre: p.thematique,
+      amount: p.montant,
+      photo: photoFor(p.id),
+    }));
+
+  // Recompute byArrondissement on the filtered set so the ranking only
+  // shows real localised projects (not narrative fragments at arr=0).
+  const arrAgg = new Map<number, { amount: number; count: number }>();
+  for (const p of projects) {
+    if (!p.arrondissement || p.arrondissement === 0) continue;
+    const cur = arrAgg.get(p.arrondissement) ?? { amount: 0, count: 0 };
+    cur.amount += p.montant ?? 0;
+    cur.count += 1;
+    arrAgg.set(p.arrondissement, cur);
+  }
+  const byArrondissementFiltered = [...arrAgg.entries()]
+    .map(([arr, v]) => ({ arr, amount: v.amount, count: v.count }))
+    .sort((a, b) => b.amount - a.amount);
+
+  // geoPoints: list of project markers with lat/lon (from BAN geocoding when
+  // available, fallback to arrondissement centre). Useful for any future map.
+  // typo/isJO defaulted (Marseille has no project typology nor JO marker).
+  const geoPoints: InvestissementsData["geoPoints"] = projects
+    .filter((p) => {
+      const r = p as unknown as { lat?: number | null; lon?: number | null };
+      return r.lat != null && r.lon != null;
+    })
+    .map((p) => {
+      const r = p as unknown as { lat: number; lon: number };
+      return {
+        id: p.id,
+        name: p.nom_projet,
+        arr: p.arrondissement,
+        chapitre: p.thematique,
+        amount: p.montant,
+        lat: r.lat,
+        lon: r.lon,
+        typo: "autre" as import("./projet-utils").TypoBucket,
+        isJO: false,
+      };
+    });
+
+  const sortedByAmount = projects.slice().sort((a, b) => b.montant - a.montant);
+  const top10Sum = sortedByAmount.slice(0, 10).reduce((s, p) => s + (p.montant ?? 0), 0);
+  const top10ProjetsPct = total > 0 ? (top10Sum / total) * 100 : 0;
+
+  const yearsSummary = (
+    trends?.years ?? [
+      { year, depenses_total: total, depenses_hors_dette: total, par_chapitre: [] },
+    ]
+  )
+    .map((y) => ({ year: y.year, total: y.depenses_total, horsDette: y.depenses_hors_dette }))
+    .sort((a, b) => a.year - b.year);
+
+  return {
+    year,
+    availableYears,
+    total,
+    totalHorsDette: total,
+    nbProjets: projects.length,
+    nbGeo,
+    pctGeo: file.stats?.pct_geo ?? 0,
+    byChapitre: (file.byChapitre ?? []).map((c) => ({
+      label: c.label,
+      amount: c.amount,
+      count: c.count,
+    })),
+    top10ProjetsPct,
+    byArrondissement: byArrondissementFiltered,
+    topProjets,
+    geoPoints,
+    yearsSummary,
+  };
+}
+
+export function loadInvestissementsData(
+  requestedYear?: number,
+  city: string = "paris",
+): InvestissementsData {
+  if (city === "marseille") return loadInvestissementsDataMarseille(requestedYear);
   const trends = readJson<InvTrends>("investissement_tendances.json");
   const allYears = trends.years.map((y) => y.year).sort((a, b) => a - b);
 
@@ -1597,6 +2166,7 @@ export function loadInvestissementsData(requestedYear?: number): Investissements
     .map((p) => ({
       id: p.id,
       name: p.nom_projet as string,
+      name_en: getProjetNameEn(p.id) ?? undefined,
       arr: p.arrondissement,
       chapitre: p.chapitre_libelle ?? "—",
       amount: p.montant,
@@ -1614,6 +2184,7 @@ export function loadInvestissementsData(requestedYear?: number): Investissements
         lat: p.lat as number,
         lon: p.lon as number,
         name: p.nom_projet ?? "Projet",
+        name_en: getProjetNameEn(p.id) ?? undefined,
         amount: Number(p.montant ?? 0),
         chapitre: p.chapitre_libelle ?? "",
         arr: Number(p.arrondissement) || 0,
@@ -1768,6 +2339,14 @@ export type ChapitreFiche = {
   share: number;
   rank: number;
   nbChapitres: number;
+  /** Couverture du dump projet vs total chapitre M57. `pct` ∈ [0, 100].
+   *  La source A (M57) est exhaustive ; la source B (PDF Investissements
+   *  localisés) ne couvre que les chantiers géolocalisables. */
+  coverage: {
+    amount: number;
+    pct: number;
+    sourceLabel: string;
+  };
   topArrondissements: { arr: number; amount: number; count: number }[];
   topProjets: {
     id: string;
@@ -1807,6 +2386,8 @@ export function loadChapitre(slug: string, year?: number): ChapitreFiche | null 
   const projets = complet?.data ?? [];
   const inChap = projets.filter((p) => serviceToM57(p.chapitre_libelle) === label);
   const agg = { amount: match.amount, count: inChap.length };
+  const coveredAmount = inChap.reduce((s, p) => s + Number(p.montant ?? 0), 0);
+  const coveragePct = match.amount > 0 ? (coveredAmount / match.amount) * 100 : 0;
 
   const arrAgg = new Map<number, { amount: number; count: number }>();
   for (const p of inChap) {
@@ -1844,6 +2425,11 @@ export function loadChapitre(slug: string, year?: number): ChapitreFiche | null 
     share: pick.depenses_total > 0 ? (agg.amount / pick.depenses_total) * 100 : 0,
     rank,
     nbChapitres: ranking.length,
+    coverage: {
+      amount: coveredAmount,
+      pct: coveragePct,
+      sourceLabel: `PDF Investissements localisés ${targetYear}`,
+    },
     topArrondissements,
     topProjets,
   };
@@ -1891,16 +2477,34 @@ export type PatrimoineData = {
 
 const BILAN_CENTRAL = "Patrimoine Paris";
 
-export function loadPatrimoineData(requestedYear?: number): PatrimoineData {
-  const idx = readJson<BilanIndex>("bilan_index.json");
+function bilanCentralFor(city: string): string {
+  if (city === "paris") return BILAN_CENTRAL;
+  return `Patrimoine ${city.charAt(0).toUpperCase()}${city.slice(1)}`;
+}
+
+// Optional `source` block emitted by city POC stubs (e.g. Marseille) that
+// derive épargne brute from OFGL aggregates rather than from a row-level
+// budget sankey. Paris keeps the canonical compute path (no `source` block).
+type BilanSankeyExt = BilanSankey & {
+  source?: {
+    label?: string;
+    url?: string;
+    perimeter?: string;
+    epargne_brute?: number;
+  };
+};
+
+export function loadPatrimoineData(requestedYear?: number, city: string = "paris"): PatrimoineData {
+  const idx = readJson<BilanIndex>(cityJsonPath(city, "bilan_index.json"));
   const availableYears = idx.availableYears.slice().sort((a, b) => a - b);
   const year = requestedYear && availableYears.includes(requestedYear)
     ? requestedYear
     : idx.latestYear;
-  const bilan = readJson<BilanSankey>(`bilan_sankey_${year}.json`);
+  const bilan = readJson<BilanSankeyExt>(cityJsonPath(city, `bilan_sankey_${year}.json`));
+  const central = bilanCentralFor(city);
 
-  const actifLinks = bilan.links.filter((l) => l.target === BILAN_CENTRAL);
-  const passifLinks = bilan.links.filter((l) => l.source === BILAN_CENTRAL);
+  const actifLinks = bilan.links.filter((l) => l.target === central);
+  const passifLinks = bilan.links.filter((l) => l.source === central);
 
   const actifBreakdown = actifLinks
     .map((l) => ({ label: l.source, value: l.value }))
@@ -1909,23 +2513,41 @@ export function loadPatrimoineData(requestedYear?: number): PatrimoineData {
     .map((l) => ({ label: l.target, value: l.value }))
     .sort((a, b) => b.value - a.value);
 
-  // Épargne brute = recettes fonctionnement − dépenses fonctionnement, via budget sankey
+  // Épargne brute = recettes fonctionnement − dépenses fonctionnement, via
+  // budget sankey (Paris). Pour les villes POC sans rapprochement Sankey ↔
+  // bilan, on lit la valeur OFGL embarquée dans `bilan.source.epargne_brute`.
   let epargneBrute = 0;
   let recettesFonctionnement = 0;
-  try {
-    const budget = readJson<BudgetSankeyFull>(`budget_sankey_${year}.json`);
-    let fonctionnement = 0;
-    for (const cat of Object.values(budget.bySection)) {
-      fonctionnement += cat.Fonctionnement?.total ?? 0;
-    }
-    const emprunts = budget.links
-      .filter((l) => l.source === "Emprunts" && l.target === "Budget Paris")
-      .reduce((s, l) => s + l.value, 0);
-    recettesFonctionnement = budget.totals.recettes - emprunts;
-    epargneBrute = Math.max(0, recettesFonctionnement - fonctionnement);
-  } catch {}
+  if (city === "paris") {
+    try {
+      const budget = readJson<BudgetSankeyFull>(cityJsonPath(city, `budget_sankey_${year}.json`));
+      const centralBudget = centralNodeFor(city);
+      let fonctionnement = 0;
+      for (const cat of Object.values(budget.bySection)) {
+        fonctionnement += cat.Fonctionnement?.total ?? 0;
+      }
+      const emprunts = budget.links
+        .filter((l) => l.source === "Emprunts" && l.target === centralBudget)
+        .reduce((s, l) => s + l.value, 0);
+      // Retrait aussi des recettes d'investissement (FCTVA, cessions, subventions
+      // équipement) qui ne sont pas des RRF. Sans ça on surestimait l'épargne
+      // brute d'environ 150 M€/an.
+      const recettesInvest = budget.links
+        .filter((l) => l.source === "Investissement" && l.target === centralBudget)
+        .reduce((s, l) => s + l.value, 0);
+      recettesFonctionnement = budget.totals.recettes - emprunts - recettesInvest;
+      epargneBrute = Math.max(0, recettesFonctionnement - fonctionnement);
+    } catch {}
+  } else {
+    // POC ville (Marseille v1) — épargne brute injectée par le stub OFGL.
+    epargneBrute = Math.max(0, bilan.source?.epargne_brute ?? 0);
+  }
 
-  // Capacité de désendettement = dette financière / épargne brute annuelle
+  // Capacité de désendettement (méthode Ville, épargne brute non retraitée).
+  // ⚠️ La CRC Île-de-France publie un chiffre nettement plus élevé après
+  // retraitement des recettes non récurrentes (loyers capitalisés, cessions).
+  // Voir `parisCrcDebtYearsFor()` dans lib/methodology.ts et la section
+  // éditoriale "Deux lectures coexistent" sur la page dette-patrimoine.
   const capaciteDesendettement = epargneBrute > 0
     ? bilan.totals.dettes_financieres / epargneBrute
     : bilan.totals.dettes_financieres / 900_000_000;
@@ -1933,7 +2555,7 @@ export function loadPatrimoineData(requestedYear?: number): PatrimoineData {
   const yearsSummary: PatrimoineData["yearsSummary"] = [];
   for (const y of idx.availableYears.slice().sort((a, b) => a - b)) {
     try {
-      const f = readJson<BilanSankey>(`bilan_sankey_${y}.json`);
+      const f = readJson<BilanSankey>(cityJsonPath(city, `bilan_sankey_${y}.json`));
       yearsSummary.push({
         year: y,
         actif: f.totals.actif_net,
@@ -2039,9 +2661,9 @@ export type PatrimoineStructure = {
   };
 };
 
-export function loadPatrimoineStructure(year: number): PatrimoineStructure | null {
+export function loadPatrimoineStructure(year: number, city: string = "paris"): PatrimoineStructure | null {
   try {
-    return readJson<PatrimoineStructure>(`patrimoine_structure_${year}.json`);
+    return readJson<PatrimoineStructure>(cityJsonPath(city, `patrimoine_structure_${year}.json`));
   } catch {
     return null;
   }
@@ -2159,18 +2781,21 @@ export type HorsBilanData = {
   };
 };
 
-export function loadHorsBilan(year: number): HorsBilanData | null {
+export function loadHorsBilan(year: number, city: string = "paris"): HorsBilanData | null {
   try {
-    return readJson<HorsBilanData>(`hors_bilan_${year}.json`);
+    return readJson<HorsBilanData>(cityJsonPath(city, `hors_bilan_${year}.json`));
   } catch {
     return null;
   }
 }
 
-export function loadHorsBilanTrajectory(years: number[]): Array<{ year: number; capital_restant: number }> {
+export function loadHorsBilanTrajectory(
+  years: number[],
+  city: string = "paris",
+): Array<{ year: number; capital_restant: number }> {
   const out: Array<{ year: number; capital_restant: number }> = [];
   for (const y of years) {
-    const d = loadHorsBilan(y);
+    const d = loadHorsBilan(y, city);
     if (d) out.push({ year: y, capital_restant: d.totals.capital_restant });
   }
   return out;
@@ -2268,19 +2893,84 @@ export type LogementSocialData = {
   sruYear: number;
   stockTotal: number;
   byArrondissement: { arr: number; logements: number; operations: number }[];
+  /** Bailleurs sociaux principaux (5 + "Autres") avec part de marché — pour
+   *  la grille de cards de la page logement-social. */
   bailleurs: { name: string; type: string; color: string; share: number; description: string }[];
+  /** Toutes les entités éditorialisées (bailleurs sociaux + aménageurs +
+   *  EPIC/fondations garanties par la Ville). Source canonique pour
+   *  `loadBailleur(slug)` — couvre les 14 entités hors-bilan. */
+  bailleursAll: { name: string; type: string; color: string; share?: number; description: string }[];
   yearsSummary: { year: number; logements: number }[];
+  /** Tension SLS — issue directement de la data DRIHL pour Paris (seed +
+   *  core_logement_attente_arr → logement_attente_paris.json). Zéro hardcode.
+   *  Le délai médian est un délai d'ATTRIBUTION (biais survivant).
+   *
+   *  null pour les villes hors IDF (ex Marseille) : DRIHL est IDF-only et
+   *  le SNE national ne publie pas de CSV exploitable. Les sections §05/§06
+   *  du client se masquent silencieusement (P3.2 option a). */
   tension: {
-    demandesActives: number;
-    passeesCommission: number;
-    attributions: number;
-    ratio: number;
-    delaiMedian: number;
-    nonPourvus: number;
-  };
+    year: number;
+    source: string;
+    sourceUrl: string;
+    paris: {
+      demandesActives: number;
+      attributions: number;
+      ratio: number;
+      delaiMedianMois: number | null;
+    };
+    parArrondissement: Array<{
+      arr: number;
+      demandesActives: number;
+      attributions: number;
+      ratio: number;
+      delaiMedianMois: number | null;
+      rangTension: number;
+    }>;
+    methodology: {
+      ratioDefinition: string;
+      delaiMedianCaveat: string;
+      partAnciennete5ansDefinition: string;
+    };
+  } | null;
 };
 
-export function loadLogementSocialData(requestedYear?: number): LogementSocialData {
+export function loadLogementSocialData(
+  requestedYear?: number,
+  city: string = "paris",
+): LogementSocialData {
+  // Non-Paris cities use a single pre-aggregated file produced by the POC
+  // stub (`pipeline/scripts/poc/generate_marseille_logement_stub.py` for
+  // Marseille). The schema mirrors `LogementSocialData` 1-to-1 — we just
+  // pick the requested year if available and pass through the rest.
+  if (city !== "paris") {
+    type LogementCityFile = Omit<LogementSocialData, "year"> & {
+      year: number;
+      // Some cities may add an _meta block — kept loose to avoid type drift.
+      _meta?: unknown;
+    };
+    const raw = readJson<LogementCityFile>(cityJsonPath(city, "logement/logement_data.json"));
+    const availableYears = (raw.availableYears ?? []).slice().sort((a, b) => a - b);
+    const pickedYear =
+      requestedYear && availableYears.includes(requestedYear)
+        ? requestedYear
+        : (raw.year ?? availableYears[availableYears.length - 1]);
+    return {
+      year: pickedYear,
+      availableYears,
+      nouveauxParAn: raw.nouveauxParAn ?? 0,
+      nbOperations: raw.nbOperations ?? 0,
+      sruRatio: raw.sruRatio,
+      sruTarget: raw.sruTarget,
+      sruYear: raw.sruYear ?? pickedYear,
+      stockTotal: raw.stockTotal,
+      byArrondissement: raw.byArrondissement ?? [],
+      bailleurs: raw.bailleurs ?? [],
+      bailleursAll: raw.bailleursAll ?? raw.bailleurs ?? [],
+      yearsSummary: raw.yearsSummary ?? [],
+      tension: raw.tension ?? null,
+    };
+  }
+
   const years = [2018, 2019, 2020, 2021, 2022, 2023, 2024];
   const yearsSummary: LogementSocialData["yearsSummary"] = [];
   const files: Record<number, ArrStats> = {};
@@ -2313,15 +3003,50 @@ export function loadLogementSocialData(requestedYear?: number): LogementSocialDa
     .filter((x) => x.arr > 0)
     .sort((a, b) => b.logements - a.logements);
 
-  // Bailleurs principaux — références publiques ; à terme chargés depuis /data/logements
-  const bailleurs = [
+  // Bailleurs et entités garanties par la Ville. Les `share` (parts du parc
+  // social parisien) ne concernent que les vrais bailleurs sociaux ; les
+  // autres entités (aménagement, EPIC, fondations) sont garanties par la
+  // Ville sans gérer de parc — leur fiche existe pour expliquer la nature
+  // de l'entité, pas une part de marché logement.
+  const bailleursAll: LogementSocialData["bailleursAll"] = [
+    // ─── Cinq grands bailleurs sociaux historiques ─────────────────────
     { name: "Paris Habitat", type: "OPH (Ville)", color: "#2a3680", share: 49, description: "Office Public de l'Habitat de la Ville — plus grand bailleur social français." },
-    { name: "RIVP", type: "SEM", color: "#1e45e4", share: 18, description: "Régie Immobilière de la Ville de Paris — SEM axée sur l'innovation habitat." },
-    { name: "Elogie-Siemp", type: "SEM", color: "#a67638", share: 14, description: "Issue de la fusion Elogie et Siemp — réhabilitation et mixité sociale." },
-    { name: "ICF Habitat", type: "Privé", color: "#5f6672", share: 7, description: "Filiale SNCF — logement des salariés et social." },
-    { name: "3F Résidences", type: "Privé", color: "#9099a6", share: 6, description: "Groupe Action Logement — bailleur national présent à Paris." },
-    { name: "Autres bailleurs", type: "Divers", color: "#e4e6ea", share: 6, description: "Dizaines de petits bailleurs sociaux et coopératifs." },
+    { name: "RIVP", type: "SEM (Ville)", color: "#1e45e4", share: 18, description: "Régie Immobilière de la Ville de Paris — SEM axée sur l'innovation habitat." },
+    { name: "Elogie-Siemp", type: "SEM (Ville)", color: "#a67638", share: 14, description: "Issue de la fusion Elogie et Siemp — réhabilitation et mixité sociale." },
+    { name: "ICF Habitat", type: "ESH / SA HLM", color: "#5f6672", share: 7, description: "Filiale SNCF (groupe ICF) — logement des salariés et logement social." },
+    { name: "3F Résidences", type: "ESH / SA HLM", color: "#9099a6", share: 6, description: "Groupe Action Logement (Immobilière 3F) — bailleur national présent à Paris." },
+
+    // ─── Autres bailleurs sociaux (ESH / SA HLM nationaux) ────────────
+    { name: "CDC Habitat Social", type: "ESH (CDC)", color: "#7a8295", description: "Filiale logement social du groupe Caisse des Dépôts — opérations en VEFA et accession sociale." },
+    { name: "Toit et Joie", type: "ESH (Poste Habitat)", color: "#7a8295", description: "Bailleur social du groupe La Poste Habitat — patrimoine francilien." },
+    { name: "SEQENS", type: "ESH (Action Logement)", color: "#7a8295", description: "ESH du groupe Action Logement (ex-Logement Français) — IDF étendu." },
+    { name: "BATIGERE Habitat IDF", type: "ESH (BATIGERE)", color: "#7a8295", description: "ESH régionale du groupe BATIGERE — couvre principalement la grande couronne." },
+    { name: "RATP Habitat", type: "ESH (RATP)", color: "#7a8295", description: "Filiale logement de la RATP — historique du logement des agents, ouverte au logement social." },
+    { name: "1001 Vies Habitat", type: "ESH (Action Logement)", color: "#7a8295", description: "ESH du groupe Action Logement — patrimoine national, présence parisienne." },
+    { name: "L'Habitation Confortable", type: "SA HLM", color: "#7a8295", description: "Société anonyme HLM historique parisienne — petit patrimoine résidentiel." },
+    { name: "HSF", type: "ESH", color: "#7a8295", description: "Habitat Social Français — ESH au patrimoine majoritairement francilien." },
+
+    // ─── Aménageurs publics (SPL/SPLA) — pas de parc social ───────────
+    { name: "SEMAPA", type: "SPLA (Ville)", color: "#a67638", description: "Société Publique Locale d'Aménagement Paris — opérateur des grandes ZAC parisiennes (Paris Rive Gauche, Bercy-Charenton). Garantie d'emprunt Ville pour ses opérations d'aménagement, pas de parc locatif." },
+    { name: "Paris Métropole Aménagement", type: "SPL (Ville+métropole)", color: "#a67638", description: "Société Publique Locale d'aménagement à l'échelle métropolitaine — mêmes mécanismes de garantie que la SEMAPA." },
+
+    // ─── Autres entités garanties (EPIC, fondations, ESS) ─────────────
+    { name: "Régie Eau de Paris", type: "EPIC (Ville)", color: "#5f6672", description: "Établissement Public Industriel et Commercial de la Ville — production et distribution d'eau potable. Garantie Ville sur ses emprunts d'investissement réseau." },
+    { name: "AccorHotels Arena POPB", type: "SAEM (Ville)", color: "#5f6672", description: "Société anonyme d'économie mixte exploitant le Palais Omnisports de Paris-Bercy. Garantie historique sur les emprunts de construction/rénovation." },
+    { name: "Fondation Sciences Po", type: "Fondation reconnue d'utilité publique", color: "#5f6672", description: "Fondation gestionnaire de l'Institut d'Études Politiques. Garantie Ville sur les emprunts immobiliers du campus parisien." },
+    { name: "Fondation Rothschild (OPTH A.)", type: "Fondation hospitalière", color: "#5f6672", description: "Fondation OPTH Adolphe de Rothschild — hôpital ophtalmologique. Garantie Ville sur emprunts d'investissement médical." },
+
+    // ─── Catch-all dynamique pour les bailleurs non listés ─────────────
+    { name: "Autres bailleurs", type: "Divers", color: "#e4e6ea", share: 6, description: "Dizaines de petits bailleurs sociaux et coopératifs non listés individuellement." },
   ];
+
+  // Vue restreinte pour la grille principale de la page logement-social :
+  // seuls les bailleurs ayant une part de marché documentée (les 5 grands
+  // historiques + "Autres"). Les autres entités (aménageurs, EPIC, etc.)
+  // restent accessibles via /dette-patrimoine/bailleur/<slug>.
+  const featuredBailleurs = bailleursAll.filter(
+    (b): b is typeof b & { share: number } => typeof b.share === "number",
+  );
 
   // SRU officiel : Paris à 24,5 % au 31/12/2024 (source : DDT Paris).
   // Figé à l'inventaire le plus récent même si l'utilisateur sélectionne une
@@ -2333,15 +3058,56 @@ export function loadLogementSocialData(requestedYear?: number): LogementSocialDa
   // Stock SRU inventaire 2024 : 258 400 logements sociaux sur 1 055 000 résidences principales
   const stockTotal = 258_400;
 
-  // Tension locative — DRIHL Île-de-France, Ville de Paris (référence 2024).
-  // Centralisé ici pour éviter de figer les valeurs dans les strings de traduction.
+  // Tension SLS — chargée depuis logement_attente_paris.json (pipeline dbt →
+  // seed DRIHL XLSX annuel). Zéro hardcode, tout sourcé.
+  type LogementAttenteFile = {
+    year: number;
+    source: string;
+    source_url: string;
+    paris_total: {
+      demandes_choix1: number;
+      attributions: number;
+      ratio_dem_attrib: number;
+      delai_median_attribution_mois: number | null;
+    };
+    arrondissements: Array<{
+      arrondissement: number;
+      demandes_choix1: number;
+      attributions: number;
+      ratio_dem_attrib: number;
+      delai_median_attribution_mois: number | null;
+      rang_tension: number;
+    }>;
+    methodology: {
+      ratio_definition: string;
+      delai_median_caveat: string;
+      part_anciennete_definition: string;
+    };
+  };
+  const att = readJson<LogementAttenteFile>("logement_attente_paris.json");
   const tension = {
-    demandesActives: 228_400,
-    passeesCommission: 45_600,
-    attributions: 12_100,
-    ratio: 19,
-    delaiMedian: 4.2,
-    nonPourvus: 3_900,
+    year: att.year,
+    source: att.source,
+    sourceUrl: att.source_url,
+    paris: {
+      demandesActives: att.paris_total.demandes_choix1,
+      attributions: att.paris_total.attributions,
+      ratio: att.paris_total.ratio_dem_attrib,
+      delaiMedianMois: att.paris_total.delai_median_attribution_mois,
+    },
+    parArrondissement: att.arrondissements.map((a) => ({
+      arr: a.arrondissement,
+      demandesActives: a.demandes_choix1,
+      attributions: a.attributions,
+      ratio: a.ratio_dem_attrib,
+      delaiMedianMois: a.delai_median_attribution_mois,
+      rangTension: a.rang_tension,
+    })),
+    methodology: {
+      ratioDefinition: att.methodology.ratio_definition,
+      delaiMedianCaveat: att.methodology.delai_median_caveat,
+      partAnciennete5ansDefinition: att.methodology.part_anciennete_definition,
+    },
   };
 
   return {
@@ -2354,7 +3120,8 @@ export function loadLogementSocialData(requestedYear?: number): LogementSocialDa
     sruYear,
     stockTotal,
     byArrondissement,
-    bailleurs,
+    bailleurs: featuredBailleurs,
+    bailleursAll,
     yearsSummary,
     tension,
   };
@@ -2557,16 +3324,24 @@ export function loadArrondissementLogement(
   };
 }
 
-export function loadBudgetPageData(requestedYear?: number): BudgetPageData {
-  const index = readJson<BudgetIndex>("budget_index.json");
+export function loadBudgetPageData(requestedYear?: number, city: string = "paris"): BudgetPageData {
+  const index = readJson<BudgetIndex>(cityJsonPath(city, "budget_index.json"));
   const year = requestedYear && index.availableYears.includes(requestedYear)
     ? requestedYear
     : index.latestYear;
-  const sankey = readJson<BudgetSankeyFull>(`budget_sankey_${year}.json`);
+  const sankey = readJson<BudgetSankeyFull>(cityJsonPath(city, `budget_sankey_${year}.json`));
+  const centralNode = centralNodeFor(city);
 
   const byYear = Object.fromEntries(index.summary.map((s) => [s.year, s]));
-  const ref = byYear[index.latestCompleteYear];
-  const previousYear = index.latestCompleteYear;
+  // Reference year for YoY deltas: prefer latestCompleteYear (Paris CA);
+  // fallback to most recent year strictly < year (cities with BP only, like
+  // Marseille v1).
+  const fallbackPrevYear = index.summary
+    .map((s) => s.year)
+    .filter((y) => y < year)
+    .sort((a, b) => b - a)[0];
+  const previousYear = index.latestCompleteYear ?? fallbackPrevYear ?? null;
+  const ref = previousYear ? byYear[previousYear] : undefined;
   const deltaDepensesPct = ref
     ? ((sankey.totals.depenses - ref.depenses) / ref.depenses) * 100
     : 0;
@@ -2578,26 +3353,30 @@ export function loadBudgetPageData(requestedYear?: number): BudgetPageData {
     investissement += cat.Investissement?.total ?? 0;
   }
   // épargne brute ≈ recettes de fonctionnement - dépenses de fonctionnement
-  // approximation : total recettes hors emprunts - fonctionnement
+  // approximation : total recettes hors emprunts + recettes d'investissement
+  // (FCTVA, cessions, subventions équipement) - fonctionnement.
   const emprunts = sankey.links
-    .filter((l) => l.source === "Emprunts" && l.target === "Budget Paris")
+    .filter((l) => l.source === "Emprunts" && l.target === centralNode)
     .reduce((s, l) => s + l.value, 0);
-  const epargneBrute = Math.max(0, sankey.totals.recettes - emprunts - fonctionnement);
+  const recettesInvest = sankey.links
+    .filter((l) => l.source === "Investissement" && l.target === centralNode)
+    .reduce((s, l) => s + l.value, 0);
+  const epargneBrute = Math.max(0, sankey.totals.recettes - emprunts - recettesInvest - fonctionnement);
 
   // Load previous year's sankey to compute per-category YoY deltas. Silent
   // failure if absent (first year of the series).
   const prevDepByLabel = new Map<string, number>();
   try {
-    const prev = readJson<BudgetSankeyFull>(`budget_sankey_${year - 1}.json`);
+    const prev = readJson<BudgetSankeyFull>(cityJsonPath(city, `budget_sankey_${year - 1}.json`));
     for (const l of prev.links) {
-      if (l.source === "Budget Paris") prevDepByLabel.set(l.target, l.value);
+      if (l.source === centralNode) prevDepByLabel.set(l.target, l.value);
     }
   } catch {
     /* previous year unavailable */
   }
 
   const topDepenses = sankey.links
-    .filter((l) => l.source === "Budget Paris")
+    .filter((l) => l.source === centralNode)
     .map((l) => {
       const cat = sankey.bySection[l.target];
       const items = [
@@ -2617,7 +3396,7 @@ export function loadBudgetPageData(requestedYear?: number): BudgetPageData {
     .sort((a, b) => b.value - a.value);
 
   const recettesBreakdown = sankey.links
-    .filter((l) => l.target === "Budget Paris")
+    .filter((l) => l.target === centralNode)
     .map((l) => {
       const items = sankey.drilldown?.revenue?.[l.source] ?? [];
       // Keep raw names — the page splits N2/N3 for display.
@@ -2677,19 +3456,20 @@ export type BudgetPosteFiche = {
   subPostes: { name: string; value: number }[];
 };
 
-export function loadBudgetPoste(slug: string, requestedYear?: number): BudgetPosteFiche | null {
-  const index = readJson<BudgetIndex>("budget_index.json");
+export function loadBudgetPoste(slug: string, requestedYear?: number, city: string = "paris"): BudgetPosteFiche | null {
+  const index = readJson<BudgetIndex>(cityJsonPath(city, "budget_index.json"));
   const year = requestedYear && index.availableYears.includes(requestedYear)
     ? requestedYear
     : index.latestYear;
-  const sankey = readJson<BudgetSankeyFull>(`budget_sankey_${year}.json`);
+  const sankey = readJson<BudgetSankeyFull>(cityJsonPath(city, `budget_sankey_${year}.json`));
+  const centralNode = centralNodeFor(city);
 
   const depLink = sankey.links.find(
-    (l) => l.source === "Budget Paris" && slugifyLabel(l.target) === slug,
+    (l) => l.source === centralNode && slugifyLabel(l.target) === slug,
   );
   const recLink = !depLink
     ? sankey.links.find(
-        (l) => l.target === "Budget Paris" && slugifyLabel(l.source) === slug,
+        (l) => l.target === centralNode && slugifyLabel(l.source) === slug,
       )
     : null;
 
@@ -2718,11 +3498,11 @@ export function loadBudgetPoste(slug: string, requestedYear?: number): BudgetPos
   const previousYear = year - 1;
   let deltaPct: number | null = null;
   try {
-    const prev = readJson<BudgetSankeyFull>(`budget_sankey_${previousYear}.json`);
+    const prev = readJson<BudgetSankeyFull>(cityJsonPath(city, `budget_sankey_${previousYear}.json`));
     const prevLink =
       kind === "depense"
-        ? prev.links.find((l) => l.source === "Budget Paris" && l.target === label)
-        : prev.links.find((l) => l.target === "Budget Paris" && l.source === label);
+        ? prev.links.find((l) => l.source === centralNode && l.target === label)
+        : prev.links.find((l) => l.target === centralNode && l.source === label);
     if (prevLink && prevLink.value > 0) {
       deltaPct = ((total - prevLink.value) / prevLink.value) * 100;
     }
@@ -2772,8 +3552,8 @@ export type ThemeSubventionsFiche = {
 };
 
 /** Charge la fiche agrégée pour un thème (page + drawer intercepting). */
-export function loadThemeSubventions(slug: string, requestedYear?: number): ThemeSubventionsFiche | null {
-  const idx = readJson<SubvIndex>("subventions/index.json");
+export function loadThemeSubventions(slug: string, requestedYear?: number, city: string = "paris"): ThemeSubventionsFiche | null {
+  const idx = readJson<SubvIndex>(cityJsonPath(city, "subventions/index.json"));
   const years = idx.availableYears.slice().sort((a, b) => a - b);
   const yr = requestedYear && years.includes(requestedYear) ? requestedYear : years[years.length - 1];
   const prev = years[years.length - 2] ?? yr;
@@ -2794,7 +3574,7 @@ export function loadThemeSubventions(slug: string, requestedYear?: number): Them
 
   for (const y of years) {
     try {
-      const file = readJson<SubvBen>(`subventions/beneficiaires_${y}.json`);
+      const file = readJson<SubvBen>(cityJsonPath(city, `subventions/beneficiaires_${y}.json`));
       const yearAgg = { amount: 0, count: 0, benes: new Map<string, { amount: number; nb: number; direction: string | null; objet: string | null }>() };
       for (const b of file.data) {
         if (!matchTheme(b.thematique ?? null)) continue;
@@ -2854,7 +3634,7 @@ export type MarcheCategorieFiche = {
   nbContrats: number;
   nbTitulaires: number;
   topTitulaires: { name: string; siret: string; amount: number; nb: number }[];
-  topContrats: { numero: string; objet: string; objetClair: string | null; montant: number; fournisseur: string; fournisseurSiret: string; date: string; nature: string }[];
+  topContrats: { numero: string; objet: string; objetClair: string | null; objetClairEn: string | null; montant: number; fournisseur: string; fournisseurSiret: string; date: string; nature: string }[];
 };
 
 /** Charge la fiche agrégée pour une catégorie de marchés publics. */
@@ -2885,20 +3665,26 @@ export function loadMarcheCategorie(slug: string, requestedYear?: number): March
   const firstCat = matching[0].categorie_libelle || matching[0].nature || "Autres";
   const total = matching.reduce((s, r) => s + Number(r.montant_max ?? 0), 0);
 
-  const titMap = new Map<string, { amount: number; count: number; siret: string }>();
+  // Agrégation par SIREN (cf. note dans loadMarchesPageData) pour éviter
+  // les doublons quand un même SIREN a plusieurs SIRETs/libellés DECP.
+  const titMap = new Map<string, { name: string; amount: number; count: number; siret: string }>();
   for (const r of matching) {
     const name = r.fournisseur_nom || "Non précisé";
     if (name === "MARCHE MULTIATTRIBUTAIRE") continue;
-    const cur = titMap.get(name) ?? { amount: 0, count: 0, siret: "" };
+    const rawSiret = (r.fournisseur_siret ?? "").replace(/\s/g, "");
+    const validSiret = rawSiret && rawSiret !== "#" && !rawSiret.includes("|") && rawSiret.length >= 9
+      ? rawSiret
+      : "";
+    const aggKey = validSiret ? validSiret.slice(0, 9) : `name:${name.toLowerCase()}`;
+    const cur = titMap.get(aggKey) ?? { name, amount: 0, count: 0, siret: validSiret };
     cur.amount += Number(r.montant_max ?? 0);
     cur.count += 1;
-    if (!cur.siret && r.fournisseur_siret && r.fournisseur_siret !== "#") {
-      cur.siret = r.fournisseur_siret.replace(/\s/g, "");
-    }
-    titMap.set(name, cur);
+    if (!cur.siret && validSiret) cur.siret = validSiret;
+    if (name.length > cur.name.length && name !== "Non précisé") cur.name = name;
+    titMap.set(aggKey, cur);
   }
-  const topTitulaires = [...titMap.entries()]
-    .map(([name, v]) => ({ name, siret: v.siret, amount: v.amount, nb: v.count }))
+  const topTitulaires = [...titMap.values()]
+    .map((v) => ({ name: v.name, siret: v.siret, amount: v.amount, nb: v.count }))
     .sort((a, b) => b.amount - a.amount)
     .slice(0, 8);
 
@@ -2913,6 +3699,7 @@ export function loadMarcheCategorie(slug: string, requestedYear?: number): March
         numero,
         objet: r.objet ?? "",
         objetClair: (numero && vulg[numero]?.objet_clair) || null,
+        objetClairEn: (numero && vulg[numero]?.objet_clair_en) || null,
         montant: Number(r.montant_max ?? 0),
         fournisseur: r.fournisseur_nom ?? "Non précisé",
         fournisseurSiret: (r.fournisseur_siret ?? "").replace(/\s/g, ""),
@@ -2940,5 +3727,18 @@ export function loadMarcheCategorie(slug: string, requestedYear?: number): March
 
 function loadMarcheVulgMap(): Record<string, MarcheVulgarization> {
   const data = readJsonOrNull<VulgarizationCache<MarcheVulgarization>>("enrichment/vulgarization_marches.json");
-  return data?.items ?? {};
+  const en = readJsonOrNull<VulgarizationCache<MarcheVulgarization>>("enrichment/vulgarization_marches_en.json");
+  const merged: Record<string, MarcheVulgarization> = {};
+  for (const [k, v] of Object.entries(data?.items ?? {})) {
+    const e = en?.items?.[k];
+    merged[k] = e
+      ? {
+          ...v,
+          objet_clair_en: e.objet_clair,
+          quoi_concretement_en: e.quoi_concretement,
+          pourquoi_ca_compte_en: e.pourquoi_ca_compte,
+        }
+      : v;
+  }
+  return merged;
 }

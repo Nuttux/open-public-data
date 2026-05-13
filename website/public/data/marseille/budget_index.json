@@ -1,0 +1,97 @@
+{
+  "city": "marseille",
+  "city_label": "Marseille",
+  "availableYears": [
+    2024,
+    2023,
+    2022,
+    2021,
+    2020,
+    2019,
+    2018
+  ],
+  "latestYear": 2024,
+  "latestCompleteYear": null,
+  "completeYears": [],
+  "partialYears": [],
+  "votedYears": [
+    2024,
+    2023,
+    2022,
+    2021,
+    2020,
+    2019,
+    2018
+  ],
+  "year_types": {
+    "2024": "vote",
+    "2023": "vote",
+    "2022": "vote",
+    "2021": "vote",
+    "2020": "vote",
+    "2019": "vote",
+    "2018": "vote"
+  },
+  "covid_years": [
+    2020,
+    2021
+  ],
+  "summary": [
+    {
+      "year": 2024,
+      "type_budget": "vote",
+      "dataStatus": "BUDGET_VOTE",
+      "recettes": 1839764067.0,
+      "depenses": 1840701755.96,
+      "solde": -937688.9600000381
+    },
+    {
+      "year": 2023,
+      "type_budget": "vote",
+      "dataStatus": "BUDGET_VOTE",
+      "recettes": 1743362273.02,
+      "depenses": 1743394182.95,
+      "solde": -31909.930000066757
+    },
+    {
+      "year": 2022,
+      "type_budget": "vote",
+      "dataStatus": "BUDGET_VOTE",
+      "recettes": 1603212372.28,
+      "depenses": 1604824276.21,
+      "solde": -1611903.9300000668
+    },
+    {
+      "year": 2021,
+      "type_budget": "vote",
+      "dataStatus": "BUDGET_VOTE",
+      "recettes": 1590545937.51,
+      "depenses": 1592235867.48,
+      "solde": -1689929.9700000286
+    },
+    {
+      "year": 2020,
+      "type_budget": "vote",
+      "dataStatus": "BUDGET_VOTE",
+      "recettes": 1794942400.78,
+      "depenses": 1754208498.44,
+      "solde": 40733902.339999914
+    },
+    {
+      "year": 2019,
+      "type_budget": "vote",
+      "dataStatus": "BUDGET_VOTE",
+      "recettes": 1685162024.9,
+      "depenses": 1700948812.81,
+      "solde": -15786787.909999847
+    },
+    {
+      "year": 2018,
+      "type_budget": "vote",
+      "dataStatus": "BUDGET_VOTE",
+      "recettes": 1482918399.0,
+      "depenses": 1657178426.0,
+      "solde": -174260027.0
+    }
+  ]
+}

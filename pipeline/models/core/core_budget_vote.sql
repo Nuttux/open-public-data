@@ -64,7 +64,7 @@ budget AS (
 ),
 
 mapping_thematiques AS (
-    SELECT * FROM {{ ref('seed_mapping_thematiques') }}
+    SELECT * FROM {{ ref('stg_mapping_thematiques') }}
 ),
 
 -- =============================================================================

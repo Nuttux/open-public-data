@@ -1,8 +1,10 @@
 {
-  "generated_at": "2026-02-16T14:13:07.723821",
-  "source": "OpenData Paris API (bootstrap direct)",
+  "generated_at": "2026-04-23T19:40:07.589821",
+  "source": "dbt marts (mart_marches_par_nature, mart_marches_fournisseurs)",
   "note": "Les montants sont des enveloppes pluriannuelles (plafonds contractuels), pas des dépenses annuelles.",
   "availableYears": [
+    2026,
+    2025,
     2024,
     2023,
     2022,
@@ -17,71 +19,86 @@
     2013
   ],
   "totalsByYear": {
+    "2026": {
+      "nb_marches": 266,
+      "enveloppe_max_totale": 647101024.95
+    },
+    "2025": {
+      "nb_marches": 1122,
+      "enveloppe_max_totale": 1608151115.94
+    },
     "2024": {
-      "nb_marches": 1407,
-      "enveloppe_max_totale": 2495665169.6699977
+      "nb_marches": 1763,
+      "enveloppe_max_totale": 3219973753.23
     },
     "2023": {
-      "nb_marches": 1335,
-      "enveloppe_max_totale": 2603719521.330001
+      "nb_marches": 1338,
+      "enveloppe_max_totale": 2606892871.3300004
     },
     "2022": {
-      "nb_marches": 1281,
-      "enveloppe_max_totale": 3824590460.8399935
+      "nb_marches": 2101,
+      "enveloppe_max_totale": 6829493371.289998
     },
     "2021": {
-      "nb_marches": 1570,
-      "enveloppe_max_totale": 5483477436.48991
+      "nb_marches": 2391,
+      "enveloppe_max_totale": 8930973043.679995
     },
     "2020": {
-      "nb_marches": 1196,
-      "enveloppe_max_totale": 3282280032.529943
+      "nb_marches": 2146,
+      "enveloppe_max_totale": 5220171918.259993
     },
     "2019": {
-      "nb_marches": 1338,
-      "enveloppe_max_totale": 2302969683.300001
+      "nb_marches": 2417,
+      "enveloppe_max_totale": 4746809477.210003
     },
     "2018": {
       "nb_marches": 1458,
-      "enveloppe_max_totale": 2836151932.3100047
+      "enveloppe_max_totale": 2836151932.31
     },
     "2017": {
       "nb_marches": 1698,
-      "enveloppe_max_totale": 3465550059.5099964
+      "enveloppe_max_totale": 3465550059.5100007
     },
     "2016": {
       "nb_marches": 1601,
-      "enveloppe_max_totale": 1916840484.300001
+      "enveloppe_max_totale": 1916840484.2999997
     },
     "2015": {
       "nb_marches": 1556,
-      "enveloppe_max_totale": 1538504362.6999986
+      "enveloppe_max_totale": 1538504362.6999998
     },
     "2014": {
       "nb_marches": 1483,
-      "enveloppe_max_totale": 1530498987.8500016
+      "enveloppe_max_totale": 1530498987.8500004
     },
     "2013": {
-      "nb_marches": 1714,
-      "enveloppe_max_totale": 1901084589.8700004
+      "nb_marches": 1713,
+      "enveloppe_max_totale": 1901057959.87
     }
   },
   "filters": {
     "natures": [
       "FOURNITURE",
+      "Fournitures",
+      "Marché",
       "SERVICES",
-      "TRAVAUX"
+      "Services",
+      "TRAVAUX",
+      "Travaux"
     ],
     "categories": [
       "Travaux d'entretien, préservation équipements publics",
       "Animation culturelle et de loisirs",
       "Prestations intellectuelles pour opérations BTP,urbanisme",
       "Travaux de construction, rénovation équipements publics",
+      "Fournitures courantes et services",
+      "Travaux",
       "Travaux dans les équipements sportifs",
       "Maîtrise d'oeuvre BTP",
       "Services d'actions éducatives scolaires et périscolaires",
       "Travaux de génie climatique",
       "Formation : métiers",
+      "Prestations intellectuelles",
       "Travaux sur lieux de culte, oeuvres d'art, monuments classés",
       "maintenance de progiciels",
       "Travaux d'aménagement de voirie",
@@ -99,18 +116,15 @@
       "Coordination sécurité et protection santé des travailleurs",
       "Services d'accueil à la petite enfance",
       "entretien des espaces verts",
-      "Etudes à caractère scientifique et technologique",
-      "nettoyage vitre et locaux",
-      "Instruments, partitions, matériels musicaux (et maintenance)",
-      "Livres"
+      "Etudes à caractère scientifique et technologique"
     ],
     "perimetres": [
-      "M22 ASE",
-      "M4 TAM",
-      "M49 Assainissement",
+      "M57 Ville",
       "M57 Département",
       "M57 MGP",
-      "M57 Ville"
+      "M22 ASE",
+      "M4 TAM",
+      "M49 Assainissement"
     ]
   }
 }

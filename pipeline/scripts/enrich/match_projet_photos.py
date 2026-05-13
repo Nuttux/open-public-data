@@ -50,7 +50,7 @@ from typing import Any
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent
 SCRIPT_DIR = Path(__file__).resolve().parent
 DATA_DIR = PROJECT_ROOT / "website" / "public" / "data" / "map"
-ENRICH_DIR = PROJECT_ROOT / "website" / "public" / "data" / "enrichment"
+ENRICH_DIR = PROJECT_ROOT / "pipeline" / "cache" / "enrichment"
 ENRICH_DIR.mkdir(parents=True, exist_ok=True)
 
 CACHE_PATH = ENRICH_DIR / "projet_photos.json"

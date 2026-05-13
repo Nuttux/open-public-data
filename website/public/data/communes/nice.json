@@ -1,0 +1,913 @@
+{
+  "generated_at": "2026-05-01T22:19:30.364766+00:00",
+  "source": "OFGL — ofgl-base-communes-consolidee",
+  "source_url": "https://data.ofgl.fr/explore/dataset/ofgl-base-communes-consolidee/",
+  "perimeter_label_fr": "Comptes consolidés — OFGL (M14 + M57 harmonisés)",
+  "perimeter_label_en": "Consolidated accounts — OFGL (M14 + M57 harmonised)",
+  "city": {
+    "slug": "nice",
+    "nom": "Nice",
+    "code_insee": "06088",
+    "siren": "210600888",
+    "dep_name": "Alpes-Maritimes",
+    "reg_name": "Provence-Alpes-Côte d'Azur",
+    "population_latest": 351011,
+    "latest_year": 2024,
+    "years": [
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024
+    ],
+    "series": {
+      "recettes_totales": [
+        {
+          "year": 2017,
+          "montant": 575634952,
+          "eur_hab": 1655.9
+        },
+        {
+          "year": 2018,
+          "montant": 621497322,
+          "eur_hab": 1795.9
+        },
+        {
+          "year": 2019,
+          "montant": 628895452,
+          "eur_hab": 1817.6
+        },
+        {
+          "year": 2020,
+          "montant": 581347837,
+          "eur_hab": 1695.0
+        },
+        {
+          "year": 2021,
+          "montant": 571255148,
+          "eur_hab": 1661.2
+        },
+        {
+          "year": 2022,
+          "montant": 623972056,
+          "eur_hab": 1805.9
+        },
+        {
+          "year": 2023,
+          "montant": 627565930,
+          "eur_hab": 1811.8
+        },
+        {
+          "year": 2024,
+          "montant": 704423384,
+          "eur_hab": 2006.8
+        }
+      ],
+      "depenses_totales": [
+        {
+          "year": 2017,
+          "montant": 583356292,
+          "eur_hab": 1678.1
+        },
+        {
+          "year": 2018,
+          "montant": 585559098,
+          "eur_hab": 1692.1
+        },
+        {
+          "year": 2019,
+          "montant": 645238789,
+          "eur_hab": 1864.9
+        },
+        {
+          "year": 2020,
+          "montant": 575290603,
+          "eur_hab": 1677.3
+        },
+        {
+          "year": 2021,
+          "montant": 603520987,
+          "eur_hab": 1755.0
+        },
+        {
+          "year": 2022,
+          "montant": 628657538,
+          "eur_hab": 1819.4
+        },
+        {
+          "year": 2023,
+          "montant": 659550984,
+          "eur_hab": 1904.1
+        },
+        {
+          "year": 2024,
+          "montant": 689859793,
+          "eur_hab": 1965.4
+        }
+      ],
+      "encours_dette": [
+        {
+          "year": 2017,
+          "montant": 510081028,
+          "eur_hab": 1467.3
+        },
+        {
+          "year": 2018,
+          "montant": 474975638,
+          "eur_hab": 1372.5
+        },
+        {
+          "year": 2019,
+          "montant": 504598374,
+          "eur_hab": 1458.4
+        },
+        {
+          "year": 2020,
+          "montant": 492196251,
+          "eur_hab": 1435.1
+        },
+        {
+          "year": 2021,
+          "montant": 515352446,
+          "eur_hab": 1498.6
+        },
+        {
+          "year": 2022,
+          "montant": 525568882,
+          "eur_hab": 1521.1
+        },
+        {
+          "year": 2023,
+          "montant": 550462670,
+          "eur_hab": 1589.2
+        },
+        {
+          "year": 2024,
+          "montant": 547123536,
+          "eur_hab": 1558.7
+        }
+      ],
+      "epargne_brute": [
+        {
+          "year": 2017,
+          "montant": 36837615,
+          "eur_hab": 106.0
+        },
+        {
+          "year": 2018,
+          "montant": 42159450,
+          "eur_hab": 121.8
+        },
+        {
+          "year": 2019,
+          "montant": 48619306,
+          "eur_hab": 140.5
+        },
+        {
+          "year": 2020,
+          "montant": 28461317,
+          "eur_hab": 83.0
+        },
+        {
+          "year": 2021,
+          "montant": 12196487,
+          "eur_hab": 35.5
+        },
+        {
+          "year": 2022,
+          "montant": 36142889,
+          "eur_hab": 104.6
+        },
+        {
+          "year": 2023,
+          "montant": 33603066,
+          "eur_hab": 97.0
+        },
+        {
+          "year": 2024,
+          "montant": 81630768,
+          "eur_hab": 232.6
+        }
+      ],
+      "capacite_financement": [
+        {
+          "year": 2017,
+          "montant": -7721341,
+          "eur_hab": -22.2
+        },
+        {
+          "year": 2018,
+          "montant": 35938223,
+          "eur_hab": 103.9
+        },
+        {
+          "year": 2019,
+          "montant": -16343337,
+          "eur_hab": -47.2
+        },
+        {
+          "year": 2020,
+          "montant": 6057233,
+          "eur_hab": 17.7
+        },
+        {
+          "year": 2021,
+          "montant": -32265839,
+          "eur_hab": -93.8
+        },
+        {
+          "year": 2022,
+          "montant": -4685483,
+          "eur_hab": -13.6
+        },
+        {
+          "year": 2023,
+          "montant": -31985054,
+          "eur_hab": -92.3
+        },
+        {
+          "year": 2024,
+          "montant": 14563591,
+          "eur_hab": 41.5
+        }
+      ],
+      "depenses_fonctionnement": [
+        {
+          "year": 2017,
+          "montant": 505079629,
+          "eur_hab": 1452.9
+        },
+        {
+          "year": 2018,
+          "montant": 503872393,
+          "eur_hab": 1456.0
+        },
+        {
+          "year": 2019,
+          "montant": 533187336,
+          "eur_hab": 1541.0
+        },
+        {
+          "year": 2020,
+          "montant": 516798738,
+          "eur_hab": 1506.8
+        },
+        {
+          "year": 2021,
+          "montant": 527205924,
+          "eur_hab": 1533.1
+        },
+        {
+          "year": 2022,
+          "montant": 543064993,
+          "eur_hab": 1571.7
+        },
+        {
+          "year": 2023,
+          "montant": 564275477,
+          "eur_hab": 1629.1
+        },
+        {
+          "year": 2024,
+          "montant": 568938039,
+          "eur_hab": 1620.9
+        }
+      ],
+      "recettes_fonctionnement": [
+        {
+          "year": 2017,
+          "montant": 541917244,
+          "eur_hab": 1558.9
+        },
+        {
+          "year": 2018,
+          "montant": 546031843,
+          "eur_hab": 1577.9
+        },
+        {
+          "year": 2019,
+          "montant": 581806642,
+          "eur_hab": 1681.5
+        },
+        {
+          "year": 2020,
+          "montant": 545260055,
+          "eur_hab": 1589.8
+        },
+        {
+          "year": 2021,
+          "montant": 539402411,
+          "eur_hab": 1568.5
+        },
+        {
+          "year": 2022,
+          "montant": 579207882,
+          "eur_hab": 1676.3
+        },
+        {
+          "year": 2023,
+          "montant": 597878543,
+          "eur_hab": 1726.1
+        },
+        {
+          "year": 2024,
+          "montant": 650568806,
+          "eur_hab": 1853.4
+        }
+      ],
+      "depenses_investissement": [
+        {
+          "year": 2017,
+          "montant": 124424164,
+          "eur_hab": 357.9
+        },
+        {
+          "year": 2018,
+          "montant": 149522080,
+          "eur_hab": 432.1
+        },
+        {
+          "year": 2019,
+          "montant": 157259603,
+          "eur_hab": 454.5
+        },
+        {
+          "year": 2020,
+          "montant": 122415523,
+          "eur_hab": 356.9
+        },
+        {
+          "year": 2021,
+          "montant": 120706991,
+          "eur_hab": 351.0
+        },
+        {
+          "year": 2022,
+          "montant": 125964816,
+          "eur_hab": 364.6
+        },
+        {
+          "year": 2023,
+          "montant": 141811157,
+          "eur_hab": 409.4
+        },
+        {
+          "year": 2024,
+          "montant": 160902333,
+          "eur_hab": 458.4
+        }
+      ],
+      "impots_locaux": [
+        {
+          "year": 2017,
+          "montant": 308033087,
+          "eur_hab": 886.1
+        },
+        {
+          "year": 2018,
+          "montant": 311521722,
+          "eur_hab": 900.2
+        },
+        {
+          "year": 2019,
+          "montant": 319081205,
+          "eur_hab": 922.2
+        },
+        {
+          "year": 2020,
+          "montant": 308985924,
+          "eur_hab": 900.9
+        },
+        {
+          "year": 2021,
+          "montant": 325572478,
+          "eur_hab": 946.7
+        },
+        {
+          "year": 2022,
+          "montant": 331781350,
+          "eur_hab": 960.2
+        },
+        {
+          "year": 2023,
+          "montant": 356360763,
+          "eur_hab": 1028.8
+        },
+        {
+          "year": 2024,
+          "montant": 406628234,
+          "eur_hab": 1158.4
+        }
+      ],
+      "concours_etat": [
+        {
+          "year": 2017,
+          "montant": 95400039,
+          "eur_hab": 274.4
+        },
+        {
+          "year": 2018,
+          "montant": 94534052,
+          "eur_hab": 273.2
+        },
+        {
+          "year": 2019,
+          "montant": 94438923,
+          "eur_hab": 272.9
+        },
+        {
+          "year": 2020,
+          "montant": 94638264,
+          "eur_hab": 275.9
+        },
+        {
+          "year": 2021,
+          "montant": 79294344,
+          "eur_hab": 230.6
+        },
+        {
+          "year": 2022,
+          "montant": 80062433,
+          "eur_hab": 231.7
+        },
+        {
+          "year": 2023,
+          "montant": 80128654,
+          "eur_hab": 231.3
+        },
+        {
+          "year": 2024,
+          "montant": 80754455,
+          "eur_hab": 230.1
+        }
+      ],
+      "fiscalite_reversee": [
+        {
+          "year": 2017,
+          "montant": 22396672,
+          "eur_hab": 64.4
+        },
+        {
+          "year": 2018,
+          "montant": 22455214,
+          "eur_hab": 64.9
+        },
+        {
+          "year": 2019,
+          "montant": 25779537,
+          "eur_hab": 74.5
+        },
+        {
+          "year": 2020,
+          "montant": 25942678,
+          "eur_hab": 75.6
+        },
+        {
+          "year": 2021,
+          "montant": 25942678,
+          "eur_hab": 75.4
+        },
+        {
+          "year": 2022,
+          "montant": 25202038,
+          "eur_hab": 72.9
+        },
+        {
+          "year": 2023,
+          "montant": 25282579,
+          "eur_hab": 73.0
+        },
+        {
+          "year": 2024,
+          "montant": 25282579,
+          "eur_hab": 72.0
+        }
+      ],
+      "ventes_services": [
+        {
+          "year": 2017,
+          "montant": 43732764,
+          "eur_hab": 125.8
+        },
+        {
+          "year": 2018,
+          "montant": 50912620,
+          "eur_hab": 147.1
+        },
+        {
+          "year": 2019,
+          "montant": 71013491,
+          "eur_hab": 205.2
+        },
+        {
+          "year": 2020,
+          "montant": 36257706,
+          "eur_hab": 105.7
+        },
+        {
+          "year": 2021,
+          "montant": 43479556,
+          "eur_hab": 126.4
+        },
+        {
+          "year": 2022,
+          "montant": 68252463,
+          "eur_hab": 197.5
+        },
+        {
+          "year": 2023,
+          "montant": 64329526,
+          "eur_hab": 185.7
+        },
+        {
+          "year": 2024,
+          "montant": 66059580,
+          "eur_hab": 188.2
+        }
+      ],
+      "subventions_recues": [
+        {
+          "year": 2017,
+          "montant": 14328387,
+          "eur_hab": 41.2
+        },
+        {
+          "year": 2018,
+          "montant": 14142307,
+          "eur_hab": 40.9
+        },
+        {
+          "year": 2019,
+          "montant": 25718306,
+          "eur_hab": 74.3
+        },
+        {
+          "year": 2020,
+          "montant": 24139135,
+          "eur_hab": 70.4
+        },
+        {
+          "year": 2021,
+          "montant": 25474452,
+          "eur_hab": 74.1
+        },
+        {
+          "year": 2022,
+          "montant": 25979895,
+          "eur_hab": 75.2
+        },
+        {
+          "year": 2023,
+          "montant": 26608393,
+          "eur_hab": 76.8
+        },
+        {
+          "year": 2024,
+          "montant": 27433486,
+          "eur_hab": 78.2
+        }
+      ],
+      "frais_personnel": [
+        {
+          "year": 2017,
+          "montant": 298445717,
+          "eur_hab": 858.5
+        },
+        {
+          "year": 2018,
+          "montant": 301847575,
+          "eur_hab": 872.3
+        },
+        {
+          "year": 2019,
+          "montant": 310016347,
+          "eur_hab": 896.0
+        },
+        {
+          "year": 2020,
+          "montant": 307837872,
+          "eur_hab": 897.5
+        },
+        {
+          "year": 2021,
+          "montant": 308262515,
+          "eur_hab": 896.4
+        },
+        {
+          "year": 2022,
+          "montant": 314531226,
+          "eur_hab": 910.3
+        },
+        {
+          "year": 2023,
+          "montant": 315844591,
+          "eur_hab": 911.9
+        },
+        {
+          "year": 2024,
+          "montant": 320428711,
+          "eur_hab": 912.9
+        }
+      ],
+      "achats_charges": [
+        {
+          "year": 2017,
+          "montant": 108726514,
+          "eur_hab": 312.8
+        },
+        {
+          "year": 2018,
+          "montant": 106240908,
+          "eur_hab": 307.0
+        },
+        {
+          "year": 2019,
+          "montant": 127176654,
+          "eur_hab": 367.6
+        },
+        {
+          "year": 2020,
+          "montant": 113162305,
+          "eur_hab": 329.9
+        },
+        {
+          "year": 2021,
+          "montant": 117716778,
+          "eur_hab": 342.3
+        },
+        {
+          "year": 2022,
+          "montant": 136169616,
+          "eur_hab": 394.1
+        },
+        {
+          "year": 2023,
+          "montant": 144273147,
+          "eur_hab": 416.5
+        },
+        {
+          "year": 2024,
+          "montant": 143512716,
+          "eur_hab": 408.9
+        }
+      ],
+      "depenses_intervention": [
+        {
+          "year": 2017,
+          "montant": 70296902,
+          "eur_hab": 202.2
+        },
+        {
+          "year": 2018,
+          "montant": 70399776,
+          "eur_hab": 203.4
+        },
+        {
+          "year": 2019,
+          "montant": 71240572,
+          "eur_hab": 205.9
+        },
+        {
+          "year": 2020,
+          "montant": 70921647,
+          "eur_hab": 206.8
+        },
+        {
+          "year": 2021,
+          "montant": 73192578,
+          "eur_hab": 212.8
+        },
+        {
+          "year": 2022,
+          "montant": 71266177,
+          "eur_hab": 206.3
+        },
+        {
+          "year": 2023,
+          "montant": 73636029,
+          "eur_hab": 212.6
+        },
+        {
+          "year": 2024,
+          "montant": 57843549,
+          "eur_hab": 164.8
+        }
+      ],
+      "charges_financieres": [
+        {
+          "year": 2017,
+          "montant": 14928097,
+          "eur_hab": 42.9
+        },
+        {
+          "year": 2018,
+          "montant": 14056026,
+          "eur_hab": 40.6
+        },
+        {
+          "year": 2019,
+          "montant": 13142249,
+          "eur_hab": 38.0
+        },
+        {
+          "year": 2020,
+          "montant": 12209165,
+          "eur_hab": 35.6
+        },
+        {
+          "year": 2021,
+          "montant": 11034962,
+          "eur_hab": 32.1
+        },
+        {
+          "year": 2022,
+          "montant": 10770860,
+          "eur_hab": 31.2
+        },
+        {
+          "year": 2023,
+          "montant": 14024192,
+          "eur_hab": 40.5
+        },
+        {
+          "year": 2024,
+          "montant": 16329743,
+          "eur_hab": 46.5
+        }
+      ],
+      "depenses_equipement": [
+        {
+          "year": 2017,
+          "montant": 57786036,
+          "eur_hab": 166.2
+        },
+        {
+          "year": 2018,
+          "montant": 60519732,
+          "eur_hab": 174.9
+        },
+        {
+          "year": 2019,
+          "montant": 85140874,
+          "eur_hab": 246.1
+        },
+        {
+          "year": 2020,
+          "montant": 44638957,
+          "eur_hab": 130.2
+        },
+        {
+          "year": 2021,
+          "montant": 61295061,
+          "eur_hab": 178.2
+        },
+        {
+          "year": 2022,
+          "montant": 71416551,
+          "eur_hab": 206.7
+        },
+        {
+          "year": 2023,
+          "montant": 77582258,
+          "eur_hab": 224.0
+        },
+        {
+          "year": 2024,
+          "montant": 88933871,
+          "eur_hab": 253.4
+        }
+      ],
+      "subventions_equipement": [
+        {
+          "year": 2017,
+          "montant": 19769566,
+          "eur_hab": 56.9
+        },
+        {
+          "year": 2018,
+          "montant": 20759630,
+          "eur_hab": 60.0
+        },
+        {
+          "year": 2019,
+          "montant": 26043525,
+          "eur_hab": 75.3
+        },
+        {
+          "year": 2020,
+          "montant": 13482363,
+          "eur_hab": 39.3
+        },
+        {
+          "year": 2021,
+          "montant": 14294576,
+          "eur_hab": 41.6
+        },
+        {
+          "year": 2022,
+          "montant": 10947249,
+          "eur_hab": 31.7
+        },
+        {
+          "year": 2023,
+          "montant": 11470281,
+          "eur_hab": 33.1
+        },
+        {
+          "year": 2024,
+          "montant": 11320839,
+          "eur_hab": 32.3
+        }
+      ],
+      "remboursements_emprunts": [
+        {
+          "year": 2017,
+          "montant": 46147500,
+          "eur_hab": 132.7
+        },
+        {
+          "year": 2018,
+          "montant": 67835374,
+          "eur_hab": 196.0
+        },
+        {
+          "year": 2019,
+          "montant": 45208151,
+          "eur_hab": 130.7
+        },
+        {
+          "year": 2020,
+          "montant": 63923658,
+          "eur_hab": 186.4
+        },
+        {
+          "year": 2021,
+          "montant": 44391929,
+          "eur_hab": 129.1
+        },
+        {
+          "year": 2022,
+          "montant": 40372271,
+          "eur_hab": 116.8
+        },
+        {
+          "year": 2023,
+          "montant": 46535650,
+          "eur_hab": 134.4
+        },
+        {
+          "year": 2024,
+          "montant": 39980579,
+          "eur_hab": 113.9
+        }
+      ]
+    }
+  },
+  "kpi_labels_fr": {
+    "recettes_totales": "Recettes totales hors emprunts",
+    "depenses_totales": "Dépenses totales hors remb.",
+    "encours_dette": "Encours de dette",
+    "epargne_brute": "Épargne brute",
+    "capacite_financement": "Capacité ou besoin de financement",
+    "depenses_fonctionnement": "Dépenses de fonctionnement",
+    "recettes_fonctionnement": "Recettes de fonctionnement",
+    "depenses_investissement": "Dépenses d'investissement",
+    "impots_locaux": "Impôts locaux",
+    "concours_etat": "Concours de l'État",
+    "fiscalite_reversee": "Fiscalité reversée",
+    "ventes_services": "Ventes de biens et services",
+    "subventions_recues": "Subventions reçues",
+    "frais_personnel": "Frais de personnel",
+    "achats_charges": "Achats et charges externes",
+    "depenses_intervention": "Dépenses d'intervention",
+    "charges_financieres": "Charges financières",
+    "depenses_equipement": "Dépenses d'équipement",
+    "subventions_equipement": "Subventions d'équipement versées",
+    "remboursements_emprunts": "Remboursements d'emprunts"
+  },
+  "kpi_labels_en": {
+    "recettes_totales": "Total revenue (excl. borrowing)",
+    "depenses_totales": "Total expenditure",
+    "encours_dette": "Debt outstanding",
+    "epargne_brute": "Gross savings",
+    "capacite_financement": "Financing capacity / needs",
+    "depenses_fonctionnement": "Operating expenditure",
+    "recettes_fonctionnement": "Operating revenue",
+    "depenses_investissement": "Capital expenditure",
+    "impots_locaux": "Local taxes",
+    "concours_etat": "State transfers",
+    "fiscalite_reversee": "Tax sharing",
+    "ventes_services": "Sales of goods & services",
+    "subventions_recues": "Subsidies received",
+    "frais_personnel": "Personnel costs",
+    "achats_charges": "External purchases",
+    "depenses_intervention": "Intervention spending",
+    "charges_financieres": "Financial charges",
+    "depenses_equipement": "Capital spending (equipment)",
+    "subventions_equipement": "Capital subsidies paid",
+    "remboursements_emprunts": "Loan repayments"
+  }
+}

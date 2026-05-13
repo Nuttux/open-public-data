@@ -1,4 +1,7 @@
+"use client";
+
 import type { ReactNode } from "react";
+import { useT } from "@/lib/localeContext";
 
 type Item = {
   label: ReactNode;
@@ -20,10 +23,12 @@ type Props = {
  * Export / downloads strip shown at the bottom of data pages. The mockup
  * puts this under the "Sources" section with a ghost label on the left.
  */
-export default function ExportRow({ title = "Téléchargements", items }: Props) {
+export default function ExportRow({ title, items }: Props) {
+  const t = useT();
+  const resolvedTitle = title ?? t("fx.export.label");
   return (
     <div className="fx-export-row">
-      <span className="fx-export-label">{title}</span>
+      <span className="fx-export-label">{resolvedTitle}</span>
       {items.map((it, i) => {
         const cls = it.primary ? "fx-btn fx-btn-primary" : "fx-btn";
         if (it.href) {

@@ -1,0 +1,179 @@
+-- =============================================================================
+-- Staging: Marseille Budget (BP + CA, M57 par nature)
+--
+-- Sources: 12 tables annuelles dans raw (synced via sync_city.py marseille):
+--   - marseille_budget_primitif_{2018..2024}  (7 années, schéma stable)
+--   - marseille_compte_administratif_{2018..2022}  (5 années, ⚠ 2 schémas)
+--
+-- ⚠ Asymétrie nomenclature vs Paris (cf. docs/marseille-data-inventory.md):
+--   Marseille publie en mode VOTE PAR NATURE (chap 11/60/65 = type de charge),
+--   PAS en vote fonctionnel comme Paris (chap 930-939 = politique publique).
+--   Pas de dimension fonction dans les CSV Marseille → fonction_code = NULL.
+--
+-- ⚠ 2 schémas CA selon année:
+--   - 2018-2019 : "Exercice budgétaire,Budget,Section,Inscription,Type mvt,
+--                  Chap,Nature,Alloué,Réalisé"
+--   - 2020+     : "BGT_NATDEC,BGT_ANNEE,BGT_SIRET,BGT_NOM,BGT_CONTNAT,
+--                  BGT_CONTNAT_LABEL,BGT_NATURE,BGT_NATURE_LABEL,BGT_SECTION,
+--                  BGT_OPBUDG,BGT_CODRD,BGT_MTREAL,BGT_MTPREV"
+--   BP 2018-2024 : "Doc,Exercice,Budget,Section,Inscription,Type mvt,Chap,
+--                   Lib Chap,Nature,Lib. article / nature,Montant BP en euros"
+--
+-- Output schema (aligned with stg_budget_principal Paris):
+--   commune_slug, type_budget, annee, section, sens_flux, type_operation,
+--   chapitre_code, chapitre_libelle, nature_code, nature_libelle,
+--   fonction_code (NULL), fonction_libelle (NULL), montant, cle_technique
+-- =============================================================================
+
+{{ config(materialized='view', schema='staging', tags=['staging', 'marseille']) }}
+
+-- =============================================================================
+-- BP (Budget Primitif) — schéma stable 2018-2024
+-- =============================================================================
+WITH bp_union AS (
+    {% for year in [2018, 2019, 2020, 2021, 2022, 2023, 2024] %}
+    SELECT
+        'vote' AS type_budget,
+        SAFE_CAST(`Exercice` AS INT64) AS annee_raw,
+        `Section` AS section_raw,         -- 'FONC' or 'INV'
+        `Inscription` AS sens_raw,        -- 'DEP' or 'REC'
+        `Type mvt` AS type_op_raw,        -- 'REELS' or 'ORDRE'
+        SAFE_CAST(`Chap` AS STRING) AS chapitre_code,
+        `Lib Chap` AS chapitre_libelle,
+        SAFE_CAST(`Nature` AS STRING) AS nature_code,
+        `Lib. article / nature` AS nature_libelle,
+        SAFE_CAST(`Montant BP en euros` AS FLOAT64) AS montant_raw
+    FROM {{ source('marseille_raw', 'marseille_budget_primitif_' ~ year) }}
+    {% if not loop.last %}UNION ALL{% endif %}
+    {% endfor %}
+),
+
+-- =============================================================================
+-- CA 2018-2019 (legacy schema)
+-- =============================================================================
+ca_legacy AS (
+    {% for year in [2018, 2019] %}
+    SELECT
+        'execute' AS type_budget,
+        SAFE_CAST(`Exercice budgétaire` AS INT64) AS annee_raw,
+        `Section` AS section_raw,
+        `Inscription` AS sens_raw,
+        `Type mvt` AS type_op_raw,
+        SAFE_CAST(`Chap` AS STRING) AS chapitre_code,
+        CAST(NULL AS STRING) AS chapitre_libelle,
+        SAFE_CAST(`Nature` AS STRING) AS nature_code,
+        CAST(NULL AS STRING) AS nature_libelle,
+        -- Use Réalisé (ABS via cleaning step below)
+        SAFE_CAST(REPLACE(REPLACE(CAST(`Réalisé` AS STRING), ',', '.'), ' ', '') AS FLOAT64) AS montant_raw
+    FROM {{ source('marseille_raw', 'marseille_compte_administratif_' ~ year) }}
+    {% if not loop.last %}UNION ALL{% endif %}
+    {% endfor %}
+),
+
+-- =============================================================================
+-- CA 2020+ (modern schema)
+-- =============================================================================
+ca_modern AS (
+    {% for year in [2020, 2021, 2022] %}
+    SELECT
+        'execute' AS type_budget,
+        SAFE_CAST(`BGT_ANNEE` AS INT64) AS annee_raw,
+        -- Section is encoded in BGT_SECTION as 'fonctionnement' or 'investissement'
+        CASE
+            WHEN UPPER(`BGT_SECTION`) LIKE '%FONCT%' THEN 'FONC'
+            WHEN UPPER(`BGT_SECTION`) LIKE '%INVEST%' THEN 'INV'
+            ELSE `BGT_SECTION`
+        END AS section_raw,
+        -- BGT_CODRD = 'recette' or 'depense'
+        CASE
+            WHEN UPPER(`BGT_CODRD`) LIKE '%DEP%' THEN 'DEP'
+            WHEN UPPER(`BGT_CODRD`) LIKE '%REC%' THEN 'REC'
+            ELSE `BGT_CODRD`
+        END AS sens_raw,
+        -- BGT_OPBUDG = 'réel' or 'ordre'
+        CASE
+            WHEN UPPER(`BGT_OPBUDG`) LIKE '%RÉEL%' OR UPPER(`BGT_OPBUDG`) LIKE '%REEL%' THEN 'REELS'
+            ELSE `BGT_OPBUDG`
+        END AS type_op_raw,
+        SAFE_CAST(`BGT_CONTNAT` AS STRING) AS chapitre_code,
+        `BGT_CONTNAT_LABEL` AS chapitre_libelle,
+        SAFE_CAST(`BGT_NATURE` AS STRING) AS nature_code,
+        `BGT_NATURE_LABEL` AS nature_libelle,
+        SAFE_CAST(`BGT_MTREAL` AS FLOAT64) AS montant_raw
+    FROM {{ source('marseille_raw', 'marseille_compte_administratif_' ~ year) }}
+    {% if not loop.last %}UNION ALL{% endif %}
+    {% endfor %}
+),
+
+-- =============================================================================
+-- Union all and normalise to stg_budget_principal-compatible schema
+-- =============================================================================
+all_lines AS (
+    SELECT * FROM bp_union
+    UNION ALL
+    SELECT * FROM ca_legacy
+    UNION ALL
+    SELECT * FROM ca_modern
+),
+
+normalised AS (
+    SELECT
+        'marseille' AS commune_slug,
+        type_budget,
+        annee_raw AS annee,
+
+        -- Section: 'FONC'/'INVE' → 'Fonctionnement'/'Investissement'
+        -- ⚠ Marseille publishes 'INVE' (4 chars), not 'INV' like Paris.
+        CASE section_raw
+            WHEN 'FONC' THEN 'Fonctionnement'
+            WHEN 'INVE' THEN 'Investissement'
+            WHEN 'INV' THEN 'Investissement'
+            ELSE section_raw
+        END AS section,
+
+        -- Sens: 'DEP'/'REC' → 'Dépense'/'Recette'
+        CASE sens_raw
+            WHEN 'DEP' THEN 'Dépense'
+            WHEN 'REC' THEN 'Recette'
+            ELSE sens_raw
+        END AS sens_flux,
+
+        -- Type d'opération
+        CASE type_op_raw
+            WHEN 'REELS' THEN 'Réel'
+            WHEN 'ORDRE' THEN 'Pour Ordre'
+            ELSE type_op_raw
+        END AS type_operation,
+
+        chapitre_code,
+        chapitre_libelle,
+        nature_code,
+        nature_libelle,
+
+        -- Marseille publishes WITHOUT functional dimension
+        CAST(NULL AS STRING) AS fonction_code,
+        CAST(NULL AS STRING) AS fonction_libelle,
+
+        ABS(montant_raw) AS montant,
+
+        -- Unique technical key (matches Paris pattern)
+        CONCAT(
+            'marseille-',
+            type_budget, '-',
+            CAST(annee_raw AS STRING), '-',
+            COALESCE(section_raw, 'X'), '-',
+            COALESCE(sens_raw, 'X'), '-',
+            COALESCE(chapitre_code, '000'), '-',
+            COALESCE(nature_code, '000'), '-',
+            SUBSTR(TO_HEX(MD5(COALESCE(nature_libelle, ''))), 1, 8)
+        ) AS cle_technique
+
+    FROM all_lines
+    WHERE
+        -- Keep only real operations (exclude Pour Ordre)
+        UPPER(COALESCE(type_op_raw, '')) IN ('REELS', 'RÉEL', 'REEL')
+        -- Positive amounts only
+        AND COALESCE(montant_raw, 0) > 0
+)
+
+SELECT * FROM normalised

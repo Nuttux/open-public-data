@@ -1,0 +1,135 @@
+---
+title: "Subsidy, service purchase, public procurement: three flows that get confused all the time"
+description: "When the press reports that the Ville pays €X to Y, the word used to describe the flow is almost always imprecise. Three distinct legal regimes channel public money to local recipients — subsidies, service purchases, public procurement — each with its own rules, controls, and logic. A decoder."
+date: "2026-05-01"
+author: "France Open Data"
+tags: ["explanation", "subsidies", "public procurement", "public law", "public accounting"]
+category: "Explanation"
+image: "https://commons.wikimedia.org/wiki/Special:FilePath/Hotel%20de%20Ville%20de%20Paris%20fa%C3%A7ade%20nord.jpg?width=1600"
+imageAlt: "North facade of Paris City Hall — seat of the Conseil de Paris, the body that votes on subsidies and authorises public contracts"
+imageCredit: "Photo: Wikimedia Commons · CC BY-SA"
+readingTime: "9 min"
+---
+
+The phrase "the Ville pays €500,000 to association X" appears every week in the local and national press. Depending on the word chosen to describe that flow, what the reader understands changes dramatically — and the chosen word is almost always imprecise. This article does not deal with any particular case, scandal, or judgment about a recipient. It lays out the legal definitions that make any local public-money transfer readable.
+
+Three regimes coexist in France for moving money from a local authority to a legal or natural person: the **subsidy** (*subvention*), the **service purchase** (*prestation*, an under-threshold service or supply purchase), and the **public procurement contract** (*marché public*). They do not rest on the same legal rules, do not trigger the same procedures, and cannot be challenged before the same courts. Conflating them in a single sentence — or in a public debate — amounts to mixing three distinct grammars.
+
+## Three questions are enough to sort
+
+To identify the regime governing a flow, three questions usually suffice in first approximation.
+
+**Who initiated?** If the recipient applied, presenting a project or programme to the local authority, the regime is a subsidy. If the local authority expressed a need ("we want this roof restored"), the regime is a purchase — service purchase or procurement.
+
+**Is there a direct market consideration?** If the local authority receives in exchange an identifiable service, delivered against a specification it set, the regime is a purchase. If what it receives is more diffuse — the existence of a community programme, the running of a festival, the support of a cause — the regime is a subsidy.
+
+**What is the amount?** Above certain thresholds, a service purchase is mandatorily reclassified as formalised public procurement, with competitive tendering and publication. Below, the local authority can buy directly, in a simple service-purchase regime.
+
+These three questions do not cover every edge case — there are concessions, public-service delegations, capital subsidies with partial consideration, contracts reserved for social-economy structures. But they are enough to classify the vast majority of flows a press reader will encounter.
+
+## The subsidy: a project, an agreement, a deliberation
+
+A subsidy is legally a **discretionary contribution of any kind** paid to an organisation that pursues a project or programme on its own initiative. It is defined negatively: it does not pay for a service the local authority commissioned. If the service is commissioned by the authority, the regime is procurement or service purchase, not a subsidy.
+
+Three texts structure this regime in France:
+
+- **Article L.1611-4 of the General Code of Local Authorities (CGCT)**, which establishes a local authority's ability to subsidise a private-law association;
+- **Law 2000-321 of 12 April 2000** (article 10), which makes a **written agreement** mandatory whenever the annual amount exceeds €23,000;
+- **Decree 2001-495 of 6 June 2001**, which specifies its content: object, amount, duration, conditions of use, audit terms, sanctions in case of non-performance.
+
+In Paris, every subsidy attribution requires a **deliberation of the Conseil de Paris** — the public assembly that meets monthly. The deliberation number, its title, and the recipient are public, archived on the Ville's open-data portal. For subsidies under €23,000, a simple administrative decision is enough, but it remains legally a subsidy under the CGCT.
+
+A subsidy recipient can be a 1901-law association, a foundation, a public establishment, a public-housing office (OPH — *Office Public de l'Habitat*), a municipal social-action centre (CCAS — *Centre Communal d'Action Sociale*), and sometimes a company when the support targets a public-interest project. The legal nature of the recipient does not change the regime: what qualifies a flow as a subsidy is the absence of a commissioned service.
+
+## The service purchase: buying outside formalised competitive tendering
+
+The service purchase (*prestation*), in the sense used by the Ville's services and by public accounting, refers to a **one-off purchase of a service or supply below the thresholds** that make formalised competitive tendering mandatory. It is a residual category, but it represents several hundred million euros per year at the Paris scale.
+
+The **Public Procurement Code** sets the thresholds, revised every two years. As of this article, for services and supplies:
+
+- Below **€40,000 ex-VAT**, a public buyer can contract directly, without publicity or formal tendering. The buyer must select a relevant offer, make reasonable use of public money, and avoid systematically contracting with the same provider — but the procedure remains light.
+- Between **€40,000 and €90,000 ex-VAT**, adapted publicity and competitive tendering are required, without formal procedure in the European sense — this is what is called a MAPA (*marché à procédure adaptée*, adapted-procedure contract).
+- Above **€90,000 ex-VAT** for current services, or **€221,000 ex-VAT** for non-current services of local authorities, the formalised procedure becomes mandatory — the regime tips into public procurement in the strict sense.
+
+In accounting terms, these purchases are recorded in the class-6 accounts (operating charges), typically accounts 611 (general subcontracting) or 622 (intermediary fees and consulting). They do not appear in the Ville's **buyer profile**, which only publishes contracts under the Public Procurement Code. This creates a **partially opaque zone** in the tracking of local public money.
+
+It is precisely this zone — under-threshold purchases — that is least readable in Paris open data. The open-public-data pipeline does not yet hold an annual aggregated dataset for these flows: they can only be reconstituted by cross-referencing accounts 611/622 of the administrative account, which this project has not yet done.
+
+## Public procurement: commissioning, competition, formalised contract
+
+Public procurement is the most heavily regulated of the three regimes. It applies whenever a public buyer enters into a paid contract to meet its needs in works, supplies, or services, above the thresholds mentioned above. The **Public Procurement Code** that came into force in 2019 (issued from ordinance 2015-899 and EU directive 2014/24/EU) governs the whole.
+
+Three elements distinguish a procurement contract from a subsidy or a service purchase:
+
+- **The initiative comes from the Ville**: it drafts the specifications, sets the needs, organises the procedure.
+- **Competitive tendering is formal**: notice published in the **BOAMP** (Official Bulletin of Public Procurement Notices) and, above the European threshold, in the **OJEU** (Official Journal of the European Union). Candidates submit offers; the Ville evaluates against announced criteria; it awards to the most economically advantageous offer.
+- **The contract is public**: the award, the holder, the amount, and the duration are published. The holder can be a company, an association, a cooperative, a public structure — there is no restriction on the holder's legal nature.
+
+Several sub-regimes coexist within public procurement: **ordinary contracts** (one object, one price, one duration), **framework agreements** (a multi-year cap executed through successive purchase orders), **MAPAs** (adapted procedures below European thresholds), **competitive dialogue** (for complex objects where the Ville cannot precisely define its need a priori). These technical distinctions explain why the figures communicated on procurement can appear very large: they often add up **multi-year envelopes** (contractual ceilings of framework agreements), not actual annual spending.
+
+## Three flows, three orders of magnitude — the Paris case
+
+For fiscal year 2024, the Ville de Paris awarded and notified the following volumes (source: open-public-data pipeline, datasets `subventions_tendances` and `marches_tendances`):
+
+| Flow | 2024 volume | Count | Scope |
+|---|---:|---:|---|
+| **Subsidies** | €1,353M | 5,977 attributions, 5,948 recipients | All directorates, all themes |
+| **Public procurement notified** | €3,220M | 1,762 contracts notified | Multi-year envelopes (caps), all scopes |
+| **Under-threshold service purchases** | not aggregated | not aggregated | Reconstitutable from accounts 611/622 — not available to date |
+
+Three methodological cautions are needed to read this table:
+
+- The **€3.22Bn of notified procurement** are not 2024 spending: they are commitment ceilings, of which a portion will be spread over three, five, or eight years. The **actual annual spending** linked to procurement contracts is typically around half of the annual notified envelope — the ratio depends on active framework agreements. Comparing this €3.22Bn to the €1.35Bn of subsidies, which are annual commitment decisions, produces a false symmetry.
+- The subsidy total includes **transfers to public operators** (CASVP, Paris Habitat, RIVP, Eau de Paris, etc.), which capture about 62%. **Private-law associations** in the strict sense receive around €280M — less than a quarter of the total. This structure was detailed in another blog article.
+- **Under-threshold service purchases** remain a blind spot. Without an aggregated dataset, it is impossible to compare the three orders of magnitude on equal footing. This gap is itself a fact to acknowledge, not an analytical omission.
+
+## Why the confusion is costly
+
+Conflating the three flows is not a technical detail. It has direct consequences for public debate and for the control levers available to citizens.
+
+**On legal remedies.** A public procurement award can be challenged before the administrative tribunal by any rejected candidate, through a **pre-contractual urgent application** (*référé précontractuel*) or a **contractual urgent application**. The deadline is short (a few days after notification), but the lever is powerful: the procedure can be suspended, even annulled. A subsidy, by contrast, cannot be challenged by a third party that would have preferred to receive it — it falls within the local authority's discretionary choice, framed by the principle of equality but not subject to competition. Conflating the two in a sentence masks this asymmetry of democratic leverage.
+
+**On the nature of the commitment.** A subsidy is in principle not automatically renewable — every year, the Conseil de Paris can decide to maintain, reduce, or remove it. A public procurement contract, by contrast, contractually binds the local authority for the contract's duration — usually several years. Presenting a multi-year subsidy as an entitlement and a procurement contract as revocable support inverts the actual legal balance.
+
+**On reading the figures.** Subsidies are recorded in account 65 (subsidies paid), purchases in account 60 (consumed purchases) or 61/62 (external services). In the Ville's consolidated administrative account, the displayed aggregations do not always cleanly distinguish these lines — an item like "social action" can include both subsidies to the CASVP and procurement contracts for home-care services. Without a reading grid, the total becomes illegible.
+
+**On evaluation.** A subsidy is evaluated against the funded project: what was produced, who benefited, at what cost. A service purchase is evaluated against the service actually delivered — delivery, quality, conformity to the specification. A public procurement contract is evaluated both on procedure (was it lawful?) and on execution (did the holder deliver?). Three different evaluation grids, for three flow types.
+
+## A factual convergence: the money flows, the regimes differ
+
+From a recipient's standpoint, receiving a €500,000 subsidy, signing a €500,000 service purchase, or being awarded a €500,000 procurement contract produces the same accounting result: €500,000 enter. But the associated obligations, exigible considerations, control routes, payment terms, evaluation modes, and renewal possibilities differ each time.
+
+A large organisation can, in the same year, receive all three types of flow from the same local authority. It is in fact common: Eau de Paris (a public utility) receives a balancing subsidy from the Ville, executes procurement contracts with it, and invoices ordinary services. A large cultural association can be subsidised for its general operations, awarded a contract for a specific event, and bill a training service. Describing these three flows with the same phrase — "the Ville pays X to Y" — erases three years of evolution in public law.
+
+<aside className="fx-sidebar">
+
+### Who can challenge what?
+
+**Subsidy**: it can be challenged by a Paris taxpayer (action for *excès de pouvoir* before the administrative tribunal) on grounds of unlawfulness — for example, lack of motivation in the deliberation, exceeding the Ville's powers, or misuse of power. But it cannot be challenged by a competing association that would have preferred to receive it.
+
+**Public procurement**: any rejected candidate can file a **pre-contractual urgent application** in the days following the award notice. They can also file a **contractual urgent application** after signature, or a substantive case before the administrative judge. Associations that monitor public procurement regularly use these levers.
+
+**Under-threshold service purchase**: the route is narrower. Control is essentially *ex post* — by the regional audit chamber during its management reviews, or by the Ville's internal control services. The press plays a particular watchdog role here, given the lack of a simple contentious procedure.
+
+</aside>
+
+## Reading a transfer of public money
+
+Three different grammars channel local public money. Recognising which one applies to a given flow is a prerequisite, not an academic refinement: it determines whether one can challenge it, how to evaluate it, and where to find it in the local authority's accounts.
+
+When an article says "the Ville pays €X to Y", three questions deserve to be asked before drawing any conclusion: is it a subsidy attributed by deliberation? a service purchase under threshold? a procurement contract awarded after competition? The answer does not say whether the money was well or poorly used — that is a separate question. It says how the money flowed, and therefore where to look to verify.
+
+## What these figures do not say
+
+This analysis stops where positive law and the open-public-data pipeline allow. It does not say:
+
+- **Whether a given project is better served by a subsidy or by procurement**. That is a legitimate political choice, debated case by case — the same need (running a school canteen, animating a community centre) can be handled by procurement or by subsidy depending on the local authority's choices.
+- **Whether current thresholds are right**. The €40,000 ex-VAT direct-purchase threshold is regularly debated: too low, it loads administrative costs; too high, it reduces effective competition.
+- **How many "subsidies" are in fact disguised service purchases**, or vice versa. Regional audit chambers regularly point out, in their management reviews, cases where the legal qualification of a flow does not match its economic reality. Detecting these reclassifications requires a piece-by-piece review that this site does not perform.
+- **The compared effectiveness of the three regimes for the same public-policy goal**. That is the object of public-policy evaluation, which is a different craft from financial-flow tracking.
+
+What it says, in one line: **a single word — "payment" — covers three distinct legal regimes that do not entail the same obligations, cannot be challenged before the same courts, and do not appear in the same accounting lines**. Distinguishing them is the precondition for any debate about local public money to be more than an exchange of orders of magnitude without grammar.
+
+---
+
+**Sources**: General Code of Local Authorities (CGCT), articles L.1611-4 et seq. · Law 2000-321 of 12 April 2000 (article 10) and decree 2001-495 of 6 June 2001 (subsidy agreement) · Public Procurement Code, ordinance 2015-899 and EU directive 2014/24/EU — 2024-2025 thresholds · Open-public-data pipeline, datasets `subventions_tendances.json` (source dbt mart_subventions_beneficiaires) and `marches_tendances.json` (source dbt mart_marches_fournisseurs), fiscal year 2024 · Conseil de Paris deliberations, public archives on the Ville's open-data portal. Figures in current euros, fiscal year 2024.
