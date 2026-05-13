@@ -16,6 +16,7 @@ import BudgetTreemap, {
 } from "@/components/fusion/BudgetTreemap";
 import { loadDailyBread } from "@/lib/national-data";
 import { loadDrilldown } from "@/lib/budget-drilldown";
+import { computeStateBuckets } from "@/lib/daily-bread";
 import { listCrossCuttingThemes } from "@/lib/cross-cutting";
 import { CrossCuttingPanel } from "@/components/fusion";
 import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
@@ -621,38 +622,43 @@ export default async function FranceBudgetPage({
               left: t("budget.section.etat.header_left"),
               right: t("budget.section.etat.header_right"),
             }}
-            items={etatAggregations.map((a) => {
-              // Base = `total_net_cp_eur` (≈ 447 Md€) pour rester cohérent
-              // avec le `share_of_parent` PLF — voir note méthodo §05.
-              const value = etatAttribuableAnnual * (a.share_of_parent ?? 0);
-              return {
-                label: locale === "en" ? a.label_en : a.label_fr,
-                value,
-                href: urlEtatAggregation(a.key, profileQs),
-                display: (
-                  <>
-                    {fmtBnEur(value, locale)}
-                    <span style={{ marginLeft: 10, color: "var(--muted)" }}>
-                      · {fmtPct(a.share_of_parent ?? 0, locale)}
-                    </span>
-                  </>
-                ),
-              };
-            })}
+            items={(() => {
+              if (!db) return [];
+              // Utilise computeStateBuckets qui applique l'overlay S1311
+              // (CAS Pensions par ministère + ODAC + PSR-UE + budgets
+              // annexes + résiduel) → 12 buckets sommant à 100 % de S1311.
+              const buckets = computeStateBuckets(etatAnnual, db);
+              return buckets.map((b) => {
+                // Sub-text : missions PLF + items overlay (CAS, ODAC, etc.)
+                const missionLabels = b.missions.map((m) => m.label).slice(0, 3);
+                const overlayLabels = (b.overlay_items ?? [])
+                  .map((it) => (locale === "en" ? it.label_en : it.label_fr))
+                  .slice(0, 4);
+                const subParts = [...missionLabels, ...overlayLabels];
+                // Lien drawer uniquement pour les buckets cartographiés dans
+                // les aggregations PLF (les buckets overlay-only comme
+                // contribution_ue ou autres_etat_hors_plf n'ont pas de drawer).
+                const hasAgg = etatAggregations.some(
+                  (a) => a.key === (b.key === "autres_ministeres" ? "autres" : b.key),
+                );
+                const aggKey = b.key === "autres_ministeres" ? "autres" : b.key;
+                return {
+                  label: locale === "en" ? b.label_en : b.label_fr,
+                  value: b.annual_eur,
+                  href: hasAgg ? urlEtatAggregation(aggKey, profileQs) : undefined,
+                  display: (
+                    <>
+                      {fmtBnEur(b.annual_eur, locale)}
+                      <span style={{ marginLeft: 10, color: "var(--muted)" }}>
+                        · {fmtPct(b.share_of_state, locale)}
+                      </span>
+                    </>
+                  ),
+                  sub: subParts.length > 1 ? subParts.join(" · ") : undefined,
+                };
+              });
+            })()}
           />
-          {/* Note méthodo : 229 Md€ S1311 hors missions PLF (voir spec). */}
-          {etatAttribuableAnnual > 0 && etatAnnual > 0 && (
-            <MethodNote marginTop={22} maxWidth={820}>
-              {t("budget.section.etat.scope_note", {
-                plf_total: fmtBnEur(etatAttribuableAnnual, locale),
-                s1311_total: fmtBnEur(etatAnnual, locale),
-                delta: fmtBnEur(
-                  Math.max(0, etatAnnual - etatAttribuableAnnual),
-                  locale,
-                ),
-              })}
-            </MethodNote>
-          )}
         </div>
       </RevealOnScroll>
 
