@@ -12206,6 +12206,8 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   margin-left: 12px;
   vertical-align: 0.55em;
   letter-spacing: 0;
+  white-space: nowrap;
+  display: inline-block;
 }
 .theme-db-scrolly .db-p-zoom-eur.c-secu { color: var(--p-secu); }
 .theme-db-scrolly .db-p-zoom-eur.c-etat { color: var(--p-etat); }
