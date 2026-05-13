@@ -378,3 +378,27 @@ models:
         tests: [not_null]
       - name: annee
         tests: [not_null]
+
+  # ===========================================================================
+  # MARSEILLE — Budget OBT (passthrough sur stg_marseille_budget)
+  # ===========================================================================
+  - name: core_marseille_budget
+    description: |
+      OBT budget Marseille — passthrough sur stg_marseille_budget pour respecter
+      la convention de couches (mart → core, jamais mart → stg).
+
+      Pas d'enrichissement city-specific (Marseille publie par nature uniquement ;
+      pas de dimension fonctionnelle / direction comme Paris).
+
+      Quand l'unification multi-villes P2.1 sera faite, ce core fusionnera
+      dans core_budget global via UNION ALL discriminé par commune_slug.
+    columns:
+      - name: commune_slug
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['marseille']
+      - name: annee
+        tests: [not_null]
+      - name: montant
+        tests: [not_null]
