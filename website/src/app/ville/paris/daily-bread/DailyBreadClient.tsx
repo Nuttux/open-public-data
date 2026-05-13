@@ -858,6 +858,14 @@ export default function DailyBreadClient({
     const eleveJour = items.cout_eleve_jour_scolaire_public?.value ?? 52;
     const ticket = items.trajet_metro_paris?.value ?? 2.5;
 
+    // Approche A : monthly_eur dans assoBranches/stateBuckets/localLevels est
+    // désormais le NATIONAL monthly total (798 Md€ × share / 12). Pour
+    // les équivalents, on convertit en per-capita en divisant par la
+    // population française. Le label "Ta cotisation X €/mois" devient
+    // "X €/mois/habitant" pour cohérence avec le reste de Daily Bread.
+    const toPerCapita = (n: number) =>
+      populationFr > 0 ? n / populationFr : 0;
+
     // CNAM = "part_cnam_maladie"
     const cnam = assoBranches.find((b) => b.key === "part_cnam_maladie");
     const cnav = assoBranches.find((b) => b.key === "part_cnav_retraites");
@@ -865,135 +873,154 @@ export default function DailyBreadClient({
     const educ = stateBuckets.find((b) => b.key === "education_recherche");
     const dette = stateBuckets.find((b) => b.key === "dette");
     const blocCommunal = localLevels.find((l) => l.key === "bloc_communal");
+    // Per-capita monthly pour chaque équivalent
+    const cnamPC = cnam ? toPerCapita(cnam.monthly_eur) : 0;
+    const cnavPC = cnav ? toPerCapita(cnav.monthly_eur) : 0;
+    const educPC = educ ? toPerCapita(educ.monthly_eur) : 0;
+    const dettePC = dette ? toPerCapita(dette.monthly_eur) : 0;
+    const blocPC = blocCommunal ? toPerCapita(blocCommunal.monthly_eur) : 0;
 
     return [
-      cnam && {
+      cnam && cnamPC > 0 && {
         key: "sante" as const,
         institution: "secu" as const,
         tagFr: "SANTÉ · SÉCURITÉ SOCIALE",
         tagEn: "HEALTH · SOCIAL SECURITY",
-        // "5" pas "≈ 5" — le ≈ alourdit visuellement, le contexte rend l'idée
-        // d'estimation explicite via les sources.
-        number: (cnam.monthly_eur / consult).toLocaleString(
+        number: (cnamPC / consult).toLocaleString(
           locale === "en" ? "en-GB" : "fr-FR",
-          { maximumFractionDigits: 0 },
+          { maximumFractionDigits: 1 },
         ),
-        claimAFr: "consultations",
-        claimAEn: "GP visits",
-        claimBFr: "chez le généraliste.",
-        claimBEn: "with your GP.",
-        editorialFr: "Soit presque un check-up par semaine.",
-        editorialEn: "Roughly a check-up per week.",
+        claimAFr: "consultations / habitant",
+        claimAEn: "GP visits / inhabitant",
+        claimBFr: "chez le généraliste, par mois.",
+        claimBEn: "per month.",
+        editorialFr: "Ce que la France finance par habitant en consultations médicales.",
+        editorialEn: "What France funds per inhabitant in GP visits.",
         sourceDetailFr: "Convention médicale 2024 · 30 € la consultation.",
         sourceDetailEn: "Medical agreement 2024 · €30 per visit.",
-        viaDetailFr: `Ta cotisation à la branche maladie : ${fmtEur(cnam.monthly_eur, locale, 0)} €/mois.`,
-        viaDetailEn: `Your contribution to the health branch: €${fmtEur(cnam.monthly_eur, locale, 0)}/month.`,
-        // Fallback pour le partage social et éventuels anciens consommateurs.
-        headline: `≈ ${(cnam.monthly_eur / consult).toLocaleString(
+        viaDetailFr: `Branche maladie : ${fmtEur(cnamPC, locale, 0)} €/mois/habitant.`,
+        viaDetailEn: `Health branch: €${fmtEur(cnamPC, locale, 0)}/month/inhabitant.`,
+        headline: `≈ ${(cnamPC / consult).toLocaleString(
           locale === "en" ? "en-GB" : "fr-FR",
-          { maximumFractionDigits: 0 },
+          { maximumFractionDigits: 1 },
         )}`,
-        unitFr: "consultations généralistes / mois",
-        unitEn: "GP consultations / month",
-        amount: cnam.monthly_eur,
+        unitFr: "consultations / mois / hab",
+        unitEn: "GP visits / month / inhab",
+        amount: cnamPC,
         sub: "CNAM",
         viaFr: "via CNAM",
         viaEn: "via CNAM",
       },
-      cnav && {
+      cnav && cnavPC > 0 && {
         key: "retraite" as const,
         institution: "secu" as const,
         tagFr: "RETRAITES · CNAV",
         tagEn: "PENSIONS · CNAV",
-        number: `${((cnav.monthly_eur / pension) * 100).toLocaleString(
+        number: `${((cnavPC / pension) * 100).toLocaleString(
           locale === "en" ? "en-GB" : "fr-FR",
           { maximumFractionDigits: 0 },
         )} %`,
-        claimAFr: "d'une pension",
-        claimAEn: "of a pension",
-        editorialFr: "Tu cotises chaque mois pour les pensions actuelles.",
-        editorialEn: "You contribute each month to current pensions.",
+        claimAFr: "d'une pension moyenne",
+        claimAEn: "of an average pension",
+        claimBFr: "financés par habitant chaque mois.",
+        claimBEn: "funded per inhabitant each month.",
+        editorialFr: "La France consacre l'équivalent d'une fraction de pension par habitant.",
+        editorialEn: "France funds the equivalent of part of a pension per inhabitant.",
         sourceDetailFr: "DREES 2024 · pension moyenne 1 626 €/mois.",
         sourceDetailEn: "DREES 2024 · average pension €1,626/month.",
-        headline: `≈ ${((cnav.monthly_eur / pension) * 100).toLocaleString(
+        viaDetailFr: `Branche retraite : ${fmtEur(cnavPC, locale, 0)} €/mois/habitant.`,
+        viaDetailEn: `Pension branch: €${fmtEur(cnavPC, locale, 0)}/month/inhabitant.`,
+        headline: `≈ ${((cnavPC / pension) * 100).toLocaleString(
           locale === "en" ? "en-GB" : "fr-FR",
           { maximumFractionDigits: 0 },
         )} %`,
-        unitFr: "d'une pension moyenne",
-        unitEn: "of an average pension",
-        amount: cnav.monthly_eur,
+        unitFr: "d'une pension moyenne / hab",
+        unitEn: "of an average pension / inhab",
+        amount: cnavPC,
         sub: "CNAV",
         viaFr: "via CNAV",
         viaEn: "via CNAV",
       },
-      educ && {
+      educ && educPC > 0 && {
         key: "ecole" as const,
         institution: "etat" as const,
         tagFr: "ÉCOLE · ÉTAT",
         tagEn: "SCHOOL · STATE",
-        number: (educ.monthly_eur / eleveJour).toLocaleString(
+        number: (educPC / eleveJour).toLocaleString(
           locale === "en" ? "en-GB" : "fr-FR",
-          { maximumFractionDigits: 1 },
+          { maximumFractionDigits: 2 },
         ),
-        claimAFr: "jours d'école",
-        claimAEn: "school-days",
+        claimAFr: "jours d'école / habitant",
+        claimAEn: "school-days / inhabitant",
+        claimBFr: "financés par mois.",
+        claimBEn: "funded per month.",
         editorialFr: "Pour un élève public — sur 9 350 €/an de coût total.",
-        editorialEn: "For one student — out of €9,350/year total cost.",
+        editorialEn: "For one public-school student — out of €9,350/year total.",
         sourceDetailFr: "DEPP RERS 2023 · ~9 350 €/an par élève.",
         sourceDetailEn: "DEPP RERS 2023 · ~€9,350/year per student.",
-        headline: `≈ ${(educ.monthly_eur / eleveJour).toLocaleString(
+        viaDetailFr: `Éducation État : ${fmtEur(educPC, locale, 0)} €/mois/habitant.`,
+        viaDetailEn: `State education: €${fmtEur(educPC, locale, 0)}/month/inhab.`,
+        headline: `≈ ${(educPC / eleveJour).toLocaleString(
           locale === "en" ? "en-GB" : "fr-FR",
-          { maximumFractionDigits: 1 },
+          { maximumFractionDigits: 2 },
         )}`,
-        unitFr: "jours d'école / 1 élève",
-        unitEn: "days of school / 1 student",
-        amount: educ.monthly_eur,
+        unitFr: "jours d'école / mois / hab",
+        unitEn: "school-days / month / inhab",
+        amount: educPC,
         sub: locale === "en" ? "State" : "État",
         viaFr: "via État",
         viaEn: "via State",
       },
-      blocCommunal && {
+      blocCommunal && blocPC > 0 && {
         key: "transport" as const,
         institution: "local" as const,
         tagFr: "TRANSPORT · COLLECTIVITÉS",
         tagEn: "TRANSPORT · LOCAL",
-        number: (blocCommunal.monthly_eur / ticket).toLocaleString(
+        number: (blocPC / ticket).toLocaleString(
           locale === "en" ? "en-GB" : "fr-FR",
           { maximumFractionDigits: 0 },
         ),
-        claimAFr: "trajets en bus",
-        claimAEn: "bus trips",
-        editorialFr: "Soit ton mois de transport quasi gratuit.",
-        editorialEn: "Almost your monthly transit pass.",
+        claimAFr: "trajets urbains / habitant",
+        claimAEn: "urban transit trips / inhab",
+        claimBFr: "financés par mois.",
+        claimBEn: "funded per month.",
+        editorialFr: "Bus, métro, tram — moyenne nationale par habitant.",
+        editorialEn: "Bus, metro, tram — national average per inhabitant.",
         sourceDetailFr: "UTP 2024 · 2,50 € le trajet urbain.",
         sourceDetailEn: "UTP 2024 · €2.50 per urban trip.",
-        headline: `≈ ${(blocCommunal.monthly_eur / ticket).toLocaleString(
+        viaDetailFr: `Bloc communal : ${fmtEur(blocPC, locale, 0)} €/mois/habitant.`,
+        viaDetailEn: `Municipal block: €${fmtEur(blocPC, locale, 0)}/month/inhab.`,
+        headline: `≈ ${(blocPC / ticket).toLocaleString(
           locale === "en" ? "en-GB" : "fr-FR",
           { maximumFractionDigits: 0 },
         )}`,
-        unitFr: "tickets de transport / mois",
-        unitEn: "transit tickets / month",
-        amount: blocCommunal.monthly_eur,
-        sub: commune?.nom ?? (locale === "en" ? "Municipal" : "Bloc communal"),
-        viaFr: commune?.nom ? `via ${commune.nom}` : "via Bloc communal",
-        viaEn: commune?.nom ? `via ${commune.nom}` : "via municipal",
+        unitFr: "tickets transport / mois / hab",
+        unitEn: "transit tickets / month / inhab",
+        amount: blocPC,
+        sub: locale === "en" ? "Municipal" : "Bloc communal",
+        viaFr: "via collectivités",
+        viaEn: "via local authorities",
       },
-      dette && {
+      dette && dettePC > 0 && {
         key: "dette" as const,
         institution: "etat" as const,
         tagFr: "DETTE · ÉTAT",
         tagEn: "DEBT · STATE",
-        number: `${fmtEur(dette.monthly_eur, locale, 0)} €`,
-        claimAFr: "d'intérêts",
-        claimAEn: "in interest",
-        editorialFr: "Sur la dette publique — en hausse depuis 2022.",
-        editorialEn: "On public debt — rising since 2022.",
+        number: `${fmtEur(dettePC, locale, 0)} €`,
+        claimAFr: "d'intérêts / habitant",
+        claimAEn: "of interest / inhab",
+        claimBFr: "par mois sur la dette publique.",
+        claimBEn: "per month on public debt.",
+        editorialFr: "Charge de la dette par habitant — en hausse depuis 2022.",
+        editorialEn: "Per-inhabitant debt service — rising since 2022.",
         sourceDetailFr: "AFT 2025 · charge de la dette votée au PLF.",
         sourceDetailEn: "AFT 2025 · debt service voted in PLF.",
-        headline: `≈ ${fmtEur(dette.monthly_eur, locale, 0)} €`,
-        unitFr: "d'intérêts de la dette / mois",
-        unitEn: "in debt interest / month",
-        amount: dette.monthly_eur,
+        viaDetailFr: `Service de la dette : ${fmtEur(dettePC, locale, 0)} €/mois/habitant.`,
+        viaDetailEn: `Debt service: €${fmtEur(dettePC, locale, 0)}/month/inhab.`,
+        headline: `≈ ${fmtEur(dettePC, locale, 0)} €`,
+        unitFr: "d'intérêts dette / mois / hab",
+        unitEn: "debt interest / month / inhab",
+        amount: dettePC,
         sub: locale === "en" ? "Interest" : "Intérêts",
         viaFr: "via service de la dette",
         viaEn: "via debt service",
@@ -2004,16 +2031,11 @@ export default function DailyBreadClient({
                       €/{locale === "en" ? "mo/inhab" : "mois/hab"}
                     </span>
                   </p>
-                  <p className="db-p-zoom-name">{dynamicTitle}</p>
-                  {(isParisStatut || isLyonStatut) && (
-                    <p className="db-p-zoom-caveat">
-                      {t(
-                        isParisStatut
-                          ? "db.local.paris_statut_note"
-                          : "db.local.lyon_statut_note",
-                      )}
-                    </p>
-                  )}
+                  <p className="db-p-zoom-name">
+                    {locale === "en"
+                      ? "Local authorities (national average)"
+                      : "Collectivités locales (moyenne nationale)"}
+                  </p>
                   <p className="db-p-zoom-pct-line tnum">
                     <b>{Math.round(((s1311Total + s1313Total + s1314Total) > 0 ? s1313Total / (s1311Total + s1313Total + s1314Total) : 0) * 100)} %</b>{" "}
                     {locale === "en"
