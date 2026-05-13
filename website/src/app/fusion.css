@@ -961,6 +961,63 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   flex-direction: column;
   gap: 4px;
 }
+.theme-fusion .fx-recettes-item-link {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-decoration: none;
+  color: inherit;
+  padding: 4px 6px;
+  margin: -4px -6px;
+  border-radius: 2px;
+  transition: background 0.15s ease;
+}
+.theme-fusion .fx-recettes-item-link:hover {
+  background: var(--ivoire, #fbfaf5);
+}
+.theme-fusion .fx-recettes-item-link:hover .fx-recettes-item-chevron {
+  opacity: 1;
+  transform: translateX(2px);
+}
+.theme-fusion .fx-recettes-item-chevron {
+  display: inline-block;
+  margin-left: 4px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted-2);
+  opacity: 0;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.theme-fusion .fx-recettes-ue-row-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+  padding: 4px 6px;
+  margin: 0 -6px;
+  border-radius: 2px;
+  transition: background 0.15s ease;
+}
+.theme-fusion .fx-recettes-ue-row-link:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+.theme-fusion .fx-recettes-ue-row-link:hover .fx-recettes-ue-chevron {
+  opacity: 1;
+  transform: translateX(2px);
+}
+.theme-fusion .fx-recettes-ue-chevron {
+  display: inline-block;
+  margin-left: 4px;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted-2);
+  opacity: 0;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
 .theme-fusion .fx-recettes-item-head {
   display: flex;
   justify-content: space-between;

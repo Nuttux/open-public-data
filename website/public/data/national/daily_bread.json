@@ -75,11 +75,14 @@
       "taux_moyen_consommation": 0.122,
       "propension_consommer": 0.85,
       "taux_effectif_sur_disponible": 0.104,
+      "part_etat_nette": 0.45,
+      "part_secu_nette": 0.31,
+      "part_local_nette": 0.24,
       "year": 2024,
-      "source": "INSEE - Comptes nationaux annuels (T_TES)",
+      "source": "INSEE - Comptes nationaux annuels (T_TES) + PLF 2025 V&M tome I (affectations)",
       "source_url": "https://www.insee.fr/fr/statistiques/serie/010003222",
       "date_reference": "2024-01-01",
-      "notes": "Taux effectif TVA sur revenu disponible = 12,2% (taux moyen pondéré consommation, INSEE T_TES) × 85% (propension à consommer moyenne, INSEE comptes ménages). Lisse les disparités par décile."
+      "notes": "Taux effectif TVA sur revenu disponible = 12,2% × 85% = 10,4%. Affectations TVA nette 2025 (PLF V&M tome I) : 45% État (102 Md€), 31% Sécu (~70 Md€ compensation exonérations), 24% Local (~52 Md€ compensation TH + CVAE supprimée). Permet l'attribution causale par sous-secteur."
     },
     "pfu": {
       "taux_total": 0.3,

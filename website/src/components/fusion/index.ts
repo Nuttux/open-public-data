@@ -14,6 +14,7 @@ export type { BarRowColor } from "./BarRow";
 export { default as RevealOnScroll } from "./RevealOnScroll";
 export { default as MethodNote } from "./MethodNote";
 export { default as RecettesPanel } from "./RecettesPanel";
+export { default as RecetteFiche } from "./RecetteFiche";
 export { default as CountUpOnReveal } from "./CountUpOnReveal";
 export { default as BnEurCountUp } from "./BnEurCountUp";
 export { default as BlogTimeBars } from "./BlogTimeBars";
