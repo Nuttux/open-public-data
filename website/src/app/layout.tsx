@@ -15,6 +15,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import AnalyticsProvider from "@/components/AnalyticsProvider";
 import { LocaleProvider } from "@/lib/localeContext";
+import SearchModal from "@/components/fusion/SearchModal";
 import { SITE_URL, SITE_NAME, organizationJsonLd, websiteJsonLd, readLocale } from "@/lib/seo";
 
 const inter = Inter({
@@ -127,6 +128,7 @@ export default async function RootLayout({
         <AnalyticsProvider>
           <LocaleProvider initialLocale={initialLocale}>
             {children}
+            <SearchModal />
           </LocaleProvider>
         </AnalyticsProvider>
       </body>
