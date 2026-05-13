@@ -896,6 +896,238 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   .theme-fusion .fx-grid-tiles-4 { grid-template-columns: 1fr; }
 }
 
+/* ── Section recettes (panneau §02 — D'où vient l'argent) ─────────────
+   3 cartes horizontales (Sécu / État / Local) avec items empilés.
+   Couleurs institutionnelles : bleu Sécu / charbon État / rouge Local. */
+.theme-fusion .fx-recettes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 32px 0 0;
+}
+@media (max-width: 1100px) {
+  .theme-fusion .fx-recettes-grid { grid-template-columns: 1fr; }
+}
+.theme-fusion .fx-recettes-card {
+  background: var(--bg);
+  padding: 22px 22px 24px;
+  border-top: 3px solid var(--ink);
+}
+.theme-fusion .fx-recettes-card-secu { border-top-color: #2a3680; }
+.theme-fusion .fx-recettes-card-etat { border-top-color: #1a1d26; }
+.theme-fusion .fx-recettes-card-local { border-top-color: #c12323; }
+.theme-fusion .fx-recettes-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--rule);
+}
+.theme-fusion .fx-recettes-card-name {
+  font-family: var(--f-disp);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0;
+}
+.theme-fusion .fx-recettes-card-total {
+  font-family: var(--f-disp);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-align: right;
+}
+.theme-fusion .fx-recettes-card-total-unit {
+  font-family: var(--f-disp);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  margin-left: 2px;
+}
+.theme-fusion .fx-recettes-card-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.theme-fusion .fx-recettes-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.theme-fusion .fx-recettes-item-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+.theme-fusion .fx-recettes-item-name {
+  font-family: var(--f-ui);
+  font-size: 13.5px;
+  color: var(--ink);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  flex: 1;
+}
+.theme-fusion .fx-recettes-item-val {
+  font-family: var(--f-disp);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.theme-fusion .fx-recettes-item-pct {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted-2, #6b7280);
+  letter-spacing: 0.04em;
+}
+.theme-fusion .fx-recettes-item-bar {
+  height: 6px;
+  background: var(--rule);
+  position: relative;
+}
+.theme-fusion .fx-recettes-item-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: var(--ink);
+}
+.theme-fusion .fx-recettes-c-secu { background: #2a3680; }
+.theme-fusion .fx-recettes-c-etat { background: #1a1d26; }
+.theme-fusion .fx-recettes-c-local { background: #c12323; }
+.theme-fusion .fx-recettes-item-nature {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--muted-2, #6b7280);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+
+/* Bloc déficit / emprunt — séparation visuelle (trait ocre subtil). */
+.theme-fusion .fx-recettes-deficit {
+  margin: 40px 0 0;
+  padding: 22px 26px;
+  border-left: 3px solid var(--accent, #a67638);
+  background: var(--ivoire, #fbfaf5);
+}
+.theme-fusion .fx-recettes-deficit-eyebrow,
+.theme-fusion .fx-recettes-ue-eyebrow {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--accent, #a67638);
+  margin: 0 0 10px;
+  text-transform: uppercase;
+}
+.theme-fusion .fx-recettes-deficit-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.theme-fusion .fx-recettes-deficit-label {
+  font-family: var(--f-ui);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.theme-fusion .fx-recettes-deficit-val {
+  font-family: var(--f-disp);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.theme-fusion .fx-recettes-deficit-pct {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted-2);
+  margin-left: 4px;
+  letter-spacing: 0.03em;
+}
+.theme-fusion .fx-recettes-deficit-explain,
+.theme-fusion .fx-recettes-ue-explain {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 8px 0 0;
+  max-width: 72ch;
+}
+
+/* Bloc UE — bilan brut/reçu/net */
+.theme-fusion .fx-recettes-ue {
+  margin: 24px 0 0;
+  padding: 22px 26px;
+  border-left: 3px solid var(--accent, #a67638);
+  background: var(--ivoire, #fbfaf5);
+}
+.theme-fusion .fx-recettes-ue-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.theme-fusion .fx-recettes-ue-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+.theme-fusion .fx-recettes-ue-row-net {
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1px solid var(--rule);
+  font-weight: 600;
+}
+.theme-fusion .fx-recettes-ue-label {
+  font-family: var(--f-ui);
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.theme-fusion .fx-recettes-ue-val {
+  font-family: var(--f-disp);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.theme-fusion .fx-recettes-ue-val-plus {
+  color: #15803d;
+}
+.theme-fusion .fx-recettes-ue-yr {
+  font-family: var(--f-disp);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  margin-left: 2px;
+}
+
+.theme-fusion .fx-recettes-method-note {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 20px 0 0;
+  max-width: 72ch;
+  padding-left: 12px;
+  border-left: 1px solid var(--rule);
+}
+
 .theme-fusion .fx-tile {
   background: var(--bg);
   padding: 26px 26px 28px;

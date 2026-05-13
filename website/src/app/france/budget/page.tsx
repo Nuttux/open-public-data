@@ -16,7 +16,9 @@ import BudgetTreemap, {
 } from "@/components/fusion/BudgetTreemap";
 import { loadDailyBread } from "@/lib/national-data";
 import { loadDrilldown } from "@/lib/budget-drilldown";
+import { loadRecettesApu } from "@/lib/recettes-apu";
 import { computeStateBuckets } from "@/lib/daily-bread";
+import { RecettesPanel } from "@/components/fusion";
 import { listCrossCuttingThemes } from "@/lib/cross-cutting";
 import { CrossCuttingPanel } from "@/components/fusion";
 import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
@@ -382,11 +384,22 @@ export default async function FranceBudgetPage({
         </div>
       </section>
 
-      {/* §02 — TREEMAP ──────────────────────────────────────────────── */}
+      {/* §02 — RECETTES "d'où vient l'argent" ──────────────────────── */}
+      {(() => {
+        const recettes = loadRecettesApu();
+        if (!recettes) return null;
+        return (
+          <RevealOnScroll>
+            <RecettesPanel data={recettes} locale={locale} t={t} />
+          </RevealOnScroll>
+        );
+      })()}
+
+      {/* §03 — TREEMAP ──────────────────────────────────────────────── */}
       <RevealOnScroll className="fx-section">
         <div className="fx-wrap">
           <SectionHead
-            number="02"
+            number="03"
             kind={t("budget.section.treemap.kind")}
             title={t("budget.section.treemap.title")}
             subtitle={t("budget.section.treemap.subtitle")}
@@ -430,11 +443,11 @@ export default async function FranceBudgetPage({
         </div>
       </RevealOnScroll>
 
-      {/* §03 — TROIS PILIERS ───────────────────────────────────────── */}
+      {/* §04 — TROIS PILIERS ───────────────────────────────────────── */}
       <RevealOnScroll className="fx-section">
         <div className="fx-wrap">
           <SectionHead
-            number="03"
+            number="04"
             kind={t("budget.section.institutions.kind")}
             title={t("budget.section.institutions.title")}
             subtitle={t("budget.section.institutions.subtitle")}
@@ -567,11 +580,11 @@ export default async function FranceBudgetPage({
         </div>
       </RevealOnScroll>
 
-      {/* §04 — DRILL SÉCU ──────────────────────────────────────────── */}
+      {/* §05 — DRILL SÉCU ──────────────────────────────────────────── */}
       <RevealOnScroll className="fx-section" id="bucket-secu">
         <div className="fx-wrap">
           <SectionHead
-            number="04"
+            number="05"
             kind={t("budget.section.secu.kind")}
             title={t("budget.section.secu.title")}
             subtitle={t("budget.section.secu.subtitle")}
@@ -603,11 +616,11 @@ export default async function FranceBudgetPage({
         </div>
       </RevealOnScroll>
 
-      {/* §05 — DRILL ÉTAT ──────────────────────────────────────────── */}
+      {/* §06 — DRILL ÉTAT ──────────────────────────────────────────── */}
       <RevealOnScroll className="fx-section" id="bucket-etat">
         <div className="fx-wrap">
           <SectionHead
-            number="05"
+            number="06"
             kind={t("budget.section.etat.kind")}
             title={t("budget.section.etat.title")}
             subtitle={t("budget.section.etat.subtitle")}
@@ -662,11 +675,11 @@ export default async function FranceBudgetPage({
         </div>
       </RevealOnScroll>
 
-      {/* §06 — DRILL LOCAL ─────────────────────────────────────────── */}
+      {/* §07 — DRILL LOCAL ─────────────────────────────────────────── */}
       <RevealOnScroll className="fx-section" id="bucket-local">
         <div className="fx-wrap">
           <SectionHead
-            number="06"
+            number="07"
             kind={t("budget.section.local.kind")}
             title={t("budget.section.local.title")}
             subtitle={t("budget.section.local.subtitle")}
@@ -930,12 +943,12 @@ export default async function FranceBudgetPage({
         </div>
       </RevealOnScroll>
 
-      {/* §07 — VUES THÉMATIQUES (cross-cutting) ────────────────────── */}
+      {/* §08 — VUES THÉMATIQUES (cross-cutting) ────────────────────── */}
       {crossCuttingThemes.length > 0 && (
         <RevealOnScroll className="fx-section">
           <div className="fx-wrap">
             <SectionHead
-              number="07"
+              number="08"
               kind={t("budget.cross_cutting.section.eyebrow")}
               title={t("budget.cross_cutting.section.title")}
               subtitle={t("budget.cross_cutting.section.intro")}
@@ -969,7 +982,7 @@ export default async function FranceBudgetPage({
       <RevealOnScroll className="fx-section fx-section-cta-warm">
         <div className="fx-wrap" style={{ maxWidth: 820 }}>
           <SectionHead
-            number="08"
+            number="09"
             kind={t("budget.cta.daily_bread.kind")}
             title={t("budget.cta.daily_bread.title")}
             subtitle={t("budget.cta.daily_bread.body")}
