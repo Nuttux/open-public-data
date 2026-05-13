@@ -116,14 +116,37 @@ Le pipeline et les composants de visualisation sont open source dans [Nuttux/fra
 | [`docs/architecture-modelling.md`](docs/architecture-modelling.md) | Pipeline dbt, règles métier, qualité données |
 | [`docs/architecture-frontend.md`](docs/architecture-frontend.md) | Composants React, design system |
 | [`docs/data-quality.md`](docs/data-quality.md) | Limites connues, pistes d'amélioration |
+| [`docs/data-dictionary.md`](docs/data-dictionary.md) | Catalogue par entité core (sources, années, MAJ, transformations) |
+| [`docs/testing.md`](docs/testing.md) | Stratégie tests unit / e2e + roadmap |
+| [`docs/data-platform/`](docs/data-platform/) | Pipeline technique : catalogue dbt, conventions raw→stg→core→mart, qualité |
+| [`docs/runbooks/`](docs/runbooks/) | Procédures ops (rollback, promotion WIP, observability setup, etc.) — [`index`](docs/runbooks/README.md) |
+| [`docs/decisions/`](docs/decisions/) | ADRs — décisions architecturales versionnées |
 | [`pipeline/README.md`](pipeline/README.md) | Commandes dbt, enrichissement |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | Comment contribuer (setup, conventions, process de signalement) |
 
 ## Deploiement
 
 - **Hosting** : Vercel (CDG1 region)
 - **Domaine** : [franceopendata.org](https://franceopendata.org)
 - **Deploiement auto** : push sur `main` → build Vercel
+- **Preview** : chaque PR génère un déploiement preview (lien dans les checks GitHub)
+- **Rollback en cas d'incident** : voir [`docs/runbooks/rollback.md`](docs/runbooks/rollback.md) — procédure 1 min via Vercel dashboard
+
+## Observabilité
+
+- **Vercel Speed Insights** : Web Vitals (LCP, CLS, INP)
+- **Vercel Analytics** : page views agrégés, cookieless
+- **PostHog** : mesure d'audience CNIL-exempt
+- **Sentry** : JS errors front + server (dès DSN provisionné)
+- **Plausible** : alternative privacy-friendly (dès domain provisionné)
+- **Better Stack** : uptime + status page publique (dès URL provisionnée)
+
+Setup détaillé : [`docs/runbooks/observability-setup.md`](docs/runbooks/observability-setup.md).
 
 ## License
 
-MIT
+- **Code** : [AGPL-3.0](LICENSE) — copyleft. Offre dual-licensing dispo pour usage proprio (cf `/licence`).
+- **Données dérivées** : Licence Ouverte Etalab 2.0 (compatible avec les sources).
+- **Éditorial + IA** : CC BY 4.0.
+
+Voir [`NOTICE.md`](NOTICE.md) pour la combinaison complète.
