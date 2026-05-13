@@ -63,6 +63,22 @@ export type RecettesApu = {
     fonds_source: string;
     fonds_source_url: string;
     notes_fr: string;
+    /** Décomposition du PSR-UE brut versé (RNB, TVA, plastique, NGEU). */
+    psr_decomposition?: Array<{
+      key: string;
+      label_fr: string;
+      label_en: string;
+      annual_eur_md: number;
+      notes?: string;
+    }>;
+    /** Décomposition des fonds reçus (PAC, FEDER/FSE, Horizon, NGEU). */
+    fonds_decomposition?: Array<{
+      key: string;
+      label_fr: string;
+      label_en: string;
+      annual_eur_md: number;
+      notes?: string;
+    }>;
   };
   notes_fr: string;
 };

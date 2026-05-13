@@ -11,6 +11,8 @@
  * Données : loadRecettesApu() depuis recettes_apu.json. Tout est sourcé
  * (PLF V&M, PLFSS annexe 4, OFGL, INSEE, Cour des comptes).
  */
+import Link from "next/link";
+
 import type {
   RecetteInstitution,
   RecettesApu,
@@ -106,27 +108,43 @@ export default function RecettesPanel({ data, locale, t }: Props) {
               institution.annual_eur > 0
                 ? item.annual_eur / institution.annual_eur
                 : 0;
+            const href = `/france/budget/recettes/${encodeURIComponent(item.key)}`;
             return (
               <li key={item.key} className="fx-recettes-item">
-                <div className="fx-recettes-item-head">
-                  <span className="fx-recettes-item-name">{itemLabel}</span>
-                  <span className="fx-recettes-item-val tnum">
-                    {fmtBnEur(item.annual_eur, locale)}
-                    <span className="fx-recettes-item-pct">
-                      {" · "}
-                      {fmtPct(share, locale)}
+                <Link
+                  href={href}
+                  scroll={false}
+                  prefetch={false}
+                  className="fx-recettes-item-link"
+                >
+                  <div className="fx-recettes-item-head">
+                    <span className="fx-recettes-item-name">
+                      {itemLabel}
+                      <span
+                        aria-hidden
+                        className="fx-recettes-item-chevron"
+                      >
+                        →
+                      </span>
                     </span>
-                  </span>
-                </div>
-                <div className="fx-recettes-item-bar">
-                  <div
-                    className={`fx-recettes-item-fill fx-recettes-c-${color}`}
-                    style={{ width: `${share * 100}%` }}
-                  />
-                </div>
-                <p className="fx-recettes-item-nature">
-                  {natureLabel(item.nature, locale)}
-                </p>
+                    <span className="fx-recettes-item-val tnum">
+                      {fmtBnEur(item.annual_eur, locale)}
+                      <span className="fx-recettes-item-pct">
+                        {" · "}
+                        {fmtPct(share, locale)}
+                      </span>
+                    </span>
+                  </div>
+                  <div className="fx-recettes-item-bar">
+                    <div
+                      className={`fx-recettes-item-fill fx-recettes-c-${color}`}
+                      style={{ width: `${share * 100}%` }}
+                    />
+                  </div>
+                  <p className="fx-recettes-item-nature">
+                    {natureLabel(item.nature, locale)}
+                  </p>
+                </Link>
               </li>
             );
           })}
@@ -183,15 +201,23 @@ export default function RecettesPanel({ data, locale, t }: Props) {
           </p>
         </div>
 
-        {/* Bilan UE — séparé visuellement, contribution nette */}
+        {/* Bilan UE — séparé visuellement, contribution nette. Les deux
+            lignes (versé et reçu) sont cliquables pour ouvrir le drawer
+            détaillé avec décomposition RNB/TVA/plastique/NGEU. */}
         <div className="fx-recettes-ue">
           <p className="fx-recettes-ue-eyebrow">
             {t("budget.recettes.ue.eyebrow")}
           </p>
           <div className="fx-recettes-ue-flow">
-            <div className="fx-recettes-ue-row">
+            <Link
+              href="/france/budget/recettes/psr_ue"
+              scroll={false}
+              prefetch={false}
+              className="fx-recettes-ue-row fx-recettes-ue-row-link"
+            >
               <span className="fx-recettes-ue-label">
                 {t("budget.recettes.ue.verse")}
+                <span aria-hidden className="fx-recettes-ue-chevron">→</span>
               </span>
               <span className="fx-recettes-ue-val tnum">
                 − {fmtBnEur(europe.psr_ue_brut_md_eur * 1e9, locale)}
@@ -199,10 +225,16 @@ export default function RecettesPanel({ data, locale, t }: Props) {
                   /{locale === "en" ? "yr" : "an"}
                 </span>
               </span>
-            </div>
-            <div className="fx-recettes-ue-row">
+            </Link>
+            <Link
+              href="/france/budget/recettes/ue_fonds_recus"
+              scroll={false}
+              prefetch={false}
+              className="fx-recettes-ue-row fx-recettes-ue-row-link"
+            >
               <span className="fx-recettes-ue-label">
                 {t("budget.recettes.ue.recus")}
+                <span aria-hidden className="fx-recettes-ue-chevron">→</span>
               </span>
               <span className="fx-recettes-ue-val fx-recettes-ue-val-plus tnum">
                 + {fmtBnEur(europe.fonds_recus_md_eur * 1e9, locale)}
@@ -210,7 +242,7 @@ export default function RecettesPanel({ data, locale, t }: Props) {
                   /{locale === "en" ? "yr" : "an"}
                 </span>
               </span>
-            </div>
+            </Link>
             <div className="fx-recettes-ue-row fx-recettes-ue-row-net">
               <span className="fx-recettes-ue-label">
                 {t("budget.recettes.ue.net")}

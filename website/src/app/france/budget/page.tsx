@@ -648,17 +648,23 @@ export default async function FranceBudgetPage({
                   .map((it) => (locale === "en" ? it.label_en : it.label_fr))
                   .slice(0, 4);
                 const subParts = [...missionLabels, ...overlayLabels];
-                // Lien drawer uniquement pour les buckets cartographiés dans
-                // les aggregations PLF (les buckets overlay-only comme
-                // contribution_ue ou autres_etat_hors_plf n'ont pas de drawer).
+                // Lien drawer : (a) buckets PLF → page agrégat
+                // (b) contribution_ue → fiche recette UE (PSR-UE décomposé)
+                // (c) autres_etat_hors_plf : pas de drawer (résiduel).
                 const hasAgg = etatAggregations.some(
                   (a) => a.key === (b.key === "autres_ministeres" ? "autres" : b.key),
                 );
                 const aggKey = b.key === "autres_ministeres" ? "autres" : b.key;
+                const href =
+                  b.key === "contribution_ue"
+                    ? "/france/budget/recettes/psr_ue"
+                    : hasAgg
+                      ? urlEtatAggregation(aggKey, profileQs)
+                      : undefined;
                 return {
                   label: locale === "en" ? b.label_en : b.label_fr,
                   value: b.annual_eur,
-                  href: hasAgg ? urlEtatAggregation(aggKey, profileQs) : undefined,
+                  href,
                   display: (
                     <>
                       {fmtBnEur(b.annual_eur, locale)}

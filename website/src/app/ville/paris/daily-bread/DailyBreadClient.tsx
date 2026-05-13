@@ -302,6 +302,10 @@ export default function DailyBreadClient({
         m.set(inPage, `/ville/paris/daily-bread/bucket/etat/agg/${aggKey}`);
       }
     }
+    // La ligne "Contribution UE" ouvre la fiche recette détaillée (PSR-UE
+    // décomposé en RNB/TVA/plastique/NGEU + bilan brut/reçu/net) — partage
+    // la même fiche que /france/budget/recettes/psr_ue.
+    m.set("contribution_ue", "/france/budget/recettes/psr_ue");
     return m;
   }, [drilldownIndex]);
   // (URLs alias bloc-communal-seed / fonctionnelle / dept / region —
