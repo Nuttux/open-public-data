@@ -569,6 +569,28 @@ export type StateBucket = {
   annual_eur: number;
   monthly_eur: number;
   missions: Array<{ code: string; label: string; share: number }>;
+  /**
+   * Composants overlay rattachés à ce bucket (CAS Pensions par ministère,
+   * opérateurs ODAC ressources propres, budgets annexes, etc.). Vide pour les
+   * buckets purement PLF, peuplé pour les buckets enrichis par
+   * state_overlay.items.
+   */
+  overlay_items?: Array<{
+    key: string;
+    label_fr: string;
+    label_en: string;
+    annual_eur: number;
+    monthly_eur: number;
+    type:
+      | "cas_pensions"
+      | "odac_ressources_propres"
+      | "budget_annexe"
+      | "psr_ue"
+      | "residuel";
+    source: string;
+    source_url: string;
+    notes?: string;
+  }>;
 };
 
 const STATE_BUCKET_DEFS: Array<{
@@ -632,7 +654,7 @@ const STATE_BUCKET_DEFS: Array<{
     codes: ["EB"],
   },
   {
-    key: "autres",
+    key: "autres_ministeres",
     // Label énumère les missions les plus visibles pour préserver la dignité
     // de chaque domaine (l'agriculteur ou l'ultramarin doit voir son nom).
     // Le drawer liste les 18 missions complètes avec leurs montants.
@@ -643,40 +665,80 @@ const STATE_BUCKET_DEFS: Array<{
       "IA", "MB", "SA", "PB", "DC", "CA", "TR", "PC", "PR",
     ],
   },
+  // ─── Buckets overlay-only (pas de missions PLF) ───────────────────────
+  // Construits exclusivement à partir de state_overlay.items du JSON.
+  // contribution_ue : ligne dédiée pour le PSR-UE (visibilité éditoriale).
+  // autres_etat_hors_plf : résiduel non rattaché (long tail ODAC, écarts).
+  {
+    key: "contribution_ue",
+    label_fr: "Contribution Union européenne",
+    label_en: "European Union contribution",
+    codes: [],
+  },
+  {
+    key: "autres_etat_hors_plf",
+    label_fr: "Autres dépenses (opérateurs non rattachables, flux internes)",
+    label_en: "Other spending (unallocated operators, internal flows)",
+    codes: [],
+  },
 ];
 
 export function computeStateBuckets(
   /**
    * Contribution annuelle de l'utilisateur au sous-secteur S1311 (= user_total
-   * × `apu_subsectors.S1311.share`). On la projette ici sur chacun des 9
+   * × `apu_subsectors.S1311.share`). On la projette ici sur chacun des 11
    * buckets éditoriaux pour produire le €/mois perso.
+   *
+   * Méthodo : (1) missions PLF rescalées sharePlf × (PLF_total / S1311_total)
+   * pour donner leur vraie part dans S1311 ; (2) state_overlay.items
+   * (CAS Pensions répartis, opérateurs ODAC, PSR-UE, budgets annexes,
+   * résiduel) ajoutés par `parent_bucket` — leur share = annual_eur / S1311.
+   * Résultat : Σ share_of_state = 1.0 (≈ 100 % de S1311 attribué).
    */
   etatAnnuel: number,
   db: DailyBreadConstants,
 ): StateBucket[] {
   const missions = db.state_breakdown.missions;
-  // Convention. Les `share_of_state_net` publiés dans le pipeline ont pour
-  // dénominateur `state_breakdown.total_net_cp_eur` ≈ 447 Md€/an (somme des
-  // 33 missions PLF 2025) — pas S1311 (≈ 676 Md€/an, qui inclut ODAC,
-  // transferts UE, régimes spéciaux non rattachés). Multiplier `etatAnnuel`
-  // (= S1311 × user_share) par cette part directement surestime d'un facteur
-  // 676/447 ≈ 1,51× — Défense (60 Md€) deviendrait ~91 Md€.
-  // → On rescale par `total_net_cp_eur / S1311.annual_eur` pour ré-aligner.
-  // Les ~229 Md€ S1311 hors missions PLF restent inclus dans `etatAnnuel`
-  // (le total État de l'utilisateur), simplement non attribués à un bucket.
   const s1311 = db.apu_subsectors.institutions?.S1311?.annual_eur ?? 0;
   const totalNet = db.state_breakdown?.total_net_cp_eur ?? 0;
   const scale = s1311 > 0 && totalNet > 0 ? totalNet / s1311 : 1;
+
+  // Group overlay items by parent_bucket pour ajout par bucket.
+  const overlayByBucket = new Map<
+    string,
+    DailyBreadConstants["state_overlay"] extends infer T
+      ? T extends { items: infer I }
+        ? I
+        : never
+      : never
+  >();
+  const overlayItems = db.state_overlay?.items ?? [];
+  for (const item of overlayItems) {
+    const arr = overlayByBucket.get(item.parent_bucket) ?? [];
+    arr.push(item);
+    overlayByBucket.set(item.parent_bucket, arr);
+  }
+
   const out: StateBucket[] = [];
   for (const def of STATE_BUCKET_DEFS) {
+    // 1. Part PLF (rescalée S1311) — buckets avec missions PLF.
     const matched = missions.filter((m) => def.codes.includes(m.code));
     const sharePlf = matched.reduce(
       (acc, m) => acc + m.share_of_state_net,
       0,
     );
-    // Vraie part dans S1311 (= sharePlf × scale). C'est la grandeur cohérente
-    // pour multiplier par `etatAnnuel` (qui est calé sur S1311).
-    const share = sharePlf * scale;
+    let share = sharePlf * scale;
+
+    // 2. Part overlay (CAS Pensions / ODAC / PSR-UE / budgets annexes /
+    //    résiduel rattachée à ce bucket). share = annual_eur / S1311.
+    const bucketOverlay = overlayByBucket.get(def.key) ?? [];
+    const overlayAnnualSum = bucketOverlay.reduce(
+      (acc, it) => acc + (it.annual_eur ?? 0),
+      0,
+    );
+    const overlayShare = s1311 > 0 ? overlayAnnualSum / s1311 : 0;
+    share += overlayShare;
+
     const annual = etatAnnuel * share;
     out.push({
       key: def.key,
@@ -688,13 +750,30 @@ export function computeStateBuckets(
       missions: matched.map((m) => ({
         code: m.code,
         label: m.label,
-        // Part du sous-bucket dans S1311 (cohérente avec `share_of_state`).
         share: m.share_of_state_net * scale,
       })),
+      overlay_items: bucketOverlay.map((it) => {
+        const itemShare = s1311 > 0 ? (it.annual_eur ?? 0) / s1311 : 0;
+        const itemAnnual = etatAnnuel * itemShare;
+        return {
+          key: it.key,
+          label_fr: it.label_fr,
+          label_en: it.label_en,
+          annual_eur: itemAnnual,
+          monthly_eur: itemAnnual / 12,
+          type: it.type,
+          source: it.source,
+          source_url: it.source_url,
+          notes: it.notes,
+        };
+      }),
     });
   }
-  out.sort((a, b) => b.share_of_state - a.share_of_state);
-  return out;
+  // Filtre les buckets de share 0 (cas où l'overlay est absent et le bucket
+  // est overlay-only — éviterait d'afficher une ligne vide).
+  const filtered = out.filter((b) => b.share_of_state > 0);
+  filtered.sort((a, b) => b.share_of_state - a.share_of_state);
+  return filtered;
 }
 
 // ─── Local detail (Bloc communal / Département / Région) ─────────────────

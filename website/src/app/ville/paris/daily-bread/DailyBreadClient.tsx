@@ -246,7 +246,8 @@ const ETAT_TOP_ALIAS_AGG: Record<string, string> = {
   ecologie_logement_transports: "ecologie_logement_transports",
   culture_medias_sport: "culture_medias_sport",
   dette: "dette",
-  autres: "autres",
+  autres_ministeres: "autres",
+  // contribution_ue + autres_etat_hors_plf : pas de drawer (overlay-only).
 };
 
 // (Alias LOCAL_* — supprimés en mai 2026 : ils alimentaient les rows
@@ -1762,13 +1763,25 @@ export default function DailyBreadClient({
                 </div>
 
                 <BarList
-                  items={assoBranches.map((b) => ({
-                    key: b.key,
-                    name: locale === "en" ? b.label_en : b.label_fr,
-                    monthly: b.monthly_eur,
-                    share: b.share,
-                    // pas de sub-label : le titre porte déjà le nom complet
-                  }))}
+                  items={assoBranches.map((b) => {
+                    const s1314Total =
+                      db?.apu_subsectors?.institutions?.S1314?.annual_eur ?? 0;
+                    return {
+                      key: b.key,
+                      name: locale === "en" ? b.label_en : b.label_fr,
+                      monthly: b.monthly_eur,
+                      nationalAnnual: s1314Total * b.share,
+                      share: b.share,
+                      // Note clarification retraite : la branche retraite Sécu
+                      // couvre privé + complémentaires + territorial + indép.
+                      // Les fonctionnaires d'État sont en CAS Pensions (panel
+                      // État ci-dessous).
+                      sub:
+                        b.key === "part_cnav_retraites"
+                          ? t("db.secu.retraite_sub")
+                          : undefined,
+                    };
+                  })}
                   color="c-secu"
                   locale={locale}
                   clickableUrls={secuTopUrls}
@@ -1822,39 +1835,34 @@ export default function DailyBreadClient({
 
                 <BarList
                   items={(() => {
-                    const buckets = stateBuckets.map((b) => ({
-                      key: b.key,
-                      name: locale === "en" ? b.label_en : b.label_fr,
-                      monthly: b.monthly_eur,
-                      share: b.share_of_state,
-                      sub:
-                        b.missions.length > 1
-                          ? b.missions
-                              .map((m) => m.label)
-                              .slice(0, 3)
-                              .join(" · ")
-                          : undefined,
-                    }));
-                    // Résidu S1311 hors missions PLF = ODAC + comptes spéciaux
-                    // + budgets annexes (≈ 230 Md€/an, ~34% de S1311). Sans
-                    // cette ligne, la somme des barres ne matche pas l'État
-                    // monthly (incohérence visuelle vs Sécu/Local qui somment
-                    // à 100%).
-                    const sumShares = buckets.reduce(
-                      (acc, b) => acc + (b.share ?? 0),
-                      0,
-                    );
-                    const residualShare = Math.max(0, 1 - sumShares);
-                    if (residualShare > 0.005) {
-                      buckets.push({
-                        key: "autres_etat_hors_plf",
-                        name: t("db.etat.bucket.autres.name"),
-                        monthly: etatMonthly * residualShare,
-                        share: residualShare,
-                        sub: t("db.etat.bucket.autres.sub"),
-                      });
-                    }
-                    return buckets;
+                    const s1311Total =
+                      db?.apu_subsectors?.institutions?.S1311?.annual_eur ?? 0;
+                    return stateBuckets.map((b) => {
+                      // Construit la sub-text à partir des composants :
+                      // missions PLF + items overlay (CAS Pensions par
+                      // ministère, opérateurs ODAC, etc.). Sépare les deux
+                      // par " · " pour rester lisible.
+                      const missionLabels = b.missions
+                        .map((m) => m.label)
+                        .slice(0, 3);
+                      const overlayLabels = (b.overlay_items ?? [])
+                        .map((it) =>
+                          locale === "en" ? it.label_en : it.label_fr,
+                        )
+                        .slice(0, 4);
+                      const subParts = [...missionLabels, ...overlayLabels];
+                      return {
+                        key: b.key,
+                        name: locale === "en" ? b.label_en : b.label_fr,
+                        monthly: b.monthly_eur,
+                        nationalAnnual: s1311Total * b.share_of_state,
+                        share: b.share_of_state,
+                        sub:
+                          subParts.length > 1
+                            ? subParts.join(" · ")
+                            : undefined,
+                      };
+                    });
                   })()}
                   color="c-etat"
                   locale={locale}
@@ -1969,23 +1977,25 @@ export default function DailyBreadClient({
                 </div>
 
                 <BarList
-                  items={localLevels.map((l) => ({
-                    key: l.key,
-                    // Label personnalisé selon la commune (Fix 2) — fallback
-                    // sur le label OFGL générique si la map ne couvre pas
-                    // la clé (par sécurité — ne devrait pas arriver).
-                    name:
-                      personalLabelByKey[l.key] ??
-                      (locale === "en" ? l.label_en : l.label_fr),
-                    monthly: l.monthly_eur,
-                    share: l.share_of_local,
-                    sub:
-                      l.key === "bloc_communal"
-                        ? isCollUnique
-                          ? t("db.local.bloc_sub_merged")
-                          : t("db.local.bloc_sub_default")
-                        : undefined,
-                  }))}
+                  items={localLevels.map((l) => {
+                    const s1313Total =
+                      db?.apu_subsectors?.institutions?.S1313?.annual_eur ?? 0;
+                    return {
+                      key: l.key,
+                      name:
+                        personalLabelByKey[l.key] ??
+                        (locale === "en" ? l.label_en : l.label_fr),
+                      monthly: l.monthly_eur,
+                      nationalAnnual: s1313Total * l.share_of_local,
+                      share: l.share_of_local,
+                      sub:
+                        l.key === "bloc_communal"
+                          ? isCollUnique
+                            ? t("db.local.bloc_sub_merged")
+                            : t("db.local.bloc_sub_default")
+                          : undefined,
+                    };
+                  })}
                   color="c-local"
                   locale={locale}
                   // Bloc communal reste passif (le DeepDive juste en dessous
@@ -2611,6 +2621,8 @@ function BarList({
     key?: string;
     name: string;
     monthly: number;
+    /** Montant annuel national (€) — affiché en complément du personnel. */
+    nationalAnnual?: number;
     share: number;
     sub?: string;
     color?: string;
@@ -2657,6 +2669,12 @@ function BarList({
                   )}{" "}
                   %
                 </span>
+                {item.nationalAnnual != null && item.nationalAnnual > 0 && (
+                  <span className="db-p-zoom-bar-natl tnum">
+                    {fmtBnEur(item.nationalAnnual, locale)}
+                    {locale === "en" ? "/yr" : "/an"}
+                  </span>
+                )}
               </span>
             </div>
             <div className="db-p-zoom-bar-track">

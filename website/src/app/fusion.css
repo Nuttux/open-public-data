@@ -11839,6 +11839,18 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   margin-left: 8px;
   letter-spacing: .04em;
 }
+/* Montant annuel national à côté de la part — fait apparaître l'échelle
+   absolue (Md€/an) en regard du chiffre personnel (€/mois). */
+.theme-db-scrolly .db-p-zoom-bar-natl {
+  display: block;
+  font-family: var(--pf-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--p-muted-2);
+  letter-spacing: .04em;
+  margin-top: 2px;
+  text-align: right;
+}
 .theme-db-scrolly .db-p-zoom-bar-track {
   height: 32px;
   background: var(--p-rule);

@@ -3559,6 +3559,7 @@ const fr: Record<string, string> = {
   'db.secu.deck1': 'Quatre branches mutualisées : {b}maladie{/b}, {b}vieillesse{/b}, {b}famille{/b}, {b}chômage{/b}.',
   'db.secu.deck2': 'L\'essentiel finance la santé et les retraites.',
   'db.secu.source': 'Source : PLFSS 2025',
+  'db.secu.retraite_sub': 'Couvre salariés du privé + complémentaires AGIRC-ARRCO + agents territoriaux/hospitaliers (CNRACL) + indépendants (CIPAV, MSA…). Les retraites des fonctionnaires d\'État sont payées par l\'État via le CAS Pensions — visible dans le panel État ci-dessous.',
   'db.secu.foot_cue': 'Zoom sur l\'État',
   // ─ Zoom État (panneau 4) ─
   'db.etat.num': 'État central — {monthly} €/mois',
