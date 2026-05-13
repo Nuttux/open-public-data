@@ -12068,41 +12068,34 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   color: var(--p-ink);
 }
 .theme-db-scrolly .db-p-zoom-bar-val {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   align-items: flex-end;
   font-family: var(--pf-disp);
   font-weight: 700;
-  font-size: 26px;
+  font-size: 24px;
   letter-spacing: -0.025em;
   color: var(--p-ink);
   white-space: nowrap;
-  line-height: 1.05;
+  line-height: 1;
+  gap: 2px;
 }
 .theme-db-scrolly .db-p-zoom-bar-val-perso {
   font-family: var(--pf-disp);
   font-weight: 700;
-  font-size: 26px;
+  font-size: 24px;
   letter-spacing: -0.025em;
   color: var(--p-ink);
 }
-.theme-db-scrolly .db-p-zoom-bar-val-unit {
-  font-family: var(--pf-disp);
-  font-weight: 500;
-  font-size: 13px;
-  color: var(--p-muted);
-  margin-left: 2px;
-}
-/* Sous-ligne : montant national + part en mono petit, en contexte de la
-   primaire €/mois. La barre visualise déjà la part — on garde le % ici
-   pour avoir la valeur exacte en regard. */
+/* Sous-ligne : montant national + part en mono petit, contexte de la
+   primaire €/mois. Header panel rappelle déjà "€/MOIS" → on évite la
+   répétition de l'unité sur chaque ligne. */
 .theme-db-scrolly .db-p-zoom-bar-natl {
   font-family: var(--pf-mono);
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 500;
   color: var(--p-muted-2);
-  letter-spacing: .04em;
-  margin-top: 4px;
+  letter-spacing: .03em;
 }
 .theme-db-scrolly .db-p-zoom-bar-natl-pct {
   color: var(--p-muted-2);

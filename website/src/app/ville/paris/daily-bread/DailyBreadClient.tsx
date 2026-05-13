@@ -2662,10 +2662,7 @@ function BarList({
               </span>
               <span className="db-p-zoom-bar-val tnum">
                 <span className="db-p-zoom-bar-val-perso">
-                  {fmtEur(item.monthly, locale, 0)}{" "}
-                  <span className="db-p-zoom-bar-val-unit">
-                    €/{locale === "en" ? "mo" : "mois"}
-                  </span>
+                  {fmtEur(item.monthly, locale, 0)} €
                 </span>
                 {item.nationalAnnual != null && item.nationalAnnual > 0 && (
                   <span className="db-p-zoom-bar-natl tnum">
