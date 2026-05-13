@@ -337,7 +337,6 @@ export default function LandingClient({ stats, posts }: Props) {
                 >
                   {p.image && (
                     <div className="fx-analyses-media">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={p.image} alt="" loading="lazy" />
                     </div>
                   )}

@@ -179,7 +179,6 @@ export default function AnalysesClient({
               <div className="fx-hero-article-photo">
                 <div className="fx-hero-article-photo-placeholder" aria-hidden="true" />
                 {hero.image && (
-                  // eslint-disable-next-line @next/next/no-img-element
                   <img className="fx-photo-img" src={hero.image} alt="" loading="eager" />
                 )}
                 <span
@@ -257,7 +256,6 @@ export default function AnalysesClient({
                   <div className="fx-article-photo">
                     <div className="fx-article-photo-placeholder" aria-hidden="true" />
                     {p.image && (
-                      // eslint-disable-next-line @next/next/no-img-element
                       <img className="fx-photo-img" src={p.image} alt="" loading="lazy" />
                     )}
                     <span className={`fx-photo-tag fx-tag-${categorySlug(p.category)}`}>

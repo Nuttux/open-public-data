@@ -77,7 +77,6 @@ export default function RelatedArticles({
                 <div className="fx-article-photo">
                   <div className="fx-article-photo-placeholder" aria-hidden="true" />
                   {p.image && (
-                    // eslint-disable-next-line @next/next/no-img-element
                     <img className="fx-photo-img" src={p.image} alt="" loading="lazy" />
                   )}
                   <span className={`fx-photo-tag fx-tag-${categorySlug(p.category)}`}>
