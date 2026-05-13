@@ -3497,9 +3497,14 @@ const fr: Record<string, string> = {
   // qui remplace le couple "PAR MOIS — SOIT" + "10 879 € par an".
   'db.hero.meta_inline.month': '/mois',
   'db.hero.meta_inline.year': '{annual} €/an',
-  'db.hero.deck': 'Cotisations, CSG/CRDS, impôt sur le revenu, PFU sur capital, TVA, taxe foncière si propriétaire — agrégés selon ton profil. Hypothèses, sources et limites détaillées dans la section Méthode plus bas.',
+  'db.hero.deck': 'Cotisations et CSG sur ton brut → Sécu. IR sur ton net imposable → État. TVA estimée sur ta consommation → répartie 45 % État / 31 % Sécu / 24 % Local (affectations PLF). Taxe foncière si propriétaire → Local. Méthode détaillée plus bas.',
+  // ─ Onboarding intro (au-dessus du fold) — clarifier la promesse ─
+  'db.hero.onboarding.kicker': 'DAILY BREAD · FRANCE OPEN DATA',
+  'db.hero.onboarding.title': 'À quoi servent tes impôts ?',
+  'db.hero.onboarding.deck': 'Personnalise ton profil ci-dessous (revenu, foyer, commune) — les valeurs soulignées sont {b}modifiables{/b}. On calcule ta contribution mensuelle et on te montre exactement où va chaque euro : Sécurité sociale, État, collectivités locales.',
+  'db.hero.onboarding.cta': '↓ Commence en personnalisant ton profil',
   // ─ Hero éditable NYT-style (fold redesign) ─
-  'db.hero.editable.prefix_salaire': 'Sur ton salaire net de',
+  'db.hero.editable.prefix_salaire': 'Sur ton revenu net de',
   'db.hero.editable.set_salaire': 'définis ton salaire',
   'db.hero.editable.aria.salaire': 'Modifier le salaire mensuel',
   'db.hero.editable.aria.parts': 'Modifier les parts fiscales',
@@ -3550,7 +3555,7 @@ const fr: Record<string, string> = {
   'db.disp.num': 'Dispatch',
   'db.disp.q_a': 'Trois caisses,',
   'db.disp.q_b': 'trois fonctions.',
-  'db.disp.deck': 'Eurostat consolide la dépense publique française sur trois sous-secteurs : la {b1}Sécurité sociale{/b1}, l\'{b2}État central{/b2} et les {b3}administrations locales{/b3}. Voici comment tes {monthly} € se ventilent ({year}).',
+  'db.disp.deck': 'Chaque impôt a un affectataire légal précis : tes {b1}cotisations sociales{/b1} et ta {b1}CSG/CRDS{/b1} vont à la {b1}Sécu{/b1}, ton {b2}IR{/b2} va à l\'{b2}État{/b2}, ta {b3}TVA{/b3} est répartie entre les trois caisses selon les affectations du PLF (45 % État, 31 % Sécu, 24 % Local). Voici donc où vont réellement tes {monthly} €/mois ({year}).',
   'db.disp.foot_cue': 'Zoom sur la Sécu',
   // ─ Zoom Sécu (panneau 3) ─
   'db.secu.num': 'Sécurité sociale — {monthly} €/mois',
@@ -3669,12 +3674,12 @@ const fr: Record<string, string> = {
   'db.method.body.sources.ofgl': "finances locales fonctionnelles (communes, départements, régions).",
   'db.method.body.sources.drees': "Comptes santé, décomposition médecine de ville / hôpital / médicaments.",
   // 04 — Périmètre
-  'db.method.body.perimetre.intro': "Les Administrations Publiques (APU) se décomposent en trois sous-secteurs comptables. Ton total est ventilé selon leurs poids dans la dépense publique consolidée (Eurostat gov_10a_main).",
-  'db.method.body.perimetre.s1311': "S1311 État central + ODAC ≈ 676 Md€/an (PIB × 22,7 %) — ministères, opérateurs, charge de la dette, transferts.",
-  'db.method.body.perimetre.s1313': "S1313 APUL collectivités ≈ 334 Md€/an (PIB × 11,2 %) — communes, EPCI, départements, régions.",
-  'db.method.body.perimetre.s1314': "S1314 ASSO Sécurité sociale ≈ 798 Md€/an (PIB × 26,8 %) — CNAM, CNAV, CAF, Unédic, AT-MP.",
-  'db.method.body.perimetre.caveat_label': "Caveat 229 Md€ :",
-  'db.method.body.perimetre.caveat_229': "les 33 missions PLF totalisent 447 Md€, soit 66 % de S1311. Les 229 Md€ restants couvrent ODAC, opérateurs, transferts UE, régimes spéciaux retraite — pas attribuables aux 10 buckets éditoriaux. C'est pourquoi le total État affiché peut différer du total LFI public.",
+  'db.method.body.perimetre.intro': "Les Administrations Publiques (APU) se décomposent en trois sous-secteurs comptables. Daily Bread utilise une vue CAUSALE : chaque impôt va à l'affectataire LÉGAL réel, pas une répartition proportionnelle. (Pour la vue proportionnelle Eurostat, voir Budget Explorer /france/budget.)",
+  'db.method.body.perimetre.s1311': "S1311 État central + ODAC ≈ 676 Md€/an — ministères, opérateurs, charge de la dette. Tu y contribues via {b}ton IR{/b} + {b}45 % de ta TVA{/b} (part nette État, PLF V&M tome I).",
+  'db.method.body.perimetre.s1313': "S1313 APUL collectivités ≈ 334 Md€/an — communes, EPCI, départements, régions. Tu y contribues via {b}ta TF{/b} (si propriétaire) + {b}24 % de ta TVA{/b} (compensation TH/CVAE).",
+  'db.method.body.perimetre.s1314': "S1314 ASSO Sécurité sociale ≈ 798 Md€/an — CNAM, CNAV, CAF, Unédic, AT-MP. Tu y contribues via {b}tes cotisations sociales{/b} + {b}ta CSG/CRDS{/b} + {b}31 % de ta TVA{/b} (TVA affectée Sécu) + {b}prélèvements sociaux capital (17,2 %){/b}.",
+  'db.method.body.perimetre.caveat_label': "Vue causale vs proportionnelle :",
+  'db.method.body.perimetre.caveat_229': "Daily Bread mappe chaque euro d'impôt à son affectataire réel (cotisations → Sécu, IR → État, TVA → 3 caisses selon PLF). Budget Explorer (/france/budget) garde la vue proportionnelle Eurostat S13 (44/37/18) qui montre la part de chaque sous-secteur dans la DÉPENSE publique totale. Les deux sont utiles : causale pour « où va MA contribution », proportionnelle pour « comment se répartit la dépense publique nationale ».",
   // 05 — Pourquoi perso
   'db.method.body.pourquoi_perso.p1': "Le calcul fiscal exact en France passe par OpenFisca, le moteur de simulation officiel maintenu par DINUM/Etalab — code source aligné sur le PLF en vigueur, mis à jour à chaque loi de finances.",
   'db.method.body.pourquoi_perso.p2': "Daily Bread est un MVP simplifié, pensé pour rester accessible sans login fiscal et sans saisie de RFR détaillé. L'objectif : donner un ordre de grandeur lisible et un drilldown profond, pas remplacer impots.gouv.fr.",

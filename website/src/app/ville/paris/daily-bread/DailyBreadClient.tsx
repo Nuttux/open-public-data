@@ -14,6 +14,7 @@ import {
   computeBreakdownCapital,
   computeBreakdownIndependant,
   computeInstitutionShares,
+  computeInstitutionSharesCausal,
   computeAssoBreakdown,
   computeStateBuckets,
   computeLocalLevels,
@@ -401,9 +402,14 @@ export default function DailyBreadClient({
     setOpenFiscaError(null);
   }, [salaireMonthly, parts, commune?.insee]);
 
-  // "Autres revenus" déplié si une source non-salaire est non nulle (URL deep-link)
+  // "Autres revenus" : auparavant déplié seulement si une source non-salaire
+  // était dans l'URL. Depuis post user-testing (mai 2026), on déplie TOUJOURS
+  // par défaut pour discoverability — les utilisateurs ne réalisaient pas
+  // qu'on accepte pension/capital/indép. Variable conservée pour signature
+  // mais non utilisée — voir <details open> plus bas.
   const initialOtherIncomesOpen =
     initialPension > 0 || initialCapital > 0 || initialIndepCa > 0;
+  void initialOtherIncomesOpen;
 
   // Sync URL when inputs change. Cas par défaut salarié = URL minimale
   // (?net=2100&parts=1&c=paris) ; on omet les zéros pour rester propre.
@@ -761,10 +767,29 @@ export default function DailyBreadClient({
     return Math.abs(diff) > 1 ? diff : null;
   }, [openFiscaResult, breakdownSalaireJsLocal.total]);
 
+  // Dispatch CAUSAL : on mappe chaque composante (cot/CSG/IR/TVA/TF) à son
+  // affectataire légal réel, au lieu d'appliquer les ratios Eurostat S13.
+  // Donne une vue plus juste pour la promesse "où va MA contribution".
+  // Cf. computeInstitutionSharesCausal — coefficients TVA depuis PLF V&M.
   const institutionShares = useMemo(
-    () => (db ? computeInstitutionShares(totalAnnuel, db) : []),
-    [db, totalAnnuel],
+    () =>
+      db
+        ? computeInstitutionSharesCausal(
+            {
+              breakdownSalaire,
+              breakdownRetraite,
+              breakdownCapital,
+              breakdownIndep,
+              tfAnnual: tfEstimated,
+            },
+            db,
+          )
+        : [],
+    [db, breakdownSalaire, breakdownRetraite, breakdownCapital, breakdownIndep, tfEstimated],
   );
+  // suppress unused-warning : `computeInstitutionShares` reste exporté pour
+  // d'autres callers (Budget Explorer impersonnel) et tests.
+  void computeInstitutionShares;
 
   const secuShare = institutionShares.find((i) => i.code === "S1314");
   const etatShare = institutionShares.find((i) => i.code === "S1311");
@@ -1004,6 +1029,29 @@ export default function DailyBreadClient({
         <Navbar />
       </div>
       <main id="main-content" tabIndex={-1}>
+        {/* ── PANNEAU 0 — ONBOARDING (post user-testing fix) ── */}
+        {/* Bloc d'intro pédagogique pour clarifier ce qu'on propose dès
+            l'arrivée sur la page : profil personnalisable → contribution
+            mensuelle → drilldown des dépenses. Sans ça, l'utilisateur
+            arrivait sur §01 sans comprendre que les valeurs étaient
+            éditables ni la promesse de la page. */}
+        <section className="db-panel db-p-onboarding">
+          <div className="db-panel-wrap db-p-onboarding-wrap">
+            <p className="db-p-onboarding-kicker">
+              {t("db.hero.onboarding.kicker")}
+            </p>
+            <h1 className="db-p-onboarding-title">
+              {t("db.hero.onboarding.title")}
+            </h1>
+            <p className="db-p-onboarding-deck">
+              {renderTagged(t("db.hero.onboarding.deck"))}
+            </p>
+            <p className="db-p-onboarding-cta">
+              {t("db.hero.onboarding.cta")}
+            </p>
+          </div>
+        </section>
+
         {/* ── PANNEAU 1 — HERO ÉDITABLE (fusion §00 + §01) ── */}
         {/* Le hero fusionné NYT-style : les paramètres du calcul (salaire,
             parts, commune) sont des spans cliquables intégrés DANS la phrase
@@ -1410,9 +1458,7 @@ export default function DailyBreadClient({
                 coché propriétaire. */}
             <details
               className="db-p-hero-advanced"
-              open={
-                initialOtherIncomesOpen || isOwner || undefined
-              }
+              open
             >
               <summary className="db-p-hero-advanced-summary">
                 <span>{t("db.hero.advanced.summary")}</span>

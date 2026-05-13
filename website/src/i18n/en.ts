@@ -3492,9 +3492,14 @@ const en: Record<string, string> = {
   // "per month — i.e." + "€10,879 per year" pair.
   'db.hero.meta_inline.month': '/month',
   'db.hero.meta_inline.year': '€{annual}/yr',
-  'db.hero.deck': 'Social contributions, CSG/CRDS, income tax, capital flat tax, VAT, property tax if homeowner — aggregated for your profile. Assumptions, sources and limits detailed in the Method section below.',
+  'db.hero.deck': 'Social contributions and CSG on your gross → Social Security. Income tax on your taxable income → State. Estimated VAT on consumption → split 45 % State / 31 % Social Security / 24 % Local (PLF allocations). Property tax if homeowner → Local. Detailed method below.',
+  // ─ Onboarding intro (above the fold) — clarify the promise ─
+  'db.hero.onboarding.kicker': 'DAILY BREAD · FRANCE OPEN DATA',
+  'db.hero.onboarding.title': 'What do your taxes fund?',
+  'db.hero.onboarding.deck': 'Personalize your profile below (income, household, town) — underlined values are {b}editable{/b}. We compute your monthly contribution and show exactly where each euro goes: Social Security, State, local authorities.',
+  'db.hero.onboarding.cta': '↓ Start by customizing your profile',
   // ─ Editable NYT-style hero (fold redesign) ─
-  'db.hero.editable.prefix_salaire': 'On your net salary of',
+  'db.hero.editable.prefix_salaire': 'With a net income of',
   'db.hero.editable.set_salaire': 'set your salary',
   'db.hero.editable.aria.salaire': 'Edit monthly salary',
   'db.hero.editable.aria.parts': 'Edit fiscal parts',
@@ -3545,7 +3550,7 @@ const en: Record<string, string> = {
   'db.disp.num': 'Dispatch',
   'db.disp.q_a': 'Three funds,',
   'db.disp.q_b': 'three functions.',
-  'db.disp.deck': 'Eurostat consolidates French public spending across three sub-sectors: {b1}social security{/b1}, {b2}central government{/b2} and {b3}local administrations{/b3}. Here\'s how your €{monthly} break down ({year}).',
+  'db.disp.deck': 'Each tax has a precise legal recipient: your {b1}social contributions{/b1} and {b1}CSG/CRDS{/b1} fund {b1}Social Security{/b1}, your {b2}income tax{/b2} funds the {b2}central State{/b2}, and your {b3}VAT{/b3} is split across the three (45 % State, 31 % Social Security, 24 % Local — PLF allocations). Here\'s where your €{monthly}/month actually flow ({year}).',
   'db.disp.foot_cue': 'Zoom on social security',
   // ─ Zoom Sécu ─
   'db.secu.num': 'Social security — €{monthly}/month',
@@ -3664,12 +3669,12 @@ const en: Record<string, string> = {
   'db.method.body.sources.ofgl': "local-government finances by function (cities, departments, regions).",
   'db.method.body.sources.drees': "health accounts, breakdown ambulatory / hospital / drugs.",
   // 04 — Scope
-  'db.method.body.perimetre.intro': "General government (APU) is split into three accounting sub-sectors. Your total is allocated by their weight in consolidated public spending (Eurostat gov_10a_main).",
-  'db.method.body.perimetre.s1311': "S1311 Central state + ODAC ≈ €676 bn/yr (GDP × 22.7%) — ministries, agencies, debt service, transfers.",
-  'db.method.body.perimetre.s1313': "S1313 Local government ≈ €334 bn/yr (GDP × 11.2%) — cities, EPCIs, departments, regions.",
-  'db.method.body.perimetre.s1314': "S1314 Social security ≈ €798 bn/yr (GDP × 26.8%) — health (CNAM), pensions (CNAV), family (CAF), unemployment (Unédic), workplace (AT-MP).",
-  'db.method.body.perimetre.caveat_label': "€229 bn caveat:",
-  'db.method.body.perimetre.caveat_229': "the 33 PLF missions total €447 bn — 66% of S1311. The remaining €229 bn cover ODAC agencies, EU transfers, special pension regimes — not attributable to the 10 editorial buckets. That's why the displayed State total may differ from the public LFI total.",
+  'db.method.body.perimetre.intro': "General government (APU) is split into three accounting sub-sectors. Daily Bread uses a CAUSAL view: each tax goes to its actual legal recipient, not a proportional split. (For the proportional Eurostat view, see Budget Explorer /france/budget.)",
+  'db.method.body.perimetre.s1311': "S1311 Central state + ODAC ≈ €676 bn/yr — ministries, agencies, debt service. You contribute via {b}your income tax{/b} + {b}45% of your VAT{/b} (State share, PLF V&M).",
+  'db.method.body.perimetre.s1313': "S1313 Local government ≈ €334 bn/yr — cities, EPCIs, departments, regions. You contribute via {b}your property tax{/b} (if homeowner) + {b}24% of your VAT{/b} (housing-tax/CVAE compensation).",
+  'db.method.body.perimetre.s1314': "S1314 Social security ≈ €798 bn/yr — health (CNAM), pensions (CNAV), family (CAF), unemployment (Unédic), workplace (AT-MP). You contribute via {b}your social contributions{/b} + {b}CSG/CRDS{/b} + {b}31% of your VAT{/b} (allocated VAT) + {b}capital social levies (17.2%){/b}.",
+  'db.method.body.perimetre.caveat_label': "Causal vs proportional view:",
+  'db.method.body.perimetre.caveat_229': "Daily Bread maps each euro of tax to its actual recipient (contributions → Social Security, income tax → State, VAT → 3 sub-sectors per PLF allocation). Budget Explorer (/france/budget) keeps the Eurostat S13 proportional view (44/37/18) showing each sub-sector's share of total public SPENDING. Both are useful: causal for « where does MY contribution go », proportional for « how is national public spending distributed ».",
   // 05 — Why personal
   'db.method.body.pourquoi_perso.p1': "The exact French tax computation goes through OpenFisca, the official simulation engine maintained by DINUM/Etalab — source code aligned with the current finance law, updated at each PLF.",
   'db.method.body.pourquoi_perso.p2': "Daily Bread is a simplified MVP, designed to stay accessible without a tax-portal login and without entering a detailed RFR. Goal: a readable order of magnitude plus a deep drilldown — not a replacement for impots.gouv.fr.",

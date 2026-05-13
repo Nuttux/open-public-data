@@ -280,6 +280,12 @@ export type DailyBreadConstants = {
       taux_moyen_consommation: number;
       propension_consommer: number;
       taux_effectif_sur_disponible: number;
+      /** Répartition causale de la TVA nette entre sous-secteurs APU (PLF V&M
+       *  tome I) — utilisée par computeInstitutionSharesCausal pour attribuer
+       *  la TVA des ménages aux 3 caisses. */
+      part_etat_nette?: number;
+      part_secu_nette?: number;
+      part_local_nette?: number;
     }>;
     pfu: DailyBreadSourcedBlock<{
       year: number;

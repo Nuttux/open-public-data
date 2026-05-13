@@ -10966,6 +10966,61 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
    texte du hero, sous forme de spans cliquables (popover/sheet).
    ══════════════════════════════════════════════════════════════════════ */
 
+/* ── Onboarding intro (§00) — post user-testing fix mai 2026 ──
+   Clarifie la promesse de la page avant le formulaire éditable. */
+.theme-db-scrolly .db-p-onboarding {
+  background: var(--p-ivoire);
+  padding: 32px 0 12px;
+}
+.theme-db-scrolly .db-p-onboarding-wrap {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+.theme-db-scrolly .db-p-onboarding-kicker {
+  font-family: var(--pf-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--p-accent);
+  margin: 0 0 14px;
+  text-transform: uppercase;
+}
+.theme-db-scrolly .db-p-onboarding-title {
+  font-family: var(--pf-disp);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  color: var(--p-ink);
+  margin: 0 0 18px;
+}
+.theme-db-scrolly .db-p-onboarding-deck {
+  font-family: var(--pf-serif);
+  font-size: clamp(17px, 1.5vw, 21px);
+  line-height: 1.55;
+  color: var(--p-ink-2);
+  margin: 0 0 18px;
+  max-width: 62ch;
+}
+.theme-db-scrolly .db-p-onboarding-deck b {
+  font-family: var(--pf-disp);
+  font-weight: 600;
+  color: var(--p-accent);
+  font-style: normal;
+}
+.theme-db-scrolly .db-p-onboarding-cta {
+  font-family: var(--pf-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--p-accent);
+  margin: 0;
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
 .theme-db-scrolly .db-p-hero-edit { background: var(--p-ivoire); }
 /* Fix 10 : row-gap 40px pour respiration entre la phrase éditable et le block
    aside-droit. La row "eyebrow" a été retirée (Fix 8 : doublon avec la phrase). */
@@ -11387,26 +11442,28 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   display: inline-flex;
   align-items: baseline;
   gap: 4px;
-  /* Underline pointillée fine (look NYT, pas "lien web 2003").
-   * Default = gris discret ; ocre apparaît au hover/focus/open ci-dessous. */
-  text-decoration: underline dotted var(--p-rule-strong);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 5px;
+  /* Post user-testing fix (mai 2026) : affordance d'édition beaucoup plus
+   * visible. Underline solide ocre + light tint background pour signaler
+   * clairement "ceci est cliquable / modifiable" — l'ancien underline
+   * dotted gris discret était invisible pour les premiers utilisateurs. */
+  text-decoration: underline solid var(--p-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
   cursor: pointer;
-  background: transparent;
+  background: rgba(166, 118, 56, 0.06);
   border: 0;
   font: inherit;
   color: inherit;
-  padding: 0 4px;
+  padding: 0 6px;
   border-radius: 4px;
-  transition: background 0.12s ease, color 0.12s ease;
+  transition: background 0.12s ease, color 0.12s ease, text-decoration-color 0.12s ease;
   font-family: inherit;
   font-weight: inherit;
   letter-spacing: inherit;
   line-height: inherit;
 }
 .theme-db-scrolly .db-editable-span:hover {
-  background: rgba(166, 118, 56, 0.10);
+  background: rgba(166, 118, 56, 0.16);
   color: var(--p-accent);
   text-decoration-color: var(--p-accent);
 }
