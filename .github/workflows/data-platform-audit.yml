@@ -111,6 +111,9 @@ jobs:
                 location: EU
                 threads: 1
           EOF
+          # Install dbt packages declared in packages.yml (e.g. dbt_utils).
+          # Required even for parse — dbt resolves macros from installed packages.
+          dbt deps
           dbt parse --no-partial-parse
 
   schema-yml-completeness:

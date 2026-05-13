@@ -25,7 +25,15 @@ enrich_writes_to_enrichment: []
 
 # Whitelist pour bypasses ingest → public/data/ direct
 # (toutes éliminées Phases 8-10, voir ADR-0001).
-ingest_writes_to_data: []
+ingest_writes_to_data:
+  - script: pipeline/scripts/enrich/build_cross_cutting_themes.py
+    justification: "Cross-cutting themes table — agrège plusieurs core_* pour produire un index thématique web-ready. Refactor via mart_cross_cutting pending."
+    todo: "Wrap en mart_cross_cutting + retire l'écriture directe vers public/data/"
+    linked_adr: ADR-0001
+  - script: pipeline/scripts/enrich/build_drilldown.py
+    justification: "Drilldown tree builder — joint plusieurs mart_* pour produire la structure macro→micro consommée par Daily Bread. Logique trop spécifique pour un mart simple."
+    todo: "Découper en mart_drilldown_etat / mart_drilldown_local / mart_drilldown_secu — déjà partiellement amorcé via build_drilldown_etat/local/secu.py"
+    linked_adr: ADR-0001
 
 # Whitelist pour scripts WIP non câblés à l'UI
 # (toutes redirigées vers pipeline/cache/wip/ Phase 12).

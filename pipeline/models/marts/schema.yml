@@ -579,3 +579,36 @@ models:
     columns:
       - name: annee
         tests: [not_null]
+
+  # ===========================================================================
+  # MARSEILLE — Sankey budget lines
+  # ===========================================================================
+  - name: mart_marseille_budget_sankey_lines
+    description: |
+      Lignes budgétaires Marseille pour le Sankey, par type de flux
+      (Personnel, Achats, Subventions, Investissements matériels, etc.).
+
+      Différence vs mart_budget_sankey_lines (Paris) : Marseille n'a pas de
+      dimension fonctionnelle, donc pas de regroupement par politique
+      publique. À la place, `ode_categorie_flux` calculée à partir de
+      nature_code (universel M57).
+
+      Source : core_marseille_budget (filtré montant > 0)
+    columns:
+      - name: commune_slug
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['marseille']
+      - name: annee
+        tests: [not_null]
+      - name: type_budget
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['vote', 'execute']
+      - name: montant
+        tests: [not_null]
+      - name: ode_categorie_flux
+        description: "Catégorie de flux dérivée de nature_code (Personnel, Achats, Subventions, etc.)"
+        tests: [not_null]
