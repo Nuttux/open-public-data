@@ -1087,6 +1087,14 @@ export default function DailyBreadClient({
             <p className="db-p-onboarding-deck">
               {renderTagged(t("db.hero.onboarding.deck"))}
             </p>
+            <ol className="db-p-onboarding-steps">
+              <li>{t("db.hero.onboarding.step1")}</li>
+              <li>{t("db.hero.onboarding.step2")}</li>
+              <li>{t("db.hero.onboarding.step3")}</li>
+            </ol>
+            <p className="db-p-onboarding-hint">
+              {renderTagged(t("db.hero.onboarding.profile_hint"))}
+            </p>
             <p className="db-p-onboarding-cta">
               {t("db.hero.onboarding.cta")}
             </p>

@@ -3495,9 +3495,13 @@ const en: Record<string, string> = {
   'db.hero.deck': 'Social contributions and CSG on your gross → Social Security. Income tax on your taxable income → State. Estimated VAT on consumption → split 45 % State / 31 % Social Security / 24 % Local (PLF allocations). Property tax if homeowner → Local. Detailed method below.',
   // ─ Onboarding intro (above the fold) — clarify the promise ─
   'db.hero.onboarding.kicker': 'DAILY BREAD · FRANCE OPEN DATA',
-  'db.hero.onboarding.title': 'What do your taxes fund?',
-  'db.hero.onboarding.deck': 'Personalize your profile below (income, household, town) — underlined values are {b}editable{/b}. We compute your monthly contribution and show exactly where each euro goes: Social Security, State, local authorities.',
-  'db.hero.onboarding.cta': '↓ Start by customizing your profile',
+  'db.hero.onboarding.title': 'Your taxes. Public spending. The gap.',
+  'db.hero.onboarding.deck': 'You pay. France spends. We show you {b}all three{/b}:',
+  'db.hero.onboarding.step1': '1. How much you actually pay each month (contributions, CSG, income tax, estimated VAT).',
+  'db.hero.onboarding.step2': '2. How much France spends per inhabitant (Social Security, State, local authorities).',
+  'db.hero.onboarding.step3': '3. Who funds the difference (employer contributions, businesses, deficit).',
+  'db.hero.onboarding.profile_hint': 'Customize your profile below — underlined values are {b}editable{/b}.',
+  'db.hero.onboarding.cta': '↓ Start by filling in your profile',
   // ─ Editable NYT-style hero (fold redesign) ─
   'db.hero.editable.prefix_salaire': 'With a net income of',
   'db.hero.editable.set_salaire': 'set your salary',
