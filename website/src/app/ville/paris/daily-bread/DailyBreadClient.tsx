@@ -2028,15 +2028,19 @@ export default function DailyBreadClient({
 
                 <BarList
                   items={localLevels.map((l) => {
-                    const s1313Total =
-                      db?.apu_subsectors?.institutions?.S1313?.annual_eur ?? 0;
+                    // Pas de nationalAnnual ici : l.share_of_local est
+                    // commune-pondérée (ratio Paris/national_avg) → multiplier
+                    // S1313 par cette share donne un montant trompeur (suggère
+                    // que la commune a un budget gigantesque alors que la
+                    // ville de Paris seule ≈ 10 Md€). Le national absolu des
+                    // 3 échelons (bloc 183 / dept 100 / région 50 Md€) est
+                    // dans Budget Explorer §07 si l'utilisateur veut creuser.
                     return {
                       key: l.key,
                       name:
                         personalLabelByKey[l.key] ??
                         (locale === "en" ? l.label_en : l.label_fr),
                       monthly: l.monthly_eur,
-                      nationalAnnual: s1313Total * l.share_of_local,
                       share: l.share_of_local,
                       sub:
                         l.key === "bloc_communal"
@@ -2714,20 +2718,22 @@ function BarList({
                 <span className="db-p-zoom-bar-val-perso">
                   {fmtEur(item.monthly, locale, 0)} €
                 </span>
-                {item.nationalAnnual != null && item.nationalAnnual > 0 && (
-                  <span className="db-p-zoom-bar-natl tnum">
-                    {fmtBnEur(item.nationalAnnual, locale)}
-                    {locale === "en" ? "/yr" : "/an"}{" "}
-                    <span className="db-p-zoom-bar-natl-pct">
-                      ·{" "}
-                      {(item.share * 100).toLocaleString(
-                        locale === "en" ? "en-GB" : "fr-FR",
-                        { maximumFractionDigits: 0 },
-                      )}{" "}
-                      %
-                    </span>
+                <span className="db-p-zoom-bar-natl tnum">
+                  {item.nationalAnnual != null && item.nationalAnnual > 0 && (
+                    <>
+                      {fmtBnEur(item.nationalAnnual, locale)}
+                      {locale === "en" ? "/yr" : "/an"}
+                      <span className="db-p-zoom-bar-natl-pct">{" · "}</span>
+                    </>
+                  )}
+                  <span className="db-p-zoom-bar-natl-pct">
+                    {(item.share * 100).toLocaleString(
+                      locale === "en" ? "en-GB" : "fr-FR",
+                      { maximumFractionDigits: 0 },
+                    )}{" "}
+                    %
                   </span>
-                )}
+                </span>
               </span>
             </div>
             <div className="db-p-zoom-bar-track">
