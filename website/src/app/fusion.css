@@ -10968,6 +10968,103 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
 
 /* ── Onboarding intro (§00) — post user-testing fix mai 2026 ──
    Clarifie la promesse de la page avant le formulaire éditable. */
+/* ── Synthèse §06 — gap block (Approche A) ─────────────────────── */
+.theme-db-scrolly .db-p-end-gap {
+  margin: 28px 0 36px;
+  padding: 28px 32px;
+  background: var(--p-ivoire);
+  border-left: 3px solid var(--p-accent);
+}
+.theme-db-scrolly .db-p-end-gap-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 28px;
+}
+@media (max-width: 760px) {
+  .theme-db-scrolly .db-p-end-gap-grid {
+    grid-template-columns: 1fr;
+  }
+  .theme-db-scrolly .db-p-end-gap-arrow { display: none; }
+}
+.theme-db-scrolly .db-p-end-gap-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.theme-db-scrolly .db-p-end-gap-cell-delta {
+  background: rgba(166, 118, 56, 0.10);
+  padding: 12px 16px;
+  border-radius: 4px;
+}
+.theme-db-scrolly .db-p-end-gap-label {
+  font-family: var(--pf-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--p-muted);
+  margin: 0;
+  text-transform: uppercase;
+}
+.theme-db-scrolly .db-p-end-gap-num {
+  font-family: var(--pf-disp);
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  color: var(--p-ink);
+  margin: 0;
+}
+.theme-db-scrolly .db-p-end-gap-cell-delta .db-p-end-gap-num {
+  color: var(--p-accent);
+}
+.theme-db-scrolly .db-p-end-gap-unit {
+  font-family: var(--pf-disp);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--p-muted);
+  margin-left: 2px;
+}
+.theme-db-scrolly .db-p-end-gap-arrow {
+  font-family: var(--pf-mono);
+  font-size: 22px;
+  color: var(--p-muted-2);
+  text-align: center;
+  font-weight: 400;
+}
+.theme-db-scrolly .db-p-end-gap-explain-title {
+  font-family: var(--pf-disp);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--p-ink);
+  margin: 0 0 12px;
+}
+.theme-db-scrolly .db-p-end-gap-explain-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.theme-db-scrolly .db-p-end-gap-explain-list li {
+  font-family: var(--pf-serif);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--p-ink-2);
+  padding-left: 16px;
+  position: relative;
+}
+.theme-db-scrolly .db-p-end-gap-explain-list li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  color: var(--p-accent);
+  font-weight: 700;
+}
+
 .theme-db-scrolly .db-p-onboarding {
   background: var(--p-ivoire);
   padding: 32px 0 12px;

@@ -212,7 +212,11 @@
       "intra_gov_transfers_pct_gdp": 3.5,
       "gdp_total_md_eur": 2979.1,
       "gdp_source": "Eurostat — nama_10_gdp (B1GQ, CP_MEUR)",
-      "gdp_source_url": "https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table"
+      "gdp_source_url": "https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table",
+      "population_france": 68042591,
+      "population_year": 2024,
+      "population_source": "INSEE — Estimation de population au 1er janvier 2024",
+      "population_source_url": "https://www.insee.fr/fr/statistiques/1893198"
     },
     "notes_fr": "Décomposition non consolidée S1311/S1313/S1314 — lecture « qui dépense quoi avant transferts intra-admin ». Les ratios sont normalisés sur leur somme (et non sur S13). `institutions.<code>.annual_eur` est en € (= value_pct_gdp/100 × PIB FR) et permet aux drawers d'afficher le national absolu sans hardcode."
   },
