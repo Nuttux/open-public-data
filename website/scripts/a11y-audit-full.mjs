@@ -78,7 +78,7 @@ const SEVERITY_ORDER = { critical: 0, serious: 1, moderate: 2, minor: 3 };
           await ctx.close();
           continue;
         }
-      } catch (e) {
+      } catch (_e) {
         try {
           await p.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
         } catch (e2) {
@@ -94,7 +94,7 @@ const SEVERITY_ORDER = { critical: 0, serious: 1, moderate: 2, minor: 3 };
         results = await new AxeBuilder({ page: p })
           .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'best-practice'])
           .analyze();
-      } catch (e) {
+      } catch (_e) {
         failures.push({ route, viewport: vp.id, status: 0, reason: 'axe_failed: ' + e.message.slice(0, 120) });
         console.log(`${tag}  axe failed — skipped`);
         await ctx.close();

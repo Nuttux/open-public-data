@@ -11,6 +11,32 @@ import reactHooksPlugin from "eslint-plugin-react-hooks";
 export default [
   js.configs.recommended,
   {
+    // Global rule overrides (apply to all files including .js/.mjs).
+    // TypeScript checks identifier resolution far better than ESLint's
+    // built-in no-undef, which doesn't know about `window`, `console`,
+    // `URL`, etc. without an env config. Keep it off project-wide.
+    rules: {
+      "no-undef": "off",
+      "no-empty": ["error", { "allowEmptyCatch": true }],
+      "no-irregular-whitespace": [
+        "error",
+        { "skipStrings": true, "skipTemplates": true, "skipComments": true, "skipRegExps": true },
+      ],
+      "no-control-regex": "off",
+      // Honor `_` prefix convention used in dev scripts (mjs/js) for
+      // intentionally-unused variables and caught errors.
+      "no-unused-vars": ["warn", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_", "caughtErrorsIgnorePattern": "^_" }],
+    },
+  },
+  {
+    // Dev scripts (smoke tests, audits) aren't shipped — keep ESLint
+    // lenient there so a stray unused var doesn't break CI.
+    files: ["scripts/**/*.{js,mjs,cjs}"],
+    rules: {
+      "no-unused-vars": "off",
+    },
+  },
+  {
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
       parser: tsParser,
@@ -40,6 +66,19 @@ export default [
       // General
       "no-unused-vars": "off", // Use TypeScript version instead
       "no-undef": "off", // TypeScript handles this
+      // Allow `try {} catch {}` swallow patterns (very common for optional
+      // JSON loads and Storage probes). Empty blocks elsewhere stay errors.
+      "no-empty": ["error", { "allowEmptyCatch": true }],
+      // Irregular whitespace happens in editorial FR content (NBSP, narrow
+      // NBSP for numbers). Keep the rule on for code, but skip strings/
+      // templates/comments/regexes where it's intentional.
+      "no-irregular-whitespace": [
+        "error",
+        { "skipStrings": true, "skipTemplates": true, "skipComments": true, "skipRegExps": true },
+      ],
+      // Some legacy regexes carry control chars from CSV parsing — keep
+      // them for now, codepath unchanged.
+      "no-control-regex": "off",
     },
     settings: {
       react: {

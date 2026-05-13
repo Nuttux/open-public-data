@@ -386,7 +386,6 @@ export default function MarseilleInvestissementsClient({
                 <div className="fx-projet-card-thumb">
                   {photoUrl ? (
                     <div style={{ position: "relative", width: "100%", aspectRatio: "4 / 3", borderBottom: "1px solid rgba(10,10,10,0.08)", overflow: "hidden" }}>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={photoUrl}
                         alt={p.name}
