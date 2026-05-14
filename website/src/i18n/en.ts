@@ -3630,6 +3630,8 @@ const en: Record<string, string> = {
   'db.end.gap.explain.tva_entreprises': 'VAT collected from businesses on their value added (~€270 bn/year gross) — economically passed on in prices paid by consumers.',
   'db.end.gap.explain.deficit': 'Deficit / public borrowing (~€175 bn/year, 5.8% of GDP in 2024) — funded by debt issuance, repaid by future taxpayers.',
   'db.end.gap.explain.divers': 'Inheritance tax (~€18 bn), dividends from State holdings (EDF, etc.), licenses, EU funds received (~€17 bn), and other miscellaneous revenue.',
+  'db.end.gap.explain_cta': 'See the detail of national public revenue',
+  'db.end.equivalents_note': 'Method note · The equivalents below are INDEPENDENT ANGLES — they do NOT add up. Each converts the per-capita spending of one public area (Health, Pensions, Education, Transport, Debt) into a monetary equivalent of an everyday item. The health branch also funds hospitals, medication, long-term care — not just GP visits; this is an order of magnitude, not an allocation.',
   'db.end.share_card_cta': 'Share',
   'db.end.share_card_aria': 'Share this card',
   'db.end.via': 'via {source}',

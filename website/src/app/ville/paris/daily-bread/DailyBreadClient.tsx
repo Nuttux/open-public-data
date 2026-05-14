@@ -890,12 +890,12 @@ export default function DailyBreadClient({
           locale === "en" ? "en-GB" : "fr-FR",
           { maximumFractionDigits: 1 },
         ),
-        claimAFr: "consultations / habitant",
-        claimAEn: "GP visits / inhabitant",
-        claimBFr: "chez le généraliste, par mois.",
-        claimBEn: "per month.",
-        editorialFr: "Ce que la France finance par habitant en consultations médicales.",
-        editorialEn: "What France funds per inhabitant in GP visits.",
+        claimAFr: "consultations généralistes",
+        claimAEn: "GP visits",
+        claimBFr: "(valeur équivalente / habitant / mois).",
+        claimBEn: "(equivalent value / inhabitant / month).",
+        editorialFr: "Si tout l'argent de la branche maladie allait à des consultations chez le GP, ça en paierait 15 par habitant et par mois. En réalité, la branche maladie finance aussi hôpital, médicaments, médico-social — c'est un ordre de grandeur.",
+        editorialEn: "If all health-branch spending went to GP visits, it would pay for 15 per inhabitant per month. In reality, the health branch also funds hospitals, medication, long-term care — this is an order of magnitude.",
         sourceDetailFr: "Convention médicale 2024 · 30 € la consultation.",
         sourceDetailEn: "Medical agreement 2024 · €30 per visit.",
         viaDetailFr: `Branche maladie : ${fmtEur(cnamPC, locale, 0)} €/mois/habitant.`,
@@ -922,10 +922,10 @@ export default function DailyBreadClient({
         )} %`,
         claimAFr: "d'une pension moyenne",
         claimAEn: "of an average pension",
-        claimBFr: "financés par habitant chaque mois.",
-        claimBEn: "funded per inhabitant each month.",
-        editorialFr: "La France consacre l'équivalent d'une fraction de pension par habitant.",
-        editorialEn: "France funds the equivalent of part of a pension per inhabitant.",
+        claimBFr: "(valeur équivalente / habitant / mois).",
+        claimBEn: "(equivalent value / inhabitant / month).",
+        editorialFr: "La dépense retraite par habitant équivaut à 23 % d'une pension moyenne (1 626 €/mois, DREES). En réalité chaque pensionné reçoit sa pension complète — l'équivalent ramène la dépense totale à un objet du quotidien.",
+        editorialEn: "Pension spending per inhabitant equals 23 % of an average pension (€1,626/month, DREES). In reality each pensioner receives their full pension — the equivalent scales total spending to an everyday item.",
         sourceDetailFr: "DREES 2024 · pension moyenne 1 626 €/mois.",
         sourceDetailEn: "DREES 2024 · average pension €1,626/month.",
         viaDetailFr: `Branche retraite : ${fmtEur(cnavPC, locale, 0)} €/mois/habitant.`,
@@ -950,12 +950,12 @@ export default function DailyBreadClient({
           locale === "en" ? "en-GB" : "fr-FR",
           { maximumFractionDigits: 2 },
         ),
-        claimAFr: "jours d'école / habitant",
-        claimAEn: "school-days / inhabitant",
-        claimBFr: "financés par mois.",
-        claimBEn: "funded per month.",
-        editorialFr: "Pour un élève public — sur 9 350 €/an de coût total.",
-        editorialEn: "For one public-school student — out of €9,350/year total.",
+        claimAFr: "jours d'école",
+        claimAEn: "school-days",
+        claimBFr: "(valeur équivalente / habitant / mois).",
+        claimBEn: "(equivalent value / inhabitant / month).",
+        editorialFr: "La dépense Éducation par habitant équivaut à 3,6 jours de scolarité (52 €/jour/élève, DEPP). En réalité ~17 % des Français sont élèves — l'équivalent ramène la dépense totale à un objet du quotidien.",
+        editorialEn: "Education spending per inhabitant equals 3.6 school-days (€52/day/student, DEPP). In reality ~17 % of French residents are students — the equivalent scales total spending to an everyday item.",
         sourceDetailFr: "DEPP RERS 2023 · ~9 350 €/an par élève.",
         sourceDetailEn: "DEPP RERS 2023 · ~€9,350/year per student.",
         viaDetailFr: `Éducation État : ${fmtEur(educPC, locale, 0)} €/mois/habitant.`,
@@ -980,12 +980,12 @@ export default function DailyBreadClient({
           locale === "en" ? "en-GB" : "fr-FR",
           { maximumFractionDigits: 0 },
         ),
-        claimAFr: "trajets urbains / habitant",
-        claimAEn: "urban transit trips / inhab",
-        claimBFr: "financés par mois.",
-        claimBEn: "funded per month.",
-        editorialFr: "Bus, métro, tram — moyenne nationale par habitant.",
-        editorialEn: "Bus, metro, tram — national average per inhabitant.",
+        claimAFr: "trajets urbains",
+        claimAEn: "urban transit trips",
+        claimBFr: "(valeur équivalente / habitant / mois).",
+        claimBEn: "(equivalent value / inhabitant / month).",
+        editorialFr: "La dépense bloc communal par habitant équivaut à 90 trajets bus/métro/tram (2,50 €/trajet, UTP). En réalité elle finance aussi voirie, écoles, propreté, culture — c'est un ordre de grandeur.",
+        editorialEn: "Municipal-block spending per inhabitant equals 90 transit trips (€2.50/trip, UTP). In reality it also funds roads, schools, waste, culture — this is an order of magnitude.",
         sourceDetailFr: "UTP 2024 · 2,50 € le trajet urbain.",
         sourceDetailEn: "UTP 2024 · €2.50 per urban trip.",
         viaDetailFr: `Bloc communal : ${fmtEur(blocPC, locale, 0)} €/mois/habitant.`,
@@ -1007,12 +1007,12 @@ export default function DailyBreadClient({
         tagFr: "DETTE · ÉTAT",
         tagEn: "DEBT · STATE",
         number: `${fmtEur(dettePC, locale, 0)} €`,
-        claimAFr: "d'intérêts / habitant",
-        claimAEn: "of interest / inhab",
+        claimAFr: "d'intérêts par habitant",
+        claimAEn: "of interest per inhabitant",
         claimBFr: "par mois sur la dette publique.",
         claimBEn: "per month on public debt.",
-        editorialFr: "Charge de la dette par habitant — en hausse depuis 2022.",
-        editorialEn: "Per-inhabitant debt service — rising since 2022.",
+        editorialFr: "Charge réelle d'intérêts payés sur la dette publique, ramenée par habitant. En hausse depuis 2022 avec la remontée des taux.",
+        editorialEn: "Real interest paid on public debt, per inhabitant. Rising since 2022 with higher interest rates.",
         sourceDetailFr: "AFT 2025 · charge de la dette votée au PLF.",
         sourceDetailEn: "AFT 2025 · debt service voted in PLF.",
         viaDetailFr: `Service de la dette : ${fmtEur(dettePC, locale, 0)} €/mois/habitant.`,
@@ -2306,9 +2306,20 @@ export default function DailyBreadClient({
                       <li>{t("db.end.gap.explain.deficit")}</li>
                       <li>{t("db.end.gap.explain.divers")}</li>
                     </ul>
+                    <p className="db-p-end-gap-explain-cta">
+                      <Link href="/france/budget#recettes-apu" prefetch={false}>
+                        {t("db.end.gap.explain_cta")} →
+                      </Link>
+                    </p>
                   </div>
                 </div>
               )}
+
+              {/* Note méthodo sur les équivalents — angles indépendants,
+                  pas additifs, équivalence MONÉTAIRE (pas allocation). */}
+              <p className="db-p-end-equivalents-note">
+                {t("db.end.equivalents_note")}
+              </p>
 
               {(() => {
                 const sorted = equivalents
