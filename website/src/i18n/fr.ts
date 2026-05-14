@@ -3637,6 +3637,8 @@ const fr: Record<string, string> = {
   'db.end.gap.explain.tva_entreprises': 'TVA collectée auprès des entreprises sur leur valeur ajoutée (~270 Md€/an brute) — économiquement répercutée dans les prix payés par les consommateurs.',
   'db.end.gap.explain.deficit': 'Déficit / emprunt public (~175 Md€/an, 5,8 % du PIB en 2024) — financé par émission de dette, remboursée par les futurs contribuables.',
   'db.end.gap.explain.divers': 'Droits de succession (~18 Md€), dividendes des participations État (EDF, etc.), redevances, fonds européens reçus (~17 Md€), et autres recettes diverses.',
+  'db.end.gap.explain_cta': 'Voir le détail des recettes publiques nationales',
+  'db.end.equivalents_note': 'Note méthodo · Les équivalents ci-dessous sont des ANGLES INDÉPENDANTS — ils ne s\'additionnent pas. Chacun convertit la dépense per-capita d\'un poste public (Maladie, Retraite, Éducation, Transport, Dette) en équivalent monétaire d\'un objet du quotidien. La branche maladie finance aussi hôpital, médicaments, médico-social — pas que des consultations ; c\'est un ordre de grandeur, pas une allocation.',
   'db.end.share_card_cta': 'Partager',
   'db.end.share_card_aria': 'Partager cette carte',
   'db.end.via': 'via {source}',
