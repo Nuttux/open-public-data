@@ -3557,7 +3557,14 @@ const fr: Record<string, string> = {
   'db.disp.num': 'Dispatch',
   'db.disp.q_a': 'Combien dépense la France',
   'db.disp.q_b': 'par habitant ?',
-  'db.disp.deck': 'Tu paies {monthly} €/mois en impôts directs. La France dépense en moyenne {perCapita} €/mois par habitant en services publics ({year}), répartis entre {b1}Sécurité sociale{/b1}, {b2}État central{/b2} et {b3}collectivités locales{/b3}. Le gap entre ce que tu paies et ce que coûte le service public est financé par d\'autres sources — voir la synthèse en bas de page.',
+  'db.disp.deck': 'Tu paies {monthly} €/mois en impôts directs. La France dépense en moyenne {perCapita} €/mois par habitant en services publics ({year}), répartis entre {b1}Sécurité sociale{/b1}, {b2}État central{/b2} et {b3}collectivités locales{/b3}.',
+  // ─ Galerie "À retenir" en bas de §02 (remplace anciens équivalents perso) ─
+  'db.disp.keyfigures.title': 'À retenir',
+  'db.disp.keyfigures.total': 'dépense publique totale (S13 Eurostat 2025, Sécu + État + Local)',
+  'db.disp.keyfigures.deficit': 'déficit public 2024 (5,8 % du PIB, financé par emprunt — INSEE notif. mars 2025)',
+  'db.disp.keyfigures.cotisations_employeurs': 'cotisations sociales employeurs (~27 % des recettes Sécu, invisibles sur la fiche de paie — PLFSS 2025)',
+  'db.disp.keyfigures.psr_ue': 'contribution brute France à l\'UE (PSR-UE PLF 2025, net ~5,8 Md€ après fonds européens reçus)',
+  'db.disp.keyfigures.sources': 'Sources : Eurostat gov_10a_main, INSEE Comptes nationaux 2024, PLFSS 2025 annexe 4, PLF 2025 Voies et Moyens tome I.',
   'db.disp.foot_cue': 'Zoom sur la Sécu',
   // ─ Zoom Sécu (panneau 3) ─
   'db.secu.num': 'Sécurité sociale — {monthly} €/mois/habitant',
@@ -3662,6 +3669,7 @@ const fr: Record<string, string> = {
   'db.method.q.perimetre': 'Périmètre Sécu / État / Collectivités',
   'db.method.q.pourquoi_perso': 'Pourquoi un calcul perso et pas exact',
   'db.method.q.comparaison': "Comparaison avec d'autres outils",
+  'db.method.q.limites': "Limites éditoriales : ce que la page ne dit pas",
   // 01 — Hypothèses
   'db.method.body.hypotheses.intro': "Chaque source de revenu (salaire, pension, capital, micro-entrepreneur) suit ses propres règles. Le total que tu vois additionne les quatre.",
   'db.method.body.hypotheses.salarie': "Salarié privé : cotisations salariées hors CSG ≈ 12,5 % du brut + CSG/CRDS ≈ 9,7 % (URSSAF 2024) → ratio brut/net ≈ 1,29. Cotisations patronales (~42 % du brut) sont signalées séparément — elles font partie du coût employeur, pas de ton net.",
@@ -3705,6 +3713,15 @@ const fr: Record<string, string> = {
   'db.method.body.comparaison.openfisca': "le moteur officiel exposé en API. Exhaustif (toutes prestations + impôts), peu lisible pour le grand public.",
   'db.method.body.comparaison.bercy': "explication officielle de la dépense publique, par mission. Pédagogique, mais pas personnalisé.",
   'db.method.body.comparaison.db': "Daily Bread (cette page) — calcul perso narratif + drilldown profond Sécu / État / Collectivités. Approximation MVP, transparente sur ses limites.",
+
+  // 07 — Limites éditoriales
+  'db.method.body.limites.intro': "Daily Bread chiffre deux choses : ta contribution salariale directe (cotisations + CSG + IR + TVA) et la dépense publique par habitant. La page ne tente pas de répondre à 'où va MON euro' — la question n'a pas de réponse simple, et toute tentative de soustraction 'tu paies X / tu reçois Y' est philosophiquement bancale.",
+  'db.method.body.limites.patrimoine_title': "Ta contribution réelle dépend de ton patrimoine",
+  'db.method.body.limites.patrimoine_body': "Ce calcul ne saisit que le revenu salarial. Selon ta situation, tu peux contribuer beaucoup plus à des postes spécifiques : taxe foncière (~39 Md€/an, ménages propriétaires), droits de succession et donation (~18 Md€/an, héritiers), PFU sur capital (~9 Md€/an, dividendes et plus-values mobilières), CSG sur capital (~20 Md€/an), plus-values immobilières et fonciers, IS si tu diriges une société. Un foyer riche en patrimoine paie nettement plus que ce que la phrase éditable ci-dessus suggère.",
+  'db.method.body.limites.nonmarchand_title': "Les biens publics non-marchands sont difficiles à évaluer",
+  'db.method.body.limites.nonmarchand_body': "La dépense publique inclut beaucoup de biens collectifs non-rivaux (route, parc, défense, justice, éclairage public, recherche fondamentale) qui ne se 'consomment' pas comme un bien marchand. La valeur individuelle qu'on en tire ne se chiffre pas. Comparer 'ce que tu paies' à 'ce que la France dépense par habitant' ne traduit pas un rapport service rendu/contribution — c'est juste une mise en perspective de la SCALE.",
+  'db.method.body.limites.collectif_title': "La dépense publique est mutualisée et redistributive par construction",
+  'db.method.body.limites.collectif_body': "La Sécu c'est de l'assurance santé/retraite/chômage : tu paies aujourd'hui, tu reçois quand tu en as besoin (et inversement). L'école finance les enfants des autres autant que les tiens. Les retraites sont financées par les actifs pour les retraités d'aujourd'hui. Le cadrage individuel 'mes 856 € contre 2 215 €' rate cette dimension collective : on ne paie pas pour 'recevoir en proportion', on paie pour qu'un système existe.",
 
   // ─ Deep-dives "À l'intérieur de…" (sous chaque panneau Zoom) ─
   'db.deepdive.eyebrow': "À l'intérieur de",
