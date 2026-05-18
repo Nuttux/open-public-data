@@ -1817,6 +1817,56 @@ export default function DailyBreadClient({
                 );
               })()}
 
+              {/* Galerie "À retenir" — 4 chiffres macro shareable (remplace
+                  les anciens équivalents perso "valeur équivalente"). */}
+              {db && (
+                <div className="db-disp-key-figures">
+                  <p className="db-disp-key-figures-title">
+                    {t("db.disp.keyfigures.title")}
+                  </p>
+                  <div className="db-disp-key-figures-grid">
+                    <div className="db-disp-key-figure">
+                      <p className="db-disp-key-figure-num tnum">
+                        {fmtBnEur(
+                          s1311Total + s1313Total + s1314Total,
+                          locale,
+                        )}
+                      </p>
+                      <p className="db-disp-key-figure-label">
+                        {t("db.disp.keyfigures.total")}
+                      </p>
+                    </div>
+                    <div className="db-disp-key-figure">
+                      <p className="db-disp-key-figure-num tnum">
+                        ~175 Md€
+                      </p>
+                      <p className="db-disp-key-figure-label">
+                        {t("db.disp.keyfigures.deficit")}
+                      </p>
+                    </div>
+                    <div className="db-disp-key-figure">
+                      <p className="db-disp-key-figure-num tnum">
+                        ~215 Md€
+                      </p>
+                      <p className="db-disp-key-figure-label">
+                        {t("db.disp.keyfigures.cotisations_employeurs")}
+                      </p>
+                    </div>
+                    <div className="db-disp-key-figure">
+                      <p className="db-disp-key-figure-num tnum">
+                        ~23,3 Md€
+                      </p>
+                      <p className="db-disp-key-figure-label">
+                        {t("db.disp.keyfigures.psr_ue")}
+                      </p>
+                    </div>
+                  </div>
+                  <p className="db-disp-key-figures-src">
+                    {t("db.disp.keyfigures.sources")}
+                  </p>
+                </div>
+              )}
+
               <p className="db-panel-foot-cue">{t("db.disp.foot_cue")}</p>
             </div>
           </section>
@@ -2219,13 +2269,17 @@ export default function DailyBreadClient({
           );
         })()}
 
-        {/* ── PANNEAU 6 — Synthèse / Equivalents ──
+        {/* ── §06 Synthèse SUPPRIMÉE (refonte mai 2026) ──
          *
-         * Note 2026-05 : ancien §06 "Vue par fonction" (COFOG) RETIRÉ —
-         * redondant avec les cross-cuttings §07 du Budget Explorer
-         * (/france/budget). Le panel Synthèse devient §06, et la Méthode
-         * (anciennement §08) devient §07. */}
-        {equivalents.length > 0 && (
+         * Drop : gap block (paies vs profites), équivalents "valeur
+         * équivalente" (15 consultations/hab), context block.
+         * Raisons : cadrage individualiste "déficitaire net" trompeur,
+         * caveats philosophiques empilés qui sortent du champ d'un
+         * simulateur. Les caveats sont déplacés en §06 méthode dans un
+         * dépliant dédié "Limites éditoriales".
+         *
+         * §07 méthode devient §06 (renumérotation). */}
+        {false && equivalents.length > 0 && (
           <section
             ref={panel6Ref}
             id="db-share-section"
@@ -2449,7 +2503,7 @@ export default function DailyBreadClient({
         >
           <div className="db-panel-wrap">
             <p className="db-panel-num">
-              <em>07</em> · {t("db.method.num")}
+              <em>06</em> · {t("db.method.num")}
             </p>
             <h2 className="db-p-method-q" style={{ whiteSpace: "pre-line" }}>
               {renderTagged(t("db.method.title"), {
@@ -2586,6 +2640,35 @@ export default function DailyBreadClient({
                   <p>{t("db.method.body.pourquoi_perso.p1")}</p>
                   <p>{t("db.method.body.pourquoi_perso.p2")}</p>
                   <p>{t("db.method.body.pourquoi_perso.p3")}</p>
+                </div>
+              </details>
+
+              {/* 06 — Limites éditoriales (ajout mai 2026 après drop §06
+                  synthèse). Déplace ici les caveats patrimoine + biens
+                  non-marchands + collectif, plutôt que les empiler dans
+                  une synthèse forcée. */}
+              <details className="db-p-method-faq">
+                <summary className="db-p-method-faq-summary">
+                  <span className="db-p-method-faq-num">06</span>
+                  <span className="db-p-method-faq-q">
+                    {t("db.method.q.limites")}
+                  </span>
+                  <span aria-hidden className="db-p-method-faq-chevron">↓</span>
+                </summary>
+                <div className="db-p-method-faq-body">
+                  <p>{t("db.method.body.limites.intro")}</p>
+                  <p>
+                    <b>{t("db.method.body.limites.patrimoine_title")}</b>
+                  </p>
+                  <p>{t("db.method.body.limites.patrimoine_body")}</p>
+                  <p>
+                    <b>{t("db.method.body.limites.nonmarchand_title")}</b>
+                  </p>
+                  <p>{t("db.method.body.limites.nonmarchand_body")}</p>
+                  <p>
+                    <b>{t("db.method.body.limites.collectif_title")}</b>
+                  </p>
+                  <p>{t("db.method.body.limites.collectif_body")}</p>
                 </div>
               </details>
             </div>

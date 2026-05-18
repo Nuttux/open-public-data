@@ -3550,7 +3550,14 @@ const en: Record<string, string> = {
   'db.disp.num': 'Dispatch',
   'db.disp.q_a': 'How much does France spend',
   'db.disp.q_b': 'per inhabitant?',
-  'db.disp.deck': 'You pay €{monthly}/month in direct taxes. France spends on average €{perCapita}/month per inhabitant on public services ({year}), split across {b1}Social Security{/b1}, {b2}central State{/b2} and {b3}local authorities{/b3}. The gap between what you pay and what public services cost is funded by other sources — see the synthesis at the bottom of the page.',
+  'db.disp.deck': 'You pay €{monthly}/month in direct taxes. France spends on average €{perCapita}/month per inhabitant on public services ({year}), split across {b1}Social Security{/b1}, {b2}central State{/b2} and {b3}local authorities{/b3}.',
+  // ─ Key figures gallery (replaces old personal equivalents) ─
+  'db.disp.keyfigures.title': 'Key figures',
+  'db.disp.keyfigures.total': 'total public spending (S13 Eurostat 2025, Social Security + State + Local)',
+  'db.disp.keyfigures.deficit': 'public deficit 2024 (5.8% of GDP, funded by borrowing — INSEE March 2025)',
+  'db.disp.keyfigures.cotisations_employeurs': 'employer social contributions (~27% of Social Security revenue, invisible on payslip — PLFSS 2025)',
+  'db.disp.keyfigures.psr_ue': 'gross French contribution to EU (PSR-UE PLF 2025, net ~€5.8 bn after EU funds received)',
+  'db.disp.keyfigures.sources': 'Sources: Eurostat gov_10a_main, INSEE National Accounts 2024, PLFSS 2025 annex 4, PLF 2025 Voies et Moyens tome I.',
   'db.disp.foot_cue': 'Zoom on social security',
   // ─ Zoom Sécu ─
   'db.secu.num': 'Social security — €{monthly}/month/inhabitant',
@@ -3653,6 +3660,7 @@ const en: Record<string, string> = {
   'db.method.q.perimetre': 'Scope: Social security / Central state / Local',
   'db.method.q.pourquoi_perso': 'Why a personal estimate, not an exact one',
   'db.method.q.comparaison': "How it compares to other tools",
+  'db.method.q.limites': "Editorial limits: what this page does not say",
   // 01 — Hypotheses
   'db.method.body.hypotheses.intro': "Each income source (salary, pension, capital, self-employed) follows its own rules. The total you see sums all four.",
   'db.method.body.hypotheses.salarie': "Private-sector employee: employee contributions ex-CSG ≈ 12.5% of gross + CSG/CRDS ≈ 9.7% (URSSAF 2024) → gross/net ratio ≈ 1.29. Employer contributions (~42% of gross) are flagged separately — they're part of the employer cost, not your net.",
@@ -3696,6 +3704,15 @@ const en: Record<string, string> = {
   'db.method.body.comparaison.openfisca': "the official engine exposed as an API. Exhaustive (all benefits + taxes), hard to read for the general public.",
   'db.method.body.comparaison.bercy': "official explanation of public spending, by mission. Educational but not personalised.",
   'db.method.body.comparaison.db': "Daily Bread (this page) — narrative personal calc + deep drilldown into Social security / State / Local government. MVP approximation, transparent about its limits.",
+
+  // 07 — Editorial limits
+  'db.method.body.limites.intro': "Daily Bread quantifies two things: your direct salary contribution (contributions + CSG + income tax + VAT) and public spending per inhabitant. It does NOT attempt to answer 'where does MY euro go' — that question has no simple answer, and any 'you pay X / you receive Y' subtraction is philosophically flawed.",
+  'db.method.body.limites.patrimoine_title': "Your actual contribution depends on your wealth",
+  'db.method.body.limites.patrimoine_body': "This calculation only captures salary income. Depending on your situation, you may contribute far more via specific items: property tax (~€39 bn/yr, owners), inheritance and gift duties (~€18 bn/yr, heirs), flat tax on capital (~€9 bn/yr, dividends and mobile capital gains), CSG on capital (~€20 bn/yr), real estate capital gains, corporate income tax if you run a business. A wealthy household pays significantly more than the editable sentence above suggests.",
+  'db.method.body.limites.nonmarchand_title': "Non-market public goods are hard to evaluate",
+  'db.method.body.limites.nonmarchand_body': "Public spending includes many non-rival collective goods (roads, parks, defense, justice, public lighting, fundamental research) that are not 'consumed' like market goods. The individual value derived from them cannot be quantified. Comparing 'what you pay' to 'what France spends per inhabitant' does not capture a service-received/contribution ratio — it merely puts SCALE in perspective.",
+  'db.method.body.limites.collectif_title': "Public spending is mutualized and redistributive by design",
+  'db.method.body.limites.collectif_body': "Social Security is health/pension/unemployment insurance: you pay today, you receive when you need it (and vice versa). Schools fund other people's children as much as yours. Pensions are funded by working people for today's retirees. The individual framing 'my €856 vs €2,215' misses this collective dimension: you don't pay to 'receive in proportion', you pay so a system exists.",
 
   // ─ Deep-dives "Inside…" (under each Zoom panel) ─
   'db.deepdive.eyebrow': "Inside",

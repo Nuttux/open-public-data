@@ -10975,6 +10975,66 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
 
 /* ── Onboarding intro (§00) — post user-testing fix mai 2026 ──
    Clarifie la promesse de la page avant le formulaire éditable. */
+/* ── Galerie "À retenir" §02 (mai 2026 — remplace équivalents perso §06)
+   4 chiffres macro factuels et sourcés, présentés en grille sobre.
+   Vise la mémorabilité + partage Twitter ("did you know") sans cadrage
+   individualiste. */
+.theme-db-scrolly .db-disp-key-figures {
+  margin: 36px 0 0;
+  padding: 24px 28px;
+  background: var(--p-paper);
+  border-top: 1px solid var(--p-rule);
+}
+.theme-db-scrolly .db-disp-key-figures-title {
+  font-family: var(--pf-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--p-accent);
+  margin: 0 0 18px;
+  text-transform: uppercase;
+}
+.theme-db-scrolly .db-disp-key-figures-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-bottom: 20px;
+}
+@media (max-width: 880px) {
+  .theme-db-scrolly .db-disp-key-figures-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .theme-db-scrolly .db-disp-key-figures-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.theme-db-scrolly .db-disp-key-figure-num {
+  font-family: var(--pf-disp);
+  font-size: clamp(22px, 2.4vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--p-ink);
+  margin: 0 0 6px;
+  line-height: 1.1;
+}
+.theme-db-scrolly .db-disp-key-figure-label {
+  font-family: var(--pf-serif);
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--p-muted);
+  margin: 0;
+}
+.theme-db-scrolly .db-disp-key-figures-src {
+  font-family: var(--pf-mono);
+  font-size: 10.5px;
+  line-height: 1.45;
+  color: var(--p-muted-2);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
 /* ── Synthèse §06 — cadrage neutre (refonte mai 2026)
    Anti "contributeur vs déficitaire". Cadrage : situer la contribution
    salariale directe dans le panorama des sources, sans soustraction
