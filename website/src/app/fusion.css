@@ -9190,6 +9190,58 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   .theme-fusion .fx-sources-table-row .portal::before { content: "Portail · "; color: var(--ocre); font-family: var(--f-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; display: block; margin-bottom: 2px; }
 }
 
+/* ═══ Méthode — Table audit (réplique structure sources, labels audit) ════ */
+.theme-fusion .fx-audit-table {
+  margin-top: 24px;
+  border-top: 1px solid var(--ink);
+  border-left: 1px solid var(--ink);
+  font-family: var(--f-ui);
+}
+.theme-fusion .fx-audit-table-head,
+.theme-fusion .fx-audit-table-row {
+  display: grid;
+  grid-template-columns: 2.4fr 1fr 1.6fr 2fr;
+}
+.theme-fusion .fx-audit-table-head {
+  background: var(--ink);
+  color: var(--bg);
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.theme-fusion .fx-audit-table-head > span {
+  padding: 12px 16px;
+  border-right: 1px solid var(--bg);
+  border-bottom: 1px solid var(--ink);
+}
+.theme-fusion .fx-audit-table-head > span:last-child { border-right: 1px solid var(--ink); }
+.theme-fusion .fx-audit-table-row { background: var(--bg); }
+.theme-fusion .fx-audit-table-row > span {
+  padding: 14px 16px;
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.theme-fusion .fx-audit-table-row .check-label { font-weight: 600; }
+.theme-fusion .fx-audit-table-row .check-category { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+.theme-fusion .fx-audit-table-row .check-threshold { font-size: 12.5px; color: var(--muted); }
+.theme-fusion .fx-audit-table-row .check-status { font-size: 13px; }
+@media (max-width: 900px) {
+  .theme-fusion .fx-audit-table-head { display: none; }
+  .theme-fusion .fx-audit-table-row {
+    grid-template-columns: 1fr;
+    padding: 14px 16px;
+    gap: 6px;
+  }
+  .theme-fusion .fx-audit-table-row > span { padding: 0; border: 0; }
+  .theme-fusion .fx-audit-table-row .check-label::before { content: "Contrôle · "; color: var(--ocre); font-family: var(--f-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; display: block; margin-bottom: 2px; }
+  .theme-fusion .fx-audit-table-row .check-category::before { content: "Catégorie · "; color: var(--muted); font-family: var(--f-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; display: inline-block; margin-right: 4px; }
+  .theme-fusion .fx-audit-table-row .check-threshold::before { content: "Seuil · "; color: var(--muted); font-family: var(--f-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; display: inline-block; margin-right: 4px; }
+}
+
 /* ═══ Méthode — Flow simplifié (4 étapes) ══════════════════════════════════ */
 .theme-fusion .fx-flow-simple {
   margin-top: 24px;
