@@ -26,8 +26,8 @@ import {
   EditableSelect,
   EditableCommune,
 } from "@/components/fusion/EditableInlineSpan";
-import DailyBreadEquivalentCard from "@/components/fusion/DailyBreadEquivalentCard";
-import { getPictoForKey } from "@/components/fusion/DailyBreadPictograms";
+// DailyBreadEquivalentCard + getPictoForKey — supprimés avec §06 synthèse
+// (mai 2026). Conservés dans /components/fusion/ pour usage futur éventuel.
 
 // ─── Sources de revenus (cumulatif) ──────────────────────────────────────
 // L'utilisateur peut cumuler plusieurs sources simultanément (cas réel :
@@ -796,7 +796,11 @@ export default function DailyBreadClient({
   );
   void computeInstitutionShares;
 
-  const secuShare = institutionShares.find((i) => i.code === "S1314");
+  // secuShare/etatShare/localShare — gardés pour les conditionals des panels
+  // (étant donné que assoBranches/stateBuckets/localLevels sont per-capita,
+  // ces "shares" ne projettent plus le perso de l'utilisateur). secuShare
+  // n'est plus utilisé en post-§06-drop ; etat/local servent au conditional
+  // de rendu des panels §04/§05 (présent uniquement quand drilldown OK).
   const etatShare = institutionShares.find((i) => i.code === "S1311");
   const localShare = institutionShares.find((i) => i.code === "S1313");
 
@@ -2279,213 +2283,6 @@ export default function DailyBreadClient({
          * dépliant dédié "Limites éditoriales".
          *
          * §07 méthode devient §06 (renumérotation). */}
-        {false && equivalents.length > 0 && (
-          <section
-            ref={panel6Ref}
-            id="db-share-section"
-            className={`db-panel db-p-end db-panel-fade${panel6Revealed ? " is-revealed" : ""}`}
-          >
-            <div className="db-panel-wrap">
-              <p className="db-panel-num">
-                <em>06</em> · {t("db.end.num")}
-              </p>
-
-              <h2 className="db-p-end-q">
-                {t("db.end.q_a").replace(
-                  "{monthly}",
-                  fmtEur(totalMonthly, locale, 0),
-                )}{" "}
-                <em>{t("db.end.q_b")}</em>
-              </h2>
-              <p className="db-p-end-deck">{t("db.end.deck")}</p>
-
-              {/* Cadrage de la dépense publique — sans "contributeur vs
-                  déficitaire" (framing individualiste trompeur) : on situe
-                  juste la contribution salariale directe dans le panorama
-                  des sources de financement nationales, on rappelle que
-                  l'utilisateur peut contribuer beaucoup plus à d'autres
-                  postes (TF, succession, capital, IS si entreprise), et
-                  que la valeur individuelle des biens publics non-marchands
-                  est difficile à évaluer. */}
-              {totalPerCapitaMonthly > 0 && (
-                <div className="db-p-end-context">
-                  <p className="db-p-end-context-lead">
-                    {renderTagged(
-                      t("db.end.context.lead")
-                        .replace("{paid}", fmtEur(totalMonthly, locale, 0))
-                        .replace(
-                          "{perCapita}",
-                          fmtEur(totalPerCapitaMonthly, locale, 0),
-                        ),
-                    )}
-                  </p>
-                  <p className="db-p-end-context-sources-title">
-                    {t("db.end.context.sources_title")}
-                  </p>
-                  <ul className="db-p-end-context-sources-list">
-                    <li>{t("db.end.context.sources.cotis")}</li>
-                    <li>{t("db.end.context.sources.indirects")}</li>
-                    <li>{t("db.end.context.sources.directs")}</li>
-                    <li>{t("db.end.context.sources.divers")}</li>
-                    <li>{t("db.end.context.sources.deficit")}</li>
-                  </ul>
-                  <p className="db-p-end-context-caveat">
-                    {t("db.end.context.caveat")}
-                  </p>
-                  <p className="db-p-end-context-cta">
-                    <Link href="/france/budget#recettes-apu" prefetch={false}>
-                      {t("db.end.context.cta")} →
-                    </Link>
-                  </p>
-                </div>
-              )}
-
-              {/* Note méthodo sur les équivalents — angles indépendants,
-                  pas additifs, équivalence MONÉTAIRE (pas allocation). */}
-              <p className="db-p-end-equivalents-note">
-                {t("db.end.equivalents_note")}
-              </p>
-
-              {(() => {
-                const sorted = equivalents
-                  .slice(0, 5)
-                  .slice()
-                  .sort((a, b) => b.amount - a.amount);
-                const heroItem = sorted[0];
-                const compactItems = sorted.slice(1);
-                const renderCard = (
-                  eq: (typeof sorted)[number],
-                  variant: "hero" | "compact",
-                  i: number,
-                ) => {
-                  const tag = locale === "en" ? eq.tagEn : eq.tagFr;
-                  const claimA = locale === "en" ? eq.claimAEn : eq.claimAFr;
-                  const claimB = locale === "en" ? eq.claimBEn : eq.claimBFr;
-                  const editorialCopy =
-                    locale === "en" ? eq.editorialEn : eq.editorialFr;
-                  const sourceDetail =
-                    locale === "en" ? eq.sourceDetailEn : eq.sourceDetailFr;
-                  const viaDetail =
-                    locale === "en" ? eq.viaDetailEn : eq.viaDetailFr;
-                  const caption = locale === "en" ? eq.unitEn : eq.unitFr;
-                  const via = locale === "en" ? eq.viaEn : eq.viaFr;
-                  const shareText = t("db.end.share_card_text")
-                    .replace("{monthly}", fmtEur(totalMonthly, locale, 0))
-                    .replace("{number}", eq.headline)
-                    .replace("{caption}", caption)
-                    .replace("{via}", via);
-                  return (
-                    <DailyBreadEquivalentCard
-                      key={eq.key}
-                      variant={variant}
-                      pictoColor={eq.institution}
-                      tag={tag}
-                      number={eq.number}
-                      claimA={claimA}
-                      claimB={claimB}
-                      editorialCopy={editorialCopy}
-                      sourceDetail={sourceDetail}
-                      viaDetail={viaDetail}
-                      shareText={shareText}
-                      revealDelayMs={i * 80}
-                    />
-                  );
-                };
-                return (
-                  <>
-                    {heroItem && (
-                      <div className="db-p-end-hero-wrap">
-                        {renderCard(heroItem, "hero", 0)}
-                      </div>
-                    )}
-                    {compactItems.length > 0 && (
-                      <div className="db-p-end-cards-grid">
-                        {compactItems.map((eq, i) =>
-                          renderCard(eq, "compact", i + 1),
-                        )}
-                      </div>
-                    )}
-                  </>
-                );
-              })()}
-
-              {/* Share global — déplacé en bottom avec label proéminent. */}
-              <div className="db-p-end-share">
-                <p className="db-p-end-share-label">
-                  {t("db.share_section.eyebrow")}
-                </p>
-                <DailyBreadShareActions locale={locale} />
-              </div>
-
-              <div className="db-p-end-foot">
-                <span>
-                  {t("db.end.sources_label")} :{" "}
-                  <a
-                    href="https://www.urssaf.fr/portail/home/taux-et-baremes/taux-de-cotisations.html"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    URSSAF
-                  </a>{" "}
-                  ·{" "}
-                  <a
-                    href="https://www.legifrance.gouv.fr/codes/texte_lc/LEGITEXT000006069577/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    CGI
-                  </a>{" "}
-                  ·{" "}
-                  <a
-                    href="https://www.insee.fr/fr/statistiques/serie/010003222"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    INSEE
-                  </a>{" "}
-                  ·{" "}
-                  <a
-                    href="https://ec.europa.eu/eurostat/databrowser/view/gov_10a_main"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Eurostat
-                  </a>{" "}
-                  ·{" "}
-                  <a
-                    href="https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe5.pdf"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    PLFSS 2025
-                  </a>{" "}
-                  ·{" "}
-                  <a
-                    href="https://www.data.gouv.fr/datasets/plf-2025-depenses-2025-selon-destination/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    LFI 2025
-                  </a>{" "}
-                  ·{" "}
-                  <a
-                    href="https://data.ofgl.fr/explore/dataset/ofgl-base-communes-consolidee/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    OFGL
-                  </a>
-                </span>
-                <span>
-                  franceopendata.org ·{" "}
-                  {locale === "en"
-                    ? "open public data"
-                    : "données publiques ouvertes"}
-                </span>
-              </div>
-            </div>
-          </section>
-        )}
 
         {/* ── PANNEAU 7 — Méthode (refonte 2026-05) ──
          *
