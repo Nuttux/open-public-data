@@ -2245,73 +2245,44 @@ export default function DailyBreadClient({
               </h2>
               <p className="db-p-end-deck">{t("db.end.deck")}</p>
 
-              {/* GAP BLOCK — la révélation honnête : tu paies X, les services
-                  publics coûtent Y par habitant, voici qui finance le reste. */}
+              {/* Cadrage de la dépense publique — sans "contributeur vs
+                  déficitaire" (framing individualiste trompeur) : on situe
+                  juste la contribution salariale directe dans le panorama
+                  des sources de financement nationales, on rappelle que
+                  l'utilisateur peut contribuer beaucoup plus à d'autres
+                  postes (TF, succession, capital, IS si entreprise), et
+                  que la valeur individuelle des biens publics non-marchands
+                  est difficile à évaluer. */}
               {totalPerCapitaMonthly > 0 && (
-                <div className="db-p-end-gap">
-                  <div className="db-p-end-gap-grid">
-                    <div className="db-p-end-gap-cell">
-                      <p className="db-p-end-gap-label">
-                        {t("db.end.gap.paid")}
-                      </p>
-                      <p className="db-p-end-gap-num tnum">
-                        {fmtEur(totalMonthly, locale, 0)} €
-                        <span className="db-p-end-gap-unit">
-                          /{locale === "en" ? "mo" : "mois"}
-                        </span>
-                      </p>
-                    </div>
-                    <div className="db-p-end-gap-arrow" aria-hidden>
-                      →
-                    </div>
-                    <div className="db-p-end-gap-cell">
-                      <p className="db-p-end-gap-label">
-                        {t("db.end.gap.received")}
-                      </p>
-                      <p className="db-p-end-gap-num tnum">
-                        {fmtEur(totalPerCapitaMonthly, locale, 0)} €
-                        <span className="db-p-end-gap-unit">
-                          /{locale === "en" ? "mo/hab" : "mois/hab"}
-                        </span>
-                      </p>
-                    </div>
-                    <div className="db-p-end-gap-arrow" aria-hidden>
-                      −
-                    </div>
-                    <div className="db-p-end-gap-cell db-p-end-gap-cell-delta">
-                      <p className="db-p-end-gap-label">
-                        {t("db.end.gap.delta")}
-                      </p>
-                      <p className="db-p-end-gap-num tnum">
-                        {fmtEur(
-                          Math.max(0, totalPerCapitaMonthly - totalMonthly),
-                          locale,
-                          0,
-                        )}{" "}
-                        €
-                        <span className="db-p-end-gap-unit">
-                          /{locale === "en" ? "mo" : "mois"}
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="db-p-end-gap-explain">
-                    <p className="db-p-end-gap-explain-title">
-                      {t("db.end.gap.explain_title")}
-                    </p>
-                    <ul className="db-p-end-gap-explain-list">
-                      <li>{t("db.end.gap.explain.employer")}</li>
-                      <li>{t("db.end.gap.explain.is")}</li>
-                      <li>{t("db.end.gap.explain.tva_entreprises")}</li>
-                      <li>{t("db.end.gap.explain.deficit")}</li>
-                      <li>{t("db.end.gap.explain.divers")}</li>
-                    </ul>
-                    <p className="db-p-end-gap-explain-cta">
-                      <Link href="/france/budget#recettes-apu" prefetch={false}>
-                        {t("db.end.gap.explain_cta")} →
-                      </Link>
-                    </p>
-                  </div>
+                <div className="db-p-end-context">
+                  <p className="db-p-end-context-lead">
+                    {renderTagged(
+                      t("db.end.context.lead")
+                        .replace("{paid}", fmtEur(totalMonthly, locale, 0))
+                        .replace(
+                          "{perCapita}",
+                          fmtEur(totalPerCapitaMonthly, locale, 0),
+                        ),
+                    )}
+                  </p>
+                  <p className="db-p-end-context-sources-title">
+                    {t("db.end.context.sources_title")}
+                  </p>
+                  <ul className="db-p-end-context-sources-list">
+                    <li>{t("db.end.context.sources.cotis")}</li>
+                    <li>{t("db.end.context.sources.indirects")}</li>
+                    <li>{t("db.end.context.sources.directs")}</li>
+                    <li>{t("db.end.context.sources.divers")}</li>
+                    <li>{t("db.end.context.sources.deficit")}</li>
+                  </ul>
+                  <p className="db-p-end-context-caveat">
+                    {t("db.end.context.caveat")}
+                  </p>
+                  <p className="db-p-end-context-cta">
+                    <Link href="/france/budget#recettes-apu" prefetch={false}>
+                      {t("db.end.context.cta")} →
+                    </Link>
+                  </p>
                 </div>
               )}
 
