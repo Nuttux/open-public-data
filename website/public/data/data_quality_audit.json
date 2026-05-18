@@ -1,0 +1,399 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-05-18T13:32:58.041830+00:00",
+  "project": "open-data-france-484717",
+  "summary": {
+    "total": 16,
+    "pass": 14,
+    "warn": 2,
+    "fail": 0
+  },
+  "thresholds": {
+    "reconciliation_diff_pct": 0.01,
+    "uniqueness_dup_pct_warn": 0.5,
+    "uniqueness_dup_pct_fail": 2.0,
+    "completeness_thematique_subv_warn": 95.0,
+    "completeness_thematique_subv_fail": 80.0,
+    "completeness_geoloc_ap_warn": 40.0,
+    "completeness_geoloc_ap_fail": 20.0,
+    "budget_yoy_variation_warn": 20.0,
+    "budget_yoy_variation_fail": 35.0,
+    "freshness_warn_days": 90,
+    "freshness_fail_days": 180
+  },
+  "checks": [
+    {
+      "id": "budget_total_reconciliation",
+      "category": "reconciliation",
+      "label": "Budget : total core_budget = stg_budget_principal",
+      "status": "pass",
+      "threshold": "diff < 0.01%",
+      "actual": "diff = 0.0000%",
+      "details": {
+        "core_total_eur": 126157542933.91,
+        "stg_total_eur": 126157542933.91
+      },
+      "sources": [
+        "dbt_paris_analytics.core_budget",
+        "dbt_paris_staging.stg_budget_principal"
+      ]
+    },
+    {
+      "id": "subventions_total_reconciliation",
+      "category": "reconciliation",
+      "label": "Subventions : total core = staging",
+      "status": "pass",
+      "threshold": "diff < 0.01%",
+      "actual": "diff = 0.0000%",
+      "details": {
+        "core_total_eur": 6267446570.0,
+        "stg_total_eur": 6267446570.0
+      },
+      "sources": [
+        "dbt_paris_analytics.core_subventions",
+        "dbt_paris_staging.stg_subventions_all"
+      ]
+    },
+    {
+      "id": "row_count_parity",
+      "category": "reconciliation",
+      "label": "Row count parity core ↔ staging",
+      "status": "pass",
+      "threshold": "diff < 0.01% par table",
+      "actual": "OK sur 3 tables",
+      "details": [
+        {
+          "core": "core_budget",
+          "stg": "stg_budget_principal",
+          "core_rows": 24500,
+          "stg_rows": 24500,
+          "diff_pct": 0.0
+        },
+        {
+          "core": "core_ap_projets",
+          "stg": "stg_ap_projets",
+          "core_rows": 7155,
+          "stg_rows": 7155,
+          "diff_pct": 0.0
+        },
+        {
+          "core": "core_logements_sociaux",
+          "stg": "stg_logements_sociaux",
+          "core_rows": 4173,
+          "stg_rows": 4173,
+          "diff_pct": 0.0
+        }
+      ],
+      "sources": [
+        "dbt_paris_analytics.core_*",
+        "dbt_paris_staging.stg_*"
+      ]
+    },
+    {
+      "id": "subventions_thematique_coverage",
+      "category": "completeness",
+      "label": "Subventions : % montants classifiés par thématique",
+      "status": "pass",
+      "threshold": "pass ≥ 95.0%, warn ≥ 80.0%",
+      "actual": "98.05%",
+      "details": {
+        "classified_eur": 6145349174.0,
+        "total_eur": 6267446570.0
+      },
+      "sources": [
+        "dbt_paris_analytics.core_subventions"
+      ]
+    },
+    {
+      "id": "ap_geoloc_coverage",
+      "category": "completeness",
+      "label": "AP Projets : % montants localisés (arrondissement)",
+      "status": "pass",
+      "threshold": "pass ≥ 40.0% (arrondissement), warn ≥ 20.0%",
+      "actual": "87.87% arrondissement, 9.64% point précis",
+      "details": {
+        "pct_arr": 87.87,
+        "pct_latlng": 9.64,
+        "total_eur": 2090939194.75
+      },
+      "sources": [
+        "dbt_paris_analytics.core_ap_projets"
+      ],
+      "note": "Localisation par arrondissement = grain communiqué. Point précis (lat/lng) réservé aux projets mono-site."
+    },
+    {
+      "id": "budget_yoy_variation",
+      "category": "anomaly",
+      "label": "Budget Dépenses : variation YoY max",
+      "status": "pass",
+      "threshold": "pass < 20.0%, warn < 35.0%",
+      "actual": "max 6.73%",
+      "details": {
+        "top_changes": [
+          {
+            "annee": 2022,
+            "variation_pct": 6.73
+          },
+          {
+            "annee": 2024,
+            "variation_pct": 5.99
+          },
+          {
+            "annee": 2020,
+            "variation_pct": 1.37
+          }
+        ]
+      },
+      "sources": [
+        "dbt_paris_analytics.core_budget"
+      ]
+    },
+    {
+      "id": "uniqueness_core_budget_cle_technique",
+      "category": "schema",
+      "label": "Unicité cle_technique dans core_budget",
+      "status": "pass",
+      "threshold": "pass < 0.5% doublons",
+      "actual": "0.0000% doublons (0/24500)",
+      "details": {
+        "total_rows": 24500,
+        "unique_keys": 24500
+      },
+      "sources": [
+        "dbt_paris_analytics.core_budget"
+      ]
+    },
+    {
+      "id": "uniqueness_core_subventions_cle_technique",
+      "category": "schema",
+      "label": "Unicité cle_technique dans core_subventions",
+      "status": "pass",
+      "threshold": "pass < 0.5% doublons",
+      "actual": "0.0000% doublons (0/38839)",
+      "details": {
+        "total_rows": 38839,
+        "unique_keys": 38839
+      },
+      "sources": [
+        "dbt_paris_analytics.core_subventions"
+      ]
+    },
+    {
+      "id": "uniqueness_core_ap_projets_cle_technique",
+      "category": "schema",
+      "label": "Unicité cle_technique dans core_ap_projets",
+      "status": "pass",
+      "threshold": "pass < 0.5% doublons",
+      "actual": "0.0000% doublons (0/7155)",
+      "details": {
+        "total_rows": 7155,
+        "unique_keys": 7155
+      },
+      "sources": [
+        "dbt_paris_analytics.core_ap_projets"
+      ]
+    },
+    {
+      "id": "uniqueness_core_logements_sociaux_cle_technique",
+      "category": "schema",
+      "label": "Unicité cle_technique dans core_logements_sociaux",
+      "status": "pass",
+      "threshold": "pass < 0.5% doublons",
+      "actual": "0.0000% doublons (0/4173)",
+      "details": {
+        "total_rows": 4173,
+        "unique_keys": 4173
+      },
+      "sources": [
+        "dbt_paris_analytics.core_logements_sociaux"
+      ]
+    },
+    {
+      "id": "paris_centre_aggregation",
+      "category": "business_rule",
+      "label": "Paris Centre : agrégation arrondissements 1-4 → 0",
+      "status": "pass",
+      "threshold": "centre_rows == sum(arr 1-4)",
+      "actual": "317 rows en Paris Centre, 317 rows arr 1-4 source",
+      "details": {
+        "centre_rows": 317,
+        "source_rows_1_4": 317
+      },
+      "sources": [
+        "dbt_paris_analytics.core_logements_sociaux"
+      ]
+    },
+    {
+      "id": "casvp_dedup",
+      "category": "business_rule",
+      "label": "CASVP : variantes de nom dédupliquées en 1 entité canonique",
+      "status": "pass",
+      "threshold": "variants_canonique <= 1",
+      "actual": "1 variantes source → 1 canonique(s)",
+      "details": {
+        "variants_source": 1,
+        "variants_canonique": 1,
+        "total_eur": 386239960.0
+      },
+      "sources": [
+        "dbt_paris_analytics.core_subventions"
+      ]
+    },
+    {
+      "id": "budget_vote_coverage",
+      "category": "completeness",
+      "label": "core_budget_vote : couverture années 2023-2026",
+      "status": "pass",
+      "threshold": "années 2023-2026 toutes présentes, totaux > 0",
+      "actual": "années présentes : [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",
+      "details": {
+        "per_year": [
+          {
+            "annee": 2019,
+            "total_eur": 20568499327.0,
+            "n_rows": 3432
+          },
+          {
+            "annee": 2020,
+            "total_eur": 20246270330.28,
+            "n_rows": 1750
+          },
+          {
+            "annee": 2021,
+            "total_eur": 20456923439.29,
+            "n_rows": 1770
+          },
+          {
+            "annee": 2022,
+            "total_eur": 21802214753.95,
+            "n_rows": 1705
+          },
+          {
+            "annee": 2023,
+            "total_eur": 22128294676.0,
+            "n_rows": 1734
+          },
+          {
+            "annee": 2024,
+            "total_eur": 22893537992.84,
+            "n_rows": 1770
+          },
+          {
+            "annee": 2025,
+            "total_eur": 23502831532.42,
+            "n_rows": 1850
+          },
+          {
+            "annee": 2026,
+            "total_eur": 22918335020.0,
+            "n_rows": 1813
+          }
+        ],
+        "missing": []
+      },
+      "sources": [
+        "dbt_paris_analytics.core_budget_vote"
+      ]
+    },
+    {
+      "id": "core_freshness",
+      "category": "freshness",
+      "label": "Fraîcheur tables core (dernier dbt run)",
+      "status": "pass",
+      "threshold": "pass < 90j, warn < 180j",
+      "actual": "max 24j",
+      "details": [
+        {
+          "table": "core_budget",
+          "age_days": 24,
+          "last_run": "2026-04-23"
+        },
+        {
+          "table": "core_budget_vote",
+          "age_days": 24,
+          "last_run": "2026-04-23"
+        },
+        {
+          "table": "core_subventions",
+          "age_days": 11,
+          "last_run": "2026-05-07"
+        },
+        {
+          "table": "core_ap_projets",
+          "age_days": 11,
+          "last_run": "2026-05-07"
+        },
+        {
+          "table": "core_logements_sociaux",
+          "age_days": 24,
+          "last_run": "2026-04-23"
+        }
+      ],
+      "sources": [
+        "dbt_paris_analytics.core_*"
+      ]
+    },
+    {
+      "id": "subventions_2020_2021_known_gap",
+      "category": "known_limitation",
+      "label": "Subventions 2020-2021 : années absentes (source dégradée)",
+      "status": "warn",
+      "threshold": "limitation source OpenData Paris documentée",
+      "actual": "années manquantes : [2020, 2021]",
+      "details": {
+        "per_year": [
+          {
+            "annee": 2019,
+            "n_rows": 12093
+          },
+          {
+            "annee": 2022,
+            "n_rows": 5336
+          }
+        ],
+        "missing": [
+          2020,
+          2021
+        ]
+      },
+      "sources": [
+        "dbt_paris_analytics.core_subventions"
+      ],
+      "note": "Bénéficiaires non publiés par la Ville pour ces années — années entières filtrées du core. Affichées comme warning dans le frontend."
+    },
+    {
+      "id": "ap_2023_2024_known_gap",
+      "category": "known_limitation",
+      "label": "AP Projets : dataset OpenData gelé depuis 2022",
+      "status": "warn",
+      "threshold": "limitation source documentée",
+      "actual": "années manquantes : [2023, 2024]",
+      "details": [
+        {
+          "annee": 2018,
+          "n_rows": 2457
+        },
+        {
+          "annee": 2019,
+          "n_rows": 1976
+        },
+        {
+          "annee": 2020,
+          "n_rows": 1348
+        },
+        {
+          "annee": 2021,
+          "n_rows": 889
+        },
+        {
+          "annee": 2022,
+          "n_rows": 485
+        }
+      ],
+      "sources": [
+        "dbt_paris_analytics.core_ap_projets"
+      ],
+      "note": "Dataset OpenData Paris non mis à jour depuis 2019-11-28. Complété par PDF Investissements Localisés (couverture partielle)."
+    }
+  ]
+}

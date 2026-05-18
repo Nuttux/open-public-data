@@ -38,6 +38,25 @@ type ToolMethod = {
   limites: string[];
 };
 
+type AuditCheck = {
+  id: string;
+  category: string;
+  label: string;
+  status: "pass" | "warn" | "fail";
+  threshold?: string;
+  actual?: string;
+  note?: string;
+  sources?: string[];
+};
+
+type AuditPayload = {
+  schema_version: number;
+  generated_at: string;
+  project: string;
+  summary: { total: number; pass: number; warn: number; fail: number };
+  checks: AuditCheck[];
+};
+
 type CoverageRow = {
   label: string;
   volume?: string;
@@ -631,6 +650,16 @@ export default function MethodeClient() {
   const TRACE = isFr ? TRACE_FR : TRACE_EN;
 
   const [activeToolId, setActiveToolId] = useState<string>(TOOLS[0]?.id ?? "budget");
+  const [audit, setAudit] = useState<AuditPayload | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/data/data_quality_audit.json")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => { if (!cancelled && data) setAudit(data); })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, []);
   const activeTool = TOOLS.find((t) => t.id === activeToolId) ?? TOOLS[0];
 
   // Deep-link : /methode?tool=<id>#outils OR /methode#<tool-id> → pré-sélectionne le tab + scroll.
@@ -747,11 +776,12 @@ export default function MethodeClient() {
             <a href="#sources">{isFr ? "01 · Sources" : "01 · Sources"}</a>
             <a href="#couverture">{isFr ? "02 · Couverture" : "02 · Coverage"}</a>
             <a href="#architecture">{isFr ? "03 · Architecture" : "03 · Architecture"}</a>
-            <a href="#outils">{isFr ? "04 · Les 6 outils" : "04 · The 6 tools"}</a>
-            <a href="#exemple">{isFr ? "05 · Exemple tracé" : "05 · Traced example"}</a>
-            <a href="#glossaire">{isFr ? "06 · Glossaire" : "06 · Glossary"}</a>
-            <a href="#faq">07 · FAQ</a>
-            <a href="#engagements">{isFr ? "08 · Engagements" : "08 · Commitments"}</a>
+            <a href="#audit">{isFr ? "04 · Audit" : "04 · Audit"}</a>
+            <a href="#outils">{isFr ? "05 · Les 6 outils" : "05 · The 6 tools"}</a>
+            <a href="#exemple">{isFr ? "06 · Exemple tracé" : "06 · Traced example"}</a>
+            <a href="#glossaire">{isFr ? "07 · Glossaire" : "07 · Glossary"}</a>
+            <a href="#faq">08 · FAQ</a>
+            <a href="#engagements">{isFr ? "09 · Engagements" : "09 · Commitments"}</a>
           </div>
         </div>
       </section>
@@ -952,10 +982,116 @@ export default function MethodeClient() {
         </div>
       </section>
 
-      <section id="outils" className="fx-section">
+      <section id="audit" className="fx-section">
         <div className="fx-wrap">
           <SectionHead
             number="04"
+            kind={isFr ? "Audit" : "Audit"}
+            title={isFr ? <>Comment on <em>vérifie</em> nos chiffres</> : <>How we <em>verify</em> our figures</>}
+            subtitle={isFr
+              ? "Un audit re-jouable qui rejoue à chaque update — toute personne peut le re-lancer et confronter le résultat."
+              : "A replayable audit that runs after every update — anyone can re-run it and check the result."}
+          />
+
+          <div className="fx-meth-origin-prose" style={{ marginBottom: 24 }}>
+            <p>{isFr
+              ? <>Trois familles de contrôles tournent sur chaque mise à jour : <b>réconciliation</b> (les totaux <code>core</code> doivent rejouer les totaux <code>staging</code>, au centime près), <b>complétude</b> (les enrichissements LLM et géolocalisation doivent dépasser des seuils documentés), et <b>limites connues</b> (les trous de la source — années manquantes, datasets gelés — sont explicitement marqués comme tels). Le script <code>run_data_quality_audit.py</code> écrit le résultat en JSON, lu ci-dessous. Aucun chiffre n&apos;est tapé à la main dans cette page.</>
+              : <>Three families of checks run on every update: <b>reconciliation</b> (<code>core</code> totals must replay <code>staging</code> totals to the cent), <b>completeness</b> (LLM and geolocation enrichments must clear documented thresholds), and <b>known limitations</b> (gaps in the source — missing years, frozen datasets — are explicitly flagged). The <code>run_data_quality_audit.py</code> script writes the result to JSON, which is loaded below. Not a single figure on this page is typed by hand.</>}</p>
+          </div>
+
+          {audit ? (
+            <>
+              <div className="fx-meth-stats" style={{ marginBottom: 24 }}>
+                <div className="fx-meth-stat">
+                  <span className="n">{isFr ? "Contrôles" : "Checks"}</span>
+                  <span className="v">{audit.summary.total}</span>
+                  <span className="c">{isFr ? "rejoués à chaque update" : "replayed on every update"}</span>
+                </div>
+                <div className="fx-meth-stat">
+                  <span className="n">{isFr ? "Réussis" : "Passing"}</span>
+                  <span className="v" style={{ color: "var(--fx-ok, #1e7e34)" }}>{audit.summary.pass}</span>
+                  <span className="c">{isFr ? "dans les seuils" : "within thresholds"}</span>
+                </div>
+                <div className="fx-meth-stat">
+                  <span className="n">{isFr ? "Warnings" : "Warnings"}</span>
+                  <span className="v" style={{ color: "var(--fx-warn, #b97400)" }}>{audit.summary.warn}</span>
+                  <span className="c">{isFr ? "limitations source documentées" : "documented source limitations"}</span>
+                </div>
+                <div className="fx-meth-stat">
+                  <span className="n">{isFr ? "Échecs" : "Failures"}</span>
+                  <span className="v" style={{ color: audit.summary.fail === 0 ? "var(--fx-ok, #1e7e34)" : "var(--fx-fail, #c0392b)" }}>{audit.summary.fail}</span>
+                  <span className="c">{isFr ? "bloquant pour la publication" : "blocking publication"}</span>
+                </div>
+              </div>
+
+              <p className="fx-note" style={{ marginBottom: 24 }}>
+                {isFr
+                  ? <>Dernier rejeu : <b>{new Date(audit.generated_at).toLocaleString("fr-FR", { dateStyle: "long", timeStyle: "short" })}</b> · Projet BigQuery <code>{audit.project}</code></>
+                  : <>Last run: <b>{new Date(audit.generated_at).toLocaleString("en-GB", { dateStyle: "long", timeStyle: "short" })}</b> · BigQuery project <code>{audit.project}</code></>}
+              </p>
+
+              <div className="fx-audit-table">
+                <div className="fx-audit-table-head">
+                  <span>{isFr ? "Contrôle" : "Check"}</span>
+                  <span>{isFr ? "Catégorie" : "Category"}</span>
+                  <span>{isFr ? "Seuil" : "Threshold"}</span>
+                  <span>{isFr ? "Statut · mesure" : "Status · value"}</span>
+                </div>
+                {audit.checks.map((c) => (
+                  <div key={c.id} className="fx-audit-table-row">
+                    <span className="check-label">{c.label}</span>
+                    <span className="check-category">{c.category}</span>
+                    <span className="check-threshold">{c.threshold ?? "—"}</span>
+                    <span className="check-status">
+                      <span
+                        aria-label={c.status}
+                        style={{
+                          display: "inline-block",
+                          padding: "2px 8px",
+                          borderRadius: 4,
+                          fontWeight: 600,
+                          marginRight: 8,
+                          color: c.status === "pass" ? "var(--fx-ok, #1e7e34)" : c.status === "warn" ? "var(--fx-warn, #b97400)" : "var(--fx-fail, #c0392b)",
+                          background: c.status === "pass" ? "rgba(30, 126, 52, 0.10)" : c.status === "warn" ? "rgba(185, 116, 0, 0.10)" : "rgba(192, 57, 43, 0.10)",
+                        }}
+                      >
+                        {c.status === "pass" ? "✓" : c.status === "warn" ? "⚠" : "✗"} {c.status.toUpperCase()}
+                      </span>
+                      {c.actual}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </>
+          ) : (
+            <p className="fx-note">{isFr ? "Chargement de l'audit…" : "Loading audit…"}</p>
+          )}
+
+          <div className="fx-meth-origin-prose" style={{ marginTop: 32 }}>
+            <h3 style={{ marginBottom: 12 }}>{isFr ? "Comment cross-checker ?" : "How to cross-check?"}</h3>
+            <p>{isFr
+              ? <>1. <b>Le JSON brut</b> qui alimente ce tableau — chaque contrôle avec ses tables sources BigQuery : <a href="/data/data_quality_audit.json" target="_blank" rel="noopener noreferrer">data_quality_audit.json ↗</a>.</>
+              : <>1. <b>Raw JSON</b> feeding this table — each check with its BigQuery source tables: <a href="/data/data_quality_audit.json" target="_blank" rel="noopener noreferrer">data_quality_audit.json ↗</a>.</>}</p>
+            <p>{isFr
+              ? <>2. <b>Le script</b> qui produit ce JSON, lisible et re-jouable localement : <a href="https://github.com/Nuttux/open-public-data/blob/main/pipeline/scripts/audit/run_data_quality_audit.py" target="_blank" rel="noopener noreferrer">run_data_quality_audit.py ↗</a>.</>
+              : <>2. <b>The script</b> that produces this JSON, readable and replayable locally: <a href="https://github.com/Nuttux/open-public-data/blob/main/pipeline/scripts/audit/run_data_quality_audit.py" target="_blank" rel="noopener noreferrer">run_data_quality_audit.py ↗</a>.</>}</p>
+            <p>{isFr
+              ? <>3. <b>La doc longue</b> — observations, limitations, décisions, historique : <a href="https://github.com/Nuttux/open-public-data/blob/main/docs/data-quality.md" target="_blank" rel="noopener noreferrer">docs/data-quality.md ↗</a>.</>
+              : <>3. <b>The long doc</b> — observations, limitations, decisions, history: <a href="https://github.com/Nuttux/open-public-data/blob/main/docs/data-quality.md" target="_blank" rel="noopener noreferrer">docs/data-quality.md ↗</a>.</>}</p>
+            <p>{isFr
+              ? <>4. <b>L&apos;architecture du pipeline</b> (sources → staging → intermediate → core → mart) : <a href="https://github.com/Nuttux/open-public-data/blob/main/docs/architecture-modelling.md" target="_blank" rel="noopener noreferrer">docs/architecture-modelling.md ↗</a>.</>
+              : <>4. <b>Pipeline architecture</b> (sources → staging → intermediate → core → mart): <a href="https://github.com/Nuttux/open-public-data/blob/main/docs/architecture-modelling.md" target="_blank" rel="noopener noreferrer">docs/architecture-modelling.md ↗</a>.</>}</p>
+            <p style={{ marginTop: 16 }}>{isFr
+              ? <>Pour re-jouer l&apos;audit en local après avoir cloné le repo : <code>python pipeline/scripts/audit/run_data_quality_audit.py</code>. Sortie attendue : un JSON identique à celui du site, plus un exit code 1 si un contrôle échoue.</>
+              : <>To replay the audit locally after cloning the repo: <code>python pipeline/scripts/audit/run_data_quality_audit.py</code>. Expected output: a JSON identical to the one on the site, plus exit code 1 if any check fails.</>}</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="outils" className="fx-section">
+        <div className="fx-wrap">
+          <SectionHead
+            number="05"
             kind={isFr ? "Les 6 outils" : "The 6 tools"}
             title={isFr ? <>Le <em>détail</em> par outil</> : <><em>Detail</em> per tool</>}
             subtitle={isFr ? "Source exacte, pipeline, choix éditoriaux et limites — choisissez un outil." : "Exact source, pipeline, editorial choices and limits — pick a tool."}
@@ -1057,7 +1193,7 @@ export default function MethodeClient() {
       <section id="exemple" className="fx-section">
         <div className="fx-wrap">
           <SectionHead
-            number="05"
+            number="06"
             kind={isFr ? "Exemple tracé" : "Traced example"}
             title={isFr ? <>Un chiffre, <em>bout en bout</em></> : <>One figure, <em>end to end</em></>}
             subtitle={isFr ? "Suivre un montant de la ligne CSV source jusqu'à son affichage sur le site." : "Follow one amount from the source CSV row to its display on the site."}
@@ -1103,7 +1239,7 @@ export default function MethodeClient() {
       <section id="glossaire" className="fx-section">
         <div className="fx-wrap">
           <SectionHead
-            number="06"
+            number="07"
             kind={isFr ? "Glossaire" : "Glossary"}
             title={isFr ? <>Les mots qu&apos;on <em>utilise</em></> : <>The words we <em>use</em></>}
             subtitle={isFr ? "Jargon comptable et technique en une phrase." : "Accounting and technical jargon in one sentence."}
@@ -1122,7 +1258,7 @@ export default function MethodeClient() {
       <section id="faq" className="fx-section">
         <div className="fx-wrap">
           <SectionHead
-            number="07"
+            number="08"
             kind="FAQ"
             title={isFr ? <>Les questions qui <em>reviennent</em></> : <>Frequently asked <em>questions</em></>}
           />
@@ -1140,7 +1276,7 @@ export default function MethodeClient() {
       <section id="engagements" className="fx-section">
         <div className="fx-wrap">
           <SectionHead
-            number="08"
+            number="09"
             kind={isFr ? "Engagements" : "Commitments"}
             title={isFr ? <>Nos <em>règles</em>, et quoi faire si on se trompe</> : <>Our <em>rules</em>, and what to do if we get it wrong</>}
           />
