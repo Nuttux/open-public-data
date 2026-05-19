@@ -125,7 +125,13 @@ if should_run dbt; then
         else
             echo "  ⊘ dbt seed skipped (DBT_SKIP_SEED=1)"
         fi
-        run_step "dbt run" bash -c "cd '$PIPELINE_DIR' && dbt run $DBT_TARGET_FLAG"
+        # Exclusions optionnelles via env var (utilisé en CI pour skip
+        # marseille WIP qui n'a pas de source raw publiée).
+        DBT_EXCLUDE_FLAG=""
+        if [[ -n "${DBT_RUN_EXCLUDE:-}" ]]; then
+            DBT_EXCLUDE_FLAG="--exclude $DBT_RUN_EXCLUDE"
+        fi
+        run_step "dbt run" bash -c "cd '$PIPELINE_DIR' && dbt run $DBT_TARGET_FLAG $DBT_EXCLUDE_FLAG"
     else
         echo "  ⚠ dbt non installé, phase skipped. Installer : pip install dbt-bigquery"
     fi
