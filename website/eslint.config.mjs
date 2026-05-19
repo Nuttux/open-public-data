@@ -54,8 +54,13 @@ export default [
       "react-hooks": reactHooksPlugin,
     },
     rules: {
-      // TypeScript rules
-      "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+      // TypeScript rules. `_` prefix marks an intentionally-unused name
+      // (args, locals, caught errors).
+      "@typescript-eslint/no-unused-vars": ["warn", {
+        argsIgnorePattern: "^_",
+        varsIgnorePattern: "^_",
+        caughtErrorsIgnorePattern: "^_",
+      }],
       "@typescript-eslint/no-explicit-any": "warn",
       
       // React rules

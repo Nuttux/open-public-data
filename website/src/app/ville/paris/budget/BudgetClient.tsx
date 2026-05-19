@@ -1,8 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef } from "react";
-import { useSearchParams } from "next/navigation";
 // Direct imports — the barrel pulls in server-only components (ProjetThumb,
 // ProjetFiche) that fail to bundle client-side (they read node:fs via
 // fusion-data).
@@ -650,7 +648,7 @@ function CompareBar({
   );
 }
 
-function GroupedSubRows({
+function _GroupedSubRows({
   items,
   max,
   numLocale,

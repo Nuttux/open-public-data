@@ -24,7 +24,7 @@ export default function ArrondissementFiche({ arr }: { arr: ArrondissementFicheT
     return { v: new Intl.NumberFormat(locStr).format(n), u: "€" };
   };
 
-  const suf = (n: number) => (locale === "en" ? (n === 1 ? "st" : "th") : n === 1 ? "er" : "ᵉ");
+  const _suf = (n: number) => (locale === "en" ? (n === 1 ? "st" : "th") : n === 1 ? "er" : "ᵉ");
 
   const { v, u } = fmtEur(arr.total);
   const topChap = arr.byChapitre[0];
