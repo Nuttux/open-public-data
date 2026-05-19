@@ -1,0 +1,81 @@
+name: bq-table-snapshots
+
+# Snapshots BigQuery natifs des sources raw SANS clé stable.
+# Complémentaire aux dbt snapshots (qui couvrent les sources ID-keyed).
+#
+# Cible : tables raw line-item budgétaires (CA, BV, annexe subv., bilan,
+# dette garantie). Liste exacte dans
+# pipeline/scripts/snapshot/bq_table_snapshots.py
+#
+# Coût BQ : ~50 MB total × snapshot hebdo = négligeable
+# (gratuit les 7 premiers jours, ~0.02$/GB/mois après).
+#
+# Runbook : docs/runbooks/backups.md
+
+on:
+  schedule:
+    # Lundi 04:00 UTC — 1h après le dbt snapshot, pour éviter conflits
+    - cron: "0 4 * * 1"
+  workflow_dispatch:
+    inputs:
+      table:
+        description: "Cible une table spécifique (vide = toutes)"
+        required: false
+        default: ""
+      dry_run:
+        description: "Dry-run (pas d'exécution réelle)"
+        required: false
+        default: "false"
+        type: choice
+        options: ["false", "true"]
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  snapshot:
+    name: BQ table snapshots
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    if: ${{ vars.ENABLE_BQ_CI == 'true' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Google Cloud BigQuery client
+        run: python -m pip install --upgrade google-cloud-bigquery
+
+      - name: Authenticate to GCP
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      - name: Run BQ table snapshots
+        run: |
+          ARGS=""
+          if [[ -n "${{ github.event.inputs.table }}" ]]; then
+            ARGS="$ARGS --table ${{ github.event.inputs.table }}"
+          fi
+          if [[ "${{ github.event.inputs.dry_run }}" == "true" ]]; then
+            ARGS="$ARGS --dry-run"
+          fi
+          python pipeline/scripts/snapshot/bq_table_snapshots.py $ARGS
+
+  status:
+    name: ⚠️  BQ snapshot status (skipped if ENABLE_BQ_CI != true)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Announce
+        run: |
+          if [[ "${{ vars.ENABLE_BQ_CI }}" == "true" ]]; then
+            echo "✅ BQ snapshots actifs — tournent hebdomadairement."
+          else
+            echo "⚠️  BQ snapshots DÉSACTIVÉS : variable ENABLE_BQ_CI != true."
+            echo "    Cf docs/runbooks/dev-prod-separation.md pour activer."
+          fi
