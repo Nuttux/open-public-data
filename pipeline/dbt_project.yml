@@ -343,6 +343,31 @@ models:
       +enabled: false
 
 # =============================================================================
+# Configuration des snapshots — reproductibilité des chiffres publiés
+#
+# Cible : dataset BigQuery `dbt_paris_snapshots` (créé au premier run).
+# Chaque snapshot suit les colonnes business d'une source raw et stocke
+# les versions historiques via les colonnes dbt_valid_from / dbt_valid_to.
+#
+# À quoi ça sert :
+#   - Un journaliste cite "412 M€ versés à CASVP en 2024" en mars
+#   - En juin la Ville republie l'annexe avec corrections
+#   - On peut reconstituer ce que le chiffre disait en mars
+#
+# Run manuel : `dbt snapshot --target prod`
+# Run automatique : workflow .github/workflows/snapshots.yml (hebdomadaire)
+#
+# Couverture actuelle : 6 sources ID-keyed (subventions assoc., marchés
+# Paris + DECP, logements sociaux, AP projets, investissements PDF).
+# Sources sans clé stable (budget line items) → BQ table snapshots (TODO,
+# cf docs/runbooks/snapshots.md).
+# =============================================================================
+snapshots:
+  paris_public_open_data:
+    +target_schema: dbt_paris_snapshots
+    +file_format: bigquery
+
+# =============================================================================
 # Variables globales du projet
 # =============================================================================
 vars:

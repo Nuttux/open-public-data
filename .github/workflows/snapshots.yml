@@ -1,0 +1,92 @@
+name: snapshots
+
+# Lance `dbt snapshot` chaque semaine + sur demande.
+#
+# Capture l'état historique des sources raw OpenData Paris pour garantir
+# la reproductibilité d'un chiffre publié (ex : si la Ville republie une
+# annexe de subventions avec corrections, on peut reconstituer l'état
+# d'origine en consultant `dbt_paris_snapshots.snap_*`).
+#
+# Cible : 6 sources avec clé stable (subventions associations, marchés
+# Paris + DECP, logements sociaux, AP projets, investissements PDF).
+# Cf. docs/runbooks/snapshots.md.
+#
+# Coût BQ estimé : <0,01€ par run (les snapshots reposent sur des hashes
+# de colonnes business, scan partiel des tables raw).
+
+on:
+  schedule:
+    # Tous les lundis à 03:00 UTC (~04:00-05:00 CET selon DST)
+    - cron: "0 3 * * 1"
+  workflow_dispatch:
+    inputs:
+      target_snapshot:
+        description: "Nom du snapshot à cibler (laisser vide pour tout)"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  snapshot:
+    name: dbt snapshot (sources raw historisées)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    if: ${{ vars.ENABLE_BQ_CI == 'true' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dbt
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install dbt-core dbt-bigquery
+
+      - name: Authenticate to GCP
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      - name: dbt snapshot
+        working-directory: pipeline
+        run: |
+          mkdir -p ~/.dbt
+          cat > ~/.dbt/profiles.yml <<EOF
+          paris_open_data:
+            target: prod
+            outputs:
+              prod:
+                type: bigquery
+                method: oauth
+                project: open-data-france-484717
+                dataset: dbt_paris
+                location: EU
+                threads: 4
+          EOF
+          dbt deps --profiles-dir ~/.dbt
+          if [[ -n "${{ github.event.inputs.target_snapshot }}" ]]; then
+            dbt snapshot --profiles-dir ~/.dbt --target prod \
+              --select "${{ github.event.inputs.target_snapshot }}"
+          else
+            dbt snapshot --profiles-dir ~/.dbt --target prod
+          fi
+
+  status:
+    name: ⚠️  Snapshot status (skipped if ENABLE_BQ_CI != true)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Announce
+        run: |
+          if [[ "${{ vars.ENABLE_BQ_CI }}" == "true" ]]; then
+            echo "✅ Snapshots actifs — dbt snapshot tourne hebdomadairement."
+          else
+            echo "⚠️  Snapshots DÉSACTIVÉS : variable ENABLE_BQ_CI != true."
+            echo "    Cf docs/runbooks/dev-prod-separation.md pour activer."
+          fi
