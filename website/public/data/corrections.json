@@ -1,0 +1,58 @@
+{
+  "version": "1.0",
+  "schemaDocs": "Cette structure liste toutes les corrections appliquées rétroactivement au site. Une entrée = un changement assumé publiquement. Trois catégories : data (chiffre/source corrigé), methodology (règle de calcul/dédup/classification modifiée), editorial (cadrage/présentation/libellé revu).",
+  "policy": {
+    "fr": "Nous documentons publiquement chaque correction appliquée aux chiffres ou à la méthodologie. Vous trouverez ci-dessous les changements significatifs, par ordre antéchronologique. Chaque entrée précise la date, la nature, le périmètre, l'avant/après et la source du signalement.",
+    "en": "We publicly document every correction applied to figures or methodology. The list below shows significant changes, in reverse chronological order. Each entry specifies date, nature, scope, before/after, and the source of the report."
+  },
+  "entries": [
+    {
+      "id": "2026-05-19-methode-restructuration",
+      "date": "2026-05-19",
+      "category": "methodology",
+      "scope": "global",
+      "title": {
+        "fr": "Restructuration de la page Méthode",
+        "en": "Method page restructuring"
+      },
+      "summary": {
+        "fr": "La page /methode a été condensée en 5 sections claires (sources, transformation, enrichissement, choix éditoriaux, limites). Le badge de provenance des charts pointe désormais vers les datasets BigQuery publics plutôt que vers une description locale.",
+        "en": "The /methode page was condensed into 5 clear sections (sources, transformation, enrichment, editorial choices, limits). The chart-level provenance badge now points to the public BigQuery datasets instead of a local description."
+      },
+      "trigger": {
+        "fr": "Initiative interne — la page méthodologique précédente listait 12 sections, mais l'audit a montré qu'elle perdait les lecteurs au-delà de la 4ème.",
+        "en": "Internal initiative — the previous methodology page listed 12 sections, but an audit showed readers dropped after section 4."
+      },
+      "links": [
+        {
+          "label": "Page /methode",
+          "url": "/methode"
+        }
+      ]
+    },
+    {
+      "id": "2026-05-18-daily-bread-cadrage",
+      "date": "2026-05-18",
+      "category": "editorial",
+      "scope": "daily-bread",
+      "title": {
+        "fr": "Retrait du cadrage « contributeur vs déficitaire net »",
+        "en": "Removal of \"net contributor vs net beneficiary\" framing"
+      },
+      "summary": {
+        "fr": "Le panneau §06 de /daily-bread présentait pour chaque revenu une « différence » entre ce qu'on paie et ce dont on bénéficie. Ce cadrage était à la fois éditorialement orienté (proche d'arguments politiques) et techniquement contestable (succession, plus-values, exits de sociétés, biens publics difficiles à évaluer ne sont pas captés). Refonte vers un cadrage neutre : « voici ce que vous payez, voici comment c'est dépensé ».",
+        "en": "Panel §06 of /daily-bread showed, for each income level, a \"difference\" between what you pay and what you benefit from. This framing was both editorially loaded (close to political arguments) and technically questionable (inheritance, capital gains, company exits, hard-to-value public goods are not captured). Reworked into a neutral framing: \"here's what you pay, here's how it's spent\"."
+      },
+      "trigger": {
+        "fr": "Feedback utilisateur direct sur le caractère trompeur du cadrage.",
+        "en": "Direct user feedback on the misleading nature of the framing."
+      },
+      "links": [
+        {
+          "label": "Page /daily-bread",
+          "url": "/france/daily-bread"
+        }
+      ]
+    }
+  ]
+}
