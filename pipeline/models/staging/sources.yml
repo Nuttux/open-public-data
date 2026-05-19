@@ -16,14 +16,17 @@
 # - marches_publics: Marchés publics (contexte, non sommable)
 #
 # FRESHNESS:
-#   5 sources ont `loaded_at_field: loaded_at` actif (sirene_companies,
-#   deliberations_sessions, pdf_investissements_localises, dette_garantie).
-#   Pour les 9 sources OpenData Paris core, `sync_opendata.py` /
-#   `upload_bilan_comptable.py` ajoutent maintenant une colonne `_synced_at`,
-#   MAIS la config dbt freshness associée sera ré-activée par PR séparée
-#   APRÈS le premier cron Monday 6h UTC qui crée la colonne. En attendant,
-#   la détection d'un upstream gelé reste assurée par le check
-#   `source_max_year_coverage` dans run_data_quality_audit.py.
+#   14 sources monitorées dbt source freshness :
+#   - 9 OpenData Paris core (`_synced_at` stamped par sync_opendata.py /
+#     upload_bilan_comptable.py, activé 2026-05-19 après le premier full
+#     sync CI qui a peuplé la colonne)
+#   - 5 sources internes (sirene_companies, deliberations_*,
+#     pdf_investissements_localises, dette_garantie) avec leur propre
+#     `loaded_at` column
+#   Seuils warn=60j / error=180j (datasets Ville annuels, marge confortable).
+#   Pour détecter en plus un upstream gelé même si nos sync tournent
+#   (cas AP 2022, BV 2021), le check `source_max_year_coverage` dans
+#   run_data_quality_audit.py compare MAX(annee) raw vs année courante.
 # =============================================================================
 
 version: 2
@@ -70,6 +73,10 @@ sources:
           C'est la SOURCE DE VÉRITÉ pour les totaux globaux.
 
           ~25k lignes, années 2019-2024
+        loaded_at_field: _synced_at
+        freshness:
+          warn_after: {count: 60, period: day}
+          error_after: {count: 180, period: day}
         columns:
           - name: exercice_comptable
             description: "Année fiscale (INTEGER)"
@@ -111,6 +118,10 @@ sources:
           Colonnes DIFFÉRENTES du CA (nommage plus ancien).
 
           ~8.6k lignes, années 2019-2021
+        loaded_at_field: _synced_at
+        freshness:
+          warn_after: {count: 60, period: day}
+          error_after: {count: 180, period: day}
         columns:
           - name: exercice_comptable
             description: "Année fiscale (TEXT, ex: '2020')"
@@ -151,6 +162,10 @@ sources:
           
           ATTENTION: Représente ~10% du budget d'investissement total.
           ~7k lignes, années 2018-2022
+        loaded_at_field: _synced_at
+        freshness:
+          warn_after: {count: 60, period: day}
+          error_after: {count: 180, period: day}
         columns:
           - name: exercice_comptable
             description: "Année fiscale (INTEGER)"
@@ -193,6 +208,10 @@ sources:
           
           ~47k lignes, années 2018-2024
           ⚠️ 2020-2021: noms bénéficiaires = NULL
+        loaded_at_field: _synced_at
+        freshness:
+          warn_after: {count: 60, period: day}
+          error_after: {count: 180, period: day}
         columns:
           - name: publication
             description: "Période de publication ('CA 2023', '2024')"
@@ -215,6 +234,10 @@ sources:
           Contient SIRET pour géolocalisation via API Entreprises.
           
           ~102k lignes, années 2013-2025
+        loaded_at_field: _synced_at
+        freshness:
+          warn_after: {count: 60, period: day}
+          error_after: {count: 180, period: day}
         columns:
           - name: numero_de_dossier
             description: "Identifiant unique du dossier"
@@ -245,6 +268,10 @@ sources:
           DÉJÀ GÉOLOCALISÉ (geo_point_2d disponible).
 
           ~4k lignes
+        loaded_at_field: _synced_at
+        freshness:
+          warn_after: {count: 60, period: day}
+          error_after: {count: 180, period: day}
         columns:
           - name: identifiant_livraison
             description: "ID unique du programme"
@@ -302,6 +329,10 @@ sources:
           NE PAS SOMMER comme dépense annuelle !
 
           ~17k lignes, années 2013-2024
+        loaded_at_field: _synced_at
+        freshness:
+          warn_after: {count: 60, period: day}
+          error_after: {count: 180, period: day}
         columns:
           - name: annee_de_notification
             description: "Année de notification (INTEGER)"
@@ -339,6 +370,9 @@ sources:
           Contient les valeurs brutes, amortissements et nettes.
 
           ~500 lignes, années 2016-2024
+        # freshness désactivée : upload_bilan_comptable.py demande un CSV
+        # local et n'est pas tourné automatiquement. À ré-activer quand le
+        # sync sera automatisé (Issue à créer).
         columns:
           - name: Exercice comptable
             description: "Année fiscale (INTEGER)"
