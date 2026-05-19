@@ -57,13 +57,14 @@ jobs:
         env:
           NEXT_TELEMETRY_DISABLED: "1"
 
+      - name: Remove .next/cache (not needed downstream)
+        run: rm -rf .next/cache
+
       - name: Upload .next artifact
         uses: actions/upload-artifact@v4
         with:
           name: next-build
-          path: |
-            website/.next
-            !website/.next/cache
+          path: website/.next
           retention-days: 1
           if-no-files-found: error
 
