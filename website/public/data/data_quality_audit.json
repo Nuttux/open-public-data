@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-19T12:14:41.331055+00:00",
+  "generated_at": "2026-05-19T14:15:46.472858+00:00",
   "project": "open-data-france-484717",
   "summary": {
     "total": 19,
@@ -411,47 +411,47 @@
       "label": "Tables raw : âge du dernier sync OpenData → BigQuery",
       "status": "pass",
       "threshold": "pass < 35j, warn < 90j",
-      "actual": "max 25j",
+      "actual": "max 26j",
       "details": [
         {
           "table_id": "bilan_comptable",
           "last_mod": "2026-04-23T13:54:01.249000+00:00",
-          "age_days": 25
+          "age_days": 26
         },
         {
           "table_id": "budgets_votes_principaux_a_partir_de_2019_m57_ville_departement",
           "last_mod": "2026-04-23T13:43:13.846000+00:00",
-          "age_days": 25
+          "age_days": 26
         },
         {
           "table_id": "comptes_administratifs_autorisations_de_programmes_a_partir_de_2018_m57_ville_de",
           "last_mod": "2026-04-23T13:42:36.605000+00:00",
-          "age_days": 25
+          "age_days": 26
         },
         {
           "table_id": "comptes_administratifs_budgets_principaux_a_partir_de_2019_m57_ville_departement",
           "last_mod": "2026-04-23T13:42:30.304000+00:00",
-          "age_days": 25
+          "age_days": 26
         },
         {
           "table_id": "liste_des_marches_de_la_collectivite_parisienne",
           "last_mod": "2026-04-23T13:43:20.263000+00:00",
-          "age_days": 25
+          "age_days": 26
         },
         {
           "table_id": "logements_sociaux_finances_a_paris",
           "last_mod": "2026-04-23T13:43:08.511000+00:00",
-          "age_days": 25
+          "age_days": 26
         },
         {
           "table_id": "subventions_associations_votees",
           "last_mod": "2026-04-23T13:43:02.649000+00:00",
-          "age_days": 25
+          "age_days": 26
         },
         {
           "table_id": "subventions_versees_annexe_compte_administratif_a_partir_de_2018",
           "last_mod": "2026-04-23T13:42:45.849000+00:00",
-          "age_days": 25
+          "age_days": 26
         }
       ],
       "sources": [
@@ -465,32 +465,32 @@
       "label": "Fraîcheur tables core (dernier dbt run)",
       "status": "pass",
       "threshold": "pass < 90j, warn < 180j",
-      "actual": "max 25j",
+      "actual": "max 0j",
       "details": [
         {
           "table": "core_budget",
-          "age_days": 25,
-          "last_run": "2026-04-23"
+          "age_days": 0,
+          "last_run": "2026-05-19"
         },
         {
           "table": "core_budget_vote",
-          "age_days": 25,
-          "last_run": "2026-04-23"
+          "age_days": 0,
+          "last_run": "2026-05-19"
         },
         {
           "table": "core_subventions",
-          "age_days": 11,
-          "last_run": "2026-05-07"
+          "age_days": 0,
+          "last_run": "2026-05-19"
         },
         {
           "table": "core_ap_projets",
-          "age_days": 11,
-          "last_run": "2026-05-07"
+          "age_days": 0,
+          "last_run": "2026-05-19"
         },
         {
           "table": "core_logements_sociaux",
-          "age_days": 25,
-          "last_run": "2026-04-23"
+          "age_days": 0,
+          "last_run": "2026-05-19"
         }
       ],
       "sources": [
