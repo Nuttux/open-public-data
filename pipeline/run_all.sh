@@ -90,8 +90,15 @@ if should_run sync; then
     echo "════════════════════════════════════════════════════════"
     echo "═  1/4  SYNC — récupération des sources"
     echo "════════════════════════════════════════════════════════"
+    # 7 datasets OpenData Paris → BQ raw.* (budget, AP, subv, assoc,
+    # logements, voté, marchés). Stamps `_synced_at` pour dbt freshness.
+    if [[ -f "$PIPELINE_DIR/scripts/sync/sync_opendata.py" ]]; then
+        run_step "OpenData Paris core (7 datasets → BQ raw)" \
+            $PYTHON "$PIPELINE_DIR/scripts/sync/sync_opendata.py" || \
+            echo "  ⚠ sync_opendata a échoué — on continue"
+    fi
     # Chemin direct OpenData → JSON (ne dépend pas de BQ). Rapide, gratuit.
-    run_step "Subventions (OpenData Paris)" \
+    run_step "Subventions JSON (OpenData Paris)" \
         $PYTHON "$PIPELINE_DIR/scripts/sync/fetch_subventions_opendata.py"
     # DECP marchés publics
     if [[ -f "$PIPELINE_DIR/scripts/sync/fetch_decp_paris.py" ]]; then
