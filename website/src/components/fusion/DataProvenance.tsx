@@ -6,7 +6,7 @@ import { useLocale } from "@/lib/localeContext";
 type ChainStep = {
   layer: "mart" | "core" | "intermediate" | "staging" | "raw" | "source";
   name: string;
-  github?: string;
+  bq_table?: string;
   url?: string;
   role_fr?: string;
   role_en?: string;
@@ -26,7 +26,9 @@ type ChartLineage = {
 type LineagePayload = {
   schema_version: number;
   description?: string;
-  github_blob: string;
+  bq_project: string;
+  bq_console_url_template: string;
+  code_repo: string;
   charts: Record<string, ChartLineage>;
 };
 
@@ -49,6 +51,17 @@ const LAYER_LABEL_EN: Record<ChainStep["layer"], string> = {
 };
 
 const LAYER_ORDER: ChainStep["layer"][] = ["source", "raw", "staging", "intermediate", "core", "mart"];
+
+function buildBqUrl(template: string, project: string, bqTable: string): string | null {
+  const dotIdx = bqTable.indexOf(".");
+  if (dotIdx < 0) return null;
+  const dataset = bqTable.slice(0, dotIdx);
+  const table = bqTable.slice(dotIdx + 1);
+  return template
+    .replace("{project}", project)
+    .replace("{dataset}", dataset)
+    .replace("{table}", table);
+}
 
 export default function DataProvenance({ chartId, year }: { chartId: string; year?: number }) {
   const { locale } = useLocale();
@@ -166,33 +179,46 @@ export default function DataProvenance({ chartId, year }: { chartId: string; yea
                 </div>
 
                 <ol className="fx-provenance-chain">
-                  {[...chart.chain].sort((a, b) => LAYER_ORDER.indexOf(a.layer) - LAYER_ORDER.indexOf(b.layer)).map((step, i) => (
-                    <li key={i} className="fx-provenance-step">
-                      <div className="fx-provenance-step-layer">
-                        {isFr ? LAYER_LABEL_FR[step.layer] : LAYER_LABEL_EN[step.layer]}
-                      </div>
-                      <div className="fx-provenance-step-name">
-                        {step.url || step.github ? (
-                          <a href={step.url || step.github} target="_blank" rel="noopener noreferrer">
-                            <code>{step.name}</code> ↗
-                          </a>
-                        ) : (
-                          <code>{step.name}</code>
-                        )}
-                      </div>
-                      <div className="fx-provenance-step-role">
-                        {(isFr ? step.role_fr : step.role_en) ?? ""}
-                      </div>
-                    </li>
-                  ))}
+                  {[...chart.chain].sort((a, b) => LAYER_ORDER.indexOf(a.layer) - LAYER_ORDER.indexOf(b.layer)).map((step, i) => {
+                    const bqUrl = step.bq_table && payload
+                      ? buildBqUrl(payload.bq_console_url_template, payload.bq_project, step.bq_table)
+                      : null;
+                    const href = step.url || bqUrl;
+                    return (
+                      <li key={i} className="fx-provenance-step">
+                        <div className="fx-provenance-step-layer">
+                          {isFr ? LAYER_LABEL_FR[step.layer] : LAYER_LABEL_EN[step.layer]}
+                        </div>
+                        <div className="fx-provenance-step-name">
+                          {href ? (
+                            <a href={href} target="_blank" rel="noopener noreferrer">
+                              <code>{step.name}</code> ↗
+                            </a>
+                          ) : (
+                            <code>{step.name}</code>
+                          )}
+                          {bqUrl && !step.url && (
+                            <span className="fx-provenance-step-hint">
+                              {isFr ? "ouvre la table BigQuery (lecture publique)" : "opens the BigQuery table (public read)"}
+                            </span>
+                          )}
+                        </div>
+                        <div className="fx-provenance-step-role">
+                          {(isFr ? step.role_fr : step.role_en) ?? ""}
+                        </div>
+                      </li>
+                    );
+                  })}
                 </ol>
 
                 <div className="fx-provenance-footer">
+                  {payload?.code_repo && (
+                    <a href={payload.code_repo} target="_blank" rel="noopener noreferrer">
+                      {isFr ? "Voir le code des transformations dbt (GitHub) ↗" : "View dbt transformation code (GitHub) ↗"}
+                    </a>
+                  )}
                   <a href="/methode#audit">
-                    {isFr ? "Audit data quality (16+ contrôles) →" : "Data quality audit (16+ checks) →"}
-                  </a>
-                  <a href="/methode#sources">
-                    {isFr ? "Toutes les sources →" : "All sources →"}
+                    {isFr ? "Audit data quality →" : "Data quality audit →"}
                   </a>
                 </div>
               </>
